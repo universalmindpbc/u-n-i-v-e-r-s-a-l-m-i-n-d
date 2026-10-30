@@ -1,0 +1,362 @@
+{
+  "checkedAt": "2026-10-30",
+  "records": [
+    {
+      "recordId": "pmid-29946275",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/29946275/",
+      "titleSimilarity": 1.0,
+      "evidenceLevel": "abstract",
+      "passageVerified": true
+    },
+    {
+      "recordId": "pmid-27353367",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/27353367/",
+      "titleSimilarity": 1.0,
+      "evidenceLevel": "abstract",
+      "passageVerified": true
+    },
+    {
+      "recordId": "pmid-25989952",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/25989952/",
+      "titleSimilarity": 1.0,
+      "evidenceLevel": "abstract",
+      "passageVerified": true
+    },
+    {
+      "recordId": "pmid-28222713",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/28222713/",
+      "titleSimilarity": 0.9969,
+      "evidenceLevel": "abstract",
+      "passageVerified": true
+    },
+    {
+      "recordId": "doi-2a203fb071ddfe54",
+      "sourceURL": "https://doi.org/10.1002/capr.12580",
+      "titleSimilarity": 1.0,
+      "evidenceLevel": "abstract",
+      "passageVerified": true
+    },
+    {
+      "recordId": "doi-61628ddd002899ff",
+      "sourceURL": "https://doi.org/10.1016/j.aip.2015.09.006",
+      "titleSimilarity": 1.0,
+      "evidenceLevel": "title",
+      "passageVerified": true
+    },
+    {
+      "recordId": "pmid-42324567",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/42324567/",
+      "titleSimilarity": 1.0,
+      "evidenceLevel": "abstract",
+      "passageVerified": true
+    },
+    {
+      "recordId": "pmid-28481610",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/28481610/",
+      "titleSimilarity": 0.9953,
+      "evidenceLevel": "abstract",
+      "passageVerified": true
+    },
+    {
+      "recordId": "pmid-31097900",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/31097900/",
+      "titleSimilarity": 0.991,
+      "evidenceLevel": "abstract",
+      "passageVerified": true
+    },
+    {
+      "recordId": "pmid-27417882",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/27417882/",
+      "titleSimilarity": 0.995,
+      "evidenceLevel": "abstract",
+      "passageVerified": true
+    },
+    {
+      "recordId": "pmid-25862338",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/25862338/",
+      "titleSimilarity": 0.9958,
+      "evidenceLevel": "abstract",
+      "passageVerified": true
+    },
+    {
+      "recordId": "pmid-25046280",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/25046280/",
+      "titleSimilarity": 0.996,
+      "evidenceLevel": "abstract",
+      "passageVerified": true
+    },
+    {
+      "recordId": "pmid-11127626",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/11127626/",
+      "titleSimilarity": 0.9919,
+      "evidenceLevel": "abstract",
+      "passageVerified": true
+    },
+    {
+      "recordId": "doi-bfab13a657ed2d81",
+      "sourceURL": "https://doi.org/10.15845/voices.v16i3.887",
+      "titleSimilarity": 1.0,
+      "evidenceLevel": "abstract",
+      "passageVerified": true
+    },
+    {
+      "recordId": "pmid-38671329",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/38671329/",
+      "titleSimilarity": 0.9968,
+      "evidenceLevel": "abstract",
+      "passageVerified": true
+    },
+    {
+      "recordId": "pmid-28544507",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/28544507/",
+      "titleSimilarity": 0.9962,
+      "evidenceLevel": "abstract",
+      "passageVerified": true
+    },
+    {
+      "recordId": "pmid-29921143",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/29921143/",
+      "titleSimilarity": 1.0,
+      "evidenceLevel": "abstract",
+      "passageVerified": true
+    },
+    {
+      "recordId": "pmid-30279666",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/30279666/",
+      "titleSimilarity": 1.0,
+      "evidenceLevel": "abstract",
+      "passageVerified": true
+    },
+    {
+      "recordId": "portal-7c6d9225444d",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/40424141/",
+      "titleSimilarity": 1.0,
+      "evidenceLevel": "abstract",
+      "passageVerified": true
+    },
+    {
+      "recordId": "pmid-30197612",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/30197612/",
+      "titleSimilarity": 1.0,
+      "evidenceLevel": "abstract",
+      "passageVerified": true
+    },
+    {
+      "recordId": "pmid-26963955",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/26963955/",
+      "titleSimilarity": 1.0,
+      "evidenceLevel": "abstract",
+      "passageVerified": true
+    },
+    {
+      "recordId": "pmid-27225519",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/27225519/",
+      "titleSimilarity": 0.9952,
+      "evidenceLevel": "abstract",
+      "passageVerified": true
+    },
+    {
+      "recordId": "pmid-24257410",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/24257410/",
+      "titleSimilarity": 0.9961,
+      "evidenceLevel": "abstract",
+      "passageVerified": true
+    },
+    {
+      "recordId": "pmid-22304605",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/22304605/",
+      "titleSimilarity": 0.9941,
+      "evidenceLevel": "abstract",
+      "passageVerified": true
+    },
+    {
+      "recordId": "pmid-20367644",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/20367644/",
+      "titleSimilarity": 0.9962,
+      "evidenceLevel": "abstract",
+      "passageVerified": true
+    },
+    {
+      "recordId": "pmid-19646284",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/19646284/",
+      "titleSimilarity": 0.997,
+      "evidenceLevel": "abstract",
+      "passageVerified": true
+    },
+    {
+      "recordId": "pmid-17508316",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/17508316/",
+      "titleSimilarity": 0.9935,
+      "evidenceLevel": "abstract",
+      "passageVerified": true
+    },
+    {
+      "recordId": "doi-37881ae999c094e1",
+      "sourceURL": "https://doi.org/10.1016/j.fnhli.2025.100070",
+      "titleSimilarity": 1.0,
+      "evidenceLevel": "title",
+      "passageVerified": true
+    },
+    {
+      "recordId": "pmid-15913391",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/15913391/",
+      "titleSimilarity": 0.9946,
+      "evidenceLevel": "abstract",
+      "passageVerified": true
+    },
+    {
+      "recordId": "src-47a527b4dc03",
+      "sourceURL": "https://doi.org/10.1093/mtp/miw004",
+      "titleSimilarity": 1.0,
+      "evidenceLevel": "title",
+      "passageVerified": true
+    },
+    {
+      "recordId": "pmid-41642087",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/41642087/",
+      "titleSimilarity": 1.0,
+      "evidenceLevel": "abstract",
+      "passageVerified": true
+    },
+    {
+      "recordId": "pmid-28795405",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/28795405/",
+      "titleSimilarity": 0.9942,
+      "evidenceLevel": "abstract",
+      "passageVerified": true
+    },
+    {
+      "recordId": "pmid-18833581",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/18833581/",
+      "titleSimilarity": 0.9949,
+      "evidenceLevel": "abstract",
+      "passageVerified": true
+    },
+    {
+      "recordId": "pmid-28103407",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/28103407/",
+      "titleSimilarity": 0.9956,
+      "evidenceLevel": "abstract",
+      "passageVerified": true
+    },
+    {
+      "recordId": "pmid-19654388",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/19654388/",
+      "titleSimilarity": 0.9973,
+      "evidenceLevel": "abstract",
+      "passageVerified": true
+    },
+    {
+      "recordId": "pmid-18612994",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/18612994/",
+      "titleSimilarity": 1.0,
+      "evidenceLevel": "abstract",
+      "passageVerified": true
+    },
+    {
+      "recordId": "pmid-9479673",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/9479673/",
+      "titleSimilarity": 1.0,
+      "evidenceLevel": "abstract",
+      "passageVerified": true
+    },
+    {
+      "recordId": "pmid-34025912",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/34025912/",
+      "titleSimilarity": 1.0,
+      "evidenceLevel": "abstract",
+      "passageVerified": true
+    },
+    {
+      "recordId": "pmid-30858808",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/30858808/",
+      "titleSimilarity": 1.0,
+      "evidenceLevel": "abstract",
+      "passageVerified": true
+    },
+    {
+      "recordId": "pmid-30186192",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/30186192/",
+      "titleSimilarity": 1.0,
+      "evidenceLevel": "abstract",
+      "passageVerified": true
+    },
+    {
+      "recordId": "pmid-26256140",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/26256140/",
+      "titleSimilarity": 0.9952,
+      "evidenceLevel": "abstract",
+      "passageVerified": true
+    },
+    {
+      "recordId": "pmid-29228794",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/29228794/",
+      "titleSimilarity": 0.995,
+      "evidenceLevel": "abstract",
+      "passageVerified": true
+    },
+    {
+      "recordId": "src-757129132fdc",
+      "sourceURL": "https://doi.org/10.1037/1072-5245.14.1.61",
+      "titleSimilarity": 1.0,
+      "evidenceLevel": "title",
+      "passageVerified": true
+    },
+    {
+      "recordId": "pmid-29769367",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/29769367/",
+      "titleSimilarity": 0.9947,
+      "evidenceLevel": "abstract",
+      "passageVerified": true
+    },
+    {
+      "recordId": "doi-890fefc8f3be30c0",
+      "sourceURL": "https://doi.org/10.15845/voices.v5i3.231",
+      "titleSimilarity": 1.0,
+      "evidenceLevel": "abstract",
+      "passageVerified": true
+    },
+    {
+      "recordId": "pmid-25653222",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/25653222/",
+      "titleSimilarity": 0.9935,
+      "evidenceLevel": "abstract",
+      "passageVerified": true
+    },
+    {
+      "recordId": "pmid-20193089",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/20193089/",
+      "titleSimilarity": 0.9961,
+      "evidenceLevel": "abstract",
+      "passageVerified": true
+    },
+    {
+      "recordId": "pmid-29899015",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/29899015/",
+      "titleSimilarity": 0.9974,
+      "evidenceLevel": "abstract",
+      "passageVerified": true
+    },
+    {
+      "recordId": "pmid-27898068",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/27898068/",
+      "titleSimilarity": 0.9965,
+      "evidenceLevel": "abstract",
+      "passageVerified": true
+    },
+    {
+      "recordId": "doi-b02eca96b6ce2f96",
+      "sourceURL": "https://doi.org/10.1007/s11469-014-9513-2",
+      "titleSimilarity": 1.0,
+      "evidenceLevel": "title",
+      "passageVerified": true
+    }
+  ],
+  "statusCounts": {
+    "direct": 36,
+    "context": 4,
+    "related": 5,
+    "uncertain": 2,
+    "no-match": 3
+  }
+}

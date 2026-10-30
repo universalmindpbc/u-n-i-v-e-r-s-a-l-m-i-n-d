@@ -1,6 +1,6 @@
 {
   "schema": "universal-informatics/complete-dataset/v1",
-  "dataset_version": "ae5a9bb06a27c3505af7194410e38f30d388520f8abf2320a1f1c3b9a4c858c6",
+  "dataset_version": "f0bd66e106a2931d80ec80e3ea66c3802bd71107a1d1fbd986ff23ac1a51db5b",
   "sources": [
     {
       "id": "geometry.json",
@@ -18,6 +18,18 @@
       "id": "library-data/clinical-conditions.json",
       "source_path": "library-data/clinical-conditions.json",
       "sha256": "72d41ef50d5718e18152fa6ff280f8bccc59855aef47ee578a46da718eaf4040",
+      "format": "json"
+    },
+    {
+      "id": "library-data/community-calibration.csv",
+      "source_path": "library-data/community-calibration.csv",
+      "sha256": "62428fbc83c6e473bb55463fecd1a8d4616673577cb7ac349b8502eda6a0830a",
+      "format": "csv"
+    },
+    {
+      "id": "library-data/community-calibration.json",
+      "source_path": "library-data/community-calibration.json",
+      "sha256": "82788f88c453f6d10dd5bb4d53b337bd3f9f7122483dadd8bced56dd9b4d57be",
       "format": "json"
     },
     {
@@ -52133,44 +52145,44 @@
   "downloads": {
     "json": {
       "file": "informatics-complete.json.gz",
-      "bytes": 75981825,
-      "uncompressed_bytes": 763202843,
-      "sha256": "d54c8e717e5fab5f595d0ab258a9941e3a5018ed74608867cba2ebc50edc1fdb",
-      "uncompressed_sha256": "8016489897ee8972c1b2987c9fbfe3cc6ebce258f5940ac3dfbb249c7edfe475",
+      "bytes": 76008421,
+      "uncompressed_bytes": 763291378,
+      "sha256": "33d8bb23b5e8bf9c7e6f4375c1e7e2793b048198c7635fa44270e18b266b2f07",
+      "uncompressed_sha256": "eb323aba9a35c5e1a70f349999270c466ea1bf50ae2a8fff417287ecb68a4a5b",
       "parts": [
         {
-          "file": "part-de9f242c637374d1f47572ca0955a15123692203129e25121fd14002371b4be5.bin",
+          "file": "part-241231b597964400aaad35f8fbf973ac5ffbcb23f10869c27bb6d2ee2063ea76.bin",
           "bytes": 50331648,
-          "sha256": "de9f242c637374d1f47572ca0955a15123692203129e25121fd14002371b4be5"
+          "sha256": "241231b597964400aaad35f8fbf973ac5ffbcb23f10869c27bb6d2ee2063ea76"
         },
         {
-          "file": "part-192bcc6907dceb5ffd239c5149f0c9c8ca25d89faaa4336b35c0757e52ac6376.bin",
-          "bytes": 25650177,
-          "sha256": "192bcc6907dceb5ffd239c5149f0c9c8ca25d89faaa4336b35c0757e52ac6376"
+          "file": "part-bdcafca5da26d2e771120405cf01c84aa0551a66c7c6f01ba4ab9c40281b7df9.bin",
+          "bytes": 25676773,
+          "sha256": "bdcafca5da26d2e771120405cf01c84aa0551a66c7c6f01ba4ab9c40281b7df9"
         }
       ]
     },
     "csv": {
       "file": "informatics-complete.csv.gz",
-      "bytes": 144784478,
-      "uncompressed_bytes": 2428978618,
-      "sha256": "23fe45eb5892eba7b6fae21378b8a2e43b2094e6e0935bc9c413ccb4712124d2",
-      "uncompressed_sha256": "3b698a98f73995ed36761c4540acff08aabde04ee4e6eb0fa7e039510d04498c",
+      "bytes": 144815508,
+      "uncompressed_bytes": 2429154148,
+      "sha256": "98adf9412288ac87ed8ddc2f80e179f5a21e0647a981ec948f4994b54e728122",
+      "uncompressed_sha256": "eb7544102d790295f7472a2b63b5c44d22e52b8ef11309dcfb3559d48f90b89c",
       "parts": [
         {
-          "file": "part-2b318d82fe8b9bc3a9ae077b775d1940de5c93796cdd657c475732e2f1ccd2b1.bin",
+          "file": "part-22db715b83106ca8c0284b28a0ba74d5072a79e6c10eabe5176eb3870d9fdbb6.bin",
           "bytes": 50331648,
-          "sha256": "2b318d82fe8b9bc3a9ae077b775d1940de5c93796cdd657c475732e2f1ccd2b1"
+          "sha256": "22db715b83106ca8c0284b28a0ba74d5072a79e6c10eabe5176eb3870d9fdbb6"
         },
         {
-          "file": "part-67fd6e857970c4df108f9a29d63f4559f6beae9086c68fa38620686dc65172d9.bin",
+          "file": "part-a8e89b2a81ee5821e5bd9dd2ae7cdbf594c76316f0b6748411f9bc7b241ba54b.bin",
           "bytes": 50331648,
-          "sha256": "67fd6e857970c4df108f9a29d63f4559f6beae9086c68fa38620686dc65172d9"
+          "sha256": "a8e89b2a81ee5821e5bd9dd2ae7cdbf594c76316f0b6748411f9bc7b241ba54b"
         },
         {
-          "file": "part-ce15f53c15d44015aa800c83dda9d3bae6f2afba345c5f36bade2ce69e2e7144.bin",
-          "bytes": 44121182,
-          "sha256": "ce15f53c15d44015aa800c83dda9d3bae6f2afba345c5f36bade2ce69e2e7144"
+          "file": "part-6606d99e4317e77ea2efd53e64b6d8f5b703cdaf121ca527fe81317abc374028.bin",
+          "bytes": 44152212,
+          "sha256": "6606d99e4317e77ea2efd53e64b6d8f5b703cdaf121ca527fe81317abc374028"
         }
       ]
     }

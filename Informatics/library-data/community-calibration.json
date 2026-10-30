@@ -1,0 +1,1586 @@
+{
+  "schemaVersion": "communities-contexts/v1",
+  "batchId": "calibration-20261030-50",
+  "title": "Communities and Contexts",
+  "createdAt": "2026-10-30",
+  "status": "calibration-pending-human-review",
+  "recordCount": 50,
+  "humanReviewedCount": 0,
+  "method": "Purposeful calibration sample of 50 existing records across six categories, with direct matches, contextual sources, inferred relevance, uncertain cases and negative controls. This is not a prevalence estimate or an accuracy benchmark.",
+  "reviewLabelAfterApproval": "Reviewed by Universal Mind",
+  "taxonomy": [
+    {
+      "id": "refugees",
+      "label": "Refugees & Forced Displacement",
+      "searchTerms": [
+        "refugee",
+        "refugees",
+        "asylum seeker",
+        "asylum seekers",
+        "forced displacement",
+        "internally displaced",
+        "resettlement"
+      ],
+      "scope": "Retain distinctions between refugees, asylum seekers and internally displaced people. Migration alone does not establish forced displacement."
+    },
+    {
+      "id": "housing",
+      "label": "Homelessness & Housing Insecurity",
+      "searchTerms": [
+        "homeless",
+        "homelessness",
+        "rough sleeping",
+        "unstably housed",
+        "housing insecurity",
+        "homeless shelter"
+      ],
+      "scope": "Housing circumstances need explicit support. Poverty or residence in a domestic-violence shelter alone does not establish homelessness."
+    },
+    {
+      "id": "defence",
+      "label": "Defence, Veterans & Security Services",
+      "searchTerms": [
+        "defence",
+        "defense",
+        "military",
+        "veterans",
+        "veteran",
+        "army",
+        "navy",
+        "air force",
+        "marines",
+        "armed forces",
+        "service members",
+        "security services"
+      ],
+      "scope": "Identify the service group in each source. Military service does not automatically establish combat or war exposure."
+    },
+    {
+      "id": "indigenous",
+      "label": "Indigenous Peoples & Communities",
+      "searchTerms": [
+        "Indigenous",
+        "Aboriginal",
+        "Torres Strait Islander",
+        "First Nations",
+        "Māori"
+      ],
+      "scope": "Retain the specific peoples, country and context identified in the source. These terms are search routes, not interchangeable identities."
+    },
+    {
+      "id": "domestic-violence",
+      "label": "Domestic & Family Violence",
+      "searchTerms": [
+        "domestic violence",
+        "DV",
+        "family violence",
+        "intimate partner violence",
+        "IPV",
+        "coercive control",
+        "domestic abuse",
+        "dating violence"
+      ],
+      "scope": "Anxiety, PTSD, depression, abuse or trauma alone does not establish domestic or family violence. Effects on symptoms remain distinct from effects on violence."
+    },
+    {
+      "id": "war-trauma",
+      "label": "War & Conflict-Related Trauma",
+      "searchTerms": [
+        "war trauma",
+        "combat trauma",
+        "combat-related",
+        "war-related",
+        "armed conflict",
+        "conflict-affected",
+        "postconflict"
+      ],
+      "scope": "Require an explicit war or armed-conflict context. Natural disasters, generic trauma and veteran status alone do not establish this category."
+    }
+  ],
+  "statusCounts": {
+    "direct": 36,
+    "context": 4,
+    "related": 5,
+    "uncertain": 2,
+    "no-match": 3
+  },
+  "policy": {
+    "direct": "The source explicitly identifies the population or research topic. Reviews, protocols, subgroups and staff perspectives retain their separate study roles.",
+    "context": "The source explicitly discusses the category, but does not establish a category-defined participant sample.",
+    "related": "A proposed inference from a relevant intervention or outcome in a different or unspecified population. Hidden from community filter results unless related research is enabled.",
+    "uncertain": "The available text is insufficient to establish a category.",
+    "no-match": "No supported category match in the checked text. This does not prove irrelevance in unread full text.",
+    "unassessed": "Outside the calibration batch; not assessed, not presumed irrelevant."
+  },
+  "records": [
+    {
+      "matches": [
+        {
+          "categoryId": "refugees",
+          "relation": "direct"
+        }
+      ],
+      "rationale": "The study explicitly concerns Syrian refugees receiving EMDR. Refugee status is established; war exposure is not separately assigned from nationality.",
+      "studyRole": "population-study",
+      "status": "direct",
+      "recordId": "pmid-29946275",
+      "title": "An Eye Movement Desensitization and Reprocessing (EMDR) Group Intervention for Syrian Refugees With Post-traumatic Stress Symptoms: Results of a Randomized Controlled Trial.",
+      "reviewStatus": "pending",
+      "proposedBy": "AI",
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "evidence": [
+        {
+          "quote": "The number of refugees has increased significantly over the past few years. PTSD and depression are among the most common mental health problems among refugees.",
+          "location": "Abstract",
+          "sourceType": "abstract",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/29946275/",
+          "provider": "Europe PMC / MEDLINE",
+          "checkedAt": "2026-10-30",
+          "textSHA256": "41f87381a884d87e86132af950d1bf32decdab4c577d388e2a86aa027655cbea"
+        }
+      ],
+      "evidenceLimit": "Abstract-level classification; full-text appraisal and human review remain pending."
+    },
+    {
+      "matches": [
+        {
+          "categoryId": "refugees",
+          "relation": "direct"
+        }
+      ],
+      "rationale": "The study explicitly concerns Syrian refugees receiving EMDR. Refugee status is established; war exposure is not separately assigned from nationality.",
+      "studyRole": "population-study",
+      "status": "direct",
+      "recordId": "pmid-27353367",
+      "title": "The efficacy of eye movement desensitization and reprocessing for post-traumatic stress disorder and depression among Syrian refugees: results of a randomized controlled trial.",
+      "reviewStatus": "pending",
+      "proposedBy": "AI",
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "evidence": [
+        {
+          "quote": "and depression among refugees. Eye movement desensitization and reprocessing (EMDR) is an effective treatment for PTSD for victims of natural disasters, car accidents or other",
+          "location": "Abstract",
+          "sourceType": "abstract",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/27353367/",
+          "provider": "Europe PMC / MEDLINE",
+          "checkedAt": "2026-10-30",
+          "textSHA256": "bced9a80e0b659464b5f4624d850d113d30a63e6b18a40ca4dd271103066c6fa"
+        }
+      ],
+      "evidenceLimit": "Abstract-level classification; full-text appraisal and human review remain pending."
+    },
+    {
+      "matches": [
+        {
+          "categoryId": "refugees",
+          "relation": "direct"
+        }
+      ],
+      "rationale": "The study explicitly concerns Syrian refugees receiving EMDR. Refugee status is established; war exposure is not separately assigned from nationality.",
+      "studyRole": "population-study",
+      "status": "direct",
+      "recordId": "pmid-25989952",
+      "title": "EMDR for Syrian refugees with posttraumatic stress disorder symptoms: results of a pilot randomized controlled trial.",
+      "reviewStatus": "pending",
+      "proposedBy": "AI",
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "evidence": [
+        {
+          "quote": "health problems among refugees are depression and posttraumatic stress disorder (PTSD). Eye movement desensitization and reprocessing (EMDR) is an effective treatment for PTSD. However, no",
+          "location": "Abstract",
+          "sourceType": "abstract",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/25989952/",
+          "provider": "Europe PMC / MEDLINE",
+          "checkedAt": "2026-10-30",
+          "textSHA256": "495ab5f9a27b4a84fe019625c7f56b9ad0be7b4a49436aaf356ed38d2f3e0b39"
+        }
+      ],
+      "evidenceLimit": "Abstract-level classification; full-text appraisal and human review remain pending."
+    },
+    {
+      "matches": [
+        {
+          "categoryId": "refugees",
+          "relation": "direct"
+        }
+      ],
+      "rationale": "The cross-sectional survey includes refugees and asylum seekers attending a Melbourne refugee health service. Screening results do not establish clinical diagnoses for every participant.",
+      "studyRole": "population-study",
+      "status": "direct",
+      "recordId": "pmid-28222713",
+      "title": "The mental health status of refugees and asylum seekers attending a refugee health clinic including comparisons with a matched sample of Australian-born residents",
+      "reviewStatus": "pending",
+      "proposedBy": "AI",
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "evidence": [
+        {
+          "quote": "cross-sectional survey of 135 refugees and asylum-seeker participants using instruments including Kessler-10 (K10) and PTSD-8 to obtain estimates of the prevalence of mental disorders. We",
+          "location": "Abstract",
+          "sourceType": "abstract",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/28222713/",
+          "provider": "Europe PMC / MEDLINE",
+          "checkedAt": "2026-10-30",
+          "textSHA256": "97effe405cd70c17148e16f78213230df44c12137637aecf1b837c210d30f630"
+        }
+      ],
+      "evidenceLimit": "Abstract-level classification; full-text appraisal and human review remain pending."
+    },
+    {
+      "matches": [
+        {
+          "categoryId": "refugees",
+          "relation": "direct"
+        }
+      ],
+      "rationale": "The feasibility study concerns a remote parenting and EMDR group intervention for refugee and asylum-seeking caregivers. It is not a controlled effectiveness trial.",
+      "studyRole": "population-study",
+      "status": "direct",
+      "recordId": "doi-2a203fb071ddfe54",
+      "title": "“Online delivery gave me privacy and distance from others”: feasibility trial and qualitative evaluation of an online intervention for refugees and asylum seekers; LTP + EMDR G‐TEP",
+      "reviewStatus": "pending",
+      "proposedBy": "AI",
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "evidence": [
+        {
+          "quote": "remote multicomponent parenting intervention for refugees and asylum seekers: Learning Through Play and EMDR Group Traumatic Episode Protocol. The study was a single‐arm feasibility trial",
+          "location": "Abstract",
+          "sourceType": "abstract",
+          "url": "https://doi.org/10.1002/capr.12580",
+          "provider": "Publisher-deposited Crossref metadata",
+          "checkedAt": "2026-10-30",
+          "textSHA256": "2898d43b06b1b286c15f2808e1f44001e5ce72d1b41dd7cc5c1d518c34178524"
+        }
+      ],
+      "evidenceLimit": "Abstract-level classification; full-text appraisal and human review remain pending."
+    },
+    {
+      "matches": [
+        {
+          "categoryId": "refugees",
+          "relation": "direct"
+        }
+      ],
+      "rationale": "The publisher-deposited title explicitly identifies adolescents from refugee backgrounds. Classification is limited to the title; intervention effects have not been appraised.",
+      "studyRole": "title-identified-population",
+      "status": "direct",
+      "recordId": "doi-61628ddd002899ff",
+      "title": "Evaluation of a school-based creative arts therapy program for adolescents from refugee backgrounds",
+      "reviewStatus": "pending",
+      "proposedBy": "AI",
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "evidence": [
+        {
+          "quote": "Evaluation of a school-based creative arts therapy program for adolescents from refugee backgrounds",
+          "location": "Publication title",
+          "sourceType": "title",
+          "url": "https://doi.org/10.1016/j.aip.2015.09.006",
+          "provider": "Publisher-deposited Crossref metadata",
+          "checkedAt": "2026-10-30",
+          "textSHA256": "7e2df2c23cbdb6cd0891f716dae6c28c3807e506b919d6205eb4e828bef524bd"
+        }
+      ],
+      "evidenceLimit": "Title metadata only; full text and study outcomes have not been assessed in this pass."
+    },
+    {
+      "matches": [
+        {
+          "categoryId": "refugees",
+          "relation": "direct"
+        }
+      ],
+      "rationale": "The trial explicitly evaluates EMDR and KIDNET for refugee children and adolescents with PTSD. Refugee status does not identify every participant’s trauma exposure.",
+      "studyRole": "population-study",
+      "status": "direct",
+      "recordId": "pmid-42324567",
+      "title": "Trauma-focused treatments for refugee children and adolescents with PTSD: a three-arm randomized controlled trial comparing the efficacy of EMDR and KIDNET versus a waitlist control group (the KIEM study).",
+      "reviewStatus": "pending",
+      "proposedBy": "AI",
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "evidence": [
+        {
+          "quote": "of life in refugee children and adolescents in the Netherlands, compared to a waitlist control group (WL). A secondary objective was to compare the efficacy",
+          "location": "Abstract",
+          "sourceType": "abstract",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/42324567/",
+          "provider": "Europe PMC / MEDLINE",
+          "checkedAt": "2026-10-30",
+          "textSHA256": "534c0d479bc4d433a6b07c7df1e9894bd8f59316e587f9c1f3d57a70a907365d"
+        }
+      ],
+      "evidenceLimit": "Abstract-level classification; full-text appraisal and human review remain pending."
+    },
+    {
+      "matches": [
+        {
+          "categoryId": "housing",
+          "relation": "direct"
+        }
+      ],
+      "rationale": "The qualitative study investigates technology use, mental health needs and intervention preferences among young people experiencing homelessness.",
+      "studyRole": "population-study",
+      "status": "direct",
+      "recordId": "pmid-28481610",
+      "title": "Exploring the potential of technology-based mental health services for homeless youth: A qualitative study",
+      "reviewStatus": "pending",
+      "proposedBy": "AI",
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "evidence": [
+        {
+          "quote": "to better understand homeless youths' use of technology, mental health experiences and needs, and willingness to engage with technology-supported mental health interventions to help guide",
+          "location": "Abstract",
+          "sourceType": "abstract",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/28481610/",
+          "provider": "Europe PMC / MEDLINE",
+          "checkedAt": "2026-10-30",
+          "textSHA256": "50fcce8e371f9440dc0953c2e616e3433fe944f8baf9b03d21ff72358b10eca8"
+        }
+      ],
+      "evidenceLimit": "Abstract-level classification; full-text appraisal and human review remain pending."
+    },
+    {
+      "matches": [
+        {
+          "categoryId": "housing",
+          "relation": "direct"
+        }
+      ],
+      "rationale": "The study describes technology access among adults experiencing homelessness who are moving into permanent supportive housing.",
+      "studyRole": "population-study",
+      "status": "direct",
+      "recordId": "pmid-31097900",
+      "title": "No Digital Divide? Technology Use among Homeless Adults",
+      "reviewStatus": "pending",
+      "proposedBy": "AI",
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "evidence": [
+        {
+          "quote": "a study of 421 homeless adults moving into PSH, this paper presents descriptive technology findings, and compares results to age-matched general population data. The vast",
+          "location": "Abstract",
+          "sourceType": "abstract",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/31097900/",
+          "provider": "Europe PMC / MEDLINE",
+          "checkedAt": "2026-10-30",
+          "textSHA256": "4f5416f46ad4f7b9413a33685db4a5fbb0e374be53bf5724361b136e4f48c189"
+        }
+      ],
+      "evidenceLimit": "Abstract-level classification; full-text appraisal and human review remain pending."
+    },
+    {
+      "matches": [
+        {
+          "categoryId": "housing",
+          "relation": "direct"
+        }
+      ],
+      "rationale": "The app development and usability study concerns homeless and unstably housed youth. Dating violence appears as background context, not an established participant subgroup or tested outcome.",
+      "studyRole": "population-study",
+      "status": "direct",
+      "recordId": "pmid-27417882",
+      "title": "YTH StreetConnect: Development and Usability of a Mobile App for Homeless and Unstably Housed Youth",
+      "reviewStatus": "pending",
+      "proposedBy": "AI",
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "evidence": [
+        {
+          "quote": "Background Homeless and unstably housed (H/UH) youth are disproportionately affected by sexual health issues, including human immunodeficiency virus/sexually transmitted diseases, teen pregnancy, and dating violence,",
+          "location": "Abstract",
+          "sourceType": "abstract",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/27417882/",
+          "provider": "Europe PMC / MEDLINE",
+          "checkedAt": "2026-10-30",
+          "textSHA256": "5a256d7d8f108136c503cf2dd524fb69938ff57b4803287684978d88f7f20c65"
+        }
+      ],
+      "evidenceLimit": "Abstract-level classification; full-text appraisal and human review remain pending."
+    },
+    {
+      "matches": [
+        {
+          "categoryId": "housing",
+          "relation": "direct"
+        }
+      ],
+      "rationale": "The pilot psychotherapy study recruited young adults through a shelter-based transitional living programme. Street adversity does not establish domestic violence.",
+      "studyRole": "population-study",
+      "status": "direct",
+      "recordId": "pmid-25862338",
+      "title": "Inner resources for survival: integrating interpersonal psychotherapy with spiritual visualization with homeless youth",
+      "reviewStatus": "pending",
+      "proposedBy": "AI",
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "evidence": [
+        {
+          "quote": "+ SV) for homeless young adults was conducted in a New York City on the residential floor of a shelter-based transitional living program. Thirteen young",
+          "location": "Abstract",
+          "sourceType": "abstract",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/25862338/",
+          "provider": "Europe PMC / MEDLINE",
+          "checkedAt": "2026-10-30",
+          "textSHA256": "57a8cce2eaf7568cd3dd26e3195c5403ffc109eb820bb975128a0881b26e6243"
+        }
+      ],
+      "evidenceLimit": "Abstract-level classification; full-text appraisal and human review remain pending."
+    },
+    {
+      "matches": [
+        {
+          "categoryId": "housing",
+          "relation": "direct"
+        },
+        {
+          "categoryId": "defence",
+          "relation": "direct"
+        }
+      ],
+      "rationale": "The multisite survey explicitly studies veterans experiencing homelessness, supporting both categories. It assesses technology access rather than treatment effectiveness.",
+      "studyRole": "population-study",
+      "status": "direct",
+      "recordId": "pmid-25046280",
+      "title": "The potential for health-related uses of mobile phones and internet with homeless veterans: results from a multisite survey",
+      "reviewStatus": "pending",
+      "proposedBy": "AI",
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "evidence": [
+        {
+          "quote": "Results Among the 106 homeless veterans surveyed, 89% had a mobile phone (one-third were smartphones), and 76% used the Internet. Among those with a mobile",
+          "location": "Abstract",
+          "sourceType": "abstract",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/25046280/",
+          "provider": "Europe PMC / MEDLINE",
+          "checkedAt": "2026-10-30",
+          "textSHA256": "a9d40e7069533595cbf1b99ce80b09e7f5a9af5cdbe43a0ed07c430106b660df"
+        }
+      ],
+      "evidenceLimit": "Abstract-level classification; full-text appraisal and human review remain pending."
+    },
+    {
+      "matches": [
+        {
+          "categoryId": "housing",
+          "relation": "direct"
+        }
+      ],
+      "rationale": "The survey interviewed people using refuges for homelessness in Sydney. Reported assault and rape do not identify a domestic relationship or war context.",
+      "studyRole": "population-study",
+      "status": "direct",
+      "recordId": "pmid-11127626",
+      "title": "Lifetime prevalence of trauma among homeless people in Sydney",
+      "reviewStatus": "pending",
+      "proposedBy": "AI",
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "evidence": [
+        {
+          "quote": "as reported by homeless men and women in Sydney. Method We interviewed 119 men and 38 women who were visiting or residing at the seven",
+          "location": "Abstract",
+          "sourceType": "abstract",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/11127626/",
+          "provider": "Europe PMC / MEDLINE",
+          "checkedAt": "2026-10-30",
+          "textSHA256": "bcce8d37855f02e756d677b2c6ad62d2e7844125feefa709438ef250610b349d"
+        }
+      ],
+      "evidenceLimit": "Abstract-level classification; full-text appraisal and human review remain pending."
+    },
+    {
+      "matches": [
+        {
+          "categoryId": "housing",
+          "relation": "direct"
+        }
+      ],
+      "rationale": "The research concerns children experiencing homelessness, but the interviewed participants are seven shelter staff. Findings are staff perspectives, not measured treatment effects in children.",
+      "studyRole": "professional-perspective",
+      "status": "direct",
+      "recordId": "doi-bfab13a657ed2d81",
+      "title": "Needs of Children Experiencing Homelessness who are Living in Shelters: A Qualitative Investigation of Perceptions of Care Workers to Inform Music Therapy Clinical Practice",
+      "reviewStatus": "pending",
+      "proposedBy": "AI",
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "evidence": [
+        {
+          "quote": "therapy clinical practice. Participants were seven staff members employed at a shelter for women and children experiencing homelessness in the Midwestern part of the United",
+          "location": "Abstract",
+          "sourceType": "abstract",
+          "url": "https://doi.org/10.15845/voices.v16i3.887",
+          "provider": "Publisher-deposited Crossref metadata",
+          "checkedAt": "2026-10-30",
+          "textSHA256": "3282bf8e8e82a7fb5d6eb0826903a0deadf1b3ebedfb7bca257bbc3ace522267"
+        }
+      ],
+      "evidenceLimit": "Abstract-level classification; full-text appraisal and human review remain pending."
+    },
+    {
+      "matches": [
+        {
+          "categoryId": "defence",
+          "relation": "direct"
+        }
+      ],
+      "rationale": "The genetic and methylation analysis uses samples from veterans with PTSD receiving meditation-based interventions. No domestic-violence or war-exposure classification is inferred.",
+      "studyRole": "population-study",
+      "status": "direct",
+      "recordId": "pmid-38671329",
+      "title": "Serotonin Transporter (SLC6A4) and FK506-Binding Protein 5 (FKBP5) Genotype and Methylation Relationships with Response to Meditation in Veterans with PTSD",
+      "reviewStatus": "pending",
+      "proposedBy": "AI",
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "evidence": [
+        {
+          "quote": "were examined in 72 veterans with PTSD who received meditation-based therapy in two separate studies of mindfulness-based stress reduction (MBSR) and Transcendental Meditation (TM). The",
+          "location": "Abstract",
+          "sourceType": "abstract",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/38671329/",
+          "provider": "Europe PMC / MEDLINE",
+          "checkedAt": "2026-10-30",
+          "textSHA256": "6d2d72d7b132630b154413a0702eafae06433fdc31c9c6e90e53550fd9b6a0f6"
+        }
+      ],
+      "evidenceLimit": "Abstract-level classification; full-text appraisal and human review remain pending."
+    },
+    {
+      "matches": [
+        {
+          "categoryId": "defence",
+          "relation": "direct"
+        }
+      ],
+      "rationale": "The trial compares binaural-beat music with music alone in military service members reporting postdeployment stress. Deployment alone does not establish combat exposure.",
+      "studyRole": "population-study",
+      "status": "direct",
+      "recordId": "pmid-28544507",
+      "title": "The Effect of Binaural Beat Technology on the Cardiovascular Stress Response in Military Service Members With Postdeployment Stress",
+      "reviewStatus": "pending",
+      "proposedBy": "AI",
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "evidence": [
+        {
+          "quote": "postintervention trial. Methods Seventy-four military services members with complaint of postdeployment stress were randomized to either music with BBT or music alone. Each group listened",
+          "location": "Abstract",
+          "sourceType": "abstract",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/28544507/",
+          "provider": "Europe PMC / MEDLINE",
+          "checkedAt": "2026-10-30",
+          "textSHA256": "441c1a49f6eb2ff6e0a16346a64a04bf8743bd5ab5d73c8d087f5ba2de5e6fdb"
+        }
+      ],
+      "evidenceLimit": "Abstract-level classification; full-text appraisal and human review remain pending."
+    },
+    {
+      "matches": [
+        {
+          "categoryId": "defence",
+          "relation": "direct"
+        }
+      ],
+      "rationale": "The title does not name veterans, but the abstract identifies veterans with military-related PTSD. This is a population match established beyond title keywords.",
+      "studyRole": "population-study",
+      "status": "direct",
+      "recordId": "pmid-29921143",
+      "title": "Individual Treatment of Posttraumatic Stress Disorder Using Mantram Repetition: A Randomized Clinical Trial.",
+      "reviewStatus": "pending",
+      "proposedBy": "AI",
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "evidence": [
+        {
+          "quote": "randomized trial involving 173 veterans diagnosed with military-related PTSD from two Veterans Affairs outpatient clinics (January 2012 to March 2014). The mantram group (N=89) learned",
+          "location": "Abstract",
+          "sourceType": "abstract",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/29921143/",
+          "provider": "Europe PMC / MEDLINE",
+          "checkedAt": "2026-10-30",
+          "textSHA256": "a385e870f84592ccb7bc8ab095e5fe8d5d23588ac44c6fd3584ee3a1986f1f68"
+        }
+      ],
+      "evidenceLimit": "Abstract-level classification; full-text appraisal and human review remain pending."
+    },
+    {
+      "matches": [
+        {
+          "categoryId": "defence",
+          "relation": "direct"
+        }
+      ],
+      "rationale": "The abstract identifies blood samples from veterans with PTSD in an MBSR trial. The community classification comes from the sample description, not the gene names in the title.",
+      "studyRole": "population-study",
+      "status": "direct",
+      "recordId": "pmid-30279666",
+      "title": "Methylation of FKBP5 and SLC6A4 in Relation to Treatment Response to Mindfulness Based Stress Reduction for Posttraumatic Stress Disorder.",
+      "reviewStatus": "pending",
+      "proposedBy": "AI",
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "evidence": [
+        {
+          "quote": "from peripheral blood samples from veterans with PTSD who were responders ( n = 11) or non-responders ( n = 11) to MBSR as part",
+          "location": "Abstract",
+          "sourceType": "abstract",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/30279666/",
+          "provider": "Europe PMC / MEDLINE",
+          "checkedAt": "2026-10-30",
+          "textSHA256": "24442d2e7e5dc33d426cc3cd1cc135f032af6463551511f7f82c4bab52cd319c"
+        }
+      ],
+      "evidenceLimit": "Abstract-level classification; full-text appraisal and human review remain pending."
+    },
+    {
+      "matches": [
+        {
+          "categoryId": "defence",
+          "relation": "direct"
+        }
+      ],
+      "rationale": "The retrospective chart review explicitly concerns veterans receiving EMDR. The study compares delivery formats and does not establish a war-related trauma history for every participant.",
+      "studyRole": "population-study",
+      "status": "direct",
+      "recordId": "portal-7c6d9225444d",
+      "title": "A multisite retrospective review exploring the delivery of eye movement desensitization and reprocessing (EMDR) therapy to veterans via telehealth (TH) versus in person (IP).",
+      "reviewStatus": "pending",
+      "proposedBy": "AI",
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "evidence": [
+        {
+          "quote": "this chart review, 279 veterans met inclusion criteria (IP n = 139; TH n = 140). Mixed effects and logistic regression models were used for",
+          "location": "Abstract",
+          "sourceType": "abstract",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/40424141/",
+          "provider": "Europe PMC / MEDLINE",
+          "checkedAt": "2026-10-30",
+          "textSHA256": "c9458829854a2df6a4360990462c3314c3f7f8b262ce3d9e0f9a3f5cce78ccd3"
+        }
+      ],
+      "evidenceLimit": "Abstract-level classification; full-text appraisal and human review remain pending."
+    },
+    {
+      "matches": [
+        {
+          "categoryId": "defence",
+          "relation": "direct"
+        }
+      ],
+      "rationale": "The retrospective analysis compares intensive and weekly EMDR in veterans with PTSD. The abstract does not establish combat exposure for every participant.",
+      "studyRole": "population-study",
+      "status": "direct",
+      "recordId": "pmid-30197612",
+      "title": "Effective Treatment of Veterans With PTSD: Comparison Between Intensive Daily and Weekly EMDR Approaches.",
+      "reviewStatus": "pending",
+      "proposedBy": "AI",
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "evidence": [
+        {
+          "quote": "treatment sessions of EMDR therapy to veterans diagnosed with PTSD that included dissociative exhibitions and moral injury issues. Questions addressed included: (1) does EMDR therapy",
+          "location": "Abstract",
+          "sourceType": "abstract",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/30197612/",
+          "provider": "Europe PMC / MEDLINE",
+          "checkedAt": "2026-10-30",
+          "textSHA256": "b095404af2db4fb1eac0871aaeda9c33749570c8c828f99fb42b1245dd5de68e"
+        }
+      ],
+      "evidenceLimit": "Abstract-level classification; full-text appraisal and human review remain pending."
+    },
+    {
+      "matches": [
+        {
+          "categoryId": "defence",
+          "relation": "direct"
+        }
+      ],
+      "rationale": "The record review uses outcomes from active-duty military mental-health clinics. Active service is directly established; combat exposure is not assigned.",
+      "studyRole": "population-study",
+      "status": "direct",
+      "recordId": "pmid-26963955",
+      "title": "Outcomes from eye movement desensitization and reprocessing in active-duty service members with posttraumatic stress disorder.",
+      "reviewStatus": "pending",
+      "proposedBy": "AI",
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "evidence": [
+        {
+          "quote": "record review from active-duty military mental health clinics where clinical outcomes had been monitored over a 10-week period using self-report measures of posttraumatic stress and",
+          "location": "Abstract",
+          "sourceType": "abstract",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/26963955/",
+          "provider": "Europe PMC / MEDLINE",
+          "checkedAt": "2026-10-30",
+          "textSHA256": "b4e117177a0b2bd6642f455b7a245e50b6ac2721a77a9834cb6994322cc074fd"
+        }
+      ],
+      "evidenceLimit": "Abstract-level classification; full-text appraisal and human review remain pending."
+    },
+    {
+      "matches": [
+        {
+          "categoryId": "indigenous",
+          "relation": "direct"
+        }
+      ],
+      "rationale": "The literature review explicitly covers digital technology and social media among Indigenous young people in Australia. It does not establish relevance to every Indigenous nation.",
+      "studyRole": "review-population",
+      "status": "direct",
+      "recordId": "pmid-27225519",
+      "title": "Social media and digital technology use among Indigenous young people in Australia: a literature review",
+      "reviewStatus": "pending",
+      "proposedBy": "AI",
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "evidence": [
+        {
+          "quote": "to understand how Indigenous Australian youth use digital technologies and social media, and its positive and negative impacts. Methods Online literature searches were conducted in",
+          "location": "Abstract",
+          "sourceType": "abstract",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/27225519/",
+          "provider": "Europe PMC / MEDLINE",
+          "checkedAt": "2026-10-30",
+          "textSHA256": "1c6ee8b2b58faf29dac6a6618f9031d2031f2247a3277e146084766999e1b8a0"
+        }
+      ],
+      "evidenceLimit": "Abstract-level classification; full-text appraisal and human review remain pending."
+    },
+    {
+      "matches": [
+        {
+          "categoryId": "indigenous",
+          "relation": "direct"
+        }
+      ],
+      "rationale": "This is a study protocol for a suicide-prevention app for Indigenous Australian youth. It identifies an intended population and does not report completed trial outcomes.",
+      "studyRole": "protocol-population",
+      "status": "direct",
+      "recordId": "pmid-24257410",
+      "title": "The effectiveness of a suicide prevention app for indigenous Australian youths: study protocol for a randomized controlled trial",
+      "reviewStatus": "pending",
+      "proposedBy": "AI",
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "evidence": [
+        {
+          "quote": "for suicidal thoughts amongst young Indigenous people. Several limitations and strengths of the design are discussed. Trial registration Australian New Zealand Clinical Trials Registry (ANZCTR):",
+          "location": "Abstract",
+          "sourceType": "abstract",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/24257410/",
+          "provider": "Europe PMC / MEDLINE",
+          "checkedAt": "2026-10-30",
+          "textSHA256": "46fb1b094be1f108773392f34b67eb5412ba6cb01035938636c022d72067a09b"
+        }
+      ],
+      "evidenceLimit": "Abstract-level classification; full-text appraisal and human review remain pending."
+    },
+    {
+      "matches": [
+        {
+          "categoryId": "indigenous",
+          "relation": "direct"
+        }
+      ],
+      "rationale": "The review synthesises community surveys identifying Aboriginal and Torres Strait Islander people. Population scope is direct; the source is a review.",
+      "studyRole": "review-population",
+      "status": "direct",
+      "recordId": "pmid-22304605",
+      "title": "Mental health of Indigenous Australians: a review of findings from community surveys",
+      "reviewStatus": "pending",
+      "proposedBy": "AI",
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "evidence": [
+        {
+          "quote": "of a population, identify Aboriginal and Torres Strait Islander people and include a measure of mental health. Data extraction 11 surveys were found. Data were",
+          "location": "Abstract",
+          "sourceType": "abstract",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/22304605/",
+          "provider": "Europe PMC / MEDLINE",
+          "checkedAt": "2026-10-30",
+          "textSHA256": "b5dece0f379363c1bc952c54436420a2c00d22f82b2e1af785b6e2364201e70f"
+        }
+      ],
+      "evidenceLimit": "Abstract-level classification; full-text appraisal and human review remain pending."
+    },
+    {
+      "matches": [
+        {
+          "categoryId": "indigenous",
+          "relation": "direct"
+        }
+      ],
+      "rationale": "The paper examines barriers and facilitators to mental-health service use for Indigenous people in Australia. It is a service-access discussion, not an intervention-effect trial.",
+      "studyRole": "service-context",
+      "status": "direct",
+      "recordId": "pmid-20367644",
+      "title": "Barriers and facilitators to the utilization of adult mental health services by Australia's Indigenous people: seeking a way forward",
+      "reviewStatus": "pending",
+      "proposedBy": "AI",
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "evidence": [
+        {
+          "quote": "paper explores the barriers and facilitators for Indigenous people seeking mental health services in Australia and identifies key elements in the development and maintenance of",
+          "location": "Abstract",
+          "sourceType": "abstract",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/20367644/",
+          "provider": "Europe PMC / MEDLINE",
+          "checkedAt": "2026-10-30",
+          "textSHA256": "7d6bd0c025095156ac032f4b341c61b0d48e39d9c8e5cd28f74f062296ffe2e6"
+        }
+      ],
+      "evidenceLimit": "Abstract-level classification; full-text appraisal and human review remain pending."
+    },
+    {
+      "matches": [
+        {
+          "categoryId": "indigenous",
+          "relation": "direct"
+        }
+      ],
+      "rationale": "The Delphi studies involve Aboriginal mental-health experts developing culturally appropriate first-aid guidance. Expert consensus is distinct from measured patient outcomes.",
+      "studyRole": "expert-consensus",
+      "status": "direct",
+      "recordId": "pmid-19646284",
+      "title": "Mental health first aid for Indigenous Australians: using Delphi consensus studies to develop guidelines for culturally appropriate responses to mental health problems",
+      "reviewStatus": "pending",
+      "proposedBy": "AI",
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "evidence": [
+        {
+          "quote": "illness. Methods A panel of Australian Aboriginal people who are experts in Aboriginal mental health, participated in six independent Delphi studies investigating depression, psychosis, suicidal",
+          "location": "Abstract",
+          "sourceType": "abstract",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/19646284/",
+          "provider": "Europe PMC / MEDLINE",
+          "checkedAt": "2026-10-30",
+          "textSHA256": "0ce2ec5a2b5b655deb6d53f40b182445658a738a32459900e417241d112bbd8f"
+        }
+      ],
+      "evidenceLimit": "Abstract-level classification; full-text appraisal and human review remain pending."
+    },
+    {
+      "matches": [
+        {
+          "categoryId": "indigenous",
+          "relation": "direct"
+        }
+      ],
+      "rationale": "The qualitative meta-synthesis explicitly examines Indigenous Australians’ understandings of mental health. Retain its Australian population scope.",
+      "studyRole": "review-population",
+      "status": "direct",
+      "recordId": "pmid-17508316",
+      "title": "Indigenous Australians' understandings regarding mental health and disorders",
+      "reviewStatus": "pending",
+      "proposedBy": "AI",
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "evidence": [
+        {
+          "quote": "currently documented about Indigenous Australians' understandings of mental health and mental disorders through a meta-synthesis of peer-reviewed qualitative empirical research. The following databases were electronically",
+          "location": "Abstract",
+          "sourceType": "abstract",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/17508316/",
+          "provider": "Europe PMC / MEDLINE",
+          "checkedAt": "2026-10-30",
+          "textSHA256": "e00d0e4a368d034588dbf45eceacd20a98c79a4e5859f61b661442033f8274d6"
+        }
+      ],
+      "evidenceLimit": "Abstract-level classification; full-text appraisal and human review remain pending."
+    },
+    {
+      "matches": [
+        {
+          "categoryId": "indigenous",
+          "relation": "direct"
+        }
+      ],
+      "rationale": "The publisher-deposited title explicitly identifies Aboriginal and non-Aboriginal children in out-of-home care. This identifies a mixed population; separate subgroup effects are not established by title metadata.",
+      "studyRole": "title-identified-subgroup",
+      "status": "direct",
+      "recordId": "doi-37881ae999c094e1",
+      "title": "The effectiveness of trauma-based therapies for Aboriginal and non-Aboriginal children and adolescents in out-of-home care",
+      "reviewStatus": "pending",
+      "proposedBy": "AI",
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "evidence": [
+        {
+          "quote": "The effectiveness of trauma-based therapies for Aboriginal and non-Aboriginal children and adolescents in out-of-home care",
+          "location": "Publication title",
+          "sourceType": "title",
+          "url": "https://doi.org/10.1016/j.fnhli.2025.100070",
+          "provider": "Publisher-deposited Crossref metadata",
+          "checkedAt": "2026-10-30",
+          "textSHA256": "0f6908d656ee6a7ce75ebe6d0070978ac3369fbec789cb938dc091954c9e7783"
+        }
+      ],
+      "evidenceLimit": "Title metadata only; full text and study outcomes have not been assessed in this pass."
+    },
+    {
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ],
+      "rationale": "The study recruited women from two domestic-violence shelters and investigated anxiety and sleep with music listening and progressive muscle relaxation. Symptom outcomes do not establish reduced violence.",
+      "studyRole": "population-study",
+      "status": "direct",
+      "recordId": "pmid-15913391",
+      "title": "Effect of music therapy on the anxiety levels and sleep patterns of abused women in shelters",
+      "reviewStatus": "pending",
+      "proposedBy": "AI",
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "evidence": [
+        {
+          "quote": "in shelters. Twenty-eight women residing in 2 domestic violence shelters in a Midwestern city met with the researcher on 5 consecutive days for half-hour sessions.",
+          "location": "Abstract",
+          "sourceType": "abstract",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/15913391/",
+          "provider": "Europe PMC / MEDLINE",
+          "checkedAt": "2026-10-30",
+          "textSHA256": "df97bb1fc42a6599002d734023f2aa7da27ed74f5ff176738a6f8bbe435a59d0"
+        }
+      ],
+      "evidenceLimit": "Abstract-level classification; full-text appraisal and human review remain pending."
+    },
+    {
+      "matches": [
+        {
+          "categoryId": "housing",
+          "relation": "direct"
+        },
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ],
+      "rationale": "The study explicitly concerns children and families receiving support for homelessness and family violence. Its qualitative performance experiences do not establish a treatment effect.",
+      "studyRole": "population-study",
+      "status": "direct",
+      "recordId": "src-47a527b4dc03",
+      "title": "Exploring the Meaning of a Performance in Music Therapy for Children and Their Families Experiencing Homelessness and Family Violence",
+      "reviewStatus": "pending",
+      "proposedBy": "AI",
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "evidence": [
+        {
+          "quote": "Their Families Experiencing Homelessness and Family Violence",
+          "location": "Publication title",
+          "sourceType": "title",
+          "url": "https://doi.org/10.1093/mtp/miw004",
+          "provider": "Publisher-deposited Crossref metadata",
+          "checkedAt": "2026-10-30",
+          "textSHA256": "8a8b61008fcfa234d8b8ae645ed16a66e206d2369db10c3edb1b27a3fc534afc"
+        }
+      ],
+      "evidenceLimit": "Title metadata only; full text and study outcomes have not been assessed in this pass."
+    },
+    {
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "context"
+        }
+      ],
+      "rationale": "Domestic violence appears in a later self-report coping questionnaire. The trial recruited women living in poverty; the abstract does not identify a domestic-violence-defined cohort or demonstrate prevention of violence.",
+      "studyRole": "follow-up-context",
+      "status": "context",
+      "recordId": "pmid-41642087",
+      "title": "The impact of Transcendental Meditation on psychological distress and coping in the lives of women in Uganda: A randomized controlled trial.",
+      "reviewStatus": "pending",
+      "proposedBy": "AI",
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "evidence": [
+        {
+          "quote": "and mental health, increased ability to handle domestic violence, and improved relationships. Results indicate the TM program has a positive impact on psychological distress and",
+          "location": "Abstract",
+          "sourceType": "abstract",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/41642087/",
+          "provider": "Europe PMC / MEDLINE",
+          "checkedAt": "2026-10-30",
+          "textSHA256": "e258a3e514b052e79a05e23a30ffd9bc34980c0d72f926e9926c574b043c86e9"
+        }
+      ],
+      "evidenceLimit": "Abstract-level classification; full-text appraisal and human review remain pending."
+    },
+    {
+      "matches": [
+        {
+          "categoryId": "defence",
+          "relation": "direct"
+        },
+        {
+          "categoryId": "war-trauma",
+          "relation": "direct"
+        }
+      ],
+      "rationale": "The analysis includes an Australian Vietnam War veteran subgroup and a separate general-population trauma cohort. The community labels apply to the veteran subgroup, not the entire sample.",
+      "studyRole": "identified-subgroup",
+      "status": "direct",
+      "recordId": "pmid-28795405",
+      "title": "Genomewide DNA methylation analysis in combat veterans reveals a novel locus for PTSD",
+      "reviewStatus": "pending",
+      "proposedBy": "AI",
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "evidence": [
+        {
+          "quote": "211 individuals comprising Australian male Vietnam War veterans (n = 96) and males from a general population belonging to the Grady Trauma Project (n =",
+          "location": "Abstract",
+          "sourceType": "abstract",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/28795405/",
+          "provider": "Europe PMC / MEDLINE",
+          "checkedAt": "2026-10-30",
+          "textSHA256": "254fd2297ac5a3e5396aec25a78c028f3314381174225de962b67f7e4e9c355a"
+        }
+      ],
+      "evidenceLimit": "Abstract-level classification; full-text appraisal and human review remain pending."
+    },
+    {
+      "matches": [
+        {
+          "categoryId": "defence",
+          "relation": "direct"
+        },
+        {
+          "categoryId": "war-trauma",
+          "relation": "direct"
+        }
+      ],
+      "rationale": "The genetic association study explicitly includes war veterans with PTSD and control participants. A genetic association does not establish causation.",
+      "studyRole": "identified-subgroup",
+      "status": "direct",
+      "recordId": "pmid-18833581",
+      "title": "The DRD2 gene 957C>T polymorphism is associated with posttraumatic stress disorder in war veterans",
+      "reviewStatus": "pending",
+      "proposedBy": "AI",
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "evidence": [
+        {
+          "quote": "was performed in 127 war veterans diagnosed with PTSD and 228 control individuals without a history of PTSD. Results No significant association was found between",
+          "location": "Abstract",
+          "sourceType": "abstract",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/18833581/",
+          "provider": "Europe PMC / MEDLINE",
+          "checkedAt": "2026-10-30",
+          "textSHA256": "b190f46426fd6333dbcd66718af08e418546f3a4393675486ceafbe2357990a5"
+        }
+      ],
+      "evidenceLimit": "Abstract-level classification; full-text appraisal and human review remain pending."
+    },
+    {
+      "matches": [
+        {
+          "categoryId": "defence",
+          "relation": "direct"
+        },
+        {
+          "categoryId": "war-trauma",
+          "relation": "direct"
+        }
+      ],
+      "rationale": "The longitudinal study concerns Australian Vietnam veterans and explicitly assesses combat-related PTSD.",
+      "studyRole": "population-study",
+      "status": "direct",
+      "recordId": "pmid-28103407",
+      "title": "The Course and Correlates of Combat-Related PTSD in Australian Vietnam Veterans in the Three Decades After the War",
+      "reviewStatus": "pending",
+      "proposedBy": "AI",
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "evidence": [
+        {
+          "quote": "Australian male Vietnam veterans (N = 388) were assessed 22 and 36 years after their return to Australia using standardized diagnostic interviews, with added data",
+          "location": "Abstract",
+          "sourceType": "abstract",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/28103407/",
+          "provider": "Europe PMC / MEDLINE",
+          "checkedAt": "2026-10-30",
+          "textSHA256": "4beb16b943c36e9592ee03c244c8fb2514f61a860322217b310653c3bcf08b33"
+        }
+      ],
+      "evidenceLimit": "Abstract-level classification; full-text appraisal and human review remain pending."
+    },
+    {
+      "matches": [
+        {
+          "categoryId": "refugees",
+          "relation": "direct"
+        },
+        {
+          "categoryId": "war-trauma",
+          "relation": "direct"
+        }
+      ],
+      "rationale": "The review includes refugees and other conflict-affected populations. It explicitly excludes war-veteran samples, so the Defence category is not assigned.",
+      "studyRole": "review-population",
+      "status": "direct",
+      "recordId": "pmid-19654388",
+      "title": "Association of torture and other potentially traumatic events with mental health outcomes among populations exposed to mass conflict and displacement: a systematic review and meta-analysis",
+      "reviewStatus": "pending",
+      "proposedBy": "AI",
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "evidence": [
+        {
+          "quote": "181 surveys comprising 81,866 refugees and other conflict-affected persons from 40 countries were identified. Rates of reported PTSD and depression showed large intersurvey variability (0%-99%",
+          "location": "Abstract",
+          "sourceType": "abstract",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/19654388/",
+          "provider": "Europe PMC / MEDLINE",
+          "checkedAt": "2026-10-30",
+          "textSHA256": "a22e614b4d06443b6a8ab6295d162b1285dec61f6abaecd541de6874e0ba4a43"
+        }
+      ],
+      "evidenceLimit": "Abstract-level classification; full-text appraisal and human review remain pending."
+    },
+    {
+      "matches": [
+        {
+          "categoryId": "defence",
+          "relation": "direct"
+        },
+        {
+          "categoryId": "war-trauma",
+          "relation": "direct"
+        }
+      ],
+      "rationale": "The article presents combat-veteran case examples and discusses clinical applications of EMDR. This is not treated as a randomized effectiveness trial.",
+      "studyRole": "case-examples",
+      "status": "direct",
+      "recordId": "pmid-18612994",
+      "title": "Eye movement desensitization and reprocessing (EMDR) in the treatment of war veterans.",
+      "reviewStatus": "pending",
+      "proposedBy": "AI",
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "evidence": [
+        {
+          "quote": "or her future. Two case examples of combat veterans illustrate the ability of EMDR to achieve symptom reduction in a variety of clinical domains (e.g.,",
+          "location": "Abstract",
+          "sourceType": "abstract",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/18612994/",
+          "provider": "Europe PMC / MEDLINE",
+          "checkedAt": "2026-10-30",
+          "textSHA256": "d1cb3b8036bbedfcdf5973be73ace0b1a2f03ab0d0789e3d3eff98c9d58736a5"
+        }
+      ],
+      "evidenceLimit": "Abstract-level classification; full-text appraisal and human review remain pending."
+    },
+    {
+      "matches": [
+        {
+          "categoryId": "defence",
+          "relation": "direct"
+        },
+        {
+          "categoryId": "war-trauma",
+          "relation": "direct"
+        }
+      ],
+      "rationale": "The controlled study explicitly recruited combat veterans with combat-related PTSD.",
+      "studyRole": "population-study",
+      "status": "direct",
+      "recordId": "pmid-9479673",
+      "title": "Eye movement desensitization and reprocessing (EDMR) treatment for combat-related posttraumatic stress disorder.",
+      "reviewStatus": "pending",
+      "proposedBy": "AI",
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "evidence": [
+        {
+          "quote": "outcome group design. Thirty five combat veterans diagnosed with combat-related PTSD were treated with either (a) 12 sessions of eye movement desensitization and reprocessing, EMDR",
+          "location": "Abstract",
+          "sourceType": "abstract",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/9479673/",
+          "provider": "Europe PMC / MEDLINE",
+          "checkedAt": "2026-10-30",
+          "textSHA256": "f9c1d3e4ea0cb2f44f9a252d915b975c79a4c1d373c8d51b3ada020756d9b93d"
+        }
+      ],
+      "evidenceLimit": "Abstract-level classification; full-text appraisal and human review remain pending."
+    },
+    {
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "related"
+        },
+        {
+          "categoryId": "war-trauma",
+          "relation": "related"
+        }
+      ],
+      "rationale": "Possible relevance is inferred from PTSD treatment outcomes. The sample has multiple traumas, mostly in childhood; the abstract does not establish domestic violence or war exposure.",
+      "studyRole": "inferred-relevance",
+      "status": "related",
+      "recordId": "pmid-34025912",
+      "title": "Safety and effectiveness of intensive treatment for complex PTSD delivered via home-based telehealth.",
+      "reviewStatus": "pending",
+      "proposedBy": "AI",
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "evidence": [
+        {
+          "quote": "COVID-19 pandemic. The sample consisted of six (four female) patients suffering from severe or Complex PTSD resulting from exposure to multiple traumatic events, mostly during",
+          "location": "Abstract",
+          "sourceType": "abstract",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/34025912/",
+          "provider": "Europe PMC / MEDLINE",
+          "checkedAt": "2026-10-30",
+          "textSHA256": "d871da5a536da057f249d125886c6082415107c52d7f5a28b01540beeffa226c"
+        }
+      ],
+      "evidenceLimit": "Abstract-level classification; full-text appraisal and human review remain pending."
+    },
+    {
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "related"
+        },
+        {
+          "categoryId": "war-trauma",
+          "relation": "related"
+        }
+      ],
+      "rationale": "Possible relevance is inferred from PTSD treatment and brain-connectivity research. Participants experienced an earthquake, so this is not direct domestic-violence or war-trauma evidence.",
+      "studyRole": "inferred-relevance",
+      "status": "related",
+      "recordId": "pmid-30858808",
+      "title": "Psychological and Brain Connectivity Changes Following Trauma-Focused CBT and EMDR Treatment in Single-Episode PTSD Patients.",
+      "reviewStatus": "pending",
+      "proposedBy": "AI",
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "evidence": [
+        {
+          "quote": "psychological stress (i.e., 2002 earthquake in San Giuliano di Puglia, Italy). Patients were randomly assigned to TF-CBT ( n = 14) or EMDR ( n",
+          "location": "Abstract",
+          "sourceType": "abstract",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/30858808/",
+          "provider": "Europe PMC / MEDLINE",
+          "checkedAt": "2026-10-30",
+          "textSHA256": "64ff9d012592a155b716393689fb7d8b677bee019a5c22b56a8bba4734c8c212"
+        }
+      ],
+      "evidenceLimit": "Abstract-level classification; full-text appraisal and human review remain pending."
+    },
+    {
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "related"
+        }
+      ],
+      "rationale": "Possible relevance is inferred from depression treatment research. The abstract does not establish intimate-partner or family violence among participants; treatment transfer remains untested.",
+      "studyRole": "inferred-relevance",
+      "status": "related",
+      "recordId": "pmid-30186192",
+      "title": "Eye Movement Desensitization and Reprocessing Versus Treatment as Usual in the Treatment of Depression: A Randomized-Controlled Trial.",
+      "reviewStatus": "pending",
+      "proposedBy": "AI",
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "evidence": [
+        {
+          "quote": "inpatient treatment setting. Both groups were assessed by the Beck Depression Inventory-II (BDI-II) and the Global Severity Index and depression subscale of the Symptom Checklist",
+          "location": "Abstract",
+          "sourceType": "abstract",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/30186192/",
+          "provider": "Europe PMC / MEDLINE",
+          "checkedAt": "2026-10-30",
+          "textSHA256": "a194922b8045554e707031a8c13cc6ea74b6bdd9cbf1fb68b5da3d13876b995f"
+        }
+      ],
+      "evidenceLimit": "Abstract-level classification; full-text appraisal and human review remain pending."
+    },
+    {
+      "matches": [],
+      "rationale": "The participants are young people in foster and kinship care. This circumstance alone does not establish homelessness, Indigenous identity or domestic violence. More detailed exposure information is needed.",
+      "studyRole": "not-established",
+      "status": "uncertain",
+      "recordId": "pmid-26256140",
+      "title": "A pilot randomized trial teaching mindfulness-based stress reduction to traumatized youth in foster care",
+      "reviewStatus": "pending",
+      "proposedBy": "AI",
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "evidence": [
+        {
+          "quote": "traumatized youth in foster and kinship care over 10 weeks. Forty-two youth participated in this randomized controlled trial that used a mixed-methods (quantitative, qualitative, and",
+          "location": "Abstract",
+          "sourceType": "abstract",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/26256140/",
+          "provider": "Europe PMC / MEDLINE",
+          "checkedAt": "2026-10-30",
+          "textSHA256": "4d1ff4199a29ac616dc5d2e29298fbea3b514338bc359a7607e7991db8b58606"
+        }
+      ],
+      "evidenceLimit": "Abstract-level classification; full-text appraisal and human review remain pending."
+    },
+    {
+      "matches": [],
+      "rationale": "The abstract identifies students at risk of school failure. The term marginalized does not establish any of the six categories; housing and exposure details remain unestablished.",
+      "studyRole": "not-established",
+      "status": "uncertain",
+      "recordId": "pmid-29228794",
+      "title": "Learning to BREATHE: A Pilot Study of a Mindfulness-Based Intervention to Support Marginalized Youth",
+      "reviewStatus": "pending",
+      "proposedBy": "AI",
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "evidence": [
+        {
+          "quote": "adolescents who are at risk of school failure as they negotiate the transition from high school into young adulthood. Researchers hypothesized that a 6-week mindfulness-based",
+          "location": "Abstract",
+          "sourceType": "abstract",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/29228794/",
+          "provider": "Europe PMC / MEDLINE",
+          "checkedAt": "2026-10-30",
+          "textSHA256": "0877bb5cebdc0f84ddc55a0f98416f553aad71853d8a46dcd8b2c0b679887b23"
+        }
+      ],
+      "evidenceLimit": "Abstract-level classification; full-text appraisal and human review remain pending."
+    },
+    {
+      "matches": [
+        {
+          "categoryId": "defence",
+          "relation": "context"
+        }
+      ],
+      "rationale": "The publication concerns a Defence/VA EMDR training programme for clinicians. It is relevant service context, not evidence that veterans were the study participants.",
+      "studyRole": "professional-training",
+      "status": "context",
+      "recordId": "src-757129132fdc",
+      "title": "Responding to an identified need: A joint department of defense/department of veterans affairs training program in eye movement desensitization and reprocessing (EMDR) for clinicians providing trauma services.",
+      "reviewStatus": "pending",
+      "proposedBy": "AI",
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "evidence": [
+        {
+          "quote": "Responding to an identified need: A joint department of defense/department of veterans affairs training program in eye movement desensitization and reprocessing (EMDR) for clinicians providing",
+          "location": "Publication title",
+          "sourceType": "title",
+          "url": "https://doi.org/10.1037/1072-5245.14.1.61",
+          "provider": "Publisher-deposited Crossref metadata",
+          "checkedAt": "2026-10-30",
+          "textSHA256": "8d822a4935c0f46f842ca4da327611994f8ec4367d4923d77e54dba625b6c146"
+        }
+      ],
+      "evidenceLimit": "Title metadata only; full text and study outcomes have not been assessed in this pass."
+    },
+    {
+      "matches": [
+        {
+          "categoryId": "defence",
+          "relation": "context"
+        }
+      ],
+      "rationale": "The paper discusses stigma and mental-health help-seeking in military and medical services. It is contextual research rather than a participant-specific intervention trial.",
+      "studyRole": "service-context",
+      "status": "context",
+      "recordId": "pmid-29769367",
+      "title": "Similarities between military and medical service: stigma of seeking mental health assistance",
+      "reviewStatus": "pending",
+      "proposedBy": "AI",
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "evidence": [
+        {
+          "quote": "health illnesses in military populations, including the negative-associated stigma. One such barrier includes perceptions of weakness, leading to concerns about leadership and competency and being",
+          "location": "Abstract",
+          "sourceType": "abstract",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/29769367/",
+          "provider": "Europe PMC / MEDLINE",
+          "checkedAt": "2026-10-30",
+          "textSHA256": "45cf1565fb0c5bfd1e38d6b81a6eff89dbfec346f4f5e853b65dea498eef2463"
+        }
+      ],
+      "evidenceLimit": "Abstract-level classification; full-text appraisal and human review remain pending."
+    },
+    {
+      "matches": [
+        {
+          "categoryId": "war-trauma",
+          "relation": "context"
+        }
+      ],
+      "rationale": "The paper draws on interviews with music therapists about work with trauma survivors and peace advocacy. The participants are therapists; direct survivor treatment outcomes are not established.",
+      "studyRole": "professional-perspective",
+      "status": "context",
+      "recordId": "doi-890fefc8f3be30c0",
+      "title": "Music Therapy, War Trauma, and Peace: A Singaporean Perspective",
+      "reviewStatus": "pending",
+      "proposedBy": "AI",
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "evidence": [
+        {
+          "quote": "involved in providing services to war trauma survivors. In the post 9/11 world, many have been, and continue to be traumatized by war, acts of",
+          "location": "Abstract",
+          "sourceType": "abstract",
+          "url": "https://doi.org/10.15845/voices.v5i3.231",
+          "provider": "Publisher-deposited Crossref metadata",
+          "checkedAt": "2026-10-30",
+          "textSHA256": "75899a47ed98d42882c3677bcaf21079bb64ccdabe6a07a0e0b5b01874e12433"
+        }
+      ],
+      "evidenceLimit": "Abstract-level classification; full-text appraisal and human review remain pending."
+    },
+    {
+      "matches": [],
+      "rationale": "The research concerns infectious-disease diagnostic technology and patients in Rwanda. Country, technology access or general disadvantage does not establish any of the six categories.",
+      "studyRole": "non-match",
+      "status": "no-match",
+      "recordId": "pmid-25653222",
+      "title": "A smartphone dongle for diagnosis of infectious diseases at the point of care",
+      "reviewStatus": "pending",
+      "proposedBy": "AI",
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "evidence": [
+        {
+          "quote": "via fingerprick from 96 patients enrolling into care at prevention of mother-to-child transmission clinics or voluntary counseling and testing centers. The dongle performed a triplexed",
+          "location": "Abstract",
+          "sourceType": "abstract",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/25653222/",
+          "provider": "Europe PMC / MEDLINE",
+          "checkedAt": "2026-10-30",
+          "textSHA256": "ff448086044c7546984c3ae0f8274f5f0f04dac288a7b4514c45e0e50252589b"
+        }
+      ],
+      "evidenceLimit": "Abstract-level classification; full-text appraisal and human review remain pending."
+    },
+    {
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "related"
+        },
+        {
+          "categoryId": "war-trauma",
+          "relation": "related"
+        }
+      ],
+      "rationale": "Possible relevance is inferred from yoga, post-traumatic symptoms and autonomic measures. Participants survived flooding, so this is not direct evidence about domestic violence or armed conflict.",
+      "studyRole": "inferred-relevance",
+      "status": "related",
+      "recordId": "pmid-20193089",
+      "title": "Post traumatic stress symptoms and heart rate variability in Bihar flood survivors following yoga: a randomized controlled study",
+      "reviewStatus": "pending",
+      "proposedBy": "AI",
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "evidence": [
+        {
+          "quote": "India, there were floods with loss of life and property. A week of yoga practice was given to the survivors a month after the event",
+          "location": "Abstract",
+          "sourceType": "abstract",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/20193089/",
+          "provider": "Europe PMC / MEDLINE",
+          "checkedAt": "2026-10-30",
+          "textSHA256": "d5cb527bff62dc4c5b9ebe3f3f44bcb8105357ebd89557576e9e1692399207f2"
+        }
+      ],
+      "evidenceLimit": "Abstract-level classification; full-text appraisal and human review remain pending."
+    },
+    {
+      "matches": [],
+      "rationale": "The trial concerns physical activity in people with ischemic heart disease. The word REWARD contains the letters war and is not evidence of war exposure.",
+      "studyRole": "non-match",
+      "status": "no-match",
+      "recordId": "pmid-29899015",
+      "title": "Loss-Framed Financial Incentives and Personalized Goal-Setting to Increase Physical Activity Among Ischemic Heart Disease Patients Using Wearable Devices: The ACTIVE REWARD Randomized Trial",
+      "reviewStatus": "pending",
+      "proposedBy": "AI",
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "evidence": [
+        {
+          "quote": "events, but most ischemic heart disease (IHD) patients do not obtain enough. Methods and results ACTIVE REWARD (A Clinical Trial Investigating Effects of a Randomized",
+          "location": "Abstract",
+          "sourceType": "abstract",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/29899015/",
+          "provider": "Europe PMC / MEDLINE",
+          "checkedAt": "2026-10-30",
+          "textSHA256": "a069429c73faaa706712ccb0af751633d8dc8d5c1a1d19837b66737f3dfeff00"
+        }
+      ],
+      "evidenceLimit": "Abstract-level classification; full-text appraisal and human review remain pending."
+    },
+    {
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "related"
+        }
+      ],
+      "rationale": "Possible relevance is inferred from a brief yoga intervention for chronic stress. The abstract does not identify domestic-violence exposure; biomarkers and stress outcomes do not establish reduced violence.",
+      "studyRole": "inferred-relevance",
+      "status": "related",
+      "recordId": "pmid-27898068",
+      "title": "Preliminary indications of the effect of a brief yoga intervention on markers of inflammation and DNA methylation in chronically stressed women",
+      "reviewStatus": "pending",
+      "proposedBy": "AI",
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "evidence": [
+        {
+          "quote": "intervention in a community population of women reporting psychological distress (N=116). We measured interleukin-6 (IL-6), tumour necrosis factor (TNF) and C-reactive protein (CRP) protein levels,",
+          "location": "Abstract",
+          "sourceType": "abstract",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/27898068/",
+          "provider": "Europe PMC / MEDLINE",
+          "checkedAt": "2026-10-30",
+          "textSHA256": "0330190450d8bd5b1943ffdc76bd5d22425e2727a30cdf3bd841e3f133683928"
+        }
+      ],
+      "evidenceLimit": "Abstract-level classification; full-text appraisal and human review remain pending."
+    },
+    {
+      "matches": [],
+      "rationale": "The publisher-deposited title concerns workplace wellbeing and job performance. Work-related stress alone does not establish membership of the six groups. No supported match is established from the checked title.",
+      "studyRole": "non-match",
+      "status": "no-match",
+      "recordId": "doi-b02eca96b6ce2f96",
+      "title": "Meditation Awareness Training (MAT) for Work-related Wellbeing and Job Performance: A Randomised Controlled Trial",
+      "reviewStatus": "pending",
+      "proposedBy": "AI",
+      "reviewedBy": null,
+      "reviewedAt": null,
+      "evidence": [
+        {
+          "quote": "Meditation Awareness Training (MAT) for Work-related Wellbeing and Job Performance: A Randomised Controlled Trial",
+          "location": "Publication title",
+          "sourceType": "title",
+          "url": "https://doi.org/10.1007/s11469-014-9513-2",
+          "provider": "Publisher-deposited Crossref metadata",
+          "checkedAt": "2026-10-30",
+          "textSHA256": "0ac05517b988514e00246342b2f75f54f9ca403d265fe7e14cec5872be0cc49c"
+        }
+      ],
+      "evidenceLimit": "Title metadata only; full text and study outcomes have not been assessed in this pass."
+    }
+  ]
+}

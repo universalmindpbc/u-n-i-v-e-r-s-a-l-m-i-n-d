@@ -5,13 +5,15 @@
   const safeURL = value => { try { const url = new URL(value, location.href); return ['https:', 'http:'].includes(url.protocol) ? url.href : '#'; } catch { return '#'; } };
   const normalize = value => String(value ?? '').normalize('NFKC').toLowerCase().replace(/interleukin[\s-]*6|il[\s-]+6/g, 'il6').replace(/oxytocin receptor/g, 'oxtr').replace(/serotonin transporter/g, 'slc6a4').replace(/glucocorticoid receptor/g, 'nr3c1').replace(/[^\p{L}\p{N}+]+/gu, ' ').trim();
   const model = globalThis.UniversalResearchModel;
+  const communityModel = globalThis.UniversalResearchCommunities;
+  let communityData = {taxonomy:[],records:[]};
   let publicationAccess = {}, clinicalConditions = {}, fullTextAccess = {};
   const multi = globalThis.ResearchMultiSelect;
   const params = new URLSearchParams(location.search);
   const collections = ['sound', 'vision', 'language', 'general', 'all'];
-  const fields = ['query', 'topic', 'journal', 'category', 'physiology', 'target', 'condition', 'kind', 'period', 'trust', 'jadad', 'sort'];
-  let collection = collections.includes(params.get('collection')) ? params.get('collection') : ['target','gene','record','query','condition'].some(key => params.has(key)) ? 'all' : 'sound';
-  let view = params.get('view') === 'search' || !['sound','vision','language','general'].includes(collection) || ['target','gene','query','condition'].some(key => params.has(key)) ? 'search' : 'chapters';
+  const fields = ['query', 'topic', 'journal', 'category', 'physiology', 'target', 'condition', 'community', 'kind', 'period', 'trust', 'jadad', 'sort'];
+  let collection = collections.includes(params.get('collection')) ? params.get('collection') : ['target','gene','record','query','condition','community','calibration'].some(key => params.has(key)) ? 'all' : 'sound';
+  let view = params.get('view') === 'search' || !['sound','vision','language','general'].includes(collection) || ['target','gene','query','condition','community','calibration'].some(key => params.has(key)) ? 'search' : 'chapters';
   let chapterNumber = Number(params.get('chapter')) || 0;
   let edition, editions = {}, records = [], filtered = [], papers = [], pageIndex = 0, articleOpener, loading = true;
   const PAGE_SIZE = 15;
@@ -20,7 +22,7 @@
   $('#target').innerHTML += targets.map(t => `<option>${esc(t)}</option>`).join('');
   const multiFields = fields.filter(key=>!['query','sort'].includes(key));
   multi.init(multiFields);
-  function restoreFilters(p) { for (const key of fields) { if (multiFields.includes(key)) multi.set(key,p.getAll(key)); else $('#'+key).value=p.get(key) || (key==='sort' ? 'genomics' : ''); } if(p.has('gene'))multi.set('target',[...multi.values('target'),...p.getAll('gene')]); }
+  function restoreFilters(p) { for (const key of fields) { if (multiFields.includes(key)) multi.set(key,p.getAll(key)); else $('#'+key).value=p.get(key) || (key==='sort' ? 'genomics' : ''); } if(p.has('gene'))multi.set('target',[...multi.values('target'),...p.getAll('gene')]); $('#calibration-only').checked=p.get('calibration')==='batch'; $('#include-related').checked=p.get('related')==='1'; }
   restoreFilters(params);
 
   function crosses(score, labelled = false, scope = 'Subchapter') {
@@ -35,7 +37,7 @@
   $('#trust-key').innerHTML = [[3,'At least 3 double-blind randomized controlled trials'],[2,'At least 3 randomized controlled trials'],[1,'At least 3 peer-reviewed journal articles']].map(([score,label]) => `<div>${crosses(score)}<span>${label}</span></div>`).join('');
   function route(number = 0, topic = '', destination = collection) {
     const url = new URL(location.href);
-    for (const key of [...fields, 'record', 'paper', 'gene', 'view', 'chapter']) url.searchParams.delete(key);
+    for (const key of [...fields, 'record', 'paper', 'gene', 'view', 'chapter', 'calibration', 'related']) url.searchParams.delete(key);
     url.searchParams.set('collection', destination);
     if (number) url.searchParams.set('chapter', number);
     url.hash = topic ? 'topic-' + topic : '';
@@ -45,12 +47,15 @@
     const url = new URL(location.href);
     url.searchParams.set('collection', collection);
     url.searchParams.delete('gene');
+    url.searchParams.delete('calibration'); url.searchParams.delete('related');
     if (view === 'chapters') {
       url.searchParams.delete('view');
       if (chapterNumber) url.searchParams.set('chapter', chapterNumber); else url.searchParams.delete('chapter');
       for (const key of fields) url.searchParams.delete(key);
     } else {
       url.searchParams.set('view', 'search'); url.searchParams.delete('chapter'); url.hash = '';
+      if ($('#calibration-only').checked) url.searchParams.set('calibration','batch');
+      if ($('#include-related').checked) url.searchParams.set('related','1');
       for (const key of fields) {
         url.searchParams.delete(key);
         const selected = multiFields.includes(key) ? multi.values(key) : [$('#'+key).value];
@@ -106,6 +111,21 @@
   }
   document.addEventListener('input',event=>{if(event.target.id==='source-register-query')filterSourceRegister();});
   document.addEventListener('change',event=>{if(event.target.id==='source-register-type')filterSourceRegister();});
+  const communityLabel = id => communityData.taxonomy.find(item=>item.id===id)?.label || id;
+  function communityBadges(record) {
+    if (!record?.communityAssessments?.length) return '';
+    const selected = multi.values('community');
+    const matches = (record.communityMatches || []).filter(item=>item.relation!=='related' || $('#include-related').checked);
+    const unique = [...new Map(matches.map(item=>[item.categoryId+':'+item.relation,item])).values()];
+    const relevant = selected.length ? unique.filter(item=>selected.includes(item.categoryId)) : unique;
+    return `<div class="community-tags">${relevant.map(item=>`<span class="community-tag ${esc(item.relation)}">${esc(communityLabel(item.categoryId))}${item.relation==='direct' ? '' : ` · ${item.relation==='related' ? 'Related · inferred' : 'Context'}`}</span>`).join('')}<span class="community-review-status">${!relevant.length ? esc(communityModel.labels[record.communityAssessments[0].status])+' · ' : ''}Calibration · pending review</span></div>`;
+  }
+  function communityMarkup(paper) {
+    const id=paper.recordId || paper.id;
+    const record=records.find(item=>item.id===id || item.aliases.includes(id));
+    if (!record?.communityAssessments?.length) return '';
+    return `<details class="community-evidence"><summary>Communities and Contexts · classification evidence</summary>${record.communityAssessments.map(item=>`<p class="eyebrow">AI-proposed · Awaiting Universal Mind review</p><p><strong>${esc(communityModel.labels[item.status])}</strong>${item.matches.length ? ' · '+item.matches.map(match=>esc(communityLabel(match.categoryId))).join(' · ') : ''}</p><p>${esc(item.rationale)}</p><p class="summary-limitation">${esc(item.evidenceLimit)}</p>${item.evidence.map(source=>`<blockquote cite="${esc(safeURL(source.url))}"><p>${esc(source.quote)}</p></blockquote><p class="publication">${esc(source.location)} · Checked ${esc(source.checkedAt)} · <a href="${esc(safeURL(source.url))}" target="_blank" rel="noopener noreferrer">Check source ↗</a></p>`).join('')}`).join('')}</details>`;
+  }
   function paperMarkup(paper, heading = 'h4') {
     const quotes = paper.quotes || [];
     const review = paper.quotationReview;
@@ -120,7 +140,7 @@
       ${paper.summary ? `<div class="study-summary"><p class="eyebrow">Study summary</p><p>${esc(paper.summary)}</p>${paper.limitation ? `<p class="summary-limitation">${esc(paper.limitation)}</p>` : ''}</div>` : ''}
 
       ${!paper.summary && paper.limitation ? `<p class="summary-limitation">${esc(paper.limitation)}</p>` : ''}${(paper.figures || []).map(figure => `<figure class="research-figure"><img src="${esc(safeURL(figure.src))}" alt="${esc(figure.caption)}" loading="lazy"><figcaption>${esc(figure.caption)}</figcaption></figure>`).join('')}${evidenceMarkup(paper.evidence)}${paper.studyDesignAssessment ? `<details class="study-methods design-assessment"><summary>Study design and blinding</summary><p>${esc(paper.studyDesignAssessment.basis)}</p><p>${paper.studyDesignAssessment.sources.map((source,index)=>`<a href="${esc(safeURL(source))}" target="_blank" rel="noopener noreferrer">${source.includes('clinicaltrials.gov') || source.includes('isrctn.com') ? 'Trial register' : `Study source ${index+1}`} ↗</a>`).join(' · ')}</p></details>` : ''}${bibliographyMarkup(paper)}${sourceProvenanceMarkup(paper)}
-      <div class="paper-links"><a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${url.includes('web.archive.org/web/') ? 'Read archived publication' : 'Read publication'} ↗</a><button class="text-button" data-paper-detail="${esc(paper.id)}">Citation details</button></div>
+      ${communityMarkup(paper)}<div class="paper-links"><a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${url.includes('web.archive.org/web/') ? 'Read archived publication' : 'Read publication'} ↗</a><button class="text-button" data-paper-detail="${esc(paper.id)}">Citation details</button></div>
     </article>`;
   }
   const paperCount = items => { const count = model.uniqueCount(items); const noun=items.some(p=>p.sourceType) ? 'source' : 'paper'; return `${count.toLocaleString()} ${noun}${count===1 ? '' : 's'}`; };
@@ -133,11 +153,12 @@
     const relevant = records.filter(r => collection === 'all' || r.collections.includes(collection));
     for (const [id,label,values] of [
       ['journal','All journals',[...relevant.filter(r=>r.publisherFamily).map(r=>['family:'+r.publisherFamily,r.publisherFamilyLabel+' — all journals']),...relevant.filter(r=>r.journalKey).map(r=>[r.journalKey,journalDisplay(r)])]],
-      ['topic','All topics',relevant.flatMap(r=>r.topics.filter(t=>collection==='all'||t.collection===collection).map(t=>[t.key,t.title]))]
+      ['topic','All topics',relevant.flatMap(r=>r.topics.filter(t=>collection==='all'||t.collection===collection).map(t=>[t.key,t.title]))],
+      ['community','All communities and contexts',communityData.taxonomy.map(item=>[item.id,`${item.label} (${relevant.filter(record=>communityModel.matches(record,item.id,$('#include-related').checked)).length})`])]
     ]) {
       const selected = loading ? params.getAll(id) : multi.values(id);
       const options = [...new Map(values).entries()].sort((a,b)=>a[1].localeCompare(b[1]));
-      $('#'+id).innerHTML = `<option value="">${label}</option>`+options.map(([value,title])=>`<option value="${esc(value)}">${esc(title)}</option>`).join('');
+      $('#'+id).innerHTML = `<option value="">${label}</option>`+options.map(([value,title])=>`<option value="${esc(value)}"${id==='community' ? ` data-search-terms="${esc(communityData.taxonomy.find(item=>item.id===value)?.searchTerms.join(' ') || '')}"` : ''}>${esc(title)}</option>`).join('');
       multi.set(id,selected);
     }
   }
@@ -163,6 +184,8 @@
       any('topic',v=>r.topics.some(t=>t.key===v)) && any('journal',v=>v.startsWith('family:') ? r.publisherFamily===v.slice(7) : r.journalKey===v) &&
       any('physiology',v=>r.categories.includes(v)) && any('category',v=>r.categories.includes(v)) &&
       any('target',v=>r.targets.includes(v)) && any('condition',v=>r.conditions.includes(v)) &&
+      any('community',v=>communityModel.matches(r,v,$('#include-related').checked)) &&
+      (!$('#calibration-only').checked || r.communityAssessments.length>0) &&
       any('jadad',v=>model.matchesJadad(r,v)) && any('kind',v=>model.matchesStudy(r,v)) &&
       any('period',v=>v==='recent' && r.year>=2022 && r.year<=2026 || v==='older' && r.year && r.year<2022) &&
       any('trust',v=>model.matchesPaperTrust(r,Number(v))) &&
@@ -173,6 +196,8 @@
     $('#active-filter-count').textContent = active ? `· ${active} selected` : '';
     for(const key of multiFields)multi.refresh(key);
     multi.chips($('#selected-filters'),search);
+    const assessed=records.filter(r=>(collection==='all'||r.collections.includes(collection)) && r.communityAssessments.length).length;
+    $('#community-coverage').textContent=`${communityData.recordCount} papers in the calibration batch · ${assessed} in this collection · Awaiting Universal Mind review`;
     renderResults();
   }
   function selectedEntry(record) {
@@ -192,7 +217,7 @@
       const entry = selectedEntry(record);
       const excerpt = record.quotes[0] || record.summary;
       const trimmed = excerpt.length > 340 ? excerpt.slice(0,337).trim()+'…' : excerpt;
-      return `<article class="search-paper" data-id="${esc(record.id)}"><h3><button data-record="${esc(record.id)}">${esc(record.title)}</button> ${crosses(model.paperTrustScore(record),false,'Paper')}</h3><p class="publication">${esc([journalDisplay(record),record.year,record.design].filter(Boolean).join(' · '))}</p>${trimmed ? record.quotes.length ? `<blockquote>${esc(trimmed)}</blockquote>` : `<p class="finding">${esc(trimmed)}</p>` : ''}${entry ? `<p class="search-context">${esc(collectionTitle(entry.collection))} · ${esc(entry.topicTitle)}</p>` : ''}<div class="search-tags">${record.categories.slice(0,2).map(c=>`<span>${esc(c)}</span>`).join('')}${record.targets.slice(0,5).map(t=>`<span class="gene">${esc(t)}</span>`).join('')}</div><button class="text-button" data-record="${esc(record.id)}">Read paper →</button></article>`;
+      return `<article class="search-paper" data-id="${esc(record.id)}"><h3><button data-record="${esc(record.id)}">${esc(record.title)}</button> ${crosses(model.paperTrustScore(record),false,'Paper')}</h3><p class="publication">${esc([journalDisplay(record),record.year,record.design].filter(Boolean).join(' · '))}</p>${communityBadges(record)}${trimmed ? record.quotes.length ? `<blockquote>${esc(trimmed)}</blockquote>` : `<p class="finding">${esc(trimmed)}</p>` : ''}${entry ? `<p class="search-context">${esc(collectionTitle(entry.collection))} · ${esc(entry.topicTitle)}</p>` : ''}<div class="search-tags">${record.categories.slice(0,2).map(c=>`<span>${esc(c)}</span>`).join('')}${record.targets.slice(0,5).map(t=>`<span class="gene">${esc(t)}</span>`).join('')}</div><button class="text-button" data-record="${esc(record.id)}">Read paper →</button></article>`;
     }).join('') || '<div class="empty-state"><h2>No matching papers.</h2><p>Try a different term or clear the filters.</p><button data-reset>Clear filters</button></div>';
   }
   function render() {
@@ -269,7 +294,7 @@
     if (chapter) { if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return; event.preventDefault(); if ($('#article').open) closePaper(); goChapter(Number(chapter.dataset.chapter),chapter.dataset.topic || '',true,chapter.dataset.chapterCollection || collection); return; }
     const button = event.target.closest('button');
     if (!button) return;
-    if (button.dataset.collection) { $('#topic').value = ''; $('#journal').value = ''; collection = button.dataset.collection; view = editions[collection] && !$('#query').value ? 'chapters' : 'search'; chapterNumber = 0; pageIndex = 0; syncURL(true); render(); }
+    if (button.dataset.collection) { $('#topic').value = ''; $('#journal').value = ''; collection = button.dataset.collection; view = editions[collection] && !$('#query').value && !multi.values('community').length && !$('#calibration-only').checked ? 'chapters' : 'search'; chapterNumber = 0; pageIndex = 0; syncURL(true); render(); }
     if (button.dataset.view) { if (button.dataset.view === 'chapters') goChapter(chapterNumber); else search(); }
     if (button.dataset.record) openRecord(button.dataset.record,button);
     if (button.dataset.paperDetail) { const paper = papers.find(p => p.id === button.dataset.paperDetail); if (paper) showPaper(paper,button); }
@@ -281,6 +306,8 @@
   $('#query').oninput = () => { clearTimeout(searchTimer); searchTimer = setTimeout(search,180); };
   for (const key of fields.filter(key=>key!=='query')) $('#'+key).onchange = search;
   $('#reset').onclick = reset;
+  $('#calibration-only').onchange = search;
+  $('#include-related').onchange = search;
   $('#previous').onclick = () => { pageIndex--; renderResults(); $('#results').scrollIntoView(); };
   $('#next').onclick = () => { pageIndex++; renderResults(); $('#results').scrollIntoView(); };
   const exportRecords = () => filtered.map(({_search,soundEntries,topicScores,...record}) => ({...record,topicTrustScores:topicScores,fullText:fullTextAccess[record.id] || {status:'not-indexed',retrievalAvailable:false}}));
@@ -313,8 +340,8 @@
   });
   window.addEventListener('popstate', () => {
     const p = new URLSearchParams(location.search);
-    collection = collections.includes(p.get('collection')) ? p.get('collection') : 'sound';
-    view = p.get('view') === 'search' || !['sound','vision','language','general'].includes(collection) ? 'search' : 'chapters';
+    collection = collections.includes(p.get('collection')) ? p.get('collection') : ['community','calibration'].some(key=>p.has(key)) ? 'all' : 'sound';
+    view = p.get('view') === 'search' || !['sound','vision','language','general'].includes(collection) || ['community','calibration'].some(key=>p.has(key)) ? 'search' : 'chapters';
     chapterNumber = Number(p.get('chapter')) || 0;
     populateFilters();
     restoreFilters(p);
@@ -324,9 +351,11 @@
   async function load() {
     $('#load-error').hidden = true;
     try {
-      const responses = await Promise.all(['sound-edition','library','publication-access','language-edition','general-edition','mindfulness-expansion','vision-edition','vision-expansion','clinical-conditions','nature-expansion','fulltext-availability','fibonacci-expansion','hyperspectral-expansion'].map(name=>fetch('library-data/'+name+'.json?v=hyperspectral-20261027')));
+      const responses = await Promise.all(['sound-edition','library','publication-access','language-edition','general-edition','mindfulness-expansion','vision-edition','vision-expansion','clinical-conditions','nature-expansion','fulltext-availability','fibonacci-expansion','hyperspectral-expansion','community-calibration'].map(name=>fetch('library-data/'+name+'.json?v=communities-20261030')));
       if (responses.some(response => !response.ok)) throw new Error('Research unavailable');
-      const [sound,data,access,language,general,expansion,vision,visionExpansion,conditions,natureExpansion,fulltexts,fibonacciExpansion,hyperspectralExpansion] = await Promise.all(responses.map(response=>response.json()));
+      const [sound,data,access,language,general,expansion,vision,visionExpansion,conditions,natureExpansion,fulltexts,fibonacciExpansion,hyperspectralExpansion,communities] = await Promise.all(responses.map(response=>response.json()));
+      if (communities.schemaVersion!=='communities-contexts/v1' || communities.records.length!==communities.recordCount) throw new Error('Invalid community classifications');
+      communityData=communities;
       fullTextAccess=fulltexts.records;
       if (!Array.isArray(sound.chapters) || !Array.isArray(data.records)) throw new Error('Invalid research data');
       publicationAccess = {...access.records,...visionExpansion.publicationAccess};
@@ -353,7 +382,7 @@
       $('#target').innerHTML='<option value="">All targets</option>'+allTargets.map(t=>`<option>${esc(t)}</option>`).join('');
       restoreFilters(params);
       records = buildRecords(data);
-      for(const record of records){record.conditionEvidence=[record.id,...record.aliases].flatMap(id=>clinicalConditions[id] || []);record.conditions=[...new Set(record.conditionEvidence.map(c=>c.id))];}
+      for(const record of records){record.conditionEvidence=[record.id,...record.aliases].flatMap(id=>clinicalConditions[id] || []);record.conditions=[...new Set(record.conditionEvidence.map(c=>c.id))];communityModel.attach(record,communityData);}
       populateFilters(); loading = false; render();
       if (location.hash) document.getElementById(location.hash.slice(1))?.scrollIntoView();
       if (params.get('paper') && papers.some(p=>p.id===params.get('paper'))) showPaper(papers.find(p=>p.id===params.get('paper')));

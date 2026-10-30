@@ -1,0 +1,39 @@
+{
+  "passed": true,
+  "visibleCorpus": 1108,
+  "calibration": 50,
+  "unassessed": 1058,
+  "statusCounts": {
+    "direct": 36,
+    "context": 4,
+    "related": 5,
+    "uncertain": 2,
+    "no-match": 3
+  },
+  "counts": {
+    "refugees": {
+      "directAndContext": 8,
+      "includingRelated": 8
+    },
+    "housing": {
+      "directAndContext": 8,
+      "includingRelated": 8
+    },
+    "defence": {
+      "directAndContext": 15,
+      "includingRelated": 15
+    },
+    "indigenous": {
+      "directAndContext": 7,
+      "includingRelated": 7
+    },
+    "domestic-violence": {
+      "directAndContext": 3,
+      "includingRelated": 8
+    },
+    "war-trauma": {
+      "directAndContext": 7,
+      "includingRelated": 10
+    }
+  }
+}
