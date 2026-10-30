@@ -1,0 +1,118 @@
+{
+  "metrics": {
+    "screenedPublicationVersions": 634,
+    "screenedReportGroups": 622,
+    "preprintVersionGroups": 12,
+    "versionGroupingStatus": "Provisional normalized-title linkage; author/cohort reconciliation is not exhaustive."
+  },
+  "groups": [
+    {
+      "title": "Brief problem-solving therapy for antenatal depressive symptoms in primary care in rural Ethiopia: protocol for a randomised, controlled feasibility trial",
+      "identifiers": [
+        "doi:10.1186/s40814-021-00773-8",
+        "doi:10.21203/rs.3.rs-57400/v3"
+      ],
+      "status": "provisional-version-link",
+      "basis": "Matching normalized title across preprint/final or preprint-version identifiers; not an independent-cohort assertion."
+    },
+    {
+      "title": "Effect of adding a positive memories' module in a trauma-focused cognitive-behavioural treatment for female survivors of intimate partner violence: trial protocol.",
+      "identifiers": [
+        "doi:10.1186/s13063-022-06540-1",
+        "doi:10.21203/rs.3.rs-1639328/v1"
+      ],
+      "status": "provisional-version-link",
+      "basis": "Matching normalized title across preprint/final or preprint-version identifiers; not an independent-cohort assertion."
+    },
+    {
+      "title": "Feasibility of a reconfigured domestic violence and abuse training and support intervention responding to affected women, men, children and young people through primary care.",
+      "identifiers": [
+        "doi:10.1186/s12875-023-02249-5",
+        "doi:10.21203/rs.3.rs-2832326/v1"
+      ],
+      "status": "provisional-version-link",
+      "basis": "Matching normalized title across preprint/final or preprint-version identifiers; not an independent-cohort assertion."
+    },
+    {
+      "title": "Health systems strengthening interventions for perinatal common mental disorders and experiences of domestic violence in Cape Town, South Africa: protocol for a pilot implementation study.",
+      "identifiers": [
+        "doi:10.1186/s40814-022-01053-9",
+        "doi:10.21203/rs.3.rs-956295/v1"
+      ],
+      "status": "provisional-version-link",
+      "basis": "Matching normalized title across preprint/final or preprint-version identifiers; not an independent-cohort assertion."
+    },
+    {
+      "title": "Individual participant data network meta-analysis of psychosocial interventions for survivors of intimate partner violence: Study protocol.",
+      "identifiers": [
+        "doi:10.1101/2024.06.25.24309424",
+        "doi:10.1371/journal.pone.0306669"
+      ],
+      "status": "provisional-version-link",
+      "basis": "Matching normalized title across preprint/final or preprint-version identifiers; not an independent-cohort assertion."
+    },
+    {
+      "title": "MOSAIC (MOthers' AdvocateS In the Community) for pregnant women and mothers of children under 5 with experience of intimate partner violence: A pilot randomized trial study protocol.",
+      "identifiers": [
+        "doi:10.1101/2022.04.14.22273885",
+        "doi:10.1371/journal.pone.0267679"
+      ],
+      "status": "provisional-version-link",
+      "basis": "Matching normalized title across preprint/final or preprint-version identifiers; not an independent-cohort assertion."
+    },
+    {
+      "title": "Prevalence and correlates of maternal early stimulation behaviors during pregnancy in northern Ghana: a cross-sectional survey.",
+      "identifiers": [
+        "doi:10.1186/s12884-020-03476-9",
+        "doi:10.21203/rs.3.rs-55947/v4"
+      ],
+      "status": "provisional-version-link",
+      "basis": "Matching normalized title across preprint/final or preprint-version identifiers; not an independent-cohort assertion."
+    },
+    {
+      "title": "Randomised pilot and feasibility trial of a group intervention for men who perpetrate intimate partner violence against women.",
+      "identifiers": [
+        "doi:10.1186/s12889-024-18640-5",
+        "doi:10.21203/rs.3.rs-2543341/v1"
+      ],
+      "status": "provisional-version-link",
+      "basis": "Matching normalized title across preprint/final or preprint-version identifiers; not an independent-cohort assertion."
+    },
+    {
+      "title": "Testing an attachment- and trauma-informed intervention approach for parents and young children after interparental violence: Protocol for a randomized controlled trial",
+      "identifiers": [
+        "doi:10.1186/s13063-022-06902-9",
+        "doi:10.21203/rs.3.rs-2133932/v1"
+      ],
+      "status": "provisional-version-link",
+      "basis": "Matching normalized title across preprint/final or preprint-version identifiers; not an independent-cohort assertion."
+    },
+    {
+      "title": "Trauma-specific mindfulness-based cognitive therapy for women with post-traumatic stress disorder and a history of domestic abuse: intervention refinement and a randomised feasibility trial (coMforT study).",
+      "identifiers": [
+        "doi:10.1186/s40814-023-01335-w",
+        "doi:10.21203/rs.3.rs-2209152/v1"
+      ],
+      "status": "provisional-version-link",
+      "basis": "Matching normalized title across preprint/final or preprint-version identifiers; not an independent-cohort assertion."
+    },
+    {
+      "title": "What works to change social norms that sustain intimate partner violence in low- and middle-income countries? A systematic review with meta-analyses and meta-regressions",
+      "identifiers": [
+        "doi:10.21203/rs.3.rs-10909540/v1",
+        "doi:10.21203/rs.3.rs-10909540/v2"
+      ],
+      "status": "provisional-version-link",
+      "basis": "Matching normalized title across preprint/final or preprint-version identifiers; not an independent-cohort assertion."
+    },
+    {
+      "title": "Women and Girls’ Engagement with Digital Intimate Partner Violence Support Since the start of the COVID-19 pandemic: A Systematic Review and Theoretical Synthesis",
+      "identifiers": [
+        "doi:10.31234/osf.io/3rjxp_v1",
+        "doi:10.31234/osf.io/3rjxp_v2"
+      ],
+      "status": "provisional-version-link",
+      "basis": "Matching normalized title across preprint/final or preprint-version identifiers; not an independent-cohort assertion."
+    }
+  ]
+}

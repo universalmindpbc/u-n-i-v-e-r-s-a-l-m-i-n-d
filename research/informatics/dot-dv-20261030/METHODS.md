@@ -10,14 +10,14 @@ Identity matching uses DOI, PMID and normalized title against the 1,108-publicat
 
 ## Counts
 
-Batch: `batch-acb62474225f0804`.
+Current batch: `batch-8bd70e21e48d9a70`. Earlier immutable batch `batch-acb62474225f0804` remains available; all 120 record content hashes are unchanged.
 
-- 671 screening decisions; 634 unique publications across lanes.
-- 430 source-inspected unique records and 215 automated-title ledger records; these sets overlap.
+- 671 screening decisions; 634 distinct publication-version identifier records, grouped into 622 provisional reports. Twelve matching-title clusters link preprint/final or preprint-version identifiers; these links do not establish independent cohorts.
+- 430 source-inspected identifier records and 215 automated-title identifier records; these sets overlap.
 - 120 assessed publications: 118 new and two existing-library records.
 - 116 ready for human review with access limits; four assessed records require source clarification.
 - Three additional attempted assessments remain deferred for publication/cohort or reporting conflicts.
-- Global screening dispositions: 248 excluded, 264 deferred, two existing records not reassessed, and 120 assessed. These sum to 634 distinct records.
+- Global screening dispositions: 248 excluded, 264 deferred, two existing records not reassessed, and 120 assessed. These sum to 634 publication-version identifier records.
 - 83 provisional primary study/program groups, including 47 randomized-report groups; 19 of those contain a registration ID. Exact independent-study count is not established. The 21 reviews do not add their pooled-trial counts.
 - Source access: 90 abstract, 17 selected-methods and 13 full-text assessments.
 - Relevance: 112 direct, five related and three context records.

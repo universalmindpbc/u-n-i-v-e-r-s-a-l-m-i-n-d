@@ -1,9 +1,9 @@
 {
   "passed": true,
   "phase": "candidate",
-  "checkedAt": "2026-10-30T08:00:25.007Z",
+  "checkedAt": "2026-10-30T08:10:34.716Z",
   "url": "https://staging.universalmind.tv/informatics/review/domestic-violence-20261030/",
-  "batchRevision": "batch-acb62474225f0804",
+  "batchRevision": "batch-8bd70e21e48d9a70",
   "audioDisabledAtProcessLaunch": true,
   "errors": [],
   "checks": [

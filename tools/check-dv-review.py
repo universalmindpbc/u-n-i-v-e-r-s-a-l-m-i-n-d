@@ -29,6 +29,16 @@ assert sum(r['reviewReady'] for r in batch['records'])==batch['metrics']['review
 assert sum(not r['existingRepositoryMatches'] for r in batch['records'])==batch['metrics']['deduplicatedNew']
 source=json.loads((ROOT/'research/informatics/dot-dv-20261030/candidate-assessments.json').read_text())
 assert len(source['records'])==len(ids)
+if 'screeningVersionGroups' in batch:
+    groups=batch['screeningVersionGroups'];metrics=batch['metrics']
+    assert metrics['screenedPublicationVersions']==metrics['screenedUnique']
+    assert metrics['screenedReportGroups']==metrics['screenedPublicationVersions']-sum(len(g['identifiers'])-1 for g in groups)
+    assert metrics['preprintVersionGroups']==len(groups)
+    identifiers=[key for g in groups for key in g['identifiers']]
+    assert len(identifiers)==len(set(identifiers)), 'Overlapping version clusters need union reconciliation'
+    # The screening-count clarification must preserve every frozen assessment.
+    first=json.loads((OUT/'batch-acb62474225f0804.json').read_text())
+    assert {r['id']:r['contentHash'] for r in first['records']}=={r['id']:r['contentHash'] for r in batch['records']}
 assert not any(r.get('screened') is False for r in json.loads((OUT/'screening.json').read_text()))
 guard=(ROOT/'Informatics/review/.htaccess').read_text()
 assert 'staging\\.universalmind\\.tv' in guard and '[F,L]' in guard and 'noindex, nofollow, noarchive' in guard

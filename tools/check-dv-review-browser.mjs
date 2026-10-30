@@ -33,6 +33,7 @@ try{
   await page.goto(url,{waitUntil:'networkidle'});
   await page.waitForFunction(n=>document.querySelectorAll('article.paper').length===n,data.records.length);
   assert.equal(await page.locator('.paper').count(),data.metrics.assessed);
+  assert.match(await page.locator('#metrics').innerText(),new RegExp(String(data.metrics.screenedReportGroups)+'\\s+Provisional screened report groups'));
   assert.match(await page.locator('.notice').innerText(),/Awaiting Universal Mind review/);
   assert.equal(await page.locator('.paper .badge.pending').count(),data.records.length);
   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'Horizontal overflow '+width);

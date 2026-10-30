@@ -88,6 +88,20 @@ def build(check=False):
     candidate_keys={identity(r) for r in records}
     screen_groups={}
     for row in screening:screen_groups.setdefault(identity(row),[]).append(row)
+    # A preprint and its journal article can have different DOIs. Preserve both
+    # identifier records, while disclosing provisional same-title version links.
+    by_title={}
+    for key,rows in screen_groups.items():
+        for row in rows:
+            title=re.sub(r'[^a-z0-9]','',row.get('title','').lower())
+            if title:by_title.setdefault(title,{})[key]=row
+    version_groups=[]
+    for title,rows in by_title.items():
+        if len(rows)>1 and any(re.match(r'doi:10\.(1101|21203|31234)/',key) for key in rows):
+            version_groups.append({'title':next(iter(rows.values()))['title'],
+                'identifiers':sorted(rows),'status':'provisional-version-link',
+                'basis':'Matching normalized title across preprint/final or preprint-version identifiers; not an independent-cohort assertion.'})
+    version_groups.sort(key=lambda g:g['title'])
     decisions={};screen_summary=[]
     for key,rows in screen_groups.items():
         kinds=[r.get('decision','').lower() for r in rows]
@@ -109,10 +123,14 @@ def build(check=False):
         'existingNotReassessed':sum(v=='existing' for v in decisions.values()),
         'otherScreeningDispositionUnique':sum(v=='other' for v in decisions.values()),'sourceClarificationNeeded':sum(not r['reviewReady'] for r in records),
         'duplicateCandidateReports':source.get('duplicateCandidateReports',0)}
+    metrics.update({'screenedPublicationVersions':len(unique),
+        'screenedReportGroups':len(unique)-sum(len(g['identifiers'])-1 for g in version_groups),
+        'preprintVersionGroups':len(version_groups),
+        'versionGroupingStatus':'Provisional normalized-title linkage; author/cohort reconciliation is not exhaustive.'})
     bundle={'schema':'universal-research/pending-review/v1','createdAt':source['createdAt'],
         'baselineCommit':source['baselineCommit'],'reviewStatus':'pending','productionEligible':False,
         'scopeNote':source['scopeNote'],'limitations':source['limitations'],'metrics':metrics,'records':records,
-        'screeningSummary':screen_summary}
+        'screeningSummary':screen_summary,'screeningVersionGroups':version_groups}
     revision='batch-'+digest(bundle)[:16]
     bundle['batchRevision']=revision
     outputs={OUT/(revision+'.json'):bundle,OUT/'index.json':{'schema':bundle['schema'],'batch':revision+'.json','reviewStatus':'pending','productionEligible':False},OUT/'screening.json':screening,OUT/'search-log.json':logs}

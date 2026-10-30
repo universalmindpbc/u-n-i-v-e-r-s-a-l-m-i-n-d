@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-10-30T08:05:29.415819+00:00",
-  "status": "staging-verified-awaiting-github-push",
+  "updatedAt": "2026-10-30T08:10:06.306003+00:00",
+  "status": "screening-version-count-clarification-awaiting-staging",
   "baselineCommit": "36fe9a2d3869f90083907ff7c9001aa9c5d8a21f",
-  "batchRevision": "batch-acb62474225f0804",
+  "batchRevision": "batch-8bd70e21e48d9a70",
   "metrics": {
     "screenedRaw": 671,
     "screenedUnique": 634,
@@ -24,7 +24,11 @@
     "existingNotReassessed": 2,
     "otherScreeningDispositionUnique": 0,
     "sourceClarificationNeeded": 4,
-    "duplicateCandidateReports": 0
+    "duplicateCandidateReports": 0,
+    "screenedPublicationVersions": 634,
+    "screenedReportGroups": 622,
+    "preprintVersionGroups": 12,
+    "versionGroupingStatus": "Provisional normalized-title linkage; author/cohort reconciliation is not exhaustive."
   },
   "extraSpendAUD": 0,
   "purchases": 0,
@@ -46,7 +50,7 @@
     "1": 54,
     "0": 66
   },
-  "lastCompleted": "Panthur staging upload of eight candidate assets; 12 live asset hashes; responsive browser, filters, evidence and downloads",
+  "lastCompleted": "First 120-assessment release deployed, verified and pushed; screening-version links clarified without changing record hashes",
   "nextActions": [
     "Push source and staging evidence to origin/staging",
     "Retain human review backlog for exact batch revision",
@@ -60,5 +64,7 @@
     "activeLane": "adult-therapy",
     "folder": "/Users/benkorbel/Documents/Codex/2026-10-30/task/research-work/continuation/adult-therapy",
     "purpose": "Resolve source holds and assess additional methods-accessible evidence"
-  }
+  },
+  "priorVerifiedReleaseCommit": "eac00182fbad92f83d278d0bdd22b5087f74ca97",
+  "priorGitHubRecordVerified": true
 }
