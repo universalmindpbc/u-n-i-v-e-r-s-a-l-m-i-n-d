@@ -1,0 +1,38 @@
+{
+  "passed": true,
+  "candidate": "9400d06b1347039ba0aaeaec9023ad2c71c1dc5a",
+  "checks": [
+    {
+      "route": "/read/",
+      "stagingMatchesCommittedSource": true,
+      "retiredDossiersAbsent": true,
+      "threeCollectionsPresent": true,
+      "productionUnchanged": true,
+      "stagingSHA256": "1c85f0e98c51f0e3048c294f094058f765121561f4f7736dca0625738b396497"
+    },
+    {
+      "route": "/llms.txt",
+      "stagingMatchesCommittedSource": true,
+      "retiredDossiersAbsent": true,
+      "threeCollectionsPresent": true,
+      "productionUnchanged": true,
+      "stagingSHA256": "6bb4faf850a1bcac632aee1f1d4cca704c5f26bb0fdf930e679c58782eb4bbb4"
+    },
+    {
+      "route": "/read/resources.json",
+      "stagingMatchesCommittedSource": true,
+      "retiredDossiersAbsent": true,
+      "threeCollectionsPresent": true,
+      "productionUnchanged": true,
+      "stagingSHA256": "8cf30eb576a3ace87dee81f2dbd19ea1561b05023294ad02377888c75691bc93"
+    },
+    {
+      "route": "/sitemap.xml",
+      "stagingMatchesCommittedSource": true,
+      "retiredDossiersAbsent": true,
+      "threeCollectionsPresent": true,
+      "productionUnchanged": true,
+      "stagingSHA256": "512337b99fafc5e425119197b62bf7379b997f927194ed67eeb569679a0dbbab"
+    }
+  ]
+}

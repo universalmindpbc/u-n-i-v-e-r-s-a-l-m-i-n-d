@@ -1,0 +1,29 @@
+{
+  "status": "staging-verified",
+  "sourceCommit": "9400d06b1347039ba0aaeaec9023ad2c71c1dc5a",
+  "baselineCommit": "4bd1d2378ab0ec48ef4dfc363c0b3c447e77a3d7",
+  "scope": [
+    "read/index.html",
+    "read/resources.json",
+    "llms.txt",
+    "sitemap.xml"
+  ],
+  "cause": "Retired PDF entries remained in older discovery files and were mistakenly reused in the AI guide. File reachability was checked without checking current editorial approval.",
+  "sciencePage": "The existing production science page links to the approved Informatics collections; its source and behaviour remain unchanged.",
+  "replacementMapping": {
+    "EMDR": "vision",
+    "Sound": "sound",
+    "Mantra": "language"
+  },
+  "generatorReadsApprovedScienceDestinations": true,
+  "retiredPDFLinksAbsent": true,
+  "sourceMatches": 4,
+  "collectionJourneysVerified": 3,
+  "liveScienceLinksVerified": 3,
+  "retiredPDFRequests": 0,
+  "processAudioDisabled": true,
+  "browserClosed": true,
+  "productionModified": false,
+  "deploymentCommand": "./deploy-panthur-staging.sh ai-wiki",
+  "originalDocumentsDeleted": false
+}
