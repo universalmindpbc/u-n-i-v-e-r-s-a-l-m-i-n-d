@@ -1,0 +1,23 @@
+{
+  "verified_at": "2026-10-30T14:05:21.120233+11:00",
+  "tag": "production-2026-10-30-1405",
+  "scope": "Patent filing notice only. Preview and redacted full PDF published behind existing password access.",
+  "approved_staging": "63095592706fd3b97288cf6557f6ef9b1de34d95",
+  "production_base": "f17e93b99e426861a72430b52f184370d6830cf1",
+  "production_source": "618681b4dd5eabdeaf701399a24097efb03ad9d8",
+  "url": "https://universalmind.tv/patent/#filing-receipt",
+  "deployment_mode": "deploy-panthurlive.sh patent-receipt",
+  "uploaded_paths": [
+    "patent/.private/.htaccess",
+    "patent/.private/filing-notice.pdf",
+    "patent/.private/filing-notice-page-1.jpg",
+    "patent/receipt.php",
+    "patent/index.php"
+  ],
+  "private_pdf_images_and_credentials_excluded_from_git": true,
+  "unrelated_ai_wiki_changes_remain_on_staging": true,
+  "unchanged_homepage_routes": 4,
+  "pdf_and_preview_match_approved_staging_hashes": true,
+  "gpt_changed_or_tested": false,
+  "git_ref_policy": "Main and the annotated production tag identify the scoped release. Staging retains its separate AI wiki changes and merges the production release record."
+}
