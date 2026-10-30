@@ -1,0 +1,2262 @@
+{
+  "schema": "universal-research/pending-review/v1",
+  "batchRevision": "batch-acb62474225f0804",
+  "status": "pending-human-review",
+  "count": 11,
+  "records": [
+    {
+      "id": "dv-sound-42298885",
+      "title": "\"Everyone's in it with me\": Sing&Grow program fosters parent connection, wellbeing and responsiveness.",
+      "authors": [
+        "Sally Savage",
+        "Lyra L’Estrange",
+        "Laura A. Bentley",
+        "Alison Liew-Stewart",
+        "Julia Oreopoulos"
+      ],
+      "year": 2026,
+      "journal": "Arts & health",
+      "doi": "10.1080/17533015.2026.2688145",
+      "pmid": "42298885",
+      "trialRegistration": [],
+      "collection": "sound",
+      "interventionFamily": "parent-child music therapy",
+      "publicationType": "qualitative primary study",
+      "studyFamilyId": "paper-df0a461382b5",
+      "familyLinkageUncertain": true,
+      "existingRepositoryMatches": [],
+      "relevance": {
+        "relation": "direct",
+        "population": "Parents and children in families affected by sexual abuse and domestic violence.",
+        "exposureEvidence": "Study explicitly identifies families affected by sexual abuse and domestic violence; individual exposure mix is unspecified.",
+        "rationale": "Directly relevant population and sound-based intervention or participatory music research.",
+        "transferLimit": "Findings do not establish general clinical efficacy or replacement of survivor services."
+      },
+      "age": {
+        "groups": [
+          "parents (ages unreported)",
+          "early childhood target"
+        ],
+        "reportedRange": "Programme targets birth–5; parent ages not established from accessed source",
+        "youthScope": "Children participated; eight interviewed parents are the analyzed respondents."
+      },
+      "country": "Australia",
+      "setting": "not established from accessed source",
+      "sampleSize": {
+        "randomized": null,
+        "analyzed": 8,
+        "description": "Eight parents; number of children not established from accessed source."
+      },
+      "intervention": {
+        "description": "Sing&Grow parent-child music programme.",
+        "dose": "not established from accessed source",
+        "provider": "not established from accessed source"
+      },
+      "comparator": "No concurrent untreated comparator established.",
+      "outcomes": [
+        {
+          "name": "Reported experiences",
+          "followUp": "not established from accessed source",
+          "result": "Parents described connection, responsive parenting and confidence using music.",
+          "effectEstimate": null,
+          "uncertainty": "No causal treatment effect established.",
+          "primaryStatus": "not established from accessed source"
+        }
+      ],
+      "finding": "Parents described connection, responsive parenting and confidence using music.",
+      "limitation": "Mixed trauma cohort; DV-specific subgroup results unavailable.",
+      "design": {
+        "type": "Interviews with narrative analysis",
+        "randomizationEvidence": "No random allocation established.",
+        "masking": {
+          "participants": "not established from accessed source",
+          "providers": "not established from accessed source",
+          "assessors": "not established from accessed source",
+          "analysts": "not established from accessed source"
+        },
+        "crosses": 0,
+        "crossRationale": "No verified randomized allocation; no RCT crosses."
+      },
+      "quality": {
+        "riskOfBias": "Exploratory evidence; selection, expectancy and reporting biases remain.",
+        "attrition": "not established from accessed source",
+        "confounding": "Concurrent support and time effects cannot be separated from music.",
+        "adverseFindings": "Adverse-event assessment not established from accessed source.",
+        "transferLimits": "Sample and design do not support general clinical efficacy claims.",
+        "jadad": "not applicable"
+      },
+      "access": {
+        "level": "abstract",
+        "sourceURLs": [
+          "https://europepmc.org/article/MED/42298885",
+          "https://api.crossref.org/works/10.1080/17533015.2026.2688145"
+        ],
+        "retrievedAt": "2026-10-30T07:25:34.851078+00:00"
+      },
+      "sources": [
+        {
+          "url": "https://europepmc.org/article/MED/42298885",
+          "type": "Europe PMC / MEDLINE abstract",
+          "retrievedAt": "2026-10-30T07:25:34.851078+00:00",
+          "identityVerified": true,
+          "notes": "Original publication evidence; extraction limited to accessed material."
+        },
+        {
+          "url": "https://api.crossref.org/works/10.1080/17533015.2026.2688145",
+          "type": "publisher-deposited bibliographic metadata",
+          "retrievedAt": "2026-10-30T07:25:34.851078+00:00",
+          "identityVerified": true,
+          "notes": "Identity and update metadata checked; not used as evidence of treatment benefit."
+        }
+      ],
+      "publicationStatus": {
+        "status": "published online; ahead of print",
+        "correctionRetractionCheck": "No update-to correction/retraction entry in retrieved Crossref metadata.",
+        "uncertainty": "This limited metadata check is not an exhaustive status audit."
+      },
+      "recommendationRationale": "Retain as clearly labeled exploratory evidence for human review.",
+      "review": {
+        "status": "pending",
+        "reviewer": null
+      },
+      "assessmentStatus": "assessed",
+      "assessmentNotes": "Abstract-level appraisal; missing details explicitly retained. No human approval claimed.",
+      "researchLane": "sound",
+      "reviewReady": true,
+      "reviewReadiness": "ready-with-access-limits",
+      "studyDesignAssessment": {
+        "category": "nonrandomized-or-unestablished",
+        "isRandomizedControlledTrial": null,
+        "basis": "No random allocation established.",
+        "sources": [
+          "https://europepmc.org/article/MED/42298885",
+          "https://api.crossref.org/works/10.1080/17533015.2026.2688145"
+        ],
+        "reviewScope": "abstract"
+      },
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "randomizedControlledTrial": null,
+        "peerReviewed": true,
+        "blinding": "not-applicable",
+        "basis": "No verified randomized allocation; no RCT crosses.",
+        "sources": [
+          "https://europepmc.org/article/MED/42298885",
+          "https://api.crossref.org/works/10.1080/17533015.2026.2688145"
+        ],
+        "reviewScope": "abstract",
+        "humanApproval": false,
+        "displayCrosses": 0,
+        "maskingRoles": {
+          "participants": "not established from accessed source",
+          "providers": "not established from accessed source",
+          "assessors": "not established from accessed source",
+          "analysts": "not established from accessed source"
+        }
+      },
+      "jadad": {
+        "status": "not-applicable",
+        "score": null
+      },
+      "evidence": {
+        "population": {
+          "relation": "direct",
+          "population": "Parents and children in families affected by sexual abuse and domestic violence.",
+          "exposureEvidence": "Study explicitly identifies families affected by sexual abuse and domestic violence; individual exposure mix is unspecified.",
+          "rationale": "Directly relevant population and sound-based intervention or participatory music research.",
+          "transferLimit": "Findings do not establish general clinical efficacy or replacement of survivor services."
+        },
+        "intervention": {
+          "description": "Sing&Grow parent-child music programme.",
+          "dose": "not established from accessed source",
+          "provider": "not established from accessed source"
+        },
+        "comparator": "No concurrent untreated comparator established.",
+        "outcomes": [
+          {
+            "name": "Reported experiences",
+            "followUp": "not established from accessed source",
+            "result": "Parents described connection, responsive parenting and confidence using music.",
+            "effectEstimate": null,
+            "uncertainty": "No causal treatment effect established.",
+            "primaryStatus": "not established from accessed source"
+          }
+        ],
+        "access": {
+          "level": "abstract",
+          "sourceURLs": [
+            "https://europepmc.org/article/MED/42298885",
+            "https://api.crossref.org/works/10.1080/17533015.2026.2688145"
+          ],
+          "retrievedAt": "2026-10-30T07:25:34.851078+00:00"
+        }
+      },
+      "citationSnapshot": {
+        "count": null,
+        "source": null,
+        "retrievedAt": null,
+        "status": "not-assessed"
+      },
+      "provenance": "Discovered by AI",
+      "contentHash": "70892a2114df6b963d54b9c584a0c5cb91fec7b104fb865a76d22f8db3227eeb",
+      "revision": "r1-70892a2114df"
+    },
+    {
+      "id": "dv-sound-efa9f1420011",
+      "title": "Music, Emotions, and Relationships: Professionals’ Experiences of the Feasibility of a Music Group Intervention for Children in Shelters After Exposure to Domestic Violence",
+      "authors": [
+        "Karin Pernebo",
+        "Rebecka Orsmark",
+        "Sebastian Rolkert",
+        "Johan Melander Hagborg"
+      ],
+      "year": 2026,
+      "journal": "Journal of Family Violence",
+      "doi": "10.1007/s10896-026-01179-x",
+      "pmid": null,
+      "trialRegistration": [],
+      "collection": "sound",
+      "interventionFamily": "shelter-based group music",
+      "publicationType": "qualitative feasibility study",
+      "studyFamilyId": "paper-efa9f1420011",
+      "familyLinkageUncertain": true,
+      "existingRepositoryMatches": [],
+      "relevance": {
+        "relation": "context",
+        "population": "Professionals delivering music groups to DV-exposed children in shelters.",
+        "exposureEvidence": "Explicit domestic/family/intimate-partner violence population in the original publication.",
+        "rationale": "Directly relevant population and sound-based intervention or participatory music research.",
+        "transferLimit": "Findings do not establish general clinical efficacy or replacement of survivor services."
+      },
+      "age": {
+        "groups": [
+          "adult professional respondents",
+          "children as programme target"
+        ],
+        "reportedRange": "Target children 3–10; respondent ages not established from accessed source",
+        "youthScope": "Child programme; professional respondents."
+      },
+      "country": "Sweden",
+      "setting": "Three shelters",
+      "sampleSize": {
+        "randomized": null,
+        "analyzed": 14,
+        "description": "Fourteen professionals; approximately 50 children attended, not an outcome sample."
+      },
+      "intervention": {
+        "description": "Singing, instruments and movement with creative activities.",
+        "dose": "Six 90-minute sessions including 45 minutes of music.",
+        "provider": "Musicians, music therapist and shelter staff"
+      },
+      "comparator": "No concurrent untreated comparator established.",
+      "outcomes": [
+        {
+          "name": "Implementation feasibility",
+          "followUp": "not established from accessed source",
+          "result": "Professionals considered delivery feasible given safety, collaboration and adequate resources.",
+          "effectEstimate": null,
+          "uncertainty": "No causal treatment effect established.",
+          "primaryStatus": "not established from accessed source"
+        }
+      ],
+      "finding": "Professionals considered delivery feasible given safety, collaboration and adequate resources.",
+      "limitation": "No direct child clinical outcome assessment.",
+      "design": {
+        "type": "Professional interviews; reflexive thematic analysis",
+        "randomizationEvidence": "No random allocation established.",
+        "masking": {
+          "participants": "not established from accessed source",
+          "providers": "not established from accessed source",
+          "assessors": "not established from accessed source",
+          "analysts": "not established from accessed source"
+        },
+        "crosses": 0,
+        "crossRationale": "No verified randomized allocation; no RCT crosses."
+      },
+      "quality": {
+        "riskOfBias": "Exploratory evidence; selection, expectancy and reporting biases remain.",
+        "attrition": "14 of 16 invited professionals interviewed.",
+        "confounding": "Programme staff reported perceptions; researcher involvement may influence interpretation.",
+        "adverseFindings": "Adverse-event assessment not established from accessed source.",
+        "transferLimits": "Sample and design do not support general clinical efficacy claims.",
+        "jadad": "not applicable"
+      },
+      "access": {
+        "level": "selected-methods",
+        "sourceURLs": [
+          "https://link.springer.com/article/10.1007/s10896-026-01179-x",
+          "https://api.crossref.org/works/10.1007/s10896-026-01179-x"
+        ],
+        "retrievedAt": "2026-10-30T07:25:34.851078+00:00"
+      },
+      "sources": [
+        {
+          "url": "https://link.springer.com/article/10.1007/s10896-026-01179-x",
+          "type": "publisher full article; methods and results inspected",
+          "retrievedAt": "2026-10-30T07:25:34.851078+00:00",
+          "identityVerified": true,
+          "notes": "Original publication evidence; extraction limited to accessed material."
+        },
+        {
+          "url": "https://api.crossref.org/works/10.1007/s10896-026-01179-x",
+          "type": "publisher-deposited bibliographic metadata",
+          "retrievedAt": "2026-10-30T07:25:34.851078+00:00",
+          "identityVerified": true,
+          "notes": "Identity and update metadata checked; not used as evidence of treatment benefit."
+        }
+      ],
+      "publicationStatus": {
+        "status": "published",
+        "correctionRetractionCheck": "No update-to correction/retraction entry in retrieved Crossref metadata.",
+        "uncertainty": "This limited metadata check is not an exhaustive status audit."
+      },
+      "recommendationRationale": "Retain as clearly labeled exploratory evidence for human review.",
+      "review": {
+        "status": "pending",
+        "reviewer": null
+      },
+      "assessmentStatus": "assessed",
+      "assessmentNotes": "Methods/results and selected discussion inspected. Child attendance is not a clinical response denominator.",
+      "researchLane": "sound",
+      "reviewReady": true,
+      "reviewReadiness": "ready-with-access-limits",
+      "studyDesignAssessment": {
+        "category": "nonrandomized-or-unestablished",
+        "isRandomizedControlledTrial": null,
+        "basis": "No random allocation established.",
+        "sources": [
+          "https://link.springer.com/article/10.1007/s10896-026-01179-x",
+          "https://api.crossref.org/works/10.1007/s10896-026-01179-x"
+        ],
+        "reviewScope": "selected-methods"
+      },
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "randomizedControlledTrial": null,
+        "peerReviewed": true,
+        "blinding": "not-applicable",
+        "basis": "No verified randomized allocation; no RCT crosses.",
+        "sources": [
+          "https://link.springer.com/article/10.1007/s10896-026-01179-x",
+          "https://api.crossref.org/works/10.1007/s10896-026-01179-x"
+        ],
+        "reviewScope": "selected-methods",
+        "humanApproval": false,
+        "displayCrosses": 0,
+        "maskingRoles": {
+          "participants": "not established from accessed source",
+          "providers": "not established from accessed source",
+          "assessors": "not established from accessed source",
+          "analysts": "not established from accessed source"
+        }
+      },
+      "jadad": {
+        "status": "not-applicable",
+        "score": null
+      },
+      "evidence": {
+        "population": {
+          "relation": "context",
+          "population": "Professionals delivering music groups to DV-exposed children in shelters.",
+          "exposureEvidence": "Explicit domestic/family/intimate-partner violence population in the original publication.",
+          "rationale": "Directly relevant population and sound-based intervention or participatory music research.",
+          "transferLimit": "Findings do not establish general clinical efficacy or replacement of survivor services."
+        },
+        "intervention": {
+          "description": "Singing, instruments and movement with creative activities.",
+          "dose": "Six 90-minute sessions including 45 minutes of music.",
+          "provider": "Musicians, music therapist and shelter staff"
+        },
+        "comparator": "No concurrent untreated comparator established.",
+        "outcomes": [
+          {
+            "name": "Implementation feasibility",
+            "followUp": "not established from accessed source",
+            "result": "Professionals considered delivery feasible given safety, collaboration and adequate resources.",
+            "effectEstimate": null,
+            "uncertainty": "No causal treatment effect established.",
+            "primaryStatus": "not established from accessed source"
+          }
+        ],
+        "access": {
+          "level": "selected-methods",
+          "sourceURLs": [
+            "https://link.springer.com/article/10.1007/s10896-026-01179-x",
+            "https://api.crossref.org/works/10.1007/s10896-026-01179-x"
+          ],
+          "retrievedAt": "2026-10-30T07:25:34.851078+00:00"
+        }
+      },
+      "citationSnapshot": {
+        "count": null,
+        "source": null,
+        "retrievedAt": null,
+        "status": "not-assessed"
+      },
+      "provenance": "Discovered by AI",
+      "contentHash": "bc33c7e3b426abe5a1ec2172cf34b8252fc62d4f1b422f768c758b2f5fe84086",
+      "revision": "r1-bc33c7e3b426"
+    },
+    {
+      "id": "dv-sound-61889e897b46",
+      "title": "“IF YOU COULD ONLY SEE ME AS I AM!” FROM AGONIZING SILENCE TO CREATIVE MUSIC SHARING: A PILOT STUDY ON GROUP MUSIC THERAPY WITH THREE WOMEN SURVIVORS OF DOMESTIC VIOLENCE FOR CHANGE AND EMPOWERMENT",
+      "authors": [
+        "Theodora Psaltopoulou",
+        "Konstantinos Galitsios",
+        "Efi Tsaparopoulou"
+      ],
+      "year": 2025,
+      "journal": "Hellenic Journal of Psychology",
+      "doi": "10.26262/hjp.v22i3.10498",
+      "pmid": null,
+      "trialRegistration": [],
+      "collection": "sound",
+      "interventionFamily": "music therapy",
+      "publicationType": "qualitative pilot study",
+      "studyFamilyId": "paper-61889e897b46",
+      "familyLinkageUncertain": true,
+      "existingRepositoryMatches": [],
+      "relevance": {
+        "relation": "direct",
+        "population": "Women surviving domestic violence.",
+        "exposureEvidence": "Explicit domestic/family/intimate-partner violence population in the original publication.",
+        "rationale": "Directly relevant population and sound-based intervention or participatory music research.",
+        "transferLimit": "Findings do not establish general clinical efficacy or replacement of survivor services."
+      },
+      "age": {
+        "groups": [
+          "adult"
+        ],
+        "reportedRange": "25–46 years",
+        "youthScope": "No separately reported youth sample."
+      },
+      "country": "Greece",
+      "setting": "Northern Greek women’s counselling centre",
+      "sampleSize": {
+        "randomized": null,
+        "analyzed": 3,
+        "description": "3 participants reported; outcome-specific denominators not established from accessed source."
+      },
+      "intervention": {
+        "description": "Songwriting, improvisation and verbal reflection.",
+        "dose": "Ten weekly sessions.",
+        "provider": "not established from accessed source"
+      },
+      "comparator": "No concurrent untreated comparator established.",
+      "outcomes": [
+        {
+          "name": "Reported experiences",
+          "followUp": "not established from accessed source",
+          "result": "Accounts described emotional expression, support and empowerment.",
+          "effectEstimate": null,
+          "uncertainty": "No causal treatment effect established.",
+          "primaryStatus": "not established from accessed source"
+        }
+      ],
+      "finding": "Accounts described emotional expression, support and empowerment.",
+      "limitation": "Three participants; no causal comparison.",
+      "design": {
+        "type": "Qualitative thematic pilot study",
+        "randomizationEvidence": "No random allocation established.",
+        "masking": {
+          "participants": "not established from accessed source",
+          "providers": "not established from accessed source",
+          "assessors": "not established from accessed source",
+          "analysts": "not established from accessed source"
+        },
+        "crosses": 0,
+        "crossRationale": "No verified randomized allocation; no RCT crosses."
+      },
+      "quality": {
+        "riskOfBias": "Exploratory evidence; selection, expectancy and reporting biases remain.",
+        "attrition": "not established from accessed source",
+        "confounding": "Concurrent support and time effects cannot be separated from music.",
+        "adverseFindings": "Adverse-event assessment not established from accessed source.",
+        "transferLimits": "Sample and design do not support general clinical efficacy claims.",
+        "jadad": "not applicable"
+      },
+      "access": {
+        "level": "abstract",
+        "sourceURLs": [
+          "https://ejournals.lib.auth.gr/hjp/article/view/10498"
+        ],
+        "retrievedAt": "2026-10-30T07:25:34.851078+00:00"
+      },
+      "sources": [
+        {
+          "url": "https://ejournals.lib.auth.gr/hjp/article/view/10498",
+          "type": "publisher abstract",
+          "retrievedAt": "2026-10-30T07:25:34.851078+00:00",
+          "identityVerified": true,
+          "notes": "Publisher abstract accessed through search indexing; direct page returned HTTP403. Crossref retrieval failed. No full-text claim."
+        }
+      ],
+      "publicationStatus": {
+        "status": "published",
+        "correctionRetractionCheck": "not established from accessed source",
+        "uncertainty": "This limited metadata check is not an exhaustive status audit."
+      },
+      "recommendationRationale": "Retain as clearly labeled exploratory evidence for human review.",
+      "review": {
+        "status": "pending",
+        "reviewer": null
+      },
+      "assessmentStatus": "assessed",
+      "assessmentNotes": "Publisher-indexed abstract only; source access limited.",
+      "researchLane": "sound",
+      "reviewReady": true,
+      "reviewReadiness": "ready-with-access-limits",
+      "studyDesignAssessment": {
+        "category": "nonrandomized-or-unestablished",
+        "isRandomizedControlledTrial": false,
+        "basis": "No random allocation established.",
+        "sources": [
+          "https://ejournals.lib.auth.gr/hjp/article/view/10498"
+        ],
+        "reviewScope": "abstract"
+      },
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "randomizedControlledTrial": false,
+        "peerReviewed": true,
+        "blinding": "not-applicable",
+        "basis": "No verified randomized allocation; no RCT crosses.",
+        "sources": [
+          "https://ejournals.lib.auth.gr/hjp/article/view/10498"
+        ],
+        "reviewScope": "abstract",
+        "humanApproval": false,
+        "displayCrosses": 0,
+        "maskingRoles": {
+          "participants": "not established from accessed source",
+          "providers": "not established from accessed source",
+          "assessors": "not established from accessed source",
+          "analysts": "not established from accessed source"
+        }
+      },
+      "jadad": {
+        "status": "not-applicable",
+        "score": null
+      },
+      "evidence": {
+        "population": {
+          "relation": "direct",
+          "population": "Women surviving domestic violence.",
+          "exposureEvidence": "Explicit domestic/family/intimate-partner violence population in the original publication.",
+          "rationale": "Directly relevant population and sound-based intervention or participatory music research.",
+          "transferLimit": "Findings do not establish general clinical efficacy or replacement of survivor services."
+        },
+        "intervention": {
+          "description": "Songwriting, improvisation and verbal reflection.",
+          "dose": "Ten weekly sessions.",
+          "provider": "not established from accessed source"
+        },
+        "comparator": "No concurrent untreated comparator established.",
+        "outcomes": [
+          {
+            "name": "Reported experiences",
+            "followUp": "not established from accessed source",
+            "result": "Accounts described emotional expression, support and empowerment.",
+            "effectEstimate": null,
+            "uncertainty": "No causal treatment effect established.",
+            "primaryStatus": "not established from accessed source"
+          }
+        ],
+        "access": {
+          "level": "abstract",
+          "sourceURLs": [
+            "https://ejournals.lib.auth.gr/hjp/article/view/10498"
+          ],
+          "retrievedAt": "2026-10-30T07:25:34.851078+00:00"
+        }
+      },
+      "citationSnapshot": {
+        "count": null,
+        "source": null,
+        "retrievedAt": null,
+        "status": "not-assessed"
+      },
+      "provenance": "Discovered by AI",
+      "contentHash": "2c8f8dc864a731b08705fad68940c5100ce7df49cbcd320c0821ca6f1b4ea304",
+      "revision": "r1-2c8f8dc864a7"
+    },
+    {
+      "id": "dv-sound-37107774",
+      "title": "Evaluation of Integrative Community Therapy with Domestic Violence Survivors in Quito, Ecuador.",
+      "authors": [
+        "Chiara Sabina",
+        "Diego Perez-Figueroa",
+        "Laurent Reyes",
+        "Eduardo Campaña Medina",
+        "Eluzinete Pereira de Souza",
+        "Lisa Markovits",
+        "Andrea Carolina Oña Jacho",
+        "Gissel Katherine Rojas Bohorquez"
+      ],
+      "year": 2023,
+      "journal": "International journal of environmental research and public health",
+      "doi": "10.3390/ijerph20085492",
+      "pmid": "37107774",
+      "trialRegistration": [],
+      "collection": "sound",
+      "interventionFamily": "community therapy with music workshop",
+      "publicationType": "nonrandomized comparative primary study",
+      "studyFamilyId": "paper-2f5d7ff09d24",
+      "familyLinkageUncertain": true,
+      "existingRepositoryMatches": [],
+      "relevance": {
+        "relation": "direct",
+        "population": "Women with prior domestic violence in Quito.",
+        "exposureEvidence": "Explicit domestic/family/intimate-partner violence population in the original publication.",
+        "rationale": "Directly relevant population and sound-based intervention or participatory music research.",
+        "transferLimit": "Findings do not establish general clinical efficacy or replacement of survivor services."
+      },
+      "age": {
+        "groups": [
+          "adult"
+        ],
+        "reportedRange": "19–29, 30–39 and 40+ categories; age available for 64.",
+        "youthScope": "No separately reported youth sample."
+      },
+      "country": "Ecuador",
+      "setting": "Quito; online during 2021",
+      "sampleSize": {
+        "randomized": null,
+        "analyzed": 87,
+        "description": "130 recruited (75/55); 87 completed (49/38); focus group 21."
+      },
+      "intervention": {
+        "description": "One thematic music workshop plus five integrative community-therapy circles.",
+        "dose": "Six weekly 90-minute online meetings.",
+        "provider": "Certified community-therapy facilitators"
+      },
+      "comparator": "No-contact comparison between pre/post assessments; services available.",
+      "outcomes": [
+        {
+          "name": "General health",
+          "followUp": "Six weeks",
+          "result": "Group-by-time improvement.",
+          "effectEstimate": {
+            "partialEtaSquared": 0.19,
+            "p": "<0.001"
+          },
+          "uncertainty": "No randomized causal effect established.",
+          "primaryStatus": "not established from accessed source"
+        },
+        {
+          "name": "Social support",
+          "followUp": "Six weeks",
+          "result": "Group-by-time improvement.",
+          "effectEstimate": {
+            "partialEtaSquared": 0.09,
+            "p": 0.01
+          },
+          "uncertainty": "No randomized causal effect established.",
+          "primaryStatus": "not established from accessed source"
+        },
+        {
+          "name": "Self-esteem",
+          "followUp": "Six weeks",
+          "result": "Group-by-time improvement; borderline significance.",
+          "effectEstimate": {
+            "partialEtaSquared": 0.05,
+            "p": "0.05 in table; <0.05 in narrative"
+          },
+          "uncertainty": "No randomized causal effect established.",
+          "primaryStatus": "not established from accessed source"
+        },
+        {
+          "name": "Resilience",
+          "followUp": "Six weeks",
+          "result": "No significant group-by-time interaction.",
+          "effectEstimate": {
+            "p": 0.62
+          },
+          "uncertainty": "No randomized causal effect established.",
+          "primaryStatus": "not established from accessed source"
+        },
+        {
+          "name": "Dating-violence attitudes",
+          "followUp": "Six weeks",
+          "result": "No significant group-by-time interaction.",
+          "effectEstimate": {
+            "p": 0.09
+          },
+          "uncertainty": "No randomized causal effect established.",
+          "primaryStatus": "not established from accessed source"
+        }
+      ],
+      "finding": "Health, social support and self-esteem improved more in intervention; resilience and dating-violence-attitude interactions were nonsignificant.",
+      "limitation": "Self-selection, baseline imbalances, attrition and unequal incentives limit causal inference.",
+      "design": {
+        "type": "Self-selected pre/post comparison-group study",
+        "randomizationEvidence": "Authors explicitly state allocation was not randomized; participants selected by availability/interest and capacity.",
+        "masking": {
+          "participants": "not established from accessed source",
+          "providers": "not established from accessed source",
+          "assessors": "not established from accessed source",
+          "analysts": "not established from accessed source"
+        },
+        "crosses": 0,
+        "crossRationale": "No verified randomized allocation; no RCT crosses."
+      },
+      "quality": {
+        "riskOfBias": "Exploratory evidence; selection, expectancy and reporting biases remain.",
+        "attrition": "43/130 did not complete both surveys (26/75 intervention; 17/55 comparison).",
+        "confounding": "Baseline violence/service-use differences were not adjusted; music not isolated.",
+        "adverseFindings": "Adverse-event assessment not established from accessed source.",
+        "transferLimits": "Sample and design do not support general clinical efficacy claims.",
+        "jadad": "not applicable"
+      },
+      "access": {
+        "level": "full-text",
+        "sourceURLs": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC10138899/",
+          "https://api.crossref.org/works/10.3390/ijerph20085492"
+        ],
+        "retrievedAt": "2026-10-30T07:25:34.851078+00:00"
+      },
+      "sources": [
+        {
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10138899/",
+          "type": "open-access original full text",
+          "retrievedAt": "2026-10-30T07:25:34.851078+00:00",
+          "identityVerified": true,
+          "notes": "Complete PMC XML accessed through Europe PMC; methods, results, discussion and limitations inspected."
+        },
+        {
+          "url": "https://api.crossref.org/works/10.3390/ijerph20085492",
+          "type": "publisher-deposited bibliographic metadata",
+          "retrievedAt": "2026-10-30T07:25:34.851078+00:00",
+          "identityVerified": true,
+          "notes": "Identity and update metadata checked; not used as evidence of treatment benefit."
+        }
+      ],
+      "publicationStatus": {
+        "status": "published",
+        "correctionRetractionCheck": "No update-to correction/retraction entry in retrieved Crossref metadata.",
+        "uncertainty": "This limited metadata check is not an exhaustive status audit."
+      },
+      "recommendationRationale": "Retain as clearly labeled exploratory evidence for human review.",
+      "review": {
+        "status": "pending",
+        "reviewer": null
+      },
+      "assessmentStatus": "assessed",
+      "assessmentNotes": "Multicomponent intervention; cannot attribute changes to music alone. Full-text comparison qualified by nonrandomization.",
+      "researchLane": "sound",
+      "reviewReady": true,
+      "reviewReadiness": "ready",
+      "studyDesignAssessment": {
+        "category": "nonrandomized-or-unestablished",
+        "isRandomizedControlledTrial": false,
+        "basis": "Authors explicitly state allocation was not randomized; participants selected by availability/interest and capacity.",
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC10138899/",
+          "https://api.crossref.org/works/10.3390/ijerph20085492"
+        ],
+        "reviewScope": "full-text"
+      },
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "randomizedControlledTrial": false,
+        "peerReviewed": true,
+        "blinding": "not-applicable",
+        "basis": "No verified randomized allocation; no RCT crosses.",
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC10138899/",
+          "https://api.crossref.org/works/10.3390/ijerph20085492"
+        ],
+        "reviewScope": "full-text",
+        "humanApproval": false,
+        "displayCrosses": 0,
+        "maskingRoles": {
+          "participants": "not established from accessed source",
+          "providers": "not established from accessed source",
+          "assessors": "not established from accessed source",
+          "analysts": "not established from accessed source"
+        }
+      },
+      "jadad": {
+        "status": "not-applicable",
+        "score": null
+      },
+      "evidence": {
+        "population": {
+          "relation": "direct",
+          "population": "Women with prior domestic violence in Quito.",
+          "exposureEvidence": "Explicit domestic/family/intimate-partner violence population in the original publication.",
+          "rationale": "Directly relevant population and sound-based intervention or participatory music research.",
+          "transferLimit": "Findings do not establish general clinical efficacy or replacement of survivor services."
+        },
+        "intervention": {
+          "description": "One thematic music workshop plus five integrative community-therapy circles.",
+          "dose": "Six weekly 90-minute online meetings.",
+          "provider": "Certified community-therapy facilitators"
+        },
+        "comparator": "No-contact comparison between pre/post assessments; services available.",
+        "outcomes": [
+          {
+            "name": "General health",
+            "followUp": "Six weeks",
+            "result": "Group-by-time improvement.",
+            "effectEstimate": {
+              "partialEtaSquared": 0.19,
+              "p": "<0.001"
+            },
+            "uncertainty": "No randomized causal effect established.",
+            "primaryStatus": "not established from accessed source"
+          },
+          {
+            "name": "Social support",
+            "followUp": "Six weeks",
+            "result": "Group-by-time improvement.",
+            "effectEstimate": {
+              "partialEtaSquared": 0.09,
+              "p": 0.01
+            },
+            "uncertainty": "No randomized causal effect established.",
+            "primaryStatus": "not established from accessed source"
+          },
+          {
+            "name": "Self-esteem",
+            "followUp": "Six weeks",
+            "result": "Group-by-time improvement; borderline significance.",
+            "effectEstimate": {
+              "partialEtaSquared": 0.05,
+              "p": "0.05 in table; <0.05 in narrative"
+            },
+            "uncertainty": "No randomized causal effect established.",
+            "primaryStatus": "not established from accessed source"
+          },
+          {
+            "name": "Resilience",
+            "followUp": "Six weeks",
+            "result": "No significant group-by-time interaction.",
+            "effectEstimate": {
+              "p": 0.62
+            },
+            "uncertainty": "No randomized causal effect established.",
+            "primaryStatus": "not established from accessed source"
+          },
+          {
+            "name": "Dating-violence attitudes",
+            "followUp": "Six weeks",
+            "result": "No significant group-by-time interaction.",
+            "effectEstimate": {
+              "p": 0.09
+            },
+            "uncertainty": "No randomized causal effect established.",
+            "primaryStatus": "not established from accessed source"
+          }
+        ],
+        "access": {
+          "level": "full-text",
+          "sourceURLs": [
+            "https://pmc.ncbi.nlm.nih.gov/articles/PMC10138899/",
+            "https://api.crossref.org/works/10.3390/ijerph20085492"
+          ],
+          "retrievedAt": "2026-10-30T07:25:34.851078+00:00"
+        }
+      },
+      "citationSnapshot": {
+        "count": null,
+        "source": null,
+        "retrievedAt": null,
+        "status": "not-assessed"
+      },
+      "provenance": "Discovered by AI",
+      "contentHash": "833c8a81055cbcd7f56ded118ba9746c4e55973f98d7cf7b6a7ea4dc60ee965d",
+      "revision": "r1-833c8a81055c"
+    },
+    {
+      "id": "dv-sound-849dafa52c8c",
+      "title": "Individualized Music Relaxation and Composition as a Coping Skill for Survivors of Intimate Partner Abuse in and out of the Therapeutic Setting",
+      "authors": [
+        "J. Juliet Weight"
+      ],
+      "year": 2021,
+      "journal": "Illinois State University theses and dissertations",
+      "doi": "10.30707/ETD2022.20230207065834995923.999979",
+      "pmid": null,
+      "trialRegistration": [],
+      "collection": "sound",
+      "interventionFamily": "individualized music relaxation",
+      "publicationType": "master’s thesis; primary grey literature",
+      "studyFamilyId": "paper-849dafa52c8c",
+      "familyLinkageUncertain": true,
+      "existingRepositoryMatches": [],
+      "relevance": {
+        "relation": "direct",
+        "population": "Survivors of intimate-partner abuse.",
+        "exposureEvidence": "Explicit domestic/family/intimate-partner violence population in the original publication.",
+        "rationale": "Directly relevant population and sound-based intervention or participatory music research.",
+        "transferLimit": "Findings do not establish general clinical efficacy or replacement of survivor services."
+      },
+      "age": {
+        "groups": [
+          "adult"
+        ],
+        "reportedRange": "not established from accessed source",
+        "youthScope": "No separately reported youth sample."
+      },
+      "country": "not established from accessed source",
+      "setting": "not established from accessed source",
+      "sampleSize": {
+        "randomized": null,
+        "analyzed": 3,
+        "description": "3 participants reported; outcome-specific denominators not established from accessed source."
+      },
+      "intervention": {
+        "description": "Individualized music representing an internal safe space.",
+        "dose": "Composition and rehearsal, followed by ten days of independent use.",
+        "provider": "Researcher"
+      },
+      "comparator": "No concurrent untreated comparator established.",
+      "outcomes": [
+        {
+          "name": "STAI and participant reports",
+          "followUp": "not established from accessed source",
+          "result": "In-session STAI reduction and perceived everyday stress relief were reported.",
+          "effectEstimate": null,
+          "uncertainty": "No causal treatment effect established.",
+          "primaryStatus": "not established from accessed source"
+        }
+      ],
+      "finding": "In-session STAI reduction and perceived everyday stress relief were reported.",
+      "limitation": "Three participants; no control or extractable effect estimate.",
+      "design": {
+        "type": "Uncontrolled exploratory study",
+        "randomizationEvidence": "No random allocation established.",
+        "masking": {
+          "participants": "not established from accessed source",
+          "providers": "not established from accessed source",
+          "assessors": "not established from accessed source",
+          "analysts": "not established from accessed source"
+        },
+        "crosses": 0,
+        "crossRationale": "No verified randomized allocation; no RCT crosses."
+      },
+      "quality": {
+        "riskOfBias": "Exploratory evidence; selection, expectancy and reporting biases remain.",
+        "attrition": "not established from accessed source",
+        "confounding": "Concurrent support and time effects cannot be separated from music.",
+        "adverseFindings": "Adverse-event assessment not established from accessed source.",
+        "transferLimits": "Sample and design do not support general clinical efficacy claims.",
+        "jadad": "not applicable"
+      },
+      "access": {
+        "level": "abstract",
+        "sourceURLs": [
+          "https://ir.library.illinoisstate.edu/etd/1650/"
+        ],
+        "retrievedAt": "2026-10-30T07:25:34.851078+00:00"
+      },
+      "sources": [
+        {
+          "url": "https://ir.library.illinoisstate.edu/etd/1650/",
+          "type": "university thesis abstract",
+          "retrievedAt": "2026-10-30T07:25:34.851078+00:00",
+          "identityVerified": true,
+          "notes": "Original publication evidence; extraction limited to accessed material."
+        }
+      ],
+      "publicationStatus": {
+        "status": "non-peer-reviewed master’s thesis",
+        "correctionRetractionCheck": "not established from accessed source",
+        "uncertainty": "This limited metadata check is not an exhaustive status audit.",
+        "peerReviewed": false
+      },
+      "recommendationRationale": "Lower-priority feasibility evidence, requiring full methods before stronger claims.",
+      "review": {
+        "status": "pending",
+        "reviewer": null
+      },
+      "assessmentStatus": "assessed",
+      "assessmentNotes": "University lists graduation 2021; DOI contains later deposit identifiers. No inference from DOI year. Non-peer-reviewed grey literature; do not assign a peer-reviewed-paper score.",
+      "researchLane": "sound",
+      "reviewReady": true,
+      "reviewReadiness": "ready-with-access-limits",
+      "studyDesignAssessment": {
+        "category": "nonrandomized-or-unestablished",
+        "isRandomizedControlledTrial": null,
+        "basis": "No random allocation established.",
+        "sources": [
+          "https://ir.library.illinoisstate.edu/etd/1650/"
+        ],
+        "reviewScope": "abstract"
+      },
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "not-applicable",
+        "score": null,
+        "randomizedControlledTrial": null,
+        "peerReviewed": false,
+        "blinding": "not-applicable",
+        "basis": "No verified randomized allocation; no RCT crosses.",
+        "sources": [
+          "https://ir.library.illinoisstate.edu/etd/1650/"
+        ],
+        "reviewScope": "abstract",
+        "humanApproval": false,
+        "displayCrosses": 0,
+        "maskingRoles": {
+          "participants": "not established from accessed source",
+          "providers": "not established from accessed source",
+          "assessors": "not established from accessed source",
+          "analysts": "not established from accessed source"
+        }
+      },
+      "jadad": {
+        "status": "not-applicable",
+        "score": null
+      },
+      "evidence": {
+        "population": {
+          "relation": "direct",
+          "population": "Survivors of intimate-partner abuse.",
+          "exposureEvidence": "Explicit domestic/family/intimate-partner violence population in the original publication.",
+          "rationale": "Directly relevant population and sound-based intervention or participatory music research.",
+          "transferLimit": "Findings do not establish general clinical efficacy or replacement of survivor services."
+        },
+        "intervention": {
+          "description": "Individualized music representing an internal safe space.",
+          "dose": "Composition and rehearsal, followed by ten days of independent use.",
+          "provider": "Researcher"
+        },
+        "comparator": "No concurrent untreated comparator established.",
+        "outcomes": [
+          {
+            "name": "STAI and participant reports",
+            "followUp": "not established from accessed source",
+            "result": "In-session STAI reduction and perceived everyday stress relief were reported.",
+            "effectEstimate": null,
+            "uncertainty": "No causal treatment effect established.",
+            "primaryStatus": "not established from accessed source"
+          }
+        ],
+        "access": {
+          "level": "abstract",
+          "sourceURLs": [
+            "https://ir.library.illinoisstate.edu/etd/1650/"
+          ],
+          "retrievedAt": "2026-10-30T07:25:34.851078+00:00"
+        }
+      },
+      "citationSnapshot": {
+        "count": null,
+        "source": null,
+        "retrievedAt": null,
+        "status": "not-assessed"
+      },
+      "provenance": "Discovered by AI",
+      "contentHash": "0881ee4e1c4d08e5e984a13ea227f26b4fa94c9fa90881cc37e67b9111c2a4d9",
+      "revision": "r1-0881ee4e1c4d"
+    },
+    {
+      "id": "dv-sound-3c0015edd5fa",
+      "title": "Understanding Children's Resources in the Context of Family Violence through a Collaborative Songwriting Method",
+      "authors": [
+        "Rebecca Fairchild",
+        "Katrina Skewes McFerran"
+      ],
+      "year": 2018,
+      "journal": "Children Australia",
+      "doi": "10.1017/cha.2018.45",
+      "pmid": null,
+      "trialRegistration": [],
+      "collection": "sound",
+      "interventionFamily": "collaborative songwriting research",
+      "publicationType": "participatory qualitative primary research",
+      "studyFamilyId": "paper-3c0015edd5fa",
+      "familyLinkageUncertain": true,
+      "existingRepositoryMatches": [],
+      "relevance": {
+        "relation": "context",
+        "population": "Children experiencing family violence.",
+        "exposureEvidence": "Explicit domestic/family/intimate-partner violence population in the original publication.",
+        "rationale": "Relevant to participatory design and children’s perspectives.",
+        "transferLimit": "Findings do not establish general clinical efficacy or replacement of survivor services."
+      },
+      "age": {
+        "groups": [
+          "preadolescent children"
+        ],
+        "reportedRange": "Preadolescent; exact ages not established from accessed source",
+        "youthScope": "Child-focused research."
+      },
+      "country": "not established from accessed source",
+      "setting": "not established from accessed source",
+      "sampleSize": {
+        "randomized": null,
+        "analyzed": 10,
+        "description": "10 participants reported; outcome-specific denominators not established from accessed source."
+      },
+      "intervention": {
+        "description": "Collaborative songwriting to investigate children’s resources.",
+        "dose": "not established from accessed source",
+        "provider": "not established from accessed source"
+      },
+      "comparator": "No concurrent untreated comparator established.",
+      "outcomes": [
+        {
+          "name": "Children’s accounts of resources",
+          "followUp": "not established from accessed source",
+          "result": "Children identified personal and social resources and needs for safety, care and agency.",
+          "effectEstimate": null,
+          "uncertainty": "No causal treatment effect established.",
+          "primaryStatus": "not established from accessed source"
+        }
+      ],
+      "finding": "Children identified personal and social resources and needs for safety, care and agency.",
+      "limitation": "Songwriting was a research method; treatment benefit was not tested.",
+      "design": {
+        "type": "Participatory arts-based research",
+        "randomizationEvidence": "No random allocation established.",
+        "masking": {
+          "participants": "not established from accessed source",
+          "providers": "not established from accessed source",
+          "assessors": "not established from accessed source",
+          "analysts": "not established from accessed source"
+        },
+        "crosses": 0,
+        "crossRationale": "No verified randomized allocation; no RCT crosses."
+      },
+      "quality": {
+        "riskOfBias": "Exploratory evidence; selection, expectancy and reporting biases remain.",
+        "attrition": "not established from accessed source",
+        "confounding": "Not an efficacy study.",
+        "adverseFindings": "Adverse-event assessment not established from accessed source.",
+        "transferLimits": "Sample and design do not support general clinical efficacy claims.",
+        "jadad": "not applicable"
+      },
+      "access": {
+        "level": "abstract",
+        "sourceURLs": [
+          "https://www.childrenaustralia.org.au/journal/article/2145/",
+          "https://api.crossref.org/works/10.1017/cha.2018.45"
+        ],
+        "retrievedAt": "2026-10-30T07:25:34.851078+00:00"
+      },
+      "sources": [
+        {
+          "url": "https://www.childrenaustralia.org.au/journal/article/2145/",
+          "type": "publisher abstract",
+          "retrievedAt": "2026-10-30T07:25:34.851078+00:00",
+          "identityVerified": true,
+          "notes": "Original publication evidence; extraction limited to accessed material."
+        },
+        {
+          "url": "https://api.crossref.org/works/10.1017/cha.2018.45",
+          "type": "publisher-deposited bibliographic metadata",
+          "retrievedAt": "2026-10-30T07:25:34.851078+00:00",
+          "identityVerified": true,
+          "notes": "Identity and update metadata checked; not used as evidence of treatment benefit."
+        }
+      ],
+      "publicationStatus": {
+        "status": "published",
+        "correctionRetractionCheck": "No update-to correction/retraction entry in retrieved Crossref metadata.",
+        "uncertainty": "This limited metadata check is not an exhaustive status audit."
+      },
+      "recommendationRationale": "Retain as clearly labeled exploratory evidence for human review.",
+      "review": {
+        "status": "pending",
+        "reviewer": null
+      },
+      "assessmentStatus": "assessed",
+      "assessmentNotes": "Potential overlap with Fairchild/McFerran music-resource paper DOI10.1080/08098131.2018.1509106; linkage unresolved.",
+      "researchLane": "sound",
+      "reviewReady": true,
+      "reviewReadiness": "ready-with-access-limits",
+      "studyDesignAssessment": {
+        "category": "nonrandomized-or-unestablished",
+        "isRandomizedControlledTrial": null,
+        "basis": "No random allocation established.",
+        "sources": [
+          "https://www.childrenaustralia.org.au/journal/article/2145/",
+          "https://api.crossref.org/works/10.1017/cha.2018.45"
+        ],
+        "reviewScope": "abstract"
+      },
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "randomizedControlledTrial": null,
+        "peerReviewed": true,
+        "blinding": "not-applicable",
+        "basis": "No verified randomized allocation; no RCT crosses.",
+        "sources": [
+          "https://www.childrenaustralia.org.au/journal/article/2145/",
+          "https://api.crossref.org/works/10.1017/cha.2018.45"
+        ],
+        "reviewScope": "abstract",
+        "humanApproval": false,
+        "displayCrosses": 0,
+        "maskingRoles": {
+          "participants": "not established from accessed source",
+          "providers": "not established from accessed source",
+          "assessors": "not established from accessed source",
+          "analysts": "not established from accessed source"
+        }
+      },
+      "jadad": {
+        "status": "not-applicable",
+        "score": null
+      },
+      "evidence": {
+        "population": {
+          "relation": "context",
+          "population": "Children experiencing family violence.",
+          "exposureEvidence": "Explicit domestic/family/intimate-partner violence population in the original publication.",
+          "rationale": "Relevant to participatory design and children’s perspectives.",
+          "transferLimit": "Findings do not establish general clinical efficacy or replacement of survivor services."
+        },
+        "intervention": {
+          "description": "Collaborative songwriting to investigate children’s resources.",
+          "dose": "not established from accessed source",
+          "provider": "not established from accessed source"
+        },
+        "comparator": "No concurrent untreated comparator established.",
+        "outcomes": [
+          {
+            "name": "Children’s accounts of resources",
+            "followUp": "not established from accessed source",
+            "result": "Children identified personal and social resources and needs for safety, care and agency.",
+            "effectEstimate": null,
+            "uncertainty": "No causal treatment effect established.",
+            "primaryStatus": "not established from accessed source"
+          }
+        ],
+        "access": {
+          "level": "abstract",
+          "sourceURLs": [
+            "https://www.childrenaustralia.org.au/journal/article/2145/",
+            "https://api.crossref.org/works/10.1017/cha.2018.45"
+          ],
+          "retrievedAt": "2026-10-30T07:25:34.851078+00:00"
+        }
+      },
+      "citationSnapshot": {
+        "count": null,
+        "source": null,
+        "retrievedAt": null,
+        "status": "not-assessed"
+      },
+      "provenance": "Discovered by AI",
+      "contentHash": "b32dbebe3adeaee236788993c94659bf592de0b7cf0036e08973abcb41feab61",
+      "revision": "r1-b32dbebe3ade"
+    },
+    {
+      "id": "dv-sound-52ec6bcb53a0",
+      "title": "Exploring the Meaning of a Performance in Music Therapy for Children and Their Families Experiencing Homelessness and Family Violence",
+      "authors": [
+        "Rebecca Fairchild",
+        "Grace Thompson",
+        "Katrina Skewes McFerran"
+      ],
+      "year": 2017,
+      "journal": "Music Therapy Perspectives",
+      "doi": "10.1093/mtp/miw004",
+      "pmid": null,
+      "trialRegistration": [],
+      "collection": "sound",
+      "interventionFamily": "group music performance",
+      "publicationType": "qualitative primary study",
+      "studyFamilyId": "paper-52ec6bcb53a0",
+      "familyLinkageUncertain": true,
+      "existingRepositoryMatches": [
+        {
+          "recordId": "src-47a527b4dc03",
+          "matchMethod": "title"
+        }
+      ],
+      "relevance": {
+        "relation": "direct",
+        "population": "Children and families receiving homelessness and family-violence support.",
+        "exposureEvidence": "Explicit domestic/family/intimate-partner violence population in the original publication.",
+        "rationale": "Directly relevant population and sound-based intervention or participatory music research.",
+        "transferLimit": "Findings do not establish general clinical efficacy or replacement of survivor services."
+      },
+      "age": {
+        "groups": [
+          "preadolescent children",
+          "adult parents"
+        ],
+        "reportedRange": "Preadolescent; exact ages not established from accessed source",
+        "youthScope": "Three girls interviewed; four parents were audience respondents."
+      },
+      "country": "not established from accessed source",
+      "setting": "not established from accessed source",
+      "sampleSize": {
+        "randomized": null,
+        "analyzed": 7,
+        "description": "Three girls and four parent respondents."
+      },
+      "intervention": {
+        "description": "Supported group performance concluding music therapy.",
+        "dose": "not established from accessed source",
+        "provider": "not established from accessed source"
+      },
+      "comparator": "No concurrent untreated comparator established.",
+      "outcomes": [
+        {
+          "name": "Reported experiences",
+          "followUp": "not established from accessed source",
+          "result": "Participants described mixed emotions, family connections and audience involvement.",
+          "effectEstimate": null,
+          "uncertainty": "No causal treatment effect established.",
+          "primaryStatus": "not established from accessed source"
+        }
+      ],
+      "finding": "Participants described mixed emotions, family connections and audience involvement.",
+      "limitation": "Experience study; no clinical outcome comparison.",
+      "design": {
+        "type": "Interview study with interpretative phenomenological analysis",
+        "randomizationEvidence": "No random allocation established.",
+        "masking": {
+          "participants": "not established from accessed source",
+          "providers": "not established from accessed source",
+          "assessors": "not established from accessed source",
+          "analysts": "not established from accessed source"
+        },
+        "crosses": 0,
+        "crossRationale": "No verified randomized allocation; no RCT crosses."
+      },
+      "quality": {
+        "riskOfBias": "Exploratory evidence; selection, expectancy and reporting biases remain.",
+        "attrition": "not established from accessed source",
+        "confounding": "Concurrent support and time effects cannot be separated from music.",
+        "adverseFindings": "Positive and challenging experiences were both described; systematic harm assessment not established from accessed source.",
+        "transferLimits": "Sample and design do not support general clinical efficacy claims.",
+        "jadad": "not applicable"
+      },
+      "access": {
+        "level": "abstract",
+        "sourceURLs": [
+          "https://academic.oup.com/mtp/article-abstract/35/1/36/2631812",
+          "https://api.crossref.org/works/10.1093/mtp/miw004"
+        ],
+        "retrievedAt": "2026-10-30T07:25:34.851078+00:00"
+      },
+      "sources": [
+        {
+          "url": "https://academic.oup.com/mtp/article-abstract/35/1/36/2631812",
+          "type": "publisher abstract",
+          "retrievedAt": "2026-10-30T07:25:34.851078+00:00",
+          "identityVerified": true,
+          "notes": "Original publication evidence; extraction limited to accessed material."
+        },
+        {
+          "url": "https://api.crossref.org/works/10.1093/mtp/miw004",
+          "type": "publisher-deposited bibliographic metadata",
+          "retrievedAt": "2026-10-30T07:25:34.851078+00:00",
+          "identityVerified": true,
+          "notes": "Identity and update metadata checked; not used as evidence of treatment benefit."
+        }
+      ],
+      "publicationStatus": {
+        "status": "published",
+        "correctionRetractionCheck": "No update-to correction/retraction entry in retrieved Crossref metadata.",
+        "uncertainty": "This limited metadata check is not an exhaustive status audit."
+      },
+      "recommendationRationale": "Retain as clearly labeled exploratory evidence for human review.",
+      "review": {
+        "status": "pending",
+        "reviewer": null
+      },
+      "assessmentStatus": "assessed",
+      "assessmentNotes": "Online publication 2016; journal issue 2017. Linkage to other Fairchild studies unresolved; do not assume independent intervention cohorts.",
+      "researchLane": "sound",
+      "reviewReady": true,
+      "reviewReadiness": "ready-with-access-limits",
+      "studyDesignAssessment": {
+        "category": "nonrandomized-or-unestablished",
+        "isRandomizedControlledTrial": null,
+        "basis": "No random allocation established.",
+        "sources": [
+          "https://academic.oup.com/mtp/article-abstract/35/1/36/2631812",
+          "https://api.crossref.org/works/10.1093/mtp/miw004"
+        ],
+        "reviewScope": "abstract"
+      },
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "randomizedControlledTrial": null,
+        "peerReviewed": true,
+        "blinding": "not-applicable",
+        "basis": "No verified randomized allocation; no RCT crosses.",
+        "sources": [
+          "https://academic.oup.com/mtp/article-abstract/35/1/36/2631812",
+          "https://api.crossref.org/works/10.1093/mtp/miw004"
+        ],
+        "reviewScope": "abstract",
+        "humanApproval": false,
+        "displayCrosses": 0,
+        "maskingRoles": {
+          "participants": "not established from accessed source",
+          "providers": "not established from accessed source",
+          "assessors": "not established from accessed source",
+          "analysts": "not established from accessed source"
+        }
+      },
+      "jadad": {
+        "status": "not-applicable",
+        "score": null
+      },
+      "evidence": {
+        "population": {
+          "relation": "direct",
+          "population": "Children and families receiving homelessness and family-violence support.",
+          "exposureEvidence": "Explicit domestic/family/intimate-partner violence population in the original publication.",
+          "rationale": "Directly relevant population and sound-based intervention or participatory music research.",
+          "transferLimit": "Findings do not establish general clinical efficacy or replacement of survivor services."
+        },
+        "intervention": {
+          "description": "Supported group performance concluding music therapy.",
+          "dose": "not established from accessed source",
+          "provider": "not established from accessed source"
+        },
+        "comparator": "No concurrent untreated comparator established.",
+        "outcomes": [
+          {
+            "name": "Reported experiences",
+            "followUp": "not established from accessed source",
+            "result": "Participants described mixed emotions, family connections and audience involvement.",
+            "effectEstimate": null,
+            "uncertainty": "No causal treatment effect established.",
+            "primaryStatus": "not established from accessed source"
+          }
+        ],
+        "access": {
+          "level": "abstract",
+          "sourceURLs": [
+            "https://academic.oup.com/mtp/article-abstract/35/1/36/2631812",
+            "https://api.crossref.org/works/10.1093/mtp/miw004"
+          ],
+          "retrievedAt": "2026-10-30T07:25:34.851078+00:00"
+        }
+      },
+      "citationSnapshot": {
+        "count": null,
+        "source": null,
+        "retrievedAt": null,
+        "status": "not-assessed"
+      },
+      "provenance": "Discovered by AI",
+      "contentHash": "73b9b82ca143fdda510cb7a54b1514ca3c13a6ffd456ef3a09cba1e67822f8fe",
+      "revision": "r1-73b9b82ca143"
+    },
+    {
+      "id": "dv-sound-99de3f3bbdea",
+      "title": "Music Therapy as Treatment for the Psychological Distress of Victims of Intimate Partner Violence: Comparing Expressive and Receptive Music Interventions",
+      "authors": [
+        "Kristiana Miner"
+      ],
+      "year": 2015,
+      "journal": "Illinois State University theses and dissertations",
+      "doi": "10.30707/ETD2015.Miner.K",
+      "pmid": null,
+      "trialRegistration": [],
+      "collection": "sound",
+      "interventionFamily": "expressive versus receptive music therapy",
+      "publicationType": "master’s thesis; primary grey literature",
+      "studyFamilyId": "paper-99de3f3bbdea",
+      "familyLinkageUncertain": true,
+      "existingRepositoryMatches": [],
+      "relevance": {
+        "relation": "direct",
+        "population": "Women fleeing harm from current or former intimate partners.",
+        "exposureEvidence": "Explicit domestic/family/intimate-partner violence population in the original publication.",
+        "rationale": "Directly relevant population and sound-based intervention or participatory music research.",
+        "transferLimit": "Findings do not establish general clinical efficacy or replacement of survivor services."
+      },
+      "age": {
+        "groups": [
+          "adult"
+        ],
+        "reportedRange": "not established from accessed source",
+        "youthScope": "No separately reported youth sample."
+      },
+      "country": "not established from accessed source",
+      "setting": "Domestic-violence shelters",
+      "sampleSize": {
+        "randomized": null,
+        "analyzed": 13,
+        "description": "13 participants reported; outcome-specific denominators not established from accessed source."
+      },
+      "intervention": {
+        "description": "Expressive and receptive group music therapy.",
+        "dose": "Four sessions: two expressive, two receptive.",
+        "provider": "Board-certified music therapist"
+      },
+      "comparator": "Expressive versus receptive sessions; allocation unverified.",
+      "outcomes": [
+        {
+          "name": "Adapted K6 distress",
+          "followUp": "Immediate",
+          "result": "No significant expressive–receptive difference; within-session pre/post decline.",
+          "effectEstimate": {
+            "preMean": 2.5,
+            "postMean": 1.8,
+            "p": 0.001,
+            "contrast": "within-person pre/post; not controlled efficacy"
+          },
+          "uncertainty": "No randomized causal effect established.",
+          "primaryStatus": "not established from accessed source"
+        }
+      ],
+      "finding": "Distress declined within sessions; expressive and receptive methods did not significantly differ.",
+      "limitation": "No untreated comparison; thesis abstract only.",
+      "design": {
+        "type": "Repeated-measures comparison; randomization unverified",
+        "randomizationEvidence": "No random allocation established.",
+        "masking": {
+          "participants": "not established from accessed source",
+          "providers": "not established from accessed source",
+          "assessors": "not established from accessed source",
+          "analysts": "not established from accessed source"
+        },
+        "crosses": 0,
+        "crossRationale": "No verified randomized allocation; no RCT crosses."
+      },
+      "quality": {
+        "riskOfBias": "Exploratory evidence; selection, expectancy and reporting biases remain.",
+        "attrition": "not established from accessed source",
+        "confounding": "Concurrent support and time effects cannot be separated from music.",
+        "adverseFindings": "Adverse-event assessment not established from accessed source.",
+        "transferLimits": "Sample and design do not support general clinical efficacy claims.",
+        "jadad": "not applicable"
+      },
+      "access": {
+        "level": "abstract",
+        "sourceURLs": [
+          "https://ir.library.illinoisstate.edu/etd/418/",
+          "https://api.crossref.org/works/10.30707/ETD2015.Miner.K"
+        ],
+        "retrievedAt": "2026-10-30T07:25:34.851078+00:00"
+      },
+      "sources": [
+        {
+          "url": "https://ir.library.illinoisstate.edu/etd/418/",
+          "type": "university thesis abstract",
+          "retrievedAt": "2026-10-30T07:25:34.851078+00:00",
+          "identityVerified": true,
+          "notes": "Original publication evidence; extraction limited to accessed material."
+        },
+        {
+          "url": "https://api.crossref.org/works/10.30707/ETD2015.Miner.K",
+          "type": "publisher-deposited bibliographic metadata",
+          "retrievedAt": "2026-10-30T07:25:34.851078+00:00",
+          "identityVerified": true,
+          "notes": "Identity and update metadata checked; not used as evidence of treatment benefit."
+        }
+      ],
+      "publicationStatus": {
+        "status": "non-peer-reviewed master’s thesis",
+        "correctionRetractionCheck": "No update-to correction/retraction entry in retrieved Crossref metadata.",
+        "uncertainty": "This limited metadata check is not an exhaustive status audit.",
+        "peerReviewed": false
+      },
+      "recommendationRationale": "Lower-priority grey evidence; retain null modality comparison.",
+      "review": {
+        "status": "pending",
+        "reviewer": null
+      },
+      "assessmentStatus": "assessed",
+      "assessmentNotes": "Thesis rather than peer-reviewed journal publication; encoded SE/effect-size symbols were not relied upon. Non-peer-reviewed grey literature; do not assign a peer-reviewed-paper score.",
+      "researchLane": "sound",
+      "reviewReady": true,
+      "reviewReadiness": "ready-with-access-limits",
+      "studyDesignAssessment": {
+        "category": "nonrandomized-or-unestablished",
+        "isRandomizedControlledTrial": null,
+        "basis": "No random allocation established.",
+        "sources": [
+          "https://ir.library.illinoisstate.edu/etd/418/",
+          "https://api.crossref.org/works/10.30707/ETD2015.Miner.K"
+        ],
+        "reviewScope": "abstract"
+      },
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "not-applicable",
+        "score": null,
+        "randomizedControlledTrial": null,
+        "peerReviewed": false,
+        "blinding": "not-applicable",
+        "basis": "No verified randomized allocation; no RCT crosses.",
+        "sources": [
+          "https://ir.library.illinoisstate.edu/etd/418/",
+          "https://api.crossref.org/works/10.30707/ETD2015.Miner.K"
+        ],
+        "reviewScope": "abstract",
+        "humanApproval": false,
+        "displayCrosses": 0,
+        "maskingRoles": {
+          "participants": "not established from accessed source",
+          "providers": "not established from accessed source",
+          "assessors": "not established from accessed source",
+          "analysts": "not established from accessed source"
+        }
+      },
+      "jadad": {
+        "status": "not-applicable",
+        "score": null
+      },
+      "evidence": {
+        "population": {
+          "relation": "direct",
+          "population": "Women fleeing harm from current or former intimate partners.",
+          "exposureEvidence": "Explicit domestic/family/intimate-partner violence population in the original publication.",
+          "rationale": "Directly relevant population and sound-based intervention or participatory music research.",
+          "transferLimit": "Findings do not establish general clinical efficacy or replacement of survivor services."
+        },
+        "intervention": {
+          "description": "Expressive and receptive group music therapy.",
+          "dose": "Four sessions: two expressive, two receptive.",
+          "provider": "Board-certified music therapist"
+        },
+        "comparator": "Expressive versus receptive sessions; allocation unverified.",
+        "outcomes": [
+          {
+            "name": "Adapted K6 distress",
+            "followUp": "Immediate",
+            "result": "No significant expressive–receptive difference; within-session pre/post decline.",
+            "effectEstimate": {
+              "preMean": 2.5,
+              "postMean": 1.8,
+              "p": 0.001,
+              "contrast": "within-person pre/post; not controlled efficacy"
+            },
+            "uncertainty": "No randomized causal effect established.",
+            "primaryStatus": "not established from accessed source"
+          }
+        ],
+        "access": {
+          "level": "abstract",
+          "sourceURLs": [
+            "https://ir.library.illinoisstate.edu/etd/418/",
+            "https://api.crossref.org/works/10.30707/ETD2015.Miner.K"
+          ],
+          "retrievedAt": "2026-10-30T07:25:34.851078+00:00"
+        }
+      },
+      "citationSnapshot": {
+        "count": null,
+        "source": null,
+        "retrievedAt": null,
+        "status": "not-assessed"
+      },
+      "provenance": "Discovered by AI",
+      "contentHash": "e637808315145db5b84946c6421da64d7090e8eb7b45a67ec29993739b98cea1",
+      "revision": "r1-e63780831514"
+    },
+    {
+      "id": "dv-sound-24766169",
+      "title": "MAMBRA's impact on IPV symptoms of incarcerated and formerly incarcerated women.",
+      "authors": [
+        "Janette Y Taylor",
+        "Ezra C Holston"
+      ],
+      "year": 2014,
+      "journal": "Issues in mental health nursing",
+      "doi": "10.3109/01612840.2013.868962",
+      "pmid": "24766169",
+      "trialRegistration": [],
+      "collection": "sound",
+      "interventionFamily": "music and narrative psychoeducation",
+      "publicationType": "uncontrolled primary study",
+      "studyFamilyId": "paper-2fd8ccdc2e0d",
+      "familyLinkageUncertain": true,
+      "existingRepositoryMatches": [],
+      "relevance": {
+        "relation": "direct",
+        "population": "Incarcerated and community women surviving IPV.",
+        "exposureEvidence": "Explicit domestic/family/intimate-partner violence population in the original publication.",
+        "rationale": "Directly relevant population and sound-based intervention or participatory music research.",
+        "transferLimit": "Findings do not establish general clinical efficacy or replacement of survivor services."
+      },
+      "age": {
+        "groups": [
+          "adult"
+        ],
+        "reportedRange": "not established from accessed source",
+        "youthScope": "No separately reported youth sample."
+      },
+      "country": "not established from accessed source",
+      "setting": "Incarceration and community settings",
+      "sampleSize": {
+        "randomized": null,
+        "analyzed": 41,
+        "description": "41 participants reported; outcome-specific denominators not established from accessed source."
+      },
+      "intervention": {
+        "description": "Music and Account-Making for Behavioral-Related Adaptation (MAMBRA); group psychoeducation.",
+        "dose": "Four sessions in five groups.",
+        "provider": "not established from accessed source"
+      },
+      "comparator": "No concurrent untreated comparator established.",
+      "outcomes": [
+        {
+          "name": "Depression, anxiety, self-esteem, loneliness and spouse-abuse measures",
+          "followUp": "Across four sessions",
+          "result": "Psychosocial scores changed favorably across sessions.",
+          "effectEstimate": null,
+          "uncertainty": "No causal treatment effect established.",
+          "primaryStatus": "not established from accessed source"
+        }
+      ],
+      "finding": "Positive within-group signal; efficacy remains unestablished.",
+      "limitation": "Abstract gives no outcome-specific estimates or comparison group.",
+      "design": {
+        "type": "Descriptive repeated-measures study",
+        "randomizationEvidence": "No random allocation established.",
+        "masking": {
+          "participants": "not established from accessed source",
+          "providers": "not established from accessed source",
+          "assessors": "not established from accessed source",
+          "analysts": "not established from accessed source"
+        },
+        "crosses": 0,
+        "crossRationale": "No verified randomized allocation; no RCT crosses."
+      },
+      "quality": {
+        "riskOfBias": "Exploratory evidence; selection, expectancy and reporting biases remain.",
+        "attrition": "not established from accessed source",
+        "confounding": "Concurrent support and time effects cannot be separated from music.",
+        "adverseFindings": "Adverse-event assessment not established from accessed source.",
+        "transferLimits": "Sample and design do not support general clinical efficacy claims.",
+        "jadad": "not applicable"
+      },
+      "access": {
+        "level": "abstract",
+        "sourceURLs": [
+          "https://europepmc.org/article/MED/24766169",
+          "https://api.crossref.org/works/10.3109/01612840.2013.868962"
+        ],
+        "retrievedAt": "2026-10-30T07:25:34.851078+00:00"
+      },
+      "sources": [
+        {
+          "url": "https://europepmc.org/article/MED/24766169",
+          "type": "Europe PMC / MEDLINE abstract",
+          "retrievedAt": "2026-10-30T07:25:34.851078+00:00",
+          "identityVerified": true,
+          "notes": "Original publication evidence; extraction limited to accessed material."
+        },
+        {
+          "url": "https://api.crossref.org/works/10.3109/01612840.2013.868962",
+          "type": "publisher-deposited bibliographic metadata",
+          "retrievedAt": "2026-10-30T07:25:34.851078+00:00",
+          "identityVerified": true,
+          "notes": "Identity and update metadata checked; not used as evidence of treatment benefit."
+        }
+      ],
+      "publicationStatus": {
+        "status": "published",
+        "correctionRetractionCheck": "No update-to correction/retraction entry in retrieved Crossref metadata.",
+        "uncertainty": "This limited metadata check is not an exhaustive status audit."
+      },
+      "recommendationRationale": "Retain as clearly labeled exploratory evidence for human review.",
+      "review": {
+        "status": "pending",
+        "reviewer": null
+      },
+      "assessmentStatus": "assessed",
+      "assessmentNotes": "Abstract-level appraisal; missing details explicitly retained. No human approval claimed.",
+      "researchLane": "sound",
+      "reviewReady": true,
+      "reviewReadiness": "ready-with-access-limits",
+      "studyDesignAssessment": {
+        "category": "nonrandomized-or-unestablished",
+        "isRandomizedControlledTrial": null,
+        "basis": "No random allocation established.",
+        "sources": [
+          "https://europepmc.org/article/MED/24766169",
+          "https://api.crossref.org/works/10.3109/01612840.2013.868962"
+        ],
+        "reviewScope": "abstract"
+      },
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "randomizedControlledTrial": null,
+        "peerReviewed": true,
+        "blinding": "not-applicable",
+        "basis": "No verified randomized allocation; no RCT crosses.",
+        "sources": [
+          "https://europepmc.org/article/MED/24766169",
+          "https://api.crossref.org/works/10.3109/01612840.2013.868962"
+        ],
+        "reviewScope": "abstract",
+        "humanApproval": false,
+        "displayCrosses": 0,
+        "maskingRoles": {
+          "participants": "not established from accessed source",
+          "providers": "not established from accessed source",
+          "assessors": "not established from accessed source",
+          "analysts": "not established from accessed source"
+        }
+      },
+      "jadad": {
+        "status": "not-applicable",
+        "score": null
+      },
+      "evidence": {
+        "population": {
+          "relation": "direct",
+          "population": "Incarcerated and community women surviving IPV.",
+          "exposureEvidence": "Explicit domestic/family/intimate-partner violence population in the original publication.",
+          "rationale": "Directly relevant population and sound-based intervention or participatory music research.",
+          "transferLimit": "Findings do not establish general clinical efficacy or replacement of survivor services."
+        },
+        "intervention": {
+          "description": "Music and Account-Making for Behavioral-Related Adaptation (MAMBRA); group psychoeducation.",
+          "dose": "Four sessions in five groups.",
+          "provider": "not established from accessed source"
+        },
+        "comparator": "No concurrent untreated comparator established.",
+        "outcomes": [
+          {
+            "name": "Depression, anxiety, self-esteem, loneliness and spouse-abuse measures",
+            "followUp": "Across four sessions",
+            "result": "Psychosocial scores changed favorably across sessions.",
+            "effectEstimate": null,
+            "uncertainty": "No causal treatment effect established.",
+            "primaryStatus": "not established from accessed source"
+          }
+        ],
+        "access": {
+          "level": "abstract",
+          "sourceURLs": [
+            "https://europepmc.org/article/MED/24766169",
+            "https://api.crossref.org/works/10.3109/01612840.2013.868962"
+          ],
+          "retrievedAt": "2026-10-30T07:25:34.851078+00:00"
+        }
+      },
+      "citationSnapshot": {
+        "count": null,
+        "source": null,
+        "retrievedAt": null,
+        "status": "not-assessed"
+      },
+      "provenance": "Discovered by AI",
+      "contentHash": "f14d87a2013b3f2847bb3336c1c68611f252ab908498a9d76123af7a224cd5f1",
+      "revision": "r1-f14d87a2013b"
+    },
+    {
+      "id": "dv-sound-1be40a54cbc1",
+      "title": "Group Music Therapy with Women who have Experienced Intimate Partner Violence",
+      "authors": [
+        "Aaron K. Teague",
+        "Nicole D. Hahna",
+        "Cathy H. McKinney"
+      ],
+      "year": 2006,
+      "journal": "Music Therapy Perspectives",
+      "doi": "10.1093/mtp/24.2.80",
+      "pmid": null,
+      "trialRegistration": [],
+      "collection": "sound",
+      "interventionFamily": "music therapy",
+      "publicationType": "uncontrolled primary study",
+      "studyFamilyId": "paper-1be40a54cbc1",
+      "familyLinkageUncertain": true,
+      "existingRepositoryMatches": [],
+      "relevance": {
+        "relation": "direct",
+        "population": "Women who experienced IPV.",
+        "exposureEvidence": "Explicit domestic/family/intimate-partner violence population in the original publication.",
+        "rationale": "Directly relevant population and sound-based intervention or participatory music research.",
+        "transferLimit": "Findings do not establish general clinical efficacy or replacement of survivor services."
+      },
+      "age": {
+        "groups": [
+          "adult"
+        ],
+        "reportedRange": "not established from accessed source",
+        "youthScope": "No separately reported youth sample."
+      },
+      "country": "not established from accessed source",
+      "setting": "not established from accessed source",
+      "sampleSize": {
+        "randomized": null,
+        "analyzed": 7,
+        "description": "7 participants reported; outcome-specific denominators not established from accessed source."
+      },
+      "intervention": {
+        "description": "Group music therapy combined with creative arts.",
+        "dose": "not established from accessed source",
+        "provider": "not established from accessed source"
+      },
+      "comparator": "No concurrent untreated comparator established.",
+      "outcomes": [
+        {
+          "name": "Depression, anxiety and self-esteem",
+          "followUp": "Post-intervention and three-week follow-up",
+          "result": "Depression decreased; anxiety change was marginal; self-esteem did not significantly change.",
+          "effectEstimate": null,
+          "uncertainty": "No causal treatment effect established.",
+          "primaryStatus": "not established from accessed source"
+        }
+      ],
+      "finding": "Mixed signal with a retained self-esteem null finding.",
+      "limitation": "Seven participants and no controlled causal estimate.",
+      "design": {
+        "type": "Repeated-measures study",
+        "randomizationEvidence": "No random allocation established.",
+        "masking": {
+          "participants": "not established from accessed source",
+          "providers": "not established from accessed source",
+          "assessors": "not established from accessed source",
+          "analysts": "not established from accessed source"
+        },
+        "crosses": 0,
+        "crossRationale": "No verified randomized allocation; no RCT crosses."
+      },
+      "quality": {
+        "riskOfBias": "Exploratory evidence; selection, expectancy and reporting biases remain.",
+        "attrition": "not established from accessed source",
+        "confounding": "Concurrent support and time effects cannot be separated from music.",
+        "adverseFindings": "Adverse-event assessment not established from accessed source.",
+        "transferLimits": "Sample and design do not support general clinical efficacy claims.",
+        "jadad": "not applicable"
+      },
+      "access": {
+        "level": "abstract",
+        "sourceURLs": [
+          "https://academic.oup.com/mtp/article-abstract/24/2/80/1125111",
+          "https://api.crossref.org/works/10.1093/mtp/24.2.80"
+        ],
+        "retrievedAt": "2026-10-30T07:25:34.851078+00:00"
+      },
+      "sources": [
+        {
+          "url": "https://academic.oup.com/mtp/article-abstract/24/2/80/1125111",
+          "type": "publisher abstract",
+          "retrievedAt": "2026-10-30T07:25:34.851078+00:00",
+          "identityVerified": true,
+          "notes": "Original publication evidence; extraction limited to accessed material."
+        },
+        {
+          "url": "https://api.crossref.org/works/10.1093/mtp/24.2.80",
+          "type": "publisher-deposited bibliographic metadata",
+          "retrievedAt": "2026-10-30T07:25:34.851078+00:00",
+          "identityVerified": true,
+          "notes": "Identity and update metadata checked; not used as evidence of treatment benefit."
+        }
+      ],
+      "publicationStatus": {
+        "status": "published",
+        "correctionRetractionCheck": "No update-to correction/retraction entry in retrieved Crossref metadata.",
+        "uncertainty": "This limited metadata check is not an exhaustive status audit."
+      },
+      "recommendationRationale": "Retain as clearly labeled exploratory evidence for human review.",
+      "review": {
+        "status": "pending",
+        "reviewer": null
+      },
+      "assessmentStatus": "assessed",
+      "assessmentNotes": "Abstract-level appraisal; missing details explicitly retained. No human approval claimed.",
+      "researchLane": "sound",
+      "reviewReady": true,
+      "reviewReadiness": "ready-with-access-limits",
+      "studyDesignAssessment": {
+        "category": "nonrandomized-or-unestablished",
+        "isRandomizedControlledTrial": null,
+        "basis": "No random allocation established.",
+        "sources": [
+          "https://academic.oup.com/mtp/article-abstract/24/2/80/1125111",
+          "https://api.crossref.org/works/10.1093/mtp/24.2.80"
+        ],
+        "reviewScope": "abstract"
+      },
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "randomizedControlledTrial": null,
+        "peerReviewed": true,
+        "blinding": "not-applicable",
+        "basis": "No verified randomized allocation; no RCT crosses.",
+        "sources": [
+          "https://academic.oup.com/mtp/article-abstract/24/2/80/1125111",
+          "https://api.crossref.org/works/10.1093/mtp/24.2.80"
+        ],
+        "reviewScope": "abstract",
+        "humanApproval": false,
+        "displayCrosses": 0,
+        "maskingRoles": {
+          "participants": "not established from accessed source",
+          "providers": "not established from accessed source",
+          "assessors": "not established from accessed source",
+          "analysts": "not established from accessed source"
+        }
+      },
+      "jadad": {
+        "status": "not-applicable",
+        "score": null
+      },
+      "evidence": {
+        "population": {
+          "relation": "direct",
+          "population": "Women who experienced IPV.",
+          "exposureEvidence": "Explicit domestic/family/intimate-partner violence population in the original publication.",
+          "rationale": "Directly relevant population and sound-based intervention or participatory music research.",
+          "transferLimit": "Findings do not establish general clinical efficacy or replacement of survivor services."
+        },
+        "intervention": {
+          "description": "Group music therapy combined with creative arts.",
+          "dose": "not established from accessed source",
+          "provider": "not established from accessed source"
+        },
+        "comparator": "No concurrent untreated comparator established.",
+        "outcomes": [
+          {
+            "name": "Depression, anxiety and self-esteem",
+            "followUp": "Post-intervention and three-week follow-up",
+            "result": "Depression decreased; anxiety change was marginal; self-esteem did not significantly change.",
+            "effectEstimate": null,
+            "uncertainty": "No causal treatment effect established.",
+            "primaryStatus": "not established from accessed source"
+          }
+        ],
+        "access": {
+          "level": "abstract",
+          "sourceURLs": [
+            "https://academic.oup.com/mtp/article-abstract/24/2/80/1125111",
+            "https://api.crossref.org/works/10.1093/mtp/24.2.80"
+          ],
+          "retrievedAt": "2026-10-30T07:25:34.851078+00:00"
+        }
+      },
+      "citationSnapshot": {
+        "count": null,
+        "source": null,
+        "retrievedAt": null,
+        "status": "not-assessed"
+      },
+      "provenance": "Discovered by AI",
+      "contentHash": "4ab04e15d119889e62d61a2dd667b024a4a8b9425fe2e442e8efb54c270667d7",
+      "revision": "r1-4ab04e15d119"
+    },
+    {
+      "id": "dv-sound-15913391",
+      "title": "Effect of music therapy on the anxiety levels and sleep patterns of abused women in shelters.",
+      "authors": [
+        "Eugenia Hernández-Ruiz"
+      ],
+      "year": 2005,
+      "journal": "Journal of music therapy",
+      "doi": "10.1093/jmt/42.2.140",
+      "pmid": "15913391",
+      "trialRegistration": [],
+      "collection": "sound",
+      "interventionFamily": "music listening with muscle relaxation",
+      "publicationType": "controlled primary study",
+      "studyFamilyId": "paper-c90a6352221b",
+      "familyLinkageUncertain": true,
+      "existingRepositoryMatches": [
+        {
+          "recordId": "pmid-15913391",
+          "matchMethod": "title"
+        }
+      ],
+      "relevance": {
+        "relation": "direct",
+        "population": "Women residing in two domestic-violence shelters.",
+        "exposureEvidence": "Explicit domestic/family/intimate-partner violence population in the original publication.",
+        "rationale": "Directly relevant population and sound-based intervention or participatory music research.",
+        "transferLimit": "Findings do not establish general clinical efficacy or replacement of survivor services."
+      },
+      "age": {
+        "groups": [
+          "adult"
+        ],
+        "reportedRange": "not established from accessed source",
+        "youthScope": "No separately reported youth sample."
+      },
+      "country": "United States",
+      "setting": "Two Midwestern domestic-violence shelters",
+      "sampleSize": {
+        "randomized": null,
+        "analyzed": 28,
+        "description": "28 participants reported; outcome-specific denominators not established from accessed source."
+      },
+      "intervention": {
+        "description": "Participant-selected music with progressive muscle relaxation.",
+        "dose": "Five daily half-hour meetings; recording 20 minutes.",
+        "provider": "Researcher"
+      },
+      "comparator": "Control group; treatment content not established from accessed source",
+      "outcomes": [
+        {
+          "name": "Anxiety and sleep",
+          "followUp": "Five days",
+          "result": "Improvement reported; effect sizes and between-group sleep contrast unavailable.",
+          "effectEstimate": null,
+          "uncertainty": "No randomized causal effect established.",
+          "primaryStatus": "not established from accessed source"
+        },
+        {
+          "name": "Correlations",
+          "followUp": "Five days",
+          "result": "No significant anxiety–sleep or fatigue–sleep relationship.",
+          "effectEstimate": null,
+          "uncertainty": "No randomized causal effect established.",
+          "primaryStatus": "not established from accessed source"
+        }
+      ],
+      "finding": "Anxiety improvement reported; sleep changed within the intervention group but not controls.",
+      "limitation": "Abstract does not establish a between-group sleep effect.",
+      "design": {
+        "type": "Controlled pre/post study; allocation unverified",
+        "randomizationEvidence": "No random allocation established.",
+        "masking": {
+          "participants": "not established from accessed source",
+          "providers": "not established from accessed source",
+          "assessors": "not established from accessed source",
+          "analysts": "not established from accessed source"
+        },
+        "crosses": 0,
+        "crossRationale": "No verified randomized allocation; no RCT crosses."
+      },
+      "quality": {
+        "riskOfBias": "Exploratory evidence; selection, expectancy and reporting biases remain.",
+        "attrition": "not established from accessed source",
+        "confounding": "Concurrent support and time effects cannot be separated from music.",
+        "adverseFindings": "Adverse-event assessment not established from accessed source.",
+        "transferLimits": "Sample and design do not support general clinical efficacy claims.",
+        "jadad": "not established"
+      },
+      "access": {
+        "level": "abstract",
+        "sourceURLs": [
+          "https://europepmc.org/article/MED/15913391"
+        ],
+        "retrievedAt": "2026-10-30T07:25:34.851078+00:00"
+      },
+      "sources": [
+        {
+          "url": "https://europepmc.org/article/MED/15913391",
+          "type": "Europe PMC / MEDLINE abstract",
+          "retrievedAt": "2026-10-30T07:25:34.851078+00:00",
+          "identityVerified": true,
+          "notes": "Original publication evidence; extraction limited to accessed material."
+        }
+      ],
+      "publicationStatus": {
+        "status": "published",
+        "correctionRetractionCheck": "No correction/retraction entry or retraction publication type in retrieved Europe PMC record.",
+        "uncertainty": "This limited metadata check is not an exhaustive status audit."
+      },
+      "recommendationRationale": "Retain as clearly labeled exploratory evidence for human review.",
+      "review": {
+        "status": "pending",
+        "reviewer": null
+      },
+      "assessmentStatus": "assessed",
+      "assessmentNotes": "Existing baseline publication; do not count as new. Allocation and masking require full methods.",
+      "researchLane": "sound",
+      "reviewReady": true,
+      "reviewReadiness": "ready-with-access-limits",
+      "studyDesignAssessment": {
+        "category": "nonrandomized-or-unestablished",
+        "isRandomizedControlledTrial": false,
+        "basis": "No random allocation established.",
+        "sources": [
+          "https://europepmc.org/article/MED/15913391"
+        ],
+        "reviewScope": "abstract"
+      },
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "randomizedControlledTrial": false,
+        "peerReviewed": true,
+        "blinding": "not-applicable",
+        "basis": "No verified randomized allocation; no RCT crosses.",
+        "sources": [
+          "https://europepmc.org/article/MED/15913391"
+        ],
+        "reviewScope": "abstract",
+        "humanApproval": false,
+        "displayCrosses": 0,
+        "maskingRoles": {
+          "participants": "not established from accessed source",
+          "providers": "not established from accessed source",
+          "assessors": "not established from accessed source",
+          "analysts": "not established from accessed source"
+        }
+      },
+      "jadad": {
+        "status": "unassessed",
+        "score": null
+      },
+      "evidence": {
+        "population": {
+          "relation": "direct",
+          "population": "Women residing in two domestic-violence shelters.",
+          "exposureEvidence": "Explicit domestic/family/intimate-partner violence population in the original publication.",
+          "rationale": "Directly relevant population and sound-based intervention or participatory music research.",
+          "transferLimit": "Findings do not establish general clinical efficacy or replacement of survivor services."
+        },
+        "intervention": {
+          "description": "Participant-selected music with progressive muscle relaxation.",
+          "dose": "Five daily half-hour meetings; recording 20 minutes.",
+          "provider": "Researcher"
+        },
+        "comparator": "Control group; treatment content not established from accessed source",
+        "outcomes": [
+          {
+            "name": "Anxiety and sleep",
+            "followUp": "Five days",
+            "result": "Improvement reported; effect sizes and between-group sleep contrast unavailable.",
+            "effectEstimate": null,
+            "uncertainty": "No randomized causal effect established.",
+            "primaryStatus": "not established from accessed source"
+          },
+          {
+            "name": "Correlations",
+            "followUp": "Five days",
+            "result": "No significant anxiety–sleep or fatigue–sleep relationship.",
+            "effectEstimate": null,
+            "uncertainty": "No randomized causal effect established.",
+            "primaryStatus": "not established from accessed source"
+          }
+        ],
+        "access": {
+          "level": "abstract",
+          "sourceURLs": [
+            "https://europepmc.org/article/MED/15913391"
+          ],
+          "retrievedAt": "2026-10-30T07:25:34.851078+00:00"
+        }
+      },
+      "citationSnapshot": {
+        "count": null,
+        "source": null,
+        "retrievedAt": null,
+        "status": "not-assessed"
+      },
+      "provenance": "Discovered by AI",
+      "contentHash": "90e2b6709ba5e55c97cc3bad95e50dfdca7bcf8edc808ad5bc3d2bfa6983cf90",
+      "revision": "r1-90e2b6709ba5"
+    }
+  ]
+}

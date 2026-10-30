@@ -1,0 +1,116 @@
+{
+  "passed": true,
+  "checkedAt": "2026-10-30T08:04:53.808610+00:00",
+  "sourceCommit": "3ace08df05636b7e887ebe13a47f4d9e6c27b389",
+  "checks": [
+    {
+      "path": "Informatics/review/domestic-violence-20261030/batch-acb62474225f0804.json",
+      "url": "https://staging.universalmind.tv/informatics/review/domestic-violence-20261030/batch-acb62474225f0804.json",
+      "status": 200,
+      "sha256": "5e493ac71579de181bebd55fdb13377380ace3449775a314af2ffe067e1d11ad",
+      "matchesCommittedSource": true,
+      "robots": "noindex, nofollow, noarchive",
+      "cacheControl": "no-store"
+    },
+    {
+      "path": "Informatics/review/domestic-violence-20261030/index.html",
+      "url": "https://staging.universalmind.tv/informatics/review/domestic-violence-20261030/index.html",
+      "status": 200,
+      "sha256": "dc27851e61cb39095c5cf3b235060a98bb3094007aaeee2ee766da0e200f85b2",
+      "matchesCommittedSource": true,
+      "robots": "noindex, nofollow, noarchive",
+      "cacheControl": "no-store, no-cache, must-revalidate, max-age=0"
+    },
+    {
+      "path": "Informatics/review/domestic-violence-20261030/index.json",
+      "url": "https://staging.universalmind.tv/informatics/review/domestic-violence-20261030/index.json",
+      "status": 200,
+      "sha256": "d64fbfa5ff8c91bbcc835c64fdaf8ec70bfeb476d435e4353c060dc9527df775",
+      "matchesCommittedSource": true,
+      "robots": "noindex, nofollow, noarchive",
+      "cacheControl": "no-store"
+    },
+    {
+      "path": "Informatics/review/domestic-violence-20261030/review.css",
+      "url": "https://staging.universalmind.tv/informatics/review/domestic-violence-20261030/review.css",
+      "status": 200,
+      "sha256": "250aae7ddd4bad9362fbd0ad90d00430031f800f74056cff12fba2a1f93bb449",
+      "matchesCommittedSource": true,
+      "robots": "noindex, nofollow, noarchive",
+      "cacheControl": "no-store"
+    },
+    {
+      "path": "Informatics/review/domestic-violence-20261030/review.js",
+      "url": "https://staging.universalmind.tv/informatics/review/domestic-violence-20261030/review.js",
+      "status": 200,
+      "sha256": "e3ce555d476822bbb485d753f6822151952055891db1360ec350bbacf56981fa",
+      "matchesCommittedSource": true,
+      "robots": "noindex, nofollow, noarchive",
+      "cacheControl": "no-store"
+    },
+    {
+      "path": "Informatics/review/domestic-violence-20261030/screening.json",
+      "url": "https://staging.universalmind.tv/informatics/review/domestic-violence-20261030/screening.json",
+      "status": 200,
+      "sha256": "39441d0fdd9155e3d45432d10f6412e6566a105bda416ef18cd7284f35902e9d",
+      "matchesCommittedSource": true,
+      "robots": "noindex, nofollow, noarchive",
+      "cacheControl": "no-store"
+    },
+    {
+      "path": "Informatics/review/domestic-violence-20261030/search-log.json",
+      "url": "https://staging.universalmind.tv/informatics/review/domestic-violence-20261030/search-log.json",
+      "status": 200,
+      "sha256": "e1f6eb98219010d5b70bc3efe3800f833e385f947bdc9f2bd458cabfc8eb7de7",
+      "matchesCommittedSource": true,
+      "robots": "noindex, nofollow, noarchive",
+      "cacheControl": "no-store"
+    },
+    {
+      "path": "Informatics/exports/manifest.json",
+      "url": "https://staging.universalmind.tv/informatics/exports/manifest.json",
+      "status": 200,
+      "sha256": "962897f1936ec604d0ced91aebb05f8c051d93e3f2eae624afc963bb8e7ef894",
+      "matchesCommittedSource": true,
+      "robots": "noindex, nofollow",
+      "cacheControl": null
+    },
+    {
+      "path": "Informatics/library-data/community-index.json",
+      "url": "https://staging.universalmind.tv/informatics/library-data/community-index.json",
+      "status": 200,
+      "sha256": "2e6c7b9f39e68b888b72876120a297ffc09f025d79de4e180ff60f04723af138",
+      "matchesCommittedSource": true,
+      "robots": "noindex, nofollow",
+      "cacheControl": null
+    },
+    {
+      "path": "Informatics/library-data/age-index.json",
+      "url": "https://staging.universalmind.tv/informatics/library-data/age-index.json",
+      "status": 200,
+      "sha256": "cdd380ee1a1425a5777aa415061b5472eb632b035accb96da8823c8cab61d320",
+      "matchesCommittedSource": true,
+      "robots": "noindex, nofollow",
+      "cacheControl": null
+    },
+    {
+      "path": "Informatics/library-model.js",
+      "url": "https://staging.universalmind.tv/informatics/library-model.js",
+      "status": 200,
+      "sha256": "00df8dc93a90a09af387c5f32830d1dc3f4b994b1941b7cb066e898b56934841",
+      "matchesCommittedSource": true,
+      "robots": "noindex, nofollow",
+      "cacheControl": "max-age=14400"
+    },
+    {
+      "path": "Informatics/library.js",
+      "url": "https://staging.universalmind.tv/informatics/library.js",
+      "status": 200,
+      "sha256": "5d42912dc178b6f53b78d8f9909040e2e70275f92c8a8afffb23ab16f67c3a57",
+      "matchesCommittedSource": true,
+      "robots": "noindex, nofollow",
+      "cacheControl": "max-age=14400"
+    }
+  ],
+  "productionModified": false
+}
