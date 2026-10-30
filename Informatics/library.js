@@ -155,9 +155,10 @@
     for (const [id,label,values] of [
       ['journal','All journals',[...relevant.filter(r=>r.publisherFamily).map(r=>['family:'+r.publisherFamily,r.publisherFamilyLabel+' — all journals']),...relevant.filter(r=>r.journalKey).map(r=>[r.journalKey,journalDisplay(r)])]],
       ['topic','All topics',relevant.flatMap(r=>r.topics.filter(t=>collection==='all'||t.collection===collection).map(t=>[t.key,t.title]))],
-      ['community','All communities and contexts',communityData.taxonomy.map(item=>[item.id,`${item.label} (${relevant.filter(record=>communityModel.matches(record,item.id,$('#include-related').checked)).length})`])],
-      ['age','All age groups',ageData.taxonomy.map(item=>[item.id,`${item.label} (${relevant.filter(record=>record.ageGroups.includes(item.id)).length})`])]
+      ['community','All communities and contexts',communityData.taxonomy.map(item=>[item.id,item.label])],
+      ['age','All age groups',ageData.taxonomy.map(item=>[item.id,item.label])]
     ]) {
+      if (['community','age'].includes(id) && $('#'+id).options.length>1) continue;
       const selected = loading ? params.getAll(id) : multi.values(id);
       const options = [...new Map(values).entries()];if(id!=='age')options.sort((a,b)=>a[1].localeCompare(b[1]));
       $('#'+id).innerHTML = `<option value="">${label}</option>`+options.map(([value,title])=>`<option value="${esc(value)}"${id==='community' ? ` data-search-terms="${esc(communityData.taxonomy.find(item=>item.id===value)?.searchTerms.join(' ') || '')}"` : ''}>${esc(title)}</option>`).join('');
@@ -181,16 +182,32 @@
     const referenceMatch = $('#query').value.trim().match(/^(NPL|PAT)[- ]?(\d+[a-z]?)$/i);
     const referenceQuery = referenceMatch ? `${referenceMatch[1]}-${referenceMatch[2]}`.toUpperCase() : '';
     const chosen = Object.fromEntries(multiFields.map(key=>[key,multi.values(key)]));
-    const any = (key,test) => !chosen[key].length || chosen[key].some(test);
-    filtered = records.filter(r => (collection==='all' || r.collections.includes(collection)) &&
+    const includeRelated = $('#include-related').checked;
+    const matches = (r, except = '') => {
+      const any = (key,test) => key===except || !chosen[key].length || chosen[key].some(test);
+      return (collection==='all' || r.collections.includes(collection)) &&
       any('topic',v=>r.topics.some(t=>t.key===v)) && any('journal',v=>v.startsWith('family:') ? r.publisherFamily===v.slice(7) : r.journalKey===v) &&
       any('physiology',v=>r.categories.includes(v)) && any('category',v=>r.categories.includes(v)) &&
       any('target',v=>r.targets.includes(v)) && any('condition',v=>r.conditions.includes(v)) &&
-      any('community',v=>communityModel.matches(r,v,$('#include-related').checked)) && any('age',v=>r.ageGroups.includes(v)) &&
+      any('community',v=>communityModel.matches(r,v,includeRelated)) && any('age',v=>r.ageGroups.includes(v)) &&
       any('jadad',v=>model.matchesJadad(r,v)) && any('kind',v=>model.matchesStudy(r,v)) &&
       any('period',v=>v==='recent' && r.year>=2022 && r.year<=2026 || v==='older' && r.year && r.year<2022) &&
       any('trust',v=>model.matchesPaperTrust(r,Number(v))) &&
-      (referenceQuery ? (r.sourceReferences || []).some(e=>e.ref.toUpperCase()===referenceQuery) : q.every(word=>r._search.includes(word))));
+      (referenceQuery ? (r.sourceReferences || []).some(e=>e.ref.toUpperCase()===referenceQuery) : q.every(word=>r._search.includes(word)));
+    };
+    filtered = records.filter(r=>matches(r));
+    // Each option counts papers matching every other filter. Keep this filter's
+    // alternatives available because multiple selections within it use OR.
+    for (const [id,taxonomy,test] of [
+      ['community',communityData.taxonomy,(r,value)=>communityModel.matches(r,value,includeRelated)],
+      ['age',ageData.taxonomy,(r,value)=>r.ageGroups.includes(value)]
+    ]) {
+      const candidates = records.filter(r=>matches(r,id));
+      for (const item of taxonomy) {
+        const option = [...$('#'+id).options].find(o=>o.value===item.id);
+        if (option) option.textContent = `${item.label} (${candidates.filter(r=>test(r,item.id)).length})`;
+      }
+    }
     const sort = $('#sort').value;
     filtered.sort((a,b) => sort === 'title' ? a.title.localeCompare(b.title) : sort === 'newest' ? (b.year || 0)-(a.year || 0) : a.priority-b.priority || (b.year || 0)-(a.year || 0) || a.title.localeCompare(b.title));
     const active = Object.values(chosen).reduce((sum,values)=>sum+values.length,0);
