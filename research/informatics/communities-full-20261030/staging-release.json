@@ -1,0 +1,31 @@
+{
+  "verifiedAt": "2026-10-30T15:51:44.112785+11:00",
+  "sourceCommit": "7ce7c5fca9d410790e3e4b2478baf0b9bd9ade4c",
+  "baseStagingCommit": "af60947ebcd37716dea5833ffe4f249158a9964b",
+  "environment": "staging",
+  "proofURL": "https://staging.universalmind.tv/informatics/library.html?collection=all&view=search",
+  "deploymentCommand": "SHOPFRONT_MUGLER_FIXTURE=/private/tmp/um-study-mugler-fixture.mp4 ./deploy-panthur-staging.sh informatics",
+  "transport": "Existing Panthur curl/FTP",
+  "changedUploads": 12,
+  "scopedTrackedAssets": 13506,
+  "liveTextAndDataAssetsMatched": 7,
+  "screenedRecords": 1108,
+  "directOrContextualRecords": 215,
+  "relatedRecords": 57,
+  "approvedBaselineRecords": 50,
+  "newAssessmentsAwaitingStagingReview": 1058,
+  "externalAbstractsRetrieved": 765,
+  "completeExportSourcesReconstructed": 1176,
+  "visualInspection": "Desktop 1440 and mobile 320 screenshots inspected; calibration panels absent, readable controls and no horizontal overflow.",
+  "browserViewportWidths": [
+    1440,
+    390,
+    320
+  ],
+  "audioDisabledAtBrowserLaunch": true,
+  "calibrationUIRemoved": true,
+  "originalCurationPreserved": true,
+  "productionModifiedByThisTask": false,
+  "runtimeOpenAIChanges": false,
+  "recurringAutomationActivated": false
+}

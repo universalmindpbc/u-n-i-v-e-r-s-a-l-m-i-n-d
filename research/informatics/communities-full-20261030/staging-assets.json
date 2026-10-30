@@ -1,0 +1,56 @@
+{
+  "checkedAt": "2026-10-30T04:50:20.886289+00:00",
+  "sourceCommit": "7ce7c5fca9d410790e3e4b2478baf0b9bd9ade4c",
+  "assets": [
+    {
+      "path": "Informatics/exports/manifest.json",
+      "url": "https://staging.universalmind.tv/informatics/exports/manifest.json?verification=communities-full-20261030",
+      "bytes": 2393172,
+      "sha256": "759a38cc778a44d920795a70e7bbd7d0ee791439d97e2c465a1691fa80452921",
+      "matched": true
+    },
+    {
+      "path": "Informatics/library-communities.js",
+      "url": "https://staging.universalmind.tv/informatics/library-communities.js?verification=communities-full-20261030",
+      "bytes": 1438,
+      "sha256": "6bf513a461b401ae70b2541662399623608bf8f2c5ae40d60d914eec3b1bd936",
+      "matched": true
+    },
+    {
+      "path": "Informatics/library-data/community-index.json",
+      "url": "https://staging.universalmind.tv/informatics/library-data/community-index.json?verification=communities-full-20261030",
+      "bytes": 115251,
+      "sha256": "d31ca83a7ab164c63f286239bd2ab4fbb0f09ff85d7ea4779a6563e21b2d92bc",
+      "matched": true
+    },
+    {
+      "path": "Informatics/library.css",
+      "url": "https://staging.universalmind.tv/informatics/library.css?verification=communities-full-20261030",
+      "bytes": 29959,
+      "sha256": "4752f51f4cc3e5ff5527c7517b4562b02af30d22417228195a2e09cf49f9ab05",
+      "matched": true
+    },
+    {
+      "path": "Informatics/library.html",
+      "url": "https://staging.universalmind.tv/informatics/library.html?verification=communities-full-20261030",
+      "bytes": 34967,
+      "sha256": "fcd747b14a26ff6a78dd5ef87ee44d06f30b746f503f847e6a8cc416451a803e",
+      "matched": true
+    },
+    {
+      "path": "Informatics/library.js",
+      "url": "https://staging.universalmind.tv/informatics/library.js?verification=communities-full-20261030",
+      "bytes": 44709,
+      "sha256": "90ef4391624df93a95e4cba733eb8fa7d6b647a2e5e62ce374f17e27f481057d",
+      "matched": true
+    },
+    {
+      "path": "Informatics/read/data.html",
+      "url": "https://staging.universalmind.tv/informatics/read/data.html?verification=communities-full-20261030",
+      "bytes": 180142,
+      "sha256": "9a7d46deac4b0557314f65d09d1d7f13fb8ca376f96fdd330a96ca1d61c57ae9",
+      "matched": true
+    }
+  ],
+  "passed": true
+}

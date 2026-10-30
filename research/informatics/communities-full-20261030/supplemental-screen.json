@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "scope": "Expanded synonym scan of all no-match records using indexed text and retrieved abstracts",
+  "additionalSupportedMatches": 0,
+  "rejectedCandidate": {
+    "recordId": "src-81feac0bd644",
+    "title": "The Macroeconomics of Happiness",
+    "reason": "Gross Domestic Product does not refer to domestic violence."
+  }
+}
