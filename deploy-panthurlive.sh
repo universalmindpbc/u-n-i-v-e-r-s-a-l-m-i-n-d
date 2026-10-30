@@ -801,7 +801,7 @@ deploy_events() {
 # Publish the organisation guide through the existing Panthur transport.
 deploy_ai_wiki() {
   local relative manifest_tmp
-  local paths=(read/wiki.css read/resources.json read/index.html home/ai-wiki-link.css llms.txt sitemap.xml home/index.html index.html)
+  local paths=(read/wiki.css read/resources.json read/index.html home/ai-wiki-link.css home/directory.css llms.txt sitemap.xml home/index.html index.html)
   if [[ -n "$(git -C "$ROOT_DIR" status --porcelain --untracked-files=all -- "${paths[@]}" robots.txt robots-staging.txt)" ]]; then
     echo "Refusing to deploy uncommitted AI wiki source." >&2
     return 1
@@ -811,7 +811,7 @@ deploy_ai_wiki() {
   done
   manifest_tmp="$(mktemp)"
   if [[ -f "$MANIFEST_FILE" ]]; then
-    awk -F '\t' '$2 !~ /^read\// && $2 != "home/ai-wiki-link.css" && $2 != "llms.txt" && $2 != "sitemap.xml" && $2 != "robots.txt" && $2 != "home/index.html" && $2 != "index.html"' "$MANIFEST_FILE" > "$manifest_tmp"
+    awk -F '\t' '$2 !~ /^read\// && $2 != "home/ai-wiki-link.css" && $2 != "home/directory.css" && $2 != "llms.txt" && $2 != "sitemap.xml" && $2 != "robots.txt" && $2 != "home/index.html" && $2 != "index.html"' "$MANIFEST_FILE" > "$manifest_tmp"
   fi
   put_file "$ROBOTS_FILE" "robots.txt"
   printf '%s\t%s\n' "$(file_hash "$ROBOTS_FILE")" "robots.txt" >> "$manifest_tmp"

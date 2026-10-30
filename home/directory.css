@@ -142,7 +142,7 @@ h1 {
   cursor: pointer;
 }
 .directory-control[hidden] { display: none; }
-.ambient-toggle { left: max(8px, env(safe-area-inset-left)); }
+.ambient-toggle { right: max(52px, calc(env(safe-area-inset-right) + 44px)); }
 .fullscreen-toggle { right: max(8px, env(safe-area-inset-right)); }
 .directory-control svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.5; }
 .directory-control:hover, .directory-control:focus-visible { color: var(--route-highlight); opacity: 1; }
