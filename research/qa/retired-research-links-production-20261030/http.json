@@ -1,0 +1,79 @@
+{
+  "passed": true,
+  "approvedCandidate": "63e5e25d0a7b9300feebc6809fff07ad4f743123",
+  "checkedAt": "2026-10-30T03:41:47Z",
+  "checks": [
+    {
+      "route": "/",
+      "source": "index.html",
+      "productionMatchesApprovedSource": true,
+      "stagingMatchesApprovedSource": true,
+      "sha256": "6b5b0d273ff9a3db1c0b03121fd39accdefa711f57e02deffbf44600a8b2ee8b"
+    },
+    {
+      "route": "/home/",
+      "source": "home/index.html",
+      "productionMatchesApprovedSource": true,
+      "stagingMatchesApprovedSource": true,
+      "sha256": "0388c8b1199da7c5b1447f754a25e9aa904aa3afb78a22aa88bc4bcbc3c30c04"
+    },
+    {
+      "route": "/home/directory.css?v=9",
+      "source": "home/directory.css",
+      "productionMatchesApprovedSource": true,
+      "stagingMatchesApprovedSource": true,
+      "sha256": "5a7aebcf5ce3bb05e627c036f14403066f2a4819a54a44e21bd10f0f9cb67443"
+    },
+    {
+      "route": "/home/ai-wiki-link.css?v=1",
+      "source": "home/ai-wiki-link.css",
+      "productionMatchesApprovedSource": true,
+      "stagingMatchesApprovedSource": true,
+      "sha256": "ba887b0e9e32884acc603fbc5611c66d0d25f72b6b7a714cee2c0efbeecc7654"
+    },
+    {
+      "route": "/read/",
+      "source": "read/index.html",
+      "productionMatchesApprovedSource": true,
+      "stagingMatchesApprovedSource": true,
+      "sha256": "1c85f0e98c51f0e3048c294f094058f765121561f4f7736dca0625738b396497"
+    },
+    {
+      "route": "/read/wiki.css?v=1",
+      "source": "read/wiki.css",
+      "productionMatchesApprovedSource": true,
+      "stagingMatchesApprovedSource": true,
+      "sha256": "03aa01f411e074f55ec52299eaf6a37f955792c68565cf891a3bd0cb19def25c"
+    },
+    {
+      "route": "/read/resources.json",
+      "source": "read/resources.json",
+      "productionMatchesApprovedSource": true,
+      "stagingMatchesApprovedSource": true,
+      "sha256": "8cf30eb576a3ace87dee81f2dbd19ea1561b05023294ad02377888c75691bc93"
+    },
+    {
+      "route": "/llms.txt",
+      "source": "llms.txt",
+      "productionMatchesApprovedSource": true,
+      "stagingMatchesApprovedSource": true,
+      "sha256": "6bb4faf850a1bcac632aee1f1d4cca704c5f26bb0fdf930e679c58782eb4bbb4"
+    },
+    {
+      "route": "/sitemap.xml",
+      "source": "sitemap.xml",
+      "productionMatchesApprovedSource": true,
+      "stagingMatchesApprovedSource": true,
+      "sha256": "512337b99fafc5e425119197b62bf7379b997f927194ed67eeb569679a0dbbab"
+    },
+    {
+      "route": "/robots.txt",
+      "source": "robots.txt",
+      "productionMatchesApprovedSource": true,
+      "stagingMatchesApprovedSource": true,
+      "sha256": "dfbf287652eda22ee4d879ca18746ea1d1a95350e3aaac2d37afb84f64b6cbbe"
+    }
+  ],
+  "retiredLinksAbsentFromAllFourDiscoveryFiles": true,
+  "stagingCrawlingExcluded": true
+}
