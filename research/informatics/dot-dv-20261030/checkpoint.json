@@ -1,0 +1,59 @@
+{
+  "updatedAt": "2026-10-30T08:01:36.059488+00:00",
+  "status": "candidate-verified-awaiting-committed-staging-deployment",
+  "baselineCommit": "36fe9a2d3869f90083907ff7c9001aa9c5d8a21f",
+  "batchRevision": "batch-acb62474225f0804",
+  "metrics": {
+    "screenedRaw": 671,
+    "screenedUnique": 634,
+    "sourceInspectedUnique": 430,
+    "automatedTitleScreenedUnique": 215,
+    "assessed": 120,
+    "reviewReady": 116,
+    "deduplicatedNew": 118,
+    "existingAssessed": 2,
+    "primaryStudyProgramGroups": 83,
+    "groupsWithUncertainLinkage": 31,
+    "randomizedReportGroups": 47,
+    "registeredRandomizedReportGroups": 19,
+    "independentStudyFamilyCount": null,
+    "independenceStatus": "Cohort independence has not been exhaustively reconciled; group counts are provisional.",
+    "reviewPublications": 21,
+    "excludedUnique": 248,
+    "deferredUnique": 264,
+    "existingNotReassessed": 2,
+    "otherScreeningDispositionUnique": 0,
+    "sourceClarificationNeeded": 4,
+    "duplicateCandidateReports": 0
+  },
+  "extraSpendAUD": 0,
+  "purchases": 0,
+  "paidAPIJobs": 0,
+  "recurringMonitors": 0,
+  "productionAuthorized": false,
+  "productionModified": false,
+  "sourceAccess": {
+    "abstract": 90,
+    "selected-methods": 17,
+    "full-text": 13
+  },
+  "relations": {
+    "direct": 112,
+    "related": 5,
+    "context": 3
+  },
+  "designCrosses": {
+    "1": 54,
+    "0": 66
+  },
+  "lastCompleted": "Candidate content and in-memory model, identity, source-isolation, export and browser checks",
+  "nextActions": [
+    "Commit exact candidate source",
+    "Coordinate staging release",
+    "Deploy through existing Panthur informatics workflow",
+    "Verify live hashes, browser and downloads",
+    "Push source and staging evidence"
+  ],
+  "deploymentBaselineCommit": "4900e9e0a33a85c154104b25ec09586a03216675",
+  "baselineReconciliation": "New staging commit adds release evidence only. Approved Informatics source and export version are unchanged."
+}

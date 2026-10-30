@@ -38,7 +38,9 @@ def inventory():
     for name in sorted(filter(None, tracked)):
         p = ROOT / name
         rel = p.relative_to(SITE).as_posix()
-        if rel.startswith('exports/'):
+        # Staging review packages are pending proposals, not approved research.
+        # Keep them out of the public corpus and all complete-dataset consumers.
+        if rel.startswith(('exports/', 'review/')):
             continue
         # These CSV files are exact alternate serialisations of the JSON files
         # already included. The full record values remain in both exports.

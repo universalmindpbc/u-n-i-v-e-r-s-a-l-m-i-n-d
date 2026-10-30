@@ -1,0 +1,948 @@
+[
+  {
+    "id": "dv-vision-11036736",
+    "url": "https://api.crossref.org/works/10.1177%2F0145445500245006",
+    "retrievedAt": "2026-10-30T07:26:23.813928+00:00",
+    "title": [
+      "The Relative Effectiveness of Emdr Versus Relaxation Training with Battered Women Prisoners"
+    ],
+    "authors": [
+      {
+        "given": "Sharman D.",
+        "family": "Colosetti",
+        "sequence": "first",
+        "affiliation": [
+          {
+            "name": "University of Georgia"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Bruce A.",
+        "family": "Thyer",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "University of Georgia Medical College of Georgia University of Huddersfield, U.K.."
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "published": {
+      "date-parts": [
+        [
+          2000,
+          10
+        ]
+      ]
+    },
+    "updateTo": [],
+    "relation": {},
+    "type": "journal-article",
+    "status": "retrieved",
+    "europePMCStatusFields": {},
+    "europePMCPublicationTypes": {
+      "pubType": [
+        "Comparative Study",
+        "Journal Article",
+        "Case Reports"
+      ]
+    }
+  },
+  {
+    "id": "dv-vision-2a09962793c2",
+    "url": "https://api.crossref.org/works/10.1016%2Fj.erap.2012.08.006",
+    "retrievedAt": "2026-10-30T07:26:25.761970+00:00",
+    "title": [
+      "Eye movement desensitization and reprocessing (EMDR) therapy in the treatment of victims of domestic violence: A pilot study"
+    ],
+    "authors": [
+      {
+        "given": "C.",
+        "family": "Tarquinio",
+        "sequence": "first",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "M.-J.",
+        "family": "Brennstuhl",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "J.A.",
+        "family": "Rydberg",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "A.",
+        "family": "Schmitt",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "F.",
+        "family": "Mouda",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "M.",
+        "family": "Lourel",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "P.",
+        "family": "Tarquinio",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "published": {
+      "date-parts": [
+        [
+          2012,
+          10
+        ]
+      ]
+    },
+    "updateTo": [],
+    "relation": {},
+    "type": "journal-article",
+    "status": "retrieved"
+  },
+  {
+    "id": "dv-vision-d0356a161cd2",
+    "url": "https://api.crossref.org/works/10.1891%2F1933-3196.3.3.192",
+    "retrievedAt": "2026-10-30T07:26:23.468787+00:00",
+    "title": [
+      "EMDR Treatment of Past Domestic Violence: A Clinical Vignette"
+    ],
+    "authors": [
+      {
+        "given": "Kristin M.",
+        "family": "Phillips",
+        "sequence": "first",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Blanche",
+        "family": "Freund",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Joanne",
+        "family": "Fordiani",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Rachel",
+        "family": "Kuhn",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Gail",
+        "family": "Ironson",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "published": {
+      "date-parts": [
+        [
+          2009,
+          1
+        ]
+      ]
+    },
+    "updateTo": [],
+    "relation": {},
+    "type": "journal-article",
+    "status": "retrieved"
+  },
+  {
+    "id": "dv-vision-da3bfad76f98",
+    "url": "https://api.crossref.org/works/10.1080%2F21501378.2018.1561146",
+    "retrievedAt": "2026-10-30T07:26:24.393099+00:00",
+    "title": [
+      "A Mixed Methods Evaluation of EMDR for Treating Female Survivors of Sexual and Domestic Violence"
+    ],
+    "authors": [
+      {
+        "ORCID": "https://orcid.org/0000-0001-9887-7158",
+        "authenticated-orcid": false,
+        "given": "Jill E.",
+        "family": "Schwarz",
+        "sequence": "first",
+        "affiliation": [
+          {
+            "name": "Department of Counselor Education, The College of New Jersey, Ewing, NJ, USA"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Dana",
+        "family": "Baber",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "Department of Counselor Education, The College of New Jersey, Ewing, NJ, USA"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Ariel",
+        "family": "Barter",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "Department of Counselor Education, The College of New Jersey, Ewing, NJ, USA"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Katherine",
+        "family": "Dorfman",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "Department of Counselor Education, The College of New Jersey, Ewing, NJ, USA"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "published": {
+      "date-parts": [
+        [
+          2019,
+          6,
+          3
+        ]
+      ]
+    },
+    "updateTo": [],
+    "relation": {},
+    "type": "journal-article",
+    "status": "retrieved"
+  },
+  {
+    "id": "dv-vision-437930baadba",
+    "url": "https://api.crossref.org/works/10.1891%2FEMDR-D-21-00014",
+    "retrievedAt": "2026-10-30T07:26:24.885370+00:00",
+    "title": [
+      "EMDR for Survivors of Sexual and Intimate Partner Violence at a Nonprofit Counseling Agency"
+    ],
+    "authors": [
+      {
+        "ORCID": "https://orcid.org/0000-0001-9887-7158",
+        "authenticated-orcid": false,
+        "given": "Jill E.",
+        "family": "Schwarz",
+        "sequence": "first",
+        "affiliation": [
+          {
+            "name": "The College of New Jersey, New Jersey"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Dana",
+        "family": "Baber",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "The College of New Jersey, New Jersey"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Emma",
+        "family": "Giantisco",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "The College of New Jersey, New Jersey"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Brandon",
+        "family": "Isaacson",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "The College of New Jersey, New Jersey"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "published": {
+      "date-parts": [
+        [
+          2021,
+          1
+        ]
+      ]
+    },
+    "updateTo": [],
+    "relation": {},
+    "type": "journal-article",
+    "status": "retrieved"
+  },
+  {
+    "id": "dv-vision-d1f88a25c475",
+    "url": "https://api.crossref.org/works/10.1093%2Fswr%2F23.2.103",
+    "retrievedAt": "2026-10-30T07:26:44.458089+00:00",
+    "title": [
+      "The effectiveness of EMDR with adult female survivors of childhood sexual abuse"
+    ],
+    "authors": [
+      {
+        "given": "T.",
+        "family": "Edmond",
+        "sequence": "first",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "A.",
+        "family": "Rubin",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "K. G.",
+        "family": "Wambach",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "published": {
+      "date-parts": [
+        [
+          1999,
+          6,
+          1
+        ]
+      ]
+    },
+    "updateTo": [],
+    "relation": {},
+    "type": "journal-article",
+    "status": "retrieved"
+  },
+  {
+    "id": "dv-vision-426ce6386119",
+    "url": "https://api.crossref.org/works/10.1192%2Fbjo.2021.1057",
+    "retrievedAt": "2026-10-30T07:26:52.754306+00:00",
+    "title": [
+      "Phase-based treatment versus immediate trauma-focused treatment for post-traumatic stress disorder due to childhood abuse: randomised clinical trial"
+    ],
+    "authors": [
+      {
+        "ORCID": "https://orcid.org/0000-0003-3468-7157",
+        "authenticated-orcid": false,
+        "given": "Noortje I.",
+        "family": "van Vliet",
+        "sequence": "first",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Rafaele J. C.",
+        "family": "Huntjens",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Maarten K.",
+        "family": "van Dijk",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Nathan",
+        "family": "Bachrach",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Marie-Louise",
+        "family": "Meewisse",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Ad",
+        "family": "de Jongh",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "published": {
+      "date-parts": [
+        [
+          2021,
+          11
+        ]
+      ]
+    },
+    "updateTo": [],
+    "relation": {},
+    "type": "journal-article",
+    "status": "retrieved"
+  },
+  {
+    "id": "dv-vision-38629403",
+    "url": "https://api.crossref.org/works/10.1080%2F20008066.2024.2332104",
+    "retrievedAt": "2026-10-30T07:26:29.066767+00:00",
+    "title": [
+      "Skills training followed by either EMDR or narrative therapy for posttraumatic stress disorder in adult survivors of childhood abuse: a randomized controlled trial"
+    ],
+    "authors": [
+      {
+        "ORCID": "https://orcid.org/0009-0001-5179-0722",
+        "authenticated-orcid": false,
+        "given": "I.",
+        "family": "Wigard",
+        "sequence": "first",
+        "affiliation": [
+          {
+            "name": "Parnassiagroep",
+            "place": [
+              "Amsterdam, the Netherlands"
+            ]
+          },
+          {
+            "name": "Department of Clinical Psychology, University of Amsterdam",
+            "place": [
+              "Amsterdam, the Netherlands"
+            ]
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "ORCID": "https://orcid.org/0000-0002-3122-6331",
+        "authenticated-orcid": false,
+        "given": "K.",
+        "family": "Meyerbröker",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "Department of Clinical Psychology, Utrecht University",
+            "place": [
+              "Utrecht, the Netherlands"
+            ]
+          },
+          {
+            "name": "Altrecht Academic Anxiety Centre",
+            "place": [
+              "Utrecht, the Netherlands"
+            ]
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "T.",
+        "family": "Ehring",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "Department of Psychology, LMU Munich",
+            "place": [
+              "Munich, Germany"
+            ]
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "ORCID": "https://orcid.org/0000-0003-2063-4775",
+        "authenticated-orcid": false,
+        "given": "M.",
+        "family": "Topper",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "GGZ-Noord-Holland-Noord",
+            "place": [
+              "Alkmaar, the Netherlands"
+            ]
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "ORCID": "https://orcid.org/0000-0002-7992-2272",
+        "authenticated-orcid": false,
+        "given": "A.",
+        "family": "Arntz",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "Department of Clinical Psychology, University of Amsterdam",
+            "place": [
+              "Amsterdam, the Netherlands"
+            ]
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "ORCID": "https://orcid.org/0000-0001-6066-5512",
+        "authenticated-orcid": false,
+        "given": "P.",
+        "family": "Emmelkamp",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "Department of Clinical Psychology, University of Amsterdam",
+            "place": [
+              "Amsterdam, the Netherlands"
+            ]
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "published": {
+      "date-parts": [
+        [
+          2024,
+          4,
+          17
+        ]
+      ]
+    },
+    "updateTo": [],
+    "relation": {},
+    "type": "journal-article",
+    "status": "retrieved",
+    "europePMCStatusFields": {},
+    "europePMCPublicationTypes": {
+      "pubType": [
+        "Research Support, Non-U.S. Gov't",
+        "research-article",
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ]
+    }
+  },
+  {
+    "id": "dv-vision-38868491",
+    "url": "https://api.crossref.org/works/10.3389%2Ffpsyt.2024.1360388",
+    "retrievedAt": "2026-10-30T07:27:08.515847+00:00",
+    "title": [
+      "Psychological intervention in women victims of childhood sexual abuse: a randomized controlled clinical trial comparing EMDR psychotherapy and trauma-focused cognitive behavioral therapy"
+    ],
+    "authors": [
+      {
+        "given": "Milagros",
+        "family": "Molero-Zafra",
+        "sequence": "first",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Olga",
+        "family": "Fernández-García",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "María Teresa",
+        "family": "Mitjans-Lafont",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Marián",
+        "family": "Pérez-Marín",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "María Jesús",
+        "family": "Hernández-Jiménez",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "published": {
+      "date-parts": [
+        [
+          2024,
+          5,
+          29
+        ]
+      ]
+    },
+    "updateTo": [],
+    "relation": {},
+    "type": "journal-article",
+    "status": "retrieved",
+    "europePMCStatusFields": {},
+    "europePMCPublicationTypes": {
+      "pubType": [
+        "research-article",
+        "Journal Article"
+      ]
+    }
+  },
+  {
+    "id": "dv-vision-42529059",
+    "url": "https://api.crossref.org/works/10.3389%2Ffpsyg.2026.1872104",
+    "retrievedAt": "2026-10-30T07:26:45.630091+00:00",
+    "title": [
+      "A pilot study of the feasibility and preliminary outcomes of sequential TF-CBT and EMDR online group therapy for adult women with histories of childhood sexual abuse"
+    ],
+    "authors": [
+      {
+        "given": "Milagros",
+        "family": "Molero-Zafra",
+        "sequence": "first",
+        "affiliation": [
+          {
+            "name": "Faculty of Psychology, University of Valencia",
+            "place": [
+              "Valencia, Spain"
+            ]
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "María Jesús",
+        "family": "Hernández-Jiménez",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "Mental Health Unit (USM) Sedaví, Dr. Peset Hospital Health Department",
+            "place": [
+              "Valencia, Spain"
+            ]
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Olga",
+        "family": "Fernández-García",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "Faculty of Psychology, University of Valencia",
+            "place": [
+              "Valencia, Spain"
+            ]
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Marián",
+        "family": "Pérez-Marín",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "Faculty of Psychology, University of Valencia",
+            "place": [
+              "Valencia, Spain"
+            ]
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "published": {
+      "date-parts": [
+        [
+          2026,
+          7,
+          15
+        ]
+      ]
+    },
+    "updateTo": [],
+    "relation": {},
+    "type": "journal-article",
+    "status": "retrieved",
+    "europePMCStatusFields": {},
+    "europePMCPublicationTypes": {
+      "pubType": [
+        "brief-report",
+        "Journal Article"
+      ]
+    }
+  }
+]

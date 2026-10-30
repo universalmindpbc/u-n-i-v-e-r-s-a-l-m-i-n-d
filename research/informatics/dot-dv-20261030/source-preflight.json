@@ -1,0 +1,138 @@
+[
+  {
+    "check": "i  a m/adaptive-environment-television.js",
+    "passed": true
+  },
+  {
+    "check": "i  a m/mantra-sampler.js",
+    "passed": true
+  },
+  {
+    "check": "i  a m/broadcast-interactions-v1.js",
+    "passed": true
+  },
+  {
+    "check": "i  a m/mantra-studio.js",
+    "passed": true
+  },
+  {
+    "check": "i  a m/circle-audio-rooms.js",
+    "passed": true
+  },
+  {
+    "check": "i  a m/care-worlds.js",
+    "passed": true
+  },
+  {
+    "check": "i  a m/program-navigation.js",
+    "passed": true
+  },
+  {
+    "check": "cloudflare/agora-audio-room-worker.js",
+    "passed": true
+  },
+  {
+    "check": "i  a m/realtime-voice-assistant.js",
+    "passed": true
+  },
+  {
+    "check": "cloudflare/iam-citizen-needs-worker.js",
+    "passed": true
+  },
+  {
+    "check": "cloudflare/privacy-research-foundations.js",
+    "passed": true
+  },
+  {
+    "check": "cloudflare/citizen-data-vault.js",
+    "passed": true
+  },
+  {
+    "check": "cloudflare/citizen-data-core.js",
+    "passed": true
+  },
+  {
+    "check": "cloudflare/citizen-data-worker.js",
+    "passed": true
+  },
+  {
+    "check": "research/privacy-lab/healthomics-adapter.mjs",
+    "passed": true
+  },
+  {
+    "check": "i  a m/globe.js",
+    "passed": true
+  },
+  {
+    "check": "i  a m/happiness-control.js",
+    "passed": true
+  },
+  {
+    "check": "tools/check-adaptive-music-handoff.mjs",
+    "passed": true
+  },
+  {
+    "check": "tools/check-owner-state-persistence.mjs",
+    "passed": true
+  },
+  {
+    "check": "tools/check-broadcast-clock.mjs",
+    "passed": true
+  },
+  {
+    "check": "tools/check-programme-catalogue-release.mjs",
+    "passed": true
+  },
+  {
+    "check": "tools/check-new-videos-programme-release.mjs",
+    "passed": true
+  },
+  {
+    "check": "tools/check-broadcast-interactions.mjs",
+    "passed": true
+  },
+  {
+    "check": "tools/check-circle-rooms.mjs",
+    "passed": true
+  },
+  {
+    "check": "tools/check-care-worlds.mjs",
+    "passed": true
+  },
+  {
+    "check": "tools/check-public-crawler-surface.mjs",
+    "passed": true
+  },
+  {
+    "check": "tools/check-sovereignty-boundaries.mjs",
+    "passed": true
+  },
+  {
+    "check": "tools/check-shopfront-mockup.mjs",
+    "passed": true
+  },
+  {
+    "check": "tools/check-happiness-rewards.mjs",
+    "passed": true
+  },
+  {
+    "check": "tools/check-privacy-research-foundations.mjs",
+    "passed": true
+  },
+  {
+    "check": "tools/check-citizen-data-foundation.mjs",
+    "passed": true
+  },
+  {
+    "check": "tools/check-universal-one-programme-guide.mjs",
+    "passed": true
+  },
+  {
+    "check": "tools/check-program-page.mjs",
+    "passed": true
+  },
+  {
+    "check": "tools/check-universal-one-adaptive-guide.mjs",
+    "passed": true
+  }
+]

@@ -1,0 +1,9 @@
+Options -Indexes
+RewriteEngine On
+# Candidate evidence is accessible only on the permanent staging host.
+RewriteCond %{HTTP_HOST} !^staging\.universalmind\.tv$ [NC]
+RewriteRule ^ - [F,L]
+<IfModule mod_headers.c>
+  Header always set X-Robots-Tag "noindex, nofollow, noarchive"
+  Header always set Cache-Control "no-store"
+</IfModule>

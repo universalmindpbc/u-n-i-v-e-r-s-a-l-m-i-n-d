@@ -1,0 +1,419 @@
+[
+  {
+    "id": "dv-adult-therapy-39488744",
+    "title": "Investigating the impact of Cognitive Processing Therapy (CPT) on Post-Traumatic Stress Disorder (PTSD), depression, and anxiety symptoms in female victims of domestic violence.",
+    "authors": [
+      "Shirzadfard Jahromi M",
+      "Ghazanfarpour M",
+      "Haghdoost A",
+      "Ahmadi A"
+    ],
+    "year": 2024,
+    "journal": "Journal of injury & violence research",
+    "doi": "10.5249/jivr.v16i2.1842",
+    "pmid": "39488744",
+    "trialRegistration": [],
+    "collection": "language",
+    "interventionFamily": "Group cognitive processing therapy.",
+    "publicationType": "Primary intervention study",
+    "studyFamilyId": "CPT-BandarAbbas-2024",
+    "familyLinkageUncertain": true,
+    "existingRepositoryMatches": [],
+    "relevance": {
+      "relation": "direct",
+      "population": "Women described as victims of domestic violence.",
+      "exposureEvidence": "Women described as victims of domestic violence.",
+      "rationale": "Explicit domestic/intimate-partner violence exposure in the studied population; psychological intervention is within Language scope.",
+      "transferLimit": "See limitation and quality fields; no population-wide clinical recommendation is implied."
+    },
+    "age": {
+      "groups": [
+        "youth",
+        "adults"
+      ],
+      "reportedRange": "18–54 years",
+      "youthScope": "included"
+    },
+    "country": "Iran",
+    "setting": "Bandar Abbas, 2022.",
+    "sampleSize": {
+      "randomized": 62,
+      "analyzed": 60,
+      "description": "Full text resolves sample count: 62 randomized, 60 analyzed (28 intervention,32 control)."
+    },
+    "intervention": {
+      "description": "Group cognitive processing therapy.",
+      "dose": "Twelve 90-minute sessions, twice weekly in groups of three to five.",
+      "provider": "Midwifery counselling master’s student with training certificate."
+    },
+    "comparator": "Control condition; content not established.",
+    "outcomes": [
+      {
+        "name": "PTSD, depression and anxiety",
+        "followUp": "One-month follow-up",
+        "result": "Full-text narrative reports differences including anxiety, contrary to abstract anxiety claim.",
+        "effectEstimate": null,
+        "uncertainty": "Confidence interval included when stated; otherwise not established from accessed source.",
+        "primaryStatus": "Primary versus secondary status not fully established; see finding for explicitly identified secondary outcomes."
+      },
+      {
+        "name": "Domestic violence",
+        "followUp": "One-month follow-up",
+        "result": "Full text reports no significant difference, unlike abstract’s broad benefit statement.",
+        "effectEstimate": "p=.072",
+        "uncertainty": "Confidence interval included when stated; otherwise not established from accessed source.",
+        "primaryStatus": "Primary versus secondary status not fully established; see finding for explicitly identified secondary outcomes."
+      }
+    ],
+    "finding": "Full-text results report PTSD, depression and anxiety differences, while later violence difference is nonsignificant; these conflict with the abstract’s anxiety and violence claims.",
+    "limitation": "Sample-count discrepancy resolves as attrition, but abstract versus full-text outcome contradictions remain. Severe symptoms excluded and analysis omitted two nonattenders.",
+    "design": {
+      "type": "Randomized controlled trial",
+      "randomizationEvidence": "Open-label trial using a random-number table: 30 intervention and 32 control; two intervention nonattenders excluded.",
+      "masking": {
+        "participants": "Open label.",
+        "providers": "Open label.",
+        "assessors": "Not established from accessed source.",
+        "analysts": "Not established from accessed source."
+      },
+      "crosses": 0,
+      "crossRationale": "No display cross assigned while conflicting sample/statistical reporting is unresolved."
+    },
+    "quality": {
+      "riskOfBias": "Provisional appraisal; see limitations, attrition and masking. No formal risk-of-bias score assigned.",
+      "attrition": "Two of 30 intervention participants excluded for missing sessions.",
+      "confounding": "Nonrandomized exposure, secondary association, or unverified allocation limits causal interpretation.",
+      "adverseFindings": "Adverse-event reporting not established from accessed source; absence of reporting is not evidence of no harm.",
+      "transferLimits": "Generalizability is limited to the stated population, setting and comparator.",
+      "jadad": "not applicable"
+    },
+    "access": {
+      "level": "selected-methods",
+      "sourceURLs": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:39488744%20AND%20SRC:MED&format=json&resultType=core",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12646354/fullTextXML"
+      ],
+      "retrievedAt": "2026-10-30T07:14:42.276796+00:00"
+    },
+    "sources": [
+      {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:39488744%20AND%20SRC:MED&format=json&resultType=core",
+        "type": "Europe PMC core record sourced from PubMed/MEDLINE",
+        "retrievedAt": "2026-10-30T07:14:42.276796+00:00",
+        "identityVerified": true,
+        "notes": "Primary-publication abstract and bibliographic metadata accessed; canonical PubMed record: https://pubmed.ncbi.nlm.nih.gov/39488744/",
+        "retrievalQueryURL": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=%28%22battered+women%22+OR+%22intimate+partner+violence%22+OR+%22domestic+violence%22%29+AND+%28%22cognitive+trauma+therapy%22+OR+%22cognitive+processing+therapy%22+OR+HOPE+OR+%22present+centered%22%29&format=json&resultType=core&pageSize=200"
+      },
+      {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12646354/fullTextXML",
+        "type": "Primary paper open-access methods/results",
+        "retrievedAt": "2026-10-30T07:32:26.265566+00:00",
+        "identityVerified": true,
+        "notes": "Selected methods and results checked; no claim of complete full-text quality appraisal."
+      }
+    ],
+    "publicationStatus": {
+      "status": "ppublish",
+      "correctionRetractionCheck": {
+        "europePMCpubTypes": [
+          "research-article",
+          "Journal Article"
+        ],
+        "crossrefUpdateRelations": [],
+        "crossrefRelations": {},
+        "crossrefChecked": false
+      },
+      "uncertainty": "No comprehensive publisher/Crossmark or registry audit claimed; correction/retraction absence is limited to accessed metadata."
+    },
+    "recommendationRationale": "Retain as pending candidate evidence; interpret the study design, null outcomes and access limits together.",
+    "review": {
+      "status": "pending",
+      "reviewer": null
+    },
+    "assessmentStatus": "deferred",
+    "assessmentNotes": [
+      "Bibliographic identity and abstract-level evidence extracted; full-text appraisal remains limited unless explicitly stated.",
+      "Study-family label is retained separately from publication identity; this does not prove independence from every unpublished or secondary report."
+    ],
+    "reviewReady": false,
+    "reviewReadiness": "needs-source-check",
+    "researchLane": "adult-therapy"
+  },
+  {
+    "id": "dv-adult-therapy-34703783",
+    "title": "The Effect of Gestalt-Based Counseling on the Level of Self-Esteem and Intimate Partner Violence against Pregnant Women: A Randomized Control Trial.",
+    "authors": [
+      "Noormohamadi P",
+      "Ahmadi A",
+      "Jahani Y",
+      "Alidousti K"
+    ],
+    "year": 2021,
+    "journal": "Iranian journal of nursing and midwifery research",
+    "doi": "10.4103/ijnmr.ijnmr_176_20",
+    "pmid": "34703783",
+    "trialRegistration": [
+      "IRCT20151103024866N11"
+    ],
+    "collection": "language",
+    "interventionFamily": "Gestalt counselling.",
+    "publicationType": "Primary intervention study",
+    "studyFamilyId": "IRCT20151103024866N11",
+    "familyLinkageUncertain": false,
+    "existingRepositoryMatches": [],
+    "relevance": {
+      "relation": "direct",
+      "population": "Pregnant women reporting domestic violence.",
+      "exposureEvidence": "Pregnant women reporting domestic violence.",
+      "rationale": "Explicit domestic/intimate-partner violence exposure in the studied population; psychological intervention is within Language scope.",
+      "transferLimit": "See limitation and quality fields; no population-wide clinical recommendation is implied."
+    },
+    "age": {
+      "groups": [
+        "adults"
+      ],
+      "reportedRange": "Eligibility 18–45 years",
+      "youthScope": null
+    },
+    "country": "Iran",
+    "setting": "Kerman, 2018.",
+    "sampleSize": {
+      "randomized": null,
+      "analyzed": 70,
+      "description": "Methods/results report 80 enrolled and 70 analyzed; abstract reports 60."
+    },
+    "intervention": {
+      "description": "Gestalt counselling.",
+      "dose": "Eight weekly 45-minute sessions.",
+      "provider": "Not established from accessed source."
+    },
+    "comparator": "Waitlist.",
+    "outcomes": [
+      {
+        "name": "Violence and self-esteem",
+        "followUp": "Post-treatment",
+        "result": "Numerical inconsistencies prevent reliable extraction.",
+        "effectEstimate": null,
+        "uncertainty": "Confidence interval included when stated; otherwise not established from accessed source.",
+        "primaryStatus": "Primary versus secondary status not fully established; see finding for explicitly identified secondary outcomes."
+      }
+    ],
+    "finding": "The abstract claims benefit, but conflicting statistical reporting makes this unsuitable for efficacy presentation pending reconciliation.",
+    "limitation": "Full text conflicts with abstract sample totals, reports self-esteem means above its stated scale range, and has questionable F/p-value pairing. Efficacy extraction remains deferred.",
+    "design": {
+      "type": "Cluster-allocated counselling trial with unresolved reporting inconsistencies",
+      "randomizationEvidence": "Health clinics randomly assigned to arms; body reports 40 enrolled per arm and 35 analyzed per arm, conflicting with abstract N=60.",
+      "masking": {
+        "participants": "Not blinded.",
+        "providers": "Not blinded.",
+        "assessors": "Not established from accessed source.",
+        "analysts": "Not established from accessed source."
+      },
+      "crosses": 0,
+      "crossRationale": "No display cross assigned while conflicting sample/statistical reporting is unresolved."
+    },
+    "quality": {
+      "riskOfBias": "Provisional appraisal; see limitations, attrition and masking. No formal risk-of-bias score assigned.",
+      "attrition": "Body reports five exclusions per arm; abstract total is inconsistent.",
+      "confounding": "Nonrandomized exposure, secondary association, or unverified allocation limits causal interpretation.",
+      "adverseFindings": "Adverse-event reporting not established from accessed source; absence of reporting is not evidence of no harm.",
+      "transferLimits": "Generalizability is limited to the stated population, setting and comparator.",
+      "jadad": "not applicable"
+    },
+    "access": {
+      "level": "selected-methods",
+      "sourceURLs": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:34703783%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.4103%2Fijnmr.ijnmr_176_20",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8491831/fullTextXML"
+      ],
+      "retrievedAt": "2026-10-30T07:15:55.705516+00:00"
+    },
+    "sources": [
+      {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:34703783%20AND%20SRC:MED&format=json&resultType=core",
+        "type": "Europe PMC core record sourced from PubMed/MEDLINE",
+        "retrievedAt": "2026-10-30T07:15:55.705516+00:00",
+        "identityVerified": true,
+        "notes": "Primary-publication abstract and bibliographic metadata accessed; canonical PubMed record: https://pubmed.ncbi.nlm.nih.gov/34703783/",
+        "retrievalQueryURL": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=TITLE_ABS%3A%28%22intimate+partner+violence%22+OR+%22domestic+violence%22+OR+%22battered+women%22%29+AND+TITLE_ABS%3A%28randomized+OR+randomised%29+AND+TITLE_ABS%3A%28therapy+OR+psychological+OR+psychotherapy+OR+cognitive+OR+counseling+OR+counselling+OR+%22motivational+interviewing%22%29&format=json&resultType=core&pageSize=1000"
+      },
+      {
+        "url": "https://api.crossref.org/works/10.4103%2Fijnmr.ijnmr_176_20",
+        "type": "Crossref DOI registration metadata",
+        "retrievedAt": "2026-10-30T07:20:01.660747+00:00",
+        "identityVerified": true,
+        "notes": "DOI identity cross-check; metadata title: The Effect of Gestalt-Based Counseling on the Level of Self-Esteem and Intimate Partner Violence against Pregnant Women. Correction/update relations checked."
+      },
+      {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8491831/fullTextXML",
+        "type": "Primary paper open-access methods/results",
+        "retrievedAt": "2026-10-30T07:32:32.284587+00:00",
+        "identityVerified": true,
+        "notes": "Selected methods and results checked; no claim of complete full-text quality appraisal."
+      }
+    ],
+    "publicationStatus": {
+      "status": "epublish",
+      "correctionRetractionCheck": {
+        "europePMCpubTypes": [
+          "research-article",
+          "Journal Article"
+        ],
+        "crossrefUpdateRelations": [],
+        "crossrefRelations": {},
+        "crossrefChecked": true
+      },
+      "uncertainty": "No comprehensive publisher/Crossmark or registry audit claimed; correction/retraction absence is limited to accessed metadata."
+    },
+    "recommendationRationale": "Retain as pending candidate evidence; interpret the study design, null outcomes and access limits together.",
+    "review": {
+      "status": "pending",
+      "reviewer": null
+    },
+    "assessmentStatus": "deferred",
+    "assessmentNotes": [
+      "Bibliographic identity and abstract-level evidence extracted; full-text appraisal remains limited unless explicitly stated.",
+      "Study-family label is retained separately from publication identity; this does not prove independence from every unpublished or secondary report."
+    ],
+    "reviewReady": false,
+    "reviewReadiness": "needs-source-check",
+    "researchLane": "adult-therapy"
+  },
+  {
+    "id": "dv-vision-437930baadba",
+    "title": "EMDR for Survivors of Sexual and Intimate Partner Violence at a Nonprofit Counseling Agency",
+    "authors": [
+      "Jill E. Schwarz",
+      "Dana Baber",
+      "Emma Giantisco",
+      "Brandon Isaacson"
+    ],
+    "year": 2021,
+    "journal": "Journal of EMDR Practice and Research",
+    "doi": "10.1891/EMDR-D-21-00014",
+    "pmid": null,
+    "trialRegistration": [],
+    "collection": "vision",
+    "interventionFamily": "Clinical EMDR",
+    "publicationType": "primary study",
+    "studyFamilyId": "schwarz-nonprofit-emdr-cohort-overlap-unresolved",
+    "familyLinkageUncertain": true,
+    "existingRepositoryMatches": [],
+    "relevance": {
+      "relation": "direct",
+      "population": "Women with sexual-violence or IPV trauma",
+      "exposureEvidence": "Publisher-deposited abstract explicitly identifies sexual violence or IPV.",
+      "rationale": "Directly relevant clinical EMDR evidence for the target population.",
+      "transferLimit": "Pooled sample; no isolated IPV effect established."
+    },
+    "age": {
+      "groups": [
+        "adults"
+      ],
+      "reportedRange": "not established from accessed source",
+      "youthScope": null
+    },
+    "country": "not established from accessed source",
+    "setting": "Nonprofit community counseling agency",
+    "sampleSize": {
+      "randomized": null,
+      "analyzed": 41,
+      "description": "41 women in a mixed-methods agency evaluation."
+    },
+    "intervention": {
+      "description": "Clinical EMDR",
+      "dose": "Eight EMDR sessions.",
+      "provider": "not established from accessed source"
+    },
+    "comparator": "Pretreatment baseline; no concurrent control established.",
+    "outcomes": [
+      {
+        "name": "Depression/anxiety/PTSD",
+        "followUp": "post-treatment",
+        "result": "Significant pre–post improvement reported.",
+        "effectEstimate": "not established from accessed source",
+        "uncertainty": "not established from accessed source",
+        "primaryStatus": "not established from accessed source"
+      }
+    ],
+    "finding": "Depression, anxiety and PTSD decreased after treatment; interviews reported functional and self-perception changes.",
+    "limitation": "No controlled effect; publication-year metadata conflict and cohort overlap need resolution.",
+    "design": {
+      "type": "Uncontrolled mixed-methods pre–post study",
+      "randomizationEvidence": "No random allocation described in abstract.",
+      "masking": {
+        "participants": "not established from accessed source",
+        "providers": "not established from accessed source",
+        "assessors": "not established from accessed source",
+        "analysts": "not established from accessed source"
+      },
+      "crosses": 0,
+      "crossRationale": "No cross: randomized design not established."
+    },
+    "quality": {
+      "riskOfBias": "Uncontrolled service evaluation.",
+      "attrition": "not established from accessed source",
+      "confounding": "Time, expectancy and agency care; earlier cohort overlap unresolved.",
+      "adverseFindings": "not established from accessed source",
+      "transferLimits": "Adult clinical samples do not establish benefit for children or violence prevention.",
+      "jadad": "not applicable"
+    },
+    "access": {
+      "level": "abstract",
+      "sourceURLs": [
+        "https://doi.org/10.1891/EMDR-D-21-00014",
+        "https://api.crossref.org/works/10.1891%2FEMDR-D-21-00014",
+        "https://connect.springerpub.com/content/sgremdr/15/4"
+      ],
+      "retrievedAt": "2026-10-30T07:22:28.727073+00:00"
+    },
+    "sources": [
+      {
+        "url": "https://doi.org/10.1891/EMDR-D-21-00014",
+        "type": "bibliographic/primary abstract",
+        "retrievedAt": "2026-10-30T07:22:28.727073+00:00",
+        "identityVerified": true,
+        "notes": "Title, DOI and authors reconciled across primary abstract or publisher-deposited metadata."
+      },
+      {
+        "url": "https://api.crossref.org/works/10.1891%2FEMDR-D-21-00014",
+        "type": "publisher-deposited abstract",
+        "retrievedAt": "2026-10-30T07:22:28.727073+00:00",
+        "identityVerified": true,
+        "notes": "Source directly inspected for the extracted claims."
+      },
+      {
+        "url": "https://connect.springerpub.com/content/sgremdr/15/4",
+        "type": "publisher issue index",
+        "retrievedAt": "2026-10-30T07:22:28.727073+00:00",
+        "identityVerified": true,
+        "notes": "Source directly inspected for the extracted claims."
+      },
+      {
+        "url": "https://api.crossref.org/works/10.1891%2FEMDR-D-21-00014",
+        "type": "publisher-deposited Crossref status metadata",
+        "retrievedAt": "2026-10-30T07:26:24.885370+00:00",
+        "identityVerified": true,
+        "notes": "Title/authors/DOI matched; update-to and relation fields checked."
+      }
+    ],
+    "publicationStatus": {
+      "status": "published",
+      "correctionRetractionCheck": "Crossref publisher-deposited update-to and relation fields were empty on 30 October 2026; no correction/retraction notice was identified in accessed metadata. This limited check cannot exclude unlinked notices.",
+      "uncertainty": "Publisher update links and future notices require checking before final approval."
+    },
+    "recommendationRationale": "Retain as pending evidence for human review, with design and source-access limits visible.",
+    "review": {
+      "status": "pending",
+      "reviewer": null
+    },
+    "assessmentStatus": "deferred",
+    "assessmentNotes": [
+      "Crossref and publisher issue URL indicate volume 15(4), 2021, pp202–217; current publisher search index labels 2023. Date conflict retained for verification.",
+      "Do not count as an independent new cohort until overlap with the 21-client report is resolved.",
+      "Clinical EMDR evidence concerns a therapist-delivered multicomponent treatment; it does not isolate eye movements or validate standalone audiovisual content."
+    ],
+    "researchLane": "vision"
+  }
+]

@@ -1,0 +1,1202 @@
+[
+  {
+    "id": "dv-adult-therapy-42326745",
+    "revision": "r1-d11fc2dc88bc",
+    "contentHash": "d11fc2dc88bc634993dd609603e1386553d542ac55b2379ade4c9bbdac575ad7",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-mindbody-40552233",
+    "revision": "r1-65df0f52d008",
+    "contentHash": "65df0f52d008f68a9a88623af08935885f7dd8b5915e29a387a6268f62c90df2",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-reviews-41045209",
+    "revision": "r1-e16f659d45df",
+    "contentHash": "e16f659d45df206c3bd434c87c7301bcf798d90448e33ffa8e076b73c694a8d6",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-explicit-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-adult-therapy-40883805",
+    "revision": "r1-3d8a155ec6f7",
+    "contentHash": "3d8a155ec6f701fb29307ab29132974b5e694832d6bc5df5d2a58d1166778dc0",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-adult-therapy-41065656",
+    "revision": "r1-3e0c382409d6",
+    "contentHash": "3e0c382409d694ca62b7344f5e032fad0df08416fafe88abe848e7d0d088c3f1",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-adult-therapy-39529598",
+    "revision": "r1-8e02c9ca4111",
+    "contentHash": "8e02c9ca41111be6bed1919d97b6cf40312f890c936b57406ac012a37a989f19",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-reviews-38206858",
+    "revision": "r1-19b0dc99ef36",
+    "contentHash": "19b0dc99ef364464759fe69518ea97a47c8fb18a076d50971191438fff082ed9",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-explicit-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-reviews-38678198",
+    "revision": "r1-45ae91805c76",
+    "contentHash": "45ae91805c769720ff13c2d9c914596957e6344cb0cf93edb0bfbf1776ee751b",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-explicit-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-mindbody-39135298",
+    "revision": "r1-49c57e741e48",
+    "contentHash": "49c57e741e488c73fe6697cfee418f0ece084ce61412889fbef72da0339e0a45",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-mindbody-c6c616df1710",
+    "revision": "r1-72d53355d20a",
+    "contentHash": "72d53355d20a81f96f1bdcf223aadf44da46bc7ec747802ea60cebb653e470a3",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-children-35285428",
+    "revision": "r1-0012f3aaf0db",
+    "contentHash": "0012f3aaf0dbcd7982911886d1e004236c99ea66f943b487f0825d522264cc07",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-adult-therapy-37889918",
+    "revision": "r1-a8b708e75848",
+    "contentHash": "a8b708e75848ba81679661cf66d65e1b1cb8bbb93e019a178f14983d0ef3604b",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-reviews-37383647",
+    "revision": "r1-cdc677542087",
+    "contentHash": "cdc6775420873fafbf73561427eceff855794fef0c0fdba5135583d6371c54a2",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-explicit-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-mindbody-37400911",
+    "revision": "r1-52698f850ec5",
+    "contentHash": "52698f850ec5c49674a9e8cd39672a42ac6e753ae5afdc452700365d8427e1c0",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-adult-therapy-33375899",
+    "revision": "r1-213aa53949fa",
+    "contentHash": "213aa53949fa1278a2615b3e8ae19dd9cebc185c970146eb11d0bc9fca593c96",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-adult-therapy-32933348",
+    "revision": "r1-7fbda60b174a",
+    "contentHash": "7fbda60b174a1b65ad2a238cad637d09bd9594e6b325a165ba402e7e9262cc1d",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-adult-therapy-32993831",
+    "revision": "r1-6ef58bf8d4bb",
+    "contentHash": "6ef58bf8d4bb561bc4355f84ed5bc6daa9826c8b5a41fcd13b6f6159455d8c29",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-adult-therapy-34143803",
+    "revision": "r1-35b6a69dd926",
+    "contentHash": "35b6a69dd926de42003041a3008eb1a1c4f66a753118744bb2c29f5528f37a6b",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-adult-therapy-34584851",
+    "revision": "r1-e29c58531ec9",
+    "contentHash": "e29c58531ec96f7b1d3b8b396648f0b17458b3c579037cf84d6b0da81d9b71a0",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-adult-therapy-34305273",
+    "revision": "r1-163342d2c6a7",
+    "contentHash": "163342d2c6a789b89d62f38350930deef22a8d0d44514e6e764c9a5da0376d8d",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-mindbody-32969703",
+    "revision": "r1-0579b45ae10f",
+    "contentHash": "0579b45ae10f55be92d4a41656580be98ac3d1156fa6fee5828dd3200424d288",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-adult-therapy-33303427",
+    "revision": "r1-26b8cc8d0764",
+    "contentHash": "26b8cc8d0764fc1344576e4b35f557a843f73d8571eae1784c23abed407744e9",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-reviews-31548680",
+    "revision": "r1-f22b0cc90353",
+    "contentHash": "f22b0cc903530453d06825cb44f696bad97741d73f8f7f37a7d8114f0a0e4e09",
+    "status": "pending",
+    "reviewReady": false,
+    "readiness": "needs-source-check",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-reviews-29648853",
+    "revision": "r1-1b8cf68b99a6",
+    "contentHash": "1b8cf68b99a67d2bc20f18b74cc0dd8844339f02b037c0e31012611e86af9eef",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-explicit-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-adult-therapy-30481183",
+    "revision": "r1-8dc7603f8bb3",
+    "contentHash": "8dc7603f8bb305ddc183303777307195d3848acfa515dd58bd30306685047bba",
+    "status": "pending",
+    "reviewReady": false,
+    "readiness": "needs-source-check",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-adult-therapy-30079583",
+    "revision": "r1-7fbb3837a30d",
+    "contentHash": "7fbb3837a30dd87e397263fb19f882b1656e5f96a716d54eba87c1884a1f86b9",
+    "status": "pending",
+    "reviewReady": false,
+    "readiness": "needs-source-check",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-reviews-26613288",
+    "revision": "r1-fb0f4c8fda31",
+    "contentHash": "fb0f4c8fda3186fe50225d2b466b471a07fa1573d0e70ae3063dae9aa52ccc29",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-explicit-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-adult-therapy-27459503",
+    "revision": "r1-e1fc689c2478",
+    "contentHash": "e1fc689c247844e4ea6c9de208c259d9cbe788e2c9445513a3d3108bcc3ee295",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-reviews-27599224",
+    "revision": "r1-79374aceeaf5",
+    "contentHash": "79374aceeaf5bda0e92e9757f9934da6957977da9f0721e6624e1cd720408d4f",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-explicit-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-adult-therapy-26437311",
+    "revision": "r1-27535a9b3bd0",
+    "contentHash": "27535a9b3bd08e7e8492a5f54aa376b4f9136ea58428f4e3a72d734294ab6b0d",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-children-25596929",
+    "revision": "r1-1bd8415667aa",
+    "contentHash": "1bd8415667aaf772fb5aee0612fc1b35f3b40d1b092e0dc54bfe2971e54e7664",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-adult-therapy-24252714",
+    "revision": "r1-31f80424ba31",
+    "contentHash": "31f80424ba31b86be5331b4590f329c77c3d723f68b3da3329f37daa96d40580",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-children-23948313",
+    "revision": "r1-7b200a5e37da",
+    "contentHash": "7b200a5e37da01cf730f8551940367fbad5dc81a31aaec8c44386832f1a62e0e",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-reviews-23414253",
+    "revision": "r1-7e64640e3886",
+    "contentHash": "7e64640e38862e818f46857cb2011bce8a0bdff6bf70487f797aae2a6fd2b137",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-explicit-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-adult-therapy-23598181",
+    "revision": "r1-c11423516c0e",
+    "contentHash": "c11423516c0e2c18022f7ffbd8c61f0737b23c2a0d988f5069549620fed8f347",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-adult-therapy-21153559",
+    "revision": "r1-cdfca8ada34d",
+    "contentHash": "cdfca8ada34d35baf3ba0aadc4df26bc2b6e77262a0a00d78fc0349be8643b7a",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-adult-therapy-21787052",
+    "revision": "r1-a8beea768ef4",
+    "contentHash": "a8beea768ef4506c84cb7e1c5621c0e40ec2a219d08914d522bae0826659b171",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-children-21199975",
+    "revision": "r1-e7bf7d29f3e7",
+    "contentHash": "e7bf7d29f3e721fe5d85f79503e8b12bde4dd331e6ae930373d08f425aadfd6a",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-adult-therapy-20977033",
+    "revision": "r1-f3700846da0c",
+    "contentHash": "f3700846da0c6776e865d835dc58024e6898058e8395d6c00ba5406db88e51be",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-adult-therapy-20658802",
+    "revision": "r1-43a30a0a7943",
+    "contentHash": "43a30a0a7943e8aaee19328b2484b23c4f0bf746285882a24499d6598685b79f",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-children-19634963",
+    "revision": "r1-a0555803d743",
+    "contentHash": "a0555803d743c95a3612656b7de492f45cdddcceff452a37e9b43393302fa908",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-adult-therapy-17022356",
+    "revision": "r1-05cabc02f382",
+    "contentHash": "05cabc02f382c6d7c82daa4b177962e39571edb90178d2fca29194ee3c98bfc1",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-children-16865033",
+    "revision": "r1-4afffc6d70e0",
+    "contentHash": "4afffc6d70e0e93668bfbc1a275784aa00236d6defaf8917321dbab5ff7994c3",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-children-16569097",
+    "revision": "r1-951c54553df8",
+    "contentHash": "951c54553df8d9cd4afeb487f5ccc2438954babe483b89b8f13d73e549a8fd6e",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-mindbody-88e29294631c",
+    "revision": "r1-fbe58d773c55",
+    "contentHash": "fbe58d773c55501117eba6706d58f024c09b15292880afa496d79df943b89ccb",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-children-16292115",
+    "revision": "r1-d8fec28a0100",
+    "contentHash": "d8fec28a0100baafbc37baa2f4ba391f6ac67dae1dde749f435ea27666efe4e3",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-adult-therapy-14756610",
+    "revision": "r1-4edb41030e67",
+    "contentHash": "4edb41030e6706d578414ba09759286d65fbecb82f163071eaa79048b0feb896",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-children-11680554",
+    "revision": "r1-2d32762d3b2f",
+    "contentHash": "2d32762d3b2fab51d077f8ad7960fb577da91a5dfd517a306f7529238093cc66",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-vision-42529059",
+    "revision": "r1-373a37ef943d",
+    "contentHash": "373a37ef943dc843ef68b101aa8bbbbe93cc399953d50ecb03023bbd3e540359",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-vision-38868491",
+    "revision": "r1-2b1bdbcb4b3f",
+    "contentHash": "2b1bdbcb4b3f56facdb87eb4538aa9440d0a51302348277262c6b43c6aee0e95",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-vision-38629403",
+    "revision": "r1-371c8ef68bd7",
+    "contentHash": "371c8ef68bd7f039d335c002746a6dd069210fc921e6bc05e0f6c48ce1cdbabf",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-vision-426ce6386119",
+    "revision": "r1-d1664a141f50",
+    "contentHash": "d1664a141f50f11b47f1e7bfe14bbe6e4a704675f8a079eaec86edde495bd1bb",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-children-31114620",
+    "revision": "r1-60087713d51f",
+    "contentHash": "60087713d51fbeaeb94741faf5b67df1c96575a6871111480fa510e4f2514916",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-vision-d1f88a25c475",
+    "revision": "r1-cb6c205e139b",
+    "contentHash": "cb6c205e139b61b0322ec24ded97fef7863a45494a78008c323c1123cca64c43",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-reviews-37148270",
+    "revision": "r1-a3311e27e6d5",
+    "contentHash": "a3311e27e6d54a6a647fe12e89faf6b7153f807adc053b958f298f24176fa7ff",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-explicit-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-reviews-37937723",
+    "revision": "r1-a9e16a242d50",
+    "contentHash": "a9e16a242d5056d5edbf2706214290f3327ea63a8736f49c37f79c55d8459bd5",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-explicit-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-reviews-39180467",
+    "revision": "r1-eedd52ef0e88",
+    "contentHash": "eedd52ef0e88bc43a8ce1b7494f14fa501cefaa8b6e9f64d2d7f3d20ca2dfc0b",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-explicit-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-reviews-35793513",
+    "revision": "r1-2d2552b4e9c6",
+    "contentHash": "2d2552b4e9c66b8aaf1cbcff26a8839e79f9f57484bb4e471711d835b4759f3c",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-explicit-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-reviews-35185725",
+    "revision": "r1-746995659193",
+    "contentHash": "746995659193b28778286690b3d226942b74d9b891c8318213a782934c231e89",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-numerical-reporting-warning",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-reviews-31359840",
+    "revision": "r1-23e2f31148a0",
+    "contentHash": "23e2f31148a09b9e870ecf897b2c41ccb0f72cbf15a9e37d25b24ba76bda0c65",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-explicit-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-reviews-37133255",
+    "revision": "r1-977b69043fcd",
+    "contentHash": "977b69043fcd381af9cfe90158c0d406c730daabcef3d77e65656fa35098e406",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-explicit-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-reviews-31711372",
+    "revision": "r1-6ee8c1c6a80a",
+    "contentHash": "6ee8c1c6a80ad71fb8eef25898864e45b42dcb7016920e83cc8732eaec51c0bb",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-explicit-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-reviews-31623532",
+    "revision": "r1-093ddf5da3f0",
+    "contentHash": "093ddf5da3f010386b8732cf4e3c377d93f70fb4486ca83264bde337da53afad",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-explicit-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-reviews-33497921",
+    "revision": "r1-bfda363904a9",
+    "contentHash": "bfda363904a968ea8efd26743b926d8e7f0ccc3a21c70b24d62ac731a98f0cb0",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-explicit-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-reviews-32584910",
+    "revision": "r1-1ff3b3144803",
+    "contentHash": "1ff3b31448033cf86400fef15e1f30c11dbe1658027fdb58d781466ebcbe72dd",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-explicit-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-reviews-33306030",
+    "revision": "r1-706726508728",
+    "contentHash": "706726508728357b21bd4d3b1f6d552aa5ef5c6a1c525ce91a32307d23fb4286",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-explicit-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-reviews-31981539",
+    "revision": "r1-644de5b26c90",
+    "contentHash": "644de5b26c903369de19df10e57459128fb0f906e49dbad10004e95468618293",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-explicit-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-reviews-32608505",
+    "revision": "r1-96c3f9a32fde",
+    "contentHash": "96c3f9a32fde976afa45eb7f826e6fbcdee110f67742612fad115f816fe45bd9",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-explicit-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-reviews-32373328",
+    "revision": "r1-3e6f18e30c17",
+    "contentHash": "3e6f18e30c1757d662ae7eab601903fda1623b156fc33c4b27332d429c2ec8e9",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-explicit-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-reviews-30621661",
+    "revision": "r1-7a36bfb4ae66",
+    "contentHash": "7a36bfb4ae664ad8de63ea8b94056786875c6258da9ca0572c86db68db7ee434",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-explicit-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-reviews-31415863",
+    "revision": "r1-908874cd268c",
+    "contentHash": "908874cd268c84956b81abf1ed1188d156269dcd7a23600dcd6da65b1ca092ed",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-explicit-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-reviews-26335794",
+    "revision": "r1-86c13f1048b7",
+    "contentHash": "86c13f1048b7492d4a1abf4fe7456edc8dc81a9dbc5e1c270b53246f6d233569",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-explicit-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-reviews-27377617",
+    "revision": "r1-0c28fb499d38",
+    "contentHash": "0c28fb499d38923206db0d477b29bae084d1aa2868cdeb25decfa72ac7190f2b",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-explicit-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-reviews-25211469",
+    "revision": "r1-13daeb8a8632",
+    "contentHash": "13daeb8a8632031c70a3c835f9ecad22e541b4395e4456b354850c010b0e07fb",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-explicit-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-reviews-17636823",
+    "revision": "r1-73b0df8e5f57",
+    "contentHash": "73b0df8e5f57afce9dd76f7cd9670136c4d0662c5e5221875b20fb8edff7316b",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-explicit-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-children-37750224",
+    "revision": "r1-cf0d82ccbeb7",
+    "contentHash": "cf0d82ccbeb71ff90b407d229b24942ab0999d0816331b73bc918698acde51fa",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-adult-therapy-40425196",
+    "revision": "r1-3a0d16eab8ae",
+    "contentHash": "3a0d16eab8ae8bf5a5a9293725e631f6b6fab402c7451f4f14e803a3124ebcaa",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-mindbody-41024298",
+    "revision": "r1-76b476827070",
+    "contentHash": "76b4768270703b786a75082549d076ddb5a1b09e9c3d599b25791e09dae5e7af",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-children-40469793",
+    "revision": "r1-6010f2b57f11",
+    "contentHash": "6010f2b57f11fdfdd792723e85a8dba46e379526a34bd37e059605b2b86dff51",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-mindbody-37743664",
+    "revision": "r1-f5ab1ae1c921",
+    "contentHash": "f5ab1ae1c921c4aaf631ed0d201bb3eefdc2a760ca023027ff1f93ee9b3c49a2",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-mindbody-37484072",
+    "revision": "r1-1c3da134cf5f",
+    "contentHash": "1c3da134cf5fc7c54ad03125dda26c315d3d651f6b827dd4d9b1d8aeee680841",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-children-32515292",
+    "revision": "r1-855c253dbb74",
+    "contentHash": "855c253dbb74b6c8178cbd70c96054d0d4234787e6548ac0453e6081e31f2fb7",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-mindbody-36232015",
+    "revision": "r1-8d03deca2fa8",
+    "contentHash": "8d03deca2fa82dc0c1cd14d842f1bf0148535769631290ef2277bedbb02113b3",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-children-32077730",
+    "revision": "r1-f802c9129981",
+    "contentHash": "f802c9129981eed3a65f75023b6253c025caafb796f96b2f747544447a148588",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-children-32650670",
+    "revision": "r1-109b24dd5b07",
+    "contentHash": "109b24dd5b07e83834e3755ee051eb1efe96de9c5c148edbe30e18f11cc1d803",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-adult-therapy-31715628",
+    "revision": "r1-326dd823f14b",
+    "contentHash": "326dd823f14b3bcab29146ca7e00ea5c32767970453afadb19296c6ce86caa7c",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-children-32512265",
+    "revision": "r1-8a6842dc8264",
+    "contentHash": "8a6842dc8264635b7de0ee73a4cfabe1fe438c92ac30bd9a3b77a3497170598b",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-adult-therapy-31363925",
+    "revision": "r1-e9518f6c637d",
+    "contentHash": "e9518f6c637d6e4bffb090afcd8d9dd17bfadf57dac0331e82b87ac4daf82a81",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-mindbody-b5f8ce1b573c",
+    "revision": "r1-961f3b68d026",
+    "contentHash": "961f3b68d026d7d21eb8d6a6dffd59b4dc3333901ffd7e66818636df6c4d75b8",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-children-27359091",
+    "revision": "r1-bec1dec79fb5",
+    "contentHash": "bec1dec79fb5dc053aa390ff3343487d4ec493c2be3e6fb6fd128a5ed857eceb",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-children-32318156",
+    "revision": "r1-a5f90ae65c21",
+    "contentHash": "a5f90ae65c2112cad77b52ae4404d8ced3e34ab78c1825a2561a2176a27f16bd",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-adult-therapy-30344863",
+    "revision": "r1-78b965333184",
+    "contentHash": "78b965333184d3b7a6d4f8ea3b431831894dc1d3046aae37bd66f99d7cecead3",
+    "status": "pending",
+    "reviewReady": false,
+    "readiness": "needs-source-check",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-children-28503060",
+    "revision": "r1-4628e02d5c1b",
+    "contentHash": "4628e02d5c1bdd07670af03332af1777876cac9f9c035f58e75c58fc493b9460",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-children-25751123",
+    "revision": "r1-d8472c217bcb",
+    "contentHash": "d8472c217bcbe1406ec98730c1f8562c7d681bcd9ca8bc7db560a3729859627a",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-children-25410886",
+    "revision": "r1-5be383fa70eb",
+    "contentHash": "5be383fa70eb7745cecd8328d3221f2e73df57b4686517e92d5b649cdd307e67",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-mindbody-25129883",
+    "revision": "r1-ae229a688eab",
+    "contentHash": "ae229a688eabc833d7c336fa7eb38b3ee8075f45df39758c7e39c4c9b1fc901e",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-mindbody-23561069",
+    "revision": "r1-6e83f7e0323b",
+    "contentHash": "6e83f7e0323b3f274ba2aff78782e5a3ed489aeff579fa3b2aad8305cd3f5094",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-mindbody-24043922",
+    "revision": "r1-3d87653b9c67",
+    "contentHash": "3d87653b9c67dbb4866bab2d555a437cf70de6ff715d6e88d3acfc1511676af2",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-children-20587468",
+    "revision": "r1-50d37f376175",
+    "contentHash": "50d37f3761757f24994c0b61ec8ddf7efdd8a88dfbc674310a9c7d768d4a724f",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-children-21816474",
+    "revision": "r1-48e0868b9cd9",
+    "contentHash": "48e0868b9cd9fa8faaedbdde2d7d0cd01aa10a336d97d8c8e869423e4d7e30c9",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-children-20712147",
+    "revision": "r1-2017f5c96d83",
+    "contentHash": "2017f5c96d83706b4f5b3a59651d4eaeb5ad0bd22598a6943e3f8430e2d0e16a",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-children-17469878",
+    "revision": "r1-5b2a63bca4ae",
+    "contentHash": "5b2a63bca4ae21e1bd34e2f0615f0c30347e22e4ee9498131f24650ee8f0dc3a",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-mindbody-16617173",
+    "revision": "r1-ecbc4f3ebb9b",
+    "contentHash": "ecbc4f3ebb9b49615fd4e03999936b9211c982446287a38097447c198016e769",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-adult-therapy-12602656",
+    "revision": "r1-e8b7a2486a36",
+    "contentHash": "e8b7a2486a367ffdb2b8fad34d1a9172443449ccd7b1ac74a8bd66519bacecc9",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-adult-therapy-10783523",
+    "revision": "r1-0442f5ee4a6d",
+    "contentHash": "0442f5ee4a6d51eec16a25854ddea9d1ff7fddf048351df12467cc33aab4aa91",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-sound-42298885",
+    "revision": "r1-70892a2114df",
+    "contentHash": "70892a2114df6b963d54b9c584a0c5cb91fec7b104fb865a76d22f8db3227eeb",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-sound-efa9f1420011",
+    "revision": "r1-bc33c7e3b426",
+    "contentHash": "bc33c7e3b426abe5a1ec2172cf34b8252fc62d4f1b422f768c758b2f5fe84086",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-sound-61889e897b46",
+    "revision": "r1-2c8f8dc864a7",
+    "contentHash": "2c8f8dc864a731b08705fad68940c5100ce7df49cbcd320c0821ca6f1b4ea304",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-sound-37107774",
+    "revision": "r1-833c8a81055c",
+    "contentHash": "833c8a81055cbcd7f56ded118ba9746c4e55973f98d7cf7b6a7ea4dc60ee965d",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-sound-849dafa52c8c",
+    "revision": "r1-0881ee4e1c4d",
+    "contentHash": "0881ee4e1c4d08e5e984a13ea227f26b4fa94c9fa90881cc37e67b9111c2a4d9",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-sound-3c0015edd5fa",
+    "revision": "r1-b32dbebe3ade",
+    "contentHash": "b32dbebe3adeaee236788993c94659bf592de0b7cf0036e08973abcb41feab61",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-sound-52ec6bcb53a0",
+    "revision": "r1-73b9b82ca143",
+    "contentHash": "73b9b82ca143fdda510cb7a54b1514ca3c13a6ffd456ef3a09cba1e67822f8fe",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-sound-99de3f3bbdea",
+    "revision": "r1-e63780831514",
+    "contentHash": "e637808315145db5b84946c6421da64d7090e8eb7b45a67ec29993739b98cea1",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-sound-24766169",
+    "revision": "r1-f14d87a2013b",
+    "contentHash": "f14d87a2013b3f2847bb3336c1c68611f252ab908498a9d76123af7a224cd5f1",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-sound-1be40a54cbc1",
+    "revision": "r1-4ab04e15d119",
+    "contentHash": "4ab04e15d119889e62d61a2dd667b024a4a8b9425fe2e442e8efb54c270667d7",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-sound-15913391",
+    "revision": "r1-90e2b6709ba5",
+    "contentHash": "90e2b6709ba5e55c97cc3bad95e50dfdca7bcf8edc808ad5bc3d2bfa6983cf90",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-vision-da3bfad76f98",
+    "revision": "r1-884fe9384913",
+    "contentHash": "884fe938491301890a02eb917c454b3e08d03aaedfa30bc5274777e4acbf585a",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-vision-2a09962793c2",
+    "revision": "r1-abb46da5571b",
+    "contentHash": "abb46da5571bdee943681b7b5e6e0b4819f4b755d842a1d65c3694fc41886f37",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-vision-d0356a161cd2",
+    "revision": "r1-3cf5d1211eaa",
+    "contentHash": "3cf5d1211eaad624c9a987a12e82afbecae16478bca21b9f15c15c0a068eb588",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  },
+  {
+    "id": "dv-vision-11036736",
+    "revision": "r1-1e5bef7cc277",
+    "contentHash": "1e5bef7cc2779c8fc5277edffe0fb958d3929cb349dddb35144b9b27db29d88c",
+    "status": "pending",
+    "reviewReady": true,
+    "readiness": "ready-with-access-limits",
+    "reviewer": null,
+    "approvalTime": null
+  }
+]

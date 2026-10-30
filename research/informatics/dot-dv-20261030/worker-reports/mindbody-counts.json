@@ -1,0 +1,25 @@
+{
+  "retrievedUnique": 352,
+  "screenedUnique": 105,
+  "queuedNotScreened": 247,
+  "assessed": 15,
+  "existing": 0,
+  "reviewReady": 15,
+  "direct": 14,
+  "context": 1,
+  "randomizedReports": 6,
+  "doubleBlind": 0,
+  "provisionalDistinctFamilyIds": 13,
+  "confirmedRegisteredStudyFamilies": 5,
+  "screeningDecisions": {
+    "exclude": 76,
+    "include": 15,
+    "defer": 14
+  },
+  "familyCountCaution": "13 conservatively grouped family IDs, including implementation/qualitative reports; not 13 verified independent trials. Five registry-linked families established. Exact unregistered cohort overlap unverified.",
+  "accessLevels": {
+    "full-text": 4,
+    "abstract": 8,
+    "selected-methods": 3
+  }
+}

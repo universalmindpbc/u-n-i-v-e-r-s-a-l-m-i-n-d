@@ -1,0 +1,45 @@
+{
+  "completedAt": "2026-10-30T07:37:52.008165+00:00",
+  "retrievedUnique": 1070,
+  "automatedTitlePasses": 245,
+  "sourceInspected": 30,
+  "assessed": 30,
+  "deferredAfterSourceInspection": 0,
+  "preparedForHumanReview": 29,
+  "newVersusBaseline": 30,
+  "baselineMatches": 0,
+  "assessedEvidenceSyntheses": 21,
+  "assessedPrimaryTrialReports": 9,
+  "provisionalPrimaryTrialReports": 0,
+  "independentPrimaryStudyFamilyCount": 9,
+  "independentFamilyCaveat": "Nine primary-trial family records: three registry-anchored and six provisionally paper-linked. Cross-lane reconciliation remains necessary; pooled-review trials are never added. One primary report is not approval-ready because correction content remains unresolved.",
+  "reviewFamilyCount": 21,
+  "accessCounts": {
+    "abstract": 27,
+    "selected-methods": 3
+  },
+  "identityCrossSourceVerified": 29,
+  "identitySingleSource": 1,
+  "screeningDecisions": {
+    "deferred": 197,
+    "excluded": 18,
+    "assessed": 30
+  },
+  "extraSpendAUD": 0,
+  "limitations": [
+    "No complete full-text appraisals; 27 abstract-level and 3 selected-methods assessments.",
+    "Arroyo 2017 PMID 26335794 independent bibliographic check timed out and PubMed presented a challenge.",
+    "Nature RCT PMID 31548680 needs a source check before approval because correction content is unavailable.",
+    "Broad discovery query was not fully paginated; the bundle is not an exhaustive systematic review.",
+    "No double-blinded RCT verified in this lane; reviews receive zero crosses."
+  ],
+  "needsSourceCheck": 1,
+  "retrievedUniqueSourceRecords": 1070,
+  "deduplicatedDiscoveryRecords": 1070,
+  "deduplicationBasis": "DOI first, then PMID, then normalized title; not independent study families.",
+  "automatedTitleEvaluated": 1070,
+  "automatedTitleMatched": 245,
+  "automatedTitleOnlyDeferredOrExcluded": 215,
+  "countingNote": "The 245 automated title matches include the 30 subsequently source-inspected publications. These counts overlap and must not be added. The remaining 825 retrieved titles did not match the automated lane filter and were not substantively assessed.",
+  "retrievalLedger": "retrieval-ledger.json"
+}

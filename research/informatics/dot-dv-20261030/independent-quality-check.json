@@ -1,0 +1,21 @@
+{
+  "checkedAt": "2026-10-30T07:50:40.876214+00:00",
+  "scope": "Ten primary-source checks across adult therapy, mindbody and children; cross-lane identity/family audit across123record inputs",
+  "checkedPMIDs": [
+    "39488744",
+    "34703783",
+    "30344863",
+    "41024298",
+    "40552233",
+    "39135298",
+    "21199975",
+    "16292115",
+    "31114620",
+    "35285428"
+  ],
+  "result": "No new severe unhandled issue within bounded checked scope; documented deferrals and design cautions retained",
+  "uncompleted": "Yogic-breathing primary page HTTP403 prevented independent reconfirmation",
+  "familyAudit": "No duplicate IDs/DOIs/PMIDs/normalized titles; Swedish ProjectSupport group uncertainty propagated to all members; primary family counts remain provisional",
+  "retractedExcludedPMID": "40163481",
+  "retractionSource": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0327838"
+}

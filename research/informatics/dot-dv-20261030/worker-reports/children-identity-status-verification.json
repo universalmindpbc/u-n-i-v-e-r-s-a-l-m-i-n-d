@@ -1,0 +1,227 @@
+[
+  {
+    "pmid": "21199975",
+    "titleMatched": true,
+    "doiMatched": true,
+    "doiNote": "matched",
+    "pubmedAuthorCount": 3,
+    "europePMCAuthorCount": 3,
+    "retractionOrErratumRelationship": false
+  },
+  {
+    "pmid": "16292115",
+    "titleMatched": true,
+    "doiMatched": true,
+    "doiNote": "matched",
+    "pubmedAuthorCount": 3,
+    "europePMCAuthorCount": 3,
+    "retractionOrErratumRelationship": false
+  },
+  {
+    "pmid": "16865033",
+    "titleMatched": true,
+    "doiMatched": true,
+    "doiNote": "matched",
+    "pubmedAuthorCount": 3,
+    "europePMCAuthorCount": 3,
+    "retractionOrErratumRelationship": false
+  },
+  {
+    "pmid": "21816474",
+    "titleMatched": true,
+    "doiMatched": true,
+    "doiNote": "matched",
+    "pubmedAuthorCount": 4,
+    "europePMCAuthorCount": 4,
+    "retractionOrErratumRelationship": false
+  },
+  {
+    "pmid": "11680554",
+    "titleMatched": true,
+    "doiMatched": true,
+    "doiNote": "matched",
+    "pubmedAuthorCount": 8,
+    "europePMCAuthorCount": 8,
+    "retractionOrErratumRelationship": false
+  },
+  {
+    "pmid": "16569097",
+    "titleMatched": true,
+    "doiMatched": true,
+    "doiNote": "matched",
+    "pubmedAuthorCount": 3,
+    "europePMCAuthorCount": 3,
+    "retractionOrErratumRelationship": false
+  },
+  {
+    "pmid": "19634963",
+    "titleMatched": true,
+    "doiMatched": true,
+    "doiNote": "matched",
+    "pubmedAuthorCount": 6,
+    "europePMCAuthorCount": 6,
+    "retractionOrErratumRelationship": false
+  },
+  {
+    "pmid": "27359091",
+    "titleMatched": true,
+    "doiMatched": true,
+    "doiNote": "matched",
+    "pubmedAuthorCount": 6,
+    "europePMCAuthorCount": 6,
+    "retractionOrErratumRelationship": false
+  },
+  {
+    "pmid": "17469878",
+    "titleMatched": true,
+    "doiMatched": true,
+    "doiNote": "matched",
+    "pubmedAuthorCount": 5,
+    "europePMCAuthorCount": 5,
+    "retractionOrErratumRelationship": false
+  },
+  {
+    "pmid": "20587468",
+    "titleMatched": true,
+    "doiMatched": true,
+    "doiNote": "matched",
+    "pubmedAuthorCount": 4,
+    "europePMCAuthorCount": 4,
+    "retractionOrErratumRelationship": false
+  },
+  {
+    "pmid": "25596929",
+    "titleMatched": true,
+    "doiMatched": true,
+    "doiNote": "matched",
+    "pubmedAuthorCount": 4,
+    "europePMCAuthorCount": 4,
+    "retractionOrErratumRelationship": false
+  },
+  {
+    "pmid": "35285428",
+    "titleMatched": true,
+    "doiMatched": true,
+    "doiNote": "matched",
+    "pubmedAuthorCount": 5,
+    "europePMCAuthorCount": 5,
+    "retractionOrErratumRelationship": false
+  },
+  {
+    "pmid": "23948313",
+    "titleMatched": true,
+    "doiMatched": true,
+    "doiNote": "matched",
+    "pubmedAuthorCount": 4,
+    "europePMCAuthorCount": 4,
+    "retractionOrErratumRelationship": false
+  },
+  {
+    "pmid": "25751123",
+    "titleMatched": true,
+    "doiMatched": true,
+    "doiNote": "matched",
+    "pubmedAuthorCount": 5,
+    "europePMCAuthorCount": 5,
+    "retractionOrErratumRelationship": false
+  },
+  {
+    "pmid": "20712147",
+    "titleMatched": true,
+    "doiMatched": true,
+    "doiNote": "matched",
+    "pubmedAuthorCount": 4,
+    "europePMCAuthorCount": 4,
+    "retractionOrErratumRelationship": false
+  },
+  {
+    "pmid": "28503060",
+    "titleMatched": true,
+    "doiMatched": true,
+    "doiNote": "matched",
+    "pubmedAuthorCount": 4,
+    "europePMCAuthorCount": 4,
+    "retractionOrErratumRelationship": false
+  },
+  {
+    "pmid": "32318156",
+    "titleMatched": true,
+    "doiMatched": true,
+    "doiNote": "matched",
+    "pubmedAuthorCount": 6,
+    "europePMCAuthorCount": 6,
+    "retractionOrErratumRelationship": false
+  },
+  {
+    "pmid": "32077730",
+    "titleMatched": true,
+    "doiMatched": true,
+    "doiNote": "matched",
+    "pubmedAuthorCount": 6,
+    "europePMCAuthorCount": 6,
+    "retractionOrErratumRelationship": false
+  },
+  {
+    "pmid": "32512265",
+    "titleMatched": true,
+    "doiMatched": true,
+    "doiNote": "matched",
+    "pubmedAuthorCount": 3,
+    "europePMCAuthorCount": 3,
+    "retractionOrErratumRelationship": false
+  },
+  {
+    "pmid": "31114620",
+    "titleMatched": true,
+    "doiMatched": null,
+    "doiNote": "DOI absent in PubMed ArticleId; verified in PMC full text",
+    "pubmedAuthorCount": 4,
+    "europePMCAuthorCount": 4,
+    "retractionOrErratumRelationship": false
+  },
+  {
+    "pmid": "40469793",
+    "titleMatched": true,
+    "doiMatched": true,
+    "doiNote": "matched",
+    "pubmedAuthorCount": 4,
+    "europePMCAuthorCount": 5,
+    "retractionOrErratumRelationship": false
+  },
+  {
+    "pmid": "37750224",
+    "titleMatched": true,
+    "doiMatched": true,
+    "doiNote": "matched",
+    "pubmedAuthorCount": 4,
+    "europePMCAuthorCount": 4,
+    "retractionOrErratumRelationship": false
+  },
+  {
+    "pmid": "32650670",
+    "titleMatched": true,
+    "doiMatched": true,
+    "doiNote": "matched",
+    "pubmedAuthorCount": 4,
+    "europePMCAuthorCount": 4,
+    "retractionOrErratumRelationship": false
+  },
+  {
+    "pmid": "32515292",
+    "titleMatched": true,
+    "doiMatched": true,
+    "doiNote": "matched",
+    "pubmedAuthorCount": 7,
+    "europePMCAuthorCount": 7,
+    "retractionOrErratumRelationship": false
+  },
+  {
+    "pmid": "25410886",
+    "titleMatched": true,
+    "doiMatched": true,
+    "doiNote": "matched",
+    "pubmedAuthorCount": 2,
+    "europePMCAuthorCount": 2,
+    "retractionOrErratumRelationship": false
+  }
+]

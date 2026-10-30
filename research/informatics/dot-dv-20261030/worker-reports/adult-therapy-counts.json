@@ -1,0 +1,24 @@
+{
+  "rawRetrieved": 1161,
+  "uniqueRetrieved": 968,
+  "screened": 130,
+  "deduplicatedScreened": 130,
+  "assessed": 30,
+  "deferred": 2,
+  "reviewReady": 27,
+  "excludedOrRouted": 98,
+  "existingRepositoryMatches": 0,
+  "assessedStudyFamilyLabels": 25,
+  "allStudyFamilyLabels": 27,
+  "unreadQueue": 838,
+  "humanApproved": 0,
+  "designCrosses": {
+    "1": 24,
+    "0": 8
+  },
+  "accessLevels": {
+    "abstract": 24,
+    "full-text": 3,
+    "selected-methods": 5
+  }
+}

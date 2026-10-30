@@ -1,0 +1,22 @@
+{
+  "retrievedUnique": 6532,
+  "screenedUnique": 106,
+  "assessedPublications": 25,
+  "newPublications": 25,
+  "existingPublications": 0,
+  "reviewReadyWithExplicitAccessLimits": 25,
+  "provisionalStudyFamilies": 17,
+  "independentRandomizedTrialFamilies": 7,
+  "oneCrossReports": 10,
+  "twoCrossReports": 0,
+  "excluded": 55,
+  "deferred": 26,
+  "sourceAccess": {
+    "selected-methods": 6,
+    "abstract": 19,
+    "full-text": 0
+  },
+  "familyCaveat": "17 provisional family groups include an uncertain Swedish Project Support overlap; family linkage needs final source reconciliation. Repeated reports are not independent trials.",
+  "extraSpendAUD": 0,
+  "finalizedAt": "2026-10-30T07:33:53.473011+00:00"
+}

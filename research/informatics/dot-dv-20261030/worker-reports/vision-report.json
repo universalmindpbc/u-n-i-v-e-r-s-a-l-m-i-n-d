@@ -1,0 +1,84 @@
+{
+  "lane": "Adult clinical EMDR / explicitly visual variants",
+  "completedAt": "2026-10-30T07:31:51.442225+00:00",
+  "databaseRetrieval": {
+    "rawRecords": 1555,
+    "uniqueRecords": 1136,
+    "manuallyScreenedFromPooledDatabase": 40,
+    "notManuallyScreened": 1096,
+    "note": "Broad Europe PMC queries can match references/full text; retrieval is not screening. Metadata preserved privately."
+  },
+  "screening": {
+    "sourceInspectedRecords": 48,
+    "identifierDistinctRecords": 48,
+    "additionalTargetedRecords": 8,
+    "decisions": {
+      "exclude": 24,
+      "existing": 2,
+      "defer": 13,
+      "include": 9
+    },
+    "duplicateCaution": "Two near-identical Research Square preprints have different DOIs; both deferred and treated as one probable study family, neither assessed."
+  },
+  "candidates": {
+    "total": 10,
+    "assessed": 9,
+    "reviewReadyWithExplicitAccessLimits": 9,
+    "deferred": 1,
+    "existingRepositoryMatches": 0,
+    "assessedDirect": 4,
+    "assessedRelated": 5,
+    "assessedContext": 0,
+    "provisionalFamilyGroupings": 8,
+    "verifiedRandomizedPublicationReports": 5,
+    "verifiedRandomizedStudyFamilies": 4,
+    "verifiedDoubleBlindRCTs": 0,
+    "newDirectAdultDVRandomizedTrials": 0,
+    "accessLevels": {
+      "abstract": 4,
+      "full-text": 5,
+      "selected-methods": 1
+    }
+  },
+  "findings": [
+    "Direct adult-DV literature includes a negative five-person prisoner series, a nonrandomized 36-person pilot, a single case, and two small nonprofit-agency evaluations. No new verified adult-IPV RCT was established in this lane.",
+    "Tarquinio 2012 explicitly did not randomize participants; it receives zero design crosses.",
+    "Schwarz agency reports have unresolved cohort overlap; the later publication also has a 2021/2023 indexing date conflict and remains deferred.",
+    "Childhood-abuse trials are related transfer evidence. NTR5991 required childhood abuse by a caretaker/authority and excluded ongoing physical/sexual abuse. Wigard required repeated interpersonal childhood trauma without verified familial perpetration across the cohort. Edmond abstract does not identify perpetrator relationships.",
+    "The Molero 2026 same-family follow-up describes frequently intrafamilial CSA, but lacks an exact proportion; only nine of 31 eligible women completed both treatment phases. It is not independent replication of Molero 2024.",
+    "Clinical EMDR results do not isolate eye movements from psychotherapy and do not validate self-administered visual or audiovisual content.",
+    "Null comparisons and adverse findings remain visible. None of the included evidence earns two crosses."
+  ],
+  "statusCheck": "All ten candidate DOIs checked in live Crossref metadata: empty update-to and relation fields. Available Europe PMC publication types/correction fields checked for indexed candidates; no retraction notice identified. This does not exclude unlinked or later notices.",
+  "blockers": [
+    {
+      "action": "Finalize later Schwarz agency publication as review-ready",
+      "target": "10.1891/EMDR-D-21-00014",
+      "reason": "Conflicting 2021 vs 2023 indexing dates and possible overlapping cohort with the 21-client report; full recruitment details unavailable.",
+      "status": "deferred, no denial",
+      "smallestNextStep": "Verify publisher date/history and recruitment dates using lawful full text or author-institution metadata."
+    },
+    {
+      "action": "Complete full-methods appraisal of older abstract-only articles",
+      "target": [
+        "10.1177/0145445500245006",
+        "10.1891/1933-3196.3.3.192",
+        "10.1093/swr/23.2.103"
+      ],
+      "reason": "Only primary/publisher-deposited abstracts or selected methods were available in accessed sources.",
+      "status": "access-limited, not denied",
+      "smallestNextStep": "Optional lawful institutional/full-text access; no purchase requested."
+    }
+  ],
+  "publicDeliverables": [
+    "candidates.json",
+    "screening.json",
+    "search-log.json",
+    "status-checks.json",
+    "report.json"
+  ],
+  "privateSources": "private/ contains metadata/fulltext working copies; exclude directory from Git/public staging.",
+  "notExecuted": [
+    "No repository edits, Git operations, deployments, third-party messages, purchases, credentials or monitors."
+  ]
+}

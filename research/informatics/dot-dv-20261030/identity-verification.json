@@ -1,0 +1,1845 @@
+{
+  "checkedAt": "2026-10-30T07:41:43.806818+00:00",
+  "source": "Europe PMC live core records",
+  "records": [
+    {
+      "id": "dv-mindbody-32969703",
+      "pmid": "32969703",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2020",
+      "publicationTypes": [
+        "research-article",
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/32969703"
+    },
+    {
+      "id": "dv-mindbody-24043922",
+      "pmid": "24043922",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2013",
+      "publicationTypes": [
+        "research-article",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/24043922"
+    },
+    {
+      "id": "dv-mindbody-23561069",
+      "pmid": "23561069",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2013",
+      "publicationTypes": [
+        "Randomized Controlled Trial",
+        "Journal Article",
+        "Research Support, N.I.H., Extramural"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/23561069"
+    },
+    {
+      "id": "dv-mindbody-37400911",
+      "pmid": "37400911",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2023",
+      "publicationTypes": [
+        "research-article",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": {
+        "commentCorrection": [
+          {
+            "source": "PPR",
+            "id": "PPR577109",
+            "type": "Preprint in",
+            "note": "CrossRef Pre-print loader",
+            "orderIn": 10002
+          }
+        ]
+      },
+      "sourceURL": "https://europepmc.org/article/MED/37400911"
+    },
+    {
+      "id": "dv-mindbody-41024298",
+      "pmid": "41024298",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2025",
+      "publicationTypes": [
+        "research-article",
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": {
+        "commentCorrection": [
+          {
+            "source": "MED",
+            "id": "41361905",
+            "reference": "BMC Psychol. 2025 Dec 8;13(1):1343. doi: 10.1186/s40359-025-03711-y.",
+            "type": "Erratum in",
+            "orderIn": 1
+          }
+        ]
+      },
+      "sourceURL": "https://europepmc.org/article/MED/41024298"
+    },
+    {
+      "id": "dv-mindbody-37743664",
+      "pmid": "37743664",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2024",
+      "publicationTypes": [
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/37743664"
+    },
+    {
+      "id": "dv-mindbody-25129883",
+      "pmid": "25129883",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2014",
+      "publicationTypes": [
+        "Research Support, Non-U.S. Gov't",
+        "research-article",
+        "Journal Article",
+        "Research Support, N.I.H., Extramural"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/25129883"
+    },
+    {
+      "id": "dv-mindbody-36232015",
+      "pmid": "36232015",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2022",
+      "publicationTypes": [
+        "research-article",
+        "Journal Article",
+        "Research Support, N.I.H., Extramural"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/36232015"
+    },
+    {
+      "id": "dv-mindbody-37484072",
+      "pmid": "37484072",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2023",
+      "publicationTypes": [
+        "research-article",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/37484072"
+    },
+    {
+      "id": "dv-mindbody-16617173",
+      "pmid": "16617173",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2006",
+      "publicationTypes": [
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/16617173"
+    },
+    {
+      "id": "dv-mindbody-40552233",
+      "pmid": "40552233",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2025",
+      "publicationTypes": [
+        "research-article",
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/40552233"
+    },
+    {
+      "id": "dv-mindbody-39135298",
+      "pmid": "39135298",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2024",
+      "publicationTypes": [
+        "Research Support, Non-U.S. Gov't",
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/39135298"
+    },
+    {
+      "id": "dv-reviews-37148270",
+      "pmid": "37148270",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2024",
+      "publicationTypes": [
+        "Meta-Analysis",
+        "Systematic Review",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/37148270"
+    },
+    {
+      "id": "dv-reviews-31981539",
+      "pmid": "31981539",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2020",
+      "publicationTypes": [
+        "Meta-Analysis",
+        "Research Support, Non-U.S. Gov't",
+        "research-article",
+        "Systematic Review",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": {
+        "commentCorrection": [
+          {
+            "source": "MED",
+            "id": "31981528",
+            "reference": "Lancet Psychiatry. 2020 Feb;7(2):114-116. doi: 10.1016/S2215-0366(19)30530-9.",
+            "type": "Comment in",
+            "orderIn": 1
+          },
+          {
+            "source": "MED",
+            "id": "33069483",
+            "reference": "Rev Esp Geriatr Gerontol. 2021 Jan-Feb;56(1):64. doi: 10.1016/j.regg.2020.05.002.",
+            "type": "Comment in",
+            "orderIn": 2
+          }
+        ]
+      },
+      "sourceURL": "https://europepmc.org/article/MED/31981539"
+    },
+    {
+      "id": "dv-reviews-33306030",
+      "pmid": "33306030",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2020",
+      "publicationTypes": [
+        "Meta-Analysis",
+        "Systematic Review",
+        "review-article",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/33306030"
+    },
+    {
+      "id": "dv-reviews-31711372",
+      "pmid": "31711372",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2021",
+      "publicationTypes": [
+        "Meta-Analysis",
+        "Research Support, Non-U.S. Gov't",
+        "Systematic Review",
+        "review-article",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/31711372"
+    },
+    {
+      "id": "dv-reviews-30621661",
+      "pmid": "30621661",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2019",
+      "publicationTypes": [
+        "Research Support, Non-U.S. Gov't",
+        "research-article",
+        "Systematic Review",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/30621661"
+    },
+    {
+      "id": "dv-reviews-37133255",
+      "pmid": "37133255",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2021",
+      "publicationTypes": [
+        "review-article",
+        "Review",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/37133255"
+    },
+    {
+      "id": "dv-reviews-31415863",
+      "pmid": "31415863",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2019",
+      "publicationTypes": [
+        "Meta-Analysis",
+        "research-article",
+        "Systematic Review",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/31415863"
+    },
+    {
+      "id": "dv-reviews-33497921",
+      "pmid": "33497921",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2021",
+      "publicationTypes": [
+        "Review",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/33497921"
+    },
+    {
+      "id": "dv-reviews-31623532",
+      "pmid": "31623532",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2021",
+      "publicationTypes": [
+        "Meta-Analysis",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/31623532"
+    },
+    {
+      "id": "dv-reviews-26613288",
+      "pmid": "26613288",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2016",
+      "publicationTypes": [
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/26613288"
+    },
+    {
+      "id": "dv-reviews-27599224",
+      "pmid": "27599224",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2016",
+      "publicationTypes": [
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/27599224"
+    },
+    {
+      "id": "dv-reviews-23414253",
+      "pmid": "23414253",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2013",
+      "publicationTypes": [
+        "research-article",
+        "Randomized Controlled Trial",
+        "Journal Article",
+        "Research Support, N.I.H., Extramural"
+      ],
+      "isRetracted": null,
+      "noticeLinks": {
+        "commentCorrection": [
+          {
+            "source": "MED",
+            "id": "23844770",
+            "reference": "Addiction. 2013 Aug;108(8):1385-6. doi: 10.1111/add.12217",
+            "type": "Comment in",
+            "orderIn": 1
+          }
+        ]
+      },
+      "sourceURL": "https://europepmc.org/article/MED/23414253"
+    },
+    {
+      "id": "dv-reviews-32608505",
+      "pmid": "32608505",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2020",
+      "publicationTypes": [
+        "Meta-Analysis",
+        "Research Support, Non-U.S. Gov't",
+        "Systematic Review",
+        "systematic-review",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": {
+        "commentCorrection": [
+          {
+            "source": "MED",
+            "id": "34060784",
+            "reference": "Am Fam Physician. 2021 Jun 1;103(11):661-662.",
+            "type": "Comment in",
+            "orderIn": 1
+          },
+          {
+            "source": "MED",
+            "id": "37707505",
+            "reference": "Clin Orthop Relat Res. 2023 Nov 1;481(11):2091-2097. doi: 10.1097/CORR.0000000000002838.",
+            "type": "Comment in",
+            "orderIn": 2
+          }
+        ]
+      },
+      "sourceURL": "https://europepmc.org/article/MED/32608505"
+    },
+    {
+      "id": "dv-reviews-25211469",
+      "pmid": "25211469",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2014",
+      "publicationTypes": [
+        "Meta-Analysis",
+        "Research Support, Non-U.S. Gov't",
+        "Systematic Review",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/25211469"
+    },
+    {
+      "id": "dv-reviews-17636823",
+      "pmid": "17636823",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2007",
+      "publicationTypes": [
+        "Meta-Analysis",
+        "Systematic Review",
+        "systematic-review",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/17636823"
+    },
+    {
+      "id": "dv-reviews-26335794",
+      "pmid": "26335794",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2017",
+      "publicationTypes": [
+        "Meta-Analysis",
+        "Systematic Review",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/26335794"
+    },
+    {
+      "id": "dv-reviews-27377617",
+      "pmid": "27377617",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2016",
+      "publicationTypes": [
+        "Meta-Analysis",
+        "research-article",
+        "Systematic Review",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/27377617"
+    },
+    {
+      "id": "dv-reviews-32584910",
+      "pmid": "32584910",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2020",
+      "publicationTypes": [
+        "Research Support, Non-U.S. Gov't",
+        "research-article",
+        "Systematic Review",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/32584910"
+    },
+    {
+      "id": "dv-reviews-32373328",
+      "pmid": "32373328",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2020",
+      "publicationTypes": [
+        "Meta-Analysis",
+        "research-article",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/32373328"
+    },
+    {
+      "id": "dv-reviews-35793513",
+      "pmid": "35793513",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2023",
+      "publicationTypes": [
+        "Research Support, Non-U.S. Gov't",
+        "Systematic Review",
+        "review-article",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/35793513"
+    },
+    {
+      "id": "dv-reviews-31359840",
+      "pmid": "31359840",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2021",
+      "publicationTypes": [
+        "Meta-Analysis",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/31359840"
+    },
+    {
+      "id": "dv-reviews-39180467",
+      "pmid": "39180467",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2024",
+      "publicationTypes": [
+        "Research Support, Non-U.S. Gov't",
+        "Systematic Review",
+        "review-article",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/39180467"
+    },
+    {
+      "id": "dv-reviews-37937723",
+      "pmid": "37937723",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2024",
+      "publicationTypes": [
+        "research-article",
+        "Systematic Review",
+        "Journal Article",
+        "Research Support, N.I.H., Extramural"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/37937723"
+    },
+    {
+      "id": "dv-reviews-35185725",
+      "pmid": "35185725",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2022",
+      "publicationTypes": [
+        "Systematic Review",
+        "systematic-review",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/35185725"
+    },
+    {
+      "id": "dv-reviews-29648853",
+      "pmid": "29648853",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2018",
+      "publicationTypes": [
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/29648853"
+    },
+    {
+      "id": "dv-reviews-31548680",
+      "pmid": "31548680",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2019",
+      "publicationTypes": [
+        "Research Support, Non-U.S. Gov't",
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": {
+        "commentCorrection": [
+          {
+            "source": "MED",
+            "id": "31576024",
+            "reference": "Nat Hum Behav. 2019 Dec;3(12):1344. doi: 10.1038/s41562-019-0764-6",
+            "type": "Erratum in",
+            "orderIn": 1
+          }
+        ]
+      },
+      "sourceURL": "https://europepmc.org/article/MED/31548680"
+    },
+    {
+      "id": "dv-reviews-37383647",
+      "pmid": "37383647",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2023",
+      "publicationTypes": [
+        "research-article",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/37383647"
+    },
+    {
+      "id": "dv-reviews-38678198",
+      "pmid": "38678198",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2024",
+      "publicationTypes": [
+        "Research Support, Non-U.S. Gov't",
+        "research-article",
+        "Randomized Controlled Trial",
+        "Pragmatic Clinical Trial",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": {
+        "commentCorrection": [
+          {
+            "source": "PPR",
+            "id": "PPR629710",
+            "type": "Preprint in",
+            "note": "CrossRef Pre-print loader",
+            "orderIn": 10002
+          }
+        ]
+      },
+      "sourceURL": "https://europepmc.org/article/MED/38678198"
+    },
+    {
+      "id": "dv-reviews-38206858",
+      "pmid": "38206858",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2024",
+      "publicationTypes": [
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/38206858"
+    },
+    {
+      "id": "dv-reviews-41045209",
+      "pmid": "41045209",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2025",
+      "publicationTypes": [
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/41045209"
+    },
+    {
+      "id": "dv-vision-11036736",
+      "pmid": "11036736",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2000",
+      "publicationTypes": [
+        "Comparative Study",
+        "Journal Article",
+        "Case Reports"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/11036736"
+    },
+    {
+      "id": "dv-vision-38629403",
+      "pmid": "38629403",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2024",
+      "publicationTypes": [
+        "Research Support, Non-U.S. Gov't",
+        "research-article",
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/38629403"
+    },
+    {
+      "id": "dv-vision-38868491",
+      "pmid": "38868491",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2024",
+      "publicationTypes": [
+        "research-article",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/38868491"
+    },
+    {
+      "id": "dv-vision-42529059",
+      "pmid": "42529059",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2026",
+      "publicationTypes": [
+        "brief-report",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/42529059"
+    },
+    {
+      "id": "dv-children-21199975",
+      "pmid": "21199975",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2011",
+      "publicationTypes": [
+        "Comparative Study",
+        "Randomized Controlled Trial",
+        "Journal Article",
+        "Research Support, N.I.H., Extramural"
+      ],
+      "isRetracted": null,
+      "noticeLinks": {
+        "commentCorrection": [
+          {
+            "source": "MED",
+            "id": "21199987",
+            "reference": "Arch Pediatr Adolesc Med. 2011 Jan;165(1):89-90. doi: 10.1001/archpediatrics.2010.257",
+            "type": "Comment in",
+            "orderIn": 1
+          },
+          {
+            "source": "MED",
+            "id": "21502162",
+            "reference": "Evid Based Ment Health. 2011 May;14(2):56. doi: 10.1136/ebmh.14.2.56",
+            "type": "Comment in",
+            "orderIn": 2
+          }
+        ]
+      },
+      "sourceURL": "https://europepmc.org/article/MED/21199975"
+    },
+    {
+      "id": "dv-children-16292115",
+      "pmid": "16292115",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2005",
+      "publicationTypes": [
+        "Comparative Study",
+        "Research Support, Non-U.S. Gov't",
+        "Randomized Controlled Trial",
+        "Journal Article",
+        "Research Support, N.I.H., Extramural"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/16292115"
+    },
+    {
+      "id": "dv-children-16865033",
+      "pmid": "16865033",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2006",
+      "publicationTypes": [
+        "Research Support, Non-U.S. Gov't",
+        "Randomized Controlled Trial",
+        "Journal Article",
+        "Research Support, N.I.H., Extramural"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/16865033"
+    },
+    {
+      "id": "dv-children-21816474",
+      "pmid": "21816474",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2011",
+      "publicationTypes": [
+        "Research Support, Non-U.S. Gov't",
+        "research-article",
+        "Randomized Controlled Trial",
+        "Journal Article",
+        "Research Support, N.I.H., Extramural"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/21816474"
+    },
+    {
+      "id": "dv-children-11680554",
+      "pmid": "11680554",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2001",
+      "publicationTypes": [
+        "Clinical Trial",
+        "Research Support, U.S. Gov't, P.H.S.",
+        "Research Support, Non-U.S. Gov't",
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/11680554"
+    },
+    {
+      "id": "dv-children-16569097",
+      "pmid": "16569097",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2006",
+      "publicationTypes": [
+        "Randomized Controlled Trial",
+        "Research Support, U.S. Gov't, Non-P.H.S.",
+        "Journal Article",
+        "Research Support, N.I.H., Extramural"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/16569097"
+    },
+    {
+      "id": "dv-children-19634963",
+      "pmid": "19634963",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2009",
+      "publicationTypes": [
+        "Randomized Controlled Trial",
+        "Research Support, U.S. Gov't, Non-P.H.S.",
+        "Journal Article",
+        "Research Support, N.I.H., Extramural"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/19634963"
+    },
+    {
+      "id": "dv-children-27359091",
+      "pmid": "27359091",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2018",
+      "publicationTypes": [
+        "research-article",
+        "Journal Article",
+        "Research Support, N.I.H., Extramural"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/27359091"
+    },
+    {
+      "id": "dv-children-17469878",
+      "pmid": "17469878",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2007",
+      "publicationTypes": [
+        "Research Support, U.S. Gov't, P.H.S.",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/17469878"
+    },
+    {
+      "id": "dv-children-20587468",
+      "pmid": "20587468",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2011",
+      "publicationTypes": [
+        "Research Support, U.S. Gov't, P.H.S.",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/20587468"
+    },
+    {
+      "id": "dv-children-25596929",
+      "pmid": "25596929",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2015",
+      "publicationTypes": [
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/25596929"
+    },
+    {
+      "id": "dv-children-35285428",
+      "pmid": "35285428",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2023",
+      "publicationTypes": [
+        "Research Support, Non-U.S. Gov't",
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/35285428"
+    },
+    {
+      "id": "dv-children-23948313",
+      "pmid": "23948313",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2013",
+      "publicationTypes": [
+        "Research Support, Non-U.S. Gov't",
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/23948313"
+    },
+    {
+      "id": "dv-children-25751123",
+      "pmid": "25751123",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2017",
+      "publicationTypes": [
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/25751123"
+    },
+    {
+      "id": "dv-children-20712147",
+      "pmid": "20712147",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2010",
+      "publicationTypes": [
+        "Comparative Study",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/20712147"
+    },
+    {
+      "id": "dv-children-28503060",
+      "pmid": "28503060",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2017",
+      "publicationTypes": [
+        "research-article",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/28503060"
+    },
+    {
+      "id": "dv-children-32318156",
+      "pmid": "32318156",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2018",
+      "publicationTypes": [
+        "research-article",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/32318156"
+    },
+    {
+      "id": "dv-children-32077730",
+      "pmid": "32077730",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2020",
+      "publicationTypes": [
+        "research-article",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/32077730"
+    },
+    {
+      "id": "dv-children-32512265",
+      "pmid": "32512265",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2020",
+      "publicationTypes": [
+        "research-article",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/32512265"
+    },
+    {
+      "id": "dv-children-31114620",
+      "pmid": "31114620",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2019",
+      "publicationTypes": [
+        "research-article",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/31114620"
+    },
+    {
+      "id": "dv-children-40469793",
+      "pmid": "40469793",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2025",
+      "publicationTypes": [
+        "research-article",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/40469793"
+    },
+    {
+      "id": "dv-children-37750224",
+      "pmid": "37750224",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2025",
+      "publicationTypes": [
+        "Research Support, Non-U.S. Gov't",
+        "research-article",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/37750224"
+    },
+    {
+      "id": "dv-children-32650670",
+      "pmid": "32650670",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2020",
+      "publicationTypes": [
+        "research-article",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/32650670"
+    },
+    {
+      "id": "dv-children-32515292",
+      "pmid": "32515292",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2022",
+      "publicationTypes": [
+        "Research Support, Non-U.S. Gov't",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/32515292"
+    },
+    {
+      "id": "dv-children-25410886",
+      "pmid": "25410886",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2016",
+      "publicationTypes": [
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/25410886"
+    },
+    {
+      "id": "dv-sound-15913391",
+      "pmid": "15913391",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2005",
+      "publicationTypes": [
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/15913391"
+    },
+    {
+      "id": "dv-sound-24766169",
+      "pmid": "24766169",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2014",
+      "publicationTypes": [
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/24766169"
+    },
+    {
+      "id": "dv-sound-42298885",
+      "pmid": "42298885",
+      "found": true,
+      "titleSimilarity": 0.9822,
+      "doiMatches": true,
+      "publishedYear": "2026",
+      "publicationTypes": [
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/42298885"
+    },
+    {
+      "id": "dv-sound-37107774",
+      "pmid": "37107774",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2023",
+      "publicationTypes": [
+        "Research Support, Non-U.S. Gov't",
+        "research-article",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/37107774"
+    },
+    {
+      "id": "dv-adult-therapy-34305273",
+      "pmid": "34305273",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2020",
+      "publicationTypes": [
+        "research-article",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/34305273"
+    },
+    {
+      "id": "dv-adult-therapy-21787052",
+      "pmid": "21787052",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2011",
+      "publicationTypes": [
+        "research-article",
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/21787052"
+    },
+    {
+      "id": "dv-adult-therapy-27459503",
+      "pmid": "27459503",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2016",
+      "publicationTypes": [
+        "research-article",
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/27459503"
+    },
+    {
+      "id": "dv-adult-therapy-30481183",
+      "pmid": "30481183",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2018",
+      "publicationTypes": [
+        "Research Support, Non-U.S. Gov't",
+        "research-article",
+        "Randomized Controlled Trial",
+        "Pragmatic Clinical Trial",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/30481183"
+    },
+    {
+      "id": "dv-adult-therapy-23598181",
+      "pmid": "23598181",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2013",
+      "publicationTypes": [
+        "Research Support, Non-U.S. Gov't",
+        "Multicenter Study",
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": {
+        "commentCorrection": [
+          {
+            "source": "MED",
+            "id": "23598182",
+            "reference": "Lancet. 2013 Jul 20;382(9888):190-1. doi: 10.1016/S0140-6736(13)60584-X.",
+            "type": "Comment in",
+            "orderIn": 1
+          },
+          {
+            "source": "MED",
+            "id": "24139115",
+            "reference": "Lancet. 2013 Oct 19;382(9901):1326. doi: 10.1016/S0140-6736(13)62133-9.",
+            "type": "Comment in",
+            "orderIn": 2
+          },
+          {
+            "source": "MED",
+            "id": "24139117",
+            "reference": "Lancet. 2013 Oct 19;382(9901):1326. doi: 10.1016/S0140-6736(13)62134-0.",
+            "type": "Comment in",
+            "orderIn": 3
+          }
+        ]
+      },
+      "sourceURL": "https://europepmc.org/article/MED/23598181"
+    },
+    {
+      "id": "dv-adult-therapy-30079583",
+      "pmid": "30079583",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2018",
+      "publicationTypes": [
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/30079583"
+    },
+    {
+      "id": "dv-adult-therapy-34584851",
+      "pmid": "34584851",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2021",
+      "publicationTypes": [
+        "research-article",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/34584851"
+    },
+    {
+      "id": "dv-adult-therapy-32993831",
+      "pmid": "32993831",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2021",
+      "publicationTypes": [
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/32993831"
+    },
+    {
+      "id": "dv-adult-therapy-24252714",
+      "pmid": "24252714",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2014",
+      "publicationTypes": [
+        "Research Support, U.S. Gov't, P.H.S.",
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/24252714"
+    },
+    {
+      "id": "dv-adult-therapy-21153559",
+      "pmid": "21153559",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2011",
+      "publicationTypes": [
+        "research-article",
+        "Randomized Controlled Trial",
+        "Journal Article",
+        "Research Support, N.I.H., Extramural"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/21153559"
+    },
+    {
+      "id": "dv-adult-therapy-14756610",
+      "pmid": "14756610",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2004",
+      "publicationTypes": [
+        "Clinical Trial",
+        "Randomized Controlled Trial",
+        "Research Support, U.S. Gov't, Non-P.H.S.",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/14756610"
+    },
+    {
+      "id": "dv-adult-therapy-12602656",
+      "pmid": "12602656",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2003",
+      "publicationTypes": [
+        "Controlled Clinical Trial",
+        "Clinical Trial",
+        "Research Support, U.S. Gov't, Non-P.H.S.",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/12602656"
+    },
+    {
+      "id": "dv-adult-therapy-39529598",
+      "pmid": "39529598",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2024",
+      "publicationTypes": [
+        "Research Support, Non-U.S. Gov't",
+        "research-article",
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/39529598"
+    },
+    {
+      "id": "dv-adult-therapy-41065656",
+      "pmid": "41065656",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2025",
+      "publicationTypes": [
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/41065656"
+    },
+    {
+      "id": "dv-adult-therapy-40425196",
+      "pmid": "40425196",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2025",
+      "publicationTypes": [
+        "research-article",
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/40425196"
+    },
+    {
+      "id": "dv-adult-therapy-39488744",
+      "pmid": "39488744",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2024",
+      "publicationTypes": [
+        "research-article",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/39488744"
+    },
+    {
+      "id": "dv-adult-therapy-37889918",
+      "pmid": "37889918",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2023",
+      "publicationTypes": [
+        "research-article",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/37889918"
+    },
+    {
+      "id": "dv-adult-therapy-34143803",
+      "pmid": "34143803",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2021",
+      "publicationTypes": [
+        "Research Support, Non-U.S. Gov't",
+        "research-article",
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/34143803"
+    },
+    {
+      "id": "dv-adult-therapy-33375899",
+      "pmid": "33375899",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2022",
+      "publicationTypes": [
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/33375899"
+    },
+    {
+      "id": "dv-adult-therapy-32933348",
+      "pmid": "32933348",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2022",
+      "publicationTypes": [
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/32933348"
+    },
+    {
+      "id": "dv-adult-therapy-34703783",
+      "pmid": "34703783",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2021",
+      "publicationTypes": [
+        "research-article",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/34703783"
+    },
+    {
+      "id": "dv-adult-therapy-30344863",
+      "pmid": "30344863",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2018",
+      "publicationTypes": [
+        "research-article",
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/30344863"
+    },
+    {
+      "id": "dv-adult-therapy-26437311",
+      "pmid": "26437311",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2015",
+      "publicationTypes": [
+        "Research Support, Non-U.S. Gov't",
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/26437311"
+    },
+    {
+      "id": "dv-adult-therapy-31363925",
+      "pmid": "31363925",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2019",
+      "publicationTypes": [
+        "Research Support, Non-U.S. Gov't",
+        "research-article",
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/31363925"
+    },
+    {
+      "id": "dv-adult-therapy-17022356",
+      "pmid": "17022356",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2006",
+      "publicationTypes": [
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/17022356"
+    },
+    {
+      "id": "dv-adult-therapy-20977033",
+      "pmid": "20977033",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2010",
+      "publicationTypes": [
+        "Comparative Study",
+        "Research Support, Non-U.S. Gov't",
+        "Multicenter Study",
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": {
+        "commentCorrection": [
+          {
+            "source": "MED",
+            "id": "23734925",
+            "reference": "Int J Group Psychother. 2013 Jul;63(3):449-52. doi: 10.1521/ijgp.2013.63.3.449",
+            "type": "Comment in",
+            "orderIn": 1
+          }
+        ]
+      },
+      "sourceURL": "https://europepmc.org/article/MED/20977033"
+    },
+    {
+      "id": "dv-adult-therapy-20658802",
+      "pmid": "20658802",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2010",
+      "publicationTypes": [
+        "Comparative Study",
+        "Randomized Controlled Trial",
+        "Journal Article",
+        "Research Support, N.I.H., Extramural"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/20658802"
+    },
+    {
+      "id": "dv-adult-therapy-10783523",
+      "pmid": "10783523",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2000",
+      "publicationTypes": [
+        "Clinical Trial",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/10783523"
+    },
+    {
+      "id": "dv-adult-therapy-33303427",
+      "pmid": "33303427",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2020",
+      "publicationTypes": [
+        "Research Support, Non-U.S. Gov't",
+        "research-article",
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/33303427"
+    },
+    {
+      "id": "dv-adult-therapy-31715628",
+      "pmid": "31715628",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2020",
+      "publicationTypes": [
+        "Research Support, Non-U.S. Gov't",
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/31715628"
+    },
+    {
+      "id": "dv-adult-therapy-42326745",
+      "pmid": "42326745",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2026",
+      "publicationTypes": [
+        "research-article",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/42326745"
+    },
+    {
+      "id": "dv-adult-therapy-40883805",
+      "pmid": "40883805",
+      "found": true,
+      "titleSimilarity": 1.0,
+      "doiMatches": true,
+      "publishedYear": "2025",
+      "publicationTypes": [
+        "research-article",
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ],
+      "isRetracted": null,
+      "noticeLinks": null,
+      "sourceURL": "https://europepmc.org/article/MED/40883805"
+    }
+  ],
+  "privateSourceSHA256": "1942f4d8b2b74275cf9d170bdf1ac3fc0a3da5e33620f6c3ffb300123c13f772",
+  "limitations": "Bibliographic and indexed-status verification only; not an exhaustive publisher/Crossmark or full-text appraisal."
+}
