@@ -1,0 +1,918 @@
+[
+  {
+    "id": "dv-reviews-cont-40632759",
+    "title": "Emotional skills and health assessment in interventions for intimate partner violence perpetrators: A systematic review of randomized controlled trials.",
+    "authors": [
+      "Mora-Pelegrín M",
+      "Aranda M",
+      "Montes-Berges B"
+    ],
+    "year": 2025,
+    "journal": "PloS one",
+    "doi": "10.1371/journal.pone.0328034",
+    "pmid": "40632759",
+    "trialRegistration": [],
+    "collection": "language",
+    "interventionFamily": "Perpetrator programmes incorporating emotional skills, usually within CBT; emotion regulation, anger management, communication and empathy.",
+    "publicationType": "Systematic review of randomized trials",
+    "studyFamilyId": "review:40632759",
+    "familyLinkageUncertain": false,
+    "independentPrimaryStudy": false,
+    "existingRepositoryMatches": [],
+    "frozenBatchPublicationMatches": [],
+    "relatedEvidenceFamilyRecords": [],
+    "relevance": {
+      "relation": "direct",
+      "population": "Adult men and women who perpetrate IPV in community, military and online intervention samples",
+      "exposureEvidence": "Eligibility and study population descriptions explicitly concern IPV perpetrators, IPV-exposed survivors/children, or IPV prevention. ",
+      "rationale": "Adds a methods-supported map of emotional-skills interventions while retaining weak official-record evidence and preventing positive-outcome vote counting from becoming an efficacy claim.",
+      "transferLimit": "No review registration or published protocol. Heterogeneous interventions and active controls often shared emotional components; four pilot/feasibility trials and frequent self-report limit causal attribution to emotional skills alone."
+    },
+    "age": {
+      "groups": [
+        "adults"
+      ],
+      "reportedRange": "Reported study mean ages range from 27 to 60.5 years; individual age range not established.",
+      "youthScope": null
+    },
+    "country": "United States (9 trials), Spain (2), Netherlands, United Kingdom, Norway and Sweden (1 each).",
+    "setting": "Mainly community programmes; one military trial and one online trial.",
+    "sampleSize": {
+      "randomized": null,
+      "analyzed": null,
+      "description": "15 primary trial reports with 2,390 reported participants; 1,369 intervention and 1,021 comparator. Pooled trial participants are not new independent studies."
+    },
+    "intervention": {
+      "description": "Perpetrator programmes incorporating emotional skills, usually within CBT; emotion regulation, anger management, communication and empathy.",
+      "dose": "Single-session to more than 16-session programmes; duration and emotional-content intensity varied.",
+      "provider": "Health professionals, psychologists, therapists and psychology students; relevant IPV experience reported in four trials."
+    },
+    "comparator": "Mostly heterogeneous active interventions; some no-treatment, usual-care or placebo comparisons.",
+    "outcomes": [
+      {
+        "name": "Official IPV recidivism",
+        "followUp": "Study-specific, extending to 3 years",
+        "result": "Only one of five trials favored intervention",
+        "effectEstimate": null,
+        "uncertainty": "Narrative synthesis; no pooled recidivism effect.",
+        "primaryStatus": "Review outcome; no participant-randomized trial conducted by this publication."
+      },
+      {
+        "name": "Any selected recidivism or associated outcome",
+        "followUp": "Study-specific",
+        "result": "Eight of 15 trials reported a favorable difference",
+        "effectEstimate": null,
+        "uncertainty": "Vote count across different outcomes and designs; not a response rate or treatment-effect magnitude.",
+        "primaryStatus": "Review outcome; no participant-randomized trial conducted by this publication."
+      },
+      {
+        "name": "Adherence/dropout",
+        "followUp": "During treatment",
+        "result": "No significant overall advantage established",
+        "effectEstimate": null,
+        "uncertainty": "No quantitative pooled estimate.",
+        "primaryStatus": "Review outcome; no participant-randomized trial conducted by this publication."
+      }
+    ],
+    "finding": "Eight of 15 trials favored an emotional-skills programme on at least one selected outcome, but only one of five trials using official IPV recidivism records favored the intervention. A count of positive trials does not establish a pooled effect.",
+    "limitation": "No review registration or published protocol. Heterogeneous interventions and active controls often shared emotional components; four pilot/feasibility trials and frequent self-report limit causal attribution to emotional skills alone.",
+    "design": {
+      "type": "Systematic review of randomized trials",
+      "randomizationEvidence": "Evidence synthesis or secondary meta-regression; this publication does not randomize participants. Included-study design labels do not confer trial crosses.",
+      "masking": {
+        "participants": "Not applicable to this evidence-synthesis publication; primary-trial masking was not newly verified.",
+        "providers": "Not applicable to this evidence-synthesis publication; primary-trial masking was not newly verified.",
+        "assessors": "Not applicable to this evidence-synthesis publication; primary-trial masking was not newly verified.",
+        "analysts": "Not applicable to this evidence-synthesis publication; primary-trial masking was not newly verified."
+      },
+      "crosses": 0,
+      "crossRationale": "Evidence syntheses receive no trial-design crosses."
+    },
+    "quality": {
+      "riskOfBias": "Cochrane-domain assessments were conducted independently by two reviewers. No included trial met all domains; ten had insufficient outcome-assessor masking information, and eleven had medium/high other-bias concerns.",
+      "attrition": "Thirteen trials reported dropout or dose; three had low adherence under the review definition. No significant advantage in dropout or dose was established.",
+      "confounding": "No review registration or published protocol. Heterogeneous interventions and active controls often shared emotional components; four pilot/feasibility trials and frequent self-report limit causal attribution to emotional skills alone.",
+      "adverseFindings": "Review did not provide a systematic pooled adverse-event analysis; absence of harm cannot be inferred.",
+      "transferLimits": "No review registration or published protocol. Heterogeneous interventions and active controls often shared emotional components; four pilot/feasibility trials and frequent self-report limit causal attribution to emotional skills alone.",
+      "jadad": "not applicable"
+    },
+    "access": {
+      "level": "selected-methods",
+      "sourceURLs": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC12240372/",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12240372/fullTextXML",
+        "https://api.crossref.org/works/10.1371%2Fjournal.pone.0328034"
+      ],
+      "retrievedAt": "2026-10-30T08:08:14.230781+00:00",
+      "sectionsInspected": [
+        "Methods: eligibility, search, extraction and risk-of-bias assessment",
+        "Results: study characteristics, quality assessment, qualitative analysis and trial findings",
+        "Discussion: official-record findings, comparator overlap and limitations"
+      ]
+    },
+    "sources": [
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12240372/",
+        "type": "Open-access article archived in PMC; XML retrieved through Europe PMC",
+        "retrievedAt": "2026-10-30T08:08:14.230781+00:00",
+        "identityVerified": true,
+        "notes": "Methods and results sections listed in access.sectionsInspected were inspected. Whole-article formal appraisal and numerical reconstruction are not claimed."
+      },
+      {
+        "url": "https://api.crossref.org/works/10.1371%2Fjournal.pone.0328034",
+        "type": "Publisher-deposited Crossref bibliographic metadata",
+        "retrievedAt": "2026-10-30T08:12:24.786050+00:00",
+        "identityVerified": true,
+        "notes": "DOI and normalized title match retained Europe PMC metadata."
+      }
+    ],
+    "publicationStatus": {
+      "status": "Published journal article",
+      "correctionRetractionCheck": "Crossref relation and update-to metadata inspected; no linked correction or retraction was returned. Retained Europe PMC publication types: research-article, Systematic Review, Journal Article.",
+      "uncertainty": "This is not an exhaustive correction/retraction search. "
+    },
+    "recommendationRationale": "Adds a methods-supported map of emotional-skills interventions while retaining weak official-record evidence and preventing positive-outcome vote counting from becoming an efficacy claim.",
+    "review": {
+      "status": "pending",
+      "reviewer": null
+    },
+    "assessmentStatus": "assessed",
+    "assessmentNotes": "Bounded source-supported assessment of selected methods and results, not complete full-text appraisal. Pooled studies are never added to the primary-study count.",
+    "reviewReady": true,
+    "reviewReadiness": "ready-with-explicit-methods-and-access-limits",
+    "sourceEvidenceHashes": {
+      "articleXMLSHA256": "1e0ddc7213803657341dacb5df5b53503b3c8c65c7a24a15d1b47b644cb146ce",
+      "crossrefSHA256": "d78bb6e6237f5df71db9d50b29c17202d4c7a303177ffcdd25f10832857a37f7"
+    },
+    "provenance": {
+      "origin": "Retained first-batch discovery queue",
+      "frozenBatch": "batch-acb62474225f0804",
+      "assessedAt": "2026-10-30T08:18:05.594789+00:00"
+    }
+  },
+  {
+    "id": "dv-reviews-cont-36429899",
+    "title": "The Effectiveness of Culturally Specific Male Domestic Violence Offender Intervention Programs on Behavior Changes and Mental Health: A Systematic Review.",
+    "authors": [
+      "Satyen L",
+      "Hansen A",
+      "Green JL",
+      "Zark L"
+    ],
+    "year": 2022,
+    "journal": "International journal of environmental research and public health",
+    "doi": "10.3390/ijerph192215180",
+    "pmid": "36429899",
+    "trialRegistration": [],
+    "collection": "language",
+    "interventionFamily": "Culturally specific perpetrator programmes using appropriate languages, culturally knowledgeable facilitators, discussion of gender norms and sometimes traditional healing.",
+    "publicationType": "Mixed-methods systematic review",
+    "studyFamilyId": "review:36429899",
+    "familyLinkageUncertain": false,
+    "independentPrimaryStudy": false,
+    "existingRepositoryMatches": [],
+    "frozenBatchPublicationMatches": [],
+    "relatedEvidenceFamilyRecords": [],
+    "relevance": {
+      "relation": "direct",
+      "population": "Male domestic-violence perpetrators from selected ethnic minority or non-Anglo-Saxon populations",
+      "exposureEvidence": "Eligibility and study population descriptions explicitly concern IPV perpetrators, IPV-exposed survivors/children, or IPV prevention. ",
+      "rationale": "Adds culturally relevant intervention context while preserving the negative controlled finding and limits of largely uncontrolled evidence.",
+      "transferLimit": "Small and culturally restricted evidence base, inconsistent outcomes and heavy reliance on perpetrator reports. The review text also contains a cross-reference mismatch when attributing one study’s success rate; no exact success percentage is carried forward."
+    },
+    "age": {
+      "groups": [
+        "adults"
+      ],
+      "reportedRange": "Not established from the inspected source sections.",
+      "youthScope": null
+    },
+    "country": "Six studies in North America, three in Europe and one in Asia.",
+    "setting": "Predominantly group perpetrator programmes; culturally adapted delivery across selected populations.",
+    "sampleSize": {
+      "randomized": null,
+      "analyzed": null,
+      "description": "10 publications; approximately 1,950 participants reported. Two studies did not report sample size. Four qualitative evaluations, three uncontrolled pre/post studies, one RCT, one case series and one case-control study."
+    },
+    "intervention": {
+      "description": "Culturally specific perpetrator programmes using appropriate languages, culturally knowledgeable facilitators, discussion of gender norms and sometimes traditional healing.",
+      "dose": "Not established from the inspected source sections.",
+      "provider": "Culturally knowledgeable or bicultural facilitators; some programmes involved traditional healers."
+    },
+    "comparator": "Mostly uncontrolled or qualitative evaluations; one randomized and one case-control comparison.",
+    "outcomes": [
+      {
+        "name": "Violence/recidivism",
+        "followUp": "Variable, including multi-year follow-up",
+        "result": "Mostly reported improvement in uncontrolled or mixed-methods studies; one controlled comparison was unfavorable",
+        "effectEstimate": null,
+        "uncertainty": "No meta-analysis or defensible pooled comparative estimate.",
+        "primaryStatus": "Review outcome; no participant-randomized trial conducted by this publication."
+      },
+      {
+        "name": "Psychopathology and communication",
+        "followUp": "Variable",
+        "result": "Some reports described improvement",
+        "effectEstimate": null,
+        "uncertainty": "Predominantly self-report or qualitative findings; adaptation-specific causal effect not isolated.",
+        "primaryStatus": "Review outcome; no participant-randomized trial conducted by this publication."
+      }
+    ],
+    "finding": "Most publications described improvement, but predominantly uncontrolled designs cannot establish that cultural adaptation caused benefit. One controlled study found higher violent recidivism in treatment and no IPV recidivism advantage.",
+    "limitation": "Small and culturally restricted evidence base, inconsistent outcomes and heavy reliance on perpetrator reports. The review text also contains a cross-reference mismatch when attributing one study’s success rate; no exact success percentage is carried forward.",
+    "design": {
+      "type": "Mixed-methods systematic review",
+      "randomizationEvidence": "Evidence synthesis or secondary meta-regression; this publication does not randomize participants. Included-study design labels do not confer trial crosses.",
+      "masking": {
+        "participants": "Not applicable to this evidence-synthesis publication; primary-trial masking was not newly verified.",
+        "providers": "Not applicable to this evidence-synthesis publication; primary-trial masking was not newly verified.",
+        "assessors": "Not applicable to this evidence-synthesis publication; primary-trial masking was not newly verified.",
+        "analysts": "Not applicable to this evidence-synthesis publication; primary-trial masking was not newly verified."
+      },
+      "crosses": 0,
+      "crossRationale": "Evidence syntheses receive no trial-design crosses."
+    },
+    "quality": {
+      "riskOfBias": "Two reviewers used CASP for qualitative studies and NHLBI design-specific tools for quantitative studies. Only one included study used an RCT design; study-level comparative efficacy remains weak.",
+      "attrition": "Completion and satisfaction were inconsistently measured. One traditional-healing report combined escalating violence with loss to follow-up, so these outcomes cannot be separated from the review narrative.",
+      "confounding": "Small and culturally restricted evidence base, inconsistent outcomes and heavy reliance on perpetrator reports. The review text also contains a cross-reference mismatch when attributing one study’s success rate; no exact success percentage is carried forward.",
+      "adverseFindings": "One controlled study reported higher violent recidivism with treatment and similar IPV recidivism. Another narrative combined escalation with loss to follow-up; no pooled harm rate is available.",
+      "transferLimits": "Small and culturally restricted evidence base, inconsistent outcomes and heavy reliance on perpetrator reports. The review text also contains a cross-reference mismatch when attributing one study’s success rate; no exact success percentage is carried forward.",
+      "jadad": "not applicable"
+    },
+    "access": {
+      "level": "selected-methods",
+      "sourceURLs": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC9690755/",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9690755/fullTextXML",
+        "https://api.crossref.org/works/10.3390%2Fijerph192215180"
+      ],
+      "retrievedAt": "2026-10-30T08:08:14.291966+00:00",
+      "sectionsInspected": [
+        "Materials and Methods: search, selection, design characteristics, quality assessment and sample",
+        "Results: programme content, recurrence, psychopathology, communication and adverse/null comparison",
+        "Discussion limitations"
+      ]
+    },
+    "sources": [
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9690755/",
+        "type": "Open-access article archived in PMC; XML retrieved through Europe PMC",
+        "retrievedAt": "2026-10-30T08:08:14.291966+00:00",
+        "identityVerified": true,
+        "notes": "Methods and results sections listed in access.sectionsInspected were inspected. Whole-article formal appraisal and numerical reconstruction are not claimed."
+      },
+      {
+        "url": "https://api.crossref.org/works/10.3390%2Fijerph192215180",
+        "type": "Publisher-deposited Crossref bibliographic metadata",
+        "retrievedAt": "2026-10-30T08:12:24.786427+00:00",
+        "identityVerified": true,
+        "notes": "DOI and normalized title match retained Europe PMC metadata."
+      }
+    ],
+    "publicationStatus": {
+      "status": "Published journal article",
+      "correctionRetractionCheck": "Crossref relation and update-to metadata inspected; no linked correction or retraction was returned. Retained Europe PMC publication types: Systematic Review, review-article, Journal Article.",
+      "uncertainty": "This is not an exhaustive correction/retraction search. "
+    },
+    "recommendationRationale": "Adds culturally relevant intervention context while preserving the negative controlled finding and limits of largely uncontrolled evidence.",
+    "review": {
+      "status": "pending",
+      "reviewer": null
+    },
+    "assessmentStatus": "assessed",
+    "assessmentNotes": "Bounded source-supported assessment of selected methods and results, not complete full-text appraisal. Pooled studies are never added to the primary-study count.",
+    "reviewReady": true,
+    "reviewReadiness": "ready-with-explicit-methods-and-access-limits",
+    "sourceEvidenceHashes": {
+      "articleXMLSHA256": "6f5a6d5d2099d3290d334aa158e471d491bbece38c085b894daf3c3c43698faf",
+      "crossrefSHA256": "546f887eb5212f0898c92c85d89be86e5bbace0b249cb7d67c29922fe81a2df4"
+    },
+    "provenance": {
+      "origin": "Retained first-batch discovery queue",
+      "frozenBatch": "batch-acb62474225f0804",
+      "assessedAt": "2026-10-30T08:18:05.594789+00:00"
+    }
+  },
+  {
+    "id": "dv-reviews-cont-39302822",
+    "title": "Effectiveness of Father-Focused Interventions to Prevent or Reduce Intimate Partner Violence During Pregnancy and Early Parenthood: A Systematic Review.",
+    "authors": [
+      "Wynter K",
+      "Francis LM",
+      "Borgkvist A",
+      "Dixson B",
+      "D'Souza L",
+      "Duursma E",
+      "May C",
+      "Sher L",
+      "George JS"
+    ],
+    "year": 2025,
+    "journal": "Trauma, violence & abuse",
+    "doi": "10.1177/15248380241277270",
+    "pmid": "39302822",
+    "trialRegistration": [
+      "PROSPERO CRD42021228822"
+    ],
+    "collection": "language",
+    "interventionFamily": "Father-focused or parent-focused programmes addressing IPV, parenting, relationships or gender norms.",
+    "publicationType": "Systematic review",
+    "studyFamilyId": "review:39302822",
+    "familyLinkageUncertain": false,
+    "independentPrimaryStudy": false,
+    "existingRepositoryMatches": [],
+    "frozenBatchPublicationMatches": [],
+    "relatedEvidenceFamilyRecords": [],
+    "relevance": {
+      "relation": "direct",
+      "population": "Fathers with pregnant partners or dependent children, with both primary-prevention and known-IPV samples",
+      "exposureEvidence": "Eligibility and study population descriptions explicitly concern IPV perpetrators, IPV-exposed survivors/children, or IPV prevention. Some participants were prevention populations, so established personal victimization is not assumed.",
+      "rationale": "Clarifies the limited controlled evidence for father-focused prevention and distinguishes primary prevention from treatment in families with established IPV.",
+      "transferLimit": "Poor-to-moderate reporting/method quality; English peer-reviewed literature only, search completed May 2021 despite later publication, mixed prevention populations and incompatible outcomes prevented meta-analysis."
+    },
+    "age": {
+      "groups": [
+        "adults"
+      ],
+      "reportedRange": "Reported mean paternal ages 23–35.9 years; individual age range not established.",
+      "youthScope": "Children are part of the family context; IPV outcomes concern adult partners."
+    },
+    "country": "United States (7), Rwanda (2), New Zealand (2), Iran (2), Uganda (1) and United Kingdom (1).",
+    "setting": "Community health (11 publications) and specialized settings such as court referral (4).",
+    "sampleSize": {
+      "randomized": null,
+      "analyzed": null,
+      "description": "15 publications reporting at least 10,816 participants. Twelve reported intervention and comparison groups; three reported single-group repeated measures. Publication totals are not independently verified unique cohorts."
+    },
+    "intervention": {
+      "description": "Father-focused or parent-focused programmes addressing IPV, parenting, relationships or gender norms.",
+      "dose": "Varied; review median follow-up 7 months and maximum up to 9 years.",
+      "provider": "Not established from the inspected source sections."
+    },
+    "comparator": "Other interventions, untreated/usual-care comparisons or pre-intervention scores.",
+    "outcomes": [
+      {
+        "name": "Adult IPV perpetration/victimization",
+        "followUp": "Immediate to 9 years; median 7 months",
+        "result": "Three adjusted controlled analyses favored intervention; remaining evidence mixed",
+        "effectEstimate": null,
+        "uncertainty": "No pooled estimate. Primary prevention and treatment of known IPV are distinct.",
+        "primaryStatus": "Review outcome; no participant-randomized trial conducted by this publication."
+      },
+      {
+        "name": "Persistence of benefit",
+        "followUp": "Study-specific",
+        "result": "Some short-term psychological-IPV differences were absent at later follow-up",
+        "effectEstimate": null,
+        "uncertainty": "No pooled durability estimate.",
+        "primaryStatus": "Review outcome; no participant-randomized trial conducted by this publication."
+      }
+    ],
+    "finding": "Only three of twelve publications with comparison groups reported more robust adjusted evidence of reduced IPV; all three were in lower- or middle-income settings. Other controlled findings were null, limited to particular outcomes, or no longer evident at later follow-up.",
+    "limitation": "Poor-to-moderate reporting/method quality; English peer-reviewed literature only, search completed May 2021 despite later publication, mixed prevention populations and incompatible outcomes prevented meta-analysis.",
+    "design": {
+      "type": "Systematic review",
+      "randomizationEvidence": "Evidence synthesis or secondary meta-regression; this publication does not randomize participants. Included-study design labels do not confer trial crosses.",
+      "masking": {
+        "participants": "Not applicable to this evidence-synthesis publication; primary-trial masking was not newly verified.",
+        "providers": "Not applicable to this evidence-synthesis publication; primary-trial masking was not newly verified.",
+        "assessors": "Not applicable to this evidence-synthesis publication; primary-trial masking was not newly verified.",
+        "analysts": "Not applicable to this evidence-synthesis publication; primary-trial masking was not newly verified."
+      },
+      "crosses": 0,
+      "crossRationale": "Evidence syntheses receive no trial-design crosses."
+    },
+    "quality": {
+      "riskOfBias": "QuADS scores ranged 13–27 of 39 (median 22). One reviewer assessed all papers and other reviewers co-assessed five; inter-rater correlation 0.62. Only three papers justified sample size.",
+      "attrition": "Study-specific attrition and analysis populations were not reconciled in this assessment.",
+      "confounding": "Poor-to-moderate reporting/method quality; English peer-reviewed literature only, search completed May 2021 despite later publication, mixed prevention populations and incompatible outcomes prevented meta-analysis.",
+      "adverseFindings": "Systematic adverse-event ascertainment is not established in inspected sections.",
+      "transferLimits": "Poor-to-moderate reporting/method quality; English peer-reviewed literature only, search completed May 2021 despite later publication, mixed prevention populations and incompatible outcomes prevented meta-analysis.",
+      "jadad": "not applicable"
+    },
+    "access": {
+      "level": "selected-methods",
+      "sourceURLs": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC11558938/",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11558938/fullTextXML",
+        "https://api.crossref.org/works/10.1177%2F15248380241277270"
+      ],
+      "retrievedAt": "2026-10-30T08:08:14.301666+00:00",
+      "sectionsInspected": [
+        "Methods: registration, six-database search, inclusion, QuADS, extraction and synthesis",
+        "Results: quality, populations and controlled versus uncontrolled findings",
+        "Limitations"
+      ]
+    },
+    "sources": [
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11558938/",
+        "type": "Open-access article archived in PMC; XML retrieved through Europe PMC",
+        "retrievedAt": "2026-10-30T08:08:14.301666+00:00",
+        "identityVerified": true,
+        "notes": "Methods and results sections listed in access.sectionsInspected were inspected. Whole-article formal appraisal and numerical reconstruction are not claimed."
+      },
+      {
+        "url": "https://api.crossref.org/works/10.1177%2F15248380241277270",
+        "type": "Publisher-deposited Crossref bibliographic metadata",
+        "retrievedAt": "2026-10-30T08:12:24.786307+00:00",
+        "identityVerified": true,
+        "notes": "DOI and normalized title match retained Europe PMC metadata."
+      }
+    ],
+    "publicationStatus": {
+      "status": "Published journal article",
+      "correctionRetractionCheck": "Crossref relation and update-to metadata inspected; no linked correction or retraction was returned. Retained Europe PMC publication types: Systematic Review, review-article, Journal Article.",
+      "uncertainty": "This is not an exhaustive correction/retraction search. "
+    },
+    "recommendationRationale": "Clarifies the limited controlled evidence for father-focused prevention and distinguishes primary prevention from treatment in families with established IPV.",
+    "review": {
+      "status": "pending",
+      "reviewer": null
+    },
+    "assessmentStatus": "assessed",
+    "assessmentNotes": "Bounded source-supported assessment of selected methods and results, not complete full-text appraisal. Pooled studies are never added to the primary-study count.",
+    "reviewReady": true,
+    "reviewReadiness": "ready-with-explicit-methods-and-access-limits",
+    "sourceEvidenceHashes": {
+      "articleXMLSHA256": "4ac22a356d82f5a28d0d1b4fa5dad16c2495f531745d2d27b333aa3f0643fdb5",
+      "crossrefSHA256": "f303b0dfac32710390bb1be61121429127e92f50cd0115fefa7b66c843a61680"
+    },
+    "provenance": {
+      "origin": "Retained first-batch discovery queue",
+      "frozenBatch": "batch-acb62474225f0804",
+      "assessedAt": "2026-10-30T08:18:05.594789+00:00"
+    }
+  },
+  {
+    "id": "dv-reviews-cont-36909881",
+    "title": "Technology-based and digital interventions for intimate partner violence: A systematic review and meta-analysis.",
+    "authors": [
+      "Emezue C",
+      "Chase JD",
+      "Udmuangpia T",
+      "Bloom TL"
+    ],
+    "year": 2022,
+    "journal": "Campbell systematic reviews",
+    "doi": "10.1002/cl2.1271",
+    "pmid": "36909881",
+    "trialRegistration": [],
+    "collection": "language",
+    "interventionFamily": "Web/mobile/digital interventions including safety planning, psychoeducation, decision support, counseling and relationship programmes.",
+    "publicationType": "Systematic review and meta-analysis",
+    "studyFamilyId": "review:36909881",
+    "familyLinkageUncertain": false,
+    "independentPrimaryStudy": false,
+    "existingRepositoryMatches": [],
+    "frozenBatchPublicationMatches": [],
+    "relatedEvidenceFamilyRecords": [],
+    "relevance": {
+      "relation": "direct",
+      "population": "Female participants in technology-based IPV intervention or prevention trials; eligibility and IPV histories varied across trials",
+      "exposureEvidence": "Eligibility and study population descriptions explicitly concern IPV perpetrators, IPV-exposed survivors/children, or IPV prevention. Some participants were prevention populations, so established personal victimization is not assumed.",
+      "rationale": "Retained as an evidence-audit candidate because selected-methods inspection reveals material conflicts that abstract-only reading would miss.",
+      "transferLimit": "Fixed-effect pooling despite heterogeneity, post hoc outlier exclusions, limited study counts, mostly self-reported outcomes and inconsistent numerical reporting. Quantitative efficacy conclusions are withheld."
+    },
+    "age": {
+      "groups": [
+        "adults",
+        "youth"
+      ],
+      "reportedRange": "Study mean ages ranged 19–41.5 years; this is not the individual participant age range. Some eligibility descriptions include younger participants.",
+      "youthScope": "Youth participation is possible in included studies; an aggregate youth effect is not established."
+    },
+    "country": "United States (12), Canada, New Zealand, China, Kenya and Australia (1 each).",
+    "setting": "Digital platforms across community, college, perinatal and community-corrections settings.",
+    "sampleSize": {
+      "randomized": null,
+      "analyzed": null,
+      "description": "17 reported RCTs, 18 effect-size comparisons and 4,590 female participants. Pooled studies are not separately assessed here."
+    },
+    "intervention": {
+      "description": "Web/mobile/digital interventions including safety planning, psychoeducation, decision support, counseling and relationship programmes.",
+      "dose": "Varied digital-only and hybrid delivery; outcomes up to 12 months.",
+      "provider": "Mixed self-directed digital and professionally facilitated delivery."
+    },
+    "comparator": "Usual care, active digital/non-digital information, waitlist or enhanced-care comparators.",
+    "outcomes": [
+      {
+        "name": "PTSD",
+        "followUp": "3–6 months",
+        "result": "Reported estimate compatible with no difference",
+        "effectEstimate": "SMD -0.04; 95% CI -0.14 to 0.06",
+        "uncertainty": "Four trials, as reported; calculations not independently reproduced.",
+        "primaryStatus": "Review outcome; no participant-randomized trial conducted by this publication."
+      },
+      {
+        "name": "Psychological IPV",
+        "followUp": "0–6 months",
+        "result": "Direction/significance conflict within the source",
+        "effectEstimate": "Narrative says positive/nonsignificant beside SMD -0.34; 95% CI -0.47 to -0.20",
+        "uncertainty": "Withheld pending source check; result cannot be safely summarized as a verified treatment benefit.",
+        "primaryStatus": "Review outcome; no participant-randomized trial conducted by this publication."
+      },
+      {
+        "name": "Sexual IPV",
+        "followUp": "6–9 months",
+        "result": "All-study analysis reportedly favored control; outlier-excluded result was null",
+        "effectEstimate": "All studies: SMD 0.32, 95% CI 0.21 to 0.43; sensitivity: SMD -0.02, 95% CI -0.14 to 0.11",
+        "uncertainty": "High heterogeneity and selective emphasis in abstract; source calculations require reconciliation.",
+        "primaryStatus": "Review outcome; no participant-randomized trial conducted by this publication."
+      },
+      {
+        "name": "Physical IPV",
+        "followUp": "More than 6 months",
+        "result": "No clear benefit in reported interval",
+        "effectEstimate": "SMD -0.05; 95% CI -0.15 to 0.05",
+        "uncertainty": "Source also prints p<0.01 beside a nonsignificant interval, creating another unresolved reporting conflict.",
+        "primaryStatus": "Review outcome; no participant-randomized trial conducted by this publication."
+      }
+    ],
+    "finding": "The review reports small short-term effects and several null longer-term outcomes, but material contradictions between narrative direction, confidence intervals and sensitivity analyses require source clarification before approval.",
+    "limitation": "Fixed-effect pooling despite heterogeneity, post hoc outlier exclusions, limited study counts, mostly self-reported outcomes and inconsistent numerical reporting. Quantitative efficacy conclusions are withheld.",
+    "design": {
+      "type": "Systematic review and meta-analysis",
+      "randomizationEvidence": "Evidence synthesis or secondary meta-regression; this publication does not randomize participants. Included-study design labels do not confer trial crosses.",
+      "masking": {
+        "participants": "Not applicable to this evidence-synthesis publication; primary-trial masking was not newly verified.",
+        "providers": "Not applicable to this evidence-synthesis publication; primary-trial masking was not newly verified.",
+        "assessors": "Not applicable to this evidence-synthesis publication; primary-trial masking was not newly verified.",
+        "analysts": "Not applicable to this evidence-synthesis publication; primary-trial masking was not newly verified."
+      },
+      "crosses": 0,
+      "crossRationale": "Evidence syntheses receive no trial-design crosses."
+    },
+    "quality": {
+      "riskOfBias": "Review rated two trials low risk, four high risk and eleven moderate risk. Selection, masking and outcome-assessment concerns remain; review-wide risk classifications are not independently reproduced.",
+      "attrition": "Retention varied by trial; pooled attrition was not extracted. The review’s short-term study counts are internally inconsistent in places.",
+      "confounding": "Fixed-effect pooling despite heterogeneity, post hoc outlier exclusions, limited study counts, mostly self-reported outcomes and inconsistent numerical reporting. Quantitative efficacy conclusions are withheld.",
+      "adverseFindings": "All-study sexual-violence pooling reportedly favored controls, whereas removing one outlier yielded a null result. Some serious events in primary studies were reported as unrelated; a pooled safety conclusion is not justified.",
+      "transferLimits": "Fixed-effect pooling despite heterogeneity, post hoc outlier exclusions, limited study counts, mostly self-reported outcomes and inconsistent numerical reporting. Quantitative efficacy conclusions are withheld.",
+      "jadad": "not applicable"
+    },
+    "access": {
+      "level": "selected-methods",
+      "sourceURLs": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC9419475/",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9419475/fullTextXML",
+        "https://api.crossref.org/works/10.1002%2Fcl2.1271"
+      ],
+      "retrievedAt": "2026-10-30T08:08:14.909748+00:00",
+      "sectionsInspected": [
+        "Eligibility, trial populations and comparator definitions",
+        "Dependent effects, unit-of-analysis, fixed-effect model and sensitivity methods",
+        "Risk of bias, short-/long-term mental-health and victimization results with/without outliers",
+        "Limitations and protocol deviations"
+      ]
+    },
+    "sources": [
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9419475/",
+        "type": "Open-access article archived in PMC; XML retrieved through Europe PMC",
+        "retrievedAt": "2026-10-30T08:08:14.909748+00:00",
+        "identityVerified": true,
+        "notes": "Methods and results sections listed in access.sectionsInspected were inspected. Whole-article formal appraisal and numerical reconstruction are not claimed."
+      },
+      {
+        "url": "https://api.crossref.org/works/10.1002%2Fcl2.1271",
+        "type": "Publisher-deposited Crossref bibliographic metadata",
+        "retrievedAt": "2026-10-30T08:12:25.878240+00:00",
+        "identityVerified": true,
+        "notes": "DOI and normalized title match retained Europe PMC metadata."
+      }
+    ],
+    "publicationStatus": {
+      "status": "Published journal article",
+      "correctionRetractionCheck": "Crossref relation and update-to metadata inspected; no linked correction or retraction was returned. Retained Europe PMC publication types: review-article, Review, Journal Article.",
+      "uncertainty": "This is not an exhaustive correction/retraction search. Material within-article reporting conflicts are independently flagged."
+    },
+    "recommendationRationale": "Retained as an evidence-audit candidate because selected-methods inspection reveals material conflicts that abstract-only reading would miss.",
+    "review": {
+      "status": "pending",
+      "reviewer": null
+    },
+    "assessmentStatus": "assessed",
+    "assessmentNotes": "Bounded source-supported assessment of selected methods and results, not complete full-text appraisal. Pooled studies are never added to the primary-study count.",
+    "reviewReady": false,
+    "reviewReadiness": "needs-source-check",
+    "sourceEvidenceHashes": {
+      "articleXMLSHA256": "a2ed3e2cc9330c39e924b56d5f3e7e64aabc7a2991e42ce68707db4d2c922d7f",
+      "crossrefSHA256": "166f69d13585e4556c6abed7a3cc8bbc7b05be255c27361e7d465f8882a34875"
+    },
+    "provenance": {
+      "origin": "Retained first-batch discovery queue",
+      "frozenBatch": "batch-acb62474225f0804",
+      "assessedAt": "2026-10-30T08:18:05.594789+00:00"
+    }
+  },
+  {
+    "id": "dv-reviews-cont-37383644",
+    "title": "Systematic Investigation of Meta-Analysis Data on Treatment Effectiveness for Physical, Psychological, and Sexual Intimate Partner Violence Perpetration.",
+    "authors": [
+      "Oğuztüzün Ç",
+      "Koyutürk M",
+      "Karakurt G"
+    ],
+    "year": 2023,
+    "journal": "Psychosocial intervention",
+    "doi": "10.5093/pi2023a6",
+    "pmid": "37383644",
+    "trialRegistration": [],
+    "collection": "language",
+    "interventionFamily": "Study-level combinations of CBT, substance-use treatment, motivational work and other perpetrator programme components.",
+    "publicationType": "Secondary meta-regression of previously reviewed intervention studies",
+    "studyFamilyId": "review:31415863",
+    "familyLinkageUncertain": false,
+    "independentPrimaryStudy": false,
+    "existingRepositoryMatches": [],
+    "frozenBatchPublicationMatches": [],
+    "relatedEvidenceFamilyRecords": [
+      "dv-reviews-31415863"
+    ],
+    "relevance": {
+      "relation": "direct",
+      "population": "Male IPV perpetrators represented in a prior intervention-study dataset",
+      "exposureEvidence": "Eligibility and study population descriptions explicitly concern IPV perpetrators, IPV-exposed survivors/children, or IPV prevention. ",
+      "rationale": "Adds a methodological audit of a previously included evidence base; it is not new independent trial evidence or a basis for individualized treatment ranking.",
+      "transferLimit": "Ecological associations, uncontrolled change scores, heterogeneous programmes and imputation limit inference. Missing predictors were imputed with k-nearest neighbors (k=5); narrative study-flow arithmetic and sexual-violence study totals are inconsistent, so exact subsidiary counts and treatment rankings are not adopted."
+    },
+    "age": {
+      "groups": [
+        "adults"
+      ],
+      "reportedRange": "Not established from the inspected source sections.",
+      "youthScope": null
+    },
+    "country": "Multiple locations; distribution not extracted.",
+    "setting": "Heterogeneous perpetrator treatment contexts.",
+    "sampleSize": {
+      "randomized": null,
+      "analyzed": null,
+      "description": "16 studies reused from Karakurt et al. 2019; no new eligible studies added by the update search. Participant total not established in this assessment."
+    },
+    "intervention": {
+      "description": "Study-level combinations of CBT, substance-use treatment, motivational work and other perpetrator programme components.",
+      "dose": "Varied by source study; no shared regimen.",
+      "provider": "Not established from the inspected source sections."
+    },
+    "comparator": "Within-study pre/post mean changes and variance changes, related to study-level treatment indicators; not a randomized comparison of treatment components.",
+    "outcomes": [
+      {
+        "name": "Physical, psychological and sexual IPV change",
+        "followUp": "Source study pre/post periods",
+        "result": "Study-level associations vary by baseline pattern and treatment coding",
+        "effectEstimate": null,
+        "uncertainty": "No patient-level or randomized comparative efficacy estimate is inferred.",
+        "primaryStatus": "Review outcome; no participant-randomized trial conducted by this publication."
+      },
+      {
+        "name": "Variance change",
+        "followUp": "Source study pre/post periods",
+        "result": "Reported associations in within-study outcome variability",
+        "effectEstimate": null,
+        "uncertainty": "Not an outcome demonstrating reduced partner harm.",
+        "primaryStatus": "Review outcome; no participant-randomized trial conducted by this publication."
+      }
+    ],
+    "finding": "The analysis relates study-average baseline violence patterns and treatment components to pre/post changes. It cannot establish which component works for an individual or prove superiority between treatments.",
+    "limitation": "Ecological associations, uncontrolled change scores, heterogeneous programmes and imputation limit inference. Missing predictors were imputed with k-nearest neighbors (k=5); narrative study-flow arithmetic and sexual-violence study totals are inconsistent, so exact subsidiary counts and treatment rankings are not adopted.",
+    "design": {
+      "type": "Secondary meta-regression of previously reviewed intervention studies",
+      "randomizationEvidence": "Evidence synthesis or secondary meta-regression; this publication does not randomize participants. Included-study design labels do not confer trial crosses.",
+      "masking": {
+        "participants": "Not applicable to this evidence-synthesis publication; primary-trial masking was not newly verified.",
+        "providers": "Not applicable to this evidence-synthesis publication; primary-trial masking was not newly verified.",
+        "assessors": "Not applicable to this evidence-synthesis publication; primary-trial masking was not newly verified.",
+        "analysts": "Not applicable to this evidence-synthesis publication; primary-trial masking was not newly verified."
+      },
+      "crosses": 0,
+      "crossRationale": "Evidence syntheses receive no trial-design crosses."
+    },
+    "quality": {
+      "riskOfBias": "No new independent trial risk-of-bias assessment was identified in inspected methods. Reuses the prior meta-analysis dataset; qualitative causal claims exceed what these study-level associations establish.",
+      "attrition": "Underlying study attrition remains part of the source dataset; not newly reconciled.",
+      "confounding": "Ecological associations, uncontrolled change scores, heterogeneous programmes and imputation limit inference. Missing predictors were imputed with k-nearest neighbors (k=5); narrative study-flow arithmetic and sexual-violence study totals are inconsistent, so exact subsidiary counts and treatment rankings are not adopted.",
+      "adverseFindings": "No reliable pooled adverse-event estimate; positive pre/post regression coefficients are not causal estimates of treatment-induced harm.",
+      "transferLimits": "Ecological associations, uncontrolled change scores, heterogeneous programmes and imputation limit inference. Missing predictors were imputed with k-nearest neighbors (k=5); narrative study-flow arithmetic and sexual-violence study totals are inconsistent, so exact subsidiary counts and treatment rankings are not adopted.",
+      "jadad": "not applicable"
+    },
+    "access": {
+      "level": "selected-methods",
+      "sourceURLs": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC10294456/",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10294456/fullTextXML",
+        "https://api.crossref.org/works/10.5093%2Fpi2023a6"
+      ],
+      "retrievedAt": "2026-10-30T08:08:17.168330+00:00",
+      "sectionsInspected": [
+        "Methods: prior data, missing-data handling, normalization and meta-regression models",
+        "Results: outcome, treatment and violence-variable analyses",
+        "Discussion and ecological-inference limitations"
+      ]
+    },
+    "sources": [
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10294456/",
+        "type": "Open-access article archived in PMC; XML retrieved through Europe PMC",
+        "retrievedAt": "2026-10-30T08:08:17.168330+00:00",
+        "identityVerified": true,
+        "notes": "Methods and results sections listed in access.sectionsInspected were inspected. Whole-article formal appraisal and numerical reconstruction are not claimed."
+      },
+      {
+        "url": "https://api.crossref.org/works/10.5093%2Fpi2023a6",
+        "type": "Publisher-deposited Crossref bibliographic metadata",
+        "retrievedAt": "2026-10-30T08:12:26.081134+00:00",
+        "identityVerified": true,
+        "notes": "DOI and normalized title match retained Europe PMC metadata."
+      }
+    ],
+    "publicationStatus": {
+      "status": "Published journal article",
+      "correctionRetractionCheck": "Crossref relation and update-to metadata inspected; no linked correction or retraction was returned. Retained Europe PMC publication types: research-article, Journal Article.",
+      "uncertainty": "This is not an exhaustive correction/retraction search. "
+    },
+    "recommendationRationale": "Adds a methodological audit of a previously included evidence base; it is not new independent trial evidence or a basis for individualized treatment ranking.",
+    "review": {
+      "status": "pending",
+      "reviewer": null
+    },
+    "assessmentStatus": "assessed",
+    "assessmentNotes": "Bounded source-supported assessment of selected methods and results, not complete full-text appraisal. Pooled studies are never added to the primary-study count. This is explicitly a reanalysis of the prior Karakurt 2019 evidence base, linked to dv-reviews-31415863; it adds one publication but not a new primary trial or independent review evidence base.",
+    "reviewReady": true,
+    "reviewReadiness": "ready-with-explicit-methods-and-access-limits",
+    "sourceEvidenceHashes": {
+      "articleXMLSHA256": "215c851e364113ed2485155b8132f3a3cc82e43c87ff047a827bde7eeff78575",
+      "crossrefSHA256": "07c0bc9551cba230ce570fc5aa83015151338f5552ed15465fad9fef6defe81a"
+    },
+    "provenance": {
+      "origin": "Retained first-batch discovery queue",
+      "frozenBatch": "batch-acb62474225f0804",
+      "assessedAt": "2026-10-30T08:18:05.594789+00:00"
+    }
+  },
+  {
+    "id": "dv-reviews-cont-37131508",
+    "title": "The promotion of well-being among children exposed to intimate partner violence: A systematic review of interventions.",
+    "authors": [
+      "Latzman NE",
+      "Casanueva C",
+      "Brinton J",
+      "Forman-Hoffman VL"
+    ],
+    "year": 2019,
+    "journal": "Campbell systematic reviews",
+    "doi": "10.1002/cl2.1049",
+    "pmid": "37131508",
+    "trialRegistration": [],
+    "collection": "language",
+    "interventionFamily": "Psychosocial interventions including parenting support, child-parent psychotherapy, CBT and case management directed at children, nonoffending parents or families.",
+    "publicationType": "Systematic review with limited meta-analysis",
+    "studyFamilyId": "review:37131508",
+    "familyLinkageUncertain": false,
+    "independentPrimaryStudy": false,
+    "existingRepositoryMatches": [],
+    "frozenBatchPublicationMatches": [],
+    "relatedEvidenceFamilyRecords": [],
+    "relevance": {
+      "relation": "direct",
+      "population": "Children and adolescents exposed to IPV, including direct or indirect exposure; child-level outcomes required",
+      "exposureEvidence": "Eligibility and study population descriptions explicitly concern IPV perpetrators, IPV-exposed survivors/children, or IPV prevention. ",
+      "rationale": "Adds a child-focused comparative synthesis that separates eight study families from fifteen reports and retains the null intermediate follow-up result.",
+      "transferLimit": "Only eight eligible trials; heterogeneity prevented most meta-analyses. Restriction to low/moderate-risk studies was a protocol deviation. Most studies inferred child exposure from parental IPV reports; one study tracked adverse events."
+    },
+    "age": {
+      "groups": [
+        "children",
+        "adolescents",
+        "youth"
+      ],
+      "reportedRange": "Eligibility required over 75% of participants aged 0–17; individual studies included broader boundaries in some samples.",
+      "youthScope": "Primary focus."
+    },
+    "country": "United States (6 studies), Netherlands (1) and India (1).",
+    "setting": "Home-based intensive services and outpatient/community, shelter or inpatient clinical contexts.",
+    "sampleSize": {
+      "randomized": null,
+      "analyzed": null,
+      "description": "Eight independent RCTs represented in 15 publications, totaling 924 participants as reported by the review. These pooled trials are not separately assessed or counted here."
+    },
+    "intervention": {
+      "description": "Psychosocial interventions including parenting support, child-parent psychotherapy, CBT and case management directed at children, nonoffending parents or families.",
+      "dose": "Varied by intervention; no common dose.",
+      "provider": "Different parent-training, therapy and case-management providers; qualifications not reconciled in this assessment."
+    },
+    "comparator": "Attention/inactive controls in three trials; five compared active interventions.",
+    "outcomes": [
+      {
+        "name": "Child externalizing behaviour",
+        "followUp": "Immediately post-treatment",
+        "result": "Pooled benefit for intensive home-based parenting support",
+        "effectEstimate": "SMD -0.54; 95% CI -0.95 to -0.13",
+        "uncertainty": "Two studies; specific intervention and clinically affected sample.",
+        "primaryStatus": "Review outcome; no participant-randomized trial conducted by this publication."
+      },
+      {
+        "name": "Child externalizing behaviour",
+        "followUp": "4 months",
+        "result": "No clear pooled difference",
+        "effectEstimate": "SMD -0.16; 95% CI -0.55 to 0.23",
+        "uncertainty": "Two studies; no claim of sustained benefit at every time point.",
+        "primaryStatus": "Review outcome; no participant-randomized trial conducted by this publication."
+      },
+      {
+        "name": "Child externalizing behaviour",
+        "followUp": "8 months",
+        "result": "Pooled benefit",
+        "effectEstimate": "SMD -0.74; 95% CI -1.15 to -0.34",
+        "uncertainty": "Two studies; I² reported as 0% but small evidence base.",
+        "primaryStatus": "Review outcome; no participant-randomized trial conducted by this publication."
+      },
+      {
+        "name": "PTSD, internalizing and other child outcomes",
+        "followUp": "Variable",
+        "result": "Mixed findings; generally not pooled",
+        "effectEstimate": null,
+        "uncertainty": "Different interventions, comparators and measures prevent a common efficacy conclusion.",
+        "primaryStatus": "Review outcome; no participant-randomized trial conducted by this publication."
+      }
+    ],
+    "finding": "Two intensive home-based parenting studies supported reduced child externalizing problems immediately after treatment and at eight months, but not four months. Most other outcomes could not be pooled and overall effectiveness remains uncertain.",
+    "limitation": "Only eight eligible trials; heterogeneity prevented most meta-analyses. Restriction to low/moderate-risk studies was a protocol deviation. Most studies inferred child exposure from parental IPV reports; one study tracked adverse events.",
+    "design": {
+      "type": "Systematic review with limited meta-analysis",
+      "randomizationEvidence": "Evidence synthesis or secondary meta-regression; this publication does not randomize participants. Included-study design labels do not confer trial crosses.",
+      "masking": {
+        "participants": "Not applicable to this evidence-synthesis publication; primary-trial masking was not newly verified.",
+        "providers": "Not applicable to this evidence-synthesis publication; primary-trial masking was not newly verified.",
+        "assessors": "Not applicable to this evidence-synthesis publication; primary-trial masking was not newly verified.",
+        "analysts": "Not applicable to this evidence-synthesis publication; primary-trial masking was not newly verified."
+      },
+      "crosses": 0,
+      "crossRationale": "Evidence syntheses receive no trial-design crosses."
+    },
+    "quality": {
+      "riskOfBias": "One included study was rated low risk and seven moderate. Independent risk-of-bias review excluded high-risk studies; only limited studies contributed to pooled estimates.",
+      "attrition": "Included studies were rated by the review as having limited/no attrition bias, but detailed independent attrition reanalysis was not performed.",
+      "confounding": "Only eight eligible trials; heterogeneity prevented most meta-analyses. Restriction to low/moderate-risk studies was a protocol deviation. Most studies inferred child exposure from parental IPV reports; one study tracked adverse events.",
+      "adverseFindings": "Only one trial reported tracking adverse events, preventing a broad safety conclusion.",
+      "transferLimits": "Only eight eligible trials; heterogeneity prevented most meta-analyses. Restriction to low/moderate-risk studies was a protocol deviation. Most studies inferred child exposure from parental IPV reports; one study tracked adverse events.",
+      "jadad": "not applicable"
+    },
+    "access": {
+      "level": "selected-methods",
+      "sourceURLs": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC8356495/",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8356495/fullTextXML",
+        "https://api.crossref.org/works/10.1002%2Fcl2.1049"
+      ],
+      "retrievedAt": "2026-10-30T08:08:18.653478+00:00",
+      "sectionsInspected": [
+        "Eligibility, exposure definition, protocol deviations and risk-of-bias methods",
+        "Study/family characteristics, intervention/comparator types and exposure ascertainment",
+        "Externalizing, PTSD, other outcomes and sensitivity analyses",
+        "Evidence quality, harms reporting and limitations"
+      ]
+    },
+    "sources": [
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8356495/",
+        "type": "Open-access article archived in PMC; XML retrieved through Europe PMC",
+        "retrievedAt": "2026-10-30T08:08:18.653478+00:00",
+        "identityVerified": true,
+        "notes": "Methods and results sections listed in access.sectionsInspected were inspected. Whole-article formal appraisal and numerical reconstruction are not claimed."
+      },
+      {
+        "url": "https://api.crossref.org/works/10.1002%2Fcl2.1049",
+        "type": "Publisher-deposited Crossref bibliographic metadata",
+        "retrievedAt": "2026-10-30T08:12:26.092082+00:00",
+        "identityVerified": true,
+        "notes": "DOI and normalized title match retained Europe PMC metadata."
+      }
+    ],
+    "publicationStatus": {
+      "status": "Published journal article",
+      "correctionRetractionCheck": "Crossref relation and update-to metadata inspected; no linked correction or retraction was returned. Retained Europe PMC publication types: review-article, Review, Journal Article.",
+      "uncertainty": "This is not an exhaustive correction/retraction search. "
+    },
+    "recommendationRationale": "Adds a child-focused comparative synthesis that separates eight study families from fifteen reports and retains the null intermediate follow-up result.",
+    "review": {
+      "status": "pending",
+      "reviewer": null
+    },
+    "assessmentStatus": "assessed",
+    "assessmentNotes": "Bounded source-supported assessment of selected methods and results, not complete full-text appraisal. Pooled studies are never added to the primary-study count.",
+    "reviewReady": true,
+    "reviewReadiness": "ready-with-explicit-methods-and-access-limits",
+    "sourceEvidenceHashes": {
+      "articleXMLSHA256": "70e68ffc7273bbd08cbe93cd538b2f5067b39bb7bff77f31a3543cfdbc1848a3",
+      "crossrefSHA256": "33a8fa247b50fb988acc29be394a84e44e27f3d4136219febbec20d299bc56af"
+    },
+    "provenance": {
+      "origin": "Retained first-batch discovery queue",
+      "frozenBatch": "batch-acb62474225f0804",
+      "assessedAt": "2026-10-30T08:18:05.594789+00:00"
+    }
+  }
+]

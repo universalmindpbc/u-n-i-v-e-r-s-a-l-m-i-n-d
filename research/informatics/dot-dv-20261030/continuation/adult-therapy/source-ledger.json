@@ -1,0 +1,146 @@
+[
+  {
+    "pmid": "33743632",
+    "sources": [
+      {
+        "url": "https://europepmc.org/article/MED/33743632",
+        "type": "Primary publication abstract in Europe PMC MEDLINE record",
+        "retrievedAt": "2026-10-30T07:15:55.705516+00:00",
+        "identityVerified": true,
+        "notes": "Retained source retrieved in first-round API search; newly inspected in continuation. DOI/title checked against Crossref.",
+        "retrievalQueryURL": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=TITLE_ABS%3A%28%22intimate+partner+violence%22+OR+%22domestic+violence%22+OR+%22battered+women%22%29+AND+TITLE_ABS%3A%28randomized+OR+randomised%29+AND+TITLE_ABS%3A%28therapy+OR+psychological+OR+psychotherapy+OR+cognitive+OR+counseling+OR+counselling+OR+%22motivational+interviewing%22%29&format=json&resultType=core&pageSize=1000",
+        "inspectedAt": "2026-10-30T08:12:46.998330+00:00"
+      },
+      {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7981895/fullTextXML",
+        "type": "Primary full-paper XML",
+        "retrievedAt": "2026-10-30T08:03:38.525281+00:00",
+        "identityVerified": true,
+        "notes": "Methods/results inspected."
+      },
+      {
+        "url": "https://api.crossref.org/works/10.1186/s12884-021-03674-z",
+        "type": "Crossref DOI registration",
+        "retrievedAt": "2026-10-30T08:03:41.129256+00:00",
+        "identityVerified": true,
+        "notes": "Title/authors and update/relation metadata checked."
+      }
+    ],
+    "access": {
+      "level": "full-text",
+      "sourceURLs": [
+        "https://europepmc.org/article/MED/33743632",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7981895/fullTextXML",
+        "https://api.crossref.org/works/10.1186/s12884-021-03674-z"
+      ],
+      "retrievedAt": "2026-10-30T08:03:41.129256+00:00"
+    },
+    "reviewReadiness": "ready-with-access-limits"
+  },
+  {
+    "pmid": "33428625",
+    "sources": [
+      {
+        "url": "https://europepmc.org/article/MED/33428625",
+        "type": "Primary publication abstract in Europe PMC MEDLINE record",
+        "retrievedAt": "2026-10-30T07:15:55.705516+00:00",
+        "identityVerified": true,
+        "notes": "Retained source retrieved in first-round API search; newly inspected in continuation. DOI/title checked against Crossref.",
+        "retrievalQueryURL": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=TITLE_ABS%3A%28%22intimate+partner+violence%22+OR+%22domestic+violence%22+OR+%22battered+women%22%29+AND+TITLE_ABS%3A%28randomized+OR+randomised%29+AND+TITLE_ABS%3A%28therapy+OR+psychological+OR+psychotherapy+OR+cognitive+OR+counseling+OR+counselling+OR+%22motivational+interviewing%22%29&format=json&resultType=core&pageSize=1000",
+        "inspectedAt": "2026-10-30T08:12:46.998330+00:00"
+      },
+      {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7799784/fullTextXML",
+        "type": "Primary full-paper XML",
+        "retrievedAt": "2026-10-30T08:03:42.509974+00:00",
+        "identityVerified": true,
+        "notes": "Methods/results inspected."
+      },
+      {
+        "url": "https://api.crossref.org/works/10.1371/journal.pmed.1003468",
+        "type": "Crossref DOI registration",
+        "retrievedAt": "2026-10-30T08:03:45.801817+00:00",
+        "identityVerified": true,
+        "notes": "Title/authors and update/relation metadata checked."
+      }
+    ],
+    "access": {
+      "level": "full-text",
+      "sourceURLs": [
+        "https://europepmc.org/article/MED/33428625",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7799784/fullTextXML",
+        "https://api.crossref.org/works/10.1371/journal.pmed.1003468"
+      ],
+      "retrievedAt": "2026-10-30T08:03:45.801817+00:00"
+    },
+    "reviewReadiness": "ready-with-access-limits"
+  },
+  {
+    "pmid": "40425169",
+    "sources": [
+      {
+        "url": "https://europepmc.org/article/MED/40425169",
+        "type": "Primary publication abstract in Europe PMC MEDLINE record",
+        "retrievedAt": "2026-10-30T07:14:42.276796+00:00",
+        "identityVerified": true,
+        "notes": "Retained source retrieved in first-round API search; newly inspected in continuation. DOI/title checked against Crossref.",
+        "retrievalQueryURL": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=%28%22battered+women%22+OR+%22intimate+partner+violence%22+OR+%22domestic+violence%22%29+AND+%28%22cognitive+trauma+therapy%22+OR+%22cognitive+processing+therapy%22+OR+HOPE+OR+%22present+centered%22%29&format=json&resultType=core&pageSize=200",
+        "inspectedAt": "2026-10-30T08:12:46.998330+00:00"
+      },
+      {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12116049/fullTextXML",
+        "type": "Primary full-paper XML",
+        "retrievedAt": "2026-10-30T08:03:46.908297+00:00",
+        "identityVerified": true,
+        "notes": "Methods/results inspected."
+      },
+      {
+        "url": "https://api.crossref.org/works/10.1002/cpp.70089",
+        "type": "Crossref DOI registration",
+        "retrievedAt": "2026-10-30T08:03:51.790418+00:00",
+        "identityVerified": true,
+        "notes": "Title/authors and update/relation metadata checked."
+      }
+    ],
+    "access": {
+      "level": "selected-methods",
+      "sourceURLs": [
+        "https://europepmc.org/article/MED/40425169",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12116049/fullTextXML",
+        "https://api.crossref.org/works/10.1002/cpp.70089"
+      ],
+      "retrievedAt": "2026-10-30T08:03:51.790418+00:00"
+    },
+    "reviewReadiness": "needs-source-check"
+  },
+  {
+    "pmid": "32755265",
+    "sources": [
+      {
+        "url": "https://europepmc.org/article/MED/32755265",
+        "type": "Primary publication abstract in Europe PMC MEDLINE record",
+        "retrievedAt": "2026-10-30T07:15:55.705516+00:00",
+        "identityVerified": true,
+        "notes": "Retained source retrieved in first-round API search; newly inspected in continuation. DOI/title checked against Crossref.",
+        "retrievalQueryURL": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=TITLE_ABS%3A%28%22intimate+partner+violence%22+OR+%22domestic+violence%22+OR+%22battered+women%22%29+AND+TITLE_ABS%3A%28randomized+OR+randomised%29+AND+TITLE_ABS%3A%28therapy+OR+psychological+OR+psychotherapy+OR+cognitive+OR+counseling+OR+counselling+OR+%22motivational+interviewing%22%29&format=json&resultType=core&pageSize=1000",
+        "inspectedAt": "2026-10-30T08:12:46.998330+00:00"
+      },
+      {
+        "url": "https://api.crossref.org/works/10.1177/0886260520943719",
+        "type": "Crossref DOI registration",
+        "retrievedAt": "2026-10-30T08:03:52.709173+00:00",
+        "identityVerified": true,
+        "notes": "Title/authors and update/relation metadata checked."
+      }
+    ],
+    "access": {
+      "level": "abstract",
+      "sourceURLs": [
+        "https://europepmc.org/article/MED/32755265",
+        "https://api.crossref.org/works/10.1177/0886260520943719"
+      ],
+      "retrievedAt": "2026-10-30T08:03:52.709173+00:00"
+    },
+    "reviewReadiness": "ready-with-access-limits"
+  }
+]

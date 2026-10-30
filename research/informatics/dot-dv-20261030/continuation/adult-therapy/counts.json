@@ -1,0 +1,13 @@
+{
+  "newlyScreened": 5,
+  "assessed": 4,
+  "reviewReady": 3,
+  "needsSourceCheck": 1,
+  "excluded": 1,
+  "studyFamilyLabels": 4,
+  "baselineMatches": 0,
+  "fullText": 2,
+  "selectedMethods": 1,
+  "abstract": 1,
+  "humanApproved": 0
+}

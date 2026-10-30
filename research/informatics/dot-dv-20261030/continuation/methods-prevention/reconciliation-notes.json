@@ -1,0 +1,48 @@
+[
+  {
+    "pmid": "26613288",
+    "registration": "NCT01435512",
+    "linkStatus": "confirmed",
+    "safety": "Published private partner interviews, safety planning, emergency/referral resources; registry additionally excludes prominent suicidal/homicidal ideation.",
+    "reconciliation": "Paper follow-up counts take precedence over registry all135 completed label for retention; registry zero-event report has no collection/timeframe detail.",
+    "sourceURLs": [
+      "https://strengthathome.org/wp-content/uploads/2020/05/RCT-for-SAH-Mens-Program-2016.pdf",
+      "https://clinicaltrials.gov/study/NCT01435512"
+    ]
+  },
+  {
+    "pmid": "27599224",
+    "registration": "NCT00827879",
+    "linkStatus": "confirmed, sample discrepancy unresolved",
+    "safety": "Registered eligibility additionally excludes severe organicity/active psychosis, prominent suicidal/homicidal ideation and substance dependence outside remission; no observed harms results accessed.",
+    "reconciliation": "156 registry participants versus69 couples/138 people in paper. Possible pilot inclusion is a hypothesis only, not evidence.",
+    "sourceURLs": [
+      "https://clinicaltrials.gov/study/NCT00827879",
+      "https://mdsoar.org/items/678bffc8-ab30-4cff-ab3e-6728defb3cd0"
+    ]
+  },
+  {
+    "pmid": "38206858",
+    "registration": "NCT04517994",
+    "linkStatus": "plausible, not confirmed",
+    "plannedMethods": "Protocol plans10 weekly2-hour sessions, separate partner screening/consent/assessments, no physical IPV within3months, and safety/referral response when violence or suicidality is disclosed. Registry additionally specifies no severe aggression within12months; protocol eligibility excerpt does not state that extra criterion.",
+    "reconciliation": "Protocol150 service members plus partners comprises10 pilot+140 trial couples. This may explain why registry150 is not a count of all persons, but actual138 randomized flow remains unverified. Registry reports single participant masking; protocol text search found no explicit blinding description.",
+    "sourceURLs": [
+      "https://clinicaltrials.gov/study/NCT04517994",
+      "https://cdn.clinicaltrials.gov/large-docs/94/NCT04517994/Prot_SAP_000.pdf"
+    ]
+  },
+  {
+    "pmid": "41045209",
+    "registration": "NCT04165291",
+    "linkStatus": "likely family; publication mapping unresolved",
+    "plannedMethods": "Amended protocol PhaseI:75 planned fathers/three arms; PhaseII:280 planned fathers/two arms. Screening describes exclusion for severe IPV involving hospitalization/strangulation and child no-contact orders; confidential partner contacts and referral procedures. These later protocol provisions are not assumed to have governed the published82-person trial.",
+    "reconciliation": "Registry structured results60/two arms; completion20/30 and21/30. Registry IPV comparison p=.13 and child-maltreatment p=.35. Registry serious-event affected counts3/30 and1/30, with arrest/incarceration included and hospitalization listed; causal attribution not established. These values are NOT transferred into the paper candidate.",
+    "maskingCaution": "Registry DOUBLE label and protocol assessor/analyst masking plans do not establish double blinding in the published trial. Protocol contains both phase-specific and two-treatment analytic wording.",
+    "sourceURLs": [
+      "https://clinicaltrials.gov/study/NCT04165291",
+      "https://cdn.clinicaltrials.gov/large-docs/91/NCT04165291/Prot_SAP_000.pdf",
+      "https://pubmed.ncbi.nlm.nih.gov/41045209/"
+    ]
+  }
+]

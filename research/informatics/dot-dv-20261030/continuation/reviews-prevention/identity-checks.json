@@ -1,0 +1,80 @@
+[
+  {
+    "pmid": "40632759",
+    "url": "https://api.crossref.org/works/10.1371%2Fjournal.pone.0328034",
+    "retrievedAt": "2026-10-30T08:12:24.786050+00:00",
+    "status": "retrieved",
+    "title": [
+      "Emotional skills and health assessment in interventions for intimate partner violence perpetrators: A systematic review of randomized controlled trials"
+    ],
+    "doi": "10.1371/journal.pone.0328034",
+    "relations": {},
+    "updates": null,
+    "sha256": "d78bb6e6237f5df71db9d50b29c17202d4c7a303177ffcdd25f10832857a37f7"
+  },
+  {
+    "pmid": "39302822",
+    "url": "https://api.crossref.org/works/10.1177%2F15248380241277270",
+    "retrievedAt": "2026-10-30T08:12:24.786307+00:00",
+    "status": "retrieved",
+    "title": [
+      "Effectiveness of Father-Focused Interventions to Prevent or Reduce Intimate Partner Violence During Pregnancy and Early Parenthood: A Systematic Review"
+    ],
+    "doi": "10.1177/15248380241277270",
+    "relations": {},
+    "updates": null,
+    "sha256": "f303b0dfac32710390bb1be61121429127e92f50cd0115fefa7b66c843a61680"
+  },
+  {
+    "pmid": "36429899",
+    "url": "https://api.crossref.org/works/10.3390%2Fijerph192215180",
+    "retrievedAt": "2026-10-30T08:12:24.786427+00:00",
+    "status": "retrieved",
+    "title": [
+      "The Effectiveness of Culturally Specific Male Domestic Violence Offender Intervention Programs on Behavior Changes and Mental Health: A Systematic Review"
+    ],
+    "doi": "10.3390/ijerph192215180",
+    "relations": {},
+    "updates": null,
+    "sha256": "546f887eb5212f0898c92c85d89be86e5bbace0b249cb7d67c29922fe81a2df4"
+  },
+  {
+    "pmid": "36909881",
+    "url": "https://api.crossref.org/works/10.1002%2Fcl2.1271",
+    "retrievedAt": "2026-10-30T08:12:25.878240+00:00",
+    "status": "retrieved",
+    "title": [
+      "Technology-based and digital interventions for intimate partner violence: A systematic review and meta-analysis"
+    ],
+    "doi": "10.1002/cl2.1271",
+    "relations": {},
+    "updates": null,
+    "sha256": "166f69d13585e4556c6abed7a3cc8bbc7b05be255c27361e7d465f8882a34875"
+  },
+  {
+    "pmid": "37383644",
+    "url": "https://api.crossref.org/works/10.5093%2Fpi2023a6",
+    "retrievedAt": "2026-10-30T08:12:26.081134+00:00",
+    "status": "retrieved",
+    "title": [
+      "Systematic Investigation of Meta-Analysis Data on Treatment Effectiveness for Physical, Psychological, and Sexual Intimate Partner Violence Perpetration"
+    ],
+    "doi": "10.5093/pi2023a6",
+    "relations": {},
+    "updates": null,
+    "sha256": "07c0bc9551cba230ce570fc5aa83015151338f5552ed15465fad9fef6defe81a"
+  },
+  {
+    "pmid": "37131508",
+    "url": "https://api.crossref.org/works/10.1002%2Fcl2.1049",
+    "retrievedAt": "2026-10-30T08:12:26.092082+00:00",
+    "status": "retrieved",
+    "title": [
+      "The promotion of well-being among children exposed to intimate partner violence: A systematic review of interventions"
+    ],
+    "doi": "10.1002/cl2.1049",
+    "relations": {},
+    "updates": null,
+    "sha256": "33a8fa247b50fb988acc29be394a84e44e27f3d4136219febbec20d299bc56af"
+  }
+]

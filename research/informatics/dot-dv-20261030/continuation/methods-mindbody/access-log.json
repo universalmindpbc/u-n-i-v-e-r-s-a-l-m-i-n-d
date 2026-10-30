@@ -1,0 +1,58 @@
+[
+  {
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8052636/",
+    "outcome": "browser-check/reCAPTCHA content only",
+    "action": "read public article HTML",
+    "status": "blocked by source interface; not repeated",
+    "checkedAt": "2026-10-30T08:28:43.779847+00:00"
+  },
+  {
+    "url": "https://europepmc.org/articles/PMC8052636",
+    "outcome": "web tool inaccessible",
+    "action": "read alternative public article page",
+    "status": "unavailable; not repeated",
+    "checkedAt": "2026-10-30T08:28:43.779847+00:00"
+  },
+  {
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8052636/fullTextXML",
+    "outcome": "150-byte error response; no full text",
+    "action": "request official fullTextXML",
+    "status": "unavailable; not repeated",
+    "checkedAt": "2026-10-30T08:28:43.779847+00:00"
+  },
+  {
+    "url": "https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_json/PMC8052636/unicode",
+    "outcome": "full author-manuscript JSON retrieved",
+    "action": "public official BioC API",
+    "status": "completed",
+    "checkedAt": "2026-10-30T08:28:43.779847+00:00"
+  },
+  {
+    "url": "https://www.researchgate.net/publication/228698848_Take_a_Breath_Break_The_Silence_The_Effects_of_Yogic_Breathing_and_Testimony_About_Battering_on_Feelings_of_Self-Efficacy_in_Battered_Women",
+    "outcome": "coauthor-deposited primary methods/results text read",
+    "action": "read public author-deposit route",
+    "status": "completed",
+    "checkedAt": "2026-10-30T08:28:43.779847+00:00"
+  },
+  {
+    "url": "https://clinicaltrials.gov/api/v2/studies/NCT03484390",
+    "outcome": "official registry retrieved",
+    "action": "read public trial registry",
+    "status": "completed",
+    "checkedAt": "2026-10-30T08:28:43.779847+00:00"
+  },
+  {
+    "url": "https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_json/PMC4215954/unicode",
+    "outcome": "full author-manuscript JSON retrieved",
+    "action": "public official BioC API",
+    "status": "completed",
+    "checkedAt": "2026-10-30T08:28:43.779847+00:00"
+  },
+  {
+    "url": "https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_json/PMC9564648/unicode",
+    "outcome": "full article JSON retrieved",
+    "action": "public official BioC API",
+    "status": "completed",
+    "checkedAt": "2026-10-30T08:28:43.779847+00:00"
+  }
+]

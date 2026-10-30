@@ -1,0 +1,50 @@
+{
+  "originalPMID": "31548680",
+  "originalDOI": "10.1038/s41562-019-0724-1",
+  "correctionPMID": "31576024",
+  "correctionDOI": "10.1038/s41562-019-0764-6",
+  "date": "2019-10-01",
+  "status": "hold-retained",
+  "exactCorrection": null,
+  "reason": "New publisher-deposited correction metadata and indexed correction record establish the relationship but do not reveal the correction text. A newly identified freely indexed publisher PDF redirected to an inaccessible authentication service; institutional metadata for the original paper does not resolve the correction.",
+  "proposedDisposition": {
+    "assessmentStatus": "assessed",
+    "reviewReady": false,
+    "reviewReadiness": "needs-source-check"
+  },
+  "frozenRecordModified": false,
+  "routes": [
+    {
+      "url": "https://api.crossref.org/works/10.1038%2Fs41562-019-0764-6",
+      "outcome": "Metadata retrieved; correction wording absent",
+      "retrievedAt": "2026-10-30T08:08:13.183574+00:00"
+    },
+    {
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A%2210.1038%2Fs41562-019-0764-6%22&format=json&resultType=core",
+      "outcome": "Metadata retrieved; correction wording absent",
+      "retrievedAt": "2026-10-30T08:08:13.184178+00:00"
+    },
+    {
+      "url": "https://api.openalex.org/works/https://doi.org/10.1038/s41562-019-0764-6",
+      "outcome": "Metadata retrieved; correction wording absent",
+      "retrievedAt": "2026-10-30T08:08:13.184329+00:00"
+    },
+    {
+      "url": "https://www.nature.com/articles/s41562-019-0764-6.pdf",
+      "outcome": "New route identified as free by indexed metadata; web tool returned a non-retryable redirect to inaccessible idp.nature.com authorization endpoint. No unchanged retry or authentication bypass attempted."
+    },
+    {
+      "url": "https://doi.org/10.17863/cam.43029",
+      "outcome": "Institutional repository DOI from OpenAlex; web tool could not access it."
+    },
+    {
+      "url": "https://www.repository.cam.ac.uk/handle/1810/295981",
+      "outcome": "Institutional repository landing route; web tool could not access it."
+    },
+    {
+      "url": "https://api.datacite.org/dois/10.17863/cam.43029",
+      "outcome": "Public institutional deposit metadata retrieved: original article abstract and open-access designation, no correction content."
+    }
+  ],
+  "nextRequirement": "An accessible copy of the correction text is required to resolve its substance; no purchase or author contact is authorized."
+}

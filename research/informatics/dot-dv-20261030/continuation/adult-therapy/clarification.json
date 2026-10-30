@@ -1,0 +1,71 @@
+[
+  {
+    "pmid": "30481183",
+    "status": "unresolved",
+    "materialChange": null,
+    "keepReviewReady": false,
+    "sources": [
+      {
+        "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0205485",
+        "accessedDate": "2026-10-30",
+        "result": "Publisher Results/Conclusions contradiction persists."
+      },
+      {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6258512/fullTextXML",
+        "accessedDate": "2026-10-30",
+        "result": "Retained XML Table4 confirms 23 versus9 total events but lacks event-level relatedness."
+      }
+    ],
+    "smallestResolutionNeeded": "Primary correction or event-relatedness statement from an authorized primary source; no contact was made."
+  },
+  {
+    "pmid": "30079583",
+    "status": "unresolved",
+    "materialChange": null,
+    "keepReviewReady": false,
+    "sources": [
+      {
+        "url": "https://onlinelibrary.wiley.com/doi/abs/10.1002/cpp.2318",
+        "accessedDate": "2026-10-30",
+        "result": "Publisher abstract45 randomized."
+      },
+      {
+        "url": "https://clinicaltrials.gov/api/v2/studies/NCT01731418",
+        "retrievedAt": "2026-10-30T07:32:32.637059+00:00",
+        "accessedDate": "2026-10-30",
+        "result": "Retained official registry:actual enrollment34,triple-masking label,last update2017-04-26."
+      }
+    ],
+    "accessLimit": "No new accessible primary full paper located. University-domain search reported robots restriction; previously blocked article route not retried.",
+    "smallestResolutionNeeded": "Primary full methods/participant flow or updated registry that reconciles enrollment and masking."
+  },
+  {
+    "pmid": "30344863",
+    "status": "unresolved",
+    "materialChange": null,
+    "keepReviewReady": false,
+    "sources": [
+      {
+        "url": "https://www.panafrican-med-journal.com/content/article/30/79/full/",
+        "accessedDate": "2026-10-30",
+        "result": "Publisher repeats unclear cluster versus individual allocation wording."
+      },
+      {
+        "url": "https://www.panafrican-med-journal.com/content/article/30/79/full/fig/th1.png",
+        "accessedDate": "2026-10-30",
+        "result": "Publisher thumbnail retrieved;80px width,not legible for allocation verification."
+      },
+      {
+        "url": "https://trialsearch.who.int/Trial2.aspx?TrialID=IRCT2013041713046N1",
+        "accessedDate": "2026-10-30",
+        "result": "Not accessible via web tool; no registry contents obtained."
+      },
+      {
+        "url": "https://www.panafrican-med-journal.com//content/DownloadFile.php?PdfTarget=30-79-14872&Type=Art",
+        "accessedDate": "2026-10-30",
+        "result": "Publisher PDF link returned wait page; no PDF read."
+      }
+    ],
+    "smallestResolutionNeeded": "Accessible primary registration or explicit allocation-unit/sequence description."
+  }
+]

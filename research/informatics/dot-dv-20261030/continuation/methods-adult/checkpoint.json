@@ -1,0 +1,37 @@
+{
+  "completedAt": "2026-10-30T08:42:38.749794+00:00",
+  "sourceBatchRevision": "batch-8bd70e21e48d9a70",
+  "newPublications": 0,
+  "newIndependentStudyFamilies": 0,
+  "existingRecordsReassessed": 5,
+  "existingStudyFamilies": 4,
+  "fullTextTargetReports": 4,
+  "abstractTargetReports": 1,
+  "sourceOnlyAdditionalPrimaryAbstracts": 1,
+  "reviewReadyProposals": 5,
+  "formalReviewHolds": 0,
+  "unresolvedCrossUpgrade": "HOPE172 remains one cross; participant-role masking unconfirmed despite double-blind label and concealment-of-name procedures.",
+  "productionEligible": false,
+  "humanApproval": false,
+  "preservedFileSHA256": {
+    "/Users/benkorbel/Documents/Codex/2026-10-30/task/dot-dv-mission/Informatics/review/domestic-violence-20261030/batch-8bd70e21e48d9a70.json": "afd810cdaefa6be0eeed16490fbc9b0f3a580837ea5f8994f64aa5ca9373f3c8",
+    "/Users/benkorbel/Documents/Codex/2026-10-30/task/research-work/workers/adult-therapy/candidates.json": "65164d702445f3a5efa37657f66cf288c0a2d10017e9aca34daf9612bbca2bbf"
+  },
+  "outputs": {
+    "proposed-candidates.json": "c10a960c34059e363bf90a15fa516a4e6affd8e3e4ddbf99661e237526a3bd22",
+    "field-deltas.json": "23cf282cfa8dc1b6f0cad746fa04ac26c649d31cfd8a7e31187e00836eb96605",
+    "source-evidence-ledger.json": "4be42c7e6260ffdd33f8352a8ff30c8d66acb3185795f5019c907c9bf18790d3",
+    "SAFETY-ADVISORY.md": "2555cc2006194c9fe045d285a7415d6ef0a4da0a8664ede5e70e503fbb0ff631"
+  },
+  "validation": "JSON parsed; five original IDs/prior hashes match staged batch; four family IDs; mirrored display fields reconciled; all pending/one cross; no newly minted content hash; frozen files unchanged during build.",
+  "privateSourceSHA256": {
+    "private/PMC10610520-sections.json": "6bb3f054c00b62e1e64ef275fac816c543d295428e00afaea81caff5f00ce690",
+    "private/PMC8294703-passages.json": "84caa192e2c32c6478fddf54d10069572d72ef67dc5f13fa8ba41e097d671890",
+    "private/PMC7733186.xml": "94738d2e7688ed5c5cf7ccad394787fcbfa89a5110a6aa5bc0462bfe111d69be",
+    "private/PMC10610520.xml": "ac1e1a28d01c2f1c5002e4535b35bc2790c08096b31afc72ddb85137543be139",
+    "private/PMC8213126-sections.json": "a18d81db1140461a3cd0814641ecf2242100446d2b5acf1f28eb326985c23db3",
+    "private/PMC7733186-sections.json": "8520017aec8343bbab5df68c3997cb0b0c8562b6e31d8737d946d5aaaefde580",
+    "private/PMC8213126.xml": "0dcef20d2f930337b85c8d004884b8c9924a5bc4a434e65633720e09ea70cc7b",
+    "private/PMC8294703-bioc.json": "62c128a430ce15dcaaa0d2139416e9f58b4c7442e8703c6d3790fe7229975daa"
+  }
+}

@@ -1,0 +1,26 @@
+# Source clarification and additional adult-therapy evidence
+
+Access and appraisal date: **30 October 2026 UTC**. The frozen first-batch files were preserved. This continuation used free primary sources, with no contact, purchases, credentials, Git changes or deployment.
+
+## Unresolved first-batch items
+
+**PATH, PMID30481183 — not resolved.** The current [publisher article](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0205485) repeats the inconsistency: its Results place four events with uncertain trial relation in three intervention participants; its Conclusions place the four events in control. Table 4 establishes 23 intervention and nine control events, but does not identify their relationship to treatment. The accessible supplementary-file list contains no event-level adjudication. Targeted publisher/PubMed correction searches did not identify a correction; this is not a comprehensive correction audit. Retain the discrepancy and `reviewReady:false`; no safety attribution can be corrected from these sources.
+
+**NET, PMID30079583 — not resolved.** The [publisher abstract](https://onlinelibrary.wiley.com/doi/abs/10.1002/cpp.2318) describes 45 randomized women; the retained [ClinicalTrials.gov API record](https://clinicaltrials.gov/api/v2/studies/NCT01731418) lists actual enrollment 34 and triple masking, last updated in 2017. Nothing inspected establishes whether 34 means completers or whether the publication’s masking was implemented as registered. Do not infer either explanation. Searches for a free institutional full paper did not yield a usable primary text; the search tool reported the university domain blocked by robots. The previously blocked repository article and publisher full-text redirect were not repeatedly opened. Retain one cross, the discrepancy and `reviewReady:false`.
+
+**Tehran problem-solving, PMID30344863 — not resolved.** The [publisher methods](https://www.panafrican-med-journal.com/content/article/30/79/full/) independently repeat the PMC wording: quasi-experimental design, network-level arm selection and a later statement of random assignment of women. Sample flow supports 142 per arm before losses but does not establish the treatment-allocation unit or its concealment. The linked figure thumbnail was retrieved but is too small to read. The WHO registry URL for IRCT2013041713046N1 was inaccessible through the web tool; primary-registry searches supplied no usable registration record. Keep the allocation ambiguity, zero crosses and `reviewReady:false`.
+
+No material change to the first-batch conclusions is justified. These limitations are documented rather than converted into assumed corrections. No automatic approval rejection occurred; there is no pending or uncertain consequential action.
+
+## Additional publications
+
+Five previously unscreened queue records were inspected; four intervention reports were assessed, with four distinct family labels and no baseline-library or existing worker-candidate DOI/PMID match. Three are review-ready with caveats; the fourth needs a source check. All remain pending human approval.
+
+- **33743632, solution-focused counselling:** 90 randomized pregnant women, 82 analyzed. Accessible methods verify block randomization and a masked follow-up interviewer. Selected violence and quality-of-life outcomes favored counselling, with null severe-violence and several quality-of-life results retained. Short follow-up, complete-case analysis and unmasked self-report limit confidence. [Primary paper](https://europepmc.org/article/MED/33743632)
+- **33428625, Kenya IPT:** 256 women with HIV, depression/PTSD and mixed gender-based-violence exposure. The randomized three-month comparison favored IPT for diagnostic outcomes. IPV was assessed among partnered women; the baseline 61% figure does **not** describe the entire sample. Differential attrition and changing partnership status weaken IPV inference. Later crossover removes an untreated comparator. [Primary paper](https://europepmc.org/article/MED/33428625)
+- **32755265, cognitive-narrative therapy:** 19 women, four sessions. The abstract reports no significant between-group differences, despite a positive conclusion. The candidate preserves the null result and unfavorable total-CPTSD estimate. Full methods remain unavailable in the accessed sources. [Primary abstract](https://europepmc.org/article/MED/32755265)
+- **40425169, forgiveness therapy:** 30 shelter residents. Primary methods and tables were inspected; control-group gain scores conflict with their pre/post means. The same researcher delivered therapy and assessments, and there was no active comparator or follow-up. Effect estimates are withheld; `reviewReady:false`. [Primary paper](https://europepmc.org/article/MED/40425169)
+
+PMID40315027 was excluded from this intervention-results bundle after abstract inspection: it reports qualitative co-design interviews, not an intervention evaluation.
+
+`candidates.json` uses the full original schema. `screening.json`, `search-log.json`, `source-ledger.json` and `access-log.json` preserve decisions and provenance. Two additions received full-paper methods/results/discussion appraisal; one received selected-methods appraisal and one abstract appraisal. The local `private/` source files must remain outside Git and public deployment.

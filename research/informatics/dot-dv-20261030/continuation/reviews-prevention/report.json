@@ -1,0 +1,48 @@
+{
+  "completedAt": "2026-10-30T08:18:05.594789+00:00",
+  "frozenBatch": "batch-acb62474225f0804",
+  "frozenFilesModified": false,
+  "newDiscoveryPublicationCount": 0,
+  "retainedQueueRecordsSelected": 6,
+  "sourceInspectedNewPublications": 6,
+  "assessedNewPublications": 6,
+  "reviewReadyNewPublications": 5,
+  "needsSourceCheckNewPublications": 1,
+  "newEvidenceSynthesisPublications": 6,
+  "newPrimaryTrialReports": 0,
+  "newIndependentPrimaryStudyFamilies": 0,
+  "newReviewEvidenceBaseGroups": 5,
+  "reviewEvidenceBaseNote": "One new publication (37383644) explicitly reanalyzes the frozen Karakurt 2019 evidence base. Other reviews also overlap primary trials; no claim of independent pooled trial evidence is made.",
+  "baselinePublicationMatches": 0,
+  "frozenPublicationMatches": 0,
+  "accessLevels": {
+    "selected-methods": 6
+  },
+  "identityCrossSourceVerified": 6,
+  "excludedNew": 0,
+  "sourceHoldReassessments": 1,
+  "sourceHoldResolved": 0,
+  "sourceHoldRemaining": [
+    "31548680"
+  ],
+  "newSourceHold": [
+    "36909881"
+  ],
+  "extraSpendAUD": 0,
+  "productionModified": false,
+  "limitations": [
+    "No complete full-text formal appraisals or numerical reanalyses; six selected-methods assessments.",
+    "Retained queue selection is purposive, not an exhaustive systematic review.",
+    "Digital meta-analysis numerical conflicts remain unresolved; Nature correction text remains inaccessible.",
+    "Review publication counts must not be added to primary trial or independent study-family counts."
+  ],
+  "validation": {
+    "requiredFields": "passed",
+    "pendingHumanReview": "6 of 6",
+    "zeroReviewCrosses": "6 of 6",
+    "identity": "6 DOI/title matches against Crossref",
+    "frozenCandidatesUnchanged": true,
+    "frozenCandidatesSHA256": "1258c8c1311d6cb5236d46115d5379d906bdf4ab8e44ec3f5f89fce1e673137f",
+    "continuationCandidatesSHA256": "35d9776e7025410df3f0ec0b3ab01d6b346e6cdee767fb35a907da1a2bcb03ae"
+  }
+}

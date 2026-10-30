@@ -1,0 +1,714 @@
+[
+  {
+    "originalID": "dv-reviews-26613288",
+    "pmid": "26613288",
+    "priorBatchRevision": "batch-8bd70e21e48d9a70",
+    "priorContentHash": "fb0f4c8fda3186fe50225d2b466b471a07fa1573d0e70ae3063dae9aa52ccc29",
+    "priorRevision": "r1-fb0f4c8fda31",
+    "status": "proposed-unapplied",
+    "assessmentScope": "selected published methods/results plus linked registry",
+    "disposition": "Substantive correction ready for coordinator review; no double-blind upgrade.",
+    "createdAt": "2026-10-30T08:36:53.499059+00:00",
+    "fieldChanges": [
+      {
+        "path": "finding",
+        "before": "Strength at Home Men produced greater reductions in physical and psychological IPV than enhanced usual care through six months.",
+        "after": "Modeled physical and psychological IPV trajectories favored SAH-M. Immediate post-treatment benefit was clearer; the later physical-recidivism comparison was not statistically significant.",
+        "sourceURLs": [
+          "https://strengthathome.org/wp-content/uploads/2020/05/RCT-for-SAH-Mens-Program-2016.pdf"
+        ],
+        "sourceLocation": "pp.1172–1174, Tables2–4 and Recidivism",
+        "rationale": "Qualify the prior claim of comparative benefit through six months."
+      },
+      {
+        "path": "sampleSize",
+        "before": {
+          "randomized": 135,
+          "analyzed": null,
+          "description": "135 male participants randomized; partner sample 111"
+        },
+        "after": {
+          "randomized": 135,
+          "analyzed": 135,
+          "description": "135 men in longitudinal intention-to-treat analyses: SAH-M67, ETAU68; 111 partners supplied collateral information. Follow-up observations were incomplete.",
+          "unit": "men"
+        },
+        "sourceURLs": [
+          "https://strengthathome.org/wp-content/uploads/2020/05/RCT-for-SAH-Mens-Program-2016.pdf"
+        ],
+        "sourceLocation": "pp.1169–1171; Figure1",
+        "rationale": "Separate ITT inclusion from follow-up retention."
+      },
+      {
+        "path": "intervention.dose",
+        "before": "12 weeks",
+        "after": "12 weekly two-hour closed-group sessions",
+        "sourceURLs": [
+          "https://strengthathome.org/wp-content/uploads/2020/05/RCT-for-SAH-Mens-Program-2016.pdf"
+        ],
+        "sourceLocation": "p.1170",
+        "rationale": "Published dose verified."
+      },
+      {
+        "path": "intervention.provider",
+        "before": "Not established from accessed abstract.",
+        "after": "Two co-leaders: one doctoral-level male therapist and one doctoral/pre-doctoral female therapist",
+        "sourceURLs": [
+          "https://strengthathome.org/wp-content/uploads/2020/05/RCT-for-SAH-Mens-Program-2016.pdf"
+        ],
+        "sourceLocation": "p.1170",
+        "rationale": "Published provider qualifications verified."
+      },
+      {
+        "path": "design.randomizationEvidence",
+        "before": "Methods explicitly state male participants were randomly assigned to SAH-M or enhanced usual care.",
+        "after": "After baseline assessment, blocks of4–5 men were allocated with a random-number generator.",
+        "sourceURLs": [
+          "https://strengthathome.org/wp-content/uploads/2020/05/RCT-for-SAH-Mens-Program-2016.pdf"
+        ],
+        "sourceLocation": "p.1169",
+        "rationale": "Verify allocation process beyond abstract labeling."
+      },
+      {
+        "path": "design.masking.assessors",
+        "before": "Not established from accessed abstract.",
+        "after": "Registry reports outcome-assessor masking. The paper describes assessors separate from treating clinicians but does not explicitly confirm masked allocation.",
+        "sourceURLs": [
+          "https://strengthathome.org/wp-content/uploads/2020/05/RCT-for-SAH-Mens-Program-2016.pdf",
+          "https://clinicaltrials.gov/study/NCT01435512"
+        ],
+        "sourceLocation": "p.1169; registry designModule",
+        "rationale": "Keep registry claim distinct from published verification."
+      },
+      {
+        "path": "quality.attrition",
+        "before": "Not established from accessed abstract.",
+        "after": "SAH-M/ETAU assessments:49/67 versus56/68 post-treatment,45/67 versus58/68 at final follow-up. SAH-M treatment completion37/67; ITT includes135.",
+        "sourceURLs": [
+          "https://strengthathome.org/wp-content/uploads/2020/05/RCT-for-SAH-Mens-Program-2016.pdf"
+        ],
+        "sourceLocation": "Figure1,p.1170",
+        "rationale": "Identify differential assessment attrition and distinguish intervention completion."
+      },
+      {
+        "path": "quality.adverseFindings",
+        "before": "Not established from accessed abstract.",
+        "after": "Registry records0 deaths,0 serious and0 other adverse events in each arm, without collection-method/timeframe details. The paper provides safety procedures but no formal harms table; zero recorded events does not establish safety.",
+        "sourceURLs": [
+          "https://clinicaltrials.gov/study/NCT01435512",
+          "https://strengthathome.org/wp-content/uploads/2020/05/RCT-for-SAH-Mens-Program-2016.pdf"
+        ],
+        "sourceLocation": "registry adverseEventsModule; pp.1169–1170",
+        "rationale": "Avoid converting incomplete harms reporting into a no-harm conclusion."
+      },
+      {
+        "path": "quality.confounding",
+        "before": "Trial comparability and remaining biases need full methods appraisal.",
+        "after": "ETAU included referrals, check-ins and other care. Authors discuss possible unequal court monitoring at follow-up. Registry wait-list wording does not adequately describe the published comparator.",
+        "sourceURLs": [
+          "https://strengthathome.org/wp-content/uploads/2020/05/RCT-for-SAH-Mens-Program-2016.pdf",
+          "https://clinicaltrials.gov/study/NCT01435512"
+        ],
+        "sourceLocation": "pp.1171,1174; registry arms",
+        "rationale": "Prefer actual published comparator over shorthand registry label."
+      },
+      {
+        "path": "quality.riskOfBias",
+        "before": "A veteran/service-member sample and referral comparator limit generalization; masking and attrition not established from abstract.",
+        "after": "Random-number allocation verified; concealment and participant masking unclear. Differential follow-up loss and incomplete partner data remain concerns. No formal RoB2 appraisal completed.",
+        "sourceURLs": [
+          "https://strengthathome.org/wp-content/uploads/2020/05/RCT-for-SAH-Mens-Program-2016.pdf",
+          "https://clinicaltrials.gov/study/NCT01435512"
+        ],
+        "sourceLocation": "Methods; Figure1",
+        "rationale": "Bound confidence to the methods actually inspected."
+      },
+      {
+        "path": "limitation",
+        "before": "A veteran/service-member sample and referral comparator limit generalization; masking and attrition not established from abstract.",
+        "after": "Selected male military/veteran population; incomplete follow-up, limited collateral coverage, and referral comparator. The later physical-violence comparison was inconclusive.",
+        "sourceURLs": [
+          "https://strengthathome.org/wp-content/uploads/2020/05/RCT-for-SAH-Mens-Program-2016.pdf"
+        ],
+        "sourceLocation": "Methods, Figure1 and Discussion",
+        "rationale": "Replace unknown attrition with observed limitations."
+      },
+      {
+        "path": "quality.transferLimits",
+        "before": "A veteran/service-member sample and referral comparator limit generalization; masking and attrition not established from abstract.",
+        "after": "Eligibility excluded active substance dependence outside remission, uncontrolled bipolar/psychotic disorder, and severe cognitive impairment. Generalization beyond male veterans/service members is limited.",
+        "sourceURLs": [
+          "https://strengthathome.org/wp-content/uploads/2020/05/RCT-for-SAH-Mens-Program-2016.pdf"
+        ],
+        "sourceLocation": "pp.1168–1169,1174",
+        "rationale": "State important clinical exclusions."
+      },
+      {
+        "path": "outcomes",
+        "before": [
+          {
+            "name": "Physical IPV",
+            "followUp": "3 and 6 months",
+            "result": "Favored intervention",
+            "effectEstimate": "Time-by-condition β=-0.135",
+            "uncertainty": "SE 0.061; p=.029",
+            "primaryStatus": "Not established from accessed abstract."
+          },
+          {
+            "name": "Psychological IPV",
+            "followUp": "3 and 6 months",
+            "result": "Favored intervention",
+            "effectEstimate": "Time-by-condition β=-0.304",
+            "uncertainty": "SE 0.135; p=.026",
+            "primaryStatus": "Not established from accessed abstract."
+          }
+        ],
+        "after": [
+          {
+            "name": "Physical IPV trajectory",
+            "followUp": "Baseline, post-treatment (~3months), final follow-up (~6months from baseline)",
+            "result": "Modeled change favored SAH-M",
+            "effectEstimate": "Time-by-condition beta=-0.135",
+            "uncertainty": "SE0.061;p=.029",
+            "primaryStatus": "Primary domain in linked registry; prospective specification not established"
+          },
+          {
+            "name": "Psychological IPV trajectory",
+            "followUp": "Same three assessments",
+            "result": "Modeled change favored SAH-M",
+            "effectEstimate": "Time-by-condition beta=-0.304",
+            "uncertainty": "SE0.135;p=.026",
+            "primaryStatus": "Primary domain in linked registry; prospective specification not established"
+          },
+          {
+            "name": "Physical recidivism",
+            "followUp": "Post-treatment",
+            "result": "Lower with SAH-M",
+            "effectEstimate": "23.3% SAH-M versus43.3% ETAU",
+            "uncertainty": "p=.02",
+            "primaryStatus": "Additional analysis"
+          },
+          {
+            "name": "Physical recidivism",
+            "followUp": "3months after treatment (~6months after baseline)",
+            "result": "No statistically clear between-group difference",
+            "effectEstimate": "18.5% SAH-M versus26.7% ETAU",
+            "uncertainty": "p=.30; not proof of equivalence",
+            "primaryStatus": "Additional analysis"
+          },
+          {
+            "name": "Physical IPV between-group effect",
+            "followUp": "Final follow-up",
+            "result": "Interval includes no difference",
+            "effectEstimate": "Hedges g=0.002",
+            "uncertainty": "95%CI -0.36 to0.37",
+            "primaryStatus": "Additional cross-sectional analysis"
+          },
+          {
+            "name": "Psychological IPV between-group effect",
+            "followUp": "Final follow-up",
+            "result": "Interval includes no difference",
+            "effectEstimate": "Hedges g=0.27",
+            "uncertainty": "95%CI -0.10 to0.64",
+            "primaryStatus": "Additional cross-sectional analysis"
+          },
+          {
+            "name": "Emotional-abuse subdomains",
+            "followUp": "Across assessments",
+            "result": "Restrictive engulfment favored SAH-M; denigration, hostility and dominance ITT interactions were not significant",
+            "effectEstimate": "Restrictive engulfment beta=-0.072",
+            "uncertainty": "p=.010; respective null-domain p=.450,.215,.674",
+            "primaryStatus": "Secondary domain analyses"
+          }
+        ],
+        "sourceURLs": [
+          "https://strengthathome.org/wp-content/uploads/2020/05/RCT-for-SAH-Mens-Program-2016.pdf"
+        ],
+        "sourceLocation": "Tables2–4; Recidivism,p.1174",
+        "rationale": "Preserve model benefits alongside time-specific null findings."
+      },
+      {
+        "path": "access",
+        "before": {
+          "level": "abstract",
+          "sourceURLs": [
+            "https://europepmc.org/article/MED/26613288",
+            "https://pubmed.ncbi.nlm.nih.gov/26613288/"
+          ],
+          "retrievedAt": "2026-10-30T07:25:20.171273+00:00"
+        },
+        "after": {
+          "level": "selected-methods",
+          "sourceURLs": [
+            "https://europepmc.org/article/MED/26613288",
+            "https://pubmed.ncbi.nlm.nih.gov/26613288/",
+            "https://strengthathome.org/wp-content/uploads/2020/05/RCT-for-SAH-Mens-Program-2016.pdf",
+            "https://clinicaltrials.gov/study/NCT01435512"
+          ],
+          "retrievedAt": "2026-10-30T08:36:53.499059+00:00"
+        },
+        "sourceURLs": [
+          "https://strengthathome.org/wp-content/uploads/2020/05/RCT-for-SAH-Mens-Program-2016.pdf",
+          "https://clinicaltrials.gov/study/NCT01435512"
+        ],
+        "sourceLocation": "Published methods, Figure1, Tables2–4, Results/Discussion; linked registry",
+        "rationale": "Paper text inspected; visual table validation and full formal bias appraisal are not claimed."
+      },
+      {
+        "path": "assessmentNotes",
+        "before": "Abstract-level structured assessment; missing methods and reporting fields are explicit. The study family remains provisional unless anchored to a verified registration.",
+        "after": "Published methods/results and linked registry inspected. Registry first submission2009-08-06; first public post2011-09-16, after paper recruitment began February2010. Registry completion135 must not be read as135 observed at final follow-up. Partner assessments included privacy checks, safety planning and emergency/referral resources. One RCT cross retained; Jadad not established.",
+        "sourceURLs": [
+          "https://strengthathome.org/wp-content/uploads/2020/05/RCT-for-SAH-Mens-Program-2016.pdf",
+          "https://clinicaltrials.gov/study/NCT01435512"
+        ],
+        "sourceLocation": "Methods; registry status/participantFlow",
+        "rationale": "Document unresolved reporting context without inferring absent harms or double masking."
+      },
+      {
+        "path": "sources",
+        "before": [
+          {
+            "url": "https://europepmc.org/article/MED/26613288",
+            "type": "Europe PMC indexed publication metadata and abstract",
+            "retrievedAt": "2026-10-30T07:25:20.171273+00:00",
+            "identityVerified": true,
+            "notes": "PMID, DOI, title, journal and authors reconciled within the indexed source; full-text appraisal not claimed."
+          },
+          {
+            "url": "https://api.crossref.org/works/10.4088%2Fjcp.15m10020",
+            "type": "Crossref publisher-deposited bibliographic metadata",
+            "retrievedAt": "2026-10-30T07:26:07.227813+00:00",
+            "identityVerified": true,
+            "notes": "DOI and normalized title match the Europe PMC record. Bibliographic verification only; not a full-text review."
+          }
+        ],
+        "after": [
+          {
+            "url": "https://europepmc.org/article/MED/26613288",
+            "type": "Europe PMC indexed publication metadata and abstract",
+            "retrievedAt": "2026-10-30T07:25:20.171273+00:00",
+            "identityVerified": true,
+            "notes": "PMID, DOI, title, journal and authors reconciled within the indexed source; full-text appraisal not claimed."
+          },
+          {
+            "url": "https://api.crossref.org/works/10.4088%2Fjcp.15m10020",
+            "type": "Crossref publisher-deposited bibliographic metadata",
+            "retrievedAt": "2026-10-30T07:26:07.227813+00:00",
+            "identityVerified": true,
+            "notes": "DOI and normalized title match the Europe PMC record. Bibliographic verification only; not a full-text review."
+          },
+          {
+            "url": "https://strengthathome.org/wp-content/uploads/2020/05/RCT-for-SAH-Mens-Program-2016.pdf",
+            "type": "Published article on programme-developer site",
+            "retrievedAt": "2026-10-30T08:36:53.499059+00:00",
+            "identityVerified": true,
+            "notes": "DOI/title match; methods/results text inspected. No local PDF or visual table verification."
+          },
+          {
+            "url": "https://clinicaltrials.gov/study/NCT01435512",
+            "type": "ClinicalTrials.gov linked record and results",
+            "retrievedAt": "2026-10-30T08:36:53.499059+00:00",
+            "identityVerified": true,
+            "notes": "Paper and registry link NCT01435512/PMID26613288. Registration, harms and flow wording reconciled cautiously."
+          }
+        ],
+        "sourceURLs": [
+          "https://strengthathome.org/wp-content/uploads/2020/05/RCT-for-SAH-Mens-Program-2016.pdf",
+          "https://clinicaltrials.gov/study/NCT01435512"
+        ],
+        "sourceLocation": "Source identity and access records",
+        "rationale": "Append provenance without replacing the original bibliographic evidence."
+      }
+    ],
+    "humanReview": "pending",
+    "productionEligible": false,
+    "designCrossesBefore": 1,
+    "designCrossesAfter": 1,
+    "integrationRequirements": [
+      "Verify priorContentHash before applying.",
+      "Create a new revision; do not mutate the frozen batch.",
+      "Regenerate derived evidence, studyDesignAssessment, citationSnapshot and provenance fields, and content hash.",
+      "Retain pending human approval; no production or chapter approval is implied."
+    ]
+  },
+  {
+    "originalID": "dv-reviews-27599224",
+    "pmid": "27599224",
+    "priorBatchRevision": "batch-8bd70e21e48d9a70",
+    "priorContentHash": "79374aceeaf5bda0e92e9757f9934da6957977da9f0721e6624e1cd720408d4f",
+    "priorRevision": "r1-79374aceeaf5",
+    "status": "proposed-unapplied",
+    "assessmentScope": "published abstract plus confirmed registry; full paper inaccessible",
+    "disposition": "Registry supplement complete; unresolved enrollment discrepancy needs source check before revised record is approval-ready.",
+    "createdAt": "2026-10-30T08:36:53.499059+00:00",
+    "fieldChanges": [
+      {
+        "path": "intervention.dose",
+        "before": "Not established from accessed abstract.",
+        "after": "Registry specifies10 sessions; delivered dose not independently checked in full publication",
+        "sourceURLs": [
+          "https://clinicaltrials.gov/study/NCT00827879"
+        ],
+        "sourceLocation": "armsInterventionsModule",
+        "rationale": "Label registry plan as plan, not achieved delivery."
+      },
+      {
+        "path": "design.masking.participants",
+        "before": "Not established from accessed abstract.",
+        "after": "Linked registry labels participants masked; published implementation not verified",
+        "sourceURLs": [
+          "https://clinicaltrials.gov/study/NCT00827879"
+        ],
+        "sourceLocation": "designModule",
+        "rationale": "Registry double-mask label alone does not earn two crosses."
+      },
+      {
+        "path": "design.masking.assessors",
+        "before": "Not established from accessed abstract.",
+        "after": "Linked registry labels outcome assessors masked; published implementation not verified",
+        "sourceURLs": [
+          "https://clinicaltrials.gov/study/NCT00827879"
+        ],
+        "sourceLocation": "designModule",
+        "rationale": "Retain one RCT cross pending full methods."
+      },
+      {
+        "path": "sampleSize.description",
+        "before": "69 couples randomized by cohort",
+        "after": "Paper reports69 randomized couples (138 people); registry records156 actual participants. Difference remains unexplained by accessed sources; do not substitute registry count.",
+        "sourceURLs": [
+          "https://clinicaltrials.gov/study/NCT00827879",
+          "https://pubmed.ncbi.nlm.nih.gov/27599224/"
+        ],
+        "sourceLocation": "registry enrollmentInfo; publication abstract",
+        "rationale": "Flag denominators instead of silently reconciling them."
+      },
+      {
+        "path": "quality.transferLimits",
+        "before": "Cohort randomization and selected military couples limit transfer; prevention findings do not establish safety for coercive-control or high-danger couples.",
+        "after": "Registry excludes male physical aggression within6months or severe aggression within12months, and female weapon use, injuries to men or male fear. This is selected-couple prevention evidence, with no established safety for ongoing high-danger violence.",
+        "sourceURLs": [
+          "https://clinicaltrials.gov/study/NCT00827879"
+        ],
+        "sourceLocation": "eligibilityModule",
+        "rationale": "Concrete violence exclusions materially narrow applicability."
+      },
+      {
+        "path": "quality.adverseFindings",
+        "before": "Not established from accessed abstract.",
+        "after": "Harms results not available from the accessed abstract or linked registry; safety exclusion criteria do not establish absence of harm.",
+        "sourceURLs": [
+          "https://clinicaltrials.gov/study/NCT00827879",
+          "https://pubmed.ncbi.nlm.nih.gov/27599224/"
+        ],
+        "sourceLocation": "registry hasResults=false; abstract",
+        "rationale": "Avoid treating screening as harms evidence."
+      },
+      {
+        "path": "limitation",
+        "before": "Cohort randomization and selected military couples limit transfer; prevention findings do not establish safety for coercive-control or high-danger couples.",
+        "after": "Full paper unavailable through attempted free routes. Registry confirms restrictive violence eligibility but enrollment156 differs from paper138 people; masking implementation, attrition and harms remain unresolved.",
+        "sourceURLs": [
+          "https://clinicaltrials.gov/study/NCT00827879",
+          "https://mdsoar.org/items/678bffc8-ab30-4cff-ab3e-6728defb3cd0"
+        ],
+        "sourceLocation": "Enrollment/design/eligibility; repository landing",
+        "rationale": "Material sample conflict is separate from ordinary abstract access limits."
+      },
+      {
+        "path": "reviewReady",
+        "before": true,
+        "after": false,
+        "sourceURLs": [
+          "https://clinicaltrials.gov/study/NCT00827879",
+          "https://pubmed.ncbi.nlm.nih.gov/27599224/"
+        ],
+        "sourceLocation": "Enrollment reconciliation",
+        "rationale": "Proposed hold applies only to revised record; frozen batch remains unchanged."
+      },
+      {
+        "path": "reviewReadiness",
+        "before": "ready-with-explicit-access-limits",
+        "after": "needs-source-check",
+        "sourceURLs": [
+          "https://clinicaltrials.gov/study/NCT00827879"
+        ],
+        "sourceLocation": "Enrollment reconciliation",
+        "rationale": "Do not approve unresolved material denominator conflict."
+      },
+      {
+        "path": "assessmentNotes",
+        "before": "Abstract-level structured assessment; missing methods and reporting fields are explicit. The study family remains provisional unless anchored to a verified registration.",
+        "after": "Abstract assessment supplemented by linked NCT00827879. Public repository identifies the matching paper but its PDF could not be read by available tool route. Retain69 couples and one cross; verify sample accounting, masking implementation, follow-up and harms from full paper.",
+        "sourceURLs": [
+          "https://clinicaltrials.gov/study/NCT00827879",
+          "https://mdsoar.org/items/678bffc8-ab30-4cff-ab3e-6728defb3cd0"
+        ],
+        "sourceLocation": "Registry derived PMID27599224; repository DOI/title",
+        "rationale": "Bound the method improvement and next required check."
+      },
+      {
+        "path": "sources",
+        "before": [
+          {
+            "url": "https://europepmc.org/article/MED/27599224",
+            "type": "Europe PMC indexed publication metadata and abstract",
+            "retrievedAt": "2026-10-30T07:25:20.171273+00:00",
+            "identityVerified": true,
+            "notes": "PMID, DOI, title, journal and authors reconciled within the indexed source; full-text appraisal not claimed."
+          },
+          {
+            "url": "https://api.crossref.org/works/10.1037%2Fccp0000129",
+            "type": "Crossref publisher-deposited bibliographic metadata",
+            "retrievedAt": "2026-10-30T07:26:07.169721+00:00",
+            "identityVerified": true,
+            "notes": "DOI and normalized title match the Europe PMC record. Bibliographic verification only; not a full-text review."
+          }
+        ],
+        "after": [
+          {
+            "url": "https://europepmc.org/article/MED/27599224",
+            "type": "Europe PMC indexed publication metadata and abstract",
+            "retrievedAt": "2026-10-30T07:25:20.171273+00:00",
+            "identityVerified": true,
+            "notes": "PMID, DOI, title, journal and authors reconciled within the indexed source; full-text appraisal not claimed."
+          },
+          {
+            "url": "https://api.crossref.org/works/10.1037%2Fccp0000129",
+            "type": "Crossref publisher-deposited bibliographic metadata",
+            "retrievedAt": "2026-10-30T07:26:07.169721+00:00",
+            "identityVerified": true,
+            "notes": "DOI and normalized title match the Europe PMC record. Bibliographic verification only; not a full-text review."
+          },
+          {
+            "url": "https://clinicaltrials.gov/study/NCT00827879",
+            "type": "ClinicalTrials.gov linked registry",
+            "retrievedAt": "2026-10-30T08:36:53.499059+00:00",
+            "identityVerified": true,
+            "notes": "DERIVED reference explicitly links PMID27599224. Plan/eligibility inspected; no results posted."
+          },
+          {
+            "url": "https://mdsoar.org/items/678bffc8-ab30-4cff-ab3e-6728defb3cd0",
+            "type": "Institutional repository landing page",
+            "retrievedAt": "2026-10-30T08:36:53.499059+00:00",
+            "identityVerified": true,
+            "notes": "Title/DOI match. PDF redirect inaccessible; content not inspected."
+          }
+        ],
+        "sourceURLs": [
+          "https://clinicaltrials.gov/study/NCT00827879",
+          "https://mdsoar.org/items/678bffc8-ab30-4cff-ab3e-6728defb3cd0"
+        ],
+        "sourceLocation": "Source identity and access records",
+        "rationale": "Append provenance without replacing the original bibliographic evidence."
+      }
+    ],
+    "humanReview": "pending",
+    "productionEligible": false,
+    "designCrossesBefore": 1,
+    "designCrossesAfter": 1,
+    "integrationRequirements": [
+      "Verify priorContentHash before applying.",
+      "Create a new revision; do not mutate the frozen batch.",
+      "Regenerate derived evidence, studyDesignAssessment, citationSnapshot and provenance fields, and content hash.",
+      "Retain pending human approval; no production or chapter approval is implied."
+    ]
+  },
+  {
+    "originalID": "dv-reviews-38206858",
+    "pmid": "38206858",
+    "priorBatchRevision": "batch-8bd70e21e48d9a70",
+    "priorContentHash": "19b0dc99ef364464759fe69518ea97a47c8fb18a076d50971191438fff082ed9",
+    "priorRevision": "r1-19b0dc99ef36",
+    "status": "proposed-unapplied",
+    "assessmentScope": "publication abstract plus plausible registry/protocol; exact family link unresolved",
+    "disposition": "Only access/provisional-link notes proposed; no trial-method or outcome upgrade.",
+    "createdAt": "2026-10-30T08:36:53.499059+00:00",
+    "fieldChanges": [
+      {
+        "path": "assessmentNotes",
+        "before": "Abstract-level structured assessment; missing methods and reporting fields are explicit. The study family remains provisional unless anchored to a verified registration.",
+        "after": "Candidate NCT04517994 matches programme, investigators, military-installation setting and hybrid design. Its protocol plans10 pilot plus140 trial couples, whereas registry enrollment is150 and publication randomized138 couples. This offers a possible accounting explanation, not verified achieved flow. Exact paper linkage and delivered procedures remain unconfirmed; retain paper-specific family ID and one cross.",
+        "sourceURLs": [
+          "https://clinicaltrials.gov/study/NCT04517994",
+          "https://cdn.clinicaltrials.gov/large-docs/94/NCT04517994/Prot_SAP_000.pdf",
+          "https://pubmed.ncbi.nlm.nih.gov/38206858/"
+        ],
+        "sourceLocation": "Registry identification/design; protocol pp.1,19; paper abstract",
+        "rationale": "Preserve promising family evidence without asserting an unverified match."
+      },
+      {
+        "path": "sources",
+        "before": [
+          {
+            "url": "https://europepmc.org/article/MED/38206858",
+            "type": "Europe PMC indexed publication metadata and abstract",
+            "retrievedAt": "2026-10-30T07:25:20.171273+00:00",
+            "identityVerified": true,
+            "notes": "PMID, DOI, title, journal and authors reconciled within the indexed source; full-text appraisal not claimed."
+          },
+          {
+            "url": "https://api.crossref.org/works/10.1037%2Fccp0000863",
+            "type": "Crossref publisher-deposited bibliographic metadata",
+            "retrievedAt": "2026-10-30T07:26:19.828677+00:00",
+            "identityVerified": true,
+            "notes": "DOI and normalized title match the Europe PMC record. Bibliographic verification only; not a full-text review."
+          }
+        ],
+        "after": [
+          {
+            "url": "https://europepmc.org/article/MED/38206858",
+            "type": "Europe PMC indexed publication metadata and abstract",
+            "retrievedAt": "2026-10-30T07:25:20.171273+00:00",
+            "identityVerified": true,
+            "notes": "PMID, DOI, title, journal and authors reconciled within the indexed source; full-text appraisal not claimed."
+          },
+          {
+            "url": "https://api.crossref.org/works/10.1037%2Fccp0000863",
+            "type": "Crossref publisher-deposited bibliographic metadata",
+            "retrievedAt": "2026-10-30T07:26:19.828677+00:00",
+            "identityVerified": true,
+            "notes": "DOI and normalized title match the Europe PMC record. Bibliographic verification only; not a full-text review."
+          },
+          {
+            "url": "https://clinicaltrials.gov/study/NCT04517994",
+            "type": "Provisional related ClinicalTrials.gov record",
+            "retrievedAt": "2026-10-30T08:36:53.499059+00:00",
+            "identityVerified": false,
+            "notes": "Not verified as exact publication registration; no linked PMID or results."
+          },
+          {
+            "url": "https://cdn.clinicaltrials.gov/large-docs/94/NCT04517994/Prot_SAP_000.pdf",
+            "type": "Protocol attached to provisional registry",
+            "retrievedAt": "2026-10-30T08:36:53.499059+00:00",
+            "identityVerified": false,
+            "notes": "Selected design, sample, eligibility and safety sections inspected. Planned procedures are not observed publication methods."
+          }
+        ],
+        "sourceURLs": [
+          "https://clinicaltrials.gov/study/NCT04517994",
+          "https://cdn.clinicaltrials.gov/large-docs/94/NCT04517994/Prot_SAP_000.pdf"
+        ],
+        "sourceLocation": "Source identity and access records",
+        "rationale": "Append provenance without replacing the original bibliographic evidence."
+      }
+    ],
+    "humanReview": "pending",
+    "productionEligible": false,
+    "designCrossesBefore": 1,
+    "designCrossesAfter": 1,
+    "integrationRequirements": [
+      "Verify priorContentHash before applying.",
+      "Create a new revision; do not mutate the frozen batch.",
+      "Regenerate derived evidence, studyDesignAssessment, citationSnapshot and provenance fields, and content hash.",
+      "Retain pending human approval; no production or chapter approval is implied."
+    ],
+    "withheldChanges": [
+      "trialRegistration/studyFamilyId",
+      "sampleSize",
+      "design.masking",
+      "intervention delivered dose/provider",
+      "attrition and harms",
+      "numerical outcomes"
+    ]
+  },
+  {
+    "originalID": "dv-reviews-41045209",
+    "pmid": "41045209",
+    "priorBatchRevision": "batch-8bd70e21e48d9a70",
+    "priorContentHash": "e16f659d45df206c3bd434c87c7301bcf798d90448e33ffa8e076b73c694a8d6",
+    "priorRevision": "r1-e16f659d45df",
+    "status": "proposed-unapplied",
+    "assessmentScope": "publication abstract plus grant-matched registry/protocol; sample reconciliation unresolved",
+    "disposition": "Only access/provisional-link notes proposed; published full methods remain unavailable.",
+    "createdAt": "2026-10-30T08:36:53.499059+00:00",
+    "fieldChanges": [
+      {
+        "path": "assessmentNotes",
+        "before": "Abstract-level structured assessment; missing methods and reporting fields are explicit. The study family remains provisional unless anchored to a verified registration.",
+        "after": "NCT04165291 and the PubMed paper share grant R21HD099318. The uploaded2023 protocol includes a three-arm PhaseI planned75 fathers and a separate later two-arm PhaseII; structured registry results describe60 fathers/two arms, while the paper reports82/three arms. This supports a likely family link but does not reconcile the publication sample or validate transfer of registry outcome/harms denominators. Keep registration provisional, paper family ID, one cross and abstract access level.",
+        "sourceURLs": [
+          "https://clinicaltrials.gov/study/NCT04165291",
+          "https://cdn.clinicaltrials.gov/large-docs/91/NCT04165291/Prot_SAP_000.pdf",
+          "https://pubmed.ncbi.nlm.nih.gov/41045209/"
+        ],
+        "sourceLocation": "Grant; protocol pp.3,7,17; structured registry results; paper abstract",
+        "rationale": "Prevent conflating phases or the two-arm results with the published three-arm trial."
+      },
+      {
+        "path": "sources",
+        "before": [
+          {
+            "url": "https://europepmc.org/article/MED/41045209",
+            "type": "Europe PMC indexed publication metadata and abstract",
+            "retrievedAt": "2026-10-30T07:25:20.171273+00:00",
+            "identityVerified": true,
+            "notes": "PMID, DOI, title, journal and authors reconciled within the indexed source; full-text appraisal not claimed."
+          },
+          {
+            "url": "https://api.crossref.org/works/10.1177%2F08862605251372568",
+            "type": "Crossref publisher-deposited bibliographic metadata",
+            "retrievedAt": "2026-10-30T07:26:22.675308+00:00",
+            "identityVerified": true,
+            "notes": "DOI and normalized title match the Europe PMC record. Bibliographic verification only; not a full-text review."
+          }
+        ],
+        "after": [
+          {
+            "url": "https://europepmc.org/article/MED/41045209",
+            "type": "Europe PMC indexed publication metadata and abstract",
+            "retrievedAt": "2026-10-30T07:25:20.171273+00:00",
+            "identityVerified": true,
+            "notes": "PMID, DOI, title, journal and authors reconciled within the indexed source; full-text appraisal not claimed."
+          },
+          {
+            "url": "https://api.crossref.org/works/10.1177%2F08862605251372568",
+            "type": "Crossref publisher-deposited bibliographic metadata",
+            "retrievedAt": "2026-10-30T07:26:22.675308+00:00",
+            "identityVerified": true,
+            "notes": "DOI and normalized title match the Europe PMC record. Bibliographic verification only; not a full-text review."
+          },
+          {
+            "url": "https://clinicaltrials.gov/study/NCT04165291",
+            "type": "Grant-matched provisional ClinicalTrials.gov record",
+            "retrievedAt": "2026-10-30T08:36:53.499059+00:00",
+            "identityVerified": false,
+            "notes": "Grant match confirmed; exact82-person publication/60-person registry sample mapping unresolved."
+          },
+          {
+            "url": "https://cdn.clinicaltrials.gov/large-docs/91/NCT04165291/Prot_SAP_000.pdf",
+            "type": "Protocol attached to provisional registry",
+            "retrievedAt": "2026-10-30T08:36:53.499059+00:00",
+            "identityVerified": false,
+            "notes": "Selected PhaseI/II, eligibility, analysis and safety sections inspected; later amended plan is not proof of paper implementation."
+          }
+        ],
+        "sourceURLs": [
+          "https://clinicaltrials.gov/study/NCT04165291",
+          "https://cdn.clinicaltrials.gov/large-docs/91/NCT04165291/Prot_SAP_000.pdf"
+        ],
+        "sourceLocation": "Source identity and access records",
+        "rationale": "Append provenance without replacing the original bibliographic evidence."
+      }
+    ],
+    "humanReview": "pending",
+    "productionEligible": false,
+    "designCrossesBefore": 1,
+    "designCrossesAfter": 1,
+    "integrationRequirements": [
+      "Verify priorContentHash before applying.",
+      "Create a new revision; do not mutate the frozen batch.",
+      "Regenerate derived evidence, studyDesignAssessment, citationSnapshot and provenance fields, and content hash.",
+      "Retain pending human approval; no production or chapter approval is implied."
+    ],
+    "withheldChanges": [
+      "trialRegistration/studyFamilyId",
+      "sampleSize",
+      "masking: registry DOUBLE is unverified for the published82-person study",
+      "provider and safety procedures",
+      "registry harms and attrition",
+      "registry outcome statistics"
+    ]
+  }
+]

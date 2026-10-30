@@ -1,0 +1,288 @@
+[
+  {
+    "candidateId": "dv-adult-therapy-34305273",
+    "pmid": "34305273",
+    "fields": [
+      "age",
+      "relevance",
+      "setting",
+      "sampleSize"
+    ],
+    "sourceURL": "https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_json/PMC8294703/unicode",
+    "retrievedAt": "2026-10-30T08:22:03.536155+00:00",
+    "sourceAccess": "full-text",
+    "locator": "BioC passages 10, 13–15, 61, 64; Table 2",
+    "supported": "Explicit IPV/PTSD criteria, 172 randomized, observed ages 19–59, 2013–2017 collection and follow-up denominators.",
+    "extraction": "paraphrase; no causal inference beyond reported design/results"
+  },
+  {
+    "candidateId": "dv-adult-therapy-34305273",
+    "pmid": "34305273",
+    "fields": [
+      "design",
+      "quality.riskOfBias"
+    ],
+    "sourceURL": "https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_json/PMC8294703/unicode",
+    "retrievedAt": "2026-10-30T08:22:03.536155+00:00",
+    "sourceAccess": "full-text",
+    "locator": "BioC passages 13, 15, 46",
+    "supported": "Double-blind author label; common treatment naming and arm-specific workbook procedure; explicitly masked assessors; therapists deliver both protocols. No separate explicit participant-role statement or success test found.",
+    "extraction": "paraphrase; no causal inference beyond reported design/results"
+  },
+  {
+    "candidateId": "dv-adult-therapy-34305273",
+    "pmid": "34305273",
+    "fields": [
+      "intervention",
+      "comparator"
+    ],
+    "sourceURL": "https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_json/PMC8294703/unicode",
+    "retrievedAt": "2026-10-30T08:22:03.536155+00:00",
+    "sourceAccess": "full-text",
+    "locator": "BioC passages 46–54",
+    "supported": "Provider training, session dose, distinct content, active PCT+ comparison and fidelity procedures.",
+    "extraction": "paraphrase; no causal inference beyond reported design/results"
+  },
+  {
+    "candidateId": "dv-adult-therapy-34305273",
+    "pmid": "34305273",
+    "fields": [
+      "outcomes",
+      "finding",
+      "quality.confounding"
+    ],
+    "sourceURL": "https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_json/PMC8294703/unicode",
+    "retrievedAt": "2026-10-30T08:22:03.536155+00:00",
+    "sourceAccess": "full-text",
+    "locator": "BioC passages 56–58, 69–75; Tables 2–4",
+    "supported": "All-available-data models assuming MAR, alpha<.01, within-group gains and no significant between-group superiority.",
+    "extraction": "paraphrase; no causal inference beyond reported design/results"
+  },
+  {
+    "candidateId": "dv-adult-therapy-34305273",
+    "pmid": "34305273",
+    "fields": [
+      "quality.attrition",
+      "quality.adverseFindings"
+    ],
+    "sourceURL": "https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_json/PMC8294703/unicode",
+    "retrievedAt": "2026-10-30T08:22:03.536155+00:00",
+    "sourceAccess": "full-text",
+    "locator": "BioC passages 63–67; Table 2",
+    "supported": "Assessment versus treatment dropout separated; ten higher-care treatment removals and no study-related SAEs.",
+    "extraction": "paraphrase; no causal inference beyond reported design/results"
+  },
+  {
+    "candidateId": "dv-adult-therapy-34143803",
+    "pmid": "34143803",
+    "fields": [
+      "design",
+      "relevance",
+      "age",
+      "sampleSize"
+    ],
+    "sourceURL": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8213126/fullTextXML",
+    "retrievedAt": "2026-10-30T08:21:33.147602+00:00",
+    "sourceAccess": "full-text",
+    "locator": "sec 009 Procedures; sec 017 Sample characteristics; Table 1",
+    "supported": "43 clusters randomized, recruitment afterward, 158/153 women, explicit eligibility/masking. Narrative versus Table 1 cluster labels conflict.",
+    "extraction": "paraphrase; no causal inference beyond reported design/results"
+  },
+  {
+    "candidateId": "dv-adult-therapy-34143803",
+    "pmid": "34143803",
+    "fields": [
+      "intervention",
+      "comparator",
+      "assessmentNotes"
+    ],
+    "sourceURL": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8213126/fullTextXML",
+    "retrievedAt": "2026-10-30T08:21:33.147602+00:00",
+    "sourceAccess": "full-text",
+    "locator": "sec 010 Intervention; sec 011 Measures; sec 021 Completion",
+    "supported": "Integrated CPT/advocacy, individual+ 7 group sessions, nonspecialists, pilot in different excluded zone, completion counts.",
+    "extraction": "paraphrase; no causal inference beyond reported design/results"
+  },
+  {
+    "candidateId": "dv-adult-therapy-34143803",
+    "pmid": "34143803",
+    "fields": [
+      "outcomes",
+      "finding",
+      "quality.confounding"
+    ],
+    "sourceURL": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8213126/fullTextXML",
+    "retrievedAt": "2026-10-30T08:21:33.147602+00:00",
+    "sourceAccess": "full-text",
+    "locator": "sec 013 Statistical analyses; sec 020; Tables 4–5; sec 022 Discussion",
+    "supported": "Main adjusted models attenuate psychological differences; null IPV estimates; selected completer effect; exploratory high-IPV worsening signal, not established causal harm.",
+    "extraction": "paraphrase; no causal inference beyond reported design/results"
+  },
+  {
+    "candidateId": "dv-adult-therapy-34143803",
+    "pmid": "34143803",
+    "fields": [
+      "quality.attrition",
+      "quality.adverseFindings"
+    ],
+    "sourceURL": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8213126/fullTextXML",
+    "retrievedAt": "2026-10-30T08:21:33.147602+00:00",
+    "sourceAccess": "full-text",
+    "locator": "sec 021 Intervention completion and study attrition",
+    "supported": "36 lost, severity-related completion, privacy withdrawal, 3 events judged unlikely related by DSMB/IRB.",
+    "extraction": "paraphrase; no causal inference beyond reported design/results"
+  },
+  {
+    "candidateId": "dv-adult-therapy-37889918",
+    "pmid": "37889918",
+    "fields": [
+      "design",
+      "sampleSize",
+      "quality.confounding"
+    ],
+    "sourceURL": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10610520/fullTextXML",
+    "retrievedAt": "2026-10-30T08:21:40.085701+00:00",
+    "sourceAccess": "full-text",
+    "locator": "sec 024–sec 027 Randomisation; sec 034 Protocol deviations; sec 044 Discussion",
+    "supported": "Random tables, concealment roles, masked assessors/analysts; 17 wrongly routed, 35 intended, 25/12/15 final groups; possible nonrandom allocation.",
+    "extraction": "paraphrase; no causal inference beyond reported design/results"
+  },
+  {
+    "candidateId": "dv-adult-therapy-37889918",
+    "pmid": "37889918",
+    "fields": [
+      "age",
+      "relevance",
+      "setting"
+    ],
+    "sourceURL": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10610520/fullTextXML",
+    "retrievedAt": "2026-10-30T08:21:40.085701+00:00",
+    "sourceAccess": "full-text",
+    "locator": "sec 012–sec 014; sec 035 andTable 1",
+    "supported": "Eligibility 16+, pregnancy/depression/IPV criteria; arm age medians and actual adolescent enrollment uncertainty.",
+    "extraction": "paraphrase; no causal inference beyond reported design/results"
+  },
+  {
+    "candidateId": "dv-adult-therapy-37889918",
+    "pmid": "37889918",
+    "fields": [
+      "intervention",
+      "comparator",
+      "outcomes",
+      "quality.attrition"
+    ],
+    "sourceURL": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10610520/fullTextXML",
+    "retrievedAt": "2026-10-30T08:21:40.085701+00:00",
+    "sourceAccess": "full-text",
+    "locator": "sec 015–sec 023; sec 037–sec 040; Table 4",
+    "supported": "Doses and provider training, 39 followed, early assessments, descriptive clinical outcomes, completion and provider-fidelity problems.",
+    "extraction": "paraphrase; no causal inference beyond reported design/results"
+  },
+  {
+    "candidateId": "dv-adult-therapy-37889918",
+    "pmid": "37889918",
+    "fields": [
+      "quality.adverseFindings",
+      "outcomes"
+    ],
+    "sourceURL": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10610520/fullTextXML",
+    "retrievedAt": "2026-10-30T08:21:40.085701+00:00",
+    "sourceAccess": "full-text",
+    "locator": "sec 041 Safety; Table 4",
+    "supported": "One serious husband-assault event without arm/relatedness; 2 obstetric complications among 29 delivered. Do not translate safe conclusion to zero harms.",
+    "extraction": "paraphrase; no causal inference beyond reported design/results"
+  },
+  {
+    "candidateId": "dv-adult-therapy-33303427",
+    "pmid": "33303427",
+    "fields": [
+      "design",
+      "age",
+      "relevance",
+      "setting",
+      "intervention",
+      "comparator"
+    ],
+    "sourceURL": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7733186/fullTextXML",
+    "retrievedAt": "2026-10-30T08:21:43.644990+00:00",
+    "sourceAccess": "full-text",
+    "locator": "Methods s 2-1–s 2-5 andFindings s 3; Table 1",
+    "supported": "Shared cohort methods, allocation/masking, counselling uptake and limited population transfer.",
+    "extraction": "paraphrase; no causal inference beyond reported design/results"
+  },
+  {
+    "candidateId": "dv-adult-therapy-33303427",
+    "pmid": "33303427",
+    "fields": [
+      "quality.adverseFindings"
+    ],
+    "sourceURL": "https://pureportal.coventry.ac.uk/en/publications/sometimes-cathartic-sometimes-quite-raw-benefit-and-harm-in-an-in-2/",
+    "retrievedAt": "2026-10-30",
+    "sourceAccess": "abstract",
+    "locator": "Abstract paragraphs 1–5; bibliographical note",
+    "supported": "Same-trial qualitative feedback includes negative emotional reactions and retraumatization despite generally positive assessments; does not quantify treatment-caused excess harm.",
+    "extraction": "paraphrase; no causal inference beyond reported design/results"
+  },
+  {
+    "candidateId": "dv-adult-therapy-23598181",
+    "pmid": "23598181",
+    "fields": [
+      "design",
+      "age",
+      "relevance",
+      "setting",
+      "intervention",
+      "comparator"
+    ],
+    "sourceURL": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7733186/fullTextXML",
+    "retrievedAt": "2026-10-30T08:21:43.644990+00:00",
+    "sourceAccess": "full-text",
+    "locator": "Methods s 2-1–s 2-5 andFindings s 3; Table 1",
+    "supported": "Shared cohort methods, allocation/masking, counselling uptake and limited population transfer.",
+    "extraction": "paraphrase; no causal inference beyond reported design/results"
+  },
+  {
+    "candidateId": "dv-adult-therapy-23598181",
+    "pmid": "23598181",
+    "fields": [
+      "quality.adverseFindings"
+    ],
+    "sourceURL": "https://pureportal.coventry.ac.uk/en/publications/sometimes-cathartic-sometimes-quite-raw-benefit-and-harm-in-an-in-2/",
+    "retrievedAt": "2026-10-30",
+    "sourceAccess": "abstract",
+    "locator": "Abstract paragraphs 1–5; bibliographical note",
+    "supported": "Same-trial qualitative feedback includes negative emotional reactions and retraumatization despite generally positive assessments; does not quantify treatment-caused excess harm.",
+    "extraction": "paraphrase; no causal inference beyond reported design/results"
+  },
+  {
+    "candidateId": "dv-adult-therapy-33303427",
+    "pmid": "33303427",
+    "fields": [
+      "sampleSize",
+      "outcomes",
+      "finding",
+      "quality.attrition"
+    ],
+    "sourceURL": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7733186/fullTextXML",
+    "retrievedAt": "2026-10-30T08:21:43.644990+00:00",
+    "sourceAccess": "full-text",
+    "locator": "s 3 Findings; Tables 2–4; s 4 Discussion",
+    "supported": "166 respondents, null 24-month comparisons, depression benefit not sustained, low uptake and cautious harm-benefit interpretation.",
+    "extraction": "paraphrase; no causal inference beyond reported design/results"
+  },
+  {
+    "candidateId": "dv-adult-therapy-23598181",
+    "pmid": "23598181",
+    "fields": [
+      "finding",
+      "outcomes",
+      "quality.attrition"
+    ],
+    "sourceURL": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7733186/fullTextXML",
+    "retrievedAt": "2026-10-30T08:21:43.644990+00:00",
+    "sourceAccess": "full-text",
+    "locator": "Original abstract already present in staged source record; corroborating 24-monthDiscussion s 4",
+    "supported": "Retain original primary-null/secondary-depression pattern. Later same-cohort report establishes lack of sustained depression advantage.",
+    "extraction": "paraphrase; no causal inference beyond reported design/results"
+  }
+]

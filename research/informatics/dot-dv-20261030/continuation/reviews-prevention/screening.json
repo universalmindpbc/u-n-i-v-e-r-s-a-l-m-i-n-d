@@ -1,0 +1,62 @@
+[
+  {
+    "title": "Emotional skills and health assessment in interventions for intimate partner violence perpetrators: A systematic review of randomized controlled trials.",
+    "doi": "10.1371/journal.pone.0328034",
+    "pmid": "40632759",
+    "screeningMethod": "source-inspected",
+    "decision": "assessed",
+    "reason": "Selected methods and results inspected; pending human review with explicit limitations.",
+    "sourceURL": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12240372/",
+    "studyFamilyId": "review:40632759"
+  },
+  {
+    "title": "The Effectiveness of Culturally Specific Male Domestic Violence Offender Intervention Programs on Behavior Changes and Mental Health: A Systematic Review.",
+    "doi": "10.3390/ijerph192215180",
+    "pmid": "36429899",
+    "screeningMethod": "source-inspected",
+    "decision": "assessed",
+    "reason": "Selected methods and results inspected; pending human review with explicit limitations.",
+    "sourceURL": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9690755/",
+    "studyFamilyId": "review:36429899"
+  },
+  {
+    "title": "Effectiveness of Father-Focused Interventions to Prevent or Reduce Intimate Partner Violence During Pregnancy and Early Parenthood: A Systematic Review.",
+    "doi": "10.1177/15248380241277270",
+    "pmid": "39302822",
+    "screeningMethod": "source-inspected",
+    "decision": "assessed",
+    "reason": "Selected methods and results inspected; pending human review with explicit limitations.",
+    "sourceURL": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11558938/",
+    "studyFamilyId": "review:39302822"
+  },
+  {
+    "title": "Technology-based and digital interventions for intimate partner violence: A systematic review and meta-analysis.",
+    "doi": "10.1002/cl2.1271",
+    "pmid": "36909881",
+    "screeningMethod": "source-inspected",
+    "decision": "assessed",
+    "reason": "Selected methods and results inspected; source reporting conflicts require clarification before approval.",
+    "sourceURL": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9419475/",
+    "studyFamilyId": "review:36909881"
+  },
+  {
+    "title": "Systematic Investigation of Meta-Analysis Data on Treatment Effectiveness for Physical, Psychological, and Sexual Intimate Partner Violence Perpetration.",
+    "doi": "10.5093/pi2023a6",
+    "pmid": "37383644",
+    "screeningMethod": "source-inspected",
+    "decision": "assessed",
+    "reason": "Selected methods and results inspected; pending human review with explicit limitations.",
+    "sourceURL": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10294456/",
+    "studyFamilyId": "review:31415863"
+  },
+  {
+    "title": "The promotion of well-being among children exposed to intimate partner violence: A systematic review of interventions.",
+    "doi": "10.1002/cl2.1049",
+    "pmid": "37131508",
+    "screeningMethod": "source-inspected",
+    "decision": "assessed",
+    "reason": "Selected methods and results inspected; pending human review with explicit limitations.",
+    "sourceURL": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8356495/",
+    "studyFamilyId": "review:37131508"
+  }
+]

@@ -1,0 +1,382 @@
+[
+  {
+    "id": "dv-children-35285428",
+    "pmid": "35285428",
+    "priorContentHash": "0012f3aaf0dbcd7982911886d1e004236c99ea66f943b487f0825d522264cc07",
+    "priorRevision": "r1-0012f3aaf0db",
+    "priorBatchRevision": "batch-8bd70e21e48d9a70",
+    "proposalStatus": "provisional-not-applied",
+    "sourceAccess": {
+      "level": "selected-methods",
+      "url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/B1A750E6EE2865948819845018AF7C9B/S0954579422000104a.pdf/div-class-title-eight-year-trajectories-of-behavior-problems-and-resilience-in-children-exposed-to-early-life-intimate-partner-violence-the-overlapping-and-distinct-effects-of-individual-factors-maternal-characteristics-and-early-intervention-div.pdf",
+      "retrievedAt": "2026-10-30T08:22:47.434942+00:00",
+      "location": "p853 Methods/Procedures; p854 Analytic plan; pp855–856 Results",
+      "identityVerified": true
+    },
+    "linkageStatus": "direct primary full text inspected",
+    "exactDeltas": [
+      {
+        "field": "design.randomizationEvidence",
+        "before": "Abstract identifies the original 120-dyad randomized trial; effective-dose comparison is per-protocol.",
+        "proposedAfter": "Methods describe alternating six-family blocks without a stochastic allocation mechanism; authors label this block randomization. Randomization remains unverified pending reconciliation.",
+        "reason": "Methods describe alternating six-family blocks without a stochastic allocation mechanism; authors label this block randomization. Randomization remains unverified pending reconciliation."
+      },
+      {
+        "field": "design.crosses",
+        "before": 1,
+        "proposedAfter": 0,
+        "reason": "Proposed provisional hold on verified-RCT cross pending reconciliation; not a claim that the authors made no random assignments."
+      },
+      {
+        "field": "design.crossRationale",
+        "before": "Randomized allocation is explicitly supported; double blinding is not established.",
+        "proposedAfter": "Trial randomization is not independently verified after conflicting methods detail; provisional no-cross display recommended pending reconciliation.",
+        "reason": "Methods describe alternating six-family blocks without a stochastic allocation mechanism; authors label this block randomization. Randomization remains unverified pending reconciliation."
+      },
+      {
+        "field": "studyDesignAssessment.isRandomizedControlledTrial",
+        "before": true,
+        "proposedAfter": null,
+        "reason": "Unknown pending reconciliation; do not set false as a definitive nonrandomized verdict."
+      },
+      {
+        "field": "studyDesignAssessment.category",
+        "before": "rct",
+        "proposedAfter": "randomization-unverified",
+        "reason": "Methods describe alternating six-family blocks without a stochastic allocation mechanism; authors label this block randomization. Randomization remains unverified pending reconciliation."
+      },
+      {
+        "field": "studyDesignAssessment.basis",
+        "before": "Abstract identifies the original 120-dyad randomized trial; effective-dose comparison is per-protocol.",
+        "proposedAfter": "Methods describe alternating six-family blocks without a stochastic allocation mechanism; authors label this block randomization. Randomization remains unverified pending reconciliation.",
+        "reason": "Methods describe alternating six-family blocks without a stochastic allocation mechanism; authors label this block randomization. Randomization remains unverified pending reconciliation."
+      },
+      {
+        "field": "paperTrustAssessment.randomizedControlledTrial",
+        "before": true,
+        "proposedAfter": null,
+        "reason": "Unverified allocation mechanism; propagate consistently if proposal accepted."
+      },
+      {
+        "field": "paperTrustAssessment.displayCrosses",
+        "before": 1,
+        "proposedAfter": 0,
+        "reason": "Mirror the proposed provisional design-cross hold."
+      },
+      {
+        "field": "paperTrustAssessment.basis",
+        "before": "Randomized allocation is explicitly supported; double blinding is not established.",
+        "proposedAfter": "Methods describe alternating six-family blocks without a stochastic allocation mechanism; authors label this block randomization. Randomization remains unverified pending reconciliation.",
+        "reason": "Methods describe alternating six-family blocks without a stochastic allocation mechanism; authors label this block randomization. Randomization remains unverified pending reconciliation."
+      },
+      {
+        "field": "sampleSize.analyzed",
+        "before": 68,
+        "proposedAfter": null,
+        "reason": "68 is the long-term visit attendance, not the whole longitudinal model denominator; avoid conflating the two."
+      },
+      {
+        "field": "sampleSize.description",
+        "before": "Reported cohort/enrollment: 120. Analyzed/interviewed: 68.",
+        "proposedAfter": "120 enrolled;71 attended 6–8 months and 68 attended 6–8 years (35 intervention,33 control). Longitudinal models used repeated observations; model-specific participant denominators not separately verified. Random allocation mechanism unresolved.",
+        "reason": "Methods pp852–855 distinguish enrollment and visit attendance from longitudinal analysis."
+      },
+      {
+        "field": "age.reportedRange",
+        "before": "Baseline 4–6 years; actual range at 6–8-year follow-up not established from abstract.",
+        "proposedAfter": "Baseline eligibility 4–6 years (mean 4.94,SD 0.85); long-term mean 12.46 (SD 1.77), actual follow-up range not reported in inspected methods.",
+        "reason": "Primary Methods/Participants, p853."
+      },
+      {
+        "field": "country",
+        "before": "Not established from accessed source.",
+        "proposedAfter": "United States and Canada",
+        "reason": "Primary Methods/Procedures, p853: Southeast Michigan and Ontario."
+      },
+      {
+        "field": "intervention.dose",
+        "before": "Early intervention; follow-ups 6–8 months and 6–8 years later.",
+        "proposedAfter": "10 group sessions over 5 weeks.",
+        "reason": "Primary Methods/Procedures, p853."
+      },
+      {
+        "field": "intervention.provider",
+        "before": "Not established from accessed source.",
+        "proposedAfter": "Graduate psychology/social-work leaders with advanced undergraduate co-leaders; weekly supervision by the developer/licensed clinical psychologist.",
+        "reason": "Primary Methods/Procedures, p853."
+      },
+      {
+        "field": "quality.attrition",
+        "before": "71/120 assessed at 6–8 months;68/120 at 6–8 years.",
+        "proposedAfter": "71/120 at 6–8 months and 68/120 at 6–8 years (57% retention); younger baseline age showed a marginal retention association (p=.051). Nine waitlist families crossed over, modeled as a treatment change.",
+        "reason": "Primary Analytic Plan p854 and Attrition Analyses p855."
+      },
+      {
+        "field": "quality.confounding",
+        "before": "Allocation, adherence, co-interventions and reporting limitations require consideration; see design and limitations.",
+        "proposedAfter": "Sequential allocation description, crossover and nonrandom attendance complicate causal inference. Long-term visit was added post-hoc; all outcomes here were caregiver-reported.",
+        "reason": "Primary Procedures p853 and Analytic Plan p854."
+      },
+      {
+        "field": "limitation",
+        "before": "Only 68/120 attended long-term follow-up. The positive per-protocol association does not override the null randomized ITT result.",
+        "proposedAfter": "Only 68/120 attended the long-term visit. Allocation is described as alternating six-family blocks without a verified stochastic mechanism. The reported ITT analysis models nine crossovers; strict original-assignment ITT is not established. Positive dose findings are post-hoc.",
+        "reason": "Primary methods conflict with unqualified RCT/ITT descriptions; preserve uncertainty."
+      },
+      {
+        "field": "finding",
+        "before": "Long-term ITT analyses did not show significant intervention effects. Per-protocol participation in eight sessions was associated with fewer internalizing problems.",
+        "proposedAfter": "No significant treatment-by-time effects were found for behavior or resilience. A post-hoc eight-session threshold was associated with less internalizing growth; in the fully adjusted model, the dose-by-time effect did not survive the multiple-testing correction.",
+        "reason": "Primary Results pp855–858 and Table5; distinguish the simpler dose analysis from the adjusted model."
+      },
+      {
+        "field": "outcomes",
+        "before": [
+          {
+            "name": "Long-term behavior and resilience",
+            "followUp": "Six to eight years",
+            "result": "No significant ITT intervention effects.",
+            "effectEstimate": null,
+            "uncertainty": "Not established from accessed source.",
+            "primaryStatus": "Not established from accessed source."
+          },
+          {
+            "name": "Internalizing among effective-dose recipients",
+            "followUp": "Longitudinal trajectory",
+            "result": "Lower symptoms in per-protocol analysis.",
+            "effectEstimate": null,
+            "uncertainty": "Nonrandom adherence and attrition may confound this association.",
+            "primaryStatus": "Not established from accessed source."
+          }
+        ],
+        "proposedAfter": [
+          {
+            "name": "Long-term behavior and resilience",
+            "followUp": "Six to eight years",
+            "result": "No significant ITT intervention effects.",
+            "effectEstimate": null,
+            "uncertainty": "Authors call the main analysis ITT, but nine crossovers were modeled as assignment changes; strict original-allocation ITT is not established.",
+            "primaryStatus": "Not established from accessed source."
+          },
+          {
+            "name": "Internalizing among effective-dose recipients",
+            "followUp": "Longitudinal trajectory",
+            "result": "Lower symptoms in per-protocol analysis.",
+            "effectEstimate": null,
+            "uncertainty": "Post-hoc nonrandom adherence comparison; adjusted dose-by-time result lost significance after Benjamini–Hochberg correction (Table5/p858).",
+            "primaryStatus": "Not established from accessed source."
+          }
+        ],
+        "reason": "Primary analytic plan and results qualify the existing abstract-only interpretation."
+      },
+      {
+        "field": "access.level",
+        "before": "abstract",
+        "proposedAfter": "selected-methods",
+        "reason": "Original publisher Methods/Results and selected Discussion inspected; no comprehensive harms/protocol review claimed."
+      },
+      {
+        "field": "access.sourceURLs",
+        "before": [
+          "https://pubmed.ncbi.nlm.nih.gov/35285428/",
+          "https://europepmc.org/article/MED/35285428"
+        ],
+        "proposedAfter": [
+          "https://pubmed.ncbi.nlm.nih.gov/35285428/",
+          "https://europepmc.org/article/MED/35285428",
+          "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/B1A750E6EE2865948819845018AF7C9B/S0954579422000104a.pdf/div-class-title-eight-year-trajectories-of-behavior-problems-and-resilience-in-children-exposed-to-early-life-intimate-partner-violence-the-overlapping-and-distinct-effects-of-individual-factors-maternal-characteristics-and-early-intervention-div.pdf"
+        ],
+        "reason": "Add verified primary publisher full text."
+      },
+      {
+        "field": "access.retrievedAt",
+        "before": "2026-10-30T07:25:30.543090+00:00",
+        "proposedAfter": "2026-10-30T 08:28:09.078317+00:00",
+        "reason": "Timestamp of deeper source assessment."
+      }
+    ],
+    "remainingUncertainty": [
+      "Whether an unreported stochastic block sequence or randomized starting order existed.",
+      "Original2015 allocation methods and explicit trial linkage require reconciliation.",
+      "No comprehensive protocol/registry or harms check yet."
+    ],
+    "dependentFieldsToRebuild": [
+      "paperTrustAssessment.score under repository scoring rules",
+      "studyDesignAssessment.sources and reviewScope",
+      "paperTrustAssessment.sources and reviewScope",
+      "evidence mirrors",
+      "immutable contentHash/revision and batch metrics only if proposal accepted"
+    ]
+  },
+  {
+    "id": "dv-children-25596929",
+    "pmid": "25596929",
+    "priorContentHash": "1bd8415667aaf772fb5aee0612fc1b35f3b40d1b092e0dc54bfe2971e54e7664",
+    "priorRevision": "r1-1bd8415667aa",
+    "priorBatchRevision": "batch-8bd70e21e48d9a70",
+    "proposalStatus": "provisional-not-applied",
+    "sourceAccess": {
+      "level": "abstract",
+      "url": "https://link.springer.com/article/10.1007/s10578-015-0532-4",
+      "retrievedAt": "2026-10-30T08:28:09.078317+00:00",
+      "identityVerified": true,
+      "location": "Publisher abstract; full methods require subscription",
+      "additionalDirectMaterial": {
+        "type": "Publicly displayed CONSORT figure",
+        "url": "https://media.springernature.com/m312/springer-static/image/art%3A10.1007%2Fs10578-015-0532-4/MediaObjects/10578_2015_532_Fig1_HTML.gif",
+        "location": "Figure1",
+        "retrievedAt": "2026-10-30T08:28:09.078317+00:00"
+      }
+    },
+    "linkageStatus": "same family supported; original2015 full methods not independently accessed",
+    "exactDeltas": [
+      {
+        "field": "design.randomizationEvidence",
+        "before": "Abstract explicitly reports random assignment of children to program or waitlist.",
+        "proposedAfter": "Provisional family-level concern only: linked follow-up PMID 35285428 describes alternating six-family blocks. Original 2015 full methods inaccessible; its own allocation mechanism not independently established.",
+        "reason": "Provisional family-level concern only: linked follow-up PMID35285428 describes alternating six-family blocks. Original2015 full methods inaccessible; its own allocation mechanism not independently established."
+      },
+      {
+        "field": "design.crosses",
+        "before": 1,
+        "proposedAfter": 0,
+        "reason": "Proposed provisional hold on verified-RCT cross pending reconciliation; not a claim that the authors made no random assignments."
+      },
+      {
+        "field": "design.crossRationale",
+        "before": "Randomized allocation is explicitly supported; double blinding is not established.",
+        "proposedAfter": "Trial randomization is not independently verified after conflicting methods detail; provisional no-cross display recommended pending reconciliation.",
+        "reason": "Provisional family-level concern only: linked follow-up PMID35285428 describes alternating six-family blocks. Original2015 full methods inaccessible; its own allocation mechanism not independently established."
+      },
+      {
+        "field": "studyDesignAssessment.isRandomizedControlledTrial",
+        "before": true,
+        "proposedAfter": null,
+        "reason": "Unknown pending reconciliation; do not set false as a definitive nonrandomized verdict."
+      },
+      {
+        "field": "studyDesignAssessment.category",
+        "before": "rct",
+        "proposedAfter": "randomization-unverified",
+        "reason": "Provisional family-level concern only: linked follow-up PMID35285428 describes alternating six-family blocks. Original2015 full methods inaccessible; its own allocation mechanism not independently established."
+      },
+      {
+        "field": "studyDesignAssessment.basis",
+        "before": "Abstract explicitly reports random assignment of children to program or waitlist.",
+        "proposedAfter": "Provisional family-level concern only: linked follow-up PMID 35285428 describes alternating six-family blocks. Original 2015 full methods inaccessible; its own allocation mechanism not independently established.",
+        "reason": "Provisional family-level concern only: linked follow-up PMID35285428 describes alternating six-family blocks. Original2015 full methods inaccessible; its own allocation mechanism not independently established."
+      },
+      {
+        "field": "paperTrustAssessment.randomizedControlledTrial",
+        "before": true,
+        "proposedAfter": null,
+        "reason": "Unverified allocation mechanism; propagate consistently if proposal accepted."
+      },
+      {
+        "field": "paperTrustAssessment.displayCrosses",
+        "before": 1,
+        "proposedAfter": 0,
+        "reason": "Mirror the proposed provisional design-cross hold."
+      },
+      {
+        "field": "paperTrustAssessment.basis",
+        "before": "Randomized allocation is explicitly supported; double blinding is not established.",
+        "proposedAfter": "Provisional family-level concern only: linked follow-up PMID 35285428 describes alternating six-family blocks. Original 2015 full methods inaccessible; its own allocation mechanism not independently established.",
+        "reason": "Provisional family-level concern only: linked follow-up PMID35285428 describes alternating six-family blocks. Original2015 full methods inaccessible; its own allocation mechanism not independently established."
+      },
+      {
+        "field": "sampleSize.description",
+        "before": "Reported cohort/enrollment: 120. Analysis denominator not established from abstract.",
+        "proposedAfter": "Publisher Figure 1:120 allocated (58 intervention,62 comparison);50/49 analyzed at Time 2 and 36/35 at Time 3. These are visit-specific counts; full ITT model denominator remains unverified.",
+        "reason": "Directly inspected the openly displayed original2015 CONSORT figure; full article methods remain inaccessible."
+      },
+      {
+        "field": "quality.attrition",
+        "before": "Not established from accessed source.",
+        "proposedAfter": "Figure 1:8 intervention families did not receive treatment; Time 2 lost 8 intervention,9 comparison, plus 4 comparison discontinued participation; Time 3 lost 14 in each group. Analysis counts:50/49 then 36/35.",
+        "reason": "Direct original2015 public participant-flow figure, not inferred from the later report."
+      }
+    ],
+    "remainingUncertainty": [
+      "Original2015 allocation method not read: related follow-up describes sequential blocks, so concern remains provisional.",
+      "Public figure provides visit counts but not missing-data method or the original ITT analytic denominator.",
+      "No verified masking, harms ascertainment or stochastic allocation mechanism in directly accessed original2015 material."
+    ],
+    "dependentFieldsToRebuild": [
+      "paperTrustAssessment.score under repository scoring rules",
+      "studyDesignAssessment.sources and reviewScope",
+      "paperTrustAssessment.sources and reviewScope",
+      "evidence mirrors",
+      "immutable contentHash/revision and batch metrics only if proposal accepted"
+    ],
+    "relatedFamilyEvidence": [
+      {
+        "level": "selected-methods",
+        "url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/B1A750E6EE2865948819845018AF7C9B/S0954579422000104a.pdf/div-class-title-eight-year-trajectories-of-behavior-problems-and-resilience-in-children-exposed-to-early-life-intimate-partner-violence-the-overlapping-and-distinct-effects-of-individual-factors-maternal-characteristics-and-early-intervention-div.pdf",
+        "retrievedAt": "2026-10-30T08:22:47.434942+00:00",
+        "location": "p853 Methods/Procedures; p854 Analytic plan; pp855–856 Results",
+        "identityVerified": true
+      }
+    ]
+  },
+  {
+    "id": "dv-children-16865033",
+    "pmid": "16865033",
+    "priorContentHash": "4afffc6d70e0e93668bfbc1a275784aa00236d6defaf8917321dbab5ff7994c3",
+    "priorRevision": "r1-4afffc6d70e0",
+    "priorBatchRevision": "batch-8bd70e21e48d9a70",
+    "proposalStatus": "provisional-not-applied",
+    "sourceAccess": {
+      "level": "abstract",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/16865033/",
+      "retrievedAt": "2026-10-30T08:28:09.078317+00:00",
+      "location": "Original abstract; publisher PDF returned403",
+      "identityVerified": true
+    },
+    "relatedFamilyEvidence": [
+      {
+        "level": "selected-methods",
+        "url": "https://childparentpsychotherapy.com/wp-content/uploads/2016/11/Ghosh-Ippen-Harris-Van-Horn-Lieberman-treatment-help-highest-risk.pdf",
+        "retrievedAt": "2026-10-30T08:28:09.078317+00:00",
+        "location": "2011 primary reanalysis pp505–508",
+        "identityVerified": true
+      },
+      {
+        "level": "program-author-summary",
+        "url": "https://childparentpsychotherapy.com/wp-content/uploads/2018/01/CPP-research-fact-sheet-Jan-2018.pdf",
+        "retrievedAt": "2026-10-30T08:28:09.078317+00:00",
+        "location": "2018 research fact sheet pp2–3",
+        "identityVerified": true
+      }
+    ],
+    "exactDeltas": [
+      {
+        "field": "sampleSize.description",
+        "before": "Reported cohort/enrollment: 75. Analysis denominator not established from abstract.",
+        "proposedAfter": "Original cohort 75; original 2006 analysis denominator unresolved. Linked 2011 reanalysis reports 27 CPP+25 comparison follow-ups; program-author 2018 summary lists 50 children with additional comparator exclusions. Do not treat these as interchangeable denominators.",
+        "reason": "Primary reanalysis p508 and program-author summary p3 expose different inclusion sets; original2006 methods not available."
+      },
+      {
+        "field": "quality.attrition",
+        "before": "Not established from accessed source.",
+        "proposedAfter": "Linked 2011 reanalysis:2 CPP and 4 comparison additional losses after posttest;7 CPP dyads predating addition of follow-up were not assessed. Program-author 2018 summary also notes 2 comparator data exclusions. Original 2006 flow remains unverified.",
+        "reason": "Source scopes are explicit; no single reconciled final denominator is inferred."
+      },
+      {
+        "field": "assessmentNotes",
+        "before": "Source-supported assessment with visible access limits; not a completed human approval or formal risk-of-bias instrument. This report does not represent an additional independent study when its family ID is shared.",
+        "proposedAfter": "Source-supported assessment with visible access limits; not a completed human approval or formal risk-of-bias instrument. This report does not represent an additional independent study when its family ID is shared. Linked 2011 primary reanalysis explicitly identifies the 2005/2006 data; supports shared family ID. Follow-up interview availability was limited; this is not evidence of sustained PTSD diagnostic remission. Original 2006 full methods remain inaccessible.",
+        "reason": "Primary reanalysis pp505–507 and limitations p511."
+      }
+    ],
+    "remainingUncertainty": [
+      "Original2006 full article remains inaccessible; related reanalysis reports52 follow-up dyads, while program-author factsheet lists50.",
+      "Original2005 narrative denominator inconsistency remains unresolved; do not pool incompatible numbers.",
+      "No new masking or treatment-attributable harms conclusion established."
+    ],
+    "dependentFieldsToRebuild": [
+      "quality/evidence mirrors if accepted",
+      "contentHash/revision only if accepted"
+    ]
+  }
+]

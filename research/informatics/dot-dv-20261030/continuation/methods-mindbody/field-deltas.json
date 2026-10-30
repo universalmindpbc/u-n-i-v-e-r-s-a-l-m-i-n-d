@@ -1,0 +1,1814 @@
+[
+  {
+    "originalID": "dv-mindbody-32969703",
+    "priorContentHash": "0579b45ae10f55be92d4a41656580be98ac3d1156fa6fee5828dd3200424d288",
+    "field": "age",
+    "oldValue": {
+      "groups": [
+        "adult"
+      ],
+      "reportedRange": "not established from accessed source",
+      "youthScope": "Adult survivor evidence; no child treatment inference."
+    },
+    "proposedValue": {
+      "groups": [
+        "adult"
+      ],
+      "reportedRange": "18–64; mean 42.69 (SD 13.11).",
+      "youthScope": "No child treatment inference."
+    },
+    "sourceIds": [
+      "gallegos-manuscript",
+      "gallegos-registry"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-32969703",
+    "priorContentHash": "0579b45ae10f55be92d4a41656580be98ac3d1156fa6fee5828dd3200424d288",
+    "field": "country",
+    "oldValue": "not established from accessed source",
+    "proposedValue": "United States",
+    "sourceIds": [
+      "gallegos-manuscript",
+      "gallegos-registry"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-32969703",
+    "priorContentHash": "0579b45ae10f55be92d4a41656580be98ac3d1156fa6fee5828dd3200424d288",
+    "field": "setting",
+    "oldValue": "not established from accessed source",
+    "proposedValue": "University of Rochester study recruiting through family court and community domestic violence organizations",
+    "sourceIds": [
+      "gallegos-manuscript",
+      "gallegos-registry"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-32969703",
+    "priorContentHash": "0579b45ae10f55be92d4a41656580be98ac3d1156fa6fee5828dd3200424d288",
+    "field": "sampleSize",
+    "oldValue": {
+      "randomized": 29,
+      "analyzed": null,
+      "description": "19 MBSR; 10 active control."
+    },
+    "proposedValue": {
+      "randomized": 29,
+      "analyzed": null,
+      "description": "19 MBSR/10 control. Available assessments16 at 8 weeks and 17 at 12 weeks; physiological/cognitive analyses used smaller subsets. Registry reports35 actual enrolled, unreconciled."
+    },
+    "sourceIds": [
+      "gallegos-manuscript",
+      "gallegos-registry"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-32969703",
+    "priorContentHash": "0579b45ae10f55be92d4a41656580be98ac3d1156fa6fee5828dd3200424d288",
+    "field": "relevance",
+    "oldValue": {
+      "relation": "direct",
+      "population": "Adult women survivors",
+      "exposureEvidence": "Explicit intimate partner or domestic violence in eligibility or report.",
+      "rationale": "Survivor-focused mind–body intervention.",
+      "transferLimit": "Do not extrapolate to children, perpetrators, or prevention of violence."
+    },
+    "proposedValue": {
+      "relation": "direct",
+      "population": "Adult women survivors",
+      "exposureEvidence": "Lifetime physical/sexual assault endorsed on LEC-5 and explicitly clarified as perpetrated by an intimate partner.",
+      "rationale": "Survivor-focused mind–body intervention.",
+      "transferLimit": "IPV exposure required, but IPV need not be the index event for current PTSD symptoms."
+    },
+    "sourceIds": [
+      "gallegos-manuscript",
+      "gallegos-registry"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-32969703",
+    "priorContentHash": "0579b45ae10f55be92d4a41656580be98ac3d1156fa6fee5828dd3200424d288",
+    "field": "intervention",
+    "oldValue": {
+      "description": "Group MBSR",
+      "dose": "Eight weeks",
+      "provider": "not established from accessed source"
+    },
+    "proposedValue": {
+      "description": "Standard MBSR with trauma-responsive adaptations",
+      "dose": "Eight weekly 120-minute group sessions; results also mention intensive retreat attendance without a clear retreat dose.",
+      "provider": "Certified MBSR instructor with additional trauma-informed mindfulness training"
+    },
+    "sourceIds": [
+      "gallegos-manuscript",
+      "gallegos-registry"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-32969703",
+    "priorContentHash": "0579b45ae10f55be92d4a41656580be98ac3d1156fa6fee5828dd3200424d288",
+    "field": "comparator",
+    "oldValue": "Active control",
+    "proposedValue": "Health-education manual plus eight weekly individual15-minute check-in calls; no specialized breathing, movement or meditation teaching.",
+    "sourceIds": [
+      "gallegos-manuscript",
+      "gallegos-registry"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-32969703",
+    "priorContentHash": "0579b45ae10f55be92d4a41656580be98ac3d1156fa6fee5828dd3200424d288",
+    "field": "outcomes",
+    "oldValue": [
+      {
+        "name": "Primary outcomes",
+        "result": "Between-group differences were nonsignificant.",
+        "followUp": "8 and 12 weeks",
+        "effectEstimate": null,
+        "uncertainty": "not established from accessed source",
+        "primaryStatus": "not established from accessed source"
+      },
+      {
+        "name": "PTS and emotion regulation",
+        "result": "MBSR within-group improvement; cannot establish comparative superiority.",
+        "followUp": "8 and 12 weeks",
+        "effectEstimate": null,
+        "uncertainty": "not established from accessed source",
+        "primaryStatus": "not established from accessed source"
+      }
+    ],
+    "proposedValue": [
+      {
+        "name": "PTSD symptoms (PCL-5)",
+        "result": "No statistically significant between-group effect according to the manuscript narrative and abstract. Within-MBSR improvement does not establish superiority.",
+        "followUp": "12 weeks (registry endpoint); manuscript also assessed 8 weeks",
+        "effectEstimate": "Within-MBSR Cohen f=.56; not a between-group effect size.",
+        "uncertainty": "The manuscript calls between-group effects nonsignificant but prints contradictory p<.05; no corrected comparative p-value is inferred.",
+        "primaryStatus": "primary in registry; retrospectively registered",
+        "classificationSource": "https://clinicaltrials.gov/api/v2/studies/NCT03484390",
+        "classificationNote": "Classification follows the retained official registry, first posted 2018-03-30 after study start 2016-08-15; this is retrospective registration, not verified prospective prespecification."
+      },
+      {
+        "name": "Emotion dysregulation (DERS)",
+        "result": "No statistically significant between-group effect according to the manuscript narrative and abstract. Within-MBSR improvement does not establish superiority.",
+        "followUp": "12 weeks (registry endpoint); manuscript also assessed 8 weeks",
+        "effectEstimate": "Within-MBSR Cohen f=.81; not a between-group effect size.",
+        "uncertainty": "The manuscript calls between-group effects nonsignificant but prints contradictory p<.05; no corrected comparative p-value is inferred.",
+        "primaryStatus": "secondary in registry; retrospectively registered",
+        "classificationSource": "https://clinicaltrials.gov/api/v2/studies/NCT03484390",
+        "classificationNote": "Classification follows the retained official registry, first posted 2018-03-30 after study start 2016-08-15; this is retrospective registration, not verified prospective prespecification."
+      },
+      {
+        "name": "Heart-rate variability (HRV/RMSSD)",
+        "result": "Reported within-group changes were not statistically significant; no comparative efficacy is established.",
+        "followUp": "12 weeks (registry endpoint); manuscript also assessed 8 weeks",
+        "effectEstimate": null,
+        "uncertainty": "Very small outcome-specific samples and substantial missingness.",
+        "primaryStatus": "secondary in registry; retrospectively registered",
+        "classificationSource": "https://clinicaltrials.gov/api/v2/studies/NCT03484390",
+        "classificationNote": "Classification follows the retained official registry, first posted 2018-03-30 after study start 2016-08-15; this is retrospective registration, not verified prospective prespecification."
+      },
+      {
+        "name": "Attention (Useful Field of View Test; UFOV)",
+        "result": "Reported divided- and selective-attention changes were not statistically significant; no comparative efficacy is established.",
+        "followUp": "12 weeks (registry endpoint); manuscript also assessed 8 weeks",
+        "effectEstimate": null,
+        "uncertainty": "Very small outcome-specific samples and substantial missingness.",
+        "primaryStatus": "secondary in registry; retrospectively registered",
+        "classificationSource": "https://clinicaltrials.gov/api/v2/studies/NCT03484390",
+        "classificationNote": "Classification follows the retained official registry, first posted 2018-03-30 after study start 2016-08-15; this is retrospective registration, not verified prospective prespecification."
+      },
+      {
+        "name": "Mindfulness (Five-Facet Mindfulness Questionnaire; FFMQ)",
+        "result": "Registered secondary outcome; no FFMQ results located in the accessed manuscript.",
+        "followUp": "12 weeks (registry endpoint); manuscript also assessed 8 weeks",
+        "effectEstimate": null,
+        "uncertainty": "No FFMQ or Five-Facet mention located outside manuscript references; no effect estimate or result inferred.",
+        "primaryStatus": "secondary in registry; retrospectively registered",
+        "classificationSource": "https://clinicaltrials.gov/api/v2/studies/NCT03484390",
+        "classificationNote": "Classification follows the retained official registry, first posted 2018-03-30 after study start 2016-08-15; this is retrospective registration, not verified prospective prespecification."
+      }
+    ],
+    "sourceIds": [
+      "gallegos-manuscript",
+      "gallegos-registry"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-32969703",
+    "priorContentHash": "0579b45ae10f55be92d4a41656580be98ac3d1156fa6fee5828dd3200424d288",
+    "field": "finding",
+    "oldValue": "A null comparative pilot despite favourable within-group changes.",
+    "proposedValue": "Comparative efficacy remains unproven; fuller methods reveal substantial differential follow-up loss and unequal intervention contact.",
+    "sourceIds": [
+      "gallegos-manuscript",
+      "gallegos-registry"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-32969703",
+    "priorContentHash": "0579b45ae10f55be92d4a41656580be98ac3d1156fa6fee5828dd3200424d288",
+    "field": "limitation",
+    "oldValue": "Small, unequal allocation; abstract-only appraisal.",
+    "proposedValue": "Small pilot, differential missingness, unblinded assessment, unmatched comparator, reporting inconsistencies and retrospective registration.",
+    "sourceIds": [
+      "gallegos-manuscript",
+      "gallegos-registry"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-32969703",
+    "priorContentHash": "0579b45ae10f55be92d4a41656580be98ac3d1156fa6fee5828dd3200424d288",
+    "field": "design",
+    "oldValue": {
+      "type": "Pilot RCT",
+      "randomizationEvidence": "Abstract specifies 29 participants randomized to MBSR or active control.",
+      "masking": {
+        "participants": "not established from accessed source",
+        "providers": "not established from accessed source",
+        "assessors": "not established from accessed source",
+        "analysts": "not established from accessed source"
+      },
+      "crosses": 1,
+      "crossRationale": "Random assignment to comparison groups is explicitly described; double blinding is not verified."
+    },
+    "proposedValue": {
+      "type": "Pilot RCT",
+      "randomizationEvidence": "After consent and baseline, PCL-5 strata were split at 55; allocation used a prespecified order generated by random-number generator. Concealment not reported.",
+      "masking": {
+        "participants": "not established from accessed source",
+        "providers": "not established from accessed source",
+        "assessors": "not blinded; explicitly acknowledged in limitations",
+        "analysts": "not established from accessed source"
+      },
+      "crosses": 1,
+      "crossRationale": "Randomization verified in methods. Assessors were not blinded; double blinding is not supported. One cross remains."
+    },
+    "sourceIds": [
+      "gallegos-manuscript",
+      "gallegos-registry"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-32969703",
+    "priorContentHash": "0579b45ae10f55be92d4a41656580be98ac3d1156fa6fee5828dd3200424d288",
+    "field": "quality",
+    "oldValue": {
+      "riskOfBias": "Precision and complete reporting limited by small sample and abstract access.",
+      "attrition": "not established from accessed source",
+      "confounding": "not established from accessed source",
+      "adverseFindings": "Adverse-event reporting not established; absence of reporting is not evidence of safety.",
+      "transferLimits": "Adult women; setting and delivery may limit transfer.",
+      "jadad": "not established"
+    },
+    "proposedValue": {
+      "riskOfBias": "High concern from differential missingness, unblinded assessors, unequal contact time/mode and exploratory analyses.",
+      "attrition": "At8 weeks:7/19 MBSR and 9/10 control; at 12 weeks:8/19 and 9/10. Modified intention-to-treat included available assessments; no complete randomized-denominator estimate established.",
+      "confounding": "Randomized design, but120-minute group sessions versus 15-minute individual phone calls cannot isolate mindfulness-specific effects.",
+      "adverseFindings": "No systematic adverse-event totals located. Manuscript anticipates distress or dysregulation during body scan and describes flexible anchoring/adaptations; lack of counts cannot establish safety.",
+      "transferLimits": "English-speaking women18–64 with lifetime partner assault and elevated PTSD symptoms; exclusions include active suicidality, recent dependence and major psychiatric/cardiovascular conditions.",
+      "jadad": "not established"
+    },
+    "sourceIds": [
+      "gallegos-manuscript",
+      "gallegos-registry"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-32969703",
+    "priorContentHash": "0579b45ae10f55be92d4a41656580be98ac3d1156fa6fee5828dd3200424d288",
+    "field": "access",
+    "oldValue": {
+      "level": "abstract",
+      "sourceURLs": [
+        "https://pubmed.ncbi.nlm.nih.gov/32969703/"
+      ],
+      "retrievedAt": "2026-10-30T07:30:54.246430+00:00"
+    },
+    "proposedValue": {
+      "level": "full-text",
+      "sourceURLs": [
+        "https://pubmed.ncbi.nlm.nih.gov/32969703/",
+        "https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_json/PMC8052636/unicode",
+        "https://clinicaltrials.gov/api/v2/studies/NCT03484390"
+      ],
+      "retrievedAt": "2026-10-30T08:28:43.779847+00:00"
+    },
+    "sourceIds": [
+      "gallegos-manuscript",
+      "gallegos-registry"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-32969703",
+    "priorContentHash": "0579b45ae10f55be92d4a41656580be98ac3d1156fa6fee5828dd3200424d288",
+    "field": "sources",
+    "oldValue": [
+      {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32969703/",
+        "type": "primary publication or PubMed record",
+        "retrievedAt": "2026-10-30T07:30:54.246430+00:00",
+        "identityVerified": true,
+        "notes": "Bibliographic identity and stated extraction checked."
+      }
+    ],
+    "proposedValue": [
+      {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32969703/",
+        "type": "primary publication or PubMed record",
+        "retrievedAt": "2026-10-30T07:30:54.246430+00:00",
+        "identityVerified": true,
+        "notes": "Bibliographic identity and stated extraction checked."
+      },
+      {
+        "url": "https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_json/PMC8052636/unicode",
+        "type": "NCBI PMC author manuscript through public BioC API",
+        "retrievedAt": "2026-10-30T08:28:43.779847+00:00",
+        "identityVerified": true,
+        "notes": "full-text with machine-readable tables; CONSORT image not inspected; New public API route; manuscript DOI and PMID verified."
+      },
+      {
+        "url": "https://clinicaltrials.gov/api/v2/studies/NCT03484390",
+        "type": "ClinicalTrials.gov official registry API",
+        "retrievedAt": "2026-10-30T08:28:43.779847+00:00",
+        "identityVerified": true,
+        "notes": "complete returned registry record; No results posted; use publication for results."
+      }
+    ],
+    "sourceIds": [
+      "gallegos-manuscript",
+      "gallegos-registry"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-32969703",
+    "priorContentHash": "0579b45ae10f55be92d4a41656580be98ac3d1156fa6fee5828dd3200424d288",
+    "field": "assessmentNotes",
+    "oldValue": [
+      "Primary null finding is retained prominently."
+    ],
+    "proposedValue": [
+      "Primary null finding is retained prominently.",
+      "Registry first posted 2018-03-30, after actual start 2016-08-15; final registry enrollment 35 differs from publication 29. No registry results posted.",
+      "Table2 provides7/19 and 8/19 MBSR follow-up versus 9/10 controls at each time. Satisfaction findings are limited to seven MBSR post-treatment respondents.",
+      "The manuscript labels comparative effects nonsignificant but prints contradictory p<.05. Preserve null conclusion and uncertainty; no invented corrected values.",
+      "No new enrolled participants or study family added.",
+      "Outcome hierarchy discrepancy: the manuscript Method/Design paragraph broadly describes emotion regulation, attention, physiological stress and PTS as primary outcomes. The retained official registry instead lists PCL-5 as the sole primary outcome at 12 weeks and DERS, HRV, UFOV and FFMQ as secondary at 12 weeks. Proposed primaryStatus labels follow the registry and explicitly retain this discrepancy.",
+      "The registration was first posted 2018-03-30 after actual study start 2016-08-15 and before recorded primary completion 2018-05-31. Registry outcome labels therefore do not establish prospective prespecification.",
+      "FFMQ appears among registry secondary outcomes, but no FFMQ result was found in the accessed manuscript; absence is recorded without inventing a result."
+    ],
+    "sourceIds": [
+      "gallegos-manuscript",
+      "gallegos-registry"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-32969703",
+    "priorContentHash": "0579b45ae10f55be92d4a41656580be98ac3d1156fa6fee5828dd3200424d288",
+    "field": "studyDesignAssessment",
+    "oldValue": {
+      "category": "rct",
+      "isRandomizedControlledTrial": true,
+      "basis": "Abstract specifies 29 participants randomized to MBSR or active control.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/32969703/"
+      ],
+      "reviewScope": "abstract"
+    },
+    "proposedValue": {
+      "category": "rct",
+      "isRandomizedControlledTrial": true,
+      "basis": "After consent and baseline, PCL-5 strata were split at 55; allocation used a prespecified order generated by random-number generator. Concealment not reported.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/32969703/",
+        "https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_json/PMC8052636/unicode",
+        "https://clinicaltrials.gov/api/v2/studies/NCT03484390"
+      ],
+      "reviewScope": "full-text"
+    },
+    "sourceIds": [
+      "gallegos-manuscript",
+      "gallegos-registry"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-32969703",
+    "priorContentHash": "0579b45ae10f55be92d4a41656580be98ac3d1156fa6fee5828dd3200424d288",
+    "field": "paperTrustAssessment",
+    "oldValue": {
+      "scope": "Paper",
+      "status": "assessed",
+      "score": 2,
+      "randomizedControlledTrial": true,
+      "peerReviewed": true,
+      "blinding": "not-confirmed",
+      "basis": "Random assignment to comparison groups is explicitly described; double blinding is not verified.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/32969703/"
+      ],
+      "reviewScope": "abstract",
+      "humanApproval": false,
+      "displayCrosses": 1,
+      "maskingRoles": {
+        "participants": "not established from accessed source",
+        "providers": "not established from accessed source",
+        "assessors": "not established from accessed source",
+        "analysts": "not established from accessed source"
+      }
+    },
+    "proposedValue": {
+      "scope": "Paper",
+      "status": "assessed",
+      "score": 2,
+      "randomizedControlledTrial": true,
+      "peerReviewed": true,
+      "blinding": "not-confirmed",
+      "basis": "Randomization verified in methods. Assessors were not blinded; double blinding is not supported. One cross remains.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/32969703/",
+        "https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_json/PMC8052636/unicode",
+        "https://clinicaltrials.gov/api/v2/studies/NCT03484390"
+      ],
+      "reviewScope": "full-text",
+      "humanApproval": false,
+      "displayCrosses": 1,
+      "maskingRoles": {
+        "participants": "not established from accessed source",
+        "providers": "not established from accessed source",
+        "assessors": "not blinded; explicitly acknowledged in limitations",
+        "analysts": "not established from accessed source"
+      }
+    },
+    "sourceIds": [
+      "gallegos-manuscript",
+      "gallegos-registry"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-32969703",
+    "priorContentHash": "0579b45ae10f55be92d4a41656580be98ac3d1156fa6fee5828dd3200424d288",
+    "field": "evidence",
+    "oldValue": {
+      "population": {
+        "relation": "direct",
+        "population": "Adult women survivors",
+        "exposureEvidence": "Explicit intimate partner or domestic violence in eligibility or report.",
+        "rationale": "Survivor-focused mind–body intervention.",
+        "transferLimit": "Do not extrapolate to children, perpetrators, or prevention of violence."
+      },
+      "intervention": {
+        "description": "Group MBSR",
+        "dose": "Eight weeks",
+        "provider": "not established from accessed source"
+      },
+      "comparator": "Active control",
+      "outcomes": [
+        {
+          "name": "Primary outcomes",
+          "result": "Between-group differences were nonsignificant.",
+          "followUp": "8 and 12 weeks",
+          "effectEstimate": null,
+          "uncertainty": "not established from accessed source",
+          "primaryStatus": "not established from accessed source"
+        },
+        {
+          "name": "PTS and emotion regulation",
+          "result": "MBSR within-group improvement; cannot establish comparative superiority.",
+          "followUp": "8 and 12 weeks",
+          "effectEstimate": null,
+          "uncertainty": "not established from accessed source",
+          "primaryStatus": "not established from accessed source"
+        }
+      ],
+      "access": {
+        "level": "abstract",
+        "sourceURLs": [
+          "https://pubmed.ncbi.nlm.nih.gov/32969703/"
+        ],
+        "retrievedAt": "2026-10-30T07:30:54.246430+00:00"
+      }
+    },
+    "proposedValue": {
+      "population": {
+        "relation": "direct",
+        "population": "Adult women survivors",
+        "exposureEvidence": "Lifetime physical/sexual assault endorsed on LEC-5 and explicitly clarified as perpetrated by an intimate partner.",
+        "rationale": "Survivor-focused mind–body intervention.",
+        "transferLimit": "IPV exposure required, but IPV need not be the index event for current PTSD symptoms."
+      },
+      "intervention": {
+        "description": "Standard MBSR with trauma-responsive adaptations",
+        "dose": "Eight weekly 120-minute group sessions; results also mention intensive retreat attendance without a clear retreat dose.",
+        "provider": "Certified MBSR instructor with additional trauma-informed mindfulness training"
+      },
+      "comparator": "Health-education manual plus eight weekly individual15-minute check-in calls; no specialized breathing, movement or meditation teaching.",
+      "outcomes": [
+        {
+          "name": "PTSD symptoms (PCL-5)",
+          "result": "No statistically significant between-group effect according to the manuscript narrative and abstract. Within-MBSR improvement does not establish superiority.",
+          "followUp": "12 weeks (registry endpoint); manuscript also assessed 8 weeks",
+          "effectEstimate": "Within-MBSR Cohen f=.56; not a between-group effect size.",
+          "uncertainty": "The manuscript calls between-group effects nonsignificant but prints contradictory p<.05; no corrected comparative p-value is inferred.",
+          "primaryStatus": "primary in registry; retrospectively registered",
+          "classificationSource": "https://clinicaltrials.gov/api/v2/studies/NCT03484390",
+          "classificationNote": "Classification follows the retained official registry, first posted 2018-03-30 after study start 2016-08-15; this is retrospective registration, not verified prospective prespecification."
+        },
+        {
+          "name": "Emotion dysregulation (DERS)",
+          "result": "No statistically significant between-group effect according to the manuscript narrative and abstract. Within-MBSR improvement does not establish superiority.",
+          "followUp": "12 weeks (registry endpoint); manuscript also assessed 8 weeks",
+          "effectEstimate": "Within-MBSR Cohen f=.81; not a between-group effect size.",
+          "uncertainty": "The manuscript calls between-group effects nonsignificant but prints contradictory p<.05; no corrected comparative p-value is inferred.",
+          "primaryStatus": "secondary in registry; retrospectively registered",
+          "classificationSource": "https://clinicaltrials.gov/api/v2/studies/NCT03484390",
+          "classificationNote": "Classification follows the retained official registry, first posted 2018-03-30 after study start 2016-08-15; this is retrospective registration, not verified prospective prespecification."
+        },
+        {
+          "name": "Heart-rate variability (HRV/RMSSD)",
+          "result": "Reported within-group changes were not statistically significant; no comparative efficacy is established.",
+          "followUp": "12 weeks (registry endpoint); manuscript also assessed 8 weeks",
+          "effectEstimate": null,
+          "uncertainty": "Very small outcome-specific samples and substantial missingness.",
+          "primaryStatus": "secondary in registry; retrospectively registered",
+          "classificationSource": "https://clinicaltrials.gov/api/v2/studies/NCT03484390",
+          "classificationNote": "Classification follows the retained official registry, first posted 2018-03-30 after study start 2016-08-15; this is retrospective registration, not verified prospective prespecification."
+        },
+        {
+          "name": "Attention (Useful Field of View Test; UFOV)",
+          "result": "Reported divided- and selective-attention changes were not statistically significant; no comparative efficacy is established.",
+          "followUp": "12 weeks (registry endpoint); manuscript also assessed 8 weeks",
+          "effectEstimate": null,
+          "uncertainty": "Very small outcome-specific samples and substantial missingness.",
+          "primaryStatus": "secondary in registry; retrospectively registered",
+          "classificationSource": "https://clinicaltrials.gov/api/v2/studies/NCT03484390",
+          "classificationNote": "Classification follows the retained official registry, first posted 2018-03-30 after study start 2016-08-15; this is retrospective registration, not verified prospective prespecification."
+        },
+        {
+          "name": "Mindfulness (Five-Facet Mindfulness Questionnaire; FFMQ)",
+          "result": "Registered secondary outcome; no FFMQ results located in the accessed manuscript.",
+          "followUp": "12 weeks (registry endpoint); manuscript also assessed 8 weeks",
+          "effectEstimate": null,
+          "uncertainty": "No FFMQ or Five-Facet mention located outside manuscript references; no effect estimate or result inferred.",
+          "primaryStatus": "secondary in registry; retrospectively registered",
+          "classificationSource": "https://clinicaltrials.gov/api/v2/studies/NCT03484390",
+          "classificationNote": "Classification follows the retained official registry, first posted 2018-03-30 after study start 2016-08-15; this is retrospective registration, not verified prospective prespecification."
+        }
+      ],
+      "access": {
+        "level": "full-text",
+        "sourceURLs": [
+          "https://pubmed.ncbi.nlm.nih.gov/32969703/",
+          "https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_json/PMC8052636/unicode",
+          "https://clinicaltrials.gov/api/v2/studies/NCT03484390"
+        ],
+        "retrievedAt": "2026-10-30T08:28:43.779847+00:00"
+      }
+    },
+    "sourceIds": [
+      "gallegos-manuscript",
+      "gallegos-registry"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-88e29294631c",
+    "priorContentHash": "fbe58d773c55501117eba6706d58f024c09b15292880afa496d79df943b89ccb",
+    "field": "setting",
+    "oldValue": "not established from accessed source",
+    "proposedValue": "Campus-library testimony sessions and yoga studio near university; community recruitment",
+    "sourceIds": [
+      "franzblau-author-deposit"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-88e29294631c",
+    "priorContentHash": "fbe58d773c55501117eba6706d58f024c09b15292880afa496d79df943b89ccb",
+    "field": "sampleSize",
+    "oldValue": {
+      "randomized": 40,
+      "analyzed": null,
+      "description": "Four arms: breathing, testimony, combined, waiting control."
+    },
+    "proposedValue": {
+      "randomized": 40,
+      "analyzed": null,
+      "description": "Four arms; tables show one missing combined-arm baseline. Exact analysis denominator varies/unclear."
+    },
+    "sourceIds": [
+      "franzblau-author-deposit"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-88e29294631c",
+    "priorContentHash": "fbe58d773c55501117eba6706d58f024c09b15292880afa496d79df943b89ccb",
+    "field": "intervention",
+    "oldValue": {
+      "description": "Yogic breathing, alone or combined with abuse testimony",
+      "dose": "not established from accessed source",
+      "provider": "not established from accessed source"
+    },
+    "proposedValue": {
+      "description": "Yogic breathing, gentle poses and/or testimony to a trained same-race listener",
+      "dose": "Two consecutive intervention days; single-component sessions 45 minutes. Combined condition is described as45-minute testimony followed by 45-minute breathing, but its total-dose wording is ambiguous. Baseline day 1, post-test day 4.",
+      "provider": "Research assistants; breathing instructor trained by a registered yoga teacher"
+    },
+    "sourceIds": [
+      "franzblau-author-deposit"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-88e29294631c",
+    "priorContentHash": "fbe58d773c55501117eba6706d58f024c09b15292880afa496d79df943b89ccb",
+    "field": "comparator",
+    "oldValue": "Testimony-only and waiting controls",
+    "proposedValue": "Testimony-only, breathing-only and waiting-control conditions",
+    "sourceIds": [
+      "franzblau-author-deposit"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-88e29294631c",
+    "priorContentHash": "fbe58d773c55501117eba6706d58f024c09b15292880afa496d79df943b89ccb",
+    "field": "outcomes",
+    "oldValue": [
+      {
+        "name": "Self-efficacy",
+        "result": "Combined breathing/testimony showed the greatest reported improvement.",
+        "followUp": "post-intervention",
+        "effectEstimate": null,
+        "uncertainty": "not established from accessed source",
+        "primaryStatus": "not established from accessed source"
+      }
+    ],
+    "proposedValue": [
+      {
+        "name": "Self-efficacy factors",
+        "result": "Authors report comparative change-score differences for control, security and confidence; significant posthoc contrasts were combined treatment versus waiting control.",
+        "followUp": "Day4",
+        "effectEstimate": null,
+        "uncertainty": "Exact effect estimates withheld because extracted tables, reported contrasts and significance wording warrant facsimile verification.",
+        "primaryStatus": "No prospectively designated single primary endpoint verified"
+      },
+      {
+        "name": "Anxiety/relief and fear",
+        "result": "No overall between-condition effect reported for these two factors.",
+        "followUp": "Day4",
+        "effectEstimate": null,
+        "uncertainty": "Not evidence that all self-efficacy dimensions improved.",
+        "primaryStatus": "not established from accessed source"
+      }
+    ],
+    "sourceIds": [
+      "franzblau-author-deposit"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-88e29294631c",
+    "priorContentHash": "fbe58d773c55501117eba6706d58f024c09b15292880afa496d79df943b89ccb",
+    "field": "finding",
+    "oldValue": "Preliminary randomized evidence for combined breathing and testimony.",
+    "proposedValue": "Very short exploratory trial supports only cautious consideration of combined testimony/breathing; durable benefit and breathing-specific efficacy remain unproven.",
+    "sourceIds": [
+      "franzblau-author-deposit"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-88e29294631c",
+    "priorContentHash": "fbe58d773c55501117eba6706d58f024c09b15292880afa496d79df943b89ccb",
+    "field": "limitation",
+    "oldValue": "Only indexed primary abstract accessible; effect estimates, concealment and masking unresolved.",
+    "proposedValue": "Four-day endpoint; unclear allocation concealment/masking; one missing baseline; multiple tests and inconsistent reporting.",
+    "sourceIds": [
+      "franzblau-author-deposit"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-88e29294631c",
+    "priorContentHash": "fbe58d773c55501117eba6706d58f024c09b15292880afa496d79df943b89ccb",
+    "field": "design",
+    "oldValue": {
+      "type": "Four-arm randomized experiment",
+      "randomizationEvidence": "Primary journal abstract explicitly states40 women randomly assigned to four conditions.",
+      "masking": {
+        "participants": "not established from accessed source",
+        "providers": "not established from accessed source",
+        "assessors": "not established from accessed source",
+        "analysts": "not established from accessed source"
+      },
+      "crosses": 1,
+      "crossRationale": "Random assignment to comparison groups is explicitly described; double blinding is not verified."
+    },
+    "proposedValue": {
+      "type": "Four-arm randomized experiment",
+      "randomizationEvidence": "Methods explicitly describe random assignment within race to four conditions; sequence generation and concealment not described.",
+      "masking": {
+        "participants": "not established from accessed source",
+        "providers": "not established from accessed source",
+        "assessors": "not established from accessed source",
+        "analysts": "not established from accessed source"
+      },
+      "crosses": 1,
+      "crossRationale": "Within-race random assignment verified in primary methods; masking unreported. One cross remains."
+    },
+    "sourceIds": [
+      "franzblau-author-deposit"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-88e29294631c",
+    "priorContentHash": "fbe58d773c55501117eba6706d58f024c09b15292880afa496d79df943b89ccb",
+    "field": "quality",
+    "oldValue": {
+      "riskOfBias": "Small trial; methodological details unavailable.",
+      "attrition": "not established from accessed source",
+      "confounding": "not established from accessed source",
+      "adverseFindings": "Adverse-event reporting not established; absence of reporting is not evidence of safety.",
+      "transferLimits": "Adult women; setting and delivery may limit transfer.",
+      "jadad": "not established"
+    },
+    "proposedValue": {
+      "riskOfBias": "Small sample; multiple self-efficacy factors and inconsistent significance reporting; no long-term follow-up.",
+      "attrition": "Tables show9 combined-arm pretests versus 10 in each other arm. ANOVA df(3,35) is consistent with 39 change-score observations; missing-baseline reason and complete analysis flow not reported.",
+      "confounding": "Combined intervention has greater apparent contact than single-component/waiting arms; specific breathing effects and interaction/synergy not established.",
+      "adverseFindings": "No systematic adverse-event ascertainment or counts found. Legal/psychological resource information was available on request; this is not proof of safety.",
+      "transferLimits": "Immediate self-reported efficacy factors over four days; no evidence of sustained clinical improvement or violence prevention.",
+      "jadad": "not established"
+    },
+    "sourceIds": [
+      "franzblau-author-deposit"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-88e29294631c",
+    "priorContentHash": "fbe58d773c55501117eba6706d58f024c09b15292880afa496d79df943b89ccb",
+    "field": "access",
+    "oldValue": {
+      "level": "abstract",
+      "sourceURLs": [
+        "https://doi.org/10.17761/ijyt.16.1.d8qw1532m0121w35",
+        "https://ijyt.kglmeridian.com/view/journals/ijyt/16/1/article-p49.xml"
+      ],
+      "retrievedAt": "2026-10-30T07:30:54.246430+00:00"
+    },
+    "proposedValue": {
+      "level": "selected-methods",
+      "sourceURLs": [
+        "https://doi.org/10.17761/ijyt.16.1.d8qw1532m0121w35",
+        "https://ijyt.kglmeridian.com/view/journals/ijyt/16/1/article-p49.xml",
+        "https://www.researchgate.net/publication/228698848_Take_a_Breath_Break_The_Silence_The_Effects_of_Yogic_Breathing_and_Testimony_About_Battering_on_Feelings_of_Self-Efficacy_in_Battered_Women"
+      ],
+      "retrievedAt": "2026-10-30T08:28:43.779847+00:00"
+    },
+    "sourceIds": [
+      "franzblau-author-deposit"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-88e29294631c",
+    "priorContentHash": "fbe58d773c55501117eba6706d58f024c09b15292880afa496d79df943b89ccb",
+    "field": "sources",
+    "oldValue": [
+      {
+        "url": "https://doi.org/10.17761/ijyt.16.1.d8qw1532m0121w35",
+        "type": "primary publication or PubMed record",
+        "retrievedAt": "2026-10-30T07:30:54.246430+00:00",
+        "identityVerified": true,
+        "notes": "Bibliographic identity and stated extraction checked."
+      },
+      {
+        "url": "https://ijyt.kglmeridian.com/view/journals/ijyt/16/1/article-p49.xml",
+        "type": "primary publication or PubMed record",
+        "retrievedAt": "2026-10-30T07:30:54.246430+00:00",
+        "identityVerified": true,
+        "notes": "Bibliographic identity and stated extraction checked."
+      }
+    ],
+    "proposedValue": [
+      {
+        "url": "https://doi.org/10.17761/ijyt.16.1.d8qw1532m0121w35",
+        "type": "primary publication or PubMed record",
+        "retrievedAt": "2026-10-30T07:30:54.246430+00:00",
+        "identityVerified": true,
+        "notes": "Bibliographic identity and stated extraction checked."
+      },
+      {
+        "url": "https://ijyt.kglmeridian.com/view/journals/ijyt/16/1/article-p49.xml",
+        "type": "primary publication or PubMed record",
+        "retrievedAt": "2026-10-30T07:30:54.246430+00:00",
+        "identityVerified": true,
+        "notes": "Bibliographic identity and stated extraction checked."
+      },
+      {
+        "url": "https://www.researchgate.net/publication/228698848_Take_a_Breath_Break_The_Silence_The_Effects_of_Yogic_Breathing_and_Testimony_About_Battering_on_Feelings_of_Self-Efficacy_in_Battered_Women",
+        "type": "Author-deposited primary journal article text",
+        "retrievedAt": "2026-10-30T08:28:43.779847+00:00",
+        "identityVerified": true,
+        "notes": "full article text exposed, including methods and tables1–5; referenced Table6 not located in extraction; Uploaded by coauthor Thomas E. Van Cantfort. Article heading and copyright2006 override inconsistent ResearchGate metadata2008. No publisher403 retry."
+      }
+    ],
+    "sourceIds": [
+      "franzblau-author-deposit"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-88e29294631c",
+    "priorContentHash": "fbe58d773c55501117eba6706d58f024c09b15292880afa496d79df943b89ccb",
+    "field": "assessmentNotes",
+    "oldValue": [
+      "Publisher HTML/PDF returned403; indexed journal abstract verified assignment and outcome, not full methods.",
+      "Likely companion to depression report PMID18319369; do not count as two independent trials without cohort verification."
+    ],
+    "proposedValue": [
+      "Publisher HTML/PDF returned403; indexed journal abstract verified assignment and outcome, not full methods.",
+      "Likely companion to depression report PMID18319369; do not count as two independent trials without cohort verification.",
+      "New route is a coauthor-uploaded primary publication; publisher403 routes were not retried.",
+      "The actual2006article and author list are verified despite ResearchGate year metadata inconsistency.",
+      "Methods/results read. Referenced Table6 was not exposed in extracted full text, so access is conservatively selected-methods.",
+      "Study-family overlap with PMID18319369 remains unverified; no additional independent trial counted.",
+      "The results text uses p<.10 in one paragraph but labels some p=.095/.096 results nonsignificant; table/contrast consistency requires original facsimile audit."
+    ],
+    "sourceIds": [
+      "franzblau-author-deposit"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-88e29294631c",
+    "priorContentHash": "fbe58d773c55501117eba6706d58f024c09b15292880afa496d79df943b89ccb",
+    "field": "studyDesignAssessment",
+    "oldValue": {
+      "category": "rct",
+      "isRandomizedControlledTrial": true,
+      "basis": "Primary journal abstract explicitly states40 women randomly assigned to four conditions.",
+      "sources": [
+        "https://doi.org/10.17761/ijyt.16.1.d8qw1532m0121w35",
+        "https://ijyt.kglmeridian.com/view/journals/ijyt/16/1/article-p49.xml"
+      ],
+      "reviewScope": "abstract"
+    },
+    "proposedValue": {
+      "category": "rct",
+      "isRandomizedControlledTrial": true,
+      "basis": "Methods explicitly describe random assignment within race to four conditions; sequence generation and concealment not described.",
+      "sources": [
+        "https://doi.org/10.17761/ijyt.16.1.d8qw1532m0121w35",
+        "https://ijyt.kglmeridian.com/view/journals/ijyt/16/1/article-p49.xml",
+        "https://www.researchgate.net/publication/228698848_Take_a_Breath_Break_The_Silence_The_Effects_of_Yogic_Breathing_and_Testimony_About_Battering_on_Feelings_of_Self-Efficacy_in_Battered_Women"
+      ],
+      "reviewScope": "selected-methods"
+    },
+    "sourceIds": [
+      "franzblau-author-deposit"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-88e29294631c",
+    "priorContentHash": "fbe58d773c55501117eba6706d58f024c09b15292880afa496d79df943b89ccb",
+    "field": "paperTrustAssessment",
+    "oldValue": {
+      "scope": "Paper",
+      "status": "assessed",
+      "score": 2,
+      "randomizedControlledTrial": true,
+      "peerReviewed": true,
+      "blinding": "not-confirmed",
+      "basis": "Random assignment to comparison groups is explicitly described; double blinding is not verified.",
+      "sources": [
+        "https://doi.org/10.17761/ijyt.16.1.d8qw1532m0121w35",
+        "https://ijyt.kglmeridian.com/view/journals/ijyt/16/1/article-p49.xml"
+      ],
+      "reviewScope": "abstract",
+      "humanApproval": false,
+      "displayCrosses": 1,
+      "maskingRoles": {
+        "participants": "not established from accessed source",
+        "providers": "not established from accessed source",
+        "assessors": "not established from accessed source",
+        "analysts": "not established from accessed source"
+      }
+    },
+    "proposedValue": {
+      "scope": "Paper",
+      "status": "assessed",
+      "score": 2,
+      "randomizedControlledTrial": true,
+      "peerReviewed": true,
+      "blinding": "not-confirmed",
+      "basis": "Within-race random assignment verified in primary methods; masking unreported. One cross remains.",
+      "sources": [
+        "https://doi.org/10.17761/ijyt.16.1.d8qw1532m0121w35",
+        "https://ijyt.kglmeridian.com/view/journals/ijyt/16/1/article-p49.xml",
+        "https://www.researchgate.net/publication/228698848_Take_a_Breath_Break_The_Silence_The_Effects_of_Yogic_Breathing_and_Testimony_About_Battering_on_Feelings_of_Self-Efficacy_in_Battered_Women"
+      ],
+      "reviewScope": "selected-methods",
+      "humanApproval": false,
+      "displayCrosses": 1,
+      "maskingRoles": {
+        "participants": "not established from accessed source",
+        "providers": "not established from accessed source",
+        "assessors": "not established from accessed source",
+        "analysts": "not established from accessed source"
+      }
+    },
+    "sourceIds": [
+      "franzblau-author-deposit"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-88e29294631c",
+    "priorContentHash": "fbe58d773c55501117eba6706d58f024c09b15292880afa496d79df943b89ccb",
+    "field": "evidence",
+    "oldValue": {
+      "population": {
+        "relation": "direct",
+        "population": "Adult women survivors",
+        "exposureEvidence": "Women self-identified as abused by an intimate partner in the previous two years.",
+        "rationale": "Survivor-focused mind–body intervention.",
+        "transferLimit": "Do not extrapolate to children, perpetrators, or prevention of violence."
+      },
+      "intervention": {
+        "description": "Yogic breathing, alone or combined with abuse testimony",
+        "dose": "not established from accessed source",
+        "provider": "not established from accessed source"
+      },
+      "comparator": "Testimony-only and waiting controls",
+      "outcomes": [
+        {
+          "name": "Self-efficacy",
+          "result": "Combined breathing/testimony showed the greatest reported improvement.",
+          "followUp": "post-intervention",
+          "effectEstimate": null,
+          "uncertainty": "not established from accessed source",
+          "primaryStatus": "not established from accessed source"
+        }
+      ],
+      "access": {
+        "level": "abstract",
+        "sourceURLs": [
+          "https://doi.org/10.17761/ijyt.16.1.d8qw1532m0121w35",
+          "https://ijyt.kglmeridian.com/view/journals/ijyt/16/1/article-p49.xml"
+        ],
+        "retrievedAt": "2026-10-30T07:30:54.246430+00:00"
+      }
+    },
+    "proposedValue": {
+      "population": {
+        "relation": "direct",
+        "population": "Adult women survivors",
+        "exposureEvidence": "Women self-identified as abused by an intimate partner in the previous two years.",
+        "rationale": "Survivor-focused mind–body intervention.",
+        "transferLimit": "Do not extrapolate to children, perpetrators, or prevention of violence."
+      },
+      "intervention": {
+        "description": "Yogic breathing, gentle poses and/or testimony to a trained same-race listener",
+        "dose": "Two consecutive intervention days; single-component sessions 45 minutes. Combined condition is described as45-minute testimony followed by 45-minute breathing, but its total-dose wording is ambiguous. Baseline day 1, post-test day 4.",
+        "provider": "Research assistants; breathing instructor trained by a registered yoga teacher"
+      },
+      "comparator": "Testimony-only, breathing-only and waiting-control conditions",
+      "outcomes": [
+        {
+          "name": "Self-efficacy factors",
+          "result": "Authors report comparative change-score differences for control, security and confidence; significant posthoc contrasts were combined treatment versus waiting control.",
+          "followUp": "Day4",
+          "effectEstimate": null,
+          "uncertainty": "Exact effect estimates withheld because extracted tables, reported contrasts and significance wording warrant facsimile verification.",
+          "primaryStatus": "No prospectively designated single primary endpoint verified"
+        },
+        {
+          "name": "Anxiety/relief and fear",
+          "result": "No overall between-condition effect reported for these two factors.",
+          "followUp": "Day4",
+          "effectEstimate": null,
+          "uncertainty": "Not evidence that all self-efficacy dimensions improved.",
+          "primaryStatus": "not established from accessed source"
+        }
+      ],
+      "access": {
+        "level": "selected-methods",
+        "sourceURLs": [
+          "https://doi.org/10.17761/ijyt.16.1.d8qw1532m0121w35",
+          "https://ijyt.kglmeridian.com/view/journals/ijyt/16/1/article-p49.xml",
+          "https://www.researchgate.net/publication/228698848_Take_a_Breath_Break_The_Silence_The_Effects_of_Yogic_Breathing_and_Testimony_About_Battering_on_Feelings_of_Self-Efficacy_in_Battered_Women"
+        ],
+        "retrievedAt": "2026-10-30T08:28:43.779847+00:00"
+      }
+    },
+    "sourceIds": [
+      "franzblau-author-deposit"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-25129883",
+    "priorContentHash": "ae229a688eabc833d7c336fa7eb38b3ee8075f45df39758c7e39c4c9b1fc901e",
+    "field": "country",
+    "oldValue": "not established from accessed source",
+    "proposedValue": "United States",
+    "sourceIds": [
+      "clark-manuscript"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-25129883",
+    "priorContentHash": "ae229a688eabc833d7c336fa7eb38b3ee8075f45df39758c7e39c4c9b1fc901e",
+    "field": "setting",
+    "oldValue": "not established from accessed source",
+    "proposedValue": "Domestic Abuse Project, Minneapolis; aftercare group psychotherapy",
+    "sourceIds": [
+      "clark-manuscript"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-25129883",
+    "priorContentHash": "ae229a688eabc833d7c336fa7eb38b3ee8075f45df39758c7e39c4c9b1fc901e",
+    "field": "age",
+    "oldValue": {
+      "groups": [
+        "adult"
+      ],
+      "reportedRange": "not established from accessed source",
+      "youthScope": "Adult survivor evidence; no child treatment inference."
+    },
+    "proposedValue": {
+      "groups": [
+        "adult"
+      ],
+      "reportedRange": "Eligibility≥18; average 43 years.",
+      "youthScope": "Adult aftercare participants only."
+    },
+    "sourceIds": [
+      "clark-manuscript"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-25129883",
+    "priorContentHash": "ae229a688eabc833d7c336fa7eb38b3ee8075f45df39758c7e39c4c9b1fc901e",
+    "field": "sampleSize",
+    "oldValue": {
+      "randomized": null,
+      "analyzed": null,
+      "description": "17 women: 8 yoga adjunct and 9 control; five lost to follow-up."
+    },
+    "proposedValue": {
+      "randomized": 0,
+      "analyzed": null,
+      "description": "17 enrolled (8 yoga/9 control);12 completed; outcomes and reactions analyzed for at most16 because one response set was unusable."
+    },
+    "sourceIds": [
+      "clark-manuscript"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-25129883",
+    "priorContentHash": "ae229a688eabc833d7c336fa7eb38b3ee8075f45df39758c7e39c4c9b1fc901e",
+    "field": "intervention",
+    "oldValue": {
+      "description": "Yoga appended to group psychotherapy",
+      "dose": "Weekly 30–40 minutes for 12 weeks",
+      "provider": "not established from accessed source"
+    },
+    "proposedValue": {
+      "description": "Trauma-sensitive yoga appended to psychotherapy; optional modifications and no hands-on assists",
+      "dose": "30–40 minutes weekly for 12 weeks. Total sessions 135 minutes versus 120 minutes control; psychotherapy shortened 15 minutes.",
+      "provider": "Certified yoga instructor trained in trauma-sensitive yoga; same therapist led both psychotherapy groups"
+    },
+    "sourceIds": [
+      "clark-manuscript"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-25129883",
+    "priorContentHash": "ae229a688eabc833d7c336fa7eb38b3ee8075f45df39758c7e39c4c9b1fc901e",
+    "field": "comparator",
+    "oldValue": "Group psychotherapy alone",
+    "proposedValue": "Sequential usual group psychotherapy cohort",
+    "sourceIds": [
+      "clark-manuscript"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-25129883",
+    "priorContentHash": "ae229a688eabc833d7c336fa7eb38b3ee8075f45df39758c7e39c4c9b1fc901e",
+    "field": "outcomes",
+    "oldValue": [
+      {
+        "name": "Feasibility",
+        "result": "17 of 20 eligible enrolled; five of 17 lost to follow-up.",
+        "followUp": "12 weeks",
+        "effectEstimate": null,
+        "uncertainty": "not established from accessed source",
+        "primaryStatus": "not established from accessed source"
+      },
+      {
+        "name": "Safety and acceptability",
+        "result": "Respondents reported no physical/emotional harm and valued participation.",
+        "followUp": "post-intervention",
+        "effectEstimate": null,
+        "uncertainty": "not established from accessed source",
+        "primaryStatus": "not established from accessed source"
+      }
+    ],
+    "proposedValue": [
+      {
+        "name": "Feasibility",
+        "result": "85%of eligible women enrolled; six per arm completed.",
+        "followUp": "12 weeks",
+        "effectEstimate": null,
+        "uncertainty": "not established from accessed source",
+        "primaryStatus": "not established from accessed source"
+      },
+      {
+        "name": "Anxiety, depression and PTSD",
+        "result": "Outcomes were descriptive; study was not powered for between-group efficacy. PTSD instrument changed atweek 4.",
+        "followUp": "12 weeks",
+        "effectEstimate": null,
+        "uncertainty": "No randomized treatment effect can be inferred.",
+        "primaryStatus": "not established from accessed source"
+      }
+    ],
+    "sourceIds": [
+      "clark-manuscript"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-25129883",
+    "priorContentHash": "ae229a688eabc833d7c336fa7eb38b3ee8075f45df39758c7e39c4c9b1fc901e",
+    "field": "finding",
+    "oldValue": "Feasibility evidence; efficacy and allocation method not established from abstract.",
+    "proposedValue": "Feasibility and acceptability evidence with nonrandomized allocation; treatment efficacy remains undetermined.",
+    "sourceIds": [
+      "clark-manuscript"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-25129883",
+    "priorContentHash": "ae229a688eabc833d7c336fa7eb38b3ee8075f45df39758c7e39c4c9b1fc901e",
+    "field": "limitation",
+    "oldValue": "Very small controlled feasibility study with attrition.",
+    "proposedValue": "Availability allocation, sequential cohorts, small sample, attrition and inconsistent PTSD measurement across time.",
+    "sourceIds": [
+      "clark-manuscript"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-25129883",
+    "priorContentHash": "ae229a688eabc833d7c336fa7eb38b3ee8075f45df39758c7e39c4c9b1fc901e",
+    "field": "design",
+    "oldValue": {
+      "type": "Controlled feasibility study; randomization unverified",
+      "randomizationEvidence": "not established from accessed source",
+      "masking": {
+        "participants": "not established from accessed source",
+        "providers": "not established from accessed source",
+        "assessors": "not established from accessed source",
+        "analysts": "not established from accessed source"
+      },
+      "crosses": 0,
+      "crossRationale": "Two groups alone do not verify randomization."
+    },
+    "proposedValue": {
+      "type": "Nonrandomized sequential-group controlled feasibility study",
+      "randomizationEvidence": "Methods explicitly state availability sampling; two12-week groups conducted sequentially.",
+      "masking": {
+        "participants": "Attempted by using the name mind-body exercises; success not assessed.",
+        "providers": "Therapist/instructor delivered known conditions; provider masking not claimed.",
+        "assessors": "not established from accessed source",
+        "analysts": "not established from accessed source"
+      },
+      "crosses": 0,
+      "crossRationale": "No randomization. Calling exercises mind-body was an attempted participant masking strategy, not proof of successful blinding."
+    },
+    "sourceIds": [
+      "clark-manuscript"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-25129883",
+    "priorContentHash": "ae229a688eabc833d7c336fa7eb38b3ee8075f45df39758c7e39c4c9b1fc901e",
+    "field": "quality",
+    "oldValue": {
+      "riskOfBias": "Small sample; allocation method unverified.",
+      "attrition": "5/17 lost to follow-up.",
+      "confounding": "not established from accessed source",
+      "adverseFindings": "No harm reported by respondents; incomplete follow-up limits reassurance.",
+      "transferLimits": "Adult women; setting and delivery may limit transfer.",
+      "jadad": "not applicable"
+    },
+    "proposedValue": {
+      "riskOfBias": "Nonrandom availability allocation; sequential cohorts; small sample; descriptive outcomes; PTSD measure changed after baseline.",
+      "attrition": "Six completed per arm:2/8 yoga and 3/9 control dropped out. One participant provided unusable post-intake questionnaires, leaving maximum 16 for outcomes/reactions.",
+      "confounding": "Sequential cohorts and selection; yoga group had15 minutes less psychotherapy and 15 minutes more total session time.",
+      "adverseFindings": "Session-level harm checks reported no physical/emotional harm. Half found questionnaires emotionally difficult; less than one-quarter rated emotions intense. Incomplete follow-up limits reassurance.",
+      "transferLimits": "Aftercare clients who completed16 weeks of prior therapy; pregnancy and conditions preventing mild exercise excluded.",
+      "jadad": "not applicable"
+    },
+    "sourceIds": [
+      "clark-manuscript"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-25129883",
+    "priorContentHash": "ae229a688eabc833d7c336fa7eb38b3ee8075f45df39758c7e39c4c9b1fc901e",
+    "field": "access",
+    "oldValue": {
+      "level": "abstract",
+      "sourceURLs": [
+        "https://pubmed.ncbi.nlm.nih.gov/25129883/"
+      ],
+      "retrievedAt": "2026-10-30T07:30:54.246430+00:00"
+    },
+    "proposedValue": {
+      "level": "full-text",
+      "sourceURLs": [
+        "https://pubmed.ncbi.nlm.nih.gov/25129883/",
+        "https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_json/PMC4215954/unicode"
+      ],
+      "retrievedAt": "2026-10-30T08:28:43.779847+00:00"
+    },
+    "sourceIds": [
+      "clark-manuscript"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-25129883",
+    "priorContentHash": "ae229a688eabc833d7c336fa7eb38b3ee8075f45df39758c7e39c4c9b1fc901e",
+    "field": "sources",
+    "oldValue": [
+      {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/25129883/",
+        "type": "primary publication or PubMed record",
+        "retrievedAt": "2026-10-30T07:30:54.246430+00:00",
+        "identityVerified": true,
+        "notes": "Bibliographic identity and stated extraction checked."
+      }
+    ],
+    "proposedValue": [
+      {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/25129883/",
+        "type": "primary publication or PubMed record",
+        "retrievedAt": "2026-10-30T07:30:54.246430+00:00",
+        "identityVerified": true,
+        "notes": "Bibliographic identity and stated extraction checked."
+      },
+      {
+        "url": "https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_json/PMC4215954/unicode",
+        "type": "NCBI PMC author manuscript through public BioC API",
+        "retrievedAt": "2026-10-30T08:28:43.779847+00:00",
+        "identityVerified": true,
+        "notes": "full-text with machine-readable tables; New API route after previously blocked PMC HTML / unavailable EuropePMC XML."
+      }
+    ],
+    "sourceIds": [
+      "clark-manuscript"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-25129883",
+    "priorContentHash": "ae229a688eabc833d7c336fa7eb38b3ee8075f45df39758c7e39c4c9b1fc901e",
+    "field": "assessmentNotes",
+    "oldValue": [
+      "Full PMC text encountered a browser challenge. Possible companion Nguyen-Feng 2019; family link awaiting confirmation.",
+      "Grouped conservatively as a likely shared service program; exact cohort overlap remains unverified."
+    ],
+    "proposedValue": [
+      "Full PMC text encountered a browser challenge. Possible companion Nguyen-Feng 2019; family link awaiting confirmation.",
+      "Grouped conservatively as a likely shared service program; exact cohort overlap remains unverified.",
+      "This paper explicitly mentions an ancillary therapist-perspective study accompanying the pilot. It strengthens, but does not by itself conclusively identify, the proposed Clark/Nguyen-Feng program linkage.",
+      "No new trial or publication added."
+    ],
+    "sourceIds": [
+      "clark-manuscript"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-25129883",
+    "priorContentHash": "ae229a688eabc833d7c336fa7eb38b3ee8075f45df39758c7e39c4c9b1fc901e",
+    "field": "studyDesignAssessment",
+    "oldValue": {
+      "category": "nonrandomized-or-unestablished",
+      "isRandomizedControlledTrial": null,
+      "basis": "not established from accessed source",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/25129883/"
+      ],
+      "reviewScope": "abstract"
+    },
+    "proposedValue": {
+      "category": "nonrandomized-or-unestablished",
+      "isRandomizedControlledTrial": null,
+      "basis": "Methods explicitly state availability sampling; two12-week groups conducted sequentially.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/25129883/",
+        "https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_json/PMC4215954/unicode"
+      ],
+      "reviewScope": "full-text"
+    },
+    "sourceIds": [
+      "clark-manuscript"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-25129883",
+    "priorContentHash": "ae229a688eabc833d7c336fa7eb38b3ee8075f45df39758c7e39c4c9b1fc901e",
+    "field": "paperTrustAssessment",
+    "oldValue": {
+      "scope": "Paper",
+      "status": "assessed",
+      "score": 1,
+      "randomizedControlledTrial": null,
+      "peerReviewed": true,
+      "blinding": "not-applicable",
+      "basis": "Two groups alone do not verify randomization.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/25129883/"
+      ],
+      "reviewScope": "abstract",
+      "humanApproval": false,
+      "displayCrosses": 0,
+      "maskingRoles": {
+        "participants": "not established from accessed source",
+        "providers": "not established from accessed source",
+        "assessors": "not established from accessed source",
+        "analysts": "not established from accessed source"
+      }
+    },
+    "proposedValue": {
+      "scope": "Paper",
+      "status": "assessed",
+      "score": 1,
+      "randomizedControlledTrial": null,
+      "peerReviewed": true,
+      "blinding": "not-applicable",
+      "basis": "No randomization. Calling exercises mind-body was an attempted participant masking strategy, not proof of successful blinding.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/25129883/",
+        "https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_json/PMC4215954/unicode"
+      ],
+      "reviewScope": "full-text",
+      "humanApproval": false,
+      "displayCrosses": 0,
+      "maskingRoles": {
+        "participants": "Attempted by using the name mind-body exercises; success not assessed.",
+        "providers": "Therapist/instructor delivered known conditions; provider masking not claimed.",
+        "assessors": "not established from accessed source",
+        "analysts": "not established from accessed source"
+      }
+    },
+    "sourceIds": [
+      "clark-manuscript"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-25129883",
+    "priorContentHash": "ae229a688eabc833d7c336fa7eb38b3ee8075f45df39758c7e39c4c9b1fc901e",
+    "field": "evidence",
+    "oldValue": {
+      "population": {
+        "relation": "direct",
+        "population": "Adult women survivors",
+        "exposureEvidence": "Explicit intimate partner or domestic violence in eligibility or report.",
+        "rationale": "Survivor-focused mind–body intervention.",
+        "transferLimit": "Do not extrapolate to children, perpetrators, or prevention of violence."
+      },
+      "intervention": {
+        "description": "Yoga appended to group psychotherapy",
+        "dose": "Weekly 30–40 minutes for 12 weeks",
+        "provider": "not established from accessed source"
+      },
+      "comparator": "Group psychotherapy alone",
+      "outcomes": [
+        {
+          "name": "Feasibility",
+          "result": "17 of 20 eligible enrolled; five of 17 lost to follow-up.",
+          "followUp": "12 weeks",
+          "effectEstimate": null,
+          "uncertainty": "not established from accessed source",
+          "primaryStatus": "not established from accessed source"
+        },
+        {
+          "name": "Safety and acceptability",
+          "result": "Respondents reported no physical/emotional harm and valued participation.",
+          "followUp": "post-intervention",
+          "effectEstimate": null,
+          "uncertainty": "not established from accessed source",
+          "primaryStatus": "not established from accessed source"
+        }
+      ],
+      "access": {
+        "level": "abstract",
+        "sourceURLs": [
+          "https://pubmed.ncbi.nlm.nih.gov/25129883/"
+        ],
+        "retrievedAt": "2026-10-30T07:30:54.246430+00:00"
+      }
+    },
+    "proposedValue": {
+      "population": {
+        "relation": "direct",
+        "population": "Adult women survivors",
+        "exposureEvidence": "Explicit intimate partner or domestic violence in eligibility or report.",
+        "rationale": "Survivor-focused mind–body intervention.",
+        "transferLimit": "Do not extrapolate to children, perpetrators, or prevention of violence."
+      },
+      "intervention": {
+        "description": "Trauma-sensitive yoga appended to psychotherapy; optional modifications and no hands-on assists",
+        "dose": "30–40 minutes weekly for 12 weeks. Total sessions 135 minutes versus 120 minutes control; psychotherapy shortened 15 minutes.",
+        "provider": "Certified yoga instructor trained in trauma-sensitive yoga; same therapist led both psychotherapy groups"
+      },
+      "comparator": "Sequential usual group psychotherapy cohort",
+      "outcomes": [
+        {
+          "name": "Feasibility",
+          "result": "85%of eligible women enrolled; six per arm completed.",
+          "followUp": "12 weeks",
+          "effectEstimate": null,
+          "uncertainty": "not established from accessed source",
+          "primaryStatus": "not established from accessed source"
+        },
+        {
+          "name": "Anxiety, depression and PTSD",
+          "result": "Outcomes were descriptive; study was not powered for between-group efficacy. PTSD instrument changed atweek 4.",
+          "followUp": "12 weeks",
+          "effectEstimate": null,
+          "uncertainty": "No randomized treatment effect can be inferred.",
+          "primaryStatus": "not established from accessed source"
+        }
+      ],
+      "access": {
+        "level": "full-text",
+        "sourceURLs": [
+          "https://pubmed.ncbi.nlm.nih.gov/25129883/",
+          "https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_json/PMC4215954/unicode"
+        ],
+        "retrievedAt": "2026-10-30T08:28:43.779847+00:00"
+      }
+    },
+    "sourceIds": [
+      "clark-manuscript"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-36232015",
+    "priorContentHash": "8d03deca2fa82dc0c1cd14d842f1bf0148535769631290ef2277bedbb02113b3",
+    "field": "country",
+    "oldValue": "not established from accessed source",
+    "proposedValue": "United States",
+    "sourceIds": [
+      "bshape-manuscript"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-36232015",
+    "priorContentHash": "8d03deca2fa82dc0c1cd14d842f1bf0148535769631290ef2277bedbb02113b3",
+    "field": "setting",
+    "oldValue": "not established from accessed source",
+    "proposedValue": "Remote phone-based BSHAPE intervention, recruited nationally",
+    "sourceIds": [
+      "bshape-manuscript"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-36232015",
+    "priorContentHash": "8d03deca2fa82dc0c1cd14d842f1bf0148535769631290ef2277bedbb02113b3",
+    "field": "age",
+    "oldValue": {
+      "groups": [
+        "adult"
+      ],
+      "reportedRange": "not established from accessed source",
+      "youthScope": "Adult survivor evidence; no child treatment inference."
+    },
+    "proposedValue": {
+      "groups": [
+        "adult"
+      ],
+      "reportedRange": "Eligibility 18–55; mean 35.39 (SD 8.96).",
+      "youthScope": "No child treatment inference."
+    },
+    "sourceIds": [
+      "bshape-manuscript"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-36232015",
+    "priorContentHash": "8d03deca2fa82dc0c1cd14d842f1bf0148535769631290ef2277bedbb02113b3",
+    "field": "sampleSize",
+    "oldValue": {
+      "randomized": null,
+      "analyzed": 18,
+      "description": "Black immigrant women with recent IPV and mental health symptoms."
+    },
+    "proposedValue": {
+      "randomized": null,
+      "analyzed": 18,
+      "description": "Qualitative subset of 18 intervention recipients with recent IPV;42/144 parent-study participants reported recent IPV."
+    },
+    "sourceIds": [
+      "bshape-manuscript"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-36232015",
+    "priorContentHash": "8d03deca2fa82dc0c1cd14d842f1bf0148535769631290ef2277bedbb02113b3",
+    "field": "intervention",
+    "oldValue": {
+      "description": "Mindfulness sessions within multicomponent digital BSHAPE",
+      "dose": "not established from accessed source",
+      "provider": "not established from accessed source"
+    },
+    "proposedValue": {
+      "description": "Adapted mindfulness component embedded in multicomponent BSHAPE",
+      "dose": "Four weekly 30-minute individual phone sessions plus home practices",
+      "provider": "Masters-level facilitators with two-day mindfulness training, manual/audio materials and weekly supervision"
+    },
+    "sourceIds": [
+      "bshape-manuscript"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-36232015",
+    "priorContentHash": "8d03deca2fa82dc0c1cd14d842f1bf0148535769631290ef2277bedbb02113b3",
+    "field": "studyFamilyId",
+    "oldValue": "paper-36232015",
+    "proposedValue": "BSHAPE-pilot-144-PMID34626840",
+    "sourceIds": [
+      "bshape-manuscript"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-36232015",
+    "priorContentHash": "8d03deca2fa82dc0c1cd14d842f1bf0148535769631290ef2277bedbb02113b3",
+    "field": "familyLinkageUncertain",
+    "oldValue": true,
+    "proposedValue": false,
+    "sourceIds": [
+      "bshape-manuscript"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-36232015",
+    "priorContentHash": "8d03deca2fa82dc0c1cd14d842f1bf0148535769631290ef2277bedbb02113b3",
+    "field": "finding",
+    "oldValue": "Participant perspectives on a mindfulness component, without isolated efficacy evidence.",
+    "proposedValue": "Qualitative report of perceived benefits in a selected intervention subset; not a randomized mindfulness efficacy estimate.",
+    "sourceIds": [
+      "bshape-manuscript"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-36232015",
+    "priorContentHash": "8d03deca2fa82dc0c1cd14d842f1bf0148535769631290ef2277bedbb02113b3",
+    "field": "limitation",
+    "oldValue": "Small selected qualitative sample; multicomponent program.",
+    "proposedValue": "Small selected English-speaking subset, facilitator-recorded feedback, concurrent intervention components and no comparison in this report.",
+    "sourceIds": [
+      "bshape-manuscript"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-36232015",
+    "priorContentHash": "8d03deca2fa82dc0c1cd14d842f1bf0148535769631290ef2277bedbb02113b3",
+    "field": "quality",
+    "oldValue": {
+      "riskOfBias": "Selective participation and favourable-response bias.",
+      "attrition": "not established from accessed source",
+      "confounding": "Mindfulness contribution cannot be separated from the package.",
+      "adverseFindings": "Adverse-event reporting not established; absence of reporting is not evidence of safety.",
+      "transferLimits": "Adult women; setting and delivery may limit transfer.",
+      "jadad": "not applicable"
+    },
+    "proposedValue": {
+      "riskOfBias": "Selected intervention subset; feedback recorded by delivery facilitators and coded by investigator/student; self-report and positive-response bias.",
+      "attrition": "18recent-IPV intervention recipients contributed qualitative feedback; this is not a parent-trial retention denominator.",
+      "confounding": "Mindfulness accompanied safety planning, psychoeducation, strengths feedback and behavioural activation; contribution not isolatable.",
+      "adverseFindings": "Weekly safety check-ins, individualized plans and referrals described; no systematic intervention adverse-event counts supplied.",
+      "transferLimits": "English-speaking Black immigrant women in the US, with clinical PTSD/depression and sexual HIV-risk eligibility; subset18–55eligibility, not representative of all immigrant survivors.",
+      "jadad": "not applicable"
+    },
+    "sourceIds": [
+      "bshape-manuscript"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-36232015",
+    "priorContentHash": "8d03deca2fa82dc0c1cd14d842f1bf0148535769631290ef2277bedbb02113b3",
+    "field": "access",
+    "oldValue": {
+      "level": "abstract",
+      "sourceURLs": [
+        "https://pubmed.ncbi.nlm.nih.gov/36232015/"
+      ],
+      "retrievedAt": "2026-10-30T07:30:54.246430+00:00"
+    },
+    "proposedValue": {
+      "level": "full-text",
+      "sourceURLs": [
+        "https://pubmed.ncbi.nlm.nih.gov/36232015/",
+        "https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_json/PMC9564648/unicode"
+      ],
+      "retrievedAt": "2026-10-30T08:28:43.779847+00:00"
+    },
+    "sourceIds": [
+      "bshape-manuscript"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-36232015",
+    "priorContentHash": "8d03deca2fa82dc0c1cd14d842f1bf0148535769631290ef2277bedbb02113b3",
+    "field": "sources",
+    "oldValue": [
+      {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/36232015/",
+        "type": "primary publication or PubMed record",
+        "retrievedAt": "2026-10-30T07:30:54.246430+00:00",
+        "identityVerified": true,
+        "notes": "Bibliographic identity and stated extraction checked."
+      }
+    ],
+    "proposedValue": [
+      {
+        "url": "https://pubmed.ncbi.nlm.nih.gov/36232015/",
+        "type": "primary publication or PubMed record",
+        "retrievedAt": "2026-10-30T07:30:54.246430+00:00",
+        "identityVerified": true,
+        "notes": "Bibliographic identity and stated extraction checked."
+      },
+      {
+        "url": "https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_json/PMC9564648/unicode",
+        "type": "NCBI PMC primary article through public BioC API",
+        "retrievedAt": "2026-10-30T08:28:43.779847+00:00",
+        "identityVerified": true,
+        "notes": "full-text; Methods and linked parent-publication references checked; no new trial outcomes inferred."
+      }
+    ],
+    "sourceIds": [
+      "bshape-manuscript"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-36232015",
+    "priorContentHash": "8d03deca2fa82dc0c1cd14d842f1bf0148535769631290ef2277bedbb02113b3",
+    "field": "assessmentNotes",
+    "oldValue": [
+      "Link to parent BSHAPE trial should be reconciled across lanes before family totals."
+    ],
+    "proposedValue": [
+      "Link to parent BSHAPE trial should be reconciled across lanes before family totals.",
+      "Methods explicitly link the parent BSHAPE evaluation:Sabri et al. 2021, PMID34626840, DOI10.1016/j.cct.2021.106591. Study-family ID proposed from that link; parent paper not newly assessed here.",
+      "Do not add the 18 women to the 144 parent trial as independent participants.",
+      "Parent-trial randomization does not upgrade this qualitative publication."
+    ],
+    "sourceIds": [
+      "bshape-manuscript"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-36232015",
+    "priorContentHash": "8d03deca2fa82dc0c1cd14d842f1bf0148535769631290ef2277bedbb02113b3",
+    "field": "studyDesignAssessment",
+    "oldValue": {
+      "category": "nonrandomized-or-unestablished",
+      "isRandomizedControlledTrial": false,
+      "basis": "not established from accessed source",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/36232015/"
+      ],
+      "reviewScope": "abstract"
+    },
+    "proposedValue": {
+      "category": "nonrandomized-or-unestablished",
+      "isRandomizedControlledTrial": false,
+      "basis": "not established from accessed source",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/36232015/",
+        "https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_json/PMC9564648/unicode"
+      ],
+      "reviewScope": "full-text"
+    },
+    "sourceIds": [
+      "bshape-manuscript"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-36232015",
+    "priorContentHash": "8d03deca2fa82dc0c1cd14d842f1bf0148535769631290ef2277bedbb02113b3",
+    "field": "paperTrustAssessment",
+    "oldValue": {
+      "scope": "Paper",
+      "status": "assessed",
+      "score": 1,
+      "randomizedControlledTrial": false,
+      "peerReviewed": true,
+      "blinding": "not-applicable",
+      "basis": "No randomized comparison in this report.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/36232015/"
+      ],
+      "reviewScope": "abstract",
+      "humanApproval": false,
+      "displayCrosses": 0,
+      "maskingRoles": {
+        "participants": "not established from accessed source",
+        "providers": "not established from accessed source",
+        "assessors": "not established from accessed source",
+        "analysts": "not established from accessed source"
+      }
+    },
+    "proposedValue": {
+      "scope": "Paper",
+      "status": "assessed",
+      "score": 1,
+      "randomizedControlledTrial": false,
+      "peerReviewed": true,
+      "blinding": "not-applicable",
+      "basis": "No randomized comparison in this report.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/36232015/",
+        "https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_json/PMC9564648/unicode"
+      ],
+      "reviewScope": "full-text",
+      "humanApproval": false,
+      "displayCrosses": 0,
+      "maskingRoles": {
+        "participants": "not established from accessed source",
+        "providers": "not established from accessed source",
+        "assessors": "not established from accessed source",
+        "analysts": "not established from accessed source"
+      }
+    },
+    "sourceIds": [
+      "bshape-manuscript"
+    ]
+  },
+  {
+    "originalID": "dv-mindbody-36232015",
+    "priorContentHash": "8d03deca2fa82dc0c1cd14d842f1bf0148535769631290ef2277bedbb02113b3",
+    "field": "evidence",
+    "oldValue": {
+      "population": {
+        "relation": "direct",
+        "population": "Adult women survivors",
+        "exposureEvidence": "Explicit intimate partner or domestic violence in eligibility or report.",
+        "rationale": "Survivor-focused mind–body intervention.",
+        "transferLimit": "Do not extrapolate to children, perpetrators, or prevention of violence."
+      },
+      "intervention": {
+        "description": "Mindfulness sessions within multicomponent digital BSHAPE",
+        "dose": "not established from accessed source",
+        "provider": "not established from accessed source"
+      },
+      "comparator": "None in this report",
+      "outcomes": [
+        {
+          "name": "Participant feedback",
+          "result": "Perceived coping, self-compassion, self-awareness and empowerment benefits.",
+          "followUp": "post-intervention",
+          "effectEstimate": null,
+          "uncertainty": "not established from accessed source",
+          "primaryStatus": "not established from accessed source"
+        }
+      ],
+      "access": {
+        "level": "abstract",
+        "sourceURLs": [
+          "https://pubmed.ncbi.nlm.nih.gov/36232015/"
+        ],
+        "retrievedAt": "2026-10-30T07:30:54.246430+00:00"
+      }
+    },
+    "proposedValue": {
+      "population": {
+        "relation": "direct",
+        "population": "Adult women survivors",
+        "exposureEvidence": "Explicit intimate partner or domestic violence in eligibility or report.",
+        "rationale": "Survivor-focused mind–body intervention.",
+        "transferLimit": "Do not extrapolate to children, perpetrators, or prevention of violence."
+      },
+      "intervention": {
+        "description": "Adapted mindfulness component embedded in multicomponent BSHAPE",
+        "dose": "Four weekly 30-minute individual phone sessions plus home practices",
+        "provider": "Masters-level facilitators with two-day mindfulness training, manual/audio materials and weekly supervision"
+      },
+      "comparator": "None in this report",
+      "outcomes": [
+        {
+          "name": "Participant feedback",
+          "result": "Perceived coping, self-compassion, self-awareness and empowerment benefits.",
+          "followUp": "post-intervention",
+          "effectEstimate": null,
+          "uncertainty": "not established from accessed source",
+          "primaryStatus": "not established from accessed source"
+        }
+      ],
+      "access": {
+        "level": "full-text",
+        "sourceURLs": [
+          "https://pubmed.ncbi.nlm.nih.gov/36232015/",
+          "https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_json/PMC9564648/unicode"
+        ],
+        "retrievedAt": "2026-10-30T08:28:43.779847+00:00"
+      }
+    },
+    "sourceIds": [
+      "bshape-manuscript"
+    ]
+  }
+]

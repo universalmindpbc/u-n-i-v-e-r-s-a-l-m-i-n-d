@@ -1,0 +1,1423 @@
+[
+  {
+    "id": "dv-adult-therapy-37889918",
+    "title": "Problem-solving therapy for pregnant women experiencing depressive symptoms and intimate partner violence: A randomised, controlled feasibility trial in rural Ethiopia.",
+    "authors": [
+      "Keynejad RC",
+      "Bitew T",
+      "Sorsdahl K",
+      "Myers B",
+      "Honikman S",
+      "Medhin G",
+      "Deyessa N",
+      "Mulushoa A",
+      "Fekadu E",
+      "Howard LM",
+      "Hanlon C"
+    ],
+    "year": 2023,
+    "journal": "PLOS global public health",
+    "doi": "10.1371/journal.pgph.0002054",
+    "pmid": "37889918",
+    "trialRegistration": [
+      "PACTR202002513482084"
+    ],
+    "collection": "language",
+    "interventionFamily": "Problem-solving therapy adapted for IPV.",
+    "publicationType": "Primary intervention study",
+    "studyFamilyId": "PACTR202002513482084",
+    "familyLinkageUncertain": false,
+    "existingRepositoryMatches": [],
+    "relevance": {
+      "relation": "direct",
+      "population": "Pregnant women with depressive symptoms and past-year IPV.",
+      "exposureEvidence": "Pregnant 12–34 weeks, depressive symptoms PHQ-9≥5 plus functional impact and past-year IPV by non-graphic or WHO screen; psychological/emotional IPV qualifies.",
+      "rationale": "Explicit domestic/intimate-partner violence exposure in the studied population; psychological intervention is within Language scope.",
+      "transferLimit": "See limitation and quality fields; no population-wide clinical recommendation is implied."
+    },
+    "age": {
+      "groups": [
+        "adults",
+        "adolescent eligibility"
+      ],
+      "reportedRange": "Eligibility≥16 years; arm medians 25–25.5 years. Actual minimum/maximum and count under 18 not reported.",
+      "youthScope": "Adolescent eligibility is not proof of enrolled adolescent participants; no adolescent-specific outcomes."
+    },
+    "country": "Ethiopia",
+    "setting": "Bu’i primary hospital and Kela health centre, rural Sodo district, Ethiopia; recruitmentApril–May 2021.",
+    "sampleSize": {
+      "randomized": 52,
+      "analyzed": 39,
+      "description": "Final 25 PST-IPV/12 standard PST/15 enhanced usual care. Only 35 entered intended three-arm allocation (25/5/5); 17 psychological/emotional-IPV women were wrongly routed to linked two-arm table. Follow-up 19/25, 8/12, 12/15."
+    },
+    "intervention": {
+      "description": "Four-session problem-solving therapy adapted with trauma/IPV-informed training, risk awareness and avoidance of victim blaming; sessions address participants’ chosen problems.",
+      "dose": "Four sessions within 8 weeks; mean session durations approximately 32–51 minutes. 19/25 completed all 4; 5 attended none, 1 attended one.",
+      "provider": "Six trained antenatal-care providers for PST-IPV, separately trained from six standard PST providers; psychiatrist/psychologist training and supervision with audio-sampled fidelity assessment."
+    },
+    "comparator": "Four-session standard PST (12 women) or enhanced usual care (15 women: well-being leaflet and local support information). All arms additional to routine antenatal care. Shared comparator structure with linked depression feasibility trial.",
+    "outcomes": [
+      {
+        "name": "Implementation feasibility",
+        "followUp": "Recruitment 35 days; follow-up planned 9 weeks",
+        "result": "52 eligiblewomen enrolled; 39/52 completed assessment; delivery feasible with changes required to randomization, provider skills and scheduling.",
+        "effectEstimate": null,
+        "uncertainty": "Primary aim was feasibility, not powered comparative efficacy.",
+        "primaryStatus": "primary"
+      },
+      {
+        "name": "Acceptability and delivery fidelity",
+        "followUp": "Four-session intervention over 8 weeks",
+        "result": "19/25 PST-IPV and 8/12 standard PST completed all 4 sessions. Providers sometimes ignored IPV disclosures; risk/confidentiality discussion needed improvement.",
+        "effectEstimate": null,
+        "uncertainty": "IPV was infrequently discussed and then for 1–4 minutes. Completion alone does not establish competent IPV response.",
+        "primaryStatus": "secondary implementation"
+      },
+      {
+        "name": "Depressive symptoms and IPV",
+        "followUp": "Planned 9 weeks; 12/39 assessments occurred early",
+        "result": "Descriptive symptoms/IPV scores fell in several arms; no powered causal comparison or effect size established.",
+        "effectEstimate": "Follow-up medianPHQ-9: 6 PST-IPV, 6 standard PST, 4 enhanced usual care in the full sample; these are descriptive medians with unequal selected follow-up denominators.",
+        "uncertainty": "No significant-benefit claim. IPV recall windows overlapped; misallocation confounds group comparison.",
+        "primaryStatus": "pilot clinical measures"
+      },
+      {
+        "name": "Safety",
+        "followUp": "During trial and births by data-collection end",
+        "result": "One serious adverse event: assault by husband. Two obstructed/prolonged-labour complications among 29 participants who had delivered.",
+        "effectEstimate": null,
+        "uncertainty": "Assault arm and relatedness to participation not reported; incomplete obstetric follow-up. Safe-delivery conclusion is not zero-harm evidence.",
+        "primaryStatus": "secondary implementation"
+      }
+    ],
+    "finding": "PST-IPV was implementable with adaptations, but serious allocation errors, 25% missing follow-up and short descriptive assessment preclude an efficacy conclusion. One serious assault event was reported without arm or causal attribution.",
+    "limitation": "Seventeen women with psychological/emotional IPV had no chance of assignment toPST-IPV; baseline imbalance suggests possible nonrandom allocation. Twelve of 39 assessments occurred before 9 weeks. Underpowered feasibility, missing follow-up, provider fidelity problems and overlapping IPV recall periods limit interpretation.",
+    "design": {
+      "type": "Randomized controlled feasibility study with material allocation-protocol deviations",
+      "randomizationEvidence": "Independent statistician generated 3-arm 2: 1: 1 table; coordinator/research assistant retained tables and received calls after baseline. Enrollment in an arm closed at 25. Seventeen of 52 women misclassified as no IPV were instead allocated by linked trial’s 2-arm table, excluding their opportunity forPST-IPV; authors note possible nonrandom allocation from baseline imbalance.",
+      "masking": {
+        "participants": "No participant masking procedure established; active sessions versus leaflet care differ.",
+        "providers": "Explicitly unmasked; separate provider groups trained for each active intervention.",
+        "assessors": "Independent collectors exchanged recruitment sites for follow-up and were masked, with unmasking incidents to be documented; no incident count reported.",
+        "analysts": "Explicitly masked to allocation."
+      },
+      "crosses": 1,
+      "crossRationale": "Random tables and controlled allocation are verified, but one third were routed through the wrong allocation scheme. Retain one design cross with this prominent qualification; no double-blind claim and no reliable efficacy inference."
+    },
+    "quality": {
+      "riskOfBias": "High concern for comparative causal inference because 17/52 entered the wrong allocation table and arm-closing rules generated uneven groups; masked assessors/analysts do not repair this. No formal RoB/Jadad score.",
+      "attrition": "13/52 (25%)missing follow-up: 5 moved, 4 untraceable, 4 declined (often postnatal confinement). Arm follow-up 19/25, 8/12, 12/15. Nonresponders younger (median 20 vs 25.5) and apparently more trauma-symptomatic. 12/39 assessments occurred 37–61 days rather than target 63.",
+      "confounding": "Three-arm intended sample 35 and full sample 52 are reported separately. Shared controls with linked depression trial must not be counted as independent evidence. No powered efficacy test; differences in clinical medians are not treatment effects.",
+      "adverseFindings": "One serious adverse event was assault by husband; assignment and treatment relatedness unreported. Two obstructed/prolonged-labour complications among 29 delivered. Independent assessors found risk/confidentiality discussions needed improvement, and some providers did not respond to IPV disclosure.",
+      "transferLimits": "Rural Amharic-speaking pregnant women with depressive symptoms and IPV; imminent risk/psychosis/emergency care excluded. No long-term follow-up, no established adolescent subgroup effect.",
+      "jadad": "not established"
+    },
+    "access": {
+      "level": "full-text",
+      "sourceURLs": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:37889918%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1371%2Fjournal.pgph.0002054",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10610520/fullTextXML"
+      ],
+      "retrievedAt": "2026-10-30T08:21:40.085701+00:00"
+    },
+    "sources": [
+      {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:37889918%20AND%20SRC:MED&format=json&resultType=core",
+        "type": "Europe PMC core record sourced from PubMed/MEDLINE",
+        "retrievedAt": "2026-10-30T07:15:55.705516+00:00",
+        "identityVerified": true,
+        "notes": "Primary-publication abstract and bibliographic metadata accessed; canonical PubMed record: https://pubmed.ncbi.nlm.nih.gov/37889918/",
+        "retrievalQueryURL": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=TITLE_ABS%3A%28%22intimate+partner+violence%22+OR+%22domestic+violence%22+OR+%22battered+women%22%29+AND+TITLE_ABS%3A%28randomized+OR+randomised%29+AND+TITLE_ABS%3A%28therapy+OR+psychological+OR+psychotherapy+OR+cognitive+OR+counseling+OR+counselling+OR+%22motivational+interviewing%22%29&format=json&resultType=core&pageSize=1000"
+      },
+      {
+        "url": "https://api.crossref.org/works/10.1371%2Fjournal.pgph.0002054",
+        "type": "Crossref DOI registration metadata",
+        "retrievedAt": "2026-10-30T07:20:01.507627+00:00",
+        "identityVerified": true,
+        "notes": "DOI identity cross-check; metadata title: Problem-solving therapy for pregnant women experiencing depressive symptoms and intimate partner violence: A randomised, controlled feasibility trial in rural Ethiopia. Correction/update relations checked."
+      },
+      {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10610520/fullTextXML",
+        "type": "primary-full-text",
+        "retrievedAt": "2026-10-30T08:21:40.085701+00:00",
+        "identityVerified": true,
+        "notes": "Full primary report methods, results, tables and discussion inspected."
+      }
+    ],
+    "publicationStatus": {
+      "status": "epublish",
+      "correctionRetractionCheck": {
+        "europePMCpubTypes": [
+          "research-article",
+          "Journal Article"
+        ],
+        "crossrefUpdateRelations": [],
+        "crossrefRelations": {},
+        "crossrefChecked": true
+      },
+      "uncertainty": "No comprehensive publisher/Crossmark or registry audit claimed; correction/retraction absence is limited to accessed metadata."
+    },
+    "recommendationRationale": "Retain as pending candidate evidence; interpret the study design, null outcomes and access limits together.",
+    "review": {
+      "status": "pending",
+      "reviewer": null
+    },
+    "assessmentStatus": "assessed",
+    "assessmentNotes": [
+      "Full primary report methods, results, tables and discussion inspected.",
+      "This proposal is not human approval. It revises an existing publication without increasing screened, publication or study-family totals.",
+      "PACTR 202002513482084 preserved. Linked standard PST/depression trial shares control structure; 35 correctly randomized versus 17 misclassified women are not separate independent experiments.",
+      "Feasibility results remain review-ready with central misallocation and SAE caveats. Assault attribution is unreported, not assumed either related or unrelated."
+    ],
+    "reviewReady": true,
+    "reviewReadiness": "ready-with-methodological-limitations",
+    "researchLane": "adult-therapy",
+    "studyDesignAssessment": {
+      "category": "rct",
+      "isRandomizedControlledTrial": true,
+      "basis": "Independent statistician generated 3-arm 2: 1: 1 table; coordinator/research assistant retained tables and received calls after baseline. Enrollment in an arm closed at 25. Seventeen of 52 women misclassified as no IPV were instead allocated by linked trial’s 2-arm table, excluding their opportunity forPST-IPV; authors note possible nonrandom allocation from baseline imbalance.",
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:37889918%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1371%2Fjournal.pgph.0002054",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10610520/fullTextXML"
+      ],
+      "reviewScope": "full-text"
+    },
+    "paperTrustAssessment": {
+      "scope": "Paper",
+      "status": "assessed",
+      "score": 2,
+      "randomizedControlledTrial": true,
+      "peerReviewed": true,
+      "blinding": "not-confirmed",
+      "basis": "Random tables and controlled allocation are verified, but one third were routed through the wrong allocation scheme. Retain one design cross with this prominent qualification; no double-blind claim and no reliable efficacy inference.",
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:37889918%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1371%2Fjournal.pgph.0002054",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10610520/fullTextXML"
+      ],
+      "reviewScope": "full-text",
+      "humanApproval": false,
+      "displayCrosses": 1,
+      "maskingRoles": {
+        "participants": "No participant masking procedure established; active sessions versus leaflet care differ.",
+        "providers": "Explicitly unmasked; separate provider groups trained for each active intervention.",
+        "assessors": "Independent collectors exchanged recruitment sites for follow-up and were masked, with unmasking incidents to be documented; no incident count reported.",
+        "analysts": "Explicitly masked to allocation."
+      }
+    },
+    "jadad": {
+      "status": "unassessed",
+      "score": null
+    },
+    "evidence": {
+      "population": {
+        "relation": "direct",
+        "population": "Pregnant women with depressive symptoms and past-year IPV.",
+        "exposureEvidence": "Pregnant 12–34 weeks, depressive symptoms PHQ-9≥5 plus functional impact and past-year IPV by non-graphic or WHO screen; psychological/emotional IPV qualifies.",
+        "rationale": "Explicit domestic/intimate-partner violence exposure in the studied population; psychological intervention is within Language scope.",
+        "transferLimit": "See limitation and quality fields; no population-wide clinical recommendation is implied."
+      },
+      "intervention": {
+        "description": "Four-session problem-solving therapy adapted with trauma/IPV-informed training, risk awareness and avoidance of victim blaming; sessions address participants’ chosen problems.",
+        "dose": "Four sessions within 8 weeks; mean session durations approximately 32–51 minutes. 19/25 completed all 4; 5 attended none, 1 attended one.",
+        "provider": "Six trained antenatal-care providers for PST-IPV, separately trained from six standard PST providers; psychiatrist/psychologist training and supervision with audio-sampled fidelity assessment."
+      },
+      "comparator": "Four-session standard PST (12 women) or enhanced usual care (15 women: well-being leaflet and local support information). All arms additional to routine antenatal care. Shared comparator structure with linked depression feasibility trial.",
+      "outcomes": [
+        {
+          "name": "Implementation feasibility",
+          "followUp": "Recruitment 35 days; follow-up planned 9 weeks",
+          "result": "52 eligiblewomen enrolled; 39/52 completed assessment; delivery feasible with changes required to randomization, provider skills and scheduling.",
+          "effectEstimate": null,
+          "uncertainty": "Primary aim was feasibility, not powered comparative efficacy.",
+          "primaryStatus": "primary"
+        },
+        {
+          "name": "Acceptability and delivery fidelity",
+          "followUp": "Four-session intervention over 8 weeks",
+          "result": "19/25 PST-IPV and 8/12 standard PST completed all 4 sessions. Providers sometimes ignored IPV disclosures; risk/confidentiality discussion needed improvement.",
+          "effectEstimate": null,
+          "uncertainty": "IPV was infrequently discussed and then for 1–4 minutes. Completion alone does not establish competent IPV response.",
+          "primaryStatus": "secondary implementation"
+        },
+        {
+          "name": "Depressive symptoms and IPV",
+          "followUp": "Planned 9 weeks; 12/39 assessments occurred early",
+          "result": "Descriptive symptoms/IPV scores fell in several arms; no powered causal comparison or effect size established.",
+          "effectEstimate": "Follow-up medianPHQ-9: 6 PST-IPV, 6 standard PST, 4 enhanced usual care in the full sample; these are descriptive medians with unequal selected follow-up denominators.",
+          "uncertainty": "No significant-benefit claim. IPV recall windows overlapped; misallocation confounds group comparison.",
+          "primaryStatus": "pilot clinical measures"
+        },
+        {
+          "name": "Safety",
+          "followUp": "During trial and births by data-collection end",
+          "result": "One serious adverse event: assault by husband. Two obstructed/prolonged-labour complications among 29 participants who had delivered.",
+          "effectEstimate": null,
+          "uncertainty": "Assault arm and relatedness to participation not reported; incomplete obstetric follow-up. Safe-delivery conclusion is not zero-harm evidence.",
+          "primaryStatus": "secondary implementation"
+        }
+      ],
+      "access": {
+        "level": "full-text",
+        "sourceURLs": [
+          "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:37889918%20AND%20SRC:MED&format=json&resultType=core",
+          "https://api.crossref.org/works/10.1371%2Fjournal.pgph.0002054",
+          "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10610520/fullTextXML"
+        ],
+        "retrievedAt": "2026-10-30T08:21:40.085701+00:00"
+      }
+    },
+    "citationSnapshot": {
+      "count": null,
+      "source": null,
+      "retrievedAt": null,
+      "status": "not-assessed"
+    },
+    "provenance": "Discovered by AI",
+    "priorContentHash": "a8b708e75848ba81679661cf66d65e1b1cb8bbb93e019a178f14983d0ef3604b",
+    "priorRevision": "r1-a8b708e75848",
+    "proposalStatus": "pending-coordinator-review-and-rehash",
+    "proposedAt": "2026-10-30T08:42:38.749794+00:00",
+    "sourceBatchRevision": "batch-8bd70e21e48d9a70"
+  },
+  {
+    "id": "dv-adult-therapy-34143803",
+    "title": "Evaluation of an integrated intervention to reduce psychological distress and intimate partner violence in refugees: Results from the Nguvu cluster randomized feasibility trial.",
+    "authors": [
+      "Greene MC",
+      "Likindikoki S",
+      "Rees S",
+      "Bonz A",
+      "Kaysen D",
+      "Misinzo L",
+      "Njau T",
+      "Kiluwa S",
+      "Turner R",
+      "Ventevogel P",
+      "Mbwambo JKK",
+      "Tol WA"
+    ],
+    "year": 2021,
+    "journal": "PloS one",
+    "doi": "10.1371/journal.pone.0252982",
+    "pmid": "34143803",
+    "trialRegistration": [
+      "ISRCTN65771265"
+    ],
+    "collection": "language",
+    "interventionFamily": "Nguvu integrated psychological and violence-prevention intervention.",
+    "publicationType": "Primary intervention study",
+    "studyFamilyId": "ISRCTN65771265",
+    "familyLinkageUncertain": false,
+    "existingRepositoryMatches": [],
+    "relevance": {
+      "relation": "direct",
+      "population": "Congolese refugee women with past-year IPV and elevated psychological distress.",
+      "exposureEvidence": "Past-year physical/sexual IPV on Abuse Assessment Screen plus elevated distress; married/in relationship in past 12 months. Psychological-only IPV did not independently meet entry criteria.",
+      "rationale": "Explicit domestic/intimate-partner violence exposure in the studied population; psychological intervention is within Language scope.",
+      "transferLimit": "See limitation and quality fields; no population-wide clinical recommendation is implied."
+    },
+    "age": {
+      "groups": [
+        "adults"
+      ],
+      "reportedRange": "Eligibility 18+; sample mean 33.52 (SD 9.01) years. Observed minimum/maximum not established.",
+      "youthScope": "No under 18 eligibility; no adolescent subgroup inference."
+    },
+    "country": "Tanzania",
+    "setting": "Nyarugusu refugee camp, Tanzania; Congolese women recruited through local women’s groups, April–September 2017.",
+    "sampleSize": {
+      "randomized": 311,
+      "analyzed": 275,
+      "description": "43 groups randomized before individual recruitment; 311 enrolled women assigned 158 Nguvu/153 usual care. Follow-up 275 (143/132); adjusted main model 272 and completer analysis 219. Target 400 was not achieved. Narrative and Table 1 reverse cluster-arm counts; retain 43 total and flag discrepancy."
+    },
+    "intervention": {
+      "description": "Nguvu integrates shortened cognitive processing therapy with advocacy counselling, adapted for refugee women.",
+      "dose": "One individual plus seven weekly group sessions; groups 6–13, facilitated in pairs. Mean 5.4/8 attended; 92/158 (58.2%)completed≥6, 47/158 all 8, 13/158 none.",
+      "provider": "Trained nonspecialist Congolese refugee incentive workers with prior basic psychosocial/protection experience."
+    },
+    "comparator": "Information about existing protection/mental-health services and usual humanitarian case management/referrals; Nguvu participants could also access these services.",
+    "outcomes": [
+      {
+        "name": "Psychological distress: depression, anxiety, PTSD",
+        "followUp": "Nine weeks after enrollment, approximately one week after intervention",
+        "result": "Baseline-adjusted randomized complete-case estimates do not clearly exclude no benefit; apparent unadjusted differences attenuate.",
+        "effectEstimate": "Depression MD−0.14 (95% CI−0.30, 0.03); anxiety−0.12 (−0.30, 0.06); PTSD−0.18 (−0.36, 0.00), Model 3 n 272.",
+        "uncertainty": "Cluster mixed models adjust demographics and baseline outcome imbalance; PTSD upperCI rounded to 0.00. Not evidence of a definitive efficacy effect.",
+        "primaryStatus": "primary"
+      },
+      {
+        "name": "Psychological, physical and sexual IPV frequency",
+        "followUp": "Nine weeks",
+        "result": "No clear comparative benefit after baseline adjustment.",
+        "effectEstimate": "Log-frequency MD psychological 0.10 (95% CI−0.04, 0.24); physical 0.09 (−0.03, 0.21); sexual−0.03 (−0.24, 0.17).",
+        "uncertainty": "Positive values favor usual care; all intervals include zero. These are log-transformed frequency outcomes, not risk ratios.",
+        "primaryStatus": "primary"
+      },
+      {
+        "name": "Functional impairment",
+        "followUp": "Nine weeks",
+        "result": "No clear comparative difference.",
+        "effectEstimate": "Adjusted MD−0.14 (95% CI−0.37, 0.09).",
+        "uncertainty": "Model 3 n 272.",
+        "primaryStatus": "secondary"
+      },
+      {
+        "name": "Exploratory high-baseline-IPV subgroup",
+        "followUp": "Nine weeks",
+        "result": "Higher subsequent IPV frequency reported with Nguvu among women above the baseline IPV median.",
+        "effectEstimate": "Exploratory subgroup MD 0.90 (95% CI 0.38, 1.42), Table 5.",
+        "uncertainty": "Underpowered moderator tests, multiple comparisons, baseline imbalance and differential completion; a signal to retain, not established treatment-caused harm.",
+        "primaryStatus": "exploratory"
+      },
+      {
+        "name": "PTSD among intervention completers",
+        "followUp": "Nine weeks",
+        "result": "Selected completer analysis favored Nguvu; it must not replace the randomized comparison.",
+        "effectEstimate": "MD−0.22 (95% CI−0.43,−0.01), Model 4 n 219.",
+        "uncertainty": "Treatment completion associated with baseline IPV severity; per-protocol comparison is vulnerable to selection bias.",
+        "primaryStatus": "exploratory per-protocol"
+      }
+    ],
+    "finding": "Nguvu was feasible for some refugee women, but the adjusted randomized comparison does not clearly establish psychological or IPV benefit. Severe IPV predicted lower completion; an exploratory subgroup showed higher subsequent IPV. No long-term durability was tested.",
+    "limitation": "Under-recruitment, baseline imbalances, recruitment after cluster assignment, unmasked self-report, vulnerable assessor masking, complete-case analysis and severity-related intervention dropout limit causal inference. Table 1 reverses the narrative cluster-arm counts; all 43 clusters and individual 158/153 totals are retained.",
+    "design": {
+      "type": "Cluster randomized feasibility trial with recruitment after cluster allocation",
+      "randomizationEvidence": "Independent investigator used unrestricted Stata 14 random sequence to allocate all 43 women’s groups simultaneously, then recruited individual women by cluster assignment. Narrative says 21 Nguvu/22 usual-care clusters; Table 1 labels the reverse. Individual allocations 158/153 are consistent.",
+      "masking": {
+        "participants": "Explicitly unmasked.",
+        "providers": "Explicitly unmasked.",
+        "assessors": "Not informed of allocation, but familiar with Nguvu and could infer it from participants at endline; integrity not established.",
+        "analysts": "Not established from accessed source."
+      },
+      "crosses": 1,
+      "crossRationale": "Cluster randomization verified; participants/providers unmasked and assessor masking vulnerable. One cross describes randomized design, not low risk of bias or efficacy."
+    },
+    "quality": {
+      "riskOfBias": "Important concerns from baseline mental-health/IPV imbalance, post-allocation recruitment, unmasked self-report and possible assessor unmasking; no formal numeric rating.",
+      "attrition": "36/311 (11.6%) lacked endline: 15/158 Nguvu, 21/153 usual care. Eighteen relocated/resettled. Later resettlement stages predicted loss. One withdrew fearing neighbors would learn of participation. Intervention completion 92/158 is distinct from study follow-up 143/158.",
+      "confounding": "Models 1–3 labeled ITT by authors are complete-case randomized-group comparisons, not all 311 participants. Model 3 controls baseline imbalances; favorable per-protocol PTSD estimate is selected. Moderator tests are exploratory, multiple and underpowered.",
+      "adverseFindings": "Three adverse events reviewed by DSMB/IRB were judged unlikely due to participation and consistent with ongoing IPV; participants were connected to services. Exploratory high-baseline-IPV group had higher subsequent IPV frequency with Nguvu; not causal proof. One privacy-related withdrawal.",
+      "transferLimits": "Adult Congolese women in established refugee groups with past-year physical/sexual IPV and elevated distress. Imminent suicidality/severe psychiatric impairment excluded; no durability beyond nine weeks.",
+      "jadad": "not established"
+    },
+    "access": {
+      "level": "full-text",
+      "sourceURLs": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:34143803%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1371%2Fjournal.pone.0252982",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8213126/fullTextXML"
+      ],
+      "retrievedAt": "2026-10-30T08:21:33.147602+00:00"
+    },
+    "sources": [
+      {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:34143803%20AND%20SRC:MED&format=json&resultType=core",
+        "type": "Europe PMC core record sourced from PubMed/MEDLINE",
+        "retrievedAt": "2026-10-30T07:15:55.705516+00:00",
+        "identityVerified": true,
+        "notes": "Primary-publication abstract and bibliographic metadata accessed; canonical PubMed record: https://pubmed.ncbi.nlm.nih.gov/34143803/",
+        "retrievalQueryURL": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=TITLE_ABS%3A%28%22intimate+partner+violence%22+OR+%22domestic+violence%22+OR+%22battered+women%22%29+AND+TITLE_ABS%3A%28randomized+OR+randomised%29+AND+TITLE_ABS%3A%28therapy+OR+psychological+OR+psychotherapy+OR+cognitive+OR+counseling+OR+counselling+OR+%22motivational+interviewing%22%29&format=json&resultType=core&pageSize=1000"
+      },
+      {
+        "url": "https://api.crossref.org/works/10.1371%2Fjournal.pone.0252982",
+        "type": "Crossref DOI registration metadata",
+        "retrievedAt": "2026-10-30T07:20:01.423478+00:00",
+        "identityVerified": true,
+        "notes": "DOI identity cross-check; metadata title: Evaluation of an integrated intervention to reduce psychological distress and intimate partner violence in refugees: Results from the Nguvu cluster randomized feasibility trial. Correction/update relations checked."
+      },
+      {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8213126/fullTextXML",
+        "type": "primary-full-text",
+        "retrievedAt": "2026-10-30T08:21:33.147602+00:00",
+        "identityVerified": true,
+        "notes": "Full primary report methods, results, tables and discussion inspected."
+      }
+    ],
+    "publicationStatus": {
+      "status": "epublish",
+      "correctionRetractionCheck": {
+        "europePMCpubTypes": [
+          "Research Support, Non-U.S. Gov't",
+          "research-article",
+          "Randomized Controlled Trial",
+          "Journal Article"
+        ],
+        "crossrefUpdateRelations": [],
+        "crossrefRelations": {},
+        "crossrefChecked": true
+      },
+      "uncertainty": "No comprehensive publisher/Crossmark or registry audit claimed; correction/retraction absence is limited to accessed metadata."
+    },
+    "recommendationRationale": "Retain as pending candidate evidence; interpret the study design, null outcomes and access limits together.",
+    "review": {
+      "status": "pending",
+      "reviewer": null
+    },
+    "assessmentStatus": "assessed",
+    "assessmentNotes": [
+      "Full primary report methods, results, tables and discussion inspected.",
+      "This proposal is not human approval. It revises an existing publication without increasing screened, publication or study-family totals.",
+      "Development/pilot cohort used a camp zone excluded from this feasibility trial; it is not the same 311 women. Preserve ISRCTN 65771265 as this randomized family.",
+      "Review-ready with the explicit cluster-count inconsistency and limitations; avoid choosing one arm-specific cluster count or claiming efficacy from completers."
+    ],
+    "reviewReady": true,
+    "reviewReadiness": "ready-with-methodological-limitations",
+    "researchLane": "adult-therapy",
+    "studyDesignAssessment": {
+      "category": "rct",
+      "isRandomizedControlledTrial": true,
+      "basis": "Independent investigator used unrestricted Stata 14 random sequence to allocate all 43 women’s groups simultaneously, then recruited individual women by cluster assignment. Narrative says 21 Nguvu/22 usual-care clusters; Table 1 labels the reverse. Individual allocations 158/153 are consistent.",
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:34143803%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1371%2Fjournal.pone.0252982",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8213126/fullTextXML"
+      ],
+      "reviewScope": "full-text"
+    },
+    "paperTrustAssessment": {
+      "scope": "Paper",
+      "status": "assessed",
+      "score": 2,
+      "randomizedControlledTrial": true,
+      "peerReviewed": true,
+      "blinding": "not-confirmed",
+      "basis": "Cluster randomization verified; participants/providers unmasked and assessor masking vulnerable. One cross describes randomized design, not low risk of bias or efficacy.",
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:34143803%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1371%2Fjournal.pone.0252982",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8213126/fullTextXML"
+      ],
+      "reviewScope": "full-text",
+      "humanApproval": false,
+      "displayCrosses": 1,
+      "maskingRoles": {
+        "participants": "Explicitly unmasked.",
+        "providers": "Explicitly unmasked.",
+        "assessors": "Not informed of allocation, but familiar with Nguvu and could infer it from participants at endline; integrity not established.",
+        "analysts": "Not established from accessed source."
+      }
+    },
+    "jadad": {
+      "status": "unassessed",
+      "score": null
+    },
+    "evidence": {
+      "population": {
+        "relation": "direct",
+        "population": "Congolese refugee women with past-year IPV and elevated psychological distress.",
+        "exposureEvidence": "Past-year physical/sexual IPV on Abuse Assessment Screen plus elevated distress; married/in relationship in past 12 months. Psychological-only IPV did not independently meet entry criteria.",
+        "rationale": "Explicit domestic/intimate-partner violence exposure in the studied population; psychological intervention is within Language scope.",
+        "transferLimit": "See limitation and quality fields; no population-wide clinical recommendation is implied."
+      },
+      "intervention": {
+        "description": "Nguvu integrates shortened cognitive processing therapy with advocacy counselling, adapted for refugee women.",
+        "dose": "One individual plus seven weekly group sessions; groups 6–13, facilitated in pairs. Mean 5.4/8 attended; 92/158 (58.2%)completed≥6, 47/158 all 8, 13/158 none.",
+        "provider": "Trained nonspecialist Congolese refugee incentive workers with prior basic psychosocial/protection experience."
+      },
+      "comparator": "Information about existing protection/mental-health services and usual humanitarian case management/referrals; Nguvu participants could also access these services.",
+      "outcomes": [
+        {
+          "name": "Psychological distress: depression, anxiety, PTSD",
+          "followUp": "Nine weeks after enrollment, approximately one week after intervention",
+          "result": "Baseline-adjusted randomized complete-case estimates do not clearly exclude no benefit; apparent unadjusted differences attenuate.",
+          "effectEstimate": "Depression MD−0.14 (95% CI−0.30, 0.03); anxiety−0.12 (−0.30, 0.06); PTSD−0.18 (−0.36, 0.00), Model 3 n 272.",
+          "uncertainty": "Cluster mixed models adjust demographics and baseline outcome imbalance; PTSD upperCI rounded to 0.00. Not evidence of a definitive efficacy effect.",
+          "primaryStatus": "primary"
+        },
+        {
+          "name": "Psychological, physical and sexual IPV frequency",
+          "followUp": "Nine weeks",
+          "result": "No clear comparative benefit after baseline adjustment.",
+          "effectEstimate": "Log-frequency MD psychological 0.10 (95% CI−0.04, 0.24); physical 0.09 (−0.03, 0.21); sexual−0.03 (−0.24, 0.17).",
+          "uncertainty": "Positive values favor usual care; all intervals include zero. These are log-transformed frequency outcomes, not risk ratios.",
+          "primaryStatus": "primary"
+        },
+        {
+          "name": "Functional impairment",
+          "followUp": "Nine weeks",
+          "result": "No clear comparative difference.",
+          "effectEstimate": "Adjusted MD−0.14 (95% CI−0.37, 0.09).",
+          "uncertainty": "Model 3 n 272.",
+          "primaryStatus": "secondary"
+        },
+        {
+          "name": "Exploratory high-baseline-IPV subgroup",
+          "followUp": "Nine weeks",
+          "result": "Higher subsequent IPV frequency reported with Nguvu among women above the baseline IPV median.",
+          "effectEstimate": "Exploratory subgroup MD 0.90 (95% CI 0.38, 1.42), Table 5.",
+          "uncertainty": "Underpowered moderator tests, multiple comparisons, baseline imbalance and differential completion; a signal to retain, not established treatment-caused harm.",
+          "primaryStatus": "exploratory"
+        },
+        {
+          "name": "PTSD among intervention completers",
+          "followUp": "Nine weeks",
+          "result": "Selected completer analysis favored Nguvu; it must not replace the randomized comparison.",
+          "effectEstimate": "MD−0.22 (95% CI−0.43,−0.01), Model 4 n 219.",
+          "uncertainty": "Treatment completion associated with baseline IPV severity; per-protocol comparison is vulnerable to selection bias.",
+          "primaryStatus": "exploratory per-protocol"
+        }
+      ],
+      "access": {
+        "level": "full-text",
+        "sourceURLs": [
+          "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:34143803%20AND%20SRC:MED&format=json&resultType=core",
+          "https://api.crossref.org/works/10.1371%2Fjournal.pone.0252982",
+          "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8213126/fullTextXML"
+        ],
+        "retrievedAt": "2026-10-30T08:21:33.147602+00:00"
+      }
+    },
+    "citationSnapshot": {
+      "count": null,
+      "source": null,
+      "retrievedAt": null,
+      "status": "not-assessed"
+    },
+    "provenance": "Discovered by AI",
+    "priorContentHash": "35b6a69dd926de42003041a3008eb1a1c4f66a753118744bb2c29f5528f37a6b",
+    "priorRevision": "r1-35b6a69dd926",
+    "proposalStatus": "pending-coordinator-review-and-rehash",
+    "proposedAt": "2026-10-30T08:42:38.749794+00:00",
+    "sourceBatchRevision": "batch-8bd70e21e48d9a70"
+  },
+  {
+    "id": "dv-adult-therapy-34305273",
+    "title": "A Randomized Controlled Trial Comparing HOPE Treatment and Present-Centered Therapy in Women Residing in Shelter with PTSD from Intimate Partner Violence.",
+    "authors": [
+      "Johnson DM",
+      "Palmieri PA",
+      "Zlotnick C",
+      "Johnson NL",
+      "Hoffman L",
+      "Holmes SC",
+      "Ceroni TL"
+    ],
+    "year": 2020,
+    "journal": "Psychology of women quarterly",
+    "doi": "10.1177/0361684320953120",
+    "pmid": "34305273",
+    "trialRegistration": [],
+    "collection": "language",
+    "interventionFamily": "HOPE: empowerment-oriented cognitive-behavioral treatment.",
+    "publicationType": "Primary intervention study",
+    "studyFamilyId": "HOPE-PCT-172-2020",
+    "familyLinkageUncertain": false,
+    "existingRepositoryMatches": [],
+    "relevance": {
+      "relation": "direct",
+      "population": "Women residing in domestic-violence shelters with IPV-related PTSD.",
+      "exposureEvidence": "At least one SVAW or PMWI IPV event in month before shelter entry and full DSM-IV-TR IPV-related PTSD by CAPS were required.",
+      "rationale": "Explicit domestic/intimate-partner violence exposure in the studied population; psychological intervention is within Language scope.",
+      "transferLimit": "See limitation and quality fields; no population-wide clinical recommendation is implied."
+    },
+    "age": {
+      "groups": [
+        "adults"
+      ],
+      "reportedRange": "Observed age 19–59 years; mean 35.13 (SD 9.12).",
+      "youthScope": "No child or adolescent participants in reported sample."
+    },
+    "country": "United States",
+    "setting": "Six domestic-violence shelters in five Midwestern US counties; data collected February 2013–February 2017.",
+    "sampleSize": {
+      "randomized": 172,
+      "analyzed": 172,
+      "description": "HOPE 83 versus PCT+ 89. ITT models use all available observations, not complete follow-up for 172. Follow-up counts 154, 142, 135, 127 at post-shelter, post-treatment, 6 and 12 months; outcome-specific denominators vary."
+    },
+    "intervention": {
+      "description": "Empowerment-oriented, present-centered CBT with safety planning, cognitive restructuring and coping/relationship skills; current symptoms are linked to IPV but traumatic memories are not processed.",
+      "dose": "Up to 16 sessions of 50–60 minutes during shelter and first 3 months after leaving; HOPE mean 8.86 sessions (SD 6.17), 44.2% attended at least 8. Eleven participants across arms received optional shelter boosters.",
+      "provider": "Four masters-level therapists trained in both protocols, practice cases and continuing supervision; external sampled fidelity ratings."
+    },
+    "comparator": "Attention-matched PCT+ with present-focused problem solving, psychoeducation and safety planning, up to 16 sessions; mean 10.06 (SD 5.82). Both groups also received standard shelter services.",
+    "outcomes": [
+      {
+        "name": "CAPS PTSD severity and IPV measures",
+        "followUp": "Post-shelter, post-treatment, 6 and 12 months",
+        "result": "Both active arms improved, but no significant between-group difference at any occasion or in change from baseline.",
+        "effectEstimate": "Reported absolute between-group standardized differences≤0.32 at occasions and≤0.30 for change; no comparative confidence interval provided in the main-report results.",
+        "uncertainty": "No inactive control; null superiority tests do not establish equivalence or isolate therapy from shelter/time effects.",
+        "primaryStatus": "primary"
+      },
+      {
+        "name": "Reliable PTSD improvement and diagnosis",
+        "followUp": "Post-treatment and later follow-up",
+        "result": "Post-treatment reliable CAPS improvement 54/65 (83.1%)HOPE versus 59/77 (76.6%)PCT+; group difference not significant. PTSD diagnosis rates also did not significantly differ at follow-up.",
+        "effectEstimate": null,
+        "uncertainty": "These are assessed-participant denominators, not 172 randomized participants.",
+        "primaryStatus": "Secondary clinical response analyses"
+      },
+      {
+        "name": "Depression, empowerment, posttraumatic cognitions and health-related quality of life",
+        "followUp": "Through 12 months post-treatment",
+        "result": "Within-group improvements without significant comparative superiority.",
+        "effectEstimate": null,
+        "uncertainty": "Some residual depression, subthreshold PTSD and abuse remained. Multiple comparisons used alpha<.01.",
+        "primaryStatus": "secondary"
+      }
+    ],
+    "finding": "HOPE did not outperform an attention-matched PCT+ intervention on PTSD, IPV or secondary outcomes. Both active groups improved; no untreated control supports an absolute treatment-effect estimate.",
+    "limitation": "Treatment providers knew protocols, and shared shelters permit contamination. Participant masking identity is not explicitly role-confirmed despite double-blind labeling. Missing-at-random models assume an unproven missingness mechanism; only 127/172 remained at 12 months. Active-comparator null results are not equivalence evidence.",
+    "design": {
+      "type": "Randomized active-comparator trial; author describes double-blind, but only assessor masking is explicitly role-verified",
+      "randomizationEvidence": "Urn randomization assigned 83 toHOPE and 89 toPCT+, stratifying substance-use diagnosis and medication status. Allocation-concealment implementation is not separately established from the report.",
+      "masking": {
+        "participants": "Author calls trial double-blind and describes all treatment as HOPE for blinding, identical workbook naming with arm-specific content, and discouraging sharing. These are allocation-identity concealment procedures; the participant role is not separately explicitly confirmed and masking success is unmeasured.",
+        "providers": "Therapists trained in and delivered both distinct protocols; provider masking is not supported.",
+        "assessors": "Graduate psychology assessors explicitly masked to treatment condition at follow-up.",
+        "analysts": "Not established from accessed full report."
+      },
+      "crosses": 1,
+      "crossRationale": "Retain one cross: randomization and assessor masking verified. Reported double-blind label plus common naming does not independently verify the participant masking role. A two-cross proposal requires further role-specific primary confirmation; successful masking measurement is a separate limitation."
+    },
+    "quality": {
+      "riskOfBias": "Randomization and masked clinical assessment strengthen comparison. Therapist allegiance/performance effects, possible contamination, unverified participant-role masking and follow-up attrition remain. No formal RoB or Jadad score assigned.",
+      "attrition": "Assessment retention 154/172 post-shelter, 142/172 post-treatment, 135/172 at 6 months, 127/172 at 12 months. At 12 months 56/83 HOPE and 71/89 PCT+ contributed CAPS data. Treatment dropout 6/83 versus 5/89 is distinct from missing assessments. Black participants more often completed all assessments than White participants (81.6% vs 62.5%, p=.008).",
+      "confounding": "ITT multivariate models use all available data under missing-at-random assumption; robust SEs and alpha<.01. Significant within-group change cannot separate psychotherapy, shelter services and time.",
+      "adverseFindings": "Authors report no study-related serious adverse events, not zero adverse events overall. Ten participants were removed from assigned treatment for higher/different care: 6 HOPE, 4 PCT+; still invited to follow-up. Residual symptoms and some further abuse persisted.",
+      "transferLimits": "Women with recent IPV and diagnosed PTSD in US shelters; severe suicidal intent/plan, current psychosis, recent substance dependence, bipolar disorder or concurrent individual therapy were excluded.",
+      "jadad": "not established"
+    },
+    "access": {
+      "level": "full-text",
+      "sourceURLs": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:34305273%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1177%2F0361684320953120",
+        "https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_json/PMC8294703/unicode"
+      ],
+      "retrievedAt": "2026-10-30T08:22:03.536155+00:00"
+    },
+    "sources": [
+      {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:34305273%20AND%20SRC:MED&format=json&resultType=core",
+        "type": "Europe PMC core record sourced from PubMed/MEDLINE",
+        "retrievedAt": "2026-10-30T07:14:57.490108+00:00",
+        "identityVerified": true,
+        "notes": "Primary-publication abstract and bibliographic metadata accessed; canonical PubMed record: https://pubmed.ncbi.nlm.nih.gov/34305273/",
+        "retrievalQueryURL": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=%28%22domestic+violence%22+OR+%22intimate+partner+violence%22%29+AND+%28Crespo+OR+Echeburua+OR+Kubany+OR+Zlotnick+OR+Hegarty+OR+Ferrari%29&format=json&resultType=core&pageSize=200"
+      },
+      {
+        "url": "https://api.crossref.org/works/10.1177%2F0361684320953120",
+        "type": "Crossref DOI registration metadata",
+        "retrievedAt": "2026-10-30T07:19:57.441368+00:00",
+        "identityVerified": true,
+        "notes": "DOI identity cross-check; metadata title: A Randomized Controlled Trial Comparing HOPE Treatment and Present-Centered Therapy in Women Residing in Shelter With PTSD From Intimate Partner Violence. Correction/update relations checked."
+      },
+      {
+        "url": "https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_json/PMC8294703/unicode",
+        "type": "primary-full-text",
+        "retrievedAt": "2026-10-30T08:22:03.536155+00:00",
+        "identityVerified": true,
+        "notes": "Full primary report methods, results, tables and discussion inspected."
+      }
+    ],
+    "publicationStatus": {
+      "status": "ppublish",
+      "correctionRetractionCheck": {
+        "europePMCpubTypes": [
+          "research-article",
+          "Journal Article"
+        ],
+        "crossrefUpdateRelations": [],
+        "crossrefRelations": {},
+        "crossrefChecked": true
+      },
+      "uncertainty": "No comprehensive publisher/Crossmark or registry audit claimed; correction/retraction absence is limited to accessed metadata."
+    },
+    "recommendationRationale": "Retain as pending candidate evidence; interpret the study design, null outcomes and access limits together.",
+    "review": {
+      "status": "pending",
+      "reviewer": null
+    },
+    "assessmentStatus": "assessed",
+    "assessmentNotes": [
+      "Full primary report methods, results, tables and discussion inspected.",
+      "This proposal is not human approval. It revises an existing publication without increasing screened, publication or study-family totals.",
+      "Cohort collected 2013–2017 is distinct from the earlier HOPE 70 and HOPE 60 trials; common intervention name does not imply repeated participants. Preserve HOPE-PCT-172-2020 family identifier.",
+      "Main manuscript and Tables 2–4 inspected via official NLM BioC author-manuscript API; supplementary statistical syntax and trial registry not independently verified."
+    ],
+    "reviewReady": true,
+    "reviewReadiness": "ready-with-methodological-limitations",
+    "researchLane": "adult-therapy",
+    "studyDesignAssessment": {
+      "category": "rct",
+      "isRandomizedControlledTrial": true,
+      "basis": "Urn randomization assigned 83 toHOPE and 89 toPCT+, stratifying substance-use diagnosis and medication status. Allocation-concealment implementation is not separately established from the report.",
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:34305273%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1177%2F0361684320953120",
+        "https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_json/PMC8294703/unicode"
+      ],
+      "reviewScope": "full-text"
+    },
+    "paperTrustAssessment": {
+      "scope": "Paper",
+      "status": "assessed",
+      "score": 2,
+      "randomizedControlledTrial": true,
+      "peerReviewed": true,
+      "blinding": "not-confirmed",
+      "basis": "Retain one cross: randomization and assessor masking verified. Reported double-blind label plus common naming does not independently verify the participant masking role. A two-cross proposal requires further role-specific primary confirmation; successful masking measurement is a separate limitation.",
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:34305273%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1177%2F0361684320953120",
+        "https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_json/PMC8294703/unicode"
+      ],
+      "reviewScope": "full-text",
+      "humanApproval": false,
+      "displayCrosses": 1,
+      "maskingRoles": {
+        "participants": "Author calls trial double-blind and describes all treatment as HOPE for blinding, identical workbook naming with arm-specific content, and discouraging sharing. These are allocation-identity concealment procedures; the participant role is not separately explicitly confirmed and masking success is unmeasured.",
+        "providers": "Therapists trained in and delivered both distinct protocols; provider masking is not supported.",
+        "assessors": "Graduate psychology assessors explicitly masked to treatment condition at follow-up.",
+        "analysts": "Not established from accessed full report."
+      }
+    },
+    "jadad": {
+      "status": "unassessed",
+      "score": null
+    },
+    "evidence": {
+      "population": {
+        "relation": "direct",
+        "population": "Women residing in domestic-violence shelters with IPV-related PTSD.",
+        "exposureEvidence": "At least one SVAW or PMWI IPV event in month before shelter entry and full DSM-IV-TR IPV-related PTSD by CAPS were required.",
+        "rationale": "Explicit domestic/intimate-partner violence exposure in the studied population; psychological intervention is within Language scope.",
+        "transferLimit": "See limitation and quality fields; no population-wide clinical recommendation is implied."
+      },
+      "intervention": {
+        "description": "Empowerment-oriented, present-centered CBT with safety planning, cognitive restructuring and coping/relationship skills; current symptoms are linked to IPV but traumatic memories are not processed.",
+        "dose": "Up to 16 sessions of 50–60 minutes during shelter and first 3 months after leaving; HOPE mean 8.86 sessions (SD 6.17), 44.2% attended at least 8. Eleven participants across arms received optional shelter boosters.",
+        "provider": "Four masters-level therapists trained in both protocols, practice cases and continuing supervision; external sampled fidelity ratings."
+      },
+      "comparator": "Attention-matched PCT+ with present-focused problem solving, psychoeducation and safety planning, up to 16 sessions; mean 10.06 (SD 5.82). Both groups also received standard shelter services.",
+      "outcomes": [
+        {
+          "name": "CAPS PTSD severity and IPV measures",
+          "followUp": "Post-shelter, post-treatment, 6 and 12 months",
+          "result": "Both active arms improved, but no significant between-group difference at any occasion or in change from baseline.",
+          "effectEstimate": "Reported absolute between-group standardized differences≤0.32 at occasions and≤0.30 for change; no comparative confidence interval provided in the main-report results.",
+          "uncertainty": "No inactive control; null superiority tests do not establish equivalence or isolate therapy from shelter/time effects.",
+          "primaryStatus": "primary"
+        },
+        {
+          "name": "Reliable PTSD improvement and diagnosis",
+          "followUp": "Post-treatment and later follow-up",
+          "result": "Post-treatment reliable CAPS improvement 54/65 (83.1%)HOPE versus 59/77 (76.6%)PCT+; group difference not significant. PTSD diagnosis rates also did not significantly differ at follow-up.",
+          "effectEstimate": null,
+          "uncertainty": "These are assessed-participant denominators, not 172 randomized participants.",
+          "primaryStatus": "Secondary clinical response analyses"
+        },
+        {
+          "name": "Depression, empowerment, posttraumatic cognitions and health-related quality of life",
+          "followUp": "Through 12 months post-treatment",
+          "result": "Within-group improvements without significant comparative superiority.",
+          "effectEstimate": null,
+          "uncertainty": "Some residual depression, subthreshold PTSD and abuse remained. Multiple comparisons used alpha<.01.",
+          "primaryStatus": "secondary"
+        }
+      ],
+      "access": {
+        "level": "full-text",
+        "sourceURLs": [
+          "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:34305273%20AND%20SRC:MED&format=json&resultType=core",
+          "https://api.crossref.org/works/10.1177%2F0361684320953120",
+          "https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_json/PMC8294703/unicode"
+        ],
+        "retrievedAt": "2026-10-30T08:22:03.536155+00:00"
+      }
+    },
+    "citationSnapshot": {
+      "count": null,
+      "source": null,
+      "retrievedAt": null,
+      "status": "not-assessed"
+    },
+    "provenance": "Discovered by AI",
+    "priorContentHash": "163342d2c6a789b89d62f38350930deef22a8d0d44514e6e764c9a5da0376d8d",
+    "priorRevision": "r1-163342d2c6a7",
+    "proposalStatus": "pending-coordinator-review-and-rehash",
+    "proposedAt": "2026-10-30T08:42:38.749794+00:00",
+    "sourceBatchRevision": "batch-8bd70e21e48d9a70"
+  },
+  {
+    "id": "dv-adult-therapy-33303427",
+    "title": "Two-year follow up of a cluster randomised controlled trial for women experiencing intimate partner violence: effect of screening and family doctor-delivered counselling on quality of life, mental and physical health and abuse exposure.",
+    "authors": [
+      "Hegarty K",
+      "Valpied J",
+      "Taft A",
+      "Brown SJ",
+      "Gold L",
+      "Gunn J",
+      "O'Doherty L"
+    ],
+    "year": 2020,
+    "journal": "BMJ open",
+    "doi": "10.1136/bmjopen-2019-034295",
+    "pmid": "33303427",
+    "trialRegistration": [
+      "ACTRN12608000032358"
+    ],
+    "collection": "language",
+    "interventionFamily": "WEAVE family-doctor counselling.",
+    "publicationType": "24-month follow-up of cluster randomized trial",
+    "studyFamilyId": "ACTRN12608000032358",
+    "familyLinkageUncertain": false,
+    "existingRepositoryMatches": [],
+    "relevance": {
+      "relation": "direct",
+      "population": "Women who screened positive for fear of a partner in the preceding year.",
+      "exposureEvidence": "Women screened positive for fear of a partner/ex-partner in previous 12 months, supplied safe contact/address and could speak English. Screened fear need not equal a specified physical-IPV diagnosis.",
+      "rationale": "Explicit domestic/intimate-partner violence exposure in the studied population; psychological intervention is within Language scope.",
+      "transferLimit": "See limitation and quality fields; no population-wide clinical recommendation is implied."
+    },
+    "age": {
+      "groups": [
+        "adults",
+        "adolescent eligibility"
+      ],
+      "reportedRange": "Eligibility 16–50 years. Baseline table reports 17–29, 30–39, 40–50 year categories; mean 38.5 (SD 8.1). Exact enrolled minimum and under 18 count not established.",
+      "youthScope": "Eligibility included 16–17 years; no adolescent-specific efficacy analysis established."
+    },
+    "country": "Australia",
+    "setting": "Victorian Australian primary care, one doctor per practice; doctors recruited 2008–2010.",
+    "sampleSize": {
+      "randomized": 272,
+      "analyzed": 166,
+      "description": "Same 52 doctor-cluster cohort as 2013; 24-month respondents 81/137 intervention and 85/135 control. Longitudinal models used available data for all baseline participants, so 166 is final time point count, not a new trial."
+    },
+    "intervention": {
+      "description": "Woman-centered family-doctor counselling using active listening, motivational interviewing and problem solving, supporting the woman’s readiness and decisions.",
+      "dose": "Offered 1–6 free sessions over 6 months. 67/137 (49%)attended any; most attended one. Doctor training 6 hours distance learning plus 1 hour practice visit.",
+      "provider": "Intervention family doctors, trained for the study."
+    },
+    "comparator": "Usual primary care; both groups’ doctors received basic IPV information and women received resource lists.",
+    "outcomes": [
+      {
+        "name": "SF-12 mental health and quality of life",
+        "followUp": "24months",
+        "result": "No significant between-group difference in mental health or any WHOQOL-BREF domain.",
+        "effectEstimate": "SF-12 mental MD−1.6 (95% CI−5.3, 2.1), p=.393. QOL physical 1.5 (−2.9, 5.9), psychological−0.2 (−4.8, 4.4), social−1.4 (−8.2, 5.4), environment−0.8 (−4.0, 2.5).",
+        "uncertainty": "Attrition and low uptake limit precision; null difference is not proof of equivalence.",
+        "primaryStatus": "primary"
+      },
+      {
+        "name": "Depression, anxiety, PTSD and IPV caseness",
+        "followUp": "24months",
+        "result": "No significant comparative benefit; earlier 12-month secondary depression benefit was not maintained.",
+        "effectEstimate": "DepressionOR 1.0 (95% CI 0.4, 2.9); anxiety 0.6 (0.2, 2.2); PTSD 0.9 (0.3, 2.5); IPV 0.5 (0.2, 1.7).",
+        "uncertainty": "Models adjusted for baseline, time and clustering; all intervals cross 1.",
+        "primaryStatus": "secondary"
+      },
+      {
+        "name": "Physical health",
+        "followUp": "24months",
+        "result": "No significant difference.",
+        "effectEstimate": "SF-12 physical MD 2.4 (95% CI−0.8, 5.6), p=.145.",
+        "uncertainty": "Secondary finding; no superiority established.",
+        "primaryStatus": "secondary"
+      },
+      {
+        "name": "Participant-reported benefit/harm",
+        "followUp": "24months",
+        "result": "No significant comparative harm-benefit difference; most respondents glad to participate.",
+        "effectEstimate": "VAS MD 4.4 (95% CI−0.8, 9.6), p=.092; 145/166 (87.3%)glad to participate.",
+        "uncertainty": "Reflects respondents and research participation; does not establish zero harms in all 272 women.",
+        "primaryStatus": "safety/acceptability"
+      }
+    ],
+    "finding": "At 24 months the WEAVE counselling offer did not improve primary or secondary outcomes versus usual care. The 12-month secondary depression finding did not persist; these reports are one cohort.",
+    "limitation": "Only 166/272 responded at 24 months and 49% of women offered counselling attended any (mostlyone session). Self-reported outcomes were unmasked. The absence of statistical benefit is not equivalence; within-group improvement does not establish counselling efficacy.",
+    "design": {
+      "type": "Cluster randomized trial follow-up",
+      "randomizationEvidence": "Same WEAVE cohort: 52 doctor/practice clusters (25 intervention/27 control), 272 women (137/135). Independent statistician generated Stata 12 sequence with location-stratified blocks 2/4 after baseline; nonrecruiting coordinator kept allocation key. Source for these shared methods is the full 24-month primary report.",
+      "masking": {
+        "participants": "Explicitly unmasked.",
+        "providers": "Explicitly unmasked.",
+        "assessors": "Other researchers, recruiters and analysts masked until interpretation/preliminary write-up; participant-reported outcomes remain unmasked.",
+        "analysts": "Explicitly masked until interpretation and preliminary write-up."
+      },
+      "crosses": 1,
+      "crossRationale": "Verified doctor-cluster randomization; doctors/women unmasked. Researcher/analyst masking does not establish double-blinded treatment. One cross retained."
+    },
+    "quality": {
+      "riskOfBias": "Unmasked self-report, low counselling uptake, substantial long-term attrition and selected English-speaking screening responders limit inference. Masked researchers/analysts and cluster-adjusted analyses support methods; no formal numerical risk rating.",
+      "attrition": "24-monthresponse 81/137 (59%)intervention and 85/135 (63%)control, 166/272 overall. Available-data mixed models do not remove potential nonresponse bias.",
+      "confounding": "Mixed-effects models use available repeated observations, adjusted for practice clustering and urban/rural stratification. Nonattender exclusions are selected analyses. Both arms received information/resources and repeated IPV questionnaires.",
+      "adverseFindings": "Report says no significant harms detected and refers to the dedicated harms analysis. A same-family primary abstract nevertheless describes short-/long-term negative emotions, recall, retraumatization and minimization. These are participation experiences, not demonstrated treatment-caused excess harm; counts and causal attribution unavailable. 24-month VAS difference nonsignificant.",
+      "transferLimits": "English-speaking women who returned a mailed screen and reported partner fear; young women and those with lower education/employment were under-represented. No basis for a child/adolescent-specific conclusion.",
+      "jadad": "not established"
+    },
+    "access": {
+      "level": "full-text",
+      "sourceURLs": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:33303427%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1136%2Fbmjopen-2019-034295",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7733186/fullTextXML",
+        "https://pureportal.coventry.ac.uk/en/publications/sometimes-cathartic-sometimes-quite-raw-benefit-and-harm-in-an-in-2/"
+      ],
+      "retrievedAt": "2026-10-30T08:21:43.644990+00:00"
+    },
+    "sources": [
+      {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:33303427%20AND%20SRC:MED&format=json&resultType=core",
+        "type": "Europe PMC core record sourced from PubMed/MEDLINE",
+        "retrievedAt": "2026-10-30T07:15:55.705516+00:00",
+        "identityVerified": true,
+        "notes": "Primary-publication abstract and bibliographic metadata accessed; canonical PubMed record: https://pubmed.ncbi.nlm.nih.gov/33303427/",
+        "retrievalQueryURL": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=TITLE_ABS%3A%28%22intimate+partner+violence%22+OR+%22domestic+violence%22+OR+%22battered+women%22%29+AND+TITLE_ABS%3A%28randomized+OR+randomised%29+AND+TITLE_ABS%3A%28therapy+OR+psychological+OR+psychotherapy+OR+cognitive+OR+counseling+OR+counselling+OR+%22motivational+interviewing%22%29&format=json&resultType=core&pageSize=1000"
+      },
+      {
+        "url": "https://api.crossref.org/works/10.1136%2Fbmjopen-2019-034295",
+        "type": "Crossref DOI registration metadata",
+        "retrievedAt": "2026-10-30T07:20:04.487743+00:00",
+        "identityVerified": true,
+        "notes": "DOI identity cross-check; metadata title: Two-year follow up of a cluster randomised controlled trial for women experiencing intimate partner violence: effect of screening and family doctor-delivered counselling on quality of life, mental and physical health and abuse exposure. Correction/update relations checked."
+      },
+      {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7733186/fullTextXML",
+        "type": "primary-full-text",
+        "retrievedAt": "2026-10-30T08:21:43.644990+00:00",
+        "identityVerified": true,
+        "notes": "Full primary report methods, results, tables and discussion inspected."
+      },
+      {
+        "url": "https://pureportal.coventry.ac.uk/en/publications/sometimes-cathartic-sometimes-quite-raw-benefit-and-harm-in-an-in-2/",
+        "type": "same-study-family-primary-abstract",
+        "retrievedAt": "2026-10-30",
+        "identityVerified": true,
+        "notes": "Valpied et al. 2014, DOI 10.1016/j.avb. 2014.09.005. University author publication record exposes abstract and explicitly says full text unavailable. Used only to qualify safety claims; not a new candidate."
+      }
+    ],
+    "publicationStatus": {
+      "status": "epublish",
+      "correctionRetractionCheck": {
+        "europePMCpubTypes": [
+          "Research Support, Non-U.S. Gov't",
+          "research-article",
+          "Randomized Controlled Trial",
+          "Journal Article"
+        ],
+        "crossrefUpdateRelations": [],
+        "crossrefRelations": {},
+        "crossrefChecked": true
+      },
+      "uncertainty": "No comprehensive publisher/Crossmark or registry audit claimed; correction/retraction absence is limited to accessed metadata."
+    },
+    "recommendationRationale": "Retain as pending candidate evidence; interpret the study design, null outcomes and access limits together.",
+    "review": {
+      "status": "pending",
+      "reviewer": null
+    },
+    "assessmentStatus": "assessed",
+    "assessmentNotes": [
+      "Full primary report methods, results, tables and discussion inspected.",
+      "This proposal is not human approval. It revises an existing publication without increasing screened, publication or study-family totals.",
+      "Both records are ACTRN 12608000032358: one 272 woman/52 doctor randomized family. PMID 31715628 and the 2014 harms report are further same-family reports, not independent replication.",
+      "Same-family harms source is abstract only; quantitative comparative harm incidence and intervention attribution cannot be established from it."
+    ],
+    "reviewReady": true,
+    "reviewReadiness": "ready-with-methodological-limitations",
+    "researchLane": "adult-therapy",
+    "studyDesignAssessment": {
+      "category": "rct",
+      "isRandomizedControlledTrial": true,
+      "basis": "Same WEAVE cohort: 52 doctor/practice clusters (25 intervention/27 control), 272 women (137/135). Independent statistician generated Stata 12 sequence with location-stratified blocks 2/4 after baseline; nonrecruiting coordinator kept allocation key. Source for these shared methods is the full 24-month primary report.",
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:33303427%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1136%2Fbmjopen-2019-034295",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7733186/fullTextXML",
+        "https://pureportal.coventry.ac.uk/en/publications/sometimes-cathartic-sometimes-quite-raw-benefit-and-harm-in-an-in-2/"
+      ],
+      "reviewScope": "full-text"
+    },
+    "paperTrustAssessment": {
+      "scope": "Paper",
+      "status": "assessed",
+      "score": 2,
+      "randomizedControlledTrial": true,
+      "peerReviewed": true,
+      "blinding": "not-confirmed",
+      "basis": "Verified doctor-cluster randomization; doctors/women unmasked. Researcher/analyst masking does not establish double-blinded treatment. One cross retained.",
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:33303427%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1136%2Fbmjopen-2019-034295",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7733186/fullTextXML",
+        "https://pureportal.coventry.ac.uk/en/publications/sometimes-cathartic-sometimes-quite-raw-benefit-and-harm-in-an-in-2/"
+      ],
+      "reviewScope": "full-text",
+      "humanApproval": false,
+      "displayCrosses": 1,
+      "maskingRoles": {
+        "participants": "Explicitly unmasked.",
+        "providers": "Explicitly unmasked.",
+        "assessors": "Other researchers, recruiters and analysts masked until interpretation/preliminary write-up; participant-reported outcomes remain unmasked.",
+        "analysts": "Explicitly masked until interpretation and preliminary write-up."
+      }
+    },
+    "jadad": {
+      "status": "unassessed",
+      "score": null
+    },
+    "evidence": {
+      "population": {
+        "relation": "direct",
+        "population": "Women who screened positive for fear of a partner in the preceding year.",
+        "exposureEvidence": "Women screened positive for fear of a partner/ex-partner in previous 12 months, supplied safe contact/address and could speak English. Screened fear need not equal a specified physical-IPV diagnosis.",
+        "rationale": "Explicit domestic/intimate-partner violence exposure in the studied population; psychological intervention is within Language scope.",
+        "transferLimit": "See limitation and quality fields; no population-wide clinical recommendation is implied."
+      },
+      "intervention": {
+        "description": "Woman-centered family-doctor counselling using active listening, motivational interviewing and problem solving, supporting the woman’s readiness and decisions.",
+        "dose": "Offered 1–6 free sessions over 6 months. 67/137 (49%)attended any; most attended one. Doctor training 6 hours distance learning plus 1 hour practice visit.",
+        "provider": "Intervention family doctors, trained for the study."
+      },
+      "comparator": "Usual primary care; both groups’ doctors received basic IPV information and women received resource lists.",
+      "outcomes": [
+        {
+          "name": "SF-12 mental health and quality of life",
+          "followUp": "24months",
+          "result": "No significant between-group difference in mental health or any WHOQOL-BREF domain.",
+          "effectEstimate": "SF-12 mental MD−1.6 (95% CI−5.3, 2.1), p=.393. QOL physical 1.5 (−2.9, 5.9), psychological−0.2 (−4.8, 4.4), social−1.4 (−8.2, 5.4), environment−0.8 (−4.0, 2.5).",
+          "uncertainty": "Attrition and low uptake limit precision; null difference is not proof of equivalence.",
+          "primaryStatus": "primary"
+        },
+        {
+          "name": "Depression, anxiety, PTSD and IPV caseness",
+          "followUp": "24months",
+          "result": "No significant comparative benefit; earlier 12-month secondary depression benefit was not maintained.",
+          "effectEstimate": "DepressionOR 1.0 (95% CI 0.4, 2.9); anxiety 0.6 (0.2, 2.2); PTSD 0.9 (0.3, 2.5); IPV 0.5 (0.2, 1.7).",
+          "uncertainty": "Models adjusted for baseline, time and clustering; all intervals cross 1.",
+          "primaryStatus": "secondary"
+        },
+        {
+          "name": "Physical health",
+          "followUp": "24months",
+          "result": "No significant difference.",
+          "effectEstimate": "SF-12 physical MD 2.4 (95% CI−0.8, 5.6), p=.145.",
+          "uncertainty": "Secondary finding; no superiority established.",
+          "primaryStatus": "secondary"
+        },
+        {
+          "name": "Participant-reported benefit/harm",
+          "followUp": "24months",
+          "result": "No significant comparative harm-benefit difference; most respondents glad to participate.",
+          "effectEstimate": "VAS MD 4.4 (95% CI−0.8, 9.6), p=.092; 145/166 (87.3%)glad to participate.",
+          "uncertainty": "Reflects respondents and research participation; does not establish zero harms in all 272 women.",
+          "primaryStatus": "safety/acceptability"
+        }
+      ],
+      "access": {
+        "level": "full-text",
+        "sourceURLs": [
+          "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:33303427%20AND%20SRC:MED&format=json&resultType=core",
+          "https://api.crossref.org/works/10.1136%2Fbmjopen-2019-034295",
+          "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7733186/fullTextXML",
+          "https://pureportal.coventry.ac.uk/en/publications/sometimes-cathartic-sometimes-quite-raw-benefit-and-harm-in-an-in-2/"
+        ],
+        "retrievedAt": "2026-10-30T08:21:43.644990+00:00"
+      }
+    },
+    "citationSnapshot": {
+      "count": null,
+      "source": null,
+      "retrievedAt": null,
+      "status": "not-assessed"
+    },
+    "provenance": "Discovered by AI",
+    "priorContentHash": "26b8cc8d0764fc1344576e4b35f557a843f73d8571eae1784c23abed407744e9",
+    "priorRevision": "r1-26b8cc8d0764",
+    "proposalStatus": "pending-coordinator-review-and-rehash",
+    "proposedAt": "2026-10-30T08:42:38.749794+00:00",
+    "sourceBatchRevision": "batch-8bd70e21e48d9a70"
+  },
+  {
+    "id": "dv-adult-therapy-23598181",
+    "title": "Screening and counselling in the primary care setting for women who have experienced intimate partner violence (WEAVE): a cluster randomised controlled trial.",
+    "authors": [
+      "Hegarty K",
+      "O'Doherty L",
+      "Taft A",
+      "Chondros P",
+      "Brown S",
+      "Valpied J",
+      "Astbury J",
+      "Taket A",
+      "Gold L",
+      "Feder G",
+      "Gunn J"
+    ],
+    "year": 2013,
+    "journal": "Lancet (London, England)",
+    "doi": "10.1016/s0140-6736(13)60052-5",
+    "pmid": "23598181",
+    "trialRegistration": [
+      "ACTRN12608000032358"
+    ],
+    "collection": "language",
+    "interventionFamily": "Brief woman-centered counselling offered by trained family doctors.",
+    "publicationType": "Primary intervention study",
+    "studyFamilyId": "ACTRN12608000032358",
+    "familyLinkageUncertain": false,
+    "existingRepositoryMatches": [],
+    "relevance": {
+      "relation": "direct",
+      "population": "Female primary-care patients who reported fear of a partner during the preceding year.",
+      "exposureEvidence": "Women screened positive for fear of a partner/ex-partner in previous 12 months, supplied safe contact/address and could speak English. Screened fear need not equal a specified physical-IPV diagnosis.",
+      "rationale": "Explicit domestic/intimate-partner violence exposure in the studied population; psychological intervention is within Language scope.",
+      "transferLimit": "See limitation and quality fields; no population-wide clinical recommendation is implied."
+    },
+    "age": {
+      "groups": [
+        "adults",
+        "adolescent eligibility"
+      ],
+      "reportedRange": "Eligibility 16–50 years. Baseline table reports 17–29, 30–39, 40–50 year categories; mean 38.5 (SD 8.1). Exact enrolled minimum and under 18 count not established.",
+      "youthScope": "Eligibility included 16–17 years; no adolescent-specific efficacy analysis established."
+    },
+    "country": "Australia",
+    "setting": "Victorian Australian primary care, one doctor per practice; doctors recruited 2008–2010.",
+    "sampleSize": {
+      "randomized": 272,
+      "analyzed": 196,
+      "description": "Original WEAVE cohort: 52 doctor/practice clusters, 25 intervention/27 control; 137/135 women. 196/272 returned 12-month follow-up. Later 24-month paper reports this same cohort."
+    },
+    "intervention": {
+      "description": "Woman-centered family-doctor counselling using active listening, motivational interviewing and problem solving, supporting the woman’s readiness and decisions.",
+      "dose": "Offered 1–6 free sessions over 6 months. 67/137 (49%)attended any; most attended one. Doctor training 6 hours distance learning plus 1 hour practice visit.",
+      "provider": "Intervention family doctors, trained for the study."
+    },
+    "comparator": "Usual primary care; both groups’ doctors received basic IPV information and women received resource lists.",
+    "outcomes": [
+      {
+        "name": "Quality of life, safety planning, SF-12 mental health",
+        "followUp": "12 months",
+        "result": "No between-group difference detected.",
+        "effectEstimate": null,
+        "uncertainty": "Original full 2013 report inaccessible; shared methods verified in later same-cohort primary report. No extra 12-month effect estimates inferred.",
+        "primaryStatus": "primary at 12 months (original abstract)"
+      },
+      {
+        "name": "Depression caseness",
+        "followUp": "12 months",
+        "result": "Secondary outcome favored counselling.",
+        "effectEstimate": "OR .3; 95% CI .1–.7; p=.005",
+        "uncertainty": "Secondary depression advantage, not primary-outcome success. Later same-cohort 24-month report finds no sustained depression advantage.",
+        "primaryStatus": "secondary at 12 months (original abstract)"
+      }
+    ],
+    "finding": "Original abstract reports null 12-month primary outcomes and a secondary depression advantage (OR 0.3, 95% CI 0.1–0.7). Same-cohort 24-month follow-up did not preserve that advantage; no new replication is implied.",
+    "limitation": "Original 2013 fulltext inaccessible; selected shared methods come from later primary report and harms qualification from a same-family abstract. Low uptake, unmasked self-report and loss to follow-up limit inference; secondary benefit was not durable at 24 months.",
+    "design": {
+      "type": "Cluster randomized controlled trial",
+      "randomizationEvidence": "Same WEAVE cohort: 52 doctor/practice clusters (25 intervention/27 control), 272 women (137/135). Independent statistician generated Stata 12 sequence with location-stratified blocks 2/4 after baseline; nonrecruiting coordinator kept allocation key. Source for these shared methods is the full 24-month primary report.",
+      "masking": {
+        "participants": "Explicitly unmasked.",
+        "providers": "Explicitly unmasked.",
+        "assessors": "Other researchers, recruiters and analysts masked until interpretation/preliminary write-up; participant-reported outcomes remain unmasked.",
+        "analysts": "Explicitly masked until interpretation and preliminary write-up."
+      },
+      "crosses": 1,
+      "crossRationale": "Verified doctor-cluster randomization; doctors/women unmasked. Researcher/analyst masking does not establish double-blinded treatment. One cross retained."
+    },
+    "quality": {
+      "riskOfBias": "Unmasked self-report, low counselling uptake, substantial long-term attrition and selected English-speaking screening responders limit inference. Masked researchers/analysts and cluster-adjusted analyses support methods; no formal numerical risk rating.",
+      "attrition": "Original abstract: 196/272 completed 12 months, 70% intervention/74% control. Same cohortlater retained 166/272 at 24 months.",
+      "confounding": "Mixed-effects models use available repeated observations, adjusted for practice clustering and urban/rural stratification. Nonattender exclusions are selected analyses. Both arms received information/resources and repeated IPV questionnaires.",
+      "adverseFindings": "Original abstract reports no adverse events recorded. This does not mean no negative experiences: same-trial 2014 harms abstract identifies distress and retraumatization themes. Neither abstract establishes counts of treatment-caused harm; 24-month follow-up reports no significant detected harms.",
+      "transferLimits": "English-speaking women who returned a mailed screen and reported partner fear; young women and those with lower education/employment were under-represented. No basis for a child/adolescent-specific conclusion.",
+      "jadad": "not established"
+    },
+    "access": {
+      "level": "abstract",
+      "sourceURLs": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:23598181%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1016%2Fs0140-6736%2813%2960052-5"
+      ],
+      "retrievedAt": "2026-10-30T07:15:55.705516+00:00"
+    },
+    "sources": [
+      {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:23598181%20AND%20SRC:MED&format=json&resultType=core",
+        "type": "Europe PMC core record sourced from PubMed/MEDLINE",
+        "retrievedAt": "2026-10-30T07:15:55.705516+00:00",
+        "identityVerified": true,
+        "notes": "Primary-publication abstract and bibliographic metadata accessed; canonical PubMed record: https://pubmed.ncbi.nlm.nih.gov/23598181/",
+        "retrievalQueryURL": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=TITLE_ABS%3A%28%22intimate+partner+violence%22+OR+%22domestic+violence%22+OR+%22battered+women%22%29+AND+TITLE_ABS%3A%28randomized+OR+randomised%29+AND+TITLE_ABS%3A%28therapy+OR+psychological+OR+psychotherapy+OR+cognitive+OR+counseling+OR+counselling+OR+%22motivational+interviewing%22%29&format=json&resultType=core&pageSize=1000"
+      },
+      {
+        "url": "https://api.crossref.org/works/10.1016%2Fs0140-6736%2813%2960052-5",
+        "type": "Crossref DOI registration metadata",
+        "retrievedAt": "2026-10-30T07:19:58.113566+00:00",
+        "identityVerified": true,
+        "notes": "DOI identity cross-check; metadata title: Screening and counselling in the primary care setting for women who have experienced intimate partner violence (WEAVE): a cluster randomised controlled trial. Correction/update relations checked."
+      },
+      {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7733186/fullTextXML",
+        "type": "same-study-family-primary-full-text",
+        "retrievedAt": "2026-10-30T08:21:43.644990+00:00",
+        "identityVerified": true,
+        "notes": "Same-cohort 24-month primary report supplies shared trial methods; original 2013 article remains abstract-only. This does not establish unreported 2013-specific methods."
+      },
+      {
+        "url": "https://pureportal.coventry.ac.uk/en/publications/sometimes-cathartic-sometimes-quite-raw-benefit-and-harm-in-an-in-2/",
+        "type": "same-study-family-primary-abstract",
+        "retrievedAt": "2026-10-30",
+        "identityVerified": true,
+        "notes": "Valpied et al. 2014, DOI 10.1016/j.avb. 2014.09.005. University author publication record exposes abstract and explicitly says full text unavailable. Used only to qualify safety claims; not a new candidate."
+      }
+    ],
+    "publicationStatus": {
+      "status": "ppublish",
+      "correctionRetractionCheck": {
+        "europePMCpubTypes": [
+          "Research Support, Non-U.S. Gov't",
+          "Multicenter Study",
+          "Randomized Controlled Trial",
+          "Journal Article"
+        ],
+        "crossrefUpdateRelations": [],
+        "crossrefRelations": {},
+        "crossrefChecked": true
+      },
+      "uncertainty": "No comprehensive publisher/Crossmark or registry audit claimed; correction/retraction absence is limited to accessed metadata."
+    },
+    "recommendationRationale": "Retain as pending candidate evidence; interpret the study design, null outcomes and access limits together.",
+    "review": {
+      "status": "pending",
+      "reviewer": null
+    },
+    "assessmentStatus": "assessed",
+    "assessmentNotes": [
+      "Same-cohort 24-month primary report supplies shared trial methods; original 2013 article remains abstract-only. This does not establish unreported 2013-specific methods.",
+      "This proposal is not human approval. It revises an existing publication without increasing screened, publication or study-family totals.",
+      "Both records are ACTRN 12608000032358: one 272 woman/52 doctor randomized family. PMID 31715628 and the 2014 harms report are further same-family reports, not independent replication.",
+      "Same-family harms source is abstract only; quantitative comparative harm incidence and intervention attribution cannot be established from it.",
+      "Original 12-month quantitative results retained from staged abstract extraction; no full-text access claimed. Original ScienceDirect and Lancet PDF/fulltext returned 403; no repeated unchanged route."
+    ],
+    "reviewReady": true,
+    "reviewReadiness": "ready-with-access-limits",
+    "researchLane": "adult-therapy",
+    "studyDesignAssessment": {
+      "category": "rct",
+      "isRandomizedControlledTrial": true,
+      "basis": "Same WEAVE cohort: 52 doctor/practice clusters (25 intervention/27 control), 272 women (137/135). Independent statistician generated Stata 12 sequence with location-stratified blocks 2/4 after baseline; nonrecruiting coordinator kept allocation key. Source for these shared methods is the full 24-month primary report.",
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:23598181%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1016%2Fs0140-6736%2813%2960052-5",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7733186/fullTextXML",
+        "https://pureportal.coventry.ac.uk/en/publications/sometimes-cathartic-sometimes-quite-raw-benefit-and-harm-in-an-in-2/"
+      ],
+      "reviewScope": "abstract"
+    },
+    "paperTrustAssessment": {
+      "scope": "Paper",
+      "status": "assessed",
+      "score": 2,
+      "randomizedControlledTrial": true,
+      "peerReviewed": true,
+      "blinding": "not-confirmed",
+      "basis": "Verified doctor-cluster randomization; doctors/women unmasked. Researcher/analyst masking does not establish double-blinded treatment. One cross retained.",
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:23598181%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1016%2Fs0140-6736%2813%2960052-5",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7733186/fullTextXML",
+        "https://pureportal.coventry.ac.uk/en/publications/sometimes-cathartic-sometimes-quite-raw-benefit-and-harm-in-an-in-2/"
+      ],
+      "reviewScope": "abstract",
+      "humanApproval": false,
+      "displayCrosses": 1,
+      "maskingRoles": {
+        "participants": "Explicitly unmasked.",
+        "providers": "Explicitly unmasked.",
+        "assessors": "Other researchers, recruiters and analysts masked until interpretation/preliminary write-up; participant-reported outcomes remain unmasked.",
+        "analysts": "Explicitly masked until interpretation and preliminary write-up."
+      }
+    },
+    "jadad": {
+      "status": "unassessed",
+      "score": null
+    },
+    "evidence": {
+      "population": {
+        "relation": "direct",
+        "population": "Female primary-care patients who reported fear of a partner during the preceding year.",
+        "exposureEvidence": "Women screened positive for fear of a partner/ex-partner in previous 12 months, supplied safe contact/address and could speak English. Screened fear need not equal a specified physical-IPV diagnosis.",
+        "rationale": "Explicit domestic/intimate-partner violence exposure in the studied population; psychological intervention is within Language scope.",
+        "transferLimit": "See limitation and quality fields; no population-wide clinical recommendation is implied."
+      },
+      "intervention": {
+        "description": "Woman-centered family-doctor counselling using active listening, motivational interviewing and problem solving, supporting the woman’s readiness and decisions.",
+        "dose": "Offered 1–6 free sessions over 6 months. 67/137 (49%)attended any; most attended one. Doctor training 6 hours distance learning plus 1 hour practice visit.",
+        "provider": "Intervention family doctors, trained for the study."
+      },
+      "comparator": "Usual primary care; both groups’ doctors received basic IPV information and women received resource lists.",
+      "outcomes": [
+        {
+          "name": "Quality of life, safety planning, SF-12 mental health",
+          "followUp": "12 months",
+          "result": "No between-group difference detected.",
+          "effectEstimate": null,
+          "uncertainty": "Original full 2013 report inaccessible; shared methods verified in later same-cohort primary report. No extra 12-month effect estimates inferred.",
+          "primaryStatus": "primary at 12 months (original abstract)"
+        },
+        {
+          "name": "Depression caseness",
+          "followUp": "12 months",
+          "result": "Secondary outcome favored counselling.",
+          "effectEstimate": "OR .3; 95% CI .1–.7; p=.005",
+          "uncertainty": "Secondary depression advantage, not primary-outcome success. Later same-cohort 24-month report finds no sustained depression advantage.",
+          "primaryStatus": "secondary at 12 months (original abstract)"
+        }
+      ],
+      "access": {
+        "level": "abstract",
+        "sourceURLs": [
+          "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:23598181%20AND%20SRC:MED&format=json&resultType=core",
+          "https://api.crossref.org/works/10.1016%2Fs0140-6736%2813%2960052-5"
+        ],
+        "retrievedAt": "2026-10-30T07:15:55.705516+00:00"
+      }
+    },
+    "citationSnapshot": {
+      "count": null,
+      "source": null,
+      "retrievedAt": null,
+      "status": "not-assessed"
+    },
+    "provenance": "Discovered by AI",
+    "relatedFamilyEvidence": [
+      {
+        "pmid": "33303427",
+        "sourceURL": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7733186/fullTextXML",
+        "sourceAccess": "full-text",
+        "retrievedAt": "2026-10-30T08:21:43.644990+00:00",
+        "relationship": "Same WEAVE randomized cohort; later 24-month report",
+        "supportedFields": [
+          "Shared randomization/masking methods",
+          "Intervention training and uptake",
+          "24-month durability and attrition",
+          "Family-level safety qualifications"
+        ],
+        "limitation": "These are attributed companion-report findings, not direct access to the 2013 article methods."
+      },
+      {
+        "doi": "10.1016/j.avb.2014.09.005",
+        "sourceURL": "https://pureportal.coventry.ac.uk/en/publications/sometimes-cathartic-sometimes-quite-raw-benefit-and-harm-in-an-in-2/",
+        "sourceAccess": "abstract",
+        "retrievedAt": "2026-10-30",
+        "relationship": "Same-family dedicated participation-harms report",
+        "limitation": "Abstract only; event counts and treatment attribution not established."
+      }
+    ],
+    "priorContentHash": "c11423516c0e2c18022f7ffbd8c61f0737b23c2a0d988f5069549620fed8f347",
+    "priorRevision": "r1-c11423516c0e",
+    "proposalStatus": "pending-coordinator-review-and-rehash",
+    "proposedAt": "2026-10-30T08:42:38.749794+00:00",
+    "sourceBatchRevision": "batch-8bd70e21e48d9a70"
+  }
+]

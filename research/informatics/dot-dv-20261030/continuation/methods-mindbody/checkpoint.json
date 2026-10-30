@@ -1,0 +1,92 @@
+{
+  "createdAt": "2026-10-30T08:28:43.779847+00:00",
+  "priorBatchRevision": "batch-8bd70e21e48d9a70",
+  "status": "proposals-complete-not-applied",
+  "papersReappraised": 4,
+  "newPublications": 0,
+  "crossChanges": 0,
+  "doubleBlindUpgrades": 0,
+  "fullTextUpgrades": 3,
+  "selectedMethodsUpgrades": 1,
+  "proposedFieldDeltas": 66,
+  "originalIDs": [
+    "dv-mindbody-32969703",
+    "dv-mindbody-88e29294631c",
+    "dv-mindbody-25129883",
+    "dv-mindbody-36232015"
+  ],
+  "preservation": [
+    {
+      "path": "dot-dv-mission/Informatics/review/domestic-violence-20261030/batch-8bd70e21e48d9a70.json",
+      "beforeSha256": "afd810cdaefa6be0eeed16490fbc9b0f3a580837ea5f8994f64aa5ca9373f3c8",
+      "afterSha256": "afd810cdaefa6be0eeed16490fbc9b0f3a580837ea5f8994f64aa5ca9373f3c8",
+      "unchanged": true
+    },
+    {
+      "path": "research-work/workers/mindbody/candidates.json",
+      "beforeSha256": "0df6c14b21c07aba4af50c3a6a36d0f8a2920cd76d4e99b94dd23f0cc6cb0bea",
+      "afterSha256": "0df6c14b21c07aba4af50c3a6a36d0f8a2920cd76d4e99b94dd23f0cc6cb0bea",
+      "unchanged": true
+    },
+    {
+      "path": "research-work/workers/mindbody/report.md",
+      "beforeSha256": "13471f76693b4d0d50cf426e79f2cdbbe82c4032ce5d816a222b227a172b8da4",
+      "afterSha256": "13471f76693b4d0d50cf426e79f2cdbbe82c4032ce5d816a222b227a172b8da4",
+      "unchanged": true
+    },
+    {
+      "path": "research-work/workers/mindbody/precision.py",
+      "beforeSha256": "52fe36cf4d29c5b7d31374a1cf880d83f0687b6fc1057fcd2d04988a64a67e73",
+      "afterSha256": "52fe36cf4d29c5b7d31374a1cf880d83f0687b6fc1057fcd2d04988a64a67e73",
+      "unchanged": true
+    },
+    {
+      "path": "research-work/workers/mindbody/build_bundle.py",
+      "beforeSha256": "fe90c5bef2ce61c05c524bea1c015b765b3b827617b9b29139cfa6e2e4c985ef",
+      "afterSha256": "fe90c5bef2ce61c05c524bea1c015b765b3b827617b9b29139cfa6e2e4c985ef",
+      "unchanged": true
+    },
+    {
+      "path": "research-work/workers/mindbody/harvest.py",
+      "beforeSha256": "ec46ca8ecd758821ba34b3e83c898bad7a45907401eaf6c084d1305602bb0017",
+      "afterSha256": "ec46ca8ecd758821ba34b3e83c898bad7a45907401eaf6c084d1305602bb0017",
+      "unchanged": true
+    },
+    {
+      "path": "research-work/workers/mindbody/search-log.json",
+      "beforeSha256": "026e2e939e3636d455c70e12084a7e75a2b2cc536f1523dc9213856ebcc0dafd",
+      "afterSha256": "026e2e939e3636d455c70e12084a7e75a2b2cc536f1523dc9213856ebcc0dafd",
+      "unchanged": true
+    },
+    {
+      "path": "research-work/workers/mindbody/counts.json",
+      "beforeSha256": "f25e662fe5e2eafdf196af3cd34feec6d28c0bc94147c753ac601979e5c27f7f",
+      "afterSha256": "f25e662fe5e2eafdf196af3cd34feec6d28c0bc94147c753ac601979e5c27f7f",
+      "unchanged": true
+    },
+    {
+      "path": "research-work/workers/mindbody/screening.json",
+      "beforeSha256": "3d95415a13b9a5f6d7190b7de1efde68671e24ade2f22fd36b6b80d23102c0d8",
+      "afterSha256": "3d95415a13b9a5f6d7190b7de1efde68671e24ade2f22fd36b6b80d23102c0d8",
+      "unchanged": true
+    },
+    {
+      "path": "research-work/workers/mindbody/finalize_bundle.py",
+      "beforeSha256": "49db641b9e4b6841f7597504b2914bfea3102bbc110e9cd85f0550bcb0a3f23a",
+      "afterSha256": "49db641b9e4b6841f7597504b2914bfea3102bbc110e9cd85f0550bcb0a3f23a",
+      "unchanged": true
+    }
+  ],
+  "productionOrStagingChanged": false,
+  "repositoryChanged": false,
+  "paidServices": false,
+  "externalContacts": false,
+  "remainingLimits": [
+    "Franzblau table6/facsimile and statistical inconsistencies unresolved.",
+    "Gallegos CONSORT image not inspected; registry/publication enrollment discrepancy unresolved.",
+    "No systematic correction/retraction database audit.",
+    "No future runs or monitors created."
+  ],
+  "validatedAt": "2026-10-30T08:39:12.426388+00:00",
+  "outcomeHierarchyCorrection": "Gallegos: PCL5 primary; DERS/HRV/UFOV/FFMQ secondary per retrospectively posted registry; article discrepancy attributed."
+}

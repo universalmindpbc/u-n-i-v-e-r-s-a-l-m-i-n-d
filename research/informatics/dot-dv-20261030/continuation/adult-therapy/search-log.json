@@ -1,0 +1,20 @@
+[
+  {
+    "query": "Targeted appraisal from retained unscreened queue: PMID33743632,33428625,40425169,32755265,40315027",
+    "source": "Previously retrieved Europe PMC source records, newly inspected locally",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search",
+    "retrievedAt": "2026-10-30T08:12:46.998330+00:00",
+    "retrievedCount": 0,
+    "screenedCount": 5,
+    "notes": "No new bibliographic retrieval counted: five records already in original retrieval queue. Individual original query URLs/timestamps recorded in source-ledger."
+  },
+  {
+    "query": "Targeted primary-source clarification for PATH30481183,NET30079583,Tehran30344863",
+    "source": "Publisher pages, retained registry API and targeted web searches",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0205485",
+    "retrievedAt": "2026-10-30T08:12:46.998330+00:00",
+    "retrievedCount": 0,
+    "screenedCount": 0,
+    "notes": "Reappraisal of three already-counted publications, not new publication screening. Exact source URLs and limits in addendum."
+  }
+]

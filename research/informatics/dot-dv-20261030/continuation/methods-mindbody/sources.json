@@ -1,0 +1,66 @@
+[
+  {
+    "id": "gallegos-manuscript",
+    "url": "https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_json/PMC8052636/unicode",
+    "type": "NCBI PMC author manuscript through public BioC API",
+    "publishedAt": "2020-09-24",
+    "sourceDate": "BioC collection date20261024; publication2020",
+    "retrievedAt": "2026-10-30T08:28:43.779847+00:00",
+    "access": "full-text with machine-readable tables; CONSORT image not inspected",
+    "identityVerified": true,
+    "privateFile": "private/Gallegos-PMC8052636-bioc.json",
+    "notes": "New public API route; manuscript DOI and PMID verified.",
+    "sha256": "af7b1ef83bba9c478f679ca965b453bf538b51eb999ce5f2906006afa09c43b0"
+  },
+  {
+    "id": "gallegos-registry",
+    "url": "https://clinicaltrials.gov/api/v2/studies/NCT03484390",
+    "type": "ClinicalTrials.gov official registry API",
+    "publishedAt": "2018-03-30",
+    "sourceDate": "Last update posted2018-07-02",
+    "retrievedAt": "2026-10-30T08:28:43.779847+00:00",
+    "access": "complete returned registry record",
+    "identityVerified": true,
+    "privateFile": "private/Gallegos-NCT03484390.json",
+    "notes": "No results posted; use publication for results.",
+    "sha256": "18bfe6eaec47e2b63302a1694a99c4b0f9be39fa27086cae334553087f50b648"
+  },
+  {
+    "id": "franzblau-author-deposit",
+    "url": "https://www.researchgate.net/publication/228698848_Take_a_Breath_Break_The_Silence_The_Effects_of_Yogic_Breathing_and_Testimony_About_Battering_on_Feelings_of_Self-Efficacy_in_Battered_Women",
+    "type": "Author-deposited primary journal article text",
+    "publishedAt": "2006",
+    "sourceDate": "Author upload2014-01-22",
+    "retrievedAt": "2026-10-30T08:28:43.779847+00:00",
+    "access": "full article text exposed, including methods and tables1\u20135; referenced Table6 not located in extraction",
+    "identityVerified": true,
+    "privateFile": null,
+    "notes": "Uploaded by coauthor Thomas E. Van Cantfort. Article heading and copyright2006 override inconsistent ResearchGate metadata2008. No publisher403 retry."
+  },
+  {
+    "id": "clark-manuscript",
+    "url": "https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_json/PMC4215954/unicode",
+    "type": "NCBI PMC author manuscript through public BioC API",
+    "publishedAt": "2014-05-09",
+    "sourceDate": "2014 article",
+    "retrievedAt": "2026-10-30T08:28:43.779847+00:00",
+    "access": "full-text with machine-readable tables",
+    "identityVerified": true,
+    "privateFile": "private/Clark-PMC4215954-bioc.json",
+    "notes": "New API route after previously blocked PMC HTML / unavailable EuropePMC XML.",
+    "sha256": "97e8b5559ccf0a6d679ffaf06bba216d2cc83d1dd2d279fa391072e72bd5208b"
+  },
+  {
+    "id": "bshape-manuscript",
+    "url": "https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_json/PMC9564648/unicode",
+    "type": "NCBI PMC primary article through public BioC API",
+    "publishedAt": "2022-10-05",
+    "sourceDate": "2022 article",
+    "retrievedAt": "2026-10-30T08:28:43.779847+00:00",
+    "access": "full-text",
+    "identityVerified": true,
+    "privateFile": "private/Vroegindewey-PMC9564648-bioc.json",
+    "notes": "Methods and linked parent-publication references checked; no new trial outcomes inferred.",
+    "sha256": "3d1fdc58b4556acf5fd667db7845a29105bcbc0a49042481d9598cb0e42b0a81"
+  }
+]

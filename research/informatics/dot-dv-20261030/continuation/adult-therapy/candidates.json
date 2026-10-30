@@ -1,0 +1,634 @@
+[
+  {
+    "id": "dv-adult-therapy-33743632",
+    "title": "The effect of solution-focused counseling on violence rate and quality of life of pregnant women at risk of domestic violence: a randomized controlled trial.",
+    "authors": [
+      "Dinmohammadi S",
+      "Dadashi M",
+      "Ahmadnia E",
+      "Janani L",
+      "Kharaghani R"
+    ],
+    "year": 2021,
+    "journal": "BMC pregnancy and childbirth",
+    "doi": "10.1186/s12884-021-03674-z",
+    "pmid": "33743632",
+    "trialRegistration": [
+      "IRCT2017040628352N4"
+    ],
+    "collection": "language",
+    "interventionFamily": "Individual solution-focused counselling.",
+    "publicationType": "Primary intervention study",
+    "studyFamilyId": "IRCT2017040628352N4",
+    "familyLinkageUncertain": false,
+    "existingRepositoryMatches": [],
+    "relevance": {
+      "relation": "direct",
+      "population": "Pregnant women with minor or moderate physical, psychological or sexual domestic violence, living with their spouse.",
+      "exposureEvidence": "Pregnant women with minor or moderate physical, psychological or sexual domestic violence, living with their spouse.",
+      "rationale": "Psychological intervention with explicitly reported domestic/IPV exposure; mixed-cohort transfer is qualified where applicable.",
+      "transferLimit": "See population and limitations; not a population-wide recommendation."
+    },
+    "age": {
+      "groups": [
+        "adults"
+      ],
+      "reportedRange": "Eligibility over 18; mean ages 27.55 and 27.26 years.",
+      "youthScope": null
+    },
+    "country": "Iran",
+    "setting": "A government childbirth-preparation center in Zanjan.",
+    "sampleSize": {
+      "randomized": 90,
+      "analyzed": 82,
+      "description": "See randomized and attrition fields; analyzed is model population when specified."
+    },
+    "intervention": {
+      "description": "Individual solution-focused counselling.",
+      "dose": "Six weekly 90-minute sessions.",
+      "provider": "Researcher; further credential detail not extracted."
+    },
+    "comparator": "No additional counselling; delayed sessions offered after follow-up.",
+    "outcomes": [
+      {
+        "name": "Psychological, minor physical and sexual violence",
+        "followUp": "Six weeks after the six-session course",
+        "result": "Adjusted comparisons favored intervention; severe physical violence did not differ.",
+        "effectEstimate": "Reported p=.001 for each significant violence subscale; effect size and interval not supplied.",
+        "uncertainty": "Confidence intervals provided when source establishes them; otherwise unresolved.",
+        "primaryStatus": "Study outcomes"
+      },
+      {
+        "name": "Quality of life",
+        "followUp": "Six weeks after treatment",
+        "result": "Adjusted overall and selected subscales favored intervention; general health and physical/emotional role limitations did not.",
+        "effectEstimate": "Overall p=.001; effect interval not established.",
+        "uncertainty": "Confidence intervals provided when source establishes them; otherwise unresolved.",
+        "primaryStatus": "Study outcomes"
+      }
+    ],
+    "finding": "Several violence subscales and adjusted overall quality of life favored counselling; severe physical violence and several quality-of-life subscales showed no benefit.",
+    "limitation": "Small single-center, complete-case trial with unmasked self-report and short follow-up; baseline quality of life differed numerically.",
+    "design": {
+      "type": "Randomized controlled trial",
+      "randomizationEvidence": "Random-number table selected permuted blocks of four; 45 participants assigned to each arm.",
+      "masking": {
+        "participants": "Not established from accessed source.",
+        "providers": "Not established from accessed source.",
+        "assessors": "Follow-up interviewer explicitly unaware of allocation.",
+        "analysts": "Not established from accessed source."
+      },
+      "crosses": 1,
+      "crossRationale": "One cross: explicit random allocation; double-blinded treatment not established."
+    },
+    "quality": {
+      "riskOfBias": "Provisional assessment; allocation, masking and missingness limitations explicitly retained.",
+      "attrition": "Four nonattenders excluded from intervention and four withdrawals from control; 41 per arm analyzed.",
+      "confounding": "Random assignment supports group comparison; implementation, missingness and analysis remain relevant.",
+      "adverseFindings": "Systematic adverse-event assessment not established. Ineligible/excluded women were referred to psychologists.",
+      "transferLimits": "Small single-center, complete-case trial with unmasked self-report and short follow-up; baseline quality of life differed numerically.",
+      "jadad": "not established"
+    },
+    "access": {
+      "level": "full-text",
+      "sourceURLs": [
+        "https://europepmc.org/article/MED/33743632",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7981895/fullTextXML",
+        "https://api.crossref.org/works/10.1186/s12884-021-03674-z"
+      ],
+      "retrievedAt": "2026-10-30T08:03:41.129256+00:00"
+    },
+    "sources": [
+      {
+        "url": "https://europepmc.org/article/MED/33743632",
+        "type": "Primary publication abstract in Europe PMC MEDLINE record",
+        "retrievedAt": "2026-10-30T07:15:55.705516+00:00",
+        "identityVerified": true,
+        "notes": "Retained source retrieved in first-round API search; newly inspected in continuation. DOI/title checked against Crossref.",
+        "retrievalQueryURL": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=TITLE_ABS%3A%28%22intimate+partner+violence%22+OR+%22domestic+violence%22+OR+%22battered+women%22%29+AND+TITLE_ABS%3A%28randomized+OR+randomised%29+AND+TITLE_ABS%3A%28therapy+OR+psychological+OR+psychotherapy+OR+cognitive+OR+counseling+OR+counselling+OR+%22motivational+interviewing%22%29&format=json&resultType=core&pageSize=1000",
+        "inspectedAt": "2026-10-30T08:12:46.998330+00:00"
+      },
+      {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7981895/fullTextXML",
+        "type": "Primary full-paper XML",
+        "retrievedAt": "2026-10-30T08:03:38.525281+00:00",
+        "identityVerified": true,
+        "notes": "Methods/results inspected."
+      },
+      {
+        "url": "https://api.crossref.org/works/10.1186/s12884-021-03674-z",
+        "type": "Crossref DOI registration",
+        "retrievedAt": "2026-10-30T08:03:41.129256+00:00",
+        "identityVerified": true,
+        "notes": "Title/authors and update/relation metadata checked."
+      }
+    ],
+    "publicationStatus": {
+      "status": "Published",
+      "correctionRetractionCheck": {
+        "europePMCpubTypes": [
+          "Equivalence Trial",
+          "research-article",
+          "Randomized Controlled Trial",
+          "Journal Article"
+        ],
+        "crossrefUpdateRelations": [],
+        "crossrefRelations": {
+          "has-preprint": [
+            {
+              "id-type": "doi",
+              "id": "10.21203/rs.3.rs-34762/v3",
+              "asserted-by": "object"
+            },
+            {
+              "id-type": "doi",
+              "id": "10.21203/rs.3.rs-34762/v2",
+              "asserted-by": "object"
+            },
+            {
+              "id-type": "doi",
+              "id": "10.21203/rs.3.rs-34762/v1",
+              "asserted-by": "object"
+            }
+          ]
+        },
+        "crossrefChecked": true
+      },
+      "uncertainty": "No comprehensive publisher/Crossmark audit claimed."
+    },
+    "recommendationRationale": "Pending evidence record retaining limitations and null outcomes; no clinical endorsement implied.",
+    "review": {
+      "status": "pending",
+      "reviewer": null
+    },
+    "assessmentStatus": "assessed",
+    "assessmentNotes": [
+      "Original schema completed using primary source or explicit access limit. Frozen first-batch files were not changed.",
+      "Crossref links three preprint versions to this publication; do not count them as independent studies.",
+      "Newly screened in continuation; bibliographic source had previously been retrieved but left in the unscreened queue."
+    ],
+    "reviewReady": true,
+    "reviewReadiness": "ready-with-access-limits"
+  },
+  {
+    "id": "dv-adult-therapy-33428625",
+    "title": "Interpersonal psychotherapy delivered by nonspecialists for depression and posttraumatic stress disorder among Kenyan HIV-positive women affected by gender-based violence: Randomized controlled trial.",
+    "authors": [
+      "Meffert SM",
+      "Neylan TC",
+      "McCulloch CE",
+      "Blum K",
+      "Cohen CR",
+      "Bukusi EA",
+      "Verdeli H",
+      "Markowitz JC",
+      "Kahn JG",
+      "Bukusi D",
+      "Thirumurthy H",
+      "Rota G",
+      "Rota R",
+      "Oketch G",
+      "Opiyo E",
+      "Ongeri L"
+    ],
+    "year": 2021,
+    "journal": "PLoS medicine",
+    "doi": "10.1371/journal.pmed.1003468",
+    "pmid": "33428625",
+    "trialRegistration": [
+      "NCT02320799"
+    ],
+    "collection": "language",
+    "interventionFamily": "Interpersonal psychotherapy integrated with HIV care.",
+    "publicationType": "Primary intervention study",
+    "studyFamilyId": "NCT02320799",
+    "familyLinkageUncertain": false,
+    "existingRepositoryMatches": [],
+    "relevance": {
+      "relation": "context",
+      "population": "HIV-positive women with gender-based violence exposure, major depression and PTSD; IPV was assessed in the partnered subgroup.",
+      "exposureEvidence": "HIV-positive women with gender-based violence exposure, major depression and PTSD; IPV was assessed in the partnered subgroup.",
+      "rationale": "Psychological intervention with explicitly reported domestic/IPV exposure; mixed-cohort transfer is qualified where applicable.",
+      "transferLimit": "See population and limitations; not a population-wide recommendation."
+    },
+    "age": {
+      "groups": [
+        "adults"
+      ],
+      "reportedRange": "Eligibility at least 18; mean age about 37 years.",
+      "youthScope": null
+    },
+    "country": "Kenya",
+    "setting": "FACES HIV clinic, Kisumu.",
+    "sampleSize": {
+      "randomized": 256,
+      "analyzed": 256,
+      "description": "256 randomized and included in longitudinal models; partnered baseline subgroup105 (56 IPT,49 control), with changing denominators later."
+    },
+    "intervention": {
+      "description": "Interpersonal psychotherapy integrated with HIV care.",
+      "dose": "Twelve weekly individual sessions of approximately one hour.",
+      "provider": "Trained local female nonspecialists, with expert and peer supervision."
+    },
+    "comparator": "Waitlist plus usual clinic/social resources; waitlist received IPT after the three-month comparison.",
+    "outcomes": [
+      {
+        "name": "Major depression diagnosis",
+        "followUp": "Three months",
+        "result": "Lower odds with IPT plus usual care.",
+        "effectEstimate": "OR .26;95% CI .11–.60; p=.002",
+        "uncertainty": "Confidence intervals provided when source establishes them; otherwise unresolved.",
+        "primaryStatus": "Primary"
+      },
+      {
+        "name": "PTSD diagnosis",
+        "followUp": "Three months",
+        "result": "Lower odds with IPT plus usual care.",
+        "effectEstimate": "OR .35;95% CI .14–.86; p=.02",
+        "uncertainty": "Confidence intervals provided when source establishes them; otherwise unresolved.",
+        "primaryStatus": "Primary"
+      },
+      {
+        "name": "Physical IPV among partnered participants",
+        "followUp": "Three months",
+        "result": "Exploratory reduction; changing partnership and differential attrition limit interpretation.",
+        "effectEstimate": null,
+        "uncertainty": "Confidence intervals provided when source establishes them; otherwise unresolved.",
+        "primaryStatus": "Secondary, not powered"
+      },
+      {
+        "name": "Absenteeism",
+        "followUp": "Three months",
+        "result": "No statistically significant comparative improvement.",
+        "effectEstimate": "Difference -3.35 days;95% CI -6.83–.14; p=.06",
+        "uncertainty": "Confidence intervals provided when source establishes them; otherwise unresolved.",
+        "primaryStatus": "Secondary"
+      }
+    ],
+    "finding": "At three months, IPT reduced odds of major depression and PTSD in the mixed-GBV cohort. Partnered-subgroup IPV findings were exploratory and vulnerable to attrition/relationship-status changes.",
+    "limitation": "Sequence visible to coordinator; differential attrition and mixed GBV exposure. Later follow-up lacks an untreated comparison and cannot establish persistent comparative benefit.",
+    "design": {
+      "type": "Randomized controlled trial",
+      "randomizationEvidence": "Excel-generated random color sequence in blocks of ten; coordinator assigned next color after baseline, with the next allocation visible.",
+      "masking": {
+        "participants": "Not established from accessed source.",
+        "providers": "Therapists and coordinator not masked.",
+        "assessors": "Baseline and follow-up evaluators masked.",
+        "analysts": "Not established from accessed source."
+      },
+      "crosses": 1,
+      "crossRationale": "One cross: explicit random allocation; double-blinded treatment not established."
+    },
+    "quality": {
+      "riskOfBias": "Provisional assessment; allocation, masking and missingness limitations explicitly retained.",
+      "attrition": "At three months, 34/123 IPT versus16/133 control lost; overall90/256 did not complete all assessments. Completer primary data were also missing for13 IPT and1 control.",
+      "confounding": "Random assignment supports group comparison; implementation, missingness and analysis remain relevant.",
+      "adverseFindings": "Acute suicidality/GBV danger was screened and referred with escorted transport; systematic adverse-event totals not established.",
+      "transferLimits": "Sequence visible to coordinator; differential attrition and mixed GBV exposure. Later follow-up lacks an untreated comparison and cannot establish persistent comparative benefit.",
+      "jadad": "not established"
+    },
+    "access": {
+      "level": "full-text",
+      "sourceURLs": [
+        "https://europepmc.org/article/MED/33428625",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7799784/fullTextXML",
+        "https://api.crossref.org/works/10.1371/journal.pmed.1003468"
+      ],
+      "retrievedAt": "2026-10-30T08:03:45.801817+00:00"
+    },
+    "sources": [
+      {
+        "url": "https://europepmc.org/article/MED/33428625",
+        "type": "Primary publication abstract in Europe PMC MEDLINE record",
+        "retrievedAt": "2026-10-30T07:15:55.705516+00:00",
+        "identityVerified": true,
+        "notes": "Retained source retrieved in first-round API search; newly inspected in continuation. DOI/title checked against Crossref.",
+        "retrievalQueryURL": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=TITLE_ABS%3A%28%22intimate+partner+violence%22+OR+%22domestic+violence%22+OR+%22battered+women%22%29+AND+TITLE_ABS%3A%28randomized+OR+randomised%29+AND+TITLE_ABS%3A%28therapy+OR+psychological+OR+psychotherapy+OR+cognitive+OR+counseling+OR+counselling+OR+%22motivational+interviewing%22%29&format=json&resultType=core&pageSize=1000",
+        "inspectedAt": "2026-10-30T08:12:46.998330+00:00"
+      },
+      {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7799784/fullTextXML",
+        "type": "Primary full-paper XML",
+        "retrievedAt": "2026-10-30T08:03:42.509974+00:00",
+        "identityVerified": true,
+        "notes": "Methods/results inspected."
+      },
+      {
+        "url": "https://api.crossref.org/works/10.1371/journal.pmed.1003468",
+        "type": "Crossref DOI registration",
+        "retrievedAt": "2026-10-30T08:03:45.801817+00:00",
+        "identityVerified": true,
+        "notes": "Title/authors and update/relation metadata checked."
+      }
+    ],
+    "publicationStatus": {
+      "status": "Published",
+      "correctionRetractionCheck": {
+        "europePMCpubTypes": [
+          "Research Support, Non-U.S. Gov't",
+          "research-article",
+          "Randomized Controlled Trial",
+          "Journal Article",
+          "Research Support, N.I.H., Extramural"
+        ],
+        "crossrefUpdateRelations": [],
+        "crossrefRelations": {},
+        "crossrefChecked": true
+      },
+      "uncertainty": "No comprehensive publisher/Crossmark audit claimed."
+    },
+    "recommendationRationale": "Pending evidence record retaining limitations and null outcomes; no clinical endorsement implied.",
+    "review": {
+      "status": "pending",
+      "reviewer": null
+    },
+    "assessmentStatus": "assessed",
+    "assessmentNotes": [
+      "Original schema completed using primary source or explicit access limit. Frozen first-batch files were not changed.",
+      "Table1 denominator clarification:61% past-week physical IPV concerns the partnered subgroup, not all256 women. Mental-health effects refer to the full mixed-GBV cohort. Unclear IPV model units and textual risk ratios are not reproduced.",
+      "Newly screened in continuation; bibliographic source had previously been retrieved but left in the unscreened queue."
+    ],
+    "reviewReady": true,
+    "reviewReadiness": "ready-with-access-limits"
+  },
+  {
+    "id": "dv-adult-therapy-40425169",
+    "title": "Forgiveness Therapy to Build Hope and Reduce Anxiety and Depression in Battered Women in Pakistan.",
+    "authors": [
+      "Nisar S",
+      "Yu L",
+      "Iftikhar R",
+      "Enright RD"
+    ],
+    "year": 2025,
+    "journal": "Clinical psychology & psychotherapy",
+    "doi": "10.1002/cpp.70089",
+    "pmid": "40425169",
+    "trialRegistration": [],
+    "collection": "language",
+    "interventionFamily": "Individual forgiveness therapy.",
+    "publicationType": "Primary intervention study",
+    "studyFamilyId": "Forgiveness-Pakistan-30-2025",
+    "familyLinkageUncertain": true,
+    "existingRepositoryMatches": [],
+    "relevance": {
+      "relation": "direct",
+      "population": "Muslim women in a shelter screened for substantial domestic violence and psychological distress; partner and in-law abuse reported.",
+      "exposureEvidence": "Muslim women in a shelter screened for substantial domestic violence and psychological distress; partner and in-law abuse reported.",
+      "rationale": "Psychological intervention with explicitly reported domestic/IPV exposure; mixed-cohort transfer is qualified where applicable.",
+      "transferLimit": "See population and limitations; not a population-wide recommendation."
+    },
+    "age": {
+      "groups": [
+        "adults"
+      ],
+      "reportedRange": "25–40 years; mean30.",
+      "youthScope": null
+    },
+    "country": "Pakistan",
+    "setting": "One shelter; residents from several Punjab cities.",
+    "sampleSize": {
+      "randomized": 30,
+      "analyzed": 30,
+      "description": "See randomized and attrition fields; analyzed is model population when specified."
+    },
+    "intervention": {
+      "description": "Individual forgiveness therapy.",
+      "dose": "Fifteen weekly40–45-minute sessions.",
+      "provider": "Clinical-psychology master’s graduate with75 hours of forgiveness training; same researcher administered assessments."
+    },
+    "comparator": "No formal therapy; participants could seek informal help from the intervener.",
+    "outcomes": [
+      {
+        "name": "Depression, anxiety, anger, hope and forgiveness",
+        "followUp": "Immediate post-treatment",
+        "result": "Benefit claimed; numerical gain-score inconsistencies prevent dependable effect extraction.",
+        "effectEstimate": null,
+        "uncertainty": "Confidence intervals provided when source establishes them; otherwise unresolved.",
+        "primaryStatus": "Hierarchy not established"
+      }
+    ],
+    "finding": "Authors report large symptom and hope benefits, but tables disagree about control-group changes, so quantitative efficacy cannot be accepted without clarification.",
+    "limitation": "N=30, no active comparator or follow-up, researcher both therapist and assessor, and substantial baseline forgiveness imbalance. Gain-score tables conflict with reported pre/post means.",
+    "design": {
+      "type": "Randomized controlled trial",
+      "randomizationEvidence": "Methods explicitly state random assignment,15 per group; sequence generation and concealment unspecified.",
+      "masking": {
+        "participants": "Not established from accessed source.",
+        "providers": "Not established from accessed source.",
+        "assessors": "Researcher/intervener administered self-report items, including orally for participants unable to read; independent masking absent.",
+        "analysts": "Not established from accessed source."
+      },
+      "crosses": 1,
+      "crossRationale": "One cross: explicit random allocation; double-blinded treatment not established."
+    },
+    "quality": {
+      "riskOfBias": "Provisional assessment; allocation, masking and missingness limitations explicitly retained.",
+      "attrition": "Thirty participants appear in pre/post tables; no participant-flow accounting established.",
+      "confounding": "Random assignment supports group comparison; implementation, missingness and analysis remain relevant.",
+      "adverseFindings": "No systematic harms assessment established. The protocol distinguishes forgiveness from reconciliation but also encourages a gift/deed toward the offender; consequences are unreported.",
+      "transferLimits": "N=30, no active comparator or follow-up, researcher both therapist and assessor, and substantial baseline forgiveness imbalance. Gain-score tables conflict with reported pre/post means.",
+      "jadad": "not established"
+    },
+    "access": {
+      "level": "selected-methods",
+      "sourceURLs": [
+        "https://europepmc.org/article/MED/40425169",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12116049/fullTextXML",
+        "https://api.crossref.org/works/10.1002/cpp.70089"
+      ],
+      "retrievedAt": "2026-10-30T08:03:51.790418+00:00"
+    },
+    "sources": [
+      {
+        "url": "https://europepmc.org/article/MED/40425169",
+        "type": "Primary publication abstract in Europe PMC MEDLINE record",
+        "retrievedAt": "2026-10-30T07:14:42.276796+00:00",
+        "identityVerified": true,
+        "notes": "Retained source retrieved in first-round API search; newly inspected in continuation. DOI/title checked against Crossref.",
+        "retrievalQueryURL": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=%28%22battered+women%22+OR+%22intimate+partner+violence%22+OR+%22domestic+violence%22%29+AND+%28%22cognitive+trauma+therapy%22+OR+%22cognitive+processing+therapy%22+OR+HOPE+OR+%22present+centered%22%29&format=json&resultType=core&pageSize=200",
+        "inspectedAt": "2026-10-30T08:12:46.998330+00:00"
+      },
+      {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12116049/fullTextXML",
+        "type": "Primary full-paper XML",
+        "retrievedAt": "2026-10-30T08:03:46.908297+00:00",
+        "identityVerified": true,
+        "notes": "Methods/results inspected."
+      },
+      {
+        "url": "https://api.crossref.org/works/10.1002/cpp.70089",
+        "type": "Crossref DOI registration",
+        "retrievedAt": "2026-10-30T08:03:51.790418+00:00",
+        "identityVerified": true,
+        "notes": "Title/authors and update/relation metadata checked."
+      }
+    ],
+    "publicationStatus": {
+      "status": "Published",
+      "correctionRetractionCheck": {
+        "europePMCpubTypes": [
+          "research-article",
+          "Randomized Controlled Trial",
+          "Journal Article"
+        ],
+        "crossrefUpdateRelations": [],
+        "crossrefRelations": {},
+        "crossrefChecked": true
+      },
+      "uncertainty": "No comprehensive publisher/Crossmark audit claimed."
+    },
+    "recommendationRationale": "Pending evidence record retaining limitations and null outcomes; no clinical endorsement implied.",
+    "review": {
+      "status": "pending",
+      "reviewer": null
+    },
+    "assessmentStatus": "assessed",
+    "assessmentNotes": [
+      "Original schema completed using primary source or explicit access limit. Frozen first-batch files were not changed.",
+      "Table2 control CES-D43.13→43.27 is incompatible with Table3 reported mean gain1.2; other control change scores also conflict. Effects withheld pending source clarification.",
+      "Newly screened in continuation; bibliographic source had previously been retrieved but left in the unscreened queue."
+    ],
+    "reviewReady": false,
+    "reviewReadiness": "needs-source-check"
+  },
+  {
+    "id": "dv-adult-therapy-32755265",
+    "title": "Randomized Controlled Trial: Cognitive-Narrative Therapy for IPV Victims.",
+    "authors": [
+      "Moreira A",
+      "Moreira AC",
+      "Rocha JC"
+    ],
+    "year": 2022,
+    "journal": "Journal of interpersonal violence",
+    "doi": "10.1177/0886260520943719",
+    "pmid": "32755265",
+    "trialRegistration": [],
+    "collection": "language",
+    "interventionFamily": "Manualized cognitive-narrative therapy.",
+    "publicationType": "Primary intervention study",
+    "studyFamilyId": "CognitiveNarrative-IPV-19-2022",
+    "familyLinkageUncertain": true,
+    "existingRepositoryMatches": [],
+    "relevance": {
+      "relation": "direct",
+      "population": "Women who experienced intimate-partner violence.",
+      "exposureEvidence": "Women who experienced intimate-partner violence.",
+      "rationale": "Psychological intervention with explicitly reported domestic/IPV exposure; mixed-cohort transfer is qualified where applicable.",
+      "transferLimit": "See population and limitations; not a population-wide recommendation."
+    },
+    "age": {
+      "groups": [
+        "not-specified"
+      ],
+      "reportedRange": "Not established from accessed source.",
+      "youthScope": null
+    },
+    "country": "Not established from accessed source.",
+    "setting": "Not established from accessed source.",
+    "sampleSize": {
+      "randomized": 19,
+      "analyzed": null,
+      "description": "See randomized and attrition fields; analyzed is model population when specified."
+    },
+    "intervention": {
+      "description": "Manualized cognitive-narrative therapy.",
+      "dose": "Four sessions.",
+      "provider": "Not established from accessed source."
+    },
+    "comparator": "Control condition; content unspecified in abstract.",
+    "outcomes": [
+      {
+        "name": "Depression, PTSD, borderline and CPTSD dimensions",
+        "followUp": "Follow-up timing not stated in abstract",
+        "result": "No significant group differences; selected estimates favored treatment.",
+        "effectEstimate": "Reported effect sizes .04–.43, metric/interval unspecified.",
+        "uncertainty": "Confidence intervals provided when source establishes them; otherwise unresolved.",
+        "primaryStatus": "Hierarchy not established"
+      },
+      {
+        "name": "Total CPTSD",
+        "followUp": "Follow-up",
+        "result": "Estimate favored control, with no significant difference.",
+        "effectEstimate": "Reported effect size -.28; metric/interval unspecified.",
+        "uncertainty": "Confidence intervals provided when source establishes them; otherwise unresolved.",
+        "primaryStatus": "Hierarchy not established"
+      }
+    ],
+    "finding": "No statistically significant between-group effects were found. Small favorable estimates on some symptoms coexist with an unfavorable total-CPTSD estimate.",
+    "limitation": "Only19 participants, abstract-only methods and unclear precision. The authors’ positive efficacy conclusion exceeds the reported nonsignificant comparisons.",
+    "design": {
+      "type": "Randomized controlled trial",
+      "randomizationEvidence": "Abstract describes19 women allocated between treatment and control in a randomized trial; sequence and concealment are unreported.",
+      "masking": {
+        "participants": "Not established from accessed source.",
+        "providers": "Not established from accessed source.",
+        "assessors": "Not established from accessed source.",
+        "analysts": "Not established from accessed source."
+      },
+      "crosses": 1,
+      "crossRationale": "One cross: explicit random allocation; double-blinded treatment not established."
+    },
+    "quality": {
+      "riskOfBias": "Provisional assessment; allocation, masking and missingness limitations explicitly retained.",
+      "attrition": "Not established from accessed source.",
+      "confounding": "Random assignment supports group comparison; implementation, missingness and analysis remain relevant.",
+      "adverseFindings": "Adverse-event reporting not established.",
+      "transferLimits": "Only19 participants, abstract-only methods and unclear precision. The authors’ positive efficacy conclusion exceeds the reported nonsignificant comparisons.",
+      "jadad": "not established"
+    },
+    "access": {
+      "level": "abstract",
+      "sourceURLs": [
+        "https://europepmc.org/article/MED/32755265",
+        "https://api.crossref.org/works/10.1177/0886260520943719"
+      ],
+      "retrievedAt": "2026-10-30T08:03:52.709173+00:00"
+    },
+    "sources": [
+      {
+        "url": "https://europepmc.org/article/MED/32755265",
+        "type": "Primary publication abstract in Europe PMC MEDLINE record",
+        "retrievedAt": "2026-10-30T07:15:55.705516+00:00",
+        "identityVerified": true,
+        "notes": "Retained source retrieved in first-round API search; newly inspected in continuation. DOI/title checked against Crossref.",
+        "retrievalQueryURL": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=TITLE_ABS%3A%28%22intimate+partner+violence%22+OR+%22domestic+violence%22+OR+%22battered+women%22%29+AND+TITLE_ABS%3A%28randomized+OR+randomised%29+AND+TITLE_ABS%3A%28therapy+OR+psychological+OR+psychotherapy+OR+cognitive+OR+counseling+OR+counselling+OR+%22motivational+interviewing%22%29&format=json&resultType=core&pageSize=1000",
+        "inspectedAt": "2026-10-30T08:12:46.998330+00:00"
+      },
+      {
+        "url": "https://api.crossref.org/works/10.1177/0886260520943719",
+        "type": "Crossref DOI registration",
+        "retrievedAt": "2026-10-30T08:03:52.709173+00:00",
+        "identityVerified": true,
+        "notes": "Title/authors and update/relation metadata checked."
+      }
+    ],
+    "publicationStatus": {
+      "status": "Published",
+      "correctionRetractionCheck": {
+        "europePMCpubTypes": [
+          "Research Support, Non-U.S. Gov't",
+          "Randomized Controlled Trial",
+          "Journal Article"
+        ],
+        "crossrefUpdateRelations": [],
+        "crossrefRelations": {},
+        "crossrefChecked": true
+      },
+      "uncertainty": "No comprehensive publisher/Crossmark audit claimed."
+    },
+    "recommendationRationale": "Pending evidence record retaining limitations and null outcomes; no clinical endorsement implied.",
+    "review": {
+      "status": "pending",
+      "reviewer": null
+    },
+    "assessmentStatus": "assessed",
+    "assessmentNotes": [
+      "Original schema completed using primary source or explicit access limit. Frozen first-batch files were not changed.",
+      "Newly screened in continuation; bibliographic source had previously been retrieved but left in the unscreened queue."
+    ],
+    "reviewReady": true,
+    "reviewReadiness": "ready-with-access-limits"
+  }
+]

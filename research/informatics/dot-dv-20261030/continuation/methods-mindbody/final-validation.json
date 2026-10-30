@@ -1,0 +1,40 @@
+{
+  "validatedAt": "2026-10-30T08:39:12.426388+00:00",
+  "status": "passed",
+  "records": 4,
+  "fieldDeltas": 66,
+  "gallegosOutcomes": 5,
+  "gallegosRegisteredPrimaryCount": 1,
+  "gallegosRegisteredSecondaryCount": 4,
+  "frozenBatchAndPriorSourcesUnchanged": true,
+  "originalWorkerFilesUnchanged": true,
+  "crossesUnchanged": true,
+  "humanReviewPending": true,
+  "files": [
+    {
+      "file": "research-work/continuation/methods-mindbody/proposed-fields.json",
+      "sha256": "bc95e5e1b253781febd4a491eab60cec7418a7aeb13ac2135f03d0119627a3b9",
+      "bytes": 48815
+    },
+    {
+      "file": "research-work/continuation/methods-mindbody/field-deltas.json",
+      "sha256": "8db0bfc3214b00d3b8de0dd7e80c21ef21f5316436a26568a911b98e2e560f86",
+      "bytes": 81603
+    },
+    {
+      "file": "research-work/continuation/methods-mindbody/report.md",
+      "sha256": "3ecb78d577b8c7d540652c3cf1d40fbd82201a313abec8caed653e1301e25928",
+      "bytes": 6966
+    },
+    {
+      "file": "research-work/continuation/methods-mindbody/checkpoint.json",
+      "sha256": "852e10d9e4b1511e8af2ed6abd80484607bde299f9d3f69063e47662fecd1466",
+      "bytes": 3964
+    },
+    {
+      "file": "research-work/continuation/methods-mindbody/write_appraisal.py",
+      "sha256": "6ba7e03bcaff5853516d21da0ad633aa8ee6b224bb1148d1427b7392db7326e8",
+      "bytes": 28428
+    }
+  ]
+}

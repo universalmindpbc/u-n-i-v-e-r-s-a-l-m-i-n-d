@@ -1,0 +1,46 @@
+[
+  {
+    "title": "The effect of solution-focused counseling on violence rate and quality of life of pregnant women at risk of domestic violence: a randomized controlled trial.",
+    "doi": "10.1186/s12884-021-03674-z",
+    "pmid": "33743632",
+    "decision": "include",
+    "reason": "Primary intervention report assessed from retained unscreened queue; readiness qualified in candidate record.",
+    "sourceURL": "https://europepmc.org/article/MED/33743632",
+    "studyFamilyId": "IRCT2017040628352N4"
+  },
+  {
+    "title": "Interpersonal psychotherapy delivered by nonspecialists for depression and posttraumatic stress disorder among Kenyan HIV-positive women affected by gender-based violence: Randomized controlled trial.",
+    "doi": "10.1371/journal.pmed.1003468",
+    "pmid": "33428625",
+    "decision": "include",
+    "reason": "Primary intervention report assessed from retained unscreened queue; readiness qualified in candidate record.",
+    "sourceURL": "https://europepmc.org/article/MED/33428625",
+    "studyFamilyId": "NCT02320799"
+  },
+  {
+    "title": "Forgiveness Therapy to Build Hope and Reduce Anxiety and Depression in Battered Women in Pakistan.",
+    "doi": "10.1002/cpp.70089",
+    "pmid": "40425169",
+    "decision": "include",
+    "reason": "Primary intervention report assessed from retained unscreened queue; readiness qualified in candidate record.",
+    "sourceURL": "https://europepmc.org/article/MED/40425169",
+    "studyFamilyId": "Forgiveness-Pakistan-30-2025"
+  },
+  {
+    "title": "Randomized Controlled Trial: Cognitive-Narrative Therapy for IPV Victims.",
+    "doi": "10.1177/0886260520943719",
+    "pmid": "32755265",
+    "decision": "include",
+    "reason": "Primary intervention report assessed from retained unscreened queue; readiness qualified in candidate record.",
+    "sourceURL": "https://europepmc.org/article/MED/32755265",
+    "studyFamilyId": "CognitiveNarrative-IPV-19-2022"
+  },
+  {
+    "title": "Developing a brief online psychoeducational intervention for Latina survivors of intimate partner violence.",
+    "doi": "10.1177/17455057251329638",
+    "pmid": "40315027",
+    "decision": "exclude",
+    "reason": "Qualitative co-design interviews with eight survivors and seven providers; no intervention effect evaluation. Useful development context, excluded from this primary therapy-results bundle.",
+    "sourceURL": "https://europepmc.org/article/MED/40315027"
+  }
+]

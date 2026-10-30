@@ -1,0 +1,27 @@
+{
+  "createdAt": "2026-10-30T08:28:09.078317+00:00",
+  "priorBatchRevision": "batch-8bd70e21e48d9a70",
+  "frozenBatchSHA256": "afd810cdaefa6be0eeed16490fbc9b0f3a580837ea5f8994f64aa5ca9373f3c8",
+  "prioritizedReports": 5,
+  "proposedRevisions": 3,
+  "newPublications": 0,
+  "stagingChanged": false,
+  "productionChanged": false,
+  "pendingReports": [
+    "11680554",
+    "16569097"
+  ],
+  "frozenPrioritizedRecordsVerifiedUnchanged": true,
+  "materialFinding": "Primary follow-up describes alternating six-family allocation blocks; RCT classification unresolved. Linked2015 concern provisional.",
+  "directFullMethodsReached": [
+    "35285428"
+  ],
+  "directAdditionalFigureReached": [
+    "25596929"
+  ],
+  "relatedSourceMethodsReached": [
+    "16865033"
+  ],
+  "extraSpendAUD": 0,
+  "nextAction": "Parent review of provisional hash-bound advisory; do not auto-apply or mutate frozen batch."
+}

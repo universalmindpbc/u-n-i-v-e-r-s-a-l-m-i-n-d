@@ -1,0 +1,26 @@
+[
+  {
+    "pmid": "36909881",
+    "severity": "hold",
+    "sourceURL": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9419475/",
+    "location": "Sections 5.13.1, 5.12.2 and 5.14",
+    "finding": "Psychological-IPV text labels an effect positive and nonsignificant beside a negative estimate with a CI excluding zero. Long-term physical-IPV text pairs a CI including zero with p<0.01. Sexual-IPV all-study results reportedly favor controls whereas the abstract emphasizes the outlier-excluded null result.",
+    "disposition": "Assessed audit record; reviewReady false; quantitative efficacy conclusion withheld."
+  },
+  {
+    "pmid": "37383644",
+    "severity": "methodological-limit",
+    "sourceURL": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10294456/",
+    "location": "Description of Data; Handling Missing Data; Assessment of Treatment Factors; Limitations",
+    "finding": "Reuses the 2019 study dataset; study-level pre/post associations and k-nearest-neighbor imputation do not establish patient-level treatment selection or comparative efficacy. Narrative flow arithmetic and sexual-violence study totals are inconsistent.",
+    "disposition": "Review-ready only with explicit methodological limitations; no treatment ranking or exact contradictory subsidiary counts adopted."
+  },
+  {
+    "pmid": "36429899",
+    "severity": "reporting-warning",
+    "sourceURL": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9690755/",
+    "location": "Results 3.3.1 and 3.3.5",
+    "finding": "Narrative cross-reference mismatch in attribution of one success percentage; mostly nonrandomized or uncontrolled evidence and one unfavorable controlled recidivism result.",
+    "disposition": "No exact disputed success percentage adopted; negative controlled result retained."
+  }
+]

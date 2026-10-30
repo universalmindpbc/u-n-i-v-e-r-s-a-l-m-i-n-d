@@ -1,0 +1,72 @@
+[
+  {
+    "pmid": "35285428",
+    "url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/B1A750E6EE2865948819845018AF7C9B/S0954579422000104a.pdf/div-class-title-eight-year-trajectories-of-behavior-problems-and-resilience-in-children-exposed-to-early-life-intimate-partner-violence-the-overlapping-and-distinct-effects-of-individual-factors-maternal-characteristics-and-early-intervention-div.pdf",
+    "result": "success",
+    "scope": "Primary methods/results; downloaded privately",
+    "retrievedAt": "2026-10-30T08:28:09.078317+00:00"
+  },
+  {
+    "pmid": "25596929",
+    "url": "https://link.springer.com/article/10.1007/s10578-015-0532-4",
+    "result": "abstract-only; subscription full text",
+    "scope": "No purchase or login attempted",
+    "retrievedAt": "2026-10-30T08:28:09.078317+00:00"
+  },
+  {
+    "pmid": "25596929",
+    "url": "https://media.springernature.com/m312/springer-static/image/art%3A10.1007%2Fs10578-015-0532-4/MediaObjects/10578_2015_532_Fig1_HTML.gif",
+    "result": "success",
+    "scope": "Public original CONSORT figure visually inspected",
+    "retrievedAt": "2026-10-30T08:28:09.078317+00:00"
+  },
+  {
+    "pmid": "25596929",
+    "url": "https://link.springer.com/article/10.1007/s10578-015-0532-4/figures/1",
+    "result": "tool inaccessible",
+    "scope": "No retry",
+    "retrievedAt": "2026-10-30T08:28:09.078317+00:00"
+  },
+  {
+    "pmid": "16865033",
+    "url": "https://www.jaacap.org/article/S0890-8567%2809%2961891-8/pdf",
+    "result": "HTTP403",
+    "scope": "No retry",
+    "retrievedAt": "2026-10-30T08:28:09.078317+00:00"
+  },
+  {
+    "pmid": "16865033",
+    "url": "https://childparentpsychotherapy.com/wp-content/uploads/2016/11/Ghosh-Ippen-Harris-Van-Horn-Lieberman-treatment-help-highest-risk.pdf",
+    "result": "success",
+    "scope": "Linked primary reanalysis; not original2006 methods",
+    "retrievedAt": "2026-10-30T08:28:09.078317+00:00"
+  },
+  {
+    "pmid": "16865033",
+    "url": "https://childparentpsychotherapy.com/wp-content/uploads/2018/01/CPP-research-fact-sheet-Jan-2018.pdf",
+    "result": "success",
+    "scope": "Program-author summary; not peer-reviewed original2006 methods",
+    "retrievedAt": "2026-10-30T08:28:09.078317+00:00"
+  },
+  {
+    "pmid": "11680554",
+    "url": "https://www.researchgate.net/publication/11671519_Reducing_conduct_problems_among_children_of_battered_women",
+    "result": "abstract and author-upload link accessible",
+    "scope": "Fulltext link followed",
+    "retrievedAt": "2026-10-30T08:28:09.078317+00:00"
+  },
+  {
+    "pmid": "11680554",
+    "url": "https://www.researchgate.net/publication/profile/Laura-Spiller/publication/11671519_Reducing_conduct_problems_among_children_of_battered_women/links/00b7d51845a0cc26c4000000/Reducing-conduct-problems-among-children-of-battered-women.pdf",
+    "result": "HTTP404",
+    "scope": "No retry; no direct methods upgrade",
+    "retrievedAt": "2026-10-30T08:28:09.078317+00:00"
+  },
+  {
+    "pmid": "16569097",
+    "url": "https://doi.org/10.1037/0893-3200.20.1.127",
+    "result": "tool inaccessible",
+    "scope": "No retry; no direct methods upgrade",
+    "retrievedAt": "2026-10-30T08:28:09.078317+00:00"
+  }
+]

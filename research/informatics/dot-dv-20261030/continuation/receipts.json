@@ -1,0 +1,224 @@
+{
+  "createdAt": "2026-10-30T08:25:55.181506+00:00",
+  "frozenBatch": "batch-8bd70e21e48d9a70",
+  "sourceCommit": "a66baba1d65b374d134b89865715b2a8302f5e26",
+  "releaseCommit": "54343360948f46dfbb66f1bb4ef3179eeb2013e7",
+  "status": "separate-continuation-not-deployed",
+  "files": [
+    {
+      "lane": "adult-therapy",
+      "file": "candidates.json",
+      "sha256": "a0e4e809b56c030e9ec878efcf8ae26953201a1094d050d50b0fdd5cd684fbae"
+    },
+    {
+      "lane": "adult-therapy",
+      "file": "source-ledger.json",
+      "sha256": "2f5b465839b60ed4046499ae6907adbb032ca3802f9c43646328253f5261f731"
+    },
+    {
+      "lane": "adult-therapy",
+      "file": "addendum.md",
+      "sha256": "7d64d2c19e29a3e2d628963e016c30ad194b654e14af117adef610ada56454c1"
+    },
+    {
+      "lane": "adult-therapy",
+      "file": "clarification.json",
+      "sha256": "a6482527562cb9b278db5570b1ac7d2c2c280f2c7a6b8651ef70b5b14994c92f"
+    },
+    {
+      "lane": "adult-therapy",
+      "file": "search-log.json",
+      "sha256": "1f1bceb1386a8ae2bc1bde76ec778a6e873f59bae4c5825e982627214a12be3c"
+    },
+    {
+      "lane": "adult-therapy",
+      "file": "counts.json",
+      "sha256": "d17d26e8fe16c6879b718e64112243a30fc1ff27e2df782cc46fb97ec0682f00"
+    },
+    {
+      "lane": "adult-therapy",
+      "file": "screening.json",
+      "sha256": "21cdd8f7c8e9d37f030eca931c977b2d8a45cf47995b9d8bd2a51b3aff0c81bc"
+    },
+    {
+      "lane": "reviews-prevention",
+      "file": "candidates.json",
+      "sha256": "35d9776e7025410df3f0ec0b3ab01d6b346e6cdee767fb35a907da1a2bcb03ae"
+    },
+    {
+      "lane": "reviews-prevention",
+      "file": "nature-correction-addendum.json",
+      "sha256": "36af8c2155a4fa1cc8e1b3c5ebaa9a362c89d25e275412e088ef950ce4ef9995"
+    },
+    {
+      "lane": "reviews-prevention",
+      "file": "report.json",
+      "sha256": "da202632bc4132adc4ec8f62d66fe76bc33ffb2b4aaffbf53a059326b00449f9"
+    },
+    {
+      "lane": "reviews-prevention",
+      "file": "identity-checks.json",
+      "sha256": "70f5bfbf1d59244bde553f9639b085be4318ac359d12882c268d771be342f704"
+    },
+    {
+      "lane": "reviews-prevention",
+      "file": "source-reporting-flags.json",
+      "sha256": "b0c243493101a1818a0fdbc46901b9ac54e7580b849629268fc7504071135bd3"
+    },
+    {
+      "lane": "reviews-prevention",
+      "file": "search-log.json",
+      "sha256": "fa1a41f058b0452842b11b2470ba4e73f07aa003e91aae068728e1015c137d1b"
+    },
+    {
+      "lane": "reviews-prevention",
+      "file": "screening.json",
+      "sha256": "d4a9ba19eb91d84a1671ba0d1516a5e1698b54278c53e19b99fe52d1c3be0de6"
+    },
+    {
+      "lane": "methods-children",
+      "file": "proposed-deltas.json",
+      "sha256": "64312f1b0a1a48a52a9468af856f2ea5feb2f62d71d12a8422681dadcbab7f68"
+    },
+    {
+      "lane": "methods-children",
+      "file": "checkpoint.json",
+      "sha256": "2af7f54f2a163e9c19fddd4707f91012cd2b2773f26ed309db9c0326a9f4b4af"
+    },
+    {
+      "lane": "methods-children",
+      "file": "REPORT.md",
+      "sha256": "093fe00fc689dfd46267d4ee4db03f105e66f50efd3e69b82fe42ebacb06c64a"
+    },
+    {
+      "lane": "methods-children",
+      "file": "source-access-log.json",
+      "sha256": "a8f15f10634b36e3bb45f1ae90402bd1d8b98569bc1ec73bb413b48ca8c6d5b0"
+    },
+    {
+      "lane": "methods-children",
+      "file": "ADVISORY.md",
+      "sha256": "6099c21a87517d2205a3dadef20766bcb8684d0f556a648c351eff6aa0b31517"
+    },
+    {
+      "lane": "methods-prevention",
+      "file": "METHODS-ADVISORY.md",
+      "sha256": "ecf3bca1962ef9be9253936d8ca15536eec860ef94ee1f98f7d3aa660fbf2957"
+    },
+    {
+      "lane": "methods-prevention",
+      "file": "input-integrity.json",
+      "sha256": "e6eea1afa694ec1041f5be55f1f0e8be0d3b90698843b3cdb24055003573ad5c"
+    },
+    {
+      "lane": "methods-prevention",
+      "file": "proposed-revisions.json",
+      "sha256": "78182427dba256b87a4a9f76142cf1460b14cfaf52a3fb81cad565785d121ad4"
+    },
+    {
+      "lane": "methods-prevention",
+      "file": "reconciliation-notes.json",
+      "sha256": "4d5aec29c7011cd85c108f762d701b8841429bef3fa8180a09235563f9a492ab"
+    },
+    {
+      "lane": "methods-prevention",
+      "file": "validation.json",
+      "sha256": "8af94a46db56ed2dbbcc48301955e5f3d9123f03c3da8314059b55f0850216fc"
+    },
+    {
+      "lane": "methods-prevention",
+      "file": "counts.json",
+      "sha256": "40ba5c017e768a0717dbbd2b42d6800f3031fcd86a376624ce1e1d8a30144417"
+    },
+    {
+      "lane": "methods-prevention",
+      "file": "access-log.json",
+      "sha256": "5a63e51d33f5683841585e21c92858d80744e82de61dd3a803951144ced0ad7b"
+    },
+    {
+      "lane": "methods-mindbody",
+      "file": "sources.json",
+      "sha256": "af7672337b0ec9cc98debaafa9be23a81937fd69c9320ac2a66b97cdafd36d81"
+    },
+    {
+      "lane": "methods-mindbody",
+      "file": "checkpoint.json",
+      "sha256": "852e10d9e4b1511e8af2ed6abd80484607bde299f9d3f69063e47662fecd1466"
+    },
+    {
+      "lane": "methods-mindbody",
+      "file": "report.md",
+      "sha256": "3ecb78d577b8c7d540652c3cf1d40fbd82201a313abec8caed653e1301e25928"
+    },
+    {
+      "lane": "methods-mindbody",
+      "file": "final-validation.json",
+      "sha256": "d95bdde193bc0cc20fc8bfa6c32eacd992b93e9960004befe3897e6c123f106f"
+    },
+    {
+      "lane": "methods-mindbody",
+      "file": "proposed-fields.json",
+      "sha256": "bc95e5e1b253781febd4a491eab60cec7418a7aeb13ac2135f03d0119627a3b9"
+    },
+    {
+      "lane": "methods-mindbody",
+      "file": "search-log.json",
+      "sha256": "c791f70637ab54c668a2267c2d1eb888d4e9dda86900e8707e53183bb1a076b9"
+    },
+    {
+      "lane": "methods-mindbody",
+      "file": "field-deltas.json",
+      "sha256": "8db0bfc3214b00d3b8de0dd7e80c21ef21f5316436a26568a911b98e2e560f86"
+    },
+    {
+      "lane": "methods-mindbody",
+      "file": "access-log.json",
+      "sha256": "5b3bbf5756692ebb25eae577cb5f904c929fc03c550705c490b079463c9c23ed"
+    },
+    {
+      "lane": "methods-adult",
+      "file": "checkpoint.json",
+      "sha256": "fc6906ac8ee1d35bb7f86141cd593503e9998ed1537010d1432eab255c05bd3f"
+    },
+    {
+      "lane": "methods-adult",
+      "file": "SAFETY-ADVISORY.md",
+      "sha256": "2555cc2006194c9fe045d285a7415d6ef0a4da0a8664ede5e70e503fbb0ff631"
+    },
+    {
+      "lane": "methods-adult",
+      "file": "REPORT.md",
+      "sha256": "205e20c89a554b8ed494d622939b58aad6fcfcdd9b070ac8384b6680d78ed865"
+    },
+    {
+      "lane": "methods-adult",
+      "file": "proposed-candidates.json",
+      "sha256": "c10a960c34059e363bf90a15fa516a4e6affd8e3e4ddbf99661e237526a3bd22"
+    },
+    {
+      "lane": "methods-adult",
+      "file": "source-evidence-ledger.json",
+      "sha256": "4be42c7e6260ffdd33f8352a8ff30c8d66acb3185795f5019c907c9bf18790d3"
+    },
+    {
+      "lane": "methods-adult",
+      "file": "hope-access.json",
+      "sha256": "36637c6a3b3d8a45ab03c50b3b75f6616e8fa0975df988c672cbdd2f66b4e9ad"
+    },
+    {
+      "lane": "methods-adult",
+      "file": "access-limits.json",
+      "sha256": "c6a993a5463e3a021d60276fad50a9c8001fb7a8c04d600124b7596612cfe1e2"
+    },
+    {
+      "lane": "methods-adult",
+      "file": "field-deltas.json",
+      "sha256": "23cf282cfa8dc1b6f0cad746fa04ac26c649d31cfd8a7e31187e00836eb96605"
+    },
+    {
+      "lane": "methods-adult",
+      "file": "access-log.json",
+      "sha256": "2b252aea078521ff6b6b301ecab81fac5a05cb73b5b3b7b857b140d7611436d1"
+    }
+  ]
+}

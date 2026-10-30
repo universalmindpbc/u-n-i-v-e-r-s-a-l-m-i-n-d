@@ -1,0 +1,186 @@
+[
+  {
+    "key": "26613288-openalex",
+    "url": "https://api.openalex.org/works/https://doi.org/10.4088/jcp.15m10020",
+    "retrievedAt": "2026-10-30T08:21:44.930314+00:00",
+    "status": "retrieved",
+    "bytes": 25334,
+    "contentType": "application/json",
+    "finalURL": "https://api.openalex.org/works/https://doi.org/10.4088/jcp.15m10020",
+    "sha256": "d29485b5cfa8378bf557fb0182eab3b9b2d89f98d7af0ea16f2d725d5fe850fb"
+  },
+  {
+    "key": "27599224-openalex",
+    "url": "https://api.openalex.org/works/https://doi.org/10.1037/ccp0000129",
+    "retrievedAt": "2026-10-30T08:21:44.930535+00:00",
+    "status": "retrieved",
+    "bytes": 29133,
+    "contentType": "application/json",
+    "finalURL": "https://api.openalex.org/works/https://doi.org/10.1037/ccp0000129",
+    "sha256": "cd8eb835ff84027ce4af514e0b8a967e6fff91c4bdde45fdb2035b52abcb1dc9"
+  },
+  {
+    "key": "38206858-openalex",
+    "url": "https://api.openalex.org/works/https://doi.org/10.1037/ccp0000863",
+    "retrievedAt": "2026-10-30T08:21:44.930661+00:00",
+    "status": "retrieved",
+    "bytes": 22389,
+    "contentType": "application/json",
+    "finalURL": "https://api.openalex.org/works/https://doi.org/10.1037/ccp0000863",
+    "sha256": "e00bca087a889098691300d8bea76e9ecb15a4d9bdc2b00bce1e7c16a7813c5c"
+  },
+  {
+    "key": "41045209-openalex",
+    "url": "https://api.openalex.org/works/https://doi.org/10.1177/08862605251372568",
+    "retrievedAt": "2026-10-30T08:21:44.930777+00:00",
+    "status": "retrieved",
+    "bytes": 20278,
+    "contentType": "application/json",
+    "finalURL": "https://api.openalex.org/works/https://doi.org/10.1177/08862605251372568",
+    "sha256": "ccb617ea474ff8d1b39338785e1bd54f0616405ff79c5ccd022250e232cd7094"
+  },
+  {
+    "key": "NCT01435512",
+    "url": "https://clinicaltrials.gov/api/v2/studies/NCT01435512",
+    "retrievedAt": "2026-10-30T08:21:45.539722+00:00",
+    "status": "retrieved",
+    "bytes": 25320,
+    "contentType": "application/json",
+    "finalURL": "https://clinicaltrials.gov/api/v2/studies/NCT01435512",
+    "sha256": "f0226cab0f2c62a8c89239c9bfb3b49c17bbb97407bb9606ea83cd7ff1c9cea1"
+  },
+  {
+    "key": "NCT00827879",
+    "url": "https://clinicaltrials.gov/api/v2/studies/NCT00827879",
+    "retrievedAt": "2026-10-30T08:21:45.542959+00:00",
+    "status": "retrieved",
+    "bytes": 11096,
+    "contentType": "application/json",
+    "finalURL": "https://clinicaltrials.gov/api/v2/studies/NCT00827879",
+    "sha256": "f0a0ed4f0f2f83b3fe2446ab75e36fd61bd8fe4bfcef6efb41e0e46be0632b77"
+  },
+  {
+    "key": "26613288-pdf",
+    "url": "https://strengthathome.org/wp-content/uploads/2020/05/RCT-for-SAH-Mens-Program-2016.pdf",
+    "retrievedAt": "2026-10-30T08:21:45.560466+00:00",
+    "status": "unavailable",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "key": "registry-couples-search",
+    "url": "https://clinicaltrials.gov/api/v2/studies?query.term=%22Strength+at+Home%22&pageSize=100&format=json",
+    "retrievedAt": "2026-10-30T08:24:14.643414+00:00",
+    "status": "retrieved",
+    "bytes": 141276,
+    "contentType": "application/json",
+    "finalURL": "https://clinicaltrials.gov/api/v2/studies?query.term=%22Strength+at+Home%22&pageSize=100&format=json",
+    "sha256": "7f2d50ecd68a81802a32eb808e6db634565bcdb0156580e38b8075d88932ee9d"
+  },
+  {
+    "key": "registry-fathers-search",
+    "url": "https://clinicaltrials.gov/api/v2/studies?query.term=%22Fathers+for+Change%22&pageSize=100&format=json",
+    "retrievedAt": "2026-10-30T08:24:14.643853+00:00",
+    "status": "retrieved",
+    "bytes": 107375,
+    "contentType": "application/json",
+    "finalURL": "https://clinicaltrials.gov/api/v2/studies?query.term=%22Fathers+for+Change%22&pageSize=100&format=json",
+    "sha256": "1438402b09e70937bd2e32e587f5777fb659c89956bcf899e4d1ca5240123f20"
+  },
+  {
+    "key": "41045209-xml",
+    "url": "https://journals.sagepub.com/doi/full-xml/10.1177/08862605251372568",
+    "retrievedAt": "2026-10-30T08:24:14.643973+00:00",
+    "status": "unavailable",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "key": "men-paper-web",
+    "url": "https://strengthathome.org/wp-content/uploads/2020/05/RCT-for-SAH-Mens-Program-2016.pdf",
+    "status": "readable",
+    "recordedAt": "2026-10-30T08:37:38.628484+00:00",
+    "accessDate": "2026-10-30",
+    "tool": "web",
+    "notes": "PDF text: published methods, Figure1, Tables2\u20134 and Results/Discussion. Web text worked despite separate direct-download403. Screenshot calls returned references without usable images."
+  },
+  {
+    "key": "old-couples-repository",
+    "url": "https://mdsoar.org/items/678bffc8-ab30-4cff-ab3e-6728defb3cd0",
+    "status": "metadata-only",
+    "recordedAt": "2026-10-30T08:37:38.628484+00:00",
+    "accessDate": "2026-10-30",
+    "tool": "web",
+    "notes": "Matching title/DOI verified; paper PDF not inspected."
+  },
+  {
+    "key": "old-couples-pdf",
+    "url": "https://mdsoar.org/bitstreams/526b73a1-4c20-48e9-8756-3e1e801ff50d/download",
+    "status": "unavailable",
+    "recordedAt": "2026-10-30T08:37:38.628484+00:00",
+    "accessDate": "2026-10-30",
+    "tool": "web",
+    "notes": "Web redirect to api.mdsoar.org/server/api/core/bitstreams/526b73a1-4c20-48e9-8756-3e1e801ff50d/content failed with500/not-safe/non-retryable; direct API open also inaccessible. No content read."
+  },
+  {
+    "key": "old-couples-doi",
+    "url": "https://doi.org/10.1037/ccp0000129",
+    "status": "unavailable",
+    "recordedAt": "2026-10-30T08:37:38.628484+00:00",
+    "accessDate": "2026-10-30",
+    "tool": "web",
+    "notes": "Web publisher route blocked by robots."
+  },
+  {
+    "key": "new-couples-doi",
+    "url": "https://doi.org/10.1037/ccp0000863",
+    "status": "unavailable",
+    "recordedAt": "2026-10-30T08:37:38.628484+00:00",
+    "accessDate": "2026-10-30",
+    "tool": "web",
+    "notes": "Web publisher route blocked by robots."
+  },
+  {
+    "key": "fathers-publisher",
+    "url": "https://journals.sagepub.com/doi/10.1177/08862605251372568",
+    "status": "unavailable",
+    "recordedAt": "2026-10-30T08:37:38.628484+00:00",
+    "accessDate": "2026-10-30",
+    "tool": "web",
+    "notes": "Web open timed out; indexed snippets not treated as full methods. Separate XML request403 logged above."
+  },
+  {
+    "key": "new-couples-protocol",
+    "url": "https://cdn.clinicaltrials.gov/large-docs/94/NCT04517994/Prot_SAP_000.pdf",
+    "status": "selected-methods",
+    "recordedAt": "2026-10-30T08:37:38.628484+00:00",
+    "accessDate": "2026-10-30",
+    "tool": "web",
+    "notes": "Inspected plan, sample, eligibility and safety sections, pp.1,18\u201321. Exact paper linkage unresolved; planned procedures only."
+  },
+  {
+    "key": "fathers-protocol",
+    "url": "https://cdn.clinicaltrials.gov/large-docs/91/NCT04165291/Prot_SAP_000.pdf",
+    "status": "selected-methods",
+    "recordedAt": "2026-10-30T08:37:38.628484+00:00",
+    "accessDate": "2026-10-30",
+    "tool": "web",
+    "notes": "Inspected PhaseI/II, sample, methods/analysis and safety sections. Not a full protocol appraisal or verified implementation in publication."
+  },
+  {
+    "key": "new-couples-pubmed",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/38206858/",
+    "status": "abstract",
+    "recordedAt": "2026-10-30T08:37:38.628484+00:00",
+    "accessDate": "2026-10-30",
+    "tool": "web",
+    "notes": "Published identity/sample/results abstract reconfirmed."
+  },
+  {
+    "key": "fathers-pubmed",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/41045209/",
+    "status": "abstract",
+    "recordedAt": "2026-10-30T08:37:38.628484+00:00",
+    "accessDate": "2026-10-30",
+    "tool": "web",
+    "notes": "Published identity/sample/results abstract and grant R21HD099318 verified."
+  }
+]

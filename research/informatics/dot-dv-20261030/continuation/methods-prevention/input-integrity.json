@@ -1,0 +1,9 @@
+{
+  "checkedAt": "2026-10-30T08:36:53.499059+00:00",
+  "sha256": {
+    "dot-dv-mission/Informatics/review/domestic-violence-20261030/batch-8bd70e21e48d9a70.json": "afd810cdaefa6be0eeed16490fbc9b0f3a580837ea5f8994f64aa5ca9373f3c8",
+    "research-work/workers/reviews-prevention/candidates.json": "1258c8c1311d6cb5236d46115d5379d906bdf4ab8e44ec3f5f89fce1e673137f",
+    "research-work/continuation/reviews-prevention/candidates.json": "35d9776e7025410df3f0ec0b3ab01d6b346e6cdee767fb35a907da1a2bcb03ae"
+  },
+  "note": "Read-only inputs; no candidate or repository changes made by this methods pass."
+}

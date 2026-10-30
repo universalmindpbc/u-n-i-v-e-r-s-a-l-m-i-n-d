@@ -1,0 +1,20 @@
+{
+  "checkedAt": "2026-10-30T08:45:32.210046+00:00",
+  "frozenBatch": "batch-8bd70e21e48d9a70",
+  "frozenWebsiteUnchanged": true,
+  "frozenRecords": 120,
+  "newAssessed": 10,
+  "newReviewReady": 8,
+  "newHeld": 2,
+  "newIdentityCollisions": 0,
+  "existingRecordsReappraised": 16,
+  "exactBeforeFieldsValidated": 409,
+  "newPublicationAccess": {
+    "full-text": 2,
+    "selected-methods": 7,
+    "abstract": 1
+  },
+  "humanApproved": 0,
+  "continuationDeployed": false,
+  "proposedChangesApplied": false
+}

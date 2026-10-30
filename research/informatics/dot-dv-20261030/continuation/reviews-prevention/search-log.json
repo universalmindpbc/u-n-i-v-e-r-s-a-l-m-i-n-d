@@ -1,0 +1,62 @@
+[
+  {
+    "query": "Retained queue: PMID 40632759",
+    "source": "Europe PMC retained metadata, open article XML and Crossref",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12240372/",
+    "retrievedAt": "2026-10-30T08:08:14.230781+00:00",
+    "retrievedCount": 1,
+    "screenedCount": 1,
+    "screeningMethod": "source-inspected",
+    "newDiscovery": false
+  },
+  {
+    "query": "Retained queue: PMID 36429899",
+    "source": "Europe PMC retained metadata, open article XML and Crossref",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9690755/",
+    "retrievedAt": "2026-10-30T08:08:14.291966+00:00",
+    "retrievedCount": 1,
+    "screenedCount": 1,
+    "screeningMethod": "source-inspected",
+    "newDiscovery": false
+  },
+  {
+    "query": "Retained queue: PMID 39302822",
+    "source": "Europe PMC retained metadata, open article XML and Crossref",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11558938/",
+    "retrievedAt": "2026-10-30T08:08:14.301666+00:00",
+    "retrievedCount": 1,
+    "screenedCount": 1,
+    "screeningMethod": "source-inspected",
+    "newDiscovery": false
+  },
+  {
+    "query": "Retained queue: PMID 36909881",
+    "source": "Europe PMC retained metadata, open article XML and Crossref",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9419475/",
+    "retrievedAt": "2026-10-30T08:08:14.909748+00:00",
+    "retrievedCount": 1,
+    "screenedCount": 1,
+    "screeningMethod": "source-inspected",
+    "newDiscovery": false
+  },
+  {
+    "query": "Retained queue: PMID 37383644",
+    "source": "Europe PMC retained metadata, open article XML and Crossref",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10294456/",
+    "retrievedAt": "2026-10-30T08:08:17.168330+00:00",
+    "retrievedCount": 1,
+    "screenedCount": 1,
+    "screeningMethod": "source-inspected",
+    "newDiscovery": false
+  },
+  {
+    "query": "Retained queue: PMID 37131508",
+    "source": "Europe PMC retained metadata, open article XML and Crossref",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8356495/",
+    "retrievedAt": "2026-10-30T08:08:18.653478+00:00",
+    "retrievedCount": 1,
+    "screenedCount": 1,
+    "screeningMethod": "source-inspected",
+    "newDiscovery": false
+  }
+]
