@@ -3,7 +3,7 @@
   "approvedStagingCommit": "aa58282acaed77af5b128fd301bbc84cbd4ac09a",
   "websiteSourceCommit": "bd739a68d0d954ebd1ce40be0f018965cf41c1f3",
   "previousProductionCommit": "f17e93b99e426861a72430b52f184370d6830cf1",
-  "productionTag": "production-2026-10-30-1359",
+  "productionTag": "production-2026-10-30-1409",
   "deploymentCommand": "./deploy-panthurlive.sh ai-wiki",
   "deploymentExitCode": 0,
   "websiteSourceUnchangedFromApprovedStaging": true,
@@ -37,6 +37,13 @@
     "commit": "63095592706fd3b97288cf6557f6ef9b1de34d95",
     "scope": "Separate patent filing notice update",
     "preserved": true,
-    "includedInThisProductionUpload": false
+    "includedInThisProductionUpload": false,
+    "preservedThroughCommit": "23ad2ef609d4eb490d17201964b67f88d40e1da2"
+  },
+  "parallelProduction": {
+    "commit": "145bb0be5646b57ef104223217b1fe38855d681d",
+    "scope": "Separate patent filing notice production release",
+    "deploymentPerformedByThisTask": false,
+    "existingSourceAndAuditPreserved": true
   }
 }
