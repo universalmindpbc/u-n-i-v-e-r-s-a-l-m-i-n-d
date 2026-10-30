@@ -1,0 +1,254 @@
+{
+  "passed": true,
+  "approvedCandidate": "aa58282acaed77af5b128fd301bbc84cbd4ac09a",
+  "checkedAt": "2026-10-30T02:58:26Z",
+  "sourceChecks": [
+    {
+      "url": "https://universalmind.tv/",
+      "source": "index.html",
+      "sha256": "6b5b0d273ff9a3db1c0b03121fd39accdefa711f57e02deffbf44600a8b2ee8b",
+      "match": true,
+      "hostingManagedRobotsPrefix": false
+    },
+    {
+      "url": "https://universalmind.tv/home/",
+      "source": "home/index.html",
+      "sha256": "0388c8b1199da7c5b1447f754a25e9aa904aa3afb78a22aa88bc4bcbc3c30c04",
+      "match": true,
+      "hostingManagedRobotsPrefix": false
+    },
+    {
+      "url": "https://universalmind.tv/home/directory.css?v=9",
+      "source": "home/directory.css",
+      "sha256": "5a7aebcf5ce3bb05e627c036f14403066f2a4819a54a44e21bd10f0f9cb67443",
+      "match": true,
+      "hostingManagedRobotsPrefix": false
+    },
+    {
+      "url": "https://universalmind.tv/read/",
+      "source": "read/index.html",
+      "sha256": "4292349d98e00a525ec784cab9e7919fd3115929a5cf93cb1ce138a8da49caa9",
+      "match": true,
+      "hostingManagedRobotsPrefix": false
+    },
+    {
+      "url": "https://universalmind.tv/read/wiki.css?v=1",
+      "source": "read/wiki.css",
+      "sha256": "03aa01f411e074f55ec52299eaf6a37f955792c68565cf891a3bd0cb19def25c",
+      "match": true,
+      "hostingManagedRobotsPrefix": false
+    },
+    {
+      "url": "https://universalmind.tv/home/ai-wiki-link.css?v=1",
+      "source": "home/ai-wiki-link.css",
+      "sha256": "ba887b0e9e32884acc603fbc5611c66d0d25f72b6b7a714cee2c0efbeecc7654",
+      "match": true,
+      "hostingManagedRobotsPrefix": false
+    },
+    {
+      "url": "https://universalmind.tv/read/resources.json",
+      "source": "read/resources.json",
+      "sha256": "f22def8f80b87f4c8ed771f298590d771980cb8c97a5d456a80376333875e978",
+      "match": true,
+      "hostingManagedRobotsPrefix": false
+    },
+    {
+      "url": "https://universalmind.tv/llms.txt",
+      "source": "llms.txt",
+      "sha256": "b0c800e1a3d3b1d0ddc43aadbf999e25b1e7b3d49701520c5fa50aa7aec77b4f",
+      "match": true,
+      "hostingManagedRobotsPrefix": false
+    },
+    {
+      "url": "https://universalmind.tv/sitemap.xml",
+      "source": "sitemap.xml",
+      "sha256": "0663d10b7dfb80495b1ced1b949c1dc96e536f620d3dec991c962c391ea57357",
+      "match": true,
+      "hostingManagedRobotsPrefix": false
+    },
+    {
+      "url": "https://universalmind.tv/robots.txt",
+      "source": "robots.txt",
+      "sha256": "dfbf287652eda22ee4d879ca18746ea1d1a95350e3aaac2d37afb84f64b6cbbe",
+      "match": true,
+      "hostingManagedRobotsPrefix": false
+    }
+  ],
+  "resourceHeaders": [
+    {
+      "url": "https://universalmind.tv/",
+      "headStatus": "2 200 "
+    },
+    {
+      "url": "https://universalmind.tv/home/",
+      "headStatus": "2 200 "
+    },
+    {
+      "url": "https://universalmind.tv/read/",
+      "headStatus": "2 200 "
+    },
+    {
+      "url": "https://universalmind.tv/llms.txt",
+      "headStatus": "2 200 "
+    },
+    {
+      "url": "https://universalmind.tv/read/resources.json",
+      "headStatus": "2 200 "
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/induction.html",
+      "headStatus": "2 200 "
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/about.html",
+      "headStatus": "2 200 "
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/program.html",
+      "headStatus": "2 200 "
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/science.html",
+      "headStatus": "2 200 "
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/sound-prototype-research.html",
+      "headStatus": "2 200 "
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/our-team.html",
+      "headStatus": "2 200 "
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/vogue-self-report.html",
+      "headStatus": "2 200 "
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/index.html",
+      "headStatus": "2 200 "
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/technology-citizen-needs.html",
+      "headStatus": "2 200 "
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/technology-inference-engine.html",
+      "headStatus": "2 200 "
+    },
+    {
+      "url": "https://universalmind.tv/events/",
+      "headStatus": "2 200 "
+    },
+    {
+      "url": "https://universalmind.tv/happiness/",
+      "headStatus": "2 200 "
+    },
+    {
+      "url": "https://universalmind.tv/informatics/read/",
+      "headStatus": "2 200 "
+    },
+    {
+      "url": "https://universalmind.tv/informatics/read/publications/index.html",
+      "headStatus": "2 200 "
+    },
+    {
+      "url": "https://universalmind.tv/informatics/read/hyperspectral/index.html",
+      "headStatus": "2 200 "
+    },
+    {
+      "url": "https://universalmind.tv/informatics/read/atlas/index.html",
+      "headStatus": "2 200 "
+    },
+    {
+      "url": "https://universalmind.tv/informatics/read/experiments/index.html",
+      "headStatus": "2 200 "
+    },
+    {
+      "url": "https://universalmind.tv/informatics/read/data.html",
+      "headStatus": "2 200 "
+    },
+    {
+      "url": "https://universalmind.tv/informatics/read/provenance.html",
+      "headStatus": "2 200 "
+    },
+    {
+      "url": "https://universalmind.tv/informatics/read/access.html",
+      "headStatus": "2 200 "
+    },
+    {
+      "url": "https://universalmind.tv/informatics/connect.html",
+      "headStatus": "2 200 "
+    },
+    {
+      "url": "https://universalmind.tv/informatics/exports/manifest.json",
+      "headStatus": "2 200 "
+    },
+    {
+      "url": "https://universalmind.tv/informatics/exports/README.md",
+      "headStatus": "2 200 "
+    },
+    {
+      "url": "https://universalmind.tv/informatics/pilot-v1/m1-m1001-data.zip",
+      "headStatus": "2 200 "
+    },
+    {
+      "url": "https://universalmind.tv/informatics/pilot-v1/m1-m1001-csv.zip",
+      "headStatus": "2 200 "
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/a%20s%20s%20e%20t%20s/r%20e%20s%20e%20a%20r%20c%20h/Universal%20Mind%20%5B%20I%20o%20H%20%5D%20-%20EMDR%20Medical%20Research.pdf",
+      "headStatus": "2 200 "
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/a%20s%20s%20e%20t%20s/r%20e%20s%20e%20a%20r%20c%20h/Universal%20Mind%20%5B%20I%20o%20H%20%5D%20-%20Sound%20Medical%20Research.pdf",
+      "headStatus": "2 200 "
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/a%20s%20s%20e%20t%20s/r%20e%20s%20e%20a%20r%20c%20h/Universal%20Mind%20%5B%20I%20o%20H%20%5D%20-%20Mantra%20Medical%20Research.pdf",
+      "headStatus": "2 200 "
+    },
+    {
+      "url": "https://universalmind.tv/sitemap.xml",
+      "headStatus": "2 200 "
+    }
+  ],
+  "stagingProductionParity": [
+    {
+      "route": "/",
+      "match": true
+    },
+    {
+      "route": "/home/",
+      "match": true
+    },
+    {
+      "route": "/home/directory.css?v=9",
+      "match": true
+    },
+    {
+      "route": "/read/",
+      "match": true
+    },
+    {
+      "route": "/read/wiki.css?v=1",
+      "match": true
+    },
+    {
+      "route": "/home/ai-wiki-link.css?v=1",
+      "match": true
+    },
+    {
+      "route": "/read/resources.json",
+      "match": true
+    },
+    {
+      "route": "/llms.txt",
+      "match": true
+    },
+    {
+      "route": "/sitemap.xml",
+      "match": true
+    }
+  ],
+  "stagingCrawlingExcluded": true
+}

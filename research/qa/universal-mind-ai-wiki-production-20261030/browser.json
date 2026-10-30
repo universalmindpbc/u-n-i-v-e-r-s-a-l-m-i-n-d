@@ -1,0 +1,147 @@
+{
+  "origin": "https://universalmind.tv",
+  "checks": [
+    {
+      "width": 1440,
+      "route": "/",
+      "wikiReachedWithoutLogin": true,
+      "geometry": {
+        "left": 14,
+        "bottom": 10,
+        "width": 96.046875,
+        "height": 26,
+        "font": "10px / 14px system-ui, sans-serif",
+        "fontSize": "10px",
+        "lineHeight": "14px",
+        "color": "rgb(170, 170, 170)",
+        "opacity": "0.55",
+        "letterSpacing": "0.3px",
+        "bodyWidth": 1440,
+        "viewport": 1440
+      }
+    },
+    {
+      "width": 1440,
+      "route": "/home/",
+      "wikiReachedWithoutLogin": true,
+      "geometry": {
+        "left": 14,
+        "bottom": 10,
+        "width": 96.046875,
+        "height": 26,
+        "font": "10px / 14px system-ui, sans-serif",
+        "fontSize": "10px",
+        "lineHeight": "14px",
+        "color": "rgb(170, 170, 170)",
+        "opacity": "0.55",
+        "letterSpacing": "0.3px",
+        "bodyWidth": 1440,
+        "viewport": 1440
+      }
+    },
+    {
+      "width": 1440,
+      "anchorAndPlainTextAndJSON": true
+    },
+    {
+      "width": 390,
+      "route": "/",
+      "wikiReachedWithoutLogin": true,
+      "geometry": {
+        "left": 14,
+        "bottom": 10,
+        "width": 96.046875,
+        "height": 26,
+        "font": "10px / 14px system-ui, sans-serif",
+        "fontSize": "10px",
+        "lineHeight": "14px",
+        "color": "rgb(170, 170, 170)",
+        "opacity": "0.55",
+        "letterSpacing": "0.3px",
+        "bodyWidth": 390,
+        "viewport": 390
+      }
+    },
+    {
+      "width": 390,
+      "route": "/home/",
+      "wikiReachedWithoutLogin": true,
+      "geometry": {
+        "left": 14,
+        "bottom": 10,
+        "width": 96.046875,
+        "height": 26,
+        "font": "10px / 14px system-ui, sans-serif",
+        "fontSize": "10px",
+        "lineHeight": "14px",
+        "color": "rgb(170, 170, 170)",
+        "opacity": "0.55",
+        "letterSpacing": "0.3px",
+        "bodyWidth": 390,
+        "viewport": 390
+      }
+    },
+    {
+      "width": 390,
+      "anchorAndPlainTextAndJSON": true
+    },
+    {
+      "width": 320,
+      "route": "/",
+      "wikiReachedWithoutLogin": true,
+      "geometry": {
+        "left": 14,
+        "bottom": 10,
+        "width": 96.046875,
+        "height": 26,
+        "font": "10px / 14px system-ui, sans-serif",
+        "fontSize": "10px",
+        "lineHeight": "14px",
+        "color": "rgb(170, 170, 170)",
+        "opacity": "0.55",
+        "letterSpacing": "0.3px",
+        "bodyWidth": 320,
+        "viewport": 320
+      }
+    },
+    {
+      "width": 320,
+      "route": "/home/",
+      "wikiReachedWithoutLogin": true,
+      "geometry": {
+        "left": 14,
+        "bottom": 10,
+        "width": 96.046875,
+        "height": 26,
+        "font": "10px / 14px system-ui, sans-serif",
+        "fontSize": "10px",
+        "lineHeight": "14px",
+        "color": "rgb(170, 170, 170)",
+        "opacity": "0.55",
+        "letterSpacing": "0.3px",
+        "bodyWidth": 320,
+        "viewport": 320
+      }
+    },
+    {
+      "width": 320,
+      "anchorAndPlainTextAndJSON": true
+    }
+  ],
+  "screenshots": [
+    "landing-1440.png",
+    "home-1440.png",
+    "wiki-1440.png",
+    "landing-390.png",
+    "home-390.png",
+    "wiki-390.png",
+    "landing-320.png",
+    "home-320.png",
+    "wiki-320.png"
+  ],
+  "pageErrors": [],
+  "processAudioDisabled": true,
+  "withoutJavaScript": true,
+  "passed": true,
+  "browserClosed": true
+}

@@ -1,0 +1,32 @@
+{
+  "domain": "universalmind.tv",
+  "changedAt": "2026-10-30T02:57:43Z",
+  "verification": "Cloudflare authenticated dashboard; saved configuration reopened and read back",
+  "settings": {
+    "search": {
+      "before": "Allow (do not block)",
+      "after": "Allow (do not block)"
+    },
+    "agent": {
+      "before": "Allow (do not block)",
+      "after": "Allow (do not block)"
+    },
+    "training": {
+      "before": "Disallow",
+      "after": "Allow (do not block)"
+    },
+    "botPreferenceSync": {
+      "before": true,
+      "after": false
+    }
+  },
+  "unrelatedSecuritySettingsModified": false,
+  "websiteAuthenticationModified": false,
+  "reason": "User explicitly authorized public AI reading and training, then approved production publication.",
+  "cacheRefresh": {
+    "url": "https://universalmind.tv/robots.txt",
+    "method": "Cloudflare Custom Purge by exact URL",
+    "dashboardSuccessConfirmed": true,
+    "freshFileMatchesApprovedSource": true
+  }
+}

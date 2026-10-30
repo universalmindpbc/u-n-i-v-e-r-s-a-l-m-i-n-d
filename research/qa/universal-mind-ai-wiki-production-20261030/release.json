@@ -1,0 +1,42 @@
+{
+  "status": "production-verified",
+  "approvedStagingCommit": "aa58282acaed77af5b128fd301bbc84cbd4ac09a",
+  "websiteSourceCommit": "bd739a68d0d954ebd1ce40be0f018965cf41c1f3",
+  "previousProductionCommit": "f17e93b99e426861a72430b52f184370d6830cf1",
+  "productionTag": "production-2026-10-30-1359",
+  "deploymentCommand": "./deploy-panthurlive.sh ai-wiki",
+  "deploymentExitCode": 0,
+  "websiteSourceUnchangedFromApprovedStaging": true,
+  "manifestMatches": 10,
+  "verification": {
+    "sourceMatches": 10,
+    "resourceLinks": 34,
+    "stagingProductionParity": 9,
+    "browserChecks": 9,
+    "widths": [
+      1440,
+      390,
+      320
+    ],
+    "withoutJavaScript": true,
+    "audioDisabledAtProcessLevel": true,
+    "browserClosed": true,
+    "pageErrors": [],
+    "stagingCrawlingExcluded": true,
+    "cloudflareTrainingAllowed": true,
+    "cloudflareManagedRobotsDisabled": true
+  },
+  "publicURLs": [
+    "https://universalmind.tv/",
+    "https://universalmind.tv/home/",
+    "https://universalmind.tv/read/",
+    "https://universalmind.tv/llms.txt",
+    "https://universalmind.tv/read/resources.json"
+  ],
+  "parallelStaging": {
+    "commit": "63095592706fd3b97288cf6557f6ef9b1de34d95",
+    "scope": "Separate patent filing notice update",
+    "preserved": true,
+    "includedInThisProductionUpload": false
+  }
+}
