@@ -1,0 +1,40 @@
+{
+  "deployedAtUTC": "2026-10-30T03:43:54.007897+00:00",
+  "sourceCommit": "646e4ca3d918472323ad1d2a121a31232d6e5f0a",
+  "baseStagingCommit": "63e5e25d0a7b9300feebc6809fff07ad4f743123",
+  "environment": "staging",
+  "url": "https://staging.universalmind.tv/informatics/library.html?collection=all&view=search&calibration=batch",
+  "deploymentCommand": "SHOPFRONT_MUGLER_FIXTURE=/private/tmp/um-study-mugler-fixture.mp4 ./deploy-panthur-staging.sh informatics",
+  "transport": "Existing Panthur curl/FTP",
+  "changedAssets": [
+    "informatics/exports/manifest.json",
+    "informatics/exports/part-22db715b83106ca8c0284b28a0ba74d5072a79e6c10eabe5176eb3870d9fdbb6.bin",
+    "informatics/exports/part-241231b597964400aaad35f8fbf973ac5ffbcb23f10869c27bb6d2ee2063ea76.bin",
+    "informatics/exports/part-6606d99e4317e77ea2efd53e64b6d8f5b703cdaf121ca527fe81317abc374028.bin",
+    "informatics/exports/part-a8e89b2a81ee5821e5bd9dd2ae7cdbf594c76316f0b6748411f9bc7b241ba54b.bin",
+    "informatics/exports/part-bdcafca5da26d2e771120405cf01c84aa0551a66c7c6f01ba4ab9c40281b7df9.bin",
+    "informatics/library-data/community-calibration.csv",
+    "informatics/library-data/community-calibration.json",
+    "informatics/library.css",
+    "informatics/library-communities.js",
+    "informatics/library-multiselect.js",
+    "informatics/library.html",
+    "informatics/library.js",
+    "informatics/read/data.html"
+  ],
+  "trackedScopedAssets": 13502,
+  "calibrationRecords": 50,
+  "classificationStatus": "AI-proposed; awaiting Universal Mind review",
+  "sourceVerification": "45 abstracts and 5 title-only records; no full-text appraisal claimed",
+  "liveAssetsMatched": 9,
+  "liveViewportWidths": [
+    1440,
+    390,
+    320
+  ],
+  "mutedBrowserAtLaunch": true,
+  "productionModifiedByThisTask": false,
+  "runtimeOpenAIChanges": false,
+  "recurringAutomationActivated": false,
+  "visualInspection": "Desktop and mobile screenshots inspected; readable calibration controls and no horizontal overflow."
+}
