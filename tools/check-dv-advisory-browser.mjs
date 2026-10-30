@@ -65,6 +65,7 @@ try{
    checks.push({exportsIncludeAdvisory:true,exportedAssessmentUnchanged:true});
   }
   await page.locator('#dv-children-25596929 .record-advisory a').click();
+  await page.waitForLoadState('networkidle');
   assert.ok(page.url().endsWith('advisory-20261030-r1.html#dv-children-25596929'));
   assert.equal(await page.locator('.advisory-entry').count(),20);
   assert.match(await page.locator('#dv-children-25596929').innerText(),/stochastic/);

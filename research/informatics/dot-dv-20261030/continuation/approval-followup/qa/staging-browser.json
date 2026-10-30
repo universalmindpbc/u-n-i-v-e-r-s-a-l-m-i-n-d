@@ -1,0 +1,42 @@
+{
+  "passed": true,
+  "phase": "staging",
+  "checkedAt": "2026-10-30T09:20:12.042Z",
+  "url": "https://staging.universalmind.tv/informatics/review/domestic-violence-20261030/",
+  "advisoryRevision": "advisory-20261030-r1",
+  "audioDisabledAtLaunch": true,
+  "errors": [],
+  "checks": [
+    {
+      "exportsIncludeAdvisory": true,
+      "exportedAssessmentUnchanged": true
+    },
+    {
+      "width": 1440,
+      "noticeVisible": true,
+      "holds": 3,
+      "amendments": 5,
+      "staleCrossesSuppressed": 2,
+      "advisoryLinks": true,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "noticeVisible": true,
+      "holds": 3,
+      "amendments": 5,
+      "staleCrossesSuppressed": 2,
+      "advisoryLinks": true,
+      "overflow": false
+    },
+    {
+      "width": 320,
+      "noticeVisible": true,
+      "holds": 3,
+      "amendments": 5,
+      "staleCrossesSuppressed": 2,
+      "advisoryLinks": true,
+      "overflow": false
+    }
+  ]
+}

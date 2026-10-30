@@ -1,0 +1,32 @@
+{
+  "verifiedAt": "2026-10-30T09:21:40.285931+00:00",
+  "sourceCommit": "ccc7a3fa2cda52ed8f771b33b2d1c2b0d64a32bf",
+  "priorStagingCommit": "54343360948f46dfbb66f1bb4ef3179eeb2013e7",
+  "advisoryRevision": "advisory-20261030-r1",
+  "frozenBatch": "batch-8bd70e21e48d9a70",
+  "frozenBatchSHA256": "afd810cdaefa6be0eeed16490fbc9b0f3a580837ea5f8994f64aa5ca9373f3c8",
+  "stagingURL": "https://staging.universalmind.tv/informatics/review/domestic-violence-20261030/",
+  "advisoryURL": "https://staging.universalmind.tv/informatics/review/domestic-violence-20261030/advisory-20261030-r1.html",
+  "changedAssetsUploaded": 5,
+  "liveAssetsMatched": 15,
+  "frozenAssessmentHashesUnchanged": 120,
+  "originalFilesByteIdentical": 5,
+  "approvedCorpusUnchanged": true,
+  "approvedExportVersion": "da23bd92bec19d3809a1bbff4f133beb54498e85804a829a1ce286e053aa0e72",
+  "preflightPassed": true,
+  "browserPassed": true,
+  "viewports": [
+    1440,
+    390,
+    320
+  ],
+  "mutedHeadlessBrowser": true,
+  "releaseCoordination": "Immediately before deployment remote staging remained 5434336; process inspection found no active Panthur deployment. Shared checkout and existing lock preserved.",
+  "initialPreflight": "Stopped before upload because existing external media fixture setting was omitted. Restored documented SHOPFRONT_MUGLER_FIXTURE setting after verifying fixture SHA256; unchanged workflow then passed.",
+  "browserTimingCorrection": "Live navigation initially measured mobile layout before stylesheet completion; test now waits for network idle. Loaded page passes at all three widths; no website-source change was required.",
+  "continuationAssessmentsDeployed": 0,
+  "humanApprovalsRecorded": 0,
+  "newPublicationsAddedByNotice": 0,
+  "productionModified": false,
+  "extraSpendAUD": 0
+}
