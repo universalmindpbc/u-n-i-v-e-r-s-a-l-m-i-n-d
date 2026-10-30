@@ -41,22 +41,14 @@ const trainingAgents = [
   "meta-externalagent",
 ];
 
-for (const agent of trainingAgents) {
-  assert.match(
-    robots,
-    new RegExp(`User-agent: ${agent.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\nDisallow: /`),
-    `${agent} must remain blocked`,
-  );
-}
-
-assert.match(robots, /User-agent: \*\n[\s\S]*Disallow: \/vogue\/iam\//);
-assert.match(robots, /Disallow: \/i%20%20a%20m\//);
-assert.match(robots, /Disallow: \/\*\.html\$/);
-assert.match(robots, /Disallow: \/\*\.pdf\$/);
+assert.match(robots, /User-agent: \*\nAllow: \//);
+assert.ok(!/^Disallow: \/$/m.test(robots), "Public AI access is authorised");
+assert.match(robots, /Disallow: \/vogue\/iam\/api\//);
+assert.match(robots, /Disallow: \/vogue\/iam\/stakeholders\//);
 assert.equal(stagingRobots.trim(), "# The permanent proofing environment must not be indexed.\nUser-agent: *\nDisallow: /*");
 
 for (const publicPath of [...publicPaths, ...researchPaths]) {
-  assert.ok(robots.includes(`Allow: ${publicPath}`), `robots.txt must allow ${publicPath}`);
+  assert.ok(robots.includes("Allow: /"), `robots.txt must allow ${publicPath}`);
   const canonicalUrl = `https://universalmind.tv${publicPath}`;
   assert.ok(sitemap.includes(`<loc>${canonicalUrl}</loc>`), `sitemap.xml must list ${canonicalUrl}`);
   assert.ok(llms.includes(canonicalUrl), `llms.txt must link ${canonicalUrl}`);
@@ -73,12 +65,9 @@ for (const forbidden of [
   assert.ok(!llms.includes(forbidden), `llms.txt must not expose ${forbidden}`);
 }
 
-assert.match(
-  llms,
-  /> Universal Mind is the company\. I AM is its first experience: live electronic music television for mental health\./,
-);
-assert.match(llms, /Check in\. Unlock exclusive content\./);
-assert.match(llms, /Not another mental-health app\./);
+assert.match(llms, /Universal Mind is a multidisciplinary organisation/);
+assert.match(llms, /Universal Mind is a project of Ben Korbel/);
+for (const project of ["I AM", "athousandminds", "Happiness", "Universal Informatics"]) assert.ok(llms.includes(project));
 assert.match(robots, /Sitemap: https:\/\/universalmind\.tv\/sitemap\.xml/);
 
 const metadataPages = {

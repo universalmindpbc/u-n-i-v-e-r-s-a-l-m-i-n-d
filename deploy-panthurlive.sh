@@ -798,6 +798,31 @@ deploy_events() {
   echo "Events: committed source published through Panthur FTP."
 }
 
+# Publish the organisation guide through the existing Panthur transport.
+deploy_ai_wiki() {
+  local relative manifest_tmp
+  local paths=(read/wiki.css read/resources.json read/index.html home/ai-wiki-link.css llms.txt sitemap.xml home/index.html index.html)
+  if [[ -n "$(git -C "$ROOT_DIR" status --porcelain --untracked-files=all -- "${paths[@]}" robots.txt robots-staging.txt)" ]]; then
+    echo "Refusing to deploy uncommitted AI wiki source." >&2
+    return 1
+  fi
+  for relative in "${paths[@]}"; do
+    git -C "$ROOT_DIR" ls-files --error-unmatch "$relative" >/dev/null || return 1
+  done
+  manifest_tmp="$(mktemp)"
+  if [[ -f "$MANIFEST_FILE" ]]; then
+    awk -F '\t' '$2 !~ /^read\// && $2 != "home/ai-wiki-link.css" && $2 != "llms.txt" && $2 != "sitemap.xml" && $2 != "robots.txt" && $2 != "home/index.html" && $2 != "index.html"' "$MANIFEST_FILE" > "$manifest_tmp"
+  fi
+  put_file "$ROBOTS_FILE" "robots.txt"
+  printf '%s\t%s\n' "$(file_hash "$ROBOTS_FILE")" "robots.txt" >> "$manifest_tmp"
+  for relative in "${paths[@]}"; do
+    put_file "$ROOT_DIR/$relative" "$relative"
+    printf '%s\t%s\n' "$(file_hash "$ROOT_DIR/$relative")" "$relative" >> "$manifest_tmp"
+  done
+  mv "$manifest_tmp" "$MANIFEST_FILE"
+  echo "AI wiki: committed source published through Panthur FTP."
+}
+
 # The directory is published by the existing transport, with the root entry last.
 deploy_directory() {
   local relative manifest_tmp
@@ -853,6 +878,9 @@ if deployment_requires_owner_state_guard "$DEPLOY_MODE"; then
 fi
 
 case "$DEPLOY_MODE" in
+  ai-wiki)
+    deploy_ai_wiki
+    ;;
   happiness)
     deploy_happiness
     ;;
@@ -920,7 +948,7 @@ case "$DEPLOY_MODE" in
     provision_sovereignty_runtime configure
     ;;
   *)
-    echo "Usage: $0 [happiness|directory|events|iam|iam-fast|fast|changed|iam-changed|mark|media|redirects|all|all-fast|all-changed|seed-owner-state|owner-password-reset|sovereignty-seed|sovereignty-configure]" >&2
+    echo "Usage: $0 [ai-wiki|happiness|directory|events|iam|iam-fast|fast|changed|iam-changed|mark|media|redirects|all|all-fast|all-changed|seed-owner-state|owner-password-reset|sovereignty-seed|sovereignty-configure]" >&2
     exit 2
     ;;
 esac

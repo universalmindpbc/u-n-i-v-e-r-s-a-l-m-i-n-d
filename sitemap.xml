@@ -2172,4 +2172,13 @@
   <url><loc>https://universalmind.tv/informatics/read/access.html</loc></url>
   <url><loc>https://universalmind.tv/informatics/read/index.html</loc></url>
   <url><loc>https://universalmind.tv/informatics/read/provenance.html</loc></url>
+  <url>
+    <loc>https://universalmind.tv/</loc>
+  </url>
+  <url>
+    <loc>https://universalmind.tv/home/</loc>
+  </url>
+  <url>
+    <loc>https://universalmind.tv/read/</loc>
+  </url>
 </urlset>

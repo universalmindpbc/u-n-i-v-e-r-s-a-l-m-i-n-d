@@ -32,7 +32,11 @@ if [[ -z "$NODE_BIN" ]]; then
 fi
 
 # Events is an independent PHP microsite; validate its own source for scoped releases.
-if [[ "${1:-}" == happiness ]]; then
+if [[ "${1:-}" == ai-wiki ]]; then
+  python3 "$ROOT_DIR/tools/build-universal-mind-wiki.py" --check
+  python3 "$ROOT_DIR/tools/check-universal-mind-wiki.py"
+  "$NODE_BIN" "$ROOT_DIR/tools/check-directory-source.mjs"
+elif [[ "${1:-}" == happiness ]]; then
   "$NODE_BIN" "$ROOT_DIR/tools/check-happiness-microsite.mjs"
   for source in "$ROOT_DIR"/happiness/assets/*.js; do "$NODE_BIN" --check "$source"; done
   if command -v php >/dev/null 2>&1; then

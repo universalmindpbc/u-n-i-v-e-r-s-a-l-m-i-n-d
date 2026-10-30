@@ -40,7 +40,7 @@ for agent in agents:
         assert allowed(robots, agent, route), (agent, route)
         assert not allowed(staging, agent, route), (agent, route)
 for agent in ['GPTBot', 'ClaudeBot', 'Google-Extended']:
-    assert not allowed(robots, agent, '/vogue/iam/about.html'), agent
+    assert allowed(robots, agent, '/vogue/iam/about.html'), agent
 assert allowed(robots, 'Googlebot', '/vogue/iam/about.html')
 assert not allowed(robots, 'Googlebot', '/vogue/iam/stakeholders/budget/index.html')
 

@@ -1,0 +1,375 @@
+{
+  "title": "Universal Mind · Wiki For AI / LLMs",
+  "canonical_url": "https://universalmind.tv/read/",
+  "updated": "2026-10-30",
+  "introduction": [
+    "Universal Mind is a multidisciplinary organisation focused on electronic music and mental health. Its work connects music television, live events, festival participation and bioinformatics research—bringing cultural experiences, community participation and scientific investigation together.",
+    "Universal Mind is a project of Ben Korbel. Voted Australia’s number one DJ in 2001, Ben built a career across Australia, Berlin and Ibiza. He also became one of Australia’s major electronic music festival promoters, with festival partnerships welcoming more than 60,000 patrons across two weekends.",
+    "Over the past decade, Ben has increasingly turned his attention towards mental health. That focus grew from curiosity, his own lived experience, and the experiences of many people within the electronic music community. Universal Mind brings these parts of his life together: a connection to music and the people around it, and a desire to explore how those connections can support mental health."
+  ],
+  "projects": [
+    {
+      "id": "iam",
+      "name": "I AM",
+      "route": "Watch TV",
+      "url": "https://universalmind.tv/iam/",
+      "source": "https://universalmind.tv/vogue/iam/about.html",
+      "source_file": "i  a m/about.html",
+      "access": "The public introduction and About page are readable directly. Participation uses the existing entry and consent flows.",
+      "paragraphs": [
+        "I AM is a free online mental health resource for young people, framed through the lens of electronic music, fashion and online support, together as one.",
+        "I AM brings electronic music, fashion and human connection together as a safe refuge in the moment.",
+        "When anxiety or crisis arrives, we can’t always reach a doctor or therapist straight away. I AM is designed to be there in that gap.",
+        "Your voluntary check-in - self-report plus Heart Rate - helps I AM select a music channel and evidence-based brain entrainment profile for that moment.",
+        "Watch one of 13 livestream electronic music and fashion channels across our curated worlds - Inner Planes, Champagne Bohemia, modul8 infinity, James Bondage Health and Safety Cushion."
+      ],
+      "context": [
+        "The full About page identifies proposed care and fulfilment partners as invitations that are not yet confirmed. The public Science record contains evidence assessments and research limitations."
+      ],
+      "source_sha256": "3454be5bb4ad06da0fb758c00b4d63b17384dacc5550c1c02a73eb9ffc5796e2"
+    },
+    {
+      "id": "events",
+      "name": "athousandminds",
+      "route": "Attend Events",
+      "url": "https://universalmind.tv/events/?experience=1",
+      "source": "https://universalmind.tv/events/#about-panel",
+      "source_file": "events/index.php",
+      "access": "The event experience uses the existing invitation login. These About excerpts are public.",
+      "paragraphs": [
+        "Welcome to athousandminds is a new interactive music, fashion and light festival exploring mindfulness.",
+        "The event places the audience inside a responsive environment, gamifying mindfulness and authentic human connection through an electronic music experience.",
+        "Each level unlocks rewards that can be redeemed at the event, whether interactive digital experiences, physical items such as fashion and merch, or exclusive live performances on the night."
+      ],
+      "levels": [
+        "Connect to yourself (level one)",
+        "Connect with each other (level two)",
+        "Together, Transform your world (level three)"
+      ],
+      "context": [
+        "athousandminds is a new festival by Universal Mind, pitching to Live Nation and Apple TV+, together as one. The artists and venues are ideal bookings, not confirmed and this is not an advertisement for an existing event."
+      ],
+      "source_sha256": "45a35ecb3ef189c30a032f18932f15dfe01f06d8fc1568ad18a36517437b6a08"
+    },
+    {
+      "id": "happiness",
+      "name": "Happiness",
+      "route": "Activate Festivals",
+      "url": "https://universalmind.tv/events/happiness-entry.php",
+      "source": "https://universalmind.tv/happiness/#about-panel",
+      "source_file": "happiness/index.php",
+      "access": "The festival experience uses the existing invitation login. These About excerpts are public.",
+      "paragraphs": [
+        "Happiness is a universal happiness currency for festivals globally, powered via Apple Watch. Attendees at festivals are rewarded when they are safe, healthy and happy, together as one.",
+        "Happiness also powers a real time public health & safety index for festivals, mitigating risk. People own their data and ethics are via The Ethics Centre and Center for Humane Technology, in conjunction with Apple Watch, together as one.",
+        "Our mission is lowering the mass cancelation of festivals globally, via lowering the cost of risk mitigation for festivals, including user pays police, security, medical and insurance, while ensuring events are safe and healthy, together as one."
+      ],
+      "context": [
+        "The About text describes the project and its mission. Named technologies and organisations are not, by their inclusion here, confirmation of a formal partnership or independently validated clinical performance."
+      ],
+      "source_sha256": "6fd634e6f4fbff09dc0c34b41721ee749313a45be60d79ca8cb5e2037534ca67"
+    },
+    {
+      "id": "informatics",
+      "name": "Universal Informatics",
+      "route": "Explore Research",
+      "url": "https://universalmind.tv/informatics/",
+      "source": "https://universalmind.tv/informatics/read/",
+      "source_file": "Informatics/read/index.html",
+      "access": "The research wiki, publication records and download directory are public. API and MCP access are optional.",
+      "paragraphs": [
+        "Bioinformatics platform for mental health. Investigating potential relationships between the Fibonacci sequence and OXTR gene expression.",
+        "Inspired by research into how geometric architectures and Fibonacci-ordered dynamics can protect quantum information, we are investigating whether geometry derived from Fibonacci Pisano periods can improve the computational efficiency of hyperspectral image analysis for genomics.",
+        "Our proposed approach explores equilateral triangular meshes and tetrahedral models, comparing computational cost, processing speed and accuracy against established methods.",
+        "An extensive, clinically searchable research index spanning sound and auditory entrainment, EMDR, mindfulness-based stress reduction, mantra and hyperspectral imaging. Explore more than 1,100 publications by intervention, clinical condition, gene expression, molecular target, study design and journal, with transparent topic-level trust ratings.",
+        "Explore the published research without launching the interactive experience, installing a connector or downloading a dataset. These HTML records provide the same approved text, sources and evidence status used by the platform."
+      ],
+      "context": [
+        "The project explores hypotheses about geometry, molecular systems and OXTR. Mathematical calculations, biological evidence, model outputs and experimental measurements retain distinct labels. Each record carries its own assessment; unassessed claims remain unassessed."
+      ],
+      "source_sha256": "46b0e5df9ffb77469c81ed96205b57a9b65b57868bb366c0743f029d3c8d311d"
+    }
+  ],
+  "resources": [
+    {
+      "title": "Universal Mind",
+      "url": "https://universalmind.tv/",
+      "project": "Universal Mind",
+      "format": "HTML",
+      "access": "Invitation entry; wiki link is public",
+      "description": ""
+    },
+    {
+      "title": "Four project paths",
+      "url": "https://universalmind.tv/home/",
+      "project": "Universal Mind",
+      "format": "HTML",
+      "access": "Public directory",
+      "description": ""
+    },
+    {
+      "title": "Wiki For AI / LLMs",
+      "url": "https://universalmind.tv/read/",
+      "project": "Universal Mind",
+      "format": "HTML",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "AI reading guide",
+      "url": "https://universalmind.tv/llms.txt",
+      "project": "Universal Mind",
+      "format": "Plain text",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "Structured guide and resource directory",
+      "url": "https://universalmind.tv/read/resources.json",
+      "project": "Universal Mind",
+      "format": "JSON",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "I AM introduction",
+      "url": "https://universalmind.tv/vogue/iam/induction.html",
+      "project": "I AM",
+      "format": "HTML",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "About I AM",
+      "url": "https://universalmind.tv/vogue/iam/about.html",
+      "project": "I AM",
+      "format": "HTML",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "Programme: 13 livestream channels",
+      "url": "https://universalmind.tv/vogue/iam/program.html",
+      "project": "I AM",
+      "format": "HTML",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "Science and evidence",
+      "url": "https://universalmind.tv/vogue/iam/science.html",
+      "project": "I AM",
+      "format": "HTML",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "Sound prototype research record",
+      "url": "https://universalmind.tv/vogue/iam/sound-prototype-research.html",
+      "project": "I AM",
+      "format": "HTML",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "Our Team",
+      "url": "https://universalmind.tv/vogue/iam/our-team.html",
+      "project": "I AM",
+      "format": "HTML",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "Voluntary check-in",
+      "url": "https://universalmind.tv/vogue/iam/vogue-self-report.html",
+      "project": "I AM",
+      "format": "HTML",
+      "access": "Voluntary participation",
+      "description": ""
+    },
+    {
+      "title": "Electronic music television",
+      "url": "https://universalmind.tv/vogue/iam/index.html",
+      "project": "I AM",
+      "format": "HTML",
+      "access": "Interactive experience",
+      "description": ""
+    },
+    {
+      "title": "Citizen Needs technology",
+      "url": "https://universalmind.tv/vogue/iam/technology-citizen-needs.html",
+      "project": "I AM",
+      "format": "HTML",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "Adaptive Content Matrix",
+      "url": "https://universalmind.tv/vogue/iam/technology-inference-engine.html",
+      "project": "I AM",
+      "format": "HTML",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "athousandminds experience and About",
+      "url": "https://universalmind.tv/events/",
+      "project": "athousandminds",
+      "format": "HTML",
+      "access": "Invitation login",
+      "description": ""
+    },
+    {
+      "title": "Happiness experience and About",
+      "url": "https://universalmind.tv/happiness/",
+      "project": "Happiness",
+      "format": "HTML",
+      "access": "Invitation login",
+      "description": ""
+    },
+    {
+      "title": "Informatics wiki",
+      "url": "https://universalmind.tv/informatics/read/",
+      "project": "Universal Informatics",
+      "format": "HTML",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "Publication register",
+      "url": "https://universalmind.tv/informatics/read/publications/index.html",
+      "project": "Universal Informatics",
+      "format": "HTML",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "Hyperspectral Imaging and complete source register",
+      "url": "https://universalmind.tv/informatics/read/hyperspectral/index.html",
+      "project": "Universal Informatics",
+      "format": "HTML",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "Geometry Atlas M1–M1001",
+      "url": "https://universalmind.tv/informatics/read/atlas/index.html",
+      "project": "Universal Informatics",
+      "format": "HTML",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "Experiments",
+      "url": "https://universalmind.tv/informatics/read/experiments/index.html",
+      "project": "Universal Informatics",
+      "format": "HTML",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "Data, methods and checksums",
+      "url": "https://universalmind.tv/informatics/read/data.html",
+      "project": "Universal Informatics",
+      "format": "HTML",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "Archive and timestamp record",
+      "url": "https://universalmind.tv/informatics/read/provenance.html",
+      "project": "Universal Informatics",
+      "format": "HTML",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "Informatics AI access and reuse",
+      "url": "https://universalmind.tv/informatics/read/access.html",
+      "project": "Universal Informatics",
+      "format": "HTML",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "Connect and download: API, MCP, A2A, JSON and CSV",
+      "url": "https://universalmind.tv/informatics/connect.html",
+      "project": "Universal Informatics",
+      "format": "HTML",
+      "access": "Public",
+      "description": "Connection instructions and complete dataset exports; research scope."
+    },
+    {
+      "title": "Complete dataset manifest",
+      "url": "https://universalmind.tv/informatics/exports/manifest.json",
+      "project": "Universal Informatics",
+      "format": "JSON",
+      "access": "Public",
+      "description": "Current export files, sizes and checksums."
+    },
+    {
+      "title": "Dataset guide",
+      "url": "https://universalmind.tv/informatics/exports/README.md",
+      "project": "Universal Informatics",
+      "format": "Markdown",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "Atlas JSON bundle",
+      "url": "https://universalmind.tv/informatics/pilot-v1/m1-m1001-data.zip",
+      "project": "Universal Informatics",
+      "format": "ZIP / JSON",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "Atlas CSV bundle",
+      "url": "https://universalmind.tv/informatics/pilot-v1/m1-m1001-csv.zip",
+      "project": "Universal Informatics",
+      "format": "ZIP / CSV",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "EMDR Medical Research dossier",
+      "url": "https://universalmind.tv/vogue/iam/a%20s%20s%20e%20t%20s/r%20e%20s%20e%20a%20r%20c%20h/Universal%20Mind%20%5B%20I%20o%20H%20%5D%20-%20EMDR%20Medical%20Research.pdf",
+      "project": "I AM",
+      "format": "PDF",
+      "access": "Public",
+      "description": "Original Internet of Happiness research dossier. The Informatics publication register provides navigable source records."
+    },
+    {
+      "title": "Sound Medical Research dossier",
+      "url": "https://universalmind.tv/vogue/iam/a%20s%20s%20e%20t%20s/r%20e%20s%20e%20a%20r%20c%20h/Universal%20Mind%20%5B%20I%20o%20H%20%5D%20-%20Sound%20Medical%20Research.pdf",
+      "project": "I AM",
+      "format": "PDF",
+      "access": "Public",
+      "description": "Original Internet of Happiness research dossier. The Informatics publication register provides navigable source records."
+    },
+    {
+      "title": "Mantra Medical Research dossier",
+      "url": "https://universalmind.tv/vogue/iam/a%20s%20s%20e%20t%20s/r%20e%20s%20e%20a%20r%20c%20h/Universal%20Mind%20%5B%20I%20o%20H%20%5D%20-%20Mantra%20Medical%20Research.pdf",
+      "project": "I AM",
+      "format": "PDF",
+      "access": "Public",
+      "description": "Original Internet of Happiness research dossier. The Informatics publication register provides navigable source records."
+    },
+    {
+      "title": "Public sitemap",
+      "url": "https://universalmind.tv/sitemap.xml",
+      "project": "Universal Mind",
+      "format": "XML",
+      "access": "Public",
+      "description": ""
+    }
+  ],
+  "access_and_reuse": [
+    "This is Universal Mind’s first-party guide to its projects. The project descriptions are excerpts from the existing About pages and Informatics wiki. Their source links are provided above.",
+    "Universal Mind permits automated reading, navigation, search indexing, retrieval, text and data mining, and model training or fine-tuning on Universal Mind-owned public material. This includes this wiki, its structured guide and llms.txt. The Informatics access and reuse page records the detailed research permission.",
+    "Third-party music, films, publications, images, software and datasets retain their own rights and licence terms. Public accessibility does not grant additional rights in that material.",
+    "Invitation logins, personal data, private research files and credentials remain outside this public guide. Staging is a proofing environment and remains excluded from crawling and indexing.",
+    "Universal Mind plans an open-source release. Reuse of code and datasets follows the licence published with each release.",
+    "Use the source records for evidence status, dates and limitations. Research hypotheses, calculations, clinical evidence and project ambitions retain their separate meanings. Permission to access this material does not establish that a model has trained on it."
+  ]
+}

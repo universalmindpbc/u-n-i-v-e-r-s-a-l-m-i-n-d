@@ -1,72 +1,128 @@
-# Universal Mind / I AM
+# Universal Mind
 
-> Universal Mind is the company. I AM is its first experience: live electronic music television for mental health.
+Universal Mind is a multidisciplinary organisation focused on electronic music and mental health. Its work connects music television, live events, festival participation and bioinformatics research—bringing cultural experiences, community participation and scientific investigation together.
 
-Check in. Unlock exclusive content. Watch electronic music television, together as one. With your permission, connect with personalised content, real-time community support and trusted mental-health referral pathways—inside the places you already trust, where you already spend your time.
+Universal Mind is a project of Ben Korbel. Voted Australia’s number one DJ in 2001, Ben built a career across Australia, Berlin and Ibiza. He also became one of Australia’s major electronic music festival promoters, with festival partnerships welcoming more than 60,000 patrons across two weekends.
 
-Not another mental-health app. A privacy-first support layer within electronic music, fashion and culture.
+Over the past decade, Ben has increasingly turned his attention towards mental health. That focus grew from curiosity, his own lived experience, and the experiences of many people within the electronic music community. Universal Mind brings these parts of his life together: a connection to music and the people around it, and a desire to explore how those connections can support mental health.
 
-Important context:
+Official wiki: https://universalmind.tv/read/
+Updated: 2026-10-30
 
-- I AM is a voluntary experience. Personalisation and support connections depend on permission.
-- Universal Mind's current wellbeing features are not diagnosis and do not replace qualified clinical care.
-- The Science record distinguishes established evidence, developing evidence, product translation and research still requiring product-specific testing.
-- The three full research dossiers retain their Internet of Happiness [ I o H ] identity and compile cited peer-reviewed and institutional research relevant to the planned Epigenetics of Happiness study.
+## I AM — Watch TV
 
-## Start here
+I AM is a free online mental health resource for young people, framed through the lens of electronic music, fashion and online support, together as one.
 
-- [Induction](https://universalmind.tv/vogue/iam/induction.html): The invitation, intended audience, privacy principles and role of trusted cultural spaces.
-- [About I AM](https://universalmind.tv/vogue/iam/about.html): The complete public briefing on the problem, solution, experience, access model and research direction.
-- [Program](https://universalmind.tv/vogue/iam/program.html): Watch one of 13 livestream electronic music and fashion channels across our curated worlds - Inner Planes, Champagne Bohemia, modul8 infinity, James Bondage Health and Safety Cushion.
-- [Science](https://universalmind.tv/vogue/iam/science.html): The live evidence record, evidence grades, research limitations and clinical boundaries.
-- [I AM Sound prototype record](https://universalmind.tv/vogue/iam/sound-prototype-research.html): A de-identified, unpublished n=1 internal observation with all three recorded biometric sessions, the complete fixed intervention and full limitations.
-- [Our Team](https://universalmind.tv/vogue/iam/our-team.html): The people and experience behind Universal Mind.
+I AM brings electronic music, fashion and human connection together as a safe refuge in the moment.
 
-## I AM experience
+When anxiety or crisis arrives, we can’t always reach a doctor or therapist straight away. I AM is designed to be there in that gap.
 
-- [Check in](https://universalmind.tv/vogue/iam/vogue-self-report.html): The voluntary self-report entry into I AM.
-- [Electronic music television](https://universalmind.tv/vogue/iam/index.html): The live adaptive music television experience, including content, participation, community and support pathways.
-- [Citizen Needs technology](https://universalmind.tv/vogue/iam/technology-citizen-needs.html): The public explanation of the privacy-first inference model used to interpret changing needs.
-- [Adaptive Content Matrix](https://universalmind.tv/vogue/iam/technology-inference-engine.html): Learn how Universal Mind recommends music, fashion, brain entrainment and mantra content in response to a voluntary check-in.
+Your voluntary check-in - self-report plus Heart Rate - helps I AM select a music channel and evidence-based brain entrainment profile for that moment.
 
-## Full research dossiers
+Watch one of 13 livestream electronic music and fashion channels across our curated worlds - Inner Planes, Champagne Bohemia, modul8 infinity, James Bondage Health and Safety Cushion.
 
-- [EMDR Medical Research](https://universalmind.tv/vogue/iam/a%20s%20s%20e%20t%20s/r%20e%20s%20e%20a%20r%20c%20h/Universal%20Mind%20%5B%20I%20o%20H%20%5D%20-%20EMDR%20Medical%20Research.pdf): Full Internet of Happiness research dossier on eye movement desensitisation and reprocessing.
-- [Sound Medical Research](https://universalmind.tv/vogue/iam/a%20s%20s%20e%20t%20s/r%20e%20s%20e%20a%20r%20c%20h/Universal%20Mind%20%5B%20I%20o%20H%20%5D%20-%20Sound%20Medical%20Research.pdf): Full Internet of Happiness research dossier on music, sound and brain entrainment.
-- [Mantra Medical Research](https://universalmind.tv/vogue/iam/a%20s%20s%20e%20t%20s/r%20e%20s%20e%20a%20r%20c%20h/Universal%20Mind%20%5B%20I%20o%20H%20%5D%20-%20Mantra%20Medical%20Research.pdf): Full Internet of Happiness research dossier on mantra meditation, mindfulness and related practices.
+The full About page identifies proposed care and fulfilment partners as invitations that are not yet confirmed. The public Science record contains evidence assessments and research limitations.
 
-## Optional
+Source: https://universalmind.tv/vogue/iam/about.html
+Entry: https://universalmind.tv/iam/
+Access: The public introduction and About page are readable directly. Participation uses the existing entry and consent flows.
 
-- [Website sitemap](https://universalmind.tv/sitemap.xml): Canonical list of the public pages and research documents approved for indexing.
+## athousandminds — Attend Events
 
-## Universal Informatics
+Welcome to athousandminds is a new interactive music, fashion and light festival exploring mindfulness.
+
+The event places the audience inside a responsive environment, gamifying mindfulness and authentic human connection through an electronic music experience.
+
+Each level unlocks rewards that can be redeemed at the event, whether interactive digital experiences, physical items such as fashion and merch, or exclusive live performances on the night.
+
+- Connect to yourself (level one)
+- Connect with each other (level two)
+- Together, Transform your world (level three)
+athousandminds is a new festival by Universal Mind, pitching to Live Nation and Apple TV+, together as one. The artists and venues are ideal bookings, not confirmed and this is not an advertisement for an existing event.
+
+Source: https://universalmind.tv/events/#about-panel
+Entry: https://universalmind.tv/events/?experience=1
+Access: The event experience uses the existing invitation login. These About excerpts are public.
+
+## Happiness — Activate Festivals
+
+Happiness is a universal happiness currency for festivals globally, powered via Apple Watch. Attendees at festivals are rewarded when they are safe, healthy and happy, together as one.
+
+Happiness also powers a real time public health & safety index for festivals, mitigating risk. People own their data and ethics are via The Ethics Centre and Center for Humane Technology, in conjunction with Apple Watch, together as one.
+
+Our mission is lowering the mass cancelation of festivals globally, via lowering the cost of risk mitigation for festivals, including user pays police, security, medical and insurance, while ensuring events are safe and healthy, together as one.
+
+The About text describes the project and its mission. Named technologies and organisations are not, by their inclusion here, confirmation of a formal partnership or independently validated clinical performance.
+
+Source: https://universalmind.tv/happiness/#about-panel
+Entry: https://universalmind.tv/events/happiness-entry.php
+Access: The festival experience uses the existing invitation login. These About excerpts are public.
+
+## Universal Informatics — Explore Research
 
 Bioinformatics platform for mental health. Investigating potential relationships between the Fibonacci sequence and OXTR gene expression.
-
-OXTR encodes the oxytocin receptor. [Gene reference](https://www.ncbi.nlm.nih.gov/gene/5021).
-
-Research hypotheses remain distinct from mathematical verification and biological evidence.
-
-## Initial focus · Computer vision for genomics
 
 Inspired by research into how geometric architectures and Fibonacci-ordered dynamics can protect quantum information, we are investigating whether geometry derived from Fibonacci Pisano periods can improve the computational efficiency of hyperspectral image analysis for genomics.
 
 Our proposed approach explores equilateral triangular meshes and tetrahedral models, comparing computational cost, processing speed and accuracy against established methods.
 
-## Research library
-
 An extensive, clinically searchable research index spanning sound and auditory entrainment, EMDR, mindfulness-based stress reduction, mantra and hyperspectral imaging. Explore more than 1,100 publications by intervention, clinical condition, gene expression, molecular target, study design and journal, with transparent topic-level trust ratings.
 
-## Read without a connector
+Explore the published research without launching the interactive experience, installing a connector or downloading a dataset. These HTML records provide the same approved text, sources and evidence status used by the platform.
 
-- [Research and evidence](https://universalmind.tv/informatics/read/): Plain HTML overview.
-- [Publications](https://universalmind.tv/informatics/read/publications/index.html): 1108 approved records, citations, summaries, limitations and topic assessment context.
-- [Hyperspectral Imaging](https://universalmind.tv/informatics/read/hyperspectral/index.html): Six subchapters, 240 original citation entries and 13 timeline milestones.
-- [Geometry Atlas](https://universalmind.tv/informatics/read/atlas/index.html): 1,001 records with complete JSON and CSV links.
-- [Experiments](https://universalmind.tv/informatics/read/experiments/index.html): Versioned measurements, methods and limitations.
-- [Data and methods](https://universalmind.tv/informatics/read/data.html): Full source inventory and checksums.
-- [Archive record](https://universalmind.tv/informatics/read/provenance.html): Verified storage and timestamp status.
-- [AI access and reuse](https://universalmind.tv/informatics/read/access.html): All LLM providers may read and train on Universal Mind-owned public Informatics material. Third-party rights remain attached to original material.
-- [Connect and download](https://universalmind.tv/informatics/connect.html): Optional API, MCP, A2A and complete JSON/CSV exports.
+The project explores hypotheses about geometry, molecular systems and OXTR. Mathematical calculations, biological evidence, model outputs and experimental measurements retain distinct labels. Each record carries its own assessment; unassessed claims remain unassessed.
 
-Staging is excluded. No public GitHub repository is asserted until a public source release exists.
+Source: https://universalmind.tv/informatics/read/
+Entry: https://universalmind.tv/informatics/
+Access: The research wiki, publication records and download directory are public. API and MCP access are optional.
+
+## Resource directory
+
+- [Universal Mind](https://universalmind.tv/): Universal Mind; HTML; Invitation entry; wiki link is public.
+- [Four project paths](https://universalmind.tv/home/): Universal Mind; HTML; Public directory.
+- [Wiki For AI / LLMs](https://universalmind.tv/read/): Universal Mind; HTML; Public.
+- [AI reading guide](https://universalmind.tv/llms.txt): Universal Mind; Plain text; Public.
+- [Structured guide and resource directory](https://universalmind.tv/read/resources.json): Universal Mind; JSON; Public.
+- [I AM introduction](https://universalmind.tv/vogue/iam/induction.html): I AM; HTML; Public.
+- [About I AM](https://universalmind.tv/vogue/iam/about.html): I AM; HTML; Public.
+- [Programme: 13 livestream channels](https://universalmind.tv/vogue/iam/program.html): I AM; HTML; Public.
+- [Science and evidence](https://universalmind.tv/vogue/iam/science.html): I AM; HTML; Public.
+- [Sound prototype research record](https://universalmind.tv/vogue/iam/sound-prototype-research.html): I AM; HTML; Public.
+- [Our Team](https://universalmind.tv/vogue/iam/our-team.html): I AM; HTML; Public.
+- [Voluntary check-in](https://universalmind.tv/vogue/iam/vogue-self-report.html): I AM; HTML; Voluntary participation.
+- [Electronic music television](https://universalmind.tv/vogue/iam/index.html): I AM; HTML; Interactive experience.
+- [Citizen Needs technology](https://universalmind.tv/vogue/iam/technology-citizen-needs.html): I AM; HTML; Public.
+- [Adaptive Content Matrix](https://universalmind.tv/vogue/iam/technology-inference-engine.html): I AM; HTML; Public.
+- [athousandminds experience and About](https://universalmind.tv/events/): athousandminds; HTML; Invitation login.
+- [Happiness experience and About](https://universalmind.tv/happiness/): Happiness; HTML; Invitation login.
+- [Informatics wiki](https://universalmind.tv/informatics/read/): Universal Informatics; HTML; Public.
+- [Publication register](https://universalmind.tv/informatics/read/publications/index.html): Universal Informatics; HTML; Public.
+- [Hyperspectral Imaging and complete source register](https://universalmind.tv/informatics/read/hyperspectral/index.html): Universal Informatics; HTML; Public.
+- [Geometry Atlas M1–M1001](https://universalmind.tv/informatics/read/atlas/index.html): Universal Informatics; HTML; Public.
+- [Experiments](https://universalmind.tv/informatics/read/experiments/index.html): Universal Informatics; HTML; Public.
+- [Data, methods and checksums](https://universalmind.tv/informatics/read/data.html): Universal Informatics; HTML; Public.
+- [Archive and timestamp record](https://universalmind.tv/informatics/read/provenance.html): Universal Informatics; HTML; Public.
+- [Informatics AI access and reuse](https://universalmind.tv/informatics/read/access.html): Universal Informatics; HTML; Public.
+- [Connect and download: API, MCP, A2A, JSON and CSV](https://universalmind.tv/informatics/connect.html): Universal Informatics; HTML; Public. Connection instructions and complete dataset exports; research scope.
+- [Complete dataset manifest](https://universalmind.tv/informatics/exports/manifest.json): Universal Informatics; JSON; Public. Current export files, sizes and checksums.
+- [Dataset guide](https://universalmind.tv/informatics/exports/README.md): Universal Informatics; Markdown; Public.
+- [Atlas JSON bundle](https://universalmind.tv/informatics/pilot-v1/m1-m1001-data.zip): Universal Informatics; ZIP / JSON; Public.
+- [Atlas CSV bundle](https://universalmind.tv/informatics/pilot-v1/m1-m1001-csv.zip): Universal Informatics; ZIP / CSV; Public.
+- [EMDR Medical Research dossier](https://universalmind.tv/vogue/iam/a%20s%20s%20e%20t%20s/r%20e%20s%20e%20a%20r%20c%20h/Universal%20Mind%20%5B%20I%20o%20H%20%5D%20-%20EMDR%20Medical%20Research.pdf): I AM; PDF; Public. Original Internet of Happiness research dossier. The Informatics publication register provides navigable source records.
+- [Sound Medical Research dossier](https://universalmind.tv/vogue/iam/a%20s%20s%20e%20t%20s/r%20e%20s%20e%20a%20r%20c%20h/Universal%20Mind%20%5B%20I%20o%20H%20%5D%20-%20Sound%20Medical%20Research.pdf): I AM; PDF; Public. Original Internet of Happiness research dossier. The Informatics publication register provides navigable source records.
+- [Mantra Medical Research dossier](https://universalmind.tv/vogue/iam/a%20s%20s%20e%20t%20s/r%20e%20s%20e%20a%20r%20c%20h/Universal%20Mind%20%5B%20I%20o%20H%20%5D%20-%20Mantra%20Medical%20Research.pdf): I AM; PDF; Public. Original Internet of Happiness research dossier. The Informatics publication register provides navigable source records.
+- [Public sitemap](https://universalmind.tv/sitemap.xml): Universal Mind; XML; Public.
+
+## AI access and reuse
+
+This is Universal Mind’s first-party guide to its projects. The project descriptions are excerpts from the existing About pages and Informatics wiki. Their source links are provided above.
+
+Universal Mind permits automated reading, navigation, search indexing, retrieval, text and data mining, and model training or fine-tuning on Universal Mind-owned public material. This includes this wiki, its structured guide and llms.txt. The Informatics access and reuse page records the detailed research permission.
+
+Third-party music, films, publications, images, software and datasets retain their own rights and licence terms. Public accessibility does not grant additional rights in that material.
+
+Invitation logins, personal data, private research files and credentials remain outside this public guide. Staging is a proofing environment and remains excluded from crawling and indexing.
+
+Universal Mind plans an open-source release. Reuse of code and datasets follows the licence published with each release.
+
+Use the source records for evidence status, dates and limitations. Research hypotheses, calculations, clinical evidence and project ambitions retain their separate meanings. Permission to access this material does not establish that a model has trained on it.
