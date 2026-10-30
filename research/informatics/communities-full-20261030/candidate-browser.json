@@ -1,0 +1,35 @@
+{
+  "mode": "candidate",
+  "audioDisabledAtLaunch": true,
+  "errors": [],
+  "results": [
+    {
+      "width": 1440,
+      "batch": 1108,
+      "directDomesticViolence": 5,
+      "includingRelated": 62,
+      "combinedCategories": 133,
+      "overflow": false,
+      "passed": true
+    },
+    {
+      "width": 390,
+      "batch": 1108,
+      "directDomesticViolence": 5,
+      "includingRelated": 62,
+      "combinedCategories": 133,
+      "overflow": false,
+      "passed": true
+    },
+    {
+      "width": 320,
+      "batch": 1108,
+      "directDomesticViolence": 5,
+      "includingRelated": 62,
+      "combinedCategories": 133,
+      "overflow": false,
+      "passed": true
+    }
+  ],
+  "passed": true
+}

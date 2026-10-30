@@ -5,7 +5,9 @@
     const ids = new Set([record.id, ...(record.aliases || [])]);
     record.communityAssessments = data.records.filter(item => ids.has(item.recordId));
     record.communityMatches = record.communityAssessments.flatMap(item => item.matches);
-    record.communityReview = record.communityAssessments.length ? "pending" : "unassessed";
+    if (record.communityAssessments.some(item => item.reviewStatus)) {
+      record.communityReview = record.communityAssessments.every(item => item.reviewStatus === "approved") ? "reviewed" : "pending";
+    } else delete record.communityReview;
     return record;
   }
   function matches(record, category, includeRelated = false) {

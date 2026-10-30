@@ -22,7 +22,7 @@
   $('#target').innerHTML += targets.map(t => `<option>${esc(t)}</option>`).join('');
   const multiFields = fields.filter(key=>!['query','sort'].includes(key));
   multi.init(multiFields);
-  function restoreFilters(p) { for (const key of fields) { if (multiFields.includes(key)) multi.set(key,p.getAll(key)); else $('#'+key).value=p.get(key) || (key==='sort' ? 'genomics' : ''); } if(p.has('gene'))multi.set('target',[...multi.values('target'),...p.getAll('gene')]); $('#calibration-only').checked=p.get('calibration')==='batch'; $('#include-related').checked=p.get('related')==='1'; }
+  function restoreFilters(p) { for (const key of fields) { if (multiFields.includes(key)) multi.set(key,p.getAll(key)); else $('#'+key).value=p.get(key) || (key==='sort' ? 'genomics' : ''); } if(p.has('gene'))multi.set('target',[...multi.values('target'),...p.getAll('gene')]); $('#include-related').checked=p.get('related')==='1'; }
   restoreFilters(params);
 
   function crosses(score, labelled = false, scope = 'Subchapter') {
@@ -54,7 +54,6 @@
       for (const key of fields) url.searchParams.delete(key);
     } else {
       url.searchParams.set('view', 'search'); url.searchParams.delete('chapter'); url.hash = '';
-      if ($('#calibration-only').checked) url.searchParams.set('calibration','batch');
       if ($('#include-related').checked) url.searchParams.set('related','1');
       for (const key of fields) {
         url.searchParams.delete(key);
@@ -118,13 +117,8 @@
     const matches = (record.communityMatches || []).filter(item=>item.relation!=='related' || $('#include-related').checked);
     const unique = [...new Map(matches.map(item=>[item.categoryId+':'+item.relation,item])).values()];
     const relevant = selected.length ? unique.filter(item=>selected.includes(item.categoryId)) : unique;
-    return `<div class="community-tags">${relevant.map(item=>`<span class="community-tag ${esc(item.relation)}">${esc(communityLabel(item.categoryId))}${item.relation==='direct' ? '' : ` · ${item.relation==='related' ? 'Related · inferred' : 'Context'}`}</span>`).join('')}<span class="community-review-status">${!relevant.length ? esc(communityModel.labels[record.communityAssessments[0].status])+' · ' : ''}Calibration · pending review</span></div>`;
-  }
-  function communityMarkup(paper) {
-    const id=paper.recordId || paper.id;
-    const record=records.find(item=>item.id===id || item.aliases.includes(id));
-    if (!record?.communityAssessments?.length) return '';
-    return `<details class="community-evidence"><summary>Communities and Contexts · classification evidence</summary>${record.communityAssessments.map(item=>`<p class="eyebrow">AI-proposed · Awaiting Universal Mind review</p><p><strong>${esc(communityModel.labels[item.status])}</strong>${item.matches.length ? ' · '+item.matches.map(match=>esc(communityLabel(match.categoryId))).join(' · ') : ''}</p><p>${esc(item.rationale)}</p><p class="summary-limitation">${esc(item.evidenceLimit)}</p>${item.evidence.map(source=>`<blockquote cite="${esc(safeURL(source.url))}"><p>${esc(source.quote)}</p></blockquote><p class="publication">${esc(source.location)} · Checked ${esc(source.checkedAt)} · <a href="${esc(safeURL(source.url))}" target="_blank" rel="noopener noreferrer">Check source ↗</a></p>`).join('')}`).join('')}</details>`;
+    if (!relevant.length) return '';
+    return `<div class="community-tags">${relevant.map(item=>`<span class="community-tag ${esc(item.relation)}">${esc(communityLabel(item.categoryId))}${item.relation==='direct' ? '' : ` · ${item.relation==='related' ? 'Related · inferred' : 'Context'}`}</span>`).join('')}</div>`;
   }
   function paperMarkup(paper, heading = 'h4') {
     const quotes = paper.quotes || [];
@@ -140,7 +134,7 @@
       ${paper.summary ? `<div class="study-summary"><p class="eyebrow">Study summary</p><p>${esc(paper.summary)}</p>${paper.limitation ? `<p class="summary-limitation">${esc(paper.limitation)}</p>` : ''}</div>` : ''}
 
       ${!paper.summary && paper.limitation ? `<p class="summary-limitation">${esc(paper.limitation)}</p>` : ''}${(paper.figures || []).map(figure => `<figure class="research-figure"><img src="${esc(safeURL(figure.src))}" alt="${esc(figure.caption)}" loading="lazy"><figcaption>${esc(figure.caption)}</figcaption></figure>`).join('')}${evidenceMarkup(paper.evidence)}${paper.studyDesignAssessment ? `<details class="study-methods design-assessment"><summary>Study design and blinding</summary><p>${esc(paper.studyDesignAssessment.basis)}</p><p>${paper.studyDesignAssessment.sources.map((source,index)=>`<a href="${esc(safeURL(source))}" target="_blank" rel="noopener noreferrer">${source.includes('clinicaltrials.gov') || source.includes('isrctn.com') ? 'Trial register' : `Study source ${index+1}`} ↗</a>`).join(' · ')}</p></details>` : ''}${bibliographyMarkup(paper)}${sourceProvenanceMarkup(paper)}
-      ${communityMarkup(paper)}<div class="paper-links"><a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${url.includes('web.archive.org/web/') ? 'Read archived publication' : 'Read publication'} ↗</a><button class="text-button" data-paper-detail="${esc(paper.id)}">Citation details</button></div>
+      <div class="paper-links"><a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${url.includes('web.archive.org/web/') ? 'Read archived publication' : 'Read publication'} ↗</a><button class="text-button" data-paper-detail="${esc(paper.id)}">Citation details</button></div>
     </article>`;
   }
   const paperCount = items => { const count = model.uniqueCount(items); const noun=items.some(p=>p.sourceType) ? 'source' : 'paper'; return `${count.toLocaleString()} ${noun}${count===1 ? '' : 's'}`; };
@@ -185,7 +179,6 @@
       any('physiology',v=>r.categories.includes(v)) && any('category',v=>r.categories.includes(v)) &&
       any('target',v=>r.targets.includes(v)) && any('condition',v=>r.conditions.includes(v)) &&
       any('community',v=>communityModel.matches(r,v,$('#include-related').checked)) &&
-      (!$('#calibration-only').checked || r.communityAssessments.length>0) &&
       any('jadad',v=>model.matchesJadad(r,v)) && any('kind',v=>model.matchesStudy(r,v)) &&
       any('period',v=>v==='recent' && r.year>=2022 && r.year<=2026 || v==='older' && r.year && r.year<2022) &&
       any('trust',v=>model.matchesPaperTrust(r,Number(v))) &&
@@ -196,8 +189,6 @@
     $('#active-filter-count').textContent = active ? `· ${active} selected` : '';
     for(const key of multiFields)multi.refresh(key);
     multi.chips($('#selected-filters'),search);
-    const assessed=records.filter(r=>(collection==='all'||r.collections.includes(collection)) && r.communityAssessments.length).length;
-    $('#community-coverage').textContent=`${communityData.recordCount} papers in the calibration batch · ${assessed} in this collection · Awaiting Universal Mind review`;
     renderResults();
   }
   function selectedEntry(record) {
@@ -294,7 +285,7 @@
     if (chapter) { if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return; event.preventDefault(); if ($('#article').open) closePaper(); goChapter(Number(chapter.dataset.chapter),chapter.dataset.topic || '',true,chapter.dataset.chapterCollection || collection); return; }
     const button = event.target.closest('button');
     if (!button) return;
-    if (button.dataset.collection) { $('#topic').value = ''; $('#journal').value = ''; collection = button.dataset.collection; view = editions[collection] && !$('#query').value && !multi.values('community').length && !$('#calibration-only').checked ? 'chapters' : 'search'; chapterNumber = 0; pageIndex = 0; syncURL(true); render(); }
+    if (button.dataset.collection) { $('#topic').value = ''; $('#journal').value = ''; collection = button.dataset.collection; view = editions[collection] && !$('#query').value && !multi.values('community').length ? 'chapters' : 'search'; chapterNumber = 0; pageIndex = 0; syncURL(true); render(); }
     if (button.dataset.view) { if (button.dataset.view === 'chapters') goChapter(chapterNumber); else search(); }
     if (button.dataset.record) openRecord(button.dataset.record,button);
     if (button.dataset.paperDetail) { const paper = papers.find(p => p.id === button.dataset.paperDetail); if (paper) showPaper(paper,button); }
@@ -306,7 +297,6 @@
   $('#query').oninput = () => { clearTimeout(searchTimer); searchTimer = setTimeout(search,180); };
   for (const key of fields.filter(key=>key!=='query')) $('#'+key).onchange = search;
   $('#reset').onclick = reset;
-  $('#calibration-only').onchange = search;
   $('#include-related').onchange = search;
   $('#previous').onclick = () => { pageIndex--; renderResults(); $('#results').scrollIntoView(); };
   $('#next').onclick = () => { pageIndex++; renderResults(); $('#results').scrollIntoView(); };
@@ -351,10 +341,10 @@
   async function load() {
     $('#load-error').hidden = true;
     try {
-      const responses = await Promise.all(['sound-edition','library','publication-access','language-edition','general-edition','mindfulness-expansion','vision-edition','vision-expansion','clinical-conditions','nature-expansion','fulltext-availability','fibonacci-expansion','hyperspectral-expansion','community-calibration'].map(name=>fetch('library-data/'+name+'.json?v=communities-20261030')));
+      const responses = await Promise.all(['sound-edition','library','publication-access','language-edition','general-edition','mindfulness-expansion','vision-edition','vision-expansion','clinical-conditions','nature-expansion','fulltext-availability','fibonacci-expansion','hyperspectral-expansion','community-index'].map(name=>fetch('library-data/'+name+'.json?v=communities-full-20261030')));
       if (responses.some(response => !response.ok)) throw new Error('Research unavailable');
       const [sound,data,access,language,general,expansion,vision,visionExpansion,conditions,natureExpansion,fulltexts,fibonacciExpansion,hyperspectralExpansion,communities] = await Promise.all(responses.map(response=>response.json()));
-      if (communities.schemaVersion!=='communities-contexts/v1' || communities.records.length!==communities.recordCount) throw new Error('Invalid community classifications');
+      if (communities.schemaVersion!=='communities-contexts/v2' || communities.records.length!==communities.recordCount) throw new Error('Invalid community classifications');
       communityData=communities;
       fullTextAccess=fulltexts.records;
       if (!Array.isArray(sound.chapters) || !Array.isArray(data.records)) throw new Error('Invalid research data');

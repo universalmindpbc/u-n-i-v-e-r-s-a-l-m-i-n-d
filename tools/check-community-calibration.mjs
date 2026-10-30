@@ -7,7 +7,7 @@ const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),site=
 const read=p=>fs.readFileSync(path.join(site,p),'utf8');
 const source=read('library.js'),slice=(a,b)=>source.slice(source.indexOf(a),source.indexOf(b,source.indexOf(a)));
 const names=['sound-edition','library','publication-access','language-edition','general-edition','mindfulness-expansion','vision-edition','vision-expansion','clinical-conditions','nature-expansion','fulltext-availability','fibonacci-expansion','hyperspectral-expansion'];
-const inputs=names.map(n=>JSON.parse(read('library-data/'+n+'.json'))),data=JSON.parse(read('library-data/community-calibration.json'));
+const inputs=names.map(n=>JSON.parse(read('library-data/'+n+'.json'))),data=JSON.parse(fs.readFileSync(path.join(root,'research/informatics/communities-contexts-20261030/calibration-snapshot.json'),'utf8'));
 const context=vm.createContext({inputs,data});
 vm.runInContext(read('library-model.js'),context);vm.runInContext(read('library-communities.js'),context);
 vm.runInContext(`const model=globalThis.UniversalResearchModel;let publicationAccess={},clinicalConditions={},editions={},papers=[];

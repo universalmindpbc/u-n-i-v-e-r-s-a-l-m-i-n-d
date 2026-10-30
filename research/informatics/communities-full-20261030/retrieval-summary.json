@@ -1,0 +1,19 @@
+{
+  "europePMC": {
+    "metadata": 725,
+    "abstracts": 718,
+    "batchErrors": []
+  },
+  "crossref": {
+    "requested": 161,
+    "matched": 160,
+    "errors": [
+      {
+        "recordId": "quantum-penrose-fibonacci-code-2024",
+        "error": "HTTP Error 404: Not Found"
+      }
+    ]
+  },
+  "sourceIdentityConflictsRemainUnresolved": true,
+  "rawAbstractsNotPublished": true
+}
