@@ -726,6 +726,36 @@ deploy_patent() {
   mv "$patent_manifest" "$MANIFEST_FILE"
 }
 
+# Update the official filing notice through the existing private Panthur route.
+deploy_patent_receipt() {
+  patent_target_guard || return 1
+  local runtime="${PATENT_RUNTIME_DIR:-}" relative status manifest_tmp
+  [[ -f "$runtime/filing-notice.pdf" && -f "$runtime/filing-notice-page-1.jpg" ]] || return 1
+  if [[ -n "$(git -C "$ROOT_DIR" status --porcelain --untracked-files=all -- patent/index.php patent/receipt.php patent/private-deny.htaccess deploy-panthur-staging.sh deploy-panthurlive.sh)" ]]; then
+    echo "Refusing to deploy uncommitted patent filing notice source." >&2
+    return 1
+  fi
+  put_file "$ROOT_DIR/patent/private-deny.htaccess" "patent/.private/.htaccess"
+  for relative in filing-notice.pdf filing-notice-page-1.jpg; do
+    status="$(curl --silent --show-error --output /dev/null --write-out '%{http_code}' "$PATENT_TARGET_ORIGIN/patent/.private/$relative")"
+    [[ "$status" == "403" ]] || { echo "Private filing notice storage denial failed." >&2; return 1; }
+  done
+  for relative in filing-notice.pdf filing-notice-page-1.jpg; do
+    put_file "$runtime/$relative" "patent/.private/$relative"
+  done
+  manifest_tmp="$(mktemp)"
+  if [[ -f "$MANIFEST_FILE" ]]; then
+    awk -F '\t' '$2 != "patent/index.php" && $2 != "patent/receipt.php" && $2 != "patent/.private/.htaccess"' "$MANIFEST_FILE" > "$manifest_tmp"
+  fi
+  printf '%s\t%s\n' "$(file_hash "$ROOT_DIR/patent/private-deny.htaccess")" "patent/.private/.htaccess" >> "$manifest_tmp"
+  for relative in patent/receipt.php patent/index.php; do
+    put_file "$ROOT_DIR/$relative" "$relative"
+    printf '%s\t%s\n' "$(file_hash "$ROOT_DIR/$relative")" "$relative" >> "$manifest_tmp"
+  done
+  mv "$manifest_tmp" "$MANIFEST_FILE"
+  echo "Patent filing notice: private PDF, preview and committed source published through Panthur."
+}
+
 configure_patent_content() {
   patent_target_guard || return 1
   local runtime="${PATENT_RUNTIME_DIR:-}" image status
@@ -892,6 +922,9 @@ case "$DEPLOY_MODE" in
     ;;
   patent)
     deploy_patent
+    ;;
+  patent-receipt)
+    deploy_patent_receipt
     ;;
   patent-content)
     configure_patent_content
