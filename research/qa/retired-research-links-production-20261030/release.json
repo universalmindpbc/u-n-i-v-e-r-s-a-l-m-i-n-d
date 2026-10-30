@@ -1,0 +1,38 @@
+{
+  "status": "production-verified",
+  "approvedStagingCommit": "63e5e25d0a7b9300feebc6809fff07ad4f743123",
+  "websiteSourceCommit": "9400d06b1347039ba0aaeaec9023ad2c71c1dc5a",
+  "previousProductionCommit": "4bd1d2378ab0ec48ef4dfc363c0b3c447e77a3d7",
+  "productionTag": "production-2026-10-30-1442",
+  "deploymentCommand": "./deploy-panthurlive.sh ai-wiki",
+  "deploymentExitCode": 0,
+  "websiteSourceUnchangedFromApprovedStaging": true,
+  "scope": [
+    "read/index.html",
+    "read/resources.json",
+    "llms.txt",
+    "sitemap.xml"
+  ],
+  "replacementMapping": {
+    "EMDR": "Vision",
+    "Sound": "Sound",
+    "Mantra": "Language"
+  },
+  "checks": {
+    "productionAndStagingSourceMatches": 10,
+    "retiredDossierLinksAbsentFromAllFourDiscoveryFiles": true,
+    "correctCollectionJourneys": 3,
+    "liveScienceLinksCorrect": 3,
+    "retiredPDFRequests": 0,
+    "pageErrors": [],
+    "browserAudioDisabled": true,
+    "browserClosed": true,
+    "stagingCrawlingExcluded": true
+  },
+  "publicURLs": [
+    "https://universalmind.tv/read/#resources",
+    "https://universalmind.tv/llms.txt",
+    "https://universalmind.tv/read/resources.json",
+    "https://universalmind.tv/sitemap.xml"
+  ]
+}

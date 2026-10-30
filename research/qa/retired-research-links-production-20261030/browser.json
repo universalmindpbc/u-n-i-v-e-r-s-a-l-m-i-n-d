@@ -1,0 +1,55 @@
+{
+  "collections": [
+    {
+      "collection": "vision",
+      "url": "https://universalmind.tv/informatics/?entry=research&area=research&section=%7B%22area%22%3A%22research%22%2C%22search%22%3A%22%3Fcollection%3Dvision%22%2C%22hash%22%3A%22%22%7D&record=fibonacci-m9-p24&record-mode=animation",
+      "selected": true,
+      "statistics": "Papers & references\n110\nJournals\n58\nRecorded citations\n3,865\n\nEach publication and identified journal is counted once. Citation counts are available for 86 of 110 publications; these are historical counts, not live totals."
+    },
+    {
+      "collection": "sound",
+      "url": "https://universalmind.tv/informatics/?entry=research&area=research&section=%7B%22area%22%3A%22research%22%2C%22search%22%3A%22%3Fcollection%3Dsound%22%2C%22hash%22%3A%22%22%7D&record=fibonacci-m9-p24&record-mode=animation",
+      "selected": true,
+      "statistics": "Papers & references\n308\nJournals\n164\nRecorded citations\n27,526\n\nEach publication and identified journal is counted once. Citation counts are available for 240 of 308 publications; these are historical counts, not live totals."
+    },
+    {
+      "collection": "language",
+      "url": "https://universalmind.tv/informatics/?entry=research&area=research&section=%7B%22area%22%3A%22research%22%2C%22search%22%3A%22%3Fcollection%3Dlanguage%22%2C%22hash%22%3A%22%22%7D&record=fibonacci-m9-p24&record-mode=animation",
+      "selected": true,
+      "statistics": "Papers & references\n368\nJournals\n200\nRecorded citations\n18,513\n\nEach publication and identified journal is counted once. Citation counts are available for 143 of 368 publications; these are historical counts, not live totals."
+    }
+  ],
+  "scienceLinks": [
+    {
+      "url": "https://universalmind.tv/informatics/library.html?collection=vision",
+      "target": "_blank"
+    },
+    {
+      "url": "https://universalmind.tv/informatics/library.html?collection=sound",
+      "target": "_blank"
+    },
+    {
+      "url": "https://universalmind.tv/informatics/library.html?collection=language",
+      "target": "_blank"
+    }
+  ],
+  "pageErrors": [],
+  "pdfRequests": [],
+  "screenshots": [
+    "resources-1440.png",
+    "resources-390.png"
+  ],
+  "processAudioDisabled": true,
+  "scienceAssets": [
+    {
+      "url": "https://universalmind.tv/vogue/iam/science-research-data-v1.js?v=da2cb27b9715",
+      "status": 200
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/science.js?v=9395df271997",
+      "status": 200
+    }
+  ],
+  "passed": true,
+  "browserClosed": true
+}
