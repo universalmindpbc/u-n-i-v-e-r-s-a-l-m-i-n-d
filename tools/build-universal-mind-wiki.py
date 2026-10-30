@@ -133,11 +133,11 @@ for project in projects:
     if project.get('levels'):
         html += '<ol>'+''.join('<li>'+escape(p)+'</li>' for p in project['levels'])+'</ol>'
     html += '<div class="context">'+paragraphs(project['context'])+'</div>'
-    html += '<p class="source">Approved source: <a href="'+project['source']+'">'+escape(project['name'])+' · About / wiki</a></p>'
-    html += '<p>'+escape(project['access'])+'</p><p><a href="'+project['url']+'">'+escape(project['route'])+' →</a></p></section>\n'
+    html += '<p class="source">Approved source: <a href="'+project['source'].removeprefix(ORIGIN)+'">'+escape(project['name'])+' · About / wiki</a></p>'
+    html += '<p>'+escape(project['access'])+'</p><p><a href="'+project['url'].removeprefix(ORIGIN)+'">'+escape(project['route'])+' →</a></p></section>\n'
 html += '<section id="resources"><h2>Resource directory</h2><p>Use the public reading pages for text, the original experiences for participation, and the Informatics connection guide for research tools and downloads.</p><dl class="resources">'
 for item in resources:
-    html += '<dt><a href="'+item['url']+'">'+escape(item['title'])+'</a></dt><dd>'+escape(item['project']+' · '+item['format']+' · '+item['access'])+(('<br>'+escape(item['description'])) if item['description'] else '')+'</dd>\n'
+    html += '<dt><a href="'+item['url'].removeprefix(ORIGIN)+'">'+escape(item['title'])+'</a></dt><dd>'+escape(item['project']+' · '+item['format']+' · '+item['access'])+(('<br>'+escape(item['description'])) if item['description'] else '')+'</dd>\n'
 html += '</dl></section><section id="access"><h2>AI access and reuse</h2>'+paragraphs(access)+'</section></main><footer><p>Updated '+DATE+' · Original source pages retain their own dates and evidence assessments.</p><p><a href="/llms.txt">Plain-text guide</a> · <a href="resources.json">JSON guide</a> · <a href="/home/">Universal Mind</a></p></footer></body></html>\n'
 markdown = '# Universal Mind\n\n'+'\n\n'.join(INTRO)+'\n\nOfficial wiki: '+ORIGIN+'/read/\nUpdated: '+DATE+'\n'
 for project in projects:
