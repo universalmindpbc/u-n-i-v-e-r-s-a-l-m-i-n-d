@@ -1,0 +1,80 @@
+{
+  "verifiedAt": "2026-10-30T05:59:52.430018+00:00",
+  "sourceCommit": "05b99d62a12422e8c504ca4ef4aad9e28c369b81",
+  "previousStagingCommit": "155f85bccb0595d722ef19e1dc413d9c924cb18f",
+  "proofURL": "https://staging.universalmind.tv/informatics/library.html?collection=all&view=search",
+  "websiteDeployment": "Existing Panthur staging curl/FTP transport; 14 changed assets",
+  "worker": {
+    "name": "informatics-universal-one-staging",
+    "versionId": "83045a3b-8313-408f-83bd-d29fec7f7555",
+    "model": "gpt-6-astra",
+    "realResponsesVerified": 2
+  },
+  "records": 1108,
+  "newRelatedLinks": 118,
+  "papersWithNewRelatedLinks": 42,
+  "communityCounts": {
+    "defence": [
+      56,
+      84
+    ],
+    "indigenous": [
+      21,
+      34
+    ],
+    "refugees": [
+      97,
+      133
+    ],
+    "housing": [
+      38,
+      79
+    ],
+    "domestic-violence": [
+      5,
+      62
+    ],
+    "war-trauma": [
+      24,
+      79
+    ]
+  },
+  "age": {
+    "supported": 378,
+    "notSpecified": 730,
+    "youth": 170,
+    "youthFocus": 63,
+    "youthIncluded": 107,
+    "reportedRanges": 27,
+    "classificationStatus": "pending Universal Mind review"
+  },
+  "tests": {
+    "localSourcePreflight": 34,
+    "sourceAssetHashMatches": 9,
+    "browserWidths": [
+      1440,
+      390,
+      320
+    ],
+    "browserErrors": 0,
+    "audioDisabledAtProcessLaunch": true,
+    "filteredJSONExports": true,
+    "completeExportSources": 1177,
+    "completeJSONAndCSVRoundTrip": true,
+    "realOpenAIResponseVisibleInUI": true,
+    "humanCurationUnchanged": true
+  },
+  "exportVersion": "da23bd92bec19d3809a1bbff4f133beb54498e85804a829a1ce286e053aa0e72",
+  "dot": {
+    "missionBrief": "DOT-MISSION.md",
+    "deliveryVerified": false,
+    "continuousRunActivated": false,
+    "recurringScheduleCreated": false,
+    "approvalTriggeredKnowledgeRefresh": "specified for future implementation; not active"
+  },
+  "production": {
+    "modified": false,
+    "remoteMainCommit": "2e34aa822120ea38fbb28541f9dd738044ec1385",
+    "publicationAuthorization": false
+  }
+}
