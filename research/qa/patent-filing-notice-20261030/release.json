@@ -1,0 +1,32 @@
+{
+  "scope": "Official IP Australia filing notice preview and protected full PDF; residential service address removed from website PDF.",
+  "source_commit": "4b1d3cfddf445f4b9efdeed0f68bb7b319141ff5",
+  "staging_url": "https://staging.universalmind.tv/patent/#filing-receipt",
+  "production_modified": false,
+  "deployment_mode": "deploy-panthur-staging.sh patent-receipt",
+  "artifact_verification": {
+    "application": "2026908928",
+    "source_sha256": "60290f4e7bb330d1a88da3329d8450919378db4d2ce775da3fac26a40efe561d",
+    "original_copy_sha256": "60290f4e7bb330d1a88da3329d8450919378db4d2ce775da3fac26a40efe561d",
+    "website_pdf_sha256": "5cce84fd05d3650f7fff566150533072113e34c2894ccceee679c8b70e46082a",
+    "preview_sha256": "075ad13db03a5657a17cde2d0b1646e470d8180efea6a05a1b663e5b8b297fa5",
+    "pages": 3,
+    "preview_width": 1241,
+    "preview_height": 1754,
+    "service_address_redacted": true,
+    "redaction_page": 3,
+    "removed_address_absent_in_two_text_extractors": true,
+    "company_application_title_and_dates_retained": true,
+    "pages_1_and_2_pixels_unchanged": true
+  },
+  "original_receipt_and_filed_specification_preserved": true,
+  "private_pdf_images_credentials_and_screenshots_excluded_from_git": true,
+  "checks": {
+    "shell_syntax": true,
+    "pdf_render_and_text_redaction": true,
+    "desktop_and_mobile": true,
+    "actual_pdf_link": true,
+    "anonymous_and_logout_protection": true,
+    "gpt_changed_or_tested": false
+  }
+}

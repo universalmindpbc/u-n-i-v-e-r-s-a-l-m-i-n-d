@@ -1,0 +1,54 @@
+{
+  "origin": "https://staging.universalmind.tv",
+  "anonymous": {
+    "receipt.php": 401,
+    "receipt.php?format=pdf": 401,
+    ".private/filing-notice.pdf": 403,
+    ".private/filing-notice-page-1.jpg": 403
+  },
+  "assets": [
+    {
+      "route": "receipt.php",
+      "status": 200,
+      "content_type": "image/jpeg",
+      "sha256": "075ad13db03a5657a17cde2d0b1646e470d8180efea6a05a1b663e5b8b297fa5",
+      "private_no_store": true
+    },
+    {
+      "route": "receipt.php?format=pdf",
+      "status": 200,
+      "content_type": "application/pdf",
+      "sha256": "5cce84fd05d3650f7fff566150533072113e34c2894ccceee679c8b70e46082a",
+      "private_no_store": true
+    }
+  ],
+  "viewports": [
+    {
+      "width": 1440,
+      "image_fits": true,
+      "horizontal_overflow": false
+    },
+    {
+      "width": 390,
+      "image_fits": true,
+      "horizontal_overflow": false
+    },
+    {
+      "width": 320,
+      "image_fits": true,
+      "horizontal_overflow": false
+    }
+  ],
+  "errors": [],
+  "invalid_format_statuses": [
+    400,
+    400,
+    406
+  ],
+  "full_pdf_link_clicked": true,
+  "full_pdf_link_status": 200,
+  "logout_denies_receipt": true,
+  "invalid_formats_denied": true,
+  "audio_disabled": true,
+  "passed": true
+}
