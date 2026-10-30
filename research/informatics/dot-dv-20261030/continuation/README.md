@@ -1,6 +1,10 @@
 # Separate evidence continuation
 
-Ben's review remains frozen at `batch-8bd70e21e48d9a70`, source `a66baba1d65b374d134b89865715b2a8302f5e26`, verified release `54343360948f46dfbb66f1bb4ef3179eeb2013e7`. The staging page and all 120 assessment hashes are unchanged. This research branch contains unapplied proposals and additional assessments; it has not been deployed.
+Ben's assessments remain frozen at `batch-8bd70e21e48d9a70`, source `a66baba1d65b374d134b89865715b2a8302f5e26`, verified release `54343360948f46dfbb66f1bb4ef3179eeb2013e7`. All 120 assessment hashes are unchanged. The methods proposals and ten additional assessments below remain unapplied.
+
+**Later update, 30 October 2026:** [the exact approval advisory](approval-followup/ADVISORY.md) supersedes the earlier access/status summaries where specified. It identifies three new holds, five amendments before approval, eight supplementary appraisals and the four existing holds. A separately versioned staging notice accompanies the frozen data. The original preschool paper's own methods are now accessible through coauthor-posted HTML; the 2016 couples paper is now accessible through a VA-hosted primary PDF. Neither resolves its hold. The later advisory also corrects an unapplied extraction error: seven treatment nonrecipients in the original preschool paper, not eight. No frozen record contained that error.
+
+The earlier lane reports and proposals are historical evidence snapshots, not instructions to apply every field unchanged. `verify.py` records the pre-notice continuation check at commit `d98163a`; the notice is validated by `tools/check-dv-advisory.py` and its separate browser checks.
 
 ## Progress and counting
 

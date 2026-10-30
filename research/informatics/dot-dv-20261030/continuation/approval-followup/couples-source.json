@@ -1,0 +1,24 @@
+{
+  "id": "dv-reviews-27599224",
+  "url": "https://www.ptsd.va.gov/professional/articles/article-pdf/id45454.pdf",
+  "discoveryURL": "https://www.ptsd.va.gov/publications/ctu_docs/ctu_v10n5.pdf",
+  "type": "Primary published paper hosted by US Department of Veterans Affairs",
+  "doi": "10.1037/ccp0000129",
+  "accessedAt": "2026-10-30T09:10:17.128008+00:00",
+  "sha256": "72bb4994300e4050970a629b4ea2452038373a197d9a91c952bbf703d680892f",
+  "privateSourceCopy": true,
+  "access": "Full paper available; methods, flow, results and discussion inspected; selected tables/figure visually checked",
+  "visualVerification": [
+    "Figure 1, printed p. 937 (PDF page 3): 194 assessed; 56 excluded; 138 people / 69 couples randomized; 37 versus 32 couples; all included in ITT.",
+    "Table 3, printed p. 942 (PDF page 8): T4 male RR 0.53 [0.25,1.12]; female RR 0.43 [0.20,0.94]."
+  ],
+  "limits": [
+    "The 156-person registry count is not reconciled by the primary flow diagram.",
+    "Assessor masking is explicit; participant masking is not established.",
+    "The study excluded recent male physical violence and additional serious violence/safety concerns; no general high-danger couples safety inference."
+  ],
+  "noRepeatedUnavailableRoute": true,
+  "noSpend": true,
+  "noContact": true,
+  "fullSourceNotPublished": true
+}

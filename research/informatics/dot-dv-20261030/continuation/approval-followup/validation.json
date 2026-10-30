@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "checkedAt": "2026-10-30T09:12:27.049302+00:00",
+  "advisoryRevision": "advisory-20261030-r1",
+  "originalAssessmentsAndHashesUnchanged": 120,
+  "originalFilesByteIdentical": 5,
+  "exactAdvisoryReferences": 20,
+  "newHolds": 3,
+  "amendmentsBeforeApproval": 5,
+  "supplementaryAppraisals": 8,
+  "existingHolds": 4,
+  "pendingReviewPreserved": true,
+  "approvedCorpusUnchanged": true,
+  "sourceCopiesPublished": false
+}

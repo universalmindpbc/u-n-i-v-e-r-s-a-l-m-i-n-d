@@ -1,0 +1,243 @@
+{
+  "schema": "universal-research/pending-review/v1",
+  "batchRevision": "batch-8bd70e21e48d9a70",
+  "status": "pending-human-review",
+  "advisoryRevision": "advisory-20261030-r1",
+  "advisoryURL": "https://staging.universalmind.tv/informatics/review/domestic-violence-20261030/advisory-20261030-r1.html",
+  "approvalRule": "A frozen reviewReady flag is historical. Apply the later advisory before deciding whether to approve that specific revision. No human approval is recorded.",
+  "laterAdvisories": [
+    {
+      "id": "dv-children-25596929",
+      "title": "An Efficacy Trial of an Intervention Program for Children Exposed to Intimate Partner Violence.",
+      "priorRevision": "r1-1bd8415667aa",
+      "priorContentHash": "1bd8415667aaf772fb5aee0612fc1b35f3b40d1b092e0dc54bfe2971e54e7664",
+      "original": {
+        "reviewReady": true,
+        "reviewReadiness": "ready-with-access-limits",
+        "finding": "ITT analyses found reduced internalizing problems for girls at follow-up; per-protocol analyses favored treatment for boys and girls immediately after treatment.",
+        "limitation": "Benefits varied by analysis and sex; completer effects should not replace the more qualified ITT findings. Masking and attrition are not established here.",
+        "adverseFindings": "Adverse events not established from accessed source; absence of reporting is not absence of harm.",
+        "crosses": 1,
+        "access": "abstract"
+      },
+      "action": "hold",
+      "holdCurrentRevision": true,
+      "crossVerificationOnHold": true,
+      "newEvidence": "The original 2015 paper, publicly posted by a coauthor, describes the first five eligible families at each site receiving intervention and the next five comparison. Authors call allocation random but do not describe a stochastic sequence or randomized starting rule. Its own methods are now accessible; the concern no longer rests solely on the later report.",
+      "revisedInterpretation": "Randomization remains unverified pending reconciliation. Temporarily withhold the verified-RCT cross. This is not a definitive nonrandomized verdict. Original findings remain analysis- and sex-dependent.",
+      "requiredBeforeApproval": "A contemporaneous protocol or allocation schedule must establish the random mechanism and reconcile five-family blocks here with six-family blocks in the follow-up. Do not approve the frozen revision meanwhile.",
+      "sourceURLs": [
+        "https://www.researchgate.net/publication/271220066_An_Efficacy_Trial_of_an_Intervention_Program_for_Children_Exposed_to_Intimate_Partner_Violence",
+        "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/B1A750E6EE2865948819845018AF7C9B/S0954579422000104a.pdf/div-class-title-eight-year-trajectories-of-behavior-problems-and-resilience-in-children-exposed-to-early-life-intimate-partner-violence-the-overlapping-and-distinct-effects-of-individual-factors-maternal-characteristics-and-early-intervention-div.pdf"
+      ],
+      "sourceLocation": "Original Method / Study Protocol; later report pp. 853–854",
+      "assessmentChanged": false,
+      "humanApproval": false
+    }
+  ],
+  "count": 1,
+  "records": [
+    {
+      "id": "dv-children-25596929",
+      "title": "An Efficacy Trial of an Intervention Program for Children Exposed to Intimate Partner Violence.",
+      "authors": [
+        "Graham-Bermann SA",
+        "Miller-Graff LE",
+        "Howell KH",
+        "Grogan-Kaylor A"
+      ],
+      "year": 2015,
+      "journal": "Child psychiatry and human development",
+      "doi": "10.1007/s10578-015-0532-4",
+      "pmid": "25596929",
+      "trialRegistration": [],
+      "collection": "language",
+      "interventionFamily": "Preschool Kids’ Club and mother intervention",
+      "publicationType": "Randomized controlled trial",
+      "studyFamilyId": "preschool-kids-club-2015-n120",
+      "familyLinkageUncertain": false,
+      "linkedPublicationPMIDs": [],
+      "existingRepositoryMatches": [],
+      "relevance": {
+        "relation": "direct",
+        "population": "120 mothers and preschool children exposed to IPV.",
+        "exposureEvidence": "The program specifically enrolled IPV-exposed children and mothers.",
+        "rationale": "Direct study of a therapeutic intervention, its follow-up, or service engagement in children/families affected by domestic or interparental violence.",
+        "transferLimit": "Population and setting are specific; no inference of effectiveness for all survivors, ages or violence contexts."
+      },
+      "age": {
+        "groups": [
+          "children"
+        ],
+        "reportedRange": "4–6 years",
+        "youthScope": "focus"
+      },
+      "country": "United States and Canada",
+      "setting": "Not established from accessed source.",
+      "sampleSize": {
+        "randomized": 120,
+        "analyzed": null,
+        "description": "Reported cohort/enrollment: 120. Analysis denominator not established from abstract."
+      },
+      "intervention": {
+        "description": "Preschool Kids’ Club and mother intervention",
+        "dose": "Five-week intervention; baseline, five-week and eight-month assessments.",
+        "provider": "Not established from accessed source."
+      },
+      "comparator": "Waitlist.",
+      "outcomes": [
+        {
+          "name": "Child internalizing problems",
+          "followUp": "Five weeks and eight months",
+          "result": "ITT benefit for girls at follow-up; per-protocol benefit for both sexes post-treatment.",
+          "effectEstimate": null,
+          "uncertainty": "Sex- and analysis-dependent findings.",
+          "primaryStatus": "Not established from accessed source."
+        }
+      ],
+      "finding": "ITT analyses found reduced internalizing problems for girls at follow-up; per-protocol analyses favored treatment for boys and girls immediately after treatment.",
+      "limitation": "Benefits varied by analysis and sex; completer effects should not replace the more qualified ITT findings. Masking and attrition are not established here.",
+      "design": {
+        "type": "Randomized controlled trial",
+        "randomizationEvidence": "Abstract explicitly reports random assignment of children to program or waitlist.",
+        "masking": {
+          "participants": "Not established from accessed source.",
+          "providers": "Not established from accessed source.",
+          "assessors": "Not established from accessed source.",
+          "analysts": "Not established from accessed source."
+        },
+        "crosses": 1,
+        "crossRationale": "Randomized allocation is explicitly supported; double blinding is not established."
+      },
+      "quality": {
+        "riskOfBias": "Important concerns: Benefits varied by analysis and sex; completer effects should not replace the more qualified ITT findings. Masking and attrition are not established here.",
+        "attrition": "Not established from accessed source.",
+        "confounding": "Allocation, adherence, co-interventions and reporting limitations require consideration; see design and limitations.",
+        "adverseFindings": "Adverse events not established from accessed source; absence of reporting is not absence of harm.",
+        "transferLimits": "Do not extrapolate beyond the described population and intervention.",
+        "jadad": "not established"
+      },
+      "access": {
+        "level": "abstract",
+        "sourceURLs": [
+          "https://pubmed.ncbi.nlm.nih.gov/25596929/",
+          "https://europepmc.org/article/MED/25596929"
+        ],
+        "retrievedAt": "2026-10-30T07:25:30.543090+00:00"
+      },
+      "sources": [
+        {
+          "url": "https://pubmed.ncbi.nlm.nih.gov/25596929/",
+          "type": "PubMed XML bibliographic/abstract record",
+          "retrievedAt": "2026-10-30T07:25:30.543090+00:00",
+          "identityVerified": true,
+          "notes": "Title and PMID matched between Europe PMC core metadata and PubMed XML; DOI, authors and journal metadata retained."
+        },
+        {
+          "url": "https://europepmc.org/article/MED/25596929",
+          "type": "Europe PMC core bibliographic/abstract record",
+          "retrievedAt": "2026-10-30T07:25:30.543090+00:00",
+          "identityVerified": true,
+          "notes": "Title and PMID matched between Europe PMC core metadata and PubMed XML; DOI, authors and journal metadata retained."
+        }
+      ],
+      "publicationStatus": {
+        "status": "Published journal report; no retraction/erratum relationship flagged in retrieved PubMed record.",
+        "correctionRetractionCheck": {
+          "method": "Inspected PubMed publication types and CommentsCorrections relationships plus Europe PMC metadata.",
+          "relationships": [],
+          "checkedAt": "2026-10-30T07:25:30.543090+00:00"
+        },
+        "uncertainty": "Index metadata can lag; publisher Crossmark and trial-register reconciliation are not comprehensively verified."
+      },
+      "recommendationRationale": "Adds controlled child/family treatment evidence; consider as a new candidate after human review.",
+      "review": {
+        "status": "pending",
+        "reviewer": null
+      },
+      "assessmentStatus": "assessed",
+      "assessmentNotes": "Source-supported assessment with visible access limits; not a completed human approval or formal risk-of-bias instrument. This report does not represent an additional independent study when its family ID is shared.",
+      "researchLane": "children",
+      "reviewReady": true,
+      "reviewReadiness": "ready-with-access-limits",
+      "studyDesignAssessment": {
+        "category": "rct",
+        "isRandomizedControlledTrial": true,
+        "basis": "Abstract explicitly reports random assignment of children to program or waitlist.",
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/25596929/",
+          "https://europepmc.org/article/MED/25596929"
+        ],
+        "reviewScope": "abstract"
+      },
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 2,
+        "randomizedControlledTrial": true,
+        "peerReviewed": true,
+        "blinding": "not-confirmed",
+        "basis": "Randomized allocation is explicitly supported; double blinding is not established.",
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/25596929/",
+          "https://europepmc.org/article/MED/25596929"
+        ],
+        "reviewScope": "abstract",
+        "humanApproval": false,
+        "displayCrosses": 1,
+        "maskingRoles": {
+          "participants": "Not established from accessed source.",
+          "providers": "Not established from accessed source.",
+          "assessors": "Not established from accessed source.",
+          "analysts": "Not established from accessed source."
+        }
+      },
+      "jadad": {
+        "status": "unassessed",
+        "score": null
+      },
+      "evidence": {
+        "population": {
+          "relation": "direct",
+          "population": "120 mothers and preschool children exposed to IPV.",
+          "exposureEvidence": "The program specifically enrolled IPV-exposed children and mothers.",
+          "rationale": "Direct study of a therapeutic intervention, its follow-up, or service engagement in children/families affected by domestic or interparental violence.",
+          "transferLimit": "Population and setting are specific; no inference of effectiveness for all survivors, ages or violence contexts."
+        },
+        "intervention": {
+          "description": "Preschool Kids’ Club and mother intervention",
+          "dose": "Five-week intervention; baseline, five-week and eight-month assessments.",
+          "provider": "Not established from accessed source."
+        },
+        "comparator": "Waitlist.",
+        "outcomes": [
+          {
+            "name": "Child internalizing problems",
+            "followUp": "Five weeks and eight months",
+            "result": "ITT benefit for girls at follow-up; per-protocol benefit for both sexes post-treatment.",
+            "effectEstimate": null,
+            "uncertainty": "Sex- and analysis-dependent findings.",
+            "primaryStatus": "Not established from accessed source."
+          }
+        ],
+        "access": {
+          "level": "abstract",
+          "sourceURLs": [
+            "https://pubmed.ncbi.nlm.nih.gov/25596929/",
+            "https://europepmc.org/article/MED/25596929"
+          ],
+          "retrievedAt": "2026-10-30T07:25:30.543090+00:00"
+        }
+      },
+      "citationSnapshot": {
+        "count": null,
+        "source": null,
+        "retrievedAt": null,
+        "status": "not-assessed"
+      },
+      "provenance": "Discovered by AI",
+      "contentHash": "1bd8415667aaf772fb5aee0612fc1b35f3b40d1b092e0dc54bfe2971e54e7664",
+      "revision": "r1-1bd8415667aa"
+    }
+  ]
+}

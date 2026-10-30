@@ -1,0 +1,73 @@
+{
+  "id": "dv-children-25596929",
+  "pmid": "25596929",
+  "doi": "10.1007/s10578-015-0532-4",
+  "priorBatchRevision": "batch-8bd70e21e48d9a70",
+  "priorContentHash": "1bd8415667aaf772fb5aee0612fc1b35f3b40d1b092e0dc54bfe2971e54e7664",
+  "priorRevision": "r1-1bd8415667aa",
+  "createdAt": "2026-10-30T08:56:36.409935+00:00",
+  "status": "proposed-not-applied",
+  "scope": "Original2015 allocation-method reconciliation only",
+  "originalMethodsReached": true,
+  "provisionalHoldResolved": false,
+  "resolution": "Information-access dependency improved; hold remains because the original allocation description does not establish stochastic randomization.",
+  "source": {
+    "url": "https://www.researchgate.net/publication/271220066_An_Efficacy_Trial_of_an_Intervention_Program_for_Children_Exposed_to_Intimate_Partner_Violence",
+    "type": "Primary original article text posted by coauthor Andrew Grogan-Kaylor",
+    "authorUploadDate": "2015-02-02",
+    "access": "Selected original methods via publicly readable HTML transcription; direct PDF download404",
+    "retrievedAt": "2026-10-30T08:56:36.409935+00:00",
+    "identityChecks": [
+      "Title, four authors and DOI match frozen record.",
+      "Institutional author page independently lists the same2015 paper and DOI.",
+      "120-family preschoolPKC/MEP cohort, locations and assessment schedule match target paper."
+    ],
+    "location": "Method > Study Protocol; HTML extraction lines721–756; Discussion limitations lines1680–1693",
+    "excerpt": "the first five families who qualified for the study, within a given setting, were assigned to the experimental condition by the project coordinator",
+    "excerptWords": 23
+  },
+  "interpretation": "Original2015 Study Protocol describes the first five eligible families at each setting assigned intervention, then the next five comparison, with the same schedule across agencies. Authors nevertheless call the assignment random. No stochastic sequence or starting-order mechanism is described in the accessed protocol. Keep the provisional randomization-unverified hold; do not assert that an unreported random mechanism was impossible.",
+  "newVersusPriorEvidence": "Original2015 own methods now directly inspected; concern no longer relies solely on related2023 follow-up. Original2015 specifies five-family groups whereas follow-up specifies six. This discrepancy remains unreconciled.",
+  "recommendationLanguage": "PMID25596929 remains on a provisional hold pending allocation-method reconciliation. Its own report describes sequential five-family groups without documenting a stochastic mechanism. This is not a definitive nonrandomized verdict.",
+  "proposedExactDeltas": [
+    {
+      "field": "design.randomizationEvidence",
+      "before": "Abstract explicitly reports random assignment of children to program or waitlist.",
+      "proposedAfter": "Original2015 Study Protocol describes the first five eligible families at each setting assigned intervention, then the next five comparison, with the same schedule across agencies. Authors nevertheless call the assignment random. No stochastic sequence or starting-order mechanism is described in the accessed protocol. Keep the provisional randomization-unverified hold; do not assert that an unreported random mechanism was impossible."
+    },
+    {
+      "field": "access.level",
+      "before": "abstract",
+      "proposedAfter": "selected-methods"
+    },
+    {
+      "field": "access.sourceURLs",
+      "before": [
+        "https://pubmed.ncbi.nlm.nih.gov/25596929/",
+        "https://europepmc.org/article/MED/25596929"
+      ],
+      "proposedAfter": [
+        "https://pubmed.ncbi.nlm.nih.gov/25596929/",
+        "https://europepmc.org/article/MED/25596929",
+        "https://www.researchgate.net/publication/271220066_An_Efficacy_Trial_of_an_Intervention_Program_for_Children_Exposed_to_Intimate_Partner_Violence"
+      ]
+    }
+  ],
+  "crossProposal": "Retain prior proposed provisional no-cross hold; no live or frozen cross changed. Do not award two crosses based on generic participant/interviewer masking wording.",
+  "exactInformationDependency": [
+    "Contemporaneous allocation schedule or protocol showing whether any stochastic sequence or randomized starting rule operated in each recruitment site.",
+    "Reconciliation of five-family blocks in original2015 and six-family blocks in later follow-up."
+  ],
+  "incidentalPriorProposalCorrection": {
+    "target": "methods-children/proposed-deltas.json for25596929 quality.attrition",
+    "status": "not edited; report separately for any future application",
+    "correction": "Direct original Figure1 and narrative say51 received intervention and7 did not. Earlier thumbnail-based proposed8 nonrecipients was a reading error. Original2015 narrative also says8 comparator unreachable whereas Figure1 says9; preserve that discrepancy rather than silently choosing."
+  },
+  "preservation": {
+    "stagingChanged": false,
+    "repositoryChanged": false,
+    "earlierContinuationChanged": false,
+    "frozenBatchSHA256": "afd810cdaefa6be0eeed16490fbc9b0f3a580837ea5f8994f64aa5ca9373f3c8"
+  },
+  "extraSpendAUD": 0
+}

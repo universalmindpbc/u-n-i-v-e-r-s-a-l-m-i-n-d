@@ -1,0 +1,36 @@
+[
+  {
+    "action": "Read prior source-access log",
+    "target": "research-work/continuation/methods-children/source-access-log.json",
+    "outcome": "Known blocked/subscription routes identified; none retried unchanged.",
+    "at": "2026-10-30T08:56:36.409935+00:00"
+  },
+  {
+    "action": "Search new author/institutional primary routes",
+    "queries": [
+      "\"An Efficacy Trial\" \"Intimate Partner Violence\" site:umich.edu",
+      "\"s10578-015-0532-4\" manuscript OR pdf OR repository",
+      "Graham Bermann Preschool Kids Club research publications 2015"
+    ],
+    "outcome": "Found previously untried coauthor-uploaded original article text.",
+    "at": "2026-10-30T08:56:36.409935+00:00"
+  },
+  {
+    "action": "Open institutional author profile",
+    "target": "https://lsa.umich.edu/psych/people/emeriti-faculty/sandragb.html",
+    "outcome": "Success; same four-author2015 paper and DOI listed; no allocation evidence supplied.",
+    "at": "2026-10-30T08:56:36.409935+00:00"
+  },
+  {
+    "action": "Open/read author-uploaded original paper and locate Study Protocol",
+    "target": "https://www.researchgate.net/publication/271220066_An_Efficacy_Trial_of_an_Intervention_Program_for_Children_Exposed_to_Intimate_Partner_Violence",
+    "outcome": "Success; full article transcription publicly readable, including explicit first-five/next-five allocation.",
+    "at": "2026-10-30T08:56:36.409935+00:00"
+  },
+  {
+    "action": "Follow offered PDF download link once",
+    "target": "https://www.researchgate.net/publication/profile/Andrew-Grogan-Kaylor/publication/271220066_An_Efficacy_Trial_of_an_Intervention_Program_for_Children_Exposed_to_Intimate_Partner_Violence/links/54cfb5480cf29ca81100291b/An-Efficacy-Trial-of-an-Intervention-Program-for-Children-Exposed-to-Intimate-Partner-Violence.pdf",
+    "outcome": "HTTP404; not retried. HTML primary article text already provided the allocation evidence.",
+    "at": "2026-10-30T08:56:36.409935+00:00"
+  }
+]
