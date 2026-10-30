@@ -1,0 +1,1109 @@
+record_id,age_groups,reported_ages,youth_scope,basis,source,review_status
+pmid-42519422,not-specified,,,,,pending
+pmid-41308935,not-specified,,,,,pending
+pmid-42615937,adults,,,MeSH: Adult,https://pubmed.ncbi.nlm.nih.gov/42615937/,pending
+pmid-41367385,not-specified,,,,,pending
+pmid-40281224,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/40281224/,pending
+pmid-40749778,not-specified,,,,,pending
+pmid-41064114,not-specified,,,,,pending
+pmid-41020112,adults,,,Curated sample: adults,https://pubmed.ncbi.nlm.nih.gov/41020112/,pending
+pmid-38776115,not-specified,,,,,pending
+pmid-38362742,not-specified,,,,,pending
+pmid-39060246,children;adolescents;youth,8–18 years,focus,MeSH: Adolescent; MeSH: Child; Title: youth; Explicit sample age range in abstract or existing curated summary,https://pubmed.ncbi.nlm.nih.gov/39060246/,pending
+pmid-39680432,not-specified,,,,,pending
+pmid-39295112,children;adults,,,"MeSH: Adult; MeSH: Child, Preschool; MeSH: Infant; MeSH: Infant, Newborn; Title: children",https://pubmed.ncbi.nlm.nih.gov/39295112/,pending
+pmid-37982547,adults;older-adults,65–85 years,,"MeSH: Aged; MeSH: Aged, 80 and over; Title: adults; Curated sample: adults; Title: older-adults; Explicit sample age range in abstract or existing curated summary",https://pubmed.ncbi.nlm.nih.gov/37982547/,pending
+pmid-39098435,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/39098435/,pending
+pmid-38671329,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/38671329/,pending
+pmid-37764116,not-specified,,,,,pending
+pmid-36658116,not-specified,,,,,pending
+pmid-38222454,not-specified,,,,,pending
+pmid-38040763,not-specified,,,,,pending
+pmid-36819725,not-specified,,,,,pending
+pmid-37560036,not-specified,,,,,pending
+pmid-36127701,not-specified,,,,,pending
+pmid-35544697,not-specified,,,,,pending
+pmid-36278141,adults,,,Title: adults; Curated sample: adults,https://pubmed.ncbi.nlm.nih.gov/36278141/,pending
+pmid-36164752,not-specified,,,,,pending
+pmid-36267832,not-specified,,,,,pending
+pmid-36171872,not-specified,,,,,pending
+pmid-35427760,adults,,,MeSH: Adult; Title: adults,https://pubmed.ncbi.nlm.nih.gov/35427760/,pending
+pmid-30737392,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/30737392/,pending
+pmid-25593022,not-specified,,,,,pending
+pmid-32795360,youth;adults,,included,MeSH: Adult; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/32795360/,pending
+pmid-31521905,adults;older-adults,40–65 years,,MeSH: Adult; MeSH: Aged; MeSH: Middle Aged; Explicit sample age range in abstract or existing curated summary,https://pubmed.ncbi.nlm.nih.gov/31521905/,pending
+pmid-30414050,not-specified,,,,,pending
+pmid-30605805,adolescents;youth;adults,,included,MeSH: Adolescent; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/30605805/,pending
+doi-0bf0e1873d286226,not-specified,,,,,pending
+pmid-30135663,not-specified,,,,,pending
+pmid-28891335,not-specified,,,,,pending
+pmid-28889075,adults,,,MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/28889075/,pending
+pmid-28795405,adults;older-adults,,,MeSH: Aged,https://pubmed.ncbi.nlm.nih.gov/28795405/,pending
+pmid-28890000,children;adults,,,MeSH: Adult; MeSH: Middle Aged; MeSH: Infant; Title: children,https://pubmed.ncbi.nlm.nih.gov/28890000/,pending
+pmid-28890349,not-specified,,,,,pending
+pmid-28912494,children;adolescents;youth;adults,,included,"MeSH: Adolescent; MeSH: Child; MeSH: Child, Preschool; MeSH: Young Adult",https://pubmed.ncbi.nlm.nih.gov/28912494/,pending
+pmid-29306937,not-specified,,,,,pending
+pmid-28526450,adults,,,MeSH: Adult,https://pubmed.ncbi.nlm.nih.gov/28526450/,pending
+pmid-28670311,not-specified,,,,,pending
+pmid-27317929,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/27317929/,pending
+pmid-28721265,not-specified,,,,,pending
+pmid-26903384,youth;adults,,included,MeSH: Adult; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/26903384/,pending
+pmid-26738630,adolescents;youth;adults;older-adults,,included,MeSH: Adolescent; MeSH: Adult; MeSH: Aged; MeSH: Middle Aged; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/26738630/,pending
+pmid-26178189,adolescents;youth;adults,,included,MeSH: Adolescent; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/26178189/,pending
+pmid-26121678,not-specified,,,,,pending
+pmid-25537522,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/25537522/,pending
+pmid-25964984,adults,,,MeSH: Adult,https://pubmed.ncbi.nlm.nih.gov/25964984/,pending
+pmid-25935637,adolescents;youth;adults,,included,MeSH: Adolescent; MeSH: Adult; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/25935637/,pending
+pmid-25386727,not-specified,,,,,pending
+pmid-25001970,youth;adults,,included,MeSH: Adult; MeSH: Middle Aged; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/25001970/,pending
+pmid-24485481,adults,,,MeSH: Adult,https://pubmed.ncbi.nlm.nih.gov/24485481/,pending
+pmid-25749595,adults;older-adults,,,"MeSH: Adult; MeSH: Aged; MeSH: Aged, 80 and over; MeSH: Middle Aged",https://pubmed.ncbi.nlm.nih.gov/25749595/,pending
+pmid-24703167,adults,,,MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/24703167/,pending
+pmid-23613970,adolescents;youth;adults,,included,MeSH: Adolescent; MeSH: Adult; MeSH: Middle Aged; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/23613970/,pending
+pmid-23435350,adults;older-adults,,,"MeSH: Adult; MeSH: Aged; MeSH: Aged, 80 and over; MeSH: Middle Aged",https://pubmed.ncbi.nlm.nih.gov/23435350/,pending
+pmid-23380323,not-specified,,,,,pending
+pmid-22719790,not-specified,,,,,pending
+pmid-22742996,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/22742996/,pending
+pmid-22820409,adults;older-adults,,,"MeSH: Aged; MeSH: Aged, 80 and over; MeSH: Middle Aged; Title: adults; Curated sample: adults; Title: older-adults; Curated sample: older-adults",https://pubmed.ncbi.nlm.nih.gov/22820409/,pending
+pmid-22123970,youth;adults,,included,MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/22123970/,pending
+pmid-21896752,adolescents;youth;adults,,included,MeSH: Adolescent; MeSH: Adult; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/21896752/,pending
+pmid-22303405,not-specified,,,,,pending
+pmid-20640802,not-specified,,,,,pending
+pmid-18833581,adults,,,MeSH: Adult,https://pubmed.ncbi.nlm.nih.gov/18833581/,pending
+pmid-17994268,not-specified,,,,,pending
+pmid-17261984,adults,,,MeSH: Adult,https://pubmed.ncbi.nlm.nih.gov/17261984/,pending
+pmid-17854483,adults;older-adults,,,MeSH: Aged; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/17854483/,pending
+pmid-15750361,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/15750361/,pending
+pmid-15668624,adolescents;youth;adults;older-adults,,included,MeSH: Adolescent; MeSH: Adult; MeSH: Aged; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/15668624/,pending
+pmid-12853721,not-specified,,,,,pending
+pmid-12629875,not-specified,,,,,pending
+src-5aaad2520e3b,not-specified,,,,,pending
+src-29826cfefdd8,not-specified,,,,,pending
+src-9f4f86bba592,not-specified,,,,,pending
+src-c4163b9ea6af,not-specified,,,,,pending
+src-d5dc29829a02,youth;adults,,included,MeSH: Adult; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/26506050/,pending
+src-f509442c9ca1,children;adults,,,MeSH: Adult; MeSH: Child; MeSH: Infant; Title: children,https://pubmed.ncbi.nlm.nih.gov/31118457/,pending
+src-073eaac7c1c6,not-specified,,,,,pending
+src-944ec8023c08,not-specified,,,,,pending
+src-ba204cd2f0e1,not-specified,,,,,pending
+src-32ff0961cd36,not-specified,,,,,pending
+src-473becc5048a,not-specified,,,,,pending
+src-d3de68b52048,not-specified,,,,,pending
+src-d8da0823ac49,not-specified,,,,,pending
+src-e9b23a765f28,adults,,,MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/22795617/,pending
+pmid-41974356,children;adults,,,MeSH: Adult; MeSH: Infant; Title: children,https://pubmed.ncbi.nlm.nih.gov/41974356/,pending
+pmid-42881739,adults,,,Title: adults,https://pubmed.ncbi.nlm.nih.gov/42881739/,pending
+pmid-42339887,not-specified,,,,,pending
+pmid-39103336,not-specified,,,,,pending
+pmid-38418876,not-specified,,,,,pending
+pmid-36085433,not-specified,,,,,pending
+pmid-36588113,not-specified,,,,,pending
+pmid-37531065,not-specified,,,,,pending
+pmid-37074407,not-specified,,,,,pending
+pmid-36618821,not-specified,,,,,pending
+portal-66ebe89ad390,not-specified,,,,,pending
+portal-e25cb1d2bb79,not-specified,,,,,pending
+pmid-40547443,not-specified,,,,,pending
+portal-7c6d9225444d,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/40424141/,pending
+pmid-39004412,youth;adults,,included,MeSH: Adult; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/39004412/,pending
+pmid-40655918,not-specified,,,,,pending
+pmid-36427257,not-specified,,,,,pending
+pmid-38327501,not-specified,,,,,pending
+portal-937934d6d2dd,not-specified,,,,,pending
+portal-1542d1de36c9,not-specified,,,,,pending
+pmid-35329068,not-specified,,,,,pending
+doi-67fa7275f4f4ba77,not-specified,,,,,pending
+pmid-36248508,not-specified,,,,,pending
+doi-2a203fb071ddfe54,not-specified,,,,,pending
+pmid-34763697,children;adolescents;youth;adults,,included,MeSH: Adolescent; MeSH: Adult; MeSH: Child,https://pubmed.ncbi.nlm.nih.gov/34763697/,pending
+pmid-33111597,not-specified,,,,,pending
+doi-b4b0af603557eafe,not-specified,,,,,pending
+doi-37bd65a31f48ce93,not-specified,,,,,pending
+pmid-34025912,not-specified,,,,,pending
+pmid-34050123,not-specified,,,,,pending
+pmid-31587084,youth;adults,,included,MeSH: Adult; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/31587084/,pending
+pmid-32655132,not-specified,,,,,pending
+pmid-31794974,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/31794974/,pending
+pmid-33071746,not-specified,,,,,pending
+pmid-29769367,not-specified,,,,,pending
+pmid-30858710,youth,,focus,Title: youth,https://pubmed.ncbi.nlm.nih.gov/30858710/,pending
+pmid-30889982,not-specified,,,,,pending
+pmid-30073406,not-specified,,,,,pending
+pmid-30049225,not-specified,,,,,pending
+pmid-30914965,not-specified,,,,,pending
+pmid-31507444,not-specified,,,,,pending
+pmid-30858808,not-specified,,,,,pending
+pmid-30804863,not-specified,,,,,pending
+pmid-31518601,not-specified,,,,,pending
+pmid-30949846,not-specified,,,,,pending
+pmid-28281353,adults;older-adults,Eligibility: 18–80 years,,MeSH: Adult; MeSH: Aged; MeSH: Middle Aged; Explicit eligibility age range in abstract or existing curated summary,https://pubmed.ncbi.nlm.nih.gov/28281353/,pending
+pmid-29946275,not-specified,,,,,pending
+doi-98d676644dd46a51,not-specified,,,,,pending
+pmid-29170944,youth;adults,19–45 years,included,MeSH: Adult; MeSH: Middle Aged; MeSH: Young Adult; Explicit sample age range in abstract or existing curated summary,https://pubmed.ncbi.nlm.nih.gov/29170944/,pending
+pmid-30197612,not-specified,,,,,pending
+pmid-29110615,adults;older-adults,,,MeSH: Aged,https://pubmed.ncbi.nlm.nih.gov/29110615/,pending
+pmid-30186192,not-specified,,,,,pending
+pmid-30166975,not-specified,,,,,pending
+pmid-29683360,not-specified,,,,,pending
+pmid-29899015,adults;older-adults,,,MeSH: Aged; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/29899015/,pending
+pmid-30053086,not-specified,,,,,pending
+pmid-30618659,not-specified,,,,,pending
+doi-66e3650652d792e2,not-specified,,,,,pending
+pmid-30108475,not-specified,,,,,pending
+doi-16fea1e714a7ade6,not-specified,,,,,pending
+pmid-29297265,adults,,,MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/29297265/,pending
+pmid-30003481,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/30003481/,pending
+pmid-30552076,not-specified,,,,,pending
+doi-94ef326e2e9a602d,not-specified,,,,,pending
+portal-b171bb6d1a29,not-specified,,,,,pending
+pmid-30545815,not-specified,,,,,pending
+pmid-28798255,adolescents;youth;adults,,included,MeSH: Adolescent; MeSH: Adult; MeSH: Middle Aged; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/28798255/,pending
+pmid-28669546,not-specified,,,,,pending
+pmid-28660669,children;adolescents;youth,8–18 years,focus,MeSH: Adolescent; MeSH: Child; Title: children; Explicit sample age range in abstract or existing curated summary,https://pubmed.ncbi.nlm.nih.gov/28660669/,pending
+pmid-28588005,adolescents;youth;adults,18–28 years,focus,Title: youth; Title: adults; Explicit sample age range in abstract or existing curated summary,https://pubmed.ncbi.nlm.nih.gov/28588005/,pending
+pmid-27647521,youth;adults,,included,MeSH: Adult; MeSH: Middle Aged; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/27647521/,pending
+doi-3033fb68b3cc2d76,not-specified,,,,,pending
+doi-befa7b53c55cb589,not-specified,,,,,pending
+doi-648f6da34833f786,not-specified,,,,,pending
+pmid-28481610,adolescents;youth;adults,,focus,MeSH: Adolescent; MeSH: Young Adult; Title: youth,https://pubmed.ncbi.nlm.nih.gov/28481610/,pending
+pmid-28669654,adults;older-adults,,,"MeSH: Aged; MeSH: Aged, 80 and over",https://pubmed.ncbi.nlm.nih.gov/28669654/,pending
+pmid-28359771,not-specified,,,,,pending
+pmid-28386342,not-specified,,,,,pending
+pmid-29497485,not-specified,,,,,pending
+pmid-29211795,youth;adults,,included,MeSH: Adult; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/29211795/,pending
+pmid-28087128,adolescents;youth;adults;older-adults,,included,MeSH: Adolescent; MeSH: Adult; MeSH: Aged; MeSH: Middle Aged; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/28087128/,pending
+pmid-29228794,adolescents;youth;adults,,focus,MeSH: Adolescent; MeSH: Adult; MeSH: Young Adult; Title: youth,https://pubmed.ncbi.nlm.nih.gov/29228794/,pending
+pmid-26612201,youth;adults,,included,MeSH: Adult; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/26612201/,pending
+pmid-29075623,not-specified,,,,,pending
+pmid-31097900,adults,,,Title: adults,https://pubmed.ncbi.nlm.nih.gov/31097900/,pending
+pmid-28728017,not-specified,,,,,pending
+pmid-29055680,youth;adults,,included,MeSH: Adult; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/29055680/,pending
+doi-2cc6078ca91d89ea,youth,,focus,Title: youth,https://doi.org/10.1080/10911359.2017.1282912,pending
+pmid-28703754,adults;older-adults,,,MeSH: Adult; MeSH: Aged; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/28703754/,pending
+pmid-28103407,adolescents;youth;adults;older-adults,,included,MeSH: Adolescent; MeSH: Adult; MeSH: Aged; MeSH: Middle Aged; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/28103407/,pending
+pmid-28544507,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/28544507/,pending
+pmid-28222713,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/28222713/,pending
+pmid-27707822,not-specified,,,,,pending
+pmid-28694775,not-specified,,,,,pending
+pmid-27021514,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/27021514/,pending
+doi-2f565d066e4e774b,not-specified,,,,,pending
+pmid-26541421,adults,,,MeSH: Adult,https://pubmed.ncbi.nlm.nih.gov/26541421/,pending
+pmid-27543885,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/27543885/,pending
+doi-4177d8a1b6597791,not-specified,,,,,pending
+doi-61628ddd002899ff,adolescents;youth,,focus,Title: adolescents; Title: youth,https://doi.org/10.1016/j.aip.2015.09.006,pending
+doi-1e1e2bd1138b8cfd,not-specified,,,,,pending
+pmid-26799456,not-specified,,,,,pending
+pmid-25582800,children;adolescents;youth,,focus,MeSH: Adolescent; MeSH: Child; Title: youth,https://pubmed.ncbi.nlm.nih.gov/25582800/,pending
+doi-bfab13a657ed2d81,children,,,Title: children,https://doi.org/10.15845/voices.v16i3.887,pending
+pmid-26963955,youth;adults,,included,MeSH: Adult; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/26963955/,pending
+pmid-27790154,not-specified,,,,,pending
+pmid-27603755,not-specified,,,,,pending
+pmid-27425032,not-specified,,,,,pending
+pmid-26785376,youth;adults,,included,MeSH: Adult; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/26785376/,pending
+pmid-27225519,adolescents;youth,,focus,MeSH: Adolescent; Title: youth,https://pubmed.ncbi.nlm.nih.gov/27225519/,pending
+pmid-27353367,adults,,,MeSH: Adult,https://pubmed.ncbi.nlm.nih.gov/27353367/,pending
+pmid-26744309,not-specified,,,,,pending
+pmid-26074123,not-specified,,,,,pending
+pmid-27417882,youth,,focus,Title: youth,https://pubmed.ncbi.nlm.nih.gov/27417882/,pending
+pmid-27512317,not-specified,,,,,pending
+pmid-26647109,adolescents;youth;adults,18–30 years,focus,MeSH: Adolescent; MeSH: Adult; MeSH: Young Adult; Title: youth; Title: adults; Explicit sample age range in abstract or existing curated summary,https://pubmed.ncbi.nlm.nih.gov/26647109/,pending
+pmid-27217844,not-specified,,,,,pending
+pmid-24828126,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/24828126/,pending
+pmid-26256140,adolescents;youth;adults,,focus,MeSH: Adolescent; MeSH: Adult; MeSH: Young Adult; Title: youth,https://pubmed.ncbi.nlm.nih.gov/26256140/,pending
+pmid-25653222,not-specified,,,,,pending
+doi-1e4b5bdcc2212351,youth,,focus,Title: youth,https://doi.org/10.1007/s12671-015-0431-6,pending
+pmid-25989952,not-specified,,,,,pending
+pmid-25635925,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/25635925/,pending
+doi-335fd4c429caa4ae,not-specified,,,,,pending
+pmid-25694852,not-specified,,,,,pending
+doi-bbac53b23500d8b1,not-specified,,,,,pending
+pmid-25978109,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/25978109/,pending
+pmid-25862338,youth;adults,,focus,MeSH: Adult; MeSH: Young Adult; Title: youth,https://pubmed.ncbi.nlm.nih.gov/25862338/,pending
+pmid-25345689,adults,,,MeSH: Adult,https://pubmed.ncbi.nlm.nih.gov/25345689/,pending
+pmid-25367403,adults,,,MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/25367403/,pending
+pmid-25818837,not-specified,,,,,pending
+doi-b1734615d2614781,not-specified,,,,,pending
+pmid-26181573,youth;adults,,focus,MeSH: Adult; MeSH: Young Adult; Explicit young population in title,https://pubmed.ncbi.nlm.nih.gov/26181573/,pending
+pmid-26170587,not-specified,,,,,pending
+pmid-25234347,adolescents;youth;adults,15–19 years,focus,MeSH: Adolescent; MeSH: Adult; MeSH: Young Adult; Title: youth; Explicit sample age range in abstract or existing curated summary,https://pubmed.ncbi.nlm.nih.gov/25234347/,pending
+pmid-26679295,not-specified,,,,,pending
+doi-b2b4a7cf6604ec4e,youth,,focus,Title: youth,https://doi.org/10.1016/j.aip.2015.05.007,pending
+pmid-26441614,not-specified,,,,,pending
+pmid-24888477,youth;adults,,included,MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/24888477/,pending
+pmid-24965797,children;adolescents;youth,,included,MeSH: Adolescent; MeSH: Child; Title: children,https://pubmed.ncbi.nlm.nih.gov/24965797/,pending
+pmid-26347062,not-specified,,,,,pending
+pmid-25881089,not-specified,,,,,pending
+pmid-26491332,not-specified,,,,,pending
+pmid-26059998,not-specified,,,,,pending
+pmid-25324790,not-specified,,,,,pending
+pmid-24799299,adults,,,MeSH: Adult,https://pubmed.ncbi.nlm.nih.gov/24799299/,pending
+pmid-25071612,not-specified,,,,,pending
+pmid-25452734,not-specified,,,,,pending
+pmid-24883104,not-specified,,,,,pending
+doi-4e5b48cad9b6436d,not-specified,,,,,pending
+pmid-24626068,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/24626068/,pending
+pmid-24876768,not-specified,,,,,pending
+pmid-24372522,adults;older-adults,60–90 years,,"MeSH: Aged; MeSH: Aged, 80 and over; MeSH: Middle Aged; Title: adults; Title: older-adults; Explicit sample age range in abstract or existing curated summary",https://pubmed.ncbi.nlm.nih.gov/24372522/,pending
+doi-1ee8c9dc33b350fa,not-specified,,,,,pending
+pmid-24107199,not-specified,,,,,pending
+pmid-25101684,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/25101684/,pending
+pmid-24609454,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/24609454/,pending
+doi-0e7b54c332697f06,not-specified,,,,,pending
+doi-b02eca96b6ce2f96,not-specified,,,,,pending
+pmid-25324805,not-specified,,,,,pending
+pmid-25333470,adolescents;youth;adults,,included,MeSH: Adolescent; MeSH: Adult; MeSH: Middle Aged; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/25333470/,pending
+pmid-24515537,not-specified,,,,,pending
+doi-2d7461017405ab6b,youth,,focus,Title: youth,https://doi.org/10.1007/s10826-014-9926-3,pending
+pmid-25046280,not-specified,,,,,pending
+pmid-24626074,not-specified,,,,,pending
+pmid-24929023,adults;older-adults,,,"MeSH: Adult; MeSH: Aged; MeSH: Aged, 80 and over; MeSH: Middle Aged",https://pubmed.ncbi.nlm.nih.gov/24929023/,pending
+pmid-23702050,youth;adults;older-adults,,included,MeSH: Adult; MeSH: Aged; MeSH: Middle Aged; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/23702050/,pending
+pmid-23615206,not-specified,,,,,pending
+pmid-23872699,youth;adults,,included,MeSH: Adult; MeSH: Middle Aged; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/23872699/,pending
+pmid-24137142,not-specified,,,,,pending
+doi-ed68cfcb4dcfc73a,not-specified,,,,,pending
+pmid-23352229,adolescents;youth;adults,,included,MeSH: Adolescent; MeSH: Adult,https://pubmed.ncbi.nlm.nih.gov/23352229/,pending
+pmid-23914165,not-specified,,,,,pending
+pmid-23574691,youth;adults,,included,MeSH: Adult; MeSH: Middle Aged; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/23574691/,pending
+pmid-24092689,adults,,,MeSH: Adult,https://pubmed.ncbi.nlm.nih.gov/24092689/,pending
+pmid-24099859,youth;adults,,included,MeSH: Adult; MeSH: Middle Aged; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/24099859/,pending
+pmid-23602876,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/23602876/,pending
+pmid-23784718,not-specified,,,,,pending
+pmid-23796855,not-specified,,,,,pending
+pmid-23742229,not-specified,,,,,pending
+pmid-23847555,not-specified,,,,,pending
+pmid-24001876,adolescents;youth;adults;older-adults,,included,MeSH: Adolescent; MeSH: Adult; MeSH: Aged; MeSH: Middle Aged; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/24001876/,pending
+pmid-23400965,adults;older-adults,,,MeSH: Aged; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/23400965/,pending
+pmid-23568415,adults,,,MeSH: Adult,https://pubmed.ncbi.nlm.nih.gov/23568415/,pending
+pmid-24257410,adolescents;youth;adults,,focus,MeSH: Adolescent; MeSH: Adult; MeSH: Young Adult; Title: youth,https://pubmed.ncbi.nlm.nih.gov/24257410/,pending
+pmid-23797149,not-specified,,,,,pending
+doi-bcda25fdeb002c46,youth,,focus,Title: youth,https://doi.org/10.1007/s10826-013-9809-z,pending
+doi-0017e1c8036baaa5,not-specified,,,,,pending
+pmid-22442202,adults;older-adults,,,MeSH: Adult; MeSH: Aged; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/22442202/,pending
+pmid-22374478,youth;adults,,included,MeSH: Adult; MeSH: Middle Aged; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/22374478/,pending
+pmid-22169588,adults,,,MeSH: Adult,https://pubmed.ncbi.nlm.nih.gov/22169588/,pending
+pmid-22352291,adults,,,MeSH: Adult,https://pubmed.ncbi.nlm.nih.gov/22352291/,pending
+pmid-22891157,not-specified,,,,,pending
+pmid-22742936,not-specified,,,,,pending
+pmid-22482765,not-specified,,,,,pending
+pmid-22304605,not-specified,,,,,pending
+doi-b8c111dd4c4a9cd1,children;youth,,focus,Title: children; Title: youth,https://doi.org/10.1111/j.1750-8606.2011.00215.x,pending
+pmid-22937145,adults,,,MeSH: Adult,https://pubmed.ncbi.nlm.nih.gov/22937145/,pending
+doi-06a7895977c054af,not-specified,,,,,pending
+pmid-23149426,adults;older-adults,,,MeSH: Aged; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/23149426/,pending
+pmid-22402913,adolescents;youth;adults,18–28 years,included,MeSH: Adolescent; MeSH: Adult; MeSH: Young Adult; Explicit sample age range in abstract or existing curated summary,https://pubmed.ncbi.nlm.nih.gov/22402913/,pending
+pmid-22393318,not-specified,,,,,pending
+doi-a5e4ecfa6a07bf01,youth,,focus,Explicit young population in title,https://doi.org/10.1177/1321103x12466138,pending
+pmid-21401686,youth;adults,,included,MeSH: Adult; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/21401686/,pending
+pmid-21630119,not-specified,,,,,pending
+pmid-22893808,not-specified,,,,,pending
+pmid-21716581,not-specified,,,,,pending
+pmid-22144961,not-specified,,,,,pending
+pmid-21035949,youth;adults;older-adults,,included,MeSH: Adult; MeSH: Aged; MeSH: Middle Aged; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/21035949/,pending
+pmid-21372745,adults,,,MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/21372745/,pending
+pmid-20685168,adults;older-adults,,,"MeSH: Adult; MeSH: Aged; MeSH: Aged, 80 and over; MeSH: Middle Aged",https://pubmed.ncbi.nlm.nih.gov/20685168/,pending
+pmid-22146674,not-specified,,,,,pending
+pmid-21241793,adults;older-adults,,,MeSH: Aged; Title: adults; Title: older-adults,https://pubmed.ncbi.nlm.nih.gov/21241793/,pending
+pmid-22171868,adults;older-adults,,,MeSH: Adult; MeSH: Aged; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/22171868/,pending
+pmid-21967386,youth;adults;older-adults,,included,MeSH: Adult; MeSH: Aged; MeSH: Middle Aged; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/21967386/,pending
+doi-07f639404ec1fc0d,not-specified,,,,,pending
+doi-efaa5ab4cab4e9ec,youth,,focus,Title: youth,https://doi.org/10.1007/s10826-011-9552-2,pending
+pmid-21397659,adults,,,MeSH: Adult,https://pubmed.ncbi.nlm.nih.gov/21397659/,pending
+pmid-21146930,adolescents;youth;adults;older-adults,,included,MeSH: Adolescent; MeSH: Adult; MeSH: Aged; MeSH: Middle Aged; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/21146930/,pending
+pmid-22021757,adults;older-adults,,,Title: adults; Title: older-adults,https://pubmed.ncbi.nlm.nih.gov/22021757/,pending
+pmid-21488604,adolescents;youth,,focus,MeSH: Adolescent; Title: adolescents; Title: youth,https://pubmed.ncbi.nlm.nih.gov/21488604/,pending
+pmid-20367644,adults,,,MeSH: Adult; Title: adults,https://pubmed.ncbi.nlm.nih.gov/20367644/,pending
+pmid-20593431,adults;older-adults,,,"MeSH: Adult; MeSH: Aged; MeSH: Aged, 80 and over; MeSH: Middle Aged",https://pubmed.ncbi.nlm.nih.gov/20593431/,pending
+pmid-20557568,not-specified,,,,,pending
+pmid-20490324,not-specified,,,,,pending
+pmid-20378181,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/20378181/,pending
+doi-d40c8b9c8ed571ad,not-specified,,,,,pending
+pmid-20492042,adolescents;youth;adults;older-adults,,included,"MeSH: Adolescent; MeSH: Adult; MeSH: Aged; MeSH: Aged, 80 and over; MeSH: Middle Aged",https://pubmed.ncbi.nlm.nih.gov/20492042/,pending
+pmid-20453018,adults;older-adults,,,MeSH: Adult; MeSH: Aged; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/20453018/,pending
+pmid-20440550,children;youth,,focus,MeSH: Child; Title: youth,https://pubmed.ncbi.nlm.nih.gov/20440550/,pending
+pmid-21423355,not-specified,,,,,pending
+pmid-21423358,not-specified,,,,,pending
+pmid-20121706,adolescents;youth,,focus,MeSH: Adolescent; Title: adolescents; Title: youth,https://pubmed.ncbi.nlm.nih.gov/20121706/,pending
+doi-fb45fb2373911e26,youth,,focus,Title: youth,https://doi.org/10.15845/voices.v10i1.158,pending
+pmid-20013298,youth;adults,,included,MeSH: Adult; MeSH: Middle Aged; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/20013298/,pending
+pmid-20117669,children;adolescents;youth,,focus,MeSH: Adolescent; MeSH: Child; MeSH: Young Adult; Title: children; Title: adolescents; Title: youth; Editorial correction: The intervention targets children and adolescents; parents provide reports. Adult indexing does not establish an adult intervention cohort.,https://pubmed.ncbi.nlm.nih.gov/20117669/,pending
+pmid-20193089,adults,,,MeSH: Adult,https://pubmed.ncbi.nlm.nih.gov/20193089/,pending
+pmid-21062776,not-specified,,,,,pending
+pmid-19875131,adolescents;youth;adults;older-adults,,included,MeSH: Adolescent; MeSH: Adult; MeSH: Aged; MeSH: Middle Aged; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/19875131/,pending
+pmid-19815592,adults;older-adults,,,MeSH: Aged; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/19815592/,pending
+pmid-19654388,adults,,,MeSH: Adult,https://pubmed.ncbi.nlm.nih.gov/19654388/,pending
+pmid-18706452,not-specified,,,,,pending
+pmid-19673808,youth;adults,,included,MeSH: Adult; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/19673808/,pending
+pmid-19267396,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/19267396/,pending
+pmid-19646284,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/19646284/,pending
+pmid-19673817,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/19673817/,pending
+pmid-20099470,youth;adults;older-adults,,included,MeSH: Adult; MeSH: Aged; MeSH: Middle Aged; MeSH: Young Adult; Title: adults; Title: older-adults,https://pubmed.ncbi.nlm.nih.gov/20099470/,pending
+pmid-19583647,adults,,,MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/19583647/,pending
+pmid-19275991,not-specified,,,,,pending
+pmid-19696930,adults,,,MeSH: Adult,https://pubmed.ncbi.nlm.nih.gov/19696930/,pending
+pmid-20871742,not-specified,,,,,pending
+pmid-17827173,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/17827173/,pending
+doi-2f7b8dd67e1c8bbb,not-specified,,,,,pending
+pmid-18612994,adults;older-adults,,,MeSH: Adult; MeSH: Aged,https://pubmed.ncbi.nlm.nih.gov/18612994/,pending
+doi-53aa4106dfd35960,not-specified,,,,,pending
+pmid-18979928,adults;older-adults,,,MeSH: Aged; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/18979928/,pending
+pmid-21768988,not-specified,,,,,pending
+pmid-18710596,not-specified,,,,,pending
+doi-7bca5becd0049aeb,not-specified,,,,,pending
+pmid-18991533,adolescents;youth;adults,,included,MeSH: Adolescent; MeSH: Adult; MeSH: Middle Aged; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/18991533/,pending
+pmid-18356530,not-specified,,,,,pending
+pmid-17284128,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/17284128/,pending
+pmid-17309374,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/17309374/,pending
+doi-16f513abd981c573,not-specified,,,,,pending
+pmid-17441816,not-specified,,,,,pending
+pmid-17543993,not-specified,,,,,pending
+pmid-17274213,adults;older-adults,,,MeSH: Aged; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/17274213/,pending
+pmid-18005804,adults;older-adults,,,MeSH: Adult; MeSH: Aged; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/18005804/,pending
+pmid-17573044,adolescents;youth;adults;older-adults,,included,MeSH: Adolescent; MeSH: Adult; MeSH: Aged; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/17573044/,pending
+pmid-17508316,not-specified,,,,,pending
+pmid-17938152,not-specified,,,,,pending
+pmid-17987115,adults,,,MeSH: Adult,https://pubmed.ncbi.nlm.nih.gov/17987115/,pending
+pmid-17917468,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/17917468/,pending
+pmid-17478041,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/17478041/,pending
+pmid-17450451,adolescents;youth;adults;older-adults,,included,MeSH: Adolescent; MeSH: Adult; MeSH: Aged; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/17450451/,pending
+doi-82aafc04d055ceed,not-specified,,,,,pending
+pmid-16772250,adults;older-adults,,,MeSH: Aged,https://pubmed.ncbi.nlm.nih.gov/16772250/,pending
+pmid-16899965,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/16899965/,pending
+pmid-16388071,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/16388071/,pending
+pmid-16314076,adults,,,MeSH: Adult,https://pubmed.ncbi.nlm.nih.gov/16314076/,pending
+pmid-20072706,not-specified,,,,,pending
+doi-e5864f2618900cc4,not-specified,,,,,pending
+pmid-16254067,not-specified,,,,,pending
+pmid-16476137,adults,,,MeSH: Adult,https://pubmed.ncbi.nlm.nih.gov/16476137/,pending
+pmid-16115248,adults;older-adults,,,MeSH: Adult; MeSH: Aged; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/16115248/,pending
+pmid-16382423,adults,,,MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/16382423/,pending
+doi-733bb2dac57b6cc9,youth,,focus,Explicit young population in title,https://doi.org/10.15845/voices.v5i2.223,pending
+pmid-16275477,adults;older-adults,,,MeSH: Adult; MeSH: Aged; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/16275477/,pending
+pmid-15913391,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/15913391/,pending
+pmid-15951338,not-specified,,,,,pending
+doi-ee4dbad2ce729f10,not-specified,,,,,pending
+doi-890fefc8f3be30c0,not-specified,,,,,pending
+pmid-15669447,adults;older-adults,,,MeSH: Adult; MeSH: Aged; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/15669447/,pending
+pmid-14961935,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/14961935/,pending
+pmid-15310251,adults;older-adults,,,"MeSH: Aged; MeSH: Aged, 80 and over",https://pubmed.ncbi.nlm.nih.gov/15310251/,pending
+doi-29b8d72b63cf67cb,not-specified,,,,,pending
+pmid-14991326,adults,,,MeSH: Adult,https://pubmed.ncbi.nlm.nih.gov/14991326/,pending
+pmid-12801395,adolescents;youth,,focus,MeSH: Adolescent; Title: youth,https://pubmed.ncbi.nlm.nih.gov/12801395/,pending
+pmid-14681168,not-specified,,,,,pending
+pmid-12531722,not-specified,,,,,pending
+pmid-14743579,children;adolescents;youth;adults,,included,MeSH: Adolescent; MeSH: Adult; MeSH: Child,https://pubmed.ncbi.nlm.nih.gov/14743579/,pending
+doi-70f1db616203b86f,not-specified,,,,,pending
+doi-afe44de7f462e56e,not-specified,,,,,pending
+pmid-11792664,not-specified,,,,,pending
+pmid-12001882,adults,,,MeSH: Adult,https://pubmed.ncbi.nlm.nih.gov/12001882/,pending
+pmid-12455680,adolescents;youth;adults,,included,MeSH: Adolescent; MeSH: Adult,https://pubmed.ncbi.nlm.nih.gov/12455680/,pending
+pmid-12467953,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/12467953/,pending
+pmid-11955466,adolescents;youth;adults;older-adults,,included,MeSH: Adolescent; MeSH: Adult; MeSH: Aged; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/11955466/,pending
+pmid-11828038,adolescents;youth;adults;older-adults,,included,MeSH: Adolescent; MeSH: Adult; MeSH: Aged; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/11828038/,pending
+pmid-11421971,not-specified,,,,,pending
+pmid-11179406,adults,,,MeSH: Adult,https://pubmed.ncbi.nlm.nih.gov/11179406/,pending
+pmid-11673340,adults,,,MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/11673340/,pending
+pmid-11472279,adults,,,MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/11472279/,pending
+doi-b76baa5fd9acdf58,not-specified,,,,,pending
+pmid-11437809,children;adolescents;youth;adults,,focus,MeSH: Adolescent; MeSH: Adult; MeSH: Child; Title: youth,https://pubmed.ncbi.nlm.nih.gov/11437809/,pending
+doi-a11edc2c0d807446,not-specified,,,,,pending
+pmid-11319676,adults;older-adults,,,MeSH: Adult; MeSH: Aged; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/11319676/,pending
+pmid-11191043,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/11191043/,pending
+pmid-10829412,not-specified,,,,,pending
+pmid-11065312,adolescents;youth;adults,,included,MeSH: Adolescent; MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/11065312/,pending
+doi-1a368149449ab40a,not-specified,,,,,pending
+pmid-11127626,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/11127626/,pending
+pmid-10686266,adults;older-adults,,,MeSH: Aged; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/10686266/,pending
+pmid-18311106,not-specified,,,,,pending
+pmid-10485122,not-specified,,,,,pending
+pmid-9483470,not-specified,,,,,pending
+pmid-9423966,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/9423966/,pending
+doi-06a35c77903dbedd,not-specified,,,,,pending
+pmid-9479673,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/9479673/,pending
+pmid-9924746,not-specified,,,,,pending
+pmid-9614593,adults;older-adults,,,MeSH: Adult; MeSH: Aged; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/9614593/,pending
+pmid-8955924,not-specified,,,,,pending
+doi-e7641c6e0eb6fd54,not-specified,,,,,pending
+pmid-9119558,adults,,,MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/9119558/,pending
+doi-206bca1736dab071,not-specified,,,,,pending
+doi-dd7b3c097a436b46,children,,,Title: children,https://doi.org/10.1093/jmt/30.4.236,pending
+pmid-2914733,not-specified,,,,,pending
+pmid-20493150,not-specified,,,,,pending
+pmid-3938842,not-specified,,,,,pending
+pmid-4029259,not-specified,,,,,pending
+pmid-6532580,not-specified,,,,,pending
+pmid-49737,adults;older-adults,,,MeSH: Adult; MeSH: Aged; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/49737/,pending
+src-79f3e30fa012,not-specified,,,,,pending
+src-f81bce3efd79,not-specified,,,,,pending
+src-d7ea864fa789,not-specified,,,,,pending
+src-487a37fcb405,not-specified,,,,,pending
+src-be36c0b9673d,not-specified,,,,,pending
+src-b2288e258f96,not-specified,,,,,pending
+src-1d69fc1d3629,adolescents;youth;adults,,included,MeSH: Adolescent; MeSH: Adult; MeSH: Young Adult; Title: adults,https://pubmed.ncbi.nlm.nih.gov/22915097/,pending
+src-56e515aacddb,adolescents;youth;adults,,focus,MeSH: Adolescent; MeSH: Adult; Title: youth; Title: adults,https://pubmed.ncbi.nlm.nih.gov/19798037/,pending
+src-4658f2126f07,not-specified,,,,,pending
+src-e48f73f227c2,not-specified,,,,,pending
+src-11c37f0b338c,adolescents;youth;adults;older-adults,,included,MeSH: Adolescent; MeSH: Adult; MeSH: Aged; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/10686268/,pending
+src-6187c7d861f2,not-specified,,,,,pending
+src-41ca41304bcd,not-specified,,,,,pending
+src-cb0ec4e8402c,not-specified,,,,,pending
+src-ab7cad41c0a1,not-specified,,,,,pending
+src-d13ac87370d2,not-specified,,,,,pending
+src-804727a0fe5d,adults,,,MeSH: Adult,https://pubmed.ncbi.nlm.nih.gov/24084314/,pending
+src-8e2c843200d2,not-specified,,,,,pending
+src-5f67f487758b,not-specified,,,,,pending
+src-5ca96c09ff7a,not-specified,,,,,pending
+src-48e0742b692c,not-specified,,,,,pending
+src-c29b6e4e773f,not-specified,,,,,pending
+src-dec9f0a63b40,not-specified,,,,,pending
+src-218662257ef3,not-specified,,,,,pending
+src-923111869fef,not-specified,,,,,pending
+src-f613a9d6c16a,not-specified,,,,,pending
+src-a5e92130bd97,adolescents;youth;adults;older-adults,,included,"MeSH: Adolescent; MeSH: Adult; MeSH: Aged; MeSH: Aged, 80 and over; MeSH: Middle Aged; MeSH: Young Adult",https://pubmed.ncbi.nlm.nih.gov/23131367/,pending
+src-dc1db9b682c7,children,,,Title: children,https://www.bbc.com/news/av/world-middle-east-23441902,pending
+src-4d549c318fe9,not-specified,,,,,pending
+src-c61b4fbb2519,not-specified,,,,,pending
+src-22bb91ee46db,not-specified,,,,,pending
+src-35cb6bd28036,not-specified,,,,,pending
+src-507ea85612c7,not-specified,,,,,pending
+src-0b5043af2ada,not-specified,,,,,pending
+src-217758559eb4,children,,,"MeSH: Child, Preschool",https://pubmed.ncbi.nlm.nih.gov/23872199/,pending
+src-b66173aa6453,not-specified,,,,,pending
+src-4e8fa4627757,not-specified,,,,,pending
+src-2821ce68942b,not-specified,,,,,pending
+src-e4870b8eaf8c,not-specified,,,,,pending
+src-9c3263b6b942,not-specified,,,,,pending
+src-05fee8b7d126,not-specified,,,,,pending
+src-41119f037bd1,not-specified,,,,,pending
+src-fb22af03c638,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/21296428/,pending
+src-bd928165f653,not-specified,,,,,pending
+src-1fa27d13ad19,not-specified,,,,,pending
+src-86c4acbb742d,not-specified,,,,,pending
+src-6c32dbe59aae,children,,,Title: children,https://www.heartmath.org/research/research-library/educational/coherence-training-in-children-with-adhd-cognitive-functions-and-behavioral-changes,pending
+src-eea02e5f3c8d,not-specified,,,,,pending
+src-c6b891dd9958,not-specified,,,,,pending
+src-5e9624ec353b,not-specified,,,,,pending
+src-915d4f585947,adolescents;youth;adults,,included,MeSH: Adolescent; MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/18540734/,pending
+src-43951cc0f671,not-specified,,,,,pending
+src-eb96e0eb602d,not-specified,,,,,pending
+src-765723fc55e2,not-specified,,,,,pending
+src-2c4944155b58,not-specified,,,,,pending
+src-3a89367924ad,not-specified,,,,,pending
+src-f9996534c3de,not-specified,,,,,pending
+src-0d9b2343d896,not-specified,,,,,pending
+src-431b8c7039b1,not-specified,,,,,pending
+src-d0bf23be01d8,youth;adults;older-adults,,included,MeSH: Adult; MeSH: Aged; MeSH: Middle Aged; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/20439832/,pending
+src-d642e3ff68d3,not-specified,,,,,pending
+src-e697165c619f,not-specified,,,,,pending
+src-36ff9563ed31,not-specified,,,,,pending
+src-c1a1df977433,not-specified,,,,,pending
+src-35bb6dff46f4,not-specified,,,,,pending
+src-7bab2527ffda,not-specified,,,,,pending
+src-9903c78b8bca,not-specified,,,,,pending
+src-18c0ce413c5b,not-specified,,,,,pending
+src-f525470f0e0b,not-specified,,,,,pending
+src-c05ccb0f9eb2,not-specified,,,,,pending
+src-0331f0f8df05,not-specified,,,,,pending
+src-51437ce1145b,not-specified,,,,,pending
+src-3d07e41dbe7a,children;adolescents;youth,3–16 years,focus,Title: children; Title: youth; Explicit sample age range in abstract or existing curated summary,https://dcj.nsw.gov.au/content/dam/dcj/dcj-website/documents/about-us/facsiar/research-seminars/past-seminars/2022/Debbie-Haynesv2-.pdf,pending
+src-dee30f32ce8c,not-specified,,,,,pending
+src-e9a450b442d3,not-specified,,,,,pending
+src-d5959fcb69bc,not-specified,,,,,pending
+src-ae3dc0d94fef,not-specified,,,,,pending
+src-62baf77006d6,not-specified,,,,,pending
+src-7e2f0ecca8d8,adolescents;youth;adults,,included,MeSH: Adolescent; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/18835662/,pending
+src-595a254107ad,adolescents;youth;adults,,included,MeSH: Adolescent; MeSH: Adult; MeSH: Middle Aged; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/28325532/,pending
+src-f8862893c189,not-specified,,,,,pending
+src-feb08f370505,not-specified,,,,,pending
+src-4bfecb06eee8,adults;older-adults,,,"MeSH: Aged; MeSH: Aged, 80 and over",https://pubmed.ncbi.nlm.nih.gov/20735342/,pending
+src-192b7dfe47ac,not-specified,,,,,pending
+src-ebacdf327973,youth;adults,,included,MeSH: Adult; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/31801937/,pending
+src-0d942853ac35,not-specified,,,,,pending
+src-f265f80eb04c,not-specified,,,,,pending
+src-0f4a427987f6,not-specified,,,,,pending
+src-fee7457e290f,not-specified,,,,,pending
+src-06f32466fb34,not-specified,,,,,pending
+src-47a527b4dc03,children,,,Title: children,https://doi.org/10.1093/mtp/miw004,pending
+src-d173f7852495,not-specified,,,,,pending
+src-be413ddf58a1,children,,,Title: children,https://www.heartmath.org/research/research-library/educational/facilitating-emotional-self-regulation-in-preschool-children,pending
+src-1ee0e5be1bde,not-specified,,,,,pending
+src-7447bc610298,adults,,,Title: adults,https://annals.org/aim/article-abstract/2491916/framing-financial-incentives-increase-physical-activity-among-overweight-obese-adults,pending
+src-96965bda66df,youth,,focus,Explicit young population in title,https://doi.org/10.1016/s0197-4556(04)00024-3,pending
+src-418e29320057,not-specified,,,,,pending
+src-48c16fe9201b,not-specified,,,,,pending
+src-f7e11cf61952,not-specified,,,,,pending
+src-c395c5051a97,not-specified,,,,,pending
+src-29d7f1722875,not-specified,,,,,pending
+src-d14e94a49dd0,not-specified,,,,,pending
+src-56579cb2ab4b,not-specified,,,,,pending
+src-61127c5b6ae5,not-specified,,,,,pending
+src-d5a8539d2615,not-specified,,,,,pending
+src-a880894db1fb,adults,,,MeSH: Adult,https://pubmed.ncbi.nlm.nih.gov/14508023/,pending
+src-f9a2700acce6,not-specified,,,,,pending
+src-539bacc5aeee,not-specified,,,,,pending
+src-5031d021086a,adults,,,MeSH: Adult,https://pubmed.ncbi.nlm.nih.gov/27457341/,pending
+src-da6e150a42eb,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/10831999/,pending
+src-e968a647d935,children,,,Title: children,https://www.bbc.com/news/av/world-middle-east-35449400,pending
+src-468b71eb3291,not-specified,,,,,pending
+src-d2427f4063b3,adolescents;youth;adults;older-adults,18–75 years,included,MeSH: Adolescent; MeSH: Adult; MeSH: Aged; MeSH: Middle Aged; Explicit sample age range in abstract or existing curated summary,https://pubmed.ncbi.nlm.nih.gov/10460529/,pending
+src-d6a462d1d122,youth,,focus,Title: youth,https://link.springer.com/article/10.1023/A:1019795911358,pending
+src-dd30f16f4a95,not-specified,,,,,pending
+src-3f9a5ebd9493,not-specified,,,,,pending
+src-836261e713b0,not-specified,,,,,pending
+src-c31d71bab531,youth;adults,,focus,Title: youth; Title: adults,https://search.informit.com.au/documentSummary;dn=649816056264332;res=IELFSC;type=pdf,pending
+src-7079ef417f29,youth,,focus,Title: youth,https://researchers.westernsydney.edu.au/en/publications/homeless-and-connected-mobile-phones-and-the-internet-in-the-live-4/,pending
+src-0f21374720c6,not-specified,,,,,pending
+src-02b1d4949a40,not-specified,,,,,pending
+src-6959a598f179,not-specified,,,,,pending
+src-e981e4a9d34d,not-specified,,,,,pending
+src-0e1e9057a0a3,adolescents;youth;adults,18–35 years,focus,MeSH: Adolescent; MeSH: Adult; MeSH: Middle Aged; MeSH: Young Adult; Title: youth; Explicit sample age range in abstract or existing curated summary,https://pubmed.ncbi.nlm.nih.gov/28132007/,pending
+src-0bc37ec70145,adults,,,MeSH: Adult,https://pubmed.ncbi.nlm.nih.gov/28862697/,pending
+src-0c9e697acc13,not-specified,,,,,pending
+src-3108ecac9819,not-specified,,,,,pending
+src-fafddbacaca4,not-specified,,,,,pending
+src-5fad89c454d7,youth;adults,,included,MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/19615827/,pending
+src-d7f47e4a1e10,not-specified,,,,,pending
+src-d42ef0deb972,not-specified,,,,,pending
+src-ec9560b5ddc0,not-specified,,,,,pending
+src-2fc73b5bedff,not-specified,,,,,pending
+src-b5a8b2663640,not-specified,,,,,pending
+src-056d5bb4ab8f,youth,,focus,Title: youth,https://pubmed.ncbi.nlm.nih.gov/25328374/,pending
+src-1f31858ead8a,not-specified,,,,,pending
+src-742beffd7dfb,not-specified,,,,,pending
+src-87eb83ef302f,not-specified,,,,,pending
+src-e9a8e7396e01,not-specified,,,,,pending
+src-8fa7c87846bb,not-specified,,,,,pending
+src-91ee644ba04e,not-specified,,,,,pending
+src-1bdc22144734,not-specified,,,,,pending
+src-ddd4bad4438e,not-specified,,,,,pending
+src-2de5a21f0816,not-specified,,,,,pending
+src-688f56d0a555,not-specified,,,,,pending
+src-d1eaa478462e,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/29422633/,pending
+src-65918bab6057,not-specified,,,,,pending
+src-8fc39ea39386,not-specified,,,,,pending
+src-26666e925d94,not-specified,,,,,pending
+src-050c5805ca1d,not-specified,,,,,pending
+src-a508e60b7923,not-specified,,,,,pending
+src-a25d1aadf21e,not-specified,,,,,pending
+src-cfebd98a61bb,youth,,focus,Title: youth,https://doi.org/10.1086/684107,pending
+src-4077e7cc4fae,not-specified,,,,,pending
+src-7f7df6f3a7e2,not-specified,,,,,pending
+src-8058966ee2bb,not-specified,,,,,pending
+src-7e41f0e25b55,youth,,focus,Explicit young population in title,https://search.informit.com.au/documentSummary;dn=999889170996022;res=IELFSC,pending
+src-20d1ad4a5931,not-specified,,,,,pending
+src-6190b32a0999,not-specified,,,,,pending
+src-2b28c61a6dab,adolescents;youth,,focus,Title: adolescents; Title: youth,https://europepmc.org/abstract/med/10412282,pending
+src-bd646690e96a,youth,,focus,Title: youth,https://www.iiste.org/Journals/index.php/RHSS/article/view/14853,pending
+src-48a653d354ac,not-specified,,,,,pending
+src-d2816a086d96,not-specified,,,,,pending
+src-1aac841dc116,not-specified,,,,,pending
+src-374faac36b5c,adults;older-adults,,,"MeSH: Aged; MeSH: Aged, 80 and over",https://pubmed.ncbi.nlm.nih.gov/23000133/,pending
+src-c0253fb7755c,not-specified,,,,,pending
+src-14af5866007b,not-specified,,,,,pending
+src-aecb8b44badd,not-specified,,,,,pending
+src-a91553bc6cb6,not-specified,,,,,pending
+src-6b8b9506be26,not-specified,,,,,pending
+src-22567131f310,not-specified,,,,,pending
+src-319a0032dd2e,not-specified,,,,,pending
+src-1848d7eaf430,adults,,,MeSH: Adult,https://pubmed.ncbi.nlm.nih.gov/16971058/,pending
+src-75491f6f55b4,not-specified,,,,,pending
+src-5ccef969cd6a,not-specified,,,,,pending
+src-867f6d0519f0,not-specified,,,,,pending
+src-ef07290a540d,youth;adults,,included,MeSH: Adult; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/20371820/,pending
+src-e74337ebcb41,youth;adults,,included,MeSH: Adult; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/23419544/,pending
+src-8696e46a8595,not-specified,,,,,pending
+src-065117587152,youth;adults,,included,MeSH: Adult; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/21126557/,pending
+src-ed35d20b36c4,not-specified,,,,,pending
+src-18b777c33bb6,not-specified,,,,,pending
+src-89d6ed0ece09,not-specified,,,,,pending
+src-6ab0a4d396b2,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/7677832/,pending
+src-346c18a7b207,not-specified,,,,,pending
+src-0306fa89e427,not-specified,,,,,pending
+src-f5f4305c559e,not-specified,,,,,pending
+src-e3b0fd44d504,youth;adults,,focus,Title: youth; Title: adults,https://dialnet.unirioja.es/servlet/tesis?codigo=45360,pending
+src-6a76d25fd47a,not-specified,,,,,pending
+src-0096ffba98ce,not-specified,,,,,pending
+src-c04464bc7c82,not-specified,,,,,pending
+src-bf0334ee2411,not-specified,,,,,pending
+src-8914d4e08c84,not-specified,,,,,pending
+src-a69e8c785c65,not-specified,,,,,pending
+src-efa5d96ad24f,not-specified,,,,,pending
+src-57c7d2ae83b8,adolescents;youth;adults,,included,MeSH: Adolescent; MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/7946230/,pending
+src-c597fbe363bf,not-specified,,,,,pending
+src-d08dbc94cf58,not-specified,,,,,pending
+src-d4fda8276d47,not-specified,,,,,pending
+src-757129132fdc,not-specified,,,,,pending
+src-8b2ea769f9f9,not-specified,,,,,pending
+src-b8f0554d49a8,not-specified,,,,,pending
+src-6e52fa8da5ff,not-specified,,,,,pending
+src-560b5106d25b,adolescents;youth;adults,,included,MeSH: Adolescent; MeSH: Adult; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/24239953/,pending
+src-c2a045689063,youth,,focus,Title: youth,https://www.jaacap.org/article/S0890-8567(17)30718-9/fulltext,pending
+src-cec16e08a07b,not-specified,,,,,pending
+src-8e417c875b1c,not-specified,,,,,pending
+src-8efda8da414f,not-specified,,,,,pending
+src-badc7276ec5f,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/15816586/,pending
+src-c64e6046b78d,adults;older-adults,,,MeSH: Aged; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/16259998/,pending
+src-701e0de57bdb,not-specified,,,,,pending
+doi-5bb0d2cb9d5aa958,not-specified,,,,,pending
+src-fd4c7398e614,not-specified,,,,,pending
+src-61be16f9220b,not-specified,,,,,pending
+src-9c5bb934b060,not-specified,,,,,pending
+src-d899a7527d6e,not-specified,,,,,pending
+src-76124b78a2d9,not-specified,,,,,pending
+src-1a2a9900c208,not-specified,,,,,pending
+src-d54916eb47e9,not-specified,,,,,pending
+src-4ea7fc11a568,not-specified,,,,,pending
+src-beb7877d1a26,not-specified,,,,,pending
+src-f629caf1b15c,not-specified,,,,,pending
+src-8f2595a8750f,not-specified,,,,,pending
+src-9db71a3fce02,not-specified,,,,,pending
+src-aef02aca099c,not-specified,,,,,pending
+src-d6d47376f9c0,not-specified,,,,,pending
+src-a3bba47bba9b,not-specified,,,,,pending
+src-eb73dd2f6645,not-specified,,,,,pending
+src-81feac0bd644,not-specified,,,,,pending
+src-38150b2a118e,not-specified,,,,,pending
+src-b9232b337294,not-specified,,,,,pending
+src-c0ab648e5e97,not-specified,,,,,pending
+src-87bf47f60a24,not-specified,,,,,pending
+src-e73970c48306,not-specified,,,,,pending
+src-453f6cf677d9,not-specified,,,,,pending
+src-6d277422d0a0,not-specified,,,,,pending
+src-e33851fc9d08,adults;older-adults,,,MeSH: Adult; MeSH: Aged; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/20224938/,pending
+src-b3cbba6f11c8,not-specified,,,,,pending
+src-d57b7c82f21d,not-specified,,,,,pending
+src-1023e40a3842,adults;older-adults,,,MeSH: Aged; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/27740618/,pending
+src-efe6d52e05ce,not-specified,,,,,pending
+src-34b978285d9c,not-specified,,,,,pending
+src-be597886099b,not-specified,,,,,pending
+src-1fa89730e1eb,not-specified,,,,,pending
+src-973ffd9f69b7,not-specified,,,,,pending
+src-f0c081b81b89,youth,,focus,Title: youth,https://www.orygen.org.au/thenextpost,pending
+src-9329423f6826,not-specified,,,,,pending
+src-62d753228d9f,not-specified,,,,,pending
+src-5b5cfdfc3ae1,not-specified,,,,,pending
+src-19dff8a8bbe5,not-specified,,,,,pending
+src-1617cb359767,not-specified,,,,,pending
+src-ffc7240d28cd,not-specified,,,,,pending
+src-5f4dece4d525,not-specified,,,,,pending
+src-ea7973a48c81,adults,,,Title: adults,https://doi.org/10.14485/hbpr.2.2.4,pending
+src-02b414423ea8,not-specified,,,,,pending
+src-91f34e20ce39,not-specified,,,,,pending
+src-e3e7571cee79,not-specified,,,,,pending
+src-afa869d2686e,not-specified,,,,,pending
+src-796cb6656464,not-specified,,,,,pending
+src-1ce42b7cb8c4,not-specified,,,,,pending
+src-58e202d443bd,youth;adults;older-adults,,included,MeSH: Adult; MeSH: Aged; MeSH: Middle Aged; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/28973116/,pending
+src-1c956a43ab59,not-specified,,,,,pending
+src-baad390b21ad,not-specified,,,,,pending
+src-f8cfd5c578c0,not-specified,,,,,pending
+src-d36d191de4e3,not-specified,,,,,pending
+src-cd60e63a37c8,not-specified,,,,,pending
+src-e9e860c4c356,not-specified,,,,,pending
+src-66b12deb6c93,not-specified,,,,,pending
+src-251870752ed3,not-specified,,,,,pending
+src-94a4e0f0ceac,not-specified,,,,,pending
+src-3f86d9ca1d91,not-specified,,,,,pending
+src-c7690e396a71,not-specified,,,,,pending
+src-971440fee334,youth,,focus,Explicit young population in title,https://www.irishtimes.com/news/world/africa/young-refugees-of-kakuma-turn-to-music-to-forget-their-troubles-1.3090923?mode=amp,pending
+src-3fd04fd75050,youth,,focus,Title: youth,https://ieeexplore.ieee.org/abstract/document/6970348,pending
+src-c5f78a99d96b,not-specified,,,,,pending
+src-2c770034898e,not-specified,,,,,pending
+src-e1a6ed6a974c,not-specified,,,,,pending
+src-2e5b03d555b3,not-specified,,,,,pending
+src-312a65e2c0be,not-specified,,,,,pending
+src-70737632f875,not-specified,,,,,pending
+src-d4f0ad936eca,not-specified,,,,,pending
+src-6524a07918e6,not-specified,,,,,pending
+src-005e909caead,not-specified,,,,,pending
+src-199d07efad3e,not-specified,,,,,pending
+src-8ad1130190f0,adults,,,MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/31230462/,pending
+src-dc93723ec7c8,not-specified,,,,,pending
+src-4981a8e87964,not-specified,,,,,pending
+pmid-30083522,not-specified,,,,,pending
+pmid-18596974,adults,,,MeSH: Adult,https://pubmed.ncbi.nlm.nih.gov/18596974/,pending
+pmid-21840289,not-specified,,,,,pending
+src-f08d504d9cf6,not-specified,,,,,pending
+pmid-41450809,not-specified,,,,,pending
+pmid-41911215,adults;older-adults,,,MeSH: Adult; MeSH: Aged; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/41911215/,pending
+pmid-40795897,not-specified,,,,,pending
+pmid-40563070,adults;older-adults,,,MeSH: Adult; MeSH: Aged; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/40563070/,pending
+pmid-42671585,youth;adults,,included,MeSH: Adult; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/42671585/,pending
+pmid-42307797,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/42307797/,pending
+pmid-39088370,adolescents;youth;adults;older-adults,18–70 years,included,MeSH: Adolescent; MeSH: Adult; MeSH: Aged; MeSH: Middle Aged; MeSH: Young Adult; Explicit sample age range in abstract or existing curated summary,https://pubmed.ncbi.nlm.nih.gov/39088370/,pending
+pmid-32653082,children,,,"MeSH: Child; MeSH: Child, Preschool; MeSH: Infant; Title: children",https://pubmed.ncbi.nlm.nih.gov/32653082/,pending
+pmid-36011825,not-specified,,,,,pending
+pmid-38319068,adults;older-adults,,,MeSH: Aged; Title: adults; Title: older-adults,https://pubmed.ncbi.nlm.nih.gov/38319068/,pending
+pmid-32564499,not-specified,,,,,pending
+pmid-33107329,not-specified,,,,,pending
+pmid-32412916,adults;older-adults,,,MeSH: Aged; Title: adults; Title: older-adults,https://pubmed.ncbi.nlm.nih.gov/32412916/,pending
+pmid-40269359,youth;adults,,included,MeSH: Adult; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/40269359/,pending
+pmid-36790246,not-specified,,,,,pending
+pmid-35713444,not-specified,,,,,pending
+pmid-38982009,children,,,MeSH: Child; Title: children,https://pubmed.ncbi.nlm.nih.gov/38982009/,pending
+pmid-42116620,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/42116620/,pending
+pmid-40621706,adults;older-adults,,,MeSH: Adult; MeSH: Aged; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/40621706/,pending
+pmid-35655482,youth;adults,,included,MeSH: Adult; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/35655482/,pending
+pmid-40769315,youth;adults,,included,MeSH: Adult; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/40769315/,pending
+pmid-40716437,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/40716437/,pending
+pmid-38227442,adults,,,MeSH: Adult; MeSH: Middle Aged; Title: adults,https://pubmed.ncbi.nlm.nih.gov/38227442/,pending
+pmid-39758524,not-specified,,,,,pending
+pmid-42518933,not-specified,,,,,pending
+pmid-41655996,youth;adults,,included,MeSH: Adult; MeSH: Middle Aged; MeSH: Young Adult; Title: adults,https://pubmed.ncbi.nlm.nih.gov/41655996/,pending
+pmid-37882058,not-specified,,,,,pending
+pmid-30711853,adolescents;youth;adults,,included,MeSH: Adolescent; MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/30711853/,pending
+pmid-24880581,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/24880581/,pending
+pmid-32892758,adults,,,"MeSH: Adult; MeSH: Child; Title: adults; Editorial correction: The abstract explicitly recruits adults. The Child indexing term concerns the historical trauma, not a child study population.",https://pubmed.ncbi.nlm.nih.gov/32892758/,pending
+pmid-22322458,adolescents;youth;adults;older-adults,,included,MeSH: Adolescent; MeSH: Adult; MeSH: Aged; MeSH: Middle Aged; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/22322458/,pending
+pmid-39916551,adults,,,MeSH: Adult; MeSH: Middle Aged; Title: adults,https://pubmed.ncbi.nlm.nih.gov/39916551/,pending
+pmid-12883106,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/12883106/,pending
+pmid-11020090,adults,,,MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/11020090/,pending
+pmid-19235193,adults;older-adults,,,MeSH: Adult; MeSH: Aged; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/19235193/,pending
+pmid-25686304,adults;older-adults,,,"MeSH: Aged; MeSH: Aged, 80 and over; MeSH: Middle Aged; Title: adults; Title: older-adults",https://pubmed.ncbi.nlm.nih.gov/25686304/,pending
+pmid-23541163,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/23541163/,pending
+pmid-20876468,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/20876468/,pending
+pmid-22430268,adults;older-adults,,,"MeSH: Adult; MeSH: Aged; MeSH: Aged, 80 and over; MeSH: Middle Aged",https://pubmed.ncbi.nlm.nih.gov/22430268/,pending
+pmid-21723049,youth;adults,,included,MeSH: Adult; MeSH: Middle Aged; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/21723049/,pending
+pmid-29422189,adolescents;youth;adults,,included,MeSH: Adolescent; MeSH: Adult; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/29422189/,pending
+pmid-24647726,adolescents;youth;adults;older-adults,Eligibility: 18–70 years,included,MeSH: Adolescent; MeSH: Adult; MeSH: Aged; MeSH: Middle Aged; MeSH: Young Adult; Explicit eligibility age range in abstract or existing curated summary,https://pubmed.ncbi.nlm.nih.gov/24647726/,pending
+pmid-14756612,adults,,,MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/14756612/,pending
+pmid-26586819,youth;adults,,included,MeSH: Adult; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/26586819/,pending
+pmid-29921143,adults,,,MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/29921143/,pending
+pmid-16847590,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/16847590/,pending
+pmid-18356284,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/18356284/,pending
+pmid-25397817,adults,,,MeSH: Adult,https://pubmed.ncbi.nlm.nih.gov/25397817/,pending
+pmid-31632617,not-specified,,,,,pending
+pmid-39427264,adults;older-adults,,,MeSH: Adult; MeSH: Aged; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/39427264/,pending
+pmid-7591024,adults;older-adults,55–85 years,,"MeSH: Aged; MeSH: Aged, 80 and over; MeSH: Middle Aged; Explicit sample age range in abstract or existing curated summary",https://pubmed.ncbi.nlm.nih.gov/7591024/,pending
+pmid-30279666,not-specified,,,,,pending
+pmid-34907015,adults,,,MeSH: Adult,https://pubmed.ncbi.nlm.nih.gov/34907015/,pending
+pmid-29900257,adults;older-adults,60–90 years,,Title: adults; Curated sample: adults; Title: older-adults; Curated sample: older-adults; Explicit sample age range in abstract or existing curated summary,https://pubmed.ncbi.nlm.nih.gov/29900257/,pending
+pmid-33393484,adults,,,MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/33393484/,pending
+pmid-30256277,adults;older-adults,,,MeSH: Aged; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/30256277/,pending
+pmid-39413359,adults;older-adults,,,MeSH: Adult; MeSH: Aged; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/39413359/,pending
+pmid-37546047,not-specified,,,,,pending
+pmid-35818436,not-specified,,,,,pending
+pmid-40414454,youth;adults,,included,MeSH: Adult; MeSH: Middle Aged; MeSH: Young Adult; Title: adults,https://pubmed.ncbi.nlm.nih.gov/40414454/,pending
+pmid-33734493,not-specified,,,,,pending
+pmid-27723444,youth;adults,,included,MeSH: Adult; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/27723444/,pending
+pmid-34729544,not-specified,,,,,pending
+pmid-38078959,not-specified,,,,,pending
+pmid-41642087,youth;adults,,included,MeSH: Adult; MeSH: Middle Aged; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/41642087/,pending
+pmid-42640862,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/42640862/,pending
+pmid-29936408,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/29936408/,pending
+pmid-36006668,not-specified,,,,,pending
+pmid-39808431,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/39808431/,pending
+pmid-42599846,not-specified,,,,,pending
+pmid-41534731,youth;adults,,focus,MeSH: Adult; MeSH: Young Adult; Curated sample: youth; Curated sample: adults,https://pubmed.ncbi.nlm.nih.gov/41534731/,pending
+pmid-36350591,adults,,,MeSH: Adult; Title: adults; Curated sample: adults,https://pubmed.ncbi.nlm.nih.gov/36350591/,pending
+pmid-35820992,adolescents;youth,,focus,Title: adolescents; Title: youth,https://pubmed.ncbi.nlm.nih.gov/35820992/,pending
+pmid-27002445,youth;adults;older-adults,20–70 years,included,MeSH: Adult; MeSH: Middle Aged; MeSH: Young Adult; Title: adults; Curated sample: adults; Explicit sample age range in abstract or existing curated summary,https://pubmed.ncbi.nlm.nih.gov/27002445/,pending
+pmid-26241597,adults;older-adults,,,MeSH: Aged; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/26241597/,pending
+pmid-25907157,youth;adults;older-adults,,included,MeSH: Adult; MeSH: Aged; MeSH: Middle Aged; MeSH: Young Adult; Curated sample: adults,https://pubmed.ncbi.nlm.nih.gov/25907157/,pending
+pmid-40379363,adults;older-adults,,,MeSH: Adult; MeSH: Aged; MeSH: Middle Aged; Curated sample: adults,https://pubmed.ncbi.nlm.nih.gov/40379363/,pending
+doi-10.1007-s12671-026-02877-9,not-specified,,,,,pending
+pmid-33415797,children;adults,,,MeSH: Adult; MeSH: Child; Title: children; Title: adults,https://pubmed.ncbi.nlm.nih.gov/33415797/,pending
+pmid-25607833,youth;adults,,included,MeSH: Adult; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/25607833/,pending
+pmid-42324567,children;adolescents;youth,8–18 years,focus,Title: children; Title: adolescents; Title: youth; Explicit sample age range in abstract or existing curated summary,https://pubmed.ncbi.nlm.nih.gov/42324567/,pending
+pmid-38250261,not-specified,,,,,pending
+pmid-42773467,adults,,,MeSH: Adult; Title: adults,https://pubmed.ncbi.nlm.nih.gov/42773467/,pending
+pmid-41340540,children;adolescents;youth,,focus,MeSH: Adolescent; MeSH: Child; Title: children; Title: adolescents; Title: youth,https://pubmed.ncbi.nlm.nih.gov/41340540/,pending
+pmid-42254728,not-specified,,,,,pending
+pmid-40417270,not-specified,,,,,pending
+pmid-39023949,youth;adults,,included,MeSH: Adult; MeSH: Middle Aged; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/39023949/,pending
+pmid-39731040,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/39731040/,pending
+pmid-42880055,not-specified,,,,,pending
+doi-37881ae999c094e1,children;adolescents;youth,,focus,Title: children; Title: adolescents; Title: youth,https://doi.org/10.1016/j.fnhli.2025.100070,pending
+pmid-39630422,children;adolescents;youth,,included,MeSH: Adolescent; MeSH: Child; Title: children,https://pubmed.ncbi.nlm.nih.gov/39630422/,pending
+pmid-33709117,children;adolescents;youth,4–15 years,focus,"MeSH: Adolescent; MeSH: Child; MeSH: Child, Preschool; Title: children; Title: adolescents; Title: youth; Explicit sample age range in abstract or existing curated summary",https://pubmed.ncbi.nlm.nih.gov/33709117/,pending
+pmid-40243164,children;adolescents;youth,12–18 years,focus,MeSH: Adolescent; Title: adolescents; Title: youth; Explicit sample age range in abstract or existing curated summary,https://pubmed.ncbi.nlm.nih.gov/40243164/,pending
+pmid-42703195,adolescents;youth,,focus,Title: adolescents; Title: youth,https://pubmed.ncbi.nlm.nih.gov/42703195/,pending
+pmid-34512458,adolescents;youth;adults,13–24 years,focus,Title: adolescents; Title: youth; Title: adults; Explicit sample age range in abstract or existing curated summary,https://pubmed.ncbi.nlm.nih.gov/34512458/,pending
+pmid-39835632,children;adolescents;youth;adults,12–25 years; 36 participants aged 12–17 and 38 aged 18–25,focus,MeSH: Adolescent; MeSH: Adult; MeSH: Child; MeSH: Young Adult; Title: adolescents; Title: youth; Title: adults; Explicit sample age range in abstract or existing curated summary,https://pubmed.ncbi.nlm.nih.gov/39835632/,pending
+pmid-38032626,youth;adults,,included,MeSH: Adult; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/38032626/,pending
+pmid-42411718,youth;adults,,included,MeSH: Adult; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/42411718/,pending
+pmid-9479674,adolescents;youth;adults,16–25 years,focus,MeSH: Adolescent; MeSH: Adult; Explicit sample age range in abstract or existing curated summary; Explicit young population in title,https://pubmed.ncbi.nlm.nih.gov/9479674/,pending
+pmid-35070159,adults;older-adults,,,MeSH: Adult; MeSH: Aged; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/35070159/,pending
+pmid-36266402,adolescents;youth,,focus,MeSH: Adolescent; Title: adolescents; Title: youth,https://pubmed.ncbi.nlm.nih.gov/36266402/,pending
+pmid-31645664,not-specified,,,,,pending
+pmid-31352130,children;adolescents;youth,8–18 years,focus,MeSH: Adolescent; MeSH: Child; Title: youth; Explicit sample age range in abstract or existing curated summary,https://pubmed.ncbi.nlm.nih.gov/31352130/,pending
+pmid-35707677,not-specified,,,,,pending
+pmid-40706348,youth;adults,,included,MeSH: Adult; MeSH: Middle Aged; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/40706348/,pending
+doi-14a5c17359f1dfcb,not-specified,,,,,pending
+vision-photoreceptor-mosaic-1998,not-specified,,,,,pending
+vision-retinal-orientation-2011,not-specified,,,,,pending
+vision-hexadirectional-2018,adolescents;youth;adults,,included,MeSH: Adolescent; MeSH: Adult; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/29311746/,pending
+pmid-17287729,not-specified,,,,,pending
+pmid-24025838,not-specified,,,,,pending
+pmid-22824810,not-specified,,,,,pending
+pmid-30301953,not-specified,,,,,pending
+pmid-32313029,not-specified,,,,,pending
+pmid-24464043,not-specified,,,,,pending
+pmid-30944474,not-specified,,,,,pending
+pmid-37938765,not-specified,,,,,pending
+pmid-39313675,adolescents;youth;adults,,included,MeSH: Adolescent; MeSH: Adult; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/39313675/,pending
+pmid-41663511,not-specified,,,,,pending
+pmid-37730989,not-specified,,,,,pending
+pmid-19234457,youth;adults,,included,MeSH: Adult; MeSH: Middle Aged; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/19234457/,pending
+pmid-29184215,not-specified,,,,,pending
+pmid-17514195,not-specified,,,,,pending
+pmid-25806429,not-specified,,,,,pending
+pmid-21217764,not-specified,,,,,pending
+pmid-38049408,not-specified,,,,,pending
+pmid-24552785,not-specified,,,,,pending
+pmid-38862815,adolescents;youth;adults,,included,MeSH: Adolescent; MeSH: Adult; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/38862815/,pending
+pmid-27576169,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/27576169/,pending
+pmid-27898068,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/27898068/,pending
+pmid-30760920,not-specified,,,,,pending
+pmid-27698453,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/27698453/,pending
+nature-fibonacci-srep27347,not-specified,,,,,pending
+nature-fibonacci-srep15358,not-specified,,,,,pending
+nature-fibonacci-s41598-023-34880-8,not-specified,,,,,pending
+nature-fibonacci-nature02081,not-specified,,,,,pending
+nature-fibonacci-nature12791,not-specified,,,,,pending
+nature-fibonacci-s41598-021-93133-8,not-specified,,,,,pending
+nature-fibonacci-s41598-017-13767-5,not-specified,,,,,pending
+nature-fibonacci-srep39821,not-specified,,,,,pending
+nature-fibonacci-s41540-026-00733-z,not-specified,,,,,pending
+nature-fibonacci-s41586-025-09570-2,not-specified,,,,,pending
+nature-fibonacci-s41567-024-02529-6,not-specified,,,,,pending
+nature-fibonacci-s41467-025-61493-8,not-specified,,,,,pending
+nature-fibonacci-s41586-022-04853-4,not-specified,,,,,pending
+nature-fibonacci-nphys1396,not-specified,,,,,pending
+nature-fibonacci-srep31350,not-specified,,,,,pending
+nature-fibonacci-srep46302,not-specified,,,,,pending
+nature-fibonacci-s41598-023-28367-9,not-specified,,,,,pending
+nature-fibonacci-s41598-026-66284-9,not-specified,,,,,pending
+nature-fibonacci-s41598-024-62260-3,not-specified,,,,,pending
+nature-fibonacci-s41598-020-64065-6,not-specified,,,,,pending
+nature-fibonacci-s41567-020-0908-7,not-specified,,,,,pending
+nature-fibonacci-s41467-020-15760-5,not-specified,,,,,pending
+nature-fibonacci-srep38651,not-specified,,,,,pending
+nature-fibonacci-s41467-018-05950-7,not-specified,,,,,pending
+nature-fibonacci-s41598-020-67567-5,not-specified,,,,,pending
+nature-fibonacci-s41598-017-02170-9,not-specified,,,,,pending
+nature-fibonacci-nphoton.2009.285,not-specified,,,,,pending
+nature-fibonacci-s42005-025-02264-1,not-specified,,,,,pending
+nature-fibonacci-s41598-026-40652-x,not-specified,,,,,pending
+nature-fibonacci-s41598-020-72218-w,not-specified,,,,,pending
+quantum-honeycomb-hastings-haah-2021,not-specified,,,,,pending
+quantum-penrose-fibonacci-code-2024,not-specified,,,,,pending
+quantum-ibm-heavy-hex-2021,not-specified,,,,,pending
+quantum-heavy-hex-scaling-2026,not-specified,,,,,pending
+quantum-kagome-edge-states-2026,not-specified,,,,,pending
+quantum-rydberg-local-error-correction-2024,not-specified,,,,,pending
+quantum-haah-fractal-code-2011,not-specified,,,,,pending
+hsi-fda6f081ed5bea,not-specified,,,,,pending
+hsi-5e1047e741fec6,not-specified,,,,,pending
+hsi-c850f6777572d4,not-specified,,,,,pending
+hsi-84b3c79b78cbd5,not-specified,,,,,pending
+hsi-5741b19204aaa6,not-specified,,,,,pending
+hsi-f2d9fb354d5d0b,adults,,,MeSH: Adult,https://pubmed.ncbi.nlm.nih.gov/16109416/,pending
+hsi-16f70e898521b3,not-specified,,,,,pending
+hsi-ee301b86285079,not-specified,,,,,pending
+hsi-7ad76f3461e8f4,not-specified,,,,,pending
+hsi-6fe5f46314bf49,not-specified,,,,,pending
+hsi-130fe722e2c413,not-specified,,,,,pending
+hsi-80a547fe5cffcd,not-specified,,,,,pending
+hsi-743d6718e4798d,not-specified,,,,,pending
+hsi-73d87fc83f0d66,not-specified,,,,,pending
+hsi-fb26f28fd984a4,not-specified,,,,,pending
+hsi-4a1a5cee408d6c,not-specified,,,,,pending
+hsi-4c43fe26667b32,not-specified,,,,,pending
+hsi-8e4034b8b289a9,not-specified,,,,,pending
+hsi-3d163ae87207d0,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/40658054/,pending
+hsi-28e5e7fe09245a,children;adults,,,"MeSH: Adult; MeSH: Child; MeSH: Child, Preschool; MeSH: Infant",https://pubmed.ncbi.nlm.nih.gov/19015103/,pending
+hsi-d6215fd15c4e25,adolescents;youth;adults,,included,MeSH: Adolescent; MeSH: Adult; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/21183159/,pending
+hsi-6b1d2def31c0db,not-specified,,,,,pending
+hsi-55916122662aa4,youth;adults,,included,MeSH: Adult; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/23711064/,pending
+hsi-aecb6ce44b1875,not-specified,,,,,pending
+hsi-b2ec2b67bc699b,not-specified,,,,,pending
+hsi-11aecd75cd9043,not-specified,,,,,pending
+hsi-9cc2ba2f0010e1,not-specified,,,,,pending
+hsi-4904d75ff35109,not-specified,,,,,pending
+hsi-c15e2698527a36,not-specified,,,,,pending
+hsi-4471c0cab6e122,not-specified,,,,,pending
+hsi-25e3cdf609e7e8,not-specified,,,,,pending
+hsi-2c85ce08716726,not-specified,,,,,pending
+hsi-b4a2f9f50b86b4,not-specified,,,,,pending
+hsi-27332000a2bc2d,youth;adults,,included,MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/30257007/,pending
+hsi-a738a60b4fd69e,youth;adults,,included,MeSH: Adult; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/30002447/,pending
+hsi-cefd1a89919598,not-specified,,,,,pending
+hsi-f6c36daef82123,not-specified,,,,,pending
+hsi-cc72c20d20ad93,youth;adults;older-adults,,included,MeSH: Adult; MeSH: Aged; MeSH: Middle Aged; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/38886457/,pending
+hsi-474aae27e254f6,not-specified,,,,,pending
+hsi-66bec84627b0dc,not-specified,,,,,pending
+hsi-9d14d253c181bc,youth;adults,,included,MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/30766598/,pending
+hsi-113f6b6b7e2532,not-specified,,,,,pending
+hsi-f85613b2aab02b,not-specified,,,,,pending
+hsi-d85459e14c4885,adults;older-adults,55–95 years,,MeSH: Aged; Title: adults; Title: older-adults; Explicit sample age range in abstract or existing curated summary,https://pubmed.ncbi.nlm.nih.gov/38461634/,pending
+hsi-a6d1ba2316c08d,not-specified,,,,,pending
+hsi-2d570b00f2ccf3,not-specified,,,,,pending
+hsi-688691ea42776f,not-specified,,,,,pending
+hsi-fdb97b4e29c7dd,not-specified,,,,,pending
+hsi-62d3aa9212928c,not-specified,,,,,pending
+hsi-25d9dbb27793f1,not-specified,,,,,pending
+hsi-e4fe63d45bf8b9,not-specified,,,,,pending
+hsi-0f08e7dadf9e0b,not-specified,,,,,pending
+hsi-73a17e50a48e07,not-specified,,,,,pending
+hsi-7388517063a7af,not-specified,,,,,pending
+hsi-ab0d1892ea7227,not-specified,,,,,pending
+hsi-83b2680d02c658,not-specified,,,,,pending
+hsi-ab41c0abb24e53,not-specified,,,,,pending
+hsi-2bdd395b380845,not-specified,,,,,pending
+hsi-f195eb8e628a71,not-specified,,,,,pending
+hsi-60b2c2a14403dd,not-specified,,,,,pending
+hsi-8d0c61cbbe9b8f,not-specified,,,,,pending
+hsi-bf70680de4d4e4,not-specified,,,,,pending
+hsi-10ecf2c046f745,not-specified,,,,,pending
+hsi-946216a176e063,not-specified,,,,,pending
+hsi-aab85699a77a3d,not-specified,,,,,pending
+hsi-77718f06669535,not-specified,,,,,pending
+hsi-4af2057b096b94,adults,,,MeSH: Adult; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/23025690/,pending
+hsi-47902eba688213,not-specified,,,,,pending
+hsi-8a8678573fb17e,not-specified,,,,,pending
+hsi-07cc188cceb30b,not-specified,,,,,pending
+hsi-95de488967bdae,youth;adults,,included,MeSH: Adult; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/24912179/,pending
+hsi-fa5125a3521b41,not-specified,,,,,pending
+hsi-6e4cd0919dfce6,not-specified,,,,,pending
+hsi-8f5609e6da289b,not-specified,,,,,pending
+hsi-7d3097f47eb89f,not-specified,,,,,pending
+hsi-0c64f140769534,not-specified,,,,,pending
+hsi-39fab96b7c60e8,not-specified,,,,,pending
+hsi-26e06f24f0b804,not-specified,,,,,pending
+hsi-30665e57818748,not-specified,,,,,pending
+hsi-5251fd98c28e8b,youth;adults,,included,MeSH: Adult; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/19046396/,pending
+hsi-4efe761244a9d1,youth;adults,,included,MeSH: Adult; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/21697824/,pending
+hsi-be932d8730b595,not-specified,,,,,pending
+hsi-30d689c8edc32d,adults,,,MeSH: Adult,https://pubmed.ncbi.nlm.nih.gov/11459878/,pending
+hsi-15872e1b8b4ebc,adults,,,MeSH: Adult,https://pubmed.ncbi.nlm.nih.gov/12937078/,pending
+hsi-4bc623819a8a2f,not-specified,,,,,pending
+hsi-608c987e1bbe8a,adults;older-adults,,,MeSH: Aged; MeSH: Middle Aged,https://pubmed.ncbi.nlm.nih.gov/1305620/,pending
+hsi-dbaacd77b57047,adults;older-adults,,,MeSH: Aged,https://pubmed.ncbi.nlm.nih.gov/7928105/,pending
+hsi-65629c874781f2,adults;older-adults,,,MeSH: Aged,https://pubmed.ncbi.nlm.nih.gov/7960478/,pending
+hsi-9754d6a5bca560,not-specified,,,,,pending
+hsi-de25bca76daa01,not-specified,,,,,pending
+hsi-e2e37e929bf669,not-specified,,,,,pending
+hsi-77fdc107df5fe0,not-specified,,,,,pending
+hsi-228d0ab78ee822,not-specified,,,,,pending
+hsi-c2e2e55e945231,not-specified,,,,,pending
+hsi-d7705f9004e7f6,not-specified,,,,,pending
+hsi-678a9434e390e7,not-specified,,,,,pending
+hsi-f7aa09edd12cad,adults,,,MeSH: Adult,https://pubmed.ncbi.nlm.nih.gov/31745107/,pending
+hsi-c6f6e59d6a927f,not-specified,,,,,pending
+hsi-fd5105023e2775,not-specified,,,,,pending
+hsi-1f05ba573dcb27,not-specified,,,,,pending
+hsi-fe9beed0c48feb,not-specified,,,,,pending
+hsi-ac1a12e6336bc8,not-specified,,,,,pending
+hsi-58c1b04eae1511,not-specified,,,,,pending
+hsi-8df714c2a5352f,not-specified,,,,,pending
+hsi-02ab11b6d0ef93,not-specified,,,,,pending
+hsi-a4e2cdb5885ae2,not-specified,,,,,pending
+hsi-a6e8dbdcc31098,not-specified,,,,,pending
+hsi-6a797a12e4bebc,youth;adults,,included,MeSH: Adult; MeSH: Middle Aged; MeSH: Young Adult,https://pubmed.ncbi.nlm.nih.gov/33043883/,pending
+hsi-a9cb2f5e34a281,youth,,focus,Title: youth,https://www.notion.so/3807b9c99c5680599be7d8337c817b15,pending
+hsi-fdcf14e03d75d0,not-specified,,,,,pending
+hsi-6df09691312824,not-specified,,,,,pending
+hsi-383199709ef6f4,not-specified,,,,,pending
+hsi-93f7d121a0ab35,not-specified,,,,,pending
+hsi-3f248c769cb7e5,not-specified,,,,,pending
+hsi-587c00ecc00816,not-specified,,,,,pending
+hsi-3bbc732bf7d08f,not-specified,,,,,pending
+hsi-0c6e4452422469,not-specified,,,,,pending
+hsi-ce00f43b88b08e,not-specified,,,,,pending
+hsi-b2caf4e538d889,not-specified,,,,,pending
+hsi-f8d72d4059c326,not-specified,,,,,pending
+hsi-db6bcdd185c65d,not-specified,,,,,pending
+hsi-08604531a6bb4f,not-specified,,,,,pending
+hsi-5b22e3b360013a,not-specified,,,,,pending
+hsi-881adcbbeae56a,not-specified,,,,,pending
+hsi-1ab85ffdd4e0cf,not-specified,,,,,pending
+hsi-e850baebbfec10,not-specified,,,,,pending
+hsi-8042baa9bf1d2d,not-specified,,,,,pending
+hsi-ba7873fe043fbf,children,,,Title: children,https://pubmed.ncbi.nlm.nih.gov/33141724/,pending
+hsi-06c534edea044e,not-specified,,,,,pending
+hsi-e5ce75d3c77c19,not-specified,,,,,pending
+hsi-c644e5401b9e2e,not-specified,,,,,pending
+hsi-2d7983e4ef049a,not-specified,,,,,pending
+hsi-e3944b33936175,not-specified,,,,,pending
+hsi-4b75613536363d,not-specified,,,,,pending
+hsi-92cd98c0974786,not-specified,,,,,pending
+hsi-a911e8605e024c,not-specified,,,,,pending
+hsi-c2365ea769851d,not-specified,,,,,pending
+hsi-852a0ba2dbf56c,not-specified,,,,,pending
+hsi-4f3065875d9c72,not-specified,,,,,pending
+hsi-21970c827acaf2,not-specified,,,,,pending
+hsi-9aca948efa6310,not-specified,,,,,pending
+hsi-3d3b5bdc1825c3,not-specified,,,,,pending
+hsi-ed18598f8b5617,not-specified,,,,,pending
+hsi-509cb5093173a7,not-specified,,,,,pending
+hsi-2d7228bf087a2d,not-specified,,,,,pending
+hsi-68920f19acc589,not-specified,,,,,pending
+hsi-8c4a775b474639,not-specified,,,,,pending
+hsi-bb8bd49cde6956,not-specified,,,,,pending
+hsi-db701719d4dfca,not-specified,,,,,pending
+hsi-93d8a400352b6c,not-specified,,,,,pending
+hsi-8ad27b6daef8ac,not-specified,,,,,pending
+hsi-9e3caca1a18860,not-specified,,,,,pending
+hsi-d472a890e03c1b,not-specified,,,,,pending
+hsi-98a399171f2226,not-specified,,,,,pending
+hsi-e7e54aaae200fa,not-specified,,,,,pending
+hsi-51ceed09e76ab1,not-specified,,,,,pending
+hsi-970c306954834e,not-specified,,,,,pending
+hsi-f69919e90b4809,not-specified,,,,,pending
+hsi-890a81b217c123,not-specified,,,,,pending
+hsi-c847bd10379570,not-specified,,,,,pending
+hsi-8b0c28afb02b86,not-specified,,,,,pending
+hsi-3338d715ddefac,not-specified,,,,,pending
+hsi-a969f74bedb780,not-specified,,,,,pending
+hsi-c97f9a5a073dee,not-specified,,,,,pending
+hsi-a7e89452d57b51,not-specified,,,,,pending
+hsi-672c477cf92f2c,not-specified,,,,,pending
+hsi-b89b11771190f7,not-specified,,,,,pending
+hsi-37b2d379bb9681,not-specified,,,,,pending
+hsi-4d0943da705896,not-specified,,,,,pending
+hsi-bb4d6be95a6fbf,not-specified,,,,,pending
+hsi-f85cb98f5b77d1,not-specified,,,,,pending
+hsi-507bbc03f5d2eb,not-specified,,,,,pending
+hsi-a8977d72a1a256,not-specified,,,,,pending
+hsi-d20e21db0f73d9,not-specified,,,,,pending
+hsi-33dac4910c8d78,not-specified,,,,,pending
+hsi-50b42dd5c5b578,not-specified,,,,,pending
+hsi-0d33d222d235dd,not-specified,,,,,pending
+hsi-7d176d0ecb2d26,not-specified,,,,,pending
+hsi-320858d8be27a8,not-specified,,,,,pending
+hsi-5383613370a770,not-specified,,,,,pending
+hsi-1bfd258cce7eef,not-specified,,,,,pending
+hsi-d9b2c705e7f695,not-specified,,,,,pending
+hsi-c72f6f428330c2,not-specified,,,,,pending
+hsi-ca225cf85be823,not-specified,,,,,pending
+hsi-640ffd898d4f0f,not-specified,,,,,pending
+hsi-c1f30e3f5d4055,not-specified,,,,,pending
+hsi-ce108c64ada154,not-specified,,,,,pending
+hsi-347e099d5780a1,not-specified,,,,,pending
+hsi-3775d2078838e2,not-specified,,,,,pending
+hsi-43757b09c98745,not-specified,,,,,pending
+hsi-a2182f3ffa9feb,not-specified,,,,,pending
+hsi-e0d5c3805210ed,not-specified,,,,,pending
+hsi-a767ad286ab4ab,not-specified,,,,,pending
+hsi-a69099559ecd76,not-specified,,,,,pending
+hsi-adeb0509f25117,not-specified,,,,,pending
+hsi-33295070309002,not-specified,,,,,pending
+hsi-d4f9970183960d,not-specified,,,,,pending
+hsi-49e12e857b5371,not-specified,,,,,pending
+hsi-22a43f552b2b2f,not-specified,,,,,pending
+hsi-6963bd6166bcd0,not-specified,,,,,pending
+hsi-be9f5eccf3b27d,not-specified,,,,,pending
+hsi-30eaacfb450209,not-specified,,,,,pending
+hsi-33a52b5cee68bb,not-specified,,,,,pending
+hsi-patent-us20240289989a1,not-specified,,,,,pending
+hsi-patent-wo2021111436a1,not-specified,,,,,pending
+hsi-patent-us20230128051a1,not-specified,,,,,pending
+hsi-patent-wo2020060606a1,not-specified,,,,,pending
+hsi-patent-us8489181b1,not-specified,,,,,pending
+hsi-patent-us20170303790a1,not-specified,,,,,pending
+hsi-patent-us9551613b2,not-specified,,,,,pending
+hsi-patent-us20150044098a1,not-specified,,,,,pending
+hsi-patent-us11222422b2,not-specified,,,,,pending
+hsi-patent-us10018758,not-specified,,,,,pending
+hsi-patent-us20140320858a1,not-specified,,,,,pending

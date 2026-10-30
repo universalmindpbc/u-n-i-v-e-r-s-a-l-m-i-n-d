@@ -56,8 +56,26 @@ assert.ok(!has('pmid-30760920','war-trauma',true),'Mouse mechanism alone does no
 assert.ok(!has('pmid-29899015','war-trauma',true),'REWARD is not a war term');
 assert.ok(!has('pmid-29228794','indigenous',true),'Marginalized youth does not establish Indigenous identity');
 const counts=Object.fromEntries(data.taxonomy.map(t=>[t.id,{directAndContext:records.filter(r=>model.matches(r,t.id)).length,includingRelated:records.filter(r=>model.matches(r,t.id,true)).length}]));
-assert.deepEqual(counts,{'refugees':{directAndContext:97,includingRelated:97},'housing':{directAndContext:38,includingRelated:38},'defence':{directAndContext:56,includingRelated:56},'indigenous':{directAndContext:21,includingRelated:21},'domestic-violence':{directAndContext:5,includingRelated:62},'war-trauma':{directAndContext:24,includingRelated:79}});
+assert.deepEqual(counts,{'refugees':{directAndContext:97,includingRelated:133},'housing':{directAndContext:38,includingRelated:79},'defence':{directAndContext:56,includingRelated:84},'indigenous':{directAndContext:21,includingRelated:34},'domestic-violence':{directAndContext:5,includingRelated:62},'war-trauma':{directAndContext:24,includingRelated:79}});
+const overlay=JSON.parse(fs.readFileSync(path.join(root,'research/informatics/communities-related-20261030/related-assessments.json'),'utf8'));
+assert.equal(overlay.screenedRecordCount,1108);
+assert.equal(overlay.links.length,118);
+assert.equal(new Set(overlay.links.map(l=>l.recordId+'|'+l.categoryId)).size,118);
+for(const link of overlay.links){
+ assert.equal(link.reviewStatus,'pending');assert.equal(link.reviewedBy,null);assert.equal(link.relation,'related');
+ assert.ok(link.rationale&&link.transferLimit&&link.sourceVerification);
+ assert.ok(link.anchorRecordIds.length);
+ for(const id of link.anchorRecordIds)assert.ok(audit.records.find(r=>r.recordId===id)?.matches.some(m=>m.categoryId===link.categoryId&&m.relation!=='related'));
+ assert.ok(has(link.recordId,link.categoryId,true));assert.ok(!has(link.recordId,link.categoryId));
+}
+for(const original of audit.records)for(const match of original.matches)assert.ok(data.records.find(r=>r.recordId===original.recordId).matches.some(m=>m.categoryId===match.categoryId&&m.relation===match.relation));
+for(const category of ['defence','refugees','housing','indigenous'])assert.ok(counts[category].includingRelated>counts[category].directAndContext);
+assert.ok(has('pmid-35820992','indigenous',true),'Null youth mindfulness finding remains discoverable');
+assert.ok(has('pmid-33709117','housing',true),'Neutral pediatric PTSD outcome remains discoverable');
+assert.ok(!has('pmid-40749778','indigenous',true),'Mouse light-schedule experiment is not community evidence');
 const html=read('library.html');assert.doesNotMatch(html,/calibration|Awaiting Universal Mind review|50.paper/i);assert.doesNotMatch(source,/community-coverage|calibration-only|community-evidence|Calibration · pending review/);
-const report={passed:true,visibleCorpus:records.length,assessed:data.records.length,unassessed:0,humanApproved:50,directOrContextual:records.filter(r=>r.communityMatches.some(m=>m.relation!=='related')).length,includingRelated:records.filter(r=>r.communityMatches.length).length,statusCounts:audit.statusCounts,counts};
-fs.writeFileSync(path.join(root,'research/informatics/communities-full-20261030/classification-checks.json'),JSON.stringify(report,null,2)+'\n');
+const report={passed:true,visibleCorpus:records.length,assessed:data.records.length,unassessed:0,humanApproved:50,directOrContextual:records.filter(r=>r.communityMatches.some(m=>m.relation!=='related')).length,includingRelated:records.filter(r=>r.communityMatches.length).length,baselineStatusCounts:audit.statusCounts,newRelatedLinks:overlay.links.length,newRelatedPapers:new Set(overlay.links.map(l=>l.recordId)).size,counts};
+fs.writeFileSync(path.join(root,'research/informatics/communities-related-20261030/classification-checks.json'),JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify(report));
+
+export {records};

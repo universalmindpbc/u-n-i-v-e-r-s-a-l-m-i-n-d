@@ -1,0 +1,80 @@
+{
+  "passed": true,
+  "files": [
+    {
+      "path": "Informatics/library-data/sound-edition.json",
+      "sha256": "45cca9765db111a9572a5b4e979a01fed477f5065f78fd43e0df49693a11baa3",
+      "unchanged": true
+    },
+    {
+      "path": "Informatics/library-data/library.json",
+      "sha256": "9e8c73b42c5cb5cf04250910279d93ba58b3504a6230aac5020a6c1b0cb0698d",
+      "unchanged": true
+    },
+    {
+      "path": "Informatics/library-data/publication-access.json",
+      "sha256": "09941fafec05492b5b154006aa237069f9c6c276eb38735bf9913c7ea80418ca",
+      "unchanged": true
+    },
+    {
+      "path": "Informatics/library-data/language-edition.json",
+      "sha256": "b75953821a14dd5d816280fdd17957ca89d3d5dc2a88eb2639828b9a240c82be",
+      "unchanged": true
+    },
+    {
+      "path": "Informatics/library-data/general-edition.json",
+      "sha256": "c0ce0dde985c954f18f29e58f899c192a67861652d12c3b168415a69e46c537c",
+      "unchanged": true
+    },
+    {
+      "path": "Informatics/library-data/mindfulness-expansion.json",
+      "sha256": "52f669b3b56269d9d68333169edbad313733ff838963adafbc9d3b246e0da2c2",
+      "unchanged": true
+    },
+    {
+      "path": "Informatics/library-data/vision-edition.json",
+      "sha256": "72b7f957c48b7db15ef18a13ae70883a816dc946c0f1c480d2873ca84bca1577",
+      "unchanged": true
+    },
+    {
+      "path": "Informatics/library-data/vision-expansion.json",
+      "sha256": "c1aa46b0b6df3916009e60f912f762081869be97fa79b2729380dc74291d2358",
+      "unchanged": true
+    },
+    {
+      "path": "Informatics/library-data/clinical-conditions.json",
+      "sha256": "72d41ef50d5718e18152fa6ff280f8bccc59855aef47ee578a46da718eaf4040",
+      "unchanged": true
+    },
+    {
+      "path": "Informatics/library-data/nature-expansion.json",
+      "sha256": "f7072ca98ea93b9b751d7d11d4fdf6002a83caaa06c7f46310b79f50db430ba8",
+      "unchanged": true
+    },
+    {
+      "path": "Informatics/library-data/fulltext-availability.json",
+      "sha256": "faa1f05a9ea305479c135857000799b727001dd09f41183a4a25a01f1660dfe2",
+      "unchanged": true
+    },
+    {
+      "path": "Informatics/library-data/fibonacci-expansion.json",
+      "sha256": "4dec7704e4b0061d37c6164be4221a97e14c666726164ce522bfb23a84d5340a",
+      "unchanged": true
+    },
+    {
+      "path": "Informatics/library-data/hyperspectral-expansion.json",
+      "sha256": "7c40d251a8f3055c8d36fcac7e6596f51f469ff1a713b02a8978544bee4fdc4a",
+      "unchanged": true
+    },
+    {
+      "path": "research/informatics/communities-full-20261030/classification-audit.json",
+      "sha256": "a524132589b42a704c136a2dbd5e58730c5769c2beae903fe16e0f00b82a650e",
+      "unchanged": true
+    },
+    {
+      "path": "research/informatics/communities-contexts-20261030/calibration-snapshot.json",
+      "sha256": "82788f88c453f6d10dd5bb4d53b337bd3f9f7122483dadd8bced56dd9b4d57be",
+      "unchanged": true
+    }
+  ]
+}

@@ -5,17 +5,27 @@ import json
 
 ROOT = Path(__file__).resolve().parents[1]
 AUDIT = ROOT / 'research/informatics/communities-full-20261030/classification-audit.json'
+RELATED = ROOT / 'research/informatics/communities-related-20261030/related-assessments.json'
 TARGET = ROOT / 'Informatics/library-data/community-index.json'
 
 def render():
     audit = json.loads(AUDIT.read_text())
+    related = json.loads(RELATED.read_text())
+    records = {row['recordId']: {'recordId': row['recordId'], 'matches': list(row['matches'])}
+               for row in audit['records']}
+    for link in related['links']:
+        row = records[link['recordId']]
+        assert link['categoryId'] in {'defence', 'indigenous', 'refugees', 'housing'}
+        assert link['relation'] == 'related'
+        assert not any(m['categoryId'] == link['categoryId'] for m in row['matches']), 'Duplicate community relation'
+        row['matches'].append({'categoryId': link['categoryId'], 'relation': 'related'})
     public = {
         'schemaVersion': 'communities-contexts/v2',
         'title': 'Communities and Contexts',
-        'updatedAt': audit['assessedAt'],
+        'updatedAt': related['assessedAt'],
         'recordCount': audit['recordCount'],
         'taxonomy': audit['taxonomy'],
-        'records': [{'recordId': row['recordId'], 'matches': row['matches']} for row in audit['records']],
+        'records': list(records.values()),
     }
     return json.dumps(public, indent=2, ensure_ascii=False) + '\n'
 

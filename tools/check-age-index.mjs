@@ -1,0 +1,36 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {records} from './check-community-index.mjs';
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+const data=JSON.parse(fs.readFileSync(path.join(root,'Informatics/library-data/age-index.json'),'utf8'));
+const audit=JSON.parse(fs.readFileSync(path.join(root,'research/informatics/communities-related-20261030/age-assessments.json'),'utf8'));
+const byId=new Map(data.records.map(r=>[r.recordId,r]));
+assert.equal(data.records.length,1108);assert.equal(byId.size,1108);
+assert.deepEqual(new Set(records.map(r=>r.id)),new Set(byId.keys()));
+for(const r of data.records){
+ assert.ok(r.groups.length);assert.equal(new Set(r.groups).size,r.groups.length);
+ assert.ok(r.groups.every(g=>data.taxonomy.some(t=>t.id===g)));
+ if(r.groups.includes('not-specified'))assert.deepEqual(r.groups,['not-specified']);
+ if(r.groups.includes('youth'))assert.ok(['focus','included'].includes(r.youthScope));else assert.equal(r.youthScope,null);
+ if(r.sourceURL)assert.match(r.sourceURL,/^https:\/\//);
+ assert.ok(!('reviewStatus' in r));
+}
+assert.equal(audit.records.every(r=>r.reviewStatus==='pending'&&r.reviewedBy===null),true);
+const has=(id,g)=>byId.get(id).groups.includes(g);
+assert.ok(has('pmid-32892758','adults')&&!has('pmid-32892758','children'),'Historical childhood trauma does not make an adult trial a child trial');
+assert.ok(has('pmid-42324567','youth')&&has('pmid-42324567','children'));
+assert.equal(byId.get('pmid-42324567').reportedAges,'8–18 years');
+assert.ok(has('pmid-35820992','youth'),'Null school mindfulness trial is included');
+assert.equal(byId.get('pmid-20099470').youthScope,'included','Older-adult focus and younger comparison are distinguished');
+assert.equal(byId.get('src-0e1e9057a0a3').reportedAges,'18–35 years','The source-specific youth range is preserved');
+assert.ok(has('src-96965bda66df','youth'),'Young Sudanese refugees are explicit in the title');
+assert.ok(!has('src-473becc5048a','children'),'Children and grandchildren describe kinship, not a measured child cohort');
+assert.ok(has('pmid-40749778','not-specified'),'A mouse experiment gets no inferred human age');
+assert.ok(has('src-f265f80eb04c','not-specified'),'Unresolved source identity is not classified by age');
+const counts=Object.fromEntries(data.taxonomy.map(t=>[t.id,data.records.filter(r=>r.groups.includes(t.id)).length]));
+assert.deepEqual(counts,{'children':37,'adolescents':80,'youth':170,'adults':320,'older-adults':89,'not-specified':730});
+const report={passed:true,records:1108,metadataMatches:audit.metadataMatched,counts,reportedAgeRanges:27,youthFocus:63,youthIncluded:107};
+fs.writeFileSync(path.join(root,'research/informatics/communities-related-20261030/age-checks.json'),JSON.stringify(report,null,2)+'\n');
+console.log(JSON.stringify(report));

@@ -580,6 +580,14 @@
         {
           "categoryId": "refugees",
           "relation": "context"
+        },
+        {
+          "categoryId": "defence",
+          "relation": "related"
+        },
+        {
+          "categoryId": "housing",
+          "relation": "related"
         }
       ]
     },
@@ -589,7 +597,20 @@
     },
     {
       "recordId": "pmid-40547443",
-      "matches": []
+      "matches": [
+        {
+          "categoryId": "defence",
+          "relation": "related"
+        },
+        {
+          "categoryId": "refugees",
+          "relation": "related"
+        },
+        {
+          "categoryId": "housing",
+          "relation": "related"
+        }
+      ]
     },
     {
       "recordId": "portal-7c6d9225444d",
@@ -614,12 +635,37 @@
         {
           "categoryId": "war-trauma",
           "relation": "related"
+        },
+        {
+          "categoryId": "defence",
+          "relation": "related"
+        },
+        {
+          "categoryId": "refugees",
+          "relation": "related"
+        },
+        {
+          "categoryId": "housing",
+          "relation": "related"
         }
       ]
     },
     {
       "recordId": "pmid-36427257",
-      "matches": []
+      "matches": [
+        {
+          "categoryId": "defence",
+          "relation": "related"
+        },
+        {
+          "categoryId": "refugees",
+          "relation": "related"
+        },
+        {
+          "categoryId": "housing",
+          "relation": "related"
+        }
+      ]
     },
     {
       "recordId": "pmid-38327501",
@@ -630,6 +676,18 @@
         },
         {
           "categoryId": "war-trauma",
+          "relation": "related"
+        },
+        {
+          "categoryId": "defence",
+          "relation": "related"
+        },
+        {
+          "categoryId": "refugees",
+          "relation": "related"
+        },
+        {
+          "categoryId": "housing",
           "relation": "related"
         }
       ]
@@ -662,6 +720,18 @@
         {
           "categoryId": "war-trauma",
           "relation": "related"
+        },
+        {
+          "categoryId": "defence",
+          "relation": "related"
+        },
+        {
+          "categoryId": "refugees",
+          "relation": "related"
+        },
+        {
+          "categoryId": "housing",
+          "relation": "related"
         }
       ]
     },
@@ -689,7 +759,20 @@
     },
     {
       "recordId": "pmid-34763697",
-      "matches": []
+      "matches": [
+        {
+          "categoryId": "defence",
+          "relation": "related"
+        },
+        {
+          "categoryId": "refugees",
+          "relation": "related"
+        },
+        {
+          "categoryId": "housing",
+          "relation": "related"
+        }
+      ]
     },
     {
       "recordId": "pmid-33111597",
@@ -721,6 +804,18 @@
         },
         {
           "categoryId": "war-trauma",
+          "relation": "related"
+        },
+        {
+          "categoryId": "defence",
+          "relation": "related"
+        },
+        {
+          "categoryId": "refugees",
+          "relation": "related"
+        },
+        {
+          "categoryId": "housing",
           "relation": "related"
         }
       ]
@@ -957,6 +1052,18 @@
         },
         {
           "categoryId": "war-trauma",
+          "relation": "related"
+        },
+        {
+          "categoryId": "refugees",
+          "relation": "related"
+        },
+        {
+          "categoryId": "indigenous",
+          "relation": "related"
+        },
+        {
+          "categoryId": "housing",
           "relation": "related"
         }
       ]
@@ -1253,7 +1360,20 @@
     },
     {
       "recordId": "pmid-26256140",
-      "matches": []
+      "matches": [
+        {
+          "categoryId": "indigenous",
+          "relation": "related"
+        },
+        {
+          "categoryId": "housing",
+          "relation": "related"
+        },
+        {
+          "categoryId": "refugees",
+          "relation": "related"
+        }
+      ]
     },
     {
       "recordId": "pmid-25653222",
@@ -1374,6 +1494,18 @@
         {
           "categoryId": "war-trauma",
           "relation": "related"
+        },
+        {
+          "categoryId": "refugees",
+          "relation": "related"
+        },
+        {
+          "categoryId": "indigenous",
+          "relation": "related"
+        },
+        {
+          "categoryId": "housing",
+          "relation": "related"
         }
       ]
     },
@@ -1433,7 +1565,20 @@
     },
     {
       "recordId": "pmid-24876768",
-      "matches": []
+      "matches": [
+        {
+          "categoryId": "defence",
+          "relation": "related"
+        },
+        {
+          "categoryId": "refugees",
+          "relation": "related"
+        },
+        {
+          "categoryId": "housing",
+          "relation": "related"
+        }
+      ]
     },
     {
       "recordId": "pmid-24372522",
@@ -1461,6 +1606,18 @@
         },
         {
           "categoryId": "war-trauma",
+          "relation": "related"
+        },
+        {
+          "categoryId": "defence",
+          "relation": "related"
+        },
+        {
+          "categoryId": "refugees",
+          "relation": "related"
+        },
+        {
+          "categoryId": "housing",
           "relation": "related"
         }
       ]
@@ -1602,7 +1759,20 @@
     },
     {
       "recordId": "pmid-23796855",
-      "matches": []
+      "matches": [
+        {
+          "categoryId": "defence",
+          "relation": "related"
+        },
+        {
+          "categoryId": "refugees",
+          "relation": "related"
+        },
+        {
+          "categoryId": "housing",
+          "relation": "related"
+        }
+      ]
     },
     {
       "recordId": "pmid-23742229",
@@ -1708,7 +1878,20 @@
     },
     {
       "recordId": "doi-b8c111dd4c4a9cd1",
-      "matches": []
+      "matches": [
+        {
+          "categoryId": "indigenous",
+          "relation": "related"
+        },
+        {
+          "categoryId": "housing",
+          "relation": "related"
+        },
+        {
+          "categoryId": "refugees",
+          "relation": "related"
+        }
+      ]
     },
     {
       "recordId": "pmid-22937145",
@@ -1880,7 +2063,20 @@
     },
     {
       "recordId": "pmid-20440550",
-      "matches": []
+      "matches": [
+        {
+          "categoryId": "indigenous",
+          "relation": "related"
+        },
+        {
+          "categoryId": "housing",
+          "relation": "related"
+        },
+        {
+          "categoryId": "refugees",
+          "relation": "related"
+        }
+      ]
     },
     {
       "recordId": "pmid-21423355",
@@ -1920,6 +2116,18 @@
         },
         {
           "categoryId": "war-trauma",
+          "relation": "related"
+        },
+        {
+          "categoryId": "defence",
+          "relation": "related"
+        },
+        {
+          "categoryId": "refugees",
+          "relation": "related"
+        },
+        {
+          "categoryId": "housing",
           "relation": "related"
         }
       ]
@@ -2039,7 +2247,16 @@
     },
     {
       "recordId": "pmid-21768988",
-      "matches": []
+      "matches": [
+        {
+          "categoryId": "housing",
+          "relation": "related"
+        },
+        {
+          "categoryId": "defence",
+          "relation": "related"
+        }
+      ]
     },
     {
       "recordId": "pmid-18710596",
@@ -2076,6 +2293,18 @@
         },
         {
           "categoryId": "war-trauma",
+          "relation": "related"
+        },
+        {
+          "categoryId": "defence",
+          "relation": "related"
+        },
+        {
+          "categoryId": "refugees",
+          "relation": "related"
+        },
+        {
+          "categoryId": "housing",
           "relation": "related"
         }
       ]
@@ -2158,7 +2387,16 @@
     },
     {
       "recordId": "doi-82aafc04d055ceed",
-      "matches": []
+      "matches": [
+        {
+          "categoryId": "indigenous",
+          "relation": "related"
+        },
+        {
+          "categoryId": "refugees",
+          "relation": "related"
+        }
+      ]
     },
     {
       "recordId": "pmid-16772250",
@@ -2173,6 +2411,18 @@
         },
         {
           "categoryId": "war-trauma",
+          "relation": "related"
+        },
+        {
+          "categoryId": "defence",
+          "relation": "related"
+        },
+        {
+          "categoryId": "refugees",
+          "relation": "related"
+        },
+        {
+          "categoryId": "housing",
           "relation": "related"
         }
       ]
@@ -4224,7 +4474,24 @@
     },
     {
       "recordId": "src-c5f78a99d96b",
-      "matches": []
+      "matches": [
+        {
+          "categoryId": "defence",
+          "relation": "related"
+        },
+        {
+          "categoryId": "refugees",
+          "relation": "related"
+        },
+        {
+          "categoryId": "housing",
+          "relation": "related"
+        },
+        {
+          "categoryId": "indigenous",
+          "relation": "related"
+        }
+      ]
     },
     {
       "recordId": "src-2c770034898e",
@@ -4281,6 +4548,14 @@
         {
           "categoryId": "refugees",
           "relation": "context"
+        },
+        {
+          "categoryId": "defence",
+          "relation": "related"
+        },
+        {
+          "categoryId": "housing",
+          "relation": "related"
         }
       ]
     },
@@ -4460,6 +4735,10 @@
         {
           "categoryId": "war-trauma",
           "relation": "related"
+        },
+        {
+          "categoryId": "housing",
+          "relation": "related"
         }
       ]
     },
@@ -4499,6 +4778,18 @@
         {
           "categoryId": "war-trauma",
           "relation": "related"
+        },
+        {
+          "categoryId": "defence",
+          "relation": "related"
+        },
+        {
+          "categoryId": "refugees",
+          "relation": "related"
+        },
+        {
+          "categoryId": "housing",
+          "relation": "related"
         }
       ]
     },
@@ -4511,6 +4802,18 @@
         },
         {
           "categoryId": "war-trauma",
+          "relation": "related"
+        },
+        {
+          "categoryId": "defence",
+          "relation": "related"
+        },
+        {
+          "categoryId": "refugees",
+          "relation": "related"
+        },
+        {
+          "categoryId": "housing",
           "relation": "related"
         }
       ]
@@ -4546,7 +4849,20 @@
     },
     {
       "recordId": "pmid-23541163",
-      "matches": []
+      "matches": [
+        {
+          "categoryId": "defence",
+          "relation": "related"
+        },
+        {
+          "categoryId": "refugees",
+          "relation": "related"
+        },
+        {
+          "categoryId": "housing",
+          "relation": "related"
+        }
+      ]
     },
     {
       "recordId": "pmid-20876468",
@@ -4566,7 +4882,16 @@
     },
     {
       "recordId": "pmid-24647726",
-      "matches": []
+      "matches": [
+        {
+          "categoryId": "housing",
+          "relation": "related"
+        },
+        {
+          "categoryId": "defence",
+          "relation": "related"
+        }
+      ]
     },
     {
       "recordId": "pmid-14756612",
@@ -4731,7 +5056,20 @@
     },
     {
       "recordId": "pmid-42599846",
-      "matches": []
+      "matches": [
+        {
+          "categoryId": "defence",
+          "relation": "related"
+        },
+        {
+          "categoryId": "refugees",
+          "relation": "related"
+        },
+        {
+          "categoryId": "housing",
+          "relation": "related"
+        }
+      ]
     },
     {
       "recordId": "pmid-41534731",
@@ -4739,11 +5077,37 @@
     },
     {
       "recordId": "pmid-36350591",
-      "matches": []
+      "matches": [
+        {
+          "categoryId": "defence",
+          "relation": "related"
+        },
+        {
+          "categoryId": "refugees",
+          "relation": "related"
+        },
+        {
+          "categoryId": "housing",
+          "relation": "related"
+        }
+      ]
     },
     {
       "recordId": "pmid-35820992",
-      "matches": []
+      "matches": [
+        {
+          "categoryId": "indigenous",
+          "relation": "related"
+        },
+        {
+          "categoryId": "housing",
+          "relation": "related"
+        },
+        {
+          "categoryId": "refugees",
+          "relation": "related"
+        }
+      ]
     },
     {
       "recordId": "pmid-27002445",
@@ -4780,6 +5144,18 @@
         {
           "categoryId": "war-trauma",
           "relation": "related"
+        },
+        {
+          "categoryId": "defence",
+          "relation": "related"
+        },
+        {
+          "categoryId": "refugees",
+          "relation": "related"
+        },
+        {
+          "categoryId": "housing",
+          "relation": "related"
         }
       ]
     },
@@ -4792,6 +5168,10 @@
         },
         {
           "categoryId": "war-trauma",
+          "relation": "related"
+        },
+        {
+          "categoryId": "housing",
           "relation": "related"
         }
       ]
@@ -4815,6 +5195,18 @@
         {
           "categoryId": "war-trauma",
           "relation": "related"
+        },
+        {
+          "categoryId": "defence",
+          "relation": "related"
+        },
+        {
+          "categoryId": "refugees",
+          "relation": "related"
+        },
+        {
+          "categoryId": "housing",
+          "relation": "related"
         }
       ]
     },
@@ -4827,6 +5219,18 @@
         },
         {
           "categoryId": "war-trauma",
+          "relation": "related"
+        },
+        {
+          "categoryId": "defence",
+          "relation": "related"
+        },
+        {
+          "categoryId": "refugees",
+          "relation": "related"
+        },
+        {
+          "categoryId": "housing",
           "relation": "related"
         }
       ]
@@ -4850,6 +5254,18 @@
         {
           "categoryId": "war-trauma",
           "relation": "related"
+        },
+        {
+          "categoryId": "defence",
+          "relation": "related"
+        },
+        {
+          "categoryId": "refugees",
+          "relation": "related"
+        },
+        {
+          "categoryId": "housing",
+          "relation": "related"
         }
       ]
     },
@@ -4862,6 +5278,18 @@
         },
         {
           "categoryId": "war-trauma",
+          "relation": "related"
+        },
+        {
+          "categoryId": "defence",
+          "relation": "related"
+        },
+        {
+          "categoryId": "refugees",
+          "relation": "related"
+        },
+        {
+          "categoryId": "housing",
           "relation": "related"
         }
       ]
@@ -4924,6 +5352,18 @@
         {
           "categoryId": "war-trauma",
           "relation": "related"
+        },
+        {
+          "categoryId": "refugees",
+          "relation": "related"
+        },
+        {
+          "categoryId": "indigenous",
+          "relation": "related"
+        },
+        {
+          "categoryId": "housing",
+          "relation": "related"
         }
       ]
     },
@@ -4936,6 +5376,18 @@
         },
         {
           "categoryId": "war-trauma",
+          "relation": "related"
+        },
+        {
+          "categoryId": "refugees",
+          "relation": "related"
+        },
+        {
+          "categoryId": "indigenous",
+          "relation": "related"
+        },
+        {
+          "categoryId": "housing",
           "relation": "related"
         }
       ]
@@ -4954,6 +5406,18 @@
         {
           "categoryId": "war-trauma",
           "relation": "related"
+        },
+        {
+          "categoryId": "refugees",
+          "relation": "related"
+        },
+        {
+          "categoryId": "indigenous",
+          "relation": "related"
+        },
+        {
+          "categoryId": "housing",
+          "relation": "related"
         }
       ]
     },
@@ -4967,6 +5431,18 @@
         {
           "categoryId": "war-trauma",
           "relation": "related"
+        },
+        {
+          "categoryId": "refugees",
+          "relation": "related"
+        },
+        {
+          "categoryId": "indigenous",
+          "relation": "related"
+        },
+        {
+          "categoryId": "housing",
+          "relation": "related"
         }
       ]
     },
@@ -4979,6 +5455,18 @@
         },
         {
           "categoryId": "war-trauma",
+          "relation": "related"
+        },
+        {
+          "categoryId": "refugees",
+          "relation": "related"
+        },
+        {
+          "categoryId": "indigenous",
+          "relation": "related"
+        },
+        {
+          "categoryId": "housing",
           "relation": "related"
         }
       ]

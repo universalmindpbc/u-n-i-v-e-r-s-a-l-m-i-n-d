@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "records": 1108,
+  "metadataMatches": 721,
+  "counts": {
+    "children": 37,
+    "adolescents": 80,
+    "youth": 170,
+    "adults": 320,
+    "older-adults": 89,
+    "not-specified": 730
+  },
+  "reportedAgeRanges": 27,
+  "youthFocus": 63,
+  "youthIncluded": 107
+}

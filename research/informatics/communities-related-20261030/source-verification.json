@@ -1,0 +1,806 @@
+{
+  "checkedAt": "2026-10-30",
+  "records": [
+    {
+      "recordId": "doi-0017e1c8036baaa5",
+      "provider": "Europe PMC / Crossref",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://doi.org/10.1016/j.aip.2012.03.005",
+      "sourceTextSHA256": "0e44b19f41ca2993032630fe38a4112b65c466fb14aeb9c5cf07bebc41b74b36",
+      "abstractAvailable": false,
+      "role": "anchor"
+    },
+    {
+      "recordId": "doi-07f639404ec1fc0d",
+      "provider": "Europe PMC / Crossref",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://doi.org/10.1093/mtp/29.1.14",
+      "sourceTextSHA256": "fb30921442ace811c1a2c35d01380893ee8cb978f08126e23c9c2bb82d7da429",
+      "abstractAvailable": false,
+      "role": "anchor"
+    },
+    {
+      "recordId": "doi-2a203fb071ddfe54",
+      "provider": "Europe PMC / Crossref",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://doi.org/10.1002/capr.12580",
+      "sourceTextSHA256": "5b54907ae21eaa7448eb81d3388a328900afeebebd80302e3127eeb4b8cd73a5",
+      "abstractAvailable": true,
+      "role": "anchor"
+    },
+    {
+      "recordId": "doi-2d7461017405ab6b",
+      "provider": "Europe PMC / Crossref",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://doi.org/10.1007/s10826-014-9926-3",
+      "sourceTextSHA256": "2088b303745e1be7789b1fdcdef67153b5497261d157292ed1a0c97a1f6930e6",
+      "abstractAvailable": false,
+      "role": "anchor"
+    },
+    {
+      "recordId": "doi-37881ae999c094e1",
+      "provider": "Europe PMC / Crossref",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://doi.org/10.1016/j.fnhli.2025.100070",
+      "sourceTextSHA256": "5f74b111fc1f683761b6167934490a8de8e7c09f1689207b8f61cf5784542fd0",
+      "abstractAvailable": false,
+      "role": "anchor"
+    },
+    {
+      "recordId": "doi-61628ddd002899ff",
+      "provider": "Europe PMC / Crossref",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://doi.org/10.1016/j.aip.2015.09.006",
+      "sourceTextSHA256": "264adecaed9204e3cce5b86fc649e6a383e19a3acf5073f6890ddbbb2219cf26",
+      "abstractAvailable": false,
+      "role": "anchor"
+    },
+    {
+      "recordId": "doi-7bca5becd0049aeb",
+      "provider": "Europe PMC / Crossref",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://doi.org/10.15845/voices.v8i1.452",
+      "sourceTextSHA256": "4f9237286f2dc3d09021bf7e1cdcd5fae265a1242b06c863a4cb5e17c0f33a19",
+      "abstractAvailable": false,
+      "role": "anchor"
+    },
+    {
+      "recordId": "doi-82aafc04d055ceed",
+      "provider": "Europe PMC / Crossref / Oxford Academic",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://doi.org/10.1093/mtp/24.2.108",
+      "sourceTextSHA256": "595ccd8c2c3ec8e49c761dbd318690a06e07cc7ff4f3f31934261055c638c9e6",
+      "abstractURL": "https://academic.oup.com/mtp/article-abstract/24/2/108/1125006",
+      "abstractAvailable": true,
+      "role": "candidate"
+    },
+    {
+      "recordId": "doi-94ef326e2e9a602d",
+      "provider": "Europe PMC / Crossref",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://doi.org/10.1177/2056305118764440",
+      "sourceTextSHA256": "ddc9f07f4dddc4952c72435ece2c272e03ce928c5d37cda0fd64576f3798e114",
+      "abstractAvailable": true,
+      "role": "anchor"
+    },
+    {
+      "recordId": "doi-afe44de7f462e56e",
+      "provider": "Europe PMC / Crossref",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://doi.org/10.1300/j009v24n03_09",
+      "sourceTextSHA256": "fc96b67d26168cbe3033ad506a9ddce28d2ae4d2174931ab4a1c23f626bb4634",
+      "abstractAvailable": false,
+      "role": "anchor"
+    },
+    {
+      "recordId": "doi-b1734615d2614781",
+      "provider": "Europe PMC / Crossref",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://doi.org/10.1080/17533015.2014.999246",
+      "sourceTextSHA256": "c9548335e953a63ee3ee33882b9ee046c4e9910c09c9da3cc7aec758d649d1e9",
+      "abstractAvailable": false,
+      "role": "anchor"
+    },
+    {
+      "recordId": "doi-b8c111dd4c4a9cd1",
+      "provider": "Europe PMC / Crossref",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://doi.org/10.1111/j.1750-8606.2011.00215.x",
+      "sourceTextSHA256": "3835b9a68a868ca9f9e5bff66612011725e493ee7506b43767f09b215a7669cc",
+      "abstractAvailable": true,
+      "role": "candidate"
+    },
+    {
+      "recordId": "doi-bcda25fdeb002c46",
+      "provider": "Europe PMC / Crossref",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://doi.org/10.1007/s10826-013-9809-z",
+      "sourceTextSHA256": "50dab274d01097321c12332c16fb74bc33400e15d8634f3b2835273d58469a4b",
+      "abstractAvailable": false,
+      "role": "anchor"
+    },
+    {
+      "recordId": "doi-bfab13a657ed2d81",
+      "provider": "Europe PMC / Crossref",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://doi.org/10.15845/voices.v16i3.887",
+      "sourceTextSHA256": "5199cd52324daca58adb1f657cdfda3050adc0828d7853b68bf83334c2c2c387",
+      "abstractAvailable": true,
+      "role": "anchor"
+    },
+    {
+      "recordId": "doi-ee4dbad2ce729f10",
+      "provider": "Europe PMC / Crossref",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://doi.org/10.15845/voices.v5i2.227",
+      "sourceTextSHA256": "50fee3b5751bebf21a0919bba6d831facecc5cd791c0069c1c96757909445dda",
+      "abstractAvailable": true,
+      "role": "anchor"
+    },
+    {
+      "recordId": "doi-efaa5ab4cab4e9ec",
+      "provider": "Europe PMC / Crossref",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://doi.org/10.1007/s10826-011-9552-2",
+      "sourceTextSHA256": "b01f5b08b0f0d13e066bcec50fa79db1f681ce22cf14616395f82d0bfaffb930",
+      "abstractAvailable": false,
+      "role": "anchor"
+    },
+    {
+      "recordId": "pmid-11127626",
+      "provider": "Europe PMC",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/11127626/",
+      "sourceTextSHA256": "5771f89f64e916ce17c77fac84ca1bfce8a0c83af2c2e243cf2b80541b8a59e1",
+      "abstractAvailable": true,
+      "role": "anchor"
+    },
+    {
+      "recordId": "pmid-11437809",
+      "provider": "Europe PMC",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/11437809/",
+      "sourceTextSHA256": "90f00abcb10a2c99ffca3134e25126b9e8d80dab2bd17c5a661255cbe3d2cc09",
+      "abstractAvailable": true,
+      "role": "anchor"
+    },
+    {
+      "recordId": "pmid-14961935",
+      "provider": "Europe PMC",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/14961935/",
+      "sourceTextSHA256": "ac47b1dd2cdc20190207ade34272e4928474c41c8dcd98fe5c80a37a6ff4b890",
+      "abstractAvailable": true,
+      "role": "anchor"
+    },
+    {
+      "recordId": "pmid-16382423",
+      "provider": "Europe PMC",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/16382423/",
+      "sourceTextSHA256": "293bf647420b614abce447341ef4294e7a45d8cb879050345f9b4aa34f8c60ac",
+      "abstractAvailable": true,
+      "role": "anchor"
+    },
+    {
+      "recordId": "pmid-16899965",
+      "provider": "Europe PMC",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/16899965/",
+      "sourceTextSHA256": "a766b50ce780eb8e9c1f41fbef778d12cdd09df86f4b9e6ba37f3cdb0a5913f6",
+      "abstractAvailable": true,
+      "role": "candidate"
+    },
+    {
+      "recordId": "pmid-17284128",
+      "provider": "Europe PMC",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/17284128/",
+      "sourceTextSHA256": "9a9b9fc79c024287f42f2c12e19eb713e31b037a8d40a98be0a881429b96cf1f",
+      "abstractAvailable": true,
+      "role": "candidate"
+    },
+    {
+      "recordId": "pmid-18991533",
+      "provider": "Europe PMC",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/18991533/",
+      "sourceTextSHA256": "2b8d9b0a02e48c9903cbf2301bcd23a28578c45d392e16de437de021b1e18777",
+      "abstractAvailable": true,
+      "role": "anchor"
+    },
+    {
+      "recordId": "pmid-20193089",
+      "provider": "Europe PMC",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/20193089/",
+      "sourceTextSHA256": "ff45fd2fe9a4131dad75b5e6691d9dd3b7c78134de8e8a967a9e85552326f736",
+      "abstractAvailable": true,
+      "role": "candidate"
+    },
+    {
+      "recordId": "pmid-20440550",
+      "provider": "Europe PMC",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/20440550/",
+      "sourceTextSHA256": "01181b151b1101462cd11326ef718a0a9c3d8aada6c909ac2ec652ad088d4dca",
+      "abstractAvailable": true,
+      "role": "candidate"
+    },
+    {
+      "recordId": "pmid-21768988",
+      "provider": "Europe PMC",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/21768988/",
+      "sourceTextSHA256": "f178e2ad74efcb584cd296be06a0b028e3697ee41a41011e8e1583e6e620eb83",
+      "abstractAvailable": true,
+      "role": "candidate"
+    },
+    {
+      "recordId": "pmid-22322458",
+      "provider": "Europe PMC",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/22322458/",
+      "sourceTextSHA256": "11ba75875e2c9fe70a1cad53573a8c8279220f006b2061ba30b029324cb79138",
+      "abstractAvailable": true,
+      "role": "candidate"
+    },
+    {
+      "recordId": "pmid-22893808",
+      "provider": "Europe PMC",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/22893808/",
+      "sourceTextSHA256": "8dda1a04c492873be58dfe14d53d334c0ad73f7e47ccbe87c227b6613e87ba5f",
+      "abstractAvailable": true,
+      "role": "anchor"
+    },
+    {
+      "recordId": "pmid-23541163",
+      "provider": "Europe PMC",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/23541163/",
+      "sourceTextSHA256": "ef3173897dd06ded9b734343dcf5eebc79c5d41c8b62666402baddcb021f8322",
+      "abstractAvailable": true,
+      "role": "candidate"
+    },
+    {
+      "recordId": "pmid-23784718",
+      "provider": "Europe PMC",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/23784718/",
+      "sourceTextSHA256": "5e305091b9eb2aa7d12cf335cbfe65e1ef5f44145e6da77b08cdf17ebdf18706",
+      "abstractAvailable": true,
+      "role": "anchor"
+    },
+    {
+      "recordId": "pmid-23796855",
+      "provider": "Europe PMC",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/23796855/",
+      "sourceTextSHA256": "81fd89bce9782ea5f35b4159f6c61e6844f21fd4a6a3f75b5fa4c29583f907a4",
+      "abstractAvailable": true,
+      "role": "candidate"
+    },
+    {
+      "recordId": "pmid-24515537",
+      "provider": "Europe PMC",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/24515537/",
+      "sourceTextSHA256": "66aa8182470c4b87c9e638fe541af1e98127e4ae78bfb4a34e2703947aa0dc84",
+      "abstractAvailable": true,
+      "role": "anchor"
+    },
+    {
+      "recordId": "pmid-24647726",
+      "provider": "Europe PMC",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/24647726/",
+      "sourceTextSHA256": "03cf42ced2209cb608a20bd3a5bbd2f9e81269f20d24a6a68fe02f559620311f",
+      "abstractAvailable": true,
+      "role": "candidate"
+    },
+    {
+      "recordId": "pmid-24828126",
+      "provider": "Europe PMC",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/24828126/",
+      "sourceTextSHA256": "36c72e998991d3bac0550d6e0ac7e8af6dc6bacd402cb83b3e41feb411aacf00",
+      "abstractAvailable": true,
+      "role": "anchor"
+    },
+    {
+      "recordId": "pmid-24876768",
+      "provider": "Europe PMC",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/24876768/",
+      "sourceTextSHA256": "b9478a19dac6b9c9f81de7c410d3bc57a3f2d3db7bcf7f08a63d0a5ac6a13ec2",
+      "abstractAvailable": true,
+      "role": "candidate"
+    },
+    {
+      "recordId": "pmid-24965797",
+      "provider": "Europe PMC",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/24965797/",
+      "sourceTextSHA256": "9e42d2045c7f755e479c3fef4e1acc7a4746897e90bcb762662ab7306196f6e7",
+      "abstractAvailable": true,
+      "role": "candidate"
+    },
+    {
+      "recordId": "pmid-25101684",
+      "provider": "Europe PMC",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/25101684/",
+      "sourceTextSHA256": "17d705c30d63f5ce063369f3e1e11232f90be360596c483791befeeba798f92f",
+      "abstractAvailable": true,
+      "role": "candidate"
+    },
+    {
+      "recordId": "pmid-25607833",
+      "provider": "Europe PMC",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/25607833/",
+      "sourceTextSHA256": "45a769a607a4cc6f2b49eb9dcafe9313e7d8795bbbcee5a3ec0aae49b899878b",
+      "abstractAvailable": true,
+      "role": "candidate"
+    },
+    {
+      "recordId": "pmid-26241597",
+      "provider": "Europe PMC",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/26241597/",
+      "sourceTextSHA256": "804985703f15b8062b6c45ff79978a84a48f3dc5b1e5fbb2bd1c0f281a54cf47",
+      "abstractAvailable": true,
+      "role": "anchor"
+    },
+    {
+      "recordId": "pmid-26256140",
+      "provider": "Europe PMC",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/26256140/",
+      "sourceTextSHA256": "edd70ee735eb457e28b508d2bb9da373d9f8bafbf2d5055a1f5b18f49d14dd2a",
+      "abstractAvailable": true,
+      "role": "candidate"
+    },
+    {
+      "recordId": "pmid-26963955",
+      "provider": "Europe PMC",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/26963955/",
+      "sourceTextSHA256": "ec66b1c7d53de2e241105c125a9343484e146cdacf19a55a1f5688225a0fc06e",
+      "abstractAvailable": true,
+      "role": "anchor"
+    },
+    {
+      "recordId": "pmid-27225519",
+      "provider": "Europe PMC",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/27225519/",
+      "sourceTextSHA256": "87156a5addf1ede54cb32ad910ea3a127b70f959dc353caa54a4c7688399685e",
+      "abstractAvailable": true,
+      "role": "anchor"
+    },
+    {
+      "recordId": "pmid-27353367",
+      "provider": "Europe PMC",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/27353367/",
+      "sourceTextSHA256": "136084e06ada8e48732e47d99e0f51fce9112c41169d1ecf87ccceaa4c05bc27",
+      "abstractAvailable": true,
+      "role": "anchor"
+    },
+    {
+      "recordId": "pmid-27417882",
+      "provider": "Europe PMC",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/27417882/",
+      "sourceTextSHA256": "4630263bca15f7de143e0ed164b369864a33aabec5fcfcd45a5303f253fc5926",
+      "abstractAvailable": true,
+      "role": "anchor"
+    },
+    {
+      "recordId": "pmid-28481610",
+      "provider": "Europe PMC",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/28481610/",
+      "sourceTextSHA256": "9df1db932735fa5486799ab7f6b9498f5d8ba33d47e639dcb2bc02542f0806f3",
+      "abstractAvailable": true,
+      "role": "anchor"
+    },
+    {
+      "recordId": "pmid-28660669",
+      "provider": "Europe PMC",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/28660669/",
+      "sourceTextSHA256": "bdec47332309705bdf70790b0cfe2e596527494bb5a751a8b397617f50e261c8",
+      "abstractAvailable": true,
+      "role": "candidate"
+    },
+    {
+      "recordId": "pmid-29921143",
+      "provider": "Europe PMC",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/29921143/",
+      "sourceTextSHA256": "ffb64e5e4957672679f2e7b689cc7f5808c802ff71eb582770ae0b02a78f31e5",
+      "abstractAvailable": true,
+      "role": "anchor"
+    },
+    {
+      "recordId": "pmid-30197612",
+      "provider": "Europe PMC",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/30197612/",
+      "sourceTextSHA256": "9d700c698630a38eb97dea004bba7f4496fbd05acc633be377f02e53240a76d0",
+      "abstractAvailable": true,
+      "role": "anchor"
+    },
+    {
+      "recordId": "pmid-31097900",
+      "provider": "Europe PMC",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/31097900/",
+      "sourceTextSHA256": "3859cf89194e983a9554cd811b7805a06030a4050346d5f59162963aa1a31eb8",
+      "abstractAvailable": true,
+      "role": "anchor"
+    },
+    {
+      "recordId": "pmid-32892758",
+      "provider": "Europe PMC",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/32892758/",
+      "sourceTextSHA256": "92e32da1156f8a15d1117b4cb771916da971093349c3716c16e1ddf47e265ba1",
+      "abstractAvailable": true,
+      "role": "candidate"
+    },
+    {
+      "recordId": "pmid-33415797",
+      "provider": "Europe PMC",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/33415797/",
+      "sourceTextSHA256": "37160c3e84fb2813ec9d47ab1e5266cfcc45e83a4da359a17fbab5d60096e181",
+      "abstractAvailable": true,
+      "role": "candidate"
+    },
+    {
+      "recordId": "pmid-33709117",
+      "provider": "Europe PMC",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/33709117/",
+      "sourceTextSHA256": "181e4aa29c613f5f3d6338aea983749754eb739c9be64f7a82ab280e89a4e13c",
+      "abstractAvailable": true,
+      "role": "candidate"
+    },
+    {
+      "recordId": "pmid-34025912",
+      "provider": "Europe PMC",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/34025912/",
+      "sourceTextSHA256": "f729483878ffdad9b3429af52d4fef6fef5908173f9a764ca027448b33e9b1a5",
+      "abstractAvailable": true,
+      "role": "candidate"
+    },
+    {
+      "recordId": "pmid-34512458",
+      "provider": "Europe PMC",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/34512458/",
+      "sourceTextSHA256": "f5bc6b6fa42331fc8810b1f94cf6cf3447f6965bf1506e2c7f0f5807848305f7",
+      "abstractAvailable": true,
+      "role": "candidate"
+    },
+    {
+      "recordId": "pmid-34763697",
+      "provider": "Europe PMC",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/34763697/",
+      "sourceTextSHA256": "17f4eea327fa7f300737c954c76650c3f76b12de2bc3f098cf3741a7c83c651e",
+      "abstractAvailable": true,
+      "role": "candidate"
+    },
+    {
+      "recordId": "pmid-35329068",
+      "provider": "Europe PMC",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/35329068/",
+      "sourceTextSHA256": "ac1a089e8b80ef97c2dcde5d9f39d0a3b61f6c3360119d5bf996792fac2e062b",
+      "abstractAvailable": true,
+      "role": "candidate"
+    },
+    {
+      "recordId": "pmid-35820992",
+      "provider": "Europe PMC",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/35820992/",
+      "sourceTextSHA256": "8c254c80cc69ddd341517706377ae8adc92f28ff73bdb0a3f6c2bbfc0a34c75a",
+      "abstractAvailable": true,
+      "role": "candidate"
+    },
+    {
+      "recordId": "pmid-36350591",
+      "provider": "Europe PMC",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/36350591/",
+      "sourceTextSHA256": "f665876de3fc0e373112a2132a5eddb4a0dd0f04db858a13db8279de7cf38e24",
+      "abstractAvailable": true,
+      "role": "candidate"
+    },
+    {
+      "recordId": "pmid-36427257",
+      "provider": "Europe PMC",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/36427257/",
+      "sourceTextSHA256": "506a846e4f98b6a9c6426d528b484400f7c1465aa182b7559685ebdde16df8b6",
+      "abstractAvailable": true,
+      "role": "candidate"
+    },
+    {
+      "recordId": "pmid-37882058",
+      "provider": "Europe PMC",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/37882058/",
+      "sourceTextSHA256": "60155b19213dd631f5d69fb290d72d6fc66244d4a115fa8cd165b201a46dde22",
+      "abstractAvailable": true,
+      "role": "candidate"
+    },
+    {
+      "recordId": "pmid-38250261",
+      "provider": "Europe PMC",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/38250261/",
+      "sourceTextSHA256": "f0d04d2dacab6988d1fb25a9212ca7aada7706ef5170f98c44f4466e24c4b9fb",
+      "abstractAvailable": true,
+      "role": "candidate"
+    },
+    {
+      "recordId": "pmid-38327501",
+      "provider": "Europe PMC",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/38327501/",
+      "sourceTextSHA256": "fd48332553c216bf81adb277b4b9c60f06369e20bb350da217ff777cc35c927b",
+      "abstractAvailable": true,
+      "role": "candidate"
+    },
+    {
+      "recordId": "pmid-39630422",
+      "provider": "Europe PMC",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/39630422/",
+      "sourceTextSHA256": "1a1f0acc18da4c3dacd391c9e660c003a6469ee41fd66ce3ac8606a81610f93b",
+      "abstractAvailable": true,
+      "role": "candidate"
+    },
+    {
+      "recordId": "pmid-39835632",
+      "provider": "Europe PMC",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/39835632/",
+      "sourceTextSHA256": "fe993920d7da04381670ed837f9c31043bb1c8143d94956ca7ebd57e8ad74689",
+      "abstractAvailable": true,
+      "role": "candidate"
+    },
+    {
+      "recordId": "pmid-40417270",
+      "provider": "Europe PMC",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/40417270/",
+      "sourceTextSHA256": "1ebacb0957f0917e031342afa4956babe1cb1609fb8420558b0a6b87a61e9bb3",
+      "abstractAvailable": true,
+      "role": "candidate"
+    },
+    {
+      "recordId": "pmid-40547443",
+      "provider": "Europe PMC",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/40547443/",
+      "sourceTextSHA256": "489bf41f2191cf4f9bd2f78105c1de7dd0131f3ef1c922882fdb87ba3ebc8a3e",
+      "abstractAvailable": true,
+      "role": "candidate"
+    },
+    {
+      "recordId": "pmid-40655918",
+      "provider": "Europe PMC",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/40655918/",
+      "sourceTextSHA256": "2261bde1216b70c04dd216e3cf655a74e1fc664818c8140db93420a777cb6332",
+      "abstractAvailable": true,
+      "role": "candidate"
+    },
+    {
+      "recordId": "pmid-42254728",
+      "provider": "Europe PMC",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/42254728/",
+      "sourceTextSHA256": "031ef9d01a7ed9b217af9e5549f332d87dd33ddffe57e3f4ef4d139dc299e2fb",
+      "abstractAvailable": true,
+      "role": "candidate"
+    },
+    {
+      "recordId": "pmid-42324567",
+      "provider": "Europe PMC",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/42324567/",
+      "sourceTextSHA256": "75ede44debded90f5efe1566de9533bf5cc5c9674982123c8368d3e95a0cc9bd",
+      "abstractAvailable": true,
+      "role": "anchor"
+    },
+    {
+      "recordId": "pmid-42599846",
+      "provider": "Europe PMC",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/42599846/",
+      "sourceTextSHA256": "969e9c37b98727d03279274818eb5a6f57398c1dc8c666d7ee37d56bc3bfd90d",
+      "abstractAvailable": true,
+      "role": "candidate"
+    },
+    {
+      "recordId": "pmid-42703195",
+      "provider": "Europe PMC",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/42703195/",
+      "sourceTextSHA256": "48db6e29c6d81e362fae3a70e58fe8cf1e4b7d84f093c613ed62e2192dd21572",
+      "abstractAvailable": true,
+      "role": "candidate"
+    },
+    {
+      "recordId": "pmid-42773467",
+      "provider": "Europe PMC",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/42773467/",
+      "sourceTextSHA256": "cc8bf1416cfea5fad5be0d73ca9e91147d16a6d37dfb7505a45ee2f738695b53",
+      "abstractAvailable": true,
+      "role": "candidate"
+    },
+    {
+      "recordId": "portal-66ebe89ad390",
+      "provider": "Europe PMC",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/42129972/",
+      "sourceTextSHA256": "fb31e27b22edfc86cf8d4632a592db145378369905f58aa411be3461a5771b07",
+      "abstractAvailable": true,
+      "role": "candidate"
+    },
+    {
+      "recordId": "portal-7c6d9225444d",
+      "provider": "Europe PMC",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/40424141/",
+      "sourceTextSHA256": "5969402c4d3728f27e23db8ac557f89d5d1d9d4f407cb6433c019a71c016b9e3",
+      "abstractAvailable": true,
+      "role": "anchor"
+    },
+    {
+      "recordId": "src-0e1e9057a0a3",
+      "provider": "Europe PMC",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://doi.org/10.1136/bmjopen-2016-013518",
+      "sourceTextSHA256": "bf0e2811cadb3cc75f0025063b7e510bbc519bf10c6fdd3bff8092cbea59b0b2",
+      "abstractAvailable": true,
+      "role": "anchor"
+    },
+    {
+      "recordId": "src-14af5866007b",
+      "provider": "Europe PMC / Crossref",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://doi.org/10.15845/voices.v16i3.865",
+      "sourceTextSHA256": "4c9b82d8fe8e9ce71348fac28ad7149addb0f4fb229acf0026ab668cfe25ef07",
+      "abstractAvailable": true,
+      "role": "anchor"
+    },
+    {
+      "recordId": "src-4981a8e87964",
+      "provider": "Europe PMC",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://doi.org/10.1192/bjo.2020.92",
+      "sourceTextSHA256": "7f85b1e2bbe0f7aaa1d297ea271330ffee324ce7dd71d718fa0f9c994201f839",
+      "abstractAvailable": true,
+      "role": "candidate"
+    },
+    {
+      "recordId": "src-96965bda66df",
+      "provider": "Europe PMC / Crossref",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://doi.org/10.1016/s0197-4556(04)00024-3",
+      "sourceTextSHA256": "775876b1b82c02efdc12970ee3d55748ed0aee6c2f29cc208a7fe43374adc95b",
+      "abstractAvailable": false,
+      "role": "anchor"
+    },
+    {
+      "recordId": "src-c5f78a99d96b",
+      "provider": "Europe PMC / Crossref",
+      "titleSimilarity": 0.9941,
+      "matched": true,
+      "sourceURL": "https://doi.org/10.1037/a0024485",
+      "sourceTextSHA256": "517827a4980a01cc3f7feb9c2468124040590995073ca394efbd556a8164bb87",
+      "abstractAvailable": false,
+      "role": "candidate"
+    },
+    {
+      "recordId": "src-ea7973a48c81",
+      "provider": "Europe PMC / Crossref",
+      "titleSimilarity": 1.0,
+      "matched": true,
+      "sourceURL": "https://doi.org/10.14485/hbpr.2.2.4",
+      "sourceTextSHA256": "4dc9d57707bd0b777d79b903b4659383521280acb0f2ca9d1c498b72315fa9df",
+      "abstractAvailable": false,
+      "role": "anchor"
+    }
+  ]
+}
