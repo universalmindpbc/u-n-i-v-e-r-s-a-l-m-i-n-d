@@ -69,6 +69,8 @@ try {
   assert.equal(await chapter.locator('a[href="https://www.getimmersion.com/"]').count(),1);
   assert.equal(await chapter.locator('a[href="https://www.your6.com/"]').count(),1);
   assert.equal((await chapter.innerText()).includes('requiring independent validation'),false);
+  assert.match(await chapter.innerText(),/created by Immersion Neuroscience via research with DARPA/);
+  assert.doesNotMatch(await chapter.innerText(),/Immersion[- ]6|Emergent6/);
   await page.screenshot({path:path.join(out,`${mode}-sequencing-${width}.png`)});
   assert.equal(await page.locator('#atlas-sections').evaluate(el=>el.scrollWidth<=el.clientWidth+1),true);
   results.push({width,images:3,existingTabs:6,keyboardOpenClose:true,focusRestored:true,originalSizeScroll:true,noHorizontalPageOverflow:true,nativeFullscreen:false});

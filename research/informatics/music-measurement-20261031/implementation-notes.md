@@ -4,7 +4,7 @@ Append a measurement chapter beneath the existing Sound / Music Atlas content. P
 
 The text describes Ben's custom Music Atlas Python software developed with Gemini, the N = 33 initial non-invasive phase, and the case for stakeholder investment in subsequent mRNA sequencing. HRV PSD is the confirmed term. A$600–A$1,000 per participant applies specifically to mRNA sequencing.
 
-The oxytocin inference description uses Ben's supplied wording and links to Immersion and SIX. The project plans and private commercial quote are supplied by Ben. The graphics retain their original bytes. They are introduced once as software mockups. The closing section links to the Garvan sequencing service.
+The oxytocin inference description uses Ben's supplied wording with the organisation named Immersion Neuroscience and the app named SIX. Both websites are linked. The project plans and private commercial quote are supplied by Ben. The graphics retain their original bytes. They are introduced once as software mockups. The closing section links to the Garvan sequencing service.
 
 Base staging: 65fcf0b9ea8ef70f129d0b8b3305987b48671bde.
 Production main before deployment: 4900e9e0a33a85c154104b25ec09586a03216675.
