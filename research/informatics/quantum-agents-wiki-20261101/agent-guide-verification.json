@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "human_purpose_first_in_html_markdown_json": true,
+  "human_feature_explanations": 10,
+  "agent_and_service_roles": 10,
+  "source_workflow_stages": 6,
+  "live_mcp_tools": 9,
+  "live_protocol_environments": [
+    "staging",
+    "production"
+  ],
+  "A2A_discovery_and_task_contract_verified": true,
+  "A2A_answer_generation_not_executed": true,
+  "implementation_sources_matched": 16,
+  "runtime_unchanged": true
+}

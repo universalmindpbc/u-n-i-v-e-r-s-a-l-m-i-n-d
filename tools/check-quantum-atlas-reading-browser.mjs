@@ -5,7 +5,7 @@ import crypto from 'node:crypto';
 import {fileURLToPath} from 'node:url';
 import {chromium} from '/Users/benkorbel/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
-const out=process.env.QA_OUTPUT||path.join(root,'research/informatics/quantum-wiki-20261101');await fs.mkdir(out,{recursive:true});
+const out=process.env.QA_OUTPUT||path.join(root,'research/informatics/quantum-agents-wiki-20261101');await fs.mkdir(out,{recursive:true});
 const base=process.env.QA_BASE||'https://staging.universalmind.tv';
 const candidate=process.env.CANDIDATE==='1',mode=candidate?'candidate':base.includes('staging.')?'staging':'production';
 const guide=JSON.parse(await fs.readFile(path.join(root,'Informatics/quantum/reading/quantum-atlas.json'),'utf8'));
@@ -39,7 +39,7 @@ try{
   const footer=frame.locator('nav.quantum-reading-links');await footer.scrollIntoViewIfNeeded();assert.equal(await footer.locator('a').count(),4);
   assert.equal(await frame.locator('body').evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),true);
   await page.screenshot({path:path.join(out,mode+'-downloads-'+width+'.png')});
-  if(width===1440){if(!candidate)await downloads(page,footer);const pending=page.waitForEvent('popup');await footer.locator('a').first().click();const popup=await pending;await popup.waitForLoadState('domcontentloaded');assert.equal(await popup.locator('h1').count(),2);assert.equal(await popup.locator('table').count(),4);await popup.close();assert.equal(await page.locator('#quantum-frame').isVisible(),true);}
+  if(width===1440){if(!candidate)await downloads(page,footer);const pending=page.waitForEvent('popup');await footer.locator('a').first().click();const popup=await pending;await popup.waitForLoadState('domcontentloaded');assert.equal(await popup.locator('h1').count(),2);assert.equal(await popup.locator('table').count(),9);assert(await popup.locator('#quantum-purpose').isVisible());await popup.close();assert.equal(await page.locator('#quantum-frame').isVisible(),true);}
   for(const f of page.frames())await f.evaluate(()=>document.querySelectorAll('video,audio').forEach(x=>x.pause())).catch(()=>{});
   await context.close();results.push({width,hiddenData:true,footerLinks:4,hypothesisControl:true,natureDialog:true,noHorizontalOverflow:true,nativeFullscreen:false});
  }

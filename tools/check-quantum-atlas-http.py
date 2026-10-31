@@ -2,7 +2,7 @@
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor
 import os, subprocess, hashlib, json, re
-ROOT=Path(__file__).resolve().parents[1];BASE=os.environ.get('QA_BASE','https://staging.universalmind.tv').rstrip('/');MODE='staging' if 'staging.'in BASE else 'production';OUT=ROOT/'research/informatics/quantum-wiki-20261101';OUT.mkdir(parents=True,exist_ok=True)
+ROOT=Path(__file__).resolve().parents[1];BASE=os.environ.get('QA_BASE','https://staging.universalmind.tv').rstrip('/');MODE='staging' if 'staging.'in BASE else 'production';OUT=ROOT/'research/informatics/quantum-agents-wiki-20261101';OUT.mkdir(parents=True,exist_ok=True)
 def request(route,agent='Mozilla/5.0 AtlasReadingVerification'):
     return subprocess.check_output(['curl','--fail','--silent','--show-error','--location','--retry','2','--max-time','60','--user-agent',agent,BASE+'/'+route])
 files=['index.html','home/index.html','read/index.html','read/resources.json','llms.txt','sitemap.xml','Informatics/index.html','Informatics/llms.txt','Informatics/read/index.html','Informatics/read/reading.css','Informatics/read/atlas-guide.css','Informatics/read/quantum/index.html','Informatics/read/vision/index.html','Informatics/read/computer-vision/index.html','Informatics/quantum/index.html','Informatics/quantum/reading/links.css','Informatics/exports/manifest.json','Informatics/read/music/index.html']+[f'Informatics/quantum/reading/quantum-atlas.{x}' for x in ['json','csv','md']]+[f'Informatics/music-atlas/music-atlas.{x}'for x in ['json','csv','md']]

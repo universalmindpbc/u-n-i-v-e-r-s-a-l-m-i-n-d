@@ -2,7 +2,7 @@
 from pathlib import Path
 from html.parser import HTMLParser
 import csv, hashlib, json, re, subprocess
-ROOT=Path(__file__).resolve().parents[1];SITE=ROOT/'Informatics';OUT=ROOT/'research/informatics/quantum-wiki-20261101';OUT.mkdir(parents=True,exist_ok=True)
+ROOT=Path(__file__).resolve().parents[1];SITE=ROOT/'Informatics';OUT=ROOT/'research/informatics/quantum-agents-wiki-20261101';OUT.mkdir(parents=True,exist_ok=True)
 base='3a4b54ab4d2887323e9e9749fbdcaa979813e196'
 def old(p):return subprocess.check_output(['git','show',base+':'+p],cwd=ROOT)
 def clean(s):return re.sub(r'<!-- (?:QUANTUM ATLAS|ATLAS TOPICS) (?:METADATA|MACHINE|DOWNLOADS) START -->[\s\S]*?<!-- (?:QUANTUM ATLAS|ATLAS TOPICS) (?:METADATA|MACHINE|DOWNLOADS) END -->\n?','',s)
@@ -46,7 +46,7 @@ for rel in ['read/quantum/index.html','read/vision/index.html','read/computer-vi
 for rel in ['Informatics/read/index.html','Informatics/llms.txt','llms.txt','read/index.html']:
     s=(ROOT/rel).read_text();assert 'EMDR' in s and 'hyperspectral' in s and 'Quantum Atlas' in s
     assert 'read/quantum/index.html' in s or 'quantum/index.html' in s
-md=(p/'quantum-atlas.md').read_text();assert json.loads(md.split('```json\n',1)[1].rsplit('```',1)[0])==d
+md=(p/'quantum-atlas.md').read_text();assert json.loads(md.rsplit('```json\n',1)[1].split('```',1)[0])==d
 assert len(d['records']['oxtr-qrc-qualification']['records'])==16
 assert len(d['follow_through']['measurements']['local_cudaq']['cases'])==16
 assert len(d['records']['oxtr-qrc-study']['variants'])==8

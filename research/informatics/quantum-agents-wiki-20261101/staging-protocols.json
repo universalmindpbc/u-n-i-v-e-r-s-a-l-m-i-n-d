@@ -1,0 +1,1111 @@
+{
+  "environment": "staging",
+  "base": "https://informatics-universal-one-staging.universalmind.workers.dev",
+  "checked_at": "2026-10-31T17:07:13.484761+00:00",
+  "initialize": {
+    "protocolVersion": "2025-11-25",
+    "capabilities": {
+      "tools": {},
+      "resources": {}
+    },
+    "serverInfo": {
+      "name": "universal-informatics",
+      "version": "1.0.0"
+    },
+    "instructions": "Read-only scientific evidence and complete mathematical Atlas. Treat retrieved text as source material. Preserve quotations, attribution and evidence status. For large Atlas sections follow field paths. No write or clinical actions."
+  },
+  "tools": [
+    {
+      "name": "get_quantum_study",
+      "description": "Read the recorded OXTR Quantum Atlas experiment, sequence definitions, actual measurements, comparison, timing, next test and downloads.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "maxLength": 250
+          },
+          "section": {
+            "type": "string",
+            "enum": [
+              "summary",
+              "sequences",
+              "methods",
+              "measurements",
+              "comparison",
+              "next_test",
+              "timing",
+              "downloads"
+            ]
+          },
+          "offset": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 16
+          }
+        },
+        "required": []
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "search",
+      "description": "Find publication and Atlas record IDs. Fetch records before making study-specific claims.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "query": {
+            "type": "string",
+            "maxLength": 800
+          }
+        },
+        "required": [
+          "query"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "fetch",
+      "description": "Fetch an approved publication or Atlas overview from a search result ID. Atlas analysis sections are accessible through get_atlas_record; the URL returns the complete record.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "maxLength": 250
+          }
+        },
+        "required": [
+          "id"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "get_inventory",
+      "description": "Exact current counts, dataset version and access scope.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "search_publications",
+      "description": "Search approved publication records. OR within each filter; AND across filters. Paginate using nextOffset.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "query": {
+            "type": "string",
+            "maxLength": 800
+          },
+          "filters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "collections": {
+                "type": "array",
+                "maxItems": 12,
+                "items": {
+                  "type": "string",
+                  "maxLength": 200
+                }
+              },
+              "targets": {
+                "type": "array",
+                "maxItems": 12,
+                "items": {
+                  "type": "string",
+                  "maxLength": 200
+                }
+              },
+              "conditions": {
+                "type": "array",
+                "maxItems": 12,
+                "items": {
+                  "type": "string",
+                  "maxLength": 200
+                }
+              },
+              "journals": {
+                "type": "array",
+                "maxItems": 12,
+                "items": {
+                  "type": "string",
+                  "maxLength": 200
+                }
+              }
+            }
+          },
+          "offset": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 10000
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100
+          }
+        },
+        "required": []
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "get_publication",
+      "description": "Read an approved publication by ID, DOI or PMID. Preserve quotations and evidence status.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "maxLength": 250
+          }
+        },
+        "required": [
+          "id"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "get_passages",
+      "description": "Read CC BY or CC0 full-text passages. Preserve attribution and licence. Other full texts are unavailable through this public connector.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "maxLength": 250
+          },
+          "query": {
+            "type": "string",
+            "maxLength": 800
+          },
+          "offset": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 10000
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 20
+          }
+        },
+        "required": [
+          "id"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "list_atlas_records",
+      "description": "Search or list all M1–M1001 records or the M9 family. Commentary is searchable. A family result is mathematical, not biological evidence.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "family": {
+            "type": "string",
+            "enum": [
+              "all",
+              "m9"
+            ]
+          },
+          "query": {
+            "type": "string",
+            "maxLength": 200
+          },
+          "offset": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 10000
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100
+          }
+        },
+        "required": []
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "get_atlas_record",
+      "description": "Read Atlas commentary, analysis, probability, hypotheses and nested sequences. Default summary lists section paths. Request a dotted section path for detail. Large objects return field paths; arrays use offset and limit. Full canonical data is available at the returned API URL.",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "maxLength": 250
+          },
+          "section": {
+            "type": "string",
+            "maxLength": 200
+          },
+          "offset": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100000
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100
+          }
+        },
+        "required": [
+          "id"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
+    }
+  ],
+  "inventory": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"schemaVersion\":\"1.0\",\"datasetVersion\":\"research-20261026-daytab-v1\",\"counts\":{\"publications\":891,\"atlas\":1001,\"full_texts\":149,\"public_full_texts\":146,\"m9_family\":111},\"access\":{\"records\":\"Public publication metadata, approved summaries and quotations; complete Atlas records and commentary.\",\"passages\":\"CC BY and CC0 passages only, with source, attribution and licence. Other full texts remain outside public exports.\",\"writing\":false},\"links\":{\"publications\":\"https://informatics-universal-one-staging.universalmind.workers.dev/api/v1/publications\",\"atlas\":\"https://informatics-universal-one-staging.universalmind.workers.dev/api/v1/atlas\",\"openapi\":\"https://informatics-universal-one-staging.universalmind.workers.dev/api/v1/openapi.json\",\"mcp\":\"https://informatics-universal-one-staging.universalmind.workers.dev/mcp\",\"agentCard\":\"https://informatics-universal-one-staging.universalmind.workers.dev/.well-known/agent-card.json\",\"guide\":\"https://staging.universalmind.tv/informatics/connect.html\",\"quantum\":\"https://informatics-universal-one-staging.universalmind.workers.dev/api/v1/quantum/oxtr-qrc-01\",\"completeDataset\":\"https://staging.universalmind.tv/informatics/exports/manifest.json\"}}"
+      }
+    ],
+    "structuredContent": {
+      "schemaVersion": "1.0",
+      "datasetVersion": "research-20261026-daytab-v1",
+      "counts": {
+        "publications": 891,
+        "atlas": 1001,
+        "full_texts": 149,
+        "public_full_texts": 146,
+        "m9_family": 111
+      },
+      "access": {
+        "records": "Public publication metadata, approved summaries and quotations; complete Atlas records and commentary.",
+        "passages": "CC BY and CC0 passages only, with source, attribution and licence. Other full texts remain outside public exports.",
+        "writing": false
+      },
+      "links": {
+        "publications": "https://informatics-universal-one-staging.universalmind.workers.dev/api/v1/publications",
+        "atlas": "https://informatics-universal-one-staging.universalmind.workers.dev/api/v1/atlas",
+        "openapi": "https://informatics-universal-one-staging.universalmind.workers.dev/api/v1/openapi.json",
+        "mcp": "https://informatics-universal-one-staging.universalmind.workers.dev/mcp",
+        "agentCard": "https://informatics-universal-one-staging.universalmind.workers.dev/.well-known/agent-card.json",
+        "guide": "https://staging.universalmind.tv/informatics/connect.html",
+        "quantum": "https://informatics-universal-one-staging.universalmind.workers.dev/api/v1/quantum/oxtr-qrc-01",
+        "completeDataset": "https://staging.universalmind.tv/informatics/exports/manifest.json"
+      }
+    }
+  },
+  "quantum_summary": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"id\":\"oxtr-qrc-01\",\"section\":\"summary\",\"availableSections\":[\"summary\",\"sequences\",\"methods\",\"measurements\",\"comparison\",\"next_test\",\"timing\",\"downloads\",\"continuation\"],\"data\":{\"question\":\"Do quantum responses generated from Fibonacci and M9 P24 representations improve our ability to predict transcription factor occupancy around OXTR?\",\"phase\":\"Completed measurement qualification plus an exploratory classical prediction continuation. Quantum binding prediction has not yet been tested.\",\"goal\":\"Test whether quantum responses add useful information for predicting transcription-factor occupancy around OXTR.\",\"what_ran\":\"Two unchanged 256-base DNA samples. Each sample supplied numerical input in eight preparations: ordinary, Fibonacci, Phi Ratio, Alpha, Beta, Gamma, Epsilon and shuffled. Six simulated or physical atoms; 16 CUDA-Q GPU programs and 16 Aquila programs, each with 100 measurements.\",\"result\":\"All 16 GPU runs passed the recorded numerical agreement check. All 16 Aquila runs returned; agreement with the model was mixed. These are measurements of atomic excitation, not probabilities that proteins bind DNA.\",\"useful_finding\":\"The input preparation changes the quantum response. Gamma and Epsilon raise the calculated mean excitation relative to ordinary input in both samples. The shuffled control is larger in the second sample, so response size alone is not a Fibonacci-specific benefit.\",\"success_next\":\"Build a binding-prediction method using one set of DNA regions. Keep that method fixed and predict different DNA before revealing its laboratory binding results. A useful signal is more accurate predictions than the strongest comparison method using the same DNA information.\",\"null_next\":\"No clear improvement within uncertainty is inconclusive. Equal or worse predictions give no demonstrated predictive benefit and require revision or a negative result.\",\"next_action\":\"Astra has now completed public DNA preparation and a classical prediction pilot, and prepared a matched pair with 16 local CUDA-Q checks. Read continuation for actual findings. No new Aquila or qBraid jobs were submitted.\",\"ctcf\":\"CTCF is one transcription factor: a protein that binds DNA. It is a proposed first test target, not a replacement term for all transcription factors. ENCODE peaks mark binding regions, not exact contacted bases.\",\"trust\":\"The mathematical calculation tests the specified model. CUDA-Q samples that model on a classical GPU. Aquila measures actual neutral atoms, including device noise. Agreement checks execution; laboratory binding data is the evidence for biological prediction. There is no universal trust score ranking one machine above the other.\",\"nature\":\"The 2022 Nature study s41586-022-04853-4 used a Fibonacci-ordered drive in a trapped-ion system and found longer-lived edge quantum information. It motivates Fibonacci research. Our Aquila measurement batch did not test that stability mechanism or prove that hexagons cause it.\",\"hypotheses\":\"The proposed link from M9 P24 geometry, Odom’s construction and honeycomb efficiency to quantum stability remains a working hypothesis. Mathematical relationships and the honeycomb theorem do not by themselves establish this physical mechanism.\",\"hardware_fee_usd\":20.8,\"gpu_cost_credits\":0,\"hardware_valid_shots\":1541,\"links\":{\"page\":\"https://staging.universalmind.tv/informatics/?area=quantum&entry=research\",\"json\":\"https://staging.universalmind.tv/informatics/quantum/experiments/oxtr-qrc-01-qualification/r1/experiment.json\",\"csv\":\"https://staging.universalmind.tv/informatics/quantum/experiments/oxtr-qrc-01-qualification/r1/experiment.csv\",\"complete_dataset\":\"https://staging.universalmind.tv/informatics/connect.html#downloads\"},\"continuation\":{\"verdict\":\"Inconclusive classical pilot\",\"difference_average_precision\":0.0019879267780844173,\"details\":\"continuation\"}},\"sourceSHA256\":\"adc1914cac349c28afc5f4d8c72dbddf80f38063ab1bef3e93e21cea8d415876\",\"url\":\"https://staging.universalmind.tv/informatics/quantum/experiments/oxtr-agent-follow-through-pilot/r1/experiment.json\",\"pageURL\":\"https://staging.universalmind.tv/informatics/?area=quantum&entry=research\"}"
+      }
+    ],
+    "structuredContent": {
+      "id": "oxtr-qrc-01",
+      "section": "summary",
+      "availableSections": [
+        "summary",
+        "sequences",
+        "methods",
+        "measurements",
+        "comparison",
+        "next_test",
+        "timing",
+        "downloads",
+        "continuation"
+      ],
+      "data": {
+        "question": "Do quantum responses generated from Fibonacci and M9 P24 representations improve our ability to predict transcription factor occupancy around OXTR?",
+        "phase": "Completed measurement qualification plus an exploratory classical prediction continuation. Quantum binding prediction has not yet been tested.",
+        "goal": "Test whether quantum responses add useful information for predicting transcription-factor occupancy around OXTR.",
+        "what_ran": "Two unchanged 256-base DNA samples. Each sample supplied numerical input in eight preparations: ordinary, Fibonacci, Phi Ratio, Alpha, Beta, Gamma, Epsilon and shuffled. Six simulated or physical atoms; 16 CUDA-Q GPU programs and 16 Aquila programs, each with 100 measurements.",
+        "result": "All 16 GPU runs passed the recorded numerical agreement check. All 16 Aquila runs returned; agreement with the model was mixed. These are measurements of atomic excitation, not probabilities that proteins bind DNA.",
+        "useful_finding": "The input preparation changes the quantum response. Gamma and Epsilon raise the calculated mean excitation relative to ordinary input in both samples. The shuffled control is larger in the second sample, so response size alone is not a Fibonacci-specific benefit.",
+        "success_next": "Build a binding-prediction method using one set of DNA regions. Keep that method fixed and predict different DNA before revealing its laboratory binding results. A useful signal is more accurate predictions than the strongest comparison method using the same DNA information.",
+        "null_next": "No clear improvement within uncertainty is inconclusive. Equal or worse predictions give no demonstrated predictive benefit and require revision or a negative result.",
+        "next_action": "Astra has now completed public DNA preparation and a classical prediction pilot, and prepared a matched pair with 16 local CUDA-Q checks. Read continuation for actual findings. No new Aquila or qBraid jobs were submitted.",
+        "ctcf": "CTCF is one transcription factor: a protein that binds DNA. It is a proposed first test target, not a replacement term for all transcription factors. ENCODE peaks mark binding regions, not exact contacted bases.",
+        "trust": "The mathematical calculation tests the specified model. CUDA-Q samples that model on a classical GPU. Aquila measures actual neutral atoms, including device noise. Agreement checks execution; laboratory binding data is the evidence for biological prediction. There is no universal trust score ranking one machine above the other.",
+        "nature": "The 2022 Nature study s41586-022-04853-4 used a Fibonacci-ordered drive in a trapped-ion system and found longer-lived edge quantum information. It motivates Fibonacci research. Our Aquila measurement batch did not test that stability mechanism or prove that hexagons cause it.",
+        "hypotheses": "The proposed link from M9 P24 geometry, Odom’s construction and honeycomb efficiency to quantum stability remains a working hypothesis. Mathematical relationships and the honeycomb theorem do not by themselves establish this physical mechanism.",
+        "hardware_fee_usd": 20.8,
+        "gpu_cost_credits": 0,
+        "hardware_valid_shots": 1541,
+        "links": {
+          "page": "https://staging.universalmind.tv/informatics/?area=quantum&entry=research",
+          "json": "https://staging.universalmind.tv/informatics/quantum/experiments/oxtr-qrc-01-qualification/r1/experiment.json",
+          "csv": "https://staging.universalmind.tv/informatics/quantum/experiments/oxtr-qrc-01-qualification/r1/experiment.csv",
+          "complete_dataset": "https://staging.universalmind.tv/informatics/connect.html#downloads"
+        },
+        "continuation": {
+          "verdict": "Inconclusive classical pilot",
+          "difference_average_precision": 0.0019879267780844173,
+          "details": "continuation"
+        }
+      },
+      "sourceSHA256": "adc1914cac349c28afc5f4d8c72dbddf80f38063ab1bef3e93e21cea8d415876",
+      "url": "https://staging.universalmind.tv/informatics/quantum/experiments/oxtr-agent-follow-through-pilot/r1/experiment.json",
+      "pageURL": "https://staging.universalmind.tv/informatics/?area=quantum&entry=research"
+    }
+  },
+  "quantum_methods": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"id\":\"oxtr-qrc-01\",\"section\":\"methods\",\"availableSections\":[\"summary\",\"sequences\",\"methods\",\"measurements\",\"comparison\",\"next_test\",\"timing\",\"downloads\",\"continuation\"],\"data\":{\"template\":{\"id\":\"rydberg-reservoir-global-pulse-v1\",\"qubits\":6,\"geometry\":\"Six sites on a regular hexagon; ring radius and nearest-neighbour separation 9 micrometres, with one vertex at north. Positions are fixed throughout each run.\",\"radius_m\":0.000009,\"omega_rad_s\":2000000,\"detuning_bound_rad_s\":4000000,\"duration_s\":0.000004,\"input_slots\":24,\"edge_ramp_s\":2e-7,\"input\":\"A 24-slot vector of motif/spacing descriptors. Each encoding uses the same source features and identical normalization fitted on training data only.\",\"encoding\":\"Global detuning varies with the input; fixed nonzero drive permits noncommuting evolution. Canonical representation weights/order define registered alternatives. No local detuning access is assumed.\",\"output\":\"Six excitation probabilities and fifteen labelled pair probabilities at the final time; additional times require distinct tasks and a new frozen version.\",\"model\":\"H(t)/hbar = Omega(t)/2 sum_i X_i - Delta_x(t) sum_i n_i + sum_i<j C6/r_ij^6 n_i n_j\",\"c6_source\":\"Read and freeze Aquila device capabilities at compilation; never infer a molecular interaction from this Hamiltonian.\",\"symmetry\":\"Global driving of this symmetric array can produce redundant single-site and pair features. Measure effective feature rank on training data and retain the same symmetry treatment across all encodings; six atoms do not imply 21 independent features.\"},\"execution\":{\"current_stage\":\"qualification_complete\",\"submission_enabled\":false,\"simulation_backend\":\"NVIDIA CUDA-Q\",\"simulation_route\":\"Compile a checked time-evolution circuit, validate locally, then use the existing qBraid GPU route for supported compiled programs. Native CUDA-Q dynamics is an alternative only after runtime capability checks.\",\"hardware_backend\":\"QuEra Aquila via Amazon Braket\",\"parity\":\"Identical coordinates, C6, pulse schedule, basis/readout convention and observation times. Freeze the discretized AHS program before compiling the matched simulation.\",\"stages\":[\"design_review\",\"data_admission\",\"model_validation\",\"simulation\",\"hardware\",\"evaluation\",\"complete\"],\"planned_shots_per_input\":100,\"budget_rule\":\"No dispatch until the complete task count, provider quotes and shared budget reservation are recorded and approved for the run. Existing one-task approval is not reused.\",\"task_formula\":\"number of frozen input windows × encoding variants × readout times × hardware repeats\",\"job_records\":[{\"provider\":\"qBraid\",\"id\":\"qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add543a2a6c33b9a67fcf6a\",\"state\":\"COMPLETED\"},{\"provider\":\"qBraid\",\"id\":\"qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add544c2a6c33b9a67fcf6e\",\"state\":\"COMPLETED\"},{\"provider\":\"qBraid\",\"id\":\"qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add545d2a6c33b9a67fcf75\",\"state\":\"COMPLETED\"},{\"provider\":\"qBraid\",\"id\":\"qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add546f2a6c33b9a67fcf7d\",\"state\":\"COMPLETED\"},{\"provider\":\"qBraid\",\"id\":\"qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add54802a6c33b9a67fcf85\",\"state\":\"COMPLETED\"},{\"provider\":\"qBraid\",\"id\":\"qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add54912a6c33b9a67fcf8b\",\"state\":\"COMPLETED\"},{\"provider\":\"qBraid\",\"id\":\"qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add54a32a6c33b9a67fcf90\",\"state\":\"COMPLETED\"},{\"provider\":\"qBraid\",\"id\":\"qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add54b52a6c33b9a67fcf99\",\"state\":\"COMPLETED\"},{\"provider\":\"qBraid\",\"id\":\"qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add54c82a6c33b9a67fcf9e\",\"state\":\"COMPLETED\"},{\"provider\":\"qBraid\",\"id\":\"qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add54dd2a6c33b9a67fcfa2\",\"state\":\"COMPLETED\"},{\"provider\":\"qBraid\",\"id\":\"qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add54ef2a6c33b9a67fcfae\",\"state\":\"COMPLETED\"},{\"provider\":\"qBraid\",\"id\":\"qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add55002a6c33b9a67fcfb4\",\"state\":\"COMPLETED\"},{\"provider\":\"qBraid\",\"id\":\"qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add55112a6c33b9a67fcfbd\",\"state\":\"COMPLETED\"},{\"provider\":\"qBraid\",\"id\":\"qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add55222a6c33b9a67fcfc1\",\"state\":\"COMPLETED\"},{\"provider\":\"qBraid\",\"id\":\"qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add55332a6c33b9a67fcfc5\",\"state\":\"COMPLETED\"},{\"provider\":\"qBraid\",\"id\":\"qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add55442a6c33b9a67fcfcf\",\"state\":\"COMPLETED\"},{\"provider\":\"qBraid\",\"id\":\"qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add55542a6c33b9a67fcfd5\",\"state\":\"COMPLETED\"},{\"provider\":\"Amazon Braket / QuEra\",\"id\":\"92a97488-675a-4126-838a-75ff29e0c539\",\"state\":\"COMPLETED\"},{\"provider\":\"Amazon Braket / QuEra\",\"id\":\"4d690682-bbcd-471f-84fe-d7d29ab4f0f3\",\"state\":\"COMPLETED\"},{\"provider\":\"Amazon Braket / QuEra\",\"id\":\"fd03b07f-1c48-40a1-8510-05bcfa38987b\",\"state\":\"COMPLETED\"},{\"provider\":\"Amazon Braket / QuEra\",\"id\":\"1408321b-3bbf-42d0-98d8-b2a3f6a2282d\",\"state\":\"COMPLETED\"},{\"provider\":\"Amazon Braket / QuEra\",\"id\":\"21a80a56-064a-4940-8ed9-9d77122436c7\",\"state\":\"COMPLETED\"},{\"provider\":\"Amazon Braket / QuEra\",\"id\":\"056c9488-bd07-469c-93e2-edf24e8fff9c\",\"state\":\"COMPLETED\"},{\"provider\":\"Amazon Braket / QuEra\",\"id\":\"46eac414-f077-4214-81ef-e21635955bb9\",\"state\":\"COMPLETED\"},{\"provider\":\"Amazon Braket / QuEra\",\"id\":\"f4bc57c5-2ab1-463e-8e3b-88c7c61e4eb0\",\"state\":\"COMPLETED\"},{\"provider\":\"Amazon Braket / QuEra\",\"id\":\"393fd233-18b4-47f4-ba5e-af2d142e8512\",\"state\":\"COMPLETED\"},{\"provider\":\"Amazon Braket / QuEra\",\"id\":\"aff105ae-441b-49d7-a5b0-9797edc60b05\",\"state\":\"COMPLETED\"},{\"provider\":\"Amazon Braket / QuEra\",\"id\":\"17ffbfd0-8304-4b30-a749-8d0c91eab2d9\",\"state\":\"COMPLETED\"},{\"provider\":\"Amazon Braket / QuEra\",\"id\":\"941daa0a-4939-411e-a7f1-88fcb16baaca\",\"state\":\"COMPLETED\"},{\"provider\":\"Amazon Braket / QuEra\",\"id\":\"ea4bb9a4-c91a-492a-80a7-c59fd051a807\",\"state\":\"COMPLETED\"},{\"provider\":\"Amazon Braket / QuEra\",\"id\":\"f30cda70-0079-41e9-aa40-72e24b51f15d\",\"state\":\"COMPLETED\"},{\"provider\":\"Amazon Braket / QuEra\",\"id\":\"1cbb29aa-c1b8-49bb-af31-dd18a7cbd480\",\"state\":\"COMPLETED\"},{\"provider\":\"Amazon Braket / QuEra\",\"id\":\"8408039a-06e1-4782-910f-44a9313c8e12\",\"state\":\"COMPLETED\"}],\"results\":null},\"qualification\":{\"version\":\"1.1.0-qualification\",\"status\":\"complete\",\"report\":\"oxtr-qrc-qualification.json\",\"methods\":\"oxtr-qrc-qualification.md\",\"windows\":2,\"representations\":8,\"shots_per_program\":100,\"scope\":\"Execution and numerical qualification; no biological prediction result.\"},\"windows\":[{\"id\":\"chr3-8752896-8753152\",\"start\":8752896,\"end\":8753152},{\"id\":\"chr3-8745472-8745728\",\"start\":8745472,\"end\":8745728}],\"positions_m\":[[0.00000779,0.000018],[0.00001559,0.0000135],[0.00001559,0.0000045],[0.00000779,0],[0,0.0000045],[0,0.0000135]],\"scope\":\"The first measurement phase has completed CPU and GPU checks and all 16 Aquila programs. Held-out occupancy prediction remains to be evaluated.\"},\"sourceSHA256\":\"ea623488ca7bbd06b79a83cbace4b6f50260d820ea8e2ea6bb667a4753e1afd0\",\"url\":\"https://staging.universalmind.tv/informatics/quantum/experiments/oxtr-qrc-01-qualification/r1/experiment.json\",\"pageURL\":\"https://staging.universalmind.tv/informatics/?area=quantum&entry=research\"}"
+      }
+    ],
+    "structuredContent": {
+      "id": "oxtr-qrc-01",
+      "section": "methods",
+      "availableSections": [
+        "summary",
+        "sequences",
+        "methods",
+        "measurements",
+        "comparison",
+        "next_test",
+        "timing",
+        "downloads",
+        "continuation"
+      ],
+      "data": {
+        "template": {
+          "id": "rydberg-reservoir-global-pulse-v1",
+          "qubits": 6,
+          "geometry": "Six sites on a regular hexagon; ring radius and nearest-neighbour separation 9 micrometres, with one vertex at north. Positions are fixed throughout each run.",
+          "radius_m": 9e-06,
+          "omega_rad_s": 2000000,
+          "detuning_bound_rad_s": 4000000,
+          "duration_s": 4e-06,
+          "input_slots": 24,
+          "edge_ramp_s": 2e-07,
+          "input": "A 24-slot vector of motif/spacing descriptors. Each encoding uses the same source features and identical normalization fitted on training data only.",
+          "encoding": "Global detuning varies with the input; fixed nonzero drive permits noncommuting evolution. Canonical representation weights/order define registered alternatives. No local detuning access is assumed.",
+          "output": "Six excitation probabilities and fifteen labelled pair probabilities at the final time; additional times require distinct tasks and a new frozen version.",
+          "model": "H(t)/hbar = Omega(t)/2 sum_i X_i - Delta_x(t) sum_i n_i + sum_i<j C6/r_ij^6 n_i n_j",
+          "c6_source": "Read and freeze Aquila device capabilities at compilation; never infer a molecular interaction from this Hamiltonian.",
+          "symmetry": "Global driving of this symmetric array can produce redundant single-site and pair features. Measure effective feature rank on training data and retain the same symmetry treatment across all encodings; six atoms do not imply 21 independent features."
+        },
+        "execution": {
+          "current_stage": "qualification_complete",
+          "submission_enabled": false,
+          "simulation_backend": "NVIDIA CUDA-Q",
+          "simulation_route": "Compile a checked time-evolution circuit, validate locally, then use the existing qBraid GPU route for supported compiled programs. Native CUDA-Q dynamics is an alternative only after runtime capability checks.",
+          "hardware_backend": "QuEra Aquila via Amazon Braket",
+          "parity": "Identical coordinates, C6, pulse schedule, basis/readout convention and observation times. Freeze the discretized AHS program before compiling the matched simulation.",
+          "stages": [
+            "design_review",
+            "data_admission",
+            "model_validation",
+            "simulation",
+            "hardware",
+            "evaluation",
+            "complete"
+          ],
+          "planned_shots_per_input": 100,
+          "budget_rule": "No dispatch until the complete task count, provider quotes and shared budget reservation are recorded and approved for the run. Existing one-task approval is not reused.",
+          "task_formula": "number of frozen input windows × encoding variants × readout times × hardware repeats",
+          "job_records": [
+            {
+              "provider": "qBraid",
+              "id": "qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add543a2a6c33b9a67fcf6a",
+              "state": "COMPLETED"
+            },
+            {
+              "provider": "qBraid",
+              "id": "qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add544c2a6c33b9a67fcf6e",
+              "state": "COMPLETED"
+            },
+            {
+              "provider": "qBraid",
+              "id": "qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add545d2a6c33b9a67fcf75",
+              "state": "COMPLETED"
+            },
+            {
+              "provider": "qBraid",
+              "id": "qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add546f2a6c33b9a67fcf7d",
+              "state": "COMPLETED"
+            },
+            {
+              "provider": "qBraid",
+              "id": "qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add54802a6c33b9a67fcf85",
+              "state": "COMPLETED"
+            },
+            {
+              "provider": "qBraid",
+              "id": "qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add54912a6c33b9a67fcf8b",
+              "state": "COMPLETED"
+            },
+            {
+              "provider": "qBraid",
+              "id": "qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add54a32a6c33b9a67fcf90",
+              "state": "COMPLETED"
+            },
+            {
+              "provider": "qBraid",
+              "id": "qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add54b52a6c33b9a67fcf99",
+              "state": "COMPLETED"
+            },
+            {
+              "provider": "qBraid",
+              "id": "qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add54c82a6c33b9a67fcf9e",
+              "state": "COMPLETED"
+            },
+            {
+              "provider": "qBraid",
+              "id": "qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add54dd2a6c33b9a67fcfa2",
+              "state": "COMPLETED"
+            },
+            {
+              "provider": "qBraid",
+              "id": "qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add54ef2a6c33b9a67fcfae",
+              "state": "COMPLETED"
+            },
+            {
+              "provider": "qBraid",
+              "id": "qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add55002a6c33b9a67fcfb4",
+              "state": "COMPLETED"
+            },
+            {
+              "provider": "qBraid",
+              "id": "qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add55112a6c33b9a67fcfbd",
+              "state": "COMPLETED"
+            },
+            {
+              "provider": "qBraid",
+              "id": "qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add55222a6c33b9a67fcfc1",
+              "state": "COMPLETED"
+            },
+            {
+              "provider": "qBraid",
+              "id": "qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add55332a6c33b9a67fcfc5",
+              "state": "COMPLETED"
+            },
+            {
+              "provider": "qBraid",
+              "id": "qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add55442a6c33b9a67fcfcf",
+              "state": "COMPLETED"
+            },
+            {
+              "provider": "qBraid",
+              "id": "qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add55542a6c33b9a67fcfd5",
+              "state": "COMPLETED"
+            },
+            {
+              "provider": "Amazon Braket / QuEra",
+              "id": "92a97488-675a-4126-838a-75ff29e0c539",
+              "state": "COMPLETED"
+            },
+            {
+              "provider": "Amazon Braket / QuEra",
+              "id": "4d690682-bbcd-471f-84fe-d7d29ab4f0f3",
+              "state": "COMPLETED"
+            },
+            {
+              "provider": "Amazon Braket / QuEra",
+              "id": "fd03b07f-1c48-40a1-8510-05bcfa38987b",
+              "state": "COMPLETED"
+            },
+            {
+              "provider": "Amazon Braket / QuEra",
+              "id": "1408321b-3bbf-42d0-98d8-b2a3f6a2282d",
+              "state": "COMPLETED"
+            },
+            {
+              "provider": "Amazon Braket / QuEra",
+              "id": "21a80a56-064a-4940-8ed9-9d77122436c7",
+              "state": "COMPLETED"
+            },
+            {
+              "provider": "Amazon Braket / QuEra",
+              "id": "056c9488-bd07-469c-93e2-edf24e8fff9c",
+              "state": "COMPLETED"
+            },
+            {
+              "provider": "Amazon Braket / QuEra",
+              "id": "46eac414-f077-4214-81ef-e21635955bb9",
+              "state": "COMPLETED"
+            },
+            {
+              "provider": "Amazon Braket / QuEra",
+              "id": "f4bc57c5-2ab1-463e-8e3b-88c7c61e4eb0",
+              "state": "COMPLETED"
+            },
+            {
+              "provider": "Amazon Braket / QuEra",
+              "id": "393fd233-18b4-47f4-ba5e-af2d142e8512",
+              "state": "COMPLETED"
+            },
+            {
+              "provider": "Amazon Braket / QuEra",
+              "id": "aff105ae-441b-49d7-a5b0-9797edc60b05",
+              "state": "COMPLETED"
+            },
+            {
+              "provider": "Amazon Braket / QuEra",
+              "id": "17ffbfd0-8304-4b30-a749-8d0c91eab2d9",
+              "state": "COMPLETED"
+            },
+            {
+              "provider": "Amazon Braket / QuEra",
+              "id": "941daa0a-4939-411e-a7f1-88fcb16baaca",
+              "state": "COMPLETED"
+            },
+            {
+              "provider": "Amazon Braket / QuEra",
+              "id": "ea4bb9a4-c91a-492a-80a7-c59fd051a807",
+              "state": "COMPLETED"
+            },
+            {
+              "provider": "Amazon Braket / QuEra",
+              "id": "f30cda70-0079-41e9-aa40-72e24b51f15d",
+              "state": "COMPLETED"
+            },
+            {
+              "provider": "Amazon Braket / QuEra",
+              "id": "1cbb29aa-c1b8-49bb-af31-dd18a7cbd480",
+              "state": "COMPLETED"
+            },
+            {
+              "provider": "Amazon Braket / QuEra",
+              "id": "8408039a-06e1-4782-910f-44a9313c8e12",
+              "state": "COMPLETED"
+            }
+          ],
+          "results": null
+        },
+        "qualification": {
+          "version": "1.1.0-qualification",
+          "status": "complete",
+          "report": "oxtr-qrc-qualification.json",
+          "methods": "oxtr-qrc-qualification.md",
+          "windows": 2,
+          "representations": 8,
+          "shots_per_program": 100,
+          "scope": "Execution and numerical qualification; no biological prediction result."
+        },
+        "windows": [
+          {
+            "id": "chr3-8752896-8753152",
+            "start": 8752896,
+            "end": 8753152
+          },
+          {
+            "id": "chr3-8745472-8745728",
+            "start": 8745472,
+            "end": 8745728
+          }
+        ],
+        "positions_m": [
+          [
+            7.79e-06,
+            1.8e-05
+          ],
+          [
+            1.559e-05,
+            1.35e-05
+          ],
+          [
+            1.559e-05,
+            4.5e-06
+          ],
+          [
+            7.79e-06,
+            0
+          ],
+          [
+            0,
+            4.5e-06
+          ],
+          [
+            0,
+            1.35e-05
+          ]
+        ],
+        "scope": "The first measurement phase has completed CPU and GPU checks and all 16 Aquila programs. Held-out occupancy prediction remains to be evaluated."
+      },
+      "sourceSHA256": "ea623488ca7bbd06b79a83cbace4b6f50260d820ea8e2ea6bb667a4753e1afd0",
+      "url": "https://staging.universalmind.tv/informatics/quantum/experiments/oxtr-qrc-01-qualification/r1/experiment.json",
+      "pageURL": "https://staging.universalmind.tv/informatics/?area=quantum&entry=research"
+    }
+  },
+  "quantum_measurements_page": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"id\":\"oxtr-qrc-01\",\"section\":\"measurements\",\"availableSections\":[\"summary\",\"sequences\",\"methods\",\"measurements\",\"comparison\",\"next_test\",\"timing\",\"downloads\",\"continuation\"],\"data\":{\"records\":[{\"id\":\"chr3-8752896-8753152-ordinary\",\"window\":\"chr3-8752896-8753152\",\"variant\":\"ordinary\",\"ideal_observables\":[0.29718229757528714,0.297126507775186,0.29712650777518657,0.29718229757528675,0.29734097698568845,0.2973409769856886,0.006446481808870631,0.08270339794376867,0.10391343569253053,0.08258206500731867,0.00690858365832805,0.006701962200341476,0.08270339794376845,0.1039422477164107,0.08265543570345332,0.006446481808870617,0.08265543570345338,0.103942247716411,0.006908583658328066,0.08258206500731856,0.006737813034939586],\"gpu_observables\":[0.3,0.3400000000000001,0.26,0.3,0.27,0.34,0.01,0.12,0.05,0.11,0,0.02,0.12,0.1,0.09999999999999999,0,0.06,0.08,0.01,0.11,0.01],\"gpu_counts\":{\"100000\":5,\"100010\":9,\"100100\":8,\"101000\":10,\"101010\":1,\"110000\":1,\"011000\":1,\"010101\":3,\"000000\":5,\"001001\":5,\"000001\":4,\"000011\":1,\"010000\":1,\"000100\":1,\"010010\":10,\"000110\":2,\"000101\":9,\"001000\":2,\"001010\":11,\"010001\":8,\"010100\":3},\"shots\":100,\"gpu_job_id\":\"qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add544c2a6c33b9a67fcf6e\",\"hardware_task_id\":\"92a97488-675a-4126-838a-75ff29e0c539\",\"hardware_state\":\"COMPLETED\",\"qasm_sha256\":\"b597a10ff984f6348fae46a0ffeb6a7cbbe30d533d3a1bc35014894980a001b4\",\"hardware_observables\":[0.16326530612244897,0.336734693877551,0.22448979591836735,0.24489795918367346,0.2755102040816326,0.2857142857142857,0,0.030612244897959183,0.05102040816326531,0.05102040816326531,0,0,0.09183673469387756,0.10204081632653061,0.09183673469387756,0,0.05102040816326531,0.10204081632653061,0.01020408163265306,0.061224489795918366,0.01020408163265306],\"hardware_counts\":{\"100000\":3,\"100010\":8,\"100100\":10,\"101000\":5,\"101010\":1,\"110000\":1,\"010100\":5,\"001001\":5,\"010000\":6,\"000001\":3,\"001000\":5,\"000000\":10,\"010010\":9,\"000010\":7,\"000100\":4,\"000101\":3,\"011010\":1,\"001010\":7,\"010001\":5},\"hardware_valid_shots\":98},{\"id\":\"chr3-8752896-8753152-fibonacci\",\"window\":\"chr3-8752896-8753152\",\"variant\":\"fibonacci\",\"ideal_observables\":[0.2748003220717819,0.2748497214980856,0.27484972149808584,0.27480032207178184,0.2747762157695712,0.2747762157695713,0.0066146812612067375,0.09833114747797918,0.11729707204493892,0.09827155460225305,0.006554840090932245,0.006586114663601879,0.09833114747797923,0.11729843483524793,0.09830810204514491,0.0066146812612067184,0.09830810204514491,0.11729843483524811,0.006554840090932264,0.09827155460225302,0.006602084436143939],\"gpu_observables\":[0.27,0.33,0.21999999999999997,0.28,0.27,0.31,0.01,0.08,0.13,0.09999999999999999,0.01,0.02,0.11,0.12,0.13,0.01,0.09,0.09,0,0.12,0.01],\"gpu_counts\":{\"100000\":5,\"100010\":4,\"100100\":9,\"101000\":2,\"101001\":1,\"101010\":9,\"110000\":1,\"010101\":8,\"010100\":1,\"000000\":16,\"000010\":4,\"001001\":12,\"000001\":4,\"000100\":1,\"001100\":1,\"010011\":1,\"010010\":11,\"000110\":2,\"001000\":1,\"001010\":2,\"010000\":4,\"010001\":1},\"shots\":100,\"gpu_job_id\":\"qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add545d2a6c33b9a67fcf75\",\"hardware_task_id\":\"4d690682-bbcd-471f-84fe-d7d29ab4f0f3\",\"hardware_state\":\"COMPLETED\",\"qasm_sha256\":\"1354db7cf7b7b738fd5859f6a8a9b572a442e5010dd2f7c184d7abf5c4f60c6f\",\"hardware_observables\":[0.18181818181818182,0.20202020202020202,0.21212121212121213,0.23232323232323232,0.20202020202020202,0.2727272727272727,0.010101010101010102,0.04040404040404041,0.10101010101010101,0.04040404040404041,0.010101010101010102,0,0.06060606060606061,0.06060606060606061,0.0707070707070707,0,0.050505050505050504,0.1111111111111111,0.020202020202020204,0.08080808080808081,0],\"hardware_counts\":{\"100000\":4,\"100010\":4,\"100100\":11,\"101000\":4,\"101001\":1,\"101010\":3,\"000000\":27,\"000010\":4,\"010010\":5,\"010100\":2,\"001010\":2,\"001001\":9,\"000001\":2,\"010000\":7,\"010101\":3,\"011000\":1,\"011010\":1,\"000100\":4,\"010001\":1,\"001000\":2,\"000011\":1,\"000101\":1},\"hardware_valid_shots\":99}],\"page\":{\"offset\":0,\"total\":16,\"nextOffset\":2},\"units\":\"Probabilities 0–1. First six values are individual atom excitation; the remaining 15 are joint excitations. These are not binding probabilities.\",\"links\":{\"page\":\"https://staging.universalmind.tv/informatics/?area=quantum&entry=research\",\"json\":\"https://staging.universalmind.tv/informatics/quantum/experiments/oxtr-qrc-01-qualification/r1/experiment.json\",\"csv\":\"https://staging.universalmind.tv/informatics/quantum/experiments/oxtr-qrc-01-qualification/r1/experiment.csv\",\"complete_dataset\":\"https://staging.universalmind.tv/informatics/connect.html#downloads\"}},\"sourceSHA256\":\"ea623488ca7bbd06b79a83cbace4b6f50260d820ea8e2ea6bb667a4753e1afd0\",\"url\":\"https://staging.universalmind.tv/informatics/quantum/experiments/oxtr-qrc-01-qualification/r1/experiment.json\",\"pageURL\":\"https://staging.universalmind.tv/informatics/?area=quantum&entry=research\"}"
+      }
+    ],
+    "structuredContent": {
+      "id": "oxtr-qrc-01",
+      "section": "measurements",
+      "availableSections": [
+        "summary",
+        "sequences",
+        "methods",
+        "measurements",
+        "comparison",
+        "next_test",
+        "timing",
+        "downloads",
+        "continuation"
+      ],
+      "data": {
+        "records": [
+          {
+            "id": "chr3-8752896-8753152-ordinary",
+            "window": "chr3-8752896-8753152",
+            "variant": "ordinary",
+            "ideal_observables": [
+              0.29718229757528714,
+              0.297126507775186,
+              0.29712650777518657,
+              0.29718229757528675,
+              0.29734097698568845,
+              0.2973409769856886,
+              0.006446481808870631,
+              0.08270339794376867,
+              0.10391343569253053,
+              0.08258206500731867,
+              0.00690858365832805,
+              0.006701962200341476,
+              0.08270339794376845,
+              0.1039422477164107,
+              0.08265543570345332,
+              0.006446481808870617,
+              0.08265543570345338,
+              0.103942247716411,
+              0.006908583658328066,
+              0.08258206500731856,
+              0.006737813034939586
+            ],
+            "gpu_observables": [
+              0.3,
+              0.3400000000000001,
+              0.26,
+              0.3,
+              0.27,
+              0.34,
+              0.01,
+              0.12,
+              0.05,
+              0.11,
+              0,
+              0.02,
+              0.12,
+              0.1,
+              0.09999999999999999,
+              0,
+              0.06,
+              0.08,
+              0.01,
+              0.11,
+              0.01
+            ],
+            "gpu_counts": {
+              "100000": 5,
+              "100010": 9,
+              "100100": 8,
+              "101000": 10,
+              "101010": 1,
+              "110000": 1,
+              "011000": 1,
+              "010101": 3,
+              "000000": 5,
+              "001001": 5,
+              "000001": 4,
+              "000011": 1,
+              "010000": 1,
+              "000100": 1,
+              "010010": 10,
+              "000110": 2,
+              "000101": 9,
+              "001000": 2,
+              "001010": 11,
+              "010001": 8,
+              "010100": 3
+            },
+            "shots": 100,
+            "gpu_job_id": "qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add544c2a6c33b9a67fcf6e",
+            "hardware_task_id": "92a97488-675a-4126-838a-75ff29e0c539",
+            "hardware_state": "COMPLETED",
+            "qasm_sha256": "b597a10ff984f6348fae46a0ffeb6a7cbbe30d533d3a1bc35014894980a001b4",
+            "hardware_observables": [
+              0.16326530612244897,
+              0.336734693877551,
+              0.22448979591836735,
+              0.24489795918367346,
+              0.2755102040816326,
+              0.2857142857142857,
+              0,
+              0.030612244897959183,
+              0.05102040816326531,
+              0.05102040816326531,
+              0,
+              0,
+              0.09183673469387756,
+              0.10204081632653061,
+              0.09183673469387756,
+              0,
+              0.05102040816326531,
+              0.10204081632653061,
+              0.01020408163265306,
+              0.061224489795918366,
+              0.01020408163265306
+            ],
+            "hardware_counts": {
+              "100000": 3,
+              "100010": 8,
+              "100100": 10,
+              "101000": 5,
+              "101010": 1,
+              "110000": 1,
+              "010100": 5,
+              "001001": 5,
+              "010000": 6,
+              "000001": 3,
+              "001000": 5,
+              "000000": 10,
+              "010010": 9,
+              "000010": 7,
+              "000100": 4,
+              "000101": 3,
+              "011010": 1,
+              "001010": 7,
+              "010001": 5
+            },
+            "hardware_valid_shots": 98
+          },
+          {
+            "id": "chr3-8752896-8753152-fibonacci",
+            "window": "chr3-8752896-8753152",
+            "variant": "fibonacci",
+            "ideal_observables": [
+              0.2748003220717819,
+              0.2748497214980856,
+              0.27484972149808584,
+              0.27480032207178184,
+              0.2747762157695712,
+              0.2747762157695713,
+              0.0066146812612067375,
+              0.09833114747797918,
+              0.11729707204493892,
+              0.09827155460225305,
+              0.006554840090932245,
+              0.006586114663601879,
+              0.09833114747797923,
+              0.11729843483524793,
+              0.09830810204514491,
+              0.0066146812612067184,
+              0.09830810204514491,
+              0.11729843483524811,
+              0.006554840090932264,
+              0.09827155460225302,
+              0.006602084436143939
+            ],
+            "gpu_observables": [
+              0.27,
+              0.33,
+              0.21999999999999997,
+              0.28,
+              0.27,
+              0.31,
+              0.01,
+              0.08,
+              0.13,
+              0.09999999999999999,
+              0.01,
+              0.02,
+              0.11,
+              0.12,
+              0.13,
+              0.01,
+              0.09,
+              0.09,
+              0,
+              0.12,
+              0.01
+            ],
+            "gpu_counts": {
+              "100000": 5,
+              "100010": 4,
+              "100100": 9,
+              "101000": 2,
+              "101001": 1,
+              "101010": 9,
+              "110000": 1,
+              "010101": 8,
+              "010100": 1,
+              "000000": 16,
+              "000010": 4,
+              "001001": 12,
+              "000001": 4,
+              "000100": 1,
+              "001100": 1,
+              "010011": 1,
+              "010010": 11,
+              "000110": 2,
+              "001000": 1,
+              "001010": 2,
+              "010000": 4,
+              "010001": 1
+            },
+            "shots": 100,
+            "gpu_job_id": "qbraid:qbraid:sim:gpu-sv-cd19-qjob-6add545d2a6c33b9a67fcf75",
+            "hardware_task_id": "4d690682-bbcd-471f-84fe-d7d29ab4f0f3",
+            "hardware_state": "COMPLETED",
+            "qasm_sha256": "1354db7cf7b7b738fd5859f6a8a9b572a442e5010dd2f7c184d7abf5c4f60c6f",
+            "hardware_observables": [
+              0.18181818181818182,
+              0.20202020202020202,
+              0.21212121212121213,
+              0.23232323232323232,
+              0.20202020202020202,
+              0.2727272727272727,
+              0.010101010101010102,
+              0.04040404040404041,
+              0.10101010101010101,
+              0.04040404040404041,
+              0.010101010101010102,
+              0,
+              0.06060606060606061,
+              0.06060606060606061,
+              0.0707070707070707,
+              0,
+              0.050505050505050504,
+              0.1111111111111111,
+              0.020202020202020204,
+              0.08080808080808081,
+              0
+            ],
+            "hardware_counts": {
+              "100000": 4,
+              "100010": 4,
+              "100100": 11,
+              "101000": 4,
+              "101001": 1,
+              "101010": 3,
+              "000000": 27,
+              "000010": 4,
+              "010010": 5,
+              "010100": 2,
+              "001010": 2,
+              "001001": 9,
+              "000001": 2,
+              "010000": 7,
+              "010101": 3,
+              "011000": 1,
+              "011010": 1,
+              "000100": 4,
+              "010001": 1,
+              "001000": 2,
+              "000011": 1,
+              "000101": 1
+            },
+            "hardware_valid_shots": 99
+          }
+        ],
+        "page": {
+          "offset": 0,
+          "total": 16,
+          "nextOffset": 2
+        },
+        "units": "Probabilities 0–1. First six values are individual atom excitation; the remaining 15 are joint excitations. These are not binding probabilities.",
+        "links": {
+          "page": "https://staging.universalmind.tv/informatics/?area=quantum&entry=research",
+          "json": "https://staging.universalmind.tv/informatics/quantum/experiments/oxtr-qrc-01-qualification/r1/experiment.json",
+          "csv": "https://staging.universalmind.tv/informatics/quantum/experiments/oxtr-qrc-01-qualification/r1/experiment.csv",
+          "complete_dataset": "https://staging.universalmind.tv/informatics/connect.html#downloads"
+        }
+      },
+      "sourceSHA256": "ea623488ca7bbd06b79a83cbace4b6f50260d820ea8e2ea6bb667a4753e1afd0",
+      "url": "https://staging.universalmind.tv/informatics/quantum/experiments/oxtr-qrc-01-qualification/r1/experiment.json",
+      "pageURL": "https://staging.universalmind.tv/informatics/?area=quantum&entry=research"
+    }
+  },
+  "continuation": {
+    "id": "oxtr-qrc-01",
+    "section": "continuation",
+    "availableSections": [
+      "summary",
+      "sequences",
+      "methods",
+      "measurements",
+      "comparison",
+      "next_test",
+      "timing",
+      "downloads",
+      "continuation"
+    ],
+    "data": {
+      "question": "Do regular Fibonacci sequences, M9 P24 including Alpha, Beta, Gamma and Epsilon, and Phi Ratio help predict transcription factor binding around OXTR?",
+      "interpretation": {
+        "answer": "There is no demonstrated benefit yet for predicting binding around OXTR. Adding Fibonacci and Phi Ratio features gave an inconclusive result. The new classical test did not evaluate biological prediction by M9 P24 Alpha, Beta, Gamma or Epsilon. This pilot concerns CTCF, one DNA-binding protein measured in one stem-cell context, not transcription factors generally.",
+        "what_we_did": "The agent completed a comparison of ordinary DNA binding-pattern and spacing features, with and without Fibonacci/Phi Ratio features. It learned on chromosome 1, chose the method on chromosome 2 and tested OXTR on chromosome 3, without seeing OXTR laboratory answers during learning or selection. The agent also prepared a new matched pair of DNA windows: one overlapping a reported CTCF peak and one comparison window. For each, it compiled the same DNA eight ways—ordinary, Fibonacci, Phi Ratio, Alpha, Beta, Gamma, Epsilon and shuffled controls—and completed 16 local CUDA-Q CPU checks.",
+        "meaning": "At OXTR, average precision rose from 0.0719 to 0.0739. This is a ranking score, not percent accuracy. The uncertainty range for the change extended from −0.0263 to +0.0082, leaving benefit unresolved; the noisy increase establishes no advantage. The pilot covered only five OXTR peak regions and used laboratory data with quality warnings. Saved CUDA-Q/Aquila readings describe programmed atom excitation, not binding probabilities; the two saved samples overlap none of those peaks, so they do not validate binding prediction. The new matched pair checks programs, not predictive performance.",
+        "next_dependency": "A larger quantum prediction test still needs more matched quantum measurements linked to laboratory binding results, and a larger independent biological test remains necessary. Today’s instruction prohibits new Aquila submissions; none were made, and no new quantum jobs were submitted. Fresh device validation and explicit allowance are required before Aquila submission; new paid qBraid work also lacks a credit allowance. This is an automated preliminary report, with Gemini oversight deferred. The inconclusive result usefully separates completed program checks from evidence of predictive benefit."
+      },
+      "review": {
+        "status": "automated_preliminary",
+        "Gemini": "deferred_by_owner"
+      },
+      "metrics": {
+        "difference_average_precision": 0.0019879267780844173,
+        "block_bootstrap_95_interval": [
+          -0.026260195602900528,
+          0.008181524055569506
+        ],
+        "counts": {
+          "development": {
+            "windows": 64,
+            "peak_windows": 32
+          },
+          "validation": {
+            "windows": 64,
+            "peak_windows": 32
+          },
+          "OXTR test": {
+            "windows": 152,
+            "peak_windows": 8
+          }
+        }
+      },
+      "local_cudaq_cases": 16,
+      "spend": {
+        "new_Aquila_USD": 0,
+        "new_qBraid_credits": 0
+      }
+    },
+    "sourceSHA256": "adc1914cac349c28afc5f4d8c72dbddf80f38063ab1bef3e93e21cea8d415876",
+    "url": "https://staging.universalmind.tv/informatics/quantum/experiments/oxtr-agent-follow-through-pilot/r1/experiment.json",
+    "pageURL": "https://staging.universalmind.tv/informatics/?area=quantum&entry=research"
+  },
+  "agent_card": {
+    "name": "Universal One · Universal Informatics",
+    "description": "Research answers grounded in the Universal Research library and M1–M1001 Atlas, including commentary, nested sequences and hypotheses. Single-request answers with citations; no background tasks or research submissions.",
+    "version": "1.0.0",
+    "supportedInterfaces": [
+      {
+        "url": "https://informatics-universal-one-staging.universalmind.workers.dev/a2a/v1",
+        "protocolBinding": "JSONRPC",
+        "protocolVersion": "1.0"
+      }
+    ],
+    "provider": {
+      "organization": "Universal Mind",
+      "url": "https://staging.universalmind.tv/informatics/"
+    },
+    "documentationUrl": "https://staging.universalmind.tv/informatics/connect.html#agents",
+    "capabilities": {
+      "streaming": false,
+      "pushNotifications": false,
+      "extendedAgentCard": false
+    },
+    "defaultInputModes": [
+      "text/plain"
+    ],
+    "defaultOutputModes": [
+      "text/plain",
+      "application/json"
+    ],
+    "skills": [
+      {
+        "id": "research",
+        "name": "Research library and Atlas",
+        "description": "Retrieve scientific evidence and Atlas analysis with cited sources. Supply the complete research question in each message. Public access is rate limited.",
+        "tags": [
+          "research",
+          "genomics",
+          "M1–M1001",
+          "M9",
+          "sound",
+          "vision",
+          "language"
+        ],
+        "examples": [
+          "What evidence links recreational music making to gene expression?",
+          "Explain the M9 probability model and its limitations."
+        ]
+      }
+    ]
+  },
+  "a2a_list_tasks": {
+    "jsonrpc": "2.0",
+    "id": 2,
+    "result": {
+      "tasks": [],
+      "totalSize": 0,
+      "pageSize": 0
+    }
+  },
+  "health": {
+    "status": "ready",
+    "profile": "informatics-research",
+    "model": "gpt-6-astra",
+    "version": "research-20261026-daytab-v1"
+  },
+  "no_model_requests_or_compute_jobs": true
+}

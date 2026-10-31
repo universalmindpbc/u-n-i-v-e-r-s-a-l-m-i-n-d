@@ -1,6 +1,6 @@
 {
   "schema": "universal-informatics/complete-dataset/v1",
-  "dataset_version": "3a04c7655c385a57f666ee6e8f3c88006407cbe01979fa141d9b3821d19e870e",
+  "dataset_version": "ba0e23f3b22060c7053ed10b6d404ea08e231b859f1277a7d7df1498531afb1d",
   "sources": [
     {
       "id": "geometry.json",
@@ -11,7 +11,7 @@
     {
       "id": "library-data/age-index.json",
       "source_path": "library-data/age-index.json",
-      "sha256": "9cd702c79124e98951991b0b30208078cd5f68943c611f5dfb7aaf759d654eec",
+      "sha256": "cdd380ee1a1425a5777aa415061b5472eb632b035accb96da8823c8cab61d320",
       "format": "json"
     },
     {
@@ -29,13 +29,7 @@
     {
       "id": "library-data/community-index.json",
       "source_path": "library-data/community-index.json",
-      "sha256": "df9570cb475f6d38a42d4543aaa5f479135f820ba9dc0c63097306a3ef402aec",
-      "format": "json"
-    },
-    {
-      "id": "library-data/domestic-violence-expansion.json",
-      "source_path": "library-data/domestic-violence-expansion.json",
-      "sha256": "785aa9b59ab0163d4541701a361ff92b5e249cfc0db7af3752c9db7195d5aa30",
+      "sha256": "2e6c7b9f39e68b888b72876120a297ffc09f025d79de4e180ff60f04723af138",
       "format": "json"
     },
     {
@@ -7073,13 +7067,13 @@
     {
       "id": "quantum/reading/quantum-atlas.csv",
       "source_path": "quantum/reading/quantum-atlas.csv",
-      "sha256": "5e05ec45935b936d1d593f2ddd34f47e5ea6e42edabf68a7d9b3580d5a92fafd",
+      "sha256": "55b978b57838ac61d5b22b26245034cfafc5d01045a5b42b5fcc7ac7667b6834",
       "format": "csv"
     },
     {
       "id": "quantum/reading/quantum-atlas.json",
       "source_path": "quantum/reading/quantum-atlas.json",
-      "sha256": "bde96ad8e9de74a6c6f6c00bde009527f80bb5694a705522cd2998eae0eaab60",
+      "sha256": "4c1c87d2a1738558774853721a434c0a4817ddcaeb7d6d0b624ff44a81478497",
       "format": "json"
     },
     {
@@ -52190,44 +52184,44 @@
   "downloads": {
     "json": {
       "file": "informatics-complete.json.gz",
-      "bytes": 76511488,
-      "uncompressed_bytes": 768085790,
-      "sha256": "054188eb1a7ce2e0b4fa92259715c9839e399fd36c9d246ef7aa74d24cad8eb6",
-      "uncompressed_sha256": "3e381ff63cc781e23b778d25edb5d58aa813453ad8d162d1416ad9dd61aa4fa5",
+      "bytes": 76169060,
+      "uncompressed_bytes": 764518467,
+      "sha256": "63521307127d33ae0686401af71c996ab54461963f03b1db54873f9cac10a2f7",
+      "uncompressed_sha256": "7b2a639696721e95397ebdc456bd62e11031bba48c383feba255366a6c674c67",
       "parts": [
         {
-          "file": "part-1e5a1448372cd4aed30d33fc44661bb5847f7948ca8cef6fb1eca1c1135f19f2.bin",
+          "file": "part-153fa1c9fb32468f8d7697833c8b70b870fd3e312620686bf61f3c74efac68f0.bin",
           "bytes": 50331648,
-          "sha256": "1e5a1448372cd4aed30d33fc44661bb5847f7948ca8cef6fb1eca1c1135f19f2"
+          "sha256": "153fa1c9fb32468f8d7697833c8b70b870fd3e312620686bf61f3c74efac68f0"
         },
         {
-          "file": "part-27e8d473e9c14f1eaf6f4d307d33f67fcdb83bc323a08139c7c2c525df5ae51c.bin",
-          "bytes": 26179840,
-          "sha256": "27e8d473e9c14f1eaf6f4d307d33f67fcdb83bc323a08139c7c2c525df5ae51c"
+          "file": "part-f0928a41cadc9d9745d5ae10e8ebb23c3efa440f79aacbd2c85d1722eb47dd52.bin",
+          "bytes": 25837412,
+          "sha256": "f0928a41cadc9d9745d5ae10e8ebb23c3efa440f79aacbd2c85d1722eb47dd52"
         }
       ]
     },
     "csv": {
       "file": "informatics-complete.csv.gz",
-      "bytes": 145817029,
-      "uncompressed_bytes": 2441875060,
-      "sha256": "61174deddabb5b6c14870d6be481f15a5b0140abf96927162968b15f60a06da7",
-      "uncompressed_sha256": "f50ad0294f4d533a7a35313277e2d5d7240f36ea7873deccae67417ddc1fe504",
+      "bytes": 145063934,
+      "uncompressed_bytes": 2431973414,
+      "sha256": "21479e3ea7b51ad1ce12a3a5a923302a5055de912143160c26f9c00e9de12dd2",
+      "uncompressed_sha256": "b810f2467d1e555095370f09f95153f88221be9f16d9ba6e09067fe8ff6b886d",
       "parts": [
         {
-          "file": "part-1d804ed722f3ddcfdd71e15919d91553f77851d7c00da64020e9c49c43526b74.bin",
+          "file": "part-63342d9a6734e860bd7f430f47092127d94770b077d35ec3c4be37ce967417bb.bin",
           "bytes": 50331648,
-          "sha256": "1d804ed722f3ddcfdd71e15919d91553f77851d7c00da64020e9c49c43526b74"
+          "sha256": "63342d9a6734e860bd7f430f47092127d94770b077d35ec3c4be37ce967417bb"
         },
         {
-          "file": "part-a9ac86047919ee23b453b6ecdac1902e6dfea66ac81c8ced2d364c7b26a60452.bin",
+          "file": "part-1ea7e735f299c62707817de15ae52393a43b4bff06424b04b7be6c7d26f28bea.bin",
           "bytes": 50331648,
-          "sha256": "a9ac86047919ee23b453b6ecdac1902e6dfea66ac81c8ced2d364c7b26a60452"
+          "sha256": "1ea7e735f299c62707817de15ae52393a43b4bff06424b04b7be6c7d26f28bea"
         },
         {
-          "file": "part-0a56d917711b30ce54948dbd315126bd59f7893a3267d3509d61dc18b0736cf7.bin",
-          "bytes": 45153733,
-          "sha256": "0a56d917711b30ce54948dbd315126bd59f7893a3267d3509d61dc18b0736cf7"
+          "file": "part-8567ad39a859e6dd7d2cf167284f1800c9d4c2171549178805f6f6bedb2d986e.bin",
+          "bytes": 44400638,
+          "sha256": "8567ad39a859e6dd7d2cf167284f1800c9d4c2171549178805f6f6bedb2d986e"
         }
       ]
     }
