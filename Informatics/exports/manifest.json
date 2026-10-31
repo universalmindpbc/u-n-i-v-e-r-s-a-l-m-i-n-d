@@ -1,6 +1,6 @@
 {
   "schema": "universal-informatics/complete-dataset/v1",
-  "dataset_version": "da23bd92bec19d3809a1bbff4f133beb54498e85804a829a1ce286e053aa0e72",
+  "dataset_version": "ed2ddfc37923c144629fa75c53352e8664ca164b9e8cb051a7a093a0aa5ec86c",
   "sources": [
     {
       "id": "geometry.json",
@@ -7190,6 +7190,21 @@
       "source_path": "library-data/figures/fb9a8d9373aa.png",
       "sha256": "fb9a8d9373aa1d2aa6776072aac78d4a1ab6ed58a2396847947f17d6e1719778",
       "url": "https://universalmind.tv/informatics/library-data/figures/fb9a8d9373aa.png"
+    },
+    {
+      "source_path": "media/music-measurement/brain-state-dashboard.jpeg",
+      "sha256": "b1028ab6bc8ec78a582663c0902cfdf44de49637fee7f553d8b9002c164fa324",
+      "url": "https://universalmind.tv/informatics/media/music-measurement/brain-state-dashboard.jpeg"
+    },
+    {
+      "source_path": "media/music-measurement/peak-moment-timeline.jpeg",
+      "sha256": "9394e9cb9b1ad1bda88e8eb5f13636c30fb20280fab2243fe76e1794a8030d9b",
+      "url": "https://universalmind.tv/informatics/media/music-measurement/peak-moment-timeline.jpeg"
+    },
+    {
+      "source_path": "media/music-measurement/unified-timeline.jpeg",
+      "sha256": "0fcea50f6142724b49d8c6636b31a1fe346c26bee90cdcad7bdf4ce8db9c1e69",
+      "url": "https://universalmind.tv/informatics/media/music-measurement/unified-timeline.jpeg"
     },
     {
       "source_path": "molecular/data/1alu.bcif",
@@ -52145,44 +52160,44 @@
   "downloads": {
     "json": {
       "file": "informatics-complete.json.gz",
-      "bytes": 76025080,
-      "uncompressed_bytes": 763489423,
-      "sha256": "e5bb2aaa7d203340f7cea99a45ebbd9beb1aeb63809603a404bca3237cfb707a",
-      "uncompressed_sha256": "d9f0b90c420a570eeb825618d356d0c034a112c3e912e34f763b46865c90c0b8",
+      "bytes": 76025339,
+      "uncompressed_bytes": 763490134,
+      "sha256": "42eeb7a69f1d1f7eb67684e4955c4662d84756163a8eee1f654484a56909b6be",
+      "uncompressed_sha256": "77eea43a6de53e86eb5f68dea67982a39ee92e28d1b55884426e1b902f6174d7",
       "parts": [
         {
-          "file": "part-88fa7af76efbae1b2795dcdb0c85ac3e84d47dfdf0325a7cf0deb96065858715.bin",
+          "file": "part-467813e371b2d03e587e0df13cf7b176c252b31b8d1821b60e2e1ad984ac5294.bin",
           "bytes": 50331648,
-          "sha256": "88fa7af76efbae1b2795dcdb0c85ac3e84d47dfdf0325a7cf0deb96065858715"
+          "sha256": "467813e371b2d03e587e0df13cf7b176c252b31b8d1821b60e2e1ad984ac5294"
         },
         {
-          "file": "part-faa532d2bf36bbb373a78e023c889137b3620ccb589595fad77ea645528bebfe.bin",
-          "bytes": 25693432,
-          "sha256": "faa532d2bf36bbb373a78e023c889137b3620ccb589595fad77ea645528bebfe"
+          "file": "part-b4f46605e162d184aee7a251514867ee4d2095fea1452dc814fef9ef21fe9cc4.bin",
+          "bytes": 25693691,
+          "sha256": "b4f46605e162d184aee7a251514867ee4d2095fea1452dc814fef9ef21fe9cc4"
         }
       ]
     },
     "csv": {
       "file": "informatics-complete.csv.gz",
-      "bytes": 144853511,
-      "uncompressed_bytes": 2430009846,
-      "sha256": "59003a5a0ab28335eea6bae3243cc45694b078a917def93e33a67e071ff19b64",
-      "uncompressed_sha256": "6251b21b90d107c4d27edd776350d7fef4639d5d0f9f1fba6bd7756a8f935e63",
+      "bytes": 144855678,
+      "uncompressed_bytes": 2430010935,
+      "sha256": "da3720a357da7e88a6f07dc9d240193e4a0deaba4f0632a5fef6612c957f3e29",
+      "uncompressed_sha256": "e2d0359efb1612226903ee4450e39ba674c05f36900e3b56584576c13ef65c9c",
       "parts": [
         {
-          "file": "part-dac5b8834b9b6f4440881bee338f69d1796c2bdf819036a96edbfd0fe4c7204e.bin",
+          "file": "part-04a6858993338e9ec47a696d155574cae9dae63505ea67260d6d5b5c18a59e3b.bin",
           "bytes": 50331648,
-          "sha256": "dac5b8834b9b6f4440881bee338f69d1796c2bdf819036a96edbfd0fe4c7204e"
+          "sha256": "04a6858993338e9ec47a696d155574cae9dae63505ea67260d6d5b5c18a59e3b"
         },
         {
-          "file": "part-5dde7af70368ea424492adc1b3dbc69fe43033e2bda59e31a95b2d1661114091.bin",
+          "file": "part-8696732124304701def3cf78c2655baf204810b9cb5e4384c7e372b9d49f46df.bin",
           "bytes": 50331648,
-          "sha256": "5dde7af70368ea424492adc1b3dbc69fe43033e2bda59e31a95b2d1661114091"
+          "sha256": "8696732124304701def3cf78c2655baf204810b9cb5e4384c7e372b9d49f46df"
         },
         {
-          "file": "part-e1138f3640e8914fa068b5f38f34cde6d633ffd3c82a8d7805880e0cc69038ff.bin",
-          "bytes": 44190215,
-          "sha256": "e1138f3640e8914fa068b5f38f34cde6d633ffd3c82a8d7805880e0cc69038ff"
+          "file": "part-cc9cbca60ee8412f810052d82a9f39abead6184156842f6aaf094b00f3b26233.bin",
+          "bytes": 44192382,
+          "sha256": "cc9cbca60ee8412f810052d82a9f39abead6184156842f6aaf094b00f3b26233"
         }
       ]
     }

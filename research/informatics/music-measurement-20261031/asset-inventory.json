@@ -1,0 +1,10 @@
+{
+  "existingStructuredSourcesUnchanged": 1177,
+  "existingAssetsUnchanged": 9015,
+  "addedMockupAssets": [
+    "media/music-measurement/brain-state-dashboard.jpeg",
+    "media/music-measurement/peak-moment-timeline.jpeg",
+    "media/music-measurement/unified-timeline.jpeg"
+  ],
+  "datasetVersion": "ed2ddfc37923c144629fa75c53352e8664ca164b9e8cb051a7a093a0aa5ec86c"
+}

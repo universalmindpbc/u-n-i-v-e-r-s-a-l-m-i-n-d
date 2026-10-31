@@ -1,0 +1,30 @@
+.music-measurement{border-top:1px solid #ffffff26;margin:56px 0 12px;padding-top:36px;scroll-margin-top:24px;color:#b8c5ce;font:13px/1.85 Arial,Helvetica,sans-serif}
+.music-measurement>p{max-width:860px;margin:0 0 18px}
+.music-measurement h2{max-width:800px;color:#e2e8ec}
+.music-measurement .measurement-lead{font-size:17px;color:#d2dde4;margin:12px 0 22px}
+.music-measurement strong{color:#e2e8ec;font-weight:500}
+.music-measurement a{color:#c9deeb;text-underline-offset:4px;overflow-wrap:anywhere}
+.measurement-streams{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin:32px 0}
+.measurement-streams section{border-top:1px solid #ffffff20;padding-top:15px}
+.music-measurement h3{font:400 15px/1.6 Arial,Helvetica,sans-serif;color:#e2e8ec;margin:0 0 10px}
+.measurement-streams p{font-size:12px;margin:0}
+.music-measurement summary{cursor:pointer;min-height:36px;line-height:1.7;padding:8px 0;color:#d2dde4}
+.music-measurement ul{padding-left:20px;margin:10px 0 0}.music-measurement li{padding:4px 0}
+.measurement-figures{display:grid;gap:40px}.measurement-figures figure{margin:0;min-width:0}
+.measurement-figures figcaption>span{font-size:15px;color:#e2e8ec}.measurement-figures figcaption p{font-size:12px;max-width:780px;margin:6px 0 14px}
+.measurement-image{display:block;width:100%;padding:0;text-align:left;background:#090d11;border:1px solid #ffffff26;cursor:zoom-in;color:#b8c5ce;letter-spacing:0}
+.measurement-image img{display:block;width:100%;height:auto}.measurement-image span{display:block;padding:10px 14px;font:11px/1.7 Arial,Helvetica,sans-serif}
+.measurement-vertical .measurement-image{max-width:640px;margin:auto}
+.measurement-next{border-top:1px solid #ffffff26;margin-top:42px;padding-top:30px;max-width:900px}
+.measurement-next h3{font-size:23px;font-weight:300}.measurement-next p{margin:0 0 18px}
+.measurement-next .atlas-eyebrow{margin-bottom:10px}
+.music-measurement :is(button,a,summary):focus-visible,.measurement-dialog button:focus-visible{outline:2px solid #a8cee5;outline-offset:4px}
+.measurement-dialog{box-sizing:border-box;padding:0;width:min(1500px,96vw);max-width:96vw;max-height:94svh;border:1px solid #617787;background:#0b1116;color:#e2e8ec;font:12px/1.7 Arial,Helvetica,sans-serif;overflow:hidden}
+.measurement-dialog::backdrop{background:#03070bea}
+.measurement-dialog-bar{display:flex;align-items:center;gap:14px;padding:12px 16px;border-bottom:1px solid #ffffff26}
+.measurement-dialog-bar p{margin:0;flex:1}.measurement-dialog-bar button{min-height:44px;padding:8px;color:#d2dde4;letter-spacing:0;font:12px Arial,Helvetica,sans-serif;white-space:nowrap}
+.measurement-dialog-scroll{max-height:calc(94svh - 94px);overflow:auto;overscroll-behavior:contain}
+.measurement-dialog img{display:block;width:auto;max-width:100%;height:auto;margin:auto}
+.measurement-dialog[data-enlarged=true] img{width:var(--measurement-image-width);max-width:none}
+@media(max-width:900px){.measurement-streams{grid-template-columns:1fr;gap:20px}}
+@media(max-width:720px){.music-measurement{margin-top:36px;padding-top:26px}.music-measurement h2{font-size:24px}.measurement-figures{gap:30px}.measurement-dialog-bar{gap:6px;padding:8px}.measurement-dialog-bar p{font-size:10px}.measurement-dialog-bar button{font-size:11px}.measurement-next h3{font-size:21px}}
