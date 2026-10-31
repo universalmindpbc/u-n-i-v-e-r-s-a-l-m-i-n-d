@@ -1,0 +1,44 @@
+{
+  "passed": true,
+  "visibleCorpus": 1223,
+  "assessed": 1223,
+  "unassessed": 0,
+  "humanApproved": 50,
+  "directOrContextual": 325,
+  "includingRelated": 403,
+  "baselineStatusCounts": {
+    "related": 57,
+    "no-match": 831,
+    "direct": 202,
+    "context": 13,
+    "uncertain": 5
+  },
+  "newRelatedLinks": 118,
+  "newRelatedPapers": 42,
+  "counts": {
+    "refugees": {
+      "directAndContext": 98,
+      "includingRelated": 134
+    },
+    "housing": {
+      "directAndContext": 38,
+      "includingRelated": 79
+    },
+    "defence": {
+      "directAndContext": 59,
+      "includingRelated": 87
+    },
+    "indigenous": {
+      "directAndContext": 21,
+      "includingRelated": 34
+    },
+    "domestic-violence": {
+      "directAndContext": 115,
+      "includingRelated": 177
+    },
+    "war-trauma": {
+      "directAndContext": 24,
+      "includingRelated": 79
+    }
+  }
+}

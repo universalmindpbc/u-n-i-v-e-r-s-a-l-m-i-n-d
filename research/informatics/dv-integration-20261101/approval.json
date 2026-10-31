@@ -1,0 +1,16 @@
+{
+  "approvedBy": "Ben Korbel",
+  "approvedAt": "2026-11-01",
+  "timezone": "Australia/Sydney",
+  "instruction": "approved - please proceed with 1, 2 and 3 as well as training Universal One on them. I take it all 117 fit in one of either sound / vision / language?",
+  "scope": [
+    "Integrate 117 approved summaries (115 new, 2 updates)",
+    "Map source-supported library filters",
+    "Create AI Guided Recommendations / Domestic & Family Violence in Sound, Vision and Language",
+    "Add approved evidence to Universal One retrieval; verify on staging"
+  ],
+  "sourceBatch": "audit-16f8e1d36d3f40c4",
+  "humanClinicalReview": false,
+  "fineTuning": false,
+  "productionAuthorized": false
+}

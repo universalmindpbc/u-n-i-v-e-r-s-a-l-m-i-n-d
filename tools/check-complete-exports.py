@@ -7,7 +7,38 @@ import io
 import json
 from pathlib import Path
 import tempfile
-import ijson
+
+def json_records(stream):
+    """Stream the export envelope using only the standard library."""
+    text=io.TextIOWrapper(stream,encoding='utf-8')
+    decoder=json.JSONDecoder(); buffer=''; eof=False
+    def fill():
+        nonlocal buffer,eof
+        chunk=text.read(64*1024*1024);buffer+=chunk;eof=not chunk
+    def space():
+        nonlocal buffer
+        buffer=buffer.lstrip()
+        while not buffer and not eof:fill();buffer=buffer.lstrip()
+    def consume(token):
+        nonlocal buffer
+        space();assert buffer.startswith(token),('Expected JSON token',token)
+        buffer=buffer[len(token):]
+    def value():
+        nonlocal buffer
+        space()
+        while True:
+            try:result,end=decoder.raw_decode(buffer);buffer=buffer[end:];return result
+            except json.JSONDecodeError:
+                if eof:raise
+                fill()
+    consume('{');assert value()=='metadata';consume(':');value();consume(',')
+    assert value()=='records';consume(':');consume('[');space()
+    if not buffer.startswith(']'):
+        while True:
+            yield value();space()
+            if buffer.startswith(']'):break
+            consume(',')
+    consume(']');consume('}');space();assert not buffer,'Unexpected trailing JSON'
 
 ROOT = Path(__file__).resolve().parents[1]
 def module(name, path):
@@ -31,7 +62,7 @@ for fmt in ['json','csv']:
         binary.seek(0)
         stream=gzip.GzipFile(fileobj=binary)
         seen=set()
-        records=ijson.items(stream,'records.item',use_float=True) if fmt=='json' else (value for ident,value in reader.records(io.TextIOWrapper(stream,encoding='utf-8',newline='')) if ident!='__metadata__')
+        records=json_records(stream) if fmt=='json' else (value for ident,value in reader.records(io.TextIOWrapper(stream,encoding='utf-8',newline='')) if ident!='__metadata__')
         for record in records:
             ident=record['id'];assert ident not in seen
             assert record==ex.record(sources[ident]),ident

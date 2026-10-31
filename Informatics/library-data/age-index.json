@@ -1,7 +1,7 @@
 {
   "schemaVersion": "research-age-groups/v1",
-  "updatedAt": "2026-10-30",
-  "recordCount": 1108,
+  "updatedAt": "2026-11-01",
+  "recordCount": 1223,
   "taxonomy": [
     {
       "id": "children",
@@ -5265,10 +5265,12 @@
       "groups": [
         "adults"
       ],
-      "reportedAges": null,
+      "reportedAges": "not established from accessed source",
       "youthScope": null,
-      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/15913391/",
-      "basisType": "source-indexing-and-reporting"
+      "youthSourceNote": "No separately reported youth sample.",
+      "sourceURL": "https://europepmc.org/article/MED/15913391",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adult. Programme targets or possible eligibility are not counted as observed ages."
     },
     {
       "recordId": "pmid-15951338",
@@ -7223,12 +7225,15 @@
         "sound"
       ],
       "groups": [
-        "children"
+        "children",
+        "adults"
       ],
-      "reportedAges": null,
+      "reportedAges": "Preadolescent; exact ages not established from accessed source",
       "youthScope": null,
-      "sourceURL": "https://doi.org/10.1093/mtp/miw004",
-      "basisType": "reported-population"
+      "youthSourceNote": "Three girls interviewed; four parents were audience respondents.",
+      "sourceURL": "https://academic.oup.com/mtp/article-abstract/35/1/36/2631812",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: preadolescent children, adult parents. Programme targets or possible eligibility are not counted as observed ages."
     },
     {
       "recordId": "src-d173f7852495",
@@ -14997,6 +15002,1745 @@
       "youthScope": null,
       "sourceURL": null,
       "basisType": "not-specified"
+    },
+    {
+      "recordId": "dv-adult-therapy-42326745",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": "Not established from accessed source.",
+      "youthScope": null,
+      "youthSourceNote": null,
+      "sourceURL": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:42326745%20AND%20SRC:MED&format=json&resultType=core",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: not-specified. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-mindbody-40552233",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "Group mean ages 25.3 and 24.5 years.",
+      "youthScope": null,
+      "youthSourceNote": "Adult survivor evidence; no child treatment inference.",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/40552233/",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adult. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-reviews-41045209",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "Not established from accessed abstract.",
+      "youthScope": null,
+      "youthSourceNote": null,
+      "sourceURL": "https://europepmc.org/article/MED/41045209",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adults. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-adult-therapy-40883805",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": "Not established from accessed source.",
+      "youthScope": null,
+      "youthSourceNote": null,
+      "sourceURL": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:40883805%20AND%20SRC:MED&format=json&resultType=core",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: not-specified. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-adult-therapy-41065656",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": "Not established from accessed source.",
+      "youthScope": null,
+      "youthSourceNote": null,
+      "sourceURL": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:41065656%20AND%20SRC:MED&format=json&resultType=core",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: not-specified. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-adult-therapy-39529598",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "Eligibility 18 years and older; actual range not extracted.",
+      "youthScope": null,
+      "youthSourceNote": null,
+      "sourceURL": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:39529598%20AND%20SRC:MED&format=json&resultType=core",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adults. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-reviews-38206858",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "Not established from accessed abstract.",
+      "youthScope": null,
+      "youthSourceNote": null,
+      "sourceURL": "https://europepmc.org/article/MED/38206858",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adults. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-reviews-38678198",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "Not established from accessed abstract.",
+      "youthScope": null,
+      "youthSourceNote": null,
+      "sourceURL": "https://europepmc.org/article/MED/38678198",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adults. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-mindbody-39135298",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "Group mean ages 36.83 and 34.00 years.",
+      "youthScope": null,
+      "youthSourceNote": "Adult survivor evidence; no child treatment inference.",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/39135298/",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adult. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-mindbody-c6c616df1710",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "Eligibility ≥18; mean 47.8 years (SD 12.3).",
+      "youthScope": null,
+      "youthSourceNote": "Adult survivor evidence; no child treatment inference.",
+      "sourceURL": "https://doi.org/10.1007/s10896-023-00561-3",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adult. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-adult-therapy-37889918",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "Eligibility≥16 years; arm medians 25–25.5 years. Actual minimum/maximum and count under 18 not reported.",
+      "youthScope": null,
+      "youthSourceNote": "Adolescent eligibility is not proof of enrolled adolescent participants; no adolescent-specific outcomes.",
+      "sourceURL": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:37889918%20AND%20SRC:MED&format=json&resultType=core",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adults, adolescent eligibility. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-reviews-37383647",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "Eligibility: 18 years or older; mean 31.80, SD 10.60 years.",
+      "youthScope": null,
+      "youthSourceNote": null,
+      "sourceURL": "https://europepmc.org/article/MED/37383647",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adults. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-mindbody-37400911",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "not established from accessed source",
+      "youthScope": null,
+      "youthSourceNote": "Adult survivor evidence; no child treatment inference.",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/37400911/",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adult. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-adult-therapy-33375899",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": "Not established from accessed source.",
+      "youthScope": null,
+      "youthSourceNote": null,
+      "sourceURL": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:33375899%20AND%20SRC:MED&format=json&resultType=core",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: not-specified. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-adult-therapy-32933348",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": "Not established from accessed source.",
+      "youthScope": null,
+      "youthSourceNote": null,
+      "sourceURL": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:32933348%20AND%20SRC:MED&format=json&resultType=core",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: not-specified. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-adult-therapy-32755265",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": "Not established from accessed source.",
+      "youthScope": null,
+      "youthSourceNote": null,
+      "sourceURL": "https://europepmc.org/article/MED/32755265",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: not-specified. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-adult-therapy-32993831",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": "Not established from accessed source.",
+      "youthScope": null,
+      "youthSourceNote": null,
+      "sourceURL": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:32993831%20AND%20SRC:MED&format=json&resultType=core",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: not-specified. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-adult-therapy-34143803",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "Eligibility 18+; sample mean 33.52 (SD 9.01) years. Observed minimum/maximum not established.",
+      "youthScope": null,
+      "youthSourceNote": "No under 18 eligibility; no adolescent subgroup inference.",
+      "sourceURL": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:34143803%20AND%20SRC:MED&format=json&resultType=core",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adults. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-adult-therapy-34584851",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "youth",
+        "adults",
+        "older-adults"
+      ],
+      "reportedAges": "23–72 years",
+      "youthScope": "included",
+      "youthSourceNote": "included",
+      "sourceURL": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:34584851%20AND%20SRC:MED&format=json&resultType=core",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: youth, adults, older-adults. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-adult-therapy-33428625",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "Eligibility at least 18; mean age about 37 years.",
+      "youthScope": null,
+      "youthSourceNote": null,
+      "sourceURL": "https://europepmc.org/article/MED/33428625",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adults. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-adult-therapy-33743632",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "Eligibility over 18; mean ages 27.55 and 27.26 years.",
+      "youthScope": null,
+      "youthSourceNote": null,
+      "sourceURL": "https://europepmc.org/article/MED/33743632",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adults. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-adult-therapy-34305273",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "Observed age 19–59 years; mean 35.13 (SD 9.12).",
+      "youthScope": null,
+      "youthSourceNote": "No child or adolescent participants in reported sample.",
+      "sourceURL": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:34305273%20AND%20SRC:MED&format=json&resultType=core",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adults. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-mindbody-32969703",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "18–64; mean 42.69 (SD 13.11).",
+      "youthScope": null,
+      "youthSourceNote": "No child treatment inference.",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/32969703/",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adult. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-adult-therapy-33303427",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "Eligibility 16–50 years. Baseline table reports 17–29, 30–39, 40–50 year categories; mean 38.5 (SD 8.1). Exact enrolled minimum and under 18 count not established.",
+      "youthScope": null,
+      "youthSourceNote": "Eligibility included 16–17 years; no adolescent-specific efficacy analysis established.",
+      "sourceURL": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:33303427%20AND%20SRC:MED&format=json&resultType=core",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adults, adolescent eligibility. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-reviews-29648853",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "Not established from accessed abstract.",
+      "youthScope": null,
+      "youthSourceNote": null,
+      "sourceURL": "https://europepmc.org/article/MED/29648853",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adults. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-reviews-26613288",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "Not established from accessed abstract.",
+      "youthScope": null,
+      "youthSourceNote": null,
+      "sourceURL": "https://europepmc.org/article/MED/26613288",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adults. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-adult-therapy-27459503",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": "Not established from accessed source.",
+      "youthScope": null,
+      "youthSourceNote": null,
+      "sourceURL": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:27459503%20AND%20SRC:MED&format=json&resultType=core",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: not-specified. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-adult-therapy-26437311",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": "Not established from accessed source.",
+      "youthScope": null,
+      "youthSourceNote": null,
+      "sourceURL": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:26437311%20AND%20SRC:MED&format=json&resultType=core",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: not-specified. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-adult-therapy-24252714",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": "Not established from accessed source.",
+      "youthScope": null,
+      "youthSourceNote": null,
+      "sourceURL": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:24252714%20AND%20SRC:MED&format=json&resultType=core",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: not-specified. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-children-23948313",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "children"
+      ],
+      "reportedAges": "6–12 years",
+      "youthScope": null,
+      "youthSourceNote": "focus",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/23948313/",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: children. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-reviews-23414253",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "Not established from accessed abstract.",
+      "youthScope": null,
+      "youthSourceNote": null,
+      "sourceURL": "https://europepmc.org/article/MED/23414253",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adults. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-adult-therapy-23598181",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "Eligibility 16–50 years. Baseline table reports 17–29, 30–39, 40–50 year categories; mean 38.5 (SD 8.1). Exact enrolled minimum and under 18 count not established.",
+      "youthScope": null,
+      "youthSourceNote": "Eligibility included 16–17 years; no adolescent-specific efficacy analysis established.",
+      "sourceURL": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:23598181%20AND%20SRC:MED&format=json&resultType=core",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adults, adolescent eligibility. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-adult-therapy-21153559",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": "Not established from accessed source.",
+      "youthScope": null,
+      "youthSourceNote": null,
+      "sourceURL": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:21153559%20AND%20SRC:MED&format=json&resultType=core",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: not-specified. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-adult-therapy-21787052",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": "Not established from accessed source.",
+      "youthScope": null,
+      "youthSourceNote": null,
+      "sourceURL": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:21787052%20AND%20SRC:MED&format=json&resultType=core",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: not-specified. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-children-21199975",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "children",
+        "adolescents",
+        "youth"
+      ],
+      "reportedAges": "7–14 years",
+      "youthScope": "focus",
+      "youthSourceNote": "focus",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/21199975/",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: children, adolescents, youth. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-adult-therapy-20977033",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": "Not established from accessed source.",
+      "youthScope": null,
+      "youthSourceNote": null,
+      "sourceURL": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:20977033%20AND%20SRC:MED&format=json&resultType=core",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: not-specified. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-adult-therapy-20658802",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": "Not established from accessed source.",
+      "youthScope": null,
+      "youthSourceNote": null,
+      "sourceURL": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:20658802%20AND%20SRC:MED&format=json&resultType=core",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: not-specified. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-children-19634963",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "children"
+      ],
+      "reportedAges": "4–9 years (confirmed in linked secondary report)",
+      "youthScope": null,
+      "youthSourceNote": "focus",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/19634963/",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: children. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-adult-therapy-17022356",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": "Not established from accessed source.",
+      "youthScope": null,
+      "youthSourceNote": null,
+      "sourceURL": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:17022356%20AND%20SRC:MED&format=json&resultType=core",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: not-specified. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-children-16865033",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "children"
+      ],
+      "reportedAges": "3–5 years",
+      "youthScope": null,
+      "youthSourceNote": "focus",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/16865033/",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: children. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-children-16569097",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "children"
+      ],
+      "reportedAges": "4–9 years",
+      "youthScope": null,
+      "youthSourceNote": "focus",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/16569097/",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: children. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-mindbody-88e29294631c",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "not established from accessed source",
+      "youthScope": null,
+      "youthSourceNote": "Adult survivor evidence; no child treatment inference.",
+      "sourceURL": "https://doi.org/10.17761/ijyt.16.1.d8qw1532m0121w35",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adult. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-children-16292115",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "children"
+      ],
+      "reportedAges": "3–5 years; directly confirmed in original methods.",
+      "youthScope": null,
+      "youthSourceNote": "focus",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/16292115/",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: children. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-adult-therapy-14756610",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": "Not established from accessed source.",
+      "youthScope": null,
+      "youthSourceNote": null,
+      "sourceURL": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:14756610%20AND%20SRC:MED&format=json&resultType=core",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: not-specified. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-children-11680554",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "children"
+      ],
+      "reportedAges": "4–9 years",
+      "youthScope": null,
+      "youthSourceNote": "focus",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/11680554/",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: children. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-vision-42529059",
+      "collections": [
+        "vision"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "Mean age 39.42 (SD10.23); observed range not established.",
+      "youthScope": null,
+      "youthSourceNote": null,
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/42529059/",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adults. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-vision-38868491",
+      "collections": [
+        "vision"
+      ],
+      "groups": [
+        "adults",
+        "youth"
+      ],
+      "reportedAges": "18–53 years observed",
+      "youthScope": "included",
+      "youthSourceNote": "included",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/38868491/",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adults, youth. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-vision-38629403",
+      "collections": [
+        "vision"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "Adults aged at least 18",
+      "youthScope": null,
+      "youthSourceNote": null,
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/38629403/",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adults. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-vision-426ce6386119",
+      "collections": [
+        "vision"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "18–65 years eligibility",
+      "youthScope": null,
+      "youthSourceNote": null,
+      "sourceURL": "https://doi.org/10.1192/bjo.2021.1057",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adults. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-children-31114620",
+      "collections": [
+        "vision"
+      ],
+      "groups": [
+        "children"
+      ],
+      "reportedAges": "8–12 years",
+      "youthScope": null,
+      "youthSourceNote": "focus",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/31114620/",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: children. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-vision-d1f88a25c475",
+      "collections": [
+        "vision"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "not established from accessed source",
+      "youthScope": null,
+      "youthSourceNote": null,
+      "sourceURL": "https://doi.org/10.1093/swr/23.2.103",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adults. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-reviews-cont-39302822",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "Reported mean paternal ages 23–35.9 years; individual age range not established.",
+      "youthScope": null,
+      "youthSourceNote": "Children are part of the family context; IPV outcomes concern adult partners.",
+      "sourceURL": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11558938/",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adults. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-reviews-cont-40632759",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "Reported study mean ages range from 27 to 60.5 years; individual age range not established.",
+      "youthScope": null,
+      "youthSourceNote": null,
+      "sourceURL": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12240372/",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adults. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-reviews-37148270",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "Not established from accessed abstract.",
+      "youthScope": null,
+      "youthSourceNote": null,
+      "sourceURL": "https://europepmc.org/article/MED/37148270",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adults. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-reviews-37937723",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "Not established from accessed abstract.",
+      "youthScope": null,
+      "youthSourceNote": null,
+      "sourceURL": "https://europepmc.org/article/MED/37937723",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adults. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-reviews-39180467",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "Not established from accessed abstract.",
+      "youthScope": null,
+      "youthSourceNote": null,
+      "sourceURL": "https://europepmc.org/article/MED/39180467",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adults. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-reviews-35793513",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "Not established from accessed abstract.",
+      "youthScope": null,
+      "youthSourceNote": null,
+      "sourceURL": "https://europepmc.org/article/MED/35793513",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adults. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-reviews-cont-37383644",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "Not established from the inspected source sections.",
+      "youthScope": null,
+      "youthSourceNote": null,
+      "sourceURL": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10294456/",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adults. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-reviews-cont-36429899",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "Not established from the inspected source sections.",
+      "youthScope": null,
+      "youthSourceNote": null,
+      "sourceURL": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9690755/",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adults. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-reviews-31359840",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "Not established from accessed abstract.",
+      "youthScope": null,
+      "youthSourceNote": null,
+      "sourceURL": "https://europepmc.org/article/MED/31359840",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adults. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-reviews-37133255",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "Not established from accessed abstract.",
+      "youthScope": null,
+      "youthSourceNote": null,
+      "sourceURL": "https://europepmc.org/article/MED/37133255",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adults. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-reviews-31711372",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "Not established from accessed abstract.",
+      "youthScope": null,
+      "youthSourceNote": null,
+      "sourceURL": "https://europepmc.org/article/MED/31711372",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adults. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-reviews-31623532",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "children",
+        "adolescents",
+        "youth"
+      ],
+      "reportedAges": "Not established from accessed abstract.",
+      "youthScope": "focus",
+      "youthSourceNote": "focus",
+      "sourceURL": "https://europepmc.org/article/MED/31623532",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: children, adolescents, youth. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-reviews-33497921",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "Not established from accessed abstract.",
+      "youthScope": null,
+      "youthSourceNote": null,
+      "sourceURL": "https://europepmc.org/article/MED/33497921",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adults. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-reviews-32584910",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "Not established from accessed abstract.",
+      "youthScope": null,
+      "youthSourceNote": null,
+      "sourceURL": "https://europepmc.org/article/MED/32584910",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adults. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-reviews-33306030",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "Not established from accessed abstract.",
+      "youthScope": null,
+      "youthSourceNote": null,
+      "sourceURL": "https://europepmc.org/article/MED/33306030",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adults. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-reviews-31981539",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "Not established from accessed abstract.",
+      "youthScope": null,
+      "youthSourceNote": null,
+      "sourceURL": "https://europepmc.org/article/MED/31981539",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adults. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-reviews-32608505",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adolescents",
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "Eligibility age 16 and older; mean participant age 37 years",
+      "youthScope": "included",
+      "youthSourceNote": "included",
+      "sourceURL": "https://europepmc.org/article/MED/32608505",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adolescents, youth, adults. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-reviews-32373328",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "Not established from accessed abstract.",
+      "youthScope": null,
+      "youthSourceNote": null,
+      "sourceURL": "https://europepmc.org/article/MED/32373328",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adults. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-reviews-30621661",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "Not established from accessed abstract.",
+      "youthScope": null,
+      "youthSourceNote": null,
+      "sourceURL": "https://europepmc.org/article/MED/30621661",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adults. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-reviews-31415863",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "Not established from accessed abstract.",
+      "youthScope": null,
+      "youthSourceNote": null,
+      "sourceURL": "https://europepmc.org/article/MED/31415863",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adults. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-reviews-cont-37131508",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "children",
+        "adolescents",
+        "youth"
+      ],
+      "reportedAges": "Eligibility required over 75% of participants aged 0–17; individual studies included broader boundaries in some samples.",
+      "youthScope": "focus",
+      "youthSourceNote": "Primary focus.",
+      "sourceURL": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8356495/",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: children, adolescents, youth. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-reviews-26335794",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "Not established from accessed abstract.",
+      "youthScope": null,
+      "youthSourceNote": null,
+      "sourceURL": "https://europepmc.org/article/MED/26335794",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adults. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-reviews-27377617",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "Not established from accessed abstract.",
+      "youthScope": null,
+      "youthSourceNote": null,
+      "sourceURL": "https://europepmc.org/article/MED/27377617",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adults. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-reviews-25211469",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "Not established from accessed abstract.",
+      "youthScope": null,
+      "youthSourceNote": null,
+      "sourceURL": "https://europepmc.org/article/MED/25211469",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adults. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-reviews-17636823",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "Not established from accessed abstract.",
+      "youthScope": null,
+      "youthSourceNote": null,
+      "sourceURL": "https://europepmc.org/article/MED/17636823",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adults. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-children-37750224",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "children"
+      ],
+      "reportedAges": "Not established from accessed source.",
+      "youthScope": null,
+      "youthSourceNote": "included",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/37750224/",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: children. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-adult-therapy-40425196",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": "Not established from accessed source.",
+      "youthScope": null,
+      "youthSourceNote": null,
+      "sourceURL": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:40425196%20AND%20SRC:MED&format=json&resultType=core",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: not-specified. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-mindbody-41024298",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "Eligibility 15–49 years; actual range unestablished.",
+      "youthScope": null,
+      "youthSourceNote": "Not child-only; eligibility permits adolescents, so do not assume exclusively adults.",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/41024298/",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adult, adolescent eligibility possible. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-children-40469793",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adolescents",
+        "youth"
+      ],
+      "reportedAges": "13–17 years",
+      "youthScope": "focus",
+      "youthSourceNote": "focus",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/40469793/",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adolescents, youth. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-mindbody-37743664",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "not established from accessed source",
+      "youthScope": null,
+      "youthSourceNote": "Adult survivor evidence; no child treatment inference.",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/37743664/",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adult. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-mindbody-37484072",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "21–64 years; mean 42.8.",
+      "youthScope": null,
+      "youthSourceNote": "Adult survivor evidence; no child treatment inference.",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/37484072/",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adult. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-children-32515292",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "children"
+      ],
+      "reportedAges": "Not established from accessed source.",
+      "youthScope": null,
+      "youthSourceNote": "included",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/32515292/",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: children. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-mindbody-36232015",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "Eligibility 18–55; mean 35.39 (SD 8.96).",
+      "youthScope": null,
+      "youthSourceNote": "No child treatment inference.",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/36232015/",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adult. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-children-32077730",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "children"
+      ],
+      "reportedAges": "Not established from accessed source.",
+      "youthScope": null,
+      "youthSourceNote": "focus",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/32077730/",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: children. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-children-32650670",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "children"
+      ],
+      "reportedAges": "Not established from accessed source.",
+      "youthScope": null,
+      "youthSourceNote": "included",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/32650670/",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: children. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-adult-therapy-31715628",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": "Not established from accessed source.",
+      "youthScope": null,
+      "youthSourceNote": null,
+      "sourceURL": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:31715628%20AND%20SRC:MED&format=json&resultType=core",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: not-specified. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-children-32512265",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "children"
+      ],
+      "reportedAges": "School-aged; exact range not established from abstract",
+      "youthScope": null,
+      "youthSourceNote": "focus",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/32512265/",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: children. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-adult-therapy-31363925",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": "Not established from accessed source.",
+      "youthScope": null,
+      "youthSourceNote": null,
+      "sourceURL": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:31363925%20AND%20SRC:MED&format=json&resultType=core",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: not-specified. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-mindbody-b5f8ce1b573c",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "not established from accessed source",
+      "youthScope": null,
+      "youthSourceNote": "Adult survivor evidence; no child treatment inference.",
+      "sourceURL": "https://doi.org/10.1037/scp0000177",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adult. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-children-27359091",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "children"
+      ],
+      "reportedAges": "4–9 years",
+      "youthScope": null,
+      "youthSourceNote": "focus",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/27359091/",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: children. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-children-32318156",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "children",
+        "adolescents",
+        "youth"
+      ],
+      "reportedAges": "7–16 years",
+      "youthScope": "focus",
+      "youthSourceNote": "focus",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/32318156/",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: children, adolescents, youth. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-children-28503060",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "children"
+      ],
+      "reportedAges": "Preschool; mean 4.57 years (SD1.50); actual range not established",
+      "youthScope": null,
+      "youthSourceNote": "focus",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/28503060/",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: children. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-children-25751123",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "children"
+      ],
+      "reportedAges": "6–12 years",
+      "youthScope": null,
+      "youthSourceNote": "focus",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/25751123/",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: children. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-children-25410886",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "children"
+      ],
+      "reportedAges": "4–6 years",
+      "youthScope": null,
+      "youthSourceNote": "focus",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/25410886/",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: children. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-mindbody-25129883",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "Eligibility≥18; average 43 years.",
+      "youthScope": null,
+      "youthSourceNote": "Adult aftercare participants only.",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/25129883/",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adult. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-mindbody-23561069",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "not established from accessed source",
+      "youthScope": null,
+      "youthSourceNote": "Adult survivor evidence; no child treatment inference.",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/23561069/",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adult. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-mindbody-24043922",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "not established from accessed source",
+      "youthScope": null,
+      "youthSourceNote": "Adult survivor evidence; no child treatment inference.",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/24043922/",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adult. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-children-20587468",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "children"
+      ],
+      "reportedAges": "6–12 years",
+      "youthScope": null,
+      "youthSourceNote": "focus",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/20587468/",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: children. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-children-21816474",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "children"
+      ],
+      "reportedAges": "Preschool-aged;3–5 years in linked original cohort",
+      "youthScope": null,
+      "youthSourceNote": "focus",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/21816474/",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: children. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-children-20712147",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "children"
+      ],
+      "reportedAges": "2–7 years",
+      "youthScope": null,
+      "youthSourceNote": "focus",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/20712147/",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: children. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-children-17469878",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "children"
+      ],
+      "reportedAges": "6–12 years",
+      "youthScope": null,
+      "youthSourceNote": "focus",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/17469878/",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: children. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-mindbody-16617173",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "not established from accessed source",
+      "youthScope": null,
+      "youthSourceNote": "Adult survivor evidence; no child treatment inference.",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/16617173/",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adult. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-adult-therapy-12602656",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": "Not established from accessed source.",
+      "youthScope": null,
+      "youthSourceNote": null,
+      "sourceURL": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:12602656%20AND%20SRC:MED&format=json&resultType=core",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: not-specified. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-adult-therapy-10783523",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": "Not established from accessed source.",
+      "youthScope": null,
+      "youthSourceNote": null,
+      "sourceURL": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:10783523%20AND%20SRC:MED&format=json&resultType=core",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: not-specified. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-sound-42298885",
+      "collections": [
+        "sound"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": "Programme targets birth–5; parent ages not established from accessed source",
+      "youthScope": null,
+      "youthSourceNote": "Children participated; eight interviewed parents are the analyzed respondents.",
+      "sourceURL": "https://europepmc.org/article/MED/42298885",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: parents (ages unreported), early childhood target. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-sound-efa9f1420011",
+      "collections": [
+        "sound"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "Target children 3–10; respondent ages not established from accessed source",
+      "youthScope": null,
+      "youthSourceNote": "Child programme; professional respondents.",
+      "sourceURL": "https://link.springer.com/article/10.1007/s10896-026-01179-x",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adult professional respondents, children as programme target. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-sound-37107774",
+      "collections": [
+        "sound"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "19–29, 30–39 and 40+ categories; age available for 64.",
+      "youthScope": null,
+      "youthSourceNote": "No separately reported youth sample.",
+      "sourceURL": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10138899/",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adult. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-sound-3c0015edd5fa",
+      "collections": [
+        "sound"
+      ],
+      "groups": [
+        "children"
+      ],
+      "reportedAges": "Preadolescent; exact ages not established from accessed source",
+      "youthScope": null,
+      "youthSourceNote": "Child-focused research.",
+      "sourceURL": "https://www.childrenaustralia.org.au/journal/article/2145/",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: preadolescent children. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-sound-24766169",
+      "collections": [
+        "sound"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "not established from accessed source",
+      "youthScope": null,
+      "youthSourceNote": "No separately reported youth sample.",
+      "sourceURL": "https://europepmc.org/article/MED/24766169",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adult. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-sound-1be40a54cbc1",
+      "collections": [
+        "sound"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "not established from accessed source",
+      "youthScope": null,
+      "youthSourceNote": "No separately reported youth sample.",
+      "sourceURL": "https://academic.oup.com/mtp/article-abstract/24/2/80/1125111",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adult. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-vision-da3bfad76f98",
+      "collections": [
+        "vision"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "not established from accessed source",
+      "youthScope": null,
+      "youthSourceNote": null,
+      "sourceURL": "https://doi.org/10.1080/21501378.2018.1561146",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adults. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-vision-2a09962793c2",
+      "collections": [
+        "vision"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "18–60 years eligibility; group means 33, 34.4 and 35.6 years.",
+      "youthScope": null,
+      "youthSourceNote": null,
+      "sourceURL": "https://doi.org/10.1016/j.erap.2012.08.006",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adults. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-vision-d0356a161cd2",
+      "collections": [
+        "vision"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "not established from accessed source",
+      "youthScope": null,
+      "youthSourceNote": null,
+      "sourceURL": "https://doi.org/10.1891/1933-3196.3.3.192",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adults. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "dv-vision-11036736",
+      "collections": [
+        "vision"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "not established from accessed source",
+      "youthScope": null,
+      "youthSourceNote": null,
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/11036736/",
+      "basisType": "source-limited-ai-editorial-assessment",
+      "classificationNote": "Original age terms: adults. Programme targets or possible eligibility are not counted as observed ages."
     }
   ]
 }

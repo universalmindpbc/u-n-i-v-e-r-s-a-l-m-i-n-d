@@ -1,0 +1,41 @@
+{
+  "releasePurpose": "Publish the approved source-limited domestic and family violence research summaries to staging and make them retrievable by Universal One.",
+  "primaryCollections": {
+    "sound": 8,
+    "vision": 10,
+    "language": 99
+  },
+  "publicationDesigns": {
+    "randomizedTrialReports": 51,
+    "reviewsAndMetaAnalyses": 25,
+    "other": 41,
+    "verifiedDoubleBlind": 0
+  },
+  "publicationChanges": {
+    "new": 115,
+    "updatedCanonicalRecords": [
+      "pmid-15913391",
+      "src-47a527b4dc03"
+    ],
+    "withheldNotIntegrated": 13
+  },
+  "sourceAccess": {
+    "abstract": 74,
+    "selectedMethods": 22,
+    "retainedFullTextAppraisal": 21
+  },
+  "classificationPolicy": "All 117 mapped to applicable canonical filters. Missing ages remain unspecified; no gene or molecular-target measurements inferred; possible age eligibility is not enrolled population evidence; DV shelter membership alone is not homelessness.",
+  "communitySearchCounts": {
+    "approvedSet": 117,
+    "approvedDirectOrContext": 112,
+    "approvedRelated": 5,
+    "wholeLibraryDirectOrContext": 115,
+    "wholeLibraryIncludingRelated": 177,
+    "note": "Whole-library search also includes earlier research. Primary collection labels and clinical efficacy are separate."
+  },
+  "paperCrosses": "The approved papers show one cross for a randomized trial, two only for verified double blinding, none for other designs. Underlying numeric library scores retain their established schema; filter labels state the design criteria.",
+  "approvalMeaning": "AI assessed; human approved for publication. No human clinical peer review is claimed. The frozen audit is unchanged.",
+  "universalOne": "Versioned approved-record retrieval deployed with the staging worker. Existing database results are deduplicated against approved IDs, aliases and DOIs. No database mutations, fine-tuning, batch embeddings or third-party full-text uploads.",
+  "continuousResearcherActivated": false,
+  "productionModifiedByThisTask": false
+}

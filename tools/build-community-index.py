@@ -27,6 +27,13 @@ def render():
         'taxonomy': audit['taxonomy'],
         'records': list(records.values()),
     }
+    approved=json.loads((ROOT/'Informatics/library-data/domestic-violence-expansion.json').read_text())
+    merged={r['recordId']:r for r in public['records']}
+    for row in approved['communities']:
+        old=merged.get(row['recordId'],{'matches':[]})
+        replaced={m['categoryId'] for m in row['matches']}
+        merged[row['recordId']]={**row,'matches':[m for m in old['matches'] if m['categoryId'] not in replaced]+row['matches']}
+    public.update(records=list(merged.values()),recordCount=len(merged),updatedAt=approved['approvedAt'])
     return json.dumps(public, indent=2, ensure_ascii=False) + '\n'
 
 if __name__ == '__main__':

@@ -1,8 +1,8 @@
 {
   "schemaVersion": "communities-contexts/v2",
   "title": "Communities and Contexts",
-  "updatedAt": "2026-10-30",
-  "recordCount": 1108,
+  "updatedAt": "2026-11-01",
+  "recordCount": 1223,
   "taxonomy": [
     {
       "id": "refugees",
@@ -3335,11 +3335,11 @@
       "recordId": "src-47a527b4dc03",
       "matches": [
         {
-          "categoryId": "housing",
+          "categoryId": "domestic-violence",
           "relation": "direct"
         },
         {
-          "categoryId": "domestic-violence",
+          "categoryId": "housing",
           "relation": "direct"
         }
       ]
@@ -6705,6 +6705,1057 @@
     {
       "recordId": "hsi-patent-us20140320858a1",
       "matches": []
+    },
+    {
+      "recordId": "dv-adult-therapy-42326745",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-mindbody-40552233",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-reviews-41045209",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-adult-therapy-40883805",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-adult-therapy-41065656",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-adult-therapy-39529598",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-reviews-38206858",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        },
+        {
+          "categoryId": "defence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-reviews-38678198",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-mindbody-39135298",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-mindbody-c6c616df1710",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-adult-therapy-37889918",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-reviews-37383647",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-mindbody-37400911",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-adult-therapy-33375899",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-adult-therapy-32933348",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-adult-therapy-32755265",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-adult-therapy-32993831",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-adult-therapy-34143803",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        },
+        {
+          "categoryId": "refugees",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-adult-therapy-34584851",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-adult-therapy-33428625",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "context"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-adult-therapy-33743632",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-adult-therapy-34305273",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-mindbody-32969703",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-adult-therapy-33303427",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-reviews-29648853",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-reviews-26613288",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        },
+        {
+          "categoryId": "defence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-adult-therapy-27459503",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-adult-therapy-26437311",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-adult-therapy-24252714",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-children-23948313",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-reviews-23414253",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-adult-therapy-23598181",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-adult-therapy-21153559",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-adult-therapy-21787052",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-children-21199975",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-adult-therapy-20977033",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-adult-therapy-20658802",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-children-19634963",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-adult-therapy-17022356",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-children-16865033",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-children-16569097",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-mindbody-88e29294631c",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-children-16292115",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-adult-therapy-14756610",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-children-11680554",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-vision-42529059",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "related"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-vision-38868491",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "related"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-vision-38629403",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "related"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-vision-426ce6386119",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "related"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-children-31114620",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-vision-d1f88a25c475",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "related"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-reviews-cont-39302822",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-reviews-cont-40632759",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        },
+        {
+          "categoryId": "defence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-reviews-37148270",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-reviews-37937723",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-reviews-39180467",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-reviews-35793513",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-reviews-cont-37383644",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-reviews-cont-36429899",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-reviews-31359840",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-reviews-37133255",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-reviews-31711372",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-reviews-31623532",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-reviews-33497921",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-reviews-32584910",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-reviews-33306030",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-reviews-31981539",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-reviews-32608505",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-reviews-32373328",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-reviews-30621661",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-reviews-31415863",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-reviews-cont-37131508",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-reviews-26335794",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-reviews-27377617",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-reviews-25211469",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-reviews-17636823",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-children-37750224",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-adult-therapy-40425196",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-mindbody-41024298",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-children-40469793",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-mindbody-37743664",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-mindbody-37484072",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-children-32515292",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-mindbody-36232015",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-children-32077730",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-children-32650670",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-adult-therapy-31715628",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-children-32512265",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-adult-therapy-31363925",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-mindbody-b5f8ce1b573c",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "context"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-children-27359091",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-children-32318156",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-children-28503060",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-children-25751123",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-children-25410886",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-mindbody-25129883",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-mindbody-23561069",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-mindbody-24043922",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-children-20587468",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-children-21816474",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-children-20712147",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-children-17469878",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-mindbody-16617173",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-adult-therapy-12602656",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-adult-therapy-10783523",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-sound-42298885",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-sound-efa9f1420011",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "context"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-sound-37107774",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-sound-3c0015edd5fa",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "context"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-sound-24766169",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-sound-1be40a54cbc1",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-vision-da3bfad76f98",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-vision-2a09962793c2",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-vision-d0356a161cd2",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "dv-vision-11036736",
+      "matches": [
+        {
+          "categoryId": "domestic-violence",
+          "relation": "direct"
+        }
+      ]
     }
   ]
 }

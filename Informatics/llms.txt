@@ -28,12 +28,12 @@ Our proposed approach explores equilateral triangular meshes and tetrahedral mod
 
 ## Research library
 
-An extensive, clinically searchable research index spanning sound and auditory entrainment, EMDR, mindfulness-based stress reduction, mantra and hyperspectral imaging. Explore more than 1,100 publications by intervention, clinical condition, gene expression, molecular target, study design and journal, with transparent topic-level trust ratings.
+An extensive, clinically searchable research index spanning sound and auditory entrainment, EMDR, mindfulness-based stress reduction, mantra and hyperspectral imaging. Explore more than 1,200 publications by intervention, clinical condition, gene expression, molecular target, study design and journal, with transparent topic-level trust ratings.
 
 ## Read without a connector
 
 - [Research and evidence](https://universalmind.tv/informatics/read/): Plain HTML overview.
-- [Publications](https://universalmind.tv/informatics/read/publications/index.html): 1108 approved records, citations, summaries, limitations and topic assessment context.
+- [Publications](https://universalmind.tv/informatics/read/publications/index.html): 1223 approved records, citations, summaries, limitations and topic assessment context.
 - [Hyperspectral Imaging](https://universalmind.tv/informatics/read/hyperspectral/index.html): Six subchapters, 240 original citation entries and 13 timeline milestones.
 - [Music Atlas](https://universalmind.tv/informatics/read/music/index.html): All six models, equations, semantic tables, measurement architecture and JSON/CSV/Markdown downloads. The [ordinary Music Atlas page](https://universalmind.tv/informatics/?entry=research&area=sound) embeds the same explanations and JSON.
 - [Quantum Atlas](https://universalmind.tv/informatics/read/quantum/index.html): Existing study, saved results, chart tables and JSON/CSV/Markdown downloads. The [ordinary Quantum Atlas page](https://universalmind.tv/informatics/?entry=research&area=quantum) includes the same guide data in its initial HTML.

@@ -6,7 +6,7 @@ import {fileURLToPath} from 'node:url';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),site=path.join(root,'Informatics');
 const read=p=>fs.readFileSync(path.join(site,p),'utf8');
 const source=read('library.js'),slice=(a,b)=>source.slice(source.indexOf(a),source.indexOf(b,source.indexOf(a)));
-const names=['sound-edition','library','publication-access','language-edition','general-edition','mindfulness-expansion','vision-edition','vision-expansion','clinical-conditions','nature-expansion','fulltext-availability','fibonacci-expansion','hyperspectral-expansion'];
+const names=['sound-edition','library','publication-access','language-edition','general-edition','mindfulness-expansion','vision-edition','vision-expansion','clinical-conditions','nature-expansion','fulltext-availability','fibonacci-expansion','hyperspectral-expansion','domestic-violence-expansion'];
 const inputs=names.map(n=>JSON.parse(read('library-data/'+n+'.json'))),data=JSON.parse(fs.readFileSync(path.join(root,'research/informatics/communities-contexts-20261030/calibration-snapshot.json'),'utf8'));
 const context=vm.createContext({inputs,data});
 vm.runInContext(read('library-model.js'),context);vm.runInContext(read('library-communities.js'),context);
@@ -14,7 +14,7 @@ vm.runInContext(`const model=globalThis.UniversalResearchModel;let publicationAc
 ${slice('  const normalize =','  const model =')}
 const quoteText=quote=>quote.map(span=>span.text).join('');
 ${slice('  function buildRecords(data) {','  function search()')}
-const [sound,data0,access,language,general,expansion,vision,visionExpansion,conditions,natureExpansion,fulltexts,fibonacciExpansion,hyperspectralExpansion]=inputs;
+const [sound,data0,access,language,general,expansion,vision,visionExpansion,conditions,natureExpansion,fulltexts,fibonacciExpansion,hyperspectralExpansion,dvExpansion]=inputs;
 let data=data0;
 ${slice('      publicationAccess =',"      $('#condition')")}
 ${slice('      editions = {sound,language,general,vision};','      const allTargets=')}

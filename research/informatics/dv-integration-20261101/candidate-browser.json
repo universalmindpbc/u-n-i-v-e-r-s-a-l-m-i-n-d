@@ -1,0 +1,44 @@
+{
+  "passed": true,
+  "phase": "candidate",
+  "mutedHeadless": true,
+  "checks": [
+    {
+      "width": 1440,
+      "chapters": {
+        "sound": 8,
+        "vision": 10,
+        "language": 99
+      },
+      "noHorizontalOverflow": true
+    },
+    {
+      "width": 390,
+      "chapters": {
+        "sound": 8,
+        "vision": 10,
+        "language": 99
+      },
+      "noHorizontalOverflow": true
+    },
+    {
+      "width": 320,
+      "chapters": {
+        "sound": 8,
+        "vision": 10,
+        "language": 99
+      },
+      "noHorizontalOverflow": true
+    },
+    {
+      "filteredJSON": 117,
+      "csv": true,
+      "designFilters": true,
+      "sourceFindingsAndLimitsPreserved": true,
+      "ageConditionCategoryTargetJournalTrustJadadFilters": true,
+      "rctHasOneCross": true,
+      "inaccurateRCTTitleHasNoCross": true
+    }
+  ],
+  "errors": []
+}

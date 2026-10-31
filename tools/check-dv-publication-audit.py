@@ -1,4 +1,4 @@
-"""Check audit integrity, current decisions and isolation from approved inputs."""
+"""Check frozen audit integrity and exclusion of unapproved evidence."""
 import hashlib
 import importlib.util
 import json
@@ -63,7 +63,14 @@ for r in old['records']:
 protected = ['Informatics/library-data','Informatics/library.js','Informatics/library-model.js',
              'Informatics/library.html','Informatics/read','Informatics/exports','Informatics/index.html',
              'cloudflare','llms.txt','sitemap.xml']
-subprocess.run(['git','diff','--exit-code',config['baselineCommit'],'--',*protected],cwd=ROOT,check=True,stdout=subprocess.DEVNULL)
+integration=ROOT/'Informatics/library-data/domestic-violence-expansion.json'
+if integration.exists():
+    published=json.loads(integration.read_text())
+    assert published['sourceBatch']==batch['batchRevision']
+    assert {r['publicationApproval']['sourceContentHash'] for r in published['records']}=={r['contentHash'] for r in recommended}
+    assert all(r['publicationApproval']['status']=='approved-for-publication' for r in published['records'])
+else:
+    subprocess.run(['git','diff','--exit-code',config['baselineCommit'],'--',*protected],cwd=ROOT,check=True,stdout=subprocess.DEVNULL)
 spec=importlib.util.spec_from_file_location('exports',ROOT/'tools/export-informatics.py')
 module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
 inventory=module.inventory()
@@ -74,5 +81,5 @@ guard=(ROOT/'Informatics/review/.htaccess').read_text()
 assert 'staging\\.universalmind\\.tv' in guard and '[F,L]' in guard
 assert 'noindex,nofollow,noarchive' in (OUT/'index.html').read_text()
 print(json.dumps({'passed':True,'records':130,'recommended':117,'withheld':13,'frozenHashesPreserved':120,
-                  'approvedInputsUnchangedFrom':config['baselineCommit'],
+                  'approvedIntegration':integration.exists(),
                   'approvedExportVersion':inventory['dataset_version'],'pendingEvidenceExcluded':True}))

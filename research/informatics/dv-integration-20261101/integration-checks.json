@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "approved": 117,
+  "excluded": 13,
+  "rctReports": 51,
+  "reviews": 25,
+  "other": 41,
+  "doubleBlind": 0,
+  "allFindingsAndLimitationsPreserved": true,
+  "sourceHashesPreserved": true,
+  "aliasesResolved": true,
+  "noInventedGenes": true,
+  "knowledgeRetrievable": true
+}

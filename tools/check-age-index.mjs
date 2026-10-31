@@ -7,7 +7,7 @@ const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const data=JSON.parse(fs.readFileSync(path.join(root,'Informatics/library-data/age-index.json'),'utf8'));
 const audit=JSON.parse(fs.readFileSync(path.join(root,'research/informatics/communities-related-20261030/age-assessments.json'),'utf8'));
 const byId=new Map(data.records.map(r=>[r.recordId,r]));
-assert.equal(data.records.length,1108);assert.equal(byId.size,1108);
+assert.equal(data.records.length,1223);assert.equal(byId.size,1223);
 assert.deepEqual(new Set(records.map(r=>r.id)),new Set(byId.keys()));
 for(const r of data.records){
  assert.ok(r.groups.length);assert.equal(new Set(r.groups).size,r.groups.length);
@@ -30,7 +30,7 @@ assert.ok(!has('src-473becc5048a','children'),'Children and grandchildren descri
 assert.ok(has('pmid-40749778','not-specified'),'A mouse experiment gets no inferred human age');
 assert.ok(has('src-f265f80eb04c','not-specified'),'Unresolved source identity is not classified by age');
 const counts=Object.fromEntries(data.taxonomy.map(t=>[t.id,data.records.filter(r=>r.groups.includes(t.id)).length]));
-assert.deepEqual(counts,{'children':37,'adolescents':80,'youth':170,'adults':320,'older-adults':89,'not-specified':730});
-const report={passed:true,records:1108,metadataMatches:audit.metadataMatched,counts,reportedAgeRanges:27,youthFocus:63,youthIncluded:107};
-fs.writeFileSync(path.join(root,'research/informatics/communities-related-20261030/age-checks.json'),JSON.stringify(report,null,2)+'\n');
+assert.deepEqual(counts,{"children": 62, "adolescents": 86, "youth": 178, "adults": 388, "older-adults": 90, "not-specified": 752});
+const report={passed:true,records:1223,metadataMatches:audit.metadataMatched,counts,reportedAgeRanges:data.records.filter(r=>r.reportedAges&&/[0-9]/.test(r.reportedAges)).length,youthFocus:68,youthIncluded:110};
+fs.writeFileSync(path.join(root,'research/informatics/dv-integration-20261101/age-checks.json'),JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify(report));

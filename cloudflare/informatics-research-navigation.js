@@ -1,3 +1,4 @@
+import {dvKnowledge} from './informatics-dv-knowledge.js';
 import communities from '../Informatics/library-data/community-index.json' with {type:'json'};
 import ages from '../Informatics/library-data/age-index.json' with {type:'json'};
 
@@ -20,6 +21,7 @@ export function researchNavigation(args={},origin='https://staging.universalmind
   communities:communities.taxonomy.map(t=>({id:t.id,label:t.label,directAndContext:collectionRows.filter(r=>hasCommunity(r,t.id,false)).length,includingRelated:collectionRows.filter(r=>hasCommunity(r,t.id,true)).length})),
   ageGroups:ages.taxonomy.map(t=>({id:t.id,label:t.label,count:collectionRows.filter(r=>r.groups.includes(t.id)).length})),
   youth:{covered:collectionRows.filter(r=>r.groups.includes('youth')).length,focus:collectionRows.filter(r=>r.youthScope==='focus').length,includedWithoutEstablishedFocus:collectionRows.filter(r=>r.youthScope==='included').length},
+  approvedDomesticViolence:dvKnowledge({collection:'all'},origin).counts,
   guidance:[
    'Open Universal Research, choose Search papers, then Communities and Contexts and Age group. Sound, Vision and Language retain their existing human-curated contents.',
    'Selections within one filter use OR. Different filters combine with AND. Multiple categories can cover the same paper, so category totals are not additive.',
@@ -28,7 +30,7 @@ export function researchNavigation(args={},origin='https://staging.universalmind
    'Age not specified means no supported age classification from the checked sources. It does not establish that a publication contains no age information.',
    'JSON and CSV buttons download the current filtered results. Counts here come from the deployed visible library classifications; publication/full-text retrieval coverage is a separate inventory.',
    'These tags aid discovery. They do not establish clinical efficacy, safety, individual suitability or a higher evidence grade.',
-   'AI-guided recommendations and a continuous researcher remain planned features. The planned placement is beneath the existing contents in each of Sound, Vision and Language, with Universal Mind review before publication. Do not describe that future pipeline as already active.'
+   'AI Guided Recommendations is now appended to Sound, Vision and Language, with Domestic & Family Violence summaries: 8 Sound, 10 Vision, 99 Language. All 117 were AI assessed and human approved for publication; this does not claim clinical peer review. Universal One retrieves these approved summaries. A continuous researcher is not active.'
   ],
   matchedRecordIds:(community||age)?selected.slice(0,20).map(r=>r.recordId):[],
   recordLimit:20,

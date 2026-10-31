@@ -81,13 +81,13 @@
         "Bioinformatics platform for mental health. Investigating potential relationships between the Fibonacci sequence and OXTR gene expression.",
         "The Vision Atlas studies human visual stimulation and the EMDR hexagon hypothesis. Computer vision for genomics studies algorithms for hyperspectral image analysis. These are separate research directions. The word “vision” does not make them the same project, method or evidence base.",
         "Quantum Atlas uses OXTR DNA inputs in computational and quantum experiments. Its hexagonal atom arrangement and quantum-stability hypothesis are separate from the Vision Atlas EMDR tracking hypothesis and from the proposed computer vision algorithm.",
-        "An extensive, clinically searchable research index spanning sound and auditory entrainment, EMDR, mindfulness-based stress reduction, mantra and hyperspectral imaging. Explore more than 1,100 publications by intervention, clinical condition, gene expression, molecular target, study design and journal, with transparent topic-level trust ratings.",
+        "An extensive, clinically searchable research index spanning sound and auditory entrainment, EMDR, mindfulness-based stress reduction, mantra and hyperspectral imaging. Explore more than 1,200 publications by intervention, clinical condition, gene expression, molecular target, study design and journal, with transparent topic-level trust ratings.",
         "Explore the published research without launching the interactive experience, installing a connector or downloading a dataset. These HTML records provide the same approved text, sources and evidence status used by the platform."
       ],
       "context": [
         "The project explores hypotheses about geometry, molecular systems and OXTR. Mathematical calculations, biological evidence, model outputs and experimental measurements retain distinct labels. Each record carries its own assessment; unassessed claims remain unassessed."
       ],
-      "source_sha256": "03dcb48f5f8fd1408e4f503674225bb989187dc5b46df19d9745abe573671327"
+      "source_sha256": "7bc25f1361f5545625b19dfb3cb714f117480d38363ff3aee4584e5d67f21d35"
     }
   ],
   "resources": [

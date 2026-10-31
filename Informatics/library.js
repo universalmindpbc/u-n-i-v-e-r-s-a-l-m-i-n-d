@@ -6,6 +6,7 @@
   const normalize = value => String(value ?? '').normalize('NFKC').toLowerCase().replace(/interleukin[\s-]*6|il[\s-]+6/g, 'il6').replace(/oxytocin receptor/g, 'oxtr').replace(/serotonin transporter/g, 'slc6a4').replace(/glucocorticoid receptor/g, 'nr3c1').replace(/[^\p{L}\p{N}+]+/gu, ' ').trim();
   const model = globalThis.UniversalResearchModel;
   const communityModel = globalThis.UniversalResearchCommunities;
+  let approvedDV = null;
   let communityData = {taxonomy:[],records:[]};
   let ageData = {taxonomy:[],records:[]};
   let publicationAccess = {}, clinicalConditions = {}, fullTextAccess = {};
@@ -26,10 +27,14 @@
   function restoreFilters(p) { for (const key of fields) { if (multiFields.includes(key)) multi.set(key,p.getAll(key)); else $('#'+key).value=p.get(key) || (key==='sort' ? 'genomics' : ''); } if(p.has('gene'))multi.set('target',[...multi.values('target'),...p.getAll('gene')]); $('#include-related').checked=p.get('related')==='1'; }
   restoreFilters(params);
 
-  function crosses(score, labelled = false, scope = 'Subchapter') {
-    if (!score || (scope === 'Paper' && score === 1)) return '';
+  function crosses(score, labelled = false, scope = 'Subchapter', displayCrosses = null) {
+    const explicit = scope === 'Paper' && Number.isInteger(displayCrosses);
+    if (explicit && displayCrosses === 0) return '';
+    if (!score || (!explicit && scope === 'Paper' && score === 1)) return '';
     const icon = '<svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="8" fill="#1468a8" stroke="currentColor" stroke-width=".5"/><path d="M7 3.5h4V7h3.5v4H11v3.5H7V11H3.5V7H7z" fill="#fff"/></svg>';
-    return `<span class="trust-score" role="img" aria-label="${scope} Trust Factor: ${score} of 3" title="${scope} Trust Factor: ${score} of 3">${labelled ? '<span class="trust-label">Trust Factor</span>' : ''}${icon.repeat(score)}</span>`;
+    const count = explicit ? displayCrosses : score;
+    const label = explicit ? `Paper design: ${count} ${count===1 ? 'cross · randomized trial; double blinding not verified' : 'crosses · verified double-blind randomized trial'}` : `${scope} Trust Factor: ${score} of 3`;
+    return `<span class="trust-score" role="img" aria-label="${label}" title="${label}">${labelled ? '<span class="trust-label">Trust Factor</span>' : ''}${icon.repeat(count)}</span>`;
   }
   const topicScoreStatus = topic => topic.trustAssessment?.status === 'clinical-guidance' ? '<span class="topic-score-status">Clinical guidance</span>' : topic.trustAssessment?.status === 'below-minimum' ? '<span class="topic-score-status">Not yet graded · minimum 3 papers</span>' : '';
   function topicCounts(topic) {
@@ -127,6 +132,10 @@
     if (!relevant.length) return '';
     return `<div class="community-tags">${relevant.map(item=>`<span class="community-tag ${esc(item.relation)}">${esc(communityLabel(item.categoryId))}${item.relation==='direct' ? '' : ` · ${item.relation==='related' ? 'Related · inferred' : 'Context'}`}</span>`).join('')}</div>`;
   }
+  function approvalMarkup(paper) {
+    if (!paper.publicationApproval) return '';
+    return `<p class="publication-approval"><strong>${esc(paper.publicationApproval.assessment)}</strong><br>Source access: ${esc(paper.sourceAccess?.level)}. ${esc(paper.publicationApproval.scope)}</p>`;
+  }
   function paperMarkup(paper, heading = 'h4') {
     const quotes = paper.quotes || [];
     const review = paper.quotationReview;
@@ -134,8 +143,8 @@
     const details = [paper.design, paper.citationCount !== null && paper.citationCount !== undefined ? `${paper.citationCount.toLocaleString()} ${paper.citationCount===1 ? 'citation' : 'citations'}` : ''].filter(Boolean).join(' · ');
     const url = safeURL(paper.urls?.[0] || '#');
     return `<article class="paper" id="paper-${esc(paper.id)}" data-paper="${esc(paper.recordId)}">
-      <${heading}><a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${esc(paper.title)}</a> ${crosses(paper.paperTrustAssessment?.score,false,'Paper')}</${heading}>
-      ${publication ? `<p class="publication">${esc(publication)}</p>` : ''}
+      <${heading}><a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${esc(paper.title)}</a> ${crosses(paper.paperTrustAssessment?.score,false,'Paper',paper.paperTrustAssessment?.displayCrosses)}</${heading}>
+      ${approvalMarkup(paper)}${paper.publicationApproval && paper.evidence?.population?.relation==='related' ? '<p class="community-tag related">Related trauma population · transfer to domestic and family violence populations is not established.</p>' : ''}${publication ? `<p class="publication">${esc(publication)}</p>` : ''}
       ${details ? `<p class="study-details">${esc(details)}</p>` : ''}
       ${quotes.filter((q,index) => index !== review?.index).length ? `<blockquote cite="${esc(url)}">${quotes.map((q,index) => index === review?.index ? '' : `<p>${quoteHTML(q)}</p>`).join('')}</blockquote>` : ''}
       ${paper.summary ? `<div class="study-summary"><p class="eyebrow">Study summary</p><p>${esc(paper.summary)}</p>${paper.limitation ? `<p class="summary-limitation">${esc(paper.limitation)}</p>` : ''}</div>` : ''}
@@ -196,6 +205,8 @@
       (referenceQuery ? (r.sourceReferences || []).some(e=>e.ref.toUpperCase()===referenceQuery) : q.every(word=>r._search.includes(word)));
     };
     filtered = records.filter(r=>matches(r));
+    const overview=$('#dv-overview');overview.hidden=!chosen.community.includes('domestic-violence');
+    if(!overview.hidden)overview.innerHTML=`<h2>Domestic &amp; Family Violence</h2><p>${esc(approvedDV.overview)}</p><p>${esc(approvedDV.limitations)}</p><p>The approved addition sits alongside existing library research. Your selected filters determine the result count below.</p><p>${Object.entries(approvedDV.chapters).map(([c,ch])=>`<a data-chapter="${ch.number}" data-chapter-collection="${c}" href="${esc(route(ch.number,'domestic-family-violence',c))}">${esc(collectionTitle(c))} · ${approvedDV.counts.collections[c]} publications</a>`).join(' · ')}</p>`;
     // Each option counts papers matching every other filter. Keep this filter's
     // alternatives available because multiple selections within it use OR.
     for (const [id,taxonomy,test] of [
@@ -233,7 +244,7 @@
       const entry = selectedEntry(record);
       const excerpt = record.quotes[0] || record.summary;
       const trimmed = excerpt.length > 340 ? excerpt.slice(0,337).trim()+'…' : excerpt;
-      return `<article class="search-paper" data-id="${esc(record.id)}"><h3><button data-record="${esc(record.id)}">${esc(record.title)}</button> ${crosses(model.paperTrustScore(record),false,'Paper')}</h3><p class="publication">${esc([journalDisplay(record),record.year,record.design].filter(Boolean).join(' · '))}</p>${communityBadges(record)}${multi.values('age').length ? ageMarkup(record) : ''}${trimmed ? record.quotes.length ? `<blockquote>${esc(trimmed)}</blockquote>` : `<p class="finding">${esc(trimmed)}</p>` : ''}${entry ? `<p class="search-context">${esc(collectionTitle(entry.collection))} · ${esc(entry.topicTitle)}</p>` : ''}<div class="search-tags">${record.categories.slice(0,2).map(c=>`<span>${esc(c)}</span>`).join('')}${record.targets.slice(0,5).map(t=>`<span class="gene">${esc(t)}</span>`).join('')}</div><button class="text-button" data-record="${esc(record.id)}">Read paper →</button></article>`;
+      return `<article class="search-paper" data-id="${esc(record.id)}"><h3><button data-record="${esc(record.id)}">${esc(record.title)}</button> ${crosses(model.paperTrustScore(record),false,'Paper',record.paperTrustAssessment?.displayCrosses)}</h3><p class="publication">${esc([journalDisplay(record),record.year,record.design].filter(Boolean).join(' · '))}</p>${approvalMarkup(record)}${communityBadges(record)}${multi.values('age').length ? ageMarkup(record) : ''}${trimmed ? record.quotes.length ? `<blockquote>${esc(trimmed)}</blockquote>` : `<p class="finding">${esc(trimmed)}</p>` : ''}${entry ? `<p class="search-context">${esc(collectionTitle(entry.collection))} · ${esc(entry.topicTitle)}</p>` : ''}<div class="search-tags">${record.categories.slice(0,2).map(c=>`<span>${esc(c)}</span>`).join('')}${record.targets.slice(0,5).map(t=>`<span class="gene">${esc(t)}</span>`).join('')}</div><button class="text-button" data-record="${esc(record.id)}">Read paper →</button></article>`;
     }).join('') || '<div class="empty-state"><h2>No matching papers.</h2><p>Try a different term or clear the filters.</p><button data-reset>Clear filters</button></div>';
   }
   function render() {
@@ -281,7 +292,7 @@
     if (!record) return;
     const entry = selectedEntry(record);
     if (entry) return showPaper(entry,opener);
-    const paper = {id:record.id,recordId:record.id,title:record.title,journal:record.journal,year:record.year,authors:record.authors,design:record.design,urls:record.urls,quotes:record.quotes.map(text => [{text,emphasis:false}]),summary:record.summary,limitation:record.limitation,citationCount:record.citationSnapshot?.count ?? record.citationCount,citationSnapshot:record.citationSnapshot,studyDesignAssessment:record.studyDesignAssessment,paperTrustAssessment:record.paperTrustAssessment,sourcePages:[],sourceReferences:record.sourceReferences,sourceType:record.sourceType,doi:record.doi,pmid:record.pmid,evidence:record.evidence};
+    const paper = {id:record.id,recordId:record.id,title:record.title,journal:record.journal,year:record.year,authors:record.authors,design:record.design,urls:record.urls,quotes:record.quotes.map(text => [{text,emphasis:false}]),summary:record.summary,limitation:record.limitation,citationCount:record.citationSnapshot?.count ?? record.citationCount,citationSnapshot:record.citationSnapshot,studyDesignAssessment:record.studyDesignAssessment,paperTrustAssessment:record.paperTrustAssessment,publicationApproval:record.publicationApproval,sourceAccess:record.sourceAccess,sourcePages:[],sourceReferences:record.sourceReferences,sourceType:record.sourceType,doi:record.doi,pmid:record.pmid,evidence:record.evidence};
     showPaper(paper,opener);
   }
   function buildRecords(data) {
@@ -298,7 +309,7 @@
       const citationsByCollection = Object.fromEntries(collections.map(c=>[c,model.maximumCount([...chapterEntries.filter(p=>p.collection===c).map(p=>p.citationCount),...otherEntries.filter(a=>a.collection===c).map(a=>a.historicalCitationCount)])]));
       const topics = [...chapterEntries.map(p=>({key:p.collection+':'+p.topicId,title:p.topicTitle,collection:p.collection,trustScore:p.trustScore})),...otherEntries.map(a=>({key:a.collection+':'+a.sectionPage,title:a.section.replace(/^.*?\b[ivxlcdm]+\.\s*/i,''),collection:a.collection,trustScore:a.sectionGrade}))];
       const quotes = first ? first.quotes.filter((q,index) => index !== first.quotationReview?.index).map(quoteText) : otherEntries.flatMap(a => (a.originalNote || '').split('\n\n').filter(Boolean));
-      const result = {id:r.id,publicationKey:access.publicationKey,aliases:[...new Set([...(r.aliases || []),...(first?.aliases || [])])],...(r.sourceReferences ? {sourceReferences:r.sourceReferences,sourceType:r.sourceType,sourceVerification:r.sourceVerification,sourceCollection:r.sourceCollection,relatedVersions:r.relatedVersions} : {}),title:first?.title || r.title,journal:access.journalLabel || first?.journal || r.journal || '',publisherFamily:access.publisherFamily || r.publisherFamily,publisherFamilyLabel:access.publisherFamilyLabel || r.publisherFamilyLabel,neurotransmitters:r.neurotransmitters || [],year:first?.year || r.year,authors:first?.authors || r.authors || '',design:r.studyDesignAssessment ? r.design : first?.design || r.sourceDesign || r.design || '',kind:r.kind,identityConflict:r.identityConflict || null,doi:access.doi || first?.doi || r.doi,pmid:access.pmid || first?.pmid || r.pmid,urls:access.urls || first?.urls || r.urls,collections,categories:r.categories || [],targets:r.targets || [],priority:r.priority ?? 1,quotes,summary:first?.summary || r.finding || r.portalNotes?.[0]?.finding || '',limitation:first?.limitation || r.limitation || r.portalNotes?.[0]?.limitation || '',citationCount:model.maximumCount(Object.values(citationsByCollection)),citationSnapshot:r.citationSnapshot,studyDesignAssessment:r.studyDesignAssessment,paperTrustAssessment:r.paperTrustAssessment,citationsByCollection,topics,journalKey:access.journalKey ?? model.journalKey(first?.journal || r.journal),journalLabel:access.journalLabel || first?.journal || r.journal || '',topicScores:[...new Set([...chapterEntries.map(p=>p.trustScore),...otherEntries.map(a=>a.sectionGrade)].filter(Boolean))],soundEntries,chapterEntries,evidence:r.evidence,jadad:model.jadadStatus(r)};
+      const result = {publicationApproval:r.publicationApproval,sourceAccess:r.sourceAccess,editorialAudit:r.editorialAudit,studyFamilyId:r.studyFamilyId,familyLinkageUncertain:r.familyLinkageUncertain,approaches:r.approaches,id:r.id,publicationKey:access.publicationKey,aliases:[...new Set([...(r.aliases || []),...(first?.aliases || [])])],...(r.sourceReferences ? {sourceReferences:r.sourceReferences,sourceType:r.sourceType,sourceVerification:r.sourceVerification,sourceCollection:r.sourceCollection,relatedVersions:r.relatedVersions} : {}),title:first?.title || r.title,journal:access.journalLabel || first?.journal || r.journal || '',publisherFamily:access.publisherFamily || r.publisherFamily,publisherFamilyLabel:access.publisherFamilyLabel || r.publisherFamilyLabel,neurotransmitters:r.neurotransmitters || [],year:first?.year || r.year,authors:first?.authors || r.authors || '',design:r.studyDesignAssessment ? r.design : first?.design || r.sourceDesign || r.design || '',kind:r.kind,identityConflict:r.identityConflict || null,doi:access.doi || first?.doi || r.doi,pmid:access.pmid || first?.pmid || r.pmid,urls:access.urls || first?.urls || r.urls,collections,categories:r.categories || [],targets:r.targets || [],priority:r.priority ?? 1,quotes,summary:first?.summary || r.finding || r.portalNotes?.[0]?.finding || '',limitation:first?.limitation || r.limitation || r.portalNotes?.[0]?.limitation || '',citationCount:model.maximumCount(Object.values(citationsByCollection)),citationSnapshot:r.citationSnapshot,studyDesignAssessment:r.studyDesignAssessment,paperTrustAssessment:r.paperTrustAssessment,citationsByCollection,topics,journalKey:access.journalKey ?? model.journalKey(first?.journal || r.journal),journalLabel:access.journalLabel || first?.journal || r.journal || '',topicScores:[...new Set([...chapterEntries.map(p=>p.trustScore),...otherEntries.map(a=>a.sectionGrade)].filter(Boolean))],soundEntries,chapterEntries,evidence:r.evidence,jadad:model.jadadStatus(r)};
       result._search = normalize([result.title,result.sourceCollection,JSON.stringify(result.sourceReferences),result.journal,result.publisherFamilyLabel,...result.neurotransmitters,result.authors,result.design,result.doi,result.pmid,...result.quotes,result.summary,result.limitation,...result.targets,...result.categories,...chapterEntries.map(p=>p.topicTitle+' '+p.quotes.map(quoteText).join(' ')+' '+(p.bibliography || []).map(b=>b.text).join(' ')),...otherEntries.map(a=>a.originalNote),JSON.stringify(r.evidence || {})].join(' '));
       return result;
     }).filter(Boolean));
@@ -366,27 +377,34 @@
   async function load() {
     $('#load-error').hidden = true;
     try {
-      const responses = await Promise.all(['sound-edition','library','publication-access','language-edition','general-edition','mindfulness-expansion','vision-edition','vision-expansion','clinical-conditions','nature-expansion','fulltext-availability','fibonacci-expansion','hyperspectral-expansion','community-index','age-index'].map(name=>fetch('library-data/'+name+'.json?v=communities-age-20261030')));
+      const responses = await Promise.all(['sound-edition','library','publication-access','language-edition','general-edition','mindfulness-expansion','vision-edition','vision-expansion','clinical-conditions','nature-expansion','fulltext-availability','fibonacci-expansion','hyperspectral-expansion','domestic-violence-expansion','community-index','age-index'].map(name=>fetch('library-data/'+name+'.json?v=dv-approved-20261101')));
       if (responses.some(response => !response.ok)) throw new Error('Research unavailable');
-      const [sound,data,access,language,general,expansion,vision,visionExpansion,conditions,natureExpansion,fulltexts,fibonacciExpansion,hyperspectralExpansion,communities,ages] = await Promise.all(responses.map(response=>response.json()));
+      const [sound,data,access,language,general,expansion,vision,visionExpansion,conditions,natureExpansion,fulltexts,fibonacciExpansion,hyperspectralExpansion,dvExpansion,communities,ages] = await Promise.all(responses.map(response=>response.json()));
       if (communities.schemaVersion!=='communities-contexts/v2' || communities.records.length!==communities.recordCount) throw new Error('Invalid community classifications');
       communityData=communities;
+      approvedDV=dvExpansion;
       if (ages.schemaVersion!=='research-age-groups/v1' || ages.records.length!==ages.recordCount) throw new Error('Invalid age classifications');
       ageData=ages;
       fullTextAccess=fulltexts.records;
       if (!Array.isArray(sound.chapters) || !Array.isArray(data.records)) throw new Error('Invalid research data');
-      publicationAccess = {...access.records,...visionExpansion.publicationAccess};
+      publicationAccess = {...access.records,...visionExpansion.publicationAccess,...dvExpansion.publicationAccess};
       for (const [id,verified] of Object.entries(natureExpansion.publicationAccess)) publicationAccess[id]={...publicationAccess[id],...verified};
-      clinicalConditions=conditions.records;
+      clinicalConditions={...conditions.records,...dvExpansion.conditions};
       $('#condition').innerHTML='<option value="">All conditions and symptoms</option>'+conditions.taxonomy.map(t=>`<option value="${esc(t.id)}">${esc(t.label)}</option>`).join('');
       editions = {sound,language,general,vision};
+      for (const [name,chapter] of Object.entries(dvExpansion.chapters)) editions[name].chapters.push(chapter);
       const byId = new Map(data.records.map(r=>[r.id,r]));
-      for (const additional of [...expansion.records,...visionExpansion.records,...natureExpansion.records,...fibonacciExpansion.records,...hyperspectralExpansion.records]) {
+      for (const additional of [...expansion.records,...visionExpansion.records,...natureExpansion.records,...fibonacciExpansion.records,...hyperspectralExpansion.records,...dvExpansion.records]) {
         const existing = byId.get(additional.id);
         byId.set(additional.id,{...existing,...additional,collections:[...new Set([...(existing?.collections || []),...additional.collections])],archiveEntries:existing?.archiveEntries || []});
       }
       data.records = [...byId.values()];
       for (const [name,book] of Object.entries(editions)) for (const chapter of book.chapters) for (const topic of chapter.topics) for (const paper of topic.papers) {
+        const approved = byId.get(paper.recordId);
+        if (approved?.publicationApproval) {
+          const id=paper.id, recordId=paper.recordId;
+          Object.assign(paper,approved,{id,recordId});
+        }
         const resolved = publicationAccess[paper.recordId];
         if (resolved?.journalLabel) paper.journal = resolved.journalLabel;
         if (resolved?.urls) paper.urls = resolved.urls;
