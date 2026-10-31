@@ -7,7 +7,7 @@ Universal Mind is a project of Ben Korbel. Voted Australia’s number one DJ in 
 Over the past decade, Ben has increasingly turned his attention towards mental health. That focus grew from curiosity, his own lived experience, and the experiences of many people within the electronic music community. Universal Mind brings these parts of his life together: a connection to music and the people around it, and a desire to explore how those connections can support mental health.
 
 Official wiki: https://universalmind.tv/read/
-Updated: 2026-10-30
+Updated: 2026-11-01
 
 ## I AM — Watch TV
 
@@ -62,9 +62,9 @@ Access: The festival experience uses the existing invitation login. These About 
 
 Bioinformatics platform for mental health. Investigating potential relationships between the Fibonacci sequence and OXTR gene expression.
 
-Inspired by research into how geometric architectures and Fibonacci-ordered dynamics can protect quantum information, we are investigating whether geometry derived from Fibonacci Pisano periods can improve the computational efficiency of hyperspectral image analysis for genomics.
+The Vision Atlas studies human visual stimulation and the EMDR hexagon hypothesis. Computer vision for genomics studies algorithms for hyperspectral image analysis. These are separate research directions. The word “vision” does not make them the same project, method or evidence base.
 
-Our proposed approach explores equilateral triangular meshes and tetrahedral models, comparing computational cost, processing speed and accuracy against established methods.
+Quantum Atlas uses OXTR DNA inputs in computational and quantum experiments. Its hexagonal atom arrangement and quantum-stability hypothesis are separate from the Vision Atlas EMDR tracking hypothesis and from the proposed computer vision algorithm.
 
 An extensive, clinically searchable research index spanning sound and auditory entrainment, EMDR, mindfulness-based stress reduction, mantra and hyperspectral imaging. Explore more than 1,100 publications by intervention, clinical condition, gene expression, molecular target, study design and journal, with transparent topic-level trust ratings.
 
@@ -102,6 +102,13 @@ Access: The research wiki, publication records and download directory are public
 - [Music Atlas complete data](https://universalmind.tv/informatics/music-atlas/music-atlas.json): Universal Informatics; JSON; Public.
 - [Music Atlas complete CSV](https://universalmind.tv/informatics/music-atlas/music-atlas.csv): Universal Informatics; CSV; Public.
 - [Music Atlas explanations and reading instructions](https://universalmind.tv/informatics/music-atlas/music-atlas.md): Universal Informatics; Markdown; Public.
+- [Quantum Atlas: study, saved results and geometry](https://universalmind.tv/informatics/read/quantum/index.html): Universal Informatics; HTML; Public.
+- [Quantum Atlas guide and chart data](https://universalmind.tv/informatics/quantum/reading/quantum-atlas.json): Universal Informatics; JSON; Public.
+- [Quantum Atlas guide and chart data CSV](https://universalmind.tv/informatics/quantum/reading/quantum-atlas.csv): Universal Informatics; CSV; Public.
+- [Quantum Atlas explanations and reading instructions](https://universalmind.tv/informatics/quantum/reading/quantum-atlas.md): Universal Informatics; Markdown; Public.
+- [Vision Atlas: EMDR and ocular biology](https://universalmind.tv/informatics/read/vision/index.html): Universal Informatics; HTML; Public. Human visual stimulation and the hexagonal tracking hypothesis.
+- [Computer vision for genomics](https://universalmind.tv/informatics/read/computer-vision/index.html): Universal Informatics; HTML; Public. Hyperspectral image-analysis algorithm research; separate from EMDR.
+- [Molecular Atlas](https://universalmind.tv/informatics/molecular/): Universal Informatics; HTML; Public.
 - [Geometry Atlas M1–M1001](https://universalmind.tv/informatics/read/atlas/index.html): Universal Informatics; HTML; Public.
 - [Experiments](https://universalmind.tv/informatics/read/experiments/index.html): Universal Informatics; HTML; Public.
 - [Data, methods and checksums](https://universalmind.tv/informatics/read/data.html): Universal Informatics; HTML; Public.

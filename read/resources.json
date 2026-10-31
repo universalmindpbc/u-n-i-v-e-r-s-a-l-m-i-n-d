@@ -1,7 +1,7 @@
 {
   "title": "Universal Mind · Wiki For AI / LLMs",
   "canonical_url": "https://universalmind.tv/read/",
-  "updated": "2026-10-30",
+  "updated": "2026-11-01",
   "introduction": [
     "Universal Mind is a multidisciplinary organisation focused on electronic music and mental health. Its work connects music television, live events, festival participation and bioinformatics research—bringing cultural experiences, community participation and scientific investigation together.",
     "Universal Mind is a project of Ben Korbel. Voted Australia’s number one DJ in 2001, Ben built a career across Australia, Berlin and Ibiza. He also became one of Australia’s major electronic music festival promoters, with festival partnerships welcoming more than 60,000 patrons across two weekends.",
@@ -79,15 +79,15 @@
       "access": "The research wiki, publication records and download directory are public. API and MCP access are optional.",
       "paragraphs": [
         "Bioinformatics platform for mental health. Investigating potential relationships between the Fibonacci sequence and OXTR gene expression.",
-        "Inspired by research into how geometric architectures and Fibonacci-ordered dynamics can protect quantum information, we are investigating whether geometry derived from Fibonacci Pisano periods can improve the computational efficiency of hyperspectral image analysis for genomics.",
-        "Our proposed approach explores equilateral triangular meshes and tetrahedral models, comparing computational cost, processing speed and accuracy against established methods.",
+        "The Vision Atlas studies human visual stimulation and the EMDR hexagon hypothesis. Computer vision for genomics studies algorithms for hyperspectral image analysis. These are separate research directions. The word “vision” does not make them the same project, method or evidence base.",
+        "Quantum Atlas uses OXTR DNA inputs in computational and quantum experiments. Its hexagonal atom arrangement and quantum-stability hypothesis are separate from the Vision Atlas EMDR tracking hypothesis and from the proposed computer vision algorithm.",
         "An extensive, clinically searchable research index spanning sound and auditory entrainment, EMDR, mindfulness-based stress reduction, mantra and hyperspectral imaging. Explore more than 1,100 publications by intervention, clinical condition, gene expression, molecular target, study design and journal, with transparent topic-level trust ratings.",
         "Explore the published research without launching the interactive experience, installing a connector or downloading a dataset. These HTML records provide the same approved text, sources and evidence status used by the platform."
       ],
       "context": [
         "The project explores hypotheses about geometry, molecular systems and OXTR. Mathematical calculations, biological evidence, model outputs and experimental measurements retain distinct labels. Each record carries its own assessment; unassessed claims remain unassessed."
       ],
-      "source_sha256": "9756e500ec49a63685fca9d14ea999de8c8fea8f997510ac8afbee9da372c3aa"
+      "source_sha256": "323fe8fec4ee43dca0b0b572fd49ba970948b2d594d097b31e9b6290e9cfb980"
     }
   ],
   "resources": [
@@ -280,6 +280,62 @@
       "url": "https://universalmind.tv/informatics/music-atlas/music-atlas.md",
       "project": "Universal Informatics",
       "format": "Markdown",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "Quantum Atlas: study, saved results and geometry",
+      "url": "https://universalmind.tv/informatics/read/quantum/index.html",
+      "project": "Universal Informatics",
+      "format": "HTML",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "Quantum Atlas guide and chart data",
+      "url": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.json",
+      "project": "Universal Informatics",
+      "format": "JSON",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "Quantum Atlas guide and chart data CSV",
+      "url": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.csv",
+      "project": "Universal Informatics",
+      "format": "CSV",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "Quantum Atlas explanations and reading instructions",
+      "url": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.md",
+      "project": "Universal Informatics",
+      "format": "Markdown",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "Vision Atlas: EMDR and ocular biology",
+      "url": "https://universalmind.tv/informatics/read/vision/index.html",
+      "project": "Universal Informatics",
+      "format": "HTML",
+      "access": "Public",
+      "description": "Human visual stimulation and the hexagonal tracking hypothesis."
+    },
+    {
+      "title": "Computer vision for genomics",
+      "url": "https://universalmind.tv/informatics/read/computer-vision/index.html",
+      "project": "Universal Informatics",
+      "format": "HTML",
+      "access": "Public",
+      "description": "Hyperspectral image-analysis algorithm research; separate from EMDR."
+    },
+    {
+      "title": "Molecular Atlas",
+      "url": "https://universalmind.tv/informatics/molecular/",
+      "project": "Universal Informatics",
+      "format": "HTML",
       "access": "Public",
       "description": ""
     },

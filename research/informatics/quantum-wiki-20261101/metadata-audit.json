@@ -1,0 +1,64 @@
+{
+  "date": "2026-11-01",
+  "original_staging": "3a4b54ab4d2887323e9e9749fbdcaa979813e196",
+  "original_production": "4900e9e0a33a85c154104b25ec09586a03216675",
+  "landing_metadata": {
+    "index.html": [
+      {
+        "name": "description",
+        "content": "Universal Mind is a project of Ben Korbel connecting electronic music and mental health through I AM television, athousandminds events, Happiness and Universal Informatics research."
+      },
+      {
+        "property": "og:description",
+        "content": "A project of Ben Korbel connecting music television, live events, festival participation and bioinformatics research."
+      }
+    ],
+    "home/index.html": [
+      {
+        "name": "description",
+        "content": "Universal Mind is a project of Ben Korbel connecting electronic music and mental health through I AM television, athousandminds events, Happiness and Universal Informatics research."
+      },
+      {
+        "property": "og:description",
+        "content": "A project of Ben Korbel connecting music television, live events, festival participation and bioinformatics research."
+      }
+    ],
+    "Informatics/index.html": [
+      {
+        "name": "description",
+        "content": "Bioinformatics platform for mental health. Investigating potential relationships between the Fibonacci sequence and OXTR gene expression."
+      },
+      {
+        "property": "og:description",
+        "content": "Bioinformatics platform for mental health. Investigating potential relationships between the Fibonacci sequence and OXTR gene expression."
+      },
+      {
+        "name": "twitter:description",
+        "content": "Bioinformatics platform for mental health. Investigating potential relationships between the Fibonacci sequence and OXTR gene expression."
+      }
+    ]
+  },
+  "landing_metadata_emphasizes_vision": false,
+  "default_interactive_area": "home",
+  "previous_guide_leading_research_direction": "Initial focus · Computer vision for genomics",
+  "previous_guides_missing_dedicated_entries": [
+    "Vision Atlas · EMDR",
+    "Computer vision for genomics",
+    "Quantum Atlas"
+  ],
+  "diagnosis": "The guides emphasized computer vision while omitting distinct Vision and Quantum explanations. This supplies a plausible source of the reported conflation; model-internal retrieval and reasoning were not observed.",
+  "changes": [
+    "Lead Informatics guide with a seven-topic directory",
+    "Separate EMDR and computational image-analysis explanations",
+    "Add Quantum Wiki with native HTML tables and embedded JSON on both primary routes",
+    "Expose JSON, CSV and Markdown on Quantum and its Wiki",
+    "Add all three new reading entries to root Wiki, root structured directory, both llms guides and sitemap"
+  ],
+  "preserved": [
+    "Main landing metadata",
+    "Visible About wording",
+    "Atlas visual models and interactive runtime",
+    "Quantum agent and compute execution",
+    "Existing source claims and experiment revisions"
+  ]
+}

@@ -8,7 +8,7 @@ SITE=ROOT/'Informatics'
 data=json.loads((SITE/'music-atlas/music-atlas.json').read_text())
 html=(SITE/'index.html').read_text()
 baseline=subprocess.check_output(['git','show','26ca796910c25c21f98d01b74f614a57f21ec60f:Informatics/index.html'],cwd=ROOT,text=True)
-clean=html
+clean=re.sub(r'<!-- (?:QUANTUM ATLAS|ATLAS TOPICS) (?:METADATA|MACHINE|DOWNLOADS) START -->[\s\S]*?<!-- (?:QUANTUM ATLAS|ATLAS TOPICS) (?:METADATA|MACHINE|DOWNLOADS) END -->\n?','',html)
 for kind in ['METADATA','MACHINE','DOWNLOADS']:
     clean=re.sub(r'<!-- MUSIC ATLAS '+kind+r' START -->[\s\S]*?<!-- MUSIC ATLAS '+kind+r' END -->\n?','',clean)
 assert re.sub(r'>\s+<','><',clean).strip()==re.sub(r'>\s+<','><',baseline).strip(),'Existing human page changed'

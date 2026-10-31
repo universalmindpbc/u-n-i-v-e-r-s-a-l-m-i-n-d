@@ -9,7 +9,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 ORIGIN = 'https://universalmind.tv'
-DATE = '2026-10-30'
+DATE = '2026-11-01'
 
 class Text(HTMLParser):
     def __init__(self):
@@ -57,7 +57,7 @@ projects = [
          context=['The About text describes the project and its mission. Named technologies and organisations are not, by their inclusion here, confirmation of a formal partnership or independently validated clinical performance.']),
     dict(id='informatics', name='Universal Informatics', route='Explore Research', url=ORIGIN+'/informatics/', source=ORIGIN+'/informatics/read/',
          source_file='Informatics/read/index.html', access='The research wiki, publication records and download directory are public. API and MCP access are optional.',
-         paragraphs=[paragraph_with(informatics, p) for p in ['Bioinformatics platform for mental health.', 'Inspired by research into', 'Our proposed approach explores', 'An extensive, clinically searchable research index', 'Explore the published research without']],
+         paragraphs=[paragraph_with(informatics, p) for p in ['Bioinformatics platform for mental health.', 'The Vision Atlas studies', 'Quantum Atlas uses', 'An extensive, clinically searchable research index', 'Explore the published research without']],
          context=[paragraph_with(informatics, 'The project explores hypotheses')])
 ]
 
@@ -90,6 +90,13 @@ resources = [
     resource('Music Atlas complete data', '/informatics/music-atlas/music-atlas.json', 'Universal Informatics', 'JSON'),
     resource('Music Atlas complete CSV', '/informatics/music-atlas/music-atlas.csv', 'Universal Informatics', 'CSV'),
     resource('Music Atlas explanations and reading instructions', '/informatics/music-atlas/music-atlas.md', 'Universal Informatics', 'Markdown'),
+    resource('Quantum Atlas: study, saved results and geometry', '/informatics/read/quantum/index.html', 'Universal Informatics'),
+    resource('Quantum Atlas guide and chart data', '/informatics/quantum/reading/quantum-atlas.json', 'Universal Informatics', 'JSON'),
+    resource('Quantum Atlas guide and chart data CSV', '/informatics/quantum/reading/quantum-atlas.csv', 'Universal Informatics', 'CSV'),
+    resource('Quantum Atlas explanations and reading instructions', '/informatics/quantum/reading/quantum-atlas.md', 'Universal Informatics', 'Markdown'),
+    resource('Vision Atlas: EMDR and ocular biology', '/informatics/read/vision/index.html', 'Universal Informatics', description='Human visual stimulation and the hexagonal tracking hypothesis.'),
+    resource('Computer vision for genomics', '/informatics/read/computer-vision/index.html', 'Universal Informatics', description='Hyperspectral image-analysis algorithm research; separate from EMDR.'),
+    resource('Molecular Atlas', '/informatics/molecular/', 'Universal Informatics'),
     resource('Geometry Atlas M1–M1001', '/informatics/read/atlas/index.html', 'Universal Informatics'),
     resource('Experiments', '/informatics/read/experiments/index.html', 'Universal Informatics'),
     resource('Data, methods and checksums', '/informatics/read/data.html', 'Universal Informatics'),

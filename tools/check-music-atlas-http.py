@@ -23,7 +23,7 @@ for agent in agents:
     inline=re.search(r'<script id="music-atlas-data" type="application/json">([\s\S]*?)</script>',html)
     assert inline and json.loads(inline[1])==record
     assert html.count('data-music-model=')==6
-    assert html.count('<table>')==10
+    assert re.search(r'<section id="music-atlas-machine"[\s\S]*?</section>\s*<script id="music-atlas-data"',html)[0].count('<table>')==10
     for fmt in ['json','csv','md']:assert f'download="music-atlas.{fmt}"' in html
 headers={}
 for ext,mime in [('json','application/json'),('csv','text/csv'),('md','text/markdown')]:

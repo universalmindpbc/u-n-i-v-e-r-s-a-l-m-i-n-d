@@ -1,10 +1,10 @@
 {
-  "datasetManifestSHA256": "532d2d09449c8bffe3006e4f4d9708c78a32e89ff9f50a71df35ded0c9718e5c",
+  "datasetManifestSHA256": "dbc1cdf6f85b695eace7803eba2ab749be98203a81d3c086917535d9f1c0a57f",
   "generatedAt": "2026-10-26",
   "publications": 1108,
   "atlas": 1001,
   "experiments": 2,
-  "pages": 2120,
+  "pages": 2123,
   "sourceHashes": [
     {
       "path": "library.js",
@@ -2199,6 +2199,9 @@
     "read/access.html",
     "read/index.html",
     "read/provenance.html",
-    "read/music/index.html"
+    "read/music/index.html",
+    "read/quantum/index.html",
+    "read/vision/index.html",
+    "read/computer-vision/index.html"
   ]
 }
