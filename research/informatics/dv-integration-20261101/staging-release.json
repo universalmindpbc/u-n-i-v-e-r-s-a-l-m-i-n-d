@@ -1,0 +1,76 @@
+{
+  "verifiedAtUTC": "2026-10-31T17:45:53.994218+00:00",
+  "deployment": "staging",
+  "sourceCommit": "edb28de597d0d95a3df6effb7d1b556a07353cbf",
+  "initialIntegrationCommit": "2939f449bd5c88f70c3f159e8f10f65c8e72a4b2",
+  "libraryAndWorkerVerifiedAtCommit": "a3fd1b1e3de6665cd05858a62bc46bd92acf8b88",
+  "libraryAndWorkerSourceUnchangedSinceLiveVerification": true,
+  "parallelQuantumReleasePreserved": "d9ee240c0d8d94e8f35f4ca96705d216f35b697f",
+  "primaryCollections": {
+    "sound": 8,
+    "vision": 10,
+    "language": 99
+  },
+  "designs": {
+    "randomizedTrialReports": 51,
+    "reviewsAndMetaAnalyses": 25,
+    "other": 41,
+    "verifiedDoubleBlind": 0
+  },
+  "records": {
+    "approved": 117,
+    "new": 115,
+    "existingUpdated": 2,
+    "withheldExcluded": 13
+  },
+  "dataset": {
+    "version": "cedb121a5407ca7738a3040cef22efe361b01d5f2b2890741d125d5835f44c29",
+    "sourceFiles": 1182,
+    "bothNativeDownloadsVerified": true,
+    "bothFormatsReconstructEverySource": true
+  },
+  "universalOne": {
+    "workerVersion": "2886e0d9-34cd-4346-9c8b-eea765fb2a30",
+    "worker": "informatics-universal-one-staging",
+    "endpoint": "https://informatics-universal-one-staging.universalmind.workers.dev",
+    "method": "Versioned approved-record retrieval; no model fine-tuning or database mutation",
+    "liveOpenAIResponsesVerified": 2,
+    "model": "gpt-6-astra"
+  },
+  "checks": {
+    "integration-checks.json": true,
+    "classification-checks.json": true,
+    "age-checks.json": true,
+    "navigation-checks.json": true,
+    "complete-exports-roundtrip.json": true,
+    "staging-browser.json": true,
+    "universal-one.json": true,
+    "staging-integrity.json": true,
+    "staging-complete-downloads.json": true
+  },
+  "assetSHA256": {
+    "cloudflare/informatics-research-worker.js": "0553453b4d7f90a9fb2f9f91ee641bc4d729abe92b14a6a2c54517b58505b0db",
+    "cloudflare/informatics-dv-knowledge.js": "6c3b0e5ab21d01ac23bd505520c71930e2debd3d6d561a18b85c04e3c8a33f31",
+    "cloudflare/informatics-research-navigation.js": "72497dd5d2edd6009e436bee8b588b3631d037c41eb5aba839f9460427a0dbe0",
+    "Informatics/library.js": "fed5e6f6ce5097731bf2ad1b4e2199d665c8ac045099b97dcba63abaa3ee685c",
+    "Informatics/library.html": "70168279e4d62738342482fe6d50a1d89954358bdd7a386f2b9f8ecd9ccc8c26",
+    "Informatics/library-data/domestic-violence-expansion.json": "785aa9b59ab0163d4541701a361ff92b5e249cfc0db7af3752c9db7195d5aa30",
+    "Informatics/library-data/age-index.json": "9cd702c79124e98951991b0b30208078cd5f68943c611f5dfb7aaf759d654eec",
+    "Informatics/library-data/community-index.json": "df9570cb475f6d38a42d4543aaa5f479135f820ba9dc0c63097306a3ef402aec",
+    "Informatics/complete-downloads.js": "37ed0bfbea745046b89c94132e3c3a781323ca482cbedc5e00b3cd51941a7f5b",
+    "Informatics/exports/manifest.json": "eae9b9e00d65e51d818ba3337c9a32a719e03a0bb597b880500bf7a59c13aae8"
+  },
+  "stagingURLs": {
+    "sound": "https://staging.universalmind.tv/informatics/library.html?collection=sound&chapter=7#topic-domestic-family-violence",
+    "vision": "https://staging.universalmind.tv/informatics/library.html?collection=vision&chapter=7#topic-domestic-family-violence",
+    "language": "https://staging.universalmind.tv/informatics/library.html?collection=language&chapter=5#topic-domestic-family-violence",
+    "downloads": "https://staging.universalmind.tv/informatics/connect.html#downloads"
+  },
+  "productionModifiedByThisTask": false,
+  "productionMainBeforeRelease": "a2d6cb9b83340e841c9362cefd5d193aff63ee56",
+  "limitations": [
+    "Publication approval is not independent human clinical peer review.",
+    "Source access: 74 abstracts, 22 selected-methods records, 21 retained-full-text appraisals.",
+    "Missing filter attributes remain unspecified; collection assignment is not a clinical efficacy claim."
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "processAudioMuted": true,
+  "answers": [
+    {
+      "question": "For the newly approved Domestic & Family Violence collection, state the number in Sound, Vision and Language and the numbers of randomized trial reports, reviews and other studies. Does publication approval mean clinical peer review? Was your model fine-tuned or is this a retrieval knowledge update?",
+      "http": 200,
+      "answer": "The newly approved **Domestic & Family Violence release contains 117 publications**, approved on 1 November 2026. [S1]\n\n**By collection**\n- Sound: **8**\n- Vision: **10**\n- Language: **99**. [S1]\n\n**By study category**\n- Randomized controlled trial reports: **51**\n- Reviews or meta-analyses: **25**\n- Other studies: **41**. [S1]\n\nThese are **publication counts**, not counts of independent trials or participants. Sound, Vision and Language classify approaches; those labels do not establish efficacy. [S1]\n\n**Does publication approval mean clinical peer review?** No. The summaries are AI-assessed and human-approved for publication. That approval does not constitute professional clinical peer review or endorsement of treatment recommendations; it is distinct from any journal peer review of the underlying papers. [S1][S2]\n\n**Was the model fine-tuned?** No. This is a **versioned retrieval knowledge update**: I retrieve the approved summaries from the research library rather than having model weights fine-tuned on this release. [S1]",
+      "sources": [
+        {
+          "label": "S1",
+          "id": "approved-domestic-violence-20261101",
+          "passageId": null,
+          "title": "Domestic & Family Violence · approved research summaries",
+          "authors": "",
+          "url": "https://staging.universalmind.tv/informatics/library.html?collection=language&chapter=5#topic-domestic-family-violence",
+          "section": "Library record",
+          "kind": "approved-research-guide",
+          "text": "{\"id\":\"approved-domestic-violence-20261101\",\"title\":\"Domestic & Family Violence · approved research summaries\",\"version\":\"audit-16f8e1d36d3f40c4\",\"approvedAt\":\"2026-11-01\",\"overview\":\"This approved research collection contains 117 publications: 51 randomized controlled trial reports, 25 reviews or meta-analyses, and 41 other studies. These are publication counts, not independent trials or participants. Selected approaches include 10 EMDR publications, 9 on mindfulness or meditation, and 8 on music-based approaches; these groups overlap and do not cover every approach.\",\"limitations\":\"AI assessed; human approved for publication. These are research summaries, not personal treatment recommendations. Evidence was assessed from 74 abstracts, 22 selected-methods sources and 21 retained full-text appraisals. No double-blind trial is verified. Benefits, null results, harms-reporting gaps and population limits remain attached to each paper.\",\"counts\":{\"publications\":117,\"new\":115,\"updates\":2,\"rctReports\":51,\"reviews\":25,\"other\":41,\"verifiedDoubleBlind\":0,\"collections\":{\"sound\":8,\"vision\":10,\"language\":99}},\"approaches\":[{\"id\":\"emdr\",\"label\":\"EMDR\",\"count\":10},{\"id\":\"mindfulness\",\"label\":\"Mindfulness or meditation\",\"count\":9},{\"id\":\"music\",\"label\":\"Music-based approaches\",\"count\":8}],\"chapters\":{\"sound\":\"https://staging.universalmind.tv/informatics/library.html?collection=sound&chapter=7#topic-domestic-family-violence\",\"vision\":\"https://staging.universalmind.tv/informatics/library.html?collection=vision&chapter=7#topic-domestic-family-violence\",\"language\":\"https://staging.universalmind.tv/informatics/library.html?collection=language&chapter=5#topic-domestic-family-violence\"},\"matchedRecords\":117,\"offset\":0,\"nextOffset\":4,\"knowledgeMethod\":\"Versioned retrieval of human-approved AI-assessed summaries; no model fine-tuning. Source access is appraisal access, not a promise of indexed article full text.\"}",
+          "doi": null,
+          "rights": null,
+          "sha256": null,
+          "retrievalLabel": "S1"
+        },
+        {
+          "label": "S2",
+          "id": "dv-adult-therapy-42326745",
+          "passageId": null,
+          "title": "A Psychosocial Intervention to Enhance Psychological Empowerment Among Women Survivors of Intimate Partner Violence: A Randomized Controlled Trial.",
+          "authors": "Khodadadi M; Hajihasani M; Kaveh M",
+          "journal": "International journal of women's health",
+          "year": 2026,
+          "url": "https://doi.org/10.2147/ijwh.s601216",
+          "section": "Library record",
+          "kind": "approved-record",
+          "text": "Post-treatment psychological empowerment favored the intervention. An unchanged intervention-arm follow-up score alone does not establish comparative durability.",
+          "doi": "10.2147/ijwh.s601216",
+          "rights": null,
+          "sha256": null,
+          "retrievalLabel": "S2"
+        }
+      ],
+      "model": "gpt-6-astra",
+      "version": "research-20261026-daytab-v1",
+      "usage": {
+        "totalTokens": 20510
+      },
+      "retrieval": {
+        "required": true,
+        "sourceCount": 5,
+        "contextMessages": 0,
+        "previousReferences": 0
+      },
+      "visible": "For the newly approved Domestic & Family Violence collection, state the number in Sound, Vision and Language and the numbers of randomized trial reports, reviews and other studies. Does publication approval mean clinical peer review? Was your model fine-tuned or is this a retrieval knowledge update?"
+    },
+    {
+      "question": "Check the approved records for PMID 41024298 and PMID 26613288. Is the mindfulness study actually randomized despite its title? What does Strength at Home show about later physical recidivism and its uncertainty? Cite the records and state source-access limits.",
+      "http": 200,
+      "answer": "### Mindfulness — PMID 41024298\n**No: the approved record classifies this as a single-arm, nonrandomized pre/post study**, despite “a randomized clinical trial” in its title. The methods and limitations identify **no control group and no treatment randomization**; clinic sampling is not random assignment to treatment. [S1]\n\nForty pregnant women exposed to domestic violence enrolled, and two were excluded for nonadherence. Mean Beck Anxiety Inventory scores decreased from **13.63 to 8.08 after treatment and 7.42 at four weeks** (p<.001). These are uncontrolled within-group changes—not evidence that mindfulness caused the improvement. Natural change, concurrent care and regression to the mean remain alternative explanations. [S1]\n\n### Strength at Home Men — PMID 26613288\n**This study was randomized**, with random-number allocation verified in the approved record. It compared Strength at Home Men with enhanced treatment as usual, including service referrals, in 135 male veterans/service members. [S2]\n\nThe physical-recidivism findings differ by time:\n- **Immediately post-treatment:** 23.3% with Strength at Home versus 43.3% with enhanced usual care; **p=.02**. [S2]\n- **Three months after treatment**, approximately six months from baseline: 18.5% versus 26.7%; **p=.30**. The later numerical advantage is **inconclusive**, not a demonstrated sustained reduction and not proof of equivalence. [S2]\n\nA separate final-follow-up physical-IPV comparison gave **Hedges g=0.002, 95% CI −0.36 to 0.37**. This is not a confidence interval for the recidivism percentages; it is a separate analysis whose interval includes no difference and effects in either direction. Modeled physical and psychological IPV trajectories across assessments favored the programme, but those findings do not establish a significant later recidivism difference. [S2]\n\n### Source-access and evidence limits\n- **Mindfulness:** the approved assessment records **full-text** access. Short follow-up, self-report and the uncontrolled design limit causal interpretation; adverse-event reporting was not established. [S1]\n- **Strength at Home:** access is recorded as **selected-methods**, drawing on the article, abstract and trial registry—not a comprehensive full-text risk-of-bias appraisal. Final assessments covered **45/67 versus 58/68** participants, creating differential-loss concerns; partner information was incomplete. Allocation concealment remains unclear, and registry-reported assessor masking is not explicitly confirmed in the paper. No formal RoB2 appraisal was completed. [S2]",
+      "sources": [
+        {
+          "label": "S1",
+          "id": "dv-mindbody-41024298",
+          "passageId": null,
+          "title": "The effect of mindfulness group counseling on the anxiety of pregnant women exposed to domestic violence: a randomized clinical trial.",
+          "authors": "Azam Khoshbin; Naiersadat Tahery; Pouran Nekoueian; Hamid Nasiri; Mahshid Bokaie",
+          "journal": "BMC psychology",
+          "year": 2025,
+          "url": "https://doi.org/10.1186/s40359-025-03358-9",
+          "section": "Library record",
+          "kind": "approved-record",
+          "text": "Uncontrolled anxiety improvement; the title incorrectly implies an RCT.",
+          "doi": "10.1186/s40359-025-03358-9",
+          "rights": null,
+          "sha256": null,
+          "retrievalLabel": "S15"
+        },
+        {
+          "label": "S2",
+          "id": "dv-reviews-26613288",
+          "passageId": null,
+          "title": "A Randomized Controlled Clinical Trial of the Strength at Home Men's Program for Partner Violence in Military Veterans.",
+          "authors": "Taft CT; Macdonald A; Creech SK; Monson CM; Murphy CM",
+          "journal": "The Journal of clinical psychiatry",
+          "year": 2016,
+          "url": "https://doi.org/10.4088/jcp.15m10020",
+          "section": "Library record",
+          "kind": "approved-record",
+          "text": "Modeled physical and psychological IPV trajectories favored SAH-M. Immediate post-treatment benefit was clearer; the later physical-recidivism comparison was not statistically significant.",
+          "doi": "10.4088/jcp.15m10020",
+          "rights": null,
+          "sha256": null,
+          "retrievalLabel": "S1"
+        }
+      ],
+      "model": "gpt-6-astra",
+      "version": "research-20261026-daytab-v1",
+      "usage": {
+        "totalTokens": 56307
+      },
+      "retrieval": {
+        "required": true,
+        "sourceCount": 15,
+        "contextMessages": 2,
+        "previousReferences": 2
+      },
+      "visible": "The newly approved Domestic & Family Violence release contains 117 publications, approved on 1 November 2026. [1]\n\nBy collection\n- Sound: 8\n- Vision: 10\n- Language: 99. [1]\n\nBy study category\n- Randomized controlled trial reports: 51\n- Reviews or meta-analyses: 25\n- Other studies: 41. [1]\n\nThese are publication counts, not counts of independent trials or participants. Sound, Vision and Language classify approaches; those labels do not establish efficacy. [1]\n\nDoes publication approval mean clinical peer review? No. The summaries are AI-assessed and human-approved for publication. That approval does not constitute professional clinical peer review or endorsement of treatment recommendations; it is distinct from any journal peer review of the underlying papers. [1][2]\n\nWas the model fine-tuned? No. This is a versioned retrieval knowledge update: I retrieve the approved summaries from the research library rather than having model weights fine-tuned on this release. [1]"
+    }
+  ],
+  "errors": [],
+  "passed": true,
+  "knowledgeMethod": "Versioned retrieval of 117 approved summaries; no model fine-tuning or shared database mutation"
+}
