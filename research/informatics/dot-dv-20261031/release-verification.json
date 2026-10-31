@@ -1,0 +1,50 @@
+{
+  "verifiedAt": "2026-10-31T05:26:22.140061+00:00",
+  "sourceCommit": "f0f9791fb21fef66ab8283ff920b2a6c492d78f3",
+  "baselineStaging": "26ca796910c25c21f98d01b74f614a57f21ec60f",
+  "batchRevision": "audit-16f8e1d36d3f40c4",
+  "stagingURL": "https://staging.universalmind.tv/informatics/review/domestic-violence-20261031/",
+  "assessed": 130,
+  "recommendedSummaries": 117,
+  "newRecommended": 115,
+  "existingEntryUpdates": 2,
+  "withheld": 13,
+  "unresolvedMethodOrReportingHolds": 10,
+  "unverifiedSourceClaimHold": 1,
+  "greyLiteratureExcluded": 2,
+  "designs": {
+    "randomizedReports": 51,
+    "reviews": 25,
+    "other": 41,
+    "doubleBlindVerified": 0
+  },
+  "recommendedSourceAccess": {
+    "abstract": 74,
+    "selected-methods": 22,
+    "full-text": 21
+  },
+  "deploymentMethod": "Existing deploy-panthur-staging.sh informatics / Panthur FTP",
+  "changedAssetsUploaded": 6,
+  "matchingLiveAssetHashes": 10,
+  "frozenAssessmentHashesPreserved": 120,
+  "configuredSourcePreflightChecks": 34,
+  "browserWidths": [
+    1440,
+    390,
+    320
+  ],
+  "mutedHeadlessBrowser": true,
+  "filtersAnd117SummaryDownloadsVerified": true,
+  "approvedExportVersion": "ed2ddfc37923c144629fa75c53352e8664ca164b9e8cb051a7a093a0aa5ec86c",
+  "approvedInputsUnchanged": true,
+  "productionMainBefore": "4900e9e0a33a85c154104b25ec09586a03216675",
+  "productionModified": false,
+  "newChaptersCreated": false,
+  "humanPaperApprovalRecorded": false,
+  "extraSpendAUD": 0,
+  "recoveryNotes": [
+    "First deployment attempt stopped in source preflight before uploading; exact missing tracked fixtures were restored in the isolated sparse worktree. Required external Mugler fixture was downloaded from existing staging and matched the hard-coded SHA-256. All configured checks then passed.",
+    "Raw Python HTTP requests received a server-generated response and HTTP406. Canonical URLs fetched by the functioning normal Chromium session matched all ten expected hashes. No redeployment was needed for this verification-client issue."
+  ],
+  "remainingDependency": "Release approval for the exact recommended content set, followed by approved-library integration and normal staging/production release workflow. No paper-by-paper assessment is assigned back to Ben."
+}

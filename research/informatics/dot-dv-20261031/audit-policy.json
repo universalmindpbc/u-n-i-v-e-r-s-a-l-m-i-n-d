@@ -1,0 +1,238 @@
+{
+  "schema": "universal-research/editorial-audit-policy/v1",
+  "completedAt": "2026-10-31T05:11:05.655793+00:00",
+  "baselineCommit": "26ca796910c25c21f98d01b74f614a57f21ec60f",
+  "frozenSHA256": "afd810cdaefa6be0eeed16490fbc9b0f3a580837ea5f8994f64aa5ca9373f3c8",
+  "method": "AI editorial assessment of all 130 publication records: compare identity, headline finding, design, relevance and limitations with indexed abstracts or available primary material; adjudicate retained source-supported methods amendments. This is a source-limited publication audit, not an independent full-text systematic review or a clinical guideline.",
+  "limitations": [
+    "Abstract-only records do not establish allocation concealment, complete harms reporting or full risk of bias.",
+    "No formal independent RoB 2, GRADE appraisal or numerical reconstruction of every effect was performed.",
+    "Source-access labels describe retained appraisal evidence; fuller prior appraisals were checked through their source ledgers and selected material, not independently repeated in full.",
+    "Publication counts are not independent trial or participant counts; cohort links and overlapping review evidence remain provisional.",
+    "A randomized design cross does not indicate benefit, low risk of bias or human approval. No double-blind trial is verified in this release.",
+    "No professional clinical peer review is claimed. Recommended content is limited to accurately qualified research summaries."
+  ],
+  "withheld": {
+    "dv-reviews-31548680": {
+      "status": "hold",
+      "reason": "A legitimately accessible correction body, DOI 10.1038/s41562-019-0764-6, is needed before approval."
+    },
+    "dv-adult-therapy-30481183": {
+      "status": "hold",
+      "reason": "A primary correction or event-adjudication clarification is needed. No author contact is authorized or planned."
+    },
+    "dv-adult-therapy-30079583": {
+      "status": "hold",
+      "reason": "A legitimately available full paper/flow diagram or primary registry update must reconcile enrolment and role-specific masking."
+    },
+    "dv-adult-therapy-30344863": {
+      "status": "hold",
+      "reason": "Contemporaneous allocation methods or a usable primary registration record are required; the attempted WHO route was inaccessible."
+    },
+    "dv-adult-therapy-40425169": {
+      "status": "hold",
+      "reason": "N=30, no active comparator or follow-up, researcher both therapist and assessor, and substantial baseline forgiveness imbalance. Gain-score tables conflict with reported pre/post means."
+    },
+    "dv-reviews-cont-36909881": {
+      "status": "hold",
+      "reason": "Fixed-effect pooling despite heterogeneity, post hoc outlier exclusions, limited study counts, mostly self-reported outcomes and inconsistent numerical reporting. Quantitative efficacy conclusions are withheld."
+    },
+    "dv-children-25596929": {
+      "status": "hold",
+      "reason": "A contemporaneous protocol or allocation schedule must establish the random mechanism and reconcile five-family blocks here with six-family blocks in the follow-up. Do not approve the frozen revision meanwhile."
+    },
+    "dv-children-35285428": {
+      "status": "hold",
+      "reason": "Reconcile the original allocation procedure, five-versus-six block descriptions and crossover analysis before approval of a new revision."
+    },
+    "dv-reviews-27599224": {
+      "status": "hold",
+      "reason": "Hold the frozen revision pending sample/registry reconciliation and a qualified replacement finding. Pilot inclusion is an unverified hypothesis, not an explanation."
+    },
+    "dv-reviews-35185725": {
+      "status": "hold",
+      "reason": "The safety confidence interval differs between abstract and body, and unusually large standardized anxiety/stress effects remain unreconstructed. Withhold from this first public release until numerical interpretation is independently reconciled; this is not a retraction or a claim that every finding is wrong."
+    },
+    "dv-sound-61889e897b46": {
+      "status": "hold",
+      "reason": "Publisher and university search records corroborate identity, but this audit could not independently recover the underlying abstract/full text to verify the substantive finding. Journal PDF retrieval timed out and repository access failed. Retain as discovery evidence; do not publish its benefit summary yet."
+    },
+    "dv-sound-849dafa52c8c": {
+      "status": "grey-literature",
+      "reason": "University master’s thesis, not a peer-reviewed journal article. Retained in the evidence map but excluded from the first journal-publication release; this is not a finding of misconduct or invalidity."
+    },
+    "dv-sound-99de3f3bbdea": {
+      "status": "grey-literature",
+      "reason": "University master’s thesis, not a peer-reviewed journal article. Retained in the evidence map but excluded from the first journal-publication release; this is not a finding of misconduct or invalidity."
+    }
+  },
+  "patches": {
+    "dv-children-20712147": {
+      "finding": "Child behavior problems and caregivers’ psychological distress decreased during PCIT in both exposure groups. The separate parental-distress measure did not significantly decrease. Improvement did not differ significantly by IPV exposure.",
+      "limitation": "Both groups received PCIT and there was no randomized treatment or untreated comparison. Changes cannot be attributed causally to PCIT; psychological distress and parental distress are distinct measures.",
+      "outcomes": [
+        {
+          "name": "Child behavior problems and caregiver psychological distress",
+          "followUp": "Treatment period",
+          "result": "Pre/post improvement in both IPV-exposed and nonexposed groups; no significant exposure-group difference.",
+          "effectEstimate": null,
+          "uncertainty": "No untreated comparison; effects cannot establish treatment causality.",
+          "primaryStatus": "Not established from accessed abstract."
+        },
+        {
+          "name": "Parental distress (separate measure)",
+          "followUp": "Treatment period",
+          "result": "No significant decrease.",
+          "effectEstimate": null,
+          "uncertainty": "Do not conflate this measure with caregiver psychological distress.",
+          "primaryStatus": "Not established from accessed abstract."
+        }
+      ],
+      "quality.riskOfBias": "Nonrandomized exposure groups; all received PCIT. No untreated comparison and incomplete source access limit causal interpretation."
+    },
+    "dv-children-25596929": {
+      "design.randomizationEvidence": "Original2015 Study Protocol describes the first five eligible families at each setting assigned intervention, then the next five comparison, with the same schedule across agencies. Authors nevertheless call the assignment random. No stochastic sequence or starting-order mechanism is described in the accessed protocol. Keep the provisional randomization-unverified hold; do not assert that an unreported random mechanism was impossible.",
+      "design.crosses": 0,
+      "design.crossRationale": "Randomization remains unverified after inspecting the original sequential allocation description. No verified-RCT cross pending reconciliation; this is not a definitive nonrandomized verdict.",
+      "access.level": "selected-methods",
+      "access.sourceURLs": [
+        "https://pubmed.ncbi.nlm.nih.gov/25596929/",
+        "https://www.researchgate.net/publication/271220066_An_Efficacy_Trial_of_an_Intervention_Program_for_Children_Exposed_to_Intimate_Partner_Violence"
+      ],
+      "sampleSize.randomized": null,
+      "sampleSize.description": "120 allocated: 58 intervention and 62 comparison. Allocation mechanism remains unresolved. Visit-specific analyses: 50/49 at Time 2 and 36/35 at Time 3; model denominators not independently established.",
+      "quality.attrition": "Original figure/narrative: 51 received intervention and 7 did not. Comparator unreachable count is 8 in narrative versus 9 in Figure 1. Do not substitute the earlier misread proposal of 8 intervention nonrecipients.",
+      "limitation": "Original methods describe sequential five-family groups; the follow-up describes six-family groups. A stochastic allocation mechanism is not established. Findings depend on sex and analysis; complete-case findings do not replace the qualified ITT result.",
+      "sources": [
+        {
+          "url": "https://pubmed.ncbi.nlm.nih.gov/25596929/",
+          "type": "PubMed XML bibliographic/abstract record",
+          "retrievedAt": "2026-10-30T07:25:30.543090+00:00",
+          "identityVerified": true,
+          "notes": "Title and PMID matched between Europe PMC core metadata and PubMed XML; DOI, authors and journal metadata retained."
+        },
+        {
+          "url": "https://europepmc.org/article/MED/25596929",
+          "type": "Europe PMC core bibliographic/abstract record",
+          "retrievedAt": "2026-10-30T07:25:30.543090+00:00",
+          "identityVerified": true,
+          "notes": "Title and PMID matched between Europe PMC core metadata and PubMed XML; DOI, authors and journal metadata retained."
+        },
+        {
+          "url": "https://www.researchgate.net/publication/271220066_An_Efficacy_Trial_of_an_Intervention_Program_for_Children_Exposed_to_Intimate_Partner_Violence",
+          "type": "Coauthor-deposited original article",
+          "retrievedAt": "2026-10-30T09:10:17.128008+00:00",
+          "identityVerified": true,
+          "notes": "Study Protocol allocation description; original flow-chart discrepancy preserved."
+        }
+      ]
+    },
+    "dv-children-35285428": {
+      "sampleSize.randomized": null
+    },
+    "dv-reviews-27599224": {
+      "finding": "The paper reports lower overall physical-IPV risk with Strength at Home Couples. At the final visit, the male estimate was inconclusive (RR 0.53, 95% CI 0.25–1.12), while the female estimate favored treatment (RR 0.43, 0.20–0.94).",
+      "limitation": "Published flow reports 69 couples (138 people), versus 156 participants in the registry; the difference remains unresolved. This selected prevention sample excluded recent male physical violence and does not establish safety for ongoing high-danger violence.",
+      "sampleSize": {
+        "randomized": 69,
+        "analyzed": 69,
+        "unit": "couples",
+        "description": "138 people / 69 couples randomized (37 versus 32 couples); all couples included in ITT. Registry actual enrollment 156 people remains unreconciled; ITT inclusion does not imply complete follow-up."
+      },
+      "design.randomizationEvidence": "Published methods describe cohort allocation by a biostatistician; randomized trial classification retained.",
+      "design.masking.assessors": "Published paper explicitly reports assessor masking.",
+      "design.masking.participants": "Participant masking is not verified from the published implementation; registry DOUBLE label alone is insufficient.",
+      "quality.transferLimits": "Selected military/veteran couples prevention population; recent male physical violence and additional serious violence/safety concerns were excluded. No broad high-danger couples therapy recommendation.",
+      "access.level": "selected-methods",
+      "access.sourceURLs": [
+        "https://pubmed.ncbi.nlm.nih.gov/27599224/",
+        "https://www.ptsd.va.gov/professional/articles/article-pdf/id45454.pdf",
+        "https://clinicaltrials.gov/study/NCT00827879"
+      ],
+      "assessmentNotes": "Primary paper recovered from the US Department of Veterans Affairs. Methods/results and Figure 1/Table 3 checked. One cross retained; enrollment discrepancy still prevents publication recommendation.",
+      "outcomes": [
+        {
+          "name": "Final-visit physical IPV",
+          "followUp": "Final follow-up (T4)",
+          "result": "Male comparison inconclusive; female comparison favored treatment.",
+          "effectEstimate": "Male RR 0.53; female RR 0.43",
+          "uncertainty": "95% CIs 0.25–1.12 and 0.20–0.94 respectively.",
+          "primaryStatus": "Physical IPV domain; precise prospective status not verified."
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://europepmc.org/article/MED/27599224",
+          "type": "Europe PMC indexed publication metadata and abstract",
+          "retrievedAt": "2026-10-30T07:25:20.171273+00:00",
+          "identityVerified": true,
+          "notes": "PMID, DOI, title, journal and authors reconciled within the indexed source; full-text appraisal not claimed."
+        },
+        {
+          "url": "https://api.crossref.org/works/10.1037%2Fccp0000129",
+          "type": "Crossref publisher-deposited bibliographic metadata",
+          "retrievedAt": "2026-10-30T07:26:07.169721+00:00",
+          "identityVerified": true,
+          "notes": "DOI and normalized title match the Europe PMC record. Bibliographic verification only; not a full-text review."
+        },
+        {
+          "url": "https://www.ptsd.va.gov/professional/articles/article-pdf/id45454.pdf",
+          "type": "Primary published paper hosted by US Department of Veterans Affairs",
+          "retrievedAt": "2026-10-30T09:10:17.128008+00:00",
+          "identityVerified": true,
+          "notes": "Printed pp.937–938 and942; Figure1 and Table3; selected methods/results and visual checks."
+        }
+      ]
+    }
+  },
+  "approachGroups": [
+    {
+      "id": "emdr",
+      "label": "EMDR",
+      "basis": "Explicit EMDR intervention or comparison in the publication title or intervention family. Includes related childhood-trauma populations; directness remains record-specific.",
+      "recordIds": [
+        "dv-vision-42529059",
+        "dv-vision-38868491",
+        "dv-vision-38629403",
+        "dv-vision-426ce6386119",
+        "dv-children-31114620",
+        "dv-vision-d1f88a25c475",
+        "dv-vision-da3bfad76f98",
+        "dv-vision-2a09962793c2",
+        "dv-vision-d0356a161cd2",
+        "dv-vision-11036736"
+      ]
+    },
+    {
+      "id": "mindfulness",
+      "label": "Mindfulness or meditation",
+      "basis": "Explicit mindfulness, meditation or MBCT focus in the title or intervention family, including a reported mindfulness component. Yoga alone is not counted as mindfulness.",
+      "recordIds": [
+        "dv-mindbody-39135298",
+        "dv-mindbody-c6c616df1710",
+        "dv-mindbody-37400911",
+        "dv-mindbody-32969703",
+        "dv-mindbody-41024298",
+        "dv-mindbody-36232015",
+        "dv-mindbody-23561069",
+        "dv-mindbody-24043922",
+        "dv-mindbody-16617173"
+      ]
+    },
+    {
+      "id": "music",
+      "label": "Music-based approaches",
+      "basis": "Recommended Sound records concern music, music therapy, music listening, musical performance or songwriting. These are not all treatment-efficacy studies.",
+      "recordIds": [
+        "dv-sound-42298885",
+        "dv-sound-efa9f1420011",
+        "dv-sound-37107774",
+        "dv-sound-3c0015edd5fa",
+        "dv-sound-52ec6bcb53a0",
+        "dv-sound-24766169",
+        "dv-sound-1be40a54cbc1",
+        "dv-sound-15913391"
+      ]
+    }
+  ]
+}

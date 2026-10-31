@@ -1,0 +1,1724 @@
+{
+  "checkedAt": "2026-10-31T05:11:05.655793+00:00",
+  "freshMetadataSuccess": 129,
+  "freshMetadataFailure": 1,
+  "records": [
+    {
+      "id": "dv-adult-therapy-42326745",
+      "doi": "10.2147/ijwh.s601216",
+      "pmid": "42326745",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "1a422e206328e73a766f6c5d676e72253b84c44433c8bcfb053914833f895973",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:42326745%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.2147%2Fijwh.s601216"
+      ]
+    },
+    {
+      "id": "dv-mindbody-40552233",
+      "doi": "10.3389/fpubh.2025.1541169",
+      "pmid": "40552233",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "7417f690611d0a1cf2f267307dc44237155c6ea6acb0c6b718302d6712598bfa",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/40552233/",
+        "https://www.frontiersin.org/journals/public-health/articles/10.3389/fpubh.2025.1541169/full"
+      ]
+    },
+    {
+      "id": "dv-reviews-41045209",
+      "doi": "10.1177/08862605251372568",
+      "pmid": "41045209",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "ea101fa23e8ebbbedc778b786d3325ee9f66c85f0086749e6fba151c8c1f4651",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://europepmc.org/article/MED/41045209",
+        "https://api.crossref.org/works/10.1177%2F08862605251372568"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-40883805",
+      "doi": "10.1186/s40359-025-03352-1",
+      "pmid": "40883805",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "019520376e59f40f9be60fc953bdc46d7a83da875cfa3a1c1605d530b3a1cf8e",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:40883805%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1186%2Fs40359-025-03352-1"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-41065656",
+      "doi": "10.1177/08862605251372567",
+      "pmid": "41065656",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "31f92edecfcd81fba5665f831047009f5a4281b138c71d8ca6d19947266c556b",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:41065656%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1177%2F08862605251372567"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-39529598",
+      "doi": "10.1080/20008066.2024.2419699",
+      "pmid": "39529598",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "5935c5935153b0931eba19d981d8e1893cbffb2f57cae025af8a2d9ed01e29b4",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:39529598%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1080%2F20008066.2024.2419699",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11559032/fullTextXML"
+      ]
+    },
+    {
+      "id": "dv-reviews-38206858",
+      "doi": "10.1037/ccp0000863",
+      "pmid": "38206858",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "271e92f3b4b66dbca1b95920b1187fe502acc4a0f0a5aab54be0531bcd956d65",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://europepmc.org/article/MED/38206858",
+        "https://api.crossref.org/works/10.1037%2Fccp0000863"
+      ]
+    },
+    {
+      "id": "dv-reviews-38678198",
+      "doi": "10.1186/s12889-024-18640-5",
+      "pmid": "38678198",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "4bba52e4e265e4cff46a438160f539d54e0a8c4f8ea10a631bc59ab0ad33a3b9",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://europepmc.org/article/MED/38678198",
+        "https://api.crossref.org/works/10.1186%2Fs12889-024-18640-5",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC11055266/"
+      ]
+    },
+    {
+      "id": "dv-mindbody-39135298",
+      "doi": "10.1111/inm.13401",
+      "pmid": "39135298",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "af011748d928f5ba28fa0dba3417af6b573981b167bc9542e34aac3f45c67b25",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/39135298/",
+        "https://onlinelibrary.wiley.com/doi/full/10.1111/inm.13401",
+        "https://clinicaltrials.gov/study/NCT05310656"
+      ]
+    },
+    {
+      "id": "dv-mindbody-c6c616df1710",
+      "doi": "10.1007/s10896-023-00561-3",
+      "pmid": null,
+      "freshMetadata": "Crossref",
+      "metadataRetrieved": true,
+      "metadataSHA256": "ac73e8eb1afcf80479d163ff9199c5d72058d942afbaa29e17b128386846d831",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://doi.org/10.1007/s10896-023-00561-3",
+        "https://link.springer.com/article/10.1007/s10896-023-00561-3"
+      ]
+    },
+    {
+      "id": "dv-children-35285428",
+      "doi": "10.1017/s0954579422000104",
+      "pmid": "35285428",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "ccfdbd8392236fe3b7786b3c7618c7660b8f250a1b3d30a3330fefd565fa9399",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/35285428/",
+        "https://europepmc.org/article/MED/35285428"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-37889918",
+      "doi": "10.1371/journal.pgph.0002054",
+      "pmid": "37889918",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "eab456b0d5f24ba0913467792baae86ab5dfb34b0ae53f13bcf97012e783d4d0",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:37889918%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1371%2Fjournal.pgph.0002054"
+      ]
+    },
+    {
+      "id": "dv-reviews-37383647",
+      "doi": "10.5093/pi2023a4",
+      "pmid": "37383647",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "870a1c8fab9a56f3022a297637a9dae52c6da6573fc86540ca366add76b5c5a2",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://europepmc.org/article/MED/37383647",
+        "https://api.crossref.org/works/10.5093%2Fpi2023a4",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC10294462/"
+      ]
+    },
+    {
+      "id": "dv-mindbody-37400911",
+      "doi": "10.1186/s40814-023-01335-w",
+      "pmid": "37400911",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "206e4819753d14e98141358aab2ee6adb8f9e2d4adce971391e1b561a7151b35",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/37400911/",
+        "https://link.springer.com/article/10.1186/s40814-023-01335-w"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-33375899",
+      "doi": "10.1177/0886260520984265",
+      "pmid": "33375899",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "30e4344a04a134f59bf78cb466c66b667048b072386d9e60dbccc8eb77f85f96",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:33375899%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1177%2F0886260520984265"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-32933348",
+      "doi": "10.1177/0886260520958660",
+      "pmid": "32933348",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "52b74d02a2f4106674bd36d8ad404eb79d5890581cf9fd8830de496bc34f8b99",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:32933348%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1177%2F0886260520958660"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-32993831",
+      "doi": "10.1017/s1352465820000685",
+      "pmid": "32993831",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "3cd759f0b06049d3038b781eeb795e6c704b35395edce7e18ca7d96cdbe2995c",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:32993831%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1017%2Fs1352465820000685"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-34143803",
+      "doi": "10.1371/journal.pone.0252982",
+      "pmid": "34143803",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "abbdeeb3a4c53df1872ebdffa257b3603c7ce2c2a3a80a11e383ee2d9e34369d",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:34143803%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1371%2Fjournal.pone.0252982"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-34584851",
+      "doi": "10.1016/j.invent.2021.100453",
+      "pmid": "34584851",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "02f71fbfea21d6ab8a1a11e5af542b860f07627d6a750b9f138546a3bce4c101",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:34584851%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1016%2Fj.invent.2021.100453",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC8452796/"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-34305273",
+      "doi": "10.1177/0361684320953120",
+      "pmid": "34305273",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "9ccd3e4a3e32e03627ab57e205aa8000b4efcf24722f1cb003403024e0b2cf9e",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:34305273%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1177%2F0361684320953120"
+      ]
+    },
+    {
+      "id": "dv-mindbody-32969703",
+      "doi": "10.1037/tra0000975",
+      "pmid": "32969703",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "9c241006b5d2d3784ca0afec4ad83b28a31f59b1148ea928c19678667ab6dab8",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/32969703/"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-33303427",
+      "doi": "10.1136/bmjopen-2019-034295",
+      "pmid": "33303427",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "007e7cfe978cdbdb89ad9018116ab99526a8a1e425157eb626cf11ed6e4790e3",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:33303427%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1136%2Fbmjopen-2019-034295"
+      ]
+    },
+    {
+      "id": "dv-reviews-31548680",
+      "doi": "10.1038/s41562-019-0724-1",
+      "pmid": "31548680",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "c9457b4c848688b8f670fc59fe7b46c9517f2f071f00173fab40dba3b8ced27b",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://europepmc.org/article/MED/31548680",
+        "https://api.crossref.org/works/10.1038%2Fs41562-019-0724-1",
+        "https://www.nature.com/articles/s41562-019-0764-6"
+      ]
+    },
+    {
+      "id": "dv-reviews-29648853",
+      "doi": "10.1037/ccp0000291",
+      "pmid": "29648853",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "0035f9c00d04fa7c8c54db57cedca93332f488e57cea086a2bf340ff5dd5ae53",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://europepmc.org/article/MED/29648853",
+        "https://api.crossref.org/works/10.1037%2Fccp0000291"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-30481183",
+      "doi": "10.1371/journal.pone.0205485",
+      "pmid": "30481183",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "76f2059d642c85425d96961c780d583e38be0e35322341df02a631b4b7d4f171",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:30481183%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1371%2Fjournal.pone.0205485",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC6258512/"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-30079583",
+      "doi": "10.1002/cpp.2318",
+      "pmid": "30079583",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "6a99e1894ffd53c8880037ae8ea8fffeed63218f3cb352ddcb8f48ea2eccd047",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:30079583%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1002%2Fcpp.2318",
+        "https://onlinelibrary.wiley.com/doi/abs/10.1002/cpp.2318",
+        "https://clinicaltrials.gov/api/v2/studies/NCT01731418"
+      ]
+    },
+    {
+      "id": "dv-reviews-26613288",
+      "doi": "10.4088/jcp.15m10020",
+      "pmid": "26613288",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "eea9f14d312a558f2d66b7f5e5ab4b7c6aa8e7fd3c713e94745eed4ad4db379f",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://europepmc.org/article/MED/26613288",
+        "https://api.crossref.org/works/10.4088%2Fjcp.15m10020"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-27459503",
+      "doi": "10.1002/jts.22117",
+      "pmid": "27459503",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "15fd6a2a921ed38169350c492e49135322a666b183a2cc02572e3a99b153c23f",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:27459503%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1002%2Fjts.22117",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC5012294/"
+      ]
+    },
+    {
+      "id": "dv-reviews-27599224",
+      "doi": "10.1037/ccp0000129",
+      "pmid": "27599224",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "86faf4f2405549a7865cbd1c29606e850b52aa63511554458a6387f281817c8d",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://europepmc.org/article/MED/27599224",
+        "https://api.crossref.org/works/10.1037%2Fccp0000129"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-26437311",
+      "doi": "10.20882/adicciones.703",
+      "pmid": "26437311",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "ddf765b5042fca26510545a9eac1d23e347169ccf44aac4c5c595ef4e0e13fd9",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:26437311%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.20882%2Fadicciones.703"
+      ]
+    },
+    {
+      "id": "dv-children-25596929",
+      "doi": "10.1007/s10578-015-0532-4",
+      "pmid": "25596929",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "ed91383973cb39d1e74648caa2248858670aa8f7f3610c11ae1bb1e12e0e67d4",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/25596929/",
+        "https://europepmc.org/article/MED/25596929"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-24252714",
+      "doi": "10.1016/j.annepidem.2013.10.006",
+      "pmid": "24252714",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "e73a2298b320d3bd60d0bc76a823c982d9cd4d1a9083da11753d01e76f569c3a",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:24252714%20AND%20SRC:MED&format=json&resultType=core"
+      ]
+    },
+    {
+      "id": "dv-children-23948313",
+      "doi": "10.1016/j.chiabu.2013.07.007",
+      "pmid": "23948313",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "2fae8b3d86dc767836717ba559e53a812cf6c3c93ee8aabaed7e6fe21fbb78c1",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/23948313/",
+        "https://europepmc.org/article/MED/23948313"
+      ]
+    },
+    {
+      "id": "dv-reviews-23414253",
+      "doi": "10.1111/add.12142",
+      "pmid": "23414253",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "d8d796bf8cc0873829e95df915fdb7fa6a2d85a4e825a30b357e45757bf83989",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://europepmc.org/article/MED/23414253",
+        "https://api.crossref.org/works/10.1111%2Fadd.12142"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-23598181",
+      "doi": "10.1016/s0140-6736(13)60052-5",
+      "pmid": "23598181",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "82ee1d0cc04a61284bae7eb331e6e04f967fb743766cd55ba53cd59524c94fc5",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:23598181%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1016%2Fs0140-6736%2813%2960052-5"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-21153559",
+      "doi": "10.1007/s00737-010-0195-x",
+      "pmid": "21153559",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "e3642cb56b2357a614a0a32564590202bbeaea478de780ad17edce3feccb4766",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:21153559%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1007%2Fs00737-010-0195-x"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-21787052",
+      "doi": "10.1037/a0023822",
+      "pmid": "21787052",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "486ac330d38024efdcf57474ff021d5cfa69b4f5215f1052237b6cfbb8a7f048",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:21787052%20AND%20SRC:MED&format=json&resultType=core",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC3144508/"
+      ]
+    },
+    {
+      "id": "dv-children-21199975",
+      "doi": "10.1001/archpediatrics.2010.247",
+      "pmid": "21199975",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "868059c5c5146e08e28449fc6b9163c62fbc0b2ed9c21aee91e03939ec2c70b4",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/21199975/",
+        "https://europepmc.org/article/MED/21199975",
+        "https://jamanetwork.com/journals/jamapediatrics/fullarticle/384142"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-20977033",
+      "doi": "10.1017/s113874160000250x",
+      "pmid": "20977033",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "2324b14edc56b6667fcd00666bc33145396dced421f6790586ff4e5f9613302c",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:20977033%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1017%2Fs113874160000250x"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-20658802",
+      "doi": "10.1037/a0019692",
+      "pmid": "20658802",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "bbe282af0710c93fe652ed9b2595bbf40d56fe7d4d1467da3b2838861c874763",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:20658802%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1037%2Fa0019692"
+      ]
+    },
+    {
+      "id": "dv-children-19634963",
+      "doi": "10.1037/a0015994",
+      "pmid": "19634963",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "1139a098cbf80682bd5a033b78da80c5104df9702b81ffaea2da1c1fe9e1f7e8",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/19634963/",
+        "https://europepmc.org/article/MED/19634963",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC6815933/"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-17022356",
+      "doi": "10.1891/0886-6708.21.5.657",
+      "pmid": "17022356",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "43ce85e5ad51280b575b9111c2fc055bc135b22ea7f1211f0dfde01917cb0eb6",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:17022356%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1891%2F0886-6708.21.5.657"
+      ]
+    },
+    {
+      "id": "dv-children-16865033",
+      "doi": "10.1097/01.chi.0000222784.03735.92",
+      "pmid": "16865033",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "86e75e34407b76418252f3b50ab8ca5ed0b02b12117233639fc62588fd4bac35",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/16865033/",
+        "https://europepmc.org/article/MED/16865033"
+      ]
+    },
+    {
+      "id": "dv-children-16569097",
+      "doi": "10.1037/0893-3200.20.1.127",
+      "pmid": "16569097",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "31b9abc0f92d0a2c456b7959faaabd648b139f865d718f373e47bb27b17ce105",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/16569097/",
+        "https://europepmc.org/article/MED/16569097"
+      ]
+    },
+    {
+      "id": "dv-mindbody-88e29294631c",
+      "doi": "10.17761/ijyt.16.1.d8qw1532m0121w35",
+      "pmid": null,
+      "freshMetadata": "Crossref",
+      "metadataRetrieved": true,
+      "metadataSHA256": "46708295f861c2199e82af5d5b3b781b8fbfaba843ba10c9397a5b03777691be",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://doi.org/10.17761/ijyt.16.1.d8qw1532m0121w35",
+        "https://ijyt.kglmeridian.com/view/journals/ijyt/16/1/article-p49.xml"
+      ]
+    },
+    {
+      "id": "dv-children-16292115",
+      "doi": "10.1097/01.chi.0000181047.59702.58",
+      "pmid": "16292115",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "ed728fc57f3657033ff17a5323e02cf4fb94da620b5590ff674aadd6cfe33ce1",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/16292115/",
+        "https://europepmc.org/article/MED/16292115",
+        "https://childparentpsychotherapy.com/wp-content/uploads/2016/11/lieberman-vanhorn-ghosh-2005.pdf"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-14756610",
+      "doi": "10.1037/0022-006x.72.1.3",
+      "pmid": "14756610",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "6c413e39c950cf7db4e46b8b9f09b4528f5f41da8170dab9302598c2047710ba",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:14756610%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1037%2F0022-006x.72.1.3"
+      ]
+    },
+    {
+      "id": "dv-children-11680554",
+      "doi": "10.1037//0022-006x.69.5.774",
+      "pmid": "11680554",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "81aa18f2e5dc8f2c0c0b309743d3c9a06ecc78eaff48e1789ac70c0b31b5cd4e",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/11680554/",
+        "https://europepmc.org/article/MED/11680554"
+      ]
+    },
+    {
+      "id": "dv-vision-42529059",
+      "doi": "10.3389/fpsyg.2026.1872104",
+      "pmid": "42529059",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "f57f9460d8b78aab429595ec73b0c944d01e041599d13bcf4874e6fccf840d63",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/42529059/",
+        "https://doi.org/10.3389/fpsyg.2026.1872104",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13416442/fullTextXML",
+        "https://api.crossref.org/works/10.3389%2Ffpsyg.2026.1872104"
+      ]
+    },
+    {
+      "id": "dv-vision-38868491",
+      "doi": "10.3389/fpsyt.2024.1360388",
+      "pmid": "38868491",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "0ab230c6d7989cea992c9137473fa6dda6b35a6e11422bee2e3ae017fb05aa32",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/38868491/",
+        "https://doi.org/10.3389/fpsyt.2024.1360388",
+        "https://www.frontiersin.org/journals/psychiatry/articles/10.3389/fpsyt.2024.1360388/full",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11167727/fullTextXML",
+        "https://api.crossref.org/works/10.3389%2Ffpsyt.2024.1360388"
+      ]
+    },
+    {
+      "id": "dv-vision-38629403",
+      "doi": "10.1080/20008066.2024.2332104",
+      "pmid": "38629403",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "87171061ff906111f2cb21ed324475b19a79c424dd53258c93f20d14482d90d7",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/38629403/",
+        "https://doi.org/10.1080/20008066.2024.2332104",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11025408/fullTextXML",
+        "https://api.crossref.org/works/10.1080%2F20008066.2024.2332104"
+      ]
+    },
+    {
+      "id": "dv-vision-426ce6386119",
+      "doi": "10.1192/bjo.2021.1057",
+      "pmid": null,
+      "freshMetadata": "Crossref",
+      "metadataRetrieved": true,
+      "metadataSHA256": "3c3637aae87fde6e7cce0b854f1baf52140832174ae75e90b3abe77dab60077e",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://doi.org/10.1192/bjo.2021.1057",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8612023/fullTextXML",
+        "https://api.crossref.org/works/10.1192%2Fbjo.2021.1057",
+        "https://link.springer.com/article/10.1186/s13063-018-2508-8"
+      ]
+    },
+    {
+      "id": "dv-children-31114620",
+      "doi": "10.18502/ijps.v14i1.425",
+      "pmid": "31114620",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "68d32f4a32e25b1ddaec9a6a6dc88e7187a6cc9834e133fd46dea9a2b804a953",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/31114620/",
+        "https://europepmc.org/article/MED/31114620",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC6505052/"
+      ]
+    },
+    {
+      "id": "dv-vision-d1f88a25c475",
+      "doi": "10.1093/swr/23.2.103",
+      "pmid": null,
+      "freshMetadata": "Crossref",
+      "metadataRetrieved": true,
+      "metadataSHA256": "2edc134a0177dfe98e19597087fd8c5608babbb8bcdfa3c2fb9daa50bfd995b9",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://doi.org/10.1093/swr/23.2.103",
+        "https://academic.oup.com/swr/article-abstract/23/2/103/1637508",
+        "https://api.crossref.org/works/10.1093%2Fswr%2F23.2.103"
+      ]
+    },
+    {
+      "id": "dv-reviews-37148270",
+      "doi": "10.1177/15248380231169481",
+      "pmid": "37148270",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "35b701d54b299d07e1fdfaaedfec1eec7864eb2224d9f7fb56f37caf915bfc26",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://europepmc.org/article/MED/37148270",
+        "https://api.crossref.org/works/10.1177%2F15248380231169481"
+      ]
+    },
+    {
+      "id": "dv-reviews-37937723",
+      "doi": "10.1177/15248380231206113",
+      "pmid": "37937723",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "22f6a61ca96b1007f0edf07b15dccf860b8408295e1b3471e6cc05624220fedc",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://europepmc.org/article/MED/37937723",
+        "https://api.crossref.org/works/10.1177%2F15248380231206113"
+      ]
+    },
+    {
+      "id": "dv-reviews-39180467",
+      "doi": "10.1177/15248380241270063",
+      "pmid": "39180467",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "c2061a0c38e01b6200a77000a69c2185208e6ecf80fd3ae213cf337a4c479799",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://europepmc.org/article/MED/39180467",
+        "https://api.crossref.org/works/10.1177%2F15248380241270063"
+      ]
+    },
+    {
+      "id": "dv-reviews-35793513",
+      "doi": "10.1177/15248380221111472",
+      "pmid": "35793513",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "6cefaa6af759464487889384f205c3849463f8e5ec80f35fa0e15bceaffeeb65",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://europepmc.org/article/MED/35793513",
+        "https://api.crossref.org/works/10.1177%2F15248380221111472"
+      ]
+    },
+    {
+      "id": "dv-reviews-35185725",
+      "doi": "10.3389/fpsyg.2022.793021",
+      "pmid": "35185725",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "251d738244b75963907a181b058790a4fa69f112e6455a48ff1efa671bd7cf11",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://europepmc.org/article/MED/35185725",
+        "https://api.crossref.org/works/10.3389%2Ffpsyg.2022.793021",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC8855937/"
+      ]
+    },
+    {
+      "id": "dv-reviews-31359840",
+      "doi": "10.1177/1524838019865927",
+      "pmid": "31359840",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "12ad1b5baa78475938c427034e83b902e1b8f0aa4d8b3ffdb2755e460563aa0e",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://europepmc.org/article/MED/31359840",
+        "https://api.crossref.org/works/10.1177%2F1524838019865927"
+      ]
+    },
+    {
+      "id": "dv-reviews-37133255",
+      "doi": "10.1002/cl2.1151",
+      "pmid": "37133255",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "854d2ac4bcece8f109edd032a206555458d740564cfe1827dfd7f0d4dae33aaf",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://europepmc.org/article/MED/37133255",
+        "https://api.crossref.org/works/10.1002%2Fcl2.1151"
+      ]
+    },
+    {
+      "id": "dv-reviews-31711372",
+      "doi": "10.1177/1524838019882357",
+      "pmid": "31711372",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "931320702fe9a533e0ab23cbacb97a95bc0481d0e2adf9dd8329458fcf919c89",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://europepmc.org/article/MED/31711372",
+        "https://api.crossref.org/works/10.1177%2F1524838019882357"
+      ]
+    },
+    {
+      "id": "dv-reviews-31623532",
+      "doi": "10.1177/1524838019881737",
+      "pmid": "31623532",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "d75b1b92d84589fe38a6718cff2c39f3ea2935a0eb0bcd4763ee5d6968c722ab",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://europepmc.org/article/MED/31623532",
+        "https://api.crossref.org/works/10.1177%2F1524838019881737"
+      ]
+    },
+    {
+      "id": "dv-reviews-33497921",
+      "doi": "10.1016/j.cpr.2021.101974",
+      "pmid": "33497921",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "b5f7850509631192729dc5e54a536b7dd121f2a03dd2db6a90ea3af4b1591bc6",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://europepmc.org/article/MED/33497921",
+        "https://api.crossref.org/works/10.1016%2Fj.cpr.2021.101974"
+      ]
+    },
+    {
+      "id": "dv-reviews-32584910",
+      "doi": "10.1371/journal.pone.0235177",
+      "pmid": "32584910",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "9b70dbfb237f1f0f0bc17ab1d42160ed087eacd51bce0dec9941ae70634125d5",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://europepmc.org/article/MED/32584910",
+        "https://api.crossref.org/works/10.1371%2Fjournal.pone.0235177"
+      ]
+    },
+    {
+      "id": "dv-reviews-33306030",
+      "doi": "10.2196/22361",
+      "pmid": "33306030",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "4d6ef9f39bd1a5449e53a29fcb5316c310293139237bbee4084970e04716baf0",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://europepmc.org/article/MED/33306030",
+        "https://api.crossref.org/works/10.2196%2F22361"
+      ]
+    },
+    {
+      "id": "dv-reviews-31981539",
+      "doi": "10.1016/s2215-0366(19)30510-3",
+      "pmid": "31981539",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "1435cb0d7843ff9dd77d3c97c35f435375209ac268b944c95b4339dc88e13212",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://europepmc.org/article/MED/31981539",
+        "https://api.crossref.org/works/10.1016%2Fs2215-0366%2819%2930510-3"
+      ]
+    },
+    {
+      "id": "dv-reviews-32608505",
+      "doi": "10.1002/14651858.cd013017.pub2",
+      "pmid": "32608505",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "13a912efcf082c3fccd4a9c9ff8685bf43482bfe4873a9c19e9b5221b376cc73",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://europepmc.org/article/MED/32608505",
+        "https://api.crossref.org/works/10.1002%2F14651858.cd013017.pub2"
+      ]
+    },
+    {
+      "id": "dv-reviews-32373328",
+      "doi": "10.7189/jogh.10.010409",
+      "pmid": "32373328",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "ccb2c47714751141cd45b8ffca5d983778951614af5d562ba53a4c0385f37ac8",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://europepmc.org/article/MED/32373328",
+        "https://api.crossref.org/works/10.7189%2Fjogh.10.010409"
+      ]
+    },
+    {
+      "id": "dv-reviews-30621661",
+      "doi": "10.1186/s12888-019-2010-1",
+      "pmid": "30621661",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "a0549dcefcfb64a8342819e173f7f4e3c36140b9aad47a10c490e2d0787ed9f9",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://europepmc.org/article/MED/30621661",
+        "https://api.crossref.org/works/10.1186%2Fs12888-019-2010-1"
+      ]
+    },
+    {
+      "id": "dv-reviews-31415863",
+      "doi": "10.1016/j.neubiorev.2019.08.006",
+      "pmid": "31415863",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "d7411156e1b5bb074ac2393fc7403990c48b713b99859c663fbb69be2711554c",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://europepmc.org/article/MED/31415863",
+        "https://api.crossref.org/works/10.1016%2Fj.neubiorev.2019.08.006"
+      ]
+    },
+    {
+      "id": "dv-reviews-26335794",
+      "doi": "10.1177/1524838015602736",
+      "pmid": "26335794",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "ae8dd9eb166e35964e4d1e7efcef778c28846d3b5c70c737215f0fa515c8ae25",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://europepmc.org/article/MED/26335794"
+      ]
+    },
+    {
+      "id": "dv-reviews-27377617",
+      "doi": "10.1111/jmft.12178",
+      "pmid": "27377617",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "e90964726ab8cf759d7e16a579f6b561c733884b352b510244ef12328124e2c9",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://europepmc.org/article/MED/27377617",
+        "https://api.crossref.org/works/10.1111%2Fjmft.12178"
+      ]
+    },
+    {
+      "id": "dv-reviews-25211469",
+      "doi": "10.3109/07853890.2014.941918",
+      "pmid": "25211469",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "ac4a7f95004abc73c7abdae0d8d72c88b0eb958a7ff6618a830ba97aa84f8e5e",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://europepmc.org/article/MED/25211469",
+        "https://api.crossref.org/works/10.3109%2F07853890.2014.941918"
+      ]
+    },
+    {
+      "id": "dv-reviews-17636823",
+      "doi": "10.1002/14651858.cd006048.pub2",
+      "pmid": "17636823",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "0e53335490f8d1f0ce6ba922f8eabbbeeaaac1e6ca409732f8f76f445196dc0a",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://europepmc.org/article/MED/17636823",
+        "https://api.crossref.org/works/10.1002%2F14651858.cd006048.pub2"
+      ]
+    },
+    {
+      "id": "dv-children-37750224",
+      "doi": "10.1177/10778012231203622",
+      "pmid": "37750224",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "82dd64bd9e6830a3983ea824800c023cef86578c0efe3e171ca25ccab18536f2",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/37750224/",
+        "https://europepmc.org/article/MED/37750224"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-40425196",
+      "doi": "10.1002/cpp.70092",
+      "pmid": "40425196",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "b5a1a1cefc5d96abcd0d2d526d6b718a0e55b09c08deb02ab2494efe301d4b87",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:40425196%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1002%2Fcpp.70092"
+      ]
+    },
+    {
+      "id": "dv-mindbody-41024298",
+      "doi": "10.1186/s40359-025-03358-9",
+      "pmid": "41024298",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "b6b87f0c24c710333efb71812e4cbbcc3ff3587a5afb582124d2f769a756ca19",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/41024298/",
+        "https://link.springer.com/article/10.1186/s40359-025-03358-9",
+        "https://link.springer.com/article/10.1186/s40359-025-03711-y"
+      ]
+    },
+    {
+      "id": "dv-children-40469793",
+      "doi": "10.1007/s40653-024-00681-y",
+      "pmid": "40469793",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "8e7e81ff26c058541ee10ae9cf33002a99b04b8786c22f94d72d4098fc610b1a",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/40469793/",
+        "https://europepmc.org/article/MED/40469793",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC12130420/"
+      ]
+    },
+    {
+      "id": "dv-mindbody-37743664",
+      "doi": "10.1177/10778012231203002",
+      "pmid": "37743664",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "9f930f41c344694f55a444e11729a30d6766898ef9b31c6255d215e527faa113",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/37743664/"
+      ]
+    },
+    {
+      "id": "dv-mindbody-37484072",
+      "doi": "10.3389/fpsyg.2023.1154385",
+      "pmid": "37484072",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "5c4fc9adb6111bd0c542488f58211288a8f910a3780d7236a78ecc840c335fd8",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/37484072/",
+        "https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2023.1154385/full"
+      ]
+    },
+    {
+      "id": "dv-children-32515292",
+      "doi": "10.1177/0886260520926316",
+      "pmid": "32515292",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "f65af660dc6489a7361da1502d013ed806c8520320448c588bd8bc6edbff83e2",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/32515292/",
+        "https://europepmc.org/article/MED/32515292"
+      ]
+    },
+    {
+      "id": "dv-mindbody-36232015",
+      "doi": "10.3390/ijerph191912714",
+      "pmid": "36232015",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "95aefc366db837c2cda32bd4fd372fa4071286bbb4494ce506a274bef0794029",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/36232015/"
+      ]
+    },
+    {
+      "id": "dv-children-32077730",
+      "doi": "10.1037/dev0000800",
+      "pmid": "32077730",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "1ecad0d8d233f8a087ba3c9f763bba048f9fb9d4ec539700041ec399e3c0e9ae",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/32077730/",
+        "https://europepmc.org/article/MED/32077730"
+      ]
+    },
+    {
+      "id": "dv-children-32650670",
+      "doi": "10.1177/1359104520931569",
+      "pmid": "32650670",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "9547ea6c98bedbabbd8d63acacb1d199e5be347e2400d16779102bbd322fb9b4",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/32650670/",
+        "https://europepmc.org/article/MED/32650670"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-31715628",
+      "doi": "10.1093/fampra/cmz067",
+      "pmid": "31715628",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "13ccbbfce0a8627235d8f759cd05f6c0ab2b406075281735645fa824b6b9bc32",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:31715628%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1093%2Ffampra%2Fcmz067"
+      ]
+    },
+    {
+      "id": "dv-children-32512265",
+      "doi": "10.1016/j.chiabu.2020.104564",
+      "pmid": "32512265",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "6fb3490536eaea58e9ab88ddc45f8e67045c4b9632d2bdcf5b71944b18389084",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/32512265/",
+        "https://europepmc.org/article/MED/32512265"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-31363925",
+      "doi": "10.1007/s00737-019-00992-2",
+      "pmid": "31363925",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "69bfc63f33b31a2a0e33ab8930fd9feb9137b0452034abb27fe326aab69d5230",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:31363925%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1007%2Fs00737-019-00992-2"
+      ]
+    },
+    {
+      "id": "dv-mindbody-b5f8ce1b573c",
+      "doi": "10.1037/scp0000177",
+      "pmid": null,
+      "freshMetadata": "Crossref",
+      "metadataRetrieved": true,
+      "metadataSHA256": "6a665839085d67644d4b511223d8f4009c06b26b450f061382fbda2162a2f185",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://doi.org/10.1037/scp0000177",
+        "https://experts.umn.edu/en/publications/trauma-sensitive-yoga-as-an-adjunctive-mental-health-treatment-fo/"
+      ]
+    },
+    {
+      "id": "dv-children-27359091",
+      "doi": "10.1080/15374416.2016.1163706",
+      "pmid": "27359091",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "85d58fd165082c7b412927877e6db2b1762d3d008aaa727511ac9a75071f1d09",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/27359091/",
+        "https://europepmc.org/article/MED/27359091",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC6815933/"
+      ]
+    },
+    {
+      "id": "dv-children-32318156",
+      "doi": "10.1007/s40653-016-0126-8",
+      "pmid": "32318156",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "a19829716f93907d9745735822e5e82d646b6b67d13f08b4bd0cc7fb5dc8158d",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/32318156/",
+        "https://europepmc.org/article/MED/32318156"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-30344863",
+      "doi": "10.11604/pamj.2018.30.79.14872",
+      "pmid": "30344863",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "a1c93a75a56efd1815d6823ab1b66311b7ab0317b24bce63a620a4d90c2ecdd9",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:30344863%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.11604%2Fpamj.2018.30.79.14872",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6191243/fullTextXML"
+      ]
+    },
+    {
+      "id": "dv-children-28503060",
+      "doi": "10.1007/s10826-016-0546-y",
+      "pmid": "28503060",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "d449084bbd7f7cbe4e6103186f58a1efcc9b1d23422e5d5af9a16df883b2aab2",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/28503060/",
+        "https://europepmc.org/article/MED/28503060"
+      ]
+    },
+    {
+      "id": "dv-children-25751123",
+      "doi": "10.1080/15374416.2015.1012720",
+      "pmid": "25751123",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "996f8fc0ba97c98385364ff97dd4f6f1c6ceeb0775a00de49029000b682a3ac5",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/25751123/",
+        "https://europepmc.org/article/MED/25751123"
+      ]
+    },
+    {
+      "id": "dv-children-25410886",
+      "doi": "10.1177/1359104514558432",
+      "pmid": "25410886",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "bcc5acbea11f7be23c8e79dacb103130187becffe12be37562b0c8ba6b0e5dc9",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/25410886/",
+        "https://europepmc.org/article/MED/25410886"
+      ]
+    },
+    {
+      "id": "dv-mindbody-25129883",
+      "doi": "10.1016/j.ctcp.2014.04.003",
+      "pmid": "25129883",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "0436a82b34e76471f7d9c26a02f6391ef4673478d4e3ac8acabb9d6677485ac8",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/25129883/"
+      ]
+    },
+    {
+      "id": "dv-mindbody-23561069",
+      "doi": "10.1016/j.ctcp.2013.02.004",
+      "pmid": "23561069",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "c7d082db2244aed962708eebd2ff0a8d5b69b34d04a66d294e110e3352863000",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/23561069/"
+      ]
+    },
+    {
+      "id": "dv-mindbody-24043922",
+      "doi": "10.1016/j.cbpra.2011.08.003",
+      "pmid": "24043922",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "cd5eb8b73a5910bcfc5a34920d69bf2eebd61662f1e62bc5df5ba36889536bfa",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/24043922/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC3772725/"
+      ]
+    },
+    {
+      "id": "dv-children-20587468",
+      "doi": "10.1177/0886260510372931",
+      "pmid": "20587468",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "c285e278a03188357e954de32d2cbdd020b516622932179c2385c889c8350e3a",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/20587468/",
+        "https://europepmc.org/article/MED/20587468"
+      ]
+    },
+    {
+      "id": "dv-children-21816474",
+      "doi": "10.1016/j.chiabu.2011.03.009",
+      "pmid": "21816474",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "e5f4e18cdf43a21173724f7caf9dfd53c1b2cf42631d02cd006f3422431fe624",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/21816474/",
+        "https://europepmc.org/article/MED/21816474"
+      ]
+    },
+    {
+      "id": "dv-children-20712147",
+      "doi": "10.1891/0886-6708.25.4.486",
+      "pmid": "20712147",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "9a45b5ab95a984f9ab970810a81298a7a2b43bd399c939fd745681454c1c1513",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/20712147/",
+        "https://europepmc.org/article/MED/20712147"
+      ]
+    },
+    {
+      "id": "dv-children-17469878",
+      "doi": "10.1037/0022-006x.75.2.199",
+      "pmid": "17469878",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "aff2a8a97ea6033d911a55cef9d2acf2c8c34fd30a7b703f4dcd573b7a8cf50f",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/17469878/",
+        "https://europepmc.org/article/MED/17469878"
+      ]
+    },
+    {
+      "id": "dv-mindbody-16617173",
+      "doi": "10.1177/1077801206288177",
+      "pmid": "16617173",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "469f7d8687fe70a4cd79290feda350cc6f6e3b23b4c297d5f17010cfed9f546c",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/16617173/"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-12602656",
+      "doi": "10.1023/a:1022019629803",
+      "pmid": "12602656",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "47d4079050b85abe9b553fa72069ff836dce2ad6660d33cc05905d1a24458f3f",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:12602656%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1023%2Fa%3A1022019629803"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-10783523",
+      "doi": "10.1016/s0883-9417(00)80020-5",
+      "pmid": "10783523",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "4345bfcfc09785b73775a4797857d0782797f8a6df6e9f291355cefbc829e660",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:10783523%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1016%2Fs0883-9417%2800%2980020-5"
+      ]
+    },
+    {
+      "id": "dv-sound-42298885",
+      "doi": "10.1080/17533015.2026.2688145",
+      "pmid": "42298885",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "06f70f0c14b3643539bd617216cf854113fe05fbcf9d0446f3947eff540c4d1f",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://europepmc.org/article/MED/42298885",
+        "https://api.crossref.org/works/10.1080/17533015.2026.2688145"
+      ]
+    },
+    {
+      "id": "dv-sound-efa9f1420011",
+      "doi": "10.1007/s10896-026-01179-x",
+      "pmid": null,
+      "freshMetadata": "Crossref",
+      "metadataRetrieved": true,
+      "metadataSHA256": "b04e285724acb1fe89c8eaebe2e60fac583c7ead4fe65c82a42fa2da6ea70b75",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://link.springer.com/article/10.1007/s10896-026-01179-x",
+        "https://api.crossref.org/works/10.1007/s10896-026-01179-x"
+      ]
+    },
+    {
+      "id": "dv-sound-61889e897b46",
+      "doi": "10.26262/hjp.v22i3.10498",
+      "pmid": null,
+      "freshMetadata": "Publisher/university search-index identity only",
+      "metadataRetrieved": false,
+      "metadataSHA256": null,
+      "claimCheck": "Not independently confirmed; withheld.",
+      "sources": [
+        "https://ejournals.lib.auth.gr/hjp/article/view/10498"
+      ]
+    },
+    {
+      "id": "dv-sound-37107774",
+      "doi": "10.3390/ijerph20085492",
+      "pmid": "37107774",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "7d3199eae250707eb9360e806dc19852d314340c0c3337b23fa033748b1d7e0d",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC10138899/",
+        "https://api.crossref.org/works/10.3390/ijerph20085492"
+      ]
+    },
+    {
+      "id": "dv-sound-849dafa52c8c",
+      "doi": "10.30707/ETD2022.20230207065834995923.999979",
+      "pmid": null,
+      "freshMetadata": "Publisher/university search-index identity only",
+      "metadataRetrieved": false,
+      "metadataSHA256": null,
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://ir.library.illinoisstate.edu/etd/1650/"
+      ]
+    },
+    {
+      "id": "dv-sound-3c0015edd5fa",
+      "doi": "10.1017/cha.2018.45",
+      "pmid": null,
+      "freshMetadata": "Crossref",
+      "metadataRetrieved": true,
+      "metadataSHA256": "faf9aba63f390a99990616bc1e4968482b2d598271d6c70f670804c3e1785ba9",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://www.childrenaustralia.org.au/journal/article/2145/",
+        "https://api.crossref.org/works/10.1017/cha.2018.45"
+      ]
+    },
+    {
+      "id": "dv-sound-52ec6bcb53a0",
+      "doi": "10.1093/mtp/miw004",
+      "pmid": null,
+      "freshMetadata": "Crossref",
+      "metadataRetrieved": true,
+      "metadataSHA256": "be4fe2fa394860b77a355835fcdb571f880d4edd4e56c0ae5326cde47f8d054e",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://academic.oup.com/mtp/article-abstract/35/1/36/2631812",
+        "https://api.crossref.org/works/10.1093/mtp/miw004"
+      ]
+    },
+    {
+      "id": "dv-sound-99de3f3bbdea",
+      "doi": "10.30707/ETD2015.Miner.K",
+      "pmid": null,
+      "freshMetadata": "Publisher/university search-index identity only",
+      "metadataRetrieved": false,
+      "metadataSHA256": null,
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://ir.library.illinoisstate.edu/etd/418/",
+        "https://api.crossref.org/works/10.30707/ETD2015.Miner.K"
+      ]
+    },
+    {
+      "id": "dv-sound-24766169",
+      "doi": "10.3109/01612840.2013.868962",
+      "pmid": "24766169",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "240e11cdba5e4b4d071c24b2ae29aa71fc76b7adf62e6ae19d67f5730e184389",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://europepmc.org/article/MED/24766169",
+        "https://api.crossref.org/works/10.3109/01612840.2013.868962"
+      ]
+    },
+    {
+      "id": "dv-sound-1be40a54cbc1",
+      "doi": "10.1093/mtp/24.2.80",
+      "pmid": null,
+      "freshMetadata": "Crossref",
+      "metadataRetrieved": true,
+      "metadataSHA256": "e750f8f967220150ae8384be0788de190d60fab087b267f6833e81f535517b79",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://academic.oup.com/mtp/article-abstract/24/2/80/1125111",
+        "https://api.crossref.org/works/10.1093/mtp/24.2.80"
+      ]
+    },
+    {
+      "id": "dv-sound-15913391",
+      "doi": "10.1093/jmt/42.2.140",
+      "pmid": "15913391",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "4bbb36fb734eab00866fa07692cbb1280e67f10849aa6f102f287b90567272eb",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://europepmc.org/article/MED/15913391"
+      ]
+    },
+    {
+      "id": "dv-vision-da3bfad76f98",
+      "doi": "10.1080/21501378.2018.1561146",
+      "pmid": null,
+      "freshMetadata": "Crossref",
+      "metadataRetrieved": true,
+      "metadataSHA256": "b73517e7d710d952f645454b8d49758a82cfb3e17db91e003bbf1df439dff2e6",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://doi.org/10.1080/21501378.2018.1561146",
+        "https://api.crossref.org/works/10.1080%2F21501378.2018.1561146",
+        "https://www.researchgate.net/publication/333591296_A_Mixed_Methods_Evaluation_of_EMDR_for_Treating_Female_Survivors_of_Sexual_and_Domestic_Violence",
+        "https://api.crossref.org/works/10.1080%2F21501378.2018.1561146"
+      ]
+    },
+    {
+      "id": "dv-vision-2a09962793c2",
+      "doi": "10.1016/j.erap.2012.08.006",
+      "pmid": null,
+      "freshMetadata": "Crossref",
+      "metadataRetrieved": true,
+      "metadataSHA256": "55ce93901a5547815bebcc99abd1890f47ced47505c648957181bff0e8d896b0",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://doi.org/10.1016/j.erap.2012.08.006",
+        "https://www.efpe.fr/assets/4.-tarquinio---al.-(2012).-eye-movement-desensitization-and-reprocessing-therapy-in-the-treatment-of-victims....pdf",
+        "https://api.crossref.org/works/10.1016%2Fj.erap.2012.08.006"
+      ]
+    },
+    {
+      "id": "dv-vision-d0356a161cd2",
+      "doi": "10.1891/1933-3196.3.3.192",
+      "pmid": null,
+      "freshMetadata": "Crossref",
+      "metadataRetrieved": true,
+      "metadataSHA256": "8e53b63f6597732d83886faf3473a5ba00810578a7a5aff26ec9c06b5261479a",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://doi.org/10.1891/1933-3196.3.3.192",
+        "https://api.crossref.org/works/10.1891%2F1933-3196.3.3.192",
+        "https://scholarship.miami.edu/esploro/outputs/journalArticle/EMDR-Treatment-of-Past-Domestic-Violence/991031600519702976",
+        "https://api.crossref.org/works/10.1891%2F1933-3196.3.3.192"
+      ]
+    },
+    {
+      "id": "dv-vision-11036736",
+      "doi": "10.1177/0145445500245006",
+      "pmid": "11036736",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "8a256ee9a3c278f73939ae39659a9e9c973a32ae8b81086b27d95be7b52fa028",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/11036736/",
+        "https://doi.org/10.1177/0145445500245006",
+        "https://api.crossref.org/works/10.1177%2F0145445500245006"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-33743632",
+      "doi": "10.1186/s12884-021-03674-z",
+      "pmid": "33743632",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "8c6d3c1db860a8db00bdee2098f7aa656198fe65599c00dc1f1dbb0badd6f4f5",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://europepmc.org/article/MED/33743632",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7981895/fullTextXML",
+        "https://api.crossref.org/works/10.1186/s12884-021-03674-z"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-33428625",
+      "doi": "10.1371/journal.pmed.1003468",
+      "pmid": "33428625",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "ba50d6fb898f4ad25876f6d8a38fdc1f6955315df25050f0b2c5abedd3c6c7a0",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://europepmc.org/article/MED/33428625",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7799784/fullTextXML",
+        "https://api.crossref.org/works/10.1371/journal.pmed.1003468"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-40425169",
+      "doi": "10.1002/cpp.70089",
+      "pmid": "40425169",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "478bc664fb7b80163d5f565d3bf69f14aa2e5cf115953a9df433eca3db3eab0d",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://europepmc.org/article/MED/40425169",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12116049/fullTextXML",
+        "https://api.crossref.org/works/10.1002/cpp.70089"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-32755265",
+      "doi": "10.1177/0886260520943719",
+      "pmid": "32755265",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "ec4654c0c8b49d5452059d64d2c56cd0fef97d039462c374e6fe52929b70c1a9",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://europepmc.org/article/MED/32755265",
+        "https://api.crossref.org/works/10.1177/0886260520943719"
+      ]
+    },
+    {
+      "id": "dv-reviews-cont-40632759",
+      "doi": "10.1371/journal.pone.0328034",
+      "pmid": "40632759",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "4c399d47e7e2f57a8140e9c1f897c4ba6676c66eb8e3e4ffd8ddb9d9f3375fc0",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC12240372/",
+        "https://api.crossref.org/works/10.1371%2Fjournal.pone.0328034"
+      ]
+    },
+    {
+      "id": "dv-reviews-cont-36429899",
+      "doi": "10.3390/ijerph192215180",
+      "pmid": "36429899",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "e50c07673f8171af3d62d91b054fe0f3af28c8f23696f66b81118746e5caeeb0",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC9690755/",
+        "https://api.crossref.org/works/10.3390%2Fijerph192215180"
+      ]
+    },
+    {
+      "id": "dv-reviews-cont-39302822",
+      "doi": "10.1177/15248380241277270",
+      "pmid": "39302822",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "8778df81baf595b187eddf39843408e04d38acc4feed9daead88bd5f58b55296",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC11558938/",
+        "https://api.crossref.org/works/10.1177%2F15248380241277270"
+      ]
+    },
+    {
+      "id": "dv-reviews-cont-36909881",
+      "doi": "10.1002/cl2.1271",
+      "pmid": "36909881",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "06aaf7c194d20f487b944bc82cb2a8557b05a3286ed3a19b505df4b7c7fb9056",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC9419475/",
+        "https://api.crossref.org/works/10.1002%2Fcl2.1271"
+      ]
+    },
+    {
+      "id": "dv-reviews-cont-37383644",
+      "doi": "10.5093/pi2023a6",
+      "pmid": "37383644",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "beb628f74c56094aa06f93c19aec0c0b36b8b624d735b34b12c7ed40efe23793",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC10294456/",
+        "https://api.crossref.org/works/10.5093%2Fpi2023a6"
+      ]
+    },
+    {
+      "id": "dv-reviews-cont-37131508",
+      "doi": "10.1002/cl2.1049",
+      "pmid": "37131508",
+      "freshMetadata": "Europe PMC core",
+      "metadataRetrieved": true,
+      "metadataSHA256": "988c806e05ae4819ecf40701beb6211602bef43f6dd7ffad283b140adb818bd7",
+      "claimCheck": "Headline finding/design/limitations compared with indexed abstract or accessible primary evidence; retained methods amendments separately adjudicated.",
+      "sources": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC8356495/",
+        "https://api.crossref.org/works/10.1002%2Fcl2.1049"
+      ]
+    }
+  ]
+}

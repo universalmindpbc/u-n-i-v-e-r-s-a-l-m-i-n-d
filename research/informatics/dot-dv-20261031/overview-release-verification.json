@@ -1,0 +1,31 @@
+{
+  "verifiedAt": "2026-10-31T05:34:28.817864+00:00",
+  "sourceCommit": "2f2832b20924b1fb301a79e29758e627a5dfefdb",
+  "previousVerifiedRelease": "0cf50a8e0657fe5d7e661f422b5b91c5cf905bce",
+  "stagingURL": "https://staging.universalmind.tv/informatics/review/domestic-violence-20261031/",
+  "batchRevision": "audit-16f8e1d36d3f40c4",
+  "assessmentRevisionsChanged": 0,
+  "overviewCounts": {
+    "publications": 117,
+    "randomizedTrialReports": 51,
+    "reviewsAndMetaAnalyses": 25,
+    "otherResearchReports": 41,
+    "emdr": 10,
+    "mindfulnessOrMeditation": 9,
+    "musicBased": 8
+  },
+  "approachCountsUseExplicitRecommendedRecordIds": true,
+  "topicLinksVerifiedAtWidths": [
+    1440,
+    390,
+    320
+  ],
+  "matchingLiveAssetHashes": 11,
+  "changedAssetsUploaded": 3,
+  "headlessAudioMuted": true,
+  "browserErrors": [],
+  "approvedLibraryAndExportsChanged": false,
+  "productionModified": false,
+  "deploymentMethod": "Existing Panthur staging workflow",
+  "fullAudit": "AUDIT.md"
+}
