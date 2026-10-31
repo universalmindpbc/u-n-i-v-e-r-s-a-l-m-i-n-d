@@ -45,7 +45,7 @@ try{
  }
  const context=await browser.newContext({javaScriptEnabled:false,viewport:{width:390,height:900},acceptDownloads:true});await routing(context);
  for(const rel of ['/informatics/read/quantum/index.html','/informatics/read/vision/index.html','/informatics/read/computer-vision/index.html','/informatics/read/index.html','/read/']){
-  const p=await context.newPage();await p.goto(base+rel,{waitUntil:'load'});assert.equal(await p.locator('script').count(),0,rel);assert.equal(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),true,rel);assert((await p.locator('body').innerText()).includes('separate research directions'),rel);
+  const p=await context.newPage();await p.goto(base+rel,{waitUntil:'load'});const injected=await p.locator('script').evaluateAll(es=>es.map(e=>({src:e.src,text:e.textContent})));assert(injected.every(s=>s.src.startsWith('https://static.cloudflareinsights.com/beacon.min.js/')&&!s.text.trim()),JSON.stringify(injected));assert.equal(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),true,rel);assert((await p.locator('body').innerText()).includes('separate research directions'),rel);
   if(rel.includes('/quantum/')){if(!candidate)await downloads(p,p.locator('nav.quantum-reading-links').first());await p.screenshot({path:path.join(out,mode+'-quantum-wiki-no-js.png')});}
   await p.close();
  }

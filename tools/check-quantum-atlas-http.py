@@ -6,6 +6,9 @@ ROOT=Path(__file__).resolve().parents[1];BASE=os.environ.get('QA_BASE','https://
 def request(route,agent='Mozilla/5.0 AtlasReadingVerification'):
     return subprocess.check_output(['curl','--fail','--silent','--show-error','--location','--retry','2','--max-time','60','--user-agent',agent,BASE+'/'+route])
 files=['index.html','home/index.html','read/index.html','read/resources.json','llms.txt','sitemap.xml','Informatics/index.html','Informatics/llms.txt','Informatics/read/index.html','Informatics/read/reading.css','Informatics/read/atlas-guide.css','Informatics/read/quantum/index.html','Informatics/read/vision/index.html','Informatics/read/computer-vision/index.html','Informatics/quantum/index.html','Informatics/quantum/reading/links.css','Informatics/exports/manifest.json','Informatics/read/music/index.html']+[f'Informatics/quantum/reading/quantum-atlas.{x}' for x in ['json','csv','md']]+[f'Informatics/music-atlas/music-atlas.{x}'for x in ['json','csv','md']]
+music=json.loads((ROOT/'Informatics/music-atlas/music-atlas.json').read_text())
+files += ['Informatics/'+f['image']for f in music['measurement']['figures']]
+files += ['Informatics/music-measurement.js','Informatics/music-measurement.css']
 def verify(source):
     route=source.replace('Informatics/','informatics/',1);actual=request(route);expected=(ROOT/source).read_bytes();assert actual==expected,route
     return {'path':route,'bytes':len(actual),'sha256':hashlib.sha256(actual).hexdigest()}
