@@ -25,11 +25,11 @@ try{
   for(const [collection,count] of Object.entries(approved.counts.collections)){
    await go('collection='+collection+'&chapter='+approved.chapters[collection].number);
    assert.equal(await reader.locator('.paper').count(),count);
-   assert.match(await reader.locator('.chapter-opening').innerText(),/117 publications.*51 randomized controlled trial reports/s);
+   assert.match(await reader.locator('#topic-domestic-family-violence').innerText(),/117 publications.*51 randomized controlled trial reports/s);
    assert.equal(await reader.locator('.publication-approval').count(),count);
    assert.equal(await reader.locator('body').getByText('[object Object]',{exact:false}).count(),0);
    assert.ok(await reader.locator('html').evaluate(el=>el.scrollWidth<=el.clientWidth+1),'Overflow '+collection+' '+width);
-   await reader.locator('.chapter-opening').scrollIntoViewIfNeeded();
+   await reader.locator('#topic-domestic-family-violence h3').scrollIntoViewIfNeeded();
    await page.screenshot({path:path.join(out,phase+'-'+collection+'-'+width+'.png')});
   }
   checks.push({width,chapters:{sound:8,vision:10,language:99},noHorizontalOverflow:true});
