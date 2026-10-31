@@ -1,0 +1,40 @@
+{
+  "passed": true,
+  "phase": "staging",
+  "url": "https://staging.universalmind.tv/informatics/review/domestic-violence-20261031/",
+  "mutedHeadlessBrowser": true,
+  "checks": [
+    {
+      "recommendedExports": 117,
+      "decisionAndHashIncluded": true
+    },
+    {
+      "width": 1440,
+      "defaultRecommended": 117,
+      "withheld": 13,
+      "sound": 8,
+      "reviews": 25,
+      "abstract": 74,
+      "noHorizontalOverflow": true
+    },
+    {
+      "width": 390,
+      "defaultRecommended": 117,
+      "withheld": 13,
+      "sound": 8,
+      "reviews": 25,
+      "abstract": 74,
+      "noHorizontalOverflow": true
+    },
+    {
+      "width": 320,
+      "defaultRecommended": 117,
+      "withheld": 13,
+      "sound": 8,
+      "reviews": 25,
+      "abstract": 74,
+      "noHorizontalOverflow": true
+    }
+  ],
+  "errors": []
+}
