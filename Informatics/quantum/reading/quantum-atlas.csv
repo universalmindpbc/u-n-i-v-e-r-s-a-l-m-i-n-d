@@ -7993,6 +7993,6 @@ path,type,value
 /sources/11/sha256,string,11bcf4afab33943cfa6f5d40aa644089d16b1a7f7875f910cc503a4a2abec063
 /page_prose_sha256,string,235a1305a151b77f32f57395f25d411db1cfafcb7ac2e262062214deaab85993
 /downloads,object,
-/downloads/json,string,https://universalmind.tv/informatics/quantum/reading/quantum-atlas.json
-/downloads/csv,string,https://universalmind.tv/informatics/quantum/reading/quantum-atlas.csv
-/downloads/md,string,https://universalmind.tv/informatics/quantum/reading/quantum-atlas.md
+/downloads/json,string,https://universalmind.tv/informatics/quantum/reading/quantum-atlas.json?v=2026-11-01-agent-guide-1
+/downloads/csv,string,https://universalmind.tv/informatics/quantum/reading/quantum-atlas.csv?v=2026-11-01-agent-guide-1
+/downloads/md,string,https://universalmind.tv/informatics/quantum/reading/quantum-atlas.md?v=2026-11-01-agent-guide-1

@@ -4,6 +4,10 @@ from html import unescape
 import json,re,hashlib,subprocess
 ROOT=Path(__file__).resolve().parents[1];SITE=ROOT/'Informatics';OUT=ROOT/'research/informatics/quantum-agents-wiki-20261101';OUT.mkdir(parents=True,exist_ok=True)
 d=json.loads((SITE/'quantum/reading/quantum-atlas.json').read_text());a=d['agent_architecture'];wiki=(SITE/'read/quantum/index.html').read_text();md=(SITE/'quantum/reading/quantum-atlas.md').read_text()
+for fmt,url in d['downloads'].items():
+ assert url.endswith('?v='+d['version'])
+ assert url.removeprefix('https://universalmind.tv')in wiki
+ assert any(r['url']==url for r in json.loads((ROOT/'read/resources.json').read_text())['resources'])
 assert list(d).index('agent_architecture')<list(d).index('records')
 assert wiki.index('id="quantum-purpose"')<wiki.index('id="quantum-recorded-study"')
 assert md.index('## What Quantum Atlas is for')<md.index('## Worked example: the recorded OXTR study')

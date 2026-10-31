@@ -65,6 +65,7 @@ def resource(title, path, project, format='HTML', access='Public', description='
     return dict(title=title, url=path if path.startswith('https://') else ORIGIN+path,
                 project=project, format=format, access=access, description=description)
 
+quantum_downloads=json.loads((ROOT/'Informatics/quantum/reading/quantum-atlas.json').read_text())['downloads']
 resources = [
     resource('Universal Mind', '/', 'Universal Mind', access='Invitation entry; wiki link is public'),
     resource('Four project paths', '/home/', 'Universal Mind', access='Public directory'),
@@ -91,9 +92,9 @@ resources = [
     resource('Music Atlas complete CSV', '/informatics/music-atlas/music-atlas.csv', 'Universal Informatics', 'CSV'),
     resource('Music Atlas explanations and reading instructions', '/informatics/music-atlas/music-atlas.md', 'Universal Informatics', 'Markdown'),
     resource('Quantum Atlas: purpose, AI agents, participation and results', '/informatics/read/quantum/index.html', 'Universal Informatics'),
-    resource('Quantum Atlas agent guide and chart data', '/informatics/quantum/reading/quantum-atlas.json', 'Universal Informatics', 'JSON'),
-    resource('Quantum Atlas agent guide and chart data CSV', '/informatics/quantum/reading/quantum-atlas.csv', 'Universal Informatics', 'CSV'),
-    resource('Quantum Atlas explanations and reading instructions', '/informatics/quantum/reading/quantum-atlas.md', 'Universal Informatics', 'Markdown'),
+    resource('Quantum Atlas agent guide and chart data', quantum_downloads['json'], 'Universal Informatics', 'JSON'),
+    resource('Quantum Atlas agent guide and chart data CSV', quantum_downloads['csv'], 'Universal Informatics', 'CSV'),
+    resource('Quantum Atlas explanations and reading instructions', quantum_downloads['md'], 'Universal Informatics', 'Markdown'),
     resource('Vision Atlas: EMDR and ocular biology', '/informatics/read/vision/index.html', 'Universal Informatics', description='Human visual stimulation and the hexagonal tracking hypothesis.'),
     resource('Computer vision for genomics', '/informatics/read/computer-vision/index.html', 'Universal Informatics', description='Hyperspectral image-analysis algorithm research; separate from EMDR.'),
     resource('Molecular Atlas', '/informatics/molecular/', 'Universal Informatics'),

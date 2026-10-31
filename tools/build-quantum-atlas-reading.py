@@ -95,6 +95,7 @@ for rel in agent.pop('source_paths'):
     agent['implementation_sources'].append({'repository_path':rel,'sha256':SHA(source.encode()),'scope':'Original primary-page source with generated reading blocks removed' if rel=='Informatics/quantum/index.html' else 'Implementation source'})
 payload['agent_architecture']=agent
 payload['version']=agent['version']
+payload['downloads']={fmt:url+'?v='+agent['version'] for fmt,url in payload['downloads'].items()}
 payload={**{k:payload[k]for k in ['schema','title','version','url','wiki','agent_architecture']},**{k:v for k,v in payload.items()if k not in ['schema','title','version','url','wiki','agent_architecture']}}
 agent_html,agent_markdown=render_agents(agent)
 text=json.dumps(payload,ensure_ascii=False,indent=2)+'\n'
@@ -113,7 +114,7 @@ def values(v):
     if isinstance(v,dict):return '<dl>'+''.join('<dt>'+E(k)+'</dt><dd>'+values(x)+'</dd>'for k,x in v.items())+'</dl>'
     if isinstance(v,list):return '<ol>'+''.join('<li>'+values(x)+'</li>'for x in v)+'</ol>'
     return E(v)
-def links():return '<nav class="quantum-reading-links" aria-label="Quantum Atlas reading and downloads"><a href="/informatics/read/quantum/index.html" target="_blank" rel="noopener">AI / LLM Wiki</a>'+''.join(f'<a href="/informatics/quantum/reading/quantum-atlas.{fmt}" download="quantum-atlas.{fmt}">{label}</a>'for fmt,label in [('json','JSON'),('csv','CSV'),('md','Markdown')])+'</nav>'
+def links():return '<nav class="quantum-reading-links" aria-label="Quantum Atlas reading and downloads"><a href="/informatics/read/quantum/index.html" target="_blank" rel="noopener">AI / LLM Wiki</a>'+''.join(f'<a href="{payload["downloads"][fmt].removeprefix("https://universalmind.tv")}" download="quantum-atlas.{fmt}">{label}</a>'for fmt,label in [('json','JSON'),('csv','CSV'),('md','Markdown')])+'</nav>'
 
 topic_html='<section id="atlas-topic-directory"><h2>Atlas topics and research directions</h2><p>'+E(distinction)+'</p><p>'+E(quantum_distinction)+'</p>'+table('Topic directory',['Topic','Subject','Question'],[[t['title'],t['subject'],t['question']] for t in TOPICS])+'<ul>'+''.join('<li><a href="'+t['wiki']+'">'+E(t['title'])+'</a></li>'for t in TOPICS)+'</ul></section>'
 write('read/topic-directory.html.fragment',topic_html+'\n')

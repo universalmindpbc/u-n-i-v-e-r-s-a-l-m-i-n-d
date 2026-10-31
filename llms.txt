@@ -103,9 +103,9 @@ Access: The research wiki, publication records and download directory are public
 - [Music Atlas complete CSV](https://universalmind.tv/informatics/music-atlas/music-atlas.csv): Universal Informatics; CSV; Public.
 - [Music Atlas explanations and reading instructions](https://universalmind.tv/informatics/music-atlas/music-atlas.md): Universal Informatics; Markdown; Public.
 - [Quantum Atlas: purpose, AI agents, participation and results](https://universalmind.tv/informatics/read/quantum/index.html): Universal Informatics; HTML; Public.
-- [Quantum Atlas agent guide and chart data](https://universalmind.tv/informatics/quantum/reading/quantum-atlas.json): Universal Informatics; JSON; Public.
-- [Quantum Atlas agent guide and chart data CSV](https://universalmind.tv/informatics/quantum/reading/quantum-atlas.csv): Universal Informatics; CSV; Public.
-- [Quantum Atlas explanations and reading instructions](https://universalmind.tv/informatics/quantum/reading/quantum-atlas.md): Universal Informatics; Markdown; Public.
+- [Quantum Atlas agent guide and chart data](https://universalmind.tv/informatics/quantum/reading/quantum-atlas.json?v=2026-11-01-agent-guide-1): Universal Informatics; JSON; Public.
+- [Quantum Atlas agent guide and chart data CSV](https://universalmind.tv/informatics/quantum/reading/quantum-atlas.csv?v=2026-11-01-agent-guide-1): Universal Informatics; CSV; Public.
+- [Quantum Atlas explanations and reading instructions](https://universalmind.tv/informatics/quantum/reading/quantum-atlas.md?v=2026-11-01-agent-guide-1): Universal Informatics; Markdown; Public.
 - [Vision Atlas: EMDR and ocular biology](https://universalmind.tv/informatics/read/vision/index.html): Universal Informatics; HTML; Public. Human visual stimulation and the hexagonal tracking hypothesis.
 - [Computer vision for genomics](https://universalmind.tv/informatics/read/computer-vision/index.html): Universal Informatics; HTML; Public. Hyperspectral image-analysis algorithm research; separate from EMDR.
 - [Molecular Atlas](https://universalmind.tv/informatics/molecular/): Universal Informatics; HTML; Public.

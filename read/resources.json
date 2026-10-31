@@ -293,7 +293,7 @@
     },
     {
       "title": "Quantum Atlas agent guide and chart data",
-      "url": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.json",
+      "url": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.json?v=2026-11-01-agent-guide-1",
       "project": "Universal Informatics",
       "format": "JSON",
       "access": "Public",
@@ -301,7 +301,7 @@
     },
     {
       "title": "Quantum Atlas agent guide and chart data CSV",
-      "url": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.csv",
+      "url": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.csv?v=2026-11-01-agent-guide-1",
       "project": "Universal Informatics",
       "format": "CSV",
       "access": "Public",
@@ -309,7 +309,7 @@
     },
     {
       "title": "Quantum Atlas explanations and reading instructions",
-      "url": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.md",
+      "url": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.md?v=2026-11-01-agent-guide-1",
       "project": "Universal Informatics",
       "format": "Markdown",
       "access": "Public",

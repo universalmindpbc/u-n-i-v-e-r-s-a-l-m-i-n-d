@@ -20,7 +20,7 @@ async function routing(context){if(candidate)await context.route(base+'/**',asyn
 });}
 async function downloads(page,scope){for(const ext of ['json','csv','md']){
  const waiting=page.waitForEvent('download');await scope.locator(`a[download="quantum-atlas.${ext}"]`).first().click();const d=await waiting;assert.equal(d.suggestedFilename(),`quantum-atlas.${ext}`);
- const local=path.join(out,'download-check.'+ext);await d.saveAs(local);assert.deepEqual(await fs.readFile(local),await fs.readFile(path.join(root,'Informatics/quantum/reading/quantum-atlas.'+ext)));await d.delete();await fs.unlink(local);
+ const local=path.join(out,'download-check.'+ext);await d.saveAs(local);assert.equal(crypto.createHash('sha256').update(await fs.readFile(local)).digest('hex'),crypto.createHash('sha256').update(await fs.readFile(path.join(root,'Informatics/quantum/reading/quantum-atlas.'+ext))).digest('hex'),'download bytes: '+ext);await d.delete();await fs.unlink(local);
 }}
 try{
  for(const width of [1440,390,320]){
