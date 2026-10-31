@@ -1,0 +1,19 @@
+{
+  "source_commit": "0731aad97dbaec3eb3ff0c98f56caf3e8e8c6008",
+  "status": "staging_verified",
+  "staging": "https://staging.universalmind.tv/informatics/?entry=research&area=quantum",
+  "wiki": "https://staging.universalmind.tv/informatics/read/quantum/index.html",
+  "production_authorization": "Ben authorized publication after completing the Quantum Wiki, with the approved Music changes included.",
+  "human_source_comparison": "Pass: existing primary content and runtime preserved; Quantum footer links added.",
+  "full_export_sources": 1181,
+  "http_files_byte_matched": 29,
+  "wiki_pages_without_javascript": 5,
+  "browser_widths": [
+    1440,
+    390,
+    320
+  ],
+  "live_agent_or_quantum_jobs_started": false,
+  "cache_fix": "Topic-table CSS is inline in the AI overview; existing shared stylesheet preserved.",
+  "hosting_script_observation": "Cloudflare adds its analytics beacon to browser responses. The reading pages work with JavaScript disabled."
+}
