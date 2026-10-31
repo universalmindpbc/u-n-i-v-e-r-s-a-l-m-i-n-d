@@ -15,6 +15,11 @@
       "sound": 8,
       "reviews": 25,
       "abstract": 74,
+      "approachLinks": {
+        "emdr": 10,
+        "mindfulness": 9,
+        "music": 8
+      },
       "noHorizontalOverflow": true
     },
     {
@@ -24,6 +29,11 @@
       "sound": 8,
       "reviews": 25,
       "abstract": 74,
+      "approachLinks": {
+        "emdr": 10,
+        "mindfulness": 9,
+        "music": 8
+      },
       "noHorizontalOverflow": true
     },
     {
@@ -33,6 +43,11 @@
       "sound": 8,
       "reviews": 25,
       "abstract": 74,
+      "approachLinks": {
+        "emdr": 10,
+        "mindfulness": 9,
+        "music": 8
+      },
       "noHorizontalOverflow": true
     }
   ],

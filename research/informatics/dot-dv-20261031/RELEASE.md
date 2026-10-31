@@ -1,5 +1,7 @@
 # Verified staging audit
 
+Latest presentation update: source `2f2832b20924b1fb301a79e29758e627a5dfefdb`. The introductory paragraph explains the 51/25/41 publication types, with verified links to ten EMDR, nine mindfulness/meditation and eight music-based publications. Three changed assets uploaded; eleven live asset hashes and all three browser widths passed. All 130 audited assessment revisions remain unchanged.
+
 [Publication assessment](https://staging.universalmind.tv/informatics/review/domestic-violence-20261031/) · [Full audit](AUDIT.md)
 
 Source commit: `f0f9791fb21fef66ab8283ff920b2a6c492d78f3`
