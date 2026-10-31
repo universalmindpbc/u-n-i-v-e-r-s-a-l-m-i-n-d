@@ -163,6 +163,19 @@ def build(check=False):
         OUT / 'index.json': {'batch': bundle['batchRevision'] + '.json', 'productionEligible': False},
         SOURCE / 'decision-ledger.json': {'batchRevision': bundle['batchRevision'], 'counts': counts, 'records': ledger},
     }
+    recommended_ids = {r['id'] for r in recommended}
+    groups = []
+    for group in config['approachGroups']:
+        assert set(group['recordIds']) <= recommended_ids
+        assert len(group['recordIds']) == len(set(group['recordIds']))
+        groups.append({**group, 'count': len(group['recordIds'])})
+    outputs[OUT / 'coverage.json'] = {
+        'batchRevision': bundle['batchRevision'], 'recommendedPublications': len(recommended),
+        'groups': groups,
+        'countingNote': 'Selected topic counts within the recommended set, not a complete partition. '
+                        'A publication can cover more than one approach. These are publication counts, '
+                        'not independent trials or proof of treatment efficacy.',
+    }
     for path, data in outputs.items():
         expected = json.dumps(data, ensure_ascii=False, indent=2, allow_nan=False) + '\n'
         if check:

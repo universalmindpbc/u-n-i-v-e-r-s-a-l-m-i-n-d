@@ -39,6 +39,12 @@ recommended = [r for r in rows if r['reviewReady']]
 assert len(recommended) == 117
 assert Counter(r['access']['level'] for r in recommended) == batch['counts']['recommendedAccess']
 assert sum(bool(r['existingRepositoryMatches']) for r in recommended) == 2
+coverage = json.loads((OUT / 'coverage.json').read_text())
+assert coverage['batchRevision'] == batch['batchRevision']
+assert {g['id']:g['count'] for g in coverage['groups']} == {'emdr':10,'mindfulness':9,'music':8}
+for group in coverage['groups']:
+    assert len(group['recordIds']) == len(set(group['recordIds'])) == group['count']
+    assert all(by_id[key]['reviewReady'] for key in group['recordIds'])
 for key in ['dv-children-25596929','dv-children-35285428']:
     assert by_id[key]['design']['crosses'] == 0
     assert by_id[key]['studyDesignAssessment']['isRandomizedControlledTrial'] is None

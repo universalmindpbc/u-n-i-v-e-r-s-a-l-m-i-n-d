@@ -6,7 +6,7 @@
   const isReview = r => /review|meta.analysis|synthesis/i.test(r.publicationType + ' ' + r.design.type);
   const safeURL = u => /^https:\/\//.test(u) ? u : '#';
   const section = (label,value,wide=false) => `<section class="${wide?'span-all':''}"><h3>${esc(label)}</h3><p>${esc(text(value))}</p></section>`;
-  let bundle, visible = [];
+  let bundle, coverage, visible = [];
   function card(r) {
     const recommended = r.publicationRecommendation.status === 'recommended-summary';
     const crosses = r.design.crosses ? `<span class="crosses" role="img" aria-label="${r.design.crosses===2?'Double-blind randomized trial':'Randomized trial design supported by accessed source'}">${'<svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="8" fill="#1468a8"/><path d="M7 3.5h4V7h3.5v4H11v3.5H7V11H3.5V7H7z" fill="white"/></svg>'.repeat(r.design.crosses)}</span>` : '';
@@ -32,8 +32,10 @@
       </div></details></article>`;
   }
   function render() {
-    const q=$('#query').value.trim().toLowerCase(), decision=$('#decision').value, collection=$('#collection').value, design=$('#design').value, access=$('#access').value;
-    visible=bundle.records.filter(r=>(!q||JSON.stringify(r).toLowerCase().includes(q))&&(!decision||decision==='withheld'&&r.publicationRecommendation.status!=='recommended-summary'||r.publicationRecommendation.status===decision)&&(!collection||r.collection===collection)&&(!access||r.access.level===access)&&(!design||design==='rct'&&r.design.crosses>0||design==='review'&&isReview(r)||design==='other'&&!isReview(r)&&!r.design.crosses));
+    if(!bundle||!coverage)return;
+    const q=$('#query').value.trim().toLowerCase(), decision=$('#decision').value, collection=$('#collection').value, design=$('#design').value, access=$('#access').value, approach=$('#approach').value;
+    const approachIds=coverage.groups.find(g=>g.id===approach)?.recordIds;
+    visible=bundle.records.filter(r=>(!q||JSON.stringify(r).toLowerCase().includes(q))&&(!decision||decision==='withheld'&&r.publicationRecommendation.status!=='recommended-summary'||r.publicationRecommendation.status===decision)&&(!collection||r.collection===collection)&&(!access||r.access.level===access)&&(!approachIds||approachIds.includes(r.id))&&(!design||design==='rct'&&r.design.crosses>0||design==='review'&&isReview(r)||design==='other'&&!isReview(r)&&!r.design.crosses));
     $('#result-count').textContent=`${visible.length} shown · ${bundle.counts.assessed} assessed · ${bundle.counts.recommendedSummaries} recommended · ${bundle.counts.withheld} withheld`;
     $('#results').innerHTML=visible.length?visible.map(card).join(''):'<p class="empty">No records match these filters.</p>';
   }
@@ -43,6 +45,11 @@
   $('#filters').addEventListener('submit',e=>e.preventDefault());
   $('#filters').addEventListener('input',()=>bundle&&render());
   $('#clear').addEventListener('click',()=>{if(!bundle)return;$('#filters').reset();render();});
+  document.querySelectorAll('[data-approach]').forEach(link=>link.addEventListener('click',event=>{
+    if(!bundle||!coverage)return;
+    event.preventDefault();$('#filters').reset();$('#approach').value=link.dataset.approach;render();
+    $('#results').scrollIntoView({behavior:'auto'});$('#result-count').setAttribute('tabindex','-1');$('#result-count').focus({preventScroll:true});
+  }));
   $('#download').addEventListener('click',()=>download(JSON.stringify({schema:bundle.schema,batchRevision:bundle.batchRevision,productionEligible:false,status:bundle.reviewStatus,method:bundle.method,limitations:bundle.limitations,count:visible.length,records:visible},null,2),'application/json','dv-audited-summaries.json'));
   $('#csv').addEventListener('click',()=>{
     const fields=['id','revision','contentHash','decision','title','year','doi','pmid','collection','design','crosses','access','finding','limitation','decisionReason','humanReleaseApproval'];
@@ -57,6 +64,9 @@
     const result=await fetch(index.batch,{cache:'no-store'});if(!result.ok)throw new Error('Audit evidence unavailable');
     bundle=await result.json();
     if(bundle.records.length!==130||bundle.counts.recommendedSummaries!==117||bundle.productionEligible!==false)throw new Error('Audit integrity check failed');
+    const coverageResponse=await fetch('coverage.json',{cache:'no-store'});if(!coverageResponse.ok)throw new Error('Approach counts unavailable');
+    coverage=await coverageResponse.json();
+    if(coverage.batchRevision!==bundle.batchRevision||coverage.groups.some(g=>g.count!==g.recordIds.length||new Set(g.recordIds).size!==g.count||g.recordIds.some(id=>!bundle.records.some(r=>r.id===id&&r.reviewReady))))throw new Error('Approach counts do not match this audited collection');
     $('#metrics').innerHTML=[['assessed','Assessed records'],['recommendedSummaries','Recommended summaries'],['withheld','Withheld from release'],['newRecommended','New library publications']].map(([k,label])=>`<div class="metric"><strong>${bundle.counts[k]}</strong><span>${label}</span></div>`).join('');
     $('#method').textContent=bundle.method;$('#audit-limits').textContent=bundle.limitations.join(' ');
     $('#revision-info').textContent=`${bundle.batchRevision} · ${bundle.createdAt} · Based on staging ${bundle.baselineCommit.slice(0,12)}`;

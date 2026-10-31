@@ -1,0 +1,58 @@
+{
+  "batchRevision": "audit-16f8e1d36d3f40c4",
+  "recommendedPublications": 117,
+  "groups": [
+    {
+      "id": "emdr",
+      "label": "EMDR",
+      "basis": "Explicit EMDR intervention or comparison in the publication title or intervention family. Includes related childhood-trauma populations; directness remains record-specific.",
+      "recordIds": [
+        "dv-vision-42529059",
+        "dv-vision-38868491",
+        "dv-vision-38629403",
+        "dv-vision-426ce6386119",
+        "dv-children-31114620",
+        "dv-vision-d1f88a25c475",
+        "dv-vision-da3bfad76f98",
+        "dv-vision-2a09962793c2",
+        "dv-vision-d0356a161cd2",
+        "dv-vision-11036736"
+      ],
+      "count": 10
+    },
+    {
+      "id": "mindfulness",
+      "label": "Mindfulness or meditation",
+      "basis": "Explicit mindfulness, meditation or MBCT focus in the title or intervention family, including a reported mindfulness component. Yoga alone is not counted as mindfulness.",
+      "recordIds": [
+        "dv-mindbody-39135298",
+        "dv-mindbody-c6c616df1710",
+        "dv-mindbody-37400911",
+        "dv-mindbody-32969703",
+        "dv-mindbody-41024298",
+        "dv-mindbody-36232015",
+        "dv-mindbody-23561069",
+        "dv-mindbody-24043922",
+        "dv-mindbody-16617173"
+      ],
+      "count": 9
+    },
+    {
+      "id": "music",
+      "label": "Music-based approaches",
+      "basis": "Recommended Sound records concern music, music therapy, music listening, musical performance or songwriting. These are not all treatment-efficacy studies.",
+      "recordIds": [
+        "dv-sound-42298885",
+        "dv-sound-efa9f1420011",
+        "dv-sound-37107774",
+        "dv-sound-3c0015edd5fa",
+        "dv-sound-52ec6bcb53a0",
+        "dv-sound-24766169",
+        "dv-sound-1be40a54cbc1",
+        "dv-sound-15913391"
+      ],
+      "count": 8
+    }
+  ],
+  "countingNote": "Selected topic counts within the recommended set, not a complete partition. A publication can cover more than one approach. These are publication counts, not independent trials or proof of treatment efficacy."
+}
