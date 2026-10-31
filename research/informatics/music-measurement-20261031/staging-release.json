@@ -1,0 +1,27 @@
+{
+  "verifiedAt": "2026-10-31T05:00:02.430383+00:00",
+  "sourceCommit": "10efd43d1bed349685f04e664b4081ee6ad9791d",
+  "baseStagingCommit": "65fcf0b9ea8ef70f129d0b8b3305987b48671bde",
+  "proofURL": "https://staging.universalmind.tv/informatics/?entry=research&area=sound",
+  "deploymentMethod": "Existing deploy-panthur-staging.sh informatics / Panthur FTP",
+  "matchingDeployedAssets": 12,
+  "browserWidths": [
+    1440,
+    1024,
+    390,
+    320
+  ],
+  "browserErrors": [],
+  "processAudioMuted": true,
+  "nativeFullscreenInvoked": false,
+  "existingSoundTabsVerified": 6,
+  "graphicsInRequestedOrder": 3,
+  "imageKeyboardZoomAndFocusVerified": true,
+  "naming": "Immersion Neuroscience and SIX",
+  "sequencingCost": "A$600\u2013A$1,000 per participant for mRNA sequencing",
+  "runtimeOpenAIChanges": false,
+  "existingStructuredSourcesUnchanged": 1177,
+  "jsonAndCsvRoundtripPassed": true,
+  "productionModified": false,
+  "productionMainBeforeDeployment": "4900e9e0a33a85c154104b25ec09586a03216675"
+}

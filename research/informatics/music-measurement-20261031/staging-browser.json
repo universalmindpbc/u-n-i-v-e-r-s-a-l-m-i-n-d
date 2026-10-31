@@ -1,0 +1,48 @@
+{
+  "mode": "staging",
+  "processAudioMuted": true,
+  "errors": [],
+  "results": [
+    {
+      "width": 1440,
+      "images": 3,
+      "existingTabs": 6,
+      "keyboardOpenClose": true,
+      "focusRestored": true,
+      "originalSizeScroll": true,
+      "noHorizontalPageOverflow": true,
+      "nativeFullscreen": false
+    },
+    {
+      "width": 1024,
+      "images": 3,
+      "existingTabs": 6,
+      "keyboardOpenClose": true,
+      "focusRestored": true,
+      "originalSizeScroll": true,
+      "noHorizontalPageOverflow": true,
+      "nativeFullscreen": false
+    },
+    {
+      "width": 390,
+      "images": 3,
+      "existingTabs": 6,
+      "keyboardOpenClose": true,
+      "focusRestored": true,
+      "originalSizeScroll": true,
+      "noHorizontalPageOverflow": true,
+      "nativeFullscreen": false
+    },
+    {
+      "width": 320,
+      "images": 3,
+      "existingTabs": 6,
+      "keyboardOpenClose": true,
+      "focusRestored": true,
+      "originalSizeScroll": true,
+      "noHorizontalPageOverflow": true,
+      "nativeFullscreen": false
+    }
+  ],
+  "passed": true
+}
