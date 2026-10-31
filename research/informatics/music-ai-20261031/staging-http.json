@@ -1,0 +1,93 @@
+{
+  "passed": true,
+  "base": "https://staging.universalmind.tv/",
+  "files": [
+    {
+      "path": "informatics/index.html",
+      "bytes": 101597,
+      "sha256": "ca90c855c6aef5ac9fbb7cf797b0cb34f17efc6325930d9ca2f295d82ead6b9e"
+    },
+    {
+      "path": "informatics/music-atlas/music-atlas.json",
+      "bytes": 34038,
+      "sha256": "67e2e851832965ca740796059a43b9038a38d88698734c3aa7fdd77be5c54b73"
+    },
+    {
+      "path": "informatics/music-atlas/music-atlas.csv",
+      "bytes": 47656,
+      "sha256": "ede60598bfacd1a7c37a27880458ce421697451378b5666b3634f803e4aaa8f4"
+    },
+    {
+      "path": "informatics/music-atlas/music-atlas.md",
+      "bytes": 16757,
+      "sha256": "e69f01adf55eeb2615e2ae5c6148ba4bc2548b9f0f38704b2c850e8c71fec261"
+    },
+    {
+      "path": "informatics/music-atlas/reading-links.css",
+      "bytes": 327,
+      "sha256": "f4c5f10bab1e3259b1f44a032c484da6a2cc6d3846e9be27825d91a1e284e271"
+    },
+    {
+      "path": "informatics/read/music/index.html",
+      "bytes": 24626,
+      "sha256": "e61c201323fba764c13c5b0192192bb0aa191f2be66d8284eb3f6fa8c2828791"
+    },
+    {
+      "path": "informatics/read/index.html",
+      "bytes": 4254,
+      "sha256": "9756e500ec49a63685fca9d14ea999de8c8fea8f997510ac8afbee9da372c3aa"
+    },
+    {
+      "path": "informatics/read/data.html",
+      "bytes": 180630,
+      "sha256": "e68f922cfe91880d545117b5d31ff0348cbb9d13c761acc022f5fee7a08c8614"
+    },
+    {
+      "path": "informatics/llms.txt",
+      "bytes": 2954,
+      "sha256": "47bfb1573349b86edb323de6af6feef8bde32024e67833722958f2da2e1bab36"
+    },
+    {
+      "path": "informatics/exports/manifest.json",
+      "bytes": 2394631,
+      "sha256": "532d2d09449c8bffe3006e4f4d9708c78a32e89ff9f50a71df35ded0c9718e5c"
+    },
+    {
+      "path": "read/index.html",
+      "bytes": 14621,
+      "sha256": "364da30dabbec4afe12ec02de4fabae2f67ef77bd4ca869077e33fa9acd0b267"
+    },
+    {
+      "path": "read/resources.json",
+      "bytes": 18160,
+      "sha256": "fb0f7894e11ba0ef98ea2df4ee94c1244d9a5d0962a3bbe2ee8b60af25472c44"
+    },
+    {
+      "path": "llms.txt",
+      "bytes": 12060,
+      "sha256": "06c5597432336d1fc36ea7c8f5d2cc40f62fefa8b077056cb86dfb48fa64510a"
+    },
+    {
+      "path": "sitemap.xml",
+      "bytes": 206951,
+      "sha256": "2da07b31d72ff3c22745c87be6411e8b35556adfd8c05cdf0f05b0284078746b"
+    }
+  ],
+  "ordinary_page_request_user_agents": [
+    "ChatGPT-User/1.0",
+    "Googlebot",
+    "Claude-User",
+    "PerplexityBot",
+    "MusicAtlasReader/1.0"
+  ],
+  "all_headers_receive_identical_music_data": true,
+  "user_agent_checks_are_http_delivery_tests_not_external_provider_sessions": true,
+  "models": 6,
+  "semantic_tables": 10,
+  "content_types": {
+    "json": "application/json",
+    "csv": "text/csv",
+    "md": "text/markdown"
+  },
+  "staging_indexing_excluded": true
+}

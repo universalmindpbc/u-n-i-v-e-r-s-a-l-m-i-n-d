@@ -1,0 +1,35 @@
+{
+  "passed": true,
+  "parts": [
+    {
+      "file": "part-9e15eeb6d18bbaea81e7cb4105ea5e180d278fc8ec5008f143c66fe04ce01ada.bin",
+      "sha256": "9e15eeb6d18bbaea81e7cb4105ea5e180d278fc8ec5008f143c66fe04ce01ada",
+      "bytes": 50331648,
+      "passed": true
+    },
+    {
+      "file": "part-3d2ece06e1d63641d5889bf4cc1425b5c23e5e9ee0c9ff1bfc8b5409748cf756.bin",
+      "sha256": "3d2ece06e1d63641d5889bf4cc1425b5c23e5e9ee0c9ff1bfc8b5409748cf756",
+      "bytes": 25693947,
+      "passed": true
+    },
+    {
+      "file": "part-104a8403567b42cc8bd9465d3da9b1615e4390b5c893e4a30c5d4e101af3057d.bin",
+      "sha256": "104a8403567b42cc8bd9465d3da9b1615e4390b5c893e4a30c5d4e101af3057d",
+      "bytes": 50331648,
+      "passed": true
+    },
+    {
+      "file": "part-2576cb55acdd3a606e10a040e1b9415c9c57c9b4baf106e64177af8dbc66742d.bin",
+      "sha256": "2576cb55acdd3a606e10a040e1b9415c9c57c9b4baf106e64177af8dbc66742d",
+      "bytes": 50331648,
+      "passed": true
+    },
+    {
+      "file": "part-0627fb67792bcf01e60e3f515b44280bfd4f2aa579fbca8c3661a0b9f4213a86.bin",
+      "sha256": "0627fb67792bcf01e60e3f515b44280bfd4f2aa579fbca8c3661a0b9f4213a86",
+      "bytes": 44210881,
+      "passed": true
+    }
+  ]
+}

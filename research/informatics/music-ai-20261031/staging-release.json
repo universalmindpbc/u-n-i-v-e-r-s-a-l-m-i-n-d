@@ -1,0 +1,16 @@
+{
+  "staging_url": "https://staging.universalmind.tv/informatics/?entry=research&area=sound",
+  "source_commit": "2aed9aefddd2f67fd6e104b42452270b76385925",
+  "initial_music_commit": "84bcf1745",
+  "concurrent_staging_preserved": "d7951b8efa2a12c6def84f36e39a9bcfb9242c7d",
+  "production_baseline": "4900e9e0a33a85c154104b25ec09586a03216675",
+  "production_modified": false,
+  "checked_at": "2026-10-31T05:47:44.174262+00:00",
+  "human_change": "Only the authorized bottom row: Wiki, JSON, CSV and Markdown links.",
+  "machine_delivery": "Six model explanations, ten semantic tables, inline JSON and structured metadata in initial HTML; static Wiki and three downloadable formats.",
+  "browser_qa": true,
+  "http_qa": true,
+  "full_exports": true,
+  "deployed_export_checksums": true,
+  "actual_external_ai_provider_sessions_tested": false
+}
