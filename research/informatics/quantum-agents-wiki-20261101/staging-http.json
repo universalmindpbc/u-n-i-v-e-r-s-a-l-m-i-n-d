@@ -1,0 +1,172 @@
+{
+  "passed": true,
+  "base": "https://staging.universalmind.tv",
+  "files": [
+    {
+      "path": "index.html",
+      "bytes": 22185,
+      "sha256": "6b5b0d273ff9a3db1c0b03121fd39accdefa711f57e02deffbf44600a8b2ee8b"
+    },
+    {
+      "path": "home/index.html",
+      "bytes": 8933,
+      "sha256": "0388c8b1199da7c5b1447f754a25e9aa904aa3afb78a22aa88bc4bcbc3c30c04"
+    },
+    {
+      "path": "read/index.html",
+      "bytes": 16195,
+      "sha256": "3d4433b632d785f7e8a5029bc838e74e8fbae9ff5c0b79ace63b15591dca6c1c"
+    },
+    {
+      "path": "read/resources.json",
+      "bytes": 20538,
+      "sha256": "cce08bb27001fbd368f739fc360c4b60fcedc8b3b878ea8fa5609ef2702224d6"
+    },
+    {
+      "path": "llms.txt",
+      "bytes": 13600,
+      "sha256": "e16235a3f0cc6f0a9cc50f0b520ca162bbe25e6ed1f057f1fbe6336c3b3c8746"
+    },
+    {
+      "path": "sitemap.xml",
+      "bytes": 207213,
+      "sha256": "c75d09f4a49bbf1e159facc165e64da2f5c288128ae97215c64cd26e2e79e3bc"
+    },
+    {
+      "path": "informatics/index.html",
+      "bytes": 496768,
+      "sha256": "3f48b2cb862d83f184c1b0241faf893222a9cd043a920edc3a2b8d8ae409c9a6"
+    },
+    {
+      "path": "informatics/llms.txt",
+      "bytes": 6140,
+      "sha256": "a74badf53dc5802f25a5131e097b1ef3d011edbc9b5e6c81888caca622c28a9d"
+    },
+    {
+      "path": "informatics/read/index.html",
+      "bytes": 7241,
+      "sha256": "edd3254aad22e3351119fc359ccee8fae37d6877c3c275ff5f69ce929c22174b"
+    },
+    {
+      "path": "informatics/read/reading.css",
+      "bytes": 1392,
+      "sha256": "a6c5b9a1322752f93c8f67fca24e35efc2c79cf447e2673eb7a9695844db99a0"
+    },
+    {
+      "path": "informatics/read/atlas-guide.css",
+      "bytes": 682,
+      "sha256": "783e75a6583cd5d81b5cff6011ec6327699f71d938e191d1378540fb459920ea"
+    },
+    {
+      "path": "informatics/read/quantum/index.html",
+      "bytes": 66112,
+      "sha256": "b3b39c845cfab5801f29084441b5a6e7d5219b33929fe4eff0467640b210eac9"
+    },
+    {
+      "path": "informatics/read/vision/index.html",
+      "bytes": 7707,
+      "sha256": "ab87a927ae8409b32ff49407f2b33ea9c610284e9802a1b1588d39a58e54972a"
+    },
+    {
+      "path": "informatics/read/computer-vision/index.html",
+      "bytes": 2050,
+      "sha256": "0e4f87449d7106e2cc46eff2f08b0ae446bbeec4d97ef06bc95d4d0c2b625982"
+    },
+    {
+      "path": "informatics/quantum/index.html",
+      "bytes": 424971,
+      "sha256": "508792ce5af3a3c273596203540c15380906307204c8b564f921fabee5c68fd9"
+    },
+    {
+      "path": "informatics/quantum/reading/links.css",
+      "bytes": 317,
+      "sha256": "64c041baff03db22377e2865d0682d786c858d70ed4fb89c50d0a12b28ff4680"
+    },
+    {
+      "path": "informatics/exports/manifest.json",
+      "bytes": 2395086,
+      "sha256": "2f8297bf96b8a64b04670326b7ac427009072638cf2c21ac9b27e6e1c446edef"
+    },
+    {
+      "path": "informatics/read/music/index.html",
+      "bytes": 24626,
+      "sha256": "e61c201323fba764c13c5b0192192bb0aa191f2be66d8284eb3f6fa8c2828791"
+    },
+    {
+      "path": "informatics/quantum/reading/quantum-atlas.json",
+      "bytes": 325425,
+      "sha256": "587556d496f71b2a19e5e12b25e819a54846c96b041598d27cf210c36af52664"
+    },
+    {
+      "path": "informatics/quantum/reading/quantum-atlas.csv",
+      "bytes": 679783,
+      "sha256": "77a260440b59e62d87fe201ba8369a5b4c3215c40ea57a105df884d60deefe9c"
+    },
+    {
+      "path": "informatics/quantum/reading/quantum-atlas.md",
+      "bytes": 366739,
+      "sha256": "cc9c66c098c89144968b8df5871f2ab2cf39195fc5753c13cdc14b4fac58c737"
+    },
+    {
+      "path": "informatics/music-atlas/music-atlas.json",
+      "bytes": 34038,
+      "sha256": "67e2e851832965ca740796059a43b9038a38d88698734c3aa7fdd77be5c54b73"
+    },
+    {
+      "path": "informatics/music-atlas/music-atlas.csv",
+      "bytes": 47656,
+      "sha256": "ede60598bfacd1a7c37a27880458ce421697451378b5666b3634f803e4aaa8f4"
+    },
+    {
+      "path": "informatics/music-atlas/music-atlas.md",
+      "bytes": 16757,
+      "sha256": "e69f01adf55eeb2615e2ae5c6148ba4bc2548b9f0f38704b2c850e8c71fec261"
+    },
+    {
+      "path": "informatics/media/music-measurement/unified-timeline.jpeg",
+      "bytes": 300340,
+      "sha256": "0fcea50f6142724b49d8c6636b31a1fe346c26bee90cdcad7bdf4ce8db9c1e69"
+    },
+    {
+      "path": "informatics/media/music-measurement/brain-state-dashboard.jpeg",
+      "bytes": 230429,
+      "sha256": "b1028ab6bc8ec78a582663c0902cfdf44de49637fee7f553d8b9002c164fa324"
+    },
+    {
+      "path": "informatics/media/music-measurement/peak-moment-timeline.jpeg",
+      "bytes": 214097,
+      "sha256": "9394e9cb9b1ad1bda88e8eb5f13636c30fb20280fab2243fe76e1794a8030d9b"
+    },
+    {
+      "path": "informatics/music-measurement.js",
+      "bytes": 2025,
+      "sha256": "ca00e88ac12a729ec40e1bf2f6976e4eba38c5e3dbe4979739cc653748ca9e4c"
+    },
+    {
+      "path": "informatics/music-measurement.css",
+      "bytes": 3304,
+      "sha256": "7543aabb560b07d18b6e966898f6c01097598f4775224b46e6c027cffbe8eb02"
+    }
+  ],
+  "ordinary_page_request_user_agents": [
+    "ChatGPT-User/1.0",
+    "Googlebot",
+    "Claude-User",
+    "PerplexityBot",
+    "AtlasReadingVerification/1.0"
+  ],
+  "user_agent_checks_are_http_delivery_tests_not_external_provider_sessions": true,
+  "topic_separation_in_initial_html": true,
+  "download_content_types": {
+    "json": "application/json",
+    "csv": "text/csv",
+    "md": "text/markdown"
+  },
+  "versioned_downloads": {
+    "json": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.json?v=2026-11-01-agent-guide-1",
+    "csv": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.csv?v=2026-11-01-agent-guide-1",
+    "md": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.md?v=2026-11-01-agent-guide-1"
+  },
+  "staging_excluded": true,
+  "production_review_http_status": null
+}

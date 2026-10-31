@@ -1,0 +1,22 @@
+{
+  "status": "staging_verified",
+  "checked_at": "2026-10-31T17:34:10.919893+00:00",
+  "source_commit": "845a5fa2fc494922ffe641d783398ee213154411",
+  "production_baseline": "a2d6cb9b83340e841c9362cefd5d193aff63ee56",
+  "production_modified": false,
+  "primary_page": "https://staging.universalmind.tv/informatics/?entry=research&area=quantum",
+  "wiki": "https://staging.universalmind.tv/informatics/read/quantum/index.html",
+  "purpose": "Enable an AI to explain the purpose and human value of Quantum Atlas features, agent roles, workflow and public participation.",
+  "download_cache_correction_verified": true,
+  "http_source_files_byte_matched": 29,
+  "export_sources_reconstructed_per_format": 1181,
+  "remote_complete_export_parts_verified": 5,
+  "browser_widths": [
+    1440,
+    390,
+    320
+  ],
+  "browser_process_muted": true,
+  "model_calls_during_verification": 0,
+  "new_compute_dispatches_during_verification": 0
+}
