@@ -1,0 +1,128 @@
+[
+  {
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=SRC%3AMED+AND+%28EXT_ID%3A42326745+OR+EXT_ID%3A40552233+OR+EXT_ID%3A41045209+OR+EXT_ID%3A40883805+OR+EXT_ID%3A41065656+OR+EXT_ID%3A39529598+OR+EXT_ID%3A38206858+OR+EXT_ID%3A38678198+OR+EXT_ID%3A39135298+OR+EXT_ID%3A35285428+OR+EXT_ID%3A37889918+OR+EXT_ID%3A37383647+OR+EXT_ID%3A37400911+OR+EXT_ID%3A33375899+OR+EXT_ID%3A32933348+OR+EXT_ID%3A32993831+OR+EXT_ID%3A34143803+OR+EXT_ID%3A34584851+OR+EXT_ID%3A34305273+OR+EXT_ID%3A32969703+OR+EXT_ID%3A33303427+OR+EXT_ID%3A31548680+OR+EXT_ID%3A29648853+OR+EXT_ID%3A30481183+OR+EXT_ID%3A30079583+OR+EXT_ID%3A26613288+OR+EXT_ID%3A27459503+OR+EXT_ID%3A27599224+OR+EXT_ID%3A26437311+OR+EXT_ID%3A25596929+OR+EXT_ID%3A24252714+OR+EXT_ID%3A23948313+OR+EXT_ID%3A23414253+OR+EXT_ID%3A23598181+OR+EXT_ID%3A21153559+OR+EXT_ID%3A21787052+OR+EXT_ID%3A21199975+OR+EXT_ID%3A20977033+OR+EXT_ID%3A20658802+OR+EXT_ID%3A19634963%29&resultType=core&format=json&pageSize=100",
+    "file": "europepmc-0.json",
+    "exit": 0,
+    "retrievedAt": "2026-10-31T04:58:25.704618+00:00",
+    "sha256": "a0ed333c51c6494ece8d5a70dcb5648df64595ed2eb1ca117457766fa208836b"
+  },
+  {
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=SRC%3AMED+AND+%28EXT_ID%3A17022356+OR+EXT_ID%3A16865033+OR+EXT_ID%3A16569097+OR+EXT_ID%3A16292115+OR+EXT_ID%3A14756610+OR+EXT_ID%3A11680554+OR+EXT_ID%3A42529059+OR+EXT_ID%3A38868491+OR+EXT_ID%3A38629403+OR+EXT_ID%3A31114620+OR+EXT_ID%3A37148270+OR+EXT_ID%3A37937723+OR+EXT_ID%3A39180467+OR+EXT_ID%3A35793513+OR+EXT_ID%3A35185725+OR+EXT_ID%3A31359840+OR+EXT_ID%3A37133255+OR+EXT_ID%3A31711372+OR+EXT_ID%3A31623532+OR+EXT_ID%3A33497921+OR+EXT_ID%3A32584910+OR+EXT_ID%3A33306030+OR+EXT_ID%3A31981539+OR+EXT_ID%3A32608505+OR+EXT_ID%3A32373328+OR+EXT_ID%3A30621661+OR+EXT_ID%3A31415863+OR+EXT_ID%3A26335794+OR+EXT_ID%3A27377617+OR+EXT_ID%3A25211469+OR+EXT_ID%3A17636823+OR+EXT_ID%3A37750224+OR+EXT_ID%3A40425196+OR+EXT_ID%3A41024298+OR+EXT_ID%3A40469793+OR+EXT_ID%3A37743664+OR+EXT_ID%3A37484072+OR+EXT_ID%3A32515292+OR+EXT_ID%3A36232015+OR+EXT_ID%3A32077730%29&resultType=core&format=json&pageSize=100",
+    "file": "europepmc-1.json",
+    "exit": 0,
+    "retrievedAt": "2026-10-31T04:58:25.669209+00:00",
+    "sha256": "c196e3805495056a76e732398d5c18ac1415c19f00cd86052d572a8754e2494a"
+  },
+  {
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=SRC%3AMED+AND+%28EXT_ID%3A32650670+OR+EXT_ID%3A31715628+OR+EXT_ID%3A32512265+OR+EXT_ID%3A31363925+OR+EXT_ID%3A27359091+OR+EXT_ID%3A32318156+OR+EXT_ID%3A30344863+OR+EXT_ID%3A28503060+OR+EXT_ID%3A25751123+OR+EXT_ID%3A25410886+OR+EXT_ID%3A25129883+OR+EXT_ID%3A23561069+OR+EXT_ID%3A24043922+OR+EXT_ID%3A20587468+OR+EXT_ID%3A21816474+OR+EXT_ID%3A20712147+OR+EXT_ID%3A17469878+OR+EXT_ID%3A16617173+OR+EXT_ID%3A12602656+OR+EXT_ID%3A10783523+OR+EXT_ID%3A42298885+OR+EXT_ID%3A37107774+OR+EXT_ID%3A24766169+OR+EXT_ID%3A15913391+OR+EXT_ID%3A11036736+OR+EXT_ID%3A33743632+OR+EXT_ID%3A33428625+OR+EXT_ID%3A40425169+OR+EXT_ID%3A32755265+OR+EXT_ID%3A40632759+OR+EXT_ID%3A36429899+OR+EXT_ID%3A39302822+OR+EXT_ID%3A36909881+OR+EXT_ID%3A37383644+OR+EXT_ID%3A37131508%29&resultType=core&format=json&pageSize=100",
+    "file": "europepmc-2.json",
+    "exit": 0,
+    "retrievedAt": "2026-10-31T04:58:25.519099+00:00",
+    "sha256": "00a21847a9344bca0cbcd879f9eed6768de664360d1d45ce6b0115ef385096ba"
+  },
+  {
+    "url": "https://api.crossref.org/works/10.1007%2Fs10896-023-00561-3",
+    "file": "crossref-dv-mindbody-c6c616df1710.json",
+    "exit": 0,
+    "retrievedAt": "2026-10-31T04:58:26.576827+00:00",
+    "sha256": "6e9696ff84eb55a7b46ad0b655c6ced6b4d8391ea9a50751324bbff17b653969"
+  },
+  {
+    "url": "https://api.crossref.org/works/10.17761%2Fijyt.16.1.d8qw1532m0121w35",
+    "file": "crossref-dv-mindbody-88e29294631c.json",
+    "exit": 0,
+    "retrievedAt": "2026-10-31T04:58:26.342417+00:00",
+    "sha256": "08db6d071b2bf9c57b6049a015b50d2b55816f81d54a7717055acc593390abf6"
+  },
+  {
+    "url": "https://api.crossref.org/works/10.1192%2Fbjo.2021.1057",
+    "file": "crossref-dv-vision-426ce6386119.json",
+    "exit": 0,
+    "retrievedAt": "2026-10-31T04:58:26.493686+00:00",
+    "sha256": "76a45153798ea0b8b96cc92b45242d0a2d1e7c2fb9158e82b8d244ad2ad19b8f"
+  },
+  {
+    "url": "https://api.crossref.org/works/10.1093%2Fswr%2F23.2.103",
+    "file": "crossref-dv-vision-d1f88a25c475.json",
+    "exit": 0,
+    "retrievedAt": "2026-10-31T04:58:27.014199+00:00",
+    "sha256": "b3b1024b0ef42e62179ac8d4e01e97931d12d5dcaba0f33281fd00b53e9b2720"
+  },
+  {
+    "url": "https://api.crossref.org/works/10.1037%2Fscp0000177",
+    "file": "crossref-dv-mindbody-b5f8ce1b573c.json",
+    "exit": 0,
+    "retrievedAt": "2026-10-31T04:58:27.145996+00:00",
+    "sha256": "d99e7d06b92b8ba02db62a194e62fbcbdf180cb5001e4032327aef393a8beed7"
+  },
+  {
+    "url": "https://api.crossref.org/works/10.1007%2Fs10896-026-01179-x",
+    "file": "crossref-dv-sound-efa9f1420011.json",
+    "exit": 0,
+    "retrievedAt": "2026-10-31T04:58:27.443783+00:00",
+    "sha256": "1f4d65abacc28bdd154d884be2e023dc933248f243029a71e4375bcbc3e69566"
+  },
+  {
+    "url": "https://api.crossref.org/works/10.26262%2Fhjp.v22i3.10498",
+    "file": "crossref-dv-sound-61889e897b46.json",
+    "exit": 56,
+    "retrievedAt": "2026-10-31T04:58:27.663768+00:00",
+    "error": "curl: (56) The requested URL returned error: 404\n"
+  },
+  {
+    "url": "https://api.crossref.org/works/10.30707%2FETD2022.20230207065834995923.999979",
+    "file": "crossref-dv-sound-849dafa52c8c.json",
+    "exit": 0,
+    "retrievedAt": "2026-10-31T04:58:27.810452+00:00",
+    "sha256": "c3533460cb52921d8e90cba473152686b75fd070c1fefb2a0164a12dce494105"
+  },
+  {
+    "url": "https://api.crossref.org/works/10.1017%2Fcha.2018.45",
+    "file": "crossref-dv-sound-3c0015edd5fa.json",
+    "exit": 0,
+    "retrievedAt": "2026-10-31T04:58:28.227622+00:00",
+    "sha256": "bd3ca7f6ca1764395190d180836629fcf38ec51b81ef78ebb1c403f12ec70ca1"
+  },
+  {
+    "url": "https://api.crossref.org/works/10.1093%2Fmtp%2Fmiw004",
+    "file": "crossref-dv-sound-52ec6bcb53a0.json",
+    "exit": 0,
+    "retrievedAt": "2026-10-31T04:58:28.666116+00:00",
+    "sha256": "44845676f05d31309ed194805699eac5dd926d9aba69f18e9ed45c6be6d9e540"
+  },
+  {
+    "url": "https://api.crossref.org/works/10.30707%2FETD2015.Miner.K",
+    "file": "crossref-dv-sound-99de3f3bbdea.json",
+    "exit": 0,
+    "retrievedAt": "2026-10-31T04:58:28.578142+00:00",
+    "sha256": "cd34d05d599084e5e3ae5db5cd8c9f5d5cfacd6ed9e0a88d3f9cd04057b42658"
+  },
+  {
+    "url": "https://api.crossref.org/works/10.1093%2Fmtp%2F24.2.80",
+    "file": "crossref-dv-sound-1be40a54cbc1.json",
+    "exit": 0,
+    "retrievedAt": "2026-10-31T04:58:28.875909+00:00",
+    "sha256": "2890169bd6de2b59394f38790a12087d1a713f0f07cc1685858cfe548e0f706c"
+  },
+  {
+    "url": "https://api.crossref.org/works/10.1080%2F21501378.2018.1561146",
+    "file": "crossref-dv-vision-da3bfad76f98.json",
+    "exit": 0,
+    "retrievedAt": "2026-10-31T04:58:29.360425+00:00",
+    "sha256": "5cc12a51e0667276db1a01ad9a72ad0dad02c004e963e347008be32675c0e8fa"
+  },
+  {
+    "url": "https://api.crossref.org/works/10.1016%2Fj.erap.2012.08.006",
+    "file": "crossref-dv-vision-2a09962793c2.json",
+    "exit": 0,
+    "retrievedAt": "2026-10-31T04:58:29.522395+00:00",
+    "sha256": "96f9f739b2901d37f66cc1fcd36112e2e60865fff4f4badb061115980ef9fab2"
+  },
+  {
+    "url": "https://api.crossref.org/works/10.1891%2F1933-3196.3.3.192",
+    "file": "crossref-dv-vision-d0356a161cd2.json",
+    "exit": 0,
+    "retrievedAt": "2026-10-31T04:58:29.522112+00:00",
+    "sha256": "75ae89126360d715ccf21517e5f24157b8ad00055cbd5c223699caacbe9e5e5f"
+  }
+]

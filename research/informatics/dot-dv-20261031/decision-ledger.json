@@ -1,0 +1,2069 @@
+{
+  "batchRevision": "audit-16f8e1d36d3f40c4",
+  "counts": {
+    "assessed": 130,
+    "recommendedSummaries": 117,
+    "withheld": 13,
+    "holds": 11,
+    "greyLiterature": 2,
+    "newRecommended": 115,
+    "existingRecommended": 2,
+    "randomizedReports": 51,
+    "verifiedDoubleBlindReports": 0,
+    "reviews": 25,
+    "otherDesigns": 41,
+    "recommendedAccess": {
+      "abstract": 74,
+      "selected-methods": 22,
+      "full-text": 21
+    },
+    "recommendedCollections": {
+      "language": 99,
+      "vision": 10,
+      "sound": 8
+    },
+    "recommendedRelevance": {
+      "direct": 108,
+      "context": 4,
+      "related": 5
+    },
+    "independentStudyFamilyCount": null,
+    "independenceStatus": "Publication counts only. Cohort independence and review overlap are not fully reconciled."
+  },
+  "records": [
+    {
+      "id": "dv-adult-therapy-42326745",
+      "title": "A Psychosocial Intervention to Enhance Psychological Empowerment Among Women Survivors of Intimate Partner Violence: A Randomized Controlled Trial.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-e193c34d9e75",
+      "contentHash": "e193c34d9e75f03693600a513c29902b91626a9a85a3e75f41da7024c4b2e446",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:42326745%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.2147%2Fijwh.s601216"
+      ]
+    },
+    {
+      "id": "dv-mindbody-40552233",
+      "title": "Behavioral intervention for mental health of pregnant women experiencing domestic violence: a randomized controlled trial.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-a2e381ebc792",
+      "contentHash": "a2e381ebc79265f1cb210db965bec986bcaa342ca14afdcd630177b9fdb2bda5",
+      "sourceAccess": "selected-methods",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/40552233/",
+        "https://www.frontiersin.org/journals/public-health/articles/10.3389/fpubh.2025.1541169/full"
+      ]
+    },
+    {
+      "id": "dv-reviews-41045209",
+      "title": "Comparing Fathers for Change Individual Therapy for IPV Use to the Duluth Model Intervention in Individual and Group Formats.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-c5ab2e9a9936",
+      "contentHash": "c5ab2e9a9936f53d20028ecd9ddad090858476095bb234c975808e0e4d30f536",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [
+        "methods-prevention/proposed-revisions.json"
+      ],
+      "sources": [
+        "https://europepmc.org/article/MED/41045209",
+        "https://api.crossref.org/works/10.1177%2F08862605251372568",
+        "https://clinicaltrials.gov/study/NCT04165291",
+        "https://cdn.clinicaltrials.gov/large-docs/91/NCT04165291/Prot_SAP_000.pdf"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-40883805",
+      "title": "Effect of life skills training on marital relations, self-esteem and anxiety levels of Iranian pregnant women exposed to intimate partner violence: a randomized controlled trial.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-227d270862ec",
+      "contentHash": "227d270862ec6bca840d7ccec19f45b037adca76bc9feb13e685c1e6c1e16220",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:40883805%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1186%2Fs40359-025-03352-1"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-41065656",
+      "title": "Long-Term Effectiveness of Trauma-Focused Therapy for Intimate Partner Violence Against Women: Effects on Posttraumatic Symptoms and Revictimization.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-1cc9a0e7cfa2",
+      "contentHash": "1cc9a0e7cfa2f2019e51ae75fe6a4ac2b63d01436946e36cf650e606fab9b907",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:41065656%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1177%2F08862605251372567"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-39529598",
+      "title": "Evocation of positive memories as complement to trauma-focused cognitive-behavioural therapy for intimate partner violence against women.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-39f4e24d89d4",
+      "contentHash": "39f4e24d89d403a1753599d7f51cbc7ab2db723c6b56055ee0e3f8ac47b17220",
+      "sourceAccess": "selected-methods",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:39529598%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1080%2F20008066.2024.2419699",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11559032/fullTextXML"
+      ]
+    },
+    {
+      "id": "dv-reviews-38206858",
+      "title": "Examining strength at home couples to prevent intimate partner violence on a military installation: A randomized controlled trial.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-463894f3c525",
+      "contentHash": "463894f3c525a8006c406dc87bcb606e40d221821a55944da4b142a93840a588",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [
+        "methods-prevention/proposed-revisions.json"
+      ],
+      "sources": [
+        "https://europepmc.org/article/MED/38206858",
+        "https://api.crossref.org/works/10.1037%2Fccp0000863",
+        "https://clinicaltrials.gov/study/NCT04517994",
+        "https://cdn.clinicaltrials.gov/large-docs/94/NCT04517994/Prot_SAP_000.pdf"
+      ]
+    },
+    {
+      "id": "dv-reviews-38678198",
+      "title": "Randomised pilot and feasibility trial of a group intervention for men who perpetrate intimate partner violence against women.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-6c2b56d99b8e",
+      "contentHash": "6c2b56d99b8eaff3269810b2097c813201d43deff0521a9b6ab5ed7cdd047b43",
+      "sourceAccess": "selected-methods",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://europepmc.org/article/MED/38678198",
+        "https://api.crossref.org/works/10.1186%2Fs12889-024-18640-5",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC11055266/"
+      ]
+    },
+    {
+      "id": "dv-mindbody-39135298",
+      "title": "The Effect of Mindfulness-Based Empowerment Program on Self-Compassion, Self-Esteem and Ways of Coping With Stress of Women Experienced Violence: A Randomised Controlled Study.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-beca4e80292c",
+      "contentHash": "beca4e80292cf6e2ea038bc76b91f7aea6602d6dd41d87ab6fe7a84d2a5ded36",
+      "sourceAccess": "selected-methods",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/39135298/",
+        "https://onlinelibrary.wiley.com/doi/full/10.1111/inm.13401",
+        "https://clinicaltrials.gov/study/NCT05310656"
+      ]
+    },
+    {
+      "id": "dv-mindbody-c6c616df1710",
+      "title": "Transcendental Meditation for Women Affected by Domestic Violence: A Pilot Randomised, Controlled Trial",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-13f9ce599ece",
+      "contentHash": "13f9ce599ece5dc9954e657e55ac536ccaea8ec703603cd33fbff9f54dedce54",
+      "sourceAccess": "full-text",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://doi.org/10.1007/s10896-023-00561-3",
+        "https://link.springer.com/article/10.1007/s10896-023-00561-3"
+      ]
+    },
+    {
+      "id": "dv-children-35285428",
+      "title": "Eight-year trajectories of behavior problems and resilience in children exposed to early-life intimate partner violence: The overlapping and distinct effects of individual factors, maternal characteristics, and early intervention.",
+      "decision": "hold",
+      "reason": "Reconcile the original allocation procedure, five-versus-six block descriptions and crossover analysis before approval of a new revision.",
+      "revision": "audit-r2-474e06ea2c35",
+      "contentHash": "474e06ea2c3544f0d954ccc45cde515f012f82cc3cb2582ab89740c7dcd39371",
+      "sourceAccess": "selected-methods",
+      "originalReady": true,
+      "appliedProposals": [
+        "methods-children/proposed-deltas.json",
+        "audit-policy.json: explicit adjudicated amendment"
+      ],
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/35285428/",
+        "https://europepmc.org/article/MED/35285428",
+        "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/B1A750E6EE2865948819845018AF7C9B/S0954579422000104a.pdf/div-class-title-eight-year-trajectories-of-behavior-problems-and-resilience-in-children-exposed-to-early-life-intimate-partner-violence-the-overlapping-and-distinct-effects-of-individual-factors-maternal-characteristics-and-early-intervention-div.pdf"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-37889918",
+      "title": "Problem-solving therapy for pregnant women experiencing depressive symptoms and intimate partner violence: A randomised, controlled feasibility trial in rural Ethiopia.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-54991bc67916",
+      "contentHash": "54991bc67916d3d5951f9eb1eb38c1cdb7278e19baa3e46ec94720f3dd5cbd33",
+      "sourceAccess": "full-text",
+      "originalReady": true,
+      "appliedProposals": [
+        "methods-adult/proposed-candidates.json"
+      ],
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:37889918%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1371%2Fjournal.pgph.0002054",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10610520/fullTextXML"
+      ]
+    },
+    {
+      "id": "dv-reviews-37383647",
+      "title": "Randomized Clinical Trial of a Brief Alcohol Intervention as an Adjunct to Batterer Intervention for Women Arrested for Domestic Violence.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-e39e1ec61bab",
+      "contentHash": "e39e1ec61bab558da15218faa30231d6b291edadd3b89203e76c3bb6b3366db2",
+      "sourceAccess": "selected-methods",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://europepmc.org/article/MED/37383647",
+        "https://api.crossref.org/works/10.5093%2Fpi2023a4",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC10294462/"
+      ]
+    },
+    {
+      "id": "dv-mindbody-37400911",
+      "title": "Trauma-specific mindfulness-based cognitive therapy for women with post-traumatic stress disorder and a history of domestic abuse: intervention refinement and a randomised feasibility trial (coMforT study).",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-42da0a488784",
+      "contentHash": "42da0a488784b75ba84595c616549c130cf0f7ff39041a5e6a28a57027e3a57e",
+      "sourceAccess": "full-text",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/37400911/",
+        "https://link.springer.com/article/10.1186/s40814-023-01335-w"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-33375899",
+      "title": "Compassion-Focused Therapy: Proof of Concept Trial on Suicidal Ideation and Cognitive Distortions in Female Survivors of Intimate Partner Violence With PTSD.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-18e7a93cc156",
+      "contentHash": "18e7a93cc156ee53c9b2673ffc56fa994c9acababefd6f8dae6f3be64bb3169b",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:33375899%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1177%2F0886260520984265"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-32933348",
+      "title": "Group-based Compassion-focused Therapy on Experiential Avoidance, Meaning-in-life, and Sense of Coherence in Female Survivors of Intimate Partner Violence with PTSD: A Randomized Controlled Trial.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-7e166a4a2807",
+      "contentHash": "7e166a4a280751e3c54b32c1d276a9459054833507b6c134d08f5c8f91da6681",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:32933348%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1177%2F0886260520958660"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-32993831",
+      "title": "Culturally adapted trauma-focused CBT-based guided self-help (CatCBT GSH) for female victims of domestic violence in Pakistan: feasibility randomized controlled trial.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-b41403dc1e55",
+      "contentHash": "b41403dc1e553a62402efcc465cd3df8017aca4291aef8f8206e3e9602572849",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:32993831%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1017%2Fs1352465820000685"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-34143803",
+      "title": "Evaluation of an integrated intervention to reduce psychological distress and intimate partner violence in refugees: Results from the Nguvu cluster randomized feasibility trial.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-33df2f11c37a",
+      "contentHash": "33df2f11c37ac48d21836ade531c0e6186b61eb20da2a91e477eebb3748f1093",
+      "sourceAccess": "full-text",
+      "originalReady": true,
+      "appliedProposals": [
+        "methods-adult/proposed-candidates.json"
+      ],
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:34143803%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1371%2Fjournal.pone.0252982",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8213126/fullTextXML"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-34584851",
+      "title": "Individually tailored Internet-delivered cognitive-behavioral therapy for survivors of intimate partner violence: A randomized controlled pilot trial.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-6b51a80717f4",
+      "contentHash": "6b51a80717f422cb178106dc10c801bfb15dcbd78f696b58beab8e07aa236dec",
+      "sourceAccess": "full-text",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:34584851%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1016%2Fj.invent.2021.100453",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC8452796/"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-34305273",
+      "title": "A Randomized Controlled Trial Comparing HOPE Treatment and Present-Centered Therapy in Women Residing in Shelter with PTSD from Intimate Partner Violence.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-33f9c465b9af",
+      "contentHash": "33f9c465b9af21d2ad7753089729913b2fc0ecc265be6bf9f939e655c2a38d9d",
+      "sourceAccess": "full-text",
+      "originalReady": true,
+      "appliedProposals": [
+        "methods-adult/proposed-candidates.json"
+      ],
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:34305273%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1177%2F0361684320953120",
+        "https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_json/PMC8294703/unicode"
+      ]
+    },
+    {
+      "id": "dv-mindbody-32969703",
+      "title": "Effects of mindfulness training on posttraumatic stress symptoms from a community-based pilot clinical trial among survivors of intimate partner violence.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-596988da2538",
+      "contentHash": "596988da2538e9605b7bd5023afbb193935d14c6e55d18f5333d6077a82da764",
+      "sourceAccess": "full-text",
+      "originalReady": true,
+      "appliedProposals": [
+        "methods-mindbody/proposed-fields.json"
+      ],
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/32969703/",
+        "https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_json/PMC8052636/unicode",
+        "https://clinicaltrials.gov/api/v2/studies/NCT03484390"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-33303427",
+      "title": "Two-year follow up of a cluster randomised controlled trial for women experiencing intimate partner violence: effect of screening and family doctor-delivered counselling on quality of life, mental and physical health and abuse exposure.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-5afcb017dbd4",
+      "contentHash": "5afcb017dbd45ea5a117f387f78b7680c84f423556055d3b50ba814d5a1dbf79",
+      "sourceAccess": "full-text",
+      "originalReady": true,
+      "appliedProposals": [
+        "methods-adult/proposed-candidates.json"
+      ],
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:33303427%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1136%2Fbmjopen-2019-034295",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7733186/fullTextXML",
+        "https://pureportal.coventry.ac.uk/en/publications/sometimes-cathartic-sometimes-quite-raw-benefit-and-harm-in-an-in-2/"
+      ]
+    },
+    {
+      "id": "dv-reviews-31548680",
+      "title": "A randomized controlled trial of restorative justice-informed treatment for domestic violence crimes.",
+      "decision": "hold",
+      "reason": "A legitimately accessible correction body, DOI 10.1038/s41562-019-0764-6, is needed before approval.",
+      "revision": "audit-r2-f348e6400022",
+      "contentHash": "f348e64000223b9449e279bf951fb598141be5d8923725077d2b0af56e0ea611",
+      "sourceAccess": "abstract",
+      "originalReady": false,
+      "appliedProposals": [],
+      "sources": [
+        "https://europepmc.org/article/MED/31548680",
+        "https://api.crossref.org/works/10.1038%2Fs41562-019-0724-1",
+        "https://www.nature.com/articles/s41562-019-0764-6"
+      ]
+    },
+    {
+      "id": "dv-reviews-29648853",
+      "title": "Individualized motivational plans in batterer intervention programs: A randomized clinical trial.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-b7feaf347562",
+      "contentHash": "b7feaf34756296cb79d98b8cad7a96eaaec7586b5abbc2534dac7b9507fd2d8b",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://europepmc.org/article/MED/29648853",
+        "https://api.crossref.org/works/10.1037%2Fccp0000291"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-30481183",
+      "title": "Psychological advocacy towards healing (PATH): A randomized controlled trial of a psychological intervention in a domestic violence service setting.",
+      "decision": "hold",
+      "reason": "A primary correction or event-adjudication clarification is needed. No author contact is authorized or planned.",
+      "revision": "audit-r2-1556859febdd",
+      "contentHash": "1556859febdda24fe1faba679b45e181c9cd1faf6cce4cd2ac61ab252ada577d",
+      "sourceAccess": "full-text",
+      "originalReady": false,
+      "appliedProposals": [],
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:30481183%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1371%2Fjournal.pone.0205485",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC6258512/"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-30079583",
+      "title": "The efficacy of narrative exposure therapy in a sample of Iranian women exposed to ongoing intimate partner violence-A randomized controlled trial.",
+      "decision": "hold",
+      "reason": "A legitimately available full paper/flow diagram or primary registry update must reconcile enrolment and role-specific masking.",
+      "revision": "audit-r2-c58ba20863eb",
+      "contentHash": "c58ba20863ebf689e66f47f6423a8e72fd483cc4f12befc0d5781bad21138fd5",
+      "sourceAccess": "abstract",
+      "originalReady": false,
+      "appliedProposals": [],
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:30079583%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1002%2Fcpp.2318",
+        "https://onlinelibrary.wiley.com/doi/abs/10.1002/cpp.2318",
+        "https://clinicaltrials.gov/api/v2/studies/NCT01731418"
+      ]
+    },
+    {
+      "id": "dv-reviews-26613288",
+      "title": "A Randomized Controlled Clinical Trial of the Strength at Home Men's Program for Partner Violence in Military Veterans.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-f0d5bcb03985",
+      "contentHash": "f0d5bcb03985398ea078184e03a3f2611bcb2331bf34b53b18cb41d861551953",
+      "sourceAccess": "selected-methods",
+      "originalReady": true,
+      "appliedProposals": [
+        "methods-prevention/proposed-revisions.json"
+      ],
+      "sources": [
+        "https://europepmc.org/article/MED/26613288",
+        "https://api.crossref.org/works/10.4088%2Fjcp.15m10020",
+        "https://strengthathome.org/wp-content/uploads/2020/05/RCT-for-SAH-Mens-Program-2016.pdf",
+        "https://clinicaltrials.gov/study/NCT01435512"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-27459503",
+      "title": "Comparison of Adding Treatment of PTSD During and After Shelter Stay to Standard Care in Residents of Battered Women's Shelters: Results of a Randomized Clinical Trial.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-27ebd3bf6fb6",
+      "contentHash": "27ebd3bf6fb65dcdcf41db2d59261cf26da75977d3a9ca6bfef43aae45209fc3",
+      "sourceAccess": "selected-methods",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:27459503%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1002%2Fjts.22117",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC5012294/"
+      ]
+    },
+    {
+      "id": "dv-reviews-27599224",
+      "title": "Strength at Home Couples program to prevent military partner violence: A randomized controlled trial.",
+      "decision": "hold",
+      "reason": "Hold the frozen revision pending sample/registry reconciliation and a qualified replacement finding. Pilot inclusion is an unverified hypothesis, not an explanation.",
+      "revision": "audit-r2-e00fcfc78e50",
+      "contentHash": "e00fcfc78e502f156405a6fb6b5579f0f384404a1510bdb1175560d9e226e5c0",
+      "sourceAccess": "selected-methods",
+      "originalReady": true,
+      "appliedProposals": [
+        "audit-policy.json: explicit adjudicated amendment"
+      ],
+      "sources": [
+        "https://europepmc.org/article/MED/27599224",
+        "https://api.crossref.org/works/10.1037%2Fccp0000129",
+        "https://www.ptsd.va.gov/professional/articles/article-pdf/id45454.pdf"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-26437311",
+      "title": "A group intervention to reduce intimate partner violence among female drug users. Results from a randomized controlled pilot trial in a community substance-abuse center.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-bd71f9bafb58",
+      "contentHash": "bd71f9bafb58bf9f01fd30859dd2df8a14c49ba50943e382e5f0d1abcb5319ba",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:26437311%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.20882%2Fadicciones.703"
+      ]
+    },
+    {
+      "id": "dv-children-25596929",
+      "title": "An Efficacy Trial of an Intervention Program for Children Exposed to Intimate Partner Violence.",
+      "decision": "hold",
+      "reason": "A contemporaneous protocol or allocation schedule must establish the random mechanism and reconcile five-family blocks here with six-family blocks in the follow-up. Do not approve the frozen revision meanwhile.",
+      "revision": "audit-r2-bc43cb796fde",
+      "contentHash": "bc43cb796fdecda0678786236e30e4139428f9066f159e7d88fb9d643628a614",
+      "sourceAccess": "selected-methods",
+      "originalReady": true,
+      "appliedProposals": [
+        "audit-policy.json: explicit adjudicated amendment"
+      ],
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/25596929/",
+        "https://europepmc.org/article/MED/25596929",
+        "https://www.researchgate.net/publication/271220066_An_Efficacy_Trial_of_an_Intervention_Program_for_Children_Exposed_to_Intimate_Partner_Violence"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-24252714",
+      "title": "Motivational interviewing and intimate partner violence: a randomized trial.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-f2d3c85e04b2",
+      "contentHash": "f2d3c85e04b2fac8ea1541212d2d533acbd7fdd6583c03751b743665a8fd37f4",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:24252714%20AND%20SRC:MED&format=json&resultType=core"
+      ]
+    },
+    {
+      "id": "dv-children-23948313",
+      "title": "Effectiveness of specific factors in community-based intervention for child-witnesses of interparental violence: a randomized trial.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-1a3a7c10b488",
+      "contentHash": "1a3a7c10b4885f49c8c4db8cbd73be00ad0edd7be76bd6e7188def2fd325d63b",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/23948313/",
+        "https://europepmc.org/article/MED/23948313"
+      ]
+    },
+    {
+      "id": "dv-reviews-23414253",
+      "title": "Randomized clinical trial examining the incremental efficacy of a 90-minute motivational alcohol intervention as an adjunct to standard batterer intervention for men.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-005bc6027b1a",
+      "contentHash": "005bc6027b1a006ae872634a0a6a5341971710178bca224903dc2721e65012c0",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://europepmc.org/article/MED/23414253",
+        "https://api.crossref.org/works/10.1111%2Fadd.12142"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-23598181",
+      "title": "Screening and counselling in the primary care setting for women who have experienced intimate partner violence (WEAVE): a cluster randomised controlled trial.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-bb27f6bb9280",
+      "contentHash": "bb27f6bb9280c5894717556181078d831080f29e2070f96b2ee14632631001c9",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [
+        "methods-adult/proposed-candidates.json"
+      ],
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:23598181%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1016%2Fs0140-6736%2813%2960052-5",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7733186/fullTextXML",
+        "https://pureportal.coventry.ac.uk/en/publications/sometimes-cathartic-sometimes-quite-raw-benefit-and-harm-in-an-in-2/"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-21153559",
+      "title": "An interpersonally based intervention for low-income pregnant women with intimate partner violence: a pilot study.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-921b811c73f8",
+      "contentHash": "921b811c73f8d784fd80039ae26f2bf931a0190fd30a5e54416661c11eb117e8",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:21153559%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1007%2Fs00737-010-0195-x"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-21787052",
+      "title": "Cognitive behavioral treatment of PTSD in residents of battered women's shelters: results of a randomized clinical trial.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-a14dd6456cda",
+      "contentHash": "a14dd6456cdac55acbc5f3d82ef063ec4fab69727d9f7c45ed39a6b67fc059b8",
+      "sourceAccess": "full-text",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:21787052%20AND%20SRC:MED&format=json&resultType=core",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC3144508/"
+      ]
+    },
+    {
+      "id": "dv-children-21199975",
+      "title": "Community treatment of posttraumatic stress disorder for children exposed to intimate partner violence: a randomized controlled trial.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-ebb52ba2c40f",
+      "contentHash": "ebb52ba2c40fcef40023384ce3c9337d3b79e69d17ef3b372e8750dfa5bf1c4c",
+      "sourceAccess": "selected-methods",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/21199975/",
+        "https://europepmc.org/article/MED/21199975",
+        "https://jamanetwork.com/journals/jamapediatrics/fullarticle/384142"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-20977033",
+      "title": "Assessment of the efficacy of a psychological treatment for women victims of violence by their intimate male partner.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-92b24fce4ce5",
+      "contentHash": "92b24fce4ce5c1790888f8b5af5ae9a49f9b04d109b9260a4b469a8c31099a3f",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:20977033%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1017%2Fs113874160000250x"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-20658802",
+      "title": "Suicidal, abused African American women's response to a culturally informed intervention.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-8c17654c3a6f",
+      "contentHash": "8c17654c3a6f5bf0b26a381e8cdf07f65a16dd68b9798997c9495265c049c674",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:20658802%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1037%2Fa0019692"
+      ]
+    },
+    {
+      "id": "dv-children-19634963",
+      "title": "Reducing conduct problems among children exposed to intimate partner violence: a randomized clinical trial examining effects of Project Support.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-0654ea485fdc",
+      "contentHash": "0654ea485fdca0972ac61b04e58295034b5b5b5839d8ac80cdc911cd6c2a0093",
+      "sourceAccess": "selected-methods",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/19634963/",
+        "https://europepmc.org/article/MED/19634963",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC6815933/"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-17022356",
+      "title": "An integrated relapse prevention and relationship safety intervention for women on methadone: testing short-term effects on intimate partner violence and substance use.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-f3a54233bb82",
+      "contentHash": "f3a54233bb82366b4e2286e4835fa70bc1f20f1d0eabcc8cad693c15e25b6f78",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:17022356%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1891%2F0886-6708.21.5.657"
+      ]
+    },
+    {
+      "id": "dv-children-16865033",
+      "title": "Child-parent psychotherapy: 6-month follow-up of a randomized controlled trial.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-3d1e45a422e0",
+      "contentHash": "3d1e45a422e014f36a20f15a0bbaa6c85dcd97801640209994f390ea37470ffc",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [
+        "methods-children/proposed-deltas.json"
+      ],
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/16865033/",
+        "https://europepmc.org/article/MED/16865033",
+        "https://pubmed.ncbi.nlm.nih.gov/16865033/"
+      ]
+    },
+    {
+      "id": "dv-children-16569097",
+      "title": "Reducing conduct problems among children brought to women's shelters: intervention effects 24 months following termination of services.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-83099a1613ee",
+      "contentHash": "83099a1613eee83d9b5c24ecf2a3d25cb0729e3ff33de781a8575d39458cd0a1",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/16569097/",
+        "https://europepmc.org/article/MED/16569097"
+      ]
+    },
+    {
+      "id": "dv-mindbody-88e29294631c",
+      "title": "Take a Breath, Break The Silence: The Effects of Yogic Breathing and Testimony About Battering on Feelings of Self-Efficacy in Battered Women",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-8a9bf8bda780",
+      "contentHash": "8a9bf8bda780cf1863c1d73a20356b59615ce7ff6149124c3f639a3f152ac0d8",
+      "sourceAccess": "selected-methods",
+      "originalReady": true,
+      "appliedProposals": [
+        "methods-mindbody/proposed-fields.json"
+      ],
+      "sources": [
+        "https://doi.org/10.17761/ijyt.16.1.d8qw1532m0121w35",
+        "https://ijyt.kglmeridian.com/view/journals/ijyt/16/1/article-p49.xml",
+        "https://www.researchgate.net/publication/228698848_Take_a_Breath_Break_The_Silence_The_Effects_of_Yogic_Breathing_and_Testimony_About_Battering_on_Feelings_of_Self-Efficacy_in_Battered_Women"
+      ]
+    },
+    {
+      "id": "dv-children-16292115",
+      "title": "Toward evidence-based treatment: child-parent psychotherapy with preschoolers exposed to marital violence.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-226235e7c7d4",
+      "contentHash": "226235e7c7d433c97ab40df42abe4561cb9e9fd843d85f108af2207cb3baedfe",
+      "sourceAccess": "selected-methods",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/16292115/",
+        "https://europepmc.org/article/MED/16292115",
+        "https://childparentpsychotherapy.com/wp-content/uploads/2016/11/lieberman-vanhorn-ghosh-2005.pdf"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-14756610",
+      "title": "Cognitive trauma therapy for battered women with PTSD (CTT-BW).",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-7b877fac7172",
+      "contentHash": "7b877fac7172a88201de8cd7bf0814ac24b2d14327028c779ac2f4fbde5d3ace",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:14756610%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1037%2F0022-006x.72.1.3"
+      ]
+    },
+    {
+      "id": "dv-children-11680554",
+      "title": "Reducing conduct problems among children of battered women.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-88f0876aafdb",
+      "contentHash": "88f0876aafdb4311247a049c6cecea071bb79d6816debe13fa981f4343580e72",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/11680554/",
+        "https://europepmc.org/article/MED/11680554"
+      ]
+    },
+    {
+      "id": "dv-vision-42529059",
+      "title": "A pilot study of the feasibility and preliminary outcomes of sequential TF-CBT and EMDR online group therapy for adult women with histories of childhood sexual abuse.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-4979b3c28950",
+      "contentHash": "4979b3c28950d0de7d0b768204ad0d88cb284cfc41cba08f3f5c5b2c183caa1c",
+      "sourceAccess": "full-text",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/42529059/",
+        "https://doi.org/10.3389/fpsyg.2026.1872104",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13416442/fullTextXML",
+        "https://api.crossref.org/works/10.3389%2Ffpsyg.2026.1872104"
+      ]
+    },
+    {
+      "id": "dv-vision-38868491",
+      "title": "Psychological intervention in women victims of childhood sexual abuse: a randomized controlled clinical trial comparing EMDR psychotherapy and trauma-focused cognitive behavioral therapy.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-93dd2f47f79e",
+      "contentHash": "93dd2f47f79ec5daa9f10f122ae6299c91bb0c0b730ac2c184975e2fb2b92d0f",
+      "sourceAccess": "full-text",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/38868491/",
+        "https://doi.org/10.3389/fpsyt.2024.1360388",
+        "https://www.frontiersin.org/journals/psychiatry/articles/10.3389/fpsyt.2024.1360388/full",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11167727/fullTextXML",
+        "https://api.crossref.org/works/10.3389%2Ffpsyt.2024.1360388"
+      ]
+    },
+    {
+      "id": "dv-vision-38629403",
+      "title": "Skills training followed by either EMDR or narrative therapy for posttraumatic stress disorder in adult survivors of childhood abuse: a randomized controlled trial.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-2b448909fa30",
+      "contentHash": "2b448909fa303411ee790b977b9f0124f90758250c18464f9db0cd4d81586c08",
+      "sourceAccess": "full-text",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/38629403/",
+        "https://doi.org/10.1080/20008066.2024.2332104",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11025408/fullTextXML",
+        "https://api.crossref.org/works/10.1080%2F20008066.2024.2332104"
+      ]
+    },
+    {
+      "id": "dv-vision-426ce6386119",
+      "title": "Phase-based treatment versus immediate trauma-focused treatment for post-traumatic stress disorder due to childhood abuse: randomised clinical trial",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-f5ed69f7fca1",
+      "contentHash": "f5ed69f7fca162ccd263a8f2b5ba702424e6427b4aba8a0a58eb1fdb98585e4f",
+      "sourceAccess": "full-text",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://doi.org/10.1192/bjo.2021.1057",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8612023/fullTextXML",
+        "https://api.crossref.org/works/10.1192%2Fbjo.2021.1057",
+        "https://link.springer.com/article/10.1186/s13063-018-2508-8"
+      ]
+    },
+    {
+      "id": "dv-children-31114620",
+      "title": "Effectiveness of Cognitive Behavioral Therapy and Eye Movement Desensitization and Reprocessing in Child Victims of Domestic Violence.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-b2ab0c4d2905",
+      "contentHash": "b2ab0c4d2905ff690cc7aad8709e4e42b33fd88023cd942685a7363050276346",
+      "sourceAccess": "selected-methods",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/31114620/",
+        "https://europepmc.org/article/MED/31114620",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC6505052/"
+      ]
+    },
+    {
+      "id": "dv-vision-d1f88a25c475",
+      "title": "The effectiveness of EMDR with adult female survivors of childhood sexual abuse",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-44764e74dc69",
+      "contentHash": "44764e74dc69f9c80f41780867cc2c5c4776000e61db45a2c4b5d306d59f550e",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://doi.org/10.1093/swr/23.2.103",
+        "https://academic.oup.com/swr/article-abstract/23/2/103/1637508",
+        "https://api.crossref.org/works/10.1093%2Fswr%2F23.2.103"
+      ]
+    },
+    {
+      "id": "dv-reviews-37148270",
+      "title": "Efficacy of Psychosocial Interventions for Survivors of Intimate Partner Violence: A Systematic Review and Meta-Analysis.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-4bcb1ce27c6a",
+      "contentHash": "4bcb1ce27c6a58468a258a077e6853e11c1e21c32f668b8d14e4071f023c501e",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://europepmc.org/article/MED/37148270",
+        "https://api.crossref.org/works/10.1177%2F15248380231169481"
+      ]
+    },
+    {
+      "id": "dv-reviews-37937723",
+      "title": "Interventions Targeting Depression and Posttraumatic Stress Disorder in United States Black Women Experiencing Intimate Partner Violence: A Systematic Review.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-bd78901102a6",
+      "contentHash": "bd78901102a6bf4d84988ce1edd66a03b6096da6b900fedebf74293b91ccb38a",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://europepmc.org/article/MED/37937723",
+        "https://api.crossref.org/works/10.1177%2F15248380231206113"
+      ]
+    },
+    {
+      "id": "dv-reviews-39180467",
+      "title": "The Effectiveness of Intervention Programs for Perpetrators of Intimate Partner Violence with Substance Abuse and/or Mental Disorders: A Systematic Review.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-776b7b9996f8",
+      "contentHash": "776b7b9996f8d354aa4e018ca196da92aaaece9248d1300471156d85f1b984bd",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://europepmc.org/article/MED/39180467",
+        "https://api.crossref.org/works/10.1177%2F15248380241270063"
+      ]
+    },
+    {
+      "id": "dv-reviews-35793513",
+      "title": "Motivational Interview Techniques and the Effectiveness of Intervention Programs With Perpetrators of Intimate Partner Violence: A Systematic Review.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-d1764b81619f",
+      "contentHash": "d1764b81619f1f060bf523dc68f4a9dcfe07a0165dca4dcdc2154f9282cc7e86",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://europepmc.org/article/MED/35793513",
+        "https://api.crossref.org/works/10.1177%2F15248380221111472"
+      ]
+    },
+    {
+      "id": "dv-reviews-35185725",
+      "title": "Treatments for Female Victims of Intimate Partner Violence: Systematic Review and Meta-Analysis.",
+      "decision": "hold",
+      "reason": "The safety confidence interval differs between abstract and body, and unusually large standardized anxiety/stress effects remain unreconstructed. Withhold from this first public release until numerical interpretation is independently reconciled; this is not a retraction or a claim that every finding is wrong.",
+      "revision": "audit-r2-77c413813101",
+      "contentHash": "77c41381310159e38b435e398fddd25c4e225e5b3b71257d2fb4e3226df23644",
+      "sourceAccess": "selected-methods",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://europepmc.org/article/MED/35185725",
+        "https://api.crossref.org/works/10.3389%2Ffpsyg.2022.793021",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC8855937/"
+      ]
+    },
+    {
+      "id": "dv-reviews-31359840",
+      "title": "Compared to What? A Meta-Analysis of Batterer Intervention Studies Using Nontreated Controls or Comparisons.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-177b717ae60f",
+      "contentHash": "177b717ae60f42822fa4feb0ee9505c949e5dd7ebdc2323982ff01863f71f4d2",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://europepmc.org/article/MED/31359840",
+        "https://api.crossref.org/works/10.1177%2F1524838019865927"
+      ]
+    },
+    {
+      "id": "dv-reviews-37133255",
+      "title": "Court-mandated interventions for individuals convicted of domestic violence: An updated Campbell systematic review.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-1312b51facbb",
+      "contentHash": "1312b51facbbb32a6afa1baba7d4d52298920634faf29013a2cde62761b90ee1",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://europepmc.org/article/MED/37133255",
+        "https://api.crossref.org/works/10.1002%2Fcl2.1151"
+      ]
+    },
+    {
+      "id": "dv-reviews-31711372",
+      "title": "Interventions to Reduce Intimate Partner Violence Perpetration by Men Who Use Substances: A Systematic Review and Meta-Analysis of Efficacy.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-f7f8985dedd7",
+      "contentHash": "f7f8985dedd79b5313cf6e254c26a91e1e099c9c8a3d56917228eaea582c5e9c",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://europepmc.org/article/MED/31711372",
+        "https://api.crossref.org/works/10.1177%2F1524838019882357"
+      ]
+    },
+    {
+      "id": "dv-reviews-31623532",
+      "title": "Meta-Analysis on Interventions for Children Exposed to Intimate Partner Violence.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-7aa7b89a62a2",
+      "contentHash": "7aa7b89a62a22144e41ff1d54b19769d8e1fffa6cfebafeb37d8312ae3111820",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://europepmc.org/article/MED/31623532",
+        "https://api.crossref.org/works/10.1177%2F1524838019881737"
+      ]
+    },
+    {
+      "id": "dv-reviews-33497921",
+      "title": "The effectiveness of interventions to prevent recidivism in perpetrators of intimate partner violence: A systematic review and meta-analysis.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-2093621d28f4",
+      "contentHash": "2093621d28f4a8b075b8677122bb229f4ef1d16e60f392d1e71ed09fe8d34095",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://europepmc.org/article/MED/33497921",
+        "https://api.crossref.org/works/10.1016%2Fj.cpr.2021.101974"
+      ]
+    },
+    {
+      "id": "dv-reviews-32584910",
+      "title": "A systematic review of intimate partner violence interventions focused on improving social support and/ mental health outcomes of survivors.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-9168ea34d2bb",
+      "contentHash": "9168ea34d2bb12cfc410eaa70e388eb8ac512db752d38c0e21fa7202995aacaf",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://europepmc.org/article/MED/32584910",
+        "https://api.crossref.org/works/10.1371%2Fjournal.pone.0235177"
+      ]
+    },
+    {
+      "id": "dv-reviews-33306030",
+      "title": "Intimate Partner Violence and Electronic Health Interventions: Systematic Review and Meta-Analysis of Randomized Trials.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-d339f591ad41",
+      "contentHash": "d339f591ad4167a7929c251bc4f8097f8cdd6f718e984697a3c5288bffa34eb0",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://europepmc.org/article/MED/33306030",
+        "https://api.crossref.org/works/10.2196%2F22361"
+      ]
+    },
+    {
+      "id": "dv-reviews-31981539",
+      "title": "Psychological interventions for common mental disorders in women experiencing intimate partner violence in low-income and middle-income countries: a systematic review and meta-analysis.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-3a5290fd79d9",
+      "contentHash": "3a5290fd79d9fee3693507df5bee06133792ad30fdb3be5f9221215a04fae10c",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://europepmc.org/article/MED/31981539",
+        "https://api.crossref.org/works/10.1016%2Fs2215-0366%2819%2930510-3"
+      ]
+    },
+    {
+      "id": "dv-reviews-32608505",
+      "title": "Psychological therapies for women who experience intimate partner violence.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-6bd3e8beecb0",
+      "contentHash": "6bd3e8beecb0c62bcba92efa8b1a3b546a5b1b354e5bd6e53e87ed806315d043",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://europepmc.org/article/MED/32608505",
+        "https://api.crossref.org/works/10.1002%2F14651858.cd013017.pub2"
+      ]
+    },
+    {
+      "id": "dv-reviews-32373328",
+      "title": "Psychosocial interventions for intimate partner violence in low and middle income countries: A meta-analysis of randomised controlled trials.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-06643330f5ef",
+      "contentHash": "06643330f5ef3371951e22a148ebf2d02d3695014eba5c2ac60abd1f1473d4ca",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://europepmc.org/article/MED/32373328",
+        "https://api.crossref.org/works/10.7189%2Fjogh.10.010409"
+      ]
+    },
+    {
+      "id": "dv-reviews-30621661",
+      "title": "Cognitive behavioural group therapy for male perpetrators of intimate partner violence: a systematic review.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-cd088089af6a",
+      "contentHash": "cd088089af6aabfa97a683879e3bc949b1c57a1b026412b32a692a0dc897ddfe",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://europepmc.org/article/MED/30621661",
+        "https://api.crossref.org/works/10.1186%2Fs12888-019-2010-1"
+      ]
+    },
+    {
+      "id": "dv-reviews-31415863",
+      "title": "Meta-analysis and systematic review for the treatment of perpetrators of intimate partner violence.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-9d19210078fc",
+      "contentHash": "9d19210078fc6677d2f2334fe02162d6e837502c57309e5ee57883a28a0f868d",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://europepmc.org/article/MED/31415863",
+        "https://api.crossref.org/works/10.1016%2Fj.neubiorev.2019.08.006"
+      ]
+    },
+    {
+      "id": "dv-reviews-26335794",
+      "title": "Short-Term Interventions for Survivors of Intimate Partner Violence: A Systematic Review and Meta-Analysis.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-336e2f7b7bb4",
+      "contentHash": "336e2f7b7bb4a36f259c961545f9df838f54c40c76b85f9a6e87367702aaecd8",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://europepmc.org/article/MED/26335794"
+      ]
+    },
+    {
+      "id": "dv-reviews-27377617",
+      "title": "Couples Therapy for Intimate Partner Violence: A Systematic Review and Meta-Analysis.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-cb21967dfd76",
+      "contentHash": "cb21967dfd76f2cf047d0871e3a38829ef3f724d5373c2054b40d3efaf0c8b93",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://europepmc.org/article/MED/27377617",
+        "https://api.crossref.org/works/10.1111%2Fjmft.12178"
+      ]
+    },
+    {
+      "id": "dv-reviews-25211469",
+      "title": "The efficacy of cognitive behavioural therapy and advocacy interventions for women who have experienced intimate partner violence: a systematic review and meta-analysis.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-8fea56623c3b",
+      "contentHash": "8fea56623c3b95ac92dc067652c19b2eac686c657ca548de18e2ad7f63e95c33",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://europepmc.org/article/MED/25211469",
+        "https://api.crossref.org/works/10.3109%2F07853890.2014.941918"
+      ]
+    },
+    {
+      "id": "dv-reviews-17636823",
+      "title": "Cognitive behavioural therapy for men who physically abuse their female partner.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-3fce233f4f2a",
+      "contentHash": "3fce233f4f2a45c278b95934c0dfecdb6d84d079703e8fcdac931eddaa494f81",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://europepmc.org/article/MED/17636823",
+        "https://api.crossref.org/works/10.1002%2F14651858.cd006048.pub2"
+      ]
+    },
+    {
+      "id": "dv-children-37750224",
+      "title": "Changes in Psychiatric Symptoms in Swedish Mothers Who Took Part in Project Support: An Intervention for Mothers Exposed to Intimate Partner Violence With Children Who Have Developed Conduct Problems.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-681b56acdc11",
+      "contentHash": "681b56acdc11812f5f85277a96b24a8ae5418145d2584e285543972be7133ad2",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/37750224/",
+        "https://europepmc.org/article/MED/37750224"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-40425196",
+      "title": "Dropout From Trauma-Focused Treatment for Intimate Partner Violence Against Women.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-21f4997aa504",
+      "contentHash": "21f4997aa50481a7c7d2bb9aa7f5ea4d5742bb38f8c04194e60bb8c2a8c59f0c",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:40425196%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1002%2Fcpp.70092"
+      ]
+    },
+    {
+      "id": "dv-mindbody-41024298",
+      "title": "The effect of mindfulness group counseling on the anxiety of pregnant women exposed to domestic violence: a randomized clinical trial.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-c8d4b9754c4a",
+      "contentHash": "c8d4b9754c4ab5484a106809410e1a50c70c216ece920cb025767f92b6d97dcc",
+      "sourceAccess": "full-text",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/41024298/",
+        "https://link.springer.com/article/10.1186/s40359-025-03358-9",
+        "https://link.springer.com/article/10.1186/s40359-025-03711-y"
+      ]
+    },
+    {
+      "id": "dv-children-40469793",
+      "title": "Video Narrative Exposure Therapy (NET) with Children and Young People who Witnessed Domestic Violence: A Naturalistic Single Case Study Series.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-901c0377e777",
+      "contentHash": "901c0377e777984f4c55ccccc96e3b660929e2734ae64d8336e57d881efbe764",
+      "sourceAccess": "selected-methods",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/40469793/",
+        "https://europepmc.org/article/MED/40469793",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC12130420/"
+      ]
+    },
+    {
+      "id": "dv-mindbody-37743664",
+      "title": "Trauma-Informed Yoga: A Capacity Building and Wellness Strengthening Intervention for Female Survivors of Intimate Partner Violence and Affiliative Staff.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-820b158ae8fd",
+      "contentHash": "820b158ae8fd97e2c22a7844eb5bbd49a3fc3a1030a742ac85a9c8e18eacdcd1",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/37743664/"
+      ]
+    },
+    {
+      "id": "dv-mindbody-37484072",
+      "title": "Feel-Own-Move: a psychomotor therapy program for victims of intimate partner violence living in shelter homes. Feasibility and effects on mental health, bodily dissociation, and quality of life.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-c270056d1add",
+      "contentHash": "c270056d1adde79770603eccaee6b9ae51801fe8d24be8f375a16f3ae14ff480",
+      "sourceAccess": "selected-methods",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/37484072/",
+        "https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2023.1154385/full"
+      ]
+    },
+    {
+      "id": "dv-children-32515292",
+      "title": "Facilitators to Engagement in a Mother-Child Therapeutic Intervention Following Intimate Partner Violence.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-ee7b73ac7981",
+      "contentHash": "ee7b73ac7981f192a0b6d7bb4711435b45969dd65aa7e446020ed1f635147c37",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/32515292/",
+        "https://europepmc.org/article/MED/32515292"
+      ]
+    },
+    {
+      "id": "dv-mindbody-36232015",
+      "title": "Using Mindfulness to Improve Mental Health Outcomes of Immigrant Women with Experiences of Intimate Partner Violence.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-acd6e40b1bf8",
+      "contentHash": "acd6e40b1bf85d7428a3e033eeca994fe3d7d7f7d36e34ccd391f48faf905400",
+      "sourceAccess": "full-text",
+      "originalReady": true,
+      "appliedProposals": [
+        "methods-mindbody/proposed-fields.json"
+      ],
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/36232015/",
+        "https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_json/PMC9564648/unicode"
+      ]
+    },
+    {
+      "id": "dv-children-32077730",
+      "title": "An emotion coaching parenting intervention for families exposed to intimate partner violence.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-f3c8786fade2",
+      "contentHash": "f3c8786fade29f1758a3bbe71b793701e0d007d9340bba01c37be8842e2a12f2",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/32077730/",
+        "https://europepmc.org/article/MED/32077730"
+      ]
+    },
+    {
+      "id": "dv-children-32650670",
+      "title": "From doubt to trust: Swedish mothers' and counsellors' experience testing a parenting programme for mothers exposed to intimate partner violence whose children have developed behavioural problems.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-659fb429abe5",
+      "contentHash": "659fb429abe5595093ed702158323c96f3d604ce3c08db82112da67780ca52a2",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/32650670/",
+        "https://europepmc.org/article/MED/32650670"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-31715628",
+      "title": "Self-efficacy and doctor support as mediators of depression outcomes following counselling by family doctors for intimate partner violence.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-17deaab635a9",
+      "contentHash": "17deaab635a9b78ac8e24ebf61d33ea975a250662337dad92d5b00e1dcda3e5c",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:31715628%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1093%2Ffampra%2Fcmz067"
+      ]
+    },
+    {
+      "id": "dv-children-32512265",
+      "title": "Trauma-informed art and play therapy: Pilot study outcomes for children and mothers in domestic violence shelters in the United States and South Africa.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-9db37a66ba16",
+      "contentHash": "9db37a66ba162f673d5506746a99ea39fc1ec0440ff18b72539f2ce331014997",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/32512265/",
+        "https://europepmc.org/article/MED/32512265"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-31363925",
+      "title": "Psychological treatments for depression among women experiencing intimate partner violence: findings from a randomized controlled trial for behavioral activation in Goa, India.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-3ee2c4b2e9fa",
+      "contentHash": "3ee2c4b2e9fa366aec47db3ee9a7432d992b8d512e2a394300c6b9c9b566abda",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:31363925%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1007%2Fs00737-019-00992-2"
+      ]
+    },
+    {
+      "id": "dv-mindbody-b5f8ce1b573c",
+      "title": "Trauma-sensitive yoga as an adjunctive mental health treatment for survivors of intimate partner violence: A qualitative examination.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-266c01d2a4c8",
+      "contentHash": "266c01d2a4c87a13f7f46e406d817e9249b4cdbf77e336391894281218f68950",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://doi.org/10.1037/scp0000177",
+        "https://experts.umn.edu/en/publications/trauma-sensitive-yoga-as-an-adjunctive-mental-health-treatment-fo/"
+      ]
+    },
+    {
+      "id": "dv-children-27359091",
+      "title": "Children Exposed to Intimate Partner Violence: Conduct Problems, Interventions, and Partner Contact With the Child.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-234085a1474e",
+      "contentHash": "234085a1474e3d179ca5ab513fab9109d7906f0461dbab073ec47abaa660d495",
+      "sourceAccess": "selected-methods",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/27359091/",
+        "https://europepmc.org/article/MED/27359091",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC6815933/"
+      ]
+    },
+    {
+      "id": "dv-children-32318156",
+      "title": "Emotion Regulation and Interpersonal Group Therapy for Children and Adolescents Witnessing Domestic Violence: A Preliminary Uncontrolled Trial.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-8b9a6adbfee7",
+      "contentHash": "8b9a6adbfee732324edad126097c4c62732e83c1ad524ccde1e171ee5bbab569",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/32318156/",
+        "https://europepmc.org/article/MED/32318156"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-30344863",
+      "title": "The effect of training problem-solving skills for pregnant women experiencing intimate partner violence: a randomized control trial.",
+      "decision": "hold",
+      "reason": "Contemporaneous allocation methods or a usable primary registration record are required; the attempted WHO route was inaccessible.",
+      "revision": "audit-r2-384a79c152c8",
+      "contentHash": "384a79c152c8d6c94245348a05291be892ccbd2fdab5c9d68fee1bace7930229",
+      "sourceAccess": "selected-methods",
+      "originalReady": false,
+      "appliedProposals": [],
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:30344863%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.11604%2Fpamj.2018.30.79.14872",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6191243/fullTextXML"
+      ]
+    },
+    {
+      "id": "dv-children-28503060",
+      "title": "Feasibility and Effectiveness of Parent-Child Interaction Therapy with Victims of Domestic Violence: A Pilot Study.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-229656e159ef",
+      "contentHash": "229656e159ef2663551b1da8fcba088b95b93cc8194db1bba4524d88ad652204",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/28503060/",
+        "https://europepmc.org/article/MED/28503060"
+      ]
+    },
+    {
+      "id": "dv-children-25751123",
+      "title": "Mediators and Treatment Factors in Intervention for Children Exposed to Interparental Violence.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-f74c69b07700",
+      "contentHash": "f74c69b07700ae2168a8dde6ab944743cc4708aaa851cf650358f41c1d65e4f2",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/25751123/",
+        "https://europepmc.org/article/MED/25751123"
+      ]
+    },
+    {
+      "id": "dv-children-25410886",
+      "title": "Young children's experiences of participating in group treatment for children exposed to intimate partner violence: A qualitative study.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-8fd277324011",
+      "contentHash": "8fd27732401183a7505e2a1b3efa2946230653def782443432883cd3f570bf28",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/25410886/",
+        "https://europepmc.org/article/MED/25410886"
+      ]
+    },
+    {
+      "id": "dv-mindbody-25129883",
+      "title": "Trauma-sensitive yoga as an adjunct mental health treatment in group therapy for survivors of domestic violence: a feasibility study.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-f57e81ec3549",
+      "contentHash": "f57e81ec3549f901bbebb9f2a8550fcbb128b9dc3b05f4ed7b77f5c66363b001",
+      "sourceAccess": "full-text",
+      "originalReady": true,
+      "appliedProposals": [
+        "methods-mindbody/proposed-fields.json"
+      ],
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/25129883/",
+        "https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_json/PMC4215954/unicode"
+      ]
+    },
+    {
+      "id": "dv-mindbody-23561069",
+      "title": "A qualitative analysis of beginning mindfulness experiences for women with post-traumatic stress disorder and a history of intimate partner violence.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-323b37690c94",
+      "contentHash": "323b37690c948dc3de953d6c9823add163a832c61e07044bad4985465576b509",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/23561069/"
+      ]
+    },
+    {
+      "id": "dv-mindbody-24043922",
+      "title": "Mindfulness-Based Stress Reduction for Low-Income, Predominantly African American Women With PTSD and a History of Intimate Partner Violence.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-d5f2c6af49be",
+      "contentHash": "d5f2c6af49be6cef7645056665a346eb18296ec161c24f83f9e2a2395684575e",
+      "sourceAccess": "full-text",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/24043922/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC3772725/"
+      ]
+    },
+    {
+      "id": "dv-children-20587468",
+      "title": "Mediators and moderators of change in adjustment following intervention for children exposed to intimate partner violence.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-f642f365bd4e",
+      "contentHash": "f642f365bd4e4a9868bbabafb0abfcad8e3c13948e00b5a2567c086688ccbbe5",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/20587468/",
+        "https://europepmc.org/article/MED/20587468"
+      ]
+    },
+    {
+      "id": "dv-children-21816474",
+      "title": "Traumatic and stressful events in early childhood: can treatment help those at highest risk?",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-d40e125c211f",
+      "contentHash": "d40e125c211f6d468dd0d94754a8395db5ea4567352487889ea242a599bfe0b6",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/21816474/",
+        "https://europepmc.org/article/MED/21816474"
+      ]
+    },
+    {
+      "id": "dv-children-20712147",
+      "title": "The effectiveness of parent-child interaction therapy for victims of interparental violence.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-b3a58f9239ff",
+      "contentHash": "b3a58f9239ff19eda057fdba270a6113dccfd4827b860576adab489cf2b8a784",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [
+        "audit-policy.json: explicit adjudicated amendment"
+      ],
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/20712147/",
+        "https://europepmc.org/article/MED/20712147"
+      ]
+    },
+    {
+      "id": "dv-children-17469878",
+      "title": "Community-based intervention for children exposed to intimate partner violence: an efficacy trial.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-c9d70837013f",
+      "contentHash": "c9d70837013f294070986a6c2a61d596c6c8ca7496e9eb85a9feb958bc48c911",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/17469878/",
+        "https://europepmc.org/article/MED/17469878"
+      ]
+    },
+    {
+      "id": "dv-mindbody-16617173",
+      "title": "The phenomenology of meditation for female survivors of intimate partner violence.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-533f005eb07a",
+      "contentHash": "533f005eb07a67e383c4f2d34772fb0634b22bbb3647c6dd2b4b47a9c1f46717",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/16617173/"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-12602656",
+      "title": "Cognitive trauma therapy for battered women with PTSD: preliminary findings.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-9d099367f1ad",
+      "contentHash": "9d099367f1add9c88545d58407686913cbdb64510fb13b5d777dd983f5fa8e80",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:12602656%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1023%2Fa%3A1022019629803"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-10783523",
+      "title": "Effect of cognitive therapy on depression in rural, battered women.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-9e9bc983af28",
+      "contentHash": "9e9bc983af28f7d190185698dfe9e45a6c5f41b5b4e9f08a9876caf4d9b64424",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:10783523%20AND%20SRC:MED&format=json&resultType=core",
+        "https://api.crossref.org/works/10.1016%2Fs0883-9417%2800%2980020-5"
+      ]
+    },
+    {
+      "id": "dv-sound-42298885",
+      "title": "\"Everyone's in it with me\": Sing&Grow program fosters parent connection, wellbeing and responsiveness.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-2f6d9c1a205b",
+      "contentHash": "2f6d9c1a205bfc9b8c139774e5eca04861d9f31495433efa30cbee5bbff5d4f3",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://europepmc.org/article/MED/42298885",
+        "https://api.crossref.org/works/10.1080/17533015.2026.2688145"
+      ]
+    },
+    {
+      "id": "dv-sound-efa9f1420011",
+      "title": "Music, Emotions, and Relationships: Professionals’ Experiences of the Feasibility of a Music Group Intervention for Children in Shelters After Exposure to Domestic Violence",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-5072833aed7b",
+      "contentHash": "5072833aed7bb665055d32ceb1a140a84c0c2ba5bf6d4b39bbef3027c1f5873f",
+      "sourceAccess": "selected-methods",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://link.springer.com/article/10.1007/s10896-026-01179-x",
+        "https://api.crossref.org/works/10.1007/s10896-026-01179-x"
+      ]
+    },
+    {
+      "id": "dv-sound-61889e897b46",
+      "title": "“IF YOU COULD ONLY SEE ME AS I AM!” FROM AGONIZING SILENCE TO CREATIVE MUSIC SHARING: A PILOT STUDY ON GROUP MUSIC THERAPY WITH THREE WOMEN SURVIVORS OF DOMESTIC VIOLENCE FOR CHANGE AND EMPOWERMENT",
+      "decision": "hold",
+      "reason": "Publisher and university search records corroborate identity, but this audit could not independently recover the underlying abstract/full text to verify the substantive finding. Journal PDF retrieval timed out and repository access failed. Retain as discovery evidence; do not publish its benefit summary yet.",
+      "revision": "audit-r2-a3c9cde3be90",
+      "contentHash": "a3c9cde3be90ef2885a42fde6db6d928344623c06f7d3b428188dc2e1ec46406",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://ejournals.lib.auth.gr/hjp/article/view/10498"
+      ]
+    },
+    {
+      "id": "dv-sound-37107774",
+      "title": "Evaluation of Integrative Community Therapy with Domestic Violence Survivors in Quito, Ecuador.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-980f16a4158e",
+      "contentHash": "980f16a4158e54412bb1c50f35cb8e7b211d618fd4e066f7e8439d4fc13cbfe4",
+      "sourceAccess": "full-text",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC10138899/",
+        "https://api.crossref.org/works/10.3390/ijerph20085492"
+      ]
+    },
+    {
+      "id": "dv-sound-849dafa52c8c",
+      "title": "Individualized Music Relaxation and Composition as a Coping Skill for Survivors of Intimate Partner Abuse in and out of the Therapeutic Setting",
+      "decision": "grey-literature",
+      "reason": "University master’s thesis, not a peer-reviewed journal article. Retained in the evidence map but excluded from the first journal-publication release; this is not a finding of misconduct or invalidity.",
+      "revision": "audit-r2-b42faec33e1c",
+      "contentHash": "b42faec33e1cb439d8b6f436b9592fd152a272f2731c385b7fa31567b808d5c5",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://ir.library.illinoisstate.edu/etd/1650/"
+      ]
+    },
+    {
+      "id": "dv-sound-3c0015edd5fa",
+      "title": "Understanding Children's Resources in the Context of Family Violence through a Collaborative Songwriting Method",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-a0133be76ad0",
+      "contentHash": "a0133be76ad0159bbd295c7b40f1196d5205914da3684140df47720905c2bd23",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://www.childrenaustralia.org.au/journal/article/2145/",
+        "https://api.crossref.org/works/10.1017/cha.2018.45"
+      ]
+    },
+    {
+      "id": "dv-sound-52ec6bcb53a0",
+      "title": "Exploring the Meaning of a Performance in Music Therapy for Children and Their Families Experiencing Homelessness and Family Violence",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-9ee470c83a94",
+      "contentHash": "9ee470c83a9450d068ee07e91efa081cbf893af490cbd9e237d895e43b8a90ba",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://academic.oup.com/mtp/article-abstract/35/1/36/2631812",
+        "https://api.crossref.org/works/10.1093/mtp/miw004"
+      ]
+    },
+    {
+      "id": "dv-sound-99de3f3bbdea",
+      "title": "Music Therapy as Treatment for the Psychological Distress of Victims of Intimate Partner Violence: Comparing Expressive and Receptive Music Interventions",
+      "decision": "grey-literature",
+      "reason": "University master’s thesis, not a peer-reviewed journal article. Retained in the evidence map but excluded from the first journal-publication release; this is not a finding of misconduct or invalidity.",
+      "revision": "audit-r2-6e944d226e72",
+      "contentHash": "6e944d226e72aea367deea02f4e3be3c94a0f6486b291f5d31eb6125e4e36dc8",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://ir.library.illinoisstate.edu/etd/418/",
+        "https://api.crossref.org/works/10.30707/ETD2015.Miner.K"
+      ]
+    },
+    {
+      "id": "dv-sound-24766169",
+      "title": "MAMBRA's impact on IPV symptoms of incarcerated and formerly incarcerated women.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-5faaf98bfc5f",
+      "contentHash": "5faaf98bfc5fa84b60aef381729a6b7fb34f59776643fa611121d5b168db17e5",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://europepmc.org/article/MED/24766169",
+        "https://api.crossref.org/works/10.3109/01612840.2013.868962"
+      ]
+    },
+    {
+      "id": "dv-sound-1be40a54cbc1",
+      "title": "Group Music Therapy with Women who have Experienced Intimate Partner Violence",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-868715bb275a",
+      "contentHash": "868715bb275a49149b22cd52490a8bb1d591a6e927c9cfe961de40f0390ecdd7",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://academic.oup.com/mtp/article-abstract/24/2/80/1125111",
+        "https://api.crossref.org/works/10.1093/mtp/24.2.80"
+      ]
+    },
+    {
+      "id": "dv-sound-15913391",
+      "title": "Effect of music therapy on the anxiety levels and sleep patterns of abused women in shelters.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-24e178ea481d",
+      "contentHash": "24e178ea481d9c4cf917ca54cf8180f2244353249d5311dfa294de5471d3999a",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://europepmc.org/article/MED/15913391"
+      ]
+    },
+    {
+      "id": "dv-vision-da3bfad76f98",
+      "title": "A Mixed Methods Evaluation of EMDR for Treating Female Survivors of Sexual and Domestic Violence",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-b777e49dcd0b",
+      "contentHash": "b777e49dcd0b67879062bd98774447f2a18873f853403c35530c9b3cf4d0c557",
+      "sourceAccess": "selected-methods",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://doi.org/10.1080/21501378.2018.1561146",
+        "https://api.crossref.org/works/10.1080%2F21501378.2018.1561146",
+        "https://www.researchgate.net/publication/333591296_A_Mixed_Methods_Evaluation_of_EMDR_for_Treating_Female_Survivors_of_Sexual_and_Domestic_Violence",
+        "https://api.crossref.org/works/10.1080%2F21501378.2018.1561146"
+      ]
+    },
+    {
+      "id": "dv-vision-2a09962793c2",
+      "title": "Eye movement desensitization and reprocessing (EMDR) therapy in the treatment of victims of domestic violence: A pilot study",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-c93893176c84",
+      "contentHash": "c93893176c840c8cb2a1064cc4d3027570c13a3970d23216057e7cecfb3cc917",
+      "sourceAccess": "full-text",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://doi.org/10.1016/j.erap.2012.08.006",
+        "https://www.efpe.fr/assets/4.-tarquinio---al.-(2012).-eye-movement-desensitization-and-reprocessing-therapy-in-the-treatment-of-victims....pdf",
+        "https://api.crossref.org/works/10.1016%2Fj.erap.2012.08.006"
+      ]
+    },
+    {
+      "id": "dv-vision-d0356a161cd2",
+      "title": "EMDR Treatment of Past Domestic Violence: A Clinical Vignette",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-943edfc2ebae",
+      "contentHash": "943edfc2ebae15fd2bd60d143c3234d9b77866c1c35936ce03a02944955c48b9",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://doi.org/10.1891/1933-3196.3.3.192",
+        "https://api.crossref.org/works/10.1891%2F1933-3196.3.3.192",
+        "https://scholarship.miami.edu/esploro/outputs/journalArticle/EMDR-Treatment-of-Past-Domestic-Violence/991031600519702976",
+        "https://api.crossref.org/works/10.1891%2F1933-3196.3.3.192"
+      ]
+    },
+    {
+      "id": "dv-vision-11036736",
+      "title": "The relative effectiveness of EMDR versus relaxation training with battered women prisoners.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-aba355b87ce5",
+      "contentHash": "aba355b87ce5caf6a3957fe0f69c680f219d3b8515efcd242a7249b452ee94db",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/11036736/",
+        "https://doi.org/10.1177/0145445500245006",
+        "https://api.crossref.org/works/10.1177%2F0145445500245006"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-33743632",
+      "title": "The effect of solution-focused counseling on violence rate and quality of life of pregnant women at risk of domestic violence: a randomized controlled trial.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-4d4553c434bf",
+      "contentHash": "4d4553c434bf3b70ab325257f5423dbec458d732f367bcfaae8e9a42d41325e4",
+      "sourceAccess": "full-text",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://europepmc.org/article/MED/33743632",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7981895/fullTextXML",
+        "https://api.crossref.org/works/10.1186/s12884-021-03674-z"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-33428625",
+      "title": "Interpersonal psychotherapy delivered by nonspecialists for depression and posttraumatic stress disorder among Kenyan HIV-positive women affected by gender-based violence: Randomized controlled trial.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-7ee0d1141e43",
+      "contentHash": "7ee0d1141e4378dc9e52b7e89863a001bd1a30574844469b38267997689e9e22",
+      "sourceAccess": "full-text",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://europepmc.org/article/MED/33428625",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7799784/fullTextXML",
+        "https://api.crossref.org/works/10.1371/journal.pmed.1003468"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-40425169",
+      "title": "Forgiveness Therapy to Build Hope and Reduce Anxiety and Depression in Battered Women in Pakistan.",
+      "decision": "hold",
+      "reason": "N=30, no active comparator or follow-up, researcher both therapist and assessor, and substantial baseline forgiveness imbalance. Gain-score tables conflict with reported pre/post means.",
+      "revision": "audit-r2-b2d040446d30",
+      "contentHash": "b2d040446d3070926ff6c178396def4fea886c927fdb98fe6ec5610464665101",
+      "sourceAccess": "selected-methods",
+      "originalReady": false,
+      "appliedProposals": [],
+      "sources": [
+        "https://europepmc.org/article/MED/40425169",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12116049/fullTextXML",
+        "https://api.crossref.org/works/10.1002/cpp.70089"
+      ]
+    },
+    {
+      "id": "dv-adult-therapy-32755265",
+      "title": "Randomized Controlled Trial: Cognitive-Narrative Therapy for IPV Victims.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-bc7cd91e2357",
+      "contentHash": "bc7cd91e235754f367037986e035bcdbe16aad2906a5319137b475925529d631",
+      "sourceAccess": "abstract",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://europepmc.org/article/MED/32755265",
+        "https://api.crossref.org/works/10.1177/0886260520943719"
+      ]
+    },
+    {
+      "id": "dv-reviews-cont-40632759",
+      "title": "Emotional skills and health assessment in interventions for intimate partner violence perpetrators: A systematic review of randomized controlled trials.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-152b5d5f71a2",
+      "contentHash": "152b5d5f71a21bf4d7a2e9a0eefcbe6fc4c584e2c19487cf22a690b3cc3f48a6",
+      "sourceAccess": "selected-methods",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC12240372/",
+        "https://api.crossref.org/works/10.1371%2Fjournal.pone.0328034"
+      ]
+    },
+    {
+      "id": "dv-reviews-cont-36429899",
+      "title": "The Effectiveness of Culturally Specific Male Domestic Violence Offender Intervention Programs on Behavior Changes and Mental Health: A Systematic Review.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-95be3a7dc082",
+      "contentHash": "95be3a7dc0827845e6b6358a369dccfda891170bdd1c7ca45e5bc8c83ad5ec9e",
+      "sourceAccess": "selected-methods",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC9690755/",
+        "https://api.crossref.org/works/10.3390%2Fijerph192215180"
+      ]
+    },
+    {
+      "id": "dv-reviews-cont-39302822",
+      "title": "Effectiveness of Father-Focused Interventions to Prevent or Reduce Intimate Partner Violence During Pregnancy and Early Parenthood: A Systematic Review.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-9e7c9422923e",
+      "contentHash": "9e7c9422923e17f38bbb741b0d15bd7726e6733a181b9556f97bed5f1a15687e",
+      "sourceAccess": "selected-methods",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC11558938/",
+        "https://api.crossref.org/works/10.1177%2F15248380241277270"
+      ]
+    },
+    {
+      "id": "dv-reviews-cont-36909881",
+      "title": "Technology-based and digital interventions for intimate partner violence: A systematic review and meta-analysis.",
+      "decision": "hold",
+      "reason": "Fixed-effect pooling despite heterogeneity, post hoc outlier exclusions, limited study counts, mostly self-reported outcomes and inconsistent numerical reporting. Quantitative efficacy conclusions are withheld.",
+      "revision": "audit-r2-1747a83ebac9",
+      "contentHash": "1747a83ebac9e35cb02cdefad3575b3d4efa0eeb179a891de22f1034bd8bb2dd",
+      "sourceAccess": "selected-methods",
+      "originalReady": false,
+      "appliedProposals": [],
+      "sources": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC9419475/",
+        "https://api.crossref.org/works/10.1002%2Fcl2.1271"
+      ]
+    },
+    {
+      "id": "dv-reviews-cont-37383644",
+      "title": "Systematic Investigation of Meta-Analysis Data on Treatment Effectiveness for Physical, Psychological, and Sexual Intimate Partner Violence Perpetration.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-d7d8106bcd70",
+      "contentHash": "d7d8106bcd70b14c16d5c56227712fbc51d8b10d0f7d8ef60d97f159f8d74db0",
+      "sourceAccess": "selected-methods",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC10294456/",
+        "https://api.crossref.org/works/10.5093%2Fpi2023a6"
+      ]
+    },
+    {
+      "id": "dv-reviews-cont-37131508",
+      "title": "The promotion of well-being among children exposed to intimate partner violence: A systematic review of interventions.",
+      "decision": "recommended-summary",
+      "reason": "Suitable as a qualified research-library summary at the stated source-access level. This is not a conclusion that the intervention is effective or safe.",
+      "revision": "audit-r2-6e2d0ce5b950",
+      "contentHash": "6e2d0ce5b9502179c8df9ddf0f2b9d2e43febb8a3b0b1ad7c0e90542f94cd904",
+      "sourceAccess": "selected-methods",
+      "originalReady": true,
+      "appliedProposals": [],
+      "sources": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC8356495/",
+        "https://api.crossref.org/works/10.1002%2Fcl2.1049"
+      ]
+    }
+  ]
+}
