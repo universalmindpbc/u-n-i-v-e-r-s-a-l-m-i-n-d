@@ -1,6 +1,6 @@
 {
   "schema": "universal-informatics/complete-dataset/v1",
-  "dataset_version": "90431d44219a3889678bd2601469eff9f1b3c48b84384fcd0b13aa543f629120",
+  "dataset_version": "ba0e23f3b22060c7053ed10b6d404ea08e231b859f1277a7d7df1498531afb1d",
   "sources": [
     {
       "id": "geometry.json",
@@ -7067,13 +7067,13 @@
     {
       "id": "quantum/reading/quantum-atlas.csv",
       "source_path": "quantum/reading/quantum-atlas.csv",
-      "sha256": "5e05ec45935b936d1d593f2ddd34f47e5ea6e42edabf68a7d9b3580d5a92fafd",
+      "sha256": "55b978b57838ac61d5b22b26245034cfafc5d01045a5b42b5fcc7ac7667b6834",
       "format": "csv"
     },
     {
       "id": "quantum/reading/quantum-atlas.json",
       "source_path": "quantum/reading/quantum-atlas.json",
-      "sha256": "bde96ad8e9de74a6c6f6c00bde009527f80bb5694a705522cd2998eae0eaab60",
+      "sha256": "4c1c87d2a1738558774853721a434c0a4817ddcaeb7d6d0b624ff44a81478497",
       "format": "json"
     },
     {
@@ -52184,44 +52184,44 @@
   "downloads": {
     "json": {
       "file": "informatics-complete.json.gz",
-      "bytes": 76150277,
-      "uncompressed_bytes": 764424318,
-      "sha256": "ac6d1ac49bce72c6a282db780e0b1b65c8437391b6d2f5df744b2e14f6dfc0cf",
-      "uncompressed_sha256": "0c7318f2b5a5ee2cdbcc7aa065ef64cd987d567ec25ec6837397e2bb9acb3fac",
+      "bytes": 76169060,
+      "uncompressed_bytes": 764518467,
+      "sha256": "63521307127d33ae0686401af71c996ab54461963f03b1db54873f9cac10a2f7",
+      "uncompressed_sha256": "7b2a639696721e95397ebdc456bd62e11031bba48c383feba255366a6c674c67",
       "parts": [
         {
-          "file": "part-64ce519685806653c66f4d757af1a74e23c2893b55c230b4a0af3918826a5229.bin",
+          "file": "part-153fa1c9fb32468f8d7697833c8b70b870fd3e312620686bf61f3c74efac68f0.bin",
           "bytes": 50331648,
-          "sha256": "64ce519685806653c66f4d757af1a74e23c2893b55c230b4a0af3918826a5229"
+          "sha256": "153fa1c9fb32468f8d7697833c8b70b870fd3e312620686bf61f3c74efac68f0"
         },
         {
-          "file": "part-32b2a1c123a76126d5b289c4349130f4fd823bec7538aa88c93f23e863a41ead.bin",
-          "bytes": 25818629,
-          "sha256": "32b2a1c123a76126d5b289c4349130f4fd823bec7538aa88c93f23e863a41ead"
+          "file": "part-f0928a41cadc9d9745d5ae10e8ebb23c3efa440f79aacbd2c85d1722eb47dd52.bin",
+          "bytes": 25837412,
+          "sha256": "f0928a41cadc9d9745d5ae10e8ebb23c3efa440f79aacbd2c85d1722eb47dd52"
         }
       ]
     },
     "csv": {
       "file": "informatics-complete.csv.gz",
-      "bytes": 145038970,
-      "uncompressed_bytes": 2431795098,
-      "sha256": "df04da393aac0ff0f51afdb422ec353a346f2e6df4078fedcbfa81cde01317f8",
-      "uncompressed_sha256": "e3152bdab897af0a40eab3ff2e0911359aca1834a22da810c2aad2516f4fa81a",
+      "bytes": 145063934,
+      "uncompressed_bytes": 2431973414,
+      "sha256": "21479e3ea7b51ad1ce12a3a5a923302a5055de912143160c26f9c00e9de12dd2",
+      "uncompressed_sha256": "b810f2467d1e555095370f09f95153f88221be9f16d9ba6e09067fe8ff6b886d",
       "parts": [
         {
-          "file": "part-d7f18eb5a8a30bdfb5e5165807a819d4052ee77607844a964b92199221dd8c14.bin",
+          "file": "part-63342d9a6734e860bd7f430f47092127d94770b077d35ec3c4be37ce967417bb.bin",
           "bytes": 50331648,
-          "sha256": "d7f18eb5a8a30bdfb5e5165807a819d4052ee77607844a964b92199221dd8c14"
+          "sha256": "63342d9a6734e860bd7f430f47092127d94770b077d35ec3c4be37ce967417bb"
         },
         {
-          "file": "part-3c19ffca0cfd597c01a73c9aade8a16eee1615a0a8f9f3f2733c3721c8c40505.bin",
+          "file": "part-1ea7e735f299c62707817de15ae52393a43b4bff06424b04b7be6c7d26f28bea.bin",
           "bytes": 50331648,
-          "sha256": "3c19ffca0cfd597c01a73c9aade8a16eee1615a0a8f9f3f2733c3721c8c40505"
+          "sha256": "1ea7e735f299c62707817de15ae52393a43b4bff06424b04b7be6c7d26f28bea"
         },
         {
-          "file": "part-9cb4c4c2440dcd60ad9b671b759d2903e4811758fe374636cd137cb9f0a8aea5.bin",
-          "bytes": 44375674,
-          "sha256": "9cb4c4c2440dcd60ad9b671b759d2903e4811758fe374636cd137cb9f0a8aea5"
+          "file": "part-8567ad39a859e6dd7d2cf167284f1800c9d4c2171549178805f6f6bedb2d986e.bin",
+          "bytes": 44400638,
+          "sha256": "8567ad39a859e6dd7d2cf167284f1800c9d4c2171549178805f6f6bedb2d986e"
         }
       ]
     }

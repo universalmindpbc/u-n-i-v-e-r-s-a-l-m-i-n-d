@@ -2,13 +2,613 @@ path,type,value
 ,object,
 /schema,string,universal-informatics/quantum-atlas-guide/v1
 /title,string,Quantum Atlas · AI / LLM Wiki
-/version,string,2026-11-01
+/version,string,2026-11-01-agent-guide-1
 /url,string,https://universalmind.tv/informatics/?entry=research&area=quantum
 /wiki,string,https://universalmind.tv/informatics/read/quantum/index.html
+/agent_architecture,object,
+/agent_architecture/version,string,2026-11-01-agent-guide-1
+/agent_architecture/purpose,object,
+/agent_architecture/purpose/title,string,What Quantum Atlas is for
+/agent_architecture/purpose/summary,string,"Quantum Atlas makes computational biology and quantum research approachable through a scientific question written in ordinary language. A person brings the question; the platform coordinates AI scientific work, mathematical models, simulations, recorded quantum measurements and biological evidence, then returns an explanation with the underlying research record."
+/agent_architecture/purpose/why,string,"The purpose is to help people investigate whether a proposed pattern adds useful information to a biological problem. The current OXTR investigation asks whether Fibonacci, Phi Ratio and M9 P24 representations can help predict where proteins associate with DNA. That study is the first worked investigation within the wider natural-language research experience."
+/agent_architecture/purpose/human_explanation,string,"You can ask Quantum Atlas a biological research question without writing quantum code. Astra develops the supported investigation and explains the findings. Gemini reviews the design and the resulting report. Mathematical and computing tools supply calculations and measurements, while laboratory evidence provides a biological comparison. You can follow the stages, inspect the geometry, read the results in ordinary language and download the record. Your own AI can retrieve the public evidence through MCP or the API, or ask Universal One a research question through A2A. A persistent new study starts through the Quantum Atlas interface within its supported research scope."
+/agent_architecture/purpose/instructions_for_ai,array,5
+/agent_architecture/purpose/instructions_for_ai/0,string,Begin by explaining the purpose and the person’s research goal before listing providers or discussing the saved OXTR numbers.
+/agent_architecture/purpose/instructions_for_ai/1,string,"Explain each feature in terms of what the person can ask, see, learn or retrieve. Define simulation, quantum measurement and biological comparison when those terms first appear."
+/agent_architecture/purpose/instructions_for_ai/2,string,"Describe the agent roles and handoffs, then identify the connection method that fits the person’s request."
+/agent_architecture/purpose/instructions_for_ai/3,string,Use the current saved results to illustrate the workflow. Keep the platform’s wider purpose distinct from the outcome of its first study.
+/agent_architecture/purpose/instructions_for_ai/4,string,Describe available participation separately from extensions in development. Use the live tool schema and agent card to determine available operations.
+/agent_architecture/purpose/example_questions,array,4
+/agent_architecture/purpose/example_questions/0,string,"What is Quantum Atlas for, and how can it help me investigate a biological question?"
+/agent_architecture/purpose/example_questions/1,string,"Explain what Astra, Gemini, Wolfram, CUDA-Q and Aquila each contribute, in plain language."
+/agent_architecture/purpose/example_questions/2,string,Walk me through the current OXTR investigation and explain what the results mean.
+/agent_architecture/purpose/example_questions/3,string,"Connect to the public research tools, retrieve the study and help me formulate a useful next question."
+/agent_architecture/features,array,10
+/agent_architecture/features/0,object,
+/agent_architecture/features/0/feature,string,Ask a question
+/agent_architecture/features/0/purpose,string,Express the biological question in everyday language. The router identifies a supported calculation or a concrete missing capability.
+/agent_architecture/features/0/human_value,string,A clear starting point without writing quantum code.
+/agent_architecture/features/1,object,
+/agent_architecture/features/1/feature,string,Study and live workflow
+/agent_architecture/features/1/purpose,string,"Show the question, scientific plan, agent progress and the role of each calculation or evidence source."
+/agent_architecture/features/1/human_value,string,Understand what is happening and how each stage contributes.
+/agent_architecture/features/2,object,
+/agent_architecture/features/2/feature,string,Geometry explorer
+/agent_architecture/features/2/purpose,string,"Inspect Alpha, Beta, Gamma and Epsilon definitions and the different numerical preparations of the same DNA inputs."
+/agent_architecture/features/2/human_value,string,See what is being compared before interpreting its response.
+/agent_architecture/features/3,object,
+/agent_architecture/features/3/feature,string,Design and findings reviews
+/agent_architecture/features/3/purpose,string,Gemini checks the proposed method before calculations and checks the findings against the evidence before delivery.
+/agent_architecture/features/3/human_value,string,"See the review decision, requested corrections and retained evidence."
+/agent_architecture/features/4,object,
+/agent_architecture/features/4/feature,string,Classical results
+/agent_architecture/features/4/purpose,string,"Inspect calculation checks, CUDA-Q simulation results and the genomic prediction comparison."
+/agent_architecture/features/4/human_value,string,Understand the computational baseline and what a prediction score means.
+/agent_architecture/features/5,object,
+/agent_architecture/features/5/feature,string,Quantum results and Compare
+/agent_architecture/features/5/purpose,string,"Inspect the recorded Aquila readings beside matched calculated and simulated values, with their counts and uncertainty."
+/agent_architecture/features/5/human_value,string,Understand how the physical device behaved and how that relates to the research question.
+/agent_architecture/features/6,object,
+/agent_architecture/features/6/feature,string,Insights and next test
+/agent_architecture/features/6/purpose,string,"Return a direct answer, what was completed, the practical meaning, and the remaining research dependency."
+/agent_architecture/features/6/human_value,string,Learn from the investigation and identify a useful next step.
+/agent_architecture/features/7,object,
+/agent_architecture/features/7/feature,string,Saved studies and downloads
+/agent_architecture/features/7/purpose,string,Retain task progress and provide the complete report in JSON and CSV. The Wiki adds a Markdown reading guide.
+/agent_architecture/features/7/human_value,string,"Reopen work, inspect methods, discuss it with another AI or reproduce the analysis."
+/agent_architecture/features/8,object,
+/agent_architecture/features/8/feature,string,Shared capacity
+/agent_architecture/features/8/purpose,string,Display the available question allowance and keep execution within the recorded scope and funding.
+/agent_architecture/features/8/human_value,string,Know when the service can accept another investigation.
+/agent_architecture/features/9,object,
+/agent_architecture/features/9/feature,string,Drug Discovery Network and Open Source Genomic Insights
+/agent_architecture/features/9/purpose,string,The planned fifth stage connects reviewed findings with external research collaborators and shareable genomic insights.
+/agent_architecture/features/9/human_value,string,Understand the intended path from an investigation to research collaboration. This stage is marked as a future feature.
+/agent_architecture/swarm,object,
+/agent_architecture/swarm/title,string,Quantum / AI agent swarm: who does what
+/agent_architecture/swarm/summary,string,"Astra and Gemini have distinct scientific roles. LangGraph coordinates their work and the specialist calculation services through an explicit, persistent workflow. The diagram on the Quantum page presents the scientific handoffs: formulate, model, simulate and measure, compare with biological evidence, then interpret."
+/agent_architecture/swarm/roles,array,10
+/agent_architecture/swarm/roles/0,object,
+/agent_architecture/swarm/roles/0/name,string,GPT-6 Astra
+/agent_architecture/swarm/roles/0/role,string,Head bioinformatician and scientist
+/agent_architecture/swarm/roles/0/work,string,"Interprets the question, selects the supported study plan, coordinates the authorised calculations, responds to review feedback and writes the evidence-grounded explanation."
+/agent_architecture/swarm/roles/0/handoff,string,Proposed plan to Gemini; calculated evidence and draft report to Gemini; reviewed findings to the person.
+/agent_architecture/swarm/roles/1,object,
+/agent_architecture/swarm/roles/1/name,string,Gemini 4 Argon
+/agent_architecture/swarm/roles/1/role,string,Chief Scientist
+/agent_architecture/swarm/roles/1/work,string,"Reviews the design and final findings against the supplied methods, measurements, source records and uncertainty. Returns approve, revise or human decision required."
+/agent_architecture/swarm/roles/1/handoff,string,Design feedback to Astra before execution; findings feedback before report delivery.
+/agent_architecture/swarm/roles/2,object,
+/agent_architecture/swarm/roles/2/name,string,LangGraph
+/agent_architecture/swarm/roles/2/role,string,Workflow orchestration and persistent state
+/agent_architecture/swarm/roles/2/work,string,"Orders the steps, checkpoints completed work, routes review decisions, bounds revision loops and preserves progress when a dependency interrupts execution."
+/agent_architecture/swarm/roles/2/handoff,string,"Controls the transition between planning, review, calculations, report and completion."
+/agent_architecture/swarm/roles/3,object,
+/agent_architecture/swarm/roles/3/name,string,Wolfram Quantum Framework
+/agent_architecture/swarm/roles/3/role,string,Mathematical specification and reference checks
+/agent_architecture/swarm/roles/3/work,string,Provides the mathematical reference role shown in the workflow. The current continuation retains the saved Wolfram check receipts for the original model.
+/agent_architecture/swarm/roles/3/handoff,string,Checked model definitions and reference calculations inform the matched simulation and hardware interpretation.
+/agent_architecture/swarm/roles/4,object,
+/agent_architecture/swarm/roles/4/name,string,NVIDIA CUDA-Q
+/agent_architecture/swarm/roles/4/role,string,Quantum-program preparation and simulation
+/agent_architecture/swarm/roles/4/work,string,Compiles and simulates the defined quantum model. The original study used qBraid GPU simulation; the continuing recipe performs local CPU CUDA-Q checks on the cloud worker.
+/agent_architecture/swarm/roles/4/handoff,string,"Compiled programs, simulated observables and numerical-check receipts."
+/agent_architecture/swarm/roles/5,object,
+/agent_architecture/swarm/roles/5/name,string,qBraid and NVIDIA GPU
+/agent_architecture/swarm/roles/5/role,string,Recorded GPU execution route
+/agent_architecture/swarm/roles/5/work,string,Executed the saved CUDA-Q compiled programs on the documented GPU service. Those measurements and receipts remain available for comparison.
+/agent_architecture/swarm/roles/5/handoff,string,Recorded GPU samples and execution identity into the study evidence.
+/agent_architecture/swarm/roles/6,object,
+/agent_architecture/swarm/roles/6/name,string,QuEra Aquila via Amazon Braket
+/agent_architecture/swarm/roles/6/role,string,Recorded physical quantum measurement route
+/agent_architecture/swarm/roles/6/work,string,The saved analog programs ran on Aquila’s neutral atoms through Braket. Their task receipts identify the actual hardware measurements.
+/agent_architecture/swarm/roles/6/handoff,string,"Hardware counts, usable shots, observables and timestamps into the comparison."
+/agent_architecture/swarm/roles/7,object,
+/agent_architecture/swarm/roles/7/name,string,Biological evidence and classical benchmarks
+/agent_architecture/swarm/roles/7/role,string,Test biological usefulness
+/agent_architecture/swarm/roles/7/work,string,"Reference DNA, ENCODE binding observations and JASPAR motifs support the held-out prediction comparison. Fixed classical code calculates the scores and uncertainty."
+/agent_architecture/swarm/roles/7/handoff,string,Computed biological results and source provenance to Astra and Gemini.
+/agent_architecture/swarm/roles/8,object,
+/agent_architecture/swarm/roles/8/name,string,Research memory and Universal One
+/agent_architecture/swarm/roles/8/role,string,Shared research context and public research conversation
+/agent_architecture/swarm/roles/8/work,string,"Astra retrieves mission, experiment and research-direction records plus literature from the research repository. Universal One exposes cited research answers and public evidence access."
+/agent_architecture/swarm/roles/8/handoff,string,Versioned sources to the scientific workflow and to an external AI using the public interfaces.
+/agent_architecture/swarm/roles/9,object,
+/agent_architecture/swarm/roles/9/name,string,"Cloudflare broker, AWS worker and encrypted storage"
+/agent_architecture/swarm/roles/9/role,string,Durable execution and delivery
+/agent_architecture/swarm/roles/9/work,string,The broker tracks session-owned tasks and worker leases. AWS Lambda executes the supported recipe; SQLite checkpoints and encrypted S3 preserve progress and results.
+/agent_architecture/swarm/roles/9/handoff,string,Progress events and the completed report return to the originating research session.
+/agent_architecture/swarm/diagram_stages,object,
+/agent_architecture/swarm/diagram_stages/question,array,2
+/agent_architecture/swarm/diagram_stages/question/0,string,Begin with your biological question.
+/agent_architecture/swarm/diagram_stages/question/1,string,GPT uses the Atlas definitions and saved study recipe to select the calculation. Select a step to inspect its role.
+/agent_architecture/swarm/diagram_stages/model,array,2
+/agent_architecture/swarm/diagram_stages/model/0,string,"One model, two matched routes."
+/agent_architecture/swarm/diagram_stages/model/1,string,"Wolfram checks the mathematical specification. The same coordinates, interactions, pulses and measurement conventions feed CUDA-Q and the Aquila program."
+/agent_architecture/swarm/diagram_stages/simulation,array,2
+/agent_architecture/swarm/diagram_stages/simulation/0,string,Predict the quantum response with CUDA-Q.
+/agent_architecture/swarm/diagram_stages/simulation/1,string,CUDA-Q generates the matched simulation. The documented GPU route uses qBraid for supported compiled programs.
+/agent_architecture/swarm/diagram_stages/hardware,array,2
+/agent_architecture/swarm/diagram_stages/hardware/0,string,Measure the response on Aquila.
+/agent_architecture/swarm/diagram_stages/hardware/1,string,"Amazon Braket submits the approved analog program to QuEra Aquila. Actual queued, running, completed and failed states belong to a saved task receipt."
+/agent_architecture/swarm/diagram_stages/evidence,array,2
+/agent_architecture/swarm/diagram_stages/evidence/0,string,Let independent observations test the prediction.
+/agent_architecture/swarm/diagram_stages/evidence/1,string,Build and adjust the prediction methods using one set of DNA regions. Then keep the methods unchanged and predict binding on different regions. Compare those predictions with laboratory results kept hidden until the predictions are complete.
+/agent_architecture/swarm/diagram_stages/result,array,2
+/agent_architecture/swarm/diagram_stages/result/0,string,Return the biological finding.
+/agent_architecture/swarm/diagram_stages/result/1,string,"A completed result combines a plain-language finding, uncertainty and an interactive geometry comparison. Methods, source versions and execution receipts remain available on demand."
+/agent_architecture/swarm/current_workflow,array,11
+/agent_architecture/swarm/current_workflow/0,object,
+/agent_architecture/swarm/current_workflow/0/id,string,question
+/agent_architecture/swarm/current_workflow/0/title,string,Question and routing
+/agent_architecture/swarm/current_workflow/0/action,string,The person submits a question. The router selects the supported OXTR continuation recipe or another supported route. A persistent study receives an identity and a saved task record.
+/agent_architecture/swarm/current_workflow/1,object,
+/agent_architecture/swarm/current_workflow/1/id,string,memory
+/agent_architecture/swarm/current_workflow/1/title,string,Retrieve context
+/agent_architecture/swarm/current_workflow/1/action,string,"Retrieve the mission, research directions, immutable experiment records and relevant literature."
+/agent_architecture/swarm/current_workflow/2,object,
+/agent_architecture/swarm/current_workflow/2/id,string,audit
+/agent_architecture/swarm/current_workflow/2/title,string,Audit existing evidence
+/agent_architecture/swarm/current_workflow/2/action,string,"Check the saved CUDA-Q, Aquila and mathematical-reference records before using them."
+/agent_architecture/swarm/current_workflow/3,object,
+/agent_architecture/swarm/current_workflow/3/id,string,plan
+/agent_architecture/swarm/current_workflow/3/title,string,Astra prepares the plan
+/agent_architecture/swarm/current_workflow/3/action,string,Frame the supported calculation around the original question and the available evidence.
+/agent_architecture/swarm/current_workflow/4,object,
+/agent_architecture/swarm/current_workflow/4/id,string,design
+/agent_architecture/swarm/current_workflow/4/title,string,Gemini reviews the design
+/agent_architecture/swarm/current_workflow/4/action,string,An approval advances to calculations. A revision returns the plan to Astra; an unresolved decision saves the dependency.
+/agent_architecture/swarm/current_workflow/5,object,
+/agent_architecture/swarm/current_workflow/5/id,string,data
+/agent_architecture/swarm/current_workflow/5/title,string,Prepare the biological comparison
+/agent_architecture/swarm/current_workflow/5/action,string,Prepare reference DNA and the existing laboratory binding map using the fixed cohort recipe.
+/agent_architecture/swarm/current_workflow/6,object,
+/agent_architecture/swarm/current_workflow/6/id,string,analyse
+/agent_architecture/swarm/current_workflow/6/title,string,Run classical analysis
+/agent_architecture/swarm/current_workflow/6/action,string,"Train and select the methods on separate chromosomes, then evaluate OXTR and calculate the recorded metrics and uncertainty."
+/agent_architecture/swarm/current_workflow/7,object,
+/agent_architecture/swarm/current_workflow/7/id,string,quantum
+/agent_architecture/swarm/current_workflow/7/title,string,Prepare and check quantum programs
+/agent_architecture/swarm/current_workflow/7/action,string,Prepare the matched DNA pair in eight representations and run 16 local CPU CUDA-Q program checks. Reuse the saved GPU and Aquila measurements.
+/agent_architecture/swarm/current_workflow/8,object,
+/agent_architecture/swarm/current_workflow/8/id,string,report
+/agent_architecture/swarm/current_workflow/8/title,string,Astra explains the findings
+/agent_architecture/swarm/current_workflow/8/action,string,"Answer the person’s original question using the calculated evidence, source context and remaining dependency."
+/agent_architecture/swarm/current_workflow/9,object,
+/agent_architecture/swarm/current_workflow/9/id,string,final
+/agent_architecture/swarm/current_workflow/9/title,string,Gemini reviews the findings
+/agent_architecture/swarm/current_workflow/9/action,string,Check the report against the evidence packet. A requested revision returns to Astra; approval permits delivery.
+/agent_architecture/swarm/current_workflow/10,object,
+/agent_architecture/swarm/current_workflow/10/id,string,publish
+/agent_architecture/swarm/current_workflow/10/title,string,Deliver the research record
+/agent_architecture/swarm/current_workflow/10/action,string,"Save the reviewed report and complete JSON/CSV, then show the findings in the Quantum Atlas research session."
+/agent_architecture/swarm/recovery,string,The current recipe allows one design revision and one report revision. Unsupported questions or unresolved review decisions pause with a stated dependency. Closing the browser does not cancel a durable task; the saved study can be reopened. Cancellation and resume operate on that research session’s own study.
+/agent_architecture/swarm/execution_scope,string,"The current continuation uses the saved GPU/Aquila results and performs new classical and local CPU CUDA-Q calculations. Fresh Aquila jobs, paid GPU jobs and a fresh Wolfram kernel run are outside this recipe. The workflow labels recorded hardware evidence separately from current task progress."
+/agent_architecture/swarm/memory,string,"The shared research memory combines mission, research directions, versioned experiments and source-linked literature. Retrieval uses semantic and text search. The report retains the retrieved source context and evidence hashes."
+/agent_architecture/swarm/record,string,"A delivered study contains the original question, plan and provider receipts, review decisions and evidence packets, source provenance, calculations, program checks and complete JSON/CSV. A private task report becomes a public experiment only through the separate reviewed publication process."
+/agent_architecture/swarm/extensions,string,"The broader swarm prototype includes mid-study scientific support, human-interruption routing and a publication outbox for Synapse and DeSci. Integrating those general adapters into every live recipe, public MCP/A2A study dispatch, optional document destinations and the Drug Discovery Network remain extensions. The live fixed recipe already includes Gemini design and final review."
+/agent_architecture/participation,object,
+/agent_architecture/participation/title,string,How another AI can participate
+/agent_architecture/participation/intro,string,"An external AI can explain the features to its human, retrieve and analyse the public research record, compare methods and help formulate a question. MCP exposes research tools. The REST API exposes the same records as JSON. A2A sends a research question to Universal One and returns its cited answer. The Quantum Atlas interface starts and follows a persistent scientific investigation."
+/agent_architecture/participation/routes,array,5
+/agent_architecture/participation/routes/0,object,
+/agent_architecture/participation/routes/0/route,string,Read the Wiki or downloads
+/agent_architecture/participation/routes/0/purpose,string,Explain the page and its research architecture; discuss a saved study with a person.
+/agent_architecture/participation/routes/0/entry,string,https://universalmind.tv/informatics/read/quantum/index.html
+/agent_architecture/participation/routes/0/authentication,string,Public reading
+/agent_architecture/participation/routes/1,object,
+/agent_architecture/participation/routes/1/route,string,MCP
+/agent_architecture/participation/routes/1/purpose,string,"Give an AI structured tools for study records, geometry, publications and reusable passages."
+/agent_architecture/participation/routes/1/entry,string,https://informatics-universal-one.universalmind.workers.dev/mcp
+/agent_architecture/participation/routes/1/authentication,string,No API key for these public read-only tools
+/agent_architecture/participation/routes/2,object,
+/agent_architecture/participation/routes/2/route,string,REST API
+/agent_architecture/participation/routes/2/purpose,string,"Retrieve exact JSON records from an application, script or AI tool."
+/agent_architecture/participation/routes/2/entry,string,https://informatics-universal-one.universalmind.workers.dev/api/v1/openapi.json
+/agent_architecture/participation/routes/2/authentication,string,Public read-only API
+/agent_architecture/participation/routes/3,object,
+/agent_architecture/participation/routes/3/route,string,A2A
+/agent_architecture/participation/routes/3/purpose,string,Let an external agent ask Universal One a self-contained research question and receive a cited answer.
+/agent_architecture/participation/routes/3/entry,string,https://informatics-universal-one.universalmind.workers.dev/.well-known/agent-card.json
+/agent_architecture/participation/routes/3/authentication,string,Public interface; shared request limits apply
+/agent_architecture/participation/routes/4,object,
+/agent_architecture/participation/routes/4/route,string,Quantum Atlas research session
+/agent_architecture/participation/routes/4/purpose,string,"Submit a supported investigation, follow Astra/Gemini progress and retrieve the session-owned report."
+/agent_architecture/participation/routes/4/entry,string,https://universalmind.tv/informatics/?entry=research&area=quantum
+/agent_architecture/participation/routes/4/authentication,string,The site establishes the browser research session automatically
+/agent_architecture/participation/mcp,object,
+/agent_architecture/participation/mcp/endpoint,string,https://informatics-universal-one.universalmind.workers.dev/mcp
+/agent_architecture/participation/mcp/transport,string,HTTP JSON-RPC; responses are JSON. The endpoint accepts application/json and text/event-stream in Accept.
+/agent_architecture/participation/mcp/protocol_version,string,2025-11-25
+/agent_architecture/participation/mcp/headers,object,
+/agent_architecture/participation/mcp/headers/Content-Type,string,application/json
+/agent_architecture/participation/mcp/headers/Accept,string,"application/json, text/event-stream"
+/agent_architecture/participation/mcp/headers/MCP-Protocol-Version,string,2025-11-25
+/agent_architecture/participation/mcp/workflow,array,6
+/agent_architecture/participation/mcp/workflow/0,string,Initialize the connection and send notifications/initialized.
+/agent_architecture/participation/mcp/workflow/1,string,Discover tools/list and use the returned input schemas.
+/agent_architecture/participation/mcp/workflow/2,string,Call get_inventory for the current dataset version and scope.
+/agent_architecture/participation/mcp/workflow/3,string,"Call get_quantum_study with id oxtr-qrc-01 and section summary, then request the relevant sections."
+/agent_architecture/participation/mcp/workflow/4,string,Follow measurements.data.page.nextOffset until it is null. Use get_atlas_record for canonical sequence definitions and search_publications/get_publication for source research.
+/agent_architecture/participation/mcp/workflow/5,string,"Return a human explanation that cites the record URL, study ID, sourceSHA256 and the appropriate evidence status."
+/agent_architecture/participation/mcp/requests,array,6
+/agent_architecture/participation/mcp/requests/0,object,
+/agent_architecture/participation/mcp/requests/0/jsonrpc,string,2.0
+/agent_architecture/participation/mcp/requests/0/id,number,1
+/agent_architecture/participation/mcp/requests/0/method,string,initialize
+/agent_architecture/participation/mcp/requests/0/params,object,
+/agent_architecture/participation/mcp/requests/0/params/protocolVersion,string,2025-11-25
+/agent_architecture/participation/mcp/requests/0/params/capabilities,object,
+/agent_architecture/participation/mcp/requests/0/params/clientInfo,object,
+/agent_architecture/participation/mcp/requests/0/params/clientInfo/name,string,quantum-atlas-reader
+/agent_architecture/participation/mcp/requests/0/params/clientInfo/version,string,1.0
+/agent_architecture/participation/mcp/requests/1,object,
+/agent_architecture/participation/mcp/requests/1/jsonrpc,string,2.0
+/agent_architecture/participation/mcp/requests/1/method,string,notifications/initialized
+/agent_architecture/participation/mcp/requests/2,object,
+/agent_architecture/participation/mcp/requests/2/jsonrpc,string,2.0
+/agent_architecture/participation/mcp/requests/2/id,number,2
+/agent_architecture/participation/mcp/requests/2/method,string,tools/list
+/agent_architecture/participation/mcp/requests/2/params,object,
+/agent_architecture/participation/mcp/requests/3,object,
+/agent_architecture/participation/mcp/requests/3/jsonrpc,string,2.0
+/agent_architecture/participation/mcp/requests/3/id,number,3
+/agent_architecture/participation/mcp/requests/3/method,string,tools/call
+/agent_architecture/participation/mcp/requests/3/params,object,
+/agent_architecture/participation/mcp/requests/3/params/name,string,get_inventory
+/agent_architecture/participation/mcp/requests/3/params/arguments,object,
+/agent_architecture/participation/mcp/requests/4,object,
+/agent_architecture/participation/mcp/requests/4/jsonrpc,string,2.0
+/agent_architecture/participation/mcp/requests/4/id,number,4
+/agent_architecture/participation/mcp/requests/4/method,string,tools/call
+/agent_architecture/participation/mcp/requests/4/params,object,
+/agent_architecture/participation/mcp/requests/4/params/name,string,get_quantum_study
+/agent_architecture/participation/mcp/requests/4/params/arguments,object,
+/agent_architecture/participation/mcp/requests/4/params/arguments/id,string,oxtr-qrc-01
+/agent_architecture/participation/mcp/requests/4/params/arguments/section,string,summary
+/agent_architecture/participation/mcp/requests/5,object,
+/agent_architecture/participation/mcp/requests/5/jsonrpc,string,2.0
+/agent_architecture/participation/mcp/requests/5/id,number,5
+/agent_architecture/participation/mcp/requests/5/method,string,tools/call
+/agent_architecture/participation/mcp/requests/5/params,object,
+/agent_architecture/participation/mcp/requests/5/params/name,string,get_quantum_study
+/agent_architecture/participation/mcp/requests/5/params/arguments,object,
+/agent_architecture/participation/mcp/requests/5/params/arguments/id,string,oxtr-qrc-01
+/agent_architecture/participation/mcp/requests/5/params/arguments/section,string,measurements
+/agent_architecture/participation/mcp/requests/5/params/arguments/offset,number,0
+/agent_architecture/participation/mcp/result,string,"Read structuredContent when present, otherwise parse the JSON text in content. Check isError and JSON-RPC errors before interpreting a response."
+/agent_architecture/participation/mcp/continuation,string,"The current MCP tool schema lists eight Quantum sections. The API also exposes continuation, which contains the later classical pilot and local CUDA-Q findings. Retrieve that section through the REST URL below; discover the current MCP schema before selecting a section."
+/agent_architecture/participation/mcp/tools,array,9
+/agent_architecture/participation/mcp/tools/0,object,
+/agent_architecture/participation/mcp/tools/0/name,string,get_quantum_study
+/agent_architecture/participation/mcp/tools/0/description,string,"Read the recorded OXTR Quantum Atlas experiment, sequence definitions, actual measurements, comparison, timing, next test and downloads."
+/agent_architecture/participation/mcp/tools/0/inputSchema,object,
+/agent_architecture/participation/mcp/tools/0/inputSchema/type,string,object
+/agent_architecture/participation/mcp/tools/0/inputSchema/additionalProperties,boolean,false
+/agent_architecture/participation/mcp/tools/0/inputSchema/properties,object,
+/agent_architecture/participation/mcp/tools/0/inputSchema/properties/id,object,
+/agent_architecture/participation/mcp/tools/0/inputSchema/properties/id/type,string,string
+/agent_architecture/participation/mcp/tools/0/inputSchema/properties/id/maxLength,number,250
+/agent_architecture/participation/mcp/tools/0/inputSchema/properties/section,object,
+/agent_architecture/participation/mcp/tools/0/inputSchema/properties/section/type,string,string
+/agent_architecture/participation/mcp/tools/0/inputSchema/properties/section/enum,array,8
+/agent_architecture/participation/mcp/tools/0/inputSchema/properties/section/enum/0,string,summary
+/agent_architecture/participation/mcp/tools/0/inputSchema/properties/section/enum/1,string,sequences
+/agent_architecture/participation/mcp/tools/0/inputSchema/properties/section/enum/2,string,methods
+/agent_architecture/participation/mcp/tools/0/inputSchema/properties/section/enum/3,string,measurements
+/agent_architecture/participation/mcp/tools/0/inputSchema/properties/section/enum/4,string,comparison
+/agent_architecture/participation/mcp/tools/0/inputSchema/properties/section/enum/5,string,next_test
+/agent_architecture/participation/mcp/tools/0/inputSchema/properties/section/enum/6,string,timing
+/agent_architecture/participation/mcp/tools/0/inputSchema/properties/section/enum/7,string,downloads
+/agent_architecture/participation/mcp/tools/0/inputSchema/properties/offset,object,
+/agent_architecture/participation/mcp/tools/0/inputSchema/properties/offset/type,string,integer
+/agent_architecture/participation/mcp/tools/0/inputSchema/properties/offset/minimum,number,0
+/agent_architecture/participation/mcp/tools/0/inputSchema/properties/offset/maximum,number,16
+/agent_architecture/participation/mcp/tools/0/inputSchema/required,array,0
+/agent_architecture/participation/mcp/tools/0/annotations,object,
+/agent_architecture/participation/mcp/tools/0/annotations/readOnlyHint,boolean,true
+/agent_architecture/participation/mcp/tools/0/annotations/destructiveHint,boolean,false
+/agent_architecture/participation/mcp/tools/0/annotations/idempotentHint,boolean,true
+/agent_architecture/participation/mcp/tools/0/annotations/openWorldHint,boolean,false
+/agent_architecture/participation/mcp/tools/1,object,
+/agent_architecture/participation/mcp/tools/1/name,string,search
+/agent_architecture/participation/mcp/tools/1/description,string,Find publication and Atlas record IDs. Fetch records before making study-specific claims.
+/agent_architecture/participation/mcp/tools/1/inputSchema,object,
+/agent_architecture/participation/mcp/tools/1/inputSchema/type,string,object
+/agent_architecture/participation/mcp/tools/1/inputSchema/additionalProperties,boolean,false
+/agent_architecture/participation/mcp/tools/1/inputSchema/properties,object,
+/agent_architecture/participation/mcp/tools/1/inputSchema/properties/query,object,
+/agent_architecture/participation/mcp/tools/1/inputSchema/properties/query/type,string,string
+/agent_architecture/participation/mcp/tools/1/inputSchema/properties/query/maxLength,number,800
+/agent_architecture/participation/mcp/tools/1/inputSchema/required,array,1
+/agent_architecture/participation/mcp/tools/1/inputSchema/required/0,string,query
+/agent_architecture/participation/mcp/tools/1/annotations,object,
+/agent_architecture/participation/mcp/tools/1/annotations/readOnlyHint,boolean,true
+/agent_architecture/participation/mcp/tools/1/annotations/destructiveHint,boolean,false
+/agent_architecture/participation/mcp/tools/1/annotations/idempotentHint,boolean,true
+/agent_architecture/participation/mcp/tools/1/annotations/openWorldHint,boolean,false
+/agent_architecture/participation/mcp/tools/2,object,
+/agent_architecture/participation/mcp/tools/2/name,string,fetch
+/agent_architecture/participation/mcp/tools/2/description,string,Fetch an approved publication or Atlas overview from a search result ID. Atlas analysis sections are accessible through get_atlas_record; the URL returns the complete record.
+/agent_architecture/participation/mcp/tools/2/inputSchema,object,
+/agent_architecture/participation/mcp/tools/2/inputSchema/type,string,object
+/agent_architecture/participation/mcp/tools/2/inputSchema/additionalProperties,boolean,false
+/agent_architecture/participation/mcp/tools/2/inputSchema/properties,object,
+/agent_architecture/participation/mcp/tools/2/inputSchema/properties/id,object,
+/agent_architecture/participation/mcp/tools/2/inputSchema/properties/id/type,string,string
+/agent_architecture/participation/mcp/tools/2/inputSchema/properties/id/maxLength,number,250
+/agent_architecture/participation/mcp/tools/2/inputSchema/required,array,1
+/agent_architecture/participation/mcp/tools/2/inputSchema/required/0,string,id
+/agent_architecture/participation/mcp/tools/2/annotations,object,
+/agent_architecture/participation/mcp/tools/2/annotations/readOnlyHint,boolean,true
+/agent_architecture/participation/mcp/tools/2/annotations/destructiveHint,boolean,false
+/agent_architecture/participation/mcp/tools/2/annotations/idempotentHint,boolean,true
+/agent_architecture/participation/mcp/tools/2/annotations/openWorldHint,boolean,false
+/agent_architecture/participation/mcp/tools/3,object,
+/agent_architecture/participation/mcp/tools/3/name,string,get_inventory
+/agent_architecture/participation/mcp/tools/3/description,string,"Exact current counts, dataset version and access scope."
+/agent_architecture/participation/mcp/tools/3/inputSchema,object,
+/agent_architecture/participation/mcp/tools/3/inputSchema/type,string,object
+/agent_architecture/participation/mcp/tools/3/inputSchema/additionalProperties,boolean,false
+/agent_architecture/participation/mcp/tools/3/inputSchema/properties,object,
+/agent_architecture/participation/mcp/tools/3/inputSchema/required,array,0
+/agent_architecture/participation/mcp/tools/3/annotations,object,
+/agent_architecture/participation/mcp/tools/3/annotations/readOnlyHint,boolean,true
+/agent_architecture/participation/mcp/tools/3/annotations/destructiveHint,boolean,false
+/agent_architecture/participation/mcp/tools/3/annotations/idempotentHint,boolean,true
+/agent_architecture/participation/mcp/tools/3/annotations/openWorldHint,boolean,false
+/agent_architecture/participation/mcp/tools/4,object,
+/agent_architecture/participation/mcp/tools/4/name,string,search_publications
+/agent_architecture/participation/mcp/tools/4/description,string,Search approved publication records. OR within each filter; AND across filters. Paginate using nextOffset.
+/agent_architecture/participation/mcp/tools/4/inputSchema,object,
+/agent_architecture/participation/mcp/tools/4/inputSchema/type,string,object
+/agent_architecture/participation/mcp/tools/4/inputSchema/additionalProperties,boolean,false
+/agent_architecture/participation/mcp/tools/4/inputSchema/properties,object,
+/agent_architecture/participation/mcp/tools/4/inputSchema/properties/query,object,
+/agent_architecture/participation/mcp/tools/4/inputSchema/properties/query/type,string,string
+/agent_architecture/participation/mcp/tools/4/inputSchema/properties/query/maxLength,number,800
+/agent_architecture/participation/mcp/tools/4/inputSchema/properties/filters,object,
+/agent_architecture/participation/mcp/tools/4/inputSchema/properties/filters/type,string,object
+/agent_architecture/participation/mcp/tools/4/inputSchema/properties/filters/additionalProperties,boolean,false
+/agent_architecture/participation/mcp/tools/4/inputSchema/properties/filters/properties,object,
+/agent_architecture/participation/mcp/tools/4/inputSchema/properties/filters/properties/collections,object,
+/agent_architecture/participation/mcp/tools/4/inputSchema/properties/filters/properties/collections/type,string,array
+/agent_architecture/participation/mcp/tools/4/inputSchema/properties/filters/properties/collections/maxItems,number,12
+/agent_architecture/participation/mcp/tools/4/inputSchema/properties/filters/properties/collections/items,object,
+/agent_architecture/participation/mcp/tools/4/inputSchema/properties/filters/properties/collections/items/type,string,string
+/agent_architecture/participation/mcp/tools/4/inputSchema/properties/filters/properties/collections/items/maxLength,number,200
+/agent_architecture/participation/mcp/tools/4/inputSchema/properties/filters/properties/targets,object,
+/agent_architecture/participation/mcp/tools/4/inputSchema/properties/filters/properties/targets/type,string,array
+/agent_architecture/participation/mcp/tools/4/inputSchema/properties/filters/properties/targets/maxItems,number,12
+/agent_architecture/participation/mcp/tools/4/inputSchema/properties/filters/properties/targets/items,object,
+/agent_architecture/participation/mcp/tools/4/inputSchema/properties/filters/properties/targets/items/type,string,string
+/agent_architecture/participation/mcp/tools/4/inputSchema/properties/filters/properties/targets/items/maxLength,number,200
+/agent_architecture/participation/mcp/tools/4/inputSchema/properties/filters/properties/conditions,object,
+/agent_architecture/participation/mcp/tools/4/inputSchema/properties/filters/properties/conditions/type,string,array
+/agent_architecture/participation/mcp/tools/4/inputSchema/properties/filters/properties/conditions/maxItems,number,12
+/agent_architecture/participation/mcp/tools/4/inputSchema/properties/filters/properties/conditions/items,object,
+/agent_architecture/participation/mcp/tools/4/inputSchema/properties/filters/properties/conditions/items/type,string,string
+/agent_architecture/participation/mcp/tools/4/inputSchema/properties/filters/properties/conditions/items/maxLength,number,200
+/agent_architecture/participation/mcp/tools/4/inputSchema/properties/filters/properties/journals,object,
+/agent_architecture/participation/mcp/tools/4/inputSchema/properties/filters/properties/journals/type,string,array
+/agent_architecture/participation/mcp/tools/4/inputSchema/properties/filters/properties/journals/maxItems,number,12
+/agent_architecture/participation/mcp/tools/4/inputSchema/properties/filters/properties/journals/items,object,
+/agent_architecture/participation/mcp/tools/4/inputSchema/properties/filters/properties/journals/items/type,string,string
+/agent_architecture/participation/mcp/tools/4/inputSchema/properties/filters/properties/journals/items/maxLength,number,200
+/agent_architecture/participation/mcp/tools/4/inputSchema/properties/offset,object,
+/agent_architecture/participation/mcp/tools/4/inputSchema/properties/offset/type,string,integer
+/agent_architecture/participation/mcp/tools/4/inputSchema/properties/offset/minimum,number,0
+/agent_architecture/participation/mcp/tools/4/inputSchema/properties/offset/maximum,number,10000
+/agent_architecture/participation/mcp/tools/4/inputSchema/properties/limit,object,
+/agent_architecture/participation/mcp/tools/4/inputSchema/properties/limit/type,string,integer
+/agent_architecture/participation/mcp/tools/4/inputSchema/properties/limit/minimum,number,1
+/agent_architecture/participation/mcp/tools/4/inputSchema/properties/limit/maximum,number,100
+/agent_architecture/participation/mcp/tools/4/inputSchema/required,array,0
+/agent_architecture/participation/mcp/tools/4/annotations,object,
+/agent_architecture/participation/mcp/tools/4/annotations/readOnlyHint,boolean,true
+/agent_architecture/participation/mcp/tools/4/annotations/destructiveHint,boolean,false
+/agent_architecture/participation/mcp/tools/4/annotations/idempotentHint,boolean,true
+/agent_architecture/participation/mcp/tools/4/annotations/openWorldHint,boolean,false
+/agent_architecture/participation/mcp/tools/5,object,
+/agent_architecture/participation/mcp/tools/5/name,string,get_publication
+/agent_architecture/participation/mcp/tools/5/description,string,"Read an approved publication by ID, DOI or PMID. Preserve quotations and evidence status."
+/agent_architecture/participation/mcp/tools/5/inputSchema,object,
+/agent_architecture/participation/mcp/tools/5/inputSchema/type,string,object
+/agent_architecture/participation/mcp/tools/5/inputSchema/additionalProperties,boolean,false
+/agent_architecture/participation/mcp/tools/5/inputSchema/properties,object,
+/agent_architecture/participation/mcp/tools/5/inputSchema/properties/id,object,
+/agent_architecture/participation/mcp/tools/5/inputSchema/properties/id/type,string,string
+/agent_architecture/participation/mcp/tools/5/inputSchema/properties/id/maxLength,number,250
+/agent_architecture/participation/mcp/tools/5/inputSchema/required,array,1
+/agent_architecture/participation/mcp/tools/5/inputSchema/required/0,string,id
+/agent_architecture/participation/mcp/tools/5/annotations,object,
+/agent_architecture/participation/mcp/tools/5/annotations/readOnlyHint,boolean,true
+/agent_architecture/participation/mcp/tools/5/annotations/destructiveHint,boolean,false
+/agent_architecture/participation/mcp/tools/5/annotations/idempotentHint,boolean,true
+/agent_architecture/participation/mcp/tools/5/annotations/openWorldHint,boolean,false
+/agent_architecture/participation/mcp/tools/6,object,
+/agent_architecture/participation/mcp/tools/6/name,string,get_passages
+/agent_architecture/participation/mcp/tools/6/description,string,Read CC BY or CC0 full-text passages. Preserve attribution and licence. Other full texts are unavailable through this public connector.
+/agent_architecture/participation/mcp/tools/6/inputSchema,object,
+/agent_architecture/participation/mcp/tools/6/inputSchema/type,string,object
+/agent_architecture/participation/mcp/tools/6/inputSchema/additionalProperties,boolean,false
+/agent_architecture/participation/mcp/tools/6/inputSchema/properties,object,
+/agent_architecture/participation/mcp/tools/6/inputSchema/properties/id,object,
+/agent_architecture/participation/mcp/tools/6/inputSchema/properties/id/type,string,string
+/agent_architecture/participation/mcp/tools/6/inputSchema/properties/id/maxLength,number,250
+/agent_architecture/participation/mcp/tools/6/inputSchema/properties/query,object,
+/agent_architecture/participation/mcp/tools/6/inputSchema/properties/query/type,string,string
+/agent_architecture/participation/mcp/tools/6/inputSchema/properties/query/maxLength,number,800
+/agent_architecture/participation/mcp/tools/6/inputSchema/properties/offset,object,
+/agent_architecture/participation/mcp/tools/6/inputSchema/properties/offset/type,string,integer
+/agent_architecture/participation/mcp/tools/6/inputSchema/properties/offset/minimum,number,0
+/agent_architecture/participation/mcp/tools/6/inputSchema/properties/offset/maximum,number,10000
+/agent_architecture/participation/mcp/tools/6/inputSchema/properties/limit,object,
+/agent_architecture/participation/mcp/tools/6/inputSchema/properties/limit/type,string,integer
+/agent_architecture/participation/mcp/tools/6/inputSchema/properties/limit/minimum,number,1
+/agent_architecture/participation/mcp/tools/6/inputSchema/properties/limit/maximum,number,20
+/agent_architecture/participation/mcp/tools/6/inputSchema/required,array,1
+/agent_architecture/participation/mcp/tools/6/inputSchema/required/0,string,id
+/agent_architecture/participation/mcp/tools/6/annotations,object,
+/agent_architecture/participation/mcp/tools/6/annotations/readOnlyHint,boolean,true
+/agent_architecture/participation/mcp/tools/6/annotations/destructiveHint,boolean,false
+/agent_architecture/participation/mcp/tools/6/annotations/idempotentHint,boolean,true
+/agent_architecture/participation/mcp/tools/6/annotations/openWorldHint,boolean,false
+/agent_architecture/participation/mcp/tools/7,object,
+/agent_architecture/participation/mcp/tools/7/name,string,list_atlas_records
+/agent_architecture/participation/mcp/tools/7/description,string,"Search or list all M1–M1001 records or the M9 family. Commentary is searchable. A family result is mathematical, not biological evidence."
+/agent_architecture/participation/mcp/tools/7/inputSchema,object,
+/agent_architecture/participation/mcp/tools/7/inputSchema/type,string,object
+/agent_architecture/participation/mcp/tools/7/inputSchema/additionalProperties,boolean,false
+/agent_architecture/participation/mcp/tools/7/inputSchema/properties,object,
+/agent_architecture/participation/mcp/tools/7/inputSchema/properties/family,object,
+/agent_architecture/participation/mcp/tools/7/inputSchema/properties/family/type,string,string
+/agent_architecture/participation/mcp/tools/7/inputSchema/properties/family/enum,array,2
+/agent_architecture/participation/mcp/tools/7/inputSchema/properties/family/enum/0,string,all
+/agent_architecture/participation/mcp/tools/7/inputSchema/properties/family/enum/1,string,m9
+/agent_architecture/participation/mcp/tools/7/inputSchema/properties/query,object,
+/agent_architecture/participation/mcp/tools/7/inputSchema/properties/query/type,string,string
+/agent_architecture/participation/mcp/tools/7/inputSchema/properties/query/maxLength,number,200
+/agent_architecture/participation/mcp/tools/7/inputSchema/properties/offset,object,
+/agent_architecture/participation/mcp/tools/7/inputSchema/properties/offset/type,string,integer
+/agent_architecture/participation/mcp/tools/7/inputSchema/properties/offset/minimum,number,0
+/agent_architecture/participation/mcp/tools/7/inputSchema/properties/offset/maximum,number,10000
+/agent_architecture/participation/mcp/tools/7/inputSchema/properties/limit,object,
+/agent_architecture/participation/mcp/tools/7/inputSchema/properties/limit/type,string,integer
+/agent_architecture/participation/mcp/tools/7/inputSchema/properties/limit/minimum,number,1
+/agent_architecture/participation/mcp/tools/7/inputSchema/properties/limit/maximum,number,100
+/agent_architecture/participation/mcp/tools/7/inputSchema/required,array,0
+/agent_architecture/participation/mcp/tools/7/annotations,object,
+/agent_architecture/participation/mcp/tools/7/annotations/readOnlyHint,boolean,true
+/agent_architecture/participation/mcp/tools/7/annotations/destructiveHint,boolean,false
+/agent_architecture/participation/mcp/tools/7/annotations/idempotentHint,boolean,true
+/agent_architecture/participation/mcp/tools/7/annotations/openWorldHint,boolean,false
+/agent_architecture/participation/mcp/tools/8,object,
+/agent_architecture/participation/mcp/tools/8/name,string,get_atlas_record
+/agent_architecture/participation/mcp/tools/8/description,string,"Read Atlas commentary, analysis, probability, hypotheses and nested sequences. Default summary lists section paths. Request a dotted section path for detail. Large objects return field paths; arrays use offset and limit. Full canonical data is available at the returned API URL."
+/agent_architecture/participation/mcp/tools/8/inputSchema,object,
+/agent_architecture/participation/mcp/tools/8/inputSchema/type,string,object
+/agent_architecture/participation/mcp/tools/8/inputSchema/additionalProperties,boolean,false
+/agent_architecture/participation/mcp/tools/8/inputSchema/properties,object,
+/agent_architecture/participation/mcp/tools/8/inputSchema/properties/id,object,
+/agent_architecture/participation/mcp/tools/8/inputSchema/properties/id/type,string,string
+/agent_architecture/participation/mcp/tools/8/inputSchema/properties/id/maxLength,number,250
+/agent_architecture/participation/mcp/tools/8/inputSchema/properties/section,object,
+/agent_architecture/participation/mcp/tools/8/inputSchema/properties/section/type,string,string
+/agent_architecture/participation/mcp/tools/8/inputSchema/properties/section/maxLength,number,200
+/agent_architecture/participation/mcp/tools/8/inputSchema/properties/offset,object,
+/agent_architecture/participation/mcp/tools/8/inputSchema/properties/offset/type,string,integer
+/agent_architecture/participation/mcp/tools/8/inputSchema/properties/offset/minimum,number,0
+/agent_architecture/participation/mcp/tools/8/inputSchema/properties/offset/maximum,number,100000
+/agent_architecture/participation/mcp/tools/8/inputSchema/properties/limit,object,
+/agent_architecture/participation/mcp/tools/8/inputSchema/properties/limit/type,string,integer
+/agent_architecture/participation/mcp/tools/8/inputSchema/properties/limit/minimum,number,1
+/agent_architecture/participation/mcp/tools/8/inputSchema/properties/limit/maximum,number,100
+/agent_architecture/participation/mcp/tools/8/inputSchema/required,array,1
+/agent_architecture/participation/mcp/tools/8/inputSchema/required/0,string,id
+/agent_architecture/participation/mcp/tools/8/annotations,object,
+/agent_architecture/participation/mcp/tools/8/annotations/readOnlyHint,boolean,true
+/agent_architecture/participation/mcp/tools/8/annotations/destructiveHint,boolean,false
+/agent_architecture/participation/mcp/tools/8/annotations/idempotentHint,boolean,true
+/agent_architecture/participation/mcp/tools/8/annotations/openWorldHint,boolean,false
+/agent_architecture/participation/api,object,
+/agent_architecture/participation/api/openapi,string,https://informatics-universal-one.universalmind.workers.dev/api/v1/openapi.json
+/agent_architecture/participation/api/inventory,string,https://informatics-universal-one.universalmind.workers.dev/api/v1/inventory
+/agent_architecture/participation/api/study_summary,string,https://informatics-universal-one.universalmind.workers.dev/api/v1/quantum/oxtr-qrc-01?section=summary
+/agent_architecture/participation/api/study_continuation,string,https://informatics-universal-one.universalmind.workers.dev/api/v1/quantum/oxtr-qrc-01?section=continuation
+/agent_architecture/participation/api/study_measurements,string,https://informatics-universal-one.universalmind.workers.dev/api/v1/quantum/oxtr-qrc-01?section=measurements&offset=0
+/agent_architecture/participation/api/geometry,string,https://informatics-universal-one.universalmind.workers.dev/api/v1/atlas/fibonacci-m9-p24?section=full
+/agent_architecture/participation/a2a,object,
+/agent_architecture/participation/a2a/agent_card,string,https://informatics-universal-one.universalmind.workers.dev/.well-known/agent-card.json
+/agent_architecture/participation/a2a/endpoint,string,https://informatics-universal-one.universalmind.workers.dev/a2a/v1
+/agent_architecture/participation/a2a/headers,object,
+/agent_architecture/participation/a2a/headers/Content-Type,string,application/json
+/agent_architecture/participation/a2a/headers/A2A-Version,string,1.0
+/agent_architecture/participation/a2a/request,object,
+/agent_architecture/participation/a2a/request/jsonrpc,string,2.0
+/agent_architecture/participation/a2a/request/id,number,1
+/agent_architecture/participation/a2a/request/method,string,SendMessage
+/agent_architecture/participation/a2a/request/params,object,
+/agent_architecture/participation/a2a/request/params/message,object,
+/agent_architecture/participation/a2a/request/params/message/messageId,string,quantum-atlas-explanation-1
+/agent_architecture/participation/a2a/request/params/message/role,string,ROLE_USER
+/agent_architecture/participation/a2a/request/params/message/parts,array,1
+/agent_architecture/participation/a2a/request/params/message/parts/0,object,
+/agent_architecture/participation/a2a/request/params/message/parts/0/text,string,"Read the current OXTR quantum study. Explain its research question, the roles of simulation, Aquila measurements and the classical biological comparison, and what the findings mean for a person considering the next experiment. Cite the source records."
+/agent_architecture/participation/a2a/response,string,Read result.message.parts for the answer and result.message.metadata.sources for citations. Include the relevant context in each new message.
+/agent_architecture/participation/a2a/scope,string,"The current A2A agent returns a direct research answer. Persistent task dispatch, streaming and push notifications are outside its advertised capabilities. MCP and A2A do not submit new Aquila jobs or create the browser’s persistent Astra study."
+/agent_architecture/participation/connect_guide,string,https://universalmind.tv/informatics/connect.html
+/agent_architecture/participation/handoff,string,"For a new persistent investigation, help the person frame the question and open Quantum Atlas. The site establishes its research session, submits the question and tracks the resulting study. Keep the public research connector separate from the session-owned execution service."
+/agent_architecture/participation/citation_contract,string,"Retain study IDs, immutable revision URLs, source hashes, provider receipts and review status when moving between agents. Link the evidence that supports the explanation, and preserve the original question throughout the handoff."
+/agent_architecture/implementation_sources,array,16
+/agent_architecture/implementation_sources/0,object,
+/agent_architecture/implementation_sources/0/repository_path,string,Informatics/quantum/index.html
+/agent_architecture/implementation_sources/0/sha256,string,1c85176a9a6bb6182bc80d0a1535722ad1d434f42aca973fe7018b35bd085aec
+/agent_architecture/implementation_sources/0/scope,string,Original primary-page source with generated reading blocks removed
+/agent_architecture/implementation_sources/1,object,
+/agent_architecture/implementation_sources/1/repository_path,string,Informatics/quantum/study.js
+/agent_architecture/implementation_sources/1/sha256,string,3f0bc61c9d7404e737e1638917b5b65b960778d9db53fcc79041d7685d47352d
+/agent_architecture/implementation_sources/1/scope,string,Implementation source
+/agent_architecture/implementation_sources/2,object,
+/agent_architecture/implementation_sources/2/repository_path,string,Informatics/quantum/agent.js
+/agent_architecture/implementation_sources/2/sha256,string,a367e2183ec25af1fadadc25a4c8b76409471cbb2b195fecd77aeb17311702d9
+/agent_architecture/implementation_sources/2/scope,string,Implementation source
+/agent_architecture/implementation_sources/3,object,
+/agent_architecture/implementation_sources/3/repository_path,string,Informatics/quantum/biology.js
+/agent_architecture/implementation_sources/3/sha256,string,07bf3e90c3b0e9e18dc51ee0557774a536a2a9049c97decd0fa502966bf1c8dc
+/agent_architecture/implementation_sources/3/scope,string,Implementation source
+/agent_architecture/implementation_sources/4,object,
+/agent_architecture/implementation_sources/4/repository_path,string,Informatics/quantum/scientific-review.js
+/agent_architecture/implementation_sources/4/sha256,string,36122cd98b6f4a42eed29b8d84689599fb9a0b1e2f9fb07c373ab0ec3deb86ec
+/agent_architecture/implementation_sources/4/scope,string,Implementation source
+/agent_architecture/implementation_sources/5,object,
+/agent_architecture/implementation_sources/5/repository_path,string,Informatics/connect.js
+/agent_architecture/implementation_sources/5/sha256,string,1227ae3472159a4ab32abede300b99b4f3cdbf5573373e62a6a76aa9979d5eca
+/agent_architecture/implementation_sources/5/scope,string,Implementation source
+/agent_architecture/implementation_sources/6,object,
+/agent_architecture/implementation_sources/6/repository_path,string,cloudflare/informatics-connectors.js
+/agent_architecture/implementation_sources/6/sha256,string,1c0ad31d1d9eb6d53b3615777d0714eb7bf42a2f4f86f91646a413a97052ca7a
+/agent_architecture/implementation_sources/6/scope,string,Implementation source
+/agent_architecture/implementation_sources/7,object,
+/agent_architecture/implementation_sources/7/repository_path,string,cloudflare/informatics-quantum-knowledge.js
+/agent_architecture/implementation_sources/7/sha256,string,559caf6534201e060da1d933cd9aa0d8b1e95fc62ba98c70723d124ea35a0204
+/agent_architecture/implementation_sources/7/scope,string,Implementation source
+/agent_architecture/implementation_sources/8,object,
+/agent_architecture/implementation_sources/8/repository_path,string,cloudflare/informatics-quantum.js
+/agent_architecture/implementation_sources/8/sha256,string,1373d17fe91957fec2e27ebe89a2cf4c092cb59abd76b2f603be9460979b54c5
+/agent_architecture/implementation_sources/8/scope,string,Implementation source
+/agent_architecture/implementation_sources/9,object,
+/agent_architecture/implementation_sources/9/repository_path,string,cloudflare/informatics-astra.js
+/agent_architecture/implementation_sources/9/sha256,string,ac521234c4d0ba8de89ecea9d198e2d497add495426c1db2721f3a23a61ea441
+/agent_architecture/implementation_sources/9/scope,string,Implementation source
+/agent_architecture/implementation_sources/10,object,
+/agent_architecture/implementation_sources/10/repository_path,string,cloudflare/informatics-astra-memory.js
+/agent_architecture/implementation_sources/10/sha256,string,a4384d95c1a0eafb7aa72bbdcf38fe4f1bd88ad895d419b5ff3e4916626a6c6e
+/agent_architecture/implementation_sources/10/scope,string,Implementation source
+/agent_architecture/implementation_sources/11,object,
+/agent_architecture/implementation_sources/11/repository_path,string,research/informatics/astra-service/runner.py
+/agent_architecture/implementation_sources/11/sha256,string,1a6c6e9ac958e91ebfd035ac11d0e7a3f0add1cc20620530cdff18e36033b411
+/agent_architecture/implementation_sources/11/scope,string,Implementation source
+/agent_architecture/implementation_sources/12,object,
+/agent_architecture/implementation_sources/12/repository_path,string,research/informatics/astra-service/review_flow.py
+/agent_architecture/implementation_sources/12/sha256,string,b7e8e358df6129bdc8c981ad4a6b2aefd3c52ffc905a84452a45017fcfb87430
+/agent_architecture/implementation_sources/12/scope,string,Implementation source
+/agent_architecture/implementation_sources/13,object,
+/agent_architecture/implementation_sources/13/repository_path,string,research/informatics/astra-service/cloud/runtime.py
+/agent_architecture/implementation_sources/13/sha256,string,fb82bdcc17ab13ccb0a5b513acb5e537f4ea572b06e808df369921441020f545
+/agent_architecture/implementation_sources/13/scope,string,Implementation source
+/agent_architecture/implementation_sources/14,object,
+/agent_architecture/implementation_sources/14/repository_path,string,research/informatics/scientific-swarm/swarm.py
+/agent_architecture/implementation_sources/14/sha256,string,c54b10f8817b59be643e87d413cd0eb0c29cb51e8b11985726431eb06cbdaccb
+/agent_architecture/implementation_sources/14/scope,string,Implementation source
+/agent_architecture/implementation_sources/15,object,
+/agent_architecture/implementation_sources/15/repository_path,string,research/informatics/scientific-swarm/ROLE_CONTRACT.md
+/agent_architecture/implementation_sources/15/sha256,string,f06b092dc9fee0585a9c649b84c166d960f19a11aa61ba50ba0f4fb385562cd0
+/agent_architecture/implementation_sources/15/scope,string,Implementation source
 /instructions,array,6
 /instructions/0,string,"Use the topic directory to identify the subject before discussing a shared term such as hexagon, Fibonacci, vision or OXTR."
 /instructions/1,string,"The Vision Atlas studies human visual stimulation and the EMDR hexagon hypothesis. Computer vision for genomics studies algorithms for hyperspectral image analysis. These are separate research directions. The word “vision” does not make them the same project, method or evidence base."
-/instructions/2,string,Quantum Atlas uses OXTR DNA inputs in computational and quantum experiments. Its hexagonal atom arrangement and quantum-stability hypothesis are separate from the Vision Atlas EMDR tracking hypothesis and from the proposed computer vision algorithm.
+/instructions/2,string,"Quantum Atlas uses a coordinated AI research workflow to investigate biological questions through classical calculations, simulation and quantum measurements. Its Wiki explains the agent roles and public MCP, API and A2A participation. OXTR supplies its first worked investigation. Its hexagonal atom arrangement and quantum-stability hypothesis are separate from the Vision Atlas EMDR tracking hypothesis and from the proposed computer vision algorithm."
 /instructions/3,string,"Read the saved study phases in order: original qualification runs, completed classical genomic pilot, further local CPU checks, then the proposed next quantum test."
 /instructions/4,string,"Retain the source labels for calculated values, GPU simulations, Aquila measurements, mathematical relationships and proposed mechanisms."
 /instructions/5,string,"This guide includes the saved chart data and interpretations. The linked immutable experiment revisions retain the complete inputs, methods, measurements, receipts and field guides. The guide is a dated snapshot, not a report of a visitor’s active question."
@@ -44,8 +644,8 @@ path,type,value
 /topics/4,object,
 /topics/4/id,string,quantum
 /topics/4/title,string,Quantum Atlas
-/topics/4/question,string,Do quantum responses generated from Fibonacci and M9 P24 representations improve our ability to predict transcription factor occupancy around OXTR?
-/topics/4/subject,string,"Classical calculations, CUDA-Q simulations, Aquila measurements and biological prediction tests"
+/topics/4/question,string,"What biological questions can the coordinated AI and quantum workflow investigate, and how can people and external AIs take part?"
+/topics/4/subject,string,"Natural-language biological research with Astra, Gemini, coordinated calculations and public MCP/API/A2A participation"
 /topics/4/url,string,https://universalmind.tv/informatics/?entry=research&area=quantum
 /topics/4/wiki,string,https://universalmind.tv/informatics/read/quantum/index.html
 /topics/5,object,

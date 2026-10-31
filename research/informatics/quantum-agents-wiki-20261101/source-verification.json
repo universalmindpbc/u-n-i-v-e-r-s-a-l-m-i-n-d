@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "human_source_and_runtime_preserved": true,
+  "root_landing_metadata_unchanged": true,
+  "raw_html_quantum_payload_on_both_routes": true,
+  "topics_separated_in_both_guides": true,
+  "json_csv_markdown_equivalent": true,
+  "source_hashes_matched": 12,
+  "qualification_rows": 16,
+  "local_cpu_cases": 16,
+  "representations": 8,
+  "no_live_agent_or_quantum_execution": true
+}

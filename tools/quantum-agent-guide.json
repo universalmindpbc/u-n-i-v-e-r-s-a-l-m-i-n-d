@@ -1,0 +1,373 @@
+{
+  "version": "2026-11-01-agent-guide-1",
+  "purpose": {
+    "title": "What Quantum Atlas is for",
+    "summary": "Quantum Atlas makes computational biology and quantum research approachable through a scientific question written in ordinary language. A person brings the question; the platform coordinates AI scientific work, mathematical models, simulations, recorded quantum measurements and biological evidence, then returns an explanation with the underlying research record.",
+    "why": "The purpose is to help people investigate whether a proposed pattern adds useful information to a biological problem. The current OXTR investigation asks whether Fibonacci, Phi Ratio and M9 P24 representations can help predict where proteins associate with DNA. That study is the first worked investigation within the wider natural-language research experience.",
+    "human_explanation": "You can ask Quantum Atlas a biological research question without writing quantum code. Astra develops the supported investigation and explains the findings. Gemini reviews the design and the resulting report. Mathematical and computing tools supply calculations and measurements, while laboratory evidence provides a biological comparison. You can follow the stages, inspect the geometry, read the results in ordinary language and download the record. Your own AI can retrieve the public evidence through MCP or the API, or ask Universal One a research question through A2A. A persistent new study starts through the Quantum Atlas interface within its supported research scope.",
+    "instructions_for_ai": [
+      "Begin by explaining the purpose and the person’s research goal before listing providers or discussing the saved OXTR numbers.",
+      "Explain each feature in terms of what the person can ask, see, learn or retrieve. Define simulation, quantum measurement and biological comparison when those terms first appear.",
+      "Describe the agent roles and handoffs, then identify the connection method that fits the person’s request.",
+      "Use the current saved results to illustrate the workflow. Keep the platform’s wider purpose distinct from the outcome of its first study.",
+      "Describe available participation separately from extensions in development. Use the live tool schema and agent card to determine available operations."
+    ],
+    "example_questions": [
+      "What is Quantum Atlas for, and how can it help me investigate a biological question?",
+      "Explain what Astra, Gemini, Wolfram, CUDA-Q and Aquila each contribute, in plain language.",
+      "Walk me through the current OXTR investigation and explain what the results mean.",
+      "Connect to the public research tools, retrieve the study and help me formulate a useful next question."
+    ]
+  },
+  "features": [
+    {
+      "feature": "Ask a question",
+      "purpose": "Express the biological question in everyday language. The router identifies a supported calculation or a concrete missing capability.",
+      "human_value": "A clear starting point without writing quantum code."
+    },
+    {
+      "feature": "Study and live workflow",
+      "purpose": "Show the question, scientific plan, agent progress and the role of each calculation or evidence source.",
+      "human_value": "Understand what is happening and how each stage contributes."
+    },
+    {
+      "feature": "Geometry explorer",
+      "purpose": "Inspect Alpha, Beta, Gamma and Epsilon definitions and the different numerical preparations of the same DNA inputs.",
+      "human_value": "See what is being compared before interpreting its response."
+    },
+    {
+      "feature": "Design and findings reviews",
+      "purpose": "Gemini checks the proposed method before calculations and checks the findings against the evidence before delivery.",
+      "human_value": "See the review decision, requested corrections and retained evidence."
+    },
+    {
+      "feature": "Classical results",
+      "purpose": "Inspect calculation checks, CUDA-Q simulation results and the genomic prediction comparison.",
+      "human_value": "Understand the computational baseline and what a prediction score means."
+    },
+    {
+      "feature": "Quantum results and Compare",
+      "purpose": "Inspect the recorded Aquila readings beside matched calculated and simulated values, with their counts and uncertainty.",
+      "human_value": "Understand how the physical device behaved and how that relates to the research question."
+    },
+    {
+      "feature": "Insights and next test",
+      "purpose": "Return a direct answer, what was completed, the practical meaning, and the remaining research dependency.",
+      "human_value": "Learn from the investigation and identify a useful next step."
+    },
+    {
+      "feature": "Saved studies and downloads",
+      "purpose": "Retain task progress and provide the complete report in JSON and CSV. The Wiki adds a Markdown reading guide.",
+      "human_value": "Reopen work, inspect methods, discuss it with another AI or reproduce the analysis."
+    },
+    {
+      "feature": "Shared capacity",
+      "purpose": "Display the available question allowance and keep execution within the recorded scope and funding.",
+      "human_value": "Know when the service can accept another investigation."
+    },
+    {
+      "feature": "Drug Discovery Network and Open Source Genomic Insights",
+      "purpose": "The planned fifth stage connects reviewed findings with external research collaborators and shareable genomic insights.",
+      "human_value": "Understand the intended path from an investigation to research collaboration. This stage is marked as a future feature."
+    }
+  ],
+  "swarm": {
+    "title": "Quantum / AI agent swarm: who does what",
+    "summary": "Astra and Gemini have distinct scientific roles. LangGraph coordinates their work and the specialist calculation services through an explicit, persistent workflow. The diagram on the Quantum page presents the scientific handoffs: formulate, model, simulate and measure, compare with biological evidence, then interpret.",
+    "roles": [
+      {
+        "name": "GPT-6 Astra",
+        "role": "Head bioinformatician and scientist",
+        "work": "Interprets the question, selects the supported study plan, coordinates the authorised calculations, responds to review feedback and writes the evidence-grounded explanation.",
+        "handoff": "Proposed plan to Gemini; calculated evidence and draft report to Gemini; reviewed findings to the person."
+      },
+      {
+        "name": "Gemini 4 Argon",
+        "role": "Chief Scientist",
+        "work": "Reviews the design and final findings against the supplied methods, measurements, source records and uncertainty. Returns approve, revise or human decision required.",
+        "handoff": "Design feedback to Astra before execution; findings feedback before report delivery."
+      },
+      {
+        "name": "LangGraph",
+        "role": "Workflow orchestration and persistent state",
+        "work": "Orders the steps, checkpoints completed work, routes review decisions, bounds revision loops and preserves progress when a dependency interrupts execution.",
+        "handoff": "Controls the transition between planning, review, calculations, report and completion."
+      },
+      {
+        "name": "Wolfram Quantum Framework",
+        "role": "Mathematical specification and reference checks",
+        "work": "Provides the mathematical reference role shown in the workflow. The current continuation retains the saved Wolfram check receipts for the original model.",
+        "handoff": "Checked model definitions and reference calculations inform the matched simulation and hardware interpretation."
+      },
+      {
+        "name": "NVIDIA CUDA-Q",
+        "role": "Quantum-program preparation and simulation",
+        "work": "Compiles and simulates the defined quantum model. The original study used qBraid GPU simulation; the continuing recipe performs local CPU CUDA-Q checks on the cloud worker.",
+        "handoff": "Compiled programs, simulated observables and numerical-check receipts."
+      },
+      {
+        "name": "qBraid and NVIDIA GPU",
+        "role": "Recorded GPU execution route",
+        "work": "Executed the saved CUDA-Q compiled programs on the documented GPU service. Those measurements and receipts remain available for comparison.",
+        "handoff": "Recorded GPU samples and execution identity into the study evidence."
+      },
+      {
+        "name": "QuEra Aquila via Amazon Braket",
+        "role": "Recorded physical quantum measurement route",
+        "work": "The saved analog programs ran on Aquila’s neutral atoms through Braket. Their task receipts identify the actual hardware measurements.",
+        "handoff": "Hardware counts, usable shots, observables and timestamps into the comparison."
+      },
+      {
+        "name": "Biological evidence and classical benchmarks",
+        "role": "Test biological usefulness",
+        "work": "Reference DNA, ENCODE binding observations and JASPAR motifs support the held-out prediction comparison. Fixed classical code calculates the scores and uncertainty.",
+        "handoff": "Computed biological results and source provenance to Astra and Gemini."
+      },
+      {
+        "name": "Research memory and Universal One",
+        "role": "Shared research context and public research conversation",
+        "work": "Astra retrieves mission, experiment and research-direction records plus literature from the research repository. Universal One exposes cited research answers and public evidence access.",
+        "handoff": "Versioned sources to the scientific workflow and to an external AI using the public interfaces."
+      },
+      {
+        "name": "Cloudflare broker, AWS worker and encrypted storage",
+        "role": "Durable execution and delivery",
+        "work": "The broker tracks session-owned tasks and worker leases. AWS Lambda executes the supported recipe; SQLite checkpoints and encrypted S3 preserve progress and results.",
+        "handoff": "Progress events and the completed report return to the originating research session."
+      }
+    ],
+    "diagram_stages": [],
+    "current_workflow": [
+      {
+        "id": "question",
+        "title": "Question and routing",
+        "action": "The person submits a question. The router selects the supported OXTR continuation recipe or another supported route. A persistent study receives an identity and a saved task record."
+      },
+      {
+        "id": "memory",
+        "title": "Retrieve context",
+        "action": "Retrieve the mission, research directions, immutable experiment records and relevant literature."
+      },
+      {
+        "id": "audit",
+        "title": "Audit existing evidence",
+        "action": "Check the saved CUDA-Q, Aquila and mathematical-reference records before using them."
+      },
+      {
+        "id": "plan",
+        "title": "Astra prepares the plan",
+        "action": "Frame the supported calculation around the original question and the available evidence."
+      },
+      {
+        "id": "design",
+        "title": "Gemini reviews the design",
+        "action": "An approval advances to calculations. A revision returns the plan to Astra; an unresolved decision saves the dependency."
+      },
+      {
+        "id": "data",
+        "title": "Prepare the biological comparison",
+        "action": "Prepare reference DNA and the existing laboratory binding map using the fixed cohort recipe."
+      },
+      {
+        "id": "analyse",
+        "title": "Run classical analysis",
+        "action": "Train and select the methods on separate chromosomes, then evaluate OXTR and calculate the recorded metrics and uncertainty."
+      },
+      {
+        "id": "quantum",
+        "title": "Prepare and check quantum programs",
+        "action": "Prepare the matched DNA pair in eight representations and run 16 local CPU CUDA-Q program checks. Reuse the saved GPU and Aquila measurements."
+      },
+      {
+        "id": "report",
+        "title": "Astra explains the findings",
+        "action": "Answer the person’s original question using the calculated evidence, source context and remaining dependency."
+      },
+      {
+        "id": "final",
+        "title": "Gemini reviews the findings",
+        "action": "Check the report against the evidence packet. A requested revision returns to Astra; approval permits delivery."
+      },
+      {
+        "id": "publish",
+        "title": "Deliver the research record",
+        "action": "Save the reviewed report and complete JSON/CSV, then show the findings in the Quantum Atlas research session."
+      }
+    ],
+    "recovery": "The current recipe allows one design revision and one report revision. Unsupported questions or unresolved review decisions pause with a stated dependency. Closing the browser does not cancel a durable task; the saved study can be reopened. Cancellation and resume operate on that research session’s own study.",
+    "execution_scope": "The current continuation uses the saved GPU/Aquila results and performs new classical and local CPU CUDA-Q calculations. Fresh Aquila jobs, paid GPU jobs and a fresh Wolfram kernel run are outside this recipe. The workflow labels recorded hardware evidence separately from current task progress.",
+    "memory": "The shared research memory combines mission, research directions, versioned experiments and source-linked literature. Retrieval uses semantic and text search. The report retains the retrieved source context and evidence hashes.",
+    "record": "A delivered study contains the original question, plan and provider receipts, review decisions and evidence packets, source provenance, calculations, program checks and complete JSON/CSV. A private task report becomes a public experiment only through the separate reviewed publication process.",
+    "extensions": "The broader swarm prototype includes mid-study scientific support, human-interruption routing and a publication outbox for Synapse and DeSci. Integrating those general adapters into every live recipe, public MCP/A2A study dispatch, optional document destinations and the Drug Discovery Network remain extensions. The live fixed recipe already includes Gemini design and final review."
+  },
+  "participation": {
+    "title": "How another AI can participate",
+    "intro": "An external AI can explain the features to its human, retrieve and analyse the public research record, compare methods and help formulate a question. MCP exposes research tools. The REST API exposes the same records as JSON. A2A sends a research question to Universal One and returns its cited answer. The Quantum Atlas interface starts and follows a persistent scientific investigation.",
+    "routes": [
+      {
+        "route": "Read the Wiki or downloads",
+        "purpose": "Explain the page and its research architecture; discuss a saved study with a person.",
+        "entry": "https://universalmind.tv/informatics/read/quantum/index.html",
+        "authentication": "Public reading"
+      },
+      {
+        "route": "MCP",
+        "purpose": "Give an AI structured tools for study records, geometry, publications and reusable passages.",
+        "entry": "https://informatics-universal-one.universalmind.workers.dev/mcp",
+        "authentication": "No API key for these public read-only tools"
+      },
+      {
+        "route": "REST API",
+        "purpose": "Retrieve exact JSON records from an application, script or AI tool.",
+        "entry": "https://informatics-universal-one.universalmind.workers.dev/api/v1/openapi.json",
+        "authentication": "Public read-only API"
+      },
+      {
+        "route": "A2A",
+        "purpose": "Let an external agent ask Universal One a self-contained research question and receive a cited answer.",
+        "entry": "https://informatics-universal-one.universalmind.workers.dev/.well-known/agent-card.json",
+        "authentication": "Public interface; shared request limits apply"
+      },
+      {
+        "route": "Quantum Atlas research session",
+        "purpose": "Submit a supported investigation, follow Astra/Gemini progress and retrieve the session-owned report.",
+        "entry": "https://universalmind.tv/informatics/?entry=research&area=quantum",
+        "authentication": "The site establishes the browser research session automatically"
+      }
+    ],
+    "mcp": {
+      "endpoint": "https://informatics-universal-one.universalmind.workers.dev/mcp",
+      "transport": "HTTP JSON-RPC; responses are JSON. The endpoint accepts application/json and text/event-stream in Accept.",
+      "protocol_version": "2025-11-25",
+      "headers": {
+        "Content-Type": "application/json",
+        "Accept": "application/json, text/event-stream",
+        "MCP-Protocol-Version": "2025-11-25"
+      },
+      "workflow": [
+        "Initialize the connection and send notifications/initialized.",
+        "Discover tools/list and use the returned input schemas.",
+        "Call get_inventory for the current dataset version and scope.",
+        "Call get_quantum_study with id oxtr-qrc-01 and section summary, then request the relevant sections.",
+        "Follow measurements.data.page.nextOffset until it is null. Use get_atlas_record for canonical sequence definitions and search_publications/get_publication for source research.",
+        "Return a human explanation that cites the record URL, study ID, sourceSHA256 and the appropriate evidence status."
+      ],
+      "requests": [
+        {
+          "jsonrpc": "2.0",
+          "id": 1,
+          "method": "initialize",
+          "params": {
+            "protocolVersion": "2025-11-25",
+            "capabilities": {},
+            "clientInfo": {
+              "name": "quantum-atlas-reader",
+              "version": "1.0"
+            }
+          }
+        },
+        {
+          "jsonrpc": "2.0",
+          "method": "notifications/initialized"
+        },
+        {
+          "jsonrpc": "2.0",
+          "id": 2,
+          "method": "tools/list",
+          "params": {}
+        },
+        {
+          "jsonrpc": "2.0",
+          "id": 3,
+          "method": "tools/call",
+          "params": {
+            "name": "get_inventory",
+            "arguments": {}
+          }
+        },
+        {
+          "jsonrpc": "2.0",
+          "id": 4,
+          "method": "tools/call",
+          "params": {
+            "name": "get_quantum_study",
+            "arguments": {
+              "id": "oxtr-qrc-01",
+              "section": "summary"
+            }
+          }
+        },
+        {
+          "jsonrpc": "2.0",
+          "id": 5,
+          "method": "tools/call",
+          "params": {
+            "name": "get_quantum_study",
+            "arguments": {
+              "id": "oxtr-qrc-01",
+              "section": "measurements",
+              "offset": 0
+            }
+          }
+        }
+      ],
+      "result": "Read structuredContent when present, otherwise parse the JSON text in content. Check isError and JSON-RPC errors before interpreting a response.",
+      "continuation": "The current MCP tool schema lists eight Quantum sections. The API also exposes continuation, which contains the later classical pilot and local CUDA-Q findings. Retrieve that section through the REST URL below; discover the current MCP schema before selecting a section."
+    },
+    "api": {
+      "openapi": "https://informatics-universal-one.universalmind.workers.dev/api/v1/openapi.json",
+      "inventory": "https://informatics-universal-one.universalmind.workers.dev/api/v1/inventory",
+      "study_summary": "https://informatics-universal-one.universalmind.workers.dev/api/v1/quantum/oxtr-qrc-01?section=summary",
+      "study_continuation": "https://informatics-universal-one.universalmind.workers.dev/api/v1/quantum/oxtr-qrc-01?section=continuation",
+      "study_measurements": "https://informatics-universal-one.universalmind.workers.dev/api/v1/quantum/oxtr-qrc-01?section=measurements&offset=0",
+      "geometry": "https://informatics-universal-one.universalmind.workers.dev/api/v1/atlas/fibonacci-m9-p24?section=full"
+    },
+    "a2a": {
+      "agent_card": "https://informatics-universal-one.universalmind.workers.dev/.well-known/agent-card.json",
+      "endpoint": "https://informatics-universal-one.universalmind.workers.dev/a2a/v1",
+      "headers": {
+        "Content-Type": "application/json",
+        "A2A-Version": "1.0"
+      },
+      "request": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "SendMessage",
+        "params": {
+          "message": {
+            "messageId": "quantum-atlas-explanation-1",
+            "role": "ROLE_USER",
+            "parts": [
+              {
+                "text": "Read the current OXTR quantum study. Explain its research question, the roles of simulation, Aquila measurements and the classical biological comparison, and what the findings mean for a person considering the next experiment. Cite the source records."
+              }
+            ]
+          }
+        }
+      },
+      "response": "Read result.message.parts for the answer and result.message.metadata.sources for citations. Include the relevant context in each new message.",
+      "scope": "The current A2A agent returns a direct research answer. Persistent task dispatch, streaming and push notifications are outside its advertised capabilities. MCP and A2A do not submit new Aquila jobs or create the browser’s persistent Astra study."
+    },
+    "connect_guide": "https://universalmind.tv/informatics/connect.html",
+    "handoff": "For a new persistent investigation, help the person frame the question and open Quantum Atlas. The site establishes its research session, submits the question and tracks the resulting study. Keep the public research connector separate from the session-owned execution service.",
+    "citation_contract": "Retain study IDs, immutable revision URLs, source hashes, provider receipts and review status when moving between agents. Link the evidence that supports the explanation, and preserve the original question throughout the handoff."
+  },
+  "source_paths": [
+    "Informatics/quantum/index.html",
+    "Informatics/quantum/study.js",
+    "Informatics/quantum/agent.js",
+    "Informatics/quantum/biology.js",
+    "Informatics/quantum/scientific-review.js",
+    "Informatics/connect.js",
+    "cloudflare/informatics-connectors.js",
+    "cloudflare/informatics-quantum-knowledge.js",
+    "cloudflare/informatics-quantum.js",
+    "cloudflare/informatics-astra.js",
+    "cloudflare/informatics-astra-memory.js",
+    "research/informatics/astra-service/runner.py",
+    "research/informatics/astra-service/review_flow.py",
+    "research/informatics/astra-service/cloud/runtime.py",
+    "research/informatics/scientific-swarm/swarm.py",
+    "research/informatics/scientific-swarm/ROLE_CONTRACT.md"
+  ]
+}
