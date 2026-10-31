@@ -1,6 +1,6 @@
 {
   "source_commit": "0731aad97dbaec3eb3ff0c98f56caf3e8e8c6008",
-  "status": "staging_verified",
+  "status": "production_verified",
   "staging": "https://staging.universalmind.tv/informatics/?entry=research&area=quantum",
   "wiki": "https://staging.universalmind.tv/informatics/read/quantum/index.html",
   "production_authorization": "Ben authorized publication after completing the Quantum Wiki, with the approved Music changes included.",
@@ -15,5 +15,12 @@
   ],
   "live_agent_or_quantum_jobs_started": false,
   "cache_fix": "Topic-table CSS is inline in the AI overview; existing shared stylesheet preserved.",
-  "hosting_script_observation": "Cloudflare adds its analytics beacon to browser responses. The reading pages work with JavaScript disabled."
+  "hosting_script_observation": "Cloudflare adds its analytics beacon to browser responses. The reading pages work with JavaScript disabled.",
+  "production_source_commit": "83cd90166729e87eb0a298c4968b580d7be72e43",
+  "production": "https://universalmind.tv/informatics/?entry=research&area=quantum",
+  "production_wiki": "https://universalmind.tv/informatics/read/quantum/index.html",
+  "production_tag": "production-2026-11-01-0354",
+  "production_http_files_matched": 29,
+  "production_review_http_status": 403,
+  "production_browser_checks": "Quantum and Music passed at 1440, 390 and 320 pixels; native downloads match local source; Wiki pages work with JavaScript disabled."
 }

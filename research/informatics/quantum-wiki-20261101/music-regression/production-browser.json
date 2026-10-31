@@ -1,0 +1,217 @@
+{
+  "passed": true,
+  "mode": "production",
+  "processAudioMuted": true,
+  "errors": [],
+  "downloadsByteVerified": true,
+  "wikiWithoutJavascript": true,
+  "results": [
+    {
+      "width": 1440,
+      "models": 6,
+      "semanticTables": 10,
+      "visibleDownloadLinks": 4,
+      "existingTabsUnchanged": [
+        {
+          "tab": "sequence",
+          "title": "Doubling the phrase",
+          "box": {
+            "x": 162,
+            "y": 409.390625,
+            "width": 1116,
+            "height": 1056.671875
+          }
+        },
+        {
+          "tab": "melody",
+          "title": "One · three · five · eight",
+          "box": {
+            "x": 162,
+            "y": 409.390625,
+            "width": 1116,
+            "height": 1136.515625
+          }
+        },
+        {
+          "tab": "scale",
+          "title": "A tonic and six companions",
+          "box": {
+            "x": 162,
+            "y": 409.390625,
+            "width": 1116,
+            "height": 1081.359375
+          }
+        },
+        {
+          "tab": "chromatic",
+          "title": "The chromatic octave",
+          "box": {
+            "x": 162,
+            "y": 409.390625,
+            "width": 1116,
+            "height": 1012.59375
+          }
+        },
+        {
+          "tab": "fifths",
+          "title": "Pythagoras and the scale",
+          "box": {
+            "x": 162,
+            "y": 409.390625,
+            "width": 1116,
+            "height": 1121.640625
+          }
+        },
+        {
+          "tab": "tuning",
+          "title": "A reference and a ratio",
+          "box": {
+            "x": 162,
+            "y": 409.390625,
+            "width": 1116,
+            "height": 1078.265625
+          }
+        }
+      ],
+      "nativeFullscreen": false
+    },
+    {
+      "width": 390,
+      "models": 6,
+      "semanticTables": 10,
+      "visibleDownloadLinks": 4,
+      "existingTabsUnchanged": [
+        {
+          "tab": "sequence",
+          "title": "Doubling the phrase",
+          "box": {
+            "x": 19.5,
+            "y": 497.46875,
+            "width": 351,
+            "height": 1546.03125
+          }
+        },
+        {
+          "tab": "melody",
+          "title": "One · three · five · eight",
+          "box": {
+            "x": 19.5,
+            "y": 497.46875,
+            "width": 351,
+            "height": 1962
+          }
+        },
+        {
+          "tab": "scale",
+          "title": "A tonic and six companions",
+          "box": {
+            "x": 19.5,
+            "y": 497.46875,
+            "width": 351,
+            "height": 1742.53125
+          }
+        },
+        {
+          "tab": "chromatic",
+          "title": "The chromatic octave",
+          "box": {
+            "x": 19.5,
+            "y": 497.46875,
+            "width": 351,
+            "height": 2070.25
+          }
+        },
+        {
+          "tab": "fifths",
+          "title": "Pythagoras and the scale",
+          "box": {
+            "x": 19.5,
+            "y": 497.46875,
+            "width": 351,
+            "height": 1632.59375
+          }
+        },
+        {
+          "tab": "tuning",
+          "title": "A reference and a ratio",
+          "box": {
+            "x": 19.5,
+            "y": 497.46875,
+            "width": 351,
+            "height": 2493.0625
+          }
+        }
+      ],
+      "nativeFullscreen": false
+    },
+    {
+      "width": 320,
+      "models": 6,
+      "semanticTables": 10,
+      "visibleDownloadLinks": 4,
+      "existingTabsUnchanged": [
+        {
+          "tab": "sequence",
+          "title": "Doubling the phrase",
+          "box": {
+            "x": 16,
+            "y": 541.46875,
+            "width": 288,
+            "height": 1608.40625
+          }
+        },
+        {
+          "tab": "melody",
+          "title": "One · three · five · eight",
+          "box": {
+            "x": 16,
+            "y": 541.46875,
+            "width": 288,
+            "height": 1921.09375
+          }
+        },
+        {
+          "tab": "scale",
+          "title": "A tonic and six companions",
+          "box": {
+            "x": 16,
+            "y": 541.46875,
+            "width": 288,
+            "height": 1784.234375
+          }
+        },
+        {
+          "tab": "chromatic",
+          "title": "The chromatic octave",
+          "box": {
+            "x": 16,
+            "y": 541.46875,
+            "width": 288,
+            "height": 2003.09375
+          }
+        },
+        {
+          "tab": "fifths",
+          "title": "Pythagoras and the scale",
+          "box": {
+            "x": 16,
+            "y": 541.46875,
+            "width": 288,
+            "height": 1694.96875
+          }
+        },
+        {
+          "tab": "tuning",
+          "title": "A reference and a ratio",
+          "box": {
+            "x": 16,
+            "y": 541.46875,
+            "width": 288,
+            "height": 2392.6875
+          }
+        }
+      ],
+      "nativeFullscreen": false
+    }
+  ]
+}
