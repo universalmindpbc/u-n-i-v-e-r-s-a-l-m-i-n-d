@@ -1,0 +1,32 @@
+{
+  "passed": true,
+  "base": "https://staging.universalmind.tv",
+  "parts": [
+    {
+      "file": "part-07174db98c4021ecff0ffb438d07b6a8156480597c720fba682061e3a1c975f5.bin",
+      "bytes": 50331648,
+      "sha256": "07174db98c4021ecff0ffb438d07b6a8156480597c720fba682061e3a1c975f5"
+    },
+    {
+      "file": "part-5cfa34c5315c8abe1f21b217fcdd68d68bd0cae4961c3fdba62a2b61d6f4b350.bin",
+      "bytes": 25837458,
+      "sha256": "5cfa34c5315c8abe1f21b217fcdd68d68bd0cae4961c3fdba62a2b61d6f4b350"
+    },
+    {
+      "file": "part-1811cdbc15d9a4722018d002aea3aba57f843855559691b95d735317130efcdf.bin",
+      "bytes": 50331648,
+      "sha256": "1811cdbc15d9a4722018d002aea3aba57f843855559691b95d735317130efcdf"
+    },
+    {
+      "file": "part-1407d1d35d85b14a2fba4d02519a75903dccc4d6a3b50ed5d30b8958fb1f032a.bin",
+      "bytes": 50331648,
+      "sha256": "1407d1d35d85b14a2fba4d02519a75903dccc4d6a3b50ed5d30b8958fb1f032a"
+    },
+    {
+      "file": "part-7eedd21e89f4be74e4cb9b30807389e7999803a001087ef3035da843ed6e5217.bin",
+      "bytes": 44400639,
+      "sha256": "7eedd21e89f4be74e4cb9b30807389e7999803a001087ef3035da843ed6e5217"
+    }
+  ],
+  "bytes_verified": 221233041
+}

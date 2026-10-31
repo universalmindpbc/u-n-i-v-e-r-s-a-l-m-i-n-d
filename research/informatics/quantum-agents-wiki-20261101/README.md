@@ -12,6 +12,7 @@ The human explanation leads the Wiki, Markdown and JSON architecture record. The
 - `staging-protocols.json` and `production-protocols.json`: read-only MCP, API, A2A discovery/task-list and health checks. No new model request or compute dispatch.
 - `music-source-verification.json`: retained Music Atlas reading layer and original interface.
 - `complete-export-roundtrip.json`: all source records reconstructed from complete JSON and CSV exports.
+- `staging-complete-exports.json`: all five delivered full-export parts matched their manifest hashes.
 - `staging-http.json`: exact delivered bytes, initial-HTML data, download MIME types and staging crawler exclusion.
 - `staging-browser.json` and screenshots: actual staging journey and download-byte checks.
 
