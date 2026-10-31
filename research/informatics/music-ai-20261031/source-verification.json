@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "raw_html_models": 6,
+  "raw_html_tables": 10,
+  "inline_json_matches_download": true,
+  "structured_models": 6,
+  "csv_full_reconstruction": true,
+  "wiki_without_javascript": true,
+  "human_source_unchanged_except_authorized_footer": true,
+  "existing_runtime_unchanged": true,
+  "downloads_on_primary_and_wiki": true
+}

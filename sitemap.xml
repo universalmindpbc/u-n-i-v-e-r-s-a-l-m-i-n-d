@@ -37,16 +37,19 @@
     <loc>https://universalmind.tv/vogue/iam/technology-inference-engine.html</loc>
   </url>
   <url>
-    <loc>https://universalmind.tv/informatics/library.html?collection=vision</loc>
+    <loc>https://universalmind.tv/</loc>
   </url>
   <url>
-    <loc>https://universalmind.tv/informatics/library.html?collection=sound</loc>
+    <loc>https://universalmind.tv/home/</loc>
   </url>
   <url>
-    <loc>https://universalmind.tv/informatics/library.html?collection=language</loc>
+    <loc>https://universalmind.tv/read/</loc>
   </url>
   <url><loc>https://universalmind.tv/informatics/</loc></url>
   <url><loc>https://universalmind.tv/informatics/connect.html</loc></url>
+  <url><loc>https://universalmind.tv/informatics/library.html?collection=vision</loc></url>
+  <url><loc>https://universalmind.tv/informatics/library.html?collection=sound</loc></url>
+  <url><loc>https://universalmind.tv/informatics/library.html?collection=language</loc></url>
   <url><loc>https://universalmind.tv/informatics/library.html</loc></url>
   <url><loc>https://universalmind.tv/informatics/research.html</loc></url>
   <url><loc>https://universalmind.tv/informatics/genomics.html</loc></url>
@@ -2172,13 +2175,5 @@
   <url><loc>https://universalmind.tv/informatics/read/access.html</loc></url>
   <url><loc>https://universalmind.tv/informatics/read/index.html</loc></url>
   <url><loc>https://universalmind.tv/informatics/read/provenance.html</loc></url>
-  <url>
-    <loc>https://universalmind.tv/</loc>
-  </url>
-  <url>
-    <loc>https://universalmind.tv/home/</loc>
-  </url>
-  <url>
-    <loc>https://universalmind.tv/read/</loc>
-  </url>
+  <url><loc>https://universalmind.tv/informatics/read/music/index.html</loc></url>
 </urlset>

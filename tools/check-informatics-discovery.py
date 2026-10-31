@@ -89,4 +89,11 @@ for s in report['sourceHashes']:
 assert 'informatics_staging' in (SITE/'.htaccess').read_text()
 assert '/informatics/' in (ROOT/'llms.txt').read_text()
 assert 'all llm providers' in (SITE/'llms.txt').read_text().lower()
+music=json.loads((SITE/'music-atlas/music-atlas.json').read_text())
+assert hashlib.sha256((SITE/'atlas-visuals.js').read_bytes()).hexdigest()==music['source']['sha256'], 'Music explanations are stale. Run node tools/build-informatics-reading.mjs and rebuild complete exports.'
+music_page=(SITE/'index.html').read_text()
+inline=re.search(r'<script id="music-atlas-data" type="application/json">([\s\S]*?)</script>',music_page)
+assert inline and json.loads(inline[1])==music,'Embedded Music data differs from its download'
+assert len(music['models'])==6
+assert 'read/music/index.html' in (SITE/'llms.txt').read_text()
 print(json.dumps({'passed':True,'robotDecisions':len(agents)*len(routes)*2,'HTMLPages':len(pages),'localLinks':links,'publicationRecords':report['publications'],'atlasRecords':1001,'experimentRecords':report['experiments'],'sourceFilesMatched':len(report['sourceHashes'])}))

@@ -22,7 +22,11 @@
 <link rel="stylesheet" href="quantum-entry.css?v=1"><script defer src="quantum-entry.js?v=1"></script>
 <link rel="stylesheet" href="/vogue/iam/realtime-voice-assistant.css?v=uo-reuse-1"><link rel="stylesheet" href="universal-one.css?v=9"><script defer src="universal-one-character.js?v=1"></script><script defer src="universal-one-audio.js?v=2"></script><script defer src="universal-one-waveform.js?v=1"></script><script>window.UniversalOneHelpersReady=Promise.all([import("./universal-one-routing.js?v=3"),import("./universal-one-context.js?v=2")]).then(([routing,context])=>{window.UniversalOneNeedsResearch=routing.needsResearch;window.UniversalOneContext=context;});</script><script defer src="universal-one-live.js?v=7"></script><script defer src="universal-one.js?v=14"></script>
 <link rel="stylesheet" href="shared-experience.css?v=1"><script defer src="shared-experience.js?v=1"></script>
-<link rel="canonical" href="https://universalmind.tv/informatics/"></head>
+<link rel="canonical" href="https://universalmind.tv/informatics/"><!-- MUSIC ATLAS METADATA START -->
+<link rel="alternate" type="application/json" href="music-atlas/music-atlas.json" title="Music Atlas data"><link rel="alternate" type="text/markdown" href="music-atlas/music-atlas.md" title="Music Atlas explanations"><link rel="alternate" type="text/csv" href="music-atlas/music-atlas.csv" title="Music Atlas complete CSV"><link rel="stylesheet" href="music-atlas/reading-links.css?v=1">
+<script type="application/ld+json" id="music-atlas-structured">{"@context":"https://schema.org","@type":"LearningResource","@id":"https://universalmind.tv/informatics/?entry=research&area=sound#music-atlas","name":"Universal Informatics Music Atlas","url":"https://universalmind.tv/informatics/?entry=research&area=sound","description":"Six Music Atlas models with calculations, sequence values, musical explanations and measurement architecture.","hasPart":[{"@type":"LearningResource","name":"SEQUENCE STRUCTURE · Doubling the phrase","url":"https://universalmind.tv/informatics/read/music/index.html#music-model-sequence","text":"A four-bar phrase doubles to 8, 16, 32, 64 and 128 bars. Reducing each length modulo 9 gives a repeating six-value cycle.\n4 → 8 → 7 → 5 → 1 → 2\nIn 4/4, each bar contains four quarter-note beats. Here the numbers count bars in a phrase. Doubling is the structural choice being explored.\n\nBars | Calculation |\n\n4 | 4 = 9 × 0 + 4 |\n\n8 | 8 = 9 × 0 + 8 |\n\n16 | 16 = 9 × 1 + 7 |\n\n32 | 32 = 9 × 3 + 5 |\n\n64 | 64 = 9 × 7 + 1 |\n\n128 | 128 = 9 × 14 + 2 |\n\n\nThe M9 / P24 Beta cycle is 1, 2, 4, 8, 7, 5. Starting at 4 rotates the same cycle to 4, 8, 7, 5, 1, 2.\n\n\nWithin the Atlas, Beta is calculated by summing the Alpha values strictly between successive Gamma positions and reducing modulo 9. These two calculations produce the same six-value cycle."},{"@type":"LearningResource","name":"MELODIC STRUCTURE · One · three · five · eight","url":"https://universalmind.tv/informatics/read/music/index.html#music-model-melody","text":"Select the first, third and fifth degrees of C major, then repeat the tonic at the octave: C, E, G, C. These degree numbers are selected Fibonacci numbers.\n1 · 3 · 5 · 8\nC · E · G · C\nThe Fibonacci sequence begins 0, 1, 1, 2, 3, 5, 8…. The chord selects degrees 1, 3, 5, 8; these are selected values within the sequence.\n\n\nThe circle keeps all 24 Alpha positions in their original order. Every occurrence of 1, 3, 5 or 8 is highlighted, synchronised with its piano key. Repeated values stay at their separate positions. Blend Alpha to reveal the remaining values; this is a comparison of scale-degree numbers with sequence values.\n\n\nA major triad is degrees 1, 3 and 5. Degree 8 repeats its root one octave higher.\n\nDegree | Just ratio | 12-TET ratio |\n\n1 | 1 | 1 |\n\n3 | 5/4 | 1.25992 |\n\n5 | 3/2 | 1.49831 |\n\n8 | 2 | 2 |\n\n\n12-TET means twelve equal divisions of the octave. Its frequency ratio after n semitones is 2^(n/12). Just intonation gives the chord the proportional frequencies 4 : 5 : 6 : 8."},{"@type":"LearningResource","name":"SCALE · A tonic and six companions","url":"https://universalmind.tv/informatics/read/music/index.html#music-model-scale","text":"Place the tonic at the centre and the six other notes of its major scale around it. Trace the hexagon, then return to the centre.\n1 tonic + 6 notes = 7\n2 · 2 · 1 · 2 · 2 · 2 · 1\nThe seven distinct notes of C major are C D E F G A B. C at the centre leaves six notes on the perimeter.\n\n\nThe steps from one note to the next, including the return to C, are 2, 2, 1, 2, 2, 2, 1 semitones. Equal distances in the drawing represent positions in the arrangement.\n\n\nMove from C major to G major and six note names remain: C D E G A B. F changes to F♯.\n\n\nThe Gamma overlay uses the Atlas positions 24, 4, 8, 12, 16, 20, with Alpha values 9, 3, 3, 9, 6, 6. These six equally spaced positions align with the six scale notes around the tonic. Gamma also joins alternating vertices into two opposing equilateral triangles, forming the six-pointed star within the hexagon. The note names and the modular values remain visible as separate labels.\n\n\nBlend Alpha to reveal all 24 positions. We hypothesise that these are possible Fibonacci structures within M9 / P24. The overlay makes the proposed spatial relationship available for inspection."},{"@type":"LearningResource","name":"CHROMATIC · The chromatic octave","url":"https://universalmind.tv/informatics/read/music/index.html#music-model-chromatic","text":"Follow the twelve chromatic pitch classes around the circle and across the keyboard. From C to the next C, five black keys sit alongside eight white keys.\n2 + 3 = 5\n5 + 8 = 13\nThe chromatic scale includes every semitone in the octave. On the circle, the seven natural notes C D E F G A B are white; the five black-key notes C♯ D♯ F♯ G♯ A♯ are pink. Sharp spellings are used here; on an equal-tempered keyboard these keys also have flat names.\n\n\nThe major-scale steps are 2, 2, 1, 2, 2, 2, 1 semitones. A black key fills each two-semitone gap. E–F and B–C are already one semitone apart, creating the familiar groups of two and three black keys.\n\n\n2 + 3 = 5 counts the black keys. 5 + 8 = 13 counts all keys from C to C, including both endpoints. The numbers 2, 3, 5, 8, 13 are consecutive Fibonacci numbers. This is a counting pattern in the illustrated keyboard span, not a derivation of chromatic tuning.\n\n\nThe upper C has twice the frequency of the lower C and belongs to the same pitch class. Without the repeated endpoint, there are 7 + 5 = 12 pitch classes. Choosing different endpoints changes the colour counts: C♯ to C♯ contains seven white keys and six black keys.\n\n\nThe circle uses twelve-tone equal temperament: every adjacent step has frequency ratio 2^(1/12). Equal angles represent equal semitone intervals. The separate Circle of fifths view explains pure 3:2 fifths, octaves and the tuning adjustment that closes the twelve-note circle.\n\n\nScales and scale degrees · Open Music Theory ↗\nNotes, frequencies and equal temperament · UNSW ↗"},{"@type":"LearningResource","name":"CIRCLE OF FIFTHS · Pythagoras and the scale","url":"https://universalmind.tv/informatics/read/music/index.html#music-model-fifths","text":"Pythagorean tuning, traditionally attributed to Pythagoras, builds a scale from 3:2 fifths and 2:1 octaves. Bring the notes into one octave and order them by pitch: C, D, E, F, G, A, B. Repeat C above them to complete the eight-note scale.\nPerfect fifth: 3 : 2\nOctave: 2 : 1\nThe tuning system named after Pythagoras constructs a scale using two operations: multiply by 3/2 for a fifth, then divide by 2 when the note lies above the octave.\n\n\nStarting from F, the chain F → C → G → D → A → E → B contains the C-major collection. Ordering those notes by pitch gives C D E F G A B.\n\n\nIn twelve-tone equal temperament each fifth is 2^(7/12) ≈ 1.49831. Twelve steps return to the same pitch class.\n\n\nTwelve pure 3:2 fifths exceed seven octaves by 531441/524288 ≈ 1.01364. This small difference is the Pythagorean comma.\n\n\nThe numbers in 2:1 and 3:2 are consecutive Fibonacci numbers. This is the numerical relationship explored here.\n\n\n3/2 is one ratio of successive Fibonacci numbers. The sequence 3/2, 5/3, 8/5, 13/8… approaches the Phi Ratio. Repeating the fixed ratio 3/2 is a separate operation.\n\n\nPythagorean tuning: method and ratios ↗\nPythagoras: historical attribution ↗"},{"@type":"LearningResource","name":"TUNING & FREQUENCY · A reference and a ratio","url":"https://universalmind.tv/informatics/read/music/index.html#music-model-tuning","text":"Compare the proposed M9 shapes for 528, 111 and 7.38 Hz. Choose the reference frequency for A4 to see the scale frequencies change while their interval ratios stay the same.\nf = A4 × 2^((n − 9)/12)\nThe reference sets A4 to 432, 440 or 444 Hz. Every equal-tempered note follows the same ratio rule. Here n is the number of semitones above C4.\n\n\nRelative to A4 = 440 Hz, A4 = 432 Hz shifts every note by approximately −31.77 cents. A4 = 444 Hz shifts every note by approximately +15.67 cents. One semitone is 100 cents.\n\n\nThe separate 528 Hz tone is included as a named solfeggio-frequency example. A single tone does not define the tuning of a whole piece.\n\n\nFor the M9 diagrams, add the digits of the frequency written in hertz, omitting the decimal point, and reduce the sum modulo 9, displaying zero as 9: 528 → 15 → 6, 111 → 3, 7.38 → 18 → 9. For 7.38 Hz, this operates on its written digits: 7 + 3 + 8 = 18. The visual presets associate 6 with a hexagon, 3 with a triangle and 9 with the circle. They show the proposed mapping; the shapes are not waveforms.\n\n\nChanging the tuning reference preserves relative intervals. The research question is whether these stimulus settings modulate emotional and biological responses."}],"encoding":[{"@type":"MediaObject","encodingFormat":"application/json","contentUrl":"https://universalmind.tv/informatics/music-atlas/music-atlas.json"},{"@type":"MediaObject","encodingFormat":"text/markdown","contentUrl":"https://universalmind.tv/informatics/music-atlas/music-atlas.md"},{"@type":"MediaObject","encodingFormat":"text/csv","contentUrl":"https://universalmind.tv/informatics/music-atlas/music-atlas.csv"}]}</script>
+<!-- MUSIC ATLAS METADATA END -->
+</head>
 <body>
 <section id="landing" aria-label="Universal Informatics">
 <canvas class="rain-canvas" aria-hidden="true" data-rain-canvas></canvas><div class="rain-vignette" aria-hidden="true"></div>
@@ -63,6 +67,783 @@
 </div>
 <aside class="sound-research-copy" aria-labelledby="atlas-sound-title"><p class="atlas-eyebrow">RESEARCH QUESTION</p><h2 id="atlas-sound-title" class="sound-question">does music modulate our emotions because of balance, geometry, resolution and symmetry?</h2><p class="atlas-subtitle">A study of electronic music and Fibonacci numbers</p><h3>Research questions</h3><ol class="atlas-questions"><li>Does electronic music modulate gene expression of OXTR?</li><li>Within the above deliverable, do Fibonacci* numbers predict gene expression locations, via transcription factor binding sites?</li></ol><p class="atlas-footnote">*Fibonacci Sequence Modulus 9 Pisano 24 and it's 4 subset sequences.</p><p class="atlas-measurement">measurement via OXTR transcription</p><p class="atlas-small">Proposed study · mRNA sequencing</p><div class="atlas-inline-links"><button data-science-transcription>Explore transcription ↗</button><button data-science-tfbs>Transcription-factor binding sites ↗</button><button data-science-register>Research repository ↗</button></div></aside>
 </div>
+<!-- MUSIC ATLAS MACHINE START -->
+<section id="music-atlas-machine" hidden aria-hidden="true" aria-label="Music Atlas semantic explanations and data">
+<section id="music-model-sequence" data-music-model="sequence"><h2>SEQUENCE STRUCTURE · Doubling the phrase</h2><p>A four-bar phrase doubles to 8, 16, 32, 64 and 128 bars. Reducing each length modulo 9 gives a repeating six-value cycle.</p><pre>4 → 8 → 7 → 5 → 1 → 2</pre><p>Phrase length in bars, mapped onto the nine positions of the Beta circle.</p><p>In 4/4, each bar contains four quarter-note beats. Here the numbers count bars in a phrase. Doubling is the structural choice being explored.</p><table><thead><tr><th>Bars</th><th>Calculation</th></tr></thead><tbody><tr><td>4</td><td>4 = 9 × 0 + 4</td></tr><tr><td>8</td><td>8 = 9 × 0 + 8</td></tr><tr><td>16</td><td>16 = 9 × 1 + 7</td></tr><tr><td>32</td><td>32 = 9 × 3 + 5</td></tr><tr><td>64</td><td>64 = 9 × 7 + 1</td></tr><tr><td>128</td><td>128 = 9 × 14 + 2</td></tr></tbody></table><p>The M9 / P24 Beta cycle is <code>1, 2, 4, 8, 7, 5</code>. Starting at 4 rotates the same cycle to <code>4, 8, 7, 5, 1, 2</code>.</p><p>Within the Atlas, Beta is calculated by summing the Alpha values strictly between successive Gamma positions and reducing modulo 9. These two calculations produce the same six-value cycle.</p><table><caption>Phrase doubling and modulo 9</caption><thead><tr><th scope="col">Phrase length (bars)</th><th scope="col">Quotient on division by 9</th><th scope="col">Remainder</th></tr></thead><tbody><tr><td>4</td><td>0</td><td>4</td></tr><tr><td>8</td><td>0</td><td>8</td></tr><tr><td>16</td><td>1</td><td>7</td></tr><tr><td>32</td><td>3</td><td>5</td></tr><tr><td>64</td><td>7</td><td>1</td></tr><tr><td>128</td><td>14</td><td>2</td></tr></tbody></table></section>
+<section id="music-model-melody" data-music-model="melody"><h2>MELODIC STRUCTURE · One · three · five · eight</h2><p>Select the first, third and fifth degrees of C major, then repeat the tonic at the octave: C, E, G, C. These degree numbers are selected Fibonacci numbers.</p><pre>1 · 3 · 5 · 8
+C · E · G · C</pre><p>The piano and circle highlight the same values: 1, 3, 5 and 8. Blend Alpha to reveal the full M9 / P24 sequence.</p><p>The Fibonacci sequence begins <code>0, 1, 1, 2, 3, 5, 8…</code>. The chord selects degrees <code>1, 3, 5, 8</code>; these are selected values within the sequence.</p><p>The circle keeps all 24 Alpha positions in their original order. Every occurrence of <code>1, 3, 5 or 8</code> is highlighted, synchronised with its piano key. Repeated values stay at their separate positions. Blend Alpha to reveal the remaining values; this is a comparison of scale-degree numbers with sequence values.</p><p>A major triad is degrees 1, 3 and 5. Degree 8 repeats its root one octave higher.</p><table><thead><tr><th>Degree</th><th>Just ratio</th><th>12-TET ratio</th></tr></thead><tbody><tr><td>1</td><td>1</td><td>1</td></tr><tr><td>3</td><td>5/4</td><td>1.25992</td></tr><tr><td>5</td><td>3/2</td><td>1.49831</td></tr><tr><td>8</td><td>2</td><td>2</td></tr></tbody></table><p>12-TET means twelve equal divisions of the octave. Its frequency ratio after <code>n</code> semitones is <code>2^(n/12)</code>. Just intonation gives the chord the proportional frequencies <code>4 : 5 : 6 : 8</code>.</p><table><caption>Selected C-major degrees and interval ratios</caption><thead><tr><th scope="col">Scale degree</th><th scope="col">Note</th><th scope="col">Semitones above C</th><th scope="col">Just ratio</th><th scope="col">12-TET ratio</th></tr></thead><tbody><tr><td>1</td><td>C</td><td>0</td><td>1</td><td>1</td></tr><tr><td>3</td><td>E</td><td>4</td><td>5/4</td><td>1.2599210498948732</td></tr><tr><td>5</td><td>G</td><td>7</td><td>3/2</td><td>1.4983070768766815</td></tr><tr><td>8</td><td>C</td><td>12</td><td>2</td><td>2</td></tr></tbody></table></section>
+<section id="music-model-scale" data-music-model="scale"><h2>SCALE · A tonic and six companions</h2><p>Place the tonic at the centre and the six other notes of its major scale around it. Trace the hexagon, then return to the centre.</p><pre>1 tonic + 6 notes = 7
+2 · 2 · 1 · 2 · 2 · 2 · 1</pre><p>Six scale notes surround the tonic. Blend Gamma to compare the six positions; blend Alpha to see their place in the full period.</p><p>The seven distinct notes of C major are <code>C D E F G A B</code>. C at the centre leaves six notes on the perimeter.</p><p>The steps from one note to the next, including the return to C, are <code>2, 2, 1, 2, 2, 2, 1</code> semitones. Equal distances in the drawing represent positions in the arrangement.</p><p>Move from C major to G major and six note names remain: <code>C D E G A B</code>. F changes to F♯.</p><p>The Gamma overlay uses the Atlas positions <code>24, 4, 8, 12, 16, 20</code>, with Alpha values <code>9, 3, 3, 9, 6, 6</code>. These six equally spaced positions align with the six scale notes around the tonic. Gamma also joins alternating vertices into two opposing equilateral triangles, forming the six-pointed star within the hexagon. The note names and the modular values remain visible as separate labels.</p><p>Blend Alpha to reveal all 24 positions. We hypothesise that these are possible Fibonacci structures within M9 / P24. The overlay makes the proposed spatial relationship available for inspection.</p><table><caption>C-major notes, semitone positions and the hexagonal arrangement</caption><thead><tr><th scope="col">Degree</th><th scope="col">Note</th><th scope="col">Semitones above tonic</th><th scope="col">Placement</th></tr></thead><tbody><tr><td>1</td><td>C</td><td>0</td><td>Centre</td></tr><tr><td>2</td><td>D</td><td>2</td><td>Perimeter 1</td></tr><tr><td>3</td><td>E</td><td>4</td><td>Perimeter 2</td></tr><tr><td>4</td><td>F</td><td>5</td><td>Perimeter 3</td></tr><tr><td>5</td><td>G</td><td>7</td><td>Perimeter 4</td></tr><tr><td>6</td><td>A</td><td>9</td><td>Perimeter 5</td></tr><tr><td>7</td><td>B</td><td>11</td><td>Perimeter 6</td></tr></tbody></table></section>
+<section id="music-model-chromatic" data-music-model="chromatic"><h2>CHROMATIC · The chromatic octave</h2><p>Follow the twelve chromatic pitch classes around the circle and across the keyboard. From C to the next C, five black keys sit alongside eight white keys.</p><pre>2 + 3 = 5
+5 + 8 = 13</pre><p>13 keys from C to C, including the repeated upper C. The circle contains 12 distinct pitch classes.</p><p>The chromatic scale includes every semitone in the octave. On the circle, the seven natural notes <code>C D E F G A B</code> are white; the five black-key notes <code>C♯ D♯ F♯ G♯ A♯</code> are pink. Sharp spellings are used here; on an equal-tempered keyboard these keys also have flat names.</p><p>The major-scale steps are <code>2, 2, 1, 2, 2, 2, 1</code> semitones. A black key fills each two-semitone gap. E–F and B–C are already one semitone apart, creating the familiar groups of two and three black keys.</p><p><code>2 + 3 = 5</code> counts the black keys. <code>5 + 8 = 13</code> counts all keys from C to C, including both endpoints. The numbers <code>2, 3, 5, 8, 13</code> are consecutive Fibonacci numbers. This is a counting pattern in the illustrated keyboard span, not a derivation of chromatic tuning.</p><p>The upper C has twice the frequency of the lower C and belongs to the same pitch class. Without the repeated endpoint, there are <code>7 + 5 = 12</code> pitch classes. Choosing different endpoints changes the colour counts: C♯ to C♯ contains seven white keys and six black keys.</p><p>The circle uses twelve-tone equal temperament: every adjacent step has frequency ratio <code>2^(1/12)</code>. Equal angles represent equal semitone intervals. The separate Circle of fifths view explains pure 3:2 fifths, octaves and the tuning adjustment that closes the twelve-note circle.</p><p><a href="https://openmusictheory.github.io/scales.html" target="_blank" rel="noopener">Scales and scale degrees · Open Music Theory ↗</a><br><a href="https://www.phys.unsw.edu.au/jw/notes.html" target="_blank" rel="noopener">Notes, frequencies and equal temperament · UNSW ↗</a></p><table><caption>C-to-C keyboard span including the repeated endpoint</caption><thead><tr><th scope="col">Semitones above C</th><th scope="col">Note</th><th scope="col">Key colour</th><th scope="col">Circle pitch-class index</th></tr></thead><tbody><tr><td>0</td><td>C</td><td>White</td><td>0</td></tr><tr><td>1</td><td>C♯</td><td>Black</td><td>1</td></tr><tr><td>2</td><td>D</td><td>White</td><td>2</td></tr><tr><td>3</td><td>D♯</td><td>Black</td><td>3</td></tr><tr><td>4</td><td>E</td><td>White</td><td>4</td></tr><tr><td>5</td><td>F</td><td>White</td><td>5</td></tr><tr><td>6</td><td>F♯</td><td>Black</td><td>6</td></tr><tr><td>7</td><td>G</td><td>White</td><td>7</td></tr><tr><td>8</td><td>G♯</td><td>Black</td><td>8</td></tr><tr><td>9</td><td>A</td><td>White</td><td>9</td></tr><tr><td>10</td><td>A♯</td><td>Black</td><td>10</td></tr><tr><td>11</td><td>B</td><td>White</td><td>11</td></tr><tr><td>12</td><td>C</td><td>White</td><td>0</td></tr></tbody></table></section>
+<section id="music-model-fifths" data-music-model="fifths"><h2>CIRCLE OF FIFTHS · Pythagoras and the scale</h2><p>Pythagorean tuning, traditionally attributed to Pythagoras, builds a scale from 3:2 fifths and 2:1 octaves. Bring the notes into one octave and order them by pitch: C, D, E, F, G, A, B. Repeat C above them to complete the eight-note scale.</p><pre>Perfect fifth: 3 : 2
+Octave: 2 : 1</pre><p>Pythagorean tuning builds seven distinct scale notes using fifths and octaves. The eighth note repeats the first, one octave higher.</p><p>The tuning system named after Pythagoras constructs a scale using two operations: multiply by <code>3/2</code> for a fifth, then divide by <code>2</code> when the note lies above the octave.</p><p>Starting from F, the chain <code>F → C → G → D → A → E → B</code> contains the C-major collection. Ordering those notes by pitch gives <code>C D E F G A B</code>.</p><p>In twelve-tone equal temperament each fifth is <code>2^(7/12) ≈ 1.49831</code>. Twelve steps return to the same pitch class.</p><p>Twelve pure 3:2 fifths exceed seven octaves by <code>531441/524288 ≈ 1.01364</code>. This small difference is the Pythagorean comma.</p><p>The numbers in <code>2:1</code> and <code>3:2</code> are consecutive Fibonacci numbers. This is the numerical relationship explored here.</p><p><code>3/2</code> is one ratio of successive Fibonacci numbers. The sequence <code>3/2, 5/3, 8/5, 13/8…</code> approaches the Phi Ratio. Repeating the fixed ratio 3/2 is a separate operation.</p><p><a href="https://www.mtosmt.org/classic/mto.98.4.4/mto.98.4.4.scholtz.html" target="_blank" rel="noopener">Pythagorean tuning: method and ratios ↗</a><br><a href="https://plato.stanford.edu/entries/pythagoras/" target="_blank" rel="noopener">Pythagoras: historical attribution ↗</a></p><table><caption>Circle of fifths in twelve-tone equal temperament</caption><thead><tr><th scope="col">Fifth step</th><th scope="col">Pitch class</th><th scope="col">Semitones modulo 12</th><th scope="col">12-TET frequency ratio within one octave</th></tr></thead><tbody><tr><td>0</td><td>C</td><td>0</td><td>1</td></tr><tr><td>1</td><td>G</td><td>7</td><td>1.4983070768766815</td></tr><tr><td>2</td><td>D</td><td>2</td><td>1.122462048309373</td></tr><tr><td>3</td><td>A</td><td>9</td><td>1.681792830507429</td></tr><tr><td>4</td><td>E</td><td>4</td><td>1.2599210498948732</td></tr><tr><td>5</td><td>B</td><td>11</td><td>1.8877486253633868</td></tr><tr><td>6</td><td>F♯ / G♭</td><td>6</td><td>1.4142135623730951</td></tr><tr><td>7</td><td>D♭</td><td>1</td><td>1.0594630943592953</td></tr><tr><td>8</td><td>A♭</td><td>8</td><td>1.5874010519681994</td></tr><tr><td>9</td><td>E♭</td><td>3</td><td>1.189207115002721</td></tr><tr><td>10</td><td>B♭</td><td>10</td><td>1.7817974362806785</td></tr><tr><td>11</td><td>F</td><td>5</td><td>1.3348398541700344</td></tr></tbody></table></section>
+<section id="music-model-tuning" data-music-model="tuning"><h2>TUNING &amp; FREQUENCY · A reference and a ratio</h2><p>Compare the proposed M9 shapes for 528, 111 and 7.38 Hz. Choose the reference frequency for A4 to see the scale frequencies change while their interval ratios stay the same.</p><pre>f = A4 × 2^((n − 9)/12)</pre><p>528 → 6: hexagon · 111 → 3: triangle · 7.38 → 9: circle. A proposed visual mapping from the written frequency in hertz.</p><p>The reference sets A4 to <code>432, 440 or 444 Hz</code>. Every equal-tempered note follows the same ratio rule. Here <code>n</code> is the number of semitones above C4.</p><p>Relative to A4 = 440 Hz, A4 = 432 Hz shifts every note by approximately −31.77 cents. A4 = 444 Hz shifts every note by approximately +15.67 cents. One semitone is 100 cents.</p><p>The separate 528 Hz tone is included as a named solfeggio-frequency example. A single tone does not define the tuning of a whole piece.</p><p>For the M9 diagrams, add the digits of the frequency written in hertz, omitting the decimal point, and reduce the sum modulo 9, displaying zero as 9: <code>528 → 15 → 6</code>, <code>111 → 3</code>, <code>7.38 → 18 → 9</code>. For 7.38 Hz, this operates on its written digits: <code>7 + 3 + 8 = 18</code>. The visual presets associate 6 with a hexagon, 3 with a triangle and 9 with the circle. They show the proposed mapping; the shapes are not waveforms.</p><p>Changing the tuning reference preserves relative intervals. The research question is whether these stimulus settings modulate emotional and biological responses.</p><table><caption>Written-frequency M9 visual presets</caption><thead><tr><th scope="col">Frequency (Hz)</th><th scope="col">Written digits</th><th scope="col">Digit sum</th><th scope="col">M9 displayed value</th><th scope="col">Visual preset</th></tr></thead><tbody><tr><td>528</td><td>5 + 2 + 8</td><td>15</td><td>6</td><td>hexagon</td></tr><tr><td>111</td><td>1 + 1 + 1</td><td>3</td><td>3</td><td>triangle</td></tr><tr><td>7.38</td><td>7 + 3 + 8</td><td>18</td><td>9</td><td>circle</td></tr></tbody></table></section>
+<h2>Reference frequencies</h2><table><caption>Equal-tempered C4–C5 scale frequencies for every available A4 reference</caption><thead><tr><th scope="col">A4 reference (Hz)</th><th scope="col">Note</th><th scope="col">Semitones above C4</th><th scope="col">Frequency (Hz)</th></tr></thead><tbody><tr><td>432</td><td>C</td><td>0</td><td>256.86873684058776</td></tr><tr><td>432</td><td>D</td><td>2</td><td>288.3254085007274</td></tr><tr><td>432</td><td>E</td><td>4</td><td>323.6343286053632</td></tr><tr><td>432</td><td>F</td><td>5</td><td>342.8786272251311</td></tr><tr><td>432</td><td>G</td><td>7</td><td>384.8682462366266</td></tr><tr><td>432</td><td>A</td><td>9</td><td>432</td></tr><tr><td>432</td><td>B</td><td>11</td><td>484.90360486964914</td></tr><tr><td>432</td><td>C</td><td>12</td><td>513.7374736811755</td></tr><tr><td>440</td><td>C</td><td>0</td><td>261.6255653005986</td></tr><tr><td>440</td><td>D</td><td>2</td><td>293.6647679174076</td></tr><tr><td>440</td><td>E</td><td>4</td><td>329.6275569128699</td></tr><tr><td>440</td><td>F</td><td>5</td><td>349.2282314330039</td></tr><tr><td>440</td><td>G</td><td>7</td><td>391.99543598174927</td></tr><tr><td>440</td><td>A</td><td>9</td><td>440</td></tr><tr><td>440</td><td>B</td><td>11</td><td>493.8833012561241</td></tr><tr><td>440</td><td>C</td><td>12</td><td>523.2511306011972</td></tr><tr><td>444</td><td>C</td><td>0</td><td>264.00397953060406</td></tr><tr><td>444</td><td>D</td><td>2</td><td>296.33444762574766</td></tr><tr><td>444</td><td>E</td><td>4</td><td>332.6241710666233</td></tr><tr><td>444</td><td>F</td><td>5</td><td>352.4030335369403</td></tr><tr><td>444</td><td>G</td><td>7</td><td>395.55903085431066</td></tr><tr><td>444</td><td>A</td><td>9</td><td>444</td></tr><tr><td>444</td><td>B</td><td>11</td><td>498.3731494493616</td></tr><tr><td>444</td><td>C</td><td>12</td><td>528.0079590612081</td></tr></tbody></table>
+<h2>Measurement architecture</h2><section class="music-measurement"  >
+<p class="atlas-eyebrow">MUSIC ATLAS · MEASUREMENT ARCHITECTURE</p>
+<h2 >Non-invasive measurement before mRNA sequencing</h2>
+<p class="measurement-lead">Validating the research approach for stakeholders before a substantial investment in mRNA sequencing.</p>
+<p>Our hypothesis: does electronic music modulate <em>OXTR</em> via Fibonacci numbers? Our initial non-invasive study, <strong>N = 33</strong>, brings physiology, audience experience and musical structure together to validate the research approach and establish the case for mRNA sequencing investment.</p>
+<p>These graphics are visual mockups of a real <strong>Universal Informatics Music Atlas Python script</strong>: custom software Ben Korbel is developing with Gemini to measure and unify these metrics together as one. Implementation is in progress.</p>
+<div class="measurement-streams" aria-label="Planned measurement streams">
+<section><h3>Brain &amp; autonomic response</h3><p>EEG from Muse S Athena, galvanic skin response (GSR / EDA), heart-rate variability, <strong>HRV power spectral density (PSD)</strong> and baroreflex sensitivity. Brain-state analysis brings amplitude and phase–amplitude coupling onto the shared timeline.</p></section>
+<section><h3>Optical signals &amp; inference</h3><p>A 400-channel laboratory hyperspectral analysis and smartphone-grade RGB analysis reconstructed into 31 spectral bands. Inferred oxytocin is an exploratory model output created by Immersion Neuroscience via research with DARPA. Explore <a href="https://www.getimmersion.com/" target="_blank" rel="noopener noreferrer">Immersion Neuroscience ↗</a> and <a href="https://www.your6.com/" target="_blank" rel="noopener noreferrer">SIX ↗</a>.</p></section>
+<section><h3>Audience &amp; musical structure</h3><p>Continuous audience feedback and a participant peak-moment trigger, aligned with real-time song analysis: position within a <strong>64-bar sequence</strong>, melodic anticipation and resolution, chords, arpeggios, and Fibonacci / Pisano landmarks.</p></section>
+</div>
+<div class="measurement-figures">
+<figure><figcaption><span>01 · Unified measurement timeline</span><p>The landscape overview brings the streams together, from EEG at the top to Fibonacci coding at the bottom.</p></figcaption></figure>
+<figure><figcaption><span>02 · Brain state, amplitude &amp; coupling</span><p>Brain state, amplitude and coupling alongside audience peaks, cardiovascular features and spectral imaging.</p></figcaption></figure>
+<figure class="measurement-vertical"><figcaption><span>03 · A peak moment across the streams</span><p>The vertical view begins with EEG and aligns the measurement streams around an audience-reported peak moment.</p></figcaption></figure>
+</div>
+<section class="measurement-next" ><p class="atlas-eyebrow">NEXT STAGE · mRNA SEQUENCING</p><h3 >Validating the investment for stakeholders</h3><p>Following validation of the research approach through the <strong>N = 33</strong> non-invasive study, we will invest in mRNA sequencing through the <a href="https://www.garvan.org.au/research/services/genome" target="_blank" rel="noopener noreferrer">Kinghorn Centre for Clinical Genomics at the Garvan Institute of Medical Research ↗</a>, from whom we have received a commercial quote.</p><p><strong>mRNA sequencing represents an investment of A$600–A$1,000 per participant.</strong> The initial non-invasive phase establishes the case for that investment for stakeholders. Sequencing will compare OXTR mRNA expression in samples collected before and after the intervention or song.</p></section>
+</section>
+<table><caption>Measurement mockup figure descriptions</caption><thead><tr><th scope="col">Order</th><th scope="col">Figure</th><th scope="col">Description</th><th scope="col">Image</th></tr></thead><tbody><tr><td>1</td><td>01 · Unified measurement timeline
+The landscape overview brings the streams together, from EEG at the top to Fibonacci coding at the bottom.</td><td>Illustrative landscape timeline, from EEG at the top through HRV PSD, baroreflex, GSR, inferred hormone placeholders, rhythm and melodic resolution to Fibonacci coding at the bottom.</td><td>media/music-measurement/unified-timeline.jpeg</td></tr><tr><td>2</td><td>02 · Brain state, amplitude &amp; coupling
+Brain state, amplitude and coupling alongside audience peaks, cardiovascular features and spectral imaging.</td><td>Illustrative dashboard with EEG phase–amplitude coupling, an audience response timeline, a Fibonacci/Pisano clock, HRV PSD, baroreflex features, an inference network and a hyperspectral cube.</td><td>media/music-measurement/brain-state-dashboard.jpeg</td></tr><tr><td>3</td><td>03 · A peak moment across the streams
+The vertical view begins with EEG and aligns the measurement streams around an audience-reported peak moment.</td><td>Illustrative vertical stack beginning with EEG, followed by GSR, HRV PSD, baroreflex, an inferred oxytocin placeholder, laboratory and RGB spectral views, audience feedback, musical structure and Fibonacci coding.</td><td>media/music-measurement/peak-moment-timeline.jpeg</td></tr></tbody></table>
+</section>
+<script id="music-atlas-data" type="application/json">{
+  "schema": "universal-informatics/music-atlas/v1",
+  "title": "Universal Informatics Music Atlas",
+  "version": "2026-10-31",
+  "url": "https://universalmind.tv/informatics/?entry=research\u0026area=sound",
+  "wiki": "https://universalmind.tv/informatics/read/music/index.html",
+  "source": {
+    "script": "atlas-visuals.js",
+    "sha256": "72ebebbb51ad51b094ec5072e051885fdf134ccd51bf0a9bc73ba9dfddbb5235",
+    "measurement_chapter_sha256": "62cfc6c3a40a82fc84c244c472c758a2a78d376a148c96fb5ea67e8e1b7dbf76"
+  },
+  "instructions": [
+    "Read the six model records together with their equations, tables and workings. The wording is taken from the interactive Music Atlas.",
+    "Keep units and conventions: phrase lengths count bars; chromatic pitch classes exclude the repeated octave endpoint; frequency values are in hertz.",
+    "Use the selected tuning reference and key when discussing an interactive setting. The default is C major with A4 = 440 Hz.",
+    "The measurement chapter describes software visual mockups and planned streams. No participant time-series samples are included in this record.",
+    "Follow the source links for Geometry Atlas records and citations. Cite the ordinary Music Atlas URL or the linked model section when discussing the material."
+  ],
+  "models": [
+    {
+      "id": "sequence",
+      "label": "SEQUENCE STRUCTURE",
+      "title": "Doubling the phrase",
+      "description": "A four-bar phrase doubles to 8, 16, 32, 64 and 128 bars. Reducing each length modulo 9 gives a repeating six-value cycle.",
+      "equation": "4 → 8 → 7 → 5 → 1 → 2",
+      "caption": "Phrase length in bars, mapped onto the nine positions of the Beta circle.",
+      "workings_html": "\u003cp\u003eIn 4/4, each bar contains four quarter-note beats. Here the numbers count bars in a phrase. Doubling is the structural choice being explored.\u003c/p\u003e\u003ctable\u003e\u003cthead\u003e\u003ctr\u003e\u003cth\u003eBars\u003c/th\u003e\u003cth\u003eCalculation\u003c/th\u003e\u003c/tr\u003e\u003c/thead\u003e\u003ctbody\u003e\u003ctr\u003e\u003ctd\u003e4\u003c/td\u003e\u003ctd\u003e4 = 9 × 0 + 4\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e8\u003c/td\u003e\u003ctd\u003e8 = 9 × 0 + 8\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e16\u003c/td\u003e\u003ctd\u003e16 = 9 × 1 + 7\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e32\u003c/td\u003e\u003ctd\u003e32 = 9 × 3 + 5\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e64\u003c/td\u003e\u003ctd\u003e64 = 9 × 7 + 1\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e128\u003c/td\u003e\u003ctd\u003e128 = 9 × 14 + 2\u003c/td\u003e\u003c/tr\u003e\u003c/tbody\u003e\u003c/table\u003e\u003cp\u003eThe M9 / P24 Beta cycle is \u003ccode\u003e1, 2, 4, 8, 7, 5\u003c/code\u003e. Starting at 4 rotates the same cycle to \u003ccode\u003e4, 8, 7, 5, 1, 2\u003c/code\u003e.\u003c/p\u003e\u003cp\u003eWithin the Atlas, Beta is calculated by summing the Alpha values strictly between successive Gamma positions and reducing modulo 9. These two calculations produce the same six-value cycle.\u003c/p\u003e",
+      "workings_markdown": "In 4/4, each bar contains four quarter-note beats. Here the numbers count bars in a phrase. Doubling is the structural choice being explored.\n\n| Bars | Calculation |\n| --- | --- |\n| 4 | 4 = 9 × 0 + 4 |\n| 8 | 8 = 9 × 0 + 8 |\n| 16 | 16 = 9 × 1 + 7 |\n| 32 | 32 = 9 × 3 + 5 |\n| 64 | 64 = 9 × 7 + 1 |\n| 128 | 128 = 9 × 14 + 2 |\n\nThe M9 / P24 Beta cycle is `1, 2, 4, 8, 7, 5`. Starting at 4 rotates the same cycle to `4, 8, 7, 5, 1, 2`.\n\nWithin the Atlas, Beta is calculated by summing the Alpha values strictly between successive Gamma positions and reducing modulo 9. These two calculations produce the same six-value cycle.",
+      "atlas_family": "beta",
+      "table": {
+        "caption": "Phrase doubling and modulo 9",
+        "columns": [
+          "Phrase length (bars)",
+          "Quotient on division by 9",
+          "Remainder"
+        ],
+        "rows": [
+          [
+            4,
+            0,
+            4
+          ],
+          [
+            8,
+            0,
+            8
+          ],
+          [
+            16,
+            1,
+            7
+          ],
+          [
+            32,
+            3,
+            5
+          ],
+          [
+            64,
+            7,
+            1
+          ],
+          [
+            128,
+            14,
+            2
+          ]
+        ]
+      }
+    },
+    {
+      "id": "melody",
+      "label": "MELODIC STRUCTURE",
+      "title": "One · three · five · eight",
+      "description": "Select the first, third and fifth degrees of C major, then repeat the tonic at the octave: C, E, G, C. These degree numbers are selected Fibonacci numbers.",
+      "equation": "1 · 3 · 5 · 8\nC · E · G · C",
+      "caption": "The piano and circle highlight the same values: 1, 3, 5 and 8. Blend Alpha to reveal the full M9 / P24 sequence.",
+      "workings_html": "\u003cp\u003eThe Fibonacci sequence begins \u003ccode\u003e0, 1, 1, 2, 3, 5, 8…\u003c/code\u003e. The chord selects degrees \u003ccode\u003e1, 3, 5, 8\u003c/code\u003e; these are selected values within the sequence.\u003c/p\u003e\u003cp\u003eThe circle keeps all 24 Alpha positions in their original order. Every occurrence of \u003ccode\u003e1, 3, 5 or 8\u003c/code\u003e is highlighted, synchronised with its piano key. Repeated values stay at their separate positions. Blend Alpha to reveal the remaining values; this is a comparison of scale-degree numbers with sequence values.\u003c/p\u003e\u003cp\u003eA major triad is degrees 1, 3 and 5. Degree 8 repeats its root one octave higher.\u003c/p\u003e\u003ctable\u003e\u003cthead\u003e\u003ctr\u003e\u003cth\u003eDegree\u003c/th\u003e\u003cth\u003eJust ratio\u003c/th\u003e\u003cth\u003e12-TET ratio\u003c/th\u003e\u003c/tr\u003e\u003c/thead\u003e\u003ctbody\u003e\u003ctr\u003e\u003ctd\u003e1\u003c/td\u003e\u003ctd\u003e1\u003c/td\u003e\u003ctd\u003e1\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e3\u003c/td\u003e\u003ctd\u003e5/4\u003c/td\u003e\u003ctd\u003e1.25992\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e5\u003c/td\u003e\u003ctd\u003e3/2\u003c/td\u003e\u003ctd\u003e1.49831\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd\u003e8\u003c/td\u003e\u003ctd\u003e2\u003c/td\u003e\u003ctd\u003e2\u003c/td\u003e\u003c/tr\u003e\u003c/tbody\u003e\u003c/table\u003e\u003cp\u003e12-TET means twelve equal divisions of the octave. Its frequency ratio after \u003ccode\u003en\u003c/code\u003e semitones is \u003ccode\u003e2^(n/12)\u003c/code\u003e. Just intonation gives the chord the proportional frequencies \u003ccode\u003e4 : 5 : 6 : 8\u003c/code\u003e.\u003c/p\u003e",
+      "workings_markdown": "The Fibonacci sequence begins `0, 1, 1, 2, 3, 5, 8…`. The chord selects degrees `1, 3, 5, 8`; these are selected values within the sequence.\n\nThe circle keeps all 24 Alpha positions in their original order. Every occurrence of `1, 3, 5 or 8` is highlighted, synchronised with its piano key. Repeated values stay at their separate positions. Blend Alpha to reveal the remaining values; this is a comparison of scale-degree numbers with sequence values.\n\nA major triad is degrees 1, 3 and 5. Degree 8 repeats its root one octave higher.\n\n| Degree | Just ratio | 12-TET ratio |\n| --- | --- | --- |\n| 1 | 1 | 1 |\n| 3 | 5/4 | 1.25992 |\n| 5 | 3/2 | 1.49831 |\n| 8 | 2 | 2 |\n\n12-TET means twelve equal divisions of the octave. Its frequency ratio after `n` semitones is `2^(n/12)`. Just intonation gives the chord the proportional frequencies `4 : 5 : 6 : 8`.",
+      "atlas_family": "alpha",
+      "table": {
+        "caption": "Selected C-major degrees and interval ratios",
+        "columns": [
+          "Scale degree",
+          "Note",
+          "Semitones above C",
+          "Just ratio",
+          "12-TET ratio"
+        ],
+        "rows": [
+          [
+            1,
+            "C",
+            0,
+            "1",
+            1
+          ],
+          [
+            3,
+            "E",
+            4,
+            "5/4",
+            1.2599210498948732
+          ],
+          [
+            5,
+            "G",
+            7,
+            "3/2",
+            1.4983070768766815
+          ],
+          [
+            8,
+            "C",
+            12,
+            "2",
+            2
+          ]
+        ]
+      }
+    },
+    {
+      "id": "scale",
+      "label": "SCALE",
+      "title": "A tonic and six companions",
+      "description": "Place the tonic at the centre and the six other notes of its major scale around it. Trace the hexagon, then return to the centre.",
+      "equation": "1 tonic + 6 notes = 7\n2 · 2 · 1 · 2 · 2 · 2 · 1",
+      "caption": "Six scale notes surround the tonic. Blend Gamma to compare the six positions; blend Alpha to see their place in the full period.",
+      "workings_html": "\u003cp\u003eThe seven distinct notes of C major are \u003ccode\u003eC D E F G A B\u003c/code\u003e. C at the centre leaves six notes on the perimeter.\u003c/p\u003e\u003cp\u003eThe steps from one note to the next, including the return to C, are \u003ccode\u003e2, 2, 1, 2, 2, 2, 1\u003c/code\u003e semitones. Equal distances in the drawing represent positions in the arrangement.\u003c/p\u003e\u003cp\u003eMove from C major to G major and six note names remain: \u003ccode\u003eC D E G A B\u003c/code\u003e. F changes to F♯.\u003c/p\u003e\u003cp\u003eThe Gamma overlay uses the Atlas positions \u003ccode\u003e24, 4, 8, 12, 16, 20\u003c/code\u003e, with Alpha values \u003ccode\u003e9, 3, 3, 9, 6, 6\u003c/code\u003e. These six equally spaced positions align with the six scale notes around the tonic. Gamma also joins alternating vertices into two opposing equilateral triangles, forming the six-pointed star within the hexagon. The note names and the modular values remain visible as separate labels.\u003c/p\u003e\u003cp\u003eBlend Alpha to reveal all 24 positions. We hypothesise that these are possible Fibonacci structures within M9 / P24. The overlay makes the proposed spatial relationship available for inspection.\u003c/p\u003e",
+      "workings_markdown": "The seven distinct notes of C major are `C D E F G A B`. C at the centre leaves six notes on the perimeter.\n\nThe steps from one note to the next, including the return to C, are `2, 2, 1, 2, 2, 2, 1` semitones. Equal distances in the drawing represent positions in the arrangement.\n\nMove from C major to G major and six note names remain: `C D E G A B`. F changes to F♯.\n\nThe Gamma overlay uses the Atlas positions `24, 4, 8, 12, 16, 20`, with Alpha values `9, 3, 3, 9, 6, 6`. These six equally spaced positions align with the six scale notes around the tonic. Gamma also joins alternating vertices into two opposing equilateral triangles, forming the six-pointed star within the hexagon. The note names and the modular values remain visible as separate labels.\n\nBlend Alpha to reveal all 24 positions. We hypothesise that these are possible Fibonacci structures within M9 / P24. The overlay makes the proposed spatial relationship available for inspection.",
+      "atlas_family": "gamma",
+      "table": {
+        "caption": "C-major notes, semitone positions and the hexagonal arrangement",
+        "columns": [
+          "Degree",
+          "Note",
+          "Semitones above tonic",
+          "Placement"
+        ],
+        "rows": [
+          [
+            1,
+            "C",
+            0,
+            "Centre"
+          ],
+          [
+            2,
+            "D",
+            2,
+            "Perimeter 1"
+          ],
+          [
+            3,
+            "E",
+            4,
+            "Perimeter 2"
+          ],
+          [
+            4,
+            "F",
+            5,
+            "Perimeter 3"
+          ],
+          [
+            5,
+            "G",
+            7,
+            "Perimeter 4"
+          ],
+          [
+            6,
+            "A",
+            9,
+            "Perimeter 5"
+          ],
+          [
+            7,
+            "B",
+            11,
+            "Perimeter 6"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "chromatic",
+      "label": "CHROMATIC",
+      "title": "The chromatic octave",
+      "description": "Follow the twelve chromatic pitch classes around the circle and across the keyboard. From C to the next C, five black keys sit alongside eight white keys.",
+      "equation": "2 + 3 = 5\n5 + 8 = 13",
+      "caption": "13 keys from C to C, including the repeated upper C. The circle contains 12 distinct pitch classes.",
+      "workings_html": "\u003cp\u003eThe chromatic scale includes every semitone in the octave. On the circle, the seven natural notes \u003ccode\u003eC D E F G A B\u003c/code\u003e are white; the five black-key notes \u003ccode\u003eC♯ D♯ F♯ G♯ A♯\u003c/code\u003e are pink. Sharp spellings are used here; on an equal-tempered keyboard these keys also have flat names.\u003c/p\u003e\u003cp\u003eThe major-scale steps are \u003ccode\u003e2, 2, 1, 2, 2, 2, 1\u003c/code\u003e semitones. A black key fills each two-semitone gap. E–F and B–C are already one semitone apart, creating the familiar groups of two and three black keys.\u003c/p\u003e\u003cp\u003e\u003ccode\u003e2 + 3 = 5\u003c/code\u003e counts the black keys. \u003ccode\u003e5 + 8 = 13\u003c/code\u003e counts all keys from C to C, including both endpoints. The numbers \u003ccode\u003e2, 3, 5, 8, 13\u003c/code\u003e are consecutive Fibonacci numbers. This is a counting pattern in the illustrated keyboard span, not a derivation of chromatic tuning.\u003c/p\u003e\u003cp\u003eThe upper C has twice the frequency of the lower C and belongs to the same pitch class. Without the repeated endpoint, there are \u003ccode\u003e7 + 5 = 12\u003c/code\u003e pitch classes. Choosing different endpoints changes the colour counts: C♯ to C♯ contains seven white keys and six black keys.\u003c/p\u003e\u003cp\u003eThe circle uses twelve-tone equal temperament: every adjacent step has frequency ratio \u003ccode\u003e2^(1/12)\u003c/code\u003e. Equal angles represent equal semitone intervals. The separate Circle of fifths view explains pure 3:2 fifths, octaves and the tuning adjustment that closes the twelve-note circle.\u003c/p\u003e\u003cp\u003e\u003ca href=\"https://openmusictheory.github.io/scales.html\" target=\"_blank\" rel=\"noopener\"\u003eScales and scale degrees · Open Music Theory ↗\u003c/a\u003e\u003cbr\u003e\u003ca href=\"https://www.phys.unsw.edu.au/jw/notes.html\" target=\"_blank\" rel=\"noopener\"\u003eNotes, frequencies and equal temperament · UNSW ↗\u003c/a\u003e\u003c/p\u003e",
+      "workings_markdown": "The chromatic scale includes every semitone in the octave. On the circle, the seven natural notes `C D E F G A B` are white; the five black-key notes `C♯ D♯ F♯ G♯ A♯` are pink. Sharp spellings are used here; on an equal-tempered keyboard these keys also have flat names.\n\nThe major-scale steps are `2, 2, 1, 2, 2, 2, 1` semitones. A black key fills each two-semitone gap. E–F and B–C are already one semitone apart, creating the familiar groups of two and three black keys.\n\n`2 + 3 = 5` counts the black keys. `5 + 8 = 13` counts all keys from C to C, including both endpoints. The numbers `2, 3, 5, 8, 13` are consecutive Fibonacci numbers. This is a counting pattern in the illustrated keyboard span, not a derivation of chromatic tuning.\n\nThe upper C has twice the frequency of the lower C and belongs to the same pitch class. Without the repeated endpoint, there are `7 + 5 = 12` pitch classes. Choosing different endpoints changes the colour counts: C♯ to C♯ contains seven white keys and six black keys.\n\nThe circle uses twelve-tone equal temperament: every adjacent step has frequency ratio `2^(1/12)`. Equal angles represent equal semitone intervals. The separate Circle of fifths view explains pure 3:2 fifths, octaves and the tuning adjustment that closes the twelve-note circle.\n\n[Scales and scale degrees · Open Music Theory ↗](https://openmusictheory.github.io/scales.html)\n[Notes, frequencies and equal temperament · UNSW ↗](https://www.phys.unsw.edu.au/jw/notes.html)",
+      "atlas_family": null,
+      "table": {
+        "caption": "C-to-C keyboard span including the repeated endpoint",
+        "columns": [
+          "Semitones above C",
+          "Note",
+          "Key colour",
+          "Circle pitch-class index"
+        ],
+        "rows": [
+          [
+            0,
+            "C",
+            "White",
+            0
+          ],
+          [
+            1,
+            "C♯",
+            "Black",
+            1
+          ],
+          [
+            2,
+            "D",
+            "White",
+            2
+          ],
+          [
+            3,
+            "D♯",
+            "Black",
+            3
+          ],
+          [
+            4,
+            "E",
+            "White",
+            4
+          ],
+          [
+            5,
+            "F",
+            "White",
+            5
+          ],
+          [
+            6,
+            "F♯",
+            "Black",
+            6
+          ],
+          [
+            7,
+            "G",
+            "White",
+            7
+          ],
+          [
+            8,
+            "G♯",
+            "Black",
+            8
+          ],
+          [
+            9,
+            "A",
+            "White",
+            9
+          ],
+          [
+            10,
+            "A♯",
+            "Black",
+            10
+          ],
+          [
+            11,
+            "B",
+            "White",
+            11
+          ],
+          [
+            12,
+            "C",
+            "White",
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "id": "fifths",
+      "label": "CIRCLE OF FIFTHS",
+      "title": "Pythagoras and the scale",
+      "description": "Pythagorean tuning, traditionally attributed to Pythagoras, builds a scale from 3:2 fifths and 2:1 octaves. Bring the notes into one octave and order them by pitch: C, D, E, F, G, A, B. Repeat C above them to complete the eight-note scale.",
+      "equation": "Perfect fifth: 3 : 2\nOctave: 2 : 1",
+      "caption": "Pythagorean tuning builds seven distinct scale notes using fifths and octaves. The eighth note repeats the first, one octave higher.",
+      "workings_html": "\u003cp\u003eThe tuning system named after Pythagoras constructs a scale using two operations: multiply by \u003ccode\u003e3/2\u003c/code\u003e for a fifth, then divide by \u003ccode\u003e2\u003c/code\u003e when the note lies above the octave.\u003c/p\u003e\u003cp\u003eStarting from F, the chain \u003ccode\u003eF → C → G → D → A → E → B\u003c/code\u003e contains the C-major collection. Ordering those notes by pitch gives \u003ccode\u003eC D E F G A B\u003c/code\u003e.\u003c/p\u003e\u003cp\u003eIn twelve-tone equal temperament each fifth is \u003ccode\u003e2^(7/12) ≈ 1.49831\u003c/code\u003e. Twelve steps return to the same pitch class.\u003c/p\u003e\u003cp\u003eTwelve pure 3:2 fifths exceed seven octaves by \u003ccode\u003e531441/524288 ≈ 1.01364\u003c/code\u003e. This small difference is the Pythagorean comma.\u003c/p\u003e\u003cp\u003eThe numbers in \u003ccode\u003e2:1\u003c/code\u003e and \u003ccode\u003e3:2\u003c/code\u003e are consecutive Fibonacci numbers. This is the numerical relationship explored here.\u003c/p\u003e\u003cp\u003e\u003ccode\u003e3/2\u003c/code\u003e is one ratio of successive Fibonacci numbers. The sequence \u003ccode\u003e3/2, 5/3, 8/5, 13/8…\u003c/code\u003e approaches the Phi Ratio. Repeating the fixed ratio 3/2 is a separate operation.\u003c/p\u003e\u003cp\u003e\u003ca href=\"https://www.mtosmt.org/classic/mto.98.4.4/mto.98.4.4.scholtz.html\" target=\"_blank\" rel=\"noopener\"\u003ePythagorean tuning: method and ratios ↗\u003c/a\u003e\u003cbr\u003e\u003ca href=\"https://plato.stanford.edu/entries/pythagoras/\" target=\"_blank\" rel=\"noopener\"\u003ePythagoras: historical attribution ↗\u003c/a\u003e\u003c/p\u003e",
+      "workings_markdown": "The tuning system named after Pythagoras constructs a scale using two operations: multiply by `3/2` for a fifth, then divide by `2` when the note lies above the octave.\n\nStarting from F, the chain `F → C → G → D → A → E → B` contains the C-major collection. Ordering those notes by pitch gives `C D E F G A B`.\n\nIn twelve-tone equal temperament each fifth is `2^(7/12) ≈ 1.49831`. Twelve steps return to the same pitch class.\n\nTwelve pure 3:2 fifths exceed seven octaves by `531441/524288 ≈ 1.01364`. This small difference is the Pythagorean comma.\n\nThe numbers in `2:1` and `3:2` are consecutive Fibonacci numbers. This is the numerical relationship explored here.\n\n`3/2` is one ratio of successive Fibonacci numbers. The sequence `3/2, 5/3, 8/5, 13/8…` approaches the Phi Ratio. Repeating the fixed ratio 3/2 is a separate operation.\n\n[Pythagorean tuning: method and ratios ↗](https://www.mtosmt.org/classic/mto.98.4.4/mto.98.4.4.scholtz.html)\n[Pythagoras: historical attribution ↗](https://plato.stanford.edu/entries/pythagoras/)",
+      "atlas_family": "alpha",
+      "table": {
+        "caption": "Circle of fifths in twelve-tone equal temperament",
+        "columns": [
+          "Fifth step",
+          "Pitch class",
+          "Semitones modulo 12",
+          "12-TET frequency ratio within one octave"
+        ],
+        "rows": [
+          [
+            0,
+            "C",
+            0,
+            1
+          ],
+          [
+            1,
+            "G",
+            7,
+            1.4983070768766815
+          ],
+          [
+            2,
+            "D",
+            2,
+            1.122462048309373
+          ],
+          [
+            3,
+            "A",
+            9,
+            1.681792830507429
+          ],
+          [
+            4,
+            "E",
+            4,
+            1.2599210498948732
+          ],
+          [
+            5,
+            "B",
+            11,
+            1.8877486253633868
+          ],
+          [
+            6,
+            "F♯ / G♭",
+            6,
+            1.4142135623730951
+          ],
+          [
+            7,
+            "D♭",
+            1,
+            1.0594630943592953
+          ],
+          [
+            8,
+            "A♭",
+            8,
+            1.5874010519681994
+          ],
+          [
+            9,
+            "E♭",
+            3,
+            1.189207115002721
+          ],
+          [
+            10,
+            "B♭",
+            10,
+            1.7817974362806785
+          ],
+          [
+            11,
+            "F",
+            5,
+            1.3348398541700344
+          ]
+        ]
+      }
+    },
+    {
+      "id": "tuning",
+      "label": "TUNING \u0026 FREQUENCY",
+      "title": "A reference and a ratio",
+      "description": "Compare the proposed M9 shapes for 528, 111 and 7.38 Hz. Choose the reference frequency for A4 to see the scale frequencies change while their interval ratios stay the same.",
+      "equation": "f = A4 × 2^((n − 9)/12)",
+      "caption": "528 → 6: hexagon · 111 → 3: triangle · 7.38 → 9: circle. A proposed visual mapping from the written frequency in hertz.",
+      "workings_html": "\u003cp\u003eThe reference sets A4 to \u003ccode\u003e432, 440 or 444 Hz\u003c/code\u003e. Every equal-tempered note follows the same ratio rule. Here \u003ccode\u003en\u003c/code\u003e is the number of semitones above C4.\u003c/p\u003e\u003cp\u003eRelative to A4 = 440 Hz, A4 = 432 Hz shifts every note by approximately −31.77 cents. A4 = 444 Hz shifts every note by approximately +15.67 cents. One semitone is 100 cents.\u003c/p\u003e\u003cp\u003eThe separate 528 Hz tone is included as a named solfeggio-frequency example. A single tone does not define the tuning of a whole piece.\u003c/p\u003e\u003cp\u003eFor the M9 diagrams, add the digits of the frequency written in hertz, omitting the decimal point, and reduce the sum modulo 9, displaying zero as 9: \u003ccode\u003e528 → 15 → 6\u003c/code\u003e, \u003ccode\u003e111 → 3\u003c/code\u003e, \u003ccode\u003e7.38 → 18 → 9\u003c/code\u003e. For 7.38 Hz, this operates on its written digits: \u003ccode\u003e7 + 3 + 8 = 18\u003c/code\u003e. The visual presets associate 6 with a hexagon, 3 with a triangle and 9 with the circle. They show the proposed mapping; the shapes are not waveforms.\u003c/p\u003e\u003cp\u003eChanging the tuning reference preserves relative intervals. The research question is whether these stimulus settings modulate emotional and biological responses.\u003c/p\u003e",
+      "workings_markdown": "The reference sets A4 to `432, 440 or 444 Hz`. Every equal-tempered note follows the same ratio rule. Here `n` is the number of semitones above C4.\n\nRelative to A4 = 440 Hz, A4 = 432 Hz shifts every note by approximately −31.77 cents. A4 = 444 Hz shifts every note by approximately +15.67 cents. One semitone is 100 cents.\n\nThe separate 528 Hz tone is included as a named solfeggio-frequency example. A single tone does not define the tuning of a whole piece.\n\nFor the M9 diagrams, add the digits of the frequency written in hertz, omitting the decimal point, and reduce the sum modulo 9, displaying zero as 9: `528 → 15 → 6`, `111 → 3`, `7.38 → 18 → 9`. For 7.38 Hz, this operates on its written digits: `7 + 3 + 8 = 18`. The visual presets associate 6 with a hexagon, 3 with a triangle and 9 with the circle. They show the proposed mapping; the shapes are not waveforms.\n\nChanging the tuning reference preserves relative intervals. The research question is whether these stimulus settings modulate emotional and biological responses.",
+      "atlas_family": "alpha",
+      "table": {
+        "caption": "Written-frequency M9 visual presets",
+        "columns": [
+          "Frequency (Hz)",
+          "Written digits",
+          "Digit sum",
+          "M9 displayed value",
+          "Visual preset"
+        ],
+        "rows": [
+          [
+            528,
+            "5 + 2 + 8",
+            15,
+            6,
+            "hexagon"
+          ],
+          [
+            111,
+            "1 + 1 + 1",
+            3,
+            3,
+            "triangle"
+          ],
+          [
+            7.38,
+            "7 + 3 + 8",
+            18,
+            9,
+            "circle"
+          ]
+        ]
+      }
+    }
+  ],
+  "settings": {
+    "default_key": "C",
+    "default_A4_hz": 440,
+    "available_keys": {
+      "C": [
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "A",
+        "B"
+      ],
+      "G": [
+        "G",
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F♯"
+      ],
+      "D": [
+        "D",
+        "E",
+        "F♯",
+        "G",
+        "A",
+        "B",
+        "C♯"
+      ],
+      "A": [
+        "A",
+        "B",
+        "C♯",
+        "D",
+        "E",
+        "F♯",
+        "G♯"
+      ],
+      "E": [
+        "E",
+        "F♯",
+        "G♯",
+        "A",
+        "B",
+        "C♯",
+        "D♯"
+      ],
+      "B": [
+        "B",
+        "C♯",
+        "D♯",
+        "E",
+        "F♯",
+        "G♯",
+        "A♯"
+      ],
+      "F": [
+        "F",
+        "G",
+        "A",
+        "B♭",
+        "C",
+        "D",
+        "E"
+      ]
+    },
+    "available_A4_hz": [
+      432,
+      440,
+      444
+    ],
+    "frequency_formula": "f = A4 * 2^((n - 9)/12), where n is semitones above C4",
+    "frequencies": [
+      {
+        "A4_hz": 432,
+        "notes": [
+          {
+            "note": "C",
+            "semitones_above_C4": 0,
+            "frequency_hz": 256.86873684058776
+          },
+          {
+            "note": "D",
+            "semitones_above_C4": 2,
+            "frequency_hz": 288.3254085007274
+          },
+          {
+            "note": "E",
+            "semitones_above_C4": 4,
+            "frequency_hz": 323.6343286053632
+          },
+          {
+            "note": "F",
+            "semitones_above_C4": 5,
+            "frequency_hz": 342.8786272251311
+          },
+          {
+            "note": "G",
+            "semitones_above_C4": 7,
+            "frequency_hz": 384.8682462366266
+          },
+          {
+            "note": "A",
+            "semitones_above_C4": 9,
+            "frequency_hz": 432
+          },
+          {
+            "note": "B",
+            "semitones_above_C4": 11,
+            "frequency_hz": 484.90360486964914
+          },
+          {
+            "note": "C",
+            "semitones_above_C4": 12,
+            "frequency_hz": 513.7374736811755
+          }
+        ]
+      },
+      {
+        "A4_hz": 440,
+        "notes": [
+          {
+            "note": "C",
+            "semitones_above_C4": 0,
+            "frequency_hz": 261.6255653005986
+          },
+          {
+            "note": "D",
+            "semitones_above_C4": 2,
+            "frequency_hz": 293.6647679174076
+          },
+          {
+            "note": "E",
+            "semitones_above_C4": 4,
+            "frequency_hz": 329.6275569128699
+          },
+          {
+            "note": "F",
+            "semitones_above_C4": 5,
+            "frequency_hz": 349.2282314330039
+          },
+          {
+            "note": "G",
+            "semitones_above_C4": 7,
+            "frequency_hz": 391.99543598174927
+          },
+          {
+            "note": "A",
+            "semitones_above_C4": 9,
+            "frequency_hz": 440
+          },
+          {
+            "note": "B",
+            "semitones_above_C4": 11,
+            "frequency_hz": 493.8833012561241
+          },
+          {
+            "note": "C",
+            "semitones_above_C4": 12,
+            "frequency_hz": 523.2511306011972
+          }
+        ]
+      },
+      {
+        "A4_hz": 444,
+        "notes": [
+          {
+            "note": "C",
+            "semitones_above_C4": 0,
+            "frequency_hz": 264.00397953060406
+          },
+          {
+            "note": "D",
+            "semitones_above_C4": 2,
+            "frequency_hz": 296.33444762574766
+          },
+          {
+            "note": "E",
+            "semitones_above_C4": 4,
+            "frequency_hz": 332.6241710666233
+          },
+          {
+            "note": "F",
+            "semitones_above_C4": 5,
+            "frequency_hz": 352.4030335369403
+          },
+          {
+            "note": "G",
+            "semitones_above_C4": 7,
+            "frequency_hz": 395.55903085431066
+          },
+          {
+            "note": "A",
+            "semitones_above_C4": 9,
+            "frequency_hz": 444
+          },
+          {
+            "note": "B",
+            "semitones_above_C4": 11,
+            "frequency_hz": 498.3731494493616
+          },
+          {
+            "note": "C",
+            "semitones_above_C4": 12,
+            "frequency_hz": 528.0079590612081
+          }
+        ]
+      }
+    ]
+  },
+  "geometry": {
+    "modulus": 9,
+    "pisano_period": 24,
+    "alpha_display": [
+      9,
+      1,
+      1,
+      2,
+      3,
+      5,
+      8,
+      4,
+      3,
+      7,
+      1,
+      8,
+      9,
+      8,
+      8,
+      7,
+      6,
+      4,
+      1,
+      5,
+      6,
+      2,
+      8,
+      1
+    ],
+    "display_zero_as": 9,
+    "gamma_indices_zero_based": [
+      0,
+      4,
+      8,
+      12,
+      16,
+      20
+    ],
+    "gamma_positions": [
+      24,
+      4,
+      8,
+      12,
+      16,
+      20
+    ],
+    "gamma_alpha_values": [
+      9,
+      3,
+      3,
+      9,
+      6,
+      6
+    ],
+    "beta_cycle": [
+      1,
+      2,
+      4,
+      8,
+      7,
+      5
+    ],
+    "phrase_rotation": [
+      4,
+      8,
+      7,
+      5,
+      1,
+      2
+    ],
+    "source_json": "https://universalmind.tv/informatics/pilot-v1/m9.json",
+    "reading_page": "https://universalmind.tv/informatics/read/atlas/m9.html"
+  },
+  "measurement": {
+    "title": "Non-invasive measurement before mRNA sequencing",
+    "text_markdown": "MUSIC ATLAS · MEASUREMENT ARCHITECTURE\n\n### Non-invasive measurement before mRNA sequencing\n\nValidating the research approach for stakeholders before a substantial investment in mRNA sequencing.\n\nOur hypothesis: does electronic music modulate *OXTR* via Fibonacci numbers? Our initial non-invasive study, **N = 33**, brings physiology, audience experience and musical structure together to validate the research approach and establish the case for mRNA sequencing investment.\n\nThese graphics are visual mockups of a real **Universal Informatics Music Atlas Python script**: custom software Ben Korbel is developing with Gemini to measure and unify these metrics together as one. Implementation is in progress.\n\n#### Brain \u0026 autonomic response\n\nEEG from Muse S Athena, galvanic skin response (GSR / EDA), heart-rate variability, **HRV power spectral density (PSD)** and baroreflex sensitivity. Brain-state analysis brings amplitude and phase–amplitude coupling onto the shared timeline.\n\n#### Optical signals \u0026 inference\n\nA 400-channel laboratory hyperspectral analysis and smartphone-grade RGB analysis reconstructed into 31 spectral bands. Inferred oxytocin is an exploratory model output created by Immersion Neuroscience via research with DARPA. Explore [Immersion Neuroscience ↗](https://www.getimmersion.com/) and [SIX ↗](https://www.your6.com/).\n\n#### Audience \u0026 musical structure\n\nContinuous audience feedback and a participant peak-moment trigger, aligned with real-time song analysis: position within a **64-bar sequence**, melodic anticipation and resolution, chords, arpeggios, and Fibonacci / Pisano landmarks.\n\n01 · Unified measurement timeline\nThe landscape overview brings the streams together, from EEG at the top to Fibonacci coding at the bottom.\n\n02 · Brain state, amplitude \u0026 coupling\nBrain state, amplitude and coupling alongside audience peaks, cardiovascular features and spectral imaging.\n\n03 · A peak moment across the streams\nThe vertical view begins with EEG and aligns the measurement streams around an audience-reported peak moment.\n\nNEXT STAGE · mRNA SEQUENCING\n\n#### Validating the investment for stakeholders\n\nFollowing validation of the research approach through the **N = 33** non-invasive study, we will invest in mRNA sequencing through the [Kinghorn Centre for Clinical Genomics at the Garvan Institute of Medical Research ↗](https://www.garvan.org.au/research/services/genome), from whom we have received a commercial quote.\n\n**mRNA sequencing represents an investment of A$600–A$1,000 per participant.** The initial non-invasive phase establishes the case for that investment for stakeholders. Sequencing will compare OXTR mRNA expression in samples collected before and after the intervention or song.",
+    "figures": [
+      {
+        "order": 1,
+        "caption": "01 · Unified measurement timeline\nThe landscape overview brings the streams together, from EEG at the top to Fibonacci coding at the bottom.",
+        "image": "media/music-measurement/unified-timeline.jpeg",
+        "description": "Illustrative landscape timeline, from EEG at the top through HRV PSD, baroreflex, GSR, inferred hormone placeholders, rhythm and melodic resolution to Fibonacci coding at the bottom."
+      },
+      {
+        "order": 2,
+        "caption": "02 · Brain state, amplitude \u0026 coupling\nBrain state, amplitude and coupling alongside audience peaks, cardiovascular features and spectral imaging.",
+        "image": "media/music-measurement/brain-state-dashboard.jpeg",
+        "description": "Illustrative dashboard with EEG phase–amplitude coupling, an audience response timeline, a Fibonacci/Pisano clock, HRV PSD, baroreflex features, an inference network and a hyperspectral cube."
+      },
+      {
+        "order": 3,
+        "caption": "03 · A peak moment across the streams\nThe vertical view begins with EEG and aligns the measurement streams around an audience-reported peak moment.",
+        "image": "media/music-measurement/peak-moment-timeline.jpeg",
+        "description": "Illustrative vertical stack beginning with EEG, followed by GSR, HRV PSD, baroreflex, an inferred oxytocin placeholder, laboratory and RGB spectral views, audience feedback, musical structure and Fibonacci coding."
+      }
+    ]
+  },
+  "downloads": {
+    "json": "https://universalmind.tv/informatics/music-atlas/music-atlas.json",
+    "markdown": "https://universalmind.tv/informatics/music-atlas/music-atlas.md",
+    "csv": "https://universalmind.tv/informatics/music-atlas/music-atlas.csv"
+  }
+}
+</script>
+<!-- MUSIC ATLAS MACHINE END -->
 <section class="music-measurement" id="music-measurement" aria-labelledby="music-measurement-title">
 <p class="atlas-eyebrow">MUSIC ATLAS · MEASUREMENT ARCHITECTURE</p>
 <h2 id="music-measurement-title">Non-invasive measurement before mRNA sequencing</h2>
@@ -81,6 +862,9 @@
 </div>
 <section class="measurement-next" aria-labelledby="measurement-next-title"><p class="atlas-eyebrow">NEXT STAGE · mRNA SEQUENCING</p><h3 id="measurement-next-title">Validating the investment for stakeholders</h3><p>Following validation of the research approach through the <strong>N = 33</strong> non-invasive study, we will invest in mRNA sequencing through the <a href="https://www.garvan.org.au/research/services/genome" target="_blank" rel="noopener noreferrer">Kinghorn Centre for Clinical Genomics at the Garvan Institute of Medical Research ↗</a>, from whom we have received a commercial quote.</p><p><strong>mRNA sequencing represents an investment of A$600–A$1,000 per participant.</strong> The initial non-invasive phase establishes the case for that investment for stakeholders. Sequencing will compare OXTR mRNA expression in samples collected before and after the intervention or song.</p></section>
 </section>
+<!-- MUSIC ATLAS DOWNLOADS START -->
+<nav id="music-atlas-downloads" class="music-atlas-downloads" aria-label="Music Atlas data and AI reading"><a href="read/music/index.html" target="_blank" rel="noopener">AI / LLM Wiki for Music Atlas ↗</a><a href="music-atlas/music-atlas.json" download="music-atlas.json">JSON ↓</a><a href="music-atlas/music-atlas.csv" download="music-atlas.csv">CSV ↓</a><a href="music-atlas/music-atlas.md" download="music-atlas.md">Markdown ↓</a></nav>
+<!-- MUSIC ATLAS DOWNLOADS END -->
 </section>
 
 <section class="atlas-section atlas-vision" id="area-vision" hidden aria-labelledby="atlas-vision-title"><p class="atlas-page-marker">Vision Atlas</p><h1 id="atlas-vision-title">EMDR | Vision Sciences</h1>

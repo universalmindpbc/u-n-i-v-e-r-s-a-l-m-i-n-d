@@ -87,7 +87,7 @@
       "context": [
         "The project explores hypotheses about geometry, molecular systems and OXTR. Mathematical calculations, biological evidence, model outputs and experimental measurements retain distinct labels. Each record carries its own assessment; unassessed claims remain unassessed."
       ],
-      "source_sha256": "46b0e5df9ffb77469c81ed96205b57a9b65b57868bb366c0743f029d3c8d311d"
+      "source_sha256": "9756e500ec49a63685fca9d14ea999de8c8fea8f997510ac8afbee9da372c3aa"
     }
   ],
   "resources": [
@@ -248,6 +248,38 @@
       "url": "https://universalmind.tv/informatics/read/hyperspectral/index.html",
       "project": "Universal Informatics",
       "format": "HTML",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "Music Atlas: six models and measurement architecture",
+      "url": "https://universalmind.tv/informatics/read/music/index.html",
+      "project": "Universal Informatics",
+      "format": "HTML",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "Music Atlas complete data",
+      "url": "https://universalmind.tv/informatics/music-atlas/music-atlas.json",
+      "project": "Universal Informatics",
+      "format": "JSON",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "Music Atlas complete CSV",
+      "url": "https://universalmind.tv/informatics/music-atlas/music-atlas.csv",
+      "project": "Universal Informatics",
+      "format": "CSV",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "Music Atlas explanations and reading instructions",
+      "url": "https://universalmind.tv/informatics/music-atlas/music-atlas.md",
+      "project": "Universal Informatics",
+      "format": "Markdown",
       "access": "Public",
       "description": ""
     },

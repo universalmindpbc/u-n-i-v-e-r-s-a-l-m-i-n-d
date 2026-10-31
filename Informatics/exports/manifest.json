@@ -1,6 +1,6 @@
 {
   "schema": "universal-informatics/complete-dataset/v1",
-  "dataset_version": "ed2ddfc37923c144629fa75c53352e8664ca164b9e8cb051a7a093a0aa5ec86c",
+  "dataset_version": "77bf0f0668bdf7eff66dfda011fb37c7985894bcd8c5eca75af0eabe606b295f",
   "sources": [
     {
       "id": "geometry.json",
@@ -270,6 +270,18 @@
       "id": "molecular/data/interactions/quantum.json",
       "source_path": "molecular/data/interactions/quantum.json",
       "sha256": "75bfdfaf6402066e232b748dc8cb153cb408580f43d852481bdab77f8583537c",
+      "format": "json"
+    },
+    {
+      "id": "music-atlas/music-atlas.csv",
+      "source_path": "music-atlas/music-atlas.csv",
+      "sha256": "ede60598bfacd1a7c37a27880458ce421697451378b5666b3634f803e4aaa8f4",
+      "format": "csv"
+    },
+    {
+      "id": "music-atlas/music-atlas.json",
+      "source_path": "music-atlas/music-atlas.json",
+      "sha256": "67e2e851832965ca740796059a43b9038a38d88698734c3aa7fdd77be5c54b73",
       "format": "json"
     },
     {
@@ -52160,44 +52172,44 @@
   "downloads": {
     "json": {
       "file": "informatics-complete.json.gz",
-      "bytes": 76025339,
-      "uncompressed_bytes": 763490134,
-      "sha256": "42eeb7a69f1d1f7eb67684e4955c4662d84756163a8eee1f654484a56909b6be",
-      "uncompressed_sha256": "77eea43a6de53e86eb5f68dea67982a39ee92e28d1b55884426e1b902f6174d7",
+      "bytes": 76025595,
+      "uncompressed_bytes": 763565966,
+      "sha256": "2fb525a91701ca4b840460874ad585a0f554afe98bcfb2fdfc41bb6b2629a5fd",
+      "uncompressed_sha256": "fa9f9ea593989dc10840599a6c825c774d5de389314ddc36b4543aa1fc6d1f68",
       "parts": [
         {
-          "file": "part-467813e371b2d03e587e0df13cf7b176c252b31b8d1821b60e2e1ad984ac5294.bin",
+          "file": "part-9e15eeb6d18bbaea81e7cb4105ea5e180d278fc8ec5008f143c66fe04ce01ada.bin",
           "bytes": 50331648,
-          "sha256": "467813e371b2d03e587e0df13cf7b176c252b31b8d1821b60e2e1ad984ac5294"
+          "sha256": "9e15eeb6d18bbaea81e7cb4105ea5e180d278fc8ec5008f143c66fe04ce01ada"
         },
         {
-          "file": "part-b4f46605e162d184aee7a251514867ee4d2095fea1452dc814fef9ef21fe9cc4.bin",
-          "bytes": 25693691,
-          "sha256": "b4f46605e162d184aee7a251514867ee4d2095fea1452dc814fef9ef21fe9cc4"
+          "file": "part-3d2ece06e1d63641d5889bf4cc1425b5c23e5e9ee0c9ff1bfc8b5409748cf756.bin",
+          "bytes": 25693947,
+          "sha256": "3d2ece06e1d63641d5889bf4cc1425b5c23e5e9ee0c9ff1bfc8b5409748cf756"
         }
       ]
     },
     "csv": {
       "file": "informatics-complete.csv.gz",
-      "bytes": 144855678,
-      "uncompressed_bytes": 2430010935,
-      "sha256": "da3720a357da7e88a6f07dc9d240193e4a0deaba4f0632a5fef6612c957f3e29",
-      "uncompressed_sha256": "e2d0359efb1612226903ee4450e39ba674c05f36900e3b56584576c13ef65c9c",
+      "bytes": 144874177,
+      "uncompressed_bytes": 2430142631,
+      "sha256": "cb7a95cc94758d52d1c99e824836cecc12c198c4fa9880cf17b816109b776bda",
+      "uncompressed_sha256": "390404a88c03a3a234d4c510efdbe979297df4626a18aa9e2617416658b70b60",
       "parts": [
         {
-          "file": "part-04a6858993338e9ec47a696d155574cae9dae63505ea67260d6d5b5c18a59e3b.bin",
+          "file": "part-104a8403567b42cc8bd9465d3da9b1615e4390b5c893e4a30c5d4e101af3057d.bin",
           "bytes": 50331648,
-          "sha256": "04a6858993338e9ec47a696d155574cae9dae63505ea67260d6d5b5c18a59e3b"
+          "sha256": "104a8403567b42cc8bd9465d3da9b1615e4390b5c893e4a30c5d4e101af3057d"
         },
         {
-          "file": "part-8696732124304701def3cf78c2655baf204810b9cb5e4384c7e372b9d49f46df.bin",
+          "file": "part-2576cb55acdd3a606e10a040e1b9415c9c57c9b4baf106e64177af8dbc66742d.bin",
           "bytes": 50331648,
-          "sha256": "8696732124304701def3cf78c2655baf204810b9cb5e4384c7e372b9d49f46df"
+          "sha256": "2576cb55acdd3a606e10a040e1b9415c9c57c9b4baf106e64177af8dbc66742d"
         },
         {
-          "file": "part-cc9cbca60ee8412f810052d82a9f39abead6184156842f6aaf094b00f3b26233.bin",
-          "bytes": 44192382,
-          "sha256": "cc9cbca60ee8412f810052d82a9f39abead6184156842f6aaf094b00f3b26233"
+          "file": "part-0627fb67792bcf01e60e3f515b44280bfd4f2aa579fbca8c3661a0b9f4213a86.bin",
+          "bytes": 44210881,
+          "sha256": "0627fb67792bcf01e60e3f515b44280bfd4f2aa579fbca8c3661a0b9f4213a86"
         }
       ]
     }

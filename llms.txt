@@ -98,6 +98,10 @@ Access: The research wiki, publication records and download directory are public
 - [Informatics wiki](https://universalmind.tv/informatics/read/): Universal Informatics; HTML; Public.
 - [Publication register](https://universalmind.tv/informatics/read/publications/index.html): Universal Informatics; HTML; Public.
 - [Hyperspectral Imaging and complete source register](https://universalmind.tv/informatics/read/hyperspectral/index.html): Universal Informatics; HTML; Public.
+- [Music Atlas: six models and measurement architecture](https://universalmind.tv/informatics/read/music/index.html): Universal Informatics; HTML; Public.
+- [Music Atlas complete data](https://universalmind.tv/informatics/music-atlas/music-atlas.json): Universal Informatics; JSON; Public.
+- [Music Atlas complete CSV](https://universalmind.tv/informatics/music-atlas/music-atlas.csv): Universal Informatics; CSV; Public.
+- [Music Atlas explanations and reading instructions](https://universalmind.tv/informatics/music-atlas/music-atlas.md): Universal Informatics; Markdown; Public.
 - [Geometry Atlas M1–M1001](https://universalmind.tv/informatics/read/atlas/index.html): Universal Informatics; HTML; Public.
 - [Experiments](https://universalmind.tv/informatics/read/experiments/index.html): Universal Informatics; HTML; Public.
 - [Data, methods and checksums](https://universalmind.tv/informatics/read/data.html): Universal Informatics; HTML; Public.

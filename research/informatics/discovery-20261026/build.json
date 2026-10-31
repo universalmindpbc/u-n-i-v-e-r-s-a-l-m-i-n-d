@@ -1,10 +1,10 @@
 {
-  "datasetManifestSHA256": "7a482f90c03fb867652659d411adce4ae99064987ee60f596376b5c8c9cdee11",
+  "datasetManifestSHA256": "532d2d09449c8bffe3006e4f4d9708c78a32e89ff9f50a71df35ded0c9718e5c",
   "generatedAt": "2026-10-26",
   "publications": 1108,
   "atlas": 1001,
   "experiments": 2,
-  "pages": 2119,
+  "pages": 2120,
   "sourceHashes": [
     {
       "path": "library.js",
@@ -71,6 +71,9 @@
   "canonicalPaths": [
     "",
     "connect.html",
+    "library.html?collection=vision",
+    "library.html?collection=sound",
+    "library.html?collection=language",
     "library.html",
     "research.html",
     "genomics.html",
@@ -2195,6 +2198,7 @@
     "read/data.html",
     "read/access.html",
     "read/index.html",
-    "read/provenance.html"
+    "read/provenance.html",
+    "read/music/index.html"
   ]
 }

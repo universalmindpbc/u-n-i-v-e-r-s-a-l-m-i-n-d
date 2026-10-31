@@ -21,6 +21,7 @@ An extensive, clinically searchable research index spanning sound and auditory e
 - [Research and evidence](https://universalmind.tv/informatics/read/): Plain HTML overview.
 - [Publications](https://universalmind.tv/informatics/read/publications/index.html): 1108 approved records, citations, summaries, limitations and topic assessment context.
 - [Hyperspectral Imaging](https://universalmind.tv/informatics/read/hyperspectral/index.html): Six subchapters, 240 original citation entries and 13 timeline milestones.
+- [Music Atlas](https://universalmind.tv/informatics/read/music/index.html): All six models, equations, semantic tables, measurement architecture and JSON/CSV/Markdown downloads. The [ordinary Music Atlas page](https://universalmind.tv/informatics/?entry=research&area=sound) embeds the same explanations and JSON.
 - [Geometry Atlas](https://universalmind.tv/informatics/read/atlas/index.html): 1,001 records with complete JSON and CSV links.
 - [Experiments](https://universalmind.tv/informatics/read/experiments/index.html): Versioned measurements, methods and limitations.
 - [Data and methods](https://universalmind.tv/informatics/read/data.html): Full source inventory and checksums.

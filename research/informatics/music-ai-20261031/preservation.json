@@ -1,0 +1,9 @@
+{
+  "existing_sources_preserved": 1177,
+  "assets_preserved": 9018,
+  "new_sources": [
+    "music-atlas/music-atlas.csv",
+    "music-atlas/music-atlas.json"
+  ],
+  "all_existing_sitemap_urls_preserved": true
+}
