@@ -1,7 +1,7 @@
 {
   "passed": true,
   "raw_html_models": 6,
-  "raw_html_tables": 15,
+  "raw_html_tables": 20,
   "inline_json_matches_download": true,
   "structured_models": 6,
   "csv_full_reconstruction": true,

@@ -17,4 +17,6 @@ The human explanation leads the Wiki, Markdown and JSON architecture record. The
 
 Protocol checks establish delivered interfaces and documented schemas. User-agent HTTP checks establish delivery; they are not conversations with external AI providers. A2A answer generation and the unchanged persistent model workflow were not rerun for this documentation correction.
 
+The first live check found an older CSV held by the CDN. Download links now carry the guide version in the ordinary page, Wiki and structured directories; native browser downloads are checked against the exact source bytes. See `download-cache-correction.json`.
+
 Production is outside this staging correction.

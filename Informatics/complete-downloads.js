@@ -6,7 +6,10 @@ const status=document.querySelector('#complete-download-status');
 const hex=bytes=>[...new Uint8Array(bytes)].map(v=>v.toString(16).padStart(2,'0')).join('');
 let manifest;
 async function load(){
- const r=await fetch(new URL('manifest.json',root),{cache:'no-store'});
+ // The CDN can retain the mutable index despite the browser's cache mode.
+ // Each request resolves the latest index; its content-hashed parts are stable.
+ const index=new URL('manifest.json',root);index.searchParams.set('snapshot',String(Date.now()));
+ const r=await fetch(index,{cache:'no-store'});
  if(!r.ok)throw Error('The complete dataset index did not load. Please retry.');
  const m=await r.json();if(m.schema!=='universal-informatics/complete-dataset/v1')throw Error('Dataset index is invalid.');
  return m;

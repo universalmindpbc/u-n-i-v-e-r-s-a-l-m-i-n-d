@@ -1,0 +1,11 @@
+{
+  "initial_candidate": "5d8abe05c",
+  "initial_staging_upload_completed": true,
+  "verification_issue": "The unversioned CSV URL returned the prior cached release. A unique query returned the exact newly uploaded bytes.",
+  "cached_csv_bytes": 618382,
+  "initial_expected_csv_bytes": 679702,
+  "cache_status": "HIT",
+  "cache_max_age_seconds": 14400,
+  "resolution": "Version all Quantum guide download URLs in the native HTML, Wiki, JSON/Markdown and organisation directory. Verify the declared URLs and actual browser downloads after deployment.",
+  "human_labels_and_layout_preserved": true
+}
