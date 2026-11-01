@@ -1,0 +1,76 @@
+{
+  "processAudioMuted": true,
+  "answers": [
+    {
+      "question": "In the approved Domestic & Family Violence library, explain the current individual-paper Trust Factor scale using digits 1, 2 and 3. Read PMID 42326745 and PMID 41024298 and state each paper’s numeric score and displayed cross count. What does a single-blind RCT receive? Is any double-blind trial verified among the 117 approved papers? State the minimum number of distinct randomized trials required for a chapter to receive 2 crosses.",
+      "http": 200,
+      "answer": "The current **individual-paper Trust Factor** scale is:\n\n- **1 — Peer-reviewed study:** displays **1 cross**.\n- **2 — Confirmed randomized controlled trial (RCT):** displays **2 crosses**.\n- **3 — Confirmed double-blind RCT:** displays **3 crosses**.  \nRecords with insufficient publication-specific evidence or excluded publication types remain unrated. [S1]\n\n**The two requested papers**\n\n- **PMID 42326745**, the psychosocial empowerment intervention: **numeric score 2; displayed cross count 2**. The accessed abstract confirms 28 women randomly assigned to intervention or control. Blinding is not confirmed. [S2]\n- **PMID 41024298**, mindfulness group counselling for anxiety: **numeric score 1; displayed cross count 1**. Despite “randomized clinical trial” in its title, the full-text appraisal identifies a single-arm pre/post study with no control group or treatment randomization. Clinic sampling is not treatment randomization. [S3]\n\nA **confirmed single-blind RCT receives 2**, displaying **2 crosses**, not 3: the highest category requires confirmed double-blind randomization. [S1]\n\n**No double-blind trial is verified among the 117 approved papers**: the current verified count is **0**. This describes verification in the approved release, not proof that every paper was unblinded. [S1]\n\nFor a **chapter to receive 2 crosses**, the minimum is **3 distinct randomized controlled trials**—not merely 3 publications reporting the same trial. Paper-level scores and chapter-level thresholds are separate. [S1]",
+      "sources": [
+        {
+          "label": "S1",
+          "id": "approved-domestic-violence-20261101",
+          "passageId": null,
+          "title": "Domestic & Family Violence · approved research summaries",
+          "authors": "",
+          "url": "https://staging.universalmind.tv/informatics/library.html?collection=language&chapter=5#topic-domestic-family-violence",
+          "section": "Library record",
+          "kind": "approved-research-guide",
+          "text": "{\"id\":\"approved-domestic-violence-20261101\",\"title\":\"Domestic & Family Violence · approved research summaries\",\"version\":\"audit-16f8e1d36d3f40c4\",\"approvedAt\":\"2026-11-01\",\"overview\":\"This approved research collection contains 117 publications: 51 randomized controlled trial reports, 25 reviews or meta-analyses, and 41 other studies. These are publication counts, not independent trials or participants. Selected approaches include 10 EMDR publications, 9 on mindfulness or meditation, and 8 on music-based approaches; these groups overlap and do not cover every approach.\",\"limitations\":\"AI assessed; human approved for publication. These are research summaries, not personal treatment recommendations. Evidence was assessed from 74 abstracts, 22 selected-methods sources and 21 retained full-text appraisals. No double-blind trial is verified. Benefits, null results, harms-reporting gaps and population limits remain attached to each paper.\",\"counts\":{\"publications\":117,\"new\":115,\"updates\":2,\"rctReports\":51,\"reviews\":25,\"other\":41,\"verifiedDoubleBlind\":0,\"collections\":{\"sound\":8,\"vision\":10,\"language\":99}},\"paperTrustFactorPolicy\":{\"1\":\"Peer-reviewed study\",\"2\":\"Confirmed randomized controlled trial\",\"3\":\"Confirmed double-blind randomized controlled trial\",\"unrated\":\"Insufficient publication-specific evidence, protocol, guidance, preprint, retraction or unresolved identity\"},\"chapterTrustFactorPolicy\":{\"1\":\"At least three distinct peer-reviewed studies\",\"2\":\"At least three distinct randomized controlled trials\",\"3\":\"At least three distinct verified double-blind randomized controlled trials\"},\"chapterTrustFactors\":{\"sound\":1,\"vision\":2,\"language\":2},\"approaches\":[{\"id\":\"emdr\",\"label\":\"EMDR\",\"count\":10},{\"id\":\"mindfulness\",\"label\":\"Mindfulness or meditation\",\"count\":9},{\"id\":\"music\",\"label\":\"Music-based approaches\",\"count\":8}],\"chapters\":{\"sound\":\"https://staging.universalmind.tv/informatics/library.html?collection=sound&chapter=7#topic-domestic-family-violence\",\"vision\":\"https://staging.universalmind.tv/informatics/library.html?collection=vision&chapter=7#topic-domestic-family-violence\",\"language\":\"https://staging.universalmind.tv/informatics/library.html?collection=language&chapter=5#topic-domestic-family-violence\"},\"matchedRecords\":117,\"offset\":0,\"nextOffset\":4,\"knowledgeMethod\":\"Versioned retrieval of human-approved AI-assessed summaries; no model fine-tuning. Source access is appraisal access, not a promise of indexed article full text.\"}",
+          "doi": null,
+          "rights": null,
+          "sha256": null,
+          "retrievalLabel": "S1"
+        },
+        {
+          "label": "S2",
+          "id": "dv-adult-therapy-42326745",
+          "passageId": null,
+          "title": "A Psychosocial Intervention to Enhance Psychological Empowerment Among Women Survivors of Intimate Partner Violence: A Randomized Controlled Trial.",
+          "authors": "Khodadadi M; Hajihasani M; Kaveh M",
+          "journal": "International journal of women's health",
+          "year": 2026,
+          "url": "https://doi.org/10.2147/ijwh.s601216",
+          "section": "Library record",
+          "kind": "approved-record",
+          "text": "Post-treatment psychological empowerment favored the intervention. An unchanged intervention-arm follow-up score alone does not establish comparative durability.",
+          "doi": "10.2147/ijwh.s601216",
+          "rights": null,
+          "sha256": null,
+          "retrievalLabel": "S2"
+        },
+        {
+          "label": "S3",
+          "id": "dv-mindbody-41024298",
+          "passageId": null,
+          "title": "The effect of mindfulness group counseling on the anxiety of pregnant women exposed to domestic violence: a randomized clinical trial.",
+          "authors": "Azam Khoshbin; Naiersadat Tahery; Pouran Nekoueian; Hamid Nasiri; Mahshid Bokaie",
+          "journal": "BMC psychology",
+          "year": 2025,
+          "url": "https://doi.org/10.1186/s40359-025-03358-9",
+          "section": "Library record",
+          "kind": "approved-record",
+          "text": "Uncontrolled anxiety improvement; the title incorrectly implies an RCT.",
+          "doi": "10.1186/s40359-025-03358-9",
+          "rights": null,
+          "sha256": null,
+          "retrievalLabel": "S6"
+        }
+      ],
+      "model": "gpt-6-astra",
+      "version": "research-20261026-daytab-v1",
+      "usage": {
+        "totalTokens": 50607
+      },
+      "retrieval": {
+        "required": true,
+        "sourceCount": 6,
+        "contextMessages": 0,
+        "previousReferences": 0
+      },
+      "visible": "In the approved Domestic & Family Violence library, explain the current individual-paper Trust Factor scale using digits 1, 2 and 3. Read PMID 42326745 and PMID 41024298 and state each paper’s numeric score and displayed cross count. What does a single-blind RCT receive? Is any double-blind trial verified among the 117 approved papers? State the minimum number of distinct randomized trials required for a chapter to receive 2 crosses."
+    }
+  ],
+  "errors": [],
+  "passed": true,
+  "knowledgeMethod": "Versioned retrieval of 117 approved summaries; no model fine-tuning or shared database mutation"
+}

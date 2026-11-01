@@ -1,0 +1,71 @@
+{
+  "passed": true,
+  "verifiedAtUTC": "2026-11-01T05:32:09.746026+00:00",
+  "sourceCommit": "ae990bc3e5d566272ece64ef22a527feb8f4bea7",
+  "paperCorrectionCommit": "5a83a987a",
+  "parallelWikiSourcePreserved": "d369436c9",
+  "scope": "Use the library 1/2/3 Trust Factor consistently in individual paper headings, search cards, article dialogs, exports and assistant evidence. Preserve the existing three-study chapter thresholds.",
+  "paperRatings": {
+    "sound": {
+      "oneCross": 8,
+      "twoCrosses": 0,
+      "threeCrosses": 0
+    },
+    "vision": {
+      "oneCross": 4,
+      "twoCrosses": 6,
+      "threeCrosses": 0
+    },
+    "language": {
+      "oneCross": 54,
+      "twoCrosses": 45,
+      "threeCrosses": 0
+    }
+  },
+  "totalPaperRatings": {
+    "oneCross": 66,
+    "twoCrosses": 51,
+    "threeCrosses": 0
+  },
+  "chapterRatings": {
+    "sound": 1,
+    "vision": 2,
+    "language": 2
+  },
+  "underlyingNumericRatingsUnchanged": true,
+  "clinicalFindingsDesignClassificationsAndMaskingEvidenceUnchanged": true,
+  "frozenReviewAppraisalsPreserved": true,
+  "nullCitationCountNoLongerBlocksArticleDialog": true,
+  "worker": {
+    "name": "informatics-universal-one-staging",
+    "version": "081722fc-6b84-445a-81e9-5dae78b45060",
+    "sourceCommit": "ae990bc3e5d566272ece64ef22a527feb8f4bea7",
+    "liveOpenAIResponseVerified": true,
+    "model": "gpt-6-astra",
+    "explainsPaperScaleAndThreeDistinctTrialChapterThreshold": true
+  },
+  "completeDatasetVersion": "04fd418c2d250bb14238119ba8d7a578f35d4342de85911a8e56bee219178c2c",
+  "checks": {
+    "source-checks.json": true,
+    "candidate-browser.json": true,
+    "complete-exports-roundtrip.json": true,
+    "staging-browser.json": true,
+    "staging-integrity.json": true,
+    "staging-complete-downloads.json": true,
+    "universal-one.json": true
+  },
+  "sourceSHA256": {
+    "Informatics/library.js": "46269d021587ca243e426093be539db1d12fc5e131239fe658690b91f87db952",
+    "Informatics/library.html": "2c829a9fd3a57e524a16a84bf275fd210a348e7551aa374ce3979242b00450d8",
+    "Informatics/library-data/domestic-violence-expansion.json": "6fdae7a666a8199ebd245580dbf831a5feb605afeefe71cff4562d226bc930bf",
+    "cloudflare/informatics-dv-knowledge.js": "4924d34bd02dfeff8da5e2207e317f751d1a6fd789008fb60593daf624611e77",
+    "cloudflare/informatics-research-worker.js": "0553453b4d7f90a9fb2f9f91ee641bc4d729abe92b14a6a2c54517b58505b0db"
+  },
+  "stagingURLs": {
+    "sound": "https://staging.universalmind.tv/informatics/library.html?collection=sound&chapter=7#topic-domestic-family-violence",
+    "vision": "https://staging.universalmind.tv/informatics/library.html?collection=vision&chapter=7#topic-domestic-family-violence",
+    "language": "https://staging.universalmind.tv/informatics/library.html?collection=language&chapter=5#topic-domestic-family-violence"
+  },
+  "productionModified": false,
+  "productionMain": "a2d6cb9b83340e841c9362cefd5d193aff63ee56"
+}

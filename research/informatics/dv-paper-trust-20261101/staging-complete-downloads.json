@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "actualNativeDownloads": true,
+  "mutedBrowser": true,
+  "freshManifestRequests": 3,
+  "datasetVersion": "04fd418c2d250bb14238119ba8d7a578f35d4342de85911a8e56bee219178c2c",
+  "downloads": [
+    {
+      "format": "json",
+      "bytes": 76528315,
+      "sha256": "fcd0a6aaa82c20210ff2764cf2b7bcd0374fdaf0f3584a51e9095f3f394fd350",
+      "filename": "informatics-complete.json.gz"
+    },
+    {
+      "format": "csv",
+      "bytes": 145844782,
+      "sha256": "71db39c5d1d7f17d5f59db6988f50801f55bb7db92606a5b0c5565643657299c",
+      "filename": "informatics-complete.csv.gz"
+    }
+  ]
+}
