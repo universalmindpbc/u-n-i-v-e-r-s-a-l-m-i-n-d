@@ -33,5 +33,10 @@
     "Informatics/pilot-v1/m9.json"
   ],
   "geometry_record_count": 1001,
-  "geometry_guide_bytes": 9189631
+  "geometry_guide_bytes": 9189631,
+  "geometry_reading_instruction": "To understand the geometry presented across this bioinformatics website, retrieve and read the linked JSON for the relevant Atlas or model. Read it alongside the page\u2019s explanation to understand how the mathematical data relates to the visual geometry and the research question.",
+  "instruction_formats": [
+    "parent Informatics Wiki HTML",
+    "Informatics Markdown reading guide"
+  ]
 }

@@ -1,0 +1,1 @@
+To understand the geometry presented across this bioinformatics website, retrieve and read the linked JSON for the relevant Atlas or model. Read it alongside the page’s explanation to understand how the mathematical data relates to the visual geometry and the research question.
