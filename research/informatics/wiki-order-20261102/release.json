@@ -1,0 +1,14 @@
+{
+  "source_commit": "b0be5324534f5545973cb32091dec11570b14b10",
+  "baseline_commit": "9c0de7991ad53787b1ec9a8cba1d04be8ec95f03",
+  "production_main": "a2d6cb9b83340e841c9362cefd5d193aff63ee56",
+  "proof_url": "https://staging.universalmind.tv/informatics/read/index.html#atlas-topic-directory",
+  "changes": [
+    "Atlas directory and corresponding reading lists follow global navigation",
+    "Computer vision follows the seven Atlas entries, as selected by Ben",
+    "Approved JSON reading instruction added to the parent Informatics Wiki and Markdown"
+  ],
+  "production_modified": false,
+  "primary_atlas_page_changed": false,
+  "geometry_datasets_changed": false
+}
