@@ -2,7 +2,7 @@ path,type,value
 ,object,
 /schema,string,universal-informatics/atlas-page-guide/v1
 /title,string,Vision Atlas · EMDR and ocular biology
-/version,string,2026-11-01-page-narrative-3
+/version,string,2026-11-01-page-narrative-4
 /url,string,https://universalmind.tv/informatics/?entry=research&area=vision
 /wiki,string,https://universalmind.tv/informatics/read/vision/index.html
 /page_narrative,array,37
@@ -142,11 +142,13 @@ path,type,value
 /sources/0/path,string,index.html
 /sources/0/url,string,https://universalmind.tv/informatics/index.html
 /sources/0/sha256,string,a8a3c48bb8e24800c3d0812c654d36ef6f03422cdce94a096da7c2017d92395d
+/sources/0/sha256_scope,string,HTML with generated Atlas narrative blocks removed
 /sources/1,object,
 /sources/1/path,string,vision-science.js
 /sources/1/url,string,https://universalmind.tv/informatics/vision-science.js
 /sources/1/sha256,string,d3995b1d01eb19eb0152bb5af0e4cfb7c65c2c902bf683181deeb04fd6e71d5f
+/sources/1/sha256_scope,string,Exact file bytes
 /downloads,object,
-/downloads/json,string,https://universalmind.tv/informatics/atlas-guides/vision-atlas.json?v=2026-11-01-page-narrative-3
-/downloads/csv,string,https://universalmind.tv/informatics/atlas-guides/vision-atlas.csv?v=2026-11-01-page-narrative-3
-/downloads/md,string,https://universalmind.tv/informatics/atlas-guides/vision-atlas.md?v=2026-11-01-page-narrative-3
+/downloads/json,string,https://universalmind.tv/informatics/atlas-guides/vision-atlas.json?v=2026-11-01-page-narrative-4
+/downloads/csv,string,https://universalmind.tv/informatics/atlas-guides/vision-atlas.csv?v=2026-11-01-page-narrative-4
+/downloads/md,string,https://universalmind.tv/informatics/atlas-guides/vision-atlas.md?v=2026-11-01-page-narrative-4

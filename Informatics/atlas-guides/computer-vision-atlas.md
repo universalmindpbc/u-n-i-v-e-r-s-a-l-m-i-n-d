@@ -18,10 +18,10 @@ The initial biological application is to investigate spectral patterns potential
 
 ## Downloads
 
-[JSON](https://universalmind.tv/informatics/atlas-guides/computer-vision-atlas.json?v=2026-11-01-page-narrative-3) · [CSV](https://universalmind.tv/informatics/atlas-guides/computer-vision-atlas.csv?v=2026-11-01-page-narrative-3) · [MD](https://universalmind.tv/informatics/atlas-guides/computer-vision-atlas.md?v=2026-11-01-page-narrative-3)
+[JSON](https://universalmind.tv/informatics/atlas-guides/computer-vision-atlas.json?v=2026-11-01-page-narrative-4) · [CSV](https://universalmind.tv/informatics/atlas-guides/computer-vision-atlas.csv?v=2026-11-01-page-narrative-4) · [MD](https://universalmind.tv/informatics/atlas-guides/computer-vision-atlas.md?v=2026-11-01-page-narrative-4)
 
 [Interactive page](https://universalmind.tv/informatics/?about) · [Wiki](https://universalmind.tv/informatics/read/computer-vision/index.html)
 
 ## Sources
 
-- [index.html](https://universalmind.tv/informatics/index.html) · SHA-256: a8a3c48bb8e24800c3d0812c654d36ef6f03422cdce94a096da7c2017d92395d
+- [index.html](https://universalmind.tv/informatics/index.html) · SHA-256: a8a3c48bb8e24800c3d0812c654d36ef6f03422cdce94a096da7c2017d92395d · HTML with generated Atlas narrative blocks removed

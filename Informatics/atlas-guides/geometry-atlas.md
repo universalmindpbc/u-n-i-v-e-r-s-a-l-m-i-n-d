@@ -101,7 +101,7 @@ Research question · not yet assessed
 
 ## Downloads
 
-[JSON](https://universalmind.tv/informatics/atlas-guides/geometry-atlas.json?v=2026-11-01-page-narrative-3) · [CSV](https://universalmind.tv/informatics/atlas-guides/geometry-atlas.csv?v=2026-11-01-page-narrative-3) · [MD](https://universalmind.tv/informatics/atlas-guides/geometry-atlas.md?v=2026-11-01-page-narrative-3)
+[JSON](https://universalmind.tv/informatics/atlas-guides/geometry-atlas.json?v=2026-11-01-page-narrative-4) · [CSV](https://universalmind.tv/informatics/atlas-guides/geometry-atlas.csv?v=2026-11-01-page-narrative-4) · [MD](https://universalmind.tv/informatics/atlas-guides/geometry-atlas.md?v=2026-11-01-page-narrative-4)
 
 [Interactive page](https://universalmind.tv/informatics/?atlas=1) · [Wiki](https://universalmind.tv/informatics/read/atlas/index.html)
 
@@ -43329,6 +43329,6 @@ Research question · not yet assessed
 
 ## Sources
 
-- [research.html](https://universalmind.tv/informatics/research.html) · SHA-256: 07a2e24d72b0eecca9db9588f955d1de14174931233de63232d26027401fd5a5
-- [research.js](https://universalmind.tv/informatics/research.js) · SHA-256: 0a3a15fe61cf34e357541b677ec1d79585ecb3a2539ab65c34e0ef4a4319f97e
-- [pilot-v1/index.json](https://universalmind.tv/informatics/pilot-v1/index.json) · SHA-256: a4db55764d8505f49b5249a87e423e7e97a242cdf13502030269d4207a49b447
+- [research.html](https://universalmind.tv/informatics/research.html) · SHA-256: 07a2e24d72b0eecca9db9588f955d1de14174931233de63232d26027401fd5a5 · Exact file bytes
+- [research.js](https://universalmind.tv/informatics/research.js) · SHA-256: 0a3a15fe61cf34e357541b677ec1d79585ecb3a2539ab65c34e0ef4a4319f97e · Exact file bytes
+- [pilot-v1/index.json](https://universalmind.tv/informatics/pilot-v1/index.json) · SHA-256: a4db55764d8505f49b5249a87e423e7e97a242cdf13502030269d4207a49b447 · Exact file bytes

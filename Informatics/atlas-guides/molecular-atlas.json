@@ -1,7 +1,7 @@
 {
   "schema": "universal-informatics/atlas-page-guide/v1",
   "title": "Molecular Atlas",
-  "version": "2026-11-01-page-narrative-3",
+  "version": "2026-11-01-page-narrative-4",
   "url": "https://universalmind.tv/informatics/molecular/",
   "wiki": "https://universalmind.tv/informatics/read/molecular/index.html",
   "page_narrative": [
@@ -2699,22 +2699,25 @@
     {
       "path": "molecular/index.html",
       "url": "https://universalmind.tv/informatics/molecular/index.html",
-      "sha256": "3530cc1283c982f47eedad95d2f81456d381b176fdef1533b67396bfe4a9e548"
+      "sha256": "3530cc1283c982f47eedad95d2f81456d381b176fdef1533b67396bfe4a9e548",
+      "sha256_scope": "Exact file bytes"
     },
     {
       "path": "molecular/interaction-ui.js",
       "url": "https://universalmind.tv/informatics/molecular/interaction-ui.js",
-      "sha256": "bfa28324268e2be47f6e4eb0f4250270b8846b37013f4eb78eed6bf255d86d6e"
+      "sha256": "bfa28324268e2be47f6e4eb0f4250270b8846b37013f4eb78eed6bf255d86d6e",
+      "sha256_scope": "Exact file bytes"
     },
     {
       "path": "molecular/data/catalogue.json",
       "url": "https://universalmind.tv/informatics/molecular/data/catalogue.json",
-      "sha256": "52fe47c82c28997bd15ba7ed59e8643125546fa38242d80f6c7d7c8da597c04c"
+      "sha256": "52fe47c82c28997bd15ba7ed59e8643125546fa38242d80f6c7d7c8da597c04c",
+      "sha256_scope": "Exact file bytes"
     }
   ],
   "downloads": {
-    "json": "https://universalmind.tv/informatics/atlas-guides/molecular-atlas.json?v=2026-11-01-page-narrative-3",
-    "csv": "https://universalmind.tv/informatics/atlas-guides/molecular-atlas.csv?v=2026-11-01-page-narrative-3",
-    "md": "https://universalmind.tv/informatics/atlas-guides/molecular-atlas.md?v=2026-11-01-page-narrative-3"
+    "json": "https://universalmind.tv/informatics/atlas-guides/molecular-atlas.json?v=2026-11-01-page-narrative-4",
+    "csv": "https://universalmind.tv/informatics/atlas-guides/molecular-atlas.csv?v=2026-11-01-page-narrative-4",
+    "md": "https://universalmind.tv/informatics/atlas-guides/molecular-atlas.md?v=2026-11-01-page-narrative-4"
   }
 }

@@ -2,7 +2,7 @@ path,type,value
 ,object,
 /schema,string,universal-informatics/atlas-page-guide/v1
 /title,string,Computer vision for genomics
-/version,string,2026-11-01-page-narrative-3
+/version,string,2026-11-01-page-narrative-4
 /url,string,https://universalmind.tv/informatics/?about
 /wiki,string,https://universalmind.tv/informatics/read/computer-vision/index.html
 /page_narrative,array,5
@@ -37,7 +37,8 @@ path,type,value
 /sources/0/path,string,index.html
 /sources/0/url,string,https://universalmind.tv/informatics/index.html
 /sources/0/sha256,string,a8a3c48bb8e24800c3d0812c654d36ef6f03422cdce94a096da7c2017d92395d
+/sources/0/sha256_scope,string,HTML with generated Atlas narrative blocks removed
 /downloads,object,
-/downloads/json,string,https://universalmind.tv/informatics/atlas-guides/computer-vision-atlas.json?v=2026-11-01-page-narrative-3
-/downloads/csv,string,https://universalmind.tv/informatics/atlas-guides/computer-vision-atlas.csv?v=2026-11-01-page-narrative-3
-/downloads/md,string,https://universalmind.tv/informatics/atlas-guides/computer-vision-atlas.md?v=2026-11-01-page-narrative-3
+/downloads/json,string,https://universalmind.tv/informatics/atlas-guides/computer-vision-atlas.json?v=2026-11-01-page-narrative-4
+/downloads/csv,string,https://universalmind.tv/informatics/atlas-guides/computer-vision-atlas.csv?v=2026-11-01-page-narrative-4
+/downloads/md,string,https://universalmind.tv/informatics/atlas-guides/computer-vision-atlas.md?v=2026-11-01-page-narrative-4

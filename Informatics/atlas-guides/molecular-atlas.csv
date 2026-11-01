@@ -2,7 +2,7 @@ path,type,value
 ,object,
 /schema,string,universal-informatics/atlas-page-guide/v1
 /title,string,Molecular Atlas
-/version,string,2026-11-01-page-narrative-3
+/version,string,2026-11-01-page-narrative-4
 /url,string,https://universalmind.tv/informatics/molecular/
 /wiki,string,https://universalmind.tv/informatics/read/molecular/index.html
 /page_narrative,array,47
@@ -2221,15 +2221,18 @@ path,type,value
 /sources/0/path,string,molecular/index.html
 /sources/0/url,string,https://universalmind.tv/informatics/molecular/index.html
 /sources/0/sha256,string,3530cc1283c982f47eedad95d2f81456d381b176fdef1533b67396bfe4a9e548
+/sources/0/sha256_scope,string,Exact file bytes
 /sources/1,object,
 /sources/1/path,string,molecular/interaction-ui.js
 /sources/1/url,string,https://universalmind.tv/informatics/molecular/interaction-ui.js
 /sources/1/sha256,string,bfa28324268e2be47f6e4eb0f4250270b8846b37013f4eb78eed6bf255d86d6e
+/sources/1/sha256_scope,string,Exact file bytes
 /sources/2,object,
 /sources/2/path,string,molecular/data/catalogue.json
 /sources/2/url,string,https://universalmind.tv/informatics/molecular/data/catalogue.json
 /sources/2/sha256,string,52fe47c82c28997bd15ba7ed59e8643125546fa38242d80f6c7d7c8da597c04c
+/sources/2/sha256_scope,string,Exact file bytes
 /downloads,object,
-/downloads/json,string,https://universalmind.tv/informatics/atlas-guides/molecular-atlas.json?v=2026-11-01-page-narrative-3
-/downloads/csv,string,https://universalmind.tv/informatics/atlas-guides/molecular-atlas.csv?v=2026-11-01-page-narrative-3
-/downloads/md,string,https://universalmind.tv/informatics/atlas-guides/molecular-atlas.md?v=2026-11-01-page-narrative-3
+/downloads/json,string,https://universalmind.tv/informatics/atlas-guides/molecular-atlas.json?v=2026-11-01-page-narrative-4
+/downloads/csv,string,https://universalmind.tv/informatics/atlas-guides/molecular-atlas.csv?v=2026-11-01-page-narrative-4
+/downloads/md,string,https://universalmind.tv/informatics/atlas-guides/molecular-atlas.md?v=2026-11-01-page-narrative-4

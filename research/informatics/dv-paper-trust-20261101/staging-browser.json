@@ -1,0 +1,82 @@
+{
+  "passed": true,
+  "phase": "staging",
+  "mutedHeadless": true,
+  "checks": [
+    {
+      "width": 1440,
+      "collection": "sound",
+      "allPaperCardsChecked": 8,
+      "oneCross": 8,
+      "twoCrosses": 0,
+      "threeCrosses": 0,
+      "dialogMatches": true,
+      "chapterCrosses": 1,
+      "noHorizontalOverflow": true
+    },
+    {
+      "width": 1440,
+      "collection": "vision",
+      "allPaperCardsChecked": 10,
+      "oneCross": 4,
+      "twoCrosses": 6,
+      "threeCrosses": 0,
+      "dialogMatches": true,
+      "chapterCrosses": 2,
+      "noHorizontalOverflow": true
+    },
+    {
+      "width": 1440,
+      "collection": "language",
+      "allPaperCardsChecked": 99,
+      "oneCross": 54,
+      "twoCrosses": 45,
+      "threeCrosses": 0,
+      "dialogMatches": true,
+      "chapterCrosses": 2,
+      "noHorizontalOverflow": true
+    },
+    {
+      "width": 320,
+      "collection": "sound",
+      "allPaperCardsChecked": 8,
+      "oneCross": 8,
+      "twoCrosses": 0,
+      "threeCrosses": 0,
+      "dialogMatches": true,
+      "chapterCrosses": 1,
+      "noHorizontalOverflow": true
+    },
+    {
+      "width": 320,
+      "collection": "vision",
+      "allPaperCardsChecked": 10,
+      "oneCross": 4,
+      "twoCrosses": 6,
+      "threeCrosses": 0,
+      "dialogMatches": true,
+      "chapterCrosses": 2,
+      "noHorizontalOverflow": true
+    },
+    {
+      "width": 320,
+      "collection": "language",
+      "allPaperCardsChecked": 99,
+      "oneCross": 54,
+      "twoCrosses": 45,
+      "threeCrosses": 0,
+      "dialogMatches": true,
+      "chapterCrosses": 2,
+      "noHorizontalOverflow": true
+    }
+  ],
+  "all117PaginatedSearchResultsChecked": true,
+  "filters": {
+    "one": 66,
+    "two": 51,
+    "three": 0
+  },
+  "exportedRatingsMatchVisibleCrosses": true,
+  "existingDoubleBlindPaperShowsThree": true,
+  "errors": []
+}

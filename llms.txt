@@ -153,30 +153,30 @@ Access: The research wiki, publication records and download directory are public
 - [Archive and timestamp record](https://universalmind.tv/informatics/read/provenance.html): Universal Informatics; HTML; Public.
 - [Informatics AI access and reuse](https://universalmind.tv/informatics/read/access.html): Universal Informatics; HTML; Public.
 - [Connect and download: API, MCP, A2A, JSON and CSV](https://universalmind.tv/informatics/connect.html): Universal Informatics; HTML; Public. Connection instructions and complete dataset exports; research scope.
-- [Complete dataset manifest](https://universalmind.tv/informatics/exports/manifest-696dbabc1251d26ef110d7f6cd8f1a7fa979cb73ec6afb23a302f478f0b8e172.json): Universal Informatics; JSON; Public. Current export files, sizes and checksums.
+- [Complete dataset manifest](https://universalmind.tv/informatics/exports/manifest-8eaf5c1278019b85d9136b9eb33ea9a23c2d27d44a88941e6b4a0b2afc1494de.json): Universal Informatics; JSON; Public. Current export files, sizes and checksums.
 - [Dataset guide](https://universalmind.tv/informatics/exports/README.md): Universal Informatics; Markdown; Public.
 - [Atlas JSON bundle](https://universalmind.tv/informatics/pilot-v1/m1-m1001-data.zip): Universal Informatics; ZIP / JSON; Public.
 - [Atlas CSV bundle](https://universalmind.tv/informatics/pilot-v1/m1-m1001-csv.zip): Universal Informatics; ZIP / CSV; Public.
-- [Vision Atlas · EMDR and ocular biology · page explanations](https://universalmind.tv/informatics/atlas-guides/vision-atlas.json?v=2026-11-01-page-narrative-3): Universal Informatics; JSON; Public.
-- [Vision Atlas · EMDR and ocular biology · page explanations](https://universalmind.tv/informatics/atlas-guides/vision-atlas.csv?v=2026-11-01-page-narrative-3): Universal Informatics; CSV; Public.
-- [Vision Atlas · EMDR and ocular biology · page explanations](https://universalmind.tv/informatics/atlas-guides/vision-atlas.md?v=2026-11-01-page-narrative-3): Universal Informatics; Markdown; Public.
-- [Computer vision for genomics · page explanations](https://universalmind.tv/informatics/atlas-guides/computer-vision-atlas.json?v=2026-11-01-page-narrative-3): Universal Informatics; JSON; Public.
-- [Computer vision for genomics · page explanations](https://universalmind.tv/informatics/atlas-guides/computer-vision-atlas.csv?v=2026-11-01-page-narrative-3): Universal Informatics; CSV; Public.
-- [Computer vision for genomics · page explanations](https://universalmind.tv/informatics/atlas-guides/computer-vision-atlas.md?v=2026-11-01-page-narrative-3): Universal Informatics; Markdown; Public.
-- [Geometry Atlas · page explanations](https://universalmind.tv/informatics/atlas-guides/geometry-atlas.json?v=2026-11-01-page-narrative-3): Universal Informatics; JSON; Public.
-- [Geometry Atlas · page explanations](https://universalmind.tv/informatics/atlas-guides/geometry-atlas.csv?v=2026-11-01-page-narrative-3): Universal Informatics; CSV; Public.
-- [Geometry Atlas · page explanations](https://universalmind.tv/informatics/atlas-guides/geometry-atlas.md?v=2026-11-01-page-narrative-3): Universal Informatics; Markdown; Public.
-- [Molecular Atlas · page explanations](https://universalmind.tv/informatics/atlas-guides/molecular-atlas.json?v=2026-11-01-page-narrative-3): Universal Informatics; JSON; Public.
-- [Molecular Atlas · page explanations](https://universalmind.tv/informatics/atlas-guides/molecular-atlas.csv?v=2026-11-01-page-narrative-3): Universal Informatics; CSV; Public.
-- [Molecular Atlas · page explanations](https://universalmind.tv/informatics/atlas-guides/molecular-atlas.md?v=2026-11-01-page-narrative-3): Universal Informatics; Markdown; Public.
+- [Vision Atlas · EMDR and ocular biology · page explanations](https://universalmind.tv/informatics/atlas-guides/vision-atlas.json?v=2026-11-01-page-narrative-4): Universal Informatics; JSON; Public.
+- [Vision Atlas · EMDR and ocular biology · page explanations](https://universalmind.tv/informatics/atlas-guides/vision-atlas.csv?v=2026-11-01-page-narrative-4): Universal Informatics; CSV; Public.
+- [Vision Atlas · EMDR and ocular biology · page explanations](https://universalmind.tv/informatics/atlas-guides/vision-atlas.md?v=2026-11-01-page-narrative-4): Universal Informatics; Markdown; Public.
+- [Computer vision for genomics · page explanations](https://universalmind.tv/informatics/atlas-guides/computer-vision-atlas.json?v=2026-11-01-page-narrative-4): Universal Informatics; JSON; Public.
+- [Computer vision for genomics · page explanations](https://universalmind.tv/informatics/atlas-guides/computer-vision-atlas.csv?v=2026-11-01-page-narrative-4): Universal Informatics; CSV; Public.
+- [Computer vision for genomics · page explanations](https://universalmind.tv/informatics/atlas-guides/computer-vision-atlas.md?v=2026-11-01-page-narrative-4): Universal Informatics; Markdown; Public.
+- [Geometry Atlas · page explanations](https://universalmind.tv/informatics/atlas-guides/geometry-atlas.json?v=2026-11-01-page-narrative-4): Universal Informatics; JSON; Public.
+- [Geometry Atlas · page explanations](https://universalmind.tv/informatics/atlas-guides/geometry-atlas.csv?v=2026-11-01-page-narrative-4): Universal Informatics; CSV; Public.
+- [Geometry Atlas · page explanations](https://universalmind.tv/informatics/atlas-guides/geometry-atlas.md?v=2026-11-01-page-narrative-4): Universal Informatics; Markdown; Public.
+- [Molecular Atlas · page explanations](https://universalmind.tv/informatics/atlas-guides/molecular-atlas.json?v=2026-11-01-page-narrative-4): Universal Informatics; JSON; Public.
+- [Molecular Atlas · page explanations](https://universalmind.tv/informatics/atlas-guides/molecular-atlas.csv?v=2026-11-01-page-narrative-4): Universal Informatics; CSV; Public.
+- [Molecular Atlas · page explanations](https://universalmind.tv/informatics/atlas-guides/molecular-atlas.md?v=2026-11-01-page-narrative-4): Universal Informatics; Markdown; Public.
 - [Language Atlas](https://universalmind.tv/informatics/read/language/index.html): Universal Informatics; HTML; Public.
-- [Language Atlas · page explanations](https://universalmind.tv/informatics/atlas-guides/language-atlas.json?v=2026-11-01-page-narrative-3): Universal Informatics; JSON; Public.
-- [Language Atlas · page explanations](https://universalmind.tv/informatics/atlas-guides/language-atlas.csv?v=2026-11-01-page-narrative-3): Universal Informatics; CSV; Public.
-- [Language Atlas · page explanations](https://universalmind.tv/informatics/atlas-guides/language-atlas.md?v=2026-11-01-page-narrative-3): Universal Informatics; Markdown; Public.
+- [Language Atlas · page explanations](https://universalmind.tv/informatics/atlas-guides/language-atlas.json?v=2026-11-01-page-narrative-4): Universal Informatics; JSON; Public.
+- [Language Atlas · page explanations](https://universalmind.tv/informatics/atlas-guides/language-atlas.csv?v=2026-11-01-page-narrative-4): Universal Informatics; CSV; Public.
+- [Language Atlas · page explanations](https://universalmind.tv/informatics/atlas-guides/language-atlas.md?v=2026-11-01-page-narrative-4): Universal Informatics; Markdown; Public.
 - [Transcription Atlas](https://universalmind.tv/informatics/read/transcription/index.html): Universal Informatics; HTML; Public.
-- [Transcription Atlas · page explanations](https://universalmind.tv/informatics/atlas-guides/transcription-atlas.json?v=2026-11-01-page-narrative-3): Universal Informatics; JSON; Public.
-- [Transcription Atlas · page explanations](https://universalmind.tv/informatics/atlas-guides/transcription-atlas.csv?v=2026-11-01-page-narrative-3): Universal Informatics; CSV; Public.
-- [Transcription Atlas · page explanations](https://universalmind.tv/informatics/atlas-guides/transcription-atlas.md?v=2026-11-01-page-narrative-3): Universal Informatics; Markdown; Public.
+- [Transcription Atlas · page explanations](https://universalmind.tv/informatics/atlas-guides/transcription-atlas.json?v=2026-11-01-page-narrative-4): Universal Informatics; JSON; Public.
+- [Transcription Atlas · page explanations](https://universalmind.tv/informatics/atlas-guides/transcription-atlas.csv?v=2026-11-01-page-narrative-4): Universal Informatics; CSV; Public.
+- [Transcription Atlas · page explanations](https://universalmind.tv/informatics/atlas-guides/transcription-atlas.md?v=2026-11-01-page-narrative-4): Universal Informatics; Markdown; Public.
 - [Vision research](https://universalmind.tv/informatics/library.html?collection=vision): Universal Informatics; HTML; Public.
 - [Sound research](https://universalmind.tv/informatics/library.html?collection=sound): Universal Informatics; HTML; Public.
 - [Language research](https://universalmind.tv/informatics/library.html?collection=language): Universal Informatics; HTML; Public.

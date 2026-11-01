@@ -5,7 +5,7 @@ from html import escape
 from urllib.parse import urljoin
 import csv,io,json,re,subprocess,os,hashlib
 ROOT=Path(__file__).resolve().parents[1];SITE=ROOT/'Informatics';BASE='https://universalmind.tv/informatics/'
-VERSION='2026-11-01-page-narrative-3'
+VERSION='2026-11-01-page-narrative-4'
 NODE=os.environ.get('NODE_BIN','/Users/benkorbel/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node')
 E=lambda s:escape(str(s));SHA=lambda s:hashlib.sha256(s.encode()).hexdigest()
 def read(p):return (SITE/p).read_text()
@@ -75,7 +75,7 @@ shell=clean(read('index.html'));topics=json.loads((ROOT/'tools/atlas-topic-direc
 guides={}
 def add(id,narrative,source_paths,data=None,related=None):
  t=byid[id];downloads={f:BASE+'atlas-guides/'+id+'-atlas.'+f+'?v='+VERSION for f in ['json','csv','md']}
- guides[id]={'schema':'universal-informatics/atlas-page-guide/v1','title':t['title'],'version':VERSION,'url':t['url'],'wiki':t['wiki'],'page_narrative':narrative,'source_data':data or {},'related_data':related or [],'sources':[{'path':p,'url':BASE+p,'sha256':SHA(clean(read(p)))} for p in source_paths],'downloads':downloads}
+ guides[id]={'schema':'universal-informatics/atlas-page-guide/v1','title':t['title'],'version':VERSION,'url':t['url'],'wiki':t['wiki'],'page_narrative':narrative,'source_data':data or {},'related_data':related or [],'sources':[{'path':p,'url':BASE+p,'sha256':SHA(clean(read(p))),'sha256_scope':'HTML with generated Atlas narrative blocks removed' if p=='index.html' else 'Exact file bytes'} for p in source_paths],'downloads':downloads}
 
 v=blocks(section(shell,'<section class="atlas-section atlas-vision','<section class="atlas-section atlas-language'))
 vs=read('vision-science.js');science=json.loads(re.search(r'insertAdjacentHTML\([^,]+,\s*("(?:[^"\\]|\\.)*")\)',vs)[1])
@@ -119,13 +119,13 @@ for id,d in guides.items():
   body+='<h2>Modulus records</h2><ul>'+''.join('<li><a href="m'+str(r['modulus'])+'.html">'+E(r['name'])+'</a></li>' for r in d['source_data']['records'])+'</ul>'
  else:
   for key,data in d['source_data'].items():body+='<details><summary>'+E(key.replace('_',' ').capitalize())+'</summary><pre>'+E(json.dumps(data,ensure_ascii=False,indent=2))+'</pre></details>'
- body+='<h2>Sources</h2><ul>'+''.join('<li><a href="'+E(x['url'].replace('https://universalmind.tv',''))+'">'+E(x['path'])+'</a> · SHA-256 <code>'+x['sha256']+'</code></li>' for x in d['sources'])+'</ul>'
+ body+='<h2>Sources</h2><ul>'+''.join('<li><a href="'+E(x['url'].replace('https://universalmind.tv',''))+'">'+E(x['path'])+'</a> · SHA-256 <code>'+x['sha256']+'</code> · '+E(x['sha256_scope'])+'</li>' for x in d['sources'])+'</ul>'
  page='read/atlas/index.html' if id=='geometry' else 'read/'+id+'/index.html'
  write(page,'<!doctype html>\n<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+E(d['title'])+' · Universal Informatics</title><meta name="description" content="'+E(next(b['text'] for b in d['page_narrative'] if b['tag']=='p'))+'"><meta name="robots" content="index,follow,max-snippet:-1"><link rel="canonical" href="'+d['wiki']+'"><link rel="stylesheet" href="../atlas-guide.css"><style>img{max-width:100%;height:auto}figure{margin:24px 0}pre{white-space:pre-wrap;overflow-wrap:anywhere}code{overflow-wrap:anywhere}summary{cursor:pointer}details{margin:24px 0}</style></head><body><header><p>Universal Informatics · AI / LLM Wiki</p><nav><a href="../index.html">All research</a><a href="'+E(d['url'].replace('https://universalmind.tv',''))+'">Open '+E(d['title'])+'</a></nav></header><main><h1>'+E(d['title'])+'</h1>'+body+'</main><footer>'+links+'</footer></body></html>\n')
  markdown='# '+d['title']+'\n\n'+md(d['page_narrative'])+'\n\n## Source data\n\n'+'\n'.join('- ['+x['label']+']('+x['url']+')' for x in d['related_data'])
  markdown+='\n\n## Downloads\n\n'+' · '.join('['+f.upper()+']('+url+')' for f,url in d['downloads'].items())+'\n\n[Interactive page]('+d['url']+') · [Wiki]('+d['wiki']+')\n'
  if d['source_data']:markdown+='\n## Complete guide data\n\n```json\n'+json.dumps(d['source_data'],ensure_ascii=False,indent=2)+'\n```\n'
- markdown+='\n## Sources\n\n'+'\n'.join('- ['+x['path']+']('+x['url']+') · SHA-256: '+x['sha256'] for x in d['sources'])+'\n';write(rel+'.md',markdown)
+ markdown+='\n## Sources\n\n'+'\n'.join('- ['+x['path']+']('+x['url']+') · SHA-256: '+x['sha256']+' · '+x['sha256_scope'] for x in d['sources'])+'\n';write(rel+'.md',markdown)
 # Static machine-readable context is present in the ordinary primary URL without changing its visual layout.
 metadata=''.join('<link rel="alternate" type="'+{'json':'application/json','csv':'text/csv','md':'text/markdown'}[fmt]+'" title="'+E(d['title'])+'" href="'+url.replace('https://universalmind.tv','')+'">\n' for d in guides.values() for fmt,url in d['downloads'].items())
 machine='\n'.join('<section hidden aria-hidden="true" id="'+id+'-page-narrative">'+html(d['page_narrative'])+'</section><script type="application/json" id="'+id+'-page-guide">'+json.dumps({k:v for k,v in d.items() if k!='source_data'},ensure_ascii=False).replace('<','\\u003c')+'</script>' for id,d in guides.items())

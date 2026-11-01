@@ -7,10 +7,13 @@ guide=json.loads((ROOT/'Informatics/quantum/reading/quantum-atlas.json').read_te
 library_script=re.search(r'src="(library\.js\?[^"]+)"',(ROOT/'Informatics/library.html').read_text())[1]
 def download_route(route):
     if route=='informatics/library.js':return 'informatics/'+library_script
+    if route.startswith('informatics/library-data/'):
+        version=re.search(r"\.json\?v=(dv-[^']+)",(ROOT/'Informatics/library.js').read_text())[1]
+        return route+'?v='+version
     if route.startswith('informatics/music-atlas/music-atlas.'):
         ext=route.rsplit('.',1)[1];return music['downloads']['markdown' if ext=='md' else ext].replace('https://universalmind.tv/','')
     if route.startswith('informatics/atlas-guides/'):
-        return route+'?v=2026-11-01-page-narrative-3'
+        return route+'?v=2026-11-01-page-narrative-4'
     if route.startswith('informatics/quantum/reading/quantum-atlas.'):
         return guide['downloads'][route.rsplit('.',1)[1]].replace('https://universalmind.tv/','')
     return route

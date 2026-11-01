@@ -2,7 +2,7 @@ path,type,value
 ,object,
 /schema,string,universal-informatics/atlas-page-guide/v1
 /title,string,Geometry Atlas
-/version,string,2026-11-01-page-narrative-3
+/version,string,2026-11-01-page-narrative-4
 /url,string,https://universalmind.tv/informatics/?atlas=1
 /wiki,string,https://universalmind.tv/informatics/read/atlas/index.html
 /page_narrative,array,46
@@ -37353,15 +37353,18 @@ path,type,value
 /sources/0/path,string,research.html
 /sources/0/url,string,https://universalmind.tv/informatics/research.html
 /sources/0/sha256,string,07a2e24d72b0eecca9db9588f955d1de14174931233de63232d26027401fd5a5
+/sources/0/sha256_scope,string,Exact file bytes
 /sources/1,object,
 /sources/1/path,string,research.js
 /sources/1/url,string,https://universalmind.tv/informatics/research.js
 /sources/1/sha256,string,0a3a15fe61cf34e357541b677ec1d79585ecb3a2539ab65c34e0ef4a4319f97e
+/sources/1/sha256_scope,string,Exact file bytes
 /sources/2,object,
 /sources/2/path,string,pilot-v1/index.json
 /sources/2/url,string,https://universalmind.tv/informatics/pilot-v1/index.json
 /sources/2/sha256,string,a4db55764d8505f49b5249a87e423e7e97a242cdf13502030269d4207a49b447
+/sources/2/sha256_scope,string,Exact file bytes
 /downloads,object,
-/downloads/json,string,https://universalmind.tv/informatics/atlas-guides/geometry-atlas.json?v=2026-11-01-page-narrative-3
-/downloads/csv,string,https://universalmind.tv/informatics/atlas-guides/geometry-atlas.csv?v=2026-11-01-page-narrative-3
-/downloads/md,string,https://universalmind.tv/informatics/atlas-guides/geometry-atlas.md?v=2026-11-01-page-narrative-3
+/downloads/json,string,https://universalmind.tv/informatics/atlas-guides/geometry-atlas.json?v=2026-11-01-page-narrative-4
+/downloads/csv,string,https://universalmind.tv/informatics/atlas-guides/geometry-atlas.csv?v=2026-11-01-page-narrative-4
+/downloads/md,string,https://universalmind.tv/informatics/atlas-guides/geometry-atlas.md?v=2026-11-01-page-narrative-4

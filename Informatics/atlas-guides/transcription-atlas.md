@@ -248,7 +248,7 @@ Unknown positions remain unfilled. Source review depth is stated for each paper;
 
 ## Downloads
 
-[JSON](https://universalmind.tv/informatics/atlas-guides/transcription-atlas.json?v=2026-11-01-page-narrative-3) · [CSV](https://universalmind.tv/informatics/atlas-guides/transcription-atlas.csv?v=2026-11-01-page-narrative-3) · [MD](https://universalmind.tv/informatics/atlas-guides/transcription-atlas.md?v=2026-11-01-page-narrative-3)
+[JSON](https://universalmind.tv/informatics/atlas-guides/transcription-atlas.json?v=2026-11-01-page-narrative-4) · [CSV](https://universalmind.tv/informatics/atlas-guides/transcription-atlas.csv?v=2026-11-01-page-narrative-4) · [MD](https://universalmind.tv/informatics/atlas-guides/transcription-atlas.md?v=2026-11-01-page-narrative-4)
 
 [Interactive page](https://universalmind.tv/informatics/?entry=research&area=transcription) · [Wiki](https://universalmind.tv/informatics/read/transcription/index.html)
 
@@ -3427,7 +3427,7 @@ Unknown positions remain unfilled. Source review depth is stated for each paper;
 
 ## Sources
 
-- [science.js](https://universalmind.tv/informatics/science.js) · SHA-256: 3844b867a860e26cb0bc3113470759d4c49eee886f2d6591376dbf78516b3945
-- [tfbs-geometry.js](https://universalmind.tv/informatics/tfbs-geometry.js) · SHA-256: 8ee3b7eb0dc5f7c60c44c5b01bed9f7b49371b1f34b5a512eae7dda082161e5d
-- [pilot-v1/oxtr-tfbs-v1/catalogue.json](https://universalmind.tv/informatics/pilot-v1/oxtr-tfbs-v1/catalogue.json) · SHA-256: 60f66a0be6bcf3b94891aa6d71ac9c5012c6040bfa39e4cf48fb85127c1cf400
-- [pilot-v1/oxtr-tfbs-v1/experiment-v1/manifest.json](https://universalmind.tv/informatics/pilot-v1/oxtr-tfbs-v1/experiment-v1/manifest.json) · SHA-256: 48671fb3fb93f99da4d9551f94d2625b00a6f68660542c335153b4d8e7c16c3b
+- [science.js](https://universalmind.tv/informatics/science.js) · SHA-256: 3844b867a860e26cb0bc3113470759d4c49eee886f2d6591376dbf78516b3945 · Exact file bytes
+- [tfbs-geometry.js](https://universalmind.tv/informatics/tfbs-geometry.js) · SHA-256: 8ee3b7eb0dc5f7c60c44c5b01bed9f7b49371b1f34b5a512eae7dda082161e5d · Exact file bytes
+- [pilot-v1/oxtr-tfbs-v1/catalogue.json](https://universalmind.tv/informatics/pilot-v1/oxtr-tfbs-v1/catalogue.json) · SHA-256: 60f66a0be6bcf3b94891aa6d71ac9c5012c6040bfa39e4cf48fb85127c1cf400 · Exact file bytes
+- [pilot-v1/oxtr-tfbs-v1/experiment-v1/manifest.json](https://universalmind.tv/informatics/pilot-v1/oxtr-tfbs-v1/experiment-v1/manifest.json) · SHA-256: 48671fb3fb93f99da4d9551f94d2625b00a6f68660542c335153b4d8e7c16c3b · Exact file bytes

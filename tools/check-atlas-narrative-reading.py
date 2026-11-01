@@ -25,6 +25,10 @@ reports=[]
 for id,phrases in required.items():
  p=SITE/f'atlas-guides/{id}-atlas.json';d=json.loads(p.read_text());wiki=SITE/('read/atlas/index.html' if id=='geometry' else f'read/{id}/index.html');h=wiki.read_text();plain=text(h);md=p.with_suffix('.md').read_text();narr='\n'.join(b['text'] for b in d['page_narrative'])
  assert restore(p.with_suffix('.csv'))==d,id
+ for source in d['sources']:
+  raw=(SITE/source['path']).read_text()
+  if source['sha256_scope']!='Exact file bytes':raw=re.sub(r'<!-- ATLAS NARRATIVE (?:MACHINE|METADATA|DOWNLOADS) START -->[\s\S]*?<!-- ATLAS NARRATIVE (?:MACHINE|METADATA|DOWNLOADS) END -->\n?','',raw)
+  assert hashlib.sha256(raw.encode()).hexdigest()==source['sha256'],(id,source['path'])
  assert list(d).index('page_narrative')<list(d).index('source_data'),id
  last=-1
  for phrase in phrases:
@@ -53,7 +57,7 @@ for modulus,models in g['source_data']['record_explanations'].items():
  for model in models:assert model['description'] in plain and model['calculation'] in plain,modulus
  assert h.index('<section>')<h.index('Complete record JSON'),modulus
 # Original source datasets, scripts and primary UI retain their exact bytes.
-changed=subprocess.check_output(['git','diff','--name-only','d369436c9','--','Informatics'],cwd=ROOT,text=True).splitlines()
+changed=subprocess.check_output(['git','diff','--name-only','ca574ad4ac0cf9ad3f7d89a2aaf54c025ffe331e','--','Informatics'],cwd=ROOT,text=True).splitlines()
 allowed=('Informatics/read/','Informatics/music-atlas/','Informatics/atlas-guides/','Informatics/exports/')
 assert all(p.startswith(allowed) or p in ['Informatics/index.html','Informatics/llms.txt'] for p in changed),changed
 report={'passed':True,'topics':reports,'music_source_and_measurement_preserved':True,'music_narrative_measurement_models_order':True,'geometry_records_with_native_explanations':1001,'primary_ui_runtime_and_scientific_data_unchanged':True}

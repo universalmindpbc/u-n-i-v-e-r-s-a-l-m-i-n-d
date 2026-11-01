@@ -2,7 +2,7 @@ path,type,value
 ,object,
 /schema,string,universal-informatics/atlas-page-guide/v1
 /title,string,Transcription Atlas
-/version,string,2026-11-01-page-narrative-3
+/version,string,2026-11-01-page-narrative-4
 /url,string,https://universalmind.tv/informatics/?entry=research&area=transcription
 /wiki,string,https://universalmind.tv/informatics/read/transcription/index.html
 /page_narrative,array,119
@@ -3320,19 +3320,23 @@ path,type,value
 /sources/0/path,string,science.js
 /sources/0/url,string,https://universalmind.tv/informatics/science.js
 /sources/0/sha256,string,3844b867a860e26cb0bc3113470759d4c49eee886f2d6591376dbf78516b3945
+/sources/0/sha256_scope,string,Exact file bytes
 /sources/1,object,
 /sources/1/path,string,tfbs-geometry.js
 /sources/1/url,string,https://universalmind.tv/informatics/tfbs-geometry.js
 /sources/1/sha256,string,8ee3b7eb0dc5f7c60c44c5b01bed9f7b49371b1f34b5a512eae7dda082161e5d
+/sources/1/sha256_scope,string,Exact file bytes
 /sources/2,object,
 /sources/2/path,string,pilot-v1/oxtr-tfbs-v1/catalogue.json
 /sources/2/url,string,https://universalmind.tv/informatics/pilot-v1/oxtr-tfbs-v1/catalogue.json
 /sources/2/sha256,string,60f66a0be6bcf3b94891aa6d71ac9c5012c6040bfa39e4cf48fb85127c1cf400
+/sources/2/sha256_scope,string,Exact file bytes
 /sources/3,object,
 /sources/3/path,string,pilot-v1/oxtr-tfbs-v1/experiment-v1/manifest.json
 /sources/3/url,string,https://universalmind.tv/informatics/pilot-v1/oxtr-tfbs-v1/experiment-v1/manifest.json
 /sources/3/sha256,string,48671fb3fb93f99da4d9551f94d2625b00a6f68660542c335153b4d8e7c16c3b
+/sources/3/sha256_scope,string,Exact file bytes
 /downloads,object,
-/downloads/json,string,https://universalmind.tv/informatics/atlas-guides/transcription-atlas.json?v=2026-11-01-page-narrative-3
-/downloads/csv,string,https://universalmind.tv/informatics/atlas-guides/transcription-atlas.csv?v=2026-11-01-page-narrative-3
-/downloads/md,string,https://universalmind.tv/informatics/atlas-guides/transcription-atlas.md?v=2026-11-01-page-narrative-3
+/downloads/json,string,https://universalmind.tv/informatics/atlas-guides/transcription-atlas.json?v=2026-11-01-page-narrative-4
+/downloads/csv,string,https://universalmind.tv/informatics/atlas-guides/transcription-atlas.csv?v=2026-11-01-page-narrative-4
+/downloads/md,string,https://universalmind.tv/informatics/atlas-guides/transcription-atlas.md?v=2026-11-01-page-narrative-4

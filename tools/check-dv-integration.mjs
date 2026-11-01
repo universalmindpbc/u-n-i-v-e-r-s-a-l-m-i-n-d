@@ -16,7 +16,8 @@ for(const source of audit.records){
  if(!source.reviewReady){assert.equal(record,undefined);continue;}
  assert.ok(record);assert.equal(record.summary,source.finding);assert.equal(record.limitation,source.limitation);
  assert.equal(record.publicationApproval.sourceContentHash,source.contentHash);
- assert.equal(record.paperTrustAssessment.displayCrosses,source.design.crosses);
+ assert.equal(record.paperTrustAssessment.displayCrosses,source.paperTrustAssessment.score);
+ assert.equal(record.paperTrustAssessment.score,source.paperTrustAssessment.score);
  assert.equal(record.paperTrustAssessment.humanApproval,false);
  assert.equal(record.publicationApproval.status,'approved-for-publication');
  assert.deepEqual(record.targets,[]);assert.ok(record.sourceAccess.level);

@@ -27,14 +27,12 @@
   function restoreFilters(p) { for (const key of fields) { if (multiFields.includes(key)) multi.set(key,p.getAll(key)); else $('#'+key).value=p.get(key) || (key==='sort' ? 'genomics' : ''); } if(p.has('gene'))multi.set('target',[...multi.values('target'),...p.getAll('gene')]); $('#include-related').checked=p.get('related')==='1'; }
   restoreFilters(params);
 
-  function crosses(score, labelled = false, scope = 'Subchapter', displayCrosses = null) {
-    const explicit = scope === 'Paper' && Number.isInteger(displayCrosses);
-    if (explicit && displayCrosses === 0) return '';
-    if (!score || (!explicit && scope === 'Paper' && score === 1)) return '';
+  function crosses(score, labelled = false, scope = 'Subchapter') {
+    if (!Number.isInteger(score) || score < 1 || score > 3) return '';
     const icon = '<svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="8" fill="#1468a8" stroke="currentColor" stroke-width=".5"/><path d="M7 3.5h4V7h3.5v4H11v3.5H7V11H3.5V7H7z" fill="#fff"/></svg>';
-    const count = explicit ? displayCrosses : score;
-    const label = explicit ? `Paper design: ${count} ${count===1 ? 'cross · randomized trial; double blinding not verified' : 'crosses · verified double-blind randomized trial'}` : `${scope} Trust Factor: ${score} of 3`;
-    return `<span class="trust-score" role="img" aria-label="${label}" title="${label}">${labelled ? '<span class="trust-label">Trust Factor</span>' : ''}${icon.repeat(count)}</span>`;
+    const design = {1:'peer-reviewed publication',2:'randomized controlled trial; double blinding not verified',3:'verified double-blind randomized controlled trial'};
+    const label = `${scope} Trust Factor: ${score} of 3${scope === 'Paper' ? ' · '+design[score] : ''}`;
+    return `<span class="trust-score" role="img" aria-label="${label}" title="${label}">${labelled ? '<span class="trust-label">Trust Factor</span>' : ''}${icon.repeat(score)}</span>`;
   }
   const topicScoreStatus = topic => topic.trustAssessment?.status === 'clinical-guidance' ? '<span class="topic-score-status">Clinical guidance</span>' : topic.trustAssessment?.status === 'below-minimum' ? '<span class="topic-score-status">Not yet graded · minimum 3 papers</span>' : '';
   function topicCounts(topic) {
@@ -143,7 +141,7 @@
     const details = [paper.design, paper.citationCount !== null && paper.citationCount !== undefined ? `${paper.citationCount.toLocaleString()} ${paper.citationCount===1 ? 'citation' : 'citations'}` : ''].filter(Boolean).join(' · ');
     const url = safeURL(paper.urls?.[0] || '#');
     return `<article class="paper" id="paper-${esc(paper.id)}" data-paper="${esc(paper.recordId)}">
-      <${heading}><a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${esc(paper.title)}</a> ${crosses(paper.paperTrustAssessment?.score,false,'Paper',paper.paperTrustAssessment?.displayCrosses)}</${heading}>
+      <${heading}><a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${esc(paper.title)}</a> ${crosses(paper.paperTrustAssessment?.score,false,'Paper')}</${heading}>
       ${approvalMarkup(paper)}${paper.publicationApproval && paper.evidence?.population?.relation==='related' ? '<p class="community-tag related">Related trauma population · transfer to domestic and family violence populations is not established.</p>' : ''}${publication ? `<p class="publication">${esc(publication)}</p>` : ''}
       ${details ? `<p class="study-details">${esc(details)}</p>` : ''}
       ${quotes.filter((q,index) => index !== review?.index).length ? `<blockquote cite="${esc(url)}">${quotes.map((q,index) => index === review?.index ? '' : `<p>${quoteHTML(q)}</p>`).join('')}</blockquote>` : ''}
@@ -245,7 +243,7 @@
       const entry = selectedEntry(record);
       const excerpt = record.quotes[0] || record.summary;
       const trimmed = excerpt.length > 340 ? excerpt.slice(0,337).trim()+'…' : excerpt;
-      return `<article class="search-paper" data-id="${esc(record.id)}"><h3><button data-record="${esc(record.id)}">${esc(record.title)}</button> ${crosses(model.paperTrustScore(record),false,'Paper',record.paperTrustAssessment?.displayCrosses)}</h3><p class="publication">${esc([journalDisplay(record),record.year,record.design].filter(Boolean).join(' · '))}</p>${approvalMarkup(record)}${communityBadges(record)}${multi.values('age').length ? ageMarkup(record) : ''}${trimmed ? record.quotes.length ? `<blockquote>${esc(trimmed)}</blockquote>` : `<p class="finding">${esc(trimmed)}</p>` : ''}${entry ? `<p class="search-context">${esc(collectionTitle(entry.collection))} · ${esc(entry.topicTitle)}</p>` : ''}<div class="search-tags">${record.categories.slice(0,2).map(c=>`<span>${esc(c)}</span>`).join('')}${record.targets.slice(0,5).map(t=>`<span class="gene">${esc(t)}</span>`).join('')}</div><button class="text-button" data-record="${esc(record.id)}">Read paper →</button></article>`;
+      return `<article class="search-paper" data-id="${esc(record.id)}"><h3><button data-record="${esc(record.id)}">${esc(record.title)}</button> ${crosses(model.paperTrustScore(record),false,'Paper')}</h3><p class="publication">${esc([journalDisplay(record),record.year,record.design].filter(Boolean).join(' · '))}</p>${approvalMarkup(record)}${communityBadges(record)}${multi.values('age').length ? ageMarkup(record) : ''}${trimmed ? record.quotes.length ? `<blockquote>${esc(trimmed)}</blockquote>` : `<p class="finding">${esc(trimmed)}</p>` : ''}${entry ? `<p class="search-context">${esc(collectionTitle(entry.collection))} · ${esc(entry.topicTitle)}</p>` : ''}<div class="search-tags">${record.categories.slice(0,2).map(c=>`<span>${esc(c)}</span>`).join('')}${record.targets.slice(0,5).map(t=>`<span class="gene">${esc(t)}</span>`).join('')}</div><button class="text-button" data-record="${esc(record.id)}">Read paper →</button></article>`;
     }).join('') || '<div class="empty-state"><h2>No matching papers.</h2><p>Try a different term or clear the filters.</p><button data-reset>Clear filters</button></div>';
   }
   function render() {
@@ -281,7 +279,7 @@
     const topic = papers.find(p => p.id === paper.id);
     const record = records.find(r=>r.id===paper.recordId || r.aliases.includes(paper.recordId));
     const jadad = model.jadadStatus(record || {});
-    const citations = [paper.citationSnapshot ? `${paper.citationSnapshot.count.toLocaleString()} citations · ${paper.citationSnapshot.source} · checked ${paper.citationSnapshot.retrievedAt}` : '',paper.authors, paper.doi ? 'DOI: '+paper.doi : '', paper.pmid ? 'PMID: '+paper.pmid : ''].filter(Boolean);
+    const citations = [Number.isFinite(paper.citationSnapshot?.count) ? `${paper.citationSnapshot.count.toLocaleString()} citations · ${paper.citationSnapshot.source} · checked ${paper.citationSnapshot.retrievedAt}` : '',paper.authors, paper.doi ? 'DOI: '+paper.doi : '', paper.pmid ? 'PMID: '+paper.pmid : ''].filter(Boolean);
     $('#article-body').innerHTML = `${topic ? `<p class="article-chapter-link"><a data-chapter="${topic.chapterNumber}" data-topic="${topic.topicId}" data-chapter-collection="${topic.collection}" href="${esc(route(topic.chapterNumber,topic.topicId,topic.collection))}">${esc(collectionTitle(topic.collection))} · ${esc(topic.topicTitle)} →</a></p>` : ''}${paperMarkup(paper,'h2').replace('<h2>', '<h2 id="article-title">')}${ageMarkup(records.find(r=>r.id===paper.recordId || r.aliases.includes(paper.recordId)))}<div class="citation-details"><p>Jadad: ${jadad.status==='assessed' ? jadad.score+'/5' : jadad.status==='not-applicable' ? 'Not applicable' : 'Not yet assessed'}</p>${citations.map(line => `<p>${esc(line)}</p>`).join('')}${paper.urls?.slice(1).map(url => `<p><a href="${esc(safeURL(url))}" target="_blank" rel="noopener noreferrer">${esc(url)}</a></p>`).join('') || ''}</div>`;
     $('#article-body').querySelector('[data-paper-detail]')?.remove();
     if (!$('#article').open) $('#article').showModal();
@@ -378,7 +376,7 @@
   async function load() {
     $('#load-error').hidden = true;
     try {
-      const responses = await Promise.all(['sound-edition','library','publication-access','language-edition','general-edition','mindfulness-expansion','vision-edition','vision-expansion','clinical-conditions','nature-expansion','fulltext-availability','fibonacci-expansion','hyperspectral-expansion','domestic-violence-expansion','community-index','age-index'].map(name=>fetch('library-data/'+name+'.json?v=dv-trust-20261101')));
+      const responses = await Promise.all(['sound-edition','library','publication-access','language-edition','general-edition','mindfulness-expansion','vision-edition','vision-expansion','clinical-conditions','nature-expansion','fulltext-availability','fibonacci-expansion','hyperspectral-expansion','domestic-violence-expansion','community-index','age-index'].map(name=>fetch('library-data/'+name+'.json?v=dv-paper-trust-20261101')));
       if (responses.some(response => !response.ok)) throw new Error('Research unavailable');
       const [sound,data,access,language,general,expansion,vision,visionExpansion,conditions,natureExpansion,fulltexts,fibonacciExpansion,hyperspectralExpansion,dvExpansion,communities,ages] = await Promise.all(responses.map(response=>response.json()));
       if (communities.schemaVersion!=='communities-contexts/v2' || communities.records.length!==communities.recordCount) throw new Error('Invalid community classifications');

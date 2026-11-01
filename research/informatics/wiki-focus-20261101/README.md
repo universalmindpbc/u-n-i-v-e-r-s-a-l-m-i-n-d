@@ -10,7 +10,7 @@ The repeated cross-topic comparisons are removed. Quantum retains its purpose, h
 
 The primary Atlas layout, controls, runtime scripts, scientific source records and About wording remain intact. Hidden semantic content and versioned reading/download metadata supply the added context without changing the visible Atlas content. Wiki navigation stays on the current host when following internal topic links.
 
-The release preserves the concurrent Trust Factor correction at `45094ae0c`. Its four source files and all affected publication content remain intact. The complete exports include both updates and all 1,194 public source records.
+The release preserves the concurrent Trust Factor correction at `ca574ad4a`. Its source files and all affected publication content remain intact. The complete exports include both updates and all 1,194 public source records.
 
 Verification includes exact About excerpts, narrative ordering, source blocks in each format, lossless JSON/CSV reconstruction, all 1,001 Geometry explanations, desktop/mobile Wiki checks without JavaScript, native Music controls, live download bytes and complete-export hashes. Evidence files beginning `candidate` describe pre-upload checks; `staging-release.json` identifies the final deployed source and live checks. No model request or quantum execution is part of this correction.
 

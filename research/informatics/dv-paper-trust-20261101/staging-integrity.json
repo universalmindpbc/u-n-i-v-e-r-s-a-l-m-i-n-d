@@ -1,0 +1,112 @@
+{
+  "passed": true,
+  "assetVersion": "dv-paper-trust-20261101",
+  "note": "The reader requests versioned JS/data assets; bare asset URLs may retain an older CDN cache entry. Functional staging-browser.json verifies the ordinary visitor routes.",
+  "sourceFilesAndPartsMatched": 17,
+  "completeExportVersion": "04fd418c2d250bb14238119ba8d7a578f35d4342de85911a8e56bee219178c2c",
+  "completeExportPartsVerifiedBy": "check-dv-complete-downloads-browser.mjs",
+  "results": [
+    {
+      "url": "https://staging.universalmind.tv/informatics/library.js?v=dv-paper-trust-20261101",
+      "status": 200,
+      "bytes": 49483,
+      "sha256": "46269d021587ca243e426093be539db1d12fc5e131239fe658690b91f87db952"
+    },
+    {
+      "url": "https://staging.universalmind.tv/informatics/library.html?v=dv-paper-trust-20261101",
+      "status": 200,
+      "bytes": 35565,
+      "sha256": "2c829a9fd3a57e524a16a84bf275fd210a348e7551aa374ce3979242b00450d8"
+    },
+    {
+      "url": "https://staging.universalmind.tv/informatics/library-data/domestic-violence-expansion.json?v=dv-paper-trust-20261101",
+      "status": 200,
+      "bytes": 4794015,
+      "sha256": "6fdae7a666a8199ebd245580dbf831a5feb605afeefe71cff4562d226bc930bf"
+    },
+    {
+      "url": "https://staging.universalmind.tv/informatics/library-data/community-index.json?v=dv-paper-trust-20261101",
+      "status": 200,
+      "bytes": 146785,
+      "sha256": "df9570cb475f6d38a42d4543aaa5f479135f820ba9dc0c63097306a3ef402aec"
+    },
+    {
+      "url": "https://staging.universalmind.tv/informatics/library-data/age-index.json?v=dv-paper-trust-20261101",
+      "status": 200,
+      "bytes": 392748,
+      "sha256": "9cd702c79124e98951991b0b30208078cd5f68943c611f5dfb7aaf759d654eec"
+    },
+    {
+      "url": "https://staging.universalmind.tv/informatics/exports/manifest-04fd418c2d250bb14238119ba8d7a578f35d4342de85911a8e56bee219178c2c.json",
+      "status": 200,
+      "bytes": 2395337,
+      "sha256": "85e8af9190a44990c32d9a27f47765acda771badc803c7e398459dd581d21e9b"
+    },
+    {
+      "url": "https://staging.universalmind.tv/informatics/complete-downloads.js?v=dv-paper-trust-20261101",
+      "status": 200,
+      "bytes": 2859,
+      "sha256": "37ed0bfbea745046b89c94132e3c3a781323ca482cbedc5e00b3cd51941a7f5b"
+    },
+    {
+      "url": "https://staging.universalmind.tv/informatics/connect.html?v=dv-paper-trust-20261101",
+      "status": 200,
+      "bytes": 12007,
+      "sha256": "945935df5099b0cab0ccf451c35ede0050eab1ec17893e97749aadf7cc4ecf76"
+    },
+    {
+      "url": "https://staging.universalmind.tv/informatics/llms.txt?v=dv-paper-trust-20261101",
+      "status": 200,
+      "bytes": 6850,
+      "sha256": "ea0f697e9615c8c705e35b3ece0863002275e7b476cfad9af26e31701197d582"
+    },
+    {
+      "url": "https://staging.universalmind.tv/informatics/read/index.html?v=dv-paper-trust-20261101",
+      "status": 200,
+      "bytes": 8520,
+      "sha256": "6eaecd409d7b99f89afe18cd0f54c686eda6c17c77415b428176facb90f705ac"
+    },
+    {
+      "url": "https://staging.universalmind.tv/informatics/read/publications/index.html?v=dv-paper-trust-20261101",
+      "status": 200,
+      "bytes": 300435,
+      "sha256": "21ace90b766ad6b5e54ec6690f81b3c58414d63ff4d82fb968d950f92e06bf39"
+    },
+    {
+      "url": "https://staging.universalmind.tv/informatics/read/publications/pmid-15913391-3c919d2a.html?v=dv-paper-trust-20261101",
+      "status": 200,
+      "bytes": 75572,
+      "sha256": "d2b87bbbb2806ed4574388d8b7e014d867472f56dc5715c4aff6d6ada9a8f093"
+    },
+    {
+      "url": "https://staging.universalmind.tv/informatics/read/publications/src-47a527b4dc03-d3194c22.html?v=dv-paper-trust-20261101",
+      "status": 200,
+      "bytes": 71747,
+      "sha256": "b921d8abae50f9e595f142a1e6b01d620fd63c337d6076d19586fb75ea00f120"
+    },
+    {
+      "url": "https://staging.universalmind.tv/sitemap.xml?v=dv-paper-trust-20261101",
+      "status": 200,
+      "bytes": 220474,
+      "sha256": "c3f300cfde530965c2fa0dfeddc706e533e342b6d52477c8aa49e3370e1bbc90"
+    },
+    {
+      "url": "https://staging.universalmind.tv/llms.txt?v=dv-paper-trust-20261101",
+      "status": 200,
+      "bytes": 14237,
+      "sha256": "38389e69936d3688e7e8caed6814e7c2b6f52f40d4fe2bc72191f2a4d43a1032"
+    },
+    {
+      "url": "https://staging.universalmind.tv/read/index.html?v=dv-paper-trust-20261101",
+      "status": 200,
+      "bytes": 17027,
+      "sha256": "9b7f630f9d105b698267884f0995b37b948ed8f2025c7047079f4fdc863e8deb"
+    },
+    {
+      "url": "https://staging.universalmind.tv/read/resources.json?v=dv-paper-trust-20261101",
+      "status": 200,
+      "bytes": 22855,
+      "sha256": "01f8f1c448f5eda691d07ec7c2ee5ce1639534d349e42c9d0689eade81fc0745"
+    }
+  ]
+}
