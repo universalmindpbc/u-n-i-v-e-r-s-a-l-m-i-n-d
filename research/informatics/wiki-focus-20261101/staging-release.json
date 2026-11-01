@@ -1,7 +1,7 @@
 {
-  "status": "staging_verified",
+  "status": "awaiting_concurrent_library_merge",
   "checked_at": "2026-11-01T05:08:44.334702+00:00",
-  "website_source_commit": "f331229bda7a04c582cf237ba1ec43db99f475af",
+  "website_source_commit": "fa7e36c676286e9a66cd6e9ce9ae230a35252c71",
   "staging_baseline": "c51547542a70e8b7d1ca9baeefe59099ad9e8220",
   "production_baseline": "a2d6cb9b83340e841c9362cefd5d193aff63ee56",
   "production_modified": false,
@@ -16,5 +16,6 @@
   "native_interface_and_runtime_preserved": true,
   "browser_process_audio_muted": true,
   "new_model_calls": 0,
-  "new_quantum_jobs": 0
+  "new_quantum_jobs": 0,
+  "concurrent_staging_commit": "ca574ad4ac0cf9ad3f7d89a2aaf54c025ffe331e"
 }

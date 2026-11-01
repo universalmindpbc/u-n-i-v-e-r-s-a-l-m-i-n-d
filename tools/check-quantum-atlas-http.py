@@ -30,7 +30,14 @@ with ThreadPoolExecutor(max_workers=6)as pool:checks=list(pool.map(verify,files)
 d=json.loads((ROOT/'Informatics/quantum/reading/quantum-atlas.json').read_text());agents=['ChatGPT-User/1.0','Googlebot','Claude-User','PerplexityBot','AtlasReadingVerification/1.0']
 def agent_check(agent):
     s=request('informatics/?entry=research&area=quantum',agent).decode();inline=re.search(r'<script id="quantum-atlas-data" type="application/json">([\s\S]*?)</script>',s);assert inline and json.loads(inline[1])==d
-    assert d['instructions'][1]in s;return agent
+    assert d['instructions'][1]in s
+    inline_music=re.search(r'<script id="music-atlas-data" type="application/json">([\s\S]*?)</script>',s);assert inline_music and json.loads(inline_music[1])==music
+    assert 'Does electronic music modulate gene expression of OXTR?' in s
+    for topic in ['transcription','vision','computer-vision','language','molecular','geometry']:
+        inline_topic=re.search(r'<script type="application/json" id="'+topic+r'-page-guide">([\s\S]*?)</script>',s)
+        saved=json.loads((ROOT/('Informatics/atlas-guides/'+topic+'-atlas.json')).read_text())
+        assert inline_topic and json.loads(inline_topic[1])=={k:v for k,v in saved.items() if k!='source_data'},topic
+    return agent
 with ThreadPoolExecutor(max_workers=5)as pool:list(pool.map(agent_check,agents))
 headers={}
 for ext,mime in [('json','application/json'),('csv','text/csv'),('md','text/markdown')]:

@@ -41,6 +41,24 @@
       "noHorizontalOverflow": true
     },
     {
+      "name": "transcription",
+      "width": 1440,
+      "topicFocus": true,
+      "noHorizontalOverflow": true
+    },
+    {
+      "name": "molecular",
+      "width": 1440,
+      "topicFocus": true,
+      "noHorizontalOverflow": true
+    },
+    {
+      "name": "language",
+      "width": 1440,
+      "topicFocus": true,
+      "noHorizontalOverflow": true
+    },
+    {
       "name": "organisation",
       "width": 1440,
       "topicFocus": true,
@@ -78,6 +96,24 @@
     },
     {
       "name": "geometry",
+      "width": 390,
+      "topicFocus": true,
+      "noHorizontalOverflow": true
+    },
+    {
+      "name": "transcription",
+      "width": 390,
+      "topicFocus": true,
+      "noHorizontalOverflow": true
+    },
+    {
+      "name": "molecular",
+      "width": 390,
+      "topicFocus": true,
+      "noHorizontalOverflow": true
+    },
+    {
+      "name": "language",
       "width": 390,
       "topicFocus": true,
       "noHorizontalOverflow": true
