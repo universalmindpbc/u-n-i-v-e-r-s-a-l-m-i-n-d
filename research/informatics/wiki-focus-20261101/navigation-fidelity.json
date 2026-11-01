@@ -1,4 +1,7 @@
 {
   "passed": true,
-  "reading_pages_with_navigation_only_change": 2231
+  "reading_pages_with_navigation_only_change": 2231,
+  "initial_baseline": "c51547542a70e8b7d1ca9baeefe59099ad9e8220",
+  "merged_baseline": "45094ae0cbe19e7a0d0eda9efcbead4b5dedf861",
+  "concurrent_publication_pages_rechecked": 117
 }

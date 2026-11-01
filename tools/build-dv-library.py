@@ -1,6 +1,7 @@
 """Integrate the exact human-approved, AI-audited DV summaries; no model calls."""
 import argparse, copy, hashlib, json, re
 from pathlib import Path
+from research_topic_trust import assess_topic
 ROOT=Path(__file__).resolve().parents[1]
 SITE=ROOT/'Informatics'
 SOURCE=SITE/'review/domestic-violence-20261031/audit-16f8e1d36d3f40c4.json'
@@ -56,7 +57,13 @@ def render():
         rows=[r for r in records if collection in r['collections']]
         n_rct=sum(r['studyDesignAssessment']['category']=='rct' for r in rows); n_review=sum(r['studyDesignAssessment']['category']=='review' for r in rows)
         local=f'{collection.title()} includes {len(rows)} publications: {n_rct} randomized trial reports, {n_review} reviews or meta-analyses, and {len(rows)-n_rct-n_review} other studies. Primary collection labels describe the research approach, not established effectiveness.'
-        chapters[collection]={'number':number,'title':'AI Guided Recommendations','overview':[overview,limits],'topics':[{'id':'domestic-family-violence','title':'Domestic & Family Violence','description':local,'paragraphs':[],'trustScore':None,'trustAssessment':{'status':'not-graded','scope':'Subchapter','basis':'No aggregate efficacy grade assigned to this heterogeneous, source-limited collection. Report and study-family counts differ.'},'papers':[{**{k:copy.deepcopy(v) for k,v in r.items() if k not in ['assessmentRecord','editorialAudit']},'recordId':r['id'],'id':collection+'-dv-'+r['id'],'sourcePages':[]} for r in rows]}]}
+        # Apply the existing library rubric, grouping linked reports by the
+        # audited study family even when no trial registration was available.
+        assessment=assess_topic([{**r,'evidence':{**r['evidence'],'trialId':r['studyFamilyId'] or r['evidence']['trialId']}} for r in rows])
+        assessment.update(assessedAt=DATE,basis='Existing library study-design thresholds, using the approved paper assessments. Known reports from the same study family count once; uncertain family links remain uncertain. This is not an aggregate efficacy or clinical recommendation grade.')
+        threshold={1:'One cross means at least three peer-reviewed studies are represented.',2:'Two crosses mean at least three distinct randomized controlled trials are represented.',3:'Three crosses mean at least three distinct double-blind randomized controlled trials are represented.'}[assessment['score']]
+        introduction='Trust Factor describes the study designs represented in this subchapter. '+threshold+' Linked reports of the same trial count once. The crosses do not establish that every approach is effective or suitable for every person; read each paper’s findings and limitations.'
+        chapters[collection]={'number':number,'title':'AI Guided Recommendations','overview':[overview,limits],'topics':[{'id':'domestic-family-violence','title':'Domestic & Family Violence','description':local,'paragraphs':[introduction],'trustScore':assessment['score'],'trustAssessment':assessment,'papers':[{**{k:copy.deepcopy(v) for k,v in r.items() if k not in ['assessmentRecord','editorialAudit']},'recordId':r['id'],'id':collection+'-dv-'+r['id'],'sourcePages':[]} for r in rows]}]}
     result={'schema':'approved-domestic-violence/v1','approvedAt':DATE,'sourceBatch':audit['batchRevision'],'sourceSHA256':hashlib.sha256(SOURCE.read_bytes()).hexdigest(),'counts':{'publications':117,'new':115,'updates':2,'rctReports':51,'reviews':25,'other':41,'verifiedDoubleBlind':0,'collections':{'sound':8,'vision':10,'language':99}},'overview':overview,'limitations':limits,'records':records,'chapters':chapters,'publicationAccess':access,'conditions':conditions,'ages':ages,'communities':communities,'classificationAudit':classification,'approaches':[{**g,'recordIds':[ALIASES.get(i,i) for i in g['recordIds']]} for g in coverage['groups']]}
     return json.dumps(result,ensure_ascii=False,indent=2)+'\n'
 if __name__=='__main__':

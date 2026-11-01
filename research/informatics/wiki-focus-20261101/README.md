@@ -7,3 +7,5 @@ The shared EMDR/computer-vision comparison paragraphs and cross-topic Quantum in
 Shared reading navigation now links to all Atlas pages. Other publication and Geometry record content is unchanged. Native Atlas visuals, controls, About copy and application runtime are preserved.
 
 Verification records cover 2,250 reading files, exact About excerpts, 2,231 navigation-only page updates, topic-page desktop/mobile checks without JavaScript, Quantum format equivalence and complete JSON/CSV reconstruction. Live staging evidence is recorded alongside the deployment manifest after upload. No model request or quantum execution is part of this wording correction.
+
+The final source integrates the concurrent Trust Factor release `45094ae0c`. Its library source files are byte-identical; all 117 affected publication pages retain that release’s content with the neutral Atlas navigation. The complete exports were rebuilt from both changes.

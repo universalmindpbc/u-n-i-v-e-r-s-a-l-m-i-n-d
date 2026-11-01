@@ -11,6 +11,7 @@ def download_route(route):
 def request(route,agent='Mozilla/5.0 AtlasReadingVerification'):
     return subprocess.check_output(['curl','--fail','--silent','--show-error','--location','--retry','2','--max-time','60','--user-agent',agent,BASE+'/'+download_route(route)])
 files=['index.html','home/index.html','read/index.html','read/resources.json','llms.txt','sitemap.xml','Informatics/index.html','Informatics/llms.txt','Informatics/read/index.html','Informatics/read/reading.css','Informatics/read/atlas-guide.css','Informatics/read/quantum/index.html','Informatics/read/vision/index.html','Informatics/read/computer-vision/index.html','Informatics/quantum/index.html','Informatics/quantum/reading/links.css','Informatics/exports/manifest.json','Informatics/read/music/index.html']+[f'Informatics/quantum/reading/quantum-atlas.{x}' for x in ['json','csv','md']]+[f'Informatics/music-atlas/music-atlas.{x}'for x in ['json','csv','md']]
+files += ['Informatics/library-data/domestic-violence-expansion.json','Informatics/library.js','Informatics/library.html','Informatics/read/publications/dv-sound-24766169-ceb162f4.html','Informatics/read/publications/dv-vision-11036736-2ce3a898.html','Informatics/read/publications/dv-adult-therapy-10783523-cf56230a.html']
 music=json.loads((ROOT/'Informatics/music-atlas/music-atlas.json').read_text())
 files += ['Informatics/'+f['image']for f in music['measurement']['figures']]
 files += ['Informatics/music-measurement.js','Informatics/music-measurement.css']

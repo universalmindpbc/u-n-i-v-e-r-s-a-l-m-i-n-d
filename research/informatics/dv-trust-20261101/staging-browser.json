@@ -1,0 +1,62 @@
+{
+  "passed": true,
+  "phase": "staging",
+  "mutedHeadless": true,
+  "checks": [
+    {
+      "width": 1440,
+      "collection": "sound",
+      "papers": 8,
+      "contentsCrosses": 1,
+      "chapterCrosses": 1,
+      "introduction": true,
+      "noHorizontalOverflow": true
+    },
+    {
+      "width": 1440,
+      "collection": "vision",
+      "papers": 10,
+      "contentsCrosses": 2,
+      "chapterCrosses": 2,
+      "introduction": true,
+      "noHorizontalOverflow": true
+    },
+    {
+      "width": 1440,
+      "collection": "language",
+      "papers": 99,
+      "contentsCrosses": 2,
+      "chapterCrosses": 2,
+      "introduction": true,
+      "noHorizontalOverflow": true
+    },
+    {
+      "width": 320,
+      "collection": "sound",
+      "papers": 8,
+      "contentsCrosses": 1,
+      "chapterCrosses": 1,
+      "introduction": true,
+      "noHorizontalOverflow": true
+    },
+    {
+      "width": 320,
+      "collection": "vision",
+      "papers": 10,
+      "contentsCrosses": 2,
+      "chapterCrosses": 2,
+      "introduction": true,
+      "noHorizontalOverflow": true
+    },
+    {
+      "width": 320,
+      "collection": "language",
+      "papers": 99,
+      "contentsCrosses": 2,
+      "chapterCrosses": 2,
+      "introduction": true,
+      "noHorizontalOverflow": true
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,46 @@
+{
+  "passed": true,
+  "verifiedAtUTC": "2026-11-01T04:59:22.197639+00:00",
+  "sourceCommit": "229570932630e1cb1474e7be48fc7691ae52dd1d",
+  "previousStagingCommit": "c51547542a70e8b7d1ca9baeefe59099ad9e8220",
+  "scope": "Restore Trust Factor icons in Domestic & Family Violence contents and headings; explain the existing study-design rubric in each introduction.",
+  "collections": {
+    "sound": {
+      "papers": 8,
+      "crosses": 1
+    },
+    "vision": {
+      "papers": 10,
+      "crosses": 2
+    },
+    "language": {
+      "papers": 99,
+      "crosses": 2
+    }
+  },
+  "all117PaperRecordsAndPaperRatingsUnchanged": true,
+  "knownStudyFamiliesCountedOnce": true,
+  "universalOneExposedKnowledgeFieldsUnchanged": true,
+  "workerRedeployed": false,
+  "completeDatasetVersion": "7a93164bd2c369b3970a349113b6d527662ba4ae7ad1a70c1f05f1613e459f3b",
+  "checks": {
+    "source-checks.json": true,
+    "candidate-browser.json": true,
+    "complete-exports-roundtrip.json": true,
+    "staging-browser.json": true,
+    "staging-integrity.json": true,
+    "staging-complete-downloads.json": true
+  },
+  "sourceSHA256": {
+    "Informatics/library.js": "6acb903f34d8e0e03d511f675848e00bafcfef8fe87dd4c22a236fe003124404",
+    "Informatics/library.html": "4dd3669042def1349840c41fa234e63efbd737a57a2fd1819a852365c6648142",
+    "Informatics/library-data/domestic-violence-expansion.json": "9b6debaf5340b691359536e1a2699f24ffa16177608ec5d287d995f34bd8df7c"
+  },
+  "stagingURLs": {
+    "sound": "https://staging.universalmind.tv/informatics/library.html?collection=sound",
+    "vision": "https://staging.universalmind.tv/informatics/library.html?collection=vision",
+    "language": "https://staging.universalmind.tv/informatics/library.html?collection=language"
+  },
+  "productionModified": false,
+  "productionMainBeforeRelease": "a2d6cb9b83340e841c9362cefd5d193aff63ee56"
+}
