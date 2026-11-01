@@ -7,7 +7,7 @@ Broadcast interactions preflight passed (broadcast-interactions-20ea963338ad): t
 Circle rooms preflight passed (circle-rooms-3839d898c873, circle-rooms-css-26a3fe8531d9).
 Care worlds preflight passed (CSS 97f6e5244cc9, JS edfca941922e).
 Public crawler surface preflight passed.
-{"passed": true, "robotDecisions": 270, "HTMLPages": 2238, "localLinks": 27926, "publicationRecords": 1223, "atlasRecords": 1001, "experimentRecords": 2, "sourceFilesMatched": 16}
+{"passed": true, "robotDecisions": 270, "HTMLPages": 2241, "localLinks": 28013, "publicationRecords": 1223, "atlasRecords": 1001, "experimentRecords": 2, "sourceFilesMatched": 16}
 Universal Sovereignty privacy and nonblocking-entry boundaries passed.
 Shopfront mock-up checks passed.
 HAPPINESS rewards architecture checks passed.
@@ -16,20 +16,9 @@ Citizen data foundation checks passed.
 Universal One programme guide checks passed.
 Public Program checks passed: approved orientation copy, silent full-screen motion, exact app guide, shared artist metadata, 13 live channels, and responsive full-height casing.
 Universal One adaptive recommendation guide checks passed.
-{"passed": true, "robotDecisions": 270, "HTMLPages": 2238, "localLinks": 27926, "publicationRecords": 1223, "atlasRecords": 1001, "experimentRecords": 2, "sourceFilesMatched": 16}
-{"passed": true, "sources": 1182, "version": "56605b469f87cc03dea0b0f95e23784e1c9836c8c0f0c741cb6cd95bfec2d935"}
-Informatics: 13707 tracked assets; 2249 changed uploads via Panthur FTP.
-Informatics: uploaded 200/2249 changed assets.
-Informatics: uploaded 400/2249 changed assets.
-Informatics: uploaded 600/2249 changed assets.
-Informatics: uploaded 800/2249 changed assets.
-Informatics: uploaded 1000/2249 changed assets.
-Informatics: uploaded 1200/2249 changed assets.
-Informatics: uploaded 1400/2249 changed assets.
-Informatics: uploaded 1600/2249 changed assets.
-Informatics: uploaded 1800/2249 changed assets.
-Informatics: uploaded 2000/2249 changed assets.
-Informatics: uploaded 2200/2249 changed assets.
-Informatics: uploaded 2249/2249 changed assets.
+{"passed": true, "robotDecisions": 270, "HTMLPages": 2241, "localLinks": 28013, "publicationRecords": 1223, "atlasRecords": 1001, "experimentRecords": 2, "sourceFilesMatched": 16}
+{"passed": true, "sources": 1194, "version": "8eaf5c1278019b85d9136b9eb33ea9a23c2d27d44a88941e6b4a0b2afc1494de"}
+Informatics: 13759 tracked assets; 153 changed uploads via Panthur FTP.
+Informatics: uploaded 153/153 changed assets.
 Informatics: completed changed uploads through the existing Panthur curl/FTP transport.
 Deploy complete: informatics

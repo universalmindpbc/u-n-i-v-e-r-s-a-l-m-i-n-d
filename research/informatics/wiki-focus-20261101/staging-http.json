@@ -17,44 +17,44 @@
     {
       "path": "read/index.html",
       "request_url": "https://staging.universalmind.tv/read/index.html",
-      "bytes": 17027,
-      "sha256": "fdb4223337899e70278c158e0e465e0f218ca489503359d4e427878c6f1820ef"
+      "bytes": 20849,
+      "sha256": "cdb5a023b6179c29cabe9bf2c675f1e21cda91d2a1f1cac7337d8a9b19812598"
     },
     {
       "path": "read/resources.json",
       "request_url": "https://staging.universalmind.tv/read/resources.json",
-      "bytes": 22855,
-      "sha256": "c15703e584a6883bb4a98ff694b91757e63b4aad451ed6e12ad00bd92412b4ac"
+      "bytes": 28997,
+      "sha256": "7531ab961eeeed1de9dd33cd87f3500eccf5aa4e8c963dad72de64e03097932a"
     },
     {
       "path": "llms.txt",
       "request_url": "https://staging.universalmind.tv/llms.txt",
-      "bytes": 14237,
-      "sha256": "2885b4262f05a59d2c4260f73217068d3b2fb3a4237a957c70844e5fa81fe620"
+      "bytes": 17979,
+      "sha256": "fd8a6f696f327fec7daf6aff330fc1264a1f7201ffea9cc6649e5a9a21427a7d"
     },
     {
       "path": "sitemap.xml",
       "request_url": "https://staging.universalmind.tv/sitemap.xml",
-      "bytes": 220474,
-      "sha256": "c3f300cfde530965c2fa0dfeddc706e533e342b6d52477c8aa49e3370e1bbc90"
+      "bytes": 220738,
+      "sha256": "3c39ab0fbeb738aabdd2c7436603e677cef0522decd6246010e6158a80dfde36"
     },
     {
       "path": "informatics/index.html",
       "request_url": "https://staging.universalmind.tv/informatics/index.html",
-      "bytes": 488622,
-      "sha256": "a54e9903988fd594a83074ed2aea3af5dbf487e7dd138078616109b80b5d2802"
+      "bytes": 572999,
+      "sha256": "3f3622d109a9e56137334dd301939a7812a951dd6d8429c31e200096c116ea7b"
     },
     {
       "path": "informatics/llms.txt",
       "request_url": "https://staging.universalmind.tv/informatics/llms.txt",
-      "bytes": 6850,
-      "sha256": "ea0f697e9615c8c705e35b3ece0863002275e7b476cfad9af26e31701197d582"
+      "bytes": 7161,
+      "sha256": "d1fb25cfd74e2a6db7b7190e344f58f4046a5037b6d5837f4c639b3fec091d50"
     },
     {
       "path": "informatics/read/index.html",
       "request_url": "https://staging.universalmind.tv/informatics/read/index.html",
-      "bytes": 8520,
-      "sha256": "6eaecd409d7b99f89afe18cd0f54c686eda6c17c77415b428176facb90f705ac"
+      "bytes": 8666,
+      "sha256": "379e175db6c0a0e13954764f01fdea08ceeaf49c9849ad142f83963469a0d4ee"
     },
     {
       "path": "informatics/read/reading.css",
@@ -77,14 +77,14 @@
     {
       "path": "informatics/read/vision/index.html",
       "request_url": "https://staging.universalmind.tv/informatics/read/vision/index.html",
-      "bytes": 7249,
-      "sha256": "9051d498c31c6f426e93714dc970297b57629db214e2d627678578b8e0c4670f"
+      "bytes": 7809,
+      "sha256": "14592429f62422ec15b55d4f0fc7b44241dd3e8c2ff1a0937a73d93370648e8e"
     },
     {
       "path": "informatics/read/computer-vision/index.html",
       "request_url": "https://staging.universalmind.tv/informatics/read/computer-vision/index.html",
-      "bytes": 1773,
-      "sha256": "384556d714e087bc64625d06f80d8c21428927ee03a14b3c0bb265be4c56dd75"
+      "bytes": 3438,
+      "sha256": "2e026593853a997a442d6779a97bb806420ad43ea406fec08a84ca66e3a6e242"
     },
     {
       "path": "informatics/quantum/index.html",
@@ -101,14 +101,14 @@
     {
       "path": "informatics/exports/manifest.json",
       "request_url": "https://staging.universalmind.tv/informatics/exports/manifest.json",
-      "bytes": 2395337,
-      "sha256": "40e2445e2af206e44395523ffe034485ae1291f6e4e8cc4251806f9b0c25ebc0"
+      "bytes": 2398063,
+      "sha256": "aeb7423807c1f2dced864fc6047b4a72d8a4de96adec31c6540c08a76bc082c9"
     },
     {
       "path": "informatics/read/music/index.html",
       "request_url": "https://staging.universalmind.tv/informatics/read/music/index.html",
-      "bytes": 24626,
-      "sha256": "e61c201323fba764c13c5b0192192bb0aa191f2be66d8284eb3f6fa8c2828791"
+      "bytes": 24579,
+      "sha256": "fb886c58809ebdaf8b51a937fda709f2e94fbe58f3f41cbecb401bdb9fcf6d94"
     },
     {
       "path": "informatics/quantum/reading/quantum-atlas.json",
@@ -130,57 +130,189 @@
     },
     {
       "path": "informatics/music-atlas/music-atlas.json",
-      "request_url": "https://staging.universalmind.tv/informatics/music-atlas/music-atlas.json",
-      "bytes": 34038,
-      "sha256": "67e2e851832965ca740796059a43b9038a38d88698734c3aa7fdd77be5c54b73"
+      "request_url": "https://staging.universalmind.tv/informatics/music-atlas/music-atlas.json?v=2026-11-01-page-narrative-3",
+      "bytes": 34963,
+      "sha256": "568b5e858604556d896f1fd51c4a40dbfde7373c50b2a62474917d3929e971f1"
     },
     {
       "path": "informatics/music-atlas/music-atlas.csv",
-      "request_url": "https://staging.universalmind.tv/informatics/music-atlas/music-atlas.csv",
-      "bytes": 47656,
-      "sha256": "ede60598bfacd1a7c37a27880458ce421697451378b5666b3634f803e4aaa8f4"
+      "request_url": "https://staging.universalmind.tv/informatics/music-atlas/music-atlas.csv?v=2026-11-01-page-narrative-3",
+      "bytes": 48593,
+      "sha256": "a12559a93a7538e9b8cf1b430370c2f74ad959e43b15a77abdaaf0d2bc5b5bf9"
     },
     {
       "path": "informatics/music-atlas/music-atlas.md",
-      "request_url": "https://staging.universalmind.tv/informatics/music-atlas/music-atlas.md",
-      "bytes": 16757,
-      "sha256": "e69f01adf55eeb2615e2ae5c6148ba4bc2548b9f0f38704b2c850e8c71fec261"
+      "request_url": "https://staging.universalmind.tv/informatics/music-atlas/music-atlas.md?v=2026-11-01-page-narrative-3",
+      "bytes": 17494,
+      "sha256": "bfc29c5e4fccfbe968f9ff78424b88182e818b2a582fc44c38a36e67f0ceb878"
     },
     {
       "path": "informatics/library-data/domestic-violence-expansion.json",
-      "request_url": "https://staging.universalmind.tv/informatics/library-data/domestic-violence-expansion.json",
-      "bytes": 4779898,
-      "sha256": "9b6debaf5340b691359536e1a2699f24ffa16177608ec5d287d995f34bd8df7c"
+      "request_url": "https://staging.universalmind.tv/informatics/library-data/domestic-violence-expansion.json?v=dv-paper-trust-20261101",
+      "bytes": 4794015,
+      "sha256": "6fdae7a666a8199ebd245580dbf831a5feb605afeefe71cff4562d226bc930bf"
     },
     {
       "path": "informatics/library.js",
-      "request_url": "https://staging.universalmind.tv/informatics/library.js?v=dv-trust-20261101",
-      "bytes": 49701,
-      "sha256": "6acb903f34d8e0e03d511f675848e00bafcfef8fe87dd4c22a236fe003124404"
+      "request_url": "https://staging.universalmind.tv/informatics/library.js?v=dv-paper-trust-20261101",
+      "bytes": 49483,
+      "sha256": "46269d021587ca243e426093be539db1d12fc5e131239fe658690b91f87db952"
     },
     {
       "path": "informatics/library.html",
       "request_url": "https://staging.universalmind.tv/informatics/library.html",
-      "bytes": 35347,
-      "sha256": "4dd3669042def1349840c41fa234e63efbd737a57a2fd1819a852365c6648142"
+      "bytes": 35565,
+      "sha256": "2c829a9fd3a57e524a16a84bf275fd210a348e7551aa374ce3979242b00450d8"
     },
     {
       "path": "informatics/read/publications/dv-sound-24766169-ceb162f4.html",
       "request_url": "https://staging.universalmind.tv/informatics/read/publications/dv-sound-24766169-ceb162f4.html",
-      "bytes": 42740,
-      "sha256": "8029756645040b296bc4b7165de5843de0bc83ccb2233486be0580932b6d0264"
+      "bytes": 42851,
+      "sha256": "038f7abbd140177c1737d69ba0150d13e49b82db696ac74f06c10d5d9f974605"
     },
     {
       "path": "informatics/read/publications/dv-vision-11036736-2ce3a898.html",
       "request_url": "https://staging.universalmind.tv/informatics/read/publications/dv-vision-11036736-2ce3a898.html",
-      "bytes": 42481,
-      "sha256": "7435593edcf6e09f950451526424ed4f83181221b458b1d2938a0bc32be11b20"
+      "bytes": 42718,
+      "sha256": "6f6c664f1bd9f63e4a61e8ab61ad499e0d56d60ddeaf88eddea94dd473d9bbcf"
     },
     {
       "path": "informatics/read/publications/dv-adult-therapy-10783523-cf56230a.html",
       "request_url": "https://staging.universalmind.tv/informatics/read/publications/dv-adult-therapy-10783523-cf56230a.html",
-      "bytes": 47007,
-      "sha256": "81c8b936b8e20fd1c9143d89f6d205d465ec8f7107a2102a3239197855f08045"
+      "bytes": 47139,
+      "sha256": "7154109a1004b2a553fdf0c0f88cc351e9203dbbaf31981d5306d5c4ceb3d073"
+    },
+    {
+      "path": "informatics/read/transcription/index.html",
+      "request_url": "https://staging.universalmind.tv/informatics/read/transcription/index.html",
+      "bytes": 189575,
+      "sha256": "fe2c88bb93d1fa32ce4fb3a3265161c3308e95a71627b5233a1e817370fb0f2e"
+    },
+    {
+      "path": "informatics/read/molecular/index.html",
+      "request_url": "https://staging.universalmind.tv/informatics/read/molecular/index.html",
+      "bytes": 88862,
+      "sha256": "3d62ec2e5172aa46e4f7d383446df0d4efb37fd304df938e45c574d0e60f4267"
+    },
+    {
+      "path": "informatics/read/language/index.html",
+      "request_url": "https://staging.universalmind.tv/informatics/read/language/index.html",
+      "bytes": 3060,
+      "sha256": "2fcb4c310c5e9c1b37f5a98ea1be910dbb38f4ad7ce11f30dd023b73b34067be"
+    },
+    {
+      "path": "informatics/read/atlas/index.html",
+      "request_url": "https://staging.universalmind.tv/informatics/read/atlas/index.html",
+      "bytes": 57226,
+      "sha256": "a4316405e40f4d886f6bbb0328fc91f33907dcdcda72355e7d6a9ab03067930f"
+    },
+    {
+      "path": "informatics/atlas-guides/transcription-atlas.json",
+      "request_url": "https://staging.universalmind.tv/informatics/atlas-guides/transcription-atlas.json?v=2026-11-01-page-narrative-4",
+      "bytes": 167488,
+      "sha256": "bd345e1b5e8729e5b97da236b55a7a6acf90579669a8a1affc86ed2d8136e1c7"
+    },
+    {
+      "path": "informatics/atlas-guides/molecular-atlas.md",
+      "request_url": "https://staging.universalmind.tv/informatics/atlas-guides/molecular-atlas.md?v=2026-11-01-page-narrative-4",
+      "bytes": 70344,
+      "sha256": "87a5e3760e92fd99ee96a4affa3d0fa33e1e5be8e743f4191e3a1c845dd0512c"
+    },
+    {
+      "path": "informatics/atlas-guides/vision-atlas.csv",
+      "request_url": "https://staging.universalmind.tv/informatics/atlas-guides/vision-atlas.csv?v=2026-11-01-page-narrative-4",
+      "bytes": 10744,
+      "sha256": "5d339eeddb7bd61ec241d7c6345bd281bf1b2ddaf7c57cd76eb371c5f666d042"
+    },
+    {
+      "path": "informatics/atlas-guides/geometry-atlas.md",
+      "request_url": "https://staging.universalmind.tv/informatics/atlas-guides/geometry-atlas.md?v=2026-11-01-page-narrative-4",
+      "bytes": 9100476,
+      "sha256": "0b7e2669ef125307f444b20e1525ff7e70eb8411181457171eb38ef599c1ffb0"
+    },
+    {
+      "path": "informatics/atlas-guides/geometry-atlas.csv",
+      "request_url": "https://staging.universalmind.tv/informatics/atlas-guides/geometry-atlas.csv?v=2026-11-01-page-narrative-4",
+      "bytes": 10201417,
+      "sha256": "0720b4a80f0e84337d0a933c3f7963a8fa75e7c1e6d3e89b3b5c667470970bfb"
+    },
+    {
+      "path": "informatics/atlas-guides/transcription-atlas.csv",
+      "request_url": "https://staging.universalmind.tv/informatics/atlas-guides/transcription-atlas.csv?v=2026-11-01-page-narrative-4",
+      "bytes": 266034,
+      "sha256": "1371616efbc71ffd257a7d51838462bbcdbbd6dd523a527a8ff6efdda6fafa4d"
+    },
+    {
+      "path": "informatics/atlas-guides/language-atlas.md",
+      "request_url": "https://staging.universalmind.tv/informatics/atlas-guides/language-atlas.md?v=2026-11-01-page-narrative-4",
+      "bytes": 1779,
+      "sha256": "9fe597d7595af1f27e6eb875587145be6c550b6779c3043f0f924bdd10f2dc16"
+    },
+    {
+      "path": "informatics/atlas-guides/computer-vision-atlas.md",
+      "request_url": "https://staging.universalmind.tv/informatics/atlas-guides/computer-vision-atlas.md?v=2026-11-01-page-narrative-4",
+      "bytes": 1841,
+      "sha256": "edc014fa0d8fbda72a90e79fd9e94403cca6075074cd39226298c3cddc874fa0"
+    },
+    {
+      "path": "informatics/atlas-guides/language-atlas.csv",
+      "request_url": "https://staging.universalmind.tv/informatics/atlas-guides/language-atlas.csv?v=2026-11-01-page-narrative-4",
+      "bytes": 3191,
+      "sha256": "adccb6cb2cfd2d93f616e678a5a31df148a3b9e83aa56a5397f4d3dbc70b5a6c"
+    },
+    {
+      "path": "informatics/atlas-guides/molecular-atlas.json",
+      "request_url": "https://staging.universalmind.tv/informatics/atlas-guides/molecular-atlas.json?v=2026-11-01-page-narrative-4",
+      "bytes": 78136,
+      "sha256": "505f63ff29abfab885b98ee1c156cc73e6592a117b0381dfff6101c4dd515905"
+    },
+    {
+      "path": "informatics/atlas-guides/geometry-atlas.json",
+      "request_url": "https://staging.universalmind.tv/informatics/atlas-guides/geometry-atlas.json?v=2026-11-01-page-narrative-4",
+      "bytes": 9189631,
+      "sha256": "c36eeacf40de569564fabf0e24517c898e5b2102dea0f1e84021ecc532419419"
+    },
+    {
+      "path": "informatics/atlas-guides/computer-vision-atlas.csv",
+      "request_url": "https://staging.universalmind.tv/informatics/atlas-guides/computer-vision-atlas.csv?v=2026-11-01-page-narrative-4",
+      "bytes": 2825,
+      "sha256": "68d72b2b31d931ca51136774b2615cb9347958bd0390c551c1be2d84c41331a7"
+    },
+    {
+      "path": "informatics/atlas-guides/vision-atlas.md",
+      "request_url": "https://staging.universalmind.tv/informatics/atlas-guides/vision-atlas.md?v=2026-11-01-page-narrative-4",
+      "bytes": 6196,
+      "sha256": "d335eb2d44a4e48eeea81732d4fe8ba44660c069a4a59a1ae8b790be9266de9f"
+    },
+    {
+      "path": "informatics/atlas-guides/language-atlas.json",
+      "request_url": "https://staging.universalmind.tv/informatics/atlas-guides/language-atlas.json?v=2026-11-01-page-narrative-4",
+      "bytes": 2613,
+      "sha256": "a6583481b2becad59c027717e9967d82c218ba25ad92fb4cb3ac2ef463aabe71"
+    },
+    {
+      "path": "informatics/atlas-guides/computer-vision-atlas.json",
+      "request_url": "https://staging.universalmind.tv/informatics/atlas-guides/computer-vision-atlas.json?v=2026-11-01-page-narrative-4",
+      "bytes": 2448,
+      "sha256": "1db3130921b3baedd38861bd3b1b302b4c98b12afdec4a0a71b72520b7fab540"
+    },
+    {
+      "path": "informatics/atlas-guides/transcription-atlas.md",
+      "request_url": "https://staging.universalmind.tv/informatics/atlas-guides/transcription-atlas.md?v=2026-11-01-page-narrative-4",
+      "bytes": 153410,
+      "sha256": "4d81d4d6d317a5657f8bc4088ffa07e86c99e0e6a785a5cf72e58c83cb3648f3"
+    },
+    {
+      "path": "informatics/atlas-guides/vision-atlas.json",
+      "request_url": "https://staging.universalmind.tv/informatics/atlas-guides/vision-atlas.json?v=2026-11-01-page-narrative-4",
+      "bytes": 8790,
+      "sha256": "5bcdeb6ab5b62b50b3ea7ce5e88edc9c88de3adeda905ff399d3df1cc2542ebc"
+    },
+    {
+      "path": "informatics/atlas-guides/molecular-atlas.csv",
+      "request_url": "https://staging.universalmind.tv/informatics/atlas-guides/molecular-atlas.csv?v=2026-11-01-page-narrative-4",
+      "bytes": 140131,
+      "sha256": "c9054566235aedeb6acfb94cf5f04641509fb9974cf527a3314fc6b1ba068575"
     },
     {
       "path": "informatics/media/music-measurement/unified-timeline.jpeg",

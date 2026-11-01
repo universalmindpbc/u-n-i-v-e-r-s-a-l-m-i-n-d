@@ -28,6 +28,7 @@ try{
     assert(mainText.indexOf('Does modular compression')<mainText.indexOf('Atlas pages'));
     assert(mainText.indexOf('Wolfram is our planned')<mainText.indexOf('Atlas pages'));
     assert.equal(await page.locator('#atlas-topic-directory tbody tr').count(),8);
+    const destinations=await page.locator('#atlas-topic-directory a').evaluateAll(links=>links.map(a=>a.href));assert.equal(destinations.length,8);assert(destinations.every(url=>url.startsWith(base+'/informatics/read/')),'Topic navigation left staging');
    }
    if(name==='music'){assert(text.indexOf('Does electronic music modulate gene expression')<text.indexOf('Non-invasive measurement before mRNA sequencing'));assert(text.indexOf('Non-invasive measurement before mRNA sequencing')<text.indexOf('SEQUENCE STRUCTURE'));}
    if(name==='transcription')assert(text.indexOf('Our priority is transcription factor binding sites')<text.indexOf('Understanding Binding Sites'));
