@@ -1,5 +1,5 @@
 {
-  "datasetManifestSHA256": "a4d5860007abd092e636af003de1701e32a2de3d46f5a8a810cbe352635444f0",
+  "datasetManifestSHA256": "9394cc95a2598cf666d8775adac5f21a973b96687db236ef77fdfb7f2c5e94a4",
   "generatedAt": "2026-10-26",
   "publications": 1223,
   "atlas": 1001,
@@ -8,7 +8,7 @@
   "sourceHashes": [
     {
       "path": "library.js",
-      "sha256": "6acb903f34d8e0e03d511f675848e00bafcfef8fe87dd4c22a236fe003124404"
+      "sha256": "46269d021587ca243e426093be539db1d12fc5e131239fe658690b91f87db952"
     },
     {
       "path": "library-data/sound-edition.json",
@@ -64,14 +64,14 @@
     },
     {
       "path": "library-data/domestic-violence-expansion.json",
-      "sha256": "9b6debaf5340b691359536e1a2699f24ffa16177608ec5d287d995f34bd8df7c"
+      "sha256": "6fdae7a666a8199ebd245580dbf831a5feb605afeefe71cff4562d226bc930bf"
     },
     {
       "path": "library-model.js",
       "sha256": "00df8dc93a90a09af387c5f32830d1dc3f4b994b1941b7cb066e898b56934841"
     }
   ],
-  "publicationRecordSHA256": "940bf38706c393cf87855e8ebf932f4dac1364af6cc979a3aac689ef2112aa76",
+  "publicationRecordSHA256": "4b97a8c4bd2df451351182803d7ca15e0be0ba50d6a8bbb3cabdeeb075633178",
   "canonicalPaths": [
     "",
     "connect.html",

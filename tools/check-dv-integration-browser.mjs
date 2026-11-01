@@ -46,8 +46,8 @@ try{
   for(const [value,predicate] of values){await go('collection=all&view=search&'+topics+'&'+facet+'='+encodeURIComponent(value));assert.match(await reader.locator('#result-count').innerText(),new RegExp('^'+exported.filter(predicate).length+' papers?'),'Facet '+facet);}
  }
  await go('collection=all&view=search&community=domestic-violence');assert.match(await reader.locator('#dv-overview').innerText(),/117 publications/);assert.match(await reader.locator('#result-count').innerText(),/^115 papers/);
- await go('collection=language&chapter=5');assert.equal(await reader.locator('[data-paper="dv-adult-therapy-42326745"] .trust-score svg').count(),1);assert.equal(await reader.locator('[data-paper="dv-mindbody-41024298"] .trust-score').count(),0);
+ await go('collection=language&chapter=5');assert.equal(await reader.locator('[data-paper="dv-adult-therapy-42326745"] .trust-score svg').count(),2);assert.equal(await reader.locator('[data-paper="dv-mindbody-41024298"] .trust-score svg').count(),1);
  const pending=page.waitForEvent('download');await go('collection=all&view=search&'+topics);await reader.locator('#export-csv').click();const csv=await pending;await csv.saveAs(path.join(out,phase+'-filtered.csv'));
- assert.deepEqual(errors,[]);checks.push({filteredJSON:117,csv:true,designFilters:true,sourceFindingsAndLimitsPreserved:true,ageConditionCategoryTargetJournalTrustJadadFilters:true,rctHasOneCross:true,inaccurateRCTTitleHasNoCross:true});
+ assert.deepEqual(errors,[]);checks.push({filteredJSON:117,csv:true,designFilters:true,sourceFindingsAndLimitsPreserved:true,ageConditionCategoryTargetJournalTrustJadadFilters:true,rctHasTwoCrosses:true,inaccurateRCTTitleHasOnlyPeerReviewedCross:true});
  const report={passed:true,phase,mutedHeadless:true,checks,errors};await fs.writeFile(path.join(out,phase+'-browser.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report));
 }finally{for(const frame of page.frames())await frame.evaluate(()=>document.querySelectorAll('audio,video').forEach(v=>v.pause())).catch(()=>{});await browser.close();}

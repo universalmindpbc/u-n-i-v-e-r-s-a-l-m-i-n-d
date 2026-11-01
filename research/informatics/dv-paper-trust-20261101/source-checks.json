@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "paperCrossCounts": {
+    "sound": {
+      "1": 8
+    },
+    "vision": {
+      "2": 6,
+      "1": 4
+    },
+    "language": {
+      "2": 45,
+      "1": 54
+    }
+  },
+  "total": {
+    "1": 66,
+    "2": 51,
+    "3": 0
+  },
+  "underlyingScoresUnchanged": true,
+  "studyDesignsAndMaskingRolesUnchanged": true,
+  "findingsLimitationsSourcesAndFrozenAssessmentsUnchanged": true,
+  "publicationLayerUsesLibraryScale": true,
+  "chapterScoresUnchanged": {
+    "sound": 1,
+    "vision": 2,
+    "language": 2
+  }
+}
