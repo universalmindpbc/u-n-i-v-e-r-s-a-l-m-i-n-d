@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "approved_about_texts_matched": 16,
+  "main_wiki_about_first": true,
+  "equally_presented_atlas_entries": 7,
+  "reading_files_audited": 2250,
+  "cross_topic_boilerplate_absent": true,
+  "quantum_exports_have_only_quantum_context": true,
+  "music_formats_preserved_and_focused": true,
+  "native_experience_and_runtime_preserved": true
+}

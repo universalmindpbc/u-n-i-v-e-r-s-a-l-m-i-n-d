@@ -2,11 +2,11 @@ path,type,value
 ,object,
 /schema,string,universal-informatics/quantum-atlas-guide/v1
 /title,string,Quantum Atlas · AI / LLM Wiki
-/version,string,2026-11-01-agent-guide-1
+/version,string,2026-11-01-topic-focus-2
 /url,string,https://universalmind.tv/informatics/?entry=research&area=quantum
 /wiki,string,https://universalmind.tv/informatics/read/quantum/index.html
 /agent_architecture,object,
-/agent_architecture/version,string,2026-11-01-agent-guide-1
+/agent_architecture/version,string,2026-11-01-topic-focus-2
 /agent_architecture/purpose,object,
 /agent_architecture/purpose/title,string,What Quantum Atlas is for
 /agent_architecture/purpose/summary,string,"Quantum Atlas makes computational biology and quantum research approachable through a scientific question written in ordinary language. A person brings the question; the platform coordinates AI scientific work, mathematical models, simulations, recorded quantum measurements and biological evidence, then returns an explanation with the underlying research record."
@@ -605,63 +605,10 @@ path,type,value
 /agent_architecture/implementation_sources/15/repository_path,string,research/informatics/scientific-swarm/ROLE_CONTRACT.md
 /agent_architecture/implementation_sources/15/sha256,string,f06b092dc9fee0585a9c649b84c166d960f19a11aa61ba50ba0f4fb385562cd0
 /agent_architecture/implementation_sources/15/scope,string,Implementation source
-/instructions,array,6
-/instructions/0,string,"Use the topic directory to identify the subject before discussing a shared term such as hexagon, Fibonacci, vision or OXTR."
-/instructions/1,string,"The Vision Atlas studies human visual stimulation and the EMDR hexagon hypothesis. Computer vision for genomics studies algorithms for hyperspectral image analysis. These are separate research directions. The word “vision” does not make them the same project, method or evidence base."
-/instructions/2,string,"Quantum Atlas uses a coordinated AI research workflow to investigate biological questions through classical calculations, simulation and quantum measurements. Its Wiki explains the agent roles and public MCP, API and A2A participation. OXTR supplies its first worked investigation. Its hexagonal atom arrangement and quantum-stability hypothesis are separate from the Vision Atlas EMDR tracking hypothesis and from the proposed computer vision algorithm."
-/instructions/3,string,"Read the saved study phases in order: original qualification runs, completed classical genomic pilot, further local CPU checks, then the proposed next quantum test."
-/instructions/4,string,"Retain the source labels for calculated values, GPU simulations, Aquila measurements, mathematical relationships and proposed mechanisms."
-/instructions/5,string,"This guide includes the saved chart data and interpretations. The linked immutable experiment revisions retain the complete inputs, methods, measurements, receipts and field guides. The guide is a dated snapshot, not a report of a visitor’s active question."
-/topics,array,7
-/topics/0,object,
-/topics/0/id,string,music
-/topics/0/title,string,Music Atlas
-/topics/0/question,string,"How do Fibonacci and modular sequences relate to musical structure, tuning and responses to electronic music?"
-/topics/0/subject,string,Sound and auditory experience
-/topics/0/url,string,https://universalmind.tv/informatics/?entry=research&area=sound
-/topics/0/wiki,string,https://universalmind.tv/informatics/read/music/index.html
-/topics/1,object,
-/topics/1/id,string,vision
-/topics/1/title,string,Vision Atlas · EMDR and ocular biology
-/topics/1/question,string,Does hexagonal saccadic tracking differ from bilateral horizontal tracking in EMDR visual stimulation?
-/topics/1/subject,string,Human eye movement and visual stimulation; an EMDR hypothesis
-/topics/1/url,string,https://universalmind.tv/informatics/?entry=research&area=vision
-/topics/1/wiki,string,https://universalmind.tv/informatics/read/vision/index.html
-/topics/2,object,
-/topics/2/id,string,computer-vision
-/topics/2/title,string,Computer vision for genomics
-/topics/2/question,string,"Can Fibonacci Pisano geometry improve the cost, speed and accuracy of hyperspectral image analysis for genomics?"
-/topics/2/subject,string,Computational image analysis; a proposed algorithm research direction
-/topics/2/url,string,https://universalmind.tv/informatics/?about
-/topics/2/wiki,string,https://universalmind.tv/informatics/read/computer-vision/index.html
-/topics/3,object,
-/topics/3/id,string,geometry
-/topics/3/title,string,Geometry Atlas
-/topics/3/question,string,"What sequences, geometric constructions and verification results arise across Fibonacci moduli M1–M1001?"
-/topics/3/subject,string,Mathematical calculations and representations
-/topics/3/url,string,https://universalmind.tv/informatics/?atlas=1
-/topics/3/wiki,string,https://universalmind.tv/informatics/read/atlas/index.html
-/topics/4,object,
-/topics/4/id,string,quantum
-/topics/4/title,string,Quantum Atlas
-/topics/4/question,string,"What biological questions can the coordinated AI and quantum workflow investigate, and how can people and external AIs take part?"
-/topics/4/subject,string,"Natural-language biological research with Astra, Gemini, coordinated calculations and public MCP/API/A2A participation"
-/topics/4/url,string,https://universalmind.tv/informatics/?entry=research&area=quantum
-/topics/4/wiki,string,https://universalmind.tv/informatics/read/quantum/index.html
-/topics/5,object,
-/topics/5/id,string,molecular
-/topics/5/title,string,Molecular Atlas
-/topics/5/question,string,How can OXT–OXTR molecular binding and structure be explored?
-/topics/5/subject,string,Molecular structure and interaction
-/topics/5/url,string,https://universalmind.tv/informatics/molecular/
-/topics/5/wiki,string,https://universalmind.tv/informatics/molecular/
-/topics/6,object,
-/topics/6/id,string,language
-/topics/6/title,string,Language Atlas
-/topics/6/question,string,"How do language, mantra and related research connect to the mental-health investigation?"
-/topics/6/subject,string,Language and mantra research
-/topics/6/url,string,https://universalmind.tv/informatics/?entry=research&area=language
-/topics/6/wiki,string,https://universalmind.tv/informatics/library.html?collection=language
+/instructions,array,3
+/instructions/0,string,"Read the saved study phases in order: original qualification runs, completed classical genomic pilot, further local CPU checks, then the proposed next quantum test."
+/instructions/1,string,"Retain the source labels for calculated values, GPU simulations, Aquila measurements, mathematical relationships and proposed mechanisms."
+/instructions/2,string,"This guide includes the saved chart data and interpretations. The linked immutable experiment revisions retain the complete inputs, methods, measurements, receipts and field guides. The guide is a dated snapshot, not a report of a visitor’s active question."
 /page_text,array,95
 /page_text/0,object,
 /page_text/0/tag,string,p
@@ -7993,6 +7940,6 @@ path,type,value
 /sources/11/sha256,string,11bcf4afab33943cfa6f5d40aa644089d16b1a7f7875f910cc503a4a2abec063
 /page_prose_sha256,string,235a1305a151b77f32f57395f25d411db1cfafcb7ac2e262062214deaab85993
 /downloads,object,
-/downloads/json,string,https://universalmind.tv/informatics/quantum/reading/quantum-atlas.json?v=2026-11-01-agent-guide-1
-/downloads/csv,string,https://universalmind.tv/informatics/quantum/reading/quantum-atlas.csv?v=2026-11-01-agent-guide-1
-/downloads/md,string,https://universalmind.tv/informatics/quantum/reading/quantum-atlas.md?v=2026-11-01-agent-guide-1
+/downloads/json,string,https://universalmind.tv/informatics/quantum/reading/quantum-atlas.json?v=2026-11-01-topic-focus-2
+/downloads/csv,string,https://universalmind.tv/informatics/quantum/reading/quantum-atlas.csv?v=2026-11-01-topic-focus-2
+/downloads/md,string,https://universalmind.tv/informatics/quantum/reading/quantum-atlas.md?v=2026-11-01-topic-focus-2

@@ -2,7 +2,7 @@
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor
 import os, subprocess, hashlib, json, re
-ROOT=Path(__file__).resolve().parents[1];BASE=os.environ.get('QA_BASE','https://staging.universalmind.tv').rstrip('/');MODE='staging' if 'staging.'in BASE else 'production';OUT=ROOT/'research/informatics/quantum-agents-wiki-20261101';OUT.mkdir(parents=True,exist_ok=True)
+ROOT=Path(__file__).resolve().parents[1];BASE=os.environ.get('QA_BASE','https://staging.universalmind.tv').rstrip('/');MODE='staging' if 'staging.'in BASE else 'production';OUT=ROOT/'research/informatics/wiki-focus-20261101';OUT.mkdir(parents=True,exist_ok=True)
 guide=json.loads((ROOT/'Informatics/quantum/reading/quantum-atlas.json').read_text())
 def download_route(route):
     if route.startswith('informatics/quantum/reading/quantum-atlas.'):
@@ -32,5 +32,5 @@ robots=request('robots.txt').decode();assert ('Disallow: /*'in robots)==(MODE=='
 protected=None
 if MODE=='production':
     protected=subprocess.check_output(['curl','--silent','--output','/dev/null','--write-out','%{http_code}',BASE+'/informatics/review/domestic-violence-20261031/index.html'],text=True);assert protected=='403',protected
-report={'passed':True,'base':BASE,'files':checks,'ordinary_page_request_user_agents':agents,'user_agent_checks_are_http_delivery_tests_not_external_provider_sessions':True,'topic_separation_in_initial_html':True,'download_content_types':headers,'versioned_downloads':guide['downloads'],'staging_excluded':MODE=='staging','production_review_http_status':protected}
+report={'passed':True,'base':BASE,'files':checks,'ordinary_page_request_user_agents':agents,'user_agent_checks_are_http_delivery_tests_not_external_provider_sessions':True,'topic_focused_reading_layers':True,'download_content_types':headers,'versioned_downloads':guide['downloads'],'staging_excluded':MODE=='staging','production_review_http_status':protected}
 (OUT/(MODE+'-http.json')).write_text(json.dumps(report,indent=2)+'\n');print(json.dumps({'passed':True,'base':BASE,'files_byte_matched':len(checks),'user_agents':len(agents),'content_types':headers,'protected_review':protected}))

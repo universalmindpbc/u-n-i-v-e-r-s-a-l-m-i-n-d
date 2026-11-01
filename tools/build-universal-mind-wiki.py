@@ -40,6 +40,8 @@ iam = source('i  a m/about.html')
 events = source('events/index.php').split('<section id="about-panel"', 1)[1]
 happiness = source('happiness/index.php').split('<section id="about-panel"', 1)[1]
 informatics = source('Informatics/read/index.html')
+from approved_informatics_about import build as read_approved_about, html as about_html, markdown as about_markdown
+approved_about=read_approved_about(ROOT/'Informatics/index.html')
 channels = plain(re.search(r'<li><strong>(Watch one of 13.*?)</strong>', iam, re.S)[1])
 projects = [
     dict(id='iam', name='I AM', route='Watch TV', url=ORIGIN+'/iam/', source=ORIGIN+'/vogue/iam/about.html',
@@ -55,10 +57,10 @@ projects = [
          source_file='happiness/index.php', access='The festival experience uses the existing invitation login. These About excerpts are public.',
          paragraphs=[paragraph_with(happiness, p) for p in ['Happiness is a universal', 'Happiness also powers', 'Our mission is lowering']],
          context=['The About text describes the project and its mission. Named technologies and organisations are not, by their inclusion here, confirmation of a formal partnership or independently validated clinical performance.']),
-    dict(id='informatics', name='Universal Informatics', route='Explore Research', url=ORIGIN+'/informatics/', source=ORIGIN+'/informatics/read/',
-         source_file='Informatics/read/index.html', access='The research wiki, publication records and download directory are public. API and MCP access are optional.',
-         paragraphs=[paragraph_with(informatics, p) for p in ['Bioinformatics platform for mental health.', 'The Vision Atlas studies', 'Quantum Atlas uses', 'An extensive, clinically searchable research index', 'Explore the published research without']],
-         context=[paragraph_with(informatics, 'The project explores hypotheses')])
+    dict(id='informatics', name='Universal Informatics', route='Explore Research', url=ORIGIN+'/informatics/', source=ORIGIN+'/informatics/?about',
+         source_file='Informatics/index.html', access='The research wiki, publication records and download directory are public. API and MCP access are optional.',
+         paragraphs=[approved_about['intro']], about_blocks=approved_about['blocks'][2:],
+         context=[])
 ]
 
 def resource(title, path, project, format='HTML', access='Public', description=''):
@@ -96,7 +98,7 @@ resources = [
     resource('Quantum Atlas agent guide and chart data CSV', quantum_downloads['csv'], 'Universal Informatics', 'CSV'),
     resource('Quantum Atlas explanations and reading instructions', quantum_downloads['md'], 'Universal Informatics', 'Markdown'),
     resource('Vision Atlas: EMDR and ocular biology', '/informatics/read/vision/index.html', 'Universal Informatics', description='Human visual stimulation and the hexagonal tracking hypothesis.'),
-    resource('Computer vision for genomics', '/informatics/read/computer-vision/index.html', 'Universal Informatics', description='Hyperspectral image-analysis algorithm research; separate from EMDR.'),
+    resource('Computer vision for genomics', '/informatics/read/computer-vision/index.html', 'Universal Informatics', description='Hyperspectral image-analysis algorithm research.'),
     resource('Molecular Atlas', '/informatics/molecular/', 'Universal Informatics'),
     resource('Geometry Atlas M1–M1001', '/informatics/read/atlas/index.html', 'Universal Informatics'),
     resource('Experiments', '/informatics/read/experiments/index.html', 'Universal Informatics'),
@@ -147,6 +149,7 @@ html = '''<!doctype html>
 for project in projects:
     html += '<section id="'+project['id']+'"><p class="eyebrow">'+escape(project['route'])+'</p><h2>'+escape(project['name'])+'</h2>\n'
     html += paragraphs(project['paragraphs'])
+    if project.get('about_blocks'):html += about_html(project['about_blocks'],3)
     if project.get('levels'):
         html += '<ol>'+''.join('<li>'+escape(p)+'</li>' for p in project['levels'])+'</ol>'
     html += '<div class="context">'+paragraphs(project['context'])+'</div>'
@@ -159,6 +162,7 @@ html += '</dl></section><section id="access"><h2>AI access and reuse</h2>'+parag
 markdown = '# Universal Mind\n\n'+'\n\n'.join(INTRO)+'\n\nOfficial wiki: '+ORIGIN+'/read/\nUpdated: '+DATE+'\n'
 for project in projects:
     markdown += '\n## '+project['name']+' — '+project['route']+'\n\n'+'\n\n'.join(project['paragraphs'])+'\n\n'
+    if project.get('about_blocks'):markdown += about_markdown(project['about_blocks'],3)+'\n\n'
     markdown += ''.join('- '+p+'\n' for p in project.get('levels', []))
     markdown += '\n\n'.join(project['context'])+'\n\nSource: '+project['source']+'\nEntry: '+project['url']+'\nAccess: '+project['access']+'\n'
 markdown += '\n## Resource directory\n\n'
