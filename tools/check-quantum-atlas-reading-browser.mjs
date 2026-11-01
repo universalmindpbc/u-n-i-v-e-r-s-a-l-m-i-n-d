@@ -28,6 +28,8 @@ try{
   const page=await context.newPage();page.on('pageerror',e=>errors.push(e.message));
   await page.goto(base+'/informatics/?entry=research&area=quantum',{waitUntil:'domcontentloaded'});
   const frame=page.frameLocator('#quantum-frame');await frame.locator('h1').first().waitFor({state:'visible'});
+  await frame.locator('html').evaluate(()=>document.readyState==='complete'?Promise.resolve():new Promise(resolve=>window.addEventListener('load',resolve,{once:true})));
+
   assert.equal(await page.locator('#quantum-atlas-machine').isVisible(),false);
   assert.equal(await frame.locator('#quantum-atlas-machine').isVisible(),false);
   assert.deepEqual(await page.locator('#quantum-atlas-data').evaluate(e=>JSON.parse(e.textContent)),guide);

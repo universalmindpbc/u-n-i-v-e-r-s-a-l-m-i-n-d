@@ -24,12 +24,13 @@ try{
    const text=await page.locator('body').innerText();assert(!text.includes('separate research directions')&&!text.includes('The Vision Atlas studies human visual stimulation'),name);
    assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),name);
    if(name==='overview'){
-    assert(text.indexOf('Does modular compression')<text.indexOf('Atlas pages'));
-    assert(text.indexOf('Wolfram is our planned')<text.indexOf('Atlas pages'));
+    const mainText=await page.locator('main').innerText();
+    assert(mainText.indexOf('Does modular compression')<mainText.indexOf('Atlas pages'));
+    assert(mainText.indexOf('Wolfram is our planned')<mainText.indexOf('Atlas pages'));
     assert.equal(await page.locator('#atlas-topic-directory tbody tr').count(),7);
    }
    if(['music','computer-vision','quantum'].includes(name))assert(!text.includes('EMDR'),name);
-   if(width===390||name==='overview')await page.screenshot({path:path.join(out,`${mode}-${name}-${width}.png`)});
+   if(width===390||name==='overview')await page.screenshot({path:path.join(out,`${mode}-wiki-${name}-${width}.png`)});
    await page.close();results.push({name,width,topicFocus:true,noHorizontalOverflow:true});
   }
   await context.close();

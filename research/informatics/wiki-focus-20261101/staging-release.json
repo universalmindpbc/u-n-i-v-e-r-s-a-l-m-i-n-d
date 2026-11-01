@@ -1,0 +1,20 @@
+{
+  "status": "staging_verified",
+  "checked_at": "2026-11-01T05:08:44.334702+00:00",
+  "website_source_commit": "f331229bda7a04c582cf237ba1ec43db99f475af",
+  "staging_baseline": "c51547542a70e8b7d1ca9baeefe59099ad9e8220",
+  "production_baseline": "a2d6cb9b83340e841c9362cefd5d193aff63ee56",
+  "production_modified": false,
+  "overview": "https://staging.universalmind.tv/informatics/read/",
+  "about_source": "https://staging.universalmind.tv/informatics/?about",
+  "about_texts_verified": 16,
+  "equal_atlas_entries": 7,
+  "reading_files_audited": 2250,
+  "navigation_only_pages": 2231,
+  "complete_export_records_per_format": 1182,
+  "complete_export_parts_hash_matched": 5,
+  "native_interface_and_runtime_preserved": true,
+  "browser_process_audio_muted": true,
+  "new_model_calls": 0,
+  "new_quantum_jobs": 0
+}

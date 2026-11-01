@@ -1,0 +1,92 @@
+{
+  "passed": true,
+  "mode": "staging",
+  "processAudioMuted": true,
+  "javascriptRequired": false,
+  "results": [
+    {
+      "name": "overview",
+      "width": 1440,
+      "topicFocus": true,
+      "noHorizontalOverflow": true
+    },
+    {
+      "name": "music",
+      "width": 1440,
+      "topicFocus": true,
+      "noHorizontalOverflow": true
+    },
+    {
+      "name": "vision",
+      "width": 1440,
+      "topicFocus": true,
+      "noHorizontalOverflow": true
+    },
+    {
+      "name": "computer-vision",
+      "width": 1440,
+      "topicFocus": true,
+      "noHorizontalOverflow": true
+    },
+    {
+      "name": "quantum",
+      "width": 1440,
+      "topicFocus": true,
+      "noHorizontalOverflow": true
+    },
+    {
+      "name": "geometry",
+      "width": 1440,
+      "topicFocus": true,
+      "noHorizontalOverflow": true
+    },
+    {
+      "name": "organisation",
+      "width": 1440,
+      "topicFocus": true,
+      "noHorizontalOverflow": true
+    },
+    {
+      "name": "overview",
+      "width": 390,
+      "topicFocus": true,
+      "noHorizontalOverflow": true
+    },
+    {
+      "name": "music",
+      "width": 390,
+      "topicFocus": true,
+      "noHorizontalOverflow": true
+    },
+    {
+      "name": "vision",
+      "width": 390,
+      "topicFocus": true,
+      "noHorizontalOverflow": true
+    },
+    {
+      "name": "computer-vision",
+      "width": 390,
+      "topicFocus": true,
+      "noHorizontalOverflow": true
+    },
+    {
+      "name": "quantum",
+      "width": 390,
+      "topicFocus": true,
+      "noHorizontalOverflow": true
+    },
+    {
+      "name": "geometry",
+      "width": 390,
+      "topicFocus": true,
+      "noHorizontalOverflow": true
+    },
+    {
+      "name": "organisation",
+      "width": 390,
+      "topicFocus": true,
+      "noHorizontalOverflow": true
+    }
+  ]
+}
