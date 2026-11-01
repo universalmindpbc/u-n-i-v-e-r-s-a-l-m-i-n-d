@@ -10,7 +10,7 @@ try{
  await page.goto(site+'/informatics/library.html?collection=all&view=search&community=domestic-violence',{waitUntil:'domcontentloaded'});
  await page.frameLocator('#research-frame').locator('#result-count').filter({hasText:'115 papers'}).waitFor({timeout:45000});
  await page.locator('.uo .iam-realtime-voice__summon').click();
- const questions=['In the approved Domestic & Family Violence library, explain the current individual-paper Trust Factor scale using digits 1, 2 and 3. Read PMID 42326745 and PMID 41024298 and state each paper’s numeric score and displayed cross count. What does a single-blind RCT receive? Is any double-blind trial verified among the 117 approved papers? Explain why a chapter can have 2 crosses.'];
+ const questions=['In the approved Domestic & Family Violence library, explain the current individual-paper Trust Factor scale using digits 1, 2 and 3. Read PMID 42326745 and PMID 41024298 and state each paper’s numeric score and displayed cross count. What does a single-blind RCT receive? Is any double-blind trial verified among the 117 approved papers? State the minimum number of distinct randomized trials required for a chapter to receive 2 crosses.'];
  for(const [i,question] of questions.entries()){
   await page.locator('#uo-question').fill(question);
   const pending=page.waitForResponse(r=>r.url()===api+'/research'&&r.request().method()==='POST',{timeout:180000});
@@ -21,7 +21,7 @@ try{
   assert.ok(data.sources.some(s=>s.id==='dv-adult-therapy-42326745'));
   assert.ok(data.sources.some(s=>s.id==='dv-mindbody-41024298'));
   for(const n of [1,2,3])assert.match(data.answer,new RegExp('\\b'+n+'\\b'));
-  assert.match(data.answer,/single.blind/i);assert.match(data.answer,/double.blind/i);
+  assert.match(data.answer,/single.blind/i);assert.match(data.answer,/double.blind/i);assert.match(data.answer,/(?:at least|minimum|requires?|needs?)[^\n]{0,60}(?:3|three)[^\n]{0,40}distinct/i);
 
   await page.locator('.uo-answer').nth(i).waitFor();const visible=await page.locator('.uo-answer').nth(i).innerText();assert.ok(visible.length>80);
   report.answers.push({question,http:response.status(),...data,visible});await page.screenshot({path:path.join(out,'universal-one-'+i+'.png')});

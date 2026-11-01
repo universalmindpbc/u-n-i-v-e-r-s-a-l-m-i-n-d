@@ -1,0 +1,58 @@
+[
+  {
+    "id": "music",
+    "title": "Music Atlas",
+    "question": "How do Fibonacci and modular sequences relate to musical structure, tuning and responses to electronic music?",
+    "subject": "Sound and auditory experience",
+    "url": "https://universalmind.tv/informatics/?entry=research&area=sound",
+    "wiki": "https://universalmind.tv/informatics/read/music/index.html"
+  },
+  {
+    "id": "vision",
+    "title": "Vision Atlas · EMDR and ocular biology",
+    "question": "Does hexagonal saccadic tracking differ from bilateral horizontal tracking in EMDR visual stimulation?",
+    "subject": "Human eye movement and visual stimulation; an EMDR hypothesis",
+    "url": "https://universalmind.tv/informatics/?entry=research&area=vision",
+    "wiki": "https://universalmind.tv/informatics/read/vision/index.html"
+  },
+  {
+    "id": "computer-vision",
+    "title": "Computer vision for genomics",
+    "question": "Can Fibonacci Pisano geometry improve the cost, speed and accuracy of hyperspectral image analysis for genomics?",
+    "subject": "Computational image analysis; a proposed algorithm research direction",
+    "url": "https://universalmind.tv/informatics/?about",
+    "wiki": "https://universalmind.tv/informatics/read/computer-vision/index.html"
+  },
+  {
+    "id": "geometry",
+    "title": "Geometry Atlas",
+    "question": "What sequences, geometric constructions and verification results arise across Fibonacci moduli M1–M1001?",
+    "subject": "Mathematical calculations and representations",
+    "url": "https://universalmind.tv/informatics/?atlas=1",
+    "wiki": "https://universalmind.tv/informatics/read/atlas/index.html"
+  },
+  {
+    "id": "quantum",
+    "title": "Quantum Atlas",
+    "question": "What biological questions can the coordinated AI and quantum workflow investigate, and how can people and external AIs take part?",
+    "subject": "Natural-language biological research with Astra, Gemini, coordinated calculations and public MCP/API/A2A participation",
+    "url": "https://universalmind.tv/informatics/?entry=research&area=quantum",
+    "wiki": "https://universalmind.tv/informatics/read/quantum/index.html"
+  },
+  {
+    "id": "molecular",
+    "title": "Molecular Atlas",
+    "question": "How can OXT–OXTR molecular binding and structure be explored?",
+    "subject": "Molecular structure and interaction",
+    "url": "https://universalmind.tv/informatics/molecular/",
+    "wiki": "https://universalmind.tv/informatics/molecular/"
+  },
+  {
+    "id": "language",
+    "title": "Language Atlas",
+    "question": "How do language, mantra and related research connect to the mental-health investigation?",
+    "subject": "Language and mantra research",
+    "url": "https://universalmind.tv/informatics/?entry=research&area=language",
+    "wiki": "https://universalmind.tv/informatics/library.html?collection=language"
+  }
+]

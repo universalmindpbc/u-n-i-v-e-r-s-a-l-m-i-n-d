@@ -2,7 +2,7 @@
 from pathlib import Path
 from html.parser import HTMLParser
 import csv, hashlib, json, re, subprocess
-ROOT=Path(__file__).resolve().parents[1];SITE=ROOT/'Informatics';OUT=ROOT/'research/informatics/quantum-agents-wiki-20261101';OUT.mkdir(parents=True,exist_ok=True)
+ROOT=Path(__file__).resolve().parents[1];SITE=ROOT/'Informatics';OUT=ROOT/'research/informatics/wiki-focus-20261101';OUT.mkdir(parents=True,exist_ok=True)
 base='3a4b54ab4d2887323e9e9749fbdcaa979813e196'
 def old(p):return subprocess.check_output(['git','show',base+':'+p],cwd=ROOT)
 def clean(s):return re.sub(r'<!-- (?:QUANTUM ATLAS|ATLAS TOPICS) (?:METADATA|MACHINE|DOWNLOADS) START -->[\s\S]*?<!-- (?:QUANTUM ATLAS|ATLAS TOPICS) (?:METADATA|MACHINE|DOWNLOADS) END -->\n?','',s)
@@ -42,7 +42,7 @@ for rel in ['quantum/index.html','read/quantum/index.html']:
     for ext in ['json','csv','md']:assert f'download="quantum-atlas.{ext}"'in s
 for rel in ['read/quantum/index.html','read/vision/index.html','read/computer-vision/index.html']:
     s=(SITE/rel).read_text();doc=Doc();doc.feed(s);assert doc.scripts==0;assert len(doc.ids)==len(set(doc.ids))
-    assert d['instructions'][1] in s
+    assert 'The Vision Atlas studies' not in s
 for rel in ['Informatics/read/index.html','Informatics/llms.txt','llms.txt','read/index.html']:
     s=(ROOT/rel).read_text();assert 'EMDR' in s and 'hyperspectral' in s and 'Quantum Atlas' in s
     assert 'read/quantum/index.html' in s or 'quantum/index.html' in s
@@ -50,5 +50,5 @@ md=(p/'quantum-atlas.md').read_text();assert json.loads(md.rsplit('```json\n',1)
 assert len(d['records']['oxtr-qrc-qualification']['records'])==16
 assert len(d['follow_through']['measurements']['local_cudaq']['cases'])==16
 assert len(d['records']['oxtr-qrc-study']['variants'])==8
-report={'passed':True,'human_source_and_runtime_preserved':True,'root_landing_metadata_unchanged':True,'raw_html_quantum_payload_on_both_routes':True,'topics_separated_in_both_guides':True,'json_csv_markdown_equivalent':True,'source_hashes_matched':len(d['sources']),'qualification_rows':16,'local_cpu_cases':16,'representations':8,'no_live_agent_or_quantum_execution':True}
+report={'passed':True,'human_source_and_runtime_preserved':True,'root_landing_metadata_unchanged':True,'raw_html_quantum_payload_on_both_routes':True,'cross_topic_boilerplate_removed':True,'json_csv_markdown_equivalent':True,'source_hashes_matched':len(d['sources']),'qualification_rows':16,'local_cpu_cases':16,'representations':8,'no_live_agent_or_quantum_execution':True}
 (OUT/'source-verification.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report))

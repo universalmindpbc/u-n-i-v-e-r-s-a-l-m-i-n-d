@@ -2,7 +2,7 @@
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor
 import os, subprocess, hashlib, json, re
-ROOT=Path(__file__).resolve().parents[1];BASE=os.environ.get('QA_BASE','https://staging.universalmind.tv').rstrip('/');MODE='staging' if 'staging.'in BASE else 'production';OUT=ROOT/'research/informatics/quantum-agents-wiki-20261101';OUT.mkdir(parents=True,exist_ok=True)
+ROOT=Path(__file__).resolve().parents[1];BASE=os.environ.get('QA_BASE','https://staging.universalmind.tv').rstrip('/');MODE='staging' if 'staging.'in BASE else 'production';OUT=ROOT/'research/informatics/wiki-focus-20261101';OUT.mkdir(parents=True,exist_ok=True)
 guide=json.loads((ROOT/'Informatics/quantum/reading/quantum-atlas.json').read_text())
 def download_route(route):
     if route.startswith('informatics/quantum/reading/quantum-atlas.'):
@@ -11,6 +11,7 @@ def download_route(route):
 def request(route,agent='Mozilla/5.0 AtlasReadingVerification'):
     return subprocess.check_output(['curl','--fail','--silent','--show-error','--location','--retry','2','--max-time','60','--user-agent',agent,BASE+'/'+download_route(route)])
 files=['index.html','home/index.html','read/index.html','read/resources.json','llms.txt','sitemap.xml','Informatics/index.html','Informatics/llms.txt','Informatics/read/index.html','Informatics/read/reading.css','Informatics/read/atlas-guide.css','Informatics/read/quantum/index.html','Informatics/read/vision/index.html','Informatics/read/computer-vision/index.html','Informatics/quantum/index.html','Informatics/quantum/reading/links.css','Informatics/exports/manifest.json','Informatics/read/music/index.html']+[f'Informatics/quantum/reading/quantum-atlas.{x}' for x in ['json','csv','md']]+[f'Informatics/music-atlas/music-atlas.{x}'for x in ['json','csv','md']]
+files += ['Informatics/library-data/domestic-violence-expansion.json','Informatics/library.js','Informatics/library.html','Informatics/read/publications/dv-sound-24766169-ceb162f4.html','Informatics/read/publications/dv-vision-11036736-2ce3a898.html','Informatics/read/publications/dv-adult-therapy-10783523-cf56230a.html']
 music=json.loads((ROOT/'Informatics/music-atlas/music-atlas.json').read_text())
 files += ['Informatics/'+f['image']for f in music['measurement']['figures']]
 files += ['Informatics/music-measurement.js','Informatics/music-measurement.css']
@@ -32,5 +33,5 @@ robots=request('robots.txt').decode();assert ('Disallow: /*'in robots)==(MODE=='
 protected=None
 if MODE=='production':
     protected=subprocess.check_output(['curl','--silent','--output','/dev/null','--write-out','%{http_code}',BASE+'/informatics/review/domestic-violence-20261031/index.html'],text=True);assert protected=='403',protected
-report={'passed':True,'base':BASE,'files':checks,'ordinary_page_request_user_agents':agents,'user_agent_checks_are_http_delivery_tests_not_external_provider_sessions':True,'topic_separation_in_initial_html':True,'download_content_types':headers,'versioned_downloads':guide['downloads'],'staging_excluded':MODE=='staging','production_review_http_status':protected}
+report={'passed':True,'base':BASE,'files':checks,'ordinary_page_request_user_agents':agents,'user_agent_checks_are_http_delivery_tests_not_external_provider_sessions':True,'topic_focused_reading_layers':True,'download_content_types':headers,'versioned_downloads':guide['downloads'],'staging_excluded':MODE=='staging','production_review_http_status':protected}
 (OUT/(MODE+'-http.json')).write_text(json.dumps(report,indent=2)+'\n');print(json.dumps({'passed':True,'base':BASE,'files_byte_matched':len(checks),'user_agents':len(agents),'content_types':headers,'protected_review':protected}))

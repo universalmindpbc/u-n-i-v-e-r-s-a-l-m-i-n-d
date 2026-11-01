@@ -1,0 +1,38 @@
+{
+  "passed": true,
+  "mode": "staging",
+  "processAudioMuted": true,
+  "errors": [],
+  "wikiPagesWithoutJavascript": 5,
+  "primaryAndWikiDownloadsByteMatched": true,
+  "existingControlsVerified": true,
+  "results": [
+    {
+      "width": 1440,
+      "hiddenData": true,
+      "footerLinks": 4,
+      "hypothesisControl": true,
+      "natureDialog": true,
+      "noHorizontalOverflow": true,
+      "nativeFullscreen": false
+    },
+    {
+      "width": 390,
+      "hiddenData": true,
+      "footerLinks": 4,
+      "hypothesisControl": true,
+      "natureDialog": true,
+      "noHorizontalOverflow": true,
+      "nativeFullscreen": false
+    },
+    {
+      "width": 320,
+      "hiddenData": true,
+      "footerLinks": 4,
+      "hypothesisControl": true,
+      "natureDialog": true,
+      "noHorizontalOverflow": true,
+      "nativeFullscreen": false
+    }
+  ]
+}

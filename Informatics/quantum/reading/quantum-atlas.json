@@ -1,11 +1,11 @@
 {
   "schema": "universal-informatics/quantum-atlas-guide/v1",
   "title": "Quantum Atlas · AI / LLM Wiki",
-  "version": "2026-11-01-agent-guide-1",
+  "version": "2026-11-01-topic-focus-2",
   "url": "https://universalmind.tv/informatics/?entry=research&area=quantum",
   "wiki": "https://universalmind.tv/informatics/read/quantum/index.html",
   "agent_architecture": {
-    "version": "2026-11-01-agent-guide-1",
+    "version": "2026-11-01-topic-focus-2",
     "purpose": {
       "title": "What Quantum Atlas is for",
       "summary": "Quantum Atlas makes computational biology and quantum research approachable through a scientific question written in ordinary language. A person brings the question; the platform coordinates AI scientific work, mathematical models, simulations, recorded quantum measurements and biological evidence, then returns an explanation with the underlying research record.",
@@ -774,70 +774,9 @@
     ]
   },
   "instructions": [
-    "Use the topic directory to identify the subject before discussing a shared term such as hexagon, Fibonacci, vision or OXTR.",
-    "The Vision Atlas studies human visual stimulation and the EMDR hexagon hypothesis. Computer vision for genomics studies algorithms for hyperspectral image analysis. These are separate research directions. The word “vision” does not make them the same project, method or evidence base.",
-    "Quantum Atlas uses a coordinated AI research workflow to investigate biological questions through classical calculations, simulation and quantum measurements. Its Wiki explains the agent roles and public MCP, API and A2A participation. OXTR supplies its first worked investigation. Its hexagonal atom arrangement and quantum-stability hypothesis are separate from the Vision Atlas EMDR tracking hypothesis and from the proposed computer vision algorithm.",
     "Read the saved study phases in order: original qualification runs, completed classical genomic pilot, further local CPU checks, then the proposed next quantum test.",
     "Retain the source labels for calculated values, GPU simulations, Aquila measurements, mathematical relationships and proposed mechanisms.",
     "This guide includes the saved chart data and interpretations. The linked immutable experiment revisions retain the complete inputs, methods, measurements, receipts and field guides. The guide is a dated snapshot, not a report of a visitor’s active question."
-  ],
-  "topics": [
-    {
-      "id": "music",
-      "title": "Music Atlas",
-      "question": "How do Fibonacci and modular sequences relate to musical structure, tuning and responses to electronic music?",
-      "subject": "Sound and auditory experience",
-      "url": "https://universalmind.tv/informatics/?entry=research&area=sound",
-      "wiki": "https://universalmind.tv/informatics/read/music/index.html"
-    },
-    {
-      "id": "vision",
-      "title": "Vision Atlas · EMDR and ocular biology",
-      "question": "Does hexagonal saccadic tracking differ from bilateral horizontal tracking in EMDR visual stimulation?",
-      "subject": "Human eye movement and visual stimulation; an EMDR hypothesis",
-      "url": "https://universalmind.tv/informatics/?entry=research&area=vision",
-      "wiki": "https://universalmind.tv/informatics/read/vision/index.html"
-    },
-    {
-      "id": "computer-vision",
-      "title": "Computer vision for genomics",
-      "question": "Can Fibonacci Pisano geometry improve the cost, speed and accuracy of hyperspectral image analysis for genomics?",
-      "subject": "Computational image analysis; a proposed algorithm research direction",
-      "url": "https://universalmind.tv/informatics/?about",
-      "wiki": "https://universalmind.tv/informatics/read/computer-vision/index.html"
-    },
-    {
-      "id": "geometry",
-      "title": "Geometry Atlas",
-      "question": "What sequences, geometric constructions and verification results arise across Fibonacci moduli M1–M1001?",
-      "subject": "Mathematical calculations and representations",
-      "url": "https://universalmind.tv/informatics/?atlas=1",
-      "wiki": "https://universalmind.tv/informatics/read/atlas/index.html"
-    },
-    {
-      "id": "quantum",
-      "title": "Quantum Atlas",
-      "question": "What biological questions can the coordinated AI and quantum workflow investigate, and how can people and external AIs take part?",
-      "subject": "Natural-language biological research with Astra, Gemini, coordinated calculations and public MCP/API/A2A participation",
-      "url": "https://universalmind.tv/informatics/?entry=research&area=quantum",
-      "wiki": "https://universalmind.tv/informatics/read/quantum/index.html"
-    },
-    {
-      "id": "molecular",
-      "title": "Molecular Atlas",
-      "question": "How can OXT–OXTR molecular binding and structure be explored?",
-      "subject": "Molecular structure and interaction",
-      "url": "https://universalmind.tv/informatics/molecular/",
-      "wiki": "https://universalmind.tv/informatics/molecular/"
-    },
-    {
-      "id": "language",
-      "title": "Language Atlas",
-      "question": "How do language, mantra and related research connect to the mental-health investigation?",
-      "subject": "Language and mantra research",
-      "url": "https://universalmind.tv/informatics/?entry=research&area=language",
-      "wiki": "https://universalmind.tv/informatics/library.html?collection=language"
-    }
   ],
   "page_text": [
     {
@@ -9017,8 +8956,8 @@
   ],
   "page_prose_sha256": "235a1305a151b77f32f57395f25d411db1cfafcb7ac2e262062214deaab85993",
   "downloads": {
-    "json": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.json?v=2026-11-01-agent-guide-1",
-    "csv": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.csv?v=2026-11-01-agent-guide-1",
-    "md": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.md?v=2026-11-01-agent-guide-1"
+    "json": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.json?v=2026-11-01-topic-focus-2",
+    "csv": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.csv?v=2026-11-01-topic-focus-2",
+    "md": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.md?v=2026-11-01-topic-focus-2"
   }
 }

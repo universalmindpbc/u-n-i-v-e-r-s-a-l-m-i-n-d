@@ -5,7 +5,7 @@ import crypto from 'node:crypto';
 import {fileURLToPath} from 'node:url';
 import {chromium} from '/Users/benkorbel/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
-const out=process.env.QA_OUTPUT||path.join(root,'research/informatics/quantum-agents-wiki-20261101');await fs.mkdir(out,{recursive:true});
+const out=process.env.QA_OUTPUT||path.join(root,'research/informatics/wiki-focus-20261101');await fs.mkdir(out,{recursive:true});
 const base=process.env.QA_BASE||'https://staging.universalmind.tv';
 const candidate=process.env.CANDIDATE==='1',mode=candidate?'candidate':base.includes('staging.')?'staging':'production';
 const guide=JSON.parse(await fs.readFile(path.join(root,'Informatics/quantum/reading/quantum-atlas.json'),'utf8'));
@@ -28,6 +28,8 @@ try{
   const page=await context.newPage();page.on('pageerror',e=>errors.push(e.message));
   await page.goto(base+'/informatics/?entry=research&area=quantum',{waitUntil:'domcontentloaded'});
   const frame=page.frameLocator('#quantum-frame');await frame.locator('h1').first().waitFor({state:'visible'});
+  await frame.locator('html').evaluate(()=>document.readyState==='complete'?Promise.resolve():new Promise(resolve=>window.addEventListener('load',resolve,{once:true})));
+
   assert.equal(await page.locator('#quantum-atlas-machine').isVisible(),false);
   assert.equal(await frame.locator('#quantum-atlas-machine').isVisible(),false);
   assert.deepEqual(await page.locator('#quantum-atlas-data').evaluate(e=>JSON.parse(e.textContent)),guide);
@@ -45,7 +47,7 @@ try{
  }
  const context=await browser.newContext({javaScriptEnabled:false,viewport:{width:390,height:900},acceptDownloads:true});await routing(context);
  for(const rel of ['/informatics/read/quantum/index.html','/informatics/read/vision/index.html','/informatics/read/computer-vision/index.html','/informatics/read/index.html','/read/']){
-  const p=await context.newPage();await p.goto(base+rel,{waitUntil:'load'});const injected=await p.locator('script').evaluateAll(es=>es.map(e=>({src:e.src,text:e.textContent})));assert(injected.every(s=>s.src.startsWith('https://static.cloudflareinsights.com/beacon.min.js/')&&!s.text.trim()),JSON.stringify(injected));assert.equal(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),true,rel);assert((await p.locator('body').innerText()).includes('separate research directions'),rel);
+  const p=await context.newPage();await p.goto(base+rel,{waitUntil:'load'});const injected=await p.locator('script').evaluateAll(es=>es.map(e=>({src:e.src,text:e.textContent})));assert(injected.every(s=>s.src.startsWith('https://static.cloudflareinsights.com/beacon.min.js/')&&!s.text.trim()),JSON.stringify(injected));assert.equal(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),true,rel);assert(!(await p.locator('body').innerText()).includes('separate research directions'),rel);
   if(rel.includes('/quantum/')){if(!candidate)await downloads(p,p.locator('nav.quantum-reading-links').first());await p.screenshot({path:path.join(out,mode+'-quantum-wiki-no-js.png')});}
   await p.close();
  }
