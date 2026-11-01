@@ -1,0 +1,110 @@
+{
+  "passed": true,
+  "sourceFilesAndPartsMatched": 17,
+  "completeExportVersion": "7a93164bd2c369b3970a349113b6d527662ba4ae7ad1a70c1f05f1613e459f3b",
+  "completeExportPartsVerifiedBy": "check-dv-complete-downloads-browser.mjs",
+  "results": [
+    {
+      "url": "https://staging.universalmind.tv/informatics/library.js",
+      "status": 200,
+      "bytes": 49701,
+      "sha256": "6acb903f34d8e0e03d511f675848e00bafcfef8fe87dd4c22a236fe003124404"
+    },
+    {
+      "url": "https://staging.universalmind.tv/informatics/library.html",
+      "status": 200,
+      "bytes": 35347,
+      "sha256": "4dd3669042def1349840c41fa234e63efbd737a57a2fd1819a852365c6648142"
+    },
+    {
+      "url": "https://staging.universalmind.tv/informatics/library-data/domestic-violence-expansion.json",
+      "status": 200,
+      "bytes": 4779898,
+      "sha256": "9b6debaf5340b691359536e1a2699f24ffa16177608ec5d287d995f34bd8df7c"
+    },
+    {
+      "url": "https://staging.universalmind.tv/informatics/library-data/community-index.json",
+      "status": 200,
+      "bytes": 146785,
+      "sha256": "df9570cb475f6d38a42d4543aaa5f479135f820ba9dc0c63097306a3ef402aec"
+    },
+    {
+      "url": "https://staging.universalmind.tv/informatics/library-data/age-index.json",
+      "status": 200,
+      "bytes": 392748,
+      "sha256": "9cd702c79124e98951991b0b30208078cd5f68943c611f5dfb7aaf759d654eec"
+    },
+    {
+      "url": "https://staging.universalmind.tv/informatics/exports/manifest-7a93164bd2c369b3970a349113b6d527662ba4ae7ad1a70c1f05f1613e459f3b.json",
+      "status": 200,
+      "bytes": 2395337,
+      "sha256": "a4d5860007abd092e636af003de1701e32a2de3d46f5a8a810cbe352635444f0"
+    },
+    {
+      "url": "https://staging.universalmind.tv/informatics/complete-downloads.js",
+      "status": 200,
+      "bytes": 2859,
+      "sha256": "37ed0bfbea745046b89c94132e3c3a781323ca482cbedc5e00b3cd51941a7f5b"
+    },
+    {
+      "url": "https://staging.universalmind.tv/informatics/connect.html",
+      "status": 200,
+      "bytes": 12007,
+      "sha256": "945935df5099b0cab0ccf451c35ede0050eab1ec17893e97749aadf7cc4ecf76"
+    },
+    {
+      "url": "https://staging.universalmind.tv/informatics/llms.txt",
+      "status": 200,
+      "bytes": 6140,
+      "sha256": "3e7644484597930c246012ff1ddfdbb86e69edbf3834a5dda5a9c980113b168a"
+    },
+    {
+      "url": "https://staging.universalmind.tv/informatics/read/index.html",
+      "status": 200,
+      "bytes": 7241,
+      "sha256": "231ddb66d27dedf0787e5c42e1bef688f2084eee96e292cc4b74fcd866f6b1e3"
+    },
+    {
+      "url": "https://staging.universalmind.tv/informatics/read/publications/index.html",
+      "status": 200,
+      "bytes": 300422,
+      "sha256": "e0337a4a1066ff4cb9a8a44d4579e06f7ac5f2ccbc81687ba31b5775c2a0dc38"
+    },
+    {
+      "url": "https://staging.universalmind.tv/informatics/read/publications/pmid-15913391-3c919d2a.html",
+      "status": 200,
+      "bytes": 75411,
+      "sha256": "26e6a98b03ce8b42c2d23c0cbf3fcbe407a182e4507d3f82cd9ba834c2b48522"
+    },
+    {
+      "url": "https://staging.universalmind.tv/informatics/read/publications/src-47a527b4dc03-d3194c22.html",
+      "status": 200,
+      "bytes": 71586,
+      "sha256": "2ab0abcb7caae258e77d9e27965271939bc23aadac4065f6d466d330fa3a6d62"
+    },
+    {
+      "url": "https://staging.universalmind.tv/sitemap.xml",
+      "status": 200,
+      "bytes": 220474,
+      "sha256": "c3f300cfde530965c2fa0dfeddc706e533e342b6d52477c8aa49e3370e1bbc90"
+    },
+    {
+      "url": "https://staging.universalmind.tv/llms.txt",
+      "status": 200,
+      "bytes": 13665,
+      "sha256": "235fae25537244f8ed05c3f18e6143e4c6ae41db6dc01a61462b5a18491bdb70"
+    },
+    {
+      "url": "https://staging.universalmind.tv/read/index.html",
+      "status": 200,
+      "bytes": 16260,
+      "sha256": "61a470c5802e353e6b7b90bcec044f6f1dfdd1b7efe19c19ff57d261e1110eed"
+    },
+    {
+      "url": "https://staging.universalmind.tv/read/resources.json",
+      "status": 200,
+      "bytes": 20603,
+      "sha256": "9a95dc36812ad5ff52c44237a4546f7fa3879bf28463b14199d4cf736dde7fad"
+    }
+  ]
+}
