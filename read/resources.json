@@ -517,54 +517,6 @@
       "description": ""
     },
     {
-      "title": "Vision Atlas · EMDR and ocular biology · page explanations",
-      "url": "https://universalmind.tv/informatics/atlas-guides/vision-atlas.json?v=2026-11-01-page-narrative-4",
-      "project": "Universal Informatics",
-      "format": "JSON",
-      "access": "Public",
-      "description": ""
-    },
-    {
-      "title": "Vision Atlas · EMDR and ocular biology · page explanations",
-      "url": "https://universalmind.tv/informatics/atlas-guides/vision-atlas.csv?v=2026-11-01-page-narrative-4",
-      "project": "Universal Informatics",
-      "format": "CSV",
-      "access": "Public",
-      "description": ""
-    },
-    {
-      "title": "Vision Atlas · EMDR and ocular biology · page explanations",
-      "url": "https://universalmind.tv/informatics/atlas-guides/vision-atlas.md?v=2026-11-01-page-narrative-4",
-      "project": "Universal Informatics",
-      "format": "Markdown",
-      "access": "Public",
-      "description": ""
-    },
-    {
-      "title": "Computer vision for genomics · page explanations",
-      "url": "https://universalmind.tv/informatics/atlas-guides/computer-vision-atlas.json?v=2026-11-01-page-narrative-4",
-      "project": "Universal Informatics",
-      "format": "JSON",
-      "access": "Public",
-      "description": ""
-    },
-    {
-      "title": "Computer vision for genomics · page explanations",
-      "url": "https://universalmind.tv/informatics/atlas-guides/computer-vision-atlas.csv?v=2026-11-01-page-narrative-4",
-      "project": "Universal Informatics",
-      "format": "CSV",
-      "access": "Public",
-      "description": ""
-    },
-    {
-      "title": "Computer vision for genomics · page explanations",
-      "url": "https://universalmind.tv/informatics/atlas-guides/computer-vision-atlas.md?v=2026-11-01-page-narrative-4",
-      "project": "Universal Informatics",
-      "format": "Markdown",
-      "access": "Public",
-      "description": ""
-    },
-    {
       "title": "Geometry Atlas · page explanations",
       "url": "https://universalmind.tv/informatics/atlas-guides/geometry-atlas.json?v=2026-11-01-page-narrative-4",
       "project": "Universal Informatics",
@@ -589,6 +541,38 @@
       "description": ""
     },
     {
+      "title": "Transcription Atlas",
+      "url": "https://universalmind.tv/informatics/read/transcription/index.html",
+      "project": "Universal Informatics",
+      "format": "HTML",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "Transcription Atlas · page explanations",
+      "url": "https://universalmind.tv/informatics/atlas-guides/transcription-atlas.json?v=2026-11-01-page-narrative-4",
+      "project": "Universal Informatics",
+      "format": "JSON",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "Transcription Atlas · page explanations",
+      "url": "https://universalmind.tv/informatics/atlas-guides/transcription-atlas.csv?v=2026-11-01-page-narrative-4",
+      "project": "Universal Informatics",
+      "format": "CSV",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "Transcription Atlas · page explanations",
+      "url": "https://universalmind.tv/informatics/atlas-guides/transcription-atlas.md?v=2026-11-01-page-narrative-4",
+      "project": "Universal Informatics",
+      "format": "Markdown",
+      "access": "Public",
+      "description": ""
+    },
+    {
       "title": "Molecular Atlas · page explanations",
       "url": "https://universalmind.tv/informatics/atlas-guides/molecular-atlas.json?v=2026-11-01-page-narrative-4",
       "project": "Universal Informatics",
@@ -607,6 +591,30 @@
     {
       "title": "Molecular Atlas · page explanations",
       "url": "https://universalmind.tv/informatics/atlas-guides/molecular-atlas.md?v=2026-11-01-page-narrative-4",
+      "project": "Universal Informatics",
+      "format": "Markdown",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "Vision Atlas · EMDR and ocular biology · page explanations",
+      "url": "https://universalmind.tv/informatics/atlas-guides/vision-atlas.json?v=2026-11-01-page-narrative-4",
+      "project": "Universal Informatics",
+      "format": "JSON",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "Vision Atlas · EMDR and ocular biology · page explanations",
+      "url": "https://universalmind.tv/informatics/atlas-guides/vision-atlas.csv?v=2026-11-01-page-narrative-4",
+      "project": "Universal Informatics",
+      "format": "CSV",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "Vision Atlas · EMDR and ocular biology · page explanations",
+      "url": "https://universalmind.tv/informatics/atlas-guides/vision-atlas.md?v=2026-11-01-page-narrative-4",
       "project": "Universal Informatics",
       "format": "Markdown",
       "access": "Public",
@@ -645,32 +653,24 @@
       "description": ""
     },
     {
-      "title": "Transcription Atlas",
-      "url": "https://universalmind.tv/informatics/read/transcription/index.html",
-      "project": "Universal Informatics",
-      "format": "HTML",
-      "access": "Public",
-      "description": ""
-    },
-    {
-      "title": "Transcription Atlas · page explanations",
-      "url": "https://universalmind.tv/informatics/atlas-guides/transcription-atlas.json?v=2026-11-01-page-narrative-4",
+      "title": "Computer vision for genomics · page explanations",
+      "url": "https://universalmind.tv/informatics/atlas-guides/computer-vision-atlas.json?v=2026-11-01-page-narrative-4",
       "project": "Universal Informatics",
       "format": "JSON",
       "access": "Public",
       "description": ""
     },
     {
-      "title": "Transcription Atlas · page explanations",
-      "url": "https://universalmind.tv/informatics/atlas-guides/transcription-atlas.csv?v=2026-11-01-page-narrative-4",
+      "title": "Computer vision for genomics · page explanations",
+      "url": "https://universalmind.tv/informatics/atlas-guides/computer-vision-atlas.csv?v=2026-11-01-page-narrative-4",
       "project": "Universal Informatics",
       "format": "CSV",
       "access": "Public",
       "description": ""
     },
     {
-      "title": "Transcription Atlas · page explanations",
-      "url": "https://universalmind.tv/informatics/atlas-guides/transcription-atlas.md?v=2026-11-01-page-narrative-4",
+      "title": "Computer vision for genomics · page explanations",
+      "url": "https://universalmind.tv/informatics/atlas-guides/computer-vision-atlas.md?v=2026-11-01-page-narrative-4",
       "project": "Universal Informatics",
       "format": "Markdown",
       "access": "Public",

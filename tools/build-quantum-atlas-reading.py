@@ -64,6 +64,10 @@ source_prose=extract(quantum)
 study=records['oxtr-qrc-study'];qualification=records['oxtr-qrc-qualification']
 
 TOPICS=json.loads((ROOT/'tools/atlas-topic-directory.json').read_text())
+TOPICS_BY_ID={topic['id']:topic for topic in TOPICS}
+nav_ids=re.findall(r"\['([^']+)', '[^']+'\]", (SITE/'global-navigation.js').read_text())
+atlas_order=[('music' if item=='sound' else item) for item in nav_ids if item in {'geometry','transcription','molecular','quantum','sound','vision','language'}]
+assert [topic['id'] for topic in TOPICS]==atlas_order+['computer-vision'], 'Wiki directory must follow global navigation, with computer vision last.'
 instructions=[
  'Read the saved study phases in order: original qualification runs, completed classical genomic pilot, further local CPU checks, then the proposed next quantum test.',
  'Retain the source labels for calculated values, GPU simulations, Aquila measurements, mathematical relationships and proposed mechanisms.',
@@ -141,11 +145,11 @@ a=shell.index('<section class="atlas-section atlas-vision');b=shell.index('<sect
 vision=extract(shell[a:b]);vs=(SITE/'vision-science.js').read_text();match=re.search(r'insertAdjacentHTML\([^,]+,\s*("(?:[^"\\]|\\.)*")\)',vs)
 assert match,'Vision science source boundary changed'
 science=extract(json.loads(match[1]))
-page('read/vision/index.html','Vision Atlas · EMDR and ocular biology',TOPICS[1]['question'],'<p><a href="'+TOPICS[1]['url']+'">Open the Vision Atlas</a> · <a href="'+BASE+'library.html?collection=vision">Vision research library</a></p>'+prose(vision.blocks)+prose(science.blocks)+'<h2>Original research links</h2><ul>'+''.join('<li><a href="'+E(x['url'])+'">'+E(x['label'])+'</a></li>'for x in science.links if x['url'].startswith('https:'))+'</ul>')
+page('read/vision/index.html','Vision Atlas · EMDR and ocular biology',TOPICS_BY_ID['vision']['question'],'<p><a href="'+TOPICS_BY_ID['vision']['url']+'">Open the Vision Atlas</a> · <a href="'+BASE+'library.html?collection=vision">Vision research library</a></p>'+prose(vision.blocks)+prose(science.blocks)+'<h2>Original research links</h2><ul>'+''.join('<li><a href="'+E(x['url'])+'">'+E(x['label'])+'</a></li>'for x in science.links if x['url'].startswith('https:'))+'</ul>')
 focus=re.search(r'<h3 id="initial-focus-heading">[^<]+</h3><p>([^<]+)</p>',shell)[1]
 application=re.search(r'<h2 id="initial-focus-title"[\s\S]*?<p>[^<]+</p>\s*<p>([^<]+)</p>',shell)[1]
 approach=re.search(r'<h2 id="initial-focus-title"[^>]*>[^<]+</h2>\s*<p>([^<]+)</p>',shell)[1]
-page('read/computer-vision/index.html','Computer vision for genomics',TOPICS[2]['question'],'<h2>Initial focus · Computer vision for genomics</h2><p>'+focus+'</p><p>'+approach+'</p><p>'+application+'</p><p><a href="../hyperspectral/index.html">Hyperspectral Imaging · complete chapter and source register</a></p><p><a href="'+BASE+'?about">Original Informatics introduction</a></p>')
+page('read/computer-vision/index.html','Computer vision for genomics',TOPICS_BY_ID['computer-vision']['question'],'<h2>Initial focus · Computer vision for genomics</h2><p>'+focus+'</p><p>'+approach+'</p><p>'+application+'</p><p><a href="../hyperspectral/index.html">Hyperspectral Imaging · complete chapter and source register</a></p><p><a href="'+BASE+'?about">Original Informatics introduction</a></p>')
 
 inline='<section id="quantum-atlas-machine" hidden aria-hidden="true">'+parts+'</section>\n<script id="quantum-atlas-data" type="application/json">'+text.replace('<','\\u003c')+'</script>'
 structured={'hasPart':[{'@type':'LearningResource','name':title,'url':payload['wiki']+'#'+anchor}for title,anchor in [('Purpose and human feature guide','quantum-purpose'),('Quantum and AI agent roles','quantum-agent-roles'),('Persistent investigation workflow','quantum-agent-workflow'),('MCP and A2A participation','quantum-participation')]],'@context':'https://schema.org','@type':'LearningResource','name':payload['title'],'url':payload['url'],'subjectOf':{'@type':'WebPage','url':payload['wiki']},'associatedMedia':[{'@type':'DataDownload','encodingFormat':mime,'contentUrl':payload['downloads'][fmt]}for fmt,mime in [('json','application/json'),('csv','text/csv'),('md','text/markdown')]]}

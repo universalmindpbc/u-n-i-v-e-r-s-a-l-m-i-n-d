@@ -2318,12 +2318,12 @@
     "read/access.html",
     "read/index.html",
     "read/provenance.html",
+    "read/transcription/index.html",
+    "read/molecular/index.html",
+    "read/quantum/index.html",
     "read/music/index.html",
     "read/vision/index.html",
-    "read/computer-vision/index.html",
-    "read/quantum/index.html",
-    "read/molecular/index.html",
     "read/language/index.html",
-    "read/transcription/index.html"
+    "read/computer-vision/index.html"
   ]
 }
