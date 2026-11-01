@@ -8,7 +8,7 @@ const base='https://staging.universalmind.tv',candidate=process.env.CANDIDATE===
 await fs.mkdir(out,{recursive:true});
 const server=await chromium.launchServer({executablePath:'/Users/benkorbel/Library/Caches/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-mac-arm64/chrome-headless-shell',headless:true,args:['--mute-audio','--autoplay-policy=user-gesture-required']});
 assert(server.process().spawnargs.includes('--mute-audio'));const browser=await chromium.connect(server.wsEndpoint()),results=[];
-const routes=[['overview','/informatics/read/index.html','Universal Informatics'],['music','/informatics/read/music/index.html','Music Atlas'],['vision','/informatics/read/vision/index.html','Vision Atlas'],['computer-vision','/informatics/read/computer-vision/index.html','Computer vision'],['quantum','/informatics/read/quantum/index.html','Quantum Atlas'],['geometry','/informatics/read/atlas/index.html','Geometry Atlas'],['organisation','/read/index.html#informatics','Universal Mind']];
+const routes=[['overview','/informatics/read/index.html','Universal Informatics'],['music','/informatics/read/music/index.html','Music Atlas'],['vision','/informatics/read/vision/index.html','Vision Atlas'],['computer-vision','/informatics/read/computer-vision/index.html','Computer vision'],['quantum','/informatics/read/quantum/index.html','Quantum Atlas'],['geometry','/informatics/read/atlas/index.html','Geometry Atlas'],['transcription','/informatics/read/transcription/index.html','Transcription Atlas'],['molecular','/informatics/read/molecular/index.html','Molecular Atlas'],['language','/informatics/read/language/index.html','Language Atlas'],['organisation','/read/index.html#informatics','Universal Mind']];
 try{
  for(const width of [1440,390]){
   const context=await browser.newContext({viewport:{width,height:950},javaScriptEnabled:false,reducedMotion:'reduce'});
@@ -27,8 +27,10 @@ try{
     const mainText=await page.locator('main').innerText();
     assert(mainText.indexOf('Does modular compression')<mainText.indexOf('Atlas pages'));
     assert(mainText.indexOf('Wolfram is our planned')<mainText.indexOf('Atlas pages'));
-    assert.equal(await page.locator('#atlas-topic-directory tbody tr').count(),7);
+    assert.equal(await page.locator('#atlas-topic-directory tbody tr').count(),8);
    }
+   if(name==='music'){assert(text.indexOf('Does electronic music modulate gene expression')<text.indexOf('Non-invasive measurement before mRNA sequencing'));assert(text.indexOf('Non-invasive measurement before mRNA sequencing')<text.indexOf('SEQUENCE STRUCTURE'));}
+   if(name==='transcription')assert(text.indexOf('Our priority is transcription factor binding sites')<text.indexOf('Understanding Binding Sites'));
    if(['music','computer-vision','quantum'].includes(name))assert(!text.includes('EMDR'),name);
    if(width===390||name==='overview')await page.screenshot({path:path.join(out,`${mode}-wiki-${name}-${width}.png`)});
    await page.close();results.push({name,width,topicFocus:true,noHorizontalOverflow:true});

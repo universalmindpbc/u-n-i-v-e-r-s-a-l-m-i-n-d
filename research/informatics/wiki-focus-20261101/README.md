@@ -1,11 +1,15 @@
-# Wiki topic focus correction
+# Atlas Wiki narrative correction
 
-The main Informatics Wiki mirrors the existing About section and its expanded research panel before the Atlas directory. The organisation Wiki and its structured JSON and Markdown guide use the same approved source. All seven Atlas entries have the same presentation weight.
+The Informatics overview mirrors the approved About section and its expanded research panel before an equal eight-topic directory. The organisation Wiki, Markdown guide and structured resource directory retain that same About source.
 
-The shared EMDR/computer-vision comparison paragraphs and cross-topic Quantum instructions are removed from the reading pages, native reading layers, JSON, Markdown and CSV. Quantum exports contain the Quantum guide, agent architecture and recorded study. Vision and computer vision retain their own original page explanations. Music formats and the original mathematical records remain source-identical and topic-focused.
+Music opens with the native electronic-music introduction and research questions, then the approved non-invasive measurement and mRNA chapter, followed by the six models. JSON, Markdown and CSV carry that order. The original model calculations and approved measurement wording are preserved.
 
-Shared reading navigation now links to all Atlas pages. Other publication and Geometry record content is unchanged. Native Atlas visuals, controls, About copy and application runtime are preserved.
+Transcription now has a dedicated guide and JSON, Markdown and CSV. Its opening explains OXTR binding sites, the DNA-to-receptor teaching model, coordinate comparison and source evidence before the catalogue data. Vision, computer vision, Language, Molecular and Geometry use their own native page explanations in all four formats. Geometry's 1,001 individual record pages now open with the explanations calculated by the original page code. Registered experiment pages lead with their recorded explanation before measurements and provenance.
 
-Verification records cover 2,250 reading files, exact About excerpts, 2,231 navigation-only page updates, topic-page desktop/mobile checks without JavaScript, Quantum format equivalence and complete JSON/CSV reconstruction. Live staging evidence is recorded alongside the deployment manifest after upload. No model request or quantum execution is part of this wording correction.
+The repeated cross-topic comparisons are removed. Quantum retains its purpose, human feature guide, agent roles, persistent workflow and MCP/API/A2A participation before its saved study. Publication and hyperspectral reading pages retain their original summaries and chapter narratives before evidence and data.
 
-The final source integrates the concurrent Trust Factor release `45094ae0c`. Its library source files are byte-identical; all 117 affected publication pages retain that release’s content with the neutral Atlas navigation. The complete exports were rebuilt from both changes.
+The primary Atlas layout, controls, runtime scripts, scientific source records and About wording remain intact. Hidden semantic content and versioned reading/download metadata supply the added context without changing the visible Atlas content. Wiki navigation stays on the current host when following internal topic links.
+
+The release preserves the concurrent Trust Factor correction at `45094ae0c`. Its four source files and all affected publication content remain intact. The complete exports include both updates and all 1,194 public source records.
+
+Verification includes exact About excerpts, narrative ordering, source blocks in each format, lossless JSON/CSV reconstruction, all 1,001 Geometry explanations, desktop/mobile Wiki checks without JavaScript, native Music controls, live download bytes and complete-export hashes. Evidence files beginning `candidate` describe pre-upload checks; `staging-release.json` identifies the final deployed source and live checks. No model request or quantum execution is part of this correction.

@@ -5,10 +5,10 @@ import csv, hashlib, json, re, subprocess
 ROOT=Path(__file__).resolve().parents[1];SITE=ROOT/'Informatics';OUT=ROOT/'research/informatics/wiki-focus-20261101';OUT.mkdir(parents=True,exist_ok=True)
 base='3a4b54ab4d2887323e9e9749fbdcaa979813e196'
 def old(p):return subprocess.check_output(['git','show',base+':'+p],cwd=ROOT)
-def clean(s):return re.sub(r'<!-- (?:QUANTUM ATLAS|ATLAS TOPICS) (?:METADATA|MACHINE|DOWNLOADS) START -->[\s\S]*?<!-- (?:QUANTUM ATLAS|ATLAS TOPICS) (?:METADATA|MACHINE|DOWNLOADS) END -->\n?','',s)
+def clean(s):return re.sub(r'<!-- (?:QUANTUM ATLAS|ATLAS TOPICS|ATLAS NARRATIVE|MUSIC ATLAS) (?:METADATA|MACHINE|DOWNLOADS) START -->[\s\S]*?<!-- (?:QUANTUM ATLAS|ATLAS TOPICS|ATLAS NARRATIVE|MUSIC ATLAS) (?:METADATA|MACHINE|DOWNLOADS) END -->\n?','',s)
 def norm(s):return re.sub(r'>\s+<','><',s).strip()
 for rel in ['Informatics/index.html','Informatics/quantum/index.html']:
-    assert norm(clean((ROOT/rel).read_text()))==norm(old(rel).decode()),rel
+    assert norm(clean((ROOT/rel).read_text()))==norm(clean(old(rel).decode())),rel
 for rel in ['index.html','home/index.html','Informatics/vision-science.js','Informatics/atlas-visuals.js','Informatics/atlas.css','Informatics/quantum/biology.js','Informatics/quantum/biology.css','Informatics/quantum/agent.js','Informatics/quantum/study.js','Informatics/quantum/hypothesis.js','Informatics/quantum/insights.js']:
     assert (ROOT/rel).read_bytes()==old(rel),rel
 p=SITE/'quantum/reading';d=json.loads((p/'quantum-atlas.json').read_text())

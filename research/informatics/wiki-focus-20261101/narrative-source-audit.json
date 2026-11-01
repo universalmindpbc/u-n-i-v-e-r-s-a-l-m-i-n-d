@@ -1,0 +1,51 @@
+{
+  "passed": true,
+  "topics": [
+    {
+      "topic": "vision",
+      "source_blocks": 37,
+      "json_csv_equal": true,
+      "narrative_before_data": true,
+      "all_source_blocks_in_wiki_and_markdown": true
+    },
+    {
+      "topic": "computer-vision",
+      "source_blocks": 5,
+      "json_csv_equal": true,
+      "narrative_before_data": true,
+      "all_source_blocks_in_wiki_and_markdown": true
+    },
+    {
+      "topic": "language",
+      "source_blocks": 10,
+      "json_csv_equal": true,
+      "narrative_before_data": true,
+      "all_source_blocks_in_wiki_and_markdown": true
+    },
+    {
+      "topic": "molecular",
+      "source_blocks": 47,
+      "json_csv_equal": true,
+      "narrative_before_data": true,
+      "all_source_blocks_in_wiki_and_markdown": true
+    },
+    {
+      "topic": "transcription",
+      "source_blocks": 119,
+      "json_csv_equal": true,
+      "narrative_before_data": true,
+      "all_source_blocks_in_wiki_and_markdown": true
+    },
+    {
+      "topic": "geometry",
+      "source_blocks": 46,
+      "json_csv_equal": true,
+      "narrative_before_data": true,
+      "all_source_blocks_in_wiki_and_markdown": true
+    }
+  ],
+  "music_source_and_measurement_preserved": true,
+  "music_narrative_measurement_models_order": true,
+  "geometry_records_with_native_explanations": 1001,
+  "primary_ui_runtime_and_scientific_data_unchanged": true
+}

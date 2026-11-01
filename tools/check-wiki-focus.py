@@ -28,11 +28,11 @@ assert overview.index('Does modular compression')<overview.index('id="atlas-topi
 assert overview.index('Wolfram is our planned')<overview.index('id="atlas-topic-directory"')
 catalog=overview.split('id="atlas-topic-directory"',1)[1].split('</section>',1)[0]
 topics=json.loads((ROOT/'tools/atlas-topic-directory.json').read_text())
-assert len(topics)==7
-for topic in topics:assert catalog.count('href="'+topic['wiki']+'"')==1,topic['id']
+assert len(topics)==8
+for topic in topics:assert catalog.count('href="'+topic['wiki'].removeprefix('https://universalmind.tv')+'"')==1,topic['id']
 assert '<h2>Music Atlas</h2>'not in overview and '<h2>Geometry Atlas</h2>'not in overview
 forbidden=['The Vision Atlas studies human visual stimulation','These are separate research directions','The word “vision” does not make them','separate from EMDR','Use the topic directory to identify the subject','Its hexagonal atom arrangement and quantum-stability hypothesis are separate']
-paths=list((SITE/'read').rglob('*.html'))+list((SITE/'music-atlas').glob('music-atlas.*'))+list((SITE/'quantum/reading').glob('quantum-atlas.*'))+[SITE/'llms.txt',SITE/'index.html',SITE/'quantum/index.html',ROOT/'llms.txt',ROOT/'read/index.html',ROOT/'read/resources.json']
+paths=list((SITE/'read').rglob('*.html'))+list((SITE/'atlas-guides').glob('*'))+list((SITE/'music-atlas').glob('music-atlas.*'))+list((SITE/'quantum/reading').glob('quantum-atlas.*'))+[SITE/'llms.txt',SITE/'index.html',SITE/'quantum/index.html',ROOT/'llms.txt',ROOT/'read/index.html',ROOT/'read/resources.json']
 for path in paths:
  if path.suffix not in ['.html','.json','.csv','.md','.txt']:continue
  value=path.read_text()
@@ -41,15 +41,15 @@ q=json.loads((SITE/'quantum/reading/quantum-atlas.json').read_text())
 assert 'topics'not in q
 assert not re.search(r'EMDR|computer vision|hyperspectral',json.dumps(q,ensure_ascii=False),re.I)
 assert len(q['agent_architecture']['features'])==10 and len(q['agent_architecture']['swarm']['roles'])==10
-for name in ['music','vision','computer-vision','quantum']:
+for name in ['music','vision','computer-vision','quantum','transcription','molecular','language']:
  text=(SITE/f'read/{name}/index.html').read_text()
  assert 'atlas-topic-directory'not in text
  if name in ['music','computer-vision','quantum']:assert 'EMDR'not in text,name
 # Previously approved source and numerical records stay intact.
-for path in ['Informatics/music-atlas/music-atlas.json','Informatics/music-atlas/music-atlas.csv','Informatics/music-atlas/music-atlas.md','Informatics/atlas-visuals.js','Informatics/vision-science.js','Informatics/quantum/study.js','Informatics/quantum/agent.js']:
+for path in ['Informatics/atlas-visuals.js','Informatics/vision-science.js','Informatics/quantum/study.js','Informatics/quantum/agent.js']:
  assert (ROOT/path).read_bytes()==subprocess.check_output(['git','show',BASE+':'+path],cwd=ROOT),path
 for rel in ['Informatics/index.html','Informatics/quantum/index.html']:
- def clean(s):return re.sub(r'<!-- (?:QUANTUM ATLAS|ATLAS TOPICS) (?:METADATA|MACHINE|DOWNLOADS) START -->[\s\S]*?<!-- (?:QUANTUM ATLAS|ATLAS TOPICS) (?:METADATA|MACHINE|DOWNLOADS) END -->\n?','',s)
+ def clean(s):return re.sub(r'<!-- (?:QUANTUM ATLAS|ATLAS TOPICS|MUSIC ATLAS|ATLAS NARRATIVE) (?:METADATA|MACHINE|DOWNLOADS) START -->[\s\S]*?<!-- (?:QUANTUM ATLAS|ATLAS TOPICS|MUSIC ATLAS|ATLAS NARRATIVE) (?:METADATA|MACHINE|DOWNLOADS) END -->\n?','',s)
  assert clean((ROOT/rel).read_text())==clean(subprocess.check_output(['git','show',BASE+':'+rel],cwd=ROOT,text=True)),rel
-report={'passed':True,'approved_about_texts_matched':len(approved),'main_wiki_about_first':True,'equally_presented_atlas_entries':len(topics),'reading_files_audited':len(paths),'cross_topic_boilerplate_absent':True,'quantum_exports_have_only_quantum_context':True,'music_formats_preserved_and_focused':True,'native_experience_and_runtime_preserved':True}
+report={'passed':True,'approved_about_texts_matched':len(approved),'main_wiki_about_first':True,'equally_presented_atlas_entries':len(topics),'reading_files_audited':len(paths),'cross_topic_boilerplate_absent':True,'quantum_exports_have_only_quantum_context':True,'music_models_preserved_and_narrative_first':True,'native_experience_and_runtime_preserved':True}
 (OUT/'source-focus.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report))

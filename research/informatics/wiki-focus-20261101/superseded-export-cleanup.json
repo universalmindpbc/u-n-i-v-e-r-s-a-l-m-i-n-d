@@ -1,0 +1,29 @@
+{
+  "removed_unpublished_reproducible_files": [
+    {
+      "path": "Informatics/exports/part-fb7099fdc6bb0f4e269d2628a526f66fa79aa89168b4a636b3c5bf2ea9e710e1.bin",
+      "bytes": 50331648
+    },
+    {
+      "path": "Informatics/exports/part-d35f547b159591a95b533eac0608a221ebc1941b54097946a5bde753d00cb8f9.bin",
+      "bytes": 30537020
+    },
+    {
+      "path": "Informatics/exports/part-1ad366867c186c4b09ffb91a6f079f3c227f7efa4e642fe64bd9ad3710e44c07.bin",
+      "bytes": 50331648
+    },
+    {
+      "path": "Informatics/exports/part-7d4bb7d0ec0297fe1e2928acdb428327b3e1503bfbade9c518c7b383f688b021.bin",
+      "bytes": 50331648
+    },
+    {
+      "path": "Informatics/exports/part-08e2b34e2bd1fd9c643c67998c59d65e42de0585330eedd1074a3ef01899c7f7.bin",
+      "bytes": 49896582
+    },
+    {
+      "path": "Informatics/exports/manifest-ad76e3b979275e1ac32542b058162cb553a41ce61e6396bd6c7512bb4634cb30.json",
+      "bytes": 2398063
+    }
+  ],
+  "published_and_current_exports_preserved": true
+}

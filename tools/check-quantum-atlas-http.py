@@ -4,7 +4,13 @@ from concurrent.futures import ThreadPoolExecutor
 import os, subprocess, hashlib, json, re
 ROOT=Path(__file__).resolve().parents[1];BASE=os.environ.get('QA_BASE','https://staging.universalmind.tv').rstrip('/');MODE='staging' if 'staging.'in BASE else 'production';OUT=ROOT/'research/informatics/wiki-focus-20261101';OUT.mkdir(parents=True,exist_ok=True)
 guide=json.loads((ROOT/'Informatics/quantum/reading/quantum-atlas.json').read_text())
+library_script=re.search(r'src="(library\.js\?[^"]+)"',(ROOT/'Informatics/library.html').read_text())[1]
 def download_route(route):
+    if route=='informatics/library.js':return 'informatics/'+library_script
+    if route.startswith('informatics/music-atlas/music-atlas.'):
+        ext=route.rsplit('.',1)[1];return music['downloads']['markdown' if ext=='md' else ext].replace('https://universalmind.tv/','')
+    if route.startswith('informatics/atlas-guides/'):
+        return route+'?v=2026-11-01-page-narrative-3'
     if route.startswith('informatics/quantum/reading/quantum-atlas.'):
         return guide['downloads'][route.rsplit('.',1)[1]].replace('https://universalmind.tv/','')
     return route
@@ -12,12 +18,14 @@ def request(route,agent='Mozilla/5.0 AtlasReadingVerification'):
     return subprocess.check_output(['curl','--fail','--silent','--show-error','--location','--retry','2','--max-time','60','--user-agent',agent,BASE+'/'+download_route(route)])
 files=['index.html','home/index.html','read/index.html','read/resources.json','llms.txt','sitemap.xml','Informatics/index.html','Informatics/llms.txt','Informatics/read/index.html','Informatics/read/reading.css','Informatics/read/atlas-guide.css','Informatics/read/quantum/index.html','Informatics/read/vision/index.html','Informatics/read/computer-vision/index.html','Informatics/quantum/index.html','Informatics/quantum/reading/links.css','Informatics/exports/manifest.json','Informatics/read/music/index.html']+[f'Informatics/quantum/reading/quantum-atlas.{x}' for x in ['json','csv','md']]+[f'Informatics/music-atlas/music-atlas.{x}'for x in ['json','csv','md']]
 files += ['Informatics/library-data/domestic-violence-expansion.json','Informatics/library.js','Informatics/library.html','Informatics/read/publications/dv-sound-24766169-ceb162f4.html','Informatics/read/publications/dv-vision-11036736-2ce3a898.html','Informatics/read/publications/dv-adult-therapy-10783523-cf56230a.html']
+files += ['Informatics/read/'+name+'/index.html' for name in ['transcription','molecular','language','atlas']]
+files += [str(p.relative_to(ROOT)) for p in (ROOT/'Informatics/atlas-guides').glob('*') if p.suffix in ['.json','.csv','.md']]
 music=json.loads((ROOT/'Informatics/music-atlas/music-atlas.json').read_text())
 files += ['Informatics/'+f['image']for f in music['measurement']['figures']]
 files += ['Informatics/music-measurement.js','Informatics/music-measurement.css']
 def verify(source):
     route=source.replace('Informatics/','informatics/',1);actual=request(route);expected=(ROOT/source).read_bytes();assert actual==expected,route
-    return {'path':route,'bytes':len(actual),'sha256':hashlib.sha256(actual).hexdigest()}
+    return {'path':route,'request_url':BASE+'/'+download_route(route),'bytes':len(actual),'sha256':hashlib.sha256(actual).hexdigest()}
 with ThreadPoolExecutor(max_workers=6)as pool:checks=list(pool.map(verify,files))
 d=json.loads((ROOT/'Informatics/quantum/reading/quantum-atlas.json').read_text());agents=['ChatGPT-User/1.0','Googlebot','Claude-User','PerplexityBot','AtlasReadingVerification/1.0']
 def agent_check(agent):

@@ -1,0 +1,152 @@
+path,type,value
+,object,
+/schema,string,universal-informatics/atlas-page-guide/v1
+/title,string,Vision Atlas · EMDR and ocular biology
+/version,string,2026-11-01-page-narrative-3
+/url,string,https://universalmind.tv/informatics/?entry=research&area=vision
+/wiki,string,https://universalmind.tv/informatics/read/vision/index.html
+/page_narrative,array,37
+/page_narrative/0,object,
+/page_narrative/0/tag,string,p
+/page_narrative/0/text,string,Vision Atlas
+/page_narrative/1,object,
+/page_narrative/1/tag,string,h1
+/page_narrative/1/text,string,EMDR | Vision Sciences
+/page_narrative/2,object,
+/page_narrative/2/tag,string,p
+/page_narrative/2/text,string,"Explore visual and ocular biology, light exposure, gene expression and the EMDR literature."
+/page_narrative/3,object,
+/page_narrative/3/tag,string,figcaption
+/page_narrative/3/text,string,Saccadic · Hexagonal
+/page_narrative/4,object,
+/page_narrative/4/tag,string,figcaption
+/page_narrative/4/text,string,Bilateral
+/page_narrative/5,object,
+/page_narrative/5/tag,string,p
+/page_narrative/5/text,string,Research comparison · hypothesis under investigation
+/page_narrative/6,object,
+/page_narrative/6/tag,string,h2
+/page_narrative/6/text,string,Focus:
+/page_narrative/7,object,
+/page_narrative/7/tag,string,p
+/page_narrative/7/text,string,"Are hexagonal animations more natural, human, and impactful for EMDR visual stimulation than traditional horizontal tracking green lights? We use the honeycomb conjecture as inspiration, where hexagonal packing is nature's most efficient division of space. Furthermore, many endogenous neurotransmitters, hormones, and nucleic bases natively utilise hexagonal configurations within their molecular architecture."
+/page_narrative/8,object,
+/page_narrative/8/tag,string,h2
+/page_narrative/8/text,string,Hypothesis:
+/page_narrative/9,object,
+/page_narrative/9/tag,string,p
+/page_narrative/9/text,string,"We hypothesise that a hexagonally structured saccadic tracking pattern imposes a distinct oculomotor and visual psychophysics load compared to standard linear tracking. We propose that the complex coordination required to navigate this geometric pattern optimises retinal and visual pathway signalling, thereby driving a downstream biological response that upregulates OXTR gene transcription (measured via mRNA sequencing) and enhances emotional regulation."
+/page_narrative/10,object,
+/page_narrative/10/tag,string,p
+/page_narrative/10/text,string,THE SCIENCE BEHIND THE GEOMETRY
+/page_narrative/11,object,
+/page_narrative/11/tag,string,h2
+/page_narrative/11/text,string,Hexagons & equilateral triangles.
+/page_narrative/12,object,
+/page_narrative/12/tag,string,p
+/page_narrative/12/text,string,Several groundbreaking publications across the Nature portfolio explain why the human visual pathway preferences—and utilizes—hexagonal grids and equilateral triangles (which are geometrically the core component of hexagons).
+/page_narrative/13,object,
+/page_narrative/13/tag,string,p
+/page_narrative/13/text,string,"Rather than viewing these shapes as an aesthetic preference, neuroscience and optical physics reveal that our eyes and brains are wired around them for mathematical optimization, sampling efficiency, and structural economy."
+/page_narrative/14,object,
+/page_narrative/14/tag,string,p
+/page_narrative/14/text,string,The primary explanations are found in the following core areas:
+/page_narrative/15,object,
+/page_narrative/15/tag,string,figcaption
+/page_narrative/15/text,string,Illustrative geometry · cell centres and their neighbours
+/page_narrative/16,object,
+/page_narrative/16/tag,string,p
+/page_narrative/16/text,string,01 / RETINA
+/page_narrative/17,object,
+/page_narrative/17/tag,string,h3
+/page_narrative/17/text,string,Hexagonal Packing in the Retina
+/page_narrative/18,object,
+/page_narrative/18/tag,string,p
+/page_narrative/18/text,string,Optimal Sampling
+/page_narrative/19,object,
+/page_narrative/19/tag,string,p
+/page_narrative/19/text,string,"At the very beginning of the optical pathway, the light-sensing cells in the human eye arrange themselves into a tight, hexagonal lattice."
+/page_narrative/20,object,
+/page_narrative/20/tag,string,p
+/page_narrative/20/text,string,"The ""Why"": Mathematically, if you pack circles (like photoreceptor cells) as closely together as possible on a flat or curved surface, their centers naturally form a lattice of equilateral triangles that tessellate into a hexagonal pattern. This provides the highest possible packing density with zero wasted space."
+/page_narrative/21,object,
+/page_narrative/21/tag,string,p
+/page_narrative/21/text,string,"The Nature Connection: A detailed overview in Nature: Eye notes that cone inner/outer segments reach up to 300,000 cells/mm² in the fovea (the center of our sharpest vision). This incredibly dense, hyper-uniform hexagonal arrangement is what allows the human eye to reach the absolute physical upper limits of visual acuity."
+/page_narrative/21/links,array,2
+/page_narrative/21/links/0,object,
+/page_narrative/21/links/0/label,string,Nature: Eye
+/page_narrative/21/links/0/url,string,https://www.nature.com/articles/eye1998142
+/page_narrative/21/links/1,object,
+/page_narrative/21/links/1/label,string,Eye · 1998The photoreceptor mosaic↗
+/page_narrative/21/links/1/url,string,https://www.nature.com/articles/eye1998142
+/page_narrative/22,object,
+/page_narrative/22/tag,string,figcaption
+/page_narrative/22/text,string,Illustrative moiré model · two overlapping lattices
+/page_narrative/23,object,
+/page_narrative/23/tag,string,p
+/page_narrative/23/text,string,02 / VISUAL CORTEX
+/page_narrative/24,object,
+/page_narrative/24/tag,string,h3
+/page_narrative/24/text,string,Moiré Interference Patterns in the Visual Cortex
+/page_narrative/25,object,
+/page_narrative/25/tag,string,p
+/page_narrative/25/text,string,"Moving deeper into the brain, research published in Nature and PMC explains how the brain creates ""orientation maps""—the neural columns that allow us to detect the angle and direction of lines in our environment."
+/page_narrative/26,object,
+/page_narrative/26/tag,string,p
+/page_narrative/26/text,string,"The ""Why"": A prominent study on the Retinal origin of orientation maps in visual cortex demonstrated that the primary visual cortex (V1) maps out angles using an underlying hexagonal grid."
+/page_narrative/26/links,array,1
+/page_narrative/26/links/0,object,
+/page_narrative/26/links/0/label,string,Retinal origin of orientation maps in visual cortex
+/page_narrative/26/links/0/url,string,https://www.nature.com/articles/nn.2824
+/page_narrative/27,object,
+/page_narrative/27/tag,string,p
+/page_narrative/27/text,string,"The Mechanism: The brain receives two separate hexagonal arrays of information from the retina: ""ON-center"" cells (detecting light) and ""OFF-center"" cells (detecting dark). Because these two grids have slightly different spacing, they overlap to create a Moiré interference pattern. This interference generates a hexagonal lattice of ""pinwheels"" in the brain, allowing us to seamlessly process all 360 degrees of structural orientation."
+/page_narrative/28,object,
+/page_narrative/28/tag,string,figcaption
+/page_narrative/28/text,string,"Illustrative spatial grid · six directions, 60° apart"
+/page_narrative/29,object,
+/page_narrative/29/tag,string,p
+/page_narrative/29/text,string,03 / SPATIAL CODING
+/page_narrative/30,object,
+/page_narrative/30/tag,string,h3
+/page_narrative/30/text,string,Hexadirectional Coding of Space
+/page_narrative/31,object,
+/page_narrative/31/tag,string,p
+/page_narrative/31/text,string,"Once visual information passes from the visual cortex into areas responsible for navigation and memory (like the entorhinal cortex), the brain maps out visual space using a perfect hexagonal coordinate system."
+/page_narrative/32,object,
+/page_narrative/32/tag,string,p
+/page_narrative/32/text,string,"The ""Why"": A landmark study published in Nature Neuroscience discovered ""hexadirectional coding""of visual space."
+/page_narrative/32/links,array,1
+/page_narrative/32/links/0,object,
+/page_narrative/32/links/0/label,string,Nature Neuroscience
+/page_narrative/32/links/0/url,string,https://www.nature.com/articles/s41593-017-0050-8
+/page_narrative/33,object,
+/page_narrative/33/tag,string,p
+/page_narrative/33/text,string,"The Mechanism: When your eye scans a scene, certain cells known as ""grid cells"" fire in a strikingly symmetric, six-fold rotational pattern. If you plot the locations where these neurons fire when tracking gaze, they outline the vertices of interconnected equilateral triangles, forming a continuous hexagonal grid over our visual field. This architecture functions as the brain's internal metric system, providing the most energy-efficient way to calculate distance and location."
+/page_narrative/34,object,
+/page_narrative/34/tag,string,p
+/page_narrative/34/text,string,THE CONNECTING IDEA
+/page_narrative/35,object,
+/page_narrative/35/tag,string,h3
+/page_narrative/35/text,string,Summary of the Geometry
+/page_narrative/36,object,
+/page_narrative/36/tag,string,p
+/page_narrative/36/text,string,"In short, the optical pathway preferences these shapes because hexagons enclose the maximum area with the minimum perimeter, while equilateral triangles are the most rigid and stable way to divide that space. From the physical packing of cells in your retina to the computational firing of neurons in your brain, this geometry is used because it requires the absolute minimum amount of metabolic energy to transmit the maximum amount of visual data."
+/source_data,object,
+/related_data,array,1
+/related_data/0,object,
+/related_data/0/label,string,Vision research library
+/related_data/0/url,string,https://universalmind.tv/informatics/library.html?collection=vision
+/sources,array,2
+/sources/0,object,
+/sources/0/path,string,index.html
+/sources/0/url,string,https://universalmind.tv/informatics/index.html
+/sources/0/sha256,string,a8a3c48bb8e24800c3d0812c654d36ef6f03422cdce94a096da7c2017d92395d
+/sources/1,object,
+/sources/1/path,string,vision-science.js
+/sources/1/url,string,https://universalmind.tv/informatics/vision-science.js
+/sources/1/sha256,string,d3995b1d01eb19eb0152bb5af0e4cfb7c65c2c902bf683181deeb04fd6e71d5f
+/downloads,object,
+/downloads/json,string,https://universalmind.tv/informatics/atlas-guides/vision-atlas.json?v=2026-11-01-page-narrative-3
+/downloads/csv,string,https://universalmind.tv/informatics/atlas-guides/vision-atlas.csv?v=2026-11-01-page-narrative-3
+/downloads/md,string,https://universalmind.tv/informatics/atlas-guides/vision-atlas.md?v=2026-11-01-page-narrative-3

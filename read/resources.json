@@ -184,7 +184,7 @@
         }
       ],
       "context": [],
-      "source_sha256": "a54e9903988fd594a83074ed2aea3af5dbf487e7dd138078616109b80b5d2802"
+      "source_sha256": "00a1221784871b93ef3124669ea1adc5d76956129d5c61a546db5e67cc225ef1"
     }
   ],
   "resources": [
@@ -349,7 +349,7 @@
       "description": ""
     },
     {
-      "title": "Music Atlas: six models and measurement architecture",
+      "title": "Music Atlas: research questions, measurement and musical models",
       "url": "https://universalmind.tv/informatics/read/music/index.html",
       "project": "Universal Informatics",
       "format": "HTML",
@@ -358,7 +358,7 @@
     },
     {
       "title": "Music Atlas complete data",
-      "url": "https://universalmind.tv/informatics/music-atlas/music-atlas.json",
+      "url": "https://universalmind.tv/informatics/music-atlas/music-atlas.json?v=2026-11-01-page-narrative-3",
       "project": "Universal Informatics",
       "format": "JSON",
       "access": "Public",
@@ -366,15 +366,15 @@
     },
     {
       "title": "Music Atlas complete CSV",
-      "url": "https://universalmind.tv/informatics/music-atlas/music-atlas.csv",
+      "url": "https://universalmind.tv/informatics/music-atlas/music-atlas.csv?v=2026-11-01-page-narrative-3",
       "project": "Universal Informatics",
       "format": "CSV",
       "access": "Public",
       "description": ""
     },
     {
-      "title": "Music Atlas explanations and reading instructions",
-      "url": "https://universalmind.tv/informatics/music-atlas/music-atlas.md",
+      "title": "Music Atlas research and explanations",
+      "url": "https://universalmind.tv/informatics/music-atlas/music-atlas.md?v=2026-11-01-page-narrative-3",
       "project": "Universal Informatics",
       "format": "Markdown",
       "access": "Public",
@@ -405,7 +405,7 @@
       "description": ""
     },
     {
-      "title": "Quantum Atlas explanations and reading instructions",
+      "title": "Quantum Atlas purpose, features and participation",
       "url": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.md?v=2026-11-01-topic-focus-2",
       "project": "Universal Informatics",
       "format": "Markdown",
@@ -430,7 +430,7 @@
     },
     {
       "title": "Molecular Atlas",
-      "url": "https://universalmind.tv/informatics/molecular/",
+      "url": "https://universalmind.tv/informatics/read/molecular/index.html",
       "project": "Universal Informatics",
       "format": "HTML",
       "access": "Public",
@@ -486,7 +486,7 @@
     },
     {
       "title": "Complete dataset manifest",
-      "url": "https://universalmind.tv/informatics/exports/manifest-0063edc719ac2f447551c4a212f5886e39f2909c42db0492577b7613d95763e8.json",
+      "url": "https://universalmind.tv/informatics/exports/manifest-696dbabc1251d26ef110d7f6cd8f1a7fa979cb73ec6afb23a302f478f0b8e172.json",
       "project": "Universal Informatics",
       "format": "JSON",
       "access": "Public",
@@ -513,6 +513,166 @@
       "url": "https://universalmind.tv/informatics/pilot-v1/m1-m1001-csv.zip",
       "project": "Universal Informatics",
       "format": "ZIP / CSV",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "Vision Atlas · EMDR and ocular biology · page explanations",
+      "url": "https://universalmind.tv/informatics/atlas-guides/vision-atlas.json?v=2026-11-01-page-narrative-3",
+      "project": "Universal Informatics",
+      "format": "JSON",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "Vision Atlas · EMDR and ocular biology · page explanations",
+      "url": "https://universalmind.tv/informatics/atlas-guides/vision-atlas.csv?v=2026-11-01-page-narrative-3",
+      "project": "Universal Informatics",
+      "format": "CSV",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "Vision Atlas · EMDR and ocular biology · page explanations",
+      "url": "https://universalmind.tv/informatics/atlas-guides/vision-atlas.md?v=2026-11-01-page-narrative-3",
+      "project": "Universal Informatics",
+      "format": "Markdown",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "Computer vision for genomics · page explanations",
+      "url": "https://universalmind.tv/informatics/atlas-guides/computer-vision-atlas.json?v=2026-11-01-page-narrative-3",
+      "project": "Universal Informatics",
+      "format": "JSON",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "Computer vision for genomics · page explanations",
+      "url": "https://universalmind.tv/informatics/atlas-guides/computer-vision-atlas.csv?v=2026-11-01-page-narrative-3",
+      "project": "Universal Informatics",
+      "format": "CSV",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "Computer vision for genomics · page explanations",
+      "url": "https://universalmind.tv/informatics/atlas-guides/computer-vision-atlas.md?v=2026-11-01-page-narrative-3",
+      "project": "Universal Informatics",
+      "format": "Markdown",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "Geometry Atlas · page explanations",
+      "url": "https://universalmind.tv/informatics/atlas-guides/geometry-atlas.json?v=2026-11-01-page-narrative-3",
+      "project": "Universal Informatics",
+      "format": "JSON",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "Geometry Atlas · page explanations",
+      "url": "https://universalmind.tv/informatics/atlas-guides/geometry-atlas.csv?v=2026-11-01-page-narrative-3",
+      "project": "Universal Informatics",
+      "format": "CSV",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "Geometry Atlas · page explanations",
+      "url": "https://universalmind.tv/informatics/atlas-guides/geometry-atlas.md?v=2026-11-01-page-narrative-3",
+      "project": "Universal Informatics",
+      "format": "Markdown",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "Molecular Atlas · page explanations",
+      "url": "https://universalmind.tv/informatics/atlas-guides/molecular-atlas.json?v=2026-11-01-page-narrative-3",
+      "project": "Universal Informatics",
+      "format": "JSON",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "Molecular Atlas · page explanations",
+      "url": "https://universalmind.tv/informatics/atlas-guides/molecular-atlas.csv?v=2026-11-01-page-narrative-3",
+      "project": "Universal Informatics",
+      "format": "CSV",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "Molecular Atlas · page explanations",
+      "url": "https://universalmind.tv/informatics/atlas-guides/molecular-atlas.md?v=2026-11-01-page-narrative-3",
+      "project": "Universal Informatics",
+      "format": "Markdown",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "Language Atlas",
+      "url": "https://universalmind.tv/informatics/read/language/index.html",
+      "project": "Universal Informatics",
+      "format": "HTML",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "Language Atlas · page explanations",
+      "url": "https://universalmind.tv/informatics/atlas-guides/language-atlas.json?v=2026-11-01-page-narrative-3",
+      "project": "Universal Informatics",
+      "format": "JSON",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "Language Atlas · page explanations",
+      "url": "https://universalmind.tv/informatics/atlas-guides/language-atlas.csv?v=2026-11-01-page-narrative-3",
+      "project": "Universal Informatics",
+      "format": "CSV",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "Language Atlas · page explanations",
+      "url": "https://universalmind.tv/informatics/atlas-guides/language-atlas.md?v=2026-11-01-page-narrative-3",
+      "project": "Universal Informatics",
+      "format": "Markdown",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "Transcription Atlas",
+      "url": "https://universalmind.tv/informatics/read/transcription/index.html",
+      "project": "Universal Informatics",
+      "format": "HTML",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "Transcription Atlas · page explanations",
+      "url": "https://universalmind.tv/informatics/atlas-guides/transcription-atlas.json?v=2026-11-01-page-narrative-3",
+      "project": "Universal Informatics",
+      "format": "JSON",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "Transcription Atlas · page explanations",
+      "url": "https://universalmind.tv/informatics/atlas-guides/transcription-atlas.csv?v=2026-11-01-page-narrative-3",
+      "project": "Universal Informatics",
+      "format": "CSV",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "Transcription Atlas · page explanations",
+      "url": "https://universalmind.tv/informatics/atlas-guides/transcription-atlas.md?v=2026-11-01-page-narrative-3",
+      "project": "Universal Informatics",
+      "format": "Markdown",
       "access": "Public",
       "description": ""
     },

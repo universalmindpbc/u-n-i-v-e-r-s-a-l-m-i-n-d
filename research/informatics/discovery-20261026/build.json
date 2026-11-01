@@ -1,10 +1,10 @@
 {
-  "datasetManifestSHA256": "40e2445e2af206e44395523ffe034485ae1291f6e4e8cc4251806f9b0c25ebc0",
+  "datasetManifestSHA256": "2b53052b12e0eae20f843aae4e18ce4687bf7d387f890227315ef19a75bf839a",
   "generatedAt": "2026-10-26",
   "publications": 1223,
   "atlas": 1001,
   "experiments": 2,
-  "pages": 2238,
+  "pages": 2241,
   "sourceHashes": [
     {
       "path": "library.js",
@@ -2319,8 +2319,11 @@
     "read/index.html",
     "read/provenance.html",
     "read/music/index.html",
-    "read/quantum/index.html",
     "read/vision/index.html",
-    "read/computer-vision/index.html"
+    "read/computer-vision/index.html",
+    "read/quantum/index.html",
+    "read/molecular/index.html",
+    "read/language/index.html",
+    "read/transcription/index.html"
   ]
 }

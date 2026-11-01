@@ -45,7 +45,7 @@
     "question": "How can OXT–OXTR molecular binding and structure be explored?",
     "subject": "Molecular structure and interaction",
     "url": "https://universalmind.tv/informatics/molecular/",
-    "wiki": "https://universalmind.tv/informatics/molecular/"
+    "wiki": "https://universalmind.tv/informatics/read/molecular/index.html"
   },
   {
     "id": "language",
@@ -53,6 +53,14 @@
     "question": "How do language, mantra and related research connect to the mental-health investigation?",
     "subject": "Language and mantra research",
     "url": "https://universalmind.tv/informatics/?entry=research&area=language",
-    "wiki": "https://universalmind.tv/informatics/library.html?collection=language"
+    "wiki": "https://universalmind.tv/informatics/read/language/index.html"
+  },
+  {
+    "id": "transcription",
+    "title": "Transcription Atlas",
+    "question": "Explore whether the four M9 P24 geometries help predict OXTR binding-site locations.",
+    "subject": "OXTR transcription-factor binding sites, source evidence and coordinate comparisons",
+    "url": "https://universalmind.tv/informatics/?entry=research&area=transcription",
+    "wiki": "https://universalmind.tv/informatics/read/transcription/index.html"
   }
 ]

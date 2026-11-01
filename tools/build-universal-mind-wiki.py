@@ -67,6 +67,7 @@ def resource(title, path, project, format='HTML', access='Public', description='
     return dict(title=title, url=path if path.startswith('https://') else ORIGIN+path,
                 project=project, format=format, access=access, description=description)
 
+music_downloads=json.loads((ROOT/'Informatics/music-atlas/music-atlas.json').read_text())['downloads']
 quantum_downloads=json.loads((ROOT/'Informatics/quantum/reading/quantum-atlas.json').read_text())['downloads']
 resources = [
     resource('Universal Mind', '/', 'Universal Mind', access='Invitation entry; wiki link is public'),
@@ -89,17 +90,17 @@ resources = [
     resource('Informatics wiki', '/informatics/read/', 'Universal Informatics'),
     resource('Publication register', '/informatics/read/publications/index.html', 'Universal Informatics'),
     resource('Hyperspectral Imaging and complete source register', '/informatics/read/hyperspectral/index.html', 'Universal Informatics'),
-    resource('Music Atlas: six models and measurement architecture', '/informatics/read/music/index.html', 'Universal Informatics'),
-    resource('Music Atlas complete data', '/informatics/music-atlas/music-atlas.json', 'Universal Informatics', 'JSON'),
-    resource('Music Atlas complete CSV', '/informatics/music-atlas/music-atlas.csv', 'Universal Informatics', 'CSV'),
-    resource('Music Atlas explanations and reading instructions', '/informatics/music-atlas/music-atlas.md', 'Universal Informatics', 'Markdown'),
+    resource('Music Atlas: research questions, measurement and musical models', '/informatics/read/music/index.html', 'Universal Informatics'),
+    resource('Music Atlas complete data', music_downloads['json'], 'Universal Informatics', 'JSON'),
+    resource('Music Atlas complete CSV', music_downloads['csv'], 'Universal Informatics', 'CSV'),
+    resource('Music Atlas research and explanations', music_downloads['markdown'], 'Universal Informatics', 'Markdown'),
     resource('Quantum Atlas: purpose, AI agents, participation and results', '/informatics/read/quantum/index.html', 'Universal Informatics'),
     resource('Quantum Atlas agent guide and chart data', quantum_downloads['json'], 'Universal Informatics', 'JSON'),
     resource('Quantum Atlas agent guide and chart data CSV', quantum_downloads['csv'], 'Universal Informatics', 'CSV'),
-    resource('Quantum Atlas explanations and reading instructions', quantum_downloads['md'], 'Universal Informatics', 'Markdown'),
+    resource('Quantum Atlas purpose, features and participation', quantum_downloads['md'], 'Universal Informatics', 'Markdown'),
     resource('Vision Atlas: EMDR and ocular biology', '/informatics/read/vision/index.html', 'Universal Informatics', description='Human visual stimulation and the hexagonal tracking hypothesis.'),
     resource('Computer vision for genomics', '/informatics/read/computer-vision/index.html', 'Universal Informatics', description='Hyperspectral image-analysis algorithm research.'),
-    resource('Molecular Atlas', '/informatics/molecular/', 'Universal Informatics'),
+    resource('Molecular Atlas', '/informatics/read/molecular/index.html', 'Universal Informatics'),
     resource('Geometry Atlas M1–M1001', '/informatics/read/atlas/index.html', 'Universal Informatics'),
     resource('Experiments', '/informatics/read/experiments/index.html', 'Universal Informatics'),
     resource('Data, methods and checksums', '/informatics/read/data.html', 'Universal Informatics'),
@@ -111,6 +112,14 @@ resources = [
     resource('Atlas JSON bundle', '/informatics/pilot-v1/m1-m1001-data.zip', 'Universal Informatics', 'ZIP / JSON'),
     resource('Atlas CSV bundle', '/informatics/pilot-v1/m1-m1001-csv.zip', 'Universal Informatics', 'ZIP / CSV'),
 ]
+for topic in json.loads((ROOT/'tools/atlas-topic-directory.json').read_text()):
+    if topic['id'] in ['transcription','language']:
+        resources.append(resource(topic['title'],topic['wiki'],'Universal Informatics'))
+    guide=ROOT/('Informatics/atlas-guides/'+topic['id']+'-atlas.json')
+    if guide.exists():
+        for fmt,url in json.loads(guide.read_text())['downloads'].items():
+            resources.append(resource(topic['title']+' · page explanations',url,'Universal Informatics','Markdown' if fmt=='md' else fmt.upper()))
+
 # Reuse the approved Science destinations so retired dossiers cannot return here.
 research_collections = re.findall(
     r'\bid:\s*"([^"]+)"[\s\S]*?repository:\s*\{\s*collection:\s*"([^"]+)",\s*url:\s*"([^"]+)"',

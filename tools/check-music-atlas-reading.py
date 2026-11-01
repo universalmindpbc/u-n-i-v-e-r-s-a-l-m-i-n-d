@@ -8,7 +8,7 @@ SITE=ROOT/'Informatics'
 data=json.loads((SITE/'music-atlas/music-atlas.json').read_text())
 html=(SITE/'index.html').read_text()
 baseline=subprocess.check_output(['git','show','26ca796910c25c21f98d01b74f614a57f21ec60f:Informatics/index.html'],cwd=ROOT,text=True)
-clean=re.sub(r'<!-- (?:QUANTUM ATLAS|ATLAS TOPICS) (?:METADATA|MACHINE|DOWNLOADS) START -->[\s\S]*?<!-- (?:QUANTUM ATLAS|ATLAS TOPICS) (?:METADATA|MACHINE|DOWNLOADS) END -->\n?','',html)
+clean=re.sub(r'<!-- (?:QUANTUM ATLAS|ATLAS TOPICS|ATLAS NARRATIVE) (?:METADATA|MACHINE|DOWNLOADS) START -->[\s\S]*?<!-- (?:QUANTUM ATLAS|ATLAS TOPICS|ATLAS NARRATIVE) (?:METADATA|MACHINE|DOWNLOADS) END -->\n?','',html)
 for kind in ['METADATA','MACHINE','DOWNLOADS']:
     clean=re.sub(r'<!-- MUSIC ATLAS '+kind+r' START -->[\s\S]*?<!-- MUSIC ATLAS '+kind+r' END -->\n?','',clean)
 assert re.sub(r'>\s+<','><',clean).strip()==re.sub(r'>\s+<','><',baseline).strip(),'Existing human page changed'
@@ -82,6 +82,6 @@ assert 'read/music/index.html' in (SITE/'llms.txt').read_text()
 assert 'read/music/index.html' in (ROOT/'llms.txt').read_text()
 assert 'music/index.html' in (SITE/'read/index.html').read_text()
 report={'passed':True,'raw_html_models':len(d.models),'raw_html_tables':d.tables,'inline_json_matches_download':True,'structured_models':6,'csv_full_reconstruction':True,'wiki_without_javascript':True,'human_source_unchanged_except_authorized_footer':True,'existing_runtime_unchanged':True,'downloads_on_primary_and_wiki':True}
-out=ROOT/'research/informatics/music-ai-20261031';out.mkdir(parents=True,exist_ok=True)
-(out/'source-verification.json').write_text(json.dumps(report,indent=2)+'\n')
+out=ROOT/'research/informatics/wiki-focus-20261101';out.mkdir(parents=True,exist_ok=True)
+(out/'music-source-verification.json').write_text(json.dumps(report,indent=2)+'\n')
 print(json.dumps(report))

@@ -1,14 +1,75 @@
 # Universal Informatics Music Atlas
 
-[Interactive Music Atlas](https://universalmind.tv/informatics/?entry=research&area=sound) · [AI / LLM Wiki](https://universalmind.tv/informatics/read/music/index.html)
+POSSIBLE FIBONACCI STRUCTURES
 
-## Reading this record
+### Electronic music
 
-- Read the six model records together with their equations, tables and workings. The wording is taken from the interactive Music Atlas.
-- Keep units and conventions: phrase lengths count bars; chromatic pitch classes exclude the repeated octave endpoint; frequency values are in hertz.
-- Use the selected tuning reference and key when discussing an interactive setting. The default is C major with A4 = 440 Hz.
-- The measurement chapter describes software visual mockups and planned streams. No participant time-series samples are included in this record.
-- Follow the source links for Geometry Atlas records and citations. Cite the ordinary Music Atlas URL or the linked model section when discussing the material.
+Explore the evidence for music, auditory stimulation and molecular responses.
+
+RESEARCH QUESTION
+
+### does music modulate our emotions because of balance, geometry, resolution and symmetry?
+
+A study of electronic music and Fibonacci numbers
+
+#### Research questions
+
+- Does electronic music modulate gene expression of OXTR?
+
+- Within the above deliverable, do Fibonacci* numbers predict gene expression locations, via transcription factor binding sites?
+
+*Fibonacci Sequence Modulus 9 Pisano 24 and it's 4 subset sequences.
+
+measurement via OXTR transcription
+
+Proposed study · mRNA sequencing
+
+## Measurement architecture
+
+MUSIC ATLAS · MEASUREMENT ARCHITECTURE
+
+### Non-invasive measurement before mRNA sequencing
+
+Validating the research approach for stakeholders before a substantial investment in mRNA sequencing.
+
+Our hypothesis: does electronic music modulate *OXTR* via Fibonacci numbers? Our initial non-invasive study, **N = 33**, brings physiology, audience experience and musical structure together to validate the research approach and establish the case for mRNA sequencing investment.
+
+These graphics are visual mockups of a real **Universal Informatics Music Atlas Python script**: custom software Ben Korbel is developing with Gemini to measure and unify these metrics together as one. Implementation is in progress.
+
+#### Brain & autonomic response
+
+EEG from Muse S Athena, galvanic skin response (GSR / EDA), heart-rate variability, **HRV power spectral density (PSD)** and baroreflex sensitivity. Brain-state analysis brings amplitude and phase–amplitude coupling onto the shared timeline.
+
+#### Optical signals & inference
+
+A 400-channel laboratory hyperspectral analysis and smartphone-grade RGB analysis reconstructed into 31 spectral bands. Inferred oxytocin is an exploratory model output created by Immersion Neuroscience via research with DARPA. Explore [Immersion Neuroscience ↗](https://www.getimmersion.com/) and [SIX ↗](https://www.your6.com/).
+
+#### Audience & musical structure
+
+Continuous audience feedback and a participant peak-moment trigger, aligned with real-time song analysis: position within a **64-bar sequence**, melodic anticipation and resolution, chords, arpeggios, and Fibonacci / Pisano landmarks.
+
+01 · Unified measurement timeline
+The landscape overview brings the streams together, from EEG at the top to Fibonacci coding at the bottom.
+
+02 · Brain state, amplitude & coupling
+Brain state, amplitude and coupling alongside audience peaks, cardiovascular features and spectral imaging.
+
+03 · A peak moment across the streams
+The vertical view begins with EEG and aligns the measurement streams around an audience-reported peak moment.
+
+NEXT STAGE · mRNA SEQUENCING
+
+#### Validating the investment for stakeholders
+
+Following validation of the research approach through the **N = 33** non-invasive study, we will invest in mRNA sequencing through the [Kinghorn Centre for Clinical Genomics at the Garvan Institute of Medical Research ↗](https://www.garvan.org.au/research/services/genome), from whom we have received a commercial quote.
+
+**mRNA sequencing represents an investment of A$600–A$1,000 per participant.** The initial non-invasive phase establishes the case for that investment for stakeholders. Sequencing will compare OXTR mRNA expression in samples collected before and after the intervention or song.
+
+| Order | Figure | Description | Image |
+| --- | --- | --- | --- |
+| 1 | 01 · Unified measurement timeline The landscape overview brings the streams together, from EEG at the top to Fibonacci coding at the bottom. | Illustrative landscape timeline, from EEG at the top through HRV PSD, baroreflex, GSR, inferred hormone placeholders, rhythm and melodic resolution to Fibonacci coding at the bottom. | media/music-measurement/unified-timeline.jpeg |
+| 2 | 02 · Brain state, amplitude & coupling Brain state, amplitude and coupling alongside audience peaks, cardiovascular features and spectral imaging. | Illustrative dashboard with EEG phase–amplitude coupling, an audience response timeline, a Fibonacci/Pisano clock, HRV PSD, baroreflex features, an inference network and a hyperspectral cube. | media/music-measurement/brain-state-dashboard.jpeg |
+| 3 | 03 · A peak moment across the streams The vertical view begins with EEG and aligns the measurement streams around an audience-reported peak moment. | Illustrative vertical stack beginning with EEG, followed by GSR, HRV PSD, baroreflex, an inferred oxytocin placeholder, laboratory and RGB spectral views, audience feedback, musical structure and Fibonacci coding. | media/music-measurement/peak-moment-timeline.jpeg |
 
 ## SEQUENCE STRUCTURE · Doubling the phrase
 
@@ -240,55 +301,18 @@ Gamma positions: 24, 4, 8, 12, 16, 20. Gamma Alpha values: 9, 3, 3, 9, 6, 6.
 
 [Complete M9/P24 JSON](https://universalmind.tv/informatics/pilot-v1/m9.json) · [Geometry explanations](https://universalmind.tv/informatics/read/atlas/m9.html)
 
-## Measurement architecture
+## Data conventions
 
-MUSIC ATLAS · MEASUREMENT ARCHITECTURE
-
-### Non-invasive measurement before mRNA sequencing
-
-Validating the research approach for stakeholders before a substantial investment in mRNA sequencing.
-
-Our hypothesis: does electronic music modulate *OXTR* via Fibonacci numbers? Our initial non-invasive study, **N = 33**, brings physiology, audience experience and musical structure together to validate the research approach and establish the case for mRNA sequencing investment.
-
-These graphics are visual mockups of a real **Universal Informatics Music Atlas Python script**: custom software Ben Korbel is developing with Gemini to measure and unify these metrics together as one. Implementation is in progress.
-
-#### Brain & autonomic response
-
-EEG from Muse S Athena, galvanic skin response (GSR / EDA), heart-rate variability, **HRV power spectral density (PSD)** and baroreflex sensitivity. Brain-state analysis brings amplitude and phase–amplitude coupling onto the shared timeline.
-
-#### Optical signals & inference
-
-A 400-channel laboratory hyperspectral analysis and smartphone-grade RGB analysis reconstructed into 31 spectral bands. Inferred oxytocin is an exploratory model output created by Immersion Neuroscience via research with DARPA. Explore [Immersion Neuroscience ↗](https://www.getimmersion.com/) and [SIX ↗](https://www.your6.com/).
-
-#### Audience & musical structure
-
-Continuous audience feedback and a participant peak-moment trigger, aligned with real-time song analysis: position within a **64-bar sequence**, melodic anticipation and resolution, chords, arpeggios, and Fibonacci / Pisano landmarks.
-
-01 · Unified measurement timeline
-The landscape overview brings the streams together, from EEG at the top to Fibonacci coding at the bottom.
-
-02 · Brain state, amplitude & coupling
-Brain state, amplitude and coupling alongside audience peaks, cardiovascular features and spectral imaging.
-
-03 · A peak moment across the streams
-The vertical view begins with EEG and aligns the measurement streams around an audience-reported peak moment.
-
-NEXT STAGE · mRNA SEQUENCING
-
-#### Validating the investment for stakeholders
-
-Following validation of the research approach through the **N = 33** non-invasive study, we will invest in mRNA sequencing through the [Kinghorn Centre for Clinical Genomics at the Garvan Institute of Medical Research ↗](https://www.garvan.org.au/research/services/genome), from whom we have received a commercial quote.
-
-**mRNA sequencing represents an investment of A$600–A$1,000 per participant.** The initial non-invasive phase establishes the case for that investment for stakeholders. Sequencing will compare OXTR mRNA expression in samples collected before and after the intervention or song.
-
-| Order | Figure | Description | Image |
-| --- | --- | --- | --- |
-| 1 | 01 · Unified measurement timeline The landscape overview brings the streams together, from EEG at the top to Fibonacci coding at the bottom. | Illustrative landscape timeline, from EEG at the top through HRV PSD, baroreflex, GSR, inferred hormone placeholders, rhythm and melodic resolution to Fibonacci coding at the bottom. | media/music-measurement/unified-timeline.jpeg |
-| 2 | 02 · Brain state, amplitude & coupling Brain state, amplitude and coupling alongside audience peaks, cardiovascular features and spectral imaging. | Illustrative dashboard with EEG phase–amplitude coupling, an audience response timeline, a Fibonacci/Pisano clock, HRV PSD, baroreflex features, an inference network and a hyperspectral cube. | media/music-measurement/brain-state-dashboard.jpeg |
-| 3 | 03 · A peak moment across the streams The vertical view begins with EEG and aligns the measurement streams around an audience-reported peak moment. | Illustrative vertical stack beginning with EEG, followed by GSR, HRV PSD, baroreflex, an inferred oxytocin placeholder, laboratory and RGB spectral views, audience feedback, musical structure and Fibonacci coding. | media/music-measurement/peak-moment-timeline.jpeg |
+- Read the six model records together with their equations, tables and workings. The wording is taken from the interactive Music Atlas.
+- Keep units and conventions: phrase lengths count bars; chromatic pitch classes exclude the repeated octave endpoint; frequency values are in hertz.
+- Use the selected tuning reference and key when discussing an interactive setting. The default is C major with A4 = 440 Hz.
+- The measurement chapter describes software visual mockups and planned streams. No participant time-series samples are included in this record.
+- Follow the source links for Geometry Atlas records and citations. Cite the ordinary Music Atlas URL or the linked model section when discussing the material.
 
 ## Source and downloads
 
+[Interactive Music Atlas](https://universalmind.tv/informatics/?entry=research&area=sound) · [AI / LLM Wiki](https://universalmind.tv/informatics/read/music/index.html)
+
 Source: atlas-visuals.js · SHA-256: 72ebebbb51ad51b094ec5072e051885fdf134ccd51bf0a9bc73ba9dfddbb5235
 
-[JSON](https://universalmind.tv/informatics/music-atlas/music-atlas.json) · [CSV](https://universalmind.tv/informatics/music-atlas/music-atlas.csv) · [Markdown](https://universalmind.tv/informatics/music-atlas/music-atlas.md)
+[JSON](https://universalmind.tv/informatics/music-atlas/music-atlas.json?v=2026-11-01-page-narrative-3) · [CSV](https://universalmind.tv/informatics/music-atlas/music-atlas.csv?v=2026-11-01-page-narrative-3) · [Markdown](https://universalmind.tv/informatics/music-atlas/music-atlas.md?v=2026-11-01-page-narrative-3)

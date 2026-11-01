@@ -1,0 +1,56 @@
+{
+  "schema": "universal-informatics/atlas-page-guide/v1",
+  "title": "Computer vision for genomics",
+  "version": "2026-11-01-page-narrative-3",
+  "url": "https://universalmind.tv/informatics/?about",
+  "wiki": "https://universalmind.tv/informatics/read/computer-vision/index.html",
+  "page_narrative": [
+    {
+      "tag": "h3",
+      "text": "Initial focus · Computer vision for genomics"
+    },
+    {
+      "tag": "p",
+      "text": "Inspired by research into how geometric architectures and Fibonacci-ordered dynamics can protect quantum information, we are investigating whether geometry derived from Fibonacci Pisano periods can improve the computational efficiency of hyperspectral image analysis for genomics."
+    },
+    {
+      "tag": "h2",
+      "text": "A measurable first step"
+    },
+    {
+      "tag": "p",
+      "text": "Our proposed approach explores equilateral triangular meshes and tetrahedral models, comparing computational cost, processing speed and accuracy against established methods."
+    },
+    {
+      "tag": "p",
+      "text": "The initial biological application is to investigate spectral patterns potentially associated with OXTR gene expression, evaluated against independent molecular measurements."
+    }
+  ],
+  "source_data": {},
+  "related_data": [
+    {
+      "label": "Hyperspectral Imaging · complete chapter and source register",
+      "url": "https://universalmind.tv/informatics/read/hyperspectral/index.html"
+    },
+    {
+      "label": "Hyperspectral source register JSON",
+      "url": "https://universalmind.tv/informatics/library-data/hyperspectral-register.json"
+    },
+    {
+      "label": "Hyperspectral source register CSV",
+      "url": "https://universalmind.tv/informatics/library-data/hyperspectral-register.csv"
+    }
+  ],
+  "sources": [
+    {
+      "path": "index.html",
+      "url": "https://universalmind.tv/informatics/index.html",
+      "sha256": "a8a3c48bb8e24800c3d0812c654d36ef6f03422cdce94a096da7c2017d92395d"
+    }
+  ],
+  "downloads": {
+    "json": "https://universalmind.tv/informatics/atlas-guides/computer-vision-atlas.json?v=2026-11-01-page-narrative-3",
+    "csv": "https://universalmind.tv/informatics/atlas-guides/computer-vision-atlas.csv?v=2026-11-01-page-narrative-3",
+    "md": "https://universalmind.tv/informatics/atlas-guides/computer-vision-atlas.md?v=2026-11-01-page-narrative-3"
+  }
+}

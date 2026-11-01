@@ -1,0 +1,76 @@
+{
+  "schema": "universal-informatics/atlas-page-guide/v1",
+  "title": "Language Atlas",
+  "version": "2026-11-01-page-narrative-3",
+  "url": "https://universalmind.tv/informatics/?entry=research&area=language",
+  "wiki": "https://universalmind.tv/informatics/read/language/index.html",
+  "page_narrative": [
+    {
+      "tag": "p",
+      "text": "Language Atlas"
+    },
+    {
+      "tag": "h1",
+      "text": "Language & molecular biology"
+    },
+    {
+      "tag": "p",
+      "text": "From mantra and meditation to communication, psychotherapy and epigenomics."
+    },
+    {
+      "tag": "p",
+      "text": "Explore the original Mantra collection alongside recent molecular and clinical research."
+    },
+    {
+      "tag": "h2",
+      "text": "Mantra & meditation"
+    },
+    {
+      "tag": "p",
+      "text": "Active recitation, mental practice and mindfulness, with gene expression, methylation and physiological outcomes identified separately."
+    },
+    {
+      "tag": "h2",
+      "text": "Talking therapies"
+    },
+    {
+      "tag": "p",
+      "text": "Research on psychotherapy and molecular change, including trauma-focused therapy, cognitive behavioural therapy and narrative exposure."
+    },
+    {
+      "tag": "h2",
+      "text": "Human communication"
+    },
+    {
+      "tag": "p",
+      "text": "A developing research question: how do interpersonal experiences relate to our epigenome? Whole-treatment associations remain distinct from effects of particular words."
+    }
+  ],
+  "source_data": {},
+  "related_data": [
+    {
+      "label": "Language research library",
+      "url": "https://universalmind.tv/informatics/library.html?collection=language"
+    },
+    {
+      "label": "Language source collection",
+      "url": "https://universalmind.tv/informatics/library-data/language-source.json"
+    },
+    {
+      "label": "Language research edition",
+      "url": "https://universalmind.tv/informatics/library-data/language-edition.json"
+    }
+  ],
+  "sources": [
+    {
+      "path": "index.html",
+      "url": "https://universalmind.tv/informatics/index.html",
+      "sha256": "a8a3c48bb8e24800c3d0812c654d36ef6f03422cdce94a096da7c2017d92395d"
+    }
+  ],
+  "downloads": {
+    "json": "https://universalmind.tv/informatics/atlas-guides/language-atlas.json?v=2026-11-01-page-narrative-3",
+    "csv": "https://universalmind.tv/informatics/atlas-guides/language-atlas.csv?v=2026-11-01-page-narrative-3",
+    "md": "https://universalmind.tv/informatics/atlas-guides/language-atlas.md?v=2026-11-01-page-narrative-3"
+  }
+}

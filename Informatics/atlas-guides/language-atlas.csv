@@ -1,0 +1,58 @@
+path,type,value
+,object,
+/schema,string,universal-informatics/atlas-page-guide/v1
+/title,string,Language Atlas
+/version,string,2026-11-01-page-narrative-3
+/url,string,https://universalmind.tv/informatics/?entry=research&area=language
+/wiki,string,https://universalmind.tv/informatics/read/language/index.html
+/page_narrative,array,10
+/page_narrative/0,object,
+/page_narrative/0/tag,string,p
+/page_narrative/0/text,string,Language Atlas
+/page_narrative/1,object,
+/page_narrative/1/tag,string,h1
+/page_narrative/1/text,string,Language & molecular biology
+/page_narrative/2,object,
+/page_narrative/2/tag,string,p
+/page_narrative/2/text,string,"From mantra and meditation to communication, psychotherapy and epigenomics."
+/page_narrative/3,object,
+/page_narrative/3/tag,string,p
+/page_narrative/3/text,string,Explore the original Mantra collection alongside recent molecular and clinical research.
+/page_narrative/4,object,
+/page_narrative/4/tag,string,h2
+/page_narrative/4/text,string,Mantra & meditation
+/page_narrative/5,object,
+/page_narrative/5/tag,string,p
+/page_narrative/5/text,string,"Active recitation, mental practice and mindfulness, with gene expression, methylation and physiological outcomes identified separately."
+/page_narrative/6,object,
+/page_narrative/6/tag,string,h2
+/page_narrative/6/text,string,Talking therapies
+/page_narrative/7,object,
+/page_narrative/7/tag,string,p
+/page_narrative/7/text,string,"Research on psychotherapy and molecular change, including trauma-focused therapy, cognitive behavioural therapy and narrative exposure."
+/page_narrative/8,object,
+/page_narrative/8/tag,string,h2
+/page_narrative/8/text,string,Human communication
+/page_narrative/9,object,
+/page_narrative/9/tag,string,p
+/page_narrative/9/text,string,A developing research question: how do interpersonal experiences relate to our epigenome? Whole-treatment associations remain distinct from effects of particular words.
+/source_data,object,
+/related_data,array,3
+/related_data/0,object,
+/related_data/0/label,string,Language research library
+/related_data/0/url,string,https://universalmind.tv/informatics/library.html?collection=language
+/related_data/1,object,
+/related_data/1/label,string,Language source collection
+/related_data/1/url,string,https://universalmind.tv/informatics/library-data/language-source.json
+/related_data/2,object,
+/related_data/2/label,string,Language research edition
+/related_data/2/url,string,https://universalmind.tv/informatics/library-data/language-edition.json
+/sources,array,1
+/sources/0,object,
+/sources/0/path,string,index.html
+/sources/0/url,string,https://universalmind.tv/informatics/index.html
+/sources/0/sha256,string,a8a3c48bb8e24800c3d0812c654d36ef6f03422cdce94a096da7c2017d92395d
+/downloads,object,
+/downloads/json,string,https://universalmind.tv/informatics/atlas-guides/language-atlas.json?v=2026-11-01-page-narrative-3
+/downloads/csv,string,https://universalmind.tv/informatics/atlas-guides/language-atlas.csv?v=2026-11-01-page-narrative-3
+/downloads/md,string,https://universalmind.tv/informatics/atlas-guides/language-atlas.md?v=2026-11-01-page-narrative-3

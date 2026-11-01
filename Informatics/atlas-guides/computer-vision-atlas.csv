@@ -1,0 +1,43 @@
+path,type,value
+,object,
+/schema,string,universal-informatics/atlas-page-guide/v1
+/title,string,Computer vision for genomics
+/version,string,2026-11-01-page-narrative-3
+/url,string,https://universalmind.tv/informatics/?about
+/wiki,string,https://universalmind.tv/informatics/read/computer-vision/index.html
+/page_narrative,array,5
+/page_narrative/0,object,
+/page_narrative/0/tag,string,h3
+/page_narrative/0/text,string,Initial focus · Computer vision for genomics
+/page_narrative/1,object,
+/page_narrative/1/tag,string,p
+/page_narrative/1/text,string,"Inspired by research into how geometric architectures and Fibonacci-ordered dynamics can protect quantum information, we are investigating whether geometry derived from Fibonacci Pisano periods can improve the computational efficiency of hyperspectral image analysis for genomics."
+/page_narrative/2,object,
+/page_narrative/2/tag,string,h2
+/page_narrative/2/text,string,A measurable first step
+/page_narrative/3,object,
+/page_narrative/3/tag,string,p
+/page_narrative/3/text,string,"Our proposed approach explores equilateral triangular meshes and tetrahedral models, comparing computational cost, processing speed and accuracy against established methods."
+/page_narrative/4,object,
+/page_narrative/4/tag,string,p
+/page_narrative/4/text,string,"The initial biological application is to investigate spectral patterns potentially associated with OXTR gene expression, evaluated against independent molecular measurements."
+/source_data,object,
+/related_data,array,3
+/related_data/0,object,
+/related_data/0/label,string,Hyperspectral Imaging · complete chapter and source register
+/related_data/0/url,string,https://universalmind.tv/informatics/read/hyperspectral/index.html
+/related_data/1,object,
+/related_data/1/label,string,Hyperspectral source register JSON
+/related_data/1/url,string,https://universalmind.tv/informatics/library-data/hyperspectral-register.json
+/related_data/2,object,
+/related_data/2/label,string,Hyperspectral source register CSV
+/related_data/2/url,string,https://universalmind.tv/informatics/library-data/hyperspectral-register.csv
+/sources,array,1
+/sources/0,object,
+/sources/0/path,string,index.html
+/sources/0/url,string,https://universalmind.tv/informatics/index.html
+/sources/0/sha256,string,a8a3c48bb8e24800c3d0812c654d36ef6f03422cdce94a096da7c2017d92395d
+/downloads,object,
+/downloads/json,string,https://universalmind.tv/informatics/atlas-guides/computer-vision-atlas.json?v=2026-11-01-page-narrative-3
+/downloads/csv,string,https://universalmind.tv/informatics/atlas-guides/computer-vision-atlas.csv?v=2026-11-01-page-narrative-3
+/downloads/md,string,https://universalmind.tv/informatics/atlas-guides/computer-vision-atlas.md?v=2026-11-01-page-narrative-3

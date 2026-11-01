@@ -1,0 +1,37 @@
+# Language Atlas
+
+Language Atlas
+
+## Language & molecular biology
+
+From mantra and meditation to communication, psychotherapy and epigenomics.
+
+Explore the original Mantra collection alongside recent molecular and clinical research.
+
+## Mantra & meditation
+
+Active recitation, mental practice and mindfulness, with gene expression, methylation and physiological outcomes identified separately.
+
+## Talking therapies
+
+Research on psychotherapy and molecular change, including trauma-focused therapy, cognitive behavioural therapy and narrative exposure.
+
+## Human communication
+
+A developing research question: how do interpersonal experiences relate to our epigenome? Whole-treatment associations remain distinct from effects of particular words.
+
+## Source data
+
+- [Language research library](https://universalmind.tv/informatics/library.html?collection=language)
+- [Language source collection](https://universalmind.tv/informatics/library-data/language-source.json)
+- [Language research edition](https://universalmind.tv/informatics/library-data/language-edition.json)
+
+## Downloads
+
+[JSON](https://universalmind.tv/informatics/atlas-guides/language-atlas.json?v=2026-11-01-page-narrative-3) · [CSV](https://universalmind.tv/informatics/atlas-guides/language-atlas.csv?v=2026-11-01-page-narrative-3) · [MD](https://universalmind.tv/informatics/atlas-guides/language-atlas.md?v=2026-11-01-page-narrative-3)
+
+[Interactive page](https://universalmind.tv/informatics/?entry=research&area=language) · [Wiki](https://universalmind.tv/informatics/read/language/index.html)
+
+## Sources
+
+- [index.html](https://universalmind.tv/informatics/index.html) · SHA-256: a8a3c48bb8e24800c3d0812c654d36ef6f03422cdce94a096da7c2017d92395d
