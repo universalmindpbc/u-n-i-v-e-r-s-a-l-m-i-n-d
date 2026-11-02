@@ -31,7 +31,7 @@ for (const row of manifest.records) {
 assert.match(html, /id="music-video" playsinline loop preload="none"/);
 assert.doesNotMatch(html, /autoplay/);
 assert.ok(js.includes('video.play()') && js.includes('manifest/video.m3u8'));
-assert.ok(html.includes('id="explore-enter"') && html.includes('value="7"'));
+assert.ok(html.includes('id="explore-enter"') && html.includes('value="24"'));
 assert.ok(html.includes('id="replay-story"'));assert.doesNotMatch(html,/data-stage=|id="sequence-play"/);
 for(const module of ['architecture.mjs','furnishings.mjs','site-features.mjs','landing-rain.js'])assert.ok(fs.statSync(path.join(root,'lab',module)).size>1000);
 console.log(JSON.stringify({ passed:true, originalReferences:manifest.records.length, selfHosted3D:true, planFallback:true, noIntake:true, visitorInitiatedMedia:true, places:7 }));

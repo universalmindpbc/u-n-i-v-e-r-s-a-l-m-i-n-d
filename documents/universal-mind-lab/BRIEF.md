@@ -1,6 +1,6 @@
 # Universal Mind Lab — creative and development brief
 
-**Version:** 0.12 · **Date:** 2 November 2026 · **Owner:** Ben Korbel
+**Version:** 0.13 · **Date:** 3 November 2026 · **Owner:** Ben Korbel
 **Status:** Working concept for discussion, collaboration and staged visual development. Architectural engineering, operating arrangements and named partnerships remain to be established.
 
 ## 1. Purpose
@@ -609,3 +609,16 @@ Ben approved the Lab design in the staged revision recorded at `847d054528e60a69
 The homepage’s **Attend Events** destination now leads to a choice between **Universal Mind Lab** and **A Thousand Minds**. Both have distinct visual entries; the Lab uses a clean capture of the approved landscape, and A Thousand Minds retains its existing event artwork. Reuse the existing Events invitation session and the homepage’s persistent navigation shell. Preserve the Lab landing and the existing A Thousand Minds film experience. Include a Home return on the choice and an Events return inside A Thousand Minds. Browser Back also returns from the Lab to the choice.
 
 The existing `/events/?experience=1` route becomes the choice. A Thousand Minds remains within Events at `/events/?experience=1&event=athousandminds`; the Lab remains at `/lab/`. Publishing follows the existing Panthur staging workflow.
+
+
+## 26. Festival launch, camera circuit and live performance — 3 November 2026
+
+This direction replaces the poster-based Events choice in section 25. Events is a minimal typographic choice over the existing Fibonacci rain: **Universal Mind Lab** and **A Thousand Minds**. Remove poster graphics and card layouts. Keep the text readable with a dark background scrim; retain the A Thousand Minds tagline. The Lab action reads **Explore the festival pop-up** and opens `/lab/?launch=1` directly into the animated festival, without another rain landing or extra launch click. Standalone `/lab/` retains its direct-entry control.
+
+Start the music-video overlay at **24%**. After the existing construction, sunset and seven-area sequence, add a continuous **24-second camera circuit**: front approach and stage, Apple listening edge, behind the main stage, support area, the reverse side of both Linfox video trailers, playground, then the wide overview. Hide labels and editorial overlays during the circuit. Restore the selected labels setting at completion; dragging, keyboard navigation or another camera choice interrupts the automated movement. Reduced-motion visitors skip the circuit.
+
+Keep the root homepage shell as fullscreen owner. Entering the Lab inside an already-fullscreen shell must not trigger an error notice or empty white status box. Move NSW Education to the left of the runway opposite Vogue on the right.
+
+Add an animated stage ensemble for the proposed Tame Impala performance: DJ with decks, vocalist with microphone, guitarist and drummer with a kit. These are visual performance figures; the existing single footer proposal disclosure remains in force. The dance-floor crowd faces the stage, with varied poses and movement.
+
+Add **Lineup** to the lower view controls. Visitors can show or hide the artist marks at any time; opening it dismisses overlapping detail content. Automatic opening/final overview appearances remain, with the final appearance after the camera circuit.

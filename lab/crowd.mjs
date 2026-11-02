@@ -42,7 +42,7 @@ export function createCrowd(THREE) {
   const names=['hip','waist','neck','head','nose','hair','ls','le','lw','rs','re','rw','lh','lk','la','rh','rk','ra','lf','rf'];
   function person(x,z,role,index){
     const p={x,z,role,index,scale:(1.6+rand()*.3)/1.8,phase:rand()*Math.PI*2,yaw:(rand()-.5)*.5,skin:pick(skins),shirt:pick(shirts),pants:pick(trousers),hair:pick(hairs),hairSize:.96+rand()*.12,action:index%3,joints:Object.fromEntries(names.map(n=>[n,new THREE.Vector3()])),rotation:new THREE.Quaternion(),bodyRotation:new THREE.Quaternion()};
-    if(role==='visitor'&&index>=56)p.yaw=rand()*Math.PI*2;
+    if(role==='visitor')p.yaw=index<56?Math.atan2(-x,-18.4-z)+(rand()-.5)*.12:rand()*Math.PI*2;
     return p;
   }
   const visitorPeople=[];

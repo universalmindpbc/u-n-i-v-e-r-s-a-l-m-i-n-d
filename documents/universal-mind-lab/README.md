@@ -44,3 +44,5 @@ Brief v0.11 adds the Earth → self → each other biofeedback journey, flowing 
 The v0.11 proposal also foregrounds free access, dissolving stigma, referral pathways, STEAM and fashion learning, and the travelling health-promotion inspiration.
 
 Brief v0.12 records Ben’s Lab design approval and the homepage → Events → Universal Mind Lab / A Thousand Minds choice. See [Events choice release](EVENTS-CHOICE-RELEASE.md).
+
+The November 3 revision uses a minimal Events choice over Fibonacci rain, direct festival launch, a 24% video blend, a continuous camera circuit, an animated stage ensemble and a visitor Lineup toggle. Current release evidence is recorded in `ORBIT-STAGE-RELEASE.md`.

@@ -152,3 +152,9 @@ body[data-entered="true"]:not([data-site-ready="true"]) .footline{visibility:vis
 @media(max-width:600px){.proposal-scroll{padding:40px 26px 25px}}
 @media(max-width:800px) and (min-height:501px){.artist-lineup{top:276px;left:20px;right:20px}.artist-marks{grid-template-columns:1.05fr 1.2fr 1fr 1.25fr;gap:10px;min-height:34px;max-width:none}.artist-mark{height:32px}.artist-flume{height:22px}.artist-sampa{height:26px}.lineup-more{font-size:8px;margin-top:8px}body[data-lineup-visible="true"] #labels{visibility:hidden}}
 @media(max-width:800px) and (min-height:501px){.artist-lineup::before{content:"";position:absolute;inset:-16px -20px -12px;background:linear-gradient(180deg,transparent,#edf0e6f2 25%,#edf0e6f2 70%,transparent);filter:blur(8px);z-index:-1;opacity:1;transition:opacity .7s}body[data-night="true"] .artist-lineup::before{opacity:0}}
+
+/* Cinematic pass retains the physical scene and hides only editorial overlays. */
+html[data-auto-launch="true"] #landing{display:none!important}
+#fullscreen-status[hidden]{display:none!important}#fullscreen-status:empty{display:none!important}
+body[data-night="true"] #fullscreen-status{background:#19313eeF;color:#edf1e8;border:1px solid #aac4c744}
+body[data-cinematic="true"] .intro,body[data-cinematic="true"] #artist-lineup,body[data-cinematic="true"] #labels{opacity:0;visibility:hidden;pointer-events:none}

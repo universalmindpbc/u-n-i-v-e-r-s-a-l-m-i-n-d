@@ -8,7 +8,8 @@
   <meta name="description" content="Universal Mind Lab — electronic music and fashion as mindfulness. A mental health initiative. Proposal.">
   <title>Universal Mind Lab</title>
   <link rel="icon" href="./assets/favicon.png">
-  <link rel="stylesheet" href="./lab.css?v=20261102river2">
+  <link rel="stylesheet" href="./lab.css?v=20261103orbit1">
+  <script>if(new URLSearchParams(location.search).get("launch")==="1")document.documentElement.dataset.autoLaunch="true";</script>
   <script type="importmap">{"imports":{"three":"./vendor/three.module.js"}}</script>
 </head>
 <body data-entered="false" data-build-stage="site" data-story="waiting">
@@ -52,7 +53,7 @@
       <button id="mix-toggle" type="button" aria-label="Music and video settings" aria-expanded="false" aria-controls="mix-panel">⋯</button>
       <div id="mix-panel" class="mix-panel" hidden>
         <p>Justice · Tame Impala<br><strong>Neverender</strong></p>
-        <label for="video-opacity">Video blend <output id="opacity-value" for="video-opacity">7%</output></label><input id="video-opacity" type="range" min="0" max="70" step="1" value="7">
+        <label for="video-opacity">Video blend <output id="opacity-value" for="video-opacity">24%</output></label><input id="video-opacity" type="range" min="0" max="70" step="1" value="24">
         <label for="music-volume">Volume <output id="volume-value" for="music-volume">65%</output></label><input id="music-volume" type="range" min="0" max="100" step="1" value="65">
         <button id="mix-close" type="button">Close settings</button>
       </div>
@@ -103,7 +104,7 @@
     <div class="compass" aria-hidden="true"><span>N</span><svg viewBox="0 0 40 40"><path d="M20 4L25 27 20 23 15 27Z" fill="currentColor"/><circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-opacity=".2"/></svg></div>
     <aside id="place-card" class="place-card" hidden aria-labelledby="place-title"><button id="place-close" class="close" aria-label="Close place detail">×</button><p id="place-number" class="eyebrow"></p><h2 id="place-title"></h2><p id="place-copy"></p><button id="interior-view" class="outline-button" hidden>Inside the pavilion ↗</button></aside>
     <p id="media-status" role="status" hidden></p>
-    <div class="view-tools" aria-label="View options"><button id="tour-toggle" aria-pressed="false">Tour</button><button id="rain-toggle" aria-pressed="false">Rain shelter</button><button id="layout-toggle" aria-pressed="false">Layout</button><button id="night-toggle" aria-pressed="false" aria-label="Switch to night"><span aria-hidden="true">◐</span> <span id="day-label">Day</span></button><button id="plan-toggle" aria-pressed="false"><span aria-hidden="true">▦</span> 2D plan</button><button id="labels-toggle" aria-pressed="true"><span aria-hidden="true">⌖</span> Labels</button><button id="reset-view" aria-label="Reset to overview"><span aria-hidden="true">↺</span> Reset</button></div>
+    <div class="view-tools" aria-label="View options"><button id="tour-toggle" aria-pressed="false">Tour</button><button id="rain-toggle" aria-pressed="false">Rain shelter</button><button id="layout-toggle" aria-pressed="false">Layout</button><button id="night-toggle" aria-pressed="false" aria-label="Switch to night"><span aria-hidden="true">◐</span> <span id="day-label">Day</span></button><button id="plan-toggle" aria-pressed="false"><span aria-hidden="true">▦</span> 2D plan</button><button id="labels-toggle" aria-pressed="true"><span aria-hidden="true">⌖</span> Labels</button><button id="lineup-toggle" aria-pressed="false" aria-controls="artist-lineup">Lineup</button><button id="reset-view" aria-label="Reset to overview"><span aria-hidden="true">↺</span> Reset</button></div>
     <footer class="explore-bar">
       <div class="explore-heading"><p class="membership">exclusive tickets via <a href="https://headspace.org.au/eora" target="_blank" rel="noopener noreferrer">headspace.org.au/eora <span aria-hidden="true">↗</span></a></p><span id="navigation-hint">Drag to look around · scroll to move closer</span></div>
       <nav id="place-list" aria-label="Explore places">
@@ -136,8 +137,8 @@
     <p class="detail-note">The interactive biofeedback demonstration collects no health data. Applications are not collected on this page.</p></div>
   </dialog>
   <noscript><style>#landing{display:none!important}#world{visibility:visible!important}#loading{display:none}#plan{display:flex!important}.plan-assembled{display:block!important}.explore-bar{visibility:visible!important}.view-tools,.media-tools,#about-open{display:none}</style><p class="noscript-note">The site plan is available without JavaScript. Enable JavaScript to explore in 3D.</p></noscript>
-  <script src="./landing-rain.js?v=20261102river1" defer></script>
+  <script src="./landing-rain.js?v=20261103orbit1" defer></script>
   <script src="./vendor/hls.min.js" defer></script>
-  <script type="module" src="./lab.mjs?v=20261102river1"></script>
+  <script type="module" src="./lab.mjs?v=20261103orbit1"></script>
 </body>
 </html>

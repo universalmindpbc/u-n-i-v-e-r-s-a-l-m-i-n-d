@@ -5,6 +5,9 @@
   document.addEventListener('click', event => {
     const link = event.target.closest?.('[data-event-route]');
     if (!link || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    if (new URL(link.href).pathname === '/lab/') {
+      if (shell?.requestFullscreen) void shell.requestFullscreen();
+    }
     if (shell?.openDestination) {
       event.preventDefault();
       shell.openDestination(link.href, link.getAttribute('aria-label') || link.textContent.trim());

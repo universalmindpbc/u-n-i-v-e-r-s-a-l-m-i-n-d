@@ -1,5 +1,7 @@
-import { initMedia } from './media.mjs?v=20261102river1';
-import { createStory } from './story.mjs?v=20261102river1';
+import { orbitPose } from './orbit.mjs?v=20261103orbit1';
+import { createPerformance } from './performance.mjs?v=20261103orbit1';
+import { initMedia } from './media.mjs?v=20261103orbit1';
+import { createStory, ORBIT_START, STORY_END } from './story.mjs?v=20261103orbit1';
 const $ = (id) => document.getElementById(id);
 const reduced = matchMedia('(prefers-reduced-motion: reduce)');
 const mobile = () => innerWidth < 700;
@@ -15,7 +17,7 @@ const places = {
 };
 let sceneAPI = null;
 let entered=false,buildStage='site',rain=false,layoutVisible=false,tourTimer=0,storyState=null;
-let autoTourCancelled=false,lastAutoView=null,lineupDismissed=false;
+let autoTourCancelled=false,lastAutoView=null,lineupDismissed=false,lineupOverride=null;
 const story=createStory(applyStory);
 $('world').inert=true;$('world').setAttribute('aria-hidden','true');
 const media = initMedia(state => sceneAPI?.setMusicMotion(state));
@@ -68,11 +70,13 @@ $('vision').addEventListener('click', (e) => { if (e.target === $('vision')) { c
 
 // Both fullscreen and playback begin synchronously in the Explore gesture.
 const fullscreenButton = $('fullscreen-toggle');
-const fullscreenRoot = document.documentElement;
-const fullscreenActive = () => Boolean(document.fullscreenElement || document.webkitFullscreenElement);
+let entryShell=null,fullscreenOwner=document;
+try {if(parent!==window&&parent.UniversalMindEntry){entryShell=parent.UniversalMindEntry;fullscreenOwner=parent.document;}}catch{}
+const fullscreenRoot = fullscreenOwner.documentElement;
+const fullscreenActive = () => Boolean(fullscreenOwner.fullscreenElement || fullscreenOwner.webkitFullscreenElement);
 const fullscreenSupported = () => Boolean(
-  (fullscreenRoot.requestFullscreen && document.fullscreenEnabled !== false) ||
-  (fullscreenRoot.webkitRequestFullscreen && document.webkitFullscreenEnabled !== false)
+  (fullscreenRoot.requestFullscreen && fullscreenOwner.fullscreenEnabled !== false) ||
+  (fullscreenRoot.webkitRequestFullscreen && fullscreenOwner.webkitFullscreenEnabled !== false)
 );
 function syncFullscreen() {
   const active = fullscreenActive();
@@ -88,38 +92,48 @@ async function changeFullscreen(enterOnly=false){
   fullscreenButton.disabled=true;
   try{
     if(fullscreenActive()){
-      if(!enterOnly){const leave=document.exitFullscreen||document.webkitExitFullscreen;await leave.call(document);}
+      if(!enterOnly){const leave=fullscreenOwner.exitFullscreen||fullscreenOwner.webkitExitFullscreen;await leave.call(fullscreenOwner);}
     }else{const enter=fullscreenRoot.requestFullscreen||fullscreenRoot.webkitRequestFullscreen;await enter.call(fullscreenRoot);}
     syncFullscreen();
-  }catch{syncFullscreen();$('fullscreen-status').textContent='Fullscreen is unavailable. Continue exploring in this window.';$('fullscreen-status').hidden=false;}
+  }catch{syncFullscreen();if(!enterOnly&&!fullscreenActive()){$('fullscreen-status').textContent='Continue exploring in this window.';$('fullscreen-status').hidden=false;setTimeout(()=>{$('fullscreen-status').hidden=true;},4000);}}
   finally{fullscreenButton.disabled=false;}
 }
 fullscreenButton.addEventListener('click',()=>changeFullscreen());
-$('explore-enter').addEventListener('click',()=>{
+function launchFestival(){
   if(entered)return;entered=true;document.body.dataset.entered='true';
   $('landing').hidden=true;$('world').inert=false;$('world').removeAttribute('aria-hidden');
   sceneAPI?.setVisible(mode==='3d');media.start();changeFullscreen(true);startStory();$('replay-story').focus({preventScroll:true});
-});
-function syncLineup(){const show=entered&&mode==='3d'&&selected==='overview'&&!lineupDismissed&&(Number(storyState?.seconds||0)<6||Number(storyState?.seconds||0)>=78);document.body.dataset.lineupVisible=String(show);$('artist-lineup').setAttribute('aria-hidden',String(!show));}
+}
+$('explore-enter').addEventListener('click',launchFestival);
+function syncLineup(){
+ const automatic=selected==='overview'&&!lineupDismissed&&(Number(storyState?.seconds||0)<6||Number(storyState?.seconds||0)>=STORY_END);
+ const show=entered&&mode==='3d'&&(lineupOverride??automatic);
+ document.body.dataset.lineupVisible=String(show);$('artist-lineup').setAttribute('aria-hidden',String(!show));$('lineup-toggle').setAttribute('aria-pressed',String(show));
+}
+$('lineup-toggle').addEventListener('click',()=>{stopTour();lineupOverride=document.body.dataset.lineupVisible!=='true';if(lineupOverride){emotionPanel(false);$('place-card').hidden=true;}syncLineup();});
 function applyStory(state){
   storyState=state;buildStage=state.phase;
-  document.body.dataset.buildStage=state.phase==='night'||state.phase==='dusk'||state.phase==='tour'?'open':state.phase;
-  document.body.dataset.story=state.seconds>=78?'complete':state.phase;
+  document.body.dataset.buildStage=state.phase==='night'||state.phase==='dusk'||state.phase==='tour'||state.phase==='orbit'?'open':state.phase;
+  document.body.dataset.story=state.seconds>=STORY_END?'complete':state.phase;
   document.body.dataset.storyTime=state.seconds.toFixed(1);
   document.body.dataset.siteReady=String(state.navigation);
   document.body.dataset.nightProgress=state.night.toFixed(3);
-  const descriptions={site:'The open site.',arrival:'The road train arrives.',assembly:'The pavilion is being built.',fitout:'Facilities and furnishings are being added.',open:'The Lab is open.',dusk:'Daylight fades and the light show begins.',tour:'Explore the Lab.',night:'The site is illuminated.'};
+  const descriptions={site:'The open site.',arrival:'The road train arrives.',assembly:'The pavilion is being built.',fitout:'Facilities and furnishings are being added.',open:'The Lab is open.',dusk:'Daylight fades and the light show begins.',tour:'Explore the Lab.',orbit:'A continuous journey around the festival.',night:'The site is illuminated.'};
   if($('story-status').dataset.phase!==state.phase){$('story-status').dataset.phase=state.phase;$('story-status').textContent=descriptions[state.phase];}
   syncNight(state.night>.65);sceneAPI?.setStory(state);
+  const orbitActive=state.phase==='orbit'&&!autoTourCancelled&&!reduced.matches&&mode==='3d';
+  document.body.dataset.cinematic=String(orbitActive);
+  if(orbitActive){if(!lastAutoView?.startsWith('orbit')){emotionPanel(false);$('place-card').hidden=true;lineupOverride=null;lineupDismissed=true;lastAutoView='orbit';}sceneAPI?.orbit(state.seconds-ORBIT_START);}
+  $('labels').style.visibility=state.navigation&&!orbitActive?'':'hidden';
   if(state.tourView&&!autoTourCancelled&&state.tourView!==lastAutoView){lastAutoView=state.tourView;selectPlace(state.tourView,true,true);if(state.tourView==='overview'&&innerWidth>=1100)emotionPanel(true);}
-  const autoActive=!autoTourCancelled&&state.phase==='tour';document.body.dataset.tourActive=String(autoActive);if(!tourTimer){$('tour-toggle').textContent=autoActive?'Stop tour':'Tour';$('tour-toggle').setAttribute('aria-pressed',String(autoActive));}
+  const autoActive=!autoTourCancelled&&(state.phase==='tour'||orbitActive);document.body.dataset.tourActive=String(autoActive);if(!tourTimer){$('tour-toggle').textContent=autoActive?'Stop tour':'Tour';$('tour-toggle').setAttribute('aria-pressed',String(autoActive));}
   document.body.dataset.tourStep=state.tourView||'';syncLineup();
 }
-function startStory(){stopTour();autoTourCancelled=false;lastAutoView=null;emotionPanel(false);$('place-card').hidden=true;selectPlace('overview',false,true);story.start();}
+function startStory(){stopTour();autoTourCancelled=false;lastAutoView=null;lineupOverride=null;emotionPanel(false);$('place-card').hidden=true;selectPlace('overview',false,true);story.start();}
 $('replay-story').addEventListener('click',startStory);
-function stopTour(){autoTourCancelled=true;document.body.dataset.tourActive='false';clearTimeout(tourTimer);tourTimer=0;$('tour-toggle').setAttribute('aria-pressed','false');$('tour-toggle').textContent='Tour';}
+function stopTour(){autoTourCancelled=true;document.body.dataset.cinematic='false';if(storyState?.navigation)$('labels').style.visibility='';document.body.dataset.tourActive='false';clearTimeout(tourTimer);tourTimer=0;$('tour-toggle').setAttribute('aria-pressed','false');$('tour-toggle').textContent='Tour';}
 $('tour-toggle').addEventListener('click',()=>{
-  if(tourTimer||(!autoTourCancelled&&storyState?.phase==='tour')){stopTour();return;}
+  if(tourTimer||(!autoTourCancelled&&['tour','orbit'].includes(storyState?.phase))){stopTour();return;}
   stopTour();let n=0;const route=['overview','main','food','play','river','support','fashion'];
   $('tour-toggle').setAttribute('aria-pressed','true');$('tour-toggle').textContent='Stop tour';
   const next=()=>{if(n>=route.length){stopTour();selectPlace('overview',false,true);return;}selectPlace(route[n++],true,true);tourTimer=setTimeout(next,n===route.length?10000:5000);};next();
@@ -145,13 +159,14 @@ document.querySelectorAll('[data-connection]').forEach(button=>button.addEventLi
 $('rain-toggle').addEventListener('click',()=>{rain=!rain;$('rain-toggle').setAttribute('aria-pressed',String(rain));document.body.dataset.rain=String(rain);sceneAPI?.setRain(rain);});
 $('layout-toggle').addEventListener('click',()=>{layoutVisible=!layoutVisible;$('layout-toggle').setAttribute('aria-pressed',String(layoutVisible));$('layout-notes').hidden=!layoutVisible;sceneAPI?.setLayout(layoutVisible);});
 addEventListener('pagehide',stopTour);
-document.addEventListener('fullscreenchange', syncFullscreen);
-document.addEventListener('webkitfullscreenchange', syncFullscreen);
+fullscreenOwner.addEventListener('fullscreenchange', syncFullscreen);
+fullscreenOwner.addEventListener('webkitfullscreenchange', syncFullscreen);
+addEventListener('pagehide',()=>{fullscreenOwner.removeEventListener('fullscreenchange',syncFullscreen);fullscreenOwner.removeEventListener('webkitfullscreenchange',syncFullscreen);});
 syncFullscreen();
 
 async function buildWorld() {
   const THREE = await import('three');
-  const [{OrbitControls},{createArchitecture},{createSiteFeatures},{createCrowd,createRunwayCrowd},{createLightShow},{createRunway}]=await Promise.all([import('./vendor/OrbitControls.js'),import('./architecture.mjs?v=20261102river1'),import('./site-features.mjs?v=20261102river1'),import('./crowd.mjs?v=20261102river1'),import('./light-show.mjs?v=20261102river1'),import('./runway.mjs?v=20261102river1')]);
+  const [{OrbitControls},{createArchitecture},{createSiteFeatures},{createCrowd,createRunwayCrowd},{createLightShow},{createRunway}]=await Promise.all([import('./vendor/OrbitControls.js'),import('./architecture.mjs?v=20261103orbit1'),import('./site-features.mjs?v=20261103orbit1'),import('./crowd.mjs?v=20261103orbit1'),import('./light-show.mjs?v=20261103orbit1'),import('./runway.mjs?v=20261103orbit1')]);
   const architecture=createArchitecture(THREE);
   let seed = 1947;
   const random = () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; };
@@ -179,7 +194,7 @@ async function buildWorld() {
   controls.maxDistance = mobile() ? 240 : 155;
   controls.minPolarAngle = 0.1;
   controls.maxPolarAngle = Math.PI * 0.485;
-  controls.maxTargetRadius = 36;
+  controls.maxTargetRadius = 100;
   controls.enablePan = false;
   controls.rotateSpeed = 0.65;
   controls.zoomSpeed = 0.8;
@@ -265,7 +280,7 @@ async function buildWorld() {
   // Shared, low-detail geometry keeps the forest light enough for phones.
   const treeList=[];
   for(let i=0;i<170;i++) { const x=-87+random()*131,z=-39-random()*42; if(x<riverX(z)-16)treeList.push({x,z,s: .78+random()*.85}); }
-  for(let i=0;i<110;i++)treeList.push({x:-48-random()*35,z:-35+random()*100,s:.8+random()*.75});
+  for(let i=0;i<110;i++){const x=-48-random()*35,z=-35+random()*100;treeList.push({x:z>0?Math.min(x,-71-random()*12):x,z,s:.8+random()*.75});}
   for(let i=0;i<90;i++){const z=-130+random()*255;treeList.push({x:riverX(z)+19+random()*26,z,s:.8+random()*.65});}
   const dummy=new THREE.Object3D();
   const trunks=new THREE.InstancedMesh(new THREE.CylinderGeometry(.13,.27,1,5),new THREE.MeshStandardMaterial({color:'#8e8d76',roughness:1}),treeList.length);
@@ -315,6 +330,7 @@ async function buildWorld() {
   const lightShow=createLightShow(THREE,scene,Object.values(buildings),architecture);
   const features=createSiteFeatures(THREE,scene,$('music-video'),architecture,$('stage-geometry-video'));
   const crowd=createCrowd(THREE),runwayCrowd=createRunwayCrowd(THREE),runway=createRunway(THREE,scene,features.videoMap);scene.add(crowd.builders,crowd.visitors,runwayCrowd.group);
+  const performanceStage=createPerformance(THREE);scene.add(performanceStage.group);
   crowd.visitors.traverse(o=>{if(o.isInstancedMesh)o.userData.fullCount=o.count;});
   const contextStart=scene.children.length;
   // Contextual proposal identities: physical flags, a vehicle and a staff uniform.
@@ -352,7 +368,7 @@ async function buildWorld() {
     mesh(geometry,new THREE.MeshStandardMaterial({map:brandTexture(key,true),roughness:.96,side:THREE.DoubleSide}),group);
     return group;
   }
-  flag('headspace',-27,-17.5,2.65);flag('msf',-40,-22,2.65);flag('flower',12.6,-1,.55);flag('education',25,-27,.3);flag('apple',25,5);flag('vogue',7.6,30,-.6);
+  flag('headspace',-27,-17.5,2.65);flag('msf',-40,-22,2.65);flag('flower',12.6,-1,.55);flag('education',-7.6,30,.6);flag('apple',25,5);flag('vogue',7.6,30,-.6);
   const messagePalette=['#5ab8f5','#f7da59','#f486c3','#8edcb0'];
   const messagePlacements=[['Peace',-10,40,.4],['Love',16,31,-.5],['Unity',-14,16,.3],['Respect',29,18,-.5],['PLUR',-18,-17,.4],['This Too Shall Pass',18,-30,.3],['Kindness',-28,-30,.4],['Namaste',30,-4,-.45]];
   for(const [i,[text,x,z,angle]] of messagePlacements.entries()){
@@ -429,7 +445,7 @@ async function buildWorld() {
     currentStory={...value};
     for(const [key,g] of Object.entries(buildings)){const p=value[key]||0;g.visible=p>0;buildPlanes[key].constant=p>=1?100:Math.max(.1,p*8.7);}
     contextDecor.visible=value.programme>0;paths.visible=value.seconds>=16;runway.setVisible(value.furniture>0);runwayCrowd.group.visible=value.programme>0;
-    features.setStory(value);setNight(value.night);setResponse(responseLevel);crowd.builders.visible=value.seconds>6&&value.seconds<29;crowd.visitors.visible=value.programme>0;
+    features.setStory(value);setNight(value.night);setResponse(responseLevel);crowd.builders.visible=value.seconds>6&&value.seconds<29;crowd.visitors.visible=value.programme>0;performanceStage.group.visible=value.programme>=1;
     crowd.visitors.traverse(o=>{if(o.isInstancedMesh)o.count=Math.floor(70*value.programme)*(o.userData.fullCount/70);});
     document.body.dataset.revealed=Object.keys(buildings).filter(k=>value[k]>=1).join(',');
     document.querySelectorAll('#place-list,.view-tools').forEach(e=>e.inert=!value.navigation);
@@ -451,6 +467,12 @@ async function buildWorld() {
     if(instant||reduced.matches){camera.position.copy(end);controls.target.copy(target);controls.update();tween=null;}else{tween={start:performance.now(),from:camera.position.clone(),fromTarget:controls.target.clone(),to:end,target};}
     needsFrame=true;requestFrame();
   }
+  function orbit(seconds){
+    const pose=orbitPose(seconds,mobile());tween=null;controls.enableDamping=false;
+    camera.position.fromArray(pose.position);controls.target.fromArray(pose.target);controls.update();controls.enableDamping=!reduced.matches;
+    document.body.dataset.orbitShot=pose.shot;document.body.dataset.cameraPosition=camera.position.toArray().map(n=>n.toFixed(2)).join(',');
+    needsFrame=true;requestFrame();
+  }
   function resize(){const w=$('world').clientWidth,h=$('world').clientHeight;camera.aspect=w/h;camera.fov=mobile()?50:41;controls.maxDistance=mobile()?240:155;scene.fog.near=mobile()?205:115;scene.fog.far=mobile()?390:255;camera.updateProjectionMatrix();renderer.setSize(w,h);needsFrame=true;if(selected==='overview')go('overview',true);requestFrame();}
   addEventListener('resize',resize);
   controls.addEventListener('start',()=>{tween=null;stopTour();lineupDismissed=true;syncLineup();});
@@ -467,7 +489,7 @@ async function buildWorld() {
     raf=0;if(!visible||document.hidden)return;
     const waterMoving=entered&&media.motionEnabled();if(waterMoving&&lastWaterFrame)waterTime+=Math.min(.05,Math.max(0,(t-lastWaterFrame)/1000));lastWaterFrame=t;
     if(features.update(motionTime,t)){needsFrame=true;}
-    crowd.update(musicMotion?motionTime:t*.001,{construction:currentStory.construction,dancing:musicMotion,visible:currentStory.seconds>6,night:currentStory.night});lightShow.update(motionTime);runwayCrowd.update(motionTime,{moving:musicMotion,visible:runwayCrowd.group.visible});
+    crowd.update(musicMotion?motionTime:t*.001,{construction:currentStory.construction,dancing:musicMotion,visible:currentStory.seconds>6,night:currentStory.night});performanceStage.update(motionTime,musicMotion);lightShow.update(motionTime);runwayCrowd.update(motionTime,{moving:musicMotion,visible:runwayCrowd.group.visible});
     if(tween){const a=Math.min(1,(t-tween.start)/1250),ease=a*a*(3-2*a);camera.position.lerpVectors(tween.from,tween.to,ease);controls.target.lerpVectors(tween.fromTarget,tween.target,ease);if(a===1)tween=null;needsFrame=true;}
     controls.update();
     const videoActive=!$('music-video').paused&&$('music-video').readyState>=2;
@@ -492,7 +514,7 @@ async function buildWorld() {
   reduced.addEventListener('change',()=>{controls.enableDamping=!reduced.matches;needsFrame=true;requestFrame();});
   canvas.addEventListener('webglcontextlost',(e)=>{e.preventDefault();setMode('plan');status('The 3D view paused. The 2D site plan remains available.');});
   go('overview',true);resize();
-  return {go,setNight,setStory,setResponse,setRain,setLayout,setMusicMotion,setVisible(v){visible=v;if(!v){cancelAnimationFrame(raf);raf=0;}else{needsFrame=true;requestFrame();}},stats(){return {triangles:renderer.info.render.triangles,calls:renderer.info.render.calls,trees:treeList.length,...features.stats};}};
+  return {go,orbit,setNight,setStory,setResponse,setRain,setLayout,setMusicMotion,setVisible(v){visible=v;if(!v){cancelAnimationFrame(raf);raf=0;}else{needsFrame=true;requestFrame();}},stats(){return {triangles:renderer.info.render.triangles,calls:renderer.info.render.calls,trees:treeList.length,...features.stats};}};
 }
 
 try {
@@ -502,6 +524,7 @@ try {
   document.body.dataset.ready='true';
   setMode('3d');
   status('The landscape is ready. Explore with the place buttons or drag the scene.');
+  if(document.documentElement.dataset.autoLaunch==='true')launchFestival();
 } catch(error) {
   console.error('Lab landscape:',error);
   $('loading').hidden=true;$('explore-enter').disabled=false;
@@ -512,3 +535,5 @@ try {
   $('navigation-hint').textContent='3D unavailable · explore the site plan';
   status('3D is unavailable on this device. The site plan and all place descriptions are available.');
 }
+
+if(document.documentElement.dataset.autoLaunch==='true'&&!entered)launchFestival();
