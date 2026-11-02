@@ -32,7 +32,7 @@ async function close(c){for(const p of c.pages())for(const f of p.frames())await
 async function layout(frame,viewport){
  await frame.waitForFunction(()=>[...document.querySelectorAll('.event-option img')].every(img=>img.complete&&img.naturalWidth>0),null,{timeout:20000});
  assert.equal(await frame.locator('.event-option').count(),2);
- assert.equal(await frame.locator('.choice-main h1').innerText(),'Events');
+ assert.equal((await frame.locator('.choice-main h1').textContent()).trim(),'Events');
  assert.equal(await frame.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
  for(const link of await frame.locator('.event-option').all()){
   assert(await link.isVisible());const box=await link.boundingBox();assert(box.width>150&&box.x>=0&&box.x+box.width<=viewport.width+1);

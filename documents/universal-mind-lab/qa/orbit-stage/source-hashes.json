@@ -1,0 +1,34 @@
+[
+  {
+    "file": "lab/lab.mjs",
+    "sha256": "7f2416971fb71217fb5031e2ddc3bafdc9ec973a4e4e831d8392c7ebd274a1e9"
+  },
+  {
+    "file": "lab/performance.mjs",
+    "sha256": "03daddde965e51ca24ca08797aa1aed234bf723b4edab7f806223926f1247a6c"
+  },
+  {
+    "file": "lab/orbit.mjs",
+    "sha256": "ecdb30fda7273c31f860f4d2d6fb6f60f52c2055ef743fea6800d066d3d8f697"
+  },
+  {
+    "file": "lab/media.mjs",
+    "sha256": "7b14181096bb9485baa5ac0b08319a710662e4decde0ca84862fb5d9f51d796a"
+  },
+  {
+    "file": "lab/story.mjs",
+    "sha256": "90d8bffd7947f2e0ebd50bcbfef43b3cd9972b2d85e933e00e959990823c3cd2"
+  },
+  {
+    "file": "lab/crowd.mjs",
+    "sha256": "6140704c3f0b59578c77d1e5bd38513d38f18595e60b8e878a1f79575309392e"
+  },
+  {
+    "file": "lab/lab.css",
+    "sha256": "a9f1a44967f0e33e078112a0189a886bb58ad030986b61157b8c243edd29fd8f"
+  },
+  {
+    "file": "lab/index.html",
+    "sha256": "dd59bbdbab102fb915624d8c8871168cf28be610ef81e13761c74b9262e0ad4b"
+  }
+]

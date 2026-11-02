@@ -1,0 +1,14 @@
+{
+  "live": true,
+  "date": "2026-11-02T19:18:06.814Z",
+  "processMuted": true,
+  "nativeFullscreenInvoked": false,
+  "playbackMocked": true,
+  "checks": [
+    "Continuous desktop/mobile camera curve; all 56 dancers face the stage; four articulated performance roles",
+    "Direct launch with 24% blend; complete orbit and labels restored; Lineup show/hide; replay and manual camera interruption",
+    "Phone and landscape layout; reduced-motion skips camera circuit",
+    "Already-fullscreen root owner recognized, with no duplicate request or blank notice"
+  ],
+  "errors": []
+}

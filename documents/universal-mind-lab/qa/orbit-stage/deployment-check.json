@@ -1,0 +1,8 @@
+{
+  "manifestFilesMatched": 61,
+  "refs": {
+    "HEAD": "07172916472fae5148b0fcc59b67f9d3621c5130",
+    "origin/staging": "9769899f138d12c03526441d2a05ed13de4acc78",
+    "origin/main": "d5e3499af7533a3c87cef794aa028f33194656f8"
+  }
+}
