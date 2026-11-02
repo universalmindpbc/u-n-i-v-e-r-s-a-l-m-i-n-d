@@ -353,6 +353,54 @@
       "size_bytes": 65066,
       "sha256": "b78eab9a40b07a3f98a2f65d1423e7722b665e311c6a13f26b7afe90525eec00",
       "preserved_byte_for_byte": true
+    },
+    {
+      "id": "R28",
+      "original_filename": "Screenshot 2026-11-02 at 6.07.54 pm.png",
+      "category": "branding",
+      "description": "Event wordmark with bold mind and bracketed lab.",
+      "design_role": "Uniform generous letter-spacing across universalmind[lab], with mind bold.",
+      "source_path": "/Users/benkorbel/Desktop/Screenshot 2026-11-02 at 6.07.54 pm.png",
+      "destination_path": "references/branding/R28-uniform-wordmark-spacing.png",
+      "size_bytes": 11502,
+      "sha256": "ec749633660831303e0ded67ad50a397ecb3dab04570cdb0e1e01a00ee90e4fe",
+      "preserved_byte_for_byte": true
+    },
+    {
+      "id": "R29",
+      "original_filename": "codex-clipboard-28f88935-95fb-4609-803c-91040fd2608b.png",
+      "category": "review",
+      "description": "Review screenshot exposes a rendering bug hiding the pavilion shells beneath the geodesic light framework.",
+      "design_role": "Keep the Droneport visible and raise the hologram above its roof. A roof-material clipping fix restores the shells.",
+      "source_path": "/var/folders/sy/hkpyt9jx3q124pk6nn_rgvb00000gn/T/codex-clipboard-28f88935-95fb-4609-803c-91040fd2608b.png",
+      "destination_path": "references/review/R29-hologram-roof-visibility-review.png",
+      "size_bytes": 1050539,
+      "sha256": "3d501bc1028a07d211e1ceacbf35b321b701947541eab7be7d04a633602b7478",
+      "preserved_byte_for_byte": true
+    },
+    {
+      "id": "R30",
+      "original_filename": "F5659587-9C98-425E-A8BB-A96CB9B6F76B_1_102_o.jpeg",
+      "category": "hexeosis",
+      "description": "Still geometric animation reference supplied by Ben.",
+      "design_role": "Full-stage geometric animation blended with artist footage.",
+      "source_path": "/Users/benkorbel/Pictures/Photos Library.photoslibrary/resources/derivatives/F/F5659587-9C98-425E-A8BB-A96CB9B6F76B_1_102_o.jpeg",
+      "destination_path": "references/hexeosis/R30-hexeosis-still.jpeg",
+      "size_bytes": 11592,
+      "sha256": "521c248db3d16b8f7079990441b4da22457ed0319afb23e4acb439ee17f3cf8f",
+      "preserved_byte_for_byte": true
+    },
+    {
+      "id": "R31",
+      "original_filename": "hexeosis-hx_4a480.gif",
+      "category": "hexeosis",
+      "description": "Exact animated GIF supplied by Ben through hexeosis.com; 540 × 540, 72 frames, 2.88 seconds.",
+      "design_role": "Full-stage geometric animation blended with artist footage.",
+      "source_path": "https://hexeosis.com/gifs/hexeosis_gif_selects_topic/hxg-selects-isotriangles/hx_4a480.gif",
+      "destination_path": "references/hexeosis/R31-hexeosis-hx_4a480.gif",
+      "size_bytes": 1382285,
+      "sha256": "bea6e89235a1b6282120e1902cf67e7f200f23f1968f6ff5b5de0411e53afefa",
+      "preserved_byte_for_byte": true
     }
   ]
 }

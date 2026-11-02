@@ -1,11 +1,11 @@
 const $=id=>document.getElementById(id);
 const stream='https://customer-1vpwglz3v6fiyaas.cloudflarestream.com/9f1ed3b5a38f52bfd008d2152d3884de/manifest/video.m3u8';
 export function initMedia(onMotion) {
-  const video=$('music-video'),reduced=matchMedia('(prefers-reduced-motion: reduce)');
+  const video=$('music-video'),geometryVideo=$('stage-geometry-video'),reduced=matchMedia('(prefers-reduced-motion: reduce)');
   let attached=false,hls=null,videoOn=false,motionOn=!reduced.matches,playing=false,pending=false,attempt=0;
-  video.volume=.65;
+  video.crossOrigin='anonymous';geometryVideo.crossOrigin='anonymous';video.volume=.65;geometryVideo.muted=true;let geometryAttached=false;
   const isAnimating=()=>playing&&motionOn&&!document.hidden;
-  const motion=()=>onMotion(isAnimating());
+  const motion=()=>{onMotion(isAnimating());if(geometryAttached){if(isAnimating())geometryVideo.play().catch(()=>{});else geometryVideo.pause();}};
   function notice(text=''){ $('media-status').textContent=text;$('media-status').hidden=!text; }
   function sync(){
     $('music-toggle').setAttribute('aria-pressed',String(playing));
@@ -19,12 +19,13 @@ export function initMedia(onMotion) {
   }
   function attach(){
     if(attached)return;
-    if(video.canPlayType('application/vnd.apple.mpegurl')) video.src=stream;
-    else if(window.Hls?.isSupported()){
+    if(!geometryAttached){geometryAttached=true;geometryVideo.src=new URL('./assets/hexeosis-hx_4a480.mp4',import.meta.url).href;geometryVideo.load();}
+    if(window.Hls?.isSupported()){
       hls=new window.Hls({capLevelToPlayerSize:true,maxBufferLength:30});
       hls.on(window.Hls.Events.ERROR,(_event,data)=>{if(data.fatal){pending=false;playing=false;video.pause();hls.destroy();hls=null;attached=false;notice('Music is unavailable. Press Music to retry.');sync();}});
       hls.loadSource(stream);hls.attachMedia(video);
-    } else throw new Error('Streaming unavailable');
+    } else if(video.canPlayType('application/vnd.apple.mpegurl')) video.src=stream;
+    else throw new Error('Streaming unavailable');
     attached=true;
   }
   function play(){
@@ -48,7 +49,8 @@ export function initMedia(onMotion) {
   document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!$('mix-panel').hidden){panel(false);$('mix-toggle').focus();}});
   document.addEventListener('click',event=>{if(!event.target.closest('.media-tools'))panel(false);});
   reduced.addEventListener('change',()=>{motionOn=!reduced.matches;sync();});
+  geometryVideo.addEventListener('loadeddata',motion);
   document.addEventListener('visibilitychange',motion);
-  addEventListener('pagehide',()=>{video.pause();hls?.destroy();});
+  addEventListener('pagehide',()=>{video.pause();geometryVideo.pause();hls?.destroy();});
   sync();return {isAnimating,start(){videoOn=true;$('video-opacity').value='7';$('opacity-value').textContent='7%';sync();play();}};
 }

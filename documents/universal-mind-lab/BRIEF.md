@@ -1,6 +1,6 @@
 # Universal Mind Lab — creative and development brief
 
-**Version:** 0.8 · **Date:** 2 November 2026 · **Owner:** Ben Korbel
+**Version:** 0.9 · **Date:** 2 November 2026 · **Owner:** Ben Korbel
 **Status:** Working concept for discussion, collaboration and staged visual development. Architectural engineering, operating arrangements and named partnerships remain to be established.
 
 ## 1. Purpose
@@ -470,36 +470,51 @@ Apple Watch cardiac measurements feed the provider’s agreed SIX / Immersion in
 The pitch distinguishes the sensor measurement, the provider’s inference and the environmental response. It preserves the full provider explanation with attribution. API access, metric definitions, update rate, group aggregation, participant consent, signal-loss behaviour and operator controls are practical MVP integration tasks. The current browser landscape has no live Watch connection yet; implementing that connection is in the MVP scope.
 
 
-## 22. Current interactive implementation — v0.8
+## 22. Current interactive implementation — v0.9
 
-The entry page follows Universal Informatics’ Fibonacci matrix-rain direction. Universal Mind, music · fashion · mindfulness, and the approved next-generation tagline form the landing composition. **Explore** opens the Lab, requests whole-page fullscreen and starts Neverender with the video overlay at **7% blend** in the same visitor gesture. Browsers without fullscreen support retain the full-window layout. No music or stream download starts before Explore.
+### Entry and event identity
 
-The in-scene interface retains the wordmark and topics, membership link above the place navigation, and initiative credit below. Six camera views cover the clearing, main pavilion, food/activity shelters, playground, listening area and support. Music, TV, Motion, video blend, volume and fullscreen remain independently controllable. Video blends from 0–70%; one looping media timeline feeds the soundtrack, overlay and stage screen. Reduced-motion preferences start with scene motion off. The stage screen continues displaying the video while landscape motion is off.
+The landing reproduces Universal Informatics: its Fibonacci matrix rain, original Universal Mind flower, original favicon, serif lowercase title and **Launch Full Screen** button. The title reads **universal mind lab**. No tagline, topics, Proposal label or explanatory music/video copy appears on the landing.
 
-### Reviewable construction sequence
+Inside the world, the event wordmark reads **universalmind[lab]** with consistent, generous letter-spacing across the entire treatment. **mind** is bold; **universal** and **[lab]** use the lighter weight. Ben explicitly rejected tightening the bracketed lab and clarified that the wordmark has no word spaces. R28 preserves his visual reference. Topics sit beneath the wordmark. The approved next-generation tagline returns to the upper left. Music, TV, Motion, blend/volume settings, Replay, Proposal and fullscreen sit together at the upper right. Membership sits above the bottom navigation; the initiative credit sits beneath it.
 
-- **Site:** the open lawn, perimeter forest and waterway.
-- **Arrival:** a conceptual Linfox road train parks along the service edge with equipment crates.
-- **Assembly:** vault formwork/scaffold and unloading illustrate local construction. The masonry shell is not represented as mechanically folding out of a truck.
-- **Fit-out:** the main tiled vault, matching satellite shells, separate rainbow metallic play bridge, furniture and listening pylons.
-- **Open:** the stage screen, four line-array positions, workshop tables/devices, cooking counter and contextual support facilities.
+Launch starts the single looping Neverender timeline at **7% video blend**, requests fullscreen and begins the story. Unsupported fullscreen retains the full-window experience. Media starts only after the visitor gesture. Video, music and motion remain independently controllable. No live Watch integration is present yet; section 21 retains the complete MVP requirement and provider explanation.
 
-A replay control steps through the five stages. Visitors can select a stage directly. The guided Tour moves through the site destinations and stops when a visitor selects a place.
+### Automatic opening story
 
-### Layout and architecture
+| Time after launch | Story |
+| --- | --- |
+| 0–2 seconds | Empty green clearing, water and perimeter forest. |
+| 2–6 | Road train arrives along the service edge. |
+| 6–16 | Ten seconds of main-vault construction, scaffold and animated builders. |
+| 16–18.5 | Food pavilion and dining furniture. |
+| 18.5–20.5 | Sheltered park/activity pavilion. |
+| 20.5–22.5 | Sculptural support pavilion. |
+| 22.5–24.5 | Tubular listening pylons and their lounges. |
+| 24.5–27 | Separate rainbow metallic playground. |
+| 27–29 | Scattered main-pavilion furniture. |
+| 29–31 | Programme equipment, staff, flags and visitors. |
+| 31–51 | Open site in daylight; navigation and tags become available. |
+| 51–61 | Gradual dusk, sequential lighting and rising geodesic light framework. |
 
-The main concept footprint is 22.6 × 18.4 m with an approximately 8 m peak. A first seating test places **96 chairs and four mobility spaces**, with a 2 m centre-aisle target. This is a design-position count, not an approved occupancy. Whole-site attendance, staff, support rooms, acoustics, circulation, toilets and real-site access require further planning.
+The story runs automatically. **Replay** restarts it without restarting the music. Direct construction-stage buttons are removed. Day/Night remains available after opening for manual review; a manual choice overrides the automatic night fade until Replay. A hidden browser tab pauses story time. This is an illustrative build narrative, not a fabrication or engineering sequence.
 
-The geometry now includes a continuous tiled four-contact vault, layered roof edges, two simpler warm-toned satellite canopies and a distinct play bridge. The playground follows Ben’s renewed instruction of 2 November: fluidity and walk-through play in a structure potentially made from stainless steel or aluminium, with rainbow colour explored. Its provisional dimensions are about 11 × 7 m and 3.2 m high. Access, fall protection and play surfaces remain specialist design work. R21 is already archived; Ben reattached the same reference to reinforce this direction.
+### Architecture, interior and light
 
-Rainbow woven armchairs, low chairs, day beds, cushions and hanging cocoons are reference-based scene models. The listening area includes four transparent **tubular** glass pylons, curved Apple Music interface studies and AKG K812 representations. Manufacturer dimensions and acoustic playback systems are not established by these visual models.
+The main tiled vault retains its 22.6 × 18.4 m concept footprint. Its interior is an open dance floor with ten scattered lounge chairs, two daybeds, four hanging seats and social corners. The previous 96-chair conference arrangement is retired. Approximately 100 people remains the attendance ambition, not an occupancy approval or a seating count.
 
-### Programme, rain and night
+A panoramic screen spans 22.2 m and follows the curved underside profile of the vault, reaching about 6.4 m at its centre at the rear-stage location. No Universal Mind banner crosses the stage. Food, activity and support use refined compound satellite shells with a flared rear support, a rounded canopy, layered edges and the main vault’s detailed tile texture. The plain support building and Cooking Lab banner are removed. The distinct fluid rainbow play bridge remains.
 
-The first production pass adds a stage with a video screen, four illustrative line-array stacks, music-making tables with smart devices, cooking facilities, metallic sculptures, projected colour patterns and laser-like light fans. Day/Night changes the lighting and reveals the night treatments. The visualisation does not specify a final d&b, TDC, teamLab or laser rig.
+Tropicália furniture studies include woven chairs, daybeds, cushions and hanging seats. They remain reference-based models. The Apple area contains four transparent tubular pylons and AKG K812 studies. The page’s media playback does not establish headphone spatial-audio performance.
 
-Rain shelter adds concept covered circulation and side screens. Drainage, roof detailing, wind-driven rain and weather limits require site-specific design. Synchronised wristbands, artist-led activity detail, advanced projection mapping and the live SIX integration remain implementation work. The complete Apple Watch / SIX MVP direction and provider-reported inference explanation remain in section 21.
+Twelve animated construction workers and seventy articulated visitors give the scene human activity. Most visitors gather on the main dance floor. Music-enabled motion animates dancers, flags and perimeter trees; night adds coloured wristbands. The night study adds patterned light across all architectural roofs, five projection towers, the geodesic triangular light framework above the main vault, existing ground projections, sculpture lighting and laser-like fans. All light transitions are smooth.
 
-These are meaningful first implementations of all five steps. The environment remains an architectural study; photorealistic vegetation, people, materials and final lighting are still ahead. The next refinement targets the main-vault interior, playground, naturalism and close-range material quality before expanding asset detail across the entire scene.
+Rain shelter retains covered circulation and side screens. Site occupancy, access, weather protection, acoustics, construction, production and play engineering remain design work. The environment is a detailed concept study; photorealistic people, vegetation, textures and final lighting remain the next visual-quality milestone.
 
-See [progress](PROGRESS.md), [architecture](ARCHITECTURE-STUDY.md), [furniture](FURNITURE-ASSETS.md), [media source](media-source.json), [brand sources](brand-assets.json), [production references](PRODUCTION-REFERENCES.md) and verification records in `qa/landing-five-stages/`.
+See [progress](PROGRESS.md), [architecture](ARCHITECTURE-STUDY.md), [crowd](CROWD-STUDY.md), [furniture](FURNITURE-ASSETS.md), [media source](media-source.json), [brand sources](brand-assets.json), [production references](PRODUCTION-REFERENCES.md) and `qa/story-revision/` for this revision’s evidence.
+
+### Fashion arena and screen content — additional direction
+
+The main approach path doubles as a fashion runway, leaving the central lawn open. A low 3.8 × 30 m surface occupies Z8–38 in the model; slim portrait video panels and sculptural loops line either side. Eight tall fictional fashion figures walk a rounded loop up and down the route. The Vogue identity appears on a triangular flag over the Universal Mind flower. Indigenous fashion designers and models are the proposed collaboration direction. The illustrative clothes do not reproduce or claim an Indigenous cultural design.
+
+The curved full-height stage screen blends the exact Hexeosis GIF supplied by Ben with artist video. The GIF is preserved as R31; a silent 540 × 540 H.264 derivative retains its 72 frames and 2.88-second duration for efficient video-texture playback. The geometric content repeats across the panoramic surface and crossfades with the current Neverender source. Live performance footage of Tame Impala or Charli XCX is intended content, not an asset presently supplied or represented as live. Music remains one audible timeline; the geometry source has no audio. Motion controls pause/resume the geometry and model walks along with other scene motion.

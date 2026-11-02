@@ -1,8 +1,8 @@
 # Universal Mind Lab
 
-Working creative package for Ben Korbel. The current direction is recorded in [BRIEF.md](BRIEF.md), version 0.8.
+Working creative package for Ben Korbel. The current direction is recorded in [BRIEF.md](BRIEF.md), version 0.9.
 
-- [Reference index](REFERENCES.md): 27 supplied files, including the marketing doodle.
+- [Reference index](REFERENCES.md): 31 supplied references, including the marketing doodle.
 - [Reference manifest](reference-manifest.json): original paths, sizes and SHA-256 hashes.
 - [Accepted spatial study](concepts/spatial-study-02.png): open lawn, waterway edge and simplified related shells.
 - [Marketing original](references/marketing/R26-membership-marketing-doodle.jpeg).
@@ -29,3 +29,5 @@ Brief v0.8 adds the Fibonacci-rain landing page, Explore-to-fullscreen/music wit
 
 - [Landing and five-stage release](LANDING-FIVE-STAGES-RELEASE.md).
 - [Architecture study](ARCHITECTURE-STUDY.md) and [furniture assets](FURNITURE-ASSETS.md).
+
+Brief v0.9 replaces manual stages with the automatic build-to-night story, restores the exact Informatics landing, refines the architecture and dance-floor interior, adds the continuous uniformly spaced event wordmark, the holographic dome, roof projections, the supplied Hexeosis animation, and the central fashion runway with a Vogue/Universal Mind flag. See [current progress](PROGRESS.md), [screen visuals](STAGE-VISUALS.md) and [runway](RUNWAY-STUDY.md).

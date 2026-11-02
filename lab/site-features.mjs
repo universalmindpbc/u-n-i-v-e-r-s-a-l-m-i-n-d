@@ -1,6 +1,7 @@
-import { createFurnishings } from './furnishings.mjs?v=20261102f';
+import { createStageVisuals } from './stage-visuals.mjs?v=20261102story1';
+import { createFurnishings } from './furnishings.mjs?v=20261102story1';
 // Metric spatial studies. Stage visibility is managed by the scene controller.
-export function createSiteFeatures(THREE, scene, video) {
+export function createSiteFeatures(THREE, scene, video, architecture, geometryVideo) {
   const furniture=createFurnishings(THREE),V=(x,y,z)=>new THREE.Vector3(x,y,z);
   const group=(name)=>{const g=new THREE.Group();g.name=name;scene.add(g);return g;};
   const delivery=group('Road train and unloading'),assembly=group('Illustrative assembly frame'),fitout=group('Furniture and listening'),programme=group('Programme and production'),shelter=group('Light-rain study'),layout=group('Layout dimensions');
@@ -33,27 +34,26 @@ export function createSiteFeatures(THREE, scene, video) {
   }
   for(const z of [-19,-12,-5]){tube([[-10.5,3,z],[0,7.4,z],[10.5,3,z]],.07,steel,assembly);}
   for(const x of [-12.8,12.8])for(const z of [-19,-13,-7]){box(.06,6,.06,steel,assembly,x,3,z);box(.06,6,.06,steel,assembly,x+1.4,3,z);for(const y of [2,4,6])box(1.6,.09,2.1,wood,assembly,x+.7,y,z);}
-  // 96 chairs are instanced in two draws. Four marked bays remain clear.
-  const chair=furniture.chair(),dummy=new THREE.Object3D(),seatMatrices=[];
-  for(let row=0;row<8;row++)for(let col=0;col<12;col++){
-    const x=col<6?-6.9+col*1.06:1.6+(col-6)*1.06,z=-14.7+row*1.19;
-    dummy.position.set(x,.1,z);dummy.rotation.set(0,Math.PI,0);dummy.scale.setScalar(1);dummy.updateMatrix();seatMatrices.push(dummy.matrix.clone());
-  }
-  for(const part of chair.children){const batch=new THREE.InstancedMesh(part.geometry,part.material,96);batch.castShadow=true;batch.receiveShadow=true;seatMatrices.forEach((m,i)=>batch.setMatrixAt(i,m));fitout.add(batch);}
+  const mainFurniture=new THREE.Group(),foodFurniture=new THREE.Group(),parkFurniture=new THREE.Group(),appleFurniture=new THREE.Group();
+  fitout.add(mainFurniture,foodFurniture,parkFurniture,appleFurniture);
   const lines=new THREE.LineBasicMaterial({color:'#41665d'});
   function outline(x,z,w,d){const p=[[x-w/2,.12,z-d/2],[x+w/2,.12,z-d/2],[x+w/2,.12,z+d/2],[x-w/2,.12,z+d/2],[x-w/2,.12,z-d/2]].map(a=>V(...a));layout.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(p),lines));}
-  for(const x of [-8.5,8.5])for(const z of [-10,-6.4])outline(x,z,1.5,1.6);
-  outline(0,-12,22.6,18.4);outline(0,-10.4,2,11.5);
-  const lounge=(obj,x,z,rotation=0)=>{obj.position.set(x,.1,z);obj.rotation.y=rotation;fitout.add(obj);return obj;};
-  lounge(furniture.daybed(),-17,10,-.5);lounge(furniture.daybed(),18,19,.4);
-  lounge(furniture.hangingSeat(),25,18,-.7);lounge(furniture.hangingSeat(),20,23,.5);
-  for(const [x,z,r] of [[22,6,-1.4],[25,11,-1.4],[21,14,-1.1],[18,9,-1.1]])lounge(furniture.chair({low:true}),x,z,r);
-  for(const [x,z] of [[-24,-7],[-20,-8],[-26,18]]){lounge(furniture.table(),x,z);for(let i=0;i<3;i++){const a=i/3*Math.PI*2;lounge(furniture.chair(),x+Math.sin(a)*1.5,z+Math.cos(a)*1.5,a+Math.PI);}}
+  outline(0,-12,22.6,18.4);outline(0,-10.8,11.5,9.5);
+  const lounge=(obj,x,z,rotation=0,parent=mainFurniture)=>{obj.position.set(x,.1,z);obj.rotation.y=rotation;parent.add(obj);return obj;};
+  // Loose social clusters leave the centre open for dancing and circulation.
+  for(const [x,z,r] of [[-7.7,-14,.7],[-8.6,-11,1.3],[-7.1,-8,2],[-8.7,-5.5,.4],[7.5,-14,-.8],[8.5,-11,-1.2],[7,-7.6,-2],[8.7,-4.8,-.5],[-5.5,-4,2.6],[5.6,-4,-2.6]])lounge(furniture.chair({low:true}),x,z,r);
+  lounge(furniture.daybed(),-8.2,-17.2,.7);lounge(furniture.daybed(),8.2,-17.2,-.7);
+  lounge(furniture.hangingSeat(),-9,-7,1);lounge(furniture.hangingSeat(),9,-7,-1);
+  lounge(furniture.hangingSeat(),-7.8,-3.7,.9);lounge(furniture.hangingSeat(),7.8,-3.7,-.9);
+  lounge(furniture.daybed(),18,19,.4,appleFurniture);
+  lounge(furniture.hangingSeat(),25,18,-.7,appleFurniture);lounge(furniture.hangingSeat(),20,23,.5,appleFurniture);
+  for(const [x,z,r] of [[22,6,-1.4],[25,11,-1.4],[21,14,-1.1],[18,9,-1.1]])lounge(furniture.chair({low:true}),x,z,r,appleFurniture);
+  for(const [x,z] of [[-24,-7],[-20,-8],[-26,18]]){const parent=z>0?parkFurniture:foodFurniture;lounge(furniture.table(),x,z,0,parent);for(let i=0;i<3;i++){const a=i/3*Math.PI*2;lounge(furniture.chair(),x+Math.sin(a)*1.5,z+Math.cos(a)*1.5,a+Math.PI,parent);}}
   // Tubular glass, rather than tablet-shaped screens. All audio uses the single video timeline.
   const pylonGlass=new THREE.MeshPhysicalMaterial({color:'#b9edf0',metalness:.08,roughness:.08,transparent:true,opacity:.19,side:THREE.DoubleSide,depthWrite:false});
   const glow=new THREE.MeshBasicMaterial({color:'#9be7dc'}),pylonMaps=[];
   for(const [x,z,h] of [[23,5,3.1],[26,10,3.4],[22,13,2.9],[19,8,3.2]]){
-    const g=new THREE.Group();g.name='Tubular Apple Music listening pylon';g.position.set(x,.1,z);fitout.add(g);
+    const g=new THREE.Group();g.name='Tubular Apple Music listening pylon';g.position.set(x,.1,z);appleFurniture.add(g);
     mesh(new THREE.CylinderGeometry(.48,.58,h,48,1,true),pylonGlass,g).position.y=h/2;
     const footing=mesh(new THREE.CylinderGeometry(.62,.68,.15,40),steel,g);footing.position.y=.075;
     for(const y of [.22,h-.1]){const ring=mesh(new THREE.TorusGeometry(.49,.018,8,48),glow,g);ring.rotation.x=Math.PI/2;ring.position.y=y;}
@@ -70,10 +70,11 @@ export function createSiteFeatures(THREE, scene, video) {
   }
   // Main-stage screen and four illustrative line-array positions.
   box(15,.5,3.6,dark,programme,0,.34,-18.4);
-  const wall=box(14,4.2,.2,dark,programme,0,2.8,-20.1);
-  const videoMap=new THREE.VideoTexture(video);videoMap.colorSpace=THREE.SRGBColorSpace;
-  const screen=mesh(new THREE.PlaneGeometry(13.8,3.88),new THREE.MeshBasicMaterial({map:videoMap,toneMapped:false}),programme);screen.position.set(0,2.85,-19.985);screen.castShadow=false;
-  sign('UNIVERSAL MIND','MUSIC · FASHION · MINDFULNESS',5.5,.65,programme,0,.72,-16.59);
+  const stageVisuals=createStageVisuals(THREE,video,geometryVideo),videoMap=stageVisuals.videoMap;
+  const screenVertices=[],screenUV=[],screenIndices=[];
+  for(let i=0;i<=80;i++){const x=-11.1+i/80*22.2,top=architecture.roofHeight(x,-6.9);screenVertices.push(x,.18,-18.9,x,top,-18.9);screenUV.push(i/80,0,i/80,top/6.5);if(i<80){const n=i*2;screenIndices.push(n,n+2,n+1,n+1,n+2,n+3);}}
+  const screenGeometry=new THREE.BufferGeometry();screenGeometry.setAttribute('position',new THREE.Float32BufferAttribute(screenVertices,3));screenGeometry.setAttribute('uv',new THREE.Float32BufferAttribute(screenUV,2));screenGeometry.setIndex(screenIndices);screenGeometry.computeVertexNormals();
+  const screen=mesh(screenGeometry,stageVisuals.material,programme);screen.name='Roof-profile panoramic stage screen';screen.castShadow=false;
   for(const x of [-9.4,9.4])for(const z of [-19,-4.5]){
     box(.10,5.8,.10,steel,programme,x,2.9,z);box(1,.12,1,steel,programme,x,.1,z);
     for(let i=0;i<7;i++){const a=box(.82,.29,.58,dark,programme,x,5.6-i*.29,z);a.rotation.x=(i-3)*.035;box(.74,.2,.015,steel,programme,x,5.6-i*.29,z+.3);}
@@ -83,7 +84,6 @@ export function createSiteFeatures(THREE, scene, video) {
   for(const x of [-5,5]){box(3,.12,1.2,wood,programme,x,.78,1.2);for(const dx of [-1.25,1.25])box(.07,.75,.07,steel,programme,x+dx,.39,1.2);for(let i=0;i<4;i++){const device=box(.19,.015,.35,dark,programme,x-1.05+i*.7,.86,1.2);device.rotation.x=-.1;}}
   box(5,.95,.85,wood,programme,-25,.55,-12);box(5.1,.07,.95,steel,programme,-25,1.06,-12);
   for(const x of [-26.5,-25,-23.5]){const pot=mesh(new THREE.CylinderGeometry(.23,.20,.2,24),steel,programme);pot.position.set(x,1.2,-12);}
-  sign('Cooking lab','FOOD & COMMUNITY',2.3,.65,programme,-25,.68,-11.56);
   const glowGroup=new THREE.Group();programme.add(glowGroup);
   const laserMaterial=new THREE.MeshBasicMaterial({vertexColors:true,transparent:true,opacity:.19,side:THREE.DoubleSide,depthWrite:false,blending:THREE.AdditiveBlending});
   for(const x of [-7,7]){const vertices=[],colours=[];for(let i=0;i<7;i++){const c=new THREE.Color().setHSL(i/8,.8,.6);const ex=x+(i-3)*1.3,ez=9+i*1.4;vertices.push(x,5.7,-19,ex-.08,7,ez,ex+.08,7,ez);for(let j=0;j<3;j++)colours.push(c.r,c.g,c.b);}const geo=new THREE.BufferGeometry();geo.setAttribute('position',new THREE.Float32BufferAttribute(vertices,3));geo.setAttribute('color',new THREE.Float32BufferAttribute(colours,3));mesh(geo,laserMaterial,glowGroup).castShadow=false;}
@@ -95,8 +95,16 @@ export function createSiteFeatures(THREE, scene, video) {
   function covered(points,width=2.6){const curve=new THREE.CatmullRomCurve3(points.map(([x,z])=>V(x,3.15,z))),p=[],ix=[];for(let i=0;i<=32;i++){const v=curve.getPoint(i/32),t=curve.getTangent(i/32);p.push(v.x-t.z*width/2,v.y+.18,v.z+t.x*width/2,v.x+t.z*width/2,v.y,v.z-t.x*width/2);if(i<32){const a=i*2;ix.push(a,a+1,a+2,a+1,a+3,a+2);}if(i%8===0)for(const side of [-1,1])box(.06,3.15,.06,steel,shelter,v.x+side*t.z*(width/2-.1),1.58,v.z-side*t.x*(width/2-.1));}const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(p,3));g.setIndex(ix);g.computeVertexNormals();mesh(g,rainMat,shelter);}
   covered([[0,-2],[0,8],[-10,3],[-20,-5]]);covered([[0,8],[-10,20],[-23,20]]);covered([[0,8],[10,13],[20,10],[25,5]]);covered([[-23,-8],[-30,-14],[-34,-20]]);
   for(const x of [-11.4,11.4]){const screen=mesh(new THREE.PlaneGeometry(14,2.8),rainMat,shelter);screen.rotation.y=Math.PI/2;screen.position.set(x,1.5,-12);}
-  let phase='open',isNight=false,isRain=false,showLayout=false,arrivalAt=0;
-  function sync(){delivery.visible=phase!=='site';cargo.visible=phase==='arrival'||phase==='assembly';assembly.visible=phase==='assembly';fitout.visible=['fitout','open'].includes(phase);programme.visible=phase==='open';shelter.visible=isRain&&fitout.visible;layout.visible=showLayout&&fitout.visible;glowGroup.visible=isNight;}
+  let state={seconds:0,main:0,food:0,park:0,apple:0,furniture:0,programme:0,navigation:false,truck:0},isNight=0,isRain=false,showLayout=false;
+  const reveal=(g,p)=>{g.visible=p>0;g.children.forEach((child,i)=>child.visible=p>=(i+1)/(g.children.length+1));};
+  function sync(){
+    delivery.visible=state.seconds>2;truck.position.z=27+Math.pow(1-state.truck,2)*65;
+    cargo.visible=state.seconds>=6&&state.seconds<29;cargo.children.forEach((c,i)=>c.visible=state.main<1-i*.13);
+    assembly.visible=state.seconds>=6&&state.main<1;
+    fitout.visible=true;reveal(mainFurniture,state.furniture);reveal(foodFurniture,state.food);reveal(parkFurniture,state.park);reveal(appleFurniture,state.apple);
+    programme.visible=state.programme>0;programme.children.forEach((c,i)=>{if(c!==glowGroup)c.visible=state.programme>=(i+1)/(programme.children.length+1);});
+    shelter.visible=isRain&&state.navigation;layout.visible=showLayout&&state.navigation;glowGroup.visible=isNight>0&&state.programme>0;laserMaterial.opacity=.19*isNight;
+  }
   sync();
-  return {setStage(value,animate=false){phase=value;arrivalAt=animate&&value==='arrival'?performance.now():0;truck.position.z=27;sync();},setNight(value){isNight=value;sync();},setRain(value){isRain=value;sync();},setLayout(value){showLayout=value;sync();},update(t,now){projectionMaterial.uniforms.time.value=t;if(arrivalAt){const p=Math.min(1,(now-arrivalAt)/2400);truck.position.z=27+(1-p)*(1-p)*38;if(p===1)arrivalAt=0;}return !!arrivalAt;},stats:{designPositions:100,seats:96,mobilitySpaces:4,listeningPylons:4,lineArrays:4}};
+  return {videoMap,setStory(value){state=value;sync();},setNight(value){isNight=Number(value);sync();},setRain(value){isRain=value;sync();},setLayout(value){showLayout=value;sync();},update(t){stageVisuals.update();projectionMaterial.uniforms.time.value=t;return state.seconds>2&&state.seconds<31;},stats:{attendanceAmbition:100,mainLoungeChairs:10,mainHangingSeats:4,mainDaybeds:2,listeningPylons:4,lineArrays:4}};
 }

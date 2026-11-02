@@ -1,17 +1,17 @@
-# Universal Mind Lab — five-step progress
+# Universal Mind Lab — current progress
 
-Updated 2 November 2026 for the landing page and first implementation across all five agreed steps. Source and deployment evidence are recorded in [the release note](LANDING-FIVE-STAGES-RELEASE.md).
+Updated 2 November 2026 for the automatic opening story and architectural revision, brief v0.9.
 
-| Step | Implemented in this iteration | Further refinement |
+| Step | Current implementation | Remaining refinement |
 | --- | --- | --- |
-| 1. Layout and scale | 22.6 × 18.4 m vault; 96 chairs plus four mobility spaces; central aisle, service-edge truck placement, quieter listening edge and optional covered connections. | Site-specific occupancy, accessibility, toilets, drainage, support-room detail and acoustic separation. |
-| 2. Road train and arrival | Linfox concept road train, equipment crates, scaffold/formwork, five selectable stages and automatic sequence playback. | Detailed loading/transport logic, construction method, schedule and local build workflow. |
-| 3. Architecture and furnishing | Tiled four-contact vault, related warm satellite canopies, distinct fluid rainbow metallic play bridge, woven Tropicália chair/daybed/cocoon studies and cushions. | Official assets where available, closer architectural fidelity, materials and play/access engineering. |
-| 4. Listening experience | Four transparent tubular glass pylons, curved Apple Music interface studies, AKG K812 representations and rainbow seating. | Real partner interface, device playback, sound isolation and listening content. |
-| 5. Programme | Stage video wall sharing the soundtrack timeline, four line-array positions, workshop devices, cooking counter, sculptures, colour projections, laser-like fans, Day/Night, rain shelter and guided tour. | Artist-led workshop detail, wristbands, refined projection design and production engineering. |
+| 1. Layout and scale | Open dance floor; scattered lounges, daybeds and hanging seats; approximately 100-person attendance ambition; covered circulation study. | Real-site capacity, acoustics, access, toilets, drainage and support-room planning. |
+| 2. Arrival | Automatic truck arrival, ten seconds of construction with twelve builders, sequential facilities and fit-out; Replay replaces stage buttons. | Detailed construction and transport method. |
+| 3. Architecture and furnishing | Preserved main vault; refined compound satellite shells and tiled texture; sculptural support pavilion; separate rainbow play bridge; Tropicália furniture studies. | Manufacturer assets, natural materials, photorealistic detail and engineered play/access design. |
+| 4. Listening | Four tubular glass pylons, Apple Music interface studies, K812 representations and rainbow lounges. | Partner interface, playback system and live content integration. |
+| 5. Programme | Seventy articulated visitors; dancing; roof-profile panoramic screen; four arrays; cooking/workshops; central fashion runway, eight walking models, Vogue flower flag and six video panels; exact Hexeosis animation blended on the main screen; automatic dusk, roof projections, towers, geodesic light framework and wristbands. | Artist activity detail, final production design and photorealistic people/environment. |
 
-The Fibonacci matrix-rain landing page opens the Lab through one Explore gesture: music starts, the video blends at 7%, and fullscreen is requested. Unsupported fullscreen retains a full-window experience. The interface retains media, motion, volume and fullscreen controls.
+The landing now reproduces the Informatics treatment. Launch Full Screen starts the single music/video timeline at 7% blend and starts the story. The event wordmark uses uniform generous spacing across universalmind[lab], with mind bold.
 
-**Current focus:** review the spatial arrangement, separate playground and arrival sequence, then refine the architecture, vegetation, materials and lighting towards the requested photorealistic target. This iteration is a detailed concept model, not that final visual milestone.
+**Current focus:** proof the automatic story, dancing interior, satellite geometry and night transformation. The next milestone is greater visual realism across vegetation, characters, materials and lighting. This revision remains a concept environment.
 
-The Apple Watch → Immersion Neuroscience / SIX → responsive environment loop remains an MVP implementation requirement. BRIEF.md section 21 retains the full inference explanation and Ben’s provider-reported context. No live Watch connection is present in this browser model.
+Apple Watch → Immersion Neuroscience / SIX → responsive environment remains an MVP implementation requirement. BRIEF.md section 21 preserves the full inference explanation and Ben’s provider-reported context. No live Watch connection is present in this browser model.

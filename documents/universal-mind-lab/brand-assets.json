@@ -29,6 +29,12 @@
       "source": "https://www.apple.com/apple-music/",
       "method": "Original music-logo SVG symbol, wrapped in its 340 by 80 viewport",
       "sha256": "103ee53f4331db54184a9b45369474616b30588f3681f9755fce84fb9baaf9d3"
+    },
+    {
+      "file": "vogue.png",
+      "source": "Repository i  a m/a s s e t s/Vogue Logo - large.png",
+      "method": "Existing project asset copied unchanged",
+      "sha256": "45d15609554ee1b9b0cde561c2c6f77d605a73410bfea4b4f612b0b33b342bfa"
     }
   ],
   "rendering": "Original assets are preserved. The 3D material composes a translucent Universal Mind flower with a monochrome partner mark on triangular pennants. Official paths remain intact. NSW Education uses the government mark with the Education label, following the official site header."

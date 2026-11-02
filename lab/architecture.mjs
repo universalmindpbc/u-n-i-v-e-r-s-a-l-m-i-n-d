@@ -53,21 +53,36 @@ export function createArchitecture(THREE) {
   const vaultOutside=new THREE.MeshStandardMaterial({color:'#ead9bd',map:tileMap,bumpMap:tileBump,bumpScale:.018,roughness:.91});
   const vaultInside=new THREE.MeshStandardMaterial({color:'#e3cfad',map:tileMap,bumpMap:tileBump,bumpScale:.016,roughness:.95});
   const layeredEdge=new THREE.MeshStandardMaterial({color:'#e9d6b6',map:edgeMap,roughness:.94});
-  const clayOutside=new THREE.MeshStandardMaterial({color:'#f0dfc3',map:clayMap,roughness:.87});
-  const clayInside=new THREE.MeshStandardMaterial({color:'#e2c9a2',map:clayMap,roughness:.91});
+  const satelliteOutside=vaultOutside.clone();satelliteOutside.name='Shared earthen tile exterior';
+  const satelliteInside=vaultInside.clone();satelliteInside.name='Shared earthen tile underside';
 
-  function closedShell(surface,{uSteps=80,vSteps=64,thickness=.24,textureScale=[2.56,2.56],diagonal=false}={}) {
+  function closedShell(surface,{uSteps=80,vSteps=64,thickness=.24,textureScale=[2.56,2.56],diagonal=false,arcTexture=false,normalThickness=false}={}) {
     const position=[],uv=[],index=[],samples=[],rowLength=uSteps+1;
-    const topCount=(uSteps+1)*(vSteps+1);
+    const topCount=(uSteps+1)*(vSteps+1),underside=[],arcAcross=[],arcAlong=[];
     for(let j=0;j<=vSteps;j++)for(let i=0;i<=uSteps;i++)samples.push(surface(i/uSteps,j/vSteps));
+    const distance=(a,b)=>Math.hypot(a[0]-b[0],a[1]-b[1],a[2]-b[2]);
+    for(let j=0;j<=vSteps;j++)for(let i=0;i<=uSteps;i++){
+      const k=j*rowLength+i,p=samples[k];
+      arcAcross[k]=i?arcAcross[k-1]+distance(p,samples[k-1]):0;
+      arcAlong[k]=j?arcAlong[k-rowLength]+distance(p,samples[k-rowLength]):0;
+      if(normalThickness){
+        const left=samples[j*rowLength+Math.max(0,i-1)],right=samples[j*rowLength+Math.min(uSteps,i+1)];
+        const back=samples[Math.max(0,j-1)*rowLength+i],front=samples[Math.min(vSteps,j+1)*rowLength+i];
+        const du=new THREE.Vector3(right[0]-left[0],right[1]-left[1],right[2]-left[2]);
+        const dv=new THREE.Vector3(front[0]-back[0],front[1]-back[1],front[2]-back[2]);
+        const normal=new THREE.Vector3().crossVectors(dv,du).normalize();
+        underside[k]=[p[0]-normal.x*thickness,j===0?0:Math.max(0,p[1]-normal.y*thickness),p[2]-normal.z*thickness];
+      }else underside[k]=[p[0],Math.max(0,p[1]-thickness),p[2]];
+    }
     for(let side=0;side<2;side++)for(let j=0;j<=vSteps;j++)for(let i=0;i<=uSteps;i++){
       const p=samples[j*rowLength+i];
-      position.push(p[0],side?Math.max(0,p[1]-thickness):p[1],p[2]);
+      position.push(...(side?underside[j*rowLength+i]:p));
       // Arc distance keeps the masonry pattern continuous around each arch.
       const across=Math.asin(Math.max(-1,Math.min(1,(i/uSteps)*2-1)))*11.3;
       const along=Math.asin(Math.max(-1,Math.min(1,(j/vSteps)*2-1)))*9.2;
-      const a=diagonal?(across+along)*.70710678:p[0];
-      const b=diagonal?(along-across)*.70710678:p[2]+p[1]*.45;
+      const k=j*rowLength+i,fanAcross=arcAcross[k]-arcAcross[j*rowLength+Math.floor(uSteps/2)],fanAlong=arcAlong[k];
+      const a=arcTexture?(fanAcross+fanAlong)*.70710678:diagonal?(across+along)*.70710678:p[0];
+      const b=arcTexture?(fanAlong-fanAcross)*.70710678:diagonal?(along-across)*.70710678:p[2]+p[1]*.45;
       uv.push(a/textureScale[0],b/textureScale[1]);
     }
     for(let j=0;j<vSteps;j++)for(let i=0;i<uSteps;i++){
@@ -84,7 +99,7 @@ export function createArchitecture(THREE) {
     function rim(a,b){
       const pa=samples[a],pb=samples[b],k=position.length/3;
       const distance=Math.hypot(pb[0]-pa[0],pb[1]-pa[1],pb[2]-pa[2]);
-      position.push(...pa,...pb,pa[0],Math.max(0,pa[1]-thickness),pa[2],pb[0],Math.max(0,pb[1]-thickness),pb[2]);
+      position.push(...pa,...pb,...underside[a],...underside[b]);
       uv.push(edgeDistance/2,1,(edgeDistance+distance)/2,1,edgeDistance/2,0,(edgeDistance+distance)/2,0);
       index.push(k,k+1,k+2,k+1,k+3,k+2);edgeDistance+=distance;
     }
@@ -107,13 +122,26 @@ export function createArchitecture(THREE) {
     const x=u*2-1,z=v*2-1;
     return [x*11.3,.24+4.24*arch(x)+3.56*arch(z),z*9.2];
   },{uSteps:88,vSteps:72,thickness:.24,diagonal:true});
-  const spine=new THREE.CubicBezierCurve3(new THREE.Vector3(0,.19,-4.25),new THREE.Vector3(0,6.75,-5.85),new THREE.Vector3(0,7.2,-.2),new THREE.Vector3(0,5.65,4.65));
+  // Continuous support, rolled outer shoulders and a shallow dished canopy.
+  // The rounded leading edge is formed by the shell boundary, with no cut-out holes.
+  const spine=new THREE.CubicBezierCurve3(new THREE.Vector3(0,.22,-4.22),new THREE.Vector3(0,6.6,-5.72),new THREE.Vector3(0,7.15,-.12),new THREE.Vector3(0,5.8,4.65));
   const satelliteGeometry=closedShell((u,v)=>{
-    const q=u*2-1,p=spine.getPoint(v),opening=Math.sin(v*Math.PI/2);
-    const halfWidth=1.15+5.3*Math.pow(opening,.82)-.8*Math.pow(v,6);
-    const shoulder=.63*Math.pow(Math.abs(q),2.4)*opening;
-    return [q*halfWidth,p.y-shoulder,p.z+.5*q*q*Math.sin(v*Math.PI)-.82*q*q*Math.pow(v,3)];
-  },{uSteps:64,vSteps:72,thickness:.19,textureScale:[1.4,1.4]});
+    const q=u*2-1,p=spine.getPoint(v),opening=Math.sin(v*Math.PI/2),across=Math.abs(q);
+    const taper=Math.sqrt(Math.max(0,1-Math.pow(v,8)));
+    const halfWidth=.16+(1.24+5.45*Math.pow(opening,.92)-.65*Math.pow(v,5))*taper;
+    const crown=.13*Math.sin(v*Math.PI)*(1-q*q);
+    const rolledEdge=.68*Math.pow(across,2.6)*Math.pow(opening,.7)*taper;
+    const returnLift=.16*Math.pow(across,10)*Math.pow(opening,1.5)*taper;
+    const twist=.11*q*Math.sin(v*Math.PI);
+    const frontRounding=(1.5*q*q*Math.pow(v,3)+.3*Math.pow(across,6)*Math.pow(v,5))*(1-Math.pow(v,6));
+    return [q*halfWidth,p.y+crown-rolledEdge+returnLift+twist,
+      p.z+.48*q*q*Math.pow(1-v,2)+.28*q*q*Math.sin(v*Math.PI)-frontRounding];
+  },{uSteps:72,vSteps:72,thickness:.22,textureScale:[2.56,2.56],arcTexture:true,normalThickness:true});
+  function roofHeight(x,z){
+    const localX=THREE.MathUtils.clamp(x,-11.3,11.3)/11.3;
+    const localZ=THREE.MathUtils.clamp(z,-9.2,9.2)/9.2;
+    return Math.max(0,4.24*arch(localX)+3.56*arch(localZ));
+  }
 
   // A separate ribbon bridge play study: two flowing landings and one open underpass.
   const playProfile=(u,v)=>{
@@ -128,8 +156,8 @@ export function createArchitecture(THREE) {
     tint.setHSL(.77*(1-t),.72,.62);rainbowColours.push(tint.r,tint.g,tint.b);
   }
   playGeometry.setAttribute('color',new THREE.Float32BufferAttribute(rainbowColours,3));
-  const silver=new THREE.MeshStandardMaterial({color:'#e2e5e3',metalness:.73,roughness:.29});
-  const rainbowMetal=new THREE.MeshStandardMaterial({vertexColors:true,metalness:.58,roughness:.29});
+  const silver=new THREE.MeshStandardMaterial({color:'#e2e5e3',metalness:.73,roughness:.29,bumpMap:clayMap,bumpScale:.003});
+  const rainbowMetal=new THREE.MeshStandardMaterial({vertexColors:true,metalness:.58,roughness:.29,bumpMap:clayMap,bumpScale:.003});
   const playWood=new THREE.MeshStandardMaterial({color:'#8b7153',roughness:.8});
   const treadGeometry=new THREE.BoxGeometry(.21,.055,1.9);
   function dimensions(geometry,scale,thickness){
@@ -144,6 +172,7 @@ export function createArchitecture(THREE) {
     return group;
   }
   return {
+    roofHeight,
     mainVault(){
       const group=object(vaultGeometry,[vaultOutside,vaultInside,layeredEdge],'Droneport-derived four-contact vault');
       group.userData.dimensions={width:22.6,depth:18.4,height:8.04,nominalShellThickness:.24};
@@ -151,8 +180,9 @@ export function createArchitecture(THREE) {
       return group;
     },
     satellite({scale=1}={}){
-      const group=object(satelliteGeometry,[clayOutside,clayInside,layeredEdge],'Volu-informed continuous earthen canopy');group.scale.setScalar(scale);
-      group.userData.dimensions=dimensions(satelliteGeometry,scale,.19);
+      const group=object(satelliteGeometry,[satelliteOutside,satelliteInside,layeredEdge],'Volu-informed continuous earthen canopy');group.scale.setScalar(scale);
+      group.userData.dimensions=dimensions(satelliteGeometry,scale,.22);
+      group.userData.shellMapping={support:'negative Z',opening:'positive Z',texture:'arc-length fan courses',nominalThickness:.22};
       return group;
     },
     playground({rainbow=true}={}){

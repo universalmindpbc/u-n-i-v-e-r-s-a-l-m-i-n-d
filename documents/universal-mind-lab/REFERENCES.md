@@ -1,6 +1,6 @@
 # Universal Mind Lab — supplied reference index
 
-All 26 attachments are preserved in their original file formats and resolution. Friendly filenames begin with stable reference IDs. Original filenames, paths, file sizes and checksums are recorded in [the manifest](reference-manifest.json).
+All 31 archived references are preserved in their original file formats and resolution. Friendly filenames begin with stable reference IDs. Original filenames, paths, file sizes and checksums are recorded in [the manifest](reference-manifest.json).
 
 R17 and R18 are byte-identical duplicate attachments; both are retained. The index describes the visible content and its proposed use. It does not establish image reuse rights or a confirmed design partnership.
 
@@ -325,3 +325,21 @@ Original: IMG_2479.jpeg. Core language: Universal Mind; music | fashion | mindfu
 ![Ben’s approved page copy](references/marketing/R27-approved-marketing-copy.png)
 
 Original: Screenshot 2026-11-02 at 3.25.24 pm.png. Preserve the wording in this artwork, including `/eora`. Ben’s spoken “Yura” is resolved by the supplied image. This replaces added promotional copy; functional descriptions remain. “Proposal” identifies the concept and its proposed partnerships.
+
+## R28 — event wordmark spacing
+
+Original screenshot supplied 2 November 2026. Keep consistent, generous letter-spacing across **universalmind[lab]**, with **mind** bold and the other words lighter. Ben explicitly rejected a tighter treatment for **[lab]**.
+
+![Event wordmark reference](references/branding/R28-uniform-wordmark-spacing.png)
+
+## R29 — Droneport and hologram relationship
+
+Review screenshot supplied during development. The physical Droneport stays visible; the geodesic light projection rises above its roof. The missing shells in this image were a rendering defect, corrected in the revised material clipping.
+
+![Review screenshot](references/review/R29-hologram-roof-visibility-review.png)
+
+## R30–R31 — Hexeosis stage animation
+
+R30 preserves the supplied still. R31 preserves the exact 540 × 540 animated GIF from [Hexeosis](https://hexeosis.com/gifs/hexeosis_gif_selects_topic/hxg-selects-isotriangles/hx_4a480.gif), with 72 frames over 2.88 seconds. A silent H.264 derivative supplies a browser video texture. The original GIF remains unchanged.
+
+The screen combines this geometry with artist footage; the present performance source is the existing Neverender video. Live Tame Impala or Charli XCX clips remain future supplied assets.

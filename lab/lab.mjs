@@ -1,27 +1,26 @@
-import { initMedia } from './media.mjs?v=20261102f';
+import { initMedia } from './media.mjs?v=20261102story1';
+import { createStory } from './story.mjs?v=20261102story1';
 const $ = (id) => document.getElementById(id);
 const reduced = matchMedia('(prefers-reduced-motion: reduce)');
 const mobile = () => innerWidth < 700;
 const status = (message) => { $('scene-status').textContent = message; };
 const places = {
   overview: { number: '01 · THE CLEARING', title: 'Open lawn', copy: 'A generous green lawn holds the programme together. Forest meets two boundaries; a river or creek frames a third.', note: 'An illustrative setting. The host community will help choose and shape the actual site.' },
-  main: { number: '02 · MAIN PAVILION', title: 'Main pavilion', copy: 'Music, fashion and collective experiences gather beneath a single vaulted shell, opening onto the lawn.', note: '96 seats plus four mobility spaces test the 100-person ambition. Capacity, acoustics and construction require site-specific design.' },
+  main: { number: '02 · MAIN PAVILION', title: 'Main pavilion', copy: 'Music, fashion and collective experiences gather beneath a single vaulted shell, opening onto the lawn.', note: 'An open dance floor, scattered Tropicália lounges and hanging seats. The approximately 100-person ambition remains subject to site-specific planning.' },
   food: { number: '03 · FOOD & PLAY', title: 'Food and play pavilions', copy: 'Cooking and sheltered activities sit beside a separate rainbow metallic play structure, with a flowing upper route and an open passage beneath.', note: 'The same provisional material palette as the main vault, with simpler surfaces and no oval apertures.' },
   play: { number: '04 · PLAYGROUND', title: 'Sculptural playground', copy: 'A separate fluid play bridge rises from the lawn, with a walk-through arch and a gently curving upper route. Rainbow metallic surfaces explore the aluminium or stainless-steel direction.', note: 'A concept informed by the supplied ZHA reference. Play safety, access, surfaces and fabrication remain part of specialist design.' },
   river: { number: '05 · BY THE WATER', title: 'Apple Music area', copy: 'Transparent tubular pylons, rainbow Tropicália furniture studies and AKG K812 headphone representations form the individual listening area.', note: 'Apple Music collaboration and interface are proposed. The listening preview shares this page’s music controls.' },
-  support: { number: '06 · SUPPORT AREA', title: 'Support area', copy: 'A welcome booth, headspace staff figure and MSF support vehicle illustrate the proposed facilities. Triangular flags share the Universal Mind flower.', note: 'Illustrative placements. Partner participation, staffing and clinical services remain to be agreed.' }
+  fashion:{number:'07 · FASHION',title:'Fashion runway',copy:'The central approach becomes a runway with looping model walks, video panels and sculptures. Indigenous fashion collaboration is the programme direction.',note:'The Vogue flag sits over the Universal Mind flower. Models and clothing are fictional visual studies; collaborations remain proposed.'},
+  support: { number: '06 · SUPPORT AREA', title: 'Support area', copy: 'A sculptural support pavilion shares the architectural language of the site, with a welcome area, headspace staff figure and MSF support vehicle.', note: 'Illustrative placements. Partner participation, staffing and clinical services remain to be agreed.' }
 };
 let sceneAPI = null;
-let entered=false,buildStage='open',rain=false,layoutVisible=false,sequenceTimer=0,tourTimer=0;
+let entered=false,buildStage='site',rain=false,layoutVisible=false,tourTimer=0,storyState=null;
+const story=createStory(applyStory);
 $('world').inert=true;$('world').setAttribute('aria-hidden','true');
 const media = initMedia(state => sceneAPI?.setMusicMotion(state));
 let night = false;
-$('night-toggle').addEventListener('click',()=>{
-  night=!night;document.body.dataset.night=String(night);
-  $('night-toggle').setAttribute('aria-pressed',String(night));
-  $('night-toggle').setAttribute('aria-label',night?'Switch to day':'Switch to night');
-  $('day-label').textContent=night?'Night':'Day';sceneAPI?.setNight(night);
-});
+function syncNight(value){night=value;document.body.dataset.night=String(value);$('night-toggle').setAttribute('aria-pressed',String(value));$('night-toggle').setAttribute('aria-label',value?'Switch to day':'Switch to night');$('day-label').textContent=value?'Night':'Day';}
+$('night-toggle').addEventListener('click',()=>{const value=night?0:1;story.setNight(value);syncNight(!!value);sceneAPI?.setNight(value);document.body.dataset.nightProgress=String(value);});
 let mode = '3d';
 let selected = 'overview';
 function selectPlace(key, show = true, automated = false) {
@@ -34,6 +33,7 @@ function selectPlace(key, show = true, automated = false) {
   $('place-title').textContent = info.title;
   $('place-copy').textContent = info.copy;
   $('place-footnote').textContent = info.note;
+  $('interior-view').hidden=key!=='main';
   $('place-card').hidden = !show || key === 'overview';
   if (mode === '3d') sceneAPI?.go(key);
   status(info.title + ' ' + info.copy);
@@ -51,6 +51,7 @@ function setMode(next) {
   if (mode === '3d') sceneAPI?.go(selected, true);
 }
 document.querySelectorAll('[data-view]').forEach(b => b.addEventListener('click', () => selectPlace(b.dataset.view)));
+$('interior-view').addEventListener('click',()=>{stopTour();sceneAPI?.go('interior');$('place-card').hidden=true;});
 $('place-close').addEventListener('click', () => { $('place-card').hidden = true; document.querySelector(`[data-view="${selected}"]`).focus(); });
 $('reset-view').addEventListener('click', () => selectPlace('overview', false));
 $('plan-toggle').addEventListener('click', () => setMode(mode === 'plan' && sceneAPI ? '3d' : 'plan'));
@@ -59,6 +60,7 @@ $('labels-toggle').addEventListener('click', () => {
   $('labels-toggle').setAttribute('aria-pressed', String(visible));
   $('labels').hidden = !visible;
 });
+document.querySelector('.landing-name').addEventListener('click',()=>$('vision').showModal());
 $('about-open').addEventListener('click', () => $('vision').showModal());
 $('about-close').addEventListener('click', () => $('vision').close());
 $('vision').addEventListener('click', (e) => { if (e.target === $('vision')) { const r = e.target.getBoundingClientRect(); if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) e.target.close(); } });
@@ -95,41 +97,37 @@ fullscreenButton.addEventListener('click',()=>changeFullscreen());
 $('explore-enter').addEventListener('click',()=>{
   if(entered)return;entered=true;document.body.dataset.entered='true';
   $('landing').hidden=true;$('world').inert=false;$('world').removeAttribute('aria-hidden');
-  sceneAPI?.setVisible(mode==='3d');
-  media.start();changeFullscreen(true);
-  document.querySelector('[data-view="overview"]').focus({preventScroll:true});
+  sceneAPI?.setVisible(mode==='3d');media.start();changeFullscreen(true);startStory();$('replay-story').focus({preventScroll:true});
 });
-const stages=['site','arrival','assembly','fitout','open'];
-const stageDescriptions={site:'Open lawn, forest edges and waterway.',arrival:'Road-train delivery on the service edge.',assembly:'Illustrative frames, access scaffold and unloading.',fitout:'Vault, satellite shelters, playground and listening.',open:'Programme, listening and community facilities.'};
-function stopSequence(){clearTimeout(sequenceTimer);sequenceTimer=0;$('sequence-play').setAttribute('aria-pressed','false');$('sequence-play').textContent='▶ Play';}
-function setStage(value,automatic=false){
-  if(!automatic){stopSequence();stopTour();}buildStage=value;document.body.dataset.buildStage=value;
-  document.querySelectorAll('[data-stage]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.stage===value)));
-  $('stage-description').textContent=stageDescriptions[value];sceneAPI?.setStage(value,!reduced.matches);
-  if(value!=='open'){$('place-card').hidden=true;selectPlace('overview',false,true);}
+function applyStory(state){
+  storyState=state;buildStage=state.phase;
+  document.body.dataset.buildStage=state.phase==='night'||state.phase==='dusk'?'open':state.phase;
+  document.body.dataset.story=state.seconds>=61?'complete':state.phase;
+  document.body.dataset.storyTime=state.seconds.toFixed(1);
+  document.body.dataset.siteReady=String(state.navigation);
+  document.body.dataset.nightProgress=state.night.toFixed(3);
+  const descriptions={site:'The open site.',arrival:'The road train arrives.',assembly:'The pavilion is being built.',fitout:'Facilities and furnishings are being added.',open:'The Lab is open.',dusk:'Daylight fades and the light show begins.',night:'The site is illuminated.'};
+  if($('story-status').dataset.phase!==state.phase){$('story-status').dataset.phase=state.phase;$('story-status').textContent=descriptions[state.phase];}
+  syncNight(state.night>.5);sceneAPI?.setStory(state);
 }
-document.querySelectorAll('[data-stage]').forEach(b=>b.addEventListener('click',()=>setStage(b.dataset.stage)));
-$('sequence-play').addEventListener('click',()=>{
-  if(sequenceTimer){stopSequence();return;}stopTour();let n=0;
-  $('sequence-play').setAttribute('aria-pressed','true');$('sequence-play').textContent='Ⅱ Pause';
-  const next=()=>{setStage(stages[n++],true);if(n<stages.length)sequenceTimer=setTimeout(next,3400);else stopSequence();};next();
-});
+function startStory(){stopTour();$('place-card').hidden=true;selectPlace('overview',false,true);story.start();}
+$('replay-story').addEventListener('click',startStory);
 function stopTour(){clearTimeout(tourTimer);tourTimer=0;$('tour-toggle').setAttribute('aria-pressed','false');$('tour-toggle').textContent='Tour';}
 $('tour-toggle').addEventListener('click',()=>{
-  if(tourTimer){stopTour();return;}stopSequence();setStage('open',true);let n=0;const route=['overview','main','food','play','river','support'];
+  if(tourTimer){stopTour();return;}let n=0;const route=['overview','main','food','play','river','support','fashion'];
   $('tour-toggle').setAttribute('aria-pressed','true');$('tour-toggle').textContent='Stop tour';
   const next=()=>{selectPlace(route[n++],true,true);if(n<route.length)tourTimer=setTimeout(next,7000);else stopTour();};next();
 });
 $('rain-toggle').addEventListener('click',()=>{rain=!rain;$('rain-toggle').setAttribute('aria-pressed',String(rain));document.body.dataset.rain=String(rain);sceneAPI?.setRain(rain);});
 $('layout-toggle').addEventListener('click',()=>{layoutVisible=!layoutVisible;$('layout-toggle').setAttribute('aria-pressed',String(layoutVisible));$('layout-notes').hidden=!layoutVisible;sceneAPI?.setLayout(layoutVisible);});
-addEventListener('pagehide',()=>{stopSequence();stopTour();});
+addEventListener('pagehide',stopTour);
 document.addEventListener('fullscreenchange', syncFullscreen);
 document.addEventListener('webkitfullscreenchange', syncFullscreen);
 syncFullscreen();
 
 async function buildWorld() {
   const THREE = await import('three');
-  const [{OrbitControls},{createArchitecture},{createSiteFeatures}]=await Promise.all([import('./vendor/OrbitControls.js'),import('./architecture.mjs?v=20261102f'),import('./site-features.mjs?v=20261102f')]);
+  const [{OrbitControls},{createArchitecture},{createSiteFeatures},{createCrowd,createRunwayCrowd},{createLightShow},{createRunway}]=await Promise.all([import('./vendor/OrbitControls.js'),import('./architecture.mjs?v=20261102story1'),import('./site-features.mjs?v=20261102story1'),import('./crowd.mjs?v=20261102story1'),import('./light-show.mjs?v=20261102story1'),import('./runway.mjs?v=20261102story1')]);
   const architecture=createArchitecture(THREE);
   let seed = 1947;
   const random = () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; };
@@ -141,6 +139,7 @@ async function buildWorld() {
   renderer.setPixelRatio(Math.min(devicePixelRatio, mobile() ? 1.6 : 2));
   renderer.setSize(innerWidth, $('world').clientHeight);
   renderer.shadowMap.enabled = true;
+  renderer.localClippingEnabled=true;
   renderer.shadowMap.type = THREE.PCFSoftShadowMap;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.15;
@@ -241,7 +240,7 @@ async function buildWorld() {
     }
   });scene.add(trunks,crowns);
   const crownMatrices=crowns.instanceMatrix.array.slice();
-  const animatedFlags=[],animatedPeople=[];
+  const animatedFlags=[];
 
   const paths=new THREE.Group();scene.add(paths);
   function path(points,width=2.4){
@@ -257,21 +256,27 @@ async function buildWorld() {
   path([[-25,-8],[-31,-14],[-35,-24]],1.8);
 
   const architectureGroup=new THREE.Group();scene.add(architectureGroup);
-  const main=architecture.mainVault();main.position.set(0,.08,-12);architectureGroup.add(main);
+  const buildings={};
+  const main=architecture.mainVault();main.position.set(0,.08,-12);architectureGroup.add(main);buildings.main=main;
   const platform=mesh(new THREE.BoxGeometry(24,.16,20),mats.stone,main);platform.position.y=-.08;
-  for(const [x,z,scale,rotation] of [[-24,-9,1,-.35],[-23,20,.88,-1.1]]){
-    const g=architecture.satellite({scale});g.position.set(x,.08,z);g.rotation.y=rotation;architectureGroup.add(g);
+  for(const [key,x,z,scale,rotation] of [['food',-24,-9,1,-.35],['park',-23,20,.88,-1.1],['support',-34,-24,.78,.35]]){
+    const g=architecture.satellite({scale});g.position.set(x,.08,z);g.rotation.y=rotation;architectureGroup.add(g);buildings[key]=g;
     const deck=mesh(new THREE.CylinderGeometry(6.4,6.4,.15,64),mats.stone,g);deck.scale.z=.85;deck.position.y=-.08;
   }
-  if(architecture.playground){const playground=architecture.playground({rainbow:true});playground.position.set(-17,.08,31);playground.rotation.y=.35;architectureGroup.add(playground);}
-  const features=createSiteFeatures(THREE,scene,$('music-video'));
+  const playground=architecture.playground({rainbow:true});playground.position.set(-17,.08,31);playground.rotation.y=.35;architectureGroup.add(playground);buildings.playground=playground;
+  const buildPlanes={};
+  for(const [key,g] of Object.entries(buildings)){
+    const plane=new THREE.Plane(new THREE.Vector3(0,-1,0),0);buildPlanes[key]=plane;
+    const cloned=new Map();g.traverse(o=>{if(!o.isMesh)return;const clone=m=>{if(!cloned.has(m)){const n=m.clone();n.clippingPlanes=[plane];n.clipShadows=true;cloned.set(m,n);}return cloned.get(m);};o.material=Array.isArray(o.material)?o.material.map(clone):clone(o.material);});
+  }
+  const lightShow=createLightShow(THREE,scene,Object.values(buildings));
+  const features=createSiteFeatures(THREE,scene,$('music-video'),architecture,$('stage-geometry-video'));
+  const crowd=createCrowd(THREE),runwayCrowd=createRunwayCrowd(THREE),runway=createRunway(THREE,scene,features.videoMap);scene.add(crowd.builders,crowd.visitors,runwayCrowd.group);
+  crowd.visitors.traverse(o=>{if(o.isInstancedMesh)o.userData.fullCount=o.count;});
   const contextStart=scene.children.length;
-  // Service/support footprint is intentionally plain until the facilities stage.
-  const support=mesh(new THREE.BoxGeometry(6,2.7,4),new THREE.MeshStandardMaterial({color:'#a6aa90',roughness:1}));support.position.set(-36,1.3,-24);
-  const supportRoof=mesh(new THREE.BoxGeometry(6.5,.15,4.5),mats.timber);supportRoof.position.set(-36,2.73,-24);
   // Contextual proposal identities: physical flags, a vehicle and a staff uniform.
   const images = Object.fromEntries(await Promise.all([
-    ['flower','universal-mind-flower.png'],['headspace','headspace.svg'],['msf','msf.svg'],['education','nsw-government.svg'],['apple','apple-music.svg']
+    ['flower','universal-mind-flower.png'],['headspace','headspace.svg'],['msf','msf.svg'],['education','nsw-government.svg'],['apple','apple-music.svg'],['vogue','vogue.png']
   ].map(async ([key,file]) => {
     const image = new Image(); image.src = new URL('./assets/'+file,import.meta.url).href;
     await image.decode(); return [key,image];
@@ -304,15 +309,13 @@ async function buildWorld() {
     mesh(geometry,new THREE.MeshStandardMaterial({map:brandTexture(key,true),roughness:.96,side:THREE.DoubleSide}),group);
     return group;
   }
-  flag('headspace',-30,-24,2.65);flag('msf',-40,-22,2.65);flag('education',11,-3);flag('apple',25,5);
+  flag('headspace',-30,-24,2.65);flag('msf',-40,-22,2.65);flag('education',11,-3);flag('apple',25,5);flag('vogue',7.6,30,-.6);
   function decal(key,w,h,parent,x,y,z,rotation=0){
     const mark=mesh(new THREE.PlaneGeometry(w,h),new THREE.MeshStandardMaterial({map:brandMaps[key],transparent:true,depthWrite:false,roughness:1,side:THREE.DoubleSide,polygonOffset:true,polygonOffsetFactor:-1}),parent);
     mark.position.set(x,y,z);mark.rotation.y=rotation;mark.castShadow=false;return mark;
   }
-  const booth=new THREE.Group();booth.name='Proposed headspace welcome booth';booth.position.set(-30,0,-18);booth.rotation.y=.45;scene.add(booth);
+  const booth=new THREE.Group();booth.name='Proposed headspace welcome booth';booth.position.set(-34,0,-22);booth.rotation.y=.45;scene.add(booth);
   const counter=mesh(new THREE.BoxGeometry(2.6,1.05,.85),mats.timber,booth);counter.position.y=.525;
-  for(const x of [-1.45,1.45]){const post=mesh(new THREE.CylinderGeometry(.055,.055,2.65,8),poleMat,booth);post.position.set(x,1.325,-.4);}
-  const canopy=mesh(new THREE.BoxGeometry(3.3,.11,2),mats.shell,booth);canopy.position.set(0,2.65,-.25);
   const sign=mesh(new THREE.BoxGeometry(1.7,.38,.05),new THREE.MeshStandardMaterial({color:'#f5f4eb',roughness:1}),booth);sign.position.set(0,.63,.45);decal('headspace',1.5,.34,booth,0,.63,.48);
   const staff=new THREE.Group();staff.name='Illustrative headspace staff figure';staff.position.set(-28.8,.08,-16.7);staff.rotation.y=.55;scene.add(staff);
   const uniform=new THREE.MeshStandardMaterial({color:'#d6e0cc',roughness:1}),trousers=new THREE.MeshStandardMaterial({color:'#455853',roughness:1}),skin=new THREE.MeshStandardMaterial({color:'#ac8462',roughness:.9});
@@ -332,53 +335,53 @@ async function buildWorld() {
   }
   vehicleBox(2.16,.17,.22,rubber,0,.52,2.27);vehicleBox(2.16,.17,.22,rubber,0,.52,-2.27);
   document.body.dataset.brandAssets='ready';
-  // Human scale figures are illustrative, with no artist likenesses.
-  const personColours=['#ded7c1','#6c8174','#c1b09a','#7c858e','#cebea5'];
-  const people=[[-2,0],[3,-8],[-6,-13],[6,-15],[-24,-5],[-21,-7],[-18,20],[-26,20],[0,29],[1,34],[16,13],[21,7],[-10,9],[-8,8],[6,20],[-2,-17]];
-  people.forEach(([x,z],i)=>{
-    const g=new THREE.Group();g.position.set(x,.08,z);g.rotation.y=random()*6.28;scene.add(g);animatedPeople.push({group:g,angle:g.rotation.y});
-    const cloth=new THREE.MeshStandardMaterial({color:personColours[i%personColours.length],roughness:1});
-    const torso=mesh(new THREE.CapsuleGeometry(.19,.48,3,6),cloth,g);torso.position.y=1.02;
-    const head=mesh(new THREE.SphereGeometry(.135,8,6),new THREE.MeshStandardMaterial({color:i%3?'#bba286':'#806956'}),g);head.position.y=1.55;
-    for(const s of [-1,1]){const leg=mesh(new THREE.CylinderGeometry(.065,.05,.69,5),cloth,g);leg.position.set(s*.11,.35,0);}
-  });
   const contextDecor=new THREE.Group();const contextObjects=scene.children.slice(contextStart);contextObjects.forEach(o=>contextDecor.add(o));scene.add(contextDecor);
-  const anchorData=[['main','Main pavilion',[0,8.4,-12]],['food','Food',[-24,6.5,-9]],['play','Playground',[-17,3.8,31]],['river','Apple Music area',[22,1.3,8]],['support','Support',[-32,3,-20]]];
+  const anchorData=[['main','Main pavilion',[0,8.4,-12]],['food','Food',[-24,6.5,-9]],['play','Playground',[-17,3.8,31]],['river','Apple Music area',[22,1.3,8]],['support','Support',[-32,3,-20]],['fashion','Fashion runway',[0,2.2,24]]];
   const anchors=anchorData.map(([key,label,p])=>{
     const el=document.createElement('button');el.className='scene-label';el.dataset.key=key;el.tabIndex=-1;el.innerHTML='<i></i>'+label;el.addEventListener('click',()=>selectPlace(key));$('labels').append(el);return {el,p:new THREE.Vector3(...p)};
   });
   const presets={
     overview:{pos:[65,51,82],target:[-1,0,0]},
     main:{pos:[21,12,19],target:[0,3,-12]},
+    interior:{pos:[0,3.2,-1],target:[0,3.1,-18.9]},
     food:{pos:[11,23,43],target:[-20,2,11]},
     play:{pos:[0,8,45],target:[-17,1.6,31]},
     river:{pos:[32,5,23],target:[23,1.7,10]},
-    support:{pos:[-21,13,-37],target:[-33,2,-18]}
+    support:{pos:[-21,13,-37],target:[-33,2,-18]},
+    fashion:{pos:[16,9,46],target:[0,1.5,23]}
   };
   const nightLights=[];
   for(const [x,z,colour] of [[-9,-8,'#d98bff'],[9,-8,'#67c8e4'],[-24,-9,'#ffc798'],[-23,20,'#b2a0ff'],[25,5,'#70dfcb']]){
     const light=new THREE.PointLight(colour,0,24,1.3);light.position.set(x,2,z);scene.add(light);nightLights.push(light);
   }
   let tween=null,visible=true,raf=0,needsFrame=true,lastT=0,musicMotion=false,motionTime=0;
+  let currentStory={seconds:0,construction:0,programme:0,night:0,navigation:false};
+  const daySky=new THREE.Color('#e9ece2'),nightSky=new THREE.Color('#101f30'),daySun=new THREE.Color('#fff1d9'),nightSun=new THREE.Color('#a5c0e2');
+  const dayWaterA=new THREE.Color('#4d8d87'),nightWaterA=new THREE.Color('#123d48'),dayWaterB=new THREE.Color('#9cb9a7'),nightWaterB=new THREE.Color('#397280');
   function setNight(value){
-    features.setNight(value);
-    scene.background.set(value?'#101f30':'#e9ece2');scene.fog.color.copy(scene.background);
-    skyLight.intensity=value?.55:2.3;sun.intensity=value?.24:3.4;
-    sun.color.set(value?'#a5c0e2':'#fff1d9');renderer.toneMappingExposure=value?1.35:1.15;
-    nightLights.forEach(light=>light.intensity=value&&buildStage==='open'?32:0);
-    waterMat.uniforms.waterA.value.set(value?'#123d48':'#4d8d87');waterMat.uniforms.waterB.value.set(value?'#397280':'#9cb9a7');
-    needsFrame=true;renderer.shadowMap.needsUpdate=true;requestFrame();
+    currentStory.night=Number(value);features.setNight(value);lightShow.set(Number(value),currentStory.programme>0);
+    scene.background.lerpColors(daySky,nightSky,Number(value));scene.fog.color.copy(scene.background);
+    skyLight.intensity=2.3-1.75*value;sun.intensity=3.4-3.16*value;
+    sun.color.lerpColors(daySun,nightSun,Number(value));renderer.toneMappingExposure=1.15+.2*value;
+    nightLights.forEach((light,i)=>light.intensity=currentStory.programme>0?Math.max(0,Math.min(1,(value-i*.09)/.45))*32:0);
+    waterMat.uniforms.waterA.value.lerpColors(dayWaterA,nightWaterA,Number(value));waterMat.uniforms.waterB.value.lerpColors(dayWaterB,nightWaterB,Number(value));
+    needsFrame=true;requestFrame();
   }
-  function setStage(value,animate=false){
-    const assembled=['fitout','open'].includes(value);architectureGroup.visible=assembled;contextDecor.visible=value==='open';paths.visible=value!=='site';
-    features.setStage(value,animate);nightLights.forEach(light=>light.intensity=night&&value==='open'?32:0);$('labels').style.visibility=assembled?'':'hidden';
-    renderer.shadowMap.needsUpdate=true;needsFrame=true;requestFrame();
+  function setStory(value){
+    currentStory={...value};
+    for(const [key,g] of Object.entries(buildings)){const p=value[key]||0;g.visible=p>0;buildPlanes[key].constant=p>=1?100:Math.max(.1,p*8.7);}
+    contextDecor.visible=value.programme>0;paths.visible=value.seconds>=16;runway.setVisible(value.furniture>0);runwayCrowd.group.visible=value.programme>0;
+    features.setStory(value);setNight(value.night);crowd.builders.visible=value.seconds>6&&value.seconds<29;crowd.visitors.visible=value.programme>0;
+    crowd.visitors.traverse(o=>{if(o.isInstancedMesh)o.count=Math.floor(70*value.programme)*(o.userData.fullCount/70);});
+    document.body.dataset.revealed=Object.keys(buildings).filter(k=>value[k]>=1).join(',');
+    document.querySelectorAll('#place-list,.view-tools').forEach(e=>e.inert=!value.navigation);
+    $('labels').style.visibility=value.navigation?'':'hidden';
+    if(value.seconds<32)renderer.shadowMap.needsUpdate=true;needsFrame=true;requestFrame();
   }
   function setRain(value){features.setRain(value);needsFrame=true;renderer.shadowMap.needsUpdate=true;requestFrame();}
   function setLayout(value){features.setLayout(value);needsFrame=true;requestFrame();}
   function animateMusic(t){
     for(const {geometry,base} of animatedFlags){const a=geometry.attributes.position;for(let i=0;i<a.count;i++){const u=(base[i*3]-.09)/4.1;a.setZ(i,base[i*3+2]+Math.sin(t*2.3+u*7+base[i*3+1])*u*.24);}a.needsUpdate=true;geometry.computeVertexNormals();}
-    animatedPeople.forEach(({group,angle},i)=>{group.rotation.z=Math.sin(t*2.1+i*.7)*.045;group.rotation.y=angle+Math.sin(t*1.1+i)*.12;group.position.y=.08+Math.abs(Math.sin(t*2.1+i*.7))*.06;});
     const a=crowns.instanceMatrix.array;for(let i=0;i<crowns.count;i++){const n=i*16;a[n+12]=crownMatrices[n+12]+Math.sin(t*.75+crownMatrices[n+14]*.07)*.28;a[n+14]=crownMatrices[n+14]+Math.cos(t*.6+crownMatrices[n+12]*.06)*.16;}crowns.instanceMatrix.needsUpdate=true;
     document.body.dataset.motionFrame=String(Math.round(t*100));
   }
@@ -404,7 +407,8 @@ async function buildWorld() {
   function requestFrame(){if(!raf&&visible&&!document.hidden)raf=requestAnimationFrame(frame);}
   function frame(t){
     raf=0;if(!visible||document.hidden)return;
-    if(features.update(motionTime,t)){needsFrame=true;renderer.shadowMap.needsUpdate=true;}
+    if(features.update(motionTime,t)){needsFrame=true;}
+    crowd.update(musicMotion?motionTime:t*.001,{construction:currentStory.construction,dancing:musicMotion,visible:currentStory.seconds>6,night:currentStory.night});lightShow.update(motionTime);runwayCrowd.update(motionTime,{moving:musicMotion,visible:runwayCrowd.group.visible});
     if(tween){const a=Math.min(1,(t-tween.start)/1250),ease=a*a*(3-2*a);camera.position.lerpVectors(tween.from,tween.to,ease);controls.target.lerpVectors(tween.fromTarget,tween.target,ease);if(a===1)tween=null;needsFrame=true;}
     controls.update();
     const videoActive=!$('music-video').paused&&$('music-video').readyState>=2;
@@ -429,19 +433,19 @@ async function buildWorld() {
   reduced.addEventListener('change',()=>{controls.enableDamping=!reduced.matches;needsFrame=true;requestFrame();});
   canvas.addEventListener('webglcontextlost',(e)=>{e.preventDefault();setMode('plan');status('The 3D view paused. The 2D site plan remains available.');});
   go('overview',true);resize();
-  return {go,setNight,setStage,setRain,setLayout,setMusicMotion,setVisible(v){visible=v;if(!v){cancelAnimationFrame(raf);raf=0;}else{needsFrame=true;requestFrame();}},stats(){return {triangles:renderer.info.render.triangles,calls:renderer.info.render.calls,trees:treeList.length,...features.stats};}};
+  return {go,setNight,setStory,setRain,setLayout,setMusicMotion,setVisible(v){visible=v;if(!v){cancelAnimationFrame(raf);raf=0;}else{needsFrame=true;requestFrame();}},stats(){return {triangles:renderer.info.render.triangles,calls:renderer.info.render.calls,trees:treeList.length,...features.stats};}};
 }
 
 try {
   sceneAPI=await buildWorld();
-  sceneAPI.setNight(night);sceneAPI.setMusicMotion(media.isAnimating());sceneAPI.setStage(buildStage);sceneAPI.setRain(rain);sceneAPI.setLayout(layoutVisible);
-  $('loading').hidden=true;
+  sceneAPI.setNight(0);sceneAPI.setMusicMotion(media.isAnimating());sceneAPI.setStory(storyState||{seconds:0,phase:'site',main:0,food:0,park:0,support:0,apple:0,playground:0,furniture:0,programme:0,truck:0,construction:0,night:0,navigation:false});sceneAPI.setRain(rain);sceneAPI.setLayout(layoutVisible);
+  $('loading').hidden=true;$('explore-enter').disabled=false;
   document.body.dataset.ready='true';
   setMode('3d');
   status('The landscape is ready. Explore with the place buttons or drag the scene.');
 } catch(error) {
   console.error('Lab landscape:',error);
-  $('loading').hidden=true;
+  $('loading').hidden=true;$('explore-enter').disabled=false;
   document.body.dataset.ready='fallback';
   setMode('plan');
   $('plan-toggle').disabled=true;

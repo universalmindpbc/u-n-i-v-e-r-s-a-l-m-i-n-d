@@ -6,29 +6,21 @@
   <meta name="robots" content="noindex,nofollow">
   <meta name="theme-color" content="#e9ece2">
   <meta name="description" content="Universal Mind — music, fashion, mindfulness. Next generation lab for next generation humans. Proposal.">
-  <title>Universal Mind — Proposal</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='%23435a39'/%3E%3Cpath d='M9 10v8c0 8 14 8 14 0v-8' fill='none' stroke='%23fff' stroke-width='2'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./lab.css?v=20261102f">
+  <title>Universal Mind Lab</title>
+  <link rel="icon" href="./assets/favicon.png">
+  <link rel="stylesheet" href="./lab.css?v=20261102story1">
   <script type="importmap">{"imports":{"three":"./vendor/three.module.js"}}</script>
 </head>
-<body data-entered="false" data-build-stage="open">
-  <section id="landing" aria-labelledby="landing-title">
-    <canvas data-rain-canvas aria-hidden="true"></canvas>
-    <div class="landing-shade" aria-hidden="true"></div>
-    <div class="landing-content">
-      <img class="landing-flower" src="./assets/universal-mind-flower.png" alt="" width="100" height="100">
-      <p class="landing-brand">universal <b>mind</b></p>
-      <p class="landing-topics">music · fashion · mindfulness</p>
-      <h1 id="landing-title">Next generation lab<br>for next generation humans</h1>
-      <button id="explore-enter" type="button">Explore <span aria-hidden="true">↗</span></button>
-      <p class="entry-note">Fullscreen · music on · video blend 7%</p>
-    </div>
-    <p class="landing-edition">Proposal</p>
+<body data-entered="false" data-build-stage="site" data-story="waiting">
+  <section id="landing" aria-label="Universal Mind Lab">
+    <canvas class="rain-canvas" aria-hidden="true" data-rain-canvas></canvas><div class="rain-vignette" aria-hidden="true"></div>
+    <div class="access-shell"><img class="access-flower" src="./assets/landing-flower.png" alt=""><h1 class="access-title"><button class="landing-name" aria-label="About Universal Mind Lab">universal mind lab</button></h1><button id="explore-enter" class="access-submit" disabled>Launch Full Screen</button><p id="launch-status" role="status"></p></div>
   </section>
   <a class="skip" href="#place-list">Skip to the places</a>
   <main id="world" aria-label="Universal Mind Lab landscape study">
     <div id="scene" role="region" aria-label="Interactive 3D landscape"></div>
     <video id="music-video" playsinline loop preload="none" aria-hidden="true" tabindex="-1"></video>
+    <video id="stage-geometry-video" muted playsinline loop preload="none" aria-hidden="true" tabindex="-1" hidden></video>
     <div id="plan" class="plan" hidden>
       <svg viewBox="0 0 1000 720" role="img" aria-labelledby="plan-title plan-desc">
         <title id="plan-title">Universal Mind Lab — conceptual site plan</title>
@@ -46,27 +38,11 @@
         <g fill="#344332" font-family="system-ui,sans-serif" font-size="18" text-anchor="middle"><text x="490" y="640">Arrival</text><text x="880" y="410" transform="rotate(90 880 410)">River / creek</text><text x="475" y="112">Forest boundary</text></g>
       </svg>
     </div>
-    <div id="labels" aria-hidden="true"></div><div id="layout-notes" hidden><b>100 design positions</b><span>96 seats + 4 mobility spaces</span><span>22.6 × 18.4 m vault · 2 m centre aisle</span><small>Concept layout · capacity subject to design review</small></div>
+    <div id="labels" aria-hidden="true"></div><div id="layout-notes" hidden><b>Dance floor &amp; lounges</b><span>Open dance floor · scattered seating · hammocks</span><span>22.6 × 18.4 m main pavilion</span><small>Concept layout · capacity subject to design review</small></div>
     <div class="vignette" aria-hidden="true"></div>
     <header class="masthead">
-      <a class="wordmark" href="./" aria-label="Universal Mind Lab overview"><span>universal <b>mind</b></span><small>music · fashion · mindfulness</small></a>
+      <a class="wordmark" href="./" aria-label="Universal Mind Lab overview"><span>universal<b>mind</b><em>[lab]</em></span><small>music · fashion · mindfulness</small></a>
       <div class="mast-right">
-        <button id="about-open" class="outline-button">Proposal</button>
-        <button id="fullscreen-toggle" class="fullscreen-button" type="button" aria-label="Enter fullscreen" title="Enter fullscreen" aria-pressed="false" hidden>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="expand-icon" d="M9 4H4v5m11-5h5v5M4 15v5h5m11-5v5h-5"/><path class="contract-icon" d="M4 9h5V4m6 0v5h5M9 20v-5H4m16 0h-5v5"/></svg>
-        </button>
-      </div>
-    </header>
-    <section class="build-controls" aria-label="Site assembly stages">
-      <div class="stage-row"><span class="stage-caption">Site sequence</span><button id="sequence-play" aria-label="Play arrival and assembly sequence" aria-pressed="false">▶ Play</button></div>
-      <div class="stage-buttons" role="group" aria-label="Choose assembly stage">
-        <button data-stage="site" aria-pressed="false">Site</button><button data-stage="arrival" aria-pressed="false">Arrival</button><button data-stage="assembly" aria-pressed="false">Assembly</button><button data-stage="fitout" aria-pressed="false">Fit-out</button><button data-stage="open" aria-pressed="true">Open</button>
-      </div>
-      <p id="stage-description">Programme, listening and community facilities.</p>
-    </section>
-    <p id="fullscreen-status" class="fullscreen-status" role="status" hidden></p>
-    <div class="compass" aria-hidden="true"><span>N</span><svg viewBox="0 0 40 40"><path d="M20 4L25 27 20 23 15 27Z" fill="currentColor"/><circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-opacity=".2"/></svg></div>
-    <aside id="place-card" class="place-card" hidden aria-labelledby="place-title"><button id="place-close" class="close" aria-label="Close place detail">×</button><p id="place-number" class="eyebrow"></p><h2 id="place-title"></h2><p id="place-copy"></p><p id="place-footnote" class="detail-note"></p></aside>
     <section class="media-tools" aria-label="Music and video">
       <button id="music-toggle" type="button" aria-label="Play music" aria-pressed="false"><span id="music-symbol" aria-hidden="true">▶</span> <span id="music-label">Music</span></button>
       <button id="video-toggle" type="button" aria-label="Show music video overlay" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="m8 2 4 4 4-4M9 22h6"/></svg><span>TV</span></button>
@@ -79,6 +55,18 @@
         <button id="mix-close" type="button">Close settings</button>
       </div>
     </section>
+        <button id="replay-story" class="outline-button" aria-label="Replay from the start">↺ Replay</button>
+        <button id="about-open" class="outline-button">Proposal</button>
+        <button id="fullscreen-toggle" class="fullscreen-button" type="button" aria-label="Enter fullscreen" title="Enter fullscreen" aria-pressed="false" hidden>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="expand-icon" d="M9 4H4v5m11-5h5v5M4 15v5h5m11-5v5h-5"/><path class="contract-icon" d="M4 9h5V4m6 0v5h5M9 20v-5H4m16 0h-5v5"/></svg>
+        </button>
+      </div>
+    </header>
+    <section class="intro" aria-labelledby="headline"><h1 id="headline"><span>Next Generation Lab</span><span>for Next Generation</span><span>Humans</span></h1></section>
+    <p id="story-status" class="sr-only" role="status" aria-live="polite"></p>
+    <p id="fullscreen-status" class="fullscreen-status" role="status" hidden></p>
+    <div class="compass" aria-hidden="true"><span>N</span><svg viewBox="0 0 40 40"><path d="M20 4L25 27 20 23 15 27Z" fill="currentColor"/><circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-opacity=".2"/></svg></div>
+    <aside id="place-card" class="place-card" hidden aria-labelledby="place-title"><button id="place-close" class="close" aria-label="Close place detail">×</button><p id="place-number" class="eyebrow"></p><h2 id="place-title"></h2><p id="place-copy"></p><p id="place-footnote" class="detail-note"></p><button id="interior-view" class="outline-button" hidden>Inside the pavilion ↗</button></aside>
     <p id="media-status" role="status" hidden></p>
     <div class="view-tools" aria-label="View options"><button id="tour-toggle" aria-pressed="false">Tour</button><button id="rain-toggle" aria-pressed="false">Rain shelter</button><button id="layout-toggle" aria-pressed="false">Layout</button><button id="night-toggle" aria-pressed="false" aria-label="Switch to night"><span aria-hidden="true">◐</span> <span id="day-label">Day</span></button><button id="plan-toggle" aria-pressed="false"><span aria-hidden="true">▦</span> 2D plan</button><button id="labels-toggle" aria-pressed="true"><span aria-hidden="true">⌖</span> Labels</button><button id="reset-view" aria-label="Reset to overview"><span aria-hidden="true">↺</span> Reset</button></div>
     <footer class="explore-bar">
@@ -90,6 +78,7 @@
         <button data-view="play" aria-pressed="false"><span>04</span> Playground</button>
         <button data-view="river" aria-pressed="false"><span>05</span> By the water</button>
         <button data-view="support" aria-pressed="false"><span>06</span> Support area</button>
+        <button data-view="fashion" aria-pressed="false"><span>07</span> Fashion runway</button>
       </nav>
       <div class="footline"><span>an initiative by <b>NSW Education, Headspace &amp; Universal Mind</b></span></div>
     </footer>
@@ -101,22 +90,24 @@
     <h2 id="vision-title">Proposal</h2>
     <p>Illustrative site layout with one main pavilion, food and play pavilions, a listening area, and support facilities. Site dimensions and architecture remain in development.</p>
     <dl class="proposal-details">
-      <dt>Main pavilion</dt><dd>A tiled vault study, 96 seats and four mobility spaces, a stage, screen wall and four line-array positions. This is a spatial test for the 100-person ambition.</dd>
-      <dt>Arrival</dt><dd>Select Site, Arrival, Assembly, Fit-out or Open to explore an illustrative road-train delivery and construction sequence.</dd>
+      <dt>Main pavilion</dt><dd>An open dance floor, scattered Tropicália lounges and hanging seats, people, four line arrays and a panoramic screen following the roof profile. The attendance ambition remains approximately 100 people.</dd>
+      <dt>Arrival</dt><dd>The opening story follows the arriving road train, ten seconds of construction and progressive fit-out. The site opens automatically, then moves from day to night after about twenty seconds. Replay restarts the story.</dd>
       <dt>Food and play</dt><dd>Cooking, dining, a sheltered activity pavilion and a separate fluid sculptural playground with rainbow metallic surfaces.</dd>
       <dt>Listening area</dt><dd>Tropicália furniture studies, tubular glass listening pylons and AKG K812 headphone representations. The Apple Music interface is a proposal.</dd>
       <dt>Area flags</dt><dd>Triangular flags combine the Universal Mind flower with monochrome headspace, MSF, NSW Education and Apple Music identities. A support vehicle and staff figure illustrate contextual branding.</dd>
-      <dt>Music and video</dt><dd>Play Neverender by Justice and Tame Impala. TV overlays the video at an adjustable transparency. Motion controls the animated landscape. Day/Night previews the lighting direction.</dd>
+      <dt>Music and video</dt><dd>Play Neverender by Justice and Tame Impala. TV overlays the video at an adjustable transparency. Motion controls the animated landscape. Day/Night also allows a manual lighting choice after opening.</dd>
+      <dt>Fashion runway</dt><dd>The central approach doubles as a runway, with model walks, six video panels, sculptural pieces and a Vogue flag over the Universal Mind flower. Indigenous fashion collaboration is the programme direction.</dd>
+      <dt>Stage visuals</dt><dd>The supplied Hexeosis animation blends across the curved stage screen with the current Justice/Tame Impala video. Live-performance footage is a planned source.</dd>
       <dt>Programme examples</dt><dd>Charli XCX for music and fashion, Lady Chu for food, and a Merivale collaboration are proposed examples. Smart-device workshop tables illustrate the Ableton Link direction.</dd>
       <dt>Light rain</dt><dd>Toggle Rain shelter to review covered connections and side screens. Drainage, structural design and weather limits remain part of site-specific planning.</dd>
-      <dt>Night production</dt><dd>Proposed d&amp;b sound, TDC screens, teamLab projections and synchronised wristbands inform the visual study.</dd>
+      <dt>Night production</dt><dd>A rising geodesic light framework, patterned roof projections, lighting towers, lasers and wristbands form the night study. Proposed d&amp;b sound, TDC screens and teamLab projections inform the direction.</dd>
       <dt>Membership</dt><dd>Free participation, with proposed self-nomination, headspace referrals and school nominations. Online participation and live TV are planned.</dd>
     </dl>
     <p class="detail-note">Membership arrangements and named partnerships are proposed. Applications are not collected on this page.</p>
   </dialog>
-  <noscript><style>#landing{display:none!important}#world{visibility:visible!important}#loading{display:none}#plan{display:flex!important}.view-tools,.media-tools,#about-open{display:none}</style><p class="noscript-note">The site plan is available without JavaScript. Enable JavaScript to explore in 3D.</p></noscript>
-  <script src="./landing-rain.js?v=20261102f" defer></script>
+  <noscript><style>#landing{display:none!important}#world{visibility:visible!important}#loading{display:none}#plan{display:flex!important}.plan-assembled{display:block!important}.explore-bar{visibility:visible!important}.view-tools,.media-tools,#about-open{display:none}</style><p class="noscript-note">The site plan is available without JavaScript. Enable JavaScript to explore in 3D.</p></noscript>
+  <script src="./landing-rain.js?v=20261102story1" defer></script>
   <script src="./vendor/hls.min.js" defer></script>
-  <script type="module" src="./lab.mjs?v=20261102f"></script>
+  <script type="module" src="./lab.mjs?v=20261102story1"></script>
 </body>
 </html>

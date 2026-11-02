@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url';
 import { chromium } from '/Users/benkorbel/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const local=process.env.LAB_QA_SOURCE_LOCAL==='1';
-const out=local?'/private/tmp/um-lab-entry-media-qa':path.join(root,'documents/universal-mind-lab/qa/landing-five-stages/media');fs.mkdirSync(out,{recursive:true});
+const out=local?'/private/tmp/um-lab-story-media-qa':path.join(root,'documents/universal-mind-lab/qa/story-revision/media');fs.mkdirSync(out,{recursive:true});
 const server=await chromium.launchServer({headless:true,executablePath:'/Users/benkorbel/Library/Caches/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-mac-arm64/chrome-headless-shell',args:['--mute-audio','--autoplay-policy=user-gesture-required','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
 assert.ok(server.process().spawnargs.includes('--mute-audio'));
 const browser=await chromium.connect(server.wsEndpoint());let page;
@@ -14,7 +14,7 @@ try {
   const context=await browser.newContext({viewport:{width:1440,height:1000},reducedMotion:'reduce'});
   await context.addInitScript(()=>{Object.defineProperty(document,'fullscreenEnabled',{value:false,configurable:true});Object.defineProperty(Element.prototype,'requestFullscreen',{value:undefined,configurable:true});Object.defineProperty(Element.prototype,'webkitRequestFullscreen',{value:undefined,configurable:true});});
   if(local)await context.route('https://staging.universalmind.tv/lab/**',route=>{const name=new URL(route.request().url()).pathname.slice(5)||'index.html';return route.fulfill({path:path.join(root,'lab',name)});});
-  page=await context.newPage();page.on('pageerror',e=>errors.push(e.message));page.on('request',r=>requests.push(r.url()));
+  page=await context.newPage();page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});page.on('request',r=>requests.push(r.url()));
   await page.goto('https://staging.universalmind.tv/lab/',{waitUntil:'networkidle'});await page.waitForFunction(()=>document.body.dataset.ready==='true');
   const video=page.locator('#music-video');
   assert.ok(await video.evaluate(v=>v.paused&&!v.currentSrc));assert.ok(!requests.some(x=>x.includes('/manifest/')));
@@ -31,17 +31,21 @@ try {
   await page.locator('#mix-close').click();
   await page.locator('#motion-toggle').click();await page.waitForFunction(()=>Number(document.body.dataset.motionFrame)>0);
   const f=await page.locator('body').getAttribute('data-motion-frame');await page.waitForTimeout(500);assert.notEqual(await page.locator('body').getAttribute('data-motion-frame'),f);
+  await page.waitForFunction(()=>document.getElementById('stage-geometry-video').currentTime>0);
+  const geometry=await page.locator('#stage-geometry-video').evaluate(v=>({width:v.videoWidth,height:v.videoHeight,duration:v.duration,muted:v.muted,paused:v.paused}));assert.equal(geometry.width,540);assert.ok(geometry.muted&&!geometry.paused);
   await page.screenshot({path:path.join(out,'video-overlay-33.png')});
   await page.locator('#video-toggle').click();assert.equal(await video.evaluate(v=>getComputedStyle(v).opacity),'0');assert.equal(await video.evaluate(v=>v.paused),false);
   await page.locator('#music-toggle').click();const time=await video.evaluate(v=>v.currentTime);const frame=await page.locator('body').getAttribute('data-motion-frame');await page.waitForTimeout(600);assert.equal(await video.evaluate(v=>v.currentTime),time);assert.equal(await page.locator('body').getAttribute('data-motion-frame'),frame);
   checks.push('TV starts at 7%, adjustable to 33%; hiding TV keeps music playing; volume updates; motion advances only when enabled and playing; pause freezes time and movement');
-  await page.locator('#night-toggle').click();assert.equal(await page.locator('body').getAttribute('data-night'),'true');await page.screenshot({path:path.join(out,'night-lighting.png')});
-  await page.locator('#night-toggle').click();assert.equal(await page.locator('body').getAttribute('data-night'),'false');
   await page.locator('#music-toggle').click();await page.waitForFunction(()=>!document.getElementById('music-video').paused);
   await video.evaluate(v=>v.currentTime=v.duration-.5);await page.waitForFunction(()=>{const v=document.getElementById('music-video');return v.currentTime<8&&!v.paused;},null,{timeout:25000});
-  checks.push('Day/Night lighting toggles; actual media loops across the end boundary');
+  checks.push('Actual media loops across the end boundary; supplied Hexeosis animation decodes at 540×540 and advances silently with Motion');
+  await page.waitForFunction(()=>Number(document.body.dataset.storyTime)>=32,null,{timeout:35000});
+  await page.locator('[data-view="main"]').click();await page.locator('#interior-view').click();await page.waitForTimeout(1600);await page.screenshot({path:path.join(out,'stage-live-blend.png')});
+  await page.locator('[data-view="fashion"]').click();await page.waitForTimeout(1600);await page.screenshot({path:path.join(out,'runway-live-video.png')});
+  await page.locator('#motion-toggle').click();const geometryTime=await page.locator('#stage-geometry-video').evaluate(v=>v.currentTime);await page.waitForTimeout(500);assert.equal(await page.locator('#stage-geometry-video').evaluate(v=>v.currentTime),geometryTime);
   await video.evaluate(v=>v.pause());
   assert.deepEqual(errors,[]);
-  fs.writeFileSync(path.join(out,'media-browser.json'),JSON.stringify({url:'https://staging.universalmind.tv/lab/',source:local?'local source at staging URL':'live staging',date:new Date().toISOString(),processMuted:true,nativeFullscreenInvoked:false,metadata,checks,errors,subjectiveSoundQualityTested:false},null,2)+'\n');
+  fs.writeFileSync(path.join(out,'media-browser.json'),JSON.stringify({url:'https://staging.universalmind.tv/lab/',source:local?'local source at staging URL':'live staging',date:new Date().toISOString(),processMuted:true,nativeFullscreenInvoked:false,metadata,geometry,checks,errors,subjectiveSoundQualityTested:false},null,2)+'\n');
   console.log(JSON.stringify({passed:true,metadata,checks}));
-}finally{await page?.evaluate(()=>document.querySelectorAll('video,audio').forEach(v=>v.pause())).catch(()=>{});await browser.close();await server.close();}
+}catch(error){console.error(JSON.stringify({failure:error.message,media:await page?.evaluate(()=>[...document.querySelectorAll('video')].map(v=>({id:v.id,time:v.currentTime,duration:v.duration,ready:v.readyState,network:v.networkState,paused:v.paused,ended:v.ended,seeking:v.seeking,error:v.error?.message,buffered:[...Array(v.buffered.length)].map((_,i)=>[v.buffered.start(i),v.buffered.end(i)])}))),errors},null,2));throw error;}finally{await page?.evaluate(()=>document.querySelectorAll('video,audio').forEach(v=>v.pause())).catch(()=>{});await browser.close();await server.close();}
