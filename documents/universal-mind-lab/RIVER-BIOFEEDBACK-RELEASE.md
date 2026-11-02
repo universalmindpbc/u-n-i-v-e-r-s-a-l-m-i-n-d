@@ -17,8 +17,18 @@ Local static checks verify source syntax, unique controls, all 49 original check
 
 Local layout checks passed at 390×844, 844×390, 1440×1000 and 1920×1080, including proposal reading, artist visibility and day/night colour, the ordered connection controls, Motion on/off and changed river pixels. Playback is mocked during deterministic layout checks. A separate live media check exercises actual playback and water/motion behaviour after staging deployment.
 
-The final live verification and source identifiers are appended after deployment. Evidence is retained in `qa/river-biofeedback/`.
+The live staging checks passed on 2 November 2026. Eight changed runtime assets match the local source byte for byte; all 35 Lab entries match the deployment manifest. The four viewport layouts, overview-only lineup, 2D-plan exclusion, connection controls, readable proposal and Motion behaviour passed with no JavaScript or HTTP failures. Actual Cloudflare playback starts at 7% blend without an error notice. Water continues while music pauses and freezes with Motion off. A real-media mobile entry confirms the headline and artist marks remain separate. All automated media was paused and both test browsers were closed. Evidence is retained in `qa/river-biofeedback/`; selected captures are retained alongside compact JSON reports.
+
+## Deployment
+
+- Source: `bcd3a107a47e7b098fbc8d2477c79210460cae9f` (initial revision `2c702aba81500c707bd4920470dd055a8366bab8`).
+- Existing transport: `./deploy-panthur-staging.sh lab`.
+- Proof: [staging.universalmind.tv/lab/](https://staging.universalmind.tv/lab/).
+- Staging manifest and live verification are recorded in the following metadata commit.
+- Production was not modified.
 
 ## Limits
 
 This remains a concept environment. The response control demonstrates the experience; no live Apple Watch integration or health-data collection is present. Artist and partner participation is unconfirmed. The model does not establish clinical efficacy, structural approval or photorealistic completion. Physical iPhone/Safari and subjective sound quality are outside these automated checks.
+
+Ben reviewed and approved the Lab design while verification was finishing. His next request is an Events choice between Universal Mind Lab and A Thousand Minds. This approval does not instruct production publication.

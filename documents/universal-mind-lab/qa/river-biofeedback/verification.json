@@ -1,0 +1,59 @@
+{
+  "url": "https://staging.universalmind.tv/lab/",
+  "source": "live staging",
+  "date": "2026-11-02T10:53:01.482Z",
+  "processMuted": true,
+  "playbackMocked": true,
+  "nativeFullscreenInvoked": false,
+  "checks": [
+    "Opening and final overview lineup; hidden during construction, tour and close views; charcoal/ivory treatment; single visible footer disclosure; ordered connection controls and grounding cues; moving water pixels and elapsed flow; Motion freezes the river",
+    "Proposal narrative: travelling mental health lab, free access, stigma, referral pathways, STEAM, fashion and Apple Watch biofeedback",
+    "390\u00d7844, 844\u00d7390, 1440\u00d71000 and 1920\u00d71080 layout; complete biofeedback panel; reduced-motion river remains still"
+  ],
+  "hashes": [
+    {
+      "file": "index.html",
+      "status": 200,
+      "sha256": "411e41240aad44a1987a2e7585c463aeb1b3307349d084da000d699588b22d2b"
+    },
+    {
+      "file": "lab.css",
+      "status": 200,
+      "sha256": "3f317dcb49830c947f1b07ac9c140f80b5baaa7bd21ec89b6ab78cd6d3bcfd9c"
+    },
+    {
+      "file": "lab.mjs",
+      "status": 200,
+      "sha256": "74f6a0d52c6cbc56f21d4551e5f31b243f8ee3b82c669d927de567d94bcc1f22"
+    },
+    {
+      "file": "media.mjs",
+      "status": 200,
+      "sha256": "ef6c79929955a6ed59b1a84c28700aae146e90a5e3fd62fcd1b5460c022f92d4"
+    },
+    {
+      "file": "assets/lineup/tame-impala.svg",
+      "status": 200,
+      "sha256": "f6bb353026a7d35e3b134069035abdb4c5feff5a3c5f9a217b3623fe003fe935"
+    },
+    {
+      "file": "assets/lineup/justice.svg",
+      "status": 200,
+      "sha256": "49a7cd9af8b5f20d3207eaddee0c61d7865ad19ff6cb2af651fe9fec7ddc040c"
+    },
+    {
+      "file": "assets/lineup/flume.svg",
+      "status": 200,
+      "sha256": "4aa1df8534321f7370a002b160c53fbfdd3233aae95deb4d619450871c019d68"
+    },
+    {
+      "file": "assets/lineup/sampa-the-great.svg",
+      "status": 200,
+      "sha256": "5b6cc6412e1d0054e5438bfb8905fb6707d4577718bd852df9450392e4f32f46"
+    }
+  ],
+  "errors": [],
+  "httpFailures": [],
+  "source_commit": "2c702aba81500c707bd4920470dd055a8366bab8",
+  "later_css_refinement": "Mobile daylight artist contrast; final real-media report records final served hashes."
+}

@@ -1,0 +1,66 @@
+{
+  "url": "https://staging.universalmind.tv/lab/",
+  "date": "2026-11-02T11:13:58.335Z",
+  "processMuted": true,
+  "nativeFullscreenInvoked": false,
+  "checks": [
+    "No media before entry",
+    "Entry starts actual Cloudflare decoding at 7% blend without error notice",
+    "River moves with music and continues when music pauses",
+    "Motion off freezes river even while music resumes",
+    "Mobile visitor entry with actual playback shows headline and artist marks without overlap"
+  ],
+  "subjectiveSoundQualityTested": false,
+  "hashes": [
+    {
+      "file": "index.html",
+      "url": "https://staging.universalmind.tv/lab/index.html",
+      "status": 200,
+      "sha256": "3740333c45f9ca175831698479b6990db2dd0347b7acb1b494ecfcf8aa67d9cb"
+    },
+    {
+      "file": "lab.css",
+      "url": "https://staging.universalmind.tv/lab/lab.css?v=20261102river2",
+      "status": 200,
+      "sha256": "2eed8b435e1b55227a64a7fdf47fab01d12d45803fad2754655c8583b3db7666"
+    },
+    {
+      "file": "lab.mjs",
+      "url": "https://staging.universalmind.tv/lab/lab.mjs?v=20261102river1",
+      "status": 200,
+      "sha256": "74f6a0d52c6cbc56f21d4551e5f31b243f8ee3b82c669d927de567d94bcc1f22"
+    },
+    {
+      "file": "media.mjs",
+      "url": "https://staging.universalmind.tv/lab/media.mjs?v=20261102river1",
+      "status": 200,
+      "sha256": "ef6c79929955a6ed59b1a84c28700aae146e90a5e3fd62fcd1b5460c022f92d4"
+    },
+    {
+      "file": "assets/lineup/tame-impala.svg",
+      "url": "https://staging.universalmind.tv/lab/assets/lineup/tame-impala.svg",
+      "status": 200,
+      "sha256": "f6bb353026a7d35e3b134069035abdb4c5feff5a3c5f9a217b3623fe003fe935"
+    },
+    {
+      "file": "assets/lineup/justice.svg",
+      "url": "https://staging.universalmind.tv/lab/assets/lineup/justice.svg",
+      "status": 200,
+      "sha256": "49a7cd9af8b5f20d3207eaddee0c61d7865ad19ff6cb2af651fe9fec7ddc040c"
+    },
+    {
+      "file": "assets/lineup/flume.svg",
+      "url": "https://staging.universalmind.tv/lab/assets/lineup/flume.svg",
+      "status": 200,
+      "sha256": "4aa1df8534321f7370a002b160c53fbfdd3233aae95deb4d619450871c019d68"
+    },
+    {
+      "file": "assets/lineup/sampa-the-great.svg",
+      "url": "https://staging.universalmind.tv/lab/assets/lineup/sampa-the-great.svg",
+      "status": 200,
+      "sha256": "5b6cc6412e1d0054e5438bfb8905fb6707d4577718bd852df9450392e4f32f46"
+    }
+  ],
+  "errors": [],
+  "source_commit": "bcd3a107a47e7b098fbc8d2477c79210460cae9f"
+}

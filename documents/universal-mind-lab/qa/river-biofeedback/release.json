@@ -1,0 +1,13 @@
+{
+  "source_commit": "bcd3a107a47e7b098fbc8d2477c79210460cae9f",
+  "staging_url": "https://staging.universalmind.tv/lab/",
+  "deployment_method": "./deploy-panthur-staging.sh lab",
+  "deployed_file_count": 35,
+  "runtime_changed_files_verified_by_live_sha256": 8,
+  "original_reference_checksums_verified": 49,
+  "live_layout_report": "verification.json",
+  "live_media_report": "media/verification.json",
+  "production_modified": false,
+  "initial_revision_commit": "2c702aba81500c707bd4920470dd055a8366bab8",
+  "ben_design_approval": "Ben approved the Lab design after reviewing staging; no production publication instruction."
+}
