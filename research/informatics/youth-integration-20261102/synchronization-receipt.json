@@ -2145,7 +2145,8 @@
   "reproduction": "Use the exact integrated source commit for full-site builders, shared I AM assets, complete archive reconstruction and deployment. This is a scoped source synchronization, not a complete migration or independently deployable site. Existing SOURCE_MANIFEST and GENERATED_ASSETS remain historical import records. Newer paths in this receipt take precedence for this youth branch.",
   "evidenceScope": "105 qualified publications: 100 additions, five canonical matches. The immutable source batch contains separately labelled excluded candidates for provenance only; approved retrieval and indexes contain the qualified set only.",
   "dedicatedSourceCommit": "80db1f6d175292f041d60c214dffc226441e43bc",
-  "dedicatedRemoteBranchVerified": false,
+  "dedicatedRemoteBranchVerified": true,
   "finalIntegratedCandidateCommit": "c81a078fb3a368380421d189f3ca9b74d2e4906f",
-  "supplement": "file-manifest-supplement.json"
+  "supplement": "file-manifest-supplement.json",
+  "remoteVerificationReceipt": "github-receipt.json"
 }

@@ -1,0 +1,13 @@
+{
+  "verifiedAtSydney": "2026-11-02T16:08:26.726393+11:00",
+  "integrated": {
+    "refs/heads/main": "57747030461016e4fc2c29bd4534df483118857d",
+    "refs/heads/staging": "0c48e0549dc43c9d4cee43959314e6f2066e0dfc"
+  },
+  "dedicated": {
+    "refs/heads/main": "7d89224d2caca17debcd8170a1873a488d5af82a",
+    "refs/heads/research/youth-20261102": "80db1f6d175292f041d60c214dffc226441e43bc"
+  },
+  "stagingDeploymentVerified": true,
+  "productionAndDedicatedMainUnchanged": true
+}

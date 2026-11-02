@@ -49,7 +49,8 @@
       320
     ],
     "filteredRecordsEquivalent": 105,
-    "completeDatasetsReconstructed": 1195
+    "completeDatasetsReconstructed": 1195,
+    "directProofLinks": "staging-deep-links.json"
   },
   "productionChanged": false,
   "productionCommitUnchanged": "57747030461016e4fc2c29bd4534df483118857d",
@@ -60,5 +61,6 @@
     "Public REST/MCP database inventory was not migrated; youth records are available in the website, full exports and Universal One research overlay.",
     "No combined-lab efficacy or confirmed partnership claim; empty mantra evidence section retained."
   ],
-  "githubRecord": "Containing staging commit is the deployment record; remote verification is recorded after push."
+  "githubRecord": "Source and deployment commits pushed and remotely verified; see github-receipt.json. This later commit adds verification metadata only.",
+  "verifiedDeploymentCommit": "0c48e0549dc43c9d4cee43959314e6f2066e0dfc"
 }
