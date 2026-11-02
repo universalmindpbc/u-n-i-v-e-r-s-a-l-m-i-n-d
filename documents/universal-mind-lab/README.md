@@ -21,3 +21,6 @@ Brief v0.7 preserves the revised information hierarchy, Neverender music/video d
 - [Production references](PRODUCTION-REFERENCES.md): concert, audiovisual, supplier and SIX source notes.
 - [Media source](media-source.json): 1080p Neverender archive and Cloudflare Stream record.
 - Brief v0.7 retains the full SIX inference explanation and the Apple Watch responsive-environment MVP, plus the latest copy, flags, music and day/night directions.
+
+- [Latest interface/media release](INTERFACE-MEDIA-RELEASE.md).
+- [Five-step progress](PROGRESS.md): current scope and the next layout/arrival deliverable.

@@ -1,0 +1,89 @@
+{
+  "url": "https://staging.universalmind.tv/lab/",
+  "assets": [
+    {
+      "file": "index.html",
+      "status": 200,
+      "bytes": 9805,
+      "sha256": "09e3d138222a57a5061f8a59440f8d9d5b3d561ed3214ee0466666279970c3ba"
+    },
+    {
+      "file": "lab.css",
+      "status": 200,
+      "bytes": 17500,
+      "sha256": "fc1a096d9aeee5387c8c1ec80ae4c6e11af58738ae5446ab924e74d7b1ff9131"
+    },
+    {
+      "file": "lab.mjs",
+      "status": 200,
+      "bytes": 32401,
+      "sha256": "277d2e7dc1bc6c894b58ee4293c7fc7aa56863a3d91804c8eb6257c9e2202396"
+    },
+    {
+      "file": "media.mjs",
+      "status": 200,
+      "bytes": 4074,
+      "sha256": "d8a0f08863652ede6f48a3d2e7847a47edf5a226c1b45c6b9e23b1804ad3d8c1"
+    },
+    {
+      "file": "vendor/hls.min.js",
+      "status": 200,
+      "bytes": 623915,
+      "sha256": "cfc70cc9e9fc63d071919e087670abc760c8fd1bc889b88588026e4d22193bbe"
+    },
+    {
+      "file": "vendor/LICENSE-hls.txt",
+      "status": 200,
+      "bytes": 1338,
+      "sha256": "ca8773cf798c7ed997d4dd7c8e23c348699f8d5b7462636694cc14de6cda12db"
+    },
+    {
+      "file": "vendor/three.module.js",
+      "status": 200,
+      "bytes": 1284652,
+      "sha256": "5916c8dfb5f4e3eede312de305345868d4a0a8105383b080c6985565d6e79b46"
+    },
+    {
+      "file": "vendor/OrbitControls.js",
+      "status": 200,
+      "bytes": 32250,
+      "sha256": "f260591ef315aa04888152e7f121865214e33fb54727145cf4e4445058db1297"
+    },
+    {
+      "file": "vendor/LICENSE-three.txt",
+      "status": 200,
+      "bytes": 1081,
+      "sha256": "4c40a1ef62450b857c3b2aaf294936304cd552d965fbcd9d32d4c5bcf4ba4454"
+    },
+    {
+      "file": "assets/headspace.svg",
+      "status": 200,
+      "bytes": 11365,
+      "sha256": "eebbd23ceca4d42fa03b226a30601fb01e11a7d83209d784f9d7ec58b628492e"
+    },
+    {
+      "file": "assets/msf.svg",
+      "status": 200,
+      "bytes": 12132,
+      "sha256": "358e457b165af74e85823605d2089907eb608f7a79df81c801e7ed88a66bc150"
+    },
+    {
+      "file": "assets/nsw-government.svg",
+      "status": 200,
+      "bytes": 11212,
+      "sha256": "ec456aa2c71baba8f6094283bc1c4ab006fd87039ea7617cde4792422df6f6fb"
+    },
+    {
+      "file": "assets/apple-music.svg",
+      "status": 200,
+      "bytes": 2863,
+      "sha256": "103ee53f4331db54184a9b45369474616b30588f3681f9755fce84fb9baaf9d3"
+    },
+    {
+      "file": "assets/universal-mind-flower.png",
+      "status": 200,
+      "bytes": 485116,
+      "sha256": "9265619edbd83d103f4408933ecdb9a02f7a5392075200c4000fa1ec8a14cdee"
+    }
+  ]
+}
