@@ -5,7 +5,7 @@ import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
 import {chromium} from '/Users/benkorbel/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
-const live=process.env.EVENTS_LIVE==='1'||process.argv.includes('--live'),origin='https://staging.universalmind.tv',out=live?path.join(root,'documents/universal-mind-lab/qa/events-refined'):'/private/tmp/um-events-refined-qa';
+const live=process.env.EVENTS_LIVE==='1'||process.argv.includes('--live'),origin='https://staging.universalmind.tv',out=live?path.join(root,'documents/universal-mind-lab/qa/youth-wordmarks'):'/private/tmp/um-youth-wordmarks-qa';
 await fs.mkdir(out,{recursive:true});
 let password='';
 if(live){for await(const chunk of process.stdin)password+=chunk;password=password.trim();assert(password,'An approved invitation is required via stdin.');}
@@ -33,6 +33,11 @@ async function layout(frame,viewport){
  await frame.waitForFunction(()=>[...document.querySelectorAll('.event-option img')].every(img=>img.complete&&img.naturalWidth>0),null,{timeout:20000});
  assert.equal(await frame.locator('.event-option').count(),2);
  assert.equal((await frame.locator('.choice-main h1').textContent()).trim(),'Events');
+ assert.equal(await frame.locator('.lab-wordmark').textContent(),'universalmind[lab]');
+ assert.equal(await frame.locator('.festival-wordmark').textContent(),'athousandminds');
+ assert.equal(await frame.locator('.lab-wordmark strong').textContent(),'mind');
+ assert.equal(await frame.locator('.festival-wordmark strong').textContent(),'minds');
+ for(const word of await frame.locator('.event-copy h2 strong').all())assert.equal(await word.evaluate(el=>getComputedStyle(el).fontWeight),'700');
  assert.equal(await frame.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
  const flower=await frame.locator('.choice-flower').boundingBox();
  assert(Math.abs(flower.x+flower.width/2-viewport.width/2)<2,'Flower centred horizontally');

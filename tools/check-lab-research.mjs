@@ -30,7 +30,7 @@ async function researchLayout(p,viewport){
  assert.equal(await p.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
  const urls=await p.locator('main a').evaluateAll(links=>links.map(a=>a.href));
  assert(urls.every(url=>new URL(url).pathname==='/informatics/research/'));
- assert.deepEqual(new URL(urls[0]).searchParams.getAll('topic'),['sound:universal-mind-mobile-lab','vision:universal-mind-mobile-lab','language:universal-mind-mobile-lab']);
+ assert.equal(new URL(urls[0]).searchParams.get('youth'),'all');
  await p.screenshot({path:path.join(out,`research-${viewport.width}.png`),fullPage:true});
  checks.push(`Research introduction at ${viewport.width} × ${viewport.height}: two institutions, nine topics, all research links point to Informatics`);
 }
@@ -54,18 +54,18 @@ try{
     await research.locator('#full-collection').click();
     let library;
     for(let i=0;i<60;i++){
-     for(const f of research.frames())if(await f.locator('#result-count').count()){library=f;break;}
-     if(library&&(await library.locator('#result-count').textContent()).trim()==='105 papers')break;
+     for(const f of research.frames())if(await f.locator('#youth-publication-heading').count()){library=f;break;}
+     if(library&&(await library.locator('#youth-publication-heading').textContent()).trim()==='105 publications')break;
      await new Promise(resolve=>setTimeout(resolve,500));
     }
     assert(library,'Informatics research frame exists: '+research.frames().map(f=>f.url()).join(', '));
-    assert.equal((await library.locator('#result-count').textContent()).trim(),'105 papers');
+    assert.equal((await library.locator('#youth-publication-heading').textContent()).trim(),'105 publications');
     await research.screenshot({path:path.join(out,'informatics-full-collection.png')});
-    checks.push('Full collection opens the canonical Informatics library with exactly 105 papers');
-    for(const topic of ['orygen-youth','black-dog-youth','mantra-youth']){
-     await research.goto(origin+'/lab/research.html');await research.locator(`a[href$="#topic-${topic}"]`).click();
+    checks.push('Full collection opens the canonical Informatics library with exactly 105 publications');
+    for(const topic of ['orygen','black-dog','mantra']){
+     await research.goto(origin+'/lab/research.html');await research.locator(`a[href$="?youth=${topic}"]`).click();
      let found=false;
-     for(let i=0;i<60;i++){for(const f of research.frames())if(await f.locator('#topic-'+topic).count()){found=true;break;}if(found)break;await new Promise(resolve=>setTimeout(resolve,500));}
+     for(let i=0;i<60;i++){for(const f of research.frames())if(await f.locator('body.youth-focus .youth-publications').count()){const expected={orygen:'Orygen Research','black-dog':'Black Dog Institute Research',mantra:'Mantra for Young People'}[topic];found=await f.locator('.library-intro h1').isVisible()&&(await f.locator('.library-intro h1').textContent())===expected;if(found)break;}if(found)break;await new Promise(resolve=>setTimeout(resolve,500));}
      assert(found,`Canonical topic exists: ${topic}`);
     }
     checks.push('Orygen, Black Dog Institute and mantra context links open their exact Informatics topic sections');

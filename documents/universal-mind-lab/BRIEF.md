@@ -1,6 +1,6 @@
 # Universal Mind Lab — creative and development brief
 
-**Version:** 0.14 · **Date:** 3 November 2026 · **Owner:** Ben Korbel
+**Version:** 0.15 · **Date:** 3 November 2026 · **Owner:** Ben Korbel
 **Status:** Working concept for discussion, collaboration and staged visual development. Architectural engineering, operating arrangements and named partnerships remain to be established.
 
 ## 1. Purpose
@@ -641,3 +641,9 @@ Add **A direct response to this body of research ↗** at the festival footer’
 Universal Informatics remains the single research home. The Lab page introduces the approved 105-publication youth collection and links to its complete register and topic sections, including music listening and therapy, music making, sound and brain entrainment, EMDR, mindfulness, mantra context, Transcendental Meditation, yoga, access, digital support and connection. Feature Orygen and Black Dog Institute within the full collection; do not reduce the collection to these institutions.
 
 The Lab page is an introduction and index. Papers, filter controls, source assessments, age-fit information and detailed findings stay in Informatics. The full-collection link combines the three Mobile Lab topic filters across Sound, Vision and Language, preserving all 105 publication identities. The separate wider youth-library link retains access to related material already in Informatics. The mantra context section remains visible despite having no new papers in the approved addition.
+
+## Research destination clarity — 3 November 2026
+
+The Lab research overview remains the introduction. Each institution and topic opens a dedicated, clearly titled youth view in Universal Informatics. Orygen Research and Black Dog Institute Research display only their associated publications. Topic headings explicitly identify young people; reported ages and relevance to ages 16–24 appear beside each paper. The full collection retains all 105 unique publications, including the broader music, entrainment, EMDR, mindfulness, mantra context, Transcendental Meditation, yoga and access research. Mantra identifies the current evidence gap.
+
+Events retains the centred flower, Fibonacci rain and small Informatics serif typography. The wordmarks read **universalmind[lab]** and **athousandminds** without word spaces, with **mind** and **minds** respectively in bold.

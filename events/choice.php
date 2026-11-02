@@ -10,7 +10,7 @@ events_require_access();
 <meta name="theme-color" content="#080c0c">
 <link rel="icon" href="/vogue/iam/favicon.png?v=iam-favicon-3">
 <title>Events — Universal Mind</title>
-<link rel="stylesheet" href="/events/assets/choice.css?v=4">
+<link rel="stylesheet" href="/events/assets/choice.css?v=5">
 <script src="/events/assets/choice-nav.js?v=3"></script>
 </head>
 <body class="event-choice">
@@ -25,7 +25,7 @@ events_require_access();
 <a class="event-option event-option--lab" href="/lab/?launch=1" data-event-route aria-label="Explore Universal Mind Lab">
 
 <div class="event-copy">
-<h2 class="lab-wordmark">universalmind[lab]</h2>
+<h2 class="lab-wordmark">universal<strong>mind</strong>[lab]</h2>
 <p>Electronic music and fashion as mindfulness.</p>
 <span class="event-action">Explore the festival pop-up</span>
 </div>
@@ -34,7 +34,7 @@ events_require_access();
 <a class="event-option event-option--festival" href="/events/?experience=1&amp;event=athousandminds" data-event-route aria-label="Explore A Thousand Minds">
 
 <div class="event-copy">
-<h2 class="festival-wordmark">a thousand minds</h2>
+<h2 class="festival-wordmark">athousand<strong>minds</strong></h2>
 <p>Change your emotions. Transform your world.</p>
 <span class="event-action">Explore the festival</span>
 </div>

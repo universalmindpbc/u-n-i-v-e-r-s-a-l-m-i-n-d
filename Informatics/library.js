@@ -41,7 +41,7 @@
   $('#trust-key').innerHTML = [[3,'At least 3 double-blind randomized controlled trials'],[2,'At least 3 randomized controlled trials'],[1,'At least 3 peer-reviewed journal articles']].map(([score,label]) => `<div>${crosses(score)}<span>${label}</span></div>`).join('');
   function route(number = 0, topic = '', destination = collection) {
     const url = new URL(location.href);
-    for (const key of [...fields, 'record', 'paper', 'gene', 'view', 'chapter', 'calibration', 'related']) url.searchParams.delete(key);
+    for (const key of [...fields, 'record', 'paper', 'gene', 'view', 'chapter', 'calibration', 'related', 'youth']) url.searchParams.delete(key);
     url.searchParams.set('collection', destination);
     if (number) url.searchParams.set('chapter', number);
     url.hash = topic ? 'topic-' + topic : '';
@@ -49,6 +49,7 @@
   }
   function syncURL(push = false) {
     const url = new URL(location.href);
+    url.searchParams.delete('youth');
     url.searchParams.set('collection', collection);
     url.searchParams.delete('gene');
     url.searchParams.delete('calibration'); url.searchParams.delete('related');
@@ -256,6 +257,10 @@
   }
   function render() {
     if (loading) return;
+    const youth = globalThis.UniversalResearchYouth;
+    youth.updateIntro();
+    if (youth.render({data:approvedYouth, records, paperMarkup, ageMarkup})) return;
+    delete $('#reading-content').dataset.youthTopic;
     edition = editions[collection];
     renderStatistics();
     $('#sound-assessment').hidden = collection !== 'sound';

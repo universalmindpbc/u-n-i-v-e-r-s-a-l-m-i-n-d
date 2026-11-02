@@ -67,6 +67,9 @@ elif [[ "${1:-}" == directory ]]; then
   "$NODE_BIN" --check "$ROOT_DIR/home/directory-rain.js"
   "$NODE_BIN" --check "$ROOT_DIR/home/entry-shell.js"
   if command -v php >/dev/null 2>&1; then php -l "$ROOT_DIR/events/portal-entry.php"; fi
+elif [[ "${1:-}" == informatics ]]; then
+  # Informatics also validates discovery and exports inside its existing deploy scope.
+  for source in "$ROOT_DIR"/Informatics/*.js; do "$NODE_BIN" --check "$source"; done
 elif [[ "${1:-}" == events ]]; then
   for source in "$ROOT_DIR"/events/assets/*.js; do "$NODE_BIN" --check "$source"; done
   if command -v php >/dev/null 2>&1; then

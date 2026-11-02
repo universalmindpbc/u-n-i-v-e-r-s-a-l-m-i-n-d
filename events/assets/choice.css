@@ -16,3 +16,5 @@
 .events-return{position:fixed;z-index:35;top:28px;left:90px;color:#fff;font:14px/1.2 "Helvetica Neue",Helvetica,sans-serif;text-decoration:none;display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:10px 14px;border:1px solid #ffffff40;border-radius:24px;background:#0006;backdrop-filter:blur(12px)}
 .events-return:hover{background:#000a}
 body:has(#film-view:not([hidden])) .events-return,body:has(#about-panel:not([hidden])) .events-return{display:none}
+
+.event-copy h2 strong{font-weight:700;letter-spacing:inherit}
