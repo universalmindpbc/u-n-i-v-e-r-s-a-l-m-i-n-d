@@ -23,6 +23,7 @@ try {
   await page.waitForFunction(()=>{const v=document.getElementById('music-video');return !v.paused&&v.currentTime>1&&v.videoWidth>0;},null,{timeout:45000});
   const metadata=await video.evaluate(v=>({width:v.videoWidth,height:v.videoHeight,duration:v.duration,volume:v.volume,loop:v.loop}));assert.ok(metadata.loop&&metadata.width>0);
   const t1=await video.evaluate(v=>v.currentTime);await page.waitForTimeout(1200);assert.ok(await video.evaluate(v=>v.currentTime)>t1);
+  await page.screenshot({path:path.join(out,'entry-video-7.png')});
   checks.push('No autoplay or initial stream request; Explore gesture starts real Cloudflare HLS decoding; one looping timeline; reduced-motion default off');
   await page.locator('#mix-toggle').click();await page.locator('#video-opacity').fill('33');await page.locator('#video-opacity').dispatchEvent('input');
   assert.equal(await video.evaluate(v=>getComputedStyle(v).opacity),'0.33');
