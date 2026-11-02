@@ -1,0 +1,55 @@
+{
+  "retrievedAt": "2026-11-02",
+  "countedAsPapers": false,
+  "institutionalSources": [
+    {
+      "title": "The Next Post: Young people transitioning from military service and their mental health",
+      "authors": "Baker D, Rice S, Sadler N, Cooper J, Wade D",
+      "institutions": ["Orygen", "Phoenix Australia"],
+      "citationYear": 2017,
+      "editionNote": "Linked filename identifies March 2018 edition; 48 pages; ISBN 978-1-920718-45-9.",
+      "portalSource": "i  a m/global-navigation.js, existing Support resources link",
+      "url": "https://www.orygen.org.au/Policy-Centre/Policy-Areas/Population-groups/The-next-post/Orygen_Young_veterans-Policy-paper_Mar2018edition_?ext=.pdf",
+      "currentPolicyRoute": "https://www.orygen.org.au/Policy-Advocacy/Population-groups/The-next-post/Orygen_Young_veterans-Policy-paper_Mar2018edition_?ext=.pdf",
+      "access": "Official PDF text inspected through web source; raw PDF not redistributed",
+      "relationship": "direct-response",
+      "implication": "Support transition identity, civilian connection and accessible clinical pathways.",
+      "limit": "Policy synthesis, not a trial of Universal Mind or endorsement; source literature includes varying definitions of younger veterans."
+    },
+    {
+      "title": "Orygen MOST research: 2020–Now",
+      "url": "https://www.orygen.org.au/Clinical-Care/Clinical-services/most/The-research-behind-MOST/Now-2020",
+      "access": "Official webpage text inspected",
+      "primaryPaperPMIDs": ["39260824", "38557432", "37921858", "37261464", "34002511", "32720904", "32788151"],
+      "limit": "Institutional summaries checked against primary methods; promotional interpretations are not adopted as causal evidence."
+    },
+    {
+      "title": "Black Dog Institute: Adolescent screen use and mental health",
+      "url": "https://www.blackdoginstitute.org.au/wp-content/uploads/2024/08/Teens-Screens_Report-2024_WEB.pdf",
+      "year": 2024,
+      "access": "Official PDF text inspected through web source",
+      "sample": "3734 Future Proofing participants, 2023 survey data",
+      "limit": "Institutional report and observational associations; not an additional independent trial or causal screen-use estimate."
+    },
+    {
+      "title": "Black Dog Institute youth research area",
+      "url": "https://www.blackdoginstitute.org.au/research-areas/youth-mental-health/",
+      "access": "Search discovery available; HTML extractor returned no readable lines",
+      "limit": "Not used to substantiate paper-level efficacy. Institutional labels rely on primary affiliations."
+    }
+  ],
+  "excludedRetractedPublication": {
+    "pmid": "40421183",
+    "doi": "10.2147/PRBM.S510544",
+    "title": "Evaluating the Efficacy of Music-Based Therapy in Children and Adolescents with Physical and Mental Health Challenges: A Systematic Review",
+    "retractionPMID": "41768047",
+    "retractionDOI": "10.2147/PRBM.S604108",
+    "retractionURL": "https://pubmed.ncbi.nlm.nih.gov/41768047/",
+    "status": "Excluded; not counted in assessed candidate papers or qualified evidence"
+  },
+  "additionalTargetedSearches": [
+    {"query":"electronic music production youth wellbeing randomized trial fashion skills mental health young people","outcome":"No age-matched trial of the combined lab model established; search is not exhaustive."},
+    {"query":"site.blackdoginstitute.org.au music mindfulness young people research","outcome":"Official institutional context and reports identified; paper appraisals use primary sources."},
+    {"query":"site.orygen.org.au The next post young veterans","outcome":"Official report and policy route corroborated; original portal link located in repository."}
+  ]
+}

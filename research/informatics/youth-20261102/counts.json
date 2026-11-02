@@ -1,0 +1,33 @@
+{
+  "assessedRecords": 187,
+  "uniquePublications": 186,
+  "duplicateReprints": 1,
+  "reviewReady": 144,
+  "qualifiedPapers": 105,
+  "qualifiedNew": 100,
+  "qualifiedExisting": 5,
+  "newUniquePublications": 171,
+  "existingUniquePublications": 15,
+  "fullTextCached": 154,
+  "abstractOnly": 31,
+  "webMethodsRecovered": 2,
+  "studyFamilies": 171,
+  "randomizedReportsMethodsInspected": 69,
+  "randomizedStudyUnitsConservative": 63,
+  "qualifiedDesigns": {
+    "randomized-report": 47,
+    "review": 42,
+    "qualitative": 8,
+    "observational": 8
+  },
+  "qualifiedProposedCrosses": {
+    "2": 44,
+    "1": 58,
+    "3": 3
+  },
+  "institutionRecords": {
+    "Black Dog Institute": 28,
+    "Orygen": 30,
+    "headspace services": 11
+  }
+}

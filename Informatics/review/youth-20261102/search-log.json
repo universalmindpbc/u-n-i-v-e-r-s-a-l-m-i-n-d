@@ -1,0 +1,192 @@
+[
+  {
+    "lane": "emdr",
+    "query": "(TITLE_ABS:adolescen* OR TITLE_ABS:youth OR TITLE_ABS:\"young adults\" OR TITLE_ABS:student* OR TITLE_ABS:teen*) AND (TITLE_ABS:EMDR OR TITLE_ABS:\"eye movement desensitization\") AND (PUB_TYPE:\"Randomized Controlled Trial\" OR TITLE_ABS:randomized OR TITLE_ABS:randomised OR TITLE:\"systematic review\" OR TITLE:meta-analysis)",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=%28%28TITLE_ABS%3Aadolescen%2A+OR+TITLE_ABS%3Ayouth+OR+TITLE_ABS%3A%22young+adults%22+OR+TITLE_ABS%3Astudent%2A+OR+TITLE_ABS%3Ateen%2A%29+AND+%28TITLE_ABS%3AEMDR+OR+TITLE_ABS%3A%22eye+movement+desensitization%22%29+AND+%28PUB_TYPE%3A%22Randomized+Controlled+Trial%22+OR+TITLE_ABS%3Arandomized+OR+TITLE_ABS%3Arandomised+OR+TITLE%3A%22systematic+review%22+OR+TITLE%3Ameta-analysis%29%29+AND+SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-02%5D&format=json&resultType=core&pageSize=1000&cursorMark=%2A",
+    "retrievedAt": "2026-11-02T00:55:06.567717+00:00",
+    "hitCount": 70,
+    "returned": 70,
+    "sha256": "7aeeb76033ba197489afa842bc6f1cfba345fe2769db313fc2cf258fb9b9e46f",
+    "cache": "emdr-0.json"
+  },
+  {
+    "lane": "entrainment",
+    "query": "(TITLE_ABS:\"binaural beats\" OR TITLE_ABS:\"brainwave entrainment\" OR TITLE_ABS:\"auditory beat\" OR TITLE_ABS:isochronic) AND (TITLE_ABS:random* OR TITLE:review OR TITLE:meta-analysis)",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=%28%28TITLE_ABS%3A%22binaural+beats%22+OR+TITLE_ABS%3A%22brainwave+entrainment%22+OR+TITLE_ABS%3A%22auditory+beat%22+OR+TITLE_ABS%3Aisochronic%29+AND+%28TITLE_ABS%3Arandom%2A+OR+TITLE%3Areview+OR+TITLE%3Ameta-analysis%29%29+AND+SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-02%5D&format=json&resultType=core&pageSize=1000&cursorMark=%2A",
+    "retrievedAt": "2026-11-02T00:55:06.570196+00:00",
+    "hitCount": 99,
+    "returned": 99,
+    "sha256": "3ec7844191cc83d10a3e2a2b036f0362a57e8939936834217bc6b9970d1fad1b",
+    "cache": "entrainment-0.json"
+  },
+  {
+    "lane": "music",
+    "query": "(TITLE_ABS:adolescen* OR TITLE_ABS:youth OR TITLE_ABS:\"young adults\" OR TITLE_ABS:student* OR TITLE_ABS:teen*) AND (TITLE:music OR TITLE:singing OR TITLE:drumming) AND (TITLE_ABS:stress OR TITLE_ABS:anxiety OR TITLE_ABS:depress* OR TITLE_ABS:mental OR TITLE_ABS:wellbeing OR TITLE_ABS:\"well-being\" OR TITLE_ABS:trauma OR TITLE_ABS:PTSD OR TITLE_ABS:connection OR TITLE_ABS:loneliness) AND (PUB_TYPE:\"Randomized Controlled Trial\" OR TITLE_ABS:randomized OR TITLE_ABS:randomised OR TITLE:\"systematic review\" OR TITLE:meta-analysis)",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=%28%28TITLE_ABS%3Aadolescen%2A+OR+TITLE_ABS%3Ayouth+OR+TITLE_ABS%3A%22young+adults%22+OR+TITLE_ABS%3Astudent%2A+OR+TITLE_ABS%3Ateen%2A%29+AND+%28TITLE%3Amusic+OR+TITLE%3Asinging+OR+TITLE%3Adrumming%29+AND+%28TITLE_ABS%3Astress+OR+TITLE_ABS%3Aanxiety+OR+TITLE_ABS%3Adepress%2A+OR+TITLE_ABS%3Amental+OR+TITLE_ABS%3Awellbeing+OR+TITLE_ABS%3A%22well-being%22+OR+TITLE_ABS%3Atrauma+OR+TITLE_ABS%3APTSD+OR+TITLE_ABS%3Aconnection+OR+TITLE_ABS%3Aloneliness%29+AND+%28PUB_TYPE%3A%22Randomized+Controlled+Trial%22+OR+TITLE_ABS%3Arandomized+OR+TITLE_ABS%3Arandomised+OR+TITLE%3A%22systematic+review%22+OR+TITLE%3Ameta-analysis%29%29+AND+SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-02%5D&format=json&resultType=core&pageSize=1000&cursorMark=%2A",
+    "retrievedAt": "2026-11-02T00:55:06.573521+00:00",
+    "hitCount": 143,
+    "returned": 143,
+    "sha256": "178bac212630881f75d3bac70070b520e590b5c2b0fb9870cdbcb196c2570452",
+    "cache": "music-0.json"
+  },
+  {
+    "lane": "sound",
+    "query": "(TITLE_ABS:adolescen* OR TITLE_ABS:youth OR TITLE_ABS:\"young adults\" OR TITLE_ABS:student* OR TITLE_ABS:teen*) AND (TITLE_ABS:\"sound meditation\" OR TITLE_ABS:\"singing bowl\" OR TITLE_ABS:\"sound therapy\" OR TITLE_ABS:\"auditory stimulation\") AND (TITLE_ABS:stress OR TITLE_ABS:anxiety OR TITLE_ABS:depress* OR TITLE_ABS:mental OR TITLE_ABS:wellbeing OR TITLE_ABS:\"well-being\" OR TITLE_ABS:trauma OR TITLE_ABS:PTSD OR TITLE_ABS:connection OR TITLE_ABS:loneliness)",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=%28%28TITLE_ABS%3Aadolescen%2A+OR+TITLE_ABS%3Ayouth+OR+TITLE_ABS%3A%22young+adults%22+OR+TITLE_ABS%3Astudent%2A+OR+TITLE_ABS%3Ateen%2A%29+AND+%28TITLE_ABS%3A%22sound+meditation%22+OR+TITLE_ABS%3A%22singing+bowl%22+OR+TITLE_ABS%3A%22sound+therapy%22+OR+TITLE_ABS%3A%22auditory+stimulation%22%29+AND+%28TITLE_ABS%3Astress+OR+TITLE_ABS%3Aanxiety+OR+TITLE_ABS%3Adepress%2A+OR+TITLE_ABS%3Amental+OR+TITLE_ABS%3Awellbeing+OR+TITLE_ABS%3A%22well-being%22+OR+TITLE_ABS%3Atrauma+OR+TITLE_ABS%3APTSD+OR+TITLE_ABS%3Aconnection+OR+TITLE_ABS%3Aloneliness%29%29+AND+SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-02%5D&format=json&resultType=core&pageSize=1000&cursorMark=%2A",
+    "retrievedAt": "2026-11-02T00:55:06.574754+00:00",
+    "hitCount": 21,
+    "returned": 21,
+    "sha256": "3fda389d8338459755025aa282744a7f20f45520077145a4c7bb76d10a86515e",
+    "cache": "sound-0.json"
+  },
+  {
+    "lane": "meditation",
+    "query": "(TITLE_ABS:adolescen* OR TITLE_ABS:youth OR TITLE_ABS:\"young adults\" OR TITLE_ABS:student* OR TITLE_ABS:teen*) AND TITLE:meditation AND (TITLE_ABS:stress OR TITLE_ABS:anxiety OR TITLE_ABS:depress* OR TITLE_ABS:mental OR TITLE_ABS:wellbeing OR TITLE_ABS:\"well-being\" OR TITLE_ABS:trauma OR TITLE_ABS:PTSD OR TITLE_ABS:connection OR TITLE_ABS:loneliness) AND (PUB_TYPE:\"Randomized Controlled Trial\" OR TITLE_ABS:randomized OR TITLE_ABS:randomised OR TITLE:\"systematic review\" OR TITLE:meta-analysis)",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=%28%28TITLE_ABS%3Aadolescen%2A+OR+TITLE_ABS%3Ayouth+OR+TITLE_ABS%3A%22young+adults%22+OR+TITLE_ABS%3Astudent%2A+OR+TITLE_ABS%3Ateen%2A%29+AND+TITLE%3Ameditation+AND+%28TITLE_ABS%3Astress+OR+TITLE_ABS%3Aanxiety+OR+TITLE_ABS%3Adepress%2A+OR+TITLE_ABS%3Amental+OR+TITLE_ABS%3Awellbeing+OR+TITLE_ABS%3A%22well-being%22+OR+TITLE_ABS%3Atrauma+OR+TITLE_ABS%3APTSD+OR+TITLE_ABS%3Aconnection+OR+TITLE_ABS%3Aloneliness%29+AND+%28PUB_TYPE%3A%22Randomized+Controlled+Trial%22+OR+TITLE_ABS%3Arandomized+OR+TITLE_ABS%3Arandomised+OR+TITLE%3A%22systematic+review%22+OR+TITLE%3Ameta-analysis%29%29+AND+SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-02%5D&format=json&resultType=core&pageSize=1000&cursorMark=%2A",
+    "retrievedAt": "2026-11-02T00:55:06.577249+00:00",
+    "hitCount": 103,
+    "returned": 103,
+    "sha256": "d3c92663f2792ad0af256622c21243d39c02b5002aca248ad8755657a2078896",
+    "cache": "meditation-0.json"
+  },
+  {
+    "lane": "transcendental",
+    "query": "(TITLE_ABS:adolescen* OR TITLE_ABS:youth OR TITLE_ABS:\"young adults\" OR TITLE_ABS:student* OR TITLE_ABS:teen*) AND (TITLE_ABS:\"transcendental meditation\" OR TITLE_ABS:mantra OR TITLE_ABS:chanting) AND (PUB_TYPE:\"Randomized Controlled Trial\" OR TITLE_ABS:randomized OR TITLE_ABS:randomised OR TITLE:\"systematic review\" OR TITLE:meta-analysis)",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=%28%28TITLE_ABS%3Aadolescen%2A+OR+TITLE_ABS%3Ayouth+OR+TITLE_ABS%3A%22young+adults%22+OR+TITLE_ABS%3Astudent%2A+OR+TITLE_ABS%3Ateen%2A%29+AND+%28TITLE_ABS%3A%22transcendental+meditation%22+OR+TITLE_ABS%3Amantra+OR+TITLE_ABS%3Achanting%29+AND+%28PUB_TYPE%3A%22Randomized+Controlled+Trial%22+OR+TITLE_ABS%3Arandomized+OR+TITLE_ABS%3Arandomised+OR+TITLE%3A%22systematic+review%22+OR+TITLE%3Ameta-analysis%29%29+AND+SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-02%5D&format=json&resultType=core&pageSize=1000&cursorMark=%2A",
+    "retrievedAt": "2026-11-02T00:55:06.598715+00:00",
+    "hitCount": 26,
+    "returned": 26,
+    "sha256": "3e3df37ab9457cf3750f4c791029cba77ae4672ecc5a794ada0108e3e729a9d9",
+    "cache": "transcendental-0.json"
+  },
+  {
+    "lane": "mindfulness",
+    "query": "(TITLE_ABS:adolescen* OR TITLE_ABS:youth OR TITLE_ABS:\"young adults\" OR TITLE_ABS:student* OR TITLE_ABS:teen*) AND TITLE:mindfulness AND (TITLE_ABS:stress OR TITLE_ABS:anxiety OR TITLE_ABS:depress* OR TITLE_ABS:mental OR TITLE_ABS:wellbeing OR TITLE_ABS:\"well-being\" OR TITLE_ABS:trauma OR TITLE_ABS:PTSD OR TITLE_ABS:connection OR TITLE_ABS:loneliness) AND (PUB_TYPE:\"Randomized Controlled Trial\" OR TITLE_ABS:randomized OR TITLE_ABS:randomised OR TITLE:\"systematic review\" OR TITLE:meta-analysis)",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=%28%28TITLE_ABS%3Aadolescen%2A+OR+TITLE_ABS%3Ayouth+OR+TITLE_ABS%3A%22young+adults%22+OR+TITLE_ABS%3Astudent%2A+OR+TITLE_ABS%3Ateen%2A%29+AND+TITLE%3Amindfulness+AND+%28TITLE_ABS%3Astress+OR+TITLE_ABS%3Aanxiety+OR+TITLE_ABS%3Adepress%2A+OR+TITLE_ABS%3Amental+OR+TITLE_ABS%3Awellbeing+OR+TITLE_ABS%3A%22well-being%22+OR+TITLE_ABS%3Atrauma+OR+TITLE_ABS%3APTSD+OR+TITLE_ABS%3Aconnection+OR+TITLE_ABS%3Aloneliness%29+AND+%28PUB_TYPE%3A%22Randomized+Controlled+Trial%22+OR+TITLE_ABS%3Arandomized+OR+TITLE_ABS%3Arandomised+OR+TITLE%3A%22systematic+review%22+OR+TITLE%3Ameta-analysis%29%29+AND+SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-02%5D&format=json&resultType=core&pageSize=1000&cursorMark=%2A",
+    "retrievedAt": "2026-11-02T00:55:06.597592+00:00",
+    "hitCount": 538,
+    "returned": 538,
+    "sha256": "19bfadee6f71a19eece66fbac847526cbf90878eda63721a11006efb11e233b6",
+    "cache": "mindfulness-0.json"
+  },
+  {
+    "lane": "yoga",
+    "query": "(TITLE_ABS:adolescen* OR TITLE_ABS:youth OR TITLE_ABS:\"young adults\" OR TITLE_ABS:student* OR TITLE_ABS:teen*) AND TITLE:yoga AND (TITLE_ABS:stress OR TITLE_ABS:anxiety OR TITLE_ABS:depress* OR TITLE_ABS:mental OR TITLE_ABS:wellbeing OR TITLE_ABS:\"well-being\" OR TITLE_ABS:trauma OR TITLE_ABS:PTSD OR TITLE_ABS:connection OR TITLE_ABS:loneliness) AND (PUB_TYPE:\"Randomized Controlled Trial\" OR TITLE_ABS:randomized OR TITLE_ABS:randomised OR TITLE:\"systematic review\" OR TITLE:meta-analysis)",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=%28%28TITLE_ABS%3Aadolescen%2A+OR+TITLE_ABS%3Ayouth+OR+TITLE_ABS%3A%22young+adults%22+OR+TITLE_ABS%3Astudent%2A+OR+TITLE_ABS%3Ateen%2A%29+AND+TITLE%3Ayoga+AND+%28TITLE_ABS%3Astress+OR+TITLE_ABS%3Aanxiety+OR+TITLE_ABS%3Adepress%2A+OR+TITLE_ABS%3Amental+OR+TITLE_ABS%3Awellbeing+OR+TITLE_ABS%3A%22well-being%22+OR+TITLE_ABS%3Atrauma+OR+TITLE_ABS%3APTSD+OR+TITLE_ABS%3Aconnection+OR+TITLE_ABS%3Aloneliness%29+AND+%28PUB_TYPE%3A%22Randomized+Controlled+Trial%22+OR+TITLE_ABS%3Arandomized+OR+TITLE_ABS%3Arandomised+OR+TITLE%3A%22systematic+review%22+OR+TITLE%3Ameta-analysis%29%29+AND+SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-02%5D&format=json&resultType=core&pageSize=1000&cursorMark=%2A",
+    "retrievedAt": "2026-11-02T00:55:06.601238+00:00",
+    "hitCount": 124,
+    "returned": 124,
+    "sha256": "3d7f7cfff07bcaec5893133fafed8b881d69d0a4f0de88c9c0f1d34db09fc29c",
+    "cache": "yoga-0.json"
+  },
+  {
+    "lane": "orygen",
+    "query": "AFFILIATION:Orygen AND (TITLE_ABS:adolescen* OR TITLE_ABS:youth OR TITLE_ABS:young) AND (TITLE_ABS:random* OR TITLE:review OR TITLE:meta-analysis OR TITLE_ABS:help-seeking OR TITLE_ABS:barriers OR TITLE_ABS:digital OR TITLE_ABS:stigma)",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=%28AFFILIATION%3AOrygen+AND+%28TITLE_ABS%3Aadolescen%2A+OR+TITLE_ABS%3Ayouth+OR+TITLE_ABS%3Ayoung%29+AND+%28TITLE_ABS%3Arandom%2A+OR+TITLE%3Areview+OR+TITLE%3Ameta-analysis+OR+TITLE_ABS%3Ahelp-seeking+OR+TITLE_ABS%3Abarriers+OR+TITLE_ABS%3Adigital+OR+TITLE_ABS%3Astigma%29%29+AND+SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-02%5D&format=json&resultType=core&pageSize=1000&cursorMark=%2A",
+    "retrievedAt": "2026-11-02T00:55:06.602139+00:00",
+    "hitCount": 0,
+    "returned": 0,
+    "sha256": "2536572eb66070c7d2966072413cb1c4fec701def85f5b2af9930991d66c60ca",
+    "cache": "orygen-0.json"
+  },
+  {
+    "lane": "blackdog",
+    "query": "AFFILIATION:\"Black Dog\" AND (TITLE_ABS:adolescen* OR TITLE_ABS:youth OR TITLE_ABS:young OR TITLE_ABS:student*) AND (TITLE_ABS:random* OR TITLE:review OR TITLE:meta-analysis OR TITLE_ABS:help-seeking OR TITLE_ABS:barriers OR TITLE_ABS:digital OR TITLE_ABS:stigma)",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=%28AFFILIATION%3A%22Black+Dog%22+AND+%28TITLE_ABS%3Aadolescen%2A+OR+TITLE_ABS%3Ayouth+OR+TITLE_ABS%3Ayoung+OR+TITLE_ABS%3Astudent%2A%29+AND+%28TITLE_ABS%3Arandom%2A+OR+TITLE%3Areview+OR+TITLE%3Ameta-analysis+OR+TITLE_ABS%3Ahelp-seeking+OR+TITLE_ABS%3Abarriers+OR+TITLE_ABS%3Adigital+OR+TITLE_ABS%3Astigma%29%29+AND+SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-02%5D&format=json&resultType=core&pageSize=1000&cursorMark=%2A",
+    "retrievedAt": "2026-11-02T00:55:06.602475+00:00",
+    "hitCount": 3,
+    "returned": 3,
+    "sha256": "ddc6c5259f3f62a9215ba61120e7d174e750c826d610694d41f4a11503578c1d",
+    "cache": "blackdog-0.json"
+  },
+  {
+    "lane": "creative",
+    "query": "(TITLE_ABS:adolescen* OR TITLE_ABS:youth OR TITLE_ABS:\"young adults\" OR TITLE_ABS:student* OR TITLE_ABS:teen*) AND (TITLE:\"arts\" OR TITLE:\"creative\" OR TITLE:\"music making\" OR TITLE:\"hip-hop\" OR TITLE:\"fashion\") AND (TITLE_ABS:stress OR TITLE_ABS:anxiety OR TITLE_ABS:depress* OR TITLE_ABS:mental OR TITLE_ABS:wellbeing OR TITLE_ABS:\"well-being\" OR TITLE_ABS:trauma OR TITLE_ABS:PTSD OR TITLE_ABS:connection OR TITLE_ABS:loneliness)",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=%28%28TITLE_ABS%3Aadolescen%2A+OR+TITLE_ABS%3Ayouth+OR+TITLE_ABS%3A%22young+adults%22+OR+TITLE_ABS%3Astudent%2A+OR+TITLE_ABS%3Ateen%2A%29+AND+%28TITLE%3A%22arts%22+OR+TITLE%3A%22creative%22+OR+TITLE%3A%22music+making%22+OR+TITLE%3A%22hip-hop%22+OR+TITLE%3A%22fashion%22%29+AND+%28TITLE_ABS%3Astress+OR+TITLE_ABS%3Aanxiety+OR+TITLE_ABS%3Adepress%2A+OR+TITLE_ABS%3Amental+OR+TITLE_ABS%3Awellbeing+OR+TITLE_ABS%3A%22well-being%22+OR+TITLE_ABS%3Atrauma+OR+TITLE_ABS%3APTSD+OR+TITLE_ABS%3Aconnection+OR+TITLE_ABS%3Aloneliness%29%29+AND+SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-02%5D&format=json&resultType=core&pageSize=1000&cursorMark=%2A",
+    "retrievedAt": "2026-11-02T00:55:06.610494+00:00",
+    "hitCount": 347,
+    "returned": 347,
+    "sha256": "599e86b4dc963cf9eadeb795f9500627927181d16de0a462b02b04c1efb562c2",
+    "cache": "creative-0.json"
+  },
+  {
+    "lane": "access",
+    "query": "(TITLE_ABS:adolescen* OR TITLE_ABS:youth OR TITLE_ABS:\"young adults\" OR TITLE_ABS:student* OR TITLE_ABS:teen*) AND (TITLE:help-seeking OR TITLE:barriers OR TITLE:stigma) AND (TITLE:\"systematic review\" OR TITLE:meta-analysis)",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=%28%28TITLE_ABS%3Aadolescen%2A+OR+TITLE_ABS%3Ayouth+OR+TITLE_ABS%3A%22young+adults%22+OR+TITLE_ABS%3Astudent%2A+OR+TITLE_ABS%3Ateen%2A%29+AND+%28TITLE%3Ahelp-seeking+OR+TITLE%3Abarriers+OR+TITLE%3Astigma%29+AND+%28TITLE%3A%22systematic+review%22+OR+TITLE%3Ameta-analysis%29%29+AND+SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-02%5D&format=json&resultType=core&pageSize=1000&cursorMark=%2A",
+    "retrievedAt": "2026-11-02T00:55:06.622652+00:00",
+    "hitCount": 251,
+    "returned": 251,
+    "sha256": "bd4221b55b4ac80269f53373e8025c58f6ef939f8c53637091b5dcab706e311d",
+    "cache": "access-0.json"
+  },
+  {
+    "lane": "connectedness",
+    "query": "(TITLE_ABS:adolescen* OR TITLE_ABS:youth OR TITLE_ABS:\"young adults\" OR TITLE_ABS:student* OR TITLE_ABS:teen*) AND (TITLE:connectedness OR TITLE:belonging OR TITLE:loneliness OR TITLE:\"social connection\") AND (PUB_TYPE:\"Randomized Controlled Trial\" OR TITLE_ABS:randomized OR TITLE_ABS:randomised OR TITLE:\"systematic review\" OR TITLE:meta-analysis)",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=%28%28TITLE_ABS%3Aadolescen%2A+OR+TITLE_ABS%3Ayouth+OR+TITLE_ABS%3A%22young+adults%22+OR+TITLE_ABS%3Astudent%2A+OR+TITLE_ABS%3Ateen%2A%29+AND+%28TITLE%3Aconnectedness+OR+TITLE%3Abelonging+OR+TITLE%3Aloneliness+OR+TITLE%3A%22social+connection%22%29+AND+%28PUB_TYPE%3A%22Randomized+Controlled+Trial%22+OR+TITLE_ABS%3Arandomized+OR+TITLE_ABS%3Arandomised+OR+TITLE%3A%22systematic+review%22+OR+TITLE%3Ameta-analysis%29%29+AND+SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-02%5D&format=json&resultType=core&pageSize=1000&cursorMark=%2A",
+    "retrievedAt": "2026-11-02T00:55:06.626452+00:00",
+    "hitCount": 108,
+    "returned": 108,
+    "sha256": "23b22b427b05e733411e241ede6bb80a459529bd03dee11a398403c23c5edc10",
+    "cache": "connectedness-0.json"
+  },
+  {
+    "lane": "digital",
+    "query": "(TITLE_ABS:adolescen* OR TITLE_ABS:youth OR TITLE_ABS:\"young adults\" OR TITLE_ABS:student* OR TITLE_ABS:teen*) AND (TITLE:\"digital mental\" OR TITLE:\"internet-based\" OR TITLE:\"online mental\" OR TITLE:\"blended\") AND (TITLE:\"systematic review\" OR TITLE:meta-analysis)",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=%28%28TITLE_ABS%3Aadolescen%2A+OR+TITLE_ABS%3Ayouth+OR+TITLE_ABS%3A%22young+adults%22+OR+TITLE_ABS%3Astudent%2A+OR+TITLE_ABS%3Ateen%2A%29+AND+%28TITLE%3A%22digital+mental%22+OR+TITLE%3A%22internet-based%22+OR+TITLE%3A%22online+mental%22+OR+TITLE%3A%22blended%22%29+AND+%28TITLE%3A%22systematic+review%22+OR+TITLE%3Ameta-analysis%29%29+AND+SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-02%5D&format=json&resultType=core&pageSize=1000&cursorMark=%2A",
+    "retrievedAt": "2026-11-02T00:55:06.628537+00:00",
+    "hitCount": 66,
+    "returned": 66,
+    "sha256": "0e54d80e832fa78cb6396b6c60b1294526d7b9db3b3c4db97025d417a42cc144",
+    "cache": "digital-0.json"
+  },
+  {
+    "lane": "headspace",
+    "query": "(TITLE:headspace OR AFFILIATION:headspace) AND (TITLE:outcomes OR TITLE:evaluation OR TITLE:access OR TITLE:stigma OR TITLE:barriers OR TITLE:random*)",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=%28%28TITLE%3Aheadspace+OR+AFFILIATION%3Aheadspace%29+AND+%28TITLE%3Aoutcomes+OR+TITLE%3Aevaluation+OR+TITLE%3Aaccess+OR+TITLE%3Astigma+OR+TITLE%3Abarriers+OR+TITLE%3Arandom%2A%29%29+AND+SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-02%5D&format=json&resultType=core&pageSize=1000&cursorMark=%2A",
+    "retrievedAt": "2026-11-02T00:55:06.649549+00:00",
+    "hitCount": 79,
+    "returned": 79,
+    "sha256": "f90111fb082ebc238b337acc726d03516f39180c2c0b35f5d9edb077e756d688",
+    "cache": "headspace-0.json"
+  },
+  {
+    "lane": "indigenous",
+    "query": "(TITLE_ABS:Indigenous OR TITLE_ABS:Aboriginal OR TITLE_ABS:Maori) AND (TITLE_ABS:adolescen* OR TITLE_ABS:youth OR TITLE_ABS:\"young adults\" OR TITLE_ABS:student* OR TITLE_ABS:teen*) AND (TITLE_ABS:mindfulness OR TITLE_ABS:music OR TITLE_ABS:digital OR TITLE_ABS:help-seeking) AND (TITLE_ABS:stress OR TITLE_ABS:anxiety OR TITLE_ABS:depress* OR TITLE_ABS:mental OR TITLE_ABS:wellbeing OR TITLE_ABS:\"well-being\" OR TITLE_ABS:trauma OR TITLE_ABS:PTSD OR TITLE_ABS:connection OR TITLE_ABS:loneliness)",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=%28%28TITLE_ABS%3AIndigenous+OR+TITLE_ABS%3AAboriginal+OR+TITLE_ABS%3AMaori%29+AND+%28TITLE_ABS%3Aadolescen%2A+OR+TITLE_ABS%3Ayouth+OR+TITLE_ABS%3A%22young+adults%22+OR+TITLE_ABS%3Astudent%2A+OR+TITLE_ABS%3Ateen%2A%29+AND+%28TITLE_ABS%3Amindfulness+OR+TITLE_ABS%3Amusic+OR+TITLE_ABS%3Adigital+OR+TITLE_ABS%3Ahelp-seeking%29+AND+%28TITLE_ABS%3Astress+OR+TITLE_ABS%3Aanxiety+OR+TITLE_ABS%3Adepress%2A+OR+TITLE_ABS%3Amental+OR+TITLE_ABS%3Awellbeing+OR+TITLE_ABS%3A%22well-being%22+OR+TITLE_ABS%3Atrauma+OR+TITLE_ABS%3APTSD+OR+TITLE_ABS%3Aconnection+OR+TITLE_ABS%3Aloneliness%29%29+AND+SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-02%5D&format=json&resultType=core&pageSize=1000&cursorMark=%2A",
+    "retrievedAt": "2026-11-02T00:55:06.652163+00:00",
+    "hitCount": 79,
+    "returned": 79,
+    "sha256": "d68d5e1167bb642e378484977000c4d48c7c40b4126d7468d95688207448a6ec",
+    "cache": "indigenous-0.json"
+  },
+  {
+    "lane": "veterans",
+    "query": "(TITLE_ABS:\"young veterans\" OR TITLE_ABS:\"young service members\" OR TITLE_ABS:\"military transition\") AND (TITLE_ABS:stress OR TITLE_ABS:anxiety OR TITLE_ABS:depress* OR TITLE_ABS:mental OR TITLE_ABS:wellbeing OR TITLE_ABS:\"well-being\" OR TITLE_ABS:trauma OR TITLE_ABS:PTSD OR TITLE_ABS:connection OR TITLE_ABS:loneliness)",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=%28%28TITLE_ABS%3A%22young+veterans%22+OR+TITLE_ABS%3A%22young+service+members%22+OR+TITLE_ABS%3A%22military+transition%22%29+AND+%28TITLE_ABS%3Astress+OR+TITLE_ABS%3Aanxiety+OR+TITLE_ABS%3Adepress%2A+OR+TITLE_ABS%3Amental+OR+TITLE_ABS%3Awellbeing+OR+TITLE_ABS%3A%22well-being%22+OR+TITLE_ABS%3Atrauma+OR+TITLE_ABS%3APTSD+OR+TITLE_ABS%3Aconnection+OR+TITLE_ABS%3Aloneliness%29%29+AND+SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-02%5D&format=json&resultType=core&pageSize=1000&cursorMark=%2A",
+    "retrievedAt": "2026-11-02T00:55:06.653898+00:00",
+    "hitCount": 35,
+    "returned": 35,
+    "sha256": "be118ce03c597ee767584a9aab2b3c4d0206a1de40ac13723b6ea31686a2989a",
+    "cache": "veterans-0.json"
+  },
+  {
+    "lane": "blackdog-v2",
+    "query": "\"Black Dog Institute\" AND (TITLE_ABS:adolescen* OR TITLE_ABS:youth OR TITLE_ABS:young OR TITLE_ABS:student*) AND (TITLE_ABS:random* OR TITLE:review OR TITLE:meta-analysis OR TITLE_ABS:help-seeking OR TITLE_ABS:barriers OR TITLE_ABS:digital OR TITLE_ABS:stigma)",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=%28%22Black+Dog+Institute%22+AND+%28TITLE_ABS%3Aadolescen%2A+OR+TITLE_ABS%3Ayouth+OR+TITLE_ABS%3Ayoung+OR+TITLE_ABS%3Astudent%2A%29+AND+%28TITLE_ABS%3Arandom%2A+OR+TITLE%3Areview+OR+TITLE%3Ameta-analysis+OR+TITLE_ABS%3Ahelp-seeking+OR+TITLE_ABS%3Abarriers+OR+TITLE_ABS%3Adigital+OR+TITLE_ABS%3Astigma%29%29+AND+SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-02%5D&format=json&resultType=core&pageSize=1000&cursorMark=%2A",
+    "retrievedAt": "2026-11-02T00:55:33.355670+00:00",
+    "hitCount": 217,
+    "returned": 217,
+    "sha256": "2320237f2ddb5f4a0097fc495e30df1751294fee79cbdd64c3d6525a73ec8cae",
+    "cache": "blackdog-v2-0.json"
+  },
+  {
+    "lane": "orygen-v2",
+    "query": "Orygen AND (TITLE_ABS:adolescen* OR TITLE_ABS:youth OR TITLE_ABS:young) AND (TITLE_ABS:random* OR TITLE:review OR TITLE:meta-analysis OR TITLE_ABS:help-seeking OR TITLE_ABS:barriers OR TITLE_ABS:digital OR TITLE_ABS:stigma)",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=%28Orygen+AND+%28TITLE_ABS%3Aadolescen%2A+OR+TITLE_ABS%3Ayouth+OR+TITLE_ABS%3Ayoung%29+AND+%28TITLE_ABS%3Arandom%2A+OR+TITLE%3Areview+OR+TITLE%3Ameta-analysis+OR+TITLE_ABS%3Ahelp-seeking+OR+TITLE_ABS%3Abarriers+OR+TITLE_ABS%3Adigital+OR+TITLE_ABS%3Astigma%29%29+AND+SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-02%5D&format=json&resultType=core&pageSize=1000&cursorMark=%2A",
+    "retrievedAt": "2026-11-02T00:55:54.037999+00:00",
+    "hitCount": 596,
+    "returned": 596,
+    "sha256": "5fd5c0bac6db97be15b4449a3dd3063071b344a8326822e73399db98eea1c37b",
+    "cache": "orygen-v2-0.json"
+  }
+]

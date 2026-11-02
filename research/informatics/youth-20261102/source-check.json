@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "immutableRecordHashes": 187,
+  "jsonCsvEquivalent": true,
+  "qualifiedPapers": 105,
+  "qualifiedNew": 100,
+  "approvedCorporaUnchanged": true,
+  "releaseBaselineCommit": "05da69656bbe9fae4498e306d1e1b9171b51e372",
+  "reviewExcludedFromApprovedExports": true,
+  "approvedDatasetVersion": "8eaf5c1278019b85d9136b9eb33ea9a23c2d27d44a88941e6b4a0b2afc1494de",
+  "allHumanDecisionsPending": true,
+  "designMarkerBoundariesPassed": true
+}

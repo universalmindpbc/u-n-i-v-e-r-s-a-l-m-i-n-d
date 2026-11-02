@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "youth-review-1",
+  "batch": "batch-f164c8325ea5f9c9.json",
+  "sha256": "f164c8325ea5f9c989c29524518b598913508117712826dc408f592b7f99a723",
+  "csv": "records-4f4edc1a6130b68b.csv",
+  "csvSHA256": "4f4edc1a6130b68b5f148e6f9a9344c977cccd3a58db3b0ff01db83c42bf1f3e",
+  "reviewStatus": "pending",
+  "productionEligible": false,
+  "approvedRetrievalEligible": false,
+  "baselineCommit": "05da69656bbe9fae4498e306d1e1b9171b51e372",
+  "metrics": {
+    "assessedRecords": 187,
+    "uniquePublications": 186,
+    "duplicateReprints": 1,
+    "reviewReady": 144,
+    "qualifiedPapers": 105,
+    "qualifiedNew": 100,
+    "qualifiedExisting": 5,
+    "newUniquePublications": 171,
+    "existingUniquePublications": 15,
+    "fullTextCached": 154,
+    "abstractOnly": 31,
+    "webMethodsRecovered": 2,
+    "studyFamilies": 171,
+    "randomizedReportsMethodsInspected": 69,
+    "randomizedStudyUnitsConservative": 63,
+    "qualifiedDesigns": {
+      "randomized-report": 47,
+      "review": 42,
+      "qualitative": 8,
+      "observational": 8
+    },
+    "qualifiedProposedCrosses": {
+      "2": 44,
+      "1": 58,
+      "3": 3
+    },
+    "institutionRecords": {
+      "Black Dog Institute": 28,
+      "Orygen": 30,
+      "headspace services": 11
+    }
+  }
+}
