@@ -1,0 +1,24 @@
+{
+  "url": "https://staging.universalmind.tv/lab/",
+  "source": "live staging",
+  "renderStats": {
+    "drawCalls": 178,
+    "triangles": 342948
+  },
+  "date": "2026-11-02T09:53:15.387Z",
+  "processMuted": true,
+  "hiddenBrowser": true,
+  "nativeFullscreenTest": false,
+  "physicalPhoneTest": false,
+  "checks": [
+    "Exact minimal Informatics landing content; original logo/favicon; visitor launch at 7%; uniform tracking across universalmind[lab]; no stage selector; truck arrival, ten-second construction and sequential facilities; navigation and tags wait until open",
+    "Four-colour word sequence; centered exclusive tickets; mental health footer; clean visitor cards and named AABCAP support; roof-anchored hologram; eight message flags; five-second sunset; seven timed tour stops plus final hold/reset; visible inference diagram and interactive light/sound response; support pathway",
+    "Manual place selection cancels the automated tour without resetting the scene",
+    "Two-second daylight hold and five-second sunset; interior and all area camera views; rain/layout, plan, proposal and top-right media settings; Replay resets scene/daylight; fullscreen state mocked only; 1920×1080 layout",
+    "390×844 portrait and 844×390 landscape: no page overflow, header in bounds, touch place detail and proposal",
+    "Prefixed, denied and unsupported fullscreen through API doubles; native fullscreen never invoked"
+  ],
+  "unexpectedErrors": [],
+  "httpFailures": [],
+  "assetsVerified": 31
+}

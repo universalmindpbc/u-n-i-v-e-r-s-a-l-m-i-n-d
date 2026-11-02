@@ -16,7 +16,17 @@ Static validation passes for all 45 reference hashes, self-hosted 3D assets, sev
 
 ## Staging record
 
-Deployment and live verification pending. This file will record the exact source commit and completed checks following the existing Panthur staging workflow.
+- Source commit: `a865b9a5105951122689dae0ccd53256e7697ac0`.
+- Route: https://staging.universalmind.tv/lab/
+- Deployment: existing `./deploy-panthur-staging.sh lab`, Panthur staging FTP only.
+- Live source verification: all 31 published Lab files returned HTTP 200 and matched the committed SHA-256 values. The deployment manifest matches all 31 files.
+- Hidden Chromium checks passed at 1440 × 1000, 1920 × 1080, 390 × 844 and 844 × 390. Landing, staged build, five-second sunset, timed tour/return, manual interruption, Replay, scene cards, response slider, referral navigation, rain/layout, plan and Proposal were exercised. Fullscreen APIs were simulated; native fullscreen was never invoked.
+- No unexpected JavaScript errors or HTTP failures appeared. Physical iPhone testing was not performed.
+- QA evidence: `qa/mindfulness-revision/lab-browser.json`, `lab-http.json` and selected screenshots.
+- Actual live media verification passed in a dedicated headless Chromium process with `--mute-audio` confirmed before navigation. The HLS music/video timeline decoded and looped; 7%/33% blends and volume controls worked. Both eight-second truck videos decoded, advanced, looped, paused and resumed. Hexeosis advanced silently. The response slider changed media gain from 0.33 to 0.61 and changed scene response. All automated media was paused and its browser process closed.
+- One first-run pause assertion caught the asynchronous pause event before it settled. The harness now waits for the motion-paused state before sampling; the repeat passed without website-source changes.
+- Media evidence: `qa/mindfulness-revision/media/media-browser.json` and selected screenshots.
+- GitHub staging metadata commit records this report and the deployment manifest after successful verification. Source remains the exact committed revision above.
 
 ## Limits and next review
 

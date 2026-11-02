@@ -43,7 +43,7 @@ try {
   checks.push('Both supplied trailer videos decode at native dimensions, loop across the end boundary and remain muted');
   await page.screenshot({path:path.join(out,'video-overlay-33.png')});
   await page.locator('#video-toggle').click();assert.equal(await video.evaluate(v=>getComputedStyle(v).opacity),'0');assert.equal(await video.evaluate(v=>v.paused),false);
-  await page.locator('#music-toggle').click();const time=await video.evaluate(v=>v.currentTime);const frame=await page.locator('body').getAttribute('data-motion-frame');await page.waitForTimeout(600);assert.equal(await video.evaluate(v=>v.currentTime),time);assert.equal(await page.locator('body').getAttribute('data-motion-frame'),frame);
+  await page.locator('#music-toggle').click();await page.waitForFunction(()=>document.body.dataset.musicMotion==='false');const time=await video.evaluate(v=>v.currentTime);const frame=await page.locator('body').getAttribute('data-motion-frame');await page.waitForTimeout(600);assert.equal(await video.evaluate(v=>v.currentTime),time);assert.equal(await page.locator('body').getAttribute('data-motion-frame'),frame);
   checks.push('TV starts at 7%, adjustable to 33%; hiding TV keeps music playing; volume updates; motion advances only when enabled and playing; pause freezes time and movement');
   await page.locator('#music-toggle').click();await page.waitForFunction(()=>!document.getElementById('music-video').paused);
   await video.evaluate(v=>v.currentTime=v.duration-.5);await page.waitForFunction(()=>{const v=document.getElementById('music-video');return v.currentTime<8&&!v.paused;},null,{timeout:25000});

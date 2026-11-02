@@ -1,0 +1,51 @@
+{
+  "url": "https://staging.universalmind.tv/lab/",
+  "source": "live staging",
+  "date": "2026-11-02T09:56:36.383Z",
+  "processMuted": true,
+  "nativeFullscreenInvoked": false,
+  "metadata": {
+    "width": 1280,
+    "height": 720,
+    "duration": 199.98599999999988,
+    "volume": 0.65,
+    "loop": true
+  },
+  "geometry": {
+    "width": 540,
+    "height": 540,
+    "duration": 2.88,
+    "muted": true,
+    "paused": false
+  },
+  "truckMetadata": [
+    {
+      "id": "truck-fashion-video",
+      "width": 720,
+      "height": 332,
+      "duration": 8,
+      "muted": true,
+      "loop": true,
+      "time": 0.968684
+    },
+    {
+      "id": "truck-anime-video",
+      "width": 1280,
+      "height": 590,
+      "duration": 8,
+      "muted": true,
+      "loop": true,
+      "time": 0.968485
+    }
+  ],
+  "checks": [
+    "No autoplay or initial stream request; Explore gesture starts real Cloudflare HLS decoding; one looping timeline; reduced-motion default off",
+    "Both supplied trailer videos decode at native dimensions, loop across the end boundary and remain muted",
+    "TV starts at 7%, adjustable to 33%; hiding TV keeps music playing; volume updates; motion advances only when enabled and playing; pause freezes time and movement",
+    "Actual media loops across the end boundary; supplied Hexeosis animation decodes at 540×540 and advances silently with Motion",
+    "Response control changes scene response and actual media gain from 0.33 to 0.61",
+    "Motion freezes both trailer videos and Hexeosis, then resumes both trailer loops"
+  ],
+  "errors": [],
+  "subjectiveSoundQualityTested": false
+}

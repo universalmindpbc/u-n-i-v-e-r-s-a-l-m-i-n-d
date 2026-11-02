@@ -1,0 +1,222 @@
+{
+  "url": "https://staging.universalmind.tv/lab/",
+  "assets": [
+    {
+      "file": "index.html",
+      "requestedURL": "https://staging.universalmind.tv/lab/index.html",
+      "status": 200,
+      "bytes": 18647,
+      "sha256": "d62207f55b7b20b1119c7cab0fa84c2a8079e8d9d928b64e5dd8191812143ab5"
+    },
+    {
+      "file": "lab.css",
+      "requestedURL": "https://staging.universalmind.tv/lab/lab.css?v=20261102mind1",
+      "status": 200,
+      "bytes": 40229,
+      "sha256": "4a431b1454230bd0fa4865b4981c25f6fe0823cf29ce47abd88ef743b6cd8316"
+    },
+    {
+      "file": "lab.mjs",
+      "requestedURL": "https://staging.universalmind.tv/lab/lab.mjs?v=20261102mind1",
+      "status": 200,
+      "bytes": 41176,
+      "sha256": "4ecf1e4a34584fd6517a31a98d204888254b867a8662c8b35ea249ec297ce582"
+    },
+    {
+      "file": "media.mjs",
+      "requestedURL": "https://staging.universalmind.tv/lab/media.mjs?v=20261102mind1",
+      "status": 200,
+      "bytes": 5483,
+      "sha256": "fdbbd131144b367206b87e14bf960b3302774620547eac34214b6680211153df"
+    },
+    {
+      "file": "story.mjs",
+      "requestedURL": "https://staging.universalmind.tv/lab/story.mjs?v=20261102mind1",
+      "status": 200,
+      "bytes": 1777,
+      "sha256": "3884ec3263083a049618c292122ed86c71d206865966daa8da47ed45dc5f6392"
+    },
+    {
+      "file": "crowd.mjs",
+      "requestedURL": "https://staging.universalmind.tv/lab/crowd.mjs?v=20261102mind1",
+      "status": 200,
+      "bytes": 17762,
+      "sha256": "0f1ee1cf0176ec2270891a31c8dfd18d9e4286aea12ddfe3f55c767ce70deffc"
+    },
+    {
+      "file": "light-show.mjs",
+      "requestedURL": "https://staging.universalmind.tv/lab/light-show.mjs?v=20261102mind1",
+      "status": 200,
+      "bytes": 4647,
+      "sha256": "898e8a8695f293f5269b32d80f8e848c480c6975c3af4212117ce4317338a281"
+    },
+    {
+      "file": "stage-visuals.mjs",
+      "requestedURL": "https://staging.universalmind.tv/lab/stage-visuals.mjs?v=20261102mind1",
+      "status": 200,
+      "bytes": 1650,
+      "sha256": "5b52daf8e117bb43b21b31470767b6df50614ed2775737b066116a3f4e8c3710"
+    },
+    {
+      "file": "runway.mjs",
+      "requestedURL": "https://staging.universalmind.tv/lab/runway.mjs?v=20261102mind1",
+      "status": 200,
+      "bytes": 4602,
+      "sha256": "613ca62f80c07893d82fbb2b3a7d5c675005fff8586019f561b32c513ddbdafd"
+    },
+    {
+      "file": "landing-rain.js",
+      "requestedURL": "https://staging.universalmind.tv/lab/landing-rain.js?v=20261102mind1",
+      "status": 200,
+      "bytes": 7313,
+      "sha256": "bfefd5d4063f937320aa05a0aca870e67885e60b77856f925525514cc857af51"
+    },
+    {
+      "file": "architecture.mjs",
+      "requestedURL": "https://staging.universalmind.tv/lab/architecture.mjs?v=20261102mind1",
+      "status": 200,
+      "bytes": 12208,
+      "sha256": "78a9948b5b4440c9b16c0ad12dfad5175520c4908f8b77fb1d871112cf5ec68e"
+    },
+    {
+      "file": "furnishings.mjs",
+      "requestedURL": "https://staging.universalmind.tv/lab/furnishings.mjs?v=20261102mind1",
+      "status": 200,
+      "bytes": 10112,
+      "sha256": "1e9f12657c21d5a8bb578ac6cc6671c3651ab77183e69008810ecdadbf6d3a9f"
+    },
+    {
+      "file": "site-features.mjs",
+      "requestedURL": "https://staging.universalmind.tv/lab/site-features.mjs?v=20261102mind1",
+      "status": 200,
+      "bytes": 15957,
+      "sha256": "98dc3ab4915e5ca49d8ac5baf0fb5367e8a06f52adc8115d44f84e9b39a261e1"
+    },
+    {
+      "file": "vendor/hls.min.js",
+      "requestedURL": "https://staging.universalmind.tv/lab/vendor/hls.min.js?v=20261102mind1",
+      "status": 200,
+      "bytes": 623915,
+      "sha256": "cfc70cc9e9fc63d071919e087670abc760c8fd1bc889b88588026e4d22193bbe"
+    },
+    {
+      "file": "vendor/LICENSE-hls.txt",
+      "requestedURL": "https://staging.universalmind.tv/lab/vendor/LICENSE-hls.txt?v=20261102mind1",
+      "status": 200,
+      "bytes": 1338,
+      "sha256": "ca8773cf798c7ed997d4dd7c8e23c348699f8d5b7462636694cc14de6cda12db"
+    },
+    {
+      "file": "vendor/three.module.js",
+      "requestedURL": "https://staging.universalmind.tv/lab/vendor/three.module.js?v=20261102mind1",
+      "status": 200,
+      "bytes": 1284652,
+      "sha256": "5916c8dfb5f4e3eede312de305345868d4a0a8105383b080c6985565d6e79b46"
+    },
+    {
+      "file": "vendor/OrbitControls.js",
+      "requestedURL": "https://staging.universalmind.tv/lab/vendor/OrbitControls.js?v=20261102mind1",
+      "status": 200,
+      "bytes": 32250,
+      "sha256": "f260591ef315aa04888152e7f121865214e33fb54727145cf4e4445058db1297"
+    },
+    {
+      "file": "vendor/LICENSE-three.txt",
+      "requestedURL": "https://staging.universalmind.tv/lab/vendor/LICENSE-three.txt?v=20261102mind1",
+      "status": 200,
+      "bytes": 1081,
+      "sha256": "4c40a1ef62450b857c3b2aaf294936304cd552d965fbcd9d32d4c5bcf4ba4454"
+    },
+    {
+      "file": "assets/headspace.svg",
+      "requestedURL": "https://staging.universalmind.tv/lab/assets/headspace.svg?v=20261102mind1",
+      "status": 200,
+      "bytes": 11365,
+      "sha256": "eebbd23ceca4d42fa03b226a30601fb01e11a7d83209d784f9d7ec58b628492e"
+    },
+    {
+      "file": "assets/msf.svg",
+      "requestedURL": "https://staging.universalmind.tv/lab/assets/msf.svg?v=20261102mind1",
+      "status": 200,
+      "bytes": 12132,
+      "sha256": "358e457b165af74e85823605d2089907eb608f7a79df81c801e7ed88a66bc150"
+    },
+    {
+      "file": "assets/nsw-government.svg",
+      "requestedURL": "https://staging.universalmind.tv/lab/assets/nsw-government.svg?v=20261102mind1",
+      "status": 200,
+      "bytes": 11212,
+      "sha256": "ec456aa2c71baba8f6094283bc1c4ab006fd87039ea7617cde4792422df6f6fb"
+    },
+    {
+      "file": "assets/apple-music.svg",
+      "requestedURL": "https://staging.universalmind.tv/lab/assets/apple-music.svg?v=20261102mind1",
+      "status": 200,
+      "bytes": 2863,
+      "sha256": "103ee53f4331db54184a9b45369474616b30588f3681f9755fce84fb9baaf9d3"
+    },
+    {
+      "file": "assets/universal-mind-flower.png",
+      "requestedURL": "https://staging.universalmind.tv/lab/assets/universal-mind-flower.png?v=20261102mind1",
+      "status": 200,
+      "bytes": 485116,
+      "sha256": "9265619edbd83d103f4408933ecdb9a02f7a5392075200c4000fa1ec8a14cdee"
+    },
+    {
+      "file": "assets/favicon.png",
+      "requestedURL": "https://staging.universalmind.tv/lab/assets/favicon.png?v=20261102mind1",
+      "status": 200,
+      "bytes": 3394,
+      "sha256": "d7b0c8c14b00152e1be5a74c0d51dd9e31ea33fb6c0b0dbc5febc6f903aaa89d"
+    },
+    {
+      "file": "assets/landing-flower.png",
+      "requestedURL": "https://staging.universalmind.tv/lab/assets/landing-flower.png?v=20261102mind1",
+      "status": 200,
+      "bytes": 485116,
+      "sha256": "9265619edbd83d103f4408933ecdb9a02f7a5392075200c4000fa1ec8a14cdee"
+    },
+    {
+      "file": "assets/hexeosis-hx_4a480.mp4",
+      "requestedURL": "https://staging.universalmind.tv/lab/assets/hexeosis-hx_4a480.mp4?v=20261102mind1",
+      "status": 200,
+      "bytes": 771930,
+      "sha256": "12268522fb9a261bb811f8d90cf00f8e60db275655847a2daec6f76451900b6e"
+    },
+    {
+      "file": "assets/vogue.png",
+      "requestedURL": "https://staging.universalmind.tv/lab/assets/vogue.png?v=20261102mind1",
+      "status": 200,
+      "bytes": 102182,
+      "sha256": "45d15609554ee1b9b0cde561c2c6f77d605a73410bfea4b4f612b0b33b342bfa"
+    },
+    {
+      "file": "assets/truck-fashion.mp4",
+      "requestedURL": "https://staging.universalmind.tv/lab/assets/truck-fashion.mp4?v=20261102mind1",
+      "status": 200,
+      "bytes": 630603,
+      "sha256": "2cc702de3b62616fe40d3c2af2a41c53c6f23ee08796affbd9215ea056cffc46"
+    },
+    {
+      "file": "assets/truck-anime.mp4",
+      "requestedURL": "https://staging.universalmind.tv/lab/assets/truck-anime.mp4?v=20261102mind1",
+      "status": 200,
+      "bytes": 2383740,
+      "sha256": "c22c11f3a691f7f3e3d4f79ab924bf105ee49bcaa84162c05a219b2c6ea371b1"
+    },
+    {
+      "file": "assets/truck-fashion.jpg",
+      "requestedURL": "https://staging.universalmind.tv/lab/assets/truck-fashion.jpg?v=20261102mind1",
+      "status": 200,
+      "bytes": 61827,
+      "sha256": "9882f3565245162d121b1de1a0ea4579093039cfb0f8fd2cd68ebc77c65b3659"
+    },
+    {
+      "file": "assets/truck-anime.jpg",
+      "requestedURL": "https://staging.universalmind.tv/lab/assets/truck-anime.jpg?v=20261102mind1",
+      "status": 200,
+      "bytes": 312214,
+      "sha256": "bea0b4a9945f9ca08355f40a36f49db869cdb30f6369356365b7333242ad4d3f"
+    }
+  ]
+}
