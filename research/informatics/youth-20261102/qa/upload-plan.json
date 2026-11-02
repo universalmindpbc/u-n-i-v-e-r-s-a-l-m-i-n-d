@@ -1,0 +1,67 @@
+{
+  "trackedAssets": 13789,
+  "changed": [
+    {
+      "source": "Informatics/review/youth-20261102/batch-f164c8325ea5f9c9.json",
+      "remote": "informatics/review/youth-20261102/batch-f164c8325ea5f9c9.json",
+      "bytes": 1161923
+    },
+    {
+      "source": "Informatics/review/youth-20261102/brief.html",
+      "remote": "informatics/review/youth-20261102/brief.html",
+      "bytes": 17076
+    },
+    {
+      "source": "Informatics/review/youth-20261102/brief.md",
+      "remote": "informatics/review/youth-20261102/brief.md",
+      "bytes": 13862
+    },
+    {
+      "source": "Informatics/review/youth-20261102/index.html",
+      "remote": "informatics/review/youth-20261102/index.html",
+      "bytes": 5508
+    },
+    {
+      "source": "Informatics/review/youth-20261102/index.json",
+      "remote": "informatics/review/youth-20261102/index.json",
+      "bytes": 1263
+    },
+    {
+      "source": "Informatics/review/youth-20261102/methods.html",
+      "remote": "informatics/review/youth-20261102/methods.html",
+      "bytes": 7430
+    },
+    {
+      "source": "Informatics/review/youth-20261102/methods.md",
+      "remote": "informatics/review/youth-20261102/methods.md",
+      "bytes": 6626
+    },
+    {
+      "source": "Informatics/review/youth-20261102/records-4f4edc1a6130b68b.csv",
+      "remote": "informatics/review/youth-20261102/records-4f4edc1a6130b68b.csv",
+      "bytes": 1181328
+    },
+    {
+      "source": "Informatics/review/youth-20261102/review.css",
+      "remote": "informatics/review/youth-20261102/review.css",
+      "bytes": 6887
+    },
+    {
+      "source": "Informatics/review/youth-20261102/review.js",
+      "remote": "informatics/review/youth-20261102/review.js",
+      "bytes": 8827
+    },
+    {
+      "source": "Informatics/review/youth-20261102/search-log.json",
+      "remote": "informatics/review/youth-20261102/search-log.json",
+      "bytes": 23089
+    },
+    {
+      "source": "Informatics/review/youth-20261102/supplemental-sources.json",
+      "remote": "informatics/review/youth-20261102/supplemental-sources.json",
+      "bytes": 3715
+    }
+  ],
+  "missing": [],
+  "onlyYouthPackage": true
+}

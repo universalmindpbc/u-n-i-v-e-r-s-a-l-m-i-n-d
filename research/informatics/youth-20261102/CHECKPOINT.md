@@ -8,4 +8,4 @@ All requested lanes covered; mantra leads remain methods-pending, electronic-mus
 
 Public review/brief and immutable JSON/CSV built under Informatics/review/youth-20261102. Data/hash/CSV/isolation/export checks passed. Silent headless desktop/390px/320px browser checks passed, including search, institutional filters, empty states, direct record links, details and downloads.
 
-Release coordination: another task is deploying portal navigation. Waiting for its recorded staging commit before the scoped candidate deployment. No youth package has been deployed or pushed yet; no production action. No paid access/spend or external contact.
+Release coordination: the completed navigation release is recorded at 7ebdb92ac8886af9c81e8616b336a2fecc86989c. Youth candidate commits have been rebased onto it. Preparing the scoped staging deployment; no youth package has been deployed or pushed yet. No production action, paid access/spend or external contact.

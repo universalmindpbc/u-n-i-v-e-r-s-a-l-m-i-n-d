@@ -1,0 +1,7 @@
+{
+  "commit": "7ebdb92ac8886af9c81e8616b336a2fecc86989c",
+  "researchBaselineCommit": "05da69656bbe9fae4498e306d1e1b9171b51e372",
+  "productionMainAtReleaseStart": "a2d6cb9b83340e841c9362cefd5d193aff63ee56",
+  "recordedAt": "2026-11-02T02:08:12.600738+00:00",
+  "reason": "Rebased isolated youth candidate commits onto the completed navigation release; preserve all intervening staging work. Research corpus identity remains tied to the original seven-source baseline."
+}
