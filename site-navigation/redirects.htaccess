@@ -6,5 +6,5 @@ RewriteRule ^vogue/iam/(about\.html|business\-model\.html|impact\.html|index\.ht
 RewriteCond %{HTTP_USER_AGENT} !(iPad|Macintosh.*Mobile) [NC]
 RewriteCond %{HTTP_USER_AGENT} (Mobile|iPhone|iPod|IEMobile|Opera\ Mini|BlackBerry|webOS) [NC]
 RewriteCond %{QUERY_STRING} !(^|&)full=1(&|$) [NC]
-RewriteRule ^iam/(tv|check-in)/?$ /vogue/iam/induction.html?mobile=1 [R=302,L,NE]
+RewriteRule ^iam/(tv|check-in|technology(?:/recommendations)?)/?$ /vogue/iam/induction.html?mobile=1 [R=302,L,NE]
 # END Portal navigation compatibility

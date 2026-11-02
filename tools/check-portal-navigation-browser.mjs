@@ -141,6 +141,33 @@ try {
    results.push({portal:'root-shell',singleHistoryEntry:true,retainedFrame:true,retainedMedia:true});
   }finally{await stop(ctx);}
  }
+ if(only==='all'||only==='shell-iam') {
+  const ctx=await makeContext(),page=await ctx.newPage();
+  try {
+   await page.goto(origin+'/home/',{waitUntil:'domcontentloaded'});
+   await page.waitForFunction(()=>!!window.UniversalMindEntry);
+   await page.evaluate(()=>UniversalMindEntry.openDestination('/iam/tv/','I AM'));
+   const child=page.frameLocator('.um-experience-frame');
+   await child.locator('body[data-adaptive-selection-source="no_checkin_random"]').waitFor({timeout:60000});
+   await child.locator('[data-television-play]').click();
+   const frame=await (await page.locator('.um-experience-frame').elementHandle()).contentFrame();
+   await frame.waitForFunction(()=>{const m=document.querySelector('[data-television-player] video');return m&&!m.paused&&m.currentTime>1;},null,{timeout:60000});
+   await frame.evaluate(()=>window.__routeMedia=document.querySelector('[data-television-player] video'));
+   const before=await snapshot(frame,'[data-television-player] video');
+   const shell=await page.evaluate(()=>{window.__routeFrame=document.querySelector('.um-experience-frame');return {full:document.fullscreenElement?.tagName,calls:__fullscreenCalls};});
+   for(const id of ['about','science']) {
+    await frame.evaluate(id=>document.querySelector('[data-nav-item="'+id+'"]').click(),id);
+    assert.equal(new URL(page.url()).pathname,'/iam/'+id+'/');
+    await page.waitForTimeout(500);
+    continuity(before,await snapshot(frame,'[data-television-player] video'),'I AM outer shell '+id);
+   }
+   await page.goBack();await page.waitForFunction(()=>location.pathname==='/iam/about/');
+   await page.goForward();await page.waitForFunction(()=>location.pathname==='/iam/science/');
+   continuity(before,await snapshot(frame,'[data-television-player] video'),'I AM outer shell history');
+   assert.deepEqual(await page.evaluate(()=>({full:document.fullscreenElement?.tagName,calls:__fullscreenCalls,same:document.querySelector('.um-experience-frame')===window.__routeFrame})),{...shell,same:true});
+   results.push({portal:'root-shell-iam',retainedFrame:true,retainedMedia:true,history:true});
+  }finally{await stop(ctx);}
+ }
  if(only==='all'||only==='layout')for(const width of [1470,1024,390,320]){
   const ctx=await makeContext({width,height:900}),page=await ctx.newPage();
   try{for(const route of ['/sitemap/','/informatics/sitemap/','/iam/sitemap/','/informatics/sound/','/iam/about/','/iam/science/']){

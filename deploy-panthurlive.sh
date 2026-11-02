@@ -465,6 +465,14 @@ deploy_redirects() {
   put_file "$ROBOTS_FILE" "robots.txt"
   put_file "$ROOT_DIR/sitemap.xml" "sitemap.xml"
   put_file "$ROOT_DIR/llms.txt" "llms.txt"
+  put_file "$ROOT_DIR/site-navigation/redirects.htaccess" "site-navigation/redirects.htaccess"
+  if [[ -f "$MANIFEST_FILE" ]]; then
+    local compatibility_manifest
+    compatibility_manifest="$(mktemp)"
+    awk -F '\t' '$2 != "site-navigation/redirects.htaccess"' "$MANIFEST_FILE" > "$compatibility_manifest"
+    printf '%s\t%s\n' "$(file_hash "$ROOT_DIR/site-navigation/redirects.htaccess")" "site-navigation/redirects.htaccess" >> "$compatibility_manifest"
+    mv "$compatibility_manifest" "$MANIFEST_FILE"
+  fi
 }
 
 deploy_iam() {

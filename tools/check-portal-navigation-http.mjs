@@ -43,7 +43,7 @@ for(const route of ['/informatics/library.html?embedded=1&collection=sound','/in
 for(const route of ['/sitemap/','/informatics/sitemap/','/iam/sitemap/','/sitemap.xml',...['portals','informatics','iam','informatics-records','informatics-publications','other-public-pages'].map(n=>'/sitemaps/'+n+'.xml'),'/read/','/llms.txt','/informatics/llms.txt','/site-navigation/portals.json']){const r=await get(route);assert.equal(r.status,200,route);results.push({route,status:r.status});}
 const map=await get('/sitemap/');for(const portal of config.portals)assert.ok(map.body.includes(portal.label));
 for(const route of ['/events/?experience=1','/events/happiness-entry.php']){const r=await get(route,'follow');assert.equal(r.status,200,route);results.push({route,status:r.status,finalURL:r.url});}
-for(const route of ['/iam/tv/','/iam/check-in/']) {
+for(const route of ['/iam/tv/','/iam/check-in/','/iam/technology/','/iam/technology/recommendations/']) {
  const response=await fetch(origin+route,{redirect:'manual',headers:{'User-Agent':'Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 Mobile/15E148 Safari/604.1'}});
  assert.equal(response.status,302,route+' phone entry');assert.ok(response.headers.get('location').includes('/vogue/iam/induction.html?mobile=1'));results.push({route,phoneEntryPreserved:true});
 }
