@@ -65,7 +65,7 @@ try{
     for(const topic of ['orygen','black-dog','mantra']){
      await research.goto(origin+'/lab/research.html');await research.locator(`a[href$="?youth=${topic}"]`).click();
      let found=false;
-     for(let i=0;i<60;i++){for(const f of research.frames())if(await f.locator('body.youth-focus .youth-publications').count()){const expected={orygen:'Orygen Research','black-dog':'Black Dog Institute Research',mantra:'Mantra for Young People'}[topic];found=await f.locator('.library-intro h1').isVisible()&&(await f.locator('.library-intro h1').textContent())===expected;if(found)break;}if(found)break;await new Promise(resolve=>setTimeout(resolve,500));}
+     for(let i=0;i<60;i++){for(const f of research.frames())if(await f.locator('body.youth-focus .youth-publications').count()){const expected={orygen:'Orygen Research','black-dog':'Black Dog Institute Research',mantra:'Mantra for Youth'}[topic];found=await f.locator('.library-intro h1').isVisible()&&(await f.locator('.library-intro h1').textContent())===expected;if(found)break;}if(found)break;await new Promise(resolve=>setTimeout(resolve,500));}
      assert(found,`Canonical topic exists: ${topic}`);
     }
     checks.push('Orygen, Black Dog Institute and mantra context links open their exact Informatics topic sections');

@@ -4,15 +4,15 @@
     all: {title:'Youth Research for Universal Mind Lab', topic:'universal-mind-mobile-lab', intro:'The full research collection informing Universal Mind Lab: dissolving stigma, improving access—for free—and clear referral pathways.'},
     orygen: {title:'Orygen Research', topic:'orygen-youth', intro:'Youth mental health research associated with Orygen, including participation, digital support and pathways to care.'},
     'black-dog': {title:'Black Dog Institute Research', topic:'black-dog-youth', intro:'Youth mental health research associated with Black Dog Institute, including help-seeking, creative participation and digital interventions.'},
-    music: {title:'Music Listening and Therapy for Young People', topic:'music-youth', intro:'Youth research on music listening and facilitated music therapy, with findings and limits for each approach.'},
-    'music-making': {title:'Music Making for Young People', topic:'music-making-youth', intro:'Youth research on active music making and mixed music therapy. The studies distinguish facilitated creative participation from listening.'},
-    'brain-entrainment': {title:'Sound and Brain Entrainment for Young People', topic:'sound-entrainment-youth', intro:'Youth research on sound, rhythmic stimulation and brain entrainment. Brain activity, engagement and clinical outcomes are considered separately.'},
-    emdr: {title:'EMDR for Young People', topic:'emdr-youth', intro:'Youth research on Eye Movement Desensitisation and Reprocessing (EMDR), including clinical protocols and their reported outcomes.'},
-    mindfulness: {title:'Mindfulness for Young People', topic:'mindfulness-youth', intro:'Youth research on mindfulness programmes, their settings, reported outcomes and limitations.'},
-    mantra: {title:'Mantra for Young People', topic:'mantra-youth', intro:'The current evidence gap for youth mantra research in this collection. Transcendental Meditation is covered separately.'},
-    'transcendental-meditation': {title:'Transcendental Meditation for Young People', topic:'transcendental-meditation-youth', intro:'Youth-related research on Transcendental Meditation. Linked reports and mixed-age samples remain identified.'},
-    yoga: {title:'Yoga for Young People', topic:'yoga-youth', intro:'Youth research on yoga, including study populations, programme delivery and reported outcomes.'},
-    connection: {title:'Access, Digital Support and Connection for Young People', topic:'youth-access-connection', intro:'Youth research on access to support, digital participation, social connection and pathways to care.'}
+    music: {title:'Music Listening and Therapy for Youth', topic:'music-youth', intro:'Youth research on music listening and facilitated music therapy, with findings and limits for each approach.'},
+    'music-making': {title:'Music Making for Youth', topic:'music-making-youth', intro:'Youth research on active music making and mixed music therapy. The studies distinguish facilitated creative participation from listening.'},
+    'brain-entrainment': {title:'Sound and Brain Entrainment for Youth', topic:'sound-entrainment-youth', intro:'Youth research on sound, rhythmic stimulation and brain entrainment. Brain activity, engagement and clinical outcomes are considered separately.'},
+    emdr: {title:'EMDR for Youth', topic:'emdr-youth', intro:'Youth research on Eye Movement Desensitisation and Reprocessing (EMDR), including clinical protocols and their reported outcomes.'},
+    mindfulness: {title:'Mindfulness for Youth', topic:'mindfulness-youth', intro:'Youth research on mindfulness programmes, their settings, reported outcomes and limitations.'},
+    mantra: {title:'Mantra for Youth', topic:'mantra-youth', intro:'The current evidence gap for youth mantra research in this collection. Transcendental Meditation is covered separately.'},
+    'transcendental-meditation': {title:'Transcendental Meditation for Youth', topic:'transcendental-meditation-youth', intro:'Youth-related research on Transcendental Meditation. Linked reports and mixed-age samples remain identified.'},
+    yoga: {title:'Yoga for Youth', topic:'yoga-youth', intro:'Youth research on yoga, including study populations, programme delivery and reported outcomes.'},
+    connection: {title:'Access, Digital Support and Connection for Youth', topic:'youth-access-connection', intro:'Youth research on access to support, digital participation, social connection and pathways to care.'}
   };
   const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   let originalIntro;
@@ -26,7 +26,7 @@
     if (current || widerYouth) {
       const title = current?.title || 'Youth Research';
       document.title = title + ' · Universal Informatics';
-      intro.innerHTML = `<p class="atlas-page-marker">Youth research · Universal Mind Lab</p><h1>${esc(title)}</h1><p class="intro-copy">${esc(current?.intro || 'Explore the wider library of research involving young people, with filters for topics, ages and study design.')}</p><p class="youth-scope">This collection concerns young people. Individual studies may include children or older adults; reported ages and relevance to ages 16–24 appear with each publication.</p><nav class="youth-return" aria-label="Research navigation"><a href="/lab/research.html" target="_top">← Lab research overview</a><a href="/informatics/research/?collection=all&amp;view=search">All Informatics research →</a></nav>`;
+      intro.innerHTML = `<p class="atlas-page-marker">Youth research · Universal Mind Lab</p><h1>${esc(title)}</h1><p class="intro-copy">${esc(current?.intro || 'Explore the wider library of youth research, with filters for topics, ages and study design.')}</p><p class="youth-scope">Universal Mind Lab focuses on youth aged 16–24. This collection also includes supporting studies with younger or older participants; each publication states its reported ages and relevance to that focus.</p><nav class="youth-return" aria-label="Research navigation"><a href="/lab/research.html" target="_top"><svg class="youth-nav-icon youth-nav-back" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true" focusable="false"><path d="M4 12h16m-6-6 6 6-6 6"/></svg> Lab research overview</a><a href="/informatics/research/?collection=all&amp;view=search">All Informatics research <svg class="youth-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true" focusable="false"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></a></nav>`;
     } else {
       intro.innerHTML = originalIntro;
       document.title = 'Universal Research · Universal Informatics';

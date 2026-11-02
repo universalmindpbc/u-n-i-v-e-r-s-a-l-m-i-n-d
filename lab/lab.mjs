@@ -1,10 +1,12 @@
+import { icon } from './icons.mjs?v=20261103mobile1';
 import { orbitPose } from './orbit.mjs?v=20261103orbit1';
 import { createPerformance } from './performance.mjs?v=20261103orbit1';
-import { initMedia } from './media.mjs?v=20261103refine1';
+import { initMedia } from './media.mjs?v=20261103mobile1';
 import { createStory, ORBIT_START, STORY_END } from './story.mjs?v=20261103orbit1';
 const $ = (id) => document.getElementById(id);
 const reduced = matchMedia('(prefers-reduced-motion: reduce)');
-const mobile = () => innerWidth < 700;
+const compactLayout = matchMedia('(max-width: 800px), (max-width: 1000px) and (pointer: coarse)');
+const mobile = () => compactLayout.matches;
 const status = (message) => { $('scene-status').textContent = message; };
 const places = {
   overview: { number: '01 · THE CLEARING', title: 'The clearing', copy: 'An open green space for creative learning, emotional awareness and connection. Music, fashion and mindfulness bring people together, with support close at hand.' },
@@ -37,7 +39,7 @@ function selectPlace(key, show = true, automated = false) {
   $('place-copy').textContent = info.copy;
   if(key!=='overview')emotionPanel(false);
   $('interior-view').hidden=key!=='main';
-  $('place-card').hidden = !show || key === 'overview';
+  $('place-card').hidden = !show || key === 'overview' || (automated && mobile());
   if (mode === '3d') sceneAPI?.go(key);
   status(info.title + ' ' + info.copy);
 }
@@ -47,7 +49,7 @@ function setMode(next) {
   $('plan').hidden = mode !== 'plan';
   $('scene').hidden = mode === 'plan';
   $('plan-toggle').setAttribute('aria-pressed', String(mode === 'plan'));
-  $('plan-toggle').innerHTML = mode === 'plan' ? '<span aria-hidden="true">◇</span> 3D view' : '<span aria-hidden="true">▦</span> 2D plan';
+  $('plan-toggle').innerHTML = mode === 'plan' ? icon('cube') + ' 3D view' : icon('plan') + ' 2D plan';
   $('labels-toggle').disabled = mode === 'plan';
   $('navigation-hint').textContent = mode === 'plan' ? 'Select a place for details' : mobile() ? 'Drag to orbit · pinch to zoom' : 'Drag to look around · scroll to move closer';
   sceneAPI?.setVisible(mode === '3d' && entered);
@@ -55,7 +57,7 @@ function setMode(next) {
 }
 document.querySelectorAll('[data-view]').forEach(b => b.addEventListener('click', () => selectPlace(b.dataset.view)));
 $('interior-view').addEventListener('click',()=>{stopTour();sceneAPI?.go('interior');$('place-card').hidden=true;});
-$('place-close').addEventListener('click', () => { $('place-card').hidden = true; document.querySelector(`[data-view="${selected}"]`).focus(); });
+$('place-close').addEventListener('click', () => { $('place-card').hidden = true; (mobile() ? $('emotion-toggle') : document.querySelector(`[data-view="${selected}"]`)).focus(); });
 $('reset-view').addEventListener('click', () => selectPlace('overview', false));
 $('plan-toggle').addEventListener('click', () => setMode(mode === 'plan' && sceneAPI ? '3d' : 'plan'));
 $('labels-toggle').addEventListener('click', () => {
@@ -71,7 +73,7 @@ $('vision').addEventListener('click', (e) => { if (e.target === $('vision')) { c
 // Both fullscreen and playback begin synchronously in the Explore gesture.
 const fullscreenButton = $('fullscreen-toggle');
 let entryShell=null,fullscreenOwner=document;
-try {if(parent!==window&&parent.UniversalMindEntry){entryShell=parent.UniversalMindEntry;fullscreenOwner=parent.document;}}catch{}
+try {if(parent!==window&&parent.UniversalMindEntry){entryShell=parent.UniversalMindEntry;let owner=window;while(owner.parent!==owner&&owner.parent.UniversalMindEntry===entryShell)owner=owner.parent;fullscreenOwner=owner.document;}}catch{}
 const fullscreenRoot = fullscreenOwner.documentElement;
 const fullscreenActive = () => Boolean(fullscreenOwner.fullscreenElement || fullscreenOwner.webkitFullscreenElement);
 const fullscreenSupported = () => Boolean(
@@ -102,9 +104,12 @@ fullscreenButton.addEventListener('click',()=>changeFullscreen());
 function launchFestival(){
   if(entered)return;entered=true;document.body.dataset.entered='true';
   $('landing').hidden=true;$('world').inert=false;$('world').removeAttribute('aria-hidden');
-  sceneAPI?.setVisible(mode==='3d');media.start();changeFullscreen(true);startStory();$('replay-story').focus({preventScroll:true});
+  sceneAPI?.setVisible(mode==='3d');media.start();changeFullscreen(true);if(document.body.dataset.ready)startStory();$('scene').focus({preventScroll:true});
 }
 $('explore-enter').addEventListener('click',launchFestival);
+// Events calls this synchronously from its launch tap, before any scene loading.
+window.UniversalMindLab={launch:launchFestival};
+try{if(parent!==window)parent.dispatchEvent(new Event('um:lab-ready'));}catch{}
 function syncLineup(){
  const automatic=selected==='overview'&&!lineupDismissed&&(Number(storyState?.seconds||0)<6||Number(storyState?.seconds||0)>=STORY_END);
  const show=entered&&mode==='3d'&&(lineupOverride??automatic);
@@ -523,8 +528,8 @@ try {
   $('loading').hidden=true;$('explore-enter').disabled=false;
   document.body.dataset.ready='true';
   setMode('3d');
-  status('The landscape is ready. Explore with the place buttons or drag the scene.');
-  if(document.documentElement.dataset.autoLaunch==='true')launchFestival();
+  status(mobile()?'The landscape is ready. Drag to orbit and pinch to zoom.':'The landscape is ready. Explore with the place buttons or drag the scene.');
+  if(entered){sceneAPI?.setVisible(mode==='3d');startStory();}else if(document.documentElement.dataset.autoLaunch==='true')launchFestival();
 } catch(error) {
   console.error('Lab landscape:',error);
   $('loading').hidden=true;$('explore-enter').disabled=false;
@@ -537,3 +542,20 @@ try {
 }
 
 if(document.documentElement.dataset.autoLaunch==='true'&&!entered)launchFestival();
+
+// Compact controls retain the landscape and place optional actions in settings.
+function syncCompactLayout(){
+  const compact=mobile();
+  if(compact){
+    $('mobile-options').append($('motion-toggle'),$('lineup-toggle'),$('fullscreen-toggle'));
+    $('place-card').hidden=true;
+  }else{
+    $('mix-toggle').before($('motion-toggle'));
+    $('reset-view').before($('lineup-toggle'));
+    $('about-open').after($('fullscreen-toggle'));
+  }
+  $('navigation-hint').textContent=compact?'Drag to orbit · pinch to zoom':'Drag to look around · scroll to move closer';
+}
+compactLayout.addEventListener('change',syncCompactLayout);
+syncCompactLayout();
+new ResizeObserver(([entry])=>{document.documentElement.style.setProperty('--lab-footer-height',`${entry.target.offsetHeight}px`);}).observe(document.querySelector('.explore-bar'));

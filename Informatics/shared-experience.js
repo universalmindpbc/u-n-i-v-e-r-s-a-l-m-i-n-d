@@ -50,6 +50,8 @@
       if (document.querySelector('#experience').dataset.area === 'research') window.PortalRoutes.commit(route.href, 'replace');
     }
   });
+  // Cached Atlas data can finish startup before this deferred bridge runs.
+  if(document.body.dataset.entered==='true')load(document.querySelector('#experience').dataset.area);
   for (const frame of known()) frame.addEventListener('load', () => {
     if (!frame.getAttribute('src')) return;
     const doc = frame.contentDocument;

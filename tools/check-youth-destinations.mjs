@@ -5,17 +5,17 @@ import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
 import {chromium} from '/Users/benkorbel/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),live=process.argv.includes('--live'),origin='https://staging.universalmind.tv';
-const out=live?path.join(root,'documents/universal-mind-lab/qa/youth-destinations'):'/private/tmp/um-youth-destinations-qa';
+const out=live?path.join(root,'documents/universal-mind-lab/qa/youth-mobile-destinations'):'/private/tmp/um-youth-mobile-destinations-qa';
 fs.mkdirSync(out,{recursive:true});
 const data=JSON.parse(fs.readFileSync(path.join(root,'Informatics/library-data/youth-expansion.json')));
 const cases=[
  ['all','Youth Research for Universal Mind Lab','universal-mind-mobile-lab'],
  ['orygen','Orygen Research','orygen-youth'],['black-dog','Black Dog Institute Research','black-dog-youth'],
- ['music','Music Listening and Therapy for Young People','music-youth'],['music-making','Music Making for Young People','music-making-youth'],
- ['brain-entrainment','Sound and Brain Entrainment for Young People','sound-entrainment-youth'],['emdr','EMDR for Young People','emdr-youth'],
- ['mindfulness','Mindfulness for Young People','mindfulness-youth'],['mantra','Mantra for Young People','mantra-youth'],
- ['transcendental-meditation','Transcendental Meditation for Young People','transcendental-meditation-youth'],['yoga','Yoga for Young People','yoga-youth'],
- ['connection','Access, Digital Support and Connection for Young People','youth-access-connection']
+ ['music','Music Listening and Therapy for Youth','music-youth'],['music-making','Music Making for Youth','music-making-youth'],
+ ['brain-entrainment','Sound and Brain Entrainment for Youth','sound-entrainment-youth'],['emdr','EMDR for Youth','emdr-youth'],
+ ['mindfulness','Mindfulness for Youth','mindfulness-youth'],['mantra','Mantra for Youth','mantra-youth'],
+ ['transcendental-meditation','Transcendental Meditation for Youth','transcendental-meditation-youth'],['yoga','Yoga for Youth','yoga-youth'],
+ ['connection','Access, Digital Support and Connection for Youth','youth-access-connection']
 ];
 const checks=[],errors=[],hashes=[];
 const record=s=>{checks.push(s);console.log(s);};
@@ -49,6 +49,8 @@ async function verify(row){
  const heading=await f.locator('.library-intro h1').boundingBox();
  assert(heading&&heading.y>=0&&heading.y+heading.height<p.viewportSize().height,`${key}: title visible on arrival`);
  assert(await f.locator('.youth-scope').isVisible());
+ assert.match(await f.locator('.youth-scope').textContent(),/youth aged 16–24/);
+ assert(!/young people/i.test(await f.locator('.library-intro').textContent()));
  assert.equal(await f.locator('#reading-content').getAttribute('data-youth-topic'),topic);
  const expected=[...new Set(Object.values(data.chapters).flatMap(ch=>ch.topics).filter(t=>t.id===topic).flatMap(t=>t.papers.map(x=>x.recordId)))].sort();
  const actual=await f.locator('.youth-papers [data-paper]').evaluateAll(nodes=>nodes.map(n=>n.dataset.paper).sort());
@@ -93,7 +95,7 @@ try{
  await p.goto(origin+'/lab/research.html');await p.locator('a[href="/informatics/research/?youth=emdr"]').click();f=await library();
  await f.locator('.youth-topic-menu summary').click();await f.getByRole('link',{name:'Orygen Research',exact:true}).click();await verify(cases[1]);
  await p.goBack();await verify(cases[6]);record('Topic navigation and Back keep the canonical URL, heading and paper set together');
- f=await library();await f.getByRole('link',{name:'All Informatics research →'}).click();
+ f=await library();await f.getByRole('link',{name:'All Informatics research'}).click();
  f=await library();assert.equal(await f.locator('.library-intro h1').textContent(),'Universal Research');assert.equal(await f.locator('body').evaluate(el=>el.classList.contains('youth-focus')),false);assert(await f.locator('.collection-nav').isVisible());
  await f.locator('[data-collection="sound"]').click();await f.locator('[data-view="chapters"]').click();assert(await f.locator('#reading-content').isVisible());record('General search and ordinary Sound chapters restore the full library interface');
  if(live)for(const file of ['Informatics/library-youth.js','Informatics/library.js','Informatics/library.html','Informatics/library.css','lab/research.html','events/assets/choice.css']){

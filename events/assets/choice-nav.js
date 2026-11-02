@@ -1,12 +1,54 @@
 (() => {
   let shell;
   try { if (parent !== window) shell = parent.UniversalMindEntry; } catch {}
+  let labFrame=null,labOpen=false;
+  const isChoice=()=>Boolean(document.querySelector('.event-options'));
+  const labLink=()=>document.querySelector('.event-option--lab');
+  function markLabReady(){
+    if(!labFrame?.contentWindow.UniversalMindLab)return;
+    labLink()?.removeAttribute('aria-disabled');
+    labLink()?.removeAttribute('aria-busy');
+  }
+  function prepareLab(){
+    if(!isChoice()||labFrame)return;
+    if(shell?.openDestination)window.UniversalMindEntry=shell;
+    labLink().setAttribute('aria-disabled','true');
+    labLink().setAttribute('aria-busy','true');
+    labFrame=document.createElement('iframe');
+    labFrame.className='prepared-lab';labFrame.title='Universal Mind Lab';
+    labFrame.allow='autoplay; fullscreen; encrypted-media; picture-in-picture';
+    labFrame.allowFullscreen=true;labFrame.inert=true;labFrame.setAttribute('aria-hidden','true');
+    labFrame.addEventListener('load',markLabReady);
+    labFrame.src='/lab/?prepare=1';document.body.append(labFrame);
+  }
+  window.addEventListener('um:lab-ready',markLabReady);
+  function launchLab(href){
+    if(!labFrame?.contentWindow.UniversalMindLab)return;
+    labOpen=true;document.body.dataset.labOpen='true';document.title='Universal Mind Lab';
+    document.querySelectorAll('.choice-header,.choice-main').forEach(e=>e.inert=true);
+    labFrame.inert=false;labFrame.removeAttribute('aria-hidden');
+    // Start media in this exact click stack; navigation and fullscreen follow it.
+    labFrame.contentWindow.UniversalMindLab.launch();
+    if(shell?.adoptRoute){shell.adoptRoute(href);history.replaceState({labOpen:true},'',href);}
+    else history.pushState({labOpen:true},'',href);
+    labFrame.focus();
+  }
+  window.addEventListener('popstate',()=>{
+    if(!labOpen||location.pathname==='/lab/')return;
+    labFrame?.contentDocument.querySelectorAll('video,audio').forEach(v=>v.pause());
+    labFrame?.remove();labFrame=null;labOpen=false;delete document.body.dataset.labOpen;
+    document.title='Events — Universal Mind';
+    document.querySelectorAll('.choice-header,.choice-main').forEach(e=>e.inert=false);
+    prepareLab();
+  });
   // Install before the choices render so an immediate click retains the root shell.
   document.addEventListener('click', event => {
     const link = event.target.closest?.('[data-event-route]');
     if (!link || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-    if (new URL(link.href).pathname === '/lab/') {
-      if (shell?.requestFullscreen) void shell.requestFullscreen();
+    if (new URL(link.href).pathname === '/lab/' && isChoice()) {
+      event.preventDefault();
+      if(link.getAttribute('aria-disabled')!=='true')launchLab(link.href);
+      return;
     }
     if (shell?.openDestination) {
       event.preventDefault();
@@ -14,6 +56,7 @@
     }
   });
   const initFullscreen = () => {
+  prepareLab();
   const button = document.querySelector('[data-events-fullscreen]');
   if (!button) return;
   const owner = shell?.fullscreenActive ? parent.document : document;

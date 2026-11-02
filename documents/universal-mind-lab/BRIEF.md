@@ -1,6 +1,6 @@
 # Universal Mind Lab — creative and development brief
 
-**Version:** 0.15 · **Date:** 3 November 2026 · **Owner:** Ben Korbel
+**Version:** 0.16 · **Date:** 3 November 2026 · **Owner:** Ben Korbel
 **Status:** Working concept for discussion, collaboration and staged visual development. Architectural engineering, operating arrangements and named partnerships remain to be established.
 
 ## 1. Purpose
@@ -9,7 +9,7 @@ Create an interactive architectural world and partnership pitch for Universal Mi
 
 The primary mission is education, dissolving stigma, referral pathways, and mindfulness, music and fashion skills. The responsive-environment MVP is designed to support short-term stress reduction and increased felt connection. These are intended outcomes; evaluation will establish the effects achieved by the Lab.
 
-The primary audience is people aged 16–24, with the wider community welcome. The experience combines a main pavilion with smaller surrounding facilities, nature, Moroso Tropicália seating and individual music discovery stations.
+The primary audience is youth aged 16–24, with the wider community welcome. The experience combines a main pavilion with smaller surrounding facilities, nature, Moroso Tropicália seating and individual music discovery stations.
 
 The proposed touring logistics centre on a Linfox road train. Local builders and collaborators help create each site. Where the host community wants to retain facilities, an agreed pavilion or gathering space may remain as a playground, mental health and mindfulness resource, or other community use.
 
@@ -644,6 +644,16 @@ The Lab page is an introduction and index. Papers, filter controls, source asses
 
 ## Research destination clarity — 3 November 2026
 
-The Lab research overview remains the introduction. Each institution and topic opens a dedicated, clearly titled youth view in Universal Informatics. Orygen Research and Black Dog Institute Research display only their associated publications. Topic headings explicitly identify young people; reported ages and relevance to ages 16–24 appear beside each paper. The full collection retains all 105 unique publications, including the broader music, entrainment, EMDR, mindfulness, mantra context, Transcendental Meditation, yoga and access research. Mantra identifies the current evidence gap.
+The Lab research overview remains the introduction. Each institution and topic opens a dedicated, clearly titled youth view in Universal Informatics. Orygen Research and Black Dog Institute Research display only their associated publications. Topic headings explicitly identify Youth; reported ages and relevance to ages 16–24 appear beside each paper. The full collection retains all 105 unique publications, including the broader music, entrainment, EMDR, mindfulness, mantra context, Transcendental Meditation, yoga and access research. Mantra identifies the current evidence gap.
 
 Events retains the centred flower, Fibonacci rain and small Informatics serif typography. The wordmarks read **universalmind[lab]** and **athousandminds** without word spaces, with **mind** and **minds** respectively in bold.
+
+
+## Mobile interface and youth terminology — 3 November 2026
+
+- Use **Youth** for the Lab research topic headings. State the primary age focus as **16–24**, while preserving the actual ages, titles and findings of each publication.
+- Never use emoji in place of designed website buttons or interface icons. Play, pause, replay and navigation arrows use accessible controls with drawn SVG icons. This is a permanent preference across Ben’s website work.
+- On phones, remove the place-navigation strip, view-options toolbar and floating area labels. Retain the landscape, compact essential controls, biofeedback access, tickets and research link.
+- Keep optional Motion, Lineup and supported fullscreen controls inside settings on phones. The automatic tour continues without opening place-description cards over the landscape; the support pathway remains available through the biofeedback panel.
+- Preserve the approved desktop navigation and 7% video blend.
+- The Events launch tap starts music and the 7% video overlay synchronously in a prepared Lab frame. The scene can finish loading after playback starts. Safari uses native inline HLS. No second landing or extra play step is added to the normal visitor journey.

@@ -8,7 +8,7 @@
   <meta name="description" content="Universal Mind Lab — electronic music and fashion as mindfulness. A mental health initiative. Proposal.">
   <title>Universal Mind Lab</title>
   <link rel="icon" href="./assets/favicon.png">
-  <link rel="stylesheet" href="./lab.css?v=20261103refine1">
+  <link rel="stylesheet" href="./lab.css?v=20261103mobile1">
   <script>if(new URLSearchParams(location.search).get("launch")==="1")document.documentElement.dataset.autoLaunch="true";</script>
   <script type="importmap">{"imports":{"three":"./vendor/three.module.js"}}</script>
 </head>
@@ -17,9 +17,9 @@
     <canvas class="rain-canvas" aria-hidden="true" data-rain-canvas></canvas><div class="rain-vignette" aria-hidden="true"></div>
     <div class="access-shell"><img class="access-flower" src="./assets/landing-flower.png" alt=""><h1 class="access-title"><button class="landing-name" aria-label="About Universal Mind Lab">universal mind lab</button></h1><button id="explore-enter" class="access-submit" disabled>Launch Full Screen</button><p id="launch-status" role="status"></p></div>
   </section>
-  <a class="skip" href="#place-list">Skip to the places</a>
+  <a class="skip" href="#scene">Skip to the landscape</a>
   <main id="world" aria-label="Universal Mind Lab landscape study">
-    <div id="scene" role="region" aria-label="Interactive 3D landscape"></div>
+    <div id="scene" tabindex="-1" role="region" aria-label="Interactive 3D landscape"></div>
     <video id="music-video" playsinline loop preload="none" aria-hidden="true" tabindex="-1"></video>
     <video id="truck-fashion-video" muted playsinline loop preload="none" hidden aria-hidden="true"></video>
     <video id="truck-anime-video" muted playsinline loop preload="none" hidden aria-hidden="true"></video>
@@ -47,18 +47,19 @@
       <a class="wordmark" href="./" aria-label="Universal Mind Lab overview"><span>universal<b>mind</b><em>[lab]</em></span><small class="mindfulness-line"><span>electronic</span> <span>music</span> <span>and</span> <span>fashion</span> <span>as</span> <span>mindfulness</span></small></a>
       <div class="mast-right">
     <section class="media-tools" aria-label="Music and video">
-      <button id="music-toggle" type="button" aria-label="Play music" aria-pressed="false"><span id="music-symbol" aria-hidden="true">▶</span> <span id="music-label">Music</span></button>
+      <button id="music-toggle" type="button" aria-label="Play music" aria-pressed="false"><span id="music-symbol" aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m8 5 11 7-11 7Z" fill="currentColor" stroke="none"/></svg></span> <span id="music-label">Music</span></button>
       <button id="video-toggle" type="button" aria-label="Show music video overlay" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="m8 2 4 4 4-4M9 22h6"/></svg><span>TV</span></button>
       <button id="motion-toggle" type="button" aria-label="Animate the landscape with music" aria-pressed="true">Motion</button>
-      <button id="mix-toggle" type="button" aria-label="Music and video settings" aria-expanded="false" aria-controls="mix-panel">⋯</button>
+      <button id="mix-toggle" type="button" aria-label="Music and video settings" aria-expanded="false" aria-controls="mix-panel"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="5" cy="12" r="1.5" fill="currentColor"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/><circle cx="19" cy="12" r="1.5" fill="currentColor"/></svg></button>
       <div id="mix-panel" class="mix-panel" hidden>
         <p>Justice · Tame Impala<br><strong>Neverender</strong></p>
         <label for="video-opacity">Video blend <output id="opacity-value" for="video-opacity">7%</output></label><input id="video-opacity" type="range" min="0" max="70" step="1" value="7">
         <label for="music-volume">Volume <output id="volume-value" for="music-volume">65%</output></label><input id="music-volume" type="range" min="0" max="100" step="1" value="65">
+        <div id="mobile-options" class="mobile-options"></div>
         <button id="mix-close" type="button">Close settings</button>
       </div>
     </section>
-        <button id="replay-story" class="outline-button" aria-label="Replay from the start">↺ Replay</button>
+        <button id="replay-story" class="outline-button" aria-label="Replay from the start"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 10a8 8 0 1 1 1 7M4 4v6h6"/></svg> Replay</button>
         <button id="about-open" class="outline-button">Proposal</button>
         <button id="fullscreen-toggle" class="fullscreen-button" type="button" aria-label="Enter fullscreen" title="Enter fullscreen" aria-pressed="false" hidden>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="expand-icon" d="M9 4H4v5m11-5h5v5M4 15v5h5m11-5v5h-5"/><path class="contract-icon" d="M4 9h5V4m6 0v5h5M9 20v-5H4m16 0h-5v5"/></svg>
@@ -75,9 +76,9 @@
       </div>
       <span class="lineup-more">+ more</span>
     </section>
-    <button id="emotion-toggle" class="emotion-toggle" aria-expanded="false" aria-controls="emotion-panel"><svg viewBox="0 0 52 28" aria-hidden="true"><path d="M1 15h10l5-9 7 20 8-24 6 13h14"/></svg><span>Change your emotions,<br><b>change your world.</b></span><span aria-hidden="true">↗</span></button>
+    <button id="emotion-toggle" class="emotion-toggle" aria-expanded="false" aria-controls="emotion-panel"><svg viewBox="0 0 52 28" aria-hidden="true"><path d="M1 15h10l5-9 7 20 8-24 6 13h14"/></svg><span>Change your emotions,<br><b>change your world.</b></span><span aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg></span></button>
     <aside id="emotion-panel" class="emotion-panel" hidden aria-labelledby="emotion-title">
-      <button id="emotion-close" class="close" aria-label="Close emotional response diagram">×</button>
+      <button id="emotion-close" class="close" aria-label="Close emotional response diagram"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 6 12 12M6 18 18 6"/></svg></button>
       <p class="eyebrow">MINDFULNESS IN MOTION VIA BIOFEEDBACK</p><h2 id="emotion-title">Change your emotions,<br><em>change your world.</em></h2>
       <div class="response-diagram" role="img" aria-label="Apple Watch heart rhythm data flows through SIX to inferences related to oxytocin, dopamine and cortisol. These guide changes in light and sound, creating a feedback loop for mindfulness practice.">
         <div class="watch-node"><svg class="watch-pulse" viewBox="0 0 80 108" aria-hidden="true"><path class="watch-strap" d="M25 23 28 3h24l3 20m-30 62 3 20h24l3-20"/><rect x="13" y="22" width="54" height="64" rx="17"/><path class="pulse-trace" d="M20 55h9l5-11 7 24 8-29 5 16h7"/><circle cx="70" cy="47" r="3"/></svg><b>Apple Watch</b><span>Heart rhythm</span></div>
@@ -97,16 +98,16 @@
       <div class="response-ends"><span>Anxiety</span><span>Peace of mind</span></div>
       <p class="demo-note">Interactive demonstration · no live watch connected</p>
       <p class="response-partners">Apple Watch · teamLab · TDC · Arup</p>
-      <button id="support-pathway" class="support-link">Support &amp; referral pathways ↗</button>
+      <button id="support-pathway" class="support-link">Support &amp; referral pathways <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg></button>
     </aside>
     <p id="story-status" class="sr-only" role="status" aria-live="polite"></p>
     <p id="fullscreen-status" class="fullscreen-status" role="status" hidden></p>
     <div class="compass" aria-hidden="true"><span>N</span><svg viewBox="0 0 40 40"><path d="M20 4L25 27 20 23 15 27Z" fill="currentColor"/><circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-opacity=".2"/></svg></div>
-    <aside id="place-card" class="place-card" hidden aria-labelledby="place-title"><button id="place-close" class="close" aria-label="Close place detail">×</button><p id="place-number" class="eyebrow"></p><h2 id="place-title"></h2><p id="place-copy"></p><button id="interior-view" class="outline-button" hidden>Inside the pavilion ↗</button></aside>
+    <aside id="place-card" class="place-card" hidden aria-labelledby="place-title"><button id="place-close" class="close" aria-label="Close place detail"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 6 12 12M6 18 18 6"/></svg></button><p id="place-number" class="eyebrow"></p><h2 id="place-title"></h2><p id="place-copy"></p><button id="interior-view" class="outline-button" hidden>Inside the pavilion <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg></button></aside>
     <p id="media-status" role="status" hidden></p>
-    <div class="view-tools" aria-label="View options"><button id="tour-toggle" aria-pressed="false">Tour</button><button id="rain-toggle" aria-pressed="false">Rain shelter</button><button id="layout-toggle" aria-pressed="false">Layout</button><button id="night-toggle" aria-pressed="false" aria-label="Switch to night"><span aria-hidden="true">◐</span> <span id="day-label">Day</span></button><button id="plan-toggle" aria-pressed="false"><span aria-hidden="true">▦</span> 2D plan</button><button id="labels-toggle" aria-pressed="true"><span aria-hidden="true">⌖</span> Labels</button><button id="lineup-toggle" aria-pressed="false" aria-controls="artist-lineup">Lineup</button><button id="reset-view" aria-label="Reset to overview"><span aria-hidden="true">↺</span> Reset</button></div>
+    <div class="view-tools" aria-label="View options"><button id="tour-toggle" aria-pressed="false">Tour</button><button id="rain-toggle" aria-pressed="false">Rain shelter</button><button id="layout-toggle" aria-pressed="false">Layout</button><button id="night-toggle" aria-pressed="false" aria-label="Switch to night"><span aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 0 16Z" fill="currentColor" stroke="none"/></svg></span> <span id="day-label">Day</span></button><button id="plan-toggle" aria-pressed="false"><span aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="4" y="4" width="16" height="16" rx="1"/><path d="M4 10h16M4 15h16M10 4v16M15 4v16"/></svg></span> 2D plan</button><button id="labels-toggle" aria-pressed="true"><span aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="6"/><path d="M12 2v6m0 8v6M2 12h6m8 0h6"/></svg></span> Labels</button><button id="lineup-toggle" aria-pressed="false" aria-controls="artist-lineup">Lineup</button><button id="reset-view" aria-label="Reset to overview"><span aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 10a8 8 0 1 1 1 7M4 4v6h6"/></svg></span> Reset</button></div>
     <footer class="explore-bar">
-      <div class="explore-heading"><p class="membership">exclusive tickets via <a href="https://headspace.org.au/eora" target="_blank" rel="noopener noreferrer">headspace.org.au/eora <span aria-hidden="true">↗</span></a></p><span id="navigation-hint">Drag to look around · scroll to move closer</span></div>
+      <div class="explore-heading"><p class="membership">exclusive tickets via <a href="https://headspace.org.au/eora" target="_blank" rel="noopener noreferrer">headspace.org.au/eora <span aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg></span></a></p><span id="navigation-hint">Drag to look around · scroll to move closer</span></div>
       <nav id="place-list" aria-label="Explore places">
         <button data-view="overview" aria-pressed="true"><span>01</span> The clearing</button>
         <button data-view="main" aria-pressed="false"><span>02</span> Main pavilion</button>
@@ -116,20 +117,20 @@
         <button data-view="support" aria-pressed="false"><span>06</span> Support area</button>
         <button data-view="fashion" aria-pressed="false"><span>07</span> Fashion runway</button>
       </nav>
-      <div class="footline"><span>a mental health initiative by <b>New South Wales Education, Headspace &amp; Universal Mind</b></span><span class="proposal-status">Artists, festival partners and mental health partners are proposed and not confirmed.</span><a class="research-link" href="./research.html" target="_blank" rel="noopener noreferrer">A direct response to this body of research <span aria-hidden="true">↗</span></a></div>
+      <div class="footline"><span>a mental health initiative by <b>New South Wales Education, Headspace &amp; Universal Mind</b></span><span class="proposal-status">Artists, festival partners and mental health partners are proposed and not confirmed.</span><a class="research-link" href="./research.html" target="_blank" rel="noopener noreferrer">A direct response to this body of research <span aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg></span></a></div>
     </footer>
     <div id="loading" role="status"><span class="loading-mark"></span><span>Loading 3D landscape…</span></div>
     <p id="scene-status" class="sr-only" role="status" aria-live="polite"></p>
   </main>
   <dialog id="vision" aria-labelledby="vision-title">
-    <button id="about-close" class="close" aria-label="Close proposal">×</button>
+    <button id="about-close" class="close" aria-label="Close proposal"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 6 12 12M6 18 18 6"/></svg></button>
     <div class="proposal-scroll"><p class="eyebrow">UNIVERSAL MIND LAB</p>
     <h2 id="vision-title">A journey from anxiety<br>to peace of mind.</h2>
     <p class="proposal-lead">A free travelling mental health lab. Electronic music and fashion as mindfulness.</p>
-    <p>Inspired by Life Be In It and the idea of taking health promotion on the road, Universal Mind brings a new focus: mental health. First and foremost for young people aged 16–24, then for all Australians, the Lab brings creativity, learning and support into the heart of local communities.</p>
+    <p>Inspired by Life Be In It and the idea of taking health promotion on the road, Universal Mind brings a new focus: mental health. First and foremost for youth aged 16–24, then for all Australians, the Lab brings creativity, learning and support into the heart of local communities.</p>
     <p>The vision brings CSIRO technology, Universal Mind, headspace and New South Wales Education together as one, shaped in collaboration with the communities we visit.</p>
     <div class="proposal-story">
-      <section><h3>Free access. Dissolving stigma. Clear pathways to support.</h3><p>Music, fashion and shared experiences open the door to conversations about mental health. We aim to dissolve stigma, strengthen emotional awareness and make it easier to ask for help. Participation is free, with access for young people facing financial, geographic or social barriers at the centre of the programme.</p><p>headspace referrals, school nominations and expressions of interest connect people with the Lab. A welcome conversation helps match each person with the support available. The shared support space brings together headspace, Médecins Sans Frontières (MSF) and the Australian Association of Buddhist Counsellors and Psychotherapists (AABCAP), linking optional on-site care with onward referrals and local services after the event.</p><p>Limited in-person places are complemented by an online experience and live TV, so participation reaches beyond the site.</p></section>
+      <section><h3>Free access. Dissolving stigma. Clear pathways to support.</h3><p>Music, fashion and shared experiences open the door to conversations about mental health. We aim to dissolve stigma, strengthen emotional awareness and make it easier to ask for help. Participation is free, with access for youth facing financial, geographic or social barriers at the centre of the programme.</p><p>headspace referrals, school nominations and expressions of interest connect people with the Lab. A welcome conversation helps match each person with the support available. The shared support space brings together headspace, Médecins Sans Frontières (MSF) and the Australian Association of Buddhist Counsellors and Psychotherapists (AABCAP), linking optional on-site care with onward referrals and local services after the event.</p><p>Limited in-person places are complemented by an online experience and live TV, so participation reaches beyond the site.</p></section>
       <section><h3>This is creativity as mindfulness.</h3><p>Learn STEAM — science, technology, engineering, arts and mathematics — while experiencing world-class DJs, artists and bands, together as one. Make music on smart devices, explore responsive technology and learn by creating.</p><p>Learn fashion skills, design a runway show and take the first steps towards your own fashion label, on the day. Indigenous fashion, local creativity and collaboration run through the experience.</p></section>
       <section><h3>Change your emotions. Change your world.</h3><p>Apple Watch heart-rhythm data flows through Immersion Neuroscience’s SIX platform. Inferences related to oxytocin, dopamine and cortisol guide changes in light, colour, motion and sound. Grounding, breath and connection become part of a responsive environment for practising mindfulness and emotional regulation.</p><p>The watch records cardiac signals; the neurochemical interpretation is inferred. Apple Watch, teamLab, TDC and Arup form the partnership direction for the experience.</p><ol class="proposal-journey"><li><b>Connection to our earth.</b> Feel your feet on the ground, or the support beneath you as you sit.</li><li><b>Connection to self.</b> Feel your breath. Feel your body.</li><li><b>Connection to each other.</b> Feel the energy of the people around you.</li></ol><p>From anxiety to peace of mind: a Universal Mind journey through connection to our earth, ourselves and each other.</p></section>
       <section><h3>A travelling lab. A lasting local connection.</h3><p>A Linfox road train carries the Lab into a green space beside the water. A vaulted main pavilion, sculptural food and play areas, a fashion runway and individual listening spaces bring the programme together. Moroso Tropicália furniture by Patricia Urquiola creates places to gather and pause.</p><p>Local collaboration shapes the architecture, materials, activities and ongoing use. Where a community chooses to retain facilities, the ambition is a continuing resource for learning, mental health and connection.</p></section>
@@ -139,6 +140,6 @@
   <noscript><style>#landing{display:none!important}#world{visibility:visible!important}#loading{display:none}#plan{display:flex!important}.plan-assembled{display:block!important}.explore-bar{visibility:visible!important}.view-tools,.media-tools,#about-open{display:none}</style><p class="noscript-note">The site plan is available without JavaScript. Enable JavaScript to explore in 3D.</p></noscript>
   <script src="./landing-rain.js?v=20261103orbit1" defer></script>
   <script src="./vendor/hls.min.js" defer></script>
-  <script type="module" src="./lab.mjs?v=20261103refine1"></script>
+  <script type="module" src="./lab.mjs?v=20261103mobile1"></script>
 </body>
 </html>

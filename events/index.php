@@ -47,7 +47,7 @@ if ($entered) {
 <?php if ($entered): ?>
 <script src="assets/events.js?v=13" defer></script>
 <link rel="stylesheet" href="assets/choice.css?v=4">
-<script src="assets/choice-nav.js?v=3"></script>
+<script src="assets/choice-nav.js?v=4"></script>
 <?php endif; ?>
 </head>
 <body class="<?= $entered ? 'entered' : 'invitation' ?>">

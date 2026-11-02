@@ -18,3 +18,9 @@
 body:has(#film-view:not([hidden])) .events-return,body:has(#about-panel:not([hidden])) .events-return{display:none}
 
 .event-copy h2 strong{font-weight:700;letter-spacing:inherit}
+
+.choice-arrow{width:16px;height:16px;vertical-align:-3px;margin-right:5px}
+.prepared-lab{position:fixed;inset:0;width:100%;height:100%;height:100dvh;border:0;visibility:hidden;pointer-events:none;z-index:50}
+.event-option[aria-busy="true"]{opacity:.55;cursor:progress}
+body[data-lab-open="true"]>.prepared-lab{visibility:visible;pointer-events:auto}
+body[data-lab-open="true"]>:not(.prepared-lab){visibility:hidden;pointer-events:none}

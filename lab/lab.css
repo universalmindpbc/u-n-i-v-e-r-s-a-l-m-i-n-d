@@ -167,3 +167,75 @@ html[data-auto-launch="true"] body:not([data-entered="true"]) #loading{visibilit
 @media(max-width:1200px){.research-link{position:static;align-self:flex-end;font-size:8px;padding:4px 0 0}.footline{gap:4px}.view-tools{bottom:182px}}
 @media(max-width:800px){.view-tools{bottom:180px}.emotion-toggle{bottom:235px}}
 @media(max-height:500px) and (min-width:601px){.research-link{font-size:7px;padding-top:2px}.footline{gap:2px}.view-tools,.emotion-toggle{bottom:143px}}
+
+/* Drawn interface icons retain their appearance across mobile platforms. */
+.ui-icon{display:inline-block;width:17px;height:17px;flex-shrink:0;vertical-align:-3px}
+#music-symbol{display:inline-flex;align-items:center;justify-content:center}
+#music-symbol .ui-icon{width:15px;height:15px}
+#mix-toggle .ui-icon{width:20px;height:20px}
+#replay-story .ui-icon,.support-link .ui-icon,#interior-view .ui-icon{margin-right:4px}
+.close{display:grid;place-items:center}.close .ui-icon{width:20px;height:20px}
+.emotion-toggle>.ui-icon,.emotion-toggle>span:last-child .ui-icon{width:17px;height:17px;stroke:currentColor;stroke-width:1.6;animation:none}
+.research-link .ui-icon,.membership .ui-icon{width:14px;height:14px;margin-left:4px}
+.mobile-options:empty{display:none}.mobile-options{display:flex;gap:8px;margin:14px 0 8px}
+.mobile-options>button{flex:1;min-height:44px;background:transparent;border:1px solid #64715a55;border-radius:24px;font-size:12px}
+.mobile-options>button[aria-pressed="true"]{background:#dce7d2}
+
+.emotion-toggle,.view-tools{bottom:calc(var(--lab-footer-height,140px) + 36px)}
+
+/* Phone experience: landscape first, essential actions above and below it. */
+@media(max-width:800px),(max-width:1000px) and (pointer:coarse){
+  #place-list,.view-tools,#labels,#layout-notes,.compass,#navigation-hint{display:none!important}
+  .masthead{left:max(16px,env(safe-area-inset-left));right:max(16px,env(safe-area-inset-right));top:max(16px,env(safe-area-inset-top));gap:14px;flex-wrap:wrap}
+  .wordmark>span{font-size:clamp(18px,5.2vw,23px)}
+  .wordmark .mindfulness-line{font-size:10px!important;letter-spacing:0!important;margin-top:6px}
+  .mast-right{width:100%;gap:6px;flex-wrap:nowrap;justify-content:space-between}
+  .mast-right .media-tools{padding:2px;margin-right:auto;gap:0}
+  .mast-right .media-tools>button{min-width:44px;min-height:44px;padding:10px 8px;font-size:11px;gap:5px}
+  .mast-right #mix-toggle{padding:10px 8px}
+  .mast-right .outline-button{min-height:44px;padding:10px 12px;font-size:11px}
+  .mast-right #replay-story{width:44px;padding:10px;font-size:0;flex-shrink:0}
+  #replay-story .ui-icon{width:18px;height:18px;margin:0}
+  .fullscreen-button{width:44px;height:44px;padding:12px;flex-shrink:0}
+  .media-tools svg{width:16px;height:16px}
+  .mix-panel{left:0;right:auto;width:min(300px,calc(100vw - 32px));padding:18px;max-height:calc(100dvh - 150px);overflow:auto}
+  .mix-panel p{font-size:12px}.mix-panel label{font-size:12px}.mix-panel input{min-height:32px}
+  #mix-close{min-height:44px;font-size:12px}
+  .intro{top:147px;left:20px;right:20px;width:auto;max-width:340px}
+  .intro h1{font-size:clamp(24px,6.4vw,29px);line-height:1.04;margin:0}
+  .intro .punk-bolt{width:46px;height:88px;right:0;top:-8px}
+  .artist-lineup{top:252px;left:20px;right:20px;max-width:none}
+  .artist-marks{grid-template-columns:1.05fr 1.2fr 1fr 1.25fr;max-width:none;gap:12px}
+  .artist-mark{height:30px}.artist-flume{height:21px}.artist-sampa{height:24px}
+  .lineup-more{font-size:9px;margin-top:6px}
+  .explore-bar{left:16px;right:16px;bottom:max(10px,env(safe-area-inset-bottom));pointer-events:none}
+  .explore-bar a{pointer-events:auto}
+  .explore-heading{margin:0;text-align:center}
+  .membership{font-size:11px;line-height:1.5;margin:0}
+  .membership a{display:inline-flex;align-items:center;min-height:44px}
+  .footline{margin-top:4px;gap:5px;font-size:9px;line-height:1.4;text-align:center;color:#344b3c}
+  .footline>span{max-width:100%!important}
+  .footline .proposal-status{font-size:8.5px;opacity:1}
+  .research-link{align-self:center;position:static;text-align:center;font-size:10px;min-height:36px;padding:9px 0;line-height:1.6}
+  .emotion-toggle{left:16px;bottom:calc(var(--lab-footer-height,140px) + max(10px,env(safe-area-inset-bottom)) + 12px);padding:10px 13px;font-size:11px;min-height:48px;gap:10px;max-width:calc(100% - 32px)}
+  .emotion-toggle>svg:first-child{width:30px;height:20px}
+  .emotion-panel{left:16px;right:16px;top:143px;bottom:16px;width:auto;max-height:none;overflow-y:auto;padding:22px 20px;background:#f2f3e9}
+  .emotion-panel .close,.place-card .close,#vision .close{width:44px;height:44px;top:5px;right:5px}
+  .place-card{left:16px;right:16px;top:auto;bottom:calc(var(--lab-footer-height,140px) + 28px);width:auto;max-height:calc(100dvh - var(--lab-footer-height,140px) - 175px);padding:24px;z-index:15;overflow-y:auto}
+  #media-status,.fullscreen-status{top:137px;left:16px;right:16px;max-width:none;padding:10px 13px;font-size:11px;line-height:1.4}
+  body[data-emotion-panel="true"] .intro,body[data-emotion-panel="true"] .emotion-toggle,body:has(.place-card:not([hidden])) .emotion-toggle{visibility:hidden;pointer-events:none}
+  body[data-night="true"] .footline{color:#edf1e8}
+}
+@media(max-height:500px) and (max-width:1000px) and (pointer:coarse){
+  .masthead{flex-wrap:nowrap;gap:20px;top:10px}.mast-right{width:auto}.wordmark>span{font-size:18px}.wordmark .mindfulness-line{font-size:9px!important}
+  .intro{top:84px;max-width:290px}.intro h1{font-size:24px}.intro .punk-bolt{right:0;height:70px;width:36px}
+  .artist-lineup{top:90px;left:auto;right:24px;width:300px}.artist-marks{grid-template-columns:repeat(4,1fr)}
+  .emotion-toggle{bottom:120px;font-size:10px;padding:8px 12px}
+  .explore-bar{bottom:4px}.explore-heading{margin:0}.footline{margin:0;gap:2px}.research-link{padding:6px 0;min-height:28px}
+  .emotion-panel{top:76px;bottom:12px;max-width:500px;left:auto;display:block}.place-card{top:76px;bottom:104px;max-height:none;left:auto;width:300px}
+  #media-status,.fullscreen-status{top:74px;left:auto;max-width:320px}
+}
+@media(max-width:360px){
+  .masthead{left:12px;right:12px}.mast-right{gap:4px}.mast-right .outline-button{padding:10px 9px}.mast-right .media-tools>button{padding:10px 6px}
+  .intro{left:16px;right:16px}.intro .punk-bolt{right:-2px;width:34px}.artist-lineup{top:245px;left:16px;right:16px}
+}

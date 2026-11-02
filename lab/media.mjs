@@ -1,3 +1,4 @@
+import { icon } from './icons.mjs?v=20261103mobile1';
 const $=id=>document.getElementById(id);
 const stream='https://customer-1vpwglz3v6fiyaas.cloudflarestream.com/9f1ed3b5a38f52bfd008d2152d3884de/manifest/video.m3u8';
 export function initMedia(onMotion) {
@@ -11,7 +12,7 @@ export function initMedia(onMotion) {
   function sync(){
     $('music-toggle').setAttribute('aria-pressed',String(playing));
     $('music-toggle').setAttribute('aria-label',playing?'Pause music':'Play music');
-    $('music-symbol').textContent=playing?'Ⅱ':'▶';$('music-label').textContent=pending?'Loading…':'Music';
+    $('music-symbol').innerHTML=icon(playing?'pause':'play');$('music-label').textContent=pending?'Loading…':'Music';
     $('motion-toggle').setAttribute('aria-pressed',String(motionOn));
     $('video-toggle').setAttribute('aria-pressed',String(videoOn));
     $('video-toggle').setAttribute('aria-label',videoOn?'Hide music video overlay':'Show music video overlay');
@@ -22,11 +23,13 @@ export function initMedia(onMotion) {
     if(attached)return;
     for(const [i,v] of truckVideos.entries()){if(!v.getAttribute('src')){v.src=new URL('./assets/truck-'+(i===0?'fashion':'anime')+'.mp4',import.meta.url).href;v.load();}}
     if(!geometryAttached){geometryAttached=true;geometryVideo.src=new URL('./assets/hexeosis-hx_4a480.mp4',import.meta.url).href;geometryVideo.load();}
-    if(window.Hls?.isSupported()){
+    // Native HLS keeps Safari playback in the initiating tap.
+    if(video.canPlayType('application/vnd.apple.mpegurl')) video.src=stream;
+    else if(window.Hls?.isSupported()){
       hls=new window.Hls({capLevelToPlayerSize:true,maxBufferLength:30});
       hls.on(window.Hls.Events.ERROR,(_event,data)=>{if(data.fatal){pending=false;playing=false;video.pause();hls.destroy();hls=null;attached=false;notice('Music is unavailable. Press Music to retry.');sync();}});
       hls.loadSource(stream);hls.attachMedia(video);
-    } else if(video.canPlayType('application/vnd.apple.mpegurl')) video.src=stream;
+    }
     else throw new Error('Streaming unavailable');
     attached=true;
   }
