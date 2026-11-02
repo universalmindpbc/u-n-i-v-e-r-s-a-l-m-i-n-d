@@ -1,0 +1,4 @@
+{"passed":true,"legacyRoutes":14,"chapterChecks":29,"orderedMaps":3,"retainedParentHistory":true}
+Directory source: exact copy, original flower, responsive sizes, routes and landing syntax verified.
+Directory: committed source published through Panthur FTP.
+Deploy complete: directory

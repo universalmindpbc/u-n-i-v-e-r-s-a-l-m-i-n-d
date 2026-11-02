@@ -1,0 +1,337 @@
+{
+  "passed": true,
+  "results": [
+    {
+      "route": "/iam/tv/",
+      "status": 200,
+      "canonical": true
+    },
+    {
+      "route": "/iam/about/",
+      "status": 200,
+      "canonical": true
+    },
+    {
+      "route": "/iam/program/",
+      "status": 200,
+      "canonical": true
+    },
+    {
+      "route": "/iam/technology/",
+      "status": 200,
+      "canonical": true
+    },
+    {
+      "route": "/iam/technology/recommendations/",
+      "status": 200,
+      "canonical": true
+    },
+    {
+      "route": "/iam/science/",
+      "status": 200,
+      "canonical": true
+    },
+    {
+      "route": "/iam/research/",
+      "status": 200,
+      "canonical": true
+    },
+    {
+      "route": "/iam/research/computer-vision/",
+      "status": 200,
+      "canonical": true
+    },
+    {
+      "route": "/iam/privacy-first/",
+      "status": 200,
+      "canonical": true
+    },
+    {
+      "route": "/iam/business-model/",
+      "status": 200,
+      "canonical": true
+    },
+    {
+      "route": "/iam/traction/",
+      "status": 200,
+      "canonical": true
+    },
+    {
+      "route": "/iam/impact/",
+      "status": 200,
+      "canonical": true
+    },
+    {
+      "route": "/iam/check-in/",
+      "status": 200,
+      "canonical": true
+    },
+    {
+      "route": "/iam/our-team/",
+      "status": 200,
+      "canonical": true
+    },
+    {
+      "route": "/iam/shop/",
+      "status": 200,
+      "canonical": true
+    },
+    {
+      "route": "/informatics/about/",
+      "status": 200,
+      "canonical": true
+    },
+    {
+      "route": "/informatics/geometry/",
+      "status": 200,
+      "canonical": true
+    },
+    {
+      "route": "/informatics/transcription/",
+      "status": 200,
+      "canonical": true
+    },
+    {
+      "route": "/informatics/molecular/",
+      "status": 200,
+      "canonical": true
+    },
+    {
+      "route": "/informatics/quantum/",
+      "status": 200,
+      "canonical": true
+    },
+    {
+      "route": "/informatics/sound/",
+      "status": 200,
+      "canonical": true
+    },
+    {
+      "route": "/informatics/vision/",
+      "status": 200,
+      "canonical": true
+    },
+    {
+      "route": "/informatics/language/",
+      "status": 200,
+      "canonical": true
+    },
+    {
+      "route": "/informatics/research/",
+      "status": 200,
+      "canonical": true
+    },
+    {
+      "route": "/informatics/connect/",
+      "status": 200,
+      "canonical": true
+    },
+    {
+      "route": "/informatics/partners/",
+      "status": 200,
+      "canonical": true
+    },
+    {
+      "route": "/informatics/?entry=research&area=sound",
+      "status": 301,
+      "to": "/informatics/sound/"
+    },
+    {
+      "route": "/informatics/?entry=research&area=vision",
+      "status": 301,
+      "to": "/informatics/vision/"
+    },
+    {
+      "route": "/informatics/?entry=research&area=language",
+      "status": 301,
+      "to": "/informatics/language/"
+    },
+    {
+      "route": "/informatics/?about",
+      "status": 301,
+      "to": "/informatics/about/"
+    },
+    {
+      "route": "/informatics/library.html?collection=vision",
+      "status": 301,
+      "to": "/informatics/research/?collection=vision"
+    },
+    {
+      "route": "/informatics/library.html?collection=sound&record=NPL-222",
+      "status": 301,
+      "to": "/informatics/research/?collection=sound&record=NPL-222"
+    },
+    {
+      "route": "/informatics/library.html?collection=language",
+      "status": 301,
+      "to": "/informatics/research/?collection=language"
+    },
+    {
+      "route": "/informatics/library.html?collection=all&target=OXTR&target=NR3C1",
+      "status": 301,
+      "to": "/informatics/research/?collection=all&target=OXTR&target=NR3C1"
+    },
+    {
+      "route": "/informatics/?area=research&section=%7B%22search%22%3A%22%3Fcollection%3Dall%26target%3DOXTR%26target%3DNR3C1%22%7D",
+      "status": 301,
+      "to": "/informatics/research/?collection=all&target=OXTR&target=NR3C1"
+    },
+    {
+      "route": "/informatics/research.html?record=fibonacci-m9-p24",
+      "status": 301,
+      "to": "/informatics/geometry/?record=fibonacci-m9-p24"
+    },
+    {
+      "route": "/informatics/genomics.html",
+      "status": 301,
+      "to": "/informatics/transcription/"
+    },
+    {
+      "route": "/informatics/quantum/index.html",
+      "status": 301,
+      "to": "/informatics/quantum/"
+    },
+    {
+      "route": "/informatics/molecular/index.html",
+      "status": 301,
+      "to": "/informatics/molecular/"
+    },
+    {
+      "route": "/vogue/iam/about.html?aboutTopLevel=1",
+      "status": 301,
+      "to": "/iam/about/"
+    },
+    {
+      "route": "/vogue/iam/science.html",
+      "status": 301,
+      "to": "/iam/science/"
+    },
+    {
+      "route": "/vogue/iam/research.html",
+      "status": 301,
+      "to": "/iam/research/"
+    },
+    {
+      "route": "/vogue/iam/technology-inference-engine.html",
+      "status": 301,
+      "to": "/iam/technology/recommendations/"
+    },
+    {
+      "route": "/vogue/iam/light.html",
+      "status": 301,
+      "to": "/iam/research/computer-vision/"
+    },
+    {
+      "route": "/vogue/iam/index.html",
+      "status": 301,
+      "to": "/iam/tv/"
+    },
+    {
+      "route": "/informatics/library.html?embedded=1&collection=sound",
+      "status": 200,
+      "embedded": true
+    },
+    {
+      "route": "/informatics/research.html?embedded=1",
+      "status": 200,
+      "embedded": true
+    },
+    {
+      "route": "/informatics/molecular/index.html?embedded=1",
+      "status": 200,
+      "embedded": true
+    },
+    {
+      "route": "/informatics/quantum/index.html?embedded=1",
+      "status": 200,
+      "embedded": true
+    },
+    {
+      "route": "/vogue/iam/about.html?adaptiveFrame=1&musicTelevisionFrame=1",
+      "status": 200,
+      "embedded": true
+    },
+    {
+      "route": "/sitemap/",
+      "status": 200
+    },
+    {
+      "route": "/informatics/sitemap/",
+      "status": 200
+    },
+    {
+      "route": "/iam/sitemap/",
+      "status": 200
+    },
+    {
+      "route": "/sitemap.xml",
+      "status": 200
+    },
+    {
+      "route": "/sitemaps/portals.xml",
+      "status": 200
+    },
+    {
+      "route": "/sitemaps/informatics.xml",
+      "status": 200
+    },
+    {
+      "route": "/sitemaps/iam.xml",
+      "status": 200
+    },
+    {
+      "route": "/sitemaps/informatics-records.xml",
+      "status": 200
+    },
+    {
+      "route": "/sitemaps/informatics-publications.xml",
+      "status": 200
+    },
+    {
+      "route": "/sitemaps/other-public-pages.xml",
+      "status": 200
+    },
+    {
+      "route": "/read/",
+      "status": 200
+    },
+    {
+      "route": "/llms.txt",
+      "status": 200
+    },
+    {
+      "route": "/informatics/llms.txt",
+      "status": 200
+    },
+    {
+      "route": "/site-navigation/portals.json",
+      "status": 200
+    },
+    {
+      "route": "/events/?experience=1",
+      "status": 200,
+      "finalURL": "https://staging.universalmind.tv/events/?experience=1"
+    },
+    {
+      "route": "/events/happiness-entry.php",
+      "status": 200,
+      "finalURL": "https://staging.universalmind.tv/happiness/"
+    },
+    {
+      "route": "/iam/tv/",
+      "phoneEntryPreserved": true
+    },
+    {
+      "route": "/iam/check-in/",
+      "phoneEntryPreserved": true
+    },
+    {
+      "route": "/iam/technology/",
+      "phoneEntryPreserved": true
+    },
+    {
+      "route": "/iam/technology/recommendations/",
+      "phoneEntryPreserved": true
+    }
+  ]
+}

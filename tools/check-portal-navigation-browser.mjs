@@ -148,7 +148,7 @@ try {
    await page.waitForFunction(()=>!!window.UniversalMindEntry);
    await page.evaluate(()=>UniversalMindEntry.openDestination('/iam/tv/','I AM'));
    const child=page.frameLocator('.um-experience-frame');
-   await child.locator('body[data-adaptive-selection-source="no_checkin_random"]').waitFor({timeout:60000});
+   await child.locator('body[data-adaptive-selection-source="no_checkin_random"]').waitFor({state:'attached',timeout:60000});
    await child.locator('[data-television-play]').click();
    const frame=await (await page.locator('.um-experience-frame').elementHandle()).contentFrame();
    await frame.waitForFunction(()=>{const m=document.querySelector('[data-television-player] video');return m&&!m.paused&&m.currentTime>1;},null,{timeout:60000});

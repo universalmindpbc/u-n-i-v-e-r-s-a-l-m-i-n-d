@@ -1,0 +1,355 @@
+{
+  "passed": true,
+  "results": [
+    {
+      "url": "/iam/program/",
+      "sha256": "c147648d48ce99e3308a7c97fd68f5058cd78ce7210dad8ab375fbcd60e6db23",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/iam/technology/",
+      "sha256": "08609b776ee61f20880cfc3e09d8133f737908af4b0222a6ccd322e5441f45d2",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/iam/about/",
+      "sha256": "03a2cd9ef93f27e6a8c9156f4615fe72dda7152e1e12a618cc29fa8571743801",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/iam/tv/",
+      "sha256": "256fc53def2cfa65d01415c2145a51991aef2a47e70558af1782a0dc182524f5",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/iam/research/computer-vision/",
+      "sha256": "a57709ae88c45887b323960111c538a236e74b8dd211874a4185f8a018ea90b4",
+      "emailProtectionReversed": true
+    },
+    {
+      "url": "/iam/research/",
+      "sha256": "bb9eefd80079ea4905086e8bfe19554c9d1ec227119a6e01f55d493400cd41d0",
+      "emailProtectionReversed": true
+    },
+    {
+      "url": "/iam/science/",
+      "sha256": "e0b91f00fbf351969a0286550277623a23ed5f54818efc9ffdd8a264630fcb6c",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/iam/technology/recommendations/",
+      "sha256": "3d796ee7086bfd0e6f5a94f3ce76443e3cd908d15d6bb42a834dc580f04adc70",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/iam/privacy-first/",
+      "sha256": "8a51ddba008c2e2eefab624b8876d3948d226cd19fc0bb00a816dffb4a4c359d",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/iam/business-model/",
+      "sha256": "7f82be7e532e27a9645fab45b35271d05cc5197f96edece592f1a7d983d4d167",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/iam/traction/",
+      "sha256": "7b1def4c54e3cb83b3c257aaf67082ab45e72cd6e4ba016028cf6b9703c0a50f",
+      "emailProtectionReversed": true
+    },
+    {
+      "url": "/iam/check-in/",
+      "sha256": "a8b43be5ad26d2ea5bd90fc7c4f507be3cd08ac17e34cdef956ca683ee56319f",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/iam/our-team/",
+      "sha256": "ac19ce3213d3e7f2e846493eefbe0912fc674f74afee91b92e754f764f1c4c7c",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/iam/impact/",
+      "sha256": "4ef859cb54b96df369de207c327d0010dd9e4f646bca21dc63420afb05a5506b",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/iam/shop/",
+      "sha256": "fbe4802892a09fd71e62483a099b76467e309a078403a50413e1b9f2b38534f3",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/about/",
+      "sha256": "c933b4d54cd127706e58f58a9536efd442cc4cb4cda631b1e1359b350dc0bef3",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/transcription/",
+      "sha256": "05fd46463db5d9447e9a9101cb9fbb26fa4a9dbb937570cab21a5364fd9e5236",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/sound/",
+      "sha256": "a6bf4943ef9d44e799e47772e114de5e3b9bd93e4c284f80fec59b98d89eaa4b",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/quantum/",
+      "sha256": "c2d09f71867a437edc2219cd5b7475d8f0750525fa19a404c2d9a950ff2f65f6",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/molecular/",
+      "sha256": "ce26a6160d23bbb43e20562cfb80548bf6455dc2f57707885078c5ee93d58bfc",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/language/",
+      "sha256": "b0b30d2393e3f559a6c202b22d9de9a1f93a20da8ae3d19cc5b071764de0e17b",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/vision/",
+      "sha256": "a16923f0cf26a62eda3fdd88fb34b9817fd413e5073dd05b20c8e31373c7ac1e",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/research/",
+      "sha256": "227815daffb021624ad8be3ea681b379c4496348168e6bc7c23269fd7adf724d",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/partners/",
+      "sha256": "a0081cbebfe3ccdca93308a3d7f36b844e8b03587c1c5a701a620a1f469d07a9",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/connect/",
+      "sha256": "61b70bca4eb0826632dbe90aa6df0ac9ad46bcde6f6ea62448e3029d2a1af9a1",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/site-navigation/routes.js",
+      "sha256": "375ae77a6715f56630d965d1a79a37c06260147e1580b3987dfffd77cd196710",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/site-navigation/portals.json",
+      "sha256": "0c94227156f637bbc41aacfcbcd96d87874f61b345b76acfb423c2fc31ce9596",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/sitemap.xml",
+      "sha256": "69a6c2195641c02deaf0fc2ba721c54cfcff3dcf31eaaf237f66479af5c1c7c3",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/sitemap/index.html",
+      "sha256": "e31942130574b9bf7a4d10b59c1d9f92cb801b5554063a6776c5d8135f2b79b0",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/sitemaps/iam.xml",
+      "sha256": "ae848fd879b629c878372dc1f62a64988015fbc17f89301d8d7e831841768cf4",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/sitemaps/informatics.xml",
+      "sha256": "f3ed907a7099f78bc536b9c490b81791e2a6e68bc1030a01c3c05cfc514f3a02",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/sitemaps/informatics-records.xml",
+      "sha256": "ce61763077e93356496c7c187172a800501930f995c79ee162f31d1c2dca2eb8",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/home/entry-shell.js",
+      "sha256": "292cd65fe13be4c5e5e615ec5c1360dbe85894523df2e5e6dfc4aeb07c598bbf",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/sitemaps/informatics-publications.xml",
+      "sha256": "faf3a7953d2683c747017a89fb7a9a572fe4f3825fe00ce2f053e59093dd3a48",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/home/index.html",
+      "sha256": "f90a88356e8ae0be5cd324ea29293b9359ac8c52ed92d06525fc8ecde0d6f5a8",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/index.html",
+      "sha256": "837bf8922cfdf386b7863884bc4c811248b12750b5715446598d465625bd0342",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/read/index.html",
+      "sha256": "7a43c164d1946aec8a0d17c4e64a733aa9a1264fd224a3fa038718e14a4b8a70",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/read/resources.json",
+      "sha256": "eba521321e5e437580d6961ef762b2adeadfa077568e23f18b5ccd850148ab78",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/llms.txt",
+      "sha256": "4cb110c3a5f6a502643ac506caf1d8a048636d17fee0f040f6fdfd2d708759c5",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/atlas.css",
+      "sha256": "d89bcbd76042385effb726577cdd97ed39b55ecdfb18c376690fca1e13e9ccce",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/app.js",
+      "sha256": "3ffeffb47d93cce9a8e5b4af9fabcc0433bee062637207966f4925b95df7cf93",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/global-navigation.js",
+      "sha256": "4493d996184ac5a539d93cd2ea924a7cc309f0250ede87979bc23f3ada2e84f2",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/shared-experience.js",
+      "sha256": "1c6694f64b0d7f0d31ee2718af4459efe7daf60a5c53d2c73b1aa3265d895640",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/library.js",
+      "sha256": "a39cfe8108763b08a72ce3cea1ff3f395a47e523c7c3c2547bd5df92b582606e",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/molecular-entry.js",
+      "sha256": "00e18f6dc370305dfb32bd3ea7db672289f1e67d00c458125ee1298239ace2ae",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/llms.txt",
+      "sha256": "761acfc1edf91494aa12c7b8b943f626abbdb0d48bbfe1f774ca93838c8ba15d",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/quantum-entry.js",
+      "sha256": "6a90d8c53d2dc52b3e4c137324ed022f7934a4617f409831e0d4c519840f58c8",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/read/index.html",
+      "sha256": "32f6ad7fadb49f0e1934d16b0b0a0b440dfd47bcbe156502bafe3b7ce6f3160c",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/music-atlas/music-atlas.json",
+      "sha256": "d105fe1f5211e955baee4bc4817166bb2b5347949890a617c8a31c9680bc7bf4",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/music-atlas/music-atlas.md",
+      "sha256": "2a0280ebea5bd84a114984540b9623086707be7f6cc5d3e37cad011b70c1a507",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/music-atlas/music-atlas.csv",
+      "sha256": "0c6a655c3e1bf992aed4e5043db95a11f04aa7d4552367d50c99b266b6466b4b",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/sitemap/index.html",
+      "sha256": "afef13e865f381ca7d9744e61fccabc7b284979bd194a9a8d8efe521631f00e5",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/quantum/reading/quantum-atlas.json",
+      "sha256": "0ef1e3367348699cd68480cb2bf84b7f2f09e36832c7632b663e143d268b4c8c",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/vogue/iam/global-navigation.js",
+      "sha256": "a82eeb2d7b365c02e825796d8becc2fce5d60bf1fdf1e6b50608eb00804719a5",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/vogue/iam/adaptive-environment-television.js",
+      "sha256": "c9f0098a0c8289ded85d5f2bbd6e901b998e1af8df7e24d45aafec61bfa05c10",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/vogue/iam/adaptive-environment.js",
+      "sha256": "6187d44150455f8f6afd95e9d17a504c96bb32f92cf4bb439378d3c55cec8ad6",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/vogue/iam/globe.js",
+      "sha256": "c9175787f616f29dd9f66410da2fae8d709b273657945288d087f2d7d5250e0b",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/vogue/iam/mobile-editorial-surface.js",
+      "sha256": "095fdaf7866cb07d0751fdad7b208e852e1b19bfa8c54fe8568dd2b65818c09c",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/vogue/iam/script.js",
+      "sha256": "d69765f102c1b3ac459dd3881db1761d6b55bf971c6c415a593211fe6c96655a",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/exports/manifest.json",
+      "sha256": "95191f3b5dfdfe56d1446f01ae3cb13c589f37bb245730fcb19a7a165e5fd3b4",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/vogue/iam/science.js",
+      "sha256": "217fb59c5a9a26b8ac3cc8840e53e8c69a109883eec3c4090c1795fa6a2ef381",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/vogue/iam/science-research-data-v1.js",
+      "sha256": "c32745d5aeea570b1d069450fcedfeb36de8b74e600cd3e94bc8040158f2d1de",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/vogue/iam/shop.js",
+      "sha256": "c407fca1f1f20549f908f7369f0d11a37311c8a18974b908ecf6972f0ba97854",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/geometry/",
+      "sha256": "954e49dc20996c284aa0f0efd378f2534a38270e8cb9d3a6ffba80d436b667f6",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/vogue/iam/index.html?navigationShell=1",
+      "sha256": "d110a7a90a1df3b6bb3129dc9ef4adc0f6a79809d80832a7f9d1fbed7b83a4be",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/exports/part-2af95a03fa1a0a84295c2b24689983b6df55c686e5d12ec99ed23afdd98602b3.bin",
+      "bytes": 50331648,
+      "check": "HTTP size; local full checksum verified by export preflight"
+    },
+    {
+      "url": "/informatics/exports/part-111cefb2bc669e8bbb44e647d7c084bf18172ed84c88ce6b7fd8f46fd7c801f5.bin",
+      "bytes": 30537924,
+      "check": "HTTP size; local full checksum verified by export preflight"
+    },
+    {
+      "url": "/informatics/exports/part-64c757f9f906857de7e9139b8b801c594f25c3102eabc9458246f67207d2bc54.bin",
+      "bytes": 50331648,
+      "check": "HTTP size; local full checksum verified by export preflight"
+    },
+    {
+      "url": "/informatics/exports/part-689f90ad53376d22b68b16be667b0687083998653552d9a6fa3257947b907a55.bin",
+      "bytes": 50331648,
+      "check": "HTTP size; local full checksum verified by export preflight"
+    },
+    {
+      "url": "/informatics/exports/part-8d10ece88a30f354c97762ce1c241b7c1f5b125e7a87049155e4125c7878483b.bin",
+      "bytes": 49905979,
+      "check": "HTTP size; local full checksum verified by export preflight"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "passed": true,
+  "matchedSourceFiles": 1362,
+  "duplicatePaths": false,
+  "nativeIAMIndex": "Verified by direct HTTP source hash; the existing manifest uses index.html for the root landing page."
+}
