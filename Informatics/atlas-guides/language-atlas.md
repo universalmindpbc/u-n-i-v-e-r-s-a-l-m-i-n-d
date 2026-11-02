@@ -30,8 +30,8 @@ A developing research question: how do interpersonal experiences relate to our e
 
 [JSON](https://universalmind.tv/informatics/atlas-guides/language-atlas.json?v=2026-11-01-page-narrative-4) · [CSV](https://universalmind.tv/informatics/atlas-guides/language-atlas.csv?v=2026-11-01-page-narrative-4) · [MD](https://universalmind.tv/informatics/atlas-guides/language-atlas.md?v=2026-11-01-page-narrative-4)
 
-[Interactive page](https://universalmind.tv/informatics/?entry=research&area=language) · [Wiki](https://universalmind.tv/informatics/read/language/index.html)
+[Interactive page](https://universalmind.tv/informatics/language/) · [Wiki](https://universalmind.tv/informatics/read/language/index.html)
 
 ## Sources
 
-- [index.html](https://universalmind.tv/informatics/index.html) · SHA-256: a8a3c48bb8e24800c3d0812c654d36ef6f03422cdce94a096da7c2017d92395d · HTML with generated Atlas narrative blocks removed
+- [index.html](https://universalmind.tv/informatics/index.html) · SHA-256: 7e37a3a7319da7d68dc997530f2b33ac97057c8de0885b5cfd79e9958219376a · HTML with generated Atlas narrative blocks removed

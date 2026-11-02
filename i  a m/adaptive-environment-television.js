@@ -9329,8 +9329,8 @@
     if (!href || href.startsWith("#") || href.startsWith("mailto:") || href.startsWith("tel:")) return false;
 
     try {
-      const url = new URL(href, window.location.href);
-      return url.origin === window.location.origin && url.pathname.endsWith(".html");
+      const url = new URL(href, document.baseURI);
+      return url.origin === window.location.origin && (url.pathname.endsWith(".html") || window.PortalRoutes?.resolve(url.href)?.portal === "iam");
     } catch {
       return false;
     }
@@ -9340,7 +9340,7 @@
 
   function beginResearchParticipation(link) {
     if (participateHandoff) return;
-    const destination = new URL(link.getAttribute("href"), window.location.href);
+    const destination = new URL(link.getAttribute("href"), document.baseURI);
     if (destination.origin !== window.location.origin) return;
     const owner = studyExperienceRequested ? window.parent : window;
     const pausedDocuments = new Set([document, owner.document]);
@@ -9384,7 +9384,7 @@
   }
 
   function beginTopLevelCheckIn(link) {
-    const destination = new URL(link.getAttribute("href"), window.location.href);
+    const destination = new URL(link.getAttribute("href"), document.baseURI);
     ["adaptiveFrame", "musicTelevisionFrame", "navigationShell"].forEach((parameter) => {
       destination.searchParams.delete(parameter);
     });
@@ -9398,7 +9398,7 @@
   }
 
   function frameHref(link, options = {}) {
-    const url = new URL(link.getAttribute("href"), window.location.href);
+    const url = window.PortalRoutes?.source(link.href) || new URL(link.getAttribute("href"), document.baseURI);
     if (/\/shop\.html$/i.test(url.pathname)) {
       url.searchParams.set("v", SHOP_SHELL_VERSION);
       const requestedTheme = options.shopTheme === "day" ? "day" : "night";
@@ -9451,6 +9451,14 @@
 
     try {
       const frameDocument = pageFrame.contentDocument;
+      if (!frameDocument.documentElement.dataset.portalNavigationBound) {
+        frameDocument.documentElement.dataset.portalNavigationBound='true';
+        frameDocument.addEventListener('click', event => {
+          const link=event.target.closest('a[href]');if(!link||event.defaultPrevented||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey||link.target==='_blank'||link.hasAttribute('download'))return;
+          const route=window.PortalRoutes?.resolve(link.href);if(route?.portal!=='iam')return;
+          event.preventDefault();event.stopImmediatePropagation();if(route.id==='home')returnToTelevisionRoom();else openInVideoPageLayer(link);
+        },true);
+      }
       frameDocument.documentElement.dataset.adaptiveFrame = "embedded";
       frameDocument.documentElement.dataset.musicTelevisionFrame = "embedded";
       frameDocument.body?.classList.remove("nav-open");
@@ -9586,7 +9594,7 @@
   function openInVideoPageLayer(link, options = {}) {
     if (!pageView || !pageFrame) return;
 
-    const destination = new URL(link.href, window.location.href);
+    const destination = window.PortalRoutes?.source(link.href) || new URL(link.href, document.baseURI);
     const isHappinessWallet = /\/wallet\.html$/i.test(destination.pathname);
     const isShop = /\/shop\.html$/i.test(destination.pathname);
     const shopContext = isShop
@@ -9608,10 +9616,11 @@
       document.body.dataset.shopArrivalTheme = shopContext.theme;
       document.body.dataset.shopArrivalRoom = shopContext.musicRoom || "unclassified";
     }
-    pageFrame.src = frameHref(link, {
+    window.PortalRoutes?.commit(link.href);
+    window.PortalRoutes.loadFrame(pageFrame, frameHref(link, {
       shopTheme: shopContext?.theme,
       shopThemeSource: options.shopThemeSource,
-    });
+    }));
     pageView.setAttribute("aria-hidden", "false");
     document.body.classList.add("television-page-view-open");
     document.body.classList.toggle("television-wallet-page-open", isHappinessWallet);
@@ -9688,6 +9697,7 @@
   }
 
   function returnToTelevisionRoom(options = {}) {
+    window.PortalRoutes?.commit("/iam/tv/");
     closeSexEdShelf(false);
     if (!options.preserveSexEd) stopSexEdEpisode();
     document.title = televisionPageTitle;
@@ -10469,7 +10479,7 @@
       if (navItemName === "check-in") {
         event.preventDefault();
         event.stopImmediatePropagation();
-        beginTopLevelCheckIn(link);
+        openInVideoPageLayer(link);
         return;
       }
 
@@ -10617,7 +10627,7 @@
     }
     let shopFrameLoaded = false;
     try {
-      shopFrameLoaded = /\/shop\.html$/i.test(new URL(pageFrame.src, window.location.href).pathname);
+      shopFrameLoaded = /\/shop\.html$/i.test(new URL(pageFrame.dataset.portalSrc || pageFrame.src, document.baseURI).pathname);
     } catch {
       shopFrameLoaded = false;
     }
@@ -10652,7 +10662,13 @@
   }
   window.setInterval(updateNowPlayingClock, 30000);
   syncFullscreenState();
+  window.PortalRoutes?.register("iam", route => {
+    if (!document.body.classList.contains("television-room-open")) { window.location.href = route.href; return; }
+    if (route.id === "home") returnToTelevisionRoom();
+    else {const link=document.createElement("a");link.href=route.href;openInVideoPageLayer(link);}
+  });
   window.IAMTelevisionRoom = {
+    navigatePage(href) { const link=document.createElement("a");link.href=href;openInVideoPageLayer(link); },
     version: "programme_presentations_v2",
     async prepareStudyExperience(uid, studyTitle = 'Study experience', {enter = true, artist = ''} = {}) {
       if (!studyExperienceRequested || !/^[a-f0-9]{32}$/.test(uid)) throw new Error('Open the experience from your study session.');

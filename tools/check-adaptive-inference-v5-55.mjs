@@ -112,7 +112,7 @@ assert.ok(subprompt.includes("An accepted non-empty self-report completes the re
 assert.ok(subprompt.includes("Never require or re-request camera access, Heart Rate or any biometric signal before returning homepage recommendations."));
 assert.ok(subprompt.includes("Resolve `source_id` from `broadcast-schedule-v1.json`"));
 assert.ok(globalNavigation.includes("learn how we understand your needs"));
-assert.ok(globalNavigation.includes('href="technology-citizen-needs.html"'));
+assert.ok(globalNavigation.includes('href="/iam/technology/"'));
 assert.ok(technology.includes(`href="${codePageFilename}"`));
 assert.ok(technology.includes(`data-public-href="/vogue/iam/${codePageFilename}"`));
 assert.ok(codePage.includes("System Prompt v5.55"));

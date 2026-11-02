@@ -15,6 +15,8 @@
   }
 
   function inferCurrentNav() {
+    const route = window.PortalRoutes?.resolve();
+    if (route?.portal === "iam" && route.id !== "document") return route.id;
     if (document.body?.dataset.currentNav) return document.body.dataset.currentNav;
 
     const page = window.location.pathname.split("/").pop() || "index.html";
@@ -97,34 +99,24 @@
             </span>
           </a>
           <nav class="global-nav-menu" aria-label="Primary">
-            <a class="global-nav-item" href="index.html" data-nav-item="home"${shopReturn}>tv</a>
-            <a class="global-nav-item" href="about.html?aboutTopLevel=1" data-nav-item="about">about</a>
-            <a class="global-nav-item" href="program.html" data-nav-item="program">program</a>
-            <a class="global-nav-item" href="technology-citizen-needs.html" data-nav-item="technology" aria-expanded="false">technology</a>
-            <div class="global-nav-submenu" data-nav-submenu="technology">
-              <a href="technology-citizen-needs.html" data-nav-subitem="technology-needs">learn how we understand your needs</a>
-              <a href="technology-inference-engine.html" data-nav-subitem="technology-recommendations">learn how we recommend content</a>
-            </div>
-            <a class="global-nav-item" href="science.html" data-nav-item="science">science</a>
-            <a class="global-nav-item" href="research.html" data-nav-item="research" aria-expanded="false" aria-controls="global-nav-research">research</a>
-            <div class="global-nav-submenu" id="global-nav-research" data-nav-submenu="research">
-              <a href="research.html" data-nav-subitem="research-rct">rct</a>
-              <a href="light.html" data-nav-subitem="research-computer-vision">computer vision</a>
-              <a href="https://universalmind.tv/informatics/" data-nav-subitem="research-informatics" target="_blank" rel="noopener noreferrer" aria-label="Informatics (opens in a new tab)">informatics</a>
-              <a href="/study" data-nav-subitem="research-participate">participate</a>
-            </div>
-            <a class="global-nav-item" href="privacy-first.html" data-nav-item="privacy-first">privacy first</a>
-            <a class="global-nav-item" href="business-model.html" data-nav-item="business-model">business model</a>
-            <a class="global-nav-item" href="traction.html" data-nav-item="traction">traction</a>
-            <a class="global-nav-item" href="impact.html" data-nav-item="impact">impact</a>
-            <a class="global-nav-item" href="vogue-self-report.html" data-nav-item="check-in">check in</a>
-            <a class="global-nav-item" href="our-team.html" data-nav-item="our-team">our team</a>
-            <a class="global-nav-item" href="shop.html" data-nav-item="shop" aria-expanded="false">shop</a>
-            <div class="global-nav-submenu" data-nav-submenu="shop">
-              <a href="shop.html" data-nav-subitem="shop-james-bondage-health">james bondage health - now open</a>
-            </div>
-            <a class="global-nav-item" href="mailto:bk@universalmind.tv?subject=I%20Am%20Vogue%20%7C%20Referral" data-nav-item="contact">contact</a>
-          </nav>
+<a class="global-nav-item" href="/iam/tv/" data-nav-item="home"${shopReturn}>tv</a>
+<a class="global-nav-item" href="/iam/about/" data-nav-item="about">about</a>
+<a class="global-nav-item" href="/iam/program/" data-nav-item="program">program</a>
+<a class="global-nav-item" href="/iam/technology/" data-nav-item="technology" aria-expanded="false">technology</a>
+<div class="global-nav-submenu" data-nav-submenu="technology"><a href="/iam/technology/" data-nav-subitem="technology-needs">learn how we understand your needs</a><a href="/iam/technology/recommendations/" data-nav-subitem="technology-recommendations">learn how we recommend content</a></div>
+<a class="global-nav-item" href="/iam/science/" data-nav-item="science">science</a>
+<a class="global-nav-item" href="/iam/research/" data-nav-item="research" aria-expanded="false" aria-controls="global-nav-research">research</a>
+<div class="global-nav-submenu" id="global-nav-research" data-nav-submenu="research"><a href="/iam/research/" data-nav-subitem="research-rct">rct</a><a href="/iam/research/computer-vision/" data-nav-subitem="research-computer-vision">computer vision</a><a href="/informatics/" data-nav-subitem="research-informatics" target="_blank" rel="noopener noreferrer">informatics</a><a href="/study" data-nav-subitem="research-participate">participate</a></div>
+<a class="global-nav-item" href="/iam/privacy-first/" data-nav-item="privacy-first">privacy first</a>
+<a class="global-nav-item" href="/iam/business-model/" data-nav-item="business-model">business model</a>
+<a class="global-nav-item" href="/iam/traction/" data-nav-item="traction">traction</a>
+<a class="global-nav-item" href="/iam/impact/" data-nav-item="impact">impact</a>
+<a class="global-nav-item" href="/iam/check-in/" data-nav-item="check-in">check in</a>
+<a class="global-nav-item" href="/iam/our-team/" data-nav-item="our-team">our team</a>
+<a class="global-nav-item" href="/iam/shop/" data-nav-item="shop" aria-expanded="false">shop</a>
+<div class="global-nav-submenu" data-nav-submenu="shop"><a href="/iam/shop/" data-nav-subitem="shop-james-bondage-health">james bondage health - now open</a></div>
+<a class="global-nav-item" href="mailto:bk@universalmind.tv?subject=I%20Am%20Vogue%20%7C%20Referral" data-nav-item="contact">contact</a>
+</nav>
           <p class="global-nav-citation">
             A Direct Response To Orygen + Phoenix Australia’s
             <a href="https://www.orygen.org.au/Policy-Centre/Policy-Areas/Population-groups/The-next-post/Orygen_Young_veterans-Policy-paper_Mar2018edition_?ext=.pdf" target="_blank" rel="noreferrer">“The Next Post: Young people transitioning from military service and their mental health”</a>

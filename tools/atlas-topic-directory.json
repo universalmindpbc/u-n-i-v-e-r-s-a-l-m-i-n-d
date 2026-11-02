@@ -4,7 +4,7 @@
     "title": "Geometry Atlas",
     "question": "What sequences, geometric constructions and verification results arise across Fibonacci moduli M1–M1001?",
     "subject": "Mathematical calculations and representations",
-    "url": "https://universalmind.tv/informatics/?atlas=1",
+    "url": "https://universalmind.tv/informatics/geometry/",
     "wiki": "https://universalmind.tv/informatics/read/atlas/index.html"
   },
   {
@@ -12,7 +12,7 @@
     "title": "Transcription Atlas",
     "question": "Explore whether the four M9 P24 geometries help predict OXTR binding-site locations.",
     "subject": "OXTR transcription-factor binding sites, source evidence and coordinate comparisons",
-    "url": "https://universalmind.tv/informatics/?entry=research&area=transcription",
+    "url": "https://universalmind.tv/informatics/transcription/",
     "wiki": "https://universalmind.tv/informatics/read/transcription/index.html"
   },
   {
@@ -28,7 +28,7 @@
     "title": "Quantum Atlas",
     "question": "What biological questions can the coordinated AI and quantum workflow investigate, and how can people and external AIs take part?",
     "subject": "Natural-language biological research with Astra, Gemini, coordinated calculations and public MCP/API/A2A participation",
-    "url": "https://universalmind.tv/informatics/?entry=research&area=quantum",
+    "url": "https://universalmind.tv/informatics/quantum/",
     "wiki": "https://universalmind.tv/informatics/read/quantum/index.html"
   },
   {
@@ -36,7 +36,7 @@
     "title": "Music Atlas",
     "question": "How do Fibonacci and modular sequences relate to musical structure, tuning and responses to electronic music?",
     "subject": "Sound and auditory experience",
-    "url": "https://universalmind.tv/informatics/?entry=research&area=sound",
+    "url": "https://universalmind.tv/informatics/sound/",
     "wiki": "https://universalmind.tv/informatics/read/music/index.html"
   },
   {
@@ -44,7 +44,7 @@
     "title": "Vision Atlas · EMDR and ocular biology",
     "question": "Does hexagonal saccadic tracking differ from bilateral horizontal tracking in EMDR visual stimulation?",
     "subject": "Human eye movement and visual stimulation; an EMDR hypothesis",
-    "url": "https://universalmind.tv/informatics/?entry=research&area=vision",
+    "url": "https://universalmind.tv/informatics/vision/",
     "wiki": "https://universalmind.tv/informatics/read/vision/index.html"
   },
   {
@@ -52,7 +52,7 @@
     "title": "Language Atlas",
     "question": "How do language, mantra and related research connect to the mental-health investigation?",
     "subject": "Language and mantra research",
-    "url": "https://universalmind.tv/informatics/?entry=research&area=language",
+    "url": "https://universalmind.tv/informatics/language/",
     "wiki": "https://universalmind.tv/informatics/read/language/index.html"
   },
   {
@@ -60,7 +60,7 @@
     "title": "Computer vision for genomics",
     "question": "Can Fibonacci Pisano geometry improve the cost, speed and accuracy of hyperspectral image analysis for genomics?",
     "subject": "Computational image analysis; a proposed algorithm research direction",
-    "url": "https://universalmind.tv/informatics/?about",
+    "url": "https://universalmind.tv/informatics/about/",
     "wiki": "https://universalmind.tv/informatics/read/computer-vision/index.html"
   }
 ]

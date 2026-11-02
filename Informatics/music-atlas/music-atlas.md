@@ -311,7 +311,7 @@ Gamma positions: 24, 4, 8, 12, 16, 20. Gamma Alpha values: 9, 3, 3, 9, 6, 6.
 
 ## Source and downloads
 
-[Interactive Music Atlas](https://universalmind.tv/informatics/?entry=research&area=sound) · [AI / LLM Wiki](https://universalmind.tv/informatics/read/music/index.html)
+[Interactive Music Atlas](https://universalmind.tv/informatics/sound/) · [AI / LLM Wiki](https://universalmind.tv/informatics/read/music/index.html)
 
 Source: atlas-visuals.js · SHA-256: 72ebebbb51ad51b094ec5072e051885fdf134ccd51bf0a9bc73ba9dfddbb5235
 

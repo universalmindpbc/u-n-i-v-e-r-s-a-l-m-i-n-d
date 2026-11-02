@@ -4,7 +4,7 @@
  const active=()=>document.getElementById('experience').dataset.area==='molecular'&&!document.getElementById('experience').hidden;
  function notify(visible=active()){frame.contentWindow.postMessage({type:'molecular:visibility',active:visible},location.origin);}
  document.addEventListener('atlas:area',event=>{
-  if(event.detail==='molecular'&&!frame.getAttribute('src')){const url=new URL(frame.dataset.src,location.href);try{const f=JSON.parse(new URLSearchParams(location.search).get('section'));if(f?.area==='molecular'){url.search=f.search||'';url.hash=f.hash||'';url.searchParams.set('embedded','1');}}catch{}frame.src=url.href;}
+  if(event.detail==='molecular'&&!frame.getAttribute('src')){const url=new URL(frame.dataset.src,document.baseURI);for(const[k,v]of new URLSearchParams(location.search))url.searchParams.set(k,v);url.searchParams.set('embedded','1');url.hash=location.hash;try{const f=JSON.parse(new URLSearchParams(location.search).get('section'));if(f?.area==='molecular'){url.search=f.search||'';url.hash=f.hash||'';url.searchParams.set('embedded','1');}}catch{}frame.src=url.href;}
   else if(frame.getAttribute('src'))notify(event.detail==='molecular');
  });
  frame.addEventListener('load',()=>{

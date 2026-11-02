@@ -2588,6 +2588,6 @@ The separate Calculated mode retains the PBE0/def2-SVP fields for the capped Tyr
 
 ## Sources
 
-- [molecular/index.html](https://universalmind.tv/informatics/molecular/index.html) · SHA-256: 3530cc1283c982f47eedad95d2f81456d381b176fdef1533b67396bfe4a9e548 · Exact file bytes
+- [molecular/index.html](https://universalmind.tv/informatics/molecular/index.html) · SHA-256: 7c0c8fadb9cb7a1c108de2d2e4777d28af473115be318e311d3a983bb607953f · Exact file bytes
 - [molecular/interaction-ui.js](https://universalmind.tv/informatics/molecular/interaction-ui.js) · SHA-256: bfa28324268e2be47f6e4eb0f4250270b8846b37013f4eb78eed6bf255d86d6e · Exact file bytes
 - [molecular/data/catalogue.json](https://universalmind.tv/informatics/molecular/data/catalogue.json) · SHA-256: 52fe47c82c28997bd15ba7ed59e8643125546fa38242d80f6c7d7c8da597c04c · Exact file bytes

@@ -14,6 +14,18 @@ AddType application/vnd.apple.pkpass .pkpass
 
 RewriteEngine On
 
+# BEGIN Portal navigation compatibility
+RewriteCond %{QUERY_STRING} !(^|&)(adaptiveFrame|musicTelevisionFrame|navigationShell|embedded)=1(&|$) [NC]
+RewriteCond %{THE_REQUEST} \s/+vogue/iam/[^?\s]+ [NC]
+RewriteRule ^vogue/iam/(about\.html|business\-model\.html|impact\.html|index\.html|light\.html|our\-team\.html|privacy\-first\.html|program\.html|research\.html|science\.html|shop\.html|technology\-citizen\-needs\.html|technology\-inference\-engine\.html|traction\.html|vogue\-self\-report\.html)$ site-navigation/legacy.php [L]
+# Preserve the existing lightweight phone entry for TV and check-in.
+RewriteCond %{HTTP_USER_AGENT} !(iPad|Macintosh.*Mobile) [NC]
+RewriteCond %{HTTP_USER_AGENT} (Mobile|iPhone|iPod|IEMobile|Opera\ Mini|BlackBerry|webOS) [NC]
+RewriteCond %{QUERY_STRING} !(^|&)full=1(&|$) [NC]
+RewriteRule ^iam/(tv|check-in)/?$ /vogue/iam/induction.html?mobile=1 [R=302,L,NE]
+# END Portal navigation compatibility
+
+
 # Confidential source material is never a public asset, even if a stale copy exists.
 RewriteRule (^|/)s[[:space:]]o[[:space:]]v[[:space:]]e[[:space:]]r[[:space:]]e[[:space:]]i[[:space:]]g[[:space:]]n[[:space:]]t[[:space:]]y(/|$) - [F,L,NC]
 RewriteRule (^|/)\.private(/|$) - [F,L]

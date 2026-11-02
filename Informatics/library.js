@@ -284,7 +284,7 @@
     $('#article-body').querySelector('[data-paper-detail]')?.remove();
     if (!$('#article').open) $('#article').showModal();
     $('#article').scrollTop = 0;
-    const url = new URL(location.href); url.searchParams.set('record',paper.recordId); url.searchParams.set('paper',paper.id); history.replaceState(null,'',url);
+    const url = new URL(location.href); url.searchParams.set('record',paper.recordId); url.searchParams.set('paper',paper.id); history.replaceState(null,'',url); if (window.parent !== window) window.parent.postMessage({type:'informatics:library-selection',href:url.href},location.origin);
   }
   function openRecord(id, opener) {
     const record = records.find(r => r.id === id || r.aliases.includes(id));
@@ -346,11 +346,11 @@
   };
   window.UniversalResearchContext=()=>({collection,chapter:chapterNumber,query:$('#query').value,includeRelated:$('#include-related').checked,filters:Object.fromEntries(multiFields.map(key=>[key,multi.values(key)]))});
   function closePaper() {
-    const url = new URL(location.href); url.searchParams.delete('record'); url.searchParams.delete('paper'); history.replaceState(null,'',url);
+    const url = new URL(location.href); url.searchParams.delete('record'); url.searchParams.delete('paper'); history.replaceState(null,'',url); if (window.parent !== window) window.parent.postMessage({type:'informatics:library-selection',href:url.href},location.origin);
     $('#article').close();
   }
   $('#article').addEventListener('close', () => {
-    const url = new URL(location.href); url.searchParams.delete('record'); url.searchParams.delete('paper'); history.replaceState(null,'',url);
+    const url = new URL(location.href); url.searchParams.delete('record'); url.searchParams.delete('paper'); history.replaceState(null,'',url); if (window.parent !== window) window.parent.postMessage({type:'informatics:library-selection',href:url.href},location.origin);
     if (articleOpener?.isConnected) articleOpener.focus({preventScroll:true});
   });
   $('#article').addEventListener('click', event => {

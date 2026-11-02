@@ -23,7 +23,7 @@ Watch one of 13 livestream electronic music and fashion channels across our cura
 
 The full About page identifies proposed care and fulfilment partners as invitations that are not yet confirmed. The public Science record contains evidence assessments and research limitations.
 
-Source: https://universalmind.tv/vogue/iam/about.html
+Source: https://universalmind.tv/iam/about/
 Entry: https://universalmind.tv/iam/
 Access: The public introduction and About page are readable directly. Participation uses the existing entry and consent flows.
 
@@ -110,7 +110,7 @@ Wolfram is our planned primary computational environment for symbolic geometry a
 
 
 
-Source: https://universalmind.tv/informatics/?about
+Source: https://universalmind.tv/informatics/about/
 Entry: https://universalmind.tv/informatics/
 Access: The research wiki, publication records and download directory are public. API and MCP access are optional.
 
@@ -122,15 +122,15 @@ Access: The research wiki, publication records and download directory are public
 - [AI reading guide](https://universalmind.tv/llms.txt): Universal Mind; Plain text; Public.
 - [Structured guide and resource directory](https://universalmind.tv/read/resources.json): Universal Mind; JSON; Public.
 - [I AM introduction](https://universalmind.tv/vogue/iam/induction.html): I AM; HTML; Public.
-- [About I AM](https://universalmind.tv/vogue/iam/about.html): I AM; HTML; Public.
-- [Programme: 13 livestream channels](https://universalmind.tv/vogue/iam/program.html): I AM; HTML; Public.
-- [Science and evidence](https://universalmind.tv/vogue/iam/science.html): I AM; HTML; Public.
+- [About I AM](https://universalmind.tv/iam/about/): I AM; HTML; Public.
+- [Programme: 13 livestream channels](https://universalmind.tv/iam/program/): I AM; HTML; Public.
+- [Science and evidence](https://universalmind.tv/iam/science/): I AM; HTML; Public.
 - [Sound prototype research record](https://universalmind.tv/vogue/iam/sound-prototype-research.html): I AM; HTML; Public.
-- [Our Team](https://universalmind.tv/vogue/iam/our-team.html): I AM; HTML; Public.
-- [Voluntary check-in](https://universalmind.tv/vogue/iam/vogue-self-report.html): I AM; HTML; Voluntary participation.
+- [Our Team](https://universalmind.tv/iam/our-team/): I AM; HTML; Public.
+- [Voluntary check-in](https://universalmind.tv/iam/check-in/): I AM; HTML; Voluntary participation.
 - [Electronic music television](https://universalmind.tv/vogue/iam/index.html): I AM; HTML; Interactive experience.
-- [Citizen Needs technology](https://universalmind.tv/vogue/iam/technology-citizen-needs.html): I AM; HTML; Public.
-- [Adaptive Content Matrix](https://universalmind.tv/vogue/iam/technology-inference-engine.html): I AM; HTML; Public.
+- [Citizen Needs technology](https://universalmind.tv/iam/technology/): I AM; HTML; Public.
+- [Adaptive Content Matrix](https://universalmind.tv/iam/technology/recommendations/): I AM; HTML; Public.
 - [athousandminds experience and About](https://universalmind.tv/events/): athousandminds; HTML; Invitation login.
 - [Happiness experience and About](https://universalmind.tv/happiness/): Happiness; HTML; Invitation login.
 - [Informatics wiki](https://universalmind.tv/informatics/read/): Universal Informatics; HTML; Public.
@@ -152,8 +152,8 @@ Access: The research wiki, publication records and download directory are public
 - [Data, methods and checksums](https://universalmind.tv/informatics/read/data.html): Universal Informatics; HTML; Public.
 - [Archive and timestamp record](https://universalmind.tv/informatics/read/provenance.html): Universal Informatics; HTML; Public.
 - [Informatics AI access and reuse](https://universalmind.tv/informatics/read/access.html): Universal Informatics; HTML; Public.
-- [Connect and download: API, MCP, A2A, JSON and CSV](https://universalmind.tv/informatics/connect.html): Universal Informatics; HTML; Public. Connection instructions and complete dataset exports; research scope.
-- [Complete dataset manifest](https://universalmind.tv/informatics/exports/manifest-8eaf5c1278019b85d9136b9eb33ea9a23c2d27d44a88941e6b4a0b2afc1494de.json): Universal Informatics; JSON; Public. Current export files, sizes and checksums.
+- [Connect and download: API, MCP, A2A, JSON and CSV](https://universalmind.tv/informatics/connect/): Universal Informatics; HTML; Public. Connection instructions and complete dataset exports; research scope.
+- [Complete dataset manifest](https://universalmind.tv/informatics/exports/manifest-6ec89288db0d688635045ab6f3388e49fd5418ef4743493a1cc151f8807af978.json): Universal Informatics; JSON; Public. Current export files, sizes and checksums.
 - [Dataset guide](https://universalmind.tv/informatics/exports/README.md): Universal Informatics; Markdown; Public.
 - [Atlas JSON bundle](https://universalmind.tv/informatics/pilot-v1/m1-m1001-data.zip): Universal Informatics; ZIP / JSON; Public.
 - [Atlas CSV bundle](https://universalmind.tv/informatics/pilot-v1/m1-m1001-csv.zip): Universal Informatics; ZIP / CSV; Public.
@@ -177,10 +177,13 @@ Access: The research wiki, publication records and download directory are public
 - [Computer vision for genomics · page explanations](https://universalmind.tv/informatics/atlas-guides/computer-vision-atlas.json?v=2026-11-01-page-narrative-4): Universal Informatics; JSON; Public.
 - [Computer vision for genomics · page explanations](https://universalmind.tv/informatics/atlas-guides/computer-vision-atlas.csv?v=2026-11-01-page-narrative-4): Universal Informatics; CSV; Public.
 - [Computer vision for genomics · page explanations](https://universalmind.tv/informatics/atlas-guides/computer-vision-atlas.md?v=2026-11-01-page-narrative-4): Universal Informatics; Markdown; Public.
-- [Vision research](https://universalmind.tv/informatics/library.html?collection=vision): Universal Informatics; HTML; Public.
-- [Sound research](https://universalmind.tv/informatics/library.html?collection=sound): Universal Informatics; HTML; Public.
-- [Language research](https://universalmind.tv/informatics/library.html?collection=language): Universal Informatics; HTML; Public.
-- [Public sitemap](https://universalmind.tv/sitemap.xml): Universal Mind; XML; Public.
+- [Vision research](https://universalmind.tv/informatics/research/?collection=vision): Universal Informatics; HTML; Public.
+- [Sound research](https://universalmind.tv/informatics/research/?collection=sound): Universal Informatics; HTML; Public.
+- [Language research](https://universalmind.tv/informatics/research/?collection=language): Universal Informatics; HTML; Public.
+- [Website sitemap](https://universalmind.tv/sitemap/): Universal Mind; HTML; Public.
+- [Informatics sitemap](https://universalmind.tv/informatics/sitemap/): Universal Informatics; HTML; Public.
+- [I AM sitemap](https://universalmind.tv/iam/sitemap/): I AM; HTML; Public.
+- [Crawler sitemap index](https://universalmind.tv/sitemap.xml): Universal Mind; XML; Public.
 
 ## AI access and reuse
 

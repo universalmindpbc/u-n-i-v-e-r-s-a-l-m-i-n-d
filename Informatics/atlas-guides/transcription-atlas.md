@@ -250,7 +250,7 @@ Unknown positions remain unfilled. Source review depth is stated for each paper;
 
 [JSON](https://universalmind.tv/informatics/atlas-guides/transcription-atlas.json?v=2026-11-01-page-narrative-4) · [CSV](https://universalmind.tv/informatics/atlas-guides/transcription-atlas.csv?v=2026-11-01-page-narrative-4) · [MD](https://universalmind.tv/informatics/atlas-guides/transcription-atlas.md?v=2026-11-01-page-narrative-4)
 
-[Interactive page](https://universalmind.tv/informatics/?entry=research&area=transcription) · [Wiki](https://universalmind.tv/informatics/read/transcription/index.html)
+[Interactive page](https://universalmind.tv/informatics/transcription/) · [Wiki](https://universalmind.tv/informatics/read/transcription/index.html)
 
 ## Complete guide data
 

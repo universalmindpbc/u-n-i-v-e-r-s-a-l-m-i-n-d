@@ -123,7 +123,7 @@ assert.match(comedyChannel, /suspendProgrammeForPresentation/);
 assert.match(comedyChannel, /analyseEncodedBars/);
 assert.match(comedyChannel, /leaveForNavigation/);
 assert.match(controller, /window\.IAMSexEdProgramme/);
-assert.match(globalNav, /href="about\.html\?aboutTopLevel=1"[\s\S]{0,180}href="program\.html"/);
+assert.match(globalNav, /href="\/iam\/about\/"[\s\S]{0,180}href="\/iam\/program\/"/);
 assert.equal((globalNav.match(/data-nav-item="program"/g) || []).length, 1);
 assert.match(mobile, /"program\.html"/);
 assert.match(htaccess, /\(induction\|about\|program\|science/);

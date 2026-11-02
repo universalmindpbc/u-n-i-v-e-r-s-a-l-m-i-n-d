@@ -1,77 +1,77 @@
 {
   "schema": "universal-informatics/complete-dataset/v1",
-  "dataset_version": "8eaf5c1278019b85d9136b9eb33ea9a23c2d27d44a88941e6b4a0b2afc1494de",
+  "dataset_version": "6ec89288db0d688635045ab6f3388e49fd5418ef4743493a1cc151f8807af978",
   "sources": [
     {
       "id": "atlas-guides/computer-vision-atlas.csv",
       "source_path": "atlas-guides/computer-vision-atlas.csv",
-      "sha256": "68d72b2b31d931ca51136774b2615cb9347958bd0390c551c1be2d84c41331a7",
+      "sha256": "13ca13e52419ccd29a5d54f27c96e4eec479583e2e3ecc39d8ad94896e2a6920",
       "format": "csv"
     },
     {
       "id": "atlas-guides/computer-vision-atlas.json",
       "source_path": "atlas-guides/computer-vision-atlas.json",
-      "sha256": "1db3130921b3baedd38861bd3b1b302b4c98b12afdec4a0a71b72520b7fab540",
+      "sha256": "222490b3b8196ca6391595ff2ecd9657b912f2d3095d571f5340f7bc25ed8fba",
       "format": "json"
     },
     {
       "id": "atlas-guides/geometry-atlas.csv",
       "source_path": "atlas-guides/geometry-atlas.csv",
-      "sha256": "0720b4a80f0e84337d0a933c3f7963a8fa75e7c1e6d3e89b3b5c667470970bfb",
+      "sha256": "c001f1181d5560d33944909797e5859a7563fd224cc3caa644edd620728199f3",
       "format": "csv"
     },
     {
       "id": "atlas-guides/geometry-atlas.json",
       "source_path": "atlas-guides/geometry-atlas.json",
-      "sha256": "c36eeacf40de569564fabf0e24517c898e5b2102dea0f1e84021ecc532419419",
+      "sha256": "c882777c092a1f5e20caf6c9dabfb3735e9feded212d5dc9546e23712817c2bd",
       "format": "json"
     },
     {
       "id": "atlas-guides/language-atlas.csv",
       "source_path": "atlas-guides/language-atlas.csv",
-      "sha256": "adccb6cb2cfd2d93f616e678a5a31df148a3b9e83aa56a5397f4d3dbc70b5a6c",
+      "sha256": "5d0cf0582ff3b3823d3a1ce9b3f59b9d28b131682c2c9a7c87c87eea1a843510",
       "format": "csv"
     },
     {
       "id": "atlas-guides/language-atlas.json",
       "source_path": "atlas-guides/language-atlas.json",
-      "sha256": "a6583481b2becad59c027717e9967d82c218ba25ad92fb4cb3ac2ef463aabe71",
+      "sha256": "4babb2fe00df5faeeef160d6b32cf4d681e5202baedc7785aafa7d84055c4934",
       "format": "json"
     },
     {
       "id": "atlas-guides/molecular-atlas.csv",
       "source_path": "atlas-guides/molecular-atlas.csv",
-      "sha256": "c9054566235aedeb6acfb94cf5f04641509fb9974cf527a3314fc6b1ba068575",
+      "sha256": "ec051eeae4cc70ff6c225a8d71c7641acfec3784fcde90a351bc06c5ca2ffe43",
       "format": "csv"
     },
     {
       "id": "atlas-guides/molecular-atlas.json",
       "source_path": "atlas-guides/molecular-atlas.json",
-      "sha256": "505f63ff29abfab885b98ee1c156cc73e6592a117b0381dfff6101c4dd515905",
+      "sha256": "cd89479207cbe3c998c5e4eb2934189744d5b27f6cf1648b16182fd2ab54aca8",
       "format": "json"
     },
     {
       "id": "atlas-guides/transcription-atlas.csv",
       "source_path": "atlas-guides/transcription-atlas.csv",
-      "sha256": "1371616efbc71ffd257a7d51838462bbcdbbd6dd523a527a8ff6efdda6fafa4d",
+      "sha256": "d571c216ac8b8fe8e75909c63f979509e83341cee913a6841aa526571168c717",
       "format": "csv"
     },
     {
       "id": "atlas-guides/transcription-atlas.json",
       "source_path": "atlas-guides/transcription-atlas.json",
-      "sha256": "bd345e1b5e8729e5b97da236b55a7a6acf90579669a8a1affc86ed2d8136e1c7",
+      "sha256": "71c66c26df481748f57553e69555f052a4ed7a80c2dac79e7f6b75387d924329",
       "format": "json"
     },
     {
       "id": "atlas-guides/vision-atlas.csv",
       "source_path": "atlas-guides/vision-atlas.csv",
-      "sha256": "5d339eeddb7bd61ec241d7c6345bd281bf1b2ddaf7c57cd76eb371c5f666d042",
+      "sha256": "e5f874ac6bb67f1d5a306919abdcc7888ce0e4e37c1047eb35bd00541ced7d06",
       "format": "csv"
     },
     {
       "id": "atlas-guides/vision-atlas.json",
       "source_path": "atlas-guides/vision-atlas.json",
-      "sha256": "5bcdeb6ab5b62b50b3ea7ce5e88edc9c88de3adeda905ff399d3df1cc2542ebc",
+      "sha256": "4bab8853bd49f5fbec8f6cf3e5b5948acc461ae6b94bd95e581caed878b937ca",
       "format": "json"
     },
     {
@@ -353,13 +353,13 @@
     {
       "id": "music-atlas/music-atlas.csv",
       "source_path": "music-atlas/music-atlas.csv",
-      "sha256": "a12559a93a7538e9b8cf1b430370c2f74ad959e43b15a77abdaaf0d2bc5b5bf9",
+      "sha256": "0c6a655c3e1bf992aed4e5043db95a11f04aa7d4552367d50c99b266b6466b4b",
       "format": "csv"
     },
     {
       "id": "music-atlas/music-atlas.json",
       "source_path": "music-atlas/music-atlas.json",
-      "sha256": "568b5e858604556d896f1fd51c4a40dbfde7373c50b2a62474917d3929e971f1",
+      "sha256": "d105fe1f5211e955baee4bc4817166bb2b5347949890a617c8a31c9680bc7bf4",
       "format": "json"
     },
     {
@@ -7145,13 +7145,13 @@
     {
       "id": "quantum/reading/quantum-atlas.csv",
       "source_path": "quantum/reading/quantum-atlas.csv",
-      "sha256": "f8e101f31f3413337e995c8dadd59fb367ab31d8eaad9ff4bc119cd7f2794d89",
+      "sha256": "2214a5f4f173018be529c64be94832464202a27486b74d5a2dd043466a658fab",
       "format": "csv"
     },
     {
       "id": "quantum/reading/quantum-atlas.json",
       "source_path": "quantum/reading/quantum-atlas.json",
-      "sha256": "45b431418476b27db8fbedadf2361cda5fecf09513dceb6d663e54c27b3b54b9",
+      "sha256": "0ef1e3367348699cd68480cb2bf84b7f2f09e36832c7632b663e143d268b4c8c",
       "format": "json"
     },
     {
@@ -52262,44 +52262,44 @@
   "downloads": {
     "json": {
       "file": "informatics-complete.json.gz",
-      "bytes": 80869893,
-      "uncompressed_bytes": 788064271,
-      "sha256": "0cb2de9648206491858403d4b448ed1c7b7dd61d1fd44d8fc1d9caa46f59c66e",
-      "uncompressed_sha256": "5207f8a4afe6d1065acac069aa8c613f01be20a4fc81e5447279539e6cf114d3",
+      "bytes": 80869572,
+      "uncompressed_bytes": 788064073,
+      "sha256": "e0c23d7ca7a4e3378522d79c640b5fc2c60576647661f351848b4b234fa9dbf6",
+      "uncompressed_sha256": "d95e110faca987164b65b37f7842a5f36e1cdfb35a14fbc987064c96b5311c9f",
       "parts": [
         {
-          "file": "part-8f4d2255ee067d01b6ed55f319e0ab68b3d6059e6661d355f6dead2f90a6dbf9.bin",
+          "file": "part-2af95a03fa1a0a84295c2b24689983b6df55c686e5d12ec99ed23afdd98602b3.bin",
           "bytes": 50331648,
-          "sha256": "8f4d2255ee067d01b6ed55f319e0ab68b3d6059e6661d355f6dead2f90a6dbf9"
+          "sha256": "2af95a03fa1a0a84295c2b24689983b6df55c686e5d12ec99ed23afdd98602b3"
         },
         {
-          "file": "part-57fc0117b0ab2b5303d731339dfc48a459f65db27d5c05c1234dc15add791e19.bin",
-          "bytes": 30538245,
-          "sha256": "57fc0117b0ab2b5303d731339dfc48a459f65db27d5c05c1234dc15add791e19"
+          "file": "part-111cefb2bc669e8bbb44e647d7c084bf18172ed84c88ce6b7fd8f46fd7c801f5.bin",
+          "bytes": 30537924,
+          "sha256": "111cefb2bc669e8bbb44e647d7c084bf18172ed84c88ce6b7fd8f46fd7c801f5"
         }
       ]
     },
     "csv": {
       "file": "informatics-complete.csv.gz",
-      "bytes": 150569543,
-      "uncompressed_bytes": 2467453898,
-      "sha256": "4f0b0ad0f33358ddd9a0dece047a1da4a539bba4a9e253be94f2966d1d537d39",
-      "uncompressed_sha256": "6fadebe9f3fdb1f51d53fdc715016ce91347ceb7b9a392bdaf5354b6bb0f61a6",
+      "bytes": 150569275,
+      "uncompressed_bytes": 2467453700,
+      "sha256": "9ed6a72465121b39715207f6628d4e6dfaf0beee800e868cb0348e08de2b4f2e",
+      "uncompressed_sha256": "cc24e4ab73e21805e1b2d9defa8b166de5774e2248dcf9b28a39116f98347b7e",
       "parts": [
         {
-          "file": "part-4b2c29f0a915a6427995375f82693d3e2cdd94cb7aec5169c57132f5f4907272.bin",
+          "file": "part-64c757f9f906857de7e9139b8b801c594f25c3102eabc9458246f67207d2bc54.bin",
           "bytes": 50331648,
-          "sha256": "4b2c29f0a915a6427995375f82693d3e2cdd94cb7aec5169c57132f5f4907272"
+          "sha256": "64c757f9f906857de7e9139b8b801c594f25c3102eabc9458246f67207d2bc54"
         },
         {
-          "file": "part-33459e8f64de447e8a3afceca35b51d57772cdc239017816202305de54829663.bin",
+          "file": "part-689f90ad53376d22b68b16be667b0687083998653552d9a6fa3257947b907a55.bin",
           "bytes": 50331648,
-          "sha256": "33459e8f64de447e8a3afceca35b51d57772cdc239017816202305de54829663"
+          "sha256": "689f90ad53376d22b68b16be667b0687083998653552d9a6fa3257947b907a55"
         },
         {
-          "file": "part-b45ff9da4b04589a398b324e781ad14c71c4e266dee2101e8fc7f819877558ff.bin",
-          "bytes": 49906247,
-          "sha256": "b45ff9da4b04589a398b324e781ad14c71c4e266dee2101e8fc7f819877558ff"
+          "file": "part-8d10ece88a30f354c97762ce1c241b7c1f5b125e7a87049155e4125c7878483b.bin",
+          "bytes": 49905979,
+          "sha256": "8d10ece88a30f354c97762ce1c241b7c1f5b125e7a87049155e4125c7878483b"
         }
       ]
     }

@@ -44,7 +44,7 @@ from approved_informatics_about import build as read_approved_about, html as abo
 approved_about=read_approved_about(ROOT/'Informatics/index.html')
 channels = plain(re.search(r'<li><strong>(Watch one of 13.*?)</strong>', iam, re.S)[1])
 projects = [
-    dict(id='iam', name='I AM', route='Watch TV', url=ORIGIN+'/iam/', source=ORIGIN+'/vogue/iam/about.html',
+    dict(id='iam', name='I AM', route='Watch TV', url=ORIGIN+'/iam/', source=ORIGIN+'/iam/about/',
          source_file='i  a m/about.html', access='The public introduction and About page are readable directly. Participation uses the existing entry and consent flows.',
          paragraphs=[paragraph_with(iam, p) for p in ['I AM is a free online mental health', 'I AM brings electronic music', 'When anxiety or crisis arrives', 'Your voluntary check-in -']] + [channels],
          context=['The full About page identifies proposed care and fulfilment partners as invitations that are not yet confirmed. The public Science record contains evidence assessments and research limitations.']),
@@ -57,13 +57,22 @@ projects = [
          source_file='happiness/index.php', access='The festival experience uses the existing invitation login. These About excerpts are public.',
          paragraphs=[paragraph_with(happiness, p) for p in ['Happiness is a universal', 'Happiness also powers', 'Our mission is lowering']],
          context=['The About text describes the project and its mission. Named technologies and organisations are not, by their inclusion here, confirmation of a formal partnership or independently validated clinical performance.']),
-    dict(id='informatics', name='Universal Informatics', route='Explore Research', url=ORIGIN+'/informatics/', source=ORIGIN+'/informatics/?about',
+    dict(id='informatics', name='Universal Informatics', route='Explore Research', url=ORIGIN+'/informatics/', source=ORIGIN+'/informatics/about/',
          source_file='Informatics/index.html', access='The research wiki, publication records and download directory are public. API and MCP access are optional.',
          paragraphs=[approved_about['intro']], about_blocks=approved_about['blocks'][2:],
          context=[])
 ]
 
+portal_navigation=json.loads((ROOT/'site-navigation/portals.json').read_text())
+route_aliases={}
+for portal in portal_navigation['portals']:
+    for entry in portal['entries']:
+        for item in [entry,*entry.get('children',[])]:
+            if item.get('source') and item['source']!='index.html':
+                route_aliases[('/vogue/iam/' if portal['id']=='iam' else '/informatics/')+item['source']]=item['url']
+
 def resource(title, path, project, format='HTML', access='Public', description=''):
+    path=route_aliases.get(path,path)
     return dict(title=title, url=path if path.startswith('https://') else ORIGIN+path,
                 project=project, format=format, access=access, description=description)
 
@@ -127,7 +136,10 @@ research_collections = re.findall(
 assert [item[0] for item in research_collections] == ['emdr', 'sound', 'mantra']
 for _, collection, url in research_collections:
     resources.append(resource(collection+' research', url, 'Universal Informatics'))
-resources.append(resource('Public sitemap', '/sitemap.xml', 'Universal Mind', 'XML'))
+resources.append(resource('Website sitemap', '/sitemap/', 'Universal Mind'))
+resources.append(resource('Informatics sitemap', '/informatics/sitemap/', 'Universal Informatics'))
+resources.append(resource('I AM sitemap', '/iam/sitemap/', 'I AM'))
+resources.append(resource('Crawler sitemap index', '/sitemap.xml', 'Universal Mind', 'XML'))
 
 access = [
     'This is Universal Mind’s first-party guide to its projects. The project descriptions are excerpts from the existing About pages and Informatics wiki. Their source links are provided above.',

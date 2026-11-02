@@ -66,7 +66,8 @@ for experiment in json.loads((SITE/'quantum/experiments/index.json').read_text()
 assert len(list((SITE/'read/atlas').glob('m*.html')))==1001
 assert len(list((SITE/'read/publications').glob('*.html')))-1==report['publications']
 ns={'s':'http://www.sitemaps.org/schemas/sitemap/0.9'}
-urls={n.text for n in ET.parse(ROOT/'sitemap.xml').findall('s:url/s:loc',ns)}
+from sitemap_urls import sitemap_urls
+urls=sitemap_urls(ROOT)
 links=0
 for p in list(SITE.glob('*.html'))+list((SITE/'molecular').glob('*.html'))+list((SITE/'quantum').glob('*.html'))+pages:
     d=Document();d.feed(p.read_text())
@@ -82,7 +83,7 @@ for p in list(SITE.glob('*.html'))+list((SITE/'molecular').glob('*.html'))+list(
             target=unquote(u.path)
             if not target: continue
             local=ROOT/target.lstrip('/') if target.startswith('/') else p.parent/target
-            assert local.exists(),(p,href)
+            assert local.exists() or str(local.resolve()).lower() in [str((SITE/entry['id']).resolve()).lower() for portal in json.loads((ROOT/'site-navigation/portals.json').read_text())['portals'] if portal['id']=='informatics' for entry in portal['entries']],(p,href)
             links+=1
 for s in report['sourceHashes']:
     assert hashlib.sha256((SITE/s['path']).read_bytes()).hexdigest()==s['sha256'],s['path']

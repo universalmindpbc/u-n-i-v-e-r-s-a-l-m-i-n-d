@@ -3,7 +3,7 @@ path,type,value
 /schema,string,universal-informatics/atlas-page-guide/v1
 /title,string,Vision Atlas · EMDR and ocular biology
 /version,string,2026-11-01-page-narrative-4
-/url,string,https://universalmind.tv/informatics/?entry=research&area=vision
+/url,string,https://universalmind.tv/informatics/vision/
 /wiki,string,https://universalmind.tv/informatics/read/vision/index.html
 /page_narrative,array,37
 /page_narrative/0,object,
@@ -141,7 +141,7 @@ path,type,value
 /sources/0,object,
 /sources/0/path,string,index.html
 /sources/0/url,string,https://universalmind.tv/informatics/index.html
-/sources/0/sha256,string,a8a3c48bb8e24800c3d0812c654d36ef6f03422cdce94a096da7c2017d92395d
+/sources/0/sha256,string,7e37a3a7319da7d68dc997530f2b33ac97057c8de0885b5cfd79e9958219376a
 /sources/0/sha256_scope,string,HTML with generated Atlas narrative blocks removed
 /sources/1,object,
 /sources/1/path,string,vision-science.js

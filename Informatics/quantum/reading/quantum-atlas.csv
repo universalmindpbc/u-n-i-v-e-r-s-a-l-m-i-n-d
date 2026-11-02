@@ -3,7 +3,7 @@ path,type,value
 /schema,string,universal-informatics/quantum-atlas-guide/v1
 /title,string,Quantum Atlas · AI / LLM Wiki
 /version,string,2026-11-01-topic-focus-2
-/url,string,https://universalmind.tv/informatics/?entry=research&area=quantum
+/url,string,https://universalmind.tv/informatics/quantum/
 /wiki,string,https://universalmind.tv/informatics/read/quantum/index.html
 /agent_architecture,object,
 /agent_architecture/version,string,2026-11-01-topic-focus-2
@@ -543,7 +543,7 @@ path,type,value
 /agent_architecture/implementation_sources,array,16
 /agent_architecture/implementation_sources/0,object,
 /agent_architecture/implementation_sources/0/repository_path,string,Informatics/quantum/index.html
-/agent_architecture/implementation_sources/0/sha256,string,1c85176a9a6bb6182bc80d0a1535722ad1d434f42aca973fe7018b35bd085aec
+/agent_architecture/implementation_sources/0/sha256,string,f65005ddb453ecf33985d98ce842517ab95269f17a2455d6879002284946bc90
 /agent_architecture/implementation_sources/0/scope,string,Original primary-page source with generated reading blocks removed
 /agent_architecture/implementation_sources/1,object,
 /agent_architecture/implementation_sources/1/repository_path,string,Informatics/quantum/study.js

@@ -13,7 +13,7 @@
       "name": "I AM",
       "route": "Watch TV",
       "url": "https://universalmind.tv/iam/",
-      "source": "https://universalmind.tv/vogue/iam/about.html",
+      "source": "https://universalmind.tv/iam/about/",
       "source_file": "i  a m/about.html",
       "access": "The public introduction and About page are readable directly. Participation uses the existing entry and consent flows.",
       "paragraphs": [
@@ -26,7 +26,7 @@
       "context": [
         "The full About page identifies proposed care and fulfilment partners as invitations that are not yet confirmed. The public Science record contains evidence assessments and research limitations."
       ],
-      "source_sha256": "3454be5bb4ad06da0fb758c00b4d63b17384dacc5550c1c02a73eb9ffc5796e2"
+      "source_sha256": "06ee951d622536453503663cecd0b085c442295fc359ecbaf424d3db3ab11dfa"
     },
     {
       "id": "events",
@@ -74,7 +74,7 @@
       "name": "Universal Informatics",
       "route": "Explore Research",
       "url": "https://universalmind.tv/informatics/",
-      "source": "https://universalmind.tv/informatics/?about",
+      "source": "https://universalmind.tv/informatics/about/",
       "source_file": "Informatics/index.html",
       "access": "The research wiki, publication records and download directory are public. API and MCP access are optional.",
       "paragraphs": [
@@ -184,7 +184,7 @@
         }
       ],
       "context": [],
-      "source_sha256": "3f3622d109a9e56137334dd301939a7812a951dd6d8429c31e200096c116ea7b"
+      "source_sha256": "6cbd3689dd7345103e7f7f1be54d71ebce9608cb4e6d0fdf718f87424d688e6a"
     }
   ],
   "resources": [
@@ -238,7 +238,7 @@
     },
     {
       "title": "About I AM",
-      "url": "https://universalmind.tv/vogue/iam/about.html",
+      "url": "https://universalmind.tv/iam/about/",
       "project": "I AM",
       "format": "HTML",
       "access": "Public",
@@ -246,7 +246,7 @@
     },
     {
       "title": "Programme: 13 livestream channels",
-      "url": "https://universalmind.tv/vogue/iam/program.html",
+      "url": "https://universalmind.tv/iam/program/",
       "project": "I AM",
       "format": "HTML",
       "access": "Public",
@@ -254,7 +254,7 @@
     },
     {
       "title": "Science and evidence",
-      "url": "https://universalmind.tv/vogue/iam/science.html",
+      "url": "https://universalmind.tv/iam/science/",
       "project": "I AM",
       "format": "HTML",
       "access": "Public",
@@ -270,7 +270,7 @@
     },
     {
       "title": "Our Team",
-      "url": "https://universalmind.tv/vogue/iam/our-team.html",
+      "url": "https://universalmind.tv/iam/our-team/",
       "project": "I AM",
       "format": "HTML",
       "access": "Public",
@@ -278,7 +278,7 @@
     },
     {
       "title": "Voluntary check-in",
-      "url": "https://universalmind.tv/vogue/iam/vogue-self-report.html",
+      "url": "https://universalmind.tv/iam/check-in/",
       "project": "I AM",
       "format": "HTML",
       "access": "Voluntary participation",
@@ -294,7 +294,7 @@
     },
     {
       "title": "Citizen Needs technology",
-      "url": "https://universalmind.tv/vogue/iam/technology-citizen-needs.html",
+      "url": "https://universalmind.tv/iam/technology/",
       "project": "I AM",
       "format": "HTML",
       "access": "Public",
@@ -302,7 +302,7 @@
     },
     {
       "title": "Adaptive Content Matrix",
-      "url": "https://universalmind.tv/vogue/iam/technology-inference-engine.html",
+      "url": "https://universalmind.tv/iam/technology/recommendations/",
       "project": "I AM",
       "format": "HTML",
       "access": "Public",
@@ -478,7 +478,7 @@
     },
     {
       "title": "Connect and download: API, MCP, A2A, JSON and CSV",
-      "url": "https://universalmind.tv/informatics/connect.html",
+      "url": "https://universalmind.tv/informatics/connect/",
       "project": "Universal Informatics",
       "format": "HTML",
       "access": "Public",
@@ -486,7 +486,7 @@
     },
     {
       "title": "Complete dataset manifest",
-      "url": "https://universalmind.tv/informatics/exports/manifest-8eaf5c1278019b85d9136b9eb33ea9a23c2d27d44a88941e6b4a0b2afc1494de.json",
+      "url": "https://universalmind.tv/informatics/exports/manifest-6ec89288db0d688635045ab6f3388e49fd5418ef4743493a1cc151f8807af978.json",
       "project": "Universal Informatics",
       "format": "JSON",
       "access": "Public",
@@ -678,7 +678,7 @@
     },
     {
       "title": "Vision research",
-      "url": "https://universalmind.tv/informatics/library.html?collection=vision",
+      "url": "https://universalmind.tv/informatics/research/?collection=vision",
       "project": "Universal Informatics",
       "format": "HTML",
       "access": "Public",
@@ -686,7 +686,7 @@
     },
     {
       "title": "Sound research",
-      "url": "https://universalmind.tv/informatics/library.html?collection=sound",
+      "url": "https://universalmind.tv/informatics/research/?collection=sound",
       "project": "Universal Informatics",
       "format": "HTML",
       "access": "Public",
@@ -694,14 +694,38 @@
     },
     {
       "title": "Language research",
-      "url": "https://universalmind.tv/informatics/library.html?collection=language",
+      "url": "https://universalmind.tv/informatics/research/?collection=language",
       "project": "Universal Informatics",
       "format": "HTML",
       "access": "Public",
       "description": ""
     },
     {
-      "title": "Public sitemap",
+      "title": "Website sitemap",
+      "url": "https://universalmind.tv/sitemap/",
+      "project": "Universal Mind",
+      "format": "HTML",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "Informatics sitemap",
+      "url": "https://universalmind.tv/informatics/sitemap/",
+      "project": "Universal Informatics",
+      "format": "HTML",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "I AM sitemap",
+      "url": "https://universalmind.tv/iam/sitemap/",
+      "project": "I AM",
+      "format": "HTML",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "Crawler sitemap index",
       "url": "https://universalmind.tv/sitemap.xml",
       "project": "Universal Mind",
       "format": "XML",

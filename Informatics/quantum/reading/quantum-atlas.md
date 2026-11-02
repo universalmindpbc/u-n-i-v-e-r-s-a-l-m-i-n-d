@@ -1,6 +1,6 @@
 # Quantum Atlas · AI / LLM Wiki
 
-[Interactive Quantum Atlas](https://universalmind.tv/informatics/?entry=research&area=quantum) · [AI / LLM Wiki](https://universalmind.tv/informatics/read/quantum/index.html)
+[Interactive Quantum Atlas](https://universalmind.tv/informatics/quantum/) · [AI / LLM Wiki](https://universalmind.tv/informatics/read/quantum/index.html)
 
 ## What Quantum Atlas is for
 
@@ -644,7 +644,7 @@ The following JSON preserves the source fields, saved chart arrays, study interp
   "schema": "universal-informatics/quantum-atlas-guide/v1",
   "title": "Quantum Atlas · AI / LLM Wiki",
   "version": "2026-11-01-topic-focus-2",
-  "url": "https://universalmind.tv/informatics/?entry=research&area=quantum",
+  "url": "https://universalmind.tv/informatics/quantum/",
   "wiki": "https://universalmind.tv/informatics/read/quantum/index.html",
   "agent_architecture": {
     "version": "2026-11-01-topic-focus-2",
@@ -1335,7 +1335,7 @@ The following JSON preserves the source fields, saved chart arrays, study interp
     "implementation_sources": [
       {
         "repository_path": "Informatics/quantum/index.html",
-        "sha256": "1c85176a9a6bb6182bc80d0a1535722ad1d434f42aca973fe7018b35bd085aec",
+        "sha256": "f65005ddb453ecf33985d98ce842517ab95269f17a2455d6879002284946bc90",
         "scope": "Original primary-page source with generated reading blocks removed"
       },
       {

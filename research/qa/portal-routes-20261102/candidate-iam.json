@@ -1,0 +1,201 @@
+{
+  "passed": true,
+  "live": false,
+  "mutedProcess": true,
+  "fullscreen": "instrumented, not native",
+  "results": [
+    {
+      "portal": "iam",
+      "chapter": "about",
+      "url": "https://staging.universalmind.tv/iam/about/",
+      "media": {
+        "same": true,
+        "src": "blob:https://staging.universalmind.tv/64aa8756-2ae0-4aef-9924-a17eb9d22dfa",
+        "time": 1.520907,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "full": "MAIN",
+        "calls": 1,
+        "exits": 0
+      }
+    },
+    {
+      "portal": "iam",
+      "chapter": "program",
+      "url": "https://staging.universalmind.tv/iam/program/",
+      "media": {
+        "same": true,
+        "src": "blob:https://staging.universalmind.tv/64aa8756-2ae0-4aef-9924-a17eb9d22dfa",
+        "time": 2.031049,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "full": "MAIN",
+        "calls": 1,
+        "exits": 0
+      }
+    },
+    {
+      "portal": "iam",
+      "chapter": "technology",
+      "url": "https://staging.universalmind.tv/iam/technology/",
+      "media": {
+        "same": true,
+        "src": "blob:https://staging.universalmind.tv/64aa8756-2ae0-4aef-9924-a17eb9d22dfa",
+        "time": 2.539803,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "full": "MAIN",
+        "calls": 1,
+        "exits": 0
+      }
+    },
+    {
+      "portal": "iam",
+      "chapter": "science",
+      "url": "https://staging.universalmind.tv/iam/science/",
+      "media": {
+        "same": true,
+        "src": "blob:https://staging.universalmind.tv/64aa8756-2ae0-4aef-9924-a17eb9d22dfa",
+        "time": 3.047619,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "full": "MAIN",
+        "calls": 1,
+        "exits": 0
+      }
+    },
+    {
+      "portal": "iam",
+      "chapter": "research",
+      "url": "https://staging.universalmind.tv/iam/research/",
+      "media": {
+        "same": true,
+        "src": "blob:https://staging.universalmind.tv/64aa8756-2ae0-4aef-9924-a17eb9d22dfa",
+        "time": 3.558455,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "full": "MAIN",
+        "calls": 1,
+        "exits": 0
+      }
+    },
+    {
+      "portal": "iam",
+      "chapter": "privacy-first",
+      "url": "https://staging.universalmind.tv/iam/privacy-first/",
+      "media": {
+        "same": true,
+        "src": "blob:https://staging.universalmind.tv/64aa8756-2ae0-4aef-9924-a17eb9d22dfa",
+        "time": 4.063492,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "full": "MAIN",
+        "calls": 1,
+        "exits": 0
+      }
+    },
+    {
+      "portal": "iam",
+      "chapter": "business-model",
+      "url": "https://staging.universalmind.tv/iam/business-model/",
+      "media": {
+        "same": true,
+        "src": "blob:https://staging.universalmind.tv/64aa8756-2ae0-4aef-9924-a17eb9d22dfa",
+        "time": 4.573961,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "full": "MAIN",
+        "calls": 1,
+        "exits": 0
+      }
+    },
+    {
+      "portal": "iam",
+      "chapter": "traction",
+      "url": "https://staging.universalmind.tv/iam/traction/",
+      "media": {
+        "same": true,
+        "src": "blob:https://staging.universalmind.tv/64aa8756-2ae0-4aef-9924-a17eb9d22dfa",
+        "time": 5.082459,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "full": "MAIN",
+        "calls": 1,
+        "exits": 0
+      }
+    },
+    {
+      "portal": "iam",
+      "chapter": "impact",
+      "url": "https://staging.universalmind.tv/iam/impact/",
+      "media": {
+        "same": true,
+        "src": "blob:https://staging.universalmind.tv/64aa8756-2ae0-4aef-9924-a17eb9d22dfa",
+        "time": 5.590115,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "full": "MAIN",
+        "calls": 1,
+        "exits": 0
+      }
+    },
+    {
+      "portal": "iam",
+      "chapter": "check-in",
+      "url": "https://staging.universalmind.tv/iam/check-in/",
+      "media": {
+        "same": true,
+        "src": "blob:https://staging.universalmind.tv/64aa8756-2ae0-4aef-9924-a17eb9d22dfa",
+        "time": 6.100205,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "full": "MAIN",
+        "calls": 1,
+        "exits": 0
+      }
+    },
+    {
+      "portal": "iam",
+      "chapter": "our-team",
+      "url": "https://staging.universalmind.tv/iam/our-team/",
+      "media": {
+        "same": true,
+        "src": "blob:https://staging.universalmind.tv/64aa8756-2ae0-4aef-9924-a17eb9d22dfa",
+        "time": 6.606077,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "full": "MAIN",
+        "calls": 1,
+        "exits": 0
+      }
+    },
+    {
+      "portal": "iam",
+      "chapter": "shop",
+      "url": "https://staging.universalmind.tv/iam/shop/",
+      "media": {
+        "same": true,
+        "src": "blob:https://staging.universalmind.tv/64aa8756-2ae0-4aef-9924-a17eb9d22dfa",
+        "time": 7.11667,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "full": "MAIN",
+        "calls": 1,
+        "exits": 0
+      }
+    }
+  ],
+  "errors": []
+}

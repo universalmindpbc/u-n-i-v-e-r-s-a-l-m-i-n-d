@@ -3,7 +3,7 @@
 "/schema","string","universal-informatics/music-atlas/v1"
 "/title","string","Universal Informatics Music Atlas"
 "/version","string","2026-11-01-page-narrative-3"
-"/url","string","https://universalmind.tv/informatics/?entry=research&area=sound"
+"/url","string","https://universalmind.tv/informatics/sound/"
 "/wiki","string","https://universalmind.tv/informatics/read/music/index.html"
 "/page_narrative","object",""
 "/page_narrative/text_markdown","string","POSSIBLE FIBONACCI STRUCTURES

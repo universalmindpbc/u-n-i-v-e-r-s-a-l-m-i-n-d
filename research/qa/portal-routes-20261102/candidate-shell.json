@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "live": false,
+  "mutedProcess": true,
+  "fullscreen": "instrumented, not native",
+  "results": [
+    {
+      "portal": "root-shell",
+      "singleHistoryEntry": true,
+      "retainedFrame": true,
+      "retainedMedia": true
+    }
+  ],
+  "errors": []
+}

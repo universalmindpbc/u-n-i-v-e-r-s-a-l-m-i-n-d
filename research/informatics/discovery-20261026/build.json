@@ -1,5 +1,5 @@
 {
-  "datasetManifestSHA256": "aeb7423807c1f2dced864fc6047b4a72d8a4de96adec31c6540c08a76bc082c9",
+  "datasetManifestSHA256": "95191f3b5dfdfe56d1446f01ae3cb13c589f37bb245730fcb19a7a165e5fd3b4",
   "generatedAt": "2026-10-26",
   "publications": 1223,
   "atlas": 1001,
@@ -8,7 +8,7 @@
   "sourceHashes": [
     {
       "path": "library.js",
-      "sha256": "46269d021587ca243e426093be539db1d12fc5e131239fe658690b91f87db952"
+      "sha256": "a39cfe8108763b08a72ce3cea1ff3f395a47e523c7c3c2547bd5df92b582606e"
     },
     {
       "path": "library-data/sound-edition.json",
@@ -75,9 +75,9 @@
   "canonicalPaths": [
     "",
     "connect.html",
-    "library.html?collection=vision",
-    "library.html?collection=sound",
-    "library.html?collection=language",
+    "research/?collection=vision",
+    "research/?collection=sound",
+    "research/?collection=language",
     "library.html",
     "research.html",
     "genomics.html",

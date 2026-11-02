@@ -32,11 +32,25 @@ const active=stage===1?uni:stage===4?doubling:null;const tracer=$('#tracer');tra
 $('#play').textContent=playing?'Ⅱ':'▷';$('#play').setAttribute('aria-label',playing?'Pause animation':'Play animation');}
 $('#play').onclick=()=>{playing=!playing;if(playing&&elapsed>=total-1)elapsed=0;last=null;render()};$('#replay').onclick=()=>{elapsed=0;playing=true;last=null;render()};document.querySelectorAll('button[data-stage]').forEach(b=>b.onclick=()=>{elapsed=Number(b.dataset.stage)*duration+duration-1;playing=false;render()});
 const film=$('#film'),experience=$('#experience'),launch=$('#launch');
-const M9='fibonacci-m9-p24',initialParams=new URLSearchParams(location.search);
+const M9='fibonacci-m9-p24',initialParams=new URLSearchParams(location.search),initialRoute=window.PortalRoutes?.resolve();
+if(initialRoute?.portal==='informatics'&&!['home','document'].includes(initialRoute.id)){initialParams.set('area',initialRoute.id);initialParams.set('entry','research');}
 let area='home',resumeAnimation=true,recordId=initialParams.get('record')||M9,recordMode=initialParams.get('record-mode')||((initialParams.get('area')==='geometry'||initialParams.get('atlas')==='1'||recordId!==M9)?'research':'animation'),recordView=location.hash.slice(1);
 const researchFrame=$('#atlas-frame');
 function announceRecord(){document.dispatchEvent(new CustomEvent('atlas:selection',{detail:{id:recordId,mode:recordMode}}));}
-function syncURL(){const url=new URL(location.href);url.searchParams.delete('atlas');if(area==='home'){url.searchParams.delete('area');url.searchParams.delete('record');url.searchParams.delete('record-mode');url.hash='';}else{url.searchParams.set('area',area);url.searchParams.set('record',recordId);url.searchParams.set('record-mode',recordMode);url.hash=area==='geometry'?recordView:'';}history.replaceState(null,'',url);}
+let routeHistoryMode='replace',pendingRoute=null;
+function syncURL(){
+ const current=new URL(location.href);let target;
+ if(area==='home')target=new URL('/informatics/',location.origin);
+ else if(area==='document')target=new URL(document.documentElement.dataset.portalDocument||'/informatics/read/',location.origin);
+ else target=new URL(window.InformaticsNavigation.entries.find(e=>e.id===area)?.url||'/informatics/',location.origin);
+ for(const [key,value]of (window.PortalRoutes.resolve(current.href)?.id===area?current.searchParams:[]))if(!['entry','area','atlas','about','record','record-mode','section'].includes(key))target.searchParams.set(key,value);
+ if(pendingRoute?.id===area){target.search=new URL(pendingRoute.href).search;target.hash=new URL(pendingRoute.href).hash;}
+ if(area==='research')target.search=document.documentElement.dataset.libraryQuery||'';
+ if(area==='geometry'){target.searchParams.set('record',recordId);target.searchParams.set('record-mode',recordMode);target.hash=recordView;}
+ window.PortalRoutes.commit(target.href,routeHistoryMode);
+ routeHistoryMode='replace';pendingRoute=null;
+}
+
 function loadResearch(){
  researchFrame.dataset.record=recordId;researchFrame.dataset.view=recordView;
  if(!researchFrame.getAttribute('src'))researchFrame.src=researchFrame.dataset.src+'&record='+encodeURIComponent(recordId)+(recordView?'#'+recordView:'');
@@ -50,16 +64,16 @@ function chooseRecord(id,mode='research',view){
 }
 document.addEventListener('atlas:choose-record',event=>chooseRecord(event.detail.id,event.detail.mode));
 document.addEventListener('atlas:record',event=>{const detail=event.detail;if(area!=='geometry'||(!detail.user&&detail.id!==recordId))return;recordId=detail.id;recordMode='research';recordView=detail.view||'';researchFrame.dataset.record=recordId;researchFrame.dataset.view=recordView;syncURL();announceRecord();});
-const areas=['about','research','connect','geometry','transcription','molecular','quantum','genomics','sound','vision','language','partners'];
+const areas=['document','about','research','connect','geometry','transcription','molecular','quantum','genomics','sound','vision','language','partners'];
 const menu=$('#atlas-menu'),menuToggle=$('#atlas-menu-toggle'),atlasNav=$('#atlas-navigation');let menuTimer;
 function closeMenu({focus=false}={}){clearTimeout(menuTimer);menu.hidden=true;menuToggle.setAttribute('aria-expanded','false');$('#atlas-toggle').setAttribute('aria-expanded','false');if(focus)menuToggle.focus();}
 function openMenu({focus=false,lastItem=false}={}){document.dispatchEvent(new Event('atlas:close-records'));clearTimeout(menuTimer);menu.hidden=false;menuToggle.setAttribute('aria-expanded','true');$('#atlas-toggle').setAttribute('aria-expanded','true');if(focus){const items=menu.querySelectorAll('[role=menuitem]');items[lastItem?items.length-1:0].focus();}}
 function showArea(name,{focus=false}={}){
  if(!areas.includes(name))name='home';
  if(area==='home'&&name!=='home'){resumeAnimation=playing;playing=false;}
- area=name;const auxiliary=['about','research','connect'].includes(name),home=name==='home',geometry=name==='geometry',molecular=name==='molecular',quantum=name==='quantum',transcription=name==='transcription';experience.dataset.area=name;
+ area=name;const auxiliary=['document','about','research','connect'].includes(name),home=name==='home',geometry=name==='geometry',molecular=name==='molecular',quantum=name==='quantum',transcription=name==='transcription';experience.dataset.area=name;
  experience.classList.toggle('atlas-open',!home);
- $('#atlas-panel').hidden=!geometry;$('#molecular-panel').hidden=!molecular;$('#quantum-panel').hidden=!quantum;$('#transcription-panel').hidden=!transcription;for(const id of ['about','research','connect'])$('#'+id+'-panel').hidden=id!==name;$('#record-navigation').hidden=molecular||quantum||transcription||auxiliary;$('#atlas-sections').hidden=home||geometry||molecular||quantum||transcription||auxiliary;
+ $('#atlas-panel').hidden=!geometry;$('#molecular-panel').hidden=!molecular;$('#quantum-panel').hidden=!quantum;$('#transcription-panel').hidden=!transcription;for(const id of ['about','research','connect'])$('#'+id+'-panel').hidden=id!==(name==='document'?'connect':name);$('#record-navigation').hidden=molecular||quantum||transcription||auxiliary;$('#atlas-sections').hidden=home||geometry||molecular||quantum||transcription||auxiliary;
  experience.querySelector('main').hidden=!home;experience.querySelector('footer').hidden=!home;
  for(const id of ['genomics','sound','vision','language','partners'])$('#area-'+id).hidden=id!==name;
  if(geometry){recordMode='research';loadResearch();}
@@ -83,20 +97,29 @@ document.addEventListener('pointerdown',e=>{if(!atlasNav.contains(e.target))clos
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!menu.hidden){e.preventDefault();closeMenu({focus:true});}if(e.key==='Escape')$('.atlas-brand-wrap').classList.add('tooltip-dismissed');});
 $('.atlas-brand-wrap').addEventListener('pointerleave',()=>$('.atlas-brand-wrap').classList.remove('tooltip-dismissed'));
 $('.atlas-brand-wrap').addEventListener('focusout',()=>$('.atlas-brand-wrap').classList.remove('tooltip-dismissed'));
-document.addEventListener('click',e=>{const button=e.target.closest('button[data-area]');if(button){showArea(button.dataset.area,{focus:true});$('#atlas-sections').scrollTop=0;}if(e.target.closest('[data-about],[data-science-tfbs]'))closeMenu();});
+document.addEventListener('click',e=>{const button=e.target.closest('a[data-area],button[data-area]');if(button&&!e.metaKey&&!e.ctrlKey&&!e.shiftKey&&!e.altKey){e.preventDefault();routeHistoryMode='push';showArea(button.dataset.area,{focus:true});$('#atlas-sections').scrollTop=0;}if(e.target.closest('[data-about],[data-science-tfbs]'))closeMenu();});
 document.addEventListener('science:open-atlas',event=>{
  const view=event.detail;if(!['alpha','beta','gamma','epsilon','geometry-summary'].includes(view))return;
  if(!entered)launch.click();chooseRecord(M9,'research',view);
 });
 // Research navigation retains the frame; first entry starts muted background video.
 function navigateFromResearch(name){
- if(!areas.includes(name))return;
+ if(name!=='home'&&!areas.includes(name))return;
  document.querySelectorAll('dialog[open]').forEach(d=>d.close());
  const firstEntry=!entered;entered=true;document.body.dataset.entered='true';$('#landing').hidden=true;experience.hidden=false;
  if(firstEntry&&!film.src){film.muted=true;film.src=film.dataset.src;film.play().catch(()=>{});syncSound();}
  showArea(name,{focus:true});
 }
-document.addEventListener('atlas:navigate',event=>navigateFromResearch(event.detail));
+document.addEventListener('atlas:navigate',event=>{routeHistoryMode=event.routeHistoryMode||'push';navigateFromResearch(event.detail);});
+function navigateRoute(route,mode='push'){
+ pendingRoute=route;routeHistoryMode=mode;
+ if(route.id==='document'){document.documentElement.dataset.portalDocument=route.path;window.PortalRoutes.loadFrame($('#connect-frame'),route.path);}
+ if(route.id==='research')document.documentElement.dataset.libraryQuery=new URL(route.href).search;
+ if(route.id==='geometry'){recordId=route.query.get('record')||M9;recordMode=route.query.get('record-mode')||'research';recordView=new URL(route.href).hash.slice(1);}
+ navigateFromResearch(route.id);
+}
+document.addEventListener('atlas:route',event=>navigateRoute(event.detail.route,event.detail.mode));
+window.PortalRoutes.register('informatics',route=>navigateRoute(route,'replace'));
 function syncSound(){const label=film.muted?'Unmute video':'Mute video';$('#sound').textContent=film.muted?'♪̸':'♫';$('#sound').setAttribute('aria-label',label);$('#sound').title=label;}
 $('#sound').onclick=()=>{if(film.paused){film.muted=false;film.play().catch(()=>{});}else film.muted=!film.muted;syncSound();};
 function fullscreen(){if(!document.fullscreenElement && experience.requestFullscreen)experience.requestFullscreen().catch(()=>{});}
@@ -109,14 +132,14 @@ window.addEventListener('pagehide',()=>{film.pause();playing=false;});
 document.addEventListener('visibilitychange',()=>{last=null;if(document.hidden)film.pause();else if(entered)film.play().catch(()=>{});});
 function frame(now){const dt=last===null?0:Math.min(now-last,60);last=now;if(entered&&playing&&!document.hidden){elapsed=Math.min(total-1,elapsed+dt);if(elapsed>=total-1)playing=false;render();}requestAnimationFrame(frame);}render();requestAnimationFrame(frame);
 document.dispatchEvent(new Event('atlas:ready'));
-if(initialParams.get('entry')==='research'&&[...areas,'transcription'].includes(initialParams.get('area'))){const enter=()=>navigateFromResearch(initialParams.get('area'));if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',enter,{once:true});else enter();}
+if(initialParams.get('entry')==='research'&&[...areas,'transcription'].includes(initialParams.get('area'))){const enter=()=>{routeHistoryMode='replace';navigateFromResearch(initialParams.get('area'));};if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',enter,{once:true});else enter();}
 })().catch(error=>{console.error(error);document.querySelector('#launch-status').textContent='Unable to load geometry. Please reload.';});
 
 // About opens from the discreet static title.
 (()=>{
 const about=document.querySelector('#about');
 const panel=document.querySelector('#about-panel');panel.append(about);about.setAttribute('open','');
-document.querySelectorAll('[data-about]').forEach(button=>button.addEventListener('click',()=>document.dispatchEvent(new CustomEvent('atlas:navigate',{detail:'about'}))));
+document.querySelectorAll('[data-about]').forEach(button=>button.addEventListener('click',e=>{if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;e.preventDefault();document.dispatchEvent(new CustomEvent('atlas:navigate',{detail:'about'}));}));
 document.querySelector('#about-close').onclick=()=>document.dispatchEvent(new CustomEvent('atlas:navigate',{detail:'geometry'}));
 const focusDialog=document.querySelector('#initial-focus'),focusButton=document.querySelector('#initial-focus-open');
 focusButton.addEventListener('click',()=>{(document.fullscreenElement||document.body).append(focusDialog);focusDialog.showModal();});

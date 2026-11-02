@@ -1,0 +1,89 @@
+{
+  "passed": true,
+  "live": false,
+  "mutedProcess": true,
+  "fullscreen": "instrumented, not native",
+  "results": [
+    {
+      "layout": "/sitemap/",
+      "width": 1470
+    },
+    {
+      "layout": "/informatics/sitemap/",
+      "width": 1470
+    },
+    {
+      "layout": "/iam/sitemap/",
+      "width": 1470
+    },
+    {
+      "layout": "/informatics/sound/",
+      "width": 1470
+    },
+    {
+      "layout": "/iam/about/",
+      "width": 1470
+    },
+    {
+      "layout": "/sitemap/",
+      "width": 1024
+    },
+    {
+      "layout": "/informatics/sitemap/",
+      "width": 1024
+    },
+    {
+      "layout": "/iam/sitemap/",
+      "width": 1024
+    },
+    {
+      "layout": "/informatics/sound/",
+      "width": 1024
+    },
+    {
+      "layout": "/iam/about/",
+      "width": 1024
+    },
+    {
+      "layout": "/sitemap/",
+      "width": 390
+    },
+    {
+      "layout": "/informatics/sitemap/",
+      "width": 390
+    },
+    {
+      "layout": "/iam/sitemap/",
+      "width": 390
+    },
+    {
+      "layout": "/informatics/sound/",
+      "width": 390
+    },
+    {
+      "layout": "/iam/about/",
+      "width": 390
+    },
+    {
+      "layout": "/sitemap/",
+      "width": 320
+    },
+    {
+      "layout": "/informatics/sitemap/",
+      "width": 320
+    },
+    {
+      "layout": "/iam/sitemap/",
+      "width": 320
+    },
+    {
+      "layout": "/informatics/sound/",
+      "width": 320
+    },
+    {
+      "layout": "/iam/about/",
+      "width": 320
+    }
+  ],
+  "errors": []
+}

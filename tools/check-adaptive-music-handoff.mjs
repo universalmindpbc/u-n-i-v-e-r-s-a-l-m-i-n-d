@@ -471,7 +471,7 @@ requireCondition(controller.includes('function beginTopLevelCheckIn(link)'), 're
 requireCondition(controller.includes('document.body.dataset.repeatCheckinHandoff = "top-level";'), 'repeat check-in does not expose its hard handoff for browser verification');
 requireCondition(controller.includes('["adaptiveFrame", "musicTelevisionFrame", "navigationShell"].forEach'), 'repeat check-in can retain stale frame routing parameters');
 requireCondition(controller.includes('stopTelevisionMedia();\n    window.location.assign(destination.href);'), 'repeat check-in does not stop the current programme before replacing the television shell');
-requireCondition(controller.includes('if (navItemName === "check-in")') && controller.includes('beginTopLevelCheckIn(link);'), 'the playing television navigation can still embed Check In');
+requireCondition(/if \(navItemName === "check-in"\)[\s\S]*?openInVideoPageLayer\(link\);/.test(controller), 'opening Check In must retain the television while the visitor browses the form');
 requireCondition(!controller.includes('stopBroadcastProgrammeTicker();') && controller.includes('setSoundResearchEnabled(false, { persist: false });'), 'the hard media stop can throw before repeat check-in navigation or leave Sound Research playing');
 requireCondition(!controller.includes('iamRepeatCheckinResumeV1') && !controller.includes('resumeTelevisionAfterRepeatCheckIn'), 'repeat check-in can still enter Music Television without the existing expand-room click');
 requireCondition(controller.includes('function openRoom(event)') && controller.includes('requestViewingFullscreen(video);\n    playLocalVideo(video);'), 'the existing expand-room click no longer owns fullscreen and playback together');
@@ -834,11 +834,11 @@ requireCondition(globalNavigationController.includes('const VERSION = "global-na
 const expectedGlobalNavigationCssToken = createHash('sha256').update(globalNavigationCss).digest('hex').slice(0, 12);
 const expectedGlobalNavigationControllerToken = createHash('sha256').update(globalNavigationController).digest('hex').slice(0, 12);
 requireCondition(globalNavigationController.includes(`global-navigation.css?v=${expectedGlobalNavigationCssToken}`), `the canonical navigation stylesheet cache token does not match ${expectedGlobalNavigationCssToken}`);
-requireCondition(globalNavigationController.includes('href="index.html" data-nav-item="home"${shopReturn}>tv</a>'), 'the canonical global navigation does not label the default television experience as tv');
-requireCondition(globalNavigationController.includes('href="privacy-first.html" data-nav-item="privacy-first"'), 'the canonical global navigation does not expose Privacy First');
-requireCondition(globalNavigationController.includes('href="shop.html" data-nav-item="shop"'), 'the canonical global navigation does not expose Shop');
+requireCondition(globalNavigationController.includes('href="/iam/tv/" data-nav-item="home"${shopReturn}>tv</a>'), 'the canonical global navigation does not label the default television experience as tv');
+requireCondition(globalNavigationController.includes('href="/iam/privacy-first/" data-nav-item="privacy-first"'), 'the canonical global navigation does not expose Privacy First');
+requireCondition(globalNavigationController.includes('href="/iam/shop/" data-nav-item="shop"'), 'the canonical global navigation does not expose Shop');
 requireCondition(globalNavigationController.includes('data-nav-submenu="shop"') && globalNavigationController.includes('data-nav-subitem="shop-james-bondage-health">james bondage health - now open</a>'), 'the canonical global navigation does not contextualise Shop as James Bondage Health');
-const globalNavigationShopIndex = globalNavigationController.indexOf('href="shop.html" data-nav-item="shop"');
+const globalNavigationShopIndex = globalNavigationController.indexOf('href="/iam/shop/" data-nav-item="shop"');
 const globalNavigationShopSubmenuIndex = globalNavigationController.indexOf('data-nav-submenu="shop"');
 const globalNavigationContactIndex = globalNavigationController.indexOf('data-nav-item="contact"');
 requireCondition(globalNavigationShopIndex >= 0 && globalNavigationShopSubmenuIndex > globalNavigationShopIndex && globalNavigationContactIndex > globalNavigationShopSubmenuIndex, 'the canonical global navigation does not place Shop and its submenu immediately before the final Contact item');
@@ -846,8 +846,8 @@ requireCondition(!globalNavigationController.includes('shop-accessories-health')
 requireCondition(globalNavigationController.includes('function keepExpandedSubmenuVisible(navItem)') && globalNavigationController.includes('menu.scrollTop += bottomOverflow'), 'expanded global navigation destinations can be clipped below the visible menu area');
 requireCondition(globalNavigationCss.includes('padding: 0 34px 32px 0;') && globalNavigationCss.includes('scroll-padding-bottom: 32px;'), 'the global navigation lacks enough scroll clearance to reveal an expanded destination');
 requireCondition(globalNavigationCss.includes('.global-nav-submenu {\n  flex-shrink: 0;'), 'the global navigation can shrink an expanded submenu to zero height');
-requireCondition(globalNavigationController.includes('href="business-model.html" data-nav-item="business-model">business model</a>'), 'the canonical global navigation does not expose Business Model');
-requireCondition(globalNavigationController.includes('href="business-model.html" data-nav-item="business-model">business model</a>\n            <a class="global-nav-item" href="traction.html" data-nav-item="traction">traction</a>\n            <a class="global-nav-item" href="impact.html" data-nav-item="impact">impact</a>'), 'the canonical global navigation does not expose Traction between Business Model and Impact');
+requireCondition(globalNavigationController.includes('href="/iam/business-model/" data-nav-item="business-model">business model</a>'), 'the canonical global navigation does not expose Business Model');
+requireCondition(globalNavigationController.includes('href="/iam/business-model/" data-nav-item="business-model">business model</a>\n<a class="global-nav-item" href="/iam/traction/" data-nav-item="traction">traction</a>\n<a class="global-nav-item" href="/iam/impact/" data-nav-item="impact">impact</a>'), 'the canonical global navigation does not expose Traction between Business Model and Impact');
 requireCondition(globalNavigationCss.includes('font-size: clamp(26.446px, 2.125125vw, 43.447px);') && globalNavigationCss.includes('font-weight: 700;') && globalNavigationCss.includes('letter-spacing: 0.43447em;'), 'the canonical global navigation 5.55% type reduction has drifted');
 requireCondition(globalNavigationCss.includes('--global-nav-row-gap: clamp(17.001px, 2.125125vh, 28.335px);') && globalNavigationCss.includes('--global-nav-sub-gap: clamp(13.223px, 1.41675vh, 20.779px);'), 'the canonical global navigation 5.55% desktop spacing reduction has drifted');
 requireCondition(globalNavigationCss.includes('font-size: clamp(22.668px, 6.6115vw, 32.113px);') && globalNavigationCss.includes('letter-spacing: 0.24557em;'), 'the canonical global navigation 5.55% mobile type reduction has drifted');
@@ -912,7 +912,7 @@ for (const { pagePath, source } of aboutLinkPages) {
   const label = path.relative(ROOT, pagePath);
   requireCondition(source.includes('global-navigation.js?v=global-navigation-canonical-14'), `${label} does not load the canonical About navigation handoff`);
 }
-requireCondition(globalNavigationController.includes('href="about.html?aboutTopLevel=1" data-nav-item="about"'), 'the canonical navigation does not force a fresh complete About handoff');
+requireCondition(globalNavigationController.includes('href="/iam/about/" data-nav-item="about"'), 'the canonical navigation has lost the direct About chapter');
 
 const aboutPage = aboutLinkPages.find(({ pagePath }) => pagePath.endsWith('about.html'))?.source || '';
 const aboutControllerMatch = aboutPage.match(/about\.js\?v=([^"']+)/);

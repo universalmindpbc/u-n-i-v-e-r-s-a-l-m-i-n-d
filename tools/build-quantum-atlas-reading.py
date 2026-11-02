@@ -65,7 +65,7 @@ study=records['oxtr-qrc-study'];qualification=records['oxtr-qrc-qualification']
 
 TOPICS=json.loads((ROOT/'tools/atlas-topic-directory.json').read_text())
 TOPICS_BY_ID={topic['id']:topic for topic in TOPICS}
-nav_ids=re.findall(r"\['([^']+)', '[^']+'\]", (SITE/'global-navigation.js').read_text())
+nav_ids=[e['id']for p in json.loads((ROOT/'site-navigation/portals.json').read_text())['portals']if p['id']=='informatics'for e in p['entries']]
 atlas_order=[('music' if item=='sound' else item) for item in nav_ids if item in {'geometry','transcription','molecular','quantum','sound','vision','language'}]
 assert [topic['id'] for topic in TOPICS]==atlas_order+['computer-vision'], 'Wiki directory must follow global navigation, with computer vision last.'
 instructions=[
@@ -76,7 +76,7 @@ instructions=[
 followthrough={k:continuation[k] for k in ['experiment_id','status','question','phase','methods','interpretation','field_guide','revision']}
 followthrough['measurements']=continuation['measurements']
 # Keep the complete chart arrays; large original input and provenance documents remain in the immutable revision.
-payload={'schema':'universal-informatics/quantum-atlas-guide/v1','title':'Quantum Atlas · AI / LLM Wiki','version':'2026-11-01','url':BASE+'?entry=research&area=quantum','wiki':BASE+'read/quantum/index.html','instructions':instructions,'page_text':source_prose.blocks,'page_links':source_prose.links,'geometry_explanations':notes,'result_interpretations':insights,'records':records,'follow_through':followthrough,'experiments':experiments,'sources':sources,'page_prose_sha256':SHA(json.dumps(source_prose.blocks,ensure_ascii=False).encode()),'downloads':{fmt:BASE+'quantum/reading/quantum-atlas.'+fmt for fmt in ['json','csv','md']}}
+payload={'schema':'universal-informatics/quantum-atlas-guide/v1','title':'Quantum Atlas · AI / LLM Wiki','version':'2026-11-01','url':BASE+'quantum/','wiki':BASE+'read/quantum/index.html','instructions':instructions,'page_text':source_prose.blocks,'page_links':source_prose.links,'geometry_explanations':notes,'result_interpretations':insights,'records':records,'follow_through':followthrough,'experiments':experiments,'sources':sources,'page_prose_sha256':SHA(json.dumps(source_prose.blocks,ensure_ascii=False).encode()),'downloads':{fmt:BASE+'quantum/reading/quantum-atlas.'+fmt for fmt in ['json','csv','md']}}
 agent=json.loads((ROOT/'tools/quantum-agent-guide.json').read_text())
 agent['swarm']['diagram_stages']=js_object((SITE/'quantum/study.js').read_text(),'const labels=','\nlet study','labels')
 agent['participation']['mcp']['tools']=js_object((ROOT/'cloudflare/informatics-connectors.js').read_text(),'const str=','\nconst json=','connectorTools')
@@ -109,7 +109,7 @@ def values(v):
 def links():return '<nav class="quantum-reading-links" aria-label="Quantum Atlas reading and downloads"><a href="/informatics/read/quantum/index.html" target="_blank" rel="noopener">AI / LLM Wiki</a>'+''.join(f'<a href="{payload["downloads"][fmt].removeprefix("https://universalmind.tv")}" download="quantum-atlas.{fmt}">{label}</a>'for fmt,label in [('json','JSON'),('csv','CSV'),('md','Markdown')])+'</nav>'
 
 reading_instruction=(ROOT/'tools/atlas-reading-instruction.txt').read_text().strip()
-topic_html='<section id="atlas-topic-directory"><h2>Atlas pages</h2><p>'+E(reading_instruction)+'</p>'+table('Topic directory',['Topic','Subject','Question'],[[t['title'],t['subject'],t['question']] for t in TOPICS])+'<ul>'+''.join('<li><a href="'+t['wiki'].removeprefix('https://universalmind.tv')+'">'+E(t['title'])+'</a></li>'for t in TOPICS)+'</ul><p><a href="/sitemap.xml">Website sitemap</a></p></section>'
+topic_html='<section id="atlas-topic-directory"><h2>Atlas pages</h2><p>'+E(reading_instruction)+'</p>'+table('Topic directory',['Topic','Subject','Question'],[[t['title'],t['subject'],t['question']] for t in TOPICS])+'<ul>'+''.join('<li><a href="'+t['wiki'].removeprefix('https://universalmind.tv')+'">'+E(t['title'])+'</a></li>'for t in TOPICS)+'</ul><p><a href="/informatics/sitemap/">Informatics sitemap</a></p></section>'
 write('read/topic-directory.html.fragment',topic_html+'\n')
 
 variants=table('Eight representations of the same DNA inputs',['ID','Representation','Recorded role'],[[v['id'],v['label'],v['role']]for v in study['variants']])
@@ -146,7 +146,7 @@ a=shell.index('<section class="atlas-section atlas-vision');b=shell.index('<sect
 vision=extract(shell[a:b]);vs=(SITE/'vision-science.js').read_text();match=re.search(r'insertAdjacentHTML\([^,]+,\s*("(?:[^"\\]|\\.)*")\)',vs)
 assert match,'Vision science source boundary changed'
 science=extract(json.loads(match[1]))
-page('read/vision/index.html','Vision Atlas · EMDR and ocular biology',TOPICS_BY_ID['vision']['question'],'<p><a href="'+TOPICS_BY_ID['vision']['url']+'">Open the Vision Atlas</a> · <a href="'+BASE+'library.html?collection=vision">Vision research library</a></p>'+prose(vision.blocks)+prose(science.blocks)+'<h2>Original research links</h2><ul>'+''.join('<li><a href="'+E(x['url'])+'">'+E(x['label'])+'</a></li>'for x in science.links if x['url'].startswith('https:'))+'</ul>')
+page('read/vision/index.html','Vision Atlas · EMDR and ocular biology',TOPICS_BY_ID['vision']['question'],'<p><a href="'+TOPICS_BY_ID['vision']['url']+'">Open the Vision Atlas</a> · <a href="'+BASE+'research/?collection=vision">Vision research library</a></p>'+prose(vision.blocks)+prose(science.blocks)+'<h2>Original research links</h2><ul>'+''.join('<li><a href="'+E(x['url'])+'">'+E(x['label'])+'</a></li>'for x in science.links if x['url'].startswith('https:'))+'</ul>')
 focus=re.search(r'<h3 id="initial-focus-heading">[^<]+</h3><p>([^<]+)</p>',shell)[1]
 application=re.search(r'<h2 id="initial-focus-title"[\s\S]*?<p>[^<]+</p>\s*<p>([^<]+)</p>',shell)[1]
 approach=re.search(r'<h2 id="initial-focus-title"[^>]*>[^<]+</h2>\s*<p>([^<]+)</p>',shell)[1]

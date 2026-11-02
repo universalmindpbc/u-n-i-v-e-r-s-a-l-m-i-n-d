@@ -468,6 +468,9 @@ function stopAdaptiveMediaOnCheckInArrival() {
     document.querySelector("[data-iam-skip-transfer]")?.dataset.iamSkipTransfer === "true" ||
     document.body?.dataset.iamSkipTransfer === "true";
   if (!isCheckInPage) return;
+  // Browsing Check In inside the TV layer retains the current programme.
+  // Submitting the form still runs the existing media and selection handoff.
+  if (window.parent !== window && new URLSearchParams(location.search).get("musicTelevisionFrame") === "1") return;
   stopActiveAdaptiveMedia();
 }
 

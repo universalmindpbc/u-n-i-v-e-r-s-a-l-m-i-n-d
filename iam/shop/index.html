@@ -1,0 +1,543 @@
+<!doctype html>
+<html lang="en">
+  <head><base href="/vogue/iam/"><script src="/site-navigation/routes.js?v=375ae77a6715"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow, noarchive">
+    <title>shop · I AM</title>
+    <link rel="icon" href="favicon.png" type="image/png">
+    <script>
+      try {
+        const themeParams = new URLSearchParams(window.location.search);
+        const requestedTheme = themeParams.get("shopTheme");
+        const requestedSource = themeParams.get("shopThemeSource");
+        const contextualTheme = window.self !== window.top
+          && ["day", "night"].includes(requestedTheme)
+          && ["direct", "music-room"].includes(requestedSource)
+          ? requestedTheme
+          : "";
+        const savedTheme = window.localStorage.getItem("iamShopThemeV1");
+        document.documentElement.dataset.shopTheme = window.self === window.top
+          ? "night"
+          : contextualTheme || savedTheme || "night";
+        document.documentElement.dataset.shopThemeSource = window.self === window.top
+          ? "direct"
+          : contextualTheme
+            ? requestedSource
+            : savedTheme
+              ? "saved"
+              : "default";
+      } catch {
+        document.documentElement.dataset.shopTheme = "night";
+        document.documentElement.dataset.shopThemeSource = "default";
+      }
+
+      const shopBrandParams = new URLSearchParams(window.location.search);
+      const shopBrandVariant = shopBrandParams.get("brand");
+      const shopBrandInk = shopBrandParams.get("ink");
+      document.documentElement.dataset.shopBrandVariant = shopBrandVariant === "b" ? "handdrawn" : "a";
+      document.documentElement.dataset.shopBrandInk = shopBrandInk === "white" ? "white" : "black";
+    </script>
+    <script src="music-television-frame-context.js?v=music-tv-frame-1fc6ca029741"></script>
+    <link rel="preload" as="image" href="a s s e t s/shop-mockup/wolford-sergio-rossi-hero-poster-v1.jpg" fetchpriority="high">
+    <link rel="stylesheet" href="shop.css?v=cb6e4bbc2ac3">
+    <link rel="stylesheet" href="mobile-editorial-surface.css?v=mobile-editorial-20260823-3">
+    <script src="mobile-editorial-surface.js?v=mobile-editorial-4256ac5597e2"></script>
+  <link rel="canonical" href="https://universalmind.tv/iam/shop/"><meta name="description" content="James Bondage 詹姆斯 邦德束缚 Джеймс Бондаж Bordelle Angela Dress Zendaya for Emilio Cavallini Explore the Look ERES Singulière Triangle Bra 02 / James Bondage The edit 12 form all lingerie second skin swim movement after dark "><meta property="og:title" content="shop · I AM"><meta property="og:url" content="https://universalmind.tv/iam/shop/"></head>
+  <body class="shop-page">
+    <a class="shop-skip" href="#edit">Skip to the edit</a>
+
+    <button class="shop-universal-nav global-nav-trigger" type="button" data-nav-open aria-label="Open Universal Mind navigation">
+      <img src="a s s e t s/Universal Mind [ I o H ] Logo 512.png" alt="" decoding="async">
+    </button>
+
+    <div data-global-nav-host></div>
+    <script src="global-navigation.js?v=global-navigation-canonical-14-a82eeb2d7b36"></script>
+
+    <header class="shop-masthead" data-shop-masthead>
+      <nav class="shop-masthead__nav" aria-label="Shop sections">
+        <a href="#top" data-shop-home aria-label="James Bondage shop home">home</a>
+        <a href="#shop-about">about</a>
+        <details class="shop-menu" data-shop-menu>
+          <summary>shop</summary>
+          <div class="shop-menu__panel">
+            <div>
+              <p>shop by type</p>
+              <a href="#catalogue/all" data-shop-catalogue-type="all">all pieces</a>
+              <a href="#catalogue/all/type/lingerie-all" data-shop-catalogue-type="lingerie-all">lingerie (all)</a>
+              <a href="#catalogue/all/type/swimwear-all" data-shop-catalogue-type="swimwear-all">swimwear (all)</a>
+              <a href="#catalogue/all/type/athleisure-all" data-shop-catalogue-type="athleisure-all">athleisure (all)</a>
+              <a href="#catalogue/all/type/ready-to-wear-all" data-shop-catalogue-type="ready-to-wear-all">ready to wear (all)</a>
+              <a href="#catalogue/all/type/haute-couture-all" data-shop-catalogue-type="haute-couture-all">haute couture (all)</a>
+              <a href="#catalogue/accessories" data-shop-catalogue-type="accessories">accessories | health (all)</a>
+            </div>
+            <div>
+              <p>shop by brand</p>
+              <a href="#catalogue/eres">ERES</a>
+              <a href="#catalogue/bordelle">Bordelle</a>
+              <a href="#catalogue/annies-ibiza">Annie’s Ibiza</a>
+              <a href="#catalogue/adidas">adidas</a>
+              <a href="#catalogue/calvin-klein">Calvin Klein</a>
+              <a href="#catalogue/emilio-cavallini">Emilio Cavallini</a>
+              <a href="#catalogue/fleur-of-england">Fleur of England</a>
+              <a href="#catalogue/free-people">Free People</a>
+              <a href="#catalogue/iris-van-herpen">Iris van Herpen</a>
+              <a href="#catalogue/karla-spetic">KARLA ŠPETIĆ</a>
+              <a href="#catalogue/kiini">KIINI</a>
+              <a href="#catalogue/la-perla">La Perla</a>
+              <a href="#catalogue/lisa-marie-fernandez">Lisa Marie Fernandez</a>
+              <a href="#catalogue/lucas-hugh">Lucas Hugh</a>
+              <a href="#catalogue/mugler">Mugler</a>
+              <a href="#catalogue/nagnata">NAGNATA</a>
+              <a href="#catalogue/nike">Nike</a>
+              <a href="#catalogue/pe-nation">P.E Nation</a>
+              <a href="#catalogue/pucci">PUCCI</a>
+              <a href="#catalogue/rashi-world">Rashi World</a>
+              <a href="#catalogue/saint-laurent">Saint Laurent</a>
+              <a href="#catalogue/sir">SIR.</a>
+              <a href="#catalogue/skims">SKIMS</a>
+              <a href="#catalogue/the-upside">The Upside</a>
+              <a href="#catalogue/triangl">Triangl</a>
+              <a href="#catalogue/wolford">Wolford</a>
+              <a href="#catalogue/wardrobenyc">WARDROBE.NYC</a>
+              <a href="#catalogue/champagne-bohemia">Champagne Bohemia</a>
+              <a href="#catalogue/inner-planes">Inner Planes</a>
+              <a href="#catalogue/accessories">Accessories | Health</a>
+              <a href="#catalogue/all">all 30 brands</a>
+            </div>
+          </div>
+        </details>
+        <a href="#giving-back">giving back</a>
+        <a href="#sex-ed">sex ed</a>
+        <a href="shop-science.html" target="_blank" rel="noopener" aria-label="science — opens in a new tab">science</a>
+      </nav>
+      <div class="shop-masthead__actions">
+        <button class="shop-theme" type="button" data-shop-theme-toggle aria-label="Switch to night mode" aria-pressed="false">
+          <span class="shop-theme__disc" aria-hidden="true"></span>
+          <span data-shop-theme-label>day</span>
+        </button>
+        <button class="shop-music" type="button" data-shop-music aria-label="Listen to James Bondage Parties while browsing">
+          <span class="shop-music__dot" aria-hidden="true"></span>
+          <span class="shop-music__ticker"><span data-shop-music-label>listen / James Bondage Parties</span></span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="shop-hero" id="top" aria-labelledby="shop-title">
+        <div class="shop-hero__film" data-shop-hero-playlist aria-label="James Bondage fashion film">
+          <video
+            class="is-active"
+            data-shop-hero-video
+            data-shop-hero-film="wolford-sergio-rossi"
+            autoplay
+            muted
+            playsinline
+            preload="auto"
+            poster="a s s e t s/shop-mockup/wolford-sergio-rossi-hero-poster-v1.jpg"
+            aria-hidden="true"
+          ><source src="a s s e t s/shop-mockup/wolford-sergio-rossi-hero-360-v1.mp4" type="video/mp4"></video>
+          <video
+            data-shop-hero-video
+            data-shop-hero-film="mugler-fall-winter-2021"
+            muted
+            playsinline
+            preload="metadata"
+            aria-hidden="true"
+          ><source src="a s s e t s/shop-mockup/mugler-fall-winter-2021-hero-360-v1.mp4" type="video/mp4"></video>
+        </div>
+        <div class="shop-hero__veil" aria-hidden="true"></div>
+        <h1 class="shop-hero__masthead" id="shop-title" data-shop-masthead aria-label="James Bondage" aria-live="polite">
+          <span class="shop-hero__masthead-scene is-visible" data-shop-masthead-scene data-shop-masthead-label="James Bondage" data-current-lang="en" lang="en" aria-hidden="true">
+            <span class="shop-hero__masthead-word shop-hero__masthead-word--first">James</span>
+            <span class="shop-hero__masthead-word shop-hero__masthead-word--second">Bondage</span>
+          </span>
+          <span class="shop-hero__masthead-scene" data-shop-masthead-scene data-shop-masthead-label="詹姆斯  邦德束缚" data-current-lang="zh" lang="zh" aria-hidden="true">
+            <span class="shop-hero__masthead-word shop-hero__masthead-word--first">詹姆斯</span>
+            <span class="shop-hero__masthead-word shop-hero__masthead-word--second">邦德束缚</span>
+          </span>
+          <span class="shop-hero__masthead-scene" data-shop-masthead-scene data-shop-masthead-label="Джеймс Бондаж" data-current-lang="ru" lang="ru" aria-hidden="true">
+            <span class="shop-hero__masthead-word shop-hero__masthead-word--first">Джеймс</span>
+            <span class="shop-hero__masthead-word shop-hero__masthead-word--second">Бондаж</span>
+          </span>
+        </h1>
+        <img class="shop-hero__b-wordmark" src="a s s e t s/shop-mockup/james-bondage-handdrawn-wordmark-b.png" alt="" aria-hidden="true">
+        <img class="shop-b-face shop-b-face--hero" src="a s s e t s/shop-mockup/james-bondage-handdrawn-faces-b.png" alt="" aria-hidden="true">
+        <button class="adaptive-television-fullscreen shop-hero__fullscreen" type="button" data-shop-hero-fullscreen aria-label="Enter full screen">
+          <span aria-hidden="true"></span>
+        </button>
+      </section>
+
+      <section class="shop-looks" aria-label="James Bondage opening looks" data-shop-editorial>
+        <a class="shop-look shop-look--bordelle" href="#catalogue/bordelle?lead=signature-harness-angela-dress-burnt-red" data-shop-brand-lead="signature-harness-angela-dress-burnt-red">
+          <figure><video data-shop-silent-video muted playsinline loop preload="metadata" aria-hidden="true"><source src="a s s e t s/shop-mockup/bordelle-look58-home.mp4" type="video/mp4"></video></figure>
+          <p><strong>Bordelle</strong><span>Angela Dress</span></p>
+        </a>
+        <a class="shop-look shop-look--secondary" href="#catalogue/emilio-cavallini?lead=bouganvillea-tights" data-shop-brand-lead="bouganvillea-tights">
+          <figure><img src="a s s e t s/shop-mockup/emilio-cavallini-zendaya.png" alt="Zendaya wearing a white floral Emilio Cavallini body in a rose-toned room" fetchpriority="high"></figure>
+          <p><strong>Zendaya for Emilio Cavallini</strong><span>Explore the Look</span></p>
+        </a>
+        <a class="shop-look shop-look--tertiary" href="#catalogue/eres?lead=singuliere-lys-60973-0022" data-shop-brand-lead="singuliere-lys-60973-0022">
+          <figure><img src="a s s e t s/shop-mockup/eres-singuliere-lys-home.png" alt="ERES Singulière triangle bra in Lys, forward-facing portrait" fetchpriority="high"></figure>
+          <p><strong>ERES</strong><span>Singulière Triangle Bra</span></p>
+        </a>
+      </section>
+
+      <section class="shop-edit" id="edit" aria-labelledby="edit-title" data-shop-editorial>
+        <header class="shop-section-heading">
+          <p>02 / James Bondage</p>
+          <h2 id="edit-title">The edit</h2>
+          <b>12</b>
+        </header>
+
+        <div class="shop-filter-panel" aria-label="Filter the James Bondage edit">
+          <span>form</span>
+          <div role="group" aria-label="Filter by form">
+            <button class="is-active" type="button" data-filter-category="all" aria-pressed="true">all</button>
+            <button type="button" data-filter-category="lingerie" aria-pressed="false">lingerie</button>
+            <button type="button" data-filter-category="second-skin" aria-pressed="false">second skin</button>
+            <button type="button" data-filter-category="swim" aria-pressed="false">swim</button>
+            <button type="button" data-filter-category="movement" aria-pressed="false">movement</button>
+            <button type="button" data-filter-category="after-dark" aria-pressed="false">after dark</button>
+          </div>
+          <p class="shop-filter-status" data-filter-status aria-live="polite">12 pieces</p>
+        </div>
+
+        <div class="shop-product-grid" data-product-grid>
+          <article class="shop-product shop-product--feature" data-product data-categories="lingerie after-dark">
+            <a href="#catalogue/bordelle?lead=signature-waspie-cream" data-shop-brand-lead="signature-waspie-cream">
+              <figure><video data-shop-silent-video muted playsinline loop preload="metadata" aria-label="Bordelle Signature Waspie in cream on a model"><source src="a s s e t s/shop-mockup/bordelle-look83-waspie-home.mp4" type="video/mp4"></video></figure>
+              <div class="shop-product__copy"><p>Bordelle</p><h3>Signature Waspie</h3><em>view edit</em></div>
+            </a>
+          </article>
+          <article class="shop-product shop-product--tall" data-product data-categories="second-skin after-dark">
+            <a href="#catalogue/wardrobenyc?lead=lace-bodysuit-w5051f25lcblk" data-shop-brand-lead="lace-bodysuit-w5051f25lcblk">
+              <figure><img src="a s s e t s/shop-mockup/wardrobe-lace.webp" alt="WARDROBE.NYC black high-cut lace bodysuit on a model" loading="lazy"></figure>
+              <div class="shop-product__copy"><p>WARDROBE.NYC</p><h3>High Cut Lace Bodysuit</h3><em>view edit</em></div>
+            </a>
+          </article>
+          <article class="shop-product shop-product--wide" data-product data-categories="swim after-dark">
+            <a href="#catalogue/karla-spetic?lead=no-v-neon-tiger-bikini" data-shop-brand-lead="no-v-neon-tiger-bikini">
+              <figure><img src="a s s e t s/shop-mockup/karla-neon-tiger.jpg" alt="KARLA ŠPETIĆ neon tiger bikini on a model at the beach" loading="lazy"></figure>
+              <div class="shop-product__copy"><p>KARLA ŠPETIĆ</p><h3>No.V Neon Tiger Bikini</h3><em>view edit</em></div>
+            </a>
+          </article>
+          <article class="shop-product" data-product data-categories="lingerie after-dark">
+            <a href="#catalogue/annies-ibiza?lead=theodora-gown" data-shop-brand-lead="theodora-gown">
+              <figure><video data-shop-silent-video muted playsinline loop preload="metadata" aria-hidden="true"><source src="a s s e t s/shop-mockup/annies-home-silent.mp4" type="video/mp4"></video></figure>
+              <div class="shop-product__copy"><p>Annie's Ibiza</p><h3>Theodora Gown</h3><em>view edit</em></div>
+            </a>
+          </article>
+          <article class="shop-product shop-product--cinematic shop-product--upside-kefi" data-product data-categories="movement second-skin">
+            <a href="#catalogue/the-upside?lead=kefi-25in-midi-pant-oyster-usw226087" data-shop-brand-lead="kefi-25in-midi-pant-oyster-usw226087">
+              <figure><img src="a s s e t s/shop-mockup/upside-kefi-hero-optimized-v1.jpg" alt="The Upside Kefi pant styled on a model inside a green cabin" loading="lazy"></figure>
+              <div class="shop-product__copy"><p>The Upside</p><h3>Kefi 25in Midi Pant</h3><em>view edit</em></div>
+            </a>
+          </article>
+          <article class="shop-product" data-product data-categories="second-skin after-dark">
+            <a href="#catalogue/skims?lead=fits-everybody-lace-scoop-bralette-onyx" data-shop-brand-lead="fits-everybody-lace-scoop-bralette-onyx">
+              <figure><video data-shop-silent-video muted playsinline loop preload="metadata" aria-hidden="true"><source src="a s s e t s/shop-mockup/skims-home-silent.mp4" type="video/mp4"></video></figure>
+              <div class="shop-product__copy"><p>SKIMS</p><h3>Fits Everybody Lace Scoop Bralette</h3><em>view edit</em></div>
+            </a>
+          </article>
+          <article class="shop-product shop-product--tall" data-product data-categories="movement second-skin">
+            <a href="#catalogue/nike?lead=im6875-100" data-shop-brand-lead="im6875-100">
+              <figure><img src="a s s e t s/shop-mockup/nike-jordan-brooklyn.png" alt="Jordan Brooklyn women's bodysuit in white, back portrait" loading="lazy"></figure>
+              <div class="shop-product__copy"><p>Nike / Jordan</p><h3>Jordan Brooklyn Women's Bodysuit</h3><em>view edit</em></div>
+            </a>
+          </article>
+          <article class="shop-product shop-product--wide shop-product--nagnata" data-product data-categories="movement second-skin">
+            <a href="#catalogue/nagnata">
+              <figure class="shop-product__film-pair">
+                <video data-shop-silent-video muted playsinline loop preload="metadata" aria-hidden="true"><source src="a s s e t s/shop-mockup/nagnata-home-silent-1.mp4" type="video/mp4"></video>
+                <video data-shop-silent-video muted playsinline loop preload="metadata" aria-hidden="true"><source src="a s s e t s/shop-mockup/nagnata-home-silent-2.mp4" type="video/mp4"></video>
+              </figure>
+              <div class="shop-product__copy shop-product__copy--brand-only"><p>NAGNATA</p><em>view edit</em></div>
+            </a>
+          </article>
+          <article class="shop-product" data-product data-categories="after-dark lingerie">
+            <a href="#catalogue/sir?lead=montparnasse-gown-ivory" data-shop-brand-lead="montparnasse-gown-ivory">
+              <figure><img src="a s s e t s/shop-mockup/sir-montparnasse-portrait.png" alt="SIR. Montparnasse gown in ivory silk and lace, full portrait" loading="lazy"></figure>
+              <div class="shop-product__copy"><p>SIR.</p><h3>Montparnasse Gown</h3><em>view edit</em></div>
+            </a>
+          </article>
+          <article class="shop-product" data-product data-categories="swim second-skin">
+            <a href="#catalogue/lisa-marie-fernandez">
+              <figure><img src="a s s e t s/shop-mockup/lisa-marie-fernandez-bella-hadid.jpeg" alt="Bella Hadid wearing Lisa Marie Fernandez on the beach" loading="lazy"></figure>
+              <div class="shop-product__copy"><p>Bella Hadid wears Lisa Marie Fernandez</p><h3>Shop The Look</h3><em>view edit</em></div>
+            </a>
+          </article>
+          <article class="shop-product shop-product--wide" data-product data-categories="swim second-skin">
+            <a href="#catalogue/pucci?lead=vivara-print-triangle-bikini-top-6hmx096h895p20" data-shop-brand-lead="vivara-print-triangle-bikini-top-6hmx096h895p20">
+              <figure><img src="a s s e t s/shop-mockup/pucci-vivara-editorial.jpg" alt="PUCCI Vivara print triangle bikini in a sunlit editorial detail" loading="lazy"></figure>
+              <div class="shop-product__copy"><p>PUCCI</p><h3>Vivara Print Triangle Bikini Top</h3><em>view edit</em></div>
+            </a>
+          </article>
+          <article class="shop-product" data-product data-categories="swim second-skin">
+            <a href="#catalogue/free-people">
+              <figure><img src="a s s e t s/shop-mockup/free-people-scuba.jpeg" alt="Free People black scuba suit styled with diving goggles on the beach" loading="lazy"></figure>
+              <div class="shop-product__copy shop-product__copy--brand-only"><p>Free People</p><em>view edit</em></div>
+            </a>
+          </article>
+        </div>
+      </section>
+
+      <a class="shop-campaign" href="#catalogue/emilio-cavallini?lead=engineered-body" data-shop-editorial data-shop-brand-lead="engineered-body">
+        <figure><video data-shop-silent-video muted playsinline loop preload="metadata" aria-hidden="true"><source src="a s s e t s/shop-mockup/emilio-cavallini-home-silent.mp4" type="video/mp4"></video></figure>
+        <p><strong>Emilio Cavallini</strong><span>Body language / Engineered Body</span></p>
+      </a>
+
+      <section class="shop-body-diversity" aria-label="Shop the look" data-shop-editorial>
+        <div class="shop-body-diversity__grid">
+          <a class="shop-body-diversity__card" href="#catalogue/calvin-klein" aria-label="Shop the Calvin Klein look">
+            <figure>
+              <img src="a s s e t s/shop-mockup/body-diversity-home/calvin-klein-white-bodysuit-pink-hair.jpg" alt="Model with pink hair wearing a white Calvin Klein bodysuit" loading="lazy">
+            </figure>
+            <p><strong>Calvin Klein</strong><span>Shop the Look</span></p>
+          </a>
+          <a class="shop-body-diversity__card" href="#catalogue/skims" aria-label="Shop the SKIMS look">
+            <figure>
+              <img src="a s s e t s/shop-mockup/body-diversity-home/skims-every-body.jpg" alt="A diverse group of women wearing blue SKIMS bodysuits" loading="lazy">
+            </figure>
+            <p><strong>SKIMS</strong><span>Shop the Look</span></p>
+          </a>
+          <a class="shop-body-diversity__card" href="#catalogue/nagnata" aria-label="Shop the NAGNATA look">
+            <figure>
+              <img src="a s s e t s/shop-mockup/body-diversity-home/nagnata-green-one-piece.webp" alt="Model wearing a green NAGNATA one-piece against a blue sky" loading="lazy">
+            </figure>
+            <p><strong>NAGNATA</strong><span>Shop the Look</span></p>
+          </a>
+        </div>
+        <a class="shop-body-diversity__film" href="#catalogue/mugler" aria-label="Shop the Mugler look">
+          <figure>
+            <video data-shop-silent-video muted playsinline loop preload="metadata" aria-hidden="true"><source src="a s s e t s/shop-mockup/body-diversity-home/mugler-home-loop.mp4" type="video/mp4"></video>
+          </figure>
+          <p><strong>Mugler</strong><span>Shop the Look</span></p>
+        </a>
+      </section>
+
+      <section class="shop-video-pair" aria-labelledby="mugler-film-title" data-shop-editorial>
+        <header>
+          <p>editorial film / Mugler</p>
+          <h2 id="mugler-film-title">Adut<br>Akech</h2>
+          <a href="#catalogue/mugler?lead=black-tuxedo-bodysuit">Mugler / browse the edit <span aria-hidden="true">→</span></a>
+        </header>
+        <a class="shop-video-pair__film shop-video-pair__film--first" href="#catalogue/mugler?lead=black-tuxedo-bodysuit" aria-label="Browse the Mugler edit">
+          <video data-shop-silent-video muted playsinline loop preload="metadata" aria-hidden="true"><source src="a s s e t s/shop-mockup/mugler-adut-home-1.mp4" type="video/mp4"></video>
+        </a>
+        <a class="shop-video-pair__film shop-video-pair__film--second" href="#catalogue/mugler?lead=black-tuxedo-bodysuit" aria-label="Browse the Mugler edit">
+          <video data-shop-silent-video muted playsinline loop preload="metadata" aria-hidden="true"><source src="a s s e t s/shop-mockup/mugler-adut-home-2.mp4" type="video/mp4"></video>
+        </a>
+      </section>
+
+      <section class="shop-champagne-bohemia" aria-labelledby="champagne-bohemia-title" data-shop-editorial>
+        <header>
+          <p>swim / Champagne Bohemia</p>
+          <h2 id="champagne-bohemia-title">Champagne Bohemia</h2>
+          <a href="#catalogue/champagne-bohemia">Explore Champagne Bohemia <span aria-hidden="true">→</span></a>
+        </header>
+        <div class="shop-champagne-bohemia__grid">
+          <a class="shop-champagne-bohemia__card" href="#catalogue/champagne-bohemia?lead=versace-lycra-bikini-top-vsac-wx218" data-shop-brand-lead="versace-lycra-bikini-top-vsac-wx218">
+            <figure>
+              <img src="a s s e t s/shop-mockup/champagne-bohemia-home/versace-silver-bikini-vsac-wx218.jpg" alt="Versace silver two-piece Lycra swimsuit, front view" loading="lazy">
+            </figure>
+            <div class="shop-champagne-bohemia__copy">
+              <p>Versace</p>
+              <span>Shop the Look</span>
+              <h3>Silver Lycra Bikini</h3>
+            </div>
+          </a>
+          <a class="shop-champagne-bohemia__card" href="#catalogue/champagne-bohemia?lead=monte-lou-cut-out-plunge-one-piece" data-shop-brand-lead="monte-lou-cut-out-plunge-one-piece">
+            <figure>
+              <img src="a s s e t s/shop-mockup/champagne-bohemia-home/monte-lou-cut-out-plunge-one-piece.webp" alt="Monte &amp; Lou black cut-out plunge one-piece swimsuit by the sea" loading="lazy">
+            </figure>
+            <div class="shop-champagne-bohemia__copy">
+              <p>Monte &amp; Lou</p>
+              <span>Explore Champagne Bohemia</span>
+              <h3>Cut Out Plunge One Piece</h3>
+            </div>
+          </a>
+          <a class="shop-champagne-bohemia__card" href="#catalogue/champagne-bohemia?lead=versace-lycra-one-piece-vsac-wx220" data-shop-brand-lead="versace-lycra-one-piece-vsac-wx220">
+            <figure>
+              <img src="a s s e t s/shop-mockup/champagne-bohemia-home/versace-silver-one-piece-vsac-wx220.jpg" alt="Versace silver Lycra one-piece swimsuit, front view" loading="lazy">
+            </figure>
+            <div class="shop-champagne-bohemia__copy">
+              <p>Versace</p>
+              <span>Shop the Look</span>
+              <h3>Silver Lycra One Piece</h3>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <section class="shop-brands" id="brands" aria-labelledby="brands-title" data-shop-editorial>
+        <header class="shop-section-heading shop-section-heading--brands">
+          <p>03 / brands</p>
+          <h2 id="brands-title">30 brands</h2>
+          <b>476</b>
+        </header>
+        <ol class="shop-brand-ledger">
+          <li><span><a href="#catalogue/adidas">adidas</a></span><b>10</b></li>
+          <li><span><a href="#catalogue/annies-ibiza">Annie's Ibiza</a></span><b>15</b></li>
+          <li><span><a href="#catalogue/bordelle">Bordelle</a></span><b>23</b></li>
+          <li><span><a href="#catalogue/calvin-klein">Calvin Klein</a></span><b>25</b></li>
+          <li><span><a href="#catalogue/emilio-cavallini">Emilio Cavallini</a></span><b>2</b></li>
+          <li class="shop-brand-ledger__active"><span><a href="#catalogue/eres" data-shop-catalogue-link>ERES</a></span><b>37</b></li>
+          <li><span><a href="#catalogue/fleur-of-england">Fleur of England</a></span><b>4</b></li>
+          <li><span><a href="#catalogue/free-people">Free People</a></span><b>16</b></li>
+          <li><span><a href="#catalogue/iris-van-herpen">Iris van Herpen</a></span><b>1</b></li>
+          <li><span><a href="#catalogue/karla-spetic">KARLA ŠPETIĆ</a></span><b>12</b></li>
+          <li><span><a href="#catalogue/kiini">KIINI</a></span><b>25</b></li>
+          <li><span><a href="#catalogue/la-perla">La Perla</a></span><b>19</b></li>
+          <li><span><a href="#catalogue/lisa-marie-fernandez">Lisa Marie Fernandez</a></span><b>34</b></li>
+          <li><span><a href="#catalogue/lucas-hugh">Lucas Hugh</a></span><b>3</b></li>
+          <li><span><a href="#catalogue/mugler">Mugler</a></span><b>6</b></li>
+          <li><span><a href="#catalogue/nagnata">NAGNATA</a></span><b>15</b></li>
+          <li><span><a href="#catalogue/nike">Nike</a></span><b>9</b></li>
+          <li><span><a href="#catalogue/pe-nation">P.E Nation</a></span><b>16</b></li>
+          <li><span><a href="#catalogue/pucci">PUCCI</a></span><b>7</b></li>
+          <li><span><a href="#catalogue/rashi-world">Rashi World</a></span><b>7</b></li>
+          <li><span><a href="#catalogue/saint-laurent">Saint Laurent</a></span><b>6</b></li>
+          <li><span><a href="#catalogue/sir">SIR.</a></span><b>27</b></li>
+          <li><span><a href="#catalogue/skims">SKIMS</a></span><b>8</b></li>
+          <li><span><a href="#catalogue/the-upside">The Upside</a></span><b>26</b></li>
+          <li><span><a href="#catalogue/triangl">Triangl</a></span><b>8</b></li>
+          <li><span><a href="#catalogue/wolford">Wolford</a></span><b>22</b></li>
+          <li><span><a href="#catalogue/wardrobenyc">WARDROBE.NYC</a></span><b>21</b></li>
+          <li><span><a href="#catalogue/champagne-bohemia">Champagne Bohemia</a></span><b>97</b></li>
+          <li><span><a href="#catalogue/inner-planes">Inner Planes</a></span><b>28</b></li>
+          <li><span><a href="#catalogue/accessories">Accessories | Health</a></span><b>36</b></li>
+        </ol>
+      </section>
+
+      <a class="shop-iris-film" href="#catalogue/iris-van-herpen?lead=bespoke-bridal" data-shop-editorial data-shop-brand-lead="bespoke-bridal" aria-label="Browse Iris van Herpen bespoke and bridal couture">
+        <figure>
+          <video data-shop-silent-video muted playsinline loop preload="metadata" poster="a s s e t s/shop-mockup/iris-van-herpen/sonic-starquakes-hero-poster.jpg" aria-hidden="true">
+            <source src="a s s e t s/shop-mockup/iris-van-herpen/sonic-starquakes-hero-1280x576-v2.mp4" type="video/mp4">
+          </video>
+        </figure>
+        <p><strong>Iris van Herpen</strong><span>Sonic Starquakes / AW26</span></p>
+      </a>
+
+      <section class="shop-context shop-context--about" id="shop-about" aria-labelledby="shop-about-title" data-shop-editorial>
+        <img class="shop-b-face shop-b-face--about" src="a s s e t s/shop-mockup/james-bondage-handdrawn-faces-b.png" alt="" aria-hidden="true">
+        <header>
+          <p>04 / about</p>
+          <h2 id="shop-about-title">James<br>Bondage</h2>
+          <img class="shop-context__b-wordmark" src="a s s e t s/shop-mockup/james-bondage-handdrawn-wordmark-b.png" alt="" aria-hidden="true">
+        </header>
+        <div>
+          <p>James Bondage is 24/7 electronic music television broadcasting sex x mindfulness, bringing emotional intelligence to the bedroom, soundtracked to minimal, electro and EBM - Electronic Body Music. Our James Bondage Health series [ sex-ed ] shares female lead conversations about tantra, relationships, intimacy and mental health, from the leading voices in the space. This shop brings together 28 edits representing the world of James Bondage Health and its ambassadors. Each piece is presented here before the journey continues to the retailer.</p>
+        </div>
+      </section>
+
+      <section class="shop-context shop-context--giving" id="giving-back" aria-labelledby="giving-back-title" data-shop-editorial>
+        <img class="shop-b-face shop-b-face--giving" src="a s s e t s/shop-mockup/james-bondage-handdrawn-faces-b.png" alt="" aria-hidden="true">
+        <header>
+          <p>05 / giving back</p>
+          <h2 id="giving-back-title">All profits from affiliate revenue are invested in mental health.</h2>
+        </header>
+        <div class="shop-context__giving-copy">
+          <p>Via your I AM wallet, you choose how we spend it:</p>
+          <ul>
+            <li><a href="https://headspace.org.au" target="_blank" rel="noopener noreferrer">youth mental health outreach</a></li>
+            <li><a href="https://www.orygen.org.au" target="_blank" rel="noopener noreferrer">youth mental health research</a></li>
+            <li><a href="https://www.herspace.org.au" target="_blank" rel="noopener noreferrer">women’s mental health</a></li>
+            <li><a href="https://www.phoenixaustralia.org" target="_blank" rel="noopener noreferrer">veteran’s mental health</a></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="shop-catalogue" data-shop-catalogue hidden aria-labelledby="catalogue-title">
+        <header class="shop-catalogue__editorial" id="catalogue-editorial" data-catalogue-editorial-header>
+          <figure class="shop-catalogue__editorial-lead">
+            <img src="a s s e t s/shop-mockup/eres-catalogue/eden-60650-00996.jpg" alt="ERES Eden full-cup bra in Make Up, forward-facing portrait" data-catalogue-lead-image>
+          </figure>
+          <a class="shop-catalogue__back" href="#brands" data-shop-catalogue-back><span aria-hidden="true">←</span> James Bondage</a>
+          <div class="shop-catalogue__wordmark">
+            <p><span data-catalogue-brand-kicker>ERES</span> / catalogue</p>
+            <h2 id="catalogue-title" data-catalogue-brand-title>ERES</h2>
+            <span>James Bondage / approved edit <b data-catalogue-count>36</b></span>
+          </div>
+          <div class="shop-catalogue__editorial-aside">
+            <figure><img src="a s s e t s/shop-mockup/eres-catalogue/providence-60653-01062.jpg" alt="ERES Providence triangle bra in Ultra, forward-facing portrait" data-catalogue-aside-image></figure>
+            <p><span data-catalogue-aside-brand>ERES</span><span data-catalogue-aside-form>lingerie / second skin</span></p>
+            <a href="#catalogue-grid">view the collection <span aria-hidden="true">↓</span></a>
+          </div>
+        </header>
+        <div class="shop-catalogue__filters" aria-label="Search, filter and sort the James Bondage catalogue">
+          <label class="shop-catalogue__search"><span>search</span><input type="search" data-catalogue-search aria-label="Search the catalogue" placeholder="search the edit" autocomplete="off" enterkeyhint="search"></label>
+          <label><span>brand</span><select data-catalogue-brand aria-label="Shop by brand"></select></label>
+          <label><span>category / type</span><select data-catalogue-type aria-label="Shop by category or product type"></select></label>
+          <label><span>colour</span><select data-catalogue-colour aria-label="Shop by colour"></select></label>
+          <label><span>sort</span><select data-catalogue-sort aria-label="Sort products"><option value="editorial">editorial</option><option value="price-asc">price / low to high</option><option value="price-desc">price / high to low</option></select></label>
+          <p data-catalogue-status aria-live="polite">showing 24 of 36</p>
+        </div>
+        <div class="shop-catalogue__grid" id="catalogue-grid" data-catalogue-grid aria-live="polite"></div>
+        <div class="shop-catalogue__more" data-catalogue-more-wrap hidden>
+          <button type="button" data-catalogue-load-more>load 24 more</button>
+          <p data-catalogue-progress>showing 24 of 36</p>
+        </div>
+      </section>
+
+      <section class="shop-sex-ed" id="sex-ed" aria-labelledby="shop-sex-ed-title">
+        <header>
+          <p>06 / James Bondage Health</p>
+          <h2 id="shop-sex-ed-title">james bondage health <span>[ sex-ed ]</span></h2>
+          <div class="shop-sex-ed__controls">
+            <button type="button" data-shop-sex-ed-previous aria-label="Previous Sex Ed episodes">←</button>
+            <button type="button" data-shop-sex-ed-next aria-label="Next Sex Ed episodes">→</button>
+          </div>
+        </header>
+        <div class="shop-sex-ed__viewport" data-shop-sex-ed-viewport>
+          <div class="shop-sex-ed__track" role="list" aria-label="James Bondage Health Sex Ed episodes">
+            <a href="index.html?sexEdEpisode=01" target="_blank" rel="noopener" role="listitem"><figure><img src="https://customer-1vpwglz3v6fiyaas.cloudflarestream.com/9162e29e524b6db596d72d8c9720729d/thumbnails/thumbnail.jpg?time=900s&amp;height=480" alt="Caitlin Erica — Reclaiming the Forbidden Feminine" loading="lazy"></figure><p>Episode 01 · Caitlin Erica</p><h3>Reclaiming the Forbidden Feminine</h3></a>
+            <a href="index.html?sexEdEpisode=02" target="_blank" rel="noopener" role="listitem"><figure><img src="https://customer-1vpwglz3v6fiyaas.cloudflarestream.com/a821a9447efb3dd9381008eafac0ff78/thumbnails/thumbnail.jpg?time=180s&amp;height=480" alt="Sofia Sundari — The Truth About Tantra and Embodied Wealth" loading="lazy"></figure><p>Episode 02 · Sofia Sundari</p><h3>The Truth About Tantra &amp; Embodied Wealth</h3></a>
+            <a href="index.html?sexEdEpisode=03" target="_blank" rel="noopener" role="listitem"><figure><img src="https://customer-1vpwglz3v6fiyaas.cloudflarestream.com/ef8bbcd95a067bbc294d0d493b93fabc/thumbnails/thumbnail.jpg?time=180s&amp;height=480" alt="Vylana — Power, Sex and Intimacy" loading="lazy"></figure><p>Episode 03 · Vylana</p><h3>Power, Sex &amp; Intimacy</h3></a>
+            <a href="index.html?sexEdEpisode=04" target="_blank" rel="noopener" role="listitem"><figure><img src="https://customer-1vpwglz3v6fiyaas.cloudflarestream.com/af6f972e12eb0e9317a0d4e0d694b382/thumbnails/thumbnail.jpg?time=180s&amp;height=480" alt="Shashi Solluna — Expanding the Window of Pleasure" loading="lazy"></figure><p>Episode 04 · Shashi Solluna</p><h3>Expanding the Window of Pleasure</h3></a>
+            <a href="index.html?sexEdEpisode=05" target="_blank" rel="noopener" role="listitem"><figure><img src="https://customer-1vpwglz3v6fiyaas.cloudflarestream.com/b35b5890ca38c7b99bfc7adaae5bc16c/thumbnails/thumbnail.jpg?time=60s&amp;height=480" alt="Teal Swan — Healthy Sexuality vs. Healing Sexuality" loading="lazy"></figure><p>Episode 05 · Teal Swan</p><h3>Healthy Sexuality vs. Healing Sexuality</h3></a>
+            <a href="index.html?sexEdEpisode=06" target="_blank" rel="noopener" role="listitem"><figure><img src="https://customer-1vpwglz3v6fiyaas.cloudflarestream.com/7f60e29d9e432bf4198df7dc223b66ef/thumbnails/thumbnail.jpg?time=60s&amp;height=480" alt="Jacqueline Michelle — Healing Through Solo Rope and Self Pleasure" loading="lazy"></figure><p>Episode 06 · Jacqueline Michelle</p><h3>Healing Through Solo Rope &amp; Self Pleasure</h3></a>
+            <a href="index.html?sexEdEpisode=07" target="_blank" rel="noopener" role="listitem"><figure><img src="https://customer-1vpwglz3v6fiyaas.cloudflarestream.com/aca91449b729422592f1a50b0be16f17/thumbnails/thumbnail.jpg?time=750s&amp;height=480" alt="Ashton August — Yoga to Increase Your Sexual Energy" loading="lazy"></figure><p>Episode 07 · Ashton August</p><h3>Yoga to Increase Your Sexual Energy</h3></a>
+            <a href="index.html?sexEdEpisode=08" target="_blank" rel="noopener" role="listitem"><figure><img src="https://customer-1vpwglz3v6fiyaas.cloudflarestream.com/72faef830b2a04cf6d896d7d46183f49/thumbnails/thumbnail.jpg?time=1070s&amp;height=480" alt="Ashton August — Vinyasa Yoga Flow" loading="lazy"></figure><p>Episode 08 · Ashton August</p><h3>Vinyasa Yoga Flow</h3></a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <dialog class="shop-product-dialog" data-shop-product-dialog aria-labelledby="shop-product-dialog-title" aria-describedby="shop-product-dialog-description">
+      <button class="shop-product-dialog__close" type="button" data-shop-product-dialog-close aria-label="Close expanded product view">close <span aria-hidden="true">×</span></button>
+      <div class="shop-product-dialog__layout">
+        <figure data-shop-product-dialog-media><img src="" alt="" data-shop-product-dialog-image></figure>
+        <div class="shop-product-dialog__details">
+          <div class="shop-product-dialog__copy">
+            <p data-shop-product-dialog-brand>ERES</p>
+            <h2 id="shop-product-dialog-title" data-shop-product-dialog-title></h2>
+            <div class="shop-product-dialog__description" id="shop-product-dialog-description" data-shop-product-dialog-description></div>
+            <div class="shop-product-dialog__meta">
+              <p id="shop-product-dialog-form" data-shop-product-dialog-form></p>
+              <p data-shop-product-dialog-price></p>
+            </div>
+          </div>
+          <a href="#" target="_blank" rel="noopener noreferrer" data-shop-product-dialog-retailer><span data-shop-product-dialog-retailer-label>view at ERES</span> <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </dialog>
+
+    <footer class="shop-footer">
+      <video class="shop-footer__masthead" data-shop-silent-video muted playsinline loop preload="metadata" aria-label="James Bondage lower masthead"><source src="a s s e t s/shop-mockup/james-bondage-lower-masthead.mp4" type="video/mp4"></video>
+      <div class="shop-footer__legal">
+        <div class="shop-footer__acknowledgement">
+          <span class="shop-footer__country-flag" role="img" aria-label="Australian Aboriginal flag"></span>
+          <p>Universal Mind acknowledge the original custodians of the land, on which we live and operate. Sovereignty is, was, and never will be ceded. This will always be Gadigal, Eora Country | Together, we are one | Thanks and Namaste x | 2026.</p>
+        </div>
+        <p class="shop-footer__legal-identity">Universal Mind TV, Public Benefit Corporation t/a James Bondage Health</p>
+        <a href="#top" data-shop-home aria-label="James Bondage shop home">home</a>
+      </div>
+    </footer>
+
+    <script>window.IAMMobileEditorial?.apply();</script>
+    <script src="shop-catalogue-filter-v1.js?v=shop-search-colour-4"></script>
+    <script src="shop.js?v=shop-836f8a905982"></script>
+  </body>
+</html>

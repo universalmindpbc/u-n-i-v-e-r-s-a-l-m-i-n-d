@@ -437,6 +437,7 @@ deploy_redirects() {
     printf '%s\n' 'RewriteCond %{REQUEST_URI} !^/vogue/iam/(induction|about|program|science|research|light|privacy-first|business-model|traction|impact|our-team|shop|shop-science)\.html$ [NC]'
     printf '%s\n' 'RewriteRule ^vogue/iam/.*\.html$ /vogue/iam/induction.html?mobile=1 [R=302,L,NE]'
     printf '\n'
+    cat "$ROOT_DIR/site-navigation/redirects.htaccess"
     printf '%s\n' '# Password-free Universal Mind I AM entrypoints.'
     printf '%s\n' 'RewriteRule ^light/?$ /vogue/iam/light.html [L]'
     printf '%s\n' 'RewriteRule ^study/dashboard/?$ /vogue/iam/study.php?dashboard=1 [R=302,L,NE]'
@@ -515,6 +516,15 @@ deploy_iam_changed() {
     : > "$old_manifest"
   fi
 
+  if [[ -n "${IAM_RELEASE_FILES:-}" ]]; then
+    [[ -s "$IAM_RELEASE_FILES" ]] || { echo "Missing I AM release file list" >&2; return 1; }
+    while IFS= read -r relative; do
+      [[ "$relative" == "i  a m/"* && "$relative" != *".."* ]] || return 1
+      git -C "$ROOT_DIR" ls-files --error-unmatch "$relative" >/dev/null || return 1
+      git -C "$ROOT_DIR" diff --quiet HEAD -- "$relative" || return 1
+    done < "$IAM_RELEASE_FILES"
+    cp "$old_manifest" "$new_manifest"
+  fi
   while IFS= read -r -d '' source_file; do
     if should_skip_iam_source "$source_file"; then
       continue
@@ -527,6 +537,10 @@ deploy_iam_changed() {
     relative_path="${source_file#"$IAM_DIR"/}"
     checksum="$(file_hash "$source_file")"
     previous_checksum="$(awk -F '\t' -v path="$relative_path" '$2 == path { print $1; exit }' "$old_manifest")"
+    if [[ -n "${IAM_RELEASE_FILES:-}" ]]; then
+      awk -F '\t' -v path="$relative_path" '$2 != path' "$new_manifest" > "$new_manifest.next"
+      mv "$new_manifest.next" "$new_manifest"
+    fi
     printf '%s\t%s\n' "$checksum" "$relative_path" >> "$new_manifest"
 
     if [[ "$checksum" == "$previous_checksum" ]]; then
@@ -536,7 +550,14 @@ deploy_iam_changed() {
 
     put_file "$source_file" "vogue/iam/$relative_path"
     upload_count=$((upload_count + 1))
-  done < <(find "$IAM_DIR" -type f -print0)
+  done < <(if [[ -n "${IAM_RELEASE_FILES:-}" ]]; then
+    while IFS= read -r relative; do
+      [[ "$relative" == "i  a m/"* && "$relative" != *".."* ]] || exit 1
+      git -C "$ROOT_DIR" ls-files --error-unmatch "$relative" >/dev/null || exit 1
+      git -C "$ROOT_DIR" diff --quiet HEAD -- "$relative" || exit 1
+      printf '%s\0' "$ROOT_DIR/$relative"
+    done < "$IAM_RELEASE_FILES"
+  else find "$IAM_DIR" -type f -print0; fi)
 
   mv "$new_manifest" "$MANIFEST_FILE"
   echo "Changed non-video files uploaded: $upload_count; unchanged skipped: $skip_count"
@@ -832,6 +853,7 @@ deploy_events() {
 deploy_ai_wiki() {
   local relative manifest_tmp
   local paths=(read/wiki.css read/resources.json read/index.html home/ai-wiki-link.css home/directory.css llms.txt sitemap.xml home/index.html index.html)
+  while IFS= read -r relative; do paths+=("$relative"); done < <(git -C "$ROOT_DIR" ls-files sitemap sitemaps site-navigation iam | awk '$0 != "iam/index.html"')
   if [[ -n "$(git -C "$ROOT_DIR" status --porcelain --untracked-files=all -- "${paths[@]}" robots.txt robots-staging.txt)" ]]; then
     echo "Refusing to deploy uncommitted AI wiki source." >&2
     return 1
@@ -841,7 +863,7 @@ deploy_ai_wiki() {
   done
   manifest_tmp="$(mktemp)"
   if [[ -f "$MANIFEST_FILE" ]]; then
-    awk -F '\t' '$2 !~ /^read\// && $2 != "home/ai-wiki-link.css" && $2 != "home/directory.css" && $2 != "llms.txt" && $2 != "sitemap.xml" && $2 != "robots.txt" && $2 != "home/index.html" && $2 != "index.html"' "$MANIFEST_FILE" > "$manifest_tmp"
+    awk -F '\t' '$2 !~ /^read\// && $2 !~ /^(site-navigation|sitemap|sitemaps)\// && !($2 ~ /^iam\// && $2 != "iam/index.html") && $2 != "home/ai-wiki-link.css" && $2 != "home/directory.css" && $2 != "llms.txt" && $2 != "sitemap.xml" && $2 != "robots.txt" && $2 != "home/index.html" && $2 != "index.html"' "$MANIFEST_FILE" > "$manifest_tmp"
   fi
   put_file "$ROBOTS_FILE" "robots.txt"
   printf '%s\t%s\n' "$(file_hash "$ROBOTS_FILE")" "robots.txt" >> "$manifest_tmp"

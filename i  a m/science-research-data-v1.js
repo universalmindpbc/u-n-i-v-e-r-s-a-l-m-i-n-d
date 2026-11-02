@@ -19,7 +19,7 @@
         boundary: "Universal Mind's current bilateral visual and audio feature is an optional research layer, not yet a complete clinical EMDR protocol. Its planned clinician-guided groups of nine are intended as a protocol-governed online group pathway; clinical equivalence depends on clinician governance, protocol fidelity and product-specific outcomes.",
         repository: {
           collection: "Vision",
-          url: "https://universalmind.tv/informatics/library.html?collection=vision",
+          url: "https://universalmind.tv/informatics/research/?collection=vision",
         },
         statistics: {
           publications: 110,
@@ -83,7 +83,7 @@
         heroStudiesLabel: "Five peer-reviewed studies + one internal prototype observation",
         repository: {
           collection: "Sound",
-          url: "https://universalmind.tv/informatics/library.html?collection=sound",
+          url: "https://universalmind.tv/informatics/research/?collection=sound",
         },
         statistics: {
           publications: 308,
@@ -170,7 +170,7 @@
         boundary: "The B grade applies to active internal mantra or meditation practice. Direct high-quality evidence for an inaudible or sub-audible mantra layer has not been established and would require separate testing.",
         repository: {
           collection: "Language",
-          url: "https://universalmind.tv/informatics/library.html?collection=language",
+          url: "https://universalmind.tv/informatics/research/?collection=language",
         },
         statistics: {
           publications: 368,

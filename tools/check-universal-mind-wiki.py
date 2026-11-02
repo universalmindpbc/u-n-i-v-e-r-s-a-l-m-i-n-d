@@ -65,7 +65,8 @@ for route in routes:
 for route in ['/patent/','/events/private/example.json','/vogue/iam/api/example.php','/vogue/iam/stakeholders/budget/index.html']:
     assert not allowed(robots,route),route
 ns={'s':'http://www.sitemaps.org/schemas/sitemap/0.9'}
-urls={n.text for n in ET.parse(ROOT/'sitemap.xml').findall('s:url/s:loc',ns)}
+from sitemap_urls import sitemap_urls
+urls=sitemap_urls(ROOT)
 for path in ['/','/home/','/read/']:
     assert 'https://universalmind.tv'+path in urls
 # The retired medical dossiers remain absent from every public guide format.
@@ -74,7 +75,7 @@ for path in ['read/index.html','read/resources.json','llms.txt','sitemap.xml']:
     decoded=unquote((ROOT/path).read_text())
     assert not re.search(r'(?:EMDR|Sound|Mantra) Medical Research\.pdf',decoded,re.I), path
 for collection in ['vision','sound','language']:
-    url='https://universalmind.tv/informatics/library.html?collection='+collection
+    url='https://universalmind.tv/informatics/research/?collection='+collection
     assert url in urls
     assert any(item['url']==url and item['format']=='HTML' for item in data['resources'])
 assert not re.search(r'\b(should|could|would)\b',html+'\n'+llms,re.I)

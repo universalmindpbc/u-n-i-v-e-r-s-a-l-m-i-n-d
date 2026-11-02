@@ -8,7 +8,7 @@ const read = (relativePath) => fs.readFileSync(path.join(root, relativePath), "u
 
 const robots = read("robots.txt");
 const stagingRobots = read("robots-staging.txt");
-const sitemap = read("sitemap.xml");
+const sitemap = read("sitemap.xml") + fs.readdirSync(path.join(root,"sitemaps")).filter(p=>p.endsWith(".xml")).map(p=>read("sitemaps/"+p)).join("\n");
 const llms = read("llms.txt");
 
 const publicPaths = [
@@ -25,9 +25,9 @@ const publicPaths = [
 ];
 
 const researchPaths = [
-  "/informatics/library.html?collection=vision",
-  "/informatics/library.html?collection=sound",
-  "/informatics/library.html?collection=language",
+  "/informatics/research/?collection=vision",
+  "/informatics/research/?collection=sound",
+  "/informatics/research/?collection=language",
 ];
 
 const trainingAgents = [
@@ -49,7 +49,9 @@ assert.equal(stagingRobots.trim(), "# The permanent proofing environment must no
 
 for (const publicPath of [...publicPaths, ...researchPaths]) {
   assert.ok(robots.includes("Allow: /"), `robots.txt must allow ${publicPath}`);
-  const canonicalUrl = `https://universalmind.tv${publicPath}`;
+  const navigation = JSON.parse(read('site-navigation/portals.json'));
+  const alias = navigation.portals.flatMap(portal => portal.entries.flatMap(entry => [entry,...(entry.children || [])]).map(entry => ({...entry,portal:portal.id}))).find(entry => entry.source !== 'index.html' && publicPath === (entry.portal === 'iam' ? '/vogue/iam/' : '/informatics/') + entry.source);
+  const canonicalUrl = `https://universalmind.tv${alias?.url || publicPath}`;
   assert.ok(sitemap.includes(`<loc>${canonicalUrl}</loc>`), `sitemap.xml must list ${canonicalUrl}`);
   assert.ok(llms.includes(canonicalUrl), `llms.txt must link ${canonicalUrl}`);
 }

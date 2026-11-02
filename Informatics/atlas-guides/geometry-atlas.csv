@@ -3,7 +3,7 @@ path,type,value
 /schema,string,universal-informatics/atlas-page-guide/v1
 /title,string,Geometry Atlas
 /version,string,2026-11-01-page-narrative-4
-/url,string,https://universalmind.tv/informatics/?atlas=1
+/url,string,https://universalmind.tv/informatics/geometry/
 /wiki,string,https://universalmind.tv/informatics/read/atlas/index.html
 /page_narrative,array,46
 /page_narrative/0,object,
@@ -37352,7 +37352,7 @@ path,type,value
 /sources/0,object,
 /sources/0/path,string,research.html
 /sources/0/url,string,https://universalmind.tv/informatics/research.html
-/sources/0/sha256,string,07a2e24d72b0eecca9db9588f955d1de14174931233de63232d26027401fd5a5
+/sources/0/sha256,string,0f2177119e68883588b1717e84a78da824199212ef27d61aa5aaeea3d032116e
 /sources/0/sha256_scope,string,Exact file bytes
 /sources/1,object,
 /sources/1/path,string,research.js

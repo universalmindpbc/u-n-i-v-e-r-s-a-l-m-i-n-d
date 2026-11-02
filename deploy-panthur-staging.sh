@@ -33,6 +33,8 @@ if [[ -z "$NODE_BIN" ]]; then
   fi
 fi
 
+"$NODE_BIN" "$ROOT_DIR/tools/check-portal-navigation.mjs"
+
 # Events is an independent PHP microsite; validate its own source for scoped releases.
 if [[ "${1:-}" == ai-wiki ]]; then
   python3 "$ROOT_DIR/tools/build-universal-mind-wiki.py" --check

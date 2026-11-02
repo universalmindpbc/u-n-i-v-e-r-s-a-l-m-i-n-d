@@ -2,7 +2,7 @@
   "schema": "universal-informatics/atlas-page-guide/v1",
   "title": "Vision Atlas · EMDR and ocular biology",
   "version": "2026-11-01-page-narrative-4",
-  "url": "https://universalmind.tv/informatics/?entry=research&area=vision",
+  "url": "https://universalmind.tv/informatics/vision/",
   "wiki": "https://universalmind.tv/informatics/read/vision/index.html",
   "page_narrative": [
     {
@@ -187,7 +187,7 @@
     {
       "path": "index.html",
       "url": "https://universalmind.tv/informatics/index.html",
-      "sha256": "a8a3c48bb8e24800c3d0812c654d36ef6f03422cdce94a096da7c2017d92395d",
+      "sha256": "7e37a3a7319da7d68dc997530f2b33ac97057c8de0885b5cfd79e9958219376a",
       "sha256_scope": "HTML with generated Atlas narrative blocks removed"
     },
     {

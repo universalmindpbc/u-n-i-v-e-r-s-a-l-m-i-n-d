@@ -2,7 +2,7 @@
   "schema": "universal-informatics/atlas-page-guide/v1",
   "title": "Geometry Atlas",
   "version": "2026-11-01-page-narrative-4",
-  "url": "https://universalmind.tv/informatics/?atlas=1",
+  "url": "https://universalmind.tv/informatics/geometry/",
   "wiki": "https://universalmind.tv/informatics/read/atlas/index.html",
   "page_narrative": [
     {
@@ -43435,7 +43435,7 @@
     {
       "path": "research.html",
       "url": "https://universalmind.tv/informatics/research.html",
-      "sha256": "07a2e24d72b0eecca9db9588f955d1de14174931233de63232d26027401fd5a5",
+      "sha256": "0f2177119e68883588b1717e84a78da824199212ef27d61aa5aaeea3d032116e",
       "sha256_scope": "Exact file bytes"
     },
     {

@@ -1,0 +1,185 @@
+{
+  "passed": true,
+  "live": false,
+  "mutedProcess": true,
+  "fullscreen": "instrumented, not native",
+  "results": [
+    {
+      "portal": "informatics",
+      "chapter": "about",
+      "url": "https://staging.universalmind.tv/informatics/about/",
+      "media": {
+        "same": true,
+        "src": "https://rmu.universalmind.tv/rihanna-global-citizen-loop.mp4",
+        "time": 1.492504,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "full": "experience",
+        "calls": 1,
+        "exits": 0
+      }
+    },
+    {
+      "portal": "informatics",
+      "chapter": "geometry",
+      "url": "https://staging.universalmind.tv/informatics/geometry/?record=fibonacci-m9-p24&record-mode=research#alpha",
+      "media": {
+        "same": true,
+        "src": "https://rmu.universalmind.tv/rihanna-global-citizen-loop.mp4",
+        "time": 1.973241,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "full": "experience",
+        "calls": 1,
+        "exits": 0
+      }
+    },
+    {
+      "portal": "informatics",
+      "chapter": "transcription",
+      "url": "https://staging.universalmind.tv/informatics/transcription/",
+      "media": {
+        "same": true,
+        "src": "https://rmu.universalmind.tv/rihanna-global-citizen-loop.mp4",
+        "time": 2.442061,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "full": "experience",
+        "calls": 1,
+        "exits": 0
+      }
+    },
+    {
+      "portal": "informatics",
+      "chapter": "molecular",
+      "url": "https://staging.universalmind.tv/informatics/molecular/",
+      "media": {
+        "same": true,
+        "src": "https://rmu.universalmind.tv/rihanna-global-citizen-loop.mp4",
+        "time": 3.540421,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "full": "experience",
+        "calls": 1,
+        "exits": 0
+      }
+    },
+    {
+      "portal": "informatics",
+      "chapter": "quantum",
+      "url": "https://staging.universalmind.tv/informatics/quantum/",
+      "media": {
+        "same": true,
+        "src": "https://rmu.universalmind.tv/rihanna-global-citizen-loop.mp4",
+        "time": 4.685515,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "full": "experience",
+        "calls": 1,
+        "exits": 0
+      }
+    },
+    {
+      "portal": "informatics",
+      "chapter": "sound",
+      "url": "https://staging.universalmind.tv/informatics/sound/?sound=sequence",
+      "media": {
+        "same": true,
+        "src": "https://rmu.universalmind.tv/rihanna-global-citizen-loop.mp4",
+        "time": 5.164937,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "full": "experience",
+        "calls": 1,
+        "exits": 0
+      }
+    },
+    {
+      "portal": "informatics",
+      "chapter": "vision",
+      "url": "https://staging.universalmind.tv/informatics/vision/",
+      "media": {
+        "same": true,
+        "src": "https://rmu.universalmind.tv/rihanna-global-citizen-loop.mp4",
+        "time": 5.647338,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "full": "experience",
+        "calls": 1,
+        "exits": 0
+      }
+    },
+    {
+      "portal": "informatics",
+      "chapter": "language",
+      "url": "https://staging.universalmind.tv/informatics/language/",
+      "media": {
+        "same": true,
+        "src": "https://rmu.universalmind.tv/rihanna-global-citizen-loop.mp4",
+        "time": 6.124429,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "full": "experience",
+        "calls": 1,
+        "exits": 0
+      }
+    },
+    {
+      "portal": "informatics",
+      "chapter": "research",
+      "url": "https://staging.universalmind.tv/informatics/research/",
+      "media": {
+        "same": true,
+        "src": "https://rmu.universalmind.tv/rihanna-global-citizen-loop.mp4",
+        "time": 6.592939,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "full": "experience",
+        "calls": 1,
+        "exits": 0
+      }
+    },
+    {
+      "portal": "informatics",
+      "chapter": "connect",
+      "url": "https://staging.universalmind.tv/informatics/connect/",
+      "media": {
+        "same": true,
+        "src": "https://rmu.universalmind.tv/rihanna-global-citizen-loop.mp4",
+        "time": 7.075051,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "full": "experience",
+        "calls": 1,
+        "exits": 0
+      }
+    },
+    {
+      "portal": "informatics",
+      "chapter": "partners",
+      "url": "https://staging.universalmind.tv/informatics/partners/",
+      "media": {
+        "same": true,
+        "src": "https://rmu.universalmind.tv/rihanna-global-citizen-loop.mp4",
+        "time": 7.556617,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "full": "experience",
+        "calls": 1,
+        "exits": 0
+      }
+    }
+  ],
+  "errors": []
+}

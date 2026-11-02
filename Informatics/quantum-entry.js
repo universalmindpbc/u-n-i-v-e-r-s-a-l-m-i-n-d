@@ -2,7 +2,7 @@
 (()=>{
  const frame=document.getElementById('quantum-frame');
  document.addEventListener('atlas:area',event=>{
-  if(event.detail==='quantum'&&!frame.getAttribute('src'))frame.src=frame.dataset.src;
+  if(event.detail==='quantum'&&!frame.getAttribute('src')){const url=new URL(frame.dataset.src,document.baseURI);for(const[k,v]of new URLSearchParams(location.search))url.searchParams.set(k,v);url.searchParams.set('embedded','1');url.hash=location.hash;frame.src=url.href;}
  });
  frame.addEventListener('load',()=>{
   if(!frame.getAttribute('src'))return;

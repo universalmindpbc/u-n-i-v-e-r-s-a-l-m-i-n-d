@@ -3,7 +3,7 @@ path,type,value
 /schema,string,universal-informatics/atlas-page-guide/v1
 /title,string,Transcription Atlas
 /version,string,2026-11-01-page-narrative-4
-/url,string,https://universalmind.tv/informatics/?entry=research&area=transcription
+/url,string,https://universalmind.tv/informatics/transcription/
 /wiki,string,https://universalmind.tv/informatics/read/transcription/index.html
 /page_narrative,array,119
 /page_narrative/0,object,

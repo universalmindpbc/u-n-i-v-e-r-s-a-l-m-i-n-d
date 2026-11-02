@@ -113,7 +113,7 @@
         : pathName === "technology-citizen-needs.html"
           ? "technology"
           : "home";
-    const currentNavItem = document.body.dataset.currentNav || inferredCurrentNav;
+    const currentNavItem = window.PortalRoutes?.resolve()?.id || document.body.dataset.currentNav || inferredCurrentNav;
 
     navItems.forEach((item) => {
       if (item.tagName === "A" && item.dataset.navItem === "globe") {
@@ -180,7 +180,7 @@
 
     document.querySelectorAll("[data-nav-subitem]").forEach((item) => {
       const href = item.getAttribute("href") || "";
-      const itemUrl = new URL(href, window.location.href);
+      const itemUrl = new URL(href, document.baseURI);
       item.classList.toggle("is-active", itemUrl.pathname.split("/").pop() === pathName);
     });
 
@@ -227,7 +227,7 @@
 
       event.preventDefault();
       event.stopImmediatePropagation();
-      window.location.href = "technology-citizen-needs.html";
+      window.location.href = new URL("technology-citizen-needs.html", document.baseURI).href;
     }, true);
   }
 
@@ -241,7 +241,7 @@
       const link = event.target.closest?.('a[data-nav-item="about"]');
       if (!link || link.target || link.hasAttribute("download")) return;
 
-      const url = new URL(link.getAttribute("href"), window.location.href);
+      const url = new URL(link.getAttribute("href"), document.baseURI);
       if (url.origin !== window.location.origin) return;
 
       // The television room owns its page layer so the active music/video

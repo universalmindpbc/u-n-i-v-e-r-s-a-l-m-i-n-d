@@ -122,10 +122,19 @@
     return navigate(href, title);
   };
   window.addEventListener('popstate', event => {
-    if (frame && event.state?.umShellRoute) navigate(event.state.umShellRoute, 'Universal Mind', false);
+    if (frame && event.state?.umShellRoute) {
+      try {if(frame.contentWindow.PortalRoutes?.restore(event.state.umShellRoute))return;}catch{}
+      navigate(event.state.umShellRoute, 'Universal Mind', false);
+    }
   });
   window.addEventListener('pagehide', cancelDirectoryPlayback);
   window.UniversalMindEntry = {
+    adoptRoute(route, mode='push') {
+      const url=new URL(route,location.origin);if(url.origin!==location.origin)return false;
+      const target=url.pathname+url.search+url.hash;
+      if(target!==location.pathname+location.search+location.hash)history[mode==='replace'?'replaceState':'pushState']({umShell:true,umShellRoute:target},'',target);
+      return true;
+    },
     beginDirectoryPlayback,
     cancelDirectoryPlayback,
     getDirectoryFilm: () => directoryFilm,
