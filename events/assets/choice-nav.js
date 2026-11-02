@@ -24,7 +24,7 @@
   window.addEventListener('um:lab-ready',markLabReady);
   function launchLab(href){
     if(!labFrame?.contentWindow.UniversalMindLab)return;
-    labOpen=true;document.body.dataset.labOpen='true';document.title='Universal Mind Lab';
+    labOpen=true;document.body.dataset.labOpen='true';document.body.dataset.entered='true';document.title='Universal Mind Lab';
     document.querySelectorAll('.choice-header,.choice-main').forEach(e=>e.inert=true);
     labFrame.inert=false;labFrame.removeAttribute('aria-hidden');
     // Start media in this exact click stack; navigation and fullscreen follow it.
@@ -37,6 +37,7 @@
     if(!labOpen||location.pathname==='/lab/')return;
     labFrame?.contentDocument.querySelectorAll('video,audio').forEach(v=>v.pause());
     labFrame?.remove();labFrame=null;labOpen=false;delete document.body.dataset.labOpen;
+    delete document.body.dataset.entered;document.dispatchEvent(new Event('lab:return'));
     document.title='Events — Universal Mind';
     document.querySelectorAll('.choice-header,.choice-main').forEach(e=>e.inert=false);
     prepareLab();

@@ -1,5 +1,6 @@
 
       (() => {
+        if (new URLSearchParams(location.search).get("prepare") === "1") return;
         const canvas = document.querySelector("[data-rain-canvas]");
         const context = canvas?.getContext("2d", { alpha: false });
         if (!canvas || !context) return;
