@@ -626,7 +626,7 @@ function loadMainHomepage() {
     document.querySelector("[data-iam-next-page]")?.dataset.iamNextPage ||
     document.body?.dataset.iamNextPage ||
     "index.html";
-  const nextUrl = new URL(nextPage, window.location.href);
+  const nextUrl = new URL(nextPage, document.baseURI);
   const currentParams = new URLSearchParams(window.location.search);
   const isMusicTelevisionFrame = currentParams.get("musicTelevisionFrame") === "1";
   const isAdaptiveFrame = currentParams.get("adaptiveFrame") === "1";

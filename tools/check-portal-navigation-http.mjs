@@ -25,6 +25,8 @@ const aliases=[
  ['/informatics/library.html?collection=vision','/informatics/research/?collection=vision'],
  ['/informatics/library.html?collection=sound&record=NPL-222','/informatics/research/?collection=sound&record=NPL-222'],
  ['/informatics/library.html?collection=language','/informatics/research/?collection=language'],
+ ['/informatics/library.html?collection=all&target=OXTR&target=NR3C1','/informatics/research/?collection=all&target=OXTR&target=NR3C1'],
+ ['/informatics/?area=research&section='+encodeURIComponent(JSON.stringify({search:'?collection=all&target=OXTR&target=NR3C1'})),'/informatics/research/?collection=all&target=OXTR&target=NR3C1'],
  ['/informatics/research.html?record=fibonacci-m9-p24','/informatics/geometry/?record=fibonacci-m9-p24'],
  ['/informatics/genomics.html','/informatics/transcription/'],
  ['/informatics/quantum/index.html','/informatics/quantum/'],
@@ -41,4 +43,8 @@ for(const route of ['/informatics/library.html?embedded=1&collection=sound','/in
 for(const route of ['/sitemap/','/informatics/sitemap/','/iam/sitemap/','/sitemap.xml',...['portals','informatics','iam','informatics-records','informatics-publications','other-public-pages'].map(n=>'/sitemaps/'+n+'.xml'),'/read/','/llms.txt','/informatics/llms.txt','/site-navigation/portals.json']){const r=await get(route);assert.equal(r.status,200,route);results.push({route,status:r.status});}
 const map=await get('/sitemap/');for(const portal of config.portals)assert.ok(map.body.includes(portal.label));
 for(const route of ['/events/?experience=1','/events/happiness-entry.php']){const r=await get(route,'follow');assert.equal(r.status,200,route);results.push({route,status:r.status,finalURL:r.url});}
+for(const route of ['/iam/tv/','/iam/check-in/']) {
+ const response=await fetch(origin+route,{redirect:'manual',headers:{'User-Agent':'Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 Mobile/15E148 Safari/604.1'}});
+ assert.equal(response.status,302,route+' phone entry');assert.ok(response.headers.get('location').includes('/vogue/iam/induction.html?mobile=1'));results.push({route,phoneEntryPreserved:true});
+}
 const out=process.env.PORTAL_QA_OUT||'/private/tmp/portal-route-qa-live';await fs.mkdir(out,{recursive:true});await fs.writeFile(path.join(out,'http.json'),JSON.stringify({passed:true,results},null,2));console.log(JSON.stringify({passed:true,httpChecks:results.length,out}));

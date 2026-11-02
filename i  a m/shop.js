@@ -14,7 +14,7 @@
     && params.get("standalone") !== "1"
     && window.IAMMobileEditorial?.active !== true
   ) {
-    const shellUrl = new URL("index.html", window.location.href);
+    const shellUrl = new URL("index.html", document.baseURI);
     shellUrl.searchParams.set("shop", "1");
     window.location.replace(shellUrl.href);
     return;
@@ -406,7 +406,7 @@
       const href = item.getAttribute("href") || "";
       if (!href || href.startsWith("mailto:")) return;
       event.preventDefault();
-      const url = new URL(href, window.location.href);
+      const url = new URL(href, document.baseURI);
       url.searchParams.set("adaptiveFrame", "1");
       url.searchParams.set("musicTelevisionFrame", "1");
       url.searchParams.set("navigationShell", "1");
@@ -857,7 +857,7 @@
 
   function needsEmilioCurrencyRecovery(retailerUrl) {
     try {
-      const destination = new URL(retailerUrl, window.location.href);
+      const destination = new URL(retailerUrl, document.baseURI);
       if (destination.hostname !== emilioCurrencyRecoveryHost) return false;
       return !emilioCurrencyRecoveryReady;
     } catch {

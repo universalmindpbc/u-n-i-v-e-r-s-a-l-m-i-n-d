@@ -45,7 +45,7 @@
   if (active) document.documentElement.dataset.mobileEditorial = "true";
 
   function currentFile() {
-    return window.location.pathname.split("/").pop() || "induction.html";
+    return window.PortalRoutes?.resolve()?.source || window.location.pathname.split("/").pop() || "induction.html";
   }
 
   function transformGlobalNavigation() {
@@ -132,10 +132,10 @@
         : null;
       if (submenu && !submenu.hasAttribute("data-mobile-editorial-hidden")) return;
 
-      const url = new URL(link.getAttribute("href"), window.location.href);
+      const url = new URL(link.getAttribute("href"), document.baseURI);
       if (url.origin !== window.location.origin) return;
 
-      const fileName = url.pathname.split("/").pop() || "";
+      const fileName = window.PortalRoutes?.resolve(url.href)?.source || url.pathname.split("/").pop() || "";
       if (!fileName.endsWith(".html")) return;
 
       if (allowedFiles.has(fileName)) {

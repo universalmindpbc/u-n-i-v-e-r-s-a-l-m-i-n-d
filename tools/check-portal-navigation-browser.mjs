@@ -10,8 +10,8 @@ await fs.mkdir(out,{recursive:true});
 const server=await chromium.launchServer({headless:true,executablePath:'/Users/benkorbel/Library/Caches/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-mac-arm64/chrome-headless-shell',args:['--mute-audio']});
 assert.ok(server.process().spawnargs.includes('--mute-audio'));
 const browser=await chromium.connect(server.wsEndpoint()),results=[],errors=[];
-async function makeContext(viewport={width:1470,height:956}) {
- const ctx=await browser.newContext({viewport});
+async function makeContext(viewport={width:1470,height:956},options={}) {
+ const ctx=await browser.newContext({viewport,...options});
  await ctx.addInitScript(()=>{
   let full=null;window.__fullscreenCalls=0;window.__fullscreenExits=0;
   Object.defineProperty(document,'fullscreenElement',{get:()=>full});
@@ -87,6 +87,37 @@ try {
    await page.goBack();assert.equal(new URL(page.url()).pathname,'/iam/our-team/');continuity(before,await snapshot(page,'[data-television-player] video'),'I AM Back');
    await page.goForward();assert.equal(new URL(page.url()).pathname,'/iam/shop/');
    await page.screenshot({path:path.join(out,'iam-desktop.png')});
+  }finally{await stop(ctx);}
+ }
+ if(only==='all'||only==='direct') {
+  const ctx=await makeContext(),page=await ctx.newPage();
+  try {
+   await page.goto(origin+'/iam/shop/',{waitUntil:'domcontentloaded'});
+   await page.waitForFunction(()=>document.body.classList.contains('television-page-view-open'),null,{timeout:60000});
+   assert.equal(new URL(page.url()).pathname,'/iam/shop/');
+   assert.ok(await page.locator('[data-television-page-frame]').count());
+   await page.goto(origin+'/iam/about/',{waitUntil:'domcontentloaded'});
+   await page.locator('[data-nav-item="science"]').waitFor({state:'attached'});
+   await page.evaluate(()=>document.querySelector('[data-nav-item="science"]').click());
+   await page.waitForFunction(()=>location.pathname==='/iam/science/');
+   await page.locator('.research-link').first().waitFor({state:'attached'});
+   assert.deepEqual(await page.locator('.research-link').evaluateAll(links=>links.map(link=>link.href)),['vision','sound','language'].map(collection=>origin+'/informatics/research/?collection='+collection));
+   await page.goto(origin+'/iam/check-in/?full=1',{waitUntil:'domcontentloaded'});
+   assert.equal(await page.evaluate(()=>new URL(document.body.dataset.iamNextPage,document.baseURI).pathname),'/vogue/iam/research.php');
+   results.push({directEntries:['shop','about-to-science','check-in-relative-route'],passed:true});
+  }finally{await stop(ctx);}
+ }
+ if(only==='all'||only==='mobile') {
+  const ctx=await makeContext({width:390,height:844},{isMobile:true,hasTouch:true,userAgent:'Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 Mobile/15E148 Safari/604.1'}),page=await ctx.newPage();
+  try {
+   await page.goto(origin+'/iam/about/',{waitUntil:'domcontentloaded'});
+   await page.waitForFunction(()=>document.documentElement.dataset.mobileEditorial==='true');
+   await page.locator('[data-nav-item="science"]').waitFor({state:'attached'});
+   await page.evaluate(()=>document.querySelector('[data-nav-item="science"]').click());
+   await page.waitForFunction(()=>location.pathname==='/iam/science/');
+   await page.locator('.research-link').first().waitFor({state:'attached'});
+   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+2));
+   results.push({mobile:'About to Science',phonePolicy:true,width:390});
   }finally{await stop(ctx);}
  }
  if(only==='all'||only==='shell') {

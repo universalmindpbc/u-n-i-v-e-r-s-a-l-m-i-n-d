@@ -5,6 +5,16 @@ $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $query = $_GET;
 $target = null;
 $fragment = '';
+$parsePairs = static function ($search) {
+    $pairs = [];
+    foreach (explode('&', ltrim($search, '?')) as $part) {
+        if ($part === '') continue;
+        $values = explode('=', $part, 2);
+        $pairs[] = [urldecode($values[0]), urldecode($values[1] ?? '')];
+    }
+    return $pairs;
+};
+$pairs = $parsePairs($_SERVER['QUERY_STRING'] ?? '');
 $normalize = static function ($value) { return rtrim(preg_replace('~/index\.html$~', '/', $value), '/'); };
 foreach ($config['portals'] as $portal) {
     foreach ($portal['entries'] as $entry) {
@@ -20,11 +30,17 @@ foreach ($config['portals'] as $portal) {
     }
 }
 if (!$target) { http_response_code(404); exit('Page not found.'); }
-if (isset($query['section'])) {
+if (isset($query['section']) && is_string($query['section'])) {
     $section = json_decode($query['section'], true);
-    if (is_array($section) && isset($section['search'])) { parse_str(ltrim($section['search'], '?'), $forwarded); $query = array_merge($forwarded, $query); if (isset($section['hash']) && is_string($section['hash'])) $fragment = '#' . rawurlencode(ltrim($section['hash'], '#')); }
+    if (is_array($section) && isset($section['search']) && is_string($section['search'])) {
+        $present = array_column($pairs, 0);
+        foreach ($parsePairs($section['search']) as $pair) if (!in_array($pair[0], $present, true)) $pairs[] = $pair;
+        if (isset($section['hash']) && is_string($section['hash'])) $fragment = '#' . rawurlencode(ltrim($section['hash'], '#'));
+    }
 }
-foreach (['entry','area','atlas','about','embedded','adaptiveFrame','musicTelevisionFrame','navigationShell','v','aboutTopLevel','section'] as $key) unset($query[$key]);
-$destination = $target['url'] . (count($query) ? '?' . http_build_query($query, '', '&', PHP_QUERY_RFC3986) : '');
+$controls = ['entry','area','atlas','about','embedded','adaptiveFrame','musicTelevisionFrame','navigationShell','v','aboutTopLevel','section'];
+$kept = [];
+foreach ($pairs as [$key, $value]) if (!in_array($key, $controls, true)) $kept[] = rawurlencode($key) . '=' . rawurlencode($value);
+$destination = $target['url'] . (count($kept) ? '?' . implode('&', $kept) : '');
 header('Location: ' . $destination . $fragment, true, 301);
 exit;

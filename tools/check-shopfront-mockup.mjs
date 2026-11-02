@@ -671,7 +671,7 @@ assert.match(shopStyle, /\.shop-footer__legal\s*\{[\s\S]*grid-template-columns:\
 assert.equal((shop.match(/data-shop-home/g) || []).length, 2, "Shop Home must appear exactly once in the sticky navigation and once in the footer");
 assert.match(shopStyle, /\.shop-product__copy--brand-only\s*\{\s*min-height:\s*76px;/, "Brand-only edit cards must fill the shared caption row without exposing a grey strip");
 assert.ok(shop.includes(`shop.css?v=${expectedShopStyleToken}`), "The Shop shell must load its content-derived stylesheet revision");
-assert.match(shop, /shop\.js\?v=shop-836f8a905982/, "The Shop shell must load the content-derived Accessories | Health runtime");
+assert.match(shop, new RegExp("shop\\.js\\?v=shop-" + createHash("sha256").update(shopScript).digest("hex").slice(0,12)), "The Shop shell must load the content-derived Accessories | Health runtime");
 assert.match(
   shopStyle,
   /@media \(max-width: 700px\)[\s\S]*?\.shop-masthead__nav \{ gap: 6px; \}[\s\S]*?\.shop-masthead__actions \{ gap: 0; \}[\s\S]*?\.shop-theme,[\s\S]*?\.shop-music \{[\s\S]*?width: 28px;[\s\S]*?height: 44px;[\s\S]*?\.shop-theme \[data-shop-theme-label\],[\s\S]*?\.shop-music \[data-shop-music-label\] \{ font-size: 0; \}/,

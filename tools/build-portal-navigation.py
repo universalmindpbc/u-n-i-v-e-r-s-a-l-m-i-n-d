@@ -39,7 +39,7 @@ def iam_nav_item(e,child=False):
  return result
 p=ROOT/'i  a m/global-navigation.js';s=p.read_text();s=re.sub(r'(<nav class="global-nav-menu" aria-label="Primary">)[\s\S]*?(</nav>)',lambda m:m[1]+'\n'+ '\n'.join(iam_nav_item(x)for x in portals['iam']['entries'])+'\n'+m[2],s,count=1);p.write_text(s)
 # Keep the existing content-hash convention for I AM controllers.
-for name,pattern,prefix in [('global-navigation.js',r'global-navigation-canonical-14-[a-f0-9]{12}','global-navigation-canonical-14-'),('adaptive-environment-television.js',r'music-tv-[a-f0-9]{12}','music-tv-'),('script.js',r'adaptive-env-stream-[a-f0-9]{12}','adaptive-env-stream-'),('globe.js',r'globe-[a-f0-9]{12}','globe-')]:
+for name,pattern,prefix in [('global-navigation.js',r'global-navigation-canonical-14-[a-f0-9]{12}','global-navigation-canonical-14-'),('adaptive-environment-television.js',r'music-tv-[a-f0-9]{12}','music-tv-'),('script.js',r'adaptive-env-stream-[a-f0-9]{12}','adaptive-env-stream-'),('globe.js',r'globe-[a-f0-9]{12}','globe-'),('adaptive-environment.js',r'adaptive-env-[a-f0-9]{12}','adaptive-env-'),('mobile-editorial-surface.js',r'mobile-editorial-[a-f0-9]{12}','mobile-editorial-'),('shop.js',r'shop-[a-f0-9]{12}','shop-')]:
  token=prefix+hashlib.sha256((ROOT/'i  a m'/name).read_bytes()).hexdigest()[:12]
  for path in (ROOT/'i  a m').glob('*.html'):path.write_text(re.sub(pattern,token,path.read_text()))
 # Content-address the modified Informatics controllers and Science collection links.

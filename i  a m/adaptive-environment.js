@@ -782,6 +782,8 @@
   }
 
   function pageNameFromUrl(url) {
+    const route = window.PortalRoutes?.resolve(url.href);
+    if (route?.portal === "iam" && route.source) return route.source;
     const parts = url.pathname.split("/");
     return parts[parts.length - 1] || "index.html";
   }
@@ -812,7 +814,7 @@
       return null;
     }
 
-    const url = new URL(link.getAttribute("href"), window.location.href);
+    const url = new URL(link.getAttribute("href"), document.baseURI);
     if (url.origin !== window.location.origin) return null;
     const pageName = pageNameFromUrl(url);
     if (!normalPages.has(pageName) && !framePages.has(pageName) && !standalonePages.has(pageName)) return null;
@@ -904,7 +906,8 @@
       const href = link.getAttribute("href");
       if (!href) return;
 
-      const absoluteHref = new URL(href, pageUrl).href;
+      const pageBase = new URL(nextDocument.querySelector("base")?.getAttribute("href") || ".", pageUrl);
+      const absoluteHref = new URL(href, pageBase).href;
       const alreadyLoaded = Array.from(document.querySelectorAll('link[rel="stylesheet"]'))
         .some((existing) => existing.href === absoluteHref);
 
@@ -1105,7 +1108,7 @@
     if (!source) return "";
 
     try {
-      return new URL(source, window.location.href).pathname;
+      return new URL(source, document.baseURI).pathname;
     } catch {
       return source;
     }
