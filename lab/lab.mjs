@@ -1,16 +1,19 @@
-import { initMedia } from './media.mjs';
+import { initMedia } from './media.mjs?v=20261102f';
 const $ = (id) => document.getElementById(id);
 const reduced = matchMedia('(prefers-reduced-motion: reduce)');
 const mobile = () => innerWidth < 700;
 const status = (message) => { $('scene-status').textContent = message; };
 const places = {
   overview: { number: '01 · THE CLEARING', title: 'Open lawn', copy: 'A generous green lawn holds the programme together. Forest meets two boundaries; a river or creek frames a third.', note: 'An illustrative setting. The host community will help choose and shape the actual site.' },
-  main: { number: '02 · MAIN PAVILION', title: 'Main pavilion', copy: 'Music, fashion and collective experiences gather beneath a single vaulted shell, opening onto the lawn.', note: 'A Droneport-derived form study. Capacity, construction and rain protection remain design workstreams.' },
-  food: { number: '03 · FOOD & PLAY', title: 'Food and play pavilions', copy: 'Two fluid satellite shells create places for cooking, conversation and younger visitors, with clear views across the lawn.', note: 'The same provisional material palette as the main vault, with simpler surfaces and no oval apertures.' },
-  river: { number: '04 · BY THE WATER', title: 'Apple Music area', copy: 'A triangular Apple Music flag marks the proposed listening area. Future stages add Tropicália seats and transparent tubular listening pylons.', note: 'Proposed collaboration. Waterway separation, acoustics and light-rain shelter remain in development.' },
-  support: { number: '05 · SUPPORT AREA', title: 'Support area', copy: 'A welcome booth, headspace staff figure and MSF support vehicle illustrate the proposed facilities. Triangular flags share the Universal Mind flower.', note: 'Illustrative placements. Partner participation, staffing and clinical services remain to be agreed.' }
+  main: { number: '02 · MAIN PAVILION', title: 'Main pavilion', copy: 'Music, fashion and collective experiences gather beneath a single vaulted shell, opening onto the lawn.', note: '96 seats plus four mobility spaces test the 100-person ambition. Capacity, acoustics and construction require site-specific design.' },
+  food: { number: '03 · FOOD & PLAY', title: 'Food and play pavilions', copy: 'Cooking and sheltered activities sit beside a separate rainbow metallic play structure, with a flowing upper route and an open passage beneath.', note: 'The same provisional material palette as the main vault, with simpler surfaces and no oval apertures.' },
+  play: { number: '04 · PLAYGROUND', title: 'Sculptural playground', copy: 'A separate fluid play bridge rises from the lawn, with a walk-through arch and a gently curving upper route. Rainbow metallic surfaces explore the aluminium or stainless-steel direction.', note: 'A concept informed by the supplied ZHA reference. Play safety, access, surfaces and fabrication remain part of specialist design.' },
+  river: { number: '05 · BY THE WATER', title: 'Apple Music area', copy: 'Transparent tubular pylons, rainbow Tropicália furniture studies and AKG K812 headphone representations form the individual listening area.', note: 'Apple Music collaboration and interface are proposed. The listening preview shares this page’s music controls.' },
+  support: { number: '06 · SUPPORT AREA', title: 'Support area', copy: 'A welcome booth, headspace staff figure and MSF support vehicle illustrate the proposed facilities. Triangular flags share the Universal Mind flower.', note: 'Illustrative placements. Partner participation, staffing and clinical services remain to be agreed.' }
 };
 let sceneAPI = null;
+let entered=false,buildStage='open',rain=false,layoutVisible=false,sequenceTimer=0,tourTimer=0;
+$('world').inert=true;$('world').setAttribute('aria-hidden','true');
 const media = initMedia(state => sceneAPI?.setMusicMotion(state));
 let night = false;
 $('night-toggle').addEventListener('click',()=>{
@@ -21,7 +24,8 @@ $('night-toggle').addEventListener('click',()=>{
 });
 let mode = '3d';
 let selected = 'overview';
-function selectPlace(key, show = true) {
+function selectPlace(key, show = true, automated = false) {
+  if(!automated)stopTour();
   selected = key;
   document.body.dataset.cameraView = key;
   const info = places[key];
@@ -43,7 +47,7 @@ function setMode(next) {
   $('plan-toggle').innerHTML = mode === 'plan' ? '<span aria-hidden="true">◇</span> 3D view' : '<span aria-hidden="true">▦</span> 2D plan';
   $('labels-toggle').disabled = mode === 'plan';
   $('navigation-hint').textContent = mode === 'plan' ? 'Select a place for details' : mobile() ? 'Drag to orbit · pinch to zoom' : 'Drag to look around · scroll to move closer';
-  sceneAPI?.setVisible(mode === '3d');
+  sceneAPI?.setVisible(mode === '3d' && entered);
   if (mode === '3d') sceneAPI?.go(selected, true);
 }
 document.querySelectorAll('[data-view]').forEach(b => b.addEventListener('click', () => selectPlace(b.dataset.view)));
@@ -59,7 +63,7 @@ $('about-open').addEventListener('click', () => $('vision').showModal());
 $('about-close').addEventListener('click', () => $('vision').close());
 $('vision').addEventListener('click', (e) => { if (e.target === $('vision')) { const r = e.target.getBoundingClientRect(); if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) e.target.close(); } });
 
-// Fullscreen is initiated only by the visitor's button press.
+// Both fullscreen and playback begin synchronously in the Explore gesture.
 const fullscreenButton = $('fullscreen-toggle');
 const fullscreenRoot = document.documentElement;
 const fullscreenActive = () => Boolean(document.fullscreenElement || document.webkitFullscreenElement);
@@ -76,32 +80,57 @@ function syncFullscreen() {
   fullscreenButton.title = label;
   $('fullscreen-status').hidden = true;
 }
-fullscreenButton.addEventListener('click', async () => {
-  fullscreenButton.disabled = true;
-  try {
-    if (fullscreenActive()) {
-      const leave = document.exitFullscreen || document.webkitExitFullscreen;
-      await leave.call(document);
-    } else {
-      const enter = fullscreenRoot.requestFullscreen || fullscreenRoot.webkitRequestFullscreen;
-      await enter.call(fullscreenRoot);
-    }
+async function changeFullscreen(enterOnly=false){
+  if(!fullscreenSupported())return;
+  fullscreenButton.disabled=true;
+  try{
+    if(fullscreenActive()){
+      if(!enterOnly){const leave=document.exitFullscreen||document.webkitExitFullscreen;await leave.call(document);}
+    }else{const enter=fullscreenRoot.requestFullscreen||fullscreenRoot.webkitRequestFullscreen;await enter.call(fullscreenRoot);}
     syncFullscreen();
-  } catch {
-    syncFullscreen();
-    $('fullscreen-status').textContent = 'Fullscreen is unavailable. Continue exploring in this window.';
-    $('fullscreen-status').hidden = false;
-  } finally {
-    fullscreenButton.disabled = false;
-  }
+  }catch{syncFullscreen();$('fullscreen-status').textContent='Fullscreen is unavailable. Continue exploring in this window.';$('fullscreen-status').hidden=false;}
+  finally{fullscreenButton.disabled=false;}
+}
+fullscreenButton.addEventListener('click',()=>changeFullscreen());
+$('explore-enter').addEventListener('click',()=>{
+  if(entered)return;entered=true;document.body.dataset.entered='true';
+  $('landing').hidden=true;$('world').inert=false;$('world').removeAttribute('aria-hidden');
+  sceneAPI?.setVisible(mode==='3d');
+  media.start();changeFullscreen(true);
+  document.querySelector('[data-view="overview"]').focus({preventScroll:true});
 });
+const stages=['site','arrival','assembly','fitout','open'];
+const stageDescriptions={site:'Open lawn, forest edges and waterway.',arrival:'Road-train delivery on the service edge.',assembly:'Illustrative frames, access scaffold and unloading.',fitout:'Vault, satellite shelters, playground and listening.',open:'Programme, listening and community facilities.'};
+function stopSequence(){clearTimeout(sequenceTimer);sequenceTimer=0;$('sequence-play').setAttribute('aria-pressed','false');$('sequence-play').textContent='▶ Play';}
+function setStage(value,automatic=false){
+  if(!automatic){stopSequence();stopTour();}buildStage=value;document.body.dataset.buildStage=value;
+  document.querySelectorAll('[data-stage]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.stage===value)));
+  $('stage-description').textContent=stageDescriptions[value];sceneAPI?.setStage(value,!reduced.matches);
+  if(value!=='open'){$('place-card').hidden=true;selectPlace('overview',false,true);}
+}
+document.querySelectorAll('[data-stage]').forEach(b=>b.addEventListener('click',()=>setStage(b.dataset.stage)));
+$('sequence-play').addEventListener('click',()=>{
+  if(sequenceTimer){stopSequence();return;}stopTour();let n=0;
+  $('sequence-play').setAttribute('aria-pressed','true');$('sequence-play').textContent='Ⅱ Pause';
+  const next=()=>{setStage(stages[n++],true);if(n<stages.length)sequenceTimer=setTimeout(next,3400);else stopSequence();};next();
+});
+function stopTour(){clearTimeout(tourTimer);tourTimer=0;$('tour-toggle').setAttribute('aria-pressed','false');$('tour-toggle').textContent='Tour';}
+$('tour-toggle').addEventListener('click',()=>{
+  if(tourTimer){stopTour();return;}stopSequence();setStage('open',true);let n=0;const route=['overview','main','food','play','river','support'];
+  $('tour-toggle').setAttribute('aria-pressed','true');$('tour-toggle').textContent='Stop tour';
+  const next=()=>{selectPlace(route[n++],true,true);if(n<route.length)tourTimer=setTimeout(next,7000);else stopTour();};next();
+});
+$('rain-toggle').addEventListener('click',()=>{rain=!rain;$('rain-toggle').setAttribute('aria-pressed',String(rain));document.body.dataset.rain=String(rain);sceneAPI?.setRain(rain);});
+$('layout-toggle').addEventListener('click',()=>{layoutVisible=!layoutVisible;$('layout-toggle').setAttribute('aria-pressed',String(layoutVisible));$('layout-notes').hidden=!layoutVisible;sceneAPI?.setLayout(layoutVisible);});
+addEventListener('pagehide',()=>{stopSequence();stopTour();});
 document.addEventListener('fullscreenchange', syncFullscreen);
 document.addEventListener('webkitfullscreenchange', syncFullscreen);
 syncFullscreen();
 
 async function buildWorld() {
   const THREE = await import('three');
-  const { OrbitControls } = await import('./vendor/OrbitControls.js');
+  const [{OrbitControls},{createArchitecture},{createSiteFeatures}]=await Promise.all([import('./vendor/OrbitControls.js'),import('./architecture.mjs?v=20261102f'),import('./site-features.mjs?v=20261102f')]);
+  const architecture=createArchitecture(THREE);
   let seed = 1947;
   const random = () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; };
   const scene = new THREE.Scene();
@@ -214,11 +243,12 @@ async function buildWorld() {
   const crownMatrices=crowns.instanceMatrix.array.slice();
   const animatedFlags=[],animatedPeople=[];
 
+  const paths=new THREE.Group();scene.add(paths);
   function path(points,width=2.4){
     const c=new THREE.CatmullRomCurve3(points.map(p=>new THREE.Vector3(p[0],.055,p[1])));
     const verts=[],ind=[];
     for(let i=0;i<=80;i++){const p=c.getPoint(i/80),t=c.getTangent(i/80);verts.push(p.x-t.z*width/2,p.y,p.z+t.x*width/2,p.x+t.z*width/2,p.y,p.z-t.x*width/2);if(i<80){const a=i*2;ind.push(a,a+2,a+1,a+1,a+2,a+3);}}
-    const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(verts,3));g.setIndex(ind);g.computeVertexNormals();const m=mesh(g,mats.stone);m.castShadow=false;
+    const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(verts,3));g.setIndex(ind);g.computeVertexNormals();const m=mesh(g,mats.stone,paths);m.castShadow=false;
   }
   path([[2,62],[1,38],[0,21],[1,6],[0,-6]],3.3);
   path([[0,8],[-8,0],[-19,-7],[-25,-8]]);
@@ -226,38 +256,16 @@ async function buildWorld() {
   path([[0,14],[10,15],[20,10],[25,0]],1.8);
   path([[-25,-8],[-31,-14],[-35,-24]],1.8);
 
-  // A closed shell with a thin edge, generated from a continuous surface.
-  function shell(surface,thickness,stepsU=48,stepsV=48){
-    const pts=[],idx=[];
-    for(let side=0;side<2;side++)for(let j=0;j<=stepsV;j++)for(let i=0;i<=stepsU;i++){
-      const p=surface(i/stepsU,j/stepsV);pts.push(p[0],p[1]-side*thickness,p[2]);
-    }
-    const count=(stepsU+1)*(stepsV+1);
-    for(let j=0;j<stepsV;j++)for(let i=0;i<stepsU;i++){
-      const a=j*(stepsU+1)+i,b=a+1,c=a+stepsU+1,d=c+1;idx.push(a,c,b,b,c,d,a+count,b+count,c+count,b+count,d+count,c+count);
-    }
-    function edge(a,b){idx.push(a,b,a+count,b,b+count,a+count);}
-    for(let i=0;i<stepsU;i++){edge(i+1,i);edge(stepsV*(stepsU+1)+i,stepsV*(stepsU+1)+i+1);}
-    for(let j=0;j<stepsV;j++){edge(j*(stepsU+1),(j+1)*(stepsU+1));edge((j+1)*(stepsU+1)+stepsU,j*(stepsU+1)+stepsU);}
-    const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(pts,3));g.setIndex(idx);g.computeVertexNormals();return g;
+  const architectureGroup=new THREE.Group();scene.add(architectureGroup);
+  const main=architecture.mainVault();main.position.set(0,.08,-12);architectureGroup.add(main);
+  const platform=mesh(new THREE.BoxGeometry(24,.16,20),mats.stone,main);platform.position.y=-.08;
+  for(const [x,z,scale,rotation] of [[-24,-9,1,-.35],[-23,20,.88,-1.1]]){
+    const g=architecture.satellite({scale});g.position.set(x,.08,z);g.rotation.y=rotation;architectureGroup.add(g);
+    const deck=mesh(new THREE.CylinderGeometry(6.4,6.4,.15,64),mats.stone,g);deck.scale.z=.85;deck.position.y=-.08;
   }
-  const main=new THREE.Group();main.position.set(0,0,-12);scene.add(main);
-  const vault=mesh(shell((u,v)=>{const x=2*u-1,z=2*v-1;return [x*11.3,.28+4.15*Math.sqrt(1-x*x)+3.5*Math.sqrt(1-z*z),z*9.2];},.28),mats.shell,main);
-  vault.name='Main pavilion — provisional shell';
-  const platform=mesh(new THREE.BoxGeometry(24,.16,20),mats.stone,main);platform.position.y=-.01;
-  // Sparse radial joints communicate scale without specifying a construction system.
-  const jointMat=new THREE.LineBasicMaterial({color:'#9b8469',transparent:true,opacity:.13});
-  for(let i=1;i<18;i++){
-    const x=-1+i/9,p=[];for(let j=0;j<=60;j++){const z=-1+j/30;p.push(new THREE.Vector3(x*11.3,.295+4.15*Math.sqrt(1-x*x)+3.5*Math.sqrt(1-z*z),z*9.2));}main.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(p),jointMat));
-  }
-  function satellite(x,z,scale,rotation){
-    const g=new THREE.Group();g.position.set(x,0,z);g.rotation.y=rotation;g.scale.setScalar(scale);scene.add(g);
-    const spine=new THREE.CubicBezierCurve3(new THREE.Vector3(0,.2,-3.7),new THREE.Vector3(0,5.8,-6),new THREE.Vector3(0,6.7,0),new THREE.Vector3(0,5.4,4));
-    mesh(shell((u,v)=>{const p=spine.getPoint(v),w=.9+5.2*Math.sin(v*Math.PI/2),q=u*2-1;return [q*w,p.y-.95*q*q*Math.sin(v*Math.PI/2),p.z+.9*q*q*Math.sin(v*Math.PI/2)];},.19,36,44),mats.shell,g);
-    const deck=mesh(new THREE.CylinderGeometry(6.4,6.4,.15,64),mats.stone,g);deck.scale.z=.85;deck.position.set(0,0,0);
-    return g;
-  }
-  satellite(-24,-9,1,-.35);satellite(-23,20,.88,-1.1);
+  if(architecture.playground){const playground=architecture.playground({rainbow:true});playground.position.set(-17,.08,31);playground.rotation.y=.35;architectureGroup.add(playground);}
+  const features=createSiteFeatures(THREE,scene,$('music-video'));
+  const contextStart=scene.children.length;
   // Service/support footprint is intentionally plain until the facilities stage.
   const support=mesh(new THREE.BoxGeometry(6,2.7,4),new THREE.MeshStandardMaterial({color:'#a6aa90',roughness:1}));support.position.set(-36,1.3,-24);
   const supportRoof=mesh(new THREE.BoxGeometry(6.5,.15,4.5),mats.timber);supportRoof.position.set(-36,2.73,-24);
@@ -334,15 +342,17 @@ async function buildWorld() {
     const head=mesh(new THREE.SphereGeometry(.135,8,6),new THREE.MeshStandardMaterial({color:i%3?'#bba286':'#806956'}),g);head.position.y=1.55;
     for(const s of [-1,1]){const leg=mesh(new THREE.CylinderGeometry(.065,.05,.69,5),cloth,g);leg.position.set(s*.11,.35,0);}
   });
-  const anchorData=[['main','Main pavilion',[0,8.4,-12]],['food','Food',[-24,6.5,-9]],['food','Play',[-23,5.7,20]],['river','Apple Music area',[22,1.3,8]],['support','Support',[-32,3,-20]]];
+  const contextDecor=new THREE.Group();const contextObjects=scene.children.slice(contextStart);contextObjects.forEach(o=>contextDecor.add(o));scene.add(contextDecor);
+  const anchorData=[['main','Main pavilion',[0,8.4,-12]],['food','Food',[-24,6.5,-9]],['play','Playground',[-17,3.8,31]],['river','Apple Music area',[22,1.3,8]],['support','Support',[-32,3,-20]]];
   const anchors=anchorData.map(([key,label,p])=>{
     const el=document.createElement('button');el.className='scene-label';el.dataset.key=key;el.tabIndex=-1;el.innerHTML='<i></i>'+label;el.addEventListener('click',()=>selectPlace(key));$('labels').append(el);return {el,p:new THREE.Vector3(...p)};
   });
   const presets={
     overview:{pos:[65,51,82],target:[-1,0,0]},
-    main:{pos:[27,17,24],target:[0,3,-10]},
-    food:{pos:[3,23,40],target:[-22,2,4]},
-    river:{pos:[35,6,18],target:[26,3,5]},
+    main:{pos:[21,12,19],target:[0,3,-12]},
+    food:{pos:[11,23,43],target:[-20,2,11]},
+    play:{pos:[0,8,45],target:[-17,1.6,31]},
+    river:{pos:[32,5,23],target:[23,1.7,10]},
     support:{pos:[-21,13,-37],target:[-33,2,-18]}
   };
   const nightLights=[];
@@ -351,13 +361,21 @@ async function buildWorld() {
   }
   let tween=null,visible=true,raf=0,needsFrame=true,lastT=0,musicMotion=false,motionTime=0;
   function setNight(value){
+    features.setNight(value);
     scene.background.set(value?'#101f30':'#e9ece2');scene.fog.color.copy(scene.background);
     skyLight.intensity=value?.55:2.3;sun.intensity=value?.24:3.4;
     sun.color.set(value?'#a5c0e2':'#fff1d9');renderer.toneMappingExposure=value?1.35:1.15;
-    nightLights.forEach(light=>light.intensity=value?32:0);
+    nightLights.forEach(light=>light.intensity=value&&buildStage==='open'?32:0);
     waterMat.uniforms.waterA.value.set(value?'#123d48':'#4d8d87');waterMat.uniforms.waterB.value.set(value?'#397280':'#9cb9a7');
     needsFrame=true;renderer.shadowMap.needsUpdate=true;requestFrame();
   }
+  function setStage(value,animate=false){
+    const assembled=['fitout','open'].includes(value);architectureGroup.visible=assembled;contextDecor.visible=value==='open';paths.visible=value!=='site';
+    features.setStage(value,animate);nightLights.forEach(light=>light.intensity=night&&value==='open'?32:0);$('labels').style.visibility=assembled?'':'hidden';
+    renderer.shadowMap.needsUpdate=true;needsFrame=true;requestFrame();
+  }
+  function setRain(value){features.setRain(value);needsFrame=true;renderer.shadowMap.needsUpdate=true;requestFrame();}
+  function setLayout(value){features.setLayout(value);needsFrame=true;requestFrame();}
   function animateMusic(t){
     for(const {geometry,base} of animatedFlags){const a=geometry.attributes.position;for(let i=0;i<a.count;i++){const u=(base[i*3]-.09)/4.1;a.setZ(i,base[i*3+2]+Math.sin(t*2.3+u*7+base[i*3+1])*u*.24);}a.needsUpdate=true;geometry.computeVertexNormals();}
     animatedPeople.forEach(({group,angle},i)=>{group.rotation.z=Math.sin(t*2.1+i*.7)*.045;group.rotation.y=angle+Math.sin(t*1.1+i)*.12;group.position.y=.08+Math.abs(Math.sin(t*2.1+i*.7))*.06;});
@@ -374,7 +392,7 @@ async function buildWorld() {
   }
   function resize(){const w=$('world').clientWidth,h=$('world').clientHeight;camera.aspect=w/h;camera.fov=mobile()?50:41;controls.maxDistance=mobile()?240:155;scene.fog.near=mobile()?205:115;scene.fog.far=mobile()?390:255;camera.updateProjectionMatrix();renderer.setSize(w,h);needsFrame=true;if(selected==='overview')go('overview',true);requestFrame();}
   addEventListener('resize',resize);
-  controls.addEventListener('start',()=>{tween=null;});
+  controls.addEventListener('start',()=>{tween=null;stopTour();});
   controls.addEventListener('change',()=>{needsFrame=true;requestFrame();});
   canvas.addEventListener('keydown',(e)=>{
     if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','+','-','='].includes(e.key))return;
@@ -386,9 +404,11 @@ async function buildWorld() {
   function requestFrame(){if(!raf&&visible&&!document.hidden)raf=requestAnimationFrame(frame);}
   function frame(t){
     raf=0;if(!visible||document.hidden)return;
+    if(features.update(motionTime,t)){needsFrame=true;renderer.shadowMap.needsUpdate=true;}
     if(tween){const a=Math.min(1,(t-tween.start)/1250),ease=a*a*(3-2*a);camera.position.lerpVectors(tween.from,tween.to,ease);controls.target.lerpVectors(tween.fromTarget,tween.target,ease);if(a===1)tween=null;needsFrame=true;}
     controls.update();
-    if(!reduced.matches||musicMotion||needsFrame){
+    const videoActive=!$('music-video').paused&&$('music-video').readyState>=2;
+    if(!reduced.matches||musicMotion||needsFrame||videoActive){
       // Keep the water subtle and cap animation work at approximately 30fps.
       if(t-lastT>30||needsFrame){if(musicMotion){motionTime+=Math.min(.05,Math.max(0,(t-lastT)/1000));animateMusic(motionTime);}waterMat.uniforms.time.value=reduced.matches?0:t*.001;renderer.render(scene,camera);renderer.shadowMap.autoUpdate=false;lastT=t;needsFrame=false;
         const w=$('world').clientWidth,h=$('world').clientHeight,placed=[];
@@ -400,21 +420,21 @@ async function buildWorld() {
           a.el.style.display=hidden?'none':'';a.el.style.transform=`translate(${x}px,${y}px) translate(-50%,-100%)`;
           if(!hidden)placed.push({x,y,width});
         }
-        document.body.dataset.rendered='true';
+        document.body.dataset.rendered='true';document.body.dataset.renderCalls=String(renderer.info.render.calls);document.body.dataset.renderTriangles=String(renderer.info.render.triangles);
       }
     }
-    if(!reduced.matches||musicMotion||tween||needsFrame)requestFrame();
+    if(!reduced.matches||musicMotion||tween||needsFrame||videoActive)requestFrame();
   }
   document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(raf);raf=0;}else{needsFrame=true;requestFrame();}});
   reduced.addEventListener('change',()=>{controls.enableDamping=!reduced.matches;needsFrame=true;requestFrame();});
   canvas.addEventListener('webglcontextlost',(e)=>{e.preventDefault();setMode('plan');status('The 3D view paused. The 2D site plan remains available.');});
   go('overview',true);resize();
-  return {go,setNight,setMusicMotion,setVisible(v){visible=v;if(!v){cancelAnimationFrame(raf);raf=0;}else{needsFrame=true;requestFrame();}},stats(){return {triangles:renderer.info.render.triangles,calls:renderer.info.render.calls,trees:treeList.length};}};
+  return {go,setNight,setStage,setRain,setLayout,setMusicMotion,setVisible(v){visible=v;if(!v){cancelAnimationFrame(raf);raf=0;}else{needsFrame=true;requestFrame();}},stats(){return {triangles:renderer.info.render.triangles,calls:renderer.info.render.calls,trees:treeList.length,...features.stats};}};
 }
 
 try {
   sceneAPI=await buildWorld();
-  sceneAPI.setNight(night);sceneAPI.setMusicMotion(media.isAnimating());
+  sceneAPI.setNight(night);sceneAPI.setMusicMotion(media.isAnimating());sceneAPI.setStage(buildStage);sceneAPI.setRain(rain);sceneAPI.setLayout(layoutVisible);
   $('loading').hidden=true;
   document.body.dataset.ready='true';
   setMode('3d');

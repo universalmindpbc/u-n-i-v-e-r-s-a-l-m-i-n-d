@@ -1,6 +1,6 @@
 # Universal Mind Lab — creative and development brief
 
-**Version:** 0.7 · **Date:** 2 November 2026 · **Owner:** Ben Korbel
+**Version:** 0.8 · **Date:** 2 November 2026 · **Owner:** Ben Korbel
 **Status:** Working concept for discussion, collaboration and staged visual development. Architectural engineering, operating arrangements and named partnerships remain to be established.
 
 ## 1. Purpose
@@ -29,6 +29,7 @@ The web experience makes the proposal tangible: visitors explore the setting, fo
 | Legacy option | Facilities may remain for about 12 months or another agreed period, with the relevant permission, maintenance funding and local operating arrangement. |
 | Weather | Continue operating in light rain, with sheltered activity areas and access routes. |
 | Main architecture | Norman Foster's Droneport is the core reference. Engagement with Foster + Partners and/or the Norman Foster Foundation is proposed. |
+| Playground architecture | A distinct fluid, walk-through sculptural playground alongside the sheltered activity pavilion. R21–R23 inform the bridge-like upper route and open underpass. Explore stainless steel or aluminium, including rainbow finishes; retain continuous flowing geometry. |
 | Satellite architecture | Zaha Hadid Architects references inform food, play and other smaller pavilions. A design partnership is proposed. |
 | Visual unity | Develop related forms, materials and landscape treatment across the main and satellite architecture. |
 | Satellite refinement | Retain the flowing ZHA-derived food and play silhouettes; remove oval windows, cellular holes and excess detailing. Use the same colour and surface/material family as the main vault. |
@@ -116,7 +117,7 @@ Use rainbow Tropicália as the principal furniture family across the environment
 - Armchairs, lower chairs and more upright chairs for varied activities and access preferences.
 - Soft cushions and textiles, with weather suitability assessed for the actual selected pieces.
 
-Prioritise official Moroso 3D models where the exact piece is available and suitable for the intended use. Moroso's product pages list 2D/3D downloads; exact model coverage, formats, permitted use and current access remain to be checked during asset preparation. No manufacturer 3D model has been imported into this package yet.
+Prioritise official Moroso 3D models where the exact piece is available and suitable for the intended use. Moroso's product pages list 2D/3D downloads; exact model coverage, formats, permitted use and current access remain to be checked during asset preparation. The official daybed ZIP returned HTTP 403 during this pass. Detailed original reference-based furniture studies now represent the pieces; manufacturer CAD has not been imported. See [furniture asset notes](FURNITURE-ASSETS.md).
 
 If an exact model is unavailable, build a clearly labelled visual approximation using supplied photographs and dimensions. Obtain Ben's purchased-piece inventory before locking quantities or variants. Design hanging supports with the architecture and landscape team; photographed tree suspension is a reference, not a verified installation detail.
 
@@ -469,12 +470,36 @@ Apple Watch cardiac measurements feed the provider’s agreed SIX / Immersion in
 The pitch distinguishes the sensor measurement, the provider’s inference and the environmental response. It preserves the full provider explanation with attribution. API access, metric definitions, update rate, group aggregation, participant consent, signal-loss behaviour and operator controls are practical MVP integration tasks. The current browser landscape has no live Watch connection yet; implementing that connection is in the MVP scope.
 
 
-## 22. Current interface and media implementation
+## 22. Current interactive implementation — v0.8
 
-The staged interface adds the revised information hierarchy, whole-page fullscreen control, triangular area flags with a visible Universal Mind flower, an illustrative support booth/vehicle/staff figure, and five camera presets. The source artwork remains archived alongside the existing references.
+The entry page follows Universal Informatics’ Fibonacci matrix-rain direction. Universal Mind, music · fashion · mindfulness, and the approved next-generation tagline form the landing composition. **Explore** opens the Lab, requests whole-page fullscreen and starts Neverender with the video overlay at **7% blend** in the same visitor gesture. Browsers without fullscreen support retain the full-window layout. No music or stream download starts before Explore.
 
-Justice — Neverender is archived locally at 1920×1080 and uploaded to Cloudflare Stream. Music starts only after a visitor chooses it. One looping video timeline supplies the soundtrack and optional TV layer. Video starts at 22% blend, adjustable from 0–70%; 33% is available for comparison. Volume and scene motion have separate controls. Reduced-motion preferences start with scene motion off. Music-enabled motion animates flag cloth, tree crowns and people using gentle procedural cycles; this pass does not implement beat detection or biometric control.
+The in-scene interface retains the wordmark and topics, membership link above the place navigation, and initiative credit below. Six camera views cover the clearing, main pavilion, food/activity shelters, playground, listening area and support. Music, TV, Motion, video blend, volume and fullscreen remain independently controllable. Video blends from 0–70%; one looping media timeline feeds the soundtrack, overlay and stage screen. Reduced-motion preferences start with scene motion off. The stage screen continues displaying the video while landscape motion is off.
 
-Day/Night is an initial colour and pavilion-lighting preview. It does not yet include the full LED stage, four line arrays, projection artworks, lasers or wristbands. Those remain explicit production/scene requirements in section 20. Architecture, furniture, detailed naturalism, the road train and assembly sequence remain subsequent reviewable modelling stages. The SIX feedback loop remains in MVP scope.
+### Reviewable construction sequence
 
-See [media source record](media-source.json), [brand sources](brand-assets.json), [production references](PRODUCTION-REFERENCES.md) and the verification records in `qa/`.
+- **Site:** the open lawn, perimeter forest and waterway.
+- **Arrival:** a conceptual Linfox road train parks along the service edge with equipment crates.
+- **Assembly:** vault formwork/scaffold and unloading illustrate local construction. The masonry shell is not represented as mechanically folding out of a truck.
+- **Fit-out:** the main tiled vault, matching satellite shells, separate rainbow metallic play bridge, furniture and listening pylons.
+- **Open:** the stage screen, four line-array positions, workshop tables/devices, cooking counter and contextual support facilities.
+
+A replay control steps through the five stages. Visitors can select a stage directly. The guided Tour moves through the site destinations and stops when a visitor selects a place.
+
+### Layout and architecture
+
+The main concept footprint is 22.6 × 18.4 m with an approximately 8 m peak. A first seating test places **96 chairs and four mobility spaces**, with a 2 m centre-aisle target. This is a design-position count, not an approved occupancy. Whole-site attendance, staff, support rooms, acoustics, circulation, toilets and real-site access require further planning.
+
+The geometry now includes a continuous tiled four-contact vault, layered roof edges, two simpler warm-toned satellite canopies and a distinct play bridge. The playground follows Ben’s renewed instruction of 2 November: fluidity and walk-through play in a structure potentially made from stainless steel or aluminium, with rainbow colour explored. Its provisional dimensions are about 11 × 7 m and 3.2 m high. Access, fall protection and play surfaces remain specialist design work. R21 is already archived; Ben reattached the same reference to reinforce this direction.
+
+Rainbow woven armchairs, low chairs, day beds, cushions and hanging cocoons are reference-based scene models. The listening area includes four transparent **tubular** glass pylons, curved Apple Music interface studies and AKG K812 representations. Manufacturer dimensions and acoustic playback systems are not established by these visual models.
+
+### Programme, rain and night
+
+The first production pass adds a stage with a video screen, four illustrative line-array stacks, music-making tables with smart devices, cooking facilities, metallic sculptures, projected colour patterns and laser-like light fans. Day/Night changes the lighting and reveals the night treatments. The visualisation does not specify a final d&b, TDC, teamLab or laser rig.
+
+Rain shelter adds concept covered circulation and side screens. Drainage, roof detailing, wind-driven rain and weather limits require site-specific design. Synchronised wristbands, artist-led activity detail, advanced projection mapping and the live SIX integration remain implementation work. The complete Apple Watch / SIX MVP direction and provider-reported inference explanation remain in section 21.
+
+These are meaningful first implementations of all five steps. The environment remains an architectural study; photorealistic vegetation, people, materials and final lighting are still ahead. The next refinement targets the main-vault interior, playground, naturalism and close-range material quality before expanding asset detail across the entire scene.
+
+See [progress](PROGRESS.md), [architecture](ARCHITECTURE-STUDY.md), [furniture](FURNITURE-ASSETS.md), [media source](media-source.json), [brand sources](brand-assets.json), [production references](PRODUCTION-REFERENCES.md) and verification records in `qa/landing-five-stages/`.

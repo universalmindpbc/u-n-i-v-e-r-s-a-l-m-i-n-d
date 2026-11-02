@@ -1,6 +1,6 @@
 # Universal Mind Lab
 
-Working creative package for Ben Korbel. The current direction is recorded in [BRIEF.md](BRIEF.md), version 0.7.
+Working creative package for Ben Korbel. The current direction is recorded in [BRIEF.md](BRIEF.md), version 0.8.
 
 - [Reference index](REFERENCES.md): 27 supplied files, including the marketing doodle.
 - [Reference manifest](reference-manifest.json): original paths, sizes and SHA-256 hashes.
@@ -22,5 +22,10 @@ Brief v0.7 preserves the revised information hierarchy, Neverender music/video d
 - [Media source](media-source.json): 1080p Neverender archive and Cloudflare Stream record.
 - Brief v0.7 retains the full SIX inference explanation and the Apple Watch responsive-environment MVP, plus the latest copy, flags, music and day/night directions.
 
-- [Latest interface/media release](INTERFACE-MEDIA-RELEASE.md).
+- [Previous interface/media release](INTERFACE-MEDIA-RELEASE.md).
 - [Five-step progress](PROGRESS.md): current scope and the next layout/arrival deliverable.
+
+Brief v0.8 adds the Fibonacci-rain landing page, Explore-to-fullscreen/music with 7% video blend, first implementations across the five build stages, and the separate fluid rainbow metallic playground.
+
+- [Landing and five-stage release](LANDING-FIVE-STAGES-RELEASE.md).
+- [Architecture study](ARCHITECTURE-STUDY.md) and [furniture assets](FURNITURE-ASSETS.md).

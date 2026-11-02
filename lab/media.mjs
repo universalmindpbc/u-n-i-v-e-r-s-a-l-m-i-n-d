@@ -27,12 +27,13 @@ export function initMedia(onMotion) {
     } else throw new Error('Streaming unavailable');
     attached=true;
   }
-  $('music-toggle').addEventListener('click',()=>{
-    if(playing||pending){attempt++;pending=false;video.pause();sync();return;}
+  function play(){
+    if(playing||pending)return;
     const currentAttempt=++attempt;notice();pending=true;sync();
     try{attach();const promise=video.play();promise?.catch(()=>{if(currentAttempt!==attempt)return;pending=false;playing=false;sync();notice('Music did not start. Press Music to retry.');});}
     catch{pending=false;sync();notice('Music is unavailable in this browser.');}
-  });
+  }
+  $('music-toggle').addEventListener('click',()=>{if(playing||pending){attempt++;pending=false;video.pause();sync();}else play();});
   video.addEventListener('playing',()=>{playing=true;pending=false;notice();sync();});
   video.addEventListener('pause',()=>{playing=false;pending=false;sync();});
   video.addEventListener('waiting',()=>{if(!video.paused){pending=true;playing=false;sync();}});
@@ -49,5 +50,5 @@ export function initMedia(onMotion) {
   reduced.addEventListener('change',()=>{motionOn=!reduced.matches;sync();});
   document.addEventListener('visibilitychange',motion);
   addEventListener('pagehide',()=>{video.pause();hls?.destroy();});
-  sync();return {isAnimating};
+  sync();return {isAnimating,start(){videoOn=true;$('video-opacity').value='7';$('opacity-value').textContent='7%';sync();play();}};
 }
