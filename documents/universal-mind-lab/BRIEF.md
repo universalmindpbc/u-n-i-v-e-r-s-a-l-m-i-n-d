@@ -632,7 +632,7 @@ The Events gateway uses the Universal Informatics landing treatment: the same Bo
 
 **Approved language: dissolving stigma.** Preserve this wording throughout Universal Mind. Do not substitute synonyms or paraphrase Ben’s signed-off language without his instruction. The proposal heading reads **Free access. Dissolving stigma. Clear pathways to support.**
 
-Ben has accepted the rest of the build; this revision is limited to the landing treatment, video blend and terminology correction. Production remains pending explicit authorization.
+Ben has accepted the rest of the festival build. The additional research connection is recorded in section 28. Production remains pending explicit authorization.
 
 ## 28. Youth research connection — 3 November 2026
 

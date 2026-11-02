@@ -45,6 +45,6 @@ The v0.11 proposal also foregrounds free access, dissolving stigma, referral pat
 
 Brief v0.12 records Ben’s Lab design approval and the homepage → Events → Universal Mind Lab / A Thousand Minds choice. See [Events choice release](EVENTS-CHOICE-RELEASE.md).
 
-The November 3 revision uses a minimal Events choice over Fibonacci rain, direct festival launch, a 24% video blend, a continuous camera circuit, an animated stage ensemble and a visitor Lineup toggle. Current release evidence is recorded in `ORBIT-STAGE-RELEASE.md`.
+The v0.13 revision added a minimal Events choice over Fibonacci rain, direct festival launch, a 24% video blend, a continuous camera circuit, an animated stage ensemble and a visitor Lineup toggle. Its release evidence is recorded in `ORBIT-STAGE-RELEASE.md`.
 
-Brief v0.14 restores the 7% blend, centres the original flower with small Informatics serif typography on Events, and preserves **dissolving stigma** in the proposal. See [the refined landing release](EVENTS-REFINED-RELEASE.md).
+Brief v0.14 restores the 7% blend, centres the original flower with small Informatics serif typography on Events, and preserves **dissolving stigma** in the proposal. A new footer link opens a compact research introduction, featuring Orygen and Black Dog Institute and linking to all 105 approved youth publications in Universal Informatics. Informatics retains the papers, dropdowns, filters and assessments. See [the refined landing and research release](EVENTS-REFINED-RELEASE.md).

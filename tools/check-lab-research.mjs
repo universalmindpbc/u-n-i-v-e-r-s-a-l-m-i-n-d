@@ -54,11 +54,11 @@ try{
     await research.locator('#full-collection').click();
     let library;
     for(let i=0;i<60;i++){
-     library=research.frames().find(f=>/library\.html|\/informatics\/research\//.test(f.url()));
-     if(library&&await library.locator('#result-count').count()&&(await library.locator('#result-count').textContent()).trim()==='105 papers')break;
+     for(const f of research.frames())if(await f.locator('#result-count').count()){library=f;break;}
+     if(library&&(await library.locator('#result-count').textContent()).trim()==='105 papers')break;
      await new Promise(resolve=>setTimeout(resolve,500));
     }
-    assert(library,'Informatics research frame exists');
+    assert(library,'Informatics research frame exists: '+research.frames().map(f=>f.url()).join(', '));
     assert.equal((await library.locator('#result-count').textContent()).trim(),'105 papers');
     await research.screenshot({path:path.join(out,'informatics-full-collection.png')});
     checks.push('Full collection opens the canonical Informatics library with exactly 105 papers');

@@ -1,0 +1,44 @@
+{
+  "date": "2026-11-02T20:03:49.464Z",
+  "live": true,
+  "processMuted": true,
+  "nativeFullscreenInvoked": false,
+  "playbackMocked": true,
+  "checks": [
+    "Research introduction at 1440 × 1000: two institutions, nine topics, all research links point to Informatics",
+    "Festival footer opens research separately and retains the festival at 1440 × 1000",
+    "Full collection opens the canonical Informatics library with exactly 105 papers",
+    "Orygen, Black Dog Institute and mantra context links open their exact Informatics topic sections",
+    "Research introduction at 390 × 844: two institutions, nine topics, all research links point to Informatics",
+    "Festival footer opens research separately and retains the festival at 390 × 844",
+    "Research introduction at 844 × 390: two institutions, nine topics, all research links point to Informatics",
+    "Festival footer opens research separately and retains the festival at 844 × 390"
+  ],
+  "hashes": [
+    {
+      "file": "lab/index.html",
+      "sha256": "87fdca6fcc7aad2ad1dab0275f34848ce98571f241a29766e3380c030457d28a"
+    },
+    {
+      "file": "lab/lab.css",
+      "sha256": "91392fdcef05f8443bc837a3ce8481aae27c6cc3c2980e90c9fccbf2743353bd"
+    },
+    {
+      "file": "lab/lab.mjs",
+      "sha256": "679dea7f364af6a0998ed8359c640a54459fbc6298d6c3ce0c4afeaf4963df5e"
+    },
+    {
+      "file": "lab/media.mjs",
+      "sha256": "ef6c79929955a6ed59b1a84c28700aae146e90a5e3fd62fcd1b5460c022f92d4"
+    },
+    {
+      "file": "lab/research.html",
+      "sha256": "c06a6c7e8c9684d7cd4ded74b0329040636a56e78a1d381a6c7b27f873cb0d0d"
+    },
+    {
+      "file": "lab/research.css",
+      "sha256": "4228abe809f41dda6b0ad6717adbca55c86614cd64b45493ffc0b580a89ffe66"
+    }
+  ],
+  "errors": []
+}
