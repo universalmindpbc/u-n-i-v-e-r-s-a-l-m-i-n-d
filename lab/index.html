@@ -5,16 +5,17 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="robots" content="noindex,nofollow">
   <meta name="theme-color" content="#e9ece2">
-  <meta name="description" content="Explore the first landscape study for Universal Mind Lab: music, fashion and mindfulness in a shared green space.">
-  <title>Universal Mind Lab — A place to become</title>
+  <meta name="description" content="Universal Mind — music, fashion, mindfulness. Next generation lab for next generation humans. Proposal.">
+  <title>Universal Mind — Proposal</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='%23435a39'/%3E%3Cpath d='M9 10v8c0 8 14 8 14 0v-8' fill='none' stroke='%23fff' stroke-width='2'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./lab.css?v=20261102c">
+  <link rel="stylesheet" href="./lab.css?v=20261102e">
   <script type="importmap">{"imports":{"three":"./vendor/three.module.js"}}</script>
 </head>
 <body>
   <a class="skip" href="#place-list">Skip to the places</a>
   <main id="world" aria-label="Universal Mind Lab landscape study">
     <div id="scene" role="region" aria-label="Interactive 3D landscape"></div>
+    <video id="music-video" playsinline loop preload="none" aria-hidden="true" tabindex="-1"></video>
     <div id="plan" class="plan" hidden>
       <svg viewBox="0 0 1000 720" role="img" aria-labelledby="plan-title plan-desc">
         <title id="plan-title">Universal Mind Lab — conceptual site plan</title>
@@ -32,44 +33,64 @@
     <div id="labels" aria-hidden="true"></div>
     <div class="vignette" aria-hidden="true"></div>
     <header class="masthead">
-      <a class="wordmark" href="./" aria-label="Universal Mind Lab overview"><span>universal <b>mind</b></span><small>L A B</small></a>
-      <div class="mast-right"><span class="edition"><i></i> LANDSCAPE STUDY · 01</span><button id="about-open" class="outline-button">The vision <span aria-hidden="true">↗</span></button></div>
+      <a class="wordmark" href="./" aria-label="Universal Mind Lab overview"><span>universal <b>mind</b></span><small>music · fashion · mindfulness</small></a>
+      <div class="mast-right">
+        <button id="about-open" class="outline-button">Proposal</button>
+        <button id="fullscreen-toggle" class="fullscreen-button" type="button" aria-label="Enter fullscreen" title="Enter fullscreen" aria-pressed="false" hidden>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="expand-icon" d="M9 4H4v5m11-5h5v5M4 15v5h5m11-5v5h-5"/><path class="contract-icon" d="M4 9h5V4m6 0v5h5M9 20v-5H4m16 0h-5v5"/></svg>
+        </button>
+      </div>
     </header>
     <section class="intro" aria-labelledby="headline">
-      <p class="eyebrow">MUSIC &nbsp; / &nbsp; FASHION &nbsp; / &nbsp; MINDFULNESS</p>
-      <h1 id="headline">A place<br>to become.</h1>
-      <p class="intro-copy">Next generation lab.<br>For next generation humans.</p>
-      <span class="intro-rule"></span>
-      <p class="study-note">An open landscape for<br>connection, creativity and care.</p>
+      <h1 id="headline"><span>Next generation</span><span>lab for</span><span>next generation</span><span>humans</span></h1>
     </section>
+    <p id="fullscreen-status" class="fullscreen-status" role="status" hidden></p>
     <div class="compass" aria-hidden="true"><span>N</span><svg viewBox="0 0 40 40"><path d="M20 4L25 27 20 23 15 27Z" fill="currentColor"/><circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-opacity=".2"/></svg></div>
     <aside id="place-card" class="place-card" hidden aria-labelledby="place-title"><button id="place-close" class="close" aria-label="Close place detail">×</button><p id="place-number" class="eyebrow"></p><h2 id="place-title"></h2><p id="place-copy"></p><p id="place-footnote" class="detail-note"></p></aside>
-    <div class="view-tools" aria-label="View options"><button id="plan-toggle" aria-pressed="false"><span aria-hidden="true">▦</span> 2D plan</button><button id="labels-toggle" aria-pressed="true"><span aria-hidden="true">⌖</span> Labels</button><button id="reset-view" aria-label="Reset to overview"><span aria-hidden="true">↺</span> Reset</button></div>
+    <section class="media-tools" aria-label="Music and video">
+      <button id="music-toggle" type="button" aria-label="Play music" aria-pressed="false"><span id="music-symbol" aria-hidden="true">▶</span> <span id="music-label">Music</span></button>
+      <button id="video-toggle" type="button" aria-label="Show music video overlay" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="m8 2 4 4 4-4M9 22h6"/></svg><span>TV</span></button>
+      <button id="motion-toggle" type="button" aria-label="Animate the landscape with music" aria-pressed="true">Motion</button>
+      <button id="mix-toggle" type="button" aria-label="Music and video settings" aria-expanded="false" aria-controls="mix-panel">⋯</button>
+      <div id="mix-panel" class="mix-panel" hidden>
+        <p>Justice · Tame Impala<br><strong>Neverender</strong></p>
+        <label for="video-opacity">Video blend <output id="opacity-value" for="video-opacity">22%</output></label><input id="video-opacity" type="range" min="0" max="70" step="1" value="22">
+        <label for="music-volume">Volume <output id="volume-value" for="music-volume">65%</output></label><input id="music-volume" type="range" min="0" max="100" step="1" value="65">
+        <button id="mix-close" type="button">Close settings</button>
+      </div>
+      <p id="media-status" role="status" hidden></p>
+    </section>
+    <div class="view-tools" aria-label="View options"><button id="night-toggle" aria-pressed="false" aria-label="Switch to night"><span aria-hidden="true">◐</span> <span id="day-label">Day</span></button><button id="plan-toggle" aria-pressed="false"><span aria-hidden="true">▦</span> 2D plan</button><button id="labels-toggle" aria-pressed="true"><span aria-hidden="true">⌖</span> Labels</button><button id="reset-view" aria-label="Reset to overview"><span aria-hidden="true">↺</span> Reset</button></div>
     <footer class="explore-bar">
-      <div class="explore-heading"><span class="eyebrow">EXPLORE THE CLEARING</span><span id="navigation-hint">Drag to look around · scroll to move closer</span></div>
+      <div class="explore-heading"><p class="membership">membership via <a href="https://headspace.org.au/eora" target="_blank" rel="noopener noreferrer">headspace.org.au/eora <span aria-hidden="true">↗</span></a></p><span id="navigation-hint">Drag to look around · scroll to move closer</span></div>
       <nav id="place-list" aria-label="Explore places">
         <button data-view="overview" aria-pressed="true"><span>01</span> The clearing</button>
         <button data-view="main" aria-pressed="false"><span>02</span> Main pavilion</button>
         <button data-view="food" aria-pressed="false"><span>03</span> Food &amp; play</button>
         <button data-view="river" aria-pressed="false"><span>04</span> By the water</button>
+        <button data-view="support" aria-pressed="false"><span>05</span> Support area</button>
       </nav>
-      <div class="footline"><span>A regional Australian setting · illustrative site</span><span>Designed to grow with the community</span></div>
+      <div class="footline"><span>an initiative by <b>NSW Education, Headspace &amp; Universal Mind</b></span></div>
     </footer>
-    <div id="loading" role="status"><span class="loading-mark"></span><span>Growing the landscape…</span></div>
+    <div id="loading" role="status"><span class="loading-mark"></span><span>Loading 3D landscape…</span></div>
     <p id="scene-status" class="sr-only" role="status" aria-live="polite"></p>
   </main>
   <dialog id="vision" aria-labelledby="vision-title">
-    <button id="about-close" class="close" aria-label="Close the vision">×</button>
-    <p class="eyebrow">UNIVERSAL MIND LAB · A WORKING CONCEPT</p>
-    <h2 id="vision-title">A shared place.<br>A world of possibility.</h2>
-    <p class="lead">Music, fashion and mindfulness, brought into a green space shaped with its community.</p>
-    <p>The Lab imagines a travelling creative programme for young people, primarily ages 16–24, with room for the wider community. One gathering pavilion anchors an open lawn. Food, play and individual listening sit around it.</p>
-    <div class="vision-section"><span class="eyebrow">HERE, AND ONLINE</span><h3>Free membership. Meaningful connection.</h3><p>Proposed entry routes include referrals through participating headspace services and nominations from NSW schools. A supported application process helps match limited places with interests, access needs and available support.</p><p>An online experience and live TV are planned for every event, including for people unable to attend in person. Optional professional support is part of the service brief.</p></div>
-    <div class="vision-section"><span class="eyebrow">THE PROGRAMME WE IMAGINE</span><p>Fashion and music-making workshops with a feature artist; collaborative creation on smart devices; beautiful food and cooking; spaces to play, listen and connect.</p><p class="detail-note">Guest concepts include Charli XCX, Lady Chu and Justin Hemmes / Merivale. These are proposed collaborations, with participation yet to be agreed.</p></div>
-    <div class="vision-section"><span class="eyebrow">BUILDING IN STAGES</span><ol class="stages"><li class="current"><b>01</b><span>Landscape &amp; pavilion studies<small>Explore this first spatial model</small></span></li><li><b>02</b><span>Road train &amp; assembly</span></li><li><b>03</b><span>Facilities, Tropicália &amp; soft furnishings</span></li><li><b>04</b><span>Tubular listening pylons &amp; music</span></li></ol></div>
-    <p class="detail-note">The shell studies draw on Foster’s Droneport and ZHA’s fluid pavilion forms. They share a provisional earth-toned material palette. Architecture, engineering, rain protection and any community-retained facilities are for development with local collaborators and proposed design partners. This is a spatial concept, with provisional dimensions and no confirmed site or partnerships.</p>
+    <button id="about-close" class="close" aria-label="Close proposal">×</button>
+    <h2 id="vision-title">Proposal</h2>
+    <p>Illustrative site layout with one main pavilion, food and play pavilions, a listening area, and support facilities. Site dimensions and architecture remain in development.</p>
+    <dl class="proposal-details">
+      <dt>Main pavilion</dt><dd>Music-making and fashion workshops.</dd>
+      <dt>Food and play</dt><dd>Cooking, dining and children’s activities.</dd>
+      <dt>Listening area</dt><dd>Planned Tropicália seating, tubular listening pylons and AKG K812 headphones.</dd>
+      <dt>Area flags</dt><dd>Triangular flags combine the Universal Mind flower with monochrome headspace, MSF, NSW Education and Apple Music identities. A support vehicle and staff figure illustrate contextual branding.</dd>
+      <dt>Music and video</dt><dd>Play Neverender by Justice and Tame Impala. TV overlays the video at an adjustable transparency. Motion controls the animated landscape. Day/Night previews the lighting direction.</dd>
+      <dt>Membership</dt><dd>Free participation, with proposed self-nomination, headspace referrals and school nominations. Online participation and live TV are planned.</dd>
+    </dl>
+    <p class="detail-note">Membership arrangements and named partnerships are proposed. Applications are not collected on this page.</p>
   </dialog>
-  <noscript><style>#loading{display:none}#plan{display:flex!important}.view-tools{display:none}</style><p class="noscript-note">The site plan is available without JavaScript. Enable JavaScript to explore in 3D.</p></noscript>
-  <script type="module" src="./lab.mjs?v=20261102c"></script>
+  <noscript><style>#loading{display:none}#plan{display:flex!important}.view-tools,.media-tools,#about-open{display:none}</style><p class="noscript-note">The site plan is available without JavaScript. Enable JavaScript to explore in 3D.</p></noscript>
+  <script src="./vendor/hls.min.js" defer></script>
+  <script type="module" src="./lab.mjs?v=20261102e"></script>
 </body>
 </html>

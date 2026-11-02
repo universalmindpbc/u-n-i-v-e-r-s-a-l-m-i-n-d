@@ -341,6 +341,18 @@
       "size_bytes": 122005,
       "sha256": "6b47fcd00a711990cc75dff1d42452d15962abab5d659ad2ee44281b1e066553",
       "preserved_byte_for_byte": true
+    },
+    {
+      "id": "R27",
+      "original_filename": "Screenshot 2026-11-02 at 3.25.24 pm.png",
+      "category": "marketing",
+      "description": "Approved Universal Mind identity, tagline, membership route and initiative credit.",
+      "design_role": "Canonical page copy; remove additional promotional language.",
+      "source_path": "/Users/benkorbel/Desktop/Screenshot 2026-11-02 at 3.25.24 pm.png",
+      "destination_path": "references/marketing/R27-approved-marketing-copy.png",
+      "size_bytes": 65066,
+      "sha256": "b78eab9a40b07a3f98a2f65d1423e7722b665e311c6a13f26b7afe90525eec00",
+      "preserved_byte_for_byte": true
     }
   ]
 }

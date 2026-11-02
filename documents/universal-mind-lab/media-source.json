@@ -1,0 +1,17 @@
+{
+  "title": "Justice \u2013 Neverender (Starring Tame Impala) (Official Video)",
+  "source_url": "https://www.youtube.com/watch?v=E7FU_mqhFGk",
+  "local_file": "media/justice-neverender-1080p.mp4",
+  "width": 1920,
+  "height": 1080,
+  "duration_seconds": 200,
+  "bytes": 53832604,
+  "sha256": "cc6e579474de9a75fe5c52fe562c51c319e21088d5db671e25529015579f8c7f",
+  "cloudflare_stream_uid": "9f1ed3b5a38f52bfd008d2152d3884de",
+  "hls_url": "https://customer-1vpwglz3v6fiyaas.cloudflarestream.com/9f1ed3b5a38f52bfd008d2152d3884de/manifest/video.m3u8",
+  "cloudflare_1080_rendition_verified": true,
+  "uploaded": "2026-11-02",
+  "hls_js": "1.7.4",
+  "hls_js_source": "https://github.com/video-dev/hls.js/releases/tag/v1.7.4",
+  "note": "User-selected media uploaded at explicit request. Source archive retained locally, outside the website and Git payload. Playback is adaptive; the master manifest includes 1920\u00d71080."
+}

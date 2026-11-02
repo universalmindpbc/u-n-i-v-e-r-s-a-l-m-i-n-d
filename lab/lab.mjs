@@ -1,18 +1,29 @@
+import { initMedia } from './media.mjs';
 const $ = (id) => document.getElementById(id);
 const reduced = matchMedia('(prefers-reduced-motion: reduce)');
 const mobile = () => innerWidth < 700;
 const status = (message) => { $('scene-status').textContent = message; };
 const places = {
-  overview: { number: '01 · THE CLEARING', title: 'Room to connect.', copy: 'A generous green lawn holds the programme together. Forest meets two boundaries; a river or creek frames a third.', note: 'An illustrative setting. The host community will help choose and shape the actual site.' },
-  main: { number: '02 · MAIN PAVILION', title: 'Under one shared roof.', copy: 'Music, fashion and collective experiences gather beneath a single vaulted shell, opening onto the lawn.', note: 'A Droneport-derived form study. Capacity, construction and rain protection remain design workstreams.' },
-  food: { number: '03 · FOOD & PLAY', title: 'Gather. Make. Play.', copy: 'Two fluid satellite shells create places for cooking, conversation and younger visitors, with clear views across the lawn.', note: 'The same provisional material palette as the main vault, with simpler surfaces and no oval apertures.' },
-  river: { number: '04 · BY THE WATER', title: 'Space to listen.', copy: 'A quieter edge reserved for individual music discovery. Future stages add Tropicália seats and transparent tubular listening pylons.', note: 'Waterway separation, acoustics and light-rain shelter will be developed for the selected site.' }
+  overview: { number: '01 · THE CLEARING', title: 'Open lawn', copy: 'A generous green lawn holds the programme together. Forest meets two boundaries; a river or creek frames a third.', note: 'An illustrative setting. The host community will help choose and shape the actual site.' },
+  main: { number: '02 · MAIN PAVILION', title: 'Main pavilion', copy: 'Music, fashion and collective experiences gather beneath a single vaulted shell, opening onto the lawn.', note: 'A Droneport-derived form study. Capacity, construction and rain protection remain design workstreams.' },
+  food: { number: '03 · FOOD & PLAY', title: 'Food and play pavilions', copy: 'Two fluid satellite shells create places for cooking, conversation and younger visitors, with clear views across the lawn.', note: 'The same provisional material palette as the main vault, with simpler surfaces and no oval apertures.' },
+  river: { number: '04 · BY THE WATER', title: 'Apple Music area', copy: 'A triangular Apple Music flag marks the proposed listening area. Future stages add Tropicália seats and transparent tubular listening pylons.', note: 'Proposed collaboration. Waterway separation, acoustics and light-rain shelter remain in development.' },
+  support: { number: '05 · SUPPORT AREA', title: 'Support area', copy: 'A welcome booth, headspace staff figure and MSF support vehicle illustrate the proposed facilities. Triangular flags share the Universal Mind flower.', note: 'Illustrative placements. Partner participation, staffing and clinical services remain to be agreed.' }
 };
 let sceneAPI = null;
+const media = initMedia(state => sceneAPI?.setMusicMotion(state));
+let night = false;
+$('night-toggle').addEventListener('click',()=>{
+  night=!night;document.body.dataset.night=String(night);
+  $('night-toggle').setAttribute('aria-pressed',String(night));
+  $('night-toggle').setAttribute('aria-label',night?'Switch to day':'Switch to night');
+  $('day-label').textContent=night?'Night':'Day';sceneAPI?.setNight(night);
+});
 let mode = '3d';
 let selected = 'overview';
 function selectPlace(key, show = true) {
   selected = key;
+  document.body.dataset.cameraView = key;
   const info = places[key];
   document.querySelectorAll('[data-view]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.view === key)));
   $('place-number').textContent = info.number;
@@ -31,7 +42,7 @@ function setMode(next) {
   $('plan-toggle').setAttribute('aria-pressed', String(mode === 'plan'));
   $('plan-toggle').innerHTML = mode === 'plan' ? '<span aria-hidden="true">◇</span> 3D view' : '<span aria-hidden="true">▦</span> 2D plan';
   $('labels-toggle').disabled = mode === 'plan';
-  $('navigation-hint').textContent = mode === 'plan' ? 'Select a place to read its story' : mobile() ? 'Drag to orbit · pinch to zoom' : 'Drag to look around · scroll to move closer';
+  $('navigation-hint').textContent = mode === 'plan' ? 'Select a place for details' : mobile() ? 'Drag to orbit · pinch to zoom' : 'Drag to look around · scroll to move closer';
   sceneAPI?.setVisible(mode === '3d');
   if (mode === '3d') sceneAPI?.go(selected, true);
 }
@@ -47,6 +58,46 @@ $('labels-toggle').addEventListener('click', () => {
 $('about-open').addEventListener('click', () => $('vision').showModal());
 $('about-close').addEventListener('click', () => $('vision').close());
 $('vision').addEventListener('click', (e) => { if (e.target === $('vision')) { const r = e.target.getBoundingClientRect(); if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) e.target.close(); } });
+
+// Fullscreen is initiated only by the visitor's button press.
+const fullscreenButton = $('fullscreen-toggle');
+const fullscreenRoot = document.documentElement;
+const fullscreenActive = () => Boolean(document.fullscreenElement || document.webkitFullscreenElement);
+const fullscreenSupported = () => Boolean(
+  (fullscreenRoot.requestFullscreen && document.fullscreenEnabled !== false) ||
+  (fullscreenRoot.webkitRequestFullscreen && document.webkitFullscreenEnabled !== false)
+);
+function syncFullscreen() {
+  const active = fullscreenActive();
+  fullscreenButton.hidden = !fullscreenSupported();
+  fullscreenButton.setAttribute('aria-pressed', String(active));
+  const label = active ? 'Exit fullscreen' : 'Enter fullscreen';
+  fullscreenButton.setAttribute('aria-label', label);
+  fullscreenButton.title = label;
+  $('fullscreen-status').hidden = true;
+}
+fullscreenButton.addEventListener('click', async () => {
+  fullscreenButton.disabled = true;
+  try {
+    if (fullscreenActive()) {
+      const leave = document.exitFullscreen || document.webkitExitFullscreen;
+      await leave.call(document);
+    } else {
+      const enter = fullscreenRoot.requestFullscreen || fullscreenRoot.webkitRequestFullscreen;
+      await enter.call(fullscreenRoot);
+    }
+    syncFullscreen();
+  } catch {
+    syncFullscreen();
+    $('fullscreen-status').textContent = 'Fullscreen is unavailable. Continue exploring in this window.';
+    $('fullscreen-status').hidden = false;
+  } finally {
+    fullscreenButton.disabled = false;
+  }
+});
+document.addEventListener('fullscreenchange', syncFullscreen);
+document.addEventListener('webkitfullscreenchange', syncFullscreen);
+syncFullscreen();
 
 async function buildWorld() {
   const THREE = await import('three');
@@ -80,7 +131,7 @@ async function buildWorld() {
   controls.enablePan = false;
   controls.rotateSpeed = 0.65;
   controls.zoomSpeed = 0.8;
-  scene.add(new THREE.HemisphereLight('#f4f6ed', '#718360', 2.3));
+  const skyLight=new THREE.HemisphereLight('#f4f6ed', '#718360', 2.3);scene.add(skyLight);
   const sun = new THREE.DirectionalLight('#fff1d9', 3.4);
   sun.position.set(-48, 78, 22);
   sun.castShadow = true;
@@ -160,6 +211,8 @@ async function buildWorld() {
       foliageColor.setHSL(.24+random()*.055,.18+random()*.13,.23+random()*.11);crowns.setColorAt(i*5+j,foliageColor);
     }
   });scene.add(trunks,crowns);
+  const crownMatrices=crowns.instanceMatrix.array.slice();
+  const animatedFlags=[],animatedPeople=[];
 
   function path(points,width=2.4){
     const c=new THREE.CatmullRomCurve3(points.map(p=>new THREE.Vector3(p[0],.055,p[1])));
@@ -208,17 +261,80 @@ async function buildWorld() {
   // Service/support footprint is intentionally plain until the facilities stage.
   const support=mesh(new THREE.BoxGeometry(6,2.7,4),new THREE.MeshStandardMaterial({color:'#a6aa90',roughness:1}));support.position.set(-36,1.3,-24);
   const supportRoof=mesh(new THREE.BoxGeometry(6.5,.15,4.5),mats.timber);supportRoof.position.set(-36,2.73,-24);
+  // Contextual proposal identities: physical flags, a vehicle and a staff uniform.
+  const images = Object.fromEntries(await Promise.all([
+    ['flower','universal-mind-flower.png'],['headspace','headspace.svg'],['msf','msf.svg'],['education','nsw-government.svg'],['apple','apple-music.svg']
+  ].map(async ([key,file]) => {
+    const image = new Image(); image.src = new URL('./assets/'+file,import.meta.url).href;
+    await image.decode(); return [key,image];
+  })));
+  function monochrome(image,width,height) {
+    const c=document.createElement('canvas');c.width=width;c.height=height;
+    const context=c.getContext('2d');context.drawImage(image,0,0,width,height);
+    context.globalCompositeOperation='source-in';context.fillStyle='#293b35';context.fillRect(0,0,width,height);return c;
+  }
+  function brandTexture(key,flag=false) {
+    const c=document.createElement('canvas');c.width=1024;c.height=flag?768:384;
+    const context=c.getContext('2d');
+    if(flag){context.fillStyle='#f3f0e7';context.fillRect(0,0,c.width,c.height);context.globalAlpha=.72;context.drawImage(images.flower,24,70,620,620);context.globalAlpha=1;}
+    const img=images[key],ratio=img.naturalWidth/img.naturalHeight;
+    const w=flag?(key==='education'?170:490):900,h=w/ratio;
+    context.drawImage(monochrome(img,Math.round(w),Math.round(h)),flag?72:62,(c.height-h)/2,w,h);
+    if(key==='education'){context.fillStyle='#293b35';context.font='500 43px Arial';context.fillText('Education',260,400);}
+    const texture=new THREE.CanvasTexture(c);texture.colorSpace=THREE.SRGBColorSpace;texture.anisotropy=Math.min(8,renderer.capabilities.getMaxAnisotropy());return texture;
+  }
+  const brandMaps=Object.fromEntries(['headspace','msf','education','apple'].map(key=>[key,brandTexture(key)]));
+  const poleMat=new THREE.MeshStandardMaterial({color:'#7a8278',metalness:.6,roughness:.42});
+  function flag(key,x,z,angle=.55){
+    const group=new THREE.Group();group.name=key+' triangular proposal flag';group.position.set(x,0,z);group.rotation.y=angle;scene.add(group);
+    const pole=mesh(new THREE.CylinderGeometry(.055,.075,6.8,10),poleMat,group);pole.position.y=3.4;
+    const base=mesh(new THREE.CylinderGeometry(.45,.55,.18,24),mats.stone,group);base.position.y=.09;
+    const geometry=new THREE.PlaneGeometry(1,1,24,14),positions=geometry.attributes.position;
+    for(let i=0;i<positions.count;i++){const u=positions.getX(i)+.5,v=positions.getY(i)+.5;positions.setXYZ(i,.09+u*4.1,4.9+(v-.5)*(1-u)*3.1,.17*Math.sin(u*7+v*1.6)*u);}
+    geometry.computeVertexNormals();
+    animatedFlags.push({geometry,base:positions.array.slice()});
+    mesh(geometry,new THREE.MeshStandardMaterial({map:brandTexture(key,true),roughness:.96,side:THREE.DoubleSide}),group);
+    return group;
+  }
+  flag('headspace',-30,-24,2.65);flag('msf',-40,-22,2.65);flag('education',11,-3);flag('apple',25,5);
+  function decal(key,w,h,parent,x,y,z,rotation=0){
+    const mark=mesh(new THREE.PlaneGeometry(w,h),new THREE.MeshStandardMaterial({map:brandMaps[key],transparent:true,depthWrite:false,roughness:1,side:THREE.DoubleSide,polygonOffset:true,polygonOffsetFactor:-1}),parent);
+    mark.position.set(x,y,z);mark.rotation.y=rotation;mark.castShadow=false;return mark;
+  }
+  const booth=new THREE.Group();booth.name='Proposed headspace welcome booth';booth.position.set(-30,0,-18);booth.rotation.y=.45;scene.add(booth);
+  const counter=mesh(new THREE.BoxGeometry(2.6,1.05,.85),mats.timber,booth);counter.position.y=.525;
+  for(const x of [-1.45,1.45]){const post=mesh(new THREE.CylinderGeometry(.055,.055,2.65,8),poleMat,booth);post.position.set(x,1.325,-.4);}
+  const canopy=mesh(new THREE.BoxGeometry(3.3,.11,2),mats.shell,booth);canopy.position.set(0,2.65,-.25);
+  const sign=mesh(new THREE.BoxGeometry(1.7,.38,.05),new THREE.MeshStandardMaterial({color:'#f5f4eb',roughness:1}),booth);sign.position.set(0,.63,.45);decal('headspace',1.5,.34,booth,0,.63,.48);
+  const staff=new THREE.Group();staff.name='Illustrative headspace staff figure';staff.position.set(-28.8,.08,-16.7);staff.rotation.y=.55;scene.add(staff);
+  const uniform=new THREE.MeshStandardMaterial({color:'#d6e0cc',roughness:1}),trousers=new THREE.MeshStandardMaterial({color:'#455853',roughness:1}),skin=new THREE.MeshStandardMaterial({color:'#ac8462',roughness:.9});
+  const torso=mesh(new THREE.BoxGeometry(.48,.62,.26),uniform,staff);torso.position.y=1.08;
+  const head=mesh(new THREE.SphereGeometry(.145,18,12),skin,staff);head.position.y=1.58;
+  for(const side of [-1,1]){const leg=mesh(new THREE.CylinderGeometry(.075,.06,.72,10),trousers,staff);leg.position.set(side*.13,.36,0);const arm=mesh(new THREE.CapsuleGeometry(.065,.46,4,10),uniform,staff);arm.position.set(side*.3,1.03,0);arm.rotation.z=side*.1;}
+  decal('headspace',.38,.14,staff,0,1.22,.137);decal('headspace',.38,.14,staff,0,1.22,-.137,Math.PI);
+  const vehicle=new THREE.Group();vehicle.name='Illustrative MSF support vehicle';vehicle.position.set(-36,.12,-15);vehicle.rotation.y=.55;scene.add(vehicle);
+  const paint=new THREE.MeshStandardMaterial({color:'#f0f1e9',roughness:.38,metalness:.12}),rubber=new THREE.MeshStandardMaterial({color:'#303531',roughness:.95}),glass=new THREE.MeshStandardMaterial({color:'#6f898b',roughness:.18,metalness:.28});
+  function vehicleBox(w,h,d,material,x,y,z){const part=mesh(new THREE.BoxGeometry(w,h,d),material,vehicle);part.position.set(x,y,z);return part;}
+  vehicleBox(2.05,.85,4.5,paint,0,.8,0);vehicleBox(1.92,1,2.55,paint,0,1.63,-.52);vehicleBox(1.98,.14,2.65,paint,0,2.17,-.52);vehicleBox(1.7,.69,.035,glass,0,1.7,.77);
+  for(const side of [-1,1]){
+    vehicleBox(.035,.63,1.92,glass,side*.977,1.72,-.5);
+    for(const z of [-1.45,1.42]){const tire=mesh(new THREE.CylinderGeometry(.47,.47,.3,24),rubber,vehicle);tire.rotation.z=Math.PI/2;tire.position.set(side*1.04,.47,z);const hub=mesh(new THREE.CylinderGeometry(.24,.24,.315,16),poleMat,vehicle);hub.rotation.z=Math.PI/2;hub.position.copy(tire.position);}
+    decal('msf',1.38,.53,vehicle,side*1.035,1.02,-.2,side*Math.PI/2);
+    vehicleBox(.4,.16,.04,new THREE.MeshStandardMaterial({color:'#ece4b5',roughness:.3}),side*.65,.99,2.27);
+  }
+  vehicleBox(2.16,.17,.22,rubber,0,.52,2.27);vehicleBox(2.16,.17,.22,rubber,0,.52,-2.27);
+  document.body.dataset.brandAssets='ready';
   // Human scale figures are illustrative, with no artist likenesses.
   const personColours=['#ded7c1','#6c8174','#c1b09a','#7c858e','#cebea5'];
   const people=[[-2,0],[3,-8],[-6,-13],[6,-15],[-24,-5],[-21,-7],[-18,20],[-26,20],[0,29],[1,34],[16,13],[21,7],[-10,9],[-8,8],[6,20],[-2,-17]];
   people.forEach(([x,z],i)=>{
-    const g=new THREE.Group();g.position.set(x,.08,z);g.rotation.y=random()*6.28;scene.add(g);
+    const g=new THREE.Group();g.position.set(x,.08,z);g.rotation.y=random()*6.28;scene.add(g);animatedPeople.push({group:g,angle:g.rotation.y});
     const cloth=new THREE.MeshStandardMaterial({color:personColours[i%personColours.length],roughness:1});
     const torso=mesh(new THREE.CapsuleGeometry(.19,.48,3,6),cloth,g);torso.position.y=1.02;
     const head=mesh(new THREE.SphereGeometry(.135,8,6),new THREE.MeshStandardMaterial({color:i%3?'#bba286':'#806956'}),g);head.position.y=1.55;
     for(const s of [-1,1]){const leg=mesh(new THREE.CylinderGeometry(.065,.05,.69,5),cloth,g);leg.position.set(s*.11,.35,0);}
   });
-  const anchorData=[['main','Main pavilion',[0,8.4,-12]],['food','Food',[-24,6.5,-9]],['food','Play',[-23,5.7,20]],['river','Future listening',[22,1.3,8]]];
+  const anchorData=[['main','Main pavilion',[0,8.4,-12]],['food','Food',[-24,6.5,-9]],['food','Play',[-23,5.7,20]],['river','Apple Music area',[22,1.3,8]],['support','Support',[-32,3,-20]]];
   const anchors=anchorData.map(([key,label,p])=>{
     const el=document.createElement('button');el.className='scene-label';el.dataset.key=key;el.tabIndex=-1;el.innerHTML='<i></i>'+label;el.addEventListener('click',()=>selectPlace(key));$('labels').append(el);return {el,p:new THREE.Vector3(...p)};
   });
@@ -226,9 +342,30 @@ async function buildWorld() {
     overview:{pos:[65,51,82],target:[-1,0,0]},
     main:{pos:[27,17,24],target:[0,3,-10]},
     food:{pos:[3,23,40],target:[-22,2,4]},
-    river:{pos:[54,19,36],target:[15,1,1]}
+    river:{pos:[35,6,18],target:[26,3,5]},
+    support:{pos:[-21,13,-37],target:[-33,2,-18]}
   };
-  let tween=null,visible=true,raf=0,needsFrame=true,lastT=0;
+  const nightLights=[];
+  for(const [x,z,colour] of [[-9,-8,'#d98bff'],[9,-8,'#67c8e4'],[-24,-9,'#ffc798'],[-23,20,'#b2a0ff'],[25,5,'#70dfcb']]){
+    const light=new THREE.PointLight(colour,0,24,1.3);light.position.set(x,2,z);scene.add(light);nightLights.push(light);
+  }
+  let tween=null,visible=true,raf=0,needsFrame=true,lastT=0,musicMotion=false,motionTime=0;
+  function setNight(value){
+    scene.background.set(value?'#101f30':'#e9ece2');scene.fog.color.copy(scene.background);
+    skyLight.intensity=value?.55:2.3;sun.intensity=value?.24:3.4;
+    sun.color.set(value?'#a5c0e2':'#fff1d9');renderer.toneMappingExposure=value?1.35:1.15;
+    nightLights.forEach(light=>light.intensity=value?32:0);
+    waterMat.uniforms.waterA.value.set(value?'#123d48':'#4d8d87');waterMat.uniforms.waterB.value.set(value?'#397280':'#9cb9a7');
+    needsFrame=true;renderer.shadowMap.needsUpdate=true;requestFrame();
+  }
+  function animateMusic(t){
+    for(const {geometry,base} of animatedFlags){const a=geometry.attributes.position;for(let i=0;i<a.count;i++){const u=(base[i*3]-.09)/4.1;a.setZ(i,base[i*3+2]+Math.sin(t*2.3+u*7+base[i*3+1])*u*.24);}a.needsUpdate=true;geometry.computeVertexNormals();}
+    animatedPeople.forEach(({group,angle},i)=>{group.rotation.z=Math.sin(t*2.1+i*.7)*.045;group.rotation.y=angle+Math.sin(t*1.1+i)*.12;group.position.y=.08+Math.abs(Math.sin(t*2.1+i*.7))*.06;});
+    const a=crowns.instanceMatrix.array;for(let i=0;i<crowns.count;i++){const n=i*16;a[n+12]=crownMatrices[n+12]+Math.sin(t*.75+crownMatrices[n+14]*.07)*.28;a[n+14]=crownMatrices[n+14]+Math.cos(t*.6+crownMatrices[n+12]*.06)*.16;}crowns.instanceMatrix.needsUpdate=true;
+    document.body.dataset.motionFrame=String(Math.round(t*100));
+  }
+  function setMusicMotion(value){musicMotion=value;document.body.dataset.musicMotion=String(value);needsFrame=true;requestFrame();}
+
   function go(key,instant=false){
     const p=presets[key];const end=new THREE.Vector3(...p.pos),target=new THREE.Vector3(...p.target);
     if(mobile()&&key==='overview'){end.set(102,90,134);target.set(-1,0,0);}else if(mobile()){end.sub(target).multiplyScalar(1.5).add(target);}
@@ -251,25 +388,33 @@ async function buildWorld() {
     raf=0;if(!visible||document.hidden)return;
     if(tween){const a=Math.min(1,(t-tween.start)/1250),ease=a*a*(3-2*a);camera.position.lerpVectors(tween.from,tween.to,ease);controls.target.lerpVectors(tween.fromTarget,tween.target,ease);if(a===1)tween=null;needsFrame=true;}
     controls.update();
-    if(!reduced.matches||needsFrame){
+    if(!reduced.matches||musicMotion||needsFrame){
       // Keep the water subtle and cap animation work at approximately 30fps.
-      if(t-lastT>30||needsFrame){waterMat.uniforms.time.value=reduced.matches?0:t*.001;renderer.render(scene,camera);renderer.shadowMap.autoUpdate=false;lastT=t;needsFrame=false;
-        const w=$('world').clientWidth,h=$('world').clientHeight;
-        for(const a of anchors){const p=a.p.clone().project(camera),x=(p.x*.5+.5)*w,y=(-p.y*.5+.5)*h;const hidden=p.z>1||p.z<-1||x<20||x>w-20||y<80||y>h-200;a.el.style.display=hidden?'none':'';a.el.style.transform=`translate(${x}px,${y}px) translate(-50%,-100%)`;}
+      if(t-lastT>30||needsFrame){if(musicMotion){motionTime+=Math.min(.05,Math.max(0,(t-lastT)/1000));animateMusic(motionTime);}waterMat.uniforms.time.value=reduced.matches?0:t*.001;renderer.render(scene,camera);renderer.shadowMap.autoUpdate=false;lastT=t;needsFrame=false;
+        const w=$('world').clientWidth,h=$('world').clientHeight,placed=[];
+        for(const a of anchors){
+          const p=a.p.clone().project(camera),x=(p.x*.5+.5)*w;let y=(-p.y*.5+.5)*h;
+          const width=a.el.offsetWidth||120;
+          for(let attempt=0;attempt<6&&placed.some(b=>Math.abs(x-b.x)<(width+b.width)/2+5&&Math.abs(y-b.y)<34);attempt++)y-=34;
+          const hidden=p.z>1||p.z<-1||x<20||x>w-20||y<80||y>h-200;
+          a.el.style.display=hidden?'none':'';a.el.style.transform=`translate(${x}px,${y}px) translate(-50%,-100%)`;
+          if(!hidden)placed.push({x,y,width});
+        }
         document.body.dataset.rendered='true';
       }
     }
-    if(!reduced.matches||tween||needsFrame)requestFrame();
+    if(!reduced.matches||musicMotion||tween||needsFrame)requestFrame();
   }
   document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(raf);raf=0;}else{needsFrame=true;requestFrame();}});
   reduced.addEventListener('change',()=>{controls.enableDamping=!reduced.matches;needsFrame=true;requestFrame();});
   canvas.addEventListener('webglcontextlost',(e)=>{e.preventDefault();setMode('plan');status('The 3D view paused. The 2D site plan remains available.');});
   go('overview',true);resize();
-  return {go,setVisible(v){visible=v;if(!v){cancelAnimationFrame(raf);raf=0;}else{needsFrame=true;requestFrame();}},stats(){return {triangles:renderer.info.render.triangles,calls:renderer.info.render.calls,trees:treeList.length};}};
+  return {go,setNight,setMusicMotion,setVisible(v){visible=v;if(!v){cancelAnimationFrame(raf);raf=0;}else{needsFrame=true;requestFrame();}},stats(){return {triangles:renderer.info.render.triangles,calls:renderer.info.render.calls,trees:treeList.length};}};
 }
 
 try {
   sceneAPI=await buildWorld();
+  sceneAPI.setNight(night);sceneAPI.setMusicMotion(media.isAnimating());
   $('loading').hidden=true;
   document.body.dataset.ready='true';
   setMode('3d');

@@ -1,11 +1,13 @@
 # Universal Mind Lab — creative and development brief
 
-**Version:** 0.3 · **Date:** 2 November 2026 · **Owner:** Ben Korbel  
+**Version:** 0.7 · **Date:** 2 November 2026 · **Owner:** Ben Korbel
 **Status:** Working concept for discussion, collaboration and staged visual development. Architectural engineering, operating arrangements and named partnerships remain to be established.
 
 ## 1. Purpose
 
 Create an interactive architectural world and partnership pitch for Universal Mind Lab: a travelling Australian installation that brings the IAM portal into a physical environment through music, fashion, mindfulness, learning, food, play and gathering.
+
+The primary mission is education, stigma reduction, referral pathways, and mindfulness, music and fashion skills. The responsive-environment MVP is designed to support short-term stress reduction and increased felt connection. These are intended outcomes; evaluation will establish the effects achieved by the Lab.
 
 The primary audience is people aged 16–24, with the wider community welcome. The experience combines a main pavilion with smaller surrounding facilities, nature, Moroso Tropicália seating and individual music discovery stations.
 
@@ -19,6 +21,8 @@ The web experience makes the proposal tangible: visitors explore the setting, fo
 | --- | --- |
 | First community installation | One main Droneport-derived vault with surrounding facilities. |
 | Future permanent centre | A longer sequence of linked vaults, using the landscape image with the boy, drone and flag as the preferred architectural reference (R06). |
+| Initial tour destinations | Central Coast, Bondi/Bondi Junction, and Northern Rivers near Byron Bay. These are Ben’s planning directions; actual sites and commitments remain open. |
+| Participation routes | Public self-nomination alongside headspace referrals and school nominations, through a proposed partner application route. Existing service use or school nomination is not a prerequisite. |
 | Capacity ambition | Approximately 100 people. The capacity schedule still needs to distinguish the main pavilion from the whole site, simultaneous use, staff and children. |
 | Transport | A proposed Linfox road train brings the touring installation and equipment. |
 | Setup and departure | Aim for one week to build and one week to pack down where feasible. These are targets for investigation. |
@@ -37,6 +41,7 @@ The web experience makes the proposal tangible: visitors explore the setting, fo
 | Headphones | AKG K812 is Ben's preferred reference model for demonstrating the sound. |
 | Music partnership | Proposed Apple Music partnership, with Apple Retail as a potential contributor to the physical experience. Artist-approved unreleased previews are part of the partnership ambition. |
 | Pylon geometry | Transparent tubular columns rising from the earth, with round or softly organic cross-sections and imagery within their volume. |
+| Visual quality | Aim for a convincing, near-photorealistic interactive architectural environment. Replace the initial placeholder forms and vegetation with carefully modelled geometry, materials, furnishings and lighting. |
 | Development | Build progressively: landscape, road train, pavilion assembly, satellite pavilions, furniture, listening features and refinement. |
 
 ## 3. Community collaboration and a lasting public space
@@ -63,7 +68,7 @@ Food and play occupy smaller satellite pavilions. Individual listening stations 
 
 ### Future version: permanent multi-vault centre
 
-R06 is the preferred future reference: the long landscape composition with approximately five or six visible arches and a flag. Carry its rhythm, horizon and civic presence into a later permanent-centre study. The initial touring/community concept uses a single main vault.
+R06 is the preferred future reference: the long landscape composition with approximately five or six visible arches and a flag. Carry its rhythm, horizon and civic presence into a later permanent-centre study. The initial touring/community concept uses a single main vault. Ben hopes the first three tour destinations may become permanent hero sites, conditional on council and citizen/community consent; this connects the mobile tour to the longer-term permanent-centre ambition.
 
 ### Unifying the main and satellite forms
 
@@ -206,13 +211,13 @@ Follow the existing repository workflow for each implemented website update: iso
 
 Keep browser QA hidden/background. Media QA requires a separate Chromium process launched with process-level audio disabled, including `--mute-audio`; no media playback in the Codex in-app browser. Do not invoke native fullscreen without immediate explicit approval. Pause and close automated media sessions after checks. If OpenAI/GPT functionality is later added, verify the complete live staging request/response workflow.
 
-This package is local planning material. No website deployment is part of this brief-and-reference task.
+The brief and reference package are planning material. The first landscape website release is documented in section 16; later brief-only revisions do not automatically change the deployed page.
 
 ## 12. Open decisions for later stages
 
 These questions do not block an initial visual model:
 
-- First region, site, host collaborators and local decision process.
+- Exact sites, host collaborators and local decision processes within the initial destinations recorded in section 17.
 - Whether the 100-person target applies to one shared session or distributed activity across the site; visitor/staff/child totals.
 - Exact vault dimensions and structural system.
 - Locally appropriate material options and their measured environmental trade-offs.
@@ -279,19 +284,20 @@ Membership and event attendance are intended to be free. Applications help ident
 
 Proposed entry routes:
 
-1. A participating headspace service receives applications or makes referrals.
-2. Participating NSW schools nominate interested students through a volunteer senior teacher, principal or agreed school wellbeing contact. A short survey is one possible entry step.
-3. Priority intentions include young people experiencing economic disadvantage, communities facing additional barriers, special support needs, or a need for mental health and community connection.
+1. Public self-nomination through a proposed headspace.org.au/Eora partnership route. Participation is not restricted to existing headspace clients or school-nominated students. The partnership and exact URL remain unconfirmed; preserve the original doodle’s lowercase `/eora` separately as supplied.
+2. Participating headspace services also make referrals or assist applicants.
+3. Participating NSW schools nominate interested students through a volunteer senior teacher, principal or agreed school wellbeing contact. A short survey is one possible entry step. Ben also intends on-site mentors for 16–17-year-olds, drawing on his past practice; NSW Education collaboration remains proposed.
+4. Priority intentions include young people experiencing economic disadvantage, communities facing additional barriers, special support needs, or a need for mental health and community connection.
 
 Ben's reference is the participation model of Global Citizen concerts: free, limited tickets with positive actions and an allocation process. This is an analogy, not a confirmed Global Citizen partnership or a settled auction or ballot mechanism. Define the eventual allocation method with partners and young people. Recommended design direction: accessible participation options and transparent allocation that does not rank personal worth, reward disclosure of sensitive health information, or make clinical support a competition. No scoring or eligibility algorithm is authorised for this prototype.
 
 Ben's initial support-interest examples include anxiety, PTSD and occasional depression. He is concerned about accepting needs beyond the team's safe capacity, including acute presentations. These examples are planning context, not validated clinical eligibility categories. Clinical partners need to define individual assessment, consent, available care, escalation, referral and follow-up. Diagnosis or duration alone is not used as an automatic exclusion rule in the website.
 
-The proposed public wording is: **Free membership. A supported application process through participating youth and education partners, with places matched to programme capacity and available support.**
+The proposed public wording is: **Free membership. Apply yourself or with support from participating youth and education partners, with places matched to programme capacity and available support.**
 
 ### Online participation and live TV
 
-An online experience and live TV are part of every event's intended programme, including for people unable to obtain an in-person ticket. Plan an online equivalent with accessible viewing and participation opportunities. Broadcast consent, music/artist arrangements, production and availability remain to be agreed. Private clinical consultations stay outside the broadcast programme. Stage 1 records this promise as a design requirement; it does not claim a live stream is operating.
+An online experience and live TV are part of every event's intended programme, including for people unable to obtain an in-person ticket. Plan an online equivalent with accessible viewing and participation opportunities. Broadcast consent, music/artist arrangements, production and availability remain to be agreed. Ben’s direction is advance awareness and choice about filming, with coverage focused on performers and workshops rather than crowds. Clinical, research and media participation choices remain separate. Private clinical consultations stay outside the broadcast programme. Stage 1 records this promise as a design requirement; it does not claim a live stream is operating.
 
 ### Clinical and general-practice partners
 
@@ -314,3 +320,161 @@ The first spatial model is available at [the permanent staging Lab page](https:/
 Visitors can orbit, zoom, use four camera presets, inspect place notes, switch to a 2D plan and read the vision. Reduced motion, keyboard navigation and a no-3D fallback are included. The page presents the proposed free membership and online participation direction without collecting applications or health information.
 
 Next review: confirm the landscape composition, relative scale, main vault form and positions of food/play/listening. The next authorised development stage is the road train and explanatory assembly sequence, followed by facilities, furniture and listening features. [Release and verification record](STAGE-01-RELEASE.md).
+
+## 17. Youth evidence and cross-task coordination — 2 November 2026
+
+**Provenance:** Ben-authorised handoff `youth-lab-evidence-handoff-20261102-0257` from the youth research task, chat `01a199bb-1439-72e3-9359-273f4e00a0f4`. This section records the handoff and its status at receipt. It is a documentation update; it does not change the deployed 3D model, certify the programme or initiate a new deployment.
+
+### Ben’s directions
+
+- **Mission:** education, stigma reduction, referral pathways, and mindfulness/music/fashion skills. Immediate stress and felt connection are exploratory additional benefits. The Lab does not promise to fix people.
+- **Tour and permanent sites:** begin with Central Coast, Bondi/Bondi Junction, and Northern Rivers near Byron Bay. These may become permanent hero sites if councils and citizens/communities agree. Broader ambitions include regional NSW, the Northern Territory and potentially remote Western Australia, with smaller pop-ups and regional transport/accommodation experiences. These are planning ambitions, not secured sites or operating commitments.
+- **Open entry:** include public self-nomination through the proposed headspace/Eora route, alongside service referrals and school nominations. Existing headspace membership or school nomination is not required. Partnership and URL remain to be agreed.
+- **Young participants:** on-site mentors for ages 16–17 draw on Ben’s past practice. NSW Education involvement remains proposed. Younger children’s play arrangements are a separate operating decision.
+- **Broadcast choice:** provide advance awareness and choice; focus on performers and workshops rather than crowd coverage. Separate clinical, research and media participation decisions.
+- **Guests:** celebrity examples illustrate possible programmes; they are not bookings.
+
+### Evidence package and integration status at handoff
+
+The research task reports **105 papers meeting rapid selected-methods criteria**: 100 potential additions and five existing-library matches. Its qualified core comprises 47 randomized-trial reports, 42 reviews, eight qualitative papers and eight observational papers. A further 31 abstract-only records sit outside that qualified count. These counts describe the research task’s screening, not an independent risk-of-bias assessment or 105 high-certainty efficacy findings.
+
+Links: [review](https://staging.universalmind.tv/informatics/review/youth-20261102/), [evidence brief](https://staging.universalmind.tv/informatics/review/youth-20261102/brief.html), [methods and limits](https://staging.universalmind.tv/informatics/review/youth-20261102/methods.html).
+
+Ben has approved the content, as reported by the research task. Planned Informatics headings include **Black Dog Institute**, **Orygen**, and **Universal Mind Mobile Lab — direct response to needs / inspired by evidence**, with youth interventions placed in the relevant Sound, Vision and Language tables of contents and working filters. Main-library and assistant-retrieval integration remains pending at handoff; the next Informatics staging build awaits discussion and completion of the parallel production release. The review page’s pending metadata has not yet been revised by that later build. Do not describe planned integration as completed retrieval coverage.
+
+The handoff specifies article design markers of one cross for other peer-reviewed papers, two for verified RCTs including single-blind trials, and three for verified double-blind trials. Chapter one/two blue-cross Trust Factor classifications are separate impact/trust assessments. Retain that distinction in the Informatics task; neither marker system establishes that the combined Lab has been trialled.
+
+### Research interpretations and design recommendations
+
+These are recommendations informed by particular studies, not established Universal Mind Lab outcomes:
+
+| Evidence | Interpretation for the Lab | Limit |
+| --- | --- | --- |
+| Black Dog-affiliated youth co-design: [Encouraging help-seeking and engagement](https://doi.org/10.3389/fdgth.2022.1045765) | Emphasise privacy, empowerment, choice and engagement in supported entry and optional help. Avoid achievement pressure. | Qualitative design evidence, not clinical efficacy. |
+| Orygen: [Horyzons RCT](https://pmc.ncbi.nlm.nih.gov/articles/PMC8129860/) | Explore repeat creative projects, mentors and local continuity, informed by its clinician, peer and vocational support model. | No significant primary social-function benefit; encouraging secondary vocational findings were imprecise. A touring event or live stream has not been shown equivalent. |
+| Orygen-affiliated [disengaged-youth research](https://doi.org/10.1136/bmjopen-2014-006378) | Reach beyond school and existing-service users. Public self-nomination addresses the earlier referral-only concern; transport, devices and completed referrals remain practical questions. | Outreach rationale, not proof of the Lab’s reach or outcomes. |
+| Black Dog-affiliated [Indigenous digital mental health design review](https://pubmed.ncbi.nlm.nih.gov/37393283/) | Develop local governance, resourcing/payment, data and intellectual-property agreements with each community. | Existing community authority in this brief is a commitment to collaboration; operating agreements still need local development. |
+| [MoodyTunes single-cohort evaluation](https://pubmed.ncbi.nlm.nih.gov/40799325/) | Music listening may inform engaging mental health education and music-discovery design. | It does not establish efficacy for music production or fashion training. |
+
+The existing brief already separates optional clinical services, private consultations and broadcasting, avoids diagnosis-only exclusion rules, and establishes community collaboration. Further operating detail is a development task, not evidence that the concept is unsafe.
+
+Develop the separate service and research arrangements with qualified partners: responsibility for clinical care and referral follow-through; suitable consent, confidentiality and mentoring for ages 16–17; separate research/filming choices; and the different supervision needs of younger children. A national reference is the [National Principles for Child Safe Organisations](https://www.childsafety.gov.au/resources/national-principles-child-safe-organisations).
+
+Keep learning outputs, participation/access, felt connection, immediate stress and longer-term clinical outcomes distinct. Post-visit continuity and referral follow-through remain useful design questions. The supplied evidence does not establish efficacy of the entire combined Lab model or endorse its proposed architecture, sponsors or named collaborators.
+
+### Coordination boundary
+
+Carry the accepted directions into later Lab design reviews. The Informatics task owns the research-library integration, classification, filtering and retrieval work. This handoff updates the existing brief only; it authorises no partner contact, additional website deployment or redesign. Original references, accepted sketches and the existing staging release remain preserved.
+
+## 18. Visual fidelity and approved next steps — 2 November 2026
+
+**Ben’s direction:** the current interactive model is an acceptable starting point. Ben agrees with the five proposed next steps: refine layout and scale; add the road train and arrival/assembly story; develop architecture and furnishing; build the listening experience; bring the programme to life. The finished target, within practical limits, is a photorealistic interactive environment. The initial graphics do not yet capture the nuances of the Foster and ZHA references.
+
+### Architectural character
+
+The detailed architecture stage needs a fresh modelling pass, with reference comparison at the exterior, entrance, underside and ground junctions. For the Droneport-derived vault, study the changing curvature, rise and span, arch profiles, shell edges, four ground contacts and masonry/tile pattern at a credible scale. For the ZHA-derived satellites, study the continuous sweep from support into canopy, the canopy outline, cantilever, proportions and surface transitions.
+
+Keep Ben’s earlier changes: the food and play pavilions share the main pavilion’s provisional material/colour family and retain fluid forms with no oval windows or cellular apertures. The new fidelity target does not reinstate those removed details. Label project-specific adaptations clearly; their appearance is not evidence of architectural endorsement or engineered construction.
+
+### Assets, materials and landscape
+
+Use official architectural/CAD or furniture models when available and suitable for use. Otherwise create a reference-based reconstruction with its fidelity and dimensions stated. No official Foster or ZHA model has been obtained, and no manufacturer furniture asset has yet been imported into the interactive scene.
+
+Moroso’s [Tropicália page](https://moroso.it/en/prodotti/tropicalia-4/) lists a 3D model link targeting `Tropicalia_daybed_3D.zip`. The package link has been identified; its contents, exact variants, materials and permitted reuse remain unverified. Continue the furniture asset check during the detailed fitout stage.
+
+Replace the simple tree crowns and flat surface treatments with appropriate detailed vegetation, ground variation, riverbank treatment and water. Preserve the broad open lawn and perimeter forest layout. Develop masonry relief and joints, subtle surface variation, furniture weave, cushion texture, believable glass, natural daylight and grounded contact shadows. Local material selection remains collaborative; a realistic render does not establish the final specification.
+
+### Reviewable quality checkpoint
+
+Within the architecture/furnishing stage, first develop one detailed main-pavilion area with a small representative furniture grouping and nearby landscape. Review a fixed exterior view, an eye-level approach and a view beneath the vault, then navigate around the same 3D assets. This checks both recognisable form and credible material/light response before extending that treatment across the environment.
+
+ImageGen remains available for mood and discussion. Quality acceptance for the interactive environment uses images rendered from its actual 3D scene and a navigable staging build. A separate generated image is not proof of the final scene’s appearance.
+
+### Browser performance and scope
+
+Aim for the richest presentation on suitable desktop hardware and an adapted level of detail on phones. Balance model complexity, texture memory, vegetation, shadows and glass with loading time and responsive navigation. Compression, reusable assets, distance-based detail and precomputed lighting are implementation options for testing. The existing Three.js/Panthur workflow remains in place; no hosting or engine change is required by this direction.
+
+The visual target is recorded, not yet achieved or benchmarked. Exact fidelity depends on source assets, modelling work and target devices. Preserve the 2D fallback and reduced-motion controls. The current interface/media update does not establish that visual-quality milestone.
+
+## 19. Fullscreen, background music and approved page copy — 2 November 2026
+
+Ben requests a small square fullscreen control at the top right, matching the other Universal Mind experiences. The whole page, controls and dialogs expand together after a visitor presses it. The icon reflects enter/exit state. Browsers without page fullscreen retain the full-window layout. Native fullscreen is not invoked during automated QA; state handling is exercised with a test double and explicit viewport dimensions.
+
+Ben subsequently selected Justice — Neverender (Starring Tame Impala). The current implementation adds visitor-controlled looping music, optional video blending and independent scene motion; section 20 records that direction.
+
+### Approved branding copy
+
+The new R27 artwork governs the page copy:
+
+- universal mind
+- music | fashion | mindfulness
+- next generation lab for next generation humans
+- membership via headspace.org.au/eora
+- an initiative by NSW Education, Headspace & Universal Mind
+- Proposal
+
+Remove added slogans and promotional prose from the page, place cards, metadata and proposal dialog. Retain functional navigation, activity descriptions, status messages and factual proposal qualifications. The artwork specifies `/eora`; this resolves the spoken “Yura”. The named organisations and membership route remain proposed arrangements. This update does not assert that applications are open.
+
+The fullscreen/copy revision is separate from the detailed architecture and photorealism work in section 18.
+
+### Identity embedded in the environment
+
+Ben clarified that partner identities belong in the physical scene, not a flat sponsor strip. Use triangular flags for each area, with a translucent Universal Mind flower behind a monochrome partner mark. Apply this to headspace, Médecins Sans Frontières, NSW Education and the proposed Apple Music area. Preserve the Universal Mind flower as the common identity.
+
+Initial contextual objects include a small MSF support vehicle, a welcome booth and a headspace staff figure. The figure’s clothing is illustrative, not an official nursing uniform. An education flag sits near the main pavilion; an Apple Music flag marks the future listening area. A logo on a listening pylon remains a later fitout option. Zooming closer reveals the physical graphics. These are proposed identities, not confirmed partnership or staffing commitments.
+
+The first pass uses simple scene geometry consistent with the spatial model. It does not replace the later detailed architecture, furniture, vehicle and character modelling work. [Brand asset sources](brand-assets.json) record official artwork and the existing project flower.
+
+## 20. Information hierarchy, music and the day/night experience
+
+Ben’s artwork is a copy reference, not a literal layout. Design the identity for a modern youth-facing experience: Universal Mind at the top with music, fashion, mindfulness beneath it; a large, expressive tagline; membership near the navigation; and the initiative credit in the bottom footer. Do not put all text into the upper-left corner or reproduce the Apple Notes box treatment. The flower on every triangular flag needs to remain visibly recognisable behind the monochrome partner mark.
+
+Ben selected **Justice — Neverender (Starring Tame Impala), official video**, source https://www.youtube.com/watch?v=E7FU_mqhFGk . Download at 1080p and upload to the existing Cloudflare Stream account. The track loops after the visitor chooses Music. One media timeline supplies music and the optional video layer. TV reveals a transparent video overlay; begin at 22% opacity, with a dial for comparison including 33%. Keep navigation usable through the overlay. Music playback can animate tree sway, flag movement and people dancing. Motion and video remain individually controllable, including a reduced-motion default. This is an audiovisual presentation feature; no clinical effect is established by the visual overlay.
+
+By day, retain the grounded open green setting. By night, transform the environment through sound, high-resolution stage screens, projection-mapped sculptures, full-colour lasers and audience wristbands. Ben’s reference is a refined **teamLab / Vivid-style environment**, with Tame Impala’s integrated lighting and laser language and Coldplay’s audience synchronisation. The brief is a mental-health-focused music and community event; avoid a generic Burning Man aesthetic. Include a Day/Night control in the staged experience development.
+
+### Production partners and technical direction
+
+- **d&b audiotechnik:** a contemporary four-corner line-array concept for spatial coverage. Investigate current systems sized for the actual audience and site; “latest” does not establish the correct cabinet or count. Four visible arrays are a design direction, with actual sound-field design, quiet-zone spill, alignment and rigging developed by the audio team.
+- **Jands:** Ben’s proposed Australian supplier/contact, spoken as “Jans”; actual d&b rental or supply role remains to be checked.
+- **TDC, Australia:** proposed full-height, high-resolution stage video screens and technical delivery. Ben cited major Coachella-stage production quality as an ambition. Artist footage and the planned therapeutic-style audiovisual content can blend on these displays.
+- **teamLab:** proposed projection mapping, interactive light and sculptural installations across the site.
+- **Xylobands:** proposed synchronised audience wristbands; Coldplay is a visual and collective-participation reference.
+- **Lighting and lasers:** integrated full-colour light and laser choreography, developed with the production specialists alongside the physical screen and projection design.
+
+These are named collaboration directions, not evidence of signed agreements or a final equipment specification. Ben explicitly requests research into the reference concerts and current suppliers. The [production reference note](PRODUCTION-REFERENCES.md) records the checked sources, including NAS as a verified Australian d&b distributor enquiry route alongside the proposed Jands conversation.
+
+## 21. Apple Watch and SIX responsive-environment MVP — explicit correction
+
+**This is an MVP requirement and an implementation direction. Do not reclassify it as a future research concept.** Ben has already met the SIX / Immersion team and discussed the science and integration. The organisation is **Immersion Neuroscience**; **SIX** is its app. Ben refers to Paul J. Zak’s company and proposes partnering with the team for this capability.
+
+### Preserve Ben’s full scientific explanation in the clinical pitch
+
+- **Emotional Connection:** Ben describes the provider’s metric as an inference proxy for the **oxytocin–dopamine axis**, connecting focus with emotional connection.
+- **Psychological Safety:** Ben describes the provider’s metric as a **cortisol inference proxy**.
+- **90% oxytocin / 10% dopamine:** Ben reports that the SIX team explained this weighting in their meetings, with dopamine described in relation to focus and oxytocin in relation to emotional connection. Preserve this as the provider explanation reported by Ben; no independently verified quantitative calibration is asserted by this brief.
+- **DARPA development context:** Ben reports that the team explained development of the underlying science with DARPA. Preserve this as provider-reported historical context pending a matching published source.
+- The team’s accessible labels, Emotional Connection and Psychological Safety, coexist with the inference explanation. Do not strip out the oxytocin, dopamine or cortisol context when addressing clinical or mental health partners.
+
+Immersion’s [public wellbeing explanation](https://www.getimmersion.com/measuring-well-being-with-value-measurement) explicitly describes wearable-based inference of simultaneous oxytocin and dopamine release. Its [FAQ](https://www.getimmersion.com/faq) describes cardiac rhythm inputs and the derived metrics. These public descriptions support including the neurochemical inference explanation in the clinical pitch.
+
+### Clinical-pitch wording
+
+Universal Mind Lab’s responsive-environment MVP uses Apple Watch data through Immersion Neuroscience / SIX to adapt the surrounding experience to Emotional Connection and Psychological Safety. In discussions with Ben Korbel, the SIX team described Emotional Connection as an oxytocin–dopamine axis inference, with a 90% oxytocin / 10% dopamine explanation linking emotional connection and focus, and Psychological Safety as a cortisol inference proxy. They also described development of the underlying science with DARPA. These inferred signals guide changes in lighting, colour, motion and audiovisual presentation, with the aim of reducing short-term stress and increasing felt connection. Cardiac signals are the wearable measurement; the neurochemical and experiential metrics are the provider’s inferences.
+
+### MVP feedback loop
+
+Apple Watch cardiac measurements feed the provider’s agreed SIX / Immersion integration. The resulting Emotional Connection and Psychological Safety inference signals drive dynamic modulation of the environment: lighting, colour, motion and related audiovisual parameters. Ben’s intended outcomes are **reduced short-term stress and increased felt connection**, supporting greater emotional connection and felt safety. This describes the product’s purpose; it is not a claim of a measured Lab outcome.
+
+The pitch distinguishes the sensor measurement, the provider’s inference and the environmental response. It preserves the full provider explanation with attribution. API access, metric definitions, update rate, group aggregation, participant consent, signal-loss behaviour and operator controls are practical MVP integration tasks. The current browser landscape has no live Watch connection yet; implementing that connection is in the MVP scope.
+
+
+## 22. Current interface and media implementation
+
+The staged interface adds the revised information hierarchy, whole-page fullscreen control, triangular area flags with a visible Universal Mind flower, an illustrative support booth/vehicle/staff figure, and five camera presets. The source artwork remains archived alongside the existing references.
+
+Justice — Neverender is archived locally at 1920×1080 and uploaded to Cloudflare Stream. Music starts only after a visitor chooses it. One looping video timeline supplies the soundtrack and optional TV layer. Video starts at 22% blend, adjustable from 0–70%; 33% is available for comparison. Volume and scene motion have separate controls. Reduced-motion preferences start with scene motion off. Music-enabled motion animates flag cloth, tree crowns and people using gentle procedural cycles; this pass does not implement beat detection or biometric control.
+
+Day/Night is an initial colour and pavilion-lighting preview. It does not yet include the full LED stage, four line arrays, projection artworks, lasers or wristbands. Those remain explicit production/scene requirements in section 20. Architecture, furniture, detailed naturalism, the road train and assembly sequence remain subsequent reviewable modelling stages. The SIX feedback loop remains in MVP scope.
+
+See [media source record](media-source.json), [brand sources](brand-assets.json), [production references](PRODUCTION-REFERENCES.md) and the verification records in `qa/`.

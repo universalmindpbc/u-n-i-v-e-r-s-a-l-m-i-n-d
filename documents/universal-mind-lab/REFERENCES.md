@@ -319,3 +319,9 @@ Add your comments under any image. Useful labels include **exact piece**, **pref
 Original: IMG_2479.jpeg. Core language: Universal Mind; music | fashion | mindfulness; next generation lab for next generation humans. The headspace route and joint initiative attribution are draft proposals.
 
 **Ben’s comments:** Free membership, applications/referrals through participating headspace services and NSW schools; limited in-person places and an online live-TV experience.
+
+## R27 — Approved page copy
+
+![Ben’s approved page copy](references/marketing/R27-approved-marketing-copy.png)
+
+Original: Screenshot 2026-11-02 at 3.25.24 pm.png. Preserve the wording in this artwork, including `/eora`. Ben’s spoken “Yura” is resolved by the supplied image. This replaces added promotional copy; functional descriptions remain. “Proposal” identifies the concept and its proposed partnerships.
