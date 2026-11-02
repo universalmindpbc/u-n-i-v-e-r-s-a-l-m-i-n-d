@@ -1,0 +1,77 @@
+{
+  "complete": false,
+  "updatedAt": "2026-11-02T03:43:16.820296+00:00",
+  "publishedWebsiteSource": "7ebdb92ac8886af9c81e8616b336a2fecc86989c",
+  "previousProductionMain": "a2d6cb9b83340e841c9362cefd5d193aff63ee56",
+  "stagedCorrectionSource": "c878f93169d0bb953e864386dede6c121240e285",
+  "stagingAuditCommit": "92c55a98e180de5e3e926f45f2e9815891ed75d6",
+  "mergedStagingCommit": "8bbaa8d36ef96489c14fb7bc9db66aaa58404607",
+  "productionCorrectionPublished": false,
+  "productionTagCreated": false,
+  "worker": {
+    "name": "informatics-universal-one",
+    "version": "58404974-72da-4721-aa9d-9f1371cae6c7"
+  },
+  "productionUploads": {
+    "completedModes": [
+      "ai-wiki",
+      "informatics",
+      "iam-changed",
+      "directory",
+      "ai-wiki",
+      "redirects"
+    ],
+    "informaticsChangedFiles": 2361,
+    "iamScopedFiles": 35,
+    "ownerStatePreserved": true
+  },
+  "productionChecks": {
+    "httpChecksPassed": 70,
+    "initialSourceComparisonsPassed": 118,
+    "initialSourceCheckLimit": "Some initial checks used unversioned URLs. The later versioned-asset scan identified a stale script response.",
+    "manifestEntriesMatched": 13820,
+    "readOnlyProtocolChecksPassed": true,
+    "mcpTools": 9,
+    "archiveFilesVerifiedAtFreshQueryURLs": 55,
+    "archiveBytesVerified": 2470959389,
+    "canonicalArchiveVerificationComplete": false,
+    "browserSuiteComplete": false,
+    "assistantUIVerified": false
+  },
+  "stagingChecks": {
+    "browserChecksPassed": 54,
+    "pageErrors": 0,
+    "finalVersionedSourceComparisonsPassed": 118,
+    "processAudioMuted": true,
+    "fullscreen": "Instrumented ownership; native fullscreen was not invoked.",
+    "assistantUIVerified": true,
+    "actualOpenAIResponses": 1,
+    "answerTextMatchesResponse": true
+  },
+  "preservedLiveWalletCSS": {
+    "sourceCommit": "bff911cb19af313c0158ac3f7ef9abc8282a37ab",
+    "sha256": "5dc8138d8082cd35cffcff2d2904dd17414f5d45fe38599ce0aaf795684c686c"
+  },
+  "unapprovedYouthWork": {
+    "excludedFromSourceAndUploads": true,
+    "publicPathsChecked": 12,
+    "responses": "403; public denial alone does not prove physical absence.",
+    "preservedOnGitHubStaging": true
+  },
+  "cacheRepair": {
+    "approvedArchiveURLs": 55,
+    "completed": false,
+    "dashboard": "Signed out; display for user sign-in awaits reply.",
+    "additionalScriptURL": "https://universalmind.tv/informatics/shared-experience.js?v=1c6694f64b0d",
+    "additionalScriptPurgeApproved": false
+  },
+  "pending": [
+    "User Cloudflare sign-in",
+    "Approval to publish the staged I AM history correction and add the stale script to the purge list",
+    "Exact scoped cache purge",
+    "Canonical binary and versioned asset verification",
+    "Full production browser and assistant UI checks",
+    "Final production main, annotated tag, and remote verification"
+  ],
+  "proof": "https://staging.universalmind.tv/iam/tv/"
+}

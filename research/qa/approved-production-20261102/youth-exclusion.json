@@ -1,0 +1,55 @@
+{
+  "passed": true,
+  "sourceAndUploadQueueExcludeAllFiles": true,
+  "HTTPMeaning": "None is publicly served; a 403 response does not prove physical absence.",
+  "files": [
+    {
+      "path": "Informatics/review/youth-20261102/batch-f164c8325ea5f9c9.json",
+      "status": 403
+    },
+    {
+      "path": "Informatics/review/youth-20261102/brief.html",
+      "status": 403
+    },
+    {
+      "path": "Informatics/review/youth-20261102/brief.md",
+      "status": 403
+    },
+    {
+      "path": "Informatics/review/youth-20261102/index.html",
+      "status": 403
+    },
+    {
+      "path": "Informatics/review/youth-20261102/index.json",
+      "status": 403
+    },
+    {
+      "path": "Informatics/review/youth-20261102/methods.html",
+      "status": 403
+    },
+    {
+      "path": "Informatics/review/youth-20261102/methods.md",
+      "status": 403
+    },
+    {
+      "path": "Informatics/review/youth-20261102/records-4f4edc1a6130b68b.csv",
+      "status": 403
+    },
+    {
+      "path": "Informatics/review/youth-20261102/review.css",
+      "status": 403
+    },
+    {
+      "path": "Informatics/review/youth-20261102/review.js",
+      "status": 403
+    },
+    {
+      "path": "Informatics/review/youth-20261102/search-log.json",
+      "status": 403
+    },
+    {
+      "path": "Informatics/review/youth-20261102/supplemental-sources.json",
+      "status": 403
+    }
+  ]
+}

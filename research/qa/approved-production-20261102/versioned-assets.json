@@ -1,0 +1,1185 @@
+{
+  "source": "7ebdb92ac8886af9c81e8616b336a2fecc86989c",
+  "checked": 145,
+  "passed": false,
+  "failed": [
+    {
+      "url": "https://universalmind.tv/vogue/iam/adaptive-environment-television.css?v=music-tv-css-58fc7ca58e7c",
+      "path": "i  a m/adaptive-environment-television.css",
+      "expected": "58fc7ca58e7c1bc11b357bafc6a15c1d60e089bdd0c6f01f8e7e6fc2906a4690",
+      "actual": "5dc8138d8082cd35cffcff2d2904dd17414f5d45fe38599ce0aaf795684c686c",
+      "matched": false,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/informatics/shared-experience.js?v=1c6694f64b0d",
+      "path": "Informatics/shared-experience.js",
+      "expected": "1c6694f64b0d7f0d31ee2718af4459efe7daf60a5c53d2c73b1aa3265d895640",
+      "actual": "b0ff825af3d938146832790d69ab57db694a1b5f9aac5eaaa2b9fb625cb81a71",
+      "matched": false,
+      "cache": "HIT"
+    }
+  ],
+  "results": [
+    {
+      "url": "https://universalmind.tv/home/ai-wiki-link.css?v=1",
+      "path": "home/ai-wiki-link.css",
+      "expected": "ba887b0e9e32884acc603fbc5611c66d0d25f72b6b7a714cee2c0efbeecc7654",
+      "actual": "ba887b0e9e32884acc603fbc5611c66d0d25f72b6b7a714cee2c0efbeecc7654",
+      "matched": true,
+      "cache": "EXPIRED"
+    },
+    {
+      "url": "https://universalmind.tv/home/entry-shell.css?v=2",
+      "path": "home/entry-shell.css",
+      "expected": "23bf449587a9a4654de1d789d9f7275608bb94e24abd6d2e3e6f2e5084477021",
+      "actual": "23bf449587a9a4654de1d789d9f7275608bb94e24abd6d2e3e6f2e5084477021",
+      "matched": true,
+      "cache": "EXPIRED"
+    },
+    {
+      "url": "https://universalmind.tv/home/entry-shell.js?v=5",
+      "path": "home/entry-shell.js",
+      "expected": "292cd65fe13be4c5e5e615ec5c1360dbe85894523df2e5e6dfc4aeb07c598bbf",
+      "actual": "292cd65fe13be4c5e5e615ec5c1360dbe85894523df2e5e6dfc4aeb07c598bbf",
+      "matched": true,
+      "cache": "MISS"
+    },
+    {
+      "url": "https://universalmind.tv/home/directory.css?v=9",
+      "path": "home/directory.css",
+      "expected": "5a7aebcf5ce3bb05e627c036f14403066f2a4819a54a44e21bd10f0f9cb67443",
+      "actual": "5a7aebcf5ce3bb05e627c036f14403066f2a4819a54a44e21bd10f0f9cb67443",
+      "matched": true,
+      "cache": "EXPIRED"
+    },
+    {
+      "url": "https://universalmind.tv/home/directory.js?v=13",
+      "path": "home/directory.js",
+      "expected": "57451a8943ac23ec9c1747f1a36a53f4a258d327590e5ccd7421b168d73ecc74",
+      "actual": "57451a8943ac23ec9c1747f1a36a53f4a258d327590e5ccd7421b168d73ecc74",
+      "matched": true,
+      "cache": "EXPIRED"
+    },
+    {
+      "url": "https://universalmind.tv/home/directory-story.js?v=4",
+      "path": "home/directory-story.js",
+      "expected": "9e9960cff9055f75d1ab2e8414e86863749f0149bfc8c5d06324f31259bb96e7",
+      "actual": "9e9960cff9055f75d1ab2e8414e86863749f0149bfc8c5d06324f31259bb96e7",
+      "matched": true,
+      "cache": "EXPIRED"
+    },
+    {
+      "url": "https://universalmind.tv/home/directory-rain.js?v=1",
+      "path": "home/directory-rain.js",
+      "expected": "9d50d28576a72050256c25b34ba14b80555e73a94d68e3e7c47023b1f8d5bcf3",
+      "actual": "9d50d28576a72050256c25b34ba14b80555e73a94d68e3e7c47023b1f8d5bcf3",
+      "matched": true,
+      "cache": "EXPIRED"
+    },
+    {
+      "url": "https://universalmind.tv/site-navigation/routes.js?v=375ae77a6715",
+      "path": "site-navigation/routes.js",
+      "expected": "375ae77a6715f56630d965d1a79a37c06260147e1580b3987dfffd77cd196710",
+      "actual": "375ae77a6715f56630d965d1a79a37c06260147e1580b3987dfffd77cd196710",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/music-television-frame-context.js?v=music-tv-frame-1fc6ca029741",
+      "path": "i  a m/music-television-frame-context.js",
+      "expected": "1fc6ca029741199ec5d4453a9a2079db78c5fb71373168545212048270e43bfb",
+      "actual": "1fc6ca029741199ec5d4453a9a2079db78c5fb71373168545212048270e43bfb",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/styles.css?v=global-nav-single-shell-2-technology-submenu-133pct-normal-1",
+      "path": "i  a m/styles.css",
+      "expected": "58844e527aa70a8b68b1cd92a6690f3098fc44cc7b4780c86900cae69f5cc324",
+      "actual": "58844e527aa70a8b68b1cd92a6690f3098fc44cc7b4780c86900cae69f5cc324",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/adaptive-environment-television.css?v=music-tv-css-58fc7ca58e7c",
+      "path": "i  a m/adaptive-environment-television.css",
+      "expected": "58fc7ca58e7c1bc11b357bafc6a15c1d60e089bdd0c6f01f8e7e6fc2906a4690",
+      "actual": "5dc8138d8082cd35cffcff2d2904dd17414f5d45fe38599ce0aaf795684c686c",
+      "matched": false,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/comedy-channel-v1.css?v=comedy-channel-css-f8b034d0496b",
+      "path": "i  a m/comedy-channel-v1.css",
+      "expected": "f8b034d0496bac94b16710035a4fd9b03ae6b52faf348cc28b9a763d060e5092",
+      "actual": "f8b034d0496bac94b16710035a4fd9b03ae6b52faf348cc28b9a763d060e5092",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/adaptive-sound/panel-v1.css?v=8537857ca0d3",
+      "path": "i  a m/adaptive-sound/panel-v1.css",
+      "expected": "8537857ca0d355989da5d0ab4ec148e84a50cbd322675c765351521525ba486e",
+      "actual": "8537857ca0d355989da5d0ab4ec148e84a50cbd322675c765351521525ba486e",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/programme-guide.css?v=programme-guide-css-0de2cc1d4ce8",
+      "path": "i  a m/programme-guide.css",
+      "expected": "0de2cc1d4ce839ee79081c05c1b98e00e65a03d637906c85c0fa6064a27b017b",
+      "actual": "0de2cc1d4ce839ee79081c05c1b98e00e65a03d637906c85c0fa6064a27b017b",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/circle-audio-rooms.css?v=circle-rooms-css-26a3fe8531d9",
+      "path": "i  a m/circle-audio-rooms.css",
+      "expected": "26a3fe8531d9df943abb254da3490f914b56fcce83b093341e1cccedf33983a8",
+      "actual": "26a3fe8531d9df943abb254da3490f914b56fcce83b093341e1cccedf33983a8",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/care-worlds.css?v=97f6e5244cc9",
+      "path": "i  a m/care-worlds.css",
+      "expected": "97f6e5244cc977108d6b07f94ce73f13b916c5e9655c3a3de50859b2c30a57bf",
+      "actual": "97f6e5244cc977108d6b07f94ce73f13b916c5e9655c3a3de50859b2c30a57bf",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/mantra-sampler.css?v=mantra-sampler-css-e88046b0c07b",
+      "path": "i  a m/mantra-sampler.css",
+      "expected": "e88046b0c07b1e8b764f9498804e07813d3e5ea5df5f7f89d75be039ff7de813",
+      "actual": "e88046b0c07b1e8b764f9498804e07813d3e5ea5df5f7f89d75be039ff7de813",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/realtime-voice-assistant.css?v=realtime-voice-css-66ef986e1dc3",
+      "path": "i  a m/realtime-voice-assistant.css",
+      "expected": "66ef986e1dc38e52b9addcb237e82580597ed831229a1db0173f4a657ddc9aef",
+      "actual": "66ef986e1dc38e52b9addcb237e82580597ed831229a1db0173f4a657ddc9aef",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/homepage-session-accents.css?v=bcf8cdd010a6",
+      "path": "i  a m/homepage-session-accents.css",
+      "expected": "bcf8cdd010a676bd5757cce9173dd4db507415d9dabba590f80b5b0af3c8bc42",
+      "actual": "bcf8cdd010a676bd5757cce9173dd4db507415d9dabba590f80b5b0af3c8bc42",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/global-navigation.js?v=global-navigation-canonical-14-a82eeb2d7b36",
+      "path": "i  a m/global-navigation.js",
+      "expected": "a82eeb2d7b365c02e825796d8becc2fce5d60bf1fdf1e6b50608eb00804719a5",
+      "actual": "a82eeb2d7b365c02e825796d8becc2fce5d60bf1fdf1e6b50608eb00804719a5",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/local-context.js?v=local-context-4",
+      "path": "i  a m/local-context.js",
+      "expected": "be3b868878a1c07a5007108633926ede85f69a786a489e9af2af0427f740b736",
+      "actual": "be3b868878a1c07a5007108633926ede85f69a786a489e9af2af0427f740b736",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/script.js?v=adaptive-env-stream-d69765f102c1",
+      "path": "i  a m/script.js",
+      "expected": "d69765f102c1b3ac459dd3881db1761d6b55bf971c6c415a593211fe6c96655a",
+      "actual": "d69765f102c1b3ac459dd3881db1761d6b55bf971c6c415a593211fe6c96655a",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/adaptive-environment.js?v=adaptive-env-6187d4415045",
+      "path": "i  a m/adaptive-environment.js",
+      "expected": "6187d44150455f8f6afd95e9d17a504c96bb32f92cf4bb439378d3c55cec8ad6",
+      "actual": "6187d44150455f8f6afd95e9d17a504c96bb32f92cf4bb439378d3c55cec8ad6",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/citizen-data-client.js?v=citizen-data-client-dynamodb-v3",
+      "path": "i  a m/citizen-data-client.js",
+      "expected": "b89467d63bab7000ddda479156834f13fc30e5840f2dedc55a91e18f47fda51e",
+      "actual": "b89467d63bab7000ddda479156834f13fc30e5840f2dedc55a91e18f47fda51e",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/globe.js?v=globe-c9175787f616",
+      "path": "i  a m/globe.js",
+      "expected": "c9175787f616f29dd9f66410da2fae8d709b273657945288d087f2d7d5250e0b",
+      "actual": "c9175787f616f29dd9f66410da2fae8d709b273657945288d087f2d7d5250e0b",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/homepage-checkin.js?v=checkin-session-recommendation-73e44c77609f",
+      "path": "i  a m/homepage-checkin.js",
+      "expected": "73e44c77609fa7a59256437ca142dff2e6bfae8c9915451456bf61a5e5562b24",
+      "actual": "73e44c77609fa7a59256437ca142dff2e6bfae8c9915451456bf61a5e5562b24",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/emdr-vector-worlds.js?v=emdr-rave-characters-2d617f2ef088",
+      "path": "i  a m/emdr-vector-worlds.js",
+      "expected": "2d617f2ef088b89c73c02cfc5f4fa7f418ce6a79a270d2d4c1950323c8246d08",
+      "actual": "2d617f2ef088b89c73c02cfc5f4fa7f418ce6a79a270d2d4c1950323c8246d08",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/emdr-platonics.js?v=emdr-platonics-4",
+      "path": "i  a m/emdr-platonics.js",
+      "expected": "cda1c667a651066906a136babc7cbd07eed37f27938c0c304bdfee9e602beaac",
+      "actual": "cda1c667a651066906a136babc7cbd07eed37f27938c0c304bdfee9e602beaac",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/emdr-three-art.js?v=emdr-three-6974d62b921a",
+      "path": "i  a m/emdr-three-art.js",
+      "expected": "6974d62b921a339e658c239288acbbe7c46b265a704519c966475753a208b108",
+      "actual": "6974d62b921a339e658c239288acbbe7c46b265a704519c966475753a208b108",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/emdr-gif-world.js?v=emdr-gif-world-7971b5b30ab8",
+      "path": "i  a m/emdr-gif-world.js",
+      "expected": "7971b5b30ab851b89b6b8db11b15ac04eb3ec07151abc01a7e64dd22c0fb4d1b",
+      "actual": "7971b5b30ab851b89b6b8db11b15ac04eb3ec07151abc01a7e64dd22c0fb4d1b",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/emdr-neo.js?v=emdr-neo-f9d8b9847fa2",
+      "path": "i  a m/emdr-neo.js",
+      "expected": "f9d8b9847fa2f6403da6793a88deea1854d0a3c1172375eb410bc874623a32db",
+      "actual": "f9d8b9847fa2f6403da6793a88deea1854d0a3c1172375eb410bc874623a32db",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/emdr-shader.js?v=emdr-shader-c773756ec8a0",
+      "path": "i  a m/emdr-shader.js",
+      "expected": "c773756ec8a03a79baf5bae152cbb8a0fb767e1c7cce38f19414772d9e419704",
+      "actual": "c773756ec8a03a79baf5bae152cbb8a0fb767e1c7cce38f19414772d9e419704",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/first-party-analytics.js?v=first-party-analytics-2",
+      "path": "i  a m/first-party-analytics.js",
+      "expected": "903759c3fa1ac0857d0d6f7c9a9f79d6e9ba6651d1234361e81841cf9efd66b6",
+      "actual": "903759c3fa1ac0857d0d6f7c9a9f79d6e9ba6651d1234361e81841cf9efd66b6",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/fashion-visual-selector-v1.js?v=fashion-selector-v1",
+      "path": "i  a m/fashion-visual-selector-v1.js",
+      "expected": "b73735526d3a58119dcb63a1c4ef9b48414fa32e855c58190e8b77f6d92f28f3",
+      "actual": "b73735526d3a58119dcb63a1c4ef9b48414fa32e855c58190e8b77f6d92f28f3",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/music-channel-selector-v1.js?v=music-channel-selector-f6b0bb8d0224",
+      "path": "i  a m/music-channel-selector-v1.js",
+      "expected": "f6b0bb8d02242808ab02d64d5625cf196572eb07b5e7d080028ff2fb4f213633",
+      "actual": "f6b0bb8d02242808ab02d64d5625cf196572eb07b5e7d080028ff2fb4f213633",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/broadcast-clock-v1.js?v=broadcast-clock-2ce13574538c",
+      "path": "i  a m/broadcast-clock-v1.js",
+      "expected": "2ce13574538c17a49c6c4b974d05723613b068e830da900223fac27d80870274",
+      "actual": "2ce13574538c17a49c6c4b974d05723613b068e830da900223fac27d80870274",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/broadcast-interactions-v1.js?v=broadcast-interactions-20ea963338ad",
+      "path": "i  a m/broadcast-interactions-v1.js",
+      "expected": "20ea963338ad8da7a04f985327168731b6b0f8d0251cd28fb69f61044aa98cf0",
+      "actual": "20ea963338ad8da7a04f985327168731b6b0f8d0251cd28fb69f61044aa98cf0",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/circle-audio-rooms.js?v=circle-rooms-3839d898c873",
+      "path": "i  a m/circle-audio-rooms.js",
+      "expected": "3839d898c8734ff59ab83e30b64342a2a895a81aacadde90c9b4a26b3adb57b7",
+      "actual": "3839d898c8734ff59ab83e30b64342a2a895a81aacadde90c9b4a26b3adb57b7",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/care-worlds.js?v=edfca941922e",
+      "path": "i  a m/care-worlds.js",
+      "expected": "edfca941922e2eccf89ceeaa0af68f6893c02a18b4ed3b8843f99e8e01d15df5",
+      "actual": "edfca941922e2eccf89ceeaa0af68f6893c02a18b4ed3b8843f99e8e01d15df5",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/mantra-audio-fx.js?v=mantra-audio-fx-5e1fdfbadb04",
+      "path": "i  a m/mantra-audio-fx.js",
+      "expected": "5e1fdfbadb0466e1997b206c6197cba92f566d211a16f31bd627da4cfb976b4b",
+      "actual": "5e1fdfbadb0466e1997b206c6197cba92f566d211a16f31bd627da4cfb976b4b",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/mantra-sampler.js?v=mantra-sampler-0bfc1d7667fe",
+      "path": "i  a m/mantra-sampler.js",
+      "expected": "0bfc1d7667fed31bd7473b78403ccfc258bac1b861a9032b744c1980594a0d1a",
+      "actual": "0bfc1d7667fed31bd7473b78403ccfc258bac1b861a9032b744c1980594a0d1a",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/music-track-catalogue-v1.js?v=music-track-catalogue-7576f3635952",
+      "path": "i  a m/music-track-catalogue-v1.js",
+      "expected": "7576f3635952e6f65762a881c6fb62588cd79fcda17c86e49683b191dd5dd0f7",
+      "actual": "7576f3635952e6f65762a881c6fb62588cd79fcda17c86e49683b191dd5dd0f7",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/programme-catalogue-v1.js?v=programme-catalogue-efb02e8d3926",
+      "path": "i  a m/programme-catalogue-v1.js",
+      "expected": "efb02e8d392681cf3f86277e4b6ab09f946cc3fc6b277e3ae4e0fae1ceacdee1",
+      "actual": "efb02e8d392681cf3f86277e4b6ab09f946cc3fc6b277e3ae4e0fae1ceacdee1",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/adaptive-environment-television.js?v=music-tv-c9f0098a0c82",
+      "path": "i  a m/adaptive-environment-television.js",
+      "expected": "c9f0098a0c8289ded85d5f2bbd6e901b998e1af8df7e24d45aafec61bfa05c10",
+      "actual": "c9f0098a0c8289ded85d5f2bbd6e901b998e1af8df7e24d45aafec61bfa05c10",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/comedy-channel-v1.js?v=comedy-channel-js-1a3c5c873d36",
+      "path": "i  a m/comedy-channel-v1.js",
+      "expected": "1a3c5c873d362e54ff3a1cd615d0b03a91f301b3c325ba48904c5fb50ad41c97",
+      "actual": "1a3c5c873d362e54ff3a1cd615d0b03a91f301b3c325ba48904c5fb50ad41c97",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/adaptive-sound/mantra-v1.js?v=1c92fbb2e93f",
+      "path": "i  a m/adaptive-sound/mantra-v1.js",
+      "expected": "1c92fbb2e93f29720355c88abb2daebca6eec2b83f91fc049d8255731eef196f",
+      "actual": "1c92fbb2e93f29720355c88abb2daebca6eec2b83f91fc049d8255731eef196f",
+      "matched": true,
+      "cache": "MISS"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/adaptive-sound/controller-v1.js?v=7f548521e42b",
+      "path": "i  a m/adaptive-sound/controller-v1.js",
+      "expected": "7f548521e42b97c7cf3309710a0c83d7a1cddcc267ef850b147f4f9dbc73afdf",
+      "actual": "7f548521e42b97c7cf3309710a0c83d7a1cddcc267ef850b147f4f9dbc73afdf",
+      "matched": true,
+      "cache": "MISS"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/homepage-session-accents.js?v=eb175c364f15",
+      "path": "i  a m/homepage-session-accents.js",
+      "expected": "eb175c364f157d205d9a160bb49db8c23314a6ac964dcae7f285c7004a186d02",
+      "actual": "eb175c364f157d205d9a160bb49db8c23314a6ac964dcae7f285c7004a186d02",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/programme-guide.js?v=programme-guide-d170112697a0",
+      "path": "i  a m/programme-guide.js",
+      "expected": "d170112697a0c7e9e221e21d0a7fb99fd4cfcfc694c50296d6db52d1dc173eed",
+      "actual": "d170112697a0c7e9e221e21d0a7fb99fd4cfcfc694c50296d6db52d1dc173eed",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/realtime-voice-assistant.js?v=realtime-voice-d8cde42eedcb",
+      "path": "i  a m/realtime-voice-assistant.js",
+      "expected": "d8cde42eedcb7f709dd26e20e8c866eb5dbec6b84c59d3bcbd9d90712c669cda",
+      "actual": "d8cde42eedcb7f709dd26e20e8c866eb5dbec6b84c59d3bcbd9d90712c669cda",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/adaptive-page-metadata-v1.js",
+      "path": "i  a m/adaptive-page-metadata-v1.js",
+      "expected": "6494ffec558557a97a73d9753e93a4c6fd21d2c532066d41a17cbdaaec869c50",
+      "actual": "6494ffec558557a97a73d9753e93a4c6fd21d2c532066d41a17cbdaaec869c50",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/styles.css?v=global-nav-single-shell-1-technology-submenu-133pct-normal-1",
+      "path": "i  a m/styles.css",
+      "expected": "58844e527aa70a8b68b1cd92a6690f3098fc44cc7b4780c86900cae69f5cc324",
+      "actual": "58844e527aa70a8b68b1cd92a6690f3098fc44cc7b4780c86900cae69f5cc324",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/about.css?v=about-research-partner-download-1",
+      "path": "i  a m/about.css",
+      "expected": "a389c2a0204e0ed30c90d4bd25bc218f7320dc626b00c56b922dc37c1c3bb628",
+      "actual": "a389c2a0204e0ed30c90d4bd25bc218f7320dc626b00c56b922dc37c1c3bb628",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/mobile-editorial-surface.css?v=mobile-editorial-20260823-3",
+      "path": "i  a m/mobile-editorial-surface.css",
+      "expected": "3565298a27c8409b95ac73825856870c852f1c520a0e76e8e5c989649c0afc0b",
+      "actual": "3565298a27c8409b95ac73825856870c852f1c520a0e76e8e5c989649c0afc0b",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/mobile-editorial-surface.js?v=mobile-editorial-095fdaf7866c",
+      "path": "i  a m/mobile-editorial-surface.js",
+      "expected": "095fdaf7866cb07d0751fdad7b208e852e1b19bfa8c54fe8568dd2b65818c09c",
+      "actual": "095fdaf7866cb07d0751fdad7b208e852e1b19bfa8c54fe8568dd2b65818c09c",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/cloudflare-stream-catalogue.js?v=stream-catalogue-9f5cc4aaae66",
+      "path": "i  a m/cloudflare-stream-catalogue.js",
+      "expected": "9f5cc4aaae667d977742ec5d0d5708aa8b4c7edff770ef299a16847dae5367b9",
+      "actual": "9f5cc4aaae667d977742ec5d0d5708aa8b4c7edff770ef299a16847dae5367b9",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/cloudflare-stream-controller.js?v=stream-controller-91f344a44abb",
+      "path": "i  a m/cloudflare-stream-controller.js",
+      "expected": "91f344a44abba3651ccb22ef06af2cb258770b3221ece5f0bbe51f0585717f88",
+      "actual": "91f344a44abba3651ccb22ef06af2cb258770b3221ece5f0bbe51f0585717f88",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/about.js?v=about-briefing-8db79c73cc87",
+      "path": "i  a m/about.js",
+      "expected": "8db79c73cc87c67ec83416ea86f2c9ceb53a9ac706eed513bbf7ac1c01f15a59",
+      "actual": "8db79c73cc87c67ec83416ea86f2c9ceb53a9ac706eed513bbf7ac1c01f15a59",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/program-page.css?v=program-page-css-577cb7baa939",
+      "path": "i  a m/program-page.css",
+      "expected": "577cb7baa93948873a7869e78a69523d829820210ccaf8656d6d5b9ee2836e5a",
+      "actual": "577cb7baa93948873a7869e78a69523d829820210ccaf8656d6d5b9ee2836e5a",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/program-navigation.js?v=program-navigation-85a2e9ba90d7",
+      "path": "i  a m/program-navigation.js",
+      "expected": "85a2e9ba90d7440edfc5f2f557e83f2d702ebc65443ee0574430d46df2c00d45",
+      "actual": "85a2e9ba90d7440edfc5f2f557e83f2d702ebc65443ee0574430d46df2c00d45",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/technology-citizen-needs.css?v=4e475a53ed8e",
+      "path": "i  a m/technology-citizen-needs.css",
+      "expected": "4e475a53ed8ecf9ad150c29b5c8d318773cc5037ff69e75596f5bf7c6b0e431e",
+      "actual": "4e475a53ed8ecf9ad150c29b5c8d318773cc5037ff69e75596f5bf7c6b0e431e",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/local-context.js?v=local-context-3",
+      "path": "i  a m/local-context.js",
+      "expected": "be3b868878a1c07a5007108633926ede85f69a786a489e9af2af0427f740b736",
+      "actual": "be3b868878a1c07a5007108633926ede85f69a786a489e9af2af0427f740b736",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/technology-citizen-needs.js?v=canonical-citizen-radar-3dfbad0c8b60",
+      "path": "i  a m/technology-citizen-needs.js",
+      "expected": "3dfbad0c8b60fc46ad094e83ec8a3cce02987c4ff1c011bc5990498d8458f53b",
+      "actual": "3dfbad0c8b60fc46ad094e83ec8a3cce02987c4ff1c011bc5990498d8458f53b",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/technology-inference-engine.css?v=9e748e2eb537",
+      "path": "i  a m/technology-inference-engine.css",
+      "expected": "9e748e2eb537fbe3f3954e74b829629309c0d3cd79c98953064218e588952116",
+      "actual": "9e748e2eb537fbe3f3954e74b829629309c0d3cd79c98953064218e588952116",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/technology-inference-engine.js?v=095f196a3947",
+      "path": "i  a m/technology-inference-engine.js",
+      "expected": "095f196a394714d2b18b69d194e7d363eb6734e21c1d5b1a596121da990f2667",
+      "actual": "095f196a394714d2b18b69d194e7d363eb6734e21c1d5b1a596121da990f2667",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/science.css?v=6311fc4d45b8",
+      "path": "i  a m/science.css",
+      "expected": "6311fc4d45b8723f4e3fcf80588891af06262743acc63546f038803cefb9a27c",
+      "actual": "6311fc4d45b8723f4e3fcf80588891af06262743acc63546f038803cefb9a27c",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/science-research-data-v1.js?v=c32745d5aeea",
+      "path": "i  a m/science-research-data-v1.js",
+      "expected": "c32745d5aeea570b1d069450fcedfeb36de8b74e600cd3e94bc8040158f2d1de",
+      "actual": "c32745d5aeea570b1d069450fcedfeb36de8b74e600cd3e94bc8040158f2d1de",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/science.js?v=217fb59c5a9a",
+      "path": "i  a m/science.js",
+      "expected": "217fb59c5a9a26b8ac3cc8840e53e8c69a109883eec3c4090c1795fa6a2ef381",
+      "actual": "217fb59c5a9a26b8ac3cc8840e53e8c69a109883eec3c4090c1795fa6a2ef381",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/research-page.css?v=e8d81229cf86",
+      "path": "i  a m/research-page.css",
+      "expected": "e8d81229cf869b61d14472ceb15e17bbbcc6c994818f78d55d4d84c29605933f",
+      "actual": "e8d81229cf869b61d14472ceb15e17bbbcc6c994818f78d55d4d84c29605933f",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/light.css?v=723248b33e7a",
+      "path": "i  a m/light.css",
+      "expected": "723248b33e7a052c6d5937234eeacd2be7f9878cfecb3c19bed570163a79282c",
+      "actual": "723248b33e7a052c6d5937234eeacd2be7f9878cfecb3c19bed570163a79282c",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/privacy-first.css?v=privacy-first-single-nav-2",
+      "path": "i  a m/privacy-first.css",
+      "expected": "45b162cd8b954c3936e791c1077905fea31ae97060c4259929cf3b7397d72efa",
+      "actual": "45b162cd8b954c3936e791c1077905fea31ae97060c4259929cf3b7397d72efa",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/privacy-first.js?v=privacy-first-aesthetics-2",
+      "path": "i  a m/privacy-first.js",
+      "expected": "032a0ff017539c7afcfd020a5bdb9aa47c708c1b5bf4831a310203a573e4d771",
+      "actual": "032a0ff017539c7afcfd020a5bdb9aa47c708c1b5bf4831a310203a573e4d771",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/business-model.css?v=a9eeb7c5decb",
+      "path": "i  a m/business-model.css",
+      "expected": "a9eeb7c5decb53b67c5758cc5774ee721b2d505e941f954ae8e0390545632668",
+      "actual": "a9eeb7c5decb53b67c5758cc5774ee721b2d505e941f954ae8e0390545632668",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/business-model.js?v=3379bc510c86",
+      "path": "i  a m/business-model.js",
+      "expected": "3379bc510c86bba342cbf20fc8846e5b0fdf038a05b44d16c916d5fb68dafe67",
+      "actual": "3379bc510c86bba342cbf20fc8846e5b0fdf038a05b44d16c916d5fb68dafe67",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/traction.css?v=traction-page-4-one-flora-node",
+      "path": "i  a m/traction.css",
+      "expected": "96db4ad838b31383656b889298c828ed4bf5a372353e336e12bf350278934f9e",
+      "actual": "96db4ad838b31383656b889298c828ed4bf5a372353e336e12bf350278934f9e",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/traction.js?v=traction-page-2",
+      "path": "i  a m/traction.js",
+      "expected": "1dfddea7837fd9f69468014f84eecff82ac57735b9088d886e658d5b8865914d",
+      "actual": "1dfddea7837fd9f69468014f84eecff82ac57735b9088d886e658d5b8865914d",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/impact.css?v=impact-f0621f90a6bc",
+      "path": "i  a m/impact.css",
+      "expected": "f0621f90a6bcd9c658cafd22e6746db16ea3ef43dfe020921e64267392a5d798",
+      "actual": "f0621f90a6bcd9c658cafd22e6746db16ea3ef43dfe020921e64267392a5d798",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/impact.js?v=impact-page-1",
+      "path": "i  a m/impact.js",
+      "expected": "37627ceeb9728b1660140f7914f8efd749f4b85a4c9b630ff4d8793ea8b29c0e",
+      "actual": "37627ceeb9728b1660140f7914f8efd749f4b85a4c9b630ff4d8793ea8b29c0e",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/vogue-self-report.css?v=vogue-consent-3bac68ce2795",
+      "path": "i  a m/vogue-self-report.css",
+      "expected": "3bac68ce279512e1d0dc690d1294b7ddadeedb773af4b8fd128d1dac4a83dd3f",
+      "actual": "3bac68ce279512e1d0dc690d1294b7ddadeedb773af4b8fd128d1dac4a83dd3f",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/research/heart-check-preload.js?v=heart-check-preload-78750d6b05f6",
+      "path": "i  a m/research/heart-check-preload.js",
+      "expected": "78750d6b05f6a26a791ddb2552199bc33379098aa2824517706a54f4d1a3c332",
+      "actual": "78750d6b05f6a26a791ddb2552199bc33379098aa2824517706a54f4d1a3c332",
+      "matched": true,
+      "cache": "MISS"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/citizen-data-consent.js?v=citizen-data-consent-8a4ff4d0c7dc",
+      "path": "i  a m/citizen-data-consent.js",
+      "expected": "8a4ff4d0c7dc575f6036c3326d7faf4fdfaeafbb90fdb310b2462ad2764ce1b4",
+      "actual": "8a4ff4d0c7dc575f6036c3326d7faf4fdfaeafbb90fdb310b2462ad2764ce1b4",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/vogue-self-report.js?v=vogue-video-resume-6733d5763202",
+      "path": "i  a m/vogue-self-report.js",
+      "expected": "6733d57632028171b99f89270ff8237c250411f62166ebe1a2f36a80fe88833f",
+      "actual": "6733d57632028171b99f89270ff8237c250411f62166ebe1a2f36a80fe88833f",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/our-team-concept.css?v=team-concept-2",
+      "path": "i  a m/our-team-concept.css",
+      "expected": "b52659abb919fce1ad6e8c9fb0d947c89f8653dad6bc91d073eb8b1b8ec58ad3",
+      "actual": "b52659abb919fce1ad6e8c9fb0d947c89f8653dad6bc91d073eb8b1b8ec58ad3",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/shop.css?v=cb6e4bbc2ac3",
+      "path": "i  a m/shop.css",
+      "expected": "cb6e4bbc2ac3c0e76b470f56c8df007ebd61c1f0642bd9d91e87693acc5edc89",
+      "actual": "cb6e4bbc2ac3c0e76b470f56c8df007ebd61c1f0642bd9d91e87693acc5edc89",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/shop-catalogue-filter-v1.js?v=shop-search-colour-4",
+      "path": "i  a m/shop-catalogue-filter-v1.js",
+      "expected": "34a1b1de69324c0ca7a5f9ed61fab6deedaec63132c74f5785752f922ccb99ec",
+      "actual": "34a1b1de69324c0ca7a5f9ed61fab6deedaec63132c74f5785752f922ccb99ec",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/shop.js?v=shop-c407fca1f1f2",
+      "path": "i  a m/shop.js",
+      "expected": "c407fca1f1f20549f908f7369f0d11a37311c8a18974b908ecf6972f0ba97854",
+      "actual": "c407fca1f1f20549f908f7369f0d11a37311c8a18974b908ecf6972f0ba97854",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/Informatics/style.css?v=ai-wiki-20261026-1",
+      "path": "Informatics/style.css",
+      "expected": "25f3d5261da342d64fefb27a8418abee0c71bf174a8f459b29dbceb77766b332",
+      "actual": "25f3d5261da342d64fefb27a8418abee0c71bf174a8f459b29dbceb77766b332",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/Informatics/landing.js?v=4",
+      "path": "Informatics/landing.js",
+      "expected": "e488cf6baced5117dbd78b14031111dd350acec19ee87b495bddcd7a63edf939",
+      "actual": "e488cf6baced5117dbd78b14031111dd350acec19ee87b495bddcd7a63edf939",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/informatics/global-navigation.js?v=4493d996184a",
+      "path": "Informatics/global-navigation.js",
+      "expected": "4493d996184ac5a539d93cd2ea924a7cc309f0250ede87979bc23f3ada2e84f2",
+      "actual": "4493d996184ac5a539d93cd2ea924a7cc309f0250ede87979bc23f3ada2e84f2",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/Informatics/app.js?v=28",
+      "path": "Informatics/app.js",
+      "expected": "3ffeffb47d93cce9a8e5b4af9fabcc0433bee062637207966f4925b95df7cf93",
+      "actual": "3ffeffb47d93cce9a8e5b4af9fabcc0433bee062637207966f4925b95df7cf93",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/informatics/science.css?v=qrc-15",
+      "path": "Informatics/science.css",
+      "expected": "3b1dc08557873620e70bbce2ad13d4f9526971fcefaeb7e49e3b8216b1f7808f",
+      "actual": "3b1dc08557873620e70bbce2ad13d4f9526971fcefaeb7e49e3b8216b1f7808f",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/informatics/science-studies.js?v=3",
+      "path": "Informatics/science-studies.js",
+      "expected": "039949e3f67211f2f49228bc96f22d92780a970627fbf5fc0b8f46343cdb030d",
+      "actual": "039949e3f67211f2f49228bc96f22d92780a970627fbf5fc0b8f46343cdb030d",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/informatics/science.js?v=27",
+      "path": "Informatics/science.js",
+      "expected": "3844b867a860e26cb0bc3113470759d4c49eee886f2d6591376dbf78516b3945",
+      "actual": "3844b867a860e26cb0bc3113470759d4c49eee886f2d6591376dbf78516b3945",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/informatics/atlas.css?v=d89bcbd76042",
+      "path": "Informatics/atlas.css",
+      "expected": "d89bcbd76042385effb726577cdd97ed39b55ecdfb18c376690fca1e13e9ccce",
+      "actual": "d89bcbd76042385effb726577cdd97ed39b55ecdfb18c376690fca1e13e9ccce",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/informatics/atlas-visuals.js?v=7",
+      "path": "Informatics/atlas-visuals.js",
+      "expected": "72ebebbb51ad51b094ec5072e051885fdf134ccd51bf0a9bc73ba9dfddbb5235",
+      "actual": "72ebebbb51ad51b094ec5072e051885fdf134ccd51bf0a9bc73ba9dfddbb5235",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/informatics/record-navigation.js?v=1",
+      "path": "Informatics/record-navigation.js",
+      "expected": "07058c2083567bd181e1adafcd6ead3d3782f519825b783ff634e268e51bd856",
+      "actual": "07058c2083567bd181e1adafcd6ead3d3782f519825b783ff634e268e51bd856",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/informatics/music-measurement.css?v=1",
+      "path": "Informatics/music-measurement.css",
+      "expected": "7543aabb560b07d18b6e966898f6c01097598f4775224b46e6c027cffbe8eb02",
+      "actual": "7543aabb560b07d18b6e966898f6c01097598f4775224b46e6c027cffbe8eb02",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/informatics/music-measurement.js?v=1",
+      "path": "Informatics/music-measurement.js",
+      "expected": "ca00e88ac12a729ec40e1bf2f6976e4eba38c5e3dbe4979739cc653748ca9e4c",
+      "actual": "ca00e88ac12a729ec40e1bf2f6976e4eba38c5e3dbe4979739cc653748ca9e4c",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/informatics/vision-science.css?v=1",
+      "path": "Informatics/vision-science.css",
+      "expected": "8e241c43ae881a9c238ceeacead33064180f29d58669fef485d28c61409d9d14",
+      "actual": "8e241c43ae881a9c238ceeacead33064180f29d58669fef485d28c61409d9d14",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/informatics/vision-science.js?v=2",
+      "path": "Informatics/vision-science.js",
+      "expected": "d3995b1d01eb19eb0152bb5af0e4cfb7c65c2c902bf683181deeb04fd6e71d5f",
+      "actual": "d3995b1d01eb19eb0152bb5af0e4cfb7c65c2c902bf683181deeb04fd6e71d5f",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/informatics/library-launcher.css?v=4",
+      "path": "Informatics/library-launcher.css",
+      "expected": "2d230e7215cc10c868765d9050a5173d405d9ba343300116e512339bc682bdf9",
+      "actual": "2d230e7215cc10c868765d9050a5173d405d9ba343300116e512339bc682bdf9",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/informatics/library-launcher.js?v=8",
+      "path": "Informatics/library-launcher.js",
+      "expected": "7701719bf40ba81e9e21b791f6ae02ceff5f8023e76250b340a51fd9674f22a9",
+      "actual": "7701719bf40ba81e9e21b791f6ae02ceff5f8023e76250b340a51fd9674f22a9",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/informatics/molecular-entry.css?v=2",
+      "path": "Informatics/molecular-entry.css",
+      "expected": "34e92170839e6613cd71325b857b5b3762fb6334f20bc9fae97a9d4fd2e18bd7",
+      "actual": "34e92170839e6613cd71325b857b5b3762fb6334f20bc9fae97a9d4fd2e18bd7",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/informatics/molecular-entry.js?v=00e18f6dc370",
+      "path": "Informatics/molecular-entry.js",
+      "expected": "00e18f6dc370305dfb32bd3ea7db672289f1e67d00c458125ee1298239ace2ae",
+      "actual": "00e18f6dc370305dfb32bd3ea7db672289f1e67d00c458125ee1298239ace2ae",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/informatics/page-markers.css?v=1",
+      "path": "Informatics/page-markers.css",
+      "expected": "9a3d6808a97551225776eb2e80543651f4e5aecefb93ac5b74f63fd90ad5b03a",
+      "actual": "9a3d6808a97551225776eb2e80543651f4e5aecefb93ac5b74f63fd90ad5b03a",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/informatics/quantum-entry.css?v=1",
+      "path": "Informatics/quantum-entry.css",
+      "expected": "111d9abb033000754bc1f23a18504a86743aac1a7d5f6733a9ce5a436d3fd851",
+      "actual": "111d9abb033000754bc1f23a18504a86743aac1a7d5f6733a9ce5a436d3fd851",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/informatics/quantum-entry.js?v=6a90d8c53d2d",
+      "path": "Informatics/quantum-entry.js",
+      "expected": "6a90d8c53d2dc52b3e4c137324ed022f7934a4617f409831e0d4c519840f58c8",
+      "actual": "6a90d8c53d2dc52b3e4c137324ed022f7934a4617f409831e0d4c519840f58c8",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/vogue/iam/realtime-voice-assistant.css?v=uo-reuse-1",
+      "path": "i  a m/realtime-voice-assistant.css",
+      "expected": "66ef986e1dc38e52b9addcb237e82580597ed831229a1db0173f4a657ddc9aef",
+      "actual": "66ef986e1dc38e52b9addcb237e82580597ed831229a1db0173f4a657ddc9aef",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/informatics/universal-one.css?v=9",
+      "path": "Informatics/universal-one.css",
+      "expected": "89afff1e41f8505b9d8db9f6e7ebd5a3d7f33c78d80c0d430f1d394a15446eb1",
+      "actual": "89afff1e41f8505b9d8db9f6e7ebd5a3d7f33c78d80c0d430f1d394a15446eb1",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/informatics/universal-one-character.js?v=1",
+      "path": "Informatics/universal-one-character.js",
+      "expected": "2840af3f8bb86465920540171971d8409f50aab6c0377f08d6ed854999375b31",
+      "actual": "2840af3f8bb86465920540171971d8409f50aab6c0377f08d6ed854999375b31",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/informatics/universal-one-audio.js?v=2",
+      "path": "Informatics/universal-one-audio.js",
+      "expected": "38bae647336cc4d8543d2cf37802ef237238bc2ebadf64c96622cec519b6ca79",
+      "actual": "38bae647336cc4d8543d2cf37802ef237238bc2ebadf64c96622cec519b6ca79",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/informatics/universal-one-waveform.js?v=1",
+      "path": "Informatics/universal-one-waveform.js",
+      "expected": "60d7ffcb8b649e8aa78112e4c29b8f9d2597eaf4ee8be9190e0dc9d3a8c8f57f",
+      "actual": "60d7ffcb8b649e8aa78112e4c29b8f9d2597eaf4ee8be9190e0dc9d3a8c8f57f",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/informatics/universal-one-live.js?v=7",
+      "path": "Informatics/universal-one-live.js",
+      "expected": "e7230e117c0499253863b623ed30127abfeb244a501afffa98a13b4b3687fdd9",
+      "actual": "e7230e117c0499253863b623ed30127abfeb244a501afffa98a13b4b3687fdd9",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/informatics/universal-one.js?v=14",
+      "path": "Informatics/universal-one.js",
+      "expected": "4a49a72725c9040673fe1223da2c52c4507d24de20c9fb57a027cd2bda88c032",
+      "actual": "4a49a72725c9040673fe1223da2c52c4507d24de20c9fb57a027cd2bda88c032",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/informatics/shared-experience.css?v=1",
+      "path": "Informatics/shared-experience.css",
+      "expected": "c01069c6af3910971cf562666e86c6c2f7eb31074410656ef337808c20070b3c",
+      "actual": "c01069c6af3910971cf562666e86c6c2f7eb31074410656ef337808c20070b3c",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/informatics/shared-experience.js?v=1c6694f64b0d",
+      "path": "Informatics/shared-experience.js",
+      "expected": "1c6694f64b0d7f0d31ee2718af4459efe7daf60a5c53d2c73b1aa3265d895640",
+      "actual": "b0ff825af3d938146832790d69ab57db694a1b5f9aac5eaaa2b9fb625cb81a71",
+      "matched": false,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/informatics/shared-shell-route.js?v=1",
+      "path": "Informatics/shared-shell-route.js",
+      "expected": "6ecfcf7fc994a6a036e38cc426e3c5c2493c5c1f1e816df47f1198375f8f30b6",
+      "actual": "6ecfcf7fc994a6a036e38cc426e3c5c2493c5c1f1e816df47f1198375f8f30b6",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/informatics/library-theme.js?v=3",
+      "path": "Informatics/library-theme.js",
+      "expected": "f9595ab6810d7f41d64afc0d863514d2777248b6c93d99efd352d81fbc1c7f04",
+      "actual": "f9595ab6810d7f41d64afc0d863514d2777248b6c93d99efd352d81fbc1c7f04",
+      "matched": true,
+      "cache": "REVALIDATED"
+    },
+    {
+      "url": "https://universalmind.tv/informatics/library.css?v=communities-full-20261030",
+      "path": "Informatics/library.css",
+      "expected": "4752f51f4cc3e5ff5527c7517b4562b02af30d22417228195a2e09cf49f9ab05",
+      "actual": "4752f51f4cc3e5ff5527c7517b4562b02af30d22417228195a2e09cf49f9ab05",
+      "matched": true,
+      "cache": "REVALIDATED"
+    },
+    {
+      "url": "https://universalmind.tv/informatics/library-navigation.js?v=2",
+      "path": "Informatics/library-navigation.js",
+      "expected": "b7a5d9a42be48e4b425697f31cf0114972cf825974f4ebde3bcc676c410adb22",
+      "actual": "b7a5d9a42be48e4b425697f31cf0114972cf825974f4ebde3bcc676c410adb22",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/informatics/library-model.js?v=hsi-20261027",
+      "path": "Informatics/library-model.js",
+      "expected": "00df8dc93a90a09af387c5f32830d1dc3f4b994b1941b7cb066e898b56934841",
+      "actual": "00df8dc93a90a09af387c5f32830d1dc3f4b994b1941b7cb066e898b56934841",
+      "matched": true,
+      "cache": "REVALIDATED"
+    },
+    {
+      "url": "https://universalmind.tv/informatics/library-multiselect.js?v=communities-full-20261030",
+      "path": "Informatics/library-multiselect.js",
+      "expected": "db8347e6f62eacf2de5be242fb8772a1d75a69414e990197ef845c4fafc9a470",
+      "actual": "db8347e6f62eacf2de5be242fb8772a1d75a69414e990197ef845c4fafc9a470",
+      "matched": true,
+      "cache": "REVALIDATED"
+    },
+    {
+      "url": "https://universalmind.tv/informatics/library-communities.js?v=communities-full-20261030",
+      "path": "Informatics/library-communities.js",
+      "expected": "6bf513a461b401ae70b2541662399623608bf8f2c5ae40d60d914eec3b1bd936",
+      "actual": "6bf513a461b401ae70b2541662399623608bf8f2c5ae40d60d914eec3b1bd936",
+      "matched": true,
+      "cache": "REVALIDATED"
+    },
+    {
+      "url": "https://universalmind.tv/informatics/library.js?v=a39cfe810876",
+      "path": "Informatics/library.js",
+      "expected": "a39cfe8108763b08a72ce3cea1ff3f395a47e523c7c3c2547bd5df92b582606e",
+      "actual": "a39cfe8108763b08a72ce3cea1ff3f395a47e523c7c3c2547bd5df92b582606e",
+      "matched": true,
+      "cache": "MISS"
+    },
+    {
+      "url": "https://universalmind.tv/informatics/library.css?v=17",
+      "path": "Informatics/library.css",
+      "expected": "4752f51f4cc3e5ff5527c7517b4562b02af30d22417228195a2e09cf49f9ab05",
+      "actual": "4752f51f4cc3e5ff5527c7517b4562b02af30d22417228195a2e09cf49f9ab05",
+      "matched": true,
+      "cache": "MISS"
+    },
+    {
+      "url": "https://universalmind.tv/informatics/connect.css?v=1",
+      "path": "Informatics/connect.css",
+      "expected": "cbcb6f1e30d4eccb374a57547ea9a8f6fba7b22a907cb452b6fc921a7aa6eb35",
+      "actual": "cbcb6f1e30d4eccb374a57547ea9a8f6fba7b22a907cb452b6fc921a7aa6eb35",
+      "matched": true,
+      "cache": "MISS"
+    },
+    {
+      "url": "https://universalmind.tv/informatics/connect.js?v=2",
+      "path": "Informatics/connect.js",
+      "expected": "1227ae3472159a4ab32abede300b99b4f3cdbf5573373e62a6a76aa9979d5eca",
+      "actual": "1227ae3472159a4ab32abede300b99b4f3cdbf5573373e62a6a76aa9979d5eca",
+      "matched": true,
+      "cache": "MISS"
+    },
+    {
+      "url": "https://universalmind.tv/informatics/complete-downloads.js?v=fresh-manifest-20261101",
+      "path": "Informatics/complete-downloads.js",
+      "expected": "37ed0bfbea745046b89c94132e3c3a781323ca482cbedc5e00b3cd51941a7f5b",
+      "actual": "37ed0bfbea745046b89c94132e3c3a781323ca482cbedc5e00b3cd51941a7f5b",
+      "matched": true,
+      "cache": "MISS"
+    },
+    {
+      "url": "https://universalmind.tv/informatics/research.css?v=22",
+      "path": "Informatics/research.css",
+      "expected": "62d34fbc42967c29ae4267de8a57b4e627f72e044302c18325c2fb664decc8bd",
+      "actual": "62d34fbc42967c29ae4267de8a57b4e627f72e044302c18325c2fb664decc8bd",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/informatics/pilot-v1/explorer.js?v=1",
+      "path": "Informatics/pilot-v1/explorer.js",
+      "expected": "a909dc2125f3eff660d4ec41199176d9656410c1c14593b523779e2760c8c5db",
+      "actual": "a909dc2125f3eff660d4ec41199176d9656410c1c14593b523779e2760c8c5db",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/informatics/pilot-v1/family.js?v=3",
+      "path": "Informatics/pilot-v1/family.js",
+      "expected": "7655450b66a2f6c25ed19a445864f95da3c420221755ef20f66853fdd1b2681d",
+      "actual": "7655450b66a2f6c25ed19a445864f95da3c420221755ef20f66853fdd1b2681d",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/informatics/pilot-v1/probability.js?v=3",
+      "path": "Informatics/pilot-v1/probability.js",
+      "expected": "d88f7ee8858a4201bd4e6661294445c38e01e0cb820ac755c1a7301f474a2aa8",
+      "actual": "d88f7ee8858a4201bd4e6661294445c38e01e0cb820ac755c1a7301f474a2aa8",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/informatics/research.js?v=36",
+      "path": "Informatics/research.js",
+      "expected": "0a3a15fe61cf34e357541b677ec1d79585ecb3a2539ab65c34e0ef4a4319f97e",
+      "actual": "0a3a15fe61cf34e357541b677ec1d79585ecb3a2539ab65c34e0ef4a4319f97e",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/informatics/style.css?v=20",
+      "path": "Informatics/style.css",
+      "expected": "25f3d5261da342d64fefb27a8418abee0c71bf174a8f459b29dbceb77766b332",
+      "actual": "25f3d5261da342d64fefb27a8418abee0c71bf174a8f459b29dbceb77766b332",
+      "matched": true,
+      "cache": "MISS"
+    },
+    {
+      "url": "https://universalmind.tv/informatics/science.css?v=13",
+      "path": "Informatics/science.css",
+      "expected": "3b1dc08557873620e70bbce2ad13d4f9526971fcefaeb7e49e3b8216b1f7808f",
+      "actual": "3b1dc08557873620e70bbce2ad13d4f9526971fcefaeb7e49e3b8216b1f7808f",
+      "matched": true,
+      "cache": "MISS"
+    },
+    {
+      "url": "https://universalmind.tv/informatics/science.js?v=19",
+      "path": "Informatics/science.js",
+      "expected": "3844b867a860e26cb0bc3113470759d4c49eee886f2d6591376dbf78516b3945",
+      "actual": "3844b867a860e26cb0bc3113470759d4c49eee886f2d6591376dbf78516b3945",
+      "matched": true,
+      "cache": "MISS"
+    },
+    {
+      "url": "https://universalmind.tv/informatics/molecular/atlas.css?v=d89bcbd76042",
+      "path": "Informatics/molecular/atlas.css",
+      "expected": "1056d7f89414c4630741f162e9b5f38d1a111da3e895cf629e3f658f59adb6fb",
+      "actual": "1056d7f89414c4630741f162e9b5f38d1a111da3e895cf629e3f658f59adb6fb",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/informatics/molecular/vendor/engine.js?v=9",
+      "path": "Informatics/molecular/vendor/engine.js",
+      "expected": "98bc2afc91a19c468bc8e949bf2ac25c0be50a372821f6932ac0ed02bcc5be9f",
+      "actual": "98bc2afc91a19c468bc8e949bf2ac25c0be50a372821f6932ac0ed02bcc5be9f",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/informatics/molecular/interaction-ui.js?v=4",
+      "path": "Informatics/molecular/interaction-ui.js",
+      "expected": "bfa28324268e2be47f6e4eb0f4250270b8846b37013f4eb78eed6bf255d86d6e",
+      "actual": "bfa28324268e2be47f6e4eb0f4250270b8846b37013f4eb78eed6bf255d86d6e",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/informatics/molecular/atlas.js?v=8",
+      "path": "Informatics/molecular/atlas.js",
+      "expected": "fee0c3cbf4b8820e46b5674931c966d5f74e74d1470eb165a90c05d09bc688ac",
+      "actual": "fee0c3cbf4b8820e46b5674931c966d5f74e74d1470eb165a90c05d09bc688ac",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/informatics/molecular/interactions.css?v=3",
+      "path": "Informatics/molecular/interactions.css",
+      "expected": "3aaa4f06467fa2a55a685bb7df4899cbca0ec5dda8e7cee390fed9a39b22e6a7",
+      "actual": "3aaa4f06467fa2a55a685bb7df4899cbca0ec5dda8e7cee390fed9a39b22e6a7",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/informatics/quantum/biology.css?v=live-2",
+      "path": "Informatics/quantum/biology.css",
+      "expected": "0ecf02c14a8ae759f8445921c1bb225b9288b335cbee4e0bd5e3f1fef8f96f19",
+      "actual": "0ecf02c14a8ae759f8445921c1bb225b9288b335cbee4e0bd5e3f1fef8f96f19",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/informatics/quantum/scientific-review.css?v=live-3",
+      "path": "Informatics/quantum/scientific-review.css",
+      "expected": "c0dc0abffd5fac8b90a53c71fb8dba4c66f4c4e8383154153e3f6d0ff08880c2",
+      "actual": "c0dc0abffd5fac8b90a53c71fb8dba4c66f4c4e8383154153e3f6d0ff08880c2",
+      "matched": true,
+      "cache": "HIT"
+    },
+    {
+      "url": "https://universalmind.tv/informatics/quantum/biology.js?v=production-2",
+      "path": "Informatics/quantum/biology.js",
+      "expected": "07bf3e90c3b0e9e18dc51ee0557774a536a2a9049c97decd0fa502966bf1c8dc",
+      "actual": "07bf3e90c3b0e9e18dc51ee0557774a536a2a9049c97decd0fa502966bf1c8dc",
+      "matched": true,
+      "cache": "MISS"
+    },
+    {
+      "url": "https://universalmind.tv/informatics/quantum/reading/links.css",
+      "path": "Informatics/quantum/reading/links.css",
+      "expected": "64c041baff03db22377e2865d0682d786c858d70ed4fb89c50d0a12b28ff4680",
+      "actual": "64c041baff03db22377e2865d0682d786c858d70ed4fb89c50d0a12b28ff4680",
+      "matched": true,
+      "cache": "HIT"
+    }
+  ]
+}

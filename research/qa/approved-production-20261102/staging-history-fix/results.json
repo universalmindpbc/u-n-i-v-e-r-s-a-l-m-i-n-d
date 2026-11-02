@@ -1,0 +1,536 @@
+{
+  "passed": true,
+  "live": true,
+  "mutedProcess": true,
+  "fullscreen": "instrumented, not native",
+  "results": [
+    {
+      "portal": "informatics",
+      "chapter": "about",
+      "url": "https://staging.universalmind.tv/informatics/about/",
+      "media": {
+        "same": true,
+        "src": "https://rmu.universalmind.tv/rihanna-global-citizen-loop.mp4",
+        "time": 1.486413,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "full": "experience",
+        "calls": 1,
+        "exits": 0
+      }
+    },
+    {
+      "portal": "informatics",
+      "chapter": "geometry",
+      "url": "https://staging.universalmind.tv/informatics/geometry/?record=fibonacci-m9-p24&record-mode=research#alpha",
+      "media": {
+        "same": true,
+        "src": "https://rmu.universalmind.tv/rihanna-global-citizen-loop.mp4",
+        "time": 1.969301,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "full": "experience",
+        "calls": 1,
+        "exits": 0
+      }
+    },
+    {
+      "portal": "informatics",
+      "chapter": "transcription",
+      "url": "https://staging.universalmind.tv/informatics/transcription/",
+      "media": {
+        "same": true,
+        "src": "https://rmu.universalmind.tv/rihanna-global-citizen-loop.mp4",
+        "time": 2.435453,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "full": "experience",
+        "calls": 1,
+        "exits": 0
+      }
+    },
+    {
+      "portal": "informatics",
+      "chapter": "molecular",
+      "url": "https://staging.universalmind.tv/informatics/molecular/",
+      "media": {
+        "same": true,
+        "src": "https://rmu.universalmind.tv/rihanna-global-citizen-loop.mp4",
+        "time": 3.436831,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "full": "experience",
+        "calls": 1,
+        "exits": 0
+      }
+    },
+    {
+      "portal": "informatics",
+      "chapter": "quantum",
+      "url": "https://staging.universalmind.tv/informatics/quantum/",
+      "media": {
+        "same": true,
+        "src": "https://rmu.universalmind.tv/rihanna-global-citizen-loop.mp4",
+        "time": 4.566771,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "full": "experience",
+        "calls": 1,
+        "exits": 0
+      }
+    },
+    {
+      "portal": "informatics",
+      "chapter": "sound",
+      "url": "https://staging.universalmind.tv/informatics/sound/?sound=sequence",
+      "media": {
+        "same": true,
+        "src": "https://rmu.universalmind.tv/rihanna-global-citizen-loop.mp4",
+        "time": 5.043671,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "full": "experience",
+        "calls": 1,
+        "exits": 0
+      }
+    },
+    {
+      "portal": "informatics",
+      "chapter": "vision",
+      "url": "https://staging.universalmind.tv/informatics/vision/",
+      "media": {
+        "same": true,
+        "src": "https://rmu.universalmind.tv/rihanna-global-citizen-loop.mp4",
+        "time": 5.529406,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "full": "experience",
+        "calls": 1,
+        "exits": 0
+      }
+    },
+    {
+      "portal": "informatics",
+      "chapter": "language",
+      "url": "https://staging.universalmind.tv/informatics/language/",
+      "media": {
+        "same": true,
+        "src": "https://rmu.universalmind.tv/rihanna-global-citizen-loop.mp4",
+        "time": 6.002489,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "full": "experience",
+        "calls": 1,
+        "exits": 0
+      }
+    },
+    {
+      "portal": "informatics",
+      "chapter": "research",
+      "url": "https://staging.universalmind.tv/informatics/research/",
+      "media": {
+        "same": true,
+        "src": "https://rmu.universalmind.tv/rihanna-global-citizen-loop.mp4",
+        "time": 6.470067,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "full": "experience",
+        "calls": 1,
+        "exits": 0
+      }
+    },
+    {
+      "portal": "informatics",
+      "chapter": "connect",
+      "url": "https://staging.universalmind.tv/informatics/connect/",
+      "media": {
+        "same": true,
+        "src": "https://rmu.universalmind.tv/rihanna-global-citizen-loop.mp4",
+        "time": 6.9514,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "full": "experience",
+        "calls": 1,
+        "exits": 0
+      }
+    },
+    {
+      "portal": "informatics",
+      "chapter": "partners",
+      "url": "https://staging.universalmind.tv/informatics/partners/",
+      "media": {
+        "same": true,
+        "src": "https://rmu.universalmind.tv/rihanna-global-citizen-loop.mp4",
+        "time": 7.420887,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "full": "experience",
+        "calls": 1,
+        "exits": 0
+      }
+    },
+    {
+      "portal": "iam",
+      "chapter": "about",
+      "url": "https://staging.universalmind.tv/iam/about/",
+      "media": {
+        "same": true,
+        "src": "blob:https://staging.universalmind.tv/1c62c21d-8592-4411-b04b-15160f85298a",
+        "time": 1.166803,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "full": "MAIN",
+        "calls": 1,
+        "exits": 0
+      }
+    },
+    {
+      "portal": "iam",
+      "chapter": "program",
+      "url": "https://staging.universalmind.tv/iam/program/",
+      "media": {
+        "same": true,
+        "src": "blob:https://staging.universalmind.tv/1c62c21d-8592-4411-b04b-15160f85298a",
+        "time": 1.294512,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "full": "MAIN",
+        "calls": 1,
+        "exits": 0
+      }
+    },
+    {
+      "portal": "iam",
+      "chapter": "technology",
+      "url": "https://staging.universalmind.tv/iam/technology/",
+      "media": {
+        "same": true,
+        "src": "blob:https://staging.universalmind.tv/1c62c21d-8592-4411-b04b-15160f85298a",
+        "time": 1.41974,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "full": "MAIN",
+        "calls": 1,
+        "exits": 0
+      }
+    },
+    {
+      "portal": "iam",
+      "chapter": "technology-recommendations",
+      "url": "https://staging.universalmind.tv/iam/technology/recommendations/",
+      "media": {
+        "same": true,
+        "src": "blob:https://staging.universalmind.tv/1c62c21d-8592-4411-b04b-15160f85298a",
+        "time": 1.666032,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "full": "MAIN",
+        "calls": 1,
+        "exits": 0
+      }
+    },
+    {
+      "portal": "iam",
+      "chapter": "science",
+      "url": "https://staging.universalmind.tv/iam/science/",
+      "media": {
+        "same": true,
+        "src": "blob:https://staging.universalmind.tv/1c62c21d-8592-4411-b04b-15160f85298a",
+        "time": 1.79907,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "full": "MAIN",
+        "calls": 1,
+        "exits": 0
+      }
+    },
+    {
+      "portal": "iam",
+      "chapter": "research",
+      "url": "https://staging.universalmind.tv/iam/research/",
+      "media": {
+        "same": true,
+        "src": "blob:https://staging.universalmind.tv/1c62c21d-8592-4411-b04b-15160f85298a",
+        "time": 1.961235,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "full": "MAIN",
+        "calls": 1,
+        "exits": 0
+      }
+    },
+    {
+      "portal": "iam",
+      "chapter": "research-computer-vision",
+      "url": "https://staging.universalmind.tv/iam/research/computer-vision/",
+      "media": {
+        "same": true,
+        "src": "blob:https://staging.universalmind.tv/1c62c21d-8592-4411-b04b-15160f85298a",
+        "time": 2.078186,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "full": "MAIN",
+        "calls": 1,
+        "exits": 0
+      }
+    },
+    {
+      "portal": "iam",
+      "chapter": "privacy-first",
+      "url": "https://staging.universalmind.tv/iam/privacy-first/",
+      "media": {
+        "same": true,
+        "src": "blob:https://staging.universalmind.tv/1c62c21d-8592-4411-b04b-15160f85298a",
+        "time": 2.191655,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "full": "MAIN",
+        "calls": 1,
+        "exits": 0
+      }
+    },
+    {
+      "portal": "iam",
+      "chapter": "business-model",
+      "url": "https://staging.universalmind.tv/iam/business-model/",
+      "media": {
+        "same": true,
+        "src": "blob:https://staging.universalmind.tv/1c62c21d-8592-4411-b04b-15160f85298a",
+        "time": 2.355161,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "full": "MAIN",
+        "calls": 1,
+        "exits": 0
+      }
+    },
+    {
+      "portal": "iam",
+      "chapter": "traction",
+      "url": "https://staging.universalmind.tv/iam/traction/",
+      "media": {
+        "same": true,
+        "src": "blob:https://staging.universalmind.tv/1c62c21d-8592-4411-b04b-15160f85298a",
+        "time": 2.466808,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "full": "MAIN",
+        "calls": 1,
+        "exits": 0
+      }
+    },
+    {
+      "portal": "iam",
+      "chapter": "impact",
+      "url": "https://staging.universalmind.tv/iam/impact/",
+      "media": {
+        "same": true,
+        "src": "blob:https://staging.universalmind.tv/1c62c21d-8592-4411-b04b-15160f85298a",
+        "time": 2.576543,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "full": "MAIN",
+        "calls": 1,
+        "exits": 0
+      }
+    },
+    {
+      "portal": "iam",
+      "chapter": "check-in",
+      "url": "https://staging.universalmind.tv/iam/check-in/",
+      "media": {
+        "same": true,
+        "src": "blob:https://staging.universalmind.tv/1c62c21d-8592-4411-b04b-15160f85298a",
+        "time": 2.73415,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "full": "MAIN",
+        "calls": 1,
+        "exits": 0
+      }
+    },
+    {
+      "portal": "iam",
+      "chapter": "our-team",
+      "url": "https://staging.universalmind.tv/iam/our-team/",
+      "media": {
+        "same": true,
+        "src": "blob:https://staging.universalmind.tv/1c62c21d-8592-4411-b04b-15160f85298a",
+        "time": 2.883694,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "full": "MAIN",
+        "calls": 1,
+        "exits": 0
+      }
+    },
+    {
+      "portal": "iam",
+      "chapter": "shop",
+      "url": "https://staging.universalmind.tv/iam/shop/",
+      "media": {
+        "same": true,
+        "src": "blob:https://staging.universalmind.tv/1c62c21d-8592-4411-b04b-15160f85298a",
+        "time": 3.924172,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "full": "MAIN",
+        "calls": 1,
+        "exits": 0
+      }
+    },
+    {
+      "portal": "iam",
+      "chapter": "home",
+      "url": "https://staging.universalmind.tv/iam/tv/",
+      "retainedMedia": true
+    },
+    {
+      "directEntries": [
+        "shop",
+        "about-to-science",
+        "check-in-relative-route"
+      ],
+      "passed": true
+    },
+    {
+      "mobile": "About to Science",
+      "phonePolicy": true,
+      "width": 390
+    },
+    {
+      "portal": "root-shell",
+      "singleHistoryEntry": true,
+      "retainedFrame": true,
+      "retainedMedia": true
+    },
+    {
+      "portal": "root-shell-iam",
+      "retainedFrame": true,
+      "retainedMedia": true,
+      "history": true
+    },
+    {
+      "layout": "/sitemap/",
+      "width": 1470
+    },
+    {
+      "layout": "/informatics/sitemap/",
+      "width": 1470
+    },
+    {
+      "layout": "/iam/sitemap/",
+      "width": 1470
+    },
+    {
+      "layout": "/informatics/sound/",
+      "width": 1470
+    },
+    {
+      "layout": "/iam/about/",
+      "width": 1470
+    },
+    {
+      "layout": "/iam/science/",
+      "width": 1470
+    },
+    {
+      "layout": "/sitemap/",
+      "width": 1024
+    },
+    {
+      "layout": "/informatics/sitemap/",
+      "width": 1024
+    },
+    {
+      "layout": "/iam/sitemap/",
+      "width": 1024
+    },
+    {
+      "layout": "/informatics/sound/",
+      "width": 1024
+    },
+    {
+      "layout": "/iam/about/",
+      "width": 1024
+    },
+    {
+      "layout": "/iam/science/",
+      "width": 1024
+    },
+    {
+      "layout": "/sitemap/",
+      "width": 390
+    },
+    {
+      "layout": "/informatics/sitemap/",
+      "width": 390
+    },
+    {
+      "layout": "/iam/sitemap/",
+      "width": 390
+    },
+    {
+      "layout": "/informatics/sound/",
+      "width": 390
+    },
+    {
+      "layout": "/iam/about/",
+      "width": 390
+    },
+    {
+      "layout": "/iam/science/",
+      "width": 390
+    },
+    {
+      "layout": "/sitemap/",
+      "width": 320
+    },
+    {
+      "layout": "/informatics/sitemap/",
+      "width": 320
+    },
+    {
+      "layout": "/iam/sitemap/",
+      "width": 320
+    },
+    {
+      "layout": "/informatics/sound/",
+      "width": 320
+    },
+    {
+      "layout": "/iam/about/",
+      "width": 320
+    },
+    {
+      "layout": "/iam/science/",
+      "width": 320
+    }
+  ],
+  "errors": []
+}

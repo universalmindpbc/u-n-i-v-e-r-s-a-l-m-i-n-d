@@ -1,0 +1,230 @@
+{
+  "message": "page.waitForFunction: Timeout 30000ms exceeded.\n    at /private/tmp/um-approved-production-20261102/research/qa/approved-production-20261102/check-portal-navigation-browser.mjs:99:15",
+  "results": [
+    {
+      "portal": "iam",
+      "chapter": "about",
+      "url": "https://universalmind.tv/iam/about/",
+      "media": {
+        "same": true,
+        "src": "blob:https://universalmind.tv/ad996e4e-b99c-4925-a6e5-9101f89c4f6e",
+        "time": 1.532517,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "full": "MAIN",
+        "calls": 1,
+        "exits": 0
+      }
+    },
+    {
+      "portal": "iam",
+      "chapter": "program",
+      "url": "https://universalmind.tv/iam/program/",
+      "media": {
+        "same": true,
+        "src": "blob:https://universalmind.tv/ad996e4e-b99c-4925-a6e5-9101f89c4f6e",
+        "time": 2.037551,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "full": "MAIN",
+        "calls": 1,
+        "exits": 0
+      }
+    },
+    {
+      "portal": "iam",
+      "chapter": "technology",
+      "url": "https://universalmind.tv/iam/technology/",
+      "media": {
+        "same": true,
+        "src": "blob:https://universalmind.tv/ad996e4e-b99c-4925-a6e5-9101f89c4f6e",
+        "time": 2.54839,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "full": "MAIN",
+        "calls": 1,
+        "exits": 0
+      }
+    },
+    {
+      "portal": "iam",
+      "chapter": "technology-recommendations",
+      "url": "https://universalmind.tv/iam/technology/recommendations/",
+      "media": {
+        "same": true,
+        "src": "blob:https://universalmind.tv/ad996e4e-b99c-4925-a6e5-9101f89c4f6e",
+        "time": 3.063481,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "full": "MAIN",
+        "calls": 1,
+        "exits": 0
+      }
+    },
+    {
+      "portal": "iam",
+      "chapter": "science",
+      "url": "https://universalmind.tv/iam/science/",
+      "media": {
+        "same": true,
+        "src": "blob:https://universalmind.tv/ad996e4e-b99c-4925-a6e5-9101f89c4f6e",
+        "time": 3.570068,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "full": "MAIN",
+        "calls": 1,
+        "exits": 0
+      }
+    },
+    {
+      "portal": "iam",
+      "chapter": "research",
+      "url": "https://universalmind.tv/iam/research/",
+      "media": {
+        "same": true,
+        "src": "blob:https://universalmind.tv/ad996e4e-b99c-4925-a6e5-9101f89c4f6e",
+        "time": 4.080907,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "full": "MAIN",
+        "calls": 1,
+        "exits": 0
+      }
+    },
+    {
+      "portal": "iam",
+      "chapter": "research-computer-vision",
+      "url": "https://universalmind.tv/iam/research/computer-vision/",
+      "media": {
+        "same": true,
+        "src": "blob:https://universalmind.tv/ad996e4e-b99c-4925-a6e5-9101f89c4f6e",
+        "time": 4.585941,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "full": "MAIN",
+        "calls": 1,
+        "exits": 0
+      }
+    },
+    {
+      "portal": "iam",
+      "chapter": "privacy-first",
+      "url": "https://universalmind.tv/iam/privacy-first/",
+      "media": {
+        "same": true,
+        "src": "blob:https://universalmind.tv/ad996e4e-b99c-4925-a6e5-9101f89c4f6e",
+        "time": 5.095119,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "full": "MAIN",
+        "calls": 1,
+        "exits": 0
+      }
+    },
+    {
+      "portal": "iam",
+      "chapter": "business-model",
+      "url": "https://universalmind.tv/iam/business-model/",
+      "media": {
+        "same": true,
+        "src": "blob:https://universalmind.tv/ad996e4e-b99c-4925-a6e5-9101f89c4f6e",
+        "time": 5.601655,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "full": "MAIN",
+        "calls": 1,
+        "exits": 0
+      }
+    },
+    {
+      "portal": "iam",
+      "chapter": "traction",
+      "url": "https://universalmind.tv/iam/traction/",
+      "media": {
+        "same": true,
+        "src": "blob:https://universalmind.tv/ad996e4e-b99c-4925-a6e5-9101f89c4f6e",
+        "time": 6.106848,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "full": "MAIN",
+        "calls": 1,
+        "exits": 0
+      }
+    },
+    {
+      "portal": "iam",
+      "chapter": "impact",
+      "url": "https://universalmind.tv/iam/impact/",
+      "media": {
+        "same": true,
+        "src": "blob:https://universalmind.tv/ad996e4e-b99c-4925-a6e5-9101f89c4f6e",
+        "time": 6.617687,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "full": "MAIN",
+        "calls": 1,
+        "exits": 0
+      }
+    },
+    {
+      "portal": "iam",
+      "chapter": "check-in",
+      "url": "https://universalmind.tv/iam/check-in/",
+      "media": {
+        "same": true,
+        "src": "blob:https://universalmind.tv/ad996e4e-b99c-4925-a6e5-9101f89c4f6e",
+        "time": 7.128029,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "full": "MAIN",
+        "calls": 1,
+        "exits": 0
+      }
+    },
+    {
+      "portal": "iam",
+      "chapter": "our-team",
+      "url": "https://universalmind.tv/iam/our-team/",
+      "media": {
+        "same": true,
+        "src": "blob:https://universalmind.tv/ad996e4e-b99c-4925-a6e5-9101f89c4f6e",
+        "time": 7.63356,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "full": "MAIN",
+        "calls": 1,
+        "exits": 0
+      }
+    },
+    {
+      "portal": "iam",
+      "chapter": "shop",
+      "url": "https://universalmind.tv/iam/shop/",
+      "media": {
+        "same": true,
+        "src": "blob:https://universalmind.tv/ad996e4e-b99c-4925-a6e5-9101f89c4f6e",
+        "time": 8.14366,
+        "paused": false,
+        "muted": false,
+        "volume": 1,
+        "full": "MAIN",
+        "calls": 1,
+        "exits": 0
+      }
+    }
+  ],
+  "errors": []
+}

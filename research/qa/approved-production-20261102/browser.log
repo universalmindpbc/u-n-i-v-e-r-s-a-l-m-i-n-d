@@ -1,0 +1,27 @@
+Informatics about retained
+Informatics geometry retained
+Informatics transcription retained
+Informatics molecular retained
+Informatics quantum retained
+Informatics sound retained
+Informatics vision retained
+Informatics language retained
+Informatics research retained
+Informatics connect retained
+Informatics partners retained
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+locator.waitFor: Timeout 60000ms exceeded.
+Call log:
+[2m  - waiting for locator('#research-frame').contentFrame().locator('.contents-chapter').first() to be visible[22m
+
+    at /private/tmp/um-approved-production-20261102/research/qa/approved-production-20261102/check-portal-navigation-browser.mjs:59:84 {
+  log: [
+    "  - waiting for locator('#research-frame').contentFrame().locator('.contents-chapter').first() to be visible"
+  ],
+  name: 'TimeoutError'
+}
+
+Node.js v24.22.1

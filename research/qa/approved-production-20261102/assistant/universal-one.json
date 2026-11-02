@@ -1,0 +1,37 @@
+{
+  "processAudioMuted": true,
+  "answers": [],
+  "errors": [],
+  "error": "locator.waitFor: Timeout 45000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#research-frame').contentFrame().locator('#result-count')\u001b[22m\n\n    at /private/tmp/um-approved-production-20261102/research/qa/approved-production-20261102/verify-production-assistant.mjs:11:70",
+  "pageURL": "https://universalmind.tv/informatics/research/",
+  "frames": [
+    {
+      "url": "https://universalmind.tv/informatics/research/",
+      "text": "UNIVERSAL\nINFORMATICS\nResearch Atlas\n⌄\n♪̸\n⛶\n×\nAsk a research question"
+    },
+    {
+      "url": "about:blank",
+      "text": ""
+    },
+    {
+      "url": "about:blank",
+      "text": ""
+    },
+    {
+      "url": "https://universalmind.tv/informatics/research/library.html?embedded=1",
+      "text": "Not Found\n\nThe requested URL was not found on this server.\n\nAdditionally, a 404 Not Found error was encountered while trying to use an ErrorDocument to handle the request."
+    },
+    {
+      "url": "about:blank",
+      "text": ""
+    },
+    {
+      "url": "about:blank",
+      "text": ""
+    },
+    {
+      "url": "about:blank",
+      "text": ""
+    }
+  ]
+}

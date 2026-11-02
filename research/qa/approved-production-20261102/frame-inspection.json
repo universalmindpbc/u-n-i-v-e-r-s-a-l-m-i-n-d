@@ -1,0 +1,76 @@
+{
+  "state": {
+    "url": "https://universalmind.tv/informatics/research/",
+    "base": "https://universalmind.tv/informatics/",
+    "bases": [
+      "<base href=\"/informatics/\">"
+    ],
+    "scripts": [
+      "https://universalmind.tv/site-navigation/routes.js?v=375ae77a6715",
+      "https://universalmind.tv/Informatics/landing.js?v=4",
+      "https://universalmind.tv/informatics/global-navigation.js?v=4493d996184a",
+      "https://universalmind.tv/Informatics/app.js?v=28",
+      "https://universalmind.tv/informatics/science-studies.js?v=3",
+      "https://universalmind.tv/informatics/science.js?v=27",
+      "https://universalmind.tv/informatics/atlas-visuals.js?v=7",
+      "https://universalmind.tv/informatics/record-navigation.js?v=1",
+      "https://universalmind.tv/informatics/music-measurement.js?v=1",
+      "https://universalmind.tv/informatics/vision-science.js?v=2",
+      "https://universalmind.tv/informatics/library-launcher.js?v=8",
+      "https://universalmind.tv/informatics/molecular-entry.js?v=00e18f6dc370",
+      "https://universalmind.tv/informatics/quantum-entry.js?v=6a90d8c53d2d",
+      "https://universalmind.tv/informatics/universal-one-character.js?v=1",
+      "https://universalmind.tv/informatics/universal-one-audio.js?v=2",
+      "https://universalmind.tv/informatics/universal-one-waveform.js?v=1",
+      "https://universalmind.tv/informatics/universal-one-live.js?v=7",
+      "https://universalmind.tv/informatics/universal-one.js?v=14",
+      "https://universalmind.tv/informatics/shared-experience.js?v=1c6694f64b0d",
+      "https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+    ],
+    "frames": [
+      {
+        "id": "atlas-frame",
+        "src": null
+      },
+      {
+        "id": "molecular-frame",
+        "src": null
+      },
+      {
+        "id": "research-frame",
+        "src": "https://universalmind.tv/informatics/research/library.html?embedded=1"
+      },
+      {
+        "id": "connect-frame",
+        "src": null
+      },
+      {
+        "id": "quantum-frame",
+        "src": null
+      },
+      {
+        "id": "",
+        "src": null
+      }
+    ]
+  },
+  "logs": [],
+  "responses": [
+    {
+      "url": "https://universalmind.tv/informatics/shared-experience.css?v=1",
+      "status": 200
+    },
+    {
+      "url": "https://universalmind.tv/Informatics/app.js?v=28",
+      "status": 301
+    },
+    {
+      "url": "https://universalmind.tv/informatics/shared-experience.js?v=1c6694f64b0d",
+      "status": 200
+    },
+    {
+      "url": "https://universalmind.tv/informatics/app.js?v=28",
+      "status": 200
+    }
+  ]
+}
