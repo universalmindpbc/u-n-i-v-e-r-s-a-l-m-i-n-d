@@ -343,3 +343,11 @@ Review screenshot supplied during development. The physical Droneport stays visi
 R30 preserves the supplied still. R31 preserves the exact 540 × 540 animated GIF from [Hexeosis](https://hexeosis.com/gifs/hexeosis_gif_selects_topic/hxg-selects-isotriangles/hx_4a480.gif), with 72 frames over 2.88 seconds. A silent H.264 derivative supplies a browser video texture. The original GIF remains unchanged.
 
 The screen combines this geometry with artist footage; the present performance source is the existing Neverender video. Live Tame Impala or Charli XCX clips remain future supplied assets.
+
+## R32–R41 — mental health, identity and scene-card review
+
+Ten screenshots from Ben’s 7:51–7:52 pm and 8:05–8:06 pm review on 2 November 2026. They establish the coloured “electronic music and fashion as mindfulness” line, concise visitor copy, named design credits, a roof-anchored hologram, relocated flags, five-second sunset and the automatic seven-stop tour. Exact originals are preserved in `references/review/` and hashed in `reference-manifest.json`.
+
+## R42–R45 — two trailer videos and supplied posters
+
+The supplied fashion portrait and anime/landscape clips replace the generated wrap. The two source filenames are visually reversed; the inspected mapping is recorded in `TRUCK-VIDEO-PANELS.md`. Originals and posters are preserved exactly in `media/truck-panels/`; silent runtime derivatives provide the animated displays.

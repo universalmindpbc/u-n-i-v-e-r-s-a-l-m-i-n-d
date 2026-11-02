@@ -1,5 +1,5 @@
-import { createStageVisuals } from './stage-visuals.mjs?v=20261102story1';
-import { createFurnishings } from './furnishings.mjs?v=20261102story1';
+import { createStageVisuals } from './stage-visuals.mjs?v=20261102mind1';
+import { createFurnishings } from './furnishings.mjs?v=20261102mind1';
 // Metric spatial studies. Stage visibility is managed by the scene controller.
 export function createSiteFeatures(THREE, scene, video, architecture, geometryVideo) {
   const furniture=createFurnishings(THREE),V=(x,y,z)=>new THREE.Vector3(x,y,z);
@@ -22,7 +22,19 @@ export function createSiteFeatures(THREE, scene, video, architecture, geometryVi
   sign('LINFOX','',1.65,.62,truck,0,1.75,-15.18,Math.PI);
   for(const side of [-1,1]){box(.04,.85,1.6,glass,truck,side*1.27,2.75,-13.8);box(.18,.4,.5,steel,truck,side*1.43,2.65,-14.6);}
   const trailers=[];
-  for(const z of [-5,9.2]){const g=new THREE.Group();truck.add(g);trailers.push(g);g.position.z=z;box(2.55,3.15,12.7,white,g,0,2.75);box(2.6,.23,12.85,red,g,0,1.12);for(const side of [-1,1])sign('LINFOX','UNIVERSAL MIND LAB · CONCEPT',7.4,2.1,g,side*1.285,2.95,0,side*Math.PI/2);}
+  for(const [i,z] of [-5,9.2].entries()){
+    const g=new THREE.Group();g.name=i===0?'Fashion video trailer':'Anime video trailer';truck.add(g);trailers.push(g);g.position.z=z;
+    box(2.55,3.15,12.7,dark,g,0,2.75);box(2.6,.23,12.85,red,g,0,1.12);
+    const key=i===0?'fashion':'anime',clip=document.getElementById('truck-'+key+'-video');
+    const poster=new THREE.TextureLoader().load(new URL('./assets/truck-'+key+'.jpg',import.meta.url).href);poster.colorSpace=THREE.SRGBColorSpace;poster.wrapS=THREE.MirroredRepeatWrapping;
+    const videoTexture=new THREE.VideoTexture(clip);videoTexture.colorSpace=THREE.SRGBColorSpace;videoTexture.wrapS=THREE.MirroredRepeatWrapping;
+    const panelMaterial=new THREE.MeshBasicMaterial({map:poster,side:THREE.DoubleSide,toneMapped:false});
+    clip.addEventListener('loadeddata',()=>{panelMaterial.map=videoTexture;panelMaterial.needsUpdate=true;poster.dispose();});
+    const panelGeometry=(w,h)=>{const geometry=new THREE.PlaneGeometry(w,h),uv=geometry.attributes.uv,aspect=i===0?720/332:1280/590,span=w/h/aspect;for(let j=0;j<uv.count;j++)uv.setX(j,.5+(uv.getX(j)-.5)*span);return geometry;};
+    for(const side of [-1,1]){const screen=mesh(panelGeometry(12.65,3.12),panelMaterial,g);screen.position.set(side*1.283,2.75,0);screen.rotation.y=side*Math.PI/2;screen.castShadow=false;}
+    const rear=mesh(panelGeometry(2.53,3.12),panelMaterial,g);rear.position.set(0,2.75,6.36);rear.castShadow=false;
+    const roof=sign('LINFOX','',6.2,2.1,g,0,4.34,0);roof.rotation.set(-Math.PI/2,0,Math.PI/2);
+  }
   for(const z of [-14,-11.7,-10.6,-1.2,0,1.2,13,14.2,15.4])for(const x of [-1.25,1.25]){const tire=mesh(new THREE.CylinderGeometry(.51,.51,.36,20),dark,truck);tire.rotation.z=Math.PI/2;tire.position.set(x,.55,z);const hub=mesh(new THREE.CylinderGeometry(.26,.26,.38,12),steel,truck);hub.rotation.z=Math.PI/2;hub.position.copy(tire.position);}
   const cargo=new THREE.Group();delivery.add(cargo);cargo.position.set(-34,.05,31);
   for(let i=0;i<5;i++){box(1.7,1.2,1.4,wood,cargo,(i%2)*2, .6,Math.floor(i/2)*1.8);box(1.75,.08,1.45,stone,cargo,(i%2)*2,1.24,Math.floor(i/2)*1.8);}
@@ -95,6 +107,7 @@ export function createSiteFeatures(THREE, scene, video, architecture, geometryVi
   function covered(points,width=2.6){const curve=new THREE.CatmullRomCurve3(points.map(([x,z])=>V(x,3.15,z))),p=[],ix=[];for(let i=0;i<=32;i++){const v=curve.getPoint(i/32),t=curve.getTangent(i/32);p.push(v.x-t.z*width/2,v.y+.18,v.z+t.x*width/2,v.x+t.z*width/2,v.y,v.z-t.x*width/2);if(i<32){const a=i*2;ix.push(a,a+1,a+2,a+1,a+3,a+2);}if(i%8===0)for(const side of [-1,1])box(.06,3.15,.06,steel,shelter,v.x+side*t.z*(width/2-.1),1.58,v.z-side*t.x*(width/2-.1));}const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(p,3));g.setIndex(ix);g.computeVertexNormals();mesh(g,rainMat,shelter);}
   covered([[0,-2],[0,8],[-10,3],[-20,-5]]);covered([[0,8],[-10,20],[-23,20]]);covered([[0,8],[10,13],[20,10],[25,5]]);covered([[-23,-8],[-30,-14],[-34,-20]]);
   for(const x of [-11.4,11.4]){const screen=mesh(new THREE.PlaneGeometry(14,2.8),rainMat,shelter);screen.rotation.y=Math.PI/2;screen.position.set(x,1.5,-12);}
+  let responseLevel=.7;
   let state={seconds:0,main:0,food:0,park:0,apple:0,furniture:0,programme:0,navigation:false,truck:0},isNight=0,isRain=false,showLayout=false;
   const reveal=(g,p)=>{g.visible=p>0;g.children.forEach((child,i)=>child.visible=p>=(i+1)/(g.children.length+1));};
   function sync(){
@@ -103,8 +116,8 @@ export function createSiteFeatures(THREE, scene, video, architecture, geometryVi
     assembly.visible=state.seconds>=6&&state.main<1;
     fitout.visible=true;reveal(mainFurniture,state.furniture);reveal(foodFurniture,state.food);reveal(parkFurniture,state.park);reveal(appleFurniture,state.apple);
     programme.visible=state.programme>0;programme.children.forEach((c,i)=>{if(c!==glowGroup)c.visible=state.programme>=(i+1)/(programme.children.length+1);});
-    shelter.visible=isRain&&state.navigation;layout.visible=showLayout&&state.navigation;glowGroup.visible=isNight>0&&state.programme>0;laserMaterial.opacity=.19*isNight;
+    shelter.visible=isRain&&state.navigation;layout.visible=showLayout&&state.navigation;glowGroup.visible=isNight>0&&state.programme>0;laserMaterial.opacity=(.09+.14*responseLevel)*isNight;
   }
   sync();
-  return {videoMap,setStory(value){state=value;sync();},setNight(value){isNight=Number(value);sync();},setRain(value){isRain=value;sync();},setLayout(value){showLayout=value;sync();},update(t){stageVisuals.update();projectionMaterial.uniforms.time.value=t;return state.seconds>2&&state.seconds<31;},stats:{attendanceAmbition:100,mainLoungeChairs:10,mainHangingSeats:4,mainDaybeds:2,listeningPylons:4,lineArrays:4}};
+  return {videoMap,setResponse(value){responseLevel=value;sync();},setStory(value){state=value;sync();},setNight(value){isNight=Number(value);sync();},setRain(value){isRain=value;sync();},setLayout(value){showLayout=value;sync();},update(t){stageVisuals.update();projectionMaterial.uniforms.time.value=t;return state.seconds>2&&state.seconds<31;},stats:{attendanceAmbition:100,mainLoungeChairs:10,mainHangingSeats:4,mainDaybeds:2,listeningPylons:4,lineArrays:4}};
 }

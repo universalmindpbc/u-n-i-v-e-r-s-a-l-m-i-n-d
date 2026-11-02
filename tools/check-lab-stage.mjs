@@ -23,7 +23,7 @@ assert.doesNotMatch(html + js, /src="https?:\/\/|fetch\(|localStorage|sessionSto
 assert.ok(html.includes('headspace.org.au/eora') && html.includes('Proposal'));
 assert.doesNotMatch(html + js, /A place to become|Room to connect|Under one shared roof|A world of possibility|Meaningful connection/);
 const manifest = JSON.parse(read('documents/universal-mind-lab/reference-manifest.json'));
-assert.equal(manifest.records.length, 31);
+assert.equal(manifest.records.length, 45);
 for (const row of manifest.records) {
   const bytes = fs.readFileSync(path.join(root,'documents/universal-mind-lab',row.destination_path));
   assert.equal(createHash('sha256').update(bytes).digest('hex'),row.sha256,`${row.id} original hash`);
@@ -34,4 +34,4 @@ assert.ok(js.includes('video.play()') && js.includes('manifest/video.m3u8'));
 assert.ok(html.includes('id="explore-enter"') && html.includes('value="7"'));
 assert.ok(html.includes('id="replay-story"'));assert.doesNotMatch(html,/data-stage=|id="sequence-play"/);
 for(const module of ['architecture.mjs','furnishings.mjs','site-features.mjs','landing-rain.js'])assert.ok(fs.statSync(path.join(root,'lab',module)).size>1000);
-console.log(JSON.stringify({ passed:true, originalReferences:31, selfHosted3D:true, planFallback:true, noIntake:true, visitorInitiatedMedia:true, places:7 }));
+console.log(JSON.stringify({ passed:true, originalReferences:manifest.records.length, selfHosted3D:true, planFallback:true, noIntake:true, visitorInitiatedMedia:true, places:7 }));

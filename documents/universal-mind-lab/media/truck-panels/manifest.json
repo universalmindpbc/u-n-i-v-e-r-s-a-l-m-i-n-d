@@ -1,0 +1,169 @@
+{
+  "generated_at": "2026-11-02",
+  "ffmpeg": "7.1 via imageio-ffmpeg 0.6.0",
+  "codec": "H.264 / libx264",
+  "crf": 25,
+  "preset": "medium",
+  "audio": "removed from runtime derivatives; preserved in originals",
+  "faststart": true,
+  "panels": [
+    {
+      "name": "fashion",
+      "source_video": "/Users/benkorbel/Desktop/REI_Character_Edit_Face_and_Hair.mov",
+      "source_poster": "/Users/benkorbel/Pictures/Photos Library.photoslibrary/resources/derivatives/masters/9/92E513DD-5E11-4E02-BAA5-3C76F99D0602_4_5005_c.jpeg",
+      "duration_seconds": 8.0,
+      "fps": 24,
+      "width": 720,
+      "height": 332,
+      "original_video": {
+        "path": "documents/universal-mind-lab/media/truck-panels/REI_Character_Edit_Face_and_Hair.mov",
+        "bytes": 7695124,
+        "sha256": "850e34800a708b7bab53ca1b938e19ea73d227c4a2b3ca7e476a3ba22985f84e"
+      },
+      "original_poster": {
+        "path": "documents/universal-mind-lab/media/truck-panels/fashion-poster-original.jpeg",
+        "bytes": 61827,
+        "sha256": "9882f3565245162d121b1de1a0ea4579093039cfb0f8fd2cd68ebc77c65b3659"
+      },
+      "runtime_video": {
+        "path": "lab/assets/truck-fashion.mp4",
+        "bytes": 630603,
+        "sha256": "2cc702de3b62616fe40d3c2af2a41c53c6f23ee08796affbd9215ea056cffc46"
+      },
+      "runtime_poster": {
+        "path": "lab/assets/truck-fashion.jpg",
+        "bytes": 61827,
+        "sha256": "9882f3565245162d121b1de1a0ea4579093039cfb0f8fd2cd68ebc77c65b3659"
+      },
+      "ffmpeg_arguments": [
+        "-v",
+        "error",
+        "-nostdin",
+        "-y",
+        "-i",
+        "/private/tmp/um-lab-mindfulness-20261102/documents/universal-mind-lab/media/truck-panels/REI_Character_Edit_Face_and_Hair.mov",
+        "-map",
+        "0:v:0",
+        "-an",
+        "-vf",
+        "scale=w='min(1280,iw)':h=-2:in_range=full:out_range=tv:out_color_matrix=bt709,setsar=1,format=yuv420p",
+        "-c:v",
+        "libx264",
+        "-preset",
+        "medium",
+        "-crf",
+        "25",
+        "-profile:v",
+        "high",
+        "-level:v",
+        "3.1",
+        "-g",
+        "48",
+        "-pix_fmt",
+        "yuv420p",
+        "-color_primaries",
+        "bt709",
+        "-color_trc",
+        "bt709",
+        "-colorspace",
+        "bt709",
+        "-color_range",
+        "tv",
+        "-map_metadata",
+        "-1",
+        "-movflags",
+        "+faststart",
+        "/private/tmp/um-lab-mindfulness-20261102/lab/assets/truck-fashion.mp4"
+      ],
+      "verification": {
+        "full_decode": "passed",
+        "audio_streams": 0,
+        "faststart_moov_before_mdat": true,
+        "source_archive_hashes_match": true,
+        "ffmpeg_metadata": [
+          "Duration: 00:00:08.00, start: 0.000000, bitrate: 630 kb/s",
+          "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 720x332 [SAR 1:1 DAR 180:83], 627 kb/s, 24 fps, 24 tbr, 12288 tbn (default)"
+        ]
+      }
+    },
+    {
+      "name": "anime",
+      "source_video": "/Users/benkorbel/Desktop/Image_Animated_into_Rippling_Video.mov",
+      "source_poster": "/Users/benkorbel/Pictures/Photos Library.photoslibrary/resources/renders/9/96A8A671-839E-4823-903E-65859349DDF8_1_201_a.jpeg",
+      "duration_seconds": 8.0,
+      "fps": 24,
+      "width": 1280,
+      "height": 590,
+      "original_video": {
+        "path": "documents/universal-mind-lab/media/truck-panels/Image_Animated_into_Rippling_Video.mov",
+        "bytes": 7916471,
+        "sha256": "ab56cd74ac7f8203222704e6c207fb74f665458c3be1f736d901dd83e5f493cf"
+      },
+      "original_poster": {
+        "path": "documents/universal-mind-lab/media/truck-panels/anime-poster-original.jpeg",
+        "bytes": 312214,
+        "sha256": "bea0b4a9945f9ca08355f40a36f49db869cdb30f6369356365b7333242ad4d3f"
+      },
+      "runtime_video": {
+        "path": "lab/assets/truck-anime.mp4",
+        "bytes": 2383740,
+        "sha256": "c22c11f3a691f7f3e3d4f79ab924bf105ee49bcaa84162c05a219b2c6ea371b1"
+      },
+      "runtime_poster": {
+        "path": "lab/assets/truck-anime.jpg",
+        "bytes": 312214,
+        "sha256": "bea0b4a9945f9ca08355f40a36f49db869cdb30f6369356365b7333242ad4d3f"
+      },
+      "ffmpeg_arguments": [
+        "-v",
+        "error",
+        "-nostdin",
+        "-y",
+        "-i",
+        "/private/tmp/um-lab-mindfulness-20261102/documents/universal-mind-lab/media/truck-panels/Image_Animated_into_Rippling_Video.mov",
+        "-map",
+        "0:v:0",
+        "-an",
+        "-vf",
+        "scale=w='min(1280,iw)':h=-2:in_range=full:out_range=tv:out_color_matrix=bt709,setsar=1,format=yuv420p",
+        "-c:v",
+        "libx264",
+        "-preset",
+        "medium",
+        "-crf",
+        "25",
+        "-profile:v",
+        "high",
+        "-level:v",
+        "3.1",
+        "-g",
+        "48",
+        "-pix_fmt",
+        "yuv420p",
+        "-color_primaries",
+        "bt709",
+        "-color_trc",
+        "bt709",
+        "-colorspace",
+        "bt709",
+        "-color_range",
+        "tv",
+        "-map_metadata",
+        "-1",
+        "-movflags",
+        "+faststart",
+        "/private/tmp/um-lab-mindfulness-20261102/lab/assets/truck-anime.mp4"
+      ],
+      "verification": {
+        "full_decode": "passed",
+        "audio_streams": 0,
+        "faststart_moov_before_mdat": true,
+        "source_archive_hashes_match": true,
+        "ffmpeg_metadata": [
+          "Duration: 00:00:08.00, start: 0.000000, bitrate: 2383 kb/s",
+          "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, bt709, progressive), 1280x590 [SAR 1:1 DAR 128:59], 2380 kb/s, 24 fps, 24 tbr, 12288 tbn (default)"
+        ]
+      }
+    }
+  ]
+}

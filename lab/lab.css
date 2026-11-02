@@ -59,3 +59,53 @@ body[data-night="true"] .intro h1{color:#e1ebe4}body[data-night="true"] .wordmar
 @media(max-width:380px){.masthead{left:14px;right:14px}.mast-right{gap:4px}.media-tools button{padding:8px 7px}.wordmark>span{font-size:21px}.intro h1{font-size:32px}.intro{width:280px}.mast-right .outline-button{padding:9px 8px}}
 @media(max-height:600px) and (min-width:801px){.masthead{top:16px;left:20px;right:20px}.wordmark>span{font-size:20px}.intro{top:100px;left:20px;width:300px}.intro h1{font-size:34px}.view-tools{bottom:116px;max-width:none}.place-card{top:85px;bottom:166px;max-height:none}.compass{display:none}#media-status{top:78px}.fullscreen-status{top:78px}}
 @media(max-width:800px){.mast-right{flex-wrap:nowrap;gap:5px}.mast-right .media-tools{padding:3px;gap:0}.mast-right .media-tools>button{padding:8px 6px;gap:4px;font-size:9px;min-height:32px}.mast-right #mix-toggle{font-size:20px;padding:5px 8px}.mast-right .outline-button{padding:10px 8px;white-space:nowrap}.media-tools svg{width:14px;height:14px}.mast-right #music-symbol{min-width:8px;font-size:9px}}
+
+/* Mindfulness identity and the wearable-to-environment feedback loop. */
+.mindfulness-line{white-space:nowrap;letter-spacing:.04em!important;font-size:12px!important;font-weight:650!important;line-height:1.4}
+.mindfulness-line span:nth-child(4n+1){color:#156a9c}.mindfulness-line span:nth-child(4n+2){color:#896700}.mindfulness-line span:nth-child(4n+3){color:#b8367c}.mindfulness-line span:nth-child(4n){color:#277b49}
+body[data-night="true"] .mindfulness-line span:nth-child(4n+1){color:#75caff}body[data-night="true"] .mindfulness-line span:nth-child(4n+2){color:#ffe36d}body[data-night="true"] .mindfulness-line span:nth-child(4n+3){color:#ff95ce}body[data-night="true"] .mindfulness-line span:nth-child(4n){color:#8ce5ae}
+.punk-bolt{position:absolute;width:82px;height:150px;left:300px;top:-5px;transform:rotate(10deg);overflow:visible;z-index:-1}
+.punk-bolt path:first-child{fill:#f3da4f;stroke:#142e39;stroke-width:2.6;stroke-linejoin:round}.punk-bolt path:last-child{fill:none;stroke:#f684bc;stroke-width:4;stroke-linecap:round;transform:translate(7px,3px)}
+.intro h1{max-width:390px;text-shadow:0 1px 18px #eff3e622}body[data-night="true"] .punk-bolt path:first-child{stroke:#f6e794}
+.explore-heading{position:relative;justify-content:center;min-height:24px}.membership{text-align:center;max-width:none}.explore-heading #navigation-hint{position:absolute;right:0;bottom:2px;max-width:28%;text-align:right}
+.emotion-toggle{position:absolute;left:34px;bottom:166px;z-index:7;display:flex;align-items:center;gap:12px;text-align:left;padding:12px 16px;border:1px solid #89aba978;border-radius:12px;background:#eff4e8ed;color:#183c3a;font-size:12px;line-height:1.35;box-shadow:0 4px 24px #112e2520;backdrop-filter:blur(14px)}
+.emotion-toggle svg{width:36px;fill:none;stroke:#d95689;stroke-width:2;stroke-linecap:round}.emotion-toggle b{font-weight:700}.emotion-toggle[aria-expanded="true"]{visibility:hidden}
+body:not([data-site-ready="true"]) .emotion-toggle,body:not([data-site-ready="true"]) .emotion-panel{visibility:hidden;pointer-events:none}
+.emotion-panel{position:absolute;left:34px;top:315px;bottom:248px;width:390px;max-height:495px;overflow:auto;z-index:7;color:#e8f0e9;background:linear-gradient(140deg,#17383ded,#102d3aed);border:1px solid #9fd2d345;border-radius:18px;padding:24px 22px;backdrop-filter:blur(20px);box-shadow:0 18px 50px #081c3330}
+.emotion-panel .eyebrow{color:#a6c8c4;font-size:8px;margin:0 0 12px}.emotion-panel h2{font:600 24px/1.15 Arial,sans-serif;letter-spacing:-.04em;margin:0 0 22px}.emotion-panel h2 em{font-weight:400;color:#a4d7d9;font-style:normal}.emotion-panel .close{color:#d5e9e5}.emotion-panel .close:hover{background:#31535a}
+.response-diagram{display:flex;align-items:center;justify-content:space-between;gap:4px}.response-diagram b{display:block;font-size:10px;font-weight:600;line-height:1.6}.response-diagram span{display:block;font-size:8px;color:#a2c1c1;line-height:1.6}.watch-node{width:70px;text-align:center}.watch-pulse{height:87px;fill:#173e48;stroke:#9acecf;stroke-width:1.5;overflow:visible}.watch-pulse .watch-strap{fill:none;stroke-width:3}.watch-pulse .pulse-trace{fill:none;stroke:#ff96c4;stroke-width:2.2;stroke-dasharray:100;animation:heartTrace 1.6s linear infinite;filter:drop-shadow(0 0 3px #ff96c440)}
+@keyframes heartTrace{0%{stroke-dashoffset:100;opacity:.4}40%,100%{stroke-dashoffset:0;opacity:1}}
+.flow-arrow{width:25px;flex-shrink:0;stroke:#8eaeb3;stroke-width:1.2;fill:none}.inference-node{display:flex;flex-direction:column;gap:3px}.inference-node small{font-size:6.8px;letter-spacing:.04em;color:#adc4c5;white-space:nowrap;margin-bottom:6px}.inference-node b{padding:4px 7px;border-radius:5px;color:#152f3d;background:#80cfff;font-size:11px}.inference-node b:nth-of-type(2){background:#f4d66b}.inference-node b:nth-of-type(3){background:#f49bc9}
+.world-node{width:82px;text-align:center}.world-node svg{width:60px;fill:none;stroke:#8eddb1;stroke-width:1.4}.world-node .sound-waves{stroke:#f4d66b}.response-return{border-bottom:1px solid #729c9c70;border-left:1px solid #729c9c70;border-right:1px solid #729c9c70;border-radius:0 0 14px 14px;font-size:9px;letter-spacing:.02em;color:#b8d1ce;padding:9px 0 11px;margin:12px 20px 22px;text-align:center}.response-return span{margin:0 12px;color:#92cdbb}
+.response-label{display:flex;justify-content:space-between;font-size:10px;line-height:1.8}.response-label output{color:#8de3b4}#response-range{width:100%;margin:12px 0 3px;accent-color:#93d8b0;cursor:pointer}.response-ends{display:flex;justify-content:space-between;font-size:8px;color:#b3cfca}.demo-note{font-size:8px;color:#a4bfc1;margin:12px 0 20px;line-height:1.5}.response-purpose{font-size:12px;line-height:1.6;margin:0 0 12px}.response-partners{font-size:9px;color:#b0d0ce;line-height:1.8;margin:0 0 15px}.support-link{font-size:11px;color:#edeeee;background:none;border-bottom:1px solid #84ada9;padding:5px 0;line-height:1.5}
+body[data-emotion-panel="true"] .intro{opacity:1}body[data-camera-view]:not([data-camera-view="overview"]) .intro{opacity:0;visibility:hidden}
+body[data-night="true"] .emotion-toggle{background:#143743ed;color:#e9f1e9;border-color:#9dc0c355}
+@media(max-width:1100px){.mindfulness-line{font-size:10px!important}.emotion-panel{width:350px;left:24px;top:300px;bottom:230px}.punk-bolt{left:260px;width:65px}.emotion-toggle{left:24px}.explore-heading #navigation-hint{display:none}}
+@media(max-width:800px){.mindfulness-line{font-size:10px!important;letter-spacing:0!important}.wordmark{gap:6px}.masthead{row-gap:12px}.intro{top:158px}.punk-bolt{left:246px;top:-15px;width:56px;height:110px}.emotion-toggle{left:16px;bottom:199px;padding:8px 12px;font-size:10px;gap:8px;border-radius:10px}.emotion-toggle svg{width:28px}.emotion-panel{top:150px;bottom:195px;left:16px;right:16px;width:auto;max-height:none;padding:22px}.emotion-panel h2{font-size:23px}.emotion-panel .response-diagram{max-width:360px;margin:auto}.emotion-panel .response-return{max-width:320px;margin:12px auto 20px}.emotion-panel .close{top:8px;right:8px}body[data-emotion-panel="true"] .intro{opacity:0;visibility:hidden}.membership{font-size:10px;max-width:none;line-height:1.8}.membership a{font-size:10px}.explore-heading{margin-bottom:10px}.footline{font-size:8px}.place-card{bottom:260px;top:auto;max-height:260px}.view-tools{bottom:144px}.emotion-toggle[aria-expanded="true"]{display:none}}
+@media(max-height:700px) and (min-width:801px){.emotion-panel{top:108px;bottom:170px;width:355px}.intro{top:112px}.emotion-panel h2{font-size:22px}body[data-emotion-panel="true"] .intro{opacity:0}.emotion-toggle{bottom:165px}.place-card{top:110px;max-height:calc(100% - 310px)}}
+@media(max-height:500px) and (min-width:601px){.mindfulness-line{font-size:9px!important}.emotion-toggle{bottom:114px;left:20px;padding:6px 11px;font-size:10px}.emotion-panel{top:76px;bottom:112px;left:20px;width:350px}.intro{top:105px}.intro h1{font-size:30px}.punk-bolt{left:230px}.place-card{top:78px;bottom:115px;max-height:none}.view-tools{bottom:113px;left:auto;right:20px}.explore-bar{bottom:10px}.mast-right{gap:4px}.footline{font-size:7px}.emotion-panel .response-purpose,.emotion-panel .response-partners{font-size:10px}}
+body[data-music-motion="false"] .pulse-trace{animation-play-state:paused}
+
+/* Keep the complete feedback loop and referral link visible in the open card. */
+.emotion-panel{bottom:205px;padding:20px;max-height:510px}
+.emotion-panel h2{margin-bottom:14px}.watch-pulse{height:70px}
+.response-return{margin:10px 20px 13px;padding:7px 0 8px}
+#response-range{margin:8px 0 3px}.demo-note{margin:9px 0 11px}
+.response-purpose{font-size:11px;line-height:1.5;margin-bottom:8px}
+.response-partners{margin-bottom:8px}.support-link{font-size:10px}
+@media(max-width:800px){.emotion-panel{bottom:195px;padding:20px}.emotion-panel .response-return{margin:10px auto 13px}}
+@media(max-height:500px) and (min-width:601px){
+ .emotion-panel{top:76px;bottom:112px;left:20px;right:20px;width:auto;padding:15px;display:grid;grid-template-columns:1fr 1.65fr 1.1fr;grid-template-rows:15px 28px 17px 38px 24px;gap:5px 18px;align-content:center}
+ .emotion-panel>.eyebrow{grid-column:1;grid-row:1;font-size:7px;margin:0}
+ .emotion-panel h2{grid-column:1;grid-row:2/4;font-size:18px;margin:0;align-self:center}
+ .emotion-panel .response-purpose{grid-column:1;grid-row:4;font-size:9px;margin:0;align-self:center}
+ .emotion-panel .response-partners{grid-column:1;grid-row:5;font-size:8px;margin:0;align-self:center}
+ .emotion-panel .response-diagram{grid-column:2;grid-row:1/5;width:100%;margin:0}
+ .emotion-panel .response-return{grid-column:2;grid-row:5;width:100%;margin:0;padding:2px 0 6px;font-size:8px}
+ .emotion-panel .response-label{grid-column:3;grid-row:1;margin-right:15px;font-size:9px}
+ .emotion-panel #response-range{grid-column:3;grid-row:2;margin:0;align-self:center}
+ .emotion-panel .response-ends{grid-column:3;grid-row:3}
+ .emotion-panel .demo-note{grid-column:3;grid-row:4;margin:0;font-size:8px;align-self:center}
+ .emotion-panel .support-link{grid-column:3;grid-row:5;font-size:9px;padding:0;text-align:left;justify-self:start}
+ .emotion-panel .close{top:2px;right:2px;width:24px;height:24px;font-size:20px}
+}

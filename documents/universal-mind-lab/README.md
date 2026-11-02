@@ -1,8 +1,8 @@
 # Universal Mind Lab
 
-Working creative package for Ben Korbel. The current direction is recorded in [BRIEF.md](BRIEF.md), version 0.9.
+Working creative package for Ben Korbel. The current direction is recorded in [BRIEF.md](BRIEF.md), version 0.10.
 
-- [Reference index](REFERENCES.md): 31 supplied references, including the marketing doodle.
+- [Reference index](REFERENCES.md): 45 supplied references, including the marketing doodle.
 - [Reference manifest](reference-manifest.json): original paths, sizes and SHA-256 hashes.
 - [Accepted spatial study](concepts/spatial-study-02.png): open lawn, waterway edge and simplified related shells.
 - [Marketing original](references/marketing/R26-membership-marketing-doodle.jpeg).
@@ -31,3 +31,10 @@ Brief v0.8 adds the Fibonacci-rain landing page, Explore-to-fullscreen/music wit
 - [Architecture study](ARCHITECTURE-STUDY.md) and [furniture assets](FURNITURE-ASSETS.md).
 
 Brief v0.9 replaces manual stages with the automatic build-to-night story, restores the exact Informatics landing, refines the architecture and dance-floor interior, adds the continuous uniformly spaced event wordmark, the holographic dome, roof projections, the supplied Hexeosis animation, and the central fashion runway with a Vogue/Universal Mind flag. See [current progress](PROGRESS.md), [screen visuals](STAGE-VISUALS.md) and [runway](RUNWAY-STUDY.md).
+
+Brief v0.10 adds the mental health identity, wearable inference diagram and environmental response control, concise visitor cards, five-second sunset and automatic seven-stop tour, roof-anchored hologram, message flags, and the two supplied video trailers.
+
+- [Mindfulness revision release](MINDFULNESS-REVISION-RELEASE.md).
+- [Wearable inference context](EMOTIONAL-LOOP.md).
+- [Truck video panels and original archive](TRUCK-VIDEO-PANELS.md).
+- Next review after sign-off: proposed Justice and Tame Impala lineup typography and potential guest-speaker conversations.

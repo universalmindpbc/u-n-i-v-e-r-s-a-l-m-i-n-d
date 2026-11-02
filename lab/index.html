@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="robots" content="noindex,nofollow">
   <meta name="theme-color" content="#e9ece2">
-  <meta name="description" content="Universal Mind — music, fashion, mindfulness. Next generation lab for next generation humans. Proposal.">
+  <meta name="description" content="Universal Mind Lab — electronic music and fashion as mindfulness. A mental health initiative. Proposal.">
   <title>Universal Mind Lab</title>
   <link rel="icon" href="./assets/favicon.png">
-  <link rel="stylesheet" href="./lab.css?v=20261102story1">
+  <link rel="stylesheet" href="./lab.css?v=20261102mind1">
   <script type="importmap">{"imports":{"three":"./vendor/three.module.js"}}</script>
 </head>
 <body data-entered="false" data-build-stage="site" data-story="waiting">
@@ -20,6 +20,8 @@
   <main id="world" aria-label="Universal Mind Lab landscape study">
     <div id="scene" role="region" aria-label="Interactive 3D landscape"></div>
     <video id="music-video" playsinline loop preload="none" aria-hidden="true" tabindex="-1"></video>
+    <video id="truck-fashion-video" muted playsinline loop preload="none" hidden aria-hidden="true"></video>
+    <video id="truck-anime-video" muted playsinline loop preload="none" hidden aria-hidden="true"></video>
     <video id="stage-geometry-video" muted playsinline loop preload="none" aria-hidden="true" tabindex="-1" hidden></video>
     <div id="plan" class="plan" hidden>
       <svg viewBox="0 0 1000 720" role="img" aria-labelledby="plan-title plan-desc">
@@ -41,7 +43,7 @@
     <div id="labels" aria-hidden="true"></div><div id="layout-notes" hidden><b>Dance floor &amp; lounges</b><span>Open dance floor · scattered seating · hammocks</span><span>22.6 × 18.4 m main pavilion</span><small>Concept layout · capacity subject to design review</small></div>
     <div class="vignette" aria-hidden="true"></div>
     <header class="masthead">
-      <a class="wordmark" href="./" aria-label="Universal Mind Lab overview"><span>universal<b>mind</b><em>[lab]</em></span><small>music · fashion · mindfulness</small></a>
+      <a class="wordmark" href="./" aria-label="Universal Mind Lab overview"><span>universal<b>mind</b><em>[lab]</em></span><small class="mindfulness-line"><span>electronic</span> <span>music</span> <span>and</span> <span>fashion</span> <span>as</span> <span>mindfulness</span></small></a>
       <div class="mast-right">
     <section class="media-tools" aria-label="Music and video">
       <button id="music-toggle" type="button" aria-label="Play music" aria-pressed="false"><span id="music-symbol" aria-hidden="true">▶</span> <span id="music-label">Music</span></button>
@@ -62,15 +64,35 @@
         </button>
       </div>
     </header>
-    <section class="intro" aria-labelledby="headline"><h1 id="headline"><span>Next Generation Lab</span><span>for Next Generation</span><span>Humans</span></h1></section>
+    <section class="intro" aria-labelledby="headline"><svg class="punk-bolt" viewBox="0 0 110 200" aria-hidden="true"><path d="M73 8 17 111 57 101 30 187 98 74 59 84Z"/><path d="m77 5-61 111 45-13-26 79"/></svg><h1 id="headline"><span>Next Generation Lab</span><span>for Next Generation</span><span>Humans</span></h1></section>
+    <button id="emotion-toggle" class="emotion-toggle" aria-expanded="false" aria-controls="emotion-panel"><svg viewBox="0 0 52 28" aria-hidden="true"><path d="M1 15h10l5-9 7 20 8-24 6 13h14"/></svg><span>Change your emotions,<br><b>change your world.</b></span><span aria-hidden="true">↗</span></button>
+    <aside id="emotion-panel" class="emotion-panel" hidden aria-labelledby="emotion-title">
+      <button id="emotion-close" class="close" aria-label="Close emotional response diagram">×</button>
+      <p class="eyebrow">MINDFULNESS IN MOTION</p><h2 id="emotion-title">Change your emotions,<br><em>change your world.</em></h2>
+      <div class="response-diagram" role="img" aria-label="Apple Watch heart rhythm data flows through SIX to inferences related to oxytocin, dopamine and cortisol. These guide changes in light and sound, creating a feedback loop for mindfulness practice.">
+        <div class="watch-node"><svg class="watch-pulse" viewBox="0 0 80 108" aria-hidden="true"><path class="watch-strap" d="M25 23 28 3h24l3 20m-30 62 3 20h24l3-20"/><rect x="13" y="22" width="54" height="64" rx="17"/><path class="pulse-trace" d="M20 55h9l5-11 7 24 8-29 5 16h7"/><circle cx="70" cy="47" r="3"/></svg><b>Apple Watch</b><span>Heart rhythm</span></div>
+        <svg class="flow-arrow" viewBox="0 0 40 20" aria-hidden="true"><path d="M1 10h35m-8-7 8 7-8 7"/></svg>
+        <div class="inference-node"><small>SIX · INFERRED SIGNALS</small><b>Oxytocin</b><b>Dopamine</b><b>Cortisol</b></div>
+        <svg class="flow-arrow" viewBox="0 0 40 20" aria-hidden="true"><path d="M1 10h35m-8-7 8 7-8 7"/></svg>
+        <div class="world-node"><svg viewBox="0 0 60 65" aria-hidden="true"><path d="M4 51Q30 6 56 51ZM4 51h52M15 51 30 18l15 33M11 38h38M22 27h16"/><path class="sound-waves" d="M17 60q13-7 26 0M22 65q8-4 16 0"/></svg><b>Light + sound</b><span>Your world responds</span></div>
+      </div>
+      <div class="response-return"><span aria-hidden="true">↶</span> Notice · regulate · connect <span aria-hidden="true">↵</span></div>
+      <label class="response-label" for="response-range">Explore the response <output id="response-state" for="response-range">Connect</output></label>
+      <input id="response-range" type="range" min="0" max="100" value="70" aria-label="Explore the illustrative light and sound response">
+      <div class="response-ends"><span>Settle</span><span>Connect</span></div>
+      <p class="demo-note">Interactive demonstration · no live watch connected</p>
+      <p class="response-purpose">Emotional awareness and regulation through shared creative experiences.</p>
+      <p class="response-partners">Apple Watch · teamLab · TDC · Arup</p>
+      <button id="support-pathway" class="support-link">Support &amp; referral pathways ↗</button>
+    </aside>
     <p id="story-status" class="sr-only" role="status" aria-live="polite"></p>
     <p id="fullscreen-status" class="fullscreen-status" role="status" hidden></p>
     <div class="compass" aria-hidden="true"><span>N</span><svg viewBox="0 0 40 40"><path d="M20 4L25 27 20 23 15 27Z" fill="currentColor"/><circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-opacity=".2"/></svg></div>
-    <aside id="place-card" class="place-card" hidden aria-labelledby="place-title"><button id="place-close" class="close" aria-label="Close place detail">×</button><p id="place-number" class="eyebrow"></p><h2 id="place-title"></h2><p id="place-copy"></p><p id="place-footnote" class="detail-note"></p><button id="interior-view" class="outline-button" hidden>Inside the pavilion ↗</button></aside>
+    <aside id="place-card" class="place-card" hidden aria-labelledby="place-title"><button id="place-close" class="close" aria-label="Close place detail">×</button><p id="place-number" class="eyebrow"></p><h2 id="place-title"></h2><p id="place-copy"></p><button id="interior-view" class="outline-button" hidden>Inside the pavilion ↗</button></aside>
     <p id="media-status" role="status" hidden></p>
     <div class="view-tools" aria-label="View options"><button id="tour-toggle" aria-pressed="false">Tour</button><button id="rain-toggle" aria-pressed="false">Rain shelter</button><button id="layout-toggle" aria-pressed="false">Layout</button><button id="night-toggle" aria-pressed="false" aria-label="Switch to night"><span aria-hidden="true">◐</span> <span id="day-label">Day</span></button><button id="plan-toggle" aria-pressed="false"><span aria-hidden="true">▦</span> 2D plan</button><button id="labels-toggle" aria-pressed="true"><span aria-hidden="true">⌖</span> Labels</button><button id="reset-view" aria-label="Reset to overview"><span aria-hidden="true">↺</span> Reset</button></div>
     <footer class="explore-bar">
-      <div class="explore-heading"><p class="membership">membership via <a href="https://headspace.org.au/eora" target="_blank" rel="noopener noreferrer">headspace.org.au/eora <span aria-hidden="true">↗</span></a></p><span id="navigation-hint">Drag to look around · scroll to move closer</span></div>
+      <div class="explore-heading"><p class="membership">exclusive tickets via <a href="https://headspace.org.au/eora" target="_blank" rel="noopener noreferrer">headspace.org.au/eora <span aria-hidden="true">↗</span></a></p><span id="navigation-hint">Drag to look around · scroll to move closer</span></div>
       <nav id="place-list" aria-label="Explore places">
         <button data-view="overview" aria-pressed="true"><span>01</span> The clearing</button>
         <button data-view="main" aria-pressed="false"><span>02</span> Main pavilion</button>
@@ -80,7 +102,7 @@
         <button data-view="support" aria-pressed="false"><span>06</span> Support area</button>
         <button data-view="fashion" aria-pressed="false"><span>07</span> Fashion runway</button>
       </nav>
-      <div class="footline"><span>an initiative by <b>NSW Education, Headspace &amp; Universal Mind</b></span></div>
+      <div class="footline"><span>a mental health initiative by <b>New South Wales Education, Headspace &amp; Universal Mind</b></span></div>
     </footer>
     <div id="loading" role="status"><span class="loading-mark"></span><span>Loading 3D landscape…</span></div>
     <p id="scene-status" class="sr-only" role="status" aria-live="polite"></p>
@@ -88,12 +110,12 @@
   <dialog id="vision" aria-labelledby="vision-title">
     <button id="about-close" class="close" aria-label="Close proposal">×</button>
     <h2 id="vision-title">Proposal</h2>
-    <p>Illustrative site layout with one main pavilion, food and play pavilions, a listening area, and support facilities. Site dimensions and architecture remain in development.</p>
+    <p>Electronic music and fashion as mindfulness. Universal Mind Lab brings creative education, emotional awareness and access to support into one shared experience.</p>
     <dl class="proposal-details">
       <dt>Main pavilion</dt><dd>An open dance floor, scattered Tropicália lounges and hanging seats, people, four line arrays and a panoramic screen following the roof profile. The attendance ambition remains approximately 100 people.</dd>
-      <dt>Arrival</dt><dd>The opening story follows the arriving road train, ten seconds of construction and progressive fit-out. The site opens automatically, then moves from day to night after about twenty seconds. Replay restarts the story.</dd>
+      <dt>Arrival</dt><dd>The opening story follows the arriving road train, ten seconds of construction and progressive fit-out. The site opens automatically, then passes through a five-second golden and peach sunset. An automatic tour visits all seven places before returning to the clearing. Replay restarts the story.</dd>
       <dt>Food and play</dt><dd>Cooking, dining, a sheltered activity pavilion and a separate fluid sculptural playground with rainbow metallic surfaces.</dd>
-      <dt>Listening area</dt><dd>Tropicália furniture studies, tubular glass listening pylons and AKG K812 headphone representations. The Apple Music interface is a proposal.</dd>
+      <dt>Listening area</dt><dd>Moroso Tropicália furniture by Patricia Urquiola, tubular glass listening pylons and AKG K812 headphones create individual listening spaces.</dd>
       <dt>Area flags</dt><dd>Triangular flags combine the Universal Mind flower with monochrome headspace, MSF, NSW Education and Apple Music identities. A support vehicle and staff figure illustrate contextual branding.</dd>
       <dt>Music and video</dt><dd>Play Neverender by Justice and Tame Impala. TV overlays the video at an adjustable transparency. Motion controls the animated landscape. Day/Night also allows a manual lighting choice after opening.</dd>
       <dt>Fashion runway</dt><dd>The central approach doubles as a runway, with model walks, six video panels, sculptural pieces and a Vogue flag over the Universal Mind flower. Indigenous fashion collaboration is the programme direction.</dd>
@@ -101,13 +123,17 @@
       <dt>Programme examples</dt><dd>Charli XCX for music and fashion, Lady Chu for food, and a Merivale collaboration are proposed examples. Smart-device workshop tables illustrate the Ableton Link direction.</dd>
       <dt>Light rain</dt><dd>Toggle Rain shelter to review covered connections and side screens. Drainage, structural design and weather limits remain part of site-specific planning.</dd>
       <dt>Night production</dt><dd>A rising geodesic light framework, patterned roof projections, lighting towers, lasers and wristbands form the night study. Proposed d&amp;b sound, TDC screens and teamLab projections inform the direction.</dd>
-      <dt>Membership</dt><dd>Free participation, with proposed self-nomination, headspace referrals and school nominations. Online participation and live TV are planned.</dd>
+      <dt>Mental health and education</dt><dd>Creative workshops invite people to practise emotional awareness, regulation and connection. The programme aims to dissolve stigma and make support and referral pathways part of everyday participation.</dd>
+      <dt>Change your emotions, change your world</dt><dd>Apple Watch heart-rhythm data feeds Immersion Neuroscience / SIX. Oxytocin–dopamine and cortisol inferences inform changes in light, colour, motion and sound. The watch measures cardiac signals; the neurochemical interpretation is inferred, not a direct hormone measurement. The cortisol mapping reflects the provider explanation shared with Ben Korbel. The browser demonstration uses an illustrative control and collects no health data.</dd>
+      <dt>Responsive environment</dt><dd>Apple Watch, teamLab, TDC and Arup form the partnership direction for the responsive experience. The aim is to support short-term stress reduction and felt connection through mindfulness practice.</dd>
+      <dt>Support and referrals</dt><dd>A shared support area brings together headspace, Médecins Sans Frontières (MSF), and the Australian Association of Buddhist Counsellors and Psychotherapists (AABCAP). The pathway connects school nominations and headspace referrals with a welcome conversation, optional on-site support and onward referral.</dd>
+      <dt>Tickets</dt><dd>Free participation through headspace referrals, school nominations and expressions of interest. Online participation and live TV extend access beyond the site.</dd>
     </dl>
-    <p class="detail-note">Membership arrangements and named partnerships are proposed. Applications are not collected on this page.</p>
+    <p class="detail-note">This is a partnership proposal. Named organisations, artists, architectural adaptations and ticket pathways remain subject to agreement. Applications are not collected on this page.</p>
   </dialog>
   <noscript><style>#landing{display:none!important}#world{visibility:visible!important}#loading{display:none}#plan{display:flex!important}.plan-assembled{display:block!important}.explore-bar{visibility:visible!important}.view-tools,.media-tools,#about-open{display:none}</style><p class="noscript-note">The site plan is available without JavaScript. Enable JavaScript to explore in 3D.</p></noscript>
-  <script src="./landing-rain.js?v=20261102story1" defer></script>
+  <script src="./landing-rain.js?v=20261102mind1" defer></script>
   <script src="./vendor/hls.min.js" defer></script>
-  <script type="module" src="./lab.mjs?v=20261102story1"></script>
+  <script type="module" src="./lab.mjs?v=20261102mind1"></script>
 </body>
 </html>

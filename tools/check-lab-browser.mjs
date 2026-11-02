@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 import { chromium } from '/Users/benkorbel/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const localSource=process.env.LAB_QA_SOURCE_LOCAL==='1';
-const out=localSource ? '/private/tmp/um-lab-story-qa' : path.join(root,'documents/universal-mind-lab/qa/story-revision');fs.mkdirSync(out,{recursive:true});
+const out=localSource ? '/private/tmp/um-lab-mindfulness-qa' : path.join(root,'documents/universal-mind-lab/qa/mindfulness-revision');fs.mkdirSync(out,{recursive:true});
 const executablePath='/Users/benkorbel/Library/Caches/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-mac-arm64/chrome-headless-shell';
 const server=await chromium.launchServer({headless:true,executablePath,args:['--mute-audio','--autoplay-policy=user-gesture-required','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
 assert.ok(server.process().spawnargs.includes('--mute-audio'));
@@ -75,9 +75,24 @@ try {
   await at(p,32);assert.equal(await p.locator('body').getAttribute('data-story'),'open');assert.ok(await p.locator('#place-list').isVisible());assert.equal(await p.locator('body').getAttribute('data-night-progress'),'0.000');
   await p.screenshot({path:path.join(out,'lab-open-day.png')});
   checks.push('Exact minimal Informatics landing content; original logo/favicon; visitor launch at 7%; uniform tracking across universalmind[lab]; no stage selector; truck arrival, ten-second construction and sequential facilities; navigation and tags wait until open');
-  await at(p,50);assert.equal(await p.locator('body').getAttribute('data-night-progress'),'0.000');
-  await at(p,56);assert.ok(Number(await p.locator('body').getAttribute('data-night-progress'))>.45);await at(p,62);assert.equal(await p.locator('body').getAttribute('data-story'),'complete');assert.equal(await p.locator('body').getAttribute('data-night-progress'),'1.000');
+  const words=await p.locator('.mindfulness-line span').allTextContents();assert.deepEqual(words,['electronic','music','and','fashion','as','mindfulness']);
+  const colours=await p.locator('.mindfulness-line span').evaluateAll(es=>es.map(e=>getComputedStyle(e).color));assert.equal(colours[0],colours[4]);assert.equal(colours[1],colours[5]);assert.equal(new Set(colours).size,4);
+  assert.equal(await p.locator('#place-footnote').count(),0);assert.ok((await p.locator('.footline').innerText()).startsWith('a mental health initiative'));
+  const ticket=await p.locator('.membership').boundingBox();assert.ok(Math.abs(ticket.x+ticket.width/2-720)<2);
+  assert.equal(await p.locator('body').getAttribute('data-hologram-anchor'),'roof-surface');assert.equal(await p.locator('body').getAttribute('data-hologram-diameter'),'20.4');
+  assert.equal(await p.locator('body').getAttribute('data-message-flags'),'Peace|Love|Unity|Respect|PLUR|This Too Shall Pass|Kindness|Namaste');
+  await at(p,35.5);assert.ok(Number(await p.locator('body').getAttribute('data-night-progress'))>.45);await p.screenshot({path:path.join(out,'lab-sunset.png')});
+  for(const [time,key] of [[39,'overview'],[44,'main'],[49,'food'],[54,'play'],[59,'river'],[64,'support'],[69,'fashion'],[74,'fashion']]){
+    await at(p,time);assert.equal(await p.locator('body').getAttribute('data-camera-view'),key);assert.equal(await p.locator('body').getAttribute('data-night-progress'),'1.000');
+    if(key==='overview')assert.ok(await p.locator('#emotion-panel').isVisible());
+    if(key==='support')assert.ok((await p.locator('#place-copy').innerText()).includes('Australian Association of Buddhist Counsellors and Psychotherapists (AABCAP)'));
+  }
+  await at(p,79);assert.equal(await p.locator('body').getAttribute('data-story'),'complete');assert.equal(await p.locator('body').getAttribute('data-camera-view'),'overview');
   await p.screenshot({path:path.join(out,'lab-auto-night.png')});
+  await p.locator('#response-range').fill('10');await p.clock.runFor(120);assert.equal(await p.locator('body').getAttribute('data-scene-response'),'0.10');assert.equal(await p.locator('body').getAttribute('data-sound-response'),'0.29');
+  await p.locator('#response-range').fill('90');await p.clock.runFor(120);assert.equal(await p.locator('body').getAttribute('data-scene-response'),'0.90');assert.equal(await p.locator('#response-state').innerText(),'Connect');
+  await click(p,'#support-pathway');assert.equal(await p.locator('body').getAttribute('data-camera-view'),'support');assert.ok(!await p.locator('#emotion-panel').isVisible());
+  checks.push('Four-colour word sequence; centered exclusive tickets; mental health footer; clean visitor cards and named AABCAP support; roof-anchored hologram; eight message flags; five-second sunset; seven timed tour stops plus final hold/reset; visible inference diagram and interactive light/sound response; support pathway');
   const renderStats=await p.evaluate(()=>({drawCalls:Number(document.body.dataset.renderCalls),triangles:Number(document.body.dataset.renderTriangles)}));
   await click(p,'[data-view="main"]');await click(p,'#interior-view');await p.screenshot({path:path.join(out,'lab-main-interior.png')});
   await click(p,'[data-view="food"]');await p.screenshot({path:path.join(out,'lab-food.png')});await click(p,'[data-view="support"]');await p.screenshot({path:path.join(out,'lab-support.png')});
@@ -89,9 +104,11 @@ try {
   await click(p,'#fullscreen-toggle');assert.equal(await p.locator('#fullscreen-toggle').getAttribute('aria-pressed'),'false');await click(p,'#fullscreen-toggle');await p.evaluate(()=>window.__labFullscreenQA.exit());assert.equal(await p.locator('#fullscreen-toggle').getAttribute('aria-pressed'),'false');
   await p.setViewportSize({width:1920,height:1080});await p.clock.runFor(100);assert.equal(await p.locator('#world').evaluate(e=>e.clientHeight),1080);await p.setViewportSize({width:1440,height:1000});await p.clock.runFor(100);
   await click(p,'#replay-story');assert.ok(Number(await p.locator('body').getAttribute('data-story-time'))<1);assert.equal(await p.locator('body').getAttribute('data-night-progress'),'0.000');assert.ok(!await p.locator('#place-list').isVisible());
-  checks.push('Automatic daylight hold and gradual night completion; interior and all area camera views; rain/layout, plan, proposal and top-right media settings; Replay resets scene/daylight; fullscreen state mocked only; 1920×1080 layout');
+  await at(p,44);await click(p,'[data-view="river"]');await at(p,79);assert.equal(await p.locator('body').getAttribute('data-camera-view'),'river');assert.equal(await p.locator('body').getAttribute('data-tour-active'),'false');
+  checks.push('Manual place selection cancels the automated tour without resetting the scene');
+  checks.push('Two-second daylight hold and five-second sunset; interior and all area camera views; rain/layout, plan, proposal and top-right media settings; Replay resets scene/daylight; fullscreen state mocked only; 1920×1080 layout');
   const assets=[];
-  for(const file of ['index.html','lab.css','lab.mjs','media.mjs','story.mjs','crowd.mjs','light-show.mjs','stage-visuals.mjs','runway.mjs','landing-rain.js','architecture.mjs','furnishings.mjs','site-features.mjs','vendor/hls.min.js','vendor/LICENSE-hls.txt','vendor/three.module.js','vendor/OrbitControls.js','vendor/LICENSE-three.txt','assets/headspace.svg','assets/msf.svg','assets/nsw-government.svg','assets/apple-music.svg','assets/universal-mind-flower.png','assets/favicon.png','assets/landing-flower.png','assets/hexeosis-hx_4a480.mp4','assets/vogue.png']) {
+  for(const file of ['index.html','lab.css','lab.mjs','media.mjs','story.mjs','crowd.mjs','light-show.mjs','stage-visuals.mjs','runway.mjs','landing-rain.js','architecture.mjs','furnishings.mjs','site-features.mjs','vendor/hls.min.js','vendor/LICENSE-hls.txt','vendor/three.module.js','vendor/OrbitControls.js','vendor/LICENSE-three.txt','assets/headspace.svg','assets/msf.svg','assets/nsw-government.svg','assets/apple-music.svg','assets/universal-mind-flower.png','assets/favicon.png','assets/landing-flower.png','assets/hexeosis-hx_4a480.mp4','assets/vogue.png','assets/truck-fashion.mp4','assets/truck-anime.mp4','assets/truck-fashion.jpg','assets/truck-anime.jpg']) {
     const result=await p.evaluate(async file=>{const version=new URL(document.querySelector('link[rel=stylesheet]').href).search;const requestedURL=new URL('./'+file+(file==='index.html'?'':version),location.href).href;const r=await fetch(requestedURL,{cache:'reload'});const data=await r.arrayBuffer();const hash=[...new Uint8Array(await crypto.subtle.digest('SHA-256',data))].map(x=>x.toString(16).padStart(2,'0')).join('');return {file,requestedURL,status:r.status,bytes:data.byteLength,sha256:hash};},file);
     assert.equal(result.status,200,file);assert.equal(result.sha256,createHash('sha256').update(fs.readFileSync(path.join(root,'lab',file))).digest('hex'),file);assets.push(result);
   }
@@ -100,7 +117,7 @@ try {
     const mob=await context({viewport,deviceScaleFactor:1,isMobile:true,hasTouch:true,reducedMotion:'reduce'});await mob.p.goto(url,{waitUntil:'networkidle'});await mob.p.waitForFunction(()=>document.body.dataset.ready==='true');await mob.p.screenshot({path:path.join(out,`lab-landing-${viewport.width}.png`)});await enter(mob.p);await at(mob.p,32);
     assert.equal(await mob.p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth&&document.documentElement.scrollHeight<=innerHeight),true);
     const boxes=await mob.p.locator('.wordmark,.mast-right').evaluateAll(es=>es.map(e=>{const r=e.getBoundingClientRect();return {x:r.x,y:r.y,right:r.right,bottom:r.bottom};}));assert.ok(boxes.every(b=>b.x>=0&&b.right<=viewport.width));assert.ok(boxes[1].bottom<145,'Mobile controls remain in one row beneath identity');
-    await mob.p.screenshot({path:path.join(out,`lab-mobile-${viewport.width}.png`)});await click(mob.p,'[data-view="main"]');assert.ok(await mob.p.locator('#place-card').isVisible());await click(mob.p,'#about-open');assert.ok(await mob.p.locator('#vision').isVisible());await mob.c.close();
+    await mob.p.screenshot({path:path.join(out,`lab-mobile-${viewport.width}.png`)});await click(mob.p,'#emotion-toggle');assert.ok(await mob.p.locator('#emotion-panel').isVisible());await mob.p.screenshot({path:path.join(out,`lab-response-${viewport.width}.png`)});await click(mob.p,'#emotion-close');await click(mob.p,'[data-view="main"]');assert.ok(await mob.p.locator('#place-card').isVisible());await click(mob.p,'#about-open');assert.ok(await mob.p.locator('#vision').isVisible());await mob.c.close();
   }
   checks.push('390×844 portrait and 844×390 landscape: no page overflow, header in bounds, touch place detail and proposal');
   for(const mode of ['prefixed','denied','unsupported']){

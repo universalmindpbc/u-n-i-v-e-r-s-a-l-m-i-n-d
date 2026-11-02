@@ -1,6 +1,6 @@
 # Universal Mind Lab — creative and development brief
 
-**Version:** 0.9 · **Date:** 2 November 2026 · **Owner:** Ben Korbel
+**Version:** 0.10 · **Date:** 2 November 2026 · **Owner:** Ben Korbel
 **Status:** Working concept for discussion, collaboration and staged visual development. Architectural engineering, operating arrangements and named partnerships remain to be established.
 
 ## 1. Purpose
@@ -470,7 +470,7 @@ Apple Watch cardiac measurements feed the provider’s agreed SIX / Immersion in
 The pitch distinguishes the sensor measurement, the provider’s inference and the environmental response. It preserves the full provider explanation with attribution. API access, metric definitions, update rate, group aggregation, participant consent, signal-loss behaviour and operator controls are practical MVP integration tasks. The current browser landscape has no live Watch connection yet; implementing that connection is in the MVP scope.
 
 
-## 22. Current interactive implementation — v0.9
+## 22. Previous interactive implementation — v0.9 (updated by section 23)
 
 ### Entry and event identity
 
@@ -518,3 +518,48 @@ See [progress](PROGRESS.md), [architecture](ARCHITECTURE-STUDY.md), [crowd](CROW
 The main approach path doubles as a fashion runway, leaving the central lawn open. A low 3.8 × 30 m surface occupies Z8–38 in the model; slim portrait video panels and sculptural loops line either side. Eight tall fictional fashion figures walk a rounded loop up and down the route. The Vogue identity appears on a triangular flag over the Universal Mind flower. Indigenous fashion designers and models are the proposed collaboration direction. The illustrative clothes do not reproduce or claim an Indigenous cultural design.
 
 The curved full-height stage screen blends the exact Hexeosis GIF supplied by Ben with artist video. The GIF is preserved as R31; a silent 540 × 540 H.264 derivative retains its 72 frames and 2.88-second duration for efficient video-texture playback. The geometric content repeats across the panoramic surface and crossfades with the current Neverender source. Live performance footage of Tame Impala or Charli XCX is intended content, not an asset presently supplied or represented as live. Music remains one audible timeline; the geometry source has no audio. Motion controls pause/resume the geometry and model walks along with other scene motion.
+
+## 23. Mental health identity, responsive loop and guided tour — v0.10
+
+This section takes precedence over earlier interface copy and story timings.
+
+### Identity and purpose
+
+- Keep the continuous `universalmind[lab]` wordmark with uniform tracking and bold **mind**. The Informatics-style landing remains minimal and unchanged.
+- Replace the world’s topic line with **electronic music and fashion as mindfulness**. Colour successive words blue, yellow, pink, green, blue, yellow; use readable day and night values.
+- Keep **Next Generation Lab for Next Generation Humans**, with a loose hand-drawn lightning bolt.
+- Centre **exclusive tickets via headspace.org.au/eora** above the location navigation. Participation remains free; “exclusive” refers to limited in-person places.
+- Footer: **a mental health initiative by New South Wales Education, Headspace & Universal Mind**.
+- The experience foregrounds creative education, emotional awareness and regulation, dissolving stigma, and access to support and referral pathways.
+
+### Change your emotions, change your world
+
+A vector overlay connects an animated Apple Watch pulse to **oxytocin, dopamine and cortisol** inferences through **Immersion Neuroscience / SIX**, then to responsive light and sound, returning to noticing, regulation and connection. Ben explicitly prefers the neurochemical terms in the infographic; keep them visible. The watch icon carries a moving pulse, without an invented live BPM value or hormone level.
+
+The committed delivery MVP remains unchanged. The current browser overlay is an interactive demonstration with no connected watch and no health-data collection. A Settle–Connect control changes scene colour/intensity and music level; it does not estimate a person’s emotions. Provider inference, private provider explanations and directly measured cardiac signals remain distinct. The public presentation retains a concise “inferred signals” label and a single Proposal panel for supporting context. See `EMOTIONAL-LOOP.md` for verified sources and the attributed cortisol/90–10 discussion.
+
+Proposed responsive-environment partners: **Apple Watch, teamLab, TDC and Arup**, alongside the SIX inference integration. The purpose is mindfulness practice, with short-term stress reduction and increased felt connection as intended outcomes.
+
+### Public scene cards
+
+Cards describe the visitor experience. Remove grey development footnotes and internal references such as “supplied ZHA reference”, “the flag sits over the flower”, and “studies”. Name **Zaha Hadid Architects (ZHA)** in the playground credit; the current original concept mesh is inspired by that architecture and is not represented as a commissioned ZHA design. Use **Moroso Tropicália furniture by Patricia Urquiola**. Spell out **Médecins Sans Frontières (MSF)**.
+
+The shared support space unites **headspace**, **Médecins Sans Frontières (MSF)** and the **Australian Association of Buddhist Counsellors and Psychotherapists (AABCAP)**. School nominations/headspace referrals lead to a welcome conversation, optional support and onward care. Partnership status lives in the shared Proposal panel, rather than repeated card footnotes.
+
+### Revised automatic story
+
+Retain arrival, ten-second main construction and individual fit-out through second 31. Hold the open day scene for two seconds. From seconds **33–38**, pass through golden light and peach dusk into night. Once night arrives, automatically visit **clearing → main pavilion → food & play → playground → by the water → support → fashion runway**, changing location every **five seconds**. Give fashion an additional five-second final hold, then return to the clearing at second **78**. The build does not restart at that return. Replay runs the full journey again. Manual camera/place interaction cancels the automated tour without cancelling the remaining sunset; visitors retain control.
+
+### Architecture and messages
+
+Reduce the geodesic projection to a 20.4 m diameter with a shallower depth. Its lower vertices follow the physical vault’s surface; projected height grows from those fixed roof anchors. Keep the entire Droneport visible.
+
+Main-pavilion flag: Universal Mind flower alone, no text. Move NSW Education toward the rear waterfront edge. Place the headspace flag outside the support canopy’s footprint. Add colourful smaller message flags across the site: **Peace, Love, Unity, Respect, PLUR, This Too Shall Pass, Kindness, Namaste**. Keep the central runway and public circulation open.
+
+### Road-train video architecture
+
+Ben replaced the generated abstract wrap with two supplied eight-second videos. The two trailer/container bodies become video panels, one fashion portrait and one anime/landscape composition. Preserve LINFOX on the front cab and trailer roofs. Panels play silently and loop; the existing music remains the single audible programme. Motion controls pause/resume the trailer displays. Archive the supplied stills and originals unchanged; runtime derivatives are compact H.264 files with no audio. See `TRUCK-VIDEO-PANELS.md` for the verified filename-to-content mapping.
+
+### Next review after this section is signed off
+
+**Discuss typography and a graphical overlay for the proposed lineup: Justice and Tame Impala.** Ben requested a reminder on delivery of this revision. Explore potential guest conversations with **the Dalai Lama** (including video conference), **Pema Chödrön**, or a **David Lynch Foundation** representative for Transcendental Meditation education for young people. These are proposed invitations, not bookings. Do not add lineup artwork during this revision.
