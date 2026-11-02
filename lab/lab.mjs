@@ -1,5 +1,5 @@
-import { initMedia } from './media.mjs?v=20261102mind1';
-import { createStory } from './story.mjs?v=20261102mind1';
+import { initMedia } from './media.mjs?v=20261102river1';
+import { createStory } from './story.mjs?v=20261102river1';
 const $ = (id) => document.getElementById(id);
 const reduced = matchMedia('(prefers-reduced-motion: reduce)');
 const mobile = () => innerWidth < 700;
@@ -15,7 +15,7 @@ const places = {
 };
 let sceneAPI = null;
 let entered=false,buildStage='site',rain=false,layoutVisible=false,tourTimer=0,storyState=null;
-let autoTourCancelled=false,lastAutoView=null;
+let autoTourCancelled=false,lastAutoView=null,lineupDismissed=false;
 const story=createStory(applyStory);
 $('world').inert=true;$('world').setAttribute('aria-hidden','true');
 const media = initMedia(state => sceneAPI?.setMusicMotion(state));
@@ -26,7 +26,7 @@ let mode = '3d';
 let selected = 'overview';
 function selectPlace(key, show = true, automated = false) {
   if(!automated)stopTour();
-  selected = key;
+  selected = key;lineupDismissed=false;syncLineup();
   document.body.dataset.cameraView = key;
   const info = places[key];
   document.querySelectorAll('[data-view]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.view === key)));
@@ -40,7 +40,7 @@ function selectPlace(key, show = true, automated = false) {
   status(info.title + ' ' + info.copy);
 }
 function setMode(next) {
-  mode = next;
+  mode = next;syncLineup();
   document.body.dataset.mode = mode;
   $('plan').hidden = mode !== 'plan';
   $('scene').hidden = mode === 'plan';
@@ -100,6 +100,7 @@ $('explore-enter').addEventListener('click',()=>{
   $('landing').hidden=true;$('world').inert=false;$('world').removeAttribute('aria-hidden');
   sceneAPI?.setVisible(mode==='3d');media.start();changeFullscreen(true);startStory();$('replay-story').focus({preventScroll:true});
 });
+function syncLineup(){const show=entered&&mode==='3d'&&selected==='overview'&&!lineupDismissed&&(Number(storyState?.seconds||0)<6||Number(storyState?.seconds||0)>=78);document.body.dataset.lineupVisible=String(show);$('artist-lineup').setAttribute('aria-hidden',String(!show));}
 function applyStory(state){
   storyState=state;buildStage=state.phase;
   document.body.dataset.buildStage=state.phase==='night'||state.phase==='dusk'||state.phase==='tour'?'open':state.phase;
@@ -110,9 +111,9 @@ function applyStory(state){
   const descriptions={site:'The open site.',arrival:'The road train arrives.',assembly:'The pavilion is being built.',fitout:'Facilities and furnishings are being added.',open:'The Lab is open.',dusk:'Daylight fades and the light show begins.',tour:'Explore the Lab.',night:'The site is illuminated.'};
   if($('story-status').dataset.phase!==state.phase){$('story-status').dataset.phase=state.phase;$('story-status').textContent=descriptions[state.phase];}
   syncNight(state.night>.65);sceneAPI?.setStory(state);
-  if(state.tourView&&!autoTourCancelled&&state.tourView!==lastAutoView){lastAutoView=state.tourView;selectPlace(state.tourView,true,true);if(state.tourView==='overview'&&!mobile())emotionPanel(true);}
+  if(state.tourView&&!autoTourCancelled&&state.tourView!==lastAutoView){lastAutoView=state.tourView;selectPlace(state.tourView,true,true);if(state.tourView==='overview'&&innerWidth>=1100)emotionPanel(true);}
   const autoActive=!autoTourCancelled&&state.phase==='tour';document.body.dataset.tourActive=String(autoActive);if(!tourTimer){$('tour-toggle').textContent=autoActive?'Stop tour':'Tour';$('tour-toggle').setAttribute('aria-pressed',String(autoActive));}
-  document.body.dataset.tourStep=state.tourView||'';
+  document.body.dataset.tourStep=state.tourView||'';syncLineup();
 }
 function startStory(){stopTour();autoTourCancelled=false;lastAutoView=null;emotionPanel(false);$('place-card').hidden=true;selectPlace('overview',false,true);story.start();}
 $('replay-story').addEventListener('click',startStory);
@@ -128,7 +129,19 @@ $('emotion-toggle').addEventListener('click',()=>{stopTour();emotionPanel($('emo
 $('emotion-close').addEventListener('click',()=>{emotionPanel(false);$('emotion-toggle').focus();});
 document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!$('emotion-panel').hidden)emotionPanel(false);});
 $('support-pathway').addEventListener('click',()=>{emotionPanel(false);selectPlace('support');});
-$('response-range').addEventListener('input',()=>{stopTour();const value=Number($('response-range').value)/100;$('response-state').textContent=value<.34?'Settle':value<.67?'Open':'Connect';sceneAPI?.setResponse(value);media.setResponse(value);document.body.dataset.responseLevel=value.toFixed(2);});
+const connectionSteps=[
+  {key:'earth',label:'Connection to our earth',cue:'Feel your feet on the ground, or feel the support beneath you as you sit.'},
+  {key:'self',label:'Connection to self',cue:'Feel your breath. Feel your body.'},
+  {key:'others',label:'Connection to each other',cue:'Feel the energy of the people around you.'}
+];
+function updateConnection(){
+  stopTour();const value=Number($('response-range').value)/100,step=connectionSteps[value<.34?0:value<.67?1:2];
+  $('response-state').textContent=step.label;$('connection-cue').textContent=step.cue;
+  document.querySelectorAll('[data-connection]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.connection===step.key)));
+  sceneAPI?.setResponse(value);media.setResponse(value);document.body.dataset.responseLevel=value.toFixed(2);document.body.dataset.connectionStep=step.key;
+}
+$('response-range').addEventListener('input',updateConnection);
+document.querySelectorAll('[data-connection]').forEach(button=>button.addEventListener('click',()=>{$('response-range').value=button.dataset.response;updateConnection();}));
 $('rain-toggle').addEventListener('click',()=>{rain=!rain;$('rain-toggle').setAttribute('aria-pressed',String(rain));document.body.dataset.rain=String(rain);sceneAPI?.setRain(rain);});
 $('layout-toggle').addEventListener('click',()=>{layoutVisible=!layoutVisible;$('layout-toggle').setAttribute('aria-pressed',String(layoutVisible));$('layout-notes').hidden=!layoutVisible;sceneAPI?.setLayout(layoutVisible);});
 addEventListener('pagehide',stopTour);
@@ -138,7 +151,7 @@ syncFullscreen();
 
 async function buildWorld() {
   const THREE = await import('three');
-  const [{OrbitControls},{createArchitecture},{createSiteFeatures},{createCrowd,createRunwayCrowd},{createLightShow},{createRunway}]=await Promise.all([import('./vendor/OrbitControls.js'),import('./architecture.mjs?v=20261102mind1'),import('./site-features.mjs?v=20261102mind1'),import('./crowd.mjs?v=20261102mind1'),import('./light-show.mjs?v=20261102mind1'),import('./runway.mjs?v=20261102mind1')]);
+  const [{OrbitControls},{createArchitecture},{createSiteFeatures},{createCrowd,createRunwayCrowd},{createLightShow},{createRunway}]=await Promise.all([import('./vendor/OrbitControls.js'),import('./architecture.mjs?v=20261102river1'),import('./site-features.mjs?v=20261102river1'),import('./crowd.mjs?v=20261102river1'),import('./light-show.mjs?v=20261102river1'),import('./runway.mjs?v=20261102river1')]);
   const architecture=createArchitecture(THREE);
   let seed = 1947;
   const random = () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; };
@@ -218,18 +231,37 @@ async function buildWorld() {
 
   function riverStrip(width, elevation, material) {
     const verts = [], index = [], uv = [];
-    for (let i = 0; i <= 150; i++) { const z = -150 + i * 2; const x = riverX(z); verts.push(x-width, elevation, z, x+width, elevation, z); uv.push(0,i/150,1,i/150); if(i<150){const a=i*2;index.push(a,a+2,a+1,a+1,a+2,a+3);} }
+    for (let i = 0; i <= 150; i++) { const z = -150 + i * 2; const x = riverX(z),bankWidth=width*(1+.045*Math.sin(z*.15)+.025*Math.sin(z*.4)); verts.push(x-bankWidth, elevation, z, x+bankWidth, elevation, z); uv.push(0,i/150,1,i/150); if(i<150){const a=i*2;index.push(a,a+2,a+1,a+1,a+2,a+3);} }
     const geo = new THREE.BufferGeometry(); geo.setAttribute('position',new THREE.Float32BufferAttribute(verts,3));geo.setAttribute('uv',new THREE.Float32BufferAttribute(uv,2));geo.setIndex(index);geo.computeVertexNormals();
     const m=mesh(geo,material);m.castShadow=false;return m;
   }
   riverStrip(10.8,-.015,mats.sand);
   const waterMat = new THREE.ShaderMaterial({
-    uniforms: { time:{ value:0 }, waterA:{value:new THREE.Color('#4d8d87')}, waterB:{value:new THREE.Color('#9cb9a7')} },
-    vertexShader: 'varying vec3 vWorld; void main(){vWorld=(modelMatrix*vec4(position,1.0)).xyz;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}',
-    fragmentShader: 'uniform float time; uniform vec3 waterA; uniform vec3 waterB; varying vec3 vWorld; void main(){float n=sin(vWorld.x*2.8+sin(vWorld.z*.7)+time*.28)*sin(vWorld.z*1.2+time*.19);float broad=sin(vWorld.z*.14+vWorld.x*.2)*.5+.5;float sparkle=pow(max(0.,n),18.)*.24;vec3 c=mix(waterA,waterB,.22+broad*.2+sparkle);gl_FragColor=vec4(c,1.);\n#include <tonemapping_fragment>\n#include <colorspace_fragment>\n}',
-    side: THREE.DoubleSide
+    uniforms: { time:{value:0}, waterA:{value:new THREE.Color('#367f86')}, waterB:{value:new THREE.Color('#a1d4c5')} },
+    vertexShader: `varying vec3 vWorld; varying vec2 vFlow;
+      void main(){vFlow=uv;vWorld=(modelMatrix*vec4(position,1.0)).xyz;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}`,
+    fragmentShader: `uniform float time; uniform vec3 waterA; uniform vec3 waterB; varying vec3 vWorld; varying vec2 vFlow;
+      void main(){
+        float across=(vFlow.x-.5)*18.8;
+        float downstream=vWorld.z-time*1.35;
+        float bend=sin(across*.43+downstream*.11)*1.7+sin(across*.91-downstream*.27)*.8;
+        float waves=.5+.5*sin(downstream*1.8+bend+sin(across*1.3+downstream*.21)*.7);
+        float ribbons=.5+.5*sin(across*3.7+sin(downstream*.28)*1.3+sin(across*1.1+downstream*.47)*1.3);
+        float glints=pow(waves,16.)*pow(ribbons,2.)*(.5+.5*sin(across*.37+downstream*.41));
+        float current=pow(.5+.5*sin(downstream*.72+across*.6+sin(across*.9)),9.);
+        float drift=current*smoothstep(.15,.85,.5+.5*sin(across*.8-downstream*.25));
+        float shore=pow(abs(vFlow.x-.5)*2.,5.);
+        vec3 c=mix(waterA,waterB,.14+.1*ribbons+.2*shore);
+        c=mix(c,waterB,min(.85,glints*.52+drift*.3));
+        c+=vec3(.1,.14,.13)*glints;
+        gl_FragColor=vec4(c,1.);
+        #include <tonemapping_fragment>
+        #include <colorspace_fragment>
+      }`,
+    side:THREE.DoubleSide
   });
   riverStrip(9.4,.025,waterMat);
+  document.body.dataset.riverFlow='downstream';
   // Shared, low-detail geometry keeps the forest light enough for phones.
   const treeList=[];
   for(let i=0;i<170;i++) { const x=-87+random()*131,z=-39-random()*42; if(x<riverX(z)-16)treeList.push({x,z,s: .78+random()*.85}); }
@@ -377,12 +409,12 @@ async function buildWorld() {
   for(const [x,z,colour] of [[-9,-8,'#d98bff'],[9,-8,'#67c8e4'],[-24,-9,'#ffc798'],[-23,20,'#b2a0ff'],[25,5,'#70dfcb']]){
     const light=new THREE.PointLight(colour,0,24,1.3);light.position.set(x,2,z);scene.add(light);nightLights.push(light);
   }
-  let tween=null,visible=true,raf=0,needsFrame=true,lastT=0,musicMotion=false,motionTime=0;
+  let tween=null,visible=true,raf=0,needsFrame=true,lastT=0,musicMotion=false,motionTime=0,waterTime=0,lastWaterFrame=0;
   let currentStory={seconds:0,construction:0,programme:0,night:0,navigation:false};
   let responseLevel=.7;
   const goldSky=new THREE.Color('#efc284'),peachSky=new THREE.Color('#c4868d'),goldSun=new THREE.Color('#ffc474');
   const daySky=new THREE.Color('#e9ece2'),nightSky=new THREE.Color('#101f30'),daySun=new THREE.Color('#fff1d9'),nightSun=new THREE.Color('#a5c0e2');
-  const dayWaterA=new THREE.Color('#4d8d87'),nightWaterA=new THREE.Color('#123d48'),dayWaterB=new THREE.Color('#9cb9a7'),nightWaterB=new THREE.Color('#397280');
+  const dayWaterA=new THREE.Color('#367f86'),nightWaterA=new THREE.Color('#123d48'),dayWaterB=new THREE.Color('#a1d4c5'),nightWaterB=new THREE.Color('#397280');
   function setNight(value){
     currentStory.night=Number(value);features.setNight(value);lightShow.set(Number(value),currentStory.programme>0);
     const v=Number(value);if(v<.3)scene.background.lerpColors(daySky,goldSky,v/.3);else if(v<.58)scene.background.lerpColors(goldSky,peachSky,(v-.3)/.28);else scene.background.lerpColors(peachSky,nightSky,(v-.58)/.42);scene.fog.color.copy(scene.background);
@@ -421,11 +453,11 @@ async function buildWorld() {
   }
   function resize(){const w=$('world').clientWidth,h=$('world').clientHeight;camera.aspect=w/h;camera.fov=mobile()?50:41;controls.maxDistance=mobile()?240:155;scene.fog.near=mobile()?205:115;scene.fog.far=mobile()?390:255;camera.updateProjectionMatrix();renderer.setSize(w,h);needsFrame=true;if(selected==='overview')go('overview',true);requestFrame();}
   addEventListener('resize',resize);
-  controls.addEventListener('start',()=>{tween=null;stopTour();});
+  controls.addEventListener('start',()=>{tween=null;stopTour();lineupDismissed=true;syncLineup();});
   controls.addEventListener('change',()=>{needsFrame=true;requestFrame();});
   canvas.addEventListener('keydown',(e)=>{
     if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','+','-','='].includes(e.key))return;
-    e.preventDefault();stopTour();tween=null;const sph=new THREE.Spherical().setFromVector3(camera.position.clone().sub(controls.target));
+    e.preventDefault();stopTour();lineupDismissed=true;syncLineup();tween=null;const sph=new THREE.Spherical().setFromVector3(camera.position.clone().sub(controls.target));
     if(e.key==='ArrowLeft')sph.theta-=.12;if(e.key==='ArrowRight')sph.theta+=.12;if(e.key==='ArrowUp')sph.phi=Math.max(.1,sph.phi-.1);if(e.key==='ArrowDown')sph.phi=Math.min(Math.PI*.485,sph.phi+.1);
     if(e.key==='+'||e.key==='=')sph.radius=Math.max(12,sph.radius*.9);if(e.key==='-')sph.radius=Math.min(controls.maxDistance,sph.radius*1.1);
     camera.position.copy(controls.target).add(new THREE.Vector3().setFromSpherical(sph));controls.update();needsFrame=true;requestFrame();
@@ -433,14 +465,15 @@ async function buildWorld() {
   function requestFrame(){if(!raf&&visible&&!document.hidden)raf=requestAnimationFrame(frame);}
   function frame(t){
     raf=0;if(!visible||document.hidden)return;
+    const waterMoving=entered&&media.motionEnabled();if(waterMoving&&lastWaterFrame)waterTime+=Math.min(.05,Math.max(0,(t-lastWaterFrame)/1000));lastWaterFrame=t;
     if(features.update(motionTime,t)){needsFrame=true;}
     crowd.update(musicMotion?motionTime:t*.001,{construction:currentStory.construction,dancing:musicMotion,visible:currentStory.seconds>6,night:currentStory.night});lightShow.update(motionTime);runwayCrowd.update(motionTime,{moving:musicMotion,visible:runwayCrowd.group.visible});
     if(tween){const a=Math.min(1,(t-tween.start)/1250),ease=a*a*(3-2*a);camera.position.lerpVectors(tween.from,tween.to,ease);controls.target.lerpVectors(tween.fromTarget,tween.target,ease);if(a===1)tween=null;needsFrame=true;}
     controls.update();
     const videoActive=!$('music-video').paused&&$('music-video').readyState>=2;
-    if(!reduced.matches||musicMotion||needsFrame||videoActive){
-      // Keep the water subtle and cap animation work at approximately 30fps.
-      if(t-lastT>30||needsFrame){if(musicMotion){motionTime+=Math.min(.05,Math.max(0,(t-lastT)/1000));animateMusic(motionTime);}waterMat.uniforms.time.value=reduced.matches?0:t*.001;renderer.render(scene,camera);renderer.shadowMap.autoUpdate=false;lastT=t;needsFrame=false;
+    if(!reduced.matches||musicMotion||needsFrame||videoActive||waterMoving){
+      // Cap render work at approximately 30fps.
+      if(t-lastT>30||needsFrame){if(musicMotion){motionTime+=Math.min(.05,Math.max(0,(t-lastT)/1000));animateMusic(motionTime);}waterMat.uniforms.time.value=waterTime;document.body.dataset.riverTime=waterTime.toFixed(3);renderer.render(scene,camera);renderer.shadowMap.autoUpdate=false;lastT=t;needsFrame=false;
         const w=$('world').clientWidth,h=$('world').clientHeight,placed=[];
         for(const a of anchors){
           const p=a.p.clone().project(camera),x=(p.x*.5+.5)*w;let y=(-p.y*.5+.5)*h;
@@ -453,7 +486,7 @@ async function buildWorld() {
         document.body.dataset.rendered='true';document.body.dataset.renderCalls=String(renderer.info.render.calls);document.body.dataset.renderTriangles=String(renderer.info.render.triangles);
       }
     }
-    if(!reduced.matches||musicMotion||tween||needsFrame||videoActive)requestFrame();
+    if(!reduced.matches||musicMotion||tween||needsFrame||videoActive||waterMoving)requestFrame();
   }
   document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(raf);raf=0;}else{needsFrame=true;requestFrame();}});
   reduced.addEventListener('change',()=>{controls.enableDamping=!reduced.matches;needsFrame=true;requestFrame();});

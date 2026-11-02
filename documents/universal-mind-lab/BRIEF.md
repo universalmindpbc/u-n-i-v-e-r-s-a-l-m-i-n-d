@@ -1,6 +1,6 @@
 # Universal Mind Lab — creative and development brief
 
-**Version:** 0.10 · **Date:** 2 November 2026 · **Owner:** Ben Korbel
+**Version:** 0.11 · **Date:** 2 November 2026 · **Owner:** Ben Korbel
 **Status:** Working concept for discussion, collaboration and staged visual development. Architectural engineering, operating arrangements and named partnerships remain to be established.
 
 ## 1. Purpose
@@ -563,3 +563,41 @@ Ben replaced the generated abstract wrap with two supplied eight-second videos. 
 ### Next review after this section is signed off
 
 **Discuss typography and a graphical overlay for the proposed lineup: Justice and Tame Impala.** Ben requested a reminder on delivery of this revision. Explore potential guest conversations with **the Dalai Lama** (including video conference), **Pema Chödrön**, or a **David Lynch Foundation** representative for Transcendental Meditation education for young people. These are proposed invitations, not bookings. Do not add lineup artwork during this revision.
+
+## 24. Biofeedback journey, flowing river and artist identities — v0.11
+
+This section supersedes the earlier Settle–Connect interface and lineup-review placeholder.
+
+### Universal Mind connection sequence
+
+Ben’s experiential direction is **from anxiety to peace of mind** through three connections, in this order:
+
+1. **Connection to our earth:** feel your feet on the ground, or the support beneath you while sitting.
+2. **Connection to self:** feel your breath and your body.
+3. **Connection to each other:** feel the energy of the people around you.
+
+Record this as Ben’s Universal Mind creative IP direction. The interface heading becomes **Mindfulness in motion via biofeedback**. Replace Notice–regulate–connect and Explore the response with the three-step connection sequence, a corresponding grounding cue, and the Anxiety → Peace of mind journey. The scene control remains an illustrative demonstration, not a measurement of anxiety or a promised clinical outcome. The live Watch/SIX integration remains MVP scope.
+
+### River
+
+Make the water visibly flow downstream through moving ripples, current streaks and highlights, with irregular shallow banks. Preserve the open lawn and waterway alignment. Ambient water can move independently of the soundtrack, respects Motion, and starts still under reduced-motion preferences.
+
+### Artist treatment
+
+Ben approved four artist marks: **Tame Impala, Justice, Flume, Sampa the Great**, followed by **+ more**. Preserve their recognisable identities. Use deep charcoal for daytime and warm ivory for nighttime. Place the treatment beside the next-generation tagline and lightning bolt at desktop widths; adapt to a compact two-row treatment on phones.
+
+Show the logos only during the opening wide view (first six seconds) and the final clearing overview after the automatic tour. Hide them for close views and when a visitor takes manual camera control. Return them on a later reset to the final overview. Keep the minimal landing unchanged.
+
+The single partnership-status disclosure belongs below the initiative credit in the footer: **Artists, festival partners and mental health partners are proposed and not confirmed.** Do not place proposal wording beside artist logos or repeat the disclosure in scene cards. Preserve the Proposal button as functional navigation.
+
+Original logo images and source provenance are retained in `references/lineup/` and `LINEUP-ART-DIRECTION.md`.
+
+### Proposal narrative — later direction in v0.11
+
+Present Universal Mind as a free travelling mental health lab, first for ages 16–24 and then all Australians. Ben’s inspiration is the Life Be In It van he recalls visiting schools and towns in the 1980s. The public paragraph retains the health-promotion-on-the-road inspiration without asserting an unverified van itinerary or date. [Life Be In It’s own history](https://lifebeinit.org/about-us/) confirms the campaign began in 1975 and continues community activity programmes.
+
+Foreground **free access, dissolving stigma and referral pathways**. Describe headspace referrals, school nominations, expressions of interest, a welcome conversation, optional on-site support and onward referral to local services. Include online participation and live TV for people without in-person places. The partner direction brings CSIRO technology, Universal Mind, headspace and New South Wales Education together; named participation remains covered by the single footer disclosure.
+
+Explain STEAM learning through music and creative technology, fashion skills, designing a runway show and starting a fashion label. Use **“This is creativity as mindfulness.”**, **“A journey from anxiety to peace of mind.”** and **“Change your emotions. Change your world.”** Connect Apple Watch / SIX inferred signals with responsive light, colour, motion and sound, followed by earth → self → each other. Retain the distinction between recorded cardiac signals and inferred neurochemical interpretation.
+
+The visitor proposal replaces the earlier implementation inventory with this participant and community story. Technical design and research context remain in the working brief.

@@ -90,7 +90,7 @@ try {
   await at(p,79);assert.equal(await p.locator('body').getAttribute('data-story'),'complete');assert.equal(await p.locator('body').getAttribute('data-camera-view'),'overview');
   await p.screenshot({path:path.join(out,'lab-auto-night.png')});
   await p.locator('#response-range').fill('10');await p.clock.runFor(120);assert.equal(await p.locator('body').getAttribute('data-scene-response'),'0.10');assert.equal(await p.locator('body').getAttribute('data-sound-response'),'0.29');
-  await p.locator('#response-range').fill('90');await p.clock.runFor(120);assert.equal(await p.locator('body').getAttribute('data-scene-response'),'0.90');assert.equal(await p.locator('#response-state').innerText(),'Connect');
+  await p.locator('#response-range').fill('90');await p.clock.runFor(120);assert.equal(await p.locator('body').getAttribute('data-scene-response'),'0.90');assert.equal(await p.locator('#response-state').innerText(),'Connection to each other');
   await click(p,'#support-pathway');assert.equal(await p.locator('body').getAttribute('data-camera-view'),'support');assert.ok(!await p.locator('#emotion-panel').isVisible());
   checks.push('Four-colour word sequence; centered exclusive tickets; mental health footer; clean visitor cards and named AABCAP support; roof-anchored hologram; eight message flags; five-second sunset; seven timed tour stops plus final hold/reset; visible inference diagram and interactive light/sound response; support pathway');
   const renderStats=await p.evaluate(()=>({drawCalls:Number(document.body.dataset.renderCalls),triangles:Number(document.body.dataset.renderTriangles)}));

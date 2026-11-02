@@ -351,3 +351,7 @@ Ten screenshots from Ben’s 7:51–7:52 pm and 8:05–8:06 pm review on 2 Novem
 ## R42–R45 — two trailer videos and supplied posters
 
 The supplied fashion portrait and anime/landscape clips replace the generated wrap. The two source filenames are visually reversed; the inspected mapping is recorded in `TRUCK-VIDEO-PANELS.md`. Originals and posters are preserved exactly in `media/truck-panels/`; silent runtime derivatives provide the animated displays.
+
+## R46–R49 — artist identities
+
+Exact supplied Tame Impala, Flume, Justice and Sampa the Great images are preserved in `references/lineup/` and hashed in the reference manifest. Clean official wordmarks provide the runtime Tame Impala, Justice and Flume masks; Sampa retains Ben’s supplied mark. The website displays them in Tame Impala → Justice → Flume → Sampa the Great order, with “+ more”, only in the opening and final overview. See [art direction and provenance](LINEUP-ART-DIRECTION.md).

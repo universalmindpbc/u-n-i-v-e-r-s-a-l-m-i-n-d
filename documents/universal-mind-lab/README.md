@@ -1,8 +1,8 @@
 # Universal Mind Lab
 
-Working creative package for Ben Korbel. The current direction is recorded in [BRIEF.md](BRIEF.md), version 0.10.
+Working creative package for Ben Korbel. The current direction is recorded in [BRIEF.md](BRIEF.md), version 0.11.
 
-- [Reference index](REFERENCES.md): 45 supplied references, including the marketing doodle.
+- [Reference index](REFERENCES.md): 49 supplied references, including the marketing doodle.
 - [Reference manifest](reference-manifest.json): original paths, sizes and SHA-256 hashes.
 - [Accepted spatial study](concepts/spatial-study-02.png): open lawn, waterway edge and simplified related shells.
 - [Marketing original](references/marketing/R26-membership-marketing-doodle.jpeg).
@@ -37,4 +37,8 @@ Brief v0.10 adds the mental health identity, wearable inference diagram and envi
 - [Mindfulness revision release](MINDFULNESS-REVISION-RELEASE.md).
 - [Wearable inference context](EMOTIONAL-LOOP.md).
 - [Truck video panels and original archive](TRUCK-VIDEO-PANELS.md).
-- Next review after sign-off: proposed Justice and Tame Impala lineup typography and potential guest-speaker conversations.
+- Potential guest-speaker conversations remain for a later review. The four-artist overview treatment is included in v0.11.
+
+Brief v0.11 adds the Earth → self → each other biofeedback journey, flowing river and opening/final overview artist marks. The partnership-status note appears once in the footer. See [river, journey and lineup release](RIVER-BIOFEEDBACK-RELEASE.md) and [artist direction](LINEUP-ART-DIRECTION.md).
+
+The v0.11 proposal also foregrounds free access, dissolving stigma, referral pathways, STEAM and fashion learning, and the travelling health-promotion inspiration.

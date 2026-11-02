@@ -1,0 +1,28 @@
+[
+  {
+    "file": "tame-impala-official.png",
+    "url": "https://www.tameimpala.com/images/ti_stacked-w.png",
+    "bytes": 5413,
+    "sha256": "60398f9ff9452bb8498ab0c35db8c59c8464f29f9e6cffb60b13f97f0e171e64"
+  },
+  {
+    "file": "justice-official.png",
+    "url": "https://justice.church/cdn/shop/files/justice-logo2019_blanc.png?width=1896",
+    "bytes": 21011,
+    "sha256": "e2599e0e206593381d47cb1e3d3bc2b73f657f486b076d1fea68847e93a8d247"
+  },
+  {
+    "file": "sampa-the-great-official.webp",
+    "url": "https://images.squarespace-cdn.com/content/v1/579d8fcf2994ca7a06137459/63ff8f3e-de30-4f71-8dfe-6b25b79e2f63/logo25.png?format=1500w",
+    "bytes": 22720,
+    "sha256": "38ec6f86319ba5a416c2a308545a4d6efe2b95e4a61fe1b392db10e3dfb6f279",
+    "format_note": "Server returned WebP for the PNG-named URL; bytes preserved."
+  },
+  {
+    "file": "flume-official.svg",
+    "url": "https://flumemusic.com/",
+    "method": "Exact inline SVG containing Flume-Logo",
+    "bytes": 7953,
+    "sha256": "4aa1df8534321f7370a002b160c53fbfdd3233aae95deb4d619450871c019d68"
+  }
+]

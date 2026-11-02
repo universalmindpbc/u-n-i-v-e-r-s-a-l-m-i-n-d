@@ -569,6 +569,54 @@
       "size_bytes": 312214,
       "sha256": "bea0b4a9945f9ca08355f40a36f49db869cdb30f6369356365b7333242ad4d3f",
       "preserved_byte_for_byte": true
+    },
+    {
+      "id": "R46",
+      "original_filename": "codex-clipboard-fe758200-2b65-4ae9-8432-484fc4a71fd3.png",
+      "category": "lineup",
+      "description": "Supplied tame-impala artist mark.",
+      "design_role": "Overview-only artist lineup direction; day/night monochrome treatment.",
+      "source_path": "/var/folders/sy/hkpyt9jx3q124pk6nn_rgvb00000gn/T/codex-clipboard-fe758200-2b65-4ae9-8432-484fc4a71fd3.png",
+      "destination_path": "references/lineup/tame-impala-supplied.png",
+      "size_bytes": 108818,
+      "sha256": "122f7fc3c7459612597269dff4c9e301e87f9860810011395c3961b06d6c470b",
+      "preserved_byte_for_byte": true
+    },
+    {
+      "id": "R47",
+      "original_filename": "codex-clipboard-e836ca5c-6bf4-4952-a655-cbeefbb18c9e.png",
+      "category": "lineup",
+      "description": "Supplied flume artist mark.",
+      "design_role": "Overview-only artist lineup direction; day/night monochrome treatment.",
+      "source_path": "/var/folders/sy/hkpyt9jx3q124pk6nn_rgvb00000gn/T/codex-clipboard-e836ca5c-6bf4-4952-a655-cbeefbb18c9e.png",
+      "destination_path": "references/lineup/flume-supplied.png",
+      "size_bytes": 53469,
+      "sha256": "1a85fe597df5fb5e16b2bd386139bb176d180a2cfc023412a8d1c4805d38ccca",
+      "preserved_byte_for_byte": true
+    },
+    {
+      "id": "R48",
+      "original_filename": "codex-clipboard-0bd7c5f5-05a3-4818-bdc2-2354eec502c4.png",
+      "category": "lineup",
+      "description": "Supplied justice artist mark.",
+      "design_role": "Overview-only artist lineup direction; day/night monochrome treatment.",
+      "source_path": "/var/folders/sy/hkpyt9jx3q124pk6nn_rgvb00000gn/T/codex-clipboard-0bd7c5f5-05a3-4818-bdc2-2354eec502c4.png",
+      "destination_path": "references/lineup/justice-supplied.png",
+      "size_bytes": 368518,
+      "sha256": "12849ed09e8381e16707c2da5778c0e27b7bf1733167966f262a018f4b8d4c02",
+      "preserved_byte_for_byte": true
+    },
+    {
+      "id": "R49",
+      "original_filename": "codex-clipboard-0d165033-baf3-402a-803b-a71bd4d9bfc1.png",
+      "category": "lineup",
+      "description": "Supplied sampa-the-great artist mark.",
+      "design_role": "Overview-only artist lineup direction; day/night monochrome treatment.",
+      "source_path": "/var/folders/sy/hkpyt9jx3q124pk6nn_rgvb00000gn/T/codex-clipboard-0d165033-baf3-402a-803b-a71bd4d9bfc1.png",
+      "destination_path": "references/lineup/sampa-the-great-supplied.png",
+      "size_bytes": 56125,
+      "sha256": "71ec98bcb27d823526a4ada483933809a223ae74d43e8475d8d5001bba969d07",
+      "preserved_byte_for_byte": true
     }
   ]
 }

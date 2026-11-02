@@ -1,6 +1,6 @@
 # Universal Mind Lab — current progress
 
-Updated 2 November 2026 for the mental health presentation revision, brief v0.10.
+Updated 2 November 2026 for the mental health presentation revision, brief v0.11.
 
 | Step | Current implementation | Remaining refinement |
 | --- | --- | --- |
@@ -12,10 +12,16 @@ Updated 2 November 2026 for the mental health presentation revision, brief v0.10
 
 The landing now reproduces the Informatics treatment. Launch Full Screen starts the single music/video timeline at 7% blend and starts the story. The event wordmark uses uniform generous spacing across universalmind[lab], with mind bold.
 
-**Current focus:** proof the mental health presentation, wearable response demonstration, timed tour, roof-connected projection and video trailers. The next milestone is greater visual realism across vegetation, characters, materials and lighting. This revision remains a concept environment.
+**Current focus:** proof the free-access proposal, referral story, connection journey, flowing river and overview artist treatment. The next milestone is greater visual realism across vegetation, characters, materials and lighting. This revision remains a concept environment.
 
 Apple Watch → Immersion Neuroscience / SIX → responsive environment remains an MVP implementation requirement. BRIEF.md section 21 preserves the full inference explanation and Ben’s provider-reported context. No live Watch connection is present in this browser model.
 
 ## 2 November evening — mindfulness and presentation revision
 
 Brief v0.10 records the mental health identity, animated Watch/inference/environment overlay, concise visitor cards, five-second sunset, seven-stop tour, roof-anchored projection, contextual/message flags and two video trailers. The proposed-lineup typography discussion follows sign-off of this section. Deployment and verification are recorded in `MINDFULNESS-REVISION-RELEASE.md`.
+
+## 2 November — river, connection journey and lineup
+
+The current revision makes downstream water movement visible, replaces the response-panel wording with Ben’s Earth → self → each other sequence, and adds Tame Impala, Justice, Flume and Sampa the Great marks to opening/final overview frames only. Artist and partner status is consolidated into the footer. `RIVER-BIOFEEDBACK-RELEASE.md` records deployment and verification.
+
+The proposal now leads with free access, dissolving stigma and referral pathways, then explains STEAM, fashion learning and the Apple Watch / SIX connection journey. Its reading area scrolls beneath a persistent close control.

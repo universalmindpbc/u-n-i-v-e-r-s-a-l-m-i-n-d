@@ -23,7 +23,7 @@ assert.doesNotMatch(html + js, /src="https?:\/\/|fetch\(|localStorage|sessionSto
 assert.ok(html.includes('headspace.org.au/eora') && html.includes('Proposal'));
 assert.doesNotMatch(html + js, /A place to become|Room to connect|Under one shared roof|A world of possibility|Meaningful connection/);
 const manifest = JSON.parse(read('documents/universal-mind-lab/reference-manifest.json'));
-assert.equal(manifest.records.length, 45);
+assert.equal(manifest.records.length, 49);
 for (const row of manifest.records) {
   const bytes = fs.readFileSync(path.join(root,'documents/universal-mind-lab',row.destination_path));
   assert.equal(createHash('sha256').update(bytes).digest('hex'),row.sha256,`${row.id} original hash`);
