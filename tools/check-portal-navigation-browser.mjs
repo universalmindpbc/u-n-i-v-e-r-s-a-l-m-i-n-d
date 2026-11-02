@@ -76,7 +76,7 @@ try {
    let before=await snapshot(page,'[data-television-player] video');assert.equal(before.muted,false);
    const entries=config.portals.find(p=>p.id==='iam').entries.filter(e=>e.source&&e.id!=='home');
    for(const entry of entries){
-    await page.evaluate(href=>window.IAMTelevisionRoom.navigatePage(href),entry.url);
+    await page.evaluate(id=>{document.querySelector('[data-nav-item="'+id+'"]').click();document.querySelector('[data-nav-submenu="'+id+'"] a')?.click();},entry.id);
     await page.waitForFunction(()=>document.body.classList.contains('television-page-view-open'));
     assert.equal(new URL(page.url()).pathname,entry.url);
     await page.waitForTimeout(500);
@@ -112,9 +112,10 @@ try {
  }
  if(only==='all'||only==='layout')for(const width of [1470,1024,390,320]){
   const ctx=await makeContext({width,height:900}),page=await ctx.newPage();
-  try{for(const route of ['/sitemap/','/informatics/sitemap/','/iam/sitemap/','/informatics/sound/','/iam/about/']){
+  try{for(const route of ['/sitemap/','/informatics/sitemap/','/iam/sitemap/','/informatics/sound/','/iam/about/','/iam/science/']){
     await page.goto(origin+route,{waitUntil:'domcontentloaded'});
     if(route==='/informatics/sound/')await page.waitForFunction(()=>document.querySelector('#experience').dataset.area==='sound',{timeout:60000});
+    if(route==='/iam/science/'){await page.locator('.research-link').first().waitFor({state:'attached'});assert.deepEqual(await page.locator('.research-link').evaluateAll(links=>links.map(link=>link.href)),['vision','sound','language'].map(collection=>origin+'/informatics/research/?collection='+collection));}
     assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+2),route+' fits '+width);
     results.push({layout:route,width});
    }}finally{await stop(ctx);}

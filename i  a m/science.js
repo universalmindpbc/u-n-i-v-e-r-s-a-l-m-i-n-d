@@ -15,6 +15,12 @@
       .replaceAll("'", "&#039;");
   }
 
+  function collectionURL(value) {
+    const url = new URL(value, document.baseURI);
+    if (url.origin === 'https://universalmind.tv') return url.pathname + url.search + url.hash;
+    return url.href;
+  }
+
   function heroStudyMarkup(study) {
     const citationSlot = study.doi
       ? `<p class="hero-live-citations" data-doi="${escapeHtml(study.doi)}">Live citation count available on open</p>`
@@ -83,7 +89,7 @@
               </div>
               <p class="research-source-state">Universal Informatics · ${escapeHtml(layer.repository.collection)} research · Opens in a new tab</p>
               <div class="research-links">
-                <a class="research-link" href="${escapeHtml(layer.repository.url)}" target="_blank" rel="noopener noreferrer" aria-label="Explore ${escapeHtml(layer.repository.collection)} research in Universal Informatics (opens in a new tab)">Explore research ↗</a>
+                <a class="research-link" href="${escapeHtml(collectionURL(layer.repository.url))}" target="_blank" rel="noopener noreferrer" aria-label="Explore ${escapeHtml(layer.repository.collection)} research in Universal Informatics (opens in a new tab)">Explore research ↗</a>
               </div>
             </div>
 

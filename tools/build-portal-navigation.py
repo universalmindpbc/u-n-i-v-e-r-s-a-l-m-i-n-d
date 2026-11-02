@@ -43,7 +43,7 @@ for name,pattern,prefix in [('global-navigation.js',r'global-navigation-canonica
  token=prefix+hashlib.sha256((ROOT/'i  a m'/name).read_bytes()).hexdigest()[:12]
  for path in (ROOT/'i  a m').glob('*.html'):path.write_text(re.sub(pattern,token,path.read_text()))
 # Content-address the modified Informatics controllers and Science collection links.
-for folder,names in [('Informatics',['app.js','atlas.css','global-navigation.js','shared-experience.js','library.js','molecular-entry.js','quantum-entry.js']),('i  a m',['science-research-data-v1.js'])]:
+for folder,names in [('Informatics',['app.js','atlas.css','global-navigation.js','shared-experience.js','library.js','molecular-entry.js','quantum-entry.js']),('i  a m',['science-research-data-v1.js','science.js'])]:
  for name in names:
   token=hashlib.sha256((ROOT/folder/name).read_bytes()).hexdigest()[:12]
   for path in (ROOT/folder).rglob('*.html') if folder=='Informatics' else (ROOT/folder).glob('*.html'):
