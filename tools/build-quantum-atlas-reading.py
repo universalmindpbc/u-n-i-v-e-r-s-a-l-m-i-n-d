@@ -109,7 +109,7 @@ def values(v):
 def links():return '<nav class="quantum-reading-links" aria-label="Quantum Atlas reading and downloads"><a href="/informatics/read/quantum/index.html" target="_blank" rel="noopener">AI / LLM Wiki</a>'+''.join(f'<a href="{payload["downloads"][fmt].removeprefix("https://universalmind.tv")}" download="quantum-atlas.{fmt}">{label}</a>'for fmt,label in [('json','JSON'),('csv','CSV'),('md','Markdown')])+'</nav>'
 
 reading_instruction=(ROOT/'tools/atlas-reading-instruction.txt').read_text().strip()
-topic_html='<section id="atlas-topic-directory"><h2>Atlas pages</h2><p>'+E(reading_instruction)+'</p>'+table('Topic directory',['Topic','Subject','Question'],[[t['title'],t['subject'],t['question']] for t in TOPICS])+'<ul>'+''.join('<li><a href="'+t['wiki'].removeprefix('https://universalmind.tv')+'">'+E(t['title'])+'</a></li>'for t in TOPICS)+'</ul></section>'
+topic_html='<section id="atlas-topic-directory"><h2>Atlas pages</h2><p>'+E(reading_instruction)+'</p>'+table('Topic directory',['Topic','Subject','Question'],[[t['title'],t['subject'],t['question']] for t in TOPICS])+'<ul>'+''.join('<li><a href="'+t['wiki'].removeprefix('https://universalmind.tv')+'">'+E(t['title'])+'</a></li>'for t in TOPICS)+'</ul><p><a href="/sitemap.xml">Website sitemap</a></p></section>'
 write('read/topic-directory.html.fragment',topic_html+'\n')
 
 variants=table('Eight representations of the same DNA inputs',['ID','Representation','Recorded role'],[[v['id'],v['label'],v['role']]for v in study['variants']])

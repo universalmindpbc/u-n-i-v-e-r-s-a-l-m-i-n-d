@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "baseline": "01cb2dcf82485b761d8e8a2c76fa72f9168327e4",
+  "only_public_changes": "One Website sitemap link added to each requested reading format",
+  "existing_content_and_order_preserved": true,
+  "root_sitemap_unchanged": true,
+  "root_sitemap_valid_xml": true
+}
