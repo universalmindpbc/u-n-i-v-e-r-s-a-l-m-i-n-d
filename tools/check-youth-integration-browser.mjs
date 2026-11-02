@@ -43,6 +43,7 @@ try{
   for(const [collection,chapter] of Object.entries(approved.chapters)){
    await go('collection='+collection);assert.ok(await reader.getByText('AI Guided Youth Research',{exact:true}).count());
    await reader.locator(`[data-chapter="${chapter.number}"]`).first().click();
+   await reader.waitForFunction(n=>document.querySelectorAll('.paper').length===n,chapter.topics.reduce((n,t)=>n+t.papers.length,0),{timeout:15000});
    const actual=await reader.locator('.paper').evaluateAll(cards=>cards.map(c=>({id:c.dataset.paper,crosses:c.querySelectorAll('.trust-score svg').length})));
    assert.equal(actual.length,chapter.topics.reduce((n,t)=>n+t.papers.length,0));
    for(const a of actual)assert.equal(a.crosses,approved.records.find(r=>r.id===a.id).paperTrustAssessment.score,a.id);
