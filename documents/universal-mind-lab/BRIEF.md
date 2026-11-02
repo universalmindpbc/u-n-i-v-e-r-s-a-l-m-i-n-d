@@ -244,7 +244,7 @@ Ben's instructions and supplied images define the creative direction. The follow
 
 ## 14. Files and provenance
 
-- [Reference index](REFERENCES.md): all 25 supplied attachments, with descriptions and space for Ben's comments.
+- [Reference index](REFERENCES.md): all 26 supplied attachments, with descriptions and space for Ben's comments.
 - [Reference manifest](reference-manifest.json): original filenames, source paths, stored paths, sizes and SHA-256 hashes.
 - [Current spatial study 02](concepts/spatial-study-02.png): open lawn, waterway and unified pavilion forms.
 - [Current generation prompt](concepts/spatial-study-02-prompt.md): saved instructions for the revised concept.
@@ -306,3 +306,11 @@ Provide a discreet, accessible clinic area with acoustic and visual privacy, sep
 ### Iteration record
 
 Continue updating this Markdown brief when Ben adds directions in this chat. Keep original references, accepted decisions, proposed partnerships, open questions and completed stages distinct. Current authorised build: rough navigable landscape and simple pavilion placeholders. Detailed road train, assembly, satellite fitout, Moroso assets and tubular listening pylons follow in reviewable stages.
+
+## 16. First interactive landscape delivered
+
+The first spatial model is available at [the permanent staging Lab page](https://staging.universalmind.tv/lab/). It contains a broad green clearing, two forest boundaries, a continuous river edge, a single main vaulted shell, simplified food/play shells in a shared material palette, a plain support/services placeholder, paths and human scale figures. These remain illustrative geometry and dimensions.
+
+Visitors can orbit, zoom, use four camera presets, inspect place notes, switch to a 2D plan and read the vision. Reduced motion, keyboard navigation and a no-3D fallback are included. The page presents the proposed free membership and online participation direction without collecting applications or health information.
+
+Next review: confirm the landscape composition, relative scale, main vault form and positions of food/play/listening. The next authorised development stage is the road train and explanatory assembly sequence, followed by facilities, furniture and listening features. [Release and verification record](STAGE-01-RELEASE.md).

@@ -21,3 +21,7 @@ The visual studies remain conceptual. Capacity, material performance, acoustics,
 ## 2 November 2026 — marketing addition
 
 R26 added and verified against its original SHA-256. The package now contains 26 supplied files (R17/R18 intentionally preserve a duplicate) and two generated spatial studies. Marketing attribution and application routes remain draft proposals.
+
+## 2 November 2026 — first interactive landscape
+
+All 26 reference hashes rechecked. The first 3D page has been deployed and verified on permanent staging. See [STAGE-01-RELEASE.md](STAGE-01-RELEASE.md) for source and QA evidence. The earlier local-only entries above describe the brief/sketch stage.

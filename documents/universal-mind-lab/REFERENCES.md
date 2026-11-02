@@ -1,6 +1,6 @@
 # Universal Mind Lab — supplied reference index
 
-All 25 attachments are preserved in their original file formats and resolution. Friendly filenames begin with stable reference IDs. Original filenames, paths, file sizes and checksums are recorded in [the manifest](reference-manifest.json).
+All 26 attachments are preserved in their original file formats and resolution. Friendly filenames begin with stable reference IDs. Original filenames, paths, file sizes and checksums are recorded in [the manifest](reference-manifest.json).
 
 R17 and R18 are byte-identical duplicate attachments; both are retained. The index describes the visible content and its proposed use. It does not establish image reuse rights or a confirmed design partnership.
 

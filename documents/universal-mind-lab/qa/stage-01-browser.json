@@ -1,0 +1,16 @@
+{
+  "url": "https://staging.universalmind.tv/lab/",
+  "date": "2026-11-02T02:52:58.359Z",
+  "processMuted": true,
+  "hiddenBrowser": true,
+  "checks": [
+    "Desktop WebGL, camera presets, keyboard orbit, mouse drag/zoom, labels, plan and vision dialog",
+    "All six staging files match local SHA-256 hashes",
+    "390×844 mobile layout, touch preset and dialog",
+    "Blocked 3D runtime retains the site plan and place descriptions",
+    "No-JavaScript site plan"
+  ],
+  "unexpectedErrors": [],
+  "httpFailures": [],
+  "physicalPhoneTest": false
+}

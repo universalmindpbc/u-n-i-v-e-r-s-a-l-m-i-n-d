@@ -1,0 +1,41 @@
+{
+  "url": "https://staging.universalmind.tv/lab/",
+  "assets": [
+    {
+      "file": "index.html",
+      "status": 200,
+      "bytes": 8594,
+      "sha256": "d7145edb0b6f954fb3010144920caaeaa7d9c4398e864570ffae8951f8baefd1"
+    },
+    {
+      "file": "lab.css",
+      "status": 200,
+      "bytes": 9829,
+      "sha256": "b5df7895036153c5501fc1ace9b616dfee374629b857ff22567ca2977226047c"
+    },
+    {
+      "file": "lab.mjs",
+      "status": 200,
+      "bytes": 21074,
+      "sha256": "41c0cc716f6fc12d6d17e3a7bf7cc3b7b72ce4e5a74220d01f0ab3981955ac56"
+    },
+    {
+      "file": "vendor/three.module.js",
+      "status": 200,
+      "bytes": 1284652,
+      "sha256": "5916c8dfb5f4e3eede312de305345868d4a0a8105383b080c6985565d6e79b46"
+    },
+    {
+      "file": "vendor/OrbitControls.js",
+      "status": 200,
+      "bytes": 32250,
+      "sha256": "f260591ef315aa04888152e7f121865214e33fb54727145cf4e4445058db1297"
+    },
+    {
+      "file": "vendor/LICENSE-three.txt",
+      "status": 200,
+      "bytes": 1081,
+      "sha256": "4c40a1ef62450b857c3b2aaf294936304cd552d965fbcd9d32d4c5bcf4ba4454"
+    }
+  ]
+}
