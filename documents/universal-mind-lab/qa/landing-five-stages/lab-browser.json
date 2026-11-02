@@ -1,0 +1,27 @@
+{
+  "url": "https://staging.universalmind.tv/lab/",
+  "renderStats": {
+    "drawCalls": 204,
+    "triangles": 423322
+  },
+  "source": "live staging",
+  "nativeFullscreenTest": false,
+  "fullscreenStateTests": "standard, prefixed, external exit, denied and unsupported mocked API",
+  "date": "2026-11-02T06:09:09.381Z",
+  "processMuted": true,
+  "hiddenBrowser": true,
+  "checks": [
+    "Fibonacci landing, Explore gesture, 7% overlay and requested fullscreen; approved branding and membership URL; standard fullscreen enter/exit and external exit via test doubles; complete-page target; 1920×1080 layout",
+    "Five construction stages, replay progression and cancellation; rain shelter and 100-position layout; guided tour cancellation",
+    "Desktop WebGL, camera presets, keyboard orbit, mouse drag/zoom, labels, plan and vision dialog",
+    "All eighteen staging files match local SHA-256 hashes",
+    "390×844 mobile layout, touch preset and dialog",
+    "844×390 landscape fits the viewport; prefixed fullscreen, denied request and unsupported browser handled with test doubles; native fullscreen never invoked",
+    "Blocked 3D runtime retains the site plan and place descriptions",
+    "No-JavaScript site plan",
+    "Six camera presets including support, all five identity textures loaded, support vehicle/booth/staff and Apple Music flag captured in scene"
+  ],
+  "unexpectedErrors": [],
+  "httpFailures": [],
+  "physicalPhoneTest": false
+}

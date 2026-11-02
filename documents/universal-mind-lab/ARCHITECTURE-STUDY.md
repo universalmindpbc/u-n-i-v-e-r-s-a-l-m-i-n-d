@@ -6,10 +6,12 @@ This pass replaces the plain provisional shells with original reference-based me
 
 - **R07 — single vault, front:** the broad arched entrances, changing roof curvature and four contacts with the ground.
 - **R08 — vault edge and masonry:** the thin layered edge, staggered tiles and continuous surface over the curved roof.
-- **R22/R23 — Striatus side and stairs:** the broad arch passage, flowing metal-like boundary surfaces and rising upper route. The play bridge is a separate landscape sculpture beside the satellite, rather than another pavilion.
+- **R21/R22/R23 — Striatus underside, side and stairs:** the broad arch passage, flowing boundary surfaces and rising upper route. The play bridge is a separate landscape sculpture beside the satellite, rather than another pavilion.
 - **R24 — Volu dining pavilion:** the continuous sweep from the rear support into a broad canopy, open front and rounded outline. The source's oval/cellular openings, applied ribs and furniture are intentionally absent, following Ben's earlier direction.
 
 The generated materials use a repeating tile atlas with staggered courses, restrained colour variation, fine mortar relief and a layered rim. The satellite has a quieter fine-aggregate surface in the same colour family. This visual material study does not lock the local construction material or manufacturing method.
+
+Ben reattached R21 during this iteration to reinforce the separate playground requirement. The reattached Desktop image matches the archived original SHA-256; no duplicate copy is needed. The metal and rainbow finish is the proposed Lab adaptation.
 
 ## Integration
 

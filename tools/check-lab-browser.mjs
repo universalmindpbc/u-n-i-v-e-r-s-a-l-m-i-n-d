@@ -105,7 +105,7 @@ try {
   assert.equal(await p.evaluate(()=>document.querySelectorAll('audio,form').length),0);
   const assets=[];
   for(const file of ['index.html','lab.css','lab.mjs','media.mjs','landing-rain.js','architecture.mjs','furnishings.mjs','site-features.mjs','vendor/hls.min.js','vendor/LICENSE-hls.txt','vendor/three.module.js','vendor/OrbitControls.js','vendor/LICENSE-three.txt','assets/headspace.svg','assets/msf.svg','assets/nsw-government.svg','assets/apple-music.svg','assets/universal-mind-flower.png']) {
-    const result=await p.evaluate(async file=>{const r=await fetch('./'+file,{cache:'reload'});const data=await r.arrayBuffer();const hash=[...new Uint8Array(await crypto.subtle.digest('SHA-256',data))].map(x=>x.toString(16).padStart(2,'0')).join('');return {file,status:r.status,bytes:data.byteLength,sha256:hash};},file);
+    const result=await p.evaluate(async file=>{const version=new URL(document.querySelector('link[rel=stylesheet]').href).search;const requestedURL=new URL('./'+file+(file==='index.html'?'':version),location.href).href;const r=await fetch(requestedURL,{cache:'reload'});const data=await r.arrayBuffer();const hash=[...new Uint8Array(await crypto.subtle.digest('SHA-256',data))].map(x=>x.toString(16).padStart(2,'0')).join('');return {file,requestedURL,status:r.status,bytes:data.byteLength,sha256:hash};},file);
     assert.equal(result.status,200,file);assert.equal(result.sha256,createHash('sha256').update(fs.readFileSync(path.join(root,'lab',file))).digest('hex'),file);assets.push(result);
   }
   fs.writeFileSync(path.join(out,'lab-http.json'),JSON.stringify({url,assets},null,2)+'\n');

@@ -1,0 +1,21 @@
+{
+  "url": "https://staging.universalmind.tv/lab/",
+  "source": "live staging",
+  "date": "2026-11-02T06:10:22.608Z",
+  "processMuted": true,
+  "nativeFullscreenInvoked": false,
+  "metadata": {
+    "width": 426,
+    "height": 240,
+    "duration": 199.985951,
+    "volume": 0.65,
+    "loop": true
+  },
+  "checks": [
+    "No autoplay or initial stream request; Explore gesture starts real Cloudflare HLS decoding; one looping timeline; reduced-motion default off",
+    "TV starts at 7%, adjustable to 33%; hiding TV keeps music playing; volume updates; motion advances only when enabled and playing; pause freezes time and movement",
+    "Day/Night lighting toggles; actual media loops across the end boundary"
+  ],
+  "errors": [],
+  "subjectiveSoundQualityTested": false
+}
