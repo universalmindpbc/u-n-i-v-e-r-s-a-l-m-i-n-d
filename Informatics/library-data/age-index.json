@@ -1,7 +1,7 @@
 {
   "schemaVersion": "research-age-groups/v1",
-  "updatedAt": "2026-11-01",
-  "recordCount": 1223,
+  "updatedAt": "2026-11-02",
+  "recordCount": 1323,
   "taxonomy": [
     {
       "id": "children",
@@ -6097,14 +6097,16 @@
         "language"
       ],
       "groups": [
-        "adolescents",
         "youth",
         "adults"
       ],
-      "reportedAges": null,
-      "youthScope": "focus",
+      "reportedAges": "University students, mean 25.5; no youth-only upper limit",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
       "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/19798037/",
-      "basisType": "source-indexing-and-reporting"
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
     },
     {
       "recordId": "src-4658f2126f07",
@@ -10474,14 +10476,16 @@
         "language"
       ],
       "groups": [
-        "adolescents",
         "youth",
         "adults"
       ],
-      "reportedAges": null,
+      "reportedAges": "Eligibility 18+; table bands 17–21, 22–30 and 31+; mixed ages",
       "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
       "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/29422189/",
-      "basisType": "source-indexing-and-reporting"
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
     },
     {
       "recordId": "pmid-24647726",
@@ -11022,10 +11026,13 @@
         "adolescents",
         "youth"
       ],
-      "reportedAges": "8–18 years",
-      "youthScope": "focus",
+      "reportedAges": "Refugee children aged 8–18; mean 13.52.",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
       "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/42324567/",
-      "basisType": "reported-population"
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
     },
     {
       "recordId": "pmid-38250261",
@@ -11061,12 +11068,16 @@
       "groups": [
         "children",
         "adolescents",
-        "youth"
+        "youth",
+        "adults"
       ],
-      "reportedAges": null,
-      "youthScope": "focus",
+      "reportedAges": "Children and adolescents, with adolescents defined as 10–19; no isolated 16–24 estimate.",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
       "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/41340540/",
-      "basisType": "source-indexing-and-reporting"
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
     },
     {
       "recordId": "pmid-42254728",
@@ -11185,14 +11196,16 @@
         "vision"
       ],
       "groups": [
-        "children",
         "adolescents",
         "youth"
       ],
-      "reportedAges": "12–18 years",
-      "youthScope": "focus",
+      "reportedAges": "12–18-year-old adolescent inpatients with depression and stressful-life-event memories.",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
       "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/40243164/",
-      "basisType": "source-indexing-and-reporting"
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
     },
     {
       "recordId": "pmid-42703195",
@@ -16741,6 +16754,1778 @@
       "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/11036736/",
       "basisType": "source-limited-ai-editorial-assessment",
       "classificationNote": "Original age terms: adults. Programme targets or possible eligibility are not counted as observed ages."
+    },
+    {
+      "recordId": "youth-pmid-37205669",
+      "collections": [
+        "sound"
+      ],
+      "groups": [
+        "youth",
+        "adults",
+        "older-adults"
+      ],
+      "reportedAges": "Adult studies, generally participants in their twenties; one older sample.",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/37205669/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-42389090",
+      "collections": [
+        "sound"
+      ],
+      "groups": [
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "18–25 years, college students with poor sleep; diagnosed psychiatric disorders excluded.",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/42389090/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-39910150",
+      "collections": [
+        "sound"
+      ],
+      "groups": [
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "Undergraduates; analyzed sample mean age 19.",
+      "youthScope": "focus",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "target-centred",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/39910150/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-29066991",
+      "collections": [
+        "vision"
+      ],
+      "groups": [
+        "children",
+        "adolescents",
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "Predominantly children/adolescents; one young-women study had mean age 20.9.",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/29066991/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-22893815",
+      "collections": [
+        "vision"
+      ],
+      "groups": [
+        "children",
+        "adolescents",
+        "youth"
+      ],
+      "reportedAges": "4–18-year-old disaster-exposed children/adolescents.",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/22893815/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-35241174",
+      "collections": [
+        "vision"
+      ],
+      "groups": [
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "Female university students eligible at 18–35; no separate 16–24 analysis.",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/35241174/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-36186313",
+      "collections": [
+        "vision"
+      ],
+      "groups": [
+        "adolescents",
+        "youth"
+      ],
+      "reportedAges": "Female adolescents screened at 16–18; arm means around 17.",
+      "youthScope": "focus",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "target-range",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/36186313/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-42337783",
+      "collections": [
+        "sound"
+      ],
+      "groups": [
+        "children",
+        "adolescents",
+        "youth"
+      ],
+      "reportedAges": "Eligibility 6–18; no isolated 16–18 estimate established",
+      "youthScope": "focus",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "younger-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/42337783/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-41662046",
+      "collections": [
+        "sound"
+      ],
+      "groups": [
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "18–24; mean 20",
+      "youthScope": "focus",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "direct",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/41662046/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-36407676",
+      "collections": [
+        "sound"
+      ],
+      "groups": [
+        "adolescents",
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "Study mean ages 13–26; few young-adult studies",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/36407676/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-37151974",
+      "collections": [
+        "sound"
+      ],
+      "groups": [
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "18–24; mean 20",
+      "youthScope": "focus",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "direct",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/37151974/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-29144545",
+      "collections": [
+        "sound"
+      ],
+      "groups": [
+        "adolescents",
+        "youth",
+        "adults",
+        "older-adults"
+      ],
+      "reportedAges": "Two adolescent-only studies (14–18), one mixed 16–60, plus adult and older-adult studies",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/29144545/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-40109696",
+      "collections": [
+        "sound"
+      ],
+      "groups": [
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "18–24 Syrian college students",
+      "youthScope": "focus",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "direct",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/40109696/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-32232017",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "children",
+        "adolescents",
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "3–21 across included studies; predominantly children/adolescents",
+      "youthScope": "focus",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "younger-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/32232017/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-31068842",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "Tertiary students; mixed adult ages, not an isolated 16–24 estimate",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/31068842/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-34040886",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "Eligibility 18+; means 25.00 and 25.63",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/34040886/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-35820989",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "children",
+        "adolescents",
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "Under 19",
+      "youthScope": "focus",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "younger-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/35820989/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-30345511",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "children",
+        "adolescents",
+        "youth"
+      ],
+      "reportedAges": "18 or younger",
+      "youthScope": "focus",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "younger-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/30345511/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-36833903",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "18+; mean 25.77 (SD 5.34)",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/36833903/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-42284591",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "Study 1 distressed undergraduates 18+; study 2 broader adults",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/42284591/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-38250521",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "College samples with mean age ≤24 or at least half undergraduates if mean absent",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/38250521/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-36596239",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "University students; variable/partly unreported age ranges",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/36596239/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-37147732",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "Medical students over 18; mixed adult ages",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/37147732/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-24499130",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "18–59 at baseline; mean 25.4; complete responders no older than 31",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/24499130/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-31237569",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "18+ undergraduates; means 20.41 and 21.85, control SD 6.3",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/31237569/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-32554380",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "18+; mean 22.55",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/32554380/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-32074061",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "18+; mean 24.8",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/32074061/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-33264098",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "18+; mean 23.1",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/33264098/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-28330831",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "18+ college students and working adults; not a youth-only sample",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/28330831/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-35914112",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adolescents",
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "13–24; mean 20.5",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/35914112/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-24901900",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adolescents",
+        "youth"
+      ],
+      "reportedAges": "12–18; completer mean 15.4",
+      "youthScope": "focus",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "younger-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/24901900/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-26220564",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adolescents",
+        "youth"
+      ],
+      "reportedAges": "Grades 7–12; mixed secondary-school ages",
+      "youthScope": "focus",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "younger-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/26220564/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-34527971",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "children",
+        "adolescents",
+        "youth"
+      ],
+      "reportedAges": "11–19 eligible",
+      "youthScope": "focus",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "younger-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/34527971/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-41454356",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adolescents",
+        "youth"
+      ],
+      "reportedAges": "Grades 8–9; mean 13.95 (SD .73)",
+      "youthScope": "focus",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "broader-institution-youth",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/41454356/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-36991537",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adolescents",
+        "youth"
+      ],
+      "reportedAges": "12–16",
+      "youthScope": "focus",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "broader-institution-youth",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/36991537/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-40086808",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adolescents",
+        "youth"
+      ],
+      "reportedAges": "Year 8; 13–14",
+      "youthScope": "focus",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "broader-institution-youth",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/40086808/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-36620186",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adolescents",
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "13–25; 14 under 18, 10 aged 18+",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/36620186/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-39720610",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adolescents",
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "17–24; mean 19.9",
+      "youthScope": "focus",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "direct",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/39720610/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-36877740",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "18–29 LGBTQ+ young adults in China",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/36877740/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-38566202",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "children",
+        "adolescents",
+        "youth"
+      ],
+      "reportedAges": "11–19 eligible",
+      "youthScope": "focus",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "younger-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/38566202/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-34983460",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adolescents",
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "16–25 Australian young people with recent ideation and mental-health contact",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/34983460/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-35980733",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adolescents",
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "16–42; mean 22.7 (SD 5.7)",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/35980733/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-37393283",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "children",
+        "adolescents",
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "Methods: at least half sample aged 10–24, minimum 49% Indigenous; abstract describes 12–24",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/37393283/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-34002511",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adolescents",
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "16–27; related economic paper mean 20.91",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/34002511/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-37261464",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adolescents",
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "16–27; mean 20.91",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/37261464/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-39260824",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adolescents",
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "12–25; mean 17.5",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/39260824/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-32720904",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "19–28; mean 23.4",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/32720904/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-40180398",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adolescents",
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "16–24; reported mean 18.7; one age unrecorded",
+      "youthScope": "focus",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "direct",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/40180398/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-39813032",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adolescents",
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "Eligibility 12–30; mean 22.4 (SD 3.4)",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/39813032/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-21192795",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adolescents",
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "Adolescent/young-adult studies; means 15.4–21.2, some ranges extend beyond 24",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/21192795/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-39813031",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "children",
+        "adolescents",
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "10–24; study mean-age median about 18.7",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/39813031/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-32442160",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adolescents",
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "Samples with mean age below 25",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/32442160/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-38693527",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "children",
+        "adolescents",
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "Indigenous adolescents/young adults 10–24",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/38693527/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-39004687",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adolescents",
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "Included-study average ages 14–22; individual ranges include 12–24",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/39004687/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-34294067",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "children",
+        "adolescents",
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "10–24",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/34294067/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-40761439",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "children",
+        "adolescents",
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "10–19",
+      "youthScope": "focus",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "younger-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/40761439/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-38584397",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adolescents",
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "12–30 target; includes support-network participants",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/38584397/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-37390108",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adolescents",
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "12–25; mean 17.43",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/37390108/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-29622047",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "Eligibility over 18 and under 65; mean 20.92 (SD 4.39)",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/29622047/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-21559213",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "Mean 25.48 (SD 9.03), university students",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/21559213/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-40789917",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adolescents",
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "16–24",
+      "youthScope": "focus",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "direct",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/40789917/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-30622094",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "18+; group means 19.78 and 20.24",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/30622094/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-39438861",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "Graduate medical students; group means 25.0 and 25.5",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/39438861/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-36844353",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "University samples with mean ages 20–30",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/36844353/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-38939220",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adolescents",
+        "youth"
+      ],
+      "reportedAges": "Study means 11.8–17.3, average 14.2",
+      "youthScope": "focus",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "younger-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/38939220/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-41313154",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "18+; analysed mean 22.10 (SD 3.37)",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/41313154/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-42057149",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "18+ university students; exact observed range not established in inspected sections",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/42057149/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-41806311",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "Student group means 24.71 and 24.49; SD about five years",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/41806311/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-22799879",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adolescents",
+        "youth",
+        "adults",
+        "older-adults"
+      ],
+      "reportedAges": "17–79 overall; four of six studies had mean under 25",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/22799879/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-25537785",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adolescents",
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "15–25; mean 19.0",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/25537785/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-32572961",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "children",
+        "adolescents",
+        "youth"
+      ],
+      "reportedAges": "Children/young people up to 18",
+      "youthScope": "focus",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "younger-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/32572961/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-41262946",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adolescents",
+        "youth"
+      ],
+      "reportedAges": "13–18",
+      "youthScope": "focus",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "younger-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/41262946/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-36373473",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adolescents",
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "Eligible sample means 14–24",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/36373473/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-36964523",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adolescents",
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "Mean age eligibility 14–24",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/36964523/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-38090786",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adolescents",
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "16–25",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/38090786/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-33725578",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adolescents",
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "Youth service users 12–25; clinicians adults",
+      "youthScope": "focus",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "broader-institution-youth",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/33725578/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-34021113",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adolescents",
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "Youth evidence, varying study ages; service context 15–25",
+      "youthScope": "focus",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "broader-institution-youth",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/34021113/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-35544295",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adolescents",
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "Service users 12–25; general population 16–25",
+      "youthScope": "focus",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "broader-institution-youth",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/35544295/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-37213197",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adolescents",
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "16–27; mean 21",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/37213197/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-38362237",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adolescents",
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "Youth 16–24, mean 18.4; staff adults",
+      "youthScope": "focus",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "direct",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/38362237/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-39665442",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adolescents",
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "Refugee service users 12–25 plus families",
+      "youthScope": "focus",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "broader-institution-youth",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/39665442/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-36995752",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "18–25",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/36995752/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-39946428",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "Study mean-age eligibility 18–30",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/39946428/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-35976180",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adolescents",
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "12–24, allowing mixed studies with at least 80% in range or justified age inference",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/35976180/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-32683737",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adolescents",
+        "youth"
+      ],
+      "reportedAges": "12–16; mean 14.82",
+      "youthScope": "focus",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "younger-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/32683737/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-41171275",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "18+; mean 23.5 (SD 5.2)",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/41171275/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-32527236",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "children",
+        "adolescents",
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "10–19; mixed studies allowed if over half within range or subgroup data available",
+      "youthScope": "focus",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "younger-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/32527236/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-40504611",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "children",
+        "adolescents",
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "Eligible mean age under 25, including children",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/40504611/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-40033658",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "Review states university students 18–25; age criteria do not prove every included participant fell in range",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/40033658/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-40521225",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "children",
+        "adolescents",
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "Young people up to 25",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/40521225/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-39392547",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "Postsecondary students; no youth-only age restriction",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/39392547/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-31333198",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "Higher-education students, no fixed upper age",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/31333198/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-39150513",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "Target eligibility 18–24; includes longer follow-up of student cohorts",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/39150513/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-39666705",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "children",
+        "adolescents",
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "Below 25, including children",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/39666705/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-36424575",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adolescents",
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "Outcomes at 14–24 or mean near range; typically younger adolescents",
+      "youthScope": "focus",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "younger-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/36424575/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-34927592",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adolescents",
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "Target 14–24",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/34927592/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-32504808",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "children",
+        "adolescents",
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "Children/adolescents including young adults; healthy-sample mean 15.3",
+      "youthScope": "focus",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "younger-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/32504808/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-33079071",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "18–25; mean 18.7",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/33079071/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-36342533",
+      "collections": [
+        "sound",
+        "language"
+      ],
+      "groups": [
+        "children",
+        "adolescents",
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "11–21",
+      "youthScope": "included",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "mixed-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/36342533/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "youth-pmid-38192586",
+      "collections": [
+        "sound",
+        "language"
+      ],
+      "groups": [
+        "adolescents",
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "Observed 13–19, mean 16.36; eligibility 12–19",
+      "youthScope": "focus",
+      "youthSourceNote": "The existing youth filter includes adolescents and source-defined young people. It does not establish a separate 16–24 estimate.",
+      "ageFit": "younger-overlap",
+      "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/38192586/",
+      "basisType": "selected-methods-ai-editorial-assessment",
+      "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
     }
   ]
 }

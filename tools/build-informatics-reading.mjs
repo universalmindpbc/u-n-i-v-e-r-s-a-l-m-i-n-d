@@ -31,7 +31,7 @@ const library=sourceRead('library.js');
 const slice=(start,end)=>{const a=library.indexOf(start),b=library.indexOf(end,a);assert(a>=0&&b>a,`Reader extraction marker: ${start}`);return library.slice(a,b);};
 // Execute only the reader's pure record construction and local data merge.
 // Keeping these fragments identical preserves editorial text and score scope.
-const names=['sound-edition','library','publication-access','language-edition','general-edition','mindfulness-expansion','vision-edition','vision-expansion','clinical-conditions','nature-expansion','fulltext-availability','fibonacci-expansion','hyperspectral-expansion','domestic-violence-expansion'];
+const names=['sound-edition','library','publication-access','language-edition','general-edition','mindfulness-expansion','vision-edition','vision-expansion','clinical-conditions','nature-expansion','fulltext-availability','fibonacci-expansion','hyperspectral-expansion','domestic-violence-expansion','youth-expansion'];
 const inputs=names.map(n=>JSON.parse(sourceRead('library-data/'+n+'.json')));
 const context=vm.createContext({inputs});
 vm.runInContext(sourceRead('library-model.js'),context);
@@ -40,7 +40,7 @@ let publicationAccess={},clinicalConditions={},editions={},papers=[];
 ${slice('  const normalize =','  const model =')}
 const quoteText=quote=>quote.map(span=>span.text).join('');
 ${slice('  function buildRecords(data) {','  function search()')}
-const [sound,data,access,language,general,expansion,vision,visionExpansion,conditions,natureExpansion,fulltexts,fibonacciExpansion,hyperspectralExpansion,dvExpansion]=inputs;
+const [sound,data,access,language,general,expansion,vision,visionExpansion,conditions,natureExpansion,fulltexts,fibonacciExpansion,hyperspectralExpansion,dvExpansion,youthExpansion]=inputs;
 ${slice('      publicationAccess =','      $(\'#condition\')')}
 ${slice('      editions = {sound,language,general,vision};','      const allTargets=')}
 const records=buildRecords(data);
