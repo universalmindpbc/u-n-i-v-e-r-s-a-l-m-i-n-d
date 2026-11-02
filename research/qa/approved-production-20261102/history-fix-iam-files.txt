@@ -1,0 +1,11 @@
+i  a m/adaptive-environment-television.css
+i  a m/adaptive-environment.js
+i  a m/adaptive-environment-television.html
+i  a m/adaptive-music-video.html
+i  a m/cafe-del-mar-home.html
+i  a m/globe.html
+i  a m/index-alt.html
+i  a m/index.html
+i  a m/our-team.html
+i  a m/technology-citizen-needs.html
+i  a m/vogue-self-report.html

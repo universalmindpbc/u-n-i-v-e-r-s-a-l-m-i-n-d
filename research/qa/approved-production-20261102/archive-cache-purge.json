@@ -1,0 +1,37 @@
+{
+  "timestamp": "2026-11-02T02:52:55.982424+00:00",
+  "batches": [
+    {
+      "files": [
+        "https://universalmind.tv/informatics/exports/part-013f0afdd0d0f90669c2bf67d501db7ee09499c7fb659fbf5c67f165face371f.bin",
+        "https://universalmind.tv/informatics/exports/part-07174db98c4021ecff0ffb438d07b6a8156480597c720fba682061e3a1c975f5.bin",
+        "https://universalmind.tv/informatics/exports/part-0a4bc9b7f9b84b5ea2e080b4064659bba716fad4a9235a96f39ec80a6eed9d82.bin",
+        "https://universalmind.tv/informatics/exports/part-0a56d917711b30ce54948dbd315126bd59f7893a3267d3509d61dc18b0736cf7.bin",
+        "https://universalmind.tv/informatics/exports/part-111cefb2bc669e8bbb44e647d7c084bf18172ed84c88ce6b7fd8f46fd7c801f5.bin",
+        "https://universalmind.tv/informatics/exports/part-1407d1d35d85b14a2fba4d02519a75903dccc4d6a3b50ed5d30b8958fb1f032a.bin",
+        "https://universalmind.tv/informatics/exports/part-153fa1c9fb32468f8d7697833c8b70b870fd3e312620686bf61f3c74efac68f0.bin",
+        "https://universalmind.tv/informatics/exports/part-16cafa25f205168ac04821d83275830cc3560146c48b29ada77217d2aa0e1a1a.bin",
+        "https://universalmind.tv/informatics/exports/part-1811cdbc15d9a4722018d002aea3aba57f843855559691b95d735317130efcdf.bin",
+        "https://universalmind.tv/informatics/exports/part-1817a0f68ff5990e53cb138d35bd5f1ed5fc72b59765860cb586f38e285fc68c.bin",
+        "https://universalmind.tv/informatics/exports/part-1b1e3cbac2b814f9c7c45be98047ab2eff7c86ed970ef41c3a7c6c0e1781e1e7.bin",
+        "https://universalmind.tv/informatics/exports/part-1d804ed722f3ddcfdd71e15919d91553f77851d7c00da64020e9c49c43526b74.bin",
+        "https://universalmind.tv/informatics/exports/part-1e5a1448372cd4aed30d33fc44661bb5847f7948ca8cef6fb1eca1c1135f19f2.bin",
+        "https://universalmind.tv/informatics/exports/part-1ea7e735f299c62707817de15ae52393a43b4bff06424b04b7be6c7d26f28bea.bin",
+        "https://universalmind.tv/informatics/exports/part-27e8d473e9c14f1eaf6f4d307d33f67fcdb83bc323a08139c7c2c525df5ae51c.bin",
+        "https://universalmind.tv/informatics/exports/part-2af95a03fa1a0a84295c2b24689983b6df55c686e5d12ec99ed23afdd98602b3.bin",
+        "https://universalmind.tv/informatics/exports/part-2daabf7267b667d395ca1f4b68da044c0ec9be820519f105200d915c29a675ae.bin",
+        "https://universalmind.tv/informatics/exports/part-33459e8f64de447e8a3afceca35b51d57772cdc239017816202305de54829663.bin",
+        "https://universalmind.tv/informatics/exports/part-366a7301688181d1b81a250d3100b9df7369c46a1b034fcb9603770d5f5d73e1.bin",
+        "https://universalmind.tv/informatics/exports/part-39309af639c87e0dc6f81474cfd5ffc5de0e7e5e09e93a140eaa2c10e91278c5.bin"
+      ],
+      "success": false,
+      "errors": [
+        {
+          "code": 10000,
+          "message": "Authentication error"
+        }
+      ],
+      "result": null
+    }
+  ]
+}

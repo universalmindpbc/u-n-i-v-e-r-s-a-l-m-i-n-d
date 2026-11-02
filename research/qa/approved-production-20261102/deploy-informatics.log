@@ -1,0 +1,17 @@
+{"passed": true, "robotDecisions": 270, "HTMLPages": 2241, "localLinks": 28014, "publicationRecords": 1223, "atlasRecords": 1001, "experimentRecords": 2, "sourceFilesMatched": 16}
+{"passed": true, "sources": 1194, "version": "6ec89288db0d688635045ab6f3388e49fd5418ef4743493a1cc151f8807af978"}
+Informatics: 13777 tracked assets; 2361 changed uploads via Panthur FTP.
+Informatics: uploaded 200/2361 changed assets.
+Informatics: uploaded 400/2361 changed assets.
+Informatics: uploaded 600/2361 changed assets.
+Informatics: uploaded 800/2361 changed assets.
+Informatics: uploaded 1000/2361 changed assets.
+Informatics: uploaded 1200/2361 changed assets.
+Informatics: uploaded 1400/2361 changed assets.
+Informatics: uploaded 1600/2361 changed assets.
+Informatics: uploaded 1800/2361 changed assets.
+Informatics: uploaded 2000/2361 changed assets.
+Informatics: uploaded 2200/2361 changed assets.
+Informatics: uploaded 2361/2361 changed assets.
+Informatics: completed changed uploads through the existing Panthur curl/FTP transport.
+Deploy complete: informatics

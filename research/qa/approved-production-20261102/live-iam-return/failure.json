@@ -1,0 +1,5 @@
+{
+  "message": "page.waitForFunction: Timeout 30000ms exceeded.\n    at /private/tmp/um-approved-production-20261102/research/qa/approved-production-20261102/check-portal-navigation-browser.mjs:80:16",
+  "results": [],
+  "errors": []
+}

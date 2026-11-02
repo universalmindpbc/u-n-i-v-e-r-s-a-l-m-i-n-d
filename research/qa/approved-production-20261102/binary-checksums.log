@@ -1,0 +1,15 @@
+{"checked": 10, "total": 55}
+Traceback (most recent call last):
+  File "/private/tmp/um-approved-production-20261102/research/qa/approved-production-20261102/verify-binary-checksums.py", line 21, in <module>
+    for i,result in enumerate(pool.map(check,items),1):
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/concurrent/futures/_base.py", line 608, in result_iterator
+    yield fs.pop().result()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/concurrent/futures/_base.py", line 438, in result
+    return self.__get_result()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/concurrent/futures/_base.py", line 390, in __get_result
+    raise self._exception
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/concurrent/futures/thread.py", line 52, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/private/tmp/um-approved-production-20261102/research/qa/approved-production-20261102/verify-binary-checksums.py", line 17, in check
+    assert result['sha256']==item['sha256'],result
+AssertionError: {'path': 'Informatics/exports/part-1ea7e735f299c62707817de15ae52393a43b4bff06424b04b7be6c7d26f28bea.bin', 'bytes': 9682684, 'sha256': '8df7e47911b6a0df08c2a6be140a8ee9c3162017709aee9b6489bcbdaf6446c2', 'expected': '1ea7e735f299c62707817de15ae52393a43b4bff06424b04b7be6c7d26f28bea', 'cache': 'HIT'}

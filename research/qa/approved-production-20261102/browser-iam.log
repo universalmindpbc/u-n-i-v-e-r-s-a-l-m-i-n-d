@@ -1,0 +1,25 @@
+I AM about retained
+I AM program retained
+I AM technology retained
+I AM technology-recommendations retained
+I AM science retained
+I AM research retained
+I AM research-computer-vision retained
+I AM privacy-first retained
+I AM business-model retained
+I AM traction retained
+I AM impact retained
+I AM check-in retained
+I AM our-team retained
+I AM shop retained
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+page.waitForFunction: Timeout 30000ms exceeded.
+    at /private/tmp/um-approved-production-20261102/research/qa/approved-production-20261102/check-portal-navigation-browser.mjs:99:15 {
+  log: [],
+  name: 'TimeoutError'
+}
+
+Node.js v24.22.1

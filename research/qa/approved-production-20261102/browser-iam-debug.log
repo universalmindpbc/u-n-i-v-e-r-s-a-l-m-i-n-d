@@ -1,0 +1,27 @@
+{"iamReady":{"url":"https://universalmind.tv/iam/tv/","body":"adaptive-television-page adaptive-music-selection-ready homepage-radar-highlight-physiological adaptive-typewriter-complete television-wallet-pointer-locked television-wallet-settling television-is-fullscreen television-room-open","home":"<a class=\"global-nav-item is-active\" href=\"https://universalmind.tv/iam/tv/\" data-nav-item=\"home\" aria-current=\"page\">tv</a>"}}
+I AM about retained
+I AM program retained
+I AM technology retained
+I AM technology-recommendations retained
+I AM science retained
+I AM research retained
+I AM research-computer-vision retained
+I AM privacy-first retained
+I AM business-model retained
+I AM traction retained
+I AM impact retained
+I AM check-in retained
+I AM our-team retained
+I AM shop retained
+{"beforeHome":{"url":"https://universalmind.tv/iam/shop/","body":"adaptive-television-page adaptive-music-selection-ready homepage-radar-highlight-physiological adaptive-typewriter-complete television-wallet-pointer-locked television-is-fullscreen television-room-open television-page-view-open iam-page-transitioning","link":"<a class=\"global-nav-item\" href=\"https://universalmind.tv/iam/tv/\" data-nav-item=\"home\" aria-current=\"page\">tv</a>"}}
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+page.evaluate: Execution context was destroyed, most likely because of a navigation
+    at /private/tmp/um-approved-production-20261102/research/qa/approved-production-20261102/check-portal-navigation-browser.mjs:98:317 {
+  log: [],
+  name: 'Error'
+}
+
+Node.js v24.22.1

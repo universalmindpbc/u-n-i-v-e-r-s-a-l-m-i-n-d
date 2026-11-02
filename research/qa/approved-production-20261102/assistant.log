@@ -1,0 +1,16 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+locator.waitFor: Timeout 45000ms exceeded.
+Call log:
+[2m  - waiting for locator('#research-frame').contentFrame().locator('#result-count')[22m
+
+    at /private/tmp/um-approved-production-20261102/research/qa/approved-production-20261102/verify-production-assistant.mjs:11:70 {
+  log: [
+    "  - waiting for locator('#research-frame').contentFrame().locator('#result-count')"
+  ],
+  name: 'TimeoutError'
+}
+
+Node.js v24.22.1

@@ -1,0 +1,620 @@
+{
+  "passed": true,
+  "results": [
+    {
+      "url": "/iam/about/",
+      "sha256": "03a2cd9ef93f27e6a8c9156f4615fe72dda7152e1e12a618cc29fa8571743801",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/iam/tv/",
+      "sha256": "a3b4c09dd8919c2f984cbfe9b9e71a7a8753f59d03b20b78c37d5db9d8fdae9a",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/iam/program/",
+      "sha256": "c147648d48ce99e3308a7c97fd68f5058cd78ce7210dad8ab375fbcd60e6db23",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/iam/technology/",
+      "sha256": "350f3e29e4d02bd14e83ab59ac1adcb08632ad63dd470c2fcd15f99a01923a55",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/iam/science/",
+      "sha256": "e0b91f00fbf351969a0286550277623a23ed5f54818efc9ffdd8a264630fcb6c",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/iam/research/",
+      "sha256": "bb9eefd80079ea4905086e8bfe19554c9d1ec227119a6e01f55d493400cd41d0",
+      "emailProtectionReversed": true
+    },
+    {
+      "url": "/iam/technology/recommendations/",
+      "sha256": "3d796ee7086bfd0e6f5a94f3ce76443e3cd908d15d6bb42a834dc580f04adc70",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/iam/privacy-first/",
+      "sha256": "8a51ddba008c2e2eefab624b8876d3948d226cd19fc0bb00a816dffb4a4c359d",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/iam/business-model/",
+      "sha256": "7f82be7e532e27a9645fab45b35271d05cc5197f96edece592f1a7d983d4d167",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/iam/research/computer-vision/",
+      "sha256": "a57709ae88c45887b323960111c538a236e74b8dd211874a4185f8a018ea90b4",
+      "emailProtectionReversed": true
+    },
+    {
+      "url": "/iam/traction/",
+      "sha256": "7b1def4c54e3cb83b3c257aaf67082ab45e72cd6e4ba016028cf6b9703c0a50f",
+      "emailProtectionReversed": true
+    },
+    {
+      "url": "/iam/our-team/",
+      "sha256": "16f80aff608bac0d854d2074cc6479e6951327dd937b0a4053161f2ba63f9356",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/iam/check-in/",
+      "sha256": "7f8805b6972abc657b1e8ae46351f030fe271817d7407da24405fd87920b3cc1",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/iam/impact/",
+      "sha256": "4ef859cb54b96df369de207c327d0010dd9e4f646bca21dc63420afb05a5506b",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/iam/shop/",
+      "sha256": "fbe4802892a09fd71e62483a099b76467e309a078403a50413e1b9f2b38534f3",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/transcription/",
+      "sha256": "05fd46463db5d9447e9a9101cb9fbb26fa4a9dbb937570cab21a5364fd9e5236",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/molecular/",
+      "sha256": "ce26a6160d23bbb43e20562cfb80548bf6455dc2f57707885078c5ee93d58bfc",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/about/",
+      "sha256": "c933b4d54cd127706e58f58a9536efd442cc4cb4cda631b1e1359b350dc0bef3",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/vision/",
+      "sha256": "a16923f0cf26a62eda3fdd88fb34b9817fd413e5073dd05b20c8e31373c7ac1e",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/quantum/",
+      "sha256": "c2d09f71867a437edc2219cd5b7475d8f0750525fa19a404c2d9a950ff2f65f6",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/sound/",
+      "sha256": "a6bf4943ef9d44e799e47772e114de5e3b9bd93e4c284f80fec59b98d89eaa4b",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/language/",
+      "sha256": "b0b30d2393e3f559a6c202b22d9de9a1f93a20da8ae3d19cc5b071764de0e17b",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/research/",
+      "sha256": "227815daffb021624ad8be3ea681b379c4496348168e6bc7c23269fd7adf724d",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/connect/",
+      "sha256": "61b70bca4eb0826632dbe90aa6df0ac9ad46bcde6f6ea62448e3029d2a1af9a1",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/site-navigation/routes.js?v=375ae77a6715",
+      "sha256": "375ae77a6715f56630d965d1a79a37c06260147e1580b3987dfffd77cd196710",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/partners/",
+      "sha256": "a0081cbebfe3ccdca93308a3d7f36b844e8b03587c1c5a701a620a1f469d07a9",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/site-navigation/portals.json",
+      "sha256": "0c94227156f637bbc41aacfcbcd96d87874f61b345b76acfb423c2fc31ce9596",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/sitemap/index.html",
+      "sha256": "e31942130574b9bf7a4d10b59c1d9f92cb801b5554063a6776c5d8135f2b79b0",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/sitemap.xml",
+      "sha256": "69a6c2195641c02deaf0fc2ba721c54cfcff3dcf31eaaf237f66479af5c1c7c3",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/sitemaps/iam.xml",
+      "sha256": "ae848fd879b629c878372dc1f62a64988015fbc17f89301d8d7e831841768cf4",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/sitemaps/informatics.xml",
+      "sha256": "f3ed907a7099f78bc536b9c490b81791e2a6e68bc1030a01c3c05cfc514f3a02",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/home/entry-shell.js?v=5",
+      "sha256": "292cd65fe13be4c5e5e615ec5c1360dbe85894523df2e5e6dfc4aeb07c598bbf",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/sitemaps/informatics-records.xml",
+      "sha256": "ce61763077e93356496c7c187172a800501930f995c79ee162f31d1c2dca2eb8",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/home/index.html",
+      "sha256": "f90a88356e8ae0be5cd324ea29293b9359ac8c52ed92d06525fc8ecde0d6f5a8",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/sitemaps/informatics-publications.xml",
+      "sha256": "faf3a7953d2683c747017a89fb7a9a572fe4f3825fe00ce2f053e59093dd3a48",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/index.html",
+      "sha256": "837bf8922cfdf386b7863884bc4c811248b12750b5715446598d465625bd0342",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/read/resources.json",
+      "sha256": "eba521321e5e437580d6961ef762b2adeadfa077568e23f18b5ccd850148ab78",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/read/index.html",
+      "sha256": "7a43c164d1946aec8a0d17c4e64a733aa9a1264fd224a3fa038718e14a4b8a70",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/atlas.css?v=d89bcbd76042",
+      "sha256": "d89bcbd76042385effb726577cdd97ed39b55ecdfb18c376690fca1e13e9ccce",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/app.js?v=28",
+      "sha256": "3ffeffb47d93cce9a8e5b4af9fabcc0433bee062637207966f4925b95df7cf93",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/llms.txt",
+      "sha256": "4cb110c3a5f6a502643ac506caf1d8a048636d17fee0f040f6fdfd2d708759c5",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/shared-experience.js?v=1c6694f64b0d",
+      "sha256": "1c6694f64b0d7f0d31ee2718af4459efe7daf60a5c53d2c73b1aa3265d895640",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/global-navigation.js?v=4493d996184a",
+      "sha256": "4493d996184ac5a539d93cd2ea924a7cc309f0250ede87979bc23f3ada2e84f2",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/molecular-entry.js?v=00e18f6dc370",
+      "sha256": "00e18f6dc370305dfb32bd3ea7db672289f1e67d00c458125ee1298239ace2ae",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/geometry/",
+      "sha256": "954e49dc20996c284aa0f0efd378f2534a38270e8cb9d3a6ffba80d436b667f6",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/quantum-entry.js?v=6a90d8c53d2d",
+      "sha256": "6a90d8c53d2dc52b3e4c137324ed022f7934a4617f409831e0d4c519840f58c8",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/library.js",
+      "sha256": "a39cfe8108763b08a72ce3cea1ff3f395a47e523c7c3c2547bd5df92b582606e",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/llms.txt",
+      "sha256": "761acfc1edf91494aa12c7b8b943f626abbdb0d48bbfe1f774ca93838c8ba15d",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/music-atlas/music-atlas.json",
+      "sha256": "d105fe1f5211e955baee4bc4817166bb2b5347949890a617c8a31c9680bc7bf4",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/music-atlas/music-atlas.md",
+      "sha256": "2a0280ebea5bd84a114984540b9623086707be7f6cc5d3e37cad011b70c1a507",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/read/index.html",
+      "sha256": "32f6ad7fadb49f0e1934d16b0b0a0b440dfd47bcbe156502bafe3b7ce6f3160c",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/music-atlas/music-atlas.csv",
+      "sha256": "0c6a655c3e1bf992aed4e5043db95a11f04aa7d4552367d50c99b266b6466b4b",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/quantum/reading/quantum-atlas.json",
+      "sha256": "0ef1e3367348699cd68480cb2bf84b7f2f09e36832c7632b663e143d268b4c8c",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/vogue/iam/global-navigation.js?v=global-navigation-canonical-14-a82eeb2d7b36",
+      "sha256": "a82eeb2d7b365c02e825796d8becc2fce5d60bf1fdf1e6b50608eb00804719a5",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/sitemap/index.html",
+      "sha256": "afef13e865f381ca7d9744e61fccabc7b284979bd194a9a8d8efe521631f00e5",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/vogue/iam/adaptive-environment.js?v=adaptive-env-f42e88638055",
+      "sha256": "f42e8863805522bbb91006efba06b9772e75e9f0f2558f405d9d01766d527b68",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/vogue/iam/globe.js?v=globe-c9175787f616",
+      "sha256": "c9175787f616f29dd9f66410da2fae8d709b273657945288d087f2d7d5250e0b",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/vogue/iam/adaptive-environment-television.js?v=music-tv-c9f0098a0c82",
+      "sha256": "c9f0098a0c8289ded85d5f2bbd6e901b998e1af8df7e24d45aafec61bfa05c10",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/vogue/iam/script.js?v=adaptive-env-stream-d69765f102c1",
+      "sha256": "d69765f102c1b3ac459dd3881db1761d6b55bf971c6c415a593211fe6c96655a",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/vogue/iam/mobile-editorial-surface.js?v=mobile-editorial-095fdaf7866c",
+      "sha256": "095fdaf7866cb07d0751fdad7b208e852e1b19bfa8c54fe8568dd2b65818c09c",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/vogue/iam/science.js?v=217fb59c5a9a",
+      "sha256": "217fb59c5a9a26b8ac3cc8840e53e8c69a109883eec3c4090c1795fa6a2ef381",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/exports/manifest.json",
+      "sha256": "95191f3b5dfdfe56d1446f01ae3cb13c589f37bb245730fcb19a7a165e5fd3b4",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/vogue/iam/shop.js?v=shop-c407fca1f1f2",
+      "sha256": "c407fca1f1f20549f908f7369f0d11a37311c8a18974b908ecf6972f0ba97854",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/vogue/iam/science-research-data-v1.js?v=c32745d5aeea",
+      "sha256": "c32745d5aeea570b1d069450fcedfeb36de8b74e600cd3e94bc8040158f2d1de",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/atlas-guides/computer-vision-atlas.json",
+      "sha256": "222490b3b8196ca6391595ff2ecd9657b912f2d3095d571f5340f7bc25ed8fba",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/vogue/iam/index.html?navigationShell=1",
+      "sha256": "de50609ee69671be3de3b19fc87e73153d1eaca44b5afa9834a144f7bea10810",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/atlas-guides/computer-vision-atlas.csv",
+      "sha256": "13ca13e52419ccd29a5d54f27c96e4eec479583e2e3ecc39d8ad94896e2a6920",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/atlas-guides/computer-vision-atlas.md",
+      "sha256": "0adbc046737cbafad0785a910123718aeda11f1ac7fabfc8526b98ade4ce7ac9",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/atlas-guides/language-atlas.csv",
+      "sha256": "5d0cf0582ff3b3823d3a1ce9b3f59b9d28b131682c2c9a7c87c87eea1a843510",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/atlas-guides/language-atlas.json",
+      "sha256": "4babb2fe00df5faeeef160d6b32cf4d681e5202baedc7785aafa7d84055c4934",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/atlas-guides/language-atlas.md",
+      "sha256": "b148b72d7123550c3b3453840f4e2c7edf10577a3b9dc04fd5a92b0a94f5d3bb",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/atlas-guides/molecular-atlas.csv",
+      "sha256": "ec051eeae4cc70ff6c225a8d71c7641acfec3784fcde90a351bc06c5ca2ffe43",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/atlas-guides/molecular-atlas.json",
+      "sha256": "cd89479207cbe3c998c5e4eb2934189744d5b27f6cf1648b16182fd2ab54aca8",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/atlas-guides/geometry-atlas.json",
+      "sha256": "c882777c092a1f5e20caf6c9dabfb3735e9feded212d5dc9546e23712817c2bd",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/atlas-guides/molecular-atlas.md",
+      "sha256": "615332a3a668f8c5d3daaa9e38c788f83f175c1091d59ab832e5054536761522",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/atlas-guides/geometry-atlas.md",
+      "sha256": "73b5d4e5201e0bbb43ad5dbce450d2ba0452230e00590bc905414e5d238b8cad",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/atlas-guides/transcription-atlas.json",
+      "sha256": "71c66c26df481748f57553e69555f052a4ed7a80c2dac79e7f6b75387d924329",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/atlas-guides/transcription-atlas.md",
+      "sha256": "06e22af57c912ea528f8647c6acd13328aa9a1976d5a24241866b34f28bbc982",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/atlas-guides/transcription-atlas.csv",
+      "sha256": "d571c216ac8b8fe8e75909c63f979509e83341cee913a6841aa526571168c717",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/atlas-guides/vision-atlas.csv",
+      "sha256": "e5f874ac6bb67f1d5a306919abdcc7888ce0e4e37c1047eb35bd00541ced7d06",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/atlas-guides/vision-atlas.json",
+      "sha256": "4bab8853bd49f5fbec8f6cf3e5b5948acc461ae6b94bd95e581caed878b937ca",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/atlas-guides/vision-atlas.md",
+      "sha256": "bebe93fd843b9e52aa8a56ba026478064b09a4b7c272bb09f93fc3b2f925ea86",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/atlas-guides/geometry-atlas.csv",
+      "sha256": "c001f1181d5560d33944909797e5859a7563fd224cc3caa644edd620728199f3",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/read/atlas/",
+      "sha256": "fc27364f36ba1f901661c522b3a6c49f1b9ff3d31aeda148bc4e3317e34484f5",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/quantum/reading/quantum-atlas.md",
+      "sha256": "4d41a5157374319583d13d51927ec1d764449a1d2627a60fac64b86b59917d8c",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/read/transcription/",
+      "sha256": "2976d534fb032799dc69c400e5ee43fae57b40cf8e49292b117436814608b951",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/quantum/reading/quantum-atlas.csv",
+      "sha256": "2214a5f4f173018be529c64be94832464202a27486b74d5a2dd043466a658fab",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/read/molecular/",
+      "sha256": "ab289141ca4682ea8da0341352620952bd38f46ae0e28b8c84272be276e2ab69",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/read/quantum/",
+      "sha256": "492eef579c464e10064273097eb9b9c44e605bb2c652cbd3a5b98747b675715d",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/read/music/",
+      "sha256": "f8450f905df25d26723572d05c1135fc60af77cb95f049bda90eca07955defeb",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/read/vision/",
+      "sha256": "a79e1af356ac3c55af55797a4b0294ff1899fffba1778ef424c88a2c17a74522",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/read/computer-vision/",
+      "sha256": "a9c394f54f7a09c8160e0a69bbe9894e9a77dba41a16a87fc8f412e0fad5becc",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/vogue/iam/about.html?adaptiveFrame=1&musicTelevisionFrame=1",
+      "sha256": "56ab61e1d0a428b6a185808017d7e126e56b0006e0c44984e2f66af62d627e8d",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/read/language/",
+      "sha256": "a621f981500bc9ef62c4716ed36bf354f4e93f42416e7c8fd9b2eb6d89a2110b",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/vogue/iam/adaptive-environment-television.html?adaptiveFrame=1&musicTelevisionFrame=1",
+      "sha256": "53ba835d00d934a5ab7064016c05100906abfc7aeb1b7b9cd8e59bc74078883b",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/vogue/iam/adaptive-music-video.html?adaptiveFrame=1&musicTelevisionFrame=1",
+      "sha256": "c6b7625ade2288a4b35dcc7ffb6cf1a5b942ec93d8e82bf86cbdad9131162781",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/vogue/iam/business-model.html?adaptiveFrame=1&musicTelevisionFrame=1",
+      "sha256": "53b23f2802180b8bec280a80996769d7097a1380c7d777a80e081466d2a694d5",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/vogue/iam/community-globe.html?adaptiveFrame=1&musicTelevisionFrame=1",
+      "sha256": "b59e045f14f835ff1df3906db82bcafd68b1b84ccc1d17b5f711d8e045bf094f",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/vogue/iam/impact.html?adaptiveFrame=1&musicTelevisionFrame=1",
+      "sha256": "5da07d3e1134dfe25b71fd0b0cb6b11f81a6fda26d01a86c1432650afa64e1ca",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/vogue/iam/cafe-del-mar-home.html?adaptiveFrame=1&musicTelevisionFrame=1",
+      "sha256": "ff9f7a0ee86255583d2efb591d2a5e78b39eec628a10c76f8cd35ef2023e0eb2",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/vogue/iam/globe.html?adaptiveFrame=1&musicTelevisionFrame=1",
+      "sha256": "25fc047143df78ba73b5439dcd15aa9f4e14765d40fe328a5dc12cdfd51f1028",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/vogue/iam/index-alt.html?adaptiveFrame=1&musicTelevisionFrame=1",
+      "sha256": "7499f4ed64246206eb1d7443eaaa0494249f2f8bfb52c35829ffab94abe87769",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/vogue/iam/induction.html?adaptiveFrame=1&musicTelevisionFrame=1",
+      "sha256": "2cd887a7b2fb867ce025e28df93476e0c44df10532d30792e1dbe4c572db4129",
+      "emailProtectionReversed": true
+    },
+    {
+      "url": "/vogue/iam/our-team-concept.html?adaptiveFrame=1&musicTelevisionFrame=1",
+      "sha256": "6a5086a4dda5dbe5560b73d47c91a13655535683e788babf68d31b59eb18d4a2",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/vogue/iam/our-team.html?adaptiveFrame=1&musicTelevisionFrame=1",
+      "sha256": "555905ea64b568bca8f0220850285edaa210e3af906cdfcad6c4d65b95dacc2b",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/vogue/iam/light.html?adaptiveFrame=1&musicTelevisionFrame=1",
+      "sha256": "e4eb9bd9164e8aa69b2d97d3217f009f04a7c3fa4f0731e87754e5821adfb70b",
+      "emailProtectionReversed": true
+    },
+    {
+      "url": "/vogue/iam/privacy-first.html?adaptiveFrame=1&musicTelevisionFrame=1",
+      "sha256": "e7329c3e1978dbf7bfa48eb0571764f2a9fc2a2b1db16932e004426b8d99096d",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/vogue/iam/program.html?adaptiveFrame=1&musicTelevisionFrame=1",
+      "sha256": "365c03ee29cbca8aa6a2f4fbb972a2c81ec9ea5a971c0852a691359c53e6b3c2",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/vogue/iam/science.html?adaptiveFrame=1&musicTelevisionFrame=1",
+      "sha256": "b7f8b3ef95a10bed9b262023f4d174d040ecd9208a41a8447539da023f246b9d",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/vogue/iam/research.html?adaptiveFrame=1&musicTelevisionFrame=1",
+      "sha256": "1dfa2d89bd12bb65ae6041869163d367faba378fb46227b94d9d1e9d2ecb5b24",
+      "emailProtectionReversed": true
+    },
+    {
+      "url": "/vogue/iam/shop-science.html?adaptiveFrame=1&musicTelevisionFrame=1",
+      "sha256": "6449bc5855c6d9c8afb6a334d1ddcc74b120576bc9a8c3fe7a4757920677100d",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/vogue/iam/technology-inference-engine.html?adaptiveFrame=1&musicTelevisionFrame=1",
+      "sha256": "7c2ea0a314fa184169c1ca890c4650b793106f6da6f1a504f23fc752d21c6cc7",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/vogue/iam/technology-citizen-needs.html?adaptiveFrame=1&musicTelevisionFrame=1",
+      "sha256": "d49dc9fd6fc895ae2ef0b30179700466956376bd892525b143eac1660fe5f548",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/vogue/iam/shop.html?adaptiveFrame=1&musicTelevisionFrame=1",
+      "sha256": "d3408f502922421c0c05ca0d9d15c25fba68cfbb97b2c1257bff31bd9325c796",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/vogue/iam/traction.html?adaptiveFrame=1&musicTelevisionFrame=1",
+      "sha256": "e495054744f4035c5aa335a3ec288f7ce41b8ce4a42ae8d281c911ca2209324f",
+      "emailProtectionReversed": true
+    },
+    {
+      "url": "/vogue/iam/vogue-self-report.html?adaptiveFrame=1&musicTelevisionFrame=1",
+      "sha256": "2279cf49b9ad156ec6820caaceadea954d175531a28d73b95abe24c1addbaf08",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/vogue/iam/sound-prototype-research.html?adaptiveFrame=1&musicTelevisionFrame=1",
+      "sha256": "489b7bac881657c012d6e0d7955a4cd2f9b1e7e07dab3f7ae366db984a9990ed",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/vogue/iam/wallet.html?adaptiveFrame=1&musicTelevisionFrame=1",
+      "sha256": "c46195037954102179e973f25f4c6a58366249e9cb220153ec5d9d98e99c7330",
+      "emailProtectionReversed": false
+    },
+    {
+      "url": "/informatics/exports/part-2af95a03fa1a0a84295c2b24689983b6df55c686e5d12ec99ed23afdd98602b3.bin",
+      "bytes": 50331648,
+      "check": "HTTP size; local full checksum verified by export preflight"
+    },
+    {
+      "url": "/informatics/exports/part-111cefb2bc669e8bbb44e647d7c084bf18172ed84c88ce6b7fd8f46fd7c801f5.bin",
+      "bytes": 30537924,
+      "check": "HTTP size; local full checksum verified by export preflight"
+    },
+    {
+      "url": "/informatics/exports/part-64c757f9f906857de7e9139b8b801c594f25c3102eabc9458246f67207d2bc54.bin",
+      "bytes": 50331648,
+      "check": "HTTP size; local full checksum verified by export preflight"
+    },
+    {
+      "url": "/informatics/exports/part-689f90ad53376d22b68b16be667b0687083998653552d9a6fa3257947b907a55.bin",
+      "bytes": 50331648,
+      "check": "HTTP size; local full checksum verified by export preflight"
+    },
+    {
+      "url": "/informatics/exports/part-8d10ece88a30f354c97762ce1c241b7c1f5b125e7a87049155e4125c7878483b.bin",
+      "bytes": 49905979,
+      "check": "HTTP size; local full checksum verified by export preflight"
+    }
+  ]
+}
