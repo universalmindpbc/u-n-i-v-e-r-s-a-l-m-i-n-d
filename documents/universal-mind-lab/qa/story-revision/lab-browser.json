@@ -1,0 +1,22 @@
+{
+  "url": "https://staging.universalmind.tv/lab/",
+  "source": "live staging",
+  "renderStats": {
+    "drawCalls": 455,
+    "triangles": 650226
+  },
+  "date": "2026-11-02T08:10:27.191Z",
+  "processMuted": true,
+  "hiddenBrowser": true,
+  "nativeFullscreenTest": false,
+  "physicalPhoneTest": false,
+  "checks": [
+    "Exact minimal Informatics landing content; original logo/favicon; visitor launch at 7%; uniform tracking across universalmind[lab]; no stage selector; truck arrival, ten-second construction and sequential facilities; navigation and tags wait until open",
+    "Automatic daylight hold and gradual night completion; interior and all area camera views; rain/layout, plan, proposal and top-right media settings; Replay resets scene/daylight; fullscreen state mocked only; 1920×1080 layout",
+    "390×844 portrait and 844×390 landscape: no page overflow, header in bounds, touch place detail and proposal",
+    "Prefixed, denied and unsupported fullscreen through API doubles; native fullscreen never invoked"
+  ],
+  "unexpectedErrors": [],
+  "httpFailures": [],
+  "assetsVerified": 27
+}
