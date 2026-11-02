@@ -49,7 +49,7 @@
       document.body.dataset.accessState = 'granted';
       document.dispatchEvent(new Event('um:access-granted'));
       const stage = document.createElement('iframe');
-      stage.className = 'events-stage'; stage.title = 'A Thousand Minds';
+      stage.className = 'events-stage'; stage.title = 'Universal Mind Events';
       stage.allow = 'autoplay; fullscreen; encrypted-media; picture-in-picture';
       stage.src = '/events/?experience=1';
       document.body.append(stage);

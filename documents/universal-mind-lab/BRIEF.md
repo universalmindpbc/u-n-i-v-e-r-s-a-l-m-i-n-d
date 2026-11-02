@@ -601,3 +601,11 @@ Foreground **free access, dissolving stigma and referral pathways**. Describe he
 Explain STEAM learning through music and creative technology, fashion skills, designing a runway show and starting a fashion label. Use **“This is creativity as mindfulness.”**, **“A journey from anxiety to peace of mind.”** and **“Change your emotions. Change your world.”** Connect Apple Watch / SIX inferred signals with responsive light, colour, motion and sound, followed by earth → self → each other. Retain the distinction between recorded cardiac signals and inferred neurochemical interpretation.
 
 The visitor proposal replaces the earlier implementation inventory with this participant and community story. Technical design and research context remain in the working brief.
+
+## 25. Events choice and Lab design approval — 2 November 2026
+
+Ben approved the Lab design in the staged revision recorded at `847d054528e60a69f36571cefb46ad31eeb79643`. This approval does not authorize a production release.
+
+The homepage’s **Attend Events** destination now leads to a choice between **Universal Mind Lab** and **A Thousand Minds**. Both have distinct visual entries; the Lab uses a clean capture of the approved landscape, and A Thousand Minds retains its existing event artwork. Reuse the existing Events invitation session and the homepage’s persistent navigation shell. Preserve the Lab landing and the existing A Thousand Minds film experience. Include a Home return on the choice and an Events return inside A Thousand Minds. Browser Back also returns from the Lab to the choice.
+
+The existing `/events/?experience=1` route becomes the choice. A Thousand Minds remains within Events at `/events/?experience=1&event=athousandminds`; the Lab remains at `/lab/`. Publishing follows the existing Panthur staging workflow.

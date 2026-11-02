@@ -21,6 +21,10 @@ if (($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'POST') {
 }
 if (($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'POST' && str_contains((string)($_SERVER['HTTP_ACCEPT'] ?? ''), 'application/json')) { header('Content-Type: application/json'); echo json_encode(['error'=>$error]); exit; }
 $entered = events_authenticated() && ($_GET['experience'] ?? '') === '1';
+if ($entered && ($_GET['event'] ?? '') !== 'athousandminds') {
+    require __DIR__ . '/choice.php';
+    exit;
+}
 $filmHls = '';
 if ($entered) {
     try { $filmHls = events_media_urls()['hls']; } catch (Throwable $e) { /* Keep the entry screen available if media configuration is unavailable. */ }
@@ -33,15 +37,17 @@ if ($entered) {
 <meta name="robots" content="noindex,nofollow,noarchive">
 <meta name="theme-color" content="#080808">
 <link rel="icon" href="/vogue/iam/favicon.png?v=iam-favicon-3">
-<title>athousandminds — Universal Mind</title>
+<title><?= $entered ? 'athousandminds — Universal Mind' : 'Events — Universal Mind' ?></title>
 <link rel="stylesheet" href="assets/events.css?v=13">
 <?php if (!$entered): ?>
 <link rel="stylesheet" href="assets/gate.css?v=6">
 <script src="assets/gate-rain.js?v=2" defer></script>
-<script src="assets/gate-launch.js?v=3" defer></script>
+<script src="assets/gate-launch.js?v=4" defer></script>
 <?php endif; ?>
 <?php if ($entered): ?>
 <script src="assets/events.js?v=13" defer></script>
+<link rel="stylesheet" href="assets/choice.css?v=1">
+<script src="assets/choice-nav.js?v=1" defer></script>
 <?php endif; ?>
 </head>
 <body class="<?= $entered ? 'entered' : 'invitation' ?>">
@@ -61,6 +67,7 @@ if ($entered) {
 </main>
 <?php else: ?>
 <main class="experience" id="experience">
+<a class="events-return" href="/events/?experience=1" data-event-route><span aria-hidden="true">←</span> Events</a>
 <div class="backdrop" aria-hidden="true">
 <video id="opening-loop" src="loop.php?v=2" poster="poster.php" autoplay muted loop playsinline webkit-playsinline disablepictureinpicture disableremoteplayback preload="auto" tabindex="-1"></video>
 <picture id="opening-animation" class="opening-animation">
