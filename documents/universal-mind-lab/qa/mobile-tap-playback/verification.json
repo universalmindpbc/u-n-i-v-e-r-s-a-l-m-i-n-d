@@ -1,0 +1,37 @@
+{
+  "date": "2026-11-02T22:33:12.649Z",
+  "live": true,
+  "processMuted": true,
+  "strictTapRequirement": true,
+  "physicalIPhoneTested": false,
+  "nativeFullscreenInvoked": false,
+  "checks": [
+    {
+      "name": "Single mobile tap starts decoded sound and video at 7%, with no second landing",
+      "state": {
+        "calls": [
+          {
+            "active": true,
+            "time": 447.20000076293945,
+            "nativeHLS": true
+          }
+        ],
+        "time": 1.048566,
+        "width": 426,
+        "ready": 4,
+        "muted": false,
+        "volume": 0.65,
+        "opacity": "0.07",
+        "notice": true,
+        "audioBytes": 26626
+      }
+    },
+    {
+      "name": "Designed Music control pauses and resumes playback"
+    },
+    {
+      "name": "Browser Back restores Events and stops Lab audio"
+    }
+  ],
+  "errors": []
+}

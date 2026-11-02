@@ -118,7 +118,7 @@ try{
    checks.push('Repeated ready-state choice taps and browser Back retain both destinations in one shell');
    // Verify exact static source assets served by staging; PHP is covered by the real branch journey.
    for(const file of ['events/assets/choice.css','events/assets/choice-nav.js','events/assets/gate-launch.js','lab/landing-rain.js']){
-    const result=await p.evaluate(async file=>{const r=await fetch('/'+file+'?v='+(file.endsWith('gate-launch.js')?'4':file.endsWith('landing-rain.js')?'20261103orbit1':file.endsWith('choice.css')?'4':'3'),{cache:'reload'}),b=await r.arrayBuffer();return {file,status:r.status,sha256:[...new Uint8Array(await crypto.subtle.digest('SHA-256',b))].map(x=>x.toString(16).padStart(2,'0')).join('')};},file);
+    const result=await p.evaluate(async file=>{const r=await fetch('/'+file+'?v='+(file.endsWith('gate-launch.js')?'4':file.endsWith('landing-rain.js')?'20261103mobile1':file.endsWith('choice.css')?'6':'4'),{cache:'reload'}),b=await r.arrayBuffer();return {file,status:r.status,sha256:[...new Uint8Array(await crypto.subtle.digest('SHA-256',b))].map(x=>x.toString(16).padStart(2,'0')).join('')};},file);
     assert.equal(result.status,200);assert.equal(result.sha256,createHash('sha256').update(await fs.readFile(path.join(root,file))).digest('hex'));hashes.push(result);
    }
   }finally{await close(c);}

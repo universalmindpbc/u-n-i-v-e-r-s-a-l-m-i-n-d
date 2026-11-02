@@ -1,0 +1,42 @@
+{
+  "date": "2026-11-02T22:37:07.739Z",
+  "live": true,
+  "origin": "https://staging.universalmind.tv",
+  "processMuted": true,
+  "nativeFullscreenInvoked": false,
+  "checks": [
+    "Existing invitation gate and direct choice-route protection retained",
+    "Centred flower and small Informatics serif event choices at 1440 × 1000, without poster graphics or overflow",
+    "Real homepage login → Attend Events → event choice, retaining the original root shell and authenticated session",
+    "Centred flower and small Informatics serif event choices at 390 × 844, without poster graphics or overflow",
+    "Centred flower and small Informatics serif event choices at 844 × 390, without poster graphics or overflow",
+    "A Thousand Minds opens its existing experience without another login; Events return restores the choice",
+    "Proposal retains the exact phrase dissolving stigma",
+    "Lab entry starts real decoded music/video at 7% blend without a second landing; browser Back returns to Events in the same root shell",
+    "Home return and repeat Events entry retain access",
+    "Repeated ready-state choice taps and browser Back retain both destinations in one shell"
+  ],
+  "hashes": [
+    {
+      "file": "events/assets/choice.css",
+      "status": 200,
+      "sha256": "3bf19078bc961a1c8f1fd468e2492b6661d267282f92cc9019aaf871c292634a"
+    },
+    {
+      "file": "events/assets/choice-nav.js",
+      "status": 200,
+      "sha256": "93cdd747db62850fd836e1b2053f3c1c109a25088b18a9230148b1aca9fee280"
+    },
+    {
+      "file": "events/assets/gate-launch.js",
+      "status": 200,
+      "sha256": "935586b4275f190100529f0e01d059105701982e04568e02e73d11f5c6b2d0df"
+    },
+    {
+      "file": "lab/landing-rain.js",
+      "status": 200,
+      "sha256": "0aa2af46dea7e59ed2f9f77cdacea89c86309a463204064e5b9243f6c4651187"
+    }
+  ],
+  "errors": []
+}

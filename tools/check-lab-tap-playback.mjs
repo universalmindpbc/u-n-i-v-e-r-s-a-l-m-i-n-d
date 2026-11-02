@@ -35,7 +35,7 @@ try{
    await p.goto(origin+'/');await p.locator('[data-access-password]').fill(password);await p.locator('[data-access-form] button').tap();password='';
    await p.frameLocator('.um-experience-frame').locator('[data-destination="events"]').tap();
    await p.frameLocator('.um-experience-frame').locator('.event-options').waitFor();
-   choice=p.frames().find(f=>f.url().includes('/events/'));
+   choice=p.frames().find(f=>f!==p.mainFrame()&&f.url().includes('/events/'));
   }else{await p.goto(origin+'/events/?experience=1');choice=p.mainFrame();}
   await choice.locator('.event-option--lab:not([aria-disabled="true"])').waitFor({timeout:45000});
   let lab=p.frames().find(f=>f.url().includes('/lab/?prepare=1'));

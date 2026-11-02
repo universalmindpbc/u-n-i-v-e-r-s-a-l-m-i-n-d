@@ -1,0 +1,46 @@
+{
+  "date": "2026-11-02T22:32:43.024Z",
+  "live": true,
+  "processMuted": true,
+  "playbackMocked": true,
+  "nativeFullscreenInvoked": false,
+  "physicalIPhoneTested": false,
+  "checks": [
+    "390 × 844: drawn controls, responsive visibility, automatic tour, settings, lineup, biofeedback, support and proposal verified",
+    "320 × 668: drawn controls, responsive visibility, automatic tour, settings, lineup, biofeedback, support and proposal verified",
+    "430 × 932: drawn controls, responsive visibility, automatic tour, settings, lineup, biofeedback, support and proposal verified",
+    "844 × 390: drawn controls, responsive visibility, automatic tour, settings, lineup, biofeedback, support and proposal verified",
+    "1440 × 1000: drawn controls, responsive visibility, automatic tour, settings, lineup, biofeedback, support and proposal verified"
+  ],
+  "hashes": [
+    {
+      "file": "lab/index.html",
+      "sha256": "47866e75e67abee762d1a8bf7f580619b66cba9c8d027de1b27fce5f0f53ae8a"
+    },
+    {
+      "file": "lab/lab.css",
+      "sha256": "6736264cf2d3128a381d417deedfe2079fd348ab27b892a8f976f26eedb08598"
+    },
+    {
+      "file": "lab/lab.mjs",
+      "sha256": "3f34238a927b17fe091f23d69dd2608d55fd124b8486eaa0ca4f81a5a5c2f4c6"
+    },
+    {
+      "file": "lab/media.mjs",
+      "sha256": "f653233188ae2d1de55dae6f7083db26b48ad48cb4b74be7240d97b846a8af66"
+    },
+    {
+      "file": "lab/icons.mjs",
+      "sha256": "3c45abcaab663d0e84eb3542ef0c0f90935c27f0861db377d86703babf66589d"
+    },
+    {
+      "file": "lab/research.html",
+      "sha256": "0b82912aefcec4abfb8188c3479bbd57423503ccea333840c548298ec9528c95"
+    },
+    {
+      "file": "lab/research.css",
+      "sha256": "4fc23e95a0fe216c8e3ec7d3d5ac4b6031c2e128c5816043a6f3fb0d84763b52"
+    }
+  ],
+  "errors": []
+}
