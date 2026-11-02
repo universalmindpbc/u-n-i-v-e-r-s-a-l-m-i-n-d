@@ -3,7 +3,8 @@ import path from 'node:path';
 import assert from 'node:assert/strict';
 import {fileURLToPath} from 'node:url';
 import {chromium} from '/Users/benkorbel/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs';
-const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),origin='https://staging.universalmind.tv';
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),origin=process.env.PORTAL_ORIGIN||'https://staging.universalmind.tv';
+assert.ok(['https://staging.universalmind.tv','https://universalmind.tv'].includes(origin));
 const live=process.env.PORTAL_LIVE==='1',only=process.env.PORTAL_ONLY||'all',out=process.env.PORTAL_QA_OUT||'/private/tmp/portal-route-qa';
 const config=JSON.parse(await fs.readFile(path.join(root,'site-navigation/portals.json'))),inf=config.portals.find(p=>p.id==='informatics');
 await fs.mkdir(out,{recursive:true});
@@ -33,6 +34,12 @@ async function makeContext(viewport={width:1470,height:956},options={}) {
 }
 async function stop(ctx){for(const p of ctx.pages())for(const f of p.frames())await f.evaluate(()=>document.querySelectorAll('video,audio').forEach(m=>m.pause())).catch(()=>{});await ctx.close();}
 async function snapshot(page,selector){return page.evaluate(selector=>{const m=document.querySelector(selector);return {same:m===window.__routeMedia,src:m?.currentSrc,time:m?.currentTime,paused:m?.paused,muted:m?.muted,volume:m?.volume,full:document.fullscreenElement?.id||document.fullscreenElement?.tagName,calls:__fullscreenCalls,exits:__fullscreenExits};},selector);}
+
+async function waitForIAMFrame(page,source){
+ await page.waitForFunction(source=>{const f=document.querySelector('[data-television-page-frame]');try{return f?.contentDocument?.readyState==='complete'&&new URL(f.contentWindow.location.href).pathname==='/vogue/iam/'+source;}catch{return false;}},source,{timeout:60000});
+ assert.equal(await page.evaluate(()=>document.body.classList.contains('television-room-open')),true,'Television retains history ownership');
+}
+
 function continuity(before,after,label){assert.equal(after.same,true,label+' identity');for(const key of ['src','muted','volume','full','calls','exits'])assert.equal(after[key],before[key],label+' '+key);assert.equal(after.paused,false,label+' playing');assert.ok(after.time>=before.time,label+' time');}
 try {
  if(only==='all'||only==='informatics') {
@@ -79,13 +86,24 @@ try {
     await page.evaluate(id=>{document.querySelector('[data-nav-item="'+id+'"]').click();document.querySelector('[data-nav-submenu="'+id+'"] a')?.click();},entry.id);
     await page.waitForFunction(()=>document.body.classList.contains('television-page-view-open'));
     assert.equal(new URL(page.url()).pathname,entry.url);
-    await page.waitForTimeout(500);
+    await waitForIAMFrame(page,entry.source);
     const after=await snapshot(page,'[data-television-player] video');continuity(before,after,entry.id);before=after;
     console.log('I AM '+entry.id+' retained');
     results.push({portal:'iam',chapter:entry.id,url:page.url(),media:after});
+    for(const child of (entry.children||[]).filter(c=>c.source&&c.url!==entry.url)){
+     await page.evaluate(id=>document.querySelector('[data-nav-subitem="'+id+'"]').click(),child.id);
+     await waitForIAMFrame(page,child.source);assert.equal(new URL(page.url()).pathname,child.url);
+     const nested=await snapshot(page,'[data-television-player] video');continuity(before,nested,child.id);before=nested;
+     results.push({portal:'iam',chapter:child.id,url:page.url(),media:nested});
+    }
+
    }
-   await page.goBack();assert.equal(new URL(page.url()).pathname,'/iam/our-team/');continuity(before,await snapshot(page,'[data-television-player] video'),'I AM Back');
-   await page.goForward();assert.equal(new URL(page.url()).pathname,'/iam/shop/');
+   await page.goBack();await waitForIAMFrame(page,'our-team.html');assert.equal(new URL(page.url()).pathname,'/iam/our-team/');continuity(before,await snapshot(page,'[data-television-player] video'),'I AM Back');
+   await page.goForward();await waitForIAMFrame(page,'shop.html');assert.equal(new URL(page.url()).pathname,'/iam/shop/');continuity(before,await snapshot(page,'[data-television-player] video'),'I AM Forward');
+   await page.evaluate(()=>document.querySelector('[data-nav-item="home"]').click());
+   await page.waitForFunction(()=>location.pathname==='/iam/tv/'&&!document.body.classList.contains('television-page-view-open'));
+   continuity(before,await snapshot(page,'[data-television-player] video'),'Return TV');
+   results.push({portal:'iam',chapter:'home',url:page.url(),retainedMedia:true});
    await page.screenshot({path:path.join(out,'iam-desktop.png')});
   }finally{await stop(ctx);}
  }

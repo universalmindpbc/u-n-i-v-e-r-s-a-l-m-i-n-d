@@ -1,0 +1,13 @@
+{
+  "source": "c878f93169d0bb953e864386dede6c121240e285",
+  "historyFixCommit": "7c62c3665",
+  "preservedExistingWalletSource": "bff911cb19af313c0158ac3f7ef9abc8282a37ab",
+  "preservedWalletSHA256": "5dc8138d8082cd35cffcff2d2904dd17414f5d45fe38599ce0aaf795684c686c",
+  "liveBrowserChecks": 54,
+  "pageErrors": 0,
+  "finalLiveSourceComparisons": 118,
+  "ownerStatePreserved": true,
+  "productionCorrectionPublished": false,
+  "proof": "https://staging.universalmind.tv/iam/tv/",
+  "unapprovedYouthReviewPreservedOnStaging": true
+}
