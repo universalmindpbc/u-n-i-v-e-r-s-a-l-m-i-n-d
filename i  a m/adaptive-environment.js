@@ -1071,6 +1071,8 @@
     });
 
     window.addEventListener("popstate", () => {
+      // The television route handler retains the active player during history navigation.
+      if (document.body.classList.contains("television-room-open")) return;
       const url = new URL(window.location.href);
       if (normalPages.has(pageNameFromUrl(url))) {
         navigateInPlace(url, true);
