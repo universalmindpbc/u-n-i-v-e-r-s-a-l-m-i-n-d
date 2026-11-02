@@ -11,7 +11,7 @@ events_require_access();
 <link rel="icon" href="/vogue/iam/favicon.png?v=iam-favicon-3">
 <title>Events — Universal Mind</title>
 <link rel="stylesheet" href="/events/assets/choice.css?v=1">
-<script src="/events/assets/choice-nav.js?v=1" defer></script>
+<script src="/events/assets/choice-nav.js?v=2"></script>
 </head>
 <body class="event-choice">
 <header class="choice-header">

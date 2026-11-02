@@ -1,15 +1,16 @@
 (() => {
   let shell;
   try { if (parent !== window) shell = parent.UniversalMindEntry; } catch {}
-  document.querySelectorAll('[data-event-route]').forEach(link => {
-    link.addEventListener('click', event => {
-      if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-      if (shell?.openDestination) {
-        event.preventDefault();
-        shell.openDestination(link.href, link.getAttribute('aria-label') || link.textContent.trim());
-      }
-    });
+  // Install before the choices render so an immediate click retains the root shell.
+  document.addEventListener('click', event => {
+    const link = event.target.closest?.('[data-event-route]');
+    if (!link || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    if (shell?.openDestination) {
+      event.preventDefault();
+      shell.openDestination(link.href, link.getAttribute('aria-label') || link.textContent.trim());
+    }
   });
+  const initFullscreen = () => {
   const button = document.querySelector('[data-events-fullscreen]');
   if (!button) return;
   const owner = shell?.fullscreenActive ? parent.document : document;
@@ -36,4 +37,7 @@
     owner.removeEventListener('webkitfullscreenchange', sync);
   });
   sync();
+  };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initFullscreen, {once:true});
+  else initFullscreen();
 })();
