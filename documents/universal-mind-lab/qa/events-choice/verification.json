@@ -1,0 +1,45 @@
+{
+  "date": "2026-11-02T11:54:22.248Z",
+  "live": true,
+  "origin": "https://staging.universalmind.tv",
+  "processMuted": true,
+  "nativeFullscreenInvoked": false,
+  "checks": [
+    "Existing invitation gate and direct choice-route protection retained",
+    "Two readable event choices at 1440 \u00d7 1000, with loaded artwork and no horizontal overflow",
+    "Real homepage login \u2192 Attend Events \u2192 event choice, retaining the original root shell and authenticated session",
+    "Two readable event choices at 390 \u00d7 844, with loaded artwork and no horizontal overflow",
+    "Two readable event choices at 844 \u00d7 390, with loaded artwork and no horizontal overflow",
+    "A Thousand Minds opens its existing experience without another login; Events return restores the choice",
+    "Lab entry starts real decoded music/video at 7% blend; browser Back returns to Events in the same root shell",
+    "Home return and repeat Events entry retain access",
+    "Immediate repeated choice clicks and browser Back retain both destinations in one shell"
+  ],
+  "hashes": [
+    {
+      "file": "events/assets/choice.css",
+      "status": 200,
+      "sha256": "3f5f64a75fef15ba60d02befd18d015df9acaf1594e8655d7923e7ee369ecdad"
+    },
+    {
+      "file": "events/assets/choice-nav.js",
+      "status": 200,
+      "sha256": "6f675607237b1e5eb305b84c5eb2c6756f0bff16fa5caedc5fb7f68bd8937554"
+    },
+    {
+      "file": "events/assets/gate-launch.js",
+      "status": 200,
+      "sha256": "935586b4275f190100529f0e01d059105701982e04568e02e73d11f5c6b2d0df"
+    },
+    {
+      "file": "events/assets/lab-preview.jpg",
+      "status": 200,
+      "sha256": "aa049d67a66caa9610fdb64acfeb18f6fe8f2620693c3af302bd558318414f1b"
+    }
+  ],
+  "errors": [],
+  "sourceCommit": "b2d765d0b641aeb3e82dbeb1bf8f3cd0c1278964",
+  "panthurManifestEntriesVerified": 24,
+  "physicalIPhoneTested": false,
+  "subjectiveSoundQualityTested": false
+}

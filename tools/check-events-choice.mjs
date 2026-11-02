@@ -5,13 +5,14 @@ import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
 import {chromium} from '/Users/benkorbel/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
-const live=process.env.EVENTS_LIVE==='1',origin='https://staging.universalmind.tv',out=live?path.join(root,'documents/universal-mind-lab/qa/events-choice'):'/private/tmp/um-events-choice-qa';
+const live=process.env.EVENTS_LIVE==='1'||process.argv.includes('--live'),origin='https://staging.universalmind.tv',out=live?path.join(root,'documents/universal-mind-lab/qa/events-choice'):'/private/tmp/um-events-choice-qa';
 await fs.mkdir(out,{recursive:true});
 let password='';
 if(live){for await(const chunk of process.stdin)password+=chunk;password=password.trim();assert(password,'An approved invitation is required via stdin.');}
 const server=await chromium.launchServer({headless:true,executablePath:'/Users/benkorbel/Library/Caches/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-mac-arm64/chrome-headless-shell',args:['--mute-audio','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
 assert(server.process().spawnargs.includes('--mute-audio'));
 const browser=await chromium.connect(server.wsEndpoint()),checks=[],errors=[],hashes=[];
+const record=checks.push.bind(checks);checks.push=(...items)=>{console.log(items.join('\n'));return record(...items);};
 async function setup(viewport){
  const c=await browser.newContext({viewport,serviceWorkers:'block',reducedMotion:'reduce'});
  await c.addInitScript(()=>{Element.prototype.requestFullscreen=undefined;Element.prototype.webkitRequestFullscreen=undefined;Object.defineProperty(document,'fullscreenEnabled',{value:false,configurable:true});});
@@ -25,10 +26,11 @@ async function setup(viewport){
   if(url.pathname.startsWith('/events/assets/')||url.pathname.startsWith('/lab/assets/'))return r.fulfill({path:path.join(root,url.pathname.slice(1))});
   return r.continue();
  });
- const p=await c.newPage();p.on('pageerror',e=>errors.push(e.message));return {c,p};
+ const p=await c.newPage();p.on('pageerror',e=>errors.push(e.message));p.on('console',m=>{if(m.type()==='error')console.log('Browser: '+m.text());});return {c,p};
 }
 async function close(c){for(const p of c.pages())for(const f of p.frames())await f.evaluate(()=>document.querySelectorAll('video,audio').forEach(m=>m.pause())).catch(()=>{});await c.close();}
 async function layout(frame,viewport){
+ await frame.waitForFunction(()=>[...document.querySelectorAll('.event-option img')].every(img=>img.complete&&img.naturalWidth>0),null,{timeout:20000});
  assert.equal(await frame.locator('.event-option').count(),2);
  assert.equal(await frame.locator('.choice-main h1').innerText(),'Events');
  assert.equal(await frame.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
@@ -67,25 +69,36 @@ try{
    await frame.getByRole('link',{name:'Explore A Thousand Minds',exact:true}).click();
    await frame.locator('#watch-film').waitFor();assert(new URL(p.url()).searchParams.get('event')==='athousandminds');
    assert.equal(await frame.locator('[data-access-form]').count(),0);
+   await p.screenshot({path:path.join(out,'athousandminds-return.png')});
    await frame.locator('.events-return').click();await frame.locator('.event-options').waitFor();
    checks.push('A Thousand Minds opens its existing experience without another login; Events return restores the choice');
    await frame.getByRole('link',{name:'Explore Universal Mind Lab',exact:true}).click();
    await frame.locator('#explore-enter:not([disabled])').waitFor({timeout:45000});
    assert.equal(new URL(p.url()).pathname,'/lab/');
    await frame.locator('#explore-enter').click();
-   const lab=p.frames().find(f=>f.url().includes('/lab/'));
-   await lab.waitForFunction(()=>{const v=document.querySelector('#music-video');return v&&!v.paused&&v.currentTime>1&&v.videoWidth>0;},null,{timeout:45000});
+   const lab=p.frames().find(f=>f!==p.mainFrame()&&f.url().includes('/lab/'));
+   try { await lab.waitForFunction(()=>{const v=document.querySelector('#music-video');return v&&!v.paused&&v.currentTime>1&&v.videoWidth>0;},null,{timeout:45000}); } catch(error) { console.log(JSON.stringify(await lab.evaluate(()=>{const v=document.querySelector('#music-video');return {notice:document.querySelector('#media-status')?.textContent,paused:v.paused,time:v.currentTime,ready:v.readyState,src:v.currentSrc,error:v.error?.message,Hls:typeof Hls,policy:document.permissionsPolicy?.allowsFeature('autoplay')};}))); throw error; }
    assert.equal(await lab.locator('#music-video').evaluate(v=>getComputedStyle(v).opacity),'0.07');
-   await p.goBack();await frame.locator('.event-options').waitFor();
+   await p.goBack();
+   try { await frame.locator('.event-options').waitFor({timeout:10000}); } catch(error) { console.log(JSON.stringify({url:p.url(),frames:await Promise.all(p.frames().map(async f=>({url:f.url(),state:await f.evaluate(()=>history.state).catch(()=>null),body:await f.evaluate(()=>document.body?.className).catch(()=>null)})))}));await p.screenshot({path:path.join(out,'back-debug.png')});throw error; }
    assert.equal(await p.evaluate(()=>window.__eventsOwner===window.UniversalMindEntry),true);
    assert.equal(await p.locator('iframe.um-experience-frame').count(),1);
    checks.push('Lab entry starts real decoded music/video at 7% blend; browser Back returns to Events in the same root shell');
    await frame.locator('.choice-home').click();await frame.locator('[data-destination="events"]').waitFor();
    await frame.locator('[data-destination="events"]').click();await frame.locator('.event-options').waitFor();
    checks.push('Home return and repeat Events entry retain access');
+   for(let i=0;i<2;i++){
+    await frame.getByRole('link',{name:'Explore Universal Mind Lab',exact:true}).click();
+    await frame.locator('#explore-enter').waitFor();
+    await p.goBack();await frame.locator('.event-options').waitFor();
+    await frame.getByRole('link',{name:'Explore A Thousand Minds',exact:true}).click();
+    await frame.locator('#watch-film').waitFor();
+    await p.goBack();await frame.locator('.event-options').waitFor();
+   }
+   checks.push('Immediate repeated choice clicks and browser Back retain both destinations in one shell');
    // Verify exact static source assets served by staging; PHP is covered by the real branch journey.
    for(const file of ['events/assets/choice.css','events/assets/choice-nav.js','events/assets/gate-launch.js','events/assets/lab-preview.jpg']){
-    const result=await p.evaluate(async file=>{const r=await fetch('/'+file+'?v='+(file.endsWith('gate-launch.js')?'4':'1'),{cache:'reload'}),b=await r.arrayBuffer();return {file,status:r.status,sha256:[...new Uint8Array(await crypto.subtle.digest('SHA-256',b))].map(x=>x.toString(16).padStart(2,'0')).join('')};},file);
+    const result=await p.evaluate(async file=>{const r=await fetch('/'+file+'?v='+(file.endsWith('gate-launch.js')?'4':file.endsWith('choice-nav.js')?'2':'1'),{cache:'reload'}),b=await r.arrayBuffer();return {file,status:r.status,sha256:[...new Uint8Array(await crypto.subtle.digest('SHA-256',b))].map(x=>x.toString(16).padStart(2,'0')).join('')};},file);
     assert.equal(result.status,200);assert.equal(result.sha256,createHash('sha256').update(await fs.readFile(path.join(root,file))).digest('hex'));hashes.push(result);
    }
   }finally{await close(c);}

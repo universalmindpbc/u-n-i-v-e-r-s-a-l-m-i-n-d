@@ -1,6 +1,6 @@
 # Universal Mind Lab
 
-Working creative package for Ben Korbel. The current direction is recorded in [BRIEF.md](BRIEF.md), version 0.11.
+Working creative package for Ben Korbel. The current direction is recorded in [BRIEF.md](BRIEF.md), version 0.12.
 
 - [Reference index](REFERENCES.md): 49 supplied references, including the marketing doodle.
 - [Reference manifest](reference-manifest.json): original paths, sizes and SHA-256 hashes.
@@ -42,3 +42,5 @@ Brief v0.10 adds the mental health identity, wearable inference diagram and envi
 Brief v0.11 adds the Earth → self → each other biofeedback journey, flowing river and opening/final overview artist marks. The partnership-status note appears once in the footer. See [river, journey and lineup release](RIVER-BIOFEEDBACK-RELEASE.md) and [artist direction](LINEUP-ART-DIRECTION.md).
 
 The v0.11 proposal also foregrounds free access, dissolving stigma, referral pathways, STEAM and fashion learning, and the travelling health-promotion inspiration.
+
+Brief v0.12 records Ben’s Lab design approval and the homepage → Events → Universal Mind Lab / A Thousand Minds choice. See [Events choice release](EVENTS-CHOICE-RELEASE.md).
