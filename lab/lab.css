@@ -161,3 +161,9 @@ body[data-cinematic="true"] .intro,body[data-cinematic="true"] #artist-lineup,bo
 
 html[data-auto-launch="true"] body:not([data-entered="true"]){background:#080c0c}
 html[data-auto-launch="true"] body:not([data-entered="true"]) #loading{visibility:visible;color:#f1f0e8;background:#080c0c}
+
+/* Keep the research entry at the footer edge while preserving the festival. */
+.footline{position:relative}.research-link{position:absolute;right:0;bottom:0;color:inherit;font-size:9px;line-height:1.6;text-decoration:none;padding:5px 0;text-align:right}.research-link:hover{text-decoration:underline;text-underline-offset:4px}.research-link span{margin-left:5px}
+@media(max-width:1200px){.research-link{position:static;align-self:flex-end;font-size:8px;padding:4px 0 0}.footline{gap:4px}.view-tools{bottom:182px}}
+@media(max-width:800px){.view-tools{bottom:180px}.emotion-toggle{bottom:235px}}
+@media(max-height:500px) and (min-width:601px){.research-link{font-size:7px;padding-top:2px}.footline{gap:2px}.view-tools,.emotion-toggle{bottom:143px}}

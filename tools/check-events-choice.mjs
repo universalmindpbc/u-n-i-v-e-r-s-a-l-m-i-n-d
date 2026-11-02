@@ -5,7 +5,7 @@ import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
 import {chromium} from '/Users/benkorbel/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
-const live=process.env.EVENTS_LIVE==='1'||process.argv.includes('--live'),origin='https://staging.universalmind.tv',out=live?path.join(root,'documents/universal-mind-lab/qa/events-orbit'):'/private/tmp/um-events-orbit-qa';
+const live=process.env.EVENTS_LIVE==='1'||process.argv.includes('--live'),origin='https://staging.universalmind.tv',out=live?path.join(root,'documents/universal-mind-lab/qa/events-refined'):'/private/tmp/um-events-refined-qa';
 await fs.mkdir(out,{recursive:true});
 let password='';
 if(live){for await(const chunk of process.stdin)password+=chunk;password=password.trim();assert(password,'An approved invitation is required via stdin.');}
@@ -34,11 +34,19 @@ async function layout(frame,viewport){
  assert.equal(await frame.locator('.event-option').count(),2);
  assert.equal((await frame.locator('.choice-main h1').textContent()).trim(),'Events');
  assert.equal(await frame.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
+ const flower=await frame.locator('.choice-flower').boundingBox();
+ assert(Math.abs(flower.x+flower.width/2-viewport.width/2)<2,'Flower centred horizontally');
+ assert(Math.abs(flower.y+flower.height/2-viewport.height/2)<2,'Flower centred vertically');
+ for(const title of await frame.locator('.event-copy h2').all()){
+  const font=await title.evaluate(el=>({family:getComputedStyle(el).fontFamily,size:parseFloat(getComputedStyle(el).fontSize)}));
+  assert(font.family.includes('Bodoni 72')&&font.family.includes('Didot'));
+  assert(font.size>=16&&font.size<=20);
+ }
  for(const link of await frame.locator('.event-option').all()){
   assert(await link.isVisible());const box=await link.boundingBox();assert(box.width>150&&box.x>=0&&box.x+box.width<=viewport.width+1);
   assert.equal(await link.locator('img').count(),0);
  }
- checks.push(`Two readable event choices at ${viewport.width} × ${viewport.height}, with no poster graphics and no horizontal overflow`);
+ checks.push(`Centred flower and small Informatics serif event choices at ${viewport.width} × ${viewport.height}, without poster graphics or overflow`);
 }
 try{
  if(!live){
@@ -78,12 +86,17 @@ try{
    assert.equal(new URL(p.url()).pathname,'/lab/');
    const lab=p.frames().find(f=>f!==p.mainFrame()&&f.url().includes('/lab/'));
    try { await lab.waitForFunction(()=>{const v=document.querySelector('#music-video');return v&&!v.paused&&v.currentTime>1&&v.videoWidth>0;},null,{timeout:45000}); } catch(error) { console.log(JSON.stringify(await lab.evaluate(()=>{const v=document.querySelector('#music-video');return {notice:document.querySelector('#media-status')?.textContent,paused:v.paused,time:v.currentTime,ready:v.readyState,src:v.currentSrc,error:v.error?.message,Hls:typeof Hls,policy:document.permissionsPolicy?.allowsFeature('autoplay')};}))); throw error; }
-   assert.equal(await lab.locator('#music-video').evaluate(v=>getComputedStyle(v).opacity),'0.24');
+   assert.equal(await lab.locator('#music-video').evaluate(v=>getComputedStyle(v).opacity),'0.07');
+   await lab.locator('#about-open').click();
+   assert(await lab.getByRole('heading',{name:'Free access. Dissolving stigma. Clear pathways to support.',exact:true}).isVisible());
+   assert.equal(await lab.locator('#vision').getByText(/less stigma/i).count(),0);
+   await lab.locator('#about-close').click();
+   checks.push('Proposal retains the exact phrase dissolving stigma');
    await p.goBack();
    try { await frame.locator('.event-options').waitFor({timeout:10000}); } catch(error) { console.log(JSON.stringify({url:p.url(),frames:await Promise.all(p.frames().map(async f=>({url:f.url(),state:await f.evaluate(()=>history.state).catch(()=>null),body:await f.evaluate(()=>document.body?.className).catch(()=>null)})))}));await p.screenshot({path:path.join(out,'back-debug.png')});throw error; }
    assert.equal(await p.evaluate(()=>window.__eventsOwner===window.UniversalMindEntry),true);
    assert.equal(await p.locator('iframe.um-experience-frame').count(),1);
-   checks.push('Lab entry starts real decoded music/video at 24% blend without a second landing; browser Back returns to Events in the same root shell');
+   checks.push('Lab entry starts real decoded music/video at 7% blend without a second landing; browser Back returns to Events in the same root shell');
    await frame.locator('.choice-home').click();await frame.locator('[data-destination="events"]').waitFor();
    await frame.locator('[data-destination="events"]').click();await frame.locator('.event-options').waitFor();
    checks.push('Home return and repeat Events entry retain access');
@@ -98,7 +111,7 @@ try{
    checks.push('Immediate repeated choice clicks and browser Back retain both destinations in one shell');
    // Verify exact static source assets served by staging; PHP is covered by the real branch journey.
    for(const file of ['events/assets/choice.css','events/assets/choice-nav.js','events/assets/gate-launch.js','lab/landing-rain.js']){
-    const result=await p.evaluate(async file=>{const r=await fetch('/'+file+'?v='+(file.endsWith('gate-launch.js')?'4':file.endsWith('landing-rain.js')?'20261103orbit1':'3'),{cache:'reload'}),b=await r.arrayBuffer();return {file,status:r.status,sha256:[...new Uint8Array(await crypto.subtle.digest('SHA-256',b))].map(x=>x.toString(16).padStart(2,'0')).join('')};},file);
+    const result=await p.evaluate(async file=>{const r=await fetch('/'+file+'?v='+(file.endsWith('gate-launch.js')?'4':file.endsWith('landing-rain.js')?'20261103orbit1':file.endsWith('choice.css')?'4':'3'),{cache:'reload'}),b=await r.arrayBuffer();return {file,status:r.status,sha256:[...new Uint8Array(await crypto.subtle.digest('SHA-256',b))].map(x=>x.toString(16).padStart(2,'0')).join('')};},file);
     assert.equal(result.status,200);assert.equal(result.sha256,createHash('sha256').update(await fs.readFile(path.join(root,file))).digest('hex'));hashes.push(result);
    }
   }finally{await close(c);}

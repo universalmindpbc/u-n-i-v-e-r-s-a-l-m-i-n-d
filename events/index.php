@@ -46,7 +46,7 @@ if ($entered) {
 <?php endif; ?>
 <?php if ($entered): ?>
 <script src="assets/events.js?v=13" defer></script>
-<link rel="stylesheet" href="assets/choice.css?v=3">
+<link rel="stylesheet" href="assets/choice.css?v=4">
 <script src="assets/choice-nav.js?v=3"></script>
 <?php endif; ?>
 </head>

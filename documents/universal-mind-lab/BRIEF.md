@@ -1,13 +1,13 @@
 # Universal Mind Lab — creative and development brief
 
-**Version:** 0.13 · **Date:** 3 November 2026 · **Owner:** Ben Korbel
+**Version:** 0.14 · **Date:** 3 November 2026 · **Owner:** Ben Korbel
 **Status:** Working concept for discussion, collaboration and staged visual development. Architectural engineering, operating arrangements and named partnerships remain to be established.
 
 ## 1. Purpose
 
 Create an interactive architectural world and partnership pitch for Universal Mind Lab: a travelling Australian installation that brings the IAM portal into a physical environment through music, fashion, mindfulness, learning, food, play and gathering.
 
-The primary mission is education, stigma reduction, referral pathways, and mindfulness, music and fashion skills. The responsive-environment MVP is designed to support short-term stress reduction and increased felt connection. These are intended outcomes; evaluation will establish the effects achieved by the Lab.
+The primary mission is education, dissolving stigma, referral pathways, and mindfulness, music and fashion skills. The responsive-environment MVP is designed to support short-term stress reduction and increased felt connection. These are intended outcomes; evaluation will establish the effects achieved by the Lab.
 
 The primary audience is people aged 16–24, with the wider community welcome. The experience combines a main pavilion with smaller surrounding facilities, nature, Moroso Tropicália seating and individual music discovery stations.
 
@@ -328,7 +328,7 @@ Next review: confirm the landscape composition, relative scale, main vault form 
 
 ### Ben’s directions
 
-- **Mission:** education, stigma reduction, referral pathways, and mindfulness/music/fashion skills. Immediate stress and felt connection are exploratory additional benefits. The Lab does not promise to fix people.
+- **Mission:** education, dissolving stigma, referral pathways, and mindfulness/music/fashion skills. Immediate stress and felt connection are exploratory additional benefits. The Lab does not promise to fix people.
 - **Tour and permanent sites:** begin with Central Coast, Bondi/Bondi Junction, and Northern Rivers near Byron Bay. These may become permanent hero sites if councils and citizens/communities agree. Broader ambitions include regional NSW, the Northern Territory and potentially remote Western Australia, with smaller pop-ups and regional transport/accommodation experiences. These are planning ambitions, not secured sites or operating commitments.
 - **Open entry:** include public self-nomination through the proposed headspace/Eora route, alongside service referrals and school nominations. Existing headspace membership or school nomination is not required. Partnership and URL remain to be agreed.
 - **Young participants:** on-site mentors for ages 16–17 draw on Ben’s past practice. NSW Education involvement remains proposed. Younger children’s play arrangements are a separate operating decision.
@@ -622,3 +622,22 @@ Keep the root homepage shell as fullscreen owner. Entering the Lab inside an alr
 Add an animated stage ensemble for the proposed Tame Impala performance: DJ with decks, vocalist with microphone, guitarist and drummer with a kit. These are visual performance figures; the existing single footer proposal disclosure remains in force. The dance-floor crowd faces the stage, with varied poses and movement.
 
 Add **Lineup** to the lower view controls. Visitors can show or hide the artist marks at any time; opening it dismisses overlapping detail content. Automatic opening/final overview appearances remain, with the final appearance after the camera circuit.
+
+
+## 27. Informatics landing treatment and approved terminology — 3 November 2026
+
+Return the default music-video blend to **7%**, replacing the 24% setting in section 26. Preserve the existing festival build, camera circuit, stage, navigation and media controls.
+
+The Events gateway uses the Universal Informatics landing treatment: the same Bodoni 72 / Didot / Times New Roman serif stack, small 16–20px titles with generous tracking, the original flower centred in the viewport, and the same Fibonacci rain and vignette. Place Universal Mind Lab above the flower and A Thousand Minds below it, switching to either side on short landscape screens. Keep the existing taglines quiet and the actions compact. Retain **Explore the festival pop-up**, and continue directly into the Lab without a second rain screen.
+
+**Approved language: dissolving stigma.** Preserve this wording throughout Universal Mind. Do not substitute synonyms or paraphrase Ben’s signed-off language without his instruction. The proposal heading reads **Free access. Dissolving stigma. Clear pathways to support.**
+
+Ben has accepted the rest of the build; this revision is limited to the landing treatment, video blend and terminology correction. Production remains pending explicit authorization.
+
+## 28. Youth research connection — 3 November 2026
+
+Add **A direct response to this body of research ↗** at the festival footer’s bottom-right edge. It opens a compact Lab research introduction in a new tab, preserving the active festival.
+
+Universal Informatics remains the single research home. The Lab page introduces the approved 105-publication youth collection and links to its complete register and topic sections, including music listening and therapy, music making, sound and brain entrainment, EMDR, mindfulness, mantra context, Transcendental Meditation, yoga, access, digital support and connection. Feature Orygen and Black Dog Institute within the full collection; do not reduce the collection to these institutions.
+
+The Lab page is an introduction and index. Papers, filter controls, source assessments, age-fit information and detailed findings stay in Informatics. The full-collection link combines the three Mobile Lab topic filters across Sound, Vision and Language, preserving all 105 publication identities. The separate wider youth-library link retains access to related material already in Informatics. The mantra context section remains visible despite having no new papers in the approved addition.

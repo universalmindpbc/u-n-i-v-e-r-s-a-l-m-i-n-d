@@ -1,6 +1,6 @@
 # Universal Mind Lab
 
-Working creative package for Ben Korbel. The current direction is recorded in [BRIEF.md](BRIEF.md), version 0.12.
+Working creative package for Ben Korbel. The current direction is recorded in [BRIEF.md](BRIEF.md), version 0.14.
 
 - [Reference index](REFERENCES.md): 49 supplied references, including the marketing doodle.
 - [Reference manifest](reference-manifest.json): original paths, sizes and SHA-256 hashes.
@@ -46,3 +46,5 @@ The v0.11 proposal also foregrounds free access, dissolving stigma, referral pat
 Brief v0.12 records Ben’s Lab design approval and the homepage → Events → Universal Mind Lab / A Thousand Minds choice. See [Events choice release](EVENTS-CHOICE-RELEASE.md).
 
 The November 3 revision uses a minimal Events choice over Fibonacci rain, direct festival launch, a 24% video blend, a continuous camera circuit, an animated stage ensemble and a visitor Lineup toggle. Current release evidence is recorded in `ORBIT-STAGE-RELEASE.md`.
+
+Brief v0.14 restores the 7% blend, centres the original flower with small Informatics serif typography on Events, and preserves **dissolving stigma** in the proposal. See [the refined landing release](EVENTS-REFINED-RELEASE.md).
