@@ -47,7 +47,6 @@ $('labels-toggle').addEventListener('click', () => {
 $('about-open').addEventListener('click', () => $('vision').showModal());
 $('about-close').addEventListener('click', () => $('vision').close());
 $('vision').addEventListener('click', (e) => { if (e.target === $('vision')) { const r = e.target.getBoundingClientRect(); if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) e.target.close(); } });
-$('vision').addEventListener('close', () => $('about-open').focus());
 
 async function buildWorld() {
   const THREE = await import('three');
