@@ -56,8 +56,8 @@ async function buildWorld() {
   const random = () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; };
   const scene = new THREE.Scene();
   scene.background = new THREE.Color('#e9ece2');
-  scene.fog = new THREE.Fog('#e9ece2', 115, 255);
-  const camera = new THREE.PerspectiveCamera(41, innerWidth / innerHeight, 0.2, 550);
+  scene.fog = new THREE.Fog('#e9ece2', mobile() ? 205 : 115, mobile() ? 390 : 255);
+  const camera = new THREE.PerspectiveCamera(mobile() ? 50 : 41, innerWidth / innerHeight, 0.2, 550);
   const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'low-power' });
   renderer.setPixelRatio(Math.min(devicePixelRatio, mobile() ? 1.6 : 2));
   renderer.setSize(innerWidth, $('world').clientHeight);
@@ -74,7 +74,7 @@ async function buildWorld() {
   controls.enableDamping = !reduced.matches;
   controls.dampingFactor = 0.08;
   controls.minDistance = 12;
-  controls.maxDistance = 155;
+  controls.maxDistance = mobile() ? 240 : 155;
   controls.minPolarAngle = 0.1;
   controls.maxPolarAngle = Math.PI * 0.485;
   controls.maxTargetRadius = 36;
@@ -110,7 +110,7 @@ async function buildWorld() {
     const x = pos.getX(i), z = pos.getZ(i);
     const perimeter = Math.min(1, Math.max(0, (-z - 36) / 35, (-x - 48) / 30));
     const h = perimeter * (1.3 + 1.1 * Math.sin(x * .06) * Math.cos(z * .04));
-    pos.setY(i, h - .12);
+    pos.setY(i, (Math.abs(x-riverX(z)) < 16 ? 0 : h) - .12);
     const n = Math.sin(x * .12 + Math.cos(z * .06)) * Math.cos(z * .11) * .025 + random() * .012;
     baseGrass.setHSL(.25 + n * .25, .28 + n, .39 + n);
     grassColors.push(baseGrass.r, baseGrass.g, baseGrass.b);
@@ -165,7 +165,7 @@ async function buildWorld() {
   function path(points,width=2.4){
     const c=new THREE.CatmullRomCurve3(points.map(p=>new THREE.Vector3(p[0],.055,p[1])));
     const verts=[],ind=[];
-    for(let i=0;i<=80;i++){const p=c.getPoint(i/80),t=c.getTangent(i/80);verts.push(p.x-t.z*width/2,p.y,p.z+t.x*width/2,p.x+t.z*width/2,p.y,p.z-t.x*width/2);if(i<80){const a=i*2;ind.push(a,a+1,a+2,a+1,a+3,a+2);}}
+    for(let i=0;i<=80;i++){const p=c.getPoint(i/80),t=c.getTangent(i/80);verts.push(p.x-t.z*width/2,p.y,p.z+t.x*width/2,p.x+t.z*width/2,p.y,p.z-t.x*width/2);if(i<80){const a=i*2;ind.push(a,a+2,a+1,a+1,a+2,a+3);}}
     const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(verts,3));g.setIndex(ind);g.computeVertexNormals();const m=mesh(g,mats.stone);m.castShadow=false;
   }
   path([[2,62],[1,38],[0,21],[1,6],[0,-6]],3.3);
@@ -232,11 +232,11 @@ async function buildWorld() {
   let tween=null,visible=true,raf=0,needsFrame=true,lastT=0;
   function go(key,instant=false){
     const p=presets[key];const end=new THREE.Vector3(...p.pos),target=new THREE.Vector3(...p.target);
-    if(mobile()&&key==='overview'){end.set(89,79,112);target.set(-3,1,-1);}else if(mobile()){end.sub(target).multiplyScalar(1.5).add(target);}
+    if(mobile()&&key==='overview'){end.set(102,90,134);target.set(-1,0,0);}else if(mobile()){end.sub(target).multiplyScalar(1.5).add(target);}
     if(instant||reduced.matches){camera.position.copy(end);controls.target.copy(target);controls.update();tween=null;}else{tween={start:performance.now(),from:camera.position.clone(),fromTarget:controls.target.clone(),to:end,target};}
     needsFrame=true;requestFrame();
   }
-  function resize(){const w=$('world').clientWidth,h=$('world').clientHeight;camera.aspect=w/h;camera.updateProjectionMatrix();renderer.setSize(w,h);needsFrame=true;if(selected==='overview')go('overview',true);requestFrame();}
+  function resize(){const w=$('world').clientWidth,h=$('world').clientHeight;camera.aspect=w/h;camera.fov=mobile()?50:41;controls.maxDistance=mobile()?240:155;scene.fog.near=mobile()?205:115;scene.fog.far=mobile()?390:255;camera.updateProjectionMatrix();renderer.setSize(w,h);needsFrame=true;if(selected==='overview')go('overview',true);requestFrame();}
   addEventListener('resize',resize);
   controls.addEventListener('start',()=>{tween=null;});
   controls.addEventListener('change',()=>{needsFrame=true;requestFrame();});
@@ -244,7 +244,7 @@ async function buildWorld() {
     if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','+','-','='].includes(e.key))return;
     e.preventDefault();tween=null;const sph=new THREE.Spherical().setFromVector3(camera.position.clone().sub(controls.target));
     if(e.key==='ArrowLeft')sph.theta-=.12;if(e.key==='ArrowRight')sph.theta+=.12;if(e.key==='ArrowUp')sph.phi=Math.max(.1,sph.phi-.1);if(e.key==='ArrowDown')sph.phi=Math.min(Math.PI*.485,sph.phi+.1);
-    if(e.key==='+'||e.key==='=')sph.radius=Math.max(12,sph.radius*.9);if(e.key==='-')sph.radius=Math.min(155,sph.radius*1.1);
+    if(e.key==='+'||e.key==='=')sph.radius=Math.max(12,sph.radius*.9);if(e.key==='-')sph.radius=Math.min(controls.maxDistance,sph.radius*1.1);
     camera.position.copy(controls.target).add(new THREE.Vector3().setFromSpherical(sph));controls.update();needsFrame=true;requestFrame();
   });
   function requestFrame(){if(!raf&&visible&&!document.hidden)raf=requestAnimationFrame(frame);}
