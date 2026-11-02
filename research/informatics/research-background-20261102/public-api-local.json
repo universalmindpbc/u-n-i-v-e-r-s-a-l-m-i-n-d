@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "explicitPaperIDsRankFirst": true,
+  "canonicalIdentityMerge": true,
+  "fiveMatchedRecordsReplaced": true,
+  "all105QualifiedFieldsPreserved": true,
+  "paginationBoundaries": true,
+  "unrelatedRecordsPreserved": true,
+  "aliases": true,
+  "sourceVersions": true,
+  "publicFulltextLimitsPreserved": true,
+  "withheldNotAdded": true,
+  "spendingGuardBeforeProviderCall": true,
+  "networkRequests": 0
+}

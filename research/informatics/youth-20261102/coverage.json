@@ -1,0 +1,46 @@
+{
+  "topics": {
+    "EMDR": {
+      "assessed": 13,
+      "qualified": 7
+    },
+    "Mantra": {
+      "assessed": 1,
+      "qualified": 0
+    },
+    "Mindfulness": {
+      "assessed": 42,
+      "qualified": 26
+    },
+    "Music / creative participation": {
+      "assessed": 25,
+      "qualified": 7
+    },
+    "Sound / brain entrainment": {
+      "assessed": 9,
+      "qualified": 3
+    },
+    "Transcendental meditation": {
+      "assessed": 8,
+      "qualified": 2
+    },
+    "Yoga": {
+      "assessed": 18,
+      "qualified": 3
+    },
+    "Youth needs / digital / access": {
+      "assessed": 95,
+      "qualified": 67
+    }
+  },
+  "qualifiedAgeFits": {
+    "mixed-overlap": 72,
+    "target-centred": 1,
+    "target-range": 1,
+    "younger-overlap": 17,
+    "direct": 7,
+    "broader-institution-youth": 7
+  },
+  "qualifiedRandomizedStudyUnitsConservative": 42,
+  "note": "Topic/institution counts overlap. Conservative study units collapse unresolved programme overlap; they are not all newly recruited trials."
+}

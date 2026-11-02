@@ -1,8 +1,8 @@
 {
   "schemaVersion": "communities-contexts/v2",
   "title": "Communities and Contexts",
-  "updatedAt": "2026-11-01",
-  "recordCount": 1223,
+  "updatedAt": "2026-11-02",
+  "recordCount": 1323,
   "taxonomy": [
     {
       "id": "refugees",
@@ -5182,6 +5182,10 @@
         {
           "categoryId": "refugees",
           "relation": "direct"
+        },
+        {
+          "categoryId": "war-trauma",
+          "relation": "direct"
         }
       ]
     },
@@ -7756,6 +7760,426 @@
           "relation": "direct"
         }
       ]
+    },
+    {
+      "recordId": "youth-pmid-37205669",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-42389090",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-39910150",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-29066991",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-22893815",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-35241174",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-36186313",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-42337783",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-41662046",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-36407676",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-37151974",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-29144545",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-40109696",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-32232017",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-31068842",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-34040886",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-35820989",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-30345511",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-36833903",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-42284591",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-38250521",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-36596239",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-37147732",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-24499130",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-31237569",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-32554380",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-32074061",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-33264098",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-28330831",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-35914112",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-24901900",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-26220564",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-34527971",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-41454356",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-36991537",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-40086808",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-36620186",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-39720610",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-36877740",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-38566202",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-34983460",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-35980733",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-37393283",
+      "matches": [
+        {
+          "categoryId": "indigenous",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "youth-pmid-34002511",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-37261464",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-39260824",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-32720904",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-40180398",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-39813032",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-21192795",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-39813031",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-32442160",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-38693527",
+      "matches": [
+        {
+          "categoryId": "indigenous",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "youth-pmid-39004687",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-34294067",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-40761439",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-38584397",
+      "matches": [
+        {
+          "categoryId": "indigenous",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "youth-pmid-37390108",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-29622047",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-21559213",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-40789917",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-30622094",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-39438861",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-36844353",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-38939220",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-41313154",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-42057149",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-41806311",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-22799879",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-25537785",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-32572961",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-41262946",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-36373473",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-36964523",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-38090786",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-33725578",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-34021113",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-35544295",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-37213197",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-38362237",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-39665442",
+      "matches": [
+        {
+          "categoryId": "refugees",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "youth-pmid-36995752",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-39946428",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-35976180",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-32683737",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-41171275",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-32527236",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-40504611",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-40033658",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-40521225",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-39392547",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-31333198",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-39150513",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-39666705",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-36424575",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-34927592",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-32504808",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-33079071",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-36342533",
+      "matches": []
+    },
+    {
+      "recordId": "youth-pmid-38192586",
+      "matches": []
     }
   ]
 }

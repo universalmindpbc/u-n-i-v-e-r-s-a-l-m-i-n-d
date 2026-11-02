@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "processAudioMuted": true,
+  "checks": [
+    {
+      "url": "https://staging.universalmind.tv/informatics/research/?collection=language&view=search&topic=language:black-dog-youth",
+      "expected": 20,
+      "passed": true
+    },
+    {
+      "url": "https://staging.universalmind.tv/informatics/research/?collection=language&view=search&topic=language:orygen-youth",
+      "expected": 21,
+      "passed": true
+    },
+    {
+      "url": "https://staging.universalmind.tv/informatics/research/?collection=all&view=search&topic=sound:universal-mind-mobile-lab&topic=vision:universal-mind-mobile-lab&topic=language:universal-mind-mobile-lab",
+      "expected": 105,
+      "passed": true
+    }
+  ]
+}

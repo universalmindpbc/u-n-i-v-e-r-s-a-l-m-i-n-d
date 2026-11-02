@@ -1,3 +1,4 @@
+import {youthKnowledge} from './informatics-youth-knowledge.js';
 import {dvKnowledge} from './informatics-dv-knowledge.js';
 import communities from '../Informatics/library-data/community-index.json' with {type:'json'};
 import ages from '../Informatics/library-data/age-index.json' with {type:'json'};
@@ -21,8 +22,10 @@ export function researchNavigation(args={},origin='https://staging.universalmind
   communities:communities.taxonomy.map(t=>({id:t.id,label:t.label,directAndContext:collectionRows.filter(r=>hasCommunity(r,t.id,false)).length,includingRelated:collectionRows.filter(r=>hasCommunity(r,t.id,true)).length})),
   ageGroups:ages.taxonomy.map(t=>({id:t.id,label:t.label,count:collectionRows.filter(r=>r.groups.includes(t.id)).length})),
   youth:{covered:collectionRows.filter(r=>r.groups.includes('youth')).length,focus:collectionRows.filter(r=>r.youthScope==='focus').length,includedWithoutEstablishedFocus:collectionRows.filter(r=>r.youthScope==='included').length},
+  approvedYouth:youthKnowledge({collection:'all'},origin).counts,
   approvedDomesticViolence:dvKnowledge({collection:'all'},origin).counts,
   guidance:[
+   'The approved youth addition contains 105 publications, including 100 additions and five existing-library matches. Black Dog Institute, Orygen, Universal Mind Mobile Lab and youth-intervention topics are appended to the relevant Sound, Vision and Language contents. Cross-listing does not increase unique-paper counts. Read reported ages: the Youth filter also includes adolescents and mixed-age evidence.',
    'Open Universal Research, choose Search papers, then Communities and Contexts and Age group. Sound, Vision and Language retain their existing human-curated contents.',
    'Selections within one filter use OR. Different filters combine with AND. Multiple categories can cover the same paper, so category totals are not additive.',
    'Include related research adds links labelled Related · inferred. A shared intervention or outcome is not proof that the selected community was studied or that treatment effects transfer.',

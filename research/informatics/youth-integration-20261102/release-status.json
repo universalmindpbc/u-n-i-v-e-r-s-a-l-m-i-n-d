@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "informatics-youth-staging-release/v1",
+  "verifiedAtSydney": "2026-11-02T16:06:04.137710+11:00",
+  "deploymentVerified": true,
+  "integratedRepository": "https://github.com/universalmindpbc/u-n-i-v-e-r-s-a-l-m-i-n-d",
+  "integratedBranch": "staging",
+  "integratedBaseline": "fcb07c7cd1f7cdf284ac4ebbe29871fc08daf214",
+  "sourceCommit": "c81a078fb3a368380421d189f3ca9b74d2e4906f",
+  "primaryResearchSourceCommit": "6bafe6bea5d0ef48b095a54734831ed5d95807ae",
+  "dedicatedRepository": "https://github.com/universalmindpbc/u-n-i-v-e-r-s-a-l-i-n-f-o-r-m-a-t-i-c-s",
+  "dedicatedBranch": "research/youth-20261102",
+  "dedicatedSourceCommit": "80db1f6d175292f041d60c214dffc226441e43bc",
+  "stagingURL": "https://staging.universalmind.tv/informatics/research/",
+  "counts": {
+    "approvedPublications": 105,
+    "additions": 100,
+    "updatedMatches": 5,
+    "visibleLibrary": 1323,
+    "studyFamilies": 93,
+    "randomizedReports": 47,
+    "randomizedStudyUnits": 42,
+    "blackDog": 20,
+    "orygen": 21,
+    "paperCrosses": {
+      "1": 58,
+      "2": 44,
+      "3": 3
+    }
+  },
+  "transport": {
+    "informaticsUploadedFiles": 123,
+    "totalChangedManifestPaths": 127,
+    "verifiedPublicFiles": 127,
+    "htmlNormalization": "Only the observed host-injected Cloudflare analytics module removed; every remaining byte matches source.",
+    "worker": "informatics-universal-one-staging",
+    "workerVersion": "0e2b9935-eed4-468e-9df9-2dddb287f994",
+    "workerHealth": "ready"
+  },
+  "checks": {
+    "browser": "staging-browser.json",
+    "completeDownloads": "staging-complete-downloads.json",
+    "sourceFiles": "staging-assets.json",
+    "completeRoundtrip": "roundtrip.json",
+    "workerTools": "worker-tool-checks.json",
+    "production": "production-readonly-check.json",
+    "viewports": [
+      1440,
+      390,
+      320
+    ],
+    "filteredRecordsEquivalent": 105,
+    "completeDatasetsReconstructed": 1195,
+    "directProofLinks": "staging-deep-links.json"
+  },
+  "productionChanged": false,
+  "productionCommitUnchanged": "57747030461016e4fc2c29bd4534df483118857d",
+  "limits": [
+    "Selected-methods rapid appraisal, not formal independent RoB or GRADE.",
+    "Age coverage includes mixed and younger samples; not 105 trials isolated to ages 16\u201324.",
+    "No paid model request; complete live GPT response workflow is unverified. Worker tools were exercised locally and the deployed staging Worker health was verified.",
+    "Public REST/MCP database inventory was not migrated; youth records are available in the website, full exports and Universal One research overlay.",
+    "No combined-lab efficacy or confirmed partnership claim; empty mantra evidence section retained."
+  ],
+  "githubRecord": "Source and deployment commits pushed and remotely verified; see github-receipt.json. This later commit adds verification metadata only.",
+  "verifiedDeploymentCommit": "0c48e0549dc43c9d4cee43959314e6f2066e0dfc"
+}

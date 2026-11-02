@@ -1,0 +1,40 @@
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mFailed to write to log file Error: EPERM: operation not permitted, open '/Users/benkorbel/Library/Preferences/.wrangler/logs/wrangler-2026-11-02_04-53-18_825.log'[0m
+
+      at async open (node:internal/fs/promises:1345:25)
+      at async writeFile (node:internal/fs/promises:1972:14)
+      at async /private/tmp/youth-wrangler-20261102/node_modules/wrangler/wrangler-dist/cli.js:69690:7
+      at async Mutex.runWith (/private/tmp/youth-wrangler-20261102/node_modules/miniflare/dist/src/index.js:80712:16)
+      at async appendToDebugLogFile (/private/tmp/youth-wrangler-20261102/node_modules/wrangler/wrangler-dist/cli.js:69687:3) {
+    errno: -1,
+    code: 'EPERM',
+    syscall: 'open',
+    path: '/Users/benkorbel/Library/Preferences/.wrangler/logs/wrangler-2026-11-02_04-53-18_825.log'
+  }
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mWould have written: [0m
+
+  --- 2026-11-02T04:53:18.919Z debug
+  🪵  Writing logs to "/Users/benkorbel/Library/Preferences/.wrangler/logs/wrangler-2026-11-02_04-53-18_825.log"
+  ---
+
+
+
+
+ ⛅️ wrangler 4.152.0
+────────────────────
+Total Upload: 11816.83 KiB / gzip: 1104.31 KiB
+Your Worker has access to the following bindings:
+Binding                                                                Resource
+env.BUDGET (ResearchBudget)                                            Durable Object
+env.CONNECTOR_LIMIT (120 requests/60s)                                 Rate Limit
+env.REQUEST_LIMIT (12 requests/60s)                                    Rate Limit
+env.ALLOWED_ORIGIN ("https://staging.universalmind.tv")                Environment Variable
+env.RESEARCH_MODEL ("gpt-6-astra")                                     Environment Variable
+env.DATASET_VERSION ("research-20261026-daytab-v1")                    Environment Variable
+env.CONNECTORS_ENABLED ("true")                                        Environment Variable
+env.QUANTUM_PLANNING_ENABLED ("true")                                  Environment Variable
+env.ASTRA_ENABLED ("true")                                             Environment Variable
+
+--dry-run: exiting now.
+🪵  Logs were written to "/Users/benkorbel/Library/Preferences/.wrangler/logs/wrangler-2026-11-02_04-53-18_825.log"

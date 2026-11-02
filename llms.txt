@@ -153,7 +153,7 @@ Access: The research wiki, publication records and download directory are public
 - [Archive and timestamp record](https://universalmind.tv/informatics/read/provenance.html): Universal Informatics; HTML; Public.
 - [Informatics AI access and reuse](https://universalmind.tv/informatics/read/access.html): Universal Informatics; HTML; Public.
 - [Connect and download: API, MCP, A2A, JSON and CSV](https://universalmind.tv/informatics/connect/): Universal Informatics; HTML; Public. Connection instructions and complete dataset exports; research scope.
-- [Complete dataset manifest](https://universalmind.tv/informatics/exports/manifest-6ec89288db0d688635045ab6f3388e49fd5418ef4743493a1cc151f8807af978.json): Universal Informatics; JSON; Public. Current export files, sizes and checksums.
+- [Complete dataset manifest](https://universalmind.tv/informatics/exports/manifest-4236ba3449732c396c297767fd618c7b5c8f2245b828b5b7b4238b21ad48509c.json): Universal Informatics; JSON; Public. Current export files, sizes and checksums.
 - [Dataset guide](https://universalmind.tv/informatics/exports/README.md): Universal Informatics; Markdown; Public.
 - [Atlas JSON bundle](https://universalmind.tv/informatics/pilot-v1/m1-m1001-data.zip): Universal Informatics; ZIP / JSON; Public.
 - [Atlas CSV bundle](https://universalmind.tv/informatics/pilot-v1/m1-m1001-csv.zip): Universal Informatics; ZIP / CSV; Public.

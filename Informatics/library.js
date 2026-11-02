@@ -6,7 +6,7 @@
   const normalize = value => String(value ?? '').normalize('NFKC').toLowerCase().replace(/interleukin[\s-]*6|il[\s-]+6/g, 'il6').replace(/oxytocin receptor/g, 'oxtr').replace(/serotonin transporter/g, 'slc6a4').replace(/glucocorticoid receptor/g, 'nr3c1').replace(/[^\p{L}\p{N}+]+/gu, ' ').trim();
   const model = globalThis.UniversalResearchModel;
   const communityModel = globalThis.UniversalResearchCommunities;
-  let approvedDV = null;
+  let approvedDV = null, approvedYouth = null;
   let communityData = {taxonomy:[],records:[]};
   let ageData = {taxonomy:[],records:[]};
   let publicationAccess = {}, clinicalConditions = {}, fullTextAccess = {};
@@ -118,7 +118,7 @@
   function ageMarkup(record) {
     if(!record?.agePopulation)return '';
     const age=record.agePopulation;
-    return `<p class="age-population"><strong>Age groups represented:</strong> ${record.ageGroups.map(id=>esc(ageLabel(id))).join(' · ')}${age.youthScope ? `<br>${age.youthScope==='focus' ? 'Focus on young people' : 'Youth included; a youth focus is not established'}` : ''}${age.reportedAges ? `<br><strong>Reported ages:</strong> ${esc(age.reportedAges)}` : ''}${age.sourceURL ? ` <a href="${esc(safeURL(age.sourceURL))}" target="_blank" rel="noopener noreferrer">Age source ↗</a>` : ''}</p>`;
+    return `<p class="age-population"><strong>Age groups represented:</strong> ${record.ageGroups.map(id=>esc(ageLabel(id))).join(' · ')}${age.youthScope ? `<br>${age.youthScope==='focus' ? 'Focus on young people' : 'Youth included; a youth focus is not established'}` : ''}${age.reportedAges ? `<br><strong>Reported ages:</strong> ${esc(age.reportedAges)}` : ''}${age.ageFit ? `<br><strong>Fit to ages 16–24:</strong> ${esc(age.ageFit.replaceAll('-',' '))}. ${esc(age.youthSourceNote)} ${esc(age.classificationNote)}` : ''}${age.sourceURL ? ` <a href="${esc(safeURL(age.sourceURL))}" target="_blank" rel="noopener noreferrer">Age source ↗</a>` : ''}</p>`;
   }
   const communityLabel = id => communityData.taxonomy.find(item=>item.id===id)?.label || id;
   function communityBadges(record) {
@@ -134,6 +134,11 @@
     if (!paper.publicationApproval) return '';
     return `<p class="publication-approval"><strong>${esc(paper.publicationApproval.assessment)}</strong><br>Source access: ${esc(paper.sourceAccess?.level)}. ${esc(paper.publicationApproval.scope)}</p>`;
   }
+  function youthRelevanceMarkup(paper) {
+    if (!paper.labRelevance) return '';
+    const relation={'direct-response':'Direct response to an identified need','inspired-by':'Inspired by relevant evidence',limits:'Limits and open questions'}[paper.labRelevance.relationship];
+    return `<details class="study-methods"><summary>Universal Mind Mobile Lab · ${esc(relation)}</summary><p>${esc(paper.labRelevance.implication)}</p><p>${esc(paper.labRelevance.transferLimit)}</p>${paper.institutions?.length ? `<p>Institutional association: ${paper.institutions.map(esc).join(' · ')}. Association is not endorsement or a confirmed partnership.</p>` : ''}<p>Study family: ${esc(paper.studyFamilyId)}. Linked publications are not independent replications.</p></details>`;
+  }
   function paperMarkup(paper, heading = 'h4') {
     const quotes = paper.quotes || [];
     const review = paper.quotationReview;
@@ -147,7 +152,7 @@
       ${quotes.filter((q,index) => index !== review?.index).length ? `<blockquote cite="${esc(url)}">${quotes.map((q,index) => index === review?.index ? '' : `<p>${quoteHTML(q)}</p>`).join('')}</blockquote>` : ''}
       ${paper.summary ? `<div class="study-summary"><p class="eyebrow">Study summary</p><p>${esc(paper.summary)}</p>${paper.limitation ? `<p class="summary-limitation">${esc(paper.limitation)}</p>` : ''}</div>` : ''}
 
-      ${!paper.summary && paper.limitation ? `<p class="summary-limitation">${esc(paper.limitation)}</p>` : ''}${(paper.figures || []).map(figure => `<figure class="research-figure"><img src="${esc(safeURL(figure.src))}" alt="${esc(figure.caption)}" loading="lazy"><figcaption>${esc(figure.caption)}</figcaption></figure>`).join('')}${evidenceMarkup(paper.evidence)}${paper.studyDesignAssessment ? `<details class="study-methods design-assessment"><summary>Study design and blinding</summary><p>${esc(paper.studyDesignAssessment.basis)}</p><p>${paper.studyDesignAssessment.sources.map((source,index)=>`<a href="${esc(safeURL(source))}" target="_blank" rel="noopener noreferrer">${source.includes('clinicaltrials.gov') || source.includes('isrctn.com') ? 'Trial register' : `Study source ${index+1}`} ↗</a>`).join(' · ')}</p></details>` : ''}${bibliographyMarkup(paper)}${sourceProvenanceMarkup(paper)}
+      ${!paper.summary && paper.limitation ? `<p class="summary-limitation">${esc(paper.limitation)}</p>` : ''}${(paper.figures || []).map(figure => `<figure class="research-figure"><img src="${esc(safeURL(figure.src))}" alt="${esc(figure.caption)}" loading="lazy"><figcaption>${esc(figure.caption)}</figcaption></figure>`).join('')}${youthRelevanceMarkup(paper)}${evidenceMarkup(paper.evidence)}${paper.studyDesignAssessment ? `<details class="study-methods design-assessment"><summary>Study design and blinding</summary><p>${esc(paper.studyDesignAssessment.basis)}</p>${paper.studyDesignAssessment.maskingRoles ? `<p><strong>Masking:</strong> ${esc(typeof paper.studyDesignAssessment.maskingRoles==='string' ? paper.studyDesignAssessment.maskingRoles : Object.entries(paper.studyDesignAssessment.maskingRoles).map(([role,value])=>role+': '+value).join('; '))}</p>` : ''}<p>${paper.studyDesignAssessment.sources.map((source,index)=>`<a href="${esc(safeURL(source))}" target="_blank" rel="noopener noreferrer">${source.includes('clinicaltrials.gov') || source.includes('isrctn.com') ? 'Trial register' : `Study source ${index+1}`} ↗</a>`).join(' · ')}</p></details>` : ''}${bibliographyMarkup(paper)}${sourceProvenanceMarkup(paper)}
       <div class="paper-links"><a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${url.includes('web.archive.org/web/') ? 'Read archived publication' : 'Read publication'} ↗</a><button class="text-button" data-paper-detail="${esc(paper.id)}">Citation details</button></div>
     </article>`;
   }
@@ -206,6 +211,9 @@
     filtered = records.filter(r=>matches(r));
     const overview=$('#dv-overview');overview.hidden=!chosen.community.includes('domestic-violence');
     if(!overview.hidden)overview.innerHTML=`<h2>Domestic &amp; Family Violence</h2><p>${esc(approvedDV.overview)}</p><p>${esc(approvedDV.limitations)}</p><p>The approved addition sits alongside existing library research. Your selected filters determine the result count below.</p><p>${Object.entries(approvedDV.chapters).map(([c,ch])=>`<a data-chapter="${ch.number}" data-chapter-collection="${c}" href="${esc(route(ch.number,'domestic-family-violence',c))}">${esc(collectionTitle(c))} · ${approvedDV.counts.collections[c]} publications</a>`).join(' · ')}</p>`;
+    const youthOverview=$('#youth-overview');
+    youthOverview.hidden=!chosen.age.includes('youth') && !chosen.topic.some(t=>Object.values(approvedYouth.chapters).some(c=>c.topics.some(v=>t.endsWith(':'+v.id))));
+    if(!youthOverview.hidden)youthOverview.innerHTML=`<h2>Youth research · Ages 16–24 and related evidence</h2><p>${esc(approvedYouth.overview)}</p><p>${esc(approvedYouth.limitations)}</p><p>20 Black Dog Institute publications and 21 Orygen publications are included; institutional groups overlap. The selected filters determine the results below, including existing youth research.</p><p>${Object.entries(approvedYouth.chapters).map(([c,ch])=>`<a data-chapter="${ch.number}" data-chapter-collection="${c}" data-topic="universal-mind-mobile-lab" href="${esc(route(ch.number,'universal-mind-mobile-lab',c))}">${esc(collectionTitle(c))} · ${approvedYouth.counts.collections[c]} publications</a>`).join(' · ')}</p>`;
     // Each option counts papers matching every other filter. Keep this filter's
     // alternatives available because multiple selections within it use OR.
     for (const [id,taxonomy,test] of [
@@ -291,7 +299,7 @@
     if (!record) return;
     const entry = selectedEntry(record);
     if (entry) return showPaper(entry,opener);
-    const paper = {id:record.id,recordId:record.id,title:record.title,journal:record.journal,year:record.year,authors:record.authors,design:record.design,urls:record.urls,quotes:record.quotes.map(text => [{text,emphasis:false}]),summary:record.summary,limitation:record.limitation,citationCount:record.citationSnapshot?.count ?? record.citationCount,citationSnapshot:record.citationSnapshot,studyDesignAssessment:record.studyDesignAssessment,paperTrustAssessment:record.paperTrustAssessment,publicationApproval:record.publicationApproval,sourceAccess:record.sourceAccess,sourcePages:[],sourceReferences:record.sourceReferences,sourceType:record.sourceType,doi:record.doi,pmid:record.pmid,evidence:record.evidence};
+    const paper = {labRelevance:record.labRelevance,institutions:record.institutions,studyFamilyId:record.studyFamilyId,id:record.id,recordId:record.id,title:record.title,journal:record.journal,year:record.year,authors:record.authors,design:record.design,urls:record.urls,quotes:record.quotes.map(text => [{text,emphasis:false}]),summary:record.summary,limitation:record.limitation,citationCount:record.citationSnapshot?.count ?? record.citationCount,citationSnapshot:record.citationSnapshot,studyDesignAssessment:record.studyDesignAssessment,paperTrustAssessment:record.paperTrustAssessment,publicationApproval:record.publicationApproval,sourceAccess:record.sourceAccess,sourcePages:[],sourceReferences:record.sourceReferences,sourceType:record.sourceType,doi:record.doi,pmid:record.pmid,evidence:record.evidence};
     showPaper(paper,opener);
   }
   function buildRecords(data) {
@@ -308,7 +316,7 @@
       const citationsByCollection = Object.fromEntries(collections.map(c=>[c,model.maximumCount([...chapterEntries.filter(p=>p.collection===c).map(p=>p.citationCount),...otherEntries.filter(a=>a.collection===c).map(a=>a.historicalCitationCount)])]));
       const topics = [...chapterEntries.map(p=>({key:p.collection+':'+p.topicId,title:p.topicTitle,collection:p.collection,trustScore:p.trustScore})),...otherEntries.map(a=>({key:a.collection+':'+a.sectionPage,title:a.section.replace(/^.*?\b[ivxlcdm]+\.\s*/i,''),collection:a.collection,trustScore:a.sectionGrade}))];
       const quotes = first ? first.quotes.filter((q,index) => index !== first.quotationReview?.index).map(quoteText) : otherEntries.flatMap(a => (a.originalNote || '').split('\n\n').filter(Boolean));
-      const result = {publicationApproval:r.publicationApproval,sourceAccess:r.sourceAccess,editorialAudit:r.editorialAudit,studyFamilyId:r.studyFamilyId,familyLinkageUncertain:r.familyLinkageUncertain,approaches:r.approaches,id:r.id,publicationKey:access.publicationKey,aliases:[...new Set([...(r.aliases || []),...(first?.aliases || [])])],...(r.sourceReferences ? {sourceReferences:r.sourceReferences,sourceType:r.sourceType,sourceVerification:r.sourceVerification,sourceCollection:r.sourceCollection,relatedVersions:r.relatedVersions} : {}),title:first?.title || r.title,journal:access.journalLabel || first?.journal || r.journal || '',publisherFamily:access.publisherFamily || r.publisherFamily,publisherFamilyLabel:access.publisherFamilyLabel || r.publisherFamilyLabel,neurotransmitters:r.neurotransmitters || [],year:first?.year || r.year,authors:first?.authors || r.authors || '',design:r.studyDesignAssessment ? r.design : first?.design || r.sourceDesign || r.design || '',kind:r.kind,identityConflict:r.identityConflict || null,doi:access.doi || first?.doi || r.doi,pmid:access.pmid || first?.pmid || r.pmid,urls:access.urls || first?.urls || r.urls,collections,categories:r.categories || [],targets:r.targets || [],priority:r.priority ?? 1,quotes,summary:first?.summary || r.finding || r.portalNotes?.[0]?.finding || '',limitation:first?.limitation || r.limitation || r.portalNotes?.[0]?.limitation || '',citationCount:model.maximumCount(Object.values(citationsByCollection)),citationSnapshot:r.citationSnapshot,studyDesignAssessment:r.studyDesignAssessment,paperTrustAssessment:r.paperTrustAssessment,citationsByCollection,topics,journalKey:access.journalKey ?? model.journalKey(first?.journal || r.journal),journalLabel:access.journalLabel || first?.journal || r.journal || '',topicScores:[...new Set([...chapterEntries.map(p=>p.trustScore),...otherEntries.map(a=>a.sectionGrade)].filter(Boolean))],soundEntries,chapterEntries,evidence:r.evidence,jadad:model.jadadStatus(r)};
+      const result = {...(r.labRelevance ? {labRelevance:r.labRelevance,institutions:r.institutions,institutionEvidence:r.institutionEvidence,researchTopics:r.researchTopics,publicationStatus:r.publicationStatus,noticeSummary:r.noticeSummary,randomizedStudyUnitId:r.randomizedStudyUnitId} : {}),publicationApproval:r.publicationApproval,sourceAccess:r.sourceAccess,editorialAudit:r.editorialAudit,studyFamilyId:r.studyFamilyId,familyLinkageUncertain:r.familyLinkageUncertain,approaches:r.approaches,id:r.id,publicationKey:access.publicationKey,aliases:[...new Set([...(r.aliases || []),...(first?.aliases || [])])],...(r.sourceReferences ? {sourceReferences:r.sourceReferences,sourceType:r.sourceType,sourceVerification:r.sourceVerification,sourceCollection:r.sourceCollection,relatedVersions:r.relatedVersions} : {}),title:first?.title || r.title,journal:access.journalLabel || first?.journal || r.journal || '',publisherFamily:access.publisherFamily || r.publisherFamily,publisherFamilyLabel:access.publisherFamilyLabel || r.publisherFamilyLabel,neurotransmitters:r.neurotransmitters || [],year:first?.year || r.year,authors:first?.authors || r.authors || '',design:r.studyDesignAssessment ? r.design : first?.design || r.sourceDesign || r.design || '',kind:r.kind,identityConflict:r.identityConflict || null,doi:access.doi || first?.doi || r.doi,pmid:access.pmid || first?.pmid || r.pmid,urls:access.urls || first?.urls || r.urls,collections,categories:r.categories || [],targets:r.targets || [],priority:r.priority ?? 1,quotes,summary:first?.summary || r.finding || r.portalNotes?.[0]?.finding || '',limitation:first?.limitation || r.limitation || r.portalNotes?.[0]?.limitation || '',citationCount:model.maximumCount(Object.values(citationsByCollection)),citationSnapshot:r.citationSnapshot,studyDesignAssessment:r.studyDesignAssessment,paperTrustAssessment:r.paperTrustAssessment,citationsByCollection,topics,journalKey:access.journalKey ?? model.journalKey(first?.journal || r.journal),journalLabel:access.journalLabel || first?.journal || r.journal || '',topicScores:[...new Set([...chapterEntries.map(p=>p.trustScore),...otherEntries.map(a=>a.sectionGrade)].filter(Boolean))],soundEntries,chapterEntries,evidence:r.evidence,jadad:model.jadadStatus(r)};
       result._search = normalize([result.title,result.sourceCollection,JSON.stringify(result.sourceReferences),result.journal,result.publisherFamilyLabel,...result.neurotransmitters,result.authors,result.design,result.doi,result.pmid,...result.quotes,result.summary,result.limitation,...result.targets,...result.categories,...chapterEntries.map(p=>p.topicTitle+' '+p.quotes.map(quoteText).join(' ')+' '+(p.bibliography || []).map(b=>b.text).join(' ')),...otherEntries.map(a=>a.originalNote),JSON.stringify(r.evidence || {})].join(' '));
       return result;
     }).filter(Boolean));
@@ -376,26 +384,27 @@
   async function load() {
     $('#load-error').hidden = true;
     try {
-      const responses = await Promise.all(['sound-edition','library','publication-access','language-edition','general-edition','mindfulness-expansion','vision-edition','vision-expansion','clinical-conditions','nature-expansion','fulltext-availability','fibonacci-expansion','hyperspectral-expansion','domestic-violence-expansion','community-index','age-index'].map(name=>fetch('library-data/'+name+'.json?v=dv-paper-trust-20261101')));
+      const responses = await Promise.all(['sound-edition','library','publication-access','language-edition','general-edition','mindfulness-expansion','vision-edition','vision-expansion','clinical-conditions','nature-expansion','fulltext-availability','fibonacci-expansion','hyperspectral-expansion','domestic-violence-expansion','youth-expansion','community-index','age-index'].map(name=>fetch('library-data/'+name+'.json?v=youth-20261102')));
       if (responses.some(response => !response.ok)) throw new Error('Research unavailable');
-      const [sound,data,access,language,general,expansion,vision,visionExpansion,conditions,natureExpansion,fulltexts,fibonacciExpansion,hyperspectralExpansion,dvExpansion,communities,ages] = await Promise.all(responses.map(response=>response.json()));
+      const [sound,data,access,language,general,expansion,vision,visionExpansion,conditions,natureExpansion,fulltexts,fibonacciExpansion,hyperspectralExpansion,dvExpansion,youthExpansion,communities,ages] = await Promise.all(responses.map(response=>response.json()));
       if (communities.schemaVersion!=='communities-contexts/v2' || communities.records.length!==communities.recordCount) throw new Error('Invalid community classifications');
       communityData=communities;
-      approvedDV=dvExpansion;
+      approvedDV=dvExpansion; approvedYouth=youthExpansion;
       if (ages.schemaVersion!=='research-age-groups/v1' || ages.records.length!==ages.recordCount) throw new Error('Invalid age classifications');
       ageData=ages;
       fullTextAccess=fulltexts.records;
       if (!Array.isArray(sound.chapters) || !Array.isArray(data.records)) throw new Error('Invalid research data');
-      publicationAccess = {...access.records,...visionExpansion.publicationAccess,...dvExpansion.publicationAccess};
+      publicationAccess = {...access.records,...visionExpansion.publicationAccess,...dvExpansion.publicationAccess,...youthExpansion.publicationAccess};
       for (const [id,verified] of Object.entries(natureExpansion.publicationAccess)) publicationAccess[id]={...publicationAccess[id],...verified};
-      clinicalConditions={...conditions.records,...dvExpansion.conditions};
+      clinicalConditions={...conditions.records,...dvExpansion.conditions,...youthExpansion.conditions};
       $('#condition').innerHTML='<option value="">All conditions and symptoms</option>'+conditions.taxonomy.map(t=>`<option value="${esc(t.id)}">${esc(t.label)}</option>`).join('');
       editions = {sound,language,general,vision};
       for (const [name,chapter] of Object.entries(dvExpansion.chapters)) editions[name].chapters.push(chapter);
+      for (const [name,chapter] of Object.entries(youthExpansion.chapters)) editions[name].chapters.push(chapter);
       const byId = new Map(data.records.map(r=>[r.id,r]));
-      for (const additional of [...expansion.records,...visionExpansion.records,...natureExpansion.records,...fibonacciExpansion.records,...hyperspectralExpansion.records,...dvExpansion.records]) {
+      for (const additional of [...expansion.records,...visionExpansion.records,...natureExpansion.records,...fibonacciExpansion.records,...hyperspectralExpansion.records,...dvExpansion.records,...youthExpansion.records]) {
         const existing = byId.get(additional.id);
-        byId.set(additional.id,{...existing,...additional,collections:[...new Set([...(existing?.collections || []),...additional.collections])],archiveEntries:existing?.archiveEntries || []});
+        byId.set(additional.id,{...existing,...additional,aliases:[...new Set([...(existing?.aliases || []),...(additional.aliases || [])])],collections:[...new Set([...(existing?.collections || []),...additional.collections])],archiveEntries:existing?.archiveEntries || []});
       }
       data.records = [...byId.values()];
       for (const [name,book] of Object.entries(editions)) for (const chapter of book.chapters) for (const topic of chapter.topics) for (const paper of topic.papers) {
