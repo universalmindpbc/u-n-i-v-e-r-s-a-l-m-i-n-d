@@ -1,0 +1,25 @@
+{
+  "verifiedAtUTC": "2026-11-02T06:07:15.173703+00:00",
+  "repositories": [
+    {
+      "role": "integrated staging",
+      "branch": "staging",
+      "mainExpected": "57747030461016e4fc2c29bd4534df483118857d",
+      "commit": "7ddb669c1542b928858b8e2fd36d089d2c43b0b0",
+      "remoteVerified": true,
+      "mainUnchanged": true,
+      "url": "https://github.com/universalmindpbc/u-n-i-v-e-r-s-a-l-m-i-n-d.git"
+    },
+    {
+      "role": "dedicated source",
+      "branch": "research/youth-20261102",
+      "mainExpected": "7d89224d2caca17debcd8170a1873a488d5af82a",
+      "commit": "e2757298191e98cfcbf0cab47e3c1eadea1c9f1d",
+      "remoteVerified": true,
+      "mainUnchanged": true,
+      "url": "https://github.com/universalmindpbc/u-n-i-v-e-r-s-a-l-i-n-f-o-r-m-a-t-i-c-s.git"
+    }
+  ],
+  "productionChanged": false,
+  "note": "This metadata receipt is committed subsequently; deployed source and release commits above remain exact."
+}

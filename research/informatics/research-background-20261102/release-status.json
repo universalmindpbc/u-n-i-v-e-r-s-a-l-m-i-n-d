@@ -40,5 +40,8 @@
     "Publication API coverage remains narrower than the 1323-record visible library; all 105 approved youth records are present.",
     "One generated multi-source range remains plain text in the existing renderer; individual study citations and all three source cards resolve correctly."
   ],
-  "githubStatus": "Final push and remote confirmation pending; see subsequent receipt."
+  "githubStatus": "Both authorized branches pushed and verified; both main branches unchanged. See github-receipt.json.",
+  "verifiedStagingReleaseCommit": "7ddb669c1542b928858b8e2fd36d089d2c43b0b0",
+  "verifiedDedicatedBranchCommit": "e2757298191e98cfcbf0cab47e3c1eadea1c9f1d",
+  "productionIsolationProof": "production-isolation.json"
 }

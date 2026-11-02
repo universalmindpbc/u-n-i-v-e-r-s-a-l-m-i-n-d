@@ -12,8 +12,10 @@ One complete live text conversation returned both requested primary papers (PMID
 
 Cumulative test ledger: one pre-provider stop cost zero; one provider call was followed by a conservative guard stop; the final conversation completed with two provider calls. Total three paid model calls. Conservative upper estimate A$0.86905, against A$2 authorised; published-rate token estimate US$0.2296185 before currency conversion/tax. No further paid tests. The optional staging header only lowers limits and adds no quota or access privilege.
 
-Exact integrated source: `4b247393e0eb36af8e0925f0bcacf4f666b023f5`. Dedicated source: `8d08b4c338ac828e32fc57219d40d35120ebaa0f`. Staging Worker: `d1be0592-14ba-4770-aeb2-e7bef896d9ef`. Website upload: two assets through existing Panthur staging transport. Final GitHub confirmation is recorded in the subsequent receipt.
+Exact integrated source: `4b247393e0eb36af8e0925f0bcacf4f666b023f5`. Dedicated source: `8d08b4c338ac828e32fc57219d40d35120ebaa0f`. Staging Worker: `d1be0592-14ba-4770-aeb2-e7bef896d9ef`. Website upload: two assets through existing Panthur staging transport. Both branches were pushed and verified: integrated release `7ddb669c1542b928858b8e2fd36d089d2c43b0b0`, dedicated branch `e2757298191e98cfcbf0cab47e3c1eadea1c9f1d`. See `github-receipt.json`.
 
 Proof: https://staging.universalmind.tv/informatics/research/ and https://staging.universalmind.tv/informatics/connect/
 
 Production has not been modified.
+
+Read-only production isolation check: production API remains at 891 publications without the youth overlay; production Research CSS equals the pre-fix committed bytes. Staging reports 991 publications over the same 891-row base. All 11 repository SQL statements are SELECT. No database mutation, credentials or configuration changes. Database branch separation is not claimed because secret values were not inspected; the staging-only in-memory merge does not depend on separate database branches. See `production-isolation.json`.

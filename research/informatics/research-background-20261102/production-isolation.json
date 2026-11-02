@@ -1,0 +1,34 @@
+{
+  "verifiedAtUTC": "2026-11-02T06:08:55.799756+00:00",
+  "passed": true,
+  "verificationMethod": "Public GET requests and committed configuration/source inspection only; no production model calls or mutations.",
+  "staging": {
+    "workerName": "informatics-universal-one-staging",
+    "workerVersion": "d1be0592-14ba-4770-aeb2-e7bef896d9ef",
+    "allowedOrigin": "https://staging.universalmind.tv",
+    "inventoryURL": "https://informatics-universal-one-staging.universalmind.workers.dev/api/v1/inventory",
+    "datasetVersion": "research-20261026-daytab-v1+youth-f164c8325ea5",
+    "publications": 991,
+    "databasePublications": 891,
+    "approvedYouth": 105
+  },
+  "production": {
+    "workerName": "informatics-universal-one",
+    "allowedOrigin": "https://universalmind.tv",
+    "inventoryURL": "https://informatics-universal-one.universalmind.workers.dev/api/v1/inventory",
+    "datasetVersion": "research-20261026-daytab-v1",
+    "publications": 891,
+    "youthOverlayAbsent": true,
+    "researchCSSUnchangedSHA256": "4752f51f4cc3e5ff5527c7517b4562b02af30d22417228195a2e09cf49f9ab05"
+  },
+  "database": {
+    "writesPerformed": false,
+    "repositorySQLStatementsInspected": 10,
+    "allRepositorySQLIsSELECT": true,
+    "method": "The 105 approved records are bundled into the staging Worker and merged in memory. Underlying publication tables still report 891. No schema migration, embedding upload or record insertion/update/deletion was performed.",
+    "connectionTopology": "Database secret values were not read. Separate database branches are not claimed; production isolation does not depend on them because no database state was changed."
+  },
+  "configurationChanged": false,
+  "deploymentCommands": "Only wrangler deploy --config cloudflare/wrangler.informatics-staging.toml and deploy-panthur-staging.sh informatics were used.",
+  "productionModified": false
+}
