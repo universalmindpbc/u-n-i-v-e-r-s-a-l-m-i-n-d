@@ -3635,6 +3635,7 @@ body.television-room-open.nav-open .global-nav-scrim {
   pointer-events: auto;
   position: relative;
   transform: scale(1);
+  z-index: 30; /* Keep category hit targets above the hidden reaction layer. */
 }
 
 .adaptive-television-wallet-category {
@@ -4157,6 +4158,15 @@ body .adaptive-television-reaction-wallet[data-wallet-view="categories"].is-reac
   background: rgba(255, 255, 255, 0.11);
   outline: 0;
   transform: translateY(-1px) scale(1.04);
+}
+
+/* The flower and its foreground icon are one button, not separate hover layers. */
+.adaptive-television-wallet-category {
+  pointer-events: auto;
+}
+
+.adaptive-television-wallet-category > * {
+  pointer-events: none;
 }
 
 .adaptive-television-wallet-category .adaptive-television-reaction__glyph--flora-flower {
