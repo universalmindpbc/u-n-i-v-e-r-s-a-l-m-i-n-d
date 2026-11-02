@@ -158,3 +158,6 @@ html[data-auto-launch="true"] #landing{display:none!important}
 #fullscreen-status[hidden]{display:none!important}#fullscreen-status:empty{display:none!important}
 body[data-night="true"] #fullscreen-status{background:#19313eeF;color:#edf1e8;border:1px solid #aac4c744}
 body[data-cinematic="true"] .intro,body[data-cinematic="true"] #artist-lineup,body[data-cinematic="true"] #labels{opacity:0;visibility:hidden;pointer-events:none}
+
+html[data-auto-launch="true"] body:not([data-entered="true"]){background:#080c0c}
+html[data-auto-launch="true"] body:not([data-entered="true"]) #loading{visibility:visible;color:#f1f0e8;background:#080c0c}
