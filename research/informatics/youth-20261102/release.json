@@ -1,0 +1,69 @@
+{
+  "status": "staging-verified-pending-content-signoff",
+  "sourceCommit": "ef52137c390cab505a8d2f469fda39ea7fbc7c5d",
+  "releaseBaselineCommit": "7ebdb92ac8886af9c81e8616b336a2fecc86989c",
+  "researchBaselineCommit": "05da69656bbe9fae4498e306d1e1b9171b51e372",
+  "verifiedAt": "2026-11-02T02:14:23.783Z",
+  "stagingURL": "https://staging.universalmind.tv/informatics/review/youth-20261102/",
+  "briefURL": "https://staging.universalmind.tv/informatics/review/youth-20261102/brief.html",
+  "githubBranch": "staging",
+  "batchFile": "batch-f164c8325ea5f9c9.json",
+  "batchSHA256": "f164c8325ea5f9c989c29524518b598913508117712826dc408f592b7f99a723",
+  "csvFile": "records-4f4edc1a6130b68b.csv",
+  "csvSHA256": "4f4edc1a6130b68b5f148e6f9a9344c977cccd3a58db3b0ff01db83c42bf1f3e",
+  "counts": {
+    "assessedRecords": 187,
+    "uniquePublications": 186,
+    "duplicateReprints": 1,
+    "reviewReady": 144,
+    "qualifiedPapers": 105,
+    "qualifiedNew": 100,
+    "qualifiedExisting": 5,
+    "newUniquePublications": 171,
+    "existingUniquePublications": 15,
+    "fullTextCached": 154,
+    "abstractOnly": 31,
+    "webMethodsRecovered": 2,
+    "studyFamilies": 171,
+    "randomizedReportsMethodsInspected": 69,
+    "randomizedStudyUnitsConservative": 63,
+    "qualifiedDesigns": {
+      "randomized-report": 47,
+      "review": 42,
+      "qualitative": 8,
+      "observational": 8
+    },
+    "qualifiedProposedCrosses": {
+      "2": 44,
+      "1": 58,
+      "3": 3
+    },
+    "institutionRecords": {
+      "Black Dog Institute": 28,
+      "Orygen": 30,
+      "headspace services": 11
+    }
+  },
+  "uploadedAssets": 12,
+  "uploadedBytes": 2437534,
+  "priorManifestEntriesChanged": 0,
+  "sourceChecks": "source-check.json",
+  "browserChecks": "qa/staging-browser.json",
+  "uploadScope": "qa/manifest-scope.json",
+  "deploymentLog": "qa/deploy.log",
+  "deployLogSHA256": "bc367cb81fa62fb6868efce1413d1b6c9ddf890045247133804dedaf03b4f769",
+  "productionModified": false,
+  "mainLibraryIntegration": false,
+  "approvedRetrievalIntegration": false,
+  "humanApprovalStatus": "pending",
+  "approvedCrossesAwarded": false,
+  "additionalSpendAUD": 0,
+  "externalContacts": false,
+  "limitations": [
+    "Single-agent rapid review of selected methods; not independent duplicate full-text appraisal or formal RoB/GRADE.",
+    "31 abstract-only records remain outside the qualified core.",
+    "Mixed-age and younger institutional youth evidence are labelled; qualification is design-specific, not a high-certainty efficacy rating.",
+    "Component evidence does not validate the combined lab model; prospective partners are not confirmed."
+  ],
+  "releasePreparation": "The existing staging workflow initially stopped before upload on sparse-checkout fixture omissions. Exact tracked dependencies were materialized and the unmodified preflight and deployment workflow passed."
+}

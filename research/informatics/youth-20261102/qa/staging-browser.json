@@ -1,0 +1,68 @@
+{
+  "passed": true,
+  "phase": "staging",
+  "checkedAt": "2026-11-02T02:14:23.783Z",
+  "url": "https://staging.universalmind.tv/informatics/review/youth-20261102/",
+  "sourceCommit": "ef52137c390cab505a8d2f469fda39ea7fbc7c5d",
+  "batchSHA256": "f164c8325ea5f9c989c29524518b598913508117712826dc408f592b7f99a723",
+  "audioDisabledAtProcessLaunch": true,
+  "errors": [],
+  "checks": [
+    {
+      "publishedAssetsMatchCommittedBytes": [
+        "batch-f164c8325ea5f9c9.json",
+        "brief.html",
+        "brief.md",
+        "index.html",
+        "index.json",
+        "methods.html",
+        "methods.md",
+        "records-4f4edc1a6130b68b.csv",
+        "review.css",
+        "review.js",
+        "search-log.json",
+        "supplemental-sources.json"
+      ],
+      "stagingNoindexHeaders": true
+    },
+    {
+      "width": 1440,
+      "qualified": 105,
+      "qualifiedNew": 100,
+      "institutionFilters": true,
+      "provisionalMantraVisible": true,
+      "searchAndEmptyState": true,
+      "pagination": true,
+      "details": true,
+      "directRecordLink": true,
+      "brief": true,
+      "horizontalOverflow": false
+    },
+    {
+      "width": 390,
+      "qualified": 105,
+      "qualifiedNew": 100,
+      "institutionFilters": true,
+      "provisionalMantraVisible": true,
+      "searchAndEmptyState": true,
+      "pagination": true,
+      "details": true,
+      "directRecordLink": true,
+      "brief": true,
+      "horizontalOverflow": false
+    },
+    {
+      "width": 320,
+      "qualified": 105,
+      "qualifiedNew": 100,
+      "institutionFilters": true,
+      "provisionalMantraVisible": true,
+      "searchAndEmptyState": true,
+      "pagination": true,
+      "details": true,
+      "directRecordLink": true,
+      "brief": true,
+      "horizontalOverflow": false
+    }
+  ]
+}

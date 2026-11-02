@@ -21,3 +21,5 @@ Browser checks: `node tools/check-youth-review-browser.mjs`; the script uses a p
 The approved export and retrieval sources exclude `Informatics/review/`. All 187 record-level approval states are pending and approved crosses are null. The frozen public batch/CSV use content-derived filenames; each record has a canonical JSON SHA-256. Raw publisher full texts and abstracts remain in the private task cache, outside Git.
 
 Research baseline: `05da69656bbe9fae4498e306d1e1b9171b51e372`. A separately recorded release baseline preserves any intervening staging work. The shared checkout and other tasks' changes are not part of this mission.
+
+Verified staging review: https://staging.universalmind.tv/informatics/review/youth-20261102/ . See `release.json` for the exact source commit, asset hashes, counts, limitations and release evidence.

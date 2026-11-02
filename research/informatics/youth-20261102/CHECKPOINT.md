@@ -8,4 +8,6 @@ All requested lanes covered; mantra leads remain methods-pending, electronic-mus
 
 Public review/brief and immutable JSON/CSV built under Informatics/review/youth-20261102. Data/hash/CSV/isolation/export checks passed. Silent headless desktop/390px/320px browser checks passed, including search, institutional filters, empty states, direct record links, details and downloads.
 
-Release coordination: the completed navigation release is recorded at 7ebdb92ac8886af9c81e8616b336a2fecc86989c. Youth candidate commits have been rebased onto it. Preparing the scoped staging deployment; no youth package has been deployed or pushed yet. No production action, paid access/spend or external contact.
+Release complete on staging: https://staging.universalmind.tv/informatics/review/youth-20261102/
+
+Exact deployed source: ef52137c390cab505a8d2f469fda39ea7fbc7c5d. Release baseline: 7ebdb92ac8886af9c81e8616b336a2fecc86989c. All 12 published assets match committed bytes; noindex headers and silent headless 1440/390/320px browser journeys passed with zero page errors. Manifest comparison confirms 12 additions, zero prior entries changed or removed. `release.json` and `qa/staging-browser.json` record the release evidence. All content sign-off remains pending. The main library, approved assistant retrieval and production have not been modified by this task. A$0 additional spend and no external contact.
