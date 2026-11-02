@@ -1,0 +1,9 @@
+{
+  "source_commit": "ec5d48647a0a3d45bde3d943642770774a5c2c11",
+  "baseline_commit": "01cb2dcf82485b761d8e8a2c76fa72f9168327e4",
+  "production_main": "a2d6cb9b83340e841c9362cefd5d193aff63ee56",
+  "proof_url": "https://staging.universalmind.tv/informatics/read/index.html#atlas-topic-directory",
+  "markdown_url": "https://staging.universalmind.tv/informatics/llms.txt",
+  "production_modified": false,
+  "scope": "Website sitemap links in parent Informatics Wiki and Markdown"
+}

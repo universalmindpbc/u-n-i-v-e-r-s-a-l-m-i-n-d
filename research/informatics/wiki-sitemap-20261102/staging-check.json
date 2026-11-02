@@ -1,0 +1,48 @@
+{
+  "checks": [
+    {
+      "width": 1470,
+      "sitemapLinkVisible": true,
+      "navigationOrderPreserved": true,
+      "noHorizontalPageOverflow": true
+    },
+    {
+      "width": 1024,
+      "sitemapLinkVisible": true,
+      "navigationOrderPreserved": true,
+      "noHorizontalPageOverflow": true
+    },
+    {
+      "width": 390,
+      "sitemapLinkVisible": true,
+      "navigationOrderPreserved": true,
+      "noHorizontalPageOverflow": true
+    },
+    {
+      "width": 320,
+      "sitemapLinkVisible": true,
+      "navigationOrderPreserved": true,
+      "noHorizontalPageOverflow": true
+    }
+  ],
+  "http": [
+    {
+      "path": "informatics/read/index.html",
+      "sha256": "4f337804edc0ffac5bafa90d15aca79c8724f29e730c3a22be8a190bd72f61b6",
+      "status": 200
+    },
+    {
+      "path": "informatics/llms.txt",
+      "sha256": "f547f43f623b52ff0da13a4ec3aa9940ac9b9329a82f13303c8758a7c0dfe53d",
+      "status": 200
+    },
+    {
+      "path": "sitemap.xml",
+      "sha256": "b6791b47be09be74e4f8c43c8ded1af044fe11f7df1e98bd6266cfed8e199337",
+      "status": 200
+    }
+  ],
+  "muted": true,
+  "sitemapLinkFollowed": true,
+  "passed": true
+}
