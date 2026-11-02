@@ -1,13 +1,12 @@
 {
-  "complete": false,
-  "updatedAt": "2026-11-02T03:43:16.820296+00:00",
-  "publishedWebsiteSource": "7ebdb92ac8886af9c81e8616b336a2fecc86989c",
+  "complete": true,
+  "updatedAt": "2026-11-02T15:09:42.553080+11:00",
+  "publishedWebsiteSource": "c878f93169d0bb953e864386dede6c121240e285",
   "previousProductionMain": "a2d6cb9b83340e841c9362cefd5d193aff63ee56",
   "stagedCorrectionSource": "c878f93169d0bb953e864386dede6c121240e285",
   "stagingAuditCommit": "92c55a98e180de5e3e926f45f2e9815891ed75d6",
   "mergedStagingCommit": "8bbaa8d36ef96489c14fb7bc9db66aaa58404607",
-  "productionCorrectionPublished": false,
-  "productionTagCreated": false,
+  "productionCorrectionPublished": true,
   "worker": {
     "name": "informatics-universal-one",
     "version": "58404974-72da-4721-aa9d-9f1371cae6c7"
@@ -23,7 +22,16 @@
     ],
     "informaticsChangedFiles": 2361,
     "iamScopedFiles": 35,
-    "ownerStatePreserved": true
+    "ownerStatePreserved": true,
+    "correction": {
+      "modes": [
+        "iam-changed",
+        "ai-wiki"
+      ],
+      "iamChangedFiles": 10,
+      "iamUnchangedFiles": 1,
+      "ownerStatePreserved": true
+    }
   },
   "productionChecks": {
     "httpChecksPassed": 70,
@@ -34,9 +42,17 @@
     "mcpTools": 9,
     "archiveFilesVerifiedAtFreshQueryURLs": 55,
     "archiveBytesVerified": 2470959389,
-    "canonicalArchiveVerificationComplete": false,
-    "browserSuiteComplete": false,
-    "assistantUIVerified": false
+    "canonicalArchiveVerificationComplete": true,
+    "browserSuiteComplete": true,
+    "assistantUIVerified": true,
+    "finalVersionedSourceComparisonsPassed": 118,
+    "versionedAssetsPassed": 145,
+    "canonicalArchiveFilesVerified": 55,
+    "canonicalArchiveBytesVerified": 2470959389,
+    "browserChecksPassed": 54,
+    "browserPageErrors": 0,
+    "actualOpenAIResponses": 1,
+    "displayedAnswerMatchesReturnedAnswer": true
   },
   "stagingChecks": {
     "browserChecksPassed": 54,
@@ -60,18 +76,19 @@
   },
   "cacheRepair": {
     "approvedArchiveURLs": 55,
-    "completed": false,
-    "dashboard": "Signed out; display for user sign-in awaits reply.",
+    "completed": true,
+    "dashboard": "User signed in; both exact URL purge batches confirmed.",
     "additionalScriptURL": "https://universalmind.tv/informatics/shared-experience.js?v=1c6694f64b0d",
-    "additionalScriptPurgeApproved": false
+    "additionalScriptPurgeApproved": true,
+    "totalURLsPurged": 56
   },
-  "pending": [
-    "User Cloudflare sign-in",
-    "Approval to publish the staged I AM history correction and add the stale script to the purge list",
-    "Exact scoped cache purge",
-    "Canonical binary and versioned asset verification",
-    "Full production browser and assistant UI checks",
-    "Final production main, annotated tag, and remote verification"
-  ],
-  "proof": "https://staging.universalmind.tv/iam/tv/"
+  "pending": [],
+  "proof": "https://staging.universalmind.tv/iam/tv/",
+  "approvedBaseSource": "7ebdb92ac8886af9c81e8616b336a2fecc86989c",
+  "productionTag": "production-2026-11-02-1509",
+  "gitRecord": "Final commit and annotated tag publication recorded by the release receipt after push.",
+  "limits": [
+    "Browser media tests used process-level audio suppression; subjective sound quality was not evaluated.",
+    "Fullscreen ownership was instrumented; native fullscreen and physical-device Safari were not tested."
+  ]
 }

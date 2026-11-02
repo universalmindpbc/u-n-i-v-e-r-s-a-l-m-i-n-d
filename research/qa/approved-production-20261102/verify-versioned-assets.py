@@ -3,7 +3,7 @@ from html.parser import HTMLParser
 from urllib.parse import urljoin,urlsplit
 from concurrent.futures import ThreadPoolExecutor
 import subprocess,json,hashlib,urllib.request
-root=Path.cwd();out=root/'research/qa/approved-production-20261102';source='7ebdb92ac8886af9c81e8616b336a2fecc86989c'
+root=Path.cwd();out=root/'research/qa/approved-production-20261102';source='c878f93169d0bb953e864386dede6c121240e285'
 def blob(p):return subprocess.check_output(['git','show',source+':'+p])
 class Assets(HTMLParser):
  def __init__(self,base):super().__init__();self.base=base;self.links=[]
@@ -38,3 +38,5 @@ def check(item):
   actual=hashlib.sha256(r.read()).hexdigest();return {'url':url,'path':path,'expected':expected,'actual':actual,'matched':expected==actual,'cache':r.headers.get('CF-Cache-Status')}
 with ThreadPoolExecutor(max_workers=4)as pool:results=list(pool.map(check,queue.items()))
 failed=[r for r in results if not r['matched']];report={'source':source,'checked':len(results),'passed':not failed,'failed':failed,'results':results};(out/'versioned-assets.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps({'checked':len(results),'failed':failed},indent=2))
+
+assert not failed, failed

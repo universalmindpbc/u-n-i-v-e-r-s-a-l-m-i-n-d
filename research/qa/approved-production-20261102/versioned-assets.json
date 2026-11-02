@@ -1,25 +1,8 @@
 {
-  "source": "7ebdb92ac8886af9c81e8616b336a2fecc86989c",
+  "source": "c878f93169d0bb953e864386dede6c121240e285",
   "checked": 145,
-  "passed": false,
-  "failed": [
-    {
-      "url": "https://universalmind.tv/vogue/iam/adaptive-environment-television.css?v=music-tv-css-58fc7ca58e7c",
-      "path": "i  a m/adaptive-environment-television.css",
-      "expected": "58fc7ca58e7c1bc11b357bafc6a15c1d60e089bdd0c6f01f8e7e6fc2906a4690",
-      "actual": "5dc8138d8082cd35cffcff2d2904dd17414f5d45fe38599ce0aaf795684c686c",
-      "matched": false,
-      "cache": "HIT"
-    },
-    {
-      "url": "https://universalmind.tv/informatics/shared-experience.js?v=1c6694f64b0d",
-      "path": "Informatics/shared-experience.js",
-      "expected": "1c6694f64b0d7f0d31ee2718af4459efe7daf60a5c53d2c73b1aa3265d895640",
-      "actual": "b0ff825af3d938146832790d69ab57db694a1b5f9aac5eaaa2b9fb625cb81a71",
-      "matched": false,
-      "cache": "HIT"
-    }
-  ],
+  "passed": true,
+  "failed": [],
   "results": [
     {
       "url": "https://universalmind.tv/home/ai-wiki-link.css?v=1",
@@ -27,7 +10,7 @@
       "expected": "ba887b0e9e32884acc603fbc5611c66d0d25f72b6b7a714cee2c0efbeecc7654",
       "actual": "ba887b0e9e32884acc603fbc5611c66d0d25f72b6b7a714cee2c0efbeecc7654",
       "matched": true,
-      "cache": "EXPIRED"
+      "cache": "HIT"
     },
     {
       "url": "https://universalmind.tv/home/entry-shell.css?v=2",
@@ -35,7 +18,7 @@
       "expected": "23bf449587a9a4654de1d789d9f7275608bb94e24abd6d2e3e6f2e5084477021",
       "actual": "23bf449587a9a4654de1d789d9f7275608bb94e24abd6d2e3e6f2e5084477021",
       "matched": true,
-      "cache": "EXPIRED"
+      "cache": "HIT"
     },
     {
       "url": "https://universalmind.tv/home/entry-shell.js?v=5",
@@ -43,7 +26,7 @@
       "expected": "292cd65fe13be4c5e5e615ec5c1360dbe85894523df2e5e6dfc4aeb07c598bbf",
       "actual": "292cd65fe13be4c5e5e615ec5c1360dbe85894523df2e5e6dfc4aeb07c598bbf",
       "matched": true,
-      "cache": "MISS"
+      "cache": "HIT"
     },
     {
       "url": "https://universalmind.tv/home/directory.css?v=9",
@@ -51,7 +34,7 @@
       "expected": "5a7aebcf5ce3bb05e627c036f14403066f2a4819a54a44e21bd10f0f9cb67443",
       "actual": "5a7aebcf5ce3bb05e627c036f14403066f2a4819a54a44e21bd10f0f9cb67443",
       "matched": true,
-      "cache": "EXPIRED"
+      "cache": "HIT"
     },
     {
       "url": "https://universalmind.tv/home/directory.js?v=13",
@@ -59,7 +42,7 @@
       "expected": "57451a8943ac23ec9c1747f1a36a53f4a258d327590e5ccd7421b168d73ecc74",
       "actual": "57451a8943ac23ec9c1747f1a36a53f4a258d327590e5ccd7421b168d73ecc74",
       "matched": true,
-      "cache": "EXPIRED"
+      "cache": "HIT"
     },
     {
       "url": "https://universalmind.tv/home/directory-story.js?v=4",
@@ -67,7 +50,7 @@
       "expected": "9e9960cff9055f75d1ab2e8414e86863749f0149bfc8c5d06324f31259bb96e7",
       "actual": "9e9960cff9055f75d1ab2e8414e86863749f0149bfc8c5d06324f31259bb96e7",
       "matched": true,
-      "cache": "EXPIRED"
+      "cache": "HIT"
     },
     {
       "url": "https://universalmind.tv/home/directory-rain.js?v=1",
@@ -75,7 +58,7 @@
       "expected": "9d50d28576a72050256c25b34ba14b80555e73a94d68e3e7c47023b1f8d5bcf3",
       "actual": "9d50d28576a72050256c25b34ba14b80555e73a94d68e3e7c47023b1f8d5bcf3",
       "matched": true,
-      "cache": "EXPIRED"
+      "cache": "HIT"
     },
     {
       "url": "https://universalmind.tv/site-navigation/routes.js?v=375ae77a6715",
@@ -102,12 +85,12 @@
       "cache": "HIT"
     },
     {
-      "url": "https://universalmind.tv/vogue/iam/adaptive-environment-television.css?v=music-tv-css-58fc7ca58e7c",
+      "url": "https://universalmind.tv/vogue/iam/adaptive-environment-television.css?v=music-tv-css-5dc8138d8082",
       "path": "i  a m/adaptive-environment-television.css",
-      "expected": "58fc7ca58e7c1bc11b357bafc6a15c1d60e089bdd0c6f01f8e7e6fc2906a4690",
+      "expected": "5dc8138d8082cd35cffcff2d2904dd17414f5d45fe38599ce0aaf795684c686c",
       "actual": "5dc8138d8082cd35cffcff2d2904dd17414f5d45fe38599ce0aaf795684c686c",
-      "matched": false,
-      "cache": "HIT"
+      "matched": true,
+      "cache": "MISS"
     },
     {
       "url": "https://universalmind.tv/vogue/iam/comedy-channel-v1.css?v=comedy-channel-css-f8b034d0496b",
@@ -198,10 +181,10 @@
       "cache": "HIT"
     },
     {
-      "url": "https://universalmind.tv/vogue/iam/adaptive-environment.js?v=adaptive-env-6187d4415045",
+      "url": "https://universalmind.tv/vogue/iam/adaptive-environment.js?v=adaptive-env-f42e88638055",
       "path": "i  a m/adaptive-environment.js",
-      "expected": "6187d44150455f8f6afd95e9d17a504c96bb32f92cf4bb439378d3c55cec8ad6",
-      "actual": "6187d44150455f8f6afd95e9d17a504c96bb32f92cf4bb439378d3c55cec8ad6",
+      "expected": "f42e8863805522bbb91006efba06b9772e75e9f0f2558f405d9d01766d527b68",
+      "actual": "f42e8863805522bbb91006efba06b9772e75e9f0f2558f405d9d01766d527b68",
       "matched": true,
       "cache": "HIT"
     },
@@ -387,7 +370,7 @@
       "expected": "1c92fbb2e93f29720355c88abb2daebca6eec2b83f91fc049d8255731eef196f",
       "actual": "1c92fbb2e93f29720355c88abb2daebca6eec2b83f91fc049d8255731eef196f",
       "matched": true,
-      "cache": "MISS"
+      "cache": "HIT"
     },
     {
       "url": "https://universalmind.tv/vogue/iam/adaptive-sound/controller-v1.js?v=7f548521e42b",
@@ -395,7 +378,7 @@
       "expected": "7f548521e42b97c7cf3309710a0c83d7a1cddcc267ef850b147f4f9dbc73afdf",
       "actual": "7f548521e42b97c7cf3309710a0c83d7a1cddcc267ef850b147f4f9dbc73afdf",
       "matched": true,
-      "cache": "MISS"
+      "cache": "HIT"
     },
     {
       "url": "https://universalmind.tv/vogue/iam/homepage-session-accents.js?v=eb175c364f15",
@@ -659,7 +642,7 @@
       "expected": "78750d6b05f6a26a791ddb2552199bc33379098aa2824517706a54f4d1a3c332",
       "actual": "78750d6b05f6a26a791ddb2552199bc33379098aa2824517706a54f4d1a3c332",
       "matched": true,
-      "cache": "MISS"
+      "cache": "HIT"
     },
     {
       "url": "https://universalmind.tv/vogue/iam/citizen-data-consent.js?v=citizen-data-consent-8a4ff4d0c7dc",
@@ -945,8 +928,8 @@
       "url": "https://universalmind.tv/informatics/shared-experience.js?v=1c6694f64b0d",
       "path": "Informatics/shared-experience.js",
       "expected": "1c6694f64b0d7f0d31ee2718af4459efe7daf60a5c53d2c73b1aa3265d895640",
-      "actual": "b0ff825af3d938146832790d69ab57db694a1b5f9aac5eaaa2b9fb625cb81a71",
-      "matched": false,
+      "actual": "1c6694f64b0d7f0d31ee2718af4459efe7daf60a5c53d2c73b1aa3265d895640",
+      "matched": true,
       "cache": "HIT"
     },
     {
@@ -963,7 +946,7 @@
       "expected": "f9595ab6810d7f41d64afc0d863514d2777248b6c93d99efd352d81fbc1c7f04",
       "actual": "f9595ab6810d7f41d64afc0d863514d2777248b6c93d99efd352d81fbc1c7f04",
       "matched": true,
-      "cache": "REVALIDATED"
+      "cache": "HIT"
     },
     {
       "url": "https://universalmind.tv/informatics/library.css?v=communities-full-20261030",
@@ -971,7 +954,7 @@
       "expected": "4752f51f4cc3e5ff5527c7517b4562b02af30d22417228195a2e09cf49f9ab05",
       "actual": "4752f51f4cc3e5ff5527c7517b4562b02af30d22417228195a2e09cf49f9ab05",
       "matched": true,
-      "cache": "REVALIDATED"
+      "cache": "HIT"
     },
     {
       "url": "https://universalmind.tv/informatics/library-navigation.js?v=2",
@@ -987,7 +970,7 @@
       "expected": "00df8dc93a90a09af387c5f32830d1dc3f4b994b1941b7cb066e898b56934841",
       "actual": "00df8dc93a90a09af387c5f32830d1dc3f4b994b1941b7cb066e898b56934841",
       "matched": true,
-      "cache": "REVALIDATED"
+      "cache": "HIT"
     },
     {
       "url": "https://universalmind.tv/informatics/library-multiselect.js?v=communities-full-20261030",
@@ -995,7 +978,7 @@
       "expected": "db8347e6f62eacf2de5be242fb8772a1d75a69414e990197ef845c4fafc9a470",
       "actual": "db8347e6f62eacf2de5be242fb8772a1d75a69414e990197ef845c4fafc9a470",
       "matched": true,
-      "cache": "REVALIDATED"
+      "cache": "HIT"
     },
     {
       "url": "https://universalmind.tv/informatics/library-communities.js?v=communities-full-20261030",
@@ -1003,7 +986,7 @@
       "expected": "6bf513a461b401ae70b2541662399623608bf8f2c5ae40d60d914eec3b1bd936",
       "actual": "6bf513a461b401ae70b2541662399623608bf8f2c5ae40d60d914eec3b1bd936",
       "matched": true,
-      "cache": "REVALIDATED"
+      "cache": "HIT"
     },
     {
       "url": "https://universalmind.tv/informatics/library.js?v=a39cfe810876",
@@ -1011,7 +994,7 @@
       "expected": "a39cfe8108763b08a72ce3cea1ff3f395a47e523c7c3c2547bd5df92b582606e",
       "actual": "a39cfe8108763b08a72ce3cea1ff3f395a47e523c7c3c2547bd5df92b582606e",
       "matched": true,
-      "cache": "MISS"
+      "cache": "HIT"
     },
     {
       "url": "https://universalmind.tv/informatics/library.css?v=17",
@@ -1019,7 +1002,7 @@
       "expected": "4752f51f4cc3e5ff5527c7517b4562b02af30d22417228195a2e09cf49f9ab05",
       "actual": "4752f51f4cc3e5ff5527c7517b4562b02af30d22417228195a2e09cf49f9ab05",
       "matched": true,
-      "cache": "MISS"
+      "cache": "HIT"
     },
     {
       "url": "https://universalmind.tv/informatics/connect.css?v=1",
@@ -1027,7 +1010,7 @@
       "expected": "cbcb6f1e30d4eccb374a57547ea9a8f6fba7b22a907cb452b6fc921a7aa6eb35",
       "actual": "cbcb6f1e30d4eccb374a57547ea9a8f6fba7b22a907cb452b6fc921a7aa6eb35",
       "matched": true,
-      "cache": "MISS"
+      "cache": "HIT"
     },
     {
       "url": "https://universalmind.tv/informatics/connect.js?v=2",
@@ -1035,7 +1018,7 @@
       "expected": "1227ae3472159a4ab32abede300b99b4f3cdbf5573373e62a6a76aa9979d5eca",
       "actual": "1227ae3472159a4ab32abede300b99b4f3cdbf5573373e62a6a76aa9979d5eca",
       "matched": true,
-      "cache": "MISS"
+      "cache": "HIT"
     },
     {
       "url": "https://universalmind.tv/informatics/complete-downloads.js?v=fresh-manifest-20261101",
@@ -1043,7 +1026,7 @@
       "expected": "37ed0bfbea745046b89c94132e3c3a781323ca482cbedc5e00b3cd51941a7f5b",
       "actual": "37ed0bfbea745046b89c94132e3c3a781323ca482cbedc5e00b3cd51941a7f5b",
       "matched": true,
-      "cache": "MISS"
+      "cache": "HIT"
     },
     {
       "url": "https://universalmind.tv/informatics/research.css?v=22",
@@ -1091,7 +1074,7 @@
       "expected": "25f3d5261da342d64fefb27a8418abee0c71bf174a8f459b29dbceb77766b332",
       "actual": "25f3d5261da342d64fefb27a8418abee0c71bf174a8f459b29dbceb77766b332",
       "matched": true,
-      "cache": "MISS"
+      "cache": "HIT"
     },
     {
       "url": "https://universalmind.tv/informatics/science.css?v=13",
@@ -1099,7 +1082,7 @@
       "expected": "3b1dc08557873620e70bbce2ad13d4f9526971fcefaeb7e49e3b8216b1f7808f",
       "actual": "3b1dc08557873620e70bbce2ad13d4f9526971fcefaeb7e49e3b8216b1f7808f",
       "matched": true,
-      "cache": "MISS"
+      "cache": "HIT"
     },
     {
       "url": "https://universalmind.tv/informatics/science.js?v=19",
@@ -1107,7 +1090,7 @@
       "expected": "3844b867a860e26cb0bc3113470759d4c49eee886f2d6591376dbf78516b3945",
       "actual": "3844b867a860e26cb0bc3113470759d4c49eee886f2d6591376dbf78516b3945",
       "matched": true,
-      "cache": "MISS"
+      "cache": "HIT"
     },
     {
       "url": "https://universalmind.tv/informatics/molecular/atlas.css?v=d89bcbd76042",
@@ -1171,7 +1154,7 @@
       "expected": "07bf3e90c3b0e9e18dc51ee0557774a536a2a9049c97decd0fa502966bf1c8dc",
       "actual": "07bf3e90c3b0e9e18dc51ee0557774a536a2a9049c97decd0fa502966bf1c8dc",
       "matched": true,
-      "cache": "MISS"
+      "cache": "HIT"
     },
     {
       "url": "https://universalmind.tv/informatics/quantum/reading/links.css",

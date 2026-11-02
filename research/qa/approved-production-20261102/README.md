@@ -1,27 +1,39 @@
-# Approved production release — work in progress
+# Approved production release — 02 November 2026
 
-The approved website source `7ebdb92ac8886af9c81e8616b336a2fecc86989c` was uploaded through the existing Panthur scripts on 2 November 2026. The release remains incomplete. Production main and the final production tag have not advanced because live verification identified the issues below.
+The approved Informatics and scoped I AM release is published and live verification is complete. The release uses approved base `7ebdb92ac8886af9c81e8616b336a2fecc86989c` plus the separately approved I AM history correction and preservation of the already-live wallet CSS at `c878f93169d0bb953e864386dede6c121240e285`. The annotated release tag is `production-2026-11-02-1509`. This record is part of the final production audit commit; the GitHub receipt identifies its hash and confirms remote references.
 
-## Remaining release work
+## Published scope
 
-- Cloudflare cached incomplete responses for archive URLs while upload progress was being checked. All 55 newly published parts pass full SHA256 checks through fresh query URLs (2,470,959,389 bytes). The ordinary canonical URLs still need the approved scoped purge and recheck.
-- The new versioned `shared-experience.js?v=1c6694f64b0d` URL cached the earlier script while source upload was incomplete. It resolves the Research iframe against the wrong path and loses query selection. The uploaded source and a fresh query response are correct. Adding this one URL to the 55 approved purge URLs awaits approval.
-- Browser Back/Forward invoked both the television handler and the generic I AM handler. The generic handler replaced the active media after the earlier test's immediate assertion. Commit `7c62c3665` lets the television handler retain ownership. The stronger browser test waits for each embedded document and checks nested navigation, Back, Forward, and Return TV.
+- Informatics Atlas pages, topic wikis and Markdown/JSON/CSV downloads; canonical chapter URLs, legacy navigation compatibility, portal and main sitemaps, and Events/Festivals discovery.
+- Scoped I AM route and navigation updates, retaining the continuous media environment. The approved correction gives the television route handler sole ownership of Back/Forward while television is open.
+- Existing live wallet rollover CSS preserved from approved production commit `bff911cb19af313c0158ac3f7ef9abc8282a37ab`; no new wallet behavior was introduced.
+- Existing Informatics Worker `informatics-universal-one`, version `58404974-72da-4721-aa9d-9f1371cae6c7`, published through its existing configuration.
 
-The I AM correction is verified on [staging](https://staging.universalmind.tv/iam/tv/) but is not published to production. GitHub staging commit `8bbaa8d36ef96489c14fb7bc9db66aaa58404607` preserves Dot's concurrent work. The isolated candidate branch excludes that unapproved work.
+The existing Panthur scripts performed every website upload. The initial Informatics upload contained 2,361 changed assets and the original I AM upload contained 35 scoped files. The approved correction uploaded 10 I AM files and skipped one matching file, followed by the canonical route documents through `ai-wiki`. Protected owner runtime state remained unchanged.
 
-## Evidence
+## Verification
 
-- Original production upload modes: ai-wiki, informatics, iam-changed, directory, ai-wiki, redirects. Informatics uploaded 2,361 changed files; I AM uploaded 35 scoped files. Owner state remained unchanged.
-- Production HTTP checks: 70 passed. Initial source comparisons: 118 passed, plus five export size checks. Some original comparisons used unversioned URLs; the later versioned-asset scan identified the stale script response. These checks are not a complete production sign-off.
-- Original manifest validation: 13,820 entries matched the approved source. The pre-existing live wallet rollover CSS was investigated separately and preserved in candidate source `c878f9316` from its earlier approved production commit `bff911cb19af313c0158ac3f7ef9abc8282a37ab`.
-- Staging correction: 54 browser checks, zero page errors, 118 final source comparisons using actual versioned URLs, and five export size checks. Chromium ran with process-level audio disabled. Fullscreen ownership was instrumented; native fullscreen was not invoked.
-- Staging assistant: a real request returned HTTP 200 from OpenAI. The assistant message text was compared with the returned answer, including its source citations, and matched. The screenshot records the response in the panel.
-- Production Worker `informatics-universal-one` version `58404974-72da-4721-aa9d-9f1371cae6c7` was deployed through its existing Wrangler configuration. Read-only MCP/A2A checks passed with nine tools. The actual production assistant UI check stopped before sending a request because the stale script prevented the Research frame from loading.
-- Dot's youth review is absent from the source and upload queue. Twelve corresponding public paths returned 403. Public denial does not establish physical absence; source and upload exclusion provide the release scope evidence.
+- 70 production HTTP checks passed for routes, canonical tags, legacy redirects, query filters, maps and discovery links.
+- 54 final production browser checks passed with zero page errors, including Informatics and I AM navigation, retained player identity/source/time, nested I AM routes, browser Back/Forward, Return TV, responsive layouts and direct entry.
+- 118 final production source comparisons passed using the actual versioned assets, plus five archive-part size checks.
+- All 145 requested versioned scripts and styles match the approved source.
+- All 55 canonical archive URLs were streamed and fully SHA256-verified: 2,470,959,389 bytes. No additional binary copies were stored.
+- The production manifest matched 13,820 entries. The native I AM index was checked by live source comparison because the existing manifest shares a root/native index key.
+- A real production assistant request returned HTTP 200 from OpenAI. The exact rendered assistant answer, including citations, matched the response. Staging also passed the full request-and-answer workflow.
+- Read-only MCP/A2A checks passed, including nine tools, quantum summary/methods/measurements, continuation, agent discovery and task listing.
 
-`release-status.json` records the remaining approvals and checks. The failed diagnostics remain here to explain the incomplete status. No final production tag is claimed.
+Media QA ran in dedicated Chromium with process-level audio disabled. Fullscreen ownership was instrumented; native fullscreen was not invoked. Physical-device Safari and subjective sound quality were not tested. Every automated media context was paused and closed.
 
-## Access boundary
+## Cache repair
 
-The deployment OAuth credential can read the zone but cannot purge cache. The five explicitly scoped Keychain service names contained no credential. Cloudflare's hidden dashboard tab is signed out. Automatic approval review rejected broader Keychain enumeration and saved-profile access as outside the approved scope. No broader credential lookup or global cache purge was performed. User sign-in and the two pending approvals are required to finish the outstanding steps.
+Live verification identified incomplete cached archive responses and one stale versioned `shared-experience.js` response. Ben approved the exact 56-URL purge and completed Cloudflare sign-in. Two URL-only dashboard batches (30 and 26 URLs) confirmed success. No global cache purge or Cloudflare configuration change occurred. The canonical binary checks and all versioned-asset checks now pass.
+
+The earlier failure logs remain as historical diagnostics. The authoritative final results are `binary-checksums.json`, `versioned-assets.json`, `live/hashes.json`, `production-final-browser/results.json`, and `assistant/universal-one.json`.
+
+## Concurrent work and audit boundary
+
+Dot's unreviewed youth research and other later staging work were excluded from the production source and upload queues. Twelve youth-review public paths returned 403. That response alone does not prove physical absence; the isolated source and upload manifest establish the exclusion. The staging merge retains the concurrent work. No shared checkout, stash, chat record, or unrelated worktree was reset or deleted.
+
+Staging proof: https://staging.universalmind.tv/iam/tv/
+
+Production: https://universalmind.tv/informatics/ and https://universalmind.tv/iam/tv/
