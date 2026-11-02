@@ -28,9 +28,9 @@ let reader;
 const errors=[],checks=[];page.on('pageerror',e=>errors.push(e.message));
 async function go(params){
  if(live){
-  if(!page.url().startsWith(base+'/informatics/research/'))await page.goto(base+'/informatics/research/',{waitUntil:'domcontentloaded'});
+  if(!page.url().startsWith(base+'/informatics/research/'))await page.goto(base+'/informatics/research/',{waitUntil:'networkidle'});
   const frame=page.locator('#research-frame');await frame.waitFor({state:'attached'});
-  reader=await (await frame.elementHandle()).contentFrame();await reader.goto(base+'/informatics/library.html?embedded=1&'+params,{waitUntil:'networkidle'});
+  reader=await (await frame.elementHandle()).contentFrame();await reader.locator('[data-stat="papers"]').waitFor({timeout:30000});await reader.goto(base+'/informatics/library.html?embedded=1&'+params,{waitUntil:'networkidle'});
  }else{await page.goto(base+'/__youth-reader-test?'+params,{waitUntil:'networkidle'});reader=await (await page.locator('#research-frame').elementHandle()).contentFrame();}
  await reader.locator('[data-stat="papers"]').waitFor({timeout:15000}).catch(async error=>{console.error(JSON.stringify({url:page.url(),errors,body:(await reader.locator('body').innerText()).slice(0,600)}));throw error;});assert.ok(await reader.locator('#load-error').isHidden());}
 async function count(n){const text=await reader.locator('#result-count').innerText();assert.match(text.replaceAll(',',''),new RegExp('^'+n+' papers?'),JSON.stringify(await reader.evaluate(()=>({url:location.href,context:window.UniversalResearchContext()}))));}

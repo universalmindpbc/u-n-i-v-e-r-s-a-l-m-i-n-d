@@ -20,8 +20,8 @@
     },
     {
       "path": "tools/check-youth-integration-browser.mjs",
-      "bytes": 11725,
-      "sha256": "b8d682aacd9cb5ac86ed8d44850c7c28e356b542868e53a61d582915305329a4"
+      "bytes": 11790,
+      "sha256": "36959b4c3099741673838263310d97ffb21d97c186f3e6d819896574af5c6271"
     }
   ]
 }
