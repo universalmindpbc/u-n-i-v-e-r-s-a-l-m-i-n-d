@@ -64,11 +64,9 @@ body[data-night="true"] .intro h1{color:#e1ebe4}body[data-night="true"] .wordmar
 :root{--lab-bolt-gold:#f3da4f}
 .mindfulness-line{white-space:nowrap;letter-spacing:.04em!important;font-size:12px!important;font-weight:650!important;line-height:1.4}
 .mindfulness-line span:nth-child(4n+1){color:#156a9c}.mindfulness-line span:nth-child(4n+2){
-  color:var(--lab-bolt-gold);
-  -webkit-text-stroke:.11em #243c43;
-  paint-order:stroke fill;
+  color:#d6b000;
 }.mindfulness-line span:nth-child(4n+3){color:#b8367c}.mindfulness-line span:nth-child(4n){color:#277b49}
-body[data-night="true"] .mindfulness-line span:nth-child(4n+1){color:#75caff}body[data-night="true"] .mindfulness-line span:nth-child(4n+2){color:#ffe36d;-webkit-text-stroke:0}body[data-night="true"] .mindfulness-line span:nth-child(4n+3){color:#ff95ce}body[data-night="true"] .mindfulness-line span:nth-child(4n){color:#8ce5ae}
+body[data-night="true"] .mindfulness-line span:nth-child(4n+1){color:#75caff}body[data-night="true"] .mindfulness-line span:nth-child(4n+2){color:#ffe36d}body[data-night="true"] .mindfulness-line span:nth-child(4n+3){color:#ff95ce}body[data-night="true"] .mindfulness-line span:nth-child(4n){color:#8ce5ae}
 
 .mindfulness-line{position:relative}
 .mindfulness-line > span{display:inline-block;--word-index:0}

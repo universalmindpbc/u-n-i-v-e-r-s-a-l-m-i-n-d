@@ -663,3 +663,5 @@ Events retains the centred flower, Fibonacci rain and small Informatics serif ty
 Keep **electronic music and fashion as mindfulness** level and stationary after a soft, word-by-word fade. Replace the bouncing letter treatment with a fine waveform beneath the text. A slow travelling pulse conveys sound, frequencies and biometrics symbolically. The visual direction is cinematic, technical and restrained, following Ben’s Raytheon, Netflix, Garmin Institute and Apple references. Preserve the approved blue, yellow-gold, pink and green word colours in day and night views.
 
 The signal is decorative, with no claim of a live sensor connection. Its motion respects the existing Motion control and reduced-motion preference. Keep the text fully readable when motion is disabled.
+
+Ben approved the waveform. The tagline uses clean colour fills only. Use a saturated yellow-gold in daylight and the existing luminous gold at night. Do not add text outlines, drop shadows or glows to this treatment. Do not introduce drop shadows in future design revisions without Ben's explicit direction.
