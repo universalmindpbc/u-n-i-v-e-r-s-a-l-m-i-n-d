@@ -13,12 +13,18 @@ export const orbitShots=[
 ];
 const smooth=t=>t*t*t*(t*(t*6-15)+10);
 const cubic=(a,b,c,d,t)=>.5*((2*b)+(-a+c)*t+(2*a-5*b+4*c-d)*t*t+(-a+3*b-3*c+d)*t*t*t);
-export function orbitPose(seconds,mobile=false){
+export function mobileOverviewPose(portrait=false,height=647){
+ if(!portrait)return {position:[102,90,134],target:[-1,0,0]};
+ // Pull back 30% and reserve sky above the forest for the portrait headline.
+ const lift=Math.max(20,28+(647-height)*.16);
+ return {position:[132.9,117+lift,174.2],target:[-1,lift,0]};
+}
+export function orbitPose(seconds,mobile=false,portrait=false,height=647){
  const time=Math.max(0,Math.min(24,seconds));let i=0;
  while(i<orbitShots.length-2&&time>orbitShots[i+1].t)i++;
  const b=orbitShots[i],c=orbitShots[i+1],a=orbitShots[Math.max(0,i-1)],d=orbitShots[Math.min(orbitShots.length-1,i+2)],u=smooth((time-b.t)/(c.t-b.t));
  const target=b.target.map((n,k)=>cubic(a.target[k],n,c.target[k],d.target[k],u));
  const position=b.position.map((n,k)=>cubic(a.position[k],n,c.position[k],d.position[k],u));
- if(mobile){const wide=smooth(Math.max(0,(time-18.5)/5.5)),end=orbitShots.at(-1),mobileEnd=[102,90,134];for(let k=0;k<3;k++){const expandedEnd=end.target[k]+(end.position[k]-end.target[k])*1.15;position[k]=target[k]+(position[k]-target[k])*1.15+(mobileEnd[k]-expandedEnd)*wide;}}
+ if(mobile){const wide=smooth(Math.max(0,(time-18.5)/5.5)),end=orbitShots.at(-1),mobileEnd=mobileOverviewPose(portrait,height);for(let k=0;k<3;k++){const expandedEnd=end.target[k]+(end.position[k]-end.target[k])*1.15;position[k]=target[k]+(position[k]-target[k])*1.15+(mobileEnd.position[k]-expandedEnd)*wide;target[k]+=(mobileEnd.target[k]-end.target[k])*wide;}}
  return {position,target,shot:u<.5?b.shot:c.shot};
 }

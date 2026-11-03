@@ -20,7 +20,7 @@ assert.ok(js.includes('prefers-reduced-motion') && js.includes('webglcontextlost
 assert.ok(css.includes('@media(max-width:600px)'));
 assert.doesNotMatch(html + js, /<audio|<iframe|<form|type="email"/);
 assert.doesNotMatch(html + js, /src="https?:\/\/|fetch\(|localStorage|sessionStorage/);
-assert.ok(html.includes('headspace.org.au/eora') && html.includes('Proposal'));
+assert.ok(html.includes('headspace.org.au/eora') && html.includes('About'));
 assert.doesNotMatch(html + js, /A place to become|Room to connect|Under one shared roof|A world of possibility|Meaningful connection/);
 const manifest = JSON.parse(read('documents/universal-mind-lab/reference-manifest.json'));
 assert.equal(manifest.records.length, 49);

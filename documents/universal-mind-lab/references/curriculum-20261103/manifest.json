@@ -1,0 +1,19 @@
+{
+  "received": "2026-11-03",
+  "records": [
+    {
+      "file": "IMG_2495.JPG",
+      "description": "Main dome curriculum diagram",
+      "source": "/Users/benkorbel/Downloads/IMG_2495.JPG",
+      "bytes": 5459902,
+      "sha256": "a31a3fcc9347eb5778064b8b2aeb825fa5ea875d996bbb5eae5e2666f57a8520"
+    },
+    {
+      "file": "IMG_2496.JPG",
+      "description": "About day order",
+      "source": "/Users/benkorbel/Downloads/IMG_2496.JPG",
+      "bytes": 6783262,
+      "sha256": "79f4a05047561053e583ac0a0ddd1df9187a2affbcb5b40fc4ab1f2f5c79ee32"
+    }
+  ]
+}

@@ -1,5 +1,6 @@
 import { icon } from './icons.mjs?v=20261103mobile1';
-import { orbitPose } from './orbit.mjs?v=20261103orbit1';
+import { orbitPose, mobileOverviewPose } from './orbit.mjs?v=20261103portrait1';
+import { createActivities } from './activities.mjs?v=20261103activities1';
 import { createPerformance } from './performance.mjs?v=20261103orbit1';
 import { initMedia } from './media.mjs?v=20261103mobile1';
 import { createStory, ORBIT_START, STORY_END } from './story.mjs?v=20261103orbit1';
@@ -7,6 +8,7 @@ const $ = (id) => document.getElementById(id);
 const reduced = matchMedia('(prefers-reduced-motion: reduce)');
 const compactLayout = matchMedia('(max-width: 800px), (max-width: 1000px) and (pointer: coarse)');
 const mobile = () => compactLayout.matches;
+const portraitMobile = () => mobile() && $('world').clientHeight > $('world').clientWidth;
 const status = (message) => { $('scene-status').textContent = message; };
 const places = {
   overview: { number: '01 · THE CLEARING', title: 'The clearing', copy: 'An open green space for creative learning, emotional awareness and connection. Music, fashion and mindfulness bring people together, with support close at hand.' },
@@ -38,7 +40,7 @@ function selectPlace(key, show = true, automated = false) {
   $('place-title').textContent = info.title;
   $('place-copy').textContent = info.copy;
   if(key!=='overview')emotionPanel(false);
-  $('interior-view').hidden=key!=='main';
+  $('interior-view').hidden=key!=='main';$('learn-main').hidden=key!=='main';
   $('place-card').hidden = !show || key === 'overview' || (automated && mobile());
   if (mode === '3d') sceneAPI?.go(key);
   status(info.title + ' ' + info.copy);
@@ -68,6 +70,12 @@ $('labels-toggle').addEventListener('click', () => {
 document.querySelector('.landing-name').addEventListener('click',()=>$('vision').showModal());
 $('about-open').addEventListener('click', () => $('vision').showModal());
 $('about-close').addEventListener('click', () => $('vision').close());
+let learningFromAbout=false;
+for(const id of ['learn-main','learn-about'])$(id).addEventListener('click',()=>{stopTour();learningFromAbout=$('vision').open;if(learningFromAbout)$('vision').close();$('learning').showModal();});
+$('learning').addEventListener('close',()=>{if(learningFromAbout){learningFromAbout=false;$('vision').showModal();$('learn-about').focus();}});
+$('learn-close').addEventListener('click',()=>$('learning').close());
+$('learning').addEventListener('click',e=>{if(e.target===$('learning')){const r=e.target.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)e.target.close();}});
+
 $('vision').addEventListener('click', (e) => { if (e.target === $('vision')) { const r = e.target.getBoundingClientRect(); if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) e.target.close(); } });
 
 // Both fullscreen and playback begin synchronously in the Explore gesture.
@@ -171,7 +179,7 @@ syncFullscreen();
 
 async function buildWorld() {
   const THREE = await import('three');
-  const [{OrbitControls},{createArchitecture},{createSiteFeatures},{createCrowd,createRunwayCrowd},{createLightShow},{createRunway}]=await Promise.all([import('./vendor/OrbitControls.js'),import('./architecture.mjs?v=20261103orbit1'),import('./site-features.mjs?v=20261103orbit1'),import('./crowd.mjs?v=20261103orbit1'),import('./light-show.mjs?v=20261103orbit1'),import('./runway.mjs?v=20261103orbit1')]);
+  const [{OrbitControls},{createArchitecture},{createSiteFeatures},{createCrowd,createRunwayCrowd},{createLightShow},{createRunway}]=await Promise.all([import('./vendor/OrbitControls.js'),import('./architecture.mjs?v=20261103activities1'),import('./site-features.mjs?v=20261103orbit1'),import('./crowd.mjs?v=20261103orbit1'),import('./light-show.mjs?v=20261103orbit1'),import('./runway.mjs?v=20261103orbit1')]);
   const architecture=createArchitecture(THREE);
   let seed = 1947;
   const random = () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; };
@@ -196,7 +204,7 @@ async function buildWorld() {
   controls.enableDamping = !reduced.matches;
   controls.dampingFactor = 0.08;
   controls.minDistance = 12;
-  controls.maxDistance = mobile() ? 240 : 155;
+  controls.maxDistance = portraitMobile() ? 310 : mobile() ? 240 : 155;
   controls.minPolarAngle = 0.1;
   controls.maxPolarAngle = Math.PI * 0.485;
   controls.maxTargetRadius = 100;
@@ -336,6 +344,7 @@ async function buildWorld() {
   const features=createSiteFeatures(THREE,scene,$('music-video'),architecture,$('stage-geometry-video'));
   const crowd=createCrowd(THREE),runwayCrowd=createRunwayCrowd(THREE),runway=createRunway(THREE,scene,features.videoMap);scene.add(crowd.builders,crowd.visitors,runwayCrowd.group);
   const performanceStage=createPerformance(THREE);scene.add(performanceStage.group);
+  const activities=createActivities(THREE,architecture);scene.add(activities.group);
   crowd.visitors.traverse(o=>{if(o.isInstancedMesh)o.userData.fullCount=o.count;});
   const contextStart=scene.children.length;
   // Contextual proposal identities: physical flags, a vehicle and a staff uniform.
@@ -373,7 +382,7 @@ async function buildWorld() {
     mesh(geometry,new THREE.MeshStandardMaterial({map:brandTexture(key,true),roughness:.96,side:THREE.DoubleSide}),group);
     return group;
   }
-  flag('headspace',-27,-17.5,2.65);flag('msf',-40,-22,2.65);flag('flower',12.6,-1,.55);flag('education',-7.6,30,.6);flag('apple',25,5);flag('vogue',7.6,30,-.6);
+  flag('headspace',-28.5,-26.5,.55);flag('msf',-40,-22,2.65);flag('flower',12.6,-1,.55);flag('education',-7.6,30,.6);flag('apple',25,5);flag('vogue',7.6,30,-.6);
   const messagePalette=['#5ab8f5','#f7da59','#f486c3','#8edcb0'];
   const messagePlacements=[['Peace',-10,40,.4],['Love',16,31,-.5],['Unity',-14,16,.3],['Respect',29,18,-.5],['PLUR',-18,-17,.4],['This Too Shall Pass',18,-30,.3],['Kindness',-28,-30,.4],['Namaste',30,-4,-.45]];
   for(const [i,[text,x,z,angle]] of messagePlacements.entries()){
@@ -390,7 +399,7 @@ async function buildWorld() {
     const mark=mesh(new THREE.PlaneGeometry(w,h),new THREE.MeshStandardMaterial({map:brandMaps[key],transparent:true,depthWrite:false,roughness:1,side:THREE.DoubleSide,polygonOffset:true,polygonOffsetFactor:-1}),parent);
     mark.position.set(x,y,z);mark.rotation.y=rotation;mark.castShadow=false;return mark;
   }
-  const booth=new THREE.Group();booth.name='Proposed headspace welcome booth';booth.position.set(-34,0,-22);booth.rotation.y=.45;scene.add(booth);
+  const booth=new THREE.Group();booth.name='Proposed headspace welcome booth';booth.position.set(-36.8,0,-23.4);booth.rotation.y=.45;scene.add(booth);
   const counter=mesh(new THREE.BoxGeometry(2.6,1.05,.85),mats.timber,booth);counter.position.y=.525;
   const sign=mesh(new THREE.BoxGeometry(1.7,.38,.05),new THREE.MeshStandardMaterial({color:'#f5f4eb',roughness:1}),booth);sign.position.set(0,.63,.45);decal('headspace',1.5,.34,booth,0,.63,.48);
   const staff=new THREE.Group();staff.name='Illustrative headspace staff figure';staff.position.set(-28.8,.08,-16.7);staff.rotation.y=.55;scene.add(staff);
@@ -423,7 +432,7 @@ async function buildWorld() {
     food:{pos:[11,23,43],target:[-20,2,11]},
     play:{pos:[0,8,45],target:[-17,1.6,31]},
     river:{pos:[32,5,23],target:[23,1.7,10]},
-    support:{pos:[-21,13,-37],target:[-33,2,-18]},
+    support:{pos:[-25,7,-12],target:[-33.7,1.1,-23.2]},
     fashion:{pos:[16,9,46],target:[0,1.5,23]}
   };
   const nightLights=[];
@@ -450,7 +459,7 @@ async function buildWorld() {
     currentStory={...value};
     for(const [key,g] of Object.entries(buildings)){const p=value[key]||0;g.visible=p>0;buildPlanes[key].constant=p>=1?100:Math.max(.1,p*8.7);}
     contextDecor.visible=value.programme>0;paths.visible=value.seconds>=16;runway.setVisible(value.furniture>0);runwayCrowd.group.visible=value.programme>0;
-    features.setStory(value);setNight(value.night);setResponse(responseLevel);crowd.builders.visible=value.seconds>6&&value.seconds<29;crowd.visitors.visible=value.programme>0;performanceStage.group.visible=value.programme>=1;
+    features.setStory(value);activities.setStory(value);setNight(value.night);setResponse(responseLevel);crowd.builders.visible=value.seconds>6&&value.seconds<29;crowd.visitors.visible=value.programme>0;performanceStage.group.visible=value.programme>=1;
     crowd.visitors.traverse(o=>{if(o.isInstancedMesh)o.count=Math.floor(70*value.programme)*(o.userData.fullCount/70);});
     document.body.dataset.revealed=Object.keys(buildings).filter(k=>value[k]>=1).join(',');
     document.querySelectorAll('#place-list,.view-tools').forEach(e=>e.inert=!value.navigation);
@@ -468,17 +477,17 @@ async function buildWorld() {
 
   function go(key,instant=false){
     const p=presets[key];const end=new THREE.Vector3(...p.pos),target=new THREE.Vector3(...p.target);
-    if(mobile()&&key==='overview'){end.set(102,90,134);target.set(-1,0,0);}else if(mobile()){end.sub(target).multiplyScalar(1.5).add(target);}
+    if(mobile()&&key==='overview'){const pose=mobileOverviewPose(portraitMobile(),$('world').clientHeight);end.fromArray(pose.position);target.fromArray(pose.target);}else if(mobile()){end.sub(target).multiplyScalar(1.5).add(target);}
     if(instant||reduced.matches){camera.position.copy(end);controls.target.copy(target);controls.update();tween=null;}else{tween={start:performance.now(),from:camera.position.clone(),fromTarget:controls.target.clone(),to:end,target};}
     needsFrame=true;requestFrame();
   }
   function orbit(seconds){
-    const pose=orbitPose(seconds,mobile());tween=null;controls.enableDamping=false;
+    const pose=orbitPose(seconds,mobile(),portraitMobile(),$('world').clientHeight);tween=null;controls.enableDamping=false;
     camera.position.fromArray(pose.position);controls.target.fromArray(pose.target);controls.update();controls.enableDamping=!reduced.matches;
     document.body.dataset.orbitShot=pose.shot;document.body.dataset.cameraPosition=camera.position.toArray().map(n=>n.toFixed(2)).join(',');
     needsFrame=true;requestFrame();
   }
-  function resize(){const w=$('world').clientWidth,h=$('world').clientHeight;camera.aspect=w/h;camera.fov=mobile()?50:41;controls.maxDistance=mobile()?240:155;scene.fog.near=mobile()?205:115;scene.fog.far=mobile()?390:255;camera.updateProjectionMatrix();renderer.setSize(w,h);needsFrame=true;if(selected==='overview')go('overview',true);requestFrame();}
+  function resize(){const w=$('world').clientWidth,h=$('world').clientHeight;camera.aspect=w/h;camera.fov=mobile()?50:41;controls.maxDistance=portraitMobile()?310:mobile()?240:155;scene.fog.near=mobile()?205:115;scene.fog.far=mobile()?390:255;camera.updateProjectionMatrix();renderer.setSize(w,h);needsFrame=true;if(selected==='overview')go('overview',true);requestFrame();}
   addEventListener('resize',resize);
   controls.addEventListener('start',()=>{tween=null;stopTour();lineupDismissed=true;syncLineup();});
   controls.addEventListener('change',()=>{needsFrame=true;requestFrame();});
@@ -494,6 +503,7 @@ async function buildWorld() {
     raf=0;if(!visible||document.hidden)return;
     const waterMoving=entered&&media.motionEnabled();if(waterMoving&&lastWaterFrame)waterTime+=Math.min(.05,Math.max(0,(t-lastWaterFrame)/1000));lastWaterFrame=t;
     if(features.update(motionTime,t)){needsFrame=true;}
+    if(activities.update(waterTime,waterMoving&&!reduced.matches))needsFrame=true;
     crowd.update(musicMotion?motionTime:t*.001,{construction:currentStory.construction,dancing:musicMotion,visible:currentStory.seconds>6,night:currentStory.night});performanceStage.update(motionTime,musicMotion);lightShow.update(motionTime);runwayCrowd.update(motionTime,{moving:musicMotion,visible:runwayCrowd.group.visible});
     if(tween){const a=Math.min(1,(t-tween.start)/1250),ease=a*a*(3-2*a);camera.position.lerpVectors(tween.from,tween.to,ease);controls.target.lerpVectors(tween.fromTarget,tween.target,ease);if(a===1)tween=null;needsFrame=true;}
     controls.update();
@@ -519,7 +529,7 @@ async function buildWorld() {
   reduced.addEventListener('change',()=>{controls.enableDamping=!reduced.matches;needsFrame=true;requestFrame();});
   canvas.addEventListener('webglcontextlost',(e)=>{e.preventDefault();setMode('plan');status('The 3D view paused. The 2D site plan remains available.');});
   go('overview',true);resize();
-  return {go,orbit,setNight,setStory,setResponse,setRain,setLayout,setMusicMotion,setVisible(v){visible=v;if(!v){cancelAnimationFrame(raf);raf=0;}else{needsFrame=true;requestFrame();}},stats(){return {triangles:renderer.info.render.triangles,calls:renderer.info.render.calls,trees:treeList.length,...features.stats};}};
+  return {go,orbit,setNight,setStory,setResponse,setRain,setLayout,setMusicMotion,setVisible(v){visible=v;if(!v){cancelAnimationFrame(raf);raf=0;}else{needsFrame=true;requestFrame();}},stats(){return {triangles:renderer.info.render.triangles,calls:renderer.info.render.calls,trees:treeList.length,...features.stats,...activities.stats};}};
 }
 
 try {

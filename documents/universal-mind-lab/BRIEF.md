@@ -665,3 +665,24 @@ Keep **electronic music and fashion as mindfulness** level and stationary after 
 The signal is decorative, with no claim of a live sensor connection. Its motion respects the existing Motion control and reduced-motion preference. Keep the text fully readable when motion is disabled.
 
 Ben approved the waveform. The tagline uses clean colour fills only. Use a saturated yellow-gold in daylight and the existing luminous gold at night. Do not add text outlines, drop shadows or glows to this treatment. Do not introduce drop shadows in future design revisions without Ben's explicit direction.
+
+## Readable overview and populated activity areas — 3 November 2026
+
+- Portrait phones open farther back, with extra sky above the forest so the large headline stays clear. Replay and the final camera return use the same portrait framing; mobile landscape keeps its existing framing.
+- Daytime headline and artist marks use charcoal on a continuous cream sky field, separating the text from moving foliage. Preserve the approved gold words and waveform. No text shadows, logo shadows or outlines are added. The reading field clears for close-up views and the cinematic circuit, and for night mode; an explicitly displayed lineup retains its reading field in daytime.
+- The headspace support space contains three darker-skinned children sitting cross-legged in meditation, one child in downward-facing dog, and a nearby doctor in a lab coat with a visible stethoscope. Move the welcome counter and flag clear of the activity, and view the group from the open side of the shelter.
+- Three children slide along a smooth ribbon on the sculptural playground. The adjacent rotunda contains three children seated in its Moroso chairs, holding phones and making music together. Animated waveforms link the phones; device screens and a shared 16-step beat grid communicate collaborative beat-making.
+- Figures and activities appear after the facilities are assembled. The animation follows the Motion control and reduced-motion setting. These are fictional scene figures for the proposal.
+
+
+## Learning, daily programme and brand presence — 3 November 2026
+
+- Rename the interface action from Proposal to **About**. Preserve the approved About copy, including **dissolving stigma**, and the single footer statement identifying proposed artists and partners.
+- Add the day order to About: **Dining experience → Leisure → Workshops → Rave**. The rave is a concert with DJs, bands and artists, together as one.
+- Open **What you’ll learn** from the main pavilion card and About. This placement was selected by Ben; keep the existing scene toolbar compact.
+- Use a diagram with electronic music making, fashion design and mindfulness connected around **STEAM workshops**. Expand STEAM as science, technology, engineering, arts and mathematics. Retain: **Responding to live cinema, TV and advertising briefs, together as one.**
+- Include resilience training, nervous system regulation, self-awareness, empathy training / EQ, EMDR, sound, mantra, creativity and mindfulness of the body through yoga. The diagram and practices open within the current experience, with readable contrast and internal scrolling on phones.
+- Alternate **Next Generation Lab for Next Generation Humans** and **Together, let’s beat as one.** every eight seconds with a restrained opacity crossfade. Lettering remains level and stationary; the headline footprint stays fixed. Respect reduced motion and the Motion control.
+- Place the Universal Mind flower to the left of the Universal Mind Lab wordmark at desktop and phone sizes. Preserve the existing wordmark spacing and emphasis.
+- Place a 360-degree speaker at the centre of the phone music-making table. Subtle expanding rings show its output, with shared beat pads arranged around it and animated waveforms connecting the devices.
+- The two original curriculum and day-order sketches are archived in `references/curriculum-20261103/` with a separate source manifest, preserving the earlier reference register.

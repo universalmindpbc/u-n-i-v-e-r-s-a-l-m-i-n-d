@@ -150,6 +150,15 @@ export function createArchitecture(THREE) {
       q*(1.6+Math.sin(Math.PI*u))+1.2*Math.sin(Math.PI*2*u)];
   };
   const playGeometry=closedShell(playProfile,{uSteps:80,vSteps:24,thickness:.18,textureScale:[2,2]});
+  const slidePoint=t=>{const p=playProfile(.48+.52*t,.17);p[1]+=.055;return p;};
+  const slideVertices=[],slideIndices=[],slideEdges=[[],[]];
+  for(let i=0;i<=48;i++){
+    const t=i/48,p=slidePoint(t),a=slidePoint(Math.max(0,t-.001)),b=slidePoint(Math.min(1,t+.001));
+    const angle=Math.atan2(b[2]-a[2],b[0]-a[0]),nx=-Math.sin(angle)*.48,nz=Math.cos(angle)*.48;
+    for(const [j,side] of [-1,1].entries()){slideVertices.push(p[0]+side*nx,p[1],p[2]+side*nz);slideEdges[j].push(new THREE.Vector3(p[0]+side*nx,p[1]+.075,p[2]+side*nz));}
+    if(i<48){const n=i*2;slideIndices.push(n,n+2,n+1,n+1,n+2,n+3);}
+  }
+  const slideGeometry=new THREE.BufferGeometry();slideGeometry.setAttribute('position',new THREE.Float32BufferAttribute(slideVertices,3));slideGeometry.setIndex(slideIndices);slideGeometry.computeVertexNormals();
   const rainbowColours=[],playPositions=playGeometry.getAttribute('position'),tint=new THREE.Color();
   for(let i=0;i<playPositions.count;i++){
     const t=(playPositions.getX(i)+5.5)/11;
@@ -173,6 +182,7 @@ export function createArchitecture(THREE) {
   }
   return {
     roofHeight,
+    slidePoint,
     mainVault(){
       const group=object(vaultGeometry,[vaultOutside,vaultInside,layeredEdge],'Droneport-derived four-contact vault');
       group.userData.dimensions={width:22.6,depth:18.4,height:8.04,nominalShellThickness:.24};
@@ -194,6 +204,9 @@ export function createArchitecture(THREE) {
         treads.setMatrixAt(i,dummy.matrix);
       }
       treads.name='Timber route markers';treads.castShadow=true;treads.receiveShadow=true;group.add(treads);
+      const slideMaterial=new THREE.MeshStandardMaterial({color:'#b8dfe0',metalness:.65,roughness:.24,side:THREE.DoubleSide});
+      const slide=new THREE.Mesh(slideGeometry,slideMaterial);slide.name='Smooth sliding ribbon';slide.receiveShadow=true;group.add(slide);
+      for(const edge of slideEdges){const rail=new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(edge),64,.075,8,false),slideMaterial);rail.name='Rounded slide edge';rail.castShadow=true;group.add(rail);}
       group.userData.dimensions=dimensions(playGeometry,1,.18);group.userData.engineered=false;
       group.userData.use='Visual play landscape concept; access and fall protection remain design work';
       return group;
