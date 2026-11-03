@@ -1,0 +1,111 @@
+{
+  "live": true,
+  "source": "20261103tagline1",
+  "processMuted": true,
+  "playbackBlocked": true,
+  "nativeFullscreenDisabled": true,
+  "checks": [
+    {
+      "viewport": {
+        "width": 393,
+        "height": 696
+      },
+      "dayGold": "rgb(243, 218, 79)",
+      "nightGold": "rgb(255, 227, 109)",
+      "intro": [
+        {
+          "delay": 0,
+          "opacity": 0.955502,
+          "rippleDelay": 900
+        },
+        {
+          "delay": 90,
+          "opacity": 0.769385,
+          "rippleDelay": 1060
+        },
+        {
+          "delay": 180,
+          "opacity": 0.488349,
+          "rippleDelay": 1220
+        },
+        {
+          "delay": 270,
+          "opacity": 0.134819,
+          "rippleDelay": 1380
+        },
+        {
+          "delay": 360,
+          "opacity": 0,
+          "rippleDelay": 1540
+        },
+        {
+          "delay": 450,
+          "opacity": 0,
+          "rippleDelay": 1700
+        }
+      ],
+      "rippleOffsets": [
+        -1.4,
+        -0.9773,
+        -0.163602,
+        0,
+        0,
+        0
+      ],
+      "motionToggle": true,
+      "reducedMotionStatic": true
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "dayGold": "rgb(243, 218, 79)",
+      "nightGold": "rgb(255, 227, 109)",
+      "intro": [
+        {
+          "delay": 0,
+          "opacity": 0.955502,
+          "rippleDelay": 900
+        },
+        {
+          "delay": 90,
+          "opacity": 0.769385,
+          "rippleDelay": 1060
+        },
+        {
+          "delay": 180,
+          "opacity": 0.488349,
+          "rippleDelay": 1220
+        },
+        {
+          "delay": 270,
+          "opacity": 0.134819,
+          "rippleDelay": 1380
+        },
+        {
+          "delay": 360,
+          "opacity": 0,
+          "rippleDelay": 1540
+        },
+        {
+          "delay": 450,
+          "opacity": 0,
+          "rippleDelay": 1700
+        }
+      ],
+      "rippleOffsets": [
+        -1.68,
+        -1.17276,
+        -0.196322,
+        0,
+        0,
+        0
+      ],
+      "motionToggle": true,
+      "reducedMotionStatic": true
+    }
+  ],
+  "verifiedSourceCommit": "cbe19e94a3ddf6b8873a322e4f5faa71d5924ec7",
+  "verifiedStylesheetSHA256": "3e275e6d0645930875211b90c90c8f4fa3be03ada418952c6147dcf93179729b"
+}
