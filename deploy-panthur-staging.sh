@@ -4,6 +4,20 @@ set -euo pipefail
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 NODE_BIN="${NODE_BIN:-}"
 
+# Lab publishes an independent concept route through the existing Panthur transport.
+if [[ "${1:-}" == "lab" ]]; then
+  export NODE_BIN="${NODE_BIN:-/Users/benkorbel/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node}"
+  "$NODE_BIN" --check "$ROOT_DIR/lab/lab.mjs"
+  "$NODE_BIN" "$ROOT_DIR/tools/check-lab-stage.mjs"
+  export FTP_HOST="${FTP_HOST:-sh00023.pa.smartservers.com.au}"
+  export FTP_USER="${FTP_USER:-stagingdeploy@universalmind.tv}"
+  export FTP_PASS_FILE="${FTP_PASS_FILE:-/private/tmp/um-staging-ftp-pass.txt}"
+  export FTP_KEYCHAIN_SERVICE="${FTP_KEYCHAIN_SERVICE:-universalmind-staging-ftp}"
+  export REMOTE_ROOT=""
+  export MANIFEST_FILE="${MANIFEST_FILE:-$ROOT_DIR/.panthur-staging-deploy-manifest.tsv}"
+  exec "$ROOT_DIR/deploy-panthurlive.sh" lab
+fi
+
 # The patent route has a scoped preflight and uses the same Panthur transport.
 if [[ "${1:-}" == "patent" || "${1:-}" == "patent-configure" || "${1:-}" == "patent-content" || "${1:-}" == "patent-ai-configure" || "${1:-}" == "patent-receipt" ]]; then
   export NODE_BIN="${NODE_BIN:-/Users/benkorbel/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node}"
@@ -53,6 +67,9 @@ elif [[ "${1:-}" == directory ]]; then
   "$NODE_BIN" --check "$ROOT_DIR/home/directory-rain.js"
   "$NODE_BIN" --check "$ROOT_DIR/home/entry-shell.js"
   if command -v php >/dev/null 2>&1; then php -l "$ROOT_DIR/events/portal-entry.php"; fi
+elif [[ "${1:-}" == informatics ]]; then
+  # Informatics also validates discovery and exports inside its existing deploy scope.
+  for source in "$ROOT_DIR"/Informatics/*.js; do "$NODE_BIN" --check "$source"; done
 elif [[ "${1:-}" == events ]]; then
   for source in "$ROOT_DIR"/events/assets/*.js; do "$NODE_BIN" --check "$source"; done
   if command -v php >/dev/null 2>&1; then

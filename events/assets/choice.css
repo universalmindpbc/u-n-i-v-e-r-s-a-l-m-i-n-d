@@ -1,0 +1,26 @@
+/* Match the Universal Informatics landing typography, flower and rain treatment. */
+.event-choice{margin:0;min-height:100svh;background:#000;color:#e5e8e8;font-family:'Bodoni 72',Didot,'Times New Roman',serif;color-scheme:dark;isolation:isolate}.event-choice *{box-sizing:border-box}
+.choice-rain,.choice-shade{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:-2}.choice-rain{opacity:.96}.choice-shade{z-index:-1;background:radial-gradient(ellipse at center,#000c 0%,#0005 30%,transparent 65%)}
+.choice-header{position:absolute;inset:0 0 auto;z-index:2;padding:24px clamp(24px,4.2vw,64px);display:flex;justify-content:space-between;align-items:center}.choice-home{display:flex;gap:12px;align-items:center;min-height:44px;color:#b6b8b9;text-decoration:none;font:11px monospace;letter-spacing:.08em}.choice-fullscreen{margin-left:auto;width:44px;height:44px;padding:12px;background:transparent;border:0;color:#b6b8b9;cursor:pointer}.choice-fullscreen svg{width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:1.5}.choice-fullscreen[hidden]{display:none}
+.choice-main{min-height:100svh;display:grid;place-items:center;padding:90px 24px}.choice-main>h1{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.event-options{width:min(100%,520px);display:grid;grid-template-rows:1fr 94px 1fr;gap:38px;text-align:center;background:radial-gradient(ellipse,#000e 0%,#000b 30%,#0006 54%,transparent 78%)}
+.choice-flower{display:block;width:94px;height:94px;object-fit:contain;justify-self:center;align-self:center}
+.event-option{display:flex;justify-content:center;text-decoration:none;color:inherit}.event-option--lab{align-items:flex-end}.event-option--festival{align-items:flex-start}
+.event-copy h2{font-family:'Bodoni 72',Didot,'Times New Roman',serif;font-size:clamp(16px,2.3vw,20px);font-weight:400;letter-spacing:.32em;line-height:1.7;margin:0 0 10px;padding-left:.32em}
+.event-copy p{font:11px/1.7 monospace;color:#aaa;margin:0 0 21px;max-width:44ch}
+.event-action{display:inline-flex;justify-content:center;align-items:center;min-height:44px;border:1px solid #ffffffb8;border-radius:0;padding:12px 25px;background:#fff;color:#000;font:11px/1.2 Arial,Helvetica,sans-serif;letter-spacing:.2em;transition:background .2s,color .2s}
+.event-option:hover .event-action,.event-option:focus-visible .event-action{background:transparent;color:#fff}.event-option:focus-visible{outline:none}.event-option:focus-visible .event-action,.choice-home:focus-visible,.choice-fullscreen:focus-visible{outline:1px solid #fff;outline-offset:6px}
+@media(max-width:640px){.choice-header{padding:16px 24px}.choice-main{padding:80px 20px}.event-options{grid-template-rows:1fr 82px 1fr;gap:32px}.choice-flower{width:82px;height:82px}.event-copy h2{font-size:16px;letter-spacing:.22em;padding-left:.22em}.event-copy p{font-size:10px;max-width:32ch;margin:0 auto 18px}.event-action{font-size:10px;padding:12px 20px}}
+@media(max-height:600px) and (min-width:641px){.choice-header{padding:12px 24px}.choice-main{padding:72px 24px}.event-options{width:min(100%,920px);grid-template-columns:minmax(0,1fr) 94px minmax(0,1fr);grid-template-rows:1fr;gap:26px;align-items:center}.event-option--lab,.event-option--festival{align-items:center}.event-copy h2{font-size:16px;letter-spacing:.22em}.event-copy p{font-size:10px;max-width:30ch;margin:0 auto 20px}.event-action{font-size:10px;padding:12px 18px}}
+@media(prefers-reduced-motion:reduce){.event-action{transition:none}}
+.events-return{position:fixed;z-index:35;top:28px;left:90px;color:#fff;font:14px/1.2 "Helvetica Neue",Helvetica,sans-serif;text-decoration:none;display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:10px 14px;border:1px solid #ffffff40;border-radius:24px;background:#0006;backdrop-filter:blur(12px)}
+.events-return:hover{background:#000a}
+body:has(#film-view:not([hidden])) .events-return,body:has(#about-panel:not([hidden])) .events-return{display:none}
+
+.event-copy h2 strong{font-weight:700;letter-spacing:inherit}
+
+.choice-arrow{width:16px;height:16px;vertical-align:-3px;margin-right:5px}
+.prepared-lab{position:fixed;inset:0;width:100%;height:100%;height:100dvh;border:0;visibility:hidden;pointer-events:none;z-index:50}
+.event-option[aria-busy="true"]{opacity:.55;cursor:progress}
+body[data-lab-open="true"]>.prepared-lab{visibility:visible;pointer-events:auto}
+body[data-lab-open="true"]>:not(.prepared-lab){visibility:hidden;pointer-events:none}

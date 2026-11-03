@@ -33,6 +33,8 @@ $('#play').textContent=playing?'Ⅱ':'▷';$('#play').setAttribute('aria-label',
 $('#play').onclick=()=>{playing=!playing;if(playing&&elapsed>=total-1)elapsed=0;last=null;render()};$('#replay').onclick=()=>{elapsed=0;playing=true;last=null;render()};document.querySelectorAll('button[data-stage]').forEach(b=>b.onclick=()=>{elapsed=Number(b.dataset.stage)*duration+duration-1;playing=false;render()});
 const film=$('#film'),experience=$('#experience'),launch=$('#launch');
 const M9='fibonacci-m9-p24',initialParams=new URLSearchParams(location.search),initialRoute=window.PortalRoutes?.resolve();
+// Retain deep links even when cached data resolves before the deferred frame bridge.
+if(initialRoute?.id==='research')document.documentElement.dataset.libraryQuery=new URL(initialRoute.href).search;
 if(initialRoute?.portal==='informatics'&&!['home','document'].includes(initialRoute.id)){initialParams.set('area',initialRoute.id);initialParams.set('entry','research');}
 let area='home',resumeAnimation=true,recordId=initialParams.get('record')||M9,recordMode=initialParams.get('record-mode')||((initialParams.get('area')==='geometry'||initialParams.get('atlas')==='1'||recordId!==M9)?'research':'animation'),recordView=location.hash.slice(1);
 const researchFrame=$('#atlas-frame');

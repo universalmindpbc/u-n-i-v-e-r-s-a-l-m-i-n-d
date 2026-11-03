@@ -1,0 +1,180 @@
+{
+  "live": true,
+  "processMuted": true,
+  "mediaStubbed": true,
+  "nativeFullscreenNeverInvoked": true,
+  "checks": [
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "timeline": [
+        {
+          "seconds": 30,
+          "labels": "hidden",
+          "phase": "fitout"
+        },
+        {
+          "seconds": 31,
+          "labels": "visible",
+          "phase": "open"
+        },
+        {
+          "seconds": 34,
+          "labels": "visible",
+          "phase": "dusk"
+        },
+        {
+          "seconds": 36,
+          "labels": "hidden",
+          "phase": "dusk"
+        },
+        {
+          "seconds": 39,
+          "labels": "hidden",
+          "phase": "tour"
+        },
+        {
+          "seconds": 45,
+          "labels": "hidden",
+          "phase": "tour"
+        },
+        {
+          "seconds": 50,
+          "labels": "hidden",
+          "phase": "tour"
+        },
+        {
+          "seconds": 55,
+          "labels": "hidden",
+          "phase": "tour"
+        },
+        {
+          "seconds": 60,
+          "labels": "hidden",
+          "phase": "tour"
+        },
+        {
+          "seconds": 65,
+          "labels": "hidden",
+          "phase": "tour"
+        },
+        {
+          "seconds": 70,
+          "labels": "hidden",
+          "phase": "tour"
+        },
+        {
+          "seconds": 90,
+          "labels": "hidden",
+          "phase": "orbit"
+        },
+        {
+          "seconds": 151,
+          "labels": "hidden",
+          "phase": "complete"
+        }
+      ],
+      "camera": {
+        "position": [
+          0,
+          3.2000000000000006,
+          11.999999999999996
+        ],
+        "target": [
+          2.5000000000000004,
+          2,
+          -12
+        ]
+      },
+      "pageErrors": []
+    },
+    {
+      "viewport": {
+        "width": 393,
+        "height": 647
+      },
+      "timeline": [
+        {
+          "seconds": 30,
+          "labels": "hidden",
+          "phase": "fitout"
+        },
+        {
+          "seconds": 31,
+          "labels": "visible",
+          "phase": "open"
+        },
+        {
+          "seconds": 34,
+          "labels": "visible",
+          "phase": "dusk"
+        },
+        {
+          "seconds": 36,
+          "labels": "hidden",
+          "phase": "dusk"
+        },
+        {
+          "seconds": 39,
+          "labels": "hidden",
+          "phase": "tour"
+        },
+        {
+          "seconds": 45,
+          "labels": "hidden",
+          "phase": "tour"
+        },
+        {
+          "seconds": 50,
+          "labels": "hidden",
+          "phase": "tour"
+        },
+        {
+          "seconds": 55,
+          "labels": "hidden",
+          "phase": "tour"
+        },
+        {
+          "seconds": 60,
+          "labels": "hidden",
+          "phase": "tour"
+        },
+        {
+          "seconds": 65,
+          "labels": "hidden",
+          "phase": "tour"
+        },
+        {
+          "seconds": 70,
+          "labels": "hidden",
+          "phase": "tour"
+        },
+        {
+          "seconds": 90,
+          "labels": "hidden",
+          "phase": "orbit"
+        },
+        {
+          "seconds": 151,
+          "labels": "hidden",
+          "phase": "complete"
+        }
+      ],
+      "camera": {
+        "position": [
+          -1.2499999999999996,
+          3.8000000000000007,
+          24
+        ],
+        "target": [
+          2.5000000000000004,
+          2,
+          -12
+        ]
+      },
+      "pageErrors": []
+    }
+  ]
+}

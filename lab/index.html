@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#e9ece2">
+  <meta name="description" content="Universal Mind Lab — electronic music and fashion as mindfulness. A mental health initiative. Proposal.">
+  <title>Universal Mind Lab</title>
+  <link rel="icon" href="./assets/favicon.png">
+  <link rel="stylesheet" href="./lab.css?v=20261103continuous1">
+  <script>if(new URLSearchParams(location.search).get("launch")==="1")document.documentElement.dataset.autoLaunch="true";</script>
+  <script type="importmap">{"imports":{"three":"./vendor/three.module.js"}}</script>
+</head>
+<body data-entered="false" data-build-stage="site" data-story="waiting">
+  <section id="landing" aria-label="Universal Mind Lab">
+    <canvas class="rain-canvas" aria-hidden="true" data-rain-canvas></canvas><div class="rain-vignette" aria-hidden="true"></div>
+    <div class="access-shell"><img class="access-flower" src="./assets/landing-flower.png" alt=""><h1 class="access-title"><button class="landing-name" aria-label="About Universal Mind Lab">universal mind lab</button></h1><button id="explore-enter" class="access-submit" disabled>Launch Full Screen</button><p id="launch-status" role="status"></p></div>
+  </section>
+  <a class="skip" href="#scene">Skip to the landscape</a>
+  <main id="world" aria-label="Universal Mind Lab landscape study">
+    <div id="scene" tabindex="-1" role="region" aria-label="Interactive 3D landscape"></div>
+    <video id="music-video" playsinline loop preload="none" aria-hidden="true" tabindex="-1"></video>
+    <video id="truck-fashion-video" muted playsinline loop preload="none" hidden aria-hidden="true"></video>
+    <video id="truck-anime-video" muted playsinline loop preload="none" hidden aria-hidden="true"></video>
+    <video id="stage-geometry-video" muted playsinline loop preload="none" aria-hidden="true" tabindex="-1" hidden></video>
+    <div id="plan" class="plan" hidden>
+      <svg viewBox="0 0 1000 720" role="img" aria-labelledby="plan-title plan-desc">
+        <title id="plan-title">Universal Mind Lab — conceptual site plan</title>
+        <desc id="plan-desc">An open lawn, with forest to the back and left and a river on the right. The main pavilion is at the back of the lawn, food and play on the left, listening on the right and arrival at the front. Layout is illustrative.</desc>
+        <defs><pattern id="grove" width="29" height="28" patternUnits="userSpaceOnUse"><circle cx="14" cy="14" r="13" fill="#58714c"/><circle cx="11" cy="10" r="9" fill="#6f875e"/></pattern></defs>
+        <rect width="1000" height="720" fill="#e8eee0"/>
+        <path d="M70 580V90Q400 15 780 90L755 190Q400 115 165 185L185 580Z" fill="url(#grove)"/>
+        <path d="M825 0Q710 200 825 350T850 720H1000V0Z" fill="#80aaa2"/>
+        <path d="M490 660Q470 470 460 370Q340 300 285 310M460 410Q330 460 300 490M460 390Q590 350 665 320M460 370L490 255" fill="none" stroke="#d3c9b4" stroke-width="24" stroke-linecap="round"/>
+        <g class="plan-assembled" fill="#e0c7a7" stroke="#9b8063" stroke-width="2"><path d="M404 200Q490 170 576 200Q596 255 576 310Q490 330 404 310Q386 255 404 200Z"/><ellipse cx="280" cy="310" rx="65" ry="43"/><ellipse cx="300" cy="490" rx="60" ry="40"/><path d="M285 560Q350 500 410 560L402 580Q345 535 292 580Z" fill="#b2c7bc"/></g>
+        <g class="plan-assembly" fill="none" stroke="#857b67" stroke-width="3" stroke-dasharray="5 4"><rect x="394" y="190" width="192" height="130" rx="25"/><path d="M414 310Q490 140 566 310M394 255H586"/></g>
+        <g class="plan-delivery"><rect x="185" y="360" width="26" height="145" rx="3" fill="#faf9ef" stroke="#ad373b" stroke-width="3"/><rect x="185" y="332" width="26" height="24" rx="3" fill="#edc228"/><path d="M184 433H212" stroke="#ad373b" stroke-width="4"/></g>
+        <g class="plan-assembled" fill="none" stroke="#7c8f70" stroke-dasharray="5 5" stroke-width="2"><ellipse cx="650" cy="345" rx="45" ry="70"/><rect x="180" y="190" width="65" height="50" rx="8"/></g>
+        <g class="plan-assembled" fill="#344332" font-family="system-ui,sans-serif" font-size="18" text-anchor="middle"><text x="490" y="260">Main pavilion</text><text x="280" y="316">International Food Fair</text><text x="300" y="496">Mobile music making</text><text x="350" y="610">Playground</text><text x="650" y="345">Apple listening pods</text></g>
+        <g fill="#344332" font-family="system-ui,sans-serif" font-size="18" text-anchor="middle"><text x="490" y="640">Arrival</text><text x="880" y="410" transform="rotate(90 880 410)">River / creek</text><text x="475" y="112">Forest boundary</text></g>
+      </svg>
+    </div>
+    <div id="labels" aria-hidden="true"></div><div id="layout-notes" hidden><b>Dance floor &amp; lounges</b><span>Open dance floor · scattered seating · hammocks</span><span>22.6 × 18.4 m main pavilion</span><small>Concept layout · capacity subject to design review</small></div>
+    <div class="vignette" aria-hidden="true"></div>
+    <header class="masthead">
+      <a class="wordmark" href="./" aria-label="Universal Mind Lab overview"><img class="wordmark-flower" src="./assets/universal-mind-flower.png" alt="" width="40" height="40"><span>universal<b>mind</b><em>[lab]</em></span><small class="mindfulness-line"><span>electronic</span> <span>music</span> <span>and</span> <span>fashion</span> <span>as</span> <span>mindfulness</span><svg class="tagline-signal" viewBox="0 0 360 20" preserveAspectRatio="none" aria-hidden="true" focusable="false"><defs><path id="tagline-signal-trace" pathLength="100" d="M0 10H12C18 10 19 8 23 8S28 12 32 12S37 6 41 6S46 14 50 14S56 3 61 3S67 17 72 17S78 5 83 5S89 13 94 13S100 8 106 8S112 11 118 11S123 7 128 7S134 15 139 15S144 2 149 2S155 18 160 18S165 4 170 4S176 14 181 14S187 7 192 7S198 12 204 12S210 9 216 9S222 6 227 6S232 14 237 14S243 3 248 3S254 17 259 17S265 5 270 5S276 14 281 14S287 7 292 7S298 12 303 12S309 8 315 8S321 11 327 11S333 10 340 10H360"/></defs><use class="tagline-signal-track" href="#tagline-signal-trace"/><use class="tagline-signal-pulse" href="#tagline-signal-trace"/></svg></small></a>
+      <div class="mast-right">
+        <button id="replay-story" class="outline-button" aria-label="Replay from the start"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 10a8 8 0 1 1 1 7M4 4v6h6"/></svg> Replay</button>
+        <button id="about-open" class="outline-button">About</button>
+        <button id="fullscreen-toggle" class="fullscreen-button" type="button" aria-label="Enter fullscreen" title="Enter fullscreen" aria-pressed="false" hidden>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="expand-icon" d="M9 4H4v5m11-5h5v5M4 15v5h5m11-5v5h-5"/><path class="contract-icon" d="M4 9h5V4m6 0v5h5M9 20v-5H4m16 0h-5v5"/></svg>
+        </button>
+      </div>
+    </header>
+    <section class="intro" aria-labelledby="headline"><svg class="punk-bolt" viewBox="0 0 110 200" aria-hidden="true"><path d="M73 8 17 111 57 101 30 187 98 74 59 84Z"/><path d="m77 5-61 111 45-13-26 79"/></svg><h1 id="headline" aria-label="Next Generation Lab for Next Generation Humans. Together, let's beat as one"><span class="headline-description" aria-hidden="true"><span class="headline-ink">Next Generation Lab</span><span class="headline-ink">for Next Generation</span><span class="headline-ink">Humans</span></span><span class="headline-unity" aria-hidden="true"><span class="headline-ink">Together,</span><span class="headline-ink">let’s beat as one</span></span></h1></section>
+    <section id="artist-lineup" class="artist-lineup" aria-label="Artist lineup" aria-hidden="true">
+      <div class="artist-marks">
+        <span class="artist-mark artist-tame" role="img" aria-label="Tame Impala"></span>
+        <span class="artist-mark artist-justice" role="img" aria-label="Justice"></span>
+        <span class="artist-mark artist-flume" role="img" aria-label="Flume"></span>
+        <span class="artist-mark artist-sampa" role="img" aria-label="Sampa the Great"></span>
+      </div>
+      <span class="lineup-more">+ more</span>
+    </section>
+    <button id="emotion-toggle" class="emotion-toggle" aria-expanded="false" aria-controls="emotion-panel"><svg viewBox="0 0 52 28" aria-hidden="true"><path d="M1 15h10l5-9 7 20 8-24 6 13h14"/></svg><span>Change your emotions,<br><b>change your world.</b></span><span aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg></span></button>
+    <aside id="emotion-panel" class="emotion-panel" hidden aria-labelledby="emotion-title">
+      <button id="emotion-close" class="close" aria-label="Close emotional response diagram"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 6 12 12M6 18 18 6"/></svg></button>
+      <p class="eyebrow">MINDFULNESS IN MOTION VIA BIOFEEDBACK</p><h2 id="emotion-title">Change your emotions,<br><em>change your world.</em></h2>
+      <div class="response-diagram" role="img" aria-label="Apple Watch heart rhythm data flows through SIX to inferences related to oxytocin, dopamine and cortisol. These guide changes in light and sound, creating a feedback loop for mindfulness practice.">
+        <div class="watch-node"><svg class="watch-pulse" viewBox="0 0 80 108" aria-hidden="true"><path class="watch-strap" d="M25 23 28 3h24l3 20m-30 62 3 20h24l3-20"/><rect x="13" y="22" width="54" height="64" rx="17"/><path class="pulse-trace" d="M20 55h9l5-11 7 24 8-29 5 16h7"/><circle cx="70" cy="47" r="3"/></svg><b>Apple Watch</b><span>Heart rhythm</span></div>
+        <svg class="flow-arrow" viewBox="0 0 40 20" aria-hidden="true"><path d="M1 10h35m-8-7 8 7-8 7"/></svg>
+        <div class="inference-node"><small>SIX · INFERRED SIGNALS</small><b>Oxytocin</b><b>Dopamine</b><b>Cortisol</b></div>
+        <svg class="flow-arrow" viewBox="0 0 40 20" aria-hidden="true"><path d="M1 10h35m-8-7 8 7-8 7"/></svg>
+        <div class="world-node"><svg viewBox="0 0 60 65" aria-hidden="true"><path d="M4 51Q30 6 56 51ZM4 51h52M15 51 30 18l15 33M11 38h38M22 27h16"/><path class="sound-waves" d="M17 60q13-7 26 0M22 65q8-4 16 0"/></svg><b>Light + sound</b><span>Your world responds</span></div>
+      </div>
+      <div class="connection-journey" aria-label="Universal Mind connection journey">
+        <button type="button" data-connection="earth" data-response="15" aria-pressed="false"><small>01 · Connection to</small><strong>our earth</strong></button>
+        <button type="button" data-connection="self" data-response="50" aria-pressed="false"><small>02 · Connection to</small><strong>self</strong></button>
+        <button type="button" data-connection="others" data-response="85" aria-pressed="true"><small>03 · Connection to</small><strong>each other</strong></button>
+      </div>
+      <p id="connection-cue" class="connection-cue" aria-live="polite">Feel the energy of the people around you.</p>
+      <label class="response-label" for="response-range">From anxiety to peace of mind <output id="response-state" class="sr-only" for="response-range">Connection to each other</output></label>
+      <input id="response-range" type="range" min="0" max="100" value="70" aria-label="Explore the journey from anxiety to peace of mind">
+      <div class="response-ends"><span>Anxiety</span><span>Peace of mind</span></div>
+      <p class="demo-note">Interactive demonstration · no live watch connected</p>
+      <p class="response-partners">Apple Watch · teamLab · TDC · Arup</p>
+      <button id="support-pathway" class="support-link">Support &amp; referral pathways <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg></button>
+    </aside>
+    <p id="story-status" class="sr-only" role="status" aria-live="polite"></p>
+    <p id="fullscreen-status" class="fullscreen-status" role="status" hidden></p>
+    <div class="compass" aria-hidden="true"><span>N</span><svg viewBox="0 0 40 40"><path d="M20 4L25 27 20 23 15 27Z" fill="currentColor"/><circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-opacity=".2"/></svg></div>
+    <aside id="place-card" class="place-card" hidden aria-labelledby="place-title"><button id="place-close" class="close" aria-label="Close place detail"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 6 12 12M6 18 18 6"/></svg></button><p id="place-number" class="eyebrow"></p><h2 id="place-title"></h2><p id="place-copy"></p><button id="interior-view" class="outline-button" hidden>Inside the pavilion <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg></button><button id="learn-main" class="learn-button" hidden aria-haspopup="dialog" aria-controls="learning">What you’ll learn <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></button></aside>
+    <p id="media-status" role="status" hidden></p>
+    <div class="view-tools" aria-label="View options"><button id="tour-toggle" aria-pressed="false">Tour</button><button id="rain-toggle" aria-pressed="false">Rain shelter</button><button id="night-toggle" aria-pressed="false" aria-label="Switch to night"><span aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 0 16Z" fill="currentColor" stroke="none"/></svg></span> <span id="day-label">Day</span></button><button id="labels-toggle" aria-pressed="false"><span aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="6"/><path d="M12 2v6m0 8v6M2 12h6m8 0h6"/></svg></span> Labels</button><button id="lineup-toggle" aria-pressed="false" aria-controls="artist-lineup">Lineup</button><button id="reset-view" aria-label="Reset to overview"><span aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 10a8 8 0 1 1 1 7M4 4v6h6"/></svg></span> Reset</button></div>
+    <footer class="explore-bar">
+      <div class="explore-heading"><p class="membership">exclusive tickets via <a href="https://headspace.org.au/eora" target="_blank" rel="noopener noreferrer">headspace.org.au/eora <span aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg></span></a></p><span id="navigation-hint">Drag to look around · scroll to move closer</span></div>
+      <nav id="place-list" aria-label="Explore places">
+        <button data-view="truck" aria-pressed="false"><span class="place-number">01</span><span class="place-name">Linfox truck</span></button>
+        <button data-view="main" aria-pressed="false"><span class="place-number">02</span><span class="place-name">Main pavilion</span></button>
+        <button data-view="food" aria-pressed="false"><span class="place-number">03</span><span class="place-name">International Food<br>Fair</span></button>
+        <button data-view="play" aria-pressed="false"><span class="place-number">04</span><span class="place-name">Mobile<br>music making</span></button>
+        <button data-view="river" aria-pressed="false"><span class="place-number">05</span><span class="place-name">Apple listening<br>pods</span></button>
+        <button data-view="support" aria-pressed="false"><span class="place-number">06</span><span class="place-name">Support area</span></button>
+        <button data-view="fashion" aria-pressed="false"><span class="place-number">07</span><span class="place-name">Fashion runway</span></button>
+      </nav>
+      <div class="footline"><span>a mental health initiative by <b>New South Wales Education, Headspace &amp; Universal Mind</b></span><span class="proposal-status">Artists, festival partners and mental health partners are proposed and not confirmed.</span><a class="research-link" href="./research.html" target="_blank" rel="noopener noreferrer">A direct response to this body of research <span aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg></span></a></div>
+    </footer>
+    <div id="loading" role="status"><span class="loading-mark"></span><span>Loading 3D landscape…</span></div>
+    <p id="scene-status" class="sr-only" role="status" aria-live="polite"></p>
+  </main>
+  <dialog id="vision" aria-labelledby="vision-title">
+    <button id="about-close" class="close" aria-label="Close About"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 6 12 12M6 18 18 6"/></svg></button>
+    <div class="proposal-scroll"><p class="eyebrow">UNIVERSAL MIND LAB</p>
+    <h2 id="vision-title">A journey from anxiety<br>to peace of mind.</h2>
+    <p class="proposal-lead">A free travelling mental health lab.</p>
+    <section class="proposal-opening" aria-labelledby="mindfulness-opening-title">
+      <h3 id="mindfulness-opening-title">Electronic music and fashion as mindfulness</h3>
+      <p>Making a beat. Designing a garment. Listening closely. Creating together. Universal Mind brings electronic music and fashion together as a mindfulness experience, using creativity to practise presence, self-awareness and connection.</p>
+    </section>
+    <section class="day-programme" aria-labelledby="day-order-title">
+      <h3 id="day-order-title">The day</h3>
+      <ol class="day-order"><li><small>01</small><b>Dining experience</b></li><li><small>02</small><b>Leisure</b></li><li><small>03</small><b>Workshops</b></li><li><small>04</small><b>Rave</b></li></ol>
+      <p>A dining experience, leisure, STEAM workshops, then a concert with DJs, bands and artists, together as one.</p>
+      <button id="learn-about" class="learn-button" aria-haspopup="dialog" aria-controls="learning">What you’ll learn <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></button>
+    </section>
+    <p>Inspired by Life Be In It and the idea of taking health promotion on the road, Universal Mind brings a new focus: mental health. First and foremost for youth aged 16–24, then for all Australians, the Lab brings creativity, learning and support into the heart of local communities.</p>
+    <p>The vision brings CSIRO technology, Universal Mind, headspace and New South Wales Education together as one, shaped in collaboration with the communities we visit.</p>
+    <div class="proposal-story">
+      <section><h3>Free access. Dissolving stigma. Clear pathways to support.</h3><p>Music, fashion and shared experiences open the door to conversations about mental health. We aim to dissolve stigma, strengthen emotional awareness and make it easier to ask for help. Participation is free, with access for youth facing financial, geographic or social barriers at the centre of the programme.</p><p>headspace referrals, school nominations and expressions of interest connect people with the Lab. A welcome conversation helps match each person with the support available. The shared support space brings together headspace, Médecins Sans Frontières (MSF) and the Australian Association of Buddhist Counsellors and Psychotherapists (AABCAP), linking optional on-site care with onward referrals and local services after the event.</p><p>Limited in-person places are complemented by an online experience and live TV, so participation reaches beyond the site.</p></section>
+      <section><h3>This is creativity as mindfulness.</h3><p>Learn STEAM — science, technology, engineering, arts and mathematics — while experiencing world-class DJs, artists and bands, together as one. Make music on smart devices, explore responsive technology and learn by creating.</p><p>Learn fashion skills, design a runway show and take the first steps towards your own fashion label, on the day. Indigenous fashion, local creativity and collaboration run through the experience.</p></section>
+      <section><h3>Change your emotions. Change your world.</h3><p>Through Apple Watch biofeedback, participants explore emotional regulation as the light and sound around them respond.</p><p>Apple Watch heart-rhythm data flows through Immersion Neuroscience’s SIX platform. Inferences related to oxytocin, dopamine and cortisol guide changes in light, colour, motion and sound. Grounding, breath and connection become part of a responsive environment for practising mindfulness and emotional regulation.</p><p>The watch records cardiac signals; the neurochemical interpretation is inferred. Apple Watch, teamLab, TDC and Arup form the partnership direction for the experience.</p><ol class="proposal-journey"><li><b>Connection to our earth.</b> Feel your feet on the ground, or the support beneath you as you sit.</li><li><b>Connection to self.</b> Feel your breath. Feel your body.</li><li><b>Connection to each other.</b> Feel the energy of the people around you.</li></ol><p>From anxiety to peace of mind: a Universal Mind journey through connection to our earth, ourselves and each other.</p></section>
+      <section><h3>A travelling lab. A lasting local connection.</h3><p>A Linfox road train carries the Lab into a green space beside the water. A vaulted main pavilion, sculptural food and play areas, a fashion runway and individual listening spaces bring the programme together. Moroso Tropicália furniture by Patricia Urquiola creates places to gather and pause.</p><p>Local collaboration shapes the architecture, materials, activities and ongoing use. Where a community chooses to retain facilities, the ambition is a continuing resource for learning, mental health and connection.</p></section>
+    </div>
+    <p class="detail-note">The interactive biofeedback demonstration collects no health data. Applications are not collected on this page.</p></div>
+  </dialog>
+  <dialog id="learning" aria-labelledby="learning-title">
+    <button id="learn-close" class="close" aria-label="Close learning"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6"/></svg></button>
+    <div class="learning-scroll">
+      <p class="eyebrow">MAIN DOME</p><h2 id="learning-title">What you’ll learn</h2>
+      <svg class="learning-map" viewBox="0 0 600 340" role="img" aria-labelledby="learning-map-title learning-map-desc">
+        <title id="learning-map-title">Electronic music making, fashion design and mindfulness through STEAM workshops</title>
+        <desc id="learning-map-desc">Three connected disciplines surround STEAM workshops: science, technology, engineering, arts and mathematics. The workshops respond to live cinema, TV and advertising briefs, together as one.</desc>
+        <defs><marker id="learn-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="m2 1 6 4-6 4" fill="none" stroke="currentColor" stroke-width="1.4"/></marker></defs>
+        <g class="learning-links" fill="none" stroke="currentColor" stroke-width="1.5" marker-end="url(#learn-arrow)"><path d="M375 120Q465 118 473 157"/><path d="M421 278Q300 347 178 278"/><path d="M126 157Q135 118 225 120"/></g>
+        <g class="learning-spokes" fill="none" stroke="currentColor" stroke-dasharray="2 7"><path d="M300 136v8M215 204l-39 19M385 204l39 19"/></g>
+        <g class="learning-centre"><rect x="208" y="149" width="184" height="80" rx="40"/><text x="300" y="183">STEAM</text><text x="300" y="207" class="learning-small">WORKSHOPS</text></g>
+        <g class="learning-music" transform="translate(300 38)" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M-29 0h7l5-12 8 24L0-20 9 10l6-10h14"/><rect x="-33" y="-25" width="66" height="50" rx="8"/></g>
+        <text class="learning-label music-label" x="300" y="92">Electronic music</text><text class="learning-label music-label" x="300" y="122">making</text>
+        <g class="learning-fashion" transform="translate(480 199)" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M-7-29q0-12 9-11 9 1 6 9-1 4-8 7v8l32 21q5 5-2 7h-60q-7-2-2-7L0-16"/><path d="m-13 13-10 21h46L13 13"/></g>
+        <text class="learning-label fashion-label" x="480" y="263">Fashion design</text>
+        <g class="learning-mind" transform="translate(120 199)" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="0" cy="-23" r="9"/><path d="M-10-8q-5 13-14 21l-14 4m48-25q5 13 14 21l14 4M-8-5v24l-25 9q-10 8 2 10H0m8-43v24l25 9q10 8-2 10H0m-20-10 40 10"/></g>
+        <text class="learning-label mind-label" x="120" y="263">Mindfulness</text>
+      </svg>
+      <p class="steam-disciplines">Science <span>·</span> Technology <span>·</span> Engineering <span>·</span> Arts <span>·</span> Mathematics</p>
+      <div class="learning-briefs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2v16m-6-6 6 6 6-6"/></svg><p>Responding to live <b>cinema, TV and advertising briefs,</b><br>together as one.</p></div>
+      <section class="mindfulness-practices" aria-labelledby="practices-title"><h3 id="practices-title">Mindfulness practices</h3><ul><li>Resilience training</li><li>Nervous system regulation</li><li>Self-awareness</li><li>Empathy training · EQ</li><li>EMDR</li><li>Sound</li><li>Mantra</li><li>Creativity</li><li>Mindfulness of the body · Yoga</li></ul></section>
+    </div>
+  </dialog>
+  <noscript><style>#landing{display:none!important}#world{visibility:visible!important}#loading{display:none}#plan{display:flex!important}.plan-assembled{display:block!important}.explore-bar{visibility:visible!important}.view-tools,.media-tools,#about-open{display:none}</style><p class="noscript-note">The site plan is available without JavaScript. Enable JavaScript to explore in 3D.</p></noscript>
+  <script src="./landing-rain.js?v=20261103mobile1" defer></script>
+  <script src="./vendor/hls.min.js" defer></script>
+  <script type="module" src="./lab.mjs?v=20261103tourfocus1"></script>
+</body>
+</html>

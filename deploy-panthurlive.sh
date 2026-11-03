@@ -931,6 +931,29 @@ deploy_happiness() {
   echo "Happiness: committed source published through Panthur FTP."
 }
 
+# Lab is scoped to committed files, using the established FTP upload function.
+deploy_lab() {
+  local relative manifest_tmp
+  if [[ -n "$(git -C "$ROOT_DIR" status --porcelain --untracked-files=all -- lab tools/check-lab-stage.mjs deploy-panthur-staging.sh deploy-panthurlive.sh)" ]]; then
+    echo "Refusing to deploy uncommitted Lab source." >&2
+    return 1
+  fi
+  git -C "$ROOT_DIR" ls-files --error-unmatch lab/index.html lab/lab.mjs lab/lab.css >/dev/null || return 1
+  manifest_tmp="$(mktemp)"
+  if [[ -f "$MANIFEST_FILE" ]]; then
+    awk -F '\t' '$2 !~ /^lab\//' "$MANIFEST_FILE" > "$manifest_tmp"
+  fi
+  while IFS= read -r relative; do
+    [[ "$relative" == "lab/index.html" ]] && continue
+    put_file "$ROOT_DIR/$relative" "$relative" || { rm -f "$manifest_tmp"; return 1; }
+    printf '%s\t%s\n' "$(file_hash "$ROOT_DIR/$relative")" "$relative" >> "$manifest_tmp"
+  done < <(git -C "$ROOT_DIR" ls-files lab)
+  put_file "$ROOT_DIR/lab/index.html" "lab/index.html" || { rm -f "$manifest_tmp"; return 1; }
+  printf '%s\t%s\n' "$(file_hash "$ROOT_DIR/lab/index.html")" "lab/index.html" >> "$manifest_tmp"
+  mv "$manifest_tmp" "$MANIFEST_FILE"
+  echo "Lab: committed source published through Panthur FTP."
+}
+
 DEPLOY_MODE="${1:-iam}"
 
 if deployment_requires_owner_state_guard "$DEPLOY_MODE"; then
@@ -938,6 +961,9 @@ if deployment_requires_owner_state_guard "$DEPLOY_MODE"; then
 fi
 
 case "$DEPLOY_MODE" in
+  lab)
+    deploy_lab
+    ;;
   ai-wiki)
     deploy_ai_wiki
     ;;
@@ -1011,7 +1037,7 @@ case "$DEPLOY_MODE" in
     provision_sovereignty_runtime configure
     ;;
   *)
-    echo "Usage: $0 [ai-wiki|happiness|directory|events|iam|iam-fast|fast|changed|iam-changed|mark|media|redirects|all|all-fast|all-changed|seed-owner-state|owner-password-reset|sovereignty-seed|sovereignty-configure]" >&2
+    echo "Usage: $0 [lab|ai-wiki|happiness|directory|events|iam|iam-fast|fast|changed|iam-changed|mark|media|redirects|all|all-fast|all-changed|seed-owner-state|owner-password-reset|sovereignty-seed|sovereignty-configure]" >&2
     exit 2
     ;;
 esac
