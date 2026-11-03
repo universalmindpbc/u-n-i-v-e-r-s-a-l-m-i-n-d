@@ -1,5 +1,5 @@
 import { icon } from './icons.mjs?v=20261103mobile1';
-import { orbitPose, mobileOverviewPose } from './orbit.mjs?v=20261103portrait1';
+import { orbitPose, mobileOverviewPose, overviewPose } from './orbit.mjs?v=20261103cleartype2';
 import { createActivities } from './activities.mjs?v=20261103purpose1';
 import { createPerformance } from './performance.mjs?v=20261103orbit1';
 import { initMedia } from './media.mjs?v=20261103mobile1';
@@ -489,7 +489,7 @@ async function buildWorld() {
 
   function go(key,instant=false){
     const p=presets[key];const end=new THREE.Vector3(...p.pos),target=new THREE.Vector3(...p.target);
-    if(mobile()&&key==='overview'){const pose=mobileOverviewPose(portraitMobile(),$('world').clientHeight);end.fromArray(pose.position);target.fromArray(pose.target);}else if(mobile()){end.sub(target).multiplyScalar(1.5).add(target);}
+    if(key==='overview'){const pose=mobile()?mobileOverviewPose(portraitMobile(),$('world').clientHeight):overviewPose();end.fromArray(pose.position);target.fromArray(pose.target);}else if(mobile()){end.sub(target).multiplyScalar(1.5).add(target);}
     if(instant||reduced.matches){camera.position.copy(end);controls.target.copy(target);controls.update();tween=null;}else{tween={start:performance.now(),from:camera.position.clone(),fromTarget:controls.target.clone(),to:end,target};}
     needsFrame=true;requestFrame();
   }

@@ -669,7 +669,7 @@ Ben approved the waveform. The tagline uses clean colour fills only. Use a satur
 ## Readable overview and populated activity areas — 3 November 2026
 
 - Portrait phones open farther back, with extra sky above the forest so the large headline stays clear. Replay and the final camera return use the same portrait framing; mobile landscape keeps its existing framing.
-- The broad cream sky field was rejected by Ben. Keep the trees and green landscape visible. Readability is confined to the headline lettering and artist marks, with tight dark backing and light lettering, without shadows or outlines. Preserve the approved gold words and waveform.
+- The broad cream landscape mask and dark backing boxes were rejected by Ben. Use his fallback composition: clean dark lettering in the pale upper sky, with the complete scene framed lower and farther back so the forest remains visible beneath the text. At night, use light lettering. No text shadows, outlines, backing boxes or added cream mask. Preserve the approved lightning bolt placement, gold words and waveform.
 - The headspace support space contains three darker-skinned children sitting cross-legged in meditation, one child in downward-facing dog, and a nearby doctor in a lab coat with a visible stethoscope. Move the welcome counter and flag clear of the activity, and view the group from the open side of the shelter.
 - Three children slide along a smooth ribbon on the sculptural playground. The adjacent rotunda contains three children seated in its Moroso chairs, holding phones and making music together. Animated waveforms link the phones; device screens and a shared 16-step beat grid communicate collaborative beat-making.
 - Figures and activities appear after the facilities are assembled. The animation follows the Motion control and reduced-motion setting. These are fictional scene figures for the proposal.
@@ -690,7 +690,7 @@ Ben approved the waveform. The tagline uses clean colour fills only. Use a satur
 
 ## Purpose-led destinations and preserved landscape — 3 November 2026
 
-- Remove the broad white/cream overlay that obscured the trees. Preserve the actual scene, forest, lawn and overview camera. Keep headline and artist contrast confined to their own footprints.
+- Remove the broad white/cream overlay that obscured the trees and all dark backing boxes. Preserve the actual scene, forest and lawn. Frame the overview lower to separate the headline and artist logos from the trees; use the same framing for arrival, replay and the final camera return.
 - Rename Food & play to **International Food Fair** across navigation, place card, scene label and plan. Move its destination camera closer to the food pavilion and dining activity. Add United Nations, Australian Aboriginal and a small selection of international flags around the food area. Keep national flags rectangular with their own colours.
 - Rename the Playground destination to **Mobile music making**. Frame the three participants holding phones around the central 360-degree speaker; retain the sculptural playground elsewhere in the scene.
 - Rename By the water to **Apple listening pods** in navigation, place card, scene label and plan.

@@ -2,6 +2,7 @@ import {chromium} from '/Users/benkorbel/.cache/codex-runtimes/codex-primary-run
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
+import {overviewPose,mobileOverviewPose,orbitPose} from '../../../../lab/orbit.mjs';
 const live=process.argv.includes('--live'),quick=process.argv.includes('--quick'),origin='https://staging.universalmind.tv';
 const out=live?'documents/universal-mind-lab/qa/purpose-destinations':'/private/tmp/um-purpose-proof';fs.mkdirSync(out,{recursive:true});
 const server=await chromium.launchServer({headless:true,executablePath:'/Users/benkorbel/Library/Caches/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-mac-arm64/chrome-headless-shell',args:['--mute-audio','--use-angle=swiftshader','--enable-unsafe-swiftshader']});assert(server.process().spawnargs.includes('--mute-audio'));
@@ -30,7 +31,9 @@ for(const vp of (quick?[{width:1440,height:1000}]:[{width:393,height:647},{width
  await p.locator('#explore-enter').click();await p.clock.runFor(40);
  await p.clock.fastForward(110000);await p.clock.runFor(40);await p.clock.fastForward(1500);await p.clock.runFor(40);
  assert.equal(await p.locator('body').getAttribute('data-story'),'complete');
- const state=await p.evaluate(()=>window.__qa.read());assert.equal(state.activities.actors.length,12);assert.equal(state.stats.doctors,2);
+ const state=await p.evaluate(()=>window.__qa.read());
+ const expected=mobile?mobileOverviewPose(vp.height>vp.width,vp.height):overviewPose();
+ for(const axis of ['position','target'])for(let i=0;i<3;i++){assert(Math.abs(state[axis][i]-expected[axis][i])<.001,'Final overview matches opening framing');assert(Math.abs(orbitPose(24,mobile,vp.height>vp.width,vp.height)[axis][i]-expected[axis][i])<.001,'Orbit joins overview continuously');}assert.equal(state.activities.actors.length,12);assert.equal(state.stats.doctors,2);
  const doctors=state.activities.actors.filter(a=>a.role==='doctor');assert(doctors.every(d=>d.gender==='female'&&d.coat==='long'&&d.hair==='long'&&d.footwear==='heels'&&d.stethoscope));
  assert.equal(await p.locator('body').getAttribute('data-food-flags'),'United Nations|Australian Aboriginal|Japan|France|Italy');
  for(const label of ['International Food Fair','Mobile music making','Apple listening pods'])assert((await p.locator('#place-list').textContent()).includes(label));
@@ -38,13 +41,14 @@ for(const vp of (quick?[{width:1440,height:1000}]:[{width:393,height:647},{width
  const settle=async()=>{await p.clock.runFor(40);await p.clock.fastForward(800);await p.clock.runFor(40);await new Promise(r=>setTimeout(r,750));};
  await p.evaluate(()=>{window.__qa.frame(32);window.__qa.view('overview');window.__qa.lineup();});await settle();
  await p.locator('#headline').evaluate(e=>e.querySelectorAll('span').forEach(s=>s.getAnimations().forEach(a=>{a.pause();a.currentTime=2000;})));
- const style=await p.evaluate(()=>{const h=getComputedStyle(document.querySelector('.headline-ink')),a=getComputedStyle(document.querySelector('.artist-mark'),'::before'),v=getComputedStyle(document.querySelector('.vignette'),'::before');return {heading:h.color,headingBackground:h.backgroundColor,headingShadow:h.textShadow,logoInk:a.backgroundColor,skyContent:v.content,skyBackground:v.backgroundImage,gold:getComputedStyle(document.querySelector('.mindfulness-line span:nth-child(2)')).color,overflow:document.documentElement.scrollWidth>innerWidth};});
+ const style=await p.evaluate(()=>{const h=getComputedStyle(document.querySelector('.headline-ink')),a=getComputedStyle(document.querySelector('.artist-mark')),v=getComputedStyle(document.querySelector('.vignette'),'::before');const b=getComputedStyle(document.querySelector('.punk-bolt'));return {bolt:{left:b.left,top:b.top,width:b.width,height:b.height},heading:h.color,headingBackground:h.backgroundColor,headingShadow:h.textShadow,logoInk:a.backgroundColor,skyContent:v.content,skyBackground:v.backgroundImage,gold:getComputedStyle(document.querySelector('.mindfulness-line span:nth-child(2)')).color,overflow:document.documentElement.scrollWidth>innerWidth};});
  assert.equal(style.headingShadow,'none');assert.equal(style.skyContent,'none');assert.equal(style.skyBackground,'none');assert.equal(style.overflow,false);
- assert.equal(style.heading,'rgb(244, 245, 239)');assert.equal(style.headingBackground,'rgb(23, 43, 48)');assert.equal(style.logoInk,style.heading);
+ if(vp.width===1440)assert.deepEqual(style.bolt,{left:'300px',top:'-5px',width:'82px',height:'150px'});
+ assert.equal(style.headingBackground,'rgba(0, 0, 0, 0)');assert.equal(style.logoInk,'rgb(25, 35, 38)');
  await settle();await p.screenshot({path:out+'/day-'+vp.width+'.png'});
  await p.locator('#headline').evaluate(e=>e.querySelectorAll('span').forEach(s=>s.getAnimations().forEach(a=>a.currentTime=10000)));await settle();await p.screenshot({path:out+'/unity-'+vp.width+'.png'});
  await p.evaluate(()=>{window.__qa.frame(102);window.__qa.view('overview');window.__qa.lineup();});await settle();await p.screenshot({path:out+'/night-'+vp.width+'.png'});
- if(!mobile){
+ if(!mobile&&!quick){
   for(const [key,title] of [['food','International Food Fair'],['play','Mobile music making'],['river','Apple listening pods'],['support','Support & connection']]){
    await p.evaluate(()=>window.__qa.frame(32));await p.locator('#place-list [data-view="'+key+'"]').click();await p.clock.fastForward(1500);await settle();
    assert.equal(await p.locator('#place-title').textContent(),title);
@@ -52,6 +56,8 @@ for(const vp of (quick?[{width:1440,height:1000}]:[{width:393,height:647},{width
   }
   await p.evaluate(()=>{window.__qa.frame(102);window.__qa.view('play',true);});await settle();await p.screenshot({path:out+'/play-night.png'});
  }
+ await p.locator('#replay-story').click();await p.clock.fastForward(1500);await settle();
+ const replay=await p.evaluate(()=>window.__qa.read());for(const axis of ['position','target'])for(let i=0;i<3;i++)assert(Math.abs(replay[axis][i]-expected[axis][i])<.001,'Replay keeps overview framing');
  assert.deepEqual(errors,[]);checks.push({viewport:vp,style,doctors,stats:state.stats,pageErrors:errors});console.log(vp.width+'px passed');
  }finally{for(const p of c.pages())await p.evaluate(()=>document.querySelectorAll('video,audio').forEach(v=>v.pause())).catch(()=>{});await c.close();}
 }

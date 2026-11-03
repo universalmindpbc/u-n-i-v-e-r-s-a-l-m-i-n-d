@@ -282,16 +282,11 @@ html[data-auto-launch="true"] body:not([data-entered="true"]) #loading{visibilit
   .intro{left:16px;right:16px}.intro .punk-bolt{right:-2px;width:34px}.artist-lineup{top:245px;left:16px;right:16px}
 }
 
-/* Contrast stays within the lettering and marks; the landscape remains unobscured. */
+/* Clear type above the forest; no boxes, text effects or landscape mask. */
 .artist-lineup::before{display:none!important}
-.intro .punk-bolt{z-index:1;left:395px;top:0;width:50px;height:115px}
-@media(max-width:1100px){.intro .punk-bolt{left:325px;width:42px}}
-@media(max-width:800px),(max-width:1000px) and (pointer:coarse){.intro .punk-bolt{left:auto;right:0;top:-6px;width:36px;height:78px}}
-.intro h1 .headline-ink{display:table;color:#f4f5ef;background:#172b30;padding:0 .12em .035em;box-decoration-break:clone;-webkit-box-decoration-break:clone;text-shadow:none;border-radius:1px}
-.artist-mark{position:relative;box-sizing:border-box;mask:none;-webkit-mask:none;background:#172b30;border-radius:1px}
-.artist-mark::before{content:"";position:absolute;inset:7px 9px;background:#f4f5ef;mask:var(--artist-mask) center/contain no-repeat;-webkit-mask:var(--artist-mask) center/contain no-repeat}
-.lineup-more{color:#f4f5ef;background:#172b30;width:max-content;padding:4px 9px;margin-left:auto;margin-right:auto}
-@media(max-width:800px),(max-width:1000px) and (pointer:coarse){.artist-mark::before{inset:4px 5px}.artist-marks{gap:8px}}
+.intro h1 .headline-ink{display:block;color:inherit;background:none;padding:0;text-shadow:none}
+.intro h1,.artist-lineup{color:#192326}
+body[data-night="true"] .intro h1,body[data-night="true"] .artist-lineup{color:#f1efe0}
 
 /* Learning is opened from the main pavilion or About, within the current experience. */
 .learn-button{display:inline-flex;align-items:center;justify-content:space-between;gap:22px;min-height:44px;padding:11px 17px;border:1px solid #3c68665c;border-radius:30px;background:transparent;color:#244744;font-size:12px}
