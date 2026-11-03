@@ -1,0 +1,433 @@
+{
+  "live": true,
+  "processMuted": true,
+  "mediaStubbed": true,
+  "nativeFullscreenNeverInvoked": true,
+  "testOnlySceneReadout": true,
+  "checks": [
+    {
+      "viewport": {
+        "width": 393,
+        "height": 647
+      },
+      "timeline": [
+        {
+          "seconds": 0,
+          "lineup": true,
+          "phase": "site"
+        },
+        {
+          "seconds": 4,
+          "lineup": true,
+          "phase": "arrival"
+        },
+        {
+          "seconds": 15,
+          "lineup": true,
+          "phase": "assembly"
+        },
+        {
+          "seconds": 29,
+          "lineup": true,
+          "phase": "fitout"
+        },
+        {
+          "seconds": 37,
+          "lineup": true,
+          "phase": "dusk"
+        },
+        {
+          "seconds": 39,
+          "lineup": false,
+          "phase": "tour"
+        },
+        {
+          "seconds": 69,
+          "lineup": false,
+          "phase": "tour"
+        },
+        {
+          "seconds": 83,
+          "lineup": false,
+          "phase": "orbit"
+        },
+        {
+          "seconds": 112,
+          "lineup": false,
+          "phase": "orbit"
+        },
+        {
+          "seconds": 149,
+          "lineup": false,
+          "phase": "orbit"
+        },
+        {
+          "seconds": 151,
+          "lineup": true,
+          "phase": "complete"
+        }
+      ],
+      "style": {
+        "bolt": {
+          "left": "246px",
+          "top": "-8px",
+          "width": "46px",
+          "height": "88px"
+        },
+        "headingShadow": "none",
+        "headingBackground": "rgba(0, 0, 0, 0)",
+        "overflow": false,
+        "lineupVisibility": "visible",
+        "logos": [
+          {
+            "name": "Tame Impala",
+            "x": 20,
+            "y": 254,
+            "width": 73.953125,
+            "height": 30
+          },
+          {
+            "name": "Justice",
+            "x": 105.953125,
+            "y": 254,
+            "width": 84.53125,
+            "height": 30
+          },
+          {
+            "name": "Flume",
+            "x": 202.484375,
+            "y": 258.5,
+            "width": 70.453125,
+            "height": 21
+          },
+          {
+            "name": "Sampa the Great",
+            "x": 284.9375,
+            "y": 257,
+            "width": 88.046875,
+            "height": 24
+          }
+        ]
+      },
+      "pageErrors": []
+    },
+    {
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "timeline": [
+        {
+          "seconds": 0,
+          "lineup": true,
+          "phase": "site"
+        },
+        {
+          "seconds": 4,
+          "lineup": true,
+          "phase": "arrival"
+        },
+        {
+          "seconds": 15,
+          "lineup": true,
+          "phase": "assembly"
+        },
+        {
+          "seconds": 29,
+          "lineup": true,
+          "phase": "fitout"
+        },
+        {
+          "seconds": 37,
+          "lineup": true,
+          "phase": "dusk"
+        },
+        {
+          "seconds": 39,
+          "lineup": false,
+          "phase": "tour"
+        },
+        {
+          "seconds": 69,
+          "lineup": false,
+          "phase": "tour"
+        },
+        {
+          "seconds": 83,
+          "lineup": false,
+          "phase": "orbit"
+        },
+        {
+          "seconds": 112,
+          "lineup": false,
+          "phase": "orbit"
+        },
+        {
+          "seconds": 149,
+          "lineup": false,
+          "phase": "orbit"
+        },
+        {
+          "seconds": 151,
+          "lineup": true,
+          "phase": "complete"
+        }
+      ],
+      "style": {
+        "bolt": {
+          "left": "246px",
+          "top": "-8px",
+          "width": "34px",
+          "height": "88px"
+        },
+        "headingShadow": "none",
+        "headingBackground": "rgba(0, 0, 0, 0)",
+        "overflow": false,
+        "lineupVisibility": "visible",
+        "logos": [
+          {
+            "name": "Tame Impala",
+            "x": 16,
+            "y": 247,
+            "width": 58.796875,
+            "height": 30
+          },
+          {
+            "name": "Justice",
+            "x": 86.796875,
+            "y": 247,
+            "width": 67.203125,
+            "height": 30
+          },
+          {
+            "name": "Flume",
+            "x": 166,
+            "y": 251.5,
+            "width": 56,
+            "height": 21
+          },
+          {
+            "name": "Sampa the Great",
+            "x": 234,
+            "y": 250,
+            "width": 70,
+            "height": 24
+          }
+        ]
+      },
+      "pageErrors": []
+    },
+    {
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "timeline": [
+        {
+          "seconds": 0,
+          "lineup": true,
+          "phase": "site"
+        },
+        {
+          "seconds": 4,
+          "lineup": true,
+          "phase": "arrival"
+        },
+        {
+          "seconds": 15,
+          "lineup": true,
+          "phase": "assembly"
+        },
+        {
+          "seconds": 29,
+          "lineup": true,
+          "phase": "fitout"
+        },
+        {
+          "seconds": 37,
+          "lineup": true,
+          "phase": "dusk"
+        },
+        {
+          "seconds": 39,
+          "lineup": false,
+          "phase": "tour"
+        },
+        {
+          "seconds": 69,
+          "lineup": false,
+          "phase": "tour"
+        },
+        {
+          "seconds": 83,
+          "lineup": false,
+          "phase": "orbit"
+        },
+        {
+          "seconds": 112,
+          "lineup": false,
+          "phase": "orbit"
+        },
+        {
+          "seconds": 149,
+          "lineup": false,
+          "phase": "orbit"
+        },
+        {
+          "seconds": 151,
+          "lineup": true,
+          "phase": "complete"
+        }
+      ],
+      "style": {
+        "bolt": {
+          "left": "230px",
+          "top": "-8px",
+          "width": "36px",
+          "height": "70px"
+        },
+        "headingShadow": "none",
+        "headingBackground": "rgba(0, 0, 0, 0)",
+        "overflow": false,
+        "lineupVisibility": "visible",
+        "logos": [
+          {
+            "name": "Tame Impala",
+            "x": 520,
+            "y": 113,
+            "width": 66,
+            "height": 30
+          },
+          {
+            "name": "Justice",
+            "x": 598,
+            "y": 113,
+            "width": 66,
+            "height": 30
+          },
+          {
+            "name": "Flume",
+            "x": 676,
+            "y": 117.5,
+            "width": 66,
+            "height": 21
+          },
+          {
+            "name": "Sampa the Great",
+            "x": 754,
+            "y": 116,
+            "width": 66,
+            "height": 24
+          }
+        ]
+      },
+      "pageErrors": []
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "timeline": [
+        {
+          "seconds": 0,
+          "lineup": true,
+          "phase": "site"
+        },
+        {
+          "seconds": 4,
+          "lineup": true,
+          "phase": "arrival"
+        },
+        {
+          "seconds": 15,
+          "lineup": true,
+          "phase": "assembly"
+        },
+        {
+          "seconds": 29,
+          "lineup": true,
+          "phase": "fitout"
+        },
+        {
+          "seconds": 37,
+          "lineup": true,
+          "phase": "dusk"
+        },
+        {
+          "seconds": 39,
+          "lineup": false,
+          "phase": "tour"
+        },
+        {
+          "seconds": 69,
+          "lineup": false,
+          "phase": "tour"
+        },
+        {
+          "seconds": 83,
+          "lineup": false,
+          "phase": "orbit"
+        },
+        {
+          "seconds": 112,
+          "lineup": false,
+          "phase": "orbit"
+        },
+        {
+          "seconds": 149,
+          "lineup": false,
+          "phase": "orbit"
+        },
+        {
+          "seconds": 151,
+          "lineup": true,
+          "phase": "complete"
+        }
+      ],
+      "style": {
+        "bolt": {
+          "left": "300px",
+          "top": "-5px",
+          "width": "82px",
+          "height": "150px"
+        },
+        "headingShadow": "none",
+        "headingBackground": "rgba(0, 0, 0, 0)",
+        "overflow": false,
+        "lineupVisibility": "visible",
+        "logos": [
+          {
+            "name": "Tame Impala",
+            "x": 470,
+            "y": 144,
+            "width": 177.0625,
+            "height": 68
+          },
+          {
+            "name": "Justice",
+            "x": 673.0625,
+            "y": 144,
+            "width": 202.359375,
+            "height": 68
+          },
+          {
+            "name": "Flume",
+            "x": 901.421875,
+            "y": 156,
+            "width": 168.640625,
+            "height": 44
+          },
+          {
+            "name": "Sampa the Great",
+            "x": 1096.0625,
+            "y": 151.5,
+            "width": 193.921875,
+            "height": 53
+          }
+        ]
+      },
+      "pageErrors": []
+    }
+  ]
+}

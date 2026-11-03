@@ -1,0 +1,139 @@
+{
+  "date": "2026-11-03T07:41:28.056Z",
+  "url": "https://staging.universalmind.tv/lab/",
+  "passed": true,
+  "processMuted": true,
+  "nativeFullscreenInvoked": false,
+  "playbackStubbed": false,
+  "subjectiveSoundQualityTested": false,
+  "checks": [
+    {
+      "viewport": {
+        "width": 393,
+        "height": 647
+      },
+      "videos": [
+        {
+          "id": "music-video",
+          "time": 0.021525,
+          "width": 426,
+          "height": 240,
+          "loop": true,
+          "muted": false,
+          "volume": 0.65
+        },
+        {
+          "id": "truck-fashion-video",
+          "time": 0.199252,
+          "width": 720,
+          "height": 332,
+          "loop": true,
+          "muted": true,
+          "volume": 1
+        },
+        {
+          "id": "truck-anime-video",
+          "time": 0.183601,
+          "width": 1280,
+          "height": 590,
+          "loop": true,
+          "muted": true,
+          "volume": 1
+        },
+        {
+          "id": "stage-geometry-video",
+          "time": 0.197109,
+          "width": 540,
+          "height": 540,
+          "loop": true,
+          "muted": true,
+          "volume": 1
+        }
+      ],
+      "entryPlayback": true,
+      "replayPlayback": true,
+      "blend": 0.07,
+      "errors": []
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "videos": [
+        {
+          "id": "music-video",
+          "time": 0.270435,
+          "width": 426,
+          "height": 240,
+          "loop": true,
+          "muted": false,
+          "volume": 0.65
+        },
+        {
+          "id": "truck-fashion-video",
+          "time": 0.57788,
+          "width": 720,
+          "height": 332,
+          "loop": true,
+          "muted": true,
+          "volume": 1
+        },
+        {
+          "id": "truck-anime-video",
+          "time": 0.553939,
+          "width": 1280,
+          "height": 590,
+          "loop": true,
+          "muted": true,
+          "volume": 1
+        },
+        {
+          "id": "stage-geometry-video",
+          "time": 0.568418,
+          "width": 540,
+          "height": 540,
+          "loop": true,
+          "muted": true,
+          "volume": 1
+        }
+      ],
+      "entryPlayback": true,
+      "replayPlayback": true,
+      "blend": 0.07,
+      "errors": []
+    }
+  ],
+  "hashes": [
+    {
+      "file": "index.html",
+      "status": 200,
+      "sha256": "dc00b6d332f35bcc8bb3e9851e7ab0ab0c2ba346424cc799472a82a100c908db"
+    },
+    {
+      "file": "lab.css",
+      "status": 200,
+      "sha256": "605a5f46c961e7ac3e860bfe8b18edb49f23d4633f20bcbabeeb42ff9c8a3c1a"
+    },
+    {
+      "file": "lab.mjs",
+      "status": 200,
+      "sha256": "eae27cf8acb0c6b4f5732bad6b44a4c9f6e4c273caf0d20e0699d18a9800cf79"
+    },
+    {
+      "file": "media.mjs",
+      "status": 200,
+      "sha256": "1eca7d1ff11717e7afc6cdf3e9a444d63ca582bf531ab467d2fb937a74fab80b"
+    },
+    {
+      "file": "orbit.mjs",
+      "status": 200,
+      "sha256": "bcb4a2a7dc994fc631066770d5b13d54918efc1db233fe5f99eae219e4fa4ab6"
+    },
+    {
+      "file": "story.mjs",
+      "status": 200,
+      "sha256": "6bd189fffdd2b345e0c88f1529391334cb5dc5f9563ad6af7174b7b772266395"
+    }
+  ]
+}
