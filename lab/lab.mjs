@@ -30,9 +30,23 @@ function syncNight(value){night=value;document.body.dataset.night=String(value);
 $('night-toggle').addEventListener('click',()=>{const value=night?0:1;story.setNight(value);syncNight(!!value);sceneAPI?.setNight(value);document.body.dataset.nightProgress=String(value);});
 let mode = '3d';
 let selected = 'overview';
+let labelPreviewUntil=0,labelPreviewTimer=0,labelsDismissed=false;
+function syncSceneLabels(){
+  const touring=Boolean(tourTimer)||(!autoTourCancelled&&['tour','orbit'].includes(storyState?.phase));
+  const briefOverview=storyState?.seconds>=31&&storyState.seconds<36&&!labelsDismissed;
+  const visible=entered&&mode==='3d'&&selected==='overview'&&!touring&&$('emotion-panel').hidden&&storyState?.navigation&&(briefOverview||performance.now()<labelPreviewUntil);
+  $('labels').style.visibility=visible?'visible':'hidden';
+  $('labels-toggle').setAttribute('aria-pressed',String(Boolean(visible)));
+}
+function dismissSceneLabels(){labelsDismissed=true;labelPreviewUntil=0;clearTimeout(labelPreviewTimer);syncSceneLabels();}
+function previewSceneLabels(){
+  clearTimeout(labelPreviewTimer);labelPreviewUntil=performance.now()+5000;
+  labelPreviewTimer=setTimeout(()=>{labelPreviewUntil=0;syncSceneLabels();},5000);syncSceneLabels();
+}
 function selectPlace(key, show = true, automated = false) {
   if(!automated)stopTour();
   selected = key;syncLineup();
+  if(key==='overview'&&!automated)previewSceneLabels();else{labelPreviewUntil=0;clearTimeout(labelPreviewTimer);}syncSceneLabels();
   document.body.dataset.cameraView = key;
   const info = places[key];
   document.querySelectorAll('[data-view]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.view === key)));
@@ -52,7 +66,7 @@ function setMode(next) {
   $('scene').hidden = mode === 'plan';
   $('labels-toggle').disabled = mode === 'plan';
   $('navigation-hint').textContent = mode === 'plan' ? 'Select a place for details' : mobile() ? 'Drag to orbit · pinch to zoom' : 'Drag to look around · scroll to move closer';
-  sceneAPI?.setVisible(mode === '3d' && entered);
+  syncSceneLabels();sceneAPI?.setVisible(mode === '3d' && entered);
   if (mode === '3d') sceneAPI?.go(selected, true);
 }
 document.querySelectorAll('[data-view]').forEach(b => b.addEventListener('click', () => selectPlace(b.dataset.view)));
@@ -60,9 +74,9 @@ $('interior-view').addEventListener('click',()=>{stopTour();sceneAPI?.go('interi
 $('place-close').addEventListener('click', () => { $('place-card').hidden = true; (mobile() ? $('emotion-toggle') : document.querySelector(`[data-view="${selected}"]`)).focus(); });
 $('reset-view').addEventListener('click', () => selectPlace('overview', false));
 $('labels-toggle').addEventListener('click', () => {
-  const visible = $('labels-toggle').getAttribute('aria-pressed') !== 'true';
-  $('labels-toggle').setAttribute('aria-pressed', String(visible));
-  $('labels').hidden = !visible;
+  if($('labels-toggle').getAttribute('aria-pressed')==='true'){
+    dismissSceneLabels();
+  }else if(selected==='overview'&&$('emotion-panel').hidden){labelsDismissed=false;previewSceneLabels();}
 });
 document.querySelector('.landing-name').addEventListener('click',()=>$('vision').showModal());
 $('about-open').addEventListener('click', () => $('vision').showModal());
@@ -135,21 +149,20 @@ function applyStory(state){
   const orbitActive=state.phase==='orbit'&&!autoTourCancelled&&!reduced.matches&&mode==='3d';
   document.body.dataset.cinematic=String(orbitActive);
   if(orbitActive){if(!lastAutoView?.startsWith('orbit')){emotionPanel(false);$('place-card').hidden=true;lineupOverride=null;lastAutoView='orbit';}sceneAPI?.orbit(state.seconds-ORBIT_START);}
-  $('labels').style.visibility=state.navigation&&!orbitActive?'':'hidden';
   if(state.tourView&&!autoTourCancelled&&state.tourView!==lastAutoView){lastAutoView=state.tourView;selectPlace(state.tourView,true,true);if(state.tourView==='overview'&&innerWidth>=1100)emotionPanel(true);}
   const autoActive=!autoTourCancelled&&(state.phase==='tour'||orbitActive);document.body.dataset.tourActive=String(autoActive);if(!tourTimer){$('tour-toggle').textContent=autoActive?'Stop tour':'Tour';$('tour-toggle').setAttribute('aria-pressed',String(autoActive));}
-  document.body.dataset.tourStep=state.tourView||'';syncLineup();
+  document.body.dataset.tourStep=state.tourView||'';syncLineup();syncSceneLabels();
 }
-function startStory(){stopTour();autoTourCancelled=false;lastAutoView=null;lineupOverride=null;emotionPanel(false);$('place-card').hidden=true;selectPlace('overview',false,true);story.start();}
+function startStory(){stopTour();labelsDismissed=false;labelPreviewUntil=0;clearTimeout(labelPreviewTimer);autoTourCancelled=false;lastAutoView=null;lineupOverride=null;emotionPanel(false);$('place-card').hidden=true;selectPlace('overview',false,true);story.start();}
 $('replay-story').addEventListener('click',()=>{media.start();startStory();});
-function stopTour(){autoTourCancelled=true;document.body.dataset.cinematic='false';if(storyState?.navigation)$('labels').style.visibility='';document.body.dataset.tourActive='false';clearTimeout(tourTimer);tourTimer=0;$('tour-toggle').setAttribute('aria-pressed','false');$('tour-toggle').textContent='Tour';}
+function stopTour(){autoTourCancelled=true;document.body.dataset.cinematic='false';document.body.dataset.tourActive='false';clearTimeout(tourTimer);tourTimer=0;$('tour-toggle').setAttribute('aria-pressed','false');$('tour-toggle').textContent='Tour';syncSceneLabels();}
 $('tour-toggle').addEventListener('click',()=>{
   if(tourTimer||(!autoTourCancelled&&['tour','orbit'].includes(storyState?.phase))){stopTour();return;}
   stopTour();let n=0;const route=['truck','main','food','play','river','support','fashion'];
   $('tour-toggle').setAttribute('aria-pressed','true');$('tour-toggle').textContent='Stop tour';
   const next=()=>{if(n>=route.length){stopTour();selectPlace('overview',false,true);return;}tourTimer=setTimeout(next,n+1===route.length?10000:5000);selectPlace(route[n++],true,true);};next();
 });
-function emotionPanel(open){$('emotion-panel').hidden=!open;$('emotion-toggle').setAttribute('aria-expanded',String(open));document.body.dataset.emotionPanel=String(open);}
+function emotionPanel(open){$('emotion-panel').hidden=!open;$('emotion-toggle').setAttribute('aria-expanded',String(open));document.body.dataset.emotionPanel=String(open);if(open){labelPreviewUntil=0;clearTimeout(labelPreviewTimer);}syncSceneLabels();}
 $('emotion-toggle').addEventListener('click',()=>{stopTour();emotionPanel($('emotion-panel').hidden);});
 $('emotion-close').addEventListener('click',()=>{emotionPanel(false);$('emotion-toggle').focus();});
 document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!$('emotion-panel').hidden)emotionPanel(false);});
@@ -437,7 +450,7 @@ async function buildWorld() {
   const presets={
     overview:{pos:[65,51,82],target:[-1,0,0]},
     truck:{pos:[-62,4.8,28],target:[-40,2.5,27]},
-    main:{pos:[21,12,19],target:[0,3,-12]},
+    main:{pos:[0,3.2,12],target:[2.5,2,-12]},
     interior:{pos:[0,3.2,-1],target:[0,3.1,-18.9]},
     food:{pos:[-14,5,4],target:[-25,2,-10]},
     play:{pos:[-31,3.7,24],target:[-25.4,1.2,18]},
@@ -473,7 +486,6 @@ async function buildWorld() {
     crowd.visitors.traverse(o=>{if(o.isInstancedMesh)o.count=Math.floor(70*value.programme)*(o.userData.fullCount/70);});
     document.body.dataset.revealed=Object.keys(buildings).filter(k=>value[k]>=1).join(',');
     document.querySelectorAll('#place-list,.view-tools').forEach(e=>e.inert=!value.navigation);
-    $('labels').style.visibility=value.navigation?'':'hidden';
     if(value.seconds<32)renderer.shadowMap.needsUpdate=true;needsFrame=true;requestFrame();
   }
   function setRain(value){features.setRain(value);needsFrame=true;renderer.shadowMap.needsUpdate=true;requestFrame();}
@@ -500,11 +512,11 @@ async function buildWorld() {
   }
   function resize(){const w=$('world').clientWidth,h=$('world').clientHeight;camera.aspect=w/h;camera.fov=mobile()?50:41;controls.maxDistance=portraitMobile()?310:mobile()?240:155;scene.fog.near=mobile()?205:115;scene.fog.far=mobile()?390:255;camera.updateProjectionMatrix();renderer.setSize(w,h);needsFrame=true;if(selected==='overview'&&!cinematicCamera)go('overview',true);requestFrame();}
   addEventListener('resize',resize);
-  controls.addEventListener('start',()=>{cinematicCamera=false;tween=null;stopTour();syncLineup();});
+  controls.addEventListener('start',()=>{cinematicCamera=false;tween=null;dismissSceneLabels();stopTour();syncLineup();});
   controls.addEventListener('change',()=>{needsFrame=true;requestFrame();});
   canvas.addEventListener('keydown',(e)=>{
     if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','+','-','='].includes(e.key))return;
-    e.preventDefault();cinematicCamera=false;stopTour();syncLineup();tween=null;const sph=new THREE.Spherical().setFromVector3(camera.position.clone().sub(controls.target));
+    e.preventDefault();cinematicCamera=false;dismissSceneLabels();stopTour();syncLineup();tween=null;const sph=new THREE.Spherical().setFromVector3(camera.position.clone().sub(controls.target));
     if(e.key==='ArrowLeft')sph.theta-=.12;if(e.key==='ArrowRight')sph.theta+=.12;if(e.key==='ArrowUp')sph.phi=Math.max(.1,sph.phi-.1);if(e.key==='ArrowDown')sph.phi=Math.min(Math.PI*.485,sph.phi+.1);
     if(e.key==='+'||e.key==='=')sph.radius=Math.max(12,sph.radius*.9);if(e.key==='-')sph.radius=Math.min(controls.maxDistance,sph.radius*1.1);
     camera.position.copy(controls.target).add(new THREE.Vector3().setFromSpherical(sph));controls.update();needsFrame=true;requestFrame();

@@ -708,3 +708,10 @@ Ben approved the waveform. The tagline uses clean colour fills only. Use a satur
 - Preserve the approved sky/forest composition, lightning bolt, gold words, waveform and copy. Honour reduced-motion preferences.
 - Ben approved the discussed About placement and copy: keep the title and “A free travelling mental health lab.”, then introduce **Electronic music and fashion as mindfulness** before **The day**. The opening reads: “Making a beat. Designing a garment. Listening closely. Creating together. Universal Mind brings electronic music and fashion together as a mindfulness experience, using creativity to practise presence, self-awareness and connection.”
 - In the existing **Change your emotions. Change your world.** section, introduce the technical explanation with: “Through Apple Watch biofeedback, participants explore emotional regulation as the light and sound around them respond.” Retain the detailed SIX explanation, three connections, free access, dissolving stigma and referral pathways.
+
+
+## Quiet tour labels and main pavilion view — 3 November 2026
+
+- Floating place labels appear only as a five-second guide on the completed wide site view. Hide them throughout the guided tour, manual destination close-ups and continuous camera circuit. The final overview with the biofeedback card has no floating labels. The desktop Labels action can briefly show them again in an unobstructed overview.
+- Keep the bottom destination navigation and right-hand destination card during desktop tours.
+- The main pavilion destination opens from the front at visitor height, looking under the arch toward the dance floor, audience and live band. Follow Ben's 6.46 pm reference: the party is the focus, with the roof framing it.
