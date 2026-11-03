@@ -1,6 +1,6 @@
 import { icon } from './icons.mjs?v=20261103mobile1';
 import { orbitPose, mobileOverviewPose } from './orbit.mjs?v=20261103portrait1';
-import { createActivities } from './activities.mjs?v=20261103activities1';
+import { createActivities } from './activities.mjs?v=20261103purpose1';
 import { createPerformance } from './performance.mjs?v=20261103orbit1';
 import { initMedia } from './media.mjs?v=20261103mobile1';
 import { createStory, ORBIT_START, STORY_END } from './story.mjs?v=20261103orbit1';
@@ -13,9 +13,9 @@ const status = (message) => { $('scene-status').textContent = message; };
 const places = {
   overview: { number: '01 · THE CLEARING', title: 'The clearing', copy: 'An open green space for creative learning, emotional awareness and connection. Music, fashion and mindfulness bring people together, with support close at hand.' },
   main: { number: '02 · MAIN PAVILION', title: 'Main pavilion', copy: 'Music, fashion and collective experiences gather beneath a single vaulted shell, opening onto the lawn. An open dance floor sits among Moroso Tropicália lounges by Patricia Urquiola and hanging seats.' },
-  food: { number: '03 · FOOD & PLAY', title: 'Food and play', copy: 'Cooking workshops, shared food and creative activities invite people to learn together. Flowing pavilions open onto the lawn and a sculptural playground.' },
-  play: { number: '04 · PLAYGROUND', title: 'Sculptural playground', copy: 'Sculptural play architecture inspired by Zaha Hadid Architects (ZHA). A fluid bridge rises from the lawn, with a walk-through arch, a gently curving upper route and rainbow metallic surfaces in aluminium or stainless steel.' },
-  river: { number: '05 · BY THE WATER', title: 'Apple Music area', copy: 'Transparent tubular listening pylons, Moroso Tropicália furniture by Patricia Urquiola and AKG K812 headphones create space for focused listening, reflection and mindfulness by the water.' },
+  food: { number: '03 · INTERNATIONAL FOOD FAIR', title: 'International Food Fair', copy: 'Food from around the world, cooking workshops and a shared dining experience bring people together beneath the food pavilion.' },
+  play: { number: '04 · MOBILE MUSIC MAKING', title: 'Mobile music making', copy: 'Make electronic music together on mobile devices. Shared waveforms connect each phone, while a central 360-degree speaker brings the group’s beats to life beneath the sculptural pavilion.' },
+  river: { number: '05 · APPLE LISTENING PODS', title: 'Apple listening pods', copy: 'Transparent tubular listening pylons, Moroso Tropicália furniture by Patricia Urquiola and AKG K812 headphones create space for focused listening, reflection and mindfulness by the water.' },
   fashion: { number: '07 · FASHION', title: 'Fashion runway', copy: 'The central approach becomes a runway for Indigenous fashion, self-expression and creative exchange. Models walk among moving images and sculptures, connecting fashion with identity and confidence.' },
   support: { number: '06 · SUPPORT AREA', title: 'Support & connection', copy: 'A shared support space bringing together headspace, Médecins Sans Frontières (MSF), and the Australian Association of Buddhist Counsellors and Psychotherapists (AABCAP). School nominations and headspace referrals connect participants with a welcome conversation, optional support and onward care.' }
 };
@@ -179,7 +179,7 @@ syncFullscreen();
 
 async function buildWorld() {
   const THREE = await import('three');
-  const [{OrbitControls},{createArchitecture},{createSiteFeatures},{createCrowd,createRunwayCrowd},{createLightShow},{createRunway}]=await Promise.all([import('./vendor/OrbitControls.js'),import('./architecture.mjs?v=20261103activities1'),import('./site-features.mjs?v=20261103orbit1'),import('./crowd.mjs?v=20261103orbit1'),import('./light-show.mjs?v=20261103orbit1'),import('./runway.mjs?v=20261103orbit1')]);
+  const [{OrbitControls},{createArchitecture},{createSiteFeatures},{createCrowd,createRunwayCrowd},{createLightShow},{createRunway}]=await Promise.all([import('./vendor/OrbitControls.js'),import('./architecture.mjs?v=20261103purpose1'),import('./site-features.mjs?v=20261103orbit1'),import('./crowd.mjs?v=20261103orbit1'),import('./light-show.mjs?v=20261103orbit1'),import('./runway.mjs?v=20261103orbit1')]);
   const architecture=createArchitecture(THREE);
   let seed = 1947;
   const random = () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; };
@@ -347,9 +347,9 @@ async function buildWorld() {
   const activities=createActivities(THREE,architecture);scene.add(activities.group);
   crowd.visitors.traverse(o=>{if(o.isInstancedMesh)o.userData.fullCount=o.count;});
   const contextStart=scene.children.length;
-  // Contextual proposal identities: physical flags, a vehicle and a staff uniform.
+  // Contextual proposal identities: physical flags and a support vehicle.
   const images = Object.fromEntries(await Promise.all([
-    ['flower','universal-mind-flower.png'],['headspace','headspace.svg'],['msf','msf.svg'],['education','nsw-government.svg'],['apple','apple-music.svg'],['vogue','vogue.png']
+    ['flower','universal-mind-flower.png'],['headspace','headspace.svg'],['msf','msf.svg'],['education','nsw-government.svg'],['apple','apple-music.svg'],['vogue','vogue.png'],['un','un-flag.png']
   ].map(async ([key,file]) => {
     const image = new Image(); image.src = new URL('./assets/'+file,import.meta.url).href;
     await image.decode(); return [key,image];
@@ -383,6 +383,24 @@ async function buildWorld() {
     return group;
   }
   flag('headspace',-28.5,-26.5,.55);flag('msf',-40,-22,2.65);flag('flower',12.6,-1,.55);flag('education',-7.6,30,.6);flag('apple',25,5);flag('vogue',7.6,30,-.6);
+  // Rectangular cultural flags keep their own proportions and colours.
+  function foodFlag(name,x,z,angle,aspect,paint){
+    const canvas=document.createElement('canvas');canvas.width=900;canvas.height=Math.round(900/aspect);paint(canvas.getContext('2d'),canvas.width,canvas.height);
+    const map=new THREE.CanvasTexture(canvas);map.colorSpace=THREE.SRGBColorSpace;map.anisotropy=Math.min(8,renderer.capabilities.getMaxAnisotropy());
+    const g=new THREE.Group();g.name=name+' · International Food Fair';g.position.set(x,0,z);g.rotation.y=angle;g.scale.setScalar(.43);scene.add(g);
+    const pole=mesh(new THREE.CylinderGeometry(.055,.075,6.8,10),poleMat,g);pole.position.y=3.4;
+    const base=mesh(new THREE.CylinderGeometry(.4,.5,.15,24),mats.stone,g);base.position.y=.075;
+    const geo=new THREE.PlaneGeometry(1,1,24,14),a=geo.attributes.position;
+    for(let i=0;i<a.count;i++){const u=a.getX(i)+.5,v=a.getY(i)+.5;a.setXYZ(i,.09+u*4.1,5.05+(v-.5)*4.1/aspect,.12*Math.sin(u*7+v*1.6)*u);}
+    geo.computeVertexNormals();animatedFlags.push({geometry:geo,base:a.array.slice()});
+    mesh(geo,new THREE.MeshStandardMaterial({map,roughness:.96,side:THREE.DoubleSide}),g);return g;
+  }
+  foodFlag('United Nations flag',-29.2,-3.8,.15,1.5,(c,w,h)=>c.drawImage(images.un,0,0,w,h));
+  foodFlag('Australian Aboriginal flag',-32.2,-8.3,.15,2,(c,w,h)=>{c.fillStyle='#111111';c.fillRect(0,0,w,h/2);c.fillStyle='#d52626';c.fillRect(0,h/2,w,h/2);c.fillStyle='#ffd52c';c.beginPath();c.arc(w/2,h/2,h/4,0,Math.PI*2);c.fill();});
+  foodFlag('Japan flag',-30.5,-13.5,.15,1.5,(c,w,h)=>{c.fillStyle='#ffffff';c.fillRect(0,0,w,h);c.fillStyle='#bc002d';c.beginPath();c.arc(w/2,h/2,h*.3,0,Math.PI*2);c.fill();});
+  foodFlag('France flag',-19.1,-6,.15,1.5,(c,w,h)=>{['#002654','#ffffff','#ed2939'].forEach((colour,i)=>{c.fillStyle=colour;c.fillRect(i*w/3,0,w/3,h);});});
+  foodFlag('Italy flag',-19.3,-14,.15,1.5,(c,w,h)=>{['#009246','#ffffff','#ce2b37'].forEach((colour,i)=>{c.fillStyle=colour;c.fillRect(i*w/3,0,w/3,h);});});
+  document.body.dataset.foodFlags='United Nations|Australian Aboriginal|Japan|France|Italy';
   const messagePalette=['#5ab8f5','#f7da59','#f486c3','#8edcb0'];
   const messagePlacements=[['Peace',-10,40,.4],['Love',16,31,-.5],['Unity',-14,16,.3],['Respect',29,18,-.5],['PLUR',-18,-17,.4],['This Too Shall Pass',18,-30,.3],['Kindness',-28,-30,.4],['Namaste',30,-4,-.45]];
   for(const [i,[text,x,z,angle]] of messagePlacements.entries()){
@@ -402,12 +420,6 @@ async function buildWorld() {
   const booth=new THREE.Group();booth.name='Proposed headspace welcome booth';booth.position.set(-36.8,0,-23.4);booth.rotation.y=.45;scene.add(booth);
   const counter=mesh(new THREE.BoxGeometry(2.6,1.05,.85),mats.timber,booth);counter.position.y=.525;
   const sign=mesh(new THREE.BoxGeometry(1.7,.38,.05),new THREE.MeshStandardMaterial({color:'#f5f4eb',roughness:1}),booth);sign.position.set(0,.63,.45);decal('headspace',1.5,.34,booth,0,.63,.48);
-  const staff=new THREE.Group();staff.name='Illustrative headspace staff figure';staff.position.set(-28.8,.08,-16.7);staff.rotation.y=.55;scene.add(staff);
-  const uniform=new THREE.MeshStandardMaterial({color:'#d6e0cc',roughness:1}),trousers=new THREE.MeshStandardMaterial({color:'#455853',roughness:1}),skin=new THREE.MeshStandardMaterial({color:'#ac8462',roughness:.9});
-  const torso=mesh(new THREE.BoxGeometry(.48,.62,.26),uniform,staff);torso.position.y=1.08;
-  const head=mesh(new THREE.SphereGeometry(.145,18,12),skin,staff);head.position.y=1.58;
-  for(const side of [-1,1]){const leg=mesh(new THREE.CylinderGeometry(.075,.06,.72,10),trousers,staff);leg.position.set(side*.13,.36,0);const arm=mesh(new THREE.CapsuleGeometry(.065,.46,4,10),uniform,staff);arm.position.set(side*.3,1.03,0);arm.rotation.z=side*.1;}
-  decal('headspace',.38,.14,staff,0,1.22,.137);decal('headspace',.38,.14,staff,0,1.22,-.137,Math.PI);
   const vehicle=new THREE.Group();vehicle.name='Illustrative MSF support vehicle';vehicle.position.set(-36,.12,-15);vehicle.rotation.y=.55;scene.add(vehicle);
   const paint=new THREE.MeshStandardMaterial({color:'#f0f1e9',roughness:.38,metalness:.12}),rubber=new THREE.MeshStandardMaterial({color:'#303531',roughness:.95}),glass=new THREE.MeshStandardMaterial({color:'#6f898b',roughness:.18,metalness:.28});
   function vehicleBox(w,h,d,material,x,y,z){const part=mesh(new THREE.BoxGeometry(w,h,d),material,vehicle);part.position.set(x,y,z);return part;}
@@ -421,7 +433,7 @@ async function buildWorld() {
   vehicleBox(2.16,.17,.22,rubber,0,.52,2.27);vehicleBox(2.16,.17,.22,rubber,0,.52,-2.27);
   document.body.dataset.brandAssets='ready';
   const contextDecor=new THREE.Group();const contextObjects=scene.children.slice(contextStart);contextObjects.forEach(o=>contextDecor.add(o));scene.add(contextDecor);
-  const anchorData=[['main','Main pavilion',[0,8.4,-12]],['food','Food',[-24,6.5,-9]],['play','Playground',[-17,3.8,31]],['river','Apple Music area',[22,1.3,8]],['support','Support',[-32,3,-20]],['fashion','Fashion runway',[0,2.2,24]]];
+  const anchorData=[['main','Main pavilion',[0,8.4,-12]],['food','International Food Fair',[-24,6.5,-9]],['play','Mobile music making',[-26,2.9,18]],['river','Apple listening pods',[22,1.3,8]],['support','Support',[-32,3,-20]],['fashion','Fashion runway',[0,2.2,24]]];
   const anchors=anchorData.map(([key,label,p])=>{
     const el=document.createElement('button');el.className='scene-label';el.dataset.key=key;el.tabIndex=-1;el.innerHTML='<i></i>'+label;el.addEventListener('click',()=>selectPlace(key));$('labels').append(el);return {el,p:new THREE.Vector3(...p)};
   });
@@ -429,8 +441,8 @@ async function buildWorld() {
     overview:{pos:[65,51,82],target:[-1,0,0]},
     main:{pos:[21,12,19],target:[0,3,-12]},
     interior:{pos:[0,3.2,-1],target:[0,3.1,-18.9]},
-    food:{pos:[11,23,43],target:[-20,2,11]},
-    play:{pos:[0,8,45],target:[-17,1.6,31]},
+    food:{pos:[-14,5,4],target:[-25,2,-10]},
+    play:{pos:[-31,3.7,24],target:[-25.4,1.2,18]},
     river:{pos:[32,5,23],target:[23,1.7,10]},
     support:{pos:[-25,7,-12],target:[-33.7,1.1,-23.2]},
     fashion:{pos:[16,9,46],target:[0,1.5,23]}

@@ -2,12 +2,12 @@
 export function createActivities(THREE, architecture) {
   const group=new THREE.Group();group.name='Support, play and collaborative music';
   const support=new THREE.Group(),play=new THREE.Group(),music=new THREE.Group();group.add(support,play,music);
-  support.name='Three seated children, yoga and a doctor';play.name='Three children sliding';music.name='Phone music circle';
+  support.name='Three seated children, yoga and two female doctors';play.name='Three children sliding';music.name='Phone music circle';
   const V=(...p)=>new THREE.Vector3(...p),up=V(0,1,0);
   const material=new THREE.MeshStandardMaterial({vertexColors:true,roughness:.8});
   const glow=new THREE.MeshBasicMaterial({color:'#6de3e6',side:THREE.DoubleSide});
   const actors=[],phones=[],waves=[];
-  function person({skin='#80533d',shirt='#5a9c9c',pose='seated',scale=.78,doctor=false}){
+  function person({skin='#80533d',shirt='#5a9c9c',pose='seated',scale=.78,doctor=false,hairColour='#242526'}){
     const root=new THREE.Group(),parts=[];
     function part(geo,colour,position=[0,0,0],rotation=null){
       const matrix=new THREE.Matrix4().compose(V(...position),rotation||new THREE.Quaternion(),V(1,1,1));geo.applyMatrix4(matrix);parts.push({geo,colour});
@@ -32,22 +32,29 @@ export function createActivities(THREE, architecture) {
       legs=[[[-.1,1.15,-.15],[-.14,.61,-.48],[-.16,.09,-.87]],[[.1,1.15,-.15],[.14,.61,-.48],[.16,.09,-.87]]];
       arms=[[ls,[-.18,.38,.73],[-.2,.06,1.03]],[rs,[.18,.38,.73],[.2,.06,1.03]]];
     }else if(doctor){
-      hip=[0,.93,0];neck=[0,1.5,0];head=[0,1.7,0];ls=[-.23,1.44,0];rs=[.23,1.44,0];
+      hip=[0,.96,0];neck=[0,1.5,0];head=[0,1.7,0];ls=[-.19,1.44,0];rs=[.19,1.44,0];
       legs=[[[-.11,.93,0],[-.12,.49,0],[-.13,.09,0]],[[.11,.93,0],[.12,.49,.02],[.13,.09,.04]]];
       arms=[[ls,[-.28,1.15,.03],[-.27,.93,.1]],[rs,[.35,1.2,.1],[.46,1.24,.24]]];
     }
-    bone(hip,neck,doctor?.235:.19,doctor?'#f3f4ed':shirt,doctor?.29:.22);
+    if(doctor){
+      bone([0,1.03,0],[0,1.43,0],.20,'#f3f4ed',.15);
+      const skirt=new THREE.CylinderGeometry(.15,.29,.53,16);skirt.scale(1,1,.72);part(skirt,'#f3f4ed',[0,.81,0]);
+    }else bone(hip,neck,.19,shirt,.22);
     ball(hip,.16,'#354551',[1.1,.6,.78]);
-    legs.forEach(points=>{bone(points[0],points[1],.08,'#354551');bone(points[1],points[2],.065,'#354551');ball(points[2],.078,skin,[.75,.6,1.7]);});
+    legs.forEach(points=>{bone(points[0],points[1],.08,'#354551');bone(points[1],points[2],.065,'#354551');if(doctor){const [x,y,z]=points[2];ball([x,y+.035,z+.065],.08,'#26343d',[.8,.55,1.65]);box([x,.045,z-.04],[.035,.09,.04],'#26343d');}else ball(points[2],.078,skin,[.75,.6,1.7]);});
     arms.forEach(points=>{bone(points[0],points[1],.065,doctor?'#f3f4ed':shirt);bone(points[1],points[2],.047,doctor?'#f3f4ed':skin);ball(points[2],.055,skin,[.8,1,.8]);});
     bone(neck,head,.06,skin);ball(head,.13,skin,[.84,1.12,.86]);
-    const hair=new THREE.SphereGeometry(.137,12,8,0,Math.PI*2,0,Math.PI*.58);hair.scale(.9,.9,.94);part(hair,'#242526',[head[0],head[1]+.04,head[2]-.01]);
+    const hair=new THREE.SphereGeometry(.137,12,8,0,Math.PI*2,0,Math.PI*.58);hair.scale(.9,.9,.94);part(hair,hairColour,[head[0],head[1]+.04,head[2]-.01]);
+    if(doctor){
+      ball([0,1.51,-.09],.14,hairColour,[1.04,1.85,.65]);
+      for(const side of [-1,1])ball([side*.115,1.51,-.02],.075,hairColour,[.65,2.2,.82]);
+    }
     ball([head[0],head[1]-.015,head[2]+.11],.023,skin);
     // Closed eyes on the seated figures make the pose legible at closer range.
     if(pose==='seated')for(const x of [-.045,.045])bone([x-.018,head[1]+.015,.108],[x+.018,head[1]+.015,.108],.006,'#30292a');
     if(doctor){
-      box([0,1.16,.205],[.018,.56,.012],'#b8c5c4');
-      for(const x of [-.16,.16])box([x,1.02,.205],[.10,.12,.018],'#e1e6e1');
+      box([0,.94,.205],[.014,.76,.012],'#b8c5c4');
+      for(const x of [-.16,.16])box([x,.76,.193],[.10,.12,.018],'#e1e6e1');
       box([-.14,1.34,.205],[.09,.11,.025],'#51a7a2');
       tube([[-.11,1.48,.15],[-.16,1.3,.23],[-.1,1.18,.24],[0,1.14,.24],[.09,1.23,.23],[.1,1.47,.15]],.016,'#23444e');
       tube([[0,1.14,.24],[.04,1.04,.25],[.12,1.09,.25]],.013,'#23444e');
@@ -57,7 +64,7 @@ export function createActivities(THREE, architecture) {
     for(const {geo,colour} of parts){const g=geo.index?geo.toNonIndexed():geo,p=g.attributes.position,n=g.attributes.normal,c=new THREE.Color(colour);for(let i=0;i<p.count;i++){positions.push(p.getX(i),p.getY(i),p.getZ(i));normals.push(n.getX(i),n.getY(i),n.getZ(i));colours.push(c.r,c.g,c.b);}if(g!==geo)g.dispose();geo.dispose();}
     const geo=new THREE.BufferGeometry();geo.setAttribute('position',new THREE.Float32BufferAttribute(positions,3));geo.setAttribute('normal',new THREE.Float32BufferAttribute(normals,3));geo.setAttribute('color',new THREE.Float32BufferAttribute(colours,3));
     const body=new THREE.Mesh(geo,material);body.castShadow=true;body.receiveShadow=true;root.add(body);root.scale.setScalar(scale);
-    root.userData={role:doctor?'doctor':pose,skin};actors.push(root);
+    root.userData={role:doctor?'doctor':pose,skin,...(doctor?{gender:'female',coat:'long',footwear:'heels',hair:'long',stethoscope:true}:{})};actors.push(root);
     return root;
   }
   function place(parent,actor,x,y,z,yaw=0){actor.position.set(x,y,z);actor.rotation.y=yaw;parent.add(actor);return actor;}
@@ -68,7 +75,8 @@ export function createActivities(THREE, architecture) {
   }
   mat(support,-31.8,-24,1.05,2.25,'#9cbec1',.3);
   place(support,person({skin:'#744a35',shirt:'#d299aa',pose:'yoga'}),-31.8,.15,-24,.3).name='Downward-facing dog';
-  place(support,person({skin:'#9b6b50',doctor:true,scale:1}),-31.1,.08,-21.9,.55).name='Doctor with lab coat and stethoscope';
+  place(support,person({skin:'#9b6b50',doctor:true,scale:1,hairColour:'#30251f'}),-31.1,.08,-21.9,.55).name='Female doctor with long lab coat, heels and stethoscope';
+  place(support,person({skin:'#c48c6d',doctor:true,scale:1,hairColour:'#73452e'}),-35.8,.08,-21.5,.7).name='Female headspace clinician with long lab coat, heels and stethoscope';
 
   const sliding=[];
   for(let i=0;i<3;i++){const child=person({skin:['#724a37','#b27a55','#543a2f'][i],shirt:['#edac61','#7ac2c6','#b18bc8'][i],pose:'slide',scale:.74});child.name='Sliding child '+(i+1);play.add(child);sliding.push(child);}
@@ -127,5 +135,5 @@ export function createActivities(THREE, architecture) {
     return true;
   }
   update(0,true);group.visible=false;
-  return {group,update,setStory(value){group.visible=value.programme>0;support.visible=value.support>=1;play.visible=value.playground>=1;music.visible=value.park>=1;},stats:{meditatingChildren:3,yogaChildren:1,doctors:1,slidingChildren:3,musicMakingChildren:3,deviceWaveforms:3,spatialSpeakers:1},snapshot(){return {visible:group.visible,actors:actors.map(a=>({name:a.name,position:a.position.toArray(),role:a.userData.role})),beat:lastBeat,time:lastTime};}};
+  return {group,update,setStory(value){group.visible=value.programme>0;support.visible=value.support>=1;play.visible=value.playground>=1;music.visible=value.park>=1;},stats:{meditatingChildren:3,yogaChildren:1,doctors:2,slidingChildren:3,musicMakingChildren:3,deviceWaveforms:3,spatialSpeakers:1},snapshot(){return {visible:group.visible,actors:actors.map(a=>({name:a.name,position:a.position.toArray(),...a.userData})),beat:lastBeat,time:lastTime};}};
 }

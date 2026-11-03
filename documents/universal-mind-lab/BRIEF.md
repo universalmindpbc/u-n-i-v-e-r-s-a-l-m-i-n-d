@@ -669,7 +669,7 @@ Ben approved the waveform. The tagline uses clean colour fills only. Use a satur
 ## Readable overview and populated activity areas — 3 November 2026
 
 - Portrait phones open farther back, with extra sky above the forest so the large headline stays clear. Replay and the final camera return use the same portrait framing; mobile landscape keeps its existing framing.
-- Daytime headline and artist marks use charcoal on a continuous cream sky field, separating the text from moving foliage. Preserve the approved gold words and waveform. No text shadows, logo shadows or outlines are added. The reading field clears for close-up views and the cinematic circuit, and for night mode; an explicitly displayed lineup retains its reading field in daytime.
+- The broad cream sky field was rejected by Ben. Keep the trees and green landscape visible. Readability is confined to the headline lettering and artist marks, with tight dark backing and light lettering, without shadows or outlines. Preserve the approved gold words and waveform.
 - The headspace support space contains three darker-skinned children sitting cross-legged in meditation, one child in downward-facing dog, and a nearby doctor in a lab coat with a visible stethoscope. Move the welcome counter and flag clear of the activity, and view the group from the open side of the shelter.
 - Three children slide along a smooth ribbon on the sculptural playground. The adjacent rotunda contains three children seated in its Moroso chairs, holding phones and making music together. Animated waveforms link the phones; device screens and a shared 16-step beat grid communicate collaborative beat-making.
 - Figures and activities appear after the facilities are assembled. The animation follows the Motion control and reduced-motion setting. These are fictional scene figures for the proposal.
@@ -682,7 +682,17 @@ Ben approved the waveform. The tagline uses clean colour fills only. Use a satur
 - Open **What you’ll learn** from the main pavilion card and About. This placement was selected by Ben; keep the existing scene toolbar compact.
 - Use a diagram with electronic music making, fashion design and mindfulness connected around **STEAM workshops**. Expand STEAM as science, technology, engineering, arts and mathematics. Retain: **Responding to live cinema, TV and advertising briefs, together as one.**
 - Include resilience training, nervous system regulation, self-awareness, empathy training / EQ, EMDR, sound, mantra, creativity and mindfulness of the body through yoga. The diagram and practices open within the current experience, with readable contrast and internal scrolling on phones.
-- Alternate **Next Generation Lab for Next Generation Humans** and **Together, let’s beat as one.** every eight seconds with a restrained opacity crossfade. Lettering remains level and stationary; the headline footprint stays fixed. Respect reduced motion and the Motion control.
+- Alternate **Next Generation Lab for Next Generation Humans** and **Together, let’s beat as one** every eight seconds with a restrained opacity crossfade. Lettering remains level and stationary; the headline footprint stays fixed. Respect reduced motion and the Motion control.
 - Place the Universal Mind flower to the left of the Universal Mind Lab wordmark at desktop and phone sizes. Preserve the existing wordmark spacing and emphasis.
 - Place a 360-degree speaker at the centre of the phone music-making table. Subtle expanding rings show its output, with shared beat pads arranged around it and animated waveforms connecting the devices.
 - The two original curriculum and day-order sketches are archived in `references/curriculum-20261103/` with a separate source manifest, preserving the earlier reference register.
+
+
+## Purpose-led destinations and preserved landscape — 3 November 2026
+
+- Remove the broad white/cream overlay that obscured the trees. Preserve the actual scene, forest, lawn and overview camera. Keep headline and artist contrast confined to their own footprints.
+- Rename Food & play to **International Food Fair** across navigation, place card, scene label and plan. Move its destination camera closer to the food pavilion and dining activity. Add United Nations, Australian Aboriginal and a small selection of international flags around the food area. Keep national flags rectangular with their own colours.
+- Rename the Playground destination to **Mobile music making**. Frame the three participants holding phones around the central 360-degree speaker; retain the sculptural playground elsewhere in the scene.
+- Rename By the water to **Apple listening pods** in navigation, place card, scene label and plan.
+- Both support clinicians are female, with long lab coats, hair, heels and visible stethoscopes. Retain the meditation and yoga group and the existing support partners.
+- Display **Together, let’s beat as one** without a trailing full stop, matching the other headline treatment.
