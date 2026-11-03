@@ -50,7 +50,7 @@ for(const vp of (quick?[{width:1440,height:1000}]:[{width:393,height:647},{width
  await p.evaluate(()=>{window.__qa.frame(102);window.__qa.view('overview');window.__qa.lineup();});await settle();await p.screenshot({path:out+'/night-'+vp.width+'.png'});
  if(!mobile&&!quick){
   for(const [key,title] of [['food','International Food Fair'],['play','Mobile music making'],['river','Apple listening pods'],['support','Support & connection']]){
-   await p.evaluate(()=>window.__qa.frame(32));await p.locator('#place-list [data-view="'+key+'"]').click();await p.clock.fastForward(1500);await settle();
+   await p.evaluate(()=>{window.__qa.frame(32);window.__qa.view('overview');});await p.locator('#place-list [data-view="'+key+'"]').click();await p.clock.fastForward(1500);await settle();
    assert.equal(await p.locator('#place-title').textContent(),title);
    await p.screenshot({path:out+'/'+key+'.png'});
   }

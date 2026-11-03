@@ -1,0 +1,36 @@
+{
+  "sourceCommit": "f67e917d2",
+  "url": "https://staging.universalmind.tv/lab/",
+  "files": [
+    {
+      "file": "lab/index.html",
+      "sha256": "f8365b784352b8297029df0276ac0ed1b553aa0ce9eb1bf261928fd513b83a15",
+      "httpsMatch": true
+    },
+    {
+      "file": "lab/lab.css",
+      "sha256": "c1960e200d3d755c574e9ce98de187149fa72ac4dc37db52d4f5fe16991697df",
+      "httpsMatch": true
+    },
+    {
+      "file": "lab/lab.mjs",
+      "sha256": "27da3c3e93186cef60d807902b39cc7ac512d92d33a864d20237f0edc4c40eeb",
+      "httpsMatch": true
+    },
+    {
+      "file": "lab/orbit.mjs",
+      "sha256": "9fe5c259bc89c8b3b71732f1fa0e6575aa3932a443b99e0dfb9353c3733fabe4",
+      "httpsMatch": true
+    },
+    {
+      "file": "lab/activities.mjs",
+      "sha256": "3c06c53ef7879a10c2631a8d7db25e54307a6c6944228ed699a75d06e4135e1a",
+      "httpsMatch": true
+    },
+    {
+      "file": "lab/assets/un-flag.png",
+      "sha256": "f93d5393a9ccd4620f3b10b34deedccb1cf1ba9da8833894b67781d649e610cf",
+      "httpsMatch": true
+    }
+  ]
+}

@@ -1,0 +1,265 @@
+{
+  "live": true,
+  "processMuted": true,
+  "mediaStubbed": true,
+  "nativeFullscreenDisabled": true,
+  "testOnlySceneReadout": true,
+  "checks": [
+    {
+      "viewport": {
+        "width": 393,
+        "height": 647
+      },
+      "style": {
+        "bolt": {
+          "left": "246px",
+          "top": "-8px",
+          "width": "46px",
+          "height": "88px"
+        },
+        "heading": "rgb(25, 35, 38)",
+        "headingBackground": "rgba(0, 0, 0, 0)",
+        "headingShadow": "none",
+        "logoInk": "rgb(25, 35, 38)",
+        "skyContent": "none",
+        "skyBackground": "none",
+        "gold": "rgb(214, 176, 0)",
+        "overflow": false
+      },
+      "doctors": [
+        {
+          "name": "Female doctor with long lab coat, heels and stethoscope",
+          "position": [
+            -31.1,
+            0.08,
+            -21.9
+          ],
+          "role": "doctor",
+          "skin": "#9b6b50",
+          "gender": "female",
+          "coat": "long",
+          "footwear": "heels",
+          "hair": "long",
+          "stethoscope": true
+        },
+        {
+          "name": "Female headspace clinician with long lab coat, heels and stethoscope",
+          "position": [
+            -35.8,
+            0.08,
+            -21.5
+          ],
+          "role": "doctor",
+          "skin": "#c48c6d",
+          "gender": "female",
+          "coat": "long",
+          "footwear": "heels",
+          "hair": "long",
+          "stethoscope": true
+        }
+      ],
+      "stats": {
+        "meditatingChildren": 3,
+        "yogaChildren": 1,
+        "doctors": 2,
+        "slidingChildren": 3,
+        "musicMakingChildren": 3,
+        "deviceWaveforms": 3,
+        "spatialSpeakers": 1
+      },
+      "pageErrors": []
+    },
+    {
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "style": {
+        "bolt": {
+          "left": "246px",
+          "top": "-8px",
+          "width": "34px",
+          "height": "88px"
+        },
+        "heading": "rgb(25, 35, 38)",
+        "headingBackground": "rgba(0, 0, 0, 0)",
+        "headingShadow": "none",
+        "logoInk": "rgb(25, 35, 38)",
+        "skyContent": "none",
+        "skyBackground": "none",
+        "gold": "rgb(214, 176, 0)",
+        "overflow": false
+      },
+      "doctors": [
+        {
+          "name": "Female doctor with long lab coat, heels and stethoscope",
+          "position": [
+            -31.1,
+            0.08,
+            -21.9
+          ],
+          "role": "doctor",
+          "skin": "#9b6b50",
+          "gender": "female",
+          "coat": "long",
+          "footwear": "heels",
+          "hair": "long",
+          "stethoscope": true
+        },
+        {
+          "name": "Female headspace clinician with long lab coat, heels and stethoscope",
+          "position": [
+            -35.8,
+            0.08,
+            -21.5
+          ],
+          "role": "doctor",
+          "skin": "#c48c6d",
+          "gender": "female",
+          "coat": "long",
+          "footwear": "heels",
+          "hair": "long",
+          "stethoscope": true
+        }
+      ],
+      "stats": {
+        "meditatingChildren": 3,
+        "yogaChildren": 1,
+        "doctors": 2,
+        "slidingChildren": 3,
+        "musicMakingChildren": 3,
+        "deviceWaveforms": 3,
+        "spatialSpeakers": 1
+      },
+      "pageErrors": []
+    },
+    {
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "style": {
+        "bolt": {
+          "left": "230px",
+          "top": "-8px",
+          "width": "36px",
+          "height": "70px"
+        },
+        "heading": "rgb(25, 35, 38)",
+        "headingBackground": "rgba(0, 0, 0, 0)",
+        "headingShadow": "none",
+        "logoInk": "rgb(25, 35, 38)",
+        "skyContent": "none",
+        "skyBackground": "none",
+        "gold": "rgb(214, 176, 0)",
+        "overflow": false
+      },
+      "doctors": [
+        {
+          "name": "Female doctor with long lab coat, heels and stethoscope",
+          "position": [
+            -31.1,
+            0.08,
+            -21.9
+          ],
+          "role": "doctor",
+          "skin": "#9b6b50",
+          "gender": "female",
+          "coat": "long",
+          "footwear": "heels",
+          "hair": "long",
+          "stethoscope": true
+        },
+        {
+          "name": "Female headspace clinician with long lab coat, heels and stethoscope",
+          "position": [
+            -35.8,
+            0.08,
+            -21.5
+          ],
+          "role": "doctor",
+          "skin": "#c48c6d",
+          "gender": "female",
+          "coat": "long",
+          "footwear": "heels",
+          "hair": "long",
+          "stethoscope": true
+        }
+      ],
+      "stats": {
+        "meditatingChildren": 3,
+        "yogaChildren": 1,
+        "doctors": 2,
+        "slidingChildren": 3,
+        "musicMakingChildren": 3,
+        "deviceWaveforms": 3,
+        "spatialSpeakers": 1
+      },
+      "pageErrors": []
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "style": {
+        "bolt": {
+          "left": "300px",
+          "top": "-5px",
+          "width": "82px",
+          "height": "150px"
+        },
+        "heading": "rgb(25, 35, 38)",
+        "headingBackground": "rgba(0, 0, 0, 0)",
+        "headingShadow": "none",
+        "logoInk": "rgb(25, 35, 38)",
+        "skyContent": "none",
+        "skyBackground": "none",
+        "gold": "rgb(214, 176, 0)",
+        "overflow": false
+      },
+      "doctors": [
+        {
+          "name": "Female doctor with long lab coat, heels and stethoscope",
+          "position": [
+            -31.1,
+            0.08,
+            -21.9
+          ],
+          "role": "doctor",
+          "skin": "#9b6b50",
+          "gender": "female",
+          "coat": "long",
+          "footwear": "heels",
+          "hair": "long",
+          "stethoscope": true
+        },
+        {
+          "name": "Female headspace clinician with long lab coat, heels and stethoscope",
+          "position": [
+            -35.8,
+            0.08,
+            -21.5
+          ],
+          "role": "doctor",
+          "skin": "#c48c6d",
+          "gender": "female",
+          "coat": "long",
+          "footwear": "heels",
+          "hair": "long",
+          "stethoscope": true
+        }
+      ],
+      "stats": {
+        "meditatingChildren": 3,
+        "yogaChildren": 1,
+        "doctors": 2,
+        "slidingChildren": 3,
+        "musicMakingChildren": 3,
+        "deviceWaveforms": 3,
+        "spatialSpeakers": 1
+      },
+      "pageErrors": []
+    }
+  ]
+}
