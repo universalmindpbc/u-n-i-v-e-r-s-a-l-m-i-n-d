@@ -1,0 +1,249 @@
+{
+  "live": true,
+  "processMuted": true,
+  "mediaStubbed": true,
+  "nativeFullscreenDisabled": true,
+  "testOnlySceneReadout": true,
+  "checks": [
+    {
+      "viewport": {
+        "width": 393,
+        "height": 647
+      },
+      "initialCamera": [
+        132.9,
+        145,
+        174.2
+      ],
+      "finalCamera": [
+        132.9,
+        145,
+        174.2
+      ],
+      "style": {
+        "heading": "rgb(25, 35, 38)",
+        "headingShadow": "none",
+        "logos": "rgb(25, 35, 38)",
+        "logoFilter": "none",
+        "skyOpacity": "1",
+        "skyBackground": "linear-gradient(rgb(233, 236, 226) 0%, rgb(233, 236, 226) 81%, rgba(0, 0, 0, 0) 100%)",
+        "gold": "rgb(214, 176, 0)"
+      },
+      "header": {
+        "loaded": true,
+        "flowerRight": 44,
+        "textLeft": 52,
+        "textRight": 286.28125,
+        "viewport": 393,
+        "overflow": false
+      },
+      "learning": {
+        "bounds": {
+          "x": 16,
+          "y": 32.34375,
+          "width": 361,
+          "height": 582.296875,
+          "top": 32.34375,
+          "right": 377,
+          "bottom": 614.640625,
+          "left": 16
+        },
+        "background": "rgb(16, 45, 52)",
+        "title": "rgb(240, 245, 239)",
+        "items": 9,
+        "diagram": "learning-map-title learning-map-desc",
+        "scroll": true
+      },
+      "stats": {
+        "meditatingChildren": 3,
+        "yogaChildren": 1,
+        "doctors": 1,
+        "slidingChildren": 3,
+        "musicMakingChildren": 3,
+        "deviceWaveforms": 3,
+        "spatialSpeakers": 1
+      },
+      "pageErrors": []
+    },
+    {
+      "viewport": {
+        "width": 320,
+        "height": 568
+      },
+      "initialCamera": [
+        132.9,
+        157.64,
+        174.2
+      ],
+      "finalCamera": [
+        132.9,
+        157.64,
+        174.2
+      ],
+      "style": {
+        "heading": "rgb(25, 35, 38)",
+        "headingShadow": "none",
+        "logos": "rgb(25, 35, 38)",
+        "logoFilter": "none",
+        "skyOpacity": "1",
+        "skyBackground": "linear-gradient(rgb(233, 236, 226) 0%, rgb(233, 236, 226) 81%, rgba(0, 0, 0, 0) 100%)",
+        "gold": "rgb(214, 176, 0)"
+      },
+      "header": {
+        "loaded": true,
+        "flowerRight": 37,
+        "textLeft": 44,
+        "textRight": 255.171875,
+        "viewport": 320,
+        "overflow": false
+      },
+      "learning": {
+        "bounds": {
+          "x": 16,
+          "y": 28.40625,
+          "width": 288,
+          "height": 511.1875,
+          "top": 28.40625,
+          "right": 304,
+          "bottom": 539.59375,
+          "left": 16
+        },
+        "background": "rgb(16, 45, 52)",
+        "title": "rgb(240, 245, 239)",
+        "items": 9,
+        "diagram": "learning-map-title learning-map-desc",
+        "scroll": true
+      },
+      "stats": {
+        "meditatingChildren": 3,
+        "yogaChildren": 1,
+        "doctors": 1,
+        "slidingChildren": 3,
+        "musicMakingChildren": 3,
+        "deviceWaveforms": 3,
+        "spatialSpeakers": 1
+      },
+      "pageErrors": []
+    },
+    {
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "initialCamera": [
+        101.99999999999999,
+        90,
+        134
+      ],
+      "finalCamera": [
+        101.99999999999999,
+        90,
+        134
+      ],
+      "style": {
+        "heading": "rgb(25, 35, 38)",
+        "headingShadow": "none",
+        "logos": "rgb(25, 35, 38)",
+        "logoFilter": "none",
+        "skyOpacity": "1",
+        "skyBackground": "linear-gradient(rgb(233, 236, 226) 0%, rgb(233, 236, 226) 70%, rgba(0, 0, 0, 0) 100%)",
+        "gold": "rgb(214, 176, 0)"
+      },
+      "header": {
+        "loaded": true,
+        "flowerRight": 44,
+        "textLeft": 52,
+        "textRight": 337.703125,
+        "viewport": 844,
+        "overflow": false
+      },
+      "learning": {
+        "bounds": {
+          "x": 52,
+          "y": 19.5,
+          "width": 740,
+          "height": 351,
+          "top": 19.5,
+          "right": 792,
+          "bottom": 370.5,
+          "left": 52
+        },
+        "background": "rgb(16, 45, 52)",
+        "title": "rgb(240, 245, 239)",
+        "items": 9,
+        "diagram": "learning-map-title learning-map-desc",
+        "scroll": true
+      },
+      "stats": {
+        "meditatingChildren": 3,
+        "yogaChildren": 1,
+        "doctors": 1,
+        "slidingChildren": 3,
+        "musicMakingChildren": 3,
+        "deviceWaveforms": 3,
+        "spatialSpeakers": 1
+      },
+      "pageErrors": []
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "initialCamera": [
+        65,
+        50.99999999999999,
+        82
+      ],
+      "finalCamera": [
+        65,
+        50.99999999999999,
+        82
+      ],
+      "style": {
+        "heading": "rgb(25, 35, 38)",
+        "headingShadow": "none",
+        "logos": "rgb(25, 35, 38)",
+        "logoFilter": "none",
+        "skyOpacity": "1",
+        "skyBackground": "linear-gradient(rgb(233, 236, 226) 0%, rgb(233, 236, 226) 76%, rgba(0, 0, 0, 0) 100%)",
+        "gold": "rgb(214, 176, 0)"
+      },
+      "header": {
+        "loaded": true,
+        "flowerRight": 74,
+        "textLeft": 86,
+        "textRight": 384.125,
+        "viewport": 1440,
+        "overflow": false
+      },
+      "learning": {
+        "bounds": {
+          "x": 350,
+          "y": 139.421875,
+          "width": 740,
+          "height": 721.15625,
+          "top": 139.421875,
+          "right": 1090,
+          "bottom": 860.578125,
+          "left": 350
+        },
+        "background": "rgb(16, 45, 52)",
+        "title": "rgb(240, 245, 239)",
+        "items": 9,
+        "diagram": "learning-map-title learning-map-desc",
+        "scroll": false
+      },
+      "stats": {
+        "meditatingChildren": 3,
+        "yogaChildren": 1,
+        "doctors": 1,
+        "slidingChildren": 3,
+        "musicMakingChildren": 3,
+        "deviceWaveforms": 3,
+        "spatialSpeakers": 1
+      },
+      "pageErrors": []
+    }
+  ]
+}

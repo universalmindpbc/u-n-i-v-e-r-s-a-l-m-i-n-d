@@ -1,0 +1,82 @@
+{
+  "live": true,
+  "viewport": {
+    "width": 393,
+    "height": 740
+  },
+  "processMuted": true,
+  "mediaStubbed": true,
+  "nativeFullscreenDisabled": true,
+  "naturalAnimationClock": true,
+  "states": [
+    {
+      "time": 2037.4000005722046,
+      "height": 78.46875,
+      "opacity": [
+        "1",
+        "0"
+      ],
+      "transform": [
+        "none",
+        "none"
+      ],
+      "animation": [
+        [
+          {
+            "state": "running",
+            "time": 0
+          }
+        ],
+        [
+          {
+            "state": "running",
+            "time": 0
+          }
+        ]
+      ]
+    },
+    {
+      "time": 10560.900000572205,
+      "height": 78.46875,
+      "opacity": [
+        "0",
+        "1"
+      ],
+      "transform": [
+        "none",
+        "none"
+      ],
+      "animation": [
+        [
+          {
+            "state": "running",
+            "time": 8081.2530001640325
+          }
+        ],
+        [
+          {
+            "state": "running",
+            "time": 8081.2530001640325
+          }
+        ]
+      ]
+    }
+  ],
+  "motionOff": {
+    "time": 11561.800000190735,
+    "height": 78.46875,
+    "opacity": [
+      "1",
+      "0"
+    ],
+    "transform": [
+      "none",
+      "none"
+    ],
+    "animation": [
+      [],
+      []
+    ]
+  },
+  "pageErrors": []
+}

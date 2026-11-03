@@ -1,0 +1,51 @@
+[
+  {
+    "file": "lab/index.html",
+    "status": 200,
+    "sha256": "f4f8ab2ced313ca0672c1e58cd34f23c97fedb8699446f0c2c49c0dde302fd2c",
+    "bytes": 29236,
+    "exactMatch": true
+  },
+  {
+    "file": "lab/lab.css",
+    "status": 200,
+    "sha256": "76e24437637410033291d41ecf9060f5b09a037a10cb7058a80924b22edc8176",
+    "bytes": 61421,
+    "exactMatch": true
+  },
+  {
+    "file": "lab/lab.mjs",
+    "status": 200,
+    "sha256": "3cd1d880062cf6463167cbc26fb1cb256a3b86d72c3994648e39361f21d46bd7",
+    "bytes": 48777,
+    "exactMatch": true
+  },
+  {
+    "file": "lab/activities.mjs",
+    "status": 200,
+    "sha256": "db81c92ef09cb117fd12bdb514590484333fc3f91d3f4d80e831c1f5498693f1",
+    "bytes": 12591,
+    "exactMatch": true
+  },
+  {
+    "file": "lab/architecture.mjs",
+    "status": 200,
+    "sha256": "6aa186831deb24e046100a86b0bb27b04ec4d55d6f7fbdd6e69b0051b43c9dbf",
+    "bytes": 13532,
+    "exactMatch": true
+  },
+  {
+    "file": "lab/orbit.mjs",
+    "status": 200,
+    "sha256": "c7ee2ead7a0a2f2d4bd1700258e7313b51d9b331c2b99d7e25206984576d7070",
+    "bytes": 2133,
+    "exactMatch": true
+  },
+  {
+    "file": "lab/assets/universal-mind-flower.png",
+    "status": 200,
+    "sha256": "9265619edbd83d103f4408933ecdb9a02f7a5392075200c4000fa1ec8a14cdee",
+    "bytes": 485116,
+    "exactMatch": true
+  }
+]
