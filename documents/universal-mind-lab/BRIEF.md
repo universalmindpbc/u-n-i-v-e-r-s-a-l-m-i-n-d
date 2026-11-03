@@ -696,3 +696,15 @@ Ben approved the waveform. The tagline uses clean colour fills only. Use a satur
 - Rename By the water to **Apple listening pods** in navigation, place card, scene label and plan.
 - Both support clinicians are female, with long lab coats, hair, heels and visible stethoscopes. Retain the meditation and yoga group and the existing support partners.
 - Display **Together, let’s beat as one** without a trailing full stop, matching the other headline treatment.
+
+
+## Compact controls, persistent lineup and continuous circuit — 3 November 2026
+
+- Show all four artist logos on mobile and desktop throughout the opening build and the overview. Hide the lineup during the guided destination tour and following camera circuit; restore it on the final overview. Retain the Lineup toggle on desktop.
+- Replace The clearing with **Linfox truck**, opening a close view of the video-wrapped road train. Keep destination numbers in their own column and left-align every wrapped name independently.
+- Remove the Layout and 2D plan selectors. Keep the existing 2D fallback for a graphics failure.
+- Remove the top Music, TV, Motion and settings controls. Keep **Replay**, **About** and fullscreen; hide fullscreen while it is active. Launch still starts the music and the video blend at **7%**. Replay retries playback if a browser blocks the first attempt.
+- Replace the segmented orbit with one uninterrupted circuit at visitor height, with steady movement through all areas, the rear of the stage and the video trucks. Join the circuit with a smooth descent and finish with a smooth pullback to the approved overview. Keep labels and lineup hidden during the circuit.
+- Preserve the approved sky/forest composition, lightning bolt, gold words, waveform and copy. Honour reduced-motion preferences.
+- Ben approved the discussed About placement and copy: keep the title and “A free travelling mental health lab.”, then introduce **Electronic music and fashion as mindfulness** before **The day**. The opening reads: “Making a beat. Designing a garment. Listening closely. Creating together. Universal Mind brings electronic music and fashion together as a mindfulness experience, using creativity to practise presence, self-awareness and connection.”
+- In the existing **Change your emotions. Change your world.** section, introduce the technical explanation with: “Through Apple Watch biofeedback, participants explore emotional regulation as the light and sound around them respond.” Retain the detailed SIX explanation, three connections, free access, dissolving stigma and referral pathways.
