@@ -2,6 +2,7 @@ import {chromium} from '/Users/benkorbel/.cache/codex-runtimes/codex-primary-run
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
+import {createHash} from 'node:crypto';
 const live=process.argv.includes('--live'),origin='https://staging.universalmind.tv';
 const out=live?'documents/universal-mind-lab/qa/tour-focus':'/private/tmp/um-tour-focus-proof';fs.mkdirSync(out,{recursive:true});
 const server=await chromium.launchServer({headless:true,executablePath:'/Users/benkorbel/Library/Caches/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-mac-arm64/chrome-headless-shell',args:['--mute-audio','--use-angle=swiftshader','--enable-unsafe-swiftshader']});assert(server.process().spawnargs.includes('--mute-audio'));
@@ -24,6 +25,13 @@ for(const vp of [{width:1440,height:900},{width:393,height:647}]){
   return r.continue();
  });
  await c.route('**/*.m3u8*',r=>r.abort());
+ if(live&&vp.width===1440){
+  const sources=[];for(const f of ['index.html','lab.mjs']){
+   const response=await c.request.get(origin+'/lab/'+f);assert.equal(response.status(),200);
+   const remote=await response.body(),local=fs.readFileSync('lab/'+f);assert(remote.equals(local));
+   sources.push({file:'lab/'+f,status:response.status(),sha256:createHash('sha256').update(remote).digest('hex')});
+  }fs.writeFileSync(out+'/live-source.json',JSON.stringify({checkedAt:new Date().toISOString(),sources},null,2)+'\n');
+ }
  const p=await c.newPage(),errors=[];p.on('pageerror',e=>errors.push(e.message));
  await p.clock.install();await p.clock.pauseAt(new Date(Date.now()+2000));await p.goto(origin+'/lab/');await p.waitForFunction(()=>document.body.dataset.ready==='true');
  await p.locator('#explore-enter').click();await p.clock.runFor(40);
@@ -58,7 +66,13 @@ for(const vp of [{width:1440,height:900},{width:393,height:647}]){
   await p.locator('#emotion-toggle').click();assert.equal(await p.locator('#labels').evaluate(e=>getComputedStyle(e).visibility),'hidden');
   await p.locator('#emotion-close').click();assert.equal(await p.locator('#labels').evaluate(e=>getComputedStyle(e).visibility),'hidden');
   await p.locator('#tour-toggle').click();assert.equal(await p.locator('#labels').evaluate(e=>getComputedStyle(e).visibility),'hidden');
-  await p.clock.fastForward(6400);await p.clock.runFor(40);assert.equal(await p.locator('#place-title').textContent(),'Main pavilion');assert.equal(await p.locator('#labels').evaluate(e=>getComputedStyle(e).visibility),'hidden');
+  await p.clock.fastForward(5000);await settle();assert.equal(await p.locator('#place-title').textContent(),'Main pavilion');assert.equal(await p.locator('#labels').evaluate(e=>getComputedStyle(e).visibility),'hidden');
+  assert.equal(await p.locator('body').getAttribute('data-lineup-visible'),'false');
+  // CSS transitions run on the compositor clock, separately from the test story clock.
+  await new Promise(resolve=>setTimeout(resolve,900));
+  assert.equal(await p.locator('#artist-lineup').evaluate(e=>getComputedStyle(e).opacity),'0');
+  const tourCamera=await p.evaluate(()=>window.__qa.read());
+  assert(tourCamera.position.every((v,i)=>Math.abs(v-[0,3.2,12][i])<.001));
   await p.screenshot({path:out+'/main-pavilion-tour.png'});await p.locator('#tour-toggle').click();
  }
  await p.locator('#about-open').click();assert.equal(await p.locator('#mindfulness-opening-title').textContent(),'Electronic music and fashion as mindfulness');await p.locator('#about-close').click();
