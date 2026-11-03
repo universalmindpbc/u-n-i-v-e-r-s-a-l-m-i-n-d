@@ -1,0 +1,57 @@
+{
+  "date": "2026-11-03T19:39:38.610Z",
+  "live": true,
+  "processMuted": true,
+  "nativeFullscreenInvoked": false,
+  "playbackMocked": true,
+  "checks": [
+    "all: matching visible title, explicit youth scope, 105 exact publications and their reported ages",
+    "orygen: matching visible title, explicit youth scope, 21 exact publications and their reported ages",
+    "orygen: matching visible title, explicit youth scope, 21 exact publications and their reported ages",
+    "Orygen: citation dialog, source link, reload and browser Back retain the correct journey",
+    "black-dog: matching visible title, explicit youth scope, 20 exact publications and their reported ages",
+    "music: matching visible title, explicit youth scope, 7 exact publications and their reported ages",
+    "music-making: matching visible title, explicit youth scope, 3 exact publications and their reported ages",
+    "brain-entrainment: matching visible title, explicit youth scope, 3 exact publications and their reported ages",
+    "emdr: matching visible title, explicit youth scope, 7 exact publications and their reported ages",
+    "mindfulness: matching visible title, explicit youth scope, 26 exact publications and their reported ages",
+    "mantra: matching visible title, explicit youth scope, 0 exact publications and their reported ages",
+    "transcendental-meditation: matching visible title, explicit youth scope, 2 exact publications and their reported ages",
+    "yoga: matching visible title, explicit youth scope, 3 exact publications and their reported ages",
+    "connection: matching visible title, explicit youth scope, 67 exact publications and their reported ages",
+    "Wider library identifies Youth Research above the existing age-filtered search",
+    "music-making: matching visible title, explicit youth scope, 3 exact publications and their reported ages",
+    "music-making: matching visible title, explicit youth scope, 3 exact publications and their reported ages",
+    "orygen: matching visible title, explicit youth scope, 21 exact publications and their reported ages",
+    "emdr: matching visible title, explicit youth scope, 7 exact publications and their reported ages",
+    "Topic navigation and Back keep the canonical URL, heading and paper set together",
+    "General search and ordinary Sound chapters restore the full library interface"
+  ],
+  "hashes": [
+    {
+      "file": "Informatics/library-youth.js",
+      "sha256": "d2b599b1acd8089582b6d9f8e5731ab1ae27243981f0be252beb43b590b92928"
+    },
+    {
+      "file": "Informatics/library.js",
+      "sha256": "52009404cf59566a04c9c68e3acd7a632758277e926481339ae386267dec0758"
+    },
+    {
+      "file": "Informatics/library.html",
+      "sha256": "42864102264a82adc517c5776cbb87f0b2753b462db66b2e1eb41d5de4953a8d"
+    },
+    {
+      "file": "Informatics/library.css",
+      "sha256": "768b46e66cf82f58009b134f23c71fa335c9947dc3e2ddedf98c4bf2ff901dd9"
+    },
+    {
+      "file": "lab/research.html",
+      "sha256": "0b82912aefcec4abfb8188c3479bbd57423503ccea333840c548298ec9528c95"
+    },
+    {
+      "file": "events/assets/choice.css",
+      "sha256": "3bf19078bc961a1c8f1fd468e2492b6661d267282f92cc9019aaf871c292634a"
+    }
+  ],
+  "errors": []
+}
