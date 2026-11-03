@@ -219,7 +219,7 @@ html[data-auto-launch="true"] body:not([data-entered="true"]) #loading{visibilit
   .research-link{align-self:center;position:static;text-align:center;font-size:10px;min-height:36px;padding:9px 0;line-height:1.6}
   .emotion-toggle{left:16px;bottom:calc(var(--lab-footer-height,140px) + max(10px,env(safe-area-inset-bottom)) + 12px);padding:10px 13px;font-size:11px;min-height:48px;gap:10px;max-width:calc(100% - 32px)}
   .emotion-toggle>svg:first-child{width:30px;height:20px}
-  .emotion-panel{left:16px;right:16px;top:143px;bottom:16px;width:auto;max-height:none;overflow-y:auto;padding:22px 20px;background:#f2f3e9}
+  .emotion-panel{left:16px;right:16px;top:143px;bottom:16px;width:auto;max-height:none;overflow-y:auto;padding:22px 20px}
   .emotion-panel .close,.place-card .close,#vision .close{width:44px;height:44px;top:5px;right:5px}
   .place-card{left:16px;right:16px;top:auto;bottom:calc(var(--lab-footer-height,140px) + 28px);width:auto;max-height:calc(100dvh - var(--lab-footer-height,140px) - 175px);padding:24px;z-index:15;overflow-y:auto}
   #media-status,.fullscreen-status{top:137px;left:16px;right:16px;max-width:none;padding:10px 13px;font-size:11px;line-height:1.4}
