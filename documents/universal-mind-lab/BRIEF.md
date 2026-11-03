@@ -657,3 +657,9 @@ Events retains the centred flower, Fibonacci rain and small Informatics serif ty
 - Keep optional Motion, Lineup and supported fullscreen controls inside settings on phones. The automatic tour continues without opening place-description cards over the landscape; the support pathway remains available through the biofeedback panel.
 - Preserve the approved desktop navigation and 7% video blend.
 - The Events launch tap starts music and the 7% video overlay synchronously in a prepared Lab frame. The scene can finish loading after playback starts. Safari uses native inline HLS. No second landing or extra play step is added to the normal visitor journey.
+
+## Tagline signal treatment — 3 November 2026
+
+Keep **electronic music and fashion as mindfulness** level and stationary after a soft, word-by-word fade. Replace the bouncing letter treatment with a fine waveform beneath the text. A slow travelling pulse conveys sound, frequencies and biometrics symbolically. The visual direction is cinematic, technical and restrained, following Ben’s Raytheon, Netflix, Garmin Institute and Apple references. Preserve the approved blue, yellow-gold, pink and green word colours in day and night views.
+
+The signal is decorative, with no claim of a live sensor connection. Its motion respects the existing Motion control and reduced-motion preference. Keep the text fully readable when motion is disabled.

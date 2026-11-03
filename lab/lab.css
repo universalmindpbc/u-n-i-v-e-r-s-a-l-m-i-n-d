@@ -70,6 +70,7 @@ body[data-night="true"] .intro h1{color:#e1ebe4}body[data-night="true"] .wordmar
 }.mindfulness-line span:nth-child(4n+3){color:#b8367c}.mindfulness-line span:nth-child(4n){color:#277b49}
 body[data-night="true"] .mindfulness-line span:nth-child(4n+1){color:#75caff}body[data-night="true"] .mindfulness-line span:nth-child(4n+2){color:#ffe36d;-webkit-text-stroke:0}body[data-night="true"] .mindfulness-line span:nth-child(4n+3){color:#ff95ce}body[data-night="true"] .mindfulness-line span:nth-child(4n){color:#8ce5ae}
 
+.mindfulness-line{position:relative}
 .mindfulness-line > span{display:inline-block;--word-index:0}
 .mindfulness-line > span:nth-child(2){--word-index:1}
 .mindfulness-line > span:nth-child(3){--word-index:2}
@@ -80,18 +81,31 @@ body[data-night="true"] .mindfulness-line span:nth-child(4n+1){color:#75caff}bod
   from{opacity:0}
   to{opacity:1}
 }
-@keyframes tagline-ripple{
-  0%,38%,100%{transform:translateY(0)}
-  15%{transform:translateY(-.14em)}
-  28%{transform:translateY(.035em)}
+.tagline-signal{position:absolute;top:calc(100% + 2px);left:0;width:100%;height:10px;overflow:visible;pointer-events:none;color:#267c8d}
+.tagline-signal use{fill:none;stroke:currentColor;stroke-width:1;vector-effect:non-scaling-stroke;stroke-linecap:round;stroke-linejoin:round}
+.tagline-signal-track{opacity:.3}
+.tagline-signal-pulse{opacity:0;stroke-dasharray:12 88;stroke-dashoffset:12}
+body[data-night="true"] .tagline-signal{color:#8bd7df}
+@keyframes tagline-signal-pass{
+  0%{stroke-dashoffset:12;opacity:0}
+  8%{opacity:.9}
+  86%{opacity:.9}
+  100%{stroke-dashoffset:-100;opacity:0}
 }
 @media (prefers-reduced-motion:no-preference){
   body[data-entered="true"] .mindfulness-line > span{
-    animation:tagline-appear 360ms ease-out calc(var(--word-index) * 90ms) backwards,
-              tagline-ripple 2.8s ease-in-out calc(900ms + var(--word-index) * 160ms) infinite;
+    animation:tagline-appear 700ms ease-out calc(var(--word-index) * 90ms) backwards;
   }
-  body[data-entered="true"]:has(#motion-toggle[aria-pressed="false"]) .mindfulness-line > span{
-    animation:tagline-appear 0s;
+  body[data-entered="true"] .tagline-signal{
+    animation:tagline-appear 1s ease-out 1.1s backwards;
+  }
+  body[data-entered="true"] .tagline-signal-pulse{
+    animation:tagline-signal-pass 5.6s linear 1.6s infinite;
+  }
+  body[data-entered="true"]:has(#motion-toggle[aria-pressed="false"]) .mindfulness-line > span,
+  body[data-entered="true"]:has(#motion-toggle[aria-pressed="false"]) .tagline-signal,
+  body[data-entered="true"]:has(#motion-toggle[aria-pressed="false"]) .tagline-signal-pulse{
+    animation:none;
   }
 }
 .punk-bolt{position:absolute;width:82px;height:150px;left:300px;top:-5px;transform:rotate(10deg);overflow:visible;z-index:-1}
