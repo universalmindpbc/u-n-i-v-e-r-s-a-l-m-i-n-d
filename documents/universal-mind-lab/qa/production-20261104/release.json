@@ -1,0 +1,62 @@
+{
+  "verifiedAt": "2026-11-03T19:42:38.674810+00:00",
+  "sourceCommit": "1c0a56bd0dc8cfb829582879b3f11e3ec8c7bf2c",
+  "approvedStagingCommit": "e0a9dc6d596e0d241f78baae3c05ae3e62cb2738",
+  "previousProductionCommit": "d5e3499af7533a3c87cef794aa028f33194656f8",
+  "authorization": "Explicit user instruction to push the approved Events navigation and Lab to production.",
+  "origin": "https://universalmind.tv",
+  "deploymentCommands": [
+    "./deploy-panthurlive.sh lab",
+    "./deploy-panthurlive.sh informatics",
+    "./deploy-panthurlive.sh events"
+  ],
+  "deploymentExitCode": 0,
+  "sourcePolicy": "Exact approved source; no website changes introduced during production release.",
+  "checks": {
+    "exactHttpSourceMatches": 75,
+    "realHomepageEventsLabJourney": true,
+    "aThousandMindsRetained": true,
+    "authenticatedBackAndRepeatNavigation": true,
+    "mobileLayoutsAndDecodedMedia": true,
+    "videoBlend": 0.07,
+    "tourLabelsAndMainPavilionCamera": true,
+    "youthResearchDestinations": 12,
+    "uniqueYouthRecords": 105,
+    "browserPageErrors": 0,
+    "processMuted": true,
+    "nativeFullscreenInvoked": false,
+    "subjectiveSoundQualityTested": false
+  },
+  "excluded": [
+    "Pending youth research review package",
+    "Unrelated local OXTR comparison and teaching work"
+  ],
+  "manifestSha256": "ac3a124cb65b5b710b4aceb610a865eb8966aeba0385e5711e3cc036ab34b7ec",
+  "evidenceFiles": {
+    "candidate.json": "d0af45fe90390f928965663229e1f643c4071160e1428c7846ab5926342e406f",
+    "verify-research.mjs": "c51b24373d560fd012e39c3ef31dee8a2c825bbc7ffd4bfe28d69f979f9f2a3f",
+    "http.json": "b89008c36dd7a0630e0c0e476edcd81e889d94102124c4f73924f9dd9d9c799e",
+    "verify-media.mjs": "bdd14b3be057ed50735449015cfd60cd476cb98728ded2b593820f459e1c35ea",
+    "verify-tour.mjs": "aebd44ffcf73f63693e7089c10cfaf7ea6a4d35d8b6249bcbf1a3416e9977a15",
+    "verify-events.mjs": "bd890d7ccc47b6ecb728294e2861efbd7e795b40800d12cc8bfe8d02f540d26c",
+    "verify-http.mjs": "903100fc2b9a473b50f22b1f184ea87461b5051caa72c478450020f35b7eeccf",
+    "research/orygen.png": "78f364954e49165f075ec75e8a8528352080a4829f8c1d1b8863577f0431b477",
+    "research/emdr.png": "f9da26df3588cbf173b4f506f7e0fcec38040401196cac8e2d45e86a4f73640e",
+    "research/mantra.png": "b3c7353b1d1ad615fd3364ac8040eecd7fc4f404d58f205bb57993ba7df415b5",
+    "research/music-making-844.png": "4b194a6c82a957bdb1297857b1c447ae7899ee2264b3305a302a88e2291101c1",
+    "research/black-dog.png": "d0fea70caaf89af5c36b8a071ef8f0d357ba46be1a8cc7eac5b95f75b3947ef7",
+    "research/verification.json": "362968ebe9c17422b700db98054b78ffece26eb73c224854e6481b1215fb9742",
+    "research/music-making-390.png": "aca834f5cb0cdf90b3f2305f918816c9b1da951e954855d8a224a4ce8e203d1d",
+    "tour/live-source.json": "19b721e934b88dd53dd464a57a74f78d3a84305fd1bb6c85b65550845aecf330",
+    "tour/main-pavilion-tour.png": "8b028c9e811577823f5f2ca46f21ca28c92fb138b431d899731927e2d38bd30b",
+    "tour/main-pavilion-393.png": "0bc1b22dc13eb7c26b2eebd02ee2941d59a0e7c892cceacbb69d2d5efa63a87e",
+    "tour/verification.json": "1e19b419bf82a3972e6e457b7a3c35efe4812ffaf2f3a35a0cdb22c77f655876",
+    "tour/main-pavilion-1440.png": "1d60be573f78dee8b6c0c7ad6521f3a629864100bbc02a331d22e168bfea25a9",
+    "events/athousandminds-return.png": "23ad9938afdb3bef18a839db53d77a4e3e919b8a0c244d054bf88a59121b529c",
+    "events/choice-844.png": "56f357d731eb995d322e4903734e1ee5628bd891107210b4d03d7eb3384b8614",
+    "events/choice-390.png": "4ce6289f90c28eb6c9a3083567ac23d9b09d126e27e04c829dea3943816b41a4",
+    "events/verification.json": "9f552ebd2da7918ba332f9a2a0bb9e05d57176e9b3937a20b2c9437d82db8265",
+    "events/choice-desktop.png": "2a0f5f515bef73c1e9f0f93b6a2c47338ffdfc339d7eb05a0103d19df8aa2ba4",
+    "media/media-verification.json": "7c04020d8479765c619e314983686419b0995a48cbe6e614f543d1da1ed68cc7"
+  }
+}

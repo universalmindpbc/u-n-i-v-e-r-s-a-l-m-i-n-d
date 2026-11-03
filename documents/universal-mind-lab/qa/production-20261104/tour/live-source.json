@@ -1,0 +1,15 @@
+{
+  "checkedAt": "2026-11-03T19:39:20.753Z",
+  "sources": [
+    {
+      "file": "lab/index.html",
+      "status": 200,
+      "sha256": "28498a1eca5ad842c82d6869cd4f22e64234e98c460eef9e27836e41c41f7839"
+    },
+    {
+      "file": "lab/lab.mjs",
+      "status": 200,
+      "sha256": "b6149aab60d268983d22a53d533c97e20739e298fb036d8f1619178b4cef269d"
+    }
+  ]
+}
