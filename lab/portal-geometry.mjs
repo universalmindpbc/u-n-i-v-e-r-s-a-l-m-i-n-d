@@ -37,7 +37,7 @@ export const portalZones=[
  {id:'sound',label:'s o u n d',title:'Sound',shape:'octahedron',position:[4.75,-8.23],radius:4.8,centerY:4.8/Math.sqrt(3),colour:'#e9bc7e',copy:'Explore sound through synthesizers, drum machines, modular instruments and a shared listening system.'},
  {id:'comedy',label:'c o m e d y',title:'Comedy',shape:'dodecahedron',position:[9.5,0],radius:3.7,centerY:1.9,colour:'#d9df9e',copy:'Play with storytelling, humour and communication in a small circle. Practise expression, listening and connection.'},
  {id:'sexed',label:'s e x - e d',title:'Sex-ed',shape:'icosahedron',position:[4.75,8.23],radius:3.8,centerY:1.9,colour:'#ecce8a',copy:'A facilitated educational conversation about relationships, consent, communication and wellbeing.'},
- {id:'atelier',label:'a t e l l i e r',title:'Atellier',shape:'stellatedOctahedron',position:[-4.75,8.23],radius:4.2,centerY:2.45,colour:'#dda1a4',copy:'Fashion design through textiles, mannequins, garment construction and creative collaboration.'},
+ {id:'atelier',label:'a t e l i e r',title:'Atelier',shape:'stellatedOctahedron',position:[-4.75,8.23],radius:4.2,centerY:2.45,colour:'#dda1a4',copy:'Fashion design through textiles, mannequins, garment construction and creative collaboration.'},
  {id:'emdr',label:'e m d r',title:'EMDR',shape:'tetrahedron',position:[-9.5,0],radius:4.8,centerY:1.6,colour:'#db9ca6',copy:'Explore the EMDR programme with a facilitator, sensor-equipped headsets and a comfortable small-group setting.'}
 ];
 export const portalPlacement={x:-34,z:66,ringRadius:9.5};

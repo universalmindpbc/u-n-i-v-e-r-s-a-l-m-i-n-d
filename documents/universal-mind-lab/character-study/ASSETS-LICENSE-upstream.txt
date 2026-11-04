@@ -1,0 +1,21 @@
+The character assets in this folder (base mesh, morph targets, skeleton, skins,
+eyes, eyebrows, eyelashes, hair, clothes and proxy meshes) are derived from
+MakeHuman (http://www.makehumancommunity.org) and were explicitly released
+under CC0 1.0 Universal (public domain dedication) in September 2020 by:
+
+  Data Collection AB, https://www.datacollection.se
+  Joel Palmius
+  Jonas Hauquier
+
+CC0 1.0: https://creativecommons.org/publicdomain/zero/1.0/
+
+Motion capture: the Walk, Slouch walk, Run, Strafe left/right, Jump, Low punch,
+Cry and the chair (sit down, sit idle, stand up) animations are retargeted from
+the CMU Graphics Lab Motion Capture Database (http://mocap.cs.cmu.edu), using
+cgspeed's BVH conversion. CMU's terms: the data is free to use, including in
+commercially sold products, but may not be resold directly, even in converted
+form. Acknowledgement: "The data used in this project was obtained from
+mocap.cs.cmu.edu. The database was created with funding from NSF EIA-0196217."
+
+Characters exported by Ara 3D Gen may be used in commercial and non-commercial
+projects without attribution.

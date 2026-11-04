@@ -1,6 +1,6 @@
-import { initPortalPreview } from './portal-preview.mjs?v=20261104portal2';
-import { createPortal } from './portal.mjs?v=20261104portal2';
-import { portalZones } from './portal-geometry.mjs?v=20261104portal1';
+import { initPortalPreview } from './portal-preview.mjs?v=20261104emdr1';
+import { createPortal } from './portal.mjs?v=20261104emdr1';
+import { portalZones } from './portal-geometry.mjs?v=20261104emdr1';
 import { orbitPose, mobileOverviewPose, overviewPose } from './orbit.mjs?v=20261104portal1';
 import { createActivities } from './activities.mjs?v=20261103purpose1';
 import { createPerformance } from './performance.mjs?v=20261103orbit1';

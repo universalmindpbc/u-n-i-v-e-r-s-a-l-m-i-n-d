@@ -1,3 +1,4 @@
+import {createEMDRPeople} from './emdr-people.mjs?v=20261104emdr1';
 /** Relaxed workshop groups, authored in metres. No participant-held devices. */
 export function createPortalInteriors(THREE,kit){
  const {Batch,V,box,sphere,tube,circle,peopleMaterial,chairMaterial,furnishings}=kit;
@@ -61,7 +62,7 @@ export function createPortalInteriors(THREE,kit){
    if(pose==='floor'){textile(seats,x,z,.95,1.05,i%2?'#d6a3a7':'#a2b9b1',angle,i%2===0);cushion(seats,x,z,'#e8d6b8',.33,.07);}
    if(pose==='hanging'){const seat=furnishings.hangingSeat();seat.position.set(x,0,z);seat.rotation.y=angle;seats.object(seat);}
    if(pose==='daybed'){const seat=furnishings.daybed();seat.position.set(x,0,z);seat.rotation.y=angle;seats.object(seat);}
-   const actor=person({pose,index:i+index*3,female,dress,longHair,visor:config.id==='emdr'&&i<6});actor.position.set(x,0,z);actor.rotation.y=angle;actors.object(actor);
+   const actor=person({pose,index:i+index*3,female,dress:config.id==='emdr'?false:dress,longHair,visor:config.id==='emdr'&&i<6});actor.position.set(x,0,z);actor.rotation.y=angle;actors.object(actor);
    roster.push({pose,female,dress,longHair,hair:hairs[(i+index*3)%hairs.length],heldDevice:false});
   });
   const leaderPosition=config.id==='comedy'?[0,0,-.95]:config.id==='sound'?[.7,0,-1.45]:config.id==='atelier'?[.6,0,.2]:[.35,0,-.6];
@@ -107,8 +108,8 @@ export function createPortalInteriors(THREE,kit){
    for(const x of [-.85,.85])tube(equipment,[x,.03,-2.05],[x,1.85,-2.05],.018,'#777b72');tube(equipment,[-.85,1.85,-2.05],[.85,1.85,-2.05],.018,'#777b72');
    for(let i=0;i<5;i++){const x=-.64+i*.32,c=clothes[i+1];tube(equipment,[x-.12,1.65,-2.05],[x,1.76,-2.05],.009,'#ddd4bf');tube(equipment,[x,1.76,-2.05],[x+.12,1.65,-2.05],.009,'#ddd4bf');box(equipment,[x,1.46,-2.05],[.23,.36,.07],c);skirt(equipment,[x,1.05,-2.05],.11,.19,.5,c);}
   }
-  seats.mesh(chairMaterial,group,'Mixed Tropicália seating, beanbags, cushions and textiles');actors.mesh(peopleMaterial,group,'Relaxed workshop participants and facilitator');equipment.mesh(peopleMaterial,group,'Activity-specific workshop equipment');
-  group.userData={participants:9,facilitators:1,heldPhones:0,table,roster,modularSynthesizer:config.id==='sound',dressForms:config.id==='atelier'?2:0};return group;
+  seats.mesh(chairMaterial,group,'Mixed Tropicália seating, beanbags, cushions and textiles');if(config.id!=='emdr')actors.mesh(peopleMaterial,group,'Relaxed workshop participants and facilitator');equipment.mesh(peopleMaterial,group,'Activity-specific workshop equipment');
+  group.userData={participants:9,facilitators:1,heldPhones:0,table,roster,modularSynthesizer:config.id==='sound',dressForms:config.id==='atelier'?2:0};if(config.id==='emdr'){group.userData.roster=roster.map(p=>({...p,dress:false}));const people=createEMDRPeople(THREE,group,layout);group.userData.characterStudy=people.group.userData;group.userData.startCharacters=people.start;group.userData.animateCharacters=people.update;}return group;
  }
  function defenceGroup(){const g=new THREE.Group(),b=new Batch();for(let i=0;i<2;i++){const p=person({pose:'stand',index:i+2,defence:true,female:i===1,longHair:i===1});p.position.set(i*.78,0,i*.2);p.rotation.y=i?.3:-.3;b.object(p);}b.mesh(peopleMaterial,g,'Two visiting Defence participants');return g;}
  return {makeInterior,defenceGroup};

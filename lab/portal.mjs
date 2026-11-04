@@ -1,6 +1,6 @@
-import {solids,portalZones,portalPlacement,placedVertices} from './portal-geometry.mjs?v=20261104portal1';
+import {solids,portalZones,portalPlacement,placedVertices} from './portal-geometry.mjs?v=20261104emdr1';
 import {createFurnishings} from './furnishings.mjs';
-import {createPortalInteriors} from './portal-interiors.mjs?v=20261104portal2';
+import {createPortalInteriors} from './portal-interiors.mjs?v=20261104emdr1';
 
 /** Seven small workshop marquees. Undistorted polyhedral envelopes meet the grass plane.
  * Ground intersections are concept studies, not foundation or fabrication details.
@@ -64,7 +64,7 @@ export function createPortal(THREE){
  return {group:root,zones,stats:{zones:7,participants:63,facilitators:7,capacity:70},
   setStory(state){root.visible=state.seconds>=24;visitors.visible=state.programme>0;zones.forEach(({group,interior},i)=>{group.visible=state.seconds>=24+i*.8;interior.visible=state.programme>0;});},
   setNight(value){zones.forEach(({light})=>light.intensity=Number(value)*22);flower.material.color.set('#ffffff');flower.material.opacity=.84+Number(value)*.12;},
-  update(){return false;},
+  update(time,moving){if(!root.visible)return false;let changed=false;for(const {interior} of zones){if(!interior.visible)continue;interior.userData.startCharacters?.();if(interior.userData.animateCharacters?.(time,moving))changed=true;}return changed;},
   camera(id){const zone=zones.find(z=>z.config.id===id);if(!zone)return {pos:[root.position.x+23,19,root.position.z+29],target:[root.position.x,1.9,root.position.z]};const x=root.position.x+zone.group.position.x,z=root.position.z+zone.group.position.z;return {pos:[x+.8,2.8,z+8.5],target:[x,1.25,z]};}
  };
 }

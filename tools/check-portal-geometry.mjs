@@ -17,7 +17,7 @@ for(const [key,s] of Object.entries(solids)){
  report.push({shape:key,vertices:s.vertices.length,edges:s.edges.length,faces:counts,maxEdgeError:spread});
 }
 assert.equal(portalZones.length,7);assert.equal(new Set(portalZones.map(z=>z.shape)).size,7);
-assert.deepEqual(portalZones.map(z=>z.label),['s . t . e . a . m .','m a n t r a','s o u n d','c o m e d y','s e x - e d','a t e l l i e r','e m d r']);
+assert.deepEqual(portalZones.map(z=>z.label),['s . t . e . a . m .','m a n t r a','s o u n d','c o m e d y','s e x - e d','a t e l i e r','e m d r']);
 const dimensions=portalZones.map(z=>{
  const vertices=placedVertices(z),s=solids[z.shape],lengths=s.edges.map(([a,b])=>Math.hypot(...minus(vertices[a],vertices[b])));
  assert(Math.max(...lengths)-Math.min(...lengths)<1e-9,z.id+' placed edge distortion');

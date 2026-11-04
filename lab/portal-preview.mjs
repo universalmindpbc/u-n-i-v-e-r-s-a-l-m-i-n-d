@@ -10,7 +10,7 @@ export function initPortalPreview({beforeOpen=()=>{}}={}){
   readout.textContent=Math.round(zoom*100)+'%';panel.dataset.zoom=zoom.toFixed(3);panel.dataset.pan=`${x.toFixed(1)},${y.toFixed(1)}`;
   $('portal-preview-out').disabled=zoom<=1;$('portal-preview-in').disabled=zoom>=6;
  }
- function resize(){if(panel.hidden||!img.naturalWidth)return;fit=Math.min(stage.clientWidth/img.naturalWidth,stage.clientHeight/img.naturalHeight);render();}
+ function resize(){if(panel.hidden||!img.naturalWidth)return;fit=Math.max(stage.clientWidth/img.naturalWidth,stage.clientHeight/img.naturalHeight);render();}
  function reset(){zoom=1;x=y=0;resize();}
  function at(next,cx=stage.clientWidth/2,cy=stage.clientHeight/2){next=limit(next,1,6);const ratio=next/zoom,ax=cx-stage.clientWidth/2,ay=cy-stage.clientHeight/2;x=ax-(ax-x)*ratio;y=ay-(ay-y)*ratio;zoom=next;render();}
  function open(){

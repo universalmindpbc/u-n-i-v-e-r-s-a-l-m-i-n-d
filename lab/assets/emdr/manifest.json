@@ -1,0 +1,1188 @@
+[
+  {
+    "file": "participant-01.glb",
+    "role": "participant",
+    "pose": "chair",
+    "height": 1.4007230758666993,
+    "bytes": 3133688,
+    "vertices": 24929,
+    "bones": 69,
+    "params": {
+      "name": "emdr-0",
+      "seed": 82,
+      "gender": 0,
+      "age": 0.34375,
+      "muscle": 0.45,
+      "weight": 0.42,
+      "height": 0.43,
+      "proportions": 0.7,
+      "african": 0.1,
+      "asian": 0.1,
+      "caucasian": 0.8,
+      "breastSize": 0.5,
+      "breastFirmness": 0.5,
+      "modifiers": {},
+      "skin": "young_african_female",
+      "skinTint": "#ffffff",
+      "eyes": "brownlight",
+      "eyebrows": "eyebrow001",
+      "eyelashes": "eyelashes01",
+      "hair": "ponytail01",
+      "hairTint": "#ffffff",
+      "hairColor": "#2a1e16",
+      "facialHair": "none",
+      "beardColor": "#241a13",
+      "tattoos": [],
+      "tattooInk": "#1c2128",
+      "earrings": "none",
+      "earringMetal": "gold",
+      "outfit": "female_sportsuit01",
+      "top": "none",
+      "jacket": "none",
+      "bottom": "none",
+      "underwear": true,
+      "accessories": [],
+      "garmentStyles": {
+        "none": {
+          "color": "#333c4c",
+          "pattern": "solid"
+        }
+      },
+      "shoes": "shoes03",
+      "hat": "none",
+      "outfitTint": "#9ca5d1",
+      "detail": "medium",
+      "rig": "game",
+      "faceBones": true,
+      "restPose": "A",
+      "animations": true,
+      "weapon": "none",
+      "carry": "none",
+      "vehicle": "none",
+      "expression": "neutral",
+      "faceShapes": false,
+      "speechShapes": false,
+      "teeth": "teeth_base",
+      "tongue": true
+    },
+    "head": {
+      "name": "Head",
+      "parent": 4,
+      "head": [
+        0,
+        1.2689814567565918,
+        0.03397824913263321
+      ],
+      "tail": [
+        0,
+        1.3928702473640442,
+        0.028433300927281382
+      ],
+      "rot": [
+        1,
+        0,
+        0,
+        0,
+        0.9989998870070677,
+        -0.04471270244422988,
+        0,
+        0.04471270244422988,
+        0.9989998870070677
+      ]
+    },
+    "headTop": {
+      "name": "HeadTop_End",
+      "parent": 5,
+      "head": [
+        0,
+        1.3928702473640442,
+        0.028433300927281382
+      ],
+      "tail": [
+        0,
+        1.4228402439742562,
+        0.027091919853954486
+      ],
+      "rot": [
+        1,
+        0,
+        0,
+        0,
+        0.9989998870070675,
+        -0.04471270244422983,
+        0,
+        0.04471270244422983,
+        0.9989998870070675
+      ]
+    }
+  },
+  {
+    "file": "participant-02.glb",
+    "role": "participant",
+    "pose": "low",
+    "height": 1.5777093887329103,
+    "bytes": 4190568,
+    "vertices": 23758,
+    "bones": 69,
+    "params": {
+      "name": "emdr-1",
+      "seed": 83,
+      "gender": 1,
+      "age": 0.36607142857142855,
+      "muscle": 0.45,
+      "weight": 0.45499999999999996,
+      "height": 0.47,
+      "proportions": 0.7,
+      "african": 0.1,
+      "asian": 0.1,
+      "caucasian": 0.8,
+      "breastSize": 0.5,
+      "breastFirmness": 0.5,
+      "modifiers": {},
+      "skin": "young_caucasian_male",
+      "skinTint": "#ffffff",
+      "eyes": "brownlight",
+      "eyebrows": "eyebrow001",
+      "eyelashes": "eyelashes01",
+      "hair": "short02",
+      "hairTint": "#d3b16b",
+      "hairColor": "#2a1e16",
+      "facialHair": "none",
+      "beardColor": "#241a13",
+      "tattoos": [],
+      "tattooInk": "#1c2128",
+      "earrings": "none",
+      "earringMetal": "gold",
+      "outfit": "none",
+      "top": "tank_top",
+      "jacket": "none",
+      "bottom": "cargo_shorts",
+      "underwear": true,
+      "accessories": [],
+      "garmentStyles": {
+        "tank_top": {
+          "color": "#b3c1a4",
+          "pattern": "solid"
+        },
+        "cargo_shorts": {
+          "color": "#333c4c",
+          "pattern": "solid"
+        }
+      },
+      "shoes": "shoes03",
+      "hat": "none",
+      "outfitTint": "#b3c1a4",
+      "detail": "medium",
+      "rig": "game",
+      "faceBones": true,
+      "restPose": "A",
+      "animations": true,
+      "weapon": "none",
+      "carry": "none",
+      "vehicle": "none",
+      "expression": "neutral",
+      "faceShapes": false,
+      "speechShapes": false,
+      "teeth": "teeth_base",
+      "tongue": true
+    },
+    "head": {
+      "name": "Head",
+      "parent": 4,
+      "head": [
+        0,
+        1.432709312438965,
+        0.047457996755838394
+      ],
+      "tail": [
+        0,
+        1.5764950752258302,
+        0.04809207245707512
+      ],
+      "rot": [
+        1,
+        0,
+        0,
+        0,
+        0.9999902766902722,
+        0.004409821415088073,
+        0,
+        -0.004409821415088073,
+        0.9999902766902722
+      ]
+    },
+    "headTop": {
+      "name": "HeadTop_End",
+      "parent": 5,
+      "head": [
+        0,
+        1.5764950752258302,
+        0.04809207245707512
+      ],
+      "tail": [
+        0,
+        1.6064947835265384,
+        0.048224367099527765
+      ],
+      "rot": [
+        1,
+        0,
+        0,
+        0,
+        0.9999902766902722,
+        0.004409821415088153,
+        0,
+        -0.004409821415088153,
+        0.9999902766902722
+      ]
+    }
+  },
+  {
+    "file": "participant-03.glb",
+    "role": "participant",
+    "pose": "bean",
+    "height": 1.5128507614135742,
+    "bytes": 2829012,
+    "vertices": 22639,
+    "bones": 69,
+    "params": {
+      "name": "emdr-2",
+      "seed": 84,
+      "gender": 0,
+      "age": 0.38839285714285715,
+      "muscle": 0.45,
+      "weight": 0.49,
+      "height": 0.51,
+      "proportions": 0.7,
+      "african": 0.1,
+      "asian": 0.1,
+      "caucasian": 0.8,
+      "breastSize": 0.5,
+      "breastFirmness": 0.5,
+      "modifiers": {},
+      "skin": "young_asian_female",
+      "skinTint": "#ffffff",
+      "eyes": "brownlight",
+      "eyebrows": "eyebrow001",
+      "eyelashes": "eyelashes01",
+      "hair": "bob02",
+      "hairTint": "#ffffff",
+      "hairColor": "#2a1e16",
+      "facialHair": "none",
+      "beardColor": "#241a13",
+      "tattoos": [],
+      "tattooInk": "#1c2128",
+      "earrings": "none",
+      "earringMetal": "gold",
+      "outfit": "female_sportsuit01",
+      "top": "none",
+      "jacket": "none",
+      "bottom": "none",
+      "underwear": true,
+      "accessories": [],
+      "garmentStyles": {
+        "none": {
+          "color": "#333c4c",
+          "pattern": "solid"
+        }
+      },
+      "shoes": "shoes03",
+      "hat": "none",
+      "outfitTint": "#d4a2c4",
+      "detail": "medium",
+      "rig": "game",
+      "faceBones": true,
+      "restPose": "A",
+      "animations": true,
+      "weapon": "none",
+      "carry": "none",
+      "vehicle": "none",
+      "expression": "neutral",
+      "faceShapes": false,
+      "speechShapes": false,
+      "teeth": "teeth_base",
+      "tongue": true
+    },
+    "head": {
+      "name": "Head",
+      "parent": 4,
+      "head": [
+        0,
+        1.3774288058280946,
+        0.03611174449324608
+      ],
+      "tail": [
+        0,
+        1.5073662161827088,
+        0.030181538313627243
+      ],
+      "rot": [
+        1,
+        0,
+        0,
+        0,
+        0.9989601675294896,
+        -0.04559148702832428,
+        0,
+        0.04559148702832428,
+        0.9989601675294896
+      ]
+    },
+    "headTop": {
+      "name": "HeadTop_End",
+      "parent": 5,
+      "head": [
+        0,
+        1.5073662161827088,
+        0.030181538313627243
+      ],
+      "tail": [
+        0,
+        1.5373350212085934,
+        0.028813793702777514
+      ],
+      "rot": [
+        1,
+        0,
+        0,
+        0,
+        0.9989601675294897,
+        -0.04559148702832441,
+        0,
+        0.04559148702832441,
+        0.9989601675294897
+      ]
+    }
+  },
+  {
+    "file": "participant-04.glb",
+    "role": "participant",
+    "pose": "floor",
+    "height": 1.5862631797790527,
+    "bytes": 3020760,
+    "vertices": 25651,
+    "bones": 69,
+    "params": {
+      "name": "emdr-3",
+      "seed": 85,
+      "gender": 0,
+      "age": 0.4107142857142857,
+      "muscle": 0.45,
+      "weight": 0.42,
+      "height": 0.55,
+      "proportions": 0.7,
+      "african": 0.1,
+      "asian": 0.1,
+      "caucasian": 0.8,
+      "breastSize": 0.5,
+      "breastFirmness": 0.5,
+      "modifiers": {},
+      "skin": "young_african_female",
+      "skinTint": "#ffffff",
+      "eyes": "brownlight",
+      "eyebrows": "eyebrow001",
+      "eyelashes": "eyelashes01",
+      "hair": "braid01",
+      "hairTint": "#ffffff",
+      "hairColor": "#2a1e16",
+      "facialHair": "none",
+      "beardColor": "#241a13",
+      "tattoos": [],
+      "tattooInk": "#1c2128",
+      "earrings": "none",
+      "earringMetal": "gold",
+      "outfit": "female_sportsuit01",
+      "top": "none",
+      "jacket": "none",
+      "bottom": "none",
+      "underwear": true,
+      "accessories": [],
+      "garmentStyles": {
+        "none": {
+          "color": "#333c4c",
+          "pattern": "solid"
+        }
+      },
+      "shoes": "shoes03",
+      "hat": "none",
+      "outfitTint": "#a8bfbd",
+      "detail": "medium",
+      "rig": "game",
+      "faceBones": true,
+      "restPose": "A",
+      "animations": true,
+      "weapon": "none",
+      "carry": "none",
+      "vehicle": "none",
+      "expression": "neutral",
+      "faceShapes": false,
+      "speechShapes": false,
+      "teeth": "teeth_base",
+      "tongue": true
+    },
+    "head": {
+      "name": "Head",
+      "parent": 4,
+      "head": [
+        0,
+        1.4478149533271791,
+        0.037271627038717274
+      ],
+      "tail": [
+        0,
+        1.5819507002830506,
+        0.031244958937168124
+      ],
+      "rot": [
+        1,
+        0,
+        0,
+        0,
+        0.9989921902065975,
+        -0.044884339208961954,
+        0,
+        0.044884339208961954,
+        0.9989921902065975
+      ]
+    },
+    "headTop": {
+      "name": "HeadTop_End",
+      "parent": 5,
+      "head": [
+        0,
+        1.5819507002830506,
+        0.031244958937168124
+      ],
+      "tail": [
+        0,
+        1.6119204659892485,
+        0.029898428760899265
+      ],
+      "rot": [
+        1,
+        0,
+        0,
+        0,
+        0.9989921902065976,
+        -0.04488433920896199,
+        0,
+        0.04488433920896199,
+        0.9989921902065976
+      ]
+    }
+  },
+  {
+    "file": "participant-05.glb",
+    "role": "participant",
+    "pose": "hanging",
+    "height": 1.6316928386688234,
+    "bytes": 4791872,
+    "vertices": 29467,
+    "bones": 69,
+    "params": {
+      "name": "emdr-4",
+      "seed": 86,
+      "gender": 1,
+      "age": 0.4330357142857143,
+      "muscle": 0.45,
+      "weight": 0.45499999999999996,
+      "height": 0.43,
+      "proportions": 0.7,
+      "african": 0.1,
+      "asian": 0.1,
+      "caucasian": 0.8,
+      "breastSize": 0.5,
+      "breastFirmness": 0.5,
+      "modifiers": {},
+      "skin": "young_african_male",
+      "skinTint": "#ffffff",
+      "eyes": "brownlight",
+      "eyebrows": "eyebrow001",
+      "eyelashes": "eyelashes01",
+      "hair": "short01",
+      "hairTint": "#ffffff",
+      "hairColor": "#2a1e16",
+      "facialHair": "none",
+      "beardColor": "#241a13",
+      "tattoos": [],
+      "tattooInk": "#1c2128",
+      "earrings": "none",
+      "earringMetal": "gold",
+      "outfit": "none",
+      "top": "oversized_tee",
+      "jacket": "none",
+      "bottom": "baggy_jeans",
+      "underwear": true,
+      "accessories": [],
+      "garmentStyles": {
+        "oversized_tee": {
+          "color": "#9eafd0",
+          "pattern": "solid"
+        },
+        "baggy_jeans": {
+          "color": "#333c4c",
+          "pattern": "solid"
+        }
+      },
+      "shoes": "shoes03",
+      "hat": "none",
+      "outfitTint": "#9eafd0",
+      "detail": "medium",
+      "rig": "game",
+      "faceBones": true,
+      "restPose": "A",
+      "animations": true,
+      "weapon": "none",
+      "carry": "none",
+      "vehicle": "none",
+      "expression": "neutral",
+      "faceShapes": false,
+      "speechShapes": false,
+      "teeth": "teeth_base",
+      "tongue": true
+    },
+    "head": {
+      "name": "Head",
+      "parent": 4,
+      "head": [
+        0,
+        1.4870201587677003,
+        0.04716199710965157
+      ],
+      "tail": [
+        0,
+        1.6344417214393616,
+        0.046494536101818085
+      ],
+      "rot": [
+        1,
+        0,
+        0,
+        0,
+        0.9999897507259321,
+        -0.004527520633662298,
+        0,
+        0.004527520633662298,
+        0.9999897507259321
+      ]
+    },
+    "headTop": {
+      "name": "HeadTop_End",
+      "parent": 5,
+      "head": [
+        0,
+        1.6344417214393616,
+        0.046494536101818085
+      ],
+      "tail": [
+        0,
+        1.6644414139611396,
+        0.046358710482808214
+      ],
+      "rot": [
+        1,
+        0,
+        0,
+        0,
+        0.9999897507259321,
+        -0.004527520633662332,
+        0,
+        0.004527520633662332,
+        0.9999897507259321
+      ]
+    }
+  },
+  {
+    "file": "participant-06.glb",
+    "role": "participant",
+    "pose": "daybed",
+    "height": 1.5521489620208742,
+    "bytes": 2998456,
+    "vertices": 24194,
+    "bones": 69,
+    "params": {
+      "name": "emdr-5",
+      "seed": 87,
+      "gender": 0,
+      "age": 0.45535714285714285,
+      "muscle": 0.45,
+      "weight": 0.49,
+      "height": 0.47,
+      "proportions": 0.7,
+      "african": 0.1,
+      "asian": 0.1,
+      "caucasian": 0.8,
+      "breastSize": 0.5,
+      "breastFirmness": 0.5,
+      "modifiers": {},
+      "skin": "young_caucasian_female",
+      "skinTint": "#ffffff",
+      "eyes": "brownlight",
+      "eyebrows": "eyebrow001",
+      "eyelashes": "eyelashes01",
+      "hair": "long01",
+      "hairTint": "#e6c07d",
+      "hairColor": "#2a1e16",
+      "facialHair": "none",
+      "beardColor": "#241a13",
+      "tattoos": [],
+      "tattooInk": "#1c2128",
+      "earrings": "none",
+      "earringMetal": "gold",
+      "outfit": "female_sportsuit01",
+      "top": "none",
+      "jacket": "none",
+      "bottom": "none",
+      "underwear": true,
+      "accessories": [],
+      "garmentStyles": {
+        "none": {
+          "color": "#333c4c",
+          "pattern": "solid"
+        }
+      },
+      "shoes": "shoes03",
+      "hat": "none",
+      "outfitTint": "#c999ac",
+      "detail": "medium",
+      "rig": "game",
+      "faceBones": true,
+      "restPose": "A",
+      "animations": true,
+      "weapon": "none",
+      "carry": "none",
+      "vehicle": "none",
+      "expression": "neutral",
+      "faceShapes": false,
+      "speechShapes": false,
+      "teeth": "teeth_base",
+      "tongue": true
+    },
+    "head": {
+      "name": "Head",
+      "parent": 4,
+      "head": [
+        0,
+        1.4172266244888307,
+        0.03881664350628853
+      ],
+      "tail": [
+        0,
+        1.5506169199943542,
+        0.03274838775396347
+      ],
+      "rot": [
+        1,
+        0,
+        0,
+        0,
+        0.9989668203934334,
+        -0.04544548110685689,
+        0,
+        0.04544548110685689,
+        0.9989668203934334
+      ]
+    },
+    "headTop": {
+      "name": "HeadTop_End",
+      "parent": 5,
+      "head": [
+        0,
+        1.5506169199943542,
+        0.03274838775396347
+      ],
+      "tail": [
+        0,
+        1.5805859246061573,
+        0.031385023320757766
+      ],
+      "rot": [
+        1,
+        0,
+        0,
+        0,
+        0.9989668203934334,
+        -0.04544548110685677,
+        0,
+        0.04544548110685677,
+        0.9989668203934334
+      ]
+    }
+  },
+  {
+    "file": "participant-07.glb",
+    "role": "participant",
+    "pose": "low",
+    "height": 1.7534787178039553,
+    "bytes": 4161032,
+    "vertices": 22778,
+    "bones": 69,
+    "params": {
+      "name": "emdr-6",
+      "seed": 88,
+      "gender": 1,
+      "age": 0.47767857142857145,
+      "muscle": 0.45,
+      "weight": 0.42,
+      "height": 0.51,
+      "proportions": 0.7,
+      "african": 0.1,
+      "asian": 0.1,
+      "caucasian": 0.8,
+      "breastSize": 0.5,
+      "breastFirmness": 0.5,
+      "modifiers": {},
+      "skin": "young_asian_male",
+      "skinTint": "#ffffff",
+      "eyes": "brownlight",
+      "eyebrows": "eyebrow001",
+      "eyelashes": "eyelashes01",
+      "hair": "short03",
+      "hairTint": "#ffffff",
+      "hairColor": "#2a1e16",
+      "facialHair": "none",
+      "beardColor": "#241a13",
+      "tattoos": [],
+      "tattooInk": "#1c2128",
+      "earrings": "none",
+      "earringMetal": "gold",
+      "outfit": "none",
+      "top": "tank_top",
+      "jacket": "none",
+      "bottom": "cargo_shorts",
+      "underwear": true,
+      "accessories": [],
+      "garmentStyles": {
+        "tank_top": {
+          "color": "#a7bea8",
+          "pattern": "solid"
+        },
+        "cargo_shorts": {
+          "color": "#344b51",
+          "pattern": "solid"
+        }
+      },
+      "shoes": "shoes03",
+      "hat": "none",
+      "outfitTint": "#a7bea8",
+      "detail": "medium",
+      "rig": "game",
+      "faceBones": true,
+      "restPose": "A",
+      "animations": true,
+      "weapon": "none",
+      "carry": "none",
+      "vehicle": "none",
+      "expression": "neutral",
+      "faceShapes": false,
+      "speechShapes": false,
+      "teeth": "teeth_base",
+      "tongue": true
+    },
+    "head": {
+      "name": "Head",
+      "parent": 4,
+      "head": [
+        0,
+        1.6050404429435732,
+        0.047306355088949203
+      ],
+      "tail": [
+        0,
+        1.7585980653762818,
+        0.045462146401405334
+      ],
+      "rot": [
+        1,
+        0,
+        0,
+        0,
+        0.9999278891864972,
+        -0.012009014407365183,
+        0,
+        0.012009014407365183,
+        0.9999278891864972
+      ]
+    },
+    "headTop": {
+      "name": "HeadTop_End",
+      "parent": 5,
+      "head": [
+        0,
+        1.7585980653762818,
+        0.045462146401405334
+      ],
+      "tail": [
+        0,
+        1.7885959020518767,
+        0.04510187596918438
+      ],
+      "rot": [
+        1,
+        0,
+        0,
+        0,
+        0.9999278891864971,
+        -0.012009014407365232,
+        0,
+        0.012009014407365232,
+        0.9999278891864971
+      ]
+    }
+  },
+  {
+    "file": "participant-08.glb",
+    "role": "participant",
+    "pose": "floor",
+    "height": 1.5039221763610842,
+    "bytes": 3166448,
+    "vertices": 26841,
+    "bones": 69,
+    "params": {
+      "name": "emdr-7",
+      "seed": 89,
+      "gender": 0,
+      "age": 0.34375,
+      "muscle": 0.45,
+      "weight": 0.45499999999999996,
+      "height": 0.55,
+      "proportions": 0.7,
+      "african": 0.1,
+      "asian": 0.1,
+      "caucasian": 0.8,
+      "breastSize": 0.5,
+      "breastFirmness": 0.5,
+      "modifiers": {},
+      "skin": "young_caucasian_female",
+      "skinTint": "#ffffff",
+      "eyes": "brownlight",
+      "eyebrows": "eyebrow001",
+      "eyelashes": "eyelashes01",
+      "hair": "bob01",
+      "hairTint": "#ffffff",
+      "hairColor": "#2a1e16",
+      "facialHair": "none",
+      "beardColor": "#241a13",
+      "tattoos": [],
+      "tattooInk": "#1c2128",
+      "earrings": "none",
+      "earringMetal": "gold",
+      "outfit": "female_sportsuit01",
+      "top": "none",
+      "jacket": "none",
+      "bottom": "none",
+      "underwear": true,
+      "accessories": [],
+      "garmentStyles": {
+        "none": {
+          "color": "#333c4c",
+          "pattern": "solid"
+        }
+      },
+      "shoes": "shoes03",
+      "hat": "none",
+      "outfitTint": "#b6a3d0",
+      "detail": "medium",
+      "rig": "game",
+      "faceBones": true,
+      "restPose": "A",
+      "animations": true,
+      "weapon": "none",
+      "carry": "none",
+      "vehicle": "none",
+      "expression": "neutral",
+      "faceShapes": false,
+      "speechShapes": false,
+      "teeth": "teeth_base",
+      "tongue": true
+    },
+    "head": {
+      "name": "Head",
+      "parent": 4,
+      "head": [
+        0,
+        1.36719788312912,
+        0.03437437489628792
+      ],
+      "tail": [
+        0,
+        1.4957877278327942,
+        0.02859570011496544
+      ],
+      "rot": [
+        1,
+        0,
+        0,
+        0,
+        0.9989917784326147,
+        -0.0448935031384488,
+        0,
+        0.0448935031384488,
+        0.9989917784326147
+      ]
+    },
+    "headTop": {
+      "name": "HeadTop_End",
+      "parent": 5,
+      "head": [
+        0,
+        1.4957877278327942,
+        0.02859570011496544
+      ],
+      "tail": [
+        0,
+        1.5257574811857726,
+        0.02724889502081198
+      ],
+      "rot": [
+        1,
+        0,
+        0,
+        0,
+        0.9989917784326147,
+        -0.04489350313844887,
+        0,
+        0.04489350313844887,
+        0.9989917784326147
+      ]
+    }
+  },
+  {
+    "file": "participant-09.glb",
+    "role": "participant",
+    "pose": "bean",
+    "height": 1.548274612426758,
+    "bytes": 4796800,
+    "vertices": 28208,
+    "bones": 69,
+    "params": {
+      "name": "emdr-8",
+      "seed": 90,
+      "gender": 1,
+      "age": 0.36607142857142855,
+      "muscle": 0.45,
+      "weight": 0.49,
+      "height": 0.43,
+      "proportions": 0.7,
+      "african": 0.1,
+      "asian": 0.1,
+      "caucasian": 0.8,
+      "breastSize": 0.5,
+      "breastFirmness": 0.5,
+      "modifiers": {},
+      "skin": "young_african_male",
+      "skinTint": "#ffffff",
+      "eyes": "brownlight",
+      "eyebrows": "eyebrow001",
+      "eyelashes": "eyelashes01",
+      "hair": "afro01",
+      "hairTint": "#ffffff",
+      "hairColor": "#2a1e16",
+      "facialHair": "none",
+      "beardColor": "#241a13",
+      "tattoos": [],
+      "tattooInk": "#1c2128",
+      "earrings": "none",
+      "earringMetal": "gold",
+      "outfit": "none",
+      "top": "oversized_tee",
+      "jacket": "none",
+      "bottom": "baggy_jeans",
+      "underwear": true,
+      "accessories": [],
+      "garmentStyles": {
+        "oversized_tee": {
+          "color": "#bfb3a3",
+          "pattern": "solid"
+        },
+        "baggy_jeans": {
+          "color": "#333c4c",
+          "pattern": "solid"
+        }
+      },
+      "shoes": "shoes03",
+      "hat": "none",
+      "outfitTint": "#bfb3a3",
+      "detail": "medium",
+      "rig": "game",
+      "faceBones": true,
+      "restPose": "A",
+      "animations": true,
+      "weapon": "none",
+      "carry": "none",
+      "vehicle": "none",
+      "expression": "neutral",
+      "faceShapes": false,
+      "speechShapes": false,
+      "teeth": "teeth_base",
+      "tongue": true
+    },
+    "head": {
+      "name": "Head",
+      "parent": 4,
+      "head": [
+        0,
+        1.4046024560928345,
+        0.04734199866652489
+      ],
+      "tail": [
+        0,
+        1.54715815782547,
+        0.04810007065534592
+      ],
+      "rot": [
+        1,
+        0,
+        0,
+        0,
+        0.999985861201402,
+        0.005317649602087532,
+        0,
+        -0.005317649602087532,
+        0.999985861201402
+      ]
+    },
+    "headTop": {
+      "name": "HeadTop_End",
+      "parent": 5,
+      "head": [
+        0,
+        1.54715815782547,
+        0.04810007065534592
+      ],
+      "tail": [
+        0,
+        1.5771577336615121,
+        0.04825960014340854
+      ],
+      "rot": [
+        1,
+        0,
+        0,
+        0,
+        0.999985861201402,
+        0.005317649602087451,
+        0,
+        -0.005317649602087451,
+        0.999985861201402
+      ]
+    }
+  },
+  {
+    "file": "participant-10.glb",
+    "role": "facilitator",
+    "pose": "stand",
+    "height": 1.5990451335906983,
+    "bytes": 3138348,
+    "vertices": 24929,
+    "bones": 69,
+    "params": {
+      "name": "emdr-9",
+      "seed": 91,
+      "gender": 0,
+      "age": 0.5538461538461539,
+      "muscle": 0.45,
+      "weight": 0.42,
+      "height": 0.47,
+      "proportions": 0.7,
+      "african": 0.1,
+      "asian": 0.1,
+      "caucasian": 0.8,
+      "breastSize": 0.5,
+      "breastFirmness": 0.5,
+      "modifiers": {},
+      "skin": "young_asian_female",
+      "skinTint": "#ffffff",
+      "eyes": "brownlight",
+      "eyebrows": "eyebrow001",
+      "eyelashes": "eyelashes01",
+      "hair": "ponytail01",
+      "hairTint": "#ffffff",
+      "hairColor": "#2a1e16",
+      "facialHair": "none",
+      "beardColor": "#241a13",
+      "tattoos": [],
+      "tattooInk": "#1c2128",
+      "earrings": "none",
+      "earringMetal": "gold",
+      "outfit": "female_sportsuit01",
+      "top": "none",
+      "jacket": "none",
+      "bottom": "none",
+      "underwear": true,
+      "accessories": [],
+      "garmentStyles": {
+        "none": {
+          "color": "#333c4c",
+          "pattern": "solid"
+        }
+      },
+      "shoes": "shoes03",
+      "hat": "none",
+      "outfitTint": "#dde4da",
+      "detail": "medium",
+      "rig": "game",
+      "faceBones": true,
+      "restPose": "A",
+      "animations": true,
+      "weapon": "none",
+      "carry": "none",
+      "vehicle": "none",
+      "expression": "neutral",
+      "faceShapes": false,
+      "speechShapes": false,
+      "teeth": "teeth_base",
+      "tongue": true
+    },
+    "head": {
+      "name": "Head",
+      "parent": 4,
+      "head": [
+        0,
+        1.461057996749878,
+        0.04482350870966911
+      ],
+      "tail": [
+        0,
+        1.6002729415893555,
+        0.03828449994325638
+      ],
+      "rot": [
+        1,
+        0,
+        0,
+        0,
+        0.9988987035671619,
+        -0.04691886626766629,
+        0,
+        0.04691886626766629,
+        0.9988987035671619
+      ]
+    },
+    "headTop": {
+      "name": "HeadTop_End",
+      "parent": 5,
+      "head": [
+        0,
+        1.6002729415893555,
+        0.03828449994325638
+      ],
+      "tail": [
+        0,
+        1.6302399026963703,
+        0.03687693395522639
+      ],
+      "rot": [
+        1,
+        0,
+        0,
+        0,
+        0.9988987035671619,
+        -0.04691886626766644,
+        0,
+        0.04691886626766644,
+        0.9988987035671619
+      ]
+    }
+  }
+]

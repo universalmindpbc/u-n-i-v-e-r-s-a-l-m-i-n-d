@@ -723,7 +723,7 @@ Add seven small geometric workshop marquees over the actual Universal Mind flowe
 
 The signed-off development sequence is: central STEAM geometry and scale; six surrounding spaces and flower; placement comparison; navigation, interior views and story integration. The first staging build places the village along a path beyond the Linfox trucks, keeping the opening festival composition spacious.
 
-Use mathematically regular solids with one uniform scale and rigid rotations. Never stretch axes to fit the image reference. The truncated icosahedron has 12 regular pentagons, 20 regular hexagons, 60 vertices and 90 equal edges. The Atellier star is a compound of two regular tetrahedra. The current ground-intersection studies and exact dimensions are recorded in [I-AM-PORTAL-BUILD.md](I-AM-PORTAL-BUILD.md).
+Use mathematically regular solids with one uniform scale and rigid rotations. Never stretch axes to fit the image reference. The truncated icosahedron has 12 regular pentagons, 20 regular hexagons, 60 vertices and 90 equal edges. The Atelier star is a compound of two regular tetrahedra. The current ground-intersection studies and exact dimensions are recorded in [I-AM-PORTAL-BUILD.md](I-AM-PORTAL-BUILD.md).
 
 Physical sign wording is exact, including Ben's latest spelling and letter spacing:
 
@@ -731,7 +731,7 @@ Physical sign wording is exact, including Ben's latest spelling and letter spaci
 - e m d r
 - s o u n d
 - m a n t r a
-- a t e l l i e r
+- a t e l i e r
 - c o m e d y
 - s . t . e . a . m .
 
@@ -743,7 +743,17 @@ The village opens from About and destination 08. Its seven workshop views are av
 - Strengthen the coloured Universal Mind flower in the living grass, especially at night, retaining the original filled petal asset and transparent grass texture.
 - Remove participant-held phones throughout the Portal. Preserve the separate Mobile music making destination and the STEAM workbench tablets, geometric objects and robot arm.
 - Replace uniform chair circles and large central tables with relaxed, varied seating: Moroso Tropicália chairs, low chairs, beanbags, cushions, floor blankets, sheepskin-style throws, hanging seating and a daybed. Keep tables only where the activity needs one.
-- Sound has a modular synthesizer with visible patch cables. Atellier has two dress forms, dresses on a rail, fabric and a fashion workbench. Sex-ed has an open conversation centre with no tabletop props. Comedy retains an open centre and microphone.
-- Sex-ed and Atellier predominantly depict women wearing dresses and long hair. Include blonde and other hair colours across the village, softer garment silhouettes and varied seated/floor/standing poses. Add two recognisable Defence visitors through field uniforms, caps, pockets and boots.
+- Sound has a modular synthesizer with visible patch cables. Atelier has two dress forms, dresses on a rail, fabric and a fashion workbench. Sex-ed has an open conversation centre with no tabletop props. Comedy retains an open centre and microphone.
+- Sex-ed and Atelier predominantly depict women wearing dresses and long hair. Include blonde and other hair colours across the village, softer garment silhouettes and varied seated/floor/standing poses. Add two recognisable Defence visitors through field uniforms, caps, pockets and boots.
 - Keep the exact geometry, ten-person session scale, signs, village location and existing festival style.
 - **Launch realistic preview** opens the exact supplied photo from the I Am Portal card and About. Use nearly the full viewport, preserving image proportions, with mouse drag, wheel zoom, touch pinch, zoom buttons, fit and close. Keep the existing music video playing above the image at its approved 7% blend, with no duplicate audio.
+
+
+## EMDR experiment, photo coverage and impact footer — 4 November 2026
+
+- Upgrade the EMDR tent only as a reviewable character experiment: nine youth and one facilitator, textured rigged bodies, relaxed mixed seating, festival sportswear and no handheld phones or long dresses. Follow the Notion brief and photo. Assess this result before a whole-site character replacement.
+- Replace the realistic preview with the latest clarified 1672 × 941 PNG. Fill the entire viewport without black bars; preserve aspect ratio and allow cropping, pan, scroll, pinch and reset. Retain the existing 7% video overlay.
+- Increase the initiative footer credit, proposed-partner notice and bottom-right research call to action by 20%, preserving their relative hierarchy and responsive layout.
+- Rotate the impact messages with a restrained dissolve: **Dissolving Stigma**, **Transforming Access**, **Free to Participate**, **Transforming Referral Pathways**. Keep them stationary and honour reduced motion.
+- Correct **atelier** and the spaced sign **a t e l i e r**.
+- Rave culture, Indigenous participation, atelier detail and the Defence relationship remain priorities for later fidelity passes; this experiment does not recast or replace those groups.
