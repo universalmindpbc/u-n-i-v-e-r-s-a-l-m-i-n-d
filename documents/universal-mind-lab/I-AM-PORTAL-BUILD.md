@@ -71,5 +71,7 @@ The existing music video stays mounted, playing at its approved 7% visual blend 
 - Existing Lab preflight and original-reference hash checks.
 - Desktop 1440 × 900 and portrait mobile 393 × 780 browser checks.
 - About entry, eight Portal choices, capacity metadata, hidden close-view labels/lineup, mobile overflow and existing pavilion navigation.
-- Browser launched separately with process-level `--mute-audio`; media calls stubbed. Native fullscreen never invoked. All contexts closed after verification.
-- Live verification records exact deployed source hashes after the Panthur staging release.
+- Desktop/mobile interaction checks use stubbed media and verify both preview entry points, pan, wheel zoom, fit, keyboard close/focus return and synthetic two-pointer pinch gestures.
+- A separate real-media check confirms playback time and decoded frames advance through preview open and close, with the same video node, one active unmuted media source and the 7% visual blend.
+- Every test browser launches separately with process-level `--mute-audio`. Native fullscreen is never invoked. Media is paused and every context closes after verification; subjective sound quality and physical iPhone Safari were not tested.
+- Live verification records exact deployed source hashes after the Panthur staging release. See `qa/portal-style-20261104/README.md`.
