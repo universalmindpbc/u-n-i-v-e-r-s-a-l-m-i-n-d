@@ -344,3 +344,19 @@ body[data-night="true"] .intro h1,body[data-night="true"] .artist-lineup{color:#
  #portal-rooms:not([hidden]){display:flex;overflow-x:auto;gap:7px;margin-top:12px;padding-bottom:4px;scrollbar-width:thin}
  #portal-rooms button{flex:0 0 auto;min-height:44px;padding:9px 12px}
 }
+
+/* Photo exploration keeps the same video element above the image at its approved blend. */
+.portal-preview-link{display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;min-height:44px;margin-top:16px}
+#portal-preview{position:absolute;inset:0;color:#f5f2e7}
+#portal-preview-stage{position:absolute;inset:0;background:#0c1920;overflow:hidden;touch-action:none;cursor:grab;z-index:90}
+#portal-preview-stage[data-dragging="true"]{cursor:grabbing}
+#portal-preview-image{position:absolute;left:50%;top:50%;max-width:none;width:auto;height:auto;transform-origin:center;user-select:none;pointer-events:none}
+.portal-preview-toolbar{position:absolute;top:max(18px,env(safe-area-inset-top));left:max(22px,env(safe-area-inset-left));right:max(22px,env(safe-area-inset-right));display:flex;align-items:center;justify-content:space-between;gap:18px;z-index:102;pointer-events:none}
+.portal-preview-toolbar h2{margin:0;font:500 12px Arial,sans-serif;letter-spacing:.14em;background:#14252de8;padding:14px 18px;border-radius:5px}
+.portal-preview-actions{display:flex;align-items:center;gap:4px;background:#14252df5;border:1px solid #f5f2e74d;padding:3px;border-radius:28px;pointer-events:auto}
+.portal-preview-actions button{width:44px;height:44px;background:transparent;color:#f5f2e7;border-radius:50%;display:grid;place-items:center}
+.portal-preview-actions button:hover{background:#f5f2e71a}.portal-preview-actions button:focus-visible{outline:2px solid #e6c656;outline-offset:-3px}
+.portal-preview-actions output{font:11px Arial,sans-serif;min-width:34px;text-align:center;font-variant-numeric:tabular-nums}
+#portal-preview-hint{position:absolute;bottom:max(16px,env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);margin:0;padding:10px 14px;background:#14252de8;border-radius:5px;font-size:11px;white-space:nowrap;z-index:102;pointer-events:none}
+body[data-portal-preview="true"] #music-video{z-index:101}
+@media(max-width:600px){.portal-preview-toolbar{left:12px;right:12px;top:max(12px,env(safe-area-inset-top));gap:8px;flex-wrap:wrap}.portal-preview-toolbar h2{padding:10px 12px;font-size:10px}.portal-preview-actions{margin-left:auto;gap:0}.portal-preview-actions button{width:40px;height:44px}.portal-preview-actions output{font-size:10px;min-width:30px}#portal-preview-hint{font-size:10px;bottom:max(14px,env(safe-area-inset-bottom))}}

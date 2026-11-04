@@ -736,3 +736,14 @@ Physical sign wording is exact, including Ben's latest spelling and letter spaci
 - s . t . e . a . m .
 
 The village opens from About and destination 08. Its seven workshop views are available within the destination card; phone navigation uses a compact horizontal selector. Keep floating labels and the artist lineup hidden during these close views. The automated tour includes the village before the continuous festival circuit.
+
+
+## I Am Portal interior styling and realistic preview — 4 November 2026
+
+- Strengthen the coloured Universal Mind flower in the living grass, especially at night, retaining the original filled petal asset and transparent grass texture.
+- Remove participant-held phones throughout the Portal. Preserve the separate Mobile music making destination and the STEAM workbench tablets, geometric objects and robot arm.
+- Replace uniform chair circles and large central tables with relaxed, varied seating: Moroso Tropicália chairs, low chairs, beanbags, cushions, floor blankets, sheepskin-style throws, hanging seating and a daybed. Keep tables only where the activity needs one.
+- Sound has a modular synthesizer with visible patch cables. Atellier has two dress forms, dresses on a rail, fabric and a fashion workbench. Sex-ed has an open conversation centre with no tabletop props. Comedy retains an open centre and microphone.
+- Sex-ed and Atellier predominantly depict women wearing dresses and long hair. Include blonde and other hair colours across the village, softer garment silhouettes and varied seated/floor/standing poses. Add two recognisable Defence visitors through field uniforms, caps, pockets and boots.
+- Keep the exact geometry, ten-person session scale, signs, village location and existing festival style.
+- **Launch realistic preview** opens the exact supplied photo from the I Am Portal card and About. Use nearly the full viewport, preserving image proportions, with mouse drag, wheel zoom, touch pinch, zoom buttons, fit and close. Keep the existing music video playing above the image at its approved 7% blend, with no duplicate audio.

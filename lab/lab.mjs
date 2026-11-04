@@ -1,4 +1,5 @@
-import { createPortal } from './portal.mjs?v=20261104portal1';
+import { initPortalPreview } from './portal-preview.mjs?v=20261104portal2';
+import { createPortal } from './portal.mjs?v=20261104portal2';
 import { portalZones } from './portal-geometry.mjs?v=20261104portal1';
 import { orbitPose, mobileOverviewPose, overviewPose } from './orbit.mjs?v=20261104portal1';
 import { createActivities } from './activities.mjs?v=20261103purpose1';
@@ -59,7 +60,7 @@ function selectPlace(key, show = true, automated = false) {
   $('place-copy').textContent = info.copy;
   if(key!=='overview')emotionPanel(false);
   $('interior-view').hidden=key!=='main';$('learn-main').hidden=key!=='main';
-  $('portal-rooms').hidden=!key.startsWith('portal');
+  $('portal-rooms').hidden=!key.startsWith('portal');$('portal-preview-open').hidden=!key.startsWith('portal');
   document.querySelectorAll('[data-portal-room]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.portalRoom===key)));
   $('place-card').hidden = !show || key === 'overview' || (automated && mobile());
   if (mode === '3d') sceneAPI?.go(key);
@@ -78,6 +79,7 @@ function setMode(next) {
 document.querySelectorAll('[data-view]').forEach(b => b.addEventListener('click', () => selectPlace(b.dataset.view)));
 $('interior-view').addEventListener('click',()=>{stopTour();sceneAPI?.go('interior');$('place-card').hidden=true;});
 document.querySelectorAll('[data-portal-room]').forEach(b=>b.addEventListener('click',()=>selectPlace(b.dataset.portalRoom)));
+initPortalPreview({beforeOpen:()=>{if(!entered)launchFestival();stopTour();}});
 $('portal-about').addEventListener('click',()=>{$('vision').close();if(!entered)launchFestival();selectPlace('portal');});
 $('place-close').addEventListener('click', () => { $('place-card').hidden = true; (mobile() ? $('emotion-toggle') : (document.querySelector(`[data-view="${selected}"]`)||document.querySelector('[data-view="portal"]'))).focus(); });
 $('reset-view').addEventListener('click', () => selectPlace('overview', false));

@@ -1,4 +1,4 @@
-# I Am Portal — first 3D build
+# I Am Portal — 3D build and interior styling
 
 4 November 2026. Staging review only.
 
@@ -10,7 +10,7 @@ The four build stages are present: central geometry and scale, six satellite spa
 
 ## Scale and accurate geometry
 
-The main pavilion's existing platform is 24 × 20 metres, with a 22.6 × 18.4 metre roof footprint. It remains the approximately 100-person reference. Each Portal space contains nine seated participants and one facilitator, ten people total. The whole village represents 70 people across seven sessions, not ten across the village.
+The main pavilion's existing platform is 24 × 20 metres, with a 22.6 × 18.4 metre roof footprint. It remains the approximately 100-person reference. Each Portal space contains nine participants and one facilitator, ten people total, in a mix of seated and standing poses. The whole village represents 70 people across seven sessions, not ten across the village. Two Defence visitors stand on the connecting lawn outside the sessions.
 
 | Space | Mathematical envelope | Bounding width × depth | Model height above grass |
 | --- | --- | --- | --- |
@@ -40,14 +40,16 @@ The coloured lawn uses the existing Universal Mind flower asset, including its a
 
 ## Workshop detail
 
-- Moroso Tropicália chairs reuse the existing model treatment and rainbow weave.
+- Moroso Tropicália chairs reuse the existing model treatment and rainbow weave. Low chairs, beanbags, floor cushions, blankets, sheepskin-style throws, a daybed and a hanging seat create varied social arrangements.
 - STEAM includes tablets, geometric objects and a robot arm.
-- Mantra includes microphones, keyboards and sampling equipment. Language and cultural content remain led by First Nations collaborators.
-- Sound includes horn speakers, drum pads and electronic instruments.
-- Atellier includes sewing machines, garment material, mannequins and a clothing rail.
+- Mantra includes a microphone and small side recording station, with an open group centre. Language and cultural content remain led by First Nations collaborators.
+- Sound includes horn speakers and a modular synthesizer with knobs, patch cables and a keyboard.
+- Atellier includes a rectangular fashion workbench, sewing machine, fabric, two shaped dress forms and a rail of dresses.
 - EMDR includes black sensor-equipped visor representations and a daybed.
-- Comedy includes a microphone and small listening circle.
-- Sex-ed includes a facilitated discussion circle and learning material.
+- Comedy includes a microphone and informal mixed seating, with no central table.
+- Sex-ed includes a facilitated conversation with floor cushions, beanbags and chairs, with no table or tabletop blocks.
+
+Portal participants have no handheld phones. Tablets remain on the STEAM workbench. The separate festival Mobile music making scene is unchanged. Figures have rounded torsos, varied hair including blonde and long styles, and dresses; Sex-ed and Atellier predominantly depict women. Defence visitors have field caps, boots, uniform pockets and camouflage details, with no invented service insignia.
 
 The exact spaced labels appear on the physical signs. Workshop titles and spaced labels identify the seven navigation choices.
 
@@ -55,7 +57,13 @@ The exact spaced labels appear on the physical signs. Workshop titles and spaced
 
 Destination 08 and About open the Portal. The right-hand card offers the seven rooms plus a village overview. Mobile uses a small horizontal room selector and compact card. Close views keep the artist lineup and floating place labels hidden. The village assembles during fit-out and receives a ten-second destination stop before the existing continuous circuit.
 
-Day/night lighting and subtle instrument pulses follow the existing scene settings. No new audio source, live biometric connection or therapeutic outcome claim is introduced.
+Day/night lighting follows the existing scene settings. The actual flower asset remains visible through a grass-textured colour layer, with stronger opacity and preserved colour at night. No new audio source, live biometric connection or therapeutic outcome claim is introduced.
+
+## Realistic preview
+
+**Launch realistic preview** opens from the Portal card and About. The supplied 1182 × 665 reference JPEG fills the available screen while preserving its aspect ratio. Drag to pan, scroll or pinch to zoom, or use the designed zoom/fit buttons; Escape or Close returns to the previous view. Keyboard arrows pan and focus returns to the launch button.
+
+The existing music video stays mounted, playing at its approved 7% visual blend above the photo. No duplicate media player or audio source is created. The image is the supplied reference, not a new high-resolution render; zooming cannot add source detail. Provenance is recorded in `references/portal-style-20261104.json`.
 
 ## Verification
 
