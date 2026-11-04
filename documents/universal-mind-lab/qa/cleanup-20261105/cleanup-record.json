@@ -1,0 +1,67 @@
+{
+  "removed_reproducible_captures": [
+    {
+      "file": "local/footer-1440.png",
+      "bytes": 119831
+    },
+    {
+      "file": "local/footer-900.png",
+      "bytes": 69658
+    },
+    {
+      "file": "local/overview-1440.png",
+      "bytes": 739673
+    },
+    {
+      "file": "local/footer-320.png",
+      "bytes": 42853
+    },
+    {
+      "file": "local/emdr-393.png",
+      "bytes": 267433
+    },
+    {
+      "file": "local/footer-393.png",
+      "bytes": 42758
+    },
+    {
+      "file": "local/emdr-1440.png",
+      "bytes": 935690
+    },
+    {
+      "file": "local/footer-1024.png",
+      "bytes": 135817
+    },
+    {
+      "file": "local/overview-393.png",
+      "bytes": 202124
+    },
+    {
+      "file": "live/footer-900.png",
+      "bytes": 69648
+    },
+    {
+      "file": "live/overview-1440.png",
+      "bytes": 739694
+    },
+    {
+      "file": "live/footer-320.png",
+      "bytes": 42834
+    },
+    {
+      "file": "live/emdr-393.png",
+      "bytes": 267873
+    },
+    {
+      "file": "live/emdr-1440.png",
+      "bytes": 935679
+    },
+    {
+      "file": "live/footer-1024.png",
+      "bytes": 135817
+    }
+  ],
+  "removed_bytes": 4747382,
+  "free_disk_bytes_after": 65205604352,
+  "preserved": "All source references, review images, chat history, local/live verification JSON, three selected live screenshots, QA script and release record. Active isolated worktree retained for character review."
+}
