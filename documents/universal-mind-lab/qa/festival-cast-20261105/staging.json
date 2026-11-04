@@ -1,0 +1,132 @@
+{
+  "route": "https://staging.universalmind.tv/lab/",
+  "sourceCommit": "c89a63b41969d88b0e0512d24a496d18b7a21435",
+  "sizes": [
+    [
+      1280,
+      800
+    ],
+    [
+      430,
+      785
+    ]
+  ],
+  "dedicatedMutedChromium": true,
+  "mediaPlaybackStubbed": true,
+  "foregroundLooks": 22,
+  "otherVisitorsInstanced": 70,
+  "workshopParticipants": 9,
+  "outdoorFeaturedGuests": 13,
+  "danceAndCrowdMotionAdvanced": true,
+  "reducedMotionRespected": true,
+  "pageErrors": [],
+  "seatedContactMetres": [
+    {
+      "id": "EMDR participant 1",
+      "pose": "chair",
+      "sole": 5.887734265186406e-06,
+      "seat": 0.36237597958314677,
+      "front": 0.6504553317303632
+    },
+    {
+      "id": "EMDR participant 2",
+      "pose": "floor",
+      "sole": 0.030214079122601406,
+      "seat": 0.13678035793853838,
+      "front": 0.3342088439236761
+    },
+    {
+      "id": "EMDR participant 3",
+      "pose": "daybed",
+      "sole": 0.5269244764899005,
+      "seat": 0.6170705224057189,
+      "front": 0.33326884381378363
+    },
+    {
+      "id": "EMDR participant 4",
+      "pose": "chair",
+      "sole": 0.00831931494797003,
+      "seat": 0.35310913558463025,
+      "front": 0.602096970086329
+    },
+    {
+      "id": "EMDR participant 5",
+      "pose": "floor",
+      "sole": 0.034780244917811835,
+      "seat": 0.1543206778144456,
+      "front": 0.40626010615279284
+    },
+    {
+      "id": "EMDR participant 6",
+      "pose": "floor",
+      "sole": 0.040059402780737774,
+      "seat": 0.1335270424778149,
+      "front": 0.3142717127854695
+    },
+    {
+      "id": "EMDR participant 7",
+      "pose": "chair",
+      "sole": -0.007953123372667438,
+      "seat": 0.36197623862773626,
+      "front": 0.6610146104500849
+    },
+    {
+      "id": "EMDR participant 8",
+      "pose": "floor",
+      "sole": 0.025573054044148183,
+      "seat": 0.13229999491585104,
+      "front": 0.3410770157058778
+    },
+    {
+      "id": "EMDR participant 9",
+      "pose": "chair",
+      "sole": 0.008848264996904887,
+      "seat": 0.3685651196158164,
+      "front": 0.6657610656071
+    }
+  ],
+  "verifiedSHA256": {
+    "activities.mjs": "3c06c53ef7879a10c2631a8d7db25e54307a6c6944228ed699a75d06e4135e1a",
+    "architecture.mjs": "6aa186831deb24e046100a86b0bb27b04ec4d55d6f7fbdd6e69b0051b43c9dbf",
+    "assets/emdr/participant-10.glb": "84a787509dfc58fc787d2574896b9c06d709c94eb598dce0dad8fff3d3f962df",
+    "assets/festival/01.glb": "441eaf989b54897aa4102c3404d0b6ec3849af61e5fac7821e28e991434ca01e",
+    "assets/festival/02.glb": "467cb63c2c85a94da1875ec6681c78d71ce24346dfc4f56889961a1c8437cb89",
+    "assets/festival/03.glb": "59f3f9457d3fd028e625180a8b2a64a9d81e911b9b1effa782a8d636538e871b",
+    "assets/festival/04.glb": "3233756910865aef9551b48f2b3922035a7a6aa1a8168c6f11d282d53773aaf0",
+    "assets/festival/05.glb": "63fc2a669180c6cbeeee8f7a1fe6b3733a78611fb424c0eb78559fb94914760a",
+    "assets/festival/06.glb": "7082d0f649748435b5e37a26da9e144c40b62441c8a0cf12051dec51b2b12af6",
+    "assets/festival/07.glb": "4b8c72d2c5e3e63be69b6a90b1eed5110c6b5ed0de4646d5c82f1683d53a30c5",
+    "assets/festival/08.glb": "8d098dd31adcaf9697e0bd36116b473ad711341ce254a90e294a94a11c50ec16",
+    "assets/festival/09.glb": "182662f506f8871944b36975554d7cc5cdb065f6709c011c66a0de6b04307987",
+    "assets/festival/A.glb": "66061d1e512deda006f39ca091ea88b1cc0f9b8a029e108d46aee682c94df4be",
+    "assets/festival/B.glb": "4d9c906c1bc436c68b29ecd72d2c6cbc75ace5c5a7ea4a0a202e5ddf0385c573",
+    "assets/festival/C.glb": "c5d218026a7544be1791a8aefec3373f607bbadc598c66cfa1d73f810ef7ac58",
+    "assets/festival/D1.glb": "8d11e4b6ac847384bc9d672303e912dd3e2edc2fb30157746d25733984c85ae7",
+    "assets/festival/D2.glb": "b4a1683b283bba6797e84e78808ec1a368f8d9cf531f96c3498c0f278dacade9",
+    "assets/festival/D3.glb": "94184e6876fed8df79eb13ddc87956f145e94c1f51947acd917989ba007cba16",
+    "assets/festival/air-service.glb": "3475be1e451e51f38c48c267f2920b652960ac10d3a352fadab3e92d907187bb",
+    "assets/festival/aircrew.glb": "743989c1d4beb9f0dcf8ed8326b8f309a82a6f02fae7f026adc2a8880bf2f9dc",
+    "assets/festival/army-field.glb": "17b1abac0689949b163538a2386ff4994f19c22b6c3093359d05924a750f6178",
+    "assets/festival/army-service.glb": "a4722a248b0b98ddfc02382c9e9e08895b5debdd3145f4b22025a5964e3709ba",
+    "assets/festival/crowd.glb": "f6fdc446f50067ff9be9d370c45e31b2b4fb06db90c698f05b2bdc1e28d4be6c",
+    "assets/festival/navy-whites.glb": "da393ba002f9df9acbc0ced09fde6b057b2d51f659caa3ee7b795724c6e132e6",
+    "assets/festival/navy-working.glb": "0f54ddcdd8c79435ed3d16236c02e16095fddf738e985e0378626aca68581c3e",
+    "assets/festival/river-arena.glb": "33a69b514a65ee4a2424a287efda97dad397eb306b34833ad15df6d4cf4bc1ef",
+    "crowd.mjs": "e54f3b7cfaa6f8bf2d3e2fb0a269e21a432fc26fc8563ccbb18ae3400ac63568",
+    "emdr-people.mjs": "1752b585bf6700f6bb54e9c9bad627cf4391577be61b515d12a3653a88895322",
+    "festival-cast.mjs": "e61d175bcd27725c14685af9fa2be0ac02f04c4d8ad3dc886759b1022869d452",
+    "furnishings.mjs": "1e9f12657c21d5a8bb578ac6cc6671c3651ab77183e69008810ecdadbf6d3a9f",
+    "lab.mjs": "aa19004ec7bbae70fd2ec8939bfd9d3403f92c13b3db7317bf86f55c31ade289",
+    "light-show.mjs": "898e8a8695f293f5269b32d80f8e848c480c6975c3af4212117ce4317338a281",
+    "media.mjs": "1eca7d1ff11717e7afc6cdf3e9a444d63ca582bf531ab467d2fb937a74fab80b",
+    "orbit.mjs": "18bca2d40c1fb220b01cd0997cac41af7b40eeec1a293471333f180eeed98171",
+    "performance.mjs": "03daddde965e51ca24ca08797aa1aed234bf723b4edab7f806223926f1247a6c",
+    "portal-geometry.mjs": "ff05c714c167f738dcd0cb3c4736b8cd8131b882db8b34d82f269cf1b65bb10c",
+    "portal-interiors.mjs": "6f900d3267402d5194311f00bc47cab3e582208b8e81b707a99fdfff93ec02c0",
+    "portal.mjs": "34c3d7bc210a3f43de1ad649a6c6ea5a9f59070f66c3ae9fea2d24eea695276f",
+    "runway.mjs": "613ca62f80c07893d82fbb2b3a7d5c675005fff8586019f561b32c513ddbdafd",
+    "site-features.mjs": "98dc3ab4915e5ca49d8ac5baf0fb5367e8a06f52adc8115d44f84e9b39a261e1",
+    "stage-visuals.mjs": "5b52daf8e117bb43b21b31470767b6df50614ed2775737b066116a3f4e8c3710",
+    "story.mjs": "11a41187fc1ce3cb25326683099f4c6513428d7778a18c075cfd2e08dd0f03ee"
+  }
+}
