@@ -1,0 +1,210 @@
+{
+  "live": false,
+  "processMuted": true,
+  "mediaStubbed": true,
+  "timelineInstrumented": true,
+  "nativeFullscreenNeverInvoked": true,
+  "results": [
+    {
+      "width": 1440,
+      "mobile": false,
+      "footer": {
+        ".initiative-credit": {
+          "font": "12px",
+          "display": "block",
+          "align": "center",
+          "center": 720,
+          "width": 473.59375,
+          "bottom": 857.578125
+        },
+        ".proposal-status": {
+          "font": "9.6px",
+          "display": "block",
+          "align": "center",
+          "center": 720,
+          "width": 370.8125,
+          "bottom": 876
+        },
+        ".research-link": {
+          "font": "10.8px",
+          "display": "block",
+          "align": "right",
+          "center": 1282.4140625,
+          "width": 231.171875,
+          "bottom": 876
+        },
+        ".impact-ticker": {
+          "font": "14px",
+          "display": "block",
+          "align": "left",
+          "center": 159.5,
+          "width": 235,
+          "bottom": 875
+        },
+        "viewport": 1440,
+        "overflow": false
+      }
+    },
+    {
+      "width": 1024,
+      "mobile": false,
+      "footer": {
+        ".initiative-credit": {
+          "font": "12px",
+          "display": "block",
+          "align": "center",
+          "center": 512,
+          "width": 473.59375,
+          "bottom": 835.234375
+        },
+        ".proposal-status": {
+          "font": "9.6px",
+          "display": "block",
+          "align": "center",
+          "center": 512,
+          "width": 370.8125,
+          "bottom": 852.65625
+        },
+        ".research-link": {
+          "font": "9.6px",
+          "display": "block",
+          "align": "right",
+          "center": 877.625,
+          "width": 208.75,
+          "bottom": 876
+        },
+        ".impact-ticker": {
+          "font": "14px",
+          "display": "block",
+          "align": "left",
+          "center": 512,
+          "width": 940,
+          "bottom": 811.4375
+        },
+        "viewport": 1024,
+        "overflow": false
+      }
+    },
+    {
+      "width": 393,
+      "mobile": true,
+      "footer": {
+        ".initiative-credit": {
+          "font": "9px",
+          "display": "block",
+          "align": "center",
+          "center": 196.5,
+          "width": 360,
+          "bottom": 754.109375
+        },
+        ".proposal-status": {
+          "font": "8.5px",
+          "display": "block",
+          "align": "center",
+          "center": 196.5,
+          "width": 360,
+          "bottom": 770
+        },
+        ".research-link": {
+          "font": "9.6px",
+          "display": "none",
+          "align": "center",
+          "center": 0,
+          "width": 0,
+          "bottom": 0
+        },
+        ".impact-ticker": {
+          "font": "11px",
+          "display": "block",
+          "align": "center",
+          "center": 196.5,
+          "width": 361,
+          "bottom": 736.515625
+        },
+        "viewport": 393,
+        "overflow": false
+      }
+    },
+    {
+      "width": 320,
+      "mobile": true,
+      "footer": {
+        ".initiative-credit": {
+          "font": "9px",
+          "display": "block",
+          "align": "center",
+          "center": 160,
+          "width": 288,
+          "bottom": 742.21875
+        },
+        ".proposal-status": {
+          "font": "8.5px",
+          "display": "block",
+          "align": "center",
+          "center": 160,
+          "width": 288,
+          "bottom": 770
+        },
+        ".research-link": {
+          "font": "9.6px",
+          "display": "none",
+          "align": "center",
+          "center": 0,
+          "width": 0,
+          "bottom": 0
+        },
+        ".impact-ticker": {
+          "font": "11px",
+          "display": "block",
+          "align": "center",
+          "center": 160,
+          "width": 288,
+          "bottom": 712.03125
+        },
+        "viewport": 320,
+        "overflow": false
+      }
+    },
+    {
+      "width": 900,
+      "mobile": true,
+      "footer": {
+        ".initiative-credit": {
+          "font": "9px",
+          "display": "block",
+          "align": "center",
+          "center": 450,
+          "width": 360,
+          "bottom": 754.109375
+        },
+        ".proposal-status": {
+          "font": "8.5px",
+          "display": "block",
+          "align": "center",
+          "center": 450,
+          "width": 360,
+          "bottom": 770
+        },
+        ".research-link": {
+          "font": "9.6px",
+          "display": "none",
+          "align": "center",
+          "center": 0,
+          "width": 0,
+          "bottom": 0
+        },
+        ".impact-ticker": {
+          "font": "11px",
+          "display": "block",
+          "align": "center",
+          "center": 450,
+          "width": 868,
+          "bottom": 736.515625
+        },
+        "viewport": 900,
+        "overflow": false
+      }
+    }
+  ],
+  "liveSourceHashes": []
+}
