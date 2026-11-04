@@ -1,0 +1,1720 @@
+{
+  "live": true,
+  "processMuted": true,
+  "mediaStubbed": true,
+  "nativeFullscreenNeverInvoked": true,
+  "results": [
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "footer": {
+        ".initiative-credit": {
+          "font": "12px",
+          "text": "a mental health initiative by New South Wales Education, Headspace & Universal Mind"
+        },
+        ".proposal-status": {
+          "font": "9.6px",
+          "text": "Artists, festival partners and mental health partners are proposed and not confirmed."
+        },
+        ".research-link": {
+          "font": "10.8px",
+          "text": "A direct response to this body of research"
+        },
+        ".impact-ticker": {
+          "font": "14px",
+          "text": "Dissolving StigmaTransforming AccessFree to ParticipateTransforming Referral Pathways"
+        }
+      },
+      "ticker": {
+        "items": [
+          "Dissolving Stigma",
+          "Transforming Access",
+          "Free to Participate",
+          "Transforming Referral Pathways"
+        ],
+        "animations": [
+          "impact-dissolve",
+          "impact-dissolve",
+          "impact-dissolve",
+          "impact-dissolve"
+        ],
+        "rect": {
+          "x": 42,
+          "width": 235
+        }
+      },
+      "riggedAnimationAdvanced": true,
+      "stats": [
+        {
+          "zone": "steam",
+          "shape": "truncatedIcosahedron",
+          "participants": 9,
+          "facilitators": 1,
+          "capacity": 10,
+          "regular": true,
+          "uniformScale": 3.6,
+          "groundIntersection": true,
+          "interior": {
+            "participants": 9,
+            "facilitators": 1,
+            "heldPhones": 0,
+            "table": "shared making table",
+            "roster": [
+              {
+                "pose": "chair",
+                "female": true,
+                "dress": true,
+                "longHair": true,
+                "hair": "#292724",
+                "heldDevice": false
+              },
+              {
+                "pose": "low",
+                "female": false,
+                "dress": false,
+                "longHair": false,
+                "hair": "#d9b66d",
+                "heldDevice": false
+              },
+              {
+                "pose": "floor",
+                "female": true,
+                "dress": false,
+                "longHair": true,
+                "hair": "#50392b",
+                "heldDevice": false
+              },
+              {
+                "pose": "bean",
+                "female": false,
+                "dress": false,
+                "longHair": false,
+                "hair": "#bf8e49",
+                "heldDevice": false
+              },
+              {
+                "pose": "chair",
+                "female": true,
+                "dress": false,
+                "longHair": false,
+                "hair": "#26252b",
+                "heldDevice": false
+              },
+              {
+                "pose": "chair",
+                "female": false,
+                "dress": false,
+                "longHair": false,
+                "hair": "#79533b",
+                "heldDevice": false
+              },
+              {
+                "pose": "low",
+                "female": true,
+                "dress": true,
+                "longHair": true,
+                "hair": "#e9cb90",
+                "heldDevice": false
+              },
+              {
+                "pose": "stand",
+                "female": false,
+                "dress": false,
+                "longHair": false,
+                "hair": "#292724",
+                "heldDevice": false
+              },
+              {
+                "pose": "chair",
+                "female": true,
+                "dress": false,
+                "longHair": true,
+                "hair": "#d9b66d",
+                "heldDevice": false
+              }
+            ],
+            "modularSynthesizer": false,
+            "dressForms": 0
+          },
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "zone": "mantra",
+          "shape": "cube",
+          "participants": 9,
+          "facilitators": 1,
+          "capacity": 10,
+          "regular": true,
+          "uniformScale": 4.33,
+          "groundIntersection": false,
+          "interior": {
+            "participants": 9,
+            "facilitators": 1,
+            "heldPhones": 0,
+            "table": "side recording station",
+            "roster": [
+              {
+                "pose": "chair",
+                "female": true,
+                "dress": true,
+                "longHair": true,
+                "hair": "#bf8e49",
+                "heldDevice": false
+              },
+              {
+                "pose": "low",
+                "female": false,
+                "dress": false,
+                "longHair": false,
+                "hair": "#26252b",
+                "heldDevice": false
+              },
+              {
+                "pose": "bean",
+                "female": true,
+                "dress": false,
+                "longHair": true,
+                "hair": "#79533b",
+                "heldDevice": false
+              },
+              {
+                "pose": "floor",
+                "female": false,
+                "dress": false,
+                "longHair": false,
+                "hair": "#e9cb90",
+                "heldDevice": false
+              },
+              {
+                "pose": "chair",
+                "female": true,
+                "dress": false,
+                "longHair": false,
+                "hair": "#292724",
+                "heldDevice": false
+              },
+              {
+                "pose": "low",
+                "female": false,
+                "dress": false,
+                "longHair": false,
+                "hair": "#d9b66d",
+                "heldDevice": false
+              },
+              {
+                "pose": "floor",
+                "female": true,
+                "dress": true,
+                "longHair": true,
+                "hair": "#50392b",
+                "heldDevice": false
+              },
+              {
+                "pose": "bean",
+                "female": false,
+                "dress": false,
+                "longHair": false,
+                "hair": "#bf8e49",
+                "heldDevice": false
+              },
+              {
+                "pose": "floor",
+                "female": true,
+                "dress": false,
+                "longHair": true,
+                "hair": "#26252b",
+                "heldDevice": false
+              }
+            ],
+            "modularSynthesizer": false,
+            "dressForms": 0
+          },
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "zone": "sound",
+          "shape": "octahedron",
+          "participants": 9,
+          "facilitators": 1,
+          "capacity": 10,
+          "regular": true,
+          "uniformScale": 4.8,
+          "groundIntersection": false,
+          "interior": {
+            "participants": 9,
+            "facilitators": 1,
+            "heldPhones": 0,
+            "table": "modular synthesizer console",
+            "roster": [
+              {
+                "pose": "chair",
+                "female": true,
+                "dress": true,
+                "longHair": true,
+                "hair": "#e9cb90",
+                "heldDevice": false
+              },
+              {
+                "pose": "bean",
+                "female": false,
+                "dress": false,
+                "longHair": false,
+                "hair": "#292724",
+                "heldDevice": false
+              },
+              {
+                "pose": "floor",
+                "female": true,
+                "dress": false,
+                "longHair": true,
+                "hair": "#d9b66d",
+                "heldDevice": false
+              },
+              {
+                "pose": "low",
+                "female": false,
+                "dress": false,
+                "longHair": false,
+                "hair": "#50392b",
+                "heldDevice": false
+              },
+              {
+                "pose": "chair",
+                "female": true,
+                "dress": false,
+                "longHair": false,
+                "hair": "#bf8e49",
+                "heldDevice": false
+              },
+              {
+                "pose": "bean",
+                "female": false,
+                "dress": false,
+                "longHair": false,
+                "hair": "#26252b",
+                "heldDevice": false
+              },
+              {
+                "pose": "stand",
+                "female": true,
+                "dress": true,
+                "longHair": true,
+                "hair": "#79533b",
+                "heldDevice": false
+              },
+              {
+                "pose": "floor",
+                "female": false,
+                "dress": false,
+                "longHair": false,
+                "hair": "#e9cb90",
+                "heldDevice": false
+              },
+              {
+                "pose": "low",
+                "female": true,
+                "dress": false,
+                "longHair": true,
+                "hair": "#292724",
+                "heldDevice": false
+              }
+            ],
+            "modularSynthesizer": true,
+            "dressForms": 0
+          },
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "zone": "comedy",
+          "shape": "dodecahedron",
+          "participants": 9,
+          "facilitators": 1,
+          "capacity": 10,
+          "regular": true,
+          "uniformScale": 3.7,
+          "groundIntersection": true,
+          "interior": {
+            "participants": 9,
+            "facilitators": 1,
+            "heldPhones": 0,
+            "table": "none",
+            "roster": [
+              {
+                "pose": "chair",
+                "female": true,
+                "dress": true,
+                "longHair": true,
+                "hair": "#50392b",
+                "heldDevice": false
+              },
+              {
+                "pose": "low",
+                "female": false,
+                "dress": false,
+                "longHair": false,
+                "hair": "#bf8e49",
+                "heldDevice": false
+              },
+              {
+                "pose": "bean",
+                "female": true,
+                "dress": false,
+                "longHair": true,
+                "hair": "#26252b",
+                "heldDevice": false
+              },
+              {
+                "pose": "floor",
+                "female": false,
+                "dress": false,
+                "longHair": false,
+                "hair": "#79533b",
+                "heldDevice": false
+              },
+              {
+                "pose": "chair",
+                "female": true,
+                "dress": false,
+                "longHair": false,
+                "hair": "#e9cb90",
+                "heldDevice": false
+              },
+              {
+                "pose": "bean",
+                "female": false,
+                "dress": false,
+                "longHair": false,
+                "hair": "#292724",
+                "heldDevice": false
+              },
+              {
+                "pose": "low",
+                "female": true,
+                "dress": true,
+                "longHair": true,
+                "hair": "#d9b66d",
+                "heldDevice": false
+              },
+              {
+                "pose": "floor",
+                "female": false,
+                "dress": false,
+                "longHair": false,
+                "hair": "#50392b",
+                "heldDevice": false
+              },
+              {
+                "pose": "floor",
+                "female": true,
+                "dress": false,
+                "longHair": true,
+                "hair": "#bf8e49",
+                "heldDevice": false
+              }
+            ],
+            "modularSynthesizer": false,
+            "dressForms": 0
+          },
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "zone": "sexed",
+          "shape": "icosahedron",
+          "participants": 9,
+          "facilitators": 1,
+          "capacity": 10,
+          "regular": true,
+          "uniformScale": 3.8,
+          "groundIntersection": true,
+          "interior": {
+            "participants": 9,
+            "facilitators": 1,
+            "heldPhones": 0,
+            "table": "none",
+            "roster": [
+              {
+                "pose": "chair",
+                "female": true,
+                "dress": true,
+                "longHair": true,
+                "hair": "#79533b",
+                "heldDevice": false
+              },
+              {
+                "pose": "low",
+                "female": true,
+                "dress": true,
+                "longHair": true,
+                "hair": "#e9cb90",
+                "heldDevice": false
+              },
+              {
+                "pose": "bean",
+                "female": true,
+                "dress": true,
+                "longHair": true,
+                "hair": "#292724",
+                "heldDevice": false
+              },
+              {
+                "pose": "floor",
+                "female": true,
+                "dress": true,
+                "longHair": true,
+                "hair": "#d9b66d",
+                "heldDevice": false
+              },
+              {
+                "pose": "chair",
+                "female": true,
+                "dress": true,
+                "longHair": true,
+                "hair": "#50392b",
+                "heldDevice": false
+              },
+              {
+                "pose": "bean",
+                "female": true,
+                "dress": true,
+                "longHair": true,
+                "hair": "#bf8e49",
+                "heldDevice": false
+              },
+              {
+                "pose": "low",
+                "female": true,
+                "dress": true,
+                "longHair": true,
+                "hair": "#26252b",
+                "heldDevice": false
+              },
+              {
+                "pose": "floor",
+                "female": true,
+                "dress": true,
+                "longHair": true,
+                "hair": "#79533b",
+                "heldDevice": false
+              },
+              {
+                "pose": "floor",
+                "female": false,
+                "dress": false,
+                "longHair": false,
+                "hair": "#e9cb90",
+                "heldDevice": false
+              }
+            ],
+            "modularSynthesizer": false,
+            "dressForms": 0
+          },
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "zone": "atelier",
+          "shape": "stellatedOctahedron",
+          "participants": 9,
+          "facilitators": 1,
+          "capacity": 10,
+          "regular": true,
+          "uniformScale": 4.2,
+          "groundIntersection": false,
+          "interior": {
+            "participants": 9,
+            "facilitators": 1,
+            "heldPhones": 0,
+            "table": "rectangular fashion workbench",
+            "roster": [
+              {
+                "pose": "chair",
+                "female": true,
+                "dress": true,
+                "longHair": true,
+                "hair": "#d9b66d",
+                "heldDevice": false
+              },
+              {
+                "pose": "low",
+                "female": true,
+                "dress": true,
+                "longHair": true,
+                "hair": "#50392b",
+                "heldDevice": false
+              },
+              {
+                "pose": "bean",
+                "female": true,
+                "dress": true,
+                "longHair": true,
+                "hair": "#bf8e49",
+                "heldDevice": false
+              },
+              {
+                "pose": "floor",
+                "female": true,
+                "dress": true,
+                "longHair": true,
+                "hair": "#26252b",
+                "heldDevice": false
+              },
+              {
+                "pose": "chair",
+                "female": true,
+                "dress": true,
+                "longHair": true,
+                "hair": "#79533b",
+                "heldDevice": false
+              },
+              {
+                "pose": "stand",
+                "female": true,
+                "dress": true,
+                "longHair": true,
+                "hair": "#e9cb90",
+                "heldDevice": false
+              },
+              {
+                "pose": "stand",
+                "female": true,
+                "dress": true,
+                "longHair": true,
+                "hair": "#292724",
+                "heldDevice": false
+              },
+              {
+                "pose": "chair",
+                "female": true,
+                "dress": true,
+                "longHair": true,
+                "hair": "#d9b66d",
+                "heldDevice": false
+              },
+              {
+                "pose": "stand",
+                "female": false,
+                "dress": false,
+                "longHair": false,
+                "hair": "#50392b",
+                "heldDevice": false
+              }
+            ],
+            "modularSynthesizer": false,
+            "dressForms": 2
+          },
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "zone": "emdr",
+          "shape": "tetrahedron",
+          "participants": 9,
+          "facilitators": 1,
+          "capacity": 10,
+          "regular": true,
+          "uniformScale": 4.8,
+          "groundIntersection": false,
+          "interior": {
+            "participants": 9,
+            "facilitators": 1,
+            "heldPhones": 0,
+            "table": "none",
+            "roster": [
+              {
+                "pose": "chair",
+                "female": true,
+                "dress": false,
+                "longHair": true,
+                "hair": "#26252b",
+                "heldDevice": false
+              },
+              {
+                "pose": "low",
+                "female": false,
+                "dress": false,
+                "longHair": false,
+                "hair": "#79533b",
+                "heldDevice": false
+              },
+              {
+                "pose": "bean",
+                "female": true,
+                "dress": false,
+                "longHair": true,
+                "hair": "#e9cb90",
+                "heldDevice": false
+              },
+              {
+                "pose": "floor",
+                "female": false,
+                "dress": false,
+                "longHair": false,
+                "hair": "#292724",
+                "heldDevice": false
+              },
+              {
+                "pose": "hanging",
+                "female": true,
+                "dress": false,
+                "longHair": false,
+                "hair": "#d9b66d",
+                "heldDevice": false
+              },
+              {
+                "pose": "daybed",
+                "female": false,
+                "dress": false,
+                "longHair": false,
+                "hair": "#50392b",
+                "heldDevice": false
+              },
+              {
+                "pose": "low",
+                "female": true,
+                "dress": false,
+                "longHair": true,
+                "hair": "#bf8e49",
+                "heldDevice": false
+              },
+              {
+                "pose": "floor",
+                "female": false,
+                "dress": false,
+                "longHair": false,
+                "hair": "#26252b",
+                "heldDevice": false
+              },
+              {
+                "pose": "bean",
+                "female": true,
+                "dress": false,
+                "longHair": true,
+                "hair": "#79533b",
+                "heldDevice": false
+              }
+            ],
+            "modularSynthesizer": false,
+            "dressForms": 0,
+            "characterStudy": {
+              "status": "ready",
+              "loaded": 10,
+              "total": 10,
+              "errors": [],
+              "skinnedMeshes": 114,
+              "animated": true,
+              "heldPhones": 0,
+              "longDresses": 0
+            }
+          },
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        }
+      ],
+      "render": {
+        "triangles": 868908,
+        "calls": 404
+      },
+      "pageErrors": [],
+      "liveSourceHashes": [
+        {
+          "file": "index.html",
+          "sha256": "2522492a457b97e78307857136d63846759f94aeeb276b4714df6a1ccfee0235",
+          "edgeAnalyticsRemoved": true
+        },
+        {
+          "file": "lab.mjs",
+          "sha256": "885c94f101b49a3c27d47e5929705a68aee80dadffc8e7926560c55c9d9045d7",
+          "edgeAnalyticsRemoved": false
+        },
+        {
+          "file": "lab.css",
+          "sha256": "2b7c1ab1268d35948d4e9ae08a5a30b8870d9bea1546612c242c4d0109519981",
+          "edgeAnalyticsRemoved": false
+        },
+        {
+          "file": "portal.mjs",
+          "sha256": "8e3a5b47557ad95e7a4ce782d8569a60d5704295b06cd8d1b15dba5d14705493",
+          "edgeAnalyticsRemoved": false
+        },
+        {
+          "file": "portal-interiors.mjs",
+          "sha256": "53c6099d2b810e37cc58c73600b9d102462ec87b47e931656efa1e93462be491",
+          "edgeAnalyticsRemoved": false
+        },
+        {
+          "file": "portal-preview.mjs",
+          "sha256": "21c66f706d408ecfcbb200ff90a617a433d803e5491b69760b489694ebdc5224",
+          "edgeAnalyticsRemoved": false
+        },
+        {
+          "file": "assets/iam-portal-clarified-20261104.png",
+          "sha256": "9e1bf924d8992ccb1bd443bb90fc307df56e8b703a8843cf688efca1cbeeb782",
+          "edgeAnalyticsRemoved": false
+        },
+        {
+          "file": "emdr-people.mjs",
+          "sha256": "fd1a47a415d46e74eb72658b2ec77b8d0ea7836ac4072259bf7e17afbd9ecf87",
+          "edgeAnalyticsRemoved": false
+        },
+        {
+          "file": "vendor/GLTFLoader.js",
+          "sha256": "ce65da2bc9c3f14a82691384ca606df1c29f009251825729a2ce388524ce8e1c",
+          "edgeAnalyticsRemoved": false
+        },
+        {
+          "file": "vendor/BufferGeometryUtils.js",
+          "sha256": "c25b7930e570e9ec56173cd3b866ec8d2e10016630db3937efb439daf1cedbf6",
+          "edgeAnalyticsRemoved": false
+        },
+        {
+          "file": "assets/emdr/participant-01.glb",
+          "sha256": "93effa97fb11294c37979d3c3e240a3b66c39ad5d00c838ad4f4728571d2ed5e",
+          "edgeAnalyticsRemoved": false
+        },
+        {
+          "file": "assets/emdr/participant-02.glb",
+          "sha256": "40aba017bc83288dc7b5063e61d9cd0d8bbf28e776116a05b7802fea66a2cc38",
+          "edgeAnalyticsRemoved": false
+        },
+        {
+          "file": "assets/emdr/participant-03.glb",
+          "sha256": "a192f0d0f172369d9bb123d5419fb146b731de91b108b29abcd3f0d9440f8a1f",
+          "edgeAnalyticsRemoved": false
+        },
+        {
+          "file": "assets/emdr/participant-04.glb",
+          "sha256": "8765dfcc5b3986406e60da5cdd02c485b2494fb32abd4987d9c7b649373cb66d",
+          "edgeAnalyticsRemoved": false
+        },
+        {
+          "file": "assets/emdr/participant-05.glb",
+          "sha256": "41b72aa955e72626c92f4419606abcdd6328f8f9f60de171816357e637eb2bdb",
+          "edgeAnalyticsRemoved": false
+        },
+        {
+          "file": "assets/emdr/participant-06.glb",
+          "sha256": "8bab603474ef6d3d52fbcd79c2b3a1e30d41677e2c815f3b5dda8db7e816b18a",
+          "edgeAnalyticsRemoved": false
+        },
+        {
+          "file": "assets/emdr/participant-07.glb",
+          "sha256": "6b6b97cd3f0e4df7c846df9b00d7f13832ec930de6c78a236609322b3d1844b6",
+          "edgeAnalyticsRemoved": false
+        },
+        {
+          "file": "assets/emdr/participant-08.glb",
+          "sha256": "7fb5afcea7f1659143cde799ad9f05fa034bd7f8357989cc8ad43f818e8f9573",
+          "edgeAnalyticsRemoved": false
+        },
+        {
+          "file": "assets/emdr/participant-09.glb",
+          "sha256": "15ef5a30f88b81b06af3e15a18b86ba7b96cc49984d0831cec92c354a00d1af7",
+          "edgeAnalyticsRemoved": false
+        },
+        {
+          "file": "assets/emdr/participant-10.glb",
+          "sha256": "84a787509dfc58fc787d2574896b9c06d709c94eb598dce0dad8fff3d3f962df",
+          "edgeAnalyticsRemoved": false
+        },
+        {
+          "file": "portal-geometry.mjs",
+          "sha256": "ff05c714c167f738dcd0cb3c4736b8cd8131b882db8b34d82f269cf1b65bb10c",
+          "edgeAnalyticsRemoved": false
+        },
+        {
+          "file": "story.mjs",
+          "sha256": "11a41187fc1ce3cb25326683099f4c6513428d7778a18c075cfd2e08dd0f03ee",
+          "edgeAnalyticsRemoved": false
+        },
+        {
+          "file": "orbit.mjs",
+          "sha256": "18bca2d40c1fb220b01cd0997cac41af7b40eeec1a293471333f180eeed98171",
+          "edgeAnalyticsRemoved": false
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "width": 393,
+        "height": 780
+      },
+      "footer": {
+        ".initiative-credit": {
+          "font": "10.8px",
+          "text": "a mental health initiative by New South Wales Education, Headspace & Universal Mind"
+        },
+        ".proposal-status": {
+          "font": "10.2px",
+          "text": "Artists, festival partners and mental health partners are proposed and not confirmed."
+        },
+        ".research-link": {
+          "font": "12px",
+          "text": "A direct response to this body of research"
+        },
+        ".impact-ticker": {
+          "font": "13px",
+          "text": "Dissolving StigmaTransforming AccessFree to ParticipateTransforming Referral Pathways"
+        }
+      },
+      "ticker": {
+        "items": [
+          "Dissolving Stigma",
+          "Transforming Access",
+          "Free to Participate",
+          "Transforming Referral Pathways"
+        ],
+        "animations": [
+          "impact-dissolve",
+          "impact-dissolve",
+          "impact-dissolve",
+          "impact-dissolve"
+        ],
+        "rect": {
+          "x": 16,
+          "width": 361
+        }
+      },
+      "riggedAnimationAdvanced": true,
+      "stats": [
+        {
+          "zone": "steam",
+          "shape": "truncatedIcosahedron",
+          "participants": 9,
+          "facilitators": 1,
+          "capacity": 10,
+          "regular": true,
+          "uniformScale": 3.6,
+          "groundIntersection": true,
+          "interior": {
+            "participants": 9,
+            "facilitators": 1,
+            "heldPhones": 0,
+            "table": "shared making table",
+            "roster": [
+              {
+                "pose": "chair",
+                "female": true,
+                "dress": true,
+                "longHair": true,
+                "hair": "#292724",
+                "heldDevice": false
+              },
+              {
+                "pose": "low",
+                "female": false,
+                "dress": false,
+                "longHair": false,
+                "hair": "#d9b66d",
+                "heldDevice": false
+              },
+              {
+                "pose": "floor",
+                "female": true,
+                "dress": false,
+                "longHair": true,
+                "hair": "#50392b",
+                "heldDevice": false
+              },
+              {
+                "pose": "bean",
+                "female": false,
+                "dress": false,
+                "longHair": false,
+                "hair": "#bf8e49",
+                "heldDevice": false
+              },
+              {
+                "pose": "chair",
+                "female": true,
+                "dress": false,
+                "longHair": false,
+                "hair": "#26252b",
+                "heldDevice": false
+              },
+              {
+                "pose": "chair",
+                "female": false,
+                "dress": false,
+                "longHair": false,
+                "hair": "#79533b",
+                "heldDevice": false
+              },
+              {
+                "pose": "low",
+                "female": true,
+                "dress": true,
+                "longHair": true,
+                "hair": "#e9cb90",
+                "heldDevice": false
+              },
+              {
+                "pose": "stand",
+                "female": false,
+                "dress": false,
+                "longHair": false,
+                "hair": "#292724",
+                "heldDevice": false
+              },
+              {
+                "pose": "chair",
+                "female": true,
+                "dress": false,
+                "longHair": true,
+                "hair": "#d9b66d",
+                "heldDevice": false
+              }
+            ],
+            "modularSynthesizer": false,
+            "dressForms": 0
+          },
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "zone": "mantra",
+          "shape": "cube",
+          "participants": 9,
+          "facilitators": 1,
+          "capacity": 10,
+          "regular": true,
+          "uniformScale": 4.33,
+          "groundIntersection": false,
+          "interior": {
+            "participants": 9,
+            "facilitators": 1,
+            "heldPhones": 0,
+            "table": "side recording station",
+            "roster": [
+              {
+                "pose": "chair",
+                "female": true,
+                "dress": true,
+                "longHair": true,
+                "hair": "#bf8e49",
+                "heldDevice": false
+              },
+              {
+                "pose": "low",
+                "female": false,
+                "dress": false,
+                "longHair": false,
+                "hair": "#26252b",
+                "heldDevice": false
+              },
+              {
+                "pose": "bean",
+                "female": true,
+                "dress": false,
+                "longHair": true,
+                "hair": "#79533b",
+                "heldDevice": false
+              },
+              {
+                "pose": "floor",
+                "female": false,
+                "dress": false,
+                "longHair": false,
+                "hair": "#e9cb90",
+                "heldDevice": false
+              },
+              {
+                "pose": "chair",
+                "female": true,
+                "dress": false,
+                "longHair": false,
+                "hair": "#292724",
+                "heldDevice": false
+              },
+              {
+                "pose": "low",
+                "female": false,
+                "dress": false,
+                "longHair": false,
+                "hair": "#d9b66d",
+                "heldDevice": false
+              },
+              {
+                "pose": "floor",
+                "female": true,
+                "dress": true,
+                "longHair": true,
+                "hair": "#50392b",
+                "heldDevice": false
+              },
+              {
+                "pose": "bean",
+                "female": false,
+                "dress": false,
+                "longHair": false,
+                "hair": "#bf8e49",
+                "heldDevice": false
+              },
+              {
+                "pose": "floor",
+                "female": true,
+                "dress": false,
+                "longHair": true,
+                "hair": "#26252b",
+                "heldDevice": false
+              }
+            ],
+            "modularSynthesizer": false,
+            "dressForms": 0
+          },
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "zone": "sound",
+          "shape": "octahedron",
+          "participants": 9,
+          "facilitators": 1,
+          "capacity": 10,
+          "regular": true,
+          "uniformScale": 4.8,
+          "groundIntersection": false,
+          "interior": {
+            "participants": 9,
+            "facilitators": 1,
+            "heldPhones": 0,
+            "table": "modular synthesizer console",
+            "roster": [
+              {
+                "pose": "chair",
+                "female": true,
+                "dress": true,
+                "longHair": true,
+                "hair": "#e9cb90",
+                "heldDevice": false
+              },
+              {
+                "pose": "bean",
+                "female": false,
+                "dress": false,
+                "longHair": false,
+                "hair": "#292724",
+                "heldDevice": false
+              },
+              {
+                "pose": "floor",
+                "female": true,
+                "dress": false,
+                "longHair": true,
+                "hair": "#d9b66d",
+                "heldDevice": false
+              },
+              {
+                "pose": "low",
+                "female": false,
+                "dress": false,
+                "longHair": false,
+                "hair": "#50392b",
+                "heldDevice": false
+              },
+              {
+                "pose": "chair",
+                "female": true,
+                "dress": false,
+                "longHair": false,
+                "hair": "#bf8e49",
+                "heldDevice": false
+              },
+              {
+                "pose": "bean",
+                "female": false,
+                "dress": false,
+                "longHair": false,
+                "hair": "#26252b",
+                "heldDevice": false
+              },
+              {
+                "pose": "stand",
+                "female": true,
+                "dress": true,
+                "longHair": true,
+                "hair": "#79533b",
+                "heldDevice": false
+              },
+              {
+                "pose": "floor",
+                "female": false,
+                "dress": false,
+                "longHair": false,
+                "hair": "#e9cb90",
+                "heldDevice": false
+              },
+              {
+                "pose": "low",
+                "female": true,
+                "dress": false,
+                "longHair": true,
+                "hair": "#292724",
+                "heldDevice": false
+              }
+            ],
+            "modularSynthesizer": true,
+            "dressForms": 0
+          },
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "zone": "comedy",
+          "shape": "dodecahedron",
+          "participants": 9,
+          "facilitators": 1,
+          "capacity": 10,
+          "regular": true,
+          "uniformScale": 3.7,
+          "groundIntersection": true,
+          "interior": {
+            "participants": 9,
+            "facilitators": 1,
+            "heldPhones": 0,
+            "table": "none",
+            "roster": [
+              {
+                "pose": "chair",
+                "female": true,
+                "dress": true,
+                "longHair": true,
+                "hair": "#50392b",
+                "heldDevice": false
+              },
+              {
+                "pose": "low",
+                "female": false,
+                "dress": false,
+                "longHair": false,
+                "hair": "#bf8e49",
+                "heldDevice": false
+              },
+              {
+                "pose": "bean",
+                "female": true,
+                "dress": false,
+                "longHair": true,
+                "hair": "#26252b",
+                "heldDevice": false
+              },
+              {
+                "pose": "floor",
+                "female": false,
+                "dress": false,
+                "longHair": false,
+                "hair": "#79533b",
+                "heldDevice": false
+              },
+              {
+                "pose": "chair",
+                "female": true,
+                "dress": false,
+                "longHair": false,
+                "hair": "#e9cb90",
+                "heldDevice": false
+              },
+              {
+                "pose": "bean",
+                "female": false,
+                "dress": false,
+                "longHair": false,
+                "hair": "#292724",
+                "heldDevice": false
+              },
+              {
+                "pose": "low",
+                "female": true,
+                "dress": true,
+                "longHair": true,
+                "hair": "#d9b66d",
+                "heldDevice": false
+              },
+              {
+                "pose": "floor",
+                "female": false,
+                "dress": false,
+                "longHair": false,
+                "hair": "#50392b",
+                "heldDevice": false
+              },
+              {
+                "pose": "floor",
+                "female": true,
+                "dress": false,
+                "longHair": true,
+                "hair": "#bf8e49",
+                "heldDevice": false
+              }
+            ],
+            "modularSynthesizer": false,
+            "dressForms": 0
+          },
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "zone": "sexed",
+          "shape": "icosahedron",
+          "participants": 9,
+          "facilitators": 1,
+          "capacity": 10,
+          "regular": true,
+          "uniformScale": 3.8,
+          "groundIntersection": true,
+          "interior": {
+            "participants": 9,
+            "facilitators": 1,
+            "heldPhones": 0,
+            "table": "none",
+            "roster": [
+              {
+                "pose": "chair",
+                "female": true,
+                "dress": true,
+                "longHair": true,
+                "hair": "#79533b",
+                "heldDevice": false
+              },
+              {
+                "pose": "low",
+                "female": true,
+                "dress": true,
+                "longHair": true,
+                "hair": "#e9cb90",
+                "heldDevice": false
+              },
+              {
+                "pose": "bean",
+                "female": true,
+                "dress": true,
+                "longHair": true,
+                "hair": "#292724",
+                "heldDevice": false
+              },
+              {
+                "pose": "floor",
+                "female": true,
+                "dress": true,
+                "longHair": true,
+                "hair": "#d9b66d",
+                "heldDevice": false
+              },
+              {
+                "pose": "chair",
+                "female": true,
+                "dress": true,
+                "longHair": true,
+                "hair": "#50392b",
+                "heldDevice": false
+              },
+              {
+                "pose": "bean",
+                "female": true,
+                "dress": true,
+                "longHair": true,
+                "hair": "#bf8e49",
+                "heldDevice": false
+              },
+              {
+                "pose": "low",
+                "female": true,
+                "dress": true,
+                "longHair": true,
+                "hair": "#26252b",
+                "heldDevice": false
+              },
+              {
+                "pose": "floor",
+                "female": true,
+                "dress": true,
+                "longHair": true,
+                "hair": "#79533b",
+                "heldDevice": false
+              },
+              {
+                "pose": "floor",
+                "female": false,
+                "dress": false,
+                "longHair": false,
+                "hair": "#e9cb90",
+                "heldDevice": false
+              }
+            ],
+            "modularSynthesizer": false,
+            "dressForms": 0
+          },
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "zone": "atelier",
+          "shape": "stellatedOctahedron",
+          "participants": 9,
+          "facilitators": 1,
+          "capacity": 10,
+          "regular": true,
+          "uniformScale": 4.2,
+          "groundIntersection": false,
+          "interior": {
+            "participants": 9,
+            "facilitators": 1,
+            "heldPhones": 0,
+            "table": "rectangular fashion workbench",
+            "roster": [
+              {
+                "pose": "chair",
+                "female": true,
+                "dress": true,
+                "longHair": true,
+                "hair": "#d9b66d",
+                "heldDevice": false
+              },
+              {
+                "pose": "low",
+                "female": true,
+                "dress": true,
+                "longHair": true,
+                "hair": "#50392b",
+                "heldDevice": false
+              },
+              {
+                "pose": "bean",
+                "female": true,
+                "dress": true,
+                "longHair": true,
+                "hair": "#bf8e49",
+                "heldDevice": false
+              },
+              {
+                "pose": "floor",
+                "female": true,
+                "dress": true,
+                "longHair": true,
+                "hair": "#26252b",
+                "heldDevice": false
+              },
+              {
+                "pose": "chair",
+                "female": true,
+                "dress": true,
+                "longHair": true,
+                "hair": "#79533b",
+                "heldDevice": false
+              },
+              {
+                "pose": "stand",
+                "female": true,
+                "dress": true,
+                "longHair": true,
+                "hair": "#e9cb90",
+                "heldDevice": false
+              },
+              {
+                "pose": "stand",
+                "female": true,
+                "dress": true,
+                "longHair": true,
+                "hair": "#292724",
+                "heldDevice": false
+              },
+              {
+                "pose": "chair",
+                "female": true,
+                "dress": true,
+                "longHair": true,
+                "hair": "#d9b66d",
+                "heldDevice": false
+              },
+              {
+                "pose": "stand",
+                "female": false,
+                "dress": false,
+                "longHair": false,
+                "hair": "#50392b",
+                "heldDevice": false
+              }
+            ],
+            "modularSynthesizer": false,
+            "dressForms": 2
+          },
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "zone": "emdr",
+          "shape": "tetrahedron",
+          "participants": 9,
+          "facilitators": 1,
+          "capacity": 10,
+          "regular": true,
+          "uniformScale": 4.8,
+          "groundIntersection": false,
+          "interior": {
+            "participants": 9,
+            "facilitators": 1,
+            "heldPhones": 0,
+            "table": "none",
+            "roster": [
+              {
+                "pose": "chair",
+                "female": true,
+                "dress": false,
+                "longHair": true,
+                "hair": "#26252b",
+                "heldDevice": false
+              },
+              {
+                "pose": "low",
+                "female": false,
+                "dress": false,
+                "longHair": false,
+                "hair": "#79533b",
+                "heldDevice": false
+              },
+              {
+                "pose": "bean",
+                "female": true,
+                "dress": false,
+                "longHair": true,
+                "hair": "#e9cb90",
+                "heldDevice": false
+              },
+              {
+                "pose": "floor",
+                "female": false,
+                "dress": false,
+                "longHair": false,
+                "hair": "#292724",
+                "heldDevice": false
+              },
+              {
+                "pose": "hanging",
+                "female": true,
+                "dress": false,
+                "longHair": false,
+                "hair": "#d9b66d",
+                "heldDevice": false
+              },
+              {
+                "pose": "daybed",
+                "female": false,
+                "dress": false,
+                "longHair": false,
+                "hair": "#50392b",
+                "heldDevice": false
+              },
+              {
+                "pose": "low",
+                "female": true,
+                "dress": false,
+                "longHair": true,
+                "hair": "#bf8e49",
+                "heldDevice": false
+              },
+              {
+                "pose": "floor",
+                "female": false,
+                "dress": false,
+                "longHair": false,
+                "hair": "#26252b",
+                "heldDevice": false
+              },
+              {
+                "pose": "bean",
+                "female": true,
+                "dress": false,
+                "longHair": true,
+                "hair": "#79533b",
+                "heldDevice": false
+              }
+            ],
+            "modularSynthesizer": false,
+            "dressForms": 0,
+            "characterStudy": {
+              "status": "ready",
+              "loaded": 10,
+              "total": 10,
+              "errors": [],
+              "skinnedMeshes": 114,
+              "animated": true,
+              "heldPhones": 0,
+              "longDresses": 0
+            }
+          },
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        }
+      ],
+      "render": {
+        "triangles": 799644,
+        "calls": 350
+      },
+      "pageErrors": [],
+      "liveSourceHashes": [
+        {
+          "file": "index.html",
+          "sha256": "2522492a457b97e78307857136d63846759f94aeeb276b4714df6a1ccfee0235",
+          "edgeAnalyticsRemoved": true
+        },
+        {
+          "file": "lab.mjs",
+          "sha256": "885c94f101b49a3c27d47e5929705a68aee80dadffc8e7926560c55c9d9045d7",
+          "edgeAnalyticsRemoved": false
+        },
+        {
+          "file": "lab.css",
+          "sha256": "2b7c1ab1268d35948d4e9ae08a5a30b8870d9bea1546612c242c4d0109519981",
+          "edgeAnalyticsRemoved": false
+        },
+        {
+          "file": "portal.mjs",
+          "sha256": "8e3a5b47557ad95e7a4ce782d8569a60d5704295b06cd8d1b15dba5d14705493",
+          "edgeAnalyticsRemoved": false
+        },
+        {
+          "file": "portal-interiors.mjs",
+          "sha256": "53c6099d2b810e37cc58c73600b9d102462ec87b47e931656efa1e93462be491",
+          "edgeAnalyticsRemoved": false
+        },
+        {
+          "file": "portal-preview.mjs",
+          "sha256": "21c66f706d408ecfcbb200ff90a617a433d803e5491b69760b489694ebdc5224",
+          "edgeAnalyticsRemoved": false
+        },
+        {
+          "file": "assets/iam-portal-clarified-20261104.png",
+          "sha256": "9e1bf924d8992ccb1bd443bb90fc307df56e8b703a8843cf688efca1cbeeb782",
+          "edgeAnalyticsRemoved": false
+        },
+        {
+          "file": "emdr-people.mjs",
+          "sha256": "fd1a47a415d46e74eb72658b2ec77b8d0ea7836ac4072259bf7e17afbd9ecf87",
+          "edgeAnalyticsRemoved": false
+        },
+        {
+          "file": "vendor/GLTFLoader.js",
+          "sha256": "ce65da2bc9c3f14a82691384ca606df1c29f009251825729a2ce388524ce8e1c",
+          "edgeAnalyticsRemoved": false
+        },
+        {
+          "file": "vendor/BufferGeometryUtils.js",
+          "sha256": "c25b7930e570e9ec56173cd3b866ec8d2e10016630db3937efb439daf1cedbf6",
+          "edgeAnalyticsRemoved": false
+        },
+        {
+          "file": "assets/emdr/participant-01.glb",
+          "sha256": "93effa97fb11294c37979d3c3e240a3b66c39ad5d00c838ad4f4728571d2ed5e",
+          "edgeAnalyticsRemoved": false
+        },
+        {
+          "file": "assets/emdr/participant-02.glb",
+          "sha256": "40aba017bc83288dc7b5063e61d9cd0d8bbf28e776116a05b7802fea66a2cc38",
+          "edgeAnalyticsRemoved": false
+        },
+        {
+          "file": "assets/emdr/participant-03.glb",
+          "sha256": "a192f0d0f172369d9bb123d5419fb146b731de91b108b29abcd3f0d9440f8a1f",
+          "edgeAnalyticsRemoved": false
+        },
+        {
+          "file": "assets/emdr/participant-04.glb",
+          "sha256": "8765dfcc5b3986406e60da5cdd02c485b2494fb32abd4987d9c7b649373cb66d",
+          "edgeAnalyticsRemoved": false
+        },
+        {
+          "file": "assets/emdr/participant-05.glb",
+          "sha256": "41b72aa955e72626c92f4419606abcdd6328f8f9f60de171816357e637eb2bdb",
+          "edgeAnalyticsRemoved": false
+        },
+        {
+          "file": "assets/emdr/participant-06.glb",
+          "sha256": "8bab603474ef6d3d52fbcd79c2b3a1e30d41677e2c815f3b5dda8db7e816b18a",
+          "edgeAnalyticsRemoved": false
+        },
+        {
+          "file": "assets/emdr/participant-07.glb",
+          "sha256": "6b6b97cd3f0e4df7c846df9b00d7f13832ec930de6c78a236609322b3d1844b6",
+          "edgeAnalyticsRemoved": false
+        },
+        {
+          "file": "assets/emdr/participant-08.glb",
+          "sha256": "7fb5afcea7f1659143cde799ad9f05fa034bd7f8357989cc8ad43f818e8f9573",
+          "edgeAnalyticsRemoved": false
+        },
+        {
+          "file": "assets/emdr/participant-09.glb",
+          "sha256": "15ef5a30f88b81b06af3e15a18b86ba7b96cc49984d0831cec92c354a00d1af7",
+          "edgeAnalyticsRemoved": false
+        },
+        {
+          "file": "assets/emdr/participant-10.glb",
+          "sha256": "84a787509dfc58fc787d2574896b9c06d709c94eb598dce0dad8fff3d3f962df",
+          "edgeAnalyticsRemoved": false
+        },
+        {
+          "file": "portal-geometry.mjs",
+          "sha256": "ff05c714c167f738dcd0cb3c4736b8cd8131b882db8b34d82f269cf1b65bb10c",
+          "edgeAnalyticsRemoved": false
+        },
+        {
+          "file": "story.mjs",
+          "sha256": "11a41187fc1ce3cb25326683099f4c6513428d7778a18c075cfd2e08dd0f03ee",
+          "edgeAnalyticsRemoved": false
+        },
+        {
+          "file": "orbit.mjs",
+          "sha256": "18bca2d40c1fb220b01cd0997cac41af7b40eeec1a293471333f180eeed98171",
+          "edgeAnalyticsRemoved": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "processMuted": true,
+  "mediaStubbed": false,
+  "nativeFullscreenNeverInvoked": true,
+  "before": {
+    "time": 1.740615,
+    "paused": false,
+    "readyState": 4,
+    "frames": 45,
+    "opacity": "0.07",
+    "zIndex": "2",
+    "src": "https://customer-1vpwglz3v6fiyaas.cloudflarestream.com/9f1ed3b5a38f52bfd008d2152d3884de/manifest/video.m3u8",
+    "videoCount": 4,
+    "audiblePlayers": 1
+  },
+  "during": {
+    "time": 6.555518,
+    "paused": false,
+    "readyState": 4,
+    "frames": 157,
+    "opacity": "0.07",
+    "zIndex": "101",
+    "src": "https://customer-1vpwglz3v6fiyaas.cloudflarestream.com/9f1ed3b5a38f52bfd008d2152d3884de/manifest/video.m3u8",
+    "videoCount": 4,
+    "audiblePlayers": 1
+  },
+  "after": {
+    "time": 11.088544,
+    "paused": false,
+    "readyState": 4,
+    "frames": 269,
+    "opacity": "0.07",
+    "zIndex": "2",
+    "src": "https://customer-1vpwglz3v6fiyaas.cloudflarestream.com/9f1ed3b5a38f52bfd008d2152d3884de/manifest/video.m3u8",
+    "videoCount": 4,
+    "audiblePlayers": 1
+  },
+  "pageErrors": []
+}
