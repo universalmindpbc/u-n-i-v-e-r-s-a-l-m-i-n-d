@@ -1,0 +1,318 @@
+{
+  "live": true,
+  "processMuted": true,
+  "mediaStubbed": true,
+  "nativeFullscreenNeverInvoked": true,
+  "results": [
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "stats": [
+        {
+          "zone": "steam",
+          "shape": "truncatedIcosahedron",
+          "participants": 9,
+          "facilitators": 1,
+          "capacity": 10,
+          "regular": true,
+          "uniformScale": 3.6,
+          "groundIntersection": true,
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "zone": "mantra",
+          "shape": "cube",
+          "participants": 9,
+          "facilitators": 1,
+          "capacity": 10,
+          "regular": true,
+          "uniformScale": 4.33,
+          "groundIntersection": false,
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "zone": "sound",
+          "shape": "octahedron",
+          "participants": 9,
+          "facilitators": 1,
+          "capacity": 10,
+          "regular": true,
+          "uniformScale": 4.8,
+          "groundIntersection": false,
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "zone": "comedy",
+          "shape": "dodecahedron",
+          "participants": 9,
+          "facilitators": 1,
+          "capacity": 10,
+          "regular": true,
+          "uniformScale": 3.7,
+          "groundIntersection": true,
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "zone": "sexed",
+          "shape": "icosahedron",
+          "participants": 9,
+          "facilitators": 1,
+          "capacity": 10,
+          "regular": true,
+          "uniformScale": 3.8,
+          "groundIntersection": true,
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "zone": "atelier",
+          "shape": "stellatedOctahedron",
+          "participants": 9,
+          "facilitators": 1,
+          "capacity": 10,
+          "regular": true,
+          "uniformScale": 4.2,
+          "groundIntersection": false,
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "zone": "emdr",
+          "shape": "tetrahedron",
+          "participants": 9,
+          "facilitators": 1,
+          "capacity": 10,
+          "regular": true,
+          "uniformScale": 4.8,
+          "groundIntersection": false,
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        }
+      ],
+      "render": {
+        "triangles": 440192,
+        "calls": 270
+      },
+      "pageErrors": [],
+      "liveSourceHashes": [
+        {
+          "file": "index.html",
+          "sha256": "4b3c1398d8e33515e9a3eac74dbf6e12dbaa5ce60c52449552f88fb67bc3f359",
+          "edgeAnalyticsRemoved": true
+        },
+        {
+          "file": "lab.mjs",
+          "sha256": "99151c6717c229d65001ce2f87ba942dfd9ed674a1e44b91519e6faabaf1f5c7",
+          "edgeAnalyticsRemoved": false
+        },
+        {
+          "file": "lab.css",
+          "sha256": "a35d363f42f71f97da403af1b33dfd7ccd7df3b61fd923044cf4684f69f6bd6e",
+          "edgeAnalyticsRemoved": false
+        },
+        {
+          "file": "portal.mjs",
+          "sha256": "691f50cf959fd63d35eb633b48d6505d2f39cbcb14376970c2da12c125bc6dcf",
+          "edgeAnalyticsRemoved": false
+        },
+        {
+          "file": "portal-geometry.mjs",
+          "sha256": "bbc840b57c3b4c0bec11e8c48f1c894e5923f5855f2dd7cedf2e6f6025814d39",
+          "edgeAnalyticsRemoved": false
+        },
+        {
+          "file": "story.mjs",
+          "sha256": "11a41187fc1ce3cb25326683099f4c6513428d7778a18c075cfd2e08dd0f03ee",
+          "edgeAnalyticsRemoved": false
+        },
+        {
+          "file": "orbit.mjs",
+          "sha256": "18bca2d40c1fb220b01cd0997cac41af7b40eeec1a293471333f180eeed98171",
+          "edgeAnalyticsRemoved": false
+        }
+      ]
+    },
+    {
+      "viewport": {
+        "width": 393,
+        "height": 780
+      },
+      "stats": [
+        {
+          "zone": "steam",
+          "shape": "truncatedIcosahedron",
+          "participants": 9,
+          "facilitators": 1,
+          "capacity": 10,
+          "regular": true,
+          "uniformScale": 3.6,
+          "groundIntersection": true,
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "zone": "mantra",
+          "shape": "cube",
+          "participants": 9,
+          "facilitators": 1,
+          "capacity": 10,
+          "regular": true,
+          "uniformScale": 4.33,
+          "groundIntersection": false,
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "zone": "sound",
+          "shape": "octahedron",
+          "participants": 9,
+          "facilitators": 1,
+          "capacity": 10,
+          "regular": true,
+          "uniformScale": 4.8,
+          "groundIntersection": false,
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "zone": "comedy",
+          "shape": "dodecahedron",
+          "participants": 9,
+          "facilitators": 1,
+          "capacity": 10,
+          "regular": true,
+          "uniformScale": 3.7,
+          "groundIntersection": true,
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "zone": "sexed",
+          "shape": "icosahedron",
+          "participants": 9,
+          "facilitators": 1,
+          "capacity": 10,
+          "regular": true,
+          "uniformScale": 3.8,
+          "groundIntersection": true,
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "zone": "atelier",
+          "shape": "stellatedOctahedron",
+          "participants": 9,
+          "facilitators": 1,
+          "capacity": 10,
+          "regular": true,
+          "uniformScale": 4.2,
+          "groundIntersection": false,
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "zone": "emdr",
+          "shape": "tetrahedron",
+          "participants": 9,
+          "facilitators": 1,
+          "capacity": 10,
+          "regular": true,
+          "uniformScale": 4.8,
+          "groundIntersection": false,
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        }
+      ],
+      "render": {
+        "triangles": 370928,
+        "calls": 216
+      },
+      "pageErrors": [],
+      "liveSourceHashes": [
+        {
+          "file": "index.html",
+          "sha256": "4b3c1398d8e33515e9a3eac74dbf6e12dbaa5ce60c52449552f88fb67bc3f359",
+          "edgeAnalyticsRemoved": true
+        },
+        {
+          "file": "lab.mjs",
+          "sha256": "99151c6717c229d65001ce2f87ba942dfd9ed674a1e44b91519e6faabaf1f5c7",
+          "edgeAnalyticsRemoved": false
+        },
+        {
+          "file": "lab.css",
+          "sha256": "a35d363f42f71f97da403af1b33dfd7ccd7df3b61fd923044cf4684f69f6bd6e",
+          "edgeAnalyticsRemoved": false
+        },
+        {
+          "file": "portal.mjs",
+          "sha256": "691f50cf959fd63d35eb633b48d6505d2f39cbcb14376970c2da12c125bc6dcf",
+          "edgeAnalyticsRemoved": false
+        },
+        {
+          "file": "portal-geometry.mjs",
+          "sha256": "bbc840b57c3b4c0bec11e8c48f1c894e5923f5855f2dd7cedf2e6f6025814d39",
+          "edgeAnalyticsRemoved": false
+        },
+        {
+          "file": "story.mjs",
+          "sha256": "11a41187fc1ce3cb25326683099f4c6513428d7778a18c075cfd2e08dd0f03ee",
+          "edgeAnalyticsRemoved": false
+        },
+        {
+          "file": "orbit.mjs",
+          "sha256": "18bca2d40c1fb220b01cd0997cac41af7b40eeec1a293471333f180eeed98171",
+          "edgeAnalyticsRemoved": false
+        }
+      ]
+    }
+  ]
+}

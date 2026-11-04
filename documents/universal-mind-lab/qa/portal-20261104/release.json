@@ -1,0 +1,22 @@
+{
+  "verifiedAt": "2026-11-04T01:58:24.778171+00:00",
+  "sourceCommit": "46e0d6c9e360f0c38dbdca4828f037231bb334ac",
+  "url": "https://staging.universalmind.tv/lab/",
+  "deployment": "./deploy-panthur-staging.sh lab",
+  "manifestMatchedFiles": 44,
+  "viewports": [
+    {
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "width": 393,
+      "height": 780
+    }
+  ],
+  "geometryChecks": "pass",
+  "nativeFullscreenTested": false,
+  "mediaPlaybackTested": false,
+  "productionModified": false,
+  "edgeHtmlNormalization": "Removed only the host-injected Cloudflare Insights script for source comparison."
+}
