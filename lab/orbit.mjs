@@ -45,12 +45,12 @@ function join(a,b,va,vb,t,duration){
  const h00=2*t*t*t-3*t*t+1,h10=t*t*t-2*t*t+t,h01=-2*t*t*t+3*t*t,h11=t*t*t-t*t;
  return a.map((v,i)=>h00*v+h10*duration*va[i]+h01*b[i]+h11*duration*vb[i]);
 }
-export function orbitPose(seconds,mobile=false,portrait=false,height=647){
+export function orbitPose(seconds,mobile=false,portrait=false,height=647,entryPose=null){
  const time=Math.max(0,Math.min(ORBIT_DURATION,seconds)),zero=[0,0,0];
  if(time>=ORBIT_ENTRY&&time<=ORBIT_ENTRY+ORBIT_CIRCUIT)return circuit(time-ORBIT_ENTRY);
  const pose={shot:time<ORBIT_ENTRY?'arrival-at-runway':'overview'};
  if(time<ORBIT_ENTRY){
-  const from={position:[16,9,46],target:[0,1.5,23]};if(mobile)from.position=from.position.map((v,i)=>from.target[i]+(v-from.target[i])*1.5);
+  const from=entryPose||{position:[16,9,46],target:[0,1.5,23]};if(mobile&&!entryPose)from.position=from.position.map((v,i)=>from.target[i]+(v-from.target[i])*1.5);
   for(const key of ['position','target'])pose[key]=join(from[key],start[key],zero,entryVelocity[key],time/ORBIT_ENTRY,ORBIT_ENTRY);
  }else{
   const end=mobile?mobileOverviewPose(portrait,height):overviewPose(),u=(time-ORBIT_ENTRY-ORBIT_CIRCUIT)/ORBIT_EXIT;

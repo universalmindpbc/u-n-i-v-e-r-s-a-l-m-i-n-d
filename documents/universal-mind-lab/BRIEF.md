@@ -1,6 +1,6 @@
 # Universal Mind Lab — creative and development brief
 
-**Version:** 0.16 · **Date:** 3 November 2026 · **Owner:** Ben Korbel
+**Version:** 0.17 · **Date:** 4 November 2026 · **Owner:** Ben Korbel
 **Status:** Working concept for discussion, collaboration and staged visual development. Architectural engineering, operating arrangements and named partnerships remain to be established.
 
 ## 1. Purpose
@@ -715,3 +715,24 @@ Ben approved the waveform. The tagline uses clean colour fills only. Use a satur
 - Floating place labels appear only as a five-second guide on the completed wide site view. Hide them throughout the guided tour, manual destination close-ups and continuous camera circuit. The final overview with the biofeedback card has no floating labels. The desktop Labels action can briefly show them again in an unobstructed overview.
 - Keep the bottom destination navigation and right-hand destination card during desktop tours.
 - The main pavilion destination opens from the front at visitor height, looking under the arch toward the dance floor, audience and live band. Follow Ben's 6.46 pm reference: the party is the focus, with the roof framing it.
+
+
+## I Am Portal — 4 November 2026
+
+Add seven small geometric workshop marquees over the actual Universal Mind flower, coloured into the living grass. Each space represents ten people including one facilitator; the main arena remains the approximately 100-person reference. Preserve the existing festival model, media, landscape and approved interface.
+
+The signed-off development sequence is: central STEAM geometry and scale; six surrounding spaces and flower; placement comparison; navigation, interior views and story integration. The first staging build places the village along a path beyond the Linfox trucks, keeping the opening festival composition spacious.
+
+Use mathematically regular solids with one uniform scale and rigid rotations. Never stretch axes to fit the image reference. The truncated icosahedron has 12 regular pentagons, 20 regular hexagons, 60 vertices and 90 equal edges. The Atellier star is a compound of two regular tetrahedra. The current ground-intersection studies and exact dimensions are recorded in [I-AM-PORTAL-BUILD.md](I-AM-PORTAL-BUILD.md).
+
+Physical sign wording is exact, including Ben's latest spelling and letter spacing:
+
+- s e x - e d
+- e m d r
+- s o u n d
+- m a n t r a
+- a t e l l i e r
+- c o m e d y
+- s . t . e . a . m .
+
+The village opens from About and destination 08. Its seven workshop views are available within the destination card; phone navigation uses a compact horizontal selector. Keep floating labels and the artist lineup hidden during these close views. The automated tour includes the village before the continuous festival circuit.

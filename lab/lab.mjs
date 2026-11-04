@@ -1,8 +1,10 @@
-import { orbitPose, mobileOverviewPose, overviewPose } from './orbit.mjs?v=20261103continuous1';
+import { createPortal } from './portal.mjs?v=20261104portal1';
+import { portalZones } from './portal-geometry.mjs?v=20261104portal1';
+import { orbitPose, mobileOverviewPose, overviewPose } from './orbit.mjs?v=20261104portal1';
 import { createActivities } from './activities.mjs?v=20261103purpose1';
 import { createPerformance } from './performance.mjs?v=20261103orbit1';
 import { initMedia } from './media.mjs?v=20261103continuous1';
-import { createStory, ORBIT_START, STORY_END } from './story.mjs?v=20261103continuous1';
+import { createStory, ORBIT_START, STORY_END } from './story.mjs?v=20261104portal1';
 const $ = (id) => document.getElementById(id);
 const reduced = matchMedia('(prefers-reduced-motion: reduce)');
 const compactLayout = matchMedia('(max-width: 800px), (max-width: 1000px) and (pointer: coarse)');
@@ -10,6 +12,7 @@ const mobile = () => compactLayout.matches;
 const portraitMobile = () => mobile() && $('world').clientHeight > $('world').clientWidth;
 const status = (message) => { $('scene-status').textContent = message; };
 const places = {
+  portal: { number: '08 · I AM PORTAL', title: 'I Am Portal', copy: 'Seven small workshop spaces for education, intervention and interactivity. Explore electronic music, fashion, communication and creative technology in groups of ten.' },
   overview: { number: '', title: 'Overview', copy: 'An open green space for creative learning, emotional awareness and connection. Music, fashion and mindfulness bring people together, with support close at hand.' },
   truck: { number: '01 · LINFOX TRUCK', title: 'Linfox truck', copy: 'The road train carries the Lab from community to community. Two video-wrapped trailers bring fashion and moving artwork into the site.' },
   main: { number: '02 · MAIN PAVILION', title: 'Main pavilion', copy: 'Music, fashion and collective experiences gather beneath a single vaulted shell, opening onto the lawn. An open dance floor sits among Moroso Tropicália lounges by Patricia Urquiola and hanging seats.' },
@@ -19,6 +22,7 @@ const places = {
   fashion: { number: '07 · FASHION', title: 'Fashion runway', copy: 'The central approach becomes a runway for Indigenous fashion, self-expression and creative exchange. Models walk among moving images and sculptures, connecting fashion with identity and confidence.' },
   support: { number: '06 · SUPPORT AREA', title: 'Support & connection', copy: 'A shared support space bringing together headspace, Médecins Sans Frontières (MSF), and the Australian Association of Buddhist Counsellors and Psychotherapists (AABCAP). School nominations and headspace referrals connect participants with a welcome conversation, optional support and onward care.' }
 };
+for(const zone of portalZones)places['portal-'+zone.id]={number:'I AM PORTAL',title:zone.title,copy:zone.copy};
 let sceneAPI = null;
 let entered=false,buildStage='site',rain=false,layoutVisible=false,tourTimer=0,storyState=null;
 let autoTourCancelled=false,lastAutoView=null,lineupOverride=null;
@@ -49,12 +53,14 @@ function selectPlace(key, show = true, automated = false) {
   if(key==='overview'&&!automated)previewSceneLabels();else{labelPreviewUntil=0;clearTimeout(labelPreviewTimer);}syncSceneLabels();
   document.body.dataset.cameraView = key;
   const info = places[key];
-  document.querySelectorAll('[data-view]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.view === key)));
+  document.querySelectorAll('[data-view]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.view === key || b.dataset.view === 'portal' && key.startsWith('portal-'))));
   $('place-number').textContent = info.number;
   $('place-title').textContent = info.title;
   $('place-copy').textContent = info.copy;
   if(key!=='overview')emotionPanel(false);
   $('interior-view').hidden=key!=='main';$('learn-main').hidden=key!=='main';
+  $('portal-rooms').hidden=!key.startsWith('portal');
+  document.querySelectorAll('[data-portal-room]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.portalRoom===key)));
   $('place-card').hidden = !show || key === 'overview' || (automated && mobile());
   if (mode === '3d') sceneAPI?.go(key);
   status(info.title + ' ' + info.copy);
@@ -71,7 +77,9 @@ function setMode(next) {
 }
 document.querySelectorAll('[data-view]').forEach(b => b.addEventListener('click', () => selectPlace(b.dataset.view)));
 $('interior-view').addEventListener('click',()=>{stopTour();sceneAPI?.go('interior');$('place-card').hidden=true;});
-$('place-close').addEventListener('click', () => { $('place-card').hidden = true; (mobile() ? $('emotion-toggle') : document.querySelector(`[data-view="${selected}"]`)).focus(); });
+document.querySelectorAll('[data-portal-room]').forEach(b=>b.addEventListener('click',()=>selectPlace(b.dataset.portalRoom)));
+$('portal-about').addEventListener('click',()=>{$('vision').close();if(!entered)launchFestival();selectPlace('portal');});
+$('place-close').addEventListener('click', () => { $('place-card').hidden = true; (mobile() ? $('emotion-toggle') : (document.querySelector(`[data-view="${selected}"]`)||document.querySelector('[data-view="portal"]'))).focus(); });
 $('reset-view').addEventListener('click', () => selectPlace('overview', false));
 $('labels-toggle').addEventListener('click', () => {
   if($('labels-toggle').getAttribute('aria-pressed')==='true'){
@@ -158,7 +166,7 @@ $('replay-story').addEventListener('click',()=>{media.start();startStory();});
 function stopTour(){autoTourCancelled=true;document.body.dataset.cinematic='false';document.body.dataset.tourActive='false';clearTimeout(tourTimer);tourTimer=0;$('tour-toggle').setAttribute('aria-pressed','false');$('tour-toggle').textContent='Tour';syncSceneLabels();}
 $('tour-toggle').addEventListener('click',()=>{
   if(tourTimer||(!autoTourCancelled&&['tour','orbit'].includes(storyState?.phase))){stopTour();return;}
-  stopTour();let n=0;const route=['truck','main','food','play','river','support','fashion'];
+  stopTour();let n=0;const route=['truck','main','food','play','river','support','fashion','portal'];
   $('tour-toggle').setAttribute('aria-pressed','true');$('tour-toggle').textContent='Stop tour';
   const next=()=>{if(n>=route.length){stopTour();selectPlace('overview',false,true);return;}tourTimer=setTimeout(next,n+1===route.length?10000:5000);selectPlace(route[n++],true,true);};next();
 });
@@ -335,6 +343,7 @@ async function buildWorld() {
   path([[0,21],[-10,23],[-24,19]]);
   path([[0,14],[10,15],[20,10],[25,0]],1.8);
   path([[-25,-8],[-31,-14],[-35,-24]],1.8);
+  path([[1,48],[-9,53],[-20,54],[-29,52],[-34,56]],2.4);
 
   const architectureGroup=new THREE.Group();scene.add(architectureGroup);
   const buildings={};
@@ -443,7 +452,8 @@ async function buildWorld() {
   vehicleBox(2.16,.17,.22,rubber,0,.52,2.27);vehicleBox(2.16,.17,.22,rubber,0,.52,-2.27);
   document.body.dataset.brandAssets='ready';
   const contextDecor=new THREE.Group();const contextObjects=scene.children.slice(contextStart);contextObjects.forEach(o=>contextDecor.add(o));scene.add(contextDecor);
-  const anchorData=[['main','Main pavilion',[0,8.4,-12]],['food','International Food Fair',[-24,6.5,-9]],['play','Mobile music making',[-26,2.9,18]],['river','Apple listening pods',[22,1.3,8]],['support','Support',[-32,3,-20]],['fashion','Fashion runway',[0,2.2,24]]];
+  const portal=createPortal(THREE);scene.add(portal.group);
+  const anchorData=[['main','Main pavilion',[0,8.4,-12]],['food','International Food Fair',[-24,6.5,-9]],['play','Mobile music making',[-26,2.9,18]],['river','Apple listening pods',[22,1.3,8]],['support','Support',[-32,3,-20]],['fashion','Fashion runway',[0,2.2,24]],['portal','I Am Portal',[-34,6,66]]];
   const anchors=anchorData.map(([key,label,p])=>{
     const el=document.createElement('button');el.className='scene-label';el.dataset.key=key;el.tabIndex=-1;el.innerHTML='<i></i>'+label;el.addEventListener('click',()=>selectPlace(key));$('labels').append(el);return {el,p:new THREE.Vector3(...p)};
   });
@@ -458,6 +468,7 @@ async function buildWorld() {
     support:{pos:[-25,7,-12],target:[-33.7,1.1,-23.2]},
     fashion:{pos:[16,9,46],target:[0,1.5,23]}
   };
+  presets.portal=portal.camera();for(const zone of portalZones)presets['portal-'+zone.id]=portal.camera(zone.id);
   const nightLights=[];
   for(const [x,z,colour] of [[-9,-8,'#d98bff'],[9,-8,'#67c8e4'],[-24,-9,'#ffc798'],[-23,20,'#b2a0ff'],[25,5,'#70dfcb']]){
     const light=new THREE.PointLight(colour,0,24,1.3);light.position.set(x,2,z);scene.add(light);nightLights.push(light);
@@ -469,7 +480,7 @@ async function buildWorld() {
   const daySky=new THREE.Color('#e9ece2'),nightSky=new THREE.Color('#101f30'),daySun=new THREE.Color('#fff1d9'),nightSun=new THREE.Color('#a5c0e2');
   const dayWaterA=new THREE.Color('#367f86'),nightWaterA=new THREE.Color('#123d48'),dayWaterB=new THREE.Color('#a1d4c5'),nightWaterB=new THREE.Color('#397280');
   function setNight(value){
-    currentStory.night=Number(value);features.setNight(value);lightShow.set(Number(value),currentStory.programme>0);
+    currentStory.night=Number(value);portal.setNight(value);features.setNight(value);lightShow.set(Number(value),currentStory.programme>0);
     const v=Number(value);if(v<.3)scene.background.lerpColors(daySky,goldSky,v/.3);else if(v<.58)scene.background.lerpColors(goldSky,peachSky,(v-.3)/.28);else scene.background.lerpColors(peachSky,nightSky,(v-.58)/.42);scene.fog.color.copy(scene.background);
     skyLight.intensity=2.3-1.75*value;sun.intensity=3.4-3.16*value;
     if(v<.5)sun.color.lerpColors(daySun,goldSun,v*2);else sun.color.lerpColors(goldSun,nightSun,(v-.5)*2);sun.position.y=78-96*v;renderer.toneMappingExposure=1.15+.2*value;
@@ -482,7 +493,7 @@ async function buildWorld() {
     currentStory={...value};
     for(const [key,g] of Object.entries(buildings)){const p=value[key]||0;g.visible=p>0;buildPlanes[key].constant=p>=1?100:Math.max(.1,p*8.7);}
     contextDecor.visible=value.programme>0;paths.visible=value.seconds>=16;runway.setVisible(value.furniture>0);runwayCrowd.group.visible=value.programme>0;
-    features.setStory(value);activities.setStory(value);setNight(value.night);setResponse(responseLevel);crowd.builders.visible=value.seconds>6&&value.seconds<29;crowd.visitors.visible=value.programme>0;performanceStage.group.visible=value.programme>=1;
+    portal.setStory(value);features.setStory(value);activities.setStory(value);setNight(value.night);setResponse(responseLevel);crowd.builders.visible=value.seconds>6&&value.seconds<29;crowd.visitors.visible=value.programme>0;performanceStage.group.visible=value.programme>=1;
     crowd.visitors.traverse(o=>{if(o.isInstancedMesh)o.count=Math.floor(70*value.programme)*(o.userData.fullCount/70);});
     document.body.dataset.revealed=Object.keys(buildings).filter(k=>value[k]>=1).join(',');
     document.querySelectorAll('#place-list,.view-tools').forEach(e=>e.inert=!value.navigation);
@@ -499,13 +510,16 @@ async function buildWorld() {
 
   function go(key,instant=false){
     cinematicCamera=false;
+    controls.minDistance=key.startsWith('portal')?4:12;
     const p=presets[key];const end=new THREE.Vector3(...p.pos),target=new THREE.Vector3(...p.target);
-    if(key==='overview'){const pose=mobile()?mobileOverviewPose(portraitMobile(),$('world').clientHeight):overviewPose();end.fromArray(pose.position);target.fromArray(pose.target);}else if(mobile()){end.sub(target).multiplyScalar(1.5).add(target);}
+    if(key==='overview'){const pose=mobile()?mobileOverviewPose(portraitMobile(),$('world').clientHeight):overviewPose();end.fromArray(pose.position);target.fromArray(pose.target);}else if(mobile()){end.sub(target).multiplyScalar(1.5).add(target);if(key.startsWith('portal-'))target.y-=1.7;}
     if(instant||reduced.matches){camera.position.copy(end);controls.target.copy(target);controls.update();tween=null;}else{tween={start:performance.now(),from:camera.position.clone(),fromTarget:controls.target.clone(),to:end,target};}
     needsFrame=true;requestFrame();
   }
+  let orbitEntryPose=null;
   function orbit(seconds){
-    const pose=orbitPose(seconds,mobile(),portraitMobile(),$('world').clientHeight);tween=null;cinematicCamera=true;
+    if(!cinematicCamera)orbitEntryPose={position:camera.position.toArray(),target:controls.target.toArray()};
+    const pose=orbitPose(seconds,mobile(),portraitMobile(),$('world').clientHeight,orbitEntryPose);tween=null;cinematicCamera=true;
     camera.position.fromArray(pose.position);controls.target.fromArray(pose.target);camera.lookAt(controls.target);
     document.body.dataset.orbitShot=pose.shot;document.body.dataset.cameraPosition=camera.position.toArray().map(n=>n.toFixed(2)).join(',');
     needsFrame=true;requestFrame();
@@ -527,6 +541,7 @@ async function buildWorld() {
     const waterMoving=entered&&media.motionEnabled();if(waterMoving&&lastWaterFrame)waterTime+=Math.min(.05,Math.max(0,(t-lastWaterFrame)/1000));lastWaterFrame=t;
     if(features.update(motionTime,t)){needsFrame=true;}
     if(activities.update(waterTime,waterMoving&&!reduced.matches))needsFrame=true;
+    if(portal.update(waterTime,waterMoving&&!reduced.matches))needsFrame=true;
     crowd.update(musicMotion?motionTime:t*.001,{construction:currentStory.construction,dancing:musicMotion,visible:currentStory.seconds>6,night:currentStory.night});performanceStage.update(motionTime,musicMotion);lightShow.update(motionTime);runwayCrowd.update(motionTime,{moving:musicMotion,visible:runwayCrowd.group.visible});
     if(tween){const a=Math.min(1,(t-tween.start)/1250),ease=a*a*(3-2*a);camera.position.lerpVectors(tween.from,tween.to,ease);controls.target.lerpVectors(tween.fromTarget,tween.target,ease);if(a===1)tween=null;needsFrame=true;}
     if(!cinematicCamera)controls.update();
@@ -552,7 +567,7 @@ async function buildWorld() {
   reduced.addEventListener('change',()=>{controls.enableDamping=!reduced.matches;needsFrame=true;requestFrame();});
   canvas.addEventListener('webglcontextlost',(e)=>{e.preventDefault();setMode('plan');status('The 3D view paused. The 2D site plan remains available.');});
   go('overview',true);resize();
-  return {go,orbit,setNight,setStory,setResponse,setRain,setLayout,setMusicMotion,setVisible(v){visible=v;if(!v){cancelAnimationFrame(raf);raf=0;}else{needsFrame=true;requestFrame();}},stats(){return {triangles:renderer.info.render.triangles,calls:renderer.info.render.calls,trees:treeList.length,...features.stats,...activities.stats};}};
+  return {go,orbit,setNight,setStory,setResponse,setRain,setLayout,setMusicMotion,setVisible(v){visible=v;if(!v){cancelAnimationFrame(raf);raf=0;}else{needsFrame=true;requestFrame();}},stats(){return {triangles:renderer.info.render.triangles,calls:renderer.info.render.calls,trees:treeList.length,...features.stats,...activities.stats,portal:portal.stats};}};
 }
 
 try {

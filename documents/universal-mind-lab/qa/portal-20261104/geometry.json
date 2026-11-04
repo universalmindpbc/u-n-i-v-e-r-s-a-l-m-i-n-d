@@ -1,0 +1,143 @@
+{
+  "pass": true,
+  "uniformCircumradius": true,
+  "continuousStoryJoin": true,
+  "report": [
+    {
+      "shape": "tetrahedron",
+      "vertices": 4,
+      "edges": 6,
+      "faces": {
+        "3": 4
+      },
+      "maxEdgeError": 0
+    },
+    {
+      "shape": "cube",
+      "vertices": 8,
+      "edges": 12,
+      "faces": {
+        "4": 6
+      },
+      "maxEdgeError": 0
+    },
+    {
+      "shape": "octahedron",
+      "vertices": 6,
+      "edges": 12,
+      "faces": {
+        "3": 8
+      },
+      "maxEdgeError": 0
+    },
+    {
+      "shape": "dodecahedron",
+      "vertices": 20,
+      "edges": 30,
+      "faces": {
+        "5": 12
+      },
+      "maxEdgeError": 1.1102230246251565e-16
+    },
+    {
+      "shape": "icosahedron",
+      "vertices": 12,
+      "edges": 30,
+      "faces": {
+        "3": 20
+      },
+      "maxEdgeError": 2.220446049250313e-16
+    },
+    {
+      "shape": "truncatedIcosahedron",
+      "vertices": 60,
+      "edges": 90,
+      "faces": {
+        "5": 12,
+        "6": 20
+      },
+      "maxEdgeError": 1.6653345369377348e-16
+    },
+    {
+      "shape": "stellatedOctahedron",
+      "vertices": 8,
+      "edges": 12,
+      "faces": {
+        "3": 8
+      },
+      "maxEdgeError": 0
+    }
+  ],
+  "dimensions": [
+    {
+      "zone": "steam",
+      "sizeMetres": [
+        7.051911015502183,
+        7.051911015502183,
+        7.051911015502183
+      ],
+      "lowestVertexMetres": -1.6259555077510917,
+      "groundIntersection": true
+    },
+    {
+      "zone": "mantra",
+      "sizeMetres": [
+        4.99985333118216,
+        4.999853331182159,
+        4.99985333118216
+      ],
+      "lowestVertexMetres": 0.00007333440892010046,
+      "groundIntersection": false
+    },
+    {
+      "zone": "sound",
+      "sizeMetres": [
+        7.5712812921102035,
+        5.542562584220407,
+        7.5712812921102035
+      ],
+      "lowestVertexMetres": -4.440892098500626e-16,
+      "groundIntersection": false
+    },
+    {
+      "zone": "comedy",
+      "sizeMetres": [
+        6.912875456324098,
+        6.912875456324098,
+        6.912875456324098
+      ],
+      "lowestVertexMetres": -1.5564377281620492,
+      "groundIntersection": true
+    },
+    {
+      "zone": "sexed",
+      "sizeMetres": [
+        6.464946143475504,
+        6.464946143475504,
+        6.464946143475504
+      ],
+      "lowestVertexMetres": -1.332473071737752,
+      "groundIntersection": true
+    },
+    {
+      "zone": "atelier",
+      "sizeMetres": [
+        4.849742261192858,
+        4.849742261192857,
+        4.849742261192858
+      ],
+      "lowestVertexMetres": 0.025128869403571397,
+      "groundIntersection": false
+    },
+    {
+      "zone": "emdr",
+      "sizeMetres": [
+        7.571281292110207,
+        6.400000000000007,
+        7.571281292110207
+      ],
+      "lowestVertexMetres": -2.6645352591003757e-15,
+      "groundIntersection": false
+    }
+  ]
+}

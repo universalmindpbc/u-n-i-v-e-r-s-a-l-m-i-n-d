@@ -328,3 +328,19 @@ body[data-night="true"] .intro h1,body[data-night="true"] .artist-lineup{color:#
 #place-list button .place-name{display:block;margin:0;font-size:inherit;line-height:1.35;color:inherit;text-align:left}
 @media(max-width:1200px){#place-list button{column-gap:8px;padding-left:16px;padding-right:16px}}
 @media(max-width:800px),(max-width:1000px) and (pointer:coarse){.mast-right{justify-content:flex-end}}
+
+/* Portal access follows the existing place card and About; no extra header controls. */
+@media(min-width:1001px){#place-list{grid-template-columns:repeat(8,minmax(0,1fr))}#place-list button{padding-left:14px;padding-right:14px;column-gap:8px}}
+#portal-rooms:not([hidden]){display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:20px}
+#portal-rooms button{background:transparent;border:1px solid #64766a55;border-radius:5px;padding:10px 8px;min-height:42px;text-align:left;font-size:10px;color:#263a2a}
+#portal-rooms button[aria-pressed="true"]{background:#354c3e;color:#f5f3e9}
+#portal-rooms button:focus-visible{outline:2px solid #287e99;outline-offset:3px}
+.portal-about-section{margin:24px 0}
+@media(max-width:800px){
+ .place-card:has(#portal-rooms:not([hidden])){max-height:34dvh;bottom:calc(var(--lab-footer-height,100px) + 12px);padding:18px 20px}
+ .place-card:has(#portal-rooms:not([hidden])) .eyebrow{margin:0 40px 8px 0;font-size:9px}
+ .place-card:has(#portal-rooms:not([hidden])) h2{font-size:23px;margin:0 30px 8px 0}
+ .place-card:has(#portal-rooms:not([hidden])) #place-copy{font-size:12px;line-height:1.55;margin:0}
+ #portal-rooms:not([hidden]){display:flex;overflow-x:auto;gap:7px;margin-top:12px;padding-bottom:4px;scrollbar-width:thin}
+ #portal-rooms button{flex:0 0 auto;min-height:44px;padding:9px 12px}
+}
