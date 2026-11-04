@@ -1,0 +1,93 @@
+// Run beside festival-cast.ts in the pinned generator's scripts directory.
+import {garmentById, type GarmentDef} from '../src/core/garments/catalog';
+import {cm, REGION} from '../src/core/garments/body';
+import {cloth, isTrunk, isUpper, mat, shellPart, torsoY} from '../src/core/garments/kit';
+import {Caster} from '../src/core/garments/project';
+
+type Build = GarmentDef['build'];
+function register(id: string, slot: GarmentDef['slot'], build: Build) {
+  garmentById.set(id, {id, label:id, slot, patterns:['solid'], color:'#ffffff', color2:'#fafafa', build});
+}
+function transfer(surface,centre,width,height,file,colour,name){
+  const divisions=18, positions:number[]=[],uvs:number[]=[],indices:number[]=[];
+  for(let row=0;row<=divisions;row++)for(let col=0;col<=divisions;col++){
+    const u=col/divisions,v=row/divisions,hit=surface.hit((u-.5)*width,centre+(v-.5)*height);
+    if(!hit)throw Error(name+' outside garment');
+    positions.push(hit.p[0],hit.p[1],hit.p[2]+cm(.18));uvs.push(u,v);
+    if(row&&col){const i=row*(divisions+1)+col;indices.push(i-divisions-2,i-divisions-1,i,i-1);}
+  }
+  const mesh={positions:Float32Array.from(positions),uvs:Float32Array.from(uvs),faceSizes:new Uint8Array(divisions*divisions).fill(4),faceVerts:Uint32Array.from(indices),faceUVs:Uint32Array.from(indices)};
+  return {mesh,material:mat(name,null,{map:file,color:colour,alpha:'mask',doubleSided:true})};
+}
+const emblemTop = (source: Build, ink: string): Build => (g, style) => {
+  const parts=source(g,style),surface=new Caster(parts[0].mesh,null,()=>true,'front');
+  parts.push(transfer(surface,torsoY(g.body,.65),cm(21.2),cm(21.2),'festival-emblem.png',ink,'In This World chest print'));
+  if(ink==='#ffffff')parts.push(transfer(surface,torsoY(g.body,.63),cm(.65),cm(32),'rash-zip.png','#ffffff','Front zip'));
+  return parts;
+};
+const classicTee:Build=(g,s)=>{
+  const parts=garmentById.get('oversized_tee')!.build(g,s),waist=torsoY(g.body,.32);
+  // Finish at the hip so the boxing waistband and longer satin leg stay visible.
+  for(const part of parts)for(let i=1;i<part.mesh.positions.length;i+=3){
+    const y=part.mesh.positions[i];if(y<waist)part.mesh.positions[i]=waist+(y-waist)*.48;
+  }
+  return parts;
+};
+register('star-tee','top',emblemTop(classicTee,'#2448a4'));
+register('sport-crop','top',(g,s)=>shellPart(g,{
+  covers:v=>isUpper(v)&&v.tt>.45&&(v.tt<.78||Math.abs(v.ax-.62*g.body.L.shoulderX)<.19*g.body.L.shoulderX),
+  offset:cm(.5),relax:3
+},cloth(g,'Technical knit crop',s)));
+register('one-piece','top',(g,s)=>shellPart(g,{
+  covers:v=>isUpper(v)&&(v.tt<.75||Math.abs(v.ax-.64*g.body.L.shoulderX)<.17*g.body.L.shoulderX),
+  offset:cm(.48),relax:3
+},cloth(g,'Scoop-neck swimsuit',s)));
+for(const long of [false,true]){
+  const build:Build=(g,s)=>shellPart(g,{
+    covers:v=>(isTrunk(v)&&v.tt>.08)||(v.region===REGION.neck&&v.tt<1.02)||(v.region===REGION.upperarm&&(long||v.t<.52))||(long&&v.region===REGION.lowerarm&&v.t<.98),
+    offset:cm(.64),relax:3
+  },cloth(g,'Cobalt neoprene',s));
+  register(long?'long-rash':'short-rash','top',emblemTop(build,'#ffffff'));
+}
+register('quilted-puffer','jacket',(g,s)=>shellPart(g,{
+  covers:v=>(isTrunk(v)&&v.tt>.15&&Math.abs(v.tth)>.54)||v.region===REGION.upperarm||(v.region===REGION.lowerarm&&v.t<.92),
+  offset:v=>cm(2.8+1.3*Math.sin(v.t*28)**2),relax:2
+},cloth(g,'Open quilted puffer',s)));
+for(const [id,length,ease] of [['leggings',1,.42],['hotpants',.34,.55],['training',.53,1.3],['cutoffs',.32,1.45],['boxing',.76,3.3]] as const){
+  register(id,'bottom',(g,s)=>{
+    const parts=shellPart(g,{
+      covers:v=>(isTrunk(v)&&v.t<.32)||(v.region===REGION.upperleg&&v.t<length+(id==='cutoffs'?.035*Math.sin(v.theta*9):0))||(id==='leggings'&&v.region===REGION.lowerleg&&v.t<.93),
+      offset:v=>cm(ease*(v.region===REGION.upperleg?1+v.t*.5:1)),relax:3
+    },cloth(g,id,s,{roughness:id==='boxing'?.43:.86}));
+    if(id==='boxing'||id==='cutoffs'){
+      parts.push(...shellPart(g,{covers:v=>isTrunk(v)&&v.t>.22&&v.t<.32,offset:cm(ease+.18)},mat('Waistband',null,{color:id==='boxing'?'#faf4e6':'#96a9bd'}),false));
+    }
+    if(id==='cutoffs'){
+      const surface=new Caster(parts[0].mesh,null,()=>true,'front');
+      parts.push(transfer(surface,torsoY(g.body,.17),cm(22),cm(12),'denim-stitch.png','#ffffff','Fly and pocket stitching'));
+    }
+    return parts;
+  });
+}
+
+// Project the ink onto the individual arm surface before skin binding.
+register('festival-ink','acc',g=>{
+  return [[REGION.upperarm,-1,'flower-ink.png',3.9,3.9],[REGION.lowerarm,1,'affirmation-ink.png',2.6,5.4]].map(([region,side,file,width,height])=>{
+    const [a,b]=g.body.axis(Number(region),Number(side)),t=.43;
+    const mid=a.map((p,i)=>p+(b[i]-p)*t), dx=b[0]-a[0],dy=b[1]-a[1],length=Math.hypot(dx,dy);
+    const ux=-dy/length,uy=dx/length;
+    const caster=new Caster(g.body,g.faceVerts,face=>{
+      const info=g.body.info[g.faceVerts[face*4]];
+      return info.region===region&&info.side===side;
+    },'front');
+    const positions:number[]=[],uvs:number[]=[],faces:number[]=[];
+    for(let row=0;row<=6;row++)for(let col=0;col<=6;col++){
+      const u=col/6,v=row/6,w=(u-.5)*cm(Number(width)),h=(v-.5)*cm(Number(height));
+      const hit=caster.hit(mid[0]+ux*w-dx/length*h,mid[1]+uy*w-dy/length*h);
+      if(!hit)throw Error('Arm transfer outside surface: '+file);
+      positions.push(...hit.p.map((p,k)=>p+hit.n[k]*cm(.12)));uvs.push(u,v);
+      if(row&&col){const i=row*7+col;faces.push(i-8,i-7,i,i-1);}
+    }
+    return {mesh:{positions:Float32Array.from(positions),uvs:Float32Array.from(uvs),faceSizes:new Uint8Array(36).fill(4),faceVerts:Uint32Array.from(faces),faceUVs:Uint32Array.from(faces)},material:mat('Fine-line arm ink',null,{map:String(file),alpha:'mask',doubleSided:true})};
+  });
+});

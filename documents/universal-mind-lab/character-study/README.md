@@ -2,6 +2,20 @@
 
 An isolated visual experiment for the EMDR tent. Nine youth participants (18–24) and one facilitator use textured skinned meshes, mixed sportswear, varied hair and relaxed seating. Six participants have fitted research-headset representations. No handheld phones or long dresses are present. Other festival and Portal figures retain their existing style pending review.
 
+## Festival cast — 5 November 2026
+
+The current festival pass follows 22 wardrobe options. Looks 01–09 sit in the EMDR workshop. Thirteen more detailed guests wear the three swim-and-denim outfits, three boxing-short colourways, river-to-arena look and six Defence looks. Seventy additional visitors across the pavilion and grounds share 16 civilian wardrobe meshes with varied height, orientation, spacing and motion. The rest of the workshops, performers and runway models use the earlier assets.
+
+The wardrobe brief references THE UPSIDE and Nagnata for yoga, and vintage Levi’s 501 cut-offs and Ksubi for denim. Garments, faces, the In This World emblem and uniforms are interpretations for this spatial concept. The aircrew carries a helmet and the river-to-arena dancer has fine-line arm artwork. A sports bra or swim top and visible hands are modelled as part of each applicable outfit.
+
+To reproduce, copy `festival-cast.ts`, `festival-garments.ts` and `festival-distance.mjs` into the pinned generator’s `scripts/` directory. Run the following with paths appropriate to the checkout.
+
+```sh
+node --import tsx scripts/festival-cast.ts /absolute/path/to/lab/assets/festival
+node --import tsx scripts/festival-cast.ts /absolute/path/to/temporary-standing 01 02 03 04 05 06 07 08 09 --standing
+node scripts/festival-distance.mjs /absolute/path/to/temporary-standing /absolute/path/to/lab/assets/festival
+```
+
 ## Sources and reproduction
 
 - Generator: [Ara 3D Gen](https://github.com/olatunde85/3d-gen), pinned to `a4947ffdd14acf2ff018cb3568c941595f86d86e`.

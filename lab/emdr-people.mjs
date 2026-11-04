@@ -1,7 +1,9 @@
 import {GLTFLoader} from './vendor/GLTFLoader.js';
 
-/** Textured, rigged EMDR study; the other workshop groups retain their approved style. */
-export function createEMDRPeople(THREE,parent,layout){
+import {loadCastMember} from './festival-cast.mjs?v=20261105cast1';
+
+/** Nine lookbook participants and the existing research facilitator. */
+export function createEMDRPeople(THREE,parent,layout,requestFrame){
  const group=new THREE.Group();group.name='EMDR character fidelity study';parent.add(group);
  const loader=new GLTFLoader(),mixers=[];
  let started=false,dirty=false,lastTime=null;
@@ -22,7 +24,7 @@ export function createEMDRPeople(THREE,parent,layout){
  }
  async function loadOne(i){
   try{
-   const gltf=await loader.loadAsync(new URL('./assets/emdr/participant-'+String(i+1).padStart(2,'0')+'.glb',import.meta.url).href);
+   const gltf=i===9?await loader.loadAsync(new URL('./assets/emdr/participant-10.glb',import.meta.url).href):await loadCastMember(String(i+1).padStart(2,'0'));
    const model=gltf.scene;model.name=i===9?'EMDR facilitator':'EMDR participant '+(i+1);
    model.traverse(o=>{if(o.isSkinnedMesh){data.skinnedMeshes++;o.frustumCulled=false;}if(o.isMesh){o.castShadow=false;o.receiveShadow=true;for(const m of Array.isArray(o.material)?o.material:[o.material]){if(m.map)m.map.anisotropy=4;}}});
    if(i<6)headset(model);
@@ -34,7 +36,7 @@ export function createEMDRPeople(THREE,parent,layout){
   }catch(e){data.errors.push({participant:i+1,message:String(e.message||e)});dirty=true;}
  }
  async function start(){if(started)return;started=true;data.status='loading';let next=0;
-  await Promise.all([0,1].map(async()=>{while(next<10)await loadOne(next++);}));data.status=data.errors.length?'error':'ready';dirty=true;
+  await Promise.all([0,1].map(async()=>{while(next<10)await loadOne(next++);}));data.status=data.errors.length?'error':'ready';dirty=true;requestFrame();
  }
  return {group,start,update(time,moving){const changed=dirty;dirty=false;if(moving){for(const {mixer,phase}of mixers)mixer.setTime(time*.65+phase);lastTime=time;return mixers.length>0;}if(lastTime===null){for(const {mixer,phase}of mixers)mixer.setTime(phase);lastTime=time;}return changed;}};
 }

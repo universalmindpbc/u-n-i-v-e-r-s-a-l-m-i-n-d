@@ -1,11 +1,11 @@
 import {solids,portalZones,portalPlacement,placedVertices} from './portal-geometry.mjs?v=20261104emdr1';
 import {createFurnishings} from './furnishings.mjs';
-import {createPortalInteriors} from './portal-interiors.mjs?v=20261104emdr1';
+import {createPortalInteriors} from './portal-interiors.mjs?v=20261105cast1';
 
 /** Seven small workshop marquees. Undistorted polyhedral envelopes meet the grass plane.
  * Ground intersections are concept studies, not foundation or fabrication details.
  */
-export function createPortal(THREE){
+export function createPortal(THREE, requestFrame){
  const root=new THREE.Group();root.name='I Am Portal';root.position.set(portalPlacement.x,0,portalPlacement.z);
  const furnishings=createFurnishings(THREE),V=(x,y,z)=>new THREE.Vector3(x,y,z),zones=[];
  const white=new THREE.MeshStandardMaterial({color:'#f5f4e8',roughness:.54,metalness:.16});
@@ -28,7 +28,7 @@ export function createPortal(THREE){
  function sphere(b,p,s,c){b.add(ball,V(...p),V(...s),c);}
  function tube(b,a,end,r,c){const start=V(...a),finish=V(...end),delta=finish.clone().sub(start);b.add(rod,start.add(finish).multiplyScalar(.5),V(r,delta.length(),r),c,new THREE.Quaternion().setFromUnitVectors(V(0,1,0),delta.normalize()));}
  function circle(b,p,r,h,c){b.add(disc,V(...p),V(r,h,r),c);}
- const interiors=createPortalInteriors(THREE,{Batch,V,box,sphere,tube,circle,peopleMaterial,chairMaterial,furnishings});
+ const interiors=createPortalInteriors(THREE,{Batch,V,box,sphere,tube,circle,peopleMaterial,chairMaterial,furnishings,requestFrame});
  function sign(text,parent,z){
   const canvas=document.createElement('canvas');canvas.width=1024;canvas.height=176;const ctx=canvas.getContext('2d');ctx.fillStyle='#f7f2e4';ctx.fillRect(0,0,1024,176);ctx.fillStyle='#283b37';ctx.textAlign='center';ctx.textBaseline='middle';ctx.font='500 51px Arial';ctx.fillText(text,512,88);
   const texture=new THREE.CanvasTexture(canvas);texture.colorSpace=THREE.SRGBColorSpace;texture.anisotropy=4;
@@ -60,11 +60,11 @@ export function createPortal(THREE){
   const light=new THREE.PointLight(config.colour,0,11,2);light.position.set(0,2.6,0);zone.add(light);
   zone.userData={zone:config.id,shape:config.shape,participants:9,facilitators:1,capacity:10,regular:true,uniformScale:config.radius,groundIntersection:Math.min(...vertices.map(v=>v.y))<-.01};zones.push({group:zone,interior,light,config});
  }
- const visitors=interiors.defenceGroup();visitors.position.set(0,0,-5.6);root.add(visitors);
+ const eye=new THREE.Vector3();
  return {group:root,zones,stats:{zones:7,participants:63,facilitators:7,capacity:70},
-  setStory(state){root.visible=state.seconds>=24;visitors.visible=state.programme>0;zones.forEach(({group,interior},i)=>{group.visible=state.seconds>=24+i*.8;interior.visible=state.programme>0;});},
+  setStory(state){root.visible=state.seconds>=24;zones.forEach(({group,interior},i)=>{group.visible=state.seconds>=24+i*.8;interior.visible=state.programme>0;});},
   setNight(value){zones.forEach(({light})=>light.intensity=Number(value)*22);flower.material.color.set('#ffffff');flower.material.opacity=.84+Number(value)*.12;},
-  update(time,moving){if(!root.visible)return false;let changed=false;for(const {interior} of zones){if(!interior.visible)continue;interior.userData.startCharacters?.();if(interior.userData.animateCharacters?.(time,moving))changed=true;}return changed;},
+  update(time,moving,camera){if(!root.visible)return false;let changed=false;for(const {interior} of zones){if(!interior.visible||!interior.userData.startCharacters)continue;interior.getWorldPosition(eye);if(camera.position.distanceToSquared(eye)>65*65)continue;interior.userData.startCharacters();if(interior.userData.animateCharacters?.(time,moving))changed=true;}return changed;},
   camera(id){const zone=zones.find(z=>z.config.id===id);if(!zone)return {pos:[root.position.x+23,19,root.position.z+29],target:[root.position.x,1.9,root.position.z]};const x=root.position.x+zone.group.position.x,z=root.position.z+zone.group.position.z;return {pos:[x+.8,2.8,z+8.5],target:[x,1.25,z]};}
  };
 }

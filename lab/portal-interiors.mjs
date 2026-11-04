@@ -1,4 +1,4 @@
-import {createEMDRPeople} from './emdr-people.mjs?v=20261104emdr1';
+import {createEMDRPeople} from './emdr-people.mjs?v=20261105cast1';
 /** Relaxed workshop groups, authored in metres. No participant-held devices. */
 export function createPortalInteriors(THREE,kit){
  const {Batch,V,box,sphere,tube,circle,peopleMaterial,chairMaterial,furnishings}=kit;
@@ -10,8 +10,8 @@ export function createPortalInteriors(THREE,kit){
   const points=(female?[[.19,0],[.17,.08],[.125,.20],[.17,.36],[.195,.43],[.10,.48]]:[[.18,0],[.18,.18],[.205,.38],[.20,.43],[.10,.48]]).map(([r,h])=>new THREE.Vector2(r,h));
   b.add(new THREE.LatheGeometry(points,12),V(0,y,0),V(1,1,.68),c);
  }
- function person({pose='chair',index=0,female=false,dress=false,longHair=false,visor=false,facilitator=false,defence=false}={}){
-  const b=new Batch(),s=skins[index%skins.length],top=defence?'#8c906d':clothes[index%clothes.length],hair=hairs[index%hairs.length];
+ function person({pose='chair',index=0,female=false,dress=false,longHair=false,visor=false,facilitator=false}={}){
+  const b=new Batch(),s=skins[index%skins.length],top=clothes[index%clothes.length],hair=hairs[index%hairs.length];
   const floor=pose==='floor',standing=pose==='stand',hip=standing?.89:({chair:.55,low:.42,bean:.29,floor:.18,hanging:.82,daybed:.55}[pose]??.55),head=hip+.69;
   torso(b,hip,top,female);tube(b,[0,hip+.44,0],[0,hip+.57,0],.055,s);sphere(b,[0,head,.02],[.127,.16,.12],s);
   sphere(b,[0,head+.085,-.025],[.132,.10,.125],hair);
@@ -26,12 +26,6 @@ export function createPortalInteriors(THREE,kit){
   }
   if(dress){if(standing)skirt(b,[0,hip-.27,0],.17,.34,.58,top);else {sphere(b,[0,hip-.055,.19],[.26,.13,.34],top);skirt(b,[0,hip-.14,.30],.24,.29,.23,top);}}
   if(visor){box(b,[0,head,.13],[.28,.10,.075],'#17232b');tube(b,[-.13,head,.02],[.13,head,.02],.025,'#24313b');for(const x of [-.09,0,.09])sphere(b,[x,head+.15,0],[.017,.019,.017],'#67c4c7');}
-  if(defence){
-   // Field-uniform details; no invented rank, service insignia or weaponry.
-   box(b,[0,head+.13,-.005],[.28,.075,.25],'#82876a');box(b,[0,head+.10,.15],[.27,.025,.13],'#747c61');
-   for(const side of [-1,1]){box(b,[side*.105,hip+.30,.145],[.11,.13,.025],'#b3ae85');box(b,[side*.105,.59,.085],[.12,.17,.05],'#8d9472');box(b,[side*.105,.10,.08],[.14,.18,.24],'#69634c');}
-   for(let i=0;i<13;i++)sphere(b,[Math.sin(i*2.7)*.16,hip+.05+(i%5)*.08,.13],[.045,.025,.012],i%2?'#555f4a':'#b3b08d');box(b,[0,hip+.02,.02],[.36,.045,.25],'#545c48');
-  }
   const g=new THREE.Group();b.mesh(peopleMaterial,g,facilitator?'Facilitator':'Participant');return g;
  }
  function textile(b,x,z,sx,sz,colour,turn=0,fur=false,y=.025){
@@ -49,7 +43,7 @@ export function createPortalInteriors(THREE,kit){
   comedy:[[-1.9,-.65,'chair'],[-1.85,.7,'low'],[-.9,1.5,'bean'],[.1,1.85,'floor'],[1.3,1.5,'chair'],[1.9,.25,'bean'],[1.55,-.9,'low'],[.6,.6,'floor'],[-.65,.4,'floor']],
   sexed:[[-1.85,-.55,'chair'],[-1.8,.8,'low'],[-.8,1.65,'bean'],[.35,1.8,'floor'],[1.55,1.2,'chair'],[1.8,-.15,'bean'],[.8,-1.35,'low'],[-.3,-1.5,'floor'],[-.45,.4,'floor']],
   atelier:[[-1.6,-.2,'chair'],[-1.6,1,'low'],[-.5,1.8,'bean'],[.6,1.7,'floor'],[1.8,1.1,'chair'],[1.8,-.1,'stand'],[.8,-1.25,'stand'],[-.45,-1.45,'chair'],[-1.85,-1.4,'stand']],
-  emdr:[[-1.55,.2,'chair'],[-1.6,1.45,'low'],[-.45,2,'bean'],[.8,1.85,'floor'],[1.75,.9,'hanging'],[.6,-.8,'daybed'],[-.7,-1.1,'low'],[-.35,.55,'floor'],[-1.2,-.6,'bean']]
+  emdr:[[-1.75,.12,'chair'],[-1.38,1.42,'floor'],[.40,-1.04,'daybed'],[1.77,.27,'chair'],[.84,1.78,'floor'],[-.38,1.85,'floor'],[-1.55,-1.27,'chair'],[-.35,.34,'floor'],[1.83,-1.27,'chair']]
  };
  function makeInterior(config,index){
   const group=new THREE.Group(),seats=new Batch(),actors=new Batch(),equipment=new Batch(),roster=[];
@@ -57,12 +51,13 @@ export function createPortalInteriors(THREE,kit){
   layout.forEach(([x,z,pose],i)=>{
    const angle=Math.atan2(-x,.1-z)+(i%3-1)*.12;
    const female=intimate?i<8:i%2===0,dress=female&&(intimate||i%3===0),longHair=female&&(intimate||i%3!==1);
-   if(pose==='chair'||pose==='low'){const seat=furnishings.chair({low:pose==='low'});seat.position.set(x,0,z);seat.rotation.y=angle;seats.object(seat);if(i%3===0)textile(seats,x,z,.45,.55,'#eee2d2',angle,true,pose==='low'?.35:.48);}
+   if(pose==='chair'||pose==='low'){const seat=furnishings.chair({low:pose==='low'});if(config.id==='emdr')seat.scale.y=.77;seat.position.set(x,0,z);seat.rotation.y=angle;seats.object(seat);if(i%3===0&&config.id!=='emdr')textile(seats,x,z,.45,.55,'#eee2d2',angle,true,pose==='low'?.35:.48);}
    if(pose==='bean')beanbag(seats,x,z,['#bb86aa','#d1b276','#9ab4ab'][i%3],angle);
    if(pose==='floor'){textile(seats,x,z,.95,1.05,i%2?'#d6a3a7':'#a2b9b1',angle,i%2===0);cushion(seats,x,z,'#e8d6b8',.33,.07);}
    if(pose==='hanging'){const seat=furnishings.hangingSeat();seat.position.set(x,0,z);seat.rotation.y=angle;seats.object(seat);}
+   if(config.id==='emdr'&&pose==='daybed')sphere(seats,[x,.568,z],[.32,.051,.27],'#d1beaa');
    if(pose==='daybed'){const seat=furnishings.daybed();seat.position.set(x,0,z);seat.rotation.y=angle;seats.object(seat);}
-   const actor=person({pose,index:i+index*3,female,dress:config.id==='emdr'?false:dress,longHair,visor:config.id==='emdr'&&i<6});actor.position.set(x,0,z);actor.rotation.y=angle;actors.object(actor);
+   if(config.id!=='emdr'){const actor=person({pose,index:i+index*3,female,dress:config.id==='emdr'?false:dress,longHair,visor:config.id==='emdr'&&i<6});actor.position.set(x,0,z);actor.rotation.y=angle;actors.object(actor);}
    roster.push({pose,female,dress,longHair,hair:hairs[(i+index*3)%hairs.length],heldDevice:false});
   });
   const leaderPosition=config.id==='comedy'?[0,0,-.95]:config.id==='sound'?[.7,0,-1.45]:config.id==='atelier'?[.6,0,.2]:[.35,0,-.6];
@@ -109,8 +104,7 @@ export function createPortalInteriors(THREE,kit){
    for(let i=0;i<5;i++){const x=-.64+i*.32,c=clothes[i+1];tube(equipment,[x-.12,1.65,-2.05],[x,1.76,-2.05],.009,'#ddd4bf');tube(equipment,[x,1.76,-2.05],[x+.12,1.65,-2.05],.009,'#ddd4bf');box(equipment,[x,1.46,-2.05],[.23,.36,.07],c);skirt(equipment,[x,1.05,-2.05],.11,.19,.5,c);}
   }
   seats.mesh(chairMaterial,group,'Mixed Tropicália seating, beanbags, cushions and textiles');if(config.id!=='emdr')actors.mesh(peopleMaterial,group,'Relaxed workshop participants and facilitator');equipment.mesh(peopleMaterial,group,'Activity-specific workshop equipment');
-  group.userData={participants:9,facilitators:1,heldPhones:0,table,roster,modularSynthesizer:config.id==='sound',dressForms:config.id==='atelier'?2:0};if(config.id==='emdr'){group.userData.roster=roster.map(p=>({...p,dress:false}));const people=createEMDRPeople(THREE,group,layout);group.userData.characterStudy=people.group.userData;group.userData.startCharacters=people.start;group.userData.animateCharacters=people.update;}return group;
+  group.userData={participants:9,facilitators:1,heldPhones:0,table,roster,modularSynthesizer:config.id==='sound',dressForms:config.id==='atelier'?2:0};if(config.id==='emdr'){group.userData.roster=layout.map((row,i)=>({look:String(i+1).padStart(2,'0'),pose:row[2],heldDevice:false}));const people=createEMDRPeople(THREE,group,layout,kit.requestFrame);group.userData.characterStudy=people.group.userData;group.userData.startCharacters=people.start;group.userData.animateCharacters=people.update;}return group;
  }
- function defenceGroup(){const g=new THREE.Group(),b=new Batch();for(let i=0;i<2;i++){const p=person({pose:'stand',index:i+2,defence:true,female:i===1,longHair:i===1});p.position.set(i*.78,0,i*.2);p.rotation.y=i?.3:-.3;b.object(p);}b.mesh(peopleMaterial,g,'Two visiting Defence participants');return g;}
- return {makeInterior,defenceGroup};
+ return {makeInterior};
 }

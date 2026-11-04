@@ -1,5 +1,6 @@
+import {createDistanceCast} from './festival-cast.mjs?v=20261105cast1';
 /** Deterministic, fictional people for the Universal Mind spatial concept. Metres; ground Y=0. */
-export function createCrowd(THREE) {
+export function createCrowd(THREE, requestFrame) {
   const visitors=new THREE.Group(),builders=new THREE.Group();
   visitors.name='Universal Mind visitors — articulated scene study';
   builders.name='Local construction team — articulated scene study';
@@ -46,7 +47,14 @@ export function createCrowd(THREE) {
     return p;
   }
   const visitorPeople=[];
-  for(let i=0;i<56;i++)visitorPeople.push(person(-5.4+(i%7)*1.8+(rand()-.5)*.42,-15.7+Math.floor(i/7)*1.15+(rand()-.5)*.32,'visitor',i));
+  // Loose groups leave space around the lounges and between the stage and lawn.
+  while(visitorPeople.length<56){
+    const x=(rand()-.5)*12.2,z=-16+rand()*9.6;
+    if(visitorPeople.some(p=>(p.x-x)**2+(p.z-z)**2<.78**2))continue;
+    const p=person(x,z,'visitor',visitorPeople.length);
+    p.yaw+=(rand()-.5)*(p.index%4===0?3.7:1.25);
+    visitorPeople.push(p);
+  }
   const lounge=[[-23,-6],[-21,-5],[-26,-8],[-23,-11],[21,10],[24,8],[25,12],[22,13],[-12,7],[-10,9],[7,8],[9,10],[-17,16],[-20,17]];
   lounge.forEach(([x,z],i)=>visitorPeople.push(person(x,z,'visitor',56+i)));
   const workSites=[[-7,-9],[7,-9],[-6,-15],[6,-15],[0,-6],[-28,-7],[-21,-9],[-26,19],[-20,22],[-31,-20],[21,8],[25,13]];
@@ -66,7 +74,10 @@ export function createCrowd(THREE) {
     for(const m of group.children)if(m.instanceColor)m.instanceColor.needsUpdate=true;
     return b;
   }
-  const visitorBatch=createBatch(visitors,visitorPeople,false),builderBatch=createBatch(builders,builderPeople,true);
+  const fallback=new THREE.Group();visitors.add(fallback);
+  const visitorBatch=createBatch(fallback,visitorPeople,false),builderBatch=createBatch(builders,builderPeople,true);
+  const lookbook=createDistanceCast(THREE,visitorPeople,fallback,visitors,requestFrame);
+  for(const mesh of fallback.children)mesh.userData.fullCount=mesh.count;
   const angles=new THREE.Euler(),tmp=new THREE.Vector3(),tmp2=new THREE.Vector3(),bandRotation=new THREE.Quaternion();
   function pose(batch,time,active){
     for(const p of batch.people){
@@ -125,10 +136,14 @@ export function createCrowd(THREE) {
   visitors.userData={count:70,assetType:'fictional articulated visitor study'};
   builders.userData={count:12,assetType:'fictional articulated construction study'};
   let visitorsMoving=false,buildersMoving=false,lastNight=-1;
-  return {builders,visitors,update(time,{construction=0,dancing=false,visible=true,night=0}={}){
+  return {builders,visitors,setProgramme(value){
+    lookbook.setProgramme(value);
+    for(const mesh of fallback.children)mesh.count=Math.floor(value*visitorPeople.length)*(mesh.userData.fullCount/visitorPeople.length);
+  },update(time,{construction=0,dancing=false,visible=true,night=0}={}){
     if(!visible)return;
     const safeTime=Number.isFinite(time)?time:0,work=construction>0&&construction<1;
-    if(visitors.visible&&(dancing||visitorsMoving)){pose(visitorBatch,safeTime,!!dancing);visitorsMoving=!!dancing;}
+    if(visitors.visible)lookbook.update(safeTime,dancing);
+    if(visitors.visible&&fallback.visible&&(dancing||visitorsMoving)){pose(visitorBatch,safeTime,!!dancing);visitorsMoving=!!dancing;}
     if(builders.visible&&(work||buildersMoving)){pose(builderBatch,safeTime,work);buildersMoving=work;}
     const nightValue=Math.max(0,Math.min(1,Number.isFinite(night)?night:0));
     if(lastNight!==nightValue){bandMaterial.emissiveIntensity=nightValue*1.3;lastNight=nightValue;}

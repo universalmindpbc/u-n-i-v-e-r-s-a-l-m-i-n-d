@@ -1,4 +1,5 @@
-import { createPortal } from './portal.mjs?v=20261104emdr1';
+import { createPortal } from './portal.mjs?v=20261105cast1';
+import { createFestivalCast } from './festival-cast.mjs?v=20261105cast1';
 import { portalZones } from './portal-geometry.mjs?v=20261104emdr1';
 import { orbitPose, mobileOverviewPose, overviewPose } from './orbit.mjs?v=20261104portal1';
 import { createActivities } from './activities.mjs?v=20261103purpose1';
@@ -197,7 +198,7 @@ syncFullscreen();
 
 async function buildWorld() {
   const THREE = await import('three');
-  const [{OrbitControls},{createArchitecture},{createSiteFeatures},{createCrowd,createRunwayCrowd},{createLightShow},{createRunway}]=await Promise.all([import('./vendor/OrbitControls.js'),import('./architecture.mjs?v=20261103purpose1'),import('./site-features.mjs?v=20261103orbit1'),import('./crowd.mjs?v=20261103orbit1'),import('./light-show.mjs?v=20261103orbit1'),import('./runway.mjs?v=20261103orbit1')]);
+  const [{OrbitControls},{createArchitecture},{createSiteFeatures},{createCrowd,createRunwayCrowd},{createLightShow},{createRunway}]=await Promise.all([import('./vendor/OrbitControls.js'),import('./architecture.mjs?v=20261103purpose1'),import('./site-features.mjs?v=20261103orbit1'),import('./crowd.mjs?v=20261105cast1'),import('./light-show.mjs?v=20261103orbit1'),import('./runway.mjs?v=20261103orbit1')]);
   const architecture=createArchitecture(THREE);
   let seed = 1947;
   const random = () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; };
@@ -361,10 +362,11 @@ async function buildWorld() {
   }
   const lightShow=createLightShow(THREE,scene,Object.values(buildings),architecture);
   const features=createSiteFeatures(THREE,scene,$('music-video'),architecture,$('stage-geometry-video'));
-  const crowd=createCrowd(THREE),runwayCrowd=createRunwayCrowd(THREE),runway=createRunway(THREE,scene,features.videoMap);scene.add(crowd.builders,crowd.visitors,runwayCrowd.group);
+  const crowd=createCrowd(THREE,()=>{needsFrame=true;requestFrame();}),runwayCrowd=createRunwayCrowd(THREE),runway=createRunway(THREE,scene,features.videoMap);scene.add(crowd.builders,crowd.visitors,runwayCrowd.group);
   const performanceStage=createPerformance(THREE);scene.add(performanceStage.group);
   const activities=createActivities(THREE,architecture);scene.add(activities.group);
-  crowd.visitors.traverse(o=>{if(o.isInstancedMesh)o.userData.fullCount=o.count;});
+  const festivalCast=createFestivalCast(THREE,()=>{needsFrame=true;requestFrame();});
+  scene.add(festivalCast.group);
   const contextStart=scene.children.length;
   // Contextual proposal identities: physical flags and a support vehicle.
   const images = Object.fromEntries(await Promise.all([
@@ -452,7 +454,7 @@ async function buildWorld() {
   vehicleBox(2.16,.17,.22,rubber,0,.52,2.27);vehicleBox(2.16,.17,.22,rubber,0,.52,-2.27);
   document.body.dataset.brandAssets='ready';
   const contextDecor=new THREE.Group();const contextObjects=scene.children.slice(contextStart);contextObjects.forEach(o=>contextDecor.add(o));scene.add(contextDecor);
-  const portal=createPortal(THREE);scene.add(portal.group);
+  const portal=createPortal(THREE,()=>{needsFrame=true;requestFrame();});scene.add(portal.group);
   const anchorData=[['main','Main pavilion',[0,8.4,-12]],['food','International Food Fair',[-24,6.5,-9]],['play','Mobile music making',[-26,2.9,18]],['river','Apple listening pods',[22,1.3,8]],['support','Support',[-32,3,-20]],['fashion','Fashion runway',[0,2.2,24]],['portal','I Am Portal',[-34,6,66]]];
   const anchors=anchorData.map(([key,label,p])=>{
     const el=document.createElement('button');el.className='scene-label';el.dataset.key=key;el.tabIndex=-1;el.innerHTML='<i></i>'+label;el.addEventListener('click',()=>selectPlace(key));$('labels').append(el);return {el,p:new THREE.Vector3(...p)};
@@ -493,8 +495,8 @@ async function buildWorld() {
     currentStory={...value};
     for(const [key,g] of Object.entries(buildings)){const p=value[key]||0;g.visible=p>0;buildPlanes[key].constant=p>=1?100:Math.max(.1,p*8.7);}
     contextDecor.visible=value.programme>0;paths.visible=value.seconds>=16;runway.setVisible(value.furniture>0);runwayCrowd.group.visible=value.programme>0;
-    portal.setStory(value);features.setStory(value);activities.setStory(value);setNight(value.night);setResponse(responseLevel);crowd.builders.visible=value.seconds>6&&value.seconds<29;crowd.visitors.visible=value.programme>0;performanceStage.group.visible=value.programme>=1;
-    crowd.visitors.traverse(o=>{if(o.isInstancedMesh)o.count=Math.floor(70*value.programme)*(o.userData.fullCount/70);});
+    festivalCast.setStory(value);portal.setStory(value);features.setStory(value);activities.setStory(value);setNight(value.night);setResponse(responseLevel);crowd.builders.visible=value.seconds>6&&value.seconds<29;crowd.visitors.visible=value.programme>0;performanceStage.group.visible=value.programme>=1;
+    crowd.setProgramme(value.programme);
     document.body.dataset.revealed=Object.keys(buildings).filter(k=>value[k]>=1).join(',');
     document.querySelectorAll('#place-list,.view-tools').forEach(e=>e.inert=!value.navigation);
     if(value.seconds<32)renderer.shadowMap.needsUpdate=true;needsFrame=true;requestFrame();
@@ -541,8 +543,9 @@ async function buildWorld() {
     const waterMoving=entered&&media.motionEnabled();if(waterMoving&&lastWaterFrame)waterTime+=Math.min(.05,Math.max(0,(t-lastWaterFrame)/1000));lastWaterFrame=t;
     if(features.update(motionTime,t)){needsFrame=true;}
     if(activities.update(waterTime,waterMoving&&!reduced.matches))needsFrame=true;
-    if(portal.update(waterTime,waterMoving&&!reduced.matches))needsFrame=true;
-    crowd.update(musicMotion?motionTime:t*.001,{construction:currentStory.construction,dancing:musicMotion,visible:currentStory.seconds>6,night:currentStory.night});performanceStage.update(motionTime,musicMotion);lightShow.update(motionTime);runwayCrowd.update(motionTime,{moving:musicMotion,visible:runwayCrowd.group.visible});
+    if(festivalCast.update(camera,waterTime,waterMoving&&!reduced.matches))needsFrame=true;
+    if(portal.update(waterTime,waterMoving&&!reduced.matches,camera))needsFrame=true;
+    crowd.update(musicMotion?motionTime:t*.001,{construction:currentStory.construction,dancing:musicMotion&&!reduced.matches,visible:currentStory.seconds>6,night:currentStory.night});performanceStage.update(motionTime,musicMotion);lightShow.update(motionTime);runwayCrowd.update(motionTime,{moving:musicMotion,visible:runwayCrowd.group.visible});
     if(tween){const a=Math.min(1,(t-tween.start)/1250),ease=a*a*(3-2*a);camera.position.lerpVectors(tween.from,tween.to,ease);controls.target.lerpVectors(tween.fromTarget,tween.target,ease);if(a===1)tween=null;needsFrame=true;}
     if(!cinematicCamera)controls.update();
     const videoActive=!$('music-video').paused&&$('music-video').readyState>=2;
