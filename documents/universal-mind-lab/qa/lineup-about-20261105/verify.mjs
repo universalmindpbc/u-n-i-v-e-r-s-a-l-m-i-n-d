@@ -50,7 +50,7 @@ try{
       });
       if(live&&mobile){
         for(const file of ['index.html','lab.css','lab.mjs','research.html']){
-          const res=await context.request.get(origin+'/lab/'+file+'?verify=lineupabout1');
+          const res=await context.request.get(origin+'/lab/'+file+'?verify=lineupabout2');
           assert.equal(res.status(),200);const raw=await res.body();
           const data=file.endsWith('.html')?Buffer.from(raw.toString().replace(/<script\b[^>]*src="https:\/\/static\.cloudflareinsights\.com\/[^>]*><\/script>\n?/g,'')):raw;
           assert(data.equals(fs.readFileSync('lab/'+file)),file);hashes[file]=createHash('sha256').update(data).digest('hex');
@@ -61,13 +61,21 @@ try{
       await page.waitForSelector('body[data-ready="true"]',{state:'attached',timeout:120000});
       const landing = page.locator('#landing'), about = page.locator('#vision');
       const disclosure = about.locator('#about-lineup'), summary = disclosure.locator('summary');
-      const shortcut = page.locator('#mobile-lineup-open');
+      assert.equal(await page.locator('#mobile-lineup-open').count(), 0);
       const ticker = landing.locator('.impact-ticker');
       assert.deepEqual(await ticker.locator('span').allTextContents(), labels);
-      assert(await ticker.isVisible());
-      assert.deepEqual(await ticker.locator('span').evaluateAll(items => items.map(x => getComputedStyle(x).animationDelay)), ['0s', '7s', '14s', '21s']);
-      await verifyResearch(landing.locator('.research-link'), context);
-      if (!mobile) await page.screenshot({path:dir+'/desktop-splash.jpg',quality:78});
+      for (const size of [mobile ? {width:844,height:390} : {width:760,height:780}, viewport]){
+        await page.setViewportSize(size);
+        assert.equal(await ticker.isVisible(), mobile);
+        assert.equal(await landing.locator('.research-link').isVisible(), mobile);
+        assert(await landing.locator('#explore-enter').isVisible());
+      }
+      if(mobile){
+        assert.deepEqual(await ticker.locator('span').evaluateAll(items => items.map(x => getComputedStyle(x).animationDelay)), ['0s','7s','14s','21s']);
+        await verifyResearch(landing.locator('.research-link'), context);
+      }else{
+        await page.screenshot({path:dir+'/desktop-splash.jpg',quality:78});
+      }
       await page.locator('.landing-name').click();
       assert.equal(await summary.isVisible(),mobile);
       if(mobile){
@@ -83,29 +91,34 @@ try{
       await page.locator('#about-close').click();
       await page.locator('#explore-enter').click();
       await page.waitForSelector('body[data-entered="true"]',{state:'attached'});
+      assert(await page.locator('.explore-bar .impact-ticker').isVisible());
       await verifyResearch(page.locator('.explore-bar .research-link'),context);
-      assert.equal(await shortcut.isVisible(),mobile);
       for(const size of mobile?[viewport,{width:320,height:658},{width:844,height:390}]:[viewport]){
         await page.setViewportSize(size);
         if(mobile){
-          const aboutButton = await page.locator('#about-open').boundingBox(), button = await shortcut.boundingBox();
-          assert(button.y>=aboutButton.y+aboutButton.height && button.width>=44 && button.height>=44);
-          assert(button.x>=0 && button.x+button.width<=size.width+1);
+          const aboutButton = page.locator('#about-open');
+          assert.equal(await page.getByRole('button',{name:'Lineup',exact:true}).count(),0);
           if(size.width===393) await page.screenshot({path:dir+'/mobile-controls.jpg',quality:76});
-          await shortcut.click();
+          await aboutButton.tap();
+          assert.equal(await disclosure.evaluate(x=>x.open),false);
+          assert.equal(await about.locator('.about-lineup-artists').isVisible(),false);
+          await summary.tap();
           assert(await disclosure.evaluate(x=>x.open));
           await verifyArtists(about);
           if(size.width===393) await page.screenshot({path:dir+'/mobile-lineup.jpg',quality:82});
           if(size.width===320) await page.keyboard.press('Escape');
           else await page.locator('#about-close').click();
           assert.equal(await about.isVisible(),false);
-          assert(await shortcut.evaluate(x=>document.activeElement===x));
+          assert(await aboutButton.evaluate(x=>document.activeElement===x));
+          await aboutButton.tap();
+          assert.equal(await disclosure.evaluate(x=>x.open),false);
+          await page.locator('#about-close').click();
         }else{
           await page.locator('#about-open').click();
           assert(await about.isVisible());assert.equal(await summary.isVisible(),false);
           await page.locator('#about-close').click();
         }
-        checks.push({mobile,...size,researchOnSplashInSceneAndAbout:true, mobileLineup:mobile, artists:mobile?artists:undefined});
+        checks.push({mobile,...size,researchAndImpactVisibleOnSplash:mobile,researchInSceneAndAbout:true, mobileLineupOnlyInAbout:mobile, testedCollapsedOnReopen:mobile, artists:mobile?artists:undefined});
       }
       assert.deepEqual(errors,[]);
     }finally{

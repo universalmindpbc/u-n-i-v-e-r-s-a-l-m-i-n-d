@@ -97,12 +97,8 @@ $('labels-toggle').addEventListener('click', () => {
 });
 document.querySelector('.landing-name').addEventListener('click',()=>$('vision').showModal());
 $('about-open').addEventListener('click', () => $('vision').showModal());
-$('mobile-lineup-open').addEventListener('click', () => {
-  const lineup = $('about-lineup');
-  lineup.open = true;
-  $('vision').showModal();
-  lineup.querySelector('summary').focus({preventScroll:true});
-  lineup.scrollIntoView({block:'center'});
+$('vision').addEventListener('close', () => {
+  $('about-lineup').open = false;
 });
 const aboutArtists = document.querySelector('.about-lineup-artists');
 for (const item of $('artist-lineup').children) aboutArtists.append(item.cloneNode(true));
