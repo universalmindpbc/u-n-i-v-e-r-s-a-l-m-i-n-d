@@ -3,3 +3,19 @@
 .ui-icon{display:inline-block;width:18px;height:18px;vertical-align:-3px;flex-shrink:0}
 
 .flower-home{display:grid;place-items:center;min-width:44px;min-height:44px;border-radius:50%}
+
+.bio-jump{margin-inline-start:24px}
+.bio-research{margin-top:52px;padding:34px 0 0;border-top:1px solid #7a8c7538;scroll-margin:24px}
+.bio-research h2{max-width:28ch;font-size:clamp(29px,4vw,40px);text-wrap:balance}
+.bio-research h3{margin:30px 0 10px;font-size:24px}
+.bio-research p,.bio-research .findings{max-width:78ch}
+.bio-research a{text-decoration:underline;text-underline-offset:3px}
+.bio-links{display:flex;gap:12px 24px;flex-wrap:wrap;margin:18px 0 24px}
+.findings,.bio-sources{padding-inline-start:1.4em}.findings li,.bio-sources li{margin:0 0 14px;padding-left:4px}
+.bio-research details{border-bottom:1px solid #7a8c754d}
+.bio-research summary{cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:48px;padding:10px 0;font-weight:600;list-style:none}
+.bio-research summary::-webkit-details-marker{display:none}.bio-research summary svg{width:16px;height:16px;flex:none}
+.bio-research details[open]>summary svg{transform:rotate(180deg)}.bio-research summary:focus-visible{outline:2px solid #4e6e5b;outline-offset:2px}
+.bio-research table{width:100%;max-width:690px;border-collapse:collapse;font-variant-numeric:tabular-nums}.bio-research th,.bio-research td{border-bottom:1px solid #7a8c7544;padding:9px 6px;text-align:right}.bio-research th:first-child{text-align:left}
+.bio-sources p{margin:2px 0;color:#465c4c;font-size:13px}.bio-source a{overflow-wrap:anywhere}
+@media(max-width:640px){.bio-jump{margin-inline-start:0}.bio-research{margin-top:38px;padding-top:26px}.bio-research table{font-size:12px}.bio-research th,.bio-research td{padding:7px 3px}.bio-links{display:grid;gap:12px}}

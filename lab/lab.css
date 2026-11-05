@@ -444,3 +444,12 @@ body[data-camera-view="fashion"] .intro{visibility:hidden}
   .phone-more{display:inline}
   .lineup-names{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:16px}
 }
+
+.performance-open,.performance-vote-link{display:inline-flex;align-items:center;gap:9px;min-height:44px;background:none;color:inherit;border:0;padding:0;text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px;font:600 12px/1.5 Arial,sans-serif}
+.performance-open{margin:-4px 0 8px;color:#b5e7d2}
+.performance-open:focus-visible{outline-color:#b5e7d2}
+#performance-dialog{max-width:min(470px,calc(100% - 28px));padding:38px 30px 25px}
+#performance-dialog h2{padding-right:26px;text-wrap:balance}
+#performance-dialog .lead{font-size:17px;line-height:1.55}
+#performance-dialog .performance-vote-link{margin-top:5px;font-size:14px}
+@media(max-height:500px) and (min-width:801px){.emotion-panel:has(.performance-open){align-content:start}.performance-open{grid-column:1 / -1;grid-row:6;justify-self:start}}

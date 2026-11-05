@@ -209,7 +209,15 @@ $('tour-toggle').addEventListener('click',()=>{
 function emotionPanel(open){$('emotion-panel').hidden=!open;$('emotion-toggle').setAttribute('aria-expanded',String(open));document.body.dataset.emotionPanel=String(open);if(open){labelPreviewUntil=0;clearTimeout(labelPreviewTimer);}syncSceneLabels();}
 $('emotion-toggle').addEventListener('click',()=>{stopTour();emotionPanel($('emotion-panel').hidden);});
 $('emotion-close').addEventListener('click',()=>{emotionPanel(false);$('emotion-toggle').focus();});
-document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!$('emotion-panel').hidden)emotionPanel(false);});
+const performanceDialog = $('performance-dialog');
+$('performance-open').addEventListener('click', () => { stopTour(); performanceDialog.showModal(); });
+$('performance-close').addEventListener('click', () => performanceDialog.close());
+performanceDialog.addEventListener('click', event => {
+  if (event.target !== performanceDialog) return;
+  const box = performanceDialog.getBoundingClientRect();
+  if (event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom) performanceDialog.close();
+});
+document.addEventListener('keydown',event=>{if(!document.querySelector('dialog[open]')&&event.key==='Escape'&&!$('emotion-panel').hidden)emotionPanel(false);});
 $('support-pathway').addEventListener('click',()=>{emotionPanel(false);selectPlace('support');});
 const connectionSteps=[
   {key:'earth',label:'Connection to our earth',cue:'Feel your feet on the ground, or feel the support beneath you as you sit.'},
