@@ -34,4 +34,4 @@ A developing research question: how do interpersonal experiences relate to our e
 
 ## Sources
 
-- [index.html](https://universalmind.tv/informatics/index.html) · SHA-256: 6754fc686578690ac6801963c7f54085f375bf418af5b40c5553fdc003d55ff6 · HTML with generated Atlas narrative blocks removed
+- [index.html](https://universalmind.tv/informatics/index.html) · SHA-256: 6cbae89b23cafe5c3df2c4a856593ce7227ee43f5d355bae176f7d545588561d · HTML with generated Atlas narrative blocks removed

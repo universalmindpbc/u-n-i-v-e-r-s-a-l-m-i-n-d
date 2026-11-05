@@ -1,5 +1,5 @@
 {
-  "datasetManifestSHA256": "06c333f6ecfbfc5c9e3a0c051c3d7a87d48810c682514310553dd87fb2622e12",
+  "datasetManifestSHA256": "7c6f98ba4e722033e3f9e160be0b231473f567e3a6d006bd2f60bb47109157eb",
   "generatedAt": "2026-10-26",
   "publications": 1385,
   "atlas": 1001,
@@ -8,7 +8,7 @@
   "sourceHashes": [
     {
       "path": "library.js",
-      "sha256": "d1324f286100bd1273689d22ef2baed58e8f2ffd9e7f27628d030288a8642cf6"
+      "sha256": "fe9f1d3d52f9e9337dd997365b5070a15714117e5f4bd9e5f8b68f57eca775b8"
     },
     {
       "path": "library-data/sound-edition.json",
@@ -24,7 +24,7 @@
     },
     {
       "path": "library-data/language-edition.json",
-      "sha256": "50d981d5b8c0ce2e2189aadd953bb3091b299950d783789dc66743fc009347c0"
+      "sha256": "468fc7261aebe1c58c66bd73fe647ccfedb5f4082b44b31a7aa72a603705cd41"
     },
     {
       "path": "library-data/general-edition.json",
@@ -32,7 +32,7 @@
     },
     {
       "path": "library-data/mindfulness-expansion.json",
-      "sha256": "fadc58bb6a5283efb383f0e6f6207d84fe3e4e6db595125b12d303f21784424a"
+      "sha256": "846656cb86528f8ab39dff9afcac60a95ebe98e3791bacef1ac7c6680a6e98cb"
     },
     {
       "path": "library-data/vision-edition.json",
@@ -75,7 +75,7 @@
       "sha256": "00df8dc93a90a09af387c5f32830d1dc3f4b994b1941b7cb066e898b56934841"
     }
   ],
-  "publicationRecordSHA256": "bd3221690406c7bc66034b3a13d4a57c4907c1b0b589f3b946a9216d93ead4c5",
+  "publicationRecordSHA256": "d8018552622cb37373f71b7efb6bb81517e2ffac8ca2560c6702d3a89748c664",
   "canonicalPaths": [
     "",
     "connect.html",

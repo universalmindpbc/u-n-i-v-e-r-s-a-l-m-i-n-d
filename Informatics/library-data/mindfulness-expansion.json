@@ -1754,7 +1754,30 @@
         "measurement": "Review or framework",
         "relationshipNote": "Review of VR mindfulness research."
       },
-      "citationCount": null
+      "citationCount": null,
+      "studyDesignAssessment": {
+        "category": "peer-reviewed-study",
+        "peerReviewed": true,
+        "basis": "The publication is a peer-reviewed journal study or review. A qualifying randomised comparison was not verified in the assessed source.",
+        "sources": [
+          "https://doi.org/10.1007/s10055-025-01224-y"
+        ]
+      },
+      "paperTrustAssessment": {
+        "score": 1,
+        "scope": "Paper",
+        "status": "assessed",
+        "randomizedControlledTrial": false,
+        "blinding": "not-applicable",
+        "peerReviewed": true,
+        "basis": "The publication is a peer-reviewed journal study or review. A qualifying randomised comparison was not verified in the assessed source.",
+        "sources": [
+          "https://doi.org/10.1007/s10055-025-01224-y"
+        ],
+        "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
+        "assessedAt": "2026-11-05",
+        "displayCrosses": 1
+      }
     },
     {
       "id": "pmid-40465187",
@@ -1784,7 +1807,32 @@
         "measurement": "Heart-rate variability",
         "relationshipNote": "Live HRV drove changes in fog, sound and visuals."
       },
-      "citationCount": null
+      "citationCount": null,
+      "studyDesignAssessment": {
+        "category": "rct-masking-unclear",
+        "peerReviewed": true,
+        "basis": "Seventy-five university students with recent anxiety symptoms were randomised to VR, guided audio or no intervention. Fog, sound and visuals responded to HRV. The reported immediate changes motivate an event pilot. The correction concerns corresponding authorship.",
+        "sources": [
+          "https://doi.org/10.1007/s10484-025-09718-w"
+        ],
+        "isRandomizedControlledTrial": true
+      },
+      "paperTrustAssessment": {
+        "score": 2,
+        "scope": "Paper",
+        "status": "assessed",
+        "randomizedControlledTrial": true,
+        "blinding": "not-confirmed",
+        "peerReviewed": true,
+        "basis": "Seventy-five university students with recent anxiety symptoms were randomised to VR, guided audio or no intervention. Fog, sound and visuals responded to HRV. The reported immediate changes motivate an event pilot. The correction concerns corresponding authorship.",
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/40465187/",
+          "https://doi.org/10.1007/s10484-025-09718-w"
+        ],
+        "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
+        "assessedAt": "2026-11-05",
+        "displayCrosses": 2
+      }
     },
     {
       "id": "lab-5732673d3ebf2b",
@@ -1814,7 +1862,30 @@
         "measurement": "Review or framework",
         "relationshipNote": "Systematic review of immersive mindfulness."
       },
-      "citationCount": null
+      "citationCount": null,
+      "studyDesignAssessment": {
+        "category": "peer-reviewed-study",
+        "peerReviewed": true,
+        "basis": "The publication is a peer-reviewed journal study or review. A qualifying randomised comparison was not verified in the assessed source.",
+        "sources": [
+          "https://doi.org/10.3389/frvir.2021.644683"
+        ]
+      },
+      "paperTrustAssessment": {
+        "score": 1,
+        "scope": "Paper",
+        "status": "assessed",
+        "randomizedControlledTrial": false,
+        "blinding": "not-applicable",
+        "peerReviewed": true,
+        "basis": "The publication is a peer-reviewed journal study or review. A qualifying randomised comparison was not verified in the assessed source.",
+        "sources": [
+          "https://doi.org/10.3389/frvir.2021.644683"
+        ],
+        "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
+        "assessedAt": "2026-11-05",
+        "displayCrosses": 1
+      }
     },
     {
       "id": "pmid-41269211",
@@ -1844,7 +1915,32 @@
         "measurement": "Heart rate / heartbeat",
         "relationshipNote": "The candle flame changed with measured heart rate. The baseline recording calibrated the mapping."
       },
-      "citationCount": null
+      "citationCount": null,
+      "studyDesignAssessment": {
+        "category": "rct-masking-unclear",
+        "peerReviewed": true,
+        "basis": "Seventy-two adults were assigned to audio, VR or VR with feedback. Stress and anxiety fell across conditions. Corrected comparisons favoured feedback plus VR over audio for present-moment attention and receptive awareness. The VR-only arm differed significantly from neither.",
+        "sources": [
+          "https://doi.org/10.1177/21522715251397933"
+        ],
+        "isRandomizedControlledTrial": true
+      },
+      "paperTrustAssessment": {
+        "score": 2,
+        "scope": "Paper",
+        "status": "assessed",
+        "randomizedControlledTrial": true,
+        "blinding": "not-confirmed",
+        "peerReviewed": true,
+        "basis": "Seventy-two adults were assigned to audio, VR or VR with feedback. Stress and anxiety fell across conditions. Corrected comparisons favoured feedback plus VR over audio for present-moment attention and receptive awareness. The VR-only arm differed significantly from neither.",
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/41269211/",
+          "https://doi.org/10.1177/21522715251397933"
+        ],
+        "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
+        "assessedAt": "2026-11-05",
+        "displayCrosses": 2
+      }
     },
     {
       "id": "pmid-38808471",
@@ -1874,7 +1970,32 @@
         "measurement": "Respiration",
         "relationshipNote": "The MindJourney system returned respiratory feedback. Skin conductance was a measurement outcome."
       },
-      "citationCount": null
+      "citationCount": null,
+      "studyDesignAssessment": {
+        "category": "rct-masking-unclear",
+        "peerReviewed": true,
+        "basis": "Separate short-session and four-week samples included 34 and 38 students respectively. Anxiety improved against the controls in both experiments. Four-week results also favoured the system on selected mindfulness facets.",
+        "sources": [
+          "https://doi.org/10.1089/g4h.2024.0041"
+        ],
+        "isRandomizedControlledTrial": true
+      },
+      "paperTrustAssessment": {
+        "score": 2,
+        "scope": "Paper",
+        "status": "assessed",
+        "randomizedControlledTrial": true,
+        "blinding": "not-confirmed",
+        "peerReviewed": true,
+        "basis": "Separate short-session and four-week samples included 34 and 38 students respectively. Anxiety improved against the controls in both experiments. Four-week results also favoured the system on selected mindfulness facets.",
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/38808471/",
+          "https://doi.org/10.1089/g4h.2024.0041"
+        ],
+        "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
+        "assessedAt": "2026-11-05",
+        "displayCrosses": 2
+      }
     },
     {
       "id": "lab-b2e87b36eea919",
@@ -1904,7 +2025,30 @@
         "measurement": "Respiration · Movement",
         "relationshipNote": "The system used continuous breathing cues and intermittent head-orientation feedback. Related to the MindJourney college paper."
       },
-      "citationCount": null
+      "citationCount": null,
+      "studyDesignAssessment": {
+        "category": "unverified-publication-status",
+        "peerReviewed": false,
+        "basis": "No qualifying paper-level evidence for a cross was verified under the library criteria.",
+        "sources": [
+          "https://doi.org/10.1115/DETC2022-91254"
+        ]
+      },
+      "paperTrustAssessment": {
+        "score": null,
+        "scope": "Paper",
+        "status": "unassessed",
+        "randomizedControlledTrial": null,
+        "blinding": "not-confirmed",
+        "peerReviewed": false,
+        "basis": "No qualifying paper-level evidence for a cross was verified under the library criteria.",
+        "sources": [
+          "https://doi.org/10.1115/DETC2022-91254"
+        ],
+        "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
+        "assessedAt": "2026-11-05",
+        "displayCrosses": 0
+      }
     },
     {
       "id": "lab-8b68f71d40e35b",
@@ -1934,7 +2078,30 @@
         "measurement": "Review or framework",
         "relationshipNote": "Review of real-time physiological feedback systems."
       },
-      "citationCount": null
+      "citationCount": null,
+      "studyDesignAssessment": {
+        "category": "peer-reviewed-study",
+        "peerReviewed": true,
+        "basis": "The publication is a peer-reviewed journal study or review. A qualifying randomised comparison was not verified in the assessed source.",
+        "sources": [
+          "https://doi.org/10.1145/3831659"
+        ]
+      },
+      "paperTrustAssessment": {
+        "score": 1,
+        "scope": "Paper",
+        "status": "assessed",
+        "randomizedControlledTrial": false,
+        "blinding": "not-applicable",
+        "peerReviewed": true,
+        "basis": "The publication is a peer-reviewed journal study or review. A qualifying randomised comparison was not verified in the assessed source.",
+        "sources": [
+          "https://doi.org/10.1145/3831659"
+        ],
+        "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
+        "assessedAt": "2026-11-05",
+        "displayCrosses": 1
+      }
     },
     {
       "id": "lab-a8505b36d21db2",
@@ -1964,7 +2131,30 @@
         "measurement": "EEG",
         "relationshipNote": "EEG training supplied neurofeedback in the intervention. Clinical anxiety ratings were outcomes."
       },
-      "citationCount": null
+      "citationCount": null,
+      "studyDesignAssessment": {
+        "category": "peer-reviewed-study",
+        "peerReviewed": true,
+        "basis": "The publication is a peer-reviewed journal study or review. A qualifying randomised comparison was not verified in the assessed source.",
+        "sources": [
+          "https://doi.org/10.1080/23311908.2025.2565063"
+        ]
+      },
+      "paperTrustAssessment": {
+        "score": 1,
+        "scope": "Paper",
+        "status": "assessed",
+        "randomizedControlledTrial": null,
+        "blinding": "not-confirmed",
+        "peerReviewed": true,
+        "basis": "The publication is a peer-reviewed journal study or review. A qualifying randomised comparison was not verified in the assessed source.",
+        "sources": [
+          "https://doi.org/10.1080/23311908.2025.2565063"
+        ],
+        "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
+        "assessedAt": "2026-11-05",
+        "displayCrosses": 1
+      }
     },
     {
       "id": "lab-a01e7058461d2e",
@@ -1994,7 +2184,30 @@
         "measurement": "EEG",
         "relationshipNote": "Relative alpha-band EEG changed the tree colour. Twelve adults took part in informal prototype testing."
       },
-      "citationCount": null
+      "citationCount": null,
+      "studyDesignAssessment": {
+        "category": "unverified-publication-status",
+        "peerReviewed": false,
+        "basis": "No qualifying paper-level evidence for a cross was verified under the library criteria.",
+        "sources": [
+          "https://doi.org/10.1145/3325480.3326584"
+        ]
+      },
+      "paperTrustAssessment": {
+        "score": null,
+        "scope": "Paper",
+        "status": "unassessed",
+        "randomizedControlledTrial": null,
+        "blinding": "not-confirmed",
+        "peerReviewed": false,
+        "basis": "No qualifying paper-level evidence for a cross was verified under the library criteria.",
+        "sources": [
+          "https://doi.org/10.1145/3325480.3326584"
+        ],
+        "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
+        "assessedAt": "2026-11-05",
+        "displayCrosses": 0
+      }
     },
     {
       "id": "pmid-39642375",
@@ -2024,7 +2237,31 @@
         "measurement": "Respiration",
         "relationshipNote": "A respiration belt controlled the meadow. The investigators recorded EEG to compare the practice conditions."
       },
-      "citationCount": null
+      "citationCount": null,
+      "studyDesignAssessment": {
+        "category": "peer-reviewed-study",
+        "peerReviewed": true,
+        "basis": "The publication is a peer-reviewed journal study or review. A qualifying randomised comparison was not verified in the assessed source.",
+        "sources": [
+          "https://doi.org/10.2196/55478"
+        ]
+      },
+      "paperTrustAssessment": {
+        "score": 1,
+        "scope": "Paper",
+        "status": "assessed",
+        "randomizedControlledTrial": null,
+        "blinding": "not-confirmed",
+        "peerReviewed": true,
+        "basis": "The publication is a peer-reviewed journal study or review. A qualifying randomised comparison was not verified in the assessed source.",
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/39642375/",
+          "https://doi.org/10.2196/55478"
+        ],
+        "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
+        "assessedAt": "2026-11-05",
+        "displayCrosses": 1
+      }
     },
     {
       "id": "lab-a39047f11e858a",
@@ -2054,7 +2291,32 @@
         "measurement": "EEG",
         "relationshipNote": "Frontal gamma asymmetry moved a glowing ball and determined when the AR story progressed."
       },
-      "citationCount": null
+      "citationCount": null,
+      "studyDesignAssessment": {
+        "category": "single-blind-rct",
+        "peerReviewed": true,
+        "basis": "Mood improved after both versions. Participants reported greater engagement with neurofeedback. The groups showed comparable mood and resting EEG changes.",
+        "sources": [
+          "https://doi.org/10.3389/frvir.2021.618381"
+        ],
+        "isRandomizedControlledTrial": true,
+        "maskingRoles": "Participants were blinded to assignment to the two AR meditation conditions."
+      },
+      "paperTrustAssessment": {
+        "score": 2,
+        "scope": "Paper",
+        "status": "assessed",
+        "randomizedControlledTrial": true,
+        "blinding": "single",
+        "peerReviewed": true,
+        "basis": "Mood improved after both versions. Participants reported greater engagement with neurofeedback. The groups showed comparable mood and resting EEG changes.",
+        "sources": [
+          "https://doi.org/10.3389/frvir.2021.618381"
+        ],
+        "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
+        "assessedAt": "2026-11-05",
+        "displayCrosses": 2
+      }
     },
     {
       "id": "lab-2dde14fee628e5",
@@ -2084,7 +2346,30 @@
         "measurement": "EEG",
         "relationshipNote": "The headband-based demonstration converted EEG into a flower display for a pair. This entry refers to the smart-glasses version."
       },
-      "citationCount": null
+      "citationCount": null,
+      "studyDesignAssessment": {
+        "category": "unverified-publication-status",
+        "peerReviewed": false,
+        "basis": "No qualifying paper-level evidence for a cross was verified under the library criteria.",
+        "sources": [
+          "https://doi.org/10.1145/3500868.3559708"
+        ]
+      },
+      "paperTrustAssessment": {
+        "score": null,
+        "scope": "Paper",
+        "status": "unassessed",
+        "randomizedControlledTrial": null,
+        "blinding": "not-confirmed",
+        "peerReviewed": false,
+        "basis": "No qualifying paper-level evidence for a cross was verified under the library criteria.",
+        "sources": [
+          "https://doi.org/10.1145/3500868.3559708"
+        ],
+        "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
+        "assessedAt": "2026-11-05",
+        "displayCrosses": 0
+      }
     },
     {
       "id": "lab-fadf374f60eafd",
@@ -2114,7 +2399,30 @@
         "measurement": "Review or framework",
         "relationshipNote": "Review of headset and wearable configurations."
       },
-      "citationCount": null
+      "citationCount": null,
+      "studyDesignAssessment": {
+        "category": "peer-reviewed-study",
+        "peerReviewed": true,
+        "basis": "The publication is a peer-reviewed journal study or review. A qualifying randomised comparison was not verified in the assessed source.",
+        "sources": [
+          "https://doi.org/10.3390/app16167943"
+        ]
+      },
+      "paperTrustAssessment": {
+        "score": 1,
+        "scope": "Paper",
+        "status": "assessed",
+        "randomizedControlledTrial": false,
+        "blinding": "not-applicable",
+        "peerReviewed": true,
+        "basis": "The publication is a peer-reviewed journal study or review. A qualifying randomised comparison was not verified in the assessed source.",
+        "sources": [
+          "https://doi.org/10.3390/app16167943"
+        ],
+        "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
+        "assessedAt": "2026-11-05",
+        "displayCrosses": 1
+      }
     },
     {
       "id": "lab-ca309fa8cd91b6",
@@ -2144,7 +2452,30 @@
         "measurement": "Review or framework",
         "relationshipNote": "Narrative review of VR practice in psychotherapy."
       },
-      "citationCount": null
+      "citationCount": null,
+      "studyDesignAssessment": {
+        "category": "peer-reviewed-study",
+        "peerReviewed": true,
+        "basis": "The publication is a peer-reviewed journal study or review. A qualifying randomised comparison was not verified in the assessed source.",
+        "sources": [
+          "https://doi.org/10.4025/psicolestud.v26i0.46410"
+        ]
+      },
+      "paperTrustAssessment": {
+        "score": 1,
+        "scope": "Paper",
+        "status": "assessed",
+        "randomizedControlledTrial": false,
+        "blinding": "not-applicable",
+        "peerReviewed": true,
+        "basis": "The publication is a peer-reviewed journal study or review. A qualifying randomised comparison was not verified in the assessed source.",
+        "sources": [
+          "https://doi.org/10.4025/psicolestud.v26i0.46410"
+        ],
+        "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
+        "assessedAt": "2026-11-05",
+        "displayCrosses": 1
+      }
     },
     {
       "id": "pmid-34860290",
@@ -2174,7 +2505,31 @@
         "measurement": "Review or framework",
         "relationshipNote": "Scoping review of VR biofeedback in health."
       },
-      "citationCount": null
+      "citationCount": null,
+      "studyDesignAssessment": {
+        "category": "peer-reviewed-study",
+        "peerReviewed": true,
+        "basis": "The publication is a peer-reviewed journal study or review. A qualifying randomised comparison was not verified in the assessed source.",
+        "sources": [
+          "https://doi.org/10.1007/s10484-021-09529-9"
+        ]
+      },
+      "paperTrustAssessment": {
+        "score": 1,
+        "scope": "Paper",
+        "status": "assessed",
+        "randomizedControlledTrial": false,
+        "blinding": "not-applicable",
+        "peerReviewed": true,
+        "basis": "The publication is a peer-reviewed journal study or review. A qualifying randomised comparison was not verified in the assessed source.",
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/34860290/",
+          "https://doi.org/10.1007/s10484-021-09529-9"
+        ],
+        "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
+        "assessedAt": "2026-11-05",
+        "displayCrosses": 1
+      }
     },
     {
       "id": "lab-20e62d6bf5f3f4",
@@ -2204,7 +2559,30 @@
         "measurement": "Signal or implementation unclear",
         "relationshipNote": "The workshop abstract describes simulated HRV feedback and a planned comparison. Live sensing in participants is unverified."
       },
-      "citationCount": null
+      "citationCount": null,
+      "studyDesignAssessment": {
+        "category": "unverified-publication-status",
+        "peerReviewed": false,
+        "basis": "No qualifying paper-level evidence for a cross was verified under the library criteria.",
+        "sources": [
+          "https://doi.org/10.1109/VRW62533.2024.00394"
+        ]
+      },
+      "paperTrustAssessment": {
+        "score": null,
+        "scope": "Paper",
+        "status": "unassessed",
+        "randomizedControlledTrial": null,
+        "blinding": "not-confirmed",
+        "peerReviewed": false,
+        "basis": "No qualifying paper-level evidence for a cross was verified under the library criteria.",
+        "sources": [
+          "https://doi.org/10.1109/VRW62533.2024.00394"
+        ],
+        "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
+        "assessedAt": "2026-11-05",
+        "displayCrosses": 0
+      }
     },
     {
       "id": "pmid-32706654",
@@ -2234,7 +2612,31 @@
         "measurement": "Review or framework",
         "relationshipNote": "Conceptual model of biofeedback mechanisms."
       },
-      "citationCount": null
+      "citationCount": null,
+      "studyDesignAssessment": {
+        "category": "unverified-publication-status",
+        "peerReviewed": false,
+        "basis": "No qualifying paper-level evidence for a cross was verified under the library criteria.",
+        "sources": [
+          "https://doi.org/10.2196/14958"
+        ]
+      },
+      "paperTrustAssessment": {
+        "score": null,
+        "scope": "Paper",
+        "status": "unassessed",
+        "randomizedControlledTrial": null,
+        "blinding": "not-confirmed",
+        "peerReviewed": false,
+        "basis": "No qualifying paper-level evidence for a cross was verified under the library criteria.",
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/32706654/",
+          "https://doi.org/10.2196/14958"
+        ],
+        "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
+        "assessedAt": "2026-11-05",
+        "displayCrosses": 0
+      }
     },
     {
       "id": "pmid-42512522",
@@ -2264,7 +2666,33 @@
         "measurement": "EEG · Heart rate / heartbeat",
         "relationshipNote": "Auditory feedback followed EEG alpha power. A separate training stage varied audiovisual feedback with current heart rate. A psychiatrist masked to allocation rated anxiety."
       },
-      "citationCount": null
+      "citationCount": null,
+      "studyDesignAssessment": {
+        "category": "single-blind-rct",
+        "peerReviewed": true,
+        "basis": "A randomised study of 188 inpatients compared biofeedback, medication and their combination. Anxiety improved more in the biofeedback arms than with medication alone in the per-protocol analysis. Registration was retrospective and the setting was inpatient care.",
+        "sources": [
+          "https://doi.org/10.3390/brainsci16070748"
+        ],
+        "isRandomizedControlledTrial": true,
+        "maskingRoles": "The independent psychiatrist assessing anxiety was masked. Participants and treating therapists knew the assigned intervention."
+      },
+      "paperTrustAssessment": {
+        "score": 2,
+        "scope": "Paper",
+        "status": "assessed",
+        "randomizedControlledTrial": true,
+        "blinding": "single",
+        "peerReviewed": true,
+        "basis": "A randomised study of 188 inpatients compared biofeedback, medication and their combination. Anxiety improved more in the biofeedback arms than with medication alone in the per-protocol analysis. Registration was retrospective and the setting was inpatient care.",
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/42512522/",
+          "https://doi.org/10.3390/brainsci16070748"
+        ],
+        "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
+        "assessedAt": "2026-11-05",
+        "displayCrosses": 2
+      }
     },
     {
       "id": "pmid-38131865",
@@ -2294,7 +2722,31 @@
         "measurement": "Review or framework",
         "relationshipNote": "Systematic review of digital mindfulness."
       },
-      "citationCount": null
+      "citationCount": null,
+      "studyDesignAssessment": {
+        "category": "peer-reviewed-study",
+        "peerReviewed": true,
+        "basis": "The publication is a peer-reviewed journal study or review. A qualifying randomised comparison was not verified in the assessed source.",
+        "sources": [
+          "https://doi.org/10.3390/bs13121008"
+        ]
+      },
+      "paperTrustAssessment": {
+        "score": 1,
+        "scope": "Paper",
+        "status": "assessed",
+        "randomizedControlledTrial": false,
+        "blinding": "not-applicable",
+        "peerReviewed": true,
+        "basis": "The publication is a peer-reviewed journal study or review. A qualifying randomised comparison was not verified in the assessed source.",
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/38131865/",
+          "https://doi.org/10.3390/bs13121008"
+        ],
+        "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
+        "assessedAt": "2026-11-05",
+        "displayCrosses": 1
+      }
     },
     {
       "id": "lab-877d9ce9559820",
@@ -2324,7 +2776,30 @@
         "measurement": "Heart-rate variability",
         "relationshipNote": "The case describes a participant viewing heart-rhythm changes and HRV during sessions."
       },
-      "citationCount": null
+      "citationCount": null,
+      "studyDesignAssessment": {
+        "category": "peer-reviewed-study",
+        "peerReviewed": true,
+        "basis": "The publication is a peer-reviewed journal study or review. A qualifying randomised comparison was not verified in the assessed source.",
+        "sources": [
+          "https://doi.org/10.15540/nr.12.2.98"
+        ]
+      },
+      "paperTrustAssessment": {
+        "score": 1,
+        "scope": "Paper",
+        "status": "assessed",
+        "randomizedControlledTrial": null,
+        "blinding": "not-confirmed",
+        "peerReviewed": true,
+        "basis": "The publication is a peer-reviewed journal study or review. A qualifying randomised comparison was not verified in the assessed source.",
+        "sources": [
+          "https://doi.org/10.15540/nr.12.2.98"
+        ],
+        "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
+        "assessedAt": "2026-11-05",
+        "displayCrosses": 1
+      }
     },
     {
       "id": "lab-fca3cf0917013b",
@@ -2354,7 +2829,30 @@
         "measurement": "Review or framework",
         "relationshipNote": "Review chapter about computer-supported mindfulness."
       },
-      "citationCount": null
+      "citationCount": null,
+      "studyDesignAssessment": {
+        "category": "unverified-publication-status",
+        "peerReviewed": false,
+        "basis": "No qualifying paper-level evidence for a cross was verified under the library criteria.",
+        "sources": [
+          "https://doi.org/10.1007/978-3-030-87595-4_12"
+        ]
+      },
+      "paperTrustAssessment": {
+        "score": null,
+        "scope": "Paper",
+        "status": "unassessed",
+        "randomizedControlledTrial": null,
+        "blinding": "not-confirmed",
+        "peerReviewed": false,
+        "basis": "No qualifying paper-level evidence for a cross was verified under the library criteria.",
+        "sources": [
+          "https://doi.org/10.1007/978-3-030-87595-4_12"
+        ],
+        "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
+        "assessedAt": "2026-11-05",
+        "displayCrosses": 0
+      }
     },
     {
       "id": "lab-1454bc5080b0d7",
@@ -2384,7 +2882,30 @@
         "measurement": "Review or framework",
         "relationshipNote": "Engineering review chapter. Bibliographic record only."
       },
-      "citationCount": null
+      "citationCount": null,
+      "studyDesignAssessment": {
+        "category": "unverified-publication-status",
+        "peerReviewed": false,
+        "basis": "No qualifying paper-level evidence for a cross was verified under the library criteria.",
+        "sources": [
+          "https://doi.org/10.1201/9781042017546-1"
+        ]
+      },
+      "paperTrustAssessment": {
+        "score": null,
+        "scope": "Paper",
+        "status": "unassessed",
+        "randomizedControlledTrial": null,
+        "blinding": "not-confirmed",
+        "peerReviewed": false,
+        "basis": "No qualifying paper-level evidence for a cross was verified under the library criteria.",
+        "sources": [
+          "https://doi.org/10.1201/9781042017546-1"
+        ],
+        "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
+        "assessedAt": "2026-11-05",
+        "displayCrosses": 0
+      }
     },
     {
       "id": "lab-4eb5fd30048276",
@@ -2414,7 +2935,30 @@
         "measurement": "Heart-rate variability · Derived score",
         "relationshipNote": "The field of view changed with a stress level derived from HRV in a seven-person pilot."
       },
-      "citationCount": null
+      "citationCount": null,
+      "studyDesignAssessment": {
+        "category": "unverified-publication-status",
+        "peerReviewed": false,
+        "basis": "No qualifying paper-level evidence for a cross was verified under the library criteria.",
+        "sources": [
+          "https://doi.org/10.1007/978-3-032-13174-4_18"
+        ]
+      },
+      "paperTrustAssessment": {
+        "score": null,
+        "scope": "Paper",
+        "status": "unassessed",
+        "randomizedControlledTrial": null,
+        "blinding": "not-confirmed",
+        "peerReviewed": false,
+        "basis": "No qualifying paper-level evidence for a cross was verified under the library criteria.",
+        "sources": [
+          "https://doi.org/10.1007/978-3-032-13174-4_18"
+        ],
+        "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
+        "assessedAt": "2026-11-05",
+        "displayCrosses": 0
+      }
     },
     {
       "id": "lab-5a210c0c4199cb",
@@ -2444,7 +2988,30 @@
         "measurement": "Respiration",
         "relationshipNote": "A controller on the abdomen sensed movement caused by breathing and fed it into the game."
       },
-      "citationCount": null
+      "citationCount": null,
+      "studyDesignAssessment": {
+        "category": "peer-reviewed-study",
+        "peerReviewed": true,
+        "basis": "The publication is a peer-reviewed journal study or review. A qualifying randomised comparison was not verified in the assessed source.",
+        "sources": [
+          "https://doi.org/10.1007/s10055-020-00471-5"
+        ]
+      },
+      "paperTrustAssessment": {
+        "score": 1,
+        "scope": "Paper",
+        "status": "assessed",
+        "randomizedControlledTrial": null,
+        "blinding": "not-confirmed",
+        "peerReviewed": true,
+        "basis": "The publication is a peer-reviewed journal study or review. A qualifying randomised comparison was not verified in the assessed source.",
+        "sources": [
+          "https://doi.org/10.1007/s10055-020-00471-5"
+        ],
+        "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
+        "assessedAt": "2026-11-05",
+        "displayCrosses": 1
+      }
     },
     {
       "id": "lab-74e0c193cc04c5",
@@ -2474,7 +3041,30 @@
         "measurement": "Review or framework",
         "relationshipNote": "Review of interactive mindfulness technology."
       },
-      "citationCount": null
+      "citationCount": null,
+      "studyDesignAssessment": {
+        "category": "peer-reviewed-study",
+        "peerReviewed": true,
+        "basis": "The publication is a peer-reviewed journal study or review. A qualifying randomised comparison was not verified in the assessed source.",
+        "sources": [
+          "https://doi.org/10.1007/s12671-017-0698-x"
+        ]
+      },
+      "paperTrustAssessment": {
+        "score": 1,
+        "scope": "Paper",
+        "status": "assessed",
+        "randomizedControlledTrial": false,
+        "blinding": "not-applicable",
+        "peerReviewed": true,
+        "basis": "The publication is a peer-reviewed journal study or review. A qualifying randomised comparison was not verified in the assessed source.",
+        "sources": [
+          "https://doi.org/10.1007/s12671-017-0698-x"
+        ],
+        "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
+        "assessedAt": "2026-11-05",
+        "displayCrosses": 1
+      }
     },
     {
       "id": "pmid-38742940",
@@ -2504,7 +3094,31 @@
         "measurement": "Heart-rate variability · Derived score · Proprietary score",
         "relationshipNote": "Inner Balance and emWave presented a coherence score calculated from beat-to-beat intervals."
       },
-      "citationCount": null
+      "citationCount": null,
+      "studyDesignAssessment": {
+        "category": "peer-reviewed-study",
+        "peerReviewed": true,
+        "basis": "The publication is a peer-reviewed journal study or review. A qualifying randomised comparison was not verified in the assessed source.",
+        "sources": [
+          "https://doi.org/10.2196/48959"
+        ]
+      },
+      "paperTrustAssessment": {
+        "score": 1,
+        "scope": "Paper",
+        "status": "assessed",
+        "randomizedControlledTrial": false,
+        "blinding": "not-confirmed",
+        "peerReviewed": true,
+        "basis": "The publication is a peer-reviewed journal study or review. A qualifying randomised comparison was not verified in the assessed source.",
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/38742940/",
+          "https://doi.org/10.2196/48959"
+        ],
+        "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
+        "assessedAt": "2026-11-05",
+        "displayCrosses": 1
+      }
     },
     {
       "id": "pmid-33792548",
@@ -2534,7 +3148,31 @@
         "measurement": "Review or framework",
         "relationshipNote": "Systematic review of connected biofeedback interventions."
       },
-      "citationCount": null
+      "citationCount": null,
+      "studyDesignAssessment": {
+        "category": "peer-reviewed-study",
+        "peerReviewed": true,
+        "basis": "The publication is a peer-reviewed journal study or review. A qualifying randomised comparison was not verified in the assessed source.",
+        "sources": [
+          "https://doi.org/10.2196/26038"
+        ]
+      },
+      "paperTrustAssessment": {
+        "score": 1,
+        "scope": "Paper",
+        "status": "assessed",
+        "randomizedControlledTrial": false,
+        "blinding": "not-applicable",
+        "peerReviewed": true,
+        "basis": "The publication is a peer-reviewed journal study or review. A qualifying randomised comparison was not verified in the assessed source.",
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/33792548/",
+          "https://doi.org/10.2196/26038"
+        ],
+        "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
+        "assessedAt": "2026-11-05",
+        "displayCrosses": 1
+      }
     },
     {
       "id": "lab-d011cd5d41de99",
@@ -2564,7 +3202,30 @@
         "measurement": "EEG · Derived score",
         "relationshipNote": "The authors describe a preliminary evaluation in which an EEG-derived relaxation estimate drove visual feedback. The accessible abstract gives limited detail about the calculation."
       },
-      "citationCount": null
+      "citationCount": null,
+      "studyDesignAssessment": {
+        "category": "unverified-publication-status",
+        "peerReviewed": false,
+        "basis": "No qualifying paper-level evidence for a cross was verified under the library criteria.",
+        "sources": [
+          "https://doi.org/10.1109/ICVR70658.2026.11672426"
+        ]
+      },
+      "paperTrustAssessment": {
+        "score": null,
+        "scope": "Paper",
+        "status": "unassessed",
+        "randomizedControlledTrial": null,
+        "blinding": "not-confirmed",
+        "peerReviewed": false,
+        "basis": "No qualifying paper-level evidence for a cross was verified under the library criteria.",
+        "sources": [
+          "https://doi.org/10.1109/ICVR70658.2026.11672426"
+        ],
+        "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
+        "assessedAt": "2026-11-05",
+        "displayCrosses": 0
+      }
     },
     {
       "id": "pmid-40939175",
@@ -2594,7 +3255,31 @@
         "measurement": "Review or framework",
         "relationshipNote": "Review of workplace biofeedback."
       },
-      "citationCount": null
+      "citationCount": null,
+      "studyDesignAssessment": {
+        "category": "peer-reviewed-study",
+        "peerReviewed": true,
+        "basis": "The publication is a peer-reviewed journal study or review. A qualifying randomised comparison was not verified in the assessed source.",
+        "sources": [
+          "https://doi.org/10.2196/70134"
+        ]
+      },
+      "paperTrustAssessment": {
+        "score": 1,
+        "scope": "Paper",
+        "status": "assessed",
+        "randomizedControlledTrial": false,
+        "blinding": "not-applicable",
+        "peerReviewed": true,
+        "basis": "The publication is a peer-reviewed journal study or review. A qualifying randomised comparison was not verified in the assessed source.",
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/40939175/",
+          "https://doi.org/10.2196/70134"
+        ],
+        "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
+        "assessedAt": "2026-11-05",
+        "displayCrosses": 1
+      }
     },
     {
       "id": "lab-eee50dc8f3d54f",
@@ -2608,7 +3293,7 @@
         "language"
       ],
       "origin": "update",
-      "design": "Participant study",
+      "design": "Randomised controlled crossover study",
       "categories": [
         "Mindfulness and biofeedback"
       ],
@@ -2624,7 +3309,31 @@
         "measurement": "Respiration",
         "relationshipNote": "Abdominal movement during exhalation changed the virtual environment. The testing staff were masked to condition."
       },
-      "citationCount": null
+      "citationCount": null,
+      "studyDesignAssessment": {
+        "category": "rct-masking-unclear",
+        "peerReviewed": true,
+        "basis": "Participants completed the VR biofeedback and comparison sessions in a randomly assigned, counterbalanced order.",
+        "sources": [
+          "https://doi.org/10.1038/s41598-024-68043-0"
+        ],
+        "isRandomizedControlledTrial": true
+      },
+      "paperTrustAssessment": {
+        "score": 2,
+        "scope": "Paper",
+        "status": "assessed",
+        "randomizedControlledTrial": true,
+        "blinding": "not-confirmed",
+        "peerReviewed": true,
+        "basis": "Participants completed the VR biofeedback and comparison sessions in a randomly assigned, counterbalanced order.",
+        "sources": [
+          "https://doi.org/10.1038/s41598-024-68043-0"
+        ],
+        "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
+        "assessedAt": "2026-11-05",
+        "displayCrosses": 2
+      }
     },
     {
       "id": "lab-870b2fcef79281",
@@ -2654,7 +3363,30 @@
         "measurement": "Signal or implementation unclear",
         "relationshipNote": "The accessible conference record identifies non-contact biofeedback. The sensing method and participant evaluation need confirmation."
       },
-      "citationCount": null
+      "citationCount": null,
+      "studyDesignAssessment": {
+        "category": "unverified-publication-status",
+        "peerReviewed": false,
+        "basis": "No qualifying paper-level evidence for a cross was verified under the library criteria.",
+        "sources": [
+          "https://doi.org/10.1145/3731459.3779342"
+        ]
+      },
+      "paperTrustAssessment": {
+        "score": null,
+        "scope": "Paper",
+        "status": "unassessed",
+        "randomizedControlledTrial": null,
+        "blinding": "not-confirmed",
+        "peerReviewed": false,
+        "basis": "No qualifying paper-level evidence for a cross was verified under the library criteria.",
+        "sources": [
+          "https://doi.org/10.1145/3731459.3779342"
+        ],
+        "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
+        "assessedAt": "2026-11-05",
+        "displayCrosses": 0
+      }
     },
     {
       "id": "lab-70831a49e6f6d0",
@@ -2684,7 +3416,30 @@
         "measurement": "Signal or implementation unclear",
         "relationshipNote": "The abstract confirms physiology-driven adjustments during testing with 20 people. It leaves the specific signal unidentified."
       },
-      "citationCount": null
+      "citationCount": null,
+      "studyDesignAssessment": {
+        "category": "unverified-publication-status",
+        "peerReviewed": false,
+        "basis": "No qualifying paper-level evidence for a cross was verified under the library criteria.",
+        "sources": [
+          "https://doi.org/10.1007/978-3-031-92689-1_9"
+        ]
+      },
+      "paperTrustAssessment": {
+        "score": null,
+        "scope": "Paper",
+        "status": "unassessed",
+        "randomizedControlledTrial": null,
+        "blinding": "not-confirmed",
+        "peerReviewed": false,
+        "basis": "No qualifying paper-level evidence for a cross was verified under the library criteria.",
+        "sources": [
+          "https://doi.org/10.1007/978-3-031-92689-1_9"
+        ],
+        "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
+        "assessedAt": "2026-11-05",
+        "displayCrosses": 0
+      }
     },
     {
       "id": "lab-7f8cefe879869f",
@@ -2714,7 +3469,30 @@
         "measurement": "Heart rate / heartbeat",
         "relationshipNote": "The handheld device reproduced a measured heartbeat through touch."
       },
-      "citationCount": null
+      "citationCount": null,
+      "studyDesignAssessment": {
+        "category": "unverified-publication-status",
+        "peerReviewed": false,
+        "basis": "No qualifying paper-level evidence for a cross was verified under the library criteria.",
+        "sources": [
+          "https://dspace.mit.edu/entities/publication/2fbd5c24-af34-488f-81ea-12e1bc690f3d"
+        ]
+      },
+      "paperTrustAssessment": {
+        "score": null,
+        "scope": "Paper",
+        "status": "unassessed",
+        "randomizedControlledTrial": null,
+        "blinding": "not-confirmed",
+        "peerReviewed": false,
+        "basis": "No qualifying paper-level evidence for a cross was verified under the library criteria.",
+        "sources": [
+          "https://dspace.mit.edu/entities/publication/2fbd5c24-af34-488f-81ea-12e1bc690f3d"
+        ],
+        "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
+        "assessedAt": "2026-11-05",
+        "displayCrosses": 0
+      }
     },
     {
       "id": "lab-3650fe906cd8e1",
@@ -2744,7 +3522,30 @@
         "measurement": "Movement",
         "relationshipNote": "The evaluated interfaces tracked deliberate physical movements to support attention."
       },
-      "citationCount": null
+      "citationCount": null,
+      "studyDesignAssessment": {
+        "category": "peer-reviewed-study",
+        "peerReviewed": true,
+        "basis": "The publication is a peer-reviewed journal study or review. A qualifying randomised comparison was not verified in the assessed source.",
+        "sources": [
+          "https://doi.org/10.1145/3359593"
+        ]
+      },
+      "paperTrustAssessment": {
+        "score": 1,
+        "scope": "Paper",
+        "status": "assessed",
+        "randomizedControlledTrial": null,
+        "blinding": "not-confirmed",
+        "peerReviewed": true,
+        "basis": "The publication is a peer-reviewed journal study or review. A qualifying randomised comparison was not verified in the assessed source.",
+        "sources": [
+          "https://doi.org/10.1145/3359593"
+        ],
+        "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
+        "assessedAt": "2026-11-05",
+        "displayCrosses": 1
+      }
     },
     {
       "id": "pmid-39385361",
@@ -2774,7 +3575,31 @@
         "measurement": "Heart rate / heartbeat · Derived score",
         "relationshipNote": "The training displayed the pulse trace. A study-defined stress score used rolling heart rate relative to baseline. HRV was an outcome."
       },
-      "citationCount": null
+      "citationCount": null,
+      "studyDesignAssessment": {
+        "category": "peer-reviewed-study",
+        "peerReviewed": true,
+        "basis": "The publication is a peer-reviewed journal study or review. A qualifying randomised comparison was not verified in the assessed source.",
+        "sources": [
+          "https://doi.org/10.1111/psyp.14705"
+        ]
+      },
+      "paperTrustAssessment": {
+        "score": 1,
+        "scope": "Paper",
+        "status": "assessed",
+        "randomizedControlledTrial": null,
+        "blinding": "not-confirmed",
+        "peerReviewed": true,
+        "basis": "The publication is a peer-reviewed journal study or review. A qualifying randomised comparison was not verified in the assessed source.",
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/39385361/",
+          "https://doi.org/10.1111/psyp.14705"
+        ],
+        "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
+        "assessedAt": "2026-11-05",
+        "displayCrosses": 1
+      }
     },
     {
       "id": "pmid-33529187",
@@ -2804,7 +3629,31 @@
         "measurement": "Respiration",
         "relationshipNote": "A respiratory belt provided controlled-breathing feedback."
       },
-      "citationCount": null
+      "citationCount": null,
+      "studyDesignAssessment": {
+        "category": "peer-reviewed-study",
+        "peerReviewed": true,
+        "basis": "The publication is a peer-reviewed journal study or review. A qualifying randomised comparison was not verified in the assessed source.",
+        "sources": [
+          "https://doi.org/10.1371/journal.pone.0245068"
+        ]
+      },
+      "paperTrustAssessment": {
+        "score": 1,
+        "scope": "Paper",
+        "status": "assessed",
+        "randomizedControlledTrial": null,
+        "blinding": "not-confirmed",
+        "peerReviewed": true,
+        "basis": "The publication is a peer-reviewed journal study or review. A qualifying randomised comparison was not verified in the assessed source.",
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/33529187/",
+          "https://doi.org/10.1371/journal.pone.0245068"
+        ],
+        "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
+        "assessedAt": "2026-11-05",
+        "displayCrosses": 1
+      }
     },
     {
       "id": "lab-58ba4c9a89141b",
@@ -2834,7 +3683,30 @@
         "measurement": "Review or framework",
         "relationshipNote": "Narrative review of mindfulness in VR."
       },
-      "citationCount": null
+      "citationCount": null,
+      "studyDesignAssessment": {
+        "category": "peer-reviewed-study",
+        "peerReviewed": true,
+        "basis": "The publication is a peer-reviewed journal study or review. A qualifying randomised comparison was not verified in the assessed source.",
+        "sources": [
+          "https://doi.org/10.1007/s12671-021-01783-6"
+        ]
+      },
+      "paperTrustAssessment": {
+        "score": 1,
+        "scope": "Paper",
+        "status": "assessed",
+        "randomizedControlledTrial": false,
+        "blinding": "not-applicable",
+        "peerReviewed": true,
+        "basis": "The publication is a peer-reviewed journal study or review. A qualifying randomised comparison was not verified in the assessed source.",
+        "sources": [
+          "https://doi.org/10.1007/s12671-021-01783-6"
+        ],
+        "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
+        "assessedAt": "2026-11-05",
+        "displayCrosses": 1
+      }
     },
     {
       "id": "pmid-30087642",
@@ -2864,7 +3736,31 @@
         "measurement": "No live signal established",
         "relationshipNote": "The researchers compared EEG recordings around the VR meditation and quiet-rest conditions."
       },
-      "citationCount": null
+      "citationCount": null,
+      "studyDesignAssessment": {
+        "category": "peer-reviewed-study",
+        "peerReviewed": true,
+        "basis": "The publication is a peer-reviewed journal study or review. A qualifying randomised comparison was not verified in the assessed source.",
+        "sources": [
+          "https://doi.org/10.3389/fpsyg.2018.01280"
+        ]
+      },
+      "paperTrustAssessment": {
+        "score": 1,
+        "scope": "Paper",
+        "status": "assessed",
+        "randomizedControlledTrial": null,
+        "blinding": "not-confirmed",
+        "peerReviewed": true,
+        "basis": "The publication is a peer-reviewed journal study or review. A qualifying randomised comparison was not verified in the assessed source.",
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/30087642/",
+          "https://doi.org/10.3389/fpsyg.2018.01280"
+        ],
+        "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
+        "assessedAt": "2026-11-05",
+        "displayCrosses": 1
+      }
     },
     {
       "id": "lab-9993bb4e4e942d",
@@ -2894,7 +3790,31 @@
         "measurement": "Heart rate / heartbeat",
         "relationshipNote": "A baseline heart-rate threshold guided feedback in both the 2D and VR training."
       },
-      "citationCount": null
+      "citationCount": null,
+      "studyDesignAssessment": {
+        "category": "rct-masking-unclear",
+        "peerReviewed": true,
+        "basis": "Thirty-nine patients aged 9–18 received ten sessions of VR or conventional screen-based biofeedback. Both groups improved, with comparable outcomes through three months.",
+        "sources": [
+          "https://doi.org/10.1007/s10055-025-01123-2"
+        ],
+        "isRandomizedControlledTrial": true
+      },
+      "paperTrustAssessment": {
+        "score": 2,
+        "scope": "Paper",
+        "status": "assessed",
+        "randomizedControlledTrial": true,
+        "blinding": "not-confirmed",
+        "peerReviewed": true,
+        "basis": "Thirty-nine patients aged 9–18 received ten sessions of VR or conventional screen-based biofeedback. Both groups improved, with comparable outcomes through three months.",
+        "sources": [
+          "https://doi.org/10.1007/s10055-025-01123-2"
+        ],
+        "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
+        "assessedAt": "2026-11-05",
+        "displayCrosses": 2
+      }
     },
     {
       "id": "pmid-41261293",
@@ -2924,7 +3844,31 @@
         "measurement": "Review or framework",
         "relationshipNote": "Systematic review of youth biofeedback games."
       },
-      "citationCount": null
+      "citationCount": null,
+      "studyDesignAssessment": {
+        "category": "peer-reviewed-study",
+        "peerReviewed": true,
+        "basis": "The publication is a peer-reviewed journal study or review. A qualifying randomised comparison was not verified in the assessed source.",
+        "sources": [
+          "https://doi.org/10.1007/s10802-025-01387-x"
+        ]
+      },
+      "paperTrustAssessment": {
+        "score": 1,
+        "scope": "Paper",
+        "status": "assessed",
+        "randomizedControlledTrial": false,
+        "blinding": "not-applicable",
+        "peerReviewed": true,
+        "basis": "The publication is a peer-reviewed journal study or review. A qualifying randomised comparison was not verified in the assessed source.",
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/41261293/",
+          "https://doi.org/10.1007/s10802-025-01387-x"
+        ],
+        "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
+        "assessedAt": "2026-11-05",
+        "displayCrosses": 1
+      }
     },
     {
       "id": "lab-ed18aa841e540e",
@@ -2954,7 +3898,30 @@
         "measurement": "Heart-rate variability · Derived score",
         "relationshipNote": "In Nevermind, the game estimated arousal from beat-to-beat variability. The report also illustrates heart-rate recordings separately."
       },
-      "citationCount": null
+      "citationCount": null,
+      "studyDesignAssessment": {
+        "category": "unverified-publication-status",
+        "peerReviewed": false,
+        "basis": "No qualifying paper-level evidence for a cross was verified under the library criteria.",
+        "sources": [
+          "https://doi.org/10.1145/2851581.2892521"
+        ]
+      },
+      "paperTrustAssessment": {
+        "score": null,
+        "scope": "Paper",
+        "status": "unassessed",
+        "randomizedControlledTrial": null,
+        "blinding": "not-confirmed",
+        "peerReviewed": false,
+        "basis": "No qualifying paper-level evidence for a cross was verified under the library criteria.",
+        "sources": [
+          "https://doi.org/10.1145/2851581.2892521"
+        ],
+        "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
+        "assessedAt": "2026-11-05",
+        "displayCrosses": 0
+      }
     },
     {
       "id": "pmid-42205234",
@@ -2984,7 +3951,31 @@
         "measurement": "No live signal established",
         "relationshipNote": "VR and MR guided the breathing exercises. A live physiological input controlling the exercise was unverified."
       },
-      "citationCount": null
+      "citationCount": null,
+      "studyDesignAssessment": {
+        "category": "peer-reviewed-study",
+        "peerReviewed": true,
+        "basis": "The publication is a peer-reviewed journal study or review. A qualifying randomised comparison was not verified in the assessed source.",
+        "sources": [
+          "https://doi.org/10.2196/84239"
+        ]
+      },
+      "paperTrustAssessment": {
+        "score": 1,
+        "scope": "Paper",
+        "status": "assessed",
+        "randomizedControlledTrial": null,
+        "blinding": "not-confirmed",
+        "peerReviewed": true,
+        "basis": "The publication is a peer-reviewed journal study or review. A qualifying randomised comparison was not verified in the assessed source.",
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/42205234/",
+          "https://doi.org/10.2196/84239"
+        ],
+        "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
+        "assessedAt": "2026-11-05",
+        "displayCrosses": 1
+      }
     },
     {
       "id": "pmid-37930751",
@@ -3014,7 +4005,31 @@
         "measurement": "Respiration",
         "relationshipNote": "A live respiratory trace provided feedback on controlled breathing in ADF training."
       },
-      "citationCount": null
+      "citationCount": null,
+      "studyDesignAssessment": {
+        "category": "peer-reviewed-study",
+        "peerReviewed": true,
+        "basis": "The publication is a peer-reviewed journal study or review. A qualifying randomised comparison was not verified in the assessed source.",
+        "sources": [
+          "https://doi.org/10.2196/46368"
+        ]
+      },
+      "paperTrustAssessment": {
+        "score": 1,
+        "scope": "Paper",
+        "status": "assessed",
+        "randomizedControlledTrial": null,
+        "blinding": "not-confirmed",
+        "peerReviewed": true,
+        "basis": "The publication is a peer-reviewed journal study or review. A qualifying randomised comparison was not verified in the assessed source.",
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/37930751/",
+          "https://doi.org/10.2196/46368"
+        ],
+        "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
+        "assessedAt": "2026-11-05",
+        "displayCrosses": 1
+      }
     },
     {
       "id": "pmid-30020511",
@@ -3044,7 +4059,32 @@
         "measurement": "Heart-rate variability · Derived score · Proprietary score",
         "relationshipNote": "The on-site emWave games responded to HRV. The home prompt provided separate paced-breathing practice."
       },
-      "citationCount": null
+      "citationCount": null,
+      "studyDesignAssessment": {
+        "category": "rct-masking-unclear",
+        "peerReviewed": true,
+        "basis": "A cluster-randomised National Guard study followed 342 soldiers. HRV feedback did not reduce post-deployment PTSD symptoms across the whole sample. The age-related signal favoured older participants.",
+        "sources": [
+          "https://doi.org/10.1093/milmed/usy171"
+        ],
+        "isRandomizedControlledTrial": true
+      },
+      "paperTrustAssessment": {
+        "score": 2,
+        "scope": "Paper",
+        "status": "assessed",
+        "randomizedControlledTrial": true,
+        "blinding": "not-confirmed",
+        "peerReviewed": true,
+        "basis": "A cluster-randomised National Guard study followed 342 soldiers. HRV feedback did not reduce post-deployment PTSD symptoms across the whole sample. The age-related signal favoured older participants.",
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/30020511/",
+          "https://doi.org/10.1093/milmed/usy171"
+        ],
+        "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
+        "assessedAt": "2026-11-05",
+        "displayCrosses": 2
+      }
     },
     {
       "id": "pmid-38287778",
@@ -3074,7 +4114,31 @@
         "measurement": "Review or framework",
         "relationshipNote": "Meta-analysis of HRV biofeedback for military PTSD."
       },
-      "citationCount": null
+      "citationCount": null,
+      "studyDesignAssessment": {
+        "category": "peer-reviewed-study",
+        "peerReviewed": true,
+        "basis": "The publication is a peer-reviewed journal study or review. A qualifying randomised comparison was not verified in the assessed source.",
+        "sources": [
+          "https://doi.org/10.1093/milmed/usae003"
+        ]
+      },
+      "paperTrustAssessment": {
+        "score": 1,
+        "scope": "Paper",
+        "status": "assessed",
+        "randomizedControlledTrial": false,
+        "blinding": "not-applicable",
+        "peerReviewed": true,
+        "basis": "The publication is a peer-reviewed journal study or review. A qualifying randomised comparison was not verified in the assessed source.",
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/38287778/",
+          "https://doi.org/10.1093/milmed/usae003"
+        ],
+        "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
+        "assessedAt": "2026-11-05",
+        "displayCrosses": 1
+      }
     },
     {
       "id": "pmid-36331685",
@@ -3104,7 +4168,32 @@
         "measurement": "Heart-rate variability",
         "relationshipNote": "The veteran waitlist pilot used clinical HRV biofeedback and a smartphone with a sensor for home practice."
       },
-      "citationCount": null
+      "citationCount": null,
+      "studyDesignAssessment": {
+        "category": "rct-masking-unclear",
+        "peerReviewed": true,
+        "basis": "A randomised waitlist pilot of three clinical HRV feedback sessions reported improvements in depression and an HRV measure within the intervention arm. Home-practice adherence was limited.",
+        "sources": [
+          "https://doi.org/10.1007/s10484-022-09565-z"
+        ],
+        "isRandomizedControlledTrial": true
+      },
+      "paperTrustAssessment": {
+        "score": 2,
+        "scope": "Paper",
+        "status": "assessed",
+        "randomizedControlledTrial": true,
+        "blinding": "not-confirmed",
+        "peerReviewed": true,
+        "basis": "A randomised waitlist pilot of three clinical HRV feedback sessions reported improvements in depression and an HRV measure within the intervention arm. Home-practice adherence was limited.",
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/36331685/",
+          "https://doi.org/10.1007/s10484-022-09565-z"
+        ],
+        "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
+        "assessedAt": "2026-11-05",
+        "displayCrosses": 2
+      }
     },
     {
       "id": "pmid-38378078",
@@ -3134,7 +4223,31 @@
         "measurement": "No live signal established",
         "relationshipNote": "A feasibility study of VR mindfulness in residential substance use treatment. A live physiological feedback loop was unverified."
       },
-      "citationCount": null
+      "citationCount": null,
+      "studyDesignAssessment": {
+        "category": "peer-reviewed-study",
+        "peerReviewed": true,
+        "basis": "The publication is a peer-reviewed journal study or review. A qualifying randomised comparison was not verified in the assessed source.",
+        "sources": [
+          "https://doi.org/10.1016/j.josat.2024.209315"
+        ]
+      },
+      "paperTrustAssessment": {
+        "score": 1,
+        "scope": "Paper",
+        "status": "assessed",
+        "randomizedControlledTrial": null,
+        "blinding": "not-confirmed",
+        "peerReviewed": true,
+        "basis": "The publication is a peer-reviewed journal study or review. A qualifying randomised comparison was not verified in the assessed source.",
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/38378078/",
+          "https://doi.org/10.1016/j.josat.2024.209315"
+        ],
+        "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
+        "assessedAt": "2026-11-05",
+        "displayCrosses": 1
+      }
     },
     {
       "id": "pmid-22558370",
@@ -3148,7 +4261,7 @@
         "language"
       ],
       "origin": "update",
-      "design": "Participant study",
+      "design": "Randomised controlled study",
       "categories": [
         "Mindfulness and biofeedback"
       ],
@@ -3164,7 +4277,32 @@
         "measurement": "Heart rate / heartbeat · Skin conductance · Derived score",
         "relationshipNote": "The soldiers’ game combined heart rate and skin conductance. The coach adjusted each signal’s weight in the stress feedback."
       },
-      "citationCount": null
+      "citationCount": null,
+      "studyDesignAssessment": {
+        "category": "rct-masking-unclear",
+        "peerReviewed": true,
+        "basis": "The 41 soldiers were randomly assigned to refresher training alone or additional practice in an immersive game with biofeedback.",
+        "sources": [
+          "https://doi.org/10.1371/journal.pone.0036169"
+        ],
+        "isRandomizedControlledTrial": true
+      },
+      "paperTrustAssessment": {
+        "score": 2,
+        "scope": "Paper",
+        "status": "assessed",
+        "randomizedControlledTrial": true,
+        "blinding": "not-confirmed",
+        "peerReviewed": true,
+        "basis": "The 41 soldiers were randomly assigned to refresher training alone or additional practice in an immersive game with biofeedback.",
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/22558370/",
+          "https://doi.org/10.1371/journal.pone.0036169"
+        ],
+        "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
+        "assessedAt": "2026-11-05",
+        "displayCrosses": 2
+      }
     },
     {
       "id": "pmid-41618102",
@@ -3194,7 +4332,32 @@
         "measurement": "No live signal established",
         "relationshipNote": "The emotional intelligence training trial measured cortisol and task performance."
       },
-      "citationCount": null
+      "citationCount": null,
+      "studyDesignAssessment": {
+        "category": "rct-masking-unclear",
+        "peerReviewed": true,
+        "basis": "A 66-person military trial compared emotional intelligence training with an active control. The investigators measured cortisol and task performance. The intervention did not return cortisol to the participants as feedback.",
+        "sources": [
+          "https://doi.org/10.1038/s41598-026-36216-8"
+        ],
+        "isRandomizedControlledTrial": true
+      },
+      "paperTrustAssessment": {
+        "score": 2,
+        "scope": "Paper",
+        "status": "assessed",
+        "randomizedControlledTrial": true,
+        "blinding": "not-confirmed",
+        "peerReviewed": true,
+        "basis": "A 66-person military trial compared emotional intelligence training with an active control. The investigators measured cortisol and task performance. The intervention did not return cortisol to the participants as feedback.",
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/41618102/",
+          "https://doi.org/10.1038/s41598-026-36216-8"
+        ],
+        "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
+        "assessedAt": "2026-11-05",
+        "displayCrosses": 2
+      }
     },
     {
       "id": "pmid-38236355",
@@ -3224,7 +4387,31 @@
         "measurement": "Review or framework",
         "relationshipNote": "Systematic review of VR versus other methods of delivering breathing exercises."
       },
-      "citationCount": null
+      "citationCount": null,
+      "studyDesignAssessment": {
+        "category": "peer-reviewed-study",
+        "peerReviewed": true,
+        "basis": "The publication is a peer-reviewed journal study or review. A qualifying randomised comparison was not verified in the assessed source.",
+        "sources": [
+          "https://doi.org/10.1007/s10484-023-09611-4"
+        ]
+      },
+      "paperTrustAssessment": {
+        "score": 1,
+        "scope": "Paper",
+        "status": "assessed",
+        "randomizedControlledTrial": false,
+        "blinding": "not-applicable",
+        "peerReviewed": true,
+        "basis": "The publication is a peer-reviewed journal study or review. A qualifying randomised comparison was not verified in the assessed source.",
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/38236355/",
+          "https://doi.org/10.1007/s10484-023-09611-4"
+        ],
+        "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
+        "assessedAt": "2026-11-05",
+        "displayCrosses": 1
+      }
     },
     {
       "id": "lab-382ebff3371467",
@@ -3254,7 +4441,30 @@
         "measurement": "Heart rate / heartbeat · Respiration · Skin conductance",
         "relationshipNote": "The environment responded to the participant’s breathing, heart rate and skin conductance, or to another participant’s replay."
       },
-      "citationCount": null
+      "citationCount": null,
+      "studyDesignAssessment": {
+        "category": "peer-reviewed-study",
+        "peerReviewed": true,
+        "basis": "The publication is a peer-reviewed journal study or review. A qualifying randomised comparison was not verified in the assessed source.",
+        "sources": [
+          "https://doi.org/10.1016/j.ijhcs.2024.103275"
+        ]
+      },
+      "paperTrustAssessment": {
+        "score": 1,
+        "scope": "Paper",
+        "status": "assessed",
+        "randomizedControlledTrial": null,
+        "blinding": "not-confirmed",
+        "peerReviewed": true,
+        "basis": "The publication is a peer-reviewed journal study or review. A qualifying randomised comparison was not verified in the assessed source.",
+        "sources": [
+          "https://doi.org/10.1016/j.ijhcs.2024.103275"
+        ],
+        "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
+        "assessedAt": "2026-11-05",
+        "displayCrosses": 1
+      }
     },
     {
       "id": "pmid-38896949",
@@ -3284,7 +4494,32 @@
         "measurement": "Heart rate / heartbeat",
         "relationshipNote": "A visual pulse showed the participant’s own heart rate during self-compassion practice."
       },
-      "citationCount": null
+      "citationCount": null,
+      "studyDesignAssessment": {
+        "category": "rct-masking-unclear",
+        "peerReviewed": true,
+        "basis": "Sixty people received the same VR self-compassion practice with or without a pulsing light showing their heart rate. Outcomes improved from baseline across both conditions. Adding the light produced no additional detectable benefit.",
+        "sources": [
+          "https://doi.org/10.1016/j.brat.2024.104596"
+        ],
+        "isRandomizedControlledTrial": true
+      },
+      "paperTrustAssessment": {
+        "score": 2,
+        "scope": "Paper",
+        "status": "assessed",
+        "randomizedControlledTrial": true,
+        "blinding": "not-confirmed",
+        "peerReviewed": true,
+        "basis": "Sixty people received the same VR self-compassion practice with or without a pulsing light showing their heart rate. Outcomes improved from baseline across both conditions. Adding the light produced no additional detectable benefit.",
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/38896949/",
+          "https://doi.org/10.1016/j.brat.2024.104596"
+        ],
+        "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
+        "assessedAt": "2026-11-05",
+        "displayCrosses": 2
+      }
     },
     {
       "id": "lab-aeddc9e62aff15",
@@ -3314,7 +4549,30 @@
         "measurement": "EEG · Respiration · Derived score",
         "relationshipNote": "Pairs saw their respiratory synchrony and a comparison of EEG frontal asymmetry. HRV and skin conductance were also recorded for analysis."
       },
-      "citationCount": null
+      "citationCount": null,
+      "studyDesignAssessment": {
+        "category": "peer-reviewed-study",
+        "peerReviewed": true,
+        "basis": "The publication is a peer-reviewed journal study or review. A qualifying randomised comparison was not verified in the assessed source.",
+        "sources": [
+          "https://doi.org/10.1145/3449358"
+        ]
+      },
+      "paperTrustAssessment": {
+        "score": 1,
+        "scope": "Paper",
+        "status": "assessed",
+        "randomizedControlledTrial": null,
+        "blinding": "not-confirmed",
+        "peerReviewed": true,
+        "basis": "The publication is a peer-reviewed journal study or review. A qualifying randomised comparison was not verified in the assessed source.",
+        "sources": [
+          "https://doi.org/10.1145/3449358"
+        ],
+        "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
+        "assessedAt": "2026-11-05",
+        "displayCrosses": 1
+      }
     },
     {
       "id": "lab-d69eade108c9c9",
@@ -3344,7 +4602,30 @@
         "measurement": "Review or framework",
         "relationshipNote": "Meta-analysis of VR and empathy."
       },
-      "citationCount": null
+      "citationCount": null,
+      "studyDesignAssessment": {
+        "category": "peer-reviewed-study",
+        "peerReviewed": true,
+        "basis": "The publication is a peer-reviewed journal study or review. A qualifying randomised comparison was not verified in the assessed source.",
+        "sources": [
+          "https://doi.org/10.1037/tmb0000034"
+        ]
+      },
+      "paperTrustAssessment": {
+        "score": 1,
+        "scope": "Paper",
+        "status": "assessed",
+        "randomizedControlledTrial": false,
+        "blinding": "not-applicable",
+        "peerReviewed": true,
+        "basis": "The publication is a peer-reviewed journal study or review. A qualifying randomised comparison was not verified in the assessed source.",
+        "sources": [
+          "https://doi.org/10.1037/tmb0000034"
+        ],
+        "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
+        "assessedAt": "2026-11-05",
+        "displayCrosses": 1
+      }
     },
     {
       "id": "lab-03df8e70361cc3",
@@ -3374,7 +4655,30 @@
         "measurement": "Heart rate / heartbeat · Derived score",
         "relationshipNote": "The installation returned heartbeats as sound, vibration and light, and changed the environment with group cardiac synchrony."
       },
-      "citationCount": null
+      "citationCount": null,
+      "studyDesignAssessment": {
+        "category": "unverified-publication-status",
+        "peerReviewed": false,
+        "basis": "No qualifying paper-level evidence for a cross was verified under the library criteria.",
+        "sources": [
+          "https://doi.org/10.1145/3803784.3809264"
+        ]
+      },
+      "paperTrustAssessment": {
+        "score": null,
+        "scope": "Paper",
+        "status": "unassessed",
+        "randomizedControlledTrial": null,
+        "blinding": "not-confirmed",
+        "peerReviewed": false,
+        "basis": "No qualifying paper-level evidence for a cross was verified under the library criteria.",
+        "sources": [
+          "https://doi.org/10.1145/3803784.3809264"
+        ],
+        "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
+        "assessedAt": "2026-11-05",
+        "displayCrosses": 0
+      }
     },
     {
       "id": "lab-16c72c2e0fd307",
@@ -3404,7 +4708,30 @@
         "measurement": "No live signal established",
         "relationshipNote": "The NSW Aboriginal youth study measured HRV before and during the VR body scan."
       },
-      "citationCount": null
+      "citationCount": null,
+      "studyDesignAssessment": {
+        "category": "peer-reviewed-study",
+        "peerReviewed": true,
+        "basis": "The publication is a peer-reviewed journal study or review. A qualifying randomised comparison was not verified in the assessed source.",
+        "sources": [
+          "https://doi.org/10.1007/s12671-024-02373-y"
+        ]
+      },
+      "paperTrustAssessment": {
+        "score": 1,
+        "scope": "Paper",
+        "status": "assessed",
+        "randomizedControlledTrial": null,
+        "blinding": "not-confirmed",
+        "peerReviewed": true,
+        "basis": "The publication is a peer-reviewed journal study or review. A qualifying randomised comparison was not verified in the assessed source.",
+        "sources": [
+          "https://doi.org/10.1007/s12671-024-02373-y"
+        ],
+        "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
+        "assessedAt": "2026-11-05",
+        "displayCrosses": 1
+      }
     },
     {
       "id": "pmid-39935733",
@@ -3434,7 +4761,32 @@
         "measurement": "No live signal established",
         "relationshipNote": "The Kampala trial tested VR and group support for refugee youth."
       },
-      "citationCount": null
+      "citationCount": null,
+      "studyDesignAssessment": {
+        "category": "rct-masking-unclear",
+        "peerReviewed": true,
+        "basis": "In a trial with 335 urban refugee youth aged 16–25 in Kampala, the two VR-containing programmes improved self-compassion at 16 weeks. Adding a group intervention also improved mental-health literacy. Neither programme showed a depression advantage over the control. The VR programme did not use wearable feedback.",
+        "sources": [
+          "https://doi.org/10.1017/gmh.2025.3"
+        ],
+        "isRandomizedControlledTrial": true
+      },
+      "paperTrustAssessment": {
+        "score": 2,
+        "scope": "Paper",
+        "status": "assessed",
+        "randomizedControlledTrial": true,
+        "blinding": "not-confirmed",
+        "peerReviewed": true,
+        "basis": "In a trial with 335 urban refugee youth aged 16–25 in Kampala, the two VR-containing programmes improved self-compassion at 16 weeks. Adding a group intervention also improved mental-health literacy. Neither programme showed a depression advantage over the control. The VR programme did not use wearable feedback.",
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/39935733/",
+          "https://doi.org/10.1017/gmh.2025.3"
+        ],
+        "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
+        "assessedAt": "2026-11-05",
+        "displayCrosses": 2
+      }
     },
     {
       "id": "pmid-34392115",
@@ -3464,7 +4816,32 @@
         "measurement": "No live signal established",
         "relationshipNote": "The Tanzania feasibility trial tested a facilitator-led psychological intervention."
       },
-      "citationCount": null
+      "citationCount": null,
+      "studyDesignAssessment": {
+        "category": "rct-masking-unclear",
+        "peerReviewed": true,
+        "basis": "Eighty-two Burundian young adolescents and 64 caregivers took part in a feasibility trial. Trained refugee facilitators delivered the EASE programme with high fidelity. This is evidence about local delivery.",
+        "sources": [
+          "https://doi.org/10.1016/j.brat.2021.103944"
+        ],
+        "isRandomizedControlledTrial": true
+      },
+      "paperTrustAssessment": {
+        "score": 2,
+        "scope": "Paper",
+        "status": "assessed",
+        "randomizedControlledTrial": true,
+        "blinding": "not-confirmed",
+        "peerReviewed": true,
+        "basis": "Eighty-two Burundian young adolescents and 64 caregivers took part in a feasibility trial. Trained refugee facilitators delivered the EASE programme with high fidelity. This is evidence about local delivery.",
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/34392115/",
+          "https://doi.org/10.1016/j.brat.2021.103944"
+        ],
+        "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
+        "assessedAt": "2026-11-05",
+        "displayCrosses": 2
+      }
     },
     {
       "id": "pmid-35737665",
@@ -3494,7 +4871,33 @@
         "measurement": "No live signal established",
         "relationshipNote": "The Lebanon trial tested guided digital self-help."
       },
-      "citationCount": null
+      "citationCount": null,
+      "studyDesignAssessment": {
+        "category": "single-blind-rct",
+        "peerReviewed": true,
+        "basis": "A trial of guided digital self-help with 569 displaced Syrian adults found a depression benefit over enhanced usual care. Attrition limits interpretation. This was a guided digital programme without biofeedback.",
+        "sources": [
+          "https://doi.org/10.1371/journal.pmed.1004025"
+        ],
+        "isRandomizedControlledTrial": true,
+        "maskingRoles": "The authors describe a single-blind pragmatic trial of guided digital support in Lebanon."
+      },
+      "paperTrustAssessment": {
+        "score": 2,
+        "scope": "Paper",
+        "status": "assessed",
+        "randomizedControlledTrial": true,
+        "blinding": "single",
+        "peerReviewed": true,
+        "basis": "A trial of guided digital self-help with 569 displaced Syrian adults found a depression benefit over enhanced usual care. Attrition limits interpretation. This was a guided digital programme without biofeedback.",
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/35737665/",
+          "https://doi.org/10.1371/journal.pmed.1004025"
+        ],
+        "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
+        "assessedAt": "2026-11-05",
+        "displayCrosses": 2
+      }
     },
     {
       "id": "pmid-35015365",
@@ -3524,7 +4927,33 @@
         "measurement": "No live signal established",
         "relationshipNote": "The Türkiye trial tested facilitator-led audio and illustrated self-help."
       },
-      "citationCount": null
+      "citationCount": null,
+      "studyDesignAssessment": {
+        "category": "single-blind-rct",
+        "peerReviewed": true,
+        "basis": "A trial of facilitator-led audio and illustrated self-help included 642 adults, mostly Syrian refugees. Fewer participants in the intervention arm developed a mental disorder at six months. It offers a low-equipment comparator.",
+        "sources": [
+          "https://doi.org/10.1002/wps.20939"
+        ],
+        "isRandomizedControlledTrial": true,
+        "maskingRoles": "The authors describe a two-arm, assessor-masked trial of Self-Help Plus in Türkiye."
+      },
+      "paperTrustAssessment": {
+        "score": 2,
+        "scope": "Paper",
+        "status": "assessed",
+        "randomizedControlledTrial": true,
+        "blinding": "single",
+        "peerReviewed": true,
+        "basis": "A trial of facilitator-led audio and illustrated self-help included 642 adults, mostly Syrian refugees. Fewer participants in the intervention arm developed a mental disorder at six months. It offers a low-equipment comparator.",
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/35015365/",
+          "https://doi.org/10.1002/wps.20939"
+        ],
+        "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
+        "assessedAt": "2026-11-05",
+        "displayCrosses": 2
+      }
     },
     {
       "id": "pmid-40283741",
@@ -3554,7 +4983,31 @@
         "measurement": "Signal or implementation unclear",
         "relationshipNote": "The authors describe live HRV feedback as a technique. Their procedure specifies resting HRV measurements before and after practice. They leave the participant’s access to a live display during the exercise unclear."
       },
-      "citationCount": null
+      "citationCount": null,
+      "studyDesignAssessment": {
+        "category": "peer-reviewed-study",
+        "peerReviewed": true,
+        "basis": "The publication is a peer-reviewed journal study or review. A qualifying randomised comparison was not verified in the assessed source.",
+        "sources": [
+          "https://doi.org/10.3390/ijerph22040515"
+        ]
+      },
+      "paperTrustAssessment": {
+        "score": 1,
+        "scope": "Paper",
+        "status": "assessed",
+        "randomizedControlledTrial": null,
+        "blinding": "not-confirmed",
+        "peerReviewed": true,
+        "basis": "The publication is a peer-reviewed journal study or review. A qualifying randomised comparison was not verified in the assessed source.",
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/40283741/",
+          "https://doi.org/10.3390/ijerph22040515"
+        ],
+        "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
+        "assessedAt": "2026-11-05",
+        "displayCrosses": 1
+      }
     },
     {
       "id": "lab-f825944bbd00ce",
@@ -3584,7 +5037,30 @@
         "measurement": "Heart rate / heartbeat",
         "relationshipNote": "The system shared heart rate between speakers and audience members. The comparison used fabricated or absent signals."
       },
-      "citationCount": null
+      "citationCount": null,
+      "studyDesignAssessment": {
+        "category": "unverified-publication-status",
+        "peerReviewed": false,
+        "basis": "No qualifying paper-level evidence for a cross was verified under the library criteria.",
+        "sources": [
+          "https://www.microsoft.com/en-us/research/publication/feeling-the-beat-enhancing-empathy-and-engagement-during-public-speaking-through-heart-rate-sharing/"
+        ]
+      },
+      "paperTrustAssessment": {
+        "score": null,
+        "scope": "Paper",
+        "status": "unassessed",
+        "randomizedControlledTrial": null,
+        "blinding": "not-confirmed",
+        "peerReviewed": false,
+        "basis": "No qualifying paper-level evidence for a cross was verified under the library criteria.",
+        "sources": [
+          "https://www.microsoft.com/en-us/research/publication/feeling-the-beat-enhancing-empathy-and-engagement-during-public-speaking-through-heart-rate-sharing/"
+        ],
+        "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
+        "assessedAt": "2026-11-05",
+        "displayCrosses": 0
+      }
     }
   ]
 }

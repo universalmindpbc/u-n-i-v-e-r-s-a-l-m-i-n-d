@@ -27,13 +27,14 @@ export function biofeedbackSearch(query, filters={}, limit=5) {
   }).filter(item => item.score).sort((a,b) => b.score - a.score).slice(0,limit).map(item => item.record);
 }
 const measures = ['Heart-rate variability','Heart rate / heartbeat','EEG','Derived score','Proprietary score'];
-export const biofeedbackVersion = {version:'lab-biofeedback-20261105',publications:biofeedbackRecords.length};
+export const biofeedbackVersion = {version:'lab-biofeedback-20261105-ratings',publications:biofeedbackRecords.length};
 export function biofeedbackGuide(origin) {
   const signals = Object.fromEntries(measures.map(name => [name,biofeedbackRecords.filter(r => r.evidence.measurement.split(' · ').includes(name)).length]));
   return {title:topic.title, url:origin+'/lab/research.html#mindfulness-biofeedback', chapter:origin+'/informatics/research/?collection=language&chapter=2#topic-mindfulness-biofeedback',
     ...biofeedbackVersion, signals, basis:'Counts overlap. A live input changed what a participant saw, heard or felt. Nine derived indicators include two explicitly documented proprietary HeartMath coherence scores. Recording a signal only as an outcome does not count. The 63 works include 28 participant reports and three design reports with identifiable live signals, 18 reviews or frameworks, ten contextual or measurement reports, and four with unresolved implementation.',
     assessment:'The evidence supports further research. A 35-person multimodal VR comparison favoured real over replayed signals for presence and relaxation. A 60-person trial found no additional benefit from a live pulse display in VR self-compassion. Paired meditation participants reported empathy and social presence. The proposed collective Lab experience and inferred neurochemical proxies remain unvalidated by these studies.',
-    methods:'At least 15 randomised primary reports include contextual interventions. A psychiatrist masked to allocation assessed anxiety in the 188-person inpatient trial. The corpus-wide double-blind count remains undetermined.',
+    trustFactor:{score:topic.trustScore,scope:'Subchapter',counts:topic.trustAssessment.counts,basis:topic.paragraphs.at(-1)},
+    methods:'At least 17 randomised primary reports include contextual interventions. A psychiatrist masked to allocation assessed anxiety in the 188-person inpatient trial. The corpus-wide double-blind count remains undetermined.',
     healium:'Five distinct journal reports were checked. Three describe live EEG: AR mindfulness, a four-firefighter pilot, and a 100-person hospital staff study with alternating allocation. Two other reports compare outcomes before and after VR. Two of the five are in the 63. A live Apple Watch intervention is unverified in these five.',
     supplementarySources:['https://doi.org/10.15540/nr.5.2.57','https://doi.org/10.3389/frvir.2022.764745','https://doi.org/10.32474/SJPBS.2019.02.000150','https://www.jmir.org/2025/1/e68204/','https://pubmed.ncbi.nlm.nih.gov/28478782/','https://pubmed.ncbi.nlm.nih.gov/41310318/']};
 }
