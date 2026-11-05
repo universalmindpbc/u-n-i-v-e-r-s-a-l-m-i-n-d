@@ -1,0 +1,53 @@
+{
+  "candidate": "c72c4ff09",
+  "date": "2026-11-05T06:26:59.891Z",
+  "processAudioMuted": true,
+  "results": [
+    {
+      "width": 1440,
+      "height": 900,
+      "headline": "Adaptogen VIP Bar",
+      "cast": [
+        "vip-dj",
+        "vip-pour-1",
+        "vip-pour-2"
+      ],
+      "movingPerformers": 3,
+      "reducedMotion": false,
+      "drinks": [
+        "https://littlesaints.com/products/st-ember-1",
+        "https://littlesaints.com/products/negroni-spritz",
+        "https://threespiritdrinks.com/products/social-elixir",
+        "https://threespiritdrinks.com/products/livener",
+        "https://threespiritdrinks.com/products/nightcap",
+        "https://drinkhiyo.com/products/peach-mango",
+        "https://drinkhiyo.com/products/blackberry-lemon"
+      ],
+      "keyboardFocusRestored": true,
+      "errors": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "headline": "Adaptogen VIP Bar",
+      "cast": [
+        "vip-dj",
+        "vip-pour-1",
+        "vip-pour-2"
+      ],
+      "movingPerformers": 0,
+      "reducedMotion": true,
+      "drinks": [
+        "https://littlesaints.com/products/st-ember-1",
+        "https://littlesaints.com/products/negroni-spritz",
+        "https://threespiritdrinks.com/products/social-elixir",
+        "https://threespiritdrinks.com/products/livener",
+        "https://threespiritdrinks.com/products/nightcap",
+        "https://drinkhiyo.com/products/peach-mango",
+        "https://drinkhiyo.com/products/blackberry-lemon"
+      ],
+      "keyboardFocusRestored": true,
+      "errors": []
+    }
+  ]
+}

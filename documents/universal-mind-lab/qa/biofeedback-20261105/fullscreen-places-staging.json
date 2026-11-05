@@ -1,0 +1,51 @@
+{
+  "candidate": "3d63520c7",
+  "date": "2026-11-05T06:45:31.476Z",
+  "method": "Real staging routes, fullscreen state simulated; no native display mode or playback activated.",
+  "checks": [
+    {
+      "name": "desktop",
+      "entranceTV": false,
+      "home": true,
+      "retainedOwner": true,
+      "backForward": true
+    },
+    {
+      "name": "phone",
+      "entranceTV": false,
+      "home": true,
+      "retainedOwner": true,
+      "backForward": true
+    },
+    {
+      "name": "windowed",
+      "entranceTV": false,
+      "home": true,
+      "retainedOwner": false,
+      "backForward": false
+    },
+    {
+      "phonePlaces": [
+        "truck",
+        "main",
+        "food",
+        "play",
+        "river",
+        "support",
+        "fashion",
+        "portal",
+        "bar",
+        "tea",
+        "vip"
+      ],
+      "retainedFestivalPlace": "vip",
+      "festivalTV": true
+    },
+    {
+      "nestedShellHome": true,
+      "nestedShellHistoryBack": true,
+      "ownerRetained": true,
+      "physicalFullscreen": false
+    }
+  ]
+}

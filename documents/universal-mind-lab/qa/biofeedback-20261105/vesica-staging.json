@@ -1,0 +1,87 @@
+{
+  "candidate": "2123b4aa1",
+  "date": "2026-11-05T06:41:09.745Z",
+  "processAudioMuted": true,
+  "results": [
+    {
+      "width": 1440,
+      "height": 900,
+      "headline": "Adaptogen VIP Bar",
+      "cast": [
+        "vip-dj",
+        "vip-pour-1",
+        "vip-pour-2"
+      ],
+      "movingPerformers": 3,
+      "localCastPositions": {
+        "vip-pour-1": 1.2999999999999998,
+        "vip-pour-2": 2.64,
+        "vip-dj": -2.34,
+        "D1": -2.84,
+        "river-arena": -1.67
+      },
+      "planCircleGeometry": [
+        {
+          "x": 639,
+          "r": 19
+        },
+        {
+          "x": 658,
+          "r": 19
+        }
+      ],
+      "reducedMotion": false,
+      "drinks": [
+        "https://littlesaints.com/products/st-ember-1",
+        "https://littlesaints.com/products/negroni-spritz",
+        "https://threespiritdrinks.com/products/social-elixir",
+        "https://threespiritdrinks.com/products/livener",
+        "https://threespiritdrinks.com/products/nightcap",
+        "https://drinkhiyo.com/products/peach-mango",
+        "https://drinkhiyo.com/products/blackberry-lemon"
+      ],
+      "keyboardFocusRestored": true,
+      "errors": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "headline": "Adaptogen VIP Bar",
+      "cast": [
+        "vip-dj",
+        "vip-pour-1",
+        "vip-pour-2"
+      ],
+      "movingPerformers": 0,
+      "localCastPositions": {
+        "vip-pour-1": 1.2999999999999998,
+        "vip-pour-2": 2.64,
+        "D1": -2.84,
+        "vip-dj": -2.34,
+        "river-arena": -1.67
+      },
+      "planCircleGeometry": [
+        {
+          "x": 639,
+          "r": 19
+        },
+        {
+          "x": 658,
+          "r": 19
+        }
+      ],
+      "reducedMotion": true,
+      "drinks": [
+        "https://littlesaints.com/products/st-ember-1",
+        "https://littlesaints.com/products/negroni-spritz",
+        "https://threespiritdrinks.com/products/social-elixir",
+        "https://threespiritdrinks.com/products/livener",
+        "https://threespiritdrinks.com/products/nightcap",
+        "https://drinkhiyo.com/products/peach-mango",
+        "https://drinkhiyo.com/products/blackberry-lemon"
+      ],
+      "keyboardFocusRestored": true,
+      "errors": []
+    }
+  ]
+}
