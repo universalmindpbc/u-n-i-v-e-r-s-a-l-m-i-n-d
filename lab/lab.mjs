@@ -1,4 +1,4 @@
-import {createHospitality,venueLocations} from './hospitality.mjs?v=20261105grounds1';
+import {createHospitality,venueLocations} from './hospitality.mjs?v=20261105wordmark1';
 import {sunsetLevels,levelHeight,createSunsetSky} from './elevation.mjs?v=20261105grounds1';
 import {createGroundWalkers,createSeatedVisitors,createShowRunway} from './visitor-groups.mjs?v=20261105activity3';
 import { createPortal } from './portal.mjs?v=20261105activity3';
@@ -621,7 +621,7 @@ async function buildWorld() {
     river:{pos:[32,5,23],target:[23,1.7,10]},
     checking:{pos:[-38.5,4.6,1.3],target:[-42,1.12,-10]},
     'first-aid':{pos:[-17.3,5.8,-19.5],target:[-21.8,1.18,-31]},
-    elevation:{pos:[33,14,57],target:[19,7.3,35]},
+    elevation:{pos:[13,15,62],target:[19,7.5,35]},
     support:{pos:[-25,7,-12],target:[-33.7,1.1,-23.2]},
     fashion:{pos:[2.4,2.1,40.8],target:[0,1,30]}
   };

@@ -1,4 +1,4 @@
-import {buildVipBar} from './vip-bar.mjs?v=20261105floor1';
+import {buildVipBar} from './vip-bar.mjs?v=20261105wordmark1';
 import {mergeGeometries} from './vendor/BufferGeometryUtils.js';
 import {loadCastMember} from './festival-cast.mjs?v=20261105activity3';
 
@@ -29,11 +29,11 @@ export function createHospitality(THREE,requestFrame){
     }
     function box(mat,x,y,z,w,h,d,rz=0){add(new THREE.BoxGeometry(1,1,1),mat,x,y,z,w,h,d,0,0,rz);}
     function cylinder(mat,x,y,z,rt,rb,h,n=16){add(new THREE.CylinderGeometry(rt,rb,h,n),mat,x,y,z);}
-    function sign(text,width,height,x,y,z,background='#213f39',foreground='#fff4d8'){
+    function sign(text,width,height,x,y,z,background='#213f39',foreground='#fff4d8',typeface){
       const canvas=document.createElement('canvas');canvas.width=1024;canvas.height=144;
-      const ctx=canvas.getContext('2d');ctx.fillStyle=background;ctx.fillRect(0,0,1024,144);ctx.fillStyle=foreground;ctx.font='500 83px Arial';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(text,512,75,980);
+      const ctx=canvas.getContext('2d');ctx.fillStyle=background;ctx.fillRect(0,0,1024,144);ctx.fillStyle=foreground;ctx.font=typeface?.font??'500 83px Arial';if(typeface)ctx.letterSpacing=typeface.spacing;ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(text,512,75,980);
       const map=new THREE.CanvasTexture(canvas);map.colorSpace=THREE.SRGBColorSpace;
-      const m=new THREE.Mesh(new THREE.PlaneGeometry(width,height),new THREE.MeshBasicMaterial({map}));m.position.set(x,y,z);node.add(m);
+      const m=new THREE.Mesh(new THREE.PlaneGeometry(width,height),new THREE.MeshBasicMaterial({map}));m.position.set(x,y,z);node.add(m);return m;
     }
     function finish(){
       for(const [mat,geometries] of batches){const merged=mergeGeometries(geometries);const m=new THREE.Mesh(merged,mat);m.castShadow=true;m.receiveShadow=true;node.add(m);geometries.forEach(g=>g.dispose());}

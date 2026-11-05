@@ -97,7 +97,18 @@ export function buildVipBar(THREE, venue, make, requestFrame) {
     cylinder(chrome,x,2.76,-2.65,.023,.023,.51);add(new THREE.SphereGeometry(.13,16,12),light,x,2.46,-2.65);
   }
   for(const x of [right-1.70,right+1.70])cylinder(chrome,x,1.59,-2.65,.030,.042,2.86);
-  sign('Adaptogen Cocktail Bar',3.48,.48,right,2.84,-2.60,'#141414','#ffffff');
+  // Match the Russian landing-page heading, including its lowercase serif treatment.
+  const banner=sign('джеймс бондаж',3.48,.48,right,2.84,-2.60,'#141414','#ffffff',
+    {font:'400 121px "Times New Roman", Times, serif',spacing:'-5px'});
+  banner.name='Джеймс Бондаж';
+  const shimmer={value:0};
+  banner.material.onBeforeCompile=shader=>{
+    shader.uniforms.bannerTime=shimmer;
+    shader.fragmentShader='uniform float bannerTime;\n'+shader.fragmentShader;
+    shader.fragmentShader=shader.fragmentShader.replace('#include <map_fragment>',`#include <map_fragment>
+      float glint = 1.0 - smoothstep(0.0, 0.15, abs(vMapUv.x - (fract(bannerTime*0.12)*1.55-0.28)));
+      diffuseColor.rgb += glint*vec3(0.065,0.070,0.083);`);
+  };
 
   // A round podium, twin turntables and a mixer face into the left dance floor.
   const djX=left-.59,djZ=-1.82;
@@ -173,7 +184,7 @@ export function buildVipBar(THREE, venue, make, requestFrame) {
   function update(camera,time,moving){
     const t=moving?time:0;
     const crowdChanged=updateDancers(camera,t,moving);
-    effects.update(t,moving);
+    effects.update(t,moving);shimmer.value=t;
     if(Math.hypot(camera.position.x-node.position.x,camera.position.z-node.position.z)>34)return crowdChanged;
     if(!started){
       started=true;person('vip-pour-1',counterX-.67,.17,-.45,1.1);person('vip-pour-2',counterX+.67,.17,-.45,2.55);
