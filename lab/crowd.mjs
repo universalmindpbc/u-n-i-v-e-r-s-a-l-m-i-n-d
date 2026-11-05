@@ -1,4 +1,4 @@
-import {createDistanceCast} from './festival-cast.mjs?v=20261105activity2';
+import {createDistanceCast} from './festival-cast.mjs?v=20261105activity3';
 /** Deterministic, fictional people for the Universal Mind spatial concept. Metres; ground Y=0. */
 export function createCrowd(THREE, requestFrame, activityFloorHeight) {
   const visitors=new THREE.Group(),builders=new THREE.Group();

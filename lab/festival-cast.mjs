@@ -13,10 +13,10 @@ function pump() {
   }
 }
 // Refresh every previously cached form of the adjusted jersey, including the baked cast.
-const refitted=new Set(['05','09','D1','D2','D3','crowd','walkers','workshops']);
+const refitted=new Set(['05','09','D1','D2','D3','phone-09','crowd','walkers','workshops']);
 export function loadCastMember(id) {
   const url = new URL('./assets/festival/' + encodeURIComponent(id) + '.glb', import.meta.url).href;
-  const versioned=refitted.has(id)?url+'?v=20261105activity2':url;
+  const versioned=refitted.has(id)?url+'?v=20261105activity3':url;
   return new Promise((resolve, reject) => { waiting.push({url:versioned, resolve, reject}); pump(); });
 }
 

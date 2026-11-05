@@ -1,4 +1,4 @@
-import {loadCastMember} from './festival-cast.mjs?v=20261105activity2';
+import {loadCastMember} from './festival-cast.mjs?v=20261105activity3';
 /** Shared wellbeing and music-making activities; fictional scene figures. */
 export function createActivities(THREE, architecture, requestFrame) {
   const group=new THREE.Group();group.name='Support, play and collaborative music';

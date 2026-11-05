@@ -1,4 +1,4 @@
-import {loadCastMember} from './festival-cast.mjs?v=20261105activity2';
+import {loadCastMember} from './festival-cast.mjs?v=20261105activity3';
 
 // Workshop rooms reuse the same geometry, material and request for every look.
 const libraries = new Map();

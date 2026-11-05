@@ -83,7 +83,7 @@ try{
       if(!name.endsWith('.mjs')&&!name.endsWith('.glb')&&name!=='index.html')return route.continue();
       const res=await route.fetch();assert.equal(res.status(),200,name);
       const raw=await res.body();
-      if(name==='index.html')assert(raw.includes(Buffer.from('./lab.mjs?v=20261105activity2')));
+      if(name==='index.html')assert(raw.includes(Buffer.from('./lab.mjs?v=20261105activity3')));
       else assert(raw.equals(body),name);
       body=raw;
     }

@@ -32,10 +32,10 @@ const classicTee:Build=(g,s)=>{
   return shellPart(g,{
     covers:v=>{
       const collar=(v.ax/(.40*shoulder))**2+((1.02-v.tt)/(.08))**2<1;
-      return !collar&&((isUpper(v)&&v.tt>.065)||(v.region===REGION.upperarm&&v.t<.49));
+      return !collar&&((isUpper(v)&&v.tt>.065)||(v.region===REGION.upperarm&&v.t<.58));
     },
-    offset:v=>cm(v.region===REGION.upperarm?1.15:.88),tile:.25,relax:3
-  },cloth(g,'Classic crew tee',s,{roughness:.91}));
+    offset:v=>cm(v.region===REGION.upperarm?.65:.88),tile:.25,relax:3
+  },mat('Classic crew tee',null,{color:s.color,roughness:.94}));
 };
 register('classic-crew','top',classicTee);
 register('star-tee','top',emblemTop(classicTee,'#2448a4'));
