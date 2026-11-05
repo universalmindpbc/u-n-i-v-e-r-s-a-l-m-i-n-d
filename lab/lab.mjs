@@ -111,11 +111,16 @@ mobileList.addEventListener('click',event=>{
   mobilePlaces.open=false;
   if(!storyState?.navigation)story.start(31);
   selectPlace(item.dataset.mobilePlace);
-  $('place-close').focus({preventScroll:true});
+  const nextFocus=item.dataset.mobilePlace==='fashion'&&mode==='3d'
+    ? $('runway-shows').querySelector('[aria-pressed="true"]') : $('place-close');
+  nextFocus.focus({preventScroll:true});
 });
-mobilePlaces.addEventListener('toggle',()=>{if(mobilePlaces.open){
-  for(const item of mobileList.children)item.setAttribute('aria-pressed',String(item.dataset.mobilePlace===selected));
-}});
+mobilePlaces.addEventListener('toggle',()=>{
+  sceneAPI?.setVisible(!mobilePlaces.open&&entered&&mode==='3d');
+  if(mobilePlaces.open){
+    for(const item of mobileList.children)item.setAttribute('aria-pressed',String(item.dataset.mobilePlace===selected));
+  }
+});
 document.addEventListener('pointerdown',event=>{if(mobilePlaces.open&&!mobilePlaces.contains(event.target))mobilePlaces.open=false;});
 mobilePlaces.addEventListener('keydown',event=>{if(event.key==='Escape'){mobilePlaces.open=false;mobilePlaces.querySelector('summary').focus();}});
 $('arena-bar').addEventListener('click',()=>visitVenue('bar'));
