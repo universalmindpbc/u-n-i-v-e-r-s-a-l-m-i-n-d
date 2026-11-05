@@ -27,6 +27,15 @@ for(const zone of portalZones)places['portal-'+zone.id]={number:'I AM PORTAL',ti
 let sceneAPI = null;
 let entered=false,buildStage='site',rain=false,layoutVisible=false,tourTimer=0,storyState=null;
 let autoTourCancelled=false,lastAutoView=null,lineupOverride=null;
+const footline=document.querySelector('.footline');
+const landscapeFooter=footline.parentElement;
+const landingFooter=document.querySelector('.landing-footer');
+function placeFooter(){
+  const parent=mobile()&&!entered?landingFooter:landscapeFooter;
+  if(footline.parentElement!==parent)parent.append(footline);
+}
+placeFooter();
+compactLayout.addEventListener('change',placeFooter);
 const story=createStory(applyStory);
 $('world').inert=true;$('world').setAttribute('aria-hidden','true');
 const media = initMedia(state => sceneAPI?.setMusicMotion(state));
@@ -130,7 +139,7 @@ async function changeFullscreen(enterOnly=false){
 }
 fullscreenButton.addEventListener('click',()=>changeFullscreen());
 function launchFestival(){
-  if(entered)return;entered=true;document.body.dataset.entered='true';
+  if(entered)return;entered=true;placeFooter();document.body.dataset.entered='true';
   $('landing').hidden=true;$('world').inert=false;$('world').removeAttribute('aria-hidden');
   sceneAPI?.setVisible(mode==='3d');media.start();changeFullscreen(true);if(document.body.dataset.ready)startStory();$('scene').focus({preventScroll:true});
 }
