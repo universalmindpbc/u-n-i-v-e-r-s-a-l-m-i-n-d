@@ -1,6 +1,7 @@
+import {characterClip} from './character-motion.mjs?v=20261105movement1';
 import {GLTFLoader} from './vendor/GLTFLoader.js';
 
-import {loadCastMember} from './festival-cast.mjs?v=20261105cast1';
+import {loadCastMember} from './festival-cast.mjs?v=20261105movement1';
 
 /** Nine lookbook participants and the existing research facilitator. */
 export function createEMDRPeople(THREE,parent,layout,requestFrame){
@@ -31,12 +32,12 @@ export function createEMDRPeople(THREE,parent,layout,requestFrame){
    const [x,z,pose]=i<9?layout[i]:[-.3,-2.1,'stand'];
    model.position.set(x,0,z);model.rotation.y=i===9?.1:Math.atan2(-x,.1-z)+(i%3-1)*.12;
    model.userData={role:i===9?'facilitator':'participant',pose,heldDevice:false,headset:i<6};group.add(model);
-   const mixer=new THREE.AnimationMixer(model);gltf.animations.forEach(clip=>mixer.clipAction(clip).play());mixer.setTime(i*.63);mixers.push({mixer,phase:i*.63});
+   const mixer=new THREE.AnimationMixer(model);gltf.animations.forEach(clip=>mixer.clipAction(characterClip(THREE,clip,i===9?'lead':'listen',i)).play());mixer.setTime(i*.63);mixers.push({mixer,phase:i*.63});
    data.loaded++;dirty=true;
   }catch(e){data.errors.push({participant:i+1,message:String(e.message||e)});dirty=true;}
  }
  async function start(){if(started)return;started=true;data.status='loading';let next=0;
   await Promise.all([0,1].map(async()=>{while(next<10)await loadOne(next++);}));data.status=data.errors.length?'error':'ready';dirty=true;requestFrame();
  }
- return {group,start,update(time,moving){const changed=dirty;dirty=false;if(moving){for(const {mixer,phase}of mixers)mixer.setTime(time*.65+phase);lastTime=time;return mixers.length>0;}if(lastTime===null){for(const {mixer,phase}of mixers)mixer.setTime(phase);lastTime=time;}return changed;}};
+ return {group,start,update(time,moving){const changed=dirty;dirty=false;const stamp=Math.floor(time*20);if(moving&&lastTime!==stamp){for(const {mixer,phase}of mixers)mixer.setTime(time*(.85+.14*Math.sin(phase))+phase);lastTime=stamp;return mixers.length>0||changed;}return changed;}};
 }

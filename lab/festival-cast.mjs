@@ -1,3 +1,4 @@
+import {characterClip} from './character-motion.mjs?v=20261105movement1';
 import {GLTFLoader} from './vendor/GLTFLoader.js';
 
 // One model per person. Small batches keep texture decoding off the critical path.
@@ -13,7 +14,8 @@ function pump() {
 }
 export function loadCastMember(id) {
   const url = new URL('./assets/festival/' + encodeURIComponent(id) + '.glb', import.meta.url).href;
-  return new Promise((resolve, reject) => { waiting.push({url, resolve, reject}); pump(); });
+  const versioned=id==='crowd'?url+'?v=20261105movement1':url;
+  return new Promise((resolve, reject) => { waiting.push({url:versioned, resolve, reject}); pump(); });
 }
 
 // Positions in metres on the pavilion deck, riverbank, food lawn and Portal approach.
@@ -71,7 +73,8 @@ export function createFestivalCast(THREE, requestFrame) {
   const roster=guests.map(([id,area,x,y,z,yaw],index)=>{
     const anchor=new THREE.Group();
     anchor.name=id;anchor.position.set(x,y,z);anchor.rotation.y=yaw;group.add(anchor);
-    return {id,area,anchor,index,status:'waiting',phase:index*.47,mixer:null,time:null};
+    const bounds=new THREE.Sphere(new THREE.Vector3(x,y+1,z),1.45);
+    return {id,area,anchor,index,bounds,status:'waiting',phase:index*.47,mixer:null,time:null};
   });
   group.visible=false;
   async function load(guest) {
@@ -82,7 +85,7 @@ export function createFestivalCast(THREE, requestFrame) {
       for (const child of asset.scene.children) child.traverse(o=>{if(o.isSkinnedMesh)o.frustumCulled=false;});
 
       guest.mixer=new THREE.AnimationMixer(asset.scene);
-      for (const clip of asset.animations)guest.mixer.clipAction(clip).play();
+      for (const clip of asset.animations)guest.mixer.clipAction(characterClip(THREE,clip,guest.area==='main'?'dance':'talk',guest.index)).play();
       guest.mixer.setTime(guest.phase);
       attachServiceKit(THREE,asset.scene,guest.id);guest.anchor.add(asset.scene);
       guest.status='ready';
@@ -94,17 +97,18 @@ export function createFestivalCast(THREE, requestFrame) {
   let programme=0;
   return {group,
     setStory(state){programme=state.programme;group.visible=programme>0;},
-    update(camera,time,moving){
+    update(camera,time,moving,frustum){
       if (!group.visible) return false;
       let changed=false;
       for (const guest of roster) {
         const distance=guest.anchor.position.distanceToSquared(camera.position);
-        const visible=programme>guest.index*.028 && distance<75*75;
+        const visible=programme>guest.index*.028 && distance<60*60 && frustum.intersectsSphere(guest.bounds);
         guest.anchor.visible=visible;
         if (!visible) continue;
-        if (guest.status==='waiting'&&distance<65*65)load(guest);
-        if (guest.mixer&&moving&&distance<42*42&&guest.time!==time) {
-          guest.mixer.setTime(time+guest.phase);guest.time=time;changed=true;
+        if (guest.status==='waiting'&&distance<50*50)load(guest);
+        const stamp=Math.floor(time*(distance<28*28?24:12));
+        if (guest.mixer&&moving&&guest.time!==stamp) {
+          guest.mixer.setTime(time+guest.phase);guest.time=stamp;changed=true;
         }
       }
       return changed;
@@ -118,20 +122,6 @@ export function createDistanceCast(THREE, people, fallback, parent, requestFrame
   const batches=[], group=new THREE.Group();group.name='Lookbook crowd';parent.add(group);
   let status='waiting', progress=0, previous=-1;
   const transform=new THREE.Object3D(), proxy={morphTargetInfluences:[0,0,0]};
-  function applyCounts() {
-    for (const {mesh,guests} of batches) mesh.count=Math.floor(progress*guests.length);
-  }
-  function pose(time) {
-    for (const {mesh,guests} of batches) {
-      for (let i=0;i<mesh.count;i++) {
-        const p=guests[i], cycle=(time*(.36+.025*(p.index%5))+p.phase)%4;
-        const start=Math.floor(cycle),fraction=cycle-start;
-        for(let j=1;j<=3;j++) proxy.morphTargetInfluences[j-1]=(start===j?1-fraction:0)+((start+1)%4===j?fraction:0);
-        mesh.setMorphAt(i,proxy);
-      }
-      if(mesh.morphTexture)mesh.morphTexture.needsUpdate=true;
-    }
-  }
   async function load() {
     status='loading';
     try {
@@ -144,24 +134,47 @@ export function createDistanceCast(THREE, people, fallback, parent, requestFrame
         const g=look.geometry;g.computeVertexNormals();
         const mesh=new THREE.InstancedMesh(g,material,guests.length);
         mesh.name='Festival crowd '+look.userData.look;
-        for(const [i,p] of guests.entries()){
+        const members=guests.map((p,i)=>{
           transform.position.set(p.x,p.index<56?.085:-.08,p.z);
           transform.rotation.y=p.yaw;transform.scale.set(p.scale*(.95+.016*(p.index%6)),p.scale,p.scale);
           transform.updateMatrix();mesh.setMatrixAt(i,transform.matrix);
           // Allocate for every slot before the story starts revealing visitors.
           mesh.setMorphAt(i,proxy);
-        }
-        mesh.computeBoundingSphere();mesh.receiveShadow=true;group.add(mesh);batches.push({mesh,guests});
+          return {person:p,matrix:transform.matrix.clone(),bounds:new THREE.Sphere(new THREE.Vector3(p.x,1,p.z),1.4)};
+        });
+        mesh.computeBoundingSphere();mesh.count=0;mesh.receiveShadow=true;group.add(mesh);batches.push({mesh,members,slots:[]});
       });
-      status='ready';fallback.visible=false;applyCounts();pose(0);requestFrame();
+      status='ready';fallback.visible=false;requestFrame();
     } catch(error) {status='error';console.error('Loading lookbook crowd',error);}
   }
   return {
-    setProgramme(value) {if(value===progress)return;progress=value;applyCounts();previous=-1;if(value>0&&status==='waiting')load();},
-    update(time,moving) {
-      if(status!=='ready'||!progress)return;
-      const stamp=moving?Math.floor(time*12):0;
-      if(stamp!==previous){pose(stamp/12);previous=stamp;}
+    setProgramme(value) {progress=value;if(value>0&&status==='waiting')load();},
+    update(time,moving,frustum) {
+      if(status!=='ready')return;
+      const tick=moving?Math.floor(time*16):Math.max(0,previous);
+      for(const {mesh,members,slots} of batches){
+        const limit=Math.floor(progress*members.length);
+        let count=0,matricesChanged=false,posesChanged=false;
+        for(let i=0;i<limit;i++){
+          const member=members[i];
+          if(!frustum.intersectsSphere(member.bounds))continue;
+          const moved=slots[count]!==member;
+          if(moved){slots[count]=member;mesh.setMatrixAt(count,member.matrix);matricesChanged=true;}
+          if(moved||tick!==previous){
+            const p=member.person,rate=(p.index<56?2.7:1.05)+.065*(p.index%5);
+            const cycle=(tick/16*rate+p.phase)%4,base=Math.floor(cycle),fraction=cycle-base;
+            const weights=proxy.morphTargetInfluences;weights.fill(0);
+            if(base)weights[base-1]=1-fraction;
+            if(base<3)weights[base]=fraction;
+            mesh.setMorphAt(count,proxy);posesChanged=true;
+          }
+          count++;
+        }
+        mesh.count=count;mesh.visible=count>0;
+        if(matricesChanged)mesh.instanceMatrix.needsUpdate=true;
+        if(posesChanged)mesh.morphTexture.needsUpdate=true;
+      }
+      previous=tick;
     }
   };
 }

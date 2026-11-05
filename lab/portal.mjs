@@ -1,6 +1,6 @@
 import {solids,portalZones,portalPlacement,placedVertices} from './portal-geometry.mjs?v=20261104emdr1';
 import {createFurnishings} from './furnishings.mjs';
-import {createPortalInteriors} from './portal-interiors.mjs?v=20261105cast1';
+import {createPortalInteriors} from './portal-interiors.mjs?v=20261105movement1';
 
 /** Seven small workshop marquees. Undistorted polyhedral envelopes meet the grass plane.
  * Ground intersections are concept studies, not foundation or fabrication details.
@@ -58,13 +58,28 @@ export function createPortal(THREE, requestFrame){
   const interior=interiors.makeInterior(config,zones.length);zone.add(interior);
   sign(config.label,zone,3.5);
   const light=new THREE.PointLight(config.colour,0,11,2);light.position.set(0,2.6,0);zone.add(light);
-  zone.userData={zone:config.id,shape:config.shape,participants:9,facilitators:1,capacity:10,regular:true,uniformScale:config.radius,groundIntersection:Math.min(...vertices.map(v=>v.y))<-.01};zones.push({group:zone,interior,light,config});
+  zone.userData={zone:config.id,shape:config.shape,participants:9,facilitators:1,capacity:10,regular:true,uniformScale:config.radius,groundIntersection:Math.min(...vertices.map(v=>v.y))<-.01};zones.push({group:zone,interior,light,config,closeCast:interior.getObjectByName('EMDR character fidelity study')});
  }
- const eye=new THREE.Vector3();
+ const roomBounds=new THREE.Sphere(new THREE.Vector3(),4.8);
  return {group:root,zones,stats:{zones:7,participants:63,facilitators:7,capacity:70},
   setStory(state){root.visible=state.seconds>=24;zones.forEach(({group,interior},i)=>{group.visible=state.seconds>=24+i*.8;interior.visible=state.programme>0;});},
   setNight(value){zones.forEach(({light})=>light.intensity=Number(value)*22);flower.material.color.set('#ffffff');flower.material.opacity=.84+Number(value)*.12;},
-  update(time,moving,camera){if(!root.visible)return false;let changed=false;for(const {interior} of zones){if(!interior.visible||!interior.userData.startCharacters)continue;interior.getWorldPosition(eye);if(camera.position.distanceToSquared(eye)>65*65)continue;interior.userData.startCharacters();if(interior.userData.animateCharacters?.(time,moving))changed=true;}return changed;},
+  update(time,moving,camera,frustum){
+    if(!root.visible)return false;
+    let changed=false;
+    for(const {group,interior,config,closeCast} of zones){
+      if(!group.visible||!interior.visible)continue;
+      interior.getWorldPosition(roomBounds.center);roomBounds.center.y+=1;
+      const nearby=camera.position.distanceToSquared(roomBounds.center)<(config.id==='emdr'?38**2:65**2);
+      const show=nearby&&frustum.intersectsSphere(roomBounds);
+      // Skinned meshes need room-level culling because their bounds move with the rig.
+      if(closeCast)closeCast.visible=show;
+      if(!show)continue;
+      interior.userData.startCharacters();
+      if(interior.userData.animateCharacters(time,moving))changed=true;
+    }
+    return changed;
+  },
   camera(id){const zone=zones.find(z=>z.config.id===id);if(!zone)return {pos:[root.position.x+23,19,root.position.z+29],target:[root.position.x,1.9,root.position.z]};const x=root.position.x+zone.group.position.x,z=root.position.z+zone.group.position.z;return {pos:[x+.8,2.8,z+8.5],target:[x,1.25,z]};}
  };
 }

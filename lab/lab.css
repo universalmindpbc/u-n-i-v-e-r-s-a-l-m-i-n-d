@@ -377,7 +377,7 @@ body[data-night="true"] .intro h1,body[data-night="true"] .artist-lineup{color:#
   .landing-footer::before{content:"";position:absolute;z-index:-1;inset:-32px -100vw -40px;background:linear-gradient(transparent,#000d 35%);pointer-events:none}
   .landing-footer .footline{color:#f0f3eb}
 }
-#about-lineup{display:none}
+
 .about-research{border-top:1px solid #c5cfbf;padding-top:10px;margin-top:20px}
 .about-research a{display:inline-flex;align-items:center;gap:6px;min-height:44px;color:#29443b;font-size:13px;line-height:1.45;text-decoration:underline;text-underline-offset:4px}
 .about-research .ui-icon{flex:none}
@@ -390,16 +390,6 @@ body[data-night="true"] .intro h1,body[data-night="true"] .artist-lineup{color:#
   .impact-list{grid-template-columns:1fr;gap:14px}
 }
 @media(max-width:800px),(max-width:1000px) and (pointer:coarse){
-  #about-lineup{display:block;margin:14px 0}
-  #about-lineup summary{display:inline-flex;align-items:center;justify-content:space-between;gap:12px;min-height:44px;padding:8px 14px;border:1px solid #64766a55;border-radius:22px;color:#29443b;font-size:13px;cursor:pointer;list-style:none}
-  #about-lineup summary::-webkit-details-marker{display:none}
-  #about-lineup summary:focus-visible{outline:2px solid #315a45;outline-offset:3px}
-  #about-lineup[open] summary .ui-icon{transform:rotate(180deg)}
-  .about-lineup-artists{padding:14px 0;border-bottom:1px solid #c5cfbf;color:#29443b}
-  .about-lineup-artists p{margin:0 0 14px;font-size:12px}
-  .about-lineup-artists .artist-marks{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 24px;max-width:360px;margin:0}
-  .about-lineup-artists .artist-mark{height:40px}
-  .about-lineup-artists .lineup-more{text-align:center;max-width:360px}
   .footline{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);align-items:center;gap:1px 10px;max-width:540px;margin-inline:auto}
   .footline .initiative-credit,.footline .proposal-status{grid-column:1/-1;justify-self:center;max-width:100%!important;text-align:center}
   .footline .initiative-credit{grid-row:1;font-size:11px;line-height:1.35;text-wrap:balance}
@@ -417,4 +407,40 @@ body[data-night="true"] .intro h1,body[data-night="true"] .artist-lineup{color:#
   .footline .initiative-credit,.footline .proposal-status{grid-column:2}
   .footline .impact-ticker,.footline .research-link{grid-row:1/3;border-top:0;margin:0}
   .footline .research-link{grid-column:3}
+}
+
+#runway-shows{display:none;position:absolute;z-index:8;left:42px;top:104px;gap:3px;padding:3px;border:1px solid #71817570;border-radius:26px;color:#253b32;background:#f4f4ebf5}
+#runway-shows button{background:transparent;color:inherit;border-radius:22px;padding:8px 15px;min-height:44px;font-size:12px}
+#runway-shows button[aria-pressed="true"]{background:#30483f;color:#fff}
+body[data-camera-view="fashion"][data-mode="3d"] #runway-shows{display:flex}
+body[data-camera-view="fashion"] .intro{visibility:hidden}
+@media(max-width:800px),(max-width:1000px) and (pointer:coarse){
+  #runway-shows{left:max(16px,env(safe-area-inset-left));top:auto;bottom:calc(var(--lab-footer-height,110px) + max(10px,env(safe-area-inset-bottom)) + 10px)}
+  body[data-camera-view="fashion"] .emotion-toggle{visibility:hidden}
+  body[data-camera-view="fashion"] .place-card{display:none}
+}
+
+  #about-lineup{display:block;margin:14px 0;scroll-margin-top:44px}
+  #about-lineup summary{display:inline-flex;align-items:center;justify-content:space-between;gap:12px;min-height:44px;padding:8px 14px;border:1px solid #64766a55;border-radius:22px;color:#29443b;font-size:13px;cursor:pointer;list-style:none}
+  #about-lineup summary::-webkit-details-marker{display:none}
+  #about-lineup summary:focus-visible{outline:2px solid #315a45;outline-offset:3px}
+  #about-lineup[open] summary .ui-icon{transform:rotate(180deg)}
+  .about-lineup-artists{padding:14px 0;border-bottom:1px solid #c5cfbf;color:#29443b}
+  .about-lineup-artists p{margin:0 0 14px;font-size:12px}
+  .about-lineup-artists .artist-marks{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 24px;max-width:360px;margin:0}
+  .about-lineup-artists .artist-mark{height:40px}
+
+
+#lineup-more-open{background:transparent;color:inherit;font:inherit;letter-spacing:inherit;min-height:36px;min-width:52px;pointer-events:auto;text-decoration:underline;text-underline-offset:3px}
+.phone-more{display:none}
+.lineup-programme{padding:14px 0;border-bottom:1px solid #c5cfbf}
+.lineup-programme h3{font-size:18px;font-weight:600;margin:0}
+#lineup-order{font-size:12px;margin:1px 0 12px;color:#496054}
+.lineup-names{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:1.5rem;padding:0;margin:0}
+.lineup-names li{break-inside:avoid;font-size:14px;font-weight:500;line-height:1.8}
+.lineup-programme .programme-more{font-size:12px;margin:8px 0 0}
+@media(max-width:800px),(max-width:1000px) and (pointer:coarse){
+  #lineup-more-open{display:none}
+  .phone-more{display:inline}
+  .lineup-names{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:16px}
 }

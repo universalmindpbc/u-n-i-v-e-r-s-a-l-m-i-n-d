@@ -7,11 +7,15 @@ import * as THREE from 'three';
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
 import {MeshoptSimplifier} from 'meshoptimizer';
 
-const [standing, assets]=process.argv.slice(2);
+const [standing, assets, pack='crowd']=process.argv.slice(2);
 if(!standing||!assets)throw Error('Pass the standing-variant directory and the festival asset directory');
 await MeshoptSimplifier.ready;
 globalThis.ProgressEvent ??= class {};
-const ids=['01','02','03','04','05','06','07','08','09','A','B','C','D1','D2','D3','river-arena'];
+const runway=pack==='iris'||pack==='nagnata';
+const workshop=pack==='workshops';
+const walkers=pack==='walkers';
+const samples=runway||workshop||walkers?8:4;
+const ids=walkers?['01','04','06','09','A','D2']:runway?Array.from({length:8},(_,i)=>pack+'-'+i):workshop?['01','04','07','09','02','05','06','08','A','B','D3']:['01','02','03','04','05','06','07','08','09','A','B','C','D1','D2','D3','river-arena'];
 const gltf={asset:{version:'2.0',generator:'Universal Mind festival cast'},scene:0,scenes:[{nodes:[]}],nodes:[],meshes:[],accessors:[],bufferViews:[],buffers:[],materials:[{name:'Distance wardrobe',doubleSided:true,pbrMetallicRoughness:{metallicFactor:0,roughnessFactor:.88}}]};
 const chunks=[];let offset=0;
 function accessor(array,width,componentType,extra={}){
@@ -22,7 +26,8 @@ function accessor(array,width,componentType,extra={}){
 }
 const asLinear=v=>v<=.04045?v/12.92:((v+.055)/1.055)**2.4;
 for(const id of ids){
-  const data=await fs.readFile(path.join(/^\d+$/.test(id)?standing:assets,id+'.glb'));
+  const source=runway||walkers||(!workshop && /^\d+$/.test(id))?standing:assets;
+  const data=await fs.readFile(path.join(source,id+'.glb'));
   const len=data.readUInt32LE(12),json=JSON.parse(data.subarray(20,20+len)),bin=data.subarray(28+len);
   const maps=await Promise.all(json.images.map(img=>{
     const view=json.bufferViews[img.bufferView];return sharp(bin.subarray(view.byteOffset,view.byteOffset+view.byteLength)).resize(128,128,{fit:'fill'}).ensureAlpha().raw().toBuffer();
@@ -35,14 +40,21 @@ for(const id of ids){
   delete json.images;delete json.textures;delete json.samplers;
   json.buffers[0].uri='data:application/octet-stream;base64,'+bin.toString('base64');
   const asset=await new GLTFLoader().parseAsync(JSON.stringify(json),'');
-  const mixer=new THREE.AnimationMixer(asset.scene),clip=asset.animations[0];mixer.clipAction(clip).play();
-  const sequence=[0,.25,.50,.75].map(()=>[]),rgb=[],faces=[],p=new THREE.Vector3(),lo=[10,10,10],hi=[-10,-10,-10];
+  const mixer=new THREE.AnimationMixer(asset.scene);
+  let clip=asset.animations[0];
+  if(workshop||pack==='crowd'){
+    const {characterClip}=await import('./character-motion.mjs');
+    const action=workshop?(['A','B','D3'].includes(id)?'lead':'listen'):('AB'.includes(id)||id==='D3'?'talk':'dance');
+    clip=characterClip(THREE,clip,action,ids.indexOf(id));
+  }
+  mixer.clipAction(clip).play();
+  const sequence=Array.from({length:samples},()=>[]),rgb=[],faces=[],p=new THREE.Vector3(),lo=[10,10,10],hi=[-10,-10,-10];
   asset.scene.traverse(object=>{
     if(!object.isSkinnedMesh)return;
     const geom=object.geometry,mat=materials.get(object.material.name);
     if(!mat||/Skin details|Eyelashes|Eyebrows|laces|chest print|Silver/i.test(object.material.name))return;
     const original=Uint32Array.from(geom.index.array);
-    const target=Math.min(original.length,Math.max(30,Math.floor(original.length*.075/3)*3));
+    const target=Math.min(original.length,Math.max(30,Math.floor(original.length*(runway?.23:workshop?.12:.075)/3)*3));
     const [indices]=MeshoptSimplifier.simplify(original,geom.attributes.position.array,3,target,.013,['Sparse']);
     const ids=new Map(),start=rgb.length/3;
     function sample(i){
@@ -58,8 +70,8 @@ for(const id of ids){
         faces.push(ids.get(n));
       }
     }
-    for(let f=0;f<4;f++){
-      mixer.setTime(f*clip.duration/4);asset.scene.updateMatrixWorld(true);
+    for(let f=0;f<samples;f++){
+      mixer.setTime(f*clip.duration/samples);asset.scene.updateMatrixWorld(true);
       for(const n of ids.keys()){
         object.getVertexPosition(n,p);sequence[f].push(p.x,p.y,p.z);
         if(f===0)for(const [a,v] of [p.x,p.y,p.z].entries()){lo[a]=Math.min(lo[a],v);hi[a]=Math.max(hi[a],v);}
@@ -76,10 +88,10 @@ for(const id of ids){
   const colour=accessor(rgba,4,5121,{normalized:true});
   if(rgb.length/3>=65536)throw Error('Distance mesh index overflow');
   const indices=accessor(Uint16Array.from(faces),1,5123);
-  const mesh=gltf.meshes.push({name:'Look '+id,primitives:[{attributes:{POSITION:position,COLOR_0:colour},indices,targets,material:0}],weights:[0,0,0]})-1;
+  const mesh=gltf.meshes.push({name:'Look '+id,primitives:[{attributes:{POSITION:position,COLOR_0:colour},indices,targets,material:0}],weights:Array(samples-1).fill(0)})-1;
   gltf.scenes[0].nodes.push(gltf.nodes.push({name:'Look '+id,mesh,extras:{look:id}})-1);
 }
 gltf.buffers.push({byteLength:offset});const jsonBytes=Buffer.from(JSON.stringify(gltf));
 const header=Buffer.alloc(20),desc=Buffer.alloc((jsonBytes.length+3)&~3,32),bufHeader=Buffer.alloc(8),bytes=Buffer.concat(chunks,(offset+3)&~3);
 jsonBytes.copy(desc);header.write('glTF');header.writeUInt32LE(2,4);header.writeUInt32LE(28+desc.length+bytes.length,8);header.writeUInt32LE(desc.length,12);header.write('JSON',16);bufHeader.writeUInt32LE(bytes.length);bufHeader.write('BIN',4);
-await fs.writeFile(path.join(assets,'crowd.glb'),Buffer.concat([header,desc,bufHeader,bytes]));console.log(ids.length+' wardrobe meshes, '+Math.round(bytes.length/1024)+' KiB');
+await fs.writeFile(path.join(assets,pack+'.glb'),Buffer.concat([header,desc,bufHeader,bytes]));console.log(ids.length+' wardrobe meshes, '+Math.round(bytes.length/1024)+' KiB');

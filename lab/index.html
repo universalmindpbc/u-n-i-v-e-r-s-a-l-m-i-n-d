@@ -8,7 +8,7 @@
   <meta name="description" content="Universal Mind Lab — electronic music and fashion as mindfulness. A mental health initiative. Proposal.">
   <title>Universal Mind Lab</title>
   <link rel="icon" href="./assets/favicon.png">
-  <link rel="stylesheet" href="./lab.css?v=20261105lineup2">
+  <link rel="stylesheet" href="./lab.css?v=20261105movement1">
   <script>if(new URLSearchParams(location.search).get("launch")==="1")document.documentElement.dataset.autoLaunch="true";</script>
   <script type="importmap">{"imports":{"three":"./vendor/three.module.js"}}</script>
 </head>
@@ -62,7 +62,7 @@
         <span class="artist-mark artist-flume" role="img" aria-label="Flume"></span>
         <span class="artist-mark artist-sampa" role="img" aria-label="Sampa the Great"></span>
       </div>
-      <span class="lineup-more">+ more</span>
+      <span class="lineup-more"><span class="phone-more">+ more</span><button id="lineup-more-open" type="button" aria-haspopup="dialog" aria-controls="vision" aria-label="View full lineup">+ more</button></span>
     </section>
     <button id="emotion-toggle" class="emotion-toggle" aria-expanded="false" aria-controls="emotion-panel"><svg viewBox="0 0 52 28" aria-hidden="true"><path d="M1 15h10l5-9 7 20 8-24 6 13h14"/></svg><span>Change your emotions,<br><b>change your world.</b></span><span aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg></span></button>
     <aside id="emotion-panel" class="emotion-panel" hidden aria-labelledby="emotion-title">
@@ -93,7 +93,11 @@
     <div class="compass" aria-hidden="true"><span>N</span><svg viewBox="0 0 40 40"><path d="M20 4L25 27 20 23 15 27Z" fill="currentColor"/><circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-opacity=".2"/></svg></div>
     <aside id="place-card" class="place-card" hidden aria-labelledby="place-title"><button id="place-close" class="close" aria-label="Close place detail"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 6 12 12M6 18 18 6"/></svg></button><p id="place-number" class="eyebrow"></p><h2 id="place-title"></h2><p id="place-copy"></p><div id="portal-rooms" hidden aria-label="I Am Portal workshops"><button data-portal-room="portal" aria-pressed="true">All seven</button><button data-portal-room="portal-steam" aria-pressed="false">s . t . e . a . m .</button><button data-portal-room="portal-mantra" aria-pressed="false">m a n t r a</button><button data-portal-room="portal-sound" aria-pressed="false">s o u n d</button><button data-portal-room="portal-comedy" aria-pressed="false">c o m e d y</button><button data-portal-room="portal-sexed" aria-pressed="false">s e x - e d</button><button data-portal-room="portal-atelier" aria-pressed="false">a t e l i e r</button><button data-portal-room="portal-emdr" aria-pressed="false">e m d r</button></div><button id="interior-view" class="outline-button" hidden>Inside the pavilion <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg></button><button id="learn-main" class="learn-button" hidden aria-haspopup="dialog" aria-controls="learning">What you’ll learn <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></button></aside>
     <p id="media-status" role="status" hidden></p>
-    <div class="view-tools" aria-label="View options"><button id="tour-toggle" aria-pressed="false">Tour</button><button id="rain-toggle" aria-pressed="false">Rain shelter</button><button id="night-toggle" aria-pressed="false" aria-label="Switch to night"><span aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 0 16Z" fill="currentColor" stroke="none"/></svg></span> <span id="day-label">Day</span></button><button id="labels-toggle" aria-pressed="false"><span aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="6"/><path d="M12 2v6m0 8v6M2 12h6m8 0h6"/></svg></span> Labels</button><button id="lineup-toggle" aria-pressed="false" aria-controls="artist-lineup">Lineup</button><button id="reset-view" aria-label="Reset to overview"><span aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 10a8 8 0 1 1 1 7M4 4v6h6"/></svg></span> Reset</button></div>
+    <div id="runway-shows" role="group" aria-label="Proposed First Nations-led runway shows">
+      <button type="button" data-runway-show="iris" aria-pressed="true">Iris van Herpen</button>
+      <button type="button" data-runway-show="nagnata" aria-pressed="false">Nagnata</button>
+    </div>
+    <div class="view-tools" aria-label="View options"><button id="tour-toggle" aria-pressed="false">Tour</button><button id="rain-toggle" aria-pressed="false">Rain shelter</button><button id="night-toggle" aria-pressed="false" aria-label="Switch to night"><span aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 0 16Z" fill="currentColor" stroke="none"/></svg></span> <span id="day-label">Day</span></button><button id="labels-toggle" aria-pressed="false"><span aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="6"/><path d="M12 2v6m0 8v6M2 12h6m8 0h6"/></svg></span> Labels</button><button id="lineup-toggle" type="button" aria-haspopup="dialog" aria-controls="vision">Lineup</button><button id="reset-view" aria-label="Reset to overview"><span aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 10a8 8 0 1 1 1 7M4 4v6h6"/></svg></span> Reset</button></div>
     <footer class="explore-bar">
       <div class="explore-heading"><p class="membership">exclusive tickets via <a href="https://headspace.org.au/eora" target="_blank" rel="noopener noreferrer">headspace.org.au/eora <span aria-hidden="true"><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 18 18 6M6 6h12v12"/></svg></span></a></p><span id="navigation-hint">Drag to look around · scroll to move closer</span></div>
       <nav id="place-list" aria-label="Explore places">
@@ -119,6 +123,32 @@
     <details id="about-lineup">
       <summary>Lineup <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>
       <div class="about-lineup-artists"><p>Proposed artists</p></div>
+      <section class="lineup-programme" aria-labelledby="lineup-programme-title">
+        <h3 id="lineup-programme-title">DJs and Runway Shows</h3>
+        <p id="lineup-order">In alphabetical order</p>
+        <ul class="lineup-names" aria-labelledby="lineup-programme-title" aria-describedby="lineup-order">
+          <li>Anna Lunoe</li>
+          <li>Brian Eno</li>
+          <li>Damian Lazarus</li>
+          <li>FISHER</li>
+          <li>Fred again..</li>
+          <li>In This World</li>
+          <li>Iris van Herpen</li>
+          <li>Jamie xx</li>
+          <li>Luciano</li>
+          <li>Matthewdavid</li>
+          <li>Nagnata</li>
+          <li>Nastia</li>
+          <li>Nina Kraviz</li>
+          <li>Peggy Gou</li>
+          <li>Seth Troxler</li>
+          <li>Steve Aoki</li>
+          <li>Sven Väth</li>
+          <li>Tiga</li>
+          <li>Timmy Trumpet</li>
+        </ul>
+        <p class="programme-more">+ more</p>
+      </section>
     </details>
     <section class="proposal-opening" aria-labelledby="mindfulness-opening-title">
       <h3 id="mindfulness-opening-title">Electronic music and fashion as mindfulness</h3>
@@ -139,6 +169,10 @@
       <ol class="day-order"><li><small>01</small><b>Dining experience</b></li><li><small>02</small><b>Leisure</b></li><li><small>03</small><b>Workshops</b></li><li><small>04</small><b>Rave</b></li></ol>
       <p>A dining experience, leisure, STEAM workshops, then a concert with DJs, bands and artists, together as one.</p>
       <button id="learn-about" class="learn-button" aria-haspopup="dialog" aria-controls="learning">What you’ll learn <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></button>
+    </section>
+    <section class="portal-about-section"><h3>First Nations-led fashion runway</h3>
+      <p>We propose two shows in partnership with the Australian Indigenous Mentoring Experience (AIME). Iris van Herpen opens with sculptural dresses, followed by Nagnata movement wear. Billie-Jean Hamlet and Cindy Rostron inform the casting direction.</p>
+      <button type="button" id="watch-runway" disabled class="learn-button">Watch the runway <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></button>
     </section>
     <section class="portal-about-section"><h3>I Am Portal</h3><p>Seven geometric workshop spaces for education, intervention and interactivity, with ten people in each space.</p><button id="portal-about" class="learn-button">Explore I Am Portal <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></button></section>
     <p>Inspired by Life Be In It and the idea of taking health promotion on the road, Universal Mind brings a new focus: mental health. First and foremost for youth aged 16–24, then for all Australians, the Lab brings creativity, learning and support into the heart of local communities.</p>
@@ -178,6 +212,6 @@
   <noscript><style>#landing{display:none!important}#world{visibility:visible!important}#loading{display:none}#plan{display:flex!important}.plan-assembled{display:block!important}.explore-bar{visibility:visible!important}.view-tools,.media-tools,#about-open{display:none}</style><p class="noscript-note">The site plan is available without JavaScript. Enable JavaScript to explore in 3D.</p></noscript>
   <script src="./landing-rain.js?v=20261103mobile1" defer></script>
   <script src="./vendor/hls.min.js" defer></script>
-  <script type="module" src="./lab.mjs?v=20261105lineup2"></script>
+  <script type="module" src="./lab.mjs?v=20261105movement1"></script>
 </body>
 </html>

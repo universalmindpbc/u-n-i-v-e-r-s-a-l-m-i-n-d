@@ -1,4 +1,5 @@
-import {createEMDRPeople} from './emdr-people.mjs?v=20261105cast1';
+import {createVisitorGroup} from './visitor-groups.mjs?v=20261105movement1';
+import {createEMDRPeople} from './emdr-people.mjs?v=20261105movement1';
 /** Relaxed workshop groups, authored in metres. No participant-held devices. */
 export function createPortalInteriors(THREE,kit){
  const {Batch,V,box,sphere,tube,circle,peopleMaterial,chairMaterial,furnishings}=kit;
@@ -60,7 +61,7 @@ export function createPortalInteriors(THREE,kit){
    if(config.id!=='emdr'){const actor=person({pose,index:i+index*3,female,dress:config.id==='emdr'?false:dress,longHair,visor:config.id==='emdr'&&i<6});actor.position.set(x,0,z);actor.rotation.y=angle;actors.object(actor);}
    roster.push({pose,female,dress,longHair,hair:hairs[(i+index*3)%hairs.length],heldDevice:false});
   });
-  const leaderPosition=config.id==='comedy'?[0,0,-.95]:config.id==='sound'?[.7,0,-1.45]:config.id==='atelier'?[.6,0,.2]:[.35,0,-.6];
+  const leaderPosition=config.id==='comedy'?[0,0,-.95]:config.id==='sound'?[.7,0,-1.45]:config.id==='atelier'?[.55,0,-.84]:config.id==='steam'?[.3,0,-1.35]:[.35,0,-.6];
   const leader=person({pose:'stand',index:index+3,female:true,longHair:true,dress:config.id==='sexed'||config.id==='atelier',facilitator:true});leader.position.set(...leaderPosition);leader.rotation.y=config.id==='atelier'?-1.2:.1;actors.object(leader);
   // Small textile islands leave the coloured grass visible between relaxed groups.
   textile(seats,-.4,.35,1.25,.85,'#b29e8e',.17,false);cushion(seats,1,-.2,'#d9a6b7',.25,.09);
@@ -103,8 +104,21 @@ export function createPortalInteriors(THREE,kit){
    for(const x of [-.85,.85])tube(equipment,[x,.03,-2.05],[x,1.85,-2.05],.018,'#777b72');tube(equipment,[-.85,1.85,-2.05],[.85,1.85,-2.05],.018,'#777b72');
    for(let i=0;i<5;i++){const x=-.64+i*.32,c=clothes[i+1];tube(equipment,[x-.12,1.65,-2.05],[x,1.76,-2.05],.009,'#ddd4bf');tube(equipment,[x,1.76,-2.05],[x+.12,1.65,-2.05],.009,'#ddd4bf');box(equipment,[x,1.46,-2.05],[.23,.36,.07],c);skirt(equipment,[x,1.05,-2.05],.11,.19,.5,c);}
   }
-  seats.mesh(chairMaterial,group,'Mixed Tropicália seating, beanbags, cushions and textiles');if(config.id!=='emdr')actors.mesh(peopleMaterial,group,'Relaxed workshop participants and facilitator');equipment.mesh(peopleMaterial,group,'Activity-specific workshop equipment');
-  group.userData={participants:9,facilitators:1,heldPhones:0,table,roster,modularSynthesizer:config.id==='sound',dressForms:config.id==='atelier'?2:0};if(config.id==='emdr'){group.userData.roster=layout.map((row,i)=>({look:String(i+1).padStart(2,'0'),pose:row[2],heldDevice:false}));const people=createEMDRPeople(THREE,group,layout,kit.requestFrame);group.userData.characterStudy=people.group.userData;group.userData.startCharacters=people.start;group.userData.animateCharacters=people.update;}return group;
+  seats.mesh(chairMaterial,group,'Mixed Tropicália seating, beanbags, cushions and textiles');const fallback=config.id==='emdr'?null:actors.mesh(peopleMaterial,group,'Relaxed workshop participants and facilitator');equipment.mesh(peopleMaterial,group,'Activity-specific workshop equipment');
+  group.userData={participants:9,facilitators:1,heldPhones:0,table,roster,modularSynthesizer:config.id==='sound',dressForms:config.id==='atelier'?2:0};if(config.id==='emdr'){group.userData.roster=layout.map((row,i)=>({look:String(i+1).padStart(2,'0'),pose:row[2],heldDevice:false}));const people=createEMDRPeople(THREE,group,layout,kit.requestFrame);group.userData.characterStudy=people.group.userData;group.userData.startCharacters=people.start;group.userData.animateCharacters=people.update;}else{
+    const looks={chair:['01','04','07','09'],low:['01','04','07','09'],stand:['A','B','D3'],floor:['02','05','06','08'],bean:['02','05','06','08']};
+    const counts={chair:0,floor:0,stand:0};
+    const visitors=[...layout,[leaderPosition[0],leaderPosition[2],'stand']].map(([x,z,pose],i)=>{
+      const kind=pose==='low'?'chair':pose==='bean'?'floor':pose;
+      const options=looks[pose],choice=(counts[kind]+index)%options.length;
+      counts[kind]++;
+      const yaw=i===9?leader.rotation.y:Math.atan2(-x,.1-z)+(i%3-1)*.12;
+      return {look:options[choice],x,z,y:({chair:.105,low:.005,bean:.13}[pose]??0),yaw,
+        scale:.97+.014*((i+index)%5),period:(i===9?3.3:4.3)+.12*((i+index)%6),phase:((i+index*3)*.382)%1};
+    });
+    const cast=createVisitorGroup(THREE,'workshops',visitors,kit.requestFrame,()=>{fallback.visible=false;});
+    group.add(cast.group);group.userData.startCharacters=cast.start;group.userData.animateCharacters=cast.update;
+  }return group;
  }
  return {makeInterior};
 }

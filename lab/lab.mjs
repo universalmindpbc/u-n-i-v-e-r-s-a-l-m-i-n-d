@@ -1,11 +1,12 @@
-import { createPortal } from './portal.mjs?v=20261105cast1';
-import { createFestivalCast } from './festival-cast.mjs?v=20261105cast1';
+import {createGroundWalkers,createSeatedVisitors,createShowRunway} from './visitor-groups.mjs?v=20261105movement1';
+import { createPortal } from './portal.mjs?v=20261105movement1';
+import { createFestivalCast } from './festival-cast.mjs?v=20261105movement1';
 import { portalZones } from './portal-geometry.mjs?v=20261104emdr1';
 import { orbitPose, mobileOverviewPose, overviewPose } from './orbit.mjs?v=20261104portal1';
 import { createActivities } from './activities.mjs?v=20261103purpose1';
 import { createPerformance } from './performance.mjs?v=20261103orbit1';
 import { initMedia } from './media.mjs?v=20261103continuous1';
-import { createStory, ORBIT_START, STORY_END } from './story.mjs?v=20261104portal1';
+import { createStory, ORBIT_START, STORY_END } from './story.mjs?v=20261105movement1';
 const $ = (id) => document.getElementById(id);
 const reduced = matchMedia('(prefers-reduced-motion: reduce)');
 const compactLayout = matchMedia('(max-width: 800px), (max-width: 1000px) and (pointer: coarse)');
@@ -20,13 +21,13 @@ const places = {
   food: { number: '03 · INTERNATIONAL FOOD FAIR', title: 'International Food Fair', copy: 'Food from around the world, cooking workshops and a shared dining experience bring people together beneath the food pavilion.' },
   play: { number: '04 · MOBILE MUSIC MAKING', title: 'Mobile music making', copy: 'Make electronic music together on mobile devices. Shared waveforms connect each phone, while a central 360-degree speaker brings the group’s beats to life beneath the sculptural pavilion.' },
   river: { number: '05 · APPLE LISTENING PODS', title: 'Apple listening pods', copy: 'Transparent tubular listening pylons, Moroso Tropicália furniture by Patricia Urquiola and AKG K812 headphones create space for focused listening, reflection and mindfulness by the water.' },
-  fashion: { number: '07 · FASHION', title: 'Fashion runway', copy: 'The central approach becomes a runway for Indigenous fashion, self-expression and creative exchange. Models walk among moving images and sculptures, connecting fashion with identity and confidence.' },
+  fashion: { number: '07 · FASHION', title: 'Fashion runway', copy: 'Two First Nations-led shows are proposed in partnership with the Australian Indigenous Mentoring Experience (AIME). Billie-Jean Hamlet and Cindy Rostron are casting references. The opening show explores sculptural dresses, followed by Nagnata movement wear.' },
   support: { number: '06 · SUPPORT AREA', title: 'Support & connection', copy: 'A shared support space bringing together headspace, Médecins Sans Frontières (MSF), and the Australian Association of Buddhist Counsellors and Psychotherapists (AABCAP). School nominations and headspace referrals connect participants with a welcome conversation, optional support and onward care.' }
 };
 for(const zone of portalZones)places['portal-'+zone.id]={number:'I AM PORTAL',title:zone.title,copy:zone.copy};
 let sceneAPI = null;
 let entered=false,buildStage='site',rain=false,layoutVisible=false,tourTimer=0,storyState=null;
-let autoTourCancelled=false,lastAutoView=null,lineupOverride=null;
+let autoTourCancelled=false,lastAutoView=null;
 const footline=document.querySelector('.footline');
 const landscapeFooter=footline.parentElement;
 const landingFooter=document.querySelector('.landing-footer');
@@ -87,6 +88,19 @@ function setMode(next) {
 document.querySelectorAll('[data-view]').forEach(b => b.addEventListener('click', () => selectPlace(b.dataset.view)));
 $('interior-view').addEventListener('click',()=>{stopTour();sceneAPI?.go('interior');$('place-card').hidden=true;});
 document.querySelectorAll('[data-portal-room]').forEach(b=>b.addEventListener('click',()=>selectPlace(b.dataset.portalRoom)));
+$('watch-runway').addEventListener('click',()=>{
+  $('vision').close();if(!entered)launchFestival();
+  if(!storyState?.navigation)story.start(31);
+  selectPlace('fashion');
+});
+for(const button of document.querySelectorAll('[data-runway-show]')){
+  button.addEventListener('click',()=>{
+    stopTour();
+    for(const option of document.querySelectorAll('[data-runway-show]'))option.setAttribute('aria-pressed',String(option===button));
+    sceneAPI?.setRunwayShow(button.dataset.runwayShow);
+    status(button.textContent+' runway show selected.');
+  });
+}
 $('portal-about').addEventListener('click',()=>{$('vision').close();if(!entered)launchFestival();selectPlace('portal');});
 $('place-close').addEventListener('click', () => { $('place-card').hidden = true; (mobile() ? $('emotion-toggle') : (document.querySelector(`[data-view="${selected}"]`)||document.querySelector('[data-view="portal"]'))).focus(); });
 $('reset-view').addEventListener('click', () => selectPlace('overview', false));
@@ -101,7 +115,7 @@ $('vision').addEventListener('close', () => {
   $('about-lineup').open = false;
 });
 const aboutArtists = document.querySelector('.about-lineup-artists');
-for (const item of $('artist-lineup').children) aboutArtists.append(item.cloneNode(true));
+aboutArtists.append($('artist-lineup').querySelector('.artist-marks').cloneNode(true));
 $('about-close').addEventListener('click', () => $('vision').close());
 let learningFromAbout=false;
 for(const id of ['learn-main','learn-about'])$(id).addEventListener('click',()=>{stopTour();learningFromAbout=$('vision').open;if(learningFromAbout)$('vision').close();$('learning').showModal();});
@@ -154,10 +168,18 @@ try{if(parent!==window)parent.dispatchEvent(new Event('um:lab-ready'));}catch{}
 function syncLineup(){
  const touring=Boolean(tourTimer)||(!autoTourCancelled&&['tour','orbit'].includes(storyState?.phase));
  const automatic=selected==='overview';
- const show=entered&&mode==='3d'&&!touring&&(lineupOverride??automatic);
- document.body.dataset.lineupVisible=String(show);$('artist-lineup').setAttribute('aria-hidden',String(!show));$('lineup-toggle').setAttribute('aria-pressed',String(show));
+ const show=entered&&mode==='3d'&&!touring&&automatic;
+ document.body.dataset.lineupVisible=String(show);$('artist-lineup').setAttribute('aria-hidden',String(!show));
 }
-$('lineup-toggle').addEventListener('click',()=>{stopTour();lineupOverride=document.body.dataset.lineupVisible!=='true';if(lineupOverride){emotionPanel(false);$('place-card').hidden=true;}syncLineup();});
+function openLineup(){
+  const lineup=$('about-lineup');
+  lineup.open=true;
+  $('vision').showModal();
+  lineup.querySelector('summary').focus({preventScroll:true});
+  lineup.scrollIntoView({block:'start'});
+}
+$('lineup-toggle').addEventListener('click',openLineup);
+$('lineup-more-open').addEventListener('click',openLineup);
 function applyStory(state){
   storyState=state;buildStage=state.phase;
   document.body.dataset.buildStage=state.phase==='night'||state.phase==='dusk'||state.phase==='tour'||state.phase==='orbit'?'open':state.phase;
@@ -170,12 +192,12 @@ function applyStory(state){
   syncNight(state.night>.65);sceneAPI?.setStory(state);
   const orbitActive=state.phase==='orbit'&&!autoTourCancelled&&!reduced.matches&&mode==='3d';
   document.body.dataset.cinematic=String(orbitActive);
-  if(orbitActive){if(!lastAutoView?.startsWith('orbit')){emotionPanel(false);$('place-card').hidden=true;lineupOverride=null;lastAutoView='orbit';}sceneAPI?.orbit(state.seconds-ORBIT_START);}
+  if(orbitActive){if(!lastAutoView?.startsWith('orbit')){emotionPanel(false);$('place-card').hidden=true;lastAutoView='orbit';}sceneAPI?.orbit(state.seconds-ORBIT_START);}
   if(state.tourView&&!autoTourCancelled&&state.tourView!==lastAutoView){lastAutoView=state.tourView;selectPlace(state.tourView,true,true);if(state.tourView==='overview'&&innerWidth>=1100)emotionPanel(true);}
   const autoActive=!autoTourCancelled&&(state.phase==='tour'||orbitActive);document.body.dataset.tourActive=String(autoActive);if(!tourTimer){$('tour-toggle').textContent=autoActive?'Stop tour':'Tour';$('tour-toggle').setAttribute('aria-pressed',String(autoActive));}
   document.body.dataset.tourStep=state.tourView||'';syncLineup();syncSceneLabels();
 }
-function startStory(){stopTour();labelsDismissed=false;labelPreviewUntil=0;clearTimeout(labelPreviewTimer);autoTourCancelled=false;lastAutoView=null;lineupOverride=null;emotionPanel(false);$('place-card').hidden=true;selectPlace('overview',false,true);story.start();}
+function startStory(){stopTour();labelsDismissed=false;labelPreviewUntil=0;clearTimeout(labelPreviewTimer);autoTourCancelled=false;lastAutoView=null;emotionPanel(false);$('place-card').hidden=true;selectPlace('overview',false,true);story.start();}
 $('replay-story').addEventListener('click',()=>{media.start();startStory();});
 function stopTour(){autoTourCancelled=true;document.body.dataset.cinematic='false';document.body.dataset.tourActive='false';clearTimeout(tourTimer);tourTimer=0;$('tour-toggle').setAttribute('aria-pressed','false');$('tour-toggle').textContent='Tour';syncSceneLabels();}
 $('tour-toggle').addEventListener('click',()=>{
@@ -211,7 +233,7 @@ syncFullscreen();
 
 async function buildWorld() {
   const THREE = await import('three');
-  const [{OrbitControls},{createArchitecture},{createSiteFeatures},{createCrowd,createRunwayCrowd},{createLightShow},{createRunway}]=await Promise.all([import('./vendor/OrbitControls.js'),import('./architecture.mjs?v=20261103purpose1'),import('./site-features.mjs?v=20261103orbit1'),import('./crowd.mjs?v=20261105cast1'),import('./light-show.mjs?v=20261103orbit1'),import('./runway.mjs?v=20261103orbit1')]);
+  const [{OrbitControls},{createArchitecture},{createSiteFeatures},{createCrowd},{createLightShow},{createRunway}]=await Promise.all([import('./vendor/OrbitControls.js'),import('./architecture.mjs?v=20261103purpose1'),import('./site-features.mjs?v=20261103orbit1'),import('./crowd.mjs?v=20261105movement1'),import('./light-show.mjs?v=20261103orbit1'),import('./runway.mjs?v=20261103orbit1')]);
   const architecture=createArchitecture(THREE);
   let seed = 1947;
   const random = () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; };
@@ -375,11 +397,13 @@ async function buildWorld() {
   }
   const lightShow=createLightShow(THREE,scene,Object.values(buildings),architecture);
   const features=createSiteFeatures(THREE,scene,$('music-video'),architecture,$('stage-geometry-video'));
-  const crowd=createCrowd(THREE,()=>{needsFrame=true;requestFrame();}),runwayCrowd=createRunwayCrowd(THREE),runway=createRunway(THREE,scene,features.videoMap);scene.add(crowd.builders,crowd.visitors,runwayCrowd.group);
+  const crowd=createCrowd(THREE,()=>{needsFrame=true;requestFrame();}),runwayCrowd=createShowRunway(THREE,()=>{needsFrame=true;requestFrame();}),runway=createRunway(THREE,scene,features.videoMap);scene.add(crowd.builders,crowd.visitors,runwayCrowd.group);
   const performanceStage=createPerformance(THREE);scene.add(performanceStage.group);
   const activities=createActivities(THREE,architecture);scene.add(activities.group);
   const festivalCast=createFestivalCast(THREE,()=>{needsFrame=true;requestFrame();});
-  scene.add(festivalCast.group);
+  const seatedVisitors=createSeatedVisitors(THREE,()=>{needsFrame=true;requestFrame();});
+  const walkers=createGroundWalkers(THREE,()=>{needsFrame=true;requestFrame();});
+  scene.add(festivalCast.group,walkers.group,seatedVisitors.group);
   const contextStart=scene.children.length;
   // Contextual proposal identities: physical flags and a support vehicle.
   const images = Object.fromEntries(await Promise.all([
@@ -481,14 +505,14 @@ async function buildWorld() {
     play:{pos:[-31,3.7,24],target:[-25.4,1.2,18]},
     river:{pos:[32,5,23],target:[23,1.7,10]},
     support:{pos:[-25,7,-12],target:[-33.7,1.1,-23.2]},
-    fashion:{pos:[16,9,46],target:[0,1.5,23]}
+    fashion:{pos:[2.4,2.1,40.8],target:[0,1,30]}
   };
   presets.portal=portal.camera();for(const zone of portalZones)presets['portal-'+zone.id]=portal.camera(zone.id);
   const nightLights=[];
   for(const [x,z,colour] of [[-9,-8,'#d98bff'],[9,-8,'#67c8e4'],[-24,-9,'#ffc798'],[-23,20,'#b2a0ff'],[25,5,'#70dfcb']]){
     const light=new THREE.PointLight(colour,0,24,1.3);light.position.set(x,2,z);scene.add(light);nightLights.push(light);
   }
-  let cinematicCamera=false,tween=null,visible=true,raf=0,needsFrame=true,lastT=0,musicMotion=false,motionTime=0,waterTime=0,lastWaterFrame=0;
+  let cinematicCamera=false,tween=null,visible=true,raf=0,needsFrame=true,lastT=0,musicMotion=false,motionTime=0,waterTime=0,peopleTime=0,lastWaterFrame=0;
   let currentStory={seconds:0,construction:0,programme:0,night:0,navigation:false};
   let responseLevel=.7;
   const goldSky=new THREE.Color('#efc284'),peachSky=new THREE.Color('#c4868d'),goldSun=new THREE.Color('#ffc474');
@@ -508,7 +532,7 @@ async function buildWorld() {
     currentStory={...value};
     for(const [key,g] of Object.entries(buildings)){const p=value[key]||0;g.visible=p>0;buildPlanes[key].constant=p>=1?100:Math.max(.1,p*8.7);}
     contextDecor.visible=value.programme>0;paths.visible=value.seconds>=16;runway.setVisible(value.furniture>0);runwayCrowd.group.visible=value.programme>0;
-    festivalCast.setStory(value);portal.setStory(value);features.setStory(value);activities.setStory(value);setNight(value.night);setResponse(responseLevel);crowd.builders.visible=value.seconds>6&&value.seconds<29;crowd.visitors.visible=value.programme>0;performanceStage.group.visible=value.programme>=1;
+    walkers.group.visible=seatedVisitors.group.visible=value.programme>0;festivalCast.setStory(value);portal.setStory(value);features.setStory(value);activities.setStory(value);setNight(value.night);setResponse(responseLevel);crowd.builders.visible=value.seconds>6&&value.seconds<29;crowd.visitors.visible=value.programme>0;performanceStage.group.visible=value.programme>=1;
     crowd.setProgramme(value.programme);
     document.body.dataset.revealed=Object.keys(buildings).filter(k=>value[k]>=1).join(',');
     document.querySelectorAll('#place-list,.view-tools').forEach(e=>e.inert=!value.navigation);
@@ -525,9 +549,9 @@ async function buildWorld() {
 
   function go(key,instant=false){
     cinematicCamera=false;
-    controls.minDistance=key.startsWith('portal')?4:12;
+    controls.minDistance=key==='fashion'?3:key.startsWith('portal')?4:12;
     const p=presets[key];const end=new THREE.Vector3(...p.pos),target=new THREE.Vector3(...p.target);
-    if(key==='overview'){const pose=mobile()?mobileOverviewPose(portraitMobile(),$('world').clientHeight):overviewPose();end.fromArray(pose.position);target.fromArray(pose.target);}else if(mobile()){end.sub(target).multiplyScalar(1.5).add(target);if(key.startsWith('portal-'))target.y-=1.7;}
+    if(key==='overview'){const pose=mobile()?mobileOverviewPose(portraitMobile(),$('world').clientHeight):overviewPose();end.fromArray(pose.position);target.fromArray(pose.target);}else if(mobile()){end.sub(target).multiplyScalar(key==='fashion'?1.08:1.5).add(target);if(key.startsWith('portal-'))target.y-=1.7;}
     if(instant||reduced.matches){camera.position.copy(end);controls.target.copy(target);controls.update();tween=null;}else{tween={start:performance.now(),from:camera.position.clone(),fromTarget:controls.target.clone(),to:end,target};}
     needsFrame=true;requestFrame();
   }
@@ -550,15 +574,29 @@ async function buildWorld() {
     if(e.key==='+'||e.key==='=')sph.radius=Math.max(12,sph.radius*.9);if(e.key==='-')sph.radius=Math.min(controls.maxDistance,sph.radius*1.1);
     camera.position.copy(controls.target).add(new THREE.Vector3().setFromSpherical(sph));controls.update();needsFrame=true;requestFrame();
   });
+  const visitorFrustum=new THREE.Frustum(),projectionView=new THREE.Matrix4();
   function requestFrame(){if(!raf&&visible&&!document.hidden)raf=requestAnimationFrame(frame);}
   function frame(t){
     raf=0;if(!visible||document.hidden)return;
-    const waterMoving=entered&&media.motionEnabled();if(waterMoving&&lastWaterFrame)waterTime+=Math.min(.05,Math.max(0,(t-lastWaterFrame)/1000));lastWaterFrame=t;
+    const elapsed=lastWaterFrame?Math.min(.5,Math.max(0,(t-lastWaterFrame)/1000)):0;
+    const waterMoving=entered&&media.motionEnabled();
+    const peopleMoving=waterMoving&&!reduced.matches;
+    if(waterMoving)waterTime+=Math.min(.05,elapsed);
+    if(peopleMoving)peopleTime+=elapsed;
+    lastWaterFrame=t;
     if(features.update(motionTime,t)){needsFrame=true;}
-    if(activities.update(waterTime,waterMoving&&!reduced.matches))needsFrame=true;
-    if(festivalCast.update(camera,waterTime,waterMoving&&!reduced.matches))needsFrame=true;
-    if(portal.update(waterTime,waterMoving&&!reduced.matches,camera))needsFrame=true;
-    crowd.update(musicMotion?motionTime:t*.001,{construction:currentStory.construction,dancing:musicMotion&&!reduced.matches,visible:currentStory.seconds>6,night:currentStory.night});performanceStage.update(motionTime,musicMotion);lightShow.update(motionTime);runwayCrowd.update(motionTime,{moving:musicMotion,visible:runwayCrowd.group.visible});
+    if(walkers.group.visible){
+      walkers.start();seatedVisitors.start();
+      if(walkers.update(peopleTime,peopleMoving))needsFrame=true;
+      if(seatedVisitors.update(peopleTime,peopleMoving))needsFrame=true;
+    }
+    if(activities.update(peopleTime,peopleMoving))needsFrame=true;
+    camera.updateMatrixWorld();
+    visitorFrustum.setFromProjectionMatrix(projectionView.multiplyMatrices(camera.projectionMatrix,camera.matrixWorldInverse));
+    if(festivalCast.update(camera,peopleTime,peopleMoving,visitorFrustum))needsFrame=true;
+    if(portal.update(peopleTime,peopleMoving,camera,visitorFrustum))needsFrame=true;
+    crowd.update(peopleTime,{construction:currentStory.construction,dancing:peopleMoving,visible:currentStory.seconds>6,night:currentStory.night,frustum:visitorFrustum});performanceStage.update(peopleTime,peopleMoving);lightShow.update(motionTime);
+    if(runwayCrowd.update(peopleTime,peopleMoving))needsFrame=true;
     if(tween){const a=Math.min(1,(t-tween.start)/1250),ease=a*a*(3-2*a);camera.position.lerpVectors(tween.from,tween.to,ease);controls.target.lerpVectors(tween.fromTarget,tween.target,ease);if(a===1)tween=null;needsFrame=true;}
     if(!cinematicCamera)controls.update();
     const videoActive=!$('music-video').paused&&$('music-video').readyState>=2;
@@ -579,15 +617,16 @@ async function buildWorld() {
     }
     if(!reduced.matches||musicMotion||tween||needsFrame||videoActive||waterMoving)requestFrame();
   }
-  document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(raf);raf=0;}else{needsFrame=true;requestFrame();}});
+  document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(raf);raf=0;lastWaterFrame=0;}else{needsFrame=true;requestFrame();}});
   reduced.addEventListener('change',()=>{controls.enableDamping=!reduced.matches;needsFrame=true;requestFrame();});
   canvas.addEventListener('webglcontextlost',(e)=>{e.preventDefault();setMode('plan');status('The 3D view paused. The 2D site plan remains available.');});
   go('overview',true);resize();
-  return {go,orbit,setNight,setStory,setResponse,setRain,setLayout,setMusicMotion,setVisible(v){visible=v;if(!v){cancelAnimationFrame(raf);raf=0;}else{needsFrame=true;requestFrame();}},stats(){return {triangles:renderer.info.render.triangles,calls:renderer.info.render.calls,trees:treeList.length,...features.stats,...activities.stats,portal:portal.stats};}};
+  runwayCrowd.select(document.querySelector('[data-runway-show][aria-pressed="true"]').dataset.runwayShow);
+  return {go,orbit,setRunwayShow:runwayCrowd.select,setNight,setStory,setResponse,setRain,setLayout,setMusicMotion,setVisible(v){visible=v;if(!v){cancelAnimationFrame(raf);raf=0;}else{needsFrame=true;requestFrame();}},stats(){return {triangles:renderer.info.render.triangles,calls:renderer.info.render.calls,trees:treeList.length,...features.stats,...activities.stats,portal:portal.stats};}};
 }
 
 try {
-  sceneAPI=await buildWorld();
+  sceneAPI=await buildWorld();$('watch-runway').disabled=false;
   sceneAPI.setNight(0);sceneAPI.setMusicMotion(media.isAnimating());sceneAPI.setStory(storyState||{seconds:0,phase:'site',main:0,food:0,park:0,support:0,apple:0,playground:0,furniture:0,programme:0,truck:0,construction:0,night:0,navigation:false});sceneAPI.setRain(rain);sceneAPI.setLayout(layoutVisible);
   $('loading').hidden=true;$('explore-enter').disabled=false;
   document.body.dataset.ready='true';

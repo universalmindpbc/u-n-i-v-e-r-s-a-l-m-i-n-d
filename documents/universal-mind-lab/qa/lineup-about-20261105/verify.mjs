@@ -77,7 +77,7 @@ try{
         await page.screenshot({path:dir+'/desktop-splash.jpg',quality:78});
       }
       await page.locator('.landing-name').click();
-      assert.equal(await summary.isVisible(),mobile);
+      assert(await summary.isVisible());
       if(mobile){
         assert.equal(await disclosure.getAttribute('open'), null);
         await summary.click();
@@ -115,7 +115,7 @@ try{
           await page.locator('#about-close').click();
         }else{
           await page.locator('#about-open').click();
-          assert(await about.isVisible());assert.equal(await summary.isVisible(),false);
+          assert(await about.isVisible());assert(await summary.isVisible());
           await page.locator('#about-close').click();
         }
         checks.push({mobile,...size,researchAndImpactVisibleOnSplash:mobile,researchInSceneAndAbout:true, mobileLineupOnlyInAbout:mobile, testedCollapsedOnReopen:mobile, artists:mobile?artists:undefined});

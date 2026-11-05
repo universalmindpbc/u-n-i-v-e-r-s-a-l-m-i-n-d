@@ -11,7 +11,7 @@ export function storyFrame(t){
 export function createStory(onFrame){
   let started=0,raf=0,hiddenAt=0,pausedDuration=0,running=false,manualNight=null;
   function frame(now){raf=0;if(!running||document.hidden)return;const state=storyFrame(Math.max(0,(now-started-pausedDuration)/1000));if(manualNight!==null)state.night=manualNight;onFrame(state);if(state.seconds<STORY_END)raf=requestAnimationFrame(frame);else running=false;}
-  function start(){cancelAnimationFrame(raf);started=performance.now();pausedDuration=0;hiddenAt=document.hidden?started:0;manualNight=null;running=true;onFrame(storyFrame(0));raf=requestAnimationFrame(frame);}
+  function start(seconds=0){cancelAnimationFrame(raf);started=performance.now()-seconds*1000;pausedDuration=0;hiddenAt=document.hidden?performance.now():0;manualNight=null;running=true;onFrame(storyFrame(seconds));raf=requestAnimationFrame(frame);}
   document.addEventListener('visibilitychange',()=>{if(!running)return;if(document.hidden){hiddenAt=performance.now();cancelAnimationFrame(raf);raf=0;}else{if(hiddenAt)pausedDuration+=performance.now()-hiddenAt;hiddenAt=0;raf=requestAnimationFrame(frame);}});
   addEventListener('pagehide',()=>{running=false;cancelAnimationFrame(raf);});
   return {start,setNight(value){manualNight=value;},isRunning:()=>running};

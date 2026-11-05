@@ -8,6 +8,7 @@ import {nodeLibrary} from './node-assets';
 import {DEFAULT_PARAMS,yearsToAge,type HumanParams} from '../src/core/params';
 import {buildHuman,textureFiles} from '../src/core/human';
 import {Animator} from '../src/core/anim/evaluate';
+import {gait,WALK} from '../src/core/anim/clips/gait';
 import {idle} from '../src/core/anim/clips/basic';
 import {cheer} from '../src/core/anim/clips/emotes';
 import {side,fingers} from '../src/core/anim/clips/helpers';
@@ -52,6 +53,24 @@ const looks=[
   look('air-service',24,1,'caucasian','short03',shirt,'suit_trousers','#c5d7e6','#222d40','idle',{jacket:suit,shoes:'oxfords'}),
   look('aircrew',22,0,'african','ponytail01','uniform_shirt_long','fatigue_pants',olive,olive,'helmet',{shoes:'combat_boots'})
 ];
+// Original show studies. The two wardrobes share four fictional runway models.
+const runwayModels=[
+  ['african','ponytail01','#e8d5bb','#9f6a59','#b7a4cc','#433340'],
+  ['caucasian','short02','#a2c5c8','#405a66','#a87865','#d6b4a8'],
+  ['asian','long01','#c697ac','#793e59','#bad263','#334c47'],
+  ['african','bob01','#c0a276','#4c4655','#e3acbb','#663b55'],
+  ['asian','ponytail01','#c5d4df','#8088a9','#9fb6c4','#443753'],
+  ['african','buzz','#eed4b6','#b1866c','#98c1a1','#29373c'],
+  ['caucasian','long01','#b07388','#744c69','#8d778e','#d2bd96'],
+  ['asian','short03','#c8d2bb','#8c938d','#cfab89','#583b40']
+];
+for(const [i,[skin,hair,pearl,shadow,knit,trim]] of runwayModels.entries()){
+  looks.push(look('iris-'+i,20+i%5,0,skin,hair,'sculpted-bodice','wave-skirt-'+(i%4),pearl,shadow,'walk'));
+  const bottom=i%2===0?'contour-short':'contour-leg';
+  looks.push(look('nagnata-'+i,20+i%5,0,skin,hair,'contour-crop',bottom,knit,knit,'walk',{
+    garmentStyles:{'contour-crop':{color:knit,color2:trim,pattern:'rib'},[bottom]:{color:knit,color2:trim,pattern:'rib'}}
+  }));
+}
 const section = (s:string)=>s==='chair'||s==='floor'||s==='daybed';
 function seated(pose:string):Clip {
   const crossed=pose!=='chair';
@@ -67,6 +86,7 @@ function seated(pose:string):Clip {
 }
 function movement(pose:string):Clip {
   if(section(pose))return seated(pose);
+  if(pose==='walk')return {id:'runway',name:'Runway walk',duration:1.2,loop:true,category:'Locomotion',sample:t=>gait(WALK,t/1.2)};
   if(pose==='dance')return {...cheer,name:'Hands overhead',sample(t){const p=cheer.sample(t);fingers(p.bones!,7);return {...p,thumbs:undefined};}};
   if(pose==='groove')return {...idle,name:'Dance-floor sway',sample(t){const p=idle.sample(t),w=Math.sin(t/idle.duration*Math.PI*2);
     p.bones!.Spine=[0,4*w,3*w];side(p.bones!,'ForeArm',[52+13*w,0,0],[38-12*w,0,0]);return p;}};
@@ -117,8 +137,8 @@ for(const [index,spec] of looks.entries()){
       oxfords:{color:spec.id==='navy-whites'?'#efeee6':'#292526'}},...spec.extra};
   const character=await buildHuman(library,params),mesh=character.mesh;
   optimise(mesh);
-  const rig=character.rig!,animator=new Animator(rig,character.face),clip=movement(process.argv.includes('--standing')?'groove':spec.pose),baked=animator.bake(clip,10);
-  if(section(spec.pose)&&!process.argv.includes('--standing')){
+  const rig=character.rig!,animator=new Animator(rig,character.face),clip=movement(process.argv.includes('--walk')?'walk':process.argv.includes('--standing')?'groove':spec.pose),baked=animator.bake(clip,10);
+  if(section(spec.pose)&&!process.argv.includes('--standing')&&!process.argv.includes('--walk')){
     const height=spec.pose==='chair'?.45:spec.pose==='daybed'?.723:.230;
     for(const f of baked.frames)for(const root of f.rootPos.keys())f.rootPos.set(root,[0,height,0]);
   }

@@ -1,7 +1,7 @@
 // Run beside festival-cast.ts in the pinned generator's scripts directory.
 import {garmentById, type GarmentDef} from '../src/core/garments/catalog';
 import {cm, REGION} from '../src/core/garments/body';
-import {cloth, isTrunk, isUpper, mat, shellPart, torsoY} from '../src/core/garments/kit';
+import {cloth, isTrunk, isUpper, mat, shellPart, skirt, torsoY} from '../src/core/garments/kit';
 import {Caster} from '../src/core/garments/project';
 
 type Build = GarmentDef['build'];
@@ -91,3 +91,39 @@ register('festival-ink','acc',g=>{
     return {mesh:{positions:Float32Array.from(positions),uvs:Float32Array.from(uvs),faceSizes:new Uint8Array(36).fill(4),faceVerts:Uint32Array.from(faces),faceUVs:Uint32Array.from(faces)},material:mat('Fine-line arm ink',null,{map:String(file),alpha:'mask',doubleSided:true})};
   });
 });
+
+// Sculptural pleats and layered hems for the opening show.
+register('sculpted-bodice','top',(g,s)=>shellPart(g,{
+  covers:v=>isTrunk(v)&&v.tt>.18&&v.tt<.87,
+  offset:v=>cm(.8+1.3*(.5+.5*Math.cos(v.tth*18+v.tt*9))),relax:1
+},cloth(g,'Pleated bodice',s)));
+for(let style=0;style<4;style++){
+  register('wave-skirt-'+style,'bottom',(g,s)=>{
+    const top=torsoY(g.body,.36),length=cm([83,56,91,68][style]),parts=[];
+    for(let layer=0;layer<3;layer++){
+      const drop=length*(1-.27*layer);
+      const mesh=skirt(g.body,top,top-drop,cm(.9+.45*layer),.38+.18*layer,undefined,96);
+      if(!mesh)continue;
+      const p=mesh.positions;
+      for(let j=0;j<p.length;j+=3){
+        const x=p[j],z=p[j+2]-g.body.L.torsoZ,t=(top-p[j+1])/drop;
+        const angle=Math.atan2(x,z),r=Math.hypot(x,z)||1;
+        const pleat=cm(2.6)*t*Math.cos(angle*(14+style*2)+t*4);
+        p[j]+=pleat*x/r;p[j+2]+=pleat*z/r;
+        p[j+1]+=cm(8+style)*t*t*Math.sin(3*angle+style+layer*.65);
+      }
+      parts.push({mesh,material:cloth(g,'Wave pleat '+layer,{...s,color:layer===1?'#dbc8b5':s.color},{doubleSided:true})});
+    }
+    return parts;
+  });
+}
+// Wide contrast bands follow the knit rather than floating above the body.
+for(const [id,base] of [['contour-crop','sport-crop'],['contour-short','hotpants'],['contour-leg','leggings']] as const){
+  register(id,id==='contour-crop'?'top':'bottom',(g,s)=>{
+    const parts=garmentById.get(base)!.build(g,s);
+    const band=id==='contour-crop'?.46:.27;
+    parts.push(...shellPart(g,{covers:v=>isTrunk(v)&&v.tt>band&&v.tt<band+.054,offset:cm(.85),relax:1},mat('Contrast knit band',null,{color:s.color2||'#443743'}),false));
+    if(id!=='contour-crop')parts.push(...shellPart(g,{covers:v=>v.region===REGION.upperleg&&v.t>.06&&v.t<(id==='contour-leg'?.92:.34)&&v.ax>g.body.L.shoulderX*.75,offset:cm(.82)},mat('Side stripe',null,{color:s.color2||'#443743'}),false));
+    return parts;
+  });
+}
