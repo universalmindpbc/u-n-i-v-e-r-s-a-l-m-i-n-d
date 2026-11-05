@@ -1,0 +1,247 @@
+{
+  "live": true,
+  "width": 1280,
+  "height": 800,
+  "muted": true,
+  "mediaStubbed": true,
+  "views": {
+    "truck": {
+      "drawCalls": 398,
+      "triangles": 874623,
+      "musicMotion": false,
+      "peopleTime": 1.8240000000000003,
+      "view": "truck"
+    },
+    "main": {
+      "drawCalls": 368,
+      "triangles": 763657,
+      "musicMotion": false,
+      "peopleTime": 2.5760000000000005,
+      "view": "main"
+    },
+    "food": {
+      "drawCalls": 167,
+      "triangles": 466190,
+      "musicMotion": false,
+      "peopleTime": 2.6560000000000006,
+      "view": "food"
+    },
+    "play": {
+      "drawCalls": 545,
+      "triangles": 953529,
+      "musicMotion": false,
+      "peopleTime": 2.7520000000000007,
+      "view": "play"
+    },
+    "river": {
+      "drawCalls": 633,
+      "triangles": 1033046,
+      "musicMotion": false,
+      "peopleTime": 2.8320000000000007,
+      "view": "river"
+    },
+    "support": {
+      "drawCalls": 116,
+      "triangles": 435905,
+      "musicMotion": false,
+      "peopleTime": 2.928000000000001,
+      "view": "support"
+    },
+    "fashion": {
+      "drawCalls": 569,
+      "triangles": 983057,
+      "musicMotion": false,
+      "peopleTime": 3.024000000000001,
+      "view": "fashion"
+    },
+    "portal": {
+      "drawCalls": 325,
+      "triangles": 978501,
+      "musicMotion": false,
+      "peopleTime": 3.104000000000001,
+      "view": "portal"
+    },
+    "portal-steam": {
+      "drawCalls": 727,
+      "triangles": 1344533,
+      "musicMotion": false,
+      "peopleTime": 3.536000000000001,
+      "view": "portal-steam"
+    },
+    "portal-mantra": {
+      "drawCalls": 600,
+      "triangles": 1087977,
+      "musicMotion": false,
+      "peopleTime": 3.952000000000001,
+      "view": "portal-mantra"
+    },
+    "portal-sound": {
+      "drawCalls": 550,
+      "triangles": 978311,
+      "musicMotion": false,
+      "peopleTime": 4.368000000000001,
+      "view": "portal-sound"
+    },
+    "portal-comedy": {
+      "drawCalls": 635,
+      "triangles": 1172392,
+      "musicMotion": false,
+      "peopleTime": 4.784000000000002,
+      "view": "portal-comedy"
+    },
+    "portal-sexed": {
+      "drawCalls": 840,
+      "triangles": 1656023,
+      "musicMotion": false,
+      "peopleTime": 5.216000000000002,
+      "view": "portal-sexed"
+    },
+    "portal-atelier": {
+      "drawCalls": 795,
+      "triangles": 1475800,
+      "musicMotion": false,
+      "peopleTime": 5.632000000000002,
+      "view": "portal-atelier"
+    },
+    "portal-emdr": {
+      "drawCalls": 626,
+      "triangles": 1116929,
+      "musicMotion": false,
+      "peopleTime": 6.384000000000002,
+      "view": "portal-emdr"
+    }
+  },
+  "models": [
+    "assets/festival/crowd.glb",
+    "assets/festival/walkers.glb",
+    "assets/festival/workshops.glb",
+    "assets/festival/iris.glb",
+    "assets/festival/river-arena.glb",
+    "assets/festival/D1.glb",
+    "assets/festival/D2.glb",
+    "assets/festival/C.glb",
+    "assets/festival/navy-working.glb",
+    "assets/festival/army-field.glb",
+    "assets/festival/nagnata.glb",
+    "assets/festival/army-service.glb",
+    "assets/festival/air-service.glb",
+    "assets/festival/A.glb",
+    "assets/festival/B.glb",
+    "assets/festival/D3.glb",
+    "assets/festival/aircrew.glb",
+    "assets/festival/navy-whites.glb",
+    "assets/festival/02.glb",
+    "assets/festival/01.glb",
+    "assets/festival/04.glb",
+    "assets/festival/03.glb",
+    "assets/festival/05.glb",
+    "assets/festival/06.glb",
+    "assets/festival/08.glb",
+    "assets/festival/07.glb",
+    "assets/festival/09.glb",
+    "assets/emdr/participant-10.glb"
+  ],
+  "programme": {
+    "names": [
+      "Anna Lunoe",
+      "Brian Eno",
+      "Damian Lazarus",
+      "FISHER",
+      "Fred again..",
+      "In This World",
+      "Iris van Herpen",
+      "Jamie xx",
+      "Luciano",
+      "Matthewdavid",
+      "Nagnata",
+      "Nastia",
+      "Nina Kraviz",
+      "Peggy Gou",
+      "Seth Troxler",
+      "Steve Aoki",
+      "Sven Väth",
+      "Tiga",
+      "Timmy Trumpet"
+    ],
+    "orderLabel": "In alphabetical order",
+    "equalBilling": true
+  },
+  "cast": {
+    "emdr": {
+      "status": "ready",
+      "loaded": 10,
+      "total": 10,
+      "errors": [],
+      "skinnedMeshes": 140,
+      "animated": true,
+      "heldPhones": 0,
+      "longDresses": 0
+    },
+    "walkers": {
+      "status": "ready",
+      "count": 24
+    },
+    "seated": {
+      "status": "ready",
+      "count": 10
+    },
+    "show": "iris visitors",
+    "activeModels": 8,
+    "crowd": 101,
+    "roster": [
+      "aircrew",
+      "navy-whites"
+    ]
+  },
+  "errors": [],
+  "hashes": {
+    "lab.mjs": "f1cc3491d3102c78b959cd24f51eff473062d81ea9af010c71e807cf1bc5f0da",
+    "visitor-groups.mjs": "737612e14f3b4014617317986a136f5ed5caa60b8717b7ddfc81c704b13d0fb2",
+    "portal-geometry.mjs": "ff05c714c167f738dcd0cb3c4736b8cd8131b882db8b34d82f269cf1b65bb10c",
+    "portal.mjs": "cd58fabb1922fef38f7338495963598b49dd871c445c709374d5b07305e40d1a",
+    "story.mjs": "4434563a803856aa9638beb3f65671cd36d832cb34b62ad41f0b9c9ee605a015",
+    "activities.mjs": "3c06c53ef7879a10c2631a8d7db25e54307a6c6944228ed699a75d06e4135e1a",
+    "orbit.mjs": "18bca2d40c1fb220b01cd0997cac41af7b40eeec1a293471333f180eeed98171",
+    "festival-cast.mjs": "b00f50ae37d7fa09ecd53bcd7d47fa870911df8e37699c65984b8b754fcc0348",
+    "performance.mjs": "03daddde965e51ca24ca08797aa1aed234bf723b4edab7f806223926f1247a6c",
+    "media.mjs": "1eca7d1ff11717e7afc6cdf3e9a444d63ca582bf531ab467d2fb937a74fab80b",
+    "portal-interiors.mjs": "f53d6b1056b1a92283bcb967e85203705167f8c23287613233c2a8e4babee9eb",
+    "furnishings.mjs": "1e9f12657c21d5a8bb578ac6cc6671c3651ab77183e69008810ecdadbf6d3a9f",
+    "character-motion.mjs": "0497d55f212609b744586eb92f951cd80c41ba5b1806929312f99fd1676c53e0",
+    "emdr-people.mjs": "497c3d61dfaf987c52a823d742f70da2a7b9585d6db10dd94e38591f5ae08bb0",
+    "light-show.mjs": "898e8a8695f293f5269b32d80f8e848c480c6975c3af4212117ce4317338a281",
+    "runway.mjs": "613ca62f80c07893d82fbb2b3a7d5c675005fff8586019f561b32c513ddbdafd",
+    "architecture.mjs": "6aa186831deb24e046100a86b0bb27b04ec4d55d6f7fbdd6e69b0051b43c9dbf",
+    "site-features.mjs": "98dc3ab4915e5ca49d8ac5baf0fb5367e8a06f52adc8115d44f84e9b39a261e1",
+    "crowd.mjs": "894b5ec2166666a15b095a01d9a84820ea0d76e2c343a9fe0f73d95e4200b4c5",
+    "stage-visuals.mjs": "5b52daf8e117bb43b21b31470767b6df50614ed2775737b066116a3f4e8c3710",
+    "assets/festival/crowd.glb": "776034520cf10be1dbe6446f60e7aa0a48a48782770e9f84c467f4a243744f7c",
+    "assets/festival/walkers.glb": "1142302afb51ad4f2c588e243309deec37f0e49ef9022329569ba3e37548e917",
+    "assets/festival/workshops.glb": "7745de6b4525d414250403c0e8b389c4518ce42fcdef82e63736a831bbc3f535",
+    "assets/festival/iris.glb": "1d16372a3ef5a10a17f6ae901b3625863c764dc7038b16c642ce9c824e61dae5",
+    "assets/festival/river-arena.glb": "33a69b514a65ee4a2424a287efda97dad397eb306b34833ad15df6d4cf4bc1ef",
+    "assets/festival/D1.glb": "8d11e4b6ac847384bc9d672303e912dd3e2edc2fb30157746d25733984c85ae7",
+    "assets/festival/D2.glb": "b4a1683b283bba6797e84e78808ec1a368f8d9cf531f96c3498c0f278dacade9",
+    "assets/festival/C.glb": "c5d218026a7544be1791a8aefec3373f607bbadc598c66cfa1d73f810ef7ac58",
+    "assets/festival/navy-working.glb": "0f54ddcdd8c79435ed3d16236c02e16095fddf738e985e0378626aca68581c3e",
+    "assets/festival/army-field.glb": "17b1abac0689949b163538a2386ff4994f19c22b6c3093359d05924a750f6178",
+    "assets/festival/nagnata.glb": "fd67e00e0ab79aa5bd996d0bf4c394fde3172753f6d2e97cfde5f560a53263c7",
+    "assets/festival/army-service.glb": "a4722a248b0b98ddfc02382c9e9e08895b5debdd3145f4b22025a5964e3709ba",
+    "assets/festival/air-service.glb": "3475be1e451e51f38c48c267f2920b652960ac10d3a352fadab3e92d907187bb",
+    "assets/festival/A.glb": "66061d1e512deda006f39ca091ea88b1cc0f9b8a029e108d46aee682c94df4be",
+    "assets/festival/B.glb": "4d9c906c1bc436c68b29ecd72d2c6cbc75ace5c5a7ea4a0a202e5ddf0385c573",
+    "assets/festival/D3.glb": "94184e6876fed8df79eb13ddc87956f145e94c1f51947acd917989ba007cba16",
+    "assets/festival/aircrew.glb": "743989c1d4beb9f0dcf8ed8326b8f309a82a6f02fae7f026adc2a8880bf2f9dc",
+    "assets/festival/navy-whites.glb": "da393ba002f9df9acbc0ced09fde6b057b2d51f659caa3ee7b795724c6e132e6",
+    "assets/festival/02.glb": "467cb63c2c85a94da1875ec6681c78d71ce24346dfc4f56889961a1c8437cb89",
+    "assets/festival/01.glb": "441eaf989b54897aa4102c3404d0b6ec3849af61e5fac7821e28e991434ca01e",
+    "assets/festival/04.glb": "3233756910865aef9551b48f2b3922035a7a6aa1a8168c6f11d282d53773aaf0",
+    "assets/festival/03.glb": "59f3f9457d3fd028e625180a8b2a64a9d81e911b9b1effa782a8d636538e871b",
+    "assets/festival/05.glb": "63fc2a669180c6cbeeee8f7a1fe6b3733a78611fb424c0eb78559fb94914760a",
+    "assets/festival/06.glb": "7082d0f649748435b5e37a26da9e144c40b62441c8a0cf12051dec51b2b12af6",
+    "assets/festival/08.glb": "8d098dd31adcaf9697e0bd36116b473ad711341ce254a90e294a94a11c50ec16",
+    "assets/festival/07.glb": "4b8c72d2c5e3e63be69b6a90b1eed5110c6b5ed0de4646d5c82f1683d53a30c5",
+    "assets/festival/09.glb": "182662f506f8871944b36975554d7cc5cdb065f6709c011c66a0de6b04307987",
+    "assets/emdr/participant-10.glb": "84a787509dfc58fc787d2574896b9c06d709c94eb598dce0dad8fff3d3f962df"
+  }
+}
