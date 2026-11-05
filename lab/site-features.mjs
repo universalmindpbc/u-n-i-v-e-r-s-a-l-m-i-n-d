@@ -97,8 +97,6 @@ export function createSiteFeatures(THREE, scene, video, architecture, geometryVi
   box(5,.95,.85,wood,programme,-25,.55,-12);box(5.1,.07,.95,steel,programme,-25,1.06,-12);
   for(const x of [-26.5,-25,-23.5]){const pot=mesh(new THREE.CylinderGeometry(.23,.20,.2,24),steel,programme);pot.position.set(x,1.2,-12);}
   const glowGroup=new THREE.Group();programme.add(glowGroup);
-  const laserMaterial=new THREE.MeshBasicMaterial({vertexColors:true,transparent:true,opacity:.19,side:THREE.DoubleSide,depthWrite:false,blending:THREE.AdditiveBlending});
-  for(const x of [-7,7]){const vertices=[],colours=[];for(let i=0;i<7;i++){const c=new THREE.Color().setHSL(i/8,.8,.6);const ex=x+(i-3)*1.3,ez=9+i*1.4;vertices.push(x,5.7,-19,ex-.08,7,ez,ex+.08,7,ez);for(let j=0;j<3;j++)colours.push(c.r,c.g,c.b);}const geo=new THREE.BufferGeometry();geo.setAttribute('position',new THREE.Float32BufferAttribute(vertices,3));geo.setAttribute('color',new THREE.Float32BufferAttribute(colours,3));mesh(geo,laserMaterial,glowGroup).castShadow=false;}
   const projectionMaterial=new THREE.ShaderMaterial({uniforms:{time:{value:0}},transparent:true,depthWrite:false,side:THREE.DoubleSide,blending:THREE.AdditiveBlending,vertexShader:'varying vec2 p; void main(){p=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',fragmentShader:'varying vec2 p; uniform float time; void main(){vec2 q=(p-.5)*2.;float r=length(q);float petal=.5+.5*sin(atan(q.y,q.x)*7.+r*9.-time*.35);float a=smoothstep(1.,.1,r)*(.12+.5*pow(petal,3.));vec3 c=.5+.5*cos(vec3(0.,2.,4.)+r*4.+time*.12);gl_FragColor=vec4(c,a);}' });
   for(const [x,z,r] of [[-12,6,5],[12,5,5],[-17,30,4],[16,26,4]]){const p=mesh(new THREE.CircleGeometry(r,64),projectionMaterial,glowGroup);p.rotation.x=-Math.PI/2;p.position.set(x,.11,z);p.castShadow=false;}
   for(const [x,z] of [[-9,39],[13,22],[16,-24]]){const p=[];for(let i=0;i<=48;i++){const a=i/48*Math.PI*2;p.push([x+Math.cos(a)*1.2,2+Math.sin(a)*1.8,z+Math.sin(a*2)*.5]);}tube(p,.08,steel,fitout);tube(p,.035,glow,glowGroup);}
@@ -107,7 +105,6 @@ export function createSiteFeatures(THREE, scene, video, architecture, geometryVi
   function covered(points,width=2.6){const curve=new THREE.CatmullRomCurve3(points.map(([x,z])=>V(x,3.15,z))),p=[],ix=[];for(let i=0;i<=32;i++){const v=curve.getPoint(i/32),t=curve.getTangent(i/32);p.push(v.x-t.z*width/2,v.y+.18,v.z+t.x*width/2,v.x+t.z*width/2,v.y,v.z-t.x*width/2);if(i<32){const a=i*2;ix.push(a,a+1,a+2,a+1,a+3,a+2);}if(i%8===0)for(const side of [-1,1])box(.06,3.15,.06,steel,shelter,v.x+side*t.z*(width/2-.1),1.58,v.z-side*t.x*(width/2-.1));}const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(p,3));g.setIndex(ix);g.computeVertexNormals();mesh(g,rainMat,shelter);}
   covered([[0,-2],[0,8],[-10,3],[-20,-5]]);covered([[0,8],[-10,20],[-23,20]]);covered([[0,8],[10,13],[20,10],[25,5]]);covered([[-23,-8],[-30,-14],[-34,-20]]);
   for(const x of [-11.4,11.4]){const screen=mesh(new THREE.PlaneGeometry(14,2.8),rainMat,shelter);screen.rotation.y=Math.PI/2;screen.position.set(x,1.5,-12);}
-  let responseLevel=.7;
   let state={seconds:0,main:0,food:0,park:0,apple:0,furniture:0,programme:0,navigation:false,truck:0},isNight=0,isRain=false,showLayout=false;
   const reveal=(g,p)=>{g.visible=p>0;g.children.forEach((child,i)=>child.visible=p>=(i+1)/(g.children.length+1));};
   function sync(){
@@ -116,8 +113,8 @@ export function createSiteFeatures(THREE, scene, video, architecture, geometryVi
     assembly.visible=state.seconds>=6&&state.main<1;
     fitout.visible=true;reveal(mainFurniture,state.furniture);reveal(foodFurniture,state.food);reveal(parkFurniture,state.park);reveal(appleFurniture,state.apple);
     programme.visible=state.programme>0;programme.children.forEach((c,i)=>{if(c!==glowGroup)c.visible=state.programme>=(i+1)/(programme.children.length+1);});
-    shelter.visible=isRain&&state.navigation;layout.visible=showLayout&&state.navigation;glowGroup.visible=isNight>0&&state.programme>0;laserMaterial.opacity=(.09+.14*responseLevel)*isNight;
+    shelter.visible=isRain&&state.navigation;layout.visible=showLayout&&state.navigation;glowGroup.visible=isNight>0&&state.programme>0;
   }
   sync();
-  return {videoMap,setResponse(value){responseLevel=value;sync();},setStory(value){state=value;sync();},setNight(value){isNight=Number(value);sync();},setRain(value){isRain=value;sync();},setLayout(value){showLayout=value;sync();},update(t){stageVisuals.update();projectionMaterial.uniforms.time.value=t;return state.seconds>2&&state.seconds<31;},stats:{attendanceAmbition:100,mainLoungeChairs:10,mainHangingSeats:4,mainDaybeds:2,listeningPylons:4,lineArrays:4}};
+  return {videoMap,setStory(value){state=value;sync();},setNight(value){isNight=Number(value);sync();},setRain(value){isRain=value;sync();},setLayout(value){showLayout=value;sync();},update(t){stageVisuals.update();projectionMaterial.uniforms.time.value=t;return state.seconds>2&&state.seconds<31;},stats:{attendanceAmbition:100,mainLoungeChairs:10,mainHangingSeats:4,mainDaybeds:2,listeningPylons:4,lineArrays:4}};
 }

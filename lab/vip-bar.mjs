@@ -1,6 +1,7 @@
 import {loadCastMember} from './festival-cast.mjs?v=20261105activity3';
 
-import {createVipEffects} from './vip-effects.mjs?v=20261105rigs1';
+import {createVipDancers} from './vip-dancers.mjs?v=20261105floor1';
+import {createVipEffects} from './vip-effects.mjs?v=20261105floor1';
 
 export function buildVipBar(THREE, venue, make, requestFrame) {
   const {node,box,cylinder,add,sign} = venue;
@@ -124,6 +125,7 @@ export function buildVipBar(THREE, venue, make, requestFrame) {
   }
   const effects=createVipEffects(THREE,venue,{ink,chrome,carpet:carpetSurface},djX,djZ);
   venue.finish();
+  const updateDancers=createVipDancers(THREE,node,requestFrame);
 
   const cast=[],servers=[],floorStaff=[];
   let started=false;
@@ -169,16 +171,16 @@ export function buildVipBar(THREE, venue, make, requestFrame) {
   }
   const a=v(0,0,0),b=v(0,0,0),direction=v(0,0,0),up=v(0,1,0);
   function update(camera,time,moving){
-    if(Math.hypot(camera.position.x-node.position.x,camera.position.z-node.position.z)>34)return false;
+    const t=moving?time:0;
+    const crowdChanged=updateDancers(camera,t,moving);
+    effects.update(t,moving);
+    if(Math.hypot(camera.position.x-node.position.x,camera.position.z-node.position.z)>34)return crowdChanged;
     if(!started){
       started=true;person('vip-pour-1',counterX-.67,.17,-.45,1.1);person('vip-pour-2',counterX+.67,.17,-.45,2.55);
       person('vip-dj',djX,.455,djZ,.7);
       person('vip-service-white',0,.168,0,lapSeconds*.20);
       person('vip-service-black',0,.168,0,lapSeconds*.70);
-      person('D1',left-1.09,.17,1.20,2.1,2.86);person('river-arena',left+.08,.17,1.92,1.6,-2.92);
     }
-    const t=moving?time:0;
-    effects.update(t,moving);
     cast.forEach(({mixer,phase})=>mixer.setTime(t+phase));
     for(const {model,phase,tray,hand} of floorStaff){
       const u=((t+phase)/lapSeconds)%1;

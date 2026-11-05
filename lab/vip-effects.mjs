@@ -1,4 +1,4 @@
-// Low-lying haze and local fixtures on the DJ side of the VIP room.
+import {geodesicFrame} from './geodesic-frame.mjs';
 export function createVipEffects(THREE,venue,materials,djX,djZ){
   const {node,box,cylinder}=venue;
   const {ink,chrome,carpet}=materials;
@@ -27,6 +27,18 @@ export function createVipEffects(THREE,venue,materials,djX,djZ){
     const sprite=new THREE.Sprite(new THREE.SpriteMaterial({map,color:'#e6ddf3',transparent:true,depthWrite:false}));
     sprite.name='VIP haze';sprite.material.rotation=i*.86;node.add(sprite);return sprite;
   });
+  const dome=new THREE.LineSegments(geodesicFrame(THREE,3.72,1),new THREE.LineBasicMaterial({
+    color:'#d2c2ff',transparent:true,depthWrite:false,blending:THREE.AdditiveBlending
+  }));
+  dome.name='VIP geodome hologram';
+  dome.position.set(-.94,2.85,0);dome.scale.y=.72;node.add(dome);
+  // The smoke rises into the projection above head height, leaving the guest silhouettes clear.
+  const mist=Array.from({length:6},(_,i)=>{
+    const sprite=new THREE.Sprite(new THREE.SpriteMaterial({map,color:'#cfc0f7',transparent:true,depthWrite:false}));
+    sprite.name='VIP projection haze';sprite.material.rotation=i*.81;node.add(sprite);return sprite;
+  });
+  const fill=new THREE.PointLight('#e4d3ff',0,9,2);
+  fill.position.set(-1,4.45,.75);node.add(fill);
   const poolGeo=new THREE.PlaneGeometry(1,1);poolGeo.rotateX(-Math.PI/2);
   function pool(name,color,w,h){
     const mat=new THREE.MeshBasicMaterial({map,color,transparent:true,depthWrite:false,blending:THREE.AdditiveBlending});
@@ -36,7 +48,7 @@ export function createVipEffects(THREE,venue,materials,djX,djZ){
   const purple=pool('VIP ultraviolet wash','#aa67ff',3.4,3.1),white=pool('VIP local strobe','#ffffff',2.4,1.8);
   let darkness=0;
   function setNight(amount){
-    darkness=amount;uv.emissiveIntensity=amount*1.35;
+    darkness=amount;dome.visible=amount>.015;dome.material.opacity=amount*.85;fill.intensity=amount*22;uv.emissiveIntensity=amount*1.35;
     purple.opacity=amount*.43;carpet.emissive.setHex(0x615079);carpet.emissiveIntensity=amount*.065;
   }
   function update(time,moving){
@@ -45,6 +57,12 @@ export function createVipEffects(THREE,venue,materials,djX,djZ){
       puff.position.set(djX-1.29+age*1.65+.18*Math.sin(i+age*5),.47+.76*age,djZ+.67+1.03*age);
       puff.scale.set(.44*spread,.32*spread,1);
       puff.material.opacity=(.12+.16*darkness)*Math.sin(age*Math.PI)**1.4;
+    }
+    for(const [i,puff] of mist.entries()){
+      const age=(time*.10+i/mist.length)%1,theta=i*2.4+age*.45;
+      puff.position.set(djX+.4+age*1.4+Math.cos(theta)*age*2,.9+age*3.9,djZ+1+Math.sin(theta)*age*2.3);
+      puff.scale.set(1.2+3.2*age,1+2.8*age,1);
+      puff.material.opacity=.23*darkness*Math.sin(age*Math.PI);
     }
     // One local flash every two seconds. Reduced motion holds the UV wash alone.
     const beat=time%2, pulse=moving?Math.max(0,1-Math.abs(beat-.18)/.16)*darkness:0;

@@ -95,6 +95,23 @@ looks.push(
   look('vip-service-white',25,0,'asian','ponytail01','waspie-bodice','waspie-mini','#f9f8f5','#f9f8f5','service-walk',{shoes:'flats',earrings:'studs'}),
   look('vip-service-black',27,0,'african','short03','waspie-bodice','waspie-mini','#292929','#292929','service-walk',{shoes:'flats',earrings:'small_hoops'})
 );
+// Fifteen individual guests on the James Bondage VIP floor. Reuse the signed-off swimwear cuts.
+const vipLooks = [
+  ['A','asian','bob02'], ['B','african','box_braids'], ['C','caucasian','ponytail01'],
+  ['A','african','short03'], ['B','caucasian','bob01'], ['C','asian','long01'],
+  ['A','caucasian','short02'], ['B','asian','braid01'], ['C','african','afro01'],
+  ['D1','african','afro01'], ['river-arena','caucasian','ponytail01'], ['D2','caucasian','short02']
+];
+for (const [i,[id,skin,hair]] of vipLooks.entries()) {
+  const base=looks.find(item=>item.id===id)!;
+  looks.push({...base,id:'floor-'+(i+1),skin:'young_'+skin+'_'+(base.gender?'male':'female'),hair,
+    pose:i%4===1?'dance':'club-'+(i%3),extra:{...base.extra,hairTint:i===2||i===6||i===11?blond.hairTint:DEFAULT_PARAMS.hairTint}});
+}
+for (const [i,[hair,red]] of [['box_braids','#de183b'],['buzz','#bb1237'],['ponytail01','#f32a3e']].entries()) {
+  looks.push(look('floor-'+(13+i),21+i,0,'african',hair,'technical-corset','technical-leg',red,red,'club-'+i,
+    {height:.84+i*.025,proportions:.70+i*.035,weight:.46+i*.034,african:.91,asian:.03,caucasian:.06,
+     hairColor:'#19151a',earrings:i===1?'small_hoops':'studs',shoes:'heels'}));
+}
 const section = (s:string)=>s==='chair'||s==='floor'||s==='daybed';
 function seated(pose:string):Clip {
   const crossed=pose!=='chair';
@@ -146,6 +163,18 @@ function movement(pose:string):Clip {
   }};
   if(pose==='walk')return {id:'runway',name:'Runway walk',duration:1.2,loop:true,category:'Locomotion',sample:t=>gait(WALK,t/1.2)};
   if(pose==='dance')return {...cheer,name:'Hands overhead',sample(t){const p=cheer.sample(t);fingers(p.bones!,7);return {...p,thumbs:undefined};}};
+  if(pose.startsWith('club-')){
+    const variation=Number(pose.slice(-1)),duration=2.2+.12*variation;
+    return {...idle,id:pose,name:'VIP dance '+(variation+1),duration,sample(t){
+      const p=idle.sample(t),a=t*Math.PI*2/duration,w=Math.sin(a),beat=Math.cos(a*2);
+      const b=p.bones!;b.Spine=[3+2*beat,8*w,5*w];b.Head=[2*beat,-5*w,-3*w];
+      side(b,'UpLeg',[7+4*w,0,8],[7-4*w,0,7]);
+      side(b,'Leg',[-12-7*w,0,0],[-12+7*w,0,0]);
+      side(b,'Arm',[20+14*w,3,22+variation*13],[18-11*w,0,30-variation*5]);
+      side(b,'ForeArm',[52+17*w,0,4],[54-14*w,0,6]);
+      return p;
+    }};
+  }
   if(pose==='groove')return {...idle,name:'Dance-floor sway',sample(t){const p=idle.sample(t),w=Math.sin(t/idle.duration*Math.PI*2);
     p.bones!.Spine=[0,4*w,3*w];side(p.bones!,'ForeArm',[52+13*w,0,0],[38-12*w,0,0]);return p;}};
   if(pose==='helmet')return {...idle,name:'Carrying flight helmet',sample(t){const p=idle.sample(t);return {...p,ik:{Left:{pos:[.33,-.49,.14],pole:[.7,-1,-.5],dir:[0,-.5,1],palm:[0,1,.15]}}};}};

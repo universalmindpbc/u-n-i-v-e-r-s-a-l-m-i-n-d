@@ -14,7 +14,7 @@ for (const p of ['lab/vendor/three.module.js', 'lab/vendor/OrbitControls.js', 'l
 const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map(m => m[1]);
 assert.equal(new Set(ids).size, ids.length, 'HTML IDs are unique');
 for (const m of js.matchAll(/\$\('([^']+)'\)/g)) assert.ok(ids.includes(m[1]), `Missing element ${m[1]}`);
-const places = ['truck', 'main', 'food', 'play', 'river', 'support', 'fashion', 'portal', 'bar', 'tea', 'vip'];
+const places = ['truck', 'main', 'food', 'play', 'river', 'support', 'fashion', 'portal', 'bar', 'tea', 'vip', 'checking', 'first-aid', 'elevation'];
 assert.equal((html.match(/href="\/vogue\/iam\/induction\.html" target="_top"/g) || []).length, 1);
 assert.doesNotMatch(html.slice(html.indexOf('id="landing"'),html.indexOf('<main')), /Livestream TV/);
 for (const p of places) assert.ok(html.includes(`data-view="${p}"`));

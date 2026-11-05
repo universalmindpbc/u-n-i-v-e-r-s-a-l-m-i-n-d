@@ -1,8 +1,11 @@
-import {buildVipBar} from './vip-bar.mjs?v=20261105bondage1';
+import {buildVipBar} from './vip-bar.mjs?v=20261105floor1';
 import {mergeGeometries} from './vendor/BufferGeometryUtils.js';
 import {loadCastMember} from './festival-cast.mjs?v=20261105activity3';
 
-export const venueLocations = {bar:[-10,5], tea:[19,59], vip:[18,-11]};
+import {createHealthVenues} from './health-venues.mjs?v=20261105grounds1';
+import {createElevation,levelHeight} from './elevation.mjs?v=20261105grounds1';
+
+export const venueLocations = {bar:[-10,5], tea:[19,59], vip:[18,-11],checking:[-42,-10],'first-aid':[-23,-31],elevation:[19,35]};
 
 // Build each venue by material so the stonework, cushions and stocked shelves
 // cost a handful of draw calls even when the full grounds are visible on a phone.
@@ -92,6 +95,36 @@ export function createHospitality(THREE,requestFrame){
   tea.sign('Tea house',1.5,.27,0,2.62,.67);tea.finish();
 
   const vip=buildVipBar(THREE,venue('vip','James Bondage VIP'),make,requestFrame);
+  const {testing,aid}=createHealthVenues(THREE,venue,make);
+  const elevation=createElevation(THREE,venue,make);
+  const top=.19+4*levelHeight;
+  const teams=[
+    {place:testing,people:[['D3',-.4,.07,1.18,.3],['clinician-1',-.6,.07,-.72,2.93],['B',1.48,.07,-.40,.8]]},
+    {place:aid,people:[['clinician-2',.56,.08,1.24,.25],['clinician-1',-1.0,.08,-.15,1.8]]},
+    {place:elevation,people:[['D3',-.24,top,-1.85,.2],['B',1.45,top,.70,-1.37],['C',.72,top,1.60,2.8]]}
+  ];
+  for(const team of teams){team.started=false;team.mixers=[];}
+  function updateTeams(camera,time,moving){
+    let active=false;
+    for(const team of teams){
+      const room=team.place.node;
+      if(Math.hypot(camera.position.x-room.position.x,camera.position.z-room.position.z)>39)continue;
+      if(!team.started){
+        team.started=true;
+        team.people.forEach(async([id,x,y,z,yaw],index)=>{
+          try{
+            const {scene:model,animations}=await loadCastMember(id);
+            model.name=room.name+' staff or guest '+(index+1);model.position.set(x,y,z);model.rotation.y=yaw;
+            model.traverse(o=>{if(o.isSkinnedMesh)o.frustumCulled=false;});room.add(model);
+            const mixer=new THREE.AnimationMixer(model);mixer.clipAction(animations[0]).play();mixer.setTime(index*.83);
+            team.mixers.push(mixer);requestFrame();
+          }catch(error){console.error('Loading festival venue cast',room.name,id,error);}
+        });
+      }
+      if(moving&&team.mixers.length){team.mixers.forEach((m,i)=>m.setTime(time*.78+i*.83));active=true;}
+    }
+    return active;
+  }
   let started=false;
   function loadHosts(){
     if(started)return;started=true;
@@ -123,10 +156,11 @@ export function createHospitality(THREE,requestFrame){
   return {group,setNight:vip.setNight,stats:{teaCushions:33,teaStones:31,barShelves:2,vipCapacity:22},update(camera,time,moving){
     if(!group.visible)return false;
     const vipMoving=vip.update(camera,time,moving);
+    const teamMoving=updateTeams(camera,time,moving);
     const nearBar=Math.hypot(camera.position.x-bar.node.position.x,camera.position.z-bar.node.position.z)<36;
     if(nearBar&&!serviceStarted)loadServer();
     if(nearBar&&barMixer&&moving)barMixer.setTime(time*.75);
-    if(Math.hypot(camera.position.x-tea.node.position.x,camera.position.z-tea.node.position.z)>48)return vipMoving||Boolean(nearBar&&barMixer&&moving);
-    loadHosts();if(!moving)return false;mixers.forEach((m,i)=>m.setTime(time*.65+i*.81));return vipMoving||mixers.length>0;
+    if(Math.hypot(camera.position.x-tea.node.position.x,camera.position.z-tea.node.position.z)>48)return teamMoving||vipMoving||Boolean(nearBar&&barMixer&&moving);
+    loadHosts();if(!moving)return false;mixers.forEach((m,i)=>m.setTime(time*.65+i*.81));return teamMoving||vipMoving||mixers.length>0;
   }};
 }

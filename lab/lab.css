@@ -456,7 +456,7 @@ body[data-camera-view="fashion"] .intro{visibility:hidden}
 
 /* Festival hospitality menus */
 .mobile-places{display:none}
-@media(min-width:1001px){#place-list{grid-template-columns:repeat(11,minmax(0,1fr))}#place-list button{padding-inline:clamp(7px,.9vw,14px);column-gap:4px}}
+@media(min-width:1001px){#place-list{grid-template-columns:repeat(14,minmax(0,1fr))}#place-list button{padding-inline:clamp(7px,.9vw,14px);column-gap:4px}}
 @media(max-width:800px),(max-width:1000px) and (pointer:coarse){
  .mobile-places{display:block;position:relative;z-index:4}
  .mobile-places summary{display:grid;place-items:center;min-height:40px;padding:4px 12px;list-style:none;cursor:pointer;border:1px solid currentColor;border-radius:24px;font-size:12px}
@@ -508,3 +508,16 @@ body[data-camera-view="fashion"] .intro{visibility:hidden}
 .vip-artists{margin:0;padding:14px clamp(20px,4vw,36px) 0;list-style:none}
 .vip-artists li{padding:8px 0;border-bottom:1px solid #d3d3d3;font-size:16px}
 .vip-more{margin:12px clamp(20px,4vw,36px) 24px;font-size:14px}
+
+@media(min-width:1001px) and (max-width:1510px){
+  #place-list{grid-template-columns:repeat(14,minmax(94px,1fr));overflow-x:auto;overscroll-behavior-x:contain}
+}
+#elevation-levels{display:flex;gap:3px;align-items:center;flex-wrap:wrap;margin:10px 0}
+#elevation-levels button{min-width:31px;min-height:38px;border:1px solid #b9b9af;border-radius:16px;background:transparent}
+#elevation-levels button[aria-pressed="true"]{background:#674f41;color:#fff}
+#checking-guide{display:inline-block;text-underline-offset:3px}
+#elevation-menu .venue-menu-head{background:#624135;color:#fff3da}
+
+#spectra-link{color:inherit;font-size:.875rem;text-underline-offset:3px}
+#spectra-link svg{width:1em;height:1em;vertical-align:middle}
+@media(min-width:760px){#elevation-menu .drinks-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}

@@ -1,4 +1,5 @@
-import {createHospitality,venueLocations} from './hospitality.mjs?v=20261105bondage1';
+import {createHospitality,venueLocations} from './hospitality.mjs?v=20261105grounds1';
+import {sunsetLevels,levelHeight,createSunsetSky} from './elevation.mjs?v=20261105grounds1';
 import {createGroundWalkers,createSeatedVisitors,createShowRunway} from './visitor-groups.mjs?v=20261105activity3';
 import { createPortal } from './portal.mjs?v=20261105activity3';
 import { createFestivalCast } from './festival-cast.mjs?v=20261105activity3';
@@ -15,6 +16,9 @@ const mobile = () => compactLayout.matches;
 const portraitMobile = () => mobile() && $('world').clientHeight > $('world').clientWidth;
 const status = (message) => { $('scene-status').textContent = message; };
 const places = {
+  checking:{number:'12 · HARM REDUCTION',title:'Pill testing',copy:'A proposed NSW Government drug checking service for people aged 18 and over. Volunteers welcome visitors at a private entrance. NSW Health chemists test samples, and trained NUAA peer workers explain the results in confidence. Testing can miss harmful substances.'},
+  'first-aid':{number:'13 · EVENT MEDICAL',title:'First aid',copy:'For overheating, injuries or feeling unwell, come to the first aid geodome. The proposed St John Ambulance NSW and Médecins Sans Frontières team has treatment and cooling space beside the ambulance access lane.'},
+  elevation:{number:'14 · SUNSET TOWER',title:'Elevation Bar',copy:'We propose licensing SPECTRA by NEWSUBSTANCE as a mental health facility to explore how colour affects mood. Follow the spiral from gold to crimson through four lookouts to the Blue Lotus bar on level five. Ten people per level.'},
   bar: {number:'09 · NON-ALCOHOLIC BAR',title:'Non-alcoholic bar',copy:'Follow the short path from the main pavilion for the full Heaps Normal beer range, sparkling wines, L-theanine drinks, kombucha and spring water.'},
   vip: {number:'11 · VIP ARENA',title:'James Bondage VIP',copy:'Two interlocking circles form a Vesica Piscis. The DJ plays on the black dance floor. Across the white carpet, the Adaptogen Cocktail Bar serves non-alcoholic cocktails with functional mushrooms and botanicals. Capacity 22 people.'},
   tea: {number:'10 · TEA HOUSE',title:'Tea house',copy:'Follow the path downstream to a stone circle with cushions for 33 guests. Asian tea ceremony hosts gather around a low tea table, away from the sound of the main arena.'},
@@ -63,7 +67,7 @@ function previewSceneLabels(){
 }
 function selectPlace(key, show = true, automated = false) {
   if(!automated)stopTour();
-  selected = key;media.setQuiet(key==='tea');syncLineup();
+  selected = key;media.setQuiet(['tea','checking','first-aid'].includes(key));syncLineup();
   if(key==='overview'&&!automated)previewSceneLabels();else{labelPreviewUntil=0;clearTimeout(labelPreviewTimer);}syncSceneLabels();
   document.body.dataset.cameraView = key;
   const info = places[key];
@@ -72,7 +76,10 @@ function selectPlace(key, show = true, automated = false) {
   $('place-title').textContent = info.title;
   $('place-copy').textContent = info.copy;
   if(key!=='overview')emotionPanel(false);
-  const isVenue=Object.hasOwn(venueLocations,key);
+  const isVenue=Boolean($(key+'-menu'));
+  $('checking-guide').hidden=key!=='checking';
+  $('spectra-link').hidden=key!=='elevation';
+  $('elevation-levels').hidden=key!=='elevation'||mode!=='3d';
   $('venue-menu-open').hidden=!isVenue;
   $('vip-lineup-open').hidden=key!=='vip';
   if(isVenue)$('venue-menu-open').setAttribute('aria-controls',key+'-menu');
@@ -91,14 +98,19 @@ function setMode(next) {
   $('scene').hidden = mode === 'plan';
   $('labels-toggle').disabled = mode === 'plan';
   $('navigation-hint').textContent = mode === 'plan' ? 'Select a place for details' : mobile() ? 'Drag to orbit · pinch to zoom' : 'Drag to look around · scroll to move closer';
+  $('elevation-levels').hidden=selected!=='elevation'||mode!=='3d';
   syncSceneLabels();sceneAPI?.setVisible(mode === '3d' && entered);
   if (mode === '3d') sceneAPI?.go(selected, true);
 }
 document.querySelectorAll('[data-view]').forEach(b => b.addEventListener('click', () => selectPlace(b.dataset.view)));
 function visitVenue(key){
   if(!storyState?.navigation)story.start(31);
-  selectPlace(key);$('venue-menu-open').focus({preventScroll:true});
+  selectPlace(key);($('venue-menu-open').hidden?$('place-close'):$('venue-menu-open')).focus({preventScroll:true});
 }
+for(const button of document.querySelectorAll('[data-elevation]'))button.addEventListener('click',()=>{
+  stopTour();const index=Number(button.dataset.elevation);
+  if(index<0)sceneAPI?.go('elevation');else sceneAPI?.viewElevation(index);
+});
 const mobilePlaces=document.querySelector('.mobile-places');
 const mobileList=mobilePlaces.querySelector('[role="group"]');
 for(const place of $('place-list').querySelectorAll('[data-view]')){
@@ -260,7 +272,7 @@ $('replay-story').addEventListener('click',()=>{media.start();startStory();});
 function stopTour(){autoTourCancelled=true;document.body.dataset.cinematic='false';document.body.dataset.tourActive='false';clearTimeout(tourTimer);tourTimer=0;$('tour-toggle').setAttribute('aria-pressed','false');$('tour-toggle').textContent='Tour';syncSceneLabels();}
 $('tour-toggle').addEventListener('click',()=>{
   if(tourTimer||(!autoTourCancelled&&['tour','orbit'].includes(storyState?.phase))){stopTour();return;}
-  stopTour();let n=0;const route=['truck','main','bar','vip','food','play','river','support','fashion','portal','tea'];
+  stopTour();let n=0;const route=['truck','main','bar','vip','food','play','river','support','checking','first-aid','fashion','elevation','portal','tea'];
   $('tour-toggle').setAttribute('aria-pressed','true');$('tour-toggle').textContent='Stop tour';
   const next=()=>{if(n>=route.length){stopTour();selectPlace('overview',false,true);return;}tourTimer=setTimeout(next,n+1===route.length?10000:5000);selectPlace(route[n++],true,true);};next();
 });
@@ -302,13 +314,14 @@ syncFullscreen();
 
 async function buildWorld() {
   const THREE = await import('three');
-  const [{OrbitControls},{createArchitecture},{createSiteFeatures},{createCrowd},{createLightShow},{createRunway}]=await Promise.all([import('./vendor/OrbitControls.js'),import('./architecture.mjs?v=20261103purpose1'),import('./site-features.mjs?v=20261103orbit1'),import('./crowd.mjs?v=20261105activity3'),import('./light-show.mjs?v=20261105rigs1'),import('./runway.mjs?v=20261103orbit1')]);
+  const [{OrbitControls},{createArchitecture},{createSiteFeatures},{createCrowd},{createLightShow},{createRunway}]=await Promise.all([import('./vendor/OrbitControls.js'),import('./architecture.mjs?v=20261103purpose1'),import('./site-features.mjs?v=20261105floor1'),import('./crowd.mjs?v=20261105activity3'),import('./light-show.mjs?v=20261105floor1'),import('./runway.mjs?v=20261103orbit1')]);
   const architecture=createArchitecture(THREE);
   let seed = 1947;
   const random = () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; };
   const scene = new THREE.Scene();
   scene.background = new THREE.Color('#e9ece2');
   scene.fog = new THREE.Fog('#e9ece2', mobile() ? 205 : 115, mobile() ? 390 : 255);
+  const sunsetSky=createSunsetSky(THREE,scene);
   const camera = new THREE.PerspectiveCamera(mobile() ? 50 : 41, innerWidth / innerHeight, 0.2, 550);
   const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'low-power' });
   renderer.setPixelRatio(Math.min(devicePixelRatio, mobile() ? 1.6 : 2));
@@ -453,6 +466,10 @@ async function buildWorld() {
   path([[1,48],[7,54],[11,62],[15,66.9],[18.5,66],[19,64.9]],1.8);
   path([[1,48],[-9,53],[-20,54],[-29,52],[-34,56]],2.4);
 
+  path([[-31,-14],[-36.5,-12],[-40,-8],[-41.1,-8]],1.55);
+  path([[-31,-14],[-27,-18.5],[-24,-24.5],[-23,-27.85]],2.1);
+  path([[-28,-38],[-19,-36.8],[-18,-32],[-18.2,-28]],2.95);
+  path([[1,38],[7,39],[13,40],[18,39.7],[19,38.3]],1.85);
   const architectureGroup=new THREE.Group();scene.add(architectureGroup);
   const buildings={};
   const main=architecture.mainVault();main.position.set(0,.08,-12);architectureGroup.add(main);buildings.main=main;
@@ -587,7 +604,7 @@ async function buildWorld() {
   const contextDecor=new THREE.Group();const contextObjects=scene.children.slice(contextStart);contextObjects.forEach(o=>contextDecor.add(o));scene.add(contextDecor);
   const portal=createPortal(THREE,()=>{needsFrame=true;requestFrame();});scene.add(portal.group);
   const anchorData=[['main','Main pavilion',[0,8.4,-12]],['food','International Food Fair',[-24,6.5,-9]],['play','Mobile music making',[-26,2.9,18]],['river','Apple listening pods',[22,1.3,8]],['support','Support',[-32,3,-20]],['fashion','Fashion runway',[0,2.2,24]],['portal','I Am Portal',[-34,6,66]]];
-  for(const [key,[x,z]] of Object.entries(venueLocations))anchorData.push([key,places[key].title,[x,3.45,z]]);
+  for(const [key,[x,z]] of Object.entries(venueLocations))anchorData.push([key,places[key].title,[x,key==='elevation'?15.65:3.45,z]]);
   const anchors=anchorData.map(([key,label,p])=>{
     const el=document.createElement('button');el.className='scene-label';el.dataset.key=key;el.tabIndex=-1;el.innerHTML='<i></i>'+label;el.addEventListener('click',()=>selectPlace(key));$('labels').append(el);return {el,p:new THREE.Vector3(...p)};
   });
@@ -602,6 +619,9 @@ async function buildWorld() {
     food:{pos:[-14,5,4],target:[-25,2,-10]},
     play:{pos:[-31,3.7,24],target:[-25.4,1.2,18]},
     river:{pos:[32,5,23],target:[23,1.7,10]},
+    checking:{pos:[-38.5,4.6,1.3],target:[-42,1.12,-10]},
+    'first-aid':{pos:[-17.3,5.8,-19.5],target:[-21.8,1.18,-31]},
+    elevation:{pos:[33,14,57],target:[19,7.3,35]},
     support:{pos:[-25,7,-12],target:[-33.7,1.1,-23.2]},
     fashion:{pos:[2.4,2.1,40.8],target:[0,1,30]}
   };
@@ -625,7 +645,7 @@ async function buildWorld() {
     waterMat.uniforms.waterA.value.lerpColors(dayWaterA,nightWaterA,Number(value));waterMat.uniforms.waterB.value.lerpColors(dayWaterB,nightWaterB,Number(value));
     needsFrame=true;requestFrame();
   }
-  function setResponse(value){responseLevel=value;lightShow.setResponse(value);features.setResponse(value);nightLights.forEach((light,i)=>{light.color.setHSL(.48+value*.3+i*.04,.6,.65);light.intensity=currentStory.programme>0?currentStory.night*(12+value*24):0;});document.body.dataset.sceneResponse=value.toFixed(2);needsFrame=true;requestFrame();}
+  function setResponse(value){responseLevel=value;lightShow.setResponse(value);nightLights.forEach((light,i)=>{light.color.setHSL(.48+value*.3+i*.04,.6,.65);light.intensity=currentStory.programme>0?currentStory.night*(12+value*24):0;});document.body.dataset.sceneResponse=value.toFixed(2);needsFrame=true;requestFrame();}
   function setStory(value){
     currentStory={...value};
     for(const [key,g] of Object.entries(buildings)){const p=value[key]||0;g.visible=p>0;buildPlanes[key].constant=p>=1?100:Math.max(.1,p*8.7);}
@@ -645,7 +665,22 @@ async function buildWorld() {
   }
   function setMusicMotion(value){musicMotion=value;document.body.dataset.musicMotion=String(value);needsFrame=true;requestFrame();}
 
+  function markLanding(index){
+    document.body.dataset.elevationLevel=String(index+1);
+    for(const b of document.querySelectorAll('[data-elevation]'))b.setAttribute('aria-pressed',String(Number(b.dataset.elevation)===index));
+  }
+  function viewElevation(index){
+    if(selected!=='elevation'||!sunsetLevels[index])return;
+    const angle=1.09+index*.21,[x,z]=venueLocations.elevation,y=.18+index*levelHeight+1.55;
+    cinematicCamera=false;tween=null;controls.minDistance=.75;controls.maxPolarAngle=Math.PI*.54;
+    camera.position.set(x+1.35*Math.sin(angle),y,z+1.35*Math.cos(angle));
+    controls.target.set(camera.position.x+5.4*Math.sin(angle),y+.24,camera.position.z+5.4*Math.cos(angle));
+    controls.update();sunsetSky.show(index,camera.position,angle);markLanding(index);
+    status('Elevation Bar · Level '+(index+1)+' · '+sunsetLevels[index].name);
+    needsFrame=true;requestFrame();
+  }
   function go(key,instant=false){
+    sunsetSky.show(-1);markLanding(-1);controls.maxPolarAngle=Math.PI*.485;
     cinematicCamera=false;
     controls.minDistance=key==='fashion'?3:key.startsWith('portal')?4:12;
     const p=presets[key];const end=new THREE.Vector3(...p.pos),target=new THREE.Vector3(...p.target);
@@ -668,8 +703,8 @@ async function buildWorld() {
   canvas.addEventListener('keydown',(e)=>{
     if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','+','-','='].includes(e.key))return;
     e.preventDefault();cinematicCamera=false;dismissSceneLabels();stopTour();syncLineup();tween=null;const sph=new THREE.Spherical().setFromVector3(camera.position.clone().sub(controls.target));
-    if(e.key==='ArrowLeft')sph.theta-=.12;if(e.key==='ArrowRight')sph.theta+=.12;if(e.key==='ArrowUp')sph.phi=Math.max(.1,sph.phi-.1);if(e.key==='ArrowDown')sph.phi=Math.min(Math.PI*.485,sph.phi+.1);
-    if(e.key==='+'||e.key==='=')sph.radius=Math.max(12,sph.radius*.9);if(e.key==='-')sph.radius=Math.min(controls.maxDistance,sph.radius*1.1);
+    if(e.key==='ArrowLeft')sph.theta-=.12;if(e.key==='ArrowRight')sph.theta+=.12;if(e.key==='ArrowUp')sph.phi=Math.max(.1,sph.phi-.1);if(e.key==='ArrowDown')sph.phi=Math.min(controls.maxPolarAngle,sph.phi+.1);
+    if(e.key==='+'||e.key==='=')sph.radius=Math.max(controls.minDistance,sph.radius*.9);if(e.key==='-')sph.radius=Math.min(controls.maxDistance,sph.radius*1.1);
     camera.position.copy(controls.target).add(new THREE.Vector3().setFromSpherical(sph));controls.update();needsFrame=true;requestFrame();
   });
   const visitorFrustum=new THREE.Frustum(),projectionView=new THREE.Matrix4();
@@ -721,7 +756,7 @@ async function buildWorld() {
   canvas.addEventListener('webglcontextlost',(e)=>{e.preventDefault();setMode('plan');status('The 3D view paused. The 2D site plan remains available.');});
   go('overview',true);resize();
   runwayCrowd.select(document.querySelector('[data-runway-show][aria-pressed="true"]').dataset.runwayShow);
-  return {go,orbit,setRunwayShow:runwayCrowd.select,setNight,setStory,setResponse,setRain,setLayout,setMusicMotion,setVisible(v){visible=v;if(!v){cancelAnimationFrame(raf);raf=0;}else{needsFrame=true;requestFrame();}},stats(){return {triangles:renderer.info.render.triangles,calls:renderer.info.render.calls,trees:treeList.length,...features.stats,...activities.stats,...hospitality.stats,portal:portal.stats};}};
+  return {go,orbit,viewElevation,setRunwayShow:runwayCrowd.select,setNight,setStory,setResponse,setRain,setLayout,setMusicMotion,setVisible(v){visible=v;if(!v){cancelAnimationFrame(raf);raf=0;}else{needsFrame=true;requestFrame();}},stats(){return {triangles:renderer.info.render.triangles,calls:renderer.info.render.calls,trees:treeList.length,...features.stats,...activities.stats,...hospitality.stats,portal:portal.stats};}};
 }
 
 try {

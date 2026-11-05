@@ -14,8 +14,9 @@ globalThis.ProgressEvent ??= class {};
 const runway=pack==='iris'||pack==='nagnata';
 const workshop=pack==='workshops';
 const walkers=pack==='walkers';
-const samples=runway||workshop||walkers?8:4;
-const ids=walkers?['01','04','06','09','A','D2']:runway?Array.from({length:8},(_,i)=>pack+'-'+i):workshop?['01','04','07','09','02','05','06','08','A','B','D3']:['01','02','03','04','05','06','07','08','09','A','B','C','D1','D2','D3','river-arena'];
+const vip=pack==='vip-dance-floor';
+const samples=vip?6:runway||workshop||walkers?8:4;
+const ids=vip?Array.from({length:15},(_,i)=>'floor-'+(i+1)):walkers?['01','04','06','09','A','D2']:runway?Array.from({length:8},(_,i)=>pack+'-'+i):workshop?['01','04','07','09','02','05','06','08','A','B','D3']:['01','02','03','04','05','06','07','08','09','A','B','C','D1','D2','D3','river-arena'];
 const gltf={asset:{version:'2.0',generator:'Universal Mind festival cast'},scene:0,scenes:[{nodes:[]}],nodes:[],meshes:[],accessors:[],bufferViews:[],buffers:[],materials:[{name:'Distance wardrobe',doubleSided:true,pbrMetallicRoughness:{metallicFactor:0,roughnessFactor:.88}}]};
 const chunks=[];let offset=0;
 function accessor(array,width,componentType,extra={}){
@@ -26,7 +27,7 @@ function accessor(array,width,componentType,extra={}){
 }
 const asLinear=v=>v<=.04045?v/12.92:((v+.055)/1.055)**2.4;
 for(const id of ids){
-  const source=runway||walkers||(!workshop && /^\d+$/.test(id))?standing:assets;
+  const source=vip||runway||walkers||(!workshop && /^\d+$/.test(id))?standing:assets;
   const data=await fs.readFile(path.join(source,id+'.glb'));
   const len=data.readUInt32LE(12),json=JSON.parse(data.subarray(20,20+len)),bin=data.subarray(28+len);
   const maps=await Promise.all(json.images.map(img=>{
@@ -42,9 +43,9 @@ for(const id of ids){
   const asset=await new GLTFLoader().parseAsync(JSON.stringify(json),'');
   const mixer=new THREE.AnimationMixer(asset.scene);
   let clip=asset.animations[0];
-  if(workshop||pack==='crowd'){
+  if(vip||workshop||pack==='crowd'){
     const {characterClip}=await import('./character-motion.mjs');
-    const action=workshop?(['A','B','D3'].includes(id)?'lead':'listen'):('AB'.includes(id)||id==='D3'?'talk':'dance');
+    const action=vip?'dance':workshop?(['A','B','D3'].includes(id)?'lead':'listen'):('AB'.includes(id)||id==='D3'?'talk':'dance');
     clip=characterClip(THREE,clip,action,ids.indexOf(id));
   }
   mixer.clipAction(clip).play();
@@ -52,9 +53,9 @@ for(const id of ids){
   asset.scene.traverse(object=>{
     if(!object.isSkinnedMesh)return;
     const geom=object.geometry,mat=materials.get(object.material.name);
-    if(!mat||/Skin details|Eyelashes|Eyebrows|laces|chest print|Silver/i.test(object.material.name))return;
+    if(!mat||/Skin details|Eyelashes|laces/i.test(object.material.name)||(!vip&&/Eyebrows|chest print|Silver/i.test(object.material.name)))return;
     const original=Uint32Array.from(geom.index.array);
-    const target=Math.min(original.length,Math.max(30,Math.floor(original.length*(runway?.23:workshop?.12:.075)/3)*3));
+    const target=Math.min(original.length,Math.max(30,Math.floor(original.length*(vip?(/chest print/i.test(object.material.name)?1:.16):runway?.23:workshop?.12:.075)/3)*3));
     const [indices]=MeshoptSimplifier.simplify(original,geom.attributes.position.array,3,target,.013,['Sparse']);
     const ids=new Map(),start=rgb.length/3;
     function sample(i){

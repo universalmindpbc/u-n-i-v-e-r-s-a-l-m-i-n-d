@@ -193,3 +193,24 @@ register('waspie-mini','bottom',(g,s)=>{
   const satin=mat('Banded satin mini',null,{map:'waspie-skirt.png',color:s.color,roughness:.39,doubleSided:true});
   return loosePart(body,mesh,satin,.30,.26,legsUnder(g,hem,cm(4)));
 });
+
+// Strapless crimson tailoring with open waist panels and curved satin reinforcements.
+register('technical-corset','top',(g,s)=>{
+  const neck=(v:any)=>.58+.16*Math.max(0,Math.cos(v.tth))+.085*Math.min(1,v.ax/g.body.L.shoulderX);
+  const covered=(v:any)=>isTrunk(v)&&v.tt>-.16&&v.tt<neck(v);
+  const opening=(v:any)=>((Math.abs(v.tth)-1.00)/.43)**2+((v.tt-.43)/.225)**2<1;
+  const parts=shellPart(g,{covers:v=>covered(v)&&!opening(v),offset:cm(.65),relax:2},
+    mat('Scarlet structured satin',null,{color:s.color,roughness:.24,doubleSided:true}));
+  const contour=(v:any)=>Math.abs(v.tth)-(.24+.71*Math.max(0,v.tt));
+  parts.push(...shellPart(g,{covers:v=>covered(v)&&!opening(v)&&(Math.abs(contour(v))<.11||
+      (v.tt>.59&&v.tt<neck(v)&&Math.abs(v.tth)<1.2)),offset:cm(.88),relax:1},
+    mat('Raised corset panelling',null,{color:'#ff435b',roughness:.23}),false));
+  return parts;
+});
+register('technical-leg','bottom',(g,s)=>{
+  const covered=(v:any)=>(isTrunk(v)&&v.tt<.15)||v.region===REGION.upperleg||v.region===REGION.lowerleg;
+  const parts=shellPart(g,{covers:covered,offset:cm(.59),relax:2},mat('Technical stretch satin',null,{color:s.color,roughness:.29}));
+  parts.push(...shellPart(g,{covers:v=>v.region===REGION.upperleg&&Math.abs(Math.abs(v.theta)-(.6+v.t*1.6))<.23,
+    offset:cm(.85),relax:1},mat('Swept leg panels',null,{color:'#892138',roughness:.36}),false));
+  return parts;
+});

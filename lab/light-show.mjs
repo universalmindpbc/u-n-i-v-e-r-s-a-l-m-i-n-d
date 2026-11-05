@@ -1,3 +1,4 @@
+import {geodesicFrame} from './geodesic-frame.mjs';
 // Roof projections, main-stage lasers and perimeter moving heads.
 export function createLightShow(THREE,scene,architectureGroups,architecture){
   const uniforms={labTime:{value:0},labNight:{value:0},labResponse:{value:.7}};
@@ -31,10 +32,8 @@ export function createLightShow(THREE,scene,architectureGroups,architecture){
   });
   const show=new THREE.Group();show.name='Geodesic hologram and projection towers';scene.add(show);
   const hologram=new THREE.Group();show.add(hologram);hologram.position.set(0,.08,-12);
-  const edgeSource=new THREE.EdgesGeometry(new THREE.IcosahedronGeometry(10.2,2),1),a=edgeSource.attributes.position,lines=[];
-  for(let i=0;i<a.count;i+=2){const p=new THREE.Vector3().fromBufferAttribute(a,i),q=new THREE.Vector3().fromBufferAttribute(a,i+1);if(p.y<0&&q.y<0)continue;if(p.y<0)p.lerp(q,-p.y/(q.y-p.y));if(q.y<0)q.lerp(p,-q.y/(p.y-q.y));lines.push(p.x,p.y,p.z,q.x,q.y,q.z);}
   const material=new THREE.LineBasicMaterial({color:'#78efe2',transparent:true,opacity:0,depthWrite:false,blending:THREE.AdditiveBlending});
-  const frame=new THREE.LineSegments(new THREE.BufferGeometry().setAttribute('position',new THREE.Float32BufferAttribute(lines,3)),material);hologram.add(frame);edgeSource.dispose();
+  const frame=new THREE.LineSegments(geodesicFrame(THREE,10.2,2),material);hologram.add(frame);
   const bases=[],heights=[];
   const vertices=frame.geometry.attributes.position;
   for(let i=0;i<vertices.count;i++){
@@ -68,7 +67,8 @@ export function createLightShow(THREE,scene,architectureGroups,architecture){
     const mesh=new THREE.InstancedMesh(geo,mat,count);mesh.name=name;mesh.frustumCulled=false;show.add(mesh);return mesh;
   }
   const sweeps=beamBatch(towers.length,2.05,'Perimeter moving beams');
-  const lasers=beamBatch(18,.105,'Main pavilion full-colour lasers');
+  const interior=beamBatch(9,.052,'Main arena interior lasers');
+  const roof=beamBatch(9,.12,'Dome rooftop festival lasers');
   const beamPose=new THREE.Object3D();
   function pointBeam(mesh,i,start,delta){
     const len=delta.length();
@@ -86,7 +86,7 @@ export function createLightShow(THREE,scene,architectureGroups,architecture){
       light.position.set(x,12,z);light.target.position.set(tx,3,tz);show.add(light,light.target);spots.push(light);
     }
   }
-  for(let i=0;i<lasers.count;i++)lasers.setColorAt(i,new THREE.Color().setHSL((i%9)/9,.98,.57));
+  for(const rig of [interior,roof])for(let i=0;i<rig.count;i++)rig.setColorAt(i,new THREE.Color().setHSL(i/rig.count,.98,.57));
   let amount=-1,lastTime=-1;
   function aimRigs(t){
     for(const [i,[x,z,tx,tz]] of towers.entries()){
@@ -97,25 +97,34 @@ export function createLightShow(THREE,scene,architectureGroups,architecture){
       lamp.position.copy(origin);lamp.lookAt(aim);lamp.updateMatrix();heads.setMatrixAt(i,lamp.matrix);
       pointBeam(sweeps,i,origin,direction);
     }
-    for(let i=0;i<lasers.count;i++){
-      const side=i<9?-1:1, ray=(i%9)/8;
-      origin.set(side*4.5,architecture.roofHeight(side*4.5,-2)+.34,-14);
-      const azimuth=side*(.18+.98*ray)+.22*Math.sin(t*.26);
-      direction.set(50*Math.sin(azimuth),8+13*ray+3*Math.sin(t*.31+ray*2),-50*Math.cos(azimuth));
-      pointBeam(lasers,i,origin,direction);
+    for(let i=0;i<interior.count;i++){
+      const ray=i/(interior.count-1)-.5;
+      // The rear truss projects above the crowd, under the main canopy towards its open entrance.
+      origin.set(0,3.75,-19);
+      direction.set(ray*12+1.15*Math.sin(t*.31),-.65+.48*Math.cos(t*.31+ray),17.5);
+      pointBeam(interior,i,origin,direction);
+      // A second projector at the dome crown covers the public lawns and the path to the Portal.
+      origin.set(0,architecture.roofHeight(0,0)+.44,-12);
+      direction.set(-9+ray*46+4*Math.sin(t*.24),4+1.8*Math.sin(t*.29+ray),49);
+      pointBeam(roof,i,origin,direction);
     }
-    heads.instanceMatrix.needsUpdate=sweeps.instanceMatrix.needsUpdate=lasers.instanceMatrix.needsUpdate=true;
+    for(const rig of [heads,sweeps,interior,roof])rig.instanceMatrix.needsUpdate=true;
+  }
+  function setLaserPower(){
+    const power=Math.max(0,amount)*(.55+.45*uniforms.labResponse.value);
+    interior.material.uniforms.power.value=power*.88;
+    roof.material.uniforms.power.value=power*.82;
   }
   aimRigs(0);
   return {
-    setResponse(value){uniforms.labResponse.value=value;},
+    setResponse(value){uniforms.labResponse.value=value;setLaserPower();},
     set(value,ready){
       show.visible=ready;if(amount===value)return;
-      amount=value;hologram.visible=lasers.visible=sweeps.visible=value>0;
+      amount=value;hologram.visible=interior.visible=roof.visible=sweeps.visible=value>0;
       for(let i=0;i<vertices.count;i++)vertices.setY(i,bases[i]+heights[i]*value);
       vertices.needsUpdate=true;material.opacity=value*.63;uniforms.labNight.value=value;
       sweeps.material.uniforms.power.value=value*.16;
-      lasers.material.uniforms.power.value=value*.74;
+      setLaserPower();
       spots.forEach((spot,i)=>spot.intensity=Math.max(0,Math.min(1,(value-i*.11)/.35))*26);
     },
     update(time,rigTime){
