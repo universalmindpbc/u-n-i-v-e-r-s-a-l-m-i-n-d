@@ -1,0 +1,229 @@
+{
+  "source": "663d7b258b8db952cd93cf77c922ddf0b19f476a",
+  "date": "2026-11-05T07:55:43.661Z",
+  "method": "Permanent Panthur staging. Dedicated headless Chromium launched with --mute-audio; media requests blocked, native fullscreen disabled.",
+  "result": [
+    {
+      "width": 1440,
+      "wordmark": {
+        "drawn": {
+          "text": "джеймс бондаж",
+          "font": "121px \"Times New Roman\", Times, serif"
+        },
+        "object": "Джеймс Бондаж",
+        "english": "James Bondage VIP"
+      },
+      "allDestinations": [
+        "truck",
+        "main",
+        "food",
+        "play",
+        "river",
+        "support",
+        "fashion",
+        "portal",
+        "bar",
+        "tea",
+        "vip",
+        "checking",
+        "first-aid",
+        "elevation"
+      ],
+      "aboutArtistCount": 29,
+      "aboutNames": [
+        "All Inn x Nilla",
+        "ZIP"
+      ],
+      "vipCredits": [
+        "All Inn x Nilla (Label Roster)",
+        "ZIP (Perlon)"
+      ],
+      "placeLabels": [
+        "International Food Fair",
+        "Mobile music making",
+        "Apple listening pods"
+      ],
+      "dancers": 15,
+      "individuallyMoving": true,
+      "reducedMotion": false,
+      "upperHazeSprites": 6,
+      "visibleVipHologram": true,
+      "interiorBeamCount": 9,
+      "rooftopBeamCount": 9,
+      "interiorCentralRay": {
+        "start": [
+          0,
+          3.75,
+          -19
+        ],
+        "end": [
+          1.1037781238555908,
+          3.234717071056366,
+          -1.5
+        ]
+      },
+      "rooftopCentralRay": {
+        "start": [
+          0,
+          8.239999771118164,
+          -12
+        ],
+        "end": [
+          -5.643101215362549,
+          13.919830322265625,
+          37
+        ]
+      },
+      "sunsets": [
+        {
+          "level": "1",
+          "visible": true,
+          "horizon": "ffba54",
+          "eye": 1.7300000000000004
+        },
+        {
+          "level": "2",
+          "visible": true,
+          "horizon": "ffa33c",
+          "eye": 4.7799999999999985
+        },
+        {
+          "level": "3",
+          "visible": true,
+          "horizon": "ff9a69",
+          "eye": 7.829999999999999
+        },
+        {
+          "level": "4",
+          "visible": true,
+          "horizon": "ff795c",
+          "eye": 10.879999999999999
+        },
+        {
+          "level": "5",
+          "visible": true,
+          "horizon": "ff7152",
+          "eye": 13.93
+        }
+      ],
+      "productGroups": [
+        "Ritual Oils",
+        "Kiss the Earth",
+        "Blue Lotus Effect"
+      ],
+      "products": 21,
+      "errors": []
+    },
+    {
+      "width": 390,
+      "wordmark": {
+        "drawn": {
+          "text": "джеймс бондаж",
+          "font": "121px \"Times New Roman\", Times, serif"
+        },
+        "object": "Джеймс Бондаж",
+        "english": "James Bondage VIP"
+      },
+      "allDestinations": [
+        "truck",
+        "main",
+        "food",
+        "play",
+        "river",
+        "support",
+        "fashion",
+        "portal",
+        "bar",
+        "tea",
+        "vip",
+        "checking",
+        "first-aid",
+        "elevation"
+      ],
+      "aboutArtistCount": 29,
+      "aboutNames": [
+        "All Inn x Nilla",
+        "ZIP"
+      ],
+      "vipCredits": [
+        "All Inn x Nilla (Label Roster)",
+        "ZIP (Perlon)"
+      ],
+      "placeLabels": [
+        "International Food Fair",
+        "Mobile music making",
+        "Apple listening pods"
+      ],
+      "dancers": 15,
+      "individuallyMoving": false,
+      "reducedMotion": true,
+      "upperHazeSprites": 6,
+      "visibleVipHologram": true,
+      "interiorBeamCount": 9,
+      "rooftopBeamCount": 9,
+      "interiorCentralRay": {
+        "start": [
+          0,
+          3.75,
+          -19
+        ],
+        "end": [
+          0,
+          3.5799999982118607,
+          -1.5
+        ]
+      },
+      "rooftopCentralRay": {
+        "start": [
+          0,
+          8.239999771118164,
+          -12
+        ],
+        "end": [
+          -9,
+          12.239999771118164,
+          37
+        ]
+      },
+      "sunsets": [
+        {
+          "level": "1",
+          "visible": true,
+          "horizon": "ffba54",
+          "eye": 1.7300000000000004
+        },
+        {
+          "level": "2",
+          "visible": true,
+          "horizon": "ffa33c",
+          "eye": 4.7799999999999985
+        },
+        {
+          "level": "3",
+          "visible": true,
+          "horizon": "ff9a69",
+          "eye": 7.829999999999999
+        },
+        {
+          "level": "4",
+          "visible": true,
+          "horizon": "ff795c",
+          "eye": 10.879999999999999
+        },
+        {
+          "level": "5",
+          "visible": true,
+          "horizon": "ff7152",
+          "eye": 13.93
+        }
+      ],
+      "productGroups": [
+        "Ritual Oils",
+        "Kiss the Earth",
+        "Blue Lotus Effect"
+      ],
+      "products": 21,
+      "errors": []
+    }
+  ]
+}

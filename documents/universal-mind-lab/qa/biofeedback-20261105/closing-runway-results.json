@@ -1,0 +1,124 @@
+{
+  "source": "7c2917bad0f129ba175b9eb61980ddda1eb7f76d",
+  "date": "2026-11-05T08:38:59.839Z",
+  "errors": [],
+  "processMuted": true,
+  "entry": "Lab splash → Explore",
+  "final": {
+    "time": "155.6",
+    "angle": [
+      92.59999999999998,
+      37.07000000000001,
+      117.38
+    ],
+    "closing": "true",
+    "night": "true",
+    "headline": "1",
+    "openingHeadline": "0",
+    "lineup": "true",
+    "logos": true,
+    "panel": true,
+    "labelState": "false",
+    "tower": [
+      0.453,
+      0.715
+    ],
+    "towerTop": [
+      0.452,
+      0.541
+    ],
+    "dome": [
+      0.542,
+      0.467
+    ],
+    "vip": [
+      0.619,
+      0.611
+    ],
+    "tea": [
+      0.314,
+      0.801
+    ],
+    "viewport": [
+      1470,
+      923
+    ]
+  },
+  "audio": [
+    {
+      "place": "checking",
+      "muted": false,
+      "paused": false,
+      "volume": 0.65,
+      "time": 124.834149,
+      "ready": 4,
+      "advancing": true
+    },
+    {
+      "place": "first-aid",
+      "muted": false,
+      "paused": false,
+      "volume": 0.65,
+      "time": 129.22295,
+      "ready": 4,
+      "advancing": true
+    },
+    {
+      "place": "tea",
+      "muted": true,
+      "paused": false,
+      "volume": 0.65,
+      "time": 131.512343,
+      "ready": 4,
+      "advancing": true
+    },
+    {
+      "place": "first-aid",
+      "muted": false,
+      "paused": false,
+      "volume": 0.65,
+      "time": 134.734318,
+      "ready": 4,
+      "advancing": true
+    }
+  ],
+  "1470-iris": [
+    "filament-fan runway look",
+    "pearl-lantern runway look",
+    "pleated-wings runway look"
+  ],
+  "1470-nagnata": [
+    "azure-legging runway look",
+    "black-maillot runway look",
+    "indigo-bike runway look",
+    "panelled-set runway look"
+  ],
+  "vip": {
+    "centre": -1.75,
+    "radius": 3.5,
+    "red": [
+      1.68,
+      1.71,
+      1.73
+    ],
+    "count": 15
+  },
+  "tower": {
+    "walkers": 2,
+    "lookoutAndBarGuests": 12,
+    "originalBarTeam": 3,
+    "total": 17
+  },
+  "replayRestarts": true,
+  "390-iris": [
+    "filament-fan runway look",
+    "pearl-lantern runway look",
+    "pleated-wings runway look"
+  ],
+  "390-nagnata": [
+    "azure-legging runway look",
+    "black-maillot runway look",
+    "indigo-bike runway look",
+    "panelled-set runway look"
+  ]
+}

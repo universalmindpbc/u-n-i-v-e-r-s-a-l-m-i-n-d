@@ -1,0 +1,140 @@
+{
+  "source": "7c2917bad0f129ba175b9eb61980ddda1eb7f76d",
+  "files": [
+    {
+      "path": "lab/assets/festival/azure-legging.glb",
+      "sha256": "638718f2bd6a17d3b85baa36296f998e0d78d79d28ce10ba7242e06cceba8624",
+      "byteMatch": true
+    },
+    {
+      "path": "lab/assets/festival/black-maillot.glb",
+      "sha256": "7e76e4404184bc735db50141ba65278f189507e79cecc1aaf46d70a58a8b8cf1",
+      "byteMatch": true
+    },
+    {
+      "path": "lab/assets/festival/filament-fan.glb",
+      "sha256": "d05221acf219834b1a081676012f867329d354d1580d06fd2983042b23c42675",
+      "byteMatch": true
+    },
+    {
+      "path": "lab/assets/festival/indigo-bike.glb",
+      "sha256": "ae297aece4653cb12763d02d7e7b4bbab23ea40e9008db8011f4c90f3053f4c0",
+      "byteMatch": true
+    },
+    {
+      "path": "lab/assets/festival/panelled-set.glb",
+      "sha256": "0073c36b481c5a363f920aa5bb2c54bd74a95266c917780c4c0adbe44c938f25",
+      "byteMatch": true
+    },
+    {
+      "path": "lab/assets/festival/pearl-lantern.glb",
+      "sha256": "e9c773e9019396761ff07ac8e6611e1f157ef4b8aa860955fdaa6a284b39a9b4",
+      "byteMatch": true
+    },
+    {
+      "path": "lab/assets/festival/pleated-wings.glb",
+      "sha256": "16f795480a36059ba13f2b40aca39c5f0f84b14ab63265bb77430125daa084b5",
+      "byteMatch": true
+    },
+    {
+      "path": "lab/assets/festival/vip-dance-floor.glb",
+      "sha256": "3b2168f42a1c13c9697ae90ab9c18fb72917b188e03b307094476744a031f79d",
+      "byteMatch": true
+    },
+    {
+      "path": "lab/elevation.mjs",
+      "sha256": "948e65a9a2fc4c6ae1740dd4d071e6f256d85c9531bc724fac225a451360bb6d",
+      "byteMatch": true
+    },
+    {
+      "path": "lab/festival-cast.mjs",
+      "sha256": "c1b9fbf480e8995054258264dc2f64fa43077479335ac40852754c468f16e091",
+      "byteMatch": true
+    },
+    {
+      "path": "lab/geodesic-frame.mjs",
+      "sha256": "82174b6fa44db40263ad37aa8ed015f13f58d9ee1fda62f7e20afb2c19f67837",
+      "byteMatch": true
+    },
+    {
+      "path": "lab/health-venues.mjs",
+      "sha256": "cb3291c8e05f9766b37bbba3a5b4b77cc2047ec1ad7a909866a582dde4863c37",
+      "byteMatch": true
+    },
+    {
+      "path": "lab/hospitality.mjs",
+      "sha256": "a58b9c18697708d75d8fa2fa475a384b880d881c89d2bb53307d839988f2d759",
+      "byteMatch": true
+    },
+    {
+      "path": "lab/index.html",
+      "sha256": "48f521f63e8d8847ed43abdd8b8170ae5767a7d4b8157311e4b21d4690f3496a",
+      "byteMatch": false
+    },
+    {
+      "path": "lab/lab.css",
+      "sha256": "743e62b52bf3872ad75fe0194e58ea6e612ab3aad66a6272f2cd2ee1e3c66693",
+      "byteMatch": true
+    },
+    {
+      "path": "lab/lab.mjs",
+      "sha256": "d0defc532c66a5a1858686c063f784ad37748e473fbfad419a5c59257ddacf9c",
+      "byteMatch": true
+    },
+    {
+      "path": "lab/light-show.mjs",
+      "sha256": "e48ff7d0daece8fe76e7b8ffb1f7755d5e278339331714f0c8defb18ba4d0650",
+      "byteMatch": true
+    },
+    {
+      "path": "lab/orbit.mjs",
+      "sha256": "025a59a04ec9fc72775ca6c192f4918b92eff08a8fd4b37c00d2233f19e9b514",
+      "byteMatch": true
+    },
+    {
+      "path": "lab/runway-couture.mjs",
+      "sha256": "2a1b8afea2d81c008d0033cfd01276d091df7522c1aa082d120af4d6a5a42328",
+      "byteMatch": true
+    },
+    {
+      "path": "lab/runway-show.mjs",
+      "sha256": "76e5e9ae07a33e339557cbdd67de4dd51206b63da4064536457558e212e696b7",
+      "byteMatch": true
+    },
+    {
+      "path": "lab/site-features.mjs",
+      "sha256": "646dce918b45e50a577244c47f236da1210ccbb4957c3a1826be8d3e0a7e5dea",
+      "byteMatch": true
+    },
+    {
+      "path": "lab/story.mjs",
+      "sha256": "c239126f22298e19f3deabe27f8c748869e529375a403261b9c99a90b7eca092",
+      "byteMatch": true
+    },
+    {
+      "path": "lab/tower-visitors.mjs",
+      "sha256": "e1ed33e06d5b794b6b6a5b6ec618e55f91535fe581063b0d14a3b1014e4ce171",
+      "byteMatch": true
+    },
+    {
+      "path": "lab/vip-bar.mjs",
+      "sha256": "30302c99cdf4415944866981c8c31165743a148fe3f3008e9cb0e868e8e41fd1",
+      "byteMatch": true
+    },
+    {
+      "path": "lab/vip-dancers.mjs",
+      "sha256": "1f3806535fc4dc0e77ffbfcdfa69d96bd883eae1959da5734a75650e1ccb7756",
+      "byteMatch": true
+    },
+    {
+      "path": "lab/vip-effects.mjs",
+      "sha256": "8f27280e0ac953a8cb686be642ab21a7e735a8c0964456263ca7b9e6d3308e7f",
+      "byteMatch": true
+    },
+    {
+      "path": "lab/visitor-groups.mjs",
+      "sha256": "5431cd03caa859e1b581170ed563183be59b865516da71723e96ed2a1d2b2e8f",
+      "byteMatch": true
+    }
+  ]
+}
