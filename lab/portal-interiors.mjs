@@ -1,5 +1,5 @@
-import {createVisitorGroup} from './visitor-groups.mjs?v=20261105movement1';
-import {createEMDRPeople} from './emdr-people.mjs?v=20261105movement1';
+import {createVisitorGroup} from './visitor-groups.mjs?v=20261105activity2';
+import {createEMDRPeople} from './emdr-people.mjs?v=20261105activity2';
 /** Relaxed workshop groups, authored in metres. No participant-held devices. */
 export function createPortalInteriors(THREE,kit){
  const {Batch,V,box,sphere,tube,circle,peopleMaterial,chairMaterial,furnishings}=kit;

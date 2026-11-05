@@ -1,9 +1,9 @@
-import {createGroundWalkers,createSeatedVisitors,createShowRunway} from './visitor-groups.mjs?v=20261105movement1';
-import { createPortal } from './portal.mjs?v=20261105movement1';
-import { createFestivalCast } from './festival-cast.mjs?v=20261105movement1';
+import {createGroundWalkers,createSeatedVisitors,createShowRunway} from './visitor-groups.mjs?v=20261105activity2';
+import { createPortal } from './portal.mjs?v=20261105activity2';
+import { createFestivalCast } from './festival-cast.mjs?v=20261105activity2';
 import { portalZones } from './portal-geometry.mjs?v=20261104emdr1';
 import { orbitPose, mobileOverviewPose, overviewPose } from './orbit.mjs?v=20261104portal1';
-import { createActivities } from './activities.mjs?v=20261103purpose1';
+import { createActivities } from './activities.mjs?v=20261105activity2';
 import { createPerformance } from './performance.mjs?v=20261103orbit1';
 import { initMedia } from './media.mjs?v=20261103continuous1';
 import { createStory, ORBIT_START, STORY_END } from './story.mjs?v=20261105movement1';
@@ -233,7 +233,7 @@ syncFullscreen();
 
 async function buildWorld() {
   const THREE = await import('three');
-  const [{OrbitControls},{createArchitecture},{createSiteFeatures},{createCrowd},{createLightShow},{createRunway}]=await Promise.all([import('./vendor/OrbitControls.js'),import('./architecture.mjs?v=20261103purpose1'),import('./site-features.mjs?v=20261103orbit1'),import('./crowd.mjs?v=20261105movement1'),import('./light-show.mjs?v=20261103orbit1'),import('./runway.mjs?v=20261103orbit1')]);
+  const [{OrbitControls},{createArchitecture},{createSiteFeatures},{createCrowd},{createLightShow},{createRunway}]=await Promise.all([import('./vendor/OrbitControls.js'),import('./architecture.mjs?v=20261103purpose1'),import('./site-features.mjs?v=20261103orbit1'),import('./crowd.mjs?v=20261105activity2'),import('./light-show.mjs?v=20261103orbit1'),import('./runway.mjs?v=20261103orbit1')]);
   const architecture=createArchitecture(THREE);
   let seed = 1947;
   const random = () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; };
@@ -385,9 +385,11 @@ async function buildWorld() {
   const buildings={};
   const main=architecture.mainVault();main.position.set(0,.08,-12);architectureGroup.add(main);buildings.main=main;
   const platform=mesh(new THREE.BoxGeometry(24,.16,20),mats.stone,main);platform.position.y=-.08;
+  const activityDecks=[];
   for(const [key,x,z,scale,rotation] of [['food',-24,-9,1,-.35],['park',-23,20,.88,-1.1],['support',-34,-24,.78,.35]]){
     const g=architecture.satellite({scale});g.position.set(x,.08,z);g.rotation.y=rotation;architectureGroup.add(g);buildings[key]=g;
     const deck=mesh(new THREE.CylinderGeometry(6.4,6.4,.15,64),mats.stone,g);deck.scale.z=.85;deck.position.y=-.08;
+    if(key==='park'||key==='support')activityDecks.push(deck);
   }
   const playground=architecture.playground({rainbow:true});playground.position.set(-17,.08,31);playground.rotation.y=.35;architectureGroup.add(playground);buildings.playground=playground;
   const buildPlanes={};
@@ -397,9 +399,17 @@ async function buildWorld() {
   }
   const lightShow=createLightShow(THREE,scene,Object.values(buildings),architecture);
   const features=createSiteFeatures(THREE,scene,$('music-video'),architecture,$('stage-geometry-video'));
-  const crowd=createCrowd(THREE,()=>{needsFrame=true;requestFrame();}),runwayCrowd=createShowRunway(THREE,()=>{needsFrame=true;requestFrame();}),runway=createRunway(THREE,scene,features.videoMap);scene.add(crowd.builders,crowd.visitors,runwayCrowd.group);
+  // Seat the nearby spectators on the actual deck surface, including its rotation and scale.
+  for(const surface of [...activityDecks,...paths.children])surface.updateWorldMatrix(true,false);
+  const floorProbe=new THREE.Raycaster(),down=new THREE.Vector3(0,-1,0);
+  const footSurfaces=[...activityDecks,...paths.children];
+  function activityFloorHeight(x,z){
+    floorProbe.set(new THREE.Vector3(x,1,z),down);
+    return floorProbe.intersectObjects(footSurfaces,false)[0]?.point.y??-.12;
+  }
+  const crowd=createCrowd(THREE,()=>{needsFrame=true;requestFrame();},activityFloorHeight),runwayCrowd=createShowRunway(THREE,()=>{needsFrame=true;requestFrame();}),runway=createRunway(THREE,scene,features.videoMap);scene.add(crowd.builders,crowd.visitors,runwayCrowd.group);
   const performanceStage=createPerformance(THREE);scene.add(performanceStage.group);
-  const activities=createActivities(THREE,architecture);scene.add(activities.group);
+  const activities=createActivities(THREE,architecture,requestFrame);scene.add(activities.group);
   const festivalCast=createFestivalCast(THREE,()=>{needsFrame=true;requestFrame();});
   const seatedVisitors=createSeatedVisitors(THREE,()=>{needsFrame=true;requestFrame();});
   const walkers=createGroundWalkers(THREE,()=>{needsFrame=true;requestFrame();});
@@ -590,9 +600,9 @@ async function buildWorld() {
       if(walkers.update(peopleTime,peopleMoving))needsFrame=true;
       if(seatedVisitors.update(peopleTime,peopleMoving))needsFrame=true;
     }
-    if(activities.update(peopleTime,peopleMoving))needsFrame=true;
     camera.updateMatrixWorld();
     visitorFrustum.setFromProjectionMatrix(projectionView.multiplyMatrices(camera.projectionMatrix,camera.matrixWorldInverse));
+    if(activities.update(peopleTime,peopleMoving,camera,visitorFrustum))needsFrame=true;
     if(festivalCast.update(camera,peopleTime,peopleMoving,visitorFrustum))needsFrame=true;
     if(portal.update(peopleTime,peopleMoving,camera,visitorFrustum))needsFrame=true;
     crowd.update(peopleTime,{construction:currentStory.construction,dancing:peopleMoving,visible:currentStory.seconds>6,night:currentStory.night,frustum:visitorFrustum});performanceStage.update(peopleTime,peopleMoving);lightShow.update(motionTime);

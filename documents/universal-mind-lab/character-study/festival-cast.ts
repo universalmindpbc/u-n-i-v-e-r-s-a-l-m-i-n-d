@@ -28,7 +28,7 @@ function look(id:string, age:number, gender:number, skin:string, hair:string, to
   return {id,age,gender,skin:'young_'+skin+'_'+(gender?'male':'female'),hair,top,bottom,topColour,bottomColour,pose,extra};
 }
 const {coal,plum,ivory,cobalt,denim,olive}=colour;
-const blond={hairTint:'#ffe2a6'},shorts='cutoffs',tee='oversized_tee',crop='sport-crop',suit='suit_jacket',shirt='suit_shirt_tie';
+const blond={hairTint:'#ffe2a6'},shorts='cutoffs',tee='classic-crew',crop='sport-crop',suit='suit_jacket',shirt='suit_shirt_tie';
 const looks=[
   look('01',21,1,'african','box_braids','tank_top','baggy_jeans',coal,'#363438','chair'),
   look('02',20,0,'caucasian','ponytail01',crop,'leggings','#b594c1','#bc9bc6','floor'),
@@ -71,6 +71,20 @@ for(const [i,[skin,hair,pearl,shadow,knit,trim]] of runwayModels.entries()){
     garmentStyles:{'contour-crop':{color:knit,color2:trim,pattern:'rib'},[bottom]:{color:knit,color2:trim,pattern:'rib'}}
   }));
 }
+// Keep the approved outfits while fitting the rigs to furniture and held devices.
+for(const id of ['01','02','09','04']){
+  const base=looks.find(item=>item.id===id)!;
+  const pose=id==='04'?'yoga':'phone';
+  looks.push({...base,id:pose+'-'+id,pose});
+}
+for(const [id,skin,hair,colour] of [['clinician-1','asian','long01','#547d81'],['clinician-2','african','braid01','#747193']]){
+  looks.push(look(id,30,0,skin,hair,'tank_top','suit_trousers',colour,'#313b45','idle',{
+    jacket:'overcoat',shoes:'heels',garmentStyles:{
+      overcoat:{color:'#faf8ee',pattern:'solid'},tank_top:{color:colour,pattern:'solid'},
+      suit_trousers:{color:'#323b43',pattern:'solid'},heels:{color:'#35373b',pattern:'solid'}
+    }
+  }));
+}
 const section = (s:string)=>s==='chair'||s==='floor'||s==='daybed';
 function seated(pose:string):Clip {
   const crossed=pose!=='chair';
@@ -86,6 +100,23 @@ function seated(pose:string):Clip {
 }
 function movement(pose:string):Clip {
   if(section(pose))return seated(pose);
+  if(pose==='phone')return {id:pose,name:'Seated device session',duration:4,loop:true,category:'Interaction',sample(t){
+    const p=seated('chair').sample(t),beat=Math.sin(t*Math.PI);
+    side(p.bones,'UpLeg',[83,0,4],[83,0,4]);side(p.bones,'Leg',[-88,0,0],[-88,0,0]);
+    p.bones.Head=[12+1.3*beat,1.4*beat,0];p.gaze=[0,-10];
+    p.ik={
+      Left:{pos:[.051,-.24,.31],pole:[.5,-.6,-.2],dir:[-.24,.5,.7],palm:[-.9,.24,.12]},
+      Right:{pos:[-.088+.006*beat,-.226+.011*beat,.319],pole:[-.5,-.65,-.22],dir:[.56,.33,.8],palm:[.75,-.4,.1]}
+    };
+    fingers(p.bones,15);return p;
+  }};
+  if(pose==='yoga')return {id:pose,name:'Downward-facing dog',duration:5,loop:true,category:'Sitting & lying',sample(t){
+    const breath=Math.sin(t*2*Math.PI/5),bones:Record<string,Ch>={Spine:[2,0,0],Spine1:[1.3+breath,0,0],Head:[7,0,0]};
+    side(bones,'UpLeg',[104,0,4],[104,0,4]);side(bones,'Leg',[-6,0,0],[-6,0,0]);
+    side(bones,'Foot',[22,0,0],[22,0,0]);fingers(bones,2);
+    const hand=(side:number)=>({space:'floor',pos:[side*.20,.018,.63],pole:[side,-.1,-.5],dir:[0,-.05,1],palm:[0,-1,0]}) as const;
+    return {bones,root:{pitch:137,ground:true},ik:{Left:hand(1),Right:hand(-1)}} as ReturnType<Clip['sample']>;
+  }};
   if(pose==='walk')return {id:'runway',name:'Runway walk',duration:1.2,loop:true,category:'Locomotion',sample:t=>gait(WALK,t/1.2)};
   if(pose==='dance')return {...cheer,name:'Hands overhead',sample(t){const p=cheer.sample(t);fingers(p.bones!,7);return {...p,thumbs:undefined};}};
   if(pose==='groove')return {...idle,name:'Dance-floor sway',sample(t){const p=idle.sample(t),w=Math.sin(t/idle.duration*Math.PI*2);
@@ -138,8 +169,8 @@ for(const [index,spec] of looks.entries()){
   const character=await buildHuman(library,params),mesh=character.mesh;
   optimise(mesh);
   const rig=character.rig!,animator=new Animator(rig,character.face),clip=movement(process.argv.includes('--walk')?'walk':process.argv.includes('--standing')?'groove':spec.pose),baked=animator.bake(clip,10);
-  if(section(spec.pose)&&!process.argv.includes('--standing')&&!process.argv.includes('--walk')){
-    const height=spec.pose==='chair'?.45:spec.pose==='daybed'?.723:.230;
+  if((section(spec.pose)||spec.pose==='phone')&&!process.argv.includes('--standing')&&!process.argv.includes('--walk')){
+    const height=spec.pose==='phone'?.551:spec.pose==='chair'?.45:spec.pose==='daybed'?.723:.230;
     for(const f of baked.frames)for(const root of f.rootPos.keys())f.rootPos.set(root,[0,height,0]);
   }
   const textures=new Map<string,Uint8Array>();

@@ -25,14 +25,19 @@ const emblemTop = (source: Build, ink: string): Build => (g, style) => {
   if(ink==='#ffffff')parts.push(transfer(surface,torsoY(g.body,.63),cm(.65),cm(32),'rash-zip.png','#ffffff','Front zip'));
   return parts;
 };
+// Fit the jersey to its own wearer's chest and shoulder. The older street tee
+// used a wide drape envelope that pulled the chest and sleeves out when seated.
 const classicTee:Build=(g,s)=>{
-  const parts=garmentById.get('oversized_tee')!.build(g,s),waist=torsoY(g.body,.32);
-  // Finish at the hip so the boxing waistband and longer satin leg stay visible.
-  for(const part of parts)for(let i=1;i<part.mesh.positions.length;i+=3){
-    const y=part.mesh.positions[i];if(y<waist)part.mesh.positions[i]=waist+(y-waist)*.48;
-  }
-  return parts;
+  const shoulder=g.body.L.shoulderX;
+  return shellPart(g,{
+    covers:v=>{
+      const collar=(v.ax/(.40*shoulder))**2+((1.02-v.tt)/(.08))**2<1;
+      return !collar&&((isUpper(v)&&v.tt>.065)||(v.region===REGION.upperarm&&v.t<.49));
+    },
+    offset:v=>cm(v.region===REGION.upperarm?1.15:.88),tile:.25,relax:3
+  },cloth(g,'Classic crew tee',s,{roughness:.91}));
 };
+register('classic-crew','top',classicTee);
 register('star-tee','top',emblemTop(classicTee,'#2448a4'));
 register('sport-crop','top',(g,s)=>shellPart(g,{
   covers:v=>isUpper(v)&&v.tt>.45&&(v.tt<.78||Math.abs(v.ax-.62*g.body.L.shoulderX)<.19*g.body.L.shoulderX),

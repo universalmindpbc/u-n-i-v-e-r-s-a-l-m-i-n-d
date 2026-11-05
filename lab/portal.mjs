@@ -1,6 +1,6 @@
 import {solids,portalZones,portalPlacement,placedVertices} from './portal-geometry.mjs?v=20261104emdr1';
 import {createFurnishings} from './furnishings.mjs';
-import {createPortalInteriors} from './portal-interiors.mjs?v=20261105movement1';
+import {createPortalInteriors} from './portal-interiors.mjs?v=20261105activity2';
 
 /** Seven small workshop marquees. Undistorted polyhedral envelopes meet the grass plane.
  * Ground intersections are concept studies, not foundation or fabrication details.

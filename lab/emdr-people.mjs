@@ -1,7 +1,7 @@
 import {characterClip} from './character-motion.mjs?v=20261105movement1';
 import {GLTFLoader} from './vendor/GLTFLoader.js';
 
-import {loadCastMember} from './festival-cast.mjs?v=20261105movement1';
+import {loadCastMember} from './festival-cast.mjs?v=20261105activity2';
 
 /** Nine lookbook participants and the existing research facilitator. */
 export function createEMDRPeople(THREE,parent,layout,requestFrame){

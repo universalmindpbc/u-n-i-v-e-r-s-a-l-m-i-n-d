@@ -1,4 +1,4 @@
-import {loadCastMember} from './festival-cast.mjs?v=20261105movement1';
+import {loadCastMember} from './festival-cast.mjs?v=20261105activity2';
 
 // Workshop rooms reuse the same geometry, material and request for every look.
 const libraries = new Map();
@@ -96,16 +96,17 @@ export function createVisitorGroup(THREE, pack, visitors, requestFrame, onReady)
   return {group,start,update};
 }
 
+// World-space routes, each with two turning centres, lane radius and visitor count.
+// The music route follows the east approach and turns on the lawn before the tiled wall.
+export const groundWalkingPaths=[
+  [-44,16,-44,34,.65,4],[-15,-12,-15,1,.6,3],[-15.8,20.2,-9.4,22.7,.5,3],
+  [-12,25,-12,34,.55,2],[18,13,24,19,.55,3],[-28,37,-32,51,.6,4],
+  [-25,-18,-22,-22,.5,2],[8,17,8,31,.55,3]
+];
+
 export function createGroundWalkers(THREE,requestFrame) {
-  // Parallel to the road-train displays, along the food and music approaches,
-  // past the play lawn, along the riverbank and towards the workshop village.
-  const paths=[
-    [-44,16,-44,34,.65,4],[-15,-12,-15,1,.6,3],[-21,14,-21,22,.55,3],
-    [-12,25,-12,34,.55,2],[18,13,24,19,.55,3],[-28,37,-32,51,.6,4],
-    [-25,-18,-22,-22,.5,2],[8,17,8,31,.55,3]
-  ];
   const ids=['01','04','06','09','A','D2'],visitors=[];
-  paths.forEach(([x1,z1,x2,z2,r,n],pathIndex)=>{
+  groundWalkingPaths.forEach(([x1,z1,x2,z2,r,n],pathIndex)=>{
     const route=walkingRoute(x1,z1,x2,z2,r);
     for(let i=0;i<n;i++){
       const scale=.94+.025*((i+pathIndex)%5),speed=.88+.07*((i*3+pathIndex)%4);

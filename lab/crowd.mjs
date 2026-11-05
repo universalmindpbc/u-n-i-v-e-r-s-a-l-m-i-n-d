@@ -1,6 +1,6 @@
-import {createDistanceCast} from './festival-cast.mjs?v=20261105movement1';
+import {createDistanceCast} from './festival-cast.mjs?v=20261105activity2';
 /** Deterministic, fictional people for the Universal Mind spatial concept. Metres; ground Y=0. */
-export function createCrowd(THREE, requestFrame) {
+export function createCrowd(THREE, requestFrame, activityFloorHeight) {
   const visitors=new THREE.Group(),builders=new THREE.Group();
   visitors.name='Universal Mind visitors — articulated scene study';
   builders.name='Local construction team — articulated scene study';
@@ -74,6 +74,7 @@ export function createCrowd(THREE, requestFrame) {
   ];
   for(const [x,z,yaw,area] of gatherings){
     const visitor=person(x,z,'visitor',visitorPeople.length);visitor.yaw=yaw;visitor.area=area;
+    if(area==='support'||area==='play')visitor.floorY=activityFloorHeight(x,z)+.012;
     visitorPeople.push(visitor);
   }
   const workSites=[[-7,-9],[7,-9],[-6,-15],[6,-15],[0,-6],[-28,-7],[-21,-9],[-26,19],[-20,22],[-31,-20],[21,8],[25,13]];
@@ -112,7 +113,7 @@ export function createCrowd(THREE, requestFrame) {
       p.rotation.setFromAxisAngle(up,yaw);angles.set(bend,yaw,dance?-.06*Math.sin(beat):0,'YXZ');p.bodyRotation.setFromEuler(angles);
       function point(name,x,y,z,upper=false){
         if(upper){const dy=y-.87;y=.87+dy*cb-z*sb;z=dy*sb+z*cb;x+=sway;}
-        j[name].set(p.x+(x*cy+z*sy)*s,p.scale*(y+bounce),p.z+travel+(-x*sy+z*cy)*s);
+        j[name].set(p.x+(x*cy+z*sy)*s,(p.floorY??0)+p.scale*(y+bounce),p.z+travel+(-x*sy+z*cy)*s);
       }
       point('hip',0,.88,0);point('waist',0,1.13,0,true);point('neck',0,1.35,0,true);
       point('head',0,1.63,0,true);point('nose',0,1.62,.115,true);point('hair',0,1.68,-.012,true);

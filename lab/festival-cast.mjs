@@ -12,9 +12,11 @@ function pump() {
     loader.loadAsync(url).then(resolve, reject).finally(() => { active--; pump(); });
   }
 }
+// Refresh every previously cached form of the adjusted jersey, including the baked cast.
+const refitted=new Set(['05','09','D1','D2','D3','crowd','walkers','workshops']);
 export function loadCastMember(id) {
   const url = new URL('./assets/festival/' + encodeURIComponent(id) + '.glb', import.meta.url).href;
-  const versioned=id==='crowd'?url+'?v=20261105movement1':url;
+  const versioned=refitted.has(id)?url+'?v=20261105activity2':url;
   return new Promise((resolve, reject) => { waiting.push({url:versioned, resolve, reject}); pump(); });
 }
 
@@ -135,7 +137,7 @@ export function createDistanceCast(THREE, people, fallback, parent, requestFrame
         const mesh=new THREE.InstancedMesh(g,material,guests.length);
         mesh.name='Festival crowd '+look.userData.look;
         const members=guests.map((p,i)=>{
-          transform.position.set(p.x,p.index<56?.085:-.08,p.z);
+          transform.position.set(p.x,p.floorY??(p.index<56?.085:-.08),p.z);
           transform.rotation.y=p.yaw;transform.scale.set(p.scale*(.95+.016*(p.index%6)),p.scale,p.scale);
           transform.updateMatrix();mesh.setMatrixAt(i,transform.matrix);
           // Allocate for every slot before the story starts revealing visitors.
