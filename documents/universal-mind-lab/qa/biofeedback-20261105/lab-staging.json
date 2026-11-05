@@ -1,0 +1,72 @@
+{
+  "processMuted": true,
+  "mediaBlocked": true,
+  "out": [
+    {
+      "viewport": [
+        1440,
+        900
+      ],
+      "sources": 63,
+      "alphabeticalLineup": [
+        "Anfisa Letyago",
+        "Anna Lunoe",
+        "Brian Eno",
+        "Carl Cox",
+        "Damian Lazarus",
+        "FISHER",
+        "Fred again..",
+        "In This World",
+        "Iris van Herpen",
+        "Jamie xx",
+        "Luciano",
+        "Matthewdavid",
+        "Nagnata",
+        "Nastia",
+        "Nina Kraviz",
+        "Peggy Gou",
+        "Seth Troxler",
+        "Steve Aoki",
+        "Sven Väth",
+        "Tiga",
+        "Timmy Trumpet"
+      ],
+      "performanceLinkInsideDialog": true,
+      "votingAndNominationPersisted": true,
+      "dialogEscapeRestoresPanel": true
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "sources": 63,
+      "alphabeticalLineup": [
+        "Anfisa Letyago",
+        "Anna Lunoe",
+        "Brian Eno",
+        "Carl Cox",
+        "Damian Lazarus",
+        "FISHER",
+        "Fred again..",
+        "In This World",
+        "Iris van Herpen",
+        "Jamie xx",
+        "Luciano",
+        "Matthewdavid",
+        "Nagnata",
+        "Nastia",
+        "Nina Kraviz",
+        "Peggy Gou",
+        "Seth Troxler",
+        "Steve Aoki",
+        "Sven Väth",
+        "Tiga",
+        "Timmy Trumpet"
+      ],
+      "performanceLinkInsideDialog": true,
+      "votingAndNominationPersisted": false,
+      "dialogEscapeRestoresPanel": true
+    }
+  ]
+}
