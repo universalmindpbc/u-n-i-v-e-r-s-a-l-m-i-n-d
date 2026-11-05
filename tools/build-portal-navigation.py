@@ -54,6 +54,7 @@ for folder,names in [('Informatics',['app.js','atlas.css','global-navigation.js'
 body=''
 for p in config['portals']:
  body+='<section><h2><a href="'+escape(p['url'],quote=True)+'">'+escape(p['label'])+'</a></h2><p>'+escape(p['description'])+'</p>'
+ if p['id']=='events':body+=items([{'label':'Universal Mind Lab','url':'/lab/'},{'label':'Youth Research','url':'/lab/research.html'}])
  if p.get('map'):body+='<p><a href="'+p['map']+'">'+escape(p['title'])+' sitemap</a></p>'
  body+='</section>'
 write('sitemap/index.html',page('Website sitemap',body,'/sitemap/'))

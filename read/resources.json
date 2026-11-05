@@ -1,7 +1,7 @@
 {
   "title": "Universal Mind · Wiki For AI / LLMs",
   "canonical_url": "https://universalmind.tv/read/",
-  "updated": "2026-11-01",
+  "updated": "2026-11-06",
   "introduction": [
     "Universal Mind is a multidisciplinary organisation focused on electronic music and mental health. Its work connects music television, live events, festival participation and bioinformatics research—bringing cultural experiences, community participation and scientific investigation together.",
     "Universal Mind is a project of Ben Korbel. Voted Australia’s number one DJ in 2001, Ben built a career across Australia, Berlin and Ibiza. He also became one of Australia’s major electronic music festival promoters, with festival partnerships welcoming more than 60,000 patrons across two weekends.",
@@ -49,7 +49,24 @@
       "context": [
         "athousandminds is a new festival by Universal Mind, pitching to Live Nation and Apple TV+, together as one. The artists and venues are ideal bookings, not confirmed and this is not an advertisement for an existing event."
       ],
-      "source_sha256": "45a35ecb3ef189c30a032f18932f15dfe01f06d8fc1568ad18a36517437b6a08"
+      "source_sha256": "0249cf510658d0ed1bdcb0340bddfbf8b7572abec058310b05d804d304d706f2"
+    },
+    {
+      "id": "lab",
+      "name": "Universal Mind Lab",
+      "route": "Explore the Lab",
+      "url": "https://universalmind.tv/lab/",
+      "source": "https://universalmind.tv/lab/",
+      "source_file": "lab/index.html",
+      "access": "The Lab proposal and Youth Research are public.",
+      "paragraphs": [
+        "A free travelling mental health lab.",
+        "Making a beat. Designing a garment. Listening closely. Creating together. Universal Mind brings electronic music and fashion together as a mindfulness experience, using creativity to practise presence, self-awareness and connection."
+      ],
+      "context": [
+        "Artists, festival partners and mental health partners are proposed and not confirmed."
+      ],
+      "source_sha256": "f7a1b11061d428cbc9b4a46465a8a9a7e4d81e1a9cc4cbfd2be3300f98b4a4e0"
     },
     {
       "id": "happiness",
@@ -184,7 +201,7 @@
         }
       ],
       "context": [],
-      "source_sha256": "6cbd3689dd7345103e7f7f1be54d71ebce9608cb4e6d0fdf718f87424d688e6a"
+      "source_sha256": "cc10fcd3027456a1e863505bc5946dc026948bdd8e960f553a681c1a6c58b9c2"
     }
   ],
   "resources": [
@@ -314,6 +331,46 @@
       "project": "athousandminds",
       "format": "HTML",
       "access": "Invitation login",
+      "description": ""
+    },
+    {
+      "title": "Universal Mind Lab",
+      "url": "https://universalmind.tv/lab/",
+      "project": "Universal Mind Lab",
+      "format": "HTML",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "Youth Research",
+      "url": "https://universalmind.tv/lab/research.html",
+      "project": "Universal Mind Lab",
+      "format": "HTML",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "Youth Research for Universal Mind Lab",
+      "url": "https://universalmind.tv/informatics/research/?youth=all",
+      "project": "Universal Informatics",
+      "format": "HTML",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "Access, Digital Support and Connection for Youth",
+      "url": "https://universalmind.tv/informatics/research/?youth=connection",
+      "project": "Universal Informatics",
+      "format": "HTML",
+      "access": "Public",
+      "description": ""
+    },
+    {
+      "title": "Mindfulness Biofeedback / AR / VR / Mixed Reality",
+      "url": "https://universalmind.tv/informatics/research/?collection=language&chapter=2#topic-mindfulness-biofeedback",
+      "project": "Universal Informatics",
+      "format": "HTML",
+      "access": "Public",
       "description": ""
     },
     {
@@ -486,7 +543,7 @@
     },
     {
       "title": "Complete dataset manifest",
-      "url": "https://universalmind.tv/informatics/exports/manifest-4236ba3449732c396c297767fd618c7b5c8f2245b828b5b7b4238b21ad48509c.json",
+      "url": "https://universalmind.tv/informatics/exports/manifest-ef9ea1424443061bff06c722cedac0d1d9a4acb855c012ba1ca14e53d026d7e0.json",
       "project": "Universal Informatics",
       "format": "JSON",
       "access": "Public",

@@ -9,7 +9,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 ORIGIN = 'https://universalmind.tv'
-DATE = '2026-11-01'
+DATE = '2026-11-06'
 
 class Text(HTMLParser):
     def __init__(self):
@@ -36,6 +36,7 @@ INTRO = [
     'Universal Mind is a project of Ben Korbel. Voted Australia’s number one DJ in 2001, Ben built a career across Australia, Berlin and Ibiza. He also became one of Australia’s major electronic music festival promoters, with festival partnerships welcoming more than 60,000 patrons across two weekends.',
     'Over the past decade, Ben has increasingly turned his attention towards mental health. That focus grew from curiosity, his own lived experience, and the experiences of many people within the electronic music community. Universal Mind brings these parts of his life together: a connection to music and the people around it, and a desire to explore how those connections can support mental health.'
 ]
+lab = source('lab/index.html')
 iam = source('i  a m/about.html')
 events = source('events/index.php').split('<section id="about-panel"', 1)[1]
 happiness = source('happiness/index.php').split('<section id="about-panel"', 1)[1]
@@ -53,6 +54,10 @@ projects = [
          paragraphs=[paragraph_with(events, p) for p in ['Welcome to athousandminds', 'The event places', 'Each level unlocks']],
          levels=[plain(p) for p in re.findall(r'<li>(.*?)</li>', events, re.S)],
          context=[paragraph_with(events, 'is a new festival by Universal Mind, pitching')]),
+    dict(id='lab', name='Universal Mind Lab', route='Explore the Lab', url=ORIGIN+'/lab/', source=ORIGIN+'/lab/',
+         source_file='lab/index.html', access='The Lab proposal and Youth Research are public.',
+         paragraphs=[paragraph_with(lab, 'A free travelling mental health lab.'), paragraph_with(lab, 'Making a beat. Designing a garment.')],
+         context=['Artists, festival partners and mental health partners are proposed and not confirmed.']),
     dict(id='happiness', name='Happiness', route='Activate Festivals', url=ORIGIN+'/events/happiness-entry.php', source=ORIGIN+'/happiness/#about-panel',
          source_file='happiness/index.php', access='The festival experience uses the existing invitation login. These About excerpts are public.',
          paragraphs=[paragraph_with(happiness, p) for p in ['Happiness is a universal', 'Happiness also powers', 'Our mission is lowering']],
@@ -95,6 +100,11 @@ resources = [
     resource('Citizen Needs technology', '/vogue/iam/technology-citizen-needs.html', 'I AM'),
     resource('Adaptive Content Matrix', '/vogue/iam/technology-inference-engine.html', 'I AM'),
     resource('athousandminds experience and About', '/events/', 'athousandminds', access='Invitation login'),
+    resource('Universal Mind Lab', '/lab/', 'Universal Mind Lab'),
+    resource('Youth Research', '/lab/research.html', 'Universal Mind Lab'),
+    resource('Youth Research for Universal Mind Lab', '/informatics/research/?youth=all', 'Universal Informatics'),
+    resource('Access, Digital Support and Connection for Youth', '/informatics/research/?youth=connection', 'Universal Informatics'),
+    resource('Mindfulness Biofeedback / AR / VR / Mixed Reality', '/informatics/research/?collection=language&chapter=2#topic-mindfulness-biofeedback', 'Universal Informatics'),
     resource('Happiness experience and About', '/happiness/', 'Happiness', access='Invitation login'),
     resource('Informatics wiki', '/informatics/read/', 'Universal Informatics'),
     resource('Publication register', '/informatics/read/publications/index.html', 'Universal Informatics'),
@@ -160,12 +170,12 @@ def paragraphs(items):
 html = '''<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Universal Mind · Wiki For AI / LLMs</title>
-<meta name="description" content="Universal Mind, a project of Ben Korbel: electronic music, mental health, I AM, athousandminds, Happiness and Universal Informatics. Official project text, resources and AI access.">
+<meta name="description" content="Universal Mind, a project of Ben Korbel: electronic music, mental health, I AM, athousandminds, Universal Mind Lab, Happiness and Universal Informatics. Official project text, resources and AI access.">
 <meta name="robots" content="index,follow,max-snippet:-1"><link rel="canonical" href="https://universalmind.tv/read/">
 <link rel="icon" href="/vogue/iam/favicon.png"><link rel="stylesheet" href="wiki.css?v=1">
 <link rel="alternate" type="text/plain" href="/llms.txt" title="AI reading guide"><link rel="alternate" type="application/json" href="resources.json" title="Structured guide">
 </head><body><header><a href="/home/">Universal Mind</a><p>Wiki For AI / LLMs</p>
-<nav aria-label="Wiki navigation"><a href="#organisation">Organisation</a><a href="#iam">I AM</a><a href="#events">athousandminds</a><a href="#happiness">Happiness</a><a href="#informatics">Informatics</a><a href="#resources">Resources</a><a href="#access">AI access</a></nav></header>
+<nav aria-label="Wiki navigation"><a href="#organisation">Organisation</a><a href="#iam">I AM</a><a href="#events">athousandminds</a><a href="#lab">Universal Mind Lab</a><a href="#happiness">Happiness</a><a href="#informatics">Informatics</a><a href="#resources">Resources</a><a href="#access">AI access</a></nav></header>
 <main><section id="organisation"><h1>Universal Mind</h1>'''+paragraphs(INTRO)+'</section>\n'
 for project in projects:
     html += '<section id="'+project['id']+'"><p class="eyebrow">'+escape(project['route'])+'</p><h2>'+escape(project['name'])+'</h2>\n'
@@ -178,7 +188,7 @@ for project in projects:
     html += '<p>'+escape(project['access'])+'</p><p><a href="'+project['url'].removeprefix(ORIGIN)+'">'+escape(project['route'])+' →</a></p></section>\n'
 html += '<section id="resources"><h2>Resource directory</h2><p>Use the public reading pages for text, the original experiences for participation, and the Informatics connection guide for research tools and downloads.</p><dl class="resources">'
 for item in resources:
-    html += '<dt><a href="'+item['url'].removeprefix(ORIGIN)+'">'+escape(item['title'])+'</a></dt><dd>'+escape(item['project']+' · '+item['format']+' · '+item['access'])+(('<br>'+escape(item['description'])) if item['description'] else '')+'</dd>\n'
+    html += '<dt><a href="'+escape(item['url'].removeprefix(ORIGIN), quote=True)+'">'+escape(item['title'])+'</a></dt><dd>'+escape(item['project']+' · '+item['format']+' · '+item['access'])+(('<br>'+escape(item['description'])) if item['description'] else '')+'</dd>\n'
 html += '</dl></section><section id="access"><h2>AI access and reuse</h2>'+paragraphs(access)+'</section></main><footer><p>Updated '+DATE+' · Original source pages retain their own dates and evidence assessments.</p><p><a href="/llms.txt">Plain-text guide</a> · <a href="resources.json">JSON guide</a> · <a href="/home/">Universal Mind</a></p></footer></body></html>\n'
 markdown = '# Universal Mind\n\n'+'\n\n'.join(INTRO)+'\n\nOfficial wiki: '+ORIGIN+'/read/\nUpdated: '+DATE+'\n'
 for project in projects:

@@ -29,7 +29,7 @@ wiki=Document(); wiki.feed(html)
 assert not set(wiki.tags)&{'script','iframe','video','audio','form'}, 'The wiki is readable without scripts or login.'
 assert len(wiki.ids)==len(set(wiki.ids))
 assert wiki.canonicals==['https://universalmind.tv/read/']
-assert len(data['projects'])==4
+assert {p['id'] for p in data['projects']} == {'iam', 'events', 'lab', 'happiness', 'informatics'}
 for project in data['projects']:
     for text in project['paragraphs']+project.get('levels',[])+project['context']:
         assert text in llms and text in unescape(html), project['name']
@@ -67,7 +67,7 @@ for route in ['/patent/','/events/private/example.json','/vogue/iam/api/example.
 ns={'s':'http://www.sitemaps.org/schemas/sitemap/0.9'}
 from sitemap_urls import sitemap_urls
 urls=sitemap_urls(ROOT)
-for path in ['/','/home/','/read/']:
+for path in ['/','/home/','/read/','/lab/','/lab/research.html']:
     assert 'https://universalmind.tv'+path in urls
 # The retired medical dossiers remain absent from every public guide format.
 from urllib.parse import unquote
@@ -79,4 +79,4 @@ for collection in ['vision','sound','language']:
     assert url in urls
     assert any(item['url']==url and item['format']=='HTML' for item in data['resources'])
 assert not re.search(r'\b(should|could|would)\b',html+'\n'+llms,re.I)
-print(json.dumps({'passed':True,'projects':4,'resources':len(data['resources']),'sourceFidelity':'exact excerpts','linkDesign':'exact Informatics CSS','publicRoutesAllowed':len(routes),'stagingRoutesBlocked':len(routes)}))
+print(json.dumps({'passed':True,'projects':len(data['projects']),'resources':len(data['resources']),'sourceFidelity':'exact excerpts','linkDesign':'exact Informatics CSS','publicRoutesAllowed':len(routes),'stagingRoutesBlocked':len(routes)}))

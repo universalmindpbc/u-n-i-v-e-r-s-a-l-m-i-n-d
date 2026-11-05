@@ -7,7 +7,7 @@ Universal Mind is a project of Ben Korbel. Voted Australia’s number one DJ in 
 Over the past decade, Ben has increasingly turned his attention towards mental health. That focus grew from curiosity, his own lived experience, and the experiences of many people within the electronic music community. Universal Mind brings these parts of his life together: a connection to music and the people around it, and a desire to explore how those connections can support mental health.
 
 Official wiki: https://universalmind.tv/read/
-Updated: 2026-11-01
+Updated: 2026-11-06
 
 ## I AM — Watch TV
 
@@ -43,6 +43,18 @@ athousandminds is a new festival by Universal Mind, pitching to Live Nation and 
 Source: https://universalmind.tv/events/#about-panel
 Entry: https://universalmind.tv/events/?experience=1
 Access: The event experience uses the existing invitation login. These About excerpts are public.
+
+## Universal Mind Lab — Explore the Lab
+
+A free travelling mental health lab.
+
+Making a beat. Designing a garment. Listening closely. Creating together. Universal Mind brings electronic music and fashion together as a mindfulness experience, using creativity to practise presence, self-awareness and connection.
+
+Artists, festival partners and mental health partners are proposed and not confirmed.
+
+Source: https://universalmind.tv/lab/
+Entry: https://universalmind.tv/lab/
+Access: The Lab proposal and Youth Research are public.
 
 ## Happiness — Activate Festivals
 
@@ -132,6 +144,11 @@ Access: The research wiki, publication records and download directory are public
 - [Citizen Needs technology](https://universalmind.tv/iam/technology/): I AM; HTML; Public.
 - [Adaptive Content Matrix](https://universalmind.tv/iam/technology/recommendations/): I AM; HTML; Public.
 - [athousandminds experience and About](https://universalmind.tv/events/): athousandminds; HTML; Invitation login.
+- [Universal Mind Lab](https://universalmind.tv/lab/): Universal Mind Lab; HTML; Public.
+- [Youth Research](https://universalmind.tv/lab/research.html): Universal Mind Lab; HTML; Public.
+- [Youth Research for Universal Mind Lab](https://universalmind.tv/informatics/research/?youth=all): Universal Informatics; HTML; Public.
+- [Access, Digital Support and Connection for Youth](https://universalmind.tv/informatics/research/?youth=connection): Universal Informatics; HTML; Public.
+- [Mindfulness Biofeedback / AR / VR / Mixed Reality](https://universalmind.tv/informatics/research/?collection=language&chapter=2#topic-mindfulness-biofeedback): Universal Informatics; HTML; Public.
 - [Happiness experience and About](https://universalmind.tv/happiness/): Happiness; HTML; Invitation login.
 - [Informatics wiki](https://universalmind.tv/informatics/read/): Universal Informatics; HTML; Public.
 - [Publication register](https://universalmind.tv/informatics/read/publications/index.html): Universal Informatics; HTML; Public.
@@ -153,7 +170,7 @@ Access: The research wiki, publication records and download directory are public
 - [Archive and timestamp record](https://universalmind.tv/informatics/read/provenance.html): Universal Informatics; HTML; Public.
 - [Informatics AI access and reuse](https://universalmind.tv/informatics/read/access.html): Universal Informatics; HTML; Public.
 - [Connect and download: API, MCP, A2A, JSON and CSV](https://universalmind.tv/informatics/connect/): Universal Informatics; HTML; Public. Connection instructions and complete dataset exports; research scope.
-- [Complete dataset manifest](https://universalmind.tv/informatics/exports/manifest-4236ba3449732c396c297767fd618c7b5c8f2245b828b5b7b4238b21ad48509c.json): Universal Informatics; JSON; Public. Current export files, sizes and checksums.
+- [Complete dataset manifest](https://universalmind.tv/informatics/exports/manifest-ef9ea1424443061bff06c722cedac0d1d9a4acb855c012ba1ca14e53d026d7e0.json): Universal Informatics; JSON; Public. Current export files, sizes and checksums.
 - [Dataset guide](https://universalmind.tv/informatics/exports/README.md): Universal Informatics; Markdown; Public.
 - [Atlas JSON bundle](https://universalmind.tv/informatics/pilot-v1/m1-m1001-data.zip): Universal Informatics; ZIP / JSON; Public.
 - [Atlas CSV bundle](https://universalmind.tv/informatics/pilot-v1/m1-m1001-csv.zip): Universal Informatics; ZIP / CSV; Public.
