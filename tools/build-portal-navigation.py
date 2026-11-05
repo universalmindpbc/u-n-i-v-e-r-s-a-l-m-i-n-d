@@ -1,7 +1,7 @@
 """Build public chapter routes and maps from the shared navigation definition."""
 from pathlib import Path
 from html import escape, unescape
-import json,re,hashlib,xml.etree.ElementTree as ET
+import json,re,hashlib,sys,xml.etree.ElementTree as ET
 from urllib.parse import urljoin
 ROOT=Path(__file__).resolve().parents[1]
 ORIGIN='https://universalmind.tv'
@@ -15,6 +15,48 @@ def page(title,body,url):
  return '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+escape(title)+' · Universal Mind</title><meta name="description" content="'+escape(title)+' · pages in navigation order"><link rel="canonical" href="'+ORIGIN+url+'"><link rel="stylesheet" href="/read/wiki.css"><script src="/site-navigation/routes.js?v='+runtime_hash+'"></script></head><body><header><a href="/home/">Universal Mind</a><nav><a href="/sitemap/">Website map</a><a href="/read/">AI / LLM guide</a></nav></header><main><h1>'+escape(title)+'</h1>'+body+'</main></body></html>\n'
 def items(entries):
  return '<ul>'+''.join('<li><a href="'+escape(e['url'],quote=True)+'"'+(' target="_blank" rel="noopener noreferrer"'if e.get('target')=='_blank'else'')+'>'+escape(e['label'])+'</a>'+ (items(e['children'])if e.get('children')else'')+'</li>'for e in entries)+'</ul>'
+def business_sitemap():
+    iam, events = portals['iam'], portals['events']
+    happiness, inf = portals['festivals'], portals['informatics']
+    iam_labels = {
+        'home': 'Livestream TV', 'about': 'About I AM', 'program': 'Program',
+        'technology': 'Technology', 'science': 'Science', 'research': 'Research',
+        'impact': 'Impact', 'our-team': 'Our team',
+    }
+    iam_links = [dict(entry, label=iam_labels[entry['id']], children=[])
+                 for entry in iam['entries'] if entry['id'] in iam_labels]
+    event_links = [
+        {'label': 'athousandminds', 'url': '/events/?experience=1&event=athousandminds',
+         'children': [{'label': 'About athousandminds', 'url': '/read/#events'}]},
+        {'label': 'Universal Mind Lab', 'url': '/lab/',
+         'children': [{'label': 'Event research for youth', 'url': '/lab/research.html'}]},
+    ]
+    groups = [
+        (iam, 'I AM', iam_links),
+        (events, 'Events', event_links),
+        (happiness, 'Happiness', [{'label': 'About Happiness', 'url': '/read/#happiness'}]),
+        (inf, 'Universal Informatics', inf['entries']),
+    ]
+    sections = []
+    for portal, name, links in groups:
+        more = ''
+        if portal.get('map'):
+            more = '<p class="chapter-map"><a href="' + escape(portal['map'], quote=True) + '">Full ' + name + ' sitemap</a></p>'
+        sections.append('<section id="' + portal['id'] + '"><h2><a href="' + escape(portal['url'], quote=True)
+                        + '">' + name + '</a></h2><p>' + escape(portal['description']) + '</p>'
+                        + items(links) + more + '</section>')
+    return '''<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Website sitemap · Universal Mind</title>
+<meta name="description" content="Find I AM, athousandminds, Universal Mind Lab, Happiness and Universal Informatics.">
+<link rel="canonical" href="https://universalmind.tv/sitemap/">
+<link rel="stylesheet" href="/read/wiki.css"><link rel="stylesheet" href="/sitemap/map.css">
+</head><body><header><nav aria-label="Universal Mind"><a href="/home/">Universal Mind home</a><a href="/read/">Wiki for AI / LLMs</a></nav></header>
+<main><h1>Website sitemap</h1><div class="projects">''' + '\n'.join(sections) + '</div></main></body></html>\n'
+
+if sys.argv[1:] == ['--business-sitemap']:
+    write('sitemap/index.html', business_sitemap())
+    sys.exit(0)
 runtime='window.UniversalPortalNavigation='+json.dumps(config,ensure_ascii=False,separators=(',',':'))+';\n'+(ROOT/'site-navigation/runtime.js').read_text()
 write('site-navigation/routes.js',runtime);runtime_hash=hashlib.sha256(runtime.encode()).hexdigest()[:12]
 # Install the shared lookup before each portal's existing navigation controller.
@@ -50,13 +92,8 @@ for folder,names in [('Informatics',['app.js','atlas.css','global-navigation.js'
    if '/read/' in str(path) or '/chapters/' in str(path):continue
    pattern=r'((?:src|href)="(?:\.\./)*'+re.escape(name)+r')(?:(?:\?v=)[^" ]*)?("[^>]*>)'
    path.write_text(re.sub(pattern,lambda m:m[1]+'?v='+token+m[2],path.read_text()))
-# Readable top-level and portal maps, retaining the approved landing copy.
-body=''
-for p in config['portals']:
- body+='<section><h2><a href="'+escape(p['url'],quote=True)+'">'+escape(p['label'])+'</a></h2><p>'+escape(p['description'])+'</p>'
- if p.get('map'):body+='<p><a href="'+p['map']+'">'+escape(p['title'])+' sitemap</a></p>'
- body+='</section>'
-write('sitemap/index.html',page('Website sitemap',body,'/sitemap/'))
+# Readable portal maps, retaining the approved landing copy.
+write('sitemap/index.html', business_sitemap())
 for name in ['informatics','iam']:
  p=portals[name];body=items(p['entries'])
  guide='/informatics/read/'if name=='informatics'else'/read/#iam'
