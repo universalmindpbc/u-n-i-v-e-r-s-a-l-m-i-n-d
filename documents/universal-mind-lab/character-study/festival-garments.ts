@@ -2,6 +2,8 @@
 import {garmentById, type GarmentDef} from '../src/core/garments/catalog';
 import {cm, REGION} from '../src/core/garments/body';
 import {cloth, isTrunk, isUpper, mat, shellPart, skirt, torsoY} from '../src/core/garments/kit';
+import {dressPts, hang, legsUnder, loosePart} from '../src/core/garments/drape';
+import type {PolyMesh} from '../src/core/geometry';
 import {Caster} from '../src/core/garments/project';
 
 type Build = GarmentDef['build'];
@@ -149,4 +151,45 @@ register('ceremony-skirt','bottom',(g,s)=>{
   const mesh=skirt(g.body,top,ankle+cm(3),cm(1.25),.105,undefined,56);
   if(!mesh)throw Error('Tea gown hem does not reach the ankle');
   return [{mesh,material:mat('Long silk skirt',null,{color:s.color,roughness:.36,doubleSided:true})}];
+});
+
+
+// Map satin panels once around the figure. Duplicating UVs across the rear seam
+// keeps the narrow centre-back zip aligned as the waist and skirt deform.
+function dressUV(mesh:PolyMesh, centreZ:number, hem:number, top:number) {
+  const uv:number[]=[];
+  let corner=0;
+  for(const count of mesh.faceSizes) {
+    const face=mesh.faceVerts.subarray(corner,corner+count);
+    const us=Array.from(face,index=>.5+Math.atan2(mesh.positions[index*3],mesh.positions[index*3+2]-centreZ)/(2*Math.PI));
+    const wrap=Math.max(...us)-Math.min(...us)>.5;
+    for(let j=0;j<count;j++) {
+      uv.push(us[j]+(wrap&&us[j]<.5?1:0),(mesh.positions[face[j]*3+1]-hem)/(top-hem));
+    }
+    corner+=count;
+  }
+  mesh.uvs=Float32Array.from(uv);
+  mesh.faceUVs=Uint32Array.from(mesh.faceVerts,(_,i)=>i);
+}
+register('waspie-bodice','top',(g,s)=>{
+  const {body}=g, shoulder=body.L.shoulderX;
+  const parts=shellPart(g,{
+    covers:v=>{
+      const front=Math.max(0,Math.cos(v.tth));
+      const sweetheart=.55+front*(.18+.08*Math.sin(Math.min(1,v.ax/shoulder)*Math.PI));
+      const strap=Math.abs(v.ax/shoulder-.62)<.105;
+      return isUpper(v)&&v.tt>.23&&(v.tt<sweetheart||strap);
+    },
+    offset:cm(.52),relax:2
+  },mat('Sweetheart satin bodice',null,{map:'waspie-bodice.png',color:s.color,roughness:.37,doubleSided:true}));
+  for(const part of parts) dressUV(part.mesh,body.L.torsoZ,torsoY(body,.26),torsoY(body,1.03));
+  return parts;
+});
+register('waspie-mini','bottom',(g,s)=>{
+  const body=g.body, top=torsoY(body,.35),hem=body.L.hipY-cm(21);
+  const mesh=hang(body,dressPts(body),top,hem,{offset:cm(.95),shrink:.045,samples:64});
+  if(!mesh)throw Error('Missing fitted VIP skirt');
+  dressUV(mesh,body.L.torsoZ,hem,top);
+  const satin=mat('Banded satin mini',null,{map:'waspie-skirt.png',color:s.color,roughness:.39,doubleSided:true});
+  return loosePart(body,mesh,satin,.30,.26,legsUnder(g,hem,cm(4)));
 });

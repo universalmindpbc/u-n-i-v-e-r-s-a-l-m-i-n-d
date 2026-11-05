@@ -1,4 +1,4 @@
-// A visual projection study. All patterns fade smoothly; no strobe sequence.
+// Roof projections, main-stage lasers and perimeter moving heads.
 export function createLightShow(THREE,scene,architectureGroups,architecture){
   const uniforms={labTime:{value:0},labNight:{value:0},labResponse:{value:.7}};
   const materialCopies=new Map();
@@ -44,12 +44,86 @@ export function createLightShow(THREE,scene,architectureGroups,architecture){
   }
   frame.geometry.computeBoundingSphere();
   document.body.dataset.hologramAnchor='roof-surface';document.body.dataset.hologramDiameter='20.4';
-  const towerMat=new THREE.MeshStandardMaterial({color:'#465a58',metalness:.75,roughness:.45}),towers=new THREE.Group();show.add(towers);const lights=[];
-  for(const [x,z,tx,tz,colour] of [[-15,-27,0,-12,'#cab1ff'],[16,-27,0,-12,'#7be1f4'],[-33,1,-24,-9,'#ffbd82'],[-35,29,-23,20,'#a5b4ff'],[-43,-30,-34,-23,'#f3a5d6']]){
-    const pole=new THREE.Mesh(new THREE.CylinderGeometry(.075,.16,12,8),towerMat);pole.position.set(x,6,z);towers.add(pole);
-    const head=new THREE.Mesh(new THREE.BoxGeometry(.7,.35,.8),towerMat);head.position.set(x,12,z);head.lookAt(tx,4,tz);towers.add(head);
-    const light=new THREE.SpotLight(colour,0,60,.7,.8,1);light.position.set(x,12,z);light.target.position.set(tx,3,tz);show.add(light,light.target);lights.push(light);
+  const towers=[
+    [-15,-27,0,-12,'#b9a6ff'],[16,-27,0,-12,'#78dff6'],[-33,1,-24,-9,'#ffc58d'],
+    [-35,29,-23,20,'#9ca8ff'],[-43,-30,-34,-23,'#efa4ca'],
+    [28,-18,19,-10,'#aaa5ff'],[30,19,19,11,'#73dded'],[26,45,12,35,'#a2c6fa'],
+    [-7,58,-9,40,'#e3b7ed'],[-45,78,-32,62,'#8fdaef']
+  ];
+  const rigMat=new THREE.MeshStandardMaterial({color:'#435052',metalness:.65,roughness:.41});
+  const poles=new THREE.InstancedMesh(new THREE.CylinderGeometry(.085,.16,12,8),rigMat,towers.length);
+  const heads=new THREE.InstancedMesh(new THREE.BoxGeometry(.70,.46,.86),rigMat,towers.length);
+  show.add(poles,heads);
+  const lamp=new THREE.Object3D(), aim=new THREE.Vector3(), direction=new THREE.Vector3();
+  const up=new THREE.Vector3(0,1,0),origin=new THREE.Vector3();
+  function beamBatch(count,width,name){
+    // Instance colour and a tip-to-tail fade give the shafts depth in haze.
+    const geo=new THREE.CylinderGeometry(width,.016,1,12,1,true);geo.translate(0,.5,0);
+    const mat=new THREE.ShaderMaterial({
+      transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,
+      uniforms:{power:{value:0}},
+      vertexShader:'varying vec3 tint; varying float reach; void main(){tint=instanceColor;reach=uv.y;gl_Position=projectionMatrix*modelViewMatrix*instanceMatrix*vec4(position,1.);}',
+      fragmentShader:'uniform float power; varying vec3 tint; varying float reach; void main(){float fade=1.-smoothstep(.04,1.,reach);gl_FragColor=vec4(tint,power*fade);}'
+    });
+    const mesh=new THREE.InstancedMesh(geo,mat,count);mesh.name=name;mesh.frustumCulled=false;show.add(mesh);return mesh;
   }
-  let amount=0;
-  return {setResponse(value){uniforms.labResponse.value=value;},set(value,ready){amount=value;show.visible=ready;hologram.visible=value>0;for(let i=0;i<vertices.count;i++)vertices.setY(i,bases[i]+heights[i]*value);vertices.needsUpdate=true;material.opacity=value*.63;uniforms.labNight.value=value;lights.forEach((light,i)=>light.intensity=Math.max(0,Math.min(1,(value-i*.11)/.35))*26);},update(time){uniforms.labTime.value=time;if(amount>0)material.color.setHSL(.48+Math.sin(time*.07)*.06,.66,.68);}};
+  const sweeps=beamBatch(towers.length,2.05,'Perimeter moving beams');
+  const lasers=beamBatch(18,.105,'Main pavilion full-colour lasers');
+  const beamPose=new THREE.Object3D();
+  function pointBeam(mesh,i,start,delta){
+    const len=delta.length();
+    beamPose.position.copy(start);beamPose.quaternion.setFromUnitVectors(up,delta.divideScalar(len));
+    beamPose.scale.set(1,len,1);beamPose.updateMatrix();mesh.setMatrixAt(i,beamPose.matrix);
+  }
+  const spots=[];
+  for(const [i,[x,z,tx,tz,colour]] of towers.entries()){
+    lamp.position.set(x,6,z);lamp.updateMatrix();poles.setMatrixAt(i,lamp.matrix);
+    sweeps.setColorAt(i,new THREE.Color(colour));
+    // Keep the original five dynamic spotlights. The remaining perimeter heads
+    // share instanced volumetric beams, limiting the cost of the wider rig.
+    if(i<5){
+      const light=new THREE.SpotLight(colour,0,60,.48,.75,1);
+      light.position.set(x,12,z);light.target.position.set(tx,3,tz);show.add(light,light.target);spots.push(light);
+    }
+  }
+  for(let i=0;i<lasers.count;i++)lasers.setColorAt(i,new THREE.Color().setHSL((i%9)/9,.98,.57));
+  let amount=-1,lastTime=-1;
+  function aimRigs(t){
+    for(const [i,[x,z,tx,tz]] of towers.entries()){
+      const phase=i*1.37, azimuth=Math.atan2(tx-x,tz-z)+.51*Math.sin(.32*t+phase);
+      origin.set(x,12,z);
+      direction.set(24*Math.sin(azimuth),-9.5+2.2*Math.sin(.26*t+phase),24*Math.cos(azimuth));
+      aim.copy(origin).add(direction);if(spots[i])spots[i].target.position.copy(aim);
+      lamp.position.copy(origin);lamp.lookAt(aim);lamp.updateMatrix();heads.setMatrixAt(i,lamp.matrix);
+      pointBeam(sweeps,i,origin,direction);
+    }
+    for(let i=0;i<lasers.count;i++){
+      const side=i<9?-1:1, ray=(i%9)/8;
+      origin.set(side*4.5,architecture.roofHeight(side*4.5,-2)+.34,-14);
+      const azimuth=side*(.18+.98*ray)+.22*Math.sin(t*.26);
+      direction.set(50*Math.sin(azimuth),8+13*ray+3*Math.sin(t*.31+ray*2),-50*Math.cos(azimuth));
+      pointBeam(lasers,i,origin,direction);
+    }
+    heads.instanceMatrix.needsUpdate=sweeps.instanceMatrix.needsUpdate=lasers.instanceMatrix.needsUpdate=true;
+  }
+  aimRigs(0);
+  return {
+    setResponse(value){uniforms.labResponse.value=value;},
+    set(value,ready){
+      show.visible=ready;if(amount===value)return;
+      amount=value;hologram.visible=lasers.visible=sweeps.visible=value>0;
+      for(let i=0;i<vertices.count;i++)vertices.setY(i,bases[i]+heights[i]*value);
+      vertices.needsUpdate=true;material.opacity=value*.63;uniforms.labNight.value=value;
+      sweeps.material.uniforms.power.value=value*.16;
+      lasers.material.uniforms.power.value=value*.74;
+      spots.forEach((spot,i)=>spot.intensity=Math.max(0,Math.min(1,(value-i*.11)/.35))*26);
+    },
+    update(time,rigTime){
+      uniforms.labTime.value=time;
+      if(amount<=0||!show.visible)return;
+      material.color.setHSL(.48+Math.sin(time*.07)*.06,.66,.68);
+      // A steady frame under reduced motion, with the same spectrum at night.
+      if(rigTime!==lastTime){aimRigs(rigTime);lastTime=rigTime;}
+    }
+  };
 }

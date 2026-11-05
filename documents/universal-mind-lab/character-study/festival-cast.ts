@@ -89,9 +89,11 @@ for(const [id,hair,tone] of [['tea-host-1','bob02','#a42132'],['tea-host-2','lon
   looks.push(look(id,27,0,'asian',hair,'ceremony-silk','ceremony-skirt',tone,tone,'idle',{shoes:'flats',eyes:'brown'}));
 }
 looks.push(
-  look('vip-pour-1',25,0,'caucasian','ponytail01','one-piece','suit_trousers','#8f203b',coal,'pour',{...blond,earrings:'small_hoops'}),
-  look('vip-pour-2',26,0,'caucasian','bob02','one-piece','suit_trousers',ivory,'#631f35','pour',{...blond,earrings:'studs'}),
-  look('vip-dj',24,0,'african','box_braids','sport-crop','baggy_jeans','#f6ce94','#662742','mix',{earrings:'small_hoops'})
+  look('vip-pour-1',25,0,'caucasian','ponytail01','waspie-bodice','waspie-mini','#292929','#292929','pour',{...blond,shoes:'flats',earrings:'small_hoops'}),
+  look('vip-pour-2',26,0,'caucasian','bob02','waspie-bodice','waspie-mini','#f9f8f5','#f9f8f5','pour',{...blond,shoes:'flats',earrings:'studs'}),
+  look('vip-dj',24,0,'african','box_braids','sport-crop','baggy_jeans',ivory,coal,'mix',{earrings:'small_hoops'}),
+  look('vip-service-white',25,0,'asian','ponytail01','waspie-bodice','waspie-mini','#f9f8f5','#f9f8f5','service-walk',{shoes:'flats',earrings:'studs'}),
+  look('vip-service-black',27,0,'african','short03','waspie-bodice','waspie-mini','#292929','#292929','service-walk',{shoes:'flats',earrings:'small_hoops'})
 );
 const section = (s:string)=>s==='chair'||s==='floor'||s==='daybed';
 function seated(pose:string):Clip {
@@ -137,6 +139,11 @@ function movement(pose:string):Clip {
     };
     return p;
   }};
+  if(pose==='service-walk')return {id:pose,name:'Walk with a level tray',category:'Locomotion',duration:1.35,loop:true,sample(t){
+    const p=gait(WALK,t/1.35);
+    p.ik={...p.ik,Left:{pos:[.26,-.33,.24],pole:[.7,-.6,-.12],dir:[.05,.05,1],palm:[0,1,0]}};
+    return p;
+  }};
   if(pose==='walk')return {id:'runway',name:'Runway walk',duration:1.2,loop:true,category:'Locomotion',sample:t=>gait(WALK,t/1.2)};
   if(pose==='dance')return {...cheer,name:'Hands overhead',sample(t){const p=cheer.sample(t);fingers(p.bones!,7);return {...p,thumbs:undefined};}};
   if(pose==='groove')return {...idle,name:'Dance-floor sway',sample(t){const p=idle.sample(t),w=Math.sin(t/idle.duration*Math.PI*2);
@@ -172,6 +179,19 @@ ink.set('denim-stitch.png',await detail('<g fill="none" stroke="#758b9c" stroke-
 ink.set('rash-zip.png',await detail('<rect x="65" width="70" height="100" fill="#202329"/><path d="M94 0 V100 M107 0 V100" stroke="#a4aab1" stroke-width="6" stroke-dasharray="1 1"/><rect x="73" y="12" width="53" height="9" rx="5" fill="#81878b"/>'));
 for(const [file,mark] of [['flower-ink.png','<g fill="none" stroke="#302c2e" stroke-width="2.2">'+flower+'<circle cx="50" cy="50" r="39"/></g>'],['affirmation-ink.png','<g transform="rotate(-90 50 50)"><text x="50" y="54" text-anchor="middle" fill="#302c2e" font-family="serif" font-style="italic" font-size="16">I am enough</text></g>']]){
   ink.set(file,await sharp(Buffer.from('<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 100 100">'+mark+'</svg>')).png().toBuffer());
+}
+// The satin mini repeats its horizontal bands and vertical boning on the front
+// and back, with a narrow zip centred on the rear UV seam.
+for(const bodice of [true,false]){
+  const start=bodice?53:0;
+  const bands=Array.from({length:bodice?6:12},(_,i)=>{
+    const y=start+i*8;
+    return '<path d="M0 '+y+' Q52 '+(y+2)+' 100 '+y+' T200 '+y+'" fill="none" stroke="#bcbcbc" stroke-width="1"/>';
+  }).join('');
+  const cups=bodice?'<g fill="none" stroke="#a8a8a8" stroke-width="1.6"><path d="M68 29 Q76 69 99 43 Q122 69 132 29"/></g>':'';
+  const seams='<g stroke="#c4c4c4" fill="none" stroke-width="2"><path d="M62 0Q77 51 66 100 M138 0Q123 51 134 100 M21 0L23 100 M179 0L177 100"/></g>';
+  const zip='<g stroke="#8f8f8f" stroke-width="1.5" stroke-dasharray="1 1"><path d="M1 0v100 M199 0v100"/></g>';
+  ink.set(bodice?'waspie-bodice.png':'waspie-skirt.png',await detail('<rect width="200" height="100" fill="#f8f8f8"/>'+bands+seams+cups+zip));
 }
 ink.set('tea-embroidery.png',await detail('<g fill="#ffffff"><path id="s" d="m0-4 1 2.7 3 .2-2.3 1.9.7 3-2.4-1.7-2.5 1.7.8-3L-4-.9l3-.4z"/><use href="#s" x="125" y="20"/><use href="#s" x="104" y="39"/><use href="#s" x="142" y="46"/><use href="#s" x="118" y="62"/><use href="#s" x="93" y="77"/></g>'));
 for(const [index,spec] of looks.entries()){

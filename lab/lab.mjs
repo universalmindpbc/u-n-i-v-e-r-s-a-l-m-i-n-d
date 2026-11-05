@@ -1,4 +1,4 @@
-import {createHospitality,venueLocations} from './hospitality.mjs?v=20261105vesica1';
+import {createHospitality,venueLocations} from './hospitality.mjs?v=20261105bondage1';
 import {createGroundWalkers,createSeatedVisitors,createShowRunway} from './visitor-groups.mjs?v=20261105activity3';
 import { createPortal } from './portal.mjs?v=20261105activity3';
 import { createFestivalCast } from './festival-cast.mjs?v=20261105activity3';
@@ -16,7 +16,7 @@ const portraitMobile = () => mobile() && $('world').clientHeight > $('world').cl
 const status = (message) => { $('scene-status').textContent = message; };
 const places = {
   bar: {number:'09 · NON-ALCOHOLIC BAR',title:'Non-alcoholic bar',copy:'Follow the short path from the main pavilion for the full Heaps Normal beer range, sparkling wines, L-theanine drinks, kombucha and spring water.'},
-  vip: {number:'11 · COCKTAIL BAR',title:'Adaptogen VIP Bar',copy:'Two interlocking circles form a Vesica Piscis. The DJ and dance floor are on the left. The bar on the right serves non-alcoholic cocktails with functional mushrooms and botanicals. Capacity 22 people.'},
+  vip: {number:'11 · VIP ARENA',title:'James Bondage VIP',copy:'Two interlocking circles form a Vesica Piscis. The DJ plays on the black dance floor. Across the white carpet, the Adaptogen Cocktail Bar serves non-alcoholic cocktails with functional mushrooms and botanicals. Capacity 22 people.'},
   tea: {number:'10 · TEA HOUSE',title:'Tea house',copy:'Follow the path downstream to a stone circle with cushions for 33 guests. Asian tea ceremony hosts gather around a low tea table, away from the sound of the main arena.'},
   portal: { number: '08 · I AM PORTAL', title: 'I Am Portal', copy: 'Seven small workshop spaces for education, intervention and interactivity. Explore electronic music, fashion, communication and creative technology in groups of ten.' },
   overview: { number: '', title: 'Overview', copy: 'An open green space for creative learning, emotional awareness and connection. Music, fashion and mindfulness bring people together, with support close at hand.' },
@@ -74,6 +74,7 @@ function selectPlace(key, show = true, automated = false) {
   if(key!=='overview')emotionPanel(false);
   const isVenue=Object.hasOwn(venueLocations,key);
   $('venue-menu-open').hidden=!isVenue;
+  $('vip-lineup-open').hidden=key!=='vip';
   if(isVenue)$('venue-menu-open').setAttribute('aria-controls',key+'-menu');
   $('arena-bar').hidden=key!=='main';
   $('interior-view').hidden=key!=='main';$('learn-main').hidden=key!=='main';
@@ -125,6 +126,7 @@ document.addEventListener('pointerdown',event=>{if(mobilePlaces.open&&!mobilePla
 mobilePlaces.addEventListener('keydown',event=>{if(event.key==='Escape'){mobilePlaces.open=false;mobilePlaces.querySelector('summary').focus();}});
 $('arena-bar').addEventListener('click',()=>visitVenue('bar'));
 $('venue-menu-open').addEventListener('click',()=>{stopTour();$(selected+'-menu').showModal();});
+$('vip-lineup-open').addEventListener('click',()=>{stopTour();$('vip-lineup').showModal();});
 for(const menu of document.querySelectorAll('.venue-menu')){
   menu.querySelector('[data-menu-close]').addEventListener('click',()=>menu.close());
   menu.addEventListener('click',event=>{if(event.target!==menu)return;const r=menu.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)menu.close();});
@@ -278,11 +280,14 @@ $('support-pathway').addEventListener('click',()=>{emotionPanel(false);selectPla
 const connectionSteps=[
   {key:'earth',label:'Connection to our earth',cue:'Feel your feet on the ground, or feel the support beneath you as you sit.'},
   {key:'self',label:'Connection to self',cue:'Feel your breath. Feel your body.'},
-  {key:'others',label:'Connection to each other',cue:'Feel the energy of the people around you.'}
+  {key:'others',label:'Connection to each other',cue:''}
 ];
 function updateConnection(){
   stopTour();const value=Number($('response-range').value)/100,step=connectionSteps[value<.34?0:value<.67?1:2];
-  $('response-state').textContent=step.label;$('connection-cue').textContent=step.cue;
+  $('response-state').textContent=step.label;
+  const cue=$('connection-cue');
+  cue.textContent=step.cue;
+  cue.hidden=!step.cue;
   document.querySelectorAll('[data-connection]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.connection===step.key)));
   sceneAPI?.setResponse(value);media.setResponse(value);document.body.dataset.responseLevel=value.toFixed(2);document.body.dataset.connectionStep=step.key;
 }
@@ -297,7 +302,7 @@ syncFullscreen();
 
 async function buildWorld() {
   const THREE = await import('three');
-  const [{OrbitControls},{createArchitecture},{createSiteFeatures},{createCrowd},{createLightShow},{createRunway}]=await Promise.all([import('./vendor/OrbitControls.js'),import('./architecture.mjs?v=20261103purpose1'),import('./site-features.mjs?v=20261103orbit1'),import('./crowd.mjs?v=20261105activity3'),import('./light-show.mjs?v=20261103orbit1'),import('./runway.mjs?v=20261103orbit1')]);
+  const [{OrbitControls},{createArchitecture},{createSiteFeatures},{createCrowd},{createLightShow},{createRunway}]=await Promise.all([import('./vendor/OrbitControls.js'),import('./architecture.mjs?v=20261103purpose1'),import('./site-features.mjs?v=20261103orbit1'),import('./crowd.mjs?v=20261105activity3'),import('./light-show.mjs?v=20261105rigs1'),import('./runway.mjs?v=20261103orbit1')]);
   const architecture=createArchitecture(THREE);
   let seed = 1947;
   const random = () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; };
@@ -612,7 +617,7 @@ async function buildWorld() {
   const daySky=new THREE.Color('#e9ece2'),nightSky=new THREE.Color('#101f30'),daySun=new THREE.Color('#fff1d9'),nightSun=new THREE.Color('#a5c0e2');
   const dayWaterA=new THREE.Color('#367f86'),nightWaterA=new THREE.Color('#123d48'),dayWaterB=new THREE.Color('#a1d4c5'),nightWaterB=new THREE.Color('#397280');
   function setNight(value){
-    currentStory.night=Number(value);portal.setNight(value);features.setNight(value);lightShow.set(Number(value),currentStory.programme>0);
+    currentStory.night=Number(value);portal.setNight(value);features.setNight(value);hospitality.setNight(value);lightShow.set(Number(value),currentStory.programme>0);
     const v=Number(value);if(v<.3)scene.background.lerpColors(daySky,goldSky,v/.3);else if(v<.58)scene.background.lerpColors(goldSky,peachSky,(v-.3)/.28);else scene.background.lerpColors(peachSky,nightSky,(v-.58)/.42);scene.fog.color.copy(scene.background);
     skyLight.intensity=2.3-1.75*value;sun.intensity=3.4-3.16*value;
     if(v<.5)sun.color.lerpColors(daySun,goldSun,v*2);else sun.color.lerpColors(goldSun,nightSun,(v-.5)*2);sun.position.y=78-96*v;renderer.toneMappingExposure=1.15+.2*value;
@@ -689,7 +694,7 @@ async function buildWorld() {
     if(activities.update(peopleTime,peopleMoving,camera,visitorFrustum))needsFrame=true;
     if(festivalCast.update(camera,peopleTime,peopleMoving,visitorFrustum))needsFrame=true;
     if(portal.update(peopleTime,peopleMoving,camera,visitorFrustum))needsFrame=true;
-    crowd.update(peopleTime,{construction:currentStory.construction,dancing:peopleMoving,visible:currentStory.seconds>6,night:currentStory.night,frustum:visitorFrustum});performanceStage.update(peopleTime,peopleMoving);lightShow.update(motionTime);
+    crowd.update(peopleTime,{construction:currentStory.construction,dancing:peopleMoving,visible:currentStory.seconds>6,night:currentStory.night,frustum:visitorFrustum});performanceStage.update(peopleTime,peopleMoving);lightShow.update(motionTime,peopleTime);
     if(runwayCrowd.update(peopleTime,peopleMoving))needsFrame=true;
     if(tween){const a=Math.min(1,(t-tween.start)/1250),ease=a*a*(3-2*a);camera.position.lerpVectors(tween.from,tween.to,ease);controls.target.lerpVectors(tween.fromTarget,tween.target,ease);if(a===1)tween=null;needsFrame=true;}
     if(!cinematicCamera)controls.update();

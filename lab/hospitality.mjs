@@ -1,4 +1,4 @@
-import {buildVipBar} from './vip-bar.mjs?v=20261105vesica1';
+import {buildVipBar} from './vip-bar.mjs?v=20261105bondage1';
 import {mergeGeometries} from './vendor/BufferGeometryUtils.js';
 import {loadCastMember} from './festival-cast.mjs?v=20261105activity3';
 
@@ -91,7 +91,7 @@ export function createHospitality(THREE,requestFrame){
   for(const x of [-1.55,1.55]){tea.box(brass,x,2.57,.25,.018,.34,.018);tea.add(new THREE.SphereGeometry(1,18,14),glow,x,2.27,.25,.16,.22,.16);}
   tea.sign('Tea house',1.5,.27,0,2.62,.67);tea.finish();
 
-  const vip=buildVipBar(THREE,venue('vip','Adaptogen VIP Bar'),make,requestFrame);
+  const vip=buildVipBar(THREE,venue('vip','James Bondage VIP'),make,requestFrame);
   let started=false;
   function loadHosts(){
     if(started)return;started=true;
@@ -120,7 +120,7 @@ export function createHospitality(THREE,requestFrame){
     }).catch(e=>console.error('Bar server asset',e));
   }
   let barMixer=null;
-  return {group,stats:{teaCushions:33,teaStones:31,barShelves:2,vipCapacity:22},update(camera,time,moving){
+  return {group,setNight:vip.setNight,stats:{teaCushions:33,teaStones:31,barShelves:2,vipCapacity:22},update(camera,time,moving){
     if(!group.visible)return false;
     const vipMoving=vip.update(camera,time,moving);
     const nearBar=Math.hypot(camera.position.x-bar.node.position.x,camera.position.z-bar.node.position.z)<36;
