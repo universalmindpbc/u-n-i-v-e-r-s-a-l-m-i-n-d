@@ -1,0 +1,98 @@
+{
+  "live": true,
+  "mutedChromium": true,
+  "mediaPlaybackStubbed": true,
+  "hashes": {
+    "index.html": "fabbe01b2f8c9d66f87ff2092f4875f412e518181c2f6274dac1e9d763a86a38",
+    "lab.css": "5f7a9cc8db7783cd9068b69b67a049ec69813b6e4b27f408545b8e7d037f45b4",
+    "lab.mjs": "ae920c5355d1104cd7a496c69dfbabee94746f4996d4b49a5e3a5e635b75eef0",
+    "research.html": "0b82912aefcec4abfb8188c3479bbd57423503ccea333840c548298ec9528c95"
+  },
+  "checks": [
+    {
+      "width": 393,
+      "height": 780,
+      "screen": "landing",
+      "mobile": true,
+      "status": "Proposal",
+      "linkBounds": {
+        "x": 185.53125,
+        "y": 728,
+        "width": 191.46875,
+        "height": 44,
+        "top": 728,
+        "right": 377,
+        "bottom": 772,
+        "left": 185.53125
+      }
+    },
+    {
+      "width": 393,
+      "height": 780,
+      "screen": "landscape",
+      "mobile": true,
+      "status": "Proposal",
+      "linkBounds": {
+        "x": 185.53125,
+        "y": 726,
+        "width": 191.46875,
+        "height": 44,
+        "top": 726,
+        "right": 377,
+        "bottom": 770,
+        "left": 185.53125
+      }
+    },
+    {
+      "width": 320,
+      "height": 658,
+      "screen": "landscape",
+      "mobile": true,
+      "status": "Proposal",
+      "linkBounds": {
+        "x": 152.359375,
+        "y": 604,
+        "width": 151.640625,
+        "height": 44,
+        "top": 604,
+        "right": 304,
+        "bottom": 648,
+        "left": 152.359375
+      }
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "screen": "landscape",
+      "mobile": true,
+      "status": "Proposal",
+      "linkBounds": {
+        "x": 621,
+        "y": 341.8125,
+        "width": 207,
+        "height": 44.1875,
+        "top": 341.8125,
+        "right": 828,
+        "bottom": 386,
+        "left": 621
+      }
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "screen": "landscape",
+      "mobile": false,
+      "status": "Artists, festival partners and mental health partners are proposed and not confirmed.",
+      "linkBounds": {
+        "x": 1166.828125,
+        "y": 848.734375,
+        "width": 231.171875,
+        "height": 27.265625,
+        "top": 848.734375,
+        "right": 1398,
+        "bottom": 876,
+        "left": 1166.828125
+      }
+    }
+  ]
+}
