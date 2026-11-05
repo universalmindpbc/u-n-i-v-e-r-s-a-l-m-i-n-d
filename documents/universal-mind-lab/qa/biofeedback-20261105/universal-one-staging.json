@@ -1,0 +1,38 @@
+{
+  "verifiedAt": "2026-11-05T05:23:00.926Z",
+  "stagingWorkerVersion": "a3397f29-374f-43ec-a5c4-77139b57d8d2",
+  "origin": "https://staging.universalmind.tv",
+  "endpoint": "https://informatics-universal-one-staging.universalmind.workers.dev/research",
+  "question": "In the 63-publication biofeedback review, how many reports used live HRV, heartbeat, EEG, a derived indicator and a documented proprietary score? Can reports overlap? Who was masked in the inpatient trial (DOI 10.3390/brainsci16070748)? Please cite the review and trial in under 120 words.",
+  "status": 200,
+  "model": "gpt-6-astra",
+  "knowledge": {
+    "approvedYouth": {
+      "sourceBatch": "batch-f164c8325ea5f9c9.json",
+      "sourceSHA256": "f164c8325ea5f9c989c29524518b598913508117712826dc408f592b7f99a723",
+      "approvedAt": "2026-11-02",
+      "publications": 105
+    },
+    "biofeedback": {
+      "version": "lab-biofeedback-20261105",
+      "publications": 63
+    }
+  },
+  "renderedAnswer": "The 63-publication *Mindfulness Biofeedback / AR / VR / Mixed Reality* review reports:\n- Live HRV: 7 reports\n- Heart rate/heartbeat: 10\n- EEG: 7\n- Derived indicators: 9\n- Explicitly documented proprietary scores: 2, both HeartMath coherence scores included within the nine derived indicators. [1]\n\nReports can overlap across categories; these counts are not additive. “Live” means the input changed what participants saw, heard or felt—not merely an outcome measurement. [1]\n\nIn the 188-person inpatient trial (DOI 10.3390/brainsci16070748), the psychiatrist assessing anxiety was masked to treatment allocation. This documents assessor masking, not double masking of participants and intervention providers. [2]",
+  "citationCards": [
+    {
+      "id": "lab-biofeedback-20261105",
+      "title": "Mindfulness Biofeedback / AR / VR / Mixed Reality",
+      "url": "https://staging.universalmind.tv/lab/research.html#mindfulness-biofeedback"
+    },
+    {
+      "id": "pmid-42512522",
+      "title": "Mindfulness Development via Biofeedback for Anxiety in Hospitalized Patients: A Randomized Controlled Trial",
+      "url": "https://doi.org/10.3390/brainsci16070748"
+    }
+  ],
+  "visitorRequests": 1,
+  "providerCalls": 3,
+  "chargedUpperUSD": 0.21533749999999996,
+  "processAudioMuted": true
+}

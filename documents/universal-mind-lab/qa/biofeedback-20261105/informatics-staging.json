@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-05T05:22:48.228Z",
+  "source": "f7d5ce3f1",
+  "chapter": "https://staging.universalmind.tv/informatics/research/?collection=language&chapter=2",
+  "labIdsMatchChapter": true,
+  "uniquePublications": 63,
+  "publisherLinks": 63,
+  "canonicalPriorRecord": "dv-adult-therapy-34143803",
+  "inpatientRecord": "pmid-42512522",
+  "standaloneReadingPage": "pmid-42512522-7e158443.html",
+  "individualWorkerRecordVerified": true,
+  "exportVersion": "c13ec9476b3fe5c3a3e9d60f1d3c822c52a29d9dd36980d9f6403541cae4ba71",
+  "sitemapEntries": 1386,
+  "workerHealth": {
+    "approvedYouth": {
+      "sourceBatch": "batch-f164c8325ea5f9c9.json",
+      "sourceSHA256": "f164c8325ea5f9c989c29524518b598913508117712826dc408f592b7f99a723",
+      "approvedAt": "2026-11-02",
+      "publications": 105
+    },
+    "biofeedback": {
+      "version": "lab-biofeedback-20261105",
+      "publications": 63
+    }
+  },
+  "processAudioMuted": true
+}
