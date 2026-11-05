@@ -1,0 +1,699 @@
+{
+  "live": true,
+  "width": 393,
+  "height": 785,
+  "areas": {
+    "play": [
+      {
+        "name": "Phone beat-maker 1",
+        "role": "phone",
+        "asset": "phone-02",
+        "status": "ready",
+        "visible": true,
+        "skins": 13,
+        "materials": [
+          "Skin",
+          "Skin details",
+          "Eyes",
+          "Eyebrows",
+          "Eyelashes",
+          "leggings",
+          "Technical knit crop",
+          "Sneaker leather",
+          "Sneaker midsole",
+          "Sneaker outsole",
+          "Sneaker laces",
+          "Hair"
+        ],
+        "bones": {
+          "Head": [
+            0,
+            1.1297,
+            0.0312
+          ],
+          "Hips": [
+            0,
+            0.551,
+            0
+          ],
+          "LeftFoot": [
+            0.1616,
+            0.1447,
+            0.305
+          ],
+          "LeftHand": [
+            0.0451,
+            0.8067,
+            0.2606
+          ],
+          "RightHand": [
+            -0.0822,
+            0.8108,
+            0.2687
+          ],
+          "LeftHandMiddle1": [
+            0.0216,
+            0.8537,
+            0.3305
+          ],
+          "LeftHandIndex1": [
+            0.0206,
+            0.8729,
+            0.3185
+          ],
+          "LeftToeBase": [
+            0.1662,
+            0.114,
+            0.353
+          ],
+          "Music handset": [
+            -0.0114,
+            0.8716,
+            0.3486
+          ]
+        }
+      },
+      {
+        "name": "Phone beat-maker 2",
+        "role": "phone",
+        "asset": "phone-09",
+        "status": "ready",
+        "visible": true,
+        "skins": 13,
+        "materials": [
+          "Skin",
+          "Skin details",
+          "Eyes",
+          "Eyebrows",
+          "Eyelashes",
+          "training",
+          "Classic crew tee",
+          "Sneaker leather",
+          "Sneaker midsole",
+          "Sneaker outsole",
+          "Sneaker laces",
+          "Hair"
+        ],
+        "bones": {
+          "Head": [
+            0,
+            1.1319,
+            0.0558
+          ],
+          "Hips": [
+            0,
+            0.551,
+            0
+          ],
+          "LeftFoot": [
+            0.164,
+            0.1717,
+            0.3116
+          ],
+          "LeftHand": [
+            0.0452,
+            0.8274,
+            0.2865
+          ],
+          "RightHand": [
+            -0.0776,
+            0.8403,
+            0.2947
+          ],
+          "LeftHandMiddle1": [
+            0.0182,
+            0.8822,
+            0.3662
+          ],
+          "LeftHandIndex1": [
+            0.0171,
+            0.9037,
+            0.3519
+          ],
+          "LeftToeBase": [
+            0.1692,
+            0.1404,
+            0.3647
+          ],
+          "Music handset": [
+            -0.0148,
+            0.9005,
+            0.3839
+          ]
+        }
+      },
+      {
+        "name": "Phone beat-maker 3",
+        "role": "phone",
+        "asset": "phone-01",
+        "status": "ready",
+        "visible": true,
+        "skins": 16,
+        "materials": [
+          "Skin",
+          "Skin details",
+          "Eyes",
+          "Eyebrows",
+          "Eyelashes",
+          "Baggy jeans",
+          "Jeans legs",
+          "Tank top",
+          "Sneaker leather",
+          "Sneaker midsole",
+          "Sneaker outsole",
+          "Sneaker laces",
+          "Braids"
+        ],
+        "bones": {
+          "Head": [
+            0,
+            1.1788,
+            0.0468
+          ],
+          "Hips": [
+            0,
+            0.551,
+            0
+          ],
+          "LeftFoot": [
+            0.1782,
+            0.1137,
+            0.3309
+          ],
+          "LeftHand": [
+            0.0491,
+            0.8531,
+            0.3078
+          ],
+          "RightHand": [
+            -0.0804,
+            0.8744,
+            0.3166
+          ],
+          "LeftHandMiddle1": [
+            0.0205,
+            0.9123,
+            0.3916
+          ],
+          "LeftHandIndex1": [
+            0.0195,
+            0.9349,
+            0.3761
+          ],
+          "LeftToeBase": [
+            0.1847,
+            0.0794,
+            0.3892
+          ],
+          "Music handset": [
+            -0.0125,
+            0.9306,
+            0.4093
+          ]
+        }
+      }
+    ],
+    "support": [
+      {
+        "name": "Cross-legged meditation 1",
+        "role": "seated",
+        "asset": "02",
+        "status": "ready",
+        "visible": true,
+        "skins": 13,
+        "materials": [
+          "Skin",
+          "Skin details",
+          "Eyes",
+          "Eyebrows",
+          "Eyelashes",
+          "leggings",
+          "Technical knit crop",
+          "Sneaker leather",
+          "Sneaker midsole",
+          "Sneaker outsole",
+          "Sneaker laces",
+          "Hair"
+        ],
+        "bones": {
+          "Head": [
+            0,
+            0.7808,
+            0.0208
+          ],
+          "Hips": [
+            0,
+            0.23,
+            0
+          ],
+          "LeftFoot": [
+            0.0003,
+            0.1218,
+            0.2136
+          ],
+          "LeftHand": [
+            0.2582,
+            0.2716,
+            0.1572
+          ],
+          "RightHand": [
+            -0.2582,
+            0.2716,
+            0.1572
+          ],
+          "LeftHandMiddle1": [
+            0.2615,
+            0.258,
+            0.2393
+          ],
+          "LeftHandIndex1": [
+            0.2403,
+            0.2535,
+            0.2403
+          ],
+          "LeftToeBase": [
+            -0.0443,
+            0.1041,
+            0.2386
+          ]
+        }
+      },
+      {
+        "name": "Cross-legged meditation 2",
+        "role": "seated",
+        "asset": "05",
+        "status": "ready",
+        "visible": true,
+        "skins": 16,
+        "materials": [
+          "Skin",
+          "Skin details",
+          "Eyes",
+          "Eyebrows",
+          "Eyelashes",
+          "Baggy jeans",
+          "Jeans legs",
+          "Classic crew tee",
+          "Sneaker leather",
+          "Sneaker midsole",
+          "Sneaker outsole",
+          "Sneaker laces",
+          "Hair"
+        ],
+        "bones": {
+          "Head": [
+            0,
+            0.8608,
+            0.0461
+          ],
+          "Hips": [
+            0,
+            0.23,
+            0
+          ],
+          "LeftFoot": [
+            -0.0022,
+            0.139,
+            0.2598
+          ],
+          "LeftHand": [
+            0.3014,
+            0.2908,
+            0.2123
+          ],
+          "RightHand": [
+            -0.3014,
+            0.2908,
+            0.2123
+          ],
+          "LeftHandMiddle1": [
+            0.3056,
+            0.2732,
+            0.3179
+          ],
+          "LeftHandIndex1": [
+            0.2786,
+            0.2678,
+            0.3188
+          ],
+          "LeftToeBase": [
+            -0.0589,
+            0.1213,
+            0.2938
+          ]
+        }
+      },
+      {
+        "name": "Cross-legged meditation 3",
+        "role": "seated",
+        "asset": "06",
+        "status": "ready",
+        "visible": true,
+        "skins": 13,
+        "materials": [
+          "Skin",
+          "Skin details",
+          "Eyes",
+          "Eyebrows",
+          "Eyelashes",
+          "hotpants",
+          "Technical knit crop",
+          "Sneaker leather",
+          "Sneaker midsole",
+          "Sneaker outsole",
+          "Sneaker laces",
+          "Hair"
+        ],
+        "bones": {
+          "Head": [
+            0,
+            0.75,
+            0.0296
+          ],
+          "Hips": [
+            0,
+            0.23,
+            0
+          ],
+          "LeftFoot": [
+            0.0006,
+            0.1283,
+            0.1989
+          ],
+          "LeftHand": [
+            0.2446,
+            0.2669,
+            0.1476
+          ],
+          "RightHand": [
+            -0.2446,
+            0.2669,
+            0.1476
+          ],
+          "LeftHandMiddle1": [
+            0.2477,
+            0.2529,
+            0.2256
+          ],
+          "LeftHandIndex1": [
+            0.2275,
+            0.2485,
+            0.2264
+          ],
+          "LeftToeBase": [
+            -0.0412,
+            0.1114,
+            0.2227
+          ]
+        }
+      },
+      {
+        "name": "Downward-facing dog",
+        "role": "yoga",
+        "asset": "yoga-04",
+        "status": "ready",
+        "visible": true,
+        "skins": 13,
+        "materials": [
+          "Skin",
+          "Skin details",
+          "Eyes",
+          "Eyebrows",
+          "Eyelashes",
+          "leggings",
+          "Technical knit crop",
+          "Sneaker leather",
+          "Sneaker midsole",
+          "Sneaker outsole",
+          "Sneaker laces",
+          "Hair"
+        ],
+        "bones": {
+          "Head": [
+            0,
+            0.213,
+            0.3654
+          ],
+          "Hips": [
+            0,
+            0.6453,
+            0.019
+          ],
+          "LeftFoot": [
+            0.0564,
+            0.1033,
+            -0.4049
+          ],
+          "LeftHand": [
+            0.1675,
+            0.0319,
+            0.5188
+          ],
+          "RightHand": [
+            -0.1675,
+            0.0319,
+            0.5188
+          ],
+          "LeftHandMiddle1": [
+            0.1675,
+            0.0277,
+            0.6033
+          ],
+          "LeftHandIndex1": [
+            0.146,
+            0.0234,
+            0.6041
+          ],
+          "LeftToeBase": [
+            0.0485,
+            0.0645,
+            -0.3672
+          ]
+        }
+      },
+      {
+        "name": "Support clinician",
+        "role": "doctor",
+        "asset": "clinician-1",
+        "status": "ready",
+        "gender": "female",
+        "coat": "long",
+        "footwear": "heels",
+        "hair": "long",
+        "stethoscope": true,
+        "visible": true,
+        "skins": 17,
+        "materials": [
+          "Skin",
+          "Skin details",
+          "Eyes",
+          "Eyebrows",
+          "Eyelashes",
+          "Suit trousers",
+          "Suit trousers creases",
+          "Tank top",
+          "Overcoat",
+          "Overcoat buttons",
+          "Heels",
+          "Heel soles",
+          "Hair"
+        ],
+        "bones": {
+          "Head": [
+            -0.0033,
+            1.439,
+            0.0244
+          ],
+          "Hips": [
+            0.0055,
+            0.8468,
+            0.0215
+          ],
+          "LeftFoot": [
+            0.1347,
+            0.119,
+            0.0057
+          ],
+          "LeftHand": [
+            0.2397,
+            0.8592,
+            0.0988
+          ],
+          "RightHand": [
+            -0.2273,
+            0.8513,
+            0.1041
+          ],
+          "LeftHandMiddle1": [
+            0.2539,
+            0.7857,
+            0.1415
+          ],
+          "LeftHandIndex1": [
+            0.2473,
+            0.7948,
+            0.161
+          ],
+          "LeftToeBase": [
+            0.1369,
+            0.0891,
+            0.0548
+          ],
+          "Stethoscope and clinical ID": [
+            -0.0032,
+            1.335,
+            -0.0128
+          ]
+        }
+      },
+      {
+        "name": "Welcome clinician",
+        "role": "doctor",
+        "asset": "clinician-2",
+        "status": "ready",
+        "gender": "female",
+        "coat": "long",
+        "footwear": "heels",
+        "hair": "long",
+        "stethoscope": true,
+        "visible": true,
+        "skins": 17,
+        "materials": [
+          "Skin",
+          "Skin details",
+          "Eyes",
+          "Eyebrows",
+          "Eyelashes",
+          "Suit trousers",
+          "Suit trousers creases",
+          "Tank top",
+          "Overcoat",
+          "Overcoat buttons",
+          "Heels",
+          "Heel soles",
+          "Hair"
+        ],
+        "bones": {
+          "Head": [
+            -0.0008,
+            1.557,
+            0.0429
+          ],
+          "Hips": [
+            0.0014,
+            0.9218,
+            0.0225
+          ],
+          "LeftFoot": [
+            0.1321,
+            0.1248,
+            0.0053
+          ],
+          "LeftHand": [
+            0.2584,
+            0.9297,
+            0.1158
+          ],
+          "RightHand": [
+            -0.2574,
+            0.9308,
+            0.126
+          ],
+          "LeftHandMiddle1": [
+            0.2726,
+            0.8498,
+            0.1616
+          ],
+          "LeftHandIndex1": [
+            0.2654,
+            0.8593,
+            0.1828
+          ],
+          "LeftToeBase": [
+            0.1335,
+            0.0923,
+            0.0587
+          ],
+          "Stethoscope and clinical ID": [
+            -0.0008,
+            1.4499,
+            0.0018
+          ]
+        }
+      }
+    ]
+  },
+  "errors": [],
+  "clearances": [
+    {
+      "people": 4,
+      "steps": 802,
+      "wall": 22.186,
+      "seats": 16.051
+    },
+    {
+      "people": 3,
+      "steps": 596,
+      "wall": 15.033,
+      "seats": 18.326
+    },
+    {
+      "people": 3,
+      "steps": 338,
+      "wall": 2.448,
+      "seats": 8.877
+    },
+    {
+      "people": 2,
+      "steps": 430,
+      "wall": 7.477,
+      "seats": 14.329
+    },
+    {
+      "people": 3,
+      "steps": 409,
+      "wall": 36.335,
+      "seats": 42.362
+    },
+    {
+      "people": 4,
+      "steps": 658,
+      "wall": 17.119,
+      "seats": 17.014
+    },
+    {
+      "people": 2,
+      "steps": 263,
+      "wall": 33.892,
+      "seats": 34.751
+    },
+    {
+      "people": 3,
+      "steps": 630,
+      "wall": 26.197,
+      "seats": 32.151
+    }
+  ],
+  "reducedMotion": true,
+  "assets": [
+    "assets/festival/02.glb",
+    "assets/festival/05.glb",
+    "assets/festival/06.glb",
+    "assets/festival/C.glb",
+    "assets/festival/D1.glb",
+    "assets/festival/D2.glb",
+    "assets/festival/air-service.glb",
+    "assets/festival/army-service.glb",
+    "assets/festival/clinician-1.glb",
+    "assets/festival/clinician-2.glb",
+    "assets/festival/crowd.glb",
+    "assets/festival/iris.glb",
+    "assets/festival/phone-01.glb",
+    "assets/festival/phone-02.glb",
+    "assets/festival/phone-09.glb",
+    "assets/festival/river-arena.glb",
+    "assets/festival/walkers.glb",
+    "assets/festival/workshops.glb",
+    "assets/festival/yoga-04.glb"
+  ]
+}
