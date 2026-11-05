@@ -1,7 +1,7 @@
 {
   "schemaVersion": "research-age-groups/v1",
-  "updatedAt": "2026-11-02",
-  "recordCount": 1323,
+  "updatedAt": "2026-11-05",
+  "recordCount": 1385,
   "taxonomy": [
     {
       "id": "children",
@@ -18526,6 +18526,831 @@
       "sourceURL": "https://pubmed.ncbi.nlm.nih.gov/38192586/",
       "basisType": "selected-methods-ai-editorial-assessment",
       "classificationNote": "Broad groups describe source-reported populations or review scope. Eligibility and study mean ages are not observed participant ranges; read the reported-age wording."
+    },
+    {
+      "recordId": "lab-484a7a4e3afd57",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": null,
+      "youthScope": null,
+      "sourceURL": "https://doi.org/10.1007/s10055-025-01224-y",
+      "basisType": "not-specified"
+    },
+    {
+      "recordId": "pmid-40465187",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "youth"
+      ],
+      "reportedAges": "University students. Age range unverified.",
+      "youthScope": null,
+      "sourceURL": "https://doi.org/10.1007/s10484-025-09718-w",
+      "basisType": "source-limited"
+    },
+    {
+      "recordId": "lab-5732673d3ebf2b",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": null,
+      "youthScope": null,
+      "sourceURL": "https://doi.org/10.3389/frvir.2021.644683",
+      "basisType": "not-specified"
+    },
+    {
+      "recordId": "pmid-41269211",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "18–57 years, mean 24.",
+      "youthScope": null,
+      "sourceURL": "https://doi.org/10.1177/21522715251397933",
+      "basisType": "source-limited"
+    },
+    {
+      "recordId": "pmid-38808471",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "College samples, mean ages 23.11 and 24.12. Exact 16–24 headcount unverified.",
+      "youthScope": null,
+      "sourceURL": "https://doi.org/10.1089/g4h.2024.0041",
+      "basisType": "source-limited"
+    },
+    {
+      "recordId": "lab-b2e87b36eea919",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": null,
+      "youthScope": null,
+      "sourceURL": "https://doi.org/10.1115/DETC2022-91254",
+      "basisType": "not-specified"
+    },
+    {
+      "recordId": "lab-8b68f71d40e35b",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": null,
+      "youthScope": null,
+      "sourceURL": "https://doi.org/10.1145/3831659",
+      "basisType": "not-specified"
+    },
+    {
+      "recordId": "lab-a8505b36d21db2",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": null,
+      "youthScope": null,
+      "sourceURL": "https://doi.org/10.1080/23311908.2025.2565063",
+      "basisType": "not-specified"
+    },
+    {
+      "recordId": "lab-a01e7058461d2e",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "Adults in informal prototype testing.",
+      "youthScope": null,
+      "sourceURL": "https://doi.org/10.1145/3325480.3326584",
+      "basisType": "source-limited"
+    },
+    {
+      "recordId": "pmid-39642375",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": null,
+      "youthScope": null,
+      "sourceURL": "https://doi.org/10.2196/55478",
+      "basisType": "not-specified"
+    },
+    {
+      "recordId": "lab-a39047f11e858a",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": null,
+      "youthScope": null,
+      "sourceURL": "https://doi.org/10.3389/frvir.2021.618381",
+      "basisType": "not-specified"
+    },
+    {
+      "recordId": "lab-2dde14fee628e5",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": null,
+      "youthScope": null,
+      "sourceURL": "https://doi.org/10.1145/3500868.3559708",
+      "basisType": "not-specified"
+    },
+    {
+      "recordId": "lab-fadf374f60eafd",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": null,
+      "youthScope": null,
+      "sourceURL": "https://doi.org/10.3390/app16167943",
+      "basisType": "not-specified"
+    },
+    {
+      "recordId": "lab-ca309fa8cd91b6",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": null,
+      "youthScope": null,
+      "sourceURL": "https://doi.org/10.4025/psicolestud.v26i0.46410",
+      "basisType": "not-specified"
+    },
+    {
+      "recordId": "pmid-34860290",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": null,
+      "youthScope": null,
+      "sourceURL": "https://doi.org/10.1007/s10484-021-09529-9",
+      "basisType": "not-specified"
+    },
+    {
+      "recordId": "lab-20e62d6bf5f3f4",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": null,
+      "youthScope": null,
+      "sourceURL": "https://doi.org/10.1109/VRW62533.2024.00394",
+      "basisType": "not-specified"
+    },
+    {
+      "recordId": "pmid-32706654",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": null,
+      "youthScope": null,
+      "sourceURL": "https://doi.org/10.2196/14958",
+      "basisType": "not-specified"
+    },
+    {
+      "recordId": "pmid-42512522",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": null,
+      "youthScope": null,
+      "sourceURL": "https://doi.org/10.3390/brainsci16070748",
+      "basisType": "not-specified"
+    },
+    {
+      "recordId": "pmid-38131865",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": null,
+      "youthScope": null,
+      "sourceURL": "https://doi.org/10.3390/bs13121008",
+      "basisType": "not-specified"
+    },
+    {
+      "recordId": "lab-877d9ce9559820",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "One participant aged 22.",
+      "youthScope": null,
+      "sourceURL": "https://doi.org/10.15540/nr.12.2.98",
+      "basisType": "source-limited"
+    },
+    {
+      "recordId": "lab-fca3cf0917013b",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": null,
+      "youthScope": null,
+      "sourceURL": "https://doi.org/10.1007/978-3-030-87595-4_12",
+      "basisType": "not-specified"
+    },
+    {
+      "recordId": "lab-1454bc5080b0d7",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": null,
+      "youthScope": null,
+      "sourceURL": "https://doi.org/10.1201/9781042017546-1",
+      "basisType": "not-specified"
+    },
+    {
+      "recordId": "lab-4eb5fd30048276",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": null,
+      "youthScope": null,
+      "sourceURL": "https://doi.org/10.1007/978-3-032-13174-4_18",
+      "basisType": "not-specified"
+    },
+    {
+      "recordId": "lab-5a210c0c4199cb",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "19–52 years, mean 22.9.",
+      "youthScope": null,
+      "sourceURL": "https://doi.org/10.1007/s10055-020-00471-5",
+      "basisType": "source-limited"
+    },
+    {
+      "recordId": "lab-74e0c193cc04c5",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": null,
+      "youthScope": null,
+      "sourceURL": "https://doi.org/10.1007/s12671-017-0698-x",
+      "basisType": "not-specified"
+    },
+    {
+      "recordId": "pmid-38742940",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "children",
+        "adolescents"
+      ],
+      "reportedAges": "Paediatric perioperative population.",
+      "youthScope": null,
+      "sourceURL": "https://doi.org/10.2196/48959",
+      "basisType": "source-limited"
+    },
+    {
+      "recordId": "pmid-33792548",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": null,
+      "youthScope": null,
+      "sourceURL": "https://doi.org/10.2196/26038",
+      "basisType": "not-specified"
+    },
+    {
+      "recordId": "lab-d011cd5d41de99",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": null,
+      "youthScope": null,
+      "sourceURL": "https://doi.org/10.1109/ICVR70658.2026.11672426",
+      "basisType": "not-specified"
+    },
+    {
+      "recordId": "pmid-40939175",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": null,
+      "youthScope": null,
+      "sourceURL": "https://doi.org/10.2196/70134",
+      "basisType": "not-specified"
+    },
+    {
+      "recordId": "lab-eee50dc8f3d54f",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "Study means 23.89 and 23.06.",
+      "youthScope": null,
+      "sourceURL": "https://doi.org/10.1038/s41598-024-68043-0",
+      "basisType": "source-limited"
+    },
+    {
+      "recordId": "lab-870b2fcef79281",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": null,
+      "youthScope": null,
+      "sourceURL": "https://doi.org/10.1145/3731459.3779342",
+      "basisType": "not-specified"
+    },
+    {
+      "recordId": "lab-70831a49e6f6d0",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": null,
+      "youthScope": null,
+      "sourceURL": "https://doi.org/10.1007/978-3-031-92689-1_9",
+      "basisType": "not-specified"
+    },
+    {
+      "recordId": "lab-7f8cefe879869f",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": null,
+      "youthScope": null,
+      "sourceURL": "https://dspace.mit.edu/entities/publication/2fbd5c24-af34-488f-81ea-12e1bc690f3d",
+      "basisType": "not-specified"
+    },
+    {
+      "recordId": "lab-3650fe906cd8e1",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": null,
+      "youthScope": null,
+      "sourceURL": "https://doi.org/10.1145/3359593",
+      "basisType": "not-specified"
+    },
+    {
+      "recordId": "pmid-39385361",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "Mixed adult samples, including young adults.",
+      "youthScope": null,
+      "sourceURL": "https://doi.org/10.1111/psyp.14705",
+      "basisType": "source-limited"
+    },
+    {
+      "recordId": "pmid-33529187",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "Healthy civilian volunteers, mean age 30.5.",
+      "youthScope": null,
+      "sourceURL": "https://doi.org/10.1371/journal.pone.0245068",
+      "basisType": "source-limited"
+    },
+    {
+      "recordId": "lab-58ba4c9a89141b",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": null,
+      "youthScope": null,
+      "sourceURL": "https://doi.org/10.1007/s12671-021-01783-6",
+      "basisType": "not-specified"
+    },
+    {
+      "recordId": "pmid-30087642",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": null,
+      "youthScope": null,
+      "sourceURL": "https://doi.org/10.3389/fpsyg.2018.01280",
+      "basisType": "not-specified"
+    },
+    {
+      "recordId": "lab-9993bb4e4e942d",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "children",
+        "adolescents",
+        "youth"
+      ],
+      "reportedAges": "9–18 years, mean 13.34.",
+      "youthScope": null,
+      "sourceURL": "https://doi.org/10.1007/s10055-025-01123-2",
+      "basisType": "source-limited"
+    },
+    {
+      "recordId": "pmid-41261293",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "children",
+        "adolescents"
+      ],
+      "reportedAges": "Childhood and adolescence across studies.",
+      "youthScope": null,
+      "sourceURL": "https://doi.org/10.1007/s10802-025-01387-x",
+      "basisType": "source-limited"
+    },
+    {
+      "recordId": "lab-ed18aa841e540e",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "47 participants aged 18–24.",
+      "youthScope": "focus",
+      "sourceURL": "https://doi.org/10.1145/2851581.2892521",
+      "basisType": "source-limited"
+    },
+    {
+      "recordId": "pmid-42205234",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "youth",
+        "adults"
+      ],
+      "reportedAges": "Undergraduates, mean age 20.87.",
+      "youthScope": null,
+      "sourceURL": "https://doi.org/10.2196/84239",
+      "basisType": "source-limited"
+    },
+    {
+      "recordId": "pmid-37930751",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": null,
+      "youthScope": null,
+      "sourceURL": "https://doi.org/10.2196/46368",
+      "basisType": "not-specified"
+    },
+    {
+      "recordId": "pmid-30020511",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": null,
+      "youthScope": null,
+      "sourceURL": "https://doi.org/10.1093/milmed/usy171",
+      "basisType": "not-specified"
+    },
+    {
+      "recordId": "pmid-38287778",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": null,
+      "youthScope": null,
+      "sourceURL": "https://doi.org/10.1093/milmed/usae003",
+      "basisType": "not-specified"
+    },
+    {
+      "recordId": "pmid-36331685",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": null,
+      "youthScope": null,
+      "sourceURL": "https://doi.org/10.1007/s10484-022-09565-z",
+      "basisType": "not-specified"
+    },
+    {
+      "recordId": "pmid-38378078",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "youth",
+        "adults",
+        "older-adults"
+      ],
+      "reportedAges": "Veterans aged 23–72.",
+      "youthScope": null,
+      "sourceURL": "https://doi.org/10.1016/j.josat.2024.209315",
+      "basisType": "source-limited"
+    },
+    {
+      "recordId": "pmid-22558370",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": null,
+      "youthScope": null,
+      "sourceURL": "https://doi.org/10.1371/journal.pone.0036169",
+      "basisType": "not-specified"
+    },
+    {
+      "recordId": "pmid-41618102",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": null,
+      "youthScope": null,
+      "sourceURL": "https://doi.org/10.1038/s41598-026-36216-8",
+      "basisType": "not-specified"
+    },
+    {
+      "recordId": "pmid-38236355",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": null,
+      "youthScope": null,
+      "sourceURL": "https://doi.org/10.1007/s10484-023-09611-4",
+      "basisType": "not-specified"
+    },
+    {
+      "recordId": "lab-382ebff3371467",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": null,
+      "youthScope": null,
+      "sourceURL": "https://doi.org/10.1016/j.ijhcs.2024.103275",
+      "basisType": "not-specified"
+    },
+    {
+      "recordId": "pmid-38896949",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": null,
+      "youthScope": null,
+      "sourceURL": "https://doi.org/10.1016/j.brat.2024.104596",
+      "basisType": "not-specified"
+    },
+    {
+      "recordId": "lab-aeddc9e62aff15",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "All participants over 18.",
+      "youthScope": null,
+      "sourceURL": "https://doi.org/10.1145/3449358",
+      "basisType": "source-limited"
+    },
+    {
+      "recordId": "lab-d69eade108c9c9",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": null,
+      "youthScope": null,
+      "sourceURL": "https://doi.org/10.1037/tmb0000034",
+      "basisType": "not-specified"
+    },
+    {
+      "recordId": "lab-03df8e70361cc3",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": null,
+      "youthScope": null,
+      "sourceURL": "https://doi.org/10.1145/3803784.3809264",
+      "basisType": "not-specified"
+    },
+    {
+      "recordId": "lab-16c72c2e0fd307",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "children",
+        "adolescents",
+        "youth"
+      ],
+      "reportedAges": "7–16 years, mean 11.4.",
+      "youthScope": null,
+      "sourceURL": "https://doi.org/10.1007/s12671-024-02373-y",
+      "basisType": "source-limited"
+    },
+    {
+      "recordId": "pmid-39935733",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "youth",
+        "adults",
+        "adolescents"
+      ],
+      "reportedAges": "16–25 years, mean 20.77.",
+      "youthScope": "focus",
+      "sourceURL": "https://doi.org/10.1017/gmh.2025.3",
+      "basisType": "source-limited"
+    },
+    {
+      "recordId": "pmid-34392115",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "children",
+        "adolescents"
+      ],
+      "reportedAges": "Young adolescents and caregivers.",
+      "youthScope": null,
+      "sourceURL": "https://doi.org/10.1016/j.brat.2021.103944",
+      "basisType": "source-limited"
+    },
+    {
+      "recordId": "pmid-35737665",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "Displaced Syrian adults.",
+      "youthScope": null,
+      "sourceURL": "https://doi.org/10.1371/journal.pmed.1004025",
+      "basisType": "source-limited"
+    },
+    {
+      "recordId": "pmid-35015365",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "adults"
+      ],
+      "reportedAges": "Adult participants, mean age 31.",
+      "youthScope": null,
+      "sourceURL": "https://doi.org/10.1002/wps.20939",
+      "basisType": "source-limited"
+    },
+    {
+      "recordId": "pmid-40283741",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": null,
+      "youthScope": null,
+      "sourceURL": "https://doi.org/10.3390/ijerph22040515",
+      "basisType": "not-specified"
+    },
+    {
+      "recordId": "lab-f825944bbd00ce",
+      "collections": [
+        "language"
+      ],
+      "groups": [
+        "not-specified"
+      ],
+      "reportedAges": null,
+      "youthScope": null,
+      "sourceURL": "https://www.microsoft.com/en-us/research/publication/feeling-the-beat-enhancing-empathy-and-engagement-during-public-speaking-through-heart-rate-sharing/",
+      "basisType": "not-specified"
     }
   ]
 }

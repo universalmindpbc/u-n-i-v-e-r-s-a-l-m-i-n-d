@@ -1,17 +1,17 @@
 {
   "schema": "universal-informatics/complete-dataset/v1",
-  "dataset_version": "4236ba3449732c396c297767fd618c7b5c8f2245b828b5b7b4238b21ad48509c",
+  "dataset_version": "c13ec9476b3fe5c3a3e9d60f1d3c822c52a29d9dd36980d9f6403541cae4ba71",
   "sources": [
     {
       "id": "atlas-guides/computer-vision-atlas.csv",
       "source_path": "atlas-guides/computer-vision-atlas.csv",
-      "sha256": "13ca13e52419ccd29a5d54f27c96e4eec479583e2e3ecc39d8ad94896e2a6920",
+      "sha256": "4597aa67dfced0c2bfbd73daf275a100c501c4b4611fe6525c173a42ea749f02",
       "format": "csv"
     },
     {
       "id": "atlas-guides/computer-vision-atlas.json",
       "source_path": "atlas-guides/computer-vision-atlas.json",
-      "sha256": "222490b3b8196ca6391595ff2ecd9657b912f2d3095d571f5340f7bc25ed8fba",
+      "sha256": "3cf68df7effd0af38c8164458cf5ab001953574c9b1cefd22906c5014a512d33",
       "format": "json"
     },
     {
@@ -29,13 +29,13 @@
     {
       "id": "atlas-guides/language-atlas.csv",
       "source_path": "atlas-guides/language-atlas.csv",
-      "sha256": "5d0cf0582ff3b3823d3a1ce9b3f59b9d28b131682c2c9a7c87c87eea1a843510",
+      "sha256": "9e9097a4b15727134832b7d5d23024d1c65b19b0b7a72cc7ec18b54c302e54d6",
       "format": "csv"
     },
     {
       "id": "atlas-guides/language-atlas.json",
       "source_path": "atlas-guides/language-atlas.json",
-      "sha256": "4babb2fe00df5faeeef160d6b32cf4d681e5202baedc7785aafa7d84055c4934",
+      "sha256": "5b1ccbfbe8b458b43c5c676949e3ef1c0f935f0fbcdf396dfe0a45e9c5401061",
       "format": "json"
     },
     {
@@ -65,13 +65,13 @@
     {
       "id": "atlas-guides/vision-atlas.csv",
       "source_path": "atlas-guides/vision-atlas.csv",
-      "sha256": "e5f874ac6bb67f1d5a306919abdcc7888ce0e4e37c1047eb35bd00541ced7d06",
+      "sha256": "e0e4e8ad88f7bfc259321ff818c91734292e2235d9b152ffe0336d01c3b1729c",
       "format": "csv"
     },
     {
       "id": "atlas-guides/vision-atlas.json",
       "source_path": "atlas-guides/vision-atlas.json",
-      "sha256": "4bab8853bd49f5fbec8f6cf3e5b5948acc461ae6b94bd95e581caed878b937ca",
+      "sha256": "e36ee5a2fa2eb5f7ff11ea060682330ced4004ce53a78d6d3c110b586175ce8d",
       "format": "json"
     },
     {
@@ -83,7 +83,7 @@
     {
       "id": "library-data/age-index.json",
       "source_path": "library-data/age-index.json",
-      "sha256": "2757cd5918c305cb200fa4884a5bffc83a941fcec09c188db1c60f9cd1c54022",
+      "sha256": "dca664e524244aed913073cb8b5492b77ae0dae5d1f18ea42a2cf15e434ce700",
       "format": "json"
     },
     {
@@ -101,7 +101,7 @@
     {
       "id": "library-data/community-index.json",
       "source_path": "library-data/community-index.json",
-      "sha256": "72c340e2f23ac3e85f87a13d645cd4daa6f556b2eaaffb931b687cd4627fec9a",
+      "sha256": "e5dba9eae8102ef73fa983dcab8d1b387e87b2c2725a14d9c66c0ca4c3acf016",
       "format": "json"
     },
     {
@@ -149,7 +149,7 @@
     {
       "id": "library-data/language-edition.json",
       "source_path": "library-data/language-edition.json",
-      "sha256": "b75953821a14dd5d816280fdd17957ca89d3d5dc2a88eb2639828b9a240c82be",
+      "sha256": "50d981d5b8c0ce2e2189aadd953bb3091b299950d783789dc66743fc009347c0",
       "format": "json"
     },
     {
@@ -167,7 +167,7 @@
     {
       "id": "library-data/mindfulness-expansion.json",
       "source_path": "library-data/mindfulness-expansion.json",
-      "sha256": "52f669b3b56269d9d68333169edbad313733ff838963adafbc9d3b246e0da2c2",
+      "sha256": "fadc58bb6a5283efb383f0e6f6207d84fe3e4e6db595125b12d303f21784424a",
       "format": "json"
     },
     {
@@ -52268,49 +52268,49 @@
   "downloads": {
     "json": {
       "file": "informatics-complete.json.gz",
-      "bytes": 81261114,
-      "uncompressed_bytes": 792235637,
-      "sha256": "a0a59bd9ccd8b8a656d4f2b64974806223fd8170436180c95890179740e4f042",
-      "uncompressed_sha256": "e5d896fb7e7379d868d5bef1387319319d70e1c7cc55a18b52479fc5ca7bcbe7",
+      "bytes": 81291791,
+      "uncompressed_bytes": 792389383,
+      "sha256": "806e3b703528616d34855cf794bf352b590485b7eabd9e657f0aba3e30507a5a",
+      "uncompressed_sha256": "d9c06f7759cc07026886c1270b9e2ea29a8cc53628e40d7e8fc3107446277af2",
       "parts": [
         {
-          "file": "part-1e867c119a4037018f97809bfc3587e88d7d7a5187c5fd33b62130dafcfea924.bin",
+          "file": "part-798f9afa16ce8364c9e291ef78002bc7c334c14443891bca374263c7ef2d94a2.bin",
           "bytes": 50331648,
-          "sha256": "1e867c119a4037018f97809bfc3587e88d7d7a5187c5fd33b62130dafcfea924"
+          "sha256": "798f9afa16ce8364c9e291ef78002bc7c334c14443891bca374263c7ef2d94a2"
         },
         {
-          "file": "part-cb73f2a163612cb49a9f72a33ff074443285d749c3151e508b4d0aeb71cc6d69.bin",
-          "bytes": 30929466,
-          "sha256": "cb73f2a163612cb49a9f72a33ff074443285d749c3151e508b4d0aeb71cc6d69"
+          "file": "part-57b3e5d58b2aca3075fd950248f0b88e09f7a218f523d88749b62b15d8b573c4.bin",
+          "bytes": 30960143,
+          "sha256": "57b3e5d58b2aca3075fd950248f0b88e09f7a218f523d88749b62b15d8b573c4"
         }
       ]
     },
     "csv": {
       "file": "informatics-complete.csv.gz",
-      "bytes": 151294803,
-      "uncompressed_bytes": 2478141317,
-      "sha256": "17493275ff18af10a3e5a9ca9837dbb35915287adc224df9c46d285900f266cc",
-      "uncompressed_sha256": "2a5651df76a0dc038e38a8f4a2d5b49d689456a57835170c3b2ac3832c75447a",
+      "bytes": 151345178,
+      "uncompressed_bytes": 2478529281,
+      "sha256": "0a61eceb2075615170b0cec252996daf581fe77ee5386ccbc6eba707ca05812d",
+      "uncompressed_sha256": "64f61302555947ea7de29825eedc313e787bcacda58dabb795607f32568119f0",
       "parts": [
         {
-          "file": "part-1532c18bac72721caf5ea094a966e006d580eb3b586e5984b16dc4bfaf76bcc8.bin",
+          "file": "part-fe677084e19c4893a0f6287ba30f83b2af9a7b909d2818e1063ca7d61e56f532.bin",
           "bytes": 50331648,
-          "sha256": "1532c18bac72721caf5ea094a966e006d580eb3b586e5984b16dc4bfaf76bcc8"
+          "sha256": "fe677084e19c4893a0f6287ba30f83b2af9a7b909d2818e1063ca7d61e56f532"
         },
         {
-          "file": "part-0c1e32a7548ca99ac0476ddaac2b36601f5fa87ce0652a3d1e5729e03b60e4b2.bin",
+          "file": "part-e930d9549f02b6b61a23795fe469d1fca6160cf002325c12fbfdee1bf4109dcd.bin",
           "bytes": 50331648,
-          "sha256": "0c1e32a7548ca99ac0476ddaac2b36601f5fa87ce0652a3d1e5729e03b60e4b2"
+          "sha256": "e930d9549f02b6b61a23795fe469d1fca6160cf002325c12fbfdee1bf4109dcd"
         },
         {
-          "file": "part-fea556eba63978189541ceedf4b239a95c1a0cde3e39961aba9de957f217eb0c.bin",
+          "file": "part-f1b494eb438719b8b421925db505d1856f4bd38c87bb5b4ef3d626537d583f83.bin",
           "bytes": 50331648,
-          "sha256": "fea556eba63978189541ceedf4b239a95c1a0cde3e39961aba9de957f217eb0c"
+          "sha256": "f1b494eb438719b8b421925db505d1856f4bd38c87bb5b4ef3d626537d583f83"
         },
         {
-          "file": "part-e51a2bfce535b3df0d84b5759f23aae4e598a7e52fd98fd14ecb9438ba2efe68.bin",
-          "bytes": 299859,
-          "sha256": "e51a2bfce535b3df0d84b5759f23aae4e598a7e52fd98fd14ecb9438ba2efe68"
+          "file": "part-10bd0c0fb066734f801767601352ebc7a2589d18eacf0f58d9aed524cd7fb5b1.bin",
+          "bytes": 350234,
+          "sha256": "10bd0c0fb066734f801767601352ebc7a2589d18eacf0f58d9aed524cd7fb5b1"
         }
       ]
     }

@@ -1,8 +1,8 @@
 {
   "schemaVersion": "communities-contexts/v2",
   "title": "Communities and Contexts",
-  "updatedAt": "2026-11-02",
-  "recordCount": 1323,
+  "updatedAt": "2026-11-05",
+  "recordCount": 1385,
   "taxonomy": [
     {
       "id": "refugees",
@@ -8179,6 +8179,319 @@
     },
     {
       "recordId": "youth-pmid-38192586",
+      "matches": []
+    },
+    {
+      "recordId": "lab-484a7a4e3afd57",
+      "matches": []
+    },
+    {
+      "recordId": "pmid-40465187",
+      "matches": []
+    },
+    {
+      "recordId": "lab-5732673d3ebf2b",
+      "matches": []
+    },
+    {
+      "recordId": "pmid-41269211",
+      "matches": []
+    },
+    {
+      "recordId": "pmid-38808471",
+      "matches": []
+    },
+    {
+      "recordId": "lab-b2e87b36eea919",
+      "matches": []
+    },
+    {
+      "recordId": "lab-8b68f71d40e35b",
+      "matches": []
+    },
+    {
+      "recordId": "lab-a8505b36d21db2",
+      "matches": []
+    },
+    {
+      "recordId": "lab-a01e7058461d2e",
+      "matches": []
+    },
+    {
+      "recordId": "pmid-39642375",
+      "matches": []
+    },
+    {
+      "recordId": "lab-a39047f11e858a",
+      "matches": []
+    },
+    {
+      "recordId": "lab-2dde14fee628e5",
+      "matches": []
+    },
+    {
+      "recordId": "lab-fadf374f60eafd",
+      "matches": []
+    },
+    {
+      "recordId": "lab-ca309fa8cd91b6",
+      "matches": []
+    },
+    {
+      "recordId": "pmid-34860290",
+      "matches": []
+    },
+    {
+      "recordId": "lab-20e62d6bf5f3f4",
+      "matches": []
+    },
+    {
+      "recordId": "pmid-32706654",
+      "matches": []
+    },
+    {
+      "recordId": "pmid-42512522",
+      "matches": []
+    },
+    {
+      "recordId": "pmid-38131865",
+      "matches": []
+    },
+    {
+      "recordId": "lab-877d9ce9559820",
+      "matches": []
+    },
+    {
+      "recordId": "lab-fca3cf0917013b",
+      "matches": []
+    },
+    {
+      "recordId": "lab-1454bc5080b0d7",
+      "matches": []
+    },
+    {
+      "recordId": "lab-4eb5fd30048276",
+      "matches": []
+    },
+    {
+      "recordId": "lab-5a210c0c4199cb",
+      "matches": []
+    },
+    {
+      "recordId": "lab-74e0c193cc04c5",
+      "matches": []
+    },
+    {
+      "recordId": "pmid-38742940",
+      "matches": []
+    },
+    {
+      "recordId": "pmid-33792548",
+      "matches": []
+    },
+    {
+      "recordId": "lab-d011cd5d41de99",
+      "matches": []
+    },
+    {
+      "recordId": "pmid-40939175",
+      "matches": []
+    },
+    {
+      "recordId": "lab-eee50dc8f3d54f",
+      "matches": []
+    },
+    {
+      "recordId": "lab-870b2fcef79281",
+      "matches": []
+    },
+    {
+      "recordId": "lab-70831a49e6f6d0",
+      "matches": []
+    },
+    {
+      "recordId": "lab-7f8cefe879869f",
+      "matches": []
+    },
+    {
+      "recordId": "lab-3650fe906cd8e1",
+      "matches": []
+    },
+    {
+      "recordId": "pmid-39385361",
+      "matches": []
+    },
+    {
+      "recordId": "pmid-33529187",
+      "matches": []
+    },
+    {
+      "recordId": "lab-58ba4c9a89141b",
+      "matches": []
+    },
+    {
+      "recordId": "pmid-30087642",
+      "matches": []
+    },
+    {
+      "recordId": "lab-9993bb4e4e942d",
+      "matches": []
+    },
+    {
+      "recordId": "pmid-41261293",
+      "matches": []
+    },
+    {
+      "recordId": "lab-ed18aa841e540e",
+      "matches": []
+    },
+    {
+      "recordId": "pmid-42205234",
+      "matches": []
+    },
+    {
+      "recordId": "pmid-37930751",
+      "matches": [
+        {
+          "categoryId": "defence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "pmid-30020511",
+      "matches": [
+        {
+          "categoryId": "defence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "pmid-38287778",
+      "matches": [
+        {
+          "categoryId": "defence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "pmid-36331685",
+      "matches": [
+        {
+          "categoryId": "defence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "pmid-38378078",
+      "matches": [
+        {
+          "categoryId": "defence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "pmid-22558370",
+      "matches": [
+        {
+          "categoryId": "defence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "pmid-41618102",
+      "matches": [
+        {
+          "categoryId": "defence",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "pmid-38236355",
+      "matches": []
+    },
+    {
+      "recordId": "lab-382ebff3371467",
+      "matches": []
+    },
+    {
+      "recordId": "pmid-38896949",
+      "matches": []
+    },
+    {
+      "recordId": "lab-aeddc9e62aff15",
+      "matches": []
+    },
+    {
+      "recordId": "lab-d69eade108c9c9",
+      "matches": []
+    },
+    {
+      "recordId": "lab-03df8e70361cc3",
+      "matches": []
+    },
+    {
+      "recordId": "lab-16c72c2e0fd307",
+      "matches": [
+        {
+          "categoryId": "indigenous",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "pmid-39935733",
+      "matches": [
+        {
+          "categoryId": "refugees",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "pmid-34392115",
+      "matches": [
+        {
+          "categoryId": "refugees",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "pmid-35737665",
+      "matches": [
+        {
+          "categoryId": "refugees",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "pmid-35015365",
+      "matches": [
+        {
+          "categoryId": "refugees",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "pmid-40283741",
+      "matches": [
+        {
+          "categoryId": "refugees",
+          "relation": "direct"
+        }
+      ]
+    },
+    {
+      "recordId": "lab-f825944bbd00ce",
       "matches": []
     }
   ]

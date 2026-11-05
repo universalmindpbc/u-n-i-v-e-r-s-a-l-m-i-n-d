@@ -70,7 +70,7 @@ An extensive, clinically searchable research index spanning sound and auditory e
 ## Read without a connector
 
 - [Research and evidence](https://universalmind.tv/informatics/read/): Plain HTML overview.
-- [Publications](https://universalmind.tv/informatics/read/publications/index.html): 1323 approved records, citations, summaries, limitations and topic assessment context.
+- [Publications](https://universalmind.tv/informatics/read/publications/index.html): 1385 approved records, citations, summaries, limitations and topic assessment context.
 - [Hyperspectral Imaging](https://universalmind.tv/informatics/read/hyperspectral/index.html): Six subchapters, 240 original citation entries and 13 timeline milestones.
 - [Geometry Atlas](https://universalmind.tv/informatics/read/atlas/index.html): 1,001 records with complete JSON and CSV links.
 - [Quantum Atlas](https://universalmind.tv/informatics/read/quantum/index.html): Purpose, human feature guide, agent roles, persistent workflow, MCP/API/A2A participation, saved results and JSON/CSV/Markdown downloads. The [ordinary Quantum Atlas page](https://universalmind.tv/informatics/quantum/) includes the same guide data in its initial HTML.

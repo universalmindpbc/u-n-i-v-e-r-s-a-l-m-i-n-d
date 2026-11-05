@@ -1,5 +1,5 @@
 {
-  "reviewedAt": "2026-10-23",
+  "reviewedAt": "2026-11-05",
   "records": [
     {
       "id": "pmid-41534731",
@@ -1725,6 +1725,1866 @@
       "legacyRatingBasis": null,
       "stars": 1,
       "ratingBasis": "Experienced meditators and matched controls were compared without random allocation."
+    },
+    {
+      "id": "lab-484a7a4e3afd57",
+      "title": "Exploring technology-assisted mindfulness: a systematic progressive review on the role of virtual reality",
+      "doi": "10.1007/s10055-025-01224-y",
+      "pmid": null,
+      "journal": "Virtual Reality",
+      "year": 2025,
+      "authors": "Liu Mengru, Kong Anthony, Huang Fuxuebing, Lau Newman, Hoorn Johan F.",
+      "collections": [
+        "language"
+      ],
+      "origin": "update",
+      "design": "Review or conceptual paper",
+      "categories": [
+        "Mindfulness and biofeedback"
+      ],
+      "targets": [],
+      "priority": 1,
+      "finding": "Maps design approaches across immersive mindfulness research. Its counts describe publications and themes, rather than a pooled clinical effect.",
+      "limitation": "Review of VR mindfulness research.",
+      "urls": [
+        "https://doi.org/10.1007/s10055-025-01224-y"
+      ],
+      "evidence": {
+        "evidenceType": "Review or framework",
+        "measurement": "Review or framework",
+        "relationshipNote": "Review of VR mindfulness research."
+      },
+      "citationCount": null
+    },
+    {
+      "id": "pmid-40465187",
+      "title": "Brief Interactive Virtual Reality Mindfulness Training with Real-Time Biofeedback for Anxiety Reduction: A Pilot Study",
+      "doi": "10.1007/s10484-025-09718-w",
+      "pmid": "40465187",
+      "journal": "Applied Psychophysiology and Biofeedback",
+      "year": 2025,
+      "authors": "Xu Qiuxia, Gu Yingqi, Hu Xizhe",
+      "collections": [
+        "language"
+      ],
+      "origin": "update",
+      "design": "Randomised controlled study",
+      "categories": [
+        "Mindfulness and biofeedback"
+      ],
+      "targets": [],
+      "priority": 1,
+      "finding": "Seventy-five university students with recent anxiety symptoms were randomised to VR, guided audio or no intervention. Fog, sound and visuals responded to HRV. The reported immediate changes motivate an event pilot. The correction concerns corresponding authorship.",
+      "limitation": "Live HRV drove changes in fog, sound and visuals.",
+      "urls": [
+        "https://doi.org/10.1007/s10484-025-09718-w"
+      ],
+      "evidence": {
+        "evidenceType": "Participant study",
+        "measurement": "Heart-rate variability",
+        "relationshipNote": "Live HRV drove changes in fog, sound and visuals."
+      },
+      "citationCount": null
+    },
+    {
+      "id": "lab-5732673d3ebf2b",
+      "title": "Challenges and Opportunities of Immersive Technologies for Mindfulness Meditation: A Systematic Review",
+      "doi": "10.3389/frvir.2021.644683",
+      "pmid": null,
+      "journal": "Frontiers in Virtual Reality",
+      "year": 2021,
+      "authors": "Döllinger Nina, Wienrich Carolin, Latoschik Marc Erich",
+      "collections": [
+        "language"
+      ],
+      "origin": "update",
+      "design": "Review or conceptual paper",
+      "categories": [
+        "Mindfulness and biofeedback"
+      ],
+      "targets": [],
+      "priority": 1,
+      "finding": "Most systems used guided meditation in virtual nature. Comparative studies offered little basis for attributing extra mindfulness to the immersive medium itself.",
+      "limitation": "Systematic review of immersive mindfulness.",
+      "urls": [
+        "https://doi.org/10.3389/frvir.2021.644683"
+      ],
+      "evidence": {
+        "evidenceType": "Review or framework",
+        "measurement": "Review or framework",
+        "relationshipNote": "Systematic review of immersive mindfulness."
+      },
+      "citationCount": null
+    },
+    {
+      "id": "pmid-41269211",
+      "title": "Enhancing Mindfulness Training in Virtual Reality: A Randomized Trial of Biofeedback Integration",
+      "doi": "10.1177/21522715251397933",
+      "pmid": "41269211",
+      "journal": "Cyberpsychology, Behavior, and Social Networking",
+      "year": 2025,
+      "authors": "Domingues Ana, Beato Ana, Oliveira Jorge, Gamito Pedro",
+      "collections": [
+        "language"
+      ],
+      "origin": "update",
+      "design": "Randomised controlled study",
+      "categories": [
+        "Mindfulness and biofeedback"
+      ],
+      "targets": [],
+      "priority": 1,
+      "finding": "Seventy-two adults were assigned to audio, VR or VR with feedback. Stress and anxiety fell across conditions. Corrected comparisons favoured feedback plus VR over audio for present-moment attention and receptive awareness. The VR-only arm differed significantly from neither.",
+      "limitation": "The candle flame changed with measured heart rate. The baseline recording calibrated the mapping.",
+      "urls": [
+        "https://doi.org/10.1177/21522715251397933"
+      ],
+      "evidence": {
+        "evidenceType": "Participant study",
+        "measurement": "Heart rate / heartbeat",
+        "relationshipNote": "The candle flame changed with measured heart rate. The baseline recording calibrated the mapping."
+      },
+      "citationCount": null
+    },
+    {
+      "id": "pmid-38808471",
+      "title": "Using a Biofeedback-Based Mindfulness Practice System to Enhance Mindfulness and Alleviate Anxiety in College Students: A Randomized Controlled Trial",
+      "doi": "10.1089/g4h.2024.0041",
+      "pmid": "38808471",
+      "journal": "",
+      "year": 2024,
+      "authors": "",
+      "collections": [
+        "language"
+      ],
+      "origin": "update",
+      "design": "Randomised controlled study",
+      "categories": [
+        "Mindfulness and biofeedback"
+      ],
+      "targets": [],
+      "priority": 1,
+      "finding": "Separate short-session and four-week samples included 34 and 38 students respectively. Anxiety improved against the controls in both experiments. Four-week results also favoured the system on selected mindfulness facets.",
+      "limitation": "The MindJourney system returned respiratory feedback. Skin conductance was a measurement outcome.",
+      "urls": [
+        "https://doi.org/10.1089/g4h.2024.0041"
+      ],
+      "evidence": {
+        "evidenceType": "Participant study",
+        "measurement": "Respiration",
+        "relationshipNote": "The MindJourney system returned respiratory feedback. Skin conductance was a measurement outcome."
+      },
+      "citationCount": null
+    },
+    {
+      "id": "lab-b2e87b36eea919",
+      "title": "Designing Mindfulness Practice System Based on Biofeedback in VR Environment",
+      "doi": "10.1115/DETC2022-91254",
+      "pmid": null,
+      "journal": "Volume 2: 42nd Computers and Information in Engineering Conference (CIE)",
+      "year": 2022,
+      "authors": "Li Shuo, Zheng Hongtao, Ge Yang, Yuan Wenyu, Han Ting",
+      "collections": [
+        "language"
+      ],
+      "origin": "update",
+      "design": "Design or demonstration",
+      "categories": [
+        "Mindfulness and biofeedback"
+      ],
+      "targets": [],
+      "priority": 1,
+      "finding": "The design paper compares continuous breathing cues with intermittent head-orientation feedback for young beginners. Its authors and system overlap with item 5. Treat this as a related design report.",
+      "limitation": "The system used continuous breathing cues and intermittent head-orientation feedback. Related to the MindJourney college paper.",
+      "urls": [
+        "https://doi.org/10.1115/DETC2022-91254"
+      ],
+      "evidence": {
+        "evidenceType": "Design or demonstration",
+        "measurement": "Respiration · Movement",
+        "relationshipNote": "The system used continuous breathing cues and intermittent head-orientation feedback. Related to the MindJourney college paper."
+      },
+      "citationCount": null
+    },
+    {
+      "id": "lab-8b68f71d40e35b",
+      "title": "Human-Computer Co-Regulation: A Review of Biofeedback for Meditative Practice",
+      "doi": "10.1145/3831659",
+      "pmid": null,
+      "journal": "Proceedings of the ACM on Interactive, Mobile, Wearable and Ubiquitous Technologies",
+      "year": 2026,
+      "authors": "Liu Mengxi, Peng Danyang, Bian Sizhen, Ray Lala Shakti Swarup, Cheng Yajun, Zhou Bo, Yuan Siyu, Chen Kanyu, Kunze Kai, Minamizawa Kouta, Lukowicz Paul",
+      "collections": [
+        "language"
+      ],
+      "origin": "update",
+      "design": "Review or conceptual paper",
+      "categories": [
+        "Mindfulness and biofeedback"
+      ],
+      "targets": [],
+      "priority": 1,
+      "finding": "The authors reviewed 39 studies of real-time physiological feedback in contemplative practice. They distinguish respiration or HRV for paced breathing from EEG approaches to attention and skin conductance for arousal.",
+      "limitation": "Review of real-time physiological feedback systems.",
+      "urls": [
+        "https://doi.org/10.1145/3831659"
+      ],
+      "evidence": {
+        "evidenceType": "Review or framework",
+        "measurement": "Review or framework",
+        "relationshipNote": "Review of real-time physiological feedback systems."
+      },
+      "citationCount": null
+    },
+    {
+      "id": "lab-a8505b36d21db2",
+      "title": "The efficacy of virtual reality-enhanced EEG biofeedback in anxiety treatment: analysis of a digital health intervention",
+      "doi": "10.1080/23311908.2025.2565063",
+      "pmid": null,
+      "journal": "Cogent Psychology",
+      "year": 2025,
+      "authors": "Tong BG, Liang Zi Hong, He Xue Mei, Yang Fan, Jing Lan, Gao Li Jia",
+      "collections": [
+        "language"
+      ],
+      "origin": "update",
+      "design": "Controlled study",
+      "categories": [
+        "Mindfulness and biofeedback"
+      ],
+      "targets": [],
+      "priority": 1,
+      "finding": "The study assigned 89 patients across treatment conditions. The combined format showed a self-rated anxiety advantage while clinician-rated anxiety reductions were comparable. The unusual age summaries in Table 2 limit demographic interpretation.",
+      "limitation": "EEG training supplied neurofeedback in the intervention. Clinical anxiety ratings were outcomes.",
+      "urls": [
+        "https://doi.org/10.1080/23311908.2025.2565063"
+      ],
+      "evidence": {
+        "evidenceType": "Participant study",
+        "measurement": "EEG",
+        "relationshipNote": "EEG training supplied neurofeedback in the intervention. Clinical anxiety ratings were outcomes."
+      },
+      "citationCount": null
+    },
+    {
+      "id": "lab-a01e7058461d2e",
+      "title": "ZenG",
+      "doi": "10.1145/3325480.3326584",
+      "pmid": null,
+      "journal": "Proceedings of the 2019 on Creativity and Cognition",
+      "year": 2019,
+      "authors": "Potts Dominic, Loveys Kate, Ha HyunYoung, Huang Shaoyan, Billinghurst Mark, Broadbent Elizabeth",
+      "collections": [
+        "language"
+      ],
+      "origin": "update",
+      "design": "Participant study",
+      "categories": [
+        "Mindfulness and biofeedback"
+      ],
+      "targets": [],
+      "priority": 1,
+      "finding": "A proof-of-concept garden combines a Magic Leap display, EEG sensing and physical gestures. It is an interaction design precedent.",
+      "limitation": "Relative alpha-band EEG changed the tree colour. Twelve adults took part in informal prototype testing.",
+      "urls": [
+        "https://doi.org/10.1145/3325480.3326584"
+      ],
+      "evidence": {
+        "evidenceType": "Participant study",
+        "measurement": "EEG",
+        "relationshipNote": "Relative alpha-band EEG changed the tree colour. Twelve adults took part in informal prototype testing."
+      },
+      "citationCount": null
+    },
+    {
+      "id": "pmid-39642375",
+      "title": "Neurological Evidence of Diverse Self-Help Breathing Training With Virtual Reality and Biofeedback Assistance: Extensive Exploration Study of Electroencephalography Markers",
+      "doi": "10.2196/55478",
+      "pmid": "39642375",
+      "journal": "JMIR Formative Research",
+      "year": 2024,
+      "authors": "Ng Hei-Yin Hydra, Wu Changwei W, Hsu Hao-Che, Huang Chih-Mao, Hsu Ai-Ling, Chao Yi-Ping, Jung Tzyy-Ping, Chuang Chun-Hsiang",
+      "collections": [
+        "language"
+      ],
+      "origin": "update",
+      "design": "Participant study",
+      "categories": [
+        "Mindfulness and biofeedback"
+      ],
+      "targets": [],
+      "priority": 1,
+      "finding": "Brain recordings from 51 participants varied across breathing conditions. Task-related EEG findings address attention and physiology during training. They provide no direct measure of lasting clinical improvement.",
+      "limitation": "A respiration belt controlled the meadow. The investigators recorded EEG to compare the practice conditions.",
+      "urls": [
+        "https://doi.org/10.2196/55478"
+      ],
+      "evidence": {
+        "evidenceType": "Participant study",
+        "measurement": "Respiration",
+        "relationshipNote": "A respiration belt controlled the meadow. The investigators recorded EEG to compare the practice conditions."
+      },
+      "citationCount": null
+    },
+    {
+      "id": "lab-a39047f11e858a",
+      "title": "Effects on Mood and EEG States After Meditation in Augmented Reality With and Without Adjunctive Neurofeedback",
+      "doi": "10.3389/frvir.2021.618381",
+      "pmid": null,
+      "journal": "Frontiers in Virtual Reality",
+      "year": 2021,
+      "authors": "Viczko Jeremy, Tarrant Jeff, Jackson Ray",
+      "collections": [
+        "language"
+      ],
+      "origin": "update",
+      "design": "Randomised controlled study",
+      "categories": [
+        "Mindfulness and biofeedback"
+      ],
+      "targets": [],
+      "priority": 1,
+      "finding": "Mood improved after both versions. Participants reported greater engagement with neurofeedback. The groups showed comparable mood and resting EEG changes.",
+      "limitation": "Frontal gamma asymmetry moved a glowing ball and determined when the AR story progressed.",
+      "urls": [
+        "https://doi.org/10.3389/frvir.2021.618381"
+      ],
+      "evidence": {
+        "evidenceType": "Participant study",
+        "measurement": "EEG",
+        "relationshipNote": "Frontal gamma asymmetry moved a glowing ball and determined when the AR story progressed."
+      },
+      "citationCount": null
+    },
+    {
+      "id": "lab-2dde14fee628e5",
+      "title": "Mindful Garden: Supporting Reflection on Biosignals in a Co-Located Augmented Reality Mindfulness Experience",
+      "doi": "10.1145/3500868.3559708",
+      "pmid": null,
+      "journal": "Companion Publication of the 2022 Conference on Computer Supported Cooperative Work and Social Computing",
+      "year": 2022,
+      "authors": "Liu Lika Haizhou, Lu Xi, Martinez Richard, Wang Dennis, Liu Fannie, Monroy-Hernández Andrés, Epstein Daniel A.",
+      "collections": [
+        "language"
+      ],
+      "origin": "update",
+      "design": "Design or demonstration",
+      "categories": [
+        "Mindfulness and biofeedback"
+      ],
+      "targets": [],
+      "priority": 1,
+      "finding": "Two people share an AR garden. One guides meditation and the other person’s biosignals shape the flowers. This is a demonstration using smart glasses and a headband.",
+      "limitation": "The headband-based demonstration converted EEG into a flower display for a pair. This entry refers to the smart-glasses version.",
+      "urls": [
+        "https://doi.org/10.1145/3500868.3559708"
+      ],
+      "evidence": {
+        "evidenceType": "Design or demonstration",
+        "measurement": "EEG",
+        "relationshipNote": "The headband-based demonstration converted EEG into a flower display for a pair. This entry refers to the smart-glasses version."
+      },
+      "citationCount": null
+    },
+    {
+      "id": "lab-fadf374f60eafd",
+      "title": "Technology Configurations and Adherence in Virtual Reality-Based Mindfulness: A Systematic Review of Headsets, Wearables, Software, and Therapeutic Applications",
+      "doi": "10.3390/app16167943",
+      "pmid": null,
+      "journal": "Applied Sciences",
+      "year": 2026,
+      "authors": "Moreira Moisés, Carvalho Vitor, Duque Duarte",
+      "collections": [
+        "language"
+      ],
+      "origin": "update",
+      "design": "Review or conceptual paper",
+      "categories": [
+        "Mindfulness and biofeedback"
+      ],
+      "targets": [],
+      "priority": 1,
+      "finding": "Fifteen reports used varied hardware and adherence definitions. The review found no otherwise-matched trial isolating the effect of adding a wearable on adherence in its eligible set.",
+      "limitation": "Review of headset and wearable configurations.",
+      "urls": [
+        "https://doi.org/10.3390/app16167943"
+      ],
+      "evidence": {
+        "evidenceType": "Review or framework",
+        "measurement": "Review or framework",
+        "relationshipNote": "Review of headset and wearable configurations."
+      },
+      "citationCount": null
+    },
+    {
+      "id": "lab-ca309fa8cd91b6",
+      "title": "Realidade virtual na prática de mindfulness em psicoterapia: uma revisão narrativa",
+      "doi": "10.4025/psicolestud.v26i0.46410",
+      "pmid": null,
+      "journal": "Psicologia em Estudo",
+      "year": 2021,
+      "authors": "Bengel de Paula Dirce Maria, Fernández Moretti Luciana",
+      "collections": [
+        "language"
+      ],
+      "origin": "update",
+      "design": "Review or conceptual paper",
+      "categories": [
+        "Mindfulness and biofeedback"
+      ],
+      "targets": [],
+      "priority": 1,
+      "finding": "The authors examined 23 reports. Presence, usability and access featured in the designs. They called for controlled studies to isolate which features have therapeutic value.",
+      "limitation": "Narrative review of VR practice in psychotherapy.",
+      "urls": [
+        "https://doi.org/10.4025/psicolestud.v26i0.46410"
+      ],
+      "evidence": {
+        "evidenceType": "Review or framework",
+        "measurement": "Review or framework",
+        "relationshipNote": "Narrative review of VR practice in psychotherapy."
+      },
+      "citationCount": null
+    },
+    {
+      "id": "pmid-34860290",
+      "title": "Virtual Reality Biofeedback in Health: A Scoping Review",
+      "doi": "10.1007/s10484-021-09529-9",
+      "pmid": "34860290",
+      "journal": "Applied Psychophysiology and Biofeedback",
+      "year": 2021,
+      "authors": "Lüddecke Robin, Felnhofer Anna",
+      "collections": [
+        "language"
+      ],
+      "origin": "update",
+      "design": "Review or conceptual paper",
+      "categories": [
+        "Mindfulness and biofeedback"
+      ],
+      "targets": [],
+      "priority": 1,
+      "finding": "Eighteen studies, mainly in adults, reported outcomes including stress, anxiety and pain. The authors found little evidence for an efficacy advantage over conventional feedback.",
+      "limitation": "Scoping review of VR biofeedback in health.",
+      "urls": [
+        "https://doi.org/10.1007/s10484-021-09529-9"
+      ],
+      "evidence": {
+        "evidenceType": "Review or framework",
+        "measurement": "Review or framework",
+        "relationshipNote": "Scoping review of VR biofeedback in health."
+      },
+      "citationCount": null
+    },
+    {
+      "id": "lab-20e62d6bf5f3f4",
+      "title": "Integrating Cognitive Behavioral Therapy and Heart Rate Variability Biofeedback in Virtual Reality, Augmented Reality, and Mixed Reality as a Mental Health Intervention",
+      "doi": "10.1109/VRW62533.2024.00394",
+      "pmid": null,
+      "journal": "2024 IEEE Conference on Virtual Reality and 3D User Interfaces Abstracts and Workshops (VRW)",
+      "year": 2024,
+      "authors": "Nath Nishu, Zavarelli Jace, Stanley Laura, Kalatzis Apostolos, Molina Karl, Lundberg Camille, Perez Angelica, Litwin Alain",
+      "collections": [
+        "language"
+      ],
+      "origin": "update",
+      "design": "Methods verification incomplete",
+      "categories": [
+        "Mindfulness and biofeedback"
+      ],
+      "targets": [],
+      "priority": 1,
+      "finding": "A workshop demonstration combines CBT and simulated HRV feedback in VR, AR and mixed reality. Controlled outcomes were proposed for evaluation.",
+      "limitation": "The workshop abstract describes simulated HRV feedback and a planned comparison. Live sensing in participants is unverified.",
+      "urls": [
+        "https://doi.org/10.1109/VRW62533.2024.00394"
+      ],
+      "evidence": {
+        "evidenceType": "Signal or implementation unclear",
+        "measurement": "Signal or implementation unclear",
+        "relationshipNote": "The workshop abstract describes simulated HRV feedback and a planned comparison. Live sensing in participants is unverified."
+      },
+      "citationCount": null
+    },
+    {
+      "id": "pmid-32706654",
+      "title": "An Integrative Model for the Effectiveness of Biofeedback Interventions for Anxiety Regulation: Viewpoint",
+      "doi": "10.2196/14958",
+      "pmid": "32706654",
+      "journal": "Journal of Medical Internet Research",
+      "year": 2020,
+      "authors": "Weerdmeester Joanneke, van Rooij Marieke MJW, Engels Rutger CME, Granic Isabela",
+      "collections": [
+        "language"
+      ],
+      "origin": "update",
+      "design": "Review or conceptual paper",
+      "categories": [
+        "Mindfulness and biofeedback"
+      ],
+      "targets": [],
+      "priority": 1,
+      "finding": "This viewpoint distinguishes physiological learning from cognitive processes such as perceived control. It proposes mechanisms and design choices for future trials.",
+      "limitation": "Conceptual model of biofeedback mechanisms.",
+      "urls": [
+        "https://doi.org/10.2196/14958"
+      ],
+      "evidence": {
+        "evidenceType": "Review or framework",
+        "measurement": "Review or framework",
+        "relationshipNote": "Conceptual model of biofeedback mechanisms."
+      },
+      "citationCount": null
+    },
+    {
+      "id": "pmid-42512522",
+      "title": "Mindfulness Development via Biofeedback for Anxiety in Hospitalized Patients: A Randomized Controlled Trial",
+      "doi": "10.3390/brainsci16070748",
+      "pmid": "42512522",
+      "journal": "Brain Sciences",
+      "year": 2026,
+      "authors": "Kotelnikova Anastasia V., Ruzinova Vera M., Kiseleva Maria G., Volel Beatrice, Kukshina Anastasia A.",
+      "collections": [
+        "language"
+      ],
+      "origin": "update",
+      "design": "Randomised controlled study",
+      "categories": [
+        "Mindfulness and biofeedback"
+      ],
+      "targets": [],
+      "priority": 1,
+      "finding": "A randomised study of 188 inpatients compared biofeedback, medication and their combination. Anxiety improved more in the biofeedback arms than with medication alone in the per-protocol analysis. Registration was retrospective and the setting was inpatient care.",
+      "limitation": "Auditory feedback followed EEG alpha power. A separate training stage varied audiovisual feedback with current heart rate. A psychiatrist masked to allocation rated anxiety.",
+      "urls": [
+        "https://doi.org/10.3390/brainsci16070748"
+      ],
+      "evidence": {
+        "evidenceType": "Participant study",
+        "measurement": "EEG · Heart rate / heartbeat",
+        "relationshipNote": "Auditory feedback followed EEG alpha power. A separate training stage varied audiovisual feedback with current heart rate. A psychiatrist masked to allocation rated anxiety."
+      },
+      "citationCount": null
+    },
+    {
+      "id": "pmid-38131865",
+      "title": "Digitally Assisted Mindfulness in Training Self-Regulation Skills for Sustainable Mental Health: A Systematic Review",
+      "doi": "10.3390/bs13121008",
+      "pmid": "38131865",
+      "journal": "Behavioral Sciences",
+      "year": 2023,
+      "authors": "Mitsea Eleni, Drigas Athanasios, Skianis Charalabos",
+      "collections": [
+        "language"
+      ],
+      "origin": "update",
+      "design": "Review or conceptual paper",
+      "categories": [
+        "Mindfulness and biofeedback"
+      ],
+      "targets": [],
+      "priority": 1,
+      "finding": "Sixty-six studies covered a wide range of digital approaches. Apps, headbands, coaching and immersion involve different components. Their outcomes cannot isolate the effect of the Lab’s wearable.",
+      "limitation": "Systematic review of digital mindfulness.",
+      "urls": [
+        "https://doi.org/10.3390/bs13121008"
+      ],
+      "evidence": {
+        "evidenceType": "Review or framework",
+        "measurement": "Review or framework",
+        "relationshipNote": "Systematic review of digital mindfulness."
+      },
+      "citationCount": null
+    },
+    {
+      "id": "lab-877d9ce9559820",
+      "title": "The Applications of the Mindfulness-Based Cognitive Therapy and HRV Biofeedback in Modern Psychotherapy",
+      "doi": "10.15540/nr.12.2.98",
+      "pmid": null,
+      "journal": "NeuroRegulation",
+      "year": 2025,
+      "authors": "Kramar Martin",
+      "collections": [
+        "language"
+      ],
+      "origin": "update",
+      "design": "Participant study",
+      "categories": [
+        "Mindfulness and biofeedback"
+      ],
+      "targets": [],
+      "priority": 1,
+      "finding": "One 22-year-old completed 12 weeks of combined psychotherapy, breathing and feedback. His age is relevant to the Lab. A single case cannot isolate the contribution of any component.",
+      "limitation": "The case describes a participant viewing heart-rhythm changes and HRV during sessions.",
+      "urls": [
+        "https://doi.org/10.15540/nr.12.2.98"
+      ],
+      "evidence": {
+        "evidenceType": "Participant study",
+        "measurement": "Heart-rate variability",
+        "relationshipNote": "The case describes a participant viewing heart-rhythm changes and HRV during sessions."
+      },
+      "citationCount": null
+    },
+    {
+      "id": "lab-fca3cf0917013b",
+      "title": "Immersive VR as a Promising Technology for Computer-Supported Mindfulness",
+      "doi": "10.1007/978-3-030-87595-4_12",
+      "pmid": null,
+      "journal": "Lecture Notes in Computer Science",
+      "year": 2021,
+      "authors": "De Paolis Lucio Tommaso, Arpaia Pasquale, D’Errico Giovanni, Gatto Carola, Moccaldi Nicola, Nuccetelli Fabiana",
+      "collections": [
+        "language"
+      ],
+      "origin": "update",
+      "design": "Review or conceptual paper",
+      "categories": [
+        "Mindfulness and biofeedback"
+      ],
+      "targets": [],
+      "priority": 1,
+      "finding": "This conference chapter presents preliminary review findings and design directions. Item 26 links to the opening page of the same chapter.",
+      "limitation": "Review chapter about computer-supported mindfulness.",
+      "urls": [
+        "https://doi.org/10.1007/978-3-030-87595-4_12"
+      ],
+      "evidence": {
+        "evidenceType": "Review or framework",
+        "measurement": "Review or framework",
+        "relationshipNote": "Review chapter about computer-supported mindfulness."
+      },
+      "citationCount": null
+    },
+    {
+      "id": "lab-1454bc5080b0d7",
+      "title": "Virtual Reality-Based Biofeedback System: A Review",
+      "doi": "10.1201/9781042017546-1",
+      "pmid": null,
+      "journal": "Technology for a Resilient Future",
+      "year": 2026,
+      "authors": "Srinivasan C.R., Preethish K.R., Meenatchi Sundaram S",
+      "collections": [
+        "language"
+      ],
+      "origin": "update",
+      "design": "Review or conceptual paper",
+      "categories": [
+        "Mindfulness and biofeedback"
+      ],
+      "targets": [],
+      "priority": 1,
+      "finding": "The publisher identifies an engineering review chapter. The accessible record supports its identity and scope only. Excluded from outcome claims.",
+      "limitation": "Engineering review chapter. Bibliographic record only.",
+      "urls": [
+        "https://doi.org/10.1201/9781042017546-1"
+      ],
+      "evidence": {
+        "evidenceType": "Review or framework",
+        "measurement": "Review or framework",
+        "relationshipNote": "Engineering review chapter. Bibliographic record only."
+      },
+      "citationCount": null
+    },
+    {
+      "id": "lab-4eb5fd30048276",
+      "title": "Biofeedback-Enhanced Virtual Reality Training for Stress Regulation: Concept and Pilot Study Results",
+      "doi": "10.1007/978-3-032-13174-4_18",
+      "pmid": null,
+      "journal": "Lecture Notes in Computer Science",
+      "year": 2026,
+      "authors": "Schwarz Jessica, Kelter Markus, Baljan Mara",
+      "collections": [
+        "language"
+      ],
+      "origin": "update",
+      "design": "Participant study",
+      "categories": [
+        "Mindfulness and biofeedback"
+      ],
+      "targets": [],
+      "priority": 1,
+      "finding": "A seven-person pilot used heart signals to vary the field of view during a demanding game. The result establishes a working prototype. Occupational relevance does not establish a military sample.",
+      "limitation": "The field of view changed with a stress level derived from HRV in a seven-person pilot.",
+      "urls": [
+        "https://doi.org/10.1007/978-3-032-13174-4_18"
+      ],
+      "evidence": {
+        "evidenceType": "Participant study",
+        "measurement": "Heart-rate variability · Derived score",
+        "relationshipNote": "The field of view changed with a stress level derived from HRV in a seven-person pilot."
+      },
+      "citationCount": null
+    },
+    {
+      "id": "lab-5a210c0c4199cb",
+      "title": "A mobile VR-based respiratory biofeedback game to foster diaphragmatic breathing",
+      "doi": "10.1007/s10055-020-00471-5",
+      "pmid": null,
+      "journal": "Virtual Reality",
+      "year": 2020,
+      "authors": "Rockstroh Christoph, Blum Johannes, Göritz Anja S.",
+      "collections": [
+        "language"
+      ],
+      "origin": "update",
+      "design": "Participant study",
+      "categories": [
+        "Mindfulness and biofeedback"
+      ],
+      "targets": [],
+      "priority": 1,
+      "finding": "Repeated sessions improved breath awareness and breathing measures in a within-person study. Longer follow-up and an active comparison are needed to isolate the training effect.",
+      "limitation": "A controller on the abdomen sensed movement caused by breathing and fed it into the game.",
+      "urls": [
+        "https://doi.org/10.1007/s10055-020-00471-5"
+      ],
+      "evidence": {
+        "evidenceType": "Participant study",
+        "measurement": "Respiration",
+        "relationshipNote": "A controller on the abdomen sensed movement caused by breathing and fed it into the game."
+      },
+      "citationCount": null
+    },
+    {
+      "id": "lab-74e0c193cc04c5",
+      "title": "A Review of Interactive Technologies as Support Tools for the Cultivation of Mindfulness",
+      "doi": "10.1007/s12671-017-0698-x",
+      "pmid": null,
+      "journal": "Mindfulness",
+      "year": 2017,
+      "authors": "Sliwinski Jacek, Katsikitis Mary, Jones Christian Martyn",
+      "collections": [
+        "language"
+      ],
+      "origin": "update",
+      "design": "Review or conceptual paper",
+      "categories": [
+        "Mindfulness and biofeedback"
+      ],
+      "targets": [],
+      "priority": 1,
+      "finding": "A review maps design choices to attention, motivation and prosociality. It offers design guidance rather than its own clinical trial.",
+      "limitation": "Review of interactive mindfulness technology.",
+      "urls": [
+        "https://doi.org/10.1007/s12671-017-0698-x"
+      ],
+      "evidence": {
+        "evidenceType": "Review or framework",
+        "measurement": "Review or framework",
+        "relationshipNote": "Review of interactive mindfulness technology."
+      },
+      "citationCount": null
+    },
+    {
+      "id": "pmid-38742940",
+      "title": "Use of Biofeedback-Based Virtual Reality in Pediatric Perioperative and Postoperative Settings: Observational Study",
+      "doi": "10.2196/48959",
+      "pmid": "38742940",
+      "journal": "JMIR Perioperative Medicine",
+      "year": 2024,
+      "authors": "Orgil Zandantsetseg, Karthic Anitra, Bell Nora F, Heisterberg Lisa M, Williams Sara E, Ding Lili, Kashikar-Zuck Susmita, King Christopher D, Olbrecht Vanessa A",
+      "collections": [
+        "language"
+      ],
+      "origin": "update",
+      "design": "Participant study",
+      "categories": [
+        "Mindfulness and biofeedback"
+      ],
+      "targets": [],
+      "priority": 1,
+      "finding": "An observational study examined the sessions children and adolescents needed to meet an HRV target. Many reported help with perioperative stress. This is feasibility evidence in a specific medical setting.",
+      "limitation": "Inner Balance and emWave presented a coherence score calculated from beat-to-beat intervals.",
+      "urls": [
+        "https://doi.org/10.2196/48959"
+      ],
+      "evidence": {
+        "evidenceType": "Participant study",
+        "measurement": "Heart-rate variability · Derived score · Proprietary score",
+        "relationshipNote": "Inner Balance and emWave presented a coherence score calculated from beat-to-beat intervals."
+      },
+      "citationCount": null
+    },
+    {
+      "id": "pmid-33792548",
+      "title": "Biofeedback-Based Connected Mental Health Interventions for Anxiety: Systematic Literature Review",
+      "doi": "10.2196/26038",
+      "pmid": "33792548",
+      "journal": "JMIR mHealth and uHealth",
+      "year": 2021,
+      "authors": "Alneyadi Mahra, Drissi Nidal, Almeqbaali Mariam, Ouhbi Sofia",
+      "collections": [
+        "language"
+      ],
+      "origin": "update",
+      "design": "Review or conceptual paper",
+      "categories": [
+        "Mindfulness and biofeedback"
+      ],
+      "targets": [],
+      "priority": 1,
+      "finding": "The review covers several sensors and populations. Findings varied across interventions and clinical groups.",
+      "limitation": "Systematic review of connected biofeedback interventions.",
+      "urls": [
+        "https://doi.org/10.2196/26038"
+      ],
+      "evidence": {
+        "evidenceType": "Review or framework",
+        "measurement": "Review or framework",
+        "relationshipNote": "Systematic review of connected biofeedback interventions."
+      },
+      "citationCount": null
+    },
+    {
+      "id": "lab-d011cd5d41de99",
+      "title": "Mindfulness-based Stress Reduction in VR: Visualising Meditation Performance using Real-time EEG Neurofeedback",
+      "doi": "10.1109/ICVR70658.2026.11672426",
+      "pmid": null,
+      "journal": "2026 12th International Conference on Virtual Reality (ICVR)",
+      "year": 2026,
+      "authors": "Pan Ziqi, Comley Enego, Cristea Alexandra I.",
+      "collections": [
+        "language"
+      ],
+      "origin": "update",
+      "design": "Participant study",
+      "categories": [
+        "Mindfulness and biofeedback"
+      ],
+      "targets": [],
+      "priority": 1,
+      "finding": "An IEEE conference paper describes a preliminary usability evaluation of EEG-driven visual feedback. Clinical efficacy remains untested.",
+      "limitation": "The authors describe a preliminary evaluation in which an EEG-derived relaxation estimate drove visual feedback. The accessible abstract gives limited detail about the calculation.",
+      "urls": [
+        "https://doi.org/10.1109/ICVR70658.2026.11672426"
+      ],
+      "evidence": {
+        "evidenceType": "Participant study",
+        "measurement": "EEG · Derived score",
+        "relationshipNote": "The authors describe a preliminary evaluation in which an EEG-derived relaxation estimate drove visual feedback. The accessible abstract gives limited detail about the calculation."
+      },
+      "citationCount": null
+    },
+    {
+      "id": "pmid-40939175",
+      "title": "Interventions Based on Biofeedback Systems to Improve Workers' Psychological Well-Being, Mental Health, and Safety: Systematic Literature Review",
+      "doi": "10.2196/70134",
+      "pmid": "40939175",
+      "journal": "Journal of Medical Internet Research",
+      "year": 2025,
+      "authors": "Ferreira Simão, Rodrigues Matilde A, Mateus Catarina, Rodrigues Pedro Pereira, Rocha Nuno Barbosa",
+      "collections": [
+        "language"
+      ],
+      "origin": "update",
+      "design": "Review or conceptual paper",
+      "categories": [
+        "Mindfulness and biofeedback"
+      ],
+      "targets": [],
+      "priority": 1,
+      "finding": "Nine studies met the review criteria. Short-term improvements were common, while sample sizes and follow-up limited conclusions about durability.",
+      "limitation": "Review of workplace biofeedback.",
+      "urls": [
+        "https://doi.org/10.2196/70134"
+      ],
+      "evidence": {
+        "evidenceType": "Review or framework",
+        "measurement": "Review or framework",
+        "relationshipNote": "Review of workplace biofeedback."
+      },
+      "citationCount": null
+    },
+    {
+      "id": "lab-eee50dc8f3d54f",
+      "title": "Ego-depletion and motor skill performance under pressure—experimental effects of a short term virtual-reality based mindfulness breathing meditation with integrated biofeedback",
+      "doi": "10.1038/s41598-024-68043-0",
+      "pmid": null,
+      "journal": "Scientific Reports",
+      "year": 2024,
+      "authors": "Wagner Matthias, Wieczorek Alissa",
+      "collections": [
+        "language"
+      ],
+      "origin": "update",
+      "design": "Participant study",
+      "categories": [
+        "Mindfulness and biofeedback"
+      ],
+      "targets": [],
+      "priority": 1,
+      "finding": "Two small crossover experiments tested basketball free throws and football penalties. VR breathing meditation with feedback improved task performance against a rest break. It was not a test of mental-health treatment.",
+      "limitation": "Abdominal movement during exhalation changed the virtual environment. The testing staff were masked to condition.",
+      "urls": [
+        "https://doi.org/10.1038/s41598-024-68043-0"
+      ],
+      "evidence": {
+        "evidenceType": "Participant study",
+        "measurement": "Respiration",
+        "relationshipNote": "Abdominal movement during exhalation changed the virtual environment. The testing staff were masked to condition."
+      },
+      "citationCount": null
+    },
+    {
+      "id": "lab-870b2fcef79281",
+      "title": "Ephemeral Breath: Non-contact Biofeedback System in Habitual Behaviors for Everyday Mindfulness",
+      "doi": "10.1145/3731459.3779342",
+      "pmid": null,
+      "journal": "Proceedings of the Twentieth International Conference on Tangible, Embedded, and Embodied Interaction",
+      "year": 2026,
+      "authors": "Matsumoto Tomoki, Tobitani Kensuke",
+      "collections": [
+        "language"
+      ],
+      "origin": "update",
+      "design": "Methods verification incomplete",
+      "categories": [
+        "Mindfulness and biofeedback"
+      ],
+      "targets": [],
+      "priority": 1,
+      "finding": "The ACM conference record identifies a non-contact biofeedback design for everyday mindfulness. Participant outcomes were unavailable for verification.",
+      "limitation": "The accessible conference record identifies non-contact biofeedback. The sensing method and participant evaluation need confirmation.",
+      "urls": [
+        "https://doi.org/10.1145/3731459.3779342"
+      ],
+      "evidence": {
+        "evidenceType": "Signal or implementation unclear",
+        "measurement": "Signal or implementation unclear",
+        "relationshipNote": "The accessible conference record identifies non-contact biofeedback. The sensing method and participant evaluation need confirmation."
+      },
+      "citationCount": null
+    },
+    {
+      "id": "lab-70831a49e6f6d0",
+      "title": "Flowing Landscapes: A Motion-Synced In-Car VR Mindfulness Experience with Biofeedback-Driven Adjustments for Motion Sickness",
+      "doi": "10.1007/978-3-031-92689-1_9",
+      "pmid": null,
+      "journal": "Lecture Notes in Computer Science",
+      "year": 2025,
+      "authors": "Zhou Yuping, Tian Yuan, Shui Bo, Liu Yaxin, Li Zhiheng, Nie Xiaomei",
+      "collections": [
+        "language"
+      ],
+      "origin": "update",
+      "design": "Methods verification incomplete",
+      "categories": [
+        "Mindfulness and biofeedback"
+      ],
+      "targets": [],
+      "priority": 1,
+      "finding": "Twenty participants tested four conditions. The reported benefit concerns motion sickness and the experience of the virtual landscape. It has limited bearing on anxiety treatment.",
+      "limitation": "The abstract confirms physiology-driven adjustments during testing with 20 people. It leaves the specific signal unidentified.",
+      "urls": [
+        "https://doi.org/10.1007/978-3-031-92689-1_9"
+      ],
+      "evidence": {
+        "evidenceType": "Signal or implementation unclear",
+        "measurement": "Signal or implementation unclear",
+        "relationshipNote": "The abstract confirms physiology-driven adjustments during testing with 20 people. It leaves the specific signal unidentified."
+      },
+      "citationCount": null
+    },
+    {
+      "id": "lab-7f8cefe879869f",
+      "title": "HeartBit: mindful control of heart rate using haptic biofeedback",
+      "doi": null,
+      "pmid": null,
+      "journal": "",
+      "year": 2020,
+      "authors": "",
+      "collections": [
+        "language"
+      ],
+      "origin": "update",
+      "design": "Participant study",
+      "categories": [
+        "Mindfulness and biofeedback"
+      ],
+      "targets": [],
+      "priority": 1,
+      "finding": "A handheld device reproduced a heartbeat through touch. In the 25-person empathy experiment, feedback narrowed differences between some self-ratings and participants’ estimates of another person’s feelings. This is a small experimental thesis with an indirect empathy measure.",
+      "limitation": "The handheld device reproduced a measured heartbeat through touch.",
+      "urls": [
+        "https://dspace.mit.edu/entities/publication/2fbd5c24-af34-488f-81ea-12e1bc690f3d"
+      ],
+      "evidence": {
+        "evidenceType": "Participant study",
+        "measurement": "Heart rate / heartbeat",
+        "relationshipNote": "The handheld device reproduced a measured heartbeat through touch."
+      },
+      "citationCount": null
+    },
+    {
+      "id": "lab-3650fe906cd8e1",
+      "title": "Attention Regulation Framework",
+      "doi": "10.1145/3359593",
+      "pmid": null,
+      "journal": "ACM Transactions on Computer-Human Interaction",
+      "year": 2019,
+      "authors": "Niksirat Kavous Salehzadeh, Silpasuwanchai Chaklam, Cheng Peng, Ren Xiangshi",
+      "collections": [
+        "language"
+      ],
+      "origin": "update",
+      "design": "Participant study",
+      "categories": [
+        "Mindfulness and biofeedback"
+      ],
+      "targets": [],
+      "priority": 1,
+      "finding": "Four user evaluations explored interfaces that use subtle movements to guide attention. Relevant to design in busy spaces and to giving participants control over the pace.",
+      "limitation": "The evaluated interfaces tracked deliberate physical movements to support attention.",
+      "urls": [
+        "https://doi.org/10.1145/3359593"
+      ],
+      "evidence": {
+        "evidenceType": "Participant study",
+        "measurement": "Movement",
+        "relationshipNote": "The evaluated interfaces tracked deliberate physical movements to support attention."
+      },
+      "citationCount": null
+    },
+    {
+      "id": "pmid-39385361",
+      "title": "Using a virtual reality game to train biofeedback-based regulation under stress conditions",
+      "doi": "10.1111/psyp.14705",
+      "pmid": "39385361",
+      "journal": "Psychophysiology",
+      "year": 2024,
+      "authors": "Daniel‐Watanabe Lucie, Cook Benjamin, Leung Grace, Krstulović Marino, Finnemann Johanna, Woolley Toby, Powell Craig, Fletcher Paul",
+      "collections": [
+        "language"
+      ],
+      "origin": "update",
+      "design": "Participant study",
+      "categories": [
+        "Mindfulness and biofeedback"
+      ],
+      "targets": [],
+      "priority": 1,
+      "finding": "Two experiments examined use of a breathing skill under a laboratory stressor. In the comparison experiment, trained participants showed higher HRV under stress. This is evidence of skill transfer to a task.",
+      "limitation": "The training displayed the pulse trace. A study-defined stress score used rolling heart rate relative to baseline. HRV was an outcome.",
+      "urls": [
+        "https://doi.org/10.1111/psyp.14705"
+      ],
+      "evidence": {
+        "evidenceType": "Participant study",
+        "measurement": "Heart rate / heartbeat · Derived score",
+        "relationshipNote": "The training displayed the pulse trace. A study-defined stress score used rolling heart rate relative to baseline. HRV was an outcome."
+      },
+      "citationCount": null
+    },
+    {
+      "id": "pmid-33529187",
+      "title": "Development of a modular stress management platform (Performance Edge VR) and a pilot efficacy trial of a bio-feedback enhanced training module for controlled breathing",
+      "doi": "10.1371/journal.pone.0245068",
+      "pmid": "33529187",
+      "journal": "PLOS ONE",
+      "year": 2021,
+      "authors": "Kluge Murielle G., Maltby Steven, Walker Nicole, Bennett Neanne, Aidman Eugene, Nalivaiko Eugene, Walker Frederick Rohan",
+      "collections": [
+        "language"
+      ],
+      "origin": "update",
+      "design": "Participant study",
+      "categories": [
+        "Mindfulness and biofeedback"
+      ],
+      "targets": [],
+      "priority": 1,
+      "finding": "Thirty healthy volunteers recruited at the University of Newcastle practised across three sessions. Controlled breathing improved. The ADF co-developed this platform. The later on-base study provides direct evidence from serving trainees.",
+      "limitation": "A respiratory belt provided controlled-breathing feedback.",
+      "urls": [
+        "https://doi.org/10.1371/journal.pone.0245068"
+      ],
+      "evidence": {
+        "evidenceType": "Participant study",
+        "measurement": "Respiration",
+        "relationshipNote": "A respiratory belt provided controlled-breathing feedback."
+      },
+      "citationCount": null
+    },
+    {
+      "id": "lab-58ba4c9a89141b",
+      "title": "A Narrative Review of Mindfulness-Based Interventions Using Virtual Reality",
+      "doi": "10.1007/s12671-021-01783-6",
+      "pmid": null,
+      "journal": "Mindfulness",
+      "year": 2021,
+      "authors": "Arpaia Pasquale, D’Errico Giovanni, De Paolis Lucio Tommaso, Moccaldi Nicola, Nuccetelli Fabiana",
+      "collections": [
+        "language"
+      ],
+      "origin": "update",
+      "design": "Review or conceptual paper",
+      "categories": [
+        "Mindfulness and biofeedback"
+      ],
+      "targets": [],
+      "priority": 1,
+      "finding": "The authors rated over 90 percent of included reports as weak and none as strong. Useful context for interpreting positive pilot outcomes.",
+      "limitation": "Narrative review of mindfulness in VR.",
+      "urls": [
+        "https://doi.org/10.1007/s12671-021-01783-6"
+      ],
+      "evidence": {
+        "evidenceType": "Review or framework",
+        "measurement": "Review or framework",
+        "relationshipNote": "Narrative review of mindfulness in VR."
+      },
+      "citationCount": null
+    },
+    {
+      "id": "pmid-30087642",
+      "title": "Virtual Reality for Anxiety Reduction Demonstrated by Quantitative EEG: A Pilot Study",
+      "doi": "10.3389/fpsyg.2018.01280",
+      "pmid": "30087642",
+      "journal": "Frontiers in Psychology",
+      "year": 2018,
+      "authors": "Tarrant Jeff, Viczko Jeremy, Cope Hannah",
+      "collections": [
+        "language"
+      ],
+      "origin": "update",
+      "design": "Context or measurement study",
+      "categories": [
+        "Mindfulness and biofeedback"
+      ],
+      "targets": [],
+      "priority": 1,
+      "finding": "Both quiet rest and VR meditation reduced subjective anxiety. Some EEG measures differed after VR. Brain activity was recorded as an outcome, which is distinct from returning a live signal to the participant.",
+      "limitation": "The researchers compared EEG recordings around the VR meditation and quiet-rest conditions.",
+      "urls": [
+        "https://doi.org/10.3389/fpsyg.2018.01280"
+      ],
+      "evidence": {
+        "evidenceType": "No live signal established",
+        "measurement": "No live signal established",
+        "relationshipNote": "The researchers compared EEG recordings around the VR meditation and quiet-rest conditions."
+      },
+      "citationCount": null
+    },
+    {
+      "id": "lab-9993bb4e4e942d",
+      "title": "Virtual reality versus 2D biofeedback for children and adolescents with stress related disorders: a randomized controlled trial",
+      "doi": "10.1007/s10055-025-01123-2",
+      "pmid": null,
+      "journal": "Virtual Reality",
+      "year": 2025,
+      "authors": "Felnhofer Anna, Goinska Katharina, Hattinger Johann, Kamper Adrian, Lenz Andreas, Hlavacs Helmut, Kothgassner Oswald D.",
+      "collections": [
+        "language"
+      ],
+      "origin": "update",
+      "design": "Randomised controlled study",
+      "categories": [
+        "Mindfulness and biofeedback"
+      ],
+      "targets": [],
+      "priority": 1,
+      "finding": "Thirty-nine patients aged 9–18 received ten sessions of VR or conventional screen-based biofeedback. Both groups improved, with comparable outcomes through three months.",
+      "limitation": "A baseline heart-rate threshold guided feedback in both the 2D and VR training.",
+      "urls": [
+        "https://doi.org/10.1007/s10055-025-01123-2"
+      ],
+      "evidence": {
+        "evidenceType": "Participant study",
+        "measurement": "Heart rate / heartbeat",
+        "relationshipNote": "A baseline heart-rate threshold guided feedback in both the 2D and VR training."
+      },
+      "citationCount": null
+    },
+    {
+      "id": "pmid-41261293",
+      "title": "Biofeedback-based Digital Games and Well-being in Childhood: A Systematic Review",
+      "doi": "10.1007/s10802-025-01387-x",
+      "pmid": "41261293",
+      "journal": "Research on Child and Adolescent Psychopathology",
+      "year": 2025,
+      "authors": "Darabi Morgan D., Silber Sara P., Slotkin Rebecca, Peechatka Alyssa L.",
+      "collections": [
+        "language"
+      ],
+      "origin": "update",
+      "design": "Review or conceptual paper",
+      "categories": [
+        "Mindfulness and biofeedback"
+      ],
+      "targets": [],
+      "priority": 1,
+      "finding": "Sixteen youth biofeedback-game reports met the review criteria. Two used VR. The included studies span childhood and adolescence.",
+      "limitation": "Systematic review of youth biofeedback games.",
+      "urls": [
+        "https://doi.org/10.1007/s10802-025-01387-x"
+      ],
+      "evidence": {
+        "evidenceType": "Review or framework",
+        "measurement": "Review or framework",
+        "relationshipNote": "Systematic review of youth biofeedback games."
+      },
+      "citationCount": null
+    },
+    {
+      "id": "lab-ed18aa841e540e",
+      "title": "Designing and Utilizing Biofeedback Games for Emotion Regulation",
+      "doi": "10.1145/2851581.2892521",
+      "pmid": null,
+      "journal": "Proceedings of the 2016 CHI Conference Extended Abstracts on Human Factors in Computing Systems",
+      "year": 2016,
+      "authors": "Lobel Adam, Gotsis Marientina, Reynolds Erin, Annetta Michael, Engels Rutger C.M.E., Granic Isabela",
+      "collections": [
+        "language"
+      ],
+      "origin": "update",
+      "design": "Participant study",
+      "categories": [
+        "Mindfulness and biofeedback"
+      ],
+      "targets": [],
+      "priority": 1,
+      "finding": "Forty-seven participants aged 18–24 played Nevermind, which estimated arousal from beat-to-beat variability. This observational study documents use in the target age band. Therapeutic efficacy remains open.",
+      "limitation": "In Nevermind, the game estimated arousal from beat-to-beat variability. The report also illustrates heart-rate recordings separately.",
+      "urls": [
+        "https://doi.org/10.1145/2851581.2892521"
+      ],
+      "evidence": {
+        "evidenceType": "Participant study",
+        "measurement": "Heart-rate variability · Derived score",
+        "relationshipNote": "In Nevermind, the game estimated arousal from beat-to-beat variability. The report also illustrates heart-rate recordings separately."
+      },
+      "citationCount": null
+    },
+    {
+      "id": "pmid-42205234",
+      "title": "Brief Virtual Reality and Mixed Reality Mindfulness Breathing Exercise for Emotional Well-Being and Cognitive Functions in University Students: Within-Subjects Experimental Design Study",
+      "doi": "10.2196/84239",
+      "pmid": "42205234",
+      "journal": "JMIR XR and Spatial Computing",
+      "year": 2026,
+      "authors": "Eun Zoey K Y, Koh Charmaine Jiali, Yang Hwajin, Goh Adalia Y H, Hu Meilan, Kasturiratna K T A Sandeeshwara, Hartanto Andree",
+      "collections": [
+        "language"
+      ],
+      "origin": "update",
+      "design": "Context or measurement study",
+      "categories": [
+        "Mindfulness and biofeedback"
+      ],
+      "targets": [],
+      "priority": 1,
+      "finding": "In 102 Singapore undergraduates (mean age 20.87), VR and mixed-reality breathing improved immediate affect and self-reported self-control against a mind-wandering audio comparison. Working memory showed no added benefit.",
+      "limitation": "VR and MR guided the breathing exercises. A live physiological input controlling the exercise was unverified.",
+      "urls": [
+        "https://doi.org/10.2196/84239"
+      ],
+      "evidence": {
+        "evidenceType": "No live signal established",
+        "measurement": "No live signal established",
+        "relationshipNote": "VR and MR guided the breathing exercises. A live physiological input controlling the exercise was unverified."
+      },
+      "citationCount": null
+    },
+    {
+      "id": "pmid-37930751",
+      "title": "Evaluation of a Virtual Reality Platform to Train Stress Management Skills for a Defense Workforce: Multisite, Mixed Methods Feasibility Study",
+      "doi": "10.2196/46368",
+      "pmid": "37930751",
+      "journal": "Journal of Medical Internet Research",
+      "year": 2023,
+      "authors": "Kluge Murielle G, Maltby Steven, Kuhne Caroline, Walker Nicole, Bennett Neanne, Aidman Eugene, Nalivaiko Eugene, Walker Frederick Rohan",
+      "collections": [
+        "language"
+      ],
+      "origin": "update",
+      "design": "Participant study",
+      "categories": [
+        "Mindfulness and biofeedback"
+      ],
+      "targets": [],
+      "priority": 1,
+      "finding": "On-base implementation with 189 trainees across 372 VR sessions showed practical delivery and slower breathing during training. Immediate outcomes and implementation were the focus.",
+      "limitation": "A live respiratory trace provided feedback on controlled breathing in ADF training.",
+      "urls": [
+        "https://doi.org/10.2196/46368"
+      ],
+      "evidence": {
+        "evidenceType": "Participant study",
+        "measurement": "Respiration",
+        "relationshipNote": "A live respiratory trace provided feedback on controlled breathing in ADF training."
+      },
+      "citationCount": null
+    },
+    {
+      "id": "pmid-30020511",
+      "title": "Heart Rate Variability and Cognitive Bias Feedback Interventions to Prevent Post-deployment PTSD: Results from a Randomized Controlled Trial",
+      "doi": "10.1093/milmed/usy171",
+      "pmid": "30020511",
+      "journal": "Military Medicine",
+      "year": 2018,
+      "authors": "Pyne Jeffrey M, Constans Joseph I, Nanney John T, Wiederhold Mark D, Gibson Douglas P, Kimbrell Timothy, Kramer Teresa L, Pitcock Jeffery A, Han Xiaotong, Williams D Keith, Chartrand Don, Gevirtz Richard N, Spira James, Wiederhold Brenda K, McCraty Rollin, McCune Thomas R",
+      "collections": [
+        "language"
+      ],
+      "origin": "update",
+      "design": "Randomised controlled study",
+      "categories": [
+        "Mindfulness and biofeedback"
+      ],
+      "targets": [],
+      "priority": 1,
+      "finding": "A cluster-randomised National Guard study followed 342 soldiers. HRV feedback did not reduce post-deployment PTSD symptoms across the whole sample. The age-related signal favoured older participants.",
+      "limitation": "The on-site emWave games responded to HRV. The home prompt provided separate paced-breathing practice.",
+      "urls": [
+        "https://doi.org/10.1093/milmed/usy171"
+      ],
+      "evidence": {
+        "evidenceType": "Participant study",
+        "measurement": "Heart-rate variability · Derived score · Proprietary score",
+        "relationshipNote": "The on-site emWave games responded to HRV. The home prompt provided separate paced-breathing practice."
+      },
+      "citationCount": null
+    },
+    {
+      "id": "pmid-38287778",
+      "title": "Heart Rate Variability Biofeedback as a Treatment for Military PTSD: A Meta-Analysis",
+      "doi": "10.1093/milmed/usae003",
+      "pmid": "38287778",
+      "journal": "",
+      "year": 2024,
+      "authors": "",
+      "collections": [
+        "language"
+      ],
+      "origin": "update",
+      "design": "Review or conceptual paper",
+      "categories": [
+        "Mindfulness and biofeedback"
+      ],
+      "targets": [],
+      "priority": 1,
+      "finding": "Five studies covering 95 participants showed a pooled reduction in PTSD symptoms after HRV training. Small studies and before–after contrasts limit causal interpretation.",
+      "limitation": "Meta-analysis of HRV biofeedback for military PTSD.",
+      "urls": [
+        "https://doi.org/10.1093/milmed/usae003"
+      ],
+      "evidence": {
+        "evidenceType": "Review or framework",
+        "measurement": "Review or framework",
+        "relationshipNote": "Meta-analysis of HRV biofeedback for military PTSD."
+      },
+      "citationCount": null
+    },
+    {
+      "id": "pmid-36331685",
+      "title": "A Pilot Study of a Three-Session Heart Rate Variability Biofeedback Intervention for Veterans with Posttraumatic Stress Disorder",
+      "doi": "10.1007/s10484-022-09565-z",
+      "pmid": "36331685",
+      "journal": "Applied Psychophysiology and Biofeedback",
+      "year": 2022,
+      "authors": "Schuman Donna L., Lawrence Karen A., Boggero Ian, Naegele Peter, Ginsberg J. P., Casto Ashley, Moser Debra K.",
+      "collections": [
+        "language"
+      ],
+      "origin": "update",
+      "design": "Randomised controlled study",
+      "categories": [
+        "Mindfulness and biofeedback"
+      ],
+      "targets": [],
+      "priority": 1,
+      "finding": "A randomised waitlist pilot of three clinical HRV feedback sessions reported improvements in depression and an HRV measure within the intervention arm. Home-practice adherence was limited.",
+      "limitation": "The veteran waitlist pilot used clinical HRV biofeedback and a smartphone with a sensor for home practice.",
+      "urls": [
+        "https://doi.org/10.1007/s10484-022-09565-z"
+      ],
+      "evidence": {
+        "evidenceType": "Participant study",
+        "measurement": "Heart-rate variability",
+        "relationshipNote": "The veteran waitlist pilot used clinical HRV biofeedback and a smartphone with a sensor for home practice."
+      },
+      "citationCount": null
+    },
+    {
+      "id": "pmid-38378078",
+      "title": "Virtual reality mindfulness training for veterans in residential substance use treatment: Pilot study of feasibility and acceptability",
+      "doi": "10.1016/j.josat.2024.209315",
+      "pmid": "38378078",
+      "journal": "Journal of Substance Use and Addiction Treatment",
+      "year": 2024,
+      "authors": "Van Doren Natalia, Ng Helen, Rawat Eshaan, McKenna Kevin R., Blonigen Daniel M.",
+      "collections": [
+        "language"
+      ],
+      "origin": "update",
+      "design": "Context or measurement study",
+      "categories": [
+        "Mindfulness and biofeedback"
+      ],
+      "targets": [],
+      "priority": 1,
+      "finding": "A headset mindfulness pilot in residential substance use treatment enrolled 20 veterans aged 23–72 and 12 providers. It evaluated usability and acceptability. A single session offers limited evidence on treatment.",
+      "limitation": "A feasibility study of VR mindfulness in residential substance use treatment. A live physiological feedback loop was unverified.",
+      "urls": [
+        "https://doi.org/10.1016/j.josat.2024.209315"
+      ],
+      "evidence": {
+        "evidenceType": "No live signal established",
+        "measurement": "No live signal established",
+        "relationshipNote": "A feasibility study of VR mindfulness in residential substance use treatment. A live physiological feedback loop was unverified."
+      },
+      "citationCount": null
+    },
+    {
+      "id": "pmid-22558370",
+      "title": "Using biofeedback while immersed in a stressful videogame increases the effectiveness of stress management skills in soldiers",
+      "doi": "10.1371/journal.pone.0036169",
+      "pmid": "22558370",
+      "journal": "PLoS ONE",
+      "year": 2012,
+      "authors": "Bouchard Stéphane, Bernier François, Boivin Éric, Morin Brian, Robillard Geneviève",
+      "collections": [
+        "language"
+      ],
+      "origin": "update",
+      "design": "Participant study",
+      "categories": [
+        "Mindfulness and biofeedback"
+      ],
+      "targets": [],
+      "priority": 1,
+      "finding": "Forty-one soldiers underwent a stress simulation with or without extra tactical-breathing practice in a biofeedback game. Stereoscopic screen training was associated with lower stress during a later simulated ambush.",
+      "limitation": "The soldiers’ game combined heart rate and skin conductance. The coach adjusted each signal’s weight in the stress feedback.",
+      "urls": [
+        "https://doi.org/10.1371/journal.pone.0036169"
+      ],
+      "evidence": {
+        "evidenceType": "Participant study",
+        "measurement": "Heart rate / heartbeat · Skin conductance · Derived score",
+        "relationshipNote": "The soldiers’ game combined heart rate and skin conductance. The coach adjusted each signal’s weight in the stress feedback."
+      },
+      "citationCount": null
+    },
+    {
+      "id": "pmid-41618102",
+      "title": "Emotional intelligence training improves stress regulation and performance in high-stress occupations",
+      "doi": "10.1038/s41598-026-36216-8",
+      "pmid": "41618102",
+      "journal": "Scientific Reports",
+      "year": 2026,
+      "authors": "King Jemma B., Li Yiqiong, Gillespie Nicole A., Ashkanasy Neal M.",
+      "collections": [
+        "language"
+      ],
+      "origin": "update",
+      "design": "Randomised controlled study",
+      "categories": [
+        "Mindfulness and biofeedback"
+      ],
+      "targets": [],
+      "priority": 1,
+      "finding": "A 66-person military trial compared emotional intelligence training with an active control. The investigators measured cortisol and task performance. The intervention did not return cortisol to the participants as feedback.",
+      "limitation": "The emotional intelligence training trial measured cortisol and task performance.",
+      "urls": [
+        "https://doi.org/10.1038/s41598-026-36216-8"
+      ],
+      "evidence": {
+        "evidenceType": "No live signal established",
+        "measurement": "No live signal established",
+        "relationshipNote": "The emotional intelligence training trial measured cortisol and task performance."
+      },
+      "citationCount": null
+    },
+    {
+      "id": "pmid-38236355",
+      "title": "Virtual Reality Breathing Interventions for Mental Health: A Systematic Review and Meta-Analysis of Randomized Controlled Trials",
+      "doi": "10.1007/s10484-023-09611-4",
+      "pmid": "38236355",
+      "journal": "Applied Psychophysiology and Biofeedback",
+      "year": 2024,
+      "authors": "Cortez-Vázquez Gabriela, Adriaanse Marcel, Burchell George Louis, Ostelo Raymond, Panayiotou Georgia, Vlemincx Elke",
+      "collections": [
+        "language"
+      ],
+      "origin": "update",
+      "design": "Review or conceptual paper",
+      "categories": [
+        "Mindfulness and biofeedback"
+      ],
+      "targets": [],
+      "priority": 1,
+      "finding": "Six randomised trials compared VR and non-VR breathing interventions. Pooled findings showed no reliable additional mental-health benefit from immersive delivery.",
+      "limitation": "Systematic review of VR versus other methods of delivering breathing exercises.",
+      "urls": [
+        "https://doi.org/10.1007/s10484-023-09611-4"
+      ],
+      "evidence": {
+        "evidenceType": "Review or framework",
+        "measurement": "Review or framework",
+        "relationshipNote": "Systematic review of VR versus other methods of delivering breathing exercises."
+      },
+      "citationCount": null
+    },
+    {
+      "id": "lab-382ebff3371467",
+      "title": "Virtual reality experiences for breathing and relaxation training: The effects of real vs. placebo biofeedback",
+      "doi": "10.1016/j.ijhcs.2024.103275",
+      "pmid": null,
+      "journal": "International Journal of Human-Computer Studies",
+      "year": 2024,
+      "authors": "Chittaro Luca, Serafini Marta, Vulcano Yvonne",
+      "collections": [
+        "language"
+      ],
+      "origin": "update",
+      "design": "Participant study",
+      "categories": [
+        "Mindfulness and biofeedback"
+      ],
+      "targets": [],
+      "priority": 1,
+      "finding": "In a 35-person VR experiment, real-time breathing, cardiac and skin signals produced greater relaxation and presence than replayed signals from another participant.",
+      "limitation": "The environment responded to the participant’s breathing, heart rate and skin conductance, or to another participant’s replay.",
+      "urls": [
+        "https://doi.org/10.1016/j.ijhcs.2024.103275"
+      ],
+      "evidence": {
+        "evidenceType": "Participant study",
+        "measurement": "Heart rate / heartbeat · Respiration · Skin conductance",
+        "relationshipNote": "The environment responded to the participant’s breathing, heart rate and skin conductance, or to another participant’s replay."
+      },
+      "citationCount": null
+    },
+    {
+      "id": "pmid-38896949",
+      "title": "Receiving self-compassion in the virtual world: Testing the potential value of biofeedback",
+      "doi": "10.1016/j.brat.2024.104596",
+      "pmid": "38896949",
+      "journal": "",
+      "year": 2024,
+      "authors": "",
+      "collections": [
+        "language"
+      ],
+      "origin": "update",
+      "design": "Randomised controlled study",
+      "categories": [
+        "Mindfulness and biofeedback"
+      ],
+      "targets": [],
+      "priority": 1,
+      "finding": "Sixty people received the same VR self-compassion practice with or without a pulsing light showing their heart rate. Outcomes improved from baseline across both conditions. Adding the light produced no additional detectable benefit.",
+      "limitation": "A visual pulse showed the participant’s own heart rate during self-compassion practice.",
+      "urls": [
+        "https://doi.org/10.1016/j.brat.2024.104596"
+      ],
+      "evidence": {
+        "evidenceType": "Participant study",
+        "measurement": "Heart rate / heartbeat",
+        "relationshipNote": "A visual pulse showed the participant’s own heart rate during self-compassion practice."
+      },
+      "citationCount": null
+    },
+    {
+      "id": "lab-aeddc9e62aff15",
+      "title": "Augmented Virtual Reality Meditation",
+      "doi": "10.1145/3449358",
+      "pmid": null,
+      "journal": "ACM Transactions on Social Computing",
+      "year": 2021,
+      "authors": "Järvelä Simo, Cowley Benjamin, Salminen Mikko, Jacucci Giulio, Hamari Juho, Ravaja Niklas",
+      "collections": [
+        "language"
+      ],
+      "origin": "update",
+      "design": "Participant study",
+      "categories": [
+        "Mindfulness and biofeedback"
+      ],
+      "targets": [],
+      "priority": 1,
+      "finding": "Pairs practised compassion meditation with live breathing and EEG visualisations. Participants reported more empathy and social presence under shared-feedback conditions. The study measured feelings during the experience.",
+      "limitation": "Pairs saw their respiratory synchrony and a comparison of EEG frontal asymmetry. HRV and skin conductance were also recorded for analysis.",
+      "urls": [
+        "https://doi.org/10.1145/3449358"
+      ],
+      "evidence": {
+        "evidenceType": "Participant study",
+        "measurement": "EEG · Respiration · Derived score",
+        "relationshipNote": "Pairs saw their respiratory synchrony and a comparison of EEG frontal asymmetry. HRV and skin conductance were also recorded for analysis."
+      },
+      "citationCount": null
+    },
+    {
+      "id": "lab-d69eade108c9c9",
+      "title": "Virtual reality improves emotional but not cognitive empathy: A meta-analysis",
+      "doi": "10.1037/tmb0000034",
+      "pmid": null,
+      "journal": "Technology, Mind, and Behavior",
+      "year": 2021,
+      "authors": "Martingano Alison Jane, Hererra Fernanda, Konrath Sara",
+      "collections": [
+        "language"
+      ],
+      "origin": "update",
+      "design": "Review or conceptual paper",
+      "categories": [
+        "Mindfulness and biofeedback"
+      ],
+      "targets": [],
+      "priority": 1,
+      "finding": "Across 43 VR studies involving 5,644 participants, immersion supported emotional empathy. Cognitive perspective-taking and the added value of VR over simpler storytelling were less convincing.",
+      "limitation": "Meta-analysis of VR and empathy.",
+      "urls": [
+        "https://doi.org/10.1037/tmb0000034"
+      ],
+      "evidence": {
+        "evidenceType": "Review or framework",
+        "measurement": "Review or framework",
+        "relationshipNote": "Meta-analysis of VR and empathy."
+      },
+      "citationCount": null
+    },
+    {
+      "id": "lab-03df8e70361cc3",
+      "title": "Resident Thrum: Designing for Group Cardiac Synchronization through Multimodal Biofeedback",
+      "doi": "10.1145/3803784.3809264",
+      "pmid": null,
+      "journal": "Proceedings of the 2026 Conference on Creativity and Cognition",
+      "year": 2026,
+      "authors": "Perry Phoenix",
+      "collections": [
+        "language"
+      ],
+      "origin": "update",
+      "design": "Design or demonstration",
+      "categories": [
+        "Mindfulness and biofeedback"
+      ],
+      "targets": [],
+      "priority": 1,
+      "finding": "Resident Thrum translates heart rhythms into light, sound and vibration for groups of two to six. It is an installation and design precedent.",
+      "limitation": "The installation returned heartbeats as sound, vibration and light, and changed the environment with group cardiac synchrony.",
+      "urls": [
+        "https://doi.org/10.1145/3803784.3809264"
+      ],
+      "evidence": {
+        "evidenceType": "Design or demonstration",
+        "measurement": "Heart rate / heartbeat · Derived score",
+        "relationshipNote": "The installation returned heartbeats as sound, vibration and light, and changed the environment with group cardiac synchrony."
+      },
+      "citationCount": null
+    },
+    {
+      "id": "lab-16c72c2e0fd307",
+      "title": "Does Virtual Reality Training Increase Mindfulness in Aboriginal Out-of-Home Care Children?",
+      "doi": "10.1007/s12671-024-02373-y",
+      "pmid": null,
+      "journal": "Mindfulness",
+      "year": 2024,
+      "authors": "Rowland Georgia, Hindman Emily, Jomeen Julie, Hassmén Peter",
+      "collections": [
+        "language"
+      ],
+      "origin": "update",
+      "design": "Context or measurement study",
+      "categories": [
+        "Mindfulness and biofeedback"
+      ],
+      "targets": [],
+      "priority": 1,
+      "finding": "A culturally informed VR mindfulness pilot enrolled 20 Aboriginal young people in out-of-home care, aged 7–16. Nineteen completed it. One mindfulness scale improved. State mindfulness and HRV showed no significant change. HRV was an outcome measure.",
+      "limitation": "The NSW Aboriginal youth study measured HRV before and during the VR body scan.",
+      "urls": [
+        "https://doi.org/10.1007/s12671-024-02373-y"
+      ],
+      "evidence": {
+        "evidenceType": "No live signal established",
+        "measurement": "No live signal established",
+        "relationshipNote": "The NSW Aboriginal youth study measured HRV before and during the VR body scan."
+      },
+      "citationCount": null
+    },
+    {
+      "id": "pmid-39935733",
+      "title": "Findings from the Tushirikiane-4-MH (supporting each other for mental health) mobile health–supported virtual reality randomized controlled trial among urban refugee youth in Kampala, Uganda",
+      "doi": "10.1017/gmh.2025.3",
+      "pmid": "39935733",
+      "journal": "Cambridge Prisms: Global Mental Health",
+      "year": 2025,
+      "authors": "Logie Carmen H., Okumu Moses, Admassu Zerihun, MacKenzie Frannie, Gittings Lesley, Kortenaar Jean-Luc, Khan Naimul, Hakiza Robert, Musoke Daniel Kibuuka, Nakitende Aidah, Katisi Brenda, Kyambadde Peter, Lester Richard, Mbuagbaw Lawrence",
+      "collections": [
+        "language"
+      ],
+      "origin": "update",
+      "design": "Randomised controlled study",
+      "categories": [
+        "Mindfulness and biofeedback"
+      ],
+      "targets": [],
+      "priority": 1,
+      "finding": "In a trial with 335 urban refugee youth aged 16–25 in Kampala, the two VR-containing programmes improved self-compassion at 16 weeks. Adding a group intervention also improved mental-health literacy. Neither programme showed a depression advantage over the control. The VR programme did not use wearable feedback.",
+      "limitation": "The Kampala trial tested VR and group support for refugee youth.",
+      "urls": [
+        "https://doi.org/10.1017/gmh.2025.3"
+      ],
+      "evidence": {
+        "evidenceType": "No live signal established",
+        "measurement": "No live signal established",
+        "relationshipNote": "The Kampala trial tested VR and group support for refugee youth."
+      },
+      "citationCount": null
+    },
+    {
+      "id": "pmid-34392115",
+      "title": "Improving mental health in low-resource settings: A feasibility randomized controlled trial of a transdiagnostic psychological intervention among Burundian refugee adolescents and their caregivers",
+      "doi": "10.1016/j.brat.2021.103944",
+      "pmid": "34392115",
+      "journal": "Behaviour Research and Therapy",
+      "year": 2021,
+      "authors": "Fine Shoshanna L., Malik Aiysha, Guimond Marie-France, Nemiro Ashley, Temu Getruda, Likindikoki Samuel, Annan Jeannie, Tol Wietse A.",
+      "collections": [
+        "language"
+      ],
+      "origin": "update",
+      "design": "Randomised controlled study",
+      "categories": [
+        "Mindfulness and biofeedback"
+      ],
+      "targets": [],
+      "priority": 1,
+      "finding": "Eighty-two Burundian young adolescents and 64 caregivers took part in a feasibility trial. Trained refugee facilitators delivered the EASE programme with high fidelity. This is evidence about local delivery.",
+      "limitation": "The Tanzania feasibility trial tested a facilitator-led psychological intervention.",
+      "urls": [
+        "https://doi.org/10.1016/j.brat.2021.103944"
+      ],
+      "evidence": {
+        "evidenceType": "No live signal established",
+        "measurement": "No live signal established",
+        "relationshipNote": "The Tanzania feasibility trial tested a facilitator-led psychological intervention."
+      },
+      "citationCount": null
+    },
+    {
+      "id": "pmid-35737665",
+      "title": "Effects of a WHO-guided digital health intervention for depression in Syrian refugees in Lebanon: A randomized controlled trial",
+      "doi": "10.1371/journal.pmed.1004025",
+      "pmid": "35737665",
+      "journal": "PLOS Medicine",
+      "year": 2022,
+      "authors": "Cuijpers Pim, Heim Eva, Abi Ramia Jinane, Burchert Sebastian, Carswell Kenneth, Cornelisz Ilja, Knaevelsrud Christine, Noun Philip, van Klaveren Chris, van’t Hof Edith, Zoghbi Edwina, van Ommeren Mark, El Chammay Rabih",
+      "collections": [
+        "language"
+      ],
+      "origin": "update",
+      "design": "Randomised controlled study",
+      "categories": [
+        "Mindfulness and biofeedback"
+      ],
+      "targets": [],
+      "priority": 1,
+      "finding": "A trial of guided digital self-help with 569 displaced Syrian adults found a depression benefit over enhanced usual care. Attrition limits interpretation. This was a guided digital programme without biofeedback.",
+      "limitation": "The Lebanon trial tested guided digital self-help.",
+      "urls": [
+        "https://doi.org/10.1371/journal.pmed.1004025"
+      ],
+      "evidence": {
+        "evidenceType": "No live signal established",
+        "measurement": "No live signal established",
+        "relationshipNote": "The Lebanon trial tested guided digital self-help."
+      },
+      "citationCount": null
+    },
+    {
+      "id": "pmid-35015365",
+      "title": "Effectiveness of a WHO self-help psychological intervention for preventing mental disorders among Syrian refugees in Turkey: a randomized controlled trial",
+      "doi": "10.1002/wps.20939",
+      "pmid": "35015365",
+      "journal": "World Psychiatry",
+      "year": 2022,
+      "authors": "Acarturk Ceren, Uygun Ersin, Ilkkursun Zeynep, Carswell Kenneth, Tedeschi Federico, Batu Mine, Eskici Sevde, Kurt Gulsah, Anttila Minna, Au Teresa, Baumgartner Josef, Churchill Rachel, Cuijpers Pim, Becker Thomas, Koesters Markus, Lantta Tella, Nosè Michela, Ostuzzi Giovanni, Popa Mariana, Purgato Marianna, Sijbrandij Marit, Turrini Giulia, Välimäki Maritta, Walker Lauren, Wancata Johannes, Zanini Elisa, White Ross G., van Ommeren Mark, Barbui Corrado",
+      "collections": [
+        "language"
+      ],
+      "origin": "update",
+      "design": "Randomised controlled study",
+      "categories": [
+        "Mindfulness and biofeedback"
+      ],
+      "targets": [],
+      "priority": 1,
+      "finding": "A trial of facilitator-led audio and illustrated self-help included 642 adults, mostly Syrian refugees. Fewer participants in the intervention arm developed a mental disorder at six months. It offers a low-equipment comparator.",
+      "limitation": "The Türkiye trial tested facilitator-led audio and illustrated self-help.",
+      "urls": [
+        "https://doi.org/10.1002/wps.20939"
+      ],
+      "evidence": {
+        "evidenceType": "No live signal established",
+        "measurement": "No live signal established",
+        "relationshipNote": "The Türkiye trial tested facilitator-led audio and illustrated self-help."
+      },
+      "citationCount": null
+    },
+    {
+      "id": "pmid-40283741",
+      "title": "Vagal Nerve Biofeedback Intervention for Improving Health Outcomes Among Ukrainian Forced Migrants: A Proof-of-Concept Study",
+      "doi": "10.3390/ijerph22040515",
+      "pmid": "40283741",
+      "journal": "International Journal of Environmental Research and Public Health",
+      "year": 2025,
+      "authors": "Gidron Yori, Levy Einav, Ryder Chen Hanna, Shaul Sharon, Sirota Rita, Atias Drorit",
+      "collections": [
+        "language"
+      ],
+      "origin": "update",
+      "design": "Methods verification incomplete",
+      "categories": [
+        "Mindfulness and biofeedback"
+      ],
+      "targets": [],
+      "priority": 1,
+      "finding": "Twenty-one Ukrainian forced migrants practised paced breathing. Stress and several physiological measures improved in a before–after comparison. The paper leaves live HRV display during practice unclear.",
+      "limitation": "The authors describe live HRV feedback as a technique. Their procedure specifies resting HRV measurements before and after practice. They leave the participant’s access to a live display during the exercise unclear.",
+      "urls": [
+        "https://doi.org/10.3390/ijerph22040515"
+      ],
+      "evidence": {
+        "evidenceType": "Signal or implementation unclear",
+        "measurement": "Signal or implementation unclear",
+        "relationshipNote": "The authors describe live HRV feedback as a technique. Their procedure specifies resting HRV measurements before and after practice. They leave the participant’s access to a live display during the exercise unclear."
+      },
+      "citationCount": null
+    },
+    {
+      "id": "lab-f825944bbd00ce",
+      "title": "Feeling-the-Beat: Enhancing Empathy and Engagement During Public Speaking Through Heart Rate Sharing",
+      "doi": null,
+      "pmid": null,
+      "journal": "",
+      "year": 2024,
+      "authors": "",
+      "collections": [
+        "language"
+      ],
+      "origin": "update",
+      "design": "Participant study",
+      "categories": [
+        "Mindfulness and biofeedback"
+      ],
+      "targets": [],
+      "priority": 1,
+      "finding": "In a 36-person experiment comparing real, fabricated and absent heart-rate sharing, audience members reported greater empathy towards the speaker with the system. This is a context-specific self-report.",
+      "limitation": "The system shared heart rate between speakers and audience members. The comparison used fabricated or absent signals.",
+      "urls": [
+        "https://www.microsoft.com/en-us/research/publication/feeling-the-beat-enhancing-empathy-and-engagement-during-public-speaking-through-heart-rate-sharing/"
+      ],
+      "evidence": {
+        "evidenceType": "Participant study",
+        "measurement": "Heart rate / heartbeat",
+        "relationshipNote": "The system shared heart rate between speakers and audience members. The comparison used fabricated or absent signals."
+      },
+      "citationCount": null
     }
   ]
 }
