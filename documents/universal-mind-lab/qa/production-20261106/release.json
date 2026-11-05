@@ -1,0 +1,103 @@
+{
+  "verifiedAt": "2026-11-05T19:52:14.945312+00:00",
+  "origin": "https://universalmind.tv",
+  "approvedSource": "c7177e2df8f3cf42dc7039dd518b2c3ed86a18f9",
+  "priorProduction": "643c2585ab6d999336f536ca1f7388ab80ee238e",
+  "deployScopes": [
+    "informatics",
+    "lab",
+    "directory",
+    "events"
+  ],
+  "workerVersion": "fe23ef30-fe52-4db5-9cb2-e289a0da7a3f",
+  "priorWorkerVersion": "7d8815a8-001f-403b-9987-0bc145fffe50",
+  "publicFilesMatched": 190,
+  "embeddedLibraryCheckedAt": "/informatics/library.html?embedded=1",
+  "exports": {
+    "exportRecords": 1054,
+    "jsonCsvAllRecordsIdentical": true,
+    "youthMatched": 105,
+    "biofeedbackMatched": 63,
+    "overlap": 0,
+    "knowledgeVersions": {
+      "approvedYouth": {
+        "sourceBatch": "batch-f164c8325ea5f9c9.json",
+        "sourceSHA256": "f164c8325ea5f9c989c29524518b598913508117712826dc408f592b7f99a723",
+        "approvedAt": "2026-11-02",
+        "publications": 105
+      },
+      "biofeedback": {
+        "version": "lab-biofeedback-20261105-ratings",
+        "publications": 63
+      }
+    }
+  },
+  "nativeResearch": {
+    "date": "2026-11-05T19:50:04.683Z",
+    "source": "c7177e2df",
+    "chapterCrosses": 2,
+    "crossDistribution": [
+      15,
+      31,
+      17,
+      0
+    ],
+    "maskingRolesChecked": true,
+    "nativeYouthLink": true,
+    "chapterAnchorRetained": true,
+    "chapter": "https://universalmind.tv/informatics/research/?collection=language&chapter=2#topic-mindfulness-biofeedback",
+    "labIdsMatchChapter": true,
+    "uniquePublications": 63,
+    "publisherLinks": 63,
+    "canonicalPriorRecord": "dv-adult-therapy-34143803",
+    "inpatientRecord": "pmid-42512522",
+    "standaloneReadingPage": "pmid-42512522-7e158443.html",
+    "individualWorkerRecordVerified": true,
+    "exportVersion": "ef9ea1424443061bff06c722cedac0d1d9a4acb855c012ba1ca14e53d026d7e0",
+    "sitemapEntries": 1386,
+    "workerHealth": {
+      "approvedYouth": {
+        "sourceBatch": "batch-f164c8325ea5f9c9.json",
+        "sourceSHA256": "f164c8325ea5f9c989c29524518b598913508117712826dc408f592b7f99a723",
+        "approvedAt": "2026-11-02",
+        "publications": 105
+      },
+      "biofeedback": {
+        "version": "lab-biofeedback-20261105-ratings",
+        "publications": 63
+      }
+    },
+    "processAudioMuted": true
+  },
+  "labDesktopAndPhone": [
+    "1440px: About, donation, referrals, TV in new tab, architecture credits and card switching passed",
+    "393px: About, donation, referrals, TV in new tab, architecture credits and card switching passed"
+  ],
+  "youthRoutes": [
+    "all: matching visible title, explicit youth scope, 105 exact publications and their reported ages",
+    "orygen: matching visible title, explicit youth scope, 21 exact publications and their reported ages",
+    "orygen: matching visible title, explicit youth scope, 21 exact publications and their reported ages",
+    "Orygen: citation dialog, source link, reload and browser Back retain the correct journey",
+    "black-dog: matching visible title, explicit youth scope, 20 exact publications and their reported ages",
+    "music: matching visible title, explicit youth scope, 7 exact publications and their reported ages",
+    "music-making: matching visible title, explicit youth scope, 3 exact publications and their reported ages",
+    "brain-entrainment: matching visible title, explicit youth scope, 3 exact publications and their reported ages",
+    "emdr: matching visible title, explicit youth scope, 7 exact publications and their reported ages",
+    "mindfulness: matching visible title, explicit youth scope, 26 exact publications and their reported ages",
+    "mantra: matching visible title, explicit youth scope, 0 exact publications and their reported ages",
+    "transcendental-meditation: matching visible title, explicit youth scope, 2 exact publications and their reported ages",
+    "yoga: matching visible title, explicit youth scope, 3 exact publications and their reported ages",
+    "connection: matching visible title, explicit youth scope, 67 exact publications and their reported ages",
+    "Wider library identifies Youth Research above the existing age-filtered search",
+    "music-making: matching visible title, explicit youth scope, 3 exact publications and their reported ages",
+    "music-making: matching visible title, explicit youth scope, 3 exact publications and their reported ages",
+    "orygen: matching visible title, explicit youth scope, 21 exact publications and their reported ages",
+    "emdr: matching visible title, explicit youth scope, 7 exact publications and their reported ages",
+    "Topic navigation and Back keep the canonical URL, heading and paper set together",
+    "General search and ordinary Sound chapters restore the full library interface"
+  ],
+  "eventsChoiceRequiresInvitation": 401,
+  "internalReviewDenied": 403,
+  "paidAnswerProof": "../biofeedback-20261105/ratings-universal-one-staging.json",
+  "manifestSHA256": "530fe701af982788526687db8c33e51ecf443ec498aa5f3ee9a066ee709d8594"
+}
