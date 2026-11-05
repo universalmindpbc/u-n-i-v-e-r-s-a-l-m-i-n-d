@@ -12,7 +12,7 @@ The wardrobe brief references THE UPSIDE and Nagnata for yoga, and vintage Levi�
 
 The expanded scene has 101 instanced festival visitors, 24 walking visitors across eight paths and ten diners and listeners fitted to existing seats. Six Portal rooms share a posed lookbook library for their nine participants and facilitator. EMDR retains its ten detailed characters and fitted headsets. Audience movement, runway walking and workshop gestures follow the scene clock and respect reduced motion.
 
-The runway proposal is First Nations-led with AIME. Billie-Jean Hamlet and Cindy Rostron are casting references. Both shows use fictional models and original concept garments. Design references are [Iris van Herpen’s Seijaku](https://www.irisvanherpen.com/collections/seijaku/the-inspiration-8) and [Nagnata’s Movement 13 Core](https://nagnata.com/pages/movement-013-core). Each show carries eight looks. The second wardrobe loads when selected.
+The runway proposal is First Nations-led with AIME. Billie-Jean Hamlet and Cindy Rostron are casting references. Both shows use fictional models and original concept garments. The November reference edit uses three sculptural silhouettes for Iris van Herpen and four knitted movement looks for Nagnata. The ribbed double-lantern, filament fan and pleated wings are fitted to the animated rigs. The second wardrobe loads when selected.
 
 To regenerate the workshop and runway packs, copy the two festival TypeScript files, `festival-distance.mjs` and the runtime `lab/character-motion.mjs` into the pinned generator’s `scripts` directory. Supply an existing festival asset directory as the second baker argument. The walk and runway source GLBs are intermediate files.
 

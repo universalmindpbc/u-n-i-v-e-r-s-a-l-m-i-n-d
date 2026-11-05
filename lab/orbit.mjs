@@ -30,6 +30,11 @@ function circuit(seconds){
  const f=(d-arc[lo])/(arc[hi]-arc[lo]);return spline((lo+f)/samples);
 }
 export function overviewPose(){return {position:[78.2,73.2,98.4],target:[-1,12,0]};}
+// The final shot is composed around the tower, the main dome and the river.
+export function closingPose(portrait=false){
+ const target=[17.75,17.16,23.12],eye=[92.60,37.07,117.38];
+ return {target,position:portrait?eye.map((v,i)=>target[i]+1.46*(v-target[i])):eye};
+}
 export function mobileOverviewPose(portrait=false,height=647){
  if(!portrait)return {position:[102,130,134],target:[-1,40,0]};
  const lift=Math.max(20,28+(647-height)*.16)+35;
@@ -53,7 +58,7 @@ export function orbitPose(seconds,mobile=false,portrait=false,height=647,entryPo
   const from=entryPose||{position:[16,9,46],target:[0,1.5,23]};if(mobile&&!entryPose)from.position=from.position.map((v,i)=>from.target[i]+(v-from.target[i])*1.5);
   for(const key of ['position','target'])pose[key]=join(from[key],start[key],zero,entryVelocity[key],time/ORBIT_ENTRY,ORBIT_ENTRY);
  }else{
-  const end=mobile?mobileOverviewPose(portrait,height):overviewPose(),u=(time-ORBIT_ENTRY-ORBIT_CIRCUIT)/ORBIT_EXIT;
+  const end=closingPose(mobile&&portrait),u=(time-ORBIT_ENTRY-ORBIT_CIRCUIT)/ORBIT_EXIT;
   for(const key of ['position','target'])pose[key]=join(start[key],end[key],exitVelocity[key],zero,u,ORBIT_EXIT);
  }
  return pose;

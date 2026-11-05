@@ -214,3 +214,42 @@ register('technical-leg','bottom',(g,s)=>{
     offset:cm(.85),relax:1},mat('Swept leg panels',null,{color:'#892138',roughness:.36}),false));
   return parts;
 });
+
+// Ribbed movement wear. The colour-block shorts split on the centre seam,
+// while the panels on the crop sweep in below each armhole.
+for(const cut of ['scoop','panel','bicycle','panel-short','ankle','maillot'] as const){
+  const top=['scoop','panel','maillot'].includes(cut);
+  register('runway-knit-'+cut,top?'top':'bottom',(g,s)=>{
+    const shoulder=g.body.L.shoulderX;
+    const covered=(v:any)=>{
+      if(top){
+        const neckline=.71+.10*Math.min(1,v.ax/shoulder)**2;
+        const strap=Math.abs(v.ax/shoulder-.70)<.19;
+        return isUpper(v)&&(cut==='maillot'||v.tt>.46)&&(v.tt<neckline||strap);
+      }
+      return (isTrunk(v)&&v.tt<.32)||(v.region===REGION.upperleg&&v.t<(cut==='ankle'?1:cut==='bicycle'?.56:.34))||
+        (cut==='ankle'&&v.region===REGION.lowerleg&&v.t<.95);
+    };
+    const surface=(v:any)=>covered(v);
+    const rib=(name:string,color:string)=>cloth(g,name,{...s,pattern:'rib',color,color2:color});
+    const parts=shellPart(g,{covers:surface,offset:cm(.57),relax:2,tile:.34},rib(cut+' rib knit',s.color));
+    if(cut==='panel'||cut==='panel-short'){
+      const panel=(v:any)=>cut==='panel'?v.ax/shoulder>.54+1.35*(v.tt-.46):v.side===1;
+      parts.push(...shellPart(g,{covers:v=>covered(v)&&panel(v),offset:cm(.85),relax:1,tile:.34},
+        rib('Contrast knit panel',cut==='panel'?'#211e27':'#35a46f'),false));
+    }
+    if(cut!=='maillot'){
+      const y=top?.46:.225;
+      const band=cut==='panel'?'#9b71bb':cut==='panel-short'?'#211e27':s.color2;
+      parts.push(...shellPart(g,{covers:v=>isTrunk(v)&&v.tt>y&&v.tt<y+(top?.065:.095),offset:cm(.94),relax:1},
+        mat('Knitted binding',null,{color:band}),false));
+      if(!top&&cut!=='panel-short'){
+        const front=new Caster(parts[0].mesh,null,()=>true,'front');
+        parts.push(transfer(front,torsoY(g.body,.27),cm(14),cm(2.8),'runway-wordmark.png',
+          cut==='ankle'?'#bbdffc':'#141e38','Knitted waistband lettering'));
+        const print=parts.at(-1)!.mesh.positions;for(let i=2;i<print.length;i+=3)print[i]+=cm(.55);
+      }
+    }
+    return parts;
+  });
+}

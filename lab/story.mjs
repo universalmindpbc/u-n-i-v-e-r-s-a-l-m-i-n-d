@@ -1,4 +1,4 @@
-import {ORBIT_DURATION} from './orbit.mjs?v=20261104portal1';
+import {ORBIT_DURATION} from './orbit.mjs?v=20261105closing1';
 export const ORBIT_START=83, STORY_END=ORBIT_START+ORBIT_DURATION;
 const clamp=x=>Math.max(0,Math.min(1,x));
 const progress=(t,start,end)=>clamp((t-start)/(end-start));

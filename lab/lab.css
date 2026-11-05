@@ -521,3 +521,7 @@ body[data-camera-view="fashion"] .intro{visibility:hidden}
 #spectra-link{color:inherit;font-size:.875rem;text-underline-offset:3px}
 #spectra-link svg{width:1em;height:1em;vertical-align:middle}
 @media(min-width:760px){#elevation-menu .drinks-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+/* Hold the closing title while the finished film rests on the landscape. */
+body[data-closing-view="true"] #headline .headline-description{animation:none;opacity:0}
+body[data-closing-view="true"] #headline .headline-unity{animation:none;opacity:1}

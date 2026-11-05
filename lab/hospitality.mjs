@@ -1,4 +1,5 @@
-import {buildVipBar} from './vip-bar.mjs?v=20261105wordmark1';
+import {createTowerVisitors} from './tower-visitors.mjs';
+import {buildVipBar} from './vip-bar.mjs?v=20261105fit2';
 import {mergeGeometries} from './vendor/BufferGeometryUtils.js';
 import {loadCastMember} from './festival-cast.mjs?v=20261105activity3';
 
@@ -97,6 +98,7 @@ export function createHospitality(THREE,requestFrame){
   const vip=buildVipBar(THREE,venue('vip','James Bondage VIP'),make,requestFrame);
   const {testing,aid}=createHealthVenues(THREE,venue,make);
   const elevation=createElevation(THREE,venue,make);
+  const updateTower=createTowerVisitors(THREE,elevation.node,requestFrame);
   const top=.19+4*levelHeight;
   const teams=[
     {place:testing,people:[['D3',-.4,.07,1.18,.3],['clinician-1',-.6,.07,-.72,2.93],['B',1.48,.07,-.40,.8]]},
@@ -156,7 +158,8 @@ export function createHospitality(THREE,requestFrame){
   return {group,setNight:vip.setNight,stats:{teaCushions:33,teaStones:31,barShelves:2,vipCapacity:22},update(camera,time,moving){
     if(!group.visible)return false;
     const vipMoving=vip.update(camera,time,moving);
-    const teamMoving=updateTeams(camera,time,moving);
+    const towerMoving=updateTower(camera,time,moving);
+    const teamMoving=updateTeams(camera,time,moving)||towerMoving;
     const nearBar=Math.hypot(camera.position.x-bar.node.position.x,camera.position.z-bar.node.position.z)<36;
     if(nearBar&&!serviceStarted)loadServer();
     if(nearBar&&barMixer&&moving)barMixer.setTime(time*.75);

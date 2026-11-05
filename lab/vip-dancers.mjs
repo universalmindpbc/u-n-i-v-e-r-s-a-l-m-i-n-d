@@ -23,6 +23,10 @@ export function createVipDancers(THREE,room,requestFrame){
       for(const mesh of [...scene.children]){
         const i=Number(mesh.userData.look.slice(6))-1;
         const [x,z]=spots[i];
+        if(i>=12){
+          const rest=new THREE.Box3().setFromBufferAttribute(mesh.geometry.attributes.position);
+          mesh.scale.setScalar([1.68,1.71,1.73][i-12]/(rest.max.y-rest.min.y));
+        }
         mesh.material=i>=12?satin:jersey;
         mesh.geometry.computeVertexNormals();
         mesh.name='VIP dancer '+(i+1);

@@ -112,6 +112,23 @@ for (const [i,[hair,red]] of [['box_braids','#de183b'],['buzz','#bb1237'],['pony
     {height:.84+i*.025,proportions:.70+i*.035,weight:.46+i*.034,african:.91,asian:.03,caucasian:.06,
      hairColor:'#19151a',earrings:i===1?'small_hoops':'studs',shoes:'heels'}));
 }
+const runwayEdit=[
+  ['pearl-lantern','asian','braid01','sculpted-bodice','briefs','#f2eee1','#ebe6d6','walk'],
+  ['filament-fan','african','short03','sculpted-bodice','briefs','#29232c','#201d26','walk'],
+  ['pleated-wings','caucasian','ponytail01','sculpted-bodice','briefs','#acac78','#373b39','wing-walk'],
+  ['black-maillot','african','bob02','runway-knit-maillot','briefs','#171a1e','#171a1e','walk'],
+  ['indigo-bike','asian','ponytail01','runway-knit-scoop','runway-knit-bicycle','#4d6396','#394f80','walk'],
+  ['panelled-set','caucasian','short02','runway-knit-panel','runway-knit-panel-short','#9163a9','#a266b8','walk'],
+  ['azure-legging','african','long01','runway-knit-scoop','runway-knit-ankle','#238ede','#2085d4','walk']
+];
+for(const [i,[id,skin,hair,top,bottom,tone,base,pose]] of runwayEdit.entries()){
+  const trim=i===4?'#243453':'#126fb4';
+  looks.push(look(id,20+i%4,0,skin,hair,top,bottom,tone,base,pose,{
+    shoes:i<3?'heels':'sneakers',underwear:false,
+    garmentStyles:{[top]:{color:tone,color2:trim,pattern:'rib'},[bottom]:{color:base,color2:trim,pattern:'rib'},
+      heels:{color:'#938f84'},sneakers:{color:'#e5e2da'}}
+  }));
+}
 const section = (s:string)=>s==='chair'||s==='floor'||s==='daybed';
 function seated(pose:string):Clip {
   const crossed=pose!=='chair';
@@ -160,6 +177,9 @@ function movement(pose:string):Clip {
     const p=gait(WALK,t/1.35);
     p.ik={...p.ik,Left:{pos:[.26,-.33,.24],pole:[.7,-.6,-.12],dir:[.05,.05,1],palm:[0,1,0]}};
     return p;
+  }};
+  if(pose==='wing-walk')return {id:pose,name:'Raised pleated wings',duration:1.2,loop:true,category:'Locomotion',sample:t=>{
+    const p=gait(WALK,t/1.2);side(p.bones!,'Arm',[5,0,132],[5,0,132]);side(p.bones!,'ForeArm',[7,0,0],[7,0,0]);return p;
   }};
   if(pose==='walk')return {id:'runway',name:'Runway walk',duration:1.2,loop:true,category:'Locomotion',sample:t=>gait(WALK,t/1.2)};
   if(pose==='dance')return {...cheer,name:'Hands overhead',sample(t){const p=cheer.sample(t);fingers(p.bones!,7);return {...p,thumbs:undefined};}};
@@ -222,6 +242,7 @@ for(const bodice of [true,false]){
   const zip='<g stroke="#8f8f8f" stroke-width="1.5" stroke-dasharray="1 1"><path d="M1 0v100 M199 0v100"/></g>';
   ink.set(bodice?'waspie-bodice.png':'waspie-skirt.png',await detail('<rect width="200" height="100" fill="#f8f8f8"/>'+bands+seams+cups+zip));
 }
+ink.set('runway-wordmark.png',await detail('<text x="100" y="68" font-size="40" font-family="Arial" font-weight="bold" letter-spacing="2" fill="white" text-anchor="middle">NAGNATA</text>'));
 ink.set('tea-embroidery.png',await detail('<g fill="#ffffff"><path id="s" d="m0-4 1 2.7 3 .2-2.3 1.9.7 3-2.4-1.7-2.5 1.7.8-3L-4-.9l3-.4z"/><use href="#s" x="125" y="20"/><use href="#s" x="104" y="39"/><use href="#s" x="142" y="46"/><use href="#s" x="118" y="62"/><use href="#s" x="93" y="77"/></g>'));
 for(const [index,spec] of looks.entries()){
   if(process.argv.length>3&&!process.argv.slice(3).includes(spec.id))continue;

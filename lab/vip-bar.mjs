@@ -1,7 +1,7 @@
 import {loadCastMember} from './festival-cast.mjs?v=20261105activity3';
 
-import {createVipDancers} from './vip-dancers.mjs?v=20261105floor1';
-import {createVipEffects} from './vip-effects.mjs?v=20261105floor1';
+import {createVipDancers} from './vip-dancers.mjs?v=20261105fit2';
+import {createVipEffects} from './vip-effects.mjs?v=20261105fit2';
 
 export function buildVipBar(THREE, venue, make, requestFrame) {
   const {node,box,cylinder,add,sign} = venue;
@@ -134,7 +134,7 @@ export function buildVipBar(THREE, venue, make, requestFrame) {
     cylinder(chrome,x,.24,1.94,.15,.19,.08);cylinder(chrome,x,.59,1.94,.037,.05,.65);
     cylinder(velvet,x,.95,1.94,.22,.23,.13);
   }
-  const effects=createVipEffects(THREE,venue,{ink,chrome,carpet:carpetSurface},djX,djZ);
+  const effects=createVipEffects(THREE,venue,{ink,chrome,carpet:carpetSurface},djX,djZ,left,radius);
   venue.finish();
   const updateDancers=createVipDancers(THREE,node,requestFrame);
 

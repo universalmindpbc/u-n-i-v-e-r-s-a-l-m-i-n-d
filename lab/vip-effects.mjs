@@ -1,5 +1,5 @@
 import {geodesicFrame} from './geodesic-frame.mjs';
-export function createVipEffects(THREE,venue,materials,djX,djZ){
+export function createVipEffects(THREE,venue,materials,djX,djZ,centre,radius){
   const {node,box,cylinder}=venue;
   const {ink,chrome,carpet}=materials;
   const uv=new THREE.MeshStandardMaterial({color:'#393155',emissive:'#a071ff',emissiveIntensity:0});
@@ -27,11 +27,15 @@ export function createVipEffects(THREE,venue,materials,djX,djZ){
     const sprite=new THREE.Sprite(new THREE.SpriteMaterial({map,color:'#e6ddf3',transparent:true,depthWrite:false}));
     sprite.name='VIP haze';sprite.material.rotation=i*.86;node.add(sprite);return sprite;
   });
-  const dome=new THREE.LineSegments(geodesicFrame(THREE,3.72,1),new THREE.LineBasicMaterial({
+  const dome=new THREE.LineSegments(geodesicFrame(THREE,radius,2),new THREE.LineBasicMaterial({
     color:'#d2c2ff',transparent:true,depthWrite:false,blending:THREE.AdditiveBlending
   }));
   dome.name='VIP geodome hologram';
-  dome.position.set(-.94,2.85,0);dome.scale.y=.72;node.add(dome);
+  dome.position.set(centre,2.62,0);dome.scale.y=.65;
+  const rim=Array.from({length:96},(_,i)=>{
+    const a=2*Math.PI*i/96;return new THREE.Vector3(radius*Math.cos(a),0,radius*Math.sin(a));
+  });
+  dome.add(new THREE.LineLoop(new THREE.BufferGeometry().setFromPoints(rim),dome.material));node.add(dome);
   // The smoke rises into the projection above head height, leaving the guest silhouettes clear.
   const mist=Array.from({length:6},(_,i)=>{
     const sprite=new THREE.Sprite(new THREE.SpriteMaterial({map,color:'#cfc0f7',transparent:true,depthWrite:false}));

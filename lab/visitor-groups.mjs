@@ -131,33 +131,4 @@ export function createSeatedVisitors(THREE,requestFrame){
   return cast;
 }
 
-export function createShowRunway(THREE,requestFrame){
-  const group=new THREE.Group(),route=walkingRoute(0,8.75,0,37.25,.75);
-  group.visible=false;
-  let selected='iris',lastTime=0;
-  function sync(){
-    const ready=shows[selected].group.userData.status==='ready';
-    for(const [name,cast] of Object.entries(shows))cast.group.visible=ready?name===selected:name!==selected&&cast.group.userData.status==='ready';
-    requestFrame();
-  }
-  const shows=Object.fromEntries(['iris','nagnata'].map(name=>{
-    const people=Array.from({length:8},(_,i)=>({
-      look:name+'-'+i,route,offset:i*route.length/8,scale:.976+.011*(i%5),
-      speed:1,period:1.20,phase:(i*.29)%1
-    }));
-    const cast=createVisitorGroup(THREE,name,people,requestFrame,sync);
-    group.add(cast.group);return [name,cast];
-  }));
-  group.name='First Nations-led runway proposal';
-  return {group,select(name){
-    if(!Object.hasOwn(shows,name))return;
-    selected=name;if(group.visible)shows[name].start();sync();
-    shows[name].update(lastTime,true);
-  },update(time,moving){
-    if(!group.visible)return false;
-    lastTime=time;shows[selected].start();
-    let changed=false;
-    for(const cast of Object.values(shows))if(cast.group.visible&&cast.update(time,moving))changed=true;
-    return changed;
-  }};
-}
+export {createShowRunway} from "./runway-show.mjs";

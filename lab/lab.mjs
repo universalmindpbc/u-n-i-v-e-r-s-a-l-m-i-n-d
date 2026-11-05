@@ -1,14 +1,15 @@
-import {createHospitality,venueLocations} from './hospitality.mjs?v=20261105wordmark1';
+import {createHospitality,venueLocations} from './hospitality.mjs?v=20261105fit2';
 import {sunsetLevels,levelHeight,createSunsetSky} from './elevation.mjs?v=20261105grounds1';
-import {createGroundWalkers,createSeatedVisitors,createShowRunway} from './visitor-groups.mjs?v=20261105activity3';
+import {createGroundWalkers,createSeatedVisitors} from './visitor-groups.mjs?v=20261105activity3';
+import {createShowRunway} from './runway-show.mjs';
 import { createPortal } from './portal.mjs?v=20261105activity3';
 import { createFestivalCast } from './festival-cast.mjs?v=20261105activity3';
 import { portalZones } from './portal-geometry.mjs?v=20261104emdr1';
-import { orbitPose, mobileOverviewPose, overviewPose } from './orbit.mjs?v=20261104portal1';
+import { orbitPose, closingPose, mobileOverviewPose, overviewPose } from './orbit.mjs?v=20261105closing1';
 import { createActivities } from './activities.mjs?v=20261105activity3';
 import { createPerformance } from './performance.mjs?v=20261103orbit1';
 import { initMedia } from './media.mjs?v=20261105venues1';
-import { createStory, ORBIT_START, STORY_END } from './story.mjs?v=20261105movement1';
+import { createStory, ORBIT_START, STORY_END } from './story.mjs?v=20261105closing1';
 const $ = (id) => document.getElementById(id);
 const reduced = matchMedia('(prefers-reduced-motion: reduce)');
 const compactLayout = matchMedia('(max-width: 800px), (max-width: 1000px) and (pointer: coarse)');
@@ -67,7 +68,7 @@ function previewSceneLabels(){
 }
 function selectPlace(key, show = true, automated = false) {
   if(!automated)stopTour();
-  selected = key;media.setQuiet(['tea','checking','first-aid'].includes(key));syncLineup();
+  selected = key;media.setQuiet(key==='tea');syncLineup();
   if(key==='overview'&&!automated)previewSceneLabels();else{labelPreviewUntil=0;clearTimeout(labelPreviewTimer);}syncSceneLabels();
   document.body.dataset.cameraView = key;
   const info = places[key];
@@ -252,6 +253,7 @@ $('lineup-toggle').addEventListener('click',openLineup);
 $('lineup-more-open').addEventListener('click',openLineup);
 function applyStory(state){
   storyState=state;buildStage=state.phase;
+  document.body.dataset.closingView=String(state.seconds>=STORY_END&&!autoTourCancelled);
   document.body.dataset.buildStage=state.phase==='night'||state.phase==='dusk'||state.phase==='tour'||state.phase==='orbit'?'open':state.phase;
   document.body.dataset.story=state.seconds>=STORY_END?'complete':state.phase;
   document.body.dataset.storyTime=state.seconds.toFixed(1);
@@ -263,13 +265,13 @@ function applyStory(state){
   const orbitActive=state.phase==='orbit'&&!autoTourCancelled&&!reduced.matches&&mode==='3d';
   document.body.dataset.cinematic=String(orbitActive);
   if(orbitActive){if(!lastAutoView?.startsWith('orbit')){emotionPanel(false);$('place-card').hidden=true;lastAutoView='orbit';}sceneAPI?.orbit(state.seconds-ORBIT_START);}
-  if(state.tourView&&!autoTourCancelled&&state.tourView!==lastAutoView){lastAutoView=state.tourView;selectPlace(state.tourView,true,true);if(state.tourView==='overview'&&innerWidth>=1100)emotionPanel(true);}
+  if(state.tourView&&!autoTourCancelled&&state.tourView!==lastAutoView){lastAutoView=state.tourView;selectPlace(state.tourView,true,true);if(state.tourView==='overview'){dismissSceneLabels();if(innerWidth>=1100)emotionPanel(true);}}
   const autoActive=!autoTourCancelled&&(state.phase==='tour'||orbitActive);document.body.dataset.tourActive=String(autoActive);if(!tourTimer){$('tour-toggle').textContent=autoActive?'Stop tour':'Tour';$('tour-toggle').setAttribute('aria-pressed',String(autoActive));}
   document.body.dataset.tourStep=state.tourView||'';syncLineup();syncSceneLabels();
 }
-function startStory(){stopTour();labelsDismissed=false;labelPreviewUntil=0;clearTimeout(labelPreviewTimer);autoTourCancelled=false;lastAutoView=null;emotionPanel(false);$('place-card').hidden=true;selectPlace('overview',false,true);story.start();}
+function startStory(){stopTour();labelsDismissed=false;labelPreviewUntil=0;clearTimeout(labelPreviewTimer);autoTourCancelled=false;lastAutoView=null;emotionPanel(false);$('place-card').hidden=true;story.start();selectPlace('overview',false,true);}
 $('replay-story').addEventListener('click',()=>{media.start();startStory();});
-function stopTour(){autoTourCancelled=true;document.body.dataset.cinematic='false';document.body.dataset.tourActive='false';clearTimeout(tourTimer);tourTimer=0;$('tour-toggle').setAttribute('aria-pressed','false');$('tour-toggle').textContent='Tour';syncSceneLabels();}
+function stopTour(){autoTourCancelled=true;document.body.dataset.closingView='false';document.body.dataset.cinematic='false';document.body.dataset.tourActive='false';clearTimeout(tourTimer);tourTimer=0;$('tour-toggle').setAttribute('aria-pressed','false');$('tour-toggle').textContent='Tour';syncSceneLabels();}
 $('tour-toggle').addEventListener('click',()=>{
   if(tourTimer||(!autoTourCancelled&&['tour','orbit'].includes(storyState?.phase))){stopTour();return;}
   stopTour();let n=0;const route=['truck','main','bar','vip','food','play','river','support','checking','first-aid','fashion','elevation','portal','tea'];
@@ -684,7 +686,7 @@ async function buildWorld() {
     cinematicCamera=false;
     controls.minDistance=key==='fashion'?3:key.startsWith('portal')?4:12;
     const p=presets[key];const end=new THREE.Vector3(...p.pos),target=new THREE.Vector3(...p.target);
-    if(key==='overview'){const pose=mobile()?mobileOverviewPose(portraitMobile(),$('world').clientHeight):overviewPose();end.fromArray(pose.position);target.fromArray(pose.target);}else if(mobile()){end.sub(target).multiplyScalar(key==='fashion'?1.08:1.5).add(target);if(key.startsWith('portal-'))target.y-=1.7;}
+    if(key==='overview'){const pose=storyState?.seconds>=STORY_END?closingPose(portraitMobile()):mobile()?mobileOverviewPose(portraitMobile(),$('world').clientHeight):overviewPose();end.fromArray(pose.position);target.fromArray(pose.target);}else if(mobile()){end.sub(target).multiplyScalar(key==='fashion'?1.08:1.5).add(target);if(key.startsWith('portal-'))target.y-=1.7;}
     if(instant||reduced.matches){camera.position.copy(end);controls.target.copy(target);controls.update();tween=null;}else{tween={start:performance.now(),from:camera.position.clone(),fromTarget:controls.target.clone(),to:end,target};}
     needsFrame=true;requestFrame();
   }
