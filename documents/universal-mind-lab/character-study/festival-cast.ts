@@ -85,6 +85,9 @@ for(const [id,skin,hair,colour] of [['clinician-1','asian','long01','#547d81'],[
     }
   }));
 }
+for(const [id,hair,tone] of [['tea-host-1','bob02','#a42132'],['tea-host-2','long01','#81253a']]){
+  looks.push(look(id,27,0,'asian',hair,'ceremony-silk','ceremony-skirt',tone,tone,'idle',{shoes:'flats',eyes:'brown'}));
+}
 const section = (s:string)=>s==='chair'||s==='floor'||s==='daybed';
 function seated(pose:string):Clip {
   const crossed=pose!=='chair';
@@ -153,6 +156,7 @@ ink.set('rash-zip.png',await detail('<rect x="65" width="70" height="100" fill="
 for(const [file,mark] of [['flower-ink.png','<g fill="none" stroke="#302c2e" stroke-width="2.2">'+flower+'<circle cx="50" cy="50" r="39"/></g>'],['affirmation-ink.png','<g transform="rotate(-90 50 50)"><text x="50" y="54" text-anchor="middle" fill="#302c2e" font-family="serif" font-style="italic" font-size="16">I am enough</text></g>']]){
   ink.set(file,await sharp(Buffer.from('<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 100 100">'+mark+'</svg>')).png().toBuffer());
 }
+ink.set('tea-embroidery.png',await detail('<g fill="#ffffff"><path id="s" d="m0-4 1 2.7 3 .2-2.3 1.9.7 3-2.4-1.7-2.5 1.7.8-3L-4-.9l3-.4z"/><use href="#s" x="125" y="20"/><use href="#s" x="104" y="39"/><use href="#s" x="142" y="46"/><use href="#s" x="118" y="62"/><use href="#s" x="93" y="77"/></g>'));
 for(const [index,spec] of looks.entries()){
   if(process.argv.length>3&&!process.argv.slice(3).includes(spec.id))continue;
   const field=['army-field','navy-working'].includes(spec.id);

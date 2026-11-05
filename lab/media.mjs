@@ -41,5 +41,11 @@ export function initMedia(onMotion) {
   geometryVideo.addEventListener('loadeddata',motion);truckVideos.forEach(v=>v.addEventListener('loadeddata',motion));
   document.addEventListener('visibilitychange',motion);
   addEventListener('pagehide',()=>{video.pause();geometryVideo.pause();truckVideos.forEach(v=>v.pause());hls?.destroy();});
-  sync();return {isAnimating,motionEnabled:()=>motionOn,setResponse(value){video.volume=.25+.4*value;document.body.dataset.soundResponse=video.volume.toFixed(2);},start(){videoOn=true;sync();play();}};
+  let quiet=false,previousMute=false;
+  function setQuiet(value){
+    if(quiet===value)return;
+    if(value){previousMute=video.muted;video.muted=true;}else video.muted=previousMute;
+    quiet=value;
+  }
+  sync();return {setQuiet,isAnimating,motionEnabled:()=>motionOn,setResponse(value){video.volume=.25+.4*value;document.body.dataset.soundResponse=video.volume.toFixed(2);},start(){videoOn=true;sync();play();}};
 }

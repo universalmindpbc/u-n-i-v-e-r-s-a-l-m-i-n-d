@@ -1,3 +1,4 @@
+import {createHospitality,venueLocations} from './hospitality.mjs?v=20261105venues1';
 import {createGroundWalkers,createSeatedVisitors,createShowRunway} from './visitor-groups.mjs?v=20261105activity3';
 import { createPortal } from './portal.mjs?v=20261105activity3';
 import { createFestivalCast } from './festival-cast.mjs?v=20261105activity3';
@@ -5,7 +6,7 @@ import { portalZones } from './portal-geometry.mjs?v=20261104emdr1';
 import { orbitPose, mobileOverviewPose, overviewPose } from './orbit.mjs?v=20261104portal1';
 import { createActivities } from './activities.mjs?v=20261105activity3';
 import { createPerformance } from './performance.mjs?v=20261103orbit1';
-import { initMedia } from './media.mjs?v=20261103continuous1';
+import { initMedia } from './media.mjs?v=20261105venues1';
 import { createStory, ORBIT_START, STORY_END } from './story.mjs?v=20261105movement1';
 const $ = (id) => document.getElementById(id);
 const reduced = matchMedia('(prefers-reduced-motion: reduce)');
@@ -14,6 +15,8 @@ const mobile = () => compactLayout.matches;
 const portraitMobile = () => mobile() && $('world').clientHeight > $('world').clientWidth;
 const status = (message) => { $('scene-status').textContent = message; };
 const places = {
+  bar: {number:'09 · NON-ALCOHOLIC BAR',title:'Non-alcoholic bar',copy:'Follow the short path from the main pavilion for the full Heaps Normal beer range, sparkling wines, L-theanine drinks, kombucha and spring water.'},
+  tea: {number:'10 · TEA HOUSE',title:'Tea house',copy:'Follow the path downstream to a stone circle with cushions for 33 guests. Asian tea ceremony hosts gather around a low tea table, away from the sound of the main arena.'},
   portal: { number: '08 · I AM PORTAL', title: 'I Am Portal', copy: 'Seven small workshop spaces for education, intervention and interactivity. Explore electronic music, fashion, communication and creative technology in groups of ten.' },
   overview: { number: '', title: 'Overview', copy: 'An open green space for creative learning, emotional awareness and connection. Music, fashion and mindfulness bring people together, with support close at hand.' },
   truck: { number: '01 · LINFOX TRUCK', title: 'Linfox truck', copy: 'The road train carries the Lab from community to community. Two video-wrapped trailers bring fashion and moving artwork into the site.' },
@@ -59,7 +62,7 @@ function previewSceneLabels(){
 }
 function selectPlace(key, show = true, automated = false) {
   if(!automated)stopTour();
-  selected = key;syncLineup();
+  selected = key;media.setQuiet(key==='tea');syncLineup();
   if(key==='overview'&&!automated)previewSceneLabels();else{labelPreviewUntil=0;clearTimeout(labelPreviewTimer);}syncSceneLabels();
   document.body.dataset.cameraView = key;
   const info = places[key];
@@ -68,6 +71,10 @@ function selectPlace(key, show = true, automated = false) {
   $('place-title').textContent = info.title;
   $('place-copy').textContent = info.copy;
   if(key!=='overview')emotionPanel(false);
+  const isVenue=key==='bar'||key==='tea';
+  $('venue-menu-open').hidden=!isVenue;
+  if(isVenue)$('venue-menu-open').setAttribute('aria-controls',key+'-menu');
+  $('arena-bar').hidden=key!=='main';
   $('interior-view').hidden=key!=='main';$('learn-main').hidden=key!=='main';
   $('portal-rooms').hidden=!key.startsWith('portal');
   document.querySelectorAll('[data-portal-room]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.portalRoom===key)));
@@ -86,6 +93,19 @@ function setMode(next) {
   if (mode === '3d') sceneAPI?.go(selected, true);
 }
 document.querySelectorAll('[data-view]').forEach(b => b.addEventListener('click', () => selectPlace(b.dataset.view)));
+function visitVenue(key){
+  if(!storyState?.navigation)story.start(31);
+  selectPlace(key);$('venue-menu-open').focus({preventScroll:true});
+}
+const mobilePlaces=document.querySelector('.mobile-places');
+document.querySelectorAll('[data-go-venue]').forEach(button=>button.addEventListener('click',()=>{mobilePlaces.open=false;visitVenue(button.dataset.goVenue);}));
+mobilePlaces.addEventListener('keydown',event=>{if(event.key==='Escape'){mobilePlaces.open=false;mobilePlaces.querySelector('summary').focus();}});
+$('arena-bar').addEventListener('click',()=>visitVenue('bar'));
+$('venue-menu-open').addEventListener('click',()=>{stopTour();$(selected+'-menu').showModal();});
+for(const menu of document.querySelectorAll('.venue-menu')){
+  menu.querySelector('[data-menu-close]').addEventListener('click',()=>menu.close());
+  menu.addEventListener('click',event=>{if(event.target!==menu)return;const r=menu.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)menu.close();});
+}
 $('interior-view').addEventListener('click',()=>{stopTour();sceneAPI?.go('interior');$('place-card').hidden=true;});
 document.querySelectorAll('[data-portal-room]').forEach(b=>b.addEventListener('click',()=>selectPlace(b.dataset.portalRoom)));
 $('watch-runway').addEventListener('click',()=>{
@@ -202,7 +222,7 @@ $('replay-story').addEventListener('click',()=>{media.start();startStory();});
 function stopTour(){autoTourCancelled=true;document.body.dataset.cinematic='false';document.body.dataset.tourActive='false';clearTimeout(tourTimer);tourTimer=0;$('tour-toggle').setAttribute('aria-pressed','false');$('tour-toggle').textContent='Tour';syncSceneLabels();}
 $('tour-toggle').addEventListener('click',()=>{
   if(tourTimer||(!autoTourCancelled&&['tour','orbit'].includes(storyState?.phase))){stopTour();return;}
-  stopTour();let n=0;const route=['truck','main','food','play','river','support','fashion','portal'];
+  stopTour();let n=0;const route=['truck','main','bar','food','play','river','support','fashion','portal','tea'];
   $('tour-toggle').setAttribute('aria-pressed','true');$('tour-toggle').textContent='Stop tour';
   const next=()=>{if(n>=route.length){stopTour();selectPlace('overview',false,true);return;}tourTimer=setTimeout(next,n+1===route.length?10000:5000);selectPlace(route[n++],true,true);};next();
 });
@@ -387,6 +407,8 @@ async function buildWorld() {
   path([[0,21],[-10,23],[-24,19]]);
   path([[0,14],[10,15],[20,10],[25,0]],1.8);
   path([[-25,-8],[-31,-14],[-35,-24]],1.8);
+  path([[-4,4],[-5.8,6],[-8.1,7.25],[-10,6.84]],1.75);
+  path([[1,48],[7,54],[11,62],[15,66.9],[18.5,66],[19,64.9]],1.8);
   path([[1,48],[-9,53],[-20,54],[-29,52],[-34,56]],2.4);
 
   const architectureGroup=new THREE.Group();scene.add(architectureGroup);
@@ -422,6 +444,18 @@ async function buildWorld() {
   const seatedVisitors=createSeatedVisitors(THREE,()=>{needsFrame=true;requestFrame();});
   const walkers=createGroundWalkers(THREE,()=>{needsFrame=true;requestFrame();});
   scene.add(festivalCast.group,walkers.group,seatedVisitors.group);
+  const hospitality=createHospitality(THREE,()=>{needsFrame=true;requestFrame();});scene.add(hospitality.group);
+  const venueRay=new THREE.Raycaster(),pointerStart=new THREE.Vector2();
+  canvas.addEventListener('pointerdown',e=>pointerStart.set(e.clientX,e.clientY));
+  canvas.addEventListener('pointerup',e=>{
+    if(!storyState?.navigation||!hospitality.group.visible||Math.hypot(e.clientX-pointerStart.x,e.clientY-pointerStart.y)>5)return;
+    const rect=canvas.getBoundingClientRect();
+    venueRay.setFromCamera(new THREE.Vector2((e.clientX-rect.left)/rect.width*2-1,1-(e.clientY-rect.top)/rect.height*2),camera);
+    const hit=venueRay.intersectObjects([hospitality.group,architectureGroup],true)[0];
+    let part=hit?.object;
+    while(part&&!part.userData.venue)part=part.parent;
+    if(part)visitVenue(part.userData.venue);
+  });
   const contextStart=scene.children.length;
   // Contextual proposal identities: physical flags and a support vehicle.
   const images = Object.fromEntries(await Promise.all([
@@ -511,10 +545,13 @@ async function buildWorld() {
   const contextDecor=new THREE.Group();const contextObjects=scene.children.slice(contextStart);contextObjects.forEach(o=>contextDecor.add(o));scene.add(contextDecor);
   const portal=createPortal(THREE,()=>{needsFrame=true;requestFrame();});scene.add(portal.group);
   const anchorData=[['main','Main pavilion',[0,8.4,-12]],['food','International Food Fair',[-24,6.5,-9]],['play','Mobile music making',[-26,2.9,18]],['river','Apple listening pods',[22,1.3,8]],['support','Support',[-32,3,-20]],['fashion','Fashion runway',[0,2.2,24]],['portal','I Am Portal',[-34,6,66]]];
+  for(const [key,[x,z]] of Object.entries(venueLocations))anchorData.push([key,places[key].title,[x,3.45,z]]);
   const anchors=anchorData.map(([key,label,p])=>{
     const el=document.createElement('button');el.className='scene-label';el.dataset.key=key;el.tabIndex=-1;el.innerHTML='<i></i>'+label;el.addEventListener('click',()=>selectPlace(key));$('labels').append(el);return {el,p:new THREE.Vector3(...p)};
   });
   const presets={
+    bar:{pos:[-6,3.15,15.8],target:[-10,1.5,5]},
+    tea:{pos:[23,4.9,71.8],target:[19,1,59]},
     overview:{pos:[65,51,82],target:[-1,0,0]},
     truck:{pos:[-62,4.8,28],target:[-40,2.5,27]},
     main:{pos:[0,3.2,12],target:[2.5,2,-12]},
@@ -549,7 +586,7 @@ async function buildWorld() {
   function setStory(value){
     currentStory={...value};
     for(const [key,g] of Object.entries(buildings)){const p=value[key]||0;g.visible=p>0;buildPlanes[key].constant=p>=1?100:Math.max(.1,p*8.7);}
-    contextDecor.visible=value.programme>0;paths.visible=value.seconds>=16;runway.setVisible(value.furniture>0);runwayCrowd.group.visible=value.programme>0;
+    hospitality.group.visible=value.furniture>0;contextDecor.visible=value.programme>0;paths.visible=value.seconds>=16;runway.setVisible(value.furniture>0);runwayCrowd.group.visible=value.programme>0;
     walkers.group.visible=seatedVisitors.group.visible=value.programme>0;festivalCast.setStory(value);portal.setStory(value);features.setStory(value);activities.setStory(value);setNight(value.night);setResponse(responseLevel);crowd.builders.visible=value.seconds>6&&value.seconds<29;crowd.visitors.visible=value.programme>0;performanceStage.group.visible=value.programme>=1;
     crowd.setProgramme(value.programme);
     document.body.dataset.revealed=Object.keys(buildings).filter(k=>value[k]>=1).join(',');
@@ -610,6 +647,7 @@ async function buildWorld() {
     }
     camera.updateMatrixWorld();
     visitorFrustum.setFromProjectionMatrix(projectionView.multiplyMatrices(camera.projectionMatrix,camera.matrixWorldInverse));
+    if(hospitality.update(camera,peopleTime,peopleMoving))needsFrame=true;
     if(activities.update(peopleTime,peopleMoving,camera,visitorFrustum))needsFrame=true;
     if(festivalCast.update(camera,peopleTime,peopleMoving,visitorFrustum))needsFrame=true;
     if(portal.update(peopleTime,peopleMoving,camera,visitorFrustum))needsFrame=true;
@@ -640,7 +678,7 @@ async function buildWorld() {
   canvas.addEventListener('webglcontextlost',(e)=>{e.preventDefault();setMode('plan');status('The 3D view paused. The 2D site plan remains available.');});
   go('overview',true);resize();
   runwayCrowd.select(document.querySelector('[data-runway-show][aria-pressed="true"]').dataset.runwayShow);
-  return {go,orbit,setRunwayShow:runwayCrowd.select,setNight,setStory,setResponse,setRain,setLayout,setMusicMotion,setVisible(v){visible=v;if(!v){cancelAnimationFrame(raf);raf=0;}else{needsFrame=true;requestFrame();}},stats(){return {triangles:renderer.info.render.triangles,calls:renderer.info.render.calls,trees:treeList.length,...features.stats,...activities.stats,portal:portal.stats};}};
+  return {go,orbit,setRunwayShow:runwayCrowd.select,setNight,setStory,setResponse,setRain,setLayout,setMusicMotion,setVisible(v){visible=v;if(!v){cancelAnimationFrame(raf);raf=0;}else{needsFrame=true;requestFrame();}},stats(){return {triangles:renderer.info.render.triangles,calls:renderer.info.render.calls,trees:treeList.length,...features.stats,...activities.stats,...hospitality.stats,portal:portal.stats};}};
 }
 
 try {
@@ -669,4 +707,6 @@ function syncCompactLayout(){
 }
 compactLayout.addEventListener('change',syncCompactLayout);
 syncCompactLayout();
+const requestedVenue=new URLSearchParams(location.search).get('place');
+if(entered&&Object.hasOwn(venueLocations,requestedVenue))visitVenue(requestedVenue);
 new ResizeObserver(([entry])=>{document.documentElement.style.setProperty('--lab-footer-height',`${entry.target.offsetHeight}px`);}).observe(document.querySelector('.explore-bar'));

@@ -453,3 +453,28 @@ body[data-camera-view="fashion"] .intro{visibility:hidden}
 #performance-dialog .lead{font-size:17px;line-height:1.55}
 #performance-dialog .performance-vote-link{margin-top:5px;font-size:14px}
 @media(max-height:500px) and (min-width:801px){.emotion-panel:has(.performance-open){align-content:start}.performance-open{grid-column:1 / -1;grid-row:6;justify-self:start}}
+
+/* Festival hospitality menus */
+.mobile-places{display:none}
+@media(min-width:1001px){#place-list{grid-template-columns:repeat(10,minmax(0,1fr))}#place-list button{padding-inline:clamp(7px,.9vw,14px);column-gap:4px}}
+@media(max-width:800px),(max-width:1000px) and (pointer:coarse){
+ .mobile-places{display:block;position:relative;z-index:4}
+ .mobile-places summary{display:grid;place-items:center;min-height:40px;padding:4px 12px;list-style:none;cursor:pointer;border:1px solid currentColor;border-radius:24px;font-size:12px}
+ .mobile-places summary::-webkit-details-marker{display:none}
+ .mobile-places div{position:absolute;right:0;top:calc(100% + 6px);width:175px;padding:5px;border-radius:10px;background:#f3f1e7;color:#273f34;box-shadow:0 8px 24px #172c3233}
+ .mobile-places button{display:block;text-align:left;width:100%;min-height:44px;padding:8px;background:transparent}
+}
+.venue-menu{color:#243c31;background:#f5f2e7;width:min(780px,calc(100vw - 32px));max-height:86dvh;padding:0;border:1px solid #abb5a4;border-radius:16px;overflow:auto}
+.venue-menu::backdrop{background:#172d32a8}
+.venue-menu-head{position:relative;padding:30px clamp(20px,4vw,36px) 20px;background:#244c43;color:#fbf6e6}
+.venue-menu-head .eyebrow{margin:0 34px 12px 0;font-size:10px;letter-spacing:.13em}
+.venue-menu-head h2{margin:0 38px 8px 0;font-size:clamp(27px,4vw,40px);line-height:1.1}
+.venue-menu-head p:last-child{margin:0;line-height:1.45}
+.venue-menu-head .close{background:transparent;color:inherit;top:12px;right:12px;width:44px;height:44px}
+.drinks-grid{padding:21px clamp(20px,4vw,36px) 30px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 32px;align-items:start}
+.drinks-group h3{font-size:19px;margin:0 0 6px}.drinks-group>p,.drink p,.drink a{font-size:14px;line-height:1.5}.drinks-group>p{margin:0 0 14px}
+.drinks-grid a{color:#245447;text-underline-offset:3px}.drinks-grid a svg{width:14px;height:14px;vertical-align:middle}
+.drink{border-top:1px solid #c9d1c3}.drink summary{min-height:44px;display:flex;align-items:center;justify-content:space-between;gap:12px;cursor:pointer;font-size:15px;font-weight:600;list-style:none}
+.drink summary::-webkit-details-marker{display:none}.drink[open] summary svg{transform:rotate(180deg)}.drink p{margin:0 0 5px}.drink>a{display:inline-block;margin-bottom:13px}
+#tea-menu{max-width:500px}#tea-menu .drinks-grid{grid-template-columns:1fr}
+@media(max-width:600px){.drinks-grid{grid-template-columns:1fr}.venue-menu{max-height:84dvh}}

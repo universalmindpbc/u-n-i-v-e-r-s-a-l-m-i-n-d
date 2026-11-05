@@ -132,3 +132,21 @@ for(const [id,base] of [['contour-crop','sport-crop'],['contour-short','hotpants
     return parts;
   });
 }
+
+// Host garments for the tea house. The skirt hangs from the waist to the ankle.
+register('ceremony-silk','top',(g,s)=>{
+  const bodice=shellPart(g,{
+    covers:v=>(isTrunk(v)&&v.tt>.03)||(v.region===REGION.upperarm)||(v.region===REGION.lowerarm&&v.t<.93),
+    offset:v=>cm(v.region===REGION.lowerarm?1.6:.74),relax:3
+  },mat('Red silk',null,{color:s.color,roughness:.36}));
+  const front=new Caster(bodice[0].mesh,null,()=>true,'front');
+  bodice.push(transfer(front,torsoY(g.body,.60),cm(13),cm(19),'tea-embroidery.png','#e0b669','Gold star embroidery'));
+  return bodice;
+});
+register('ceremony-skirt','bottom',(g,s)=>{
+  const top=torsoY(g.body,.36);
+  const ankle=g.body.axis(REGION.lowerleg,1)[1][1];
+  const mesh=skirt(g.body,top,ankle+cm(3),cm(1.25),.105,undefined,56);
+  if(!mesh)throw Error('Tea gown hem does not reach the ankle');
+  return [{mesh,material:mat('Long silk skirt',null,{color:s.color,roughness:.36,doubleSided:true})}];
+});
