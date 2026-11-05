@@ -14,7 +14,9 @@ for (const p of ['lab/vendor/three.module.js', 'lab/vendor/OrbitControls.js', 'l
 const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map(m => m[1]);
 assert.equal(new Set(ids).size, ids.length, 'HTML IDs are unique');
 for (const m of js.matchAll(/\$\('([^']+)'\)/g)) assert.ok(ids.includes(m[1]), `Missing element ${m[1]}`);
-for (const p of ['truck', 'main', 'food', 'play', 'river', 'support', 'fashion', 'portal']) assert.ok(html.includes(`data-view="${p}"`));
+const places = ['truck', 'main', 'food', 'play', 'river', 'support', 'fashion', 'portal', 'bar', 'tea'];
+assert.equal((html.match(/href="\/vogue\/iam\/induction\.html" target="_top"/g) || []).length, 2);
+for (const p of places) assert.ok(html.includes(`data-view="${p}"`));
 assert.ok(html.includes('<noscript>') && html.includes('id="plan"') && html.includes('id="place-list"'));
 assert.ok(js.includes('prefers-reduced-motion') && js.includes('webglcontextlost'));
 assert.ok(css.includes('@media(max-width:600px)'));
@@ -35,4 +37,4 @@ assert.ok(html.includes('id="explore-enter"') && js.includes('VIDEO_BLEND=.07'))
 assert.ok(html.includes('id="replay-story"'));assert.doesNotMatch(html,/data-stage=|id="sequence-play"/);
 for(const module of ['architecture.mjs','furnishings.mjs','site-features.mjs','landing-rain.js','portal.mjs','portal-geometry.mjs'])assert.ok(fs.statSync(path.join(root,'lab',module)).size>1000);
 await import('./check-portal-geometry.mjs');
-console.log(JSON.stringify({ passed:true, originalReferences:manifest.records.length, selfHosted3D:true, planFallback:true, noIntake:true, visitorInitiatedMedia:true, places:8 }));
+console.log(JSON.stringify({ passed:true, originalReferences:manifest.records.length, selfHosted3D:true, planFallback:true, noIntake:true, visitorInitiatedMedia:true, places:places.length }));

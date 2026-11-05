@@ -478,3 +478,10 @@ body[data-camera-view="fashion"] .intro{visibility:hidden}
 .drink summary::-webkit-details-marker{display:none}.drink[open] summary svg{transform:rotate(180deg)}.drink p{margin:0 0 5px}.drink>a{display:inline-block;margin-bottom:13px}
 #tea-menu{max-width:500px}#tea-menu .drinks-grid{grid-template-columns:1fr}
 @media(max-width:600px){.drinks-grid{grid-template-columns:1fr}.venue-menu{max-height:84dvh}}
+
+.lab-tv{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:44px;white-space:nowrap;color:inherit;text-decoration:none}
+.lab-tv .ui-icon{width:17px;height:17px;margin:0}
+.lab-tv:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+.lab-tv:hover{text-decoration:underline;text-underline-offset:3px}
+#landing .landing-tv{position:absolute;z-index:3;top:max(16px,env(safe-area-inset-top));right:max(16px,env(safe-area-inset-right));color:#f1f5ef;border-color:#a9bbb780;background:#0e181bd9}
+@media(max-width:380px){.mast-right .festival-tv{padding-inline:8px;gap:4px}.festival-tv .ui-icon{width:15px}}
