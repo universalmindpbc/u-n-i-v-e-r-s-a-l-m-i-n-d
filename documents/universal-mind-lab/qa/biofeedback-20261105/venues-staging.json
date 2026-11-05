@@ -1,0 +1,60 @@
+{
+  "processAudioMuted": true,
+  "mediaPlaybackBlocked": true,
+  "results": [
+    {
+      "width": 1440,
+      "height": 900,
+      "rendered3D": true,
+      "menuEntries": 23,
+      "heapsNormalBeers": [
+        "Quiet XPA",
+        "Half Day Hazy",
+        "Another Lager",
+        "Third IPA",
+        "Fling Fresh Orange Sour",
+        "Original Draught",
+        "Cheeky IPA",
+        "Tough Stuff Shandy",
+        "Coffee Run Stout"
+      ],
+      "teaMenu": 3,
+      "hostAssets": [
+        "tea-host-1",
+        "tea-host-2"
+      ],
+      "teaQuiet": true,
+      "stageMuteRestored": true,
+      "menuFocusReturned": true,
+      "allLinksPresent": true,
+      "errors": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "rendered3D": true,
+      "menuEntries": 23,
+      "heapsNormalBeers": [
+        "Quiet XPA",
+        "Half Day Hazy",
+        "Another Lager",
+        "Third IPA",
+        "Fling Fresh Orange Sour",
+        "Original Draught",
+        "Cheeky IPA",
+        "Tough Stuff Shandy",
+        "Coffee Run Stout"
+      ],
+      "teaMenu": 3,
+      "hostAssets": [
+        "tea-host-1",
+        "tea-host-2"
+      ],
+      "teaQuiet": true,
+      "stageMuteRestored": true,
+      "menuFocusReturned": true,
+      "allLinksPresent": true,
+      "errors": []
+    }
+  ]
+}

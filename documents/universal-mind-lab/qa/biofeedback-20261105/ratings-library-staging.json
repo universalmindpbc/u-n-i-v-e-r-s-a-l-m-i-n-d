@@ -1,0 +1,37 @@
+{
+  "date": "2026-11-05T06:08:08.134Z",
+  "source": "069200dc4",
+  "chapterCrosses": 2,
+  "crossDistribution": [
+    15,
+    31,
+    17,
+    0
+  ],
+  "maskingRolesChecked": true,
+  "nativeYouthLink": true,
+  "chapterAnchorRetained": true,
+  "chapter": "https://staging.universalmind.tv/informatics/research/?collection=language&chapter=2#topic-mindfulness-biofeedback",
+  "labIdsMatchChapter": true,
+  "uniquePublications": 63,
+  "publisherLinks": 63,
+  "canonicalPriorRecord": "dv-adult-therapy-34143803",
+  "inpatientRecord": "pmid-42512522",
+  "standaloneReadingPage": "pmid-42512522-7e158443.html",
+  "individualWorkerRecordVerified": true,
+  "exportVersion": "ef9ea1424443061bff06c722cedac0d1d9a4acb855c012ba1ca14e53d026d7e0",
+  "sitemapEntries": 1386,
+  "workerHealth": {
+    "approvedYouth": {
+      "sourceBatch": "batch-f164c8325ea5f9c9.json",
+      "sourceSHA256": "f164c8325ea5f9c989c29524518b598913508117712826dc408f592b7f99a723",
+      "approvedAt": "2026-11-02",
+      "publications": 105
+    },
+    "biofeedback": {
+      "version": "lab-biofeedback-20261105-ratings",
+      "publications": 63
+    }
+  },
+  "processAudioMuted": true
+}

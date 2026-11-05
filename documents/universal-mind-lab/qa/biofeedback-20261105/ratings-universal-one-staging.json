@@ -1,0 +1,33 @@
+{
+  "verifiedAt": "2026-11-05T06:08:15.620Z",
+  "stagingWorkerVersion": "888d87ae-686e-46bf-afea-6c35f82c57be",
+  "origin": "https://staging.universalmind.tv",
+  "endpoint": "https://informatics-universal-one-staging.universalmind.workers.dev/research",
+  "question": "What Trust Factor rating does the 63-publication mindfulness biofeedback chapter receive? Explain the thresholds for two and three crosses in under 60 words. Cite the chapter.",
+  "status": 200,
+  "model": "gpt-6-astra",
+  "knowledge": {
+    "approvedYouth": {
+      "sourceBatch": "batch-f164c8325ea5f9c9.json",
+      "sourceSHA256": "f164c8325ea5f9c989c29524518b598913508117712826dc408f592b7f99a723",
+      "approvedAt": "2026-11-02",
+      "publications": 105
+    },
+    "biofeedback": {
+      "version": "lab-biofeedback-20261105-ratings",
+      "publications": 63
+    }
+  },
+  "renderedAnswer": "The 63-publication Mindfulness Biofeedback / AR / VR / Mixed Reality chapter receives two Trust Factor crosses. [1]\n\n- Two crosses: at least three distinct randomised controlled trials.\n- Three crosses: at least three distinct, verified double-blind randomised controlled trials; that threshold is not established here.\n\nThe rating reflects study design, not demonstrated efficacy. [1]",
+  "citationCards": [
+    {
+      "id": "lab-biofeedback-20261105-ratings",
+      "title": "Mindfulness Biofeedback / AR / VR / Mixed Reality",
+      "url": "https://staging.universalmind.tv/lab/research.html#mindfulness-biofeedback"
+    }
+  ],
+  "visitorRequests": 1,
+  "providerCalls": 2,
+  "chargedUpperUSD": 0.1499875,
+  "processAudioMuted": true
+}

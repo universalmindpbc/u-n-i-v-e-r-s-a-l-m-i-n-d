@@ -1,0 +1,62 @@
+{
+  "candidate": "5d8428878",
+  "date": "2026-11-05T06:09:00.322Z",
+  "processAudioMuted": true,
+  "results": [
+    {
+      "viewport": [
+        1440,
+        900
+      ],
+      "context": "entrance",
+      "topLevelDestination": "https://staging.universalmind.tv/vogue/iam/induction.html",
+      "title": "Induction | I AM",
+      "stationVisible": true,
+      "home": "/home/"
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "context": "entrance",
+      "topLevelDestination": "https://staging.universalmind.tv/vogue/iam/induction.html",
+      "title": "Induction | I AM",
+      "stationVisible": true,
+      "home": "/home/"
+    },
+    {
+      "viewport": [
+        320,
+        700
+      ],
+      "context": "festival",
+      "topLevelDestination": "https://staging.universalmind.tv/vogue/iam/induction.html",
+      "title": "Induction | I AM",
+      "stationVisible": true,
+      "home": "/home/"
+    },
+    {
+      "viewport": [
+        844,
+        390
+      ],
+      "context": "festival",
+      "topLevelDestination": "https://staging.universalmind.tv/vogue/iam/induction.html",
+      "title": "Induction | I AM",
+      "stationVisible": true,
+      "home": "/home/"
+    },
+    {
+      "viewport": [
+        1440,
+        900
+      ],
+      "context": "same-origin embed",
+      "topLevelDestination": "https://staging.universalmind.tv/vogue/iam/induction.html",
+      "title": "Induction | I AM",
+      "stationVisible": true,
+      "home": "/home/"
+    }
+  ]
+}
