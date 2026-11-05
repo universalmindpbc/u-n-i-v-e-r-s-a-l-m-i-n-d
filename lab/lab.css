@@ -485,3 +485,8 @@ body[data-camera-view="fashion"] .intro{visibility:hidden}
 .lab-tv:hover{text-decoration:underline;text-underline-offset:3px}
 #landing .landing-tv{position:absolute;z-index:3;top:max(16px,env(safe-area-inset-top));right:max(16px,env(safe-area-inset-right));color:#f1f5ef;border-color:#a9bbb780;background:#0e181bd9}
 @media(max-width:380px){.mast-right .festival-tv{padding-inline:8px;gap:4px}.festival-tv .ui-icon{width:15px}}
+@media(max-width:360px){
+  .mast-right{gap:3px}
+  .mast-right .festival-tv .ui-icon{display:none}
+  .mobile-places summary{min-height:44px;padding-inline:8px}
+}
