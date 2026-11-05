@@ -1,5 +1,13 @@
 (() => {
   let frame = null;
+  let retainedEntry = false;
+  function notifyEntry(covered) {
+    const signal = () => new CustomEvent('um:entry-visibility', {detail:{covered}});
+    document.dispatchEvent(signal());
+    // A direct Events visit hosts the festival one level below this document.
+    const lab = document.querySelector('iframe.prepared-lab');
+    if (lab) lab.contentDocument?.dispatchEvent(signal());
+  }
   let directoryFilm = null;
   const beginDirectoryPlayback = () => {
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -122,13 +130,29 @@
     return navigate(href, title);
   };
   window.addEventListener('popstate', event => {
-    if (frame && event.state?.umShellRoute) {
-      try {if(frame.contentWindow.PortalRoutes?.restore(event.state.umShellRoute))return;}catch{}
+    if (retainedEntry && event.state?.umRetainedEntry) {
+      frame?.remove(); frame = null;
+      document.body.classList.remove('is-experience-shell', 'um-directory-film-active');
+      notifyEntry(false);
+      return;
+    }
+    if ((frame || retainedEntry) && event.state?.umShellRoute) {
+      if (retainedEntry && !frame) notifyEntry(true);
+      try {if(frame?.contentWindow.PortalRoutes?.restore(event.state.umShellRoute))return;}catch{}
       navigate(event.state.umShellRoute, 'Universal Mind', false);
     }
   });
   window.addEventListener('pagehide', cancelDirectoryPlayback);
   window.UniversalMindEntry = {
+    openHomeInFullscreen() {
+      if (!active()) return false;
+      if (!frame) {
+        retainedEntry = true;
+        history.replaceState({...history.state, umRetainedEntry:true}, '');
+        notifyEntry(true);
+      }
+      return navigate('/home/', 'Universal Mind home');
+    },
     adoptRoute(route, mode='push') {
       const url=new URL(route,location.origin);if(url.origin!==location.origin)return false;
       const target=url.pathname+url.search+url.hash;

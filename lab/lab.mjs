@@ -1,4 +1,4 @@
-import {createHospitality,venueLocations} from './hospitality.mjs?v=20261105vip1';
+import {createHospitality,venueLocations} from './hospitality.mjs?v=20261105vesica1';
 import {createGroundWalkers,createSeatedVisitors,createShowRunway} from './visitor-groups.mjs?v=20261105activity3';
 import { createPortal } from './portal.mjs?v=20261105activity3';
 import { createFestivalCast } from './festival-cast.mjs?v=20261105activity3';
@@ -16,7 +16,7 @@ const portraitMobile = () => mobile() && $('world').clientHeight > $('world').cl
 const status = (message) => { $('scene-status').textContent = message; };
 const places = {
   bar: {number:'09 · NON-ALCOHOLIC BAR',title:'Non-alcoholic bar',copy:'Follow the short path from the main pavilion for the full Heaps Normal beer range, sparkling wines, L-theanine drinks, kombucha and spring water.'},
-  vip: {number:'11 · COCKTAIL BAR',title:'Adaptogen VIP Bar',copy:'Step through the red ropes for a non-alcoholic cocktail, with functional mushrooms on the menu and a DJ at the decks. Capacity 22 people.'},
+  vip: {number:'11 · COCKTAIL BAR',title:'Adaptogen VIP Bar',copy:'Two interlocking circles form a Vesica Piscis. The DJ and dance floor are on the left. The bar on the right serves non-alcoholic cocktails with functional mushrooms and botanicals. Capacity 22 people.'},
   tea: {number:'10 · TEA HOUSE',title:'Tea house',copy:'Follow the path downstream to a stone circle with cushions for 33 guests. Asian tea ceremony hosts gather around a low tea table, away from the sound of the main arena.'},
   portal: { number: '08 · I AM PORTAL', title: 'I Am Portal', copy: 'Seven small workshop spaces for education, intervention and interactivity. Explore electronic music, fashion, communication and creative technology in groups of ten.' },
   overview: { number: '', title: 'Overview', copy: 'An open green space for creative learning, emotional awareness and connection. Music, fashion and mindfulness bring people together, with support close at hand.' },
@@ -99,7 +99,24 @@ function visitVenue(key){
   selectPlace(key);$('venue-menu-open').focus({preventScroll:true});
 }
 const mobilePlaces=document.querySelector('.mobile-places');
-document.querySelectorAll('[data-go-venue]').forEach(button=>button.addEventListener('click',()=>{mobilePlaces.open=false;visitVenue(button.dataset.goVenue);}));
+const mobileList=mobilePlaces.querySelector('[role="group"]');
+for(const place of $('place-list').querySelectorAll('[data-view]')){
+  const item=document.createElement('button');
+  item.type='button';item.dataset.mobilePlace=place.dataset.view;
+  item.textContent=place.querySelector('.place-name').textContent;
+  mobileList.append(item);
+}
+mobileList.addEventListener('click',event=>{
+  const item=event.target.closest('button[data-mobile-place]');if(!item)return;
+  mobilePlaces.open=false;
+  if(!storyState?.navigation)story.start(31);
+  selectPlace(item.dataset.mobilePlace);
+  $('place-close').focus({preventScroll:true});
+});
+mobilePlaces.addEventListener('toggle',()=>{if(mobilePlaces.open){
+  for(const item of mobileList.children)item.setAttribute('aria-pressed',String(item.dataset.mobilePlace===selected));
+}});
+document.addEventListener('pointerdown',event=>{if(mobilePlaces.open&&!mobilePlaces.contains(event.target))mobilePlaces.open=false;});
 mobilePlaces.addEventListener('keydown',event=>{if(event.key==='Escape'){mobilePlaces.open=false;mobilePlaces.querySelector('summary').focus();}});
 $('arena-bar').addEventListener('click',()=>visitVenue('bar'));
 $('venue-menu-open').addEventListener('click',()=>{stopTour();$(selected+'-menu').showModal();});
@@ -185,6 +202,19 @@ function launchFestival(){
 $('explore-enter').addEventListener('click',launchFestival);
 // Events calls this synchronously from its launch tap, before any scene loading.
 window.UniversalMindLab={launch:launchFestival};
+let resumeMusic=false;
+document.addEventListener('um:entry-visibility',event=>{
+  const covered=event.detail.covered;
+  if(covered){
+    resumeMusic=!$('music-video').paused;
+    stopTour();sceneAPI?.setVisible(false);
+    document.querySelectorAll('video,audio').forEach(el=>el.pause());
+  }else{
+    sceneAPI?.setVisible(entered&&mode==='3d');
+    if(resumeMusic)media.start();
+    (entered?document.querySelector('.wordmark'):document.querySelector('.access-home')).focus({preventScroll:true});
+  }
+});
 try{if(parent!==window)parent.dispatchEvent(new Event('um:lab-ready'));}catch{}
 function syncLineup(){
  const touring=Boolean(tourTimer)||(!autoTourCancelled&&['tour','orbit'].includes(storyState?.phase));
@@ -409,7 +439,7 @@ async function buildWorld() {
   path([[0,14],[10,15],[20,10],[25,0]],1.8);
   path([[-25,-8],[-31,-14],[-35,-24]],1.8);
   path([[-4,4],[-5.8,6],[-8.1,7.25],[-10,6.84]],1.75);
-  path([[11,14],[14,9],[16,3],[18,-2],[18,-6.95]],1.65);
+  path([[11,14],[14,9],[16,3],[18,-2],[18,-8.04]],1.65);
   path([[1,48],[7,54],[11,62],[15,66.9],[18.5,66],[19,64.9]],1.8);
   path([[1,48],[-9,53],[-20,54],[-29,52],[-34,56]],2.4);
 
@@ -553,7 +583,7 @@ async function buildWorld() {
   });
   const presets={
     bar:{pos:[-6,3.15,15.8],target:[-10,1.5,5]},
-    vip:{pos:[20.0,3.32,-.65],target:[18,1.32,-11.7]},
+    vip:{pos:[18,9.3,-.1],target:[18,.60,-11]},
     tea:{pos:[23,4.9,71.8],target:[19,1,59]},
     overview:{pos:[65,51,82],target:[-1,0,0]},
     truck:{pos:[-62,4.8,28],target:[-40,2.5,27]},

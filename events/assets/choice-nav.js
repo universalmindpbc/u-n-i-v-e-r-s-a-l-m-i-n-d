@@ -33,7 +33,8 @@
     else history.pushState({labOpen:true},'',href);
     labFrame.focus();
   }
-  window.addEventListener('popstate',()=>{
+  window.addEventListener('popstate',event=>{
+    if(event.state?.umShellRoute || event.state?.umRetainedEntry)return;
     if(!labOpen||location.pathname==='/lab/')return;
     labFrame?.contentDocument.querySelectorAll('video,audio').forEach(v=>v.pause());
     labFrame?.remove();labFrame=null;labOpen=false;delete document.body.dataset.labOpen;

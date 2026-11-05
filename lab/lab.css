@@ -483,7 +483,6 @@ body[data-camera-view="fashion"] .intro{visibility:hidden}
 .lab-tv .ui-icon{width:17px;height:17px;margin:0}
 .lab-tv:focus-visible{outline:2px solid currentColor;outline-offset:3px}
 .lab-tv:hover{text-decoration:underline;text-underline-offset:3px}
-#landing .landing-tv{position:absolute;z-index:3;top:max(16px,env(safe-area-inset-top));right:max(16px,env(safe-area-inset-right));color:#f1f5ef;border-color:#a9bbb780;background:#0e181bd9}
 @media(max-width:380px){.mast-right .festival-tv{padding-inline:8px;gap:4px}.festival-tv .ui-icon{width:15px}}
 @media(max-width:360px){
   .mast-right{gap:3px}
@@ -495,3 +494,9 @@ body[data-camera-view="fashion"] .intro{visibility:hidden}
 #vip-menu .drinks-grid{grid-template-columns:repeat(3,minmax(0,1fr));column-gap:24px}
 #vip-menu .drinks-group>p:last-child{margin-top:12px}
 @media(max-width:700px){#vip-menu .drinks-grid{grid-template-columns:1fr}}
+
+@media(max-width:800px),(max-width:1000px) and (pointer:coarse){
+  .mobile-places div{position:fixed;right:max(14px,env(safe-area-inset-right));left:auto;top:auto;margin-top:6px;width:min(256px,calc(100vw - 28px));max-height:min(55dvh,510px);overflow-y:auto;overscroll-behavior:contain;touch-action:pan-y}
+  .mobile-places button[aria-pressed="true"]{font-weight:700;background:#dce5d5;border-radius:6px}
+  .masthead:has(.mobile-places[open]){z-index:25}
+}

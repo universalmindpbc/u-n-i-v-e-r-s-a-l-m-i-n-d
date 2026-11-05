@@ -8,85 +8,102 @@ export function buildVipBar(THREE, venue, make, requestFrame) {
   const light=make('#ffdda7',{emissive:'#ffc18a',emissiveIntensity:.95});
   const ink=make('#24232a'), cream=make('#feeacc');
 
-  // The two rope runs stop short of the entrance, leaving a clear central aisle.
-  box(claret,0,.06,0,8.8,.18,8.0);
-  box(lacquer,0,.16,-.34,8.62,.03,7.1);
-  box(velvet,0,.162,1.9,1.7,.03,4.15);
-  for(const x of [-.9,.9])box(brass,x,.181,1.9,.026,.012,4.15);
+  // Two equal radii; their centres sit one radius apart. The deck is their
+  // geometric union, with both complete circles traced separately on its surface.
+  const radius=3.5, left=-radius/2, right=radius/2;
+  const floor=.15;
   const v=(x,y,z)=>new THREE.Vector3(x,y,z);
-  function rope(x1,z1,x2,z2){
-    const curve=new THREE.QuadraticBezierCurve3(v(x1,1.02,z1),v((x1+x2)/2,.43,(z1+z2)/2),v(x2,1.02,z2));
-    add(new THREE.TubeGeometry(curve,20,.05,8,false),velvet,0,0,0);
+  function deck(shape,mat,bottom,height){
+    const geometry=new THREE.ExtrudeGeometry(shape,{depth:height,bevelEnabled:false,curveSegments:72});
+    geometry.rotateX(-Math.PI/2);add(geometry,mat,0,bottom,0);
   }
-  for(const side of [-1,1]){
-    const posts=[[side*1.12,3.83],[side*2.62,3.83],[side*4.16,3.83],[side*4.16,1.81]];
-    posts.forEach(([x,z],i)=>{
-      cylinder(brass,x,.20,z,.18,.23,.07);cylinder(brass,x,.63,z,.03,.042,.81);
-      add(new THREE.SphereGeometry(.083,12,8),brass,x,1.06,z);
-      if(i)rope(...posts[i-1],x,z);
+  function arcPoint(cx,r,angle,y){return v(cx+r*Math.cos(angle),y,r*Math.sin(angle));}
+  function rail(mat,cx,r,start,end,y,tubeRadius){
+    const points=Array.from({length:65},(_,i)=>arcPoint(cx,r,start+(end-start)*i/64,y));
+    add(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(points),64,tubeRadius,6,false),mat,0,0,0);
+  }
+  function ring(cx,r,y,mat,width){add(new THREE.TorusGeometry(r,width,7,96),mat,cx,y,0,1,1,1,Math.PI/2);}
+  const outline=new THREE.Shape();
+  outline.absarc(left,0,radius,Math.PI/3,Math.PI*5/3,false);
+  outline.absarc(right,0,radius,Math.PI*4/3,Math.PI*8/3,false);outline.closePath();deck(outline,lacquer,-.045,.19);
+  // Each separate crescent and the common lens has its own surface.
+  const dance=new THREE.Shape();dance.absarc(left,0,radius,Math.PI/3,Math.PI*5/3,false);
+  dance.absarc(right,0,radius,Math.PI*4/3,Math.PI*2/3,true);dance.closePath();deck(dance,claret,floor,.016);
+  const lens=new THREE.Shape();lens.absarc(left,0,radius,-Math.PI/3,Math.PI/3,false);
+  lens.absarc(right,0,radius,Math.PI*2/3,Math.PI*4/3,false);lens.closePath();deck(lens,make('#b66667'),floor,.015);
+  for(const cx of [left,right])ring(cx,radius-.032,.189,light,.032);
+  for(const r of [1.12,1.89,2.63])rail(brass,left,r,.65*Math.PI,1.42*Math.PI,.173,.014);
+  // Velvet ropes follow the two outside arcs, leaving the centre open at the front.
+  function ropeArc(cx,start,end){
+    const angles=Array.from({length:8},(_,i)=>start+(end-start)*i/7);
+    angles.forEach((angle,i)=>{
+      const p=arcPoint(cx,radius-.04,angle,1);
+      cylinder(brass,p.x,.21,p.z,.13,.20,.06);cylinder(brass,p.x,.59,p.z,.03,.038,.72);
+      add(new THREE.SphereGeometry(.075,12,8),brass,p.x,.985,p.z);
+      if(!i)return;
+      const a=angles[i-1],b=angle,points=[arcPoint(cx,radius-.04,a,.94),arcPoint(cx,radius-.04,(a+b)/2,.68),arcPoint(cx,radius-.04,b,.94)];
+      add(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(points),14,.048,8,false),velvet,0,0,0);
     });
-    for(const z of [.38,2.00]){
-      box(velvet,side*3.67,.39,z,.80,.45,1.52);
-      box(claret,side*4.03,.68,z,.19,.61,1.52);
-    }
-    for(const z of [.18,1.88]){
-      cylinder(brass,side*2.80,.19,z,.21,.26,.05);
-      cylinder(brass,side*2.80,.46,z,.055,.07,.5);
-      cylinder(marble,side*2.80,.74,z,.32,.32,.07);
-    }
   }
+  ropeArc(left,.42*Math.PI,1.61*Math.PI);ropeArc(right,-.61*Math.PI,.58*Math.PI);
 
-  // Gently scalloped velvet behind the bottle display and DJ podium.
-  const curtain=new THREE.PlaneGeometry(8.6,3.38,120,1);
-  const cp=curtain.attributes.position;
-  for(let i=0;i<cp.count;i++)cp.setZ(i,.075*Math.cos(cp.getX(i)*23));
-  curtain.computeVertexNormals();velvet.side=THREE.DoubleSide;
-  add(curtain,velvet,0,1.84,-3.77);
-  for(const x of [-4.15,4.15])box(brass,x,1.81,-3.6,.055,3.34,.055);
-  box(brass,0,3.48,-3.58,8.45,.07,.08);
-  sign('Adaptogen VIP Bar',4.7,.63,0,3.13,-3.47,'#491626','#ffdeab');
-  for(const y of [.86,1.56,2.27]){
-    box(lacquer,-1.7,y,-3.16,4.35,.09,.61);
-    box(light,-1.7,y-.045,-2.84,4.35,.027,.03);
-    for(let i=0;i<11;i++){
-      const x=-3.66+i*.386,z=-3.1;const mat=[glass,amber,blush,claret][(i+Math.round(y*8))%4];
-      cylinder(mat,x,y+.19,z,.083,.086,.27);cylinder(mat,x,y+.355,z,.038,.078,.09);cylinder(brass,x,y+.426,z,.037,.037,.055);
-      box(cream,x,y+.20,z+.078,.085,.106,.012);
+  // The right circle holds the backbar and a curved, brass-edged service counter.
+  function sector(cx,cz,inner,outer,start,end,bottom,height,mat){
+    const shape=new THREE.Shape();shape.absarc(cx,-cz,outer,start,end,false);
+    shape.absarc(cx,-cz,inner,end,start,true);shape.closePath();deck(shape,mat,bottom,height);
+  }
+  const counterX=right+.22,counterZ=-.93;
+  sector(counterX,counterZ,1.12,1.64,-2.83,-.29,.18,.90,velvet);
+  sector(counterX,counterZ,1.08,1.68,-2.83,-.29,1.08,.045,brass);
+  sector(counterX,counterZ,1.04,1.72,-2.83,-.29,1.125,.09,marble);
+  for(let i=0;i<31;i++){
+    const a=.31+i*(2.81-.31)/30;const x=counterX+1.64*Math.cos(a),z=counterZ+1.64*Math.sin(a);
+    cylinder(claret,x,.66,z,.038,.038,.83,10);
+  }
+  for(const angle of [-.78*Math.PI,-.56*Math.PI,-.30*Math.PI]){
+    const p=arcPoint(right,2.87,angle,.19);
+    cylinder(brass,p.x,1.27,p.z,.032,.043,2.20);
+    cylinder(claret,p.x,.25,p.z,.12,.13,.14);
+  }
+  for(const y of [.93,1.63,2.26]){
+    sector(right,0,2.50,3.02,.28*Math.PI,.80*Math.PI,y,.085,claret);
+    rail(light,right,2.51,-.80*Math.PI,-.28*Math.PI,y+.025,.022);
+    for(let i=0;i<12;i++){
+      const p=arcPoint(right,2.76,-Math.PI*(.30+i*.48/11),y);
+      const m=[glass,amber,blush,claret][(i+Math.round(y*4))%4];
+      cylinder(m,p.x,y+.22,p.z,.077,.08,.255);cylinder(m,p.x,y+.389,p.z,.032,.069,.083);
+      cylinder(brass,p.x,y+.45,p.z,.033,.036,.04);box(cream,p.x,y+.235,p.z+.074,.076,.1,.012);
     }
   }
-  box(claret,-1.69,.70,-.82,4.76,1.05,.73);
-  for(let i=0;i<32;i++)cylinder(velvet,-3.94+i*.145,.69,-.449,.071,.071,.96,10);
-  box(marble,-1.69,1.24,-.81,4.92,.10,.85);
-  box(brass,-1.69,1.155,-.38,4.94,.036,.04);
-  for(const x of [-3.72,.31]){
-    cylinder(brass,x,1.46,-.79,.075,.06,.32);
-    cylinder(marble,x,1.65,-.79,.155,.155,.07);
-    cylinder(amber,x,1.80,-.79,.062,.065,.23);
-    cylinder(brass,x,1.95,-.79,.027,.033,.08);
+  for(const x of [right-.67,right+.67]){
+    cylinder(brass,x,2.76,-2.65,.023,.023,.51);add(new THREE.SphereGeometry(.13,16,12),light,x,2.46,-2.65);
   }
+  for(const x of [-2.48,2.48])cylinder(brass,x,1.64,-2.97,.039,.05,2.96);
+  sign('Adaptogen VIP Bar',4.92,.55,0,2.97,-2.93,'#491626','#ffdeab');
 
-  box(lacquer,2.47,.32,-2.0,2.75,.33,2.50);
-  box(brass,2.47,.46,-.75,2.73,.04,.04);
-  box(claret,2.47,.94,-1.45,2.29,.90,.62);
-  box(marble,2.47,1.40,-1.45,2.37,.08,.70);
-  box(ink,2.47,1.465,-1.45,1.80,.062,.48);
-  for(const x of [1.89,3.05]){
-    cylinder(brass,x,1.505,-1.45,.19,.19,.02);
-    cylinder(ink,x,1.524,-1.45,.157,.157,.02);
-    cylinder(light,x,1.537,-1.45,.036,.036,.01);
+  // A round podium, twin turntables and a mixer face into the left dance floor.
+  const djX=left-.59,djZ=-1.82;
+  cylinder(brass,djX,.21,djZ,1.22,1.26,.08,56);
+  cylinder(claret,djX,.35,djZ,1.22,1.22,.21,56);
+  const deskZ=djZ+.39;
+  box(claret,djX,.91,deskZ,1.94,.88,.58);
+  box(marble,djX,1.38,deskZ,2.03,.08,.63);
+  box(ink,djX,1.448,deskZ,1.83,.055,.46);
+  for(const x of [djX-.62,djX+.62]){
+    cylinder(brass,x,1.49,deskZ,.18,.18,.02);cylinder(ink,x,1.51,deskZ,.15,.15,.019);
+    cylinder(light,x,1.524,deskZ,.032,.032,.01);
   }
   for(let i=0;i<4;i++){
-    box(brass,2.30+i*.11,1.503,-1.44,.018,.014,.22);
-    box(blush,2.30+i*.11,1.527,-1.48+(i%2)*.07,.075,.043,.036);
+    box(brass,djX-.21+i*.13,1.492,deskZ,.014,.014,.20);
+    box(blush,djX-.21+i*.13,1.513,deskZ-.04+(i%2)*.07,.068,.03,.03);
   }
-  for(const x of [1.04,3.92]){
-    cylinder(brass,x,1.03,-2.82,.035,.10,1.69);
-    box(ink,x,2.0,-2.82,.42,.68,.36);
-    for(const y of [1.87,2.15])add(new THREE.CylinderGeometry(.122,.122,.025,18),lacquer,x,y,-2.627,1,1,1,Math.PI/2);
+  for(const x of [djX-1.05,djX+1.05]){
+    cylinder(brass,x,.94,-2.24,.035,.09,1.46);box(ink,x,1.93,-2.24,.38,.63,.33);
+    for(const y of [1.80,2.06])add(new THREE.CylinderGeometry(.11,.11,.025,18),lacquer,x,y,-2.06,1,1,1,Math.PI/2);
   }
-  for(const x of [-3.9,.48,3.83]){
-    box(brass,x,2.98,-3.03,.035,.91,.035);
-    add(new THREE.SphereGeometry(.14,16,12),light,x,2.48,-3.03);
+  for(const x of [right+.70,right+1.67]){
+    cylinder(brass,x,.24,1.94,.15,.19,.08);cylinder(brass,x,.59,1.94,.037,.05,.65);
+    cylinder(velvet,x,.95,1.94,.22,.23,.13);
   }
   venue.finish();
 
@@ -103,9 +120,9 @@ export function buildVipBar(THREE, venue, make, requestFrame) {
     const stream=makeMesh(new THREE.CylinderGeometry(.007,.007,1,8),light);
     node.add(bottle,cup,stream);return {right,left,bottle,cup,stream};
   }
-  async function person(id,x,y,z,phase) {
+  async function person(id,x,y,z,phase,yaw=0) {
     try {
-      const {scene:model,animations}=await loadCastMember(id);model.position.set(x,y,z);node.add(model);
+      const {scene:model,animations}=await loadCastMember(id);model.position.set(x,y,z);model.rotation.y=yaw;model.userData.vipRole=id;node.add(model);
       model.traverse(o=>{if(o.isSkinnedMesh)o.frustumCulled=false;});
       const mixer=new THREE.AnimationMixer(model);mixer.clipAction(animations[0]).play();
       const entry={mixer,phase};cast.push(entry);
@@ -117,8 +134,9 @@ export function buildVipBar(THREE, venue, make, requestFrame) {
   function update(camera,time,moving){
     if(Math.hypot(camera.position.x-node.position.x,camera.position.z-node.position.z)>34)return false;
     if(!started){
-      started=true;person('vip-pour-1',-2.65,.17,-1.52,1.1);person('vip-pour-2',-.78,.17,-1.52,2.55);
-      person('vip-dj',2.45,.485,-1.86,.7);
+      started=true;person('vip-pour-1',counterX-.67,.17,-.45,1.1);person('vip-pour-2',counterX+.67,.17,-.45,2.55);
+      person('vip-dj',djX,.455,djZ,.7);
+      person('D1',left-1.09,.17,1.20,2.1,2.86);person('river-arena',left+.08,.17,1.92,1.6,-2.92);
     }
     if(!cast.length)return false;
     const t=moving?time:0;

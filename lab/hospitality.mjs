@@ -1,4 +1,4 @@
-import {buildVipBar} from './vip-bar.mjs?v=20261105vip1';
+import {buildVipBar} from './vip-bar.mjs?v=20261105vesica1';
 import {mergeGeometries} from './vendor/BufferGeometryUtils.js';
 import {loadCastMember} from './festival-cast.mjs?v=20261105activity3';
 
