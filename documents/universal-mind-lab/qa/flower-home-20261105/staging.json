@@ -1,0 +1,74 @@
+{
+  "candidate": "c7e35eb40",
+  "processMuted": true,
+  "mediaPlaybackDisabled": true,
+  "nativeFullscreenDisabled": true,
+  "results": [
+    {
+      "view": "desktop splash",
+      "start": "/lab/",
+      "method": "keyboard",
+      "embeddedIn": null,
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "target": {
+        "x": 673,
+        "y": 311.578125,
+        "width": 94,
+        "height": 94.828125
+      },
+      "topLevelURL": "https://staging.universalmind.tv/home/",
+      "title": "Universal Mind | Electronic Music & Mental Health",
+      "directoryLinks": [
+        "/events/?experience=1",
+        "/informatics/"
+      ]
+    },
+    {
+      "view": "phone research",
+      "start": "/lab/research.html",
+      "method": "tap",
+      "embeddedIn": null,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "target": {
+        "x": 24,
+        "y": 22,
+        "width": 44,
+        "height": 44
+      },
+      "topLevelURL": "https://staging.universalmind.tv/home/",
+      "title": "Universal Mind | Electronic Music & Mental Health",
+      "directoryLinks": [
+        "/events/?experience=1",
+        "/informatics/"
+      ]
+    },
+    {
+      "view": "embedded festival",
+      "start": "/lab/?launch=1",
+      "method": "click",
+      "embeddedIn": "same-origin test frame on staged Lab research page",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "target": {
+        "x": 36,
+        "y": 28,
+        "width": 350.125,
+        "height": 52.1875
+      },
+      "topLevelURL": "https://staging.universalmind.tv/home/",
+      "title": "Universal Mind | Electronic Music & Mental Health",
+      "directoryLinks": [
+        "/events/?experience=1",
+        "/informatics/"
+      ]
+    }
+  ]
+}
