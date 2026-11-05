@@ -34,7 +34,7 @@ $('#play').onclick=()=>{playing=!playing;if(playing&&elapsed>=total-1)elapsed=0;
 const film=$('#film'),experience=$('#experience'),launch=$('#launch');
 const M9='fibonacci-m9-p24',initialParams=new URLSearchParams(location.search),initialRoute=window.PortalRoutes?.resolve();
 // Retain deep links even when cached data resolves before the deferred frame bridge.
-if(initialRoute?.id==='research')document.documentElement.dataset.libraryQuery=new URL(initialRoute.href).search;
+if(initialRoute?.id==='research'){const url=new URL(initialRoute.href);document.documentElement.dataset.libraryQuery=url.search;document.documentElement.dataset.libraryHash=url.hash;}
 if(initialRoute?.portal==='informatics'&&!['home','document'].includes(initialRoute.id)){initialParams.set('area',initialRoute.id);initialParams.set('entry','research');}
 let area='home',resumeAnimation=true,recordId=initialParams.get('record')||M9,recordMode=initialParams.get('record-mode')||((initialParams.get('area')==='geometry'||initialParams.get('atlas')==='1'||recordId!==M9)?'research':'animation'),recordView=location.hash.slice(1);
 const researchFrame=$('#atlas-frame');
@@ -47,7 +47,7 @@ function syncURL(){
  else target=new URL(window.InformaticsNavigation.entries.find(e=>e.id===area)?.url||'/informatics/',location.origin);
  for(const [key,value]of (window.PortalRoutes.resolve(current.href)?.id===area?current.searchParams:[]))if(!['entry','area','atlas','about','record','record-mode','section'].includes(key))target.searchParams.set(key,value);
  if(pendingRoute?.id===area){target.search=new URL(pendingRoute.href).search;target.hash=new URL(pendingRoute.href).hash;}
- if(area==='research')target.search=document.documentElement.dataset.libraryQuery||'';
+ if(area==='research'){target.search=document.documentElement.dataset.libraryQuery||'';target.hash=document.documentElement.dataset.libraryHash||'';}
  if(area==='geometry'){target.searchParams.set('record',recordId);target.searchParams.set('record-mode',recordMode);target.hash=recordView;}
  window.PortalRoutes.commit(target.href,routeHistoryMode);
  routeHistoryMode='replace';pendingRoute=null;
@@ -116,7 +116,7 @@ document.addEventListener('atlas:navigate',event=>{routeHistoryMode=event.routeH
 function navigateRoute(route,mode='push'){
  pendingRoute=route;routeHistoryMode=mode;
  if(route.id==='document'){document.documentElement.dataset.portalDocument=route.path;window.PortalRoutes.loadFrame($('#connect-frame'),route.path);}
- if(route.id==='research')document.documentElement.dataset.libraryQuery=new URL(route.href).search;
+ if(route.id==='research'){const url=new URL(route.href);document.documentElement.dataset.libraryQuery=url.search;document.documentElement.dataset.libraryHash=url.hash;}
  if(route.id==='geometry'){recordId=route.query.get('record')||M9;recordMode=route.query.get('record-mode')||'research';recordView=new URL(route.href).hash.slice(1);}
  navigateFromResearch(route.id);
 }

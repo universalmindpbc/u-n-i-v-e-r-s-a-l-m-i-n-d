@@ -2,7 +2,11 @@
 (() => {
   const frames = {research: document.querySelector('#research-frame'), connect: document.querySelector('#connect-frame')};
   const initial = window.PortalRoutes.resolve();
-  if (initial?.id === 'research') document.documentElement.dataset.libraryQuery = initial.query.toString() ? '?' + initial.query : '';
+  if (initial?.id === 'research') {
+    const url = new URL(initial.href);
+    document.documentElement.dataset.libraryQuery = url.search;
+    document.documentElement.dataset.libraryHash = url.hash;
+  }
   function navigate(area) {
     document.querySelectorAll('dialog[open]').forEach(dialog => dialog.close());
     document.dispatchEvent(new CustomEvent('atlas:navigate', {detail: area}));
@@ -11,7 +15,10 @@
     const frame = frames[area];
     if (!frame) return;
     const url = new URL(area === 'connect' ? 'connect.html' : 'library.html', document.baseURI);
-    if (area === 'research') url.search = document.documentElement.dataset.libraryQuery || '';
+    if (area === 'research') {
+      url.search = document.documentElement.dataset.libraryQuery || '';
+      url.hash = document.documentElement.dataset.libraryHash || '';
+    }
     if (extra) for (const [key, value] of Object.entries(extra)) if (value) url.searchParams.set(key, value);
     if (area === 'research') document.documentElement.dataset.libraryQuery = url.search;
     url.searchParams.set('embedded', '1');
@@ -23,7 +30,10 @@
     if (!link || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     event.preventDefault(); event.stopImmediatePropagation();
     const area = link.hasAttribute('data-connect') ? 'connect' : 'research';
-    if (area === 'research') document.documentElement.dataset.libraryQuery = '';
+    if (area === 'research') {
+      document.documentElement.dataset.libraryQuery = '';
+      document.documentElement.dataset.libraryHash = '';
+    }
     load(area, area === 'research' ? {collection: link.dataset.library || 'all', target: link.dataset.libraryGene || ''} : null);
     navigate(area);
   }, true);
@@ -46,7 +56,9 @@
     else if (data?.type === 'informatics:library-selection' && frames.research.contentWindow === event.source) {
       const route = window.PortalRoutes.resolve(data.href);
       if (route?.id !== 'research') return;
-      document.documentElement.dataset.libraryQuery = new URL(route.href).search;
+      const url = new URL(route.href);
+      document.documentElement.dataset.libraryQuery = url.search;
+      document.documentElement.dataset.libraryHash = url.hash;
       if (document.querySelector('#experience').dataset.area === 'research') window.PortalRoutes.commit(route.href, 'replace');
     }
   });
