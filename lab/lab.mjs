@@ -76,6 +76,9 @@ function selectPlace(key, show = true, automated = false) {
   $('place-number').textContent = info.number;
   $('place-title').textContent = info.title;
   $('place-copy').textContent = info.copy;
+  for (const credit of document.querySelectorAll('[data-credit-places]')) {
+    credit.hidden = !credit.dataset.creditPlaces.split(' ').includes(key);
+  }
   if(key!=='overview')emotionPanel(false);
   const isVenue=Boolean($(key+'-menu'));
   $('checking-guide').hidden=key!=='checking';

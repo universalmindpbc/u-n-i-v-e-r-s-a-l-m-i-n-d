@@ -525,3 +525,6 @@ body[data-camera-view="fashion"] .intro{visibility:hidden}
 /* Hold the closing title while the finished film rests on the landscape. */
 body[data-closing-view="true"] #headline .headline-description{animation:none;opacity:0}
 body[data-closing-view="true"] #headline .headline-unity{animation:none;opacity:1}
+
+.place-card .architecture-credit{font-size:.8rem;line-height:1.45;margin:10px 0}
+.architecture-credit a,.proposal-story a,.impact-list a{color:inherit;text-underline-offset:3px}
