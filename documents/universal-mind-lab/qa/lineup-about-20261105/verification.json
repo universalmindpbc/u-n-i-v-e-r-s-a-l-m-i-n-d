@@ -3,9 +3,9 @@
   "mutedChromium": true,
   "mediaPlaybackStubbed": true,
   "hashes": {
-    "index.html": "8e5b357c04e03d02aa7db8dc2982f67316e3c58ad327040beffda1168bf57ee2",
-    "lab.css": "c4c71fb02f2bf848d7e4b07f6689b4990f326efceef86a79cf83b2d2bacdb438",
-    "lab.mjs": "c90f305e9527f1e5d0338687409bf4c69efbd0dacceebf63173af21e3af65b12",
+    "index.html": "8dc162c43d533d5f70c6f2893152ad0a74284ce102bf6ae6221e256584261207",
+    "lab.css": "c295f2cd769c7cfc16698b0074930500efe1e01bc0b12d55e4628cecb7a03e92",
+    "lab.mjs": "fdd8149201c6f23ec452a1eb63f787f1931f27771ac32f6d3d618673478c73e9",
     "research.html": "0b82912aefcec4abfb8188c3479bbd57423503ccea333840c548298ec9528c95"
   },
   "checks": [
@@ -13,8 +13,10 @@
       "mobile": true,
       "width": 393,
       "height": 780,
-      "researchOnSplashInSceneAndAbout": true,
-      "mobileLineup": true,
+      "researchAndImpactVisibleOnSplash": true,
+      "researchInSceneAndAbout": true,
+      "mobileLineupOnlyInAbout": true,
+      "testedCollapsedOnReopen": true,
       "artists": [
         "Tame Impala",
         "Justice",
@@ -26,8 +28,10 @@
       "mobile": true,
       "width": 320,
       "height": 658,
-      "researchOnSplashInSceneAndAbout": true,
-      "mobileLineup": true,
+      "researchAndImpactVisibleOnSplash": true,
+      "researchInSceneAndAbout": true,
+      "mobileLineupOnlyInAbout": true,
+      "testedCollapsedOnReopen": true,
       "artists": [
         "Tame Impala",
         "Justice",
@@ -39,8 +43,10 @@
       "mobile": true,
       "width": 844,
       "height": 390,
-      "researchOnSplashInSceneAndAbout": true,
-      "mobileLineup": true,
+      "researchAndImpactVisibleOnSplash": true,
+      "researchInSceneAndAbout": true,
+      "mobileLineupOnlyInAbout": true,
+      "testedCollapsedOnReopen": true,
       "artists": [
         "Tame Impala",
         "Justice",
@@ -52,8 +58,10 @@
       "mobile": false,
       "width": 1440,
       "height": 900,
-      "researchOnSplashInSceneAndAbout": true,
-      "mobileLineup": false
+      "researchAndImpactVisibleOnSplash": false,
+      "researchInSceneAndAbout": true,
+      "mobileLineupOnlyInAbout": false,
+      "testedCollapsedOnReopen": false
     }
   ]
 }
