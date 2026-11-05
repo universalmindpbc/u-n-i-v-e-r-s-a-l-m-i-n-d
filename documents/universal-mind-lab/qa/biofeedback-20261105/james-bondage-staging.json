@@ -1,0 +1,131 @@
+{
+  "candidate": "287ac0b85",
+  "date": "2026-11-05T07:05:32.598Z",
+  "source": "Panthur staging. Headless Chromium with process-level audio muted. Desktop and reduced-motion mobile viewport.",
+  "results": [
+    {
+      "width": 1440,
+      "sceneTitle": "James Bondage VIP",
+      "barSign": "Adaptogen Cocktail Bar",
+      "plan": [
+        [
+          639,
+          19,
+          "#181818"
+        ],
+        [
+          658,
+          19,
+          "#fafafa"
+        ]
+      ],
+      "floors": {
+        "White carpet": "fafafa",
+        "Black dance floor": "111111"
+      },
+      "fabrics": {
+        "vip-pour-1": [
+          "Banded satin mini:292929",
+          "Sweetheart satin bodice:292929"
+        ],
+        "vip-pour-2": [
+          "Banded satin mini:f9f8f5",
+          "Sweetheart satin bodice:f9f8f5"
+        ],
+        "vip-dj": [],
+        "vip-service-white": [
+          "Banded satin mini:f9f8f5",
+          "Sweetheart satin bodice:f9f8f5"
+        ],
+        "vip-service-black": [
+          "Banded satin mini:292929",
+          "Sweetheart satin bodice:292929"
+        ]
+      },
+      "laserRays": 18,
+      "laserColours": 9,
+      "perimeterTowers": 10,
+      "uvAtNight": 0.43,
+      "smokePuffs": 8,
+      "strobeObserved": true,
+      "staffMoved": true,
+      "reducedMotion": false,
+      "drinks": 7,
+      "vipLineup": [
+        "All Inn x Nilla (Label Roster)",
+        "Bang Gang DJs",
+        "Marlie",
+        "Nastia",
+        "Satoshi Tomiie",
+        "Sonia Mooneer",
+        "Yoyaku DJs",
+        "ZIP (Perlon)"
+      ],
+      "aboutActs": 29,
+      "copyAndVoteLink": true,
+      "errors": []
+    },
+    {
+      "width": 390,
+      "sceneTitle": "James Bondage VIP",
+      "barSign": "Adaptogen Cocktail Bar",
+      "plan": [
+        [
+          639,
+          19,
+          "#181818"
+        ],
+        [
+          658,
+          19,
+          "#fafafa"
+        ]
+      ],
+      "floors": {
+        "White carpet": "fafafa",
+        "Black dance floor": "111111"
+      },
+      "fabrics": {
+        "vip-pour-1": [
+          "Banded satin mini:292929",
+          "Sweetheart satin bodice:292929"
+        ],
+        "vip-pour-2": [
+          "Banded satin mini:f9f8f5",
+          "Sweetheart satin bodice:f9f8f5"
+        ],
+        "vip-dj": [],
+        "vip-service-white": [
+          "Banded satin mini:f9f8f5",
+          "Sweetheart satin bodice:f9f8f5"
+        ],
+        "vip-service-black": [
+          "Banded satin mini:292929",
+          "Sweetheart satin bodice:292929"
+        ]
+      },
+      "laserRays": 18,
+      "laserColours": 9,
+      "perimeterTowers": 10,
+      "uvAtNight": 0.43,
+      "smokePuffs": 8,
+      "strobeObserved": false,
+      "staffMoved": false,
+      "reducedMotion": true,
+      "drinks": 7,
+      "vipLineup": [
+        "All Inn x Nilla (Label Roster)",
+        "Bang Gang DJs",
+        "Marlie",
+        "Nastia",
+        "Satoshi Tomiie",
+        "Sonia Mooneer",
+        "Yoyaku DJs",
+        "ZIP (Perlon)"
+      ],
+      "aboutActs": 29,
+      "copyAndVoteLink": true,
+      "errors": []
+    }
+  ]
+}
