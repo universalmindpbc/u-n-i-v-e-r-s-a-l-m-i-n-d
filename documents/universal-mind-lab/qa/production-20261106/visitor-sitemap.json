@@ -1,0 +1,32 @@
+{
+  "verified_at": "2026-11-05T23:58:46.944653+00:00",
+  "source_commit": "b6bc034f252a5a45251f400a4d0f8614a5e0c349",
+  "approved_staging": "a7f69f9b058960b6fccd4c2b8cb8a1f47e51a225",
+  "previous_production": "b273694caa3ebd4e287aef3c4305a341acab766f",
+  "production_manifest_changes": [
+    "sitemap/index.html",
+    "sitemap/map.css"
+  ],
+  "verified_pages": {
+    "https://universalmind.tv/read/": "f16c4c0120b1b03bba674c0ba4612f6fdc3f08896e32dd90f9feaef732e93b23",
+    "https://universalmind.tv/read/resources.json": "03bf86be31b0113384c87fdc26581e984e69095f73334bbec22220040c8d942a",
+    "https://universalmind.tv/llms.txt": "3fd3557411cbb686ee6f37c46c2655df70fa9cc3d45062117d82f727113841d7",
+    "https://universalmind.tv/sitemap.xml": "69a6c2195641c02deaf0fc2ba721c54cfcff3dcf31eaaf237f66479af5c1c7c3",
+    "https://universalmind.tv/sitemaps/other-public-pages.xml": "0ff91ecc2246a32303f540abf5dfeef116142e4c0375a173e744e8f057601cda",
+    "https://universalmind.tv/lab/": "cb94821581b4e146774da96f0bfa506cd3e527445352ad27fe06959fd7fe0689",
+    "https://universalmind.tv/lab/research.html": "636cf4692e5de249d0b318c9e9b40d72b7403668d6564e1cfb4258e5ca4b1307",
+    "https://staging.universalmind.tv/sitemap/": "0f12d8bb29f5b73ee0200ee8c0d8f15006949a16d18b9b1af5c2b2ed434654c7",
+    "https://staging.universalmind.tv/sitemap/map.css": "e020f2e57754fa12c1c8be542368aee4169411942bd46bba0bcf1e810a8ef639",
+    "https://universalmind.tv/sitemap/": "0f12d8bb29f5b73ee0200ee8c0d8f15006949a16d18b9b1af5c2b2ed434654c7",
+    "https://universalmind.tv/sitemap/map.css": "e020f2e57754fa12c1c8be542368aee4169411942bd46bba0bcf1e810a8ef639"
+  },
+  "browser_checks": [
+    "32 link destinations returned HTTP 200; page, CSS and XML index matched source",
+    "1440px: Events hierarchy, research page, festival entrance and layout passed",
+    "393px: Events hierarchy, research page, festival entrance and layout passed"
+  ],
+  "journeys": [
+    "Events → athousandminds → festival invitation",
+    "Events → Universal Mind Lab → Event research for youth → 63 biofeedback source records"
+  ]
+}
