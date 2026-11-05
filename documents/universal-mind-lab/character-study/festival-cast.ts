@@ -88,6 +88,11 @@ for(const [id,skin,hair,colour] of [['clinician-1','asian','long01','#547d81'],[
 for(const [id,hair,tone] of [['tea-host-1','bob02','#a42132'],['tea-host-2','long01','#81253a']]){
   looks.push(look(id,27,0,'asian',hair,'ceremony-silk','ceremony-skirt',tone,tone,'idle',{shoes:'flats',eyes:'brown'}));
 }
+looks.push(
+  look('vip-pour-1',25,0,'caucasian','ponytail01','one-piece','suit_trousers','#8f203b',coal,'pour',{...blond,earrings:'small_hoops'}),
+  look('vip-pour-2',26,0,'caucasian','bob02','one-piece','suit_trousers',ivory,'#631f35','pour',{...blond,earrings:'studs'}),
+  look('vip-dj',24,0,'african','box_braids','sport-crop','baggy_jeans','#f6ce94','#662742','mix',{earrings:'small_hoops'})
+);
 const section = (s:string)=>s==='chair'||s==='floor'||s==='daybed';
 function seated(pose:string):Clip {
   const crossed=pose!=='chair';
@@ -119,6 +124,18 @@ function movement(pose:string):Clip {
     side(bones,'Foot',[22,0,0],[22,0,0]);fingers(bones,2);
     const hand=(side:number)=>({space:'floor',pos:[side*.20,.018,.63],pole:[side,-.1,-.5],dir:[0,-.05,1],palm:[0,-1,0]}) as const;
     return {bones,root:{pitch:137,ground:true},ik:{Left:hand(1),Right:hand(-1)}} as ReturnType<Clip['sample']>;
+  }};
+  if(pose==='pour'||pose==='mix')return {id:pose,name:pose==='pour'?'Pour into coupe':'Mix at the decks',category:'Interaction',duration:5,loop:true,sample(t){
+    const beat=Math.sin(2*Math.PI*t/5),lift=(1-Math.cos(2*Math.PI*t/5))/2;
+    const p=idle.sample(t);p.bones!.Head=[6+3*lift,4*beat,0];fingers(p.bones!,pose==='pour'?36:9);
+    if(pose==='pour')p.ik={
+      Right:{pos:[-.24+.09*lift,-.37+.20*lift,.31],pole:[-.64,-.48,-.1],dir:[.16,0,.8],palm:[.9,.1,0]},
+      Left:{pos:[.115,-.42,.33],pole:[.65,-.56,-.2],dir:[0,.1,.75],palm:[-.9,.13,.1]}
+    };else p.ik={
+      Right:{pos:[-.22+.10*beat,-.47,.34],pole:[-.62,-.6,-.15],dir:[0,-.45,.85],palm:[0,-1,0]},
+      Left:{pos:[.19,-.46+.045*lift,.33+.045*beat],pole:[.63,-.55,-.15],dir:[0,-.55,.85],palm:[0,-1,0]}
+    };
+    return p;
   }};
   if(pose==='walk')return {id:'runway',name:'Runway walk',duration:1.2,loop:true,category:'Locomotion',sample:t=>gait(WALK,t/1.2)};
   if(pose==='dance')return {...cheer,name:'Hands overhead',sample(t){const p=cheer.sample(t);fingers(p.bones!,7);return {...p,thumbs:undefined};}};

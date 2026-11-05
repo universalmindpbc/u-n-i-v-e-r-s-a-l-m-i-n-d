@@ -1,7 +1,8 @@
+import {buildVipBar} from './vip-bar.mjs?v=20261105vip1';
 import {mergeGeometries} from './vendor/BufferGeometryUtils.js';
 import {loadCastMember} from './festival-cast.mjs?v=20261105activity3';
 
-export const venueLocations = {bar:[-10,5], tea:[19,59]};
+export const venueLocations = {bar:[-10,5], tea:[19,59], vip:[18,-11]};
 
 // Build each venue by material so the stonework, cushions and stocked shelves
 // cost a handful of draw calls even when the full grounds are visible on a phone.
@@ -12,9 +13,9 @@ export function createHospitality(THREE,requestFrame){
     cream=make('#ede1b9'),clay=make('#b35b43'),green=make('#537561'),jade=make('#a4c3a5'),
     linen=make('#ded1ae'),roof=make('#484c49'),red=make('#8f3340'),teaGlaze=make('#6c9188',{roughness:.23}),
     glow=make('#f8e6ae',{emissive:'#e5b76a',emissiveIntensity:.58});
-  function venue(key){
+  function venue(key,name){
     const node=new THREE.Group(), batches=new Map();
-    const [x,z]=venueLocations[key];node.userData.venue=key;node.name=key==='bar'?'Non-alcoholic bar':'Tea house';node.position.set(x,0,z);group.add(node);
+    const [x,z]=venueLocations[key];node.userData.venue=key;node.name=name;node.position.set(x,0,z);group.add(node);
     const transform=new THREE.Object3D();
     function add(geometry,mat,x,y,z,sx=1,sy=1,sz=1,rx=0,ry=0,rz=0){
       const g=geometry.index?geometry.toNonIndexed():geometry;
@@ -25,9 +26,9 @@ export function createHospitality(THREE,requestFrame){
     }
     function box(mat,x,y,z,w,h,d,rz=0){add(new THREE.BoxGeometry(1,1,1),mat,x,y,z,w,h,d,0,0,rz);}
     function cylinder(mat,x,y,z,rt,rb,h,n=16){add(new THREE.CylinderGeometry(rt,rb,h,n),mat,x,y,z);}
-    function sign(text,width,height,x,y,z){
+    function sign(text,width,height,x,y,z,background='#213f39',foreground='#fff4d8'){
       const canvas=document.createElement('canvas');canvas.width=1024;canvas.height=144;
-      const ctx=canvas.getContext('2d');ctx.fillStyle='#213f39';ctx.fillRect(0,0,1024,144);ctx.fillStyle='#fff4d8';ctx.font='500 83px Arial';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(text,512,75,980);
+      const ctx=canvas.getContext('2d');ctx.fillStyle=background;ctx.fillRect(0,0,1024,144);ctx.fillStyle=foreground;ctx.font='500 83px Arial';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(text,512,75,980);
       const map=new THREE.CanvasTexture(canvas);map.colorSpace=THREE.SRGBColorSpace;
       const m=new THREE.Mesh(new THREE.PlaneGeometry(width,height),new THREE.MeshBasicMaterial({map}));m.position.set(x,y,z);node.add(m);
     }
@@ -37,7 +38,7 @@ export function createHospitality(THREE,requestFrame){
     return {node,box,add,cylinder,sign,finish};
   }
 
-  const bar=venue('bar');
+  const bar=venue('bar','Non-alcoholic bar');
   bar.box(timber,0,.035,0,6.7,.16,3.6);
   for(const x of [-3.1,3.1])for(const z of [-1.55,1.55])bar.box(timber,x,1.56,z,.14,3.16,.14);
   bar.box(dark,0,2.99,0,6.9,.15,3.85);
@@ -60,7 +61,7 @@ export function createHospitality(THREE,requestFrame){
   for(const x of [-2.1,-1.75,-1.4]){bar.cylinder(brass,x,1.48,1,.035,.045,.52);bar.box(dark,x,1.74,1.09,.07,.08,.23);bar.cylinder(cream,x,1.81,1.02,.035,.036,.15);}
   bar.sign('Non-alcoholic bar',4.9,.64,0,2.68,1.61);bar.finish();
 
-  const tea=venue('tea'),stone=[make('#8b897d'),make('#aaa798'),make('#777e72')];
+  const tea=venue('tea','Tea house'),stone=[make('#8b897d'),make('#aaa798'),make('#777e72')];
   tea.cylinder(linen,0,-.033,0,6.18,6.2,.16,72);
   // Leave a clear entrance facing the curved path at the south of the circle.
   for(let i=0;i<31;i++){
@@ -90,6 +91,7 @@ export function createHospitality(THREE,requestFrame){
   for(const x of [-1.55,1.55]){tea.box(brass,x,2.57,.25,.018,.34,.018);tea.add(new THREE.SphereGeometry(1,18,14),glow,x,2.27,.25,.16,.22,.16);}
   tea.sign('Tea house',1.5,.27,0,2.62,.67);tea.finish();
 
+  const vip=buildVipBar(THREE,venue('vip','Adaptogen VIP Bar'),make,requestFrame);
   let started=false;
   function loadHosts(){
     if(started)return;started=true;
@@ -118,12 +120,13 @@ export function createHospitality(THREE,requestFrame){
     }).catch(e=>console.error('Bar server asset',e));
   }
   let barMixer=null;
-  return {group,stats:{teaCushions:33,teaStones:31,barShelves:2},update(camera,time,moving){
+  return {group,stats:{teaCushions:33,teaStones:31,barShelves:2,vipCapacity:22},update(camera,time,moving){
     if(!group.visible)return false;
+    const vipMoving=vip.update(camera,time,moving);
     const nearBar=Math.hypot(camera.position.x-bar.node.position.x,camera.position.z-bar.node.position.z)<36;
     if(nearBar&&!serviceStarted)loadServer();
     if(nearBar&&barMixer&&moving)barMixer.setTime(time*.75);
-    if(Math.hypot(camera.position.x-tea.node.position.x,camera.position.z-tea.node.position.z)>48)return Boolean(nearBar&&barMixer&&moving);
-    loadHosts();if(!moving)return false;mixers.forEach((m,i)=>m.setTime(time*.65+i*.81));return mixers.length>0;
+    if(Math.hypot(camera.position.x-tea.node.position.x,camera.position.z-tea.node.position.z)>48)return vipMoving||Boolean(nearBar&&barMixer&&moving);
+    loadHosts();if(!moving)return false;mixers.forEach((m,i)=>m.setTime(time*.65+i*.81));return vipMoving||mixers.length>0;
   }};
 }

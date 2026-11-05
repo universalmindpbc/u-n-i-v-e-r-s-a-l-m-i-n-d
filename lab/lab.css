@@ -456,7 +456,7 @@ body[data-camera-view="fashion"] .intro{visibility:hidden}
 
 /* Festival hospitality menus */
 .mobile-places{display:none}
-@media(min-width:1001px){#place-list{grid-template-columns:repeat(10,minmax(0,1fr))}#place-list button{padding-inline:clamp(7px,.9vw,14px);column-gap:4px}}
+@media(min-width:1001px){#place-list{grid-template-columns:repeat(11,minmax(0,1fr))}#place-list button{padding-inline:clamp(7px,.9vw,14px);column-gap:4px}}
 @media(max-width:800px),(max-width:1000px) and (pointer:coarse){
  .mobile-places{display:block;position:relative;z-index:4}
  .mobile-places summary{display:grid;place-items:center;min-height:40px;padding:4px 12px;list-style:none;cursor:pointer;border:1px solid currentColor;border-radius:24px;font-size:12px}
@@ -490,3 +490,8 @@ body[data-camera-view="fashion"] .intro{visibility:hidden}
   .mast-right .festival-tv .ui-icon{display:none}
   .mobile-places summary{min-height:44px;padding-inline:8px}
 }
+
+#vip-menu .venue-menu-head{background:#4c182c;color:#fff0dc}
+#vip-menu .drinks-grid{grid-template-columns:repeat(3,minmax(0,1fr));column-gap:24px}
+#vip-menu .drinks-group>p:last-child{margin-top:12px}
+@media(max-width:700px){#vip-menu .drinks-grid{grid-template-columns:1fr}}

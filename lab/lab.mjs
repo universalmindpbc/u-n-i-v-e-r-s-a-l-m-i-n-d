@@ -1,4 +1,4 @@
-import {createHospitality,venueLocations} from './hospitality.mjs?v=20261105venues1';
+import {createHospitality,venueLocations} from './hospitality.mjs?v=20261105vip1';
 import {createGroundWalkers,createSeatedVisitors,createShowRunway} from './visitor-groups.mjs?v=20261105activity3';
 import { createPortal } from './portal.mjs?v=20261105activity3';
 import { createFestivalCast } from './festival-cast.mjs?v=20261105activity3';
@@ -16,6 +16,7 @@ const portraitMobile = () => mobile() && $('world').clientHeight > $('world').cl
 const status = (message) => { $('scene-status').textContent = message; };
 const places = {
   bar: {number:'09 · NON-ALCOHOLIC BAR',title:'Non-alcoholic bar',copy:'Follow the short path from the main pavilion for the full Heaps Normal beer range, sparkling wines, L-theanine drinks, kombucha and spring water.'},
+  vip: {number:'11 · COCKTAIL BAR',title:'Adaptogen VIP Bar',copy:'Step through the red ropes for a non-alcoholic cocktail, with functional mushrooms on the menu and a DJ at the decks. Capacity 22 people.'},
   tea: {number:'10 · TEA HOUSE',title:'Tea house',copy:'Follow the path downstream to a stone circle with cushions for 33 guests. Asian tea ceremony hosts gather around a low tea table, away from the sound of the main arena.'},
   portal: { number: '08 · I AM PORTAL', title: 'I Am Portal', copy: 'Seven small workshop spaces for education, intervention and interactivity. Explore electronic music, fashion, communication and creative technology in groups of ten.' },
   overview: { number: '', title: 'Overview', copy: 'An open green space for creative learning, emotional awareness and connection. Music, fashion and mindfulness bring people together, with support close at hand.' },
@@ -71,7 +72,7 @@ function selectPlace(key, show = true, automated = false) {
   $('place-title').textContent = info.title;
   $('place-copy').textContent = info.copy;
   if(key!=='overview')emotionPanel(false);
-  const isVenue=key==='bar'||key==='tea';
+  const isVenue=Object.hasOwn(venueLocations,key);
   $('venue-menu-open').hidden=!isVenue;
   if(isVenue)$('venue-menu-open').setAttribute('aria-controls',key+'-menu');
   $('arena-bar').hidden=key!=='main';
@@ -222,7 +223,7 @@ $('replay-story').addEventListener('click',()=>{media.start();startStory();});
 function stopTour(){autoTourCancelled=true;document.body.dataset.cinematic='false';document.body.dataset.tourActive='false';clearTimeout(tourTimer);tourTimer=0;$('tour-toggle').setAttribute('aria-pressed','false');$('tour-toggle').textContent='Tour';syncSceneLabels();}
 $('tour-toggle').addEventListener('click',()=>{
   if(tourTimer||(!autoTourCancelled&&['tour','orbit'].includes(storyState?.phase))){stopTour();return;}
-  stopTour();let n=0;const route=['truck','main','bar','food','play','river','support','fashion','portal','tea'];
+  stopTour();let n=0;const route=['truck','main','bar','vip','food','play','river','support','fashion','portal','tea'];
   $('tour-toggle').setAttribute('aria-pressed','true');$('tour-toggle').textContent='Stop tour';
   const next=()=>{if(n>=route.length){stopTour();selectPlace('overview',false,true);return;}tourTimer=setTimeout(next,n+1===route.length?10000:5000);selectPlace(route[n++],true,true);};next();
 });
@@ -408,6 +409,7 @@ async function buildWorld() {
   path([[0,14],[10,15],[20,10],[25,0]],1.8);
   path([[-25,-8],[-31,-14],[-35,-24]],1.8);
   path([[-4,4],[-5.8,6],[-8.1,7.25],[-10,6.84]],1.75);
+  path([[11,14],[14,9],[16,3],[18,-2],[18,-6.95]],1.65);
   path([[1,48],[7,54],[11,62],[15,66.9],[18.5,66],[19,64.9]],1.8);
   path([[1,48],[-9,53],[-20,54],[-29,52],[-34,56]],2.4);
 
@@ -551,6 +553,7 @@ async function buildWorld() {
   });
   const presets={
     bar:{pos:[-6,3.15,15.8],target:[-10,1.5,5]},
+    vip:{pos:[20.0,3.32,-.65],target:[18,1.32,-11.7]},
     tea:{pos:[23,4.9,71.8],target:[19,1,59]},
     overview:{pos:[65,51,82],target:[-1,0,0]},
     truck:{pos:[-62,4.8,28],target:[-40,2.5,27]},
