@@ -1,0 +1,58 @@
+{
+  "verifiedAt": "2026-11-05T20:00:24.947Z",
+  "site": "https://staging.universalmind.tv",
+  "scopedFilesMatched": [
+    "/read/",
+    "/llms.txt",
+    "/read/resources.json",
+    "/sitemap/",
+    "/sitemap.xml",
+    "/sitemaps/other-public-pages.xml",
+    "/lab/",
+    "/lab/research.html",
+    "/robots.txt"
+  ],
+  "wikiToLab": true,
+  "sitemapToYouthResearch": true,
+  "allFiveResearchAndLabLinks": true,
+  "productionWikiAndMapAwaitApproval": true,
+  "source": "81024eb3dfbd69b9ef205444e0211e5cc295c49e",
+  "supplementalProductionExportCheck": {
+    "passed": true,
+    "dataset_version": "ef9ea1424443061bff06c722cedac0d1d9a4acb855c012ba1ca14e53d026d7e0",
+    "parts": [
+      {
+        "file": "part-44074ce9e043a044ef1476066e04e7cbe8db8554ba5087d6c21eae9e55c88226.bin",
+        "bytes": 50331648,
+        "sha256": "44074ce9e043a044ef1476066e04e7cbe8db8554ba5087d6c21eae9e55c88226"
+      },
+      {
+        "file": "part-6a3940d97e84ae036c7ba62bf7f015c786c21f5c4cecfc640572c54686596158.bin",
+        "bytes": 30953233,
+        "sha256": "6a3940d97e84ae036c7ba62bf7f015c786c21f5c4cecfc640572c54686596158"
+      },
+      {
+        "file": "part-62cc08b681638b1cf77637070e5eebfee1a091b98a80605510abbc6ba3ddb3f3.bin",
+        "bytes": 50331648,
+        "sha256": "62cc08b681638b1cf77637070e5eebfee1a091b98a80605510abbc6ba3ddb3f3"
+      },
+      {
+        "file": "part-2330bf1f97fad3fd88bf2f42259403529a4008ee08b74c56b6e47ca770f22e96.bin",
+        "bytes": 50331648,
+        "sha256": "2330bf1f97fad3fd88bf2f42259403529a4008ee08b74c56b6e47ca770f22e96"
+      },
+      {
+        "file": "part-921b5048447273933e719034b1cd07c06af6e01562421807a2642a97b6e2f176.bin",
+        "bytes": 50331648,
+        "sha256": "921b5048447273933e719034b1cd07c06af6e01562421807a2642a97b6e2f176"
+      },
+      {
+        "file": "part-53267304fc4b4335154f2b5b15db60b47ba32837517b48217d0dbdd3ca59adf8.bin",
+        "bytes": 366196,
+        "sha256": "53267304fc4b4335154f2b5b15db60b47ba32837517b48217d0dbdd3ca59adf8"
+      }
+    ],
+    "total_bytes_verified": 232646021,
+    "sources": 1195
+  }
+}
