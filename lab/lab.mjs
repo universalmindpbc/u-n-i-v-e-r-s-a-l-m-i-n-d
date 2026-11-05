@@ -31,11 +31,10 @@ const footline=document.querySelector('.footline');
 const landscapeFooter=footline.parentElement;
 const landingFooter=document.querySelector('.landing-footer');
 function placeFooter(){
-  const parent=mobile()&&!entered?landingFooter:landscapeFooter;
+  const parent=entered?landscapeFooter:landingFooter;
   if(footline.parentElement!==parent)parent.append(footline);
 }
 placeFooter();
-compactLayout.addEventListener('change',placeFooter);
 const story=createStory(applyStory);
 $('world').inert=true;$('world').setAttribute('aria-hidden','true');
 const media = initMedia(state => sceneAPI?.setMusicMotion(state));
@@ -98,6 +97,15 @@ $('labels-toggle').addEventListener('click', () => {
 });
 document.querySelector('.landing-name').addEventListener('click',()=>$('vision').showModal());
 $('about-open').addEventListener('click', () => $('vision').showModal());
+$('mobile-lineup-open').addEventListener('click', () => {
+  const lineup = $('about-lineup');
+  lineup.open = true;
+  $('vision').showModal();
+  lineup.querySelector('summary').focus({preventScroll:true});
+  lineup.scrollIntoView({block:'center'});
+});
+const aboutArtists = document.querySelector('.about-lineup-artists');
+for (const item of $('artist-lineup').children) aboutArtists.append(item.cloneNode(true));
 $('about-close').addEventListener('click', () => $('vision').close());
 let learningFromAbout=false;
 for(const id of ['learn-main','learn-about'])$(id).addEventListener('click',()=>{stopTour();learningFromAbout=$('vision').open;if(learningFromAbout)$('vision').close();$('learning').showModal();});

@@ -371,6 +371,20 @@ body[data-night="true"] .intro h1,body[data-night="true"] .artist-lineup{color:#
 @media(max-height:500px) and (min-width:601px){.footline .research-link{font-size:8.4px}}
 /* The credit and status sit above the impact message and research link on phones. */
 .landing-footer:empty,.mobile-proposal{display:none}
+.landing-footer{position:absolute;z-index:2;inset-inline:clamp(24px,3vw,52px);bottom:max(16px,env(safe-area-inset-bottom))}
+.landing-footer::before{content:"";position:absolute;z-index:-1;inset:-32px -100vw -40px;background:linear-gradient(transparent,#000d 35%);pointer-events:none}
+.landing-footer .footline{color:#f0f3eb}
+@media(min-width:801px) and (pointer:fine),(min-width:1001px){
+  .landing-footer .footline{display:flex;flex-direction:row;align-items:center;justify-content:space-between}
+  .landing-footer .initiative-credit,.landing-footer .proposal-status{display:none}
+  .landing-footer .impact-ticker{position:relative;inset:auto;align-self:center;width:250px;height:44px;margin:0}
+  .landing-footer .research-link{position:static;align-self:center;display:inline-flex;align-items:center;min-height:44px;font-size:12px;text-decoration:underline;text-underline-offset:4px}
+}
+.about-actions{display:contents}
+#mobile-lineup-open,#about-lineup{display:none}
+.about-research{border-top:1px solid #c5cfbf;padding-top:10px;margin-top:20px}
+.about-research a{display:inline-flex;align-items:center;gap:6px;min-height:44px;color:#29443b;font-size:13px;line-height:1.45;text-decoration:underline;text-underline-offset:4px}
+.about-research .ui-icon{flex:none}
 .impact-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 24px;margin:18px 0}
 .impact-list>div{border-top:1px solid #c5cfbf;padding-top:10px}
 .impact-list dt{font-weight:600;color:#29443b;line-height:1.4}
@@ -381,8 +395,18 @@ body[data-night="true"] .intro h1,body[data-night="true"] .artist-lineup{color:#
 }
 @media(max-width:800px),(max-width:1000px) and (pointer:coarse){
   .landing-footer{position:absolute;z-index:2;bottom:max(8px,env(safe-area-inset-bottom));inset-inline:max(16px,env(safe-area-inset-left)) max(16px,env(safe-area-inset-right));}
-  .landing-footer::before{content:"";position:absolute;z-index:-1;inset:-32px -100vw -40px;background:linear-gradient(transparent,#000d 35%);pointer-events:none}
-  .landing-footer .footline{color:#f0f3eb}
+  .about-actions{position:relative;display:inline-grid;min-width:54px}
+  #mobile-lineup-open{display:block;position:absolute;top:calc(100% + 3px);right:0;width:100%}
+  #about-lineup{display:block;margin:14px 0}
+  #about-lineup summary{display:inline-flex;align-items:center;justify-content:space-between;gap:12px;min-height:44px;padding:8px 14px;border:1px solid #64766a55;border-radius:22px;color:#29443b;font-size:13px;cursor:pointer;list-style:none}
+  #about-lineup summary::-webkit-details-marker{display:none}
+  #about-lineup summary:focus-visible{outline:2px solid #315a45;outline-offset:3px}
+  #about-lineup[open] summary .ui-icon{transform:rotate(180deg)}
+  .about-lineup-artists{padding:14px 0;border-bottom:1px solid #c5cfbf;color:#29443b}
+  .about-lineup-artists p{margin:0 0 14px;font-size:12px}
+  .about-lineup-artists .artist-marks{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 24px;max-width:360px;margin:0}
+  .about-lineup-artists .artist-mark{height:40px}
+  .about-lineup-artists .lineup-more{text-align:center;max-width:360px}
   .footline{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);align-items:center;gap:1px 10px;max-width:540px;margin-inline:auto}
   .footline .initiative-credit,.footline .proposal-status{grid-column:1/-1;justify-self:center;max-width:100%!important;text-align:center}
   .footline .initiative-credit{grid-row:1;font-size:11px;line-height:1.35;text-wrap:balance}
