@@ -116,7 +116,7 @@ const runwayEdit=[
   ['pearl-lantern','asian','braid01','sculpted-bodice','briefs','#f2eee1','#ebe6d6','walk'],
   ['filament-fan','african','short03','sculpted-bodice','briefs','#29232c','#201d26','walk'],
   ['pleated-wings','caucasian','ponytail01','sculpted-bodice','briefs','#acac78','#373b39','wing-walk'],
-  ['black-maillot','african','bob02','runway-knit-maillot','briefs','#171a1e','#171a1e','walk'],
+  ['black-maillot','african','bob02','runway-knit-maillot','none','#171a1e','#171a1e','walk'],
   ['indigo-bike','asian','ponytail01','runway-knit-scoop','runway-knit-bicycle','#4d6396','#394f80','walk'],
   ['panelled-set','caucasian','short02','runway-knit-panel','runway-knit-panel-short','#9163a9','#a266b8','walk'],
   ['azure-legging','african','long01','runway-knit-scoop','runway-knit-ankle','#238ede','#2085d4','walk']

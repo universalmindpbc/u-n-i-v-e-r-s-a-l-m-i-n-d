@@ -16,7 +16,8 @@ function pump() {
 const refitted=new Set(['05','09','D1','D2','D3','phone-09','crowd','walkers','workshops']);
 export function loadCastMember(id) {
   const url = new URL('./assets/festival/' + encodeURIComponent(id) + '.glb', import.meta.url).href;
-  const versioned=refitted.has(id)?url+'?v=20261105activity3':url;
+  const knitRefit=['black-maillot','indigo-bike','panelled-set','azure-legging'].includes(id);
+  const versioned=knitRefit?url+'?v=20261105knit2':refitted.has(id)?url+'?v=20261105activity3':url;
   return new Promise((resolve, reject) => { waiting.push({url:versioned, resolve, reject}); pump(); });
 }
 

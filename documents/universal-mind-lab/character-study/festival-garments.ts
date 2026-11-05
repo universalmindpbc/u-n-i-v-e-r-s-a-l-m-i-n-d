@@ -223,16 +223,32 @@ for(const cut of ['scoop','panel','bicycle','panel-short','ankle','maillot'] as 
     const shoulder=g.body.L.shoulderX;
     const covered=(v:any)=>{
       if(top){
-        const neckline=.71+.10*Math.min(1,v.ax/shoulder)**2;
-        const strap=Math.abs(v.ax/shoulder-.70)<.19;
-        return isUpper(v)&&(cut==='maillot'||v.tt>.46)&&(v.tt<neckline||strap);
+        const side=v.ax/shoulder;
+        const neckline=.71+.12*Math.min(1,side)**2;
+        const strap=Math.abs(side-.65)<.21;
+        if(cut==='maillot'){
+          // Raise the opening towards the outer hip and retain the centre gusset.
+          const legOpening=-.31+.40*Math.min(1,side)**1.55;
+          return (isUpper(v)||v.region===REGION.upperleg)&&v.tt>=legOpening&&(v.tt<neckline||strap);
+        }
+        return isUpper(v)&&v.tt>.46&&(v.tt<neckline||strap);
       }
-      return (isTrunk(v)&&v.tt<.32)||(v.region===REGION.upperleg&&v.t<(cut==='ankle'?1:cut==='bicycle'?.56:.34))||
+      return (isTrunk(v)&&v.tt<.32)||(v.region===REGION.upperleg&&(cut==='ankle'||v.t<(cut==='bicycle'?.56:.34)))||
         (cut==='ankle'&&v.region===REGION.lowerleg&&v.t<.95);
     };
-    const surface=(v:any)=>covered(v);
     const rib=(name:string,color:string)=>cloth(g,name,{...s,pattern:'rib',color,color2:color});
-    const parts=shellPart(g,{covers:surface,offset:cm(.57),relax:2,tile:.34},rib(cut+' rib knit',s.color));
+    const parts=shellPart(g,{covers:covered,offset:cm(.73),relax:1,tile:.34},rib(cut+' rib knit',s.color));
+    // The shell smooths the cut edge. Keep the skin beneath that edge intact in every pose.
+    for(const piece of parts){
+      if(!piece.hides)continue;
+      const exposed=new Set<number>();
+      for(let f=0;f<piece.hides.length;f++)if(!piece.hides[f]){
+        for(let k=0;k<4;k++)exposed.add(g.faceVerts[4*f+k]);
+      }
+      for(let f=0;f<piece.hides.length;f++)if(piece.hides[f]){
+        for(let k=0;k<4;k++)if(exposed.has(g.faceVerts[4*f+k])){piece.hides[f]=0;break;}
+      }
+    }
     if(cut==='panel'||cut==='panel-short'){
       const panel=(v:any)=>cut==='panel'?v.ax/shoulder>.54+1.35*(v.tt-.46):v.side===1;
       parts.push(...shellPart(g,{covers:v=>covered(v)&&panel(v),offset:cm(.85),relax:1,tile:.34},

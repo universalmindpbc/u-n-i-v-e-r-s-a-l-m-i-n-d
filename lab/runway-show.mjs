@@ -1,6 +1,6 @@
-import {loadCastMember} from './festival-cast.mjs?v=20261105activity3';
+import {loadCastMember} from './festival-cast.mjs?v=20261105knit2';
 import {walkingRoute} from './visitor-groups.mjs?v=20261105activity3';
-import {fitCouture} from './runway-couture.mjs';
+import {fitCouture} from './runway-couture.mjs?v=20261105fit2';
 
 const collections={
   iris:['pearl-lantern','filament-fan','pleated-wings'],

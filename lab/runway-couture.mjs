@@ -47,16 +47,16 @@ function filamentFan(THREE,neck,hip){
     }
     c.lineWidth=5;c.beginPath();c.moveTo(0,0);c.lineTo(0,h);c.stroke();
   });thread.repeat.x=11;
-  const organza=new THREE.MeshPhysicalMaterial({map:thread,side:THREE.DoubleSide,transparent:true,depthWrite:false,roughness:.68,emissive:'#e6ddc7',emissiveMap:thread,emissiveIntensity:.16});
+  const organza=new THREE.MeshPhysicalMaterial({map:thread,side:THREE.DoubleSide,transparent:true,depthWrite:false,roughness:.68,emissive:'#e6ddc7',emissiveMap:thread,emissiveIntensity:.27});
   organza.forceSinglePass=true;
   const dress=new THREE.Group();dress.name='Ivory filaments on charcoal organza';
   for(const sign of [-1,1]){
     dress.add(surface(THREE,132,18,(u,v)=>{
       const a=-1.47+2.75*u,flute=Math.cos(u*tau*11);
       const outer=(.64+.07*Math.sin(2*a)+.032*flute)*hip/.80;
-      const r=.045+v*(outer-.045);
-      return [sign*(.022+r*Math.cos(a)),hip+.16+r*Math.sin(a),
-        .145-.32*v+.087*v*Math.sin(u*tau*11+.6*v)];
+      const r=.025+v*(outer-.025);
+      return [sign*(.005+r*Math.cos(a)),hip+.16+r*Math.sin(a),
+        .205-.20*v+.087*v*Math.sin(u*tau*11+.6*v)];
     },organza,'Fan of embroidered pleats'));
   }
   const skirt=new THREE.MeshStandardMaterial({color:'#28252c',roughness:.58,side:THREE.DoubleSide});
@@ -97,6 +97,21 @@ const patterns={'pearl-lantern':pearlLantern,'filament-fan':filamentFan,'pleated
 export function fitCouture(THREE,model,id){
   const hips=model.getObjectByName('Hips'),p=new THREE.Vector3();
   const hip=hips.getWorldPosition(p).y,neck=model.getObjectByName('Neck').getWorldPosition(p).y;
+  // The opaque, floor-length skirts conceal the walking legs throughout the stride.
+  // Trim only skin behind the cloth, leaving the shoes free below the hem.
+  if(id==='pearl-lantern'||id==='pleated-wings'){
+    const hiddenBelow=id==='pearl-lantern'?neck-.13:hip-.10;
+    model.traverse(mesh=>{
+      if(!mesh.isSkinnedMesh||!['Skin','Skin details'].includes(mesh.material.name))return;
+      const geometry=mesh.geometry;
+      const indices=geometry.index.array,positions=geometry.attributes.position,visible=[];
+      for(let i=0;i<indices.length;i+=3){
+        const a=indices[i],b=indices[i+1],c=indices[i+2];
+        if(Math.max(positions.getY(a),positions.getY(b),positions.getY(c))>=hiddenBelow)visible.push(a,b,c);
+      }
+      geometry.setIndex(visible);
+    });
+  }
   const garment=patterns[id](THREE,neck,hip);
   model.add(garment);hips.attach(garment);
 }
