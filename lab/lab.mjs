@@ -319,7 +319,7 @@ syncFullscreen();
 
 async function buildWorld() {
   const THREE = await import('three');
-  const [{OrbitControls},{createArchitecture},{createSiteFeatures},{createCrowd},{createLightShow},{createRunway}]=await Promise.all([import('./vendor/OrbitControls.js'),import('./architecture.mjs?v=20261103purpose1'),import('./site-features.mjs?v=20261105floor1'),import('./crowd.mjs?v=20261105activity3'),import('./light-show.mjs?v=20261105floor1'),import('./runway.mjs?v=20261103orbit1')]);
+  const [{OrbitControls},{createArchitecture},{createSiteFeatures},{createCrowd},{createLightShow},{createRunway}]=await Promise.all([import('./vendor/OrbitControls.js'),import('./architecture.mjs?v=20261103purpose1'),import('./site-features.mjs?v=20261105floor1'),import('./crowd.mjs?v=20261106mainfloor1'),import('./light-show.mjs?v=20261105floor1'),import('./runway.mjs?v=20261103orbit1')]);
   const architecture=createArchitecture(THREE);
   let seed = 1947;
   const random = () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; };
