@@ -1,6 +1,6 @@
-import {createDistanceCast} from './festival-cast.mjs?v=20261105activity3';
+import {createDistanceCast, mainGuestSpots} from './festival-cast.mjs?v=20261105activity3';
 /** Deterministic, fictional people for the Universal Mind spatial concept. Metres; ground Y=0. */
-export function createCrowd(THREE, requestFrame, activityFloorHeight) {
+export function createCrowd(THREE, requestFrame, activityFloorHeight, seats=[]) {
   const visitors=new THREE.Group(),builders=new THREE.Group();
   visitors.name='Universal Mind visitors — articulated scene study';
   builders.name='Local construction team — articulated scene study';
@@ -41,22 +41,26 @@ export function createCrowd(THREE, requestFrame, activityFloorHeight) {
     scratch.position.copy(mid);scratch.scale.set(radius,length,depth);scratch.updateMatrix();m.setMatrixAt(index,scratch.matrix);
   }
   const names=['hip','waist','neck','head','nose','hair','ls','le','lw','rs','re','rw','lh','lk','la','rh','rk','ra','lf','rf'];
-  function person(x,z,role,index){
-    const p={x,z,role,index,scale:(1.6+rand()*.3)/1.8,phase:rand()*Math.PI*2,yaw:(rand()-.5)*.5,skin:pick(skins),shirt:pick(shirts),pants:pick(trousers),hair:pick(hairs),hairSize:.96+rand()*.12,action:index%3,joints:Object.fromEntries(names.map(n=>[n,new THREE.Vector3()])),rotation:new THREE.Quaternion(),bodyRotation:new THREE.Quaternion()};
-    if(role==='visitor')p.yaw=index<56?Math.atan2(-x,-18.4-z)+(rand()-.5)*.12:rand()*Math.PI*2;
+  function person(x,z,role,index,area){
+    const p={x,z,role,index,area,scale:(1.6+rand()*.3)/1.8,phase:rand()*Math.PI*2,yaw:(rand()-.5)*.5,skin:pick(skins),shirt:pick(shirts),pants:pick(trousers),hair:pick(hairs),hairSize:.96+rand()*.12,action:index%3,joints:Object.fromEntries(names.map(n=>[n,new THREE.Vector3()])),rotation:new THREE.Quaternion(),bodyRotation:new THREE.Quaternion()};
+    if(role==='visitor')p.yaw=rand()*Math.PI*2;
+    if(area==='main'){
+      p.yaw=Math.atan2(-x,-18.4-z)+(p.yaw/Math.PI-1)*.46;
+      p.floorY=.085;
+    }
     return p;
   }
   const visitorPeople=[];
-  // Loose groups leave space around the lounges and between the stage and lawn.
+  // Keep the original guests and the groups in the other venues in their places.
   while(visitorPeople.length<56){
     const x=(rand()-.5)*12.2,z=-16+rand()*9.6;
     if(visitorPeople.some(p=>(p.x-x)**2+(p.z-z)**2<.78**2))continue;
-    const p=person(x,z,'visitor',visitorPeople.length);
-    p.yaw+=(rand()-.5)*(p.index%4===0?3.7:1.25);
+    const p=person(x,z,'visitor',visitorPeople.length,'main');
+    p.yaw+=(rand()-.5)*(p.index%4===0?1.15:.55);
     visitorPeople.push(p);
   }
   const lounge=[[-23,-6],[-21,-5],[-26,-8],[-23,-11],[21,10],[24,8],[25,12],[22,13],[-12,7],[-10,9],[7,8],[9,10],[-17,16],[-20,17]];
-  lounge.forEach(([x,z],i)=>visitorPeople.push(person(x,z,'visitor',56+i)));
+  lounge.forEach(([x,z])=>visitorPeople.push(person(x,z,'visitor',visitorPeople.length)));
   // Small groups face each other, a display or the runway. The clear deck is
   // reserved for the models and the road-train loading side stays open.
   const gatherings=[
@@ -79,6 +83,42 @@ export function createCrowd(THREE, requestFrame, activityFloorHeight) {
   }
   const workSites=[[-7,-9],[7,-9],[-6,-15],[6,-15],[0,-6],[-28,-7],[-21,-9],[-26,19],[-20,22],[-31,-20],[21,8],[25,13]];
   const builderPeople=workSites.map(([x,z],i)=>person(x,z,'builder',i));
+  const occupied=visitorPeople.filter(p=>p.area==='main').concat(mainGuestSpots);
+  const fixtures=[...seats];
+  for(const x of [-9.4,9.4])for(const z of [-19,-4.5])fixtures.push({x,z,radius:1.05});
+  function addDancers(count,sample,group){
+    for(let i=0;i<count;i++){
+      let spot=null,best=-Infinity;
+      for(let n=0;n<96;n++){
+        const [x,z]=sample();
+        const ax=Math.abs(x);
+        if(fixtures.some(f=>Math.hypot(x-f.x,z-f.z)<f.radius))continue;
+        if(ax>10.95&&ax<12.40)continue; // Rain screen and deck edge.
+        let clearance=Infinity;
+        for(const other of occupied)clearance=Math.min(clearance,(other.x-x)**2+(other.z-z)**2);
+        if(clearance>best){best=clearance;spot={x,z};}
+      }
+      if(!spot)continue;
+      const dancer=person(spot.x,spot.z,'visitor',visitorPeople.length,'main');
+      if(group&&i%3!==0)dancer.yaw=Math.atan2(group.x-spot.x,group.z-spot.z)+(rand()-.5)*.7;
+      if(Math.abs(spot.x)>12)dancer.floorY=-.116;
+      if(i%2===0)dancer.clubLook='floor-'+(1+Math.floor(rand()*12));
+      visitorPeople.push(dancer);occupied.push(dancer);
+    }
+  }
+  // Stage-facing front rows taper towards the entrance. The rest gather
+  // between the lounge chairs or in small groups just outside the side arches.
+  for(const [count,front,back,width] of [[65,-16.04,-11.7,6.5],[31,-11.7,-6.55,6.15],[12,-6.55,-2.8,4.3]]){
+    addDancers(count,()=>[(rand()*2-1)*width,front+rand()*(back-front)]);
+  }
+  for(const [x,z,spreadX,spreadZ,count] of [
+    [-8.35,-12.55,1.8,1.20,6],[-9.7,-9.5,1.1,1.45,4],[-6.65,-6.15,1.25,.95,4],
+    [-10,-14.85,.85,1.25,4],[-12.98,-11.6,.53,2.35,6],
+    [7.15,-12.4,1.65,1.25,6],[9.6,-9.05,1.2,1.4,5],[7.25,-5.6,1.1,.8,3],
+    [10,-13.9,.85,1.25,4],[12.95,-6.65,.52,2.2,6]
+  ]){
+    addDancers(count,()=>[x+(rand()*2-1)*spreadX,z+(rand()*2-1)*spreadZ],{x,z});
+  }
   function createBatch(group,people,isBuilder){
     const n=people.length,b={people,group,isBuilder,
       torso:mesh(group,'body',n*2),limbs:mesh(group,'limb',n*9),skin:mesh(group,'sphere',n*4),hair:mesh(group,'hair',n),shoes:mesh(group,'box',n*2),bands:mesh(group,'band',n,bandMaterial)};

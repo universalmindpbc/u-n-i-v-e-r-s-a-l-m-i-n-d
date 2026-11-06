@@ -14,11 +14,20 @@ function pump() {
 }
 // Refresh every previously cached form of the adjusted jersey, including the baked cast.
 const refitted=new Set(['05','09','D1','D2','D3','phone-09','crowd','walkers','workshops']);
-export function loadCastMember(id) {
+function requestCastMember(id) {
   const url = new URL('./assets/festival/' + encodeURIComponent(id) + '.glb', import.meta.url).href;
   const knitRefit=['black-maillot','indigo-bike','panelled-set','azure-legging'].includes(id);
   const versioned=knitRefit?url+'?v=20261105knit2':refitted.has(id)?url+'?v=20261105activity3':url;
   return new Promise((resolve, reject) => { waiting.push({url:versioned, resolve, reject}); pump(); });
+}
+
+// Both floors use these baked dance poses. Each venue can move its own mesh
+// nodes, while the GPU geometry and the download are shared.
+let danceFloorAsset;
+export function loadCastMember(id) {
+  if(id!=='vip-dance-floor')return requestCastMember(id);
+  if(!danceFloorAsset)danceFloorAsset=requestCastMember(id).catch(error=>{danceFloorAsset=null;throw error;});
+  return danceFloorAsset.then(asset=>({...asset,scene:asset.scene.clone(true)}));
 }
 
 // Positions in metres on the pavilion deck, riverbank, food lawn and Portal approach.
@@ -37,6 +46,8 @@ const guests = [
   ['aircrew','portal',-32.9,.055,53.3,.42],
   ['navy-whites','portal',-31.86,.055,53.04,-.40]
 ];
+
+export const mainGuestSpots=guests.filter(([,area])=>area==='main').map(([, ,x, ,z])=>({x,z}));
 
 function attachServiceKit(THREE, model, id) {
   const army=id.startsWith('army-'), peaked=id==='navy-whites'||id==='air-service', flight=id==='aircrew';
@@ -119,34 +130,42 @@ export function createFestivalCast(THREE, requestFrame) {
   };
 }
 
-// The distance cast uses four baked poses per outfit. Each outfit takes a single
+// The distance cast uses baked poses per outfit. Each outfit takes a single
 // draw call for all its visitors while individual phases keep the dance varied.
 export function createDistanceCast(THREE, people, fallback, parent, requestFrame) {
   const batches=[], group=new THREE.Group();group.name='Lookbook crowd';parent.add(group);
   let status='waiting', progress=0, previous=-1;
-  const transform=new THREE.Object3D(), proxy={morphTargetInfluences:[0,0,0]};
+  const transform=new THREE.Object3D();
   async function load() {
     status='loading';
     try {
-      const asset=await loadCastMember('crowd');
+      const [asset,dancePack]=await Promise.all([
+        loadCastMember('crowd'),loadCastMember('vip-dance-floor').catch(()=>null)
+      ]);
       const looks=asset.scene.children;
+      const clubLooks=new Map(dancePack?.scene.children.map(look=>[look.userData.look,look])??[]);
+      const byLook=new Map();
+      for(const person of people){
+        const look=clubLooks.get(person.clubLook)??looks[(person.index*7+Math.floor(person.index/8)*3)%looks.length];
+        if(!byLook.has(look))byLook.set(look,[]);
+        byLook.get(look).push(person);
+      }
       const material=new THREE.MeshStandardMaterial({vertexColors:true,roughness:.88,side:THREE.DoubleSide});
-      looks.forEach((look,k)=>{
-        const guests=people.filter(p=>(p.index*7+Math.floor(p.index/8)*3)%looks.length===k);
-        if(!guests.length)return;
+      for(const [look,guests] of byLook){
+        const proxy={morphTargetInfluences:new Array(look.geometry.morphAttributes.position.length).fill(0)};
         const g=look.geometry;g.computeVertexNormals();
         const mesh=new THREE.InstancedMesh(g,material,guests.length);
         mesh.name='Festival crowd '+look.userData.look;
         const members=guests.map((p,i)=>{
-          transform.position.set(p.x,p.floorY??(p.index<56?.085:-.08),p.z);
+          transform.position.set(p.x,p.floorY??-.08,p.z);
           transform.rotation.y=p.yaw;transform.scale.set(p.scale*(.95+.016*(p.index%6)),p.scale,p.scale);
           transform.updateMatrix();mesh.setMatrixAt(i,transform.matrix);
           // Allocate for every slot before the story starts revealing visitors.
           mesh.setMorphAt(i,proxy);
           return {person:p,matrix:transform.matrix.clone(),bounds:new THREE.Sphere(new THREE.Vector3(p.x,1,p.z),1.4)};
         });
-        mesh.computeBoundingSphere();mesh.count=0;mesh.receiveShadow=true;group.add(mesh);batches.push({mesh,members,slots:[]});
-      });
+        mesh.computeBoundingSphere();mesh.count=0;mesh.receiveShadow=true;group.add(mesh);batches.push({mesh,members,proxy,slots:[]});
+      }
       status='ready';fallback.visible=false;requestFrame();
     } catch(error) {status='error';console.error('Loading lookbook crowd',error);}
   }
@@ -155,7 +174,7 @@ export function createDistanceCast(THREE, people, fallback, parent, requestFrame
     update(time,moving,frustum) {
       if(status!=='ready')return;
       const tick=moving?Math.floor(time*16):Math.max(0,previous);
-      for(const {mesh,members,slots} of batches){
+      for(const {mesh,members,proxy,slots} of batches){
         const limit=Math.floor(progress*members.length);
         let count=0,matricesChanged=false,posesChanged=false;
         for(let i=0;i<limit;i++){
@@ -164,11 +183,13 @@ export function createDistanceCast(THREE, people, fallback, parent, requestFrame
           const moved=slots[count]!==member;
           if(moved){slots[count]=member;mesh.setMatrixAt(count,member.matrix);matricesChanged=true;}
           if(moved||tick!==previous){
-            const p=member.person,rate=(p.index<56?2.7:1.05)+.065*(p.index%5);
-            const cycle=(tick/16*rate+p.phase)%4,base=Math.floor(cycle),fraction=cycle-base;
-            const weights=proxy.morphTargetInfluences;weights.fill(0);
+            const p=member.person,weights=proxy.morphTargetInfluences,frames=weights.length+1;
+            const cyclesPerSecond=(p.area==='main'?.675:.2625)+.01625*(p.index%5);
+            const cycle=(tick/16*cyclesPerSecond+p.phase/4)*frames%frames;
+            const base=Math.floor(cycle),fraction=cycle-base;
+            weights.fill(0);
             if(base)weights[base-1]=1-fraction;
-            if(base<3)weights[base]=fraction;
+            if(base<weights.length)weights[base]=fraction;
             mesh.setMorphAt(count,proxy);posesChanged=true;
           }
           count++;

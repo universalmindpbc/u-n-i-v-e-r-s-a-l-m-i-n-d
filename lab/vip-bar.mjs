@@ -1,6 +1,6 @@
 import {loadCastMember} from './festival-cast.mjs?v=20261105activity3';
 
-import {createVipDancers} from './vip-dancers.mjs?v=20261105fit2';
+import {createVipDancers,vipCapacity} from './vip-dancers.mjs?v=20261106floors2';
 import {createVipEffects} from './vip-effects.mjs?v=20261105fit2';
 
 export function buildVipBar(THREE, venue, make, requestFrame) {
@@ -13,7 +13,7 @@ export function buildVipBar(THREE, venue, make, requestFrame) {
 
   // Two equal radii; their centres sit one radius apart. The deck is their
   // geometric union, with both complete circles traced separately on its surface.
-  const radius=3.5, left=-radius/2, right=radius/2;
+  const radius=5, left=-radius/2, right=radius/2;
   const floor=.15;
   const v=(x,y,z)=>new THREE.Vector3(x,y,z);
   function deck(shape,mat,bottom,height){
@@ -70,7 +70,7 @@ export function buildVipBar(THREE, venue, make, requestFrame) {
     const shape=new THREE.Shape();shape.absarc(cx,-cz,outer,start,end,false);
     shape.absarc(cx,-cz,inner,end,start,true);shape.closePath();deck(shape,mat,bottom,height);
   }
-  const counterX=right+.22,counterZ=-.93;
+  const counterX=right+.22,counterZ=-1.12;
   sector(counterX,counterZ,1.12,1.64,-2.83,-.29,.18,.90,velvet);
   sector(counterX,counterZ,1.08,1.68,-2.83,-.29,1.08,.045,chrome);
   sector(counterX,counterZ,1.04,1.72,-2.83,-.29,1.125,.09,marble);
@@ -111,7 +111,7 @@ export function buildVipBar(THREE, venue, make, requestFrame) {
   };
 
   // A round podium, twin turntables and a mixer face into the left dance floor.
-  const djX=left-.59,djZ=-1.82;
+  const djX=left-.59,djZ=-2.80;
   cylinder(chrome,djX,.21,djZ,1.22,1.26,.08,56);
   cylinder(graphite,djX,.35,djZ,1.22,1.22,.21,56);
   const deskZ=djZ+.39;
@@ -127,8 +127,8 @@ export function buildVipBar(THREE, venue, make, requestFrame) {
     box(pearl,djX-.21+i*.13,1.513,deskZ-.04+(i%2)*.07,.068,.03,.03);
   }
   for(const x of [djX-1.05,djX+1.05]){
-    cylinder(chrome,x,.94,-2.24,.035,.09,1.46);box(ink,x,1.93,-2.24,.38,.63,.33);
-    for(const y of [1.80,2.06])add(new THREE.CylinderGeometry(.11,.11,.025,18),lacquer,x,y,-2.06,1,1,1,Math.PI/2);
+    cylinder(chrome,x,.94,djZ-.42,.035,.09,1.46);box(ink,x,1.93,djZ-.42,.38,.63,.33);
+    for(const y of [1.80,2.06])add(new THREE.CylinderGeometry(.11,.11,.025,18),lacquer,x,y,djZ-.24,1,1,1,Math.PI/2);
   }
   for(const x of [right+.70,right+1.67]){
     cylinder(chrome,x,.24,1.94,.15,.19,.08);cylinder(chrome,x,.59,1.94,.037,.05,.65);
@@ -136,17 +136,17 @@ export function buildVipBar(THREE, venue, make, requestFrame) {
   }
   const effects=createVipEffects(THREE,venue,{ink,chrome,carpet:carpetSurface},djX,djZ,left,radius);
   venue.finish();
-  const updateDancers=createVipDancers(THREE,node,requestFrame);
 
   const cast=[],servers=[],floorStaff=[];
   let started=false;
   // Service passes in front of the counter, around the dancers and back past
   // the stools. Arc-length sampling keeps both servers at a steady walking pace.
   const route=new THREE.CatmullRomCurve3([
-    [4.38,1.04],[3.75,.60],[3.07,1.12],[1.78,1.36],[.35,1.13],[-1.5,.20],
-    [-3.65,-.10],[-4.42,.68],[-4.18,1.74],[-3.1,2.57],[-1.96,2.95],
-    [-.78,2.60],[.05,2.16],[1.14,2.55],[2.44,2.82],[3.58,2.66],[4.26,1.89]
+    [right+.2,1.3],[.6,1.65],[-1.8,1.29],[-3.8,1.65],[-5.6,1.45],
+    [-5.85,2.35],[-4.5,3.38],[-2.45,4.1],[-.8,3.58],[.8,3.34],
+    [2.8,3.8],[4.85,3.35],[5.38,2.1],[5.1,1.22],[right+1.45,.94]
   ].map(([x,z])=>v(x,.168,z)),true);
+  const updateDancers=createVipDancers(THREE,node,requestFrame,{radius,djX,djZ,counterX,counterZ,route});
   const lapSeconds=route.getLength()/.81;
   const makeMesh=(geometry,material)=>new THREE.Mesh(geometry,material);
   function serviceProps(model) {
@@ -187,7 +187,7 @@ export function buildVipBar(THREE, venue, make, requestFrame) {
     effects.update(t,moving);shimmer.value=t;
     if(Math.hypot(camera.position.x-node.position.x,camera.position.z-node.position.z)>34)return crowdChanged;
     if(!started){
-      started=true;person('vip-pour-1',counterX-.67,.17,-.45,1.1);person('vip-pour-2',counterX+.67,.17,-.45,2.55);
+      started=true;person('vip-pour-1',counterX-.67,.17,counterZ+.48,1.1);person('vip-pour-2',counterX+.67,.17,counterZ+.48,2.55);
       person('vip-dj',djX,.455,djZ,.7);
       person('vip-service-white',0,.168,0,lapSeconds*.20);
       person('vip-service-black',0,.168,0,lapSeconds*.70);
@@ -212,5 +212,5 @@ export function buildVipBar(THREE, venue, make, requestFrame) {
     }
     return moving;
   }
-  return {setNight:effects.setNight,update};
+  return {capacity:vipCapacity,setNight:effects.setNight,update};
 }
