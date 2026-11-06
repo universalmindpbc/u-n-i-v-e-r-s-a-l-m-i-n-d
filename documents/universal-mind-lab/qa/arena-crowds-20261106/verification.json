@@ -1,0 +1,48 @@
+{
+  "source": {
+    "index.html": "bb2c5dabf8229d061f3c453a6830df010d80130a523a85517249c914e337ee6f",
+    "lab.mjs": "194c6ca2eeb4c987baa19fc36dc436f42e8064bced1214d1f5aed8c591edffe2",
+    "crowd.mjs": "60ac4dbd42f7c45964d3cca6818e589e0962873203fca935d6387ceebe7ee437",
+    "site-features.mjs": "b4d281387afff1f12043b7204a09039e5ebde0e4d2ef0c9258ca22fbfc35deb7",
+    "hospitality.mjs": "7dff586aa6e7f7898b0af5b9513e19d850ec52c7ae039a893363239665f65f6a",
+    "vip-bar.mjs": "51c818f42bba915011ad5c27822051afc80a17a34e8fd4215bb0c39356271795",
+    "vip-dancers.mjs": "3f9a2f7f5c1fa61ea4a3e90facd85144ee04fde6225b9da47ced1db2254705d3",
+    "festival-cast.mjs": "2c03075e6474640f9e73a7f925aa8bdb8dffe42d33fe852afc758b5159c35864"
+  },
+  "views": [
+    {
+      "width": 1366,
+      "height": 848,
+      "overviewVisible": 212,
+      "sideGuests": [
+        22,
+        22
+      ],
+      "outside": 12,
+      "insideVisible": 166,
+      "vipGuests": 55,
+      "vipStaff": 5,
+      "vipLooks": 15,
+      "menuVerified": true,
+      "bothCrowdsAnimated": true,
+      "errors": []
+    },
+    {
+      "width": 393,
+      "height": 852,
+      "overviewVisible": 212,
+      "sideGuests": [
+        22,
+        22
+      ],
+      "outside": 12,
+      "insideVisible": 143,
+      "vipGuests": 55,
+      "vipStaff": 5,
+      "vipLooks": 15,
+      "menuVerified": true,
+      "bothCrowdsAnimated": true,
+      "errors": []
+    }
+  ]
+}
