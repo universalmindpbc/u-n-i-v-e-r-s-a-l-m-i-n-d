@@ -116,5 +116,8 @@ export function createSiteFeatures(THREE, scene, video, architecture, geometryVi
     shelter.visible=isRain&&state.navigation;layout.visible=showLayout&&state.navigation;glowGroup.visible=isNight>0&&state.programme>0;
   }
   sync();
-  return {videoMap,setStory(value){state=value;sync();},setNight(value){isNight=Number(value);sync();},setRain(value){isRain=value;sync();},setLayout(value){showLayout=value;sync();},update(t){stageVisuals.update();projectionMaterial.uniforms.time.value=t;return state.seconds>2&&state.seconds<31;},stats:{attendanceAmbition:100,mainLoungeChairs:10,mainHangingSeats:4,mainDaybeds:2,listeningPylons:4,lineArrays:4}};
+  const mainSeatClearances=mainFurniture.children.map(({position,userData})=>({
+    x:position.x,z:position.z,radius:Math.hypot(userData.nominalWidth,userData.nominalDepth)/2+.46
+  }));
+  return {videoMap,mainSeatClearances,setStory(value){state=value;sync();},setNight(value){isNight=Number(value);sync();},setRain(value){isRain=value;sync();},setLayout(value){showLayout=value;sync();},update(t){stageVisuals.update();projectionMaterial.uniforms.time.value=t;return state.seconds>2&&state.seconds<31;},stats:{attendanceAmbition:100,mainLoungeChairs:10,mainHangingSeats:4,mainDaybeds:2,listeningPylons:4,lineArrays:4}};
 }

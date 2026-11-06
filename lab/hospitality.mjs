@@ -1,12 +1,12 @@
 import {createTowerVisitors} from './tower-visitors.mjs';
-import {buildVipBar} from './vip-bar.mjs?v=20261105fit2';
+import {buildVipBar} from './vip-bar.mjs?v=20261106floors2';
 import {mergeGeometries} from './vendor/BufferGeometryUtils.js';
 import {loadCastMember} from './festival-cast.mjs?v=20261105activity3';
 
 import {createHealthVenues} from './health-venues.mjs?v=20261105grounds1';
 import {createElevation,levelHeight} from './elevation.mjs?v=20261105grounds1';
 
-export const venueLocations = {bar:[-10,5], tea:[19,59], vip:[18,-11],checking:[-42,-10],'first-aid':[-23,-31],elevation:[19,35]};
+export const venueLocations = {bar:[-10,5], tea:[19,59], vip:[20.7,-11],checking:[-42,-10],'first-aid':[-23,-31],elevation:[19,35]};
 
 // Build each venue by material so the stonework, cushions and stocked shelves
 // cost a handful of draw calls even when the full grounds are visible on a phone.
@@ -155,7 +155,7 @@ export function createHospitality(THREE,requestFrame){
     }).catch(e=>console.error('Bar server asset',e));
   }
   let barMixer=null;
-  return {group,setNight:vip.setNight,stats:{teaCushions:33,teaStones:31,barShelves:2,vipCapacity:22},update(camera,time,moving){
+  return {group,setNight:vip.setNight,stats:{teaCushions:33,teaStones:31,barShelves:2,vipCapacity:vip.capacity},update(camera,time,moving){
     if(!group.visible)return false;
     const vipMoving=vip.update(camera,time,moving);
     const towerMoving=updateTower(camera,time,moving);

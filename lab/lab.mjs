@@ -1,4 +1,4 @@
-import {createHospitality,venueLocations} from './hospitality.mjs?v=20261105fit2';
+import {createHospitality,venueLocations} from './hospitality.mjs?v=20261106floors2';
 import {sunsetLevels,levelHeight,createSunsetSky} from './elevation.mjs?v=20261105grounds1';
 import {createGroundWalkers,createSeatedVisitors} from './visitor-groups.mjs?v=20261105activity3';
 import {createShowRunway} from './runway-show.mjs?v=20261105fit2';
@@ -21,7 +21,7 @@ const places = {
   'first-aid':{number:'13 · EVENT MEDICAL',title:'First aid',copy:'For overheating, injuries or feeling unwell, come to the first aid geodome. The proposed St John Ambulance NSW and Médecins Sans Frontières team has treatment and cooling space beside the ambulance access lane.'},
   elevation:{number:'14 · SUNSET TOWER',title:'Elevation Bar',copy:'We propose licensing SPECTRA by NEWSUBSTANCE as a mental health facility to explore how colour affects mood. Follow the spiral from gold to crimson through four lookouts to the Blue Lotus bar on level five. Ten people per level.'},
   bar: {number:'09 · NON-ALCOHOLIC BAR',title:'Non-alcoholic bar',copy:'Follow the short path from the main pavilion for the full Heaps Normal beer range, sparkling wines, L-theanine drinks, kombucha and spring water.'},
-  vip: {number:'11 · VIP ARENA',title:'James Bondage VIP',copy:'Two interlocking circles form a Vesica Piscis. The DJ plays on the black dance floor. Across the white carpet, the Adaptogen Cocktail Bar serves non-alcoholic cocktails with functional mushrooms and botanicals. Capacity 22 people.'},
+  vip: {number:'11 · VIP ARENA',title:'James Bondage VIP',copy:'Two interlocking circles form a Vesica Piscis. The DJ plays on the black dance floor. Across the white carpet, the Adaptogen Cocktail Bar serves non-alcoholic cocktails with functional mushrooms and botanicals. Capacity 55 guests.'},
   tea: {number:'10 · TEA HOUSE',title:'Tea house',copy:'Follow the path downstream to a stone circle with cushions for 33 guests. Asian tea ceremony hosts gather around a low tea table, away from the sound of the main arena.'},
   portal: { number: '08 · I AM PORTAL', title: 'I Am Portal', copy: 'Seven small workshop spaces for education, intervention and interactivity. Explore electronic music, fashion, communication and creative technology in groups of ten.' },
   overview: { number: '', title: 'Overview', copy: 'An open green space for creative learning, emotional awareness and connection. Music, fashion and mindfulness bring people together, with support close at hand.' },
@@ -319,7 +319,7 @@ syncFullscreen();
 
 async function buildWorld() {
   const THREE = await import('three');
-  const [{OrbitControls},{createArchitecture},{createSiteFeatures},{createCrowd},{createLightShow},{createRunway}]=await Promise.all([import('./vendor/OrbitControls.js'),import('./architecture.mjs?v=20261103purpose1'),import('./site-features.mjs?v=20261105floor1'),import('./crowd.mjs?v=20261106mainfloor1'),import('./light-show.mjs?v=20261105floor1'),import('./runway.mjs?v=20261103orbit1')]);
+  const [{OrbitControls},{createArchitecture},{createSiteFeatures},{createCrowd},{createLightShow},{createRunway}]=await Promise.all([import('./vendor/OrbitControls.js'),import('./architecture.mjs?v=20261103purpose1'),import('./site-features.mjs?v=20261106floors2'),import('./crowd.mjs?v=20261106floors2'),import('./light-show.mjs?v=20261105floor1'),import('./runway.mjs?v=20261103orbit1')]);
   const architecture=createArchitecture(THREE);
   let seed = 1947;
   const random = () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; };
@@ -467,7 +467,7 @@ async function buildWorld() {
   path([[0,14],[10,15],[20,10],[25,0]],1.8);
   path([[-25,-8],[-31,-14],[-35,-24]],1.8);
   path([[-4,4],[-5.8,6],[-8.1,7.25],[-10,6.84]],1.75);
-  path([[11,14],[14,9],[16,3],[18,-2],[18,-8.04]],1.65);
+  path([[11,14],[14,9],[17,3],[19.3,-2],[20.7,-6.7]],1.65);
   path([[1,48],[7,54],[11,62],[15,66.9],[18.5,66],[19,64.9]],1.8);
   path([[1,48],[-9,53],[-20,54],[-29,52],[-34,56]],2.4);
 
@@ -501,7 +501,7 @@ async function buildWorld() {
     floorProbe.set(new THREE.Vector3(x,1,z),down);
     return floorProbe.intersectObjects(footSurfaces,false)[0]?.point.y??-.12;
   }
-  const crowd=createCrowd(THREE,()=>{needsFrame=true;requestFrame();},activityFloorHeight),runwayCrowd=createShowRunway(THREE,()=>{needsFrame=true;requestFrame();}),runway=createRunway(THREE,scene,features.videoMap);scene.add(crowd.builders,crowd.visitors,runwayCrowd.group);
+  const crowd=createCrowd(THREE,()=>{needsFrame=true;requestFrame();},activityFloorHeight,features.mainSeatClearances),runwayCrowd=createShowRunway(THREE,()=>{needsFrame=true;requestFrame();}),runway=createRunway(THREE,scene,features.videoMap);scene.add(crowd.builders,crowd.visitors,runwayCrowd.group);
   const performanceStage=createPerformance(THREE);scene.add(performanceStage.group);
   const activities=createActivities(THREE,architecture,requestFrame);scene.add(activities.group);
   const festivalCast=createFestivalCast(THREE,()=>{needsFrame=true;requestFrame();});
@@ -615,7 +615,7 @@ async function buildWorld() {
   });
   const presets={
     bar:{pos:[-6,3.15,15.8],target:[-10,1.5,5]},
-    vip:{pos:[18,9.3,-.1],target:[18,.60,-11]},
+    vip:{pos:[20.7,10.4,3.1],target:[20.7,.72,-11]},
     tea:{pos:[23,4.9,71.8],target:[19,1,59]},
     overview:{pos:[65,51,82],target:[-1,0,0]},
     truck:{pos:[-62,4.8,28],target:[-40,2.5,27]},
