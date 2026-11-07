@@ -1,0 +1,37 @@
+[
+  {
+    "file": "index.html",
+    "status": 200,
+    "sha256": "6050e46f774d311af7eed15e45e3f462e78a14c9f990d0b12d62d0346f32ecca"
+  },
+  {
+    "file": "lab.mjs",
+    "status": 200,
+    "sha256": "77719bc16e7e54239322c1f7c4cf34010c463b9e8f1e5ae150cfddbc97d9a73d"
+  },
+  {
+    "file": "academy.css",
+    "status": 200,
+    "sha256": "679de68c4bce8b1cc489bad1b9413fa77de83d5f5bbc1eac96c43ea0bb35b5f4"
+  },
+  {
+    "file": "partner-marks.css",
+    "status": 200,
+    "sha256": "1c936b1074a41915575d76f3793d47da2a097df63e30ca0ee53b6f27060f88c6"
+  },
+  {
+    "file": "assets/csiro-white.svg",
+    "status": 200,
+    "sha256": "39fd889d07f792fe626970512ae0dc4d4d6046c52ff4fb05c4ef5379b3bd8b91"
+  },
+  {
+    "file": "assets/live-nation.svg",
+    "status": 200,
+    "sha256": "c70963e53f385530f4254150df451f54002566da6ee7a9e35ac40b4d0a729007"
+  },
+  {
+    "file": "research.html",
+    "status": 200,
+    "sha256": "944e9d765e71ddbcbabdaf3b050dc9e1f720861e25fac7187721cd356572301f"
+  }
+]

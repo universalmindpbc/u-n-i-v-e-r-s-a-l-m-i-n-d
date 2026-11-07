@@ -1,0 +1,12 @@
+{
+  "stagingAudit": "d4958495030346669f45cf03c3575754ccfd3b22",
+  "productionBase": "eb01597176ddf920a4c16a34b4f78afe06a5e38e",
+  "labFilesMatchApprovedStaging": 130,
+  "existingFilesChanged": [
+    "lab/index.html",
+    "lab/lab.mjs",
+    "lab/research.html",
+    "tools/check-lab-stage.mjs"
+  ],
+  "scope": "Complete approved Lab source and its preflight check. Other project source remains at the production baseline."
+}

@@ -50,7 +50,7 @@ try{
       if(mode!=='baseline'){
         await page.locator('.landing-name').click();
         const aboutText=await page.locator('#vision').innerText();assert(aboutText.includes('Guided by the Universal Mind values'));assert(!aboutText.includes('Universal Nine'));
-        if(releaseTarget==='staging'){await page.locator('.academy-about').scrollIntoViewIfNeeded();await page.locator('.academy-about').screenshot({path:path.join(out,`about-${viewport.width}.png`)});checks.push({viewport,correctedCopy:true,exactHTMLAsset:true,knownAnalyticsInjectionOnly:true});continue;} 
+        if(releaseTarget==='staging'){await page.locator('.academy-about').scrollIntoViewIfNeeded();await page.locator('.academy-about').screenshot({path:path.join(out,`about-${viewport.width}.png`)});checks.push({viewport,correctedCopy:true,exactHTMLAsset:true,knownAnalyticsInjectionOnly:true});continue;}
         for(const name of ['steam','continuum']){
           const opener=page.locator('#academy-'+name+'-open');
           await opener.scrollIntoViewIfNeeded();
