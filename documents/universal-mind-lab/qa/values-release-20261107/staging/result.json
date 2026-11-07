@@ -1,0 +1,30 @@
+{
+  "mode": "live",
+  "passed": true,
+  "url": "https://staging.universalmind.tv/lab/",
+  "processMuted": true,
+  "nativeFullscreen": false,
+  "originalDiagramSha256": "c4b91301308fab71d8d01032a4b3793cf0ffdb428ae7cc39e84b40cf8e108ba8",
+  "checks": [
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "correctedCopy": true,
+      "exactHTMLAsset": true,
+      "knownAnalyticsInjectionOnly": true
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "correctedCopy": true,
+      "exactHTMLAsset": true,
+      "knownAnalyticsInjectionOnly": true
+    }
+  ],
+  "errors": [],
+  "failed": []
+}
