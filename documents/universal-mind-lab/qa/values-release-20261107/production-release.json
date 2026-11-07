@@ -1,0 +1,21 @@
+{
+  "url": "https://universalmind.tv/lab/",
+  "productionCandidate": "44241bfca23ab72ff0e4891ba2d2e206ed1bf1aa",
+  "approvedStagingSource": "d4958495030346669f45cf03c3575754ccfd3b22",
+  "productionTag": "production-2026-11-07-1954",
+  "approvedLabFilesMatch": 130,
+  "checks": [
+    "About text: Universal Mind values",
+    "Original learning diagram preserved",
+    "Separate clockwise six-area STEAM circle",
+    "Separate circular learning continuum",
+    "Daytime green and nighttime white partner logos",
+    "Centred initiative credit and Proposal",
+    "Desktop and mobile dialog close, Escape, focus and scroll restoration",
+    "Seven changed public assets match source hashes over HTTPS"
+  ],
+  "processMuted": true,
+  "nativeFullscreen": false,
+  "unrelatedProductionSourcePreserved": true,
+  "analyticsNote": "Browser responses include the hosting service analytics script; checks allow only that exact provider script and separately verify raw HTML assets."
+}
