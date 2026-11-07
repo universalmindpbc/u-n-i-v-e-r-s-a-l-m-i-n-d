@@ -1,0 +1,128 @@
+{
+  "mode": "live",
+  "passed": true,
+  "url": "https://staging.universalmind.tv/lab/",
+  "processMuted": true,
+  "nativeFullscreen": false,
+  "originalDiagramSha256": "c4b91301308fab71d8d01032a4b3793cf0ffdb428ae7cc39e84b40cf8e108ba8",
+  "checks": [
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "logos": [
+        {
+          "theme": "day",
+          "visible": 2
+        },
+        {
+          "theme": "night",
+          "visible": 2
+        }
+      ],
+      "dialogJourney": true,
+      "footer": {
+        "width": 1356,
+        "scrollWidth": 1356,
+        "rect": {
+          "x": 42,
+          "y": 934,
+          "width": 1356,
+          "height": 42
+        },
+        "text": "Dissolving Stigma\nTransforming Access\nFree to Participate\nTransforming Referral Pathways\na mental health initiative by New South Wales Education, Headspace & Universal Mind\nArtists, festival partners and mental health partners are proposed and not confirmed.\nA direct response to this body of research "
+      },
+      "fullscreenCallsIntercepted": 1
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "logos": [
+        {
+          "theme": "day",
+          "visible": 2
+        },
+        {
+          "theme": "night",
+          "visible": 2
+        }
+      ],
+      "dialogJourney": true,
+      "footer": {
+        "width": 358,
+        "scrollWidth": 358,
+        "rect": {
+          "x": 16,
+          "y": 721.828125,
+          "width": 358,
+          "height": 112.171875
+        },
+        "text": "Dissolving Stigma\nTransforming Access\nFree to Participate\nTransforming Referral Pathways\na mental health initiative by New South Wales Education, Headspace & Universal Mind\nProposal\nA direct response to this body of research "
+      },
+      "fullscreenCallsIntercepted": 1
+    },
+    {
+      "viewport": {
+        "width": 320,
+        "height": 740
+      },
+      "logos": [
+        {
+          "theme": "day",
+          "visible": 2
+        },
+        {
+          "theme": "night",
+          "visible": 2
+        }
+      ],
+      "dialogJourney": true,
+      "footer": {
+        "width": 288,
+        "scrollWidth": 288,
+        "rect": {
+          "x": 16,
+          "y": 602.4375,
+          "width": 288,
+          "height": 127.5625
+        },
+        "text": "Dissolving Stigma\nTransforming Access\nFree to Participate\nTransforming Referral Pathways\na mental health initiative by New South Wales Education, Headspace & Universal Mind\nProposal\nA direct response to this body of research "
+      },
+      "fullscreenCallsIntercepted": 1
+    },
+    {
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "logos": [
+        {
+          "theme": "day",
+          "visible": 2
+        },
+        {
+          "theme": "night",
+          "visible": 2
+        }
+      ],
+      "dialogJourney": true,
+      "footer": {
+        "width": 812,
+        "scrollWidth": 812,
+        "rect": {
+          "x": 16,
+          "y": 340.21875,
+          "width": 812,
+          "height": 45.78125
+        },
+        "text": "Dissolving Stigma\nTransforming Access\nFree to Participate\nTransforming Referral Pathways\na mental health initiative by New South Wales Education, Headspace & Universal Mind\nProposal\nA direct response to this body of research "
+      },
+      "fullscreenCallsIntercepted": 1
+    }
+  ],
+  "errors": [],
+  "failed": []
+}

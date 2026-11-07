@@ -1,0 +1,32 @@
+[
+  {
+    "file": "index.html",
+    "status": 200,
+    "sha256": "ce40b3a86186b90571b2a284ba0b2575f1b94c41865bab7d1c5645c91f6657ef"
+  },
+  {
+    "file": "lab.mjs",
+    "status": 200,
+    "sha256": "77719bc16e7e54239322c1f7c4cf34010c463b9e8f1e5ae150cfddbc97d9a73d"
+  },
+  {
+    "file": "academy.css",
+    "status": 200,
+    "sha256": "679de68c4bce8b1cc489bad1b9413fa77de83d5f5bbc1eac96c43ea0bb35b5f4"
+  },
+  {
+    "file": "partner-marks.css",
+    "status": 200,
+    "sha256": "e3b131206ef736cc372460ea63b5a23066c690b0b9be4d76f46160191f904c30"
+  },
+  {
+    "file": "assets/csiro-white.svg",
+    "status": 200,
+    "sha256": "39fd889d07f792fe626970512ae0dc4d4d6046c52ff4fb05c4ef5379b3bd8b91"
+  },
+  {
+    "file": "assets/live-nation.svg",
+    "status": 200,
+    "sha256": "c70963e53f385530f4254150df451f54002566da6ee7a9e35ac40b4d0a729007"
+  }
+]

@@ -1,0 +1,31 @@
+{
+  "date": "2026-11-07",
+  "route": "https://staging.universalmind.tv/lab/",
+  "sources": [
+    {
+      "files": [
+        "lab/assets/csiro-white.svg"
+      ],
+      "source": "https://www.rd-alliance.org/wp-content/uploads/2024/04/CSIROBrandGuidelines_Logo_v4.pdf",
+      "author": "CSIRO",
+      "document": "CSIRO brand identity guidelines, Version 4, June 2019",
+      "page": 3,
+      "treatment": "Original reverse vector paths extracted from the published logo variants; illustration background and surrounding page omitted. No path geometry altered. CSS mask uses the footer text colour by day and white by night.",
+      "sha256": {
+        "lab/assets/csiro-white.svg": "39fd889d07f792fe626970512ae0dc4d4d6046c52ff4fb05c4ef5379b3bd8b91"
+      }
+    },
+    {
+      "files": [
+        "lab/assets/live-nation.svg"
+      ],
+      "source": "https://networksites.livenationinternational.com/networksites/lbxlwtw5/ln-logo-primary-red-40px.svg",
+      "sourcePage": "https://www.livenation.com.au/",
+      "treatment": "Official SVG copied unchanged. CSS mask renders its silhouette in the footer text colour by day and white by night.",
+      "sha256": {
+        "lab/assets/live-nation.svg": "c70963e53f385530f4254150df451f54002566da6ee7a9e35ac40b4d0a729007"
+      }
+    }
+  ],
+  "boundary": "Main experience only; no splash logos; existing proposal notice retained. No production deployment."
+}
