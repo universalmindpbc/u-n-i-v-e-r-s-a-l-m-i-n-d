@@ -184,6 +184,33 @@ $('learning').addEventListener('close',()=>{if(learningFromAbout){learningFromAb
 $('learn-close').addEventListener('click',()=>$('learning').close());
 $('learning').addEventListener('click',e=>{if(e.target===$('learning')){const r=e.target.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)e.target.close();}});
 
+for(const name of ['steam','continuum']){
+  const dialog=$('academy-'+name),opener=$('academy-'+name+'-open');
+  const aboutScroll=document.querySelector('#vision .proposal-scroll');
+  let returnToAbout=false,returnScroll=0;
+  opener.addEventListener('click',()=>{
+    stopTour();
+    returnToAbout=$('vision').open;
+    returnScroll=aboutScroll.scrollTop;
+    if(returnToAbout)$('vision').close();
+    dialog.showModal();
+    dialog.querySelector('.academy-scroll').scrollTop=0;
+  });
+  dialog.querySelector('[data-academy-close]').addEventListener('click',()=>dialog.close());
+  dialog.addEventListener('close',()=>{
+    if(!returnToAbout)return;
+    returnToAbout=false;
+    $('vision').showModal();
+    aboutScroll.scrollTop=returnScroll;
+    opener.focus({preventScroll:true});
+  });
+  dialog.addEventListener('click',event=>{
+    if(event.target!==dialog)return;
+    const box=dialog.getBoundingClientRect();
+    if(event.clientX<box.left||event.clientX>box.right||event.clientY<box.top||event.clientY>box.bottom)dialog.close();
+  });
+}
+
 $('vision').addEventListener('click', (e) => { if (e.target === $('vision')) { const r = e.target.getBoundingClientRect(); if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) e.target.close(); } });
 
 // Both fullscreen and playback begin synchronously in the Explore gesture.

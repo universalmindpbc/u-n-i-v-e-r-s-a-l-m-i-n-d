@@ -1,0 +1,64 @@
+/* Academy diagrams extend the existing learning experience. */
+.academy-about{margin:28px 0;padding-bottom:28px;border-bottom:1px solid #42625a33}
+.academy-about h3{margin:0 0 12px;font-size:19px;font-weight:500}
+.academy-about h4{font-size:13px;letter-spacing:.13em;font-weight:600;margin:21px 0 8px}
+.academy-about p{margin:8px 0 14px}
+.academy-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:19px}
+.academy-dialog{width:min(780px,calc(100vw - 32px));max-width:none;max-height:90svh;padding:0;overflow:hidden;border:1px solid #75949766;border-radius:18px;background:#102d34;color:#eff4ee;box-shadow:none}
+.academy-dialog .close{position:absolute;z-index:2;top:10px;right:10px;width:44px;height:44px;border-radius:50%;background:#102d34;color:#eff4ee}
+.academy-dialog .close:hover{background:#244a50}
+.academy-dialog :focus-visible{outline-color:#f1dd81}
+.academy-scroll{padding:34px 38px 27px;max-height:90svh;overflow-y:auto;overscroll-behavior:contain}
+.academy-dialog .eyebrow{color:#aac5c4;margin:0 44px 8px 0;font-size:9px}
+.academy-dialog h2{font-size:28px;letter-spacing:-.035em;line-height:1.2;margin:0 38px 6px 0;color:#f0f5ef}
+.academy-dialog .academy-subtitle{font-size:16px;color:#d6e6de;margin:6px 0 15px;line-height:1.45}
+.academy-dialog .academy-disciplines{font-size:12px;line-height:1.8;color:#aac5c4;margin:0 0 25px}
+.academy-steam-map{display:block;width:100%;max-width:600px;height:auto;margin:-6px auto -17px}
+.academy-steam-map text{text-anchor:middle;font-family:Arial,Helvetica,sans-serif}
+.steam-orbit,.steam-direction{fill:none;stroke:#759497;stroke-width:1.5}
+.steam-centre{fill:#102d34;stroke:#f1dd81;stroke-width:1.5}
+.steam-centre-title{fill:#f1dd81;font-size:31px;letter-spacing:-.02em}
+.steam-area circle{fill:#102d34;stroke:currentColor;stroke-width:1.5}
+.steam-number{fill:currentColor;font-size:18px;letter-spacing:.12em}
+.steam-area-title{fill:currentColor;font-size:25px}
+.steam-long-title{font-size:23px}
+.steam-area-detail{fill:#d6e6de;font-size:17px}
+.steam-literacy{color:#f1dd81}.steam-music{color:#8bd8eb}.steam-fashion{color:#eda0d0}.steam-agents,.steam-genomics{color:#8fd9b7}.steam-quantum{color:#c9b8f3}
+.academy-dialog .academy-pathways-note{font-size:12px;line-height:1.7;color:#aac5c4;text-align:center;margin:12px 0 0}
+.academy-dialog .academy-practice{border-top:1px solid #75949755;margin:20px 0 0;padding-top:16px;text-align:center;font-size:14px;line-height:1.5;color:#f1dd81}
+.academy-practice span,.academy-live-briefs span{padding:0 6px;color:#759497}
+.academy-continuum-map{display:block;width:100%;max-width:580px;height:auto;margin:19px auto 0}
+.academy-continuum-map text{text-anchor:middle;font-family:Arial,Helvetica,sans-serif}
+.continuum-orbit{fill:none;stroke:#759497;stroke-width:1.5}
+.continuum-spokes{fill:none;stroke:#759497;stroke-dasharray:2 7}
+.continuum-node{fill:#102d34;stroke:currentColor;stroke-width:1.5}
+.continuum-role{font-size:25px;font-weight:500;fill:currentColor}
+.continuum-caption{font-size:21px;fill:#d6e6de}
+.continuum-students{color:#8bd8eb}.continuum-mentors{color:#8fd9b7}.continuum-clients{color:#eda0d0}
+.continuum-motto{font-size:29px;font-weight:400;letter-spacing:-.025em;fill:#f1dd81}
+.continuum-brief{font-size:12px;letter-spacing:.18em;fill:#aac5c4}
+.academy-dialog .academy-live-briefs{border-top:1px solid #75949755;padding-top:18px;text-align:center;font-size:14px;line-height:1.6;margin:0;color:#f1dd81}
+.academy-dialog .academy-continuum-note{font-size:12px;line-height:1.7;color:#d6e6de;text-align:center;margin:8px 0 0}
+@media(max-width:600px){
+  .academy-scroll{padding:28px 20px 23px}
+  .academy-dialog h2{font-size:24px}
+  .academy-dialog .eyebrow{font-size:8px}
+  .academy-dialog .academy-subtitle{font-size:14px}
+  .academy-dialog .academy-disciplines{font-size:11px;margin-bottom:23px}
+  .academy-links{display:grid;grid-template-columns:1fr;justify-items:start}
+  .academy-steam-map{width:calc(100% + 32px);max-width:none;margin:0 -16px -12px}
+  .steam-area-detail{font-size:18px}
+  .steam-area-title{font-size:27px}
+  .steam-long-title{font-size:27px}
+  .steam-number{font-size:24px}
+  .steam-centre-title{font-size:33px}
+  .academy-dialog .academy-pathways-note{text-align:left;font-size:12px}
+  .academy-dialog .academy-practice{font-size:13px}
+  .academy-continuum-map{width:calc(100% + 16px);max-width:none;margin:20px -8px 0}
+  .continuum-role{font-size:30px}
+  .continuum-caption{font-size:26px}
+  .continuum-motto{font-size:32px}
+  .continuum-brief{font-size:22px;letter-spacing:.08em}
+  .academy-dialog .academy-live-briefs{font-size:13px}
+  .academy-practice span,.academy-live-briefs span{padding:0 3px}
+}
