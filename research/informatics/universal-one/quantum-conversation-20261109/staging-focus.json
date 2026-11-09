@@ -1,0 +1,90 @@
+{
+  "mode": "staging",
+  "checks": [
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "area": "quantum",
+      "initialNavigationFocus": false,
+      "keyboardMenu": true
+    },
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "area": "research",
+      "initialNavigationFocus": false,
+      "keyboardMenu": false
+    },
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "area": "connect",
+      "initialNavigationFocus": false,
+      "keyboardMenu": false
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "area": "quantum",
+      "initialNavigationFocus": false,
+      "keyboardMenu": true
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "area": "research",
+      "initialNavigationFocus": false,
+      "keyboardMenu": false
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "area": "connect",
+      "initialNavigationFocus": false,
+      "keyboardMenu": false
+    },
+    {
+      "engine": "webkit",
+      "width": 1440,
+      "area": "quantum",
+      "initialNavigationFocus": false,
+      "keyboardMenu": true
+    },
+    {
+      "engine": "webkit",
+      "width": 1440,
+      "area": "research",
+      "initialNavigationFocus": false,
+      "keyboardMenu": false
+    },
+    {
+      "engine": "webkit",
+      "width": 1440,
+      "area": "connect",
+      "initialNavigationFocus": false,
+      "keyboardMenu": false
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "area": "quantum",
+      "initialNavigationFocus": false,
+      "keyboardMenu": true
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "area": "research",
+      "initialNavigationFocus": false,
+      "keyboardMenu": false
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "area": "connect",
+      "initialNavigationFocus": false,
+      "keyboardMenu": false
+    }
+  ],
+  "newModelCalls": 0
+}

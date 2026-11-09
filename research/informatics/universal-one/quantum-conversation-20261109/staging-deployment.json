@@ -1,0 +1,19 @@
+{
+  "sourceCommit": "1b21205bbe12908eb15442dafb2ec295e12e579b",
+  "stagingURL": "https://staging.universalmind.tv/informatics/quantum/",
+  "workerVersion": "5633164d-ed57-4133-bb34-b1c50066793a",
+  "deploymentMethod": "Existing Panthur staging script and existing staging worker",
+  "filesMatched": 31,
+  "focusViewsPassed": 12,
+  "keyboardMenus": "passed",
+  "exportSourceRoundtrip": 1195,
+  "productionModified": false,
+  "textCommands": "passed",
+  "dictation": "passed",
+  "liveVoice": "passed",
+  "newStudy": {
+    "id": "c49a7769-9949-4a88-b819-38c3a7db56cd",
+    "status": "running"
+  },
+  "timestampUTC": "2026-11-09T05:40:12.732292+00:00"
+}

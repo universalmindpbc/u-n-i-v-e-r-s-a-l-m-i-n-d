@@ -1,0 +1,193 @@
+{
+  "passed": true,
+  "files": [
+    {
+      "path": "Informatics/app.js",
+      "bytes": 19272,
+      "sha256": "6088d7b558f28e4f88dd515f428188f6109cd31ef60fc3d3a6aaf7da745695c4",
+      "matched": true
+    },
+    {
+      "path": "Informatics/chapters/about.html",
+      "bytes": 38396,
+      "sha256": "6ff336cbbe212ec5304f85d636a6d20008d441fa435963930946056a314f1d98",
+      "matched": true
+    },
+    {
+      "path": "Informatics/chapters/connect.html",
+      "bytes": 44393,
+      "sha256": "ffc05964f244e4c82995d244cc6691bddf3535559ac4573465098b95147702a6",
+      "matched": true
+    },
+    {
+      "path": "Informatics/chapters/geometry.html",
+      "bytes": 8906771,
+      "sha256": "88612782b256fd219eaed7b6a8fb515a4c7bc320acd834f1dc080e02ef81ba44",
+      "matched": true
+    },
+    {
+      "path": "Informatics/chapters/language.html",
+      "bytes": 40517,
+      "sha256": "0e96de0d15d277356e6f9411c49e46e086e04b03c3004258a8382664c0b45f36",
+      "matched": true
+    },
+    {
+      "path": "Informatics/chapters/molecular.html",
+      "bytes": 173820,
+      "sha256": "8603244eda3970420866acb7e5591c41609f2fc1a6449b7ded53261f0ae39ff2",
+      "matched": true
+    },
+    {
+      "path": "Informatics/chapters/partners.html",
+      "bytes": 40197,
+      "sha256": "e16c9dc4c38bcc37c03b4033b522e54fe2496419108d0814266a82a26f616df9",
+      "matched": true
+    },
+    {
+      "path": "Informatics/chapters/quantum.html",
+      "bytes": 316864,
+      "sha256": "92acbac4d81d8874545ca0ed0219cb906a761ca77bc6bb12edf0e23ed2119f17",
+      "matched": true
+    },
+    {
+      "path": "Informatics/chapters/research.html",
+      "bytes": 68239,
+      "sha256": "13726b19aca56c1c1347e13c43f6fe670c19ac846c862a44031b7b7465fa2a7a",
+      "matched": true
+    },
+    {
+      "path": "Informatics/chapters/sound.html",
+      "bytes": 88715,
+      "sha256": "6724b821a6de0c02341a46b1c76c171871caa0eb95124027867c774eb8c4c78d",
+      "matched": true
+    },
+    {
+      "path": "Informatics/chapters/transcription.html",
+      "bytes": 355363,
+      "sha256": "b4d9accd739a55d26a5f91ace8e6b0df294d69f087ebe4dec606831be129d5b8",
+      "matched": true
+    },
+    {
+      "path": "Informatics/chapters/vision.html",
+      "bytes": 50610,
+      "sha256": "e0f7812bed0dd56f1fadf5b93a78571efb71a47cfd31d5441d7f9e278cf77086",
+      "matched": true
+    },
+    {
+      "path": "Informatics/exports/manifest-04adc925ac200a3ab09a5f060affa381f1f933388def2630b7badade15792992.json",
+      "bytes": 2398520,
+      "sha256": "b1fd29e3e5a74505f01d66e16c0a27904e8a4a62ed941865505b37dab578314b",
+      "matched": true
+    },
+    {
+      "path": "Informatics/exports/manifest.json",
+      "bytes": 2398520,
+      "sha256": "b1fd29e3e5a74505f01d66e16c0a27904e8a4a62ed941865505b37dab578314b",
+      "matched": true
+    },
+    {
+      "path": "Informatics/exports/part-66c69d53135291d9a357acdec7c593311e2c8ff22b5b7094377b0a30c3ed8115.bin",
+      "bytes": 50331648,
+      "sha256": "66c69d53135291d9a357acdec7c593311e2c8ff22b5b7094377b0a30c3ed8115",
+      "matched": true
+    },
+    {
+      "path": "Informatics/exports/part-6ebf1c87d5e6a219417160cc9ba755a2dc3a797787939a457c6ef57560e945c5.bin",
+      "bytes": 367717,
+      "sha256": "6ebf1c87d5e6a219417160cc9ba755a2dc3a797787939a457c6ef57560e945c5",
+      "matched": true
+    },
+    {
+      "path": "Informatics/exports/part-77ea864f08b739ea1166f034a6d8e7ca6061b2972e5ca119608a23a91b19fdf7.bin",
+      "bytes": 50331648,
+      "sha256": "77ea864f08b739ea1166f034a6d8e7ca6061b2972e5ca119608a23a91b19fdf7",
+      "matched": true
+    },
+    {
+      "path": "Informatics/exports/part-9cab7c4472d671e229572954287e35c2810ae34769a200915e32d1c57613310e.bin",
+      "bytes": 30954708,
+      "sha256": "9cab7c4472d671e229572954287e35c2810ae34769a200915e32d1c57613310e",
+      "matched": true
+    },
+    {
+      "path": "Informatics/exports/part-ef5e7bdbdaef90f6f99c62af539921e00cae41ab0a301f72f25b97dc1d016754.bin",
+      "bytes": 50331648,
+      "sha256": "ef5e7bdbdaef90f6f99c62af539921e00cae41ab0a301f72f25b97dc1d016754",
+      "matched": true
+    },
+    {
+      "path": "Informatics/exports/part-f578e80d224bc45c31d263cb7048fac1987fab4a454f8e677fbab87ff2c1cbbd.bin",
+      "bytes": 50331648,
+      "sha256": "f578e80d224bc45c31d263cb7048fac1987fab4a454f8e677fbab87ff2c1cbbd",
+      "matched": true
+    },
+    {
+      "path": "Informatics/index.html",
+      "bytes": 577234,
+      "sha256": "fb94f498a8111919049ef524945e0247529e7a72a9ed80a77bf8130b77f444b5",
+      "matched": true
+    },
+    {
+      "path": "Informatics/quantum/biology.js",
+      "bytes": 25144,
+      "sha256": "09d33d422d89f5f01e9d5dea70f1f76313c9335132835f90f690fd0ea3c77585",
+      "matched": true
+    },
+    {
+      "path": "Informatics/quantum/index.html",
+      "bytes": 421704,
+      "sha256": "157bfb534d4abc4db86ab59a5855f3d50160c2dc2576b8920443ff44ff3d8c27",
+      "matched": true,
+      "requestQuery": "embedded=1"
+    },
+    {
+      "path": "Informatics/quantum/reading/quantum-atlas.csv",
+      "bytes": 679025,
+      "sha256": "de8f474a8686db45217ae3fa75e602b38350f653366ab291b2f8e2652551e614",
+      "matched": true
+    },
+    {
+      "path": "Informatics/quantum/reading/quantum-atlas.json",
+      "bytes": 323929,
+      "sha256": "7e9eaf7c4f8097eb6484ddf0adbcdef469481eb519942cb05dd2891860d262fa",
+      "matched": true
+    },
+    {
+      "path": "Informatics/quantum/reading/quantum-atlas.md",
+      "bytes": 365085,
+      "sha256": "e2f69320eabb2fc813bf47b78ffef8d23eacbd4028d13c91f90a810db844c699",
+      "matched": true
+    },
+    {
+      "path": "Informatics/read/data.html",
+      "bytes": 183526,
+      "sha256": "cd7ec9206ba3c1d38be39759724a39d3b78d9d65ad3c04edc59c468b85f95a04",
+      "matched": true
+    },
+    {
+      "path": "Informatics/read/quantum/index.html",
+      "bytes": 65850,
+      "sha256": "1aeae747798f9edc60eccf7c837f5450b149c2e0df602297ddd8d57a98e75065",
+      "matched": true
+    },
+    {
+      "path": "Informatics/universal-one-live.js",
+      "bytes": 11842,
+      "sha256": "aa42dd713823f05009e68cd43b8263d3a2f6b7a52a255df7ab93b4a272e10e83",
+      "matched": true
+    },
+    {
+      "path": "Informatics/universal-one-quantum.js",
+      "bytes": 2805,
+      "sha256": "6341584387d7761aa35ddb2b2e978e3ea547cb9b015a38c6424b5070f344c11e",
+      "matched": true
+    },
+    {
+      "path": "Informatics/universal-one.js",
+      "bytes": 21285,
+      "sha256": "6510f5f92c1457d4598871fa649dde9edaefa3cca0db9bf12fed6e9695ca307e",
+      "matched": true
+    }
+  ],
+  "newModelCalls": 0
+}

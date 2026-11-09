@@ -9,5 +9,5 @@
   "command_validation": "passed",
   "voice_transcript_and_tool_handoff": "passed",
   "staging_worker_bundle": "passed",
-  "live_verification": "Awaiting bounded verification approval"
+  "live_verification": "Text, dictation and live voice passed; new study in progress"
 }

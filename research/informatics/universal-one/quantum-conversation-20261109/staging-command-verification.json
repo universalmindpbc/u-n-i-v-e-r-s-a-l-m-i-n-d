@@ -1,0 +1,230 @@
+{
+  "processAudioMuted": true,
+  "newStudies": 0,
+  "commands": [
+    {
+      "action": "status",
+      "question": "",
+      "provider_response_id": "resp_03a8d90a2359c44f016af15b66e86487d08056f006a4de9bd1",
+      "usage": {
+        "input_tokens": 534,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 20,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 554
+      },
+      "qaSpend": {
+        "limitUSD": 0.4,
+        "chargedUpperUSD": 0.007674999999999987,
+        "calls": [
+          {
+            "path": "/responses",
+            "model": "gpt-6-astra",
+            "inputTokenUpper": 11173,
+            "outputTokenUpper": 1400,
+            "boundMethod": "UTF-8 bytes plus framing",
+            "reservedUSD": 0.2096625,
+            "chargedUpperUSD": 0.007675,
+            "usage": {
+              "input_tokens": 534,
+              "input_tokens_details": {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0
+              },
+              "output_tokens": 20,
+              "output_tokens_details": {
+                "reasoning_tokens": 0
+              },
+              "total_tokens": 554
+            }
+          }
+        ]
+      }
+    },
+    {
+      "action": "results",
+      "question": "",
+      "provider_response_id": "resp_018f2c2f89e406aa016af15b699fe087d0abd9870c8f916697",
+      "usage": {
+        "input_tokens": 641,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 20,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 661
+      },
+      "qaSpend": {
+        "limitUSD": 0.4,
+        "chargedUpperUSD": 0.009012500000000007,
+        "calls": [
+          {
+            "path": "/responses",
+            "model": "gpt-6-astra",
+            "inputTokenUpper": 11696,
+            "outputTokenUpper": 1400,
+            "boundMethod": "UTF-8 bytes plus framing",
+            "reservedUSD": 0.2162,
+            "chargedUpperUSD": 0.0090125,
+            "usage": {
+              "input_tokens": 641,
+              "input_tokens_details": {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0
+              },
+              "output_tokens": 20,
+              "output_tokens_details": {
+                "reasoning_tokens": 0
+              },
+              "total_tokens": 661
+            }
+          }
+        ]
+      }
+    },
+    {
+      "action": "draft",
+      "question": "Does Phi Ratio improve transcription factor occupancy prediction around OXTR?",
+      "provider_response_id": "resp_0f16bbc3cc502423016af15b6bb06c87d0ae36eb594af7f082",
+      "usage": {
+        "input_tokens": 1003,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 32,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1035
+      },
+      "qaSpend": {
+        "limitUSD": 0.4,
+        "chargedUpperUSD": 0.014137499999999997,
+        "calls": [
+          {
+            "path": "/responses",
+            "model": "gpt-6-astra",
+            "inputTokenUpper": 13438,
+            "outputTokenUpper": 1400,
+            "boundMethod": "UTF-8 bytes plus framing",
+            "reservedUSD": 0.23797500000000002,
+            "chargedUpperUSD": 0.0141375,
+            "usage": {
+              "input_tokens": 1003,
+              "input_tokens_details": {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0
+              },
+              "output_tokens": 32,
+              "output_tokens_details": {
+                "reasoning_tokens": 0
+              },
+              "total_tokens": 1035
+            }
+          }
+        ]
+      }
+    },
+    {
+      "action": "start",
+      "question": "Continue the existing OXTR investigation. Do Fibonacci spacing, Phi Ratio and M9 P24 Alpha, Beta, Gamma and Epsilon improve transcription factor occupancy prediction around OXTR? Use the fixed supported recipe and recorded measurements, with no new paid quantum or GPU jobs.",
+      "provider_response_id": "resp_094d7ebf2ce65a72016af15b6ea2b087d09511eff4701d3269",
+      "usage": {
+        "input_tokens": 1022,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 74,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1096
+      },
+      "qaSpend": {
+        "limitUSD": 0.4,
+        "chargedUpperUSD": 0.01647499999999999,
+        "calls": [
+          {
+            "path": "/responses",
+            "model": "gpt-6-astra",
+            "inputTokenUpper": 13539,
+            "outputTokenUpper": 1400,
+            "boundMethod": "UTF-8 bytes plus framing",
+            "reservedUSD": 0.23923750000000002,
+            "chargedUpperUSD": 0.016475,
+            "usage": {
+              "input_tokens": 1022,
+              "input_tokens_details": {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0
+              },
+              "output_tokens": 74,
+              "output_tokens_details": {
+                "reasoning_tokens": 0
+              },
+              "total_tokens": 1096
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "answers": [
+    {
+      "question": "What is the progress of my saved Quantum study?",
+      "answer": "UNIVERSAL ONE\nYour OXTR analysis is ready. Open the insights to see what changed, what remains uncertain and what the agent completed.\n\nQuestion: Continue the existing OXTR investigation. Do Fibonacci spacing, Phi Ratio and M9 P24 Alpha, Beta, Gamma and Epsilon improve transcription factor occupancy prediction around OXTR? Use the fixed supported recipe and recorded measurements, with no new paid quantum or GPU jobs.\n1 source\nRead aloud"
+    },
+    {
+      "question": "Show the results of my saved study.",
+      "answer": "UNIVERSAL ONE\nDraft for Gemini scientific review. No improvement in predicting protein binding to DNA near OXTR is established. Adding Fibonacci spacing and Phi Ratio changed average precision from 0.0719 to 0.0739. This is a ranking score, not percent accuracy. The 95% uncertainty range for the change was −0.0263 to 0.0082, spanning zero: an inconclusive result. This non-quantum test did not evaluate binding prediction with M9 P24 Alpha, M9 P24 Beta, M9 P24 Gamma or M9 P24 Epsilon.\n\nThe pilot covered 152 windows, with eight overlapping five reported CTCF peak regions. Laboratory quality warnings limit confidence. A missing peak does not prove that binding is absent. The new pair checks programs, not prediction performance. Fibonacci and Phi Ratio produced the same quantum program for chr3-8743680-8743936, so that sample cannot distinguish those preparations. That is not a biological conclusion. Saved CUDA-Q/Aquila readings do not yet support binding prediction: the two earlier Aquila samples miss the reported binding regions, and the readings measure the fraction of excited atoms, not binding probabilities.\n\nA larger independent test remains necessary. A larger quantum prediction test needs more matched quantum measurements from peak and comparison windows; Aquila submission needs fresh device validation and explicit allowance. No new Aquila submissions are allowed today; no new paid quantum or GPU jobs were run. Supporting record: oxtr-agent-follow-through-pilot r1.\n\nThe full report and JSON/CSV downloads are available through Open insights on the Quantum page.\n1 source\nRead aloud"
+    },
+    {
+      "question": "Please draft a question about OXTR occupancy and Phi Ratio. Do not run it.",
+      "answer": "UNIVERSAL ONE\nI have filled the Quantum form with: Does Phi Ratio improve transcription factor occupancy prediction around OXTR? Say “Run this study” or select Explore my question when you are ready.\n1 source\nRead aloud"
+    },
+    {
+      "question": "Run my saved OXTR study again.",
+      "answer": "UNIVERSAL ONE\nThis study is already complete. Ask for its results.\n\nQuestion: Continue the existing OXTR investigation. Do Fibonacci spacing, Phi Ratio and M9 P24 Alpha, Beta, Gamma and Epsilon improve transcription factor occupancy prediction around OXTR? Use the fixed supported recipe and recorded measurements, with no new paid quantum or GPU jobs.\n\nAsk me for progress or the results. You can also follow the study on this page.\n1 source\nRead aloud"
+    }
+  ],
+  "network": [
+    {
+      "path": "/quantum/capacity",
+      "status": 200
+    },
+    {
+      "path": "/quantum/command",
+      "status": 200
+    },
+    {
+      "path": "/agent/studies/83ba4807-83e6-4ca2-b151-7637e9d6a8ec",
+      "status": 200
+    },
+    {
+      "path": "/quantum/command",
+      "status": 200
+    },
+    {
+      "path": "/agent/studies/83ba4807-83e6-4ca2-b151-7637e9d6a8ec",
+      "status": 200
+    },
+    {
+      "path": "/quantum/command",
+      "status": 200
+    },
+    {
+      "path": "/quantum/command",
+      "status": 200
+    }
+  ]
+}

@@ -1,0 +1,480 @@
+{
+  "processAudioMuted": true,
+  "syntheticInput": true,
+  "modes": [
+    {
+      "mode": "dictation",
+      "transcript": "Please check the progress of my current quantum study.",
+      "response": "UNIVERSAL ONE\nYour OXTR analysis is ready. Open the insights to see what changed, what remains uncertain and what the agent completed.\n\nQuestion: Continue the existing OXTR investigation. Do Fibonacci spacing, Phi Ratio and M9 P24 Alpha, Beta, Gamma and Epsilon improve transcription factor occupancy prediction around OXTR? Use the fixed supported recipe and recorded measurements, with no new paid quantum or GPU jobs.\n1 source\nRead aloud",
+      "network": [
+        {
+          "path": "/quantum/capacity",
+          "status": 200
+        },
+        {
+          "path": "/transcribe",
+          "status": 200
+        },
+        {
+          "path": "/quantum/command",
+          "status": 200
+        },
+        {
+          "path": "/agent/studies/83ba4807-83e6-4ca2-b151-7637e9d6a8ec",
+          "status": 200
+        }
+      ],
+      "commands": [
+        {
+          "action": "status",
+          "question": "",
+          "provider_response_id": "resp_06f5ba2749fc20fa016af15ba39f5487d0adbca78658ce1f6b",
+          "usage": {
+            "input_tokens": 534,
+            "input_tokens_details": {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0
+            },
+            "output_tokens": 20,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 554
+          },
+          "qaSpend": {
+            "limitUSD": 0.4,
+            "chargedUpperUSD": 0.007674999999999987,
+            "calls": [
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 11180,
+                "outputTokenUpper": 1400,
+                "boundMethod": "UTF-8 bytes plus framing",
+                "reservedUSD": 0.20975000000000002,
+                "chargedUpperUSD": 0.007675,
+                "usage": {
+                  "input_tokens": 534,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 0,
+                    "cached_tokens": 0
+                  },
+                  "output_tokens": 20,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 0
+                  },
+                  "total_tokens": 554
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "events": [],
+      "newStudies": 0
+    },
+    {
+      "mode": "voice",
+      "transcript": "YouPlease check the progress of my current quantum study.",
+      "response": "UNIVERSAL ONE\nYour current study has an OXTR analysis ready. You can open the insights to see what changed, what’s still uncertain, and what’s been completed so far.\n1 source",
+      "network": [
+        {
+          "path": "/quantum/capacity",
+          "status": 200
+        },
+        {
+          "path": "/voice-session",
+          "status": 200
+        },
+        {
+          "path": "/v1/realtime/calls",
+          "status": 201
+        },
+        {
+          "path": "/quantum/command",
+          "status": 200
+        },
+        {
+          "path": "/agent/studies/83ba4807-83e6-4ca2-b151-7637e9d6a8ec",
+          "status": 200
+        }
+      ],
+      "commands": [
+        {
+          "action": "status",
+          "question": "",
+          "provider_response_id": "resp_0e2d3590d1e154a2016af15bc10f1087d0948bef025ce64da2",
+          "usage": {
+            "input_tokens": 596,
+            "input_tokens_details": {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0
+            },
+            "output_tokens": 20,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 616
+          },
+          "qaSpend": {
+            "limitUSD": 0.4,
+            "chargedUpperUSD": 0.008449999999999985,
+            "calls": [
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 11489,
+                "outputTokenUpper": 1400,
+                "boundMethod": "UTF-8 bytes plus framing",
+                "reservedUSD": 0.2136125,
+                "chargedUpperUSD": 0.00845,
+                "usage": {
+                  "input_tokens": 596,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 0,
+                    "cached_tokens": 0
+                  },
+                  "output_tokens": 20,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 0
+                  },
+                  "total_tokens": 616
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "events": [
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "output_audio_buffer.started"
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "response.output_audio_transcript.done",
+          "transcript": "Hi. What research question can I help you with?"
+        },
+        {
+          "type": "response.done",
+          "status": "completed",
+          "usage": {
+            "total_tokens": 521,
+            "input_tokens": 416,
+            "output_tokens": 105,
+            "input_token_details": {
+              "text_tokens": 416,
+              "audio_tokens": 0,
+              "image_tokens": 0,
+              "cached_tokens": 0,
+              "cached_tokens_details": {
+                "text_tokens": 0,
+                "audio_tokens": 0,
+                "image_tokens": 0
+              }
+            },
+            "output_token_details": {
+              "text_tokens": 39,
+              "audio_tokens": 66,
+              "reasoning_tokens": 14
+            }
+          }
+        },
+        {
+          "type": "output_audio_buffer.stopped"
+        },
+        {
+          "type": "conversation.item.input_audio_transcription.delta"
+        },
+        {
+          "type": "conversation.item.input_audio_transcription.delta"
+        },
+        {
+          "type": "conversation.item.input_audio_transcription.delta"
+        },
+        {
+          "type": "conversation.item.input_audio_transcription.delta"
+        },
+        {
+          "type": "conversation.item.input_audio_transcription.delta"
+        },
+        {
+          "type": "conversation.item.input_audio_transcription.delta"
+        },
+        {
+          "type": "conversation.item.input_audio_transcription.delta"
+        },
+        {
+          "type": "conversation.item.input_audio_transcription.delta"
+        },
+        {
+          "type": "conversation.item.input_audio_transcription.delta"
+        },
+        {
+          "type": "conversation.item.input_audio_transcription.delta"
+        },
+        {
+          "type": "conversation.item.input_audio_transcription.completed",
+          "transcript": "Please check the progress of my current quantum study."
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "output_audio_buffer.started"
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "response.output_audio_transcript.done",
+          "transcript": "Got it, I’ll check the current status of your study and then share what’s available."
+        },
+        {
+          "type": "response.done",
+          "status": "completed",
+          "usage": {
+            "total_tokens": 1362,
+            "input_tokens": 1192,
+            "output_tokens": 170,
+            "input_token_details": {
+              "text_tokens": 1154,
+              "audio_tokens": 38,
+              "image_tokens": 0,
+              "cached_tokens": 0,
+              "cached_tokens_details": {
+                "text_tokens": 0,
+                "audio_tokens": 0,
+                "image_tokens": 0
+              }
+            },
+            "output_token_details": {
+              "text_tokens": 81,
+              "audio_tokens": 89
+            }
+          }
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "output_audio_buffer.started"
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "response.output_audio_transcript.delta"
+        },
+        {
+          "type": "response.output_audio_transcript.done",
+          "transcript": "Your current study has an OXTR analysis ready. You can open the insights to see what changed, what’s still uncertain, and what’s been completed so far."
+        },
+        {
+          "type": "response.done",
+          "status": "completed",
+          "usage": {
+            "total_tokens": 1037,
+            "input_tokens": 779,
+            "output_tokens": 258,
+            "input_token_details": {
+              "text_tokens": 741,
+              "audio_tokens": 38,
+              "image_tokens": 0,
+              "cached_tokens": 0,
+              "cached_tokens_details": {
+                "text_tokens": 0,
+                "audio_tokens": 0,
+                "image_tokens": 0
+              }
+            },
+            "output_token_details": {
+              "text_tokens": 72,
+              "audio_tokens": 186,
+              "reasoning_tokens": 18
+            }
+          }
+        },
+        {
+          "type": "output_audio_buffer.stopped"
+        }
+      ],
+      "newStudies": 0
+    }
+  ]
+}
