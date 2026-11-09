@@ -16,19 +16,17 @@
  function draw(animate=false){
   if(!data||root.hidden)return;
   cancelAnimationFrame(animation);
-  const width=svg.getBoundingClientRect().width;
+  const width=svg.parentElement.getBoundingClientRect().width;
   if(width<1)return;
-  const mode=view.value,period=mode==='p30'?30:24,split=mode!=='symbolic',stacked=split&&width<720;
-  // Let the drawing set its own height instead of squeezing it below the toolbar.
-  const rootWidth=split&&!stacked?width*.62:width;
-  const height=split?(stacked?width*2+64:rootWidth+48):width;
-  const cx=rootWidth/2,cy=split?rootWidth/2+36:height/2,R=rootWidth/2-(width<450?14:30);
-  const mx=split&&!stacked?rootWidth+(width-rootWidth)/2:cx;
-  const my=stacked?width*1.5+48:cy;
-  const referenceWidth=stacked?width:width-rootWidth;
-  const mR=split?(referenceWidth/2-(width<450?20:30))/data.overlay_layout.label_radius:R;
-  svg.dataset.layout=split?(stacked?'stacked':'beside'):'nested';
-  svg.dataset.m9Center=`${mx},${my}`;svg.dataset.m9Scale=mR;
+  for(const name of Object.keys(layers))root.querySelector('#e8-'+name+'-legend').hidden=!layers[name].checked;
+  // Keep the original figure and controls together in the available viewport.
+  const top=svg.getBoundingClientRect().top+window.scrollY;
+  const after=[];for(let n=svg.nextElementSibling;n;n=n.nextElementSibling)after.push(n);
+  const footer=after.reduce((sum,n)=>{const style=getComputedStyle(n);return sum+n.getBoundingClientRect().height+parseFloat(style.marginTop||0)+parseFloat(style.marginBottom||0);},0);
+  const height=width<450?width:Math.max(160,Math.min(width,560,window.innerHeight-top-footer-14));
+  const cx=width/2,cy=height/2,R=Math.min(width,height)/2-12,mode=view.value,period=mode==='p30'?30:24;
+  const mx=cx,my=cy,mR=R;
+  svg.dataset.layout='overlay';svg.dataset.m9Center=`${mx},${my}`;svg.dataset.m9Scale=mR;
   svg.setAttribute('viewBox',`0 0 ${width} ${height}`);svg.setAttribute('height',height);
   step.max=period-1;if(+step.value>=period)step.value=0;const k=+step.value;
   for(const name of Object.keys(layers))root.querySelector('#e8-'+name+'-legend').hidden=!layers[name].checked;
@@ -38,15 +36,10 @@
   root.querySelector('#e8-view-title').textContent=descriptions[mode][0];root.querySelector('#e8-view-copy').textContent=descriptions[mode][1];
   root.querySelector('#e8-guide-note').hidden=!guide.checked;
   root.querySelector('#e8-cycle-note').hidden=mode!=='p30';
-  root.querySelector('#e8-layout-note').textContent=split?'Exact E8 projection and M9 reference · independent display scales':'Central geometry · Fibonacci circle · 240-root halo';
   root.querySelector('#e8-svg-description').textContent=`All 240 E8 roots appear in green. ${Object.keys(layers).filter(name=>layers[name].checked).map(name=>data.sequence_layers[name].label).join(', ')||'No M9 sequence'} layers are shown. Alpha is the blue Fibonacci circle, Beta is the yellow doubling path, and Gamma is the pink six-point star. Gamma is inset inside the blue Alpha circle, preserving its angular positions. The grey guide is controlled separately.${mode==='p30'?' M9 layers remain fixed while the E8 cycle advances through 30 steps.':''}`;
   svg.querySelectorAll(':scope > g').forEach(n=>n.remove());
   const under=add('g',{'pointer-events':'none'}),dots=add('g',{'data-e8-roots':''}),over=add('g',{'pointer-events':'none'});
   const targets=[],active=new Set();
-  if(split){
-   const caption=(text,x,y)=>{const n=add('text',{x,y,'text-anchor':'middle',fill:'#aebcc6','font-family':'Arial, sans-serif','font-size':12,'letter-spacing':1.2,'data-e8-panel-caption':''},over);n.textContent=text;};
-   caption('E8 PROJECTION',cx,18);caption('M9 / P24 REFERENCE',mx,stacked?width+48:18);
-  }
   if(mode==='symbolic'){
    data.projections.p24.orbits.forEach((orbit,j)=>{
     const radius=R*data.symbolic.orbit_radii[j];
@@ -63,9 +56,9 @@
     radii.add(key);active.add(o[k]);
    });
   }
-  const rr=mR*data.overlay_layout.reference_radius,gr=mR*data.overlay_layout.gamma_radius,br=mR*data.overlay_layout.beta_radius,lr=mR*data.overlay_layout.label_radius,gamma=data.sequence_layers.gamma,beta=data.sequence_layers.beta;
+  const rr=mR*data.overlay_layout.reference_radius,gr=mR*data.overlay_layout.gamma_radius,br=mR*data.overlay_layout.beta_radius,lr=mR*(data.overlay_layout.projection_label_radii[mode]||data.overlay_layout.label_radius),gamma=data.sequence_layers.gamma,beta=data.sequence_layers.beta;
   const gammaIndices=new Set(gamma.alpha_indices);
-  const textAt=(text,r,t,color,parent)=>{const [x,y]=point(mx,my,r,t),n=add('text',{x,y,'text-anchor':'middle','dominant-baseline':'central','font-family':'Arial, sans-serif','font-size':width<450?11:Math.min(17,Math.max(13,mR*.035)),fill:color,'data-e8-sequence-label':''},parent);n.textContent=text;};
+  const textAt=(text,r,t,color,parent)=>{const [x,y]=point(mx,my,r,t),n=add('text',{x,y,'text-anchor':'middle','dominant-baseline':'central','font-family':'Arial, sans-serif','font-size':Math.min(width<450?11:12,Math.max(8,R*(mode==='p30'?.088:.10))),'letter-spacing':0,fill:color,'data-e8-sequence-label':''},parent);n.textContent=text;};
   if(guide.checked){
    const base=mR*data.guide.octagon_radius;
    const polygon=(n,r,start=0,opacity=.5)=>add('polygon',{points:Array.from({length:n},(_,i)=>point(mx,my,r,start+2*Math.PI*i/n).join(',')).join(' '),fill:'none',stroke:colors.guide,'stroke-width':1,opacity,'data-e8-guide':n},under);
@@ -106,7 +99,7 @@
   }
   const start=current.length===240?current:targets;
   const nodes=targets.map((pos,id)=>{
-   const n=add('circle',{cx:start[id][0],cy:start[id][1],r:active.has(id)?(width<450?2.4:4):width<450?1.05:2.2,fill:colors.root,opacity:active.has(id)?1:.6,'data-root-id':id,'data-cycle-active':active.has(id)},dots);
+   const n=add('circle',{cx:start[id][0],cy:start[id][1],r:active.has(id)?Math.min(3.4,Math.max(2.3,R*.016)):Math.min(2.2,Math.max(.8,R*.008)),fill:colors.root,opacity:active.has(id)?1:.6,'data-root-id':id,'data-cycle-active':active.has(id)},dots);
    const title=add('title',{},n);title.textContent=mode==='symbolic'?`Symbolic position for root ${id}`:`Root ${id}: (${data.roots_scaled2[id].map(n=>n/2).join(', ')})`;return n;
   });
   if(animate&&!matchMedia('(prefers-reduced-motion: reduce)').matches){

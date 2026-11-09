@@ -60,8 +60,6 @@ Research hypothesis
 
 We hypothesize that the unicursal hexagram may describe a sequence of valence-electron transitions. We plan to investigate this through Hamiltonian modelling, initially exploring quantum annealing with [D-Wave Leap](https://www.dwavequantum.com/solutions-and-products/cloud-platform/).
 
-Central geometry · Fibonacci circle · 240-root halo
-
 10 × 24 positions · symbolic radii
 
 ## E8
@@ -84,9 +82,9 @@ Lie algebra
 
 Ten sets of 24 positions surround the M9/P24 reference circle. Their radii and phases are chosen for this composition. This is a schematic view.
 
-Alpha places the 24 Fibonacci residues on the blue circle. Gamma shows the six selected 3 / 6 / 9 positions as an inset pink star, preserving their angles. This keeps the shapes clear of the outer labels. Beta traces 4 → 8 → 7 → 5 → 1 → 2 → 4 on an inset nine-position value circle, preserving its original start.
+Alpha places the 24 Fibonacci residues on the blue circle. Gamma shows its six 3 / 6 / 9 positions as an inset pink star, preserving their angles. Beta traces 4 → 8 → 7 → 5 → 1 → 2 → 4 on an inset nine-position value circle, preserving its original start.
 
-The separate M9 reference stays fixed on its native 24- and nine-position angular grids while E8 advances through its 30-step cycle.
+The M9 layers stay fixed on their native 24- and nine-position grids while E8 advances through its 30-step cycle.
 
 The grey octagon, hexagon and inner triangle form the separate symbolic guide. Their scale and alignment with E8 are drawing choices.
 
@@ -34443,7 +34441,7 @@ Research question · not yet assessed
       "pisano_period": 24,
       "file": "pilot-v1/m9.json",
       "m9_family": true,
-      "sha256": "b47c1945b8cff88c4205680e8807edc37b0454c69c551490f3902f16db07a75f"
+      "sha256": "8b1d1eb28565af0b4299bb592c4c2656f565dafeb09a6e5568239784b17ee664"
     },
     {
       "id": "fibonacci-m10-p60",
@@ -43376,7 +43374,7 @@ Research question · not yet assessed
   ],
   "e8_geometry": {
     "schema": "universal-informatics/e8-geometry/v1",
-    "version": "e8-m9-p24-2026-11-09-v3",
+    "version": "e8-m9-p24-2026-11-09-v4",
     "title": "E8 and the 24-step cycle",
     "scope": "Pure geometry: symbolic composition and computed projections of the E8 root system.",
     "definitions": {
@@ -43391,7 +43389,7 @@ Research question · not yet assessed
       "root_coordinates": "Divide roots_scaled2 by two. Root IDs are zero-based array indices.",
       "matrix_action": "Column vectors. Apply the listed root reflections in order: s_r(x) = x - (x dot r) r, for roots r of squared length two.",
       "projection": "Dot each root with both orthonormal basis vectors, then divide by normalization_radius. Stored xy values are rounded to 12 decimal places.",
-      "cycle_alignment": "Each orbit begins at its lowest root index. The display rotates the first orbit start to north. Shared step indices are a comparison convention, not a canonical map from Fibonacci values to roots. The separate M9 reference remains fixed while the 30-step Coxeter cycle advances.",
+      "cycle_alignment": "Each orbit begins at its lowest root index. The display rotates the first orbit start to north. Shared step indices are a comparison convention, not a canonical map from Fibonacci values to roots. M9 layers remain fixed while the 30-step Coxeter cycle advances.",
       "symbolic_layout": "The symbolic view retains ten sets of 24 positions; its radii and phases are chosen for composition and are not an orthogonal E8 projection."
     },
     "roots_scaled2": [
@@ -49433,12 +49431,16 @@ Research question · not yet assessed
     "overlay_layout": {
       "reference_radius": 0.56,
       "label_radius": 0.64,
+      "projection_label_radii": {
+        "p24": 0.674,
+        "p30": 0.728
+      },
       "gamma_radius": 0.34,
       "beta_radius": 0.34,
       "computed_root_radius": 0.98,
       "north": "Alpha index 0 and Beta value 9 share north.",
       "radial_rule": "Alpha occupies the outer M9 circle. Gamma is an inset copy of its six selected nodes, preserving their angles. Beta uses the same inset radius on its native nine-position value grid.",
-      "computed_layout": "The exact E8 projection and M9 reference occupy separate panels with independent uniform display scales. They appear side by side on wide screens and vertically on narrow screens.",
+      "computed_layout": "All views share one centre. Exact E8 projections retain their original coordinates under uniform scaling and rotation. Alpha labels occupy a gap between root rings: radius 0.674 in the 24-step view and 0.728 in the 30-step view. The original page layout keeps the drawing and controls together.",
       "scope": "Angular positions, values and paths retain native M9 geometry. Display radii and alignment with E8 are drawing conventions."
     },
     "guide": {
@@ -49510,6 +49512,6 @@ Research question · not yet assessed
 
 ## Sources
 
-- [research.html](https://universalmind.tv/informatics/research.html) · SHA-256: 551578fa3a55f0b806b91227f55462490555b2802f88e2c10aa100bc75209e44 · Exact file bytes
-- [research.js](https://universalmind.tv/informatics/research.js) · SHA-256: 8b566e4ac2a1d1c79bd6cd381f870e0435624a7f66b148a34803352f7c4fcbc0 · Exact file bytes
-- [pilot-v1/index.json](https://universalmind.tv/informatics/pilot-v1/index.json) · SHA-256: bdb2ad76d0174f837c458ef2cd78b9a43a578a351e7fd2914c057fd5dd7e0d11 · Exact file bytes
+- [research.html](https://universalmind.tv/informatics/research.html) · SHA-256: 3019cf66ca7efcce0c8508139897f41f6e4e7262b13b94b53885d21c8a3d0c5a · Exact file bytes
+- [research.js](https://universalmind.tv/informatics/research.js) · SHA-256: 5382da7171d4258e7938b9d3d96a8807ec399f3d81a30dd2b9de518d016d8202 · Exact file bytes
+- [pilot-v1/index.json](https://universalmind.tv/informatics/pilot-v1/index.json) · SHA-256: 01d6d82a8075d76313429e0a8408cf6aa6ac98c38b6d1a1c064110fa6467a6d8 · Exact file bytes

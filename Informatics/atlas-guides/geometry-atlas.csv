@@ -5,7 +5,7 @@ path,type,value
 /version,string,2026-11-01-page-narrative-4
 /url,string,https://universalmind.tv/informatics/geometry/
 /wiki,string,https://universalmind.tv/informatics/read/atlas/index.html
-/page_narrative,array,71
+/page_narrative,array,70
 /page_narrative/0,object,
 /page_narrative/0/tag,string,h2
 /page_narrative/0/text,string,Fibonacci sequence
@@ -102,139 +102,136 @@ path,type,value
 /page_narrative/29/links/0/url,string,https://www.dwavequantum.com/solutions-and-products/cloud-platform/
 /page_narrative/30,object,
 /page_narrative/30/tag,string,p
-/page_narrative/30/text,string,Central geometry · Fibonacci circle · 240-root halo
+/page_narrative/30/text,string,10 × 24 positions · symbolic radii
 /page_narrative/31,object,
-/page_narrative/31/tag,string,p
-/page_narrative/31/text,string,10 × 24 positions · symbolic radii
+/page_narrative/31/tag,string,h2
+/page_narrative/31/text,string,E8
 /page_narrative/32,object,
-/page_narrative/32/tag,string,h2
-/page_narrative/32/text,string,E8
+/page_narrative/32/tag,string,p
+/page_narrative/32/text,string,Explore the E8 root system alongside the 24-step Fibonacci cycle modulo 9.
 /page_narrative/33,object,
-/page_narrative/33/tag,string,p
-/page_narrative/33/text,string,Explore the E8 root system alongside the 24-step Fibonacci cycle modulo 9.
+/page_narrative/33/tag,string,dt
+/page_narrative/33/text,string,Roots
 /page_narrative/34,object,
-/page_narrative/34/tag,string,dt
-/page_narrative/34/text,string,Roots
+/page_narrative/34/tag,string,dd
+/page_narrative/34/text,string,240
 /page_narrative/35,object,
-/page_narrative/35/tag,string,dd
-/page_narrative/35/text,string,240
+/page_narrative/35/tag,string,dt
+/page_narrative/35/text,string,Root-space rank
 /page_narrative/36,object,
-/page_narrative/36/tag,string,dt
-/page_narrative/36/text,string,Root-space rank
+/page_narrative/36/tag,string,dd
+/page_narrative/36/text,string,8
 /page_narrative/37,object,
-/page_narrative/37/tag,string,dd
-/page_narrative/37/text,string,8
+/page_narrative/37/tag,string,dt
+/page_narrative/37/text,string,Lie algebra
 /page_narrative/38,object,
-/page_narrative/38/tag,string,dt
-/page_narrative/38/text,string,Lie algebra
+/page_narrative/38/tag,string,dd
+/page_narrative/38/text,string,248
 /page_narrative/39,object,
-/page_narrative/39/tag,string,dd
-/page_narrative/39/text,string,248
+/page_narrative/39/tag,string,h3
+/page_narrative/39/text,string,Symbolic composition
 /page_narrative/40,object,
-/page_narrative/40/tag,string,h3
-/page_narrative/40/text,string,Symbolic composition
+/page_narrative/40/tag,string,p
+/page_narrative/40/text,string,Ten sets of 24 positions surround the M9/P24 reference circle. Their radii and phases are chosen for this composition. This is a schematic view.
 /page_narrative/41,object,
 /page_narrative/41/tag,string,p
-/page_narrative/41/text,string,Ten sets of 24 positions surround the M9/P24 reference circle. Their radii and phases are chosen for this composition. This is a schematic view.
+/page_narrative/41/text,string,"Alpha places the 24 Fibonacci residues on the blue circle. Gamma shows its six 3 / 6 / 9 positions as an inset pink star, preserving their angles. Beta traces 4 → 8 → 7 → 5 → 1 → 2 → 4 on an inset nine-position value circle, preserving its original start."
 /page_narrative/42,object,
 /page_narrative/42/tag,string,p
-/page_narrative/42/text,string,"Alpha places the 24 Fibonacci residues on the blue circle. Gamma shows the six selected 3 / 6 / 9 positions as an inset pink star, preserving their angles. This keeps the shapes clear of the outer labels. Beta traces 4 → 8 → 7 → 5 → 1 → 2 → 4 on an inset nine-position value circle, preserving its original start."
+/page_narrative/42/text,string,The M9 layers stay fixed on their native 24- and nine-position grids while E8 advances through its 30-step cycle.
 /page_narrative/43,object,
 /page_narrative/43/tag,string,p
-/page_narrative/43/text,string,The separate M9 reference stays fixed on its native 24- and nine-position angular grids while E8 advances through its 30-step cycle.
+/page_narrative/43/text,string,"The grey octagon, hexagon and inner triangle form the separate symbolic guide. Their scale and alignment with E8 are drawing choices."
 /page_narrative/44,object,
-/page_narrative/44/tag,string,p
-/page_narrative/44/text,string,"The grey octagon, hexagon and inner triangle form the separate symbolic guide. Their scale and alignment with E8 are drawing choices."
+/page_narrative/44/tag,string,summary
+/page_narrative/44/text,string,Inspect the geometry
 /page_narrative/45,object,
-/page_narrative/45/tag,string,summary
-/page_narrative/45/text,string,Inspect the geometry
+/page_narrative/45/tag,string,p
+/page_narrative/45/text,string,An order-24 E8 symmetry partitions all 240 roots into ten cycles of 24. Its projection has nine distinct radii because two cycles share a radius. The Coxeter projection has eight cycles of 30 and eight distinct radii.
 /page_narrative/46,object,
 /page_narrative/46/tag,string,p
-/page_narrative/46/text,string,An order-24 E8 symmetry partitions all 240 roots into ten cycles of 24. Its projection has nine distinct radii because two cycles share a radius. The Coxeter projection has eight cycles of 30 and eight distinct radii.
+/page_narrative/46/text,string,"The roots span eight dimensions. The associated Lie algebra has dimension 248. The number 240 counts roots, rather than the order of a planar rotation."
 /page_narrative/47,object,
 /page_narrative/47/tag,string,p
-/page_narrative/47/text,string,"The roots span eight dimensions. The associated Lie algebra has dimension 248. The number 240 counts roots, rather than the order of a planar rotation."
+/page_narrative/47/text,string,"Fibonacci modulo 9 first returns to the state (0, 1) after 24 steps. Zero is displayed as 9. Selecting every third, fourth or eighth position on a 24-position circle gives an octagon, hexagon or triangle."
 /page_narrative/48,object,
 /page_narrative/48/tag,string,p
-/page_narrative/48/text,string,"Fibonacci modulo 9 first returns to the state (0, 1) after 24 steps. Zero is displayed as 9. Selecting every third, fourth or eighth position on a 24-position circle gives an octagon, hexagon or triangle."
+/page_narrative/48/text,string,Shared cycle length alone does not identify the Fibonacci recurrence with E8. Orbit starting points and the alignment with the M9 cycle are explicit drawing conventions.
 /page_narrative/49,object,
 /page_narrative/49/tag,string,p
-/page_narrative/49/text,string,Shared cycle length alone does not identify the Fibonacci recurrence with E8. Orbit starting points and the alignment with the M9 cycle are explicit drawing conventions.
+/page_narrative/49/text,string,What structure does a fixed map from the M9/P24 cycle to E8 root orbits preserve beyond cycle length?
 /page_narrative/50,object,
-/page_narrative/50/tag,string,p
-/page_narrative/50/text,string,What structure does a fixed map from the M9/P24 cycle to E8 root orbits preserve beyond cycle length?
+/page_narrative/50/tag,string,summary
+/page_narrative/50/text,string,Mathematical sources
 /page_narrative/51,object,
-/page_narrative/51/tag,string,summary
-/page_narrative/51/text,string,Mathematical sources
+/page_narrative/51/tag,string,li
+/page_narrative/51/text,string,American Institute of Mathematics · What is E8?
+/page_narrative/51/links,array,1
+/page_narrative/51/links/0,object,
+/page_narrative/51/links/0/label,string,American Institute of Mathematics · What is E8?
+/page_narrative/51/links/0/url,string,https://admin.aimath.org/E8/e8.html
 /page_narrative/52,object,
 /page_narrative/52/tag,string,li
-/page_narrative/52/text,string,American Institute of Mathematics · What is E8?
+/page_narrative/52/text,string,"Frenkel and Gross · Order-24 E8 symmetry, section 15"
 /page_narrative/52/links,array,1
 /page_narrative/52/links/0,object,
-/page_narrative/52/links/0/label,string,American Institute of Mathematics · What is E8?
-/page_narrative/52/links/0/url,string,https://admin.aimath.org/E8/e8.html
+/page_narrative/52/links/0/label,string,"Frenkel and Gross · Order-24 E8 symmetry, section 15"
+/page_narrative/52/links/0/url,string,https://people.math.harvard.edu/~gross/preprints/gm-revised1.pdf#page=33
 /page_narrative/53,object,
 /page_narrative/53/tag,string,li
-/page_narrative/53/text,string,"Frenkel and Gross · Order-24 E8 symmetry, section 15"
+/page_narrative/53/text,string,John Stembridge · The Coxeter projection
 /page_narrative/53/links,array,1
 /page_narrative/53/links/0,object,
-/page_narrative/53/links/0/label,string,"Frenkel and Gross · Order-24 E8 symmetry, section 15"
-/page_narrative/53/links/0/url,string,https://people.math.harvard.edu/~gross/preprints/gm-revised1.pdf#page=33
+/page_narrative/53/links/0/label,string,John Stembridge · The Coxeter projection
+/page_narrative/53/links/0/url,string,https://websites.umich.edu/~jrs/coxplain.html
 /page_narrative/54,object,
-/page_narrative/54/tag,string,li
-/page_narrative/54/text,string,John Stembridge · The Coxeter projection
-/page_narrative/54/links,array,1
-/page_narrative/54/links/0,object,
-/page_narrative/54/links/0/label,string,John Stembridge · The Coxeter projection
-/page_narrative/54/links/0/url,string,https://websites.umich.edu/~jrs/coxplain.html
+/page_narrative/54/tag,string,h2
+/page_narrative/54/text,string,Odom’s construction
 /page_narrative/55,object,
-/page_narrative/55/tag,string,h2
-/page_narrative/55/text,string,Odom’s construction
+/page_narrative/55/tag,string,p
+/page_narrative/55/text,string,Odom’s construction uses the Phi Ratio to circumscribe a circle around an equilateral triangle.
 /page_narrative/56,object,
-/page_narrative/56/tag,string,p
-/page_narrative/56/text,string,Odom’s construction uses the Phi Ratio to circumscribe a circle around an equilateral triangle.
+/page_narrative/56/tag,string,li
+/page_narrative/56/text,string,Join the midpoints A and B of two sides of an equilateral triangle.
 /page_narrative/57,object,
 /page_narrative/57/tag,string,li
-/page_narrative/57/text,string,Join the midpoints A and B of two sides of an equilateral triangle.
+/page_narrative/57/text,string,Take AB as one unit.
 /page_narrative/58,object,
 /page_narrative/58/tag,string,li
-/page_narrative/58/text,string,Take AB as one unit.
+/page_narrative/58/text,string,Extend AB beyond B by 1/φ to reach C on the circle through the triangle’s three vertices.
 /page_narrative/59,object,
-/page_narrative/59/tag,string,li
-/page_narrative/59/text,string,Extend AB beyond B by 1/φ to reach C on the circle through the triangle’s three vertices.
+/page_narrative/59/tag,string,p
+/page_narrative/59/text,string,"AB divided by BC equals φ. So does AC divided by AB. The yellow labels use AB as 1, making BC equal to 1/φ."
 /page_narrative/60,object,
 /page_narrative/60/tag,string,p
-/page_narrative/60/text,string,"AB divided by BC equals φ. So does AC divided by AB. The yellow labels use AB as 1, making BC equal to 1/φ."
+/page_narrative/60/text,string,"The Phi Ratio is the limit of the ratio of successive Fibonacci numbers. As the sequence continues, each number divided by the previous number approaches φ ≈ 1.618034. Odom’s construction expresses that same ratio geometrically."
 /page_narrative/61,object,
 /page_narrative/61/tag,string,p
-/page_narrative/61/text,string,"The Phi Ratio is the limit of the ratio of successive Fibonacci numbers. As the sequence continues, each number divided by the previous number approaches φ ≈ 1.618034. Odom’s construction expresses that same ratio geometrically."
+/page_narrative/61/text,string,This construction applies to every equilateral triangle. Whether it helps explain patterns across Fibonacci moduli remains a research question.
 /page_narrative/62,object,
 /page_narrative/62/tag,string,p
-/page_narrative/62/text,string,This construction applies to every equilateral triangle. Whether it helps explain patterns across Fibonacci moduli remains a research question.
+/page_narrative/62/text,string,Shared arithmetic. Distinct native geometries.
 /page_narrative/63,object,
 /page_narrative/63/tag,string,p
-/page_narrative/63/text,string,Shared arithmetic. Distinct native geometries.
+/page_narrative/63/text,string,"M9 family identifies multiples of nine, not a significance ranking."
 /page_narrative/64,object,
-/page_narrative/64/tag,string,p
-/page_narrative/64/text,string,"M9 family identifies multiples of nine, not a significance ranking."
+/page_narrative/64/tag,string,h3
+/page_narrative/64/text,string,Reduction to M9
 /page_narrative/65,object,
-/page_narrative/65/tag,string,h3
-/page_narrative/65/text,string,Reduction to M9
+/page_narrative/65/tag,string,p
+/page_narrative/65/text,string,Original phase is preserved. Beta begins at 4; its recognised cycle is 1 → 2 → 4 → 8 → 7 → 5. Zero residues are displayed as 9 after reduction.
 /page_narrative/66,object,
-/page_narrative/66/tag,string,p
-/page_narrative/66/text,string,Original phase is preserved. Beta begins at 4; its recognised cycle is 1 → 2 → 4 → 8 → 7 → 5. Zero residues are displayed as 9 after reduction.
+/page_narrative/66/tag,string,summary
+/page_narrative/66/text,string,Why the sequences match
 /page_narrative/67,object,
-/page_narrative/67/tag,string,summary
-/page_narrative/67/text,string,Why the sequences match
+/page_narrative/67/tag,string,p
+/page_narrative/67/text,string,"For multiples of nine, (Fₙ mod 9k) mod 9 = Fₙ mod 9. Gamma selection and interior sums preserve this reduction. This is an exact arithmetic relationship."
 /page_narrative/68,object,
 /page_narrative/68/tag,string,p
-/page_narrative/68/text,string,"For multiples of nine, (Fₙ mod 9k) mod 9 = Fₙ mod 9. Gamma selection and interior sums preserve this reduction. This is an exact arithmetic relationship."
+/page_narrative/68/text,string,All 111 multiples of nine through M999 passed the Python sequence comparison. Longer periods contain repeated M9 cycles; their full-circle geometry is not necessarily identical.
 /page_narrative/69,object,
-/page_narrative/69/tag,string,p
-/page_narrative/69/text,string,All 111 multiples of nine through M999 passed the Python sequence comparison. Longer periods contain repeated M9 cycles; their full-circle geometry is not necessarily identical.
-/page_narrative/70,object,
-/page_narrative/70/tag,string,summary
-/page_narrative/70/text,string,Research question · not yet assessed
+/page_narrative/69/tag,string,summary
+/page_narrative/69/text,string,Research question · not yet assessed
 /source_data,object,
 /source_data/record_explanations,object,
 /source_data/record_explanations/1,array,4
@@ -29485,7 +29482,7 @@ path,type,value
 /source_data/records/8/pisano_period,number,24
 /source_data/records/8/file,string,pilot-v1/m9.json
 /source_data/records/8/m9_family,boolean,true
-/source_data/records/8/sha256,string,b47c1945b8cff88c4205680e8807edc37b0454c69c551490f3902f16db07a75f
+/source_data/records/8/sha256,string,8b1d1eb28565af0b4299bb592c4c2656f565dafeb09a6e5568239784b17ee664
 /source_data/records/9,object,
 /source_data/records/9/id,string,fibonacci-m10-p60
 /source_data/records/9/name,string,Fibonacci M10P60
@@ -37424,7 +37421,7 @@ path,type,value
 /source_data/records/1000/sha256,string,dc2a4e02412f6bb7df382d7c3d09a427baf1dfd36c25d9b36294fc7127b22df2
 /source_data/e8_geometry,object,
 /source_data/e8_geometry/schema,string,universal-informatics/e8-geometry/v1
-/source_data/e8_geometry/version,string,e8-m9-p24-2026-11-09-v3
+/source_data/e8_geometry/version,string,e8-m9-p24-2026-11-09-v4
 /source_data/e8_geometry/title,string,E8 and the 24-step cycle
 /source_data/e8_geometry/scope,string,Pure geometry: symbolic composition and computed projections of the E8 root system.
 /source_data/e8_geometry/definitions,object,
@@ -37438,7 +37435,7 @@ path,type,value
 /source_data/e8_geometry/conventions/root_coordinates,string,Divide roots_scaled2 by two. Root IDs are zero-based array indices.
 /source_data/e8_geometry/conventions/matrix_action,string,"Column vectors. Apply the listed root reflections in order: s_r(x) = x - (x dot r) r, for roots r of squared length two."
 /source_data/e8_geometry/conventions/projection,string,"Dot each root with both orthonormal basis vectors, then divide by normalization_radius. Stored xy values are rounded to 12 decimal places."
-/source_data/e8_geometry/conventions/cycle_alignment,string,"Each orbit begins at its lowest root index. The display rotates the first orbit start to north. Shared step indices are a comparison convention, not a canonical map from Fibonacci values to roots. The separate M9 reference remains fixed while the 30-step Coxeter cycle advances."
+/source_data/e8_geometry/conventions/cycle_alignment,string,"Each orbit begins at its lowest root index. The display rotates the first orbit start to north. Shared step indices are a comparison convention, not a canonical map from Fibonacci values to roots. M9 layers remain fixed while the 30-step Coxeter cycle advances."
 /source_data/e8_geometry/conventions/symbolic_layout,string,The symbolic view retains ten sets of 24 positions; its radii and phases are chosen for composition and are not an orthogonal E8 projection.
 /source_data/e8_geometry/roots_scaled2,array,240
 /source_data/e8_geometry/roots_scaled2/0,array,8
@@ -42642,12 +42639,15 @@ path,type,value
 /source_data/e8_geometry/overlay_layout,object,
 /source_data/e8_geometry/overlay_layout/reference_radius,number,0.56
 /source_data/e8_geometry/overlay_layout/label_radius,number,0.64
+/source_data/e8_geometry/overlay_layout/projection_label_radii,object,
+/source_data/e8_geometry/overlay_layout/projection_label_radii/p24,number,0.674
+/source_data/e8_geometry/overlay_layout/projection_label_radii/p30,number,0.728
 /source_data/e8_geometry/overlay_layout/gamma_radius,number,0.34
 /source_data/e8_geometry/overlay_layout/beta_radius,number,0.34
 /source_data/e8_geometry/overlay_layout/computed_root_radius,number,0.98
 /source_data/e8_geometry/overlay_layout/north,string,Alpha index 0 and Beta value 9 share north.
 /source_data/e8_geometry/overlay_layout/radial_rule,string,"Alpha occupies the outer M9 circle. Gamma is an inset copy of its six selected nodes, preserving their angles. Beta uses the same inset radius on its native nine-position value grid."
-/source_data/e8_geometry/overlay_layout/computed_layout,string,The exact E8 projection and M9 reference occupy separate panels with independent uniform display scales. They appear side by side on wide screens and vertically on narrow screens.
+/source_data/e8_geometry/overlay_layout/computed_layout,string,All views share one centre. Exact E8 projections retain their original coordinates under uniform scaling and rotation. Alpha labels occupy a gap between root rings: radius 0.674 in the 24-step view and 0.728 in the 30-step view. The original page layout keeps the drawing and controls together.
 /source_data/e8_geometry/overlay_layout/scope,string,"Angular positions, values and paths retain native M9 geometry. Display radii and alignment with E8 are drawing conventions."
 /source_data/e8_geometry/guide,object,
 /source_data/e8_geometry/guide/label,string,Symbolic 8 / 6 / 3 guide
@@ -42717,17 +42717,17 @@ path,type,value
 /sources/0,object,
 /sources/0/path,string,research.html
 /sources/0/url,string,https://universalmind.tv/informatics/research.html
-/sources/0/sha256,string,551578fa3a55f0b806b91227f55462490555b2802f88e2c10aa100bc75209e44
+/sources/0/sha256,string,3019cf66ca7efcce0c8508139897f41f6e4e7262b13b94b53885d21c8a3d0c5a
 /sources/0/sha256_scope,string,Exact file bytes
 /sources/1,object,
 /sources/1/path,string,research.js
 /sources/1/url,string,https://universalmind.tv/informatics/research.js
-/sources/1/sha256,string,8b566e4ac2a1d1c79bd6cd381f870e0435624a7f66b148a34803352f7c4fcbc0
+/sources/1/sha256,string,5382da7171d4258e7938b9d3d96a8807ec399f3d81a30dd2b9de518d016d8202
 /sources/1/sha256_scope,string,Exact file bytes
 /sources/2,object,
 /sources/2/path,string,pilot-v1/index.json
 /sources/2/url,string,https://universalmind.tv/informatics/pilot-v1/index.json
-/sources/2/sha256,string,bdb2ad76d0174f837c458ef2cd78b9a43a578a351e7fd2914c057fd5dd7e0d11
+/sources/2/sha256,string,01d6d82a8075d76313429e0a8408cf6aa6ac98c38b6d1a1c064110fa6467a6d8
 /sources/2/sha256_scope,string,Exact file bytes
 /downloads,object,
 /downloads/json,string,https://universalmind.tv/informatics/atlas-guides/geometry-atlas.json?v=2026-11-01-page-narrative-4

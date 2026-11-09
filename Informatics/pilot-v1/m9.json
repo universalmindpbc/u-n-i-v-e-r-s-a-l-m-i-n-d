@@ -4287,7 +4287,7 @@
   },
   "e8_geometry": {
     "schema": "universal-informatics/e8-geometry/v1",
-    "version": "e8-m9-p24-2026-11-09-v3",
+    "version": "e8-m9-p24-2026-11-09-v4",
     "title": "E8 and the 24-step cycle",
     "scope": "Pure geometry: symbolic composition and computed projections of the E8 root system.",
     "definitions": {
@@ -4302,7 +4302,7 @@
       "root_coordinates": "Divide roots_scaled2 by two. Root IDs are zero-based array indices.",
       "matrix_action": "Column vectors. Apply the listed root reflections in order: s_r(x) = x - (x dot r) r, for roots r of squared length two.",
       "projection": "Dot each root with both orthonormal basis vectors, then divide by normalization_radius. Stored xy values are rounded to 12 decimal places.",
-      "cycle_alignment": "Each orbit begins at its lowest root index. The display rotates the first orbit start to north. Shared step indices are a comparison convention, not a canonical map from Fibonacci values to roots. The separate M9 reference remains fixed while the 30-step Coxeter cycle advances.",
+      "cycle_alignment": "Each orbit begins at its lowest root index. The display rotates the first orbit start to north. Shared step indices are a comparison convention, not a canonical map from Fibonacci values to roots. M9 layers remain fixed while the 30-step Coxeter cycle advances.",
       "symbolic_layout": "The symbolic view retains ten sets of 24 positions; its radii and phases are chosen for composition and are not an orthogonal E8 projection."
     },
     "roots_scaled2": [
@@ -10344,12 +10344,16 @@
     "overlay_layout": {
       "reference_radius": 0.56,
       "label_radius": 0.64,
+      "projection_label_radii": {
+        "p24": 0.674,
+        "p30": 0.728
+      },
       "gamma_radius": 0.34,
       "beta_radius": 0.34,
       "computed_root_radius": 0.98,
       "north": "Alpha index 0 and Beta value 9 share north.",
       "radial_rule": "Alpha occupies the outer M9 circle. Gamma is an inset copy of its six selected nodes, preserving their angles. Beta uses the same inset radius on its native nine-position value grid.",
-      "computed_layout": "The exact E8 projection and M9 reference occupy separate panels with independent uniform display scales. They appear side by side on wide screens and vertically on narrow screens.",
+      "computed_layout": "All views share one centre. Exact E8 projections retain their original coordinates under uniform scaling and rotation. Alpha labels occupy a gap between root rings: radius 0.674 in the 24-step view and 0.728 in the 30-step view. The original page layout keeps the drawing and controls together.",
       "scope": "Angular positions, values and paths retain native M9 geometry. Display radii and alignment with E8 are drawing conventions."
     },
     "guide": {

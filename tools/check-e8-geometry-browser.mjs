@@ -5,8 +5,8 @@ import {fileURLToPath} from 'node:url';
 import {chromium} from '/Users/benkorbel/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const candidate=process.argv.includes('--candidate');
-const out=path.join(root,'research/informatics/e8-spacing-20261109');await fs.mkdir(out,{recursive:true});
-const server=await chromium.launchServer({executablePath:'/Users/benkorbel/Library/Caches/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-mac-arm64/chrome-headless-shell',headless:true,args:['--mute-audio','--autoplay-policy=user-gesture-required']});
+const out=path.join(root,'research/informatics/e8-layout-restore-20261109');await fs.mkdir(out,{recursive:true});
+const server=await chromium.launchServer({executablePath:'/Users/benkorbel/Library/Caches/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-mac-arm64/chrome-headless-shell',headless:true,args:['--mute-audio','--autoplay-policy=user-gesture-required','--disable-gpu']});
 assert(server.process().spawnargs.includes('--mute-audio'));
 const browser=await chromium.connect(server.wsEndpoint());const results=[],errors=[];
 async function contextFor(width,height){
@@ -27,8 +27,8 @@ async function contextFor(width,height){
 }
 async function close(context){for(const p of context.pages())for(const frame of p.frames())await frame.evaluate(()=>document.querySelectorAll('audio,video').forEach(m=>m.pause())).catch(()=>{});await context.close();}
 try{
- for(const width of [1440,390,320]){
-  const context=await contextFor(width,width===1440?950:844),hostPage=await context.newPage();hostPage.on('pageerror',e=>errors.push(e.message));
+ for(const width of (process.env.E8_QA_WIDTH?[+process.env.E8_QA_WIDTH]:[1440,1280,390,320])){
+  const context=await contextFor(width,width===1440?950:width===1280?800:844),hostPage=await context.newPage();hostPage.on('pageerror',e=>errors.push(e.message));
   await hostPage.goto('https://staging.universalmind.tv/informatics/geometry/?record=fibonacci-m9-p24&record-mode=research#e8',{waitUntil:'domcontentloaded'});
   const iframe=await hostPage.waitForSelector('#atlas-frame');const page=await iframe.contentFrame();
   try{await page.locator('#e8-view').waitFor({state:'visible'});}catch(error){console.log(JSON.stringify({errors,url:page.url(),text:(await page.locator('body').innerText()).slice(0,4000)}));throw error;}
@@ -66,11 +66,14 @@ try{
     const labelBounds=labels.flatMap(b=>[[b.x,b.y],[b.x+b.width,b.y],[b.x,b.y+b.height],[b.x+b.width,b.y+b.height]]).map(([x,y])=>Math.hypot(x-cx,y-cy));
     const roots=[...svg.querySelectorAll('[data-root-id]')].map(n=>[+n.getAttribute('cx'),+n.getAttribute('cy')]);
     const overlappingLabels=labels.some((a,i)=>labels.slice(i+1).some(b=>a.x<b.x+b.width&&b.x<a.x+a.width&&a.y<b.y+b.height&&b.y<a.y+a.height));
-    const separate=svg.dataset.layout==='beside'?Math.max(...roots.map(p=>p[0]))<cx-r*.64-12:svg.dataset.layout==='stacked'?Math.max(...roots.map(p=>p[1]))<cy-r*.64-12:Math.min(...roots.map(([x,y])=>Math.hypot(x-cx,y-cy)))>Math.max(...labelBounds)+8;
-    return {labels:labels.length,overlappingLabels,clearOfCentralGeometry:Math.min(...labelBounds)>r*.44+8,separate,layout:svg.dataset.layout,diameter:svg.getBoundingClientRect().width};
+    const separate=svg.dataset.projection==='symbolic'?Math.min(...roots.map(([x,y])=>Math.hypot(x-cx,y-cy)))>Math.max(...labelBounds)+5:true;
+    const rootRadii=roots.map(([x,y])=>Math.hypot(x-cx,y-cy));
+    const labelRingClear=svg.dataset.projection==='symbolic'||rootRadii.every(radius=>radius<Math.min(...labelBounds)-.8||radius>Math.max(...labelBounds)+.8);
+    return {labelFont:getComputedStyle(svg.querySelector('[data-e8-layer=alpha] text')).fontSize,labelBand:[Math.min(...labelBounds),Math.max(...labelBounds)],rootRadii:[...new Set(rootRadii.map(n=>+n.toFixed(3)))],radius:r,svgHeight:svg.getBoundingClientRect().height,viewportHeight:innerHeight,figureTop:document.querySelector('.e8-figure').getBoundingClientRect().top,labels:labels.length,overlappingLabels,labelRingClear,clearOfCentralGeometry:Math.min(...labelBounds)>r*.44+8,separate,layout:svg.dataset.layout,diameter:svg.getBoundingClientRect().width};
    });
-   assert.equal(spacing.labels,24);assert(!spacing.overlappingLabels,JSON.stringify(spacing));assert(spacing.clearOfCentralGeometry,JSON.stringify(spacing));assert(spacing.separate,JSON.stringify(spacing));
-   if(width===1440)assert(spacing.diameter>=900,JSON.stringify(spacing));
+   if(spacing.overlappingLabels)await hostPage.screenshot({path:path.join(out,'candidate-spacing-failure.png')});
+   assert.equal(spacing.labels,24);assert(!spacing.overlappingLabels,JSON.stringify({width,mode,spacing}));assert(spacing.clearOfCentralGeometry,JSON.stringify(spacing));assert(spacing.separate,JSON.stringify(spacing));
+   assert.equal(spacing.layout,'overlay');assert(spacing.labelRingClear,JSON.stringify(spacing));
    assert.equal(await page.locator('[data-e8-beta-path]').getAttribute('stroke'),'#ffea42');
    assert.equal(await page.locator('[data-e8-gamma-path]').first().getAttribute('stroke'),'#ff84c5');
    const fixed=await page.locator('[data-e8-layer]').evaluateAll(nodes=>nodes.map(n=>n.outerHTML));
@@ -83,15 +86,23 @@ try{
    assert(await page.locator('.e8-drawing').evaluate(svg=>{const b=svg.viewBox.baseVal;return [...svg.querySelectorAll('[data-root-id]')].every(n=>{const x=+n.getAttribute('cx'),y=+n.getAttribute('cy');return Number.isFinite(x)&&Number.isFinite(y)&&x>=0&&x<=b.width&&y>=0&&y<=b.height;});}));
    results.push({width,mode,rootCount:240,layerCombinations:8,gammaInsetAnglesPreserved:true,spacing,betaNativeCycle:true,cycleStep:true,guideIndependent:true,noHorizontalOverflow:true});
    await page.locator('#e8-beta').uncheck();
-   const shot=await context.newPage();
-   await shot.setViewportSize({width,height:width===1440?2000:1600});
-   await shot.goto('https://staging.universalmind.tv/informatics/geometry/?record=fibonacci-m9-p24&record-mode=research#e8',{waitUntil:'domcontentloaded'});
-   const shotFrame=shot.frameLocator('#atlas-frame');
-   await shotFrame.locator('#e8-view').waitFor({state:'visible'});await shotFrame.locator('#e8-projection').selectOption(mode);
-   await shotFrame.locator('.e8-drawing').screenshot({path:path.join(out,`${candidate?'candidate':'staging'}-${mode}-${width}.png`)});
-   if(mode==='symbolic'){await shotFrame.locator('#e8-beta').check();await shotFrame.locator('.e8-drawing').screenshot({path:path.join(out,`${candidate?'candidate':'staging'}-all-layers-${width}.png`)});await shotFrame.locator('#e8-beta').uncheck();}
-   if(mode==='symbolic'&&width===1440)await shot.screenshot({path:path.join(out,`${candidate?'candidate':'staging'}-page-desktop.png`),fullPage:true});
-   await shot.close();
+   await page.evaluate(()=>window.scrollTo(0,0));
+   const fold=await page.evaluate(()=>{
+    const fig=document.querySelector('.e8-figure').getBoundingClientRect(),aside=document.querySelector('#e8-view aside').getBoundingClientRect(),svg=document.querySelector('.e8-drawing').getBoundingClientRect();
+    return {height:innerHeight,figureTop:fig.top,figureBottom:fig.bottom,drawingHeight:svg.height,sidebarBeside:aside.x>=fig.right,controls:[...document.querySelectorAll('#e8-view select,#e8-view input')].map(n=>{const r=n.getBoundingClientRect();return {id:n.id,top:r.top,bottom:r.bottom};})};
+   });
+   if(width>=1000){assert(fold.figureTop>=0&&fold.figureBottom<=fold.height,JSON.stringify({width,mode,fold}));assert(fold.controls.every(c=>c.top>=0&&c.bottom<=fold.height),JSON.stringify({width,mode,fold}));}
+   if(width>=1000)assert(fold.sidebarBeside,JSON.stringify(fold));
+   results.at(-1).viewportFit=fold;
+   await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
+   await hostPage.screenshot({path:path.join(out,`${candidate?'candidate':'staging'}-${mode}-${width}.png`),animations:'disabled'});
+   if(mode==='symbolic'){
+    await page.locator('#e8-beta').check();
+    await page.evaluate(()=>window.scrollTo(0,0));
+    if(width>=1000)assert(await page.locator('.e8-figure').evaluate(n=>n.getBoundingClientRect().bottom<=innerHeight));
+    await hostPage.screenshot({path:path.join(out,`${candidate?'candidate':'staging'}-all-layers-${width}.png`)});
+    await page.locator('#e8-beta').uncheck();
+   }
    await page.locator('#e8-beta').uncheck();
   }
   await page.getByRole('tab',{name:'Odom’s construction',exact:true}).click();assert(await page.locator('#e8-view').isHidden());assert(await page.locator('#odom-view').isVisible());
@@ -112,6 +123,6 @@ try{
  await page.screenshot({path:path.join(out,`${candidate?'candidate':'staging'}-embedded-desktop.png`)});
  assert.equal(new URL(page.url()).hash,'#e8');results.push({embedded:true,deepLink:true,rootCount:240});await close(context);
  assert.deepEqual(errors,[]);
- const report={mode:candidate?'candidate':'staging',processAudioMuted:true,playbackBlocked:true,nativeFullscreen:false,results};
+ const report={mode:candidate?'candidate':'staging',softwareRendering:true,processAudioMuted:true,playbackBlocked:true,nativeFullscreen:false,results};
  await fs.writeFile(path.join(out,`${report.mode}-browser.json`),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report));
 }finally{await browser.close();await server.close();}

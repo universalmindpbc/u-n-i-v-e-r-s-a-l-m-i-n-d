@@ -36,7 +36,7 @@ path,type,value
 /sources/0,object,
 /sources/0/path,string,index.html
 /sources/0/url,string,https://universalmind.tv/informatics/index.html
-/sources/0/sha256,string,0346dc1f33deffc24b6cbc91d4a5f9f6512e436a77f72b3fc49f5583e73e1098
+/sources/0/sha256,string,b86e6e078f29714e273aa66f184d2d0ce10cbc563b846b4394eaff8f9852b187
 /sources/0/sha256_scope,string,HTML with generated Atlas narrative blocks removed
 /downloads,object,
 /downloads/json,string,https://universalmind.tv/informatics/atlas-guides/computer-vision-atlas.json?v=2026-11-01-page-narrative-4
