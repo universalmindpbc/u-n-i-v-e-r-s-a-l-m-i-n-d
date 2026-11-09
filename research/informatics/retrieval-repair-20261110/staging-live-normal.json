@@ -1,0 +1,428 @@
+{
+  "mode": "text",
+  "caseName": "normal",
+  "newStudies": 0,
+  "syntheticInput": true,
+  "processAudioMuted": true,
+  "network": [
+    {
+      "path": "/quantum/capacity",
+      "status": 200
+    },
+    {
+      "path": "/quantum/command",
+      "status": 200
+    },
+    {
+      "path": "/research",
+      "status": 200
+    }
+  ],
+  "responses": [
+    {
+      "path": "/quantum/command",
+      "status": 200,
+      "body": {
+        "action": "research",
+        "question": "",
+        "provider_response_id": "resp_03d4a871b0133be6016af221feb8f887d0a27f5e4f04ad06df",
+        "usage": {
+          "input_tokens": 743,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 20,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 763
+        },
+        "qaSpend": {
+          "limitUSD": 0.95,
+          "chargedUpperUSD": 0.010287500000000005,
+          "calls": [
+            {
+              "path": "/responses",
+              "model": "gpt-6-astra",
+              "inputTokenUpper": 12376,
+              "outputTokenUpper": 1400,
+              "boundMethod": "UTF-8 bytes plus framing",
+              "reservedUSD": 0.2247,
+              "chargedUpperUSD": 0.010287500000000002,
+              "usage": {
+                "input_tokens": 743,
+                "input_tokens_details": {
+                  "cache_write_tokens": 0,
+                  "cached_tokens": 0
+                },
+                "output_tokens": 20,
+                "output_tokens_details": {
+                  "reasoning_tokens": 0
+                },
+                "total_tokens": 763
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "path": "/research",
+      "status": 200,
+      "body": {
+        "answer": "**CD38 has a strong mechanistic connection to oxytocin release in mice; evidence connecting it to human social behaviour is more indirect.** The distinction is between an established experimental pathway and an unvalidated human biomarker or treatment target. [S1][S2]\n\n### How CD38 connects to oxytocin\n\nCD38 is an enzyme involved in calcium signalling—not the oxytocin receptor. Its activity generates cyclic ADP-ribose, a messenger involved in mobilising intracellular calcium. In oxytocin-producing neurons, this signalling helps regulate hormone release. The three genes occupy different positions: **OXT encodes the oxytocin precursor, CD38 helps regulate secretion, and OXTR encodes the receptor that receives the signal.** [S1][S2]\n\n### What the evidence shows\n\n- **Causal animal evidence:** The foundational 2007 mouse study found that deleting Cd38 reduced oxytocin secretion and disrupted aspects of maternal and social behaviour. Administering oxytocin or restoring CD38 rescued aspects of those changes. Combining gene disruption with rescue provides substantially stronger mechanistic evidence than a correlation alone. It does not establish a human treatment effect. [S1]\n\n- **Human brain expression:** A 2019 post-mortem mapping study identified OXTR and CD38 within the same gene co-expression module. This supports an anatomical relationship between components of the pathway, but spatially correlated RNA expression does not establish direct regulation, protein activity, or oxytocin release. [S2]\n\n- **Recent primate evidence:** A 2026 macaque study reports CD38 on oxytocin-containing secretory vesicles, with its catalytic region facing the cytosol. This provides structural support for locally linking CD38 activity to secretion. The retrieved abstract describes localisation, not a human behavioural intervention. [S3]\n\n- **Human findings are not uniformly positive:** A 2026 longitudinal study of 66 mothers measured peripheral-blood methylation of OXT, OXTR and CD38 alongside oxytocin and bonding measures. Its abstract reports no associations between methylation and bonding indicators or oxytocin at baseline or across time. This limits simple biomarker interpretations without refuting the neuronal mechanism. [S4]\n\n### Main limits\n\n**Genotype, gene expression, enzyme activity and circulating oxytocin are different measurements.** None automatically establishes how much oxytocin is released within a particular brain circuit. Likewise, a whole-gene knockout in mice is not equivalent to common human genetic variation.\n\nThe evidence reviewed here does not establish that increasing CD38 improves human bonding, that CD38 variation diagnoses a condition, or that a sound, vision or language intervention acts through this pathway.\n\nFor the project’s oxytocin-network research, CD38 is therefore a **credible secretion-related target**, not proof of intervention efficacy. This is a targeted evidence overview; the recent primate and maternal findings were available at abstract level, not independently checked full methods/results.",
+        "sources": [
+          {
+            "label": "S1",
+            "id": "pmid-17287729",
+            "passageId": "pmid-17287729:approved-record:eeafab8a6f6e83c25f00",
+            "title": "CD38 is critical for social behaviour by regulating oxytocin secretion",
+            "authors": "Duo Jin; Hong-Xiang Liu; Hirokazu Hirai; Takashi Torashima; Taku Nagai; Olga Lopatina; Natalia A. Shnayder; Kiyofumi Yamada; Mami Noda; Toshihiro Seike; Kyota Fujita; Shin Takasawa; Shigeru Yokoyama; Keita Koizumi; Yoshitake Shiraishi; Shigenori Tanaka; Minako Hashii; Toru Yoshihara; Kazuhiro Higashida; Mohammad Saharul Islam; Nobuaki Yamada; Kenshi Hayashi; Naoya Noguchi; Ichiro Kato; Hiroshi Okamoto; Akihiro Matsushima; Alla Salmina; Toshio Munesue; Nobuaki Shimizu; Sumiko Mochida; Masahide Asano; Haruhiro Higashida",
+            "journal": "Nature",
+            "year": 2007,
+            "url": "https://www.nature.com/articles/nature05526",
+            "section": "Library record",
+            "kind": "approved-record",
+            "text": "CD38 is critical for social behaviour by regulating oxytocin secretion\n\nMice lacking CD38 had reduced oxytocin secretion and impaired maternal and social behaviour. Oxytocin administration or restoration of CD38 rescued aspects of the behavioural changes, linking CD38-dependent calcium signalling to oxytocin release.\n\nA mechanistic animal study; it does not establish a clinical treatment effect in humans.\n\n{\"evidenceType\": \"Molecular biomarkers\", \"sample\": \"Cd38-knockout and control mice\", \"measurement\": \"Oxytocin secretion, calcium signalling and social behaviour\", \"measuredGenes\": [], \"relationshipNote\": \"A mechanistic animal study; it does not establish a clinical treatment effect in humans.\", \"sourceURLs\": [\"https://www.nature.com/articles/nature05526\", \"https://doi.org/10.1038/nature05526\", \"https://pubmed.ncbi.nlm.nih.gov/17287729/\"], \"checkedAt\": \"2026-10-23\"}\n\n{\"category\": \"peer-reviewed\", \"peerReviewed\": true, \"basis\": \"Experimental mouse study. No masked human randomized trial classification is assigned.\", \"sources\": [\"https://www.nature.com/articles/nature05526\", \"https://doi.org/10.1038/nature05526\", \"https://pubmed.ncbi.nlm.nih.gov/17287729/\"], \"reviewedAt\": \"2026-10-23\"}",
+            "doi": "10.1038/nature05526",
+            "rights": {
+              "basis": "Approved library text; quotation attribution retained"
+            },
+            "sha256": "85460502df383903f97376f3fc20812e376300c291bb29e74872c8d753f4a7af",
+            "retrievalLabel": "S2"
+          },
+          {
+            "label": "S2",
+            "id": "pmid-30737392",
+            "passageId": "pmid-30737392:full-text:793654834eda155447b2",
+            "title": "Oxytocin pathway gene networks in the human brain",
+            "authors": "Quintana DS, Rokicki J, van der Meer D, Alnæs D, Kaufmann T, Córdova-Palomera A, Dieset I, Andreassen OA, Westlye LT.",
+            "journal": "Nature Communications",
+            "year": 2019,
+            "url": "https://www.nature.com/articles/s41467-019-08503-8",
+            "section": "Results",
+            "kind": "full-text",
+            "text": "To uncover co-expression patterns of the full oxytocin signaling pathway (94 genes), we applied weighted gene co-expression network analysis using the WGCNA R package 32 . This analysis identified a co-expression module containing both OXTR and CD38 , among 28 genes in total (Fig. 4a , Supplementary Data 1 ; Supplementary Fig. 9 ). Submission of the OXTR/CD38 module to FUMA revealed that this geneset module is enriched in GWAS catalog reported genes 33 for waist-hip ratio adjusted for BMI and smoking ( p = 1.13 × 10 −2 ). This OXTR/CD38 module was also enriched in genesets reported in the Molecular Signatures Database 34 that are associated with several behavioral and cognitive state processes including feeding behavior ( p = 5.83 × 10 −3 ), cognition ( p = 7.44 × 10 −3 ), and behavioral response to stimuli ( p = 1.05 × 10 −2 ). This OXTR / CD38 module was also enriched in brain and breast tissue (Bonferroni corrected p -value < 0.05; Fig. 4b ). Altogether, these results suggest that the identified OXTR / CD38 module is biological meaningful. The association between OXTR and CD38 was statistically significant ( p < 0.0001) and among the top 5% of correlations compared to all 20,737 protein coding genes. Density plots of the correlations between the three oxytocin pathway mRNA probes and all other available protein coding genes are presented in Supplementary Figure 10 . Fig. 4 Co-expression patterns of the full oxytocin signaling pathway. a Weighted gene co-expression network analysis was used to construct a hierarchical clustering tree (also see Supplementary Fig. 9 ) and network heatmap plot of gene–gene connectivity of full oxytocin signaling pathway in the brain. Darker red colors represent stronger topological overlap. This analysis identified a module (dark blue) containing both OXTR and CD38 (see Supplementary Fig. 9 and Supplementary Data 1 for a full list of genes and modules). b Differential expression of the OXTR/CD38 module in 30 tissue types from the GTEx dataset, with -log 10 p -values representing the probability of the hypergeometric test. * p < 0.05",
+            "doi": "10.1038/s41467-019-08503-8",
+            "rights": {
+              "license": "http://creativecommons.org/licenses/by/4.0/",
+              "statement": [
+                "© The Author(s) 2019 https://creativecommons.org/licenses/by/4.0/ Open Access This article is licensed under a Creative Commons Attribution 4.0 International License, which permits use, sharing, adaptation, distribution and reproduction in any medium or format, as long as you give appropriate credit to the original author(s) and the source, provide a link to the Creative Commons license, and indicate if changes were made. The images or other third party material in this article are included in the article’s Creative Commons license, unless indicated otherwise in a credit line to the material. If material is not included in the article’s Creative Commons license and your intended use is not permitted by statutory regulation or exceeds the permitted use, you will need to obtain permission directly from the copyright holder. To view a copy of this license, visit http://creativecommons.org/licenses/by/4.0/ ."
+              ]
+            },
+            "sha256": "6e3ac6c3d6a17b74aed0320365e48ba261cb5a3f37c236989b7b1760e8297db8",
+            "retrievalLabel": "S3"
+          },
+          {
+            "label": "S3",
+            "id": "42001898",
+            "passageId": "42001898:ef98f141a3d31277be0a493728587baf2d17fbc54d37ff177b3cec863c4b9bce",
+            "title": "Type III CD38 is present in the membrane of neurosecretory vesicles and has a cytosol-facing catalytic domain in primate oxytocin neurons.",
+            "authors": "",
+            "journal": "Journal of neuroendocrinology",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/42001898/",
+            "section": "Live literature",
+            "kind": "Bounded relevance search, not a systematic review. PubMed and Europe PMC overlap and are not independent corroboration. Search hits do not establish support for the hypothesis.",
+            "text": "{\"id\":\"42001898\",\"pmid\":\"42001898\",\"pmcid\":\"PMC13092349\",\"doi\":\"10.1111/jne.70187\",\"title\":\"Type III CD38 is present in the membrane of neurosecretory vesicles and has a cytosol-facing catalytic domain in primate oxytocin neurons.\",\"authors\":\"Miyamoto T, Matsushima A, Otubo A, Song C, Murata K, Oti T, Sakamoto H.\",\"journal\":\"Journal of neuroendocrinology\",\"year\":\"2026\",\"publicationTypes\":[\"research-article\",\"Journal Article\"],\"abstract\":\"CD38, an ADP-ribosyl cyclase that generates cyclic ADP-ribose (cADPR), is essential for Ca 2+ -dependent oxytocin release. However, its subcellular localisation and membrane topology within oxytocin neurones have remained unclear. We investigated the distribution and orientation of CD38 in oxytocin-producing neurones of Japanese macaques (Macaca fuscata) using immunoelectron microscopy combined with biochemical isolation of neurosecretory vesicles (NSVs). CD38 immunoreactivity was selectively detected on oxytocin-containing NSVs in axon terminals in the posterior pituitary and dendrites of the supraoptic nucleus, whereas vasopressin vesicles and the plasma membrane lacked detectable labelling. Cryo-electron microscopy confirmed the structural integrity of purified NSV fractions, and Western blotting verified the presence of CD38 protein within these fractions. Permeabilisation-dependent immunogold labelling further demonstrated that the NSV membrane localisation of CD38 and that the N-terminal region of CD38 is oriented toward the vesicle lumen, consistent with a type III membrane topology in which the catalytic domain faces the cytosol. This arrangement positions the active site near cytosolic NAD + , enabling localised cADPR production adjacent to Ca 2+ -mobilising channels that support regulated exocytosis. These findings identify, in primate oxytocin neurones, a previously unrecognised, vesicle-associated pool of CD38 with a cytosol-facing catalytic domain and provide a structural framework for understanding how intracellular type III CD38 contributes to neuropeptide release.\",\"abstractTruncated\":false,\"isOpenAccess\":true,\"isRetracted\":false,\"firstPublicationDate\":\"2026-04-01\",\"url\":\"https://pubmed.ncbi.nlm.nih.gov/42001898/\",\"coverage\":\"abstract\",\"receipt\":{\"url\":\"https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=CD38+AND+oxytocin+AND+%28human+OR+knockout+OR+replication+OR+%22no+association%22%29&format=json&resultType=core&pageSize=6\",\"retrievedAt\":\"2026-11-09T19:42:05.767Z\",\"sha256\":\"ef98f141a3d31277be0a493728587baf2d17fbc54d37ff177b3cec863c4b9bce\"},\"discoveredIn\":[\"Europe PMC\"],\"searchReceipts\":[{\"url\":\"https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=CD38+AND+oxytocin+AND+%28human+OR+knockout+OR+replication+OR+%22no+association%22%29&format=json&resultType=core&pageSize=6\",\"retrievedAt\":\"2026-11-09T19:42:05.767Z\",\"sha256\":\"ef98f141a3d31277be0a493728587baf2d17fbc54d37ff177b3cec863c4b9bce\"}]}",
+            "doi": null,
+            "rights": null,
+            "sha256": "ef98f141a3d31277be0a493728587baf2d17fbc54d37ff177b3cec863c4b9bce",
+            "provenance": {
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=CD38+AND+oxytocin+AND+%28human+OR+knockout+OR+replication+OR+%22no+association%22%29&format=json&resultType=core&pageSize=6",
+              "retrievedAt": "2026-11-09T19:42:05.767Z",
+              "sha256": "ef98f141a3d31277be0a493728587baf2d17fbc54d37ff177b3cec863c4b9bce"
+            },
+            "dataRecord": {
+              "schema": "universal-informatics/literature-record/v1",
+              "tool": "search_literature",
+              "parameters": {
+                "query": "CD38 AND oxytocin AND (human OR knockout OR replication OR \"no association\")"
+              },
+              "result": {
+                "paper": {
+                  "id": "42001898",
+                  "pmid": "42001898",
+                  "pmcid": "PMC13092349",
+                  "doi": "10.1111/jne.70187",
+                  "title": "Type III CD38 is present in the membrane of neurosecretory vesicles and has a cytosol-facing catalytic domain in primate oxytocin neurons.",
+                  "authors": "Miyamoto T, Matsushima A, Otubo A, Song C, Murata K, Oti T, Sakamoto H.",
+                  "journal": "Journal of neuroendocrinology",
+                  "year": "2026",
+                  "publicationTypes": [
+                    "research-article",
+                    "Journal Article"
+                  ],
+                  "abstract": "CD38, an ADP-ribosyl cyclase that generates cyclic ADP-ribose (cADPR), is essential for Ca 2+ -dependent oxytocin release. However, its subcellular localisation and membrane topology within oxytocin neurones have remained unclear. We investigated the distribution and orientation of CD38 in oxytocin-producing neurones of Japanese macaques (Macaca fuscata) using immunoelectron microscopy combined with biochemical isolation of neurosecretory vesicles (NSVs). CD38 immunoreactivity was selectively detected on oxytocin-containing NSVs in axon terminals in the posterior pituitary and dendrites of the supraoptic nucleus, whereas vasopressin vesicles and the plasma membrane lacked detectable labelling. Cryo-electron microscopy confirmed the structural integrity of purified NSV fractions, and Western blotting verified the presence of CD38 protein within these fractions. Permeabilisation-dependent immunogold labelling further demonstrated that the NSV membrane localisation of CD38 and that the N-terminal region of CD38 is oriented toward the vesicle lumen, consistent with a type III membrane topology in which the catalytic domain faces the cytosol. This arrangement positions the active site near cytosolic NAD + , enabling localised cADPR production adjacent to Ca 2+ -mobilising channels that support regulated exocytosis. These findings identify, in primate oxytocin neurones, a previously unrecognised, vesicle-associated pool of CD38 with a cytosol-facing catalytic domain and provide a structural framework for understanding how intracellular type III CD38 contributes to neuropeptide release.",
+                  "abstractTruncated": false,
+                  "isOpenAccess": true,
+                  "isRetracted": false,
+                  "firstPublicationDate": "2026-04-01",
+                  "url": "https://pubmed.ncbi.nlm.nih.gov/42001898/",
+                  "coverage": "abstract",
+                  "receipt": {
+                    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=CD38+AND+oxytocin+AND+%28human+OR+knockout+OR+replication+OR+%22no+association%22%29&format=json&resultType=core&pageSize=6",
+                    "retrievedAt": "2026-11-09T19:42:05.767Z",
+                    "sha256": "ef98f141a3d31277be0a493728587baf2d17fbc54d37ff177b3cec863c4b9bce"
+                  },
+                  "discoveredIn": [
+                    "Europe PMC"
+                  ],
+                  "searchReceipts": [
+                    {
+                      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=CD38+AND+oxytocin+AND+%28human+OR+knockout+OR+replication+OR+%22no+association%22%29&format=json&resultType=core&pageSize=6",
+                      "retrievedAt": "2026-11-09T19:42:05.767Z",
+                      "sha256": "ef98f141a3d31277be0a493728587baf2d17fbc54d37ff177b3cec863c4b9bce"
+                    }
+                  ]
+                },
+                "searches": [
+                  {
+                    "source": "PubMed",
+                    "status": "retrieved",
+                    "query": "CD38 AND oxytocin AND (human OR knockout OR replication OR \"no association\")",
+                    "total": 118,
+                    "receipt": {
+                      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=CD38+AND+oxytocin+AND+%28human+OR+knockout+OR+replication+OR+%22no+association%22%29&retmode=json&retmax=6&sort=relevance&tool=UniversalInformatics",
+                      "retrievedAt": "2026-11-09T19:42:05.277Z",
+                      "sha256": "1e4fd5c8a5fb5557da7eb4ecd1b5c3ec6015c099979e43026827eece89404d5a"
+                    }
+                  },
+                  {
+                    "source": "Europe PMC",
+                    "status": "retrieved",
+                    "query": "CD38 AND oxytocin AND (human OR knockout OR replication OR \"no association\")",
+                    "total": 618,
+                    "receipt": {
+                      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=CD38+AND+oxytocin+AND+%28human+OR+knockout+OR+replication+OR+%22no+association%22%29&format=json&resultType=core&pageSize=6",
+                      "retrievedAt": "2026-11-09T19:42:05.767Z",
+                      "sha256": "ef98f141a3d31277be0a493728587baf2d17fbc54d37ff177b3cec863c4b9bce"
+                    }
+                  }
+                ],
+                "coverage": "Bounded relevance search, not a systematic review. PubMed and Europe PMC overlap and are not independent corroboration. Search hits do not establish support for the hypothesis."
+              }
+            },
+            "retrievalLabel": "S18"
+          },
+          {
+            "label": "S4",
+            "id": "42716459",
+            "passageId": "42716459:ef98f141a3d31277be0a493728587baf2d17fbc54d37ff177b3cec863c4b9bce",
+            "title": "Markers of the maternal oxytocin system and mother-infant bonding during the first postpartum year.",
+            "authors": "",
+            "journal": "Progress in neurobiology",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/42716459/",
+            "section": "Live literature",
+            "kind": "Bounded relevance search, not a systematic review. PubMed and Europe PMC overlap and are not independent corroboration. Search hits do not establish support for the hypothesis.",
+            "text": "{\"id\":\"42716459\",\"pmid\":\"42716459\",\"pmcid\":null,\"doi\":\"10.1016/j.pneurobio.2026.102951\",\"title\":\"Markers of the maternal oxytocin system and mother-infant bonding during the first postpartum year.\",\"authors\":\"Eckstein M, Unternaehrer E, Brenner I, Schneider E, Zipser B, Moser DA, Quintana DS, Zietlow AL, Ditzen B.\",\"journal\":\"Progress in neurobiology\",\"year\":\"2026\",\"publicationTypes\":[\"Randomized Controlled Trial\",\"Journal Article\"],\"abstract\":\"Background The oxytocinergic system is central to early mother-infant bonding, yet, its epigenetic and hormonal dynamics during the postpartum period are not well understood. The aim of this study was to investigate genetic, epigenetic, and endogenous markers of the oxytocinergic system in relation to mother-infant bonding during the first year postpartum. Method A sample of 66 mothers (mean age = 32.0 years, SD = 3.6 years) with bonding problems (N = 36) undergoing a neurofeedback intervention and control mothers (N = 30) participated in this longitudinal randomized clinical trial. We measured DNA methylation (DNAm) of the oxytocin gene (OXT), the oxytocin receptor gene (OXTR), and the Cluster of Differentiation 38 (CD38) gene in peripheral blood cells collected at three, six, and 12 months postpartum. At the same timepoints, mothers completed questionnaires on maternal bonding, depressive symptoms, and maternal self-confidence. Furthermore, they provided blood samples to assess endogenous oxytocin (OT) and three OXTR single-nucleotide polymorphisms. Data was analyzed using multilevel models. Results We found no case-control differences or associations of bonding indicators or OT with DNAm at baseline and across time. OXT, but not OXTR DNAm changed significantly over time independent of group or intervention. For OT, we found a significant time by intervention interaction with decreasing OT levels in the intervention groups. Discussion We found limited evidence for an association between oxytocin biomarkers and maternal bonding problems. However, changes in OXT DNAm and treatment-specific changes in OT during the first year postpartum might indicate some maternal adaptation in the maternal oxytocinergic system.\",\"abstractTruncated\":false,\"isOpenAccess\":false,\"isRetracted\":false,\"firstPublicationDate\":\"2026-09-09\",\"url\":\"https://pubmed.ncbi.nlm.nih.gov/42716459/\",\"coverage\":\"abstract\",\"receipt\":{\"url\":\"https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=CD38+AND+oxytocin+AND+%28human+OR+knockout+OR+replication+OR+%22no+association%22%29&format=json&resultType=core&pageSize=6\",\"retrievedAt\":\"2026-11-09T19:42:05.767Z\",\"sha256\":\"ef98f141a3d31277be0a493728587baf2d17fbc54d37ff177b3cec863c4b9bce\"},\"discoveredIn\":[\"Europe PMC\"],\"searchReceipts\":[{\"url\":\"https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=CD38+AND+oxytocin+AND+%28human+OR+knockout+OR+replication+OR+%22no+association%22%29&format=json&resultType=core&pageSize=6\",\"retrievedAt\":\"2026-11-09T19:42:05.767Z\",\"sha256\":\"ef98f141a3d31277be0a493728587baf2d17fbc54d37ff177b3cec863c4b9bce\"}]}",
+            "doi": null,
+            "rights": null,
+            "sha256": "ef98f141a3d31277be0a493728587baf2d17fbc54d37ff177b3cec863c4b9bce",
+            "provenance": {
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=CD38+AND+oxytocin+AND+%28human+OR+knockout+OR+replication+OR+%22no+association%22%29&format=json&resultType=core&pageSize=6",
+              "retrievedAt": "2026-11-09T19:42:05.767Z",
+              "sha256": "ef98f141a3d31277be0a493728587baf2d17fbc54d37ff177b3cec863c4b9bce"
+            },
+            "dataRecord": {
+              "schema": "universal-informatics/literature-record/v1",
+              "tool": "search_literature",
+              "parameters": {
+                "query": "CD38 AND oxytocin AND (human OR knockout OR replication OR \"no association\")"
+              },
+              "result": {
+                "paper": {
+                  "id": "42716459",
+                  "pmid": "42716459",
+                  "pmcid": null,
+                  "doi": "10.1016/j.pneurobio.2026.102951",
+                  "title": "Markers of the maternal oxytocin system and mother-infant bonding during the first postpartum year.",
+                  "authors": "Eckstein M, Unternaehrer E, Brenner I, Schneider E, Zipser B, Moser DA, Quintana DS, Zietlow AL, Ditzen B.",
+                  "journal": "Progress in neurobiology",
+                  "year": "2026",
+                  "publicationTypes": [
+                    "Randomized Controlled Trial",
+                    "Journal Article"
+                  ],
+                  "abstract": "Background The oxytocinergic system is central to early mother-infant bonding, yet, its epigenetic and hormonal dynamics during the postpartum period are not well understood. The aim of this study was to investigate genetic, epigenetic, and endogenous markers of the oxytocinergic system in relation to mother-infant bonding during the first year postpartum. Method A sample of 66 mothers (mean age = 32.0 years, SD = 3.6 years) with bonding problems (N = 36) undergoing a neurofeedback intervention and control mothers (N = 30) participated in this longitudinal randomized clinical trial. We measured DNA methylation (DNAm) of the oxytocin gene (OXT), the oxytocin receptor gene (OXTR), and the Cluster of Differentiation 38 (CD38) gene in peripheral blood cells collected at three, six, and 12 months postpartum. At the same timepoints, mothers completed questionnaires on maternal bonding, depressive symptoms, and maternal self-confidence. Furthermore, they provided blood samples to assess endogenous oxytocin (OT) and three OXTR single-nucleotide polymorphisms. Data was analyzed using multilevel models. Results We found no case-control differences or associations of bonding indicators or OT with DNAm at baseline and across time. OXT, but not OXTR DNAm changed significantly over time independent of group or intervention. For OT, we found a significant time by intervention interaction with decreasing OT levels in the intervention groups. Discussion We found limited evidence for an association between oxytocin biomarkers and maternal bonding problems. However, changes in OXT DNAm and treatment-specific changes in OT during the first year postpartum might indicate some maternal adaptation in the maternal oxytocinergic system.",
+                  "abstractTruncated": false,
+                  "isOpenAccess": false,
+                  "isRetracted": false,
+                  "firstPublicationDate": "2026-09-09",
+                  "url": "https://pubmed.ncbi.nlm.nih.gov/42716459/",
+                  "coverage": "abstract",
+                  "receipt": {
+                    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=CD38+AND+oxytocin+AND+%28human+OR+knockout+OR+replication+OR+%22no+association%22%29&format=json&resultType=core&pageSize=6",
+                    "retrievedAt": "2026-11-09T19:42:05.767Z",
+                    "sha256": "ef98f141a3d31277be0a493728587baf2d17fbc54d37ff177b3cec863c4b9bce"
+                  },
+                  "discoveredIn": [
+                    "Europe PMC"
+                  ],
+                  "searchReceipts": [
+                    {
+                      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=CD38+AND+oxytocin+AND+%28human+OR+knockout+OR+replication+OR+%22no+association%22%29&format=json&resultType=core&pageSize=6",
+                      "retrievedAt": "2026-11-09T19:42:05.767Z",
+                      "sha256": "ef98f141a3d31277be0a493728587baf2d17fbc54d37ff177b3cec863c4b9bce"
+                    }
+                  ]
+                },
+                "searches": [
+                  {
+                    "source": "PubMed",
+                    "status": "retrieved",
+                    "query": "CD38 AND oxytocin AND (human OR knockout OR replication OR \"no association\")",
+                    "total": 118,
+                    "receipt": {
+                      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=CD38+AND+oxytocin+AND+%28human+OR+knockout+OR+replication+OR+%22no+association%22%29&retmode=json&retmax=6&sort=relevance&tool=UniversalInformatics",
+                      "retrievedAt": "2026-11-09T19:42:05.277Z",
+                      "sha256": "1e4fd5c8a5fb5557da7eb4ecd1b5c3ec6015c099979e43026827eece89404d5a"
+                    }
+                  },
+                  {
+                    "source": "Europe PMC",
+                    "status": "retrieved",
+                    "query": "CD38 AND oxytocin AND (human OR knockout OR replication OR \"no association\")",
+                    "total": 618,
+                    "receipt": {
+                      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=CD38+AND+oxytocin+AND+%28human+OR+knockout+OR+replication+OR+%22no+association%22%29&format=json&resultType=core&pageSize=6",
+                      "retrievedAt": "2026-11-09T19:42:05.767Z",
+                      "sha256": "ef98f141a3d31277be0a493728587baf2d17fbc54d37ff177b3cec863c4b9bce"
+                    }
+                  }
+                ],
+                "coverage": "Bounded relevance search, not a systematic review. PubMed and Europe PMC overlap and are not independent corroboration. Search hits do not establish support for the hypothesis."
+              }
+            },
+            "retrievalLabel": "S17"
+          }
+        ],
+        "model": "gpt-6-astra",
+        "version": "research-20261026-daytab-v1",
+        "knowledgeVersions": {
+          "approvedYouth": {
+            "sourceBatch": "batch-f164c8325ea5f9c9.json",
+            "sourceSHA256": "f164c8325ea5f9c989c29524518b598913508117712826dc408f592b7f99a723",
+            "approvedAt": "2026-11-02",
+            "publications": 105
+          },
+          "biofeedback": {
+            "version": "lab-biofeedback-20261105-ratings",
+            "publications": 63
+          },
+          "publicGenes": "public-gene-data-20261109-v1",
+          "literature": "literature-20261110-v2"
+        },
+        "usage": {
+          "totalTokens": 34591,
+          "qaSpend": {
+            "limitUSD": 0.9464375,
+            "chargedUpperUSD": 0.4581,
+            "calls": [
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 33896,
+                "outputTokenUpper": 1400,
+                "boundMethod": "UTF-8 bytes plus framing",
+                "reservedUSD": 0.4937,
+                "chargedUpperUSD": 0.0611125,
+                "usage": {
+                  "input_tokens": 4737,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 515,
+                    "cached_tokens": 4219
+                  },
+                  "output_tokens": 38,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 0
+                  },
+                  "total_tokens": 4775
+                }
+              },
+              {
+                "path": "/embeddings",
+                "model": "text-embedding-3-small",
+                "inputTokenUpper": 8267,
+                "outputTokenUpper": 0,
+                "boundMethod": "UTF-8 bytes plus framing",
+                "reservedUSD": 0.1033375,
+                "chargedUpperUSD": 0.0000625,
+                "usage": {
+                  "prompt_tokens": 5,
+                  "total_tokens": 5
+                }
+              },
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 43970,
+                "outputTokenUpper": 1400,
+                "boundMethod": "Provider-counted exact prefix plus new UTF-8 bytes and framing",
+                "reservedUSD": 0.6196250000000001,
+                "chargedUpperUSD": 0.14584999999999998,
+                "usage": {
+                  "input_tokens": 11520,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 6783,
+                    "cached_tokens": 4734
+                  },
+                  "output_tokens": 37,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 0
+                  },
+                  "total_tokens": 11557
+                }
+              },
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 40423,
+                "outputTokenUpper": 1400,
+                "boundMethod": "Provider-counted exact prefix plus new UTF-8 bytes and framing",
+                "reservedUSD": 0.5752875,
+                "chargedUpperUSD": 0.251075,
+                "usage": {
+                  "input_tokens": 17650,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 6130,
+                    "cached_tokens": 11445
+                  },
+                  "output_tokens": 609,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 0
+                  },
+                  "total_tokens": 18259
+                }
+              }
+            ]
+          }
+        },
+        "retrieval": {
+          "required": true,
+          "sourceCount": 20,
+          "contextMessages": 0,
+          "previousReferences": 0
+        }
+      }
+    }
+  ],
+  "answer": "UNIVERSAL ONE\n**CD38 has a strong mechanistic connection to oxytocin release in mice; evidence connecting it to human social behaviour is more indirect.** The distinction is between an established experimental pathway and an unvalidated human biomarker or treatment target. [S1][S2]\n\n### How CD38 connects to oxytocin\n\nCD38 is an enzyme involved in calcium signalling—not the oxytocin receptor. Its activity generates cyclic ADP-ribose, a messenger involved in mobilising intracellular calcium. In oxytocin-producing neurons, this signalling helps regulate hormone release. The three genes occupy different positions: **OXT encodes the oxytocin precursor, CD38 helps regulate secretion, and OXTR encodes the receptor that receives the signal.** [S1][S2]\n\n### What the evidence shows\n\n- **Causal animal evidence:** The foundational 2007 mouse study found that deleting Cd38 reduced oxytocin secretion and disrupted aspects of maternal and social behaviour. Administering oxytocin or restoring CD38 rescued aspects of those changes. Combining gene disruption with rescue provides substantially stronger mechanistic evidence than a correlation alone. It does not establish a human treatment effect. [S1]\n\n- **Human brain expression:** A 2019 post-mortem mapping study identified OXTR and CD38 within the same gene co-expression module. This supports an anatomical relationship between components of the pathway, but spatially correlated RNA expression does not establish direct regulation, protein activity, or oxytocin release. [S2]\n\n- **Recent primate evidence:** A 2026 macaque study reports CD38 on oxytocin-containing secretory vesicles, with its catalytic region facing the cytosol. This provides structural support for locally linking CD38 activity to secretion. The retrieved abstract describes localisation, not a human behavioural intervention. [S3]\n\n- **Human findings are not uniformly positive:** A 2026 longitudinal study of 66 mothers measured peripheral-blood methylation of OXT, OXTR and CD38 alongside oxytocin and bonding measures. Its abstract reports no associations between methylation and bonding indicators or oxytocin at baseline or across time. This limits simple biomarker interpretations without refuting the neuronal mechanism. [S4]\n\n### Main limits\n\n**Genotype, gene expression, enzyme activity and circulating oxytocin are different measurements.** None automatically establishes how much oxytocin is released within a particular brain circuit. Likewise, a whole-gene knockout in mice is not equivalent to common human genetic variation.\n\nThe evidence reviewed here does not establish that increasing CD38 improves human bonding, that CD38 variation diagnoses a condition, or that a sound, vision or language intervention acts through this pathway.\n\nFor the project’s oxytocin-network research, CD38 is therefore a **credible secretion-related target**, not proof of intervention efficacy. This is a targeted evidence overview; the recent primate and maternal findings were available at abstract level, not independently checked full methods/results.\n4 sources",
+  "sourceRecords": [
+    {
+      "label": "S3",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42001898/",
+      "schema": "universal-informatics/literature-record/v1",
+      "tool": "search_literature"
+    },
+    {
+      "label": "S4",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42716459/",
+      "schema": "universal-informatics/literature-record/v1",
+      "tool": "search_literature"
+    }
+  ],
+  "passed": true
+}

@@ -1,0 +1,146 @@
+{
+  "passed": true,
+  "commit": "91de0986052303c717d2a3c30b8da5a67634b4a9",
+  "files": [
+    {
+      "file": "Informatics/chapters/quantum.html",
+      "bytes": 333417,
+      "sha256": "629e4f068f32840e1b87d492dfe85f4f5a9971e85e6ce581cf53bf10ca57f9f4",
+      "served_sha256": "0203430f21b06eca6df11d4f1c5446cb3a62664ea88947d4c831ec1283ea986c",
+      "cloudflareBeaconExcluded": true,
+      "matched": true
+    },
+    {
+      "file": "Informatics/exports/manifest-c3687bdb3a8ca72891be9ae1e446a1cedf504345597fb504cdf25da8834bf410.json",
+      "bytes": 2398727,
+      "sha256": "cb1e13cd9bcea43465308d85349388d08462eb8cbebb3c180354334594227662",
+      "served_sha256": "cb1e13cd9bcea43465308d85349388d08462eb8cbebb3c180354334594227662",
+      "cloudflareBeaconExcluded": false,
+      "matched": true
+    },
+    {
+      "file": "Informatics/exports/manifest.json",
+      "bytes": 2398727,
+      "sha256": "cb1e13cd9bcea43465308d85349388d08462eb8cbebb3c180354334594227662",
+      "served_sha256": "cb1e13cd9bcea43465308d85349388d08462eb8cbebb3c180354334594227662",
+      "cloudflareBeaconExcluded": false,
+      "matched": true
+    },
+    {
+      "file": "Informatics/exports/part-45849bd0b94de90d5c9bbe4092aadd3bd70bf15efc63b6d01a5cd0379532e581.bin",
+      "bytes": 50331648,
+      "sha256": "45849bd0b94de90d5c9bbe4092aadd3bd70bf15efc63b6d01a5cd0379532e581",
+      "served_sha256": "45849bd0b94de90d5c9bbe4092aadd3bd70bf15efc63b6d01a5cd0379532e581",
+      "cloudflareBeaconExcluded": false,
+      "matched": true
+    },
+    {
+      "file": "Informatics/exports/part-5cd74f8ab61a53233b16a7cd3af7daff6000fe28f4dfef50fb2afcbb8ad9cb13.bin",
+      "bytes": 50331648,
+      "sha256": "5cd74f8ab61a53233b16a7cd3af7daff6000fe28f4dfef50fb2afcbb8ad9cb13",
+      "served_sha256": "5cd74f8ab61a53233b16a7cd3af7daff6000fe28f4dfef50fb2afcbb8ad9cb13",
+      "cloudflareBeaconExcluded": false,
+      "matched": true
+    },
+    {
+      "file": "Informatics/exports/part-6a96f44f639e9468c98baceb65badb2947657fd577c98cb2f61ec64e5b8647bc.bin",
+      "bytes": 50331648,
+      "sha256": "6a96f44f639e9468c98baceb65badb2947657fd577c98cb2f61ec64e5b8647bc",
+      "served_sha256": "6a96f44f639e9468c98baceb65badb2947657fd577c98cb2f61ec64e5b8647bc",
+      "cloudflareBeaconExcluded": false,
+      "matched": true
+    },
+    {
+      "file": "Informatics/exports/part-80abfcab0cd8daa6234eb14edf649a0794942992075e9753b4ad7237ff79669f.bin",
+      "bytes": 50331648,
+      "sha256": "80abfcab0cd8daa6234eb14edf649a0794942992075e9753b4ad7237ff79669f",
+      "served_sha256": "80abfcab0cd8daa6234eb14edf649a0794942992075e9753b4ad7237ff79669f",
+      "cloudflareBeaconExcluded": false,
+      "matched": true
+    },
+    {
+      "file": "Informatics/exports/part-87c2024ccca31cbab2fd215090800a29fb0e27a50f26415a000a041396c78cec.bin",
+      "bytes": 471067,
+      "sha256": "87c2024ccca31cbab2fd215090800a29fb0e27a50f26415a000a041396c78cec",
+      "served_sha256": "87c2024ccca31cbab2fd215090800a29fb0e27a50f26415a000a041396c78cec",
+      "cloudflareBeaconExcluded": false,
+      "matched": true
+    },
+    {
+      "file": "Informatics/exports/part-b577b586580d5fb9b81f9871a76ae22057909abefddb90d5db2b39683b682d17.bin",
+      "bytes": 31025933,
+      "sha256": "b577b586580d5fb9b81f9871a76ae22057909abefddb90d5db2b39683b682d17",
+      "served_sha256": "b577b586580d5fb9b81f9871a76ae22057909abefddb90d5db2b39683b682d17",
+      "cloudflareBeaconExcluded": false,
+      "matched": true
+    },
+    {
+      "file": "Informatics/index.html",
+      "bytes": 597343,
+      "sha256": "baf3b6f94a754a22f8a5a861b13b28931c60154c2586f825b6b0d8e9a352d3d2",
+      "served_sha256": "219ead7ffa09d0b7bc2a77b9dccc4d52cab2df41c63c3dc2ad9fc43515792ff1",
+      "cloudflareBeaconExcluded": true,
+      "matched": true
+    },
+    {
+      "file": "Informatics/quantum/index.html",
+      "bytes": 440406,
+      "sha256": "4183208494e2d8c067fb0d7cb23fa88bb5e3c6c3b23dd2775e11be97e55195be",
+      "served_sha256": "09cff6f1b26c53af7a3ca42663d1edb06e45b4475945da22161f41f35cfa27ea",
+      "cloudflareBeaconExcluded": true,
+      "matched": true
+    },
+    {
+      "file": "Informatics/quantum/reading/quantum-atlas.csv",
+      "bytes": 694613,
+      "sha256": "9aba45aa3b609b5a4336d1b9ceffa14ce7d83f600d0ad16806f33c586bb60092",
+      "served_sha256": "9aba45aa3b609b5a4336d1b9ceffa14ce7d83f600d0ad16806f33c586bb60092",
+      "cloudflareBeaconExcluded": false,
+      "matched": true
+    },
+    {
+      "file": "Informatics/quantum/reading/quantum-atlas.json",
+      "bytes": 335298,
+      "sha256": "0744da43c45a0b6dbfbbbef20159cafa2f9cc8baf29d509046f1cfd9a9cf15a2",
+      "served_sha256": "0744da43c45a0b6dbfbbbef20159cafa2f9cc8baf29d509046f1cfd9a9cf15a2",
+      "cloudflareBeaconExcluded": false,
+      "matched": true
+    },
+    {
+      "file": "Informatics/quantum/reading/quantum-atlas.md",
+      "bytes": 379740,
+      "sha256": "6c577e08fce6bedb063753e97bc24b34d23c1b1111cfa8ef9ee84e70eaaa3c66",
+      "served_sha256": "6c577e08fce6bedb063753e97bc24b34d23c1b1111cfa8ef9ee84e70eaaa3c66",
+      "cloudflareBeaconExcluded": false,
+      "matched": true
+    },
+    {
+      "file": "Informatics/read/data.html",
+      "bytes": 184047,
+      "sha256": "8cac0817cddba7b468c0cb64d3476698741aca904de65adbd0a58d5256610f8c",
+      "served_sha256": "76b816dc3d1ff31b910c5a5327c7a8d5f30324c122d81d3a5c2034913b1dc97b",
+      "cloudflareBeaconExcluded": true,
+      "matched": true
+    }
+  ],
+  "health": {
+    "status": "ready",
+    "profile": "informatics-research",
+    "model": "gpt-6-astra",
+    "version": "research-20261026-daytab-v1",
+    "knowledgeVersions": {
+      "approvedYouth": {
+        "sourceBatch": "batch-f164c8325ea5f9c9.json",
+        "sourceSHA256": "f164c8325ea5f9c989c29524518b598913508117712826dc408f592b7f99a723",
+        "approvedAt": "2026-11-02",
+        "publications": 105
+      },
+      "biofeedback": {
+        "version": "lab-biofeedback-20261105-ratings",
+        "publications": 63
+      },
+      "publicGenes": "public-gene-data-20261109-v1",
+      "literature": "literature-20261110-v2"
+    }
+  }
+}

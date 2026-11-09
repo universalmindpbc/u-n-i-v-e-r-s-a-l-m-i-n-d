@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "matchedImplementationSources": [
+    "cloudflare/informatics-literature.js",
+    "cloudflare/informatics-literature-fallback.js",
+    "cloudflare/informatics-literature-agent.js"
+  ],
+  "visibleInterfaceUnchanged": true,
+  "sourceCommit": "91de0986052303c717d2a3c30b8da5a67634b4a9"
+}

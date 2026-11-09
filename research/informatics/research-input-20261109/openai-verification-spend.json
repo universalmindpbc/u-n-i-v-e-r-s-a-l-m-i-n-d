@@ -8,6 +8,67 @@
     "inline live voice with synthetic speech"
   ],
   "newQuantumStudies": 0,
-  "calls": [],
+  "calls": [
+    {
+      "id": "12f953b4-a9c9-4847-96a7-09cfa30d9d80",
+      "kind": "/quantum/command",
+      "chargedUpperUSD": 0.010937499999999989,
+      "status": "reconciled"
+    },
+    {
+      "id": "81524746-67f7-4a49-bac9-890cb7e83198",
+      "kind": "/research",
+      "chargedUpperUSD": 0.38103750000000003,
+      "status": "reconciled"
+    },
+    {
+      "id": "3a783617-b567-446c-86fe-008f3bae432a",
+      "kind": "dictation",
+      "chargedUpperUSD": 0.01,
+      "status": "reserved"
+    },
+    {
+      "id": "0ddd4c2c-0871-4311-bf2d-f67e70d35030",
+      "kind": "dictation",
+      "chargedUpperUSD": 0.01,
+      "status": "reserved"
+    },
+    {
+      "id": "05eeffc8-7fc9-493b-a301-fb57088a82d8",
+      "kind": "dictation",
+      "chargedUpperUSD": 0.01,
+      "status": "reserved"
+    },
+    {
+      "id": "74f892a2-8319-440b-b478-acc11bb5b6c0",
+      "kind": "/quantum/command",
+      "chargedUpperUSD": 0.010124999999999995,
+      "status": "reconciled"
+    },
+    {
+      "id": "2cb5b749-6f1d-4fb2-8498-2ca24689d0af",
+      "kind": "live voice: 60 seconds, at most three 700-token responses",
+      "chargedUpperUSD": 0.6,
+      "status": "reserved"
+    },
+    {
+      "id": "37403fb3-9076-4cd5-89ce-ec110f9faebe",
+      "kind": "/quantum/command",
+      "chargedUpperUSD": 0.01117499999999999,
+      "status": "reconciled"
+    },
+    {
+      "id": "ca4cd329-03ae-4b4d-9029-80cd30e08f77",
+      "kind": "/quantum/command",
+      "chargedUpperUSD": 0.010287500000000005,
+      "status": "reconciled"
+    },
+    {
+      "id": "648ff917-8521-4de3-a578-10487c56ed26",
+      "kind": "/research",
+      "chargedUpperUSD": 0.4581,
+      "status": "reconciled"
+    }
+  ],
   "approval": "Ben approved the extra US$2 staging text, dictation and voice verification on 10 November 2026."
 }

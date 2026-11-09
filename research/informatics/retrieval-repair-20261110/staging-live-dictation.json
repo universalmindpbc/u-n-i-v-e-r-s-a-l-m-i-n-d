@@ -1,0 +1,73 @@
+{
+  "mode": "dictation",
+  "newStudies": 0,
+  "syntheticInput": true,
+  "processAudioMuted": true,
+  "network": [
+    {
+      "path": "/quantum/capacity",
+      "status": 200
+    },
+    {
+      "path": "/transcribe",
+      "status": 200
+    },
+    {
+      "path": "/quantum/command",
+      "status": 200
+    }
+  ],
+  "responses": [
+    {
+      "path": "/quantum/command",
+      "status": 200,
+      "body": {
+        "action": "status",
+        "question": "",
+        "provider_response_id": "resp_0c970afe8c3f893c016af22196280c87d08ff08781b32054d6",
+        "usage": {
+          "input_tokens": 730,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 20,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 750
+        },
+        "qaSpend": {
+          "limitUSD": 0.95,
+          "chargedUpperUSD": 0.010124999999999995,
+          "calls": [
+            {
+              "path": "/responses",
+              "model": "gpt-6-astra",
+              "inputTokenUpper": 12332,
+              "outputTokenUpper": 1400,
+              "boundMethod": "UTF-8 bytes plus framing",
+              "reservedUSD": 0.22415000000000002,
+              "chargedUpperUSD": 0.010124999999999999,
+              "usage": {
+                "input_tokens": 730,
+                "input_tokens_details": {
+                  "cache_write_tokens": 0,
+                  "cached_tokens": 0
+                },
+                "output_tokens": 20,
+                "output_tokens_details": {
+                  "reasoning_tokens": 0
+                },
+                "total_tokens": 750
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "transcript": "Please check the progress of my current quantum study.",
+  "answer": "UNIVERSAL ONE\nThere is no saved study in this browser session. Tell me the question you want to investigate, or ask me to run the question in this conversation.\n1 sources",
+  "passed": true
+}

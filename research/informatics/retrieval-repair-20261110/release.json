@@ -1,0 +1,90 @@
+{
+  "sourceCommit": "91de0986052303c717d2a3c30b8da5a67634b4a9",
+  "workerVersion": "af233844-2358-4839-b92a-ac192203e6ae",
+  "rootCause": "Cloudflare Workers rejects redirect:error while constructing the request, before outbound dispatch.",
+  "repair": "manual redirect mode with existing non-success status rejection; no redirects followed",
+  "stagingURL": "https://staging.universalmind.tv/informatics/quantum/",
+  "liveChecks": {
+    "text": {
+      "passed": true,
+      "network": [
+        {
+          "path": "/quantum/capacity",
+          "status": 200
+        },
+        {
+          "path": "/quantum/command",
+          "status": 200
+        },
+        {
+          "path": "/research",
+          "status": 200
+        }
+      ]
+    },
+    "normal": {
+      "passed": true,
+      "network": [
+        {
+          "path": "/quantum/capacity",
+          "status": 200
+        },
+        {
+          "path": "/quantum/command",
+          "status": 200
+        },
+        {
+          "path": "/research",
+          "status": 200
+        }
+      ]
+    },
+    "dictation": {
+      "passed": true,
+      "network": [
+        {
+          "path": "/quantum/capacity",
+          "status": 200
+        },
+        {
+          "path": "/transcribe",
+          "status": 200
+        },
+        {
+          "path": "/quantum/command",
+          "status": 200
+        }
+      ]
+    },
+    "voice": {
+      "passed": true,
+      "network": [
+        {
+          "path": "/quantum/capacity",
+          "status": 200
+        },
+        {
+          "path": "/voice-session",
+          "status": 200
+        },
+        {
+          "path": "/v1/realtime/calls",
+          "status": 201
+        },
+        {
+          "path": "/quantum/command",
+          "status": 200
+        }
+      ]
+    }
+  },
+  "publicFilesMatched": 15,
+  "completeExportSources": 1196,
+  "openaiUsedOrReservedUpperUSD": 1.5116625,
+  "openaiApprovedUSD": 2,
+  "perplexitySearchTestUSD": 0.005,
+  "opusAgentLiveRetested": false,
+  "sharedStudyWorkerActivated": false,
+  "newHardwareOrGPUJobs": 0,
+  "productionModified": false
+}
