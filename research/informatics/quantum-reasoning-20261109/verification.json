@@ -7,7 +7,7 @@
   "source_unit_tests": 28,
   "guide_json_csv_equivalent": true,
   "implementation_source_hashes_matched": 18,
-  "live_activation": "Cloud build in progress; provider verification pending",
+  "live_activation": "AWS High/Max profile active; live study paused after incomplete Astra plan; complete provider workflow remains unverified",
   "production_profile": "unchanged: low/LOW",
   "new_paid_quantum_or_GPU_jobs": 0,
   "cloud_build_sha256": "308986262a9f26b6289b28d489c21bb8e8de157c674f99490080ee16d5ca0406",
@@ -15,9 +15,39 @@
     "staging_gemini_allowance_USD": 2,
     "shared_worker_update": true,
     "production_reasoning": "retain Low",
-    "production_website_release": false
+    "production_website_release": false,
+    "provider_context_transmission": "Ben approved OXTR evidence, reference DNA, calculations, library excerpts and mission/research directions to OpenAI and Google"
   },
   "complete_export_sources_reconstructed_in_each_format": 1195,
   "export_version": "e2b5970a780486669aebbe6ac81f3a39265c44cd251495163b8fa96d854a29b7",
-  "cloud_build_id": "informatics-astra-staging:f747c3de-a114-43c3-8a0e-6c994964dbf7"
+  "cloud_build_id": "informatics-astra-staging:f747c3de-a114-43c3-8a0e-6c994964dbf7",
+  "cloud_image_digest": "sha256:be3a0ab89bc3854665ad0ee62ca20e3b6361138a869e7df68c683c4eb9309ecd",
+  "previous_cloud_image_digest": "sha256:f3fb73dda21000cb01f893844d29595e747131462deb6b26742a25d37c6b9131",
+  "staging_only_gemini_ledger_seeded": true,
+  "staging_site_deployed": true,
+  "staging_source_commit": "41ec2fe9c",
+  "staging_layout_checks": {
+    "pages": [
+      "Quantum Atlas",
+      "Quantum Lab"
+    ],
+    "widths": [
+      1440,
+      390,
+      320
+    ],
+    "passed": true,
+    "browser_process_audio_muted": true
+  },
+  "live_study": {
+    "id": "34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+    "status": "needs_attention",
+    "failed_stage": "Astra plan",
+    "failure": "Astra design incomplete; reservation retained.",
+    "retained_Astra_token_reservation": 19795,
+    "completed_Astra_calls_in_worker_ledger": 0,
+    "Gemini_staging_micro_usd": 0,
+    "Gemini_calls": 0
+  },
+  "staging_HTTP_file_hash_matches": 18
 }

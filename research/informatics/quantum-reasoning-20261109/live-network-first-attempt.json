@@ -1,0 +1,371 @@
+{
+  "processAudioMuted": true,
+  "questionRequestSucceeded": true,
+  "routerReceipt": {
+    "model": "gpt-6-astra",
+    "provider_response_id": "resp_0a7a361033148abb016af13572ecc487d08063625274d48d48",
+    "route": "oxtr_occupancy"
+  },
+  "network": [
+    {
+      "path": "/quantum/question",
+      "status": 200,
+      "time": "2026-11-09T02:52:37.245Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:52:41.346Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:52:45.397Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:52:49.482Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:52:53.543Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:52:57.648Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:53:01.718Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:53:05.795Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:53:09.842Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:53:13.925Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:53:17.980Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:53:22.082Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:53:26.141Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:53:30.224Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:53:34.277Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:53:38.350Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:53:42.400Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:53:46.540Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:53:50.584Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:53:54.649Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:53:58.695Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:54:02.756Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:54:06.802Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:54:10.865Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:54:14.910Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:54:18.985Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:54:23.051Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:54:27.115Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:54:31.164Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:54:35.224Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:54:39.274Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:54:43.338Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:54:47.393Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:54:51.483Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:54:55.541Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:54:59.605Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:55:03.661Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:55:07.741Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:55:11.800Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:55:15.868Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:55:19.932Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:55:24.000Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:55:28.075Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:55:32.194Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:55:36.248Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:55:40.310Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:55:44.358Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:55:48.426Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:55:52.476Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:55:56.536Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:56:00.590Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:56:04.655Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:56:08.706Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:56:12.782Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:56:16.835Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:56:20.905Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:56:24.955Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:56:29.026Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:56:33.073Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:56:37.148Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:56:41.197Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:56:45.259Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:56:49.302Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:56:53.391Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:56:57.435Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:57:01.514Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:57:05.570Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:57:09.630Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:57:13.674Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:57:17.742Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:57:21.790Z"
+    },
+    {
+      "path": "/agent/studies/34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+      "status": 200,
+      "time": "2026-11-09T02:57:25.851Z"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 # Astra: private Quantum Atlas execution
 
-## Reasoning update prepared 9 November 2026
+## Staging reasoning update · 9 November 2026
 
 The staging profile requests GPT-6 Astra with `reasoning.effort=max` for study
 planning and interpretation, and Gemini 4 Argon with `thinkingLevel=HIGH` for
@@ -17,14 +17,19 @@ Both staging providers have an 8,192-token output cap and a 300-second request
 timeout. The existing 24,000-token/four-call Astra study allowance remains
 enforced. Production and resumed Low studies retain the existing US$1 Gemini
 ledger. New High staging studies require a separately seeded ledger capped at
-US$2. Seeding that ledger requires Ben's explicit approval; code alone grants no
-additional allowance and a missing ledger stops execution.
+US$2. Ben approved and seeded this separate allowance on 9 November 2026.
+Code alone grants no additional allowance and a missing ledger stops execution.
 Insufficient allowance or incomplete responses pause the study and retain its
 checkpoint and reservation. Higher effort alone does not establish correctness.
 
-Activation requires the existing AWS build/deploy workflow and a complete staged
-request, provider response, review and visible report. Until that verification,
-the source change remains prepared rather than a confirmed live configuration.
+The approved shared worker image is active through the existing AWS deployment
+workflow. Production retains Low. Complete staging verification still requires a
+request, provider response, scientific review and visible report; the page labels
+retain an activation-pending note until that workflow passes. The first new
+study reached Astra Max planning and returned incomplete with the 8,192-token
+output cap; its reservation and checkpoint remain intact. Gemini was never
+called in that attempt. See the dated
+verification record in `../quantum-reasoning-20261109/`.
 
 References: [OpenAI reasoning levels](https://developers.openai.com/api/docs/models/gpt-6-astra),
 [Gemini thinking](https://ai.google.dev/gemini-api/docs/thinking), and
