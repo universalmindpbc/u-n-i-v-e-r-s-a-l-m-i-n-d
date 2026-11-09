@@ -29,7 +29,7 @@
  const waveform=UniversalOneWaveform(root,[...root.querySelectorAll('[data-waveform]')],()=>mode==='voice'?live.getState().inputEnabled:!!stream?.getAudioTracks().some(t=>t.enabled));
  function labelButton(button,label){button.setAttribute('aria-label',label);button.dataset.label=label;}
  function state(name,label){root.dataset.state=name;say(label);const muted=live.getState().muted;$('[data-mute]').setAttribute('aria-pressed',String(muted));labelButton($('[data-mute]'),muted?'Unmute microphone':'Mute microphone');$('[data-mute]').disabled=!live.getState().active;$('[data-reconnect]').hidden=name!=='error';$('[data-mute]').hidden=name==='error';$('[data-interrupt]').hidden=!live.getState().active||!['thinking','speaking'].includes(name);if(name==='error')duck(false);}
- const live=UniversalOneLive({request,history:()=>history,context,onState:state,onMicrophone:mic=>{if(mic)waveform.start(mic);else waveform.stop();},onUser:text=>{history.push({role:'user',content:text});message('user',text);},onAssistant:(text,sources)=>{history.push({role:'assistant',content:text,sources});message('assistant',text,sources);}});
+ const live=UniversalOneLive({request,history:()=>history,context,answer:answerQuestion,onState:state,onMicrophone:mic=>{if(mic)waveform.start(mic);else waveform.stop();},onUser:text=>{history.push({role:'user',content:text});message('user',text);},onAssistant:(text,sources)=>{history.push({role:'assistant',content:text,sources});message('assistant',text,sources);}});
  // Keep one conversation in the most recently opened dialog. DOM order differs
  // from modal order when Research opens from the gene-network lightbox.
  let dialogStack=[...document.querySelectorAll('dialog[open]')],placementHost=null;
@@ -51,7 +51,7 @@
  function stopAudio(){if(audio){audio.pause();audio.src='';audio=null;inputGateUntil=performance.now()+900;}if(audioURL){URL.revokeObjectURL(audioURL);audioURL=null;}if(!stream)duck(false);}
  function releaseMic(){clearTimeout(recordTimer);stream?.getTracks().forEach(t=>t.stop());stream=null;waveform.stop();$('.uo-compose canvas').hidden=true;recordButton.setAttribute('aria-pressed','false');recordButton.textContent='Dictate';}
  function cancel(){generation++;controller?.abort();controller=null;busy=false;sendButton.disabled=false;stopAudio();if(recorder&&recorder.state!=='inactive'){recorder.onstop=null;recorder.stop();}recorder=null;releaseMic();live.end();duck(false);stopButton.hidden=true;root.dataset.state='idle';$('[data-reconnect]').hidden=true;say('Stopped.');}
- function open(){if(!opened&&history.length){log.replaceChildren();for(const m of history)message(m.role,m.content,m.sources||[]);}opened=true;panel.hidden=false;menu.hidden=true;sync();requestAnimationFrame(()=>{log.scrollTop=log.scrollHeight;});if(mode==='text')composer.focus({preventScroll:true});}
+ function open(){const quantum=!!window.UniversalOneQuantum?.available();if($('.uo-welcome'))$('.uo-welcome').textContent=quantum?'Discuss the evidence, or say “Run the question in the Quantum form.” Ask for progress or results at any time.':'Ask about a paper, a molecular target or an Atlas record.';composer.placeholder=quantum?'Ask a question or give a Quantum study command…':'Ask a research question…';if(!opened&&history.length){log.replaceChildren();for(const m of history)message(m.role,m.content,m.sources||[]);}opened=true;panel.hidden=false;menu.hidden=true;sync();requestAnimationFrame(()=>{log.scrollTop=log.scrollHeight;});if(mode==='text')composer.focus({preventScroll:true});}
  function close(){cancel();mode='text';opened=false;panel.hidden=true;menu.hidden=true;sync();summon.focus({preventScroll:true});}
  function minimize(){panel.hidden=true;menu.hidden=true;sync();summon.focus({preventScroll:true});}
  async function voice(){cancel();mode='voice';opened=true;panel.hidden=true;menu.hidden=true;sync();duck(true);await live.start();sync();}
@@ -62,7 +62,7 @@
  document.addEventListener('pointerdown',e=>{if(!root.contains(e.target)){menu.hidden=true;sync();}});
  root.addEventListener('keydown',e=>{if(e.key==='Escape'&&opened&&(!panel.hidden||!menu.hidden)){e.preventDefault();e.stopPropagation();minimize();}});
  composer.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey&&!e.isComposing){e.preventDefault();$('.uo-compose').requestSubmit();}});
- async function request(path,body,signal){let response=await window.UniversalOneTransport?.(path,body,signal);if(!response){if(path==='/research'){await window.UniversalOneHelpersReady;body=window.UniversalOneContext.compactResearchRequest(body);}else if(path==='/voice-session'){body={manualTurns:true};}response=await fetch(endpoint+path,{method:'POST',headers:body instanceof FormData?{}:{'Content-Type':'application/json'},body:body instanceof FormData?body:JSON.stringify(body),signal});}if(!response.ok){const result=await response.json().catch(()=>({}));throw Error(result.error||'Connection interrupted. Please retry.');}return response;}
+ async function request(path,body,signal){let response=await window.UniversalOneTransport?.(path,body,signal);if(!response){if(path==='/research'){await window.UniversalOneHelpersReady;body=window.UniversalOneContext.compactResearchRequest(body);}else if(path==='/voice-session'){body={manualTurns:true,quantumCommands:!!window.UniversalOneQuantum?.available()};}response=await fetch(endpoint+path,{method:'POST',headers:body instanceof FormData?{}:{'Content-Type':'application/json'},body:body instanceof FormData?body:JSON.stringify(body),signal});}if(!response.ok){const result=await response.json().catch(()=>({}));throw Error(result.error||'Connection interrupted. Please retry.');}return response;}
  function message(role,text,sources=[]){
   $('.uo-welcome')?.remove();const messageId=++messageNumber;const article=document.createElement('article');article.className='uo-message';article.dataset.role=role;
   const title=document.createElement('h3');title.textContent=role==='user'?'You':'Universal One';article.append(title);
@@ -84,11 +84,15 @@
   audioURL=URL.createObjectURL(blob);audio=new Audio(audioURL);audio.onended=()=>{stopAudio();stopButton.hidden=true;root.dataset.state='idle';say('Ready when you are.');};
   try{await audio.play();say('Speaking · Sources are available above.');}catch{stopAudio();stopButton.hidden=true;say('Tap Read aloud to hear the answer.');}
  }
+ async function answerQuestion(question,signal,visitorQuestion=question){
+  const command=await window.UniversalOneQuantum?.answer(visitorQuestion,history,request,signal);
+  return command||await(await request('/research',{question,history,context:context()},signal)).json();
+ }
  async function submit(){
   const question=composer.value.trim();if(!question||busy||mode!=='text')return;
   const token=++generation;busy=true;sendButton.disabled=true;stopButton.hidden=false;controller=new AbortController();stopAudio();releaseMic();
   message('user',question);composer.value='';say('Thinking…');
-  try{const result=await(await request('/research',{question,history,context:context()},controller.signal)).json();if(token!==generation)return;history.push({role:'user',content:question},{role:'assistant',content:result.answer,sources:result.sources});message('assistant',result.answer,result.sources);say(result.sources?.length?'Answer ready · Sources below.':'Answer ready.');}
+  try{const result=await answerQuestion(question,controller.signal);if(token!==generation)return;history.push({role:'user',content:question},{role:'assistant',content:result.answer,sources:result.sources});message('assistant',result.answer,result.sources);say(result.sources?.length?'Answer ready · Sources below.':'Answer ready.');}
   catch(error){if(token===generation&&error.name!=='AbortError'){composer.value=question;say(error.message);}}
   finally{if(token===generation){busy=false;sendButton.disabled=false;stopButton.hidden=true;duck(false);}}
  }

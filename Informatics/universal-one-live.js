@@ -1,7 +1,7 @@
 // I Am Realtime transport, Marin voice and input gates, scoped to Informatics.
 (() => {
- window.UniversalOneLive=({request,history,context,onState,onMicrophone,onUser,onAssistant})=>{
-  let peer=null,channel=null,stream=null,remote=null,abort=null,active=false,muted=false,gated=true,playing=false,responseActive=false,pending=null,lastResult=null,epoch=0,gateTimer=0,sessionTimer=0,disconnectTimer=0,suspended=false,currentState='idle',currentLabel='Ready when you are.',visibilityWaiters=new Set(),routingCatalogue=[],transcriptionTimer=0,pendingSpeech=null;
+ window.UniversalOneLive=({request,history,context,answer,onState,onMicrophone,onUser,onAssistant})=>{
+  let peer=null,channel=null,stream=null,remote=null,abort=null,active=false,muted=false,gated=true,playing=false,responseActive=false,pending=null,lastResult=null,epoch=0,gateTimer=0,sessionTimer=0,disconnectTimer=0,suspended=false,currentState='idle',currentLabel='Ready when you are.',visibilityWaiters=new Set(),routingCatalogue=[],transcriptionTimer=0,pendingSpeech=null,lastQuestion='';
   const completed=new Set(),spoken=new Set(),heard=new Set();
   const send=value=>{if(channel?.readyState==='open'){channel.send(JSON.stringify(value));return true;}return false;};
   const sync=()=>stream?.getAudioTracks().forEach(t=>{t.enabled=active&&!muted&&!gated&&!suspended;});
@@ -10,18 +10,18 @@
   function waitForVisible(signal){if(!suspended)return Promise.resolve();return new Promise((resolve,reject)=>{const cleanup=()=>{visibilityWaiters.delete(wake);signal.removeEventListener('abort',aborted);};const wake=()=>{cleanup();resolve();};const aborted=()=>{cleanup();reject(Object.assign(Error('Voice start cancelled.'),{name:'AbortError'}));};visibilityWaiters.add(wake);signal.addEventListener('abort',aborted,{once:true});if(signal.aborted)aborted();});}
   function gate(){clearTimeout(gateTimer);gated=true;sync();}
   function listen(){clearTimeout(gateTimer);gateTimer=setTimeout(()=>{if(!active||pending||playing||responseActive)return;gated=false;sync();state(muted?'muted':'listening',muted?'Microphone off':'Listening…');},900);}
-  function end(){epoch++;active=false;clearTimeout(gateTimer);clearTimeout(sessionTimer);clearTimeout(disconnectTimer);clearTimeout(transcriptionTimer);abort?.abort();abort=null;pending=null;channel?.close();channel=null;if(peer){peer.onconnectionstatechange=null;peer.close();peer=null;}stream?.getTracks().forEach(t=>t.stop());stream=null;onMicrophone(null);if(remote){remote.pause();remote.srcObject=null;remote=null;}playing=false;responseActive=false;gated=true;muted=false;completed.clear();spoken.clear();heard.clear();lastResult=null;currentState='idle';currentLabel='Ready when you are.';pendingSpeech=null;}
+  function end(){epoch++;active=false;clearTimeout(gateTimer);clearTimeout(sessionTimer);clearTimeout(disconnectTimer);clearTimeout(transcriptionTimer);abort?.abort();abort=null;pending=null;channel?.close();channel=null;if(peer){peer.onconnectionstatechange=null;peer.close();peer=null;}stream?.getTracks().forEach(t=>t.stop());stream=null;onMicrophone(null);if(remote){remote.pause();remote.srcObject=null;remote=null;}playing=false;responseActive=false;gated=true;muted=false;completed.clear();spoken.clear();heard.clear();lastResult=null;currentState='idle';currentLabel='Ready when you are.';pendingSpeech=null;lastQuestion='';}
   function fail(label){end();state('error',label);}
   async function research(call,token){
    if(completed.has(call.call_id))return;completed.add(call.call_id);pending=call.call_id;gate();state('thinking','Thinking…');abort=new AbortController();
    try{
     if(call.name!=='ask_research')throw Error('Unknown research operation.');
     const args=JSON.parse(call.arguments);if(typeof args.question!=='string'||!args.question.trim())throw Error('Please repeat the research question.');
-    const result=await(await request('/research',{question:args.question,history:history(),context:context()},abort.signal)).json();
+    const result=answer&&lastQuestion?await answer(args.question,abort.signal,lastQuestion):await(await request('/research',{question:args.question,history:history(),context:context()},abort.signal)).json();
     if(token!==epoch||pending!==call.call_id)return;
     lastResult=result;pending=null;
     send({type:'conversation.item.create',item:{type:'function_call_output',call_id:call.call_id,output:JSON.stringify({answer:result.answer,sources:result.sources.map(s=>({label:s.label,title:s.title,url:s.url})),version:result.version})}});
-    send({type:'response.create',response:{tool_choice:'none',instructions:'Answer the current question using the research tool result just returned. Preserve specific study findings, names and relevant numbers. Use general knowledge only to explain them. If no relevant evidence was found, state that distinction. Never invent a project claim. Keep the spoken answer concise; source links are in the transcript.'}});
+    send({type:'response.create',response:{tool_choice:'none',instructions:'Answer the current question using the research tool result just returned. Preserve specific study findings, names and relevant numbers. For a study command, state only the action, progress or findings confirmed by the tool result. Use general knowledge only to explain research findings. If no relevant evidence was found, state that distinction. Never invent a project claim. Keep the spoken answer concise; source links are in the transcript.'}});
    }catch(error){if(token!==epoch||pending!==call.call_id)return;pending=null;send({type:'conversation.item.create',item:{type:'function_call_output',call_id:call.call_id,output:JSON.stringify({error:error.message})}});send({type:'response.create'});state('thinking','Research request interrupted. Preparing a response…');}
   }
   function receive(message,token){
@@ -36,7 +36,7 @@
    if(e.type==='conversation.item.input_audio_transcription.completed'&&!heard.has(e.item_id)){
     heard.add(e.item_id);pendingSpeech=null;clearTimeout(transcriptionTimer);
     const question=e.transcript?.trim();if(!question){listen();return;}
-    onUser(question);gate();state('thinking','Thinking…');
+    lastQuestion=question;onUser(question);gate();state('thinking','Thinking…');
     // Research every substantive turn before speech; social acknowledgements
     // and voice controls are the only direct-conversation bypass.
     const required=window.UniversalOneNeedsResearch?.(question,routingCatalogue,history())??true;

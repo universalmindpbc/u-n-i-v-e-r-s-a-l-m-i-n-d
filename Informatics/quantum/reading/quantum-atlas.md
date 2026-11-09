@@ -33,7 +33,7 @@ You can ask Quantum Atlas a biological research question without writing quantum
 
 | Feature | Purpose | Value for the person |
 | --- | --- | --- |
-| Ask a question | Express the biological question in everyday language. The router identifies a supported calculation or a concrete missing capability. | A clear starting point without writing quantum code. |
+| Ask a question | Enter a scientific question in the Quantum form, or ask Universal One by text, dictation or live voice to draft or run it. | Discuss the evidence, launch a supported investigation, then ask for its saved progress and findings in the same conversation. Ordinary research discussion does not launch a study. |
 | Study and live workflow | Show the question, scientific plan, agent progress and the role of each calculation or evidence source. | Understand what is happening and how each stage contributes. |
 | Geometry explorer | Inspect Alpha, Beta, Gamma and Epsilon definitions and the different numerical preparations of the same DNA inputs. | See what is being compared before interpreting its response. |
 | Design and findings reviews | Gemini checks the proposed method before calculations and checks the findings against the evidence before delivery. | See the review decision, requested corrections and retained evidence. |
@@ -60,7 +60,7 @@ Astra and Gemini have distinct scientific roles. LangGraph coordinates their wor
 | qBraid and NVIDIA GPU | Recorded GPU execution route | Executed the saved CUDA-Q compiled programs on the documented GPU service. Those measurements and receipts remain available for comparison. | Recorded GPU samples and execution identity into the study evidence. |
 | QuEra Aquila via Amazon Braket | Recorded physical quantum measurement route | The saved analog programs ran on Aquila’s neutral atoms through Braket. Their task receipts identify the actual hardware measurements. | Hardware counts, usable shots, observables and timestamps into the comparison. |
 | Biological evidence and classical benchmarks | Test biological usefulness | Reference DNA, ENCODE binding observations and JASPAR motifs support the held-out prediction comparison. Fixed classical code calculates the scores and uncertainty. | Computed biological results and source provenance to Astra and Gemini. |
-| Research memory and Universal One | Shared research context and public research conversation | Astra retrieves mission, experiment and research-direction records plus literature from the research repository. Universal One exposes cited research answers and public evidence access. | Versioned sources to the scientific workflow and to an external AI using the public interfaces. |
+| Research memory and Universal One | Shared research context and public research conversation | Universal One answers from the research library and shared research context. On Quantum Atlas, text, dictation and live voice commands also use the existing browser research session to draft a question, submit the form, read saved progress and explain the saved report. | Explicit run commands go to the existing Quantum form and durable Astra/Gemini service. Progress and results return to the conversation. Repeated commands reuse the active study; hardware spending remains disabled. |
 | Cloudflare broker, AWS worker and encrypted storage | Durable execution and delivery | The broker tracks session-owned tasks and worker leases. AWS Lambda executes the supported recipe; SQLite checkpoints and encrypted S3 preserve progress and results. | Progress events and the completed report return to the originating research session. |
 
 ## How the investigation moves through the system
@@ -294,7 +294,7 @@ The current A2A agent returns a direct research answer. Persistent task dispatch
 
 ### From an AI conversation to a new investigation
 
-For a new persistent investigation, help the person frame the question and open Quantum Atlas. The site establishes its research session, submits the question and tracks the resulting study. Keep the public research connector separate from the session-owned execution service.
+For a persistent investigation, open Quantum Atlas and frame the scientific question. The form and Universal One text, dictation and live voice commands use the same browser research session. Explicit run commands submit the supported question; progress and results reuse the saved study. The public MCP and A2A interfaces retain their read-only research scope.
 
 Retain study IDs, immutable revision URLs, source hashes, provider receipts and review status when moving between agents. Link the evidence that supports the explanation, and preserve the original question throughout the handoff.
 
@@ -647,11 +647,11 @@ The following JSON preserves the source fields, saved chart arrays, study interp
 {
   "schema": "universal-informatics/quantum-atlas-guide/v1",
   "title": "Quantum Atlas · AI / LLM Wiki",
-  "version": "2026-11-09-reasoning-production",
+  "version": "2026-11-09-universal-one-quantum",
   "url": "https://universalmind.tv/informatics/quantum/",
   "wiki": "https://universalmind.tv/informatics/read/quantum/index.html",
   "agent_architecture": {
-    "version": "2026-11-09-reasoning-production",
+    "version": "2026-11-09-universal-one-quantum",
     "purpose": {
       "title": "What Quantum Atlas is for",
       "summary": "Quantum Atlas makes computational biology and quantum research approachable through a scientific question written in ordinary language. A person brings the question; the platform coordinates AI scientific work, mathematical models, simulations, recorded quantum measurements and biological evidence, then returns an explanation with the underlying research record.",
@@ -674,8 +674,8 @@ The following JSON preserves the source fields, saved chart arrays, study interp
     "features": [
       {
         "feature": "Ask a question",
-        "purpose": "Express the biological question in everyday language. The router identifies a supported calculation or a concrete missing capability.",
-        "human_value": "A clear starting point without writing quantum code."
+        "purpose": "Enter a scientific question in the Quantum form, or ask Universal One by text, dictation or live voice to draft or run it.",
+        "human_value": "Discuss the evidence, launch a supported investigation, then ask for its saved progress and findings in the same conversation. Ordinary research discussion does not launch a study."
       },
       {
         "feature": "Study and live workflow",
@@ -778,8 +778,8 @@ The following JSON preserves the source fields, saved chart arrays, study interp
         {
           "name": "Research memory and Universal One",
           "role": "Shared research context and public research conversation",
-          "work": "Astra retrieves mission, experiment and research-direction records plus literature from the research repository. Universal One exposes cited research answers and public evidence access.",
-          "handoff": "Versioned sources to the scientific workflow and to an external AI using the public interfaces."
+          "work": "Universal One answers from the research library and shared research context. On Quantum Atlas, text, dictation and live voice commands also use the existing browser research session to draft a question, submit the form, read saved progress and explain the saved report.",
+          "handoff": "Explicit run commands go to the existing Quantum form and durable Astra/Gemini service. Progress and results return to the conversation. Repeated commands reuse the active study; hardware spending remains disabled."
         },
         {
           "name": "Cloudflare broker, AWS worker and encrypted storage",
@@ -1333,13 +1333,13 @@ The following JSON preserves the source fields, saved chart arrays, study interp
         "scope": "The current A2A agent returns a direct research answer. Persistent task dispatch, streaming and push notifications are outside its advertised capabilities. MCP and A2A do not submit new Aquila jobs or create the browser’s persistent Astra study."
       },
       "connect_guide": "https://universalmind.tv/informatics/connect.html",
-      "handoff": "For a new persistent investigation, help the person frame the question and open Quantum Atlas. The site establishes its research session, submits the question and tracks the resulting study. Keep the public research connector separate from the session-owned execution service.",
+      "handoff": "For a persistent investigation, open Quantum Atlas and frame the scientific question. The form and Universal One text, dictation and live voice commands use the same browser research session. Explicit run commands submit the supported question; progress and results reuse the saved study. The public MCP and A2A interfaces retain their read-only research scope.",
       "citation_contract": "Retain study IDs, immutable revision URLs, source hashes, provider receipts and review status when moving between agents. Link the evidence that supports the explanation, and preserve the original question throughout the handoff."
     },
     "implementation_sources": [
       {
         "repository_path": "Informatics/quantum/index.html",
-        "sha256": "241eef8b0342309cd7935654b157d108ecc4bdb0904e06d5702bd016aa27cfc9",
+        "sha256": "f66ff47395be39e6984d4190f4f603add385d66cd2c962b13c01073ffac33ba7",
         "scope": "Original primary-page source with generated reading blocks removed"
       },
       {
@@ -1354,7 +1354,7 @@ The following JSON preserves the source fields, saved chart arrays, study interp
       },
       {
         "repository_path": "Informatics/quantum/biology.js",
-        "sha256": "07bf3e90c3b0e9e18dc51ee0557774a536a2a9049c97decd0fa502966bf1c8dc",
+        "sha256": "09d33d422d89f5f01e9d5dea70f1f76313c9335132835f90f690fd0ea3c77585",
         "scope": "Implementation source"
       },
       {
@@ -1425,6 +1425,26 @@ The following JSON preserves the source fields, saved chart arrays, study interp
       {
         "repository_path": "research/informatics/scientific-swarm/providers.py",
         "sha256": "d736b78032265eadea61e322ad90107f87dd81075968e3d1f5b52acd671c011f",
+        "scope": "Implementation source"
+      },
+      {
+        "repository_path": "Informatics/universal-one.js",
+        "sha256": "6510f5f92c1457d4598871fa649dde9edaefa3cca0db9bf12fed6e9695ca307e",
+        "scope": "Implementation source"
+      },
+      {
+        "repository_path": "Informatics/universal-one-live.js",
+        "sha256": "aa42dd713823f05009e68cd43b8263d3a2f6b7a52a255df7ab93b4a272e10e83",
+        "scope": "Implementation source"
+      },
+      {
+        "repository_path": "Informatics/universal-one-quantum.js",
+        "sha256": "6341584387d7761aa35ddb2b2e978e3ea547cb9b015a38c6424b5070f344c11e",
+        "scope": "Implementation source"
+      },
+      {
+        "repository_path": "cloudflare/informatics-quantum-command.js",
+        "sha256": "8c3abe80ed8b3cb333aabf772a56f655872baef0ca002e449a0bc9d3ad6226b9",
         "scope": "Implementation source"
       }
     ]
@@ -9628,9 +9648,9 @@ The following JSON preserves the source fields, saved chart arrays, study interp
   ],
   "page_prose_sha256": "f771fe41580f961eadddeb6d9024cef1e1094451830b8721b128d356cd58582a",
   "downloads": {
-    "json": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.json?v=2026-11-09-reasoning-production",
-    "csv": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.csv?v=2026-11-09-reasoning-production",
-    "md": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.md?v=2026-11-09-reasoning-production"
+    "json": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.json?v=2026-11-09-universal-one-quantum",
+    "csv": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.csv?v=2026-11-09-universal-one-quantum",
+    "md": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.md?v=2026-11-09-universal-one-quantum"
   }
 }
 ```

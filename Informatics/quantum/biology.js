@@ -82,7 +82,8 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-open-next-
 window.addEventListener('quantum:state',e=>{recordedState=e.detail;refreshReports();});
 function studyMessage(data){const {study,reports}=reportContext(data,recordedState);return data.status==='study_linked'&&study?.id==='oxtr-qrc-01'&&verifiedReport(reports.simulation,study,'simulation')&&verifiedReport(reports.quantum,study,'quantum')?'Your question matches our OXTR study. The measurements and first genomic analysis are complete. Open the current findings and the next quantum decision.':data.message;}
 function activate(data){active=data;if(data.agent)followAgent(data.agent,t=>{if(active?.agent?.id===t.id){active.agent=t;$('#study-request-status').textContent=t.message;try{localStorage.setItem('quantum-atlas-question-v3',JSON.stringify(active));}catch{}refreshReports();}});$('#active-question').textContent=data.question;$('#study-request-status').textContent=studyMessage(data);$('#study-actions').hidden=false;window.dispatchEvent(new CustomEvent('quantum:question',{detail:{state:'complete',label:'Question received',studyId:data.study?.id||null}}));refreshReports();}
-$('#question-form').onsubmit=async e=>{e.preventDefault();if(busy)return;const question=$('#question').value.trim();if(question.length<5)return;if(question!==pendingText){pendingKey=crypto.randomUUID();pendingText=question;}resetAgent();busy=true;$('#ask-button').disabled=true;$('#question').readOnly=true;$('#question-status').textContent='';$('#question-status').className='';$('#saved-status').textContent='';active=null;refreshReports();$('#active-question').textContent=question;$('#study-request-status').textContent='Understanding your question…';$('#study-actions').hidden=true;step('study');window.dispatchEvent(new CustomEvent('quantum:question',{detail:{state:'running',label:'Understanding question',studyId:null}}));try{await ensureAgentSession();const r=await fetch(endpoint+'/quantum/question',{method:'POST',headers:{'Content-Type':'application/json',...agentHeaders()},body:JSON.stringify({question,requestKey:pendingKey}),signal:AbortSignal.timeout(110000)}),data=await r.json();if(!r.ok)throw Error(data.error||'The request failed. Please retry.');if(data.version!=='quantum-question-v3'||!data.id||!data.reports)throw Error('The response was incomplete. Please retry.');activate(data);updateCapacity(data.allowance);$('#question').value='';}catch(error){step('ask');$('#question-status').className='error';$('#question-status').textContent=error.name==='TimeoutError'?'The request timed out. Your question is preserved.':error.message;$('#study-request-status').textContent='Question not processed. Retry from Ask a question.';window.dispatchEvent(new CustomEvent('quantum:question',{detail:{state:'failed',label:'Request failed',studyId:null}}));}finally{busy=false;$('#ask-button').disabled=false;$('#question').readOnly=false;refreshReports();}};
+async function submitStudy(question){question=question.trim();if(busy)throw Error('A study request is already being processed.');if(question.length<5||question.length>3000)throw Error('Enter a scientific question in 5–3,000 characters.');$('#question').value=question;if(question!==pendingText){let saved;try{saved=JSON.parse(localStorage.getItem('quantum-atlas-pending-request-v1'));}catch{}pendingKey=saved?.question===question?saved.requestKey:crypto.randomUUID();pendingText=question;try{localStorage.setItem('quantum-atlas-pending-request-v1',JSON.stringify({question,requestKey:pendingKey}));}catch{}}resetAgent();busy=true;$('#ask-button').disabled=true;$('#question').readOnly=true;$('#question-status').textContent='';$('#question-status').className='';$('#saved-status').textContent='';active=null;refreshReports();$('#active-question').textContent=question;$('#study-request-status').textContent='Understanding your question…';$('#study-actions').hidden=true;step('study');window.dispatchEvent(new CustomEvent('quantum:question',{detail:{state:'running',label:'Understanding question',studyId:null}}));try{await ensureAgentSession();const r=await fetch(endpoint+'/quantum/question',{method:'POST',headers:{'Content-Type':'application/json',...agentHeaders()},body:JSON.stringify({question,requestKey:pendingKey}),signal:AbortSignal.timeout(110000)}),data=await r.json();if(!r.ok)throw Error(data.error||'The request failed. Please retry.');if(data.version!=='quantum-question-v3'||!data.id||!data.reports)throw Error('The response was incomplete. Please retry.');activate(data);updateCapacity(data.allowance);$('#question').value='';return data;}catch(error){step('ask');$('#question-status').className='error';$('#question-status').textContent=error.name==='TimeoutError'?'The request timed out. Your question is preserved.':error.message;$('#study-request-status').textContent='Question not processed. Retry from Ask a question.';window.dispatchEvent(new CustomEvent('quantum:question',{detail:{state:'failed',label:'Request failed',studyId:null}}));throw error;}finally{busy=false;$('#ask-button').disabled=false;$('#question').readOnly=false;refreshReports();}}
+$('#question-form').onsubmit=e=>{e.preventDefault();submitStudy($('#question').value).catch(()=>{});};
 $('#new-question').onclick=()=>{if(busy)return;resetAgent();active=null;$('#active-question').textContent='Your investigation';$('#study-request-status').textContent='Ask a question to begin.';$('#study-actions').hidden=true;$('#question-status').textContent='';$('#question-status').className='';$('#saved-status').textContent='';refreshReports();window.dispatchEvent(new CustomEvent('quantum:question',{detail:{state:'ready',label:'Awaiting question',studyId:null}}));step('ask');$('#question').focus();};
 const savedKey='quantum-atlas-question-v3';
 function retained(){try{$('#saved-study').hidden=!localStorage.getItem(savedKey);}catch{$('#saved-study').hidden=true;}}
@@ -101,3 +102,35 @@ function openAgentResults(task){
 }
 
 setupAgent(openAgentResults);
+
+// Same-origin parent conversation shares this form's task and authentication.
+function conversationStudy(){
+ if(active)return active;
+ try{const saved=JSON.parse(localStorage.getItem(savedKey));if(saved?.version==='quantum-question-v3'&&saved.id&&saved.reports)return saved;}catch{}
+ return null;
+}
+function conversationResult(data){
+ const task=data.agent;
+ return {id:task?.id||data.id,question:data.question,status:task?.status||data.status,stage:task?.stage||'',message:task?.message||data.message,report:task?.report||(data.reports?.classical?.state==='complete'?{narrative:{answer:data.reports.classical.finding,meaning:data.reports.classical.calculation?.sequence?'Reconstructed sequence: '+data.reports.classical.calculation.sequence:''}}:null)};
+}
+window.QuantumStudyConversation=Object.freeze({
+ context(){const data=conversationStudy();return {question:$('#question').value.trim()||data?.question||studyQuestion,savedQuestion:data?.question||'',status:data?.agent?.status||data?.status||'idle'};},
+ draft(question){if(busy)throw Error('A study request is already being processed.');if(question.length<5||question.length>3000)throw Error('Enter a scientific question in 5–3,000 characters.');$('#question').value=question;step('ask');},
+ async start(question){
+  const saved=conversationStudy();
+  if(saved?.agent&&(!['complete','failed','cancelled'].includes(saved.agent.status)||saved.question.trim()===question.trim())){
+   activate(saved);return {...conversationResult(saved),message:saved.agent.status==='complete'?'This study is already complete. Ask for its results.':'Your existing study is '+saved.agent.status+'. '+saved.agent.message};
+  }
+  return conversationResult(await submitStudy(question));
+ },
+ async inspect(){
+  const saved=conversationStudy();if(!saved)return null;
+  if(saved.agent){
+   await ensureAgentSession();
+   const response=await fetch(endpoint+'/agent/studies/'+saved.agent.id,{headers:agentHeaders(),signal:AbortSignal.timeout(20000)});
+   const task=await response.json();if(!response.ok)throw Error(task.error||'The saved study is temporarily unavailable. No new study was submitted.');
+   saved.agent=task;activate(saved);
+  }
+  return conversationResult(saved);
+ }
+});
