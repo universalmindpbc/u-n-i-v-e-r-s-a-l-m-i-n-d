@@ -104,11 +104,11 @@ export async function astraStorage(storage,b){
     else{
      const email=typeof b.email==='string'?b.email.trim():'';
      if(email.length>254||! /^[A-Za-z0-9.!#$%&'*+\/=?^_`{|}~-]+@[A-Za-z0-9](?:[A-Za-z0-9.-]*[A-Za-z0-9])?\.[A-Za-z]{2,63}$/.test(email))return answer({error:'Enter a valid email address.'},400);
-     if(task.notification&&task.notification.email===email&&task.notification.state!=='failed')return answer({delivery:deliveryView(task)});
+     if(task.notification&&task.notification.email===email&&task.notification.state!=='failed')return answer({delivery:deliveryView(task),resultToken:task.notification.token});
      if((task.notificationChanges||0)>=3)return answer({error:'The notification change limit for this study is reached.'},429);
      task.notificationChanges=(task.notificationChanges||0)+1;
      task.notification={email,state:'waiting',token:[...crypto.getRandomValues(new Uint8Array(32))].map(x=>x.toString(16).padStart(2,'0')).join(''),eventId:crypto.randomUUID(),expires:now+30*86400000,attempts:0,nextAttempt:now};
-     result=answer({delivery:deliveryView(task)});
+     result=answer({delivery:deliveryView(task),resultToken:task.notification.token});
     }
    }else
    if(b.op==='resume'){

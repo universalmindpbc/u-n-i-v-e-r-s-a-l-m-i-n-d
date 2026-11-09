@@ -1,4 +1,4 @@
-import {setupDelivery,deliveryStudy,openEmailResult} from './delivery.js?v=20261109';
+import {setupDelivery,deliveryStudy,openEmailResult} from './delivery.js?v=email-reader-20261109';
 import './scientific-review.js?v=live-3';
 import {appendGenomic,appendLocalChecks} from './study-progress.js?v=4';
 import {agentHeaders,ensureAgentSession,followAgent,resetAgent,renderAgentReport,setupAgent} from './agent.js?v=conversation-repair-20261109';

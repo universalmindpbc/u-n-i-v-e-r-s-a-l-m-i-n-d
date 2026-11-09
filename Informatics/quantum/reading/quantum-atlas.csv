@@ -2,11 +2,11 @@ path,type,value
 ,object,
 /schema,string,universal-informatics/quantum-atlas-guide/v1
 /title,string,Quantum Atlas · AI / LLM Wiki
-/version,string,2026-11-09-live-conversation
+/version,string,2026-11-09-live-conversation-2
 /url,string,https://universalmind.tv/informatics/quantum/
 /wiki,string,https://universalmind.tv/informatics/read/quantum/index.html
 /agent_architecture,object,
-/agent_architecture/version,string,2026-11-09-live-conversation
+/agent_architecture/version,string,2026-11-09-live-conversation-2
 /agent_architecture/purpose,object,
 /agent_architecture/purpose/title,string,What Quantum Atlas is for
 /agent_architecture/purpose/summary,string,"Quantum Atlas makes computational biology and quantum research approachable through a scientific question written in ordinary language. A person brings the question; the platform coordinates AI scientific work, mathematical models, simulations, recorded quantum measurements and biological evidence, then returns an explanation with the underlying research record."
@@ -547,7 +547,7 @@ path,type,value
 /agent_architecture/implementation_sources,array,26
 /agent_architecture/implementation_sources/0,object,
 /agent_architecture/implementation_sources/0/repository_path,string,Informatics/quantum/index.html
-/agent_architecture/implementation_sources/0/sha256,string,6c149468a5a2e3a101d53ec55cc7edb119e831e1ea3c39b058993bbb01813c8f
+/agent_architecture/implementation_sources/0/sha256,string,ad3d3e8570c84c5418211cd18b6b9c8942880b9618ccc122539de289a900257b
 /agent_architecture/implementation_sources/0/scope,string,Original primary-page source with generated reading blocks removed
 /agent_architecture/implementation_sources/1,object,
 /agent_architecture/implementation_sources/1/repository_path,string,Informatics/quantum/study.js
@@ -559,7 +559,7 @@ path,type,value
 /agent_architecture/implementation_sources/2/scope,string,Implementation source
 /agent_architecture/implementation_sources/3,object,
 /agent_architecture/implementation_sources/3/repository_path,string,Informatics/quantum/biology.js
-/agent_architecture/implementation_sources/3/sha256,string,097d4044da02a801949021a2426588215f1075948ba337d2f767fbe67a35eb14
+/agent_architecture/implementation_sources/3/sha256,string,c7fca39d684acc6db83ef81af8be08adb338710d143cd884f03553367bccc1b6
 /agent_architecture/implementation_sources/3/scope,string,Implementation source
 /agent_architecture/implementation_sources/4,object,
 /agent_architecture/implementation_sources/4/repository_path,string,Informatics/quantum/scientific-review.js
@@ -583,7 +583,7 @@ path,type,value
 /agent_architecture/implementation_sources/8/scope,string,Implementation source
 /agent_architecture/implementation_sources/9,object,
 /agent_architecture/implementation_sources/9/repository_path,string,cloudflare/informatics-astra.js
-/agent_architecture/implementation_sources/9/sha256,string,0eda1175a90b04e101c4d3c53b2060ec2202fd63adb96ebba34a35ad64447352
+/agent_architecture/implementation_sources/9/sha256,string,558eb75ba8d443f7563404f6f255e18220741c9ac054ddd968fac5721dbcd455
 /agent_architecture/implementation_sources/9/scope,string,Implementation source
 /agent_architecture/implementation_sources/10,object,
 /agent_architecture/implementation_sources/10/repository_path,string,cloudflare/informatics-astra-memory.js
@@ -639,7 +639,7 @@ path,type,value
 /agent_architecture/implementation_sources/22/scope,string,Implementation source
 /agent_architecture/implementation_sources/23,object,
 /agent_architecture/implementation_sources/23/repository_path,string,Informatics/quantum/delivery.js
-/agent_architecture/implementation_sources/23/sha256,string,98fdc4e2b855a243176e20372792abdc8635d9857b4be8b014cdfc10f530edb4
+/agent_architecture/implementation_sources/23/sha256,string,1ba244e552d6e915456de34197a23a38ca8b38d779b9dc288b506494b041f9fd
 /agent_architecture/implementation_sources/23/scope,string,Implementation source
 /agent_architecture/implementation_sources/24,object,
 /agent_architecture/implementation_sources/24/repository_path,string,Informatics/api/study-email.php
@@ -674,7 +674,7 @@ path,type,value
 /page_text/5/text,string,Explore with Universal One.
 /page_text/6,object,
 /page_text/6/tag,string,p
-/page_text/6/text,string,GPT-6 Astra Max· Gemini 4 Argon High Thinking
+/page_text/6/text,string,GPT-6 Astra Max· Gemini 4 Argon High Thinking· Wolfram Quantum Framework
 /page_text/7,object,
 /page_text/7/tag,string,p
 /page_text/7/text,string,"Tell me what you want to investigate. We can refine your question together, then run a study and discuss the findings."
@@ -8012,8 +8012,8 @@ path,type,value
 /sources/11/path,string,quantum/hypothesis.js
 /sources/11/url,string,https://universalmind.tv/informatics/quantum/hypothesis.js
 /sources/11/sha256,string,11bcf4afab33943cfa6f5d40aa644089d16b1a7f7875f910cc503a4a2abec063
-/page_prose_sha256,string,01fe46338b2de63c08684deb8118f6bf1c38bcc31f0cd1f4077e440a391da98a
+/page_prose_sha256,string,d9c62c23b3301af7738693da37dbcd0b19bc77269f0287d7707e2e70ab76cb77
 /downloads,object,
-/downloads/json,string,https://universalmind.tv/informatics/quantum/reading/quantum-atlas.json?v=2026-11-09-live-conversation
-/downloads/csv,string,https://universalmind.tv/informatics/quantum/reading/quantum-atlas.csv?v=2026-11-09-live-conversation
-/downloads/md,string,https://universalmind.tv/informatics/quantum/reading/quantum-atlas.md?v=2026-11-09-live-conversation
+/downloads/json,string,https://universalmind.tv/informatics/quantum/reading/quantum-atlas.json?v=2026-11-09-live-conversation-2
+/downloads/csv,string,https://universalmind.tv/informatics/quantum/reading/quantum-atlas.csv?v=2026-11-09-live-conversation-2
+/downloads/md,string,https://universalmind.tv/informatics/quantum/reading/quantum-atlas.md?v=2026-11-09-live-conversation-2

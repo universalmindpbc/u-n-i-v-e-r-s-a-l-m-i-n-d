@@ -47,6 +47,7 @@ function syncURL(){
  else target=new URL(window.InformaticsNavigation.entries.find(e=>e.id===area)?.url||'/informatics/',location.origin);
  for(const [key,value]of (window.PortalRoutes.resolve(current.href)?.id===area?current.searchParams:[]))if(!['entry','area','atlas','about','record','record-mode','section'].includes(key))target.searchParams.set(key,value);
  if(pendingRoute?.id===area){target.search=new URL(pendingRoute.href).search;target.hash=new URL(pendingRoute.href).hash;}
+ if(area==='quantum'&&/^#study=[a-f0-9-]{36}&result=[a-f0-9]{64}$/.test(current.hash))target.hash=current.hash;
  if(area==='research'){target.search=document.documentElement.dataset.libraryQuery||'';target.hash=document.documentElement.dataset.libraryHash||'';}
  if(area==='geometry'){target.searchParams.set('record',recordId);target.searchParams.set('record-mode',recordMode);target.hash=recordView;}
  window.PortalRoutes.commit(target.href,routeHistoryMode);

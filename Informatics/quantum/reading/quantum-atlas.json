@@ -1,11 +1,11 @@
 {
   "schema": "universal-informatics/quantum-atlas-guide/v1",
   "title": "Quantum Atlas · AI / LLM Wiki",
-  "version": "2026-11-09-live-conversation",
+  "version": "2026-11-09-live-conversation-2",
   "url": "https://universalmind.tv/informatics/quantum/",
   "wiki": "https://universalmind.tv/informatics/read/quantum/index.html",
   "agent_architecture": {
-    "version": "2026-11-09-live-conversation",
+    "version": "2026-11-09-live-conversation-2",
     "purpose": {
       "title": "What Quantum Atlas is for",
       "summary": "Quantum Atlas makes computational biology and quantum research approachable through a scientific question written in ordinary language. A person brings the question; the platform coordinates AI scientific work, mathematical models, simulations, recorded quantum measurements and biological evidence, then returns an explanation with the underlying research record.",
@@ -698,7 +698,7 @@
     "implementation_sources": [
       {
         "repository_path": "Informatics/quantum/index.html",
-        "sha256": "6c149468a5a2e3a101d53ec55cc7edb119e831e1ea3c39b058993bbb01813c8f",
+        "sha256": "ad3d3e8570c84c5418211cd18b6b9c8942880b9618ccc122539de289a900257b",
         "scope": "Original primary-page source with generated reading blocks removed"
       },
       {
@@ -713,7 +713,7 @@
       },
       {
         "repository_path": "Informatics/quantum/biology.js",
-        "sha256": "097d4044da02a801949021a2426588215f1075948ba337d2f767fbe67a35eb14",
+        "sha256": "c7fca39d684acc6db83ef81af8be08adb338710d143cd884f03553367bccc1b6",
         "scope": "Implementation source"
       },
       {
@@ -743,7 +743,7 @@
       },
       {
         "repository_path": "cloudflare/informatics-astra.js",
-        "sha256": "0eda1175a90b04e101c4d3c53b2060ec2202fd63adb96ebba34a35ad64447352",
+        "sha256": "558eb75ba8d443f7563404f6f255e18220741c9ac054ddd968fac5721dbcd455",
         "scope": "Implementation source"
       },
       {
@@ -813,7 +813,7 @@
       },
       {
         "repository_path": "Informatics/quantum/delivery.js",
-        "sha256": "98fdc4e2b855a243176e20372792abdc8635d9857b4be8b014cdfc10f530edb4",
+        "sha256": "1ba244e552d6e915456de34197a23a38ca8b38d779b9dc288b506494b041f9fd",
         "scope": "Implementation source"
       },
       {
@@ -860,7 +860,7 @@
     },
     {
       "tag": "p",
-      "text": "GPT-6 Astra Max· Gemini 4 Argon High Thinking"
+      "text": "GPT-6 Astra Max· Gemini 4 Argon High Thinking· Wolfram Quantum Framework"
     },
     {
       "tag": "p",
@@ -9049,10 +9049,10 @@
       "sha256": "11bcf4afab33943cfa6f5d40aa644089d16b1a7f7875f910cc503a4a2abec063"
     }
   ],
-  "page_prose_sha256": "01fe46338b2de63c08684deb8118f6bf1c38bcc31f0cd1f4077e440a391da98a",
+  "page_prose_sha256": "d9c62c23b3301af7738693da37dbcd0b19bc77269f0287d7707e2e70ab76cb77",
   "downloads": {
-    "json": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.json?v=2026-11-09-live-conversation",
-    "csv": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.csv?v=2026-11-09-live-conversation",
-    "md": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.md?v=2026-11-09-live-conversation"
+    "json": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.json?v=2026-11-09-live-conversation-2",
+    "csv": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.csv?v=2026-11-09-live-conversation-2",
+    "md": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.md?v=2026-11-09-live-conversation-2"
   }
 }
