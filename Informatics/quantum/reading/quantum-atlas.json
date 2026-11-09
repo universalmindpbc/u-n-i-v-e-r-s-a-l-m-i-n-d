@@ -1,11 +1,11 @@
 {
   "schema": "universal-informatics/quantum-atlas-guide/v1",
   "title": "Quantum Atlas · AI / LLM Wiki",
-  "version": "2026-11-09-universal-one-quantum",
+  "version": "2026-11-09-live-conversation",
   "url": "https://universalmind.tv/informatics/quantum/",
   "wiki": "https://universalmind.tv/informatics/read/quantum/index.html",
   "agent_architecture": {
-    "version": "2026-11-09-universal-one-quantum",
+    "version": "2026-11-09-live-conversation",
     "purpose": {
       "title": "What Quantum Atlas is for",
       "summary": "Quantum Atlas makes computational biology and quantum research approachable through a scientific question written in ordinary language. A person brings the question; the platform coordinates AI scientific work, mathematical models, simulations, recorded quantum measurements and biological evidence, then returns an explanation with the underlying research record.",
@@ -27,9 +27,9 @@
     },
     "features": [
       {
-        "feature": "Ask a question",
-        "purpose": "Enter a scientific question in the Quantum form, or ask Universal One by text, dictation or live voice to draft or run it.",
-        "human_value": "Discuss the evidence, launch a supported investigation, then ask for its saved progress and findings in the same conversation. Ordinary research discussion does not launch a study."
+        "feature": "Live research conversation",
+        "purpose": "Talk with Universal One on the Quantum Atlas page using text, dictation or live voice. Refine your scientific question and explicitly ask the agents to run it.",
+        "human_value": "Progress and findings appear automatically in the same conversation. Follow-up discussion shares the saved study; reloading reconnects without submitting another run."
       },
       {
         "feature": "Study and live workflow",
@@ -75,6 +75,11 @@
         "feature": "Drug Discovery Network and Open Source Genomic Insights",
         "purpose": "The planned fifth stage connects reviewed findings with external research collaborators and shareable genomic insights.",
         "human_value": "Understand the intended path from an investigation to research collaboration. This stage is marked as a future feature."
+      },
+      {
+        "feature": "Results email",
+        "purpose": "Register an email address for the active study or the next launch. The completed study triggers one private results link, available for 30 days.",
+        "human_value": "Read the completed findings on another device. Email notification status is shown on the page."
       }
     ],
     "swarm": {
@@ -132,8 +137,8 @@
         {
           "name": "Research memory and Universal One",
           "role": "Shared research context and public research conversation",
-          "work": "Universal One answers from the research library and shared research context. On Quantum Atlas, text, dictation and live voice commands also use the existing browser research session to draft a question, submit the form, read saved progress and explain the saved report.",
-          "handoff": "Explicit run commands go to the existing Quantum form and durable Astra/Gemini service. Progress and results return to the conversation. Repeated commands reuse the active study; hardware spending remains disabled."
+          "work": "Universal One shares one inline and floating conversation across text, dictation and voice. Explicit study commands use the same durable research session; progress and findings arrive automatically.",
+          "handoff": "Explicit run commands go to the Quantum Atlas conversation and durable Astra/Gemini service. Progress and results return to the conversation. Repeated commands reuse the active study; hardware spending remains disabled."
         },
         {
           "name": "Cloudflare broker, AWS worker and encrypted storage",
@@ -687,13 +692,13 @@
         "scope": "The current A2A agent returns a direct research answer. Persistent task dispatch, streaming and push notifications are outside its advertised capabilities. MCP and A2A do not submit new Aquila jobs or create the browser’s persistent Astra study."
       },
       "connect_guide": "https://universalmind.tv/informatics/connect.html",
-      "handoff": "For a persistent investigation, open Quantum Atlas and frame the scientific question. The form and Universal One text, dictation and live voice commands use the same browser research session. Explicit run commands submit the supported question; progress and results reuse the saved study. The public MCP and A2A interfaces retain their read-only research scope.",
+      "handoff": "For a persistent investigation, open Quantum Atlas and frame the scientific question. The inline conversation and Universal One text, dictation and live voice commands use the same browser research session. Explicit run commands submit the supported question; progress and results reuse the saved study. The public MCP and A2A interfaces retain their read-only research scope.",
       "citation_contract": "Retain study IDs, immutable revision URLs, source hashes, provider receipts and review status when moving between agents. Link the evidence that supports the explanation, and preserve the original question throughout the handoff."
     },
     "implementation_sources": [
       {
         "repository_path": "Informatics/quantum/index.html",
-        "sha256": "f66ff47395be39e6984d4190f4f603add385d66cd2c962b13c01073ffac33ba7",
+        "sha256": "6c149468a5a2e3a101d53ec55cc7edb119e831e1ea3c39b058993bbb01813c8f",
         "scope": "Original primary-page source with generated reading blocks removed"
       },
       {
@@ -703,12 +708,12 @@
       },
       {
         "repository_path": "Informatics/quantum/agent.js",
-        "sha256": "a367e2183ec25af1fadadc25a4c8b76409471cbb2b195fecd77aeb17311702d9",
+        "sha256": "6720201cf28c0efa8d1d56e77ccd283f4c7832270154aafcc56205c00e6fa8cc",
         "scope": "Implementation source"
       },
       {
         "repository_path": "Informatics/quantum/biology.js",
-        "sha256": "09d33d422d89f5f01e9d5dea70f1f76313c9335132835f90f690fd0ea3c77585",
+        "sha256": "097d4044da02a801949021a2426588215f1075948ba337d2f767fbe67a35eb14",
         "scope": "Implementation source"
       },
       {
@@ -738,7 +743,7 @@
       },
       {
         "repository_path": "cloudflare/informatics-astra.js",
-        "sha256": "219b5dd2637e1311b37a4169b8c81e586647b00a2c12ad6a66ed7fd63a4750a1",
+        "sha256": "0eda1175a90b04e101c4d3c53b2060ec2202fd63adb96ebba34a35ad64447352",
         "scope": "Implementation source"
       },
       {
@@ -783,7 +788,7 @@
       },
       {
         "repository_path": "Informatics/universal-one.js",
-        "sha256": "6510f5f92c1457d4598871fa649dde9edaefa3cca0db9bf12fed6e9695ca307e",
+        "sha256": "853d13c6a3627aa9ab3661c5dc343359a515796b1bf846360ed070ad7f016967",
         "scope": "Implementation source"
       },
       {
@@ -793,12 +798,32 @@
       },
       {
         "repository_path": "Informatics/universal-one-quantum.js",
-        "sha256": "6341584387d7761aa35ddb2b2e978e3ea547cb9b015a38c6424b5070f344c11e",
+        "sha256": "d1058d25e29d5576ef453cb6c7b13cdaf321de94a893519a805bae5c47e31693",
         "scope": "Implementation source"
       },
       {
         "repository_path": "cloudflare/informatics-quantum-command.js",
-        "sha256": "8c3abe80ed8b3cb333aabf772a56f655872baef0ca002e449a0bc9d3ad6226b9",
+        "sha256": "0812bfe27dfdce47862819c55e8e297bf0a83e47e373fe74ea66505b6e6e4197",
+        "scope": "Implementation source"
+      },
+      {
+        "repository_path": "Informatics/quantum/conversation.js",
+        "sha256": "928ed78b06c98e5237d709ed217d9edaeeff89a36cc90e1e314041221e7a1f9f",
+        "scope": "Implementation source"
+      },
+      {
+        "repository_path": "Informatics/quantum/delivery.js",
+        "sha256": "98fdc4e2b855a243176e20372792abdc8635d9857b4be8b014cdfc10f530edb4",
+        "scope": "Implementation source"
+      },
+      {
+        "repository_path": "Informatics/api/study-email.php",
+        "sha256": "cb7018e9dfcd872b44cbf484d5bf901bac5e3b6cce8bd41d294a0fd3cbe67aeb",
+        "scope": "Implementation source"
+      },
+      {
+        "repository_path": "cloudflare/informatics-study-email.js",
+        "sha256": "8130315484023a1b4bb4682eeedcabdd056b726fe34fc3d678023b98192b9d84",
         "scope": "Implementation source"
       }
     ]
@@ -826,12 +851,28 @@
       "text": "Natural Language In. Biological Insights Out."
     },
     {
+      "tag": "p",
+      "text": "YOUR RESEARCH CONVERSATION"
+    },
+    {
       "tag": "h2",
-      "text": "What are you investigating?"
+      "text": "Explore with Universal One."
     },
     {
       "tag": "p",
-      "text": "No quantum expertise needed. Start with our OXTR study or describe your investigation."
+      "text": "GPT-6 Astra Max· Gemini 4 Argon High Thinking"
+    },
+    {
+      "tag": "p",
+      "text": "Tell me what you want to investigate. We can refine your question together, then run a study and discuss the findings."
+    },
+    {
+      "tag": "p",
+      "text": "Connecting to Universal One…"
+    },
+    {
+      "tag": "p",
+      "text": "Ask to run a study when your question is ready. Its progress and findings appear here automatically. Voice responses are AI generated."
     },
     {
       "tag": "h2",
@@ -864,6 +905,10 @@
     {
       "tag": "p",
       "text": "ASTRA · YOUR INVESTIGATION"
+    },
+    {
+      "tag": "p",
+      "text": "Updates automatically. The findings appear in your conversation when ready. Your study is saved for your return."
     },
     {
       "tag": "p",
@@ -987,11 +1032,11 @@
     },
     {
       "tag": "p",
-      "text": "Both completed study phases are ready to explore above. For a new calculation, stay with the geometry or return later as results become available."
+      "text": "Your conversation updates as the agents work and displays the findings when ready. Return on this device to reconnect to your saved study, or request an email link."
     },
     {
       "tag": "p",
-      "text": "Classical: approximately 5–10 minutes. Quantum: timing varies with device availability and queue."
+      "text": "Study time varies with analysis and review. There is no need to refresh this page."
     },
     {
       "tag": "p",
@@ -1003,7 +1048,11 @@
     },
     {
       "tag": "p",
-      "text": "Delivery preference for the upcoming study run. Email is confirmed at launch; this preview saves your preference on this device."
+      "text": "One email when this study finishes. The private link opens your findings on another device and expires after 30 days."
+    },
+    {
+      "tag": "p",
+      "text": "Your conversation updates automatically. No page refresh is needed."
     },
     {
       "tag": "p",
@@ -9000,10 +9049,10 @@
       "sha256": "11bcf4afab33943cfa6f5d40aa644089d16b1a7f7875f910cc503a4a2abec063"
     }
   ],
-  "page_prose_sha256": "f771fe41580f961eadddeb6d9024cef1e1094451830b8721b128d356cd58582a",
+  "page_prose_sha256": "01fe46338b2de63c08684deb8118f6bf1c38bcc31f0cd1f4077e440a391da98a",
   "downloads": {
-    "json": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.json?v=2026-11-09-universal-one-quantum",
-    "csv": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.csv?v=2026-11-09-universal-one-quantum",
-    "md": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.md?v=2026-11-09-universal-one-quantum"
+    "json": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.json?v=2026-11-09-live-conversation",
+    "csv": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.csv?v=2026-11-09-live-conversation",
+    "md": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.md?v=2026-11-09-live-conversation"
   }
 }

@@ -2,11 +2,11 @@ path,type,value
 ,object,
 /schema,string,universal-informatics/quantum-atlas-guide/v1
 /title,string,Quantum Atlas · AI / LLM Wiki
-/version,string,2026-11-09-universal-one-quantum
+/version,string,2026-11-09-live-conversation
 /url,string,https://universalmind.tv/informatics/quantum/
 /wiki,string,https://universalmind.tv/informatics/read/quantum/index.html
 /agent_architecture,object,
-/agent_architecture/version,string,2026-11-09-universal-one-quantum
+/agent_architecture/version,string,2026-11-09-live-conversation
 /agent_architecture/purpose,object,
 /agent_architecture/purpose/title,string,What Quantum Atlas is for
 /agent_architecture/purpose/summary,string,"Quantum Atlas makes computational biology and quantum research approachable through a scientific question written in ordinary language. A person brings the question; the platform coordinates AI scientific work, mathematical models, simulations, recorded quantum measurements and biological evidence, then returns an explanation with the underlying research record."
@@ -23,11 +23,11 @@ path,type,value
 /agent_architecture/purpose/example_questions/1,string,"Explain what Astra, Gemini, Wolfram, CUDA-Q and Aquila each contribute, in plain language."
 /agent_architecture/purpose/example_questions/2,string,Walk me through the current OXTR investigation and explain what the results mean.
 /agent_architecture/purpose/example_questions/3,string,"Connect to the public research tools, retrieve the study and help me formulate a useful next question."
-/agent_architecture/features,array,10
+/agent_architecture/features,array,11
 /agent_architecture/features/0,object,
-/agent_architecture/features/0/feature,string,Ask a question
-/agent_architecture/features/0/purpose,string,"Enter a scientific question in the Quantum form, or ask Universal One by text, dictation or live voice to draft or run it."
-/agent_architecture/features/0/human_value,string,"Discuss the evidence, launch a supported investigation, then ask for its saved progress and findings in the same conversation. Ordinary research discussion does not launch a study."
+/agent_architecture/features/0/feature,string,Live research conversation
+/agent_architecture/features/0/purpose,string,"Talk with Universal One on the Quantum Atlas page using text, dictation or live voice. Refine your scientific question and explicitly ask the agents to run it."
+/agent_architecture/features/0/human_value,string,Progress and findings appear automatically in the same conversation. Follow-up discussion shares the saved study; reloading reconnects without submitting another run.
 /agent_architecture/features/1,object,
 /agent_architecture/features/1/feature,string,Study and live workflow
 /agent_architecture/features/1/purpose,string,"Show the question, scientific plan, agent progress and the role of each calculation or evidence source."
@@ -64,6 +64,10 @@ path,type,value
 /agent_architecture/features/9/feature,string,Drug Discovery Network and Open Source Genomic Insights
 /agent_architecture/features/9/purpose,string,The planned fifth stage connects reviewed findings with external research collaborators and shareable genomic insights.
 /agent_architecture/features/9/human_value,string,Understand the intended path from an investigation to research collaboration. This stage is marked as a future feature.
+/agent_architecture/features/10,object,
+/agent_architecture/features/10/feature,string,Results email
+/agent_architecture/features/10/purpose,string,"Register an email address for the active study or the next launch. The completed study triggers one private results link, available for 30 days."
+/agent_architecture/features/10/human_value,string,Read the completed findings on another device. Email notification status is shown on the page.
 /agent_architecture/swarm,object,
 /agent_architecture/swarm/title,string,Quantum / AI agent swarm: who does what
 /agent_architecture/swarm/summary,string,"Astra and Gemini have distinct scientific roles. LangGraph coordinates their work and the specialist calculation services through an explicit, persistent workflow. The diagram on the Quantum page presents the scientific handoffs: formulate, model, simulate and measure, compare with biological evidence, then interpret."
@@ -111,8 +115,8 @@ path,type,value
 /agent_architecture/swarm/roles/8,object,
 /agent_architecture/swarm/roles/8/name,string,Research memory and Universal One
 /agent_architecture/swarm/roles/8/role,string,Shared research context and public research conversation
-/agent_architecture/swarm/roles/8/work,string,"Universal One answers from the research library and shared research context. On Quantum Atlas, text, dictation and live voice commands also use the existing browser research session to draft a question, submit the form, read saved progress and explain the saved report."
-/agent_architecture/swarm/roles/8/handoff,string,Explicit run commands go to the existing Quantum form and durable Astra/Gemini service. Progress and results return to the conversation. Repeated commands reuse the active study; hardware spending remains disabled.
+/agent_architecture/swarm/roles/8/work,string,"Universal One shares one inline and floating conversation across text, dictation and voice. Explicit study commands use the same durable research session; progress and findings arrive automatically."
+/agent_architecture/swarm/roles/8/handoff,string,Explicit run commands go to the Quantum Atlas conversation and durable Astra/Gemini service. Progress and results return to the conversation. Repeated commands reuse the active study; hardware spending remains disabled.
 /agent_architecture/swarm/roles/9,object,
 /agent_architecture/swarm/roles/9/name,string,"Cloudflare broker, AWS worker and encrypted storage"
 /agent_architecture/swarm/roles/9/role,string,Durable execution and delivery
@@ -538,12 +542,12 @@ path,type,value
 /agent_architecture/participation/a2a/response,string,Read result.message.parts for the answer and result.message.metadata.sources for citations. Include the relevant context in each new message.
 /agent_architecture/participation/a2a/scope,string,"The current A2A agent returns a direct research answer. Persistent task dispatch, streaming and push notifications are outside its advertised capabilities. MCP and A2A do not submit new Aquila jobs or create the browser’s persistent Astra study."
 /agent_architecture/participation/connect_guide,string,https://universalmind.tv/informatics/connect.html
-/agent_architecture/participation/handoff,string,"For a persistent investigation, open Quantum Atlas and frame the scientific question. The form and Universal One text, dictation and live voice commands use the same browser research session. Explicit run commands submit the supported question; progress and results reuse the saved study. The public MCP and A2A interfaces retain their read-only research scope."
+/agent_architecture/participation/handoff,string,"For a persistent investigation, open Quantum Atlas and frame the scientific question. The inline conversation and Universal One text, dictation and live voice commands use the same browser research session. Explicit run commands submit the supported question; progress and results reuse the saved study. The public MCP and A2A interfaces retain their read-only research scope."
 /agent_architecture/participation/citation_contract,string,"Retain study IDs, immutable revision URLs, source hashes, provider receipts and review status when moving between agents. Link the evidence that supports the explanation, and preserve the original question throughout the handoff."
-/agent_architecture/implementation_sources,array,22
+/agent_architecture/implementation_sources,array,26
 /agent_architecture/implementation_sources/0,object,
 /agent_architecture/implementation_sources/0/repository_path,string,Informatics/quantum/index.html
-/agent_architecture/implementation_sources/0/sha256,string,f66ff47395be39e6984d4190f4f603add385d66cd2c962b13c01073ffac33ba7
+/agent_architecture/implementation_sources/0/sha256,string,6c149468a5a2e3a101d53ec55cc7edb119e831e1ea3c39b058993bbb01813c8f
 /agent_architecture/implementation_sources/0/scope,string,Original primary-page source with generated reading blocks removed
 /agent_architecture/implementation_sources/1,object,
 /agent_architecture/implementation_sources/1/repository_path,string,Informatics/quantum/study.js
@@ -551,11 +555,11 @@ path,type,value
 /agent_architecture/implementation_sources/1/scope,string,Implementation source
 /agent_architecture/implementation_sources/2,object,
 /agent_architecture/implementation_sources/2/repository_path,string,Informatics/quantum/agent.js
-/agent_architecture/implementation_sources/2/sha256,string,a367e2183ec25af1fadadc25a4c8b76409471cbb2b195fecd77aeb17311702d9
+/agent_architecture/implementation_sources/2/sha256,string,6720201cf28c0efa8d1d56e77ccd283f4c7832270154aafcc56205c00e6fa8cc
 /agent_architecture/implementation_sources/2/scope,string,Implementation source
 /agent_architecture/implementation_sources/3,object,
 /agent_architecture/implementation_sources/3/repository_path,string,Informatics/quantum/biology.js
-/agent_architecture/implementation_sources/3/sha256,string,09d33d422d89f5f01e9d5dea70f1f76313c9335132835f90f690fd0ea3c77585
+/agent_architecture/implementation_sources/3/sha256,string,097d4044da02a801949021a2426588215f1075948ba337d2f767fbe67a35eb14
 /agent_architecture/implementation_sources/3/scope,string,Implementation source
 /agent_architecture/implementation_sources/4,object,
 /agent_architecture/implementation_sources/4/repository_path,string,Informatics/quantum/scientific-review.js
@@ -579,7 +583,7 @@ path,type,value
 /agent_architecture/implementation_sources/8/scope,string,Implementation source
 /agent_architecture/implementation_sources/9,object,
 /agent_architecture/implementation_sources/9/repository_path,string,cloudflare/informatics-astra.js
-/agent_architecture/implementation_sources/9/sha256,string,219b5dd2637e1311b37a4169b8c81e586647b00a2c12ad6a66ed7fd63a4750a1
+/agent_architecture/implementation_sources/9/sha256,string,0eda1175a90b04e101c4d3c53b2060ec2202fd63adb96ebba34a35ad64447352
 /agent_architecture/implementation_sources/9/scope,string,Implementation source
 /agent_architecture/implementation_sources/10,object,
 /agent_architecture/implementation_sources/10/repository_path,string,cloudflare/informatics-astra-memory.js
@@ -615,7 +619,7 @@ path,type,value
 /agent_architecture/implementation_sources/17/scope,string,Implementation source
 /agent_architecture/implementation_sources/18,object,
 /agent_architecture/implementation_sources/18/repository_path,string,Informatics/universal-one.js
-/agent_architecture/implementation_sources/18/sha256,string,6510f5f92c1457d4598871fa649dde9edaefa3cca0db9bf12fed6e9695ca307e
+/agent_architecture/implementation_sources/18/sha256,string,853d13c6a3627aa9ab3661c5dc343359a515796b1bf846360ed070ad7f016967
 /agent_architecture/implementation_sources/18/scope,string,Implementation source
 /agent_architecture/implementation_sources/19,object,
 /agent_architecture/implementation_sources/19/repository_path,string,Informatics/universal-one-live.js
@@ -623,17 +627,33 @@ path,type,value
 /agent_architecture/implementation_sources/19/scope,string,Implementation source
 /agent_architecture/implementation_sources/20,object,
 /agent_architecture/implementation_sources/20/repository_path,string,Informatics/universal-one-quantum.js
-/agent_architecture/implementation_sources/20/sha256,string,6341584387d7761aa35ddb2b2e978e3ea547cb9b015a38c6424b5070f344c11e
+/agent_architecture/implementation_sources/20/sha256,string,d1058d25e29d5576ef453cb6c7b13cdaf321de94a893519a805bae5c47e31693
 /agent_architecture/implementation_sources/20/scope,string,Implementation source
 /agent_architecture/implementation_sources/21,object,
 /agent_architecture/implementation_sources/21/repository_path,string,cloudflare/informatics-quantum-command.js
-/agent_architecture/implementation_sources/21/sha256,string,8c3abe80ed8b3cb333aabf772a56f655872baef0ca002e449a0bc9d3ad6226b9
+/agent_architecture/implementation_sources/21/sha256,string,0812bfe27dfdce47862819c55e8e297bf0a83e47e373fe74ea66505b6e6e4197
 /agent_architecture/implementation_sources/21/scope,string,Implementation source
+/agent_architecture/implementation_sources/22,object,
+/agent_architecture/implementation_sources/22/repository_path,string,Informatics/quantum/conversation.js
+/agent_architecture/implementation_sources/22/sha256,string,928ed78b06c98e5237d709ed217d9edaeeff89a36cc90e1e314041221e7a1f9f
+/agent_architecture/implementation_sources/22/scope,string,Implementation source
+/agent_architecture/implementation_sources/23,object,
+/agent_architecture/implementation_sources/23/repository_path,string,Informatics/quantum/delivery.js
+/agent_architecture/implementation_sources/23/sha256,string,98fdc4e2b855a243176e20372792abdc8635d9857b4be8b014cdfc10f530edb4
+/agent_architecture/implementation_sources/23/scope,string,Implementation source
+/agent_architecture/implementation_sources/24,object,
+/agent_architecture/implementation_sources/24/repository_path,string,Informatics/api/study-email.php
+/agent_architecture/implementation_sources/24/sha256,string,cb7018e9dfcd872b44cbf484d5bf901bac5e3b6cce8bd41d294a0fd3cbe67aeb
+/agent_architecture/implementation_sources/24/scope,string,Implementation source
+/agent_architecture/implementation_sources/25,object,
+/agent_architecture/implementation_sources/25/repository_path,string,cloudflare/informatics-study-email.js
+/agent_architecture/implementation_sources/25/sha256,string,8130315484023a1b4bb4682eeedcabdd056b726fe34fc3d678023b98192b9d84
+/agent_architecture/implementation_sources/25/scope,string,Implementation source
 /instructions,array,3
 /instructions/0,string,"Read the saved study phases in order: original qualification runs, completed classical genomic pilot, further local CPU checks, then the proposed next quantum test."
 /instructions/1,string,"Retain the source labels for calculated values, GPU simulations, Aquila measurements, mathematical relationships and proposed mechanisms."
 /instructions/2,string,"This guide includes the saved chart data and interpretations. The linked immutable experiment revisions retain the complete inputs, methods, measurements, receipts and field guides. The guide is a dated snapshot, not a report of a visitor’s active question."
-/page_text,array,97
+/page_text,array,103
 /page_text/0,object,
 /page_text/0/tag,string,p
 /page_text/0/text,string,QUANTUM ATLAS
@@ -647,284 +667,302 @@ path,type,value
 /page_text/3/tag,string,p
 /page_text/3/text,string,Natural Language In. Biological Insights Out.
 /page_text/4,object,
-/page_text/4/tag,string,h2
-/page_text/4/text,string,What are you investigating?
+/page_text/4/tag,string,p
+/page_text/4/text,string,YOUR RESEARCH CONVERSATION
 /page_text/5,object,
-/page_text/5/tag,string,p
-/page_text/5/text,string,No quantum expertise needed. Start with our OXTR study or describe your investigation.
+/page_text/5/tag,string,h2
+/page_text/5/text,string,Explore with Universal One.
 /page_text/6,object,
-/page_text/6/tag,string,h2
-/page_text/6/text,string,Explore the geometry
+/page_text/6/tag,string,p
+/page_text/6/text,string,GPT-6 Astra Max· Gemini 4 Argon High Thinking
 /page_text/7,object,
 /page_text/7/tag,string,p
-/page_text/7/text,string,Ask a question to begin.
+/page_text/7/text,string,"Tell me what you want to investigate. We can refine your question together, then run a study and discuss the findings."
 /page_text/8,object,
 /page_text/8/tag,string,p
-/page_text/8/text,string,Mathematical reference · study measurements are recorded separately.
+/page_text/8/text,string,Connecting to Universal One…
 /page_text/9,object,
 /page_text/9/tag,string,p
-/page_text/9/text,string,EXPLORE WHILE YOU WAIT
+/page_text/9/text,string,Ask to run a study when your question is ready. Its progress and findings appear here automatically. Voice responses are AI generated.
 /page_text/10,object,
-/page_text/10/tag,string,h3
-/page_text/10/text,string,Study the patterns.
+/page_text/10/tag,string,h2
+/page_text/10/text,string,Explore the geometry
 /page_text/11,object,
 /page_text/11/tag,string,p
-/page_text/11/text,string,"Switch between Alpha, Beta, Gamma and Epsilon. Compare their positions and paths while your results collect in the next two steps."
+/page_text/11/text,string,Ask a question to begin.
 /page_text/12,object,
 /page_text/12/tag,string,p
-/page_text/12/text,string,This view shows the mathematical representations. Measured results appear in Classical results and Quantum results.
+/page_text/12/text,string,Mathematical reference · study measurements are recorded separately.
 /page_text/13,object,
 /page_text/13/tag,string,p
-/page_text/13/text,string,ASTRA · YOUR INVESTIGATION
+/page_text/13/text,string,EXPLORE WHILE YOU WAIT
 /page_text/14,object,
-/page_text/14/tag,string,p
-/page_text/14/text,string,"Study 01 uses a reusable quantum reservoir template. All input encodings, model settings and evaluation rules are frozen before the final test. Biological findings come from the recorded calculations and measurements."
+/page_text/14/tag,string,h3
+/page_text/14/text,string,Study the patterns.
 /page_text/15,object,
 /page_text/15/tag,string,p
-/page_text/15/text,string,Read the first measurement record ↗
+/page_text/15/text,string,"Switch between Alpha, Beta, Gamma and Epsilon. Compare their positions and paths while your results collect in the next two steps."
 /page_text/16,object,
 /page_text/16/tag,string,p
-/page_text/16/text,string,Read the full study protocol ↗ · Save the study specification ↓
+/page_text/16/text,string,This view shows the mathematical representations. Measured results appear in Classical results and Quantum results.
 /page_text/17,object,
 /page_text/17/tag,string,p
-/page_text/17/text,string,CUDA-Q specifies the simulation; qBraid provides the GPU route for compatible compiled programs. Amazon Braket routes the analog program to QuEra Aquila. D-Wave Leap is a separate annealing route for future validated templates. Each route retains its own model and execution receipt.
+/page_text/17/text,string,ASTRA · YOUR INVESTIGATION
 /page_text/18,object,
 /page_text/18/tag,string,p
-/page_text/18/text,string,Names identify the technologies in the workflow; no partnership or endorsement is implied.
+/page_text/18/text,string,Updates automatically. The findings appear in your conversation when ready. Your study is saved for your return.
 /page_text/19,object,
 /page_text/19/tag,string,p
-/page_text/19/text,string,03 / CLASSICAL RESULTS
+/page_text/19/text,string,"Study 01 uses a reusable quantum reservoir template. All input encodings, model settings and evaluation rules are frozen before the final test. Biological findings come from the recorded calculations and measurements."
 /page_text/20,object,
-/page_text/20/tag,string,h2
-/page_text/20/text,string,Classical results.
+/page_text/20/tag,string,p
+/page_text/20/text,string,Read the first measurement record ↗
 /page_text/21,object,
 /page_text/21/tag,string,p
-/page_text/21/text,string,Approximately 5–10 minutes from the start of processing.
+/page_text/21/text,string,Read the full study protocol ↗ · Save the study specification ↓
 /page_text/22,object,
 /page_text/22/tag,string,p
-/page_text/22/text,string,04 / QUANTUM RESULTS
+/page_text/22/text,string,CUDA-Q specifies the simulation; qBraid provides the GPU route for compatible compiled programs. Amazon Braket routes the analog program to QuEra Aquila. D-Wave Leap is a separate annealing route for future validated templates. Each route retains its own model and execution receipt.
 /page_text/23,object,
-/page_text/23/tag,string,h2
-/page_text/23/text,string,Quantum results.
+/page_text/23/tag,string,p
+/page_text/23/text,string,Names identify the technologies in the workflow; no partnership or endorsement is implied.
 /page_text/24,object,
 /page_text/24/tag,string,p
-/page_text/24/text,string,Timing varies with the quantum queue. Results appear here after processing and checks.
+/page_text/24/text,string,03 / CLASSICAL RESULTS
 /page_text/25,object,
-/page_text/25/tag,string,p
-/page_text/25/text,string,05 / FUTURE FEATURE
+/page_text/25/tag,string,h2
+/page_text/25/text,string,Classical results.
 /page_text/26,object,
-/page_text/26/tag,string,h2
-/page_text/26/text,string,Drug Discovery Network & Open Source Genomic Insights
+/page_text/26/tag,string,p
+/page_text/26/text,string,Approximately 5–10 minutes from the start of processing.
 /page_text/27,object,
 /page_text/27/tag,string,p
-/page_text/27/text,string,"Extend the investigation beyond the calculation. Our roadmap connects recorded results and preliminary AI insights with external research platforms, with human review before sharing."
+/page_text/27/text,string,04 / QUANTUM RESULTS
 /page_text/28,object,
-/page_text/28/tag,string,li
-/page_text/28/text,string,"01Recorded resultsClassical and quantum findings, with their data sources and reproducible methods."
+/page_text/28/tag,string,h2
+/page_text/28/text,string,Quantum results.
 /page_text/29,object,
-/page_text/29/tag,string,li
-/page_text/29/text,string,"02Preliminary AI insightsRelationships and research directions drawn from the findings, with uncertainty retained."
+/page_text/29/tag,string,p
+/page_text/29/text,string,Timing varies with the quantum queue. Results appear here after processing and checks.
 /page_text/30,object,
-/page_text/30/tag,string,li
-/page_text/30/text,string,"03Human reviewA researcher reviews the evidence, sharing scope and intended collaborators."
+/page_text/30/tag,string,p
+/page_text/30/text,string,05 / FUTURE FEATURE
 /page_text/31,object,
-/page_text/31/tag,string,li
-/page_text/31/text,string,04Research collaborationApproved outputs reach connected drug-discovery and genomic research platforms.
+/page_text/31/tag,string,h2
+/page_text/31/text,string,Drug Discovery Network & Open Source Genomic Insights
 /page_text/32,object,
-/page_text/32/tag,string,li
-/page_text/32/text,string,"05Open Source Genomic InsightsReviewed insights and shareable research assets return to the scientific community, with permissions and provenance."
+/page_text/32/tag,string,p
+/page_text/32/text,string,"Extend the investigation beyond the calculation. Our roadmap connects recorded results and preliminary AI insights with external research platforms, with human review before sharing."
 /page_text/33,object,
-/page_text/33/tag,string,p
-/page_text/33/text,string,Roadmap · the long-term aim is automated collaboration with human oversight. This stage has no active external submission or publishing connection.
+/page_text/33/tag,string,li
+/page_text/33/text,string,"01Recorded resultsClassical and quantum findings, with their data sources and reproducible methods."
 /page_text/34,object,
-/page_text/34/tag,string,p
-/page_text/34/text,string,THE TECHNOLOGY BEHIND YOUR QUESTION
+/page_text/34/tag,string,li
+/page_text/34/text,string,"02Preliminary AI insightsRelationships and research directions drawn from the findings, with uncertainty retained."
 /page_text/35,object,
-/page_text/35/tag,string,h2
-/page_text/35/text,string,How your question is investigated.
+/page_text/35/tag,string,li
+/page_text/35/text,string,"03Human reviewA researcher reviews the evidence, sharing scope and intended collaborators."
 /page_text/36,object,
-/page_text/36/tag,string,p
-/page_text/36/text,string,Begin with your biological question.
+/page_text/36/tag,string,li
+/page_text/36/text,string,04Research collaborationApproved outputs reach connected drug-discovery and genomic research platforms.
 /page_text/37,object,
-/page_text/37/tag,string,p
-/page_text/37/text,string,Select a step to explore its role. The status labels track the study; motion illustrates the workflow.
+/page_text/37/tag,string,li
+/page_text/37/text,string,"05Open Source Genomic InsightsReviewed insights and shareable research assets return to the scientific community, with permissions and provenance."
 /page_text/38,object,
 /page_text/38/tag,string,p
-/page_text/38/text,string,OUR OXTR STUDY · THE STORY SO FAR
+/page_text/38/text,string,Roadmap · the long-term aim is automated collaboration with human oversight. This stage has no active external submission or publishing connection.
 /page_text/39,object,
-/page_text/39/tag,string,h2
-/page_text/39/text,string,Explore our OXTR investigation.
+/page_text/39/tag,string,p
+/page_text/39/text,string,THE TECHNOLOGY BEHIND YOUR QUESTION
 /page_text/40,object,
-/page_text/40/tag,string,p
-/page_text/40/text,string,"From our first CUDA-Q and Aquila measurements to Astra’s genomic analysis: one continuing investigation into Fibonacci, Phi Ratio and M9 P24."
+/page_text/40/tag,string,h2
+/page_text/40/text,string,How your question is investigated.
 /page_text/41,object,
 /page_text/41/tag,string,p
-/page_text/41/text,string,Completed 25 October 2026 · Next quantum batch awaits a funding decision.
+/page_text/41/text,string,Begin with your biological question.
 /page_text/42,object,
 /page_text/42/tag,string,p
-/page_text/42/text,string,STAY OR RETURN
+/page_text/42/text,string,Select a step to explore its role. The status labels track the study; motion illustrates the workflow.
 /page_text/43,object,
-/page_text/43/tag,string,h3
-/page_text/43/text,string,"Your results, at your pace."
+/page_text/43/tag,string,p
+/page_text/43/text,string,OUR OXTR STUDY · THE STORY SO FAR
 /page_text/44,object,
-/page_text/44/tag,string,p
-/page_text/44/text,string,"Both completed study phases are ready to explore above. For a new calculation, stay with the geometry or return later as results become available."
+/page_text/44/tag,string,h2
+/page_text/44/text,string,Explore our OXTR investigation.
 /page_text/45,object,
 /page_text/45/tag,string,p
-/page_text/45/text,string,Classical: approximately 5–10 minutes. Quantum: timing varies with device availability and queue.
+/page_text/45/text,string,"From our first CUDA-Q and Aquila measurements to Astra’s genomic analysis: one continuing investigation into Fibonacci, Phi Ratio and M9 P24."
 /page_text/46,object,
 /page_text/46/tag,string,p
-/page_text/46/text,string,The 25 October 16-run OXTR batch: 16 minutes 51 seconds from the first submission to the final completion. The first result arrived after 3 minutes 16 seconds.
+/page_text/46/text,string,Completed 25 October 2026 · Next quantum batch awaits a funding decision.
 /page_text/47,object,
 /page_text/47/tag,string,p
-/page_text/47/text,string,"The earlier two-atom test: 18 hours 52 minutes, submitted on 24 October and completed on 25 October. Both experiments are complete. These are observed timings, not promised delivery times."
+/page_text/47/text,string,STAY OR RETURN
 /page_text/48,object,
-/page_text/48/tag,string,p
-/page_text/48/text,string,Delivery preference for the upcoming study run. Email is confirmed at launch; this preview saves your preference on this device.
+/page_text/48/tag,string,h3
+/page_text/48/text,string,"Your results, at your pace."
 /page_text/49,object,
 /page_text/49/tag,string,p
-/page_text/49/text,string,THE SCIENCE COMES FIRST
+/page_text/49/text,string,"Your conversation updates as the agents work and displays the findings when ready. Return on this device to reconnect to your saved study, or request an email link."
 /page_text/50,object,
-/page_text/50/tag,string,h2
-/page_text/50/text,string,From DNA fragments to biological relationships.
+/page_text/50/tag,string,p
+/page_text/50/text,string,Study time varies with analysis and review. There is no need to refresh this page.
 /page_text/51,object,
 /page_text/51/tag,string,p
-/page_text/51/text,string,Begin with a biological task. Our first study focuses on transcription; the same natural-language approach can expand to other validated research workflows.
+/page_text/51/text,string,The 25 October 16-run OXTR batch: 16 minutes 51 seconds from the first submission to the final completion. The first result arrived after 3 minutes 16 seconds.
 /page_text/52,object,
 /page_text/52/tag,string,p
-/page_text/52/text,string,01 / GENE REGULATION
+/page_text/52/text,string,"The earlier two-atom test: 18 hours 52 minutes, submitted on 24 October and completed on 25 October. Both experiments are complete. These are observed timings, not promised delivery times."
 /page_text/53,object,
-/page_text/53/tag,string,h3
-/page_text/53/text,string,Predict where proteins associate with DNA.
+/page_text/53/tag,string,p
+/page_text/53/text,string,One email when this study finishes. The private link opens your findings on another device and expires after 30 days.
 /page_text/54,object,
 /page_text/54/tag,string,p
-/page_text/54/text,string,"Compare binding patterns and rank candidate sequences, with experimental evidence kept alongside predictions."
+/page_text/54/text,string,Your conversation updates automatically. No page refresh is needed.
 /page_text/55,object,
 /page_text/55/tag,string,p
-/page_text/55/text,string,02 / GENOME ASSEMBLY
+/page_text/55/text,string,THE SCIENCE COMES FIRST
 /page_text/56,object,
-/page_text/56/tag,string,h3
-/page_text/56/text,string,Reconstruct overlapping DNA fragments.
+/page_text/56/tag,string,h2
+/page_text/56/text,string,From DNA fragments to biological relationships.
 /page_text/57,object,
 /page_text/57/tag,string,p
-/page_text/57/text,string,"Find a consistent ordering of short reads and inspect the reconstructed sequence. Begin with a small, transparent example."
+/page_text/57/text,string,Begin with a biological task. Our first study focuses on transcription; the same natural-language approach can expand to other validated research workflows.
 /page_text/58,object,
 /page_text/58/tag,string,p
-/page_text/58/text,string,03 / GENETIC VARIATION
+/page_text/58/text,string,01 / GENE REGULATION
 /page_text/59,object,
 /page_text/59/tag,string,h3
-/page_text/59/text,string,Group variants into chromosome copies.
+/page_text/59/text,string,Predict where proteins associate with DNA.
 /page_text/60,object,
 /page_text/60/tag,string,p
-/page_text/60/text,string,"Explore how genetic variants can be assigned to distinct chromosome copies, and what data make that assignment reliable."
+/page_text/60/text,string,"Compare binding patterns and rank candidate sequences, with experimental evidence kept alongside predictions."
 /page_text/61,object,
 /page_text/61/tag,string,p
-/page_text/61/text,string,04 / MOLECULAR INTERACTIONS
+/page_text/61/text,string,02 / GENOME ASSEMBLY
 /page_text/62,object,
 /page_text/62/tag,string,h3
-/page_text/62/text,string,Select compatible molecular contacts.
+/page_text/62/text,string,Reconstruct overlapping DNA fragments.
 /page_text/63,object,
 /page_text/63/tag,string,p
-/page_text/63/text,string,"Select compatible candidate contacts in a molecular model, then assess their biological relevance with independent methods."
+/page_text/63/text,string,"Find a consistent ordering of short reads and inspect the reconstructed sequence. Begin with a small, transparent example."
 /page_text/64,object,
 /page_text/64/tag,string,p
-/page_text/64/text,string,"These are research directions with specific mappings and limits. A quantum formulation alone does not establish better accuracy, faster computation or biological validity."
+/page_text/64/text,string,03 / GENETIC VARIATION
 /page_text/65,object,
-/page_text/65/tag,string,p
-/page_text/65/text,string,GROUNDED IN PUBLISHED WORK
+/page_text/65/tag,string,h3
+/page_text/65/text,string,Group variants into chromosome copies.
 /page_text/66,object,
-/page_text/66/tag,string,h2
-/page_text/66/text,string,Ideas with a research trail.
+/page_text/66/tag,string,p
+/page_text/66/text,string,"Explore how genetic variants can be assigned to distinct chromosome copies, and what data make that assignment reliable."
 /page_text/67,object,
 /page_text/67/tag,string,p
-/page_text/67/text,string,"Read the findings, their scale and their limitations. Simulation, quantum hardware and classical results remain clearly identified."
+/page_text/67/text,string,04 / MOLECULAR INTERACTIONS
 /page_text/68,object,
-/page_text/68/tag,string,p
-/page_text/68/text,string,"RESEARCH STIMULUS · NATURE, 2022"
+/page_text/68/tag,string,h3
+/page_text/68/text,string,Select compatible molecular contacts.
 /page_text/69,object,
-/page_text/69/tag,string,h3
-/page_text/69/text,string,Fibonacci pulses kept quantum information stable for longer.
+/page_text/69/tag,string,p
+/page_text/69/text,string,"Select compatible candidate contacts in a molecular model, then assess their biological relevance with independent methods."
 /page_text/70,object,
 /page_text/70/tag,string,p
-/page_text/70/text,string,Laser pulses arranged in a Fibonacci pattern extended the stability of information stored in a quantum computer’s atoms. This finding motivates our investigation and future experiments with Fibonacci representations.
+/page_text/70/text,string,"These are research directions with specific mappings and limits. A quantum formulation alone does not establish better accuracy, faster computation or biological validity."
 /page_text/71,object,
 /page_text/71/tag,string,p
-/page_text/71/text,string,WORKING HYPOTHESIS
+/page_text/71/text,string,GROUNDED IN PUBLISHED WORK
 /page_text/72,object,
-/page_text/72/tag,string,h3
-/page_text/72/text,string,From Fibonacci geometry to quantum stability?
+/page_text/72/tag,string,h2
+/page_text/72/text,string,Ideas with a research trail.
 /page_text/73,object,
 /page_text/73/tag,string,p
-/page_text/73/text,string,Does the hexagonal structure in our Fibonacci representations contribute to the stability of quantum information?
+/page_text/73/text,string,"Read the findings, their scale and their limitations. Simulation, quantum hardware and classical results remain clearly identified."
 /page_text/74,object,
 /page_text/74/tag,string,p
-/page_text/74/text,string,Solid geometry: mathematical relationships. Dotted link: a proposed physical mechanism. The current Aquila batch measures responses in one fixed hexagon; it does not compare geometries or measure coherence lifetime.
+/page_text/74/text,string,"RESEARCH STIMULUS · NATURE, 2022"
 /page_text/75,object,
-/page_text/75/tag,string,p
-/page_text/75/text,string,SCIENCE AS A PUBLIC SERVICE
+/page_text/75/tag,string,h3
+/page_text/75/text,string,Fibonacci pulses kept quantum information stable for longer.
 /page_text/76,object,
-/page_text/76/tag,string,h2
-/page_text/76/text,string,Shared capacity. Open curiosity.
+/page_text/76/tag,string,p
+/page_text/76/text,string,Laser pulses arranged in a Fibonacci pattern extended the stability of information stored in a quantum computer’s atoms. This finding motivates our investigation and future experiments with Fibonacci representations.
 /page_text/77,object,
 /page_text/77/tag,string,p
-/page_text/77/text,string,"Our aim is a publicly funded service that scientists can use freely within shared daily, weekly and monthly budgets. Access follows available capacity, without individual research approvals."
+/page_text/77/text,string,WORKING HYPOTHESIS
 /page_text/78,object,
-/page_text/78/tag,string,p
-/page_text/78/text,string,Small research demonstrations use shared trial and funded compute. The first OXTR run uses a recorded study budget shared across its CUDA-Q and Aquila calculations.
+/page_text/78/tag,string,h3
+/page_text/78/text,string,From Fibonacci geometry to quantum stability?
 /page_text/79,object,
 /page_text/79/tag,string,p
-/page_text/79/text,string,QUESTION CAPACITY
+/page_text/79/text,string,Does the hexagonal structure in our Fibonacci representations contribute to the stability of quantum information?
 /page_text/80,object,
 /page_text/80/tag,string,p
-/page_text/80/text,string,"These counters cover AI questions. Study compute has a separate cost record. Daily, weekly and monthly compute limits form part of the execution design."
+/page_text/80/text,string,Solid geometry: mathematical relationships. Dotted link: a proposed physical mechanism. The current Aquila batch measures responses in one fixed hexagon; it does not compare geometries or measure coherence lifetime.
 /page_text/81,object,
 /page_text/81/tag,string,p
-/page_text/81/text,string,LLM Benchmarking Project (opens in a new tab)
+/page_text/81/text,string,SCIENCE AS A PUBLIC SERVICE
 /page_text/82,object,
-/page_text/82/tag,string,p
-/page_text/82/text,string,"Track how language models perform at translating English instructions into correct Wolfram Language code over time. This informs model assessment for our work with the Wolfram Quantum Framework. Each quantum program still needs direct calculation, simulation and evidence checks."
+/page_text/82/tag,string,h2
+/page_text/82/text,string,Shared capacity. Open curiosity.
 /page_text/83,object,
 /page_text/83/tag,string,p
-/page_text/83/text,string,SCIENTIFIC REVIEW
+/page_text/83/text,string,"Our aim is a publicly funded service that scientists can use freely within shared daily, weekly and monthly budgets. Access follows available capacity, without individual research approvals."
 /page_text/84,object,
-/page_text/84/tag,string,h2
-/page_text/84/text,string,Gemini 4 Argon
+/page_text/84/tag,string,p
+/page_text/84/text,string,Small research demonstrations use shared trial and funded compute. The first OXTR run uses a recorded study budget shared across its CUDA-Q and Aquila calculations.
 /page_text/85,object,
 /page_text/85/tag,string,p
-/page_text/85/text,string,OXTR · STUDY 01
+/page_text/85/text,string,QUESTION CAPACITY
 /page_text/86,object,
-/page_text/86/tag,string,h2
-/page_text/86/text,string,Study insights
+/page_text/86/tag,string,p
+/page_text/86/text,string,"These counters cover AI questions. Study compute has a separate cost record. Daily, weekly and monthly compute limits form part of the execution design."
 /page_text/87,object,
-/page_text/87/tag,string,h2
-/page_text/87/text,string,Connection verification
+/page_text/87/tag,string,p
+/page_text/87/text,string,LLM Benchmarking Project (opens in a new tab)
 /page_text/88,object,
-/page_text/88/tag,string,h2
-/page_text/88/text,string,Fibonacci pulses and longer-lived quantum information
+/page_text/88/tag,string,p
+/page_text/88/text,string,"Track how language models perform at translating English instructions into correct Wolfram Language code over time. This informs model assessment for our work with the Wolfram Quantum Framework. Each quantum program still needs direct calculation, simulation and evidence checks."
 /page_text/89,object,
 /page_text/89/tag,string,p
-/page_text/89/text,string,"DUMITRESCU ET AL. · NATURE 607, 463–467 · 2022"
+/page_text/89/text,string,SCIENTIFIC REVIEW
 /page_text/90,object,
-/page_text/90/tag,string,p
-/page_text/90/text,string,Laser pulses arranged in a Fibonacci pattern kept quantum information stable for longer in the atoms of a quantum computer.
+/page_text/90/tag,string,h2
+/page_text/90/text,string,Gemini 4 Argon
 /page_text/91,object,
 /page_text/91/tag,string,p
-/page_text/91/text,string,"These observations concerned the edge qubits of a ten-ion processor. The Fibonacci-driven information remained coherent for the full 5.5-second observation period. The 1.5-second comparison is specific to that experiment, not a universal qubit lifetime."
+/page_text/91/text,string,OXTR · STUDY 01
 /page_text/92,object,
-/page_text/92/tag,string,p
-/page_text/92/text,string,The authors attribute the protection to symmetries emerging from the pulse ordering. Their experiment did not test a hexagonal atom arrangement or M9 P24.
+/page_text/92/tag,string,h2
+/page_text/92/text,string,Study insights
 /page_text/93,object,
-/page_text/93/tag,string,h3
-/page_text/93/text,string,A stimulus for our investigation
+/page_text/93/tag,string,h2
+/page_text/93/text,string,Connection verification
 /page_text/94,object,
-/page_text/94/tag,string,p
-/page_text/94/text,string,"Quantum Atlas investigates the hexagonal and triangular structures in Fibonacci’s modular representations across M1–M1001. We are exploring whether those relationships have measurable consequences in quantum systems, using Fibonacci, Phi Ratio, Alpha, Beta, Gamma and Epsilon. OXTR DNA supplies the first biological test inputs."
+/page_text/94/tag,string,h2
+/page_text/94/text,string,Fibonacci pulses and longer-lived quantum information
 /page_text/95,object,
 /page_text/95/tag,string,p
-/page_text/95/text,string,The geometric mechanism illustrated below is our working hypothesis. Odom’s construction and the honeycomb theorem establish mathematical relationships; a connection to quantum coherence remains to be tested.
+/page_text/95/text,string,"DUMITRESCU ET AL. · NATURE 607, 463–467 · 2022"
 /page_text/96,object,
 /page_text/96/tag,string,p
-/page_text/96/text,string,Enable JavaScript to explore a question. Read the research references.
+/page_text/96/text,string,Laser pulses arranged in a Fibonacci pattern kept quantum information stable for longer in the atoms of a quantum computer.
+/page_text/97,object,
+/page_text/97/tag,string,p
+/page_text/97/text,string,"These observations concerned the edge qubits of a ten-ion processor. The Fibonacci-driven information remained coherent for the full 5.5-second observation period. The 1.5-second comparison is specific to that experiment, not a universal qubit lifetime."
+/page_text/98,object,
+/page_text/98/tag,string,p
+/page_text/98/text,string,The authors attribute the protection to symmetries emerging from the pulse ordering. Their experiment did not test a hexagonal atom arrangement or M9 P24.
+/page_text/99,object,
+/page_text/99/tag,string,h3
+/page_text/99/text,string,A stimulus for our investigation
+/page_text/100,object,
+/page_text/100/tag,string,p
+/page_text/100/text,string,"Quantum Atlas investigates the hexagonal and triangular structures in Fibonacci’s modular representations across M1–M1001. We are exploring whether those relationships have measurable consequences in quantum systems, using Fibonacci, Phi Ratio, Alpha, Beta, Gamma and Epsilon. OXTR DNA supplies the first biological test inputs."
+/page_text/101,object,
+/page_text/101/tag,string,p
+/page_text/101/text,string,The geometric mechanism illustrated below is our working hypothesis. Odom’s construction and the honeycomb theorem establish mathematical relationships; a connection to quantum coherence remains to be tested.
+/page_text/102,object,
+/page_text/102/tag,string,p
+/page_text/102/text,string,Enable JavaScript to explore a question. Read the research references.
 /page_links,array,20
 /page_links/0,object,
 /page_links/0/url,string,#question
@@ -7974,8 +8012,8 @@ path,type,value
 /sources/11/path,string,quantum/hypothesis.js
 /sources/11/url,string,https://universalmind.tv/informatics/quantum/hypothesis.js
 /sources/11/sha256,string,11bcf4afab33943cfa6f5d40aa644089d16b1a7f7875f910cc503a4a2abec063
-/page_prose_sha256,string,f771fe41580f961eadddeb6d9024cef1e1094451830b8721b128d356cd58582a
+/page_prose_sha256,string,01fe46338b2de63c08684deb8118f6bf1c38bcc31f0cd1f4077e440a391da98a
 /downloads,object,
-/downloads/json,string,https://universalmind.tv/informatics/quantum/reading/quantum-atlas.json?v=2026-11-09-universal-one-quantum
-/downloads/csv,string,https://universalmind.tv/informatics/quantum/reading/quantum-atlas.csv?v=2026-11-09-universal-one-quantum
-/downloads/md,string,https://universalmind.tv/informatics/quantum/reading/quantum-atlas.md?v=2026-11-09-universal-one-quantum
+/downloads/json,string,https://universalmind.tv/informatics/quantum/reading/quantum-atlas.json?v=2026-11-09-live-conversation
+/downloads/csv,string,https://universalmind.tv/informatics/quantum/reading/quantum-atlas.csv?v=2026-11-09-live-conversation
+/downloads/md,string,https://universalmind.tv/informatics/quantum/reading/quantum-atlas.md?v=2026-11-09-live-conversation

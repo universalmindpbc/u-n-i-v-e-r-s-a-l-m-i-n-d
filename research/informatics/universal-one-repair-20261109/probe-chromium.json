@@ -1,0 +1,47 @@
+{
+  "engine": "chromium",
+  "pages": [
+    {
+      "url": "https://staging.universalmind.tv/informatics/quantum/",
+      "base": "https://staging.universalmind.tv/informatics/",
+      "helper": {
+        "ready": true
+      },
+      "errors": [],
+      "quantum": true,
+      "network": [
+        {
+          "url": "https://staging.universalmind.tv/informatics/universal-one-context.js?v=2",
+          "status": 200,
+          "contentType": "text/javascript"
+        },
+        {
+          "url": "https://staging.universalmind.tv/informatics/universal-one-routing.js?v=3",
+          "status": 200,
+          "contentType": "text/javascript"
+        }
+      ]
+    },
+    {
+      "url": "https://staging.universalmind.tv/informatics/quantum/",
+      "base": "https://staging.universalmind.tv/informatics/",
+      "helper": {
+        "ready": true
+      },
+      "errors": [],
+      "quantum": true,
+      "network": [
+        {
+          "url": "https://staging.universalmind.tv/informatics/universal-one-context.js?v=2",
+          "status": 200,
+          "contentType": "text/javascript"
+        },
+        {
+          "url": "https://staging.universalmind.tv/informatics/universal-one-routing.js?v=3",
+          "status": 200,
+          "contentType": "text/javascript"
+        }
+      ]
+    }
+  ]
+}

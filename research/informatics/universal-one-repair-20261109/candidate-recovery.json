@@ -1,0 +1,74 @@
+{
+  "passed": true,
+  "transport": "mocked",
+  "checks": [
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "dictationToSend": true,
+      "helperRecovered": true,
+      "failedRequestRetry": true,
+      "userMessages": 1,
+      "researchCalls": 2,
+      "commandCalls": 2,
+      "newStudies": 0,
+      "modules": [
+        "/informatics/universal-one-routing.js?v=3",
+        "/informatics/universal-one-context.js?v=2",
+        "/informatics/universal-one-routing.js?v=3&retry=1",
+        "/informatics/universal-one-context.js?v=2&retry=1"
+      ]
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "dictationToSend": true,
+      "helperRecovered": true,
+      "failedRequestRetry": true,
+      "userMessages": 1,
+      "researchCalls": 2,
+      "commandCalls": 2,
+      "newStudies": 0,
+      "modules": [
+        "/informatics/universal-one-routing.js?v=3",
+        "/informatics/universal-one-context.js?v=2",
+        "/informatics/universal-one-routing.js?v=3&retry=1",
+        "/informatics/universal-one-context.js?v=2&retry=1"
+      ]
+    },
+    {
+      "engine": "webkit",
+      "width": 1440,
+      "dictationToSend": true,
+      "helperRecovered": true,
+      "failedRequestRetry": true,
+      "userMessages": 1,
+      "researchCalls": 2,
+      "commandCalls": 2,
+      "newStudies": 0,
+      "modules": [
+        "/informatics/universal-one-routing.js?v=3",
+        "/informatics/universal-one-context.js?v=2",
+        "/informatics/universal-one-routing.js?v=3&retry=1",
+        "/informatics/universal-one-context.js?v=2&retry=1"
+      ]
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "dictationToSend": true,
+      "helperRecovered": true,
+      "failedRequestRetry": true,
+      "userMessages": 1,
+      "researchCalls": 2,
+      "commandCalls": 2,
+      "newStudies": 0,
+      "modules": [
+        "/informatics/universal-one-routing.js?v=3",
+        "/informatics/universal-one-context.js?v=2",
+        "/informatics/universal-one-routing.js?v=3&retry=1",
+        "/informatics/universal-one-context.js?v=2&retry=1"
+      ]
+    }
+  ]
+}

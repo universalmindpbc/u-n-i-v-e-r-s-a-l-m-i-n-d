@@ -11,3 +11,5 @@ await assert.rejects(quantumCommand(env,request({question:'Run this study'}),pro
 const result=await(await quantumCommand(env,request({question:'Run this study',currentQuestion:'OXTR question',history:Array(30).fill({role:'user',content:'x'.repeat(10000)})}),provider('completed',{action:'start',question:'OXTR question'}))).json();
 assert.equal(result.action,'start');assert.equal(result.provider_response_id,'receipt');assert.equal(lastBody.store,false);assert.equal(lastBody.max_output_tokens,1400);assert.equal(lastBody.service_tier,'default');assert.equal(JSON.parse(lastBody.input[0].content).latest_visitor_message,'Run this study');assert(JSON.stringify(lastBody.input).length<25000);
 console.log('Quantum command validation, incomplete-response handling and bounded context passed.');
+
+for(const action of ['capabilities','hardware_capabilities']){const result=await(await quantumCommand(env,request({question:'Do you have access to the Quantum Agents?'}),provider('completed',{action,question:''}))).json();assert.equal(result.action,action);}

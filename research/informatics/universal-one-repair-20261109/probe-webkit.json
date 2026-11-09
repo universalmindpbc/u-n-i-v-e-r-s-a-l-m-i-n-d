@@ -1,0 +1,75 @@
+{
+  "engine": "webkit",
+  "pages": [
+    {
+      "url": "https://staging.universalmind.tv/informatics/quantum/",
+      "base": "https://staging.universalmind.tv/informatics/",
+      "helper": {
+        "error": "TypeError: Importing a module script failed."
+      },
+      "errors": [
+        "TypeError: Importing a module script failed."
+      ],
+      "quantum": true,
+      "network": [
+        {
+          "url": "https://staging.universalmind.tv/informatics/quantum/universal-one-context.js?v=2",
+          "status": 404,
+          "contentType": "text/html; charset=iso-8859-1"
+        },
+        {
+          "url": "https://staging.universalmind.tv/informatics/quantum/universal-one-context.js?v=2",
+          "failure": {
+            "errorText": "cancelled"
+          }
+        },
+        {
+          "url": "https://staging.universalmind.tv/informatics/quantum/universal-one-routing.js?v=3",
+          "status": 404,
+          "contentType": "text/html; charset=iso-8859-1"
+        },
+        {
+          "url": "https://staging.universalmind.tv/informatics/quantum/universal-one-routing.js?v=3",
+          "failure": {
+            "errorText": "cancelled"
+          }
+        }
+      ]
+    },
+    {
+      "url": "https://staging.universalmind.tv/informatics/quantum/",
+      "base": "https://staging.universalmind.tv/informatics/",
+      "helper": {
+        "error": "TypeError: Importing a module script failed."
+      },
+      "errors": [
+        "TypeError: Importing a module script failed."
+      ],
+      "quantum": true,
+      "network": [
+        {
+          "url": "https://staging.universalmind.tv/informatics/quantum/universal-one-context.js?v=2",
+          "status": 404,
+          "contentType": "text/html; charset=iso-8859-1"
+        },
+        {
+          "url": "https://staging.universalmind.tv/informatics/quantum/universal-one-context.js?v=2",
+          "failure": {
+            "errorText": "cancelled"
+          }
+        },
+        {
+          "url": "https://staging.universalmind.tv/informatics/quantum/universal-one-routing.js?v=3",
+          "status": 404,
+          "contentType": "text/html; charset=iso-8859-1"
+        },
+        {
+          "url": "https://staging.universalmind.tv/informatics/quantum/universal-one-routing.js?v=3",
+          "failure": {
+            "errorText": "cancelled"
+          }
+        }
+      ]
+    }
+  ]
+}

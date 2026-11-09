@@ -1,3 +1,4 @@
+import {notifyStudy,scheduleNotifications} from './informatics-study-email.js';
 import {astraStorage} from './informatics-astra.js';
 // A question is reserved once. Its bounded retrieval/model loop is included.
 // Automated verification uses a separately authenticated, equally bounded pool.
@@ -7,10 +8,11 @@ export class BudgetError extends Error {
  constructor(kind,resetAt){super(`The daily ${kind==='research_question'?'research':kind} allowance is used. It resets at 00:00 UTC. Please try again after the reset.`);this.status=429;this.code='daily_allowance';this.kind=kind;this.resetAt=resetAt;}
 }
 export class ResearchBudget {
- constructor(state){this.state=state;}
+ constructor(state,env){this.state=state;this.env=env;}
+ async alarm(){await notifyStudy(this.state.storage,this.env);}
  async fetch(request){
   const {kind,inspect,scope,quantum,astra}=await request.json();
-  if(astra){const r=await astraStorage(this.state.storage,astra);return Response.json(r.data,{status:r.status});}
+  if(astra){const r=await astraStorage(this.state.storage,astra);if(r.status===200&&['delivery','update'].includes(astra.op))await scheduleNotifications(this.state.storage);return Response.json(r.data,{status:r.status});}
   if(quantum)return Response.json(await pooledPlanning(this.state.storage,inspect));
   const scopedLimits=scope==='connectors'?{...limits,research_question:30}:limits;
   if(!inspect&&!limits[kind])return new Response('{}',{status:400});

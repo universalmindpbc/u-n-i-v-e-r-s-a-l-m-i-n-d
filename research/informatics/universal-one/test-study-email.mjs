@@ -1,0 +1,20 @@
+import assert from 'node:assert/strict';
+import {astraStorage} from '../../../cloudflare/informatics-astra.js';
+import {notifyStudy,scheduleNotifications} from '../../../cloudflare/informatics-study-email.js';
+class Storage{data=new Map();alarm=null;async get(k){return structuredClone(this.data.get(k));}async put(k,v){this.data.set(k,structuredClone(v));}async transaction(fn){return fn(this);}async getAlarm(){return this.alarm;}async setAlarm(t){this.alarm=t;}}
+const storage=new Storage(),id=crypto.randomUUID(),clientId='a'.repeat(32),report={narrative:{answer:'Recorded result.'}};
+await storage.put('astra',{tasks:[{id}]});await storage.put('study:'+id,{id,clientId,status:'running',report,events:[]});
+const call=b=>astraStorage(storage,{id,clientId,...b});
+assert.equal((await call({op:'delivery',clientId:'b'.repeat(32),email:'test@example.com',enabled:true})).status,404);
+assert.equal((await call({op:'delivery',email:'a@example.com\r\nBcc:x@example.com',enabled:true})).status,400);
+assert.equal((await call({op:'delivery',email:'test@example.com',enabled:true})).data.delivery.state,'waiting');
+await scheduleNotifications(storage);assert.equal(storage.alarm,null);
+const task=await storage.get('study:'+id),token=task.notification.token;assert.equal((await call({op:'get'})).data.notification,undefined);
+assert.equal((await call({op:'shared-result',clientId:undefined,token})).status,403);
+task.status='complete';await storage.put('study:'+id,task);await scheduleNotifications(storage);assert(storage.alarm);
+assert.equal((await call({op:'shared-result',clientId:undefined,token:'bad'})).status,403);
+assert.equal((await call({op:'shared-result',clientId:undefined,token})).data.report.narrative.answer,'Recorded result.');
+let sends=0;globalThis.fetch=async()=>{sends++;return Response.json({accepted:true});};
+await notifyStudy(storage,{ALLOWED_ORIGIN:'https://staging.universalmind.tv',ASTRA_SESSION_SECRET:'x'.repeat(64)});await notifyStudy(storage,{ALLOWED_ORIGIN:'https://staging.universalmind.tv',ASTRA_SESSION_SECRET:'x'.repeat(64)});assert.equal(sends,1);assert.equal((await call({op:'get'})).data.delivery.state,'sent');
+await call({op:'delivery',enabled:false});assert.equal((await call({op:'shared-result',clientId:undefined,token})).status,403);
+console.log('Email: owner isolation, address validation, private fields, completion queue, token access, idempotency and cancellation passed.');
