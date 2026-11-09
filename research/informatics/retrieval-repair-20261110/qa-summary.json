@@ -1,0 +1,73 @@
+{
+  "sourceCommit": "0b588bd9619e1494a525527fa0665dfa3e6976cd",
+  "stagingWorkerVersion": "4a0a0b17-7a38-432c-9739-5c8332762398",
+  "stagingURL": "https://staging.universalmind.tv/informatics/quantum/",
+  "completedChecks": {
+    "staging-live-text": {
+      "passed": true,
+      "evidence": "staging-live-text.json"
+    },
+    "staging-live-normal": {
+      "passed": true,
+      "evidence": "staging-live-normal.json"
+    },
+    "staging-live-dictation": {
+      "passed": true,
+      "evidence": "staging-live-dictation.json"
+    },
+    "staging-live-voice": {
+      "passed": true,
+      "evidence": "staging-live-voice.json"
+    },
+    "staging-live-agent": {
+      "passed": true,
+      "evidence": "staging-live-agent.json"
+    },
+    "runtime-live": {
+      "passed": true,
+      "evidence": "runtime-live.json"
+    },
+    "runtime-regression": {
+      "passed": true,
+      "evidence": "runtime-regression.json"
+    },
+    "agent-context-check": {
+      "passed": true,
+      "evidence": "agent-context-check.json"
+    },
+    "staging-ui": {
+      "passed": true,
+      "evidence": "staging-ui.json"
+    },
+    "saved-results": {
+      "passed": true,
+      "evidence": "saved-results.json"
+    },
+    "staging-chat-format": {
+      "passed": true,
+      "evidence": "staging-chat-format.json"
+    },
+    "handoff-staging-files": {
+      "passed": true,
+      "evidence": "handoff-staging-files.json"
+    },
+    "format-staging-files": {
+      "passed": true,
+      "evidence": "format-staging-files.json"
+    },
+    "format-roundtrip": {
+      "passed": true,
+      "evidence": "format-roundtrip.json"
+    }
+  },
+  "liveStudy": {
+    "id": "7c15c156-c1cb-4332-8f08-822156fb366b",
+    "status": "running",
+    "evidence": "new-study-verification.json"
+  },
+  "knownLimitations": "open-limitations.json",
+  "sharedWorker": "shared-worker-activation.json",
+  "newHardwareJobs": 0,
+  "newPaidGPUJobs": 0,
+  "productionWebsiteModified": false
+}

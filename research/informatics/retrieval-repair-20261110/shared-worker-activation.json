@@ -1,0 +1,15 @@
+{
+  "stack": "informatics-astra-staging-runtime",
+  "changeSet": "literature-qa-20261110",
+  "stackStatus": "UPDATE_COMPLETE",
+  "state": "Active",
+  "imageDigest": "sha256:710b8cff7ac5d5ff169d552695b89f67bb2508a4e2c359b2975aa19e2e9a6b42",
+  "previousImageDigest": "sha256:82a80f28aaf412402c8baf16a90065fba7d6a069c1b35dd5e10bd9b75e694284",
+  "templateUnchanged": true,
+  "otherParametersUnchanged": true,
+  "environmentUnchanged": true,
+  "roleUnchanged": true,
+  "approval": "Ben explicitly approved the shared-worker update on 10 November 2026.",
+  "verification": "CloudFormation and Lambda read-back through the deployment-capable CloudShell session.",
+  "productionWebsiteFilesChanged": false
+}

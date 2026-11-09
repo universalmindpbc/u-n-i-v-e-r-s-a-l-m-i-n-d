@@ -1,0 +1,1076 @@
+{
+  "mode": "text",
+  "caseName": "agent",
+  "newStudies": 0,
+  "syntheticInput": true,
+  "processAudioMuted": true,
+  "network": [
+    {
+      "path": "/quantum/capacity",
+      "status": 200
+    },
+    {
+      "path": "/quantum/command",
+      "status": 200
+    },
+    {
+      "path": "/research",
+      "status": 200
+    }
+  ],
+  "responses": [
+    {
+      "path": "/quantum/command",
+      "status": 200,
+      "body": {
+        "action": "research",
+        "question": "",
+        "provider_response_id": "resp_0a0afbfe0a174cf3016af22608625487d088b1596646e429d4",
+        "usage": {
+          "input_tokens": 800,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 20,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 820
+        },
+        "qaSpend": {
+          "limitUSD": 0.7662865000000001,
+          "chargedUpperUSD": 0.01100000000000001,
+          "calls": [
+            {
+              "path": "/responses",
+              "model": "gpt-6-astra",
+              "inputTokenUpper": 12692,
+              "outputTokenUpper": 1400,
+              "boundMethod": "UTF-8 bytes plus framing",
+              "reservedUSD": 0.22865000000000002,
+              "chargedUpperUSD": 0.011,
+              "usage": {
+                "input_tokens": 800,
+                "input_tokens_details": {
+                  "cache_write_tokens": 0,
+                  "cached_tokens": 0
+                },
+                "output_tokens": 20,
+                "output_tokens_details": {
+                  "reasoning_tokens": 0
+                },
+                "total_tokens": 820
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "path": "/research",
+      "status": 200,
+      "body": {
+        "answer": "**The specialist completed, but verification was partial.**\n\n- **Initial search:** PubMed’s exact-title search returned no hits; Europe PMC returned the original 2022 Nature paper and abstract, PMID 35859195. [S1]\n- **DOI verified:** **10.1038/s41586-022-04853-4**, matching the publisher page retrieved by the Perplexity Opus specialist. [S2]\n- **Additional experimental limitation:** Not verified. The specialist accessed only the abstract and search snippets—not the original Methods, full text, or author manuscript. It therefore supplied no substantiated limitation beyond those results, rather than borrowing one from another experiment.\n\n**Connection test: successful specialist completion; evidence task incomplete.** No study or hardware job was run.",
+        "sources": [
+          {
+            "label": "S1",
+            "id": "35859195",
+            "passageId": "35859195:e2841d1b1c8f24b1679c60223a082c6ff810c9657eceaf4c9af7b5d3340261f6",
+            "title": "Dynamical topological phase realized in a trapped-ion quantum simulator.",
+            "authors": "",
+            "journal": "Nature",
+            "year": "2022",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/35859195/",
+            "section": "Live literature",
+            "kind": "Bounded relevance search, not a systematic review. PubMed and Europe PMC overlap and are not independent corroboration. Search hits do not establish support for the hypothesis.",
+            "text": "{\"id\":\"35859195\",\"pmid\":\"35859195\",\"pmcid\":null,\"doi\":\"10.1038/s41586-022-04853-4\",\"title\":\"Dynamical topological phase realized in a trapped-ion quantum simulator.\",\"authors\":\"Dumitrescu PT, Bohnet JG, Gaebler JP, Hankin A, Hayes D, Kumar A, Neyenhuis B, Vasseur R, Potter AC.\",\"journal\":\"Nature\",\"year\":\"2022\",\"publicationTypes\":[\"Research Support, Non-U.S. Gov't\",\"Research Support, U.S. Gov't, Non-P.H.S.\",\"Journal Article\"],\"abstract\":\"Nascent platforms for programmable quantum simulation offer unprecedented access to new regimes of far-from-equilibrium quantum many-body dynamics in almost isolated systems. Here achieving precise control over quantum many-body entanglement is an essential task for quantum sensing and computation. Extensive theoretical work indicates that these capabilities can enable dynamical phases and critical phenomena that show topologically robust methods to create, protect and manipulate quantum entanglement that self-correct against large classes of errors. However, so far, experimental realizations have been confined to classical (non-entangled) symmetry-breaking orders 1-5 . In this work, we demonstrate an emergent dynamical symmetry-protected topological phase 6 , in a quasiperiodically driven array of ten 171 Yb + hyperfine qubits in Quantinuum's System Model H1 trapped-ion quantum processor 7 . This phase shows edge qubits that are dynamically protected from control errors, cross-talk and stray fields. Crucially, this edge protection relies purely on emergent dynamical symmetries that are absolutely stable to generic coherent perturbations. This property is special to quasiperiodically driven systems: as we demonstrate, the analogous edge states of a periodically driven qubit array are vulnerable to symmetry-breaking errors and quickly decohere. Our work paves the way for implementation of more complex dynamical topological orders 8,9 that would enable error-resilient manipulation of quantum information.\",\"abstractTruncated\":false,\"isOpenAccess\":false,\"isRetracted\":false,\"firstPublicationDate\":\"2022-07-20\",\"url\":\"https://pubmed.ncbi.nlm.nih.gov/35859195/\",\"coverage\":\"abstract\",\"receipt\":{\"url\":\"https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=%22Dynamical+topological+phase+realized+in+a+trapped-ion+quantum+simulator%22&format=json&resultType=core&pageSize=6\",\"retrievedAt\":\"2026-11-09T19:46:14.757Z\",\"sha256\":\"e2841d1b1c8f24b1679c60223a082c6ff810c9657eceaf4c9af7b5d3340261f6\"},\"discoveredIn\":[\"Europe PMC\"],\"searchReceipts\":[{\"url\":\"https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=%22Dynamical+topological+phase+realized+in+a+trapped-ion+quantum+simulator%22&format=json&resultType=core&pageSize=6\",\"retrievedAt\":\"2026-11-09T19:46:14.757Z\",\"sha256\":\"e2841d1b1c8f24b1679c60223a082c6ff810c9657eceaf4c9af7b5d3340261f6\"}]}",
+            "doi": null,
+            "rights": null,
+            "sha256": "e2841d1b1c8f24b1679c60223a082c6ff810c9657eceaf4c9af7b5d3340261f6",
+            "provenance": {
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=%22Dynamical+topological+phase+realized+in+a+trapped-ion+quantum+simulator%22&format=json&resultType=core&pageSize=6",
+              "retrievedAt": "2026-11-09T19:46:14.757Z",
+              "sha256": "e2841d1b1c8f24b1679c60223a082c6ff810c9657eceaf4c9af7b5d3340261f6"
+            },
+            "dataRecord": {
+              "schema": "universal-informatics/literature-record/v1",
+              "tool": "search_literature",
+              "parameters": {
+                "query": "\"Dynamical topological phase realized in a trapped-ion quantum simulator\""
+              },
+              "result": {
+                "paper": {
+                  "id": "35859195",
+                  "pmid": "35859195",
+                  "pmcid": null,
+                  "doi": "10.1038/s41586-022-04853-4",
+                  "title": "Dynamical topological phase realized in a trapped-ion quantum simulator.",
+                  "authors": "Dumitrescu PT, Bohnet JG, Gaebler JP, Hankin A, Hayes D, Kumar A, Neyenhuis B, Vasseur R, Potter AC.",
+                  "journal": "Nature",
+                  "year": "2022",
+                  "publicationTypes": [
+                    "Research Support, Non-U.S. Gov't",
+                    "Research Support, U.S. Gov't, Non-P.H.S.",
+                    "Journal Article"
+                  ],
+                  "abstract": "Nascent platforms for programmable quantum simulation offer unprecedented access to new regimes of far-from-equilibrium quantum many-body dynamics in almost isolated systems. Here achieving precise control over quantum many-body entanglement is an essential task for quantum sensing and computation. Extensive theoretical work indicates that these capabilities can enable dynamical phases and critical phenomena that show topologically robust methods to create, protect and manipulate quantum entanglement that self-correct against large classes of errors. However, so far, experimental realizations have been confined to classical (non-entangled) symmetry-breaking orders 1-5 . In this work, we demonstrate an emergent dynamical symmetry-protected topological phase 6 , in a quasiperiodically driven array of ten 171 Yb + hyperfine qubits in Quantinuum's System Model H1 trapped-ion quantum processor 7 . This phase shows edge qubits that are dynamically protected from control errors, cross-talk and stray fields. Crucially, this edge protection relies purely on emergent dynamical symmetries that are absolutely stable to generic coherent perturbations. This property is special to quasiperiodically driven systems: as we demonstrate, the analogous edge states of a periodically driven qubit array are vulnerable to symmetry-breaking errors and quickly decohere. Our work paves the way for implementation of more complex dynamical topological orders 8,9 that would enable error-resilient manipulation of quantum information.",
+                  "abstractTruncated": false,
+                  "isOpenAccess": false,
+                  "isRetracted": false,
+                  "firstPublicationDate": "2022-07-20",
+                  "url": "https://pubmed.ncbi.nlm.nih.gov/35859195/",
+                  "coverage": "abstract",
+                  "receipt": {
+                    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=%22Dynamical+topological+phase+realized+in+a+trapped-ion+quantum+simulator%22&format=json&resultType=core&pageSize=6",
+                    "retrievedAt": "2026-11-09T19:46:14.757Z",
+                    "sha256": "e2841d1b1c8f24b1679c60223a082c6ff810c9657eceaf4c9af7b5d3340261f6"
+                  },
+                  "discoveredIn": [
+                    "Europe PMC"
+                  ],
+                  "searchReceipts": [
+                    {
+                      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=%22Dynamical+topological+phase+realized+in+a+trapped-ion+quantum+simulator%22&format=json&resultType=core&pageSize=6",
+                      "retrievedAt": "2026-11-09T19:46:14.757Z",
+                      "sha256": "e2841d1b1c8f24b1679c60223a082c6ff810c9657eceaf4c9af7b5d3340261f6"
+                    }
+                  ]
+                },
+                "searches": [
+                  {
+                    "source": "PubMed",
+                    "status": "retrieved",
+                    "query": "\"Dynamical topological phase realized in a trapped-ion quantum simulator\"",
+                    "total": 0,
+                    "receipt": {
+                      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=%22Dynamical+topological+phase+realized+in+a+trapped-ion+quantum+simulator%22&retmode=json&retmax=6&sort=relevance&tool=UniversalInformatics",
+                      "retrievedAt": "2026-11-09T19:46:14.521Z",
+                      "sha256": "347982f282af8c97c08cd43ab187b255d445c33d1a88e85b8a93c7edd83b28ab"
+                    }
+                  },
+                  {
+                    "source": "Europe PMC",
+                    "status": "retrieved",
+                    "query": "\"Dynamical topological phase realized in a trapped-ion quantum simulator\"",
+                    "total": 1,
+                    "receipt": {
+                      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=%22Dynamical+topological+phase+realized+in+a+trapped-ion+quantum+simulator%22&format=json&resultType=core&pageSize=6",
+                      "retrievedAt": "2026-11-09T19:46:14.757Z",
+                      "sha256": "e2841d1b1c8f24b1679c60223a082c6ff810c9657eceaf4c9af7b5d3340261f6"
+                    }
+                  }
+                ],
+                "coverage": "Bounded relevance search, not a systematic review. PubMed and Europe PMC overlap and are not independent corroboration. Search hits do not establish support for the hypothesis."
+              }
+            },
+            "retrievalLabel": "S2"
+          },
+          {
+            "label": "S2",
+            "id": "https://www.nature.com/articles/s41586-022-04853-4",
+            "passageId": "https://www.nature.com/articles/s41586-022-04853-4:literature-20261110-v2",
+            "title": "Dynamical topological phase realized in a trapped-ion quantum simulator",
+            "authors": "",
+            "url": "https://www.nature.com/articles/s41586-022-04853-4",
+            "section": "Live literature",
+            "kind": "search-extracted text",
+            "text": "{\"title\":\"Dynamical topological phase realized in a trapped-ion quantum simulator\",\"url\":\"https://www.nature.com/articles/s41586-022-04853-4\",\"text\":\"Abstract\\n...\\nIn this work, we demonstrate an emergent dynamical symmetry-protected topological phase 6, in a quasiperiodically driven array of ten 171 Yb + hyperfine qubits in Quantinuum's System Model H1 trapped-ion quantum processor 7.\\nThis phase shows edge qubits that are dynamically protected from control errors, cross-talk and stray fields.\\nCrucially, this edge protection relies purely on emergent dynamical symmetries that are absolutely stable to generic coherent perturbations.\\nThis property is special to quasiperiodically driven systems: as we demonstrate, the analogous edge states of a periodically driven qubit array are vulnerable to symmetry-breaking errors and quickly decohere.\\nOur work paves the way for implementation of more complex dynamical topological orders 8, 9\",\"published\":\"2022-07-20\",\"updated\":\"2026-02-28\",\"coverage\":\"search-extracted text\"}",
+            "doi": null,
+            "rights": null,
+            "sha256": null,
+            "provenance": {
+              "model": "anthropic/claude-opus-5-5",
+              "reasoningEffort": "high",
+              "reservation": 2,
+              "reservedUSD": 0.75,
+              "requestUpperUSD": 0.7054100000000001,
+              "calls": [
+                {
+                  "inputTokenUpper": 15625,
+                  "outputTokenUpper": 4096,
+                  "reservedUSD": 0.160045,
+                  "httpStatus": 200,
+                  "requestId": "resp_209e19c5-5765-401b-9124-e6a6eb800df5",
+                  "model": "anthropic/claude-opus-5-5",
+                  "usage": {
+                    "cost": {
+                      "cache_creation_cost": 0.01925,
+                      "currency": "USD",
+                      "input_cost": 0.00002,
+                      "output_cost": 0.00658,
+                      "total_cost": 0.02585
+                    },
+                    "input_tokens": 3855,
+                    "input_tokens_details": {
+                      "cache_creation_input_tokens": 3851,
+                      "cache_read_input_tokens": 0,
+                      "cached_tokens": 0
+                    },
+                    "output_tokens": 329,
+                    "output_tokens_details": {
+                      "reasoning_tokens": 112
+                    },
+                    "total_tokens": 4184
+                  },
+                  "providerStatus": "completed",
+                  "providerError": null,
+                  "incompleteDetails": null,
+                  "outputTypes": [
+                    "function_call",
+                    "function_call"
+                  ]
+                },
+                {
+                  "inputTokenUpper": 32366,
+                  "outputTokenUpper": 4096,
+                  "reservedUSD": 0.24375000000000002,
+                  "httpStatus": 200,
+                  "requestId": "resp_abb37924-dc96-4cc0-9ad6-09358f2eec4d",
+                  "model": "anthropic/claude-opus-5-5",
+                  "usage": {
+                    "cost": {
+                      "cache_creation_cost": 0.03096,
+                      "cache_read_cost": 0.00077,
+                      "currency": "USD",
+                      "input_cost": 0.00001,
+                      "output_cost": 0.00548,
+                      "total_cost": 0.03722
+                    },
+                    "input_tokens": 10044,
+                    "input_tokens_details": {
+                      "cache_creation_input_tokens": 6191,
+                      "cache_read_input_tokens": 3851,
+                      "cached_tokens": 3851
+                    },
+                    "output_tokens": 274,
+                    "output_tokens_details": {
+                      "reasoning_tokens": 163
+                    },
+                    "total_tokens": 10318
+                  },
+                  "providerStatus": "completed",
+                  "providerError": null,
+                  "incompleteDetails": null,
+                  "outputTypes": [
+                    "function_call"
+                  ]
+                },
+                {
+                  "inputTokenUpper": 43939,
+                  "outputTokenUpper": 4096,
+                  "reservedUSD": 0.301615,
+                  "httpStatus": 200,
+                  "requestId": "resp_e6581a22-2955-4ff7-a3c7-014a0e8334c6",
+                  "model": "anthropic/claude-opus-5-5",
+                  "usage": {
+                    "cost": {
+                      "cache_creation_cost": 0.07003,
+                      "currency": "USD",
+                      "input_cost": 0.00001,
+                      "output_cost": 0.04614,
+                      "total_cost": 0.11618
+                    },
+                    "input_tokens": 14007,
+                    "input_tokens_details": {
+                      "cache_creation_input_tokens": 14005,
+                      "cache_read_input_tokens": 0,
+                      "cached_tokens": 0
+                    },
+                    "output_tokens": 2307,
+                    "output_tokens_details": {
+                      "reasoning_tokens": 587
+                    },
+                    "total_tokens": 16314
+                  },
+                  "providerStatus": "completed",
+                  "providerError": null,
+                  "incompleteDetails": null,
+                  "outputTypes": [
+                    "message"
+                  ]
+                }
+              ],
+              "toolExecutions": 3,
+              "retrievedAt": "2026-11-09T19:59:58.103Z",
+              "chargedUpperUSD": 0.197735,
+              "settlement": {
+                "settled": true,
+                "chargedUSD": 0.197735,
+                "totalReservedUSD": 0.39609000000000005
+              }
+            },
+            "dataRecord": {
+              "schema": "universal-informatics/literature-record/v1",
+              "tool": "review_literature_gap",
+              "parameters": {
+                "query": "Verify the original DOI for Dumitrescu et al., Nature (2022), 'Dynamical topological phase realized in a trapped-ion quantum simulator' (Europe PMC reports 10.1038/s41586-022-04853-4, PMID 35859195). Read original publisher paper or accessible author manuscript and identify one concrete experimental limitation absent from the indexed abstract, with a source URL and exact supporting passage if available. Do not run a study. Report verification and access limits.",
+                "reason": "PubMed exact-title search returned zero; Europe PMC returned the original record and abstract only. The abstract describes ten trapped-ion qubits and protected edges but lacks detailed experimental limitations. User explicitly requests specialist connection test and verification of original DOI plus one limitation from original text."
+              },
+              "result": {
+                "status": "completed",
+                "provider": "Perplexity Agent API",
+                "model": "anthropic/claude-opus-5-5",
+                "query": "Verify the original DOI for Dumitrescu et al., Nature (2022), 'Dynamical topological phase realized in a trapped-ion quantum simulator' (Europe PMC reports 10.1038/s41586-022-04853-4, PMID 35859195). Read original publisher paper or accessible author manuscript and identify one concrete experimental limitation absent from the indexed abstract, with a source URL and exact supporting passage if available. Do not run a study. Report verification and access limits.",
+                "reason": "PubMed exact-title search returned zero; Europe PMC returned the original record and abstract only. The abstract describes ten trapped-ion qubits and protected edges but lacks detailed experimental limitations. User explicitly requests specialist connection test and verification of original DOI plus one limitation from original text.",
+                "answer": "# Evidence brief: Dumitrescu et al., *Nature* 2022 — DOI verification and experimental limitation\n\n## Bottom line\n- **DOI is verified.** The DOI 10.1038/s41586-022-04853-4 is confirmed by the publisher's own page.\n- **No limitation from the original paper was obtained.** Neither the publisher full text nor the author manuscript was accessible, so I cannot give an exact supporting passage. I have not inferred or paraphrased one.\n\n## 1. DOI verification\n\n| Check | Result | Source |\n|---|---|---|\n| Publisher landing page | `https://www.nature.com/articles/s41586-022-04853-4`. Same title and abstract text; published 2022-07-20. | Search-extracted text from nature.com |\n| Europe PMC / MEDLINE record | PMID 35859195; same DOI; first publication 2022-07-20; not open access; not retracted. | Europe PMC REST record (receipt dated 2026-11-09T19:46:27Z) |\n| Bibliographic details | *Nature* **607**, 463–467 (2022). | Reference lists of citing papers, e.g. PMC9709576 and https://www.nature.com/articles/s41467-024-46402-9 |\n| Preprint | arXiv:2107.09676, titled \"Realizing a dynamical topological phase in a trapped-ion quantum simulator\" (2021). | Cited as ref. 45 in the companion paper, doi:10.1038/s41586-022-04854-3. **I did not retrieve the preprint itself.** |\n\n**Conclusion:** the Europe PMC DOI matches the publisher record. The preprint title differs slightly from the published title.\n\n**Why the PubMed exact-title search returned zero:** this is unresolved. The record exists under PMID 35859195, so the miss is probably a query or indexing artefact, not a missing paper. I did not fetch the PubMed record directly.\n\n## 2. Experimental limitation from the original text: not obtained\n\n- `read_paper` returned **abstract only** (`fullTextStatus: not_available_from_open_access_service`).\n- The nature.com result contained only abstract snippets.\n- No passage from the article body, Methods, or arXiv:2107.09676 was retrieved.\n\n**What the abstract itself implies:**\n- It claims stability to *\"generic coherent perturbations\"*.\n- It does not say whether the edges are protected against incoherent noise, such as decoherence or memory and depolarizing errors.\n- That is a **question to check in the full text**, not a documented limitation.\n\n## 3. Contrary and contextual evidence (not about the target paper's own limitations)\n\n**Companion experiment, superconducting qubits** (doi:10.1038/s41586-022-04854-3, search-extracted snippets):\n- Edge-spin oscillations show *\"a gradually decaying envelope\"*, attributed via an echo test to *\"circuit errors rather than thermalization\"*.\n- The authors note that, *\"because of the small system size and experimental imperfections… we are not able to observe the logarithmic entanglement growth\"*.\n- These limitations belong to that experiment, not to Dumitrescu et al.\n\n**Review** (Nature Communications 2024, PMC10923891):\n- It describes the quasiperiodic system as one that *\"might prove to provide stable edge states robust against coherent errors\"*, which is hedged language.\n- Its statement that detecting *\"the true long-range nature of the spatiotemporal order is still out-of-reach\"* cites different references (84–86), not ref. 77 (Dumitrescu). It should **not** be attributed to the target paper.\n\n## 4. Classification of what was found\n\n- **Experimental findings (abstract level only):**\n  - ten ¹⁷¹Yb⁺ hyperfine qubits on Quantinuum System Model H1;\n  - quasiperiodic drive;\n  - edge qubits protected against control errors, cross-talk and stray fields;\n  - periodic-drive edges decohere quickly.\n- **Theoretical claim:** the edges are \"absolutely stable\" to generic coherent perturbations through emergent dynamical symmetries. This is stated in the abstract; its experimental support is not verified here.\n- **Not applicable:** binding sites and motif predictions, since this is a physics paper.\n\n## 5. Access and coverage limits\n- Coverage was abstract plus search snippets only; there was no full-text reading. This is not a systematic review.\n- The search tools (Perplexity) are not independent confirmation of content. Europe PMC and PubMed draw on the same underlying record.\n\n## 6. Next steps\n1. Retrieve arXiv:2107.09676 directly (`https://arxiv.org/abs/2107.09676`). Read the discussion and Methods for:\n   - the number of drive cycles achieved;\n   - edge-signal decay from incoherent errors;\n   - system size and finite-size effects;\n   - error mitigation or post-selection.\n2. Alternatively, obtain the *Nature* full text and Supplementary Information through institutional access.\n3. Fetch the PubMed record for PMID 35859195 directly to resolve the zero-hit title search.",
+                "receipt": {
+                  "model": "anthropic/claude-opus-5-5",
+                  "reasoningEffort": "high",
+                  "reservation": 2,
+                  "reservedUSD": 0.75,
+                  "requestUpperUSD": 0.7054100000000001,
+                  "calls": [
+                    {
+                      "inputTokenUpper": 15625,
+                      "outputTokenUpper": 4096,
+                      "reservedUSD": 0.160045,
+                      "httpStatus": 200,
+                      "requestId": "resp_209e19c5-5765-401b-9124-e6a6eb800df5",
+                      "model": "anthropic/claude-opus-5-5",
+                      "usage": {
+                        "cost": {
+                          "cache_creation_cost": 0.01925,
+                          "currency": "USD",
+                          "input_cost": 0.00002,
+                          "output_cost": 0.00658,
+                          "total_cost": 0.02585
+                        },
+                        "input_tokens": 3855,
+                        "input_tokens_details": {
+                          "cache_creation_input_tokens": 3851,
+                          "cache_read_input_tokens": 0,
+                          "cached_tokens": 0
+                        },
+                        "output_tokens": 329,
+                        "output_tokens_details": {
+                          "reasoning_tokens": 112
+                        },
+                        "total_tokens": 4184
+                      },
+                      "providerStatus": "completed",
+                      "providerError": null,
+                      "incompleteDetails": null,
+                      "outputTypes": [
+                        "function_call",
+                        "function_call"
+                      ]
+                    },
+                    {
+                      "inputTokenUpper": 32366,
+                      "outputTokenUpper": 4096,
+                      "reservedUSD": 0.24375000000000002,
+                      "httpStatus": 200,
+                      "requestId": "resp_abb37924-dc96-4cc0-9ad6-09358f2eec4d",
+                      "model": "anthropic/claude-opus-5-5",
+                      "usage": {
+                        "cost": {
+                          "cache_creation_cost": 0.03096,
+                          "cache_read_cost": 0.00077,
+                          "currency": "USD",
+                          "input_cost": 0.00001,
+                          "output_cost": 0.00548,
+                          "total_cost": 0.03722
+                        },
+                        "input_tokens": 10044,
+                        "input_tokens_details": {
+                          "cache_creation_input_tokens": 6191,
+                          "cache_read_input_tokens": 3851,
+                          "cached_tokens": 3851
+                        },
+                        "output_tokens": 274,
+                        "output_tokens_details": {
+                          "reasoning_tokens": 163
+                        },
+                        "total_tokens": 10318
+                      },
+                      "providerStatus": "completed",
+                      "providerError": null,
+                      "incompleteDetails": null,
+                      "outputTypes": [
+                        "function_call"
+                      ]
+                    },
+                    {
+                      "inputTokenUpper": 43939,
+                      "outputTokenUpper": 4096,
+                      "reservedUSD": 0.301615,
+                      "httpStatus": 200,
+                      "requestId": "resp_e6581a22-2955-4ff7-a3c7-014a0e8334c6",
+                      "model": "anthropic/claude-opus-5-5",
+                      "usage": {
+                        "cost": {
+                          "cache_creation_cost": 0.07003,
+                          "currency": "USD",
+                          "input_cost": 0.00001,
+                          "output_cost": 0.04614,
+                          "total_cost": 0.11618
+                        },
+                        "input_tokens": 14007,
+                        "input_tokens_details": {
+                          "cache_creation_input_tokens": 14005,
+                          "cache_read_input_tokens": 0,
+                          "cached_tokens": 0
+                        },
+                        "output_tokens": 2307,
+                        "output_tokens_details": {
+                          "reasoning_tokens": 587
+                        },
+                        "total_tokens": 16314
+                      },
+                      "providerStatus": "completed",
+                      "providerError": null,
+                      "incompleteDetails": null,
+                      "outputTypes": [
+                        "message"
+                      ]
+                    }
+                  ],
+                  "toolExecutions": 3,
+                  "retrievedAt": "2026-11-09T19:59:58.103Z",
+                  "chargedUpperUSD": 0.197735,
+                  "settlement": {
+                    "settled": true,
+                    "chargedUSD": 0.197735,
+                    "totalReservedUSD": 0.39609000000000005
+                  }
+                },
+                "papers": [
+                  {
+                    "id": "35859195",
+                    "pmid": "35859195",
+                    "pmcid": null,
+                    "doi": "10.1038/s41586-022-04853-4",
+                    "title": "Dynamical topological phase realized in a trapped-ion quantum simulator.",
+                    "authors": "Dumitrescu PT, Bohnet JG, Gaebler JP, Hankin A, Hayes D, Kumar A, Neyenhuis B, Vasseur R, Potter AC.",
+                    "journal": "Nature",
+                    "year": "2022",
+                    "publicationTypes": [
+                      "Research Support, Non-U.S. Gov't",
+                      "Research Support, U.S. Gov't, Non-P.H.S.",
+                      "Journal Article"
+                    ],
+                    "abstract": "Nascent platforms for programmable quantum simulation offer unprecedented access to new regimes of far-from-equilibrium quantum many-body dynamics in almost isolated systems. Here achieving precise control over quantum many-body entanglement is an essential task for quantum sensing and computation. Extensive theoretical work indicates that these capabilities can enable dynamical phases and critical phenomena that show topologically robust methods to create, protect and manipulate quantum entanglement that self-correct against large classes of errors. However, so far, experimental realizations have been confined to classical (non-entangled) symmetry-breaking orders 1-5 . In this work, we demonstrate an emergent dynamical symmetry-protected topological phase 6 , in a quasiperiodically driven array of ten 171 Yb + hyperfine qubits in Quantinuum's System Model H1 trapped-ion quantum processor 7 . This phase shows edge qubits that are dynamically protected from control errors, cross-talk and stray fields. Crucially, this edge protection relies purely on emergent dynamical symmetries that are absolutely stable to generic coherent perturbations. This property is special to quasiperiodically driven systems: as we demonstrate, the analogous edge states of a periodically driven qubit array are vulnerable to symmetry-breaking errors and quickly decohere. Our work paves the way for implementation of more complex dynamical topological orders 8,9 that would enable error-resilient manipulation of quantum information.",
+                    "abstractTruncated": false,
+                    "isOpenAccess": false,
+                    "isRetracted": false,
+                    "firstPublicationDate": "2022-07-20",
+                    "url": "https://pubmed.ncbi.nlm.nih.gov/35859195/",
+                    "coverage": "abstract",
+                    "receipt": {
+                      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A35859195+AND+SRC%3AMED&format=json&resultType=core&pageSize=1",
+                      "retrievedAt": "2026-11-09T19:46:27.186Z",
+                      "sha256": "ee06f6b6c3d4bf0999a2a6a29ecee5da9ddd842808a1dbb2c89ead5b89e8e169"
+                    }
+                  },
+                  {
+                    "title": "Dynamical topological phase realized in a trapped-ion quantum simulator",
+                    "url": "https://www.nature.com/articles/s41586-022-04853-4",
+                    "text": "Abstract\n...\nIn this work, we demonstrate an emergent dynamical symmetry-protected topological phase 6, in a quasiperiodically driven array of ten 171 Yb + hyperfine qubits in Quantinuum's System Model H1 trapped-ion quantum processor 7.\nThis phase shows edge qubits that are dynamically protected from control errors, cross-talk and stray fields.\nCrucially, this edge protection relies purely on emergent dynamical symmetries that are absolutely stable to generic coherent perturbations.\nThis property is special to quasiperiodically driven systems: as we demonstrate, the analogous edge states of a periodically driven qubit array are vulnerable to symmetry-breaking errors and quickly decohere.\nOur work paves the way for implementation of more complex dynamical topological orders 8, 9",
+                    "published": "2022-07-20",
+                    "updated": "2026-02-28",
+                    "coverage": "search-extracted text"
+                  },
+                  {
+                    "title": "Large-scale simulations of Floquet physics on near-term quantum ...",
+                    "url": "https://www.nature.com/articles/s41534-024-00866-1?error=cookies_not_supported&code=26521ab2-b7cf-485e-9c10-4f7eb5b8644c",
+                    "text": "Periodically driven quantum systems exhibit a diverse set of phenomena but are more challenging to simulate than their equilibrium counterparts.\nHere, we introduce the Quantum High-Frequency Floquet Simulation (QHiFFS) algorithm as a method to simulate fast-driven quantum systems on quantum hardware.\nCentral to QHiFFS is the concept of a kick operator which transforms the system into a basis where the dynamics is governed by a time-independent effective Hamiltonian.\n...\nWe use the periodically driven biaxial next-nearest neighbor Ising (BNNNI) model, a natural test bed for quantum frustrated magnetism and criticality, as a case study to illustrate our algorithm.\nWe implemented a 20-qubit simulation of the driven two-dimensional BNNNI model on Quantinuum’s trapped ion quantum computer.\nOur error analysis shows that QHiFFS exhibits not only a cubic advantage in driving frequency *ω* but also a linear advantage in simulation time *t* compared to Trotterization.\n...\nCorrespondingly, digital quantum simulations of systems subject to a continuous driving field have thus far been limited to only a few qubits^35,36^.\n...\nWe use QHiFFS to implement a 20-qubit, 230-gate two-dimensional simulation of the transversely driven biaxial next-nearest neighbor Ising (BNNNI) model on a trapped ion quantum computer.\n...\nIn particular, we find that first order QHiFFS not only exhibits a cubic scaling advantage in driving frequency *ω*, but also a linear one in simulation time *t* compared to a second-order Trotter sequence.\nThe error scaling in system size *n* remains linear for local models (see Error Analysis).\n...\nTo demonstrate the advantage of QHiFFS, as compared to standard Trotterization, we implement the 20-qubit transversely driven 2D biaxial next-nearest neighbor Ising (BNNNI) model with periodic boundary conditions on Quantinuum’s H1 trapped ion quantum hardware (see Fig.\n...\nTo demonstrate the suitability of the QHiFFS algorithm for real quantum hardware we used all 20 qubits of Quantinuum’s H1-1 trapped ion platform to simulate the 4 × 5 BNNNI model with periodic boundary conditions (see Fig. 1 and for the executed hardware circuit see Fig. 5).\nThis was enabled by the all-to-all connectivity of the platform—on superconducting circuit devices (as compared to the trapped ion device that we used here), periodic boundary conditions on two-dimensional lattice models are typically hard to implement due to the restriction to nearest-neighbor gates.\n...\nFigure 3(b) shows the ratio of the number of 2-qubit gates that would have been required for a Trotter simulation as compared to a QHiFFS simulation for the same average simulation fidelity.\nThis varied from 45-fold (at short times) to 53-fold (at long times) and thus the Trotter simulation was not feasible to be implemented on quantum hardware.\n...\nThe hardware error is less than 0.021 for all data points.\nOur implementation successfully captures the noticeable unstable ferromagnetic tendency induced out of the antiphase at the \\(\\kappa =\\frac{1}{2}\\) quantum critical fan.\n…\nThe expected values of the correlation function are largely within our shot-noise based error bars, implying that our simulation (despite the considerable circuit depth and qubit number) is predominantly shot-noise limited.\nIndeed, the simulation is also limited by the size of the available hardware—we chose to study a 20 qubit simulation not because this was the largest QHiFFS could handle, but rather because the Quantinuum H1-1 system was the largest all-to-all device to which we had access.\n...\nThe dominant contribution in the high-frequency regime comes from discretization, while the errors from non-commutativity are comparably small.\n...\nIn parallel, the algorithmic errors of QHiFFS scale linearly in system size, *n*, for local models, and at worst quadratically.\n...\nTo benchmark QHiFFS we performed a 20-qubit simulation of the periodically driven two-dimensional BNNNI model on Quantinuum’s 20-qubit H1-1 trapped ion platform.\nAs shown in Fig. 3, the correlation function values computed on the quantum computer capture the true predicted values up to the precision allowed by shot noise (2*σ* = 1.49 ⋅ 10^−2^).\nIn contrast, standard Trotterization (specifically a \\(2^{\\rm{nd}}\\) order Trotterization with the same algorithmic error as a \\(1^{\\rm{st}}\\) order QHiFFS) would have required approximately 50 times as many two-qubit gates, making the method completely unfeasible on current hardware due to gate errors and decoherence.\n...\nIndeed, in the case of Quantinuum’s H1-1 trapped ion device, with native single qubit rotations and two-qubit gates \\(\\exp (-i\\frac{\\theta }{2}\\hat{Z}\\hat{Z})\\), the simulation was implemented exactly with a fixed circuit using the native gate set.\nThis meant that the QHiFFS circuit, for any simulation time, had the same depth as a single standard low-order Trotter-Suzuki step.\nThus, the final simulation time *t* affected the error from the high-frequency approximation, but n",
+                    "published": "2024-09-13",
+                    "updated": "2026-11-08",
+                    "coverage": "search-extracted text"
+                  },
+                  {
+                    "title": "Quantum many-body simulations on digital quantum computers: State-of-the-art and future challenges",
+                    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10923891/pdf/41467_2024_Article_46402.pdf",
+                    "text": "Another form of topological states that has recently been realized on trapped ion quantum computers77 and superconducting qubits78 are Floquet and quasiperiodically driven symmetry-protected topolo-gical phases.\nEspecially the quasiperiodically driven system might prove to provide stable edge states robust against coherent errors.\n…\nNV-centers in diamond84 and trapped ions85 seem to confirm the the-oretical predictions and are promising first steps to investigate such novel phases.\nHowever, detecting the true long-range nature of the spatiotemporal\norder\nis\nstill\nout-of-reach\nfor\nthese\nanalog\nexperiments86.\n...\n77.\nDumitrescu, P. T. et al. Dynamical topological phase realized in a trapped-ion quantum simulator.\nNature 607, 463–467 (2022).",
+                    "published": null,
+                    "updated": "2025-03-30",
+                    "coverage": "search-extracted text"
+                  },
+                  {
+                    "title": "Probing non-equilibrium topological order on a quantum processor - Nature",
+                    "url": "https://www.nature.com/articles/s41586-025-09456-3?error=cookies_not_supported&code=ce63ab3e-837f-4098-a7e4-649e95a39b42",
+                    "text": "# Probing non-equilibrium topological order on a quantum processor\n## Abstract\nHere we realize a Floquet topologically ordered state theoretically proposed in ref. ^6^, on an array of superconducting qubits.\n...\n## Chiral Majorana edge mode interferometry\nCompared with the theoretically expected value *r* = 1 for the amplitudes of the revivals, we observe decay due to errors and decoherence on the processor.\n...\n## Methods\n### Experimental procedures\nDominant errors come from CZ/C-PHASE entangling gates and final readout^52^ (Extended Data Fig. 2a).\n...\n#### Noisy simulation\nTogether with the results in Extended Data Fig. 2b–d, this agreement suggests the described error model with an additional coherent phase drift on the ancilla qubit (strongly mitigated by dynamical decoupling) reproduces our experimental observations.\n### Extended data and derivations\n#### e - m Transmutation\nFor small disorder (*Δ* ≲ 2.4), the order parameter shows oscillatory behaviour, indicative of the FTO phase, although the amplitude gradually decreases as *Δ* increases.\nAt higher disorder strengths, these oscillations become suppressed and eventually disappear.\nThe observed behaviour suggests a crossover or transition towards a localized phase at strong disorder.\nHowever, owing to limited experimental resources, we averaged only over 50 disorder realizations for each data point.\nAs a result, we cannot make definitive claims about the nature of the transition.\n### Matrix-product state simulations\nThe entanglement entropy saturates at *S* = 9 log(2), indicating that at least a bond dimension of *χ* = 512 is needed.\n...\nAt later times, the two loop expectation values become small and the MPS simulation becomes unreliable because of truncation errors, so the order parameter becomes unstable.\nThe smaller bond dimensions show deviations from the *χ* = 2,048 simulation, indicating that the simulation is not yet converged.\nThe *χ* = 1,024 simulations still show deviations from *χ* = 2,048 as early as four cycles in, indicating the need for a large bond dimension for the simulation.\nNote that the fact that the absolute value of the order parameter becomes larger than 1 at late times is not necessarily due to truncations in the MPS simulations but can be an artefact of the finite system.\nOnly in the thermodynamic limit do we expect the order parameter to perfectly oscillate between +1 and −1 away from the fine-tuned point.\n...\nThus, we anticipate that classical simulation of this setup will become intractable for any tensor-network-based approach for large systems and late times.\nEven for the system sizes accessible to us on the quantum processor, we cannot achieve convergence even with the largest bond dimension *χ* = 2,048 that we have simulated.\n...\n## References\n35. Dumitrescu, P. T. et al. Dynamical topological phase realized in a trapped-ion quantum simulator.\n*Nature* **607**, 463–467 (2022).\n36. Azses, D., Dalla Torre, E. G. & Sela, E. Observing Floquet topological order by symmetry resolution.\n...\n37. Wahl, T. B., Han, B. & Béri, B. Topologically ordered time crystals.",
+                    "published": "2025-09-10",
+                    "updated": "2026-11-07",
+                    "coverage": "search-extracted text"
+                  },
+                  {
+                    "title": "Robust simulations of many-body symmetry-protected ... - Nature",
+                    "url": "https://www.nature.com/articles/s41534-025-01122-w?error=cookies_not_supported&code=e0a57e27-d98d-4d9c-84da-bb2ff5ecb411",
+                    "text": "# Robust simulations of many-body symmetry-protected topological phase transitions on a quantum processor\n## Results\n### Measurement of symmetry-protected topological entanglement\nDespite these limitations, it is apparent that a distinct entanglement gap has been measured, therefore strongly confirming the symmetry-protected topology of the ground state at *g*/*J* = 2.5 (see “Methods”).\n...\n…\n## References\n60. Dumitrescu, P. T. et al. Dynamical topological phase realized in a trapped-ion quantum simulator.\n*Nature* **607**, 463–467 (2022).\n61. King, A. D. et al. Observation of topological phenomena in a programmable lattice of 1800 qubits.",
+                    "published": "2025-11-18",
+                    "updated": "2026-11-09",
+                    "coverage": "search-extracted text"
+                  },
+                  {
+                    "title": "Digital quantum simulation of Floquet symmetry-protected topological phases - Nature",
+                    "url": "https://link.springer.com/article/10.1038/s41586-022-04854-3",
+                    "text": "# Digital quantum simulation of Floquet symmetry-protected topological phases\n## Abstract\nHere we report the observation of a distinct type of non-equilibrium state of matter, Floquet symmetry-protected topological phases, which are implemented through digital quantum simulation with an array of programmable superconducting qubits.\nWe observe robust long-lived temporal correlations and subharmonic temporal response for the edge spins over up to 40 driving cycles using a circuit of depth exceeding 240 and acting on 26 qubits.\nWe demonstrate that the subharmonic response is independent of the initial state, and experimentally map out a phase boundary between the Floquet symmetry-protected topological and thermal phases.\n...\n## Symmetry breaking at boundaries\nFrom Fig. 2a, it is evident that in the FSPT phase, the disorder-averaged magnetizations at the two ends of the chain, namely \\(\\overline{\\langle {\\sigma }_{1}^{z}(t)\\rangle }\\) and \\(\\overline{\\langle {\\sigma }_{L}^{z}(t)\\rangle }\\), oscillate with a 2*T* periodicity, for up to 40 driving cycles.\nIn stark contrast, the local magnetizations in the bulk of the chain (\\(\\overline{\\langle {\\sigma }_{j}^{z}(t)\\rangle }\\) with \\(2\\le j\\le L-1\\)) decay quickly to zero and do not show period-doubled oscillations.\n...\nFor comparison, we also experimentally measure the dynamics of the magnetizations in the thermal phase.\nOur results are shown in Fig. 2c,e, where we see that the magnetizations for both the edge and bulk spins decay quickly to zero and no subharmonic response appears at all.\n...\nOur experimental measurements of autocorrelators for up to 40 driving cycles are plotted in Fig. 2f, again showing the breaking of time-translational symmetry at the boundaries but not in the bulk.\nWe mention that, in the FSPT phase, the local magnetizations for the edge spins exhibit a gradually decaying envelope, which could be attributed to either external circuit errors (that is, experimental imperfections such as decoherence, pulse distortions and cross-talk effects) or slow internal thermalization (namely, an intrinsic tendency towards thermalization in the model).\n…\nThe square root of the output of *U* ~echo~ (black solid lines shown in Fig. 2f) fits well with the decaying envelope of the results obtained by evolution under *U* ~F~.\nThis indicates that the decay of the envelope is due to circuit errors rather than thermalization, which corroborates that the system is indeed in the localized phase.\n...\n## Phase transition\nThe small deviation between the numerical prediction and experimental result is mainly attributed to finite-size effects, experimental noise and the limited number of disorder instances implemented in the experiment.\n...\n## Conclusions\nWe measured the persistent oscillations of edge spins with a subharmonic frequency and experimentally demonstrated that the FSPT phases are robust to symmetry-respecting perturbations in the drive and imperfections in the experiment.\n...\n## Methods\n### Logarithmic entanglement growth\nHowever, because of the small system size and experimental imperfections (such as decoherence, pulse distortions and cross-talk effects), we are not able to observe the logarithmic entanglement growth (Supplementary Information VI).\n...\n### Further experiments on non-equilibrium SPT phases\nThis enlarged dynamical symmetry protects the edge modes of this phase, one at quasi-energy 0 and the other at quasi-energy π.\nThis leads to unusual dynamics of the edge spins.\nIf one applies this evolution to a product state in the *x* basis, the edge spins will return to their initial states only at even periods.\nIn our experiments, we measure the random disorder-averaged local magnetization \\(\\overline{\\langle {\\sigma }_{k}^{x}\\rangle }\\) during the evolution (Extended Data Fig. 1b).\nPersistent subharmonic oscillations are observed for the edge spins, whereas the averaged magnetizaiton in the bulk is synchronized with the driving frequency and shows no breaking of the discrete time-translational symmetry.\n...\nOur experimental results are summarized in Extended Data Fig. 2c, in which persistent quasiperiodic oscillations for edge spins are indeed observed.\n...\nWe note that an experimental implementation of the EDSPT model with ten trapped-ion qubits has recently also been reported^45^.\n...\n## References\nLett.* **114**, 251603 (2015).\n45. Dumitrescu, P. T. et al. Realizing a dynamical topological phase in a trapped-ion quantum simulator.\nPreprint at https://arxiv.org/abs/2107.09676 (2021).\n...\n## Associated content\n- ### Dynamical topological phase realized in a trapped-ion quantum simulator\n- Philipp T. Dumitrescu\n- Justin G. Bohnet\n- Andrew C. Potter\nArticle Nature 20 July 2022",
+                    "published": "2022-07-20",
+                    "updated": "2026-11-06",
+                    "coverage": "search-extracted text"
+                  },
+                  {
+                    "title": "Biology and medicine in the landscape of quantum advantages",
+                    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9709576/",
+                    "text": "However, a diverse and growing body of evidence—from recent work on novel, more efficient error correcting codes [114,116], early demonstrations of logical qubits [431–433] and the realization of dynamical topological phases [434,435], to the identification of significant operational quantum advantages in the energy required to perform computations [427,436]—gives much reason for optimism.\n...\nNotably, recent work has shown that error mitigation must be implemented with care as it can decrease the effectiveness of circuit parameter learning in some cases [97].\n...\nThe required fault-tolerance threshold depends on a variety of factors, including the hardware error characteristics, connectivity map, and error correction code being used.\n...\n  Scheme for reducing decoherence in quantum computer memory.\n...\n- 435.Dumitrescu PT, Bohnet JG, Gaebler JP, Hankin A, Hayes D, Kumar A, Neyenhuis B, Vasseur R, Potter AC.\n2022.\n  Dynamical topological phase realized in a trapped-ion quantum simulator.\nNature\n607, 463-467.\n( 10.1038/s41586-022-04853-4) [DOI] [PubMed] [Google Scholar]\n…\n- 438.Pan F, Chen K, Zhang P.\n...\n- 439.Hardy L.",
+                    "published": "2022-11-30",
+                    "updated": "2026-10-17",
+                    "coverage": "search-extracted text"
+                  },
+                  {
+                    "title": "Quantum many-body simulations on digital quantum computers: State-of-the-art and future challenges - Nature Communications",
+                    "url": "https://www.nature.com/articles/s41467-024-46402-9?error=cookies_not_supported&code=a6ba308a-78f0-4994-9556-44facfcd5013",
+                    "text": "# Quantum many-body simulations on digital quantum computers: State-of-the-art and future challenges\n## Introduction\n### Digital quantum simulation on noisy quantum computers\nFor DQS phase estimation-based methods as well as Trotterized time evolution are more precise, if a fully error corrected quantum computer is available, but variational quantum algorithms can have significant advantages in the NISQ era.\n...\n## Non-variational results\n### Realizing topological systems\nBy designing topologically protected quantum circuits it is possible to simulate topological systems and identify edge states, for example for one dimensional topological Floquet phases, as recently demonstrated on IBM and Rigetti quantum processors^73^.\n...\nAnother form of topological states that has recently been realized on trapped ion quantum computers^77^ and superconducting qubits^78^ are Floquet and quasiperiodically driven symmetry-protected topological phases.\nEspecially the quasiperiodically driven system might prove to provide stable edge states robust against coherent errors.\n...\n## References\n41. Yang, C. H. et al. Silicon qubit fidelities approaching incoherent noise limits via pulse engineering.\n...\nLett.* **121**, 030502 (2018).\n...\n77. Dumitrescu, P. T. et al. Dynamical topological phase realized in a trapped-ion quantum simulator.\n*Nature* **607**, 463–467 (2022).\n...\nC. Noisy intermediate scale quantum simulation of time-dependent Hamiltonians, arXiv:2101.07677, https://doi.org/10.48550/arXiv.2101.07677 (2021).",
+                    "published": "2024-03-08",
+                    "updated": "2026-11-07",
+                    "coverage": "search-extracted text"
+                  },
+                  {
+                    "title": "Continuous symmetry breaking in a trapped-ion spin chain - Nature",
+                    "url": "https://link.springer.com/article/10.1038/s41586-023-06656-7",
+                    "text": "# Continuous symmetry breaking in a trapped-ion spin chain\n## Abstract\nHere we use a one-dimensional trapped-ion quantum simulator to prepare states with long-range spin order that extends over the system size of up to 23 spins and is characteristic of the continuous symmetry-breaking phase of matter^2,3^.\nOur preparation relies on simultaneous control over an array of tightly focused individual addressing laser beams, generating long-range spin–spin interactions.\nWe also observe a disordered phase with frustrated correlations.\n...\n## References\nB* **106**, 014106 (2022).\n15. Potirniche, I.-D., Potter, A. C., Schleier-Smith, M., Vishwanath, A. & Yao, N. Y. Floquet symmetry-protected topological phases in cold-atom systems.\n*Phys.\nRev.\nLett.* **119**, 123601 (2017).\n...\n*Nature* **551**, 601 (2017).\n...\nArticle ADS CAS PubMed PubMed Central Google Scholar\n23. Dumitrescu, P. T. et al. Dynamical topological phase realized in a trapped-ion quantum simulator.\n*Nature* **607**, 463 (2022).",
+                    "published": "2023-11-15",
+                    "updated": "2026-11-07",
+                    "coverage": "search-extracted text"
+                  }
+                ],
+                "records": [
+                  {
+                    "tool": "read_paper",
+                    "parameters": {
+                      "id": "35859195",
+                      "query": "experimental limitations, decoherence, error sources, finite system size, number of drive cycles, edge qubit lifetime"
+                    },
+                    "result": {
+                      "status": "retrieved",
+                      "paper": {
+                        "id": "35859195",
+                        "pmid": "35859195",
+                        "pmcid": null,
+                        "doi": "10.1038/s41586-022-04853-4",
+                        "title": "Dynamical topological phase realized in a trapped-ion quantum simulator.",
+                        "authors": "Dumitrescu PT, Bohnet JG, Gaebler JP, Hankin A, Hayes D, Kumar A, Neyenhuis B, Vasseur R, Potter AC.",
+                        "journal": "Nature",
+                        "year": "2022",
+                        "publicationTypes": [
+                          "Research Support, Non-U.S. Gov't",
+                          "Research Support, U.S. Gov't, Non-P.H.S.",
+                          "Journal Article"
+                        ],
+                        "abstract": "Nascent platforms for programmable quantum simulation offer unprecedented access to new regimes of far-from-equilibrium quantum many-body dynamics in almost isolated systems. Here achieving precise control over quantum many-body entanglement is an essential task for quantum sensing and computation. Extensive theoretical work indicates that these capabilities can enable dynamical phases and critical phenomena that show topologically robust methods to create, protect and manipulate quantum entanglement that self-correct against large classes of errors. However, so far, experimental realizations have been confined to classical (non-entangled) symmetry-breaking orders 1-5 . In this work, we demonstrate an emergent dynamical symmetry-protected topological phase 6 , in a quasiperiodically driven array of ten 171 Yb + hyperfine qubits in Quantinuum's System Model H1 trapped-ion quantum processor 7 . This phase shows edge qubits that are dynamically protected from control errors, cross-talk and stray fields. Crucially, this edge protection relies purely on emergent dynamical symmetries that are absolutely stable to generic coherent perturbations. This property is special to quasiperiodically driven systems: as we demonstrate, the analogous edge states of a periodically driven qubit array are vulnerable to symmetry-breaking errors and quickly decohere. Our work paves the way for implementation of more complex dynamical topological orders 8,9 that would enable error-resilient manipulation of quantum information.",
+                        "abstractTruncated": false,
+                        "isOpenAccess": false,
+                        "isRetracted": false,
+                        "firstPublicationDate": "2022-07-20",
+                        "url": "https://pubmed.ncbi.nlm.nih.gov/35859195/",
+                        "coverage": "abstract",
+                        "receipt": {
+                          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A35859195+AND+SRC%3AMED&format=json&resultType=core&pageSize=1",
+                          "retrievedAt": "2026-11-09T19:46:27.186Z",
+                          "sha256": "ee06f6b6c3d4bf0999a2a6a29ecee5da9ddd842808a1dbb2c89ead5b89e8e169"
+                        }
+                      },
+                      "passages": [],
+                      "coverage": "abstract",
+                      "fullTextStatus": "not_available_from_open_access_service"
+                    }
+                  },
+                  {
+                    "tool": "discover_scientific_sources",
+                    "parameters": {
+                      "query": "Dumitrescu Realizing a dynamical topological phase in a trapped-ion quantum simulator arXiv quasiperiodically driven Quantinuum H1 limitations"
+                    },
+                    "result": {
+                      "status": "retrieved",
+                      "query": "Dumitrescu Realizing a dynamical topological phase in a trapped-ion quantum simulator arXiv quasiperiodically driven Quantinuum H1 limitations",
+                      "reason": "PubMed exact-title search returned zero; Europe PMC returned the original record and abstract only. The abstract describes ten trapped-ion qubits and protected edges but lacks detailed experimental limitations. User explicitly requests specialist connection test and verification of original DOI plus one limitation from original text.",
+                      "provider": "Perplexity Search",
+                      "requestId": "50aa4818-4a07-4836-973b-f0cac75f0c41",
+                      "receipt": {
+                        "retrievedAt": "2026-11-09T19:59:27.248Z",
+                        "reservation": 5,
+                        "reservedUSD": 0.005
+                      },
+                      "results": [
+                        {
+                          "title": "Dynamical topological phase realized in a trapped-ion quantum simulator",
+                          "url": "https://www.nature.com/articles/s41586-022-04853-4",
+                          "text": "Abstract\n...\nHowever, so far, experimental realizations have been confined to classical (non-entangled) symmetry-breaking orders 1, 2, 3, 4, 5.\nIn this work, we demonstrate an emergent dynamical symmetry-protected topological phase 6, in a quasiperiodically driven array of ten 171 Yb + hyperfine qubits in Quantinuum's System Model H1 trapped-ion quantum processor 7.\nThis phase shows edge qubits that are dynamically protected from control errors, cross-talk and stray fields.\nCrucially, this edge protection relies purely on emergent dynamical symmetries that are absolutely stable to generic coherent perturbations.\nThis property is special to quasiperiodically driven systems: as we demonstrate, the analogous edge states of a periodically driven qubit array are vulnerable to symmetry-breaking errors and quickly decohere.\nOur work paves the way for implementation of more complex dynamical topological orders 8, 9",
+                          "published": "2022-07-20",
+                          "updated": "2026-02-28",
+                          "coverage": "search-extracted text"
+                        },
+                        {
+                          "title": "Large-scale simulations of Floquet physics on near-term quantum ...",
+                          "url": "https://www.nature.com/articles/s41534-024-00866-1?error=cookies_not_supported&code=26521ab2-b7cf-485e-9c10-4f7eb5b8644c",
+                          "text": "Periodically driven quantum systems exhibit a diverse set of phenomena but are more challenging to simulate than their equilibrium counterparts.\nHere, we introduce the Quantum High-Frequency Floquet Simulation (QHiFFS) algorithm as a method to simulate fast-driven quantum systems on quantum hardware.\nCentral to QHiFFS is the concept of a kick operator which transforms the system into a basis where the dynamics is governed by a time-independent effective Hamiltonian.\n...\nWe use the periodically driven biaxial next-nearest neighbor Ising (BNNNI) model, a natural test bed for quantum frustrated magnetism and criticality, as a case study to illustrate our algorithm.\nWe implemented a 20-qubit simulation of the driven two-dimensional BNNNI model on Quantinuum’s trapped ion quantum computer.\nOur error analysis shows that QHiFFS exhibits not only a cubic advantage in driving frequency *ω* but also a linear advantage in simulation time *t* compared to Trotterization.\n...\nCorrespondingly, digital quantum simulations of systems subject to a continuous driving field have thus far been limited to only a few qubits^35,36^.\n...\nWe use QHiFFS to implement a 20-qubit, 230-gate two-dimensional simulation of the transversely driven biaxial next-nearest neighbor Ising (BNNNI) model on a trapped ion quantum computer.\n...\nIn particular, we find that first order QHiFFS not only exhibits a cubic scaling advantage in driving frequency *ω*, but also a linear one in simulation time *t* compared to a second-order Trotter sequence.\nThe error scaling in system size *n* remains linear for local models (see Error Analysis).\n...\nTo demonstrate the advantage of QHiFFS, as compared to standard Trotterization, we implement the 20-qubit transversely driven 2D biaxial next-nearest neighbor Ising (BNNNI) model with periodic boundary conditions on Quantinuum’s H1 trapped ion quantum hardware (see Fig.\n...\nTo demonstrate the suitability of the QHiFFS algorithm for real quantum hardware we used all 20 qubits of Quantinuum’s H1-1 trapped ion platform to simulate the 4 × 5 BNNNI model with periodic boundary conditions (see Fig. 1 and for the executed hardware circuit see Fig. 5).\nThis was enabled by the all-to-all connectivity of the platform—on superconducting circuit devices (as compared to the trapped ion device that we used here), periodic boundary conditions on two-dimensional lattice models are typically hard to implement due to the restriction to nearest-neighbor gates.\n...\nFigure 3(b) shows the ratio of the number of 2-qubit gates that would have been required for a Trotter simulation as compared to a QHiFFS simulation for the same average simulation fidelity.\nThis varied from 45-fold (at short times) to 53-fold (at long times) and thus the Trotter simulation was not feasible to be implemented on quantum hardware.\n...\nThe hardware error is less than 0.021 for all data points.\nOur implementation successfully captures the noticeable unstable ferromagnetic tendency induced out of the antiphase at the \\(\\kappa =\\frac{1}{2}\\) quantum critical fan.\n…\nThe expected values of the correlation function are largely within our shot-noise based error bars, implying that our simulation (despite the considerable circuit depth and qubit number) is predominantly shot-noise limited.\nIndeed, the simulation is also limited by the size of the available hardware—we chose to study a 20 qubit simulation not because this was the largest QHiFFS could handle, but rather because the Quantinuum H1-1 system was the largest all-to-all device to which we had access.\n...\nThe dominant contribution in the high-frequency regime comes from discretization, while the errors from non-commutativity are comparably small.\n...\nIn parallel, the algorithmic errors of QHiFFS scale linearly in system size, *n*, for local models, and at worst quadratically.\n...\nTo benchmark QHiFFS we performed a 20-qubit simulation of the periodically driven two-dimensional BNNNI model on Quantinuum’s 20-qubit H1-1 trapped ion platform.\nAs shown in Fig. 3, the correlation function values computed on the quantum computer capture the true predicted values up to the precision allowed by shot noise (2*σ* = 1.49 ⋅ 10^−2^).\nIn contrast, standard Trotterization (specifically a \\(2^{\\rm{nd}}\\) order Trotterization with the same algorithmic error as a \\(1^{\\rm{st}}\\) order QHiFFS) would have required approximately 50 times as many two-qubit gates, making the method completely unfeasible on current hardware due to gate errors and decoherence.\n...\nIndeed, in the case of Quantinuum’s H1-1 trapped ion device, with native single qubit rotations and two-qubit gates \\(\\exp (-i\\frac{\\theta }{2}\\hat{Z}\\hat{Z})\\), the simulation was implemented exactly with a fixed circuit using the native gate set.\nThis meant that the QHiFFS circuit, for any simulation time, had the same depth as a single standard low-order Trotter-Suzuki step.\nThus, the final simulation time *t* affected the error from the high-frequency approximation, but n",
+                          "published": "2024-09-13",
+                          "updated": "2026-11-08",
+                          "coverage": "search-extracted text"
+                        },
+                        {
+                          "title": "Quantum many-body simulations on digital quantum computers: State-of-the-art and future challenges",
+                          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10923891/pdf/41467_2024_Article_46402.pdf",
+                          "text": "Another form of topological states that has recently been realized on trapped ion quantum computers77 and superconducting qubits78 are Floquet and quasiperiodically driven symmetry-protected topolo-gical phases.\nEspecially the quasiperiodically driven system might prove to provide stable edge states robust against coherent errors.\n…\nNV-centers in diamond84 and trapped ions85 seem to confirm the the-oretical predictions and are promising first steps to investigate such novel phases.\nHowever, detecting the true long-range nature of the spatiotemporal\norder\nis\nstill\nout-of-reach\nfor\nthese\nanalog\nexperiments86.\n...\n77.\nDumitrescu, P. T. et al. Dynamical topological phase realized in a trapped-ion quantum simulator.\nNature 607, 463–467 (2022).",
+                          "published": null,
+                          "updated": "2025-03-30",
+                          "coverage": "search-extracted text"
+                        },
+                        {
+                          "title": "Probing non-equilibrium topological order on a quantum processor - Nature",
+                          "url": "https://www.nature.com/articles/s41586-025-09456-3?error=cookies_not_supported&code=ce63ab3e-837f-4098-a7e4-649e95a39b42",
+                          "text": "# Probing non-equilibrium topological order on a quantum processor\n## Abstract\nHere we realize a Floquet topologically ordered state theoretically proposed in ref. ^6^, on an array of superconducting qubits.\n...\n## Chiral Majorana edge mode interferometry\nCompared with the theoretically expected value *r* = 1 for the amplitudes of the revivals, we observe decay due to errors and decoherence on the processor.\n...\n## Methods\n### Experimental procedures\nDominant errors come from CZ/C-PHASE entangling gates and final readout^52^ (Extended Data Fig. 2a).\n...\n#### Noisy simulation\nTogether with the results in Extended Data Fig. 2b–d, this agreement suggests the described error model with an additional coherent phase drift on the ancilla qubit (strongly mitigated by dynamical decoupling) reproduces our experimental observations.\n### Extended data and derivations\n#### e - m Transmutation\nFor small disorder (*Δ* ≲ 2.4), the order parameter shows oscillatory behaviour, indicative of the FTO phase, although the amplitude gradually decreases as *Δ* increases.\nAt higher disorder strengths, these oscillations become suppressed and eventually disappear.\nThe observed behaviour suggests a crossover or transition towards a localized phase at strong disorder.\nHowever, owing to limited experimental resources, we averaged only over 50 disorder realizations for each data point.\nAs a result, we cannot make definitive claims about the nature of the transition.\n### Matrix-product state simulations\nThe entanglement entropy saturates at *S* = 9 log(2), indicating that at least a bond dimension of *χ* = 512 is needed.\n...\nAt later times, the two loop expectation values become small and the MPS simulation becomes unreliable because of truncation errors, so the order parameter becomes unstable.\nThe smaller bond dimensions show deviations from the *χ* = 2,048 simulation, indicating that the simulation is not yet converged.\nThe *χ* = 1,024 simulations still show deviations from *χ* = 2,048 as early as four cycles in, indicating the need for a large bond dimension for the simulation.\nNote that the fact that the absolute value of the order parameter becomes larger than 1 at late times is not necessarily due to truncations in the MPS simulations but can be an artefact of the finite system.\nOnly in the thermodynamic limit do we expect the order parameter to perfectly oscillate between +1 and −1 away from the fine-tuned point.\n...\nThus, we anticipate that classical simulation of this setup will become intractable for any tensor-network-based approach for large systems and late times.\nEven for the system sizes accessible to us on the quantum processor, we cannot achieve convergence even with the largest bond dimension *χ* = 2,048 that we have simulated.\n...\n## References\n35. Dumitrescu, P. T. et al. Dynamical topological phase realized in a trapped-ion quantum simulator.\n*Nature* **607**, 463–467 (2022).\n36. Azses, D., Dalla Torre, E. G. & Sela, E. Observing Floquet topological order by symmetry resolution.\n...\n37. Wahl, T. B., Han, B. & Béri, B. Topologically ordered time crystals.",
+                          "published": "2025-09-10",
+                          "updated": "2026-11-07",
+                          "coverage": "search-extracted text"
+                        },
+                        {
+                          "title": "Robust simulations of many-body symmetry-protected ... - Nature",
+                          "url": "https://www.nature.com/articles/s41534-025-01122-w?error=cookies_not_supported&code=e0a57e27-d98d-4d9c-84da-bb2ff5ecb411",
+                          "text": "# Robust simulations of many-body symmetry-protected topological phase transitions on a quantum processor\n## Results\n### Measurement of symmetry-protected topological entanglement\nDespite these limitations, it is apparent that a distinct entanglement gap has been measured, therefore strongly confirming the symmetry-protected topology of the ground state at *g*/*J* = 2.5 (see “Methods”).\n...\n…\n## References\n60. Dumitrescu, P. T. et al. Dynamical topological phase realized in a trapped-ion quantum simulator.\n*Nature* **607**, 463–467 (2022).\n61. King, A. D. et al. Observation of topological phenomena in a programmable lattice of 1800 qubits.",
+                          "published": "2025-11-18",
+                          "updated": "2026-11-09",
+                          "coverage": "search-extracted text"
+                        }
+                      ],
+                      "interpretation": "Discovery results, not a completed scientific review. Verify the original paper and its metadata before treating a result as evidence. Do not describe extracted snippets as a full paper reading."
+                    }
+                  },
+                  {
+                    "tool": "discover_scientific_sources",
+                    "parameters": {
+                      "query": "arXiv 2107.09676 Dumitrescu Potter \"dynamical topological phase\" trapped-ion edge qubit decay incoherent noise memory error depolarizing"
+                    },
+                    "result": {
+                      "status": "retrieved",
+                      "query": "arXiv 2107.09676 Dumitrescu Potter \"dynamical topological phase\" trapped-ion edge qubit decay incoherent noise memory error depolarizing",
+                      "reason": "PubMed exact-title search returned zero; Europe PMC returned the original record and abstract only. The abstract describes ten trapped-ion qubits and protected edges but lacks detailed experimental limitations. User explicitly requests specialist connection test and verification of original DOI plus one limitation from original text.",
+                      "provider": "Perplexity Search",
+                      "requestId": "c4be8f61-7ce9-4fae-aa28-6dc9452f6365",
+                      "receipt": {
+                        "retrievedAt": "2026-11-09T19:59:32.700Z",
+                        "reservation": 6,
+                        "reservedUSD": 0.005
+                      },
+                      "results": [
+                        {
+                          "title": "Dynamical topological phase realized in a trapped-ion quantum simulator",
+                          "url": "https://www.nature.com/articles/s41586-022-04853-4",
+                          "text": "Abstract\n...\nIn this work, we demonstrate an emergent dynamical symmetry-protected topological phase 6, in a quasiperiodically driven array of ten 171 Yb + hyperfine qubits in Quantinuum's System Model H1 trapped-ion quantum processor 7.\nThis phase shows edge qubits that are dynamically protected from control errors, cross-talk and stray fields.\nCrucially, this edge protection relies purely on emergent dynamical symmetries that are absolutely stable to generic coherent perturbations.\nThis property is special to quasiperiodically driven systems: as we demonstrate, the analogous edge states of a periodically driven qubit array are vulnerable to symmetry-breaking errors and quickly decohere.\nOur work paves the way for implementation of more complex dynamical topological orders 8, 9",
+                          "published": "2022-07-20",
+                          "updated": "2026-02-28",
+                          "coverage": "search-extracted text"
+                        },
+                        {
+                          "title": "Digital quantum simulation of Floquet symmetry-protected topological phases - Nature",
+                          "url": "https://link.springer.com/article/10.1038/s41586-022-04854-3",
+                          "text": "# Digital quantum simulation of Floquet symmetry-protected topological phases\n## Abstract\nHere we report the observation of a distinct type of non-equilibrium state of matter, Floquet symmetry-protected topological phases, which are implemented through digital quantum simulation with an array of programmable superconducting qubits.\nWe observe robust long-lived temporal correlations and subharmonic temporal response for the edge spins over up to 40 driving cycles using a circuit of depth exceeding 240 and acting on 26 qubits.\nWe demonstrate that the subharmonic response is independent of the initial state, and experimentally map out a phase boundary between the Floquet symmetry-protected topological and thermal phases.\n...\n## Symmetry breaking at boundaries\nFrom Fig. 2a, it is evident that in the FSPT phase, the disorder-averaged magnetizations at the two ends of the chain, namely \\(\\overline{\\langle {\\sigma }_{1}^{z}(t)\\rangle }\\) and \\(\\overline{\\langle {\\sigma }_{L}^{z}(t)\\rangle }\\), oscillate with a 2*T* periodicity, for up to 40 driving cycles.\nIn stark contrast, the local magnetizations in the bulk of the chain (\\(\\overline{\\langle {\\sigma }_{j}^{z}(t)\\rangle }\\) with \\(2\\le j\\le L-1\\)) decay quickly to zero and do not show period-doubled oscillations.\n...\nFor comparison, we also experimentally measure the dynamics of the magnetizations in the thermal phase.\nOur results are shown in Fig. 2c,e, where we see that the magnetizations for both the edge and bulk spins decay quickly to zero and no subharmonic response appears at all.\n...\nOur experimental measurements of autocorrelators for up to 40 driving cycles are plotted in Fig. 2f, again showing the breaking of time-translational symmetry at the boundaries but not in the bulk.\nWe mention that, in the FSPT phase, the local magnetizations for the edge spins exhibit a gradually decaying envelope, which could be attributed to either external circuit errors (that is, experimental imperfections such as decoherence, pulse distortions and cross-talk effects) or slow internal thermalization (namely, an intrinsic tendency towards thermalization in the model).\n…\nThe square root of the output of *U* ~echo~ (black solid lines shown in Fig. 2f) fits well with the decaying envelope of the results obtained by evolution under *U* ~F~.\nThis indicates that the decay of the envelope is due to circuit errors rather than thermalization, which corroborates that the system is indeed in the localized phase.\n...\n## Phase transition\nThe small deviation between the numerical prediction and experimental result is mainly attributed to finite-size effects, experimental noise and the limited number of disorder instances implemented in the experiment.\n...\n## Conclusions\nWe measured the persistent oscillations of edge spins with a subharmonic frequency and experimentally demonstrated that the FSPT phases are robust to symmetry-respecting perturbations in the drive and imperfections in the experiment.\n...\n## Methods\n### Logarithmic entanglement growth\nHowever, because of the small system size and experimental imperfections (such as decoherence, pulse distortions and cross-talk effects), we are not able to observe the logarithmic entanglement growth (Supplementary Information VI).\n...\n### Further experiments on non-equilibrium SPT phases\nThis enlarged dynamical symmetry protects the edge modes of this phase, one at quasi-energy 0 and the other at quasi-energy π.\nThis leads to unusual dynamics of the edge spins.\nIf one applies this evolution to a product state in the *x* basis, the edge spins will return to their initial states only at even periods.\nIn our experiments, we measure the random disorder-averaged local magnetization \\(\\overline{\\langle {\\sigma }_{k}^{x}\\rangle }\\) during the evolution (Extended Data Fig. 1b).\nPersistent subharmonic oscillations are observed for the edge spins, whereas the averaged magnetizaiton in the bulk is synchronized with the driving frequency and shows no breaking of the discrete time-translational symmetry.\n...\nOur experimental results are summarized in Extended Data Fig. 2c, in which persistent quasiperiodic oscillations for edge spins are indeed observed.\n...\nWe note that an experimental implementation of the EDSPT model with ten trapped-ion qubits has recently also been reported^45^.\n...\n## References\nLett.* **114**, 251603 (2015).\n45. Dumitrescu, P. T. et al. Realizing a dynamical topological phase in a trapped-ion quantum simulator.\nPreprint at https://arxiv.org/abs/2107.09676 (2021).\n...\n## Associated content\n- ### Dynamical topological phase realized in a trapped-ion quantum simulator\n- Philipp T. Dumitrescu\n- Justin G. Bohnet\n- Andrew C. Potter\nArticle Nature 20 July 2022",
+                          "published": "2022-07-20",
+                          "updated": "2026-11-06",
+                          "coverage": "search-extracted text"
+                        },
+                        {
+                          "title": "Biology and medicine in the landscape of quantum advantages",
+                          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9709576/",
+                          "text": "However, a diverse and growing body of evidence—from recent work on novel, more efficient error correcting codes [114,116], early demonstrations of logical qubits [431–433] and the realization of dynamical topological phases [434,435], to the identification of significant operational quantum advantages in the energy required to perform computations [427,436]—gives much reason for optimism.\n...\nNotably, recent work has shown that error mitigation must be implemented with care as it can decrease the effectiveness of circuit parameter learning in some cases [97].\n...\nThe required fault-tolerance threshold depends on a variety of factors, including the hardware error characteristics, connectivity map, and error correction code being used.\n...\n  Scheme for reducing decoherence in quantum computer memory.\n...\n- 435.Dumitrescu PT, Bohnet JG, Gaebler JP, Hankin A, Hayes D, Kumar A, Neyenhuis B, Vasseur R, Potter AC.\n2022.\n  Dynamical topological phase realized in a trapped-ion quantum simulator.\nNature\n607, 463-467.\n( 10.1038/s41586-022-04853-4) [DOI] [PubMed] [Google Scholar]\n…\n- 438.Pan F, Chen K, Zhang P.\n...\n- 439.Hardy L.",
+                          "published": "2022-11-30",
+                          "updated": "2026-10-17",
+                          "coverage": "search-extracted text"
+                        },
+                        {
+                          "title": "Quantum many-body simulations on digital quantum computers: State-of-the-art and future challenges - Nature Communications",
+                          "url": "https://www.nature.com/articles/s41467-024-46402-9?error=cookies_not_supported&code=a6ba308a-78f0-4994-9556-44facfcd5013",
+                          "text": "# Quantum many-body simulations on digital quantum computers: State-of-the-art and future challenges\n## Introduction\n### Digital quantum simulation on noisy quantum computers\nFor DQS phase estimation-based methods as well as Trotterized time evolution are more precise, if a fully error corrected quantum computer is available, but variational quantum algorithms can have significant advantages in the NISQ era.\n...\n## Non-variational results\n### Realizing topological systems\nBy designing topologically protected quantum circuits it is possible to simulate topological systems and identify edge states, for example for one dimensional topological Floquet phases, as recently demonstrated on IBM and Rigetti quantum processors^73^.\n...\nAnother form of topological states that has recently been realized on trapped ion quantum computers^77^ and superconducting qubits^78^ are Floquet and quasiperiodically driven symmetry-protected topological phases.\nEspecially the quasiperiodically driven system might prove to provide stable edge states robust against coherent errors.\n...\n## References\n41. Yang, C. H. et al. Silicon qubit fidelities approaching incoherent noise limits via pulse engineering.\n...\nLett.* **121**, 030502 (2018).\n...\n77. Dumitrescu, P. T. et al. Dynamical topological phase realized in a trapped-ion quantum simulator.\n*Nature* **607**, 463–467 (2022).\n...\nC. Noisy intermediate scale quantum simulation of time-dependent Hamiltonians, arXiv:2101.07677, https://doi.org/10.48550/arXiv.2101.07677 (2021).",
+                          "published": "2024-03-08",
+                          "updated": "2026-11-07",
+                          "coverage": "search-extracted text"
+                        },
+                        {
+                          "title": "Continuous symmetry breaking in a trapped-ion spin chain - Nature",
+                          "url": "https://link.springer.com/article/10.1038/s41586-023-06656-7",
+                          "text": "# Continuous symmetry breaking in a trapped-ion spin chain\n## Abstract\nHere we use a one-dimensional trapped-ion quantum simulator to prepare states with long-range spin order that extends over the system size of up to 23 spins and is characteristic of the continuous symmetry-breaking phase of matter^2,3^.\nOur preparation relies on simultaneous control over an array of tightly focused individual addressing laser beams, generating long-range spin–spin interactions.\nWe also observe a disordered phase with frustrated correlations.\n...\n## References\nB* **106**, 014106 (2022).\n15. Potirniche, I.-D., Potter, A. C., Schleier-Smith, M., Vishwanath, A. & Yao, N. Y. Floquet symmetry-protected topological phases in cold-atom systems.\n*Phys.\nRev.\nLett.* **119**, 123601 (2017).\n...\n*Nature* **551**, 601 (2017).\n...\nArticle ADS CAS PubMed PubMed Central Google Scholar\n23. Dumitrescu, P. T. et al. Dynamical topological phase realized in a trapped-ion quantum simulator.\n*Nature* **607**, 463 (2022).",
+                          "published": "2023-11-15",
+                          "updated": "2026-11-07",
+                          "coverage": "search-extracted text"
+                        }
+                      ],
+                      "interpretation": "Discovery results, not a completed scientific review. Verify the original paper and its metadata before treating a result as evidence. Do not describe extracted snippets as a full paper reading."
+                    }
+                  }
+                ],
+                "interpretation": "An AI-generated literature brief for Astra and Gemini to assess against its original sources. This is not independent experimental confirmation. Uncertain calls retain their budget reservation."
+              }
+            },
+            "retrievalLabel": "S4"
+          }
+        ],
+        "model": "gpt-6-astra",
+        "version": "research-20261026-daytab-v1",
+        "knowledgeVersions": {
+          "approvedYouth": {
+            "sourceBatch": "batch-f164c8325ea5f9c9.json",
+            "sourceSHA256": "f164c8325ea5f9c989c29524518b598913508117712826dc408f592b7f99a723",
+            "approvedAt": "2026-11-02",
+            "publications": 105
+          },
+          "biofeedback": {
+            "version": "lab-biofeedback-20261105-ratings",
+            "publications": 63
+          },
+          "publicGenes": "public-gene-data-20261109-v1",
+          "literature": "literature-20261110-v2"
+        },
+        "usage": {
+          "totalTokens": 21591,
+          "qaSpend": {
+            "limitUSD": 0.7552865,
+            "chargedUpperUSD": 0.283875,
+            "calls": [
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 36816,
+                "outputTokenUpper": 1400,
+                "boundMethod": "UTF-8 bytes plus framing",
+                "reservedUSD": 0.5302,
+                "chargedUpperUSD": 0.067225,
+                "usage": {
+                  "input_tokens": 5242,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 0,
+                    "cached_tokens": 5239
+                  },
+                  "output_tokens": 34,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 0
+                  },
+                  "total_tokens": 5276
+                }
+              },
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 18132,
+                "outputTokenUpper": 1400,
+                "boundMethod": "Provider-counted exact prefix plus new UTF-8 bytes and framing",
+                "reservedUSD": 0.29664999999999997,
+                "chargedUpperUSD": 0.08935,
+                "usage": {
+                  "input_tokens": 6444,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 0,
+                    "cached_tokens": 6441
+                  },
+                  "output_tokens": 176,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 0
+                  },
+                  "total_tokens": 6620
+                }
+              },
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 28558,
+                "outputTokenUpper": 1400,
+                "boundMethod": "Provider-counted exact prefix plus new UTF-8 bytes and framing",
+                "reservedUSD": 0.426975,
+                "chargedUpperUSD": 0.1273,
+                "usage": {
+                  "input_tokens": 9532,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 3088,
+                    "cached_tokens": 6369
+                  },
+                  "output_tokens": 163,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 0
+                  },
+                  "total_tokens": 9695
+                }
+              }
+            ],
+            "tools": [
+              {
+                "tool": "search_literature",
+                "status": "retrieved"
+              },
+              {
+                "tool": "review_literature_gap",
+                "status": "completed",
+                "provider": "Perplexity Agent API",
+                "model": "anthropic/claude-opus-5-5",
+                "receipt": {
+                  "model": "anthropic/claude-opus-5-5",
+                  "reasoningEffort": "high",
+                  "reservation": 2,
+                  "reservedUSD": 0.75,
+                  "requestUpperUSD": 0.7054100000000001,
+                  "calls": [
+                    {
+                      "inputTokenUpper": 15625,
+                      "outputTokenUpper": 4096,
+                      "reservedUSD": 0.160045,
+                      "httpStatus": 200,
+                      "requestId": "resp_209e19c5-5765-401b-9124-e6a6eb800df5",
+                      "model": "anthropic/claude-opus-5-5",
+                      "usage": {
+                        "cost": {
+                          "cache_creation_cost": 0.01925,
+                          "currency": "USD",
+                          "input_cost": 0.00002,
+                          "output_cost": 0.00658,
+                          "total_cost": 0.02585
+                        },
+                        "input_tokens": 3855,
+                        "input_tokens_details": {
+                          "cache_creation_input_tokens": 3851,
+                          "cache_read_input_tokens": 0,
+                          "cached_tokens": 0
+                        },
+                        "output_tokens": 329,
+                        "output_tokens_details": {
+                          "reasoning_tokens": 112
+                        },
+                        "total_tokens": 4184
+                      },
+                      "providerStatus": "completed",
+                      "providerError": null,
+                      "incompleteDetails": null,
+                      "outputTypes": [
+                        "function_call",
+                        "function_call"
+                      ]
+                    },
+                    {
+                      "inputTokenUpper": 32366,
+                      "outputTokenUpper": 4096,
+                      "reservedUSD": 0.24375000000000002,
+                      "httpStatus": 200,
+                      "requestId": "resp_abb37924-dc96-4cc0-9ad6-09358f2eec4d",
+                      "model": "anthropic/claude-opus-5-5",
+                      "usage": {
+                        "cost": {
+                          "cache_creation_cost": 0.03096,
+                          "cache_read_cost": 0.00077,
+                          "currency": "USD",
+                          "input_cost": 0.00001,
+                          "output_cost": 0.00548,
+                          "total_cost": 0.03722
+                        },
+                        "input_tokens": 10044,
+                        "input_tokens_details": {
+                          "cache_creation_input_tokens": 6191,
+                          "cache_read_input_tokens": 3851,
+                          "cached_tokens": 3851
+                        },
+                        "output_tokens": 274,
+                        "output_tokens_details": {
+                          "reasoning_tokens": 163
+                        },
+                        "total_tokens": 10318
+                      },
+                      "providerStatus": "completed",
+                      "providerError": null,
+                      "incompleteDetails": null,
+                      "outputTypes": [
+                        "function_call"
+                      ]
+                    },
+                    {
+                      "inputTokenUpper": 43939,
+                      "outputTokenUpper": 4096,
+                      "reservedUSD": 0.301615,
+                      "httpStatus": 200,
+                      "requestId": "resp_e6581a22-2955-4ff7-a3c7-014a0e8334c6",
+                      "model": "anthropic/claude-opus-5-5",
+                      "usage": {
+                        "cost": {
+                          "cache_creation_cost": 0.07003,
+                          "currency": "USD",
+                          "input_cost": 0.00001,
+                          "output_cost": 0.04614,
+                          "total_cost": 0.11618
+                        },
+                        "input_tokens": 14007,
+                        "input_tokens_details": {
+                          "cache_creation_input_tokens": 14005,
+                          "cache_read_input_tokens": 0,
+                          "cached_tokens": 0
+                        },
+                        "output_tokens": 2307,
+                        "output_tokens_details": {
+                          "reasoning_tokens": 587
+                        },
+                        "total_tokens": 16314
+                      },
+                      "providerStatus": "completed",
+                      "providerError": null,
+                      "incompleteDetails": null,
+                      "outputTypes": [
+                        "message"
+                      ]
+                    }
+                  ],
+                  "toolExecutions": 3,
+                  "retrievedAt": "2026-11-09T19:59:58.103Z",
+                  "chargedUpperUSD": 0.197735,
+                  "settlement": {
+                    "settled": true,
+                    "chargedUSD": 0.197735,
+                    "totalReservedUSD": 0.39609000000000005
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "retrieval": {
+          "required": true,
+          "sourceCount": 12,
+          "contextMessages": 0,
+          "previousReferences": 0
+        }
+      }
+    }
+  ],
+  "answer": "UNIVERSAL ONE\n**The specialist completed, but verification was partial.**\n\n- **Initial search:** PubMed’s exact-title search returned no hits; Europe PMC returned the original 2022 Nature paper and abstract, PMID 35859195. [S1]\n- **DOI verified:** **10.1038/s41586-022-04853-4**, matching the publisher page retrieved by the Perplexity Opus specialist. [S2]\n- **Additional experimental limitation:** Not verified. The specialist accessed only the abstract and search snippets—not the original Methods, full text, or author manuscript. It therefore supplied no substantiated limitation beyond those results, rather than borrowing one from another experiment.\n\n**Connection test: successful specialist completion; evidence task incomplete.** No study or hardware job was run.\n2 sources",
+  "specialistReceipt": {
+    "model": "anthropic/claude-opus-5-5",
+    "reasoningEffort": "high",
+    "reservation": 2,
+    "reservedUSD": 0.75,
+    "requestUpperUSD": 0.7054100000000001,
+    "calls": [
+      {
+        "inputTokenUpper": 15625,
+        "outputTokenUpper": 4096,
+        "reservedUSD": 0.160045,
+        "httpStatus": 200,
+        "requestId": "resp_209e19c5-5765-401b-9124-e6a6eb800df5",
+        "model": "anthropic/claude-opus-5-5",
+        "usage": {
+          "cost": {
+            "cache_creation_cost": 0.01925,
+            "currency": "USD",
+            "input_cost": 0.00002,
+            "output_cost": 0.00658,
+            "total_cost": 0.02585
+          },
+          "input_tokens": 3855,
+          "input_tokens_details": {
+            "cache_creation_input_tokens": 3851,
+            "cache_read_input_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 329,
+          "output_tokens_details": {
+            "reasoning_tokens": 112
+          },
+          "total_tokens": 4184
+        },
+        "providerStatus": "completed",
+        "providerError": null,
+        "incompleteDetails": null,
+        "outputTypes": [
+          "function_call",
+          "function_call"
+        ]
+      },
+      {
+        "inputTokenUpper": 32366,
+        "outputTokenUpper": 4096,
+        "reservedUSD": 0.24375000000000002,
+        "httpStatus": 200,
+        "requestId": "resp_abb37924-dc96-4cc0-9ad6-09358f2eec4d",
+        "model": "anthropic/claude-opus-5-5",
+        "usage": {
+          "cost": {
+            "cache_creation_cost": 0.03096,
+            "cache_read_cost": 0.00077,
+            "currency": "USD",
+            "input_cost": 0.00001,
+            "output_cost": 0.00548,
+            "total_cost": 0.03722
+          },
+          "input_tokens": 10044,
+          "input_tokens_details": {
+            "cache_creation_input_tokens": 6191,
+            "cache_read_input_tokens": 3851,
+            "cached_tokens": 3851
+          },
+          "output_tokens": 274,
+          "output_tokens_details": {
+            "reasoning_tokens": 163
+          },
+          "total_tokens": 10318
+        },
+        "providerStatus": "completed",
+        "providerError": null,
+        "incompleteDetails": null,
+        "outputTypes": [
+          "function_call"
+        ]
+      },
+      {
+        "inputTokenUpper": 43939,
+        "outputTokenUpper": 4096,
+        "reservedUSD": 0.301615,
+        "httpStatus": 200,
+        "requestId": "resp_e6581a22-2955-4ff7-a3c7-014a0e8334c6",
+        "model": "anthropic/claude-opus-5-5",
+        "usage": {
+          "cost": {
+            "cache_creation_cost": 0.07003,
+            "currency": "USD",
+            "input_cost": 0.00001,
+            "output_cost": 0.04614,
+            "total_cost": 0.11618
+          },
+          "input_tokens": 14007,
+          "input_tokens_details": {
+            "cache_creation_input_tokens": 14005,
+            "cache_read_input_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 2307,
+          "output_tokens_details": {
+            "reasoning_tokens": 587
+          },
+          "total_tokens": 16314
+        },
+        "providerStatus": "completed",
+        "providerError": null,
+        "incompleteDetails": null,
+        "outputTypes": [
+          "message"
+        ]
+      }
+    ],
+    "toolExecutions": 3,
+    "retrievedAt": "2026-11-09T19:59:58.103Z",
+    "chargedUpperUSD": 0.197735,
+    "settlement": {
+      "settled": true,
+      "chargedUSD": 0.197735,
+      "totalReservedUSD": 0.39609000000000005
+    }
+  },
+  "sourceRecords": [
+    {
+      "label": "S1",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35859195/",
+      "schema": "universal-informatics/literature-record/v1",
+      "tool": "search_literature"
+    },
+    {
+      "label": "S2",
+      "url": "https://www.nature.com/articles/s41586-022-04853-4",
+      "schema": "universal-informatics/literature-record/v1",
+      "tool": "review_literature_gap"
+    }
+  ],
+  "passed": true
+}

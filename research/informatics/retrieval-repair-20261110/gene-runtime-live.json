@@ -1,0 +1,40 @@
+{
+  "runtime": "Cloudflare workerd via Miniflare",
+  "livePublicSources": true,
+  "paidRequests": 0,
+  "checks": [
+    {
+      "route": "/gene",
+      "passed": true,
+      "status": "resolved"
+    },
+    {
+      "route": "/family",
+      "passed": true,
+      "status": "family",
+      "genes": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "route": "/sequence",
+      "passed": true,
+      "status": "retrieved",
+      "sequenceLength": 2500
+    },
+    {
+      "route": "/motifs",
+      "passed": true,
+      "status": "retrieved",
+      "profiles": 3
+    }
+  ],
+  "passed": false,
+  "error": "Unexpected token 'E', \"Error: The\"... is not valid JSON"
+}

@@ -1,0 +1,15 @@
+{
+  "bindingSites": {
+    "status": "source_unavailable",
+    "provider": "ENCODE public search API",
+    "httpStatus": 403,
+    "tests": "Direct workerd check and one unchanged diagnostic after cooldown. NCBI returned 200; ENCODE returned 403. No access-control bypass attempted.",
+    "actualStagingBindingChat": "QA allowance stopped before the research-model request; not counted as a completed binding-site chat check.",
+    "availableAlternatives": "Gene annotation, reference DNA, JASPAR motif models and PubMed/Europe PMC literature passed. Motif predictions remain distinct from measured binding sites."
+  },
+  "opusBiology": {
+    "status": "not_verified",
+    "priorTest": "GRIN2B request returned a provider refusal; no rephrasing or retry to bypass it.",
+    "confirmed": "Actual Astra-to-Opus-to-Astra quantum-physics literature handoff completed with source citations."
+  }
+}

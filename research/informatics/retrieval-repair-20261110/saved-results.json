@@ -1,0 +1,71 @@
+{
+  "newStudies": 0,
+  "newEmailSent": false,
+  "paidRequests": 0,
+  "processAudioMuted": true,
+  "studyId": "c49a7769-9949-4a88-b819-38c3a7db56cd",
+  "savedFindingsVisible": true,
+  "JSON": {
+    "bytes": 192887,
+    "sha256": "70d2c443e3ba42c99dfda7c042b27c915569e087275297bb571fec9df98e4373"
+  },
+  "CSV": {
+    "bytes": 427935,
+    "sha256": "fe2755d5eb3d3be3c97b01889c6a9c6926c4062735f32bf4f128a840d141eccf"
+  },
+  "reasoningAndReviews": {
+    "version": "high-max-64k-20261109",
+    "astra": {
+      "model": "gpt-6-astra",
+      "effort": "max",
+      "plan_output_tokens": 16384,
+      "report_output_tokens": 16384,
+      "timeout_seconds": 600,
+      "study_token_limit": 64000,
+      "service_tier": "default"
+    },
+    "gemini": {
+      "model": "gemini-4-argon",
+      "thinking_level": "HIGH",
+      "max_output_tokens": 8192,
+      "timeout_seconds": 300
+    }
+  },
+  "equivalentFields": 4642,
+  "existingEmailTimestamp": "2026-11-09T06:34:38.404Z",
+  "linkChecks": [
+    {
+      "width": 390,
+      "freshBrowser": true,
+      "authenticatedStatus": 200,
+      "opensFindingsAutomatically": true,
+      "bearerRemovedFromURL": true,
+      "elapsedMs": 1237
+    },
+    {
+      "width": 1440,
+      "freshBrowser": true,
+      "authenticatedStatus": 200,
+      "opensFindingsAutomatically": true,
+      "bearerRemovedFromURL": true,
+      "elapsedMs": 1274
+    },
+    {
+      "width": 320,
+      "freshBrowser": true,
+      "authenticatedStatus": 200,
+      "opensFindingsAutomatically": true,
+      "bearerRemovedFromURL": true,
+      "elapsedMs": 1195
+    }
+  ],
+  "emailedLink": {
+    "freshBrowser": true,
+    "authenticatedStatus": 200,
+    "opensFindingsAutomatically": true,
+    "bearerRemovedFromURL": true
+  },
+  "anonymousPrivateReadStatus": 401,
+  "invalidResultTokenStatus": 403,
+  "passed": true
+}

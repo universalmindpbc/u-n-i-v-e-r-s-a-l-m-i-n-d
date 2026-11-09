@@ -81,6 +81,36 @@
       "kind": "/research",
       "chargedUpperUSD": 0.15647499999999998,
       "status": "reconciled"
+    },
+    {
+      "id": "de084cb5-805a-42ed-8a1f-429f295beca1",
+      "kind": "/quantum/command",
+      "chargedUpperUSD": 0.01100000000000001,
+      "status": "reconciled"
+    },
+    {
+      "id": "48302f70-603f-4737-ba09-2f53cad6a509",
+      "kind": "/research",
+      "chargedUpperUSD": 0.283875,
+      "status": "reconciled"
+    },
+    {
+      "id": "d785d5a1-c986-4e02-aa23-49d817e18b0f",
+      "kind": "/quantum/command",
+      "chargedUpperUSD": 0.010950000000000015,
+      "status": "reconciled"
+    },
+    {
+      "id": "722b865d-abda-4969-b132-a79e107f0ec3",
+      "kind": "/research",
+      "chargedUpperUSD": 0,
+      "status": "reconciled"
+    },
+    {
+      "id": "00d9985c-a883-4cac-af2f-f6b903dd9a5c",
+      "kind": "/quantum/command for approved CPU study",
+      "chargedUpperUSD": 0.014262500000000011,
+      "status": "reconciled"
     }
   ],
   "approval": "Ben approved the extra US$2 staging text, dictation and voice verification on 10 November 2026."

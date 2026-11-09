@@ -1,0 +1,40 @@
+{
+  "newHardwareJobs": 0,
+  "newPaidGPUJobs": 0,
+  "processAudioMuted": true,
+  "oneStudyOnly": true,
+  "command": {
+    "status": 200,
+    "qaSpend": {
+      "limitUSD": 0.4,
+      "chargedUpperUSD": 0.014262500000000011,
+      "calls": [
+        {
+          "path": "/responses",
+          "model": "gpt-6-astra",
+          "inputTokenUpper": 12684,
+          "outputTokenUpper": 1400,
+          "boundMethod": "UTF-8 bytes plus framing",
+          "reservedUSD": 0.22855,
+          "chargedUpperUSD": 0.0142625,
+          "usage": {
+            "input_tokens": 797,
+            "input_tokens_details": {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0
+            },
+            "output_tokens": 86,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 883
+          }
+        }
+      ]
+    }
+  },
+  "studyId": "7c15c156-c1cb-4332-8f08-822156fb366b",
+  "status": "needs_attention",
+  "passed": false,
+  "error": "The calculation paused at a service dependency. Saved progress is retained; the owner can resume after resolving it.\n+ actual - expected\n\n+ 'needs_attention'\n- 'complete'\n"
+}

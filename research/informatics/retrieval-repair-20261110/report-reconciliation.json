@@ -1,0 +1,23 @@
+{
+  "studyId": "7c15c156-c1cb-4332-8f08-822156fb366b",
+  "stage": "result",
+  "observedError": "Astra report incomplete; preserve the request for reconciliation.",
+  "request_sha256": "9326a422d428fdfbaa3c76e8b393a6cf89da23f709d1c73eade77ee1e6ea00dc",
+  "exactInputTokens": 4277,
+  "outputTokenCeiling": 16384,
+  "paddingTokens": 1024,
+  "originalReservation": 34509,
+  "reconciledUpperTokens": 21685,
+  "routingTokens": 1553,
+  "planTokens": 15185,
+  "remainingStudyTokens": 25577,
+  "providerCountRequestId": "req_2b9d7b839163443b8a987a5264ecba3e",
+  "method": "Reconstructed the exact saved request from its checkpoint and deployed source. Verified the original request fingerprint before using the provider input-token endpoint. Retain the full output ceiling plus 1024 input padding; this is an upper bound, not actual usage.",
+  "source": "https://developers.openai.com/api/docs/guides/token-counting",
+  "newModelGenerationCalls": 0,
+  "applied": true,
+  "originalArchiveRetained": true,
+  "uncertainCallRetained": true,
+  "previousArchiveSHA256": "5cc2ad13bd110172d73e713960053870ec19f15438acd756216a9f8ddc0cca57",
+  "updatedArchiveSHA256": "b8561738b39d387afae84e0d31325fc94884a1805853c1e5f7dcb2bffa1406b2"
+}
