@@ -1,0 +1,4 @@
+{"passed":true,"check":false,"models":6,"figures":3,"outputs":["index.html","music-atlas/music-atlas.json","music-atlas/music-atlas.md","music-atlas/music-atlas.csv","music-atlas/reading-links.css","read/music/index.html"],"jsonBytes":34943}
+{"quantum_guide_bytes": 335298, "representations": 8, "qualification_chart_rows": 16, "wiki_pages": 3, "topic_entries": 8}
+{"narrative_guides": 6, "paragraphs": {"vision": 37, "computer-vision": 5, "language": 10, "transcription": 119, "geometry": 82, "molecular": 47}, "geometry_records": 1001}
+{"publications":1385,"atlas":1001,"experiments":2,"pages":2403}

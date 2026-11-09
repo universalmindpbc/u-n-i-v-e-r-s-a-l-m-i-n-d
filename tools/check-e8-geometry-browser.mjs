@@ -42,7 +42,7 @@ try{
   assert(await page.locator('#e8-research-hypothesis').isVisible());
   assert.match(await page.locator('#e8-root-polytope-note').innerText(),/60,480.*241,920/);
   assert.match(await page.locator('#e8-odom-note').innerText(),/Phi Ratio/);
-  if(width===1470)await notes.screenshot({path:path.join(out,`${candidate?'candidate':'staging'}-approved-notes.png`),animations:'disabled'});
+  if(width===1470){const hypothesis=page.locator('#e8-research-hypothesis');await hypothesis.scrollIntoViewIfNeeded();await hypothesis.screenshot({path:path.join(out,`${candidate?'candidate':'staging'}-hypothesis-text.png`),animations:'disabled'});}
   await notes.locator('summary').click();
   await page.evaluate(()=>window.scrollTo(0,0));
   assert(await page.locator('#e8-alpha').isChecked());assert(await page.locator('#e8-gamma').isChecked());assert(!(await page.locator('#e8-beta').isChecked()));
