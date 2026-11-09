@@ -1,6 +1,6 @@
 // Public literature retrieval. Search hits are leads; abstracts and available
 // article passages retain their source, coverage, retrieval time and checksum.
-export const literatureVersion='literature-20261109-v1';
+export const literatureVersion='literature-20261110-v2';
 const EPMC='https://www.ebi.ac.uk/europepmc/webservices/rest/';
 const PUBMED='https://eutils.ncbi.nlm.nih.gov/entrez/eutils/';
 const sha=async s=>[...new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s)))].map(x=>x.toString(16).padStart(2,'0')).join('');
@@ -9,7 +9,8 @@ export function plainXML(s){return String(s||'').replace(/<[^>]*>/g,' ').replace
 async function remote(url,{json=true,limit=2500000}={}){
  const u=new URL(url);if(u.protocol!=='https:'||!['www.ebi.ac.uk','eutils.ncbi.nlm.nih.gov'].includes(u.hostname))throw Error('Unsupported literature source.');
  const cache=globalThis.caches?.default,key=new Request(url);let hit;try{hit=await cache?.match(key);}catch{}if(hit)return hit.json();
- const r=await fetch(url,{redirect:'error',signal:AbortSignal.timeout(12000),headers:{Accept:json?'application/json':'application/xml'}});
+ const r=await fetch(url,{redirect:'manual',signal:AbortSignal.timeout(12000),headers:{Accept:json?'application/json':'application/xml'}});
+ // Workers rejects redirect='error' before dispatch; manual plus the status check rejects redirects without following them.
  if(!r.ok)throw Error('Literature source returned HTTP '+r.status+'.');
  const reader=r.body.getReader(),chunks=[];let length=0;try{for(;;){const {done,value}=await reader.read();if(done)break;length+=value.length;if(length>limit)throw Error('The article exceeds the interactive reading limit.');chunks.push(value);}}finally{await reader.cancel().catch(()=>{});}
  const bytes=new Uint8Array(length);let offset=0;for(const c of chunks){bytes.set(c,offset);offset+=c.length;}const text=new TextDecoder().decode(bytes);

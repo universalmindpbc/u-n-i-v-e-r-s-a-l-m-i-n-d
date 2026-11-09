@@ -722,11 +722,11 @@ path,type,value
 /agent_architecture/implementation_sources/33/scope,string,Implementation source
 /agent_architecture/implementation_sources/34,object,
 /agent_architecture/implementation_sources/34/repository_path,string,cloudflare/informatics-literature.js
-/agent_architecture/implementation_sources/34/sha256,string,1c083953ac69bd075487cc5fdd2f46a7677bf37a2d878dfe387408e9ebf643e8
+/agent_architecture/implementation_sources/34/sha256,string,df99efcae5bd8629dfb8ff642de9b3d308d4553f01b42ce4195d4c8b7a1aa5bf
 /agent_architecture/implementation_sources/34/scope,string,Implementation source
 /agent_architecture/implementation_sources/35,object,
 /agent_architecture/implementation_sources/35/repository_path,string,cloudflare/informatics-literature-fallback.js
-/agent_architecture/implementation_sources/35/sha256,string,b444a7af0be28050ea2b7139d119c3b3df7128027e38b7d986da331b29601d39
+/agent_architecture/implementation_sources/35/sha256,string,4196468c3b86a49243f673f0a92af4a27192eba20ed1cad12bd99e81c2ee9d96
 /agent_architecture/implementation_sources/35/scope,string,Implementation source
 /agent_architecture/implementation_sources/36,object,
 /agent_architecture/implementation_sources/36/repository_path,string,cloudflare/informatics-research-worker.js
@@ -738,7 +738,7 @@ path,type,value
 /agent_architecture/implementation_sources/37/scope,string,Implementation source
 /agent_architecture/implementation_sources/38,object,
 /agent_architecture/implementation_sources/38/repository_path,string,cloudflare/informatics-literature-agent.js
-/agent_architecture/implementation_sources/38/sha256,string,8c98ca9b4eab5544a235648d9a87c235333420af88b6bcf8d51ff73bb095fe44
+/agent_architecture/implementation_sources/38/sha256,string,b7808ae34ba84e048f4c603bd9a8ab47f04cdb08319b15e33e17ce01d836fbab
 /agent_architecture/implementation_sources/38/scope,string,Implementation source
 /agent_architecture/implementation_sources/39,object,
 /agent_architecture/implementation_sources/39/repository_path,string,Informatics/quantum/scientific-review.css

@@ -41,7 +41,7 @@ export async function perplexityResearch(env,args,context={}){
    if(inputUpper>100000||boundedUSD+upper>reservation.reservedUSD){status='allowance_reached';break;}
    boundedUSD+=upper;
    const row={inputTokenUpper:inputUpper,outputTokenUpper:MAX_OUTPUT,reservedUSD:upper};calls.push(row);
-   const response=await fetch('https://api.perplexity.ai/v1/agent',{method:'POST',headers:{Authorization:'Bearer '+env.PERPLEXITY_API_KEY,'Content-Type':'application/json'},body:JSON.stringify(body),redirect:'error',signal:AbortSignal.timeout(Math.max(1,deadline-Date.now()))});
+   const response=await fetch('https://api.perplexity.ai/v1/agent',{method:'POST',headers:{Authorization:'Bearer '+env.PERPLEXITY_API_KEY,'Content-Type':'application/json'},body:JSON.stringify(body),redirect:'manual',signal:AbortSignal.timeout(Math.max(1,deadline-Date.now()))});
    row.httpStatus=response.status;if(!response.ok){const error=await response.json().catch(()=>({}));row.error=String(error.error?.message||error.message||'Provider request failed').replaceAll(env.PERPLEXITY_API_KEY,'[redacted]').slice(0,500);status='source_unavailable';break;}
    const data=await response.json();row.requestId=data.id;row.model=data.model;row.usage=data.usage;row.providerStatus=data.status;row.providerError=data.error;row.incompleteDetails=data.incomplete_details;row.outputTypes=(data.output||[]).map(o=>o.type);
    if(data.model!==literatureAgentModel){status='model_mismatch';break;}

@@ -914,12 +914,12 @@
       },
       {
         "repository_path": "cloudflare/informatics-literature.js",
-        "sha256": "1c083953ac69bd075487cc5fdd2f46a7677bf37a2d878dfe387408e9ebf643e8",
+        "sha256": "df99efcae5bd8629dfb8ff642de9b3d308d4553f01b42ce4195d4c8b7a1aa5bf",
         "scope": "Implementation source"
       },
       {
         "repository_path": "cloudflare/informatics-literature-fallback.js",
-        "sha256": "b444a7af0be28050ea2b7139d119c3b3df7128027e38b7d986da331b29601d39",
+        "sha256": "4196468c3b86a49243f673f0a92af4a27192eba20ed1cad12bd99e81c2ee9d96",
         "scope": "Implementation source"
       },
       {
@@ -934,7 +934,7 @@
       },
       {
         "repository_path": "cloudflare/informatics-literature-agent.js",
-        "sha256": "8c98ca9b4eab5544a235648d9a87c235333420af88b6bcf8d51ff73bb095fe44",
+        "sha256": "b7808ae34ba84e048f4c603bd9a8ab47f04cdb08319b15e33e17ce01d836fbab",
         "scope": "Implementation source"
       },
       {
