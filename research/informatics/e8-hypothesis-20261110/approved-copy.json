@@ -1,0 +1,21 @@
+{
+  "geometry": "The eight-dimensional E8 root polytope has 60,480 equilateral triangular faces and 241,920 regular tetrahedral faces. These belong to the root polytope; describing the entire E8 Lie group as a tetrahedral mesh is inaccurate.",
+  "odom": "Each equilateral face has a circumcircle in its own plane. Applying Odom’s midpoint construction produces the Phi Ratio. This gives us a mathematical connection to the Atlas’s existing study of equilateral triangles. The circle and construction points are additional geometry.",
+  "hypothesis": "Geometric representations derived from E8, including its triangular and tetrahedral face structure, may improve the speed, accuracy and cost efficiency of hyperspectral computer vision within our OXTR research programme. We propose investigating whether these structures provide useful ways to organise and process spectral information. Their connection to Odom’s construction and the Phi Ratio supplies mathematical motivation; computational benefits remain to be established experimentally.",
+  "precedent": "QuIP# uses E8 lattice codebooks for efficient neural-network weight compression and inference. This demonstrates a practical use of E8 geometry in computation, while leaving our specific hyperspectral hypothesis untested. Its mechanism concerns quantization and symmetry, rather than triangular faces alone.",
+  "comparison": "Compare an established hyperspectral method against the same method with an E8 representation, plus a simpler triangular or tetrahedral representation. Measure accuracy on held-out data, runtime, memory and cost on matched hardware to assess whether E8 adds value and whether any improvement depends on the proposed geometry.",
+  "sources": [
+    {
+      "title": "Chang et al. · Gosset polytopes in integral octonions, section 3.2",
+      "url": "https://dspace.ewha.ac.kr/bitstream/2015.oak/230390/1/001.pdf#page=10"
+    },
+    {
+      "title": "Brian J. McCartin · Mysteries of the Equilateral Triangle, Property 74",
+      "url": "https://www.m-hikari.com/mccartin-2.pdf"
+    },
+    {
+      "title": "Tseng et al. · QuIP#, ICML 2024",
+      "url": "https://proceedings.mlr.press/v235/tseng24a.html"
+    }
+  ]
+}

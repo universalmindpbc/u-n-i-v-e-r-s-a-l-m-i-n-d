@@ -88,7 +88,7 @@ The M9 layers stay fixed on their native 24- and nine-position grids while E8 ad
 
 The grey octagon, hexagon and inner triangle form the separate symbolic guide. Their scale and alignment with E8 are drawing choices.
 
-Inspect the geometry
+Inspect the geometry and hypothesis
 
 An order-24 E8 symmetry partitions all 240 roots into ten cycles of 24. Its projection has nine distinct radii because two cycles share a radius. The Coxeter projection has eight cycles of 30 and eight distinct radii.
 
@@ -100,13 +100,37 @@ Shared cycle length alone does not identify the Fibonacci recurrence with E8. Or
 
 What structure does a fixed map from the M9/P24 cycle to E8 root orbits preserve beyond cycle length?
 
-Mathematical sources
+### Triangular faces and Odom’s construction
+
+The eight-dimensional E8 root polytope has 60,480 equilateral triangular faces and 241,920 regular tetrahedral faces. These belong to the root polytope; describing the entire E8 Lie group as a tetrahedral mesh is inaccurate.
+
+Each equilateral face has a circumcircle in its own plane. Applying Odom’s midpoint construction produces the Phi Ratio. This gives us a mathematical connection to the Atlas’s existing study of equilateral triangles. The circle and construction points are additional geometry.
+
+### Research hypothesis
+
+Geometric representations derived from E8, including its triangular and tetrahedral face structure, may improve the speed, accuracy and cost efficiency of hyperspectral computer vision within our OXTR research programme. We propose investigating whether these structures provide useful ways to organise and process spectral information. Their connection to Odom’s construction and the Phi Ratio supplies mathematical motivation; computational benefits remain to be established experimentally.
+
+### Computational precedent
+
+QuIP# uses E8 lattice codebooks for efficient neural-network weight compression and inference. This demonstrates a practical use of E8 geometry in computation, while leaving our specific hyperspectral hypothesis untested. Its mechanism concerns quantization and symmetry, rather than triangular faces alone.
+
+### Proposed comparison
+
+Compare an established hyperspectral method against the same method with an E8 representation, plus a simpler triangular or tetrahedral representation. Measure accuracy on held-out data, runtime, memory and cost on matched hardware to assess whether E8 adds value and whether any improvement depends on the proposed geometry.
+
+Geometry and computation sources
 
 - [American Institute of Mathematics · What is E8?](https://admin.aimath.org/E8/e8.html)
 
 - [Frenkel and Gross · Order-24 E8 symmetry, section 15](https://people.math.harvard.edu/~gross/preprints/gm-revised1.pdf#page=33)
 
 - [John Stembridge · The Coxeter projection](https://websites.umich.edu/~jrs/coxplain.html)
+
+- [Chang et al. · Gosset polytopes in integral octonions, section 3.2](https://dspace.ewha.ac.kr/bitstream/2015.oak/230390/1/001.pdf#page=10)
+
+- [Brian J. McCartin · Mysteries of the Equilateral Triangle, Property 74](https://www.m-hikari.com/mccartin-2.pdf)
+
+- [Tseng et al. · QuIP#, ICML 2024](https://proceedings.mlr.press/v235/tseng24a.html)
 
 ## Odom’s construction
 
@@ -34441,7 +34465,7 @@ Research question · not yet assessed
       "pisano_period": 24,
       "file": "pilot-v1/m9.json",
       "m9_family": true,
-      "sha256": "8b1d1eb28565af0b4299bb592c4c2656f565dafeb09a6e5568239784b17ee664"
+      "sha256": "fe100c70433b4dc0f6f640b75e5a9306f3a27dcdaccfff8207ca1e1618ba81f6"
     },
     {
       "id": "fibonacci-m10-p60",
@@ -43374,9 +43398,9 @@ Research question · not yet assessed
   ],
   "e8_geometry": {
     "schema": "universal-informatics/e8-geometry/v1",
-    "version": "e8-m9-p24-2026-11-09-v4",
+    "version": "e8-m9-p24-2026-11-10-v5",
     "title": "E8 and the 24-step cycle",
-    "scope": "Pure geometry: symbolic composition and computed projections of the E8 root system.",
+    "scope": "Symbolic composition and computed E8 root projections, established root-polytope geometry and a separately labelled, untested OXTR hyperspectral research hypothesis.",
     "definitions": {
       "rank": 8,
       "root_count": 240,
@@ -43391,6 +43415,30 @@ Research question · not yet assessed
       "projection": "Dot each root with both orthonormal basis vectors, then divide by normalization_radius. Stored xy values are rounded to 12 decimal places.",
       "cycle_alignment": "Each orbit begins at its lowest root index. The display rotates the first orbit start to north. Shared step indices are a comparison convention, not a canonical map from Fibonacci values to roots. M9 layers remain fixed while the 30-step Coxeter cycle advances.",
       "symbolic_layout": "The symbolic view retains ten sets of 24 positions; its radii and phases are chosen for composition and are not an orthogonal E8 projection."
+    },
+    "root_polytope": {
+      "name": "Gosset 4_21",
+      "dimension": 8,
+      "equilateral_triangular_faces": 60480,
+      "regular_tetrahedral_faces": 241920,
+      "status": "established_mathematics",
+      "description": "The eight-dimensional E8 root polytope has 60,480 equilateral triangular faces and 241,920 regular tetrahedral faces. These belong to the root polytope; describing the entire E8 Lie group as a tetrahedral mesh is inaccurate.",
+      "source_url": "https://dspace.ewha.ac.kr/bitstream/2015.oak/230390/1/001.pdf#page=10"
+    },
+    "odom_connection": {
+      "status": "mathematical_consequence",
+      "description": "Each equilateral face has a circumcircle in its own plane. Applying Odom’s midpoint construction produces the Phi Ratio. This gives us a mathematical connection to the Atlas’s existing study of equilateral triangles. The circle and construction points are additional geometry.",
+      "source_url": "https://www.m-hikari.com/mccartin-2.pdf"
+    },
+    "research_hypothesis": {
+      "status": "untested",
+      "text": "Geometric representations derived from E8, including its triangular and tetrahedral face structure, may improve the speed, accuracy and cost efficiency of hyperspectral computer vision within our OXTR research programme. We propose investigating whether these structures provide useful ways to organise and process spectral information. Their connection to Odom’s construction and the Phi Ratio supplies mathematical motivation; computational benefits remain to be established experimentally.",
+      "proposed_comparison": "Compare an established hyperspectral method against the same method with an E8 representation, plus a simpler triangular or tetrahedral representation. Measure accuracy on held-out data, runtime, memory and cost on matched hardware to assess whether E8 adds value and whether any improvement depends on the proposed geometry.",
+      "computational_precedent": {
+        "description": "QuIP# uses E8 lattice codebooks for efficient neural-network weight compression and inference. This demonstrates a practical use of E8 geometry in computation, while leaving our specific hyperspectral hypothesis untested. Its mechanism concerns quantization and symmetry, rather than triangular faces alone.",
+        "domain": "Neural-network weight quantization; no OXTR hyperspectral validation is claimed.",
+        "source_url": "https://proceedings.mlr.press/v235/tseng24a.html"
+      }
     },
     "roots_scaled2": [
       [
@@ -49504,6 +49552,18 @@ Research question · not yet assessed
       {
         "title": "John Stembridge · What is the E8 picture?",
         "url": "https://websites.umich.edu/~jrs/coxplain.html"
+      },
+      {
+        "title": "Chang et al. · Gosset polytopes in integral octonions, section 3.2",
+        "url": "https://dspace.ewha.ac.kr/bitstream/2015.oak/230390/1/001.pdf#page=10"
+      },
+      {
+        "title": "Brian J. McCartin · Mysteries of the Equilateral Triangle, Property 74",
+        "url": "https://www.m-hikari.com/mccartin-2.pdf"
+      },
+      {
+        "title": "Tseng et al. · QuIP#, ICML 2024",
+        "url": "https://proceedings.mlr.press/v235/tseng24a.html"
       }
     ]
   }
@@ -49512,6 +49572,6 @@ Research question · not yet assessed
 
 ## Sources
 
-- [research.html](https://universalmind.tv/informatics/research.html) · SHA-256: 3019cf66ca7efcce0c8508139897f41f6e4e7262b13b94b53885d21c8a3d0c5a · Exact file bytes
-- [research.js](https://universalmind.tv/informatics/research.js) · SHA-256: 5382da7171d4258e7938b9d3d96a8807ec399f3d81a30dd2b9de518d016d8202 · Exact file bytes
-- [pilot-v1/index.json](https://universalmind.tv/informatics/pilot-v1/index.json) · SHA-256: 01d6d82a8075d76313429e0a8408cf6aa6ac98c38b6d1a1c064110fa6467a6d8 · Exact file bytes
+- [research.html](https://universalmind.tv/informatics/research.html) · SHA-256: d3d9df1a440014973871ae0cafd6a2566a65ed92e4d20b124d918ab8b5787dfc · Exact file bytes
+- [research.js](https://universalmind.tv/informatics/research.js) · SHA-256: f19fdd8ae872501abd7701ea9b3ed4eefff58f556dd9129050c9a0355fd1b2cd · Exact file bytes
+- [pilot-v1/index.json](https://universalmind.tv/informatics/pilot-v1/index.json) · SHA-256: 31329d27da1824f59b08fe1b43ab35e621afde4c902c9a5fd3032efc3c92dfd9 · Exact file bytes

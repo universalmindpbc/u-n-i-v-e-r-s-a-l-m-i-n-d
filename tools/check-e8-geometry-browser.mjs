@@ -5,7 +5,7 @@ import {fileURLToPath} from 'node:url';
 import {chromium} from '/Users/benkorbel/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const candidate=process.argv.includes('--candidate');
-const out=path.join(root,'research/informatics/e8-layout-restore-20261109');await fs.mkdir(out,{recursive:true});
+const out=path.join(root,process.env.E8_QA_OUT||'research/informatics/e8-hypothesis-20261110');await fs.mkdir(out,{recursive:true});
 const server=await chromium.launchServer({executablePath:'/Users/benkorbel/Library/Caches/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-mac-arm64/chrome-headless-shell',headless:true,args:['--mute-audio','--autoplay-policy=user-gesture-required','--disable-gpu','--disable-partial-raster','--run-all-compositor-stages-before-draw']});
 assert(server.process().spawnargs.includes('--mute-audio'));
 const browser=await chromium.connect(server.wsEndpoint());const results=[],errors=[];
@@ -27,15 +27,24 @@ async function contextFor(width,height){
 }
 async function close(context){for(const p of context.pages())for(const frame of p.frames())await frame.evaluate(()=>document.querySelectorAll('audio,video').forEach(m=>m.pause())).catch(()=>{});await context.close();}
 try{
- for(const width of (process.env.E8_QA_WIDTH?[+process.env.E8_QA_WIDTH]:[1440,1280,390,320])){
-  const context=await contextFor(width,width===1440?950:width===1280?800:844),hostPage=await context.newPage();hostPage.on('pageerror',e=>errors.push(e.message));
+ for(const width of (process.env.E8_QA_WIDTH?[+process.env.E8_QA_WIDTH]:[1470,1280,1024,390,320])){
+  const context=await contextFor(width,width>=1400||width===1024?950:width===1280?800:844),hostPage=await context.newPage();hostPage.on('pageerror',e=>errors.push(e.message));
   await hostPage.goto('https://staging.universalmind.tv/informatics/geometry/?record=fibonacci-m9-p24&record-mode=research#e8',{waitUntil:'domcontentloaded'});
   const iframe=await hostPage.waitForSelector('#atlas-frame');const page=await iframe.contentFrame();
   try{await page.locator('#e8-view').waitFor({state:'visible'});}catch(error){console.log(JSON.stringify({errors,url:page.url(),text:(await page.locator('body').innerText()).slice(0,4000)}));throw error;}
   await page.getByRole('tab',{name:'E8',exact:true}).waitFor({state:'visible'});await page.getByRole('tab',{name:'Odom’s construction',exact:true}).waitFor({state:'visible'});
   const tabs=await page.locator('nav [role=tab]').allTextContents();assert.equal(tabs[tabs.indexOf('E8')+1],'Odom’s construction');
   assert.equal(await page.locator('[role=tab][aria-selected=true]').innerText(),'E8');
-  assert(!/quantum|genomic|OXTR/i.test(await page.locator('#e8-view').innerText()));
+  assert.equal(await page.locator('#e8-research-hypothesis').textContent(),"Geometric representations derived from E8, including its triangular and tetrahedral face structure, may improve the speed, accuracy and cost efficiency of hyperspectral computer vision within our OXTR research programme. We propose investigating whether these structures provide useful ways to organise and process spectral information. Their connection to Odom\u2019s construction and the Phi Ratio supplies mathematical motivation; computational benefits remain to be established experimentally.");
+  const notes=page.locator('#e8-view details').first();
+  assert(!(await notes.evaluate(n=>n.open)));
+  await notes.locator('summary').click();
+  assert(await page.locator('#e8-research-hypothesis').isVisible());
+  assert.match(await page.locator('#e8-root-polytope-note').innerText(),/60,480.*241,920/);
+  assert.match(await page.locator('#e8-odom-note').innerText(),/Phi Ratio/);
+  if(width===1470){const hypothesis=page.locator('#e8-research-hypothesis');await hypothesis.scrollIntoViewIfNeeded();await hypothesis.screenshot({path:path.join(out,`${candidate?'candidate':'staging'}-hypothesis-text.png`),animations:'disabled'});}
+  await notes.locator('summary').click();
+  await page.evaluate(()=>window.scrollTo(0,0));
   assert(await page.locator('#e8-alpha').isChecked());assert(await page.locator('#e8-gamma').isChecked());assert(!(await page.locator('#e8-beta').isChecked()));
   for(const mode of ['symbolic','p24','p30']){
    await page.selectOption('#e8-projection',mode);

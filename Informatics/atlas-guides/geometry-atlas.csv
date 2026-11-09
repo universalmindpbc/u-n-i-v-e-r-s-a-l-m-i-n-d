@@ -5,7 +5,7 @@ path,type,value
 /version,string,2026-11-01-page-narrative-4
 /url,string,https://universalmind.tv/informatics/geometry/
 /wiki,string,https://universalmind.tv/informatics/read/atlas/index.html
-/page_narrative,array,70
+/page_narrative,array,82
 /page_narrative/0,object,
 /page_narrative/0/tag,string,h2
 /page_narrative/0/text,string,Fibonacci sequence
@@ -144,7 +144,7 @@ path,type,value
 /page_narrative/43/text,string,"The grey octagon, hexagon and inner triangle form the separate symbolic guide. Their scale and alignment with E8 are drawing choices."
 /page_narrative/44,object,
 /page_narrative/44/tag,string,summary
-/page_narrative/44/text,string,Inspect the geometry
+/page_narrative/44/text,string,Inspect the geometry and hypothesis
 /page_narrative/45,object,
 /page_narrative/45/tag,string,p
 /page_narrative/45/text,string,An order-24 E8 symmetry partitions all 240 roots into ten cycles of 24. Its projection has nine distinct radii because two cycles share a radius. The Coxeter projection has eight cycles of 30 and eight distinct radii.
@@ -161,77 +161,125 @@ path,type,value
 /page_narrative/49/tag,string,p
 /page_narrative/49/text,string,What structure does a fixed map from the M9/P24 cycle to E8 root orbits preserve beyond cycle length?
 /page_narrative/50,object,
-/page_narrative/50/tag,string,summary
-/page_narrative/50/text,string,Mathematical sources
+/page_narrative/50/tag,string,h3
+/page_narrative/50/text,string,Triangular faces and Odom’s construction
 /page_narrative/51,object,
-/page_narrative/51/tag,string,li
-/page_narrative/51/text,string,American Institute of Mathematics · What is E8?
-/page_narrative/51/links,array,1
-/page_narrative/51/links/0,object,
-/page_narrative/51/links/0/label,string,American Institute of Mathematics · What is E8?
-/page_narrative/51/links/0/url,string,https://admin.aimath.org/E8/e8.html
+/page_narrative/51/tag,string,p
+/page_narrative/51/text,string,"The eight-dimensional E8 root polytope has 60,480 equilateral triangular faces and 241,920 regular tetrahedral faces. These belong to the root polytope; describing the entire E8 Lie group as a tetrahedral mesh is inaccurate."
 /page_narrative/52,object,
-/page_narrative/52/tag,string,li
-/page_narrative/52/text,string,"Frenkel and Gross · Order-24 E8 symmetry, section 15"
-/page_narrative/52/links,array,1
-/page_narrative/52/links/0,object,
-/page_narrative/52/links/0/label,string,"Frenkel and Gross · Order-24 E8 symmetry, section 15"
-/page_narrative/52/links/0/url,string,https://people.math.harvard.edu/~gross/preprints/gm-revised1.pdf#page=33
+/page_narrative/52/tag,string,p
+/page_narrative/52/text,string,Each equilateral face has a circumcircle in its own plane. Applying Odom’s midpoint construction produces the Phi Ratio. This gives us a mathematical connection to the Atlas’s existing study of equilateral triangles. The circle and construction points are additional geometry.
 /page_narrative/53,object,
-/page_narrative/53/tag,string,li
-/page_narrative/53/text,string,John Stembridge · The Coxeter projection
-/page_narrative/53/links,array,1
-/page_narrative/53/links/0,object,
-/page_narrative/53/links/0/label,string,John Stembridge · The Coxeter projection
-/page_narrative/53/links/0/url,string,https://websites.umich.edu/~jrs/coxplain.html
+/page_narrative/53/tag,string,h3
+/page_narrative/53/text,string,Research hypothesis
 /page_narrative/54,object,
-/page_narrative/54/tag,string,h2
-/page_narrative/54/text,string,Odom’s construction
+/page_narrative/54/tag,string,p
+/page_narrative/54/text,string,"Geometric representations derived from E8, including its triangular and tetrahedral face structure, may improve the speed, accuracy and cost efficiency of hyperspectral computer vision within our OXTR research programme. We propose investigating whether these structures provide useful ways to organise and process spectral information. Their connection to Odom’s construction and the Phi Ratio supplies mathematical motivation; computational benefits remain to be established experimentally."
 /page_narrative/55,object,
-/page_narrative/55/tag,string,p
-/page_narrative/55/text,string,Odom’s construction uses the Phi Ratio to circumscribe a circle around an equilateral triangle.
+/page_narrative/55/tag,string,h3
+/page_narrative/55/text,string,Computational precedent
 /page_narrative/56,object,
-/page_narrative/56/tag,string,li
-/page_narrative/56/text,string,Join the midpoints A and B of two sides of an equilateral triangle.
+/page_narrative/56/tag,string,p
+/page_narrative/56/text,string,"QuIP# uses E8 lattice codebooks for efficient neural-network weight compression and inference. This demonstrates a practical use of E8 geometry in computation, while leaving our specific hyperspectral hypothesis untested. Its mechanism concerns quantization and symmetry, rather than triangular faces alone."
 /page_narrative/57,object,
-/page_narrative/57/tag,string,li
-/page_narrative/57/text,string,Take AB as one unit.
+/page_narrative/57/tag,string,h3
+/page_narrative/57/text,string,Proposed comparison
 /page_narrative/58,object,
-/page_narrative/58/tag,string,li
-/page_narrative/58/text,string,Extend AB beyond B by 1/φ to reach C on the circle through the triangle’s three vertices.
+/page_narrative/58/tag,string,p
+/page_narrative/58/text,string,"Compare an established hyperspectral method against the same method with an E8 representation, plus a simpler triangular or tetrahedral representation. Measure accuracy on held-out data, runtime, memory and cost on matched hardware to assess whether E8 adds value and whether any improvement depends on the proposed geometry."
 /page_narrative/59,object,
-/page_narrative/59/tag,string,p
-/page_narrative/59/text,string,"AB divided by BC equals φ. So does AC divided by AB. The yellow labels use AB as 1, making BC equal to 1/φ."
+/page_narrative/59/tag,string,summary
+/page_narrative/59/text,string,Geometry and computation sources
 /page_narrative/60,object,
-/page_narrative/60/tag,string,p
-/page_narrative/60/text,string,"The Phi Ratio is the limit of the ratio of successive Fibonacci numbers. As the sequence continues, each number divided by the previous number approaches φ ≈ 1.618034. Odom’s construction expresses that same ratio geometrically."
+/page_narrative/60/tag,string,li
+/page_narrative/60/text,string,American Institute of Mathematics · What is E8?
+/page_narrative/60/links,array,1
+/page_narrative/60/links/0,object,
+/page_narrative/60/links/0/label,string,American Institute of Mathematics · What is E8?
+/page_narrative/60/links/0/url,string,https://admin.aimath.org/E8/e8.html
 /page_narrative/61,object,
-/page_narrative/61/tag,string,p
-/page_narrative/61/text,string,This construction applies to every equilateral triangle. Whether it helps explain patterns across Fibonacci moduli remains a research question.
+/page_narrative/61/tag,string,li
+/page_narrative/61/text,string,"Frenkel and Gross · Order-24 E8 symmetry, section 15"
+/page_narrative/61/links,array,1
+/page_narrative/61/links/0,object,
+/page_narrative/61/links/0/label,string,"Frenkel and Gross · Order-24 E8 symmetry, section 15"
+/page_narrative/61/links/0/url,string,https://people.math.harvard.edu/~gross/preprints/gm-revised1.pdf#page=33
 /page_narrative/62,object,
-/page_narrative/62/tag,string,p
-/page_narrative/62/text,string,Shared arithmetic. Distinct native geometries.
+/page_narrative/62/tag,string,li
+/page_narrative/62/text,string,John Stembridge · The Coxeter projection
+/page_narrative/62/links,array,1
+/page_narrative/62/links/0,object,
+/page_narrative/62/links/0/label,string,John Stembridge · The Coxeter projection
+/page_narrative/62/links/0/url,string,https://websites.umich.edu/~jrs/coxplain.html
 /page_narrative/63,object,
-/page_narrative/63/tag,string,p
-/page_narrative/63/text,string,"M9 family identifies multiples of nine, not a significance ranking."
+/page_narrative/63/tag,string,li
+/page_narrative/63/text,string,"Chang et al. · Gosset polytopes in integral octonions, section 3.2"
+/page_narrative/63/links,array,1
+/page_narrative/63/links/0,object,
+/page_narrative/63/links/0/label,string,"Chang et al. · Gosset polytopes in integral octonions, section 3.2"
+/page_narrative/63/links/0/url,string,https://dspace.ewha.ac.kr/bitstream/2015.oak/230390/1/001.pdf#page=10
 /page_narrative/64,object,
-/page_narrative/64/tag,string,h3
-/page_narrative/64/text,string,Reduction to M9
+/page_narrative/64/tag,string,li
+/page_narrative/64/text,string,"Brian J. McCartin · Mysteries of the Equilateral Triangle, Property 74"
+/page_narrative/64/links,array,1
+/page_narrative/64/links/0,object,
+/page_narrative/64/links/0/label,string,"Brian J. McCartin · Mysteries of the Equilateral Triangle, Property 74"
+/page_narrative/64/links/0/url,string,https://www.m-hikari.com/mccartin-2.pdf
 /page_narrative/65,object,
-/page_narrative/65/tag,string,p
-/page_narrative/65/text,string,Original phase is preserved. Beta begins at 4; its recognised cycle is 1 → 2 → 4 → 8 → 7 → 5. Zero residues are displayed as 9 after reduction.
+/page_narrative/65/tag,string,li
+/page_narrative/65/text,string,"Tseng et al. · QuIP#, ICML 2024"
+/page_narrative/65/links,array,1
+/page_narrative/65/links/0,object,
+/page_narrative/65/links/0/label,string,"Tseng et al. · QuIP#, ICML 2024"
+/page_narrative/65/links/0/url,string,https://proceedings.mlr.press/v235/tseng24a.html
 /page_narrative/66,object,
-/page_narrative/66/tag,string,summary
-/page_narrative/66/text,string,Why the sequences match
+/page_narrative/66/tag,string,h2
+/page_narrative/66/text,string,Odom’s construction
 /page_narrative/67,object,
 /page_narrative/67/tag,string,p
-/page_narrative/67/text,string,"For multiples of nine, (Fₙ mod 9k) mod 9 = Fₙ mod 9. Gamma selection and interior sums preserve this reduction. This is an exact arithmetic relationship."
+/page_narrative/67/text,string,Odom’s construction uses the Phi Ratio to circumscribe a circle around an equilateral triangle.
 /page_narrative/68,object,
-/page_narrative/68/tag,string,p
-/page_narrative/68/text,string,All 111 multiples of nine through M999 passed the Python sequence comparison. Longer periods contain repeated M9 cycles; their full-circle geometry is not necessarily identical.
+/page_narrative/68/tag,string,li
+/page_narrative/68/text,string,Join the midpoints A and B of two sides of an equilateral triangle.
 /page_narrative/69,object,
-/page_narrative/69/tag,string,summary
-/page_narrative/69/text,string,Research question · not yet assessed
+/page_narrative/69/tag,string,li
+/page_narrative/69/text,string,Take AB as one unit.
+/page_narrative/70,object,
+/page_narrative/70/tag,string,li
+/page_narrative/70/text,string,Extend AB beyond B by 1/φ to reach C on the circle through the triangle’s three vertices.
+/page_narrative/71,object,
+/page_narrative/71/tag,string,p
+/page_narrative/71/text,string,"AB divided by BC equals φ. So does AC divided by AB. The yellow labels use AB as 1, making BC equal to 1/φ."
+/page_narrative/72,object,
+/page_narrative/72/tag,string,p
+/page_narrative/72/text,string,"The Phi Ratio is the limit of the ratio of successive Fibonacci numbers. As the sequence continues, each number divided by the previous number approaches φ ≈ 1.618034. Odom’s construction expresses that same ratio geometrically."
+/page_narrative/73,object,
+/page_narrative/73/tag,string,p
+/page_narrative/73/text,string,This construction applies to every equilateral triangle. Whether it helps explain patterns across Fibonacci moduli remains a research question.
+/page_narrative/74,object,
+/page_narrative/74/tag,string,p
+/page_narrative/74/text,string,Shared arithmetic. Distinct native geometries.
+/page_narrative/75,object,
+/page_narrative/75/tag,string,p
+/page_narrative/75/text,string,"M9 family identifies multiples of nine, not a significance ranking."
+/page_narrative/76,object,
+/page_narrative/76/tag,string,h3
+/page_narrative/76/text,string,Reduction to M9
+/page_narrative/77,object,
+/page_narrative/77/tag,string,p
+/page_narrative/77/text,string,Original phase is preserved. Beta begins at 4; its recognised cycle is 1 → 2 → 4 → 8 → 7 → 5. Zero residues are displayed as 9 after reduction.
+/page_narrative/78,object,
+/page_narrative/78/tag,string,summary
+/page_narrative/78/text,string,Why the sequences match
+/page_narrative/79,object,
+/page_narrative/79/tag,string,p
+/page_narrative/79/text,string,"For multiples of nine, (Fₙ mod 9k) mod 9 = Fₙ mod 9. Gamma selection and interior sums preserve this reduction. This is an exact arithmetic relationship."
+/page_narrative/80,object,
+/page_narrative/80/tag,string,p
+/page_narrative/80/text,string,All 111 multiples of nine through M999 passed the Python sequence comparison. Longer periods contain repeated M9 cycles; their full-circle geometry is not necessarily identical.
+/page_narrative/81,object,
+/page_narrative/81/tag,string,summary
+/page_narrative/81/text,string,Research question · not yet assessed
 /source_data,object,
 /source_data/record_explanations,object,
 /source_data/record_explanations/1,array,4
@@ -29482,7 +29530,7 @@ path,type,value
 /source_data/records/8/pisano_period,number,24
 /source_data/records/8/file,string,pilot-v1/m9.json
 /source_data/records/8/m9_family,boolean,true
-/source_data/records/8/sha256,string,8b1d1eb28565af0b4299bb592c4c2656f565dafeb09a6e5568239784b17ee664
+/source_data/records/8/sha256,string,fe100c70433b4dc0f6f640b75e5a9306f3a27dcdaccfff8207ca1e1618ba81f6
 /source_data/records/9,object,
 /source_data/records/9/id,string,fibonacci-m10-p60
 /source_data/records/9/name,string,Fibonacci M10P60
@@ -37421,9 +37469,9 @@ path,type,value
 /source_data/records/1000/sha256,string,dc2a4e02412f6bb7df382d7c3d09a427baf1dfd36c25d9b36294fc7127b22df2
 /source_data/e8_geometry,object,
 /source_data/e8_geometry/schema,string,universal-informatics/e8-geometry/v1
-/source_data/e8_geometry/version,string,e8-m9-p24-2026-11-09-v4
+/source_data/e8_geometry/version,string,e8-m9-p24-2026-11-10-v5
 /source_data/e8_geometry/title,string,E8 and the 24-step cycle
-/source_data/e8_geometry/scope,string,Pure geometry: symbolic composition and computed projections of the E8 root system.
+/source_data/e8_geometry/scope,string,"Symbolic composition and computed E8 root projections, established root-polytope geometry and a separately labelled, untested OXTR hyperspectral research hypothesis."
 /source_data/e8_geometry/definitions,object,
 /source_data/e8_geometry/definitions/rank,number,8
 /source_data/e8_geometry/definitions/root_count,number,240
@@ -37437,6 +37485,26 @@ path,type,value
 /source_data/e8_geometry/conventions/projection,string,"Dot each root with both orthonormal basis vectors, then divide by normalization_radius. Stored xy values are rounded to 12 decimal places."
 /source_data/e8_geometry/conventions/cycle_alignment,string,"Each orbit begins at its lowest root index. The display rotates the first orbit start to north. Shared step indices are a comparison convention, not a canonical map from Fibonacci values to roots. M9 layers remain fixed while the 30-step Coxeter cycle advances."
 /source_data/e8_geometry/conventions/symbolic_layout,string,The symbolic view retains ten sets of 24 positions; its radii and phases are chosen for composition and are not an orthogonal E8 projection.
+/source_data/e8_geometry/root_polytope,object,
+/source_data/e8_geometry/root_polytope/name,string,Gosset 4_21
+/source_data/e8_geometry/root_polytope/dimension,number,8
+/source_data/e8_geometry/root_polytope/equilateral_triangular_faces,number,60480
+/source_data/e8_geometry/root_polytope/regular_tetrahedral_faces,number,241920
+/source_data/e8_geometry/root_polytope/status,string,established_mathematics
+/source_data/e8_geometry/root_polytope/description,string,"The eight-dimensional E8 root polytope has 60,480 equilateral triangular faces and 241,920 regular tetrahedral faces. These belong to the root polytope; describing the entire E8 Lie group as a tetrahedral mesh is inaccurate."
+/source_data/e8_geometry/root_polytope/source_url,string,https://dspace.ewha.ac.kr/bitstream/2015.oak/230390/1/001.pdf#page=10
+/source_data/e8_geometry/odom_connection,object,
+/source_data/e8_geometry/odom_connection/status,string,mathematical_consequence
+/source_data/e8_geometry/odom_connection/description,string,Each equilateral face has a circumcircle in its own plane. Applying Odom’s midpoint construction produces the Phi Ratio. This gives us a mathematical connection to the Atlas’s existing study of equilateral triangles. The circle and construction points are additional geometry.
+/source_data/e8_geometry/odom_connection/source_url,string,https://www.m-hikari.com/mccartin-2.pdf
+/source_data/e8_geometry/research_hypothesis,object,
+/source_data/e8_geometry/research_hypothesis/status,string,untested
+/source_data/e8_geometry/research_hypothesis/text,string,"Geometric representations derived from E8, including its triangular and tetrahedral face structure, may improve the speed, accuracy and cost efficiency of hyperspectral computer vision within our OXTR research programme. We propose investigating whether these structures provide useful ways to organise and process spectral information. Their connection to Odom’s construction and the Phi Ratio supplies mathematical motivation; computational benefits remain to be established experimentally."
+/source_data/e8_geometry/research_hypothesis/proposed_comparison,string,"Compare an established hyperspectral method against the same method with an E8 representation, plus a simpler triangular or tetrahedral representation. Measure accuracy on held-out data, runtime, memory and cost on matched hardware to assess whether E8 adds value and whether any improvement depends on the proposed geometry."
+/source_data/e8_geometry/research_hypothesis/computational_precedent,object,
+/source_data/e8_geometry/research_hypothesis/computational_precedent/description,string,"QuIP# uses E8 lattice codebooks for efficient neural-network weight compression and inference. This demonstrates a practical use of E8 geometry in computation, while leaving our specific hyperspectral hypothesis untested. Its mechanism concerns quantization and symmetry, rather than triangular faces alone."
+/source_data/e8_geometry/research_hypothesis/computational_precedent/domain,string,Neural-network weight quantization; no OXTR hyperspectral validation is claimed.
+/source_data/e8_geometry/research_hypothesis/computational_precedent/source_url,string,https://proceedings.mlr.press/v235/tseng24a.html
 /source_data/e8_geometry/roots_scaled2,array,240
 /source_data/e8_geometry/roots_scaled2/0,array,8
 /source_data/e8_geometry/roots_scaled2/0/0,number,-2
@@ -42690,7 +42758,7 @@ path,type,value
 /source_data/e8_geometry/verification/orbits,string,Ten cycles of 24 and eight cycles of 30 partition all roots.
 /source_data/e8_geometry/verification/projection,string,"Orthonormality, constant orbit radii, distinct projected points and angular steps checked with tolerance 1e-11."
 /source_data/e8_geometry/verification/pisano,string,"The state (0,1) first returns modulo 9 after 24 steps."
-/source_data/e8_geometry/sources,array,3
+/source_data/e8_geometry/sources,array,6
 /source_data/e8_geometry/sources/0,object,
 /source_data/e8_geometry/sources/0/title,string,American Institute of Mathematics · What is E8?
 /source_data/e8_geometry/sources/0/url,string,https://admin.aimath.org/E8/e8.html
@@ -42700,6 +42768,15 @@ path,type,value
 /source_data/e8_geometry/sources/2,object,
 /source_data/e8_geometry/sources/2/title,string,John Stembridge · What is the E8 picture?
 /source_data/e8_geometry/sources/2/url,string,https://websites.umich.edu/~jrs/coxplain.html
+/source_data/e8_geometry/sources/3,object,
+/source_data/e8_geometry/sources/3/title,string,"Chang et al. · Gosset polytopes in integral octonions, section 3.2"
+/source_data/e8_geometry/sources/3/url,string,https://dspace.ewha.ac.kr/bitstream/2015.oak/230390/1/001.pdf#page=10
+/source_data/e8_geometry/sources/4,object,
+/source_data/e8_geometry/sources/4/title,string,"Brian J. McCartin · Mysteries of the Equilateral Triangle, Property 74"
+/source_data/e8_geometry/sources/4/url,string,https://www.m-hikari.com/mccartin-2.pdf
+/source_data/e8_geometry/sources/5,object,
+/source_data/e8_geometry/sources/5/title,string,"Tseng et al. · QuIP#, ICML 2024"
+/source_data/e8_geometry/sources/5/url,string,https://proceedings.mlr.press/v235/tseng24a.html
 /related_data,array,4
 /related_data/0,object,
 /related_data/0/label,string,Full M1–M1001 JSON
@@ -42717,17 +42794,17 @@ path,type,value
 /sources/0,object,
 /sources/0/path,string,research.html
 /sources/0/url,string,https://universalmind.tv/informatics/research.html
-/sources/0/sha256,string,3019cf66ca7efcce0c8508139897f41f6e4e7262b13b94b53885d21c8a3d0c5a
+/sources/0/sha256,string,d3d9df1a440014973871ae0cafd6a2566a65ed92e4d20b124d918ab8b5787dfc
 /sources/0/sha256_scope,string,Exact file bytes
 /sources/1,object,
 /sources/1/path,string,research.js
 /sources/1/url,string,https://universalmind.tv/informatics/research.js
-/sources/1/sha256,string,5382da7171d4258e7938b9d3d96a8807ec399f3d81a30dd2b9de518d016d8202
+/sources/1/sha256,string,f19fdd8ae872501abd7701ea9b3ed4eefff58f556dd9129050c9a0355fd1b2cd
 /sources/1/sha256_scope,string,Exact file bytes
 /sources/2,object,
 /sources/2/path,string,pilot-v1/index.json
 /sources/2/url,string,https://universalmind.tv/informatics/pilot-v1/index.json
-/sources/2/sha256,string,01d6d82a8075d76313429e0a8408cf6aa6ac98c38b6d1a1c064110fa6467a6d8
+/sources/2/sha256,string,31329d27da1824f59b08fe1b43ab35e621afde4c902c9a5fd3032efc3c92dfd9
 /sources/2/sha256_scope,string,Exact file bytes
 /downloads,object,
 /downloads/json,string,https://universalmind.tv/informatics/atlas-guides/geometry-atlas.json?v=2026-11-01-page-narrative-4
