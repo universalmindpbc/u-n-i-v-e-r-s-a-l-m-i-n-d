@@ -104,6 +104,11 @@
         "feature": "Reading backgrounds",
         "purpose": "Choose Video, Black or White using the same saved background preference as Universal Research.",
         "human_value": "Read the conversation and reports in the preferred visual setting."
+      },
+      {
+        "feature": "Specialist literature investigation",
+        "purpose": "Claude Opus 5.5 through the Perplexity Agent API can investigate an unresolved literature gap using bounded scientific search and available paper-reading tools.",
+        "human_value": "A cited research brief returns to Astra and Gemini, with the provider identity, source coverage and spending receipt retained."
       }
     ],
     "swarm": {
@@ -121,6 +126,12 @@
           "role": "Chief Scientist",
           "work": "Reviews the design and final findings against the supplied methods, measurements, source records and uncertainty. Returns approve, revise or human decision required.",
           "handoff": "Design feedback to Astra before execution; findings feedback before report delivery."
+        },
+        {
+          "name": "Perplexity · Claude Opus 5.5",
+          "role": "Deep research support",
+          "work": "Investigates unresolved evidence gaps with bounded scientific searches and available paper-reading tools. Provider refusals and unavailable sources are returned explicitly.",
+          "handoff": "Cited evidence brief and source records to Astra and Gemini. AI interpretation remains distinct from experimental confirmation."
         },
         {
           "name": "LangGraph",
@@ -733,7 +744,7 @@
     "implementation_sources": [
       {
         "repository_path": "Informatics/quantum/index.html",
-        "sha256": "c38049d9c536ebc828e85219d1d4ddbd955990ea4c2355ea413edb0bf782f74f",
+        "sha256": "f6b99cc030f6314bda91d62922389dd002fa9c093e06844b1183395e4878b65c",
         "scope": "Original primary-page source with generated reading blocks removed"
       },
       {
@@ -783,12 +794,12 @@
       },
       {
         "repository_path": "cloudflare/informatics-astra-memory.js",
-        "sha256": "9b064937dfc80b020fefffb2b8ba5934cc47db2c5e6a87195538b041c1a8d48e",
+        "sha256": "94a0ea79a943e1cfcccdde3ae77aa582d45b2368f59a302e6228f34b6f3ffc0a",
         "scope": "Implementation source"
       },
       {
         "repository_path": "research/informatics/astra-service/runner.py",
-        "sha256": "a71512ae2956c2911bf2c03da8c8010a9fe3238a14f7d800e2969d7097d76328",
+        "sha256": "e45b788c7157e937312e4d07cbfd36a77a4dcafaafb8969a1ecaeff3b8e14a74",
         "scope": "Implementation source"
       },
       {
@@ -878,7 +889,7 @@
       },
       {
         "repository_path": "research/informatics/portal-demo-20261109/worker.py",
-        "sha256": "d4d0046661935528722e0ddcb55f743a27473d4bdc0b5ad45e5d671830ac6ba5",
+        "sha256": "e668ad7d5570fd8f5fb154e7899c023ecf2e42b67142f9e0131700be884dc7a3",
         "scope": "Implementation source"
       },
       {
@@ -913,12 +924,22 @@
       },
       {
         "repository_path": "cloudflare/informatics-research-worker.js",
-        "sha256": "1f9392c60776600e62aac5011b34e69bdbd914a5544822568a41e75ade7aa865",
+        "sha256": "83ba9ebc86c3b7091d03f0af45abc9aea3da9f6f96337f6448bb208fd714f852",
         "scope": "Implementation source"
       },
       {
         "repository_path": "research/informatics/portal-demo-20261109/research_context.py",
-        "sha256": "6c7c7feef53d911e840d8305c1cf5705066f374df8014929c545e1e5aeabcd0b",
+        "sha256": "0ab867dab82f3be8f11669b10a68c25dfe26cbefc50c56e3e40d043c36b07998",
+        "scope": "Implementation source"
+      },
+      {
+        "repository_path": "cloudflare/informatics-literature-agent.js",
+        "sha256": "8c98ca9b4eab5544a235648d9a87c235333420af88b6bcf8d51ff73bb095fe44",
+        "scope": "Implementation source"
+      },
+      {
+        "repository_path": "Informatics/quantum/scientific-review.css",
+        "sha256": "668e9ce6f4c2d4d45d396ca303ac8d465b7a56f8d59bb81209e7e541dd1d44b8",
         "scope": "Implementation source"
       }
     ]

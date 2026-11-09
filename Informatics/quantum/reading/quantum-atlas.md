@@ -47,6 +47,7 @@ You can ask Quantum Atlas a biological research question without writing quantum
 | Public gene and binding evidence | Explore candidate genes or another human or mouse gene using NCBI annotation, UCSC reference DNA, ENCODE measured binding regions and JASPAR motif models. NMDAR represents seven GRIN subunit genes. | Retrieve source-qualified evidence without pre-downloading a fixed gene collection. Candidate names fill a draft; they never launch a study. |
 | Live literature review | Search PubMed and Europe PMC, read abstracts and selected available open-access article passages, and share a source-qualified evidence packet with Astra and Gemini. Optional Perplexity discovery requires a configured server key and a funded allowance. | A concise conversation explains the scientific answer; sources, reading coverage, retrieval dates and checksums remain available for inspection. Search results and model agreement do not establish a hypothesis. |
 | Reading backgrounds | Choose Video, Black or White using the same saved background preference as Universal Research. | Read the conversation and reports in the preferred visual setting. |
+| Specialist literature investigation | Claude Opus 5.5 through the Perplexity Agent API can investigate an unresolved literature gap using bounded scientific search and available paper-reading tools. | A cited research brief returns to Astra and Gemini, with the provider identity, source coverage and spending receipt retained. |
 
 ## Quantum / AI agent swarm: who does what
 
@@ -58,6 +59,7 @@ Astra and Gemini have distinct scientific roles. LangGraph coordinates their wor
 | --- | --- | --- | --- |
 | GPT-6 Astra | Head bioinformatician and scientist | Interprets the question, selects the supported study plan, coordinates the authorised calculations, responds to review feedback and writes the evidence-grounded explanation. | Proposed plan to Gemini; calculated evidence and draft report to Gemini; reviewed findings to the person. |
 | Gemini 4 Argon | Chief Scientist | Reviews the design and final findings against the supplied methods, measurements, source records and uncertainty. Returns approve, revise or human decision required. | Design feedback to Astra before execution; findings feedback before report delivery. |
+| Perplexity · Claude Opus 5.5 | Deep research support | Investigates unresolved evidence gaps with bounded scientific searches and available paper-reading tools. Provider refusals and unavailable sources are returned explicitly. | Cited evidence brief and source records to Astra and Gemini. AI interpretation remains distinct from experimental confirmation. |
 | LangGraph | Workflow orchestration and persistent state | Orders the steps, checkpoints completed work, routes review decisions, bounds revision loops and preserves progress when a dependency interrupts execution. | Controls the transition between planning, review, calculations, report and completion. |
 | Wolfram Quantum Framework | Mathematical specification and reference checks | Provides the mathematical reference role shown in the workflow. The current continuation retains the saved Wolfram check receipts for the original model. | Checked model definitions and reference calculations inform the matched simulation and hardware interpretation. |
 | NVIDIA CUDA-Q | Quantum-program preparation and simulation | Compiles and simulates the defined quantum model. The original study used qBraid GPU simulation; the continuing recipe performs local CPU CUDA-Q checks on the cloud worker. | Compiled programs, simulated observables and numerical-check receipts. |
@@ -770,6 +772,11 @@ The following JSON preserves the source fields, saved chart arrays, study interp
         "feature": "Reading backgrounds",
         "purpose": "Choose Video, Black or White using the same saved background preference as Universal Research.",
         "human_value": "Read the conversation and reports in the preferred visual setting."
+      },
+      {
+        "feature": "Specialist literature investigation",
+        "purpose": "Claude Opus 5.5 through the Perplexity Agent API can investigate an unresolved literature gap using bounded scientific search and available paper-reading tools.",
+        "human_value": "A cited research brief returns to Astra and Gemini, with the provider identity, source coverage and spending receipt retained."
       }
     ],
     "swarm": {
@@ -787,6 +794,12 @@ The following JSON preserves the source fields, saved chart arrays, study interp
           "role": "Chief Scientist",
           "work": "Reviews the design and final findings against the supplied methods, measurements, source records and uncertainty. Returns approve, revise or human decision required.",
           "handoff": "Design feedback to Astra before execution; findings feedback before report delivery."
+        },
+        {
+          "name": "Perplexity · Claude Opus 5.5",
+          "role": "Deep research support",
+          "work": "Investigates unresolved evidence gaps with bounded scientific searches and available paper-reading tools. Provider refusals and unavailable sources are returned explicitly.",
+          "handoff": "Cited evidence brief and source records to Astra and Gemini. AI interpretation remains distinct from experimental confirmation."
         },
         {
           "name": "LangGraph",
@@ -1399,7 +1412,7 @@ The following JSON preserves the source fields, saved chart arrays, study interp
     "implementation_sources": [
       {
         "repository_path": "Informatics/quantum/index.html",
-        "sha256": "c38049d9c536ebc828e85219d1d4ddbd955990ea4c2355ea413edb0bf782f74f",
+        "sha256": "f6b99cc030f6314bda91d62922389dd002fa9c093e06844b1183395e4878b65c",
         "scope": "Original primary-page source with generated reading blocks removed"
       },
       {
@@ -1449,12 +1462,12 @@ The following JSON preserves the source fields, saved chart arrays, study interp
       },
       {
         "repository_path": "cloudflare/informatics-astra-memory.js",
-        "sha256": "9b064937dfc80b020fefffb2b8ba5934cc47db2c5e6a87195538b041c1a8d48e",
+        "sha256": "94a0ea79a943e1cfcccdde3ae77aa582d45b2368f59a302e6228f34b6f3ffc0a",
         "scope": "Implementation source"
       },
       {
         "repository_path": "research/informatics/astra-service/runner.py",
-        "sha256": "a71512ae2956c2911bf2c03da8c8010a9fe3238a14f7d800e2969d7097d76328",
+        "sha256": "e45b788c7157e937312e4d07cbfd36a77a4dcafaafb8969a1ecaeff3b8e14a74",
         "scope": "Implementation source"
       },
       {
@@ -1544,7 +1557,7 @@ The following JSON preserves the source fields, saved chart arrays, study interp
       },
       {
         "repository_path": "research/informatics/portal-demo-20261109/worker.py",
-        "sha256": "d4d0046661935528722e0ddcb55f743a27473d4bdc0b5ad45e5d671830ac6ba5",
+        "sha256": "e668ad7d5570fd8f5fb154e7899c023ecf2e42b67142f9e0131700be884dc7a3",
         "scope": "Implementation source"
       },
       {
@@ -1579,12 +1592,22 @@ The following JSON preserves the source fields, saved chart arrays, study interp
       },
       {
         "repository_path": "cloudflare/informatics-research-worker.js",
-        "sha256": "1f9392c60776600e62aac5011b34e69bdbd914a5544822568a41e75ade7aa865",
+        "sha256": "83ba9ebc86c3b7091d03f0af45abc9aea3da9f6f96337f6448bb208fd714f852",
         "scope": "Implementation source"
       },
       {
         "repository_path": "research/informatics/portal-demo-20261109/research_context.py",
-        "sha256": "6c7c7feef53d911e840d8305c1cf5705066f374df8014929c545e1e5aeabcd0b",
+        "sha256": "0ab867dab82f3be8f11669b10a68c25dfe26cbefc50c56e3e40d043c36b07998",
+        "scope": "Implementation source"
+      },
+      {
+        "repository_path": "cloudflare/informatics-literature-agent.js",
+        "sha256": "8c98ca9b4eab5544a235648d9a87c235333420af88b6bcf8d51ff73bb095fe44",
+        "scope": "Implementation source"
+      },
+      {
+        "repository_path": "Informatics/quantum/scientific-review.css",
+        "sha256": "668e9ce6f4c2d4d45d396ca303ac8d465b7a56f8d59bb81209e7e541dd1d44b8",
         "scope": "Implementation source"
       }
     ]
