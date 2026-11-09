@@ -76,7 +76,7 @@
 /records/8/pisano_period,integer,24,
 /records/8/file,text,pilot-v1/m9.json,https://universalmind.tv/informatics/pilot-v1/m9.json
 /records/8/m9_family,boolean,true,
-/records/8/sha256,text,8b1d1eb28565af0b4299bb592c4c2656f565dafeb09a6e5568239784b17ee664,
+/records/8/sha256,text,fe100c70433b4dc0f6f640b75e5a9306f3a27dcdaccfff8207ca1e1618ba81f6,
 /records/9,object,7,
 /records/9/id,text,fibonacci-m10-p60,
 /records/9/name,text,Fibonacci M10P60,
@@ -8091,7 +8091,7 @@
 /geometry_supplements,object,1,
 /geometry_supplements/e8,object,5,
 /geometry_supplements/e8/record_id,text,fibonacci-m9-p24,
-/geometry_supplements/e8/version,text,e8-m9-p24-2026-11-09-v4,
+/geometry_supplements/e8/version,text,e8-m9-p24-2026-11-10-v5,
 /geometry_supplements/e8/json,text,pilot-v1/e8-m9-p24.json,https://universalmind.tv/informatics/pilot-v1/e8-m9-p24.json
 /geometry_supplements/e8/csv,text,pilot-v1/csv-shared/e8-m9-p24.csv,https://universalmind.tv/informatics/pilot-v1/csv-shared/e8-m9-p24.csv
-/geometry_supplements/e8/scope,text,Pure geometry: symbolic composition and computed projections of the E8 root system.,
+/geometry_supplements/e8/scope,text,"Symbolic composition and computed E8 root projections, established root-polytope geometry and a separately labelled, untested OXTR hyperspectral research hypothesis.",
