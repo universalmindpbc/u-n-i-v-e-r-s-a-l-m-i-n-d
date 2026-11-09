@@ -565,7 +565,7 @@ path,type,value
 /agent_architecture/implementation_sources,array,30
 /agent_architecture/implementation_sources/0,object,
 /agent_architecture/implementation_sources/0/repository_path,string,Informatics/quantum/index.html
-/agent_architecture/implementation_sources/0/sha256,string,30480f7bfbe85e03557bc781a1e7eb3934671c544de2dc7ad41b091ef6cd5a50
+/agent_architecture/implementation_sources/0/sha256,string,710798b75590f640aa3e46ba18201dc70711218d8b571024208f69ba9e41f33a
 /agent_architecture/implementation_sources/0/scope,string,Original primary-page source with generated reading blocks removed
 /agent_architecture/implementation_sources/1,object,
 /agent_architecture/implementation_sources/1/repository_path,string,Informatics/quantum/study.js
