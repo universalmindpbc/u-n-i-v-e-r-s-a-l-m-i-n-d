@@ -21,8 +21,16 @@ Ben rejected the expanded page layout and requested the original arrangement wit
 - Desktop checks require the full figure, toggles and slider to fit inside the iframe viewport, with the sidebar beside the drawing.
 - All sizes check 240 roots, 24 labels, label clearance, native Gamma angles, the Beta doubling path, independent guide controls, cycle selection, navigation and horizontal bounds.
 - Phone checks retain the original vertical page flow; they do not assert whole-page viewport fit.
-- Browser QA uses a dedicated headless Chromium process with audio muted and playback blocked. Software rendering avoids a headless GPU screenshot artifact. No native fullscreen or user browser interaction.
+- Browser QA uses a dedicated headless Chromium process with audio muted and playback blocked. Software rendering, complete raster capture and a focused three-view paint check address a headless screenshot artifact. The focused paint check allows 750 ms for paint settling, confirms visible text and captures complete 1440 × 950 screenshots in staging-proof-symbolic.png, staging-proof-p24.png and staging-proof-p30.png. Earlier batch screenshots may contain partial raster output; the dedicated proof captures are the visual reference. No native fullscreen or user browser interaction.
 
 ## Release status
 
-Staging deployment and live verification pending. Production remains untouched.
+Source commit: `a0cb1484436b2d7390f8d32da318b9ee5a8eaaff`.
+
+Staging URL: https://staging.universalmind.tv/informatics/geometry/?record=fibonacci-m9-p24&record-mode=research#e8
+
+All 56 changed assets uploaded through the existing Panthur staging workflow. The live browser repeated all 96 layer/view combinations. Desktop figure, toggles and slider fit in the 1440 × 950 and 1280 × 800 viewports; the original sidebar remains beside the figure. All 24 labels have clear bounds in every view. Original phone page flow and full-width drawing remain unchanged in structure.
+
+All 25 checked live source and download files match the committed candidate. Both complete formats reconstruct all 1,196 source records. Dataset version: `01c28808841efdd7e0d69441c85a3d5e7c96389b7faaa7a53da97b006bd3d4c5`.
+
+Production has not been modified. Its recorded main reference remains `02b6f47345e428021dcae8fd4a798ecdfb03969b`.

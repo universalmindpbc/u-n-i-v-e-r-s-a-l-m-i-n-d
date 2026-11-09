@@ -6,7 +6,7 @@ import {chromium} from '/Users/benkorbel/.cache/codex-runtimes/codex-primary-run
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const candidate=process.argv.includes('--candidate');
 const out=path.join(root,'research/informatics/e8-layout-restore-20261109');await fs.mkdir(out,{recursive:true});
-const server=await chromium.launchServer({executablePath:'/Users/benkorbel/Library/Caches/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-mac-arm64/chrome-headless-shell',headless:true,args:['--mute-audio','--autoplay-policy=user-gesture-required','--disable-gpu']});
+const server=await chromium.launchServer({executablePath:'/Users/benkorbel/Library/Caches/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-mac-arm64/chrome-headless-shell',headless:true,args:['--mute-audio','--autoplay-policy=user-gesture-required','--disable-gpu','--disable-partial-raster','--run-all-compositor-stages-before-draw']});
 assert(server.process().spawnargs.includes('--mute-audio'));
 const browser=await chromium.connect(server.wsEndpoint());const results=[],errors=[];
 async function contextFor(width,height){
@@ -32,6 +32,7 @@ try{
   await hostPage.goto('https://staging.universalmind.tv/informatics/geometry/?record=fibonacci-m9-p24&record-mode=research#e8',{waitUntil:'domcontentloaded'});
   const iframe=await hostPage.waitForSelector('#atlas-frame');const page=await iframe.contentFrame();
   try{await page.locator('#e8-view').waitFor({state:'visible'});}catch(error){console.log(JSON.stringify({errors,url:page.url(),text:(await page.locator('body').innerText()).slice(0,4000)}));throw error;}
+  await page.getByRole('tab',{name:'E8',exact:true}).waitFor({state:'visible'});await page.getByRole('tab',{name:'Odom’s construction',exact:true}).waitFor({state:'visible'});
   const tabs=await page.locator('nav [role=tab]').allTextContents();assert.equal(tabs[tabs.indexOf('E8')+1],'Odom’s construction');
   assert.equal(await page.locator('[role=tab][aria-selected=true]').innerText(),'E8');
   assert(!/quantum|genomic|OXTR/i.test(await page.locator('#e8-view').innerText()));
@@ -71,7 +72,8 @@ try{
     const labelRingClear=svg.dataset.projection==='symbolic'||rootRadii.every(radius=>radius<Math.min(...labelBounds)-.8||radius>Math.max(...labelBounds)+.8);
     return {labelFont:getComputedStyle(svg.querySelector('[data-e8-layer=alpha] text')).fontSize,labelBand:[Math.min(...labelBounds),Math.max(...labelBounds)],rootRadii:[...new Set(rootRadii.map(n=>+n.toFixed(3)))],radius:r,svgHeight:svg.getBoundingClientRect().height,viewportHeight:innerHeight,figureTop:document.querySelector('.e8-figure').getBoundingClientRect().top,labels:labels.length,overlappingLabels,labelRingClear,clearOfCentralGeometry:Math.min(...labelBounds)>r*.44+8,separate,layout:svg.dataset.layout,diameter:svg.getBoundingClientRect().width};
    });
-   if(spacing.overlappingLabels)await hostPage.screenshot({path:path.join(out,'candidate-spacing-failure.png')});
+   if(spacing.overlappingLabels)await hostPage.waitForTimeout(750);
+   await hostPage.screenshot({path:path.join(out,'candidate-spacing-failure.png')});
    assert.equal(spacing.labels,24);assert(!spacing.overlappingLabels,JSON.stringify({width,mode,spacing}));assert(spacing.clearOfCentralGeometry,JSON.stringify(spacing));assert(spacing.separate,JSON.stringify(spacing));
    assert.equal(spacing.layout,'overlay');assert(spacing.labelRingClear,JSON.stringify(spacing));
    assert.equal(await page.locator('[data-e8-beta-path]').getAttribute('stroke'),'#ffea42');
@@ -95,12 +97,14 @@ try{
    if(width>=1000)assert(fold.sidebarBeside,JSON.stringify(fold));
    results.at(-1).viewportFit=fold;
    await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
-   await hostPage.screenshot({path:path.join(out,`${candidate?'candidate':'staging'}-${mode}-${width}.png`),animations:'disabled'});
+   await hostPage.waitForTimeout(750);
+   await hostPage.screenshot({path:path.join(out,`${candidate?'candidate':'staging'}-${mode}-${width}.png`),animations:'disabled',fullPage:true});
    if(mode==='symbolic'){
     await page.locator('#e8-beta').check();
     await page.evaluate(()=>window.scrollTo(0,0));
     if(width>=1000)assert(await page.locator('.e8-figure').evaluate(n=>n.getBoundingClientRect().bottom<=innerHeight));
-    await hostPage.screenshot({path:path.join(out,`${candidate?'candidate':'staging'}-all-layers-${width}.png`)});
+    await hostPage.waitForTimeout(750);
+   await hostPage.screenshot({path:path.join(out,`${candidate?'candidate':'staging'}-all-layers-${width}.png`),fullPage:true});
     await page.locator('#e8-beta').uncheck();
    }
    await page.locator('#e8-beta').uncheck();
@@ -120,7 +124,8 @@ try{
  await page.goto('https://staging.universalmind.tv/informatics/geometry/?record=fibonacci-m9-p24&record-mode=research#e8',{waitUntil:'domcontentloaded'});
  const frame=page.frameLocator('#atlas-frame');await frame.locator('#e8-view').waitFor({state:'visible',timeout:30000});
  await frame.locator('#e8-projection').selectOption('p24');assert.equal(await frame.locator('[data-root-id]').count(),240);
- await page.screenshot({path:path.join(out,`${candidate?'candidate':'staging'}-embedded-desktop.png`)});
+ await page.waitForTimeout(750);
+ await page.screenshot({path:path.join(out,`${candidate?'candidate':'staging'}-embedded-desktop.png`),fullPage:true});
  assert.equal(new URL(page.url()).hash,'#e8');results.push({embedded:true,deepLink:true,rootCount:240});await close(context);
  assert.deepEqual(errors,[]);
  const report={mode:candidate?'candidate':'staging',softwareRendering:true,processAudioMuted:true,playbackBlocked:true,nativeFullscreen:false,results};
