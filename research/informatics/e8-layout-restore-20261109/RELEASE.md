@@ -21,7 +21,7 @@ Ben rejected the expanded page layout and requested the original arrangement wit
 - Desktop checks require the full figure, toggles and slider to fit inside the iframe viewport, with the sidebar beside the drawing.
 - All sizes check 240 roots, 24 labels, label clearance, native Gamma angles, the Beta doubling path, independent guide controls, cycle selection, navigation and horizontal bounds.
 - Phone checks retain the original vertical page flow; they do not assert whole-page viewport fit.
-- Browser QA uses a dedicated headless Chromium process with audio muted and playback blocked. Software rendering, complete raster capture and a focused three-view paint check address a headless screenshot artifact. The focused paint check allows 750 ms for paint settling, confirms visible text and captures complete 1440 × 950 screenshots in staging-proof-symbolic.png, staging-proof-p24.png and staging-proof-p30.png. Earlier batch screenshots may contain partial raster output; the dedicated proof captures are the visual reference. No native fullscreen or user browser interaction.
+- Browser QA uses a dedicated headless Chromium process with audio muted and playback blocked. Headless screenshots intermittently omit unchanged painted regions even while DOM text, opacity and visibility remain correct. A focused three-view check confirms visible labels in every mode. The complete staging-proof-symbolic.png capture verifies the restored page arrangement; some other captures contain partial raster output and are retained as diagnostic evidence. Viewport and interaction assertions pass independently of that screenshot limitation. No native fullscreen or user browser interaction.
 
 ## Release status
 
