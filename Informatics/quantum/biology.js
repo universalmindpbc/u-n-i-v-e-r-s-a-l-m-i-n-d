@@ -18,6 +18,7 @@ const stepNames=['ask','study','classical','quantum','discovery'];
 function step(id,focus=false){if(!stepNames.includes(id))return;if(id==='classical'||id==='quantum'){openResults(id,false,document.activeElement);return;}for(const b of document.querySelectorAll('[data-step]')){if(b.hasAttribute('aria-pressed'))b.setAttribute('aria-pressed',String(b.dataset.step===id));}for(const p of document.querySelectorAll('[data-step-panel]'))p.hidden=p.dataset.stepPanel!=='ask'&&p.dataset.stepPanel!==id;window.scrollTo({top:0,behavior:'instant'});if(focus)$(`[data-step="${id}"]`).focus();}
 for(const b of document.querySelectorAll('[data-step]'))b.onclick=()=>step(b.dataset.step);
 for(const b of document.querySelectorAll('[data-step-link]'))b.onclick=()=>step(b.dataset.stepLink,true);
+for(const b of document.querySelectorAll('[data-gene]'))b.onclick=()=>{if(busy)return;step('ask');$('#question').value=b.dataset.gene==='NMDAR'?'Explore NMDA receptor genes.':'Explore '+b.dataset.gene+'.';$('#question').focus();};
 for(const b of document.querySelectorAll('[data-prompt]'))b.onclick=()=>{if(busy)return;step('ask');$('#question').value=prompts[b.dataset.prompt];$('#question').focus();};
 function details(title,items){const d=node('details');d.append(node('summary',title));for(const text of items)d.append(node('p',text));return d;}
 function download(value,name){const url=URL.createObjectURL(new Blob([JSON.stringify(value,null,2)],{type:'application/json'})),a=node('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),5000);}
@@ -140,7 +141,7 @@ window.QuantumStudyConversation=Object.freeze({
 
 parent.postMessage({type:'quantum:conversation-ready'},location.origin);
 try{const saved=JSON.parse(localStorage.getItem(savedKey));if(saved?.version==='quantum-question-v3'&&saved.id&&saved.reports){activate(saved);}}catch{}
-import {setupConversation} from './conversation.js?v=minimal-20261109';
+import {setupConversation} from './conversation.js?v=research-input-20261109';
 setupConversation();
 
 setupDelivery();openEmailResult(activate);

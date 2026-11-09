@@ -3,7 +3,7 @@ import hashlib,json,zipfile
 from pathlib import Path
 root=Path(__file__).parent
 out=Path('/private/tmp/um-portal-demo-package-20261109');out.mkdir(exist_ok=True)
-for name,files in [('source',['Dockerfile','worker.py','design.py','computation.py','verify.py','verification-fixture.json']),('dispatcher',['dispatch.py'])]:
+for name,files in [('source',['Dockerfile','worker.py','research_context.py','design.py','computation.py','verify.py','verification-fixture.json']),('dispatcher',['dispatch.py'])]:
  with zipfile.ZipFile(out/(name+'.zip'),'w',zipfile.ZIP_DEFLATED) as z:
   for f in files:
    info=zipfile.ZipInfo(f,date_time=(2026,11,9,0,0,0));info.compress_type=zipfile.ZIP_DEFLATED;info.external_attr=0o100644 << 16;z.writestr(info,(root/f).read_bytes())

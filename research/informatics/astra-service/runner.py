@@ -28,7 +28,7 @@ def invocation_seconds(stage, profile):
          'result':profile['astra']['timeout_seconds']+45,
          'design_review':profile['gemini']['timeout_seconds']+45,
          'final_review':profile['gemini']['timeout_seconds']+45,
-         'simulation':645,'evidence':90,'classical':90}.get(stage,0)
+         'simulation':645,'evidence':225 if ORIGIN=='https://staging.universalmind.tv' else 90,'classical':90}.get(stage,0)
 
 def worker_token_limit(profile, task):
  limit=profile['astra'].get('study_token_limit',24000)
@@ -40,12 +40,16 @@ def worker_token_limit(profile, task):
   return limit-tokens
  return limit
 
+def literature_brief(record):
+ return {'specialistReview':{**{k:v for k,v in record.get('specialistReview',{}).items() if k in ['status','model','receipt']},'answer':record.get('specialistReview',{}).get('answer','')[:3600],'papers':[{k:v for k,v in p.items() if k in ['pmid','doi','title','url']} for p in record.get('specialistReview',{}).get('papers',[])[:6]]},'version':record.get('version'),'queries':record.get('queries'),'retrievedAt':record.get('retrievedAt'),'searches':record.get('searches'),'papers':[{k:v[:600] if k=='abstract' else v for k,v in p.items() if k not in ['searchReceipts','receipt','authors']} for p in record.get('papers',[])[:3]],'reads':[{'paper':{k:v for k,v in r.get('paper',{}).items() if k in ['id','pmid','pmcid','doi','title','url','isRetracted']},'coverage':r.get('coverage'),'fullTextStatus':r.get('fullTextStatus'),'passages':[dict(p,text=p['text'][:600],truncated=True) for p in r.get('passages',[])[:2]],'receipt':r.get('fullTextReceipt')} for r in record.get('reads',[])[:2]],'interpretation':record.get('interpretation')}
+
 def memory_excerpt(record):
  """Keep provenance and bounded source excerpts inside the model allowance."""
  return {'schema':record.get('schema'),'retrieved_at':record.get('retrieved_at'),
   'memories':[{'id':m['id'],'revision':m['revision'],'kind':m['kind'],'source_sha256':m['source_sha256'],'excerpt':json.dumps(m['data'],ensure_ascii=False)[:600]} for m in record.get('memories',[])[:6]],
   'literature':[{k:(v[:400] if k=='text' else v) for k,v in m.items()} for m in record.get('literature',[])[:2]],
-  'stimulus':record.get('stimulus',[]),'interpretation':record.get('interpretation')}
+  'stimulus':record.get('stimulus',[]),'interpretation':record.get('interpretation'),
+  **({'live_literature':record['liveLiterature']} if record.get('liveLiterature') else {})}
 
 def write_full_csv(path,value):
  """Flatten every field, including metadata and quantum measurements."""
@@ -92,6 +96,7 @@ def brief_input(evidence,question,feedback=None):
  lean['prepared_quantum']['local_CUDA_Q_programs_completed']=len(prepared['cases'])
  lean['prepared_quantum']['samples']=sorted({r['sample'] for r in prepared['cases']})
  lean['prepared_quantum']['identical_programs']=program_summary(prepared['cases'])['identical_programs']
+ if evidence.get('research_memory',{}).get('live_literature'):lean['live_literature']=literature_brief(evidence['research_memory']['live_literature'])
  lean['research_memory_sources']=[{k:v for k,v in m.items() if k!='excerpt'} for m in evidence.get('research_memory',{}).get('memories',[])]
  revision=[{'summary':r['summary'],'required_changes':r.get('required_changes',[]),'failed_checks':[c for c in r.get('checks',[]) if c.get('status')=='fail']} for r in feedback or []]
  prompt=json.dumps({'question':question,'calculated_evidence':lean,'Gemini_revision_request':revision},ensure_ascii=False,separators=(',',':'))
@@ -122,17 +127,19 @@ def graph(ledger,checkpointer,progress,memory_lookup=None,reviewer=None,review_p
  settings=model_settings['astra']
  recipe=recipe_for_profile(model_settings)
  def review_packet(s,phase,material):
+  if s.get('memory',{}).get('live_literature'):material={**material,'live_literature':literature_brief(s['memory']['live_literature'])}
   record={**checked_review(reviewer.review(s['id'],phase,material),material),'phase':phase}
   records=[*s.get('reviews',[]),record];review_progress(records)
   return {'review':record,'reviews':records,'review_inputs':{**s.get('review_inputs',{}),record['evidence_sha256']:material}}
  def plan(s):
   progress('model','Astra is selecting the supported calculation for your question.')
   feedback=[r for r in s.get('reviews',[]) if r['phase']=='design']
-  payload={'question':s['question'],'recipe':recipe,'memory':s['memory'],'feedback':feedback}
+  memory={**s['memory'],**({'live_literature':literature_brief(s['memory']['live_literature'])} if s['memory'].get('live_literature') else {})}
+  payload={'question':s['question'],'recipe':recipe,'memory':memory,'feedback':feedback}
   if settings['effort']!='low':payload['model_settings']=model_settings
   reserve=len(json.dumps(payload,ensure_ascii=False).encode())+len(PLAN_INSTRUCTIONS.encode())+len(json.dumps(PLAN_SCHEMA).encode())+settings['plan_output_tokens']+1300
   invoke=planner or (lambda *args:create_plan(*args,model_settings=model_settings))
-  value=ledger.run(s['id'],s['id']+':design:'+digest(payload),reserve,lambda:invoke(json.loads(SECRET.read_text())['openai'],s['question'],s['memory'],feedback))
+  value=ledger.run(s['id'],s['id']+':design:'+digest(payload),reserve,lambda:invoke(json.loads(SECRET.read_text())['openai'],s['question'],memory,feedback))
   return {'plan':value['plan'],'plan_receipt':{k:v for k,v in value.items() if k!='plan'}}
  def design(s):
   progress('design_review','Gemini is checking the method before calculations begin.')
@@ -203,7 +210,7 @@ class Broker:
  def call(self,op,**data):
   r=requests.post(ENDPOINT+'/agent/control',headers={'Origin':ORIGIN,'Authorization':'Bearer '+self.secret['worker']},json={'op':op,**data},timeout=30);r.raise_for_status();return r.json()
  def memory(self,question):
-  r=requests.post(ENDPOINT+'/agent/memory',headers={'Origin':ORIGIN,'Authorization':'Bearer '+self.secret['worker']},json={'query':question},timeout=45);r.raise_for_status();return r.json()
+  r=requests.post(ENDPOINT+'/agent/memory',headers={'Origin':ORIGIN,'Authorization':'Bearer '+self.secret['worker']},json={'query':question},timeout=180 if ORIGIN=='https://staging.universalmind.tv' else 45);r.raise_for_status();return r.json()
  def progress(self,stage,message):
   self.current_stage=stage
   if self.stopped.is_set():raise RuntimeError('Task cancelled or lease unavailable')

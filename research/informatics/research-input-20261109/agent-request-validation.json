@@ -1,0 +1,29 @@
+{
+  "status": "source_unavailable",
+  "provider": "Perplexity Agent API",
+  "model": "anthropic/claude-opus-5-5",
+  "query": "Find primary research on human GRIN2B transcriptional regulation. Identify one supported regulator and distinguish direct binding evidence from expression association.",
+  "reason": "Verify the new specialist agent with a narrow public gene-research question.",
+  "answer": "",
+  "receipt": {
+    "model": "anthropic/claude-opus-5-5",
+    "reasoningEffort": "high",
+    "reservation": 1,
+    "reservedUSD": 0.75,
+    "requestUpperUSD": 0.13370500000000002,
+    "calls": [
+      {
+        "inputTokenUpper": 10357,
+        "outputTokenUpper": 4096,
+        "reservedUSD": 0.13370500000000002,
+        "httpStatus": 400,
+        "error": "invalid request: invalid tools in request: custom function name \"search_web\" is reserved"
+      }
+    ],
+    "toolExecutions": 0,
+    "retrievedAt": "2026-11-09T11:00:41.342Z"
+  },
+  "papers": [],
+  "records": [],
+  "interpretation": "An AI-generated literature brief for Astra and Gemini to assess against its original sources. This is not independent experimental confirmation. Uncertain calls retain their budget reservation."
+}

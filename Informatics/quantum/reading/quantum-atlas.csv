@@ -2,11 +2,11 @@ path,type,value
 ,object,
 /schema,string,universal-informatics/quantum-atlas-guide/v1
 /title,string,Quantum Atlas · AI / LLM Wiki
-/version,string,2026-11-09-portal-minimal-3
+/version,string,2026-11-09-live-research-1
 /url,string,https://universalmind.tv/informatics/quantum/
 /wiki,string,https://universalmind.tv/informatics/read/quantum/index.html
 /agent_architecture,object,
-/agent_architecture/version,string,2026-11-09-portal-minimal-3
+/agent_architecture/version,string,2026-11-09-live-research-1
 /agent_architecture/purpose,object,
 /agent_architecture/purpose/title,string,What Quantum Atlas is for
 /agent_architecture/purpose/summary,string,"Universal Informatics is building an open-source quantum machine for mental health: a network of large language models and quantum computers working together as one. Quantum Atlas connects conversational scientific questions with genomics, biological research and quantum experiments, retaining the methods, evidence and limitations."
@@ -31,11 +31,11 @@ path,type,value
 /agent_architecture/purpose/vision/open_source_direction,string,Open source is the project ethos and intended direction. Open collaboration is planned as the software matures. The current published permission-based source licence continues to apply.
 /agent_architecture/purpose/vision/evidence_boundary,string,"This is a development vision. Current experiments do not establish clinical benefits, and the comparison does not claim feature parity, endorsement or affiliation."
 /agent_architecture/purpose/audience,string,"Bioinformatics researchers and scientists with no quantum computing skills. Lead with their question, proposed investigation, expected findings and included credit. Keep device names, shot counts and cost calculations in optional technical detail. Agents handle computing choices, with gentle educational explanation on request."
-/agent_architecture/features,array,11
+/agent_architecture/features,array,14
 /agent_architecture/features/0,object,
 /agent_architecture/features/0/feature,string,Live research conversation
 /agent_architecture/features/0/purpose,string,"Talk with Universal One on the Quantum Atlas page using text, dictation or live voice. Refine your scientific question and explicitly ask the agents to run it."
-/agent_architecture/features/0/human_value,string,Progress and findings appear automatically in the same conversation. Follow-up discussion shares the saved study; reloading reconnects without submitting another run.
+/agent_architecture/features/0/human_value,string,Progress and findings appear automatically in the same conversation. Follow-up discussion shares the saved study; reloading reconnects without submitting another run. Microphone input is visible beside dictation and inline voice controls. The original question prompt remains in place.
 /agent_architecture/features/1,object,
 /agent_architecture/features/1/feature,string,Study and live workflow
 /agent_architecture/features/1/purpose,string,"Show the question, scientific plan, agent progress and the role of each calculation or evidence source."
@@ -76,6 +76,18 @@ path,type,value
 /agent_architecture/features/10/feature,string,Results email
 /agent_architecture/features/10/purpose,string,"Register an email address for the active study or the next launch. The completed study triggers one private results link, available for 30 days."
 /agent_architecture/features/10/human_value,string,Read the completed findings on another device. Email notification status is shown on the page.
+/agent_architecture/features/11,object,
+/agent_architecture/features/11/feature,string,Public gene and binding evidence
+/agent_architecture/features/11/purpose,string,"Explore candidate genes or another human or mouse gene using NCBI annotation, UCSC reference DNA, ENCODE measured binding regions and JASPAR motif models. NMDAR represents seven GRIN subunit genes."
+/agent_architecture/features/11/human_value,string,Retrieve source-qualified evidence without pre-downloading a fixed gene collection. Candidate names fill a draft; they never launch a study.
+/agent_architecture/features/12,object,
+/agent_architecture/features/12/feature,string,Live literature review
+/agent_architecture/features/12/purpose,string,"Search PubMed and Europe PMC, read abstracts and selected available open-access article passages, and share a source-qualified evidence packet with Astra and Gemini. Optional Perplexity discovery requires a configured server key and a funded allowance."
+/agent_architecture/features/12/human_value,string,"A concise conversation explains the scientific answer; sources, reading coverage, retrieval dates and checksums remain available for inspection. Search results and model agreement do not establish a hypothesis."
+/agent_architecture/features/13,object,
+/agent_architecture/features/13/feature,string,Reading backgrounds
+/agent_architecture/features/13/purpose,string,"Choose Video, Black or White using the same saved background preference as Universal Research."
+/agent_architecture/features/13/human_value,string,Read the conversation and reports in the preferred visual setting.
 /agent_architecture/swarm,object,
 /agent_architecture/swarm/title,string,Quantum / AI agent swarm: who does what
 /agent_architecture/swarm/summary,string,"Astra and Gemini have distinct scientific roles. LangGraph coordinates their work and the specialist calculation services through an explicit, persistent workflow. The diagram on the Quantum page presents the scientific handoffs: formulate, model, simulate and measure, compare with biological evidence, then interpret."
@@ -157,7 +169,7 @@ path,type,value
 /agent_architecture/swarm/current_workflow/1,object,
 /agent_architecture/swarm/current_workflow/1/id,string,memory
 /agent_architecture/swarm/current_workflow/1/title,string,Retrieve context
-/agent_architecture/swarm/current_workflow/1/action,string,"Retrieve the mission, research directions, immutable experiment records and relevant literature."
+/agent_architecture/swarm/current_workflow/1/action,string,"Retrieve the mission, research directions, immutable experiment records and relevant library literature. On the staging research service, retrieve current PubMed and Europe PMC evidence with explicit abstract/full-text coverage for shared planning and review."
 /agent_architecture/swarm/current_workflow/2,object,
 /agent_architecture/swarm/current_workflow/2/id,string,audit
 /agent_architecture/swarm/current_workflow/2/title,string,Audit existing evidence
@@ -562,10 +574,10 @@ path,type,value
 /agent_architecture/participation/connect_guide,string,https://universalmind.tv/informatics/connect.html
 /agent_architecture/participation/handoff,string,"For a persistent investigation, open Quantum Atlas and frame the scientific question. The inline conversation and Universal One text, dictation and live voice commands use the same browser research session. Explicit run commands submit the supported question; progress and results reuse the saved study. The public MCP and A2A interfaces retain their read-only research scope."
 /agent_architecture/participation/citation_contract,string,"Retain study IDs, immutable revision URLs, source hashes, provider receipts and review status when moving between agents. Link the evidence that supports the explanation, and preserve the original question throughout the handoff."
-/agent_architecture/implementation_sources,array,30
+/agent_architecture/implementation_sources,array,38
 /agent_architecture/implementation_sources/0,object,
 /agent_architecture/implementation_sources/0/repository_path,string,Informatics/quantum/index.html
-/agent_architecture/implementation_sources/0/sha256,string,710798b75590f640aa3e46ba18201dc70711218d8b571024208f69ba9e41f33a
+/agent_architecture/implementation_sources/0/sha256,string,c38049d9c536ebc828e85219d1d4ddbd955990ea4c2355ea413edb0bf782f74f
 /agent_architecture/implementation_sources/0/scope,string,Original primary-page source with generated reading blocks removed
 /agent_architecture/implementation_sources/1,object,
 /agent_architecture/implementation_sources/1/repository_path,string,Informatics/quantum/study.js
@@ -577,7 +589,7 @@ path,type,value
 /agent_architecture/implementation_sources/2/scope,string,Implementation source
 /agent_architecture/implementation_sources/3,object,
 /agent_architecture/implementation_sources/3/repository_path,string,Informatics/quantum/biology.js
-/agent_architecture/implementation_sources/3/sha256,string,61ff401dae5c65aaa6183e09630686ab14e3d70ddb27436e0fba71a27d2ca428
+/agent_architecture/implementation_sources/3/sha256,string,80fcfeaaab4eb38715231a561205803b7ec6752b856d269aba4a808e158d0e25
 /agent_architecture/implementation_sources/3/scope,string,Implementation source
 /agent_architecture/implementation_sources/4,object,
 /agent_architecture/implementation_sources/4/repository_path,string,Informatics/quantum/scientific-review.js
@@ -605,11 +617,11 @@ path,type,value
 /agent_architecture/implementation_sources/9/scope,string,Implementation source
 /agent_architecture/implementation_sources/10,object,
 /agent_architecture/implementation_sources/10/repository_path,string,cloudflare/informatics-astra-memory.js
-/agent_architecture/implementation_sources/10/sha256,string,a4384d95c1a0eafb7aa72bbdcf38fe4f1bd88ad895d419b5ff3e4916626a6c6e
+/agent_architecture/implementation_sources/10/sha256,string,9b064937dfc80b020fefffb2b8ba5934cc47db2c5e6a87195538b041c1a8d48e
 /agent_architecture/implementation_sources/10/scope,string,Implementation source
 /agent_architecture/implementation_sources/11,object,
 /agent_architecture/implementation_sources/11/repository_path,string,research/informatics/astra-service/runner.py
-/agent_architecture/implementation_sources/11/sha256,string,5ae9062b5b20833f0da9d3e3f3927703b2622c1b29b8a07160ce79ae59eb8f2f
+/agent_architecture/implementation_sources/11/sha256,string,a71512ae2956c2911bf2c03da8c8010a9fe3238a14f7d800e2969d7097d76328
 /agent_architecture/implementation_sources/11/scope,string,Implementation source
 /agent_architecture/implementation_sources/12,object,
 /agent_architecture/implementation_sources/12/repository_path,string,research/informatics/astra-service/review_flow.py
@@ -637,7 +649,7 @@ path,type,value
 /agent_architecture/implementation_sources/17/scope,string,Implementation source
 /agent_architecture/implementation_sources/18,object,
 /agent_architecture/implementation_sources/18/repository_path,string,Informatics/universal-one.js
-/agent_architecture/implementation_sources/18/sha256,string,853d13c6a3627aa9ab3661c5dc343359a515796b1bf846360ed070ad7f016967
+/agent_architecture/implementation_sources/18/sha256,string,18eb81b491a3703d870c01b9fa13f98c391fabfacee297384bff2cc10cf96f6f
 /agent_architecture/implementation_sources/18/scope,string,Implementation source
 /agent_architecture/implementation_sources/19,object,
 /agent_architecture/implementation_sources/19/repository_path,string,Informatics/universal-one-live.js
@@ -649,11 +661,11 @@ path,type,value
 /agent_architecture/implementation_sources/20/scope,string,Implementation source
 /agent_architecture/implementation_sources/21,object,
 /agent_architecture/implementation_sources/21/repository_path,string,cloudflare/informatics-quantum-command.js
-/agent_architecture/implementation_sources/21/sha256,string,fddc12ef89340bd144de22bf38ebf7ed762a9741ae4ba1e7704767f41eb0f891
+/agent_architecture/implementation_sources/21/sha256,string,d40f20dfeb0f94bd24985db3316eed20a092e6d04ef8bcacec264a31c8375ea7
 /agent_architecture/implementation_sources/21/scope,string,Implementation source
 /agent_architecture/implementation_sources/22,object,
 /agent_architecture/implementation_sources/22/repository_path,string,Informatics/quantum/conversation.js
-/agent_architecture/implementation_sources/22/sha256,string,9f6db4b8b666edd977813066276b8d74139935702f1ecfb661d7f19f75cc587a
+/agent_architecture/implementation_sources/22/sha256,string,7756103a5f5d99f9968be7c15dbc7541b1235c1b0c0b19c09e8bdb65b0044540
 /agent_architecture/implementation_sources/22/scope,string,Implementation source
 /agent_architecture/implementation_sources/23,object,
 /agent_architecture/implementation_sources/23/repository_path,string,Informatics/quantum/delivery.js
@@ -681,8 +693,40 @@ path,type,value
 /agent_architecture/implementation_sources/28/scope,string,Implementation source
 /agent_architecture/implementation_sources/29,object,
 /agent_architecture/implementation_sources/29/repository_path,string,research/informatics/portal-demo-20261109/worker.py
-/agent_architecture/implementation_sources/29/sha256,string,98d6eed2d38fe2d3d66130656a42f987b8b7ac7250a63887d197ed37e517f741
+/agent_architecture/implementation_sources/29/sha256,string,d4d0046661935528722e0ddcb55f743a27473d4bdc0b5ad45e5d671830ac6ba5
 /agent_architecture/implementation_sources/29/scope,string,Implementation source
+/agent_architecture/implementation_sources/30,object,
+/agent_architecture/implementation_sources/30/repository_path,string,Informatics/universal-one-waveform.js
+/agent_architecture/implementation_sources/30/sha256,string,edc471ab2576bd46bc9743c3bb4c1485a869720c65dd52d3e852417e9109660d
+/agent_architecture/implementation_sources/30/scope,string,Implementation source
+/agent_architecture/implementation_sources/31,object,
+/agent_architecture/implementation_sources/31/repository_path,string,Informatics/quantum/reading-theme.js
+/agent_architecture/implementation_sources/31/sha256,string,23cbedf355f4aca351cb3797f66a98d7df6137f307d46f24c26962b009209904
+/agent_architecture/implementation_sources/31/scope,string,Implementation source
+/agent_architecture/implementation_sources/32,object,
+/agent_architecture/implementation_sources/32/repository_path,string,Informatics/quantum/reading-theme.css
+/agent_architecture/implementation_sources/32/sha256,string,ed4b94399a59d31ccc75e66c1500d5f7273a3c3b5a19fde67a93890c5b619c38
+/agent_architecture/implementation_sources/32/scope,string,Implementation source
+/agent_architecture/implementation_sources/33,object,
+/agent_architecture/implementation_sources/33/repository_path,string,cloudflare/informatics-gene-data.js
+/agent_architecture/implementation_sources/33/sha256,string,5bb898313ab9e50c304a19de263e91b767e2956beaa2ababeb972f9198ad518c
+/agent_architecture/implementation_sources/33/scope,string,Implementation source
+/agent_architecture/implementation_sources/34,object,
+/agent_architecture/implementation_sources/34/repository_path,string,cloudflare/informatics-literature.js
+/agent_architecture/implementation_sources/34/sha256,string,1c083953ac69bd075487cc5fdd2f46a7677bf37a2d878dfe387408e9ebf643e8
+/agent_architecture/implementation_sources/34/scope,string,Implementation source
+/agent_architecture/implementation_sources/35,object,
+/agent_architecture/implementation_sources/35/repository_path,string,cloudflare/informatics-literature-fallback.js
+/agent_architecture/implementation_sources/35/sha256,string,b444a7af0be28050ea2b7139d119c3b3df7128027e38b7d986da331b29601d39
+/agent_architecture/implementation_sources/35/scope,string,Implementation source
+/agent_architecture/implementation_sources/36,object,
+/agent_architecture/implementation_sources/36/repository_path,string,cloudflare/informatics-research-worker.js
+/agent_architecture/implementation_sources/36/sha256,string,1f9392c60776600e62aac5011b34e69bdbd914a5544822568a41e75ade7aa865
+/agent_architecture/implementation_sources/36/scope,string,Implementation source
+/agent_architecture/implementation_sources/37,object,
+/agent_architecture/implementation_sources/37/repository_path,string,research/informatics/portal-demo-20261109/research_context.py
+/agent_architecture/implementation_sources/37/sha256,string,6c7c7feef53d911e840d8305c1cf5705066f374df8014929c545e1e5aeabcd0b
+/agent_architecture/implementation_sources/37/scope,string,Implementation source
 /instructions,array,3
 /instructions/0,string,"Read the saved study phases in order: original qualification runs, completed classical genomic pilot, further local CPU checks, then the proposed next quantum test."
 /instructions/1,string,"Retain the source labels for calculated values, GPU simulations, Aquila measurements, mathematical relationships and proposed mechanisms."
@@ -8057,6 +8101,6 @@ path,type,value
 /sources/11/sha256,string,11bcf4afab33943cfa6f5d40aa644089d16b1a7f7875f910cc503a4a2abec063
 /page_prose_sha256,string,3e5c0639d08e25f35a138d477f50a69fb78aa1c06501db0f382539fc80fe4d7b
 /downloads,object,
-/downloads/json,string,https://universalmind.tv/informatics/quantum/reading/quantum-atlas.json?v=2026-11-09-portal-minimal-3
-/downloads/csv,string,https://universalmind.tv/informatics/quantum/reading/quantum-atlas.csv?v=2026-11-09-portal-minimal-3
-/downloads/md,string,https://universalmind.tv/informatics/quantum/reading/quantum-atlas.md?v=2026-11-09-portal-minimal-3
+/downloads/json,string,https://universalmind.tv/informatics/quantum/reading/quantum-atlas.json?v=2026-11-09-live-research-1
+/downloads/csv,string,https://universalmind.tv/informatics/quantum/reading/quantum-atlas.csv?v=2026-11-09-live-research-1
+/downloads/md,string,https://universalmind.tv/informatics/quantum/reading/quantum-atlas.md?v=2026-11-09-live-research-1

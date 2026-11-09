@@ -1,0 +1,32 @@
+import fs from 'node:fs/promises';
+import assert from 'node:assert/strict';
+import {lookupGene,geneSequence,bindingEvidence,bindingMotifs,intersectPeaks} from '../../../cloudflare/informatics-gene-data.js';
+import {searchLiterature,readPaper,articlePassages,literatureQueries,literatureTool} from '../../../cloudflare/informatics-literature.js';
+import {reserveLiteratureSearch,perplexitySearch} from '../../../cloudflare/informatics-literature-fallback.js';
+const out=import.meta.dirname,checks=[];
+assert.equal(intersectPeaks('chr3\t9\t10\nchr3\t10\t12\nchr3\t20\t25\n',{chrom:'chr3',start:10,end:20}).totalOverlappingRegions,1);
+assert.throws(()=>intersectPeaks('chr3\t-1\t10',{chrom:'chr3',start:0,end:20}));
+assert.equal(intersectPeaks(Array.from({length:105},(_,i)=>`chr3\t${i}\t${i+2}`).join('\n'),{chrom:'chr3',start:0,end:200}).truncated,true);
+assert.equal(articlePassages('<article><body><sec><title>Methods</title><p>'+('Measured observations &amp; controls. '.repeat(7))+'</p></sec></body></article>','controls')[0].section,'Methods');
+assert.equal(literatureQueries('NMDAR Fibonacci transcription factor binding sites').length,2);
+let saved;const storage={async transaction(fn){return fn({get:async()=>saved,put:async(_,v)=>{saved=structuredClone(v);}});}};
+assert.equal((await reserveLiteratureSearch(storage,{})).allowed,false);
+const env={PERPLEXITY_ENABLED:'true',PERPLEXITY_TOTAL_LIMIT_USD:'.01'};
+assert.equal((await reserveLiteratureSearch(storage,env)).allowed,true);assert.equal((await reserveLiteratureSearch(storage,env)).allowed,true);assert.equal((await reserveLiteratureSearch(storage,env)).allowed,false);
+assert.equal((await perplexitySearch({},{})).status,'not_configured');
+const nativeFetch=globalThis.fetch;globalThis.fetch=async()=>new Response('upstream failure',{status:503});
+assert.equal((await literatureTool('search_literature',{query:'GRIN2B'})).status,'source_unavailable');globalThis.fetch=nativeFetch;
+checks.push('Coordinates, truncation, XML passages, search decomposition, unavailable sources and spending ceiling');
+if(process.env.LIVE==='1'){
+ const gene=await lookupGene({gene:'SLC6A4',species:'human'});assert.equal(gene.status,'resolved');assert.equal(gene.location.coordinates,'1-based inclusive');
+ const family=await lookupGene({gene:'NMDAR',species:'human'});assert.equal(family.genes.length,7);
+ const dna=await geneSequence({gene:'SLC6A4',species:'human',region:'promoter',length:2500});assert.equal(dna.sequence.length,2500);
+ const motifs=await bindingMotifs({factor:'CTCF'});assert(motifs.profiles.length>0);
+ const peaks=await bindingEvidence({gene:'SLC6A4',species:'human',factor:'CTCF',cell_type:'H1',flank:5000});assert(peaks.datasets.some(d=>d.status==='regions_checked'));assert(peaks.datasets.every(d=>d.assembly==='GRCh38'));
+ const noContext=await bindingEvidence({gene:'SLC6A4',species:'human',factor:'CTCF',cell_type:'synthetic-nonexistent-cell',flank:5000});assert.equal(noContext.matchingFiles,0);
+ const search=await searchLiterature({query:'GRIN2B AND transcription AND regulation'});assert(search.searches.every(s=>s.status==='retrieved'));assert(search.papers.length>0);
+ const read=await readPaper({id:'PMC4383902',query:'methods full text access'});assert.equal(read.fullTextStatus,'retrieved');assert(read.passages.length>0);
+ const record={gene,family,dna:{...dna,sequence:undefined},motifs:{...motifs,profiles:motifs.profiles.map(({pfm,...p})=>({...p,length:pfm.A.length}))},peaks,noContext,search:{...search,papers:search.papers.map(({abstract,...p})=>({...p,abstractCharacters:abstract?.length||0}))},read:{...read,passages:read.passages.map(({text,...p})=>({...p,characters:text.length})),paper:{...read.paper,abstract:undefined}}};
+ await fs.writeFile(out+'/public-source-receipts.json',JSON.stringify(record,null,2)+'\n');checks.push('Live NCBI, UCSC, ENCODE, JASPAR, PubMed, Europe PMC and available full-text reading');
+}
+await fs.writeFile(out+'/source-checks.json',JSON.stringify({passed:true,paidRequests:0,checks},null,2)+'\n');console.log(JSON.stringify({passed:true,checks}));

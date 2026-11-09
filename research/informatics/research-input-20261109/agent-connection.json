@@ -1,0 +1,669 @@
+{
+  "status": "completed",
+  "provider": "Perplexity Agent API",
+  "model": "anthropic/claude-opus-5-5",
+  "query": "Find the original Nature 2022 paper titled Dynamical topological phase realized in a trapped-ion quantum simulator. Report its DOI, publication date and one limitation. One original source is sufficient.",
+  "reason": "Verify source retrieval and citation on a public quantum-physics paper, separately from the declined biological query.",
+  "answer": "I found the original paper. The DOI is 10.1038/s41586-022-04853-4, and it was first published online on 20 July 2022. One limitation stated in the abstract is the small system size: the experiment used only ten trapped-ion qubits.\n\n**Source:** Dumitrescu PT, Bohnet JG, Gaebler JP, Hankin A, Hayes D, Kumar A, Neyenhuis B, Vasseur R, Potter AC. \"Dynamical topological phase realized in a trapped-ion quantum simulator.\" *Nature* 2022.\n- **PMID:** 35859195 (https://pubmed.ncbi.nlm.nih.gov/35859195/)\n- **Publisher page:** https://www.nature.com/articles/s41586-022-04853-4\n- **Volume and pages:** 607, 463–467. This comes from reference lists in papers that cite it (for example PMC10923891), not from the paper's own record.\n\n**What the abstract says:**\n- **Platform:** a quasiperiodically driven array of ten ¹⁷¹Yb⁺ hyperfine qubits on Quantinuum's System Model H1 trapped-ion quantum processor.\n- **Result:** the authors report an emergent dynamical symmetry-protected topological phase. Its edge qubits are dynamically protected from control errors, cross-talk and stray fields.\n- **Comparison:** the authors report that edge states of a *periodically* driven array are vulnerable to symmetry-breaking errors and quickly decohere. They present the robustness as specific to quasiperiodic driving.\n\n**Limitations:**\n- **Size:** with ten qubits, it's unclear whether the result holds for larger systems or in the thermodynamic limit.\n- **Scope of the robustness claim:** the abstract describes the protection as \"absolutely stable to generic coherent perturbations.\" That wording doesn't cover incoherent noise, such as dephasing or coupling to the environment. Whether the full text addresses this, I couldn't check.\n\n**What I could and couldn't verify:**\n- I read only the abstract and the bibliographic metadata. The paper isn't open access, so I didn't read the full text, methods, error analysis or figures.\n- The limitations above are my reading of the abstract, not the authors' own discussion of limitations.\n- I didn't look for papers that dispute the result. The citing papers I found (e.g. Nature 2025, DOI 10.1038/s41586-025-09456-3; npj Quantum Inf 2025, DOI 10.1038/s41534-025-01122-w) appeared only as reference-list snippets, so I can't say whether any of them challenge it.\n\n**Next steps:** to get the authors' own stated limitations, read the full text at the Nature link above. A preprint version may also be on arXiv, but I didn't retrieve or confirm one.",
+  "receipt": {
+    "model": "anthropic/claude-opus-5-5",
+    "reasoningEffort": "high",
+    "reservation": 1,
+    "reservedUSD": 0.47,
+    "requestUpperUSD": 0.37261999999999995,
+    "calls": [
+      {
+        "inputTokenUpper": 10486,
+        "outputTokenUpper": 4096,
+        "reservedUSD": 0.13435,
+        "httpStatus": 200,
+        "requestId": "resp_6ff99da2-0b42-48d8-8629-6aa9182000ef",
+        "model": "anthropic/claude-opus-5-5",
+        "usage": {
+          "cost": {
+            "cache_creation_cost": 0.00518,
+            "currency": "USD",
+            "input_cost": 0.00002,
+            "output_cost": 0.00558,
+            "total_cost": 0.01078
+          },
+          "input_tokens": 1040,
+          "input_tokens_details": {
+            "cache_creation_input_tokens": 1036,
+            "cache_read_input_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 279,
+          "output_tokens_details": {
+            "reasoning_tokens": 120
+          },
+          "total_tokens": 1319
+        },
+        "providerStatus": "completed",
+        "providerError": null,
+        "incompleteDetails": null,
+        "outputTypes": [
+          "function_call",
+          "function_call"
+        ]
+      },
+      {
+        "inputTokenUpper": 31270,
+        "outputTokenUpper": 4096,
+        "reservedUSD": 0.23826999999999998,
+        "httpStatus": 200,
+        "requestId": "resp_db4c9d5a-25b7-40fe-8836-f407a6f98f62",
+        "model": "anthropic/claude-opus-5-5",
+        "usage": {
+          "cost": {
+            "cache_creation_cost": 0.04235,
+            "cache_read_cost": 0.00021,
+            "currency": "USD",
+            "input_cost": 0.00001,
+            "output_cost": 0.02272,
+            "total_cost": 0.06529
+          },
+          "input_tokens": 9507,
+          "input_tokens_details": {
+            "cache_creation_input_tokens": 8469,
+            "cache_read_input_tokens": 1036,
+            "cached_tokens": 1036
+          },
+          "output_tokens": 1136,
+          "output_tokens_details": {
+            "reasoning_tokens": 191
+          },
+          "total_tokens": 10643
+        },
+        "providerStatus": "completed",
+        "providerError": null,
+        "incompleteDetails": null,
+        "outputTypes": [
+          "message"
+        ]
+      }
+    ],
+    "toolExecutions": 2,
+    "retrievedAt": "2026-11-09T11:06:37.669Z"
+  },
+  "papers": [
+    {
+      "id": "35859195",
+      "pmid": "35859195",
+      "pmcid": null,
+      "doi": "10.1038/s41586-022-04853-4",
+      "title": "Dynamical topological phase realized in a trapped-ion quantum simulator.",
+      "authors": "Dumitrescu PT, Bohnet JG, Gaebler JP, Hankin A, Hayes D, Kumar A, Neyenhuis B, Vasseur R, Potter AC.",
+      "journal": "Nature",
+      "year": "2022",
+      "publicationTypes": [
+        "Research Support, Non-U.S. Gov't",
+        "Research Support, U.S. Gov't, Non-P.H.S.",
+        "Journal Article"
+      ],
+      "abstract": "Nascent platforms for programmable quantum simulation offer unprecedented access to new regimes of far-from-equilibrium quantum many-body dynamics in almost isolated systems. Here achieving precise control over quantum many-body entanglement is an essential task for quantum sensing and computation. Extensive theoretical work indicates that these capabilities can enable dynamical phases and critical phenomena that show topologically robust methods to create, protect and manipulate quantum entanglement that self-correct against large classes of errors. However, so far, experimental realizations have been confined to classical (non-entangled) symmetry-breaking orders 1-5 . In this work, we demonstrate an emergent dynamical symmetry-protected topological phase 6 , in a quasiperiodically driven array of ten 171 Yb + hyperfine qubits in Quantinuum's System Model H1 trapped-ion quantum processor 7 . This phase shows edge qubits that are dynamically protected from control errors, cross-talk and stray fields. Crucially, this edge protection relies purely on emergent dynamical symmetries that are absolutely stable to generic coherent perturbations. This property is special to quasiperiodically driven systems: as we demonstrate, the analogous edge states of a periodically driven qubit array are vulnerable to symmetry-breaking errors and quickly decohere. Our work paves the way for implementation of more complex dynamical topological orders 8,9 that would enable error-resilient manipulation of quantum information.",
+      "abstractTruncated": false,
+      "isOpenAccess": false,
+      "isRetracted": false,
+      "firstPublicationDate": "2022-07-20",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35859195/",
+      "coverage": "abstract",
+      "receipt": {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=Dynamical+topological+phase+realized+in+a+trapped-ion+quantum+simulator&format=json&resultType=core&pageSize=6",
+        "retrievedAt": "2026-11-09T11:06:23.034Z",
+        "sha256": "1da2bfd69bfaf040ba6254ff0c90b85587b9920d34b1e5fad3fef9c02619ce9f"
+      },
+      "discoveredIn": [
+        "Europe PMC"
+      ],
+      "searchReceipts": [
+        {
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=Dynamical+topological+phase+realized+in+a+trapped-ion+quantum+simulator&format=json&resultType=core&pageSize=6",
+          "retrievedAt": "2026-11-09T11:06:23.034Z",
+          "sha256": "1da2bfd69bfaf040ba6254ff0c90b85587b9920d34b1e5fad3fef9c02619ce9f"
+        }
+      ]
+    },
+    {
+      "id": "41044108",
+      "pmid": "41044108",
+      "pmcid": "PMC12494747",
+      "doi": "10.1038/s41467-025-62897-2",
+      "title": "Floquet control of interactions and edge states in a programmable quantum simulator.",
+      "authors": "Katz O, Feng L, Porras D, Monroe C.",
+      "journal": "Nature communications",
+      "year": "2025",
+      "publicationTypes": [
+        "research-article",
+        "Journal Article"
+      ],
+      "abstract": "Quantum simulators based on trapped ions enable the study of spin systems and models with rich dynamical phenomena. The Su-Schrieffer-Heeger (SSH) model for fermions in one dimension is a canonical example that can support a topological insulator phase when couplings between sites are dimerized, featuring long-lived edge states. Here, we experimentally implement a spin-based variant of the SSH model using one-dimensional trapped-ion chains with tunable interaction range, realized in crystals containing up to 22 interacting spins. Using an array of individually focused laser beams, we apply site-specific, time-dependent Floquet fields to induce controlled bond dimerization. Under conditions that preserve inversion symmetry, we observe edge-state dynamics consistent with SSH-like behavior. We study the propagation and localization of spin excitations, as well as the evolution of highly excited configurations across different interaction regimes. These results demonstrate how precision Floquet engineering enables the exploration of complex spin models and dynamics, laying the groundwork for future preparation and characterization of topological and exotic phases of matter.",
+      "abstractTruncated": false,
+      "isOpenAccess": true,
+      "isRetracted": false,
+      "firstPublicationDate": "2025-10-03",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41044108/",
+      "coverage": "abstract",
+      "receipt": {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=Dynamical+topological+phase+realized+in+a+trapped-ion+quantum+simulator&format=json&resultType=core&pageSize=6",
+        "retrievedAt": "2026-11-09T11:06:23.034Z",
+        "sha256": "1da2bfd69bfaf040ba6254ff0c90b85587b9920d34b1e5fad3fef9c02619ce9f"
+      },
+      "discoveredIn": [
+        "Europe PMC"
+      ],
+      "searchReceipts": [
+        {
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=Dynamical+topological+phase+realized+in+a+trapped-ion+quantum+simulator&format=json&resultType=core&pageSize=6",
+          "retrievedAt": "2026-11-09T11:06:23.034Z",
+          "sha256": "1da2bfd69bfaf040ba6254ff0c90b85587b9920d34b1e5fad3fef9c02619ce9f"
+        }
+      ]
+    },
+    {
+      "id": "PMC13658009",
+      "pmid": null,
+      "pmcid": "PMC13658009",
+      "doi": null,
+      "title": "Aharonov–Bohm interference in a",
+      "authors": "Saner S, Băzăvan O, Webb D, Araneda G, Ballance C, Srinivas R, Lucas D, Bermúdez A.",
+      "journal": "Nature physics",
+      "year": "2026",
+      "publicationTypes": [
+        "research-article",
+        "Journal Article"
+      ],
+      "abstract": "",
+      "abstractTruncated": false,
+      "isOpenAccess": true,
+      "isRetracted": false,
+      "firstPublicationDate": "2026-01-01",
+      "url": "https://europepmc.org/article/PMC/PMC13658009",
+      "coverage": "metadata",
+      "receipt": {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=Dynamical+topological+phase+realized+in+a+trapped-ion+quantum+simulator&format=json&resultType=core&pageSize=6",
+        "retrievedAt": "2026-11-09T11:06:23.034Z",
+        "sha256": "1da2bfd69bfaf040ba6254ff0c90b85587b9920d34b1e5fad3fef9c02619ce9f"
+      },
+      "discoveredIn": [
+        "Europe PMC"
+      ],
+      "searchReceipts": [
+        {
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=Dynamical+topological+phase+realized+in+a+trapped-ion+quantum+simulator&format=json&resultType=core&pageSize=6",
+          "retrievedAt": "2026-11-09T11:06:23.034Z",
+          "sha256": "1da2bfd69bfaf040ba6254ff0c90b85587b9920d34b1e5fad3fef9c02619ce9f"
+        }
+      ]
+    },
+    {
+      "id": "38459040",
+      "pmid": "38459040",
+      "pmcid": "PMC10923891",
+      "doi": "10.1038/s41467-024-46402-9",
+      "title": "Quantum many-body simulations on digital quantum computers: State-of-the-art and future challenges.",
+      "authors": "Fauseweh B.",
+      "journal": "Nature communications",
+      "year": "2024",
+      "publicationTypes": [
+        "review-article",
+        "Review",
+        "Journal Article"
+      ],
+      "abstract": "Simulating quantum many-body systems is a key application for emerging quantum processors. While analog quantum simulation has already demonstrated quantum advantage, its digital counterpart has recently become the focus of intense research interest due to the availability of devices that aim to realize general-purpose quantum computers. In this perspective, we give a selective overview of the currently pursued approaches, review the advances in digital quantum simulation by comparing non-variational with variational approaches and identify hardware and algorithmic challenges. Based on this review, the question arises: What are the most promising problems that can be tackled with digital quantum simulation? We argue that problems of a qualitative nature are much more suitable for near-term devices then approaches aiming purely for a quantitative accuracy improvement.",
+      "abstractTruncated": false,
+      "isOpenAccess": true,
+      "isRetracted": false,
+      "firstPublicationDate": "2024-03-08",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38459040/",
+      "coverage": "abstract",
+      "receipt": {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=Dynamical+topological+phase+realized+in+a+trapped-ion+quantum+simulator&format=json&resultType=core&pageSize=6",
+        "retrievedAt": "2026-11-09T11:06:23.034Z",
+        "sha256": "1da2bfd69bfaf040ba6254ff0c90b85587b9920d34b1e5fad3fef9c02619ce9f"
+      },
+      "discoveredIn": [
+        "Europe PMC"
+      ],
+      "searchReceipts": [
+        {
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=Dynamical+topological+phase+realized+in+a+trapped-ion+quantum+simulator&format=json&resultType=core&pageSize=6",
+          "retrievedAt": "2026-11-09T11:06:23.034Z",
+          "sha256": "1da2bfd69bfaf040ba6254ff0c90b85587b9920d34b1e5fad3fef9c02619ce9f"
+        }
+      ]
+    },
+    {
+      "id": "39419990",
+      "pmid": "39419990",
+      "pmcid": "PMC11487055",
+      "doi": "10.1038/s41467-024-53077-9",
+      "title": "Long-lived topological time-crystalline order on a quantum processor.",
+      "authors": "Xiang L, Jiang W, Bao Z, Song Z, Xu S, Wang K, Chen J, Jin F, Zhu X, Zhu Z, Shen F, Wang N, Zhang C, Wu Y, Zou Y, Zhong J, Cui Z, Zhang A, Tan Z, Li T, Gao Y, Deng J, Zhang X, Dong H, Zhang P, Jiang S, Li W, Lu Z, Sun ZZ, Li H, Wang Z, Song C, Guo Q, Liu F, Gong ZX, Gorshkov AV, Yao NY, Iadecola T, Machado F, Wang H, Deng DL.",
+      "journal": "Nature communications",
+      "year": "2024",
+      "publicationTypes": [
+        "research-article",
+        "Journal Article"
+      ],
+      "abstract": "Topologically ordered phases of matter elude Landau's symmetry-breaking theory, featuring a variety of intriguing properties such as long-range entanglement and intrinsic robustness against local perturbations. Their extension to periodically driven systems gives rise to exotic new phenomena that are forbidden in thermal equilibrium. Here, we report the observation of signatures of such a phenomenon-a prethermal topologically ordered time crystal-with programmable superconducting qubits arranged on a square lattice. By periodically driving the superconducting qubits with a surface code Hamiltonian, we observe discrete time-translation symmetry breaking dynamics that is only manifested in the subharmonic temporal response of nonlocal logical operators. We further connect the observed dynamics to the underlying topological order by measuring a nonzero topological entanglement entropy and studying its subsequent dynamics. Our results demonstrate the potential to explore exotic topologically ordered nonequilibrium phases of matter with noisy intermediate-scale quantum processors.",
+      "abstractTruncated": false,
+      "isOpenAccess": true,
+      "isRetracted": false,
+      "firstPublicationDate": "2024-10-17",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39419990/",
+      "coverage": "abstract",
+      "receipt": {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=Dynamical+topological+phase+realized+in+a+trapped-ion+quantum+simulator&format=json&resultType=core&pageSize=6",
+        "retrievedAt": "2026-11-09T11:06:23.034Z",
+        "sha256": "1da2bfd69bfaf040ba6254ff0c90b85587b9920d34b1e5fad3fef9c02619ce9f"
+      },
+      "discoveredIn": [
+        "Europe PMC"
+      ],
+      "searchReceipts": [
+        {
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=Dynamical+topological+phase+realized+in+a+trapped-ion+quantum+simulator&format=json&resultType=core&pageSize=6",
+          "retrievedAt": "2026-11-09T11:06:23.034Z",
+          "sha256": "1da2bfd69bfaf040ba6254ff0c90b85587b9920d34b1e5fad3fef9c02619ce9f"
+        }
+      ]
+    },
+    {
+      "id": "34923836",
+      "pmid": "34923836",
+      "pmcid": "PMC8685612",
+      "doi": "10.1098/rsta.2021.0064",
+      "title": "Cold atoms meet lattice gauge theory.",
+      "authors": "Aidelsburger M, Barbiero L, Bermudez A, Chanda T, Dauphin A, González-Cuadra D, Grzybowski PR, Hands S, Jendrzejewski F, Jünemann J, Juzeliūnas G, Kasper V, Piga A, Ran SJ, Rizzi M, Sierra G, Tagliacozzo L, Tirrito E, Zache TV, Zakrzewski J, Zohar E, Lewenstein M.",
+      "journal": "Philosophical transactions. Series A, Mathematical, physical, and engineering sciences",
+      "year": "2022",
+      "publicationTypes": [
+        "review-article",
+        "Journal Article"
+      ],
+      "abstract": "The central idea of this review is to consider quantum field theory models relevant for particle physics and replace the fermionic matter in these models by a bosonic one. This is mostly motivated by the fact that bosons are more 'accessible' and easier to manipulate for experimentalists, but this 'substitution' also leads to new physics and novel phenomena. It allows us to gain new information about among other things confinement and the dynamics of the deconfinement transition. We will thus consider bosons in dynamical lattices corresponding to the bosonic Schwinger or [Formula: see text] Bose-Hubbard models. Another central idea of this review concerns atomic simulators of paradigmatic models of particle physics theory such as the Creutz-Hubbard ladder, or Gross-Neveu-Wilson and Wilson-Hubbard models. This article is not a general review of the rapidly growing field-it reviews activities related to quantum simulations for lattice field theories performed by the Quantum Optics Theory group at ICFO and their collaborators from 19 institutions all over the world. Finally, we will briefly describe our efforts to design experimentally friendly simulators of these and other models relevant for particle physics. This article is part of the theme issue 'Quantum technologies in particle physics'.",
+      "abstractTruncated": false,
+      "isOpenAccess": true,
+      "isRetracted": false,
+      "firstPublicationDate": "2021-12-20",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/34923836/",
+      "coverage": "abstract",
+      "receipt": {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=Dynamical+topological+phase+realized+in+a+trapped-ion+quantum+simulator&format=json&resultType=core&pageSize=6",
+        "retrievedAt": "2026-11-09T11:06:23.034Z",
+        "sha256": "1da2bfd69bfaf040ba6254ff0c90b85587b9920d34b1e5fad3fef9c02619ce9f"
+      },
+      "discoveredIn": [
+        "Europe PMC"
+      ],
+      "searchReceipts": [
+        {
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=Dynamical+topological+phase+realized+in+a+trapped-ion+quantum+simulator&format=json&resultType=core&pageSize=6",
+          "retrievedAt": "2026-11-09T11:06:23.034Z",
+          "sha256": "1da2bfd69bfaf040ba6254ff0c90b85587b9920d34b1e5fad3fef9c02619ce9f"
+        }
+      ]
+    },
+    {
+      "title": "Dynamical topological phase realized in a trapped-ion quantum simulator",
+      "url": "https://www.nature.com/articles/s41586-022-04853-4",
+      "text": "In this work, we demonstrate an emergent dynamical symmetry-protected topological phase 6, in a quasiperiodically driven array of ten 171 Yb + hyperfine qubits in Quantinuum's System Model H1 trapped-ion quantum processor 7.",
+      "published": "2022-07-20",
+      "updated": "2026-02-28",
+      "coverage": "search-extracted text"
+    },
+    {
+      "title": "Probing non-equilibrium topological order on a quantum processor - Nature",
+      "url": "https://www.nature.com/articles/s41586-025-09456-3?error=cookies_not_supported&code=ce63ab3e-837f-4098-a7e4-649e95a39b42",
+      "text": "*Nature* **volume 645**, pages 348–353 (2025) Cite this article\n...\n…\n### Dynamical topological phase realized in a trapped-ion quantum simulator\nArticle 20 July 2022\n…\nHere, we implement efficient quantum circuits in a two-dimensional lattice of superconducting qubits and probe two key non-equilibrium signatures of the Floquet topologically ordered phase.\n...\nLett.* **114**, 251603 (2015).\n...\n35. Dumitrescu, P. T. et al. Dynamical topological phase realized in a trapped-ion quantum simulator.\n*Nature* **607**, 463–467 (2022).\n...\n## About this article\n### Cite this article\nWill, M., Cochran, T.A., Rosenberg, E. *et al.* Probing non-equilibrium topological order on a quantum processor.\n*Nature* **645**, 348–353 (2025).\nhttps://doi.org/10.1038/s41586-025-09456-3\n- Received: 12 January 2025\n- Accepted: 24 July 2025\n- Published: 10 September 2025\n...\n- Issue date: 11 September 2025\n- DOI: https://doi.org/10.1038/s41586-025-09456-3",
+      "published": "2025-09-10",
+      "updated": "2026-11-07",
+      "coverage": "search-extracted text"
+    },
+    {
+      "title": "Robust simulations of many-body symmetry-protected ... - Nature",
+      "url": "https://www.nature.com/articles/s41534-025-01122-w?error=cookies_not_supported&code=e0a57e27-d98d-4d9c-84da-bb2ff5ecb411",
+      "text": "# Robust simulations of many-body symmetry-protected topological phase transitions on a quantum processor\n## References\nPhys.* **8**, 214 (2025).\n...\n…\n60. Dumitrescu, P. T. et al. Dynamical topological phase realized in a trapped-ion quantum simulator.\n*Nature* **607**, 463–467 (2022).\n...\n## About this article\n### Cite this article\nShen, R., Chen, T., Yang, B. *et al.* Robust simulations of many-body symmetry-protected topological phase transitions on a quantum processor.\n*npj Quantum Inf* **11**, 179 (2025).\nhttps://doi.org/10.1038/s41534-025-01122-w\nDownload citation\n- Received: 04 April 2025\n- Accepted: 05 October 2025\n...\n- DOI: https://doi.org/10.1038/s41534-025-01122-w",
+      "published": "2025-11-18",
+      "updated": "2026-11-09",
+      "coverage": "search-extracted text"
+    },
+    {
+      "title": "Quantum many-body simulations on digital quantum computers",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10923891/",
+      "text": "# Quantum many-body simulations on digital quantum computers: State-of-the-art and future challenges\n## References\n[DOI] [PubMed] [Google Scholar]\n...\n- 77.Dumitrescu PT, et al. Dynamical topological phase realized in a trapped-ion quantum simulator.\nNature.\n2022;607:463–467.\ndoi: 10.1038/s41586-022-04853-4.\n[DOI] [PubMed] [Google Scholar]\n- 78.Zhang X, et al. Digital quantum simulation of floquet symmetry-protected topological phases.\n...\n- 88.Mi X, et al. Time-crystalline eigenstate order on a quantum processor.",
+      "published": "2024-03-08",
+      "updated": "2026-10-28",
+      "coverage": "search-extracted text"
+    },
+    {
+      "title": "Large-scale simulations of Floquet physics on near-term quantum ...",
+      "url": "https://www.nature.com/articles/s41534-024-00866-1?error=cookies_not_supported&code=26521ab2-b7cf-485e-9c10-4f7eb5b8644c",
+      "text": "# Large-scale simulations of Floquet physics on near-term quantum computers\n## Abstract\n### Digital quantum simulation of Floquet symmetry-protected topological phases\nArticle Open access 20 July 2022\n### Dynamical topological phase realized in a trapped-ion quantum simulator\nArticle 20 July 2022\n...\n## References\n*Science* **374**, 1474–1478 (2021).\n15. Dumitrescu, P. T. et al. Dynamical topological phase realized in a trapped-ion quantum simulator.\n*Nature* **607**, 463–467 (2022).\n...\n## About this article\n### Cite this article\nEckstein, T., Mansuroglu, R., Czarnik, P. *et al.* Large-scale simulations of Floquet physics on near-term quantum computers.\n*npj Quantum Inf* **10**, 84 (2024).\nhttps://doi.org/10.1038/s41534-024-00866-1",
+      "published": "2024-09-13",
+      "updated": "2026-11-08",
+      "coverage": "search-extracted text"
+    }
+  ],
+  "records": [
+    {
+      "tool": "search_papers",
+      "parameters": {
+        "query": "Dynamical topological phase realized in a trapped-ion quantum simulator"
+      },
+      "result": {
+        "version": "literature-20261109-v1",
+        "status": "retrieved",
+        "query": "Dynamical topological phase realized in a trapped-ion quantum simulator",
+        "searches": [
+          {
+            "source": "PubMed",
+            "status": "retrieved",
+            "query": "Dynamical topological phase realized in a trapped-ion quantum simulator",
+            "total": 0,
+            "receipt": {
+              "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=Dynamical+topological+phase+realized+in+a+trapped-ion+quantum+simulator&retmode=json&retmax=6&sort=relevance&tool=UniversalInformatics",
+              "retrievedAt": "2026-11-09T11:06:20.677Z",
+              "sha256": "6dde62dcf6c7ea9d0f3bfc6f636d73ca0c0eb16ebb1764c14b470609bd85face"
+            }
+          },
+          {
+            "source": "Europe PMC",
+            "status": "retrieved",
+            "query": "Dynamical topological phase realized in a trapped-ion quantum simulator",
+            "total": 20,
+            "receipt": {
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=Dynamical+topological+phase+realized+in+a+trapped-ion+quantum+simulator&format=json&resultType=core&pageSize=6",
+              "retrievedAt": "2026-11-09T11:06:23.034Z",
+              "sha256": "1da2bfd69bfaf040ba6254ff0c90b85587b9920d34b1e5fad3fef9c02619ce9f"
+            }
+          }
+        ],
+        "papers": [
+          {
+            "id": "35859195",
+            "pmid": "35859195",
+            "pmcid": null,
+            "doi": "10.1038/s41586-022-04853-4",
+            "title": "Dynamical topological phase realized in a trapped-ion quantum simulator.",
+            "authors": "Dumitrescu PT, Bohnet JG, Gaebler JP, Hankin A, Hayes D, Kumar A, Neyenhuis B, Vasseur R, Potter AC.",
+            "journal": "Nature",
+            "year": "2022",
+            "publicationTypes": [
+              "Research Support, Non-U.S. Gov't",
+              "Research Support, U.S. Gov't, Non-P.H.S.",
+              "Journal Article"
+            ],
+            "abstract": "Nascent platforms for programmable quantum simulation offer unprecedented access to new regimes of far-from-equilibrium quantum many-body dynamics in almost isolated systems. Here achieving precise control over quantum many-body entanglement is an essential task for quantum sensing and computation. Extensive theoretical work indicates that these capabilities can enable dynamical phases and critical phenomena that show topologically robust methods to create, protect and manipulate quantum entanglement that self-correct against large classes of errors. However, so far, experimental realizations have been confined to classical (non-entangled) symmetry-breaking orders 1-5 . In this work, we demonstrate an emergent dynamical symmetry-protected topological phase 6 , in a quasiperiodically driven array of ten 171 Yb + hyperfine qubits in Quantinuum's System Model H1 trapped-ion quantum processor 7 . This phase shows edge qubits that are dynamically protected from control errors, cross-talk and stray fields. Crucially, this edge protection relies purely on emergent dynamical symmetries that are absolutely stable to generic coherent perturbations. This property is special to quasiperiodically driven systems: as we demonstrate, the analogous edge states of a periodically driven qubit array are vulnerable to symmetry-breaking errors and quickly decohere. Our work paves the way for implementation of more complex dynamical topological orders 8,9 that would enable error-resilient manipulation of quantum information.",
+            "abstractTruncated": false,
+            "isOpenAccess": false,
+            "isRetracted": false,
+            "firstPublicationDate": "2022-07-20",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/35859195/",
+            "coverage": "abstract",
+            "receipt": {
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=Dynamical+topological+phase+realized+in+a+trapped-ion+quantum+simulator&format=json&resultType=core&pageSize=6",
+              "retrievedAt": "2026-11-09T11:06:23.034Z",
+              "sha256": "1da2bfd69bfaf040ba6254ff0c90b85587b9920d34b1e5fad3fef9c02619ce9f"
+            },
+            "discoveredIn": [
+              "Europe PMC"
+            ],
+            "searchReceipts": [
+              {
+                "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=Dynamical+topological+phase+realized+in+a+trapped-ion+quantum+simulator&format=json&resultType=core&pageSize=6",
+                "retrievedAt": "2026-11-09T11:06:23.034Z",
+                "sha256": "1da2bfd69bfaf040ba6254ff0c90b85587b9920d34b1e5fad3fef9c02619ce9f"
+              }
+            ]
+          },
+          {
+            "id": "41044108",
+            "pmid": "41044108",
+            "pmcid": "PMC12494747",
+            "doi": "10.1038/s41467-025-62897-2",
+            "title": "Floquet control of interactions and edge states in a programmable quantum simulator.",
+            "authors": "Katz O, Feng L, Porras D, Monroe C.",
+            "journal": "Nature communications",
+            "year": "2025",
+            "publicationTypes": [
+              "research-article",
+              "Journal Article"
+            ],
+            "abstract": "Quantum simulators based on trapped ions enable the study of spin systems and models with rich dynamical phenomena. The Su-Schrieffer-Heeger (SSH) model for fermions in one dimension is a canonical example that can support a topological insulator phase when couplings between sites are dimerized, featuring long-lived edge states. Here, we experimentally implement a spin-based variant of the SSH model using one-dimensional trapped-ion chains with tunable interaction range, realized in crystals containing up to 22 interacting spins. Using an array of individually focused laser beams, we apply site-specific, time-dependent Floquet fields to induce controlled bond dimerization. Under conditions that preserve inversion symmetry, we observe edge-state dynamics consistent with SSH-like behavior. We study the propagation and localization of spin excitations, as well as the evolution of highly excited configurations across different interaction regimes. These results demonstrate how precision Floquet engineering enables the exploration of complex spin models and dynamics, laying the groundwork for future preparation and characterization of topological and exotic phases of matter.",
+            "abstractTruncated": false,
+            "isOpenAccess": true,
+            "isRetracted": false,
+            "firstPublicationDate": "2025-10-03",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/41044108/",
+            "coverage": "abstract",
+            "receipt": {
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=Dynamical+topological+phase+realized+in+a+trapped-ion+quantum+simulator&format=json&resultType=core&pageSize=6",
+              "retrievedAt": "2026-11-09T11:06:23.034Z",
+              "sha256": "1da2bfd69bfaf040ba6254ff0c90b85587b9920d34b1e5fad3fef9c02619ce9f"
+            },
+            "discoveredIn": [
+              "Europe PMC"
+            ],
+            "searchReceipts": [
+              {
+                "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=Dynamical+topological+phase+realized+in+a+trapped-ion+quantum+simulator&format=json&resultType=core&pageSize=6",
+                "retrievedAt": "2026-11-09T11:06:23.034Z",
+                "sha256": "1da2bfd69bfaf040ba6254ff0c90b85587b9920d34b1e5fad3fef9c02619ce9f"
+              }
+            ]
+          },
+          {
+            "id": "PMC13658009",
+            "pmid": null,
+            "pmcid": "PMC13658009",
+            "doi": null,
+            "title": "Aharonov–Bohm interference in a",
+            "authors": "Saner S, Băzăvan O, Webb D, Araneda G, Ballance C, Srinivas R, Lucas D, Bermúdez A.",
+            "journal": "Nature physics",
+            "year": "2026",
+            "publicationTypes": [
+              "research-article",
+              "Journal Article"
+            ],
+            "abstract": "",
+            "abstractTruncated": false,
+            "isOpenAccess": true,
+            "isRetracted": false,
+            "firstPublicationDate": "2026-01-01",
+            "url": "https://europepmc.org/article/PMC/PMC13658009",
+            "coverage": "metadata",
+            "receipt": {
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=Dynamical+topological+phase+realized+in+a+trapped-ion+quantum+simulator&format=json&resultType=core&pageSize=6",
+              "retrievedAt": "2026-11-09T11:06:23.034Z",
+              "sha256": "1da2bfd69bfaf040ba6254ff0c90b85587b9920d34b1e5fad3fef9c02619ce9f"
+            },
+            "discoveredIn": [
+              "Europe PMC"
+            ],
+            "searchReceipts": [
+              {
+                "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=Dynamical+topological+phase+realized+in+a+trapped-ion+quantum+simulator&format=json&resultType=core&pageSize=6",
+                "retrievedAt": "2026-11-09T11:06:23.034Z",
+                "sha256": "1da2bfd69bfaf040ba6254ff0c90b85587b9920d34b1e5fad3fef9c02619ce9f"
+              }
+            ]
+          },
+          {
+            "id": "38459040",
+            "pmid": "38459040",
+            "pmcid": "PMC10923891",
+            "doi": "10.1038/s41467-024-46402-9",
+            "title": "Quantum many-body simulations on digital quantum computers: State-of-the-art and future challenges.",
+            "authors": "Fauseweh B.",
+            "journal": "Nature communications",
+            "year": "2024",
+            "publicationTypes": [
+              "review-article",
+              "Review",
+              "Journal Article"
+            ],
+            "abstract": "Simulating quantum many-body systems is a key application for emerging quantum processors. While analog quantum simulation has already demonstrated quantum advantage, its digital counterpart has recently become the focus of intense research interest due to the availability of devices that aim to realize general-purpose quantum computers. In this perspective, we give a selective overview of the currently pursued approaches, review the advances in digital quantum simulation by comparing non-variational with variational approaches and identify hardware and algorithmic challenges. Based on this review, the question arises: What are the most promising problems that can be tackled with digital quantum simulation? We argue that problems of a qualitative nature are much more suitable for near-term devices then approaches aiming purely for a quantitative accuracy improvement.",
+            "abstractTruncated": false,
+            "isOpenAccess": true,
+            "isRetracted": false,
+            "firstPublicationDate": "2024-03-08",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/38459040/",
+            "coverage": "abstract",
+            "receipt": {
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=Dynamical+topological+phase+realized+in+a+trapped-ion+quantum+simulator&format=json&resultType=core&pageSize=6",
+              "retrievedAt": "2026-11-09T11:06:23.034Z",
+              "sha256": "1da2bfd69bfaf040ba6254ff0c90b85587b9920d34b1e5fad3fef9c02619ce9f"
+            },
+            "discoveredIn": [
+              "Europe PMC"
+            ],
+            "searchReceipts": [
+              {
+                "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=Dynamical+topological+phase+realized+in+a+trapped-ion+quantum+simulator&format=json&resultType=core&pageSize=6",
+                "retrievedAt": "2026-11-09T11:06:23.034Z",
+                "sha256": "1da2bfd69bfaf040ba6254ff0c90b85587b9920d34b1e5fad3fef9c02619ce9f"
+              }
+            ]
+          },
+          {
+            "id": "39419990",
+            "pmid": "39419990",
+            "pmcid": "PMC11487055",
+            "doi": "10.1038/s41467-024-53077-9",
+            "title": "Long-lived topological time-crystalline order on a quantum processor.",
+            "authors": "Xiang L, Jiang W, Bao Z, Song Z, Xu S, Wang K, Chen J, Jin F, Zhu X, Zhu Z, Shen F, Wang N, Zhang C, Wu Y, Zou Y, Zhong J, Cui Z, Zhang A, Tan Z, Li T, Gao Y, Deng J, Zhang X, Dong H, Zhang P, Jiang S, Li W, Lu Z, Sun ZZ, Li H, Wang Z, Song C, Guo Q, Liu F, Gong ZX, Gorshkov AV, Yao NY, Iadecola T, Machado F, Wang H, Deng DL.",
+            "journal": "Nature communications",
+            "year": "2024",
+            "publicationTypes": [
+              "research-article",
+              "Journal Article"
+            ],
+            "abstract": "Topologically ordered phases of matter elude Landau's symmetry-breaking theory, featuring a variety of intriguing properties such as long-range entanglement and intrinsic robustness against local perturbations. Their extension to periodically driven systems gives rise to exotic new phenomena that are forbidden in thermal equilibrium. Here, we report the observation of signatures of such a phenomenon-a prethermal topologically ordered time crystal-with programmable superconducting qubits arranged on a square lattice. By periodically driving the superconducting qubits with a surface code Hamiltonian, we observe discrete time-translation symmetry breaking dynamics that is only manifested in the subharmonic temporal response of nonlocal logical operators. We further connect the observed dynamics to the underlying topological order by measuring a nonzero topological entanglement entropy and studying its subsequent dynamics. Our results demonstrate the potential to explore exotic topologically ordered nonequilibrium phases of matter with noisy intermediate-scale quantum processors.",
+            "abstractTruncated": false,
+            "isOpenAccess": true,
+            "isRetracted": false,
+            "firstPublicationDate": "2024-10-17",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/39419990/",
+            "coverage": "abstract",
+            "receipt": {
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=Dynamical+topological+phase+realized+in+a+trapped-ion+quantum+simulator&format=json&resultType=core&pageSize=6",
+              "retrievedAt": "2026-11-09T11:06:23.034Z",
+              "sha256": "1da2bfd69bfaf040ba6254ff0c90b85587b9920d34b1e5fad3fef9c02619ce9f"
+            },
+            "discoveredIn": [
+              "Europe PMC"
+            ],
+            "searchReceipts": [
+              {
+                "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=Dynamical+topological+phase+realized+in+a+trapped-ion+quantum+simulator&format=json&resultType=core&pageSize=6",
+                "retrievedAt": "2026-11-09T11:06:23.034Z",
+                "sha256": "1da2bfd69bfaf040ba6254ff0c90b85587b9920d34b1e5fad3fef9c02619ce9f"
+              }
+            ]
+          },
+          {
+            "id": "34923836",
+            "pmid": "34923836",
+            "pmcid": "PMC8685612",
+            "doi": "10.1098/rsta.2021.0064",
+            "title": "Cold atoms meet lattice gauge theory.",
+            "authors": "Aidelsburger M, Barbiero L, Bermudez A, Chanda T, Dauphin A, González-Cuadra D, Grzybowski PR, Hands S, Jendrzejewski F, Jünemann J, Juzeliūnas G, Kasper V, Piga A, Ran SJ, Rizzi M, Sierra G, Tagliacozzo L, Tirrito E, Zache TV, Zakrzewski J, Zohar E, Lewenstein M.",
+            "journal": "Philosophical transactions. Series A, Mathematical, physical, and engineering sciences",
+            "year": "2022",
+            "publicationTypes": [
+              "review-article",
+              "Journal Article"
+            ],
+            "abstract": "The central idea of this review is to consider quantum field theory models relevant for particle physics and replace the fermionic matter in these models by a bosonic one. This is mostly motivated by the fact that bosons are more 'accessible' and easier to manipulate for experimentalists, but this 'substitution' also leads to new physics and novel phenomena. It allows us to gain new information about among other things confinement and the dynamics of the deconfinement transition. We will thus consider bosons in dynamical lattices corresponding to the bosonic Schwinger or [Formula: see text] Bose-Hubbard models. Another central idea of this review concerns atomic simulators of paradigmatic models of particle physics theory such as the Creutz-Hubbard ladder, or Gross-Neveu-Wilson and Wilson-Hubbard models. This article is not a general review of the rapidly growing field-it reviews activities related to quantum simulations for lattice field theories performed by the Quantum Optics Theory group at ICFO and their collaborators from 19 institutions all over the world. Finally, we will briefly describe our efforts to design experimentally friendly simulators of these and other models relevant for particle physics. This article is part of the theme issue 'Quantum technologies in particle physics'.",
+            "abstractTruncated": false,
+            "isOpenAccess": true,
+            "isRetracted": false,
+            "firstPublicationDate": "2021-12-20",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/34923836/",
+            "coverage": "abstract",
+            "receipt": {
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=Dynamical+topological+phase+realized+in+a+trapped-ion+quantum+simulator&format=json&resultType=core&pageSize=6",
+              "retrievedAt": "2026-11-09T11:06:23.034Z",
+              "sha256": "1da2bfd69bfaf040ba6254ff0c90b85587b9920d34b1e5fad3fef9c02619ce9f"
+            },
+            "discoveredIn": [
+              "Europe PMC"
+            ],
+            "searchReceipts": [
+              {
+                "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=Dynamical+topological+phase+realized+in+a+trapped-ion+quantum+simulator&format=json&resultType=core&pageSize=6",
+                "retrievedAt": "2026-11-09T11:06:23.034Z",
+                "sha256": "1da2bfd69bfaf040ba6254ff0c90b85587b9920d34b1e5fad3fef9c02619ce9f"
+              }
+            ]
+          }
+        ],
+        "coverage": "Bounded relevance search, not a systematic review. PubMed and Europe PMC overlap and are not independent corroboration. Search hits do not establish support for the hypothesis."
+      }
+    },
+    {
+      "tool": "discover_scientific_sources",
+      "parameters": {
+        "query": "\"Dynamical topological phase realized in a trapped-ion quantum simulator\" Nature 2022 DOI"
+      },
+      "result": {
+        "status": "retrieved",
+        "query": "\"Dynamical topological phase realized in a trapped-ion quantum simulator\" Nature 2022 DOI",
+        "reason": "Verify source retrieval and citation on a public quantum-physics paper, separately from the declined biological query.",
+        "provider": "Perplexity Search",
+        "requestId": "609463ff-f385-4f45-bfac-72fbc63c96dd",
+        "receipt": {
+          "retrievedAt": "2026-11-09T11:06:23.565Z",
+          "reservation": 1,
+          "reservedUSD": 0.005
+        },
+        "results": [
+          {
+            "title": "Dynamical topological phase realized in a trapped-ion quantum simulator",
+            "url": "https://www.nature.com/articles/s41586-022-04853-4",
+            "text": "In this work, we demonstrate an emergent dynamical symmetry-protected topological phase 6, in a quasiperiodically driven array of ten 171 Yb + hyperfine qubits in Quantinuum's System Model H1 trapped-ion quantum processor 7.",
+            "published": "2022-07-20",
+            "updated": "2026-02-28",
+            "coverage": "search-extracted text"
+          },
+          {
+            "title": "Probing non-equilibrium topological order on a quantum processor - Nature",
+            "url": "https://www.nature.com/articles/s41586-025-09456-3?error=cookies_not_supported&code=ce63ab3e-837f-4098-a7e4-649e95a39b42",
+            "text": "*Nature* **volume 645**, pages 348–353 (2025) Cite this article\n...\n…\n### Dynamical topological phase realized in a trapped-ion quantum simulator\nArticle 20 July 2022\n…\nHere, we implement efficient quantum circuits in a two-dimensional lattice of superconducting qubits and probe two key non-equilibrium signatures of the Floquet topologically ordered phase.\n...\nLett.* **114**, 251603 (2015).\n...\n35. Dumitrescu, P. T. et al. Dynamical topological phase realized in a trapped-ion quantum simulator.\n*Nature* **607**, 463–467 (2022).\n...\n## About this article\n### Cite this article\nWill, M., Cochran, T.A., Rosenberg, E. *et al.* Probing non-equilibrium topological order on a quantum processor.\n*Nature* **645**, 348–353 (2025).\nhttps://doi.org/10.1038/s41586-025-09456-3\n- Received: 12 January 2025\n- Accepted: 24 July 2025\n- Published: 10 September 2025\n...\n- Issue date: 11 September 2025\n- DOI: https://doi.org/10.1038/s41586-025-09456-3",
+            "published": "2025-09-10",
+            "updated": "2026-11-07",
+            "coverage": "search-extracted text"
+          },
+          {
+            "title": "Robust simulations of many-body symmetry-protected ... - Nature",
+            "url": "https://www.nature.com/articles/s41534-025-01122-w?error=cookies_not_supported&code=e0a57e27-d98d-4d9c-84da-bb2ff5ecb411",
+            "text": "# Robust simulations of many-body symmetry-protected topological phase transitions on a quantum processor\n## References\nPhys.* **8**, 214 (2025).\n...\n…\n60. Dumitrescu, P. T. et al. Dynamical topological phase realized in a trapped-ion quantum simulator.\n*Nature* **607**, 463–467 (2022).\n...\n## About this article\n### Cite this article\nShen, R., Chen, T., Yang, B. *et al.* Robust simulations of many-body symmetry-protected topological phase transitions on a quantum processor.\n*npj Quantum Inf* **11**, 179 (2025).\nhttps://doi.org/10.1038/s41534-025-01122-w\nDownload citation\n- Received: 04 April 2025\n- Accepted: 05 October 2025\n...\n- DOI: https://doi.org/10.1038/s41534-025-01122-w",
+            "published": "2025-11-18",
+            "updated": "2026-11-09",
+            "coverage": "search-extracted text"
+          },
+          {
+            "title": "Quantum many-body simulations on digital quantum computers",
+            "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10923891/",
+            "text": "# Quantum many-body simulations on digital quantum computers: State-of-the-art and future challenges\n## References\n[DOI] [PubMed] [Google Scholar]\n...\n- 77.Dumitrescu PT, et al. Dynamical topological phase realized in a trapped-ion quantum simulator.\nNature.\n2022;607:463–467.\ndoi: 10.1038/s41586-022-04853-4.\n[DOI] [PubMed] [Google Scholar]\n- 78.Zhang X, et al. Digital quantum simulation of floquet symmetry-protected topological phases.\n...\n- 88.Mi X, et al. Time-crystalline eigenstate order on a quantum processor.",
+            "published": "2024-03-08",
+            "updated": "2026-10-28",
+            "coverage": "search-extracted text"
+          },
+          {
+            "title": "Large-scale simulations of Floquet physics on near-term quantum ...",
+            "url": "https://www.nature.com/articles/s41534-024-00866-1?error=cookies_not_supported&code=26521ab2-b7cf-485e-9c10-4f7eb5b8644c",
+            "text": "# Large-scale simulations of Floquet physics on near-term quantum computers\n## Abstract\n### Digital quantum simulation of Floquet symmetry-protected topological phases\nArticle Open access 20 July 2022\n### Dynamical topological phase realized in a trapped-ion quantum simulator\nArticle 20 July 2022\n...\n## References\n*Science* **374**, 1474–1478 (2021).\n15. Dumitrescu, P. T. et al. Dynamical topological phase realized in a trapped-ion quantum simulator.\n*Nature* **607**, 463–467 (2022).\n...\n## About this article\n### Cite this article\nEckstein, T., Mansuroglu, R., Czarnik, P. *et al.* Large-scale simulations of Floquet physics on near-term quantum computers.\n*npj Quantum Inf* **10**, 84 (2024).\nhttps://doi.org/10.1038/s41534-024-00866-1",
+            "published": "2024-09-13",
+            "updated": "2026-11-08",
+            "coverage": "search-extracted text"
+          }
+        ],
+        "interpretation": "Discovery results, not a completed scientific review. Verify the original paper and its metadata before treating a result as evidence. Do not describe extracted snippets as a full paper reading."
+      }
+    }
+  ],
+  "interpretation": "An AI-generated literature brief for Astra and Gemini to assess against its original sources. This is not independent experimental confirmation. Uncertain calls retain their budget reservation."
+}

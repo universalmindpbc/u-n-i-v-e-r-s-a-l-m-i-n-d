@@ -1,11 +1,11 @@
 {
   "schema": "universal-informatics/quantum-atlas-guide/v1",
   "title": "Quantum Atlas · AI / LLM Wiki",
-  "version": "2026-11-09-portal-minimal-3",
+  "version": "2026-11-09-live-research-1",
   "url": "https://universalmind.tv/informatics/quantum/",
   "wiki": "https://universalmind.tv/informatics/read/quantum/index.html",
   "agent_architecture": {
-    "version": "2026-11-09-portal-minimal-3",
+    "version": "2026-11-09-live-research-1",
     "purpose": {
       "title": "What Quantum Atlas is for",
       "summary": "Universal Informatics is building an open-source quantum machine for mental health: a network of large language models and quantum computers working together as one. Quantum Atlas connects conversational scientific questions with genomics, biological research and quantum experiments, retaining the methods, evidence and limitations.",
@@ -38,7 +38,7 @@
       {
         "feature": "Live research conversation",
         "purpose": "Talk with Universal One on the Quantum Atlas page using text, dictation or live voice. Refine your scientific question and explicitly ask the agents to run it.",
-        "human_value": "Progress and findings appear automatically in the same conversation. Follow-up discussion shares the saved study; reloading reconnects without submitting another run."
+        "human_value": "Progress and findings appear automatically in the same conversation. Follow-up discussion shares the saved study; reloading reconnects without submitting another run. Microphone input is visible beside dictation and inline voice controls. The original question prompt remains in place."
       },
       {
         "feature": "Study and live workflow",
@@ -89,6 +89,21 @@
         "feature": "Results email",
         "purpose": "Register an email address for the active study or the next launch. The completed study triggers one private results link, available for 30 days.",
         "human_value": "Read the completed findings on another device. Email notification status is shown on the page."
+      },
+      {
+        "feature": "Public gene and binding evidence",
+        "purpose": "Explore candidate genes or another human or mouse gene using NCBI annotation, UCSC reference DNA, ENCODE measured binding regions and JASPAR motif models. NMDAR represents seven GRIN subunit genes.",
+        "human_value": "Retrieve source-qualified evidence without pre-downloading a fixed gene collection. Candidate names fill a draft; they never launch a study."
+      },
+      {
+        "feature": "Live literature review",
+        "purpose": "Search PubMed and Europe PMC, read abstracts and selected available open-access article passages, and share a source-qualified evidence packet with Astra and Gemini. Optional Perplexity discovery requires a configured server key and a funded allowance.",
+        "human_value": "A concise conversation explains the scientific answer; sources, reading coverage, retrieval dates and checksums remain available for inspection. Search results and model agreement do not establish a hypothesis."
+      },
+      {
+        "feature": "Reading backgrounds",
+        "purpose": "Choose Video, Black or White using the same saved background preference as Universal Research.",
+        "human_value": "Read the conversation and reports in the preferred visual setting."
       }
     ],
     "swarm": {
@@ -191,7 +206,7 @@
         {
           "id": "memory",
           "title": "Retrieve context",
-          "action": "Retrieve the mission, research directions, immutable experiment records and relevant literature."
+          "action": "Retrieve the mission, research directions, immutable experiment records and relevant library literature. On the staging research service, retrieve current PubMed and Europe PMC evidence with explicit abstract/full-text coverage for shared planning and review."
         },
         {
           "id": "audit",
@@ -718,7 +733,7 @@
     "implementation_sources": [
       {
         "repository_path": "Informatics/quantum/index.html",
-        "sha256": "710798b75590f640aa3e46ba18201dc70711218d8b571024208f69ba9e41f33a",
+        "sha256": "c38049d9c536ebc828e85219d1d4ddbd955990ea4c2355ea413edb0bf782f74f",
         "scope": "Original primary-page source with generated reading blocks removed"
       },
       {
@@ -733,7 +748,7 @@
       },
       {
         "repository_path": "Informatics/quantum/biology.js",
-        "sha256": "61ff401dae5c65aaa6183e09630686ab14e3d70ddb27436e0fba71a27d2ca428",
+        "sha256": "80fcfeaaab4eb38715231a561205803b7ec6752b856d269aba4a808e158d0e25",
         "scope": "Implementation source"
       },
       {
@@ -768,12 +783,12 @@
       },
       {
         "repository_path": "cloudflare/informatics-astra-memory.js",
-        "sha256": "a4384d95c1a0eafb7aa72bbdcf38fe4f1bd88ad895d419b5ff3e4916626a6c6e",
+        "sha256": "9b064937dfc80b020fefffb2b8ba5934cc47db2c5e6a87195538b041c1a8d48e",
         "scope": "Implementation source"
       },
       {
         "repository_path": "research/informatics/astra-service/runner.py",
-        "sha256": "5ae9062b5b20833f0da9d3e3f3927703b2622c1b29b8a07160ce79ae59eb8f2f",
+        "sha256": "a71512ae2956c2911bf2c03da8c8010a9fe3238a14f7d800e2969d7097d76328",
         "scope": "Implementation source"
       },
       {
@@ -808,7 +823,7 @@
       },
       {
         "repository_path": "Informatics/universal-one.js",
-        "sha256": "853d13c6a3627aa9ab3661c5dc343359a515796b1bf846360ed070ad7f016967",
+        "sha256": "18eb81b491a3703d870c01b9fa13f98c391fabfacee297384bff2cc10cf96f6f",
         "scope": "Implementation source"
       },
       {
@@ -823,12 +838,12 @@
       },
       {
         "repository_path": "cloudflare/informatics-quantum-command.js",
-        "sha256": "fddc12ef89340bd144de22bf38ebf7ed762a9741ae4ba1e7704767f41eb0f891",
+        "sha256": "d40f20dfeb0f94bd24985db3316eed20a092e6d04ef8bcacec264a31c8375ea7",
         "scope": "Implementation source"
       },
       {
         "repository_path": "Informatics/quantum/conversation.js",
-        "sha256": "9f6db4b8b666edd977813066276b8d74139935702f1ecfb661d7f19f75cc587a",
+        "sha256": "7756103a5f5d99f9968be7c15dbc7541b1235c1b0c0b19c09e8bdb65b0044540",
         "scope": "Implementation source"
       },
       {
@@ -863,7 +878,47 @@
       },
       {
         "repository_path": "research/informatics/portal-demo-20261109/worker.py",
-        "sha256": "98d6eed2d38fe2d3d66130656a42f987b8b7ac7250a63887d197ed37e517f741",
+        "sha256": "d4d0046661935528722e0ddcb55f743a27473d4bdc0b5ad45e5d671830ac6ba5",
+        "scope": "Implementation source"
+      },
+      {
+        "repository_path": "Informatics/universal-one-waveform.js",
+        "sha256": "edc471ab2576bd46bc9743c3bb4c1485a869720c65dd52d3e852417e9109660d",
+        "scope": "Implementation source"
+      },
+      {
+        "repository_path": "Informatics/quantum/reading-theme.js",
+        "sha256": "23cbedf355f4aca351cb3797f66a98d7df6137f307d46f24c26962b009209904",
+        "scope": "Implementation source"
+      },
+      {
+        "repository_path": "Informatics/quantum/reading-theme.css",
+        "sha256": "ed4b94399a59d31ccc75e66c1500d5f7273a3c3b5a19fde67a93890c5b619c38",
+        "scope": "Implementation source"
+      },
+      {
+        "repository_path": "cloudflare/informatics-gene-data.js",
+        "sha256": "5bb898313ab9e50c304a19de263e91b767e2956beaa2ababeb972f9198ad518c",
+        "scope": "Implementation source"
+      },
+      {
+        "repository_path": "cloudflare/informatics-literature.js",
+        "sha256": "1c083953ac69bd075487cc5fdd2f46a7677bf37a2d878dfe387408e9ebf643e8",
+        "scope": "Implementation source"
+      },
+      {
+        "repository_path": "cloudflare/informatics-literature-fallback.js",
+        "sha256": "b444a7af0be28050ea2b7139d119c3b3df7128027e38b7d986da331b29601d39",
+        "scope": "Implementation source"
+      },
+      {
+        "repository_path": "cloudflare/informatics-research-worker.js",
+        "sha256": "1f9392c60776600e62aac5011b34e69bdbd914a5544822568a41e75ade7aa865",
+        "scope": "Implementation source"
+      },
+      {
+        "repository_path": "research/informatics/portal-demo-20261109/research_context.py",
+        "sha256": "6c7c7feef53d911e840d8305c1cf5705066f374df8014929c545e1e5aeabcd0b",
         "scope": "Implementation source"
       }
     ]
@@ -9103,8 +9158,8 @@
   ],
   "page_prose_sha256": "3e5c0639d08e25f35a138d477f50a69fb78aa1c06501db0f382539fc80fe4d7b",
   "downloads": {
-    "json": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.json?v=2026-11-09-portal-minimal-3",
-    "csv": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.csv?v=2026-11-09-portal-minimal-3",
-    "md": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.md?v=2026-11-09-portal-minimal-3"
+    "json": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.json?v=2026-11-09-live-research-1",
+    "csv": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.csv?v=2026-11-09-live-research-1",
+    "md": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.md?v=2026-11-09-live-research-1"
   }
 }

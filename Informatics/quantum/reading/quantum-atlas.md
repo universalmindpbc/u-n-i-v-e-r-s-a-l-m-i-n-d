@@ -33,7 +33,7 @@ You can ask Quantum Atlas a biological research question without writing quantum
 
 | Feature | Purpose | Value for the person |
 | --- | --- | --- |
-| Live research conversation | Talk with Universal One on the Quantum Atlas page using text, dictation or live voice. Refine your scientific question and explicitly ask the agents to run it. | Progress and findings appear automatically in the same conversation. Follow-up discussion shares the saved study; reloading reconnects without submitting another run. |
+| Live research conversation | Talk with Universal One on the Quantum Atlas page using text, dictation or live voice. Refine your scientific question and explicitly ask the agents to run it. | Progress and findings appear automatically in the same conversation. Follow-up discussion shares the saved study; reloading reconnects without submitting another run. Microphone input is visible beside dictation and inline voice controls. The original question prompt remains in place. |
 | Study and live workflow | Show the question, scientific plan, agent progress and the role of each calculation or evidence source. | Understand what is happening and how each stage contributes. |
 | Geometry explorer | Inspect Alpha, Beta, Gamma and Epsilon definitions and the different numerical preparations of the same DNA inputs. | See what is being compared before interpreting its response. |
 | Design and findings reviews | Gemini checks the proposed method before calculations and checks the findings against the evidence before delivery. | See the review decision, requested corrections and retained evidence. |
@@ -44,6 +44,9 @@ You can ask Quantum Atlas a biological research question without writing quantum
 | Shared capacity | Display the available question allowance and keep execution within the recorded scope and funding. | Know when the service can accept another investigation. |
 | Drug Discovery Network and Open Source Genomic Insights | The planned fifth stage connects reviewed findings with external research collaborators and shareable genomic insights. | Understand the intended path from an investigation to research collaboration. This stage is marked as a future feature. |
 | Results email | Register an email address for the active study or the next launch. The completed study triggers one private results link, available for 30 days. | Read the completed findings on another device. Email notification status is shown on the page. |
+| Public gene and binding evidence | Explore candidate genes or another human or mouse gene using NCBI annotation, UCSC reference DNA, ENCODE measured binding regions and JASPAR motif models. NMDAR represents seven GRIN subunit genes. | Retrieve source-qualified evidence without pre-downloading a fixed gene collection. Candidate names fill a draft; they never launch a study. |
+| Live literature review | Search PubMed and Europe PMC, read abstracts and selected available open-access article passages, and share a source-qualified evidence packet with Astra and Gemini. Optional Perplexity discovery requires a configured server key and a funded allowance. | A concise conversation explains the scientific answer; sources, reading coverage, retrieval dates and checksums remain available for inspection. Search results and model agreement do not establish a hypothesis. |
+| Reading backgrounds | Choose Video, Black or White using the same saved background preference as Universal Research. | Read the conversation and reports in the preferred visual setting. |
 
 ## Quantum / AI agent swarm: who does what
 
@@ -78,7 +81,7 @@ Astra and Gemini have distinct scientific roles. LangGraph coordinates their wor
 | result | Return the biological finding. | A completed result combines a plain-language finding, uncertainty and an interactive geometry comparison. Methods, source versions and execution receipts remain available on demand. |
 
 1. Question and routing: The person submits a question. The router selects the supported OXTR continuation recipe or another supported route. A persistent study receives an identity and a saved task record.
-2. Retrieve context: Retrieve the mission, research directions, immutable experiment records and relevant literature.
+2. Retrieve context: Retrieve the mission, research directions, immutable experiment records and relevant library literature. On the staging research service, retrieve current PubMed and Europe PMC evidence with explicit abstract/full-text coverage for shared planning and review.
 3. Audit existing evidence: Check the saved CUDA-Q, Aquila and mathematical-reference records before using them.
 4. Astra prepares the plan: Frame the supported calculation around the original question and the available evidence.
 5. Gemini reviews the design: An approval advances to calculations. A revision returns the plan to Astra; an unresolved decision saves the dependency.
@@ -641,20 +644,20 @@ Enable JavaScript to explore a question. Read the research references.
 | --- | --- | --- | --- | --- | --- | --- |
 | chr3-8752896-8753152 | ordinary | 100 | 98 | 0.2972165941120539 | 0.3016666666666667 | 0.25510204081632654 |
 | chr3-8752896-8753152 | fibonacci | 100 | 99 | 0.2748087531131463 | 0.28 | 0.21717171717171715 |
-| chr3-8752896-8753152 | phi | 100 | 96 | 0.26884696826148846 | 0.2783333333333334 | 0.24131944444444445 |
-| chr3-8752896-8753152 | alpha | 100 | 96 | 0.2811107124932812 | 0.2833333333333334 | 0.203125 |
-| chr3-8752896-8753152 | beta | 100 | 97 | 0.29129294794672056 | 0.2883333333333334 | 0.2422680412371134 |
+| chr3-8752896-8753152 | phi | 100 | 96 | 0.2688469682614885 | 0.2783333333333334 | 0.24131944444444445 |
+| chr3-8752896-8753152 | alpha | 100 | 96 | 0.28111071249328123 | 0.2833333333333334 | 0.203125 |
+| chr3-8752896-8753152 | beta | 100 | 97 | 0.2912929479467206 | 0.2883333333333334 | 0.24226804123711343 |
 | chr3-8752896-8753152 | gamma | 100 | 96 | 0.3146403274328215 | 0.29833333333333334 | 0.2638888888888889 |
-| chr3-8752896-8753152 | epsilon | 100 | 100 | 0.31770366600623084 | 0.3016666666666667 | 0.2916666666666667 |
-| chr3-8752896-8753152 | shuffled | 100 | 95 | 0.2812087107614545 | 0.27666666666666667 | 0.2754385964912281 |
-| chr3-8745472-8745728 | ordinary | 100 | 95 | 0.19366276748557543 | 0.21166666666666667 | 0.18070175438596492 |
-| chr3-8745472-8745728 | fibonacci | 100 | 97 | 0.19352774497750133 | 0.215 | 0.19415807560137457 |
-| chr3-8745472-8745728 | phi | 100 | 96 | 0.19181574999115003 | 0.215 | 0.17361111111111113 |
-| chr3-8745472-8745728 | alpha | 100 | 95 | 0.16913445360297616 | 0.18000000000000002 | 0.15087719298245614 |
+| chr3-8752896-8753152 | epsilon | 100 | 100 | 0.31770366600623073 | 0.3016666666666667 | 0.2916666666666667 |
+| chr3-8752896-8753152 | shuffled | 100 | 95 | 0.28120871076145454 | 0.27666666666666667 | 0.2754385964912281 |
+| chr3-8745472-8745728 | ordinary | 100 | 95 | 0.19366276748557543 | 0.21166666666666664 | 0.18070175438596492 |
+| chr3-8745472-8745728 | fibonacci | 100 | 97 | 0.19352774497750133 | 0.215 | 0.19415807560137455 |
+| chr3-8745472-8745728 | phi | 100 | 96 | 0.19181574999115006 | 0.21499999999999997 | 0.17361111111111113 |
+| chr3-8745472-8745728 | alpha | 100 | 95 | 0.1691344536029761 | 0.18000000000000002 | 0.15087719298245614 |
 | chr3-8745472-8745728 | beta | 100 | 96 | 0.17618737236750492 | 0.18500000000000003 | 0.16145833333333334 |
 | chr3-8745472-8745728 | gamma | 100 | 95 | 0.22444963615407762 | 0.24166666666666667 | 0.17368421052631577 |
 | chr3-8745472-8745728 | epsilon | 100 | 97 | 0.2544423008082389 | 0.26333333333333336 | 0.16494845360824742 |
-| chr3-8745472-8745728 | shuffled | 100 | 93 | 0.26742007346192503 | 0.26166666666666666 | 0.2903225806451613 |
+| chr3-8745472-8745728 | shuffled | 100 | 93 | 0.267420073461925 | 0.26166666666666666 | 0.29032258064516125 |
 
 ## Complete guide data
 
@@ -664,11 +667,11 @@ The following JSON preserves the source fields, saved chart arrays, study interp
 {
   "schema": "universal-informatics/quantum-atlas-guide/v1",
   "title": "Quantum Atlas · AI / LLM Wiki",
-  "version": "2026-11-09-portal-minimal-3",
+  "version": "2026-11-09-live-research-1",
   "url": "https://universalmind.tv/informatics/quantum/",
   "wiki": "https://universalmind.tv/informatics/read/quantum/index.html",
   "agent_architecture": {
-    "version": "2026-11-09-portal-minimal-3",
+    "version": "2026-11-09-live-research-1",
     "purpose": {
       "title": "What Quantum Atlas is for",
       "summary": "Universal Informatics is building an open-source quantum machine for mental health: a network of large language models and quantum computers working together as one. Quantum Atlas connects conversational scientific questions with genomics, biological research and quantum experiments, retaining the methods, evidence and limitations.",
@@ -701,7 +704,7 @@ The following JSON preserves the source fields, saved chart arrays, study interp
       {
         "feature": "Live research conversation",
         "purpose": "Talk with Universal One on the Quantum Atlas page using text, dictation or live voice. Refine your scientific question and explicitly ask the agents to run it.",
-        "human_value": "Progress and findings appear automatically in the same conversation. Follow-up discussion shares the saved study; reloading reconnects without submitting another run."
+        "human_value": "Progress and findings appear automatically in the same conversation. Follow-up discussion shares the saved study; reloading reconnects without submitting another run. Microphone input is visible beside dictation and inline voice controls. The original question prompt remains in place."
       },
       {
         "feature": "Study and live workflow",
@@ -752,6 +755,21 @@ The following JSON preserves the source fields, saved chart arrays, study interp
         "feature": "Results email",
         "purpose": "Register an email address for the active study or the next launch. The completed study triggers one private results link, available for 30 days.",
         "human_value": "Read the completed findings on another device. Email notification status is shown on the page."
+      },
+      {
+        "feature": "Public gene and binding evidence",
+        "purpose": "Explore candidate genes or another human or mouse gene using NCBI annotation, UCSC reference DNA, ENCODE measured binding regions and JASPAR motif models. NMDAR represents seven GRIN subunit genes.",
+        "human_value": "Retrieve source-qualified evidence without pre-downloading a fixed gene collection. Candidate names fill a draft; they never launch a study."
+      },
+      {
+        "feature": "Live literature review",
+        "purpose": "Search PubMed and Europe PMC, read abstracts and selected available open-access article passages, and share a source-qualified evidence packet with Astra and Gemini. Optional Perplexity discovery requires a configured server key and a funded allowance.",
+        "human_value": "A concise conversation explains the scientific answer; sources, reading coverage, retrieval dates and checksums remain available for inspection. Search results and model agreement do not establish a hypothesis."
+      },
+      {
+        "feature": "Reading backgrounds",
+        "purpose": "Choose Video, Black or White using the same saved background preference as Universal Research.",
+        "human_value": "Read the conversation and reports in the preferred visual setting."
       }
     ],
     "swarm": {
@@ -854,7 +872,7 @@ The following JSON preserves the source fields, saved chart arrays, study interp
         {
           "id": "memory",
           "title": "Retrieve context",
-          "action": "Retrieve the mission, research directions, immutable experiment records and relevant literature."
+          "action": "Retrieve the mission, research directions, immutable experiment records and relevant library literature. On the staging research service, retrieve current PubMed and Europe PMC evidence with explicit abstract/full-text coverage for shared planning and review."
         },
         {
           "id": "audit",
@@ -1381,7 +1399,7 @@ The following JSON preserves the source fields, saved chart arrays, study interp
     "implementation_sources": [
       {
         "repository_path": "Informatics/quantum/index.html",
-        "sha256": "710798b75590f640aa3e46ba18201dc70711218d8b571024208f69ba9e41f33a",
+        "sha256": "c38049d9c536ebc828e85219d1d4ddbd955990ea4c2355ea413edb0bf782f74f",
         "scope": "Original primary-page source with generated reading blocks removed"
       },
       {
@@ -1396,7 +1414,7 @@ The following JSON preserves the source fields, saved chart arrays, study interp
       },
       {
         "repository_path": "Informatics/quantum/biology.js",
-        "sha256": "61ff401dae5c65aaa6183e09630686ab14e3d70ddb27436e0fba71a27d2ca428",
+        "sha256": "80fcfeaaab4eb38715231a561205803b7ec6752b856d269aba4a808e158d0e25",
         "scope": "Implementation source"
       },
       {
@@ -1431,12 +1449,12 @@ The following JSON preserves the source fields, saved chart arrays, study interp
       },
       {
         "repository_path": "cloudflare/informatics-astra-memory.js",
-        "sha256": "a4384d95c1a0eafb7aa72bbdcf38fe4f1bd88ad895d419b5ff3e4916626a6c6e",
+        "sha256": "9b064937dfc80b020fefffb2b8ba5934cc47db2c5e6a87195538b041c1a8d48e",
         "scope": "Implementation source"
       },
       {
         "repository_path": "research/informatics/astra-service/runner.py",
-        "sha256": "5ae9062b5b20833f0da9d3e3f3927703b2622c1b29b8a07160ce79ae59eb8f2f",
+        "sha256": "a71512ae2956c2911bf2c03da8c8010a9fe3238a14f7d800e2969d7097d76328",
         "scope": "Implementation source"
       },
       {
@@ -1471,7 +1489,7 @@ The following JSON preserves the source fields, saved chart arrays, study interp
       },
       {
         "repository_path": "Informatics/universal-one.js",
-        "sha256": "853d13c6a3627aa9ab3661c5dc343359a515796b1bf846360ed070ad7f016967",
+        "sha256": "18eb81b491a3703d870c01b9fa13f98c391fabfacee297384bff2cc10cf96f6f",
         "scope": "Implementation source"
       },
       {
@@ -1486,12 +1504,12 @@ The following JSON preserves the source fields, saved chart arrays, study interp
       },
       {
         "repository_path": "cloudflare/informatics-quantum-command.js",
-        "sha256": "fddc12ef89340bd144de22bf38ebf7ed762a9741ae4ba1e7704767f41eb0f891",
+        "sha256": "d40f20dfeb0f94bd24985db3316eed20a092e6d04ef8bcacec264a31c8375ea7",
         "scope": "Implementation source"
       },
       {
         "repository_path": "Informatics/quantum/conversation.js",
-        "sha256": "9f6db4b8b666edd977813066276b8d74139935702f1ecfb661d7f19f75cc587a",
+        "sha256": "7756103a5f5d99f9968be7c15dbc7541b1235c1b0c0b19c09e8bdb65b0044540",
         "scope": "Implementation source"
       },
       {
@@ -1526,7 +1544,47 @@ The following JSON preserves the source fields, saved chart arrays, study interp
       },
       {
         "repository_path": "research/informatics/portal-demo-20261109/worker.py",
-        "sha256": "98d6eed2d38fe2d3d66130656a42f987b8b7ac7250a63887d197ed37e517f741",
+        "sha256": "d4d0046661935528722e0ddcb55f743a27473d4bdc0b5ad45e5d671830ac6ba5",
+        "scope": "Implementation source"
+      },
+      {
+        "repository_path": "Informatics/universal-one-waveform.js",
+        "sha256": "edc471ab2576bd46bc9743c3bb4c1485a869720c65dd52d3e852417e9109660d",
+        "scope": "Implementation source"
+      },
+      {
+        "repository_path": "Informatics/quantum/reading-theme.js",
+        "sha256": "23cbedf355f4aca351cb3797f66a98d7df6137f307d46f24c26962b009209904",
+        "scope": "Implementation source"
+      },
+      {
+        "repository_path": "Informatics/quantum/reading-theme.css",
+        "sha256": "ed4b94399a59d31ccc75e66c1500d5f7273a3c3b5a19fde67a93890c5b619c38",
+        "scope": "Implementation source"
+      },
+      {
+        "repository_path": "cloudflare/informatics-gene-data.js",
+        "sha256": "5bb898313ab9e50c304a19de263e91b767e2956beaa2ababeb972f9198ad518c",
+        "scope": "Implementation source"
+      },
+      {
+        "repository_path": "cloudflare/informatics-literature.js",
+        "sha256": "1c083953ac69bd075487cc5fdd2f46a7677bf37a2d878dfe387408e9ebf643e8",
+        "scope": "Implementation source"
+      },
+      {
+        "repository_path": "cloudflare/informatics-literature-fallback.js",
+        "sha256": "b444a7af0be28050ea2b7139d119c3b3df7128027e38b7d986da331b29601d39",
+        "scope": "Implementation source"
+      },
+      {
+        "repository_path": "cloudflare/informatics-research-worker.js",
+        "sha256": "1f9392c60776600e62aac5011b34e69bdbd914a5544822568a41e75ade7aa865",
+        "scope": "Implementation source"
+      },
+      {
+        "repository_path": "research/informatics/portal-demo-20261109/research_context.py",
+        "sha256": "6c7c7feef53d911e840d8305c1cf5705066f374df8014929c545e1e5aeabcd0b",
         "scope": "Implementation source"
       }
     ]
@@ -9766,9 +9824,9 @@ The following JSON preserves the source fields, saved chart arrays, study interp
   ],
   "page_prose_sha256": "3e5c0639d08e25f35a138d477f50a69fb78aa1c06501db0f382539fc80fe4d7b",
   "downloads": {
-    "json": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.json?v=2026-11-09-portal-minimal-3",
-    "csv": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.csv?v=2026-11-09-portal-minimal-3",
-    "md": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.md?v=2026-11-09-portal-minimal-3"
+    "json": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.json?v=2026-11-09-live-research-1",
+    "csv": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.csv?v=2026-11-09-live-research-1",
+    "md": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.md?v=2026-11-09-live-research-1"
   }
 }
 ```

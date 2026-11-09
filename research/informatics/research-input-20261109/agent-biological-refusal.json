@@ -1,0 +1,39 @@
+{
+  "status": "incomplete",
+  "provider": "Perplexity Agent API",
+  "model": "anthropic/claude-opus-5-5",
+  "query": "Find primary research on human GRIN2B transcriptional regulation. Identify one supported regulator and distinguish direct binding evidence from expression association.",
+  "reason": "Verify the new specialist agent with a narrow public gene-research question.",
+  "answer": "",
+  "receipt": {
+    "model": "anthropic/claude-opus-5-5",
+    "reasoningEffort": "high",
+    "reservation": 1,
+    "reservedUSD": 0.75,
+    "requestUpperUSD": 0.13396000000000002,
+    "calls": [
+      {
+        "inputTokenUpper": 10408,
+        "outputTokenUpper": 4096,
+        "reservedUSD": 0.13396000000000002,
+        "httpStatus": 200,
+        "requestId": "resp_c3ea43b3-f654-4b65-a507-83b1e5daa2a8",
+        "model": "anthropic/claude-opus-5-5",
+        "usage": null,
+        "providerStatus": "failed",
+        "providerError": {
+          "code": "refusal",
+          "message": "echolot: model refused the request: llm-api returned finish_reason=refusal",
+          "type": "refusal"
+        },
+        "incompleteDetails": null,
+        "outputTypes": []
+      }
+    ],
+    "toolExecutions": 0,
+    "retrievedAt": "2026-11-09T11:02:52.527Z"
+  },
+  "papers": [],
+  "records": [],
+  "interpretation": "An AI-generated literature brief for Astra and Gemini to assess against its original sources. This is not independent experimental confirmation. Uncertain calls retain their budget reservation."
+}

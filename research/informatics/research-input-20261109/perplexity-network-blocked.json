@@ -1,0 +1,4 @@
+{
+  "status": "source_unavailable",
+  "message": "Optional discovery was interrupted. Its reservation remains retained; no automatic retry was sent."
+}

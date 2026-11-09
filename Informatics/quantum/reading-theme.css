@@ -1,0 +1,50 @@
+.masthead{flex-wrap:wrap;gap:12px}.masthead>.capacity-dot{margin-left:auto}.quantum-reading-options{display:inline-flex;border:1px solid #526772;border-radius:24px;padding:3px;gap:2px;background:#09171ecc}.quantum-reading-options button{border:0;border-radius:20px;padding:7px 12px;min-height:36px;font:12px/1.5 Arial,sans-serif;color:#b8c8cf;background:transparent}.quantum-reading-options button[aria-pressed=true]{background:#243947;color:#eef5f4}.quantum-reading-options button:focus-visible{outline:2px solid var(--mint,#a3ead1);outline-offset:2px}
+:root[data-reading-background=black],:root[data-reading-background=black] body{background:#000}
+:root[data-reading-background=white]{color-scheme:light;--bg:#fff;--panel:#f6f8f9;--line:#b6c7ce;--muted:#536975;--ink:#172b35;--mint:#176650;--blue:#075f94;background:#fff}
+:root[data-reading-background=white] body{background:#fff;color:var(--ink)}
+:root[data-reading-background=white] :is(.masthead,.masthead b,.lead,.intro-note,.study-steps small,.study-steps span,.chat-models,.chat-models span,.chat-message h3,.chat-answer,.section-note,.section-heading,.geometry-label,.definition-label,.response-axis,.timing-note,.result-metrics,.result-status,.reading-guide,.workflow-caption,.workflow small,.workflow strong,.workflow-heading,.interpretation,.comparison-note,.field-note,.source-note,.study-state,.stage-state,.agent-live-note,.quantum-vision,.quantum-vision-lead){color:var(--ink)}
+:root[data-reading-background=white] :is(.eyebrow,.headline-language,.intro em,.text-button,.saved-actions a,.study-actions a,.reference-links a,.chat-connected,.capacity-dot,.review-phase>span,.review-supervisor>span:last-of-type){color:var(--mint)}
+:root[data-reading-background=white] :is(.ask,.quantum-conversation,.challenge,.capacity-panel,.study-steps button,.study-board,.study-brief,.study-verdict,.result-slot,.result-contract,.reference-view,.geometry-card,.definition-card,.comparison-grid,.method-card,.feature-card,.trust-guide,.success-guide,.study-phase-note,.interpretation-panel,.hypothesis-panel,.conversation-progress,.portal-dialog,.portal-tooltip,.review-supervisor,.review-dialog,dialog,.paper,.paper-body,.wet-lab-next,.hypothesis-strip,.roadmap-note){background:#f6f8f9;color:var(--ink);border-color:var(--line)}
+:root[data-reading-background=white] :is(h1,h2,h3,h4,h5,strong,summary,label){color:var(--ink)}
+:root[data-reading-background=white] :is(p,small,li,td,th){color:inherit}
+:root[data-reading-background=white] :is(.study-badge,.reasoning-level,.model-role,.review-mark){color:#715b0a}
+:root[data-reading-background=white] :is(button,select,input,textarea){color:var(--ink);border-color:#829ba7;background:#fff}
+:root[data-reading-background=white] :is(input,textarea)::placeholder{color:#566d79}
+:root[data-reading-background=white] .quantum-conversation #question{color:var(--ink);background:#fff;border-color:#829ba7}
+:root[data-reading-background=white] .chat-message[data-role=user]{background:#e6f1ee;border-color:#b2cbc3}
+:root[data-reading-background=white] .chat-compose-actions [aria-pressed=true]{background:#d8eee6;border-color:var(--mint)}
+:root[data-reading-background=white] :is(#ask-button,#portal-login button,#portal-experiment button){background:#176650;color:#fff;border-color:#176650}
+:root[data-reading-background=white] .portal-tooltip{color:var(--ink);background:#fff}
+:root[data-reading-background=white] .quantum-reading-options{background:#fff;border-color:#829ba7}
+:root[data-reading-background=white] .quantum-reading-options button{background:transparent;color:#526975}
+:root[data-reading-background=white] .quantum-reading-options button[aria-pressed=true]{background:#e2edf4;color:#172b35}
+:root[data-reading-background=white] .candidate-genes button{background:transparent;border-color:transparent}
+:root[data-reading-background=white] .workflow{background:#f6f8f9;color:#172b35;border-color:#b6c7ce}
+:root[data-reading-background=white] :is(.workflow-node,.pipeline-node,.compute-node){background:#fff;color:#172b35;border-color:#829ba7}
+:root[data-reading-background=white] :is(.reference-view,.response-visual,.local-atoms,.geometry-figure) svg{background:#0b171f;border-radius:8px}
+:root[data-reading-background=white] :is(.reference-view,.response-visual,.geometry-figure) svg text{fill:#edf5f5}
+:root[data-reading-background=white] dialog::backdrop{background:#172b3566}
+html[data-quantum-reading=black] #experience[data-area=quantum],html[data-quantum-reading=black] #experience[data-area=quantum] .film-shade{background:#000}
+html[data-quantum-reading=white] #experience[data-area=quantum],html[data-quantum-reading=white] #experience[data-area=quantum] .film-shade{background:#fff;color:#172b35}
+html[data-quantum-reading=black] #experience[data-area=quantum] #film,html[data-quantum-reading=white] #experience[data-area=quantum] #film{visibility:hidden}
+html[data-quantum-reading=white] #experience[data-area=quantum]>header{background:#fff;color:#172b35;border-color:#c4d1d7}
+html[data-quantum-reading=white] #experience[data-area=quantum]>header :is(a,button,span){color:#172b35}
+html[data-quantum-reading=white] #experience[data-area=quantum] #atlas-menu{background:#fff;border-color:#b6c7ce}
+@media(max-width:600px){.quantum-reading-options{margin-left:auto}.quantum-reading-options button{padding:6px 10px;min-height:34px;font-size:11px}}
+
+:root[data-reading-background=white] #chat-waveform{filter:brightness(.45)}
+
+html[data-quantum-reading=white] #experience[data-area=quantum] .brand{color:#172b35!important}
+:root[data-reading-background=white] .study-steps em{color:#715b0a}
+:root[data-reading-background=white] :is(#results-dialog,#scientific-review-dialog,#verification-dialog,#nature-dialog,#portal-dialog){background:#f6f8f9;color:#172b35;border-color:#829ba7}
+:root[data-reading-background=white] :is(.result-dialog-header,.completed-study,.initial-insights,.agent-status,.delivery-options){background:#f6f8f9;color:#172b35;border-color:#b6c7ce}
+:root[data-reading-background=white] :is(.provider-route,.hypothesis-strip span,.hypothesis-heading>span,.hypothesis-caption,.result-stats dt,.result-question,.candidate-genes>span){color:#536975}
+:root[data-reading-background=white] :is(.completed-study p:not(.eyebrow),.completed-study .initial-insights p:not(.eyebrow),.result-stats dd,#scientific-review-dialog .result-dialog-content){color:#172b35}
+:root[data-reading-background=white] .completed-study .completed-study-scope{color:#536975!important}
+:root[data-reading-background=white] .completed-study-actions .compare-result{background:#176650;color:white}
+:root[data-reading-background=white] :is(#workflow-state,.hypothesis-heading .eyebrow,.hypothesis-strip small,.result-insights h4){color:#715b0a}
+:root[data-reading-background=white] .hypothesis-strip [fill="#e9d86b"]{fill:#806a11}
+:root[data-reading-background=white] .hypothesis-strip [stroke="#e9d86b"]{stroke:#806a11}
+:root[data-reading-background=white] .hypothesis-strip [stroke="#a3ead1"]{stroke:#176650}
+:root[data-reading-background=white] .result-reader-nav [aria-pressed=true]{background:#d8eee6;color:#176650}
+:root[data-reading-background=white] :is(.study-milestones span,#recorded-review-stamp time,.recorded-review-stamp time){color:#536975}

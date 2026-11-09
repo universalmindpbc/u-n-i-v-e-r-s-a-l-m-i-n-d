@@ -36,6 +36,27 @@ class Tests(unittest.TestCase):
  def test_model_cap(self):
   r=self.run_object();r.state['calls']['old']={'provider':'gemini','cost_micro_usd':490000,'token_reserve':12000,'tokens':12000}
   with self.assertRaisesRegex(RuntimeError,'allowance'):r.model('gemini','final',{},w.REVIEW_SCHEMA,'test')
+ def test_both_models_receive_literature(self):
+  r=self.run_object();r.secret={'openai':'fixture','gemini':'fixture'};r.state['memory']={'liveLiterature':{'version':'fixture','papers':[{'title':'Shared scientific paper','pmid':'12345','abstract':'Measured evidence'}]}}
+  old=w.http;requests=[]
+  def fake(url,body,headers):
+   requests.append(body)
+   if 'openai' in url:return {'id':'fixture-astra','model':'fixture','status':'completed','output':[{'type':'message','content':[{'type':'output_text','text':'{"ok":true}'}]}],'usage':{'input_tokens':100,'total_tokens':150}}
+   return {'responseId':'fixture-gemini','modelVersion':'fixture','candidates':[{'finishReason':'STOP','content':{'parts':[{'text':'{"ok":true}'}]}}],'usageMetadata':{'promptTokenCount':100,'totalTokenCount':150}}
+  try:
+   w.http=fake;r.model('astra','plan',{},w.PLAN_SCHEMA,'test');r.model('gemini','design',{},w.REVIEW_SCHEMA,'test')
+  finally:w.http=old
+  self.assertEqual(json.loads(requests[0]['input'])['live_literature']['papers'][0]['pmid'],'12345')
+  self.assertEqual(json.loads(requests[1]['contents'][0]['parts'][0]['text'])['live_literature']['papers'][0]['pmid'],'12345')
+  self.assertEqual(r.state['memory']['liveLiterature']['papers'][0]['abstract'],'Measured evidence')
+ def test_memory_is_checkpointed_before_model_invocation(self):
+  r=self.run_object();r.secret={'worker':'fixture'};r.update=Mock();r.model=Mock();old=w.http
+  try:
+   w.http=Mock(return_value={'liveLiterature':{'papers':[]}});r.advance()
+   self.assertEqual(w.http.call_args.args[-1],180)
+  finally:w.http=old
+  r.model.assert_not_called();self.assertIn('memory',r.state)
+  self.assertEqual(r.update.call_args.args[0],'planning')
  def test_confirmation_required(self):
   r=self.prepared();r.task['confirmedPlanDigest']='b'*64;r.advance();r.braket.create_quantum_task.assert_not_called()
  def test_hardware_submission_idempotency(self):
