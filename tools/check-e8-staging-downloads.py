@@ -9,7 +9,7 @@ from urllib.request import Request, urlopen
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT / 'Informatics'
-OUT = ROOT / 'research/informatics/e8-20261109'
+OUT = ROOT / 'research/informatics/e8-layers-20261109'
 manifest = json.loads((SITE / 'exports/manifest.json').read_text())
 paths = [
     'e8.js', 'e8.css', 'research.html', 'research.js',

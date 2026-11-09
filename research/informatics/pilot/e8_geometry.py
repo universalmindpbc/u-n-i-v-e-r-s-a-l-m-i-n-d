@@ -12,7 +12,7 @@ from csv_records import write_record, read_record
 
 ROOT = Path(__file__).resolve().parents[3]
 DATA = ROOT / 'Informatics/pilot-v1'
-VERSION = 'e8-m9-p24-2026-11-09-v1'
+VERSION = 'e8-m9-p24-2026-11-09-v2'
 WORD24 = [[0,0,0,-2,-2,0,0,0],[0,0,0,0,0,2,2,0],[1,1,-1,-1,1,-1,1,-1],[-1,1,-1,1,1,-1,1,-1],[0,0,-2,0,-2,0,0,0],[-2,0,0,0,0,0,-2,0],[-1,1,1,-1,-1,-1,-1,-1],[1,-1,-1,1,1,-1,1,-1]]
 WORD30 = [[1,-1,-1,-1,-1,-1,-1,1],[2,2,0,0,0,0,0,0]]
 for i in range(6):
@@ -98,18 +98,31 @@ def build():
     while (a,b) not in pairs:
         pairs.append((a,b));fib.append(a);a,b=b,(a+b)%9
     assert (a,b)==(0,1) and len(fib)==24
+    record=json.loads((DATA/'m9.json').read_text())
+    alpha,beta,gamma=record['alpha'],record['beta'],record['gamma']
+    assert alpha['residues']==fib
+    assert gamma['alpha_indices']==[i for i,v in enumerate(fib) if v%3==0]
+    assert all(path[0]==path[-1] and all((b-a)%24==8 for a,b in zip(path,path[1:])) for path in gamma['triangle_paths'])
+    cycle=beta['display_cycle']
+    assert len(cycle)==len(set(cycle))==6 and all((2*a)%9==b for a,b in zip(cycle,cycle[1:]+cycle[:1]))
+    layers=dict(
+        alpha=dict(label='Alpha',color='#5ca8ff',default_visible=True,circle_positions=24,display_values=alpha['display_values'],source_field='alpha',description='The 24 Fibonacci residues modulo 9, with zero displayed as 9.'),
+        beta=dict(label='Beta',color='#ffea42',default_visible=False,circle_positions=9,display_cycle=cycle,closed_path=cycle+cycle[:1],recognised_doubling_cycle=beta['recognised_doubling_cycle'],source_field='beta',description='The six interior interval sums form the doubling cycle modulo 9. The stored order begins at 4.',angular_rule='Value v is placed at 2*pi*v/9 clockwise from north; 9 is north.'),
+        gamma=dict(label='Gamma',color='#ff84c5',default_visible=True,circle_positions=24,alpha_indices=gamma['alpha_indices'],clock_positions=gamma['clock_positions'],display_values=gamma['clockwise_values'],triangle_paths=gamma['triangle_paths'],source_field='gamma',description='Two equilateral triangles join the six Alpha nodes whose residues are divisible by three.'))
     return dict(schema='universal-informatics/e8-geometry/v1',version=VERSION,title='E8 and the 24-step cycle',
         scope='Pure geometry: symbolic composition and computed projections of the E8 root system.',
         definitions=dict(rank=8,root_count=240,lie_algebra_dimension=248,root_norm_squared=2,nearest_neighbors_per_root=56,nearest_neighbor_edges=6720),
         conventions=dict(root_coordinates='Divide roots_scaled2 by two. Root IDs are zero-based array indices.',
             matrix_action='Column vectors. Apply the listed root reflections in order: s_r(x) = x - (x dot r) r, for roots r of squared length two.',
             projection='Dot each root with both orthonormal basis vectors, then divide by normalization_radius. Stored xy values are rounded to 12 decimal places.',
-            cycle_alignment='Each orbit begins at its lowest root index. The display rotates the first orbit start to north. Shared step indices are a comparison convention, not a canonical map from Fibonacci values to roots.',
+            cycle_alignment='Each orbit begins at its lowest root index. The display rotates the first orbit start to north. Shared step indices are a comparison convention, not a canonical map from Fibonacci values to roots. M9 overlays remain fixed while the 30-step Coxeter cycle advances.',
             symbolic_layout='The symbolic view retains ten sets of 24 positions; its radii and phases are chosen for composition and are not an orthogonal E8 projection.'),
         roots_scaled2=rr,fibonacci=dict(modulus=9,period=24,residues=fib,display_values=[x or 9 for x in fib],states=[list(pair) for pair in pairs],zero_display=9),
         projections={'p24':projection(rr,WORD24,24),'p30':projection(rr,WORD30,30)},
         symbolic=dict(orbit_radii=[round(.68+j*.032,6) for j in range(10)],orbit_phase_degrees=[(j%2)*7.5 for j in range(10)],reference_radius=.52),
-        guide=dict(label='Symbolic 8 / 6 / 3 guide',angular_grid_positions=24,octagon_step=3,hexagon_step=4,triangle_step=8,geometry='Octagon, hexagon, two opposed equilateral triangles and an inner triangle.',radius_ratios=[1,.78,.78,.78,.39],note='The polygons share a 24-position angular grid. They are an optional symbolic overlay, not additional E8 roots.'),
+        sequence_layers=layers,
+        overlay_layout=dict(reference_radius=.52,computed_root_radius=.98,north='Alpha index 0 and Beta value 9 share north.',radial_rule='All M9 layers share a display radius. Their angular grids remain distinct: 24 positions for Alpha and Gamma, nine for Beta.',scope='Sequence overlays use their native M9 geometry. Display scale and alignment with E8 are drawing conventions.'),
+        guide=dict(label='Symbolic 8 / 6 / 3 guide',angular_grid_positions=24,octagon_step=3,hexagon_step=4,triangle_step=8,geometry='Octagon, hexagon and inner equilateral triangle. The six-point star is the independently controlled Gamma layer.',radius_ratios=[1,.78,.39],hexagon_radius_equals='Alpha and Gamma reference radius',note='The polygons share a 24-position angular grid. They are an optional symbolic overlay, not additional E8 roots.'),
         views=[dict(id='symbolic',label='Symbolic composition',kind='schematic'),dict(id='p24',label='E8 · 24-step projection',kind='orthogonal_projection'),dict(id='p30',label='E8 · 30-step projection',kind='orthogonal_projection')],
         comparison=dict(established='Fibonacci modulo 9 has period 24. An order-24 E8 symmetry has ten root orbits of length 24.',question='What structure does a fixed map from the M9/P24 cycle to E8 root orbits preserve beyond cycle length?',limit='Shared cycle length alone does not identify the Fibonacci recurrence with E8.'),
         verification=dict(root_enumeration='112 integer roots and 128 half-integer roots; all 240 are unique.',orthogonality='Both Weyl matrices are exactly orthogonal in rational arithmetic.',orders='Exact matrix orders 24 and 30; all smaller positive powers checked.',order24_polynomial='W^8 - W^4 + I = 0, verified exactly.',orbits='Ten cycles of 24 and eight cycles of 30 partition all roots.',projection='Orthonormality, constant orbit radii, distinct projected points and angular steps checked with tolerance 1e-11.',pisano='The state (0,1) first returns modulo 9 after 24 steps.'),
@@ -157,7 +170,7 @@ def publish():
         writer=csv.DictWriter(f,fieldnames=fields);writer.writeheader();writer.writerows(rows)
     for name in ['M1-M1001-README.txt','M1-M1001-CSV-README.txt']:
         p=DATA/name;original=p.read_text().split('\nE8 geometry —')[0]
-        p.write_text(original+'\nE8 geometry — 9 November 2026\n\nThe M9 record includes e8_geometry: all 240 roots, exact Weyl matrices, ordered root cycles, projection bases, coordinates, symbolic drawing conventions, M9 residues and source references. e8-m9-p24.json and csv-shared/e8-m9-p24.csv contain the same complete geometry. The two computed projections use cycles of 24 and 30; the symbolic composition and 8 / 6 / 3 guide are labelled separately.\n')
+        p.write_text(original+'\nE8 geometry — 9 November 2026\n\nThe M9 record includes e8_geometry: all 240 roots, exact Weyl matrices, ordered root cycles, projection bases, coordinates, symbolic drawing conventions, M9 residues and source references. e8-m9-p24.json and csv-shared/e8-m9-p24.csv contain the same complete geometry. The two computed projections use cycles of 24 and 30; the symbolic composition and 8 / 6 / 3 guide are labelled separately. Independently controlled Alpha, Beta and Gamma layers retain their native positions, values and paths. Alpha is blue, Beta yellow and Gamma pink. M9 overlays remain fixed in the 30-step view.\n')
     common=['m9.json','e8-m9-p24.json','index.json','dataset.json','m1-m1001.json','m1-m1001.csv','M1-M1001-README.txt','M1-M1001-CSV-README.txt']
     zip_replace(DATA/'m1-m1001-data.zip',{'pilot-v1/'+n:DATA/n for n in common})
     files=['m1-m1001.csv','M1-M1001-CSV-README.txt','csv-records/m9.csv','csv-shared/e8-m9-p24.csv']+['csv-shared/'+n+'.csv' for n in ['index','dataset','m1-m1001']]

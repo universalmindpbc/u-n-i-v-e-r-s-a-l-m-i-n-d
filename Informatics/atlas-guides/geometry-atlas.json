@@ -177,7 +177,15 @@
     },
     {
       "tag": "p",
-      "text": "The optional octagon, hexagon and triangles share a 24-position angular grid. Their nested radii are drawing choices; the guide adds no E8 roots."
+      "text": "Alpha places the 24 Fibonacci residues on the blue circle. Gamma joins its six 3 / 6 / 9 nodes into the pink star. Beta traces 4 → 8 → 7 → 5 → 1 → 2 → 4 on a nine-position value circle, preserving its original start."
+    },
+    {
+      "tag": "p",
+      "text": "The M9 layers stay fixed on their native 24- and nine-position grids while E8 advances through its 30-step cycle."
+    },
+    {
+      "tag": "p",
+      "text": "The grey octagon, hexagon and inner triangle form the separate symbolic guide. Their scale and alignment with E8 are drawing choices."
     },
     {
       "tag": "summary",
@@ -34587,7 +34595,7 @@
         "pisano_period": 24,
         "file": "pilot-v1/m9.json",
         "m9_family": true,
-        "sha256": "6df0cd6af3d286997bf090f8663a9295bfb3759f0c208cdb5e928b5eca1971ba"
+        "sha256": "3435c14464350cba286d9dec5fa61bb1dbf6465d95ffe96d04fa1e44055c06c7"
       },
       {
         "id": "fibonacci-m10-p60",
@@ -43520,7 +43528,7 @@
     ],
     "e8_geometry": {
       "schema": "universal-informatics/e8-geometry/v1",
-      "version": "e8-m9-p24-2026-11-09-v1",
+      "version": "e8-m9-p24-2026-11-09-v2",
       "title": "E8 and the 24-step cycle",
       "scope": "Pure geometry: symbolic composition and computed projections of the E8 root system.",
       "definitions": {
@@ -43535,7 +43543,7 @@
         "root_coordinates": "Divide roots_scaled2 by two. Root IDs are zero-based array indices.",
         "matrix_action": "Column vectors. Apply the listed root reflections in order: s_r(x) = x - (x dot r) r, for roots r of squared length two.",
         "projection": "Dot each root with both orthonormal basis vectors, then divide by normalization_radius. Stored xy values are rounded to 12 decimal places.",
-        "cycle_alignment": "Each orbit begins at its lowest root index. The display rotates the first orbit start to north. Shared step indices are a comparison convention, not a canonical map from Fibonacci values to roots.",
+        "cycle_alignment": "Each orbit begins at its lowest root index. The display rotates the first orbit start to north. Shared step indices are a comparison convention, not a canonical map from Fibonacci values to roots. M9 overlays remain fixed while the 30-step Coxeter cycle advances.",
         "symbolic_layout": "The symbolic view retains ten sets of 24 positions; its radii and phases are chosen for composition and are not an orthogonal E8 projection."
       },
       "roots_scaled2": [
@@ -49458,20 +49466,142 @@
         ],
         "reference_radius": 0.52
       },
+      "sequence_layers": {
+        "alpha": {
+          "label": "Alpha",
+          "color": "#5ca8ff",
+          "default_visible": true,
+          "circle_positions": 24,
+          "display_values": [
+            9,
+            1,
+            1,
+            2,
+            3,
+            5,
+            8,
+            4,
+            3,
+            7,
+            1,
+            8,
+            9,
+            8,
+            8,
+            7,
+            6,
+            4,
+            1,
+            5,
+            6,
+            2,
+            8,
+            1
+          ],
+          "source_field": "alpha",
+          "description": "The 24 Fibonacci residues modulo 9, with zero displayed as 9."
+        },
+        "beta": {
+          "label": "Beta",
+          "color": "#ffea42",
+          "default_visible": false,
+          "circle_positions": 9,
+          "display_cycle": [
+            4,
+            8,
+            7,
+            5,
+            1,
+            2
+          ],
+          "closed_path": [
+            4,
+            8,
+            7,
+            5,
+            1,
+            2,
+            4
+          ],
+          "recognised_doubling_cycle": [
+            1,
+            2,
+            4,
+            8,
+            7,
+            5
+          ],
+          "source_field": "beta",
+          "description": "The six interior interval sums form the doubling cycle modulo 9. The stored order begins at 4.",
+          "angular_rule": "Value v is placed at 2*pi*v/9 clockwise from north; 9 is north."
+        },
+        "gamma": {
+          "label": "Gamma",
+          "color": "#ff84c5",
+          "default_visible": true,
+          "circle_positions": 24,
+          "alpha_indices": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20
+          ],
+          "clock_positions": [
+            24,
+            4,
+            8,
+            12,
+            16,
+            20
+          ],
+          "display_values": [
+            9,
+            3,
+            3,
+            9,
+            6,
+            6
+          ],
+          "triangle_paths": [
+            [
+              0,
+              8,
+              16,
+              0
+            ],
+            [
+              4,
+              12,
+              20,
+              4
+            ]
+          ],
+          "source_field": "gamma",
+          "description": "Two equilateral triangles join the six Alpha nodes whose residues are divisible by three."
+        }
+      },
+      "overlay_layout": {
+        "reference_radius": 0.52,
+        "computed_root_radius": 0.98,
+        "north": "Alpha index 0 and Beta value 9 share north.",
+        "radial_rule": "All M9 layers share a display radius. Their angular grids remain distinct: 24 positions for Alpha and Gamma, nine for Beta.",
+        "scope": "Sequence overlays use their native M9 geometry. Display scale and alignment with E8 are drawing conventions."
+      },
       "guide": {
         "label": "Symbolic 8 / 6 / 3 guide",
         "angular_grid_positions": 24,
         "octagon_step": 3,
         "hexagon_step": 4,
         "triangle_step": 8,
-        "geometry": "Octagon, hexagon, two opposed equilateral triangles and an inner triangle.",
+        "geometry": "Octagon, hexagon and inner equilateral triangle. The six-point star is the independently controlled Gamma layer.",
         "radius_ratios": [
           1,
           0.78,
-          0.78,
-          0.78,
           0.39
         ],
+        "hexagon_radius_equals": "Alpha and Gamma reference radius",
         "note": "The polygons share a 24-position angular grid. They are an optional symbolic overlay, not additional E8 roots."
       },
       "views": [
@@ -49543,19 +49673,19 @@
     {
       "path": "research.html",
       "url": "https://universalmind.tv/informatics/research.html",
-      "sha256": "e2f79eaefdc6e8617687d3817e7c1abc042918f96b5e4de9a7d16aca495436e4",
+      "sha256": "f9453ae283fed5fed8d534453a788fe3bcdf49d3d689f6a76a1bae5208bc19dc",
       "sha256_scope": "Exact file bytes"
     },
     {
       "path": "research.js",
       "url": "https://universalmind.tv/informatics/research.js",
-      "sha256": "172465488b0b669d79b0dd0b7ba02c0f5914d18dbaf91affac8b9c9424b6dea4",
+      "sha256": "6c85dbaea433d8a8f5f446e10a861d28ea20c72a15144c066d66a4053059b0c9",
       "sha256_scope": "Exact file bytes"
     },
     {
       "path": "pilot-v1/index.json",
       "url": "https://universalmind.tv/informatics/pilot-v1/index.json",
-      "sha256": "d8cc8c0164a868ef24901598f1debb25a9f92d0bb1a48f0a9e1e13fc1110df07",
+      "sha256": "acc8063bb61a0ca9ad3c2af8bd3af45032fec793cdc94827fbdcaf85a81d722e",
       "sha256_scope": "Exact file bytes"
     }
   ],

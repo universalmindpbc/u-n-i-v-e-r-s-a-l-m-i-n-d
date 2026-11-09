@@ -1,0 +1,29 @@
+{
+  "m1-m1001-data.zip": {
+    "passed": true,
+    "updated": [
+      "pilot-v1/m9.json",
+      "pilot-v1/e8-m9-p24.json",
+      "pilot-v1/index.json",
+      "pilot-v1/dataset.json",
+      "pilot-v1/m1-m1001.json",
+      "pilot-v1/M1-M1001-README.txt",
+      "pilot-v1/M1-M1001-CSV-README.txt"
+    ],
+    "preservedMembers": 1104,
+    "removed": []
+  },
+  "m1-m1001-csv.zip": {
+    "passed": true,
+    "updated": [
+      "M1-M1001-CSV-README.txt",
+      "csv-records/m9.csv",
+      "csv-shared/e8-m9-p24.csv",
+      "csv-shared/index.csv",
+      "csv-shared/dataset.csv",
+      "csv-shared/m1-m1001.csv"
+    ],
+    "preservedMembers": 1089,
+    "removed": []
+  }
+}
