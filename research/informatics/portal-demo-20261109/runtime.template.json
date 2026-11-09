@@ -64,7 +64,7 @@
                   "Action": [
                     "braket:GetDevice"
                   ],
-                  "Resource": "arn:aws:braket:us-east-1::device/qpu/quera/Aquila"
+                  "Resource": "arn:aws:braket:us-east-1:740168708062:device/qpu/quera/Aquila"
                 },
                 {
                   "Effect": "Allow",
@@ -73,6 +73,7 @@
                   ],
                   "Resource": [
                     "arn:aws:braket:us-east-1::device/qpu/quera/Aquila",
+                    "arn:aws:braket:us-east-1:740168708062:device/qpu/quera/Aquila",
                     "arn:aws:braket:us-east-1:740168708062:quantum-task/*"
                   ],
                   "Condition": {
