@@ -4,28 +4,32 @@
     "Gemini 4 Argon": "HIGH",
     "GPT-6 Astra": "max"
   },
-  "source_unit_tests": 28,
+  "source_unit_tests": 31,
   "guide_json_csv_equivalent": true,
   "implementation_source_hashes_matched": 18,
-  "live_activation": "AWS High/Max profile active; live study paused after incomplete Astra plan; complete provider workflow remains unverified",
+  "live_activation": "Verified complete staging study: Astra Max plan and report; Gemini HIGH design and final approvals; visible report and complete JSON/CSV downloads.",
   "production_profile": "unchanged: low/LOW",
   "new_paid_quantum_or_GPU_jobs": 0,
-  "cloud_build_sha256": "308986262a9f26b6289b28d489c21bb8e8de157c674f99490080ee16d5ca0406",
+  "cloud_build_sha256": "8158f7be98b2a4e348616d5f73a4cbe61c99c1ed148fccceecf4adf3a59db0db",
   "approvals": {
     "staging_gemini_allowance_USD": 2,
     "shared_worker_update": true,
     "production_reasoning": "retain Low",
     "production_website_release": false,
-    "provider_context_transmission": "Ben approved OXTR evidence, reference DNA, calculations, library excerpts and mission/research directions to OpenAI and Google"
+    "provider_context_transmission": "Ben approved OXTR evidence, reference DNA, calculations, library excerpts and mission/research directions to OpenAI and Google",
+    "staging_astra_token_limit": 64000,
+    "staging_astra_output_per_call": 16384,
+    "standard_API_pricing": true,
+    "graphical_staging_approval": true
   },
   "complete_export_sources_reconstructed_in_each_format": 1195,
-  "export_version": "e2b5970a780486669aebbe6ac81f3a39265c44cd251495163b8fa96d854a29b7",
-  "cloud_build_id": "informatics-astra-staging:f747c3de-a114-43c3-8a0e-6c994964dbf7",
-  "cloud_image_digest": "sha256:be3a0ab89bc3854665ad0ee62ca20e3b6361138a869e7df68c683c4eb9309ecd",
-  "previous_cloud_image_digest": "sha256:f3fb73dda21000cb01f893844d29595e747131462deb6b26742a25d37c6b9131",
+  "export_version": "37d8e7f73c3434a1dc6e429eccc0b341debf2c52b3dd253a8f23a694fd546f7b",
+  "cloud_build_id": "informatics-astra-staging:1b5dad35-154b-4446-9e6f-e1435f8d8d4b",
+  "cloud_image_digest": "sha256:19b77698773949c6f0ec27d95f1f838d97d5ba1c57c6133076743ac3ce9ce97c",
+  "previous_cloud_image_digest": "sha256:be3a0ab89bc3854665ad0ee62ca20e3b6361138a869e7df68c683c4eb9309ecd",
   "staging_only_gemini_ledger_seeded": true,
   "staging_site_deployed": true,
-  "staging_source_commit": "41ec2fe9c",
+  "staging_source_commit": "e4fd5fb3d",
   "staging_layout_checks": {
     "pages": [
       "Quantum Atlas",
@@ -39,7 +43,8 @@
     "passed": true,
     "browser_process_audio_muted": true
   },
-  "live_study": {
+  "staging_HTTP_file_hash_matches": 15,
+  "first_live_study": {
     "id": "34e36111-fe28-4b8e-a544-c65b9e4c1a14",
     "status": "needs_attention",
     "failed_stage": "Astra plan",
@@ -49,5 +54,18 @@
     "Gemini_staging_micro_usd": 0,
     "Gemini_calls": 0
   },
-  "staging_HTTP_file_hash_matches": 18
+  "live_study": {
+    "id": "83ba4807-83e6-4ca2-b151-7637e9d6a8ec",
+    "status": "complete",
+    "astra_total_tokens": 26652,
+    "Gemini_staging_micro_usd": 263860,
+    "Gemini_calls": 2,
+    "checkpoint_handoff_verified": true,
+    "JSON_CSV_equivalent_fields": 4609,
+    "durable_S3_records": {
+      "result.json": 192195,
+      "result.csv": 389669
+    },
+    "new_paid_quantum_or_GPU_jobs": 0
+  }
 }

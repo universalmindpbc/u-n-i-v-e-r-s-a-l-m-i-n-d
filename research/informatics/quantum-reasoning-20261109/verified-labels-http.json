@@ -1,0 +1,14 @@
+[
+  {
+    "path": "Informatics/quantum/index.html",
+    "url": "https://staging.universalmind.tv/informatics/quantum/?embedded=1",
+    "sha256": "1b02a92fa66e07db7d466762c9e3cbf58dcb8ad817e2ff72286ed25fb01581e5",
+    "matched": true
+  },
+  {
+    "path": "Informatics/quantum/biology.css",
+    "url": "https://staging.universalmind.tv/informatics/quantum/biology.css?v=reasoning-verified-20261109",
+    "sha256": "d8b6ad0bb5a8037545c108bc4ee52b271bc873388ee716e3793b7a5deea1713a",
+    "matched": true
+  }
+]
