@@ -1,0 +1,112 @@
+{
+  "staging_files_matched": 15,
+  "results": [
+    {
+      "path": "Informatics/exports/manifest-37d8e7f73c3434a1dc6e429eccc0b341debf2c52b3dd253a8f23a694fd546f7b.json",
+      "bytes": 2398520,
+      "sha256": "c5e6409b139da142d53f40fdbf5039174e97ceb68d799bbc62c9c98280413c34",
+      "matches_deployed_bytes": true,
+      "error": ""
+    },
+    {
+      "path": "Informatics/exports/manifest.json",
+      "bytes": 2398520,
+      "sha256": "c5e6409b139da142d53f40fdbf5039174e97ceb68d799bbc62c9c98280413c34",
+      "matches_deployed_bytes": true,
+      "error": ""
+    },
+    {
+      "path": "Informatics/exports/part-2237dafaac7c1a3f05a5272eb447b89449bb4327ff3269719c49de2e46213214.bin",
+      "bytes": 50331648,
+      "sha256": "2237dafaac7c1a3f05a5272eb447b89449bb4327ff3269719c49de2e46213214",
+      "matches_deployed_bytes": true,
+      "error": ""
+    },
+    {
+      "path": "Informatics/exports/part-4c3c07486a44a97b4a1072356b81031d64ce75ab64000ae3d78a966ad96dd839.bin",
+      "bytes": 50331648,
+      "sha256": "4c3c07486a44a97b4a1072356b81031d64ce75ab64000ae3d78a966ad96dd839",
+      "matches_deployed_bytes": true,
+      "error": ""
+    },
+    {
+      "path": "Informatics/exports/part-67f6636d8660ce7cdcd103c9cafed1f25133afa507b97fa67c5ddeccf8caf2d9.bin",
+      "bytes": 367018,
+      "sha256": "67f6636d8660ce7cdcd103c9cafed1f25133afa507b97fa67c5ddeccf8caf2d9",
+      "matches_deployed_bytes": true,
+      "error": ""
+    },
+    {
+      "path": "Informatics/exports/part-9b30ba9b934e864e1b721924a760bf77ecba45e5ed409bdfbd2e521dfe26e946.bin",
+      "bytes": 50331648,
+      "sha256": "9b30ba9b934e864e1b721924a760bf77ecba45e5ed409bdfbd2e521dfe26e946",
+      "matches_deployed_bytes": true,
+      "error": ""
+    },
+    {
+      "path": "Informatics/exports/part-eb83d009efa68587a57ddcc805eb9579e9885b532a35129c1c75636fe82b9c6c.bin",
+      "bytes": 30953848,
+      "sha256": "eb83d009efa68587a57ddcc805eb9579e9885b532a35129c1c75636fe82b9c6c",
+      "matches_deployed_bytes": true,
+      "error": ""
+    },
+    {
+      "path": "Informatics/exports/part-fd40a67f324972f1e87a33fdb1083aec32bd956276d0ef3620977477d08b42a2.bin",
+      "bytes": 50331648,
+      "sha256": "fd40a67f324972f1e87a33fdb1083aec32bd956276d0ef3620977477d08b42a2",
+      "matches_deployed_bytes": true,
+      "error": ""
+    },
+    {
+      "path": "Informatics/index.html",
+      "bytes": 575429,
+      "sha256": "699cc3c8923b4a6184588d42d7bb96f16b10c490b211d71af33e21c10ab1f15d",
+      "matches_deployed_bytes": true,
+      "error": ""
+    },
+    {
+      "path": "Informatics/quantum/index.html",
+      "bytes": 419968,
+      "sha256": "66cb8c90a850a3059647475062b75addcc1531e1501186a0a8668fb655bfd9b2",
+      "matches_deployed_bytes": true,
+      "error": ""
+    },
+    {
+      "path": "Informatics/quantum/reading/quantum-atlas.csv",
+      "bytes": 677133,
+      "sha256": "19031553a58a2db9eabfe57164df1df62b21f13594e59570688cf7bb53a195da",
+      "matches_deployed_bytes": true,
+      "error": "",
+      "url": "https://staging.universalmind.tv/informatics/quantum/reading/quantum-atlas.csv?v=2026-11-09-reasoning-budget",
+      "note": "Unversioned response retained the prior cached CSV; the published versioned download URL serves the new source."
+    },
+    {
+      "path": "Informatics/quantum/reading/quantum-atlas.json",
+      "bytes": 322661,
+      "sha256": "4d2c444994ab3db338ce09131dd168d09ea019aeeab89afb20a0bcc80433a6a2",
+      "matches_deployed_bytes": true,
+      "error": ""
+    },
+    {
+      "path": "Informatics/quantum/reading/quantum-atlas.md",
+      "bytes": 363412,
+      "sha256": "e5bde2124cd888a5ef21c10e32886b62ecd8555a81b3f9caa8ec18ee227dd9a4",
+      "matches_deployed_bytes": true,
+      "error": ""
+    },
+    {
+      "path": "Informatics/read/data.html",
+      "bytes": 183526,
+      "sha256": "429c71e7b8f142f52a28fce23db86735a307548101132c92f71b5b925aa0f9fe",
+      "matches_deployed_bytes": true,
+      "error": ""
+    },
+    {
+      "path": "Informatics/read/quantum/index.html",
+      "bytes": 65415,
+      "sha256": "d56d68f18c4e892da3aaffafc71d8eb29ecfb9bb3e9426fcb02295127f69dde1",
+      "matches_deployed_bytes": true,
+      "error": ""
+    }
+  ]
+}

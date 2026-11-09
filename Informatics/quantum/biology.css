@@ -5,8 +5,6 @@
 
 /* Compact model settings and the external Wolfram assessment reference. */
 .flow-node .reasoning-level{display:block;margin-top:5px;font-size:10px;line-height:1.5;letter-spacing:.08em;color:#a3ead1;font-weight:400}
-/* Remove this status only after the complete staged cloud workflow is verified. */
-.reasoning-level::after{content:"Activation pending";display:block;margin-top:3px;font-size:9px;letter-spacing:.035em;color:#9dabb5}
 .flow-node svg.flow-icon{display:block;width:26px;height:26px;margin-inline:auto}
 .wolfram-benchmark{display:grid;grid-template-columns:145px minmax(0,1fr);gap:24px;align-items:start;padding:25px 0 18px;margin-top:12px}
 .wolfram-benchmark-brand{display:inline-flex;align-items:center;gap:10px;min-height:44px;width:fit-content;text-decoration:none;font-size:18px;letter-spacing:-.025em;color:var(--ink)}

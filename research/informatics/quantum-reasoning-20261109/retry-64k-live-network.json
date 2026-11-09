@@ -1,0 +1,23 @@
+{
+  "processAudioMuted": true,
+  "questionRequestSucceeded": true,
+  "routerReceipt": {
+    "model": "gpt-6-astra",
+    "provider_response_id": "resp_08824bbdd2875765016af13f0c847c87d0855b5f668064adbc",
+    "route": "oxtr_occupancy"
+  },
+  "request_count": 326,
+  "request_status_counts": {
+    "200": 326
+  },
+  "first_request": {
+    "path": "/quantum/question",
+    "status": 200,
+    "time": "2026-11-09T03:33:34.576Z"
+  },
+  "last_request": {
+    "path": "/agent/studies/83ba4807-83e6-4ca2-b151-7637e9d6a8ec",
+    "status": 200,
+    "time": "2026-11-09T03:55:36.591Z"
+  }
+}
