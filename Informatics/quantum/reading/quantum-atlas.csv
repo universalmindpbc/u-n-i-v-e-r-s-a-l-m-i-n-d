@@ -2,11 +2,11 @@ path,type,value
 ,object,
 /schema,string,universal-informatics/quantum-atlas-guide/v1
 /title,string,Quantum Atlas · AI / LLM Wiki
-/version,string,2026-11-09-reasoning-benchmark
+/version,string,2026-11-09-reasoning-budget
 /url,string,https://universalmind.tv/informatics/quantum/
 /wiki,string,https://universalmind.tv/informatics/read/quantum/index.html
 /agent_architecture,object,
-/agent_architecture/version,string,2026-11-09-reasoning-benchmark
+/agent_architecture/version,string,2026-11-09-reasoning-budget
 /agent_architecture/purpose,object,
 /agent_architecture/purpose/title,string,What Quantum Atlas is for
 /agent_architecture/purpose/summary,string,"Quantum Atlas makes computational biology and quantum research approachable through a scientific question written in ordinary language. A person brings the question; the platform coordinates AI scientific work, mathematical models, simulations, recorded quantum measurements and biological evidence, then returns an explanation with the underlying research record."
@@ -575,11 +575,11 @@ path,type,value
 /agent_architecture/implementation_sources/7/scope,string,Implementation source
 /agent_architecture/implementation_sources/8,object,
 /agent_architecture/implementation_sources/8/repository_path,string,cloudflare/informatics-quantum.js
-/agent_architecture/implementation_sources/8/sha256,string,1373d17fe91957fec2e27ebe89a2cf4c092cb59abd76b2f603be9460979b54c5
+/agent_architecture/implementation_sources/8/sha256,string,a93c6e5eea1156c47c5f689be39d924ed6c8f81c6fb44d967cf74a3bee272585
 /agent_architecture/implementation_sources/8/scope,string,Implementation source
 /agent_architecture/implementation_sources/9,object,
 /agent_architecture/implementation_sources/9/repository_path,string,cloudflare/informatics-astra.js
-/agent_architecture/implementation_sources/9/sha256,string,ac521234c4d0ba8de89ecea9d198e2d497add495426c1db2721f3a23a61ea441
+/agent_architecture/implementation_sources/9/sha256,string,b2fd106876d9620ae428f48710091dfe5e7f19cbe8faec1a7c64733107031174
 /agent_architecture/implementation_sources/9/scope,string,Implementation source
 /agent_architecture/implementation_sources/10,object,
 /agent_architecture/implementation_sources/10/repository_path,string,cloudflare/informatics-astra-memory.js
@@ -587,15 +587,15 @@ path,type,value
 /agent_architecture/implementation_sources/10/scope,string,Implementation source
 /agent_architecture/implementation_sources/11,object,
 /agent_architecture/implementation_sources/11/repository_path,string,research/informatics/astra-service/runner.py
-/agent_architecture/implementation_sources/11/sha256,string,c3921ba36a2c176794ff970a397f60aa0aece0f9d99a8967e54ea6946372c772
+/agent_architecture/implementation_sources/11/sha256,string,5ae9062b5b20833f0da9d3e3f3927703b2622c1b29b8a07160ce79ae59eb8f2f
 /agent_architecture/implementation_sources/11/scope,string,Implementation source
 /agent_architecture/implementation_sources/12,object,
 /agent_architecture/implementation_sources/12/repository_path,string,research/informatics/astra-service/review_flow.py
-/agent_architecture/implementation_sources/12/sha256,string,891a9b375e3a87b2fd122f01e08facc6be22b02e9c25ca3f144b86b741ea2c5a
+/agent_architecture/implementation_sources/12/sha256,string,61248bd6c5fc44a11c9816dc126ec0cc238e7bec36f8e9f6ff80a8400230fdf0
 /agent_architecture/implementation_sources/12/scope,string,Implementation source
 /agent_architecture/implementation_sources/13,object,
 /agent_architecture/implementation_sources/13/repository_path,string,research/informatics/astra-service/cloud/runtime.py
-/agent_architecture/implementation_sources/13/sha256,string,af0074f8ba3958ec4334f8d684d398f5b49b6919f4a62ebf790f2c2f99b710f5
+/agent_architecture/implementation_sources/13/sha256,string,21b67270873ba729db897835f1edadb163fdb828519fd6d8827011fe279a3c9d
 /agent_architecture/implementation_sources/13/scope,string,Implementation source
 /agent_architecture/implementation_sources/14,object,
 /agent_architecture/implementation_sources/14/repository_path,string,research/informatics/scientific-swarm/swarm.py
@@ -607,7 +607,7 @@ path,type,value
 /agent_architecture/implementation_sources/15/scope,string,Implementation source
 /agent_architecture/implementation_sources/16,object,
 /agent_architecture/implementation_sources/16/repository_path,string,research/informatics/astra-service/reasoning_profile.py
-/agent_architecture/implementation_sources/16/sha256,string,278f6a0dd7a9d6ad2abacda635b268828d28b7e69b7a4543aca27f50e1fa81f5
+/agent_architecture/implementation_sources/16/sha256,string,ce0983eac1ccf8dda646f12f10540482c09fec11a9e7d5dd73878a9cbf81bc6f
 /agent_architecture/implementation_sources/16/scope,string,Implementation source
 /agent_architecture/implementation_sources/17,object,
 /agent_architecture/implementation_sources/17/repository_path,string,research/informatics/scientific-swarm/providers.py
@@ -7960,6 +7960,6 @@ path,type,value
 /sources/11/sha256,string,11bcf4afab33943cfa6f5d40aa644089d16b1a7f7875f910cc503a4a2abec063
 /page_prose_sha256,string,f771fe41580f961eadddeb6d9024cef1e1094451830b8721b128d356cd58582a
 /downloads,object,
-/downloads/json,string,https://universalmind.tv/informatics/quantum/reading/quantum-atlas.json?v=2026-11-09-reasoning-benchmark
-/downloads/csv,string,https://universalmind.tv/informatics/quantum/reading/quantum-atlas.csv?v=2026-11-09-reasoning-benchmark
-/downloads/md,string,https://universalmind.tv/informatics/quantum/reading/quantum-atlas.md?v=2026-11-09-reasoning-benchmark
+/downloads/json,string,https://universalmind.tv/informatics/quantum/reading/quantum-atlas.json?v=2026-11-09-reasoning-budget
+/downloads/csv,string,https://universalmind.tv/informatics/quantum/reading/quantum-atlas.csv?v=2026-11-09-reasoning-budget
+/downloads/md,string,https://universalmind.tv/informatics/quantum/reading/quantum-atlas.md?v=2026-11-09-reasoning-budget

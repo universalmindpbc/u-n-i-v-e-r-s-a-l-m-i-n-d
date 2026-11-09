@@ -8,13 +8,18 @@ LEGACY = {
     'gemini': {'model': 'gemini-4-argon', 'thinking_level': 'LOW',
                'max_output_tokens': 2048, 'timeout_seconds': 180},
 }
-STAGING = {
+STAGING_FIRST = {
     'version': 'high-max-20261109',
     'astra': {'model': 'gpt-6-astra', 'effort': 'max', 'plan_output_tokens': 8192,
               'report_output_tokens': 8192, 'timeout_seconds': 300},
     'gemini': {'model': 'gemini-4-argon', 'thinking_level': 'HIGH',
                'max_output_tokens': 8192, 'timeout_seconds': 300},
 }
+STAGING = deepcopy(STAGING_FIRST)
+STAGING['version'] = 'high-max-64k-20261109'
+STAGING['astra'].update(plan_output_tokens=16384, report_output_tokens=16384,
+                        timeout_seconds=600, study_token_limit=64000,
+                        service_tier='default')
 
 def profile_for_origin(origin):
     if origin == 'https://staging.universalmind.tv':
@@ -28,16 +33,26 @@ def profile_for_checkpoint(origin, values):
     if not values:
         return profile_for_origin(origin)
     saved = values.get('model_settings', values.get('__start__', {}).get('model_settings', LEGACY))
-    if saved not in (LEGACY, STAGING):
+    if saved not in (LEGACY, STAGING_FIRST, STAGING):
         raise ValueError('Unknown saved reasoning profile')
     if origin == 'https://universalmind.tv' and saved != LEGACY:
         raise ValueError('The reasoning upgrade is staging-only')
     profile_for_origin(origin)
     return deepcopy(saved)
 
+def profile_for_task(origin, values, policy):
+    if values:
+        return profile_for_checkpoint(origin, values)
+    profile = profile_for_origin(origin)
+    if origin == 'https://staging.universalmind.tv' and policy.get('maxModelTokens', 24000) == 24000:
+        return deepcopy(STAGING_FIRST)
+    if policy.get('maxModelTokens', 24000) != profile['astra'].get('study_token_limit', 24000):
+        raise ValueError('Study allowance differs from its server profile')
+    return profile
+
 def review_budget_for_checkpoint(origin, values):
     """A new ledger must be explicitly seeded before higher-effort work can run."""
     profile = profile_for_checkpoint(origin, values)
-    if profile == STAGING:
+    if profile in (STAGING_FIRST, STAGING):
         return ('state/shared/gemini-high-staging-20261109.sqlite', 2_000_000)
     return ('state/shared/gemini-review-usage.sqlite', 1_000_000)

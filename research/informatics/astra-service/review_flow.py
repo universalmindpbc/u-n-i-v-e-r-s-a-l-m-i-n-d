@@ -1,5 +1,6 @@
 """Scientific roles and a bounded, reproducible OXTR recipe for the cloud agent."""
 import hashlib,json,sys
+from copy import deepcopy
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scientific-swarm'))
 from providers import GeminiReviewer,ReviewLedger
@@ -21,13 +22,19 @@ PLAN_INSTRUCTIONS = '''You are GPT-6 Astra, Universal Informatics head bioinform
 PLAN_INSTRUCTIONS+=' Excluded terms and contractions: '+', '.join(['sh'+'ould','co'+'uld','wo'+'uld'])+'.'
 PLAN_SCHEMA={'type':'object','properties':{'supported':{'type':'boolean'},'objective':{'type':'string'},'actions':{'type':'array','items':{'type':'string'}},'interpretation':{'type':'string'},'stop_reason':{'type':'string'}},'required':['supported','objective','actions','interpretation','stop_reason'],'additionalProperties':False}
 
+def recipe_for_profile(profile):
+ recipe=deepcopy(RECIPE)
+ recipe['budget']['Astra_tokens']=profile['astra'].get('study_token_limit',24000)
+ return recipe
+
 def create_plan(key, question, memory, feedback, model_settings=None):
  from openai import OpenAI
  settings=(model_settings or STAGING)['astra']
- prompt=json.dumps({'question':question,'recipe':RECIPE,'research_memory':memory,'review_feedback':feedback},ensure_ascii=False)
- r=OpenAI(api_key=key,max_retries=0,timeout=settings['timeout_seconds']).responses.create(model=settings['model'],instructions=PLAN_INSTRUCTIONS,input=prompt,reasoning={'effort':settings['effort']},max_output_tokens=settings['plan_output_tokens'],store=False,text={'format':{'type':'json_schema','name':'astra_design','strict':True,'schema':PLAN_SCHEMA}})
+ prompt=json.dumps({'question':question,'recipe':recipe_for_profile(model_settings or STAGING),'research_memory':memory,'review_feedback':feedback},ensure_ascii=False)
+ tier={'service_tier':settings['service_tier']} if 'service_tier' in settings else {}
+ r=OpenAI(api_key=key,max_retries=0,timeout=settings['timeout_seconds']).responses.create(model=settings['model'],instructions=PLAN_INSTRUCTIONS,input=prompt,reasoning={'effort':settings['effort']},max_output_tokens=settings['plan_output_tokens'],store=False,text={'format':{'type':'json_schema','name':'astra_design','strict':True,'schema':PLAN_SCHEMA}},**tier)
  if r.status!='completed':raise RuntimeError('Astra design incomplete; reservation retained.')
- return {'plan':json.loads(r.output_text),'tokens':r.usage.total_tokens,'provider_response_id':r.id,'model':r.model,'reasoning_effort':settings['effort'],'max_output_tokens':settings['plan_output_tokens']}
+ return {'plan':json.loads(r.output_text),'tokens':r.usage.total_tokens,'provider_response_id':r.id,'model':r.model,'reasoning_effort':settings['effort'],'max_output_tokens':settings['plan_output_tokens'],'service_tier':getattr(r,'service_tier',None)}
 
 def program_summary(cases):
  """Keep program identity and numerical checks; retain full arrays in exports."""
@@ -50,7 +57,7 @@ def program_summary(cases):
     'observables_equal':all(m.get('cudaq_observables')==members[0].get('cudaq_observables') and m.get('reference_observables')==members[0].get('reference_observables') for m in members)})
  return {'receipts':receipts,'identical_programs':identical,'complete_cases_sha256':digest(cases)}
 
-def final_material(state):
+def final_material(state, model_settings=None):
  report=state['report']
  # Review the numeric metrics, source identity and execution receipts. The full
  # prediction rows remain in the downloadable report, with a hash in this packet.
@@ -60,4 +67,4 @@ def final_material(state):
  compact['prepared_quantum']={k:v for k,v in report['prepared_quantum'].items() if k not in ['cases','physical_model']}
  compact['local_program_summary']=program_summary(report['prepared_quantum']['cases'])
  compact['local_program_summary_format']='Program hashes, full-case hashes, numerical errors and mean atom excitation. Exact vectors and pulse arrays remain in the downloadable report. Identical-program groups compare full program hashes and exact arrays.'
- return {'question':state['question'],'recipe':RECIPE,'plan':state['plan'],'report':compact}
+ return {'question':state['question'],'recipe':recipe_for_profile(model_settings) if model_settings else RECIPE,'plan':state['plan'],'report':compact}

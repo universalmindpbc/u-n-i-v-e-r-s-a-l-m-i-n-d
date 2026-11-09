@@ -1,0 +1,38 @@
+{
+  "date": "2026-11-09",
+  "scope": "One additional staging verification study",
+  "user_approval": "That many tokens is fine; graphical staging work approved.",
+  "astra": {
+    "study_total_token_limit": 64000,
+    "output_token_limit_per_scientific_call": 16384,
+    "reasoning_effort": "max",
+    "service_tier": "default",
+    "routing_tokens_included": true,
+    "conservative_model_charge_ceiling_USD": 3.2
+  },
+  "gemini": {
+    "thinking_level": "HIGH",
+    "existing_staging_ledger_cap_USD": 2
+  },
+  "production": {
+    "website_publication_approved": false,
+    "reasoning": "low",
+    "study_token_limit": 24000
+  },
+  "first_study": {
+    "task_id": "34e36111-fe28-4b8e-a544-c65b9e4c1a14",
+    "status": "needs_attention",
+    "reason": "Astra design incomplete at 8192 output limit; retained reservation, no automatic retry."
+  },
+  "build": {
+    "archive_sha256": "8158f7be98b2a4e348616d5f73a4cbe61c99c1ed148fccceecf4adf3a59db0db",
+    "id": "informatics-astra-staging:1b5dad35-154b-4446-9e6f-e1435f8d8d4b"
+  },
+  "validation": {
+    "python_tests_passed": 22,
+    "additional_unchanged_scientific_tests_previously_passed": 9,
+    "broker_tests_passed": true,
+    "wrangler_dry_run_passed": true,
+    "discovery_check_passed": true
+  }
+}

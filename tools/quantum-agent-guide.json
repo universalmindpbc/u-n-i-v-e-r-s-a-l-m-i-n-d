@@ -1,5 +1,5 @@
 {
-  "version": "2026-11-09-reasoning-benchmark",
+  "version": "2026-11-09-reasoning-budget",
   "purpose": {
     "title": "What Quantum Atlas is for",
     "summary": "Quantum Atlas makes computational biology and quantum research approachable through a scientific question written in ordinary language. A person brings the question; the platform coordinates AI scientific work, mathematical models, simulations, recorded quantum measurements and biological evidence, then returns an explanation with the underlying research record.",

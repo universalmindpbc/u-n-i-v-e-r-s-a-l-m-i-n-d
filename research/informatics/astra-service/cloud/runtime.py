@@ -85,7 +85,8 @@ def handler(event,context):
  except Exception:
   broker.call('update',id=identifier,lease=claim['lease'],stage='result',status='needs_attention',message='The shared Gemini review allowance needs owner reconciliation. No new calculation has started.')
   return {'task_id':identifier,'status':'review_allowance_dependency'}
- broker.run(claim,sync=sync,review_ledger=reviews)
+ outcome=broker.run(claim,sync=sync,review_ledger=reviews,remaining_time=lambda:context.get_remaining_time_in_millis()/1000)
+ if outcome=='yielded':return {'task_id':identifier,'status':'checkpoint_handoff'}
  # JSON and full CSV remain downloadable in the broker; mirror both durably.
  for path in (TASK_ROOT/'results'/identifier).glob('result.*'):
   boto3.client('s3').put_object(Bucket=os.environ['ASTRA_STATE_BUCKET'],Key='results/'+identifier+'/'+path.name,Body=path.read_bytes(),ServerSideEncryption='AES256')

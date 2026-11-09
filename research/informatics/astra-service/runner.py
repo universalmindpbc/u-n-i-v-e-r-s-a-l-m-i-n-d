@@ -10,14 +10,35 @@ from langgraph.checkpoint.sqlite import SqliteSaver
 import science
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'agent-foundation'))
 from workflow import Ledger
-from reasoning_profile import profile_for_origin,profile_for_checkpoint
-from review_flow import RECIPE,PLAN_INSTRUCTIONS,PLAN_SCHEMA,create_plan,final_material,program_summary,GeminiReviewer,ReviewLedger,checked_review,digest
+from reasoning_profile import profile_for_origin,profile_for_task
+from review_flow import RECIPE,PLAN_INSTRUCTIONS,PLAN_SCHEMA,create_plan,final_material,program_summary,recipe_for_profile,GeminiReviewer,ReviewLedger,checked_review,digest
 
 SERVICE_ROOT=Path(os.environ.get('ASTRA_SERVICE_HOME','/private/tmp/astra-owner-service'))
 SECRET=SERVICE_ROOT/'credentials.json'
 INTENT=json.loads(Path(__file__).with_name('intent.json').read_text())
 ENDPOINT='https://informatics-universal-one-staging.universalmind.workers.dev'
 ORIGIN='https://staging.universalmind.tv'
+
+class WorkerYield(RuntimeError):
+ """The current invocation lacks time to start the next bounded operation."""
+
+def invocation_seconds(stage, profile):
+ if profile['astra'].get('study_token_limit')!=64000:return 0
+ return {'model':profile['astra']['timeout_seconds']+45,
+         'result':profile['astra']['timeout_seconds']+45,
+         'design_review':profile['gemini']['timeout_seconds']+45,
+         'final_review':profile['gemini']['timeout_seconds']+45,
+         'simulation':645,'evidence':90,'classical':90}.get(stage,0)
+
+def worker_token_limit(profile, task):
+ limit=profile['astra'].get('study_token_limit',24000)
+ if limit==64000:
+  routing=task.get('routing_receipt',{})
+  tokens=routing.get('total_tokens')
+  if type(tokens) is not int or not 0<tokens<limit or routing.get('service_tier')!='default':
+   raise RuntimeError('The standard-price routing usage receipt is required.')
+  return limit-tokens
+ return limit
 
 def memory_excerpt(record):
  """Keep provenance and bounded source excerpts inside the model allowance."""
@@ -56,6 +77,7 @@ class State(TypedDict,total=False):
  report_revisions:int
  dependency:str
  model_settings:dict
+ routing_receipt:dict
 
 def brief_input(evidence,question,feedback=None):
  # The narrative needs the measured conclusion, controls and provenance. Full
@@ -86,17 +108,19 @@ def brief(evidence,question,feedback=None,model_settings=None):
  client=OpenAI(api_key=secrets['openai'],max_retries=0,timeout=settings['timeout_seconds'])
  request=brief_input(evidence,question,feedback)
  prompt,instructions,schema=request['prompt'],request['instructions'],request['schema']
- r=client.responses.create(model=settings['model'],instructions=instructions,input=prompt,reasoning={'effort':settings['effort']},max_output_tokens=settings['report_output_tokens'],store=False,text={'format':{'type':'json_schema','name':'astra_insights','strict':True,'schema':schema}})
+ tier={'service_tier':settings['service_tier']} if 'service_tier' in settings else {}
+ r=client.responses.create(model=settings['model'],instructions=instructions,input=prompt,reasoning={'effort':settings['effort']},max_output_tokens=settings['report_output_tokens'],store=False,text={'format':{'type':'json_schema','name':'astra_insights','strict':True,'schema':schema}},**tier)
  if r.status!='completed':raise RuntimeError('Astra report incomplete; preserve the request for reconciliation.')
  data=json.loads(r.output_text)
  import re
  if re.search(r'\b(?:sh'+'ould|co'+'uld|wo'+'uld)\b',r.output_text,re.I):raise RuntimeError('Report language check needs revision; calculations remain saved.')
- return {'narrative':data,'tokens':r.usage.total_tokens,'provider_response_id':r.id,'model':r.model,'reasoning_effort':settings['effort'],'max_output_tokens':settings['report_output_tokens']}
+ return {'narrative':data,'tokens':r.usage.total_tokens,'provider_response_id':r.id,'model':r.model,'reasoning_effort':settings['effort'],'max_output_tokens':settings['report_output_tokens'],'service_tier':getattr(r,'service_tier',None)}
 
 def graph(ledger,checkpointer,progress,memory_lookup=None,reviewer=None,review_progress=lambda records:None,planner=None,writer=None,model_settings=None):
  if reviewer is None:raise RuntimeError('Gemini scientific review is required.')
  model_settings=model_settings or profile_for_origin(ORIGIN)
  settings=model_settings['astra']
+ recipe=recipe_for_profile(model_settings)
  def review_packet(s,phase,material):
   record={**checked_review(reviewer.review(s['id'],phase,material),material),'phase':phase}
   records=[*s.get('reviews',[]),record];review_progress(records)
@@ -104,7 +128,7 @@ def graph(ledger,checkpointer,progress,memory_lookup=None,reviewer=None,review_p
  def plan(s):
   progress('model','Astra is selecting the supported calculation for your question.')
   feedback=[r for r in s.get('reviews',[]) if r['phase']=='design']
-  payload={'question':s['question'],'recipe':RECIPE,'memory':s['memory'],'feedback':feedback}
+  payload={'question':s['question'],'recipe':recipe,'memory':s['memory'],'feedback':feedback}
   if settings['effort']!='low':payload['model_settings']=model_settings
   reserve=len(json.dumps(payload,ensure_ascii=False).encode())+len(PLAN_INSTRUCTIONS.encode())+len(json.dumps(PLAN_SCHEMA).encode())+settings['plan_output_tokens']+1300
   invoke=planner or (lambda *args:create_plan(*args,model_settings=model_settings))
@@ -112,7 +136,7 @@ def graph(ledger,checkpointer,progress,memory_lookup=None,reviewer=None,review_p
   return {'plan':value['plan'],'plan_receipt':{k:v for k,v in value.items() if k!='plan'}}
  def design(s):
   progress('design_review','Gemini is checking the method before calculations begin.')
-  return review_packet(s,'design',{'question':s['question'],'recipe':RECIPE,'plan':s['plan'],'prior_measurements':s['prior']})
+  return review_packet(s,'design',{'question':s['question'],'recipe':recipe,'plan':s['plan'],'prior_measurements':s['prior']})
  def next_design(s):
   if s['review']['decision']=='approve':return 'data'
   if s['review']['decision']=='revise' and s.get('design_revisions',0)<1:return 'revise_design'
@@ -144,23 +168,23 @@ def graph(ledger,checkpointer,progress,memory_lookup=None,reviewer=None,review_p
   payload=json.dumps(request,ensure_ascii=False,separators=(',',':'))
   key=s['id']+':report:'+hashlib.sha256(payload.encode()).hexdigest()
   # Reserve the exact compact request, maximum output and protocol overhead.
-  # This retains the 24,000-token ceiling without charging repeated raw arrays
+  # The profile selects the approved study ceiling without repeating raw arrays
   # as input to the narrative call.
   reserve=len(payload.encode())+settings['report_output_tokens']+1024
-  if reserve>24000:raise RuntimeError('Evidence exceeds the model allowance.')
+  if reserve>ledger.token_limit:raise RuntimeError('Evidence exceeds the model allowance.')
   invoke=writer or (lambda *args:brief(*args,model_settings=model_settings))
   response=ledger.run(s['id'],key,reserve,lambda:invoke(evidence,s['question'],feedback))
   result={**evidence,**response,'question':s['question'],'task_id':s['id'],'completed_at':datetime.now(timezone.utc).isoformat(),'review':{'status':'findings_review_pending'},'next_action':{'state':'owner_budget_boundary','message':'New Aquila jobs are disabled today. Existing quantum measurements are retained; the classical pilot and 16 local CUDA-Q checks are complete. The next matched pair is prepared without cloud submission.'}}
   return {'report':result}
  def final(s):
   progress('final_review','Gemini is checking the findings against the calculations and source records.')
-  return review_packet(s,'final',final_material(s))
+  return review_packet(s,'final',final_material(s,model_settings))
  def next_final(s):
   if s['review']['decision']=='approve':return 'publish'
   if s['review']['decision']=='revise' and s.get('report_revisions',0)<1:return 'revise_report'
   return 'dependency'
  def publish(s):
-  result={**s['report'],'model_settings':model_settings,'plan':s['plan'],'plan_receipt':s['plan_receipt'],'reviews':s['reviews'],
+  result={**s['report'],'model_settings':model_settings,'routing_receipt':s.get('routing_receipt'),'plan':s['plan'],'plan_receipt':s['plan_receipt'],'reviews':s['reviews'],
    'review_inputs':s['review_inputs'],'review':{'status':'model_review_complete','workflow':'astra-argon-v1','reviewed_at':s['review']['reviewed_at'],'meaning':'Gemini reviewed this report against the supplied evidence. This is not independent experimental confirmation.'}}
   directory=SERVICE_ROOT/'results'/s['id'];directory.mkdir(parents=True,exist_ok=True)
   science.save(directory/'result.json',result);write_full_csv(directory/'result.csv',result)
@@ -181,7 +205,10 @@ class Broker:
  def memory(self,question):
   r=requests.post(ENDPOINT+'/agent/memory',headers={'Origin':ORIGIN,'Authorization':'Bearer '+self.secret['worker']},json={'query':question},timeout=45);r.raise_for_status();return r.json()
  def progress(self,stage,message):
+  self.current_stage=stage
   if self.stopped.is_set():raise RuntimeError('Task cancelled or lease unavailable')
+  if self.remaining_time is not None and self.remaining_time()<invocation_seconds(stage,self.model_settings):
+   raise WorkerYield('Preserve the checkpoint for the next cloud invocation.')
   self.call('update',id=self.task['id'],lease=self.lease,stage=stage,status='running',message=message)
  def heartbeat(self):
   while not self.stopped.wait(45):
@@ -189,30 +216,37 @@ class Broker:
    except Exception:self.stopped.set()
  def review_progress(self,records):
   self.call('update',id=self.task['id'],lease=self.lease,stage='design_review' if records[-1]['phase']=='design' else 'final_review',status='running',message=records[-1]['summary'],reviews=records)
- def run(self,claimed,sync=lambda:None,review_ledger=None):
+ def run(self,claimed,sync=lambda:None,review_ledger=None,remaining_time=None):
   self.task=claimed['task'];self.lease=claimed['lease'];self.stopped.clear();thread=threading.Thread(target=self.heartbeat,daemon=True);thread.start()
+  self.remaining_time=remaining_time
   identifier=self.task['id'];print('running',identifier,flush=True)
   try:
    with SqliteSaver.from_conn_string(str(SERVICE_ROOT/'checkpoints.sqlite')) as cp:
-    ledger=Ledger(str(SERVICE_ROOT/'usage.sqlite'),token_limit=24000,call_limit=4,sync=sync)
     if review_ledger is None:raise RuntimeError('The durable Gemini review allowance is required.')
     config={'configurable':{'thread_id':identifier}}
     checkpoint=cp.get_tuple(config)
     values=checkpoint.checkpoint.get('channel_values',{}) if checkpoint else {}
-    model_settings=profile_for_checkpoint(ORIGIN,values)
+    model_settings=profile_for_task(ORIGIN,values,self.task.get('policy',{}))
+    self.model_settings=model_settings
+    ledger=Ledger(str(SERVICE_ROOT/'usage.sqlite'),token_limit=worker_token_limit(model_settings,self.task),call_limit=4,sync=sync)
     gemini=model_settings['gemini']
     reviewer=GeminiReviewer(self.secret.get('gemini'),review_ledger,max_output_tokens=gemini['max_output_tokens'],thinking_level=gemini['thinking_level'],timeout_seconds=gemini['timeout_seconds'])
     g=graph(ledger,cp,self.progress,self.memory,reviewer,self.review_progress,model_settings=model_settings)
     snapshot=g.get_state(config)
     if snapshot.values and not snapshot.next:result=snapshot.values
     else:
-     for result in g.stream(None if snapshot.values else {'id':identifier,'question':self.task['question'],'model_settings':model_settings},config=config,stream_mode='values',durability='sync'):sync()
+     for result in g.stream(None if snapshot.values else {'id':identifier,'question':self.task['question'],'model_settings':model_settings,'routing_receipt':self.task.get('routing_receipt')},config=config,stream_mode='values',durability='sync'):sync()
     sync()
     if self.stopped.is_set():raise RuntimeError('Task stopped before delivery')
     if result.get('dependency'):
      self.call('update',id=identifier,lease=self.lease,stage='result',status='needs_attention',message=result['dependency'],reviews=result.get('reviews',[]));return
     self.call('update',id=identifier,lease=self.lease,stage='result',status='complete',message='Your OXTR analysis is ready. Open the insights to see what changed, what remains uncertain and what the agent completed.',report=result['report'],reviews=result.get('reviews',[]))
     print('complete',identifier,flush=True)
+  except WorkerYield:
+   sync()
+   self.call('update',id=identifier,lease=self.lease,stage=self.current_stage,status='running',message='Progress saved. The next cloud worker will continue this study within its existing allowance.')
+   print('checkpoint handoff',identifier,flush=True)
+   return 'yielded'
   except Exception as e:
    print('task error',type(e).__name__,str(e)[:180],flush=True)
    try:self.call('update',id=identifier,lease=self.lease,stage='result',status='needs_attention',message='The calculation paused at a service dependency. Saved progress is retained; the owner can resume after resolving it.')

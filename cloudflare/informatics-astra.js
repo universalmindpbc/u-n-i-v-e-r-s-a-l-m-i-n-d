@@ -21,13 +21,16 @@ async function broker(env,payload){
  const r=await env.BUDGET.get(env.BUDGET.idFromName('astra-owner-v1')).fetch('https://budget/astra',{method:'POST',body:JSON.stringify({astra:payload})});
  if(!r.ok){const d=await r.json();throw fail(d.error||'Study service unavailable.',r.status);}return r.json();
 }
+export function astraTokenLimit(env){return env.ALLOWED_ORIGIN==='https://staging.universalmind.tv'&&env.ASTRA_MODEL_TOKEN_LIMIT==='64000'?64000:24000;}
 export async function createStudy(env,request,receipt,requestKey){
  if(env.ASTRA_ENABLED!=='true')return receipt;
  const allowed=await researchIdentity(request,env);
  if(request.headers.has('Authorization')&&!allowed)throw fail('Your research session expired. Reopen the question to reconnect.',401);
  if(!allowed)return receipt;
  if(!/^[a-zA-Z0-9-]{16,80}$/.test(requestKey||''))throw fail('A study request identifier is required.');
- const task=await broker(env,{op:'create',requestKey,question:receipt.question,clientId:allowed});
+ const modelTokenLimit=astraTokenLimit(env),routingReceipt=receipt.routing_receipt;
+ if(modelTokenLimit===64000&&(!Number.isSafeInteger(routingReceipt?.total_tokens)||routingReceipt.total_tokens<=0||routingReceipt.total_tokens>=64000||routingReceipt.service_tier!=='default'))throw fail('The routing usage receipt is incomplete. No study was created.',503);
+ const task=await broker(env,{op:'create',requestKey,question:receipt.question,clientId:allowed,modelTokenLimit,routingReceipt});
  return {...receipt,study:{id:task.id,version:task.version},status:'agent_running',message:task.message,agent:task};
 }
 export async function astraRoute(request,env){
@@ -63,12 +66,14 @@ export async function astraStorage(storage,b){
   let result;
   if(b.op==='pending')return answer({pending:state.tasks.some(t=>!terminal.has(t.status)&&(!t.lease||t.lease.until<now))});
   if(b.op==='create'){
+   if(b.modelTokenLimit!==undefined&&![24000,64000].includes(b.modelTokenLimit))return answer({error:'Unknown study allowance.'},400);
+   if(b.modelTokenLimit===64000&&(!Number.isSafeInteger(b.routingReceipt?.total_tokens)||b.routingReceipt.total_tokens<=0||b.routingReceipt.total_tokens>=64000||b.routingReceipt.service_tier!=='default'))return answer({error:'A standard-price routing receipt is required.'},400);
    const existing=state.tasks.find(t=>t.requestKey===b.requestKey&&(t.clientId||'legacy-owner')===(b.clientId||'legacy-owner'));
    if(existing){if(existing.question!==b.question)return answer({error:'Request identifier already belongs to another question.'},409);return answer(safe(existing));}
    if(typeof b.question!=='string'||b.question.length<5||b.question.length>3000)return answer({error:'Invalid question.'},400);
    if((state.daily[date]||0)>=6||(state.monthly[month]||0)>=40)return answer({error:'The shared analysis allowance is used. Saved studies remain available.'},429);
    if(state.tasks.filter(t=>!terminal.has(t.status)).length>=2)return answer({error:'Two studies are already in progress. Reopen one or wait for completion.'},429);
-   const task={clientId:b.clientId||'legacy-owner',id:crypto.randomUUID(),version:'oxtr-follow-through-v1',requestKey:b.requestKey,question:b.question,status:'queued',stage:'question',message:'Astra will analyse the saved measurements and public DNA evidence. No new Aquila run will be submitted.',createdAt:new Date(now).toISOString(),updatedAt:new Date(now).toISOString(),events:[],policy:{newAquilaUSD:0,newPaidGPUUSD:0,maxModelCalls:4,requireGeminiReview:true,maxModelTokens:24000},report:null};
+   const task={clientId:b.clientId||'legacy-owner',id:crypto.randomUUID(),version:'oxtr-follow-through-v1',requestKey:b.requestKey,question:b.question,status:'queued',stage:'question',message:'Astra will analyse the saved measurements and public DNA evidence. No new Aquila run will be submitted.',createdAt:new Date(now).toISOString(),updatedAt:new Date(now).toISOString(),events:[],policy:{newAquilaUSD:0,newPaidGPUUSD:0,maxModelCalls:4,requireGeminiReview:true,maxModelTokens:b.modelTokenLimit||24000},...(b.routingReceipt?{routing_receipt:b.routingReceipt}:{}),report:null};
    state.tasks.push(task);state.daily[date]=(state.daily[date]||0)+1;state.monthly[month]=(state.monthly[month]||0)+1;result=answer(safe(task));
   }else if(b.op==='claim'){
    const task=state.tasks.find(t=>!terminal.has(t.status)&&(!t.lease||t.lease.until<now));

@@ -1,4 +1,4 @@
-import {createStudy} from './informatics-astra.js';
+import {createStudy,astraTokenLimit} from './informatics-astra.js';
 import study from '../Informatics/quantum/data/oxtr-qrc-study.json';
 import {compileAssembly} from './informatics-quantum-model.js';
 import {quantumAllowance} from './informatics-quantum-budget.js';
@@ -17,7 +17,8 @@ Route oxtr_occupancy for investigating whether Fibonacci numbers, Phi Ratio, M9 
 Canonical template: ${JSON.stringify({id:study.id,version:study.version,question:study.question,atlas:study.atlas,template:study.template})}
 Route dna_assembly only when the user explicitly asks to assemble 3–6 supplied distinct error-free DNA fragments in a known common orientation. Extract the exact supplied uppercase reads; never invent fragments. Server code performs the calculation. For all other routes reads=[].
 Other genes, personalized medical questions, general educational queries and tasks outside these two recipes use unsupported. Do not produce a proposed plan, missing-data list, follow-up question, scientific answer or execution claim. Selecting a recipe is not running a CPU/GPU/QPU experiment.`;
- const result=await(await openai(env,'/responses',{model:env.RESEARCH_MODEL,instructions,input:[{role:'user',content:question}],store:false,max_output_tokens:900,reasoning:{effort:'low'},text:{format:{type:'json_schema',name:'quantum_calculation_route',strict:true,schema}}},'research')).json();
+ const standard=astraTokenLimit(env)===64000;
+ const result=await(await openai(env,'/responses',{model:env.RESEARCH_MODEL,instructions,input:[{role:'user',content:question}],store:false,max_output_tokens:900,reasoning:{effort:'low'},...(standard?{service_tier:'default'}:{}),text:{format:{type:'json_schema',name:'quantum_calculation_route',strict:true,schema}}},'research')).json();
  if(result.status!=='completed')throw fail('The question was not processed. Your text is preserved; please retry.',503);
  const output=(result.output||[]).filter(x=>x.type==='message').flatMap(x=>x.content||[]);
  if(output.some(x=>x.type==='refusal'))throw fail('This request cannot be processed. Your question is preserved.',422);
@@ -26,6 +27,7 @@ Other genes, personalized medical questions, general educational queries and tas
  if(route.route==='oxtr_occupancy'&&route.genes.some(x=>x.toUpperCase()!=='OXTR'))route.route='unsupported';
  const id=crypto.randomUUID(),createdAt=new Date().toISOString();
  const receipt={version:'quantum-question-v3',id,createdAt,question,model:env.RESEARCH_MODEL,provider_response_id:result.id||null,route:route.route,allowance,study:null,status:'unavailable',message:'This question has no connected calculation in Quantum Atlas yet.',reports:{classical:null,simulation:null,quantum:null,comparison:null}};
+ if(standard)receipt.routing_receipt={model:result.model,provider_response_id:result.id,total_tokens:result.usage?.total_tokens,service_tier:result.service_tier};
  if(route.route==='oxtr_occupancy'){
   receipt.study={id:study.id,version:study.version};receipt.status='study_linked';receipt.message='Your question is linked to the OXTR study. The first measurement phase is active; recorded results and processing status appear in the next steps.';
  }

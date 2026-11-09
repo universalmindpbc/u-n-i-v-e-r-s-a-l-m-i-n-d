@@ -13,10 +13,15 @@ settings, including older checkpoints without a profile. Model receipts retain
 the requested reasoning setting and output limit. Higher-effort requests use
 distinct ledger identities so a prior Low response cannot satisfy them.
 
-Both staging providers have an 8,192-token output cap and a 300-second request
-timeout. The existing 24,000-token/four-call Astra study allowance remains
-enforced. Production and resumed Low studies retain the existing US$1 Gemini
-ledger. New High staging studies require a separately seeded ledger capped at
+New staging studies use a 64,000-token Astra ceiling, including the question
+router, with up to four scientific calls and 16,384 output tokens per call.
+Standard API pricing is explicit. Astra requests have a 600-second timeout;
+Gemini retains 8,192 output tokens and 300 seconds. Before a long operation,
+the worker saves its checkpoint and yields if the current Lambda invocation
+lacks time. The existing dispatcher resumes after the lease expires, without
+repeating settled model calls. Production and existing studies retain their
+original settings and 24,000-token ceiling. Production and resumed Low studies
+retain the existing US$1 Gemini ledger. New High staging studies require a separately seeded ledger capped at
 US$2. Ben approved and seeded this separate allowance on 9 November 2026.
 Code alone grants no additional allowance and a missing ledger stops execution.
 Insufficient allowance or incomplete responses pause the study and retain its
@@ -28,7 +33,10 @@ request, provider response, scientific review and visible report; the page label
 retain an activation-pending note until that workflow passes. The first new
 study reached Astra Max planning and returned incomplete with the 8,192-token
 output cap; its reservation and checkpoint remain intact. Gemini was never
-called in that attempt. See the dated
+called in that attempt. Ben then approved the larger staging allowance and
+one additional verification, capped conservatively at US$3.20 for Astra plus
+the existing US$2 Gemini allowance, excluding tax and hosting. The graphics,
+Wolfram links and reasoning labels are approved on staging. See the dated
 verification record in `../quantum-reasoning-20261109/`.
 
 References: [OpenAI reasoning levels](https://developers.openai.com/api/docs/models/gpt-6-astra),
@@ -54,7 +62,7 @@ The new classical test does not evaluate M9 P24 prediction. The local CUDA-Q pai
 
 ## Today's enforced boundary
 
-New Aquila spend: **US$0**. New paid GPU spend: **US$0**. The worker has no hardware submission tool or QPU credential. Research questions are limited to six per day and forty per month, with at most two active tasks. Each task has a separate model ledger capped at two requests and 24,000 reserved tokens. Model reports use GPT-6 Astra. These are shared prototype limits, not a public funding policy.
+New Aquila spend: **US$0**. New paid GPU spend: **US$0**. The worker has no hardware submission tool or QPU credential. Research questions are limited to six per day and forty per month, with at most two active tasks. New staging studies allow four scientific model calls and 64,000 total Astra tokens including routing; production retains its 24,000-token limit. Model reports use GPT-6 Astra. These are shared prototype limits, not a public funding policy.
 
 qBraid's account check showed zero purchased credits with auto-recharge disabled. The remaining free-circuit quota was not verified for a new batch; no new qBraid submission is made. CUDA-Q runs on the AWS worker's CPU within the approved hosting allowance. No GPU, VM or SageMaker instance is provisioned.
 
