@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "existingEmailReused": true,
+  "newEmailSent": false,
+  "newBrowserSession": true,
+  "authenticatedResultStatus": 200,
+  "reportOpenedAutomatically": true,
+  "tokenRemovedFromAddressBar": true,
+  "newStudies": 0
+}
