@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "visibleChange": "Original chat placeholder restored exactly",
+  "pageOtherwiseUnchanged": true,
+  "implementationHashesMatched": 30,
+  "stagingBase": "ef703353363af7ac707e43c296b88f9a15346cbe"
+}
