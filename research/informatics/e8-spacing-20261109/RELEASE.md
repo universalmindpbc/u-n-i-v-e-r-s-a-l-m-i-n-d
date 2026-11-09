@@ -20,4 +20,12 @@ Requested change: use the clean white sketch as the layout reference and give th
 
 ## Release status
 
-Staging deployment and live verification pending. Production remains untouched.
+Source commit: `34ceae9303228ff8ad2cc103a7c11eb707d9c8c9`.
+
+Staging URL: https://staging.universalmind.tv/informatics/geometry/?record=fibonacci-m9-p24&record-mode=research#e8
+
+The existing Panthur staging transport uploaded all 56 changed assets. Live browser checks repeated the 72 layer/view combinations at desktop and both phone widths, with no label collisions or horizontal overflow. All 25 checked live source and download files matched the candidate bytes, including both complete formats and the E8 JSON/CSV files. Hosting-inserted analytics markup was removed solely for HTML checksum comparison, as recorded by the existing checker.
+
+Both complete formats reconstruct all 1,196 sources. Dataset version: `5569ba5f70d3ea8ffcf400695531fada70146fb73cc3ae52709b5145d2a6e588`.
+
+Production has not been modified. Its recorded main reference remains `02b6f47345e428021dcae8fd4a798ecdfb03969b`.
