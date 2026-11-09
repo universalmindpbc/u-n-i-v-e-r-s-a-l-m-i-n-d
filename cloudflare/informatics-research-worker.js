@@ -1,3 +1,4 @@
+import {demoRoute} from './informatics-quantum-demo.js';
 import {biofeedbackRecord,biofeedbackRecords,biofeedbackSearch,biofeedbackRelevant,biofeedbackGuide,biofeedbackVersion} from './informatics-biofeedback-knowledge.js';
 import {youthRelevant,youthRecords,youthRecord,youthReplaces,youthMatches,youthSearch,youthKnowledge,youthVersion} from './informatics-youth-knowledge.js';
 import {qaSpendLedger,reserveQACall,reconcileQACall} from './informatics-qa-spend.js';
@@ -243,7 +244,7 @@ export default {
  async fetch(request,env){
   const origin=request.headers.get('Origin');const url=new URL(request.url);
   if(env.CONNECTORS_ENABLED==='true'&&isConnectorPath(url.pathname))return connectors(request,env,neon(env.DATABASE_URL),research);
-  const cors={'Access-Control-Allow-Origin':env.ALLOWED_ORIGIN,'Access-Control-Allow-Methods':'POST,GET,OPTIONS','Access-Control-Allow-Headers':'Content-Type,X-Research-QA,X-Research-QA-Max-USD,Authorization','Vary':'Origin'};
+  const cors={'Access-Control-Allow-Origin':env.ALLOWED_ORIGIN,'Access-Control-Allow-Methods':'POST,GET,OPTIONS','Access-Control-Allow-Headers':'Content-Type,X-Research-QA,X-Research-QA-Max-USD,Authorization,X-Quantum-Portal','Vary':'Origin'};
   if(origin!==env.ALLOWED_ORIGIN)return json({error:'This research service is available on Universal Informatics.'},403);
   if(request.method==='OPTIONS')return new Response(null,{status:204,headers:cors});
   const qa=!!env.QA_TOKEN&&request.headers.get('X-Research-QA')===env.QA_TOKEN;
@@ -252,6 +253,7 @@ export default {
   try{
    if(env.ALLOWED_ORIGIN==='https://staging.universalmind.tv'&&['/research','/quantum/command'].includes(url.pathname)&&request.headers.has('X-Research-QA-Max-USD')&&!env.QA_SPEND_LEDGER)throw new ServiceError('Invalid staging QA spending limit.',400);
    if(url.pathname==='/patent/model')response=await patentModelRelay(request,env);
+   else if(url.pathname.startsWith('/agent/demo/'))response=await demoRoute(request,env);
    else if(url.pathname.startsWith('/agent/'))response=await astraRoute(request,env);
    else if(request.method==='GET'&&url.pathname==='/health')response=json({status:'ready',profile:'informatics-research',model:env.RESEARCH_MODEL,version:env.DATASET_VERSION,knowledgeVersions:{approvedYouth:youthVersion,biofeedback:biofeedbackVersion}});
    else if(request.method==='GET'&&url.pathname==='/budget-status'&&qa)response=json(await budgetStatus(env));

@@ -1,3 +1,4 @@
+import {demoStorage} from './informatics-quantum-demo.js';
 import {notifyStudy,scheduleNotifications} from './informatics-study-email.js';
 import {astraStorage} from './informatics-astra.js';
 // A question is reserved once. Its bounded retrieval/model loop is included.
@@ -11,7 +12,8 @@ export class ResearchBudget {
  constructor(state,env){this.state=state;this.env=env;}
  async alarm(){await notifyStudy(this.state.storage,this.env);}
  async fetch(request){
-  const {kind,inspect,scope,quantum,astra}=await request.json();
+  const {kind,inspect,scope,quantum,astra,demo}=await request.json();
+  if(demo){const r=await demoStorage(this.state.storage,demo);if(r.status===200&&demo.op==='update')await scheduleNotifications(this.state.storage);return Response.json(r.data,{status:r.status});}
   if(astra){const r=await astraStorage(this.state.storage,astra);if(r.status===200&&['delivery','update'].includes(astra.op))await scheduleNotifications(this.state.storage);return Response.json(r.data,{status:r.status});}
   if(quantum)return Response.json(await pooledPlanning(this.state.storage,inspect));
   const scopedLimits=scope==='connectors'?{...limits,research_question:30}:limits;

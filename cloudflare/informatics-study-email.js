@@ -1,6 +1,6 @@
 // Notification addresses and bearer links stay private to the study owner.
 export const deliveryView=t=>t.notification?{state:t.notification.state,sentAt:t.notification.sentAt||null}:null;
-export function publicStudy(t){const {lease,notification,clientId,requestKey,...value}=t;return {...value,delivery:deliveryView(t)};}
+export function publicStudy(t){const {lease,notification,clientId,portalId,requestKey,nextPoll,...value}=t;return {...value,delivery:deliveryView(t)};}
 export async function notifyStudy(storage,env){
  const index=await storage.get('astra');if(!index)return;
  for(const {id} of index.tasks){
