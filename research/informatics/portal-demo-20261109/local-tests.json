@@ -1,0 +1,16 @@
+{
+  "workerUnitTests": 9,
+  "brokerSecurityAndBudgetTests": "passed",
+  "approvedPageContract": "passed",
+  "deployedBrowserMatrix": [
+    "Chromium desktop",
+    "Chromium mobile",
+    "WebKit desktop",
+    "WebKit mobile"
+  ],
+  "controlledStudyResponses": true,
+  "fullExportRoundTripSources": 1195,
+  "liveOpenAICommand": "passed",
+  "newHardwareSubmissions": 0,
+  "portalCreditsUsed": 0
+}

@@ -1,0 +1,16 @@
+{
+  "stack": "informatics-portal-demo-staging",
+  "status": "UPDATE_COMPLETE",
+  "schedule": "ENABLED",
+  "dispatcher": "idle",
+  "workerReadiness": "ready",
+  "deviceStatus": "ONLINE",
+  "hardwareSubmissions": 0,
+  "poolRemainingUSD": 100,
+  "hardwareLimitUSD": 99.3,
+  "historicalHardwareSpendUSD": 22.1,
+  "queuedHardwareUSD": 0,
+  "sharedWorkerImage": "sha256:82a80f28aaf412402c8baf16a90065fba7d6a069c1b35dd5e10bd9b75e694284",
+  "sharedWorkerUnchanged": true,
+  "ecrImageRetentionCount": 20
+}

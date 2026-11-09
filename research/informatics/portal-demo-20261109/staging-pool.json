@@ -1,0 +1,13 @@
+{
+  "authenticated": false,
+  "credit": 0,
+  "study": null,
+  "available": true,
+  "poolRemainingUSD": 100,
+  "policy": {
+    "poolUSD": 100,
+    "studyUSD": 25,
+    "maxModelTokens": 64000,
+    "newPaidGPUUSD": 0
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "image": "sha256:c9f8df154882d6d45ce54833b14512df7ed9f22a64f698b2cf4ffedea0f3d0b6",
+  "buildId": "informatics-astra-staging:b611533e-0b00-44b2-8d5e-7339365ddf98",
+  "freshWolfram": true,
+  "hardwareSubmissions": 0,
+  "modelRequests": 0,
+  "checks": [
+    {
+      "atoms": 2,
+      "wolframReferenceMaxProbabilityError": 1.1005235300842742e-07,
+      "cudaQMaxProbabilityError": 6.0175588377203715e-05,
+      "steps": 1601,
+      "passed": true
+    },
+    {
+      "atoms": 3,
+      "varyingPhase": true,
+      "wolframReferenceMaxProbabilityError": 8.313005505078408e-07,
+      "cudaQMaxProbabilityError": 4.728609735049627e-05,
+      "steps": 1601,
+      "passed": true
+    }
+  ],
+  "source": "Observed CloudShell Lambda invocation result; full receipt retained in CloudShell portal-688173e1f/verification.json"
+}
