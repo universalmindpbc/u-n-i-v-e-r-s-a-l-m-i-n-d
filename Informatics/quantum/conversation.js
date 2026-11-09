@@ -6,8 +6,16 @@ export function setupConversation(){
  function render(value){
   $('#ask').classList.toggle('has-conversation',value.messages.length>0);const next=JSON.stringify(value.messages);if(next!==signature){
    const nearEnd=log.scrollHeight-log.scrollTop-log.clientHeight<70;signature=next;log.replaceChildren();
-   for(const m of value.messages){const article=element('article','','chat-message');article.dataset.role=m.role;article.append(element('h3',m.role==='user'?'You':'Universal One'),element('div',m.text,'chat-answer'));
-    if(m.sources?.length){const details=element('details',''),summary=element('summary',m.sources.length+' sources');details.append(summary);for(const source of m.sources){try{const url=new URL(source.url);if(!['https:','http:'].includes(url.protocol))continue;const a=element('a',source.title);a.href=url.href;a.target='_blank';a.rel='noopener noreferrer';details.append(a);if(source.dataRecord){const download=element('button','Download source record');download.type='button';download.onclick=()=>{const url=URL.createObjectURL(new Blob([JSON.stringify(source.dataRecord,null,2)],{type:'application/json'})),link=document.createElement('a');link.href=url;link.download='public-gene-source.json';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};details.append(download);}}catch{}}article.append(details);}
+   for(const [index,m] of value.messages.entries()){const article=element('article','','chat-message');article.dataset.role=m.role;const content=element('div','','chat-answer');
+    if(m.role==='user')content.textContent=m.text;
+    else for(const fragment of m.text.replace(/^#{1,4}\s+(.+)$/gm,'**$1**').split(/(\[S\d+\]|\*\*[^*]+\*\*)/g)){
+     const source=m.sources?.find(s=>'['+s.label+']'===fragment);
+     if(source){const link=element('a','['+source.label.slice(1)+']');link.href='#inline-source-'+index+'-'+source.label;link.onclick=e=>{e.preventDefault();const details=article.querySelector('details');if(details)details.open=true;document.getElementById(link.hash.slice(1))?.scrollIntoView({block:'nearest'});};content.append(link);}
+     else if(fragment.startsWith('**')&&fragment.endsWith('**'))content.append(element('strong',fragment.slice(2,-2)));
+     else content.append(document.createTextNode(fragment));
+    }
+    article.append(element('h3',m.role==='user'?'You':'Universal One'),content);
+    if(m.sources?.length){const details=element('details',''),summary=element('summary',m.sources.length+(m.sources.length===1?' source':' sources'));details.append(summary);for(const source of m.sources){try{const url=new URL(source.url);if(!['https:','http:'].includes(url.protocol))continue;const a=element('a',source.title);a.id='inline-source-'+index+'-'+source.label;a.href=url.href;a.target='_blank';a.rel='noopener noreferrer';details.append(a);if(source.dataRecord){const download=element('button','Download source record');download.type='button';download.onclick=()=>{const url=URL.createObjectURL(new Blob([JSON.stringify(source.dataRecord,null,2)],{type:'application/json'})),link=document.createElement('a');link.href=url;link.download='public-gene-source.json';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};details.append(download);}}catch{}}article.append(details);}
     if(m.studyId){const button=element('button','Read the full findings');button.type='button';button.onclick=()=>window.QuantumStudyConversation.openResults();article.append(button);}
     log.append(article);
    }

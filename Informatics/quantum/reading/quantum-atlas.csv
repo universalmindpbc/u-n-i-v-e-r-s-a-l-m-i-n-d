@@ -598,7 +598,7 @@ path,type,value
 /agent_architecture/implementation_sources/2/scope,string,Implementation source
 /agent_architecture/implementation_sources/3,object,
 /agent_architecture/implementation_sources/3/repository_path,string,Informatics/quantum/biology.js
-/agent_architecture/implementation_sources/3/sha256,string,80fcfeaaab4eb38715231a561205803b7ec6752b856d269aba4a808e158d0e25
+/agent_architecture/implementation_sources/3/sha256,string,34a19ed42e6830d610a3567f38d2c83e4183a6d0ae58fec81e637665debe5138
 /agent_architecture/implementation_sources/3/scope,string,Implementation source
 /agent_architecture/implementation_sources/4,object,
 /agent_architecture/implementation_sources/4/repository_path,string,Informatics/quantum/scientific-review.js
@@ -674,7 +674,7 @@ path,type,value
 /agent_architecture/implementation_sources/21/scope,string,Implementation source
 /agent_architecture/implementation_sources/22,object,
 /agent_architecture/implementation_sources/22/repository_path,string,Informatics/quantum/conversation.js
-/agent_architecture/implementation_sources/22/sha256,string,7756103a5f5d99f9968be7c15dbc7541b1235c1b0c0b19c09e8bdb65b0044540
+/agent_architecture/implementation_sources/22/sha256,string,fe269b71f405778deef63da025252dbbcf478bda60f077a8e6955eb91bcaf799
 /agent_architecture/implementation_sources/22/scope,string,Implementation source
 /agent_architecture/implementation_sources/23,object,
 /agent_architecture/implementation_sources/23/repository_path,string,Informatics/quantum/delivery.js

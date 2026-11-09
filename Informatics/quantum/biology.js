@@ -141,7 +141,7 @@ window.QuantumStudyConversation=Object.freeze({
 
 parent.postMessage({type:'quantum:conversation-ready'},location.origin);
 try{const saved=JSON.parse(localStorage.getItem(savedKey));if(saved?.version==='quantum-question-v3'&&saved.id&&saved.reports){activate(saved);}}catch{}
-import {setupConversation} from './conversation.js?v=research-input-20261109';
+import {setupConversation} from './conversation.js?v=chat-format-20261110';
 setupConversation();
 
 setupDelivery();openEmailResult(activate);

@@ -1427,7 +1427,7 @@ The following JSON preserves the source fields, saved chart arrays, study interp
       },
       {
         "repository_path": "Informatics/quantum/biology.js",
-        "sha256": "80fcfeaaab4eb38715231a561205803b7ec6752b856d269aba4a808e158d0e25",
+        "sha256": "34a19ed42e6830d610a3567f38d2c83e4183a6d0ae58fec81e637665debe5138",
         "scope": "Implementation source"
       },
       {
@@ -1522,7 +1522,7 @@ The following JSON preserves the source fields, saved chart arrays, study interp
       },
       {
         "repository_path": "Informatics/quantum/conversation.js",
-        "sha256": "7756103a5f5d99f9968be7c15dbc7541b1235c1b0c0b19c09e8bdb65b0044540",
+        "sha256": "fe269b71f405778deef63da025252dbbcf478bda60f077a8e6955eb91bcaf799",
         "scope": "Implementation source"
       },
       {
