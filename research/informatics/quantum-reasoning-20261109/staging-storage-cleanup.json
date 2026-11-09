@@ -1,0 +1,65 @@
+{
+  "scope": "staging export archive copies only",
+  "preserve": "current staging, current production and candidate manifests; all Git source and production files",
+  "files": [
+    {
+      "file": "part-1f51de2d629c938580f7f232688d40bfe10d7147439598e879ce6709415c7c51.bin",
+      "bytes": 43064239,
+      "modified": "20261025041247",
+      "git_verified": true,
+      "removed_from_staging": true
+    },
+    {
+      "file": "part-4ecf219343939a10be88211383d07ba5f3f928ca95faae965b1b068d92e7dd5e.bin",
+      "bytes": 24967754,
+      "modified": "20261025041251",
+      "git_verified": true,
+      "removed_from_staging": true
+    },
+    {
+      "file": "part-51f44b491095a6493aad189b2c2c07e983c7d6c44d91ccf88dddf06da7aedd36.bin",
+      "bytes": 50331648,
+      "modified": "20261025041259",
+      "git_verified": true,
+      "removed_from_staging": true
+    },
+    {
+      "file": "part-5ee7f6f5c7abfaf110464c3ce1fa555ea7d2e1254604c1d398d7a07708681d9b.bin",
+      "bytes": 50331648,
+      "modified": "20261025041307",
+      "git_verified": true,
+      "removed_from_staging": true
+    },
+    {
+      "file": "part-bd2d3b19370730e8fc3797dfa363fb4ecd786d8c18f82cf9af6bd0b491d2c218.bin",
+      "bytes": 50331648,
+      "modified": "20261025041315",
+      "git_verified": true,
+      "removed_from_staging": true
+    },
+    {
+      "file": "part-113bdce78019061b0ca88cbca4786dcaa6754371779cf7696d751e1b9813bd25.bin",
+      "bytes": 50331648,
+      "modified": "20261025051346",
+      "git_verified": true,
+      "removed_from_staging": true
+    },
+    {
+      "file": "part-6c999d9e9395f1818fffcfb08330a9f9ba35c853ae05c72d43c7c1ac8b5f74c0.bin",
+      "bytes": 43412973,
+      "modified": "20261025051354",
+      "git_verified": true,
+      "removed_from_staging": true
+    },
+    {
+      "file": "part-b9ad6fdebccbc35a847cb2dd3422578d54384d28f4439f8fd434040570254711.bin",
+      "bytes": 25228108,
+      "modified": "20261025051359",
+      "git_verified": true,
+      "removed_from_staging": true
+    }
+  ],
+  "total_bytes": 337999666,
+  "approved_by": "Ben, 9 November 2026",
+  "all_local_git_sources_preserved": true
+}

@@ -1,0 +1,51 @@
+{
+  "mode": "candidate",
+  "processAudioMuted": true,
+  "results": [
+    {
+      "width": 1440,
+      "labels": true,
+      "svgLogoLoaded": true,
+      "benchmarkLink": true,
+      "noHorizontalOverflow": true,
+      "nativeFullscreen": false
+    },
+    {
+      "width": 390,
+      "labels": true,
+      "svgLogoLoaded": true,
+      "benchmarkLink": true,
+      "noHorizontalOverflow": true,
+      "nativeFullscreen": false
+    },
+    {
+      "width": 320,
+      "labels": true,
+      "svgLogoLoaded": true,
+      "benchmarkLink": true,
+      "noHorizontalOverflow": true,
+      "nativeFullscreen": false
+    },
+    {
+      "page": "Quantum Lab",
+      "width": 1440,
+      "benchmarkLink": true,
+      "svgLogoLoaded": true,
+      "noHorizontalOverflow": true
+    },
+    {
+      "page": "Quantum Lab",
+      "width": 390,
+      "benchmarkLink": true,
+      "svgLogoLoaded": true,
+      "noHorizontalOverflow": true
+    },
+    {
+      "page": "Quantum Lab",
+      "width": 320,
+      "benchmarkLink": true,
+      "svgLogoLoaded": true,
+      "noHorizontalOverflow": true
+    }
+  ]
+}

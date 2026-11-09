@@ -1,0 +1,23 @@
+{
+  "date": "2026-11-09",
+  "requested": {
+    "Gemini 4 Argon": "HIGH",
+    "GPT-6 Astra": "max"
+  },
+  "source_unit_tests": 28,
+  "guide_json_csv_equivalent": true,
+  "implementation_source_hashes_matched": 18,
+  "live_activation": "Cloud build in progress; provider verification pending",
+  "production_profile": "unchanged: low/LOW",
+  "new_paid_quantum_or_GPU_jobs": 0,
+  "cloud_build_sha256": "308986262a9f26b6289b28d489c21bb8e8de157c674f99490080ee16d5ca0406",
+  "approvals": {
+    "staging_gemini_allowance_USD": 2,
+    "shared_worker_update": true,
+    "production_reasoning": "retain Low",
+    "production_website_release": false
+  },
+  "complete_export_sources_reconstructed_in_each_format": 1195,
+  "export_version": "e2b5970a780486669aebbe6ac81f3a39265c44cd251495163b8fa96d854a29b7",
+  "cloud_build_id": "informatics-astra-staging:f747c3de-a114-43c3-8a0e-6c994964dbf7"
+}
