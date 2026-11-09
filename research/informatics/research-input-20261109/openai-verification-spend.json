@@ -48,8 +48,9 @@
     {
       "id": "2cb5b749-6f1d-4fb2-8498-2ca24689d0af",
       "kind": "live voice: 60 seconds, at most three 700-token responses",
-      "chargedUpperUSD": 0.6,
-      "status": "reserved"
+      "chargedUpperUSD": 0.154576,
+      "status": "reconciled_conservatively",
+      "evidence": "retrieval-repair-20261110/voice-cost-reconciliation.json"
     },
     {
       "id": "37403fb3-9076-4cd5-89ce-ec110f9faebe",
@@ -67,6 +68,18 @@
       "id": "648ff917-8521-4de3-a578-10487c56ed26",
       "kind": "/research",
       "chargedUpperUSD": 0.4581,
+      "status": "reconciled"
+    },
+    {
+      "id": "4bfb7a31-a45d-4077-ba94-2c5038c35cfe",
+      "kind": "/quantum/command",
+      "chargedUpperUSD": 0.01100000000000001,
+      "status": "reconciled"
+    },
+    {
+      "id": "a94422b7-5741-43dc-a185-5eb5f1104524",
+      "kind": "/research",
+      "chargedUpperUSD": 0.15647499999999998,
       "status": "reconciled"
     }
   ],

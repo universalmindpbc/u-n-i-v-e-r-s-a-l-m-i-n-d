@@ -1,6 +1,6 @@
 import {literatureTool,literatureVersion} from './informatics-literature.js';
 import {perplexitySearch} from './informatics-literature-fallback.js';
-import {perplexityResearch} from './informatics-literature-agent.js';
+import {perplexityResearch,literatureAgentContext} from './informatics-literature-agent.js';
 import {geneDataTool,geneDataVersion} from './informatics-gene-data.js';
 import {demoRoute} from './informatics-quantum-demo.js';
 import {biofeedbackRecord,biofeedbackRecords,biofeedbackSearch,biofeedbackRelevant,biofeedbackGuide,biofeedbackVersion} from './informatics-biofeedback-knowledge.js';
@@ -103,10 +103,11 @@ async function research(env,request){
    if(name==='review_literature_gap'&&agentCalls++>=1)return {status:'request_limit',message:'One specialist review is available per conversation turn.'};
    if(name==='search_literature')literatureSearched=true;
    const result=name==='review_literature_gap'?await perplexityResearch(env,args,literatureContext):name==='search_literature_fallback'?await perplexitySearch(env,args):await literatureTool(name,args);
+   if(env.QA_SPEND_LEDGER){env.QA_SPEND_LEDGER.tools??=[];env.QA_SPEND_LEDGER.tools.push({tool:name,status:result.status,provider:result.provider,model:result.model,...(result.receipt?{receipt:result.receipt}:{})});}
    if(['search_literature','read_research_paper'].includes(name))literatureContext.push(result);
    const papers=result.papers|| (result.paper?[result.paper]:result.results||[]);
    const citations=papers.map(p=>{const label=source({id:p.pmid||p.id||p.url,passage_id:(p.pmid||p.id||p.url)+':'+(result.fullTextReceipt?.sha256||p.receipt?.sha256||literatureVersion),data:{title:p.title,urls:[p.url],journal:p.journal,year:p.year},kind:result.coverage||p.coverage,section:'Live literature',text:JSON.stringify(result.paper?result:p),sha256:result.fullTextReceipt?.sha256||p.receipt?.sha256});const entry=sources.find(x=>x.label===label);if(entry){entry.provenance=p.receipt||result.receipt;entry.dataRecord={schema:'universal-informatics/literature-record/v1',tool:name,parameters:args,result:result.paper||name==='review_literature_gap'?result:{paper:p,searches:result.searches,coverage:result.coverage}};}return label;});
-   return {...result,citations};
+   return name==='review_literature_gap'?literatureAgentContext(result,citations):{...result,citations};
   }
   if(['get_public_gene','get_gene_sequence','find_binding_sites','get_binding_motifs'].includes(name)){
    const result=await geneDataTool(name,args),records=result.sources||[];

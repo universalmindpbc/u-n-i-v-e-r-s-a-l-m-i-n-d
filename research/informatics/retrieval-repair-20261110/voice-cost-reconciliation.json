@@ -1,0 +1,87 @@
+{
+  "model": "gpt-realtime-2.1",
+  "pricingSource": "https://developers.openai.com/api/docs/pricing",
+  "calculation": "All input tokens at the audio input rate; maximum of reported total or summed modality/reasoning output at the audio output rate; add US$0.01 for live transcription. No cache discount.",
+  "inputRatePerMillionUSD": 32,
+  "outputRatePerMillionUSD": 64,
+  "completedResponses": 3,
+  "maximumAllowedResponses": 3,
+  "originalReservationUSD": 0.6,
+  "reconciledUpperUSD": 0.154576,
+  "events": [
+    {
+      "type": "response.done",
+      "status": "completed",
+      "usage": {
+        "total_tokens": 499,
+        "input_tokens": 416,
+        "output_tokens": 83,
+        "input_token_details": {
+          "text_tokens": 416,
+          "audio_tokens": 0,
+          "image_tokens": 0,
+          "cached_tokens": 0,
+          "cached_tokens_details": {
+            "text_tokens": 0,
+            "audio_tokens": 0,
+            "image_tokens": 0
+          }
+        },
+        "output_token_details": {
+          "text_tokens": 25,
+          "audio_tokens": 58
+        }
+      }
+    },
+    {
+      "type": "response.done",
+      "status": "completed",
+      "usage": {
+        "total_tokens": 1432,
+        "input_tokens": 1211,
+        "output_tokens": 221,
+        "input_token_details": {
+          "text_tokens": 1154,
+          "audio_tokens": 57,
+          "image_tokens": 0,
+          "cached_tokens": 0,
+          "cached_tokens_details": {
+            "text_tokens": 0,
+            "audio_tokens": 0,
+            "image_tokens": 0
+          }
+        },
+        "output_token_details": {
+          "text_tokens": 111,
+          "audio_tokens": 110,
+          "reasoning_tokens": 39
+        }
+      }
+    },
+    {
+      "type": "response.done",
+      "status": "completed",
+      "usage": {
+        "total_tokens": 1457,
+        "input_tokens": 815,
+        "output_tokens": 642,
+        "input_token_details": {
+          "text_tokens": 758,
+          "audio_tokens": 57,
+          "image_tokens": 0,
+          "cached_tokens": 0,
+          "cached_tokens_details": {
+            "text_tokens": 0,
+            "audio_tokens": 0,
+            "image_tokens": 0
+          }
+        },
+        "output_token_details": {
+          "text_tokens": 168,
+          "audio_tokens": 474,
+          "reasoning_tokens": 53
+        }
+      }
+    }
+  ]
+}

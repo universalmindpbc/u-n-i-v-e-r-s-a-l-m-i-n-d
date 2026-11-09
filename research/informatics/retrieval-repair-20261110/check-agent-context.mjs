@@ -1,0 +1,10 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+import {literatureAgentContext} from '../../../cloudflare/informatics-literature-agent.js';
+const p={pmid:'12345',title:'Original study',url:'https://pubmed.ncbi.nlm.nih.gov/12345/',abstract:'Measured evidence with limitations. '.repeat(150),coverage:'abstract'};
+const result={status:'completed',provider:'Perplexity Agent API',model:'anthropic/claude-opus-5-5',answer:'A qualified finding. '.repeat(500),papers:Array.from({length:12},()=>({...p})),records:Array.from({length:4},()=>({tool:'read_paper',result:{status:'retrieved',paper:p,coverage:'selected_full_text_passages',passages:Array.from({length:6},()=>({section:'Results',text:'Direct observation and limitations. '.repeat(150)}))}})),receipt:{calls:[{requestId:'original-receipt'}]}};
+const before=JSON.stringify(result),brief=literatureAgentContext(result,['S1']);
+assert(new TextEncoder().encode(JSON.stringify(brief)).length<=18000);assert.equal(brief.status,'completed');assert(brief.answer.length>0);assert(brief.evidence[0].passages[0].text.includes('Direct observation'));assert.equal(brief.papers[0].citation,'S1');assert.equal(JSON.stringify(result),before);
+assert.equal(literatureAgentContext({status:'refused',answer:'',papers:[],records:[]}).status,'refused');
+const unicode=literatureAgentContext({...result,answer:'測定'.repeat(10000)});assert(new TextEncoder().encode(JSON.stringify(unicode)).length<=18000);
+const record={passed:true,maximumModelFacingBytes:18000,actualBytes:new TextEncoder().encode(JSON.stringify(brief)).length,completeSourceRecordPreserved:true,originalExcerptsRetained:true,refusalStatusPreserved:true,paidRequests:0};await fs.writeFile(import.meta.dirname+'/agent-context-check.json',JSON.stringify(record,null,2)+'\n');console.log(JSON.stringify(record));

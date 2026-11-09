@@ -69,3 +69,25 @@ export async function perplexityResearch(env,args,context={}){
  let settlement;try{settlement=await(await env.BUDGET.get(env.BUDGET.idFromName('literature-agent-v1')).fetch('https://budget/literature-agent',{method:'POST',body:JSON.stringify({literatureAgentSettle:{reservation:reservation.reservation,chargedUSD:chargedUpperUSD}})})).json();}catch{settlement={settled:false};}
  return {status,provider:'Perplexity Agent API',model:literatureAgentModel,query:args.query,reason:args.reason,answer,receipt:{...receipt(),chargedUpperUSD,settlement},papers,records,interpretation:'An AI-generated literature brief for Astra and Gemini to assess against its original sources. This is not independent experimental confirmation. Uncertain calls retain their budget reservation.'};
 }
+
+// Keep the complete specialist record in the source download. Astra receives a
+// bounded brief with original-source excerpts, instead of repeated tool archives.
+export function literatureAgentContext(result,citations=[]){
+ const text=(v,n)=>String(v||'').slice(0,n);
+ const paper=p=>({id:text(p.pmid||p.id,100),doi:text(p.doi,200),title:text(p.title,300),url:text(p.url,500),coverage:p.coverage,abstract:text(p.abstract,600),isRetracted:p.isRetracted});
+ const evidence=(result.records||[]).slice(0,4).map(({tool,result:r})=>({tool,status:r.status,coverage:r.coverage,
+  ...(r.paper?{paper:paper(r.paper),passages:(r.passages||[]).slice(0,2).map(p=>({section:text(p.section,150),text:text(p.text,700)}))}:{}),
+  ...(r.papers?{papers:r.papers.slice(0,2).map(paper)}:{}),
+  ...(r.results?{discoveries:r.results.slice(0,2).map(p=>({title:text(p.title,300),url:text(p.url,500),text:text(p.text,700),coverage:p.coverage}))}:{})}));
+ const brief={status:result.status,provider:result.provider,model:result.model,answer:text(result.answer,6000),
+  papers:(result.papers||[]).slice(0,6).map((p,i)=>({...paper(p),citation:citations[i]})),evidence,
+  coverage:'Bounded specialist brief with selected original-source excerpts. Complete records and receipts remain in the source downloads. Read an original paper with the literature tools when more detail is needed; the specialist answer is not independently verified evidence.',
+  interpretation:result.interpretation};
+ // UTF-8 bounds also cover non-ASCII article text. Prune whole items so the
+ // model receives valid JSON and explicit coverage rather than a cut archive.
+ while(bytes(brief)>18000&&brief.papers.length>1)brief.papers.pop();
+ while(bytes(brief)>18000&&brief.evidence.length>1)brief.evidence.pop();
+ while(bytes(brief)>18000&&brief.answer.length>500)brief.answer=brief.answer.slice(0,Math.floor(brief.answer.length*.75));
+ if(bytes(brief)>18000){brief.evidence=[];brief.papers=brief.papers.map(({abstract,...p})=>p);}
+ return brief;
+}
