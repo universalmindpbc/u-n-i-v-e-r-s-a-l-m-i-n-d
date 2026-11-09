@@ -60,6 +60,8 @@ Research hypothesis
 
 We hypothesize that the unicursal hexagram may describe a sequence of valence-electron transitions. We plan to investigate this through Hamiltonian modelling, initially exploring quantum annealing with [D-Wave Leap](https://www.dwavequantum.com/solutions-and-products/cloud-platform/).
 
+Central geometry · Fibonacci circle · 240-root halo
+
 10 × 24 positions · symbolic radii
 
 ## E8
@@ -82,9 +84,9 @@ Lie algebra
 
 Ten sets of 24 positions surround the M9/P24 reference circle. Their radii and phases are chosen for this composition. This is a schematic view.
 
-Alpha places the 24 Fibonacci residues on the blue circle. Gamma joins its six 3 / 6 / 9 nodes into the pink star. Beta traces 4 → 8 → 7 → 5 → 1 → 2 → 4 on a nine-position value circle, preserving its original start.
+Alpha places the 24 Fibonacci residues on the blue circle. Gamma shows the six selected 3 / 6 / 9 positions as an inset pink star, preserving their angles. This keeps the shapes clear of the outer labels. Beta traces 4 → 8 → 7 → 5 → 1 → 2 → 4 on an inset nine-position value circle, preserving its original start.
 
-The M9 layers stay fixed on their native 24- and nine-position grids while E8 advances through its 30-step cycle.
+The separate M9 reference stays fixed on its native 24- and nine-position angular grids while E8 advances through its 30-step cycle.
 
 The grey octagon, hexagon and inner triangle form the separate symbolic guide. Their scale and alignment with E8 are drawing choices.
 
@@ -34441,7 +34443,7 @@ Research question · not yet assessed
       "pisano_period": 24,
       "file": "pilot-v1/m9.json",
       "m9_family": true,
-      "sha256": "3435c14464350cba286d9dec5fa61bb1dbf6465d95ffe96d04fa1e44055c06c7"
+      "sha256": "b47c1945b8cff88c4205680e8807edc37b0454c69c551490f3902f16db07a75f"
     },
     {
       "id": "fibonacci-m10-p60",
@@ -43374,7 +43376,7 @@ Research question · not yet assessed
   ],
   "e8_geometry": {
     "schema": "universal-informatics/e8-geometry/v1",
-    "version": "e8-m9-p24-2026-11-09-v2",
+    "version": "e8-m9-p24-2026-11-09-v3",
     "title": "E8 and the 24-step cycle",
     "scope": "Pure geometry: symbolic composition and computed projections of the E8 root system.",
     "definitions": {
@@ -43389,7 +43391,7 @@ Research question · not yet assessed
       "root_coordinates": "Divide roots_scaled2 by two. Root IDs are zero-based array indices.",
       "matrix_action": "Column vectors. Apply the listed root reflections in order: s_r(x) = x - (x dot r) r, for roots r of squared length two.",
       "projection": "Dot each root with both orthonormal basis vectors, then divide by normalization_radius. Stored xy values are rounded to 12 decimal places.",
-      "cycle_alignment": "Each orbit begins at its lowest root index. The display rotates the first orbit start to north. Shared step indices are a comparison convention, not a canonical map from Fibonacci values to roots. M9 overlays remain fixed while the 30-step Coxeter cycle advances.",
+      "cycle_alignment": "Each orbit begins at its lowest root index. The display rotates the first orbit start to north. Shared step indices are a comparison convention, not a canonical map from Fibonacci values to roots. The separate M9 reference remains fixed while the 30-step Coxeter cycle advances.",
       "symbolic_layout": "The symbolic view retains ten sets of 24 positions; its radii and phases are chosen for composition and are not an orthogonal E8 projection."
     },
     "roots_scaled2": [
@@ -49287,16 +49289,16 @@ Research question · not yet assessed
     },
     "symbolic": {
       "orbit_radii": [
-        0.68,
-        0.712,
-        0.744,
-        0.776,
-        0.808,
+        0.8,
+        0.82,
         0.84,
-        0.872,
-        0.904,
-        0.936,
-        0.968
+        0.86,
+        0.88,
+        0.9,
+        0.92,
+        0.94,
+        0.96,
+        0.98
       ],
       "orbit_phase_degrees": [
         0.0,
@@ -49310,7 +49312,7 @@ Research question · not yet assessed
         0.0,
         7.5
       ],
-      "reference_radius": 0.52
+      "reference_radius": 0.56
     },
     "sequence_layers": {
       "alpha": {
@@ -49429,11 +49431,15 @@ Research question · not yet assessed
       }
     },
     "overlay_layout": {
-      "reference_radius": 0.52,
+      "reference_radius": 0.56,
+      "label_radius": 0.64,
+      "gamma_radius": 0.34,
+      "beta_radius": 0.34,
       "computed_root_radius": 0.98,
       "north": "Alpha index 0 and Beta value 9 share north.",
-      "radial_rule": "All M9 layers share a display radius. Their angular grids remain distinct: 24 positions for Alpha and Gamma, nine for Beta.",
-      "scope": "Sequence overlays use their native M9 geometry. Display scale and alignment with E8 are drawing conventions."
+      "radial_rule": "Alpha occupies the outer M9 circle. Gamma is an inset copy of its six selected nodes, preserving their angles. Beta uses the same inset radius on its native nine-position value grid.",
+      "computed_layout": "The exact E8 projection and M9 reference occupy separate panels with independent uniform display scales. They appear side by side on wide screens and vertically on narrow screens.",
+      "scope": "Angular positions, values and paths retain native M9 geometry. Display radii and alignment with E8 are drawing conventions."
     },
     "guide": {
       "label": "Symbolic 8 / 6 / 3 guide",
@@ -49444,10 +49450,13 @@ Research question · not yet assessed
       "geometry": "Octagon, hexagon and inner equilateral triangle. The six-point star is the independently controlled Gamma layer.",
       "radius_ratios": [
         1,
-        0.78,
-        0.39
+        0.772727272727,
+        0.386363636364
       ],
-      "hexagon_radius_equals": "Alpha and Gamma reference radius",
+      "octagon_radius": 0.44,
+      "hexagon_radius": 0.34,
+      "triangle_radius": 0.17,
+      "hexagon_radius_equals": "Inset Gamma radius",
       "note": "The polygons share a 24-position angular grid. They are an optional symbolic overlay, not additional E8 roots."
     },
     "views": [
@@ -49501,6 +49510,6 @@ Research question · not yet assessed
 
 ## Sources
 
-- [research.html](https://universalmind.tv/informatics/research.html) · SHA-256: f9453ae283fed5fed8d534453a788fe3bcdf49d3d689f6a76a1bae5208bc19dc · Exact file bytes
-- [research.js](https://universalmind.tv/informatics/research.js) · SHA-256: 6c85dbaea433d8a8f5f446e10a861d28ea20c72a15144c066d66a4053059b0c9 · Exact file bytes
-- [pilot-v1/index.json](https://universalmind.tv/informatics/pilot-v1/index.json) · SHA-256: acc8063bb61a0ca9ad3c2af8bd3af45032fec793cdc94827fbdcaf85a81d722e · Exact file bytes
+- [research.html](https://universalmind.tv/informatics/research.html) · SHA-256: 551578fa3a55f0b806b91227f55462490555b2802f88e2c10aa100bc75209e44 · Exact file bytes
+- [research.js](https://universalmind.tv/informatics/research.js) · SHA-256: 8b566e4ac2a1d1c79bd6cd381f870e0435624a7f66b148a34803352f7c4fcbc0 · Exact file bytes
+- [pilot-v1/index.json](https://universalmind.tv/informatics/pilot-v1/index.json) · SHA-256: bdb2ad76d0174f837c458ef2cd78b9a43a578a351e7fd2914c057fd5dd7e0d11 · Exact file bytes

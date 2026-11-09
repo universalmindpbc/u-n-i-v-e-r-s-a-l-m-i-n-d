@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "unchanged": [
+    "roots_scaled2",
+    "projections",
+    "fibonacci",
+    "sequence_layers",
+    "definitions"
+  ],
+  "layout_version": "e8-m9-p24-2026-11-09-v3"
+}
