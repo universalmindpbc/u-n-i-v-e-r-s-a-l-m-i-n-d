@@ -1,11 +1,11 @@
 {
   "schema": "universal-informatics/quantum-atlas-guide/v1",
   "title": "Quantum Atlas · AI / LLM Wiki",
-  "version": "2026-11-09-portal-vision-2",
+  "version": "2026-11-09-portal-minimal-3",
   "url": "https://universalmind.tv/informatics/quantum/",
   "wiki": "https://universalmind.tv/informatics/read/quantum/index.html",
   "agent_architecture": {
-    "version": "2026-11-09-portal-vision-2",
+    "version": "2026-11-09-portal-minimal-3",
     "purpose": {
       "title": "What Quantum Atlas is for",
       "summary": "Universal Informatics is building an open-source quantum machine for mental health: a network of large language models and quantum computers working together as one. Quantum Atlas connects conversational scientific questions with genomics, biological research and quantum experiments, retaining the methods, evidence and limitations.",
@@ -718,7 +718,7 @@
     "implementation_sources": [
       {
         "repository_path": "Informatics/quantum/index.html",
-        "sha256": "bb4335331a072c0368f72da0927c5fa8a729bdd1fc51470ae76597312dfc577a",
+        "sha256": "30480f7bfbe85e03557bc781a1e7eb3934671c544de2dc7ad41b091ef6cd5a50",
         "scope": "Original primary-page source with generated reading blocks removed"
       },
       {
@@ -733,7 +733,7 @@
       },
       {
         "repository_path": "Informatics/quantum/biology.js",
-        "sha256": "ae4147ccc1443c0a4ea8340e6b29ccc10324716f1aad12ba7fea5cc945c9bb7c",
+        "sha256": "61ff401dae5c65aaa6183e09630686ab14e3d70ddb27436e0fba71a27d2ca428",
         "scope": "Implementation source"
       },
       {
@@ -828,7 +828,7 @@
       },
       {
         "repository_path": "Informatics/quantum/conversation.js",
-        "sha256": "302498413957c45725e502e90a398fa76e5c5ea5487430bd97e679c7e4455804",
+        "sha256": "9f6db4b8b666edd977813066276b8d74139935702f1ecfb661d7f19f75cc587a",
         "scope": "Implementation source"
       },
       {
@@ -848,7 +848,7 @@
       },
       {
         "repository_path": "Informatics/quantum/portal.js",
-        "sha256": "fa7d3d9e0addc58abee6815049d4bd2a12dcd744260dd298072ec56437b24e73",
+        "sha256": "1d8d90913c1d030077527b8c981ee93be9496fe3f88970aeb837b6a1bd7a8f2d",
         "scope": "Implementation source"
       },
       {
@@ -901,18 +901,6 @@
     {
       "tag": "p",
       "text": "GPT-6 Astra Max· Gemini 4 Argon High Thinking· Wolfram Quantum Framework"
-    },
-    {
-      "tag": "p",
-      "text": "Tell me what you want to investigate. We can refine your question together, then run a study and discuss the findings."
-    },
-    {
-      "tag": "p",
-      "text": "Connecting to Universal One…"
-    },
-    {
-      "tag": "p",
-      "text": "Ask to run a study when your question is ready. Its progress and findings appear here automatically. Voice responses are AI generated."
     },
     {
       "tag": "h2",
@@ -9113,10 +9101,10 @@
       "sha256": "11bcf4afab33943cfa6f5d40aa644089d16b1a7f7875f910cc503a4a2abec063"
     }
   ],
-  "page_prose_sha256": "b81170af9162cf7b74708d4d9f389c5fc5913101822f042cb1763f8fba5477ae",
+  "page_prose_sha256": "3e5c0639d08e25f35a138d477f50a69fb78aa1c06501db0f382539fc80fe4d7b",
   "downloads": {
-    "json": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.json?v=2026-11-09-portal-vision-2",
-    "csv": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.csv?v=2026-11-09-portal-vision-2",
-    "md": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.md?v=2026-11-09-portal-vision-2"
+    "json": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.json?v=2026-11-09-portal-minimal-3",
+    "csv": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.csv?v=2026-11-09-portal-minimal-3",
+    "md": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.md?v=2026-11-09-portal-minimal-3"
   }
 }

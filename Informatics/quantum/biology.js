@@ -1,4 +1,4 @@
-import {setupPortal,openPortal,portalAccess,prepareExperiment} from './portal.js?v=20261109';
+import {setupPortal,openPortal,portalAccess,prepareExperiment} from './portal.js?v=minimal-20261109';
 import {setupDelivery,deliveryStudy,openEmailResult} from './delivery.js?v=email-reader-20261109';
 import './scientific-review.js?v=live-3';
 import {appendGenomic,appendLocalChecks} from './study-progress.js?v=4';
@@ -140,7 +140,7 @@ window.QuantumStudyConversation=Object.freeze({
 
 parent.postMessage({type:'quantum:conversation-ready'},location.origin);
 try{const saved=JSON.parse(localStorage.getItem(savedKey));if(saved?.version==='quantum-question-v3'&&saved.id&&saved.reports){activate(saved);}}catch{}
-import {setupConversation} from './conversation.js?v=20261109';
+import {setupConversation} from './conversation.js?v=minimal-20261109';
 setupConversation();
 
 setupDelivery();openEmailResult(activate);

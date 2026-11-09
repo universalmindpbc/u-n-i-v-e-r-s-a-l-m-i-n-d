@@ -6,7 +6,6 @@ export function setupConversation(){
  function render(value){
   $('#ask').classList.toggle('has-conversation',value.messages.length>0);const next=JSON.stringify(value.messages);if(next!==signature){
    const nearEnd=log.scrollHeight-log.scrollTop-log.clientHeight<70;signature=next;log.replaceChildren();
-   if(!value.messages.length)log.append(element('p','Tell me what you want to investigate. We can refine your question together, then run a study and discuss the findings.','chat-welcome'));
    for(const m of value.messages){const article=element('article','','chat-message');article.dataset.role=m.role;article.append(element('h3',m.role==='user'?'You':'Universal One'),element('div',m.text,'chat-answer'));
     if(m.sources?.length){const details=element('details',''),summary=element('summary',m.sources.length+' sources');details.append(summary);for(const source of m.sources){try{const url=new URL(source.url);if(!['https:','http:'].includes(url.protocol))continue;const a=element('a',source.title);a.href=url.href;a.target='_blank';a.rel='noopener noreferrer';details.append(a);}catch{}}article.append(details);}
     if(m.studyId){const button=element('button','Read the full findings');button.type='button';button.onclick=()=>window.QuantumStudyConversation.openResults();article.append(button);}
@@ -15,7 +14,7 @@ export function setupConversation(){
    if(nearEnd)log.scrollTop=log.scrollHeight;
   }
   if(value.draft!==lastDraft&&value.draft){input.value=value.draft;}lastDraft=value.draft;
-  status.textContent=value.status;$('#ask-button').disabled=value.busy||value.mode==='voice';$('#chat-dictate').disabled=value.busy||value.mode==='voice';$('#chat-dictate').setAttribute('aria-pressed',String(value.recording));$('#chat-dictate span').textContent=value.recording?'Finish dictation':'Dictate';
+  status.textContent=['Ready when you are.','Answer ready.','Answer ready · Sources below.','Type or dictate your next message.'].includes(value.status)?'':value.status;$('#ask-button').disabled=value.busy||value.mode==='voice';$('#chat-dictate').disabled=value.busy||value.mode==='voice';$('#chat-dictate').setAttribute('aria-pressed',String(value.recording));$('#chat-dictate span').textContent=value.recording?'Finish dictation':'Dictate';
   $('#chat-voice').setAttribute('aria-pressed',String(value.mode==='voice'));$('#chat-voice span').textContent=value.mode==='voice'?'End voice':'Voice';$('#chat-stop').hidden=!value.busy&&!value.recording;
   $('#chat-mute').hidden=value.mode!=='voice';$('#chat-mute').setAttribute('aria-pressed',String(value.live.muted));$('#chat-mute').textContent=value.live.muted?'Unmute':'Mute';
   $('#chat-interrupt').hidden=value.mode!=='voice'||!value.live.active;
