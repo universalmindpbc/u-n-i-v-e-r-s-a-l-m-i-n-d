@@ -6,7 +6,7 @@ out=Path('/private/tmp/um-portal-demo-package-20261109');out.mkdir(exist_ok=True
 for name,files in [('source',['Dockerfile','worker.py','design.py','computation.py','verify.py','verification-fixture.json']),('dispatcher',['dispatch.py'])]:
  with zipfile.ZipFile(out/(name+'.zip'),'w',zipfile.ZIP_DEFLATED) as z:
   for f in files:
-   info=zipfile.ZipInfo(f,date_time=(2026,11,9,0,0,0));info.compress_type=zipfile.ZIP_DEFLATED;z.writestr(info,(root/f).read_bytes())
+   info=zipfile.ZipInfo(f,date_time=(2026,11,9,0,0,0));info.compress_type=zipfile.ZIP_DEFLATED;info.external_attr=0o100644 << 16;z.writestr(info,(root/f).read_bytes())
 ref=lambda s:{'Ref':s};sub=lambda s:{'Fn::Sub':s};get=lambda s,a:{'Fn::GetAtt':[s,a]}
 def stmt(actions,resources,**extra):return {'Effect':'Allow','Action':actions,'Resource':resources,**extra}
 def role(statements):return {'Type':'AWS::IAM::Role','Properties':{'AssumeRolePolicyDocument':{'Version':'2012-10-17','Statement':[{'Effect':'Allow','Principal':{'Service':'lambda.amazonaws.com'},'Action':'sts:AssumeRole'}]},'Policies':[{'PolicyName':'PortalDemoOnly','PolicyDocument':{'Version':'2012-10-17','Statement':statements}}]}}
