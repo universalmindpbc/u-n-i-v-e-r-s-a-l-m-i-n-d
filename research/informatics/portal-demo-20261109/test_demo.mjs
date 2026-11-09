@@ -1,0 +1,35 @@
+import assert from 'node:assert/strict';
+import {demoStorage,portalIdentity,DEMO_POLICY,DEMO_VERSION} from '../../../cloudflare/informatics-quantum-demo.js';
+import {astraStorage} from '../../../cloudflare/informatics-astra.js';
+class Store{data=new Map();tail=Promise.resolve();transaction(fn){const next=this.tail.then(()=>fn({get:async k=>structuredClone(this.data.get(k)),put:async(k,v)=>this.data.set(k,structuredClone(v))}));this.tail=next.catch(()=>{});return next;}}
+const s=new Store(),call=b=>demoStorage(s,b),code=n=>n.toString(16).padStart(64,'0');
+assert.equal((await call({op:'plan',portalId:code(1),clientId:'a'})).status,503);
+assert.equal((await call({op:'plan',portalId:'invalid'})).status,401);
+await call({op:'ready',runtime:DEMO_VERSION});
+const first=await call({op:'plan',portalId:code(1),clientId:'a',requestKey:crypto.randomUUID()});assert.equal(first.status,200);assert(!('portalId' in first.data));assert(!('clientId' in first.data));
+const repeats=await Promise.all(Array.from({length:20},()=>call({op:'plan',portalId:code(1),clientId:'different',requestKey:crypto.randomUUID()})));assert(repeats.every(x=>x.data.id===first.data.id));
+const outcomes=await Promise.all([2,3,4,5,6].map(n=>call({op:'plan',portalId:code(n),clientId:String(n),requestKey:crypto.randomUUID()})));assert.equal(outcomes.filter(x=>x.status===200).length,3);assert.equal(outcomes.filter(x=>x.status===429).length,2);assert.equal(s.data.get('demo-pool-v1').reservedUSD,100);
+assert.equal((await astraStorage(s,{op:'pending'})).data.pending,false);assert.equal((await astraStorage(s,{op:'claim'})).data.task,null);
+assert.equal((await astraStorage(s,{op:'get',id:first.data.id,clientId:'wrong'})).status,404);assert.equal((await astraStorage(s,{op:'get',id:first.data.id,clientId:'new',portalId:code(1)})).status,200);
+assert.equal((await astraStorage(s,{op:'get',id:first.data.id,clientId:'new',portalId:code(2)})).status,404);
+assert.equal((await astraStorage(s,{op:'cancel',id:first.data.id,clientId:'a'})).status,409);
+const claim=await call({op:'claim'});assert.equal(claim.data.task.id,first.data.id);assert.equal((await call({op:'update',id:first.data.id,lease:'bad',status:'complete',stage:'result'})).status,409);
+assert.equal((await call({op:'update',id:first.data.id,lease:claim.data.lease,status:'complete',stage:'result'})).status,422);
+const id=first.data.id,plan={digest:'a'.repeat(64),programs:[{id:'control',shots:30},{id:'comparison',shots:45}],cost:{totalCeilingUSD:7.05}};
+assert.equal((await call({op:'confirm',portalId:code(1),planDigest:plan.digest})).status,409);
+assert.equal((await call({op:'update',id,lease:claim.data.lease,status:'awaiting_confirmation',stage:'design_review',plan})).status,200);
+assert.equal((await call({op:'confirm',portalId:code(2),planDigest:plan.digest})).status,409);
+assert.equal((await call({op:'confirm',portalId:code(1),planDigest:'b'.repeat(64)})).status,409);
+assert.equal((await call({op:'confirm',portalId:code(1),planDigest:plan.digest})).status,200);
+const approved=await call({op:'claim'});assert.equal(approved.data.task.id,id);
+const report={version:DEMO_VERSION,narrative:{answer:'Synthetic verification'},experiment:{validation:{wolfram_executed:true,cuda_q_executed:true}},measurements:plan.programs.map(p=>({...p,status:'COMPLETED',raw_shots:['x'.repeat(200000)]})),reviews:['design','final'].map(phase=>({phase,decision:'approve'}))};
+assert.equal((await call({op:'update',id,lease:approved.data.lease,status:'complete',stage:'result',report})).status,200);
+const full=await astraStorage(s,{op:'record',id,clientId:'a'});assert.deepEqual(full.data,report);
+assert.equal((await astraStorage(s,{op:'record',id,clientId:'wrong'})).status,404);
+assert(!s.data.get('study:'+id).report.measurements[0].raw_shots);
+await call({op:'ready',runtime:DEMO_VERSION});assert.equal(s.data.get('demo-pool-v1').reservedUSD,100);
+const secret='test-secret-only'.repeat(5),env={ASTRA_SESSION_SECRET:secret,ALLOWED_ORIGIN:'https://staging.universalmind.tv'},key=await crypto.subtle.importKey('raw',new TextEncoder().encode(secret),{name:'HMAC',hash:'SHA-256'},false,['sign']);
+async function token(overrides={}){const body=Buffer.from(JSON.stringify({scope:'quantum-demo',aud:env.ALLOWED_ORIGIN,code:code(1),exp:Math.floor(Date.now()/1000)+3600,...overrides})).toString('base64url');const signature=Buffer.from(await crypto.subtle.sign('HMAC',key,new TextEncoder().encode(body))).toString('base64url');return body+'.'+signature;}
+for(const [claims,expected] of [[{},code(1)],[{exp:1},false],[{aud:'https://universalmind.tv'},false],[{scope:'astra-research'},false]])assert.equal(await portalIdentity(new Request('https://test',{headers:{'X-Quantum-Portal':await token(claims)}}),env),expected);
+assert.equal(await portalIdentity(new Request('https://test',{headers:{'X-Quantum-Portal':'forged.token'}}),env),false);
+console.log('PASS: portal signatures, cross-environment isolation, atomic four-study pool, duplicate-code reuse, owner isolation, ordinary-worker exclusion and completion guards.');
