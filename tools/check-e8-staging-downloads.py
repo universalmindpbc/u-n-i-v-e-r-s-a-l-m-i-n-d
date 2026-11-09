@@ -1,8 +1,10 @@
 """Verify the deployed E8 source and complete downloads against committed bytes."""
 from concurrent.futures import ThreadPoolExecutor
 import hashlib
+import io
 import json
 from pathlib import Path
+import re
 from urllib.request import Request, urlopen
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -36,12 +38,25 @@ def verify(path):
     with (SITE / path).open('rb') as stream:
         expected, expected_size = digest(stream)
     url = 'https://staging.universalmind.tv/informatics/' + path
-    request = Request(url + '?e8-verify=' + manifest['dataset_version'][:12], headers={'Cache-Control': 'no-cache'})
+    query = 'embedded=1&' if path == 'research.html' else ''
+    request = Request(url + '?' + query + 'e8-verify=' + manifest['dataset_version'][:12], headers={
+        'Cache-Control': 'no-cache', 'User-Agent': 'UniversalInformatics-Verification/1.0'})
     with urlopen(request, timeout=180) as response:
         assert response.status == 200, (path, response.status)
-        actual, size = digest(response)
+        hosting_transform = None
+        if path.endswith('.html'):
+            body = response.read()
+            body, count = re.subn(
+                rb'<script[^>]*src="https://static\.cloudflareinsights\.com/beacon\.min\.js[^\"]*"[^>]*></script>\n?',
+                b'', body)
+            assert count <= 1, (path, 'Unexpected analytics script count')
+            if count:
+                hosting_transform = 'Removed the server-inserted Cloudflare analytics beacon before comparing source bytes.'
+            actual, size = digest(io.BytesIO(body))
+        else:
+            actual, size = digest(response)
     assert (actual, size) == (expected, expected_size), path
-    return {'path': path, 'bytes': size, 'sha256': actual, 'passed': True}
+    return {'path': path, 'bytes': size, 'sha256': actual, 'hostingTransform': hosting_transform, 'passed': True}
 
 
 with ThreadPoolExecutor(max_workers=3) as executor:

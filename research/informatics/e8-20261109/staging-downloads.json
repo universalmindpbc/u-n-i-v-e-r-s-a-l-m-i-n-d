@@ -1,0 +1,182 @@
+{
+  "passed": true,
+  "origin": "https://staging.universalmind.tv",
+  "datasetVersion": "55927ba5eaede6dab44c03da797c8d7888bebf7cf0088671ec864e3189b1cb1f",
+  "files": [
+    {
+      "path": "e8.js",
+      "bytes": 6443,
+      "sha256": "a6434d1b96cc0f7d63fec2fd8ee24b158078027642a96e735392d0b2de9465c3",
+      "hostingTransform": null,
+      "passed": true
+    },
+    {
+      "path": "e8.css",
+      "bytes": 3192,
+      "sha256": "5627eff44be20e3c7120cbe3e7d7ea7e60a7fdf5df065703b658d21e9f25cb4b",
+      "hostingTransform": null,
+      "passed": true
+    },
+    {
+      "path": "research.html",
+      "bytes": 18895,
+      "sha256": "e2f79eaefdc6e8617687d3817e7c1abc042918f96b5e4de9a7d16aca495436e4",
+      "hostingTransform": "Removed the server-inserted Cloudflare analytics beacon before comparing source bytes.",
+      "passed": true
+    },
+    {
+      "path": "research.js",
+      "bytes": 21603,
+      "sha256": "172465488b0b669d79b0dd0b7ba02c0f5914d18dbaf91affac8b9c9424b6dea4",
+      "hostingTransform": null,
+      "passed": true
+    },
+    {
+      "path": "pilot-v1/e8-m9-p24.json",
+      "bytes": 29733,
+      "sha256": "7c35eaa1eeec95b83790cdf9e4716d670b3f6d053638816a5f6c528d018f8159",
+      "hostingTransform": null,
+      "passed": true
+    },
+    {
+      "path": "pilot-v1/csv-shared/e8-m9-p24.csv",
+      "bytes": 59534,
+      "sha256": "ba65a0984961c272d4f00e62d631afcbbc33f5c9088ffdb0eff97a93b86faf44",
+      "hostingTransform": null,
+      "passed": true
+    },
+    {
+      "path": "pilot-v1/m9.json",
+      "bytes": 199157,
+      "sha256": "6df0cd6af3d286997bf090f8663a9295bfb3759f0c208cdb5e928b5eca1971ba",
+      "hostingTransform": null,
+      "passed": true
+    },
+    {
+      "path": "pilot-v1/csv-records/m9.csv",
+      "bytes": 203482,
+      "sha256": "c9a0b7e089b3abbf6805816ded146de4884d692d1805817189704feeadaf4b48",
+      "hostingTransform": null,
+      "passed": true
+    },
+    {
+      "path": "pilot-v1/index.json",
+      "bytes": 215744,
+      "sha256": "d8cc8c0164a868ef24901598f1debb25a9f92d0bb1a48f0a9e1e13fc1110df07",
+      "hostingTransform": null,
+      "passed": true
+    },
+    {
+      "path": "pilot-v1/dataset.json",
+      "bytes": 267832,
+      "sha256": "714741e90c0a5f9d6dc56e46f542748c8971cc1295dae9d88e1e1dd15a6a22e0",
+      "hostingTransform": null,
+      "passed": true
+    },
+    {
+      "path": "pilot-v1/m1-m1001.json",
+      "bytes": 267832,
+      "sha256": "714741e90c0a5f9d6dc56e46f542748c8971cc1295dae9d88e1e1dd15a6a22e0",
+      "hostingTransform": null,
+      "passed": true
+    },
+    {
+      "path": "pilot-v1/m1-m1001.csv",
+      "bytes": 3986657,
+      "sha256": "72f37fe255c9cad9e547d0f0b7c7a055f77ecd75016008b76ddefec6d259e1b8",
+      "hostingTransform": null,
+      "passed": true
+    },
+    {
+      "path": "pilot-v1/m1-m1001-data.zip",
+      "bytes": 59635029,
+      "sha256": "e2745b23e579ced18fd0b392c0ee2222218d20eacc74c64d979da0c127da4157",
+      "hostingTransform": null,
+      "passed": true
+    },
+    {
+      "path": "pilot-v1/m1-m1001-csv.zip",
+      "bytes": 86943261,
+      "sha256": "1c616ef6d8e1327c366f2fcb6ca55666b6bc34f6ca0966f4d34e432600802270",
+      "hostingTransform": null,
+      "passed": true
+    },
+    {
+      "path": "atlas-guides/geometry-atlas.json",
+      "bytes": 9297561,
+      "sha256": "bc2a1c3861a1b8f801331241e59ece4e87a3732451fecc69d1e8f6824778f9ec",
+      "hostingTransform": null,
+      "passed": true
+    },
+    {
+      "path": "atlas-guides/geometry-atlas.csv",
+      "bytes": 10521785,
+      "sha256": "439f4179670a8348c60b37837c885df8a5a28a0bc045c650ac54fb173a33acd8",
+      "hostingTransform": null,
+      "passed": true
+    },
+    {
+      "path": "read/atlas/m9.html",
+      "bytes": 101315,
+      "sha256": "2f419d0f8935e14987305fcd0ae0cfd88932bff6edf1f189721a953481c7b1c2",
+      "hostingTransform": "Removed the server-inserted Cloudflare analytics beacon before comparing source bytes.",
+      "passed": true
+    },
+    {
+      "path": "exports/manifest.json",
+      "bytes": 2398727,
+      "sha256": "3fb0e3044bba7c348904fc7b98535237e1a37ac0acfd2c7cd8fa9dbdd2719fe0",
+      "hostingTransform": null,
+      "passed": true
+    },
+    {
+      "path": "exports/manifest-55927ba5eaede6dab44c03da797c8d7888bebf7cf0088671ec864e3189b1cb1f.json",
+      "bytes": 2398727,
+      "sha256": "3fb0e3044bba7c348904fc7b98535237e1a37ac0acfd2c7cd8fa9dbdd2719fe0",
+      "hostingTransform": null,
+      "passed": true
+    },
+    {
+      "path": "exports/part-26ad3901021e6ef9baf1752fe408b7909ae062046baaba167af4b7022efdfb0d.bin",
+      "bytes": 50331648,
+      "sha256": "26ad3901021e6ef9baf1752fe408b7909ae062046baaba167af4b7022efdfb0d",
+      "hostingTransform": null,
+      "passed": true
+    },
+    {
+      "path": "exports/part-0dc781bf618fd3810df4af5d2b02be7e0d5f3393e6846be99e598ca118e5f47e.bin",
+      "bytes": 31021619,
+      "sha256": "0dc781bf618fd3810df4af5d2b02be7e0d5f3393e6846be99e598ca118e5f47e",
+      "hostingTransform": null,
+      "passed": true
+    },
+    {
+      "path": "exports/part-71cc54ddcdeaf409e09c53b942f06e74a08d272b47f00724ef9655cc724048e0.bin",
+      "bytes": 50331648,
+      "sha256": "71cc54ddcdeaf409e09c53b942f06e74a08d272b47f00724ef9655cc724048e0",
+      "hostingTransform": null,
+      "passed": true
+    },
+    {
+      "path": "exports/part-173d9c0ea712cfc2a0474622dc2335c238e53919288f12dfa91702fb967fd93c.bin",
+      "bytes": 50331648,
+      "sha256": "173d9c0ea712cfc2a0474622dc2335c238e53919288f12dfa91702fb967fd93c",
+      "hostingTransform": null,
+      "passed": true
+    },
+    {
+      "path": "exports/part-32ec52f5fa32b90b5358db11f3d616cc3af10c26b594b488ffba9b1c86beae7f.bin",
+      "bytes": 50331648,
+      "sha256": "32ec52f5fa32b90b5358db11f3d616cc3af10c26b594b488ffba9b1c86beae7f",
+      "hostingTransform": null,
+      "passed": true
+    },
+    {
+      "path": "exports/part-abcae952d80c3c150be448f786153ce2f92621a4a1ac3834c430d7ec5c8bdd48.bin",
+      "bytes": 466666,
+      "sha256": "abcae952d80c3c150be448f786153ce2f92621a4a1ac3834c430d7ec5c8bdd48",
+      "hostingTransform": null,
+      "passed": true
+    }
+  ]
+}
