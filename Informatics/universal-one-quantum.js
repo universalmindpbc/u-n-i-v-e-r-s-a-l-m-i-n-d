@@ -11,15 +11,21 @@
  function answer(value){return {answer:value,sources:source(),version:'quantum-conversation-v1'};}
  async function perform(command){
   const study=client();if(!study)throw Error('Open Quantum Atlas to use its study commands.');
-  if(command.action==='hardware_capabilities')return answer('The project has recorded measurements from QuEra Aquila through Amazon Braket. I can help you retrieve those results and start supported Quantum Agents investigations using recorded measurements and CPU simulations.\n\nNew hardware submissions are disabled in this chat, so I cannot send a new algorithm to Aquila or another quantum computer from here.');
-  if(command.action==='capabilities')return answer('Yes. On this Quantum Atlas page, I am connected to the Quantum Agents swarm: GPT-6 Astra with Max reasoning and Gemini 4 Argon with High Thinking. I can draft your question, start a supported investigation, check its progress and explain its saved results.\n\nYou can dictate into this text chat and select Send, type your command, or use Voice. To begin, say “Run this study.” New paid quantum and GPU jobs remain disabled.');
+  if(command.action==='portal_access'){await study.openPortal();return answer('Enter your I AM portal password in the access window. Your password stays outside our conversation.');}
+  if(command.action==='portal_experiment'){
+   if(!command.question.trim())return answer('What research question do you want to investigate? We can refine it together, then prepare an experiment within your study credit.');
+   const result=await study.prepareExperiment(command.question);return answer(result.message+'\n\nYour question: '+result.question+'\n\nYour proposed investigation will appear here for review before it starts.');
+  }
+  if(command.action==='hardware_capabilities')return answer('Universal Informatics connects to quantum computing through Amazon Braket. With I AM portal access, we can develop a funded experiment around your research question. Describe what you want to investigate. Astra and Gemini help prepare the approach, Wolfram checks the mathematical model, and the service checks the computing requirements against your included credit. You review a plain-language proposal before launch.\n\nThe question is yours. OXTR is one worked example, and its program count and shot count do not constrain your study. Available execution depends on the connected device and validated operation support.');
+  if(command.action==='capabilities')return answer('Yes. I am connected to the Quantum Agents swarm: GPT-6 Astra with Max reasoning and Gemini 4 Argon with High Thinking. We can refine your question, prepare a supported experiment, follow its progress and explain the findings. Wolfram Quantum Framework is part of the project’s mathematical workflow; each study records the tools actually used.\n\nI AM portal access unlocks a funded study within the shared demo pool. Text, dictation and Voice share this conversation.');
   if(command.action==='draft'){
    if(!command.question.trim())return answer('What scientific question do you want the Quantum Agents to investigate?');
    study.draft(command.question);return answer('Your study question is ready: '+command.question+' Say “Run this study” when you are ready.');
   }
   if(command.action==='start'){
    if(!command.question.trim())return answer('What scientific question do you want the Quantum Agents to investigate?');
-   const result=await study.start(command.question);
+   const access=await study.portalAccess().catch(()=>null);
+   const result=access?.authenticated?await study.prepareExperiment(command.question):await study.start(command.question);
    return answer(result.message+'\n\nQuestion: '+result.question+'\n\nProgress and results appear automatically in our conversation. You can keep talking while the study runs.');
   }
   const result=await study.inspect();

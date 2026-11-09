@@ -1,4 +1,4 @@
-import {agentHeaders,ensureAgentSession} from './agent.js?v=conversation-repair-20261109';
+import {agentHeaders,ensureAgentSession,rememberResultToken} from './agent.js?v=portal-demo-20261109';
 const endpoint=location.hostname==='staging.universalmind.tv'?'https://informatics-universal-one-staging.universalmind.workers.dev':'https://informatics-universal-one.universalmind.workers.dev';
 let active=null,checking=0;
 const $=s=>document.querySelector(s),pendingKey='quantum-atlas-email-pending-v1';
@@ -21,6 +21,6 @@ export async function openEmailResult(activate){
  let hash=location.hash;try{if(!hash&&parent.location.hash)hash=parent.location.hash;}catch{}
  const params=new URLSearchParams(hash.replace(/^#/,'')),id=params.get('study'),token=params.get('result');if(!id||!token)return;
  $('#delivery-status').textContent='Opening your emailed findings…';
- try{const response=await fetch(endpoint+'/agent/studies/'+encodeURIComponent(id)+'/result',{headers:{Authorization:'Bearer '+token},signal:AbortSignal.timeout(20000)}),task=await response.json();if(!response.ok)throw Error(task.error||'The results link is unavailable.');activate({version:'quantum-question-v3',id:task.id,question:task.question,status:'agent_complete',message:task.message,reports:{},agent:task,readOnly:true});window.QuantumStudyConversation.openResults();$('#delivery-status').textContent='Your emailed findings are open. This link gives read-only access.';history.replaceState(null,'',location.pathname+location.search);try{parent.history.replaceState(null,'',parent.location.pathname+parent.location.search);}catch{}}
+ try{const response=await fetch(endpoint+'/agent/studies/'+encodeURIComponent(id)+'/result',{headers:{Authorization:'Bearer '+token},signal:AbortSignal.timeout(20000)}),task=await response.json();if(!response.ok)throw Error(task.error||'The results link is unavailable.');rememberResultToken(task.id,token);activate({version:'quantum-question-v3',id:task.id,question:task.question,status:'agent_complete',message:task.message,reports:{},agent:task,readOnly:true});window.QuantumStudyConversation.openResults();$('#delivery-status').textContent='Your emailed findings are open. This link gives read-only access.';history.replaceState(null,'',location.pathname+location.search);try{parent.history.replaceState(null,'',parent.location.pathname+parent.location.search);}catch{}}
  catch(e){$('#delivery-status').textContent=e.message;}
 }

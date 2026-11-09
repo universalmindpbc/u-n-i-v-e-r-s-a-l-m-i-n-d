@@ -1,7 +1,8 @@
+import {setupPortal,openPortal,portalAccess,prepareExperiment} from './portal.js?v=20261109';
 import {setupDelivery,deliveryStudy,openEmailResult} from './delivery.js?v=email-reader-20261109';
 import './scientific-review.js?v=live-3';
 import {appendGenomic,appendLocalChecks} from './study-progress.js?v=4';
-import {agentHeaders,ensureAgentSession,followAgent,resetAgent,renderAgentReport,setupAgent} from './agent.js?v=conversation-repair-20261109';
+import {agentHeaders,ensureAgentSession,followAgent,resetAgent,renderAgentReport,setupAgent} from './agent.js?v=portal-demo-20261109';
 import './study.js?v=production-1';
 import './hypothesis.js?v=1';
 import {renderResponse} from './response-view.js?v=6';
@@ -68,7 +69,7 @@ function openCurrentResults(task,kind,trigger){
  $('#results-dialog-title').textContent=kind==='quantum'?'Your quantum measurements':'Your investigation · insights';
  resultsDialog.querySelector('.eyebrow').textContent='YOUR INVESTIGATION';resultsContent.replaceChildren(node('p',task.question,'reader-question'));
  const slot=node('div',undefined,'result-slot');resultsContent.append(slot);
- if(kind==='quantum'){
+ if(kind==='quantum'&&task.version!=='quantum-portal-experiment-v1'){
   slot.append(node('h3','This investigation uses the recorded Aquila measurements.'),node('p','New hardware runs remain paused at the current funding boundary. The agent can analyse existing measurements and run the available local simulations.'));
   const b=node('button','Open the recorded OXTR Aquila measurements ↗','text-button');b.onclick=()=>openResults('quantum',true,resultTrigger);slot.append(b);
  }else renderAgentReport(slot,task);
@@ -113,7 +114,8 @@ function conversationResult(data){
  return {id:task?.id||data.id,question:data.question,status:task?.status||data.status,stage:task?.stage||'',message:task?.message||data.message,report:task?.report||(data.reports?.classical?.state==='complete'?{narrative:{answer:data.reports.classical.finding,meaning:data.reports.classical.calculation?.sequence?'Reconstructed sequence: '+data.reports.classical.calculation.sequence:''}}:null)};
 }
 window.QuantumStudyConversation=Object.freeze({
- context(){const data=conversationStudy();return {question:$('#question').value.trim()||data?.question||studyQuestion,savedQuestion:data?.question||'',status:data?.agent?.status||data?.status||'idle'};},
+ openPortal,portalAccess,prepareExperiment,
+ context(){const data=conversationStudy();return {question:$('#question').value.trim()||data?.question||'',savedQuestion:data?.question||'',status:data?.agent?.status||data?.status||'idle'};},
  draft(question){if(busy)throw Error('A study request is already being processed.');if(question.length<5||question.length>3000)throw Error('Enter a scientific question in 5–3,000 characters.');$('#question').value=question;step('ask');},
  async start(question){
   const saved=conversationStudy();
@@ -123,7 +125,7 @@ window.QuantumStudyConversation=Object.freeze({
   return conversationResult(await submitStudy(question));
  },
  openResults(){const data=conversationStudy();if(data?.agent?.report)openAgentResults(data.agent);else if(data)openResults('classical');},
- openProgress(){step('study');$('#agent-progress').scrollIntoView({behavior:'smooth',block:'center'});},
+ openProgress(){if(conversationStudy()?.agent?.status==='awaiting_confirmation')return openPortal();step('study');$('#agent-progress').scrollIntoView({behavior:'smooth',block:'center'});},
  async inspect(){
   const saved=conversationStudy();if(!saved)return null;
   if(saved.agent&&!saved.readOnly){
@@ -142,3 +144,5 @@ import {setupConversation} from './conversation.js?v=20261109';
 setupConversation();
 
 setupDelivery();openEmailResult(activate);
+
+setupPortal(activate);
