@@ -1,0 +1,15 @@
+{
+  "edge_values": true,
+  "formats": {
+    "json": {
+      "all_sources_reconstructed": 1196,
+      "passed": true
+    },
+    "csv": {
+      "all_sources_reconstructed": 1196,
+      "passed": true
+    }
+  },
+  "passed": true,
+  "datasetVersion": "814283a6612bdb1bd272b44f5f50cb98c0447f3e940ae6d18cd63cb6735cd8ce"
+}
