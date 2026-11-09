@@ -1,0 +1,20 @@
+{
+  "date": "2026-11-10",
+  "approval": "Ben approved shared worker and one staging study, plus US$3 total staging Opus allowance.",
+  "sharedWorker": {
+    "activateTestedImage": "sha256:710b8cff7ac5d5ff169d552695b89f67bb2508a4e2c359b2975aa19e2e9a6b42",
+    "retainProductionConfiguration": true
+  },
+  "oneCPUStudy": {
+    "astraTokens": 64000,
+    "astraUpperUSD": 3.2,
+    "geminiRemainingUSD": 1.096352,
+    "newHardwareJobs": 0,
+    "newPaidGPUJobs": 0
+  },
+  "opus": {
+    "totalStagingUSD": 3,
+    "perInvestigationUSD": 0.75
+  },
+  "productionWebsiteAuthorized": false
+}
