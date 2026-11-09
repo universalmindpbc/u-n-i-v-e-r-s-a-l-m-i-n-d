@@ -8,3 +8,5 @@ Generated source hashes, complete JSON/CSV exports and discovery references matc
 
 Proof: https://staging.universalmind.tv/informatics/quantum/
 Production has not been modified.
+
+Staging verification passed at 1440 px and 390 px in a separate muted Chromium process. The exact placeholder is visible, Password remains beside Voice, and the removed explanatory copy remains absent. Existing Panthur deployment uploaded 14 changed tracked assets.

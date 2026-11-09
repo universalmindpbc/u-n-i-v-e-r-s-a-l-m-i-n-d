@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "width": 1440,
+      "placeholder": "Ask a question, refine an idea, or ask me to run a study...",
+      "passwordBesideVoice": true,
+      "removedCopyRemainsAbsent": true
+    },
+    {
+      "width": 390,
+      "placeholder": "Ask a question, refine an idea, or ask me to run a study...",
+      "passwordBesideVoice": true,
+      "removedCopyRemainsAbsent": true
+    }
+  ]
+}
