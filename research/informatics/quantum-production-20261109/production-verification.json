@@ -1,0 +1,23 @@
+{
+  "source_candidate": "b86516462e70d4fb00c60401866f6e55ddd53c01",
+  "staging_source": "e487ff46fbe8adfaee43e234d1afc6ce766c24d7",
+  "production_worker_version": "697e4866-e299-42d5-86af-66db28e16aab",
+  "aws_image": "sha256:82a80f28aaf412402c8baf16a90065fba7d6a069c1b35dd5e10bd9b75e694284",
+  "production_http_files_exact": 33,
+  "production_atlas_lab_viewports": [
+    1440,
+    390,
+    320
+  ],
+  "production_research_session_access": "passed",
+  "staging_end_to_end_study": "83ba4807-83e6-4ca2-b151-7637e9d6a8ec",
+  "staging_download_csv_fields": 4609,
+  "new_paid_production_studies": 0,
+  "production_model_call_verification": "No additional paid production study; staging provider receipts and production source, deployment, session, layout and export checks retained.",
+  "production_paid_test_review": "Automatic approval review rejected the additional paid production study; no execution or alternative paid request followed.",
+  "Gemini_shared_cap_micro_USD": 2000000,
+  "Gemini_existing_usage_micro_USD": 263860,
+  "budget_reset": false,
+  "new_hardware_jobs": 0,
+  "unrelated_staging_wiki_published": false
+}
