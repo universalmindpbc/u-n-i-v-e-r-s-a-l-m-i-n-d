@@ -5,7 +5,7 @@ import {fileURLToPath} from 'node:url';
 import {chromium} from '/Users/benkorbel/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const candidate=process.argv.includes('--candidate');
-const out=path.join(root,'research/informatics/e8-20261109');await fs.mkdir(out,{recursive:true});
+const out=path.join(root,'research/informatics/e8-spacing-20261109');await fs.mkdir(out,{recursive:true});
 const server=await chromium.launchServer({executablePath:'/Users/benkorbel/Library/Caches/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-mac-arm64/chrome-headless-shell',headless:true,args:['--mute-audio','--autoplay-policy=user-gesture-required']});
 assert(server.process().spawnargs.includes('--mute-audio'));
 const browser=await chromium.connect(server.wsEndpoint());const results=[],errors=[];
@@ -35,21 +35,64 @@ try{
   const tabs=await page.locator('nav [role=tab]').allTextContents();assert.equal(tabs[tabs.indexOf('E8')+1],'Odom’s construction');
   assert.equal(await page.locator('[role=tab][aria-selected=true]').innerText(),'E8');
   assert(!/quantum|genomic|OXTR/i.test(await page.locator('#e8-view').innerText()));
+  assert(await page.locator('#e8-alpha').isChecked());assert(await page.locator('#e8-gamma').isChecked());assert(!(await page.locator('#e8-beta').isChecked()));
   for(const mode of ['symbolic','p24','p30']){
    await page.selectOption('#e8-projection',mode);
    await page.waitForFunction(mode=>document.querySelector('.e8-drawing').dataset.projection===mode,mode);
    assert.equal(await page.locator('[data-root-id]').count(),240);
    assert.equal(await page.locator('[data-cycle-active=true]').count(),mode==='p30'?8:10);
    assert.equal(await page.locator('#e8-step').getAttribute('max'),mode==='p30'?'29':'23');
-   assert.equal(await page.locator('[data-e8-reference]').count(),mode==='p30'?0:24);
+   for(let mask=0;mask<8;mask++){
+    for(const [i,name]of ['alpha','beta','gamma'].entries())await page.locator('#e8-'+name).setChecked(Boolean(mask&(1<<i)));
+    assert.equal(await page.locator('[data-e8-reference]').count(),mask&1?24:0);
+    assert.equal(await page.locator('[data-e8-beta-value]').count(),mask&2?6:0);
+    assert.equal(await page.locator('[data-e8-beta-grid]').count(),mask&2?9:0);
+    assert.equal(await page.locator('[data-e8-gamma-index]').count(),mask&4?6:0);
+    assert.equal(await page.locator('[data-e8-gamma-path]').count(),mask&4?2:0);
+    assert.equal(await page.locator('[data-root-id]').count(),240);
+    for(const [i,name]of ['alpha','beta','gamma'].entries())assert.equal(await page.locator('#e8-'+name+'-legend').isVisible(),Boolean(mask&(1<<i)));
+   }
+   assert.deepEqual(await page.locator('[data-e8-beta-value]').evaluateAll(nodes=>nodes.map(n=>+n.dataset.e8BetaValue)),[4,8,7,5,1,2]);
+   assert(await page.evaluate(()=>{
+    const [cx,cy]=document.querySelector('.e8-drawing').dataset.m9Center.split(',').map(Number),ratio=.34/.56;
+    return [...document.querySelectorAll('[data-e8-gamma-index]')].every(n=>{
+     const a=document.querySelector(`[data-e8-reference="${n.dataset.e8GammaIndex}"]`);
+     return Math.abs((+n.getAttribute('cx')-cx)-ratio*(+a.getAttribute('x')+(+a.getAttribute('width'))/2-cx))<1e-8&&Math.abs((+n.getAttribute('cy')-cy)-ratio*(+a.getAttribute('y')+(+a.getAttribute('height'))/2-cy))<1e-8;
+    });
+   }));
+   const spacing=await page.evaluate(()=>{
+    const svg=document.querySelector('.e8-drawing'),[cx,cy]=svg.dataset.m9Center.split(',').map(Number),r=+svg.dataset.m9Scale;
+    const labels=[...svg.querySelectorAll('[data-e8-layer="alpha"] text')].map(n=>n.getBBox());
+    const labelBounds=labels.flatMap(b=>[[b.x,b.y],[b.x+b.width,b.y],[b.x,b.y+b.height],[b.x+b.width,b.y+b.height]]).map(([x,y])=>Math.hypot(x-cx,y-cy));
+    const roots=[...svg.querySelectorAll('[data-root-id]')].map(n=>[+n.getAttribute('cx'),+n.getAttribute('cy')]);
+    const overlappingLabels=labels.some((a,i)=>labels.slice(i+1).some(b=>a.x<b.x+b.width&&b.x<a.x+a.width&&a.y<b.y+b.height&&b.y<a.y+a.height));
+    const separate=svg.dataset.layout==='beside'?Math.max(...roots.map(p=>p[0]))<cx-r*.64-12:svg.dataset.layout==='stacked'?Math.max(...roots.map(p=>p[1]))<cy-r*.64-12:Math.min(...roots.map(([x,y])=>Math.hypot(x-cx,y-cy)))>Math.max(...labelBounds)+8;
+    return {labels:labels.length,overlappingLabels,clearOfCentralGeometry:Math.min(...labelBounds)>r*.44+8,separate,layout:svg.dataset.layout,diameter:svg.getBoundingClientRect().width};
+   });
+   assert.equal(spacing.labels,24);assert(!spacing.overlappingLabels,JSON.stringify(spacing));assert(spacing.clearOfCentralGeometry,JSON.stringify(spacing));assert(spacing.separate,JSON.stringify(spacing));
+   if(width===1440)assert(spacing.diameter>=900,JSON.stringify(spacing));
+   assert.equal(await page.locator('[data-e8-beta-path]').getAttribute('stroke'),'#ffea42');
+   assert.equal(await page.locator('[data-e8-gamma-path]').first().getAttribute('stroke'),'#ff84c5');
+   const fixed=await page.locator('[data-e8-layer]').evaluateAll(nodes=>nodes.map(n=>n.outerHTML));
    await page.locator('#e8-step').fill(mode==='p30'?'29':'23');
    assert.match(await page.locator('#e8-step-label').innerText(),mode==='p30'?/30 of 30/:/24 of 24/);
-   if(mode==='p30'){assert(await page.locator('#e8-guide').isDisabled());assert.equal(await page.locator('[data-e8-guide]').count(),0);}
-   else{await page.locator('#e8-guide').uncheck();assert.equal(await page.locator('[data-e8-guide]').count(),0);await page.locator('#e8-guide').check();assert.equal(await page.locator('[data-e8-guide]').count(),5);}
+   if(mode==='p30'){assert.deepEqual(await page.locator('[data-e8-layer]').evaluateAll(nodes=>nodes.map(n=>n.outerHTML)),fixed);assert(await page.locator('#e8-cycle-note').isVisible());}
+   await page.locator('#e8-guide').uncheck();assert.equal(await page.locator('[data-e8-guide]').count(),0);assert.equal(await page.locator('[data-e8-gamma-path]').count(),2);
+   await page.locator('#e8-guide').check();assert.equal(await page.locator('[data-e8-guide]').count(),3);
    assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
    assert(await page.locator('.e8-drawing').evaluate(svg=>{const b=svg.viewBox.baseVal;return [...svg.querySelectorAll('[data-root-id]')].every(n=>{const x=+n.getAttribute('cx'),y=+n.getAttribute('cy');return Number.isFinite(x)&&Number.isFinite(y)&&x>=0&&x<=b.width&&y>=0&&y<=b.height;});}));
-   results.push({width,mode,rootCount:240,cycleStep:true,guide:true,noHorizontalOverflow:true});
-   if(mode==='p24'||(width===1440&&mode==='symbolic'))await hostPage.screenshot({path:path.join(out,`${candidate?'candidate':'staging'}-${mode}-${width}.png`),fullPage:false});
+   results.push({width,mode,rootCount:240,layerCombinations:8,gammaInsetAnglesPreserved:true,spacing,betaNativeCycle:true,cycleStep:true,guideIndependent:true,noHorizontalOverflow:true});
+   await page.locator('#e8-beta').uncheck();
+   const shot=await context.newPage();
+   await shot.setViewportSize({width,height:width===1440?2000:1600});
+   await shot.goto('https://staging.universalmind.tv/informatics/geometry/?record=fibonacci-m9-p24&record-mode=research#e8',{waitUntil:'domcontentloaded'});
+   const shotFrame=shot.frameLocator('#atlas-frame');
+   await shotFrame.locator('#e8-view').waitFor({state:'visible'});await shotFrame.locator('#e8-projection').selectOption(mode);
+   await shotFrame.locator('.e8-drawing').screenshot({path:path.join(out,`${candidate?'candidate':'staging'}-${mode}-${width}.png`)});
+   if(mode==='symbolic'){await shotFrame.locator('#e8-beta').check();await shotFrame.locator('.e8-drawing').screenshot({path:path.join(out,`${candidate?'candidate':'staging'}-all-layers-${width}.png`)});await shotFrame.locator('#e8-beta').uncheck();}
+   if(mode==='symbolic'&&width===1440)await shot.screenshot({path:path.join(out,`${candidate?'candidate':'staging'}-page-desktop.png`),fullPage:true});
+   await shot.close();
+   await page.locator('#e8-beta').uncheck();
   }
   await page.getByRole('tab',{name:'Odom’s construction',exact:true}).click();assert(await page.locator('#e8-view').isHidden());assert(await page.locator('#odom-view').isVisible());
   await page.getByRole('tab',{name:'E8',exact:true}).click();assert(await page.locator('#odom-view').isHidden());

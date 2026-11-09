@@ -4287,7 +4287,7 @@
   },
   "e8_geometry": {
     "schema": "universal-informatics/e8-geometry/v1",
-    "version": "e8-m9-p24-2026-11-09-v1",
+    "version": "e8-m9-p24-2026-11-09-v3",
     "title": "E8 and the 24-step cycle",
     "scope": "Pure geometry: symbolic composition and computed projections of the E8 root system.",
     "definitions": {
@@ -4302,7 +4302,7 @@
       "root_coordinates": "Divide roots_scaled2 by two. Root IDs are zero-based array indices.",
       "matrix_action": "Column vectors. Apply the listed root reflections in order: s_r(x) = x - (x dot r) r, for roots r of squared length two.",
       "projection": "Dot each root with both orthonormal basis vectors, then divide by normalization_radius. Stored xy values are rounded to 12 decimal places.",
-      "cycle_alignment": "Each orbit begins at its lowest root index. The display rotates the first orbit start to north. Shared step indices are a comparison convention, not a canonical map from Fibonacci values to roots.",
+      "cycle_alignment": "Each orbit begins at its lowest root index. The display rotates the first orbit start to north. Shared step indices are a comparison convention, not a canonical map from Fibonacci values to roots. The separate M9 reference remains fixed while the 30-step Coxeter cycle advances.",
       "symbolic_layout": "The symbolic view retains ten sets of 24 positions; its radii and phases are chosen for composition and are not an orthogonal E8 projection."
     },
     "roots_scaled2": [
@@ -10200,16 +10200,16 @@
     },
     "symbolic": {
       "orbit_radii": [
-        0.68,
-        0.712,
-        0.744,
-        0.776,
-        0.808,
+        0.8,
+        0.82,
         0.84,
-        0.872,
-        0.904,
-        0.936,
-        0.968
+        0.86,
+        0.88,
+        0.9,
+        0.92,
+        0.94,
+        0.96,
+        0.98
       ],
       "orbit_phase_degrees": [
         0.0,
@@ -10223,7 +10223,134 @@
         0.0,
         7.5
       ],
-      "reference_radius": 0.52
+      "reference_radius": 0.56
+    },
+    "sequence_layers": {
+      "alpha": {
+        "label": "Alpha",
+        "color": "#5ca8ff",
+        "default_visible": true,
+        "circle_positions": 24,
+        "display_values": [
+          9,
+          1,
+          1,
+          2,
+          3,
+          5,
+          8,
+          4,
+          3,
+          7,
+          1,
+          8,
+          9,
+          8,
+          8,
+          7,
+          6,
+          4,
+          1,
+          5,
+          6,
+          2,
+          8,
+          1
+        ],
+        "source_field": "alpha",
+        "description": "The 24 Fibonacci residues modulo 9, with zero displayed as 9."
+      },
+      "beta": {
+        "label": "Beta",
+        "color": "#ffea42",
+        "default_visible": false,
+        "circle_positions": 9,
+        "display_cycle": [
+          4,
+          8,
+          7,
+          5,
+          1,
+          2
+        ],
+        "closed_path": [
+          4,
+          8,
+          7,
+          5,
+          1,
+          2,
+          4
+        ],
+        "recognised_doubling_cycle": [
+          1,
+          2,
+          4,
+          8,
+          7,
+          5
+        ],
+        "source_field": "beta",
+        "description": "The six interior interval sums form the doubling cycle modulo 9. The stored order begins at 4.",
+        "angular_rule": "Value v is placed at 2*pi*v/9 clockwise from north; 9 is north."
+      },
+      "gamma": {
+        "label": "Gamma",
+        "color": "#ff84c5",
+        "default_visible": true,
+        "circle_positions": 24,
+        "alpha_indices": [
+          0,
+          4,
+          8,
+          12,
+          16,
+          20
+        ],
+        "clock_positions": [
+          24,
+          4,
+          8,
+          12,
+          16,
+          20
+        ],
+        "display_values": [
+          9,
+          3,
+          3,
+          9,
+          6,
+          6
+        ],
+        "triangle_paths": [
+          [
+            0,
+            8,
+            16,
+            0
+          ],
+          [
+            4,
+            12,
+            20,
+            4
+          ]
+        ],
+        "source_field": "gamma",
+        "description": "Two equilateral triangles join the six Alpha nodes whose residues are divisible by three."
+      }
+    },
+    "overlay_layout": {
+      "reference_radius": 0.56,
+      "label_radius": 0.64,
+      "gamma_radius": 0.34,
+      "beta_radius": 0.34,
+      "computed_root_radius": 0.98,
+      "north": "Alpha index 0 and Beta value 9 share north.",
+      "radial_rule": "Alpha occupies the outer M9 circle. Gamma is an inset copy of its six selected nodes, preserving their angles. Beta uses the same inset radius on its native nine-position value grid.",
+      "computed_layout": "The exact E8 projection and M9 reference occupy separate panels with independent uniform display scales. They appear side by side on wide screens and vertically on narrow screens.",
+      "scope": "Angular positions, values and paths retain native M9 geometry. Display radii and alignment with E8 are drawing conventions."
     },
     "guide": {
       "label": "Symbolic 8 / 6 / 3 guide",
@@ -10231,14 +10358,16 @@
       "octagon_step": 3,
       "hexagon_step": 4,
       "triangle_step": 8,
-      "geometry": "Octagon, hexagon, two opposed equilateral triangles and an inner triangle.",
+      "geometry": "Octagon, hexagon and inner equilateral triangle. The six-point star is the independently controlled Gamma layer.",
       "radius_ratios": [
         1,
-        0.78,
-        0.78,
-        0.78,
-        0.39
+        0.772727272727,
+        0.386363636364
       ],
+      "octagon_radius": 0.44,
+      "hexagon_radius": 0.34,
+      "triangle_radius": 0.17,
+      "hexagon_radius_equals": "Inset Gamma radius",
       "note": "The polygons share a 24-position angular grid. They are an optional symbolic overlay, not additional E8 roots."
     },
     "views": [
