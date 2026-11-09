@@ -4,6 +4,7 @@ from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scientific-swarm'))
 from providers import GeminiReviewer,ReviewLedger
 from swarm import checked_review,digest
+from reasoning_profile import STAGING
 
 RECIPE = {
  'id':'oxtr-follow-through-v1',
@@ -20,12 +21,13 @@ PLAN_INSTRUCTIONS = '''You are GPT-6 Astra, Universal Informatics head bioinform
 PLAN_INSTRUCTIONS+=' Excluded terms and contractions: '+', '.join(['sh'+'ould','co'+'uld','wo'+'uld'])+'.'
 PLAN_SCHEMA={'type':'object','properties':{'supported':{'type':'boolean'},'objective':{'type':'string'},'actions':{'type':'array','items':{'type':'string'}},'interpretation':{'type':'string'},'stop_reason':{'type':'string'}},'required':['supported','objective','actions','interpretation','stop_reason'],'additionalProperties':False}
 
-def create_plan(key, question, memory, feedback):
+def create_plan(key, question, memory, feedback, model_settings=None):
  from openai import OpenAI
+ settings=(model_settings or STAGING)['astra']
  prompt=json.dumps({'question':question,'recipe':RECIPE,'research_memory':memory,'review_feedback':feedback},ensure_ascii=False)
- r=OpenAI(api_key=key,max_retries=0,timeout=90).responses.create(model='gpt-6-astra',instructions=PLAN_INSTRUCTIONS,input=prompt,reasoning={'effort':'low'},max_output_tokens=1200,store=False,text={'format':{'type':'json_schema','name':'astra_design','strict':True,'schema':PLAN_SCHEMA}})
+ r=OpenAI(api_key=key,max_retries=0,timeout=settings['timeout_seconds']).responses.create(model=settings['model'],instructions=PLAN_INSTRUCTIONS,input=prompt,reasoning={'effort':settings['effort']},max_output_tokens=settings['plan_output_tokens'],store=False,text={'format':{'type':'json_schema','name':'astra_design','strict':True,'schema':PLAN_SCHEMA}})
  if r.status!='completed':raise RuntimeError('Astra design incomplete; reservation retained.')
- return {'plan':json.loads(r.output_text),'tokens':r.usage.total_tokens,'provider_response_id':r.id,'model':r.model}
+ return {'plan':json.loads(r.output_text),'tokens':r.usage.total_tokens,'provider_response_id':r.id,'model':r.model,'reasoning_effort':settings['effort'],'max_output_tokens':settings['plan_output_tokens']}
 
 def program_summary(cases):
  """Keep program identity and numerical checks; retain full arrays in exports."""

@@ -1,5 +1,35 @@
 # Astra: private Quantum Atlas execution
 
+## Reasoning update prepared 9 November 2026
+
+The staging profile requests GPT-6 Astra with `reasoning.effort=max` for study
+planning and interpretation, and Gemini 4 Argon with `thinkingLevel=HIGH` for
+design and findings review. The server selects the profile from the fixed
+research origin. The production profile retains its approved Low settings.
+The lightweight question router is a separate routing call.
+
+Each new study checkpoints its profile. Existing studies resume at their original
+settings, including older checkpoints without a profile. Model receipts retain
+the requested reasoning setting and output limit. Higher-effort requests use
+distinct ledger identities so a prior Low response cannot satisfy them.
+
+Both staging providers have an 8,192-token output cap and a 300-second request
+timeout. The existing 24,000-token/four-call Astra study allowance remains
+enforced. Production and resumed Low studies retain the existing US$1 Gemini
+ledger. New High staging studies require a separately seeded ledger capped at
+US$2. Seeding that ledger requires Ben's explicit approval; code alone grants no
+additional allowance and a missing ledger stops execution.
+Insufficient allowance or incomplete responses pause the study and retain its
+checkpoint and reservation. Higher effort alone does not establish correctness.
+
+Activation requires the existing AWS build/deploy workflow and a complete staged
+request, provider response, review and visible report. Until that verification,
+the source change remains prepared rather than a confirmed live configuration.
+
+References: [OpenAI reasoning levels](https://developers.openai.com/api/docs/models/gpt-6-astra),
+[Gemini thinking](https://ai.google.dev/gemini-api/docs/thinking), and
+[Wolfram LLM Benchmarking Project](https://www.wolfram.com/llm-benchmarking-project/).
+
 Implemented 25 October 2026; AWS hosting activated 26 October. This is a bounded research service on the existing staging website. LangGraph owns execution and checkpoints. GPT-6 Astra interprets the calculated evidence. Gemini review, public computation and API/MCP/A2A task dispatch remain roadmap work.
 
 ## What a question starts

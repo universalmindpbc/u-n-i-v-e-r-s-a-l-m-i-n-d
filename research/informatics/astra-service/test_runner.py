@@ -14,7 +14,9 @@ class RunnerTests(unittest.TestCase):
     calls['analysis']+=1
     if calls['analysis']==1:raise RuntimeError('interruption fixture')
     return analysis
-   def brief(e,q,feedback=None):calls['model']+=1;return {'tokens':10,'narrative':{'answer':'Fixture only'}}
+   def brief(e,q,feedback=None,model_settings=None):
+    self.assertEqual(model_settings['astra']['effort'],'max')
+    calls['model']+=1;return {'tokens':10,'narrative':{'answer':'Fixture only'}}
    secret=Path(d)/'credentials.json';secret.write_text('{"openai":"fixture"}')
    with patch.object(runner,'SECRET',secret),patch.object(runner,'SERVICE_ROOT',Path(d)),patch.object(runner.science,'prior_measurements',return_value={}),patch.object(runner.science,'prepare',side_effect=data),patch.object(runner.science,'analyse',side_effect=analyse),patch.object(runner.science,'load',return_value=prepared),patch('subprocess.run'),patch.object(runner,'brief',side_effect=brief):
     g=runner.graph(Ledger(Path(d)/'ledger.sqlite'),cp,lambda *a:None,lambda q:{'schema':'fixture','memories':[]},reviewer=Reviewer(['approve','approve'],[]),planner=lambda *a:{'plan':{'supported':True,'stop_reason':''},'tokens':10});cfg={'configurable':{'thread_id':'fixture'}}
