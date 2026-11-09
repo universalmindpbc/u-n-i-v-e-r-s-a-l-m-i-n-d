@@ -19,7 +19,7 @@ assert.equal((await astraStorage(s,{op:'cancel',id:aid,clientId:'b'.repeat(32)})
 assert.equal((await astraStorage(s,{op:'get',id:aid,clientId:'a'.repeat(32)})).status,200);
 assert.equal((await astraStorage(s,{op:'get',id,clientId:'a'.repeat(32)})).status,404);
 console.log('PASS: anonymous research sessions cannot read or cancel another session or legacy-owner task');
-assert.equal(astraTokenLimit({ALLOWED_ORIGIN:'https://universalmind.tv',ASTRA_MODEL_TOKEN_LIMIT:'64000'}),24000);
+assert.equal(astraTokenLimit({ALLOWED_ORIGIN:'https://universalmind.tv',ASTRA_MODEL_TOKEN_LIMIT:'64000'}),64000);
 assert.equal(astraTokenLimit({ALLOWED_ORIGIN:'https://staging.universalmind.tv',ASTRA_MODEL_TOKEN_LIMIT:'64000'}),64000);
 assert.equal(astraTokenLimit({ALLOWED_ORIGIN:'https://staging.universalmind.tv'}),24000);
 const higher=new Storage();
@@ -27,4 +27,6 @@ assert.equal((await astraStorage(higher,{op:'create',requestKey:'staging-64k-tes
 const staged=await astraStorage(higher,{op:'create',requestKey:'staging-64k-test-01',question:'OXTR fixture',modelTokenLimit:64000,routingReceipt:{total_tokens:1000,service_tier:'default'}});
 assert.equal(staged.data.policy.maxModelTokens,64000);assert.equal(staged.data.routing_receipt.total_tokens,1000);
 assert.equal((await astraStorage(higher,{op:'create',requestKey:'unknown-budget-01',question:'OXTR fixture',modelTokenLimit:1000000})).status,400);
-console.log('PASS: staging allowance, production isolation, routing receipt and invalid-cap rejection');
+assert.equal(astraTokenLimit({ALLOWED_ORIGIN:'https://untrusted.invalid',ASTRA_MODEL_TOKEN_LIMIT:'64000'}),24000);
+assert.equal(astraTokenLimit({ALLOWED_ORIGIN:'https://universalmind.tv'}),24000);
+console.log('PASS: approved production allowance, unknown-origin isolation, routing receipt and invalid-cap rejection');

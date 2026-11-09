@@ -2,11 +2,11 @@ path,type,value
 ,object,
 /schema,string,universal-informatics/quantum-atlas-guide/v1
 /title,string,Quantum Atlas · AI / LLM Wiki
-/version,string,2026-11-09-reasoning-budget
+/version,string,2026-11-09-reasoning-production
 /url,string,https://universalmind.tv/informatics/quantum/
 /wiki,string,https://universalmind.tv/informatics/read/quantum/index.html
 /agent_architecture,object,
-/agent_architecture/version,string,2026-11-09-reasoning-budget
+/agent_architecture/version,string,2026-11-09-reasoning-production
 /agent_architecture/purpose,object,
 /agent_architecture/purpose/title,string,What Quantum Atlas is for
 /agent_architecture/purpose/summary,string,"Quantum Atlas makes computational biology and quantum research approachable through a scientific question written in ordinary language. A person brings the question; the platform coordinates AI scientific work, mathematical models, simulations, recorded quantum measurements and biological evidence, then returns an explanation with the underlying research record."
@@ -543,7 +543,7 @@ path,type,value
 /agent_architecture/implementation_sources,array,18
 /agent_architecture/implementation_sources/0,object,
 /agent_architecture/implementation_sources/0/repository_path,string,Informatics/quantum/index.html
-/agent_architecture/implementation_sources/0/sha256,string,d815679493bfb0ac2b71930faf3929b6644b3186606aa63f0580bd55f70a6a63
+/agent_architecture/implementation_sources/0/sha256,string,241eef8b0342309cd7935654b157d108ecc4bdb0904e06d5702bd016aa27cfc9
 /agent_architecture/implementation_sources/0/scope,string,Original primary-page source with generated reading blocks removed
 /agent_architecture/implementation_sources/1,object,
 /agent_architecture/implementation_sources/1/repository_path,string,Informatics/quantum/study.js
@@ -579,7 +579,7 @@ path,type,value
 /agent_architecture/implementation_sources/8/scope,string,Implementation source
 /agent_architecture/implementation_sources/9,object,
 /agent_architecture/implementation_sources/9/repository_path,string,cloudflare/informatics-astra.js
-/agent_architecture/implementation_sources/9/sha256,string,b2fd106876d9620ae428f48710091dfe5e7f19cbe8faec1a7c64733107031174
+/agent_architecture/implementation_sources/9/sha256,string,219b5dd2637e1311b37a4169b8c81e586647b00a2c12ad6a66ed7fd63a4750a1
 /agent_architecture/implementation_sources/9/scope,string,Implementation source
 /agent_architecture/implementation_sources/10,object,
 /agent_architecture/implementation_sources/10/repository_path,string,cloudflare/informatics-astra-memory.js
@@ -595,7 +595,7 @@ path,type,value
 /agent_architecture/implementation_sources/12/scope,string,Implementation source
 /agent_architecture/implementation_sources/13,object,
 /agent_architecture/implementation_sources/13/repository_path,string,research/informatics/astra-service/cloud/runtime.py
-/agent_architecture/implementation_sources/13/sha256,string,21b67270873ba729db897835f1edadb163fdb828519fd6d8827011fe279a3c9d
+/agent_architecture/implementation_sources/13/sha256,string,7bed322cd5688b6afe149c9fcec71f330d6f1a1a37a7fbb680515cbbb98b2603
 /agent_architecture/implementation_sources/13/scope,string,Implementation source
 /agent_architecture/implementation_sources/14,object,
 /agent_architecture/implementation_sources/14/repository_path,string,research/informatics/scientific-swarm/swarm.py
@@ -607,7 +607,7 @@ path,type,value
 /agent_architecture/implementation_sources/15/scope,string,Implementation source
 /agent_architecture/implementation_sources/16,object,
 /agent_architecture/implementation_sources/16/repository_path,string,research/informatics/astra-service/reasoning_profile.py
-/agent_architecture/implementation_sources/16/sha256,string,ce0983eac1ccf8dda646f12f10540482c09fec11a9e7d5dd73878a9cbf81bc6f
+/agent_architecture/implementation_sources/16/sha256,string,d4f54083069893f9e0fa1db021d809f59439d2dae83f3adc873cc5e4a263bc24
 /agent_architecture/implementation_sources/16/scope,string,Implementation source
 /agent_architecture/implementation_sources/17,object,
 /agent_architecture/implementation_sources/17/repository_path,string,research/informatics/scientific-swarm/providers.py
@@ -7960,6 +7960,6 @@ path,type,value
 /sources/11/sha256,string,11bcf4afab33943cfa6f5d40aa644089d16b1a7f7875f910cc503a4a2abec063
 /page_prose_sha256,string,f771fe41580f961eadddeb6d9024cef1e1094451830b8721b128d356cd58582a
 /downloads,object,
-/downloads/json,string,https://universalmind.tv/informatics/quantum/reading/quantum-atlas.json?v=2026-11-09-reasoning-budget
-/downloads/csv,string,https://universalmind.tv/informatics/quantum/reading/quantum-atlas.csv?v=2026-11-09-reasoning-budget
-/downloads/md,string,https://universalmind.tv/informatics/quantum/reading/quantum-atlas.md?v=2026-11-09-reasoning-budget
+/downloads/json,string,https://universalmind.tv/informatics/quantum/reading/quantum-atlas.json?v=2026-11-09-reasoning-production
+/downloads/csv,string,https://universalmind.tv/informatics/quantum/reading/quantum-atlas.csv?v=2026-11-09-reasoning-production
+/downloads/md,string,https://universalmind.tv/informatics/quantum/reading/quantum-atlas.md?v=2026-11-09-reasoning-production

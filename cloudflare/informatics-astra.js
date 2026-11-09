@@ -21,7 +21,7 @@ async function broker(env,payload){
  const r=await env.BUDGET.get(env.BUDGET.idFromName('astra-owner-v1')).fetch('https://budget/astra',{method:'POST',body:JSON.stringify({astra:payload})});
  if(!r.ok){const d=await r.json();throw fail(d.error||'Study service unavailable.',r.status);}return r.json();
 }
-export function astraTokenLimit(env){return env.ALLOWED_ORIGIN==='https://staging.universalmind.tv'&&env.ASTRA_MODEL_TOKEN_LIMIT==='64000'?64000:24000;}
+export function astraTokenLimit(env){return ['https://staging.universalmind.tv','https://universalmind.tv'].includes(env.ALLOWED_ORIGIN)&&env.ASTRA_MODEL_TOKEN_LIMIT==='64000'?64000:24000;}
 export async function createStudy(env,request,receipt,requestKey){
  if(env.ASTRA_ENABLED!=='true')return receipt;
  const allowed=await researchIdentity(request,env);

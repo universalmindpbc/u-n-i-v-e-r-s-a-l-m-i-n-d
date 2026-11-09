@@ -1,0 +1,21 @@
+{
+  "date": "2026-11-09",
+  "user_instruction": "Please push to production.",
+  "approved_staging_commit": "0f4b16a059fe1436903b6ea0b300bbe724b313fa",
+  "models": {
+    "Gemini 4 Argon": "HIGH",
+    "GPT-6 Astra": "max"
+  },
+  "astra_token_limit": 64000,
+  "astra_output_per_call": 16384,
+  "Gemini_total_shared_cap_micro_USD": 2000000,
+  "Gemini_usage_carried_forward_micro_USD": 263860,
+  "new_Gemini_funding_added": 0,
+  "legacy_studies_preserved": true,
+  "unrelated_staging_Lab_wiki_changes_excluded": true,
+  "source_test_results": {
+    "python": 22,
+    "broker": "passed",
+    "production_bundle": "passed"
+  }
+}

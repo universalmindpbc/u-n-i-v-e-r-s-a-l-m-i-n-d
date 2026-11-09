@@ -10,25 +10,30 @@ from reasoning_profile import LEGACY,STAGING_FIRST,STAGING,profile_for_origin,pr
 class Tests(unittest.TestCase):
  def test_environment_and_checkpoint_separation(self):
   self.assertEqual(profile_for_origin('https://staging.universalmind.tv'),STAGING)
-  self.assertEqual(profile_for_origin('https://universalmind.tv'),LEGACY)
+  self.assertEqual(profile_for_origin('https://universalmind.tv'),STAGING)
   self.assertEqual(profile_for_checkpoint('https://staging.universalmind.tv',{'id':'old'}),LEGACY)
   self.assertEqual(profile_for_checkpoint('https://staging.universalmind.tv',{'__start__':{'model_settings':STAGING}}),STAGING)
   self.assertEqual(profile_for_checkpoint('https://staging.universalmind.tv',{'model_settings':STAGING}),STAGING)
   with self.assertRaises(ValueError):profile_for_origin('https://untrusted.invalid')
-  with self.assertRaises(ValueError):profile_for_checkpoint('https://universalmind.tv',{'model_settings':STAGING})
+  self.assertEqual(profile_for_checkpoint('https://universalmind.tv',{'model_settings':STAGING}),STAGING)
   with self.assertRaises(ValueError):profile_for_checkpoint('https://staging.universalmind.tv',{'model_settings':{'astra':{'effort':'low'}}})
   copy=profile_for_origin('https://staging.universalmind.tv');copy['astra']['effort']='low'
   self.assertEqual(STAGING['astra']['effort'],'max')
   self.assertEqual(profile_for_checkpoint('https://staging.universalmind.tv',{'model_settings':STAGING_FIRST}),STAGING_FIRST)
   self.assertEqual(profile_for_task('https://staging.universalmind.tv',{}, {'maxModelTokens':24000}),STAGING_FIRST)
   self.assertEqual(profile_for_task('https://staging.universalmind.tv',{}, {'maxModelTokens':64000}),STAGING)
-  with self.assertRaises(ValueError):profile_for_task('https://universalmind.tv',{}, {'maxModelTokens':64000})
+  self.assertEqual(profile_for_task('https://universalmind.tv',{}, {'maxModelTokens':64000}),STAGING)
+  self.assertEqual(profile_for_task('https://universalmind.tv',{}, {'maxModelTokens':24000}),LEGACY)
+  self.assertEqual(profile_for_checkpoint('https://universalmind.tv',{'id':'old'}),LEGACY)
 
  def test_staging_allowance_is_separate_and_legacy_resume_retains_its_ledger(self):
   legacy=('state/shared/gemini-review-usage.sqlite',1_000_000)
-  self.assertEqual(review_budget_for_checkpoint('https://universalmind.tv',{}),legacy)
+  self.assertEqual(review_budget_for_checkpoint('https://universalmind.tv',{}, {'maxModelTokens':24000}),legacy)
   self.assertEqual(review_budget_for_checkpoint('https://staging.universalmind.tv',{'id':'old'}),legacy)
-  self.assertEqual(review_budget_for_checkpoint('https://staging.universalmind.tv',{}),('state/shared/gemini-high-staging-20261109.sqlite',2_000_000))
+  funded=('state/shared/gemini-high-staging-20261109.sqlite',2_000_000)
+  self.assertEqual(review_budget_for_checkpoint('https://staging.universalmind.tv',{}),funded)
+  self.assertEqual(review_budget_for_checkpoint('https://universalmind.tv',{}, {'maxModelTokens':64000}),funded)
+  self.assertEqual(review_budget_for_checkpoint('https://universalmind.tv',{'model_settings':LEGACY}, {'maxModelTokens':64000}),legacy)
 
  def test_astra_outbound_requests_and_receipts(self):
   reply=SimpleNamespace(status='completed',output_text='{"answer":"Fixture evidence"}',usage=SimpleNamespace(total_tokens=20),id='response-fixture',model='gpt-6-astra')

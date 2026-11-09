@@ -1,4 +1,4 @@
-"""Server-owned reasoning profiles; production remains on its approved settings."""
+"""Server-owned reasoning profiles; preserve each study's approved settings."""
 from copy import deepcopy
 
 LEGACY = {
@@ -22,10 +22,8 @@ STAGING['astra'].update(plan_output_tokens=16384, report_output_tokens=16384,
                         service_tier='default')
 
 def profile_for_origin(origin):
-    if origin == 'https://staging.universalmind.tv':
+    if origin in ('https://staging.universalmind.tv', 'https://universalmind.tv'):
         return deepcopy(STAGING)
-    if origin == 'https://universalmind.tv':
-        return deepcopy(LEGACY)
     raise ValueError('Unknown research origin')
 
 def profile_for_checkpoint(origin, values):
@@ -35,8 +33,6 @@ def profile_for_checkpoint(origin, values):
     saved = values.get('model_settings', values.get('__start__', {}).get('model_settings', LEGACY))
     if saved not in (LEGACY, STAGING_FIRST, STAGING):
         raise ValueError('Unknown saved reasoning profile')
-    if origin == 'https://universalmind.tv' and saved != LEGACY:
-        raise ValueError('The reasoning upgrade is staging-only')
     profile_for_origin(origin)
     return deepcopy(saved)
 
@@ -44,15 +40,15 @@ def profile_for_task(origin, values, policy):
     if values:
         return profile_for_checkpoint(origin, values)
     profile = profile_for_origin(origin)
-    if origin == 'https://staging.universalmind.tv' and policy.get('maxModelTokens', 24000) == 24000:
-        return deepcopy(STAGING_FIRST)
+    if policy.get('maxModelTokens', 24000) == 24000:
+        return deepcopy(STAGING_FIRST if origin == 'https://staging.universalmind.tv' else LEGACY)
     if policy.get('maxModelTokens', 24000) != profile['astra'].get('study_token_limit', 24000):
         raise ValueError('Study allowance differs from its server profile')
     return profile
 
-def review_budget_for_checkpoint(origin, values):
-    """A new ledger must be explicitly seeded before higher-effort work can run."""
-    profile = profile_for_checkpoint(origin, values)
+def review_budget_for_checkpoint(origin, values, policy=None):
+    """Carry forward the funded High ledger; never reset usage on promotion."""
+    profile = profile_for_task(origin, values, policy) if policy is not None else profile_for_checkpoint(origin, values)
     if profile in (STAGING_FIRST, STAGING):
         return ('state/shared/gemini-high-staging-20261109.sqlite', 2_000_000)
     return ('state/shared/gemini-review-usage.sqlite', 1_000_000)

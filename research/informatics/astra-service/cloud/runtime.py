@@ -76,7 +76,7 @@ def handler(event,context):
   with runner.SqliteSaver.from_conn_string(str(TASK_ROOT/'checkpoints.sqlite')) as checkpoint:
    saved=checkpoint.get_tuple({'configurable':{'thread_id':identifier}})
    values=saved.checkpoint.get('channel_values',{}) if saved else {}
-  budget_key,ceiling=review_budget_for_checkpoint(origin,values)
+  budget_key,ceiling=review_budget_for_checkpoint(origin,values,claim['task'].get('policy',{}))
   budget=SharedReviewBudget(os.environ['ASTRA_STATE_BUCKET'],TASK_ROOT/'gemini-review-usage.sqlite',key=budget_key)
   budget.restore()
   from review_flow import ReviewLedger

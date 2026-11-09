@@ -647,11 +647,11 @@ The following JSON preserves the source fields, saved chart arrays, study interp
 {
   "schema": "universal-informatics/quantum-atlas-guide/v1",
   "title": "Quantum Atlas · AI / LLM Wiki",
-  "version": "2026-11-09-reasoning-budget",
+  "version": "2026-11-09-reasoning-production",
   "url": "https://universalmind.tv/informatics/quantum/",
   "wiki": "https://universalmind.tv/informatics/read/quantum/index.html",
   "agent_architecture": {
-    "version": "2026-11-09-reasoning-budget",
+    "version": "2026-11-09-reasoning-production",
     "purpose": {
       "title": "What Quantum Atlas is for",
       "summary": "Quantum Atlas makes computational biology and quantum research approachable through a scientific question written in ordinary language. A person brings the question; the platform coordinates AI scientific work, mathematical models, simulations, recorded quantum measurements and biological evidence, then returns an explanation with the underlying research record.",
@@ -1339,7 +1339,7 @@ The following JSON preserves the source fields, saved chart arrays, study interp
     "implementation_sources": [
       {
         "repository_path": "Informatics/quantum/index.html",
-        "sha256": "d815679493bfb0ac2b71930faf3929b6644b3186606aa63f0580bd55f70a6a63",
+        "sha256": "241eef8b0342309cd7935654b157d108ecc4bdb0904e06d5702bd016aa27cfc9",
         "scope": "Original primary-page source with generated reading blocks removed"
       },
       {
@@ -1384,7 +1384,7 @@ The following JSON preserves the source fields, saved chart arrays, study interp
       },
       {
         "repository_path": "cloudflare/informatics-astra.js",
-        "sha256": "b2fd106876d9620ae428f48710091dfe5e7f19cbe8faec1a7c64733107031174",
+        "sha256": "219b5dd2637e1311b37a4169b8c81e586647b00a2c12ad6a66ed7fd63a4750a1",
         "scope": "Implementation source"
       },
       {
@@ -1404,7 +1404,7 @@ The following JSON preserves the source fields, saved chart arrays, study interp
       },
       {
         "repository_path": "research/informatics/astra-service/cloud/runtime.py",
-        "sha256": "21b67270873ba729db897835f1edadb163fdb828519fd6d8827011fe279a3c9d",
+        "sha256": "7bed322cd5688b6afe149c9fcec71f330d6f1a1a37a7fbb680515cbbb98b2603",
         "scope": "Implementation source"
       },
       {
@@ -1419,7 +1419,7 @@ The following JSON preserves the source fields, saved chart arrays, study interp
       },
       {
         "repository_path": "research/informatics/astra-service/reasoning_profile.py",
-        "sha256": "ce0983eac1ccf8dda646f12f10540482c09fec11a9e7d5dd73878a9cbf81bc6f",
+        "sha256": "d4f54083069893f9e0fa1db021d809f59439d2dae83f3adc873cc5e4a263bc24",
         "scope": "Implementation source"
       },
       {
@@ -9628,9 +9628,9 @@ The following JSON preserves the source fields, saved chart arrays, study interp
   ],
   "page_prose_sha256": "f771fe41580f961eadddeb6d9024cef1e1094451830b8721b128d356cd58582a",
   "downloads": {
-    "json": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.json?v=2026-11-09-reasoning-budget",
-    "csv": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.csv?v=2026-11-09-reasoning-budget",
-    "md": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.md?v=2026-11-09-reasoning-budget"
+    "json": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.json?v=2026-11-09-reasoning-production",
+    "csv": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.csv?v=2026-11-09-reasoning-production",
+    "md": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.md?v=2026-11-09-reasoning-production"
   }
 }
 ```
