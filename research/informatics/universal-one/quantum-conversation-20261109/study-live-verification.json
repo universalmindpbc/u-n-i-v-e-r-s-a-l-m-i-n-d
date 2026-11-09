@@ -1,0 +1,97 @@
+{
+  "task_id": "c49a7769-9949-4a88-b819-38c3a7db56cd",
+  "complete": true,
+  "interfaceReportVisible": true,
+  "downloadFormats": [
+    "JSON",
+    "CSV"
+  ],
+  "model_settings": {
+    "version": "high-max-64k-20261109",
+    "astra": {
+      "model": "gpt-6-astra",
+      "effort": "max",
+      "plan_output_tokens": 16384,
+      "report_output_tokens": 16384,
+      "timeout_seconds": 600,
+      "study_token_limit": 64000,
+      "service_tier": "default"
+    },
+    "gemini": {
+      "model": "gemini-4-argon",
+      "thinking_level": "HIGH",
+      "max_output_tokens": 8192,
+      "timeout_seconds": 300
+    }
+  },
+  "plan_receipt": {
+    "tokens": 9804,
+    "provider_response_id": "resp_04a6cd4be158179b016af15c432db087d2b384a93f1231ba4d",
+    "model": "gpt-6-astra",
+    "reasoning_effort": "max",
+    "max_output_tokens": 16384,
+    "service_tier": "default"
+  },
+  "narrative_receipt": {
+    "model": "gpt-6-astra",
+    "reasoning_effort": "max",
+    "provider_response_id": "resp_0b52bc93072e60f1016af15f6448b087d284a852a72c771368",
+    "tokens": 12234
+  },
+  "reviews": [
+    {
+      "phase": "design",
+      "decision": "approve",
+      "model": "gemini-4-argon",
+      "thinking_level": "HIGH",
+      "provider_response_id": "21zxarHEMOXnytMP7s__qA8",
+      "usage": {
+        "promptTokenCount": 4384,
+        "candidatesTokenCount": 808,
+        "totalTokenCount": 6819,
+        "promptTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 4384
+          }
+        ],
+        "candidatesTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 808
+          }
+        ],
+        "thoughtsTokenCount": 1627
+      },
+      "accounted_micro_usd": 66236
+    },
+    {
+      "phase": "final",
+      "decision": "approve",
+      "model": "gemini-4-argon",
+      "thinking_level": "HIGH",
+      "provider_response_id": "JmDxapbCFaKoytMP3MeU2QI",
+      "usage": {
+        "promptTokenCount": 14436,
+        "candidatesTokenCount": 2026,
+        "totalTokenCount": 20179,
+        "promptTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 14436
+          }
+        ],
+        "candidatesTokensDetails": [
+          {
+            "modality": "TEXT",
+            "tokenCount": 2026
+          }
+        ],
+        "thoughtsTokenCount": 3717
+      },
+      "accounted_micro_usd": 172604
+    }
+  ],
+  "new_paid_Aquila_USD": 0,
+  "new_qBraid_credits": 0
+}

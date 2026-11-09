@@ -1,0 +1,66 @@
+[
+  {
+    "file": "manifest-5d7a6160e2a0cec19ea97bddd3afb4b74d1dfc75974b6234eb44944df86df6c2.json",
+    "bytes": 2398520
+  },
+  {
+    "file": "manifest-ce6ab338f8d295a6bdd6b52b80c2547e07c6b9c4390b2a1dc6d9a650e861bb5d.json",
+    "bytes": 2398520
+  },
+  {
+    "file": "part-0e0844d0ceb7d76e7da7a16ff963ef8c656b6e78d8194b4131cf2efce398e59a.bin",
+    "bytes": 50331648
+  },
+  {
+    "file": "part-20cd77432b38884c8ad0a477554886c1b5a59d9db20681c759487f24f40ffb4a.bin",
+    "bytes": 367729
+  },
+  {
+    "file": "part-3081443cd0fa5b5bd77d7a6313ae46feb3448fc8512f663748db0333f7b448cf.bin",
+    "bytes": 30954663
+  },
+  {
+    "file": "part-47c6087fdd00e960824d6152a7f8def0c617edd8fe01ace5ad03efe460ac8858.bin",
+    "bytes": 50331648
+  },
+  {
+    "file": "part-689bb3ac7b23ff284f5256a1a4bdedfbbe3bbfcb91a3e2cff8458e7431aff003.bin",
+    "bytes": 50331648
+  },
+  {
+    "file": "part-75104d39d7cb7371b0da7d6aca29f737e3acd24fe478f0b309fe6c980105c553.bin",
+    "bytes": 50331648
+  },
+  {
+    "file": "part-880d6671a8f5d32267300270f0c7ec967cd95f15190f4de0bfb6e3c59361de30.bin",
+    "bytes": 50331648
+  },
+  {
+    "file": "part-94f2a60860a56851df77dd0761ae77cbb1b1e348582f16a63e580bbe5b7f422e.bin",
+    "bytes": 50331648
+  },
+  {
+    "file": "part-a3f45d23ff4f8f85b7b5fbaeccb9656199a6539eef9244d02a2746b38bda5fe5.bin",
+    "bytes": 30954632
+  },
+  {
+    "file": "part-a564568657da890cd32d467a682d8fed6d77a89f563f51754060c0e3f1c582c7.bin",
+    "bytes": 367711
+  },
+  {
+    "file": "part-c443b394711fcb6795891af3fa1daf7cbb7f8d67c04341cb9963d7e633140a2f.bin",
+    "bytes": 367723
+  },
+  {
+    "file": "part-cdd2852e815dabfdfec62a35198050aca41d36dbbe673665b284a53bed58382b.bin",
+    "bytes": 50331648
+  },
+  {
+    "file": "part-e22ffe87f93929e9b9495891264e647604a1c0914529251cc8347843d4bcc648.bin",
+    "bytes": 30954661
+  },
+  {
+    "file": "part-e671511a9ca37815553023c843bef5da4b89c18073292f80c83c571fc7276368.bin",
+    "bytes": 50331648
+  }
+]
