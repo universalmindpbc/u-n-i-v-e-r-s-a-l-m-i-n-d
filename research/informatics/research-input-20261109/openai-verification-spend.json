@@ -1,0 +1,12 @@
+{
+  "approvalRequested": true,
+  "approved": false,
+  "limitUSD": 2,
+  "scope": [
+    "text research request",
+    "dictation with synthetic speech",
+    "inline live voice with synthetic speech"
+  ],
+  "newQuantumStudies": 0,
+  "calls": []
+}

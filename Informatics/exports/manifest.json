@@ -1,41 +1,41 @@
 {
   "schema": "universal-informatics/complete-dataset/v1",
-  "dataset_version": "df1e668f95ea57203af8999b15c82489b1fd47b5dad5566885b36a189d5a7932",
+  "dataset_version": "4e857a0c8191b4c7908250cc0cd16a0480a5391530d083a85570c9759b7c827e",
   "sources": [
     {
       "id": "atlas-guides/computer-vision-atlas.csv",
       "source_path": "atlas-guides/computer-vision-atlas.csv",
-      "sha256": "9305ad47eef4b1128b3b9d57aae60536df4008c0edfac4f0cefec3c5a401cb81",
+      "sha256": "0d75be36ba039622be92b076c89ab5f842fe0a10c11a050df59a774b6b0ac961",
       "format": "csv"
     },
     {
       "id": "atlas-guides/computer-vision-atlas.json",
       "source_path": "atlas-guides/computer-vision-atlas.json",
-      "sha256": "3464f828ec7f25f400c4033d4615ff8cd6e4665cf771bf69e61c51867be9f2b0",
+      "sha256": "e3bb159421217a7864536eb6479a01de5bb4f90ab3324d3a8dbeb293d4e10345",
       "format": "json"
     },
     {
       "id": "atlas-guides/geometry-atlas.csv",
       "source_path": "atlas-guides/geometry-atlas.csv",
-      "sha256": "29bbf5bef38d41e2c2c27a8fcec44a4430365922f986aa84b67c8154ad84b336",
+      "sha256": "64caccaa291b993d1bd9a78daeaed00f1f3a1f022840c13f4a8c2213c7c69518",
       "format": "csv"
     },
     {
       "id": "atlas-guides/geometry-atlas.json",
       "source_path": "atlas-guides/geometry-atlas.json",
-      "sha256": "2734d40a3325ccef21d3cc65a4d5b8d004ec6d34b056cf66e78873a48e61d5e1",
+      "sha256": "e02194b93f3a9eee2354bbd684a5684f65fd5aeeaf265f7f2de946f9278c915b",
       "format": "json"
     },
     {
       "id": "atlas-guides/language-atlas.csv",
       "source_path": "atlas-guides/language-atlas.csv",
-      "sha256": "3ae574ca0af4b6e3ff928594a1e03d58c39e010c721166c897d55f4b16f757a9",
+      "sha256": "d12277ea08a4162051c5ff4f48b626bcac4172672720d700eb6f8aee814ff07a",
       "format": "csv"
     },
     {
       "id": "atlas-guides/language-atlas.json",
       "source_path": "atlas-guides/language-atlas.json",
-      "sha256": "54e515453e52ba75a21c303302d1f12f67d14d0b0dbc1f0242e45eae69d7d09d",
+      "sha256": "91c564ffd5e3300c77ac5916234cf2f61962a6f57e118e022d7a4f5777d024a2",
       "format": "json"
     },
     {
@@ -65,13 +65,13 @@
     {
       "id": "atlas-guides/vision-atlas.csv",
       "source_path": "atlas-guides/vision-atlas.csv",
-      "sha256": "83c3c1692063b602c623baf9d49139f46ae271007fe6912e41282fe90619d657",
+      "sha256": "ecb2b2bdaf7b5722d935469d092d48eb325be2054b42687c417e7115a92af7c7",
       "format": "csv"
     },
     {
       "id": "atlas-guides/vision-atlas.json",
       "source_path": "atlas-guides/vision-atlas.json",
-      "sha256": "49d5625df0e77e5e25bbb26c17ca3b78ca58051304beb336fd8f1714b1795a45",
+      "sha256": "8f52516ef03dc784343fb0abb32b69382fb15730ca020af50d8b55d4929c6ea5",
       "format": "json"
     },
     {
@@ -395,13 +395,13 @@
     {
       "id": "pilot-v1/dataset.json",
       "source_path": "pilot-v1/dataset.json",
-      "sha256": "7487c3b375f257f5365d8421951ce2d68f12dec3b4d46dcd10998eaeda272c60",
+      "sha256": "7f9c6ef3c6e11123577d7ef4693ed066b023945910fc3ff18e2d5eeea404cf88",
       "format": "json"
     },
     {
       "id": "pilot-v1/e8-m9-p24.json",
       "source_path": "pilot-v1/e8-m9-p24.json",
-      "sha256": "ca2adab65386e53ec06dfa757fc693a9e960cb48c100abdff3ff28ee04acd27c",
+      "sha256": "81d97b908fe4fb04a2ccdd54917e86c8301d8e530418a279626275d5aa6f7d04",
       "format": "json"
     },
     {
@@ -455,7 +455,7 @@
     {
       "id": "pilot-v1/index.json",
       "source_path": "pilot-v1/index.json",
-      "sha256": "bdb2ad76d0174f837c458ef2cd78b9a43a578a351e7fd2914c057fd5dd7e0d11",
+      "sha256": "01d6d82a8075d76313429e0a8408cf6aa6ac98c38b6d1a1c064110fa6467a6d8",
       "format": "json"
     },
     {
@@ -473,7 +473,7 @@
     {
       "id": "pilot-v1/m1-m1001.json",
       "source_path": "pilot-v1/m1-m1001.json",
-      "sha256": "7487c3b375f257f5365d8421951ce2d68f12dec3b4d46dcd10998eaeda272c60",
+      "sha256": "7f9c6ef3c6e11123577d7ef4693ed066b023945910fc3ff18e2d5eeea404cf88",
       "format": "json"
     },
     {
@@ -5861,7 +5861,7 @@
     {
       "id": "pilot-v1/m9.json",
       "source_path": "pilot-v1/m9.json",
-      "sha256": "b47c1945b8cff88c4205680e8807edc37b0454c69c551490f3902f16db07a75f",
+      "sha256": "8b1d1eb28565af0b4299bb592c4c2656f565dafeb09a6e5568239784b17ee664",
       "format": "json"
     },
     {
@@ -52274,49 +52274,49 @@
   "downloads": {
     "json": {
       "file": "informatics-complete.json.gz",
-      "bytes": 81357325,
-      "uncompressed_bytes": 793016004,
-      "sha256": "25827a75b81775742993af694265cdf8106bb2a6a1976f64529f26e2a9969d30",
-      "uncompressed_sha256": "6ee6c2b80e282efd4635b86ab0430b32d1ab3244d663224e1805c252ea8c9ea4",
+      "bytes": 81357621,
+      "uncompressed_bytes": 793016407,
+      "sha256": "3ac92d6d03f16d37f88b9dc53190e661535a223dc115bd297636cba017370422",
+      "uncompressed_sha256": "8112b1bdac3dc0bbe34b954523c6c33ff76f218810c77e0c85ff07cd94c9d10d",
       "parts": [
         {
-          "file": "part-056a6eaf357901a9ca4222a782460303272a930d8a71498355a3739b9d09774f.bin",
+          "file": "part-76cf2764198c31b0b26e0faa1de22ffc6d771e9809e4facb2f530685bd09ad74.bin",
           "bytes": 50331648,
-          "sha256": "056a6eaf357901a9ca4222a782460303272a930d8a71498355a3739b9d09774f"
+          "sha256": "76cf2764198c31b0b26e0faa1de22ffc6d771e9809e4facb2f530685bd09ad74"
         },
         {
-          "file": "part-55f030de33895de950ddc0b99b092d13ef62fe13553c8f2c5c1273281c362aeb.bin",
-          "bytes": 31025677,
-          "sha256": "55f030de33895de950ddc0b99b092d13ef62fe13553c8f2c5c1273281c362aeb"
+          "file": "part-5083c2601e92f967c9c77c1b2b85f5185f9eeecdc8825529eb207959ecbc31c3.bin",
+          "bytes": 31025973,
+          "sha256": "5083c2601e92f967c9c77c1b2b85f5185f9eeecdc8825529eb207959ecbc31c3"
         }
       ]
     },
     "csv": {
       "file": "informatics-complete.csv.gz",
-      "bytes": 151465741,
-      "uncompressed_bytes": 2479850685,
-      "sha256": "647f3fdc539b5383723e9892e9296161a27110517b4228505c67b7ebb9556e5f",
-      "uncompressed_sha256": "77cb6cda0ea8a6761ff4ed58dd4900b426ba34f64d908240993f9539b96ffa49",
+      "bytes": 151466013,
+      "uncompressed_bytes": 2479851631,
+      "sha256": "425ac18535a8660bcdd8e4e82f1b55efc903ee0bff85769f57cd35d329b37b88",
+      "uncompressed_sha256": "f15efa45d3f6cafbd787631aac5a6e039ca31be69961fae72097442931dd4eaa",
       "parts": [
         {
-          "file": "part-1ba7a2745545448475071c814fb53cbb42163a7510f7b9a9d21800edd02e45e6.bin",
+          "file": "part-51331fb171de5cba1b88c7da6e645eb26d8c530c823491eeb5171a9dd37c8017.bin",
           "bytes": 50331648,
-          "sha256": "1ba7a2745545448475071c814fb53cbb42163a7510f7b9a9d21800edd02e45e6"
+          "sha256": "51331fb171de5cba1b88c7da6e645eb26d8c530c823491eeb5171a9dd37c8017"
         },
         {
-          "file": "part-c695a80215d61eb52e1c2d7dfb8c5194c947cef795a5174bafe44cacb9830b23.bin",
+          "file": "part-78534152964c14d0098ae62dabd92368a1ce8d96c3d03fb2db09ce16aee32175.bin",
           "bytes": 50331648,
-          "sha256": "c695a80215d61eb52e1c2d7dfb8c5194c947cef795a5174bafe44cacb9830b23"
+          "sha256": "78534152964c14d0098ae62dabd92368a1ce8d96c3d03fb2db09ce16aee32175"
         },
         {
-          "file": "part-73865a461095017f0cf30e3f82604c83fecc723049423f48c2434e26bea38989.bin",
+          "file": "part-f2492d6776210b07a893f66271bdf99e03393d76dc9b4fe3d580a7ec8f768d52.bin",
           "bytes": 50331648,
-          "sha256": "73865a461095017f0cf30e3f82604c83fecc723049423f48c2434e26bea38989"
+          "sha256": "f2492d6776210b07a893f66271bdf99e03393d76dc9b4fe3d580a7ec8f768d52"
         },
         {
-          "file": "part-dc19e1dc2bbbb4e561a6e1c6e2a41bc5d84f1fe69653c2abd8c068c4bde26074.bin",
-          "bytes": 470797,
-          "sha256": "dc19e1dc2bbbb4e561a6e1c6e2a41bc5d84f1fe69653c2abd8c068c4bde26074"
+          "file": "part-cf34f5cd8a270a48d7e7995dc89b7a0996c2b77c9d04ff150e18dd01d5c05785.bin",
+          "bytes": 471069,
+          "sha256": "cf34f5cd8a270a48d7e7995dc89b7a0996c2b77c9d04ff150e18dd01d5c05785"
         }
       ]
     }

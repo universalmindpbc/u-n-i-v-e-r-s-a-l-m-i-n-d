@@ -1,6 +1,6 @@
 # Quantum research interface staging candidate — 9 November 2026
 
-Source commit: `660bdc39b`. Preserves the E8 staging release `a6d81bb68`.
+Initial staging candidate: `660bdc39b`. The final merge preserves the E8 restoration `e6efebb0d`; its source files match that release exactly.
 
 ## Interface
 
