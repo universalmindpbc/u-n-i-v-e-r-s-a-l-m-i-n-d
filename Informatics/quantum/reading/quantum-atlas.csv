@@ -2,11 +2,11 @@ path,type,value
 ,object,
 /schema,string,universal-informatics/quantum-atlas-guide/v1
 /title,string,Quantum Atlas · AI / LLM Wiki
-/version,string,2026-11-01-topic-focus-2
+/version,string,2026-11-09-reasoning-production
 /url,string,https://universalmind.tv/informatics/quantum/
 /wiki,string,https://universalmind.tv/informatics/read/quantum/index.html
 /agent_architecture,object,
-/agent_architecture/version,string,2026-11-01-topic-focus-2
+/agent_architecture/version,string,2026-11-09-reasoning-production
 /agent_architecture/purpose,object,
 /agent_architecture/purpose/title,string,What Quantum Atlas is for
 /agent_architecture/purpose/summary,string,"Quantum Atlas makes computational biology and quantum research approachable through a scientific question written in ordinary language. A person brings the question; the platform coordinates AI scientific work, mathematical models, simulations, recorded quantum measurements and biological evidence, then returns an explanation with the underlying research record."
@@ -540,10 +540,10 @@ path,type,value
 /agent_architecture/participation/connect_guide,string,https://universalmind.tv/informatics/connect.html
 /agent_architecture/participation/handoff,string,"For a new persistent investigation, help the person frame the question and open Quantum Atlas. The site establishes its research session, submits the question and tracks the resulting study. Keep the public research connector separate from the session-owned execution service."
 /agent_architecture/participation/citation_contract,string,"Retain study IDs, immutable revision URLs, source hashes, provider receipts and review status when moving between agents. Link the evidence that supports the explanation, and preserve the original question throughout the handoff."
-/agent_architecture/implementation_sources,array,16
+/agent_architecture/implementation_sources,array,18
 /agent_architecture/implementation_sources/0,object,
 /agent_architecture/implementation_sources/0/repository_path,string,Informatics/quantum/index.html
-/agent_architecture/implementation_sources/0/sha256,string,f65005ddb453ecf33985d98ce842517ab95269f17a2455d6879002284946bc90
+/agent_architecture/implementation_sources/0/sha256,string,241eef8b0342309cd7935654b157d108ecc4bdb0904e06d5702bd016aa27cfc9
 /agent_architecture/implementation_sources/0/scope,string,Original primary-page source with generated reading blocks removed
 /agent_architecture/implementation_sources/1,object,
 /agent_architecture/implementation_sources/1/repository_path,string,Informatics/quantum/study.js
@@ -575,11 +575,11 @@ path,type,value
 /agent_architecture/implementation_sources/7/scope,string,Implementation source
 /agent_architecture/implementation_sources/8,object,
 /agent_architecture/implementation_sources/8/repository_path,string,cloudflare/informatics-quantum.js
-/agent_architecture/implementation_sources/8/sha256,string,1373d17fe91957fec2e27ebe89a2cf4c092cb59abd76b2f603be9460979b54c5
+/agent_architecture/implementation_sources/8/sha256,string,a93c6e5eea1156c47c5f689be39d924ed6c8f81c6fb44d967cf74a3bee272585
 /agent_architecture/implementation_sources/8/scope,string,Implementation source
 /agent_architecture/implementation_sources/9,object,
 /agent_architecture/implementation_sources/9/repository_path,string,cloudflare/informatics-astra.js
-/agent_architecture/implementation_sources/9/sha256,string,ac521234c4d0ba8de89ecea9d198e2d497add495426c1db2721f3a23a61ea441
+/agent_architecture/implementation_sources/9/sha256,string,219b5dd2637e1311b37a4169b8c81e586647b00a2c12ad6a66ed7fd63a4750a1
 /agent_architecture/implementation_sources/9/scope,string,Implementation source
 /agent_architecture/implementation_sources/10,object,
 /agent_architecture/implementation_sources/10/repository_path,string,cloudflare/informatics-astra-memory.js
@@ -587,15 +587,15 @@ path,type,value
 /agent_architecture/implementation_sources/10/scope,string,Implementation source
 /agent_architecture/implementation_sources/11,object,
 /agent_architecture/implementation_sources/11/repository_path,string,research/informatics/astra-service/runner.py
-/agent_architecture/implementation_sources/11/sha256,string,1a6c6e9ac958e91ebfd035ac11d0e7a3f0add1cc20620530cdff18e36033b411
+/agent_architecture/implementation_sources/11/sha256,string,5ae9062b5b20833f0da9d3e3f3927703b2622c1b29b8a07160ce79ae59eb8f2f
 /agent_architecture/implementation_sources/11/scope,string,Implementation source
 /agent_architecture/implementation_sources/12,object,
 /agent_architecture/implementation_sources/12/repository_path,string,research/informatics/astra-service/review_flow.py
-/agent_architecture/implementation_sources/12/sha256,string,b7e8e358df6129bdc8c981ad4a6b2aefd3c52ffc905a84452a45017fcfb87430
+/agent_architecture/implementation_sources/12/sha256,string,61248bd6c5fc44a11c9816dc126ec0cc238e7bec36f8e9f6ff80a8400230fdf0
 /agent_architecture/implementation_sources/12/scope,string,Implementation source
 /agent_architecture/implementation_sources/13,object,
 /agent_architecture/implementation_sources/13/repository_path,string,research/informatics/astra-service/cloud/runtime.py
-/agent_architecture/implementation_sources/13/sha256,string,fb82bdcc17ab13ccb0a5b513acb5e537f4ea572b06e808df369921441020f545
+/agent_architecture/implementation_sources/13/sha256,string,7bed322cd5688b6afe149c9fcec71f330d6f1a1a37a7fbb680515cbbb98b2603
 /agent_architecture/implementation_sources/13/scope,string,Implementation source
 /agent_architecture/implementation_sources/14,object,
 /agent_architecture/implementation_sources/14/repository_path,string,research/informatics/scientific-swarm/swarm.py
@@ -605,11 +605,19 @@ path,type,value
 /agent_architecture/implementation_sources/15/repository_path,string,research/informatics/scientific-swarm/ROLE_CONTRACT.md
 /agent_architecture/implementation_sources/15/sha256,string,f06b092dc9fee0585a9c649b84c166d960f19a11aa61ba50ba0f4fb385562cd0
 /agent_architecture/implementation_sources/15/scope,string,Implementation source
+/agent_architecture/implementation_sources/16,object,
+/agent_architecture/implementation_sources/16/repository_path,string,research/informatics/astra-service/reasoning_profile.py
+/agent_architecture/implementation_sources/16/sha256,string,d4f54083069893f9e0fa1db021d809f59439d2dae83f3adc873cc5e4a263bc24
+/agent_architecture/implementation_sources/16/scope,string,Implementation source
+/agent_architecture/implementation_sources/17,object,
+/agent_architecture/implementation_sources/17/repository_path,string,research/informatics/scientific-swarm/providers.py
+/agent_architecture/implementation_sources/17/sha256,string,d736b78032265eadea61e322ad90107f87dd81075968e3d1f5b52acd671c011f
+/agent_architecture/implementation_sources/17/scope,string,Implementation source
 /instructions,array,3
 /instructions/0,string,"Read the saved study phases in order: original qualification runs, completed classical genomic pilot, further local CPU checks, then the proposed next quantum test."
 /instructions/1,string,"Retain the source labels for calculated values, GPU simulations, Aquila measurements, mathematical relationships and proposed mechanisms."
 /instructions/2,string,"This guide includes the saved chart data and interpretations. The linked immutable experiment revisions retain the complete inputs, methods, measurements, receipts and field guides. The guide is a dated snapshot, not a report of a visitor’s active question."
-/page_text,array,95
+/page_text,array,97
 /page_text/0,object,
 /page_text/0/tag,string,p
 /page_text/0/text,string,QUANTUM ATLAS
@@ -855,47 +863,53 @@ path,type,value
 /page_text/80/text,string,"These counters cover AI questions. Study compute has a separate cost record. Daily, weekly and monthly compute limits form part of the execution design."
 /page_text/81,object,
 /page_text/81/tag,string,p
-/page_text/81/text,string,SCIENTIFIC REVIEW
+/page_text/81/text,string,LLM Benchmarking Project (opens in a new tab)
 /page_text/82,object,
-/page_text/82/tag,string,h2
-/page_text/82/text,string,Gemini 4 Argon
+/page_text/82/tag,string,p
+/page_text/82/text,string,"Track how language models perform at translating English instructions into correct Wolfram Language code over time. This informs model assessment for our work with the Wolfram Quantum Framework. Each quantum program still needs direct calculation, simulation and evidence checks."
 /page_text/83,object,
 /page_text/83/tag,string,p
-/page_text/83/text,string,OXTR · STUDY 01
+/page_text/83/text,string,SCIENTIFIC REVIEW
 /page_text/84,object,
 /page_text/84/tag,string,h2
-/page_text/84/text,string,Study insights
+/page_text/84/text,string,Gemini 4 Argon
 /page_text/85,object,
-/page_text/85/tag,string,h2
-/page_text/85/text,string,Connection verification
+/page_text/85/tag,string,p
+/page_text/85/text,string,OXTR · STUDY 01
 /page_text/86,object,
 /page_text/86/tag,string,h2
-/page_text/86/text,string,Fibonacci pulses and longer-lived quantum information
+/page_text/86/text,string,Study insights
 /page_text/87,object,
-/page_text/87/tag,string,p
-/page_text/87/text,string,"DUMITRESCU ET AL. · NATURE 607, 463–467 · 2022"
+/page_text/87/tag,string,h2
+/page_text/87/text,string,Connection verification
 /page_text/88,object,
-/page_text/88/tag,string,p
-/page_text/88/text,string,Laser pulses arranged in a Fibonacci pattern kept quantum information stable for longer in the atoms of a quantum computer.
+/page_text/88/tag,string,h2
+/page_text/88/text,string,Fibonacci pulses and longer-lived quantum information
 /page_text/89,object,
 /page_text/89/tag,string,p
-/page_text/89/text,string,"These observations concerned the edge qubits of a ten-ion processor. The Fibonacci-driven information remained coherent for the full 5.5-second observation period. The 1.5-second comparison is specific to that experiment, not a universal qubit lifetime."
+/page_text/89/text,string,"DUMITRESCU ET AL. · NATURE 607, 463–467 · 2022"
 /page_text/90,object,
 /page_text/90/tag,string,p
-/page_text/90/text,string,The authors attribute the protection to symmetries emerging from the pulse ordering. Their experiment did not test a hexagonal atom arrangement or M9 P24.
+/page_text/90/text,string,Laser pulses arranged in a Fibonacci pattern kept quantum information stable for longer in the atoms of a quantum computer.
 /page_text/91,object,
-/page_text/91/tag,string,h3
-/page_text/91/text,string,A stimulus for our investigation
+/page_text/91/tag,string,p
+/page_text/91/text,string,"These observations concerned the edge qubits of a ten-ion processor. The Fibonacci-driven information remained coherent for the full 5.5-second observation period. The 1.5-second comparison is specific to that experiment, not a universal qubit lifetime."
 /page_text/92,object,
 /page_text/92/tag,string,p
-/page_text/92/text,string,"Quantum Atlas investigates the hexagonal and triangular structures in Fibonacci’s modular representations across M1–M1001. We are exploring whether those relationships have measurable consequences in quantum systems, using Fibonacci, Phi Ratio, Alpha, Beta, Gamma and Epsilon. OXTR DNA supplies the first biological test inputs."
+/page_text/92/text,string,The authors attribute the protection to symmetries emerging from the pulse ordering. Their experiment did not test a hexagonal atom arrangement or M9 P24.
 /page_text/93,object,
-/page_text/93/tag,string,p
-/page_text/93/text,string,The geometric mechanism illustrated below is our working hypothesis. Odom’s construction and the honeycomb theorem establish mathematical relationships; a connection to quantum coherence remains to be tested.
+/page_text/93/tag,string,h3
+/page_text/93/text,string,A stimulus for our investigation
 /page_text/94,object,
 /page_text/94/tag,string,p
-/page_text/94/text,string,Enable JavaScript to explore a question. Read the research references.
-/page_links,array,18
+/page_text/94/text,string,"Quantum Atlas investigates the hexagonal and triangular structures in Fibonacci’s modular representations across M1–M1001. We are exploring whether those relationships have measurable consequences in quantum systems, using Fibonacci, Phi Ratio, Alpha, Beta, Gamma and Epsilon. OXTR DNA supplies the first biological test inputs."
+/page_text/95,object,
+/page_text/95/tag,string,p
+/page_text/95/text,string,The geometric mechanism illustrated below is our working hypothesis. Odom’s construction and the honeycomb theorem establish mathematical relationships; a connection to quantum coherence remains to be tested.
+/page_text/96,object,
+/page_text/96/tag,string,p
+/page_text/96/text,string,Enable JavaScript to explore a question. Read the research references.
+/page_links,array,20
 /page_links/0,object,
 /page_links/0/url,string,#question
 /page_links/0/label,string,Skip to your research question
@@ -933,23 +947,29 @@ path,type,value
 /page_links/11/url,string,data/execution-timing.json
 /page_links/11/label,string,Download recorded execution times ↓
 /page_links/12,object,
-/page_links/12/url,string,https://www.nature.com/articles/s41586-022-04853-4
-/page_links/12/label,string,Original Nature study ↗
+/page_links/12/url,string,https://www.wolfram.com/llm-benchmarking-project/
+/page_links/12/label,string,Wolfram
 /page_links/13,object,
-/page_links/13/url,string,https://futurism.com/the-byte/fibonacci-quantum-computer
-/page_links/13/label,string,Futurism · plain-language account ↗
+/page_links/13/url,string,https://www.wolfram.com/llm-benchmarking-project/
+/page_links/13/label,string,LLM Benchmarking Project (opens in a new tab)
 /page_links/14,object,
-/page_links/14/url,string,https://www.simonsfoundation.org/news/strange-new-phase-of-matter-created-in-quantum-computer-acts-like-it-has-two-time-dimensions/
-/page_links/14/label,string,Research team’s explanation ↗
+/page_links/14/url,string,https://www.nature.com/articles/s41586-022-04853-4
+/page_links/14/label,string,Original Nature study ↗
 /page_links/15,object,
-/page_links/15/url,string,https://doi.org/10.2307/2323047
-/page_links/15/label,string,Odom’s construction · E3007 ↗
+/page_links/15/url,string,https://futurism.com/the-byte/fibonacci-quantum-computer
+/page_links/15/label,string,Futurism · plain-language account ↗
 /page_links/16,object,
-/page_links/16/url,string,https://arxiv.org/abs/math/9906042
-/page_links/16/label,string,Hales · honeycomb theorem ↗
+/page_links/16/url,string,https://www.simonsfoundation.org/news/strange-new-phase-of-matter-created-in-quantum-computer-acts-like-it-has-two-time-dimensions/
+/page_links/16/label,string,Research team’s explanation ↗
 /page_links/17,object,
-/page_links/17/url,string,data/papers.json
-/page_links/17/label,string,Read the research references.
+/page_links/17/url,string,https://doi.org/10.2307/2323047
+/page_links/17/label,string,Odom’s construction · E3007 ↗
+/page_links/18,object,
+/page_links/18/url,string,https://arxiv.org/abs/math/9906042
+/page_links/18/label,string,Hales · honeycomb theorem ↗
+/page_links/19,object,
+/page_links/19/url,string,data/papers.json
+/page_links/19/label,string,Read the research references.
 /geometry_explanations,object,
 /geometry_explanations/fibonacci,string,Successive Fibonacci ratios approach the Phi Ratio. This is an exact limiting relationship. It does not by itself specify a physical arrangement of atoms.
 /geometry_explanations/modular,string,"M9 P24 means nine residue classes in a 24-step cycle. The Atlas places period positions on a circle; Gamma and Epsilon visit six equally spaced positions. M1–M1001 lets us compare modular representations. These are mathematical coordinates, not nine physical spatial dimensions."
@@ -7938,8 +7958,8 @@ path,type,value
 /sources/11/path,string,quantum/hypothesis.js
 /sources/11/url,string,https://universalmind.tv/informatics/quantum/hypothesis.js
 /sources/11/sha256,string,11bcf4afab33943cfa6f5d40aa644089d16b1a7f7875f910cc503a4a2abec063
-/page_prose_sha256,string,235a1305a151b77f32f57395f25d411db1cfafcb7ac2e262062214deaab85993
+/page_prose_sha256,string,f771fe41580f961eadddeb6d9024cef1e1094451830b8721b128d356cd58582a
 /downloads,object,
-/downloads/json,string,https://universalmind.tv/informatics/quantum/reading/quantum-atlas.json?v=2026-11-01-topic-focus-2
-/downloads/csv,string,https://universalmind.tv/informatics/quantum/reading/quantum-atlas.csv?v=2026-11-01-topic-focus-2
-/downloads/md,string,https://universalmind.tv/informatics/quantum/reading/quantum-atlas.md?v=2026-11-01-topic-focus-2
+/downloads/json,string,https://universalmind.tv/informatics/quantum/reading/quantum-atlas.json?v=2026-11-09-reasoning-production
+/downloads/csv,string,https://universalmind.tv/informatics/quantum/reading/quantum-atlas.csv?v=2026-11-09-reasoning-production
+/downloads/md,string,https://universalmind.tv/informatics/quantum/reading/quantum-atlas.md?v=2026-11-09-reasoning-production

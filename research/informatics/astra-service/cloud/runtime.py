@@ -39,8 +39,9 @@ class StateArchive:
 
 class SharedReviewBudget:
  """One seeded allowance across studies. Lambda reserved concurrency is one."""
- def __init__(self,bucket,path,client=None):
-  self.client=client or boto3.client('s3');self.bucket=bucket;self.path=Path(path);self.key='state/shared/gemini-review-usage.sqlite'
+ def __init__(self,bucket,path,client=None,key='state/shared/gemini-review-usage.sqlite'):
+  if key not in {'state/shared/gemini-review-usage.sqlite','state/shared/gemini-high-staging-20261109.sqlite'}:raise ValueError('Unknown review allowance')
+  self.client=client or boto3.client('s3');self.bucket=bucket;self.path=Path(path);self.key=key
  def restore(self):
   try:r=self.client.get_object(Bucket=self.bucket,Key=self.key)
   except self.client.exceptions.NoSuchKey:raise RuntimeError('The shared Gemini allowance has not been seeded.')
@@ -70,16 +71,22 @@ def handler(event,context):
  def sync():
   if broker.stopped.is_set():raise RuntimeError('Lease ended before durable checkpoint')
   archive.save()
- budget=SharedReviewBudget(os.environ['ASTRA_STATE_BUCKET'],TASK_ROOT/'gemini-review-usage.sqlite')
  try:
+  from reasoning_profile import review_budget_for_checkpoint
+  with runner.SqliteSaver.from_conn_string(str(TASK_ROOT/'checkpoints.sqlite')) as checkpoint:
+   saved=checkpoint.get_tuple({'configurable':{'thread_id':identifier}})
+   values=saved.checkpoint.get('channel_values',{}) if saved else {}
+  budget_key,ceiling=review_budget_for_checkpoint(origin,values,claim['task'].get('policy',{}))
+  budget=SharedReviewBudget(os.environ['ASTRA_STATE_BUCKET'],TASK_ROOT/'gemini-review-usage.sqlite',key=budget_key)
   budget.restore()
   from review_flow import ReviewLedger
-  reviews=ReviewLedger(budget.path,ceiling_micro_usd=1_000_000,sync=budget.save)
+  reviews=ReviewLedger(budget.path,ceiling_micro_usd=ceiling,sync=budget.save)
   reviews.settle_completed()
  except Exception:
   broker.call('update',id=identifier,lease=claim['lease'],stage='result',status='needs_attention',message='The shared Gemini review allowance needs owner reconciliation. No new calculation has started.')
   return {'task_id':identifier,'status':'review_allowance_dependency'}
- broker.run(claim,sync=sync,review_ledger=reviews)
+ outcome=broker.run(claim,sync=sync,review_ledger=reviews,remaining_time=lambda:context.get_remaining_time_in_millis()/1000)
+ if outcome=='yielded':return {'task_id':identifier,'status':'checkpoint_handoff'}
  # JSON and full CSV remain downloadable in the broker; mirror both durably.
  for path in (TASK_ROOT/'results'/identifier).glob('result.*'):
   boto3.client('s3').put_object(Bucket=os.environ['ASTRA_STATE_BUCKET'],Key='results/'+identifier+'/'+path.name,Body=path.read_bytes(),ServerSideEncryption='AES256')

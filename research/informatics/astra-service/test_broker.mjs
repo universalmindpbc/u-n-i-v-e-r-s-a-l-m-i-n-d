@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import {astraStorage,ownerAllowed} from '../../../cloudflare/informatics-astra.js';
+import {astraStorage,ownerAllowed,astraTokenLimit} from '../../../cloudflare/informatics-astra.js';
 class Storage{constructor(){this.data=new Map();}async transaction(fn){return fn({get:async k=>structuredClone(this.data.get(k)),put:async(k,v)=>this.data.set(k,structuredClone(v))});}}
 const s=new Storage(),key='request-1234567890123456';
 let r=await astraStorage(s,{op:'create',requestKey:key,question:'Do Fibonacci sequences predict OXTR binding?'});assert.equal(r.status,200);const id=r.data.id;
@@ -19,3 +19,14 @@ assert.equal((await astraStorage(s,{op:'cancel',id:aid,clientId:'b'.repeat(32)})
 assert.equal((await astraStorage(s,{op:'get',id:aid,clientId:'a'.repeat(32)})).status,200);
 assert.equal((await astraStorage(s,{op:'get',id,clientId:'a'.repeat(32)})).status,404);
 console.log('PASS: anonymous research sessions cannot read or cancel another session or legacy-owner task');
+assert.equal(astraTokenLimit({ALLOWED_ORIGIN:'https://universalmind.tv',ASTRA_MODEL_TOKEN_LIMIT:'64000'}),64000);
+assert.equal(astraTokenLimit({ALLOWED_ORIGIN:'https://staging.universalmind.tv',ASTRA_MODEL_TOKEN_LIMIT:'64000'}),64000);
+assert.equal(astraTokenLimit({ALLOWED_ORIGIN:'https://staging.universalmind.tv'}),24000);
+const higher=new Storage();
+assert.equal((await astraStorage(higher,{op:'create',requestKey:'staging-64k-test-01',question:'OXTR fixture',modelTokenLimit:64000})).status,400);
+const staged=await astraStorage(higher,{op:'create',requestKey:'staging-64k-test-01',question:'OXTR fixture',modelTokenLimit:64000,routingReceipt:{total_tokens:1000,service_tier:'default'}});
+assert.equal(staged.data.policy.maxModelTokens,64000);assert.equal(staged.data.routing_receipt.total_tokens,1000);
+assert.equal((await astraStorage(higher,{op:'create',requestKey:'unknown-budget-01',question:'OXTR fixture',modelTokenLimit:1000000})).status,400);
+assert.equal(astraTokenLimit({ALLOWED_ORIGIN:'https://untrusted.invalid',ASTRA_MODEL_TOKEN_LIMIT:'64000'}),24000);
+assert.equal(astraTokenLimit({ALLOWED_ORIGIN:'https://universalmind.tv'}),24000);
+console.log('PASS: approved production allowance, unknown-origin isolation, routing receipt and invalid-cap rejection');

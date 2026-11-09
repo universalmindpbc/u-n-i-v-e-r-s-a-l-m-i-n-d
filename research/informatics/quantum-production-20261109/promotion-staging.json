@@ -1,0 +1,18 @@
+{
+  "source_commit": "391673d00",
+  "staging_worker_version": "020f696d-b5b6-49c8-8bed-92752090cf64",
+  "aws_build": "informatics-astra-staging:1838e6f7-9cb9-421e-8409-0ac5a9936144",
+  "aws_image": "sha256:82a80f28aaf412402c8baf16a90065fba7d6a069c1b35dd5e10bd9b75e694284",
+  "stack_status": "UPDATE_COMPLETE",
+  "lambda_state": "Active",
+  "lambda_last_update": "Successful",
+  "build_zip_sha256": "de09db10e13d88abc010a3ecfe8d5e7f9a2684e52b3e436fb1dbd2ae3f1989aa",
+  "staging_resume_study": "83ba4807-83e6-4ca2-b151-7637e9d6a8ec",
+  "staging_resume_paid_calls": 0,
+  "layout_viewports": [
+    1440,
+    390,
+    320
+  ],
+  "unpublished_Lab_wiki_preserved": true
+}

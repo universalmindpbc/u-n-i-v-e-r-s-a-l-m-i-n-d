@@ -99,12 +99,15 @@ class ReviewLedger:
 
 class GeminiReviewer:
     model = 'gemini-4-argon'
-    def __init__(self, key, ledger, session=None, max_output_tokens=8192):
+    def __init__(self, key, ledger, session=None, max_output_tokens=8192, thinking_level='LOW', timeout_seconds=180):
         if not key or any(c.isspace() for c in key):
             raise ValueError('Gemini credential format is invalid')
         self.key, self.ledger = key, ledger
         self.session = session or requests.Session()
         self.max_output_tokens = max_output_tokens
+        if thinking_level not in {'LOW', 'MEDIUM', 'HIGH'}:
+            raise ValueError('Unknown Gemini thinking level')
+        self.thinking_level, self.timeout_seconds = thinking_level, timeout_seconds
 
     def review(self, study_id, phase, material):
         if phase not in {'design', 'support', 'final'}:
@@ -113,8 +116,13 @@ class GeminiReviewer:
         # UTF-8 byte count deliberately over-reserves likely input token usage.
         input_bound = len((INSTRUCTIONS + prompt + json.dumps(SCHEMA)).encode()) + 1024
         reserve = input_bound * 4 + self.max_output_tokens * 20
-        key = digest({'study': study_id, 'phase': phase, 'material': material,
-                      'model': self.model, 'instructions': INSTRUCTIONS, 'schema': SCHEMA})
+        identity = {'study': study_id, 'phase': phase, 'material': material,
+                    'model': self.model, 'instructions': INSTRUCTIONS, 'schema': SCHEMA}
+        # Preserve existing Low receipts; a higher effort always gets its own key.
+        if self.thinking_level != 'LOW':
+            identity['thinking_level'] = self.thinking_level
+            identity['max_output_tokens'] = self.max_output_tokens
+        key = digest(identity)
         def call():
             started = time.monotonic()
             response = self.session.post(
@@ -123,9 +131,9 @@ class GeminiReviewer:
                 json={'systemInstruction': {'parts': [{'text': INSTRUCTIONS}]},
                       'contents': [{'role': 'user', 'parts': [{'text': prompt}]}],
                       'generationConfig': {'maxOutputTokens': self.max_output_tokens,
-                                           'thinkingConfig': {'thinkingLevel': 'LOW'},
+                                           'thinkingConfig': {'thinkingLevel': self.thinking_level},
                                            'responseMimeType': 'application/json',
-                                           'responseJsonSchema': SCHEMA}}, timeout=180)
+                                           'responseJsonSchema': SCHEMA}}, timeout=self.timeout_seconds)
             if response.status_code != 200:
                 # Never print provider error bodies, headers or credential URLs.
                 raise RuntimeError(f'Gemini review unavailable (HTTP {response.status_code}); reservation retained.')
@@ -141,6 +149,7 @@ class GeminiReviewer:
             if not isinstance(usage.get('totalTokenCount'), int) or not data.get('responseId'):
                 raise ValueError('Gemini review receipt incomplete')
             return {**review, 'provider': 'google', 'model': data.get('modelVersion', self.model),
+                    'thinking_level': self.thinking_level, 'max_output_tokens': self.max_output_tokens,
                     'provider_response_id': data['responseId'], 'evidence_sha256': digest(material),
                     'usage': usage, 'reserved_micro_usd': reserve,
                     'reviewed_at': datetime.now(timezone.utc).isoformat(),

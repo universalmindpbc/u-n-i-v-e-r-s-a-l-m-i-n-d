@@ -1,0 +1,40 @@
+{
+  "source_commit": "e8121397d81e7f22b95be5d89c67823dfa7b19db",
+  "date": "2026-11-09",
+  "cloudflare": {
+    "name": "informatics-universal-one-staging",
+    "version_id": "2b72f07e-9e2d-42ba-9fbf-b0ee12264d1b",
+    "token_limit": 64000,
+    "production_config_changed": false
+  },
+  "aws": {
+    "build_id": "informatics-astra-staging:1b5dad35-154b-4446-9e6f-e1435f8d8d4b",
+    "build_status": "SUCCEEDED",
+    "image_digest": "sha256:19b77698773949c6f0ec27d95f1f838d97d5ba1c57c6133076743ac3ce9ce97c",
+    "change_set": "quantum-reasoning-64k-20261109",
+    "stack_status": "UPDATE_COMPLETE",
+    "worker_state": "Active",
+    "update_status": "Successful",
+    "static_change": "Worker.Code via ImageUri only",
+    "production_profile": "low/LOW, 24000 Astra tokens"
+  },
+  "panthur": {
+    "scope": "informatics",
+    "changed_uploads": 15,
+    "status": "complete",
+    "verified_http_file_hashes": 15,
+    "dataset_version": "37d8e7f73c3434a1dc6e429eccc0b341debf2c52b3dd253a8f23a694fd546f7b"
+  },
+  "study": {
+    "task_id": "83ba4807-83e6-4ca2-b151-7637e9d6a8ec",
+    "routing_tokens": 1541,
+    "worker_remaining_token_limit": 62459,
+    "status": "complete",
+    "astra_total_tokens": 26652,
+    "gemini_recorded_micro_usd": 263860,
+    "checkpoint_handoff_verified": true,
+    "interface_report_visible": true,
+    "downloaded_fields_equivalent": 4609
+  },
+  "production_website_modified": false
+}

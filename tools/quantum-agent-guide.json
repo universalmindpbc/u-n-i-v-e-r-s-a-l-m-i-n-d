@@ -1,5 +1,5 @@
 {
-  "version": "2026-11-01-topic-focus-2",
+  "version": "2026-11-09-reasoning-production",
   "purpose": {
     "title": "What Quantum Atlas is for",
     "summary": "Quantum Atlas makes computational biology and quantum research approachable through a scientific question written in ordinary language. A person brings the question; the platform coordinates AI scientific work, mathematical models, simulations, recorded quantum measurements and biological evidence, then returns an explanation with the underlying research record.",
@@ -368,6 +368,8 @@
     "research/informatics/astra-service/review_flow.py",
     "research/informatics/astra-service/cloud/runtime.py",
     "research/informatics/scientific-swarm/swarm.py",
-    "research/informatics/scientific-swarm/ROLE_CONTRACT.md"
+    "research/informatics/scientific-swarm/ROLE_CONTRACT.md",
+    "research/informatics/astra-service/reasoning_profile.py",
+    "research/informatics/scientific-swarm/providers.py"
   ]
 }

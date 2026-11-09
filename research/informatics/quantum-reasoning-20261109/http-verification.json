@@ -1,0 +1,131 @@
+{
+  "staging_files_matched": 18,
+  "results": [
+    {
+      "path": "Informatics/index.html",
+      "bytes": 575462,
+      "sha256": "f5ad3af7280dae1d719c88daafde830caf9dcc321ebf8a873acb6a34bfe8e148",
+      "matches_deployed_bytes": true,
+      "error": ""
+    },
+    {
+      "path": "Informatics/quantum/index.html",
+      "bytes": 420010,
+      "sha256": "715c5017cd683a5bc00faa82ea739b0ac641e1fe069fbd2f404bc58c06ae0b43",
+      "matches_deployed_bytes": true,
+      "error": ""
+    },
+    {
+      "path": "Informatics/quantum/biology.css",
+      "bytes": 50296,
+      "sha256": "b499cb476aa91059ed500a87f73309c0d0906ab9c692424ec0783b4892c007c7",
+      "matches_deployed_bytes": true,
+      "error": ""
+    },
+    {
+      "path": "Informatics/quantum/scientific-review.css",
+      "bytes": 4117,
+      "sha256": "caefb73b80198f583f74ddd94d92128645cc83c0f3e943b9a455c200730a14a3",
+      "matches_deployed_bytes": true,
+      "error": ""
+    },
+    {
+      "path": "Informatics/quantum/lab.css",
+      "bytes": 15519,
+      "sha256": "cc9f57ccaead28114dd398332964747829177e6b28860c05963e7a26713ad793",
+      "matches_deployed_bytes": true,
+      "error": ""
+    },
+    {
+      "path": "Informatics/quantum/verification.html",
+      "bytes": 13235,
+      "sha256": "f32728921612dde7d72fe93eaa191edf03bc57cb70020a7c4c70f03725121dff",
+      "matches_deployed_bytes": true,
+      "error": ""
+    },
+    {
+      "path": "Informatics/quantum/reading/quantum-atlas.json",
+      "bytes": 322676,
+      "sha256": "d7333dd9098ca2132d7aa6a96b22897a1092e0f36e3bc8ad81e995db24579bbd",
+      "matches_deployed_bytes": true,
+      "error": ""
+    },
+    {
+      "path": "Informatics/quantum/reading/quantum-atlas.csv",
+      "bytes": 677148,
+      "sha256": "ceafa282a3f3b2d2f4b77be51ad0a954c8f23f0143c4ea9c70e1f33a0d92ebd5",
+      "matches_deployed_bytes": true,
+      "error": ""
+    },
+    {
+      "path": "Informatics/quantum/reading/quantum-atlas.md",
+      "bytes": 363427,
+      "sha256": "0f47cfb22f9e5fb4775031d8283e61849d70f5952c681190cf426e4902277d25",
+      "matches_deployed_bytes": true,
+      "error": ""
+    },
+    {
+      "path": "Informatics/read/data.html",
+      "bytes": 183526,
+      "sha256": "700aef41773ac0ce077f66db263c9f47f668a97e3731e0a6f0cf20013aa6a5ad",
+      "matches_deployed_bytes": true,
+      "error": ""
+    },
+    {
+      "path": "Informatics/read/quantum/index.html",
+      "bytes": 65433,
+      "sha256": "2d64c4749a2d178f0fc798b0831484c53db3e848a246571d428a1d6c746efc60",
+      "matches_deployed_bytes": true,
+      "error": ""
+    },
+    {
+      "path": "Informatics/exports/manifest.json",
+      "bytes": 2398520,
+      "sha256": "3eb59d39672de82e14da0ac9e2ae6216652bf7089658cba09297098536b66652",
+      "matches_deployed_bytes": true,
+      "error": ""
+    },
+    {
+      "path": "Informatics/exports/part-6c9e9d4856af0e4fd763942c02d14c09f88eb74902630864728b6f8a3c5f1e1a.bin",
+      "bytes": 50331648,
+      "sha256": "6c9e9d4856af0e4fd763942c02d14c09f88eb74902630864728b6f8a3c5f1e1a",
+      "matches_deployed_bytes": true,
+      "error": ""
+    },
+    {
+      "path": "Informatics/exports/part-44d1e41e056e59afbd29d1530de22520b8d0078112311430296489b92e234088.bin",
+      "bytes": 30953860,
+      "sha256": "44d1e41e056e59afbd29d1530de22520b8d0078112311430296489b92e234088",
+      "matches_deployed_bytes": true,
+      "error": ""
+    },
+    {
+      "path": "Informatics/exports/part-7a005000d4a8b8b9cf5391f6d69a643a0d8c7a171eeadcaff2a0b2f07c8ab6ee.bin",
+      "bytes": 50331648,
+      "sha256": "7a005000d4a8b8b9cf5391f6d69a643a0d8c7a171eeadcaff2a0b2f07c8ab6ee",
+      "matches_deployed_bytes": true,
+      "error": ""
+    },
+    {
+      "path": "Informatics/exports/part-ac8290601f6db5e019e42116f383b79404dd574b35edc1cc830e10766e2f34bf.bin",
+      "bytes": 50331648,
+      "sha256": "ac8290601f6db5e019e42116f383b79404dd574b35edc1cc830e10766e2f34bf",
+      "matches_deployed_bytes": true,
+      "error": ""
+    },
+    {
+      "path": "Informatics/exports/part-3c8e1bf3603825c799acd71d4ba7844f79538ca85a5c8cfba6be327f425a383c.bin",
+      "bytes": 50331648,
+      "sha256": "3c8e1bf3603825c799acd71d4ba7844f79538ca85a5c8cfba6be327f425a383c",
+      "matches_deployed_bytes": true,
+      "error": ""
+    },
+    {
+      "path": "Informatics/exports/part-dc37b3f2c11adff809a3af85438de836e5788544da45270e7202bb07c0ad83a6.bin",
+      "bytes": 367015,
+      "sha256": "dc37b3f2c11adff809a3af85438de836e5788544da45270e7202bb07c0ad83a6",
+      "matches_deployed_bytes": true,
+      "error": ""
+    }
+  ]
+}

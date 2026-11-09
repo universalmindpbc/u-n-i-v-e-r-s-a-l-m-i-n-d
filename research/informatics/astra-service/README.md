@@ -1,6 +1,34 @@
 # Astra: private Quantum Atlas execution
 
-Implemented 25 October 2026; AWS hosting activated 26 October. This is a bounded research service on the existing staging website. LangGraph owns execution and checkpoints. GPT-6 Astra interprets the calculated evidence. Gemini review, public computation and API/MCP/A2A task dispatch remain roadmap work.
+## Approved reasoning release · 9 November 2026
+
+New studies on staging and production request GPT-6 Astra with
+`reasoning.effort=max` for planning and interpretation, and Gemini 4 Argon with
+`thinkingLevel=HIGH` for design and findings review. The question router remains
+a separate Low call. Ben approved production publication after the complete
+staging study passed both model reviews, calculations and report delivery.
+
+The tested profile retains a 64,000-token Astra ceiling including routing, up to
+four scientific calls and 16,384 output tokens per call, with standard API pricing.
+The existing US$2 High review ledger is shared across staging and production;
+promotion carries forward its usage and does not create or refill an allowance.
+The legacy staging-named ledger key remains unchanged to preserve all receipts.
+Existing Low studies retain their original 24,000-token limit and US$1 ledger.
+Queued tasks select their original policy, and checkpointed tasks retain their
+saved profile. The first 8,192-output staging profile also remains resumable.
+
+Astra requests retain a 600-second timeout; Gemini retains 8,192 output tokens
+and 300 seconds. Before a long operation, the worker saves its checkpoint and
+yields if the current Lambda invocation lacks time. The existing dispatcher
+resumes after the lease expires without repeating settled model calls.
+Incomplete responses retain their reservation and pause for reconciliation.
+Higher reasoning alone does not establish correctness.
+
+Verified staging study `83ba4807-83e6-4ca2-b151-7637e9d6a8ec` used 26,652 Astra
+tokens including routing and US$0.263860 in recorded Gemini usage. Both Gemini
+reviews approved, 16 local CUDA-Q programs completed, and JSON/CSV retained all
+4,609 report fields. No paid quantum or GPU jobs were submitted. The earlier
+incomplete study and its 19,795-token reservation remain preserved separately.
 
 ## What a question starts
 
@@ -19,7 +47,7 @@ The new classical test does not evaluate M9 P24 prediction. The local CUDA-Q pai
 
 ## Today's enforced boundary
 
-New Aquila spend: **US$0**. New paid GPU spend: **US$0**. The worker has no hardware submission tool or QPU credential. Research questions are limited to six per day and forty per month, with at most two active tasks. Each task has a separate model ledger capped at two requests and 24,000 reserved tokens. Model reports use GPT-6 Astra. These are shared prototype limits, not a public funding policy.
+New Aquila spend: **US$0**. New paid GPU spend: **US$0**. The worker has no hardware submission tool or QPU credential. Research questions are limited to six per day and forty per month, with at most two active tasks. New studies allow four scientific model calls and 64,000 total Astra tokens including routing; existing studies retain their saved limits. Model reports use GPT-6 Astra. These are shared prototype limits, not a public funding policy.
 
 qBraid's account check showed zero purchased credits with auto-recharge disabled. The remaining free-circuit quota was not verified for a new batch; no new qBraid submission is made. CUDA-Q runs on the AWS worker's CPU within the approved hosting allowance. No GPU, VM or SageMaker instance is provisioned.
 

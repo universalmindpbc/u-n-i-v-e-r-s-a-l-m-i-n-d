@@ -586,6 +586,10 @@ QUESTION CAPACITY
 
 These counters cover AI questions. Study compute has a separate cost record. Daily, weekly and monthly compute limits form part of the execution design.
 
+LLM Benchmarking Project (opens in a new tab)
+
+Track how language models perform at translating English instructions into correct Wolfram Language code over time. This informs model assessment for our work with the Wolfram Quantum Framework. Each quantum program still needs direct calculation, simulation and evidence checks.
+
 SCIENTIFIC REVIEW
 
 ### Gemini 4 Argon
@@ -643,11 +647,11 @@ The following JSON preserves the source fields, saved chart arrays, study interp
 {
   "schema": "universal-informatics/quantum-atlas-guide/v1",
   "title": "Quantum Atlas · AI / LLM Wiki",
-  "version": "2026-11-01-topic-focus-2",
+  "version": "2026-11-09-reasoning-production",
   "url": "https://universalmind.tv/informatics/quantum/",
   "wiki": "https://universalmind.tv/informatics/read/quantum/index.html",
   "agent_architecture": {
-    "version": "2026-11-01-topic-focus-2",
+    "version": "2026-11-09-reasoning-production",
     "purpose": {
       "title": "What Quantum Atlas is for",
       "summary": "Quantum Atlas makes computational biology and quantum research approachable through a scientific question written in ordinary language. A person brings the question; the platform coordinates AI scientific work, mathematical models, simulations, recorded quantum measurements and biological evidence, then returns an explanation with the underlying research record.",
@@ -1335,7 +1339,7 @@ The following JSON preserves the source fields, saved chart arrays, study interp
     "implementation_sources": [
       {
         "repository_path": "Informatics/quantum/index.html",
-        "sha256": "f65005ddb453ecf33985d98ce842517ab95269f17a2455d6879002284946bc90",
+        "sha256": "241eef8b0342309cd7935654b157d108ecc4bdb0904e06d5702bd016aa27cfc9",
         "scope": "Original primary-page source with generated reading blocks removed"
       },
       {
@@ -1375,12 +1379,12 @@ The following JSON preserves the source fields, saved chart arrays, study interp
       },
       {
         "repository_path": "cloudflare/informatics-quantum.js",
-        "sha256": "1373d17fe91957fec2e27ebe89a2cf4c092cb59abd76b2f603be9460979b54c5",
+        "sha256": "a93c6e5eea1156c47c5f689be39d924ed6c8f81c6fb44d967cf74a3bee272585",
         "scope": "Implementation source"
       },
       {
         "repository_path": "cloudflare/informatics-astra.js",
-        "sha256": "ac521234c4d0ba8de89ecea9d198e2d497add495426c1db2721f3a23a61ea441",
+        "sha256": "219b5dd2637e1311b37a4169b8c81e586647b00a2c12ad6a66ed7fd63a4750a1",
         "scope": "Implementation source"
       },
       {
@@ -1390,17 +1394,17 @@ The following JSON preserves the source fields, saved chart arrays, study interp
       },
       {
         "repository_path": "research/informatics/astra-service/runner.py",
-        "sha256": "1a6c6e9ac958e91ebfd035ac11d0e7a3f0add1cc20620530cdff18e36033b411",
+        "sha256": "5ae9062b5b20833f0da9d3e3f3927703b2622c1b29b8a07160ce79ae59eb8f2f",
         "scope": "Implementation source"
       },
       {
         "repository_path": "research/informatics/astra-service/review_flow.py",
-        "sha256": "b7e8e358df6129bdc8c981ad4a6b2aefd3c52ffc905a84452a45017fcfb87430",
+        "sha256": "61248bd6c5fc44a11c9816dc126ec0cc238e7bec36f8e9f6ff80a8400230fdf0",
         "scope": "Implementation source"
       },
       {
         "repository_path": "research/informatics/astra-service/cloud/runtime.py",
-        "sha256": "fb82bdcc17ab13ccb0a5b513acb5e537f4ea572b06e808df369921441020f545",
+        "sha256": "7bed322cd5688b6afe149c9fcec71f330d6f1a1a37a7fbb680515cbbb98b2603",
         "scope": "Implementation source"
       },
       {
@@ -1411,6 +1415,16 @@ The following JSON preserves the source fields, saved chart arrays, study interp
       {
         "repository_path": "research/informatics/scientific-swarm/ROLE_CONTRACT.md",
         "sha256": "f06b092dc9fee0585a9c649b84c166d960f19a11aa61ba50ba0f4fb385562cd0",
+        "scope": "Implementation source"
+      },
+      {
+        "repository_path": "research/informatics/astra-service/reasoning_profile.py",
+        "sha256": "d4f54083069893f9e0fa1db021d809f59439d2dae83f3adc873cc5e4a263bc24",
+        "scope": "Implementation source"
+      },
+      {
+        "repository_path": "research/informatics/scientific-swarm/providers.py",
+        "sha256": "d736b78032265eadea61e322ad90107f87dd81075968e3d1f5b52acd671c011f",
         "scope": "Implementation source"
       }
     ]
@@ -1747,6 +1761,14 @@ The following JSON preserves the source fields, saved chart arrays, study interp
     },
     {
       "tag": "p",
+      "text": "LLM Benchmarking Project (opens in a new tab)"
+    },
+    {
+      "tag": "p",
+      "text": "Track how language models perform at translating English instructions into correct Wolfram Language code over time. This informs model assessment for our work with the Wolfram Quantum Framework. Each quantum program still needs direct calculation, simulation and evidence checks."
+    },
+    {
+      "tag": "p",
       "text": "SCIENTIFIC REVIEW"
     },
     {
@@ -1850,6 +1872,14 @@ The following JSON preserves the source fields, saved chart arrays, study interp
     {
       "url": "data/execution-timing.json",
       "label": "Download recorded execution times ↓"
+    },
+    {
+      "url": "https://www.wolfram.com/llm-benchmarking-project/",
+      "label": "Wolfram"
+    },
+    {
+      "url": "https://www.wolfram.com/llm-benchmarking-project/",
+      "label": "LLM Benchmarking Project (opens in a new tab)"
     },
     {
       "url": "https://www.nature.com/articles/s41586-022-04853-4",
@@ -9596,11 +9626,11 @@ The following JSON preserves the source fields, saved chart arrays, study interp
       "sha256": "11bcf4afab33943cfa6f5d40aa644089d16b1a7f7875f910cc503a4a2abec063"
     }
   ],
-  "page_prose_sha256": "235a1305a151b77f32f57395f25d411db1cfafcb7ac2e262062214deaab85993",
+  "page_prose_sha256": "f771fe41580f961eadddeb6d9024cef1e1094451830b8721b128d356cd58582a",
   "downloads": {
-    "json": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.json?v=2026-11-01-topic-focus-2",
-    "csv": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.csv?v=2026-11-01-topic-focus-2",
-    "md": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.md?v=2026-11-01-topic-focus-2"
+    "json": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.json?v=2026-11-09-reasoning-production",
+    "csv": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.csv?v=2026-11-09-reasoning-production",
+    "md": "https://universalmind.tv/informatics/quantum/reading/quantum-atlas.md?v=2026-11-09-reasoning-production"
   }
 }
 ```

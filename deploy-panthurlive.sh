@@ -680,7 +680,7 @@ for path in filter(None, tracked):
     digest = hashlib.sha256((root / path).read_bytes()).hexdigest()
     entries.append((path, remote, digest))
 # Data and images first; the index and HTML/JS entry points form the final batch.
-entries.sort(key=lambda x: (x[0].endswith(('index.json', '.html', '.js')), x[0]))
+entries.sort(key=lambda x: (2 if x[0] == 'Informatics/exports/manifest.json' else 1 if x[0].endswith(('index.json', '.html', '.js')) else 0, x[0]))
 with manifest.open('a') as f, queue.open('w') as q:
     for path, remote, digest in entries:
         f.write(digest + '\t' + remote + '\n')
