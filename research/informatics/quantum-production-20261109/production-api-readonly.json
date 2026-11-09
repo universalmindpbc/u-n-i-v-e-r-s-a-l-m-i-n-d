@@ -1,0 +1,70 @@
+{
+  "new_model_calls": 0,
+  "checks": [
+    {
+      "path": "/health",
+      "status": 200,
+      "body": {
+        "status": "ready",
+        "profile": "informatics-research",
+        "model": "gpt-6-astra",
+        "version": "research-20261026-daytab-v1",
+        "knowledgeVersions": {
+          "approvedYouth": {
+            "sourceBatch": "batch-f164c8325ea5f9c9.json",
+            "sourceSHA256": "f164c8325ea5f9c989c29524518b598913508117712826dc408f592b7f99a723",
+            "approvedAt": "2026-11-02",
+            "publications": 105
+          },
+          "biofeedback": {
+            "version": "lab-biofeedback-20261105-ratings",
+            "publications": 63
+          }
+        }
+      }
+    },
+    {
+      "path": "/quantum/capacity",
+      "status": 200,
+      "body": {
+        "allowed": true,
+        "unit": "AI questions",
+        "periods": {
+          "day": {
+            "key": "2026-11-09T00:00:00.000Z",
+            "used": 0,
+            "limit": 30,
+            "resetAt": "2026-11-10T00:00:00.000Z",
+            "remaining": 30
+          },
+          "week": {
+            "key": "2026-11-09T00:00:00.000Z",
+            "used": 0,
+            "limit": 120,
+            "resetAt": "2026-11-16T00:00:00.000Z",
+            "remaining": 120
+          },
+          "month": {
+            "key": "2026-11-01T00:00:00.000Z",
+            "used": 0,
+            "limit": 300,
+            "resetAt": "2026-12-01T00:00:00.000Z",
+            "remaining": 300
+          }
+        },
+        "resetAt": null,
+        "hardware": {
+          "available": false,
+          "reason": "The approved Study 01 batch is recorded separately. New hardware submissions are not enabled through this question endpoint."
+        }
+      }
+    },
+    {
+      "path": "/agent/access",
+      "status": 401,
+      "body": {
+        "error": "Research session required. Reopen Quantum Atlas to reconnect."
+      }
+    }
+  ]
+}
