@@ -1,0 +1,108 @@
+{
+  "removedReproducibleCandidateScreenshots": [
+    {
+      "file": "candidate-proposal-chromium-390.png",
+      "bytes": 66482
+    },
+    {
+      "file": "candidate-chat-chromium-390.png",
+      "bytes": 71686
+    },
+    {
+      "file": "candidate-password-webkit-1440.png",
+      "bytes": 151953
+    },
+    {
+      "file": "staging-password-chromium-320.png",
+      "bytes": 51197
+    },
+    {
+      "file": "candidate-chat-webkit-1440.png",
+      "bytes": 167760
+    },
+    {
+      "file": "candidate-chat-chromium-1440.png",
+      "bytes": 131029
+    },
+    {
+      "file": "staging-password-chromium-390.png",
+      "bytes": 56558
+    },
+    {
+      "file": "candidate-chat-chromium-320.png",
+      "bytes": 61683
+    },
+    {
+      "file": "staging-password-webkit-320.png",
+      "bytes": 66675
+    },
+    {
+      "file": "candidate-chat-webkit-320.png",
+      "bytes": 80646
+    },
+    {
+      "file": "candidate-password-chromium-1440.png",
+      "bytes": 115677
+    },
+    {
+      "file": "staging-password-webkit-1440.png",
+      "bytes": 152026
+    },
+    {
+      "file": "candidate-password-chromium-390.png",
+      "bytes": 56554
+    },
+    {
+      "file": "candidate-password-webkit-320.png",
+      "bytes": 66582
+    },
+    {
+      "file": "staging-chat-chromium-320.png",
+      "bytes": 61760
+    },
+    {
+      "file": "staging-chat-webkit-320.png",
+      "bytes": 80665
+    },
+    {
+      "file": "candidate-proposal-chromium-1440.png",
+      "bytes": 120788
+    },
+    {
+      "file": "staging-chat-chromium-390.png",
+      "bytes": 71563
+    },
+    {
+      "file": "candidate-password-webkit-390.png",
+      "bytes": 75414
+    },
+    {
+      "file": "candidate-password-chromium-320.png",
+      "bytes": 51100
+    },
+    {
+      "file": "staging-chat-webkit-1440.png",
+      "bytes": 167373
+    },
+    {
+      "file": "candidate-proposal-webkit-390.png",
+      "bytes": 86215
+    },
+    {
+      "file": "candidate-proposal-webkit-1440.png",
+      "bytes": 162065
+    },
+    {
+      "file": "candidate-chat-webkit-390.png",
+      "bytes": 94811
+    }
+  ],
+  "retained": [
+    "staging-chat-chromium-1440.png",
+    "staging-chat-webkit-390.png",
+    "staging-password-chromium-1440.png",
+    "staging-password-webkit-390.png",
+    "staging-portal-command.png"
+  ],
+  "previousReleaseEvidencePreserved": true
+}

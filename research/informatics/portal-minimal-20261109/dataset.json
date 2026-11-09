@@ -1,0 +1,54 @@
+{
+  "version": "fa67557867eea17ab6e38ab75eaa18cc266e857acd442058386592412c4c3686",
+  "sources": 1195,
+  "downloads": {
+    "json": {
+      "file": "informatics-complete.json.gz",
+      "bytes": 81290671,
+      "uncompressed_bytes": 792520553,
+      "sha256": "ecdedfd0bf3da948cf971a2b47bac4a86f94047a297ff0e363ee736d90a3d5bd",
+      "uncompressed_sha256": "2282852356e703ddf3f063cd2206ff4d6c8be34474a8c027072217be6092a26d",
+      "parts": [
+        {
+          "file": "part-43409dc38e757b1de33db77c4681d1ae7fe7542aba57abdf4d0cc965fe47578f.bin",
+          "bytes": 50331648,
+          "sha256": "43409dc38e757b1de33db77c4681d1ae7fe7542aba57abdf4d0cc965fe47578f"
+        },
+        {
+          "file": "part-7c578a6fe9d714bcadbce9c81a49b2a8a7aa59f4940236bb961bdcd392828e64.bin",
+          "bytes": 30959023,
+          "sha256": "7c578a6fe9d714bcadbce9c81a49b2a8a7aa59f4940236bb961bdcd392828e64"
+        }
+      ]
+    },
+    "csv": {
+      "file": "informatics-complete.csv.gz",
+      "bytes": 151367976,
+      "uncompressed_bytes": 2478870134,
+      "sha256": "ef9e62914cd6a6d1b7cde1b824621befabc202b37649048562a187b3b72bc802",
+      "uncompressed_sha256": "2921ab9f8239118b920ed19668256820f52e4a9dc48822e9055e784373960d57",
+      "parts": [
+        {
+          "file": "part-a8ba145cd0754f97fce5fd3913b316ec5c426b78eb96b496feb4a034fae2fcd4.bin",
+          "bytes": 50331648,
+          "sha256": "a8ba145cd0754f97fce5fd3913b316ec5c426b78eb96b496feb4a034fae2fcd4"
+        },
+        {
+          "file": "part-7035bed8a17d7bb28d2183ccc1ff3eecccf9fb402c7b863aa26cbfbc0665c60a.bin",
+          "bytes": 50331648,
+          "sha256": "7035bed8a17d7bb28d2183ccc1ff3eecccf9fb402c7b863aa26cbfbc0665c60a"
+        },
+        {
+          "file": "part-3465c71a7f232b655565fbc808459a0e2ca5e243a015f0e94c359e751826fcba.bin",
+          "bytes": 50331648,
+          "sha256": "3465c71a7f232b655565fbc808459a0e2ca5e243a015f0e94c359e751826fcba"
+        },
+        {
+          "file": "part-b5a119efad3d2aceb6c5969856b357d92a17ad5321a9d7cea69d8c34c2fd7cb3.bin",
+          "bytes": 373032,
+          "sha256": "b5a119efad3d2aceb6c5969856b357d92a17ad5321a9d7cea69d8c34c2fd7cb3"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "passed": true,
+  "controlledAccessResponses": true,
+  "checks": [
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "passwordBesideVoice": true,
+      "staticCopyRemoved": true,
+      "hoverAndKeyboardTooltip": true,
+      "dialogHeight": 235.5,
+      "loginErrorVisible": true,
+      "errors": []
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "passwordBesideVoice": true,
+      "staticCopyRemoved": true,
+      "hoverAndKeyboardTooltip": true,
+      "dialogHeight": 227.5,
+      "loginErrorVisible": true,
+      "errors": []
+    },
+    {
+      "engine": "chromium",
+      "width": 320,
+      "passwordBesideVoice": true,
+      "staticCopyRemoved": true,
+      "hoverAndKeyboardTooltip": true,
+      "dialogHeight": 227.5,
+      "loginErrorVisible": true,
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "width": 1440,
+      "passwordBesideVoice": true,
+      "staticCopyRemoved": true,
+      "hoverAndKeyboardTooltip": true,
+      "dialogHeight": 235.5,
+      "loginErrorVisible": true,
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "passwordBesideVoice": true,
+      "staticCopyRemoved": true,
+      "hoverAndKeyboardTooltip": true,
+      "dialogHeight": 227.5,
+      "loginErrorVisible": true,
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "width": 320,
+      "passwordBesideVoice": true,
+      "staticCopyRemoved": true,
+      "hoverAndKeyboardTooltip": true,
+      "dialogHeight": 227.5,
+      "loginErrorVisible": true,
+      "errors": []
+    }
+  ]
+}
