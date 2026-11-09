@@ -80,7 +80,7 @@ const atlas=json('pilot-v1/index.json');
 const geometryNarratives=json('atlas-guides/geometry-atlas.json').source_data.record_explanations;
 for(const r of atlas.records){
  const raw=fs.readFileSync(path.join(site,r.file)),d=JSON.parse(raw);assert.equal(sha(raw),r.sha256);
- const sections=['conventions','research','verification','geometry_summary','alpha','beta','gamma','epsilon','epsilon_status','epsilon_assessment','reduction_to_m9','native_beta_observation','research_register','probability','formation_interval_encoding'];
+ const sections=['conventions','research','verification','geometry_summary','alpha','beta','gamma','epsilon','epsilon_status','epsilon_assessment','reduction_to_m9','native_beta_observation','e8_geometry','research_register','probability','formation_interval_encoding'];
  // Full numeric coordinate/formation tables remain directly linked as JSON/CSV.
  const narrative=v=>Array.isArray(v)?[...v.slice(0,240).map(narrative),...(v.length>240?['Additional entries remain in the complete JSON record.']:[])]:typeof v==='object'&&v!==null?Object.fromEntries(Object.entries(v).filter(([k])=>!['points','coordinates','formations','all_formations','intervals','catalogue','candidates','views','svg','indices','node_indices'].includes(k)).map(([k,x])=>[k,narrative(x)])):v;
  const explanation=geometryNarratives[r.modulus].map(v=>`<section><h2>${esc(v.title)}</h2><p>${esc(v.description)}</p><p>${esc(v.convention)}</p><p>${esc(v.calculation)}</p><p>${esc(v.sequence)}</p></section>`).join('');

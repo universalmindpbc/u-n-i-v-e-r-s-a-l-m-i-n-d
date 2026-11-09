@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "roots": 240,
+  "rank": 8,
+  "lieAlgebraDimension": 248,
+  "order24": {
+    "cycles": 10,
+    "distinctRadii": 9
+  },
+  "order30": {
+    "cycles": 8,
+    "distinctRadii": 8
+  },
+  "rootDataReproduced": true,
+  "E8CsvRoundtrip": true,
+  "M9CsvRoundtrip": true
+}

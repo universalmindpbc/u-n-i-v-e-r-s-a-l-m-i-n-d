@@ -1,0 +1,33 @@
+{
+  "removed": [
+    {
+      "file": "Informatics/exports/manifest-4e7a392369f0b28c0eb293dc7b3a6ec68195efb8460c5f71c77a91f9d1717be9.json",
+      "bytes": 2398727
+    },
+    {
+      "file": "Informatics/exports/part-5008177c5bd8cc2a2be27841f06050701f0839c95770e936d3547782bde5ad31.bin",
+      "bytes": 31022101
+    },
+    {
+      "file": "Informatics/exports/part-680b5edabf1ba78cdaeefd9a976a29f6f6d2e9ddd48eaf33ac0ecf5a7f47a147.bin",
+      "bytes": 50331648
+    },
+    {
+      "file": "Informatics/exports/part-74aa3329ce3fe3c697347c658ac90890fbf4903e2db22435f45da1d4a5687b93.bin",
+      "bytes": 50331648
+    },
+    {
+      "file": "Informatics/exports/part-b4bd4583e3edaa70c43a04373c451d5de9a6e950c1bd0a3e777b5f52e4f15e05.bin",
+      "bytes": 50331648
+    },
+    {
+      "file": "Informatics/exports/part-bfb78f058737c7779ceb616f6498a3dfecae8a94270ef2d52b832af65332f4c1.bin",
+      "bytes": 50331648
+    },
+    {
+      "file": "Informatics/exports/part-c3a86c743ae740668bff673f5304faaf2706d3ca5c99e2c4f95dab24f0bc3644.bin",
+      "bytes": 466693
+    }
+  ],
+  "retainedFinalDataset": "7d1b63759a1604f60dc898f701472790f0da0b29a8cd714a545cdde0caf1239d"
+}

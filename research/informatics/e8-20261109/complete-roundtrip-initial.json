@@ -1,0 +1,16 @@
+{
+  "edge_values": true,
+  "formats": {
+    "json": {
+      "all_sources_reconstructed": 1196,
+      "passed": true
+    },
+    "csv": {
+      "all_sources_reconstructed": 1196,
+      "passed": true
+    }
+  },
+  "passed": true,
+  "datasetVersion": "4e7a392369f0b28c0eb293dc7b3a6ec68195efb8460c5f71c77a91f9d1717be9",
+  "note": "Initial complete roundtrip before refreshing bundle download cache keys. The geometry data is identical."
+}

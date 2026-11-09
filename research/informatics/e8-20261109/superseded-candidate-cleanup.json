@@ -1,0 +1,33 @@
+{
+  "reason": "Superseded, unpublished E8 candidate exports after incorporating the newer staging release. Existing published revisions are preserved.",
+  "files": [
+    {
+      "file": "Informatics/exports/manifest-7d1b63759a1604f60dc898f701472790f0da0b29a8cd714a545cdde0caf1239d.json",
+      "bytes": 2398727
+    },
+    {
+      "file": "Informatics/exports/part-1893e90a988e6d8464130d8734faacc8c2ce0bea71f165ac7b19bdfe58e558cb.bin",
+      "bytes": 31021993
+    },
+    {
+      "file": "Informatics/exports/part-1dcef9223a34161d7f55b1488ee3566120c62141d154c0d5de2a60d877fd0826.bin",
+      "bytes": 50331648
+    },
+    {
+      "file": "Informatics/exports/part-21d582ac4ac26d251e071e8613540e389a5bc97f841d8774b854ed4d0175a8ba.bin",
+      "bytes": 50331648
+    },
+    {
+      "file": "Informatics/exports/part-26b3a8a4e301d9e3acf0456b2387e9297b6d8c48bc128d87402b7abf525c8b89.bin",
+      "bytes": 50331648
+    },
+    {
+      "file": "Informatics/exports/part-4aa5980424a86f0cec3916c59ecd17f2b0e768398a4261e1262d07084ed3e32f.bin",
+      "bytes": 50331648
+    },
+    {
+      "file": "Informatics/exports/part-6a15eab0692a66e6ce91df272b888a4658f88fe41fc8b0ed1ebfad082358ab21.bin",
+      "bytes": 466839
+    }
+  ]
+}

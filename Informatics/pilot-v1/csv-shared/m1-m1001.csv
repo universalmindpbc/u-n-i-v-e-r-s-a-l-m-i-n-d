@@ -1,5 +1,5 @@
 ﻿field,type,value,resolved_url
-,object,14,
+,object,15,
 /version,text,m1-m1001-v1,
 /modulus_range,list:integer,1;1001,
 /record_count,integer,1001,
@@ -76,7 +76,7 @@
 /records/8/pisano_period,integer,24,
 /records/8/file,text,pilot-v1/m9.json,https://universalmind.tv/informatics/pilot-v1/m9.json
 /records/8/m9_family,boolean,true,
-/records/8/sha256,text,55da8b5e3406368cece4476720ca9d9208627e30a827fca30533d3235d74d8ff,
+/records/8/sha256,text,6df0cd6af3d286997bf090f8663a9295bfb3759f0c208cdb5e928b5eca1971ba,
 /records/9,object,7,
 /records/9/id,text,fibonacci-m10-p60,
 /records/9/name,text,Fibonacci M10P60,
@@ -9862,3 +9862,10 @@
 /research_supplements/oxtr_tfbs/coordinate_experiment/counts/encode,integer,255,
 /research_supplements/oxtr_tfbs/coordinate_experiment/counts/jaspar_score_400,integer,9164,
 /research_supplements/oxtr_tfbs/coordinate_experiment/status,text,"Exploratory coordinate mapping with Python, Biopython and Wolfram checks; biological association untested",
+/geometry_supplements,object,1,
+/geometry_supplements/e8,object,5,
+/geometry_supplements/e8/record_id,text,fibonacci-m9-p24,
+/geometry_supplements/e8/version,text,e8-m9-p24-2026-11-09-v1,
+/geometry_supplements/e8/json,text,pilot-v1/e8-m9-p24.json,https://universalmind.tv/informatics/pilot-v1/e8-m9-p24.json
+/geometry_supplements/e8/csv,text,pilot-v1/csv-shared/e8-m9-p24.csv,https://universalmind.tv/informatics/pilot-v1/csv-shared/e8-m9-p24.csv
+/geometry_supplements/e8/scope,text,Pure geometry: symbolic composition and computed projections of the E8 root system.,

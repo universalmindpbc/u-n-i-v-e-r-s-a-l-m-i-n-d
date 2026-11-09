@@ -17,3 +17,7 @@ oxtr-tfbs-v1/ contains a separate source-linked catalogue, literature records, r
 Coordinate experiment — 20 October 2026
 
 oxtr-tfbs-v1/experiment-v1/ contains fixed projections for 128 study observations (2 sequence elements and 126 BrainTF occupancy regions), 255 ENCODE regions and 9,164 JASPAR predictions (score >=400), compared visually with all four M9 P24 Atlas sequences. It includes original intervals, source provenance, mappings, methods, Python/Biopython code and Wolfram checks. JSON and CSV exports carry the same experiment information. This is visual exploration with computational verification; biological association is untested.
+
+E8 geometry — 9 November 2026
+
+The M9 record includes e8_geometry: all 240 roots, exact Weyl matrices, ordered root cycles, projection bases, coordinates, symbolic drawing conventions, M9 residues and source references. e8-m9-p24.json and csv-shared/e8-m9-p24.csv contain the same complete geometry. The two computed projections use cycles of 24 and 30; the symbolic composition and 8 / 6 / 3 guide are labelled separately.
