@@ -1,0 +1,10 @@
+import fs from 'node:fs/promises';import vm from 'node:vm';import assert from 'node:assert/strict';
+let started=0,portalOpened=0,selected='research';
+const study={context:()=>({}),ensureSession:async()=>{},headers:()=>({Authorization:'Bearer synthetic-session'}),openPortal:async()=>{portalOpened++;},inspect:async()=>({id:'10000000-0000-4000-8000-000000000000'}),portalAccess:async()=>({authenticated:false}),start:async()=>{started++;return{id:'10000000-0000-4000-8000-000000000000'};}};
+const frame={contentWindow:{QuantumStudyConversation:study}},window={addEventListener(){}};
+vm.runInNewContext(await fs.readFile(new URL('../../../Informatics/universal-one-quantum.js',import.meta.url),'utf8'),{window,document:{getElementById:id=>id==='experience'?{dataset:{area:'quantum'}}:frame},location:{origin:'https://staging.universalmind.tv'}});
+const request=async()=>Response.json({action:selected,question:'Research question'});
+for(selected of ['research','capabilities','hardware_capabilities'])assert.equal(await window.UniversalOneQuantum.answer('CUDA-Q?',[],request),null);
+assert.equal(started,0);selected='portal_access';const login=await window.UniversalOneQuantum.answer('Open access',[],request);assert.equal(login.effect,'portal_window_opened');assert.equal(login.answer,undefined);assert.equal(portalOpened,1);
+selected='start';const result=await window.UniversalOneQuantum.answer('Run the study',[],request);assert.equal(result.action,'start');assert.equal(result.answer,undefined);assert.equal(started,1);assert.equal((await window.UniversalOneQuantum.researchHeaders()).Authorization,'Bearer synthetic-session');
+console.log(JSON.stringify({passed:true,checks:['capabilities always reach conversational model','no action from capability questions','operation receipts contain no canned answer','existing start path retained','authenticated headers separate from model context']}));

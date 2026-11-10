@@ -115,7 +115,7 @@ function conversationResult(data){
  return {id:task?.id||data.id,question:data.question,status:task?.status||data.status,stage:task?.stage||'',message:task?.message||data.message,report:task?.report||(data.reports?.classical?.state==='complete'?{narrative:{answer:data.reports.classical.finding,meaning:data.reports.classical.calculation?.sequence?'Reconstructed sequence: '+data.reports.classical.calculation.sequence:''}}:null)};
 }
 window.QuantumStudyConversation=Object.freeze({
- openPortal,portalAccess,prepareExperiment,
+ openPortal,portalAccess,prepareExperiment,headers:agentHeaders,ensureSession:ensureAgentSession,
  context(){const data=conversationStudy();return {question:$('#question').value.trim()||data?.question||'',savedQuestion:data?.question||'',status:data?.agent?.status||data?.status||'idle'};},
  draft(question){if(busy)throw Error('A study request is already being processed.');if(question.length<5||question.length>3000)throw Error('Enter a scientific question in 5–3,000 characters.');$('#question').value=question;step('ask');},
  async start(question){

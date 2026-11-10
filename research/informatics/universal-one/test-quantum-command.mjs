@@ -12,4 +12,5 @@ const result=await(await quantumCommand(env,request({question:'Run this study',c
 assert.equal(result.action,'start');assert.equal(result.provider_response_id,'receipt');assert.equal(lastBody.store,false);assert.equal(lastBody.max_output_tokens,1400);assert.equal(lastBody.service_tier,'default');assert.equal(JSON.parse(lastBody.input[0].content).latest_visitor_message,'Run this study');assert(JSON.stringify(lastBody.input).length<25000);
 console.log('Quantum command validation, incomplete-response handling and bounded context passed.');
 
-for(const action of ['capabilities','hardware_capabilities']){const result=await(await quantumCommand(env,request({question:'Do you have access to the Quantum Agents?'}),provider('completed',{action,question:''}))).json();assert.equal(result.action,action);}
+for(const action of ['capabilities','hardware_capabilities'])await assert.rejects(quantumCommand(env,request({question:'Do you have access to the Quantum Agents?'}),provider('completed',{action,question:''})),/failed validation/);
+const capability=await(await quantumCommand(env,request({question:'Do you have access to CUDA-Q now?'}),provider('completed',{action:'research',question:''}))).json();assert.equal(capability.action,'research');

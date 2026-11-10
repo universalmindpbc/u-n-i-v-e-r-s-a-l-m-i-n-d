@@ -6,7 +6,7 @@
  function ensureHelpers(){
   if(window.UniversalOneContext&&window.UniversalOneNeedsResearch)return Promise.resolve();
   if(!helperPromise){const attempt=helperAttempt++,url=(name,version)=>{const value=new URL(name,helperRoot);value.searchParams.set('v',version);if(attempt)value.searchParams.set('retry',String(attempt));return value.href;};
-   helperPromise=Promise.all([import(url('universal-one-routing.js','3')),import(url('universal-one-context.js','2'))]).then(([routing,context])=>{window.UniversalOneNeedsResearch=routing.needsResearch;window.UniversalOneContext=context;}).catch(()=>{helperPromise=null;throw Error('Chat tools did not load. Please select Send to retry.');});
+   helperPromise=Promise.all([import(url('universal-one-routing.js','3')),import(url('universal-one-context.js','3'))]).then(([routing,context])=>{window.UniversalOneNeedsResearch=routing.needsResearch;window.UniversalOneContext=context;}).catch(()=>{helperPromise=null;throw Error('Chat tools did not load. Please select Send to retry.');});
   }return helperPromise;
  }
  if(!endpoint||!window.UniversalOneIdentity)return;
@@ -74,7 +74,7 @@
  document.addEventListener('pointerdown',e=>{if(!root.contains(e.target)){menu.hidden=true;sync();}});
  root.addEventListener('keydown',e=>{if(e.key==='Escape'&&opened&&(!panel.hidden||!menu.hidden)){e.preventDefault();e.stopPropagation();minimize();}});
  composer.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey&&!e.isComposing){e.preventDefault();$('.uo-compose').requestSubmit();}});
- async function request(path,body,signal){let response=await window.UniversalOneTransport?.(path,body,signal);if(!response){if(path==='/research'){await ensureHelpers();body=window.UniversalOneContext.compactResearchRequest(body);}else if(path==='/voice-session'){await ensureHelpers();body={manualTurns:true,quantumCommands:!!window.UniversalOneQuantum?.available()};}response=await fetch(endpoint+path,{method:'POST',headers:body instanceof FormData?{}:{'Content-Type':'application/json'},body:body instanceof FormData?body:JSON.stringify(body),signal});}if(!response.ok){const result=await response.json().catch(()=>({}));throw Error(result.error||'Connection interrupted. Please retry.');}return response;}
+ async function request(path,body,signal){let response=await window.UniversalOneTransport?.(path,body,signal);if(!response){if(path==='/research'){await ensureHelpers();body=window.UniversalOneContext.compactResearchRequest(body);}else if(path==='/voice-session'){await ensureHelpers();body={manualTurns:true,quantumCommands:!!window.UniversalOneQuantum?.available()};}response=await fetch(endpoint+path,{method:'POST',headers:body instanceof FormData?{}:{'Content-Type':'application/json',...(path==='/research'?await window.UniversalOneQuantum?.researchHeaders():{})},body:body instanceof FormData?body:JSON.stringify(body),signal});}if(!response.ok){const result=await response.json().catch(()=>({}));throw Error(result.error||'Connection interrupted. Please retry.');}return response;}
  function message(role,text,sources=[]){
   $('.uo-welcome')?.remove();const messageId=++messageNumber;const article=document.createElement('article');article.className='uo-message';article.dataset.role=role;article.conversationMessage={role,text,sources};
   const title=document.createElement('h3');title.textContent=role==='user'?'You':'Universal One';article.append(title);
@@ -99,7 +99,7 @@
  async function answerQuestion(question,signal,visitorQuestion=question){
   await ensureHelpers();
   const command=await window.UniversalOneQuantum?.answer(visitorQuestion,history,request,signal);
-  return command||await(await request('/research',{question,history,context:context()},signal)).json();
+  return await(await request('/research',{question,history,context:{...context(),...(command?{quantumAction:command}:{})}},signal)).json();
  }
  async function submit(){
   const question=composer.value.trim();if(!question||busy||mode!=='text')return;
