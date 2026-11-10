@@ -5,7 +5,7 @@
 const knownInputs=new WeakMap(),pendingInputs=new WeakMap();
 const bytes=value=>new TextEncoder().encode(JSON.stringify(value)).length;
 export function qaSpendLedger(limit){
- const n=Number(limit);return Number.isFinite(n)&&n>0&&n<=2?{limitUSD:n,chargedUpperUSD:0,calls:[]}:null;
+ const n=Number(limit);return Number.isFinite(n)&&n>0&&n<=2.25?{limitUSD:n,chargedUpperUSD:0,calls:[]}:null;
 }
 export function reserveQACall(ledger,path,body){
  if(!ledger)return null;
