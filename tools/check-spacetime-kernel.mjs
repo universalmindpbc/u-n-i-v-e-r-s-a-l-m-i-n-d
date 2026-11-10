@@ -35,6 +35,6 @@ assert.equal(k.models.find(m=>m.id==='fibonacci').values.length,24);
 assert.equal(k.models.find(m=>m.id==='king').encoding.length,64);
 assert.equal(k.shared_clock.position_realignment_steps,192);
 assert.deepEqual(k.analysis_contract.results,[]);
-assert.equal(k.access.mcp_server_implemented,false);
+assert.equal(k.access.mcp_server_implemented,false);assert.equal(k.live_resources.length,5);assert.ok(k.live_resources.every(r=>r.status==='connected_in_zen'));assert.equal(k.shared_clock.step_default,'year');assert.ok(k.planned_resources.every(Boolean));
 const report={status:'passed',sha256:KERNEL.sha256,series:k.series.length,records:count,missing_values:missing,checks:['All native values and source fields preserved','Calendar interval boundaries and sorted unique observations','Null masks and unavailable release timestamps','Derived market warm-up periods','Conflict bounds retained','Mathematical periods and native encodings','No fabricated analysis results or MCP server','Deterministic generation and pinned content hash']};
-const out=new URL('../research/informatics/spacetime-zen-20261110/',import.meta.url);mkdirSync(out,{recursive:true});writeFileSync(new URL('kernel-verification.json',out),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report));
+const out=new URL('../research/informatics/spacetime-mobile-20261110/',import.meta.url);mkdirSync(out,{recursive:true});writeFileSync(new URL('kernel-verification.json',out),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report));

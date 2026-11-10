@@ -1,0 +1,24 @@
+import assert from 'node:assert/strict';
+import {parseKp,parseMinute} from '../Informatics/spacetime/weather.mjs';
+import {clampWindow,zoomWindow} from '../Informatics/spacetime/navigation.mjs';
+import {mkdirSync,writeFileSync} from 'node:fs';
+const HOUR=3600000,DAY=24*HOUR,origin=Date.UTC(2026,10,8),now=origin+2*DAY;
+const raw=Array.from({length:16},(_,i)=>({time_tag:new Date(origin+i*3*HOUR).toISOString().slice(0,19),Kp:i/3,station_count:8}));
+const result=parseKp(raw,now);assert.equal(result.rows.length,8);assert.equal(result.start,origin+DAY);assert.equal(result.end,now);assert.equal(result.rows[0].value,8/3);
+const gap=parseKp(raw.filter((_,i)=>i!==10),now);assert.equal(gap.rows[2].value,null);assert.equal(gap.rows[2].valid,false);assert.equal(gap.rows.length,8);
+assert.equal(parseKp(raw,now-1).end,now-3*HOUR);
+assert.equal(parseKp(raw,now+7*HOUR).stale,true);
+assert.throws(()=>parseKp([...raw,raw[0]],now),/Duplicate/);
+assert.throws(()=>parseKp([{time_tag:'2026-11-09T00:00:00',Kp:10}],now),/Invalid Kp value/);
+assert.throws(()=>parseKp([{time_tag:'bad',Kp:2}],now),/interval/);
+const old=[['time_tag','Kp','station_count'],...raw.map(r=>[r.time_tag,String(r.Kp),'8'])];assert.deepEqual(parseKp(old,now).rows.map(r=>r.value),result.rows.map(r=>r.value));
+assert.deepEqual(clampWindow(-20,20,[0,100],5),[0,40]);assert.deepEqual(clampWindow(80,120,[0,100],5),[60,100]);assert.deepEqual(clampWindow(50,51,[0,100],5),[50,55]);
+for(const f of [.1,.4,.9]){const [a,b]=zoomWindow([20,80],2,f,[0,100],1);assert.ok(Math.abs(a+(b-a)*f-(20+60*f))<1e-8);assert.deepEqual(zoomWindow([a,b],.5,f,[0,100],1).map(Math.round),[20,80]);}
+const minuteRows=[{time_tag:'2026-11-09T00:00:00',active:false,source:'ACE',proton_speed:999},{time_tag:'2026-11-09T00:00:00',active:true,source:'SOLAR1',proton_speed:400,bz_gsm:-2},{time_tag:'2026-11-09T00:01:00',active:true,source:'SOLAR1',proton_speed:null,bz_gsm:3}];
+const wind=parseMinute(minuteRows,'wind-speed',now);assert.equal(wind.rows.length,2);assert.equal(wind.rows[0].value,400);assert.equal(wind.rows[1].valid,false);assert.equal(wind.rows[0].source_record.source,'SOLAR1');
+assert.equal(parseMinute(minuteRows,'bz',now).rows[0].value,-2);
+const xrays=[{time_tag:'2026-11-09T00:00:00Z',energy:'0.05-0.4nm',flux:5e-4},{time_tag:'2026-11-09T00:00:00Z',energy:'0.1-0.8nm',flux:2e-6,electron_contaminaton:false},{time_tag:'2026-11-09T00:01:00Z',energy:'0.1-0.8nm',flux:3e-6,electron_contaminaton:true}];
+const xr=parseMinute(xrays,'xray',now);assert.equal(xr.rows[0].value,2e-6);assert.equal(xr.rows[1].value,null);assert.equal(xr.rows[1].source_record.flux,3e-6);
+assert.throws(()=>parseMinute([minuteRows[1],minuteRows[1]],'wind-speed',now),/Duplicate/);
+const report={status:'passed',checks:['Active spacecraft selection and native source flags','Missing plasma values and signed Bz preserved','Correct X-ray band and contamination masks','Duplicate active observations rejected','Zoom keeps the focal time fixed and respects bounds/minimum span','Zoom-in/out round trip','Kp uses eight complete UTC intervals','Missing Kp remains null with a false mask','Future and incomplete intervals excluded','Delayed feed flagged','Invalid and duplicate inputs rejected','Current and legacy NOAA formats supported']};
+const dir=new URL('../research/informatics/spacetime-mobile-20261110/',import.meta.url);mkdirSync(dir,{recursive:true});writeFileSync(new URL('navigation-data-verification.json',dir),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report));

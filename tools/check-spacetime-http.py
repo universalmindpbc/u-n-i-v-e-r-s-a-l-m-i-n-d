@@ -25,9 +25,16 @@ for relative in files:
    normalization='Removed one existing edge-injected Cloudflare analytics beacon for source comparison'
   assert hashlib.sha256(normalized).hexdigest()==hashlib.sha256(p.read_bytes()).hexdigest(),route
   if p.suffix in ['.mjs','.js']:assert 'javascript' in response.headers.get('Content-Type',''),route
+  if p.suffix=='.mp4':assert 'video/mp4' in response.headers.get('Content-Type',''),route
   if p.suffix=='.json':assert 'application/json' in response.headers.get('Content-Type',''),route
   if p.name in ['kernel.json','kernel.schema.json']:assert response.headers.get('Access-Control-Allow-Origin')=='*',route
   report['files'].append({'path':route,'status':200,'served_sha256':served_sha,'source_sha256':hashlib.sha256(normalized).hexdigest(),'normalization':normalization,'noindex':True,'content_type':response.headers.get('Content-Type')})
+video_route='/informatics/spacetime/media/inner-planes-loop.mp4'
+with urlopen(Request(origin+video_route,headers={'User-Agent':'curl/8.7.1','Range':'bytes=0-1023'}),timeout=30) as response:
+ assert response.status==206
+ assert response.headers.get('Content-Range','').startswith('bytes 0-1023/')
+ assert len(response.read())==1024
+ report['video_range_request']={'status':206,'bytes':1024,'content_range':response.headers.get('Content-Range')}
 for route in ['/informatics/','/sitemap.xml','/llms.txt','/informatics/sitemap.xml','/informatics/llms.txt']:
  try:
   with fetch(origin+route) as response:
@@ -36,6 +43,6 @@ for route in ['/informatics/','/sitemap.xml','/llms.txt','/informatics/sitemap.x
  except HTTPError as error:
   assert error.code==404,(route,error.code)
   report['discovery'].append({'path':route,'status':404})
-out=root/'research/informatics/spacetime-zen-20261110/staging';out.mkdir(parents=True,exist_ok=True)
+out=root/'research/informatics/spacetime-mobile-20261110/staging';out.mkdir(parents=True,exist_ok=True)
 (out/'http-verification.json').write_text(json.dumps(report,indent=2)+'\n')
 print(json.dumps({'status':'passed','commit':commit,'files':len(report['files']),'discovery':report['discovery']}))

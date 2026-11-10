@@ -1,1 +1,1 @@
-export const KERNEL={"schema_version":"spacetime-mini-tensor/1.0.0","url":"kernel.json","sha256":"33168d01dc68cde4de2a780c3bb7cb6043e7b4b1b3cfac13df158719f4d097f2","series":11,"observations":9425,"models":3};
+export const KERNEL={"schema_version":"spacetime-mini-tensor/1.1.0","url":"kernel.json","sha256":"1638b1785a1d37c34230f201d9ae0cd9665cdc455faf39660834587ae140e2fc","series":11,"observations":9425,"models":3};

@@ -14,7 +14,7 @@
   ],
   "properties": {
     "schema_version": {
-      "const": "spacetime-mini-tensor/1.0.0"
+      "const": "spacetime-mini-tensor/1.1.0"
     },
     "snapshot_date": {
       "type": "string",

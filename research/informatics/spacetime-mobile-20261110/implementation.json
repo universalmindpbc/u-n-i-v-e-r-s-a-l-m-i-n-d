@@ -1,0 +1,41 @@
+{
+  "date": "2026-11-10",
+  "user_decisions": {
+    "sequence_clock": "One value per year; Fibonacci cycle 24 years and King Wen traversal 64 years. Fixed origin while zooming.",
+    "background": "Autoplay and loop; remove all play/pause controls.",
+    "daily_view": "Space-weather selector, including solar wind and solar flares, plus online sentiment or hostility comparator."
+  },
+  "implemented": {
+    "background": {
+      "source": "Inner Planes / ISS - The Blue Pearl",
+      "cloudflare_uid": "08d6983ef6584f2b8659ceaf0cfa248a",
+      "extraction": "Source seconds 8\u201353; 45 seconds; video only",
+      "format": "H.264 Main, yuv420p, 1280x720, 24 fps, MP4 faststart",
+      "audio_tracks": 0,
+      "bytes": 3597759,
+      "sha256": "10c374e315af7d1f7961faee413afcad9c36f05b009b385d079a2c3ff99b7609",
+      "playback": "Native autoplay, muted, loop, playsinline; same-origin MP4; positive backdrop stacking; visibility/pageshow and ordinary-interaction retries. No playback buttons.",
+      "verification_limit": "Chromium mobile emulation is not physical iPhone Safari. OS autoplay restrictions remain browser-controlled."
+    },
+    "navigation": "Touch pinch, horizontal pan, Ctrl/Command wheel, zoom buttons and reset; single-finger vertical scrolling retained. Native reporting intervals and source data remain unchanged.",
+    "patterns": "Zen dropdown: None, Fibonacci sequence, King Wen sequence, Timewave Zero. Native sequence steps on a separate scale; dense patterns request zoom rather than cover the solar trace. Historical Timewave preset remains authentic.",
+    "space_weather": [
+      "Estimated Kp, three-hour cadence",
+      "Solar-wind proton speed, one-minute cadence",
+      "Solar-wind proton density, one-minute cadence",
+      "IMF Bz (GSM), one-minute cadence",
+      "GOES 0.1\u20130.8 nm X-ray flux, one-minute cadence and logarithmic display"
+    ],
+    "daily_data": "Current NOAA replacement RTSW feeds; only active spacecraft selected. Preserve source records and flags, missing values and source timestamps. Do not apply an unmodelled L1-to-Earth time shift. Mask GOES electron-contamination flags.",
+    "social_status": "Online sentiment and hostility/bullying are selectable comparison intents. Provider data remains unconnected; no fabricated social trace, crawler or classifier.",
+    "kernel": "Version 1.1.0 registers five dynamic feeds and yearly Zen clock; current 24-hour data exports separately as spacetime-24h/v2."
+  },
+  "primary_references": [
+    "https://developer.apple.com/documentation/webkit/delivering-video-content-for-safari",
+    "https://webkit.org/blog/6784/new-video-policies-for-ios/",
+    "https://www.weather.gov/media/notification/pdf_2026/scn26-21_Data_Format_Changes_Impacting_SWPC_Products.pdf",
+    "https://www.spaceweather.gov/products/solar-wind",
+    "https://www.spaceweather.gov/products/goes-x-ray-flux",
+    "https://www.spaceweather.gov/products/planetary-k-index"
+  ]
+}

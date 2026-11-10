@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "sha256": "1638b1785a1d37c34230f201d9ae0cd9665cdc455faf39660834587ae140e2fc",
+  "series": 11,
+  "records": 9425,
+  "missing_values": 13,
+  "checks": [
+    "All native values and source fields preserved",
+    "Calendar interval boundaries and sorted unique observations",
+    "Null masks and unavailable release timestamps",
+    "Derived market warm-up periods",
+    "Conflict bounds retained",
+    "Mathematical periods and native encodings",
+    "No fabricated analysis results or MCP server",
+    "Deterministic generation and pinned content hash"
+  ]
+}

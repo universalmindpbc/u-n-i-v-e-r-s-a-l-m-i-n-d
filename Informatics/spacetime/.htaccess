@@ -8,6 +8,7 @@ DirectoryIndex index.html
 <IfModule mod_mime.c>
   AddType application/javascript .mjs
   AddType application/json .json
+  AddType video/mp4 .mp4
 </IfModule>
 
 <FilesMatch "^kernel(\.schema)?\.json$">

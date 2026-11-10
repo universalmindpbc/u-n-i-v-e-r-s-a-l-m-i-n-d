@@ -1,38 +1,16 @@
-// The existing Inner Planes visual and Universal One planet identity.
+// Silent native MP4: no HLS dependency or audio stream.
 const $=s=>document.querySelector(s);
-const video=$('#earth-film'),motion=$('#background-motion');
-const reduced=matchMedia('(prefers-reduced-motion: reduce)');
-const stream='https://customer-1vpwglz3v6fiyaas.cloudflarestream.com/08d6983ef6584f2b8659ceaf0cfa248a/manifest/video.m3u8';
-let desired=!reduced.matches,controller,initializing;
-video.muted=true;video.defaultMuted=true;video.volume=0;
-function updateMotion(){motion.setAttribute('aria-pressed',String(desired));motion.querySelector('span').textContent=desired?'Pause background':'Play background';}
-function prepare(){
- if(initializing)return initializing;
- initializing=(async()=>{
-  if(video.canPlayType('application/vnd.apple.mpegurl'))video.src=stream;
-  else{
-   await new Promise((resolve,reject)=>{const script=document.createElement('script');script.src='hls.min.js?v=1';script.onload=resolve;script.onerror=reject;document.head.append(script);});
-   if(!window.Hls?.isSupported())throw new Error('Streaming unavailable');
-   controller=new window.Hls({maxBufferLength:15,maxMaxBufferLength:30,capLevelToPlayerSize:true});
-   controller.loadSource(stream);controller.attachMedia(video);
-  }
- })().catch(()=>{desired=false;updateMotion();motion.querySelector('span').textContent='Background unavailable';});
- return initializing;
-}
-async function syncPlayback(){
- updateMotion();
- if(!desired||document.hidden){video.pause();return;}
- await prepare();
- if(!desired||document.hidden)return;
- try{await video.play();}catch{desired=false;updateMotion();}
-}
-video.addEventListener('loadedmetadata',()=>{video.currentTime=Math.min(8,Math.max(0,video.duration-1));});
+const video=$('#earth-film');
+video.muted=true;video.defaultMuted=true;video.volume=0;video.playsInline=true;video.autoplay=true;video.loop=true;
+function resume(){if(document.hidden)return;video.play().then(()=>{video.dataset.playback='playing';}).catch(()=>{video.dataset.playback='awaiting-browser-permission';});}
+video.addEventListener('canplay',resume);
 video.addEventListener('volumechange',()=>{if(!video.muted||video.volume!==0){video.muted=true;video.volume=0;}});
-motion.addEventListener('click',()=>{desired=!desired;syncPlayback();});
-reduced.addEventListener('change',()=>{if(reduced.matches){desired=false;syncPlayback();}});
-document.addEventListener('visibilitychange',syncPlayback);
-window.addEventListener('pagehide',()=>{desired=false;video.pause();controller?.destroy();controller=null;initializing=null;});
-syncPlayback();
+document.addEventListener('visibilitychange',()=>{if(document.hidden)video.pause();else resume();});
+window.addEventListener('pageshow',resume);
+window.addEventListener('pagehide',()=>video.pause());
+// A normal page interaction retries playback if the browser deferred autoplay.
+for(const event of ['touchend','pointerup','keydown'])document.addEventListener(event,()=>{if(video.paused)resume();},{passive:true});
+resume();
 
 // Reuse the established Universal One texture algorithm; no assistant backend.
 const canvas=document.createElement('canvas');canvas.width=256;canvas.height=128;
