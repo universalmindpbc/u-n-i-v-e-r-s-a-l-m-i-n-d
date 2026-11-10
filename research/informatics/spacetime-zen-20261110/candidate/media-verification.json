@@ -1,0 +1,24 @@
+{
+  "mode": "candidate",
+  "process_audio_disabled": true,
+  "playback": {
+    "width": 1280,
+    "height": 720,
+    "time": 9.418665,
+    "muted": true,
+    "defaultMuted": true,
+    "volume": 0,
+    "loop": true,
+    "playsInline": true,
+    "paused": false
+  },
+  "status": "passed",
+  "checks": [
+    "Single dedicated browser with process-level mute before navigation",
+    "Reduced motion starts with poster",
+    "Explicit playback advances using the existing Inner Planes stream",
+    "Muted, zero volume, inline looping",
+    "Pause control",
+    "Desktop/mobile screenshots and Universal One preview"
+  ]
+}

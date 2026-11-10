@@ -29,6 +29,9 @@
   ],
   "errors": [],
   "checks": [
+    "Universal One preview, Escape and focus return",
+    "Silent reduced-motion background",
+    "Kernel JSON retrieval and export reference",
     "Zen default and visible switch",
     "two observed series in Zen",
     "optional Fibonacci overlay preserves chart height",

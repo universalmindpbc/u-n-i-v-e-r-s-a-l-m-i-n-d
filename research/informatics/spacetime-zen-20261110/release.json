@@ -1,0 +1,31 @@
+{
+  "date": "2026-11-10",
+  "source_commit": "ccda96b8089524f6bb63eb716bb2ebbf8e0a0cd8",
+  "staging_url": "https://staging.universalmind.tv/informatics/spacetime/",
+  "kernel_url": "https://staging.universalmind.tv/informatics/spacetime/kernel.json",
+  "kernel_sha256": "33168d01dc68cde4de2a780c3bb7cb6043e7b4b1b3cfac13df158719f4d097f2",
+  "deployment": "Existing scoped Panthur FTP: deploy-panthur-staging.sh informatics-spacetime",
+  "production_modified": false,
+  "checks": {
+    "math": "121 independent Timewave C-reference points; all sequence and source-range checks passed",
+    "kernel": "11 series; 9425 native records; 13 null masks; all native fields preserved; deterministic digest",
+    "browser": "320, 390, 1024 and 1440px; Zen/Research controls, 9 indicators, export and preview interaction passed",
+    "http": "14 published files matched committed bytes; JSON MIME, CORS and noindex verified; global navigation/sitemap/LLM discovery excludes page",
+    "media": "One process-muted Chromium session; 1280x720 existing Inner Planes stream; autoplay, pause and reduced-motion verified; browser closed"
+  },
+  "limits": [
+    "Existing Inner Planes Cloudflare stream maxes at 720p. NASA 1080p/4K data visualisations remain reference options for Ben.",
+    "Universal One is a design preview with no API connection.",
+    "Mini Tensor is a portable data and analysis contract; no fitted coherence or chaos results, MCP server or swarm execution.",
+    "Public JSON is unlisted and noindex, with no access gate."
+  ],
+  "evidence": [
+    "kernel-verification.json",
+    "staging/verification.json",
+    "staging/http-verification.json",
+    "staging/media-verification.json",
+    "staging/background-desktop.png",
+    "staging/background-mobile.png",
+    "staging/universal-one.png"
+  ]
+}
