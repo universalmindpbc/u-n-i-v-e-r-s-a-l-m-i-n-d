@@ -1,0 +1,59 @@
+{
+  "mode": "candidate routed on permanent staging origin",
+  "mutedProcess": true,
+  "playbackDisabled": true,
+  "results": [
+    {
+      "width": 1470,
+      "leadStudies": 5,
+      "indexedSources": 33,
+      "sourceCount": 38,
+      "originalReferences": 11,
+      "overflow": false,
+      "search": true,
+      "download": true,
+      "embedded": true,
+      "existingChapter": true,
+      "errors": []
+    },
+    {
+      "width": 1024,
+      "leadStudies": 5,
+      "indexedSources": 33,
+      "sourceCount": 38,
+      "originalReferences": 11,
+      "overflow": false,
+      "search": true,
+      "download": true,
+      "embedded": true,
+      "existingChapter": true,
+      "errors": []
+    },
+    {
+      "width": 390,
+      "leadStudies": 5,
+      "indexedSources": 33,
+      "sourceCount": 38,
+      "originalReferences": 11,
+      "overflow": false,
+      "search": true,
+      "download": true,
+      "embedded": true,
+      "existingChapter": true,
+      "errors": []
+    },
+    {
+      "width": 320,
+      "leadStudies": 5,
+      "indexedSources": 33,
+      "sourceCount": 38,
+      "originalReferences": 11,
+      "overflow": false,
+      "search": true,
+      "download": true,
+      "embedded": true,
+      "existingChapter": true,
+      "errors": []
+    }
+  ]
+}

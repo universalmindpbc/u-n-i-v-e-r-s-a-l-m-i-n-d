@@ -37,6 +37,8 @@ for(const width of [1470,1024,390,320]){
  const egermann=page.locator('.masked-index-entry').filter({has:page.locator('#paper-masked-egermann2006')});
  assert.equal(await egermann.locator('summary').first().locator('.trust-score svg').count(),2);
  assert.equal(await page.locator('#topic-masked-background .trust-score').count(),0);
+ assert.equal(await page.locator('#topic-masked-lead .trust-score circle').first().getAttribute('fill'),'#1468a8');
+ assert.equal(await page.locator('#topic-masked-lead .trust-score path').first().getAttribute('fill'),'#fff');
  await page.locator('#topic-masked-outcomes .masked-index-entry').first().locator('summary').first().click();
  assert.match(await page.locator('#topic-masked-outcomes .masked-index-entry').first().innerText(),/Function in the rationale/);
  const overflow=await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1);assert.equal(overflow,false,`overflow ${width}`);

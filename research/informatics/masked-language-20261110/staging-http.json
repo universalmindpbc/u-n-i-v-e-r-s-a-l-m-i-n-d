@@ -1,0 +1,50 @@
+[
+  {
+    "path": "library.js",
+    "status": 200,
+    "sha256": "32eaf4a9d7108abffb8fc3cf7f66cd2213f5183f9d6d92ac5aa887567a7900e0",
+    "matchesSourceAndManifest": true
+  },
+  {
+    "path": "library-model.js",
+    "status": 200,
+    "sha256": "3fe8ac5ff0b61e4348e5de0808e2f7956329df489b51ccf18a3f0163e00b376e",
+    "matchesSourceAndManifest": true
+  },
+  {
+    "path": "library.css",
+    "status": 200,
+    "sha256": "a65e479b81a3673ef4c99059e1b7531db02e5700519cbe2905612103ba4a5462",
+    "matchesSourceAndManifest": true
+  },
+  {
+    "path": "library.html",
+    "status": 200,
+    "sha256": "04c49c74b095c37dac5bb5fdf6f0b612108526e765f2868cbb453bf10e266e07",
+    "matchesSourceAndManifest": true
+  },
+  {
+    "path": "library-data/masked-language-expansion.json",
+    "status": 200,
+    "sha256": "9255e5121593d09ea0989b039428ec65a4d33e813b527e394fb673b0a0ecb550",
+    "matchesSourceAndManifest": true
+  },
+  {
+    "path": "library-data/masked-language-register.csv",
+    "status": 200,
+    "sha256": "c8f5d8c676ffe20d523567878ac1b56a050d58001dedcbefa811a8be38acfecf",
+    "matchesSourceAndManifest": true
+  },
+  {
+    "path": "read/publications/pmid-19715763-cd7f5560.html",
+    "status": 200,
+    "sha256": "5ad0b28fd26a049f8e2df4c40f9f0360bf43a6d466547badd7e084fb43914287",
+    "matchesSourceAndManifest": true
+  },
+  {
+    "path": "exports/manifest.json",
+    "status": 200,
+    "sha256": "bdbf485990d8649eed440e3c8022307194ab9ece73646a3625798394fb22bc4f",
+    "matchesSourceAndManifest": true
+  }
+]
