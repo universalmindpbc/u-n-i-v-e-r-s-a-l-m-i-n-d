@@ -1,0 +1,100 @@
+{
+  "paidStudyCalls": 0,
+  "hardwareJobs": 0,
+  "gpuJobs": 0,
+  "processAudioMuted": true,
+  "turns": [],
+  "requests": [
+    {
+      "path": "/quantum/command",
+      "status": 200,
+      "question": "I've just logged in. Is my funded credit verified?",
+      "sessionHeaderPresent": false,
+      "portalHeaderPresent": false,
+      "response": {
+        "action": "research",
+        "question": "",
+        "provider_response_id": "resp_0b67aac2313ff49c016af29d12bc8087d0b886ed5edbff3c4e",
+        "usage": {
+          "input_tokens": 711,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 20,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 731
+        },
+        "qaSpend": {
+          "limitUSD": 0.5,
+          "chargedUpperUSD": 0.009887499999999994,
+          "calls": [
+            {
+              "path": "/responses",
+              "model": "gpt-6-astra",
+              "inputTokenUpper": 12209,
+              "outputTokenUpper": 1400,
+              "boundMethod": "UTF-8 bytes plus framing",
+              "reservedUSD": 0.22261250000000002,
+              "chargedUpperUSD": 0.0098875,
+              "usage": {
+                "input_tokens": 711,
+                "input_tokens_details": {
+                  "cache_write_tokens": 0,
+                  "cached_tokens": 0
+                },
+                "output_tokens": 20,
+                "output_tokens_details": {
+                  "reasoning_tokens": 0
+                },
+                "total_tokens": 731
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "path": "/research",
+      "status": 422,
+      "question": "I've just logged in. Is my funded credit verified?",
+      "sessionHeaderPresent": true,
+      "portalHeaderPresent": false,
+      "response": {
+        "error": "QA spending guard stopped before another paid request.",
+        "qaSpend": {
+          "limitUSD": 2,
+          "chargedUpperUSD": 0.00014999999999999736,
+          "calls": [
+            {
+              "path": "/embeddings",
+              "model": "text-embedding-3-small",
+              "inputTokenUpper": 8304,
+              "outputTokenUpper": 0,
+              "boundMethod": "UTF-8 bytes plus framing",
+              "reservedUSD": 0.1038,
+              "chargedUpperUSD": 0.00015,
+              "usage": {
+                "prompt_tokens": 12,
+                "total_tokens": 12
+              }
+            }
+          ],
+          "blocked": {
+            "path": "/responses",
+            "inputTokenUpper": 94933,
+            "outputTokenUpper": 16384,
+            "reservedUSD": 2.0058625,
+            "boundMethod": "UTF-8 bytes plus framing"
+          }
+        }
+      }
+    }
+  ],
+  "blockedMutations": [],
+  "errors": [],
+  "passed": false,
+  "error": "No new conversational answer rendered\n\n0 !== 1\n"
+}
