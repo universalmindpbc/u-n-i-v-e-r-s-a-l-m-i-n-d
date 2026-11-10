@@ -1,0 +1,8 @@
+{
+  "removed": "merge-baseline-export.json",
+  "bytes": 2398727,
+  "reason": "Exact duplicate of committed baseline manifest fb87147dd:Informatics/exports/manifest.json; used only for the completed merge.",
+  "diskFreeBefore": 38478540800,
+  "diskFreeAfter": 38480928768,
+  "preserved": "All source, release records, chat history, session logs, authenticated state and the active task worktree."
+}

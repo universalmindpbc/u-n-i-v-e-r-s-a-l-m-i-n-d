@@ -1,0 +1,18 @@
+{
+  "sourceCommit": "a2e99c24d",
+  "build": "informatics-astra-staging:70aea78a-5b67-4408-91b1-31c07c3caa0e",
+  "sourceSHA256": "77eaebbf8b7255a8dd3995c1dd487329406c6291fc7ba3ada726dfe76fc681fe",
+  "imageDigest": "sha256:c2ef2a3900b17c5ee2c913bea37fd7dedf2ee62296262e5aadae9f212d26c642",
+  "previousImageDigest": "sha256:710b8cff7ac5d5ff169d552695b89f67bb2508a4e2c359b2975aa19e2e9a6b42",
+  "changeSet": "report-recovery-20261110",
+  "stackStatus": "UPDATE_COMPLETE",
+  "state": "Active",
+  "tests": 22,
+  "templateUnchanged": true,
+  "otherParametersUnchanged": true,
+  "environmentUnchanged": true,
+  "roleUnchanged": true,
+  "reportOutputCeiling": 16384,
+  "studyTokenCeiling": 64000,
+  "verification": "CloudShell CloudFormation, CodeBuild and Lambda read-back."
+}

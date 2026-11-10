@@ -1,0 +1,36 @@
+{
+  "passed": true,
+  "equivalentFields": 5061,
+  "json": {
+    "bytes": 218359,
+    "sha256": "a7c1ef43014bb8277a4ab6d8a5302daeb27f20b94d82cd639fd097d1a8d6e924"
+  },
+  "csv": {
+    "bytes": 486808,
+    "sha256": "5ccbebf098e1e6049883441d987fe614c2966d3417ef10e4dc9bd6f391b1e734"
+  },
+  "reviews": [
+    {
+      "phase": "design",
+      "decision": "approve",
+      "evidenceSHA256": "f4554fe77185e74781c5398a26120c132b1c153023cb0e578b42b3eac1af3597",
+      "retainedInput": true,
+      "literaturePapers": 3
+    },
+    {
+      "phase": "final",
+      "decision": "approve",
+      "evidenceSHA256": "d00bf6362730ec7caf54b06be736408a28037eb0720cd5ecee227d2b39a75d6e",
+      "retainedInput": true,
+      "literaturePapers": 3
+    }
+  ],
+  "originalS3Integrity": {
+    "verifiedInCloudShell": true,
+    "bytes": 219207,
+    "sha256": "22bfd9125bd603fcf06fe778dbd6e568f08ffe27c5fce487c41c910734900428",
+    "reviewPacketsMatch": true,
+    "method": "Recomputed both review hashes directly from the persisted S3 record with Python json.dumps(sort_keys=True,ensure_ascii=False,allow_nan=False). Both assertions passed."
+  },
+  "representationLimit": "Browser downloads reserialize JSON numbers, including 1.0 as 1. Their parsed data and CSV agree, but their bytes cannot reproduce the original Python packet hashes. The original S3 hashes were verified separately. Original-file download through CloudShell failed; no direct original-to-browser semantic comparison is claimed."
+}

@@ -1,5 +1,5 @@
 {
-  "sourceCommit": "0b588bd9619e1494a525527fa0665dfa3e6976cd",
+  "sourceCommit": "310693fff44bb056bd93495358c0685433c290a6",
   "stagingWorkerVersion": "4a0a0b17-7a38-432c-9739-5c8332762398",
   "stagingURL": "https://staging.universalmind.tv/informatics/quantum/",
   "completedChecks": {
@@ -58,16 +58,42 @@
     "format-roundtrip": {
       "passed": true,
       "evidence": "format-roundtrip.json"
+    },
+    "new-study-verification": {
+      "passed": true,
+      "evidence": "new-study-verification.json"
+    },
+    "new-study-delivery": {
+      "passed": true,
+      "evidence": "new-study-delivery.json"
+    },
+    "new-study-download-integrity": {
+      "passed": true,
+      "evidence": "new-study-download-integrity.json"
+    },
+    "merged-roundtrip": {
+      "passed": true,
+      "evidence": "merged-roundtrip.json"
+    },
+    "merged-staging-files": {
+      "passed": true,
+      "evidence": "merged-staging-files.json"
     }
   },
   "liveStudy": {
     "id": "7c15c156-c1cb-4332-8f08-822156fb366b",
-    "status": "running",
-    "evidence": "new-study-verification.json"
+    "status": "complete",
+    "evidence": "new-study-verification.json",
+    "astraTokensUpper": 48986,
+    "astraUSDUpper": 2.4493,
+    "geminiUSD": 0.280212
   },
   "knownLimitations": "open-limitations.json",
-  "sharedWorker": "shared-worker-activation.json",
+  "sharedWorker": "recovery-worker-activation.json",
   "newHardwareJobs": 0,
   "newPaidGPUJobs": 0,
-  "productionWebsiteModified": false
+  "productionWebsiteModified": false,
+  "finalAudit": "FINAL-QA.md",
+  "productionSettingsModified": false,
+  "sharedWorkerImageUpdatedWithApproval": true
 }
