@@ -1,0 +1,51 @@
+{
+  "status": "Discussion proposals; these features are absent from the deployed page",
+  "date": "2026-11-10",
+  "terminology": {
+    "proposed_lens": "Evolution, connection and entropy remain conceptual research language. Individual charts retain measurable outcomes and their own units.",
+    "historical_note": "McKenna described novelty as complexity and connectivity. In his 1999 talk, he named its opposing tendency habit and explicitly distinguished that concept from thermodynamic entropy. This talk alone does not establish his wording across all publications.",
+    "source": "https://organism.earth/library/document/culture-and-ideology-are-not-your-friends",
+    "timestamp": "13:31 to 15:51"
+  },
+  "zen_view": {
+    "intent": "Preserve the full research workspace while presenting one relationship at a time.",
+    "proposal": "Zen opens with one observed solar or geomagnetic measure and one selected human or market measure. An optional pattern selector adds Fibonacci sequence, King Wen sequence or historical Timewave.",
+    "controls": ["Human measure", "Space-weather measure", "Time window", "Optional pattern", "Zen or Research"],
+    "details": "Keep native units, coverage and source visible. Place phase, transforms, normalization and full layer controls in Research. Switching views preserves the research configuration.",
+    "historical_timewave": "Preserve the historical zero and undefined post-zero interval; selecting a recent window never silently moves that anchor.",
+    "design_reference": "https://learn.microsoft.com/en-us/power-bi/create-reports/desktop-bookmarks"
+  },
+  "human_climate_24h": {
+    "intent": "Compare hourly aggregate online behaviour with observed space weather in a rolling 24-hour display.",
+    "candidate_measures": [
+      {"name": "Supportive language", "definition": "Validated classifier estimates of gratitude, encouragement or offers of help per eligible sampled message."},
+      {"name": "Hostility", "definition": "Validated classifier estimates of targeted insults or threats per eligible sampled message."},
+      {"name": "Hate speech", "definition": "A separate, explicitly defined and validated category, with context and language-specific evaluation."},
+      {"name": "Sentiment", "definition": "Positive and negative emotional valence, distinct from harmful speech and supportive interaction."},
+      {"name": "Reciprocity", "definition": "A separate conversation-network measure; raw engagement alone is not evidence of social connection."}
+    ],
+    "interpretation": "Connection and entropy can frame the research question. Plot defined behavioural rates rather than a thermodynamic entropy score. Support and hostility are independent dimensions and may rise together. Bullying needs interaction context beyond isolated sentiment classification.",
+    "sample": "Begin with one platform and one language after confirming access. Retain aggregate counts, denominator, coverage and model version. Label results as the sampled platform population. Avoid identifying or scoring individuals.",
+    "space_weather": [
+      {"name": "Solar wind speed, density and Bz", "source": "https://www.spaceweather.gov/products/solar-wind", "note": "Preserve spacecraft timestamps and separately document any propagation to Earth. Record source spacecraft, data gaps and quality limitations. NOAA supplies recent JSON and archival access."},
+      {"name": "Kp", "source": "https://www.spaceweather.gov/products/planetary-k-index", "note": "Three-hour geomagnetic intervals. Frequent refresh of the operational estimate does not turn Kp into an independent hourly observation. Distinguish estimates, finalized observations and forecasts."},
+      {"name": "Hp60 and Hp30", "source": "https://kp.gfz.de/en/hp30-hp60", "note": "Kp-like geomagnetic indices at 60-minute and 30-minute resolution. Candidate Hp60 for an hourly comparison; preserve index identity."}
+    ],
+    "evaluation": "Use the 24-hour window for inspection and a longer retained history for inference. Predefine outcomes and lag ranges, model local time, weekday, news and sampling changes, account for autocorrelation and multiple comparisons, and evaluate on held-out periods. Do not infer causation from aligned traces.",
+    "clock": "An hourly mathematical step is a candidate preset. Mapping 24 Fibonacci positions onto 24 hours is an explicit modelling choice, with origin and phase retained; it is not an observed biological or solar period."
+  },
+  "king_wen_quantum": {
+    "status": "Research hypothesis; no simulation, hardware submission or paid job has been launched for this proposal",
+    "question": "Does a specified King Wen control ordering preserve quantum information better than matched alternative orderings under the same noise?",
+    "inspiration": {"title": "Dynamical topological phase realized in a trapped-ion quantum simulator", "doi": "https://doi.org/10.1038/s41586-022-04853-4", "author_manuscript": "https://arxiv.org/abs/2107.09676"},
+    "boundary": "The published Fibonacci quasiperiodic circuit-layer recursion protected edge-qubit dynamics in a specific interacting system. This differs from a repeating 24-position Fibonacci residue sequence and does not establish King Wen protection or general quantum error correction.",
+    "variants": [
+      {"name": "King Wen sequence", "candidate_encoding": "The 64 hexagrams supply six binary lines each. One candidate serializes bottom-to-top lines into 384 choices between two fixed control operations. Specify this encoding before comparing results."},
+      {"name": "King Wen sequence with residue projection", "candidate_encoding": "Reduce the specified six-bit binary value modulo nine, then map the residue to a declared control parameter. Use matched controls within this encoding; nine phases and two binary operations are different control families."},
+      {"name": "Recursive King Wen construction", "candidate_encoding": "Define an explicit recursion, depth and physical mapping. A fractal construction is an added mathematical hypothesis, not a property established by the historical ordering alone."}
+    ],
+    "controls": "Compare with matched shuffled and reversed King Wen orderings, periodic controls, the published Fibonacci drive and appropriate established control sequences. Match operations, duration, pulse budget, noise and initial states within each fair comparison.",
+    "readouts": "Start with coherence or edge autocorrelation decay and state fidelity in noise-aware simulation. Reserve logical error-rate claims for a separately specified encoded logical qubit, syndrome measurement and decoding protocol.",
+    "hardware": "Translate sequences into supported circuits or pulse controls. Direct laser phase and timing access depends on the device and provider; a generic cloud job does not automatically expose laser controls."
+  }
+}
