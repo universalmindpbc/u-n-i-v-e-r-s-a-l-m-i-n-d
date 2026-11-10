@@ -1,4 +1,4 @@
-import {setupPortal,openPortal,portalAccess,prepareExperiment} from './portal.js?v=minimal-20261109';
+import {setupPortal,openPortal,portalAccess,prepareExperiment} from './portal.js?v=access-order-20261110';
 import {setupDelivery,deliveryStudy,openEmailResult} from './delivery.js?v=email-reader-20261109';
 import './scientific-review.js?v=live-3';
 import {appendGenomic,appendLocalChecks} from './study-progress.js?v=4';

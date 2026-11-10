@@ -1,0 +1,14 @@
+import fs from 'node:fs/promises';
+import vm from 'node:vm';
+import assert from 'node:assert/strict';
+const source=(await fs.readFile(new URL('../../../Informatics/quantum/portal.js',import.meta.url),'utf8')).replace(/^import .*;\n/,'').replaceAll('export ','');
+const requests=[];let token='';
+const context=vm.createContext({crypto,AbortSignal,document:{},location:{},sessionStorage:{getItem:()=>token},ensureAgentSession:async()=>{},agentHeaders:()=>({}),fetch:async()=>new Promise((resolve,reject)=>requests.push({resolve,reject}))});
+vm.runInContext(source+'\nglobalThis.testAccess=portalAccess;',context);
+const old=context.testAccess();await new Promise(r=>setTimeout(r,0));token='synthetic-verified-portal';
+const fresh=context.testAccess();await new Promise(r=>setTimeout(r,0));
+requests[1].resolve(Response.json({authenticated:true,credit:1}));assert.equal((await fresh).authenticated,true);
+requests[0].resolve(Response.json({authenticated:false,credit:0}));assert.equal((await old).authenticated,true,'Late anonymous response replaced the authenticated access state');
+const staleFailure=context.testAccess();await new Promise(r=>setTimeout(r,0));const verified=context.testAccess();await new Promise(r=>setTimeout(r,0));requests[3].resolve(Response.json({authenticated:true,credit:1}));await verified;requests[2].reject(Error('old request failed'));assert.equal((await staleFailure).authenticated,true);
+const signingOut=context.testAccess();await new Promise(r=>setTimeout(r,0));vm.runInContext('clearPortalAccess()',context);requests[4].resolve(Response.json({authenticated:true,credit:1}));assert.equal(await signingOut,null,'An earlier response restored a signed-out session');
+console.log(JSON.stringify({passed:true,scenarios:['Delayed anonymous access cannot overwrite login','An old failed lookup cannot overwrite a newer success','Sign-out invalidates pending authenticated lookups'],paidCalls:0}));

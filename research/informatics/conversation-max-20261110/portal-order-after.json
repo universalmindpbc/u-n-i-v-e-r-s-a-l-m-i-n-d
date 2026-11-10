@@ -1,0 +1,1 @@
+{"passed":true,"scenarios":["Delayed anonymous access cannot overwrite login","An old failed lookup cannot overwrite a newer success","Sign-out invalidates pending authenticated lookups"],"paidCalls":0}

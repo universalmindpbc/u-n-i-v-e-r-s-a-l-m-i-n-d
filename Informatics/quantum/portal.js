@@ -1,10 +1,15 @@
 import {ensureAgentSession,agentHeaders} from './agent.js?v=portal-demo-20261109';
 const endpoint='https://informatics-universal-one-staging.universalmind.workers.dev',key='quantum-portal-session-v1';
-const $=s=>document.querySelector(s);let current=null,activateStudy,pendingQuestion='',requestKey=crypto.randomUUID(),lastQuestion='';
+const $=s=>document.querySelector(s);let accessRevision=0,pendingAccess=Promise.resolve(null);let current=null,activateStudy,pendingQuestion='',requestKey=crypto.randomUUID(),lastQuestion='';
 export function portalHeaders(){try{const token=sessionStorage.getItem(key);return token?{'X-Quantum-Portal':token}:{};}catch{return {};}}
 async function request(path,body){await ensureAgentSession();const r=await fetch(endpoint+'/agent/demo/'+path,{method:body?'POST':'GET',headers:{'Content-Type':'application/json',...agentHeaders(),...portalHeaders()},...(body?{body:JSON.stringify(body)}:{}),signal:AbortSignal.timeout(20000)}),data=await r.json();if(!r.ok)throw Error(data.error||'Portal access is temporarily unavailable.');return data;}
 function useStudy(t){activateStudy({version:'quantum-question-v3',id:t.id,question:t.question,status:t.status,message:t.message,reports:{},agent:t,study:{id:t.id,version:t.version}});}
-export async function portalAccess(){current=await request('access');return current;}
+export function portalAccess(){
+ const revision=++accessRevision;
+ pendingAccess=request('access').then(value=>revision===accessRevision?(current=value):pendingAccess,error=>{if(revision!==accessRevision)return pendingAccess;throw error;});
+ return pendingAccess;
+}
+function clearPortalAccess(){accessRevision++;current=null;pendingAccess=Promise.resolve(null);}
 function render(){
  $('#portal-login').hidden=!!current?.authenticated;$('#portal-experiment').hidden=!current?.authenticated;
  $('#portal-title').textContent=current?.study?.plan?'Your study':current?.authenticated?'I AM portal access':'I AM portal password';$('#portal-dialog').classList.toggle('has-proposal',!!current?.study?.plan);
@@ -34,5 +39,5 @@ export function setupPortal(activate){
  $('#portal-login').onsubmit=async e=>{e.preventDefault();const button=e.target.querySelector('button');button.disabled=true;button.textContent='Checking…';$('#portal-status').textContent='';try{const password=$('#portal-password').value;$('#portal-password').value='';const r=await fetch('../api/quantum-portal.php',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({password}),signal:AbortSignal.timeout(20000)}),data=await r.json();if(!r.ok)throw Error(data.error||'Portal verification failed.');sessionStorage.setItem(key,data.token);await portalAccess();render();}catch(error){$('#portal-status').textContent=error.message;}finally{button.disabled=false;button.textContent='Continue';}};
  $('#portal-confirm').onclick=async()=>{const b=$('#portal-confirm');b.disabled=true;$('#portal-status').textContent='Confirming the reviewed experiment…';try{const task=await request('confirm',{planDigest:current.study.plan.digest});useStudy(task);dialog.close();await portalAccess();render();}catch(e){$('#portal-status').textContent=e.message;b.disabled=false;}};
  $('#portal-return').onclick=()=>{dialog.close();if(pendingQuestion){$('#question').value=pendingQuestion;pendingQuestion='';}$('#question').focus({preventScroll:true});};
- $('#portal-resume').onclick=()=>{useStudy(current.study);dialog.close();};$('#portal-signout').onclick=()=>{sessionStorage.removeItem(key);current=null;render();};
+ $('#portal-resume').onclick=()=>{useStudy(current.study);dialog.close();};$('#portal-signout').onclick=()=>{sessionStorage.removeItem(key);clearPortalAccess();render();};
 }

@@ -1,0 +1,18 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Late anonymous response replaced the authenticated access state
+
+false !== true
+
+    at file:///private/tmp/um-uo-safari-20261109/research/informatics/conversation-max-20261110/test-portal-order.mjs:11:67 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.22.1

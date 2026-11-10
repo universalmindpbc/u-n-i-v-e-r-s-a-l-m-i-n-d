@@ -598,7 +598,7 @@ path,type,value
 /agent_architecture/implementation_sources/2/scope,string,Implementation source
 /agent_architecture/implementation_sources/3,object,
 /agent_architecture/implementation_sources/3/repository_path,string,Informatics/quantum/biology.js
-/agent_architecture/implementation_sources/3/sha256,string,596fc8fb3cbacb8006ccee41604fc2cab0c1aebe47fed0cbaf5defbb8f69ddb9
+/agent_architecture/implementation_sources/3/sha256,string,42ac40ad12b26e467c3296190ce91a365473c2df15be81a37a15fa3ca0ac4ebd
 /agent_architecture/implementation_sources/3/scope,string,Implementation source
 /agent_architecture/implementation_sources/4,object,
 /agent_architecture/implementation_sources/4/repository_path,string,Informatics/quantum/scientific-review.js
@@ -690,7 +690,7 @@ path,type,value
 /agent_architecture/implementation_sources/25/scope,string,Implementation source
 /agent_architecture/implementation_sources/26,object,
 /agent_architecture/implementation_sources/26/repository_path,string,Informatics/quantum/portal.js
-/agent_architecture/implementation_sources/26/sha256,string,1d8d90913c1d030077527b8c981ee93be9496fe3f88970aeb837b6a1bd7a8f2d
+/agent_architecture/implementation_sources/26/sha256,string,9731cb1bf1ef95707104a70018cfa777be4d4dcd27030c7c81b2fe3d5e1b62b5
 /agent_architecture/implementation_sources/26/scope,string,Implementation source
 /agent_architecture/implementation_sources/27,object,
 /agent_architecture/implementation_sources/27/repository_path,string,Informatics/api/quantum-portal.php
