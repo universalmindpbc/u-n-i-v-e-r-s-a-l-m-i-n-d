@@ -1,0 +1,40 @@
+{
+  "reason": "Removed only reproducible outputs from this task\u2019s rejected full reading-layer regeneration. None were deployed or committed.",
+  "removed": [
+    {
+      "file": "Informatics/exports/part-0cf0d20a972cd1f27af77032633713ccf8848e3fd025cc5be99996c878997ea8.bin",
+      "bytes": 50331648
+    },
+    {
+      "file": "Informatics/exports/part-9a2a0285eb7fd17f3f9d0c056a71de03fb15a48763d8f9527975e9e61fe5820e.bin",
+      "bytes": 31245139
+    },
+    {
+      "file": "Informatics/exports/part-11f20b36cbc1b328be3a5e713e4cdf090da3d9b8a9ed46f47c7e720707e099f2.bin",
+      "bytes": 50331648
+    },
+    {
+      "file": "Informatics/exports/part-e08545c000c30b054193040069be01092fc937f360aea8a2c7afd120635c07b8.bin",
+      "bytes": 50331648
+    },
+    {
+      "file": "Informatics/exports/part-ee8f79b47cc500ea89e04781a02d4b21587f0a7cc024d650e02a2a87f445f53b.bin",
+      "bytes": 50331648
+    },
+    {
+      "file": "Informatics/exports/part-8ecf578acf1feecebb9ce7c3333c734bedcfcc63813b0d8bb33c21e153616f72.bin",
+      "bytes": 954816
+    },
+    {
+      "file": "Informatics/exports/manifest-af9768fcf9c023ecb55be814c958a210e243bba1a9f9331b34191bdb047e87d3.json",
+      "bytes": 2399147
+    },
+    {
+      "file": "Informatics/read/topic-directory.html.fragment",
+      "bytes": 2973
+    }
+  ],
+  "freeBefore": 23684341760,
+  "freeAfter": 23920238592,
+  "preserved": "All approved sources, prior immutable exports, audit records and chat/session history."
+}

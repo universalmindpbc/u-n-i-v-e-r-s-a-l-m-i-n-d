@@ -759,7 +759,7 @@
       },
       {
         "repository_path": "Informatics/quantum/biology.js",
-        "sha256": "34a19ed42e6830d610a3567f38d2c83e4183a6d0ae58fec81e637665debe5138",
+        "sha256": "596fc8fb3cbacb8006ccee41604fc2cab0c1aebe47fed0cbaf5defbb8f69ddb9",
         "scope": "Implementation source"
       },
       {
@@ -834,7 +834,7 @@
       },
       {
         "repository_path": "Informatics/universal-one.js",
-        "sha256": "18eb81b491a3703d870c01b9fa13f98c391fabfacee297384bff2cc10cf96f6f",
+        "sha256": "0f83cccc5b443783928a4fe505d871af7fffa3ffce350d07c4510a163f2cdf53",
         "scope": "Implementation source"
       },
       {
@@ -844,12 +844,12 @@
       },
       {
         "repository_path": "Informatics/universal-one-quantum.js",
-        "sha256": "ecdea0a82e7b2c1acdd8a58e0123f5b1dd7838cbe9f77f4f86e0547743d394a0",
+        "sha256": "199e303b2a6fccc306f69535aed234a4776c992199a2308ef3cca96d2fdabb23",
         "scope": "Implementation source"
       },
       {
         "repository_path": "cloudflare/informatics-quantum-command.js",
-        "sha256": "d40f20dfeb0f94bd24985db3316eed20a092e6d04ef8bcacec264a31c8375ea7",
+        "sha256": "5b21eee8d5bbaaecc1a11c50e19fb1f2ab279aefb6e884ce731b6aa2e53b3309",
         "scope": "Implementation source"
       },
       {
@@ -924,7 +924,7 @@
       },
       {
         "repository_path": "cloudflare/informatics-research-worker.js",
-        "sha256": "9691b1ece43ba2aeba0698e9d588336dd265c792a9beb74ff1179e94d183affa",
+        "sha256": "5689501d4001ccf319890fb8ae2d48c02ac89ba039c4324eb20fe0eecd94e066",
         "scope": "Implementation source"
       },
       {
