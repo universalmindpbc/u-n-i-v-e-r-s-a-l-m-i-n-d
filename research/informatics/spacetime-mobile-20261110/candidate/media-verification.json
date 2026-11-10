@@ -1,0 +1,48 @@
+{
+  "mode": "candidate",
+  "process_audio_disabled": true,
+  "devices": [
+    {
+      "name": "desktop",
+      "playback": {
+        "width": 1280,
+        "height": 720,
+        "time": 1.534507,
+        "duration": 45,
+        "muted": true,
+        "defaultMuted": true,
+        "volume": 0,
+        "loop": true,
+        "playsInline": true,
+        "autoplay": true,
+        "controls": false,
+        "source": "https://staging.universalmind.tv/informatics/spacetime/media/inner-planes-loop.mp4?v=5",
+        "audioBytes": 0
+      },
+      "autoplay_without_gesture": true,
+      "loop_verified": true
+    },
+    {
+      "name": "iPhone viewport in Chromium",
+      "playback": {
+        "width": 1280,
+        "height": 720,
+        "time": 1.531496,
+        "duration": 45,
+        "muted": true,
+        "defaultMuted": true,
+        "volume": 0,
+        "loop": true,
+        "playsInline": true,
+        "autoplay": true,
+        "controls": false,
+        "source": "https://staging.universalmind.tv/informatics/spacetime/media/inner-planes-loop.mp4?v=5",
+        "audioBytes": 0
+      },
+      "autoplay_without_gesture": true,
+      "loop_verified": true
+    }
+  ],
+  "status": "passed",
+  "limit": "Chromium mobile emulation is not a physical iPhone Safari test."
+}

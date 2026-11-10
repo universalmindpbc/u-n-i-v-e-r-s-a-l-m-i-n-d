@@ -1,0 +1,181 @@
+{
+  "commit": "80fc7d2ed4a6d8acae02c4dfe484100466b762d9",
+  "origin": "https://staging.universalmind.tv",
+  "files": [
+    {
+      "path": "/informatics/spacetime/app.mjs",
+      "status": 200,
+      "served_sha256": "47a644a8a56ece0e8c3de9e2ca542f57d049f7e5e500c526ff2aa6ebd7446182",
+      "source_sha256": "47a644a8a56ece0e8c3de9e2ca542f57d049f7e5e500c526ff2aa6ebd7446182",
+      "normalization": null,
+      "noindex": true,
+      "content_type": "application/javascript"
+    },
+    {
+      "path": "/informatics/spacetime/data.mjs",
+      "status": 200,
+      "served_sha256": "f2f7ac88f443c353dfb0cd1eb7aa0c65ddc161bd328e198b1c1f5edb2f7dffc1",
+      "source_sha256": "f2f7ac88f443c353dfb0cd1eb7aa0c65ddc161bd328e198b1c1f5edb2f7dffc1",
+      "normalization": null,
+      "noindex": true,
+      "content_type": "application/javascript"
+    },
+    {
+      "path": "/informatics/spacetime/data/TIMEWAVE-LICENSE.txt",
+      "status": 200,
+      "served_sha256": "6524925e40f0f1ebb0036c734c1f4ef32dd515687b3ad40249e686e2ac5fda1a",
+      "source_sha256": "6524925e40f0f1ebb0036c734c1f4ef32dd515687b3ad40249e686e2ac5fda1a",
+      "normalization": null,
+      "noindex": true,
+      "content_type": "text/plain"
+    },
+    {
+      "path": "/informatics/spacetime/data/silso-monthly.txt",
+      "status": 200,
+      "served_sha256": "a34b6b671e6465b266f080d4b87ac13c04aab6aab45a158dd5352ceab9e5304c",
+      "source_sha256": "a34b6b671e6465b266f080d4b87ac13c04aab6aab45a158dd5352ceab9e5304c",
+      "normalization": null,
+      "noindex": true,
+      "content_type": "text/plain"
+    },
+    {
+      "path": "/informatics/spacetime/data/silso-yearly.txt",
+      "status": 200,
+      "served_sha256": "7093eb8f5582a2d8e76580f32e6311ec758f0c1b969cadf99bcaba9f99726353",
+      "source_sha256": "7093eb8f5582a2d8e76580f32e6311ec758f0c1b969cadf99bcaba9f99726353",
+      "normalization": null,
+      "noindex": true,
+      "content_type": "text/plain"
+    },
+    {
+      "path": "/informatics/spacetime/environment.mjs",
+      "status": 200,
+      "served_sha256": "32a2b07433d0774558642e343dc3c90ce9f6e6eb85f1586a776a640562deaab1",
+      "source_sha256": "32a2b07433d0774558642e343dc3c90ce9f6e6eb85f1586a776a640562deaab1",
+      "normalization": null,
+      "noindex": true,
+      "content_type": "application/javascript"
+    },
+    {
+      "path": "/informatics/spacetime/human.mjs",
+      "status": 200,
+      "served_sha256": "f46609888c4e251971a212bb5e27661713f489f3ee130cbe263e22c55c33640a",
+      "source_sha256": "f46609888c4e251971a212bb5e27661713f489f3ee130cbe263e22c55c33640a",
+      "normalization": null,
+      "noindex": true,
+      "content_type": "application/javascript"
+    },
+    {
+      "path": "/informatics/spacetime/index.html",
+      "status": 200,
+      "served_sha256": "d0dceb75fde1900704aebba48421a29fe59e14dbdc2da26cafdf120540f47dc9",
+      "source_sha256": "1b2e7703afd4c755b76dbc746f339a34c5ef7684c0a30783a22d4246cc2ea184",
+      "normalization": "Removed one existing edge-injected Cloudflare analytics beacon for source comparison",
+      "noindex": true,
+      "content_type": "text/html"
+    },
+    {
+      "path": "/informatics/spacetime/kernel-manifest.mjs",
+      "status": 200,
+      "served_sha256": "e03d2787660571b859df9af09b05c4652875bc3e1a2d7276b8b2d36f72fe0b11",
+      "source_sha256": "e03d2787660571b859df9af09b05c4652875bc3e1a2d7276b8b2d36f72fe0b11",
+      "normalization": null,
+      "noindex": true,
+      "content_type": "application/javascript"
+    },
+    {
+      "path": "/informatics/spacetime/kernel.json",
+      "status": 200,
+      "served_sha256": "1638b1785a1d37c34230f201d9ae0cd9665cdc455faf39660834587ae140e2fc",
+      "source_sha256": "1638b1785a1d37c34230f201d9ae0cd9665cdc455faf39660834587ae140e2fc",
+      "normalization": null,
+      "noindex": true,
+      "content_type": "application/json"
+    },
+    {
+      "path": "/informatics/spacetime/kernel.schema.json",
+      "status": 200,
+      "served_sha256": "bf09faa1f8d3370b9beffdb6cea9ab631d4281565e3d9a640c3c62938d008f67",
+      "source_sha256": "bf09faa1f8d3370b9beffdb6cea9ab631d4281565e3d9a640c3c62938d008f67",
+      "normalization": null,
+      "noindex": true,
+      "content_type": "application/json"
+    },
+    {
+      "path": "/informatics/spacetime/media/inner-planes-loop.mp4",
+      "status": 200,
+      "served_sha256": "10c374e315af7d1f7961faee413afcad9c36f05b009b385d079a2c3ff99b7609",
+      "source_sha256": "10c374e315af7d1f7961faee413afcad9c36f05b009b385d079a2c3ff99b7609",
+      "normalization": null,
+      "noindex": true,
+      "content_type": "video/mp4"
+    },
+    {
+      "path": "/informatics/spacetime/model.mjs",
+      "status": 200,
+      "served_sha256": "07f56efcbe3852cb53d51728c23736b67fff19006b69b1f7fa674e34ea2b91ad",
+      "source_sha256": "07f56efcbe3852cb53d51728c23736b67fff19006b69b1f7fa674e34ea2b91ad",
+      "normalization": null,
+      "noindex": true,
+      "content_type": "application/javascript"
+    },
+    {
+      "path": "/informatics/spacetime/navigation.mjs",
+      "status": 200,
+      "served_sha256": "19c2bbd159eff7a1675af483e17ab6093075ad5fa0b73ee53f9046c292ac79c0",
+      "source_sha256": "19c2bbd159eff7a1675af483e17ab6093075ad5fa0b73ee53f9046c292ac79c0",
+      "normalization": null,
+      "noindex": true,
+      "content_type": "application/javascript"
+    },
+    {
+      "path": "/informatics/spacetime/spacetime.css",
+      "status": 200,
+      "served_sha256": "354360b8d58263a64ffcf54cb326a59a723aa078d83f4289c33a9f1a65036062",
+      "source_sha256": "354360b8d58263a64ffcf54cb326a59a723aa078d83f4289c33a9f1a65036062",
+      "normalization": null,
+      "noindex": true,
+      "content_type": "text/css"
+    },
+    {
+      "path": "/informatics/spacetime/weather.mjs",
+      "status": 200,
+      "served_sha256": "cf0b4871a49bb50a9728e28482d825bc1830e7551115b4dda1c581623cebd779",
+      "source_sha256": "cf0b4871a49bb50a9728e28482d825bc1830e7551115b4dda1c581623cebd779",
+      "normalization": null,
+      "noindex": true,
+      "content_type": "application/javascript"
+    }
+  ],
+  "discovery": [
+    {
+      "path": "/informatics/",
+      "status": 200,
+      "spacetime_listed": false
+    },
+    {
+      "path": "/sitemap.xml",
+      "status": 200,
+      "spacetime_listed": false
+    },
+    {
+      "path": "/llms.txt",
+      "status": 200,
+      "spacetime_listed": false
+    },
+    {
+      "path": "/informatics/sitemap.xml",
+      "status": 404
+    },
+    {
+      "path": "/informatics/llms.txt",
+      "status": 200,
+      "spacetime_listed": false
+    }
+  ],
+  "video_range_request": {
+    "status": 206,
+    "bytes": 1024,
+    "content_range": "bytes 0-1023/3597759"
+  }
+}
