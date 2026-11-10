@@ -24,7 +24,9 @@ for relative in files:
    assert count==1,(route,'unexpected HTML transformation')
    normalization='Removed one existing edge-injected Cloudflare analytics beacon for source comparison'
   assert hashlib.sha256(normalized).hexdigest()==hashlib.sha256(p.read_bytes()).hexdigest(),route
-  if p.suffix=='.mjs':assert 'javascript' in response.headers.get('Content-Type',''),route
+  if p.suffix in ['.mjs','.js']:assert 'javascript' in response.headers.get('Content-Type',''),route
+  if p.suffix=='.json':assert 'application/json' in response.headers.get('Content-Type',''),route
+  if p.name in ['kernel.json','kernel.schema.json']:assert response.headers.get('Access-Control-Allow-Origin')=='*',route
   report['files'].append({'path':route,'status':200,'served_sha256':served_sha,'source_sha256':hashlib.sha256(normalized).hexdigest(),'normalization':normalization,'noindex':True,'content_type':response.headers.get('Content-Type')})
 for route in ['/informatics/','/sitemap.xml','/llms.txt','/informatics/sitemap.xml','/informatics/llms.txt']:
  try:

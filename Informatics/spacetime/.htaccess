@@ -7,4 +7,11 @@ DirectoryIndex index.html
 </IfModule>
 <IfModule mod_mime.c>
   AddType application/javascript .mjs
+  AddType application/json .json
 </IfModule>
+
+<FilesMatch "^kernel(\.schema)?\.json$">
+  <IfModule mod_headers.c>
+    Header always set Access-Control-Allow-Origin "*"
+  </IfModule>
+</FilesMatch>

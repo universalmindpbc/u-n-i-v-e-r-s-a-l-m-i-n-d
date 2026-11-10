@@ -15,10 +15,11 @@ try{
  await context.route('**/*',async route=>{
   const url=new URL(route.request().url());
   if(route.request().resourceType()==='media')return route.abort();
+  if(url.hostname==='customer-1vpwglz3v6fiyaas.cloudflarestream.com'&&url.pathname.endsWith('/thumbnails/thumbnail.jpg'))return route.continue();
   if(url.hostname!=='staging.universalmind.tv'||!url.pathname.startsWith('/informatics/spacetime/'))return route.abort();
   if(live)return route.continue();
   const relative=url.pathname.replace('/informatics/spacetime/','')||'index.html';
-  const contentType={'.mjs':'application/javascript','.css':'text/css','.html':'text/html'}[extname(relative)]||'text/plain';
+  const contentType={'.js':'application/javascript','.json':'application/json','.mjs':'application/javascript','.css':'text/css','.html':'text/html'}[extname(relative)]||'text/plain';
   await route.fulfill({body:readFileSync(join(root,'Informatics/spacetime',relative)),contentType});
  });
  const page=await context.newPage();page.on('pageerror',e=>report.errors.push(e.message));
@@ -26,6 +27,15 @@ try{
  assert.equal(response.status(),200);if(live)assert.match(response.headers()['x-robots-tag'],/noindex/);
  await page.waitForSelector('#chart .trace');
  assert.equal(await page.locator('#sequence-table tr').count(),64);
+ assert.ok(await page.locator('#one-summon').isVisible());
+ assert.ok(await page.locator('#earth-film').evaluate(e=>e.paused&&e.muted&&e.volume===0&&!e.currentSrc));
+ await page.click('#one-summon');assert.ok(await page.locator('#one-panel').isVisible());
+ assert.match(await page.locator('#one-panel').innerText(),/AI connection planned/);
+ await page.keyboard.press('Escape');assert.ok(!(await page.locator('#one-panel').isVisible()));
+ assert.ok(await page.locator('#one-summon').evaluate(e=>e===document.activeElement));
+ const kernel=await page.evaluate(async()=>{const r=await fetch('kernel.json');return {type:r.headers.get('content-type'),value:await r.json()};});
+ assert.match(kernel.type,/application\/json/);assert.equal(kernel.value.series.length,11);assert.deepEqual(kernel.value.analysis_contract.results,[]);
+
  assert.ok(await page.evaluate(()=>{const ids=[...document.querySelectorAll('[id]')].map(e=>e.id);return new Set(ids).size===ids.length;}),'Unique document IDs');
  assert.equal(await page.locator('meta[name=robots]').getAttribute('content'),'noindex,nofollow,noarchive');
  for(const width of [1440,1024,390,320]){
@@ -36,6 +46,7 @@ try{
   if(width===1440||width===390)await page.screenshot({path:join(out,`${width}.png`),fullPage:true});
  }
  await page.setViewportSize({width:1440,height:1100});
+ await page.waitForFunction(()=>{const e=document.querySelector('#chart');return Math.abs(e.viewBox.baseVal.width-e.getBoundingClientRect().width)<1;});
  assert.equal(await page.getAttribute('body','data-view'),'zen');
  assert.ok(await page.locator('button[data-view=zen]').isVisible());
  assert.ok(!(await page.locator('.inspector').isVisible()));
@@ -56,6 +67,7 @@ try{
  await page.selectOption('#zen-indicator','growth');
  await page.click('button[data-view=research]');
  assert.ok(await page.locator('.inspector').isVisible());
+ assert.ok(await page.locator('#one-summon').isVisible());
  await page.selectOption('#clock','year');await page.selectOption('#method','multiscale');await page.selectOption('#depth','4');
  await page.locator('[data-layer=king]').uncheck();await page.click('[data-layout=overlay]');
  await page.click('button[data-view=zen]');await page.waitForTimeout(40);
@@ -95,7 +107,7 @@ try{
  await page.click('#timewave-preset');await page.waitForTimeout(100);
  assert.ok(await page.locator('[data-layer=timewave]').isChecked());
  const downloadPromise=page.waitForEvent('download');await page.click('#export');const download=await downloadPromise;
- const chunks=[];for await(const chunk of await download.createReadStream())chunks.push(chunk);const exportData=JSON.parse(Buffer.concat(chunks).toString('utf8'));assert.equal(exportData.settings.throughUTC,'2012-12-21T11:00:00.000Z');assert.equal(exportData.evaluation.length,769);assert.equal(exportData.evaluation.at(-1).timewave,0);assert.equal(exportData.human_indicator.id,'growth');assert.ok(exportData.human_indicator.rows.length>40);assert.equal(exportData.human_indicator.units,'% per year');
+ const chunks=[];for await(const chunk of await download.createReadStream())chunks.push(chunk);const exportData=JSON.parse(Buffer.concat(chunks).toString('utf8'));assert.equal(exportData.schema,'spacetime-view/v4');assert.equal(exportData.kernel.series,11);assert.equal(exportData.kernel.sha256.length,64);assert.equal(exportData.settings.throughUTC,'2012-12-21T11:00:00.000Z');assert.equal(exportData.evaluation.length,769);assert.equal(exportData.evaluation.at(-1).timewave,0);assert.equal(exportData.human_indicator.id,'growth');assert.ok(exportData.human_indicator.rows.length>40);assert.equal(exportData.human_indicator.units,'% per year');
  await page.screenshot({path:join(out,'timewave.png'),fullPage:false});
  await page.click('[data-range="25"]');await page.waitForTimeout(50);
  await page.locator('#inspect').fill('1000');await page.locator('#inspect').dispatchEvent('input');
@@ -106,7 +118,7 @@ try{
  for(const layer of ['fibonacci','solar','king'])await page.locator(`[data-layer=${layer}]`).uncheck();
  await page.selectOption('#human-indicator','none');
  await page.waitForTimeout(50);assert.match(await page.locator('#chart').textContent(),/Select a layer/);
- assert.deepEqual(report.errors,[]);report.checks=['Zen default and visible switch','two observed series in Zen','optional Fibonacci overlay preserves chart height','nine Zen indicator choices','Research configuration preserved across view changes','page response','noindex','four viewport widths','64 hexagrams','16 clock/method combinations','dense envelopes','overlay','sequence space','historical zero','JSON download','date validation','reset','keyboard inspection','layer toggles','nine human and market choices','source coverage','conflict ranges','market monthly observations','human export'];
+ assert.deepEqual(report.errors,[]);report.checks=['Universal One preview, Escape and focus return','Silent reduced-motion background','Kernel JSON retrieval and export reference','Zen default and visible switch','two observed series in Zen','optional Fibonacci overlay preserves chart height','nine Zen indicator choices','Research configuration preserved across view changes','page response','noindex','four viewport widths','64 hexagrams','16 clock/method combinations','dense envelopes','overlay','sequence space','historical zero','JSON download','date validation','reset','keyboard inspection','layer toggles','nine human and market choices','source coverage','conflict ranges','market monthly observations','human export'];
  await context.close();
 }finally{await browser.close();await server.close();writeFileSync(join(out,'verification.json'),JSON.stringify(report,null,2)+'\n');}
 console.log(JSON.stringify(report));
