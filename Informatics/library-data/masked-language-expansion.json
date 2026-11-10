@@ -1,0 +1,4184 @@
+{
+  "schemaVersion": "masked-language/v1",
+  "reviewedAt": "2026-11-10",
+  "rankingMethod": "Direct masked-language mechanisms first; supporting records ordered by relevance and design within each topic. Editorial appraisal is not GRADE or a validated numerical certainty score.",
+  "chapter": {
+    "number": 7,
+    "title": "Sub-audible mantra & masked-language processing",
+    "overview": [
+      "Controlled speech-priming, cortical recording and EEG studies show how acoustic cues can reach word recognition and, under some conditions, meaning through masking. The strongest, most relevant studies lead this chapter. Supporting sources explain the mechanisms that make a psychological or physiological response to externally delivered language a testable possibility.",
+      "Sub-audible mantra here means an external spoken recording mixed beneath music, with words difficult or impossible to consciously distinguish. Silent mental mantra means actively repeating a phrase internally. The index identifies what each study contributes to the rationale for I AM and where the evidence leaves an open question."
+    ],
+    "topics": [
+      {
+        "id": "masked-lead",
+        "title": "Start here · strongest relevant mechanisms",
+        "description": "Controlled speech-priming, cortical recording and EEG studies establish complementary steps in processing speech through masking. Read these together: sensory tracking, lexical access and meaning are related but distinct.",
+        "compactIndex": false,
+        "papers": [
+          {
+            "id": "masked-kouider2010",
+            "recordId": "pmid-19715763",
+            "title": "Cerebral bases of subliminal speech priming",
+            "journal": "NeuroImage",
+            "year": 2010,
+            "authors": "Kouider S, de Gardelle V, Dehaene S, Dupoux E, Pallier C.",
+            "design": "Behavioural priming and fMRI; 16 participants",
+            "urls": [
+              "https://pubmed.ncbi.nlm.nih.gov/19715763/",
+              "https://www.pallier.org/papers/Kouider.Pallier.subliminal.priming.fmri.2009.pdf",
+              "https://www.semanticscholar.org/paper/Cerebral-bases-of-subliminal-speech-priming-Kouider-Gardelle/b44d347fb2834f322613575801dac798e4698004"
+            ],
+            "doi": "10.1016/j.neuroimage.2009.08.043",
+            "pmid": "19715763",
+            "quotes": [],
+            "citationCount": null,
+            "sourcePages": [],
+            "targets": [],
+            "categories": [],
+            "summary": "Masked, compressed spoken words influenced subsequent word processing. Repetition-related responses in temporal and insular regions occurred with prime identification near chance.",
+            "limitation": "Short, tightly controlled primes; repetition suppression indexes altered processing, not a measured emotional or therapeutic response.",
+            "paperTrustAssessment": {
+              "scope": "Paper",
+              "status": "assessed",
+              "score": 1,
+              "peerReviewed": true,
+              "randomizedControlledTrial": false,
+              "blinding": "not-verified",
+              "basis": "Behavioural priming and fMRI; 16 participants",
+              "sources": [
+                "https://pubmed.ncbi.nlm.nih.gov/19715763/"
+              ],
+              "assessedAt": "2026-11-10"
+            },
+            "maskedLanguage": {
+              "priority": 1,
+              "quality": "Controlled mechanistic evidence",
+              "relevance": "Direct mechanism",
+              "function": "Direct evidence that lexical processing can occur without reportable word identification.",
+              "origin": "Gemini"
+            },
+            "evidence": {
+              "evidenceType": "Behavioural priming and fMRI; 16 participants",
+              "relationshipNote": "Direct evidence that lexical processing can occur without reportable word identification.",
+              "sourceURLs": [
+                "https://pubmed.ncbi.nlm.nih.gov/19715763/",
+                "https://www.pallier.org/papers/Kouider.Pallier.subliminal.priming.fmri.2009.pdf",
+                "https://www.semanticscholar.org/paper/Cerebral-bases-of-subliminal-speech-priming-Kouider-Gardelle/b44d347fb2834f322613575801dac798e4698004"
+              ],
+              "checkedAt": "2026-11-10",
+              "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+            }
+          },
+          {
+            "id": "masked-kouider2005",
+            "recordId": "pmid-16102064",
+            "title": "Subliminal speech priming",
+            "journal": "Psychological Science",
+            "year": 2005,
+            "authors": "Kouider S, Dupoux E.",
+            "design": "Controlled experiments with compressed and masked speech",
+            "urls": [
+              "https://pubmed.ncbi.nlm.nih.gov/16102064/"
+            ],
+            "doi": "10.1111/j.1467-9280.2005.01584.x",
+            "pmid": "16102064",
+            "quotes": [],
+            "citationCount": null,
+            "sourcePages": [],
+            "targets": [],
+            "categories": [],
+            "summary": "Masked speech produced repetition priming, including effects across different voices. Evidence for semantic overlap was more limited.",
+            "limitation": "Word identity, phonological processing and sentence meaning are distinct levels of processing.",
+            "paperTrustAssessment": {
+              "scope": "Paper",
+              "status": "assessed",
+              "score": 1,
+              "peerReviewed": true,
+              "randomizedControlledTrial": false,
+              "blinding": "not-verified",
+              "basis": "Controlled experiments with compressed and masked speech",
+              "sources": [
+                "https://pubmed.ncbi.nlm.nih.gov/16102064/"
+              ],
+              "assessedAt": "2026-11-10"
+            },
+            "maskedLanguage": {
+              "priority": 2,
+              "quality": "Controlled mechanistic evidence",
+              "relevance": "Direct mechanism",
+              "function": "Establishes a behavioural route from a masked acoustic signal to word-level representations.",
+              "origin": "Additional research"
+            },
+            "evidence": {
+              "evidenceType": "Controlled experiments with compressed and masked speech",
+              "relationshipNote": "Establishes a behavioural route from a masked acoustic signal to word-level representations.",
+              "sourceURLs": [
+                "https://pubmed.ncbi.nlm.nih.gov/16102064/"
+              ],
+              "checkedAt": "2026-11-10",
+              "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+            }
+          },
+          {
+            "id": "masked-yasmin2023",
+            "recordId": "pmid-37169066",
+            "title": "The effects of speech masking on neural tracking of acoustic and semantic features of natural speech",
+            "journal": "Neuropsychologia",
+            "year": 2023,
+            "authors": "Yasmin S, Irsik VC, Johnsrude IS, Herrmann B.",
+            "design": "EEG during stories presented with competing speech",
+            "urls": [
+              "https://pubmed.ncbi.nlm.nih.gov/37169066/"
+            ],
+            "doi": "10.1016/j.neuropsychologia.2023.108584",
+            "pmid": "37169066",
+            "quotes": [],
+            "citationCount": null,
+            "sourcePages": [],
+            "targets": [],
+            "categories": [],
+            "summary": "Acoustic and semantic tracking changed differently with masking. Semantic tracking remained measurable across several masking levels and weakened under the most severe masking.",
+            "limitation": "Participants attended to the stories; partially intelligible speech is distinct from objectively undetectable speech.",
+            "paperTrustAssessment": {
+              "scope": "Paper",
+              "status": "assessed",
+              "score": 1,
+              "peerReviewed": true,
+              "randomizedControlledTrial": false,
+              "blinding": "not-verified",
+              "basis": "EEG during stories presented with competing speech",
+              "sources": [
+                "https://pubmed.ncbi.nlm.nih.gov/37169066/"
+              ],
+              "assessedAt": "2026-11-10"
+            },
+            "maskedLanguage": {
+              "priority": 3,
+              "quality": "Controlled mechanistic evidence",
+              "relevance": "Direct mechanism",
+              "function": "Shows how speech meaning and timing can remain represented when competing sound obscures speech.",
+              "origin": "Gemini"
+            },
+            "evidence": {
+              "evidenceType": "EEG during stories presented with competing speech",
+              "relationshipNote": "Shows how speech meaning and timing can remain represented when competing sound obscures speech.",
+              "sourceURLs": [
+                "https://pubmed.ncbi.nlm.nih.gov/37169066/"
+              ],
+              "checkedAt": "2026-11-10",
+              "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+            }
+          },
+          {
+            "id": "masked-leonard2016",
+            "recordId": "masked-language-leonard2016",
+            "title": "Perceptual restoration of masked speech in human cortex",
+            "journal": "Nature Communications",
+            "year": 2016,
+            "authors": "Leonard MK, Baud MO, Sjerps MJ, Chang EF.",
+            "design": "Intracranial cortical recordings; five participants",
+            "urls": [
+              "https://www.nature.com/articles/ncomms13619"
+            ],
+            "doi": "10.1038/ncomms13619",
+            "pmid": "",
+            "quotes": [],
+            "citationCount": null,
+            "sourcePages": [],
+            "targets": [],
+            "categories": [],
+            "summary": "Neural responses reflected the speech sounds listeners perceived when noise replaced parts of words. Context and prior neural activity helped explain restoration.",
+            "limitation": "The experiment replaced parts of speech; it did not remove all acoustic information from an entire message.",
+            "paperTrustAssessment": {
+              "scope": "Paper",
+              "status": "assessed",
+              "score": 1,
+              "peerReviewed": true,
+              "randomizedControlledTrial": false,
+              "blinding": "not-verified",
+              "basis": "Intracranial cortical recordings; five participants",
+              "sources": [
+                "https://www.nature.com/articles/ncomms13619"
+              ],
+              "assessedAt": "2026-11-10"
+            },
+            "maskedLanguage": {
+              "priority": 4,
+              "quality": "Controlled mechanistic evidence",
+              "relevance": "Direct mechanism",
+              "function": "Demonstrates reconstruction of missing speech information using surviving acoustic cues and expectations.",
+              "origin": "Additional research"
+            },
+            "evidence": {
+              "evidenceType": "Intracranial cortical recordings; five participants",
+              "relationshipNote": "Demonstrates reconstruction of missing speech information using surviving acoustic cues and expectations.",
+              "sourceURLs": [
+                "https://www.nature.com/articles/ncomms13619"
+              ],
+              "checkedAt": "2026-11-10",
+              "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+            }
+          },
+          {
+            "id": "masked-herrmann2025",
+            "recordId": "masked-language-herrmann2025",
+            "title": "Enhanced neural speech tracking through noise indicates stochastic resonance in humans",
+            "journal": "eLife",
+            "year": 2025,
+            "authors": "",
+            "design": "Five EEG experiments; peer-reviewed version of record",
+            "urls": [
+              "https://elifesciences.org/articles/100830"
+            ],
+            "doi": "10.7554/eLife.100830.3",
+            "pmid": "",
+            "quotes": [],
+            "citationCount": null,
+            "sourcePages": [],
+            "targets": [],
+            "categories": [],
+            "summary": "Minimal background noise enhanced neural tracking of speech amplitude onsets across a series of experiments.",
+            "limitation": "Speech remained intelligible and louder than the added noise. The result depends on signal-to-noise conditions and does not establish a universal mixing level.",
+            "paperTrustAssessment": {
+              "scope": "Paper",
+              "status": "assessed",
+              "score": 1,
+              "peerReviewed": true,
+              "randomizedControlledTrial": false,
+              "blinding": "not-verified",
+              "basis": "Five EEG experiments; peer-reviewed version of record",
+              "sources": [
+                "https://elifesciences.org/articles/100830"
+              ],
+              "assessedAt": "2026-11-10"
+            },
+            "maskedLanguage": {
+              "priority": 5,
+              "quality": "Converging experimental evidence",
+              "relevance": "Direct mechanism",
+              "function": "Identifies a testable mechanism through which some noise conditions enhance early speech tracking.",
+              "origin": "Gemini"
+            },
+            "evidence": {
+              "evidenceType": "Five EEG experiments; peer-reviewed version of record",
+              "relationshipNote": "Identifies a testable mechanism through which some noise conditions enhance early speech tracking.",
+              "sourceURLs": [
+                "https://elifesciences.org/articles/100830"
+              ],
+              "checkedAt": "2026-11-10",
+              "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+            }
+          }
+        ],
+        "trustScore": 1,
+        "trustAssessment": {
+          "status": "assessed",
+          "basis": "At least three peer-reviewed sources; design level is separate from editorial relevance."
+        }
+      },
+      {
+        "id": "masked-mechanisms",
+        "title": "Supporting mechanisms · attention, meaning and familiarity",
+        "description": "These sources extend the mechanism map. Each distinguishes auditory masking, inattention and cross-modal evidence.",
+        "compactIndex": true,
+        "papers": [
+          {
+            "id": "masked-song2020",
+            "recordId": "pmid-32752786",
+            "title": "Auditory neural tracking and lexical processing of speech in noise: Masker type, spatial location, and language experience",
+            "journal": "Journal of the Acoustical Society of America",
+            "year": 2020,
+            "authors": "Song J, Martin L, Iverson P.",
+            "design": "EEG; speech-in-noise experiments",
+            "urls": [
+              "https://pubmed.ncbi.nlm.nih.gov/32752786/"
+            ],
+            "doi": "10.1121/10.0001477",
+            "pmid": "32752786",
+            "quotes": [],
+            "citationCount": null,
+            "sourcePages": [],
+            "targets": [],
+            "categories": [],
+            "summary": "Masker type, spatial separation and language experience influenced neural tracking and lexical processing of attended speech.",
+            "limitation": "The task involved attended sentences; it does not establish full comprehension at every masking level.",
+            "paperTrustAssessment": {
+              "scope": "Paper",
+              "status": "assessed",
+              "score": 1,
+              "peerReviewed": true,
+              "randomizedControlledTrial": false,
+              "blinding": "not-verified",
+              "basis": "EEG; speech-in-noise experiments",
+              "sources": [
+                "https://pubmed.ncbi.nlm.nih.gov/32752786/"
+              ],
+              "assessedAt": "2026-11-10"
+            },
+            "maskedLanguage": {
+              "priority": 6,
+              "quality": "Controlled mechanistic evidence",
+              "relevance": "Direct mechanism",
+              "function": "Explains why masking, listening conditions and learned language knowledge alter speech extraction.",
+              "origin": "Gemini"
+            },
+            "evidence": {
+              "evidenceType": "EEG; speech-in-noise experiments",
+              "relationshipNote": "Explains why masking, listening conditions and learned language knowledge alter speech extraction.",
+              "sourceURLs": [
+                "https://pubmed.ncbi.nlm.nih.gov/32752786/"
+              ],
+              "checkedAt": "2026-11-10",
+              "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+            }
+          },
+          {
+            "id": "masked-gutschalk2008",
+            "recordId": "masked-language-gutschalk2008",
+            "title": "Neural Correlates of Auditory Perceptual Awareness under Informational Masking",
+            "journal": "PLOS Biology",
+            "year": 2008,
+            "authors": "Gutschalk A, Micheyl C, Oxenham AJ.",
+            "design": "MEG; detected and undetected tones in competing sounds",
+            "urls": [
+              "https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.0060138"
+            ],
+            "doi": "10.1371/journal.pbio.0060138",
+            "pmid": "",
+            "quotes": [],
+            "citationCount": null,
+            "sourcePages": [],
+            "targets": [],
+            "categories": [],
+            "summary": "Early auditory responses persisted for undetected tones, while later activity tracked perceptual awareness.",
+            "limitation": "Tone detection establishes an auditory processing principle; linguistic decoding requires additional evidence.",
+            "paperTrustAssessment": {
+              "scope": "Paper",
+              "status": "assessed",
+              "score": 1,
+              "peerReviewed": true,
+              "randomizedControlledTrial": false,
+              "blinding": "not-verified",
+              "basis": "MEG; detected and undetected tones in competing sounds",
+              "sources": [
+                "https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.0060138"
+              ],
+              "assessedAt": "2026-11-10"
+            },
+            "maskedLanguage": {
+              "priority": 7,
+              "quality": "Controlled mechanistic evidence",
+              "relevance": "Associated auditory mechanism",
+              "function": "Separates sensory encoding from conscious access, a foundation for studying masked-language processing.",
+              "origin": "Gemini"
+            },
+            "evidence": {
+              "evidenceType": "MEG; detected and undetected tones in competing sounds",
+              "relationshipNote": "Separates sensory encoding from conscious access, a foundation for studying masked-language processing.",
+              "sourceURLs": [
+                "https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.0060138"
+              ],
+              "checkedAt": "2026-11-10",
+              "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+            }
+          },
+          {
+            "id": "masked-chen2025",
+            "recordId": "pmid-41253014",
+            "title": "Neural markers of speech processing during inattentional deafness",
+            "journal": "Cortex",
+            "year": 2025,
+            "authors": "Chen GR, McMurray EH, Hassin RR, Deouell LY.",
+            "design": "Two preregistered EEG experiments; 67 participants",
+            "urls": [
+              "https://pubmed.ncbi.nlm.nih.gov/41253014/"
+            ],
+            "doi": "10.1016/j.cortex.2025.10.010",
+            "pmid": "41253014",
+            "quotes": [],
+            "citationCount": null,
+            "sourcePages": [],
+            "targets": [],
+            "categories": [],
+            "summary": "Neural differences between words and pseudowords remained measurable when attention was occupied and participants failed to notice the speech.",
+            "limitation": "Inattention and acoustic masking are different routes to reduced awareness. Task relevance affected processing.",
+            "paperTrustAssessment": {
+              "scope": "Paper",
+              "status": "assessed",
+              "score": 1,
+              "peerReviewed": true,
+              "randomizedControlledTrial": false,
+              "blinding": "not-verified",
+              "basis": "Two preregistered EEG experiments; 67 participants",
+              "sources": [
+                "https://pubmed.ncbi.nlm.nih.gov/41253014/"
+              ],
+              "assessedAt": "2026-11-10"
+            },
+            "maskedLanguage": {
+              "priority": 8,
+              "quality": "Controlled mechanistic evidence",
+              "relevance": "Associated lexical mechanism",
+              "function": "Supports lexical processing outside focal attention and motivates tests during music listening.",
+              "origin": "Additional research"
+            },
+            "evidence": {
+              "evidenceType": "Two preregistered EEG experiments; 67 participants",
+              "relationshipNote": "Supports lexical processing outside focal attention and motivates tests during music listening.",
+              "sourceURLs": [
+                "https://pubmed.ncbi.nlm.nih.gov/41253014/"
+              ],
+              "checkedAt": "2026-11-10",
+              "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+            }
+          },
+          {
+            "id": "masked-brown2023",
+            "recordId": "pmid-37336758",
+            "title": "Neurophysiological Evidence for Semantic Processing of Irrelevant Speech and Own-Name Detection in a Virtual Café",
+            "journal": "Journal of Neuroscience",
+            "year": 2023,
+            "authors": "Brown A, Pinto D, Burgart K, Zvilichovsky Y, Zion-Golumbic E.",
+            "design": "EEG and skin conductance; 50 recruited participants",
+            "urls": [
+              "https://pmc.ncbi.nlm.nih.gov/articles/PMC10324990/"
+            ],
+            "doi": "10.1523/JNEUROSCI.1731-22.2023",
+            "pmid": "37336758",
+            "quotes": [],
+            "citationCount": null,
+            "sourcePages": [],
+            "targets": [],
+            "categories": [],
+            "summary": "Unattended café speech elicited responses related to semantic violations and personally significant own-name information.",
+            "limitation": "Irrelevant speech was audible; own-name effects do not establish an effect for every familiar phrase.",
+            "paperTrustAssessment": {
+              "scope": "Paper",
+              "status": "assessed",
+              "score": 1,
+              "peerReviewed": true,
+              "randomizedControlledTrial": false,
+              "blinding": "not-verified",
+              "basis": "EEG and skin conductance; 50 recruited participants",
+              "sources": [
+                "https://pmc.ncbi.nlm.nih.gov/articles/PMC10324990/"
+              ],
+              "assessedAt": "2026-11-10"
+            },
+            "maskedLanguage": {
+              "priority": 9,
+              "quality": "Controlled mechanistic evidence",
+              "relevance": "Associated semantic and salience mechanism",
+              "function": "Connects unattended language, personal relevance and physiological measures.",
+              "origin": "Additional research"
+            },
+            "evidence": {
+              "evidenceType": "EEG and skin conductance; 50 recruited participants",
+              "relationshipNote": "Connects unattended language, personal relevance and physiological measures.",
+              "sourceURLs": [
+                "https://pmc.ncbi.nlm.nih.gov/articles/PMC10324990/"
+              ],
+              "checkedAt": "2026-11-10",
+              "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+            }
+          },
+          {
+            "id": "masked-brooks2012",
+            "recordId": "pmid-22001789",
+            "title": "Exposure to subliminal arousing stimuli induces robust activation in the amygdala, hippocampus, anterior cingulate, insular cortex and primary visual cortex: a systematic meta-analysis of fMRI studies",
+            "journal": "NeuroImage",
+            "year": 2012,
+            "authors": "Brooks SJ, Savov V, Allzén E, Benedict C, Fredriksson R, Schiöth HB.",
+            "design": "Systematic meta-analysis of fMRI studies",
+            "urls": [
+              "https://pubmed.ncbi.nlm.nih.gov/22001789/"
+            ],
+            "doi": "10.1016/j.neuroimage.2011.09.077",
+            "pmid": "22001789",
+            "quotes": [],
+            "citationCount": null,
+            "sourcePages": [],
+            "targets": [],
+            "categories": [],
+            "summary": "Subliminal emotional stimuli recruited networks involved in salience and emotion; evidence differed by stimulus type, with prominent facial-stimulus findings.",
+            "limitation": "Much of this literature is visual. Its contribution is a cross-modal hypothesis about emotional processing.",
+            "paperTrustAssessment": {
+              "scope": "Paper",
+              "status": "assessed",
+              "score": 1,
+              "peerReviewed": true,
+              "randomizedControlledTrial": false,
+              "blinding": "not-verified",
+              "basis": "Systematic meta-analysis of fMRI studies",
+              "sources": [
+                "https://pubmed.ncbi.nlm.nih.gov/22001789/"
+              ],
+              "assessedAt": "2026-11-10"
+            },
+            "maskedLanguage": {
+              "priority": 10,
+              "quality": "Evidence synthesis; indirect modality",
+              "relevance": "Associated emotional mechanism",
+              "function": "Provides a general bridge between reduced awareness and emotion-related neural responses.",
+              "origin": "Gemini"
+            },
+            "evidence": {
+              "evidenceType": "Systematic meta-analysis of fMRI studies",
+              "relationshipNote": "Provides a general bridge between reduced awareness and emotion-related neural responses.",
+              "sourceURLs": [
+                "https://pubmed.ncbi.nlm.nih.gov/22001789/"
+              ],
+              "checkedAt": "2026-11-10",
+              "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+            }
+          },
+          {
+            "id": "masked-hung2020",
+            "recordId": "masked-language-hung2020",
+            "title": "Task-induced attention load guides and gates unconscious semantic interference",
+            "journal": "Nature Communications",
+            "year": 2020,
+            "authors": "Hung SM, Wu DA, Shimojo S.",
+            "design": "Controlled visual masking experiments",
+            "urls": [
+              "https://www.nature.com/articles/s41467-020-15439-x"
+            ],
+            "doi": "10.1038/s41467-020-15439-x",
+            "pmid": "",
+            "quotes": [],
+            "citationCount": null,
+            "sourcePages": [],
+            "targets": [],
+            "categories": [],
+            "summary": "Attentional load modulated unconscious semantic interference.",
+            "limitation": "Visual-word experiments; transfer to auditory music masking remains a research question.",
+            "paperTrustAssessment": {
+              "scope": "Paper",
+              "status": "assessed",
+              "score": 1,
+              "peerReviewed": true,
+              "randomizedControlledTrial": false,
+              "blinding": "not-verified",
+              "basis": "Controlled visual masking experiments",
+              "sources": [
+                "https://www.nature.com/articles/s41467-020-15439-x"
+              ],
+              "assessedAt": "2026-11-10"
+            },
+            "maskedLanguage": {
+              "priority": 11,
+              "quality": "Controlled mechanistic evidence",
+              "relevance": "Associated attention mechanism",
+              "function": "Helps formulate when limited attention may permit or constrain implicit meaning processing.",
+              "origin": "Additional research"
+            },
+            "evidence": {
+              "evidenceType": "Controlled visual masking experiments",
+              "relationshipNote": "Helps formulate when limited attention may permit or constrain implicit meaning processing.",
+              "sourceURLs": [
+                "https://www.nature.com/articles/s41467-020-15439-x"
+              ],
+              "checkedAt": "2026-11-10",
+              "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+            }
+          },
+          {
+            "id": "masked-subcortical2024",
+            "recordId": "pmid-40127932",
+            "title": "The effect of speech masking on the human subcortical response to continuous speech",
+            "journal": "eNeuro",
+            "year": 2025,
+            "authors": "Polonenko MJ, Maddox RK.",
+            "design": "Auditory brainstem responses to competing speech; 25 participants",
+            "urls": [
+              "https://pubmed.ncbi.nlm.nih.gov/40127932/",
+              "https://pubmed.ncbi.nlm.nih.gov/39713441/"
+            ],
+            "doi": "10.1523/ENEURO.0561-24.2025",
+            "pmid": "40127932",
+            "quotes": [],
+            "citationCount": null,
+            "sourcePages": [],
+            "targets": [],
+            "categories": [],
+            "summary": "Brainstem responses to individual speech streams remained measurable in mixtures. More competing talkers reduced response amplitude and increased latency.",
+            "limitation": "Published in 2025 after the indexed preprint. Brainstem encoding is an early processing stage, distinct from understanding meaning.",
+            "paperTrustAssessment": {
+              "scope": "Paper",
+              "status": "assessed",
+              "score": 1,
+              "peerReviewed": true,
+              "randomizedControlledTrial": false,
+              "blinding": "not-verified",
+              "basis": "Auditory brainstem responses to competing speech; 25 participants",
+              "sources": [
+                "https://pubmed.ncbi.nlm.nih.gov/40127932/"
+              ],
+              "assessedAt": "2026-11-10"
+            },
+            "maskedLanguage": {
+              "priority": 12,
+              "quality": "Controlled electrophysiological evidence",
+              "relevance": "Associated auditory mechanism",
+              "function": "Extends the evidence map to early auditory encoding and signal degradation.",
+              "origin": "Additional research"
+            },
+            "evidence": {
+              "evidenceType": "Auditory brainstem responses to competing speech; 25 participants",
+              "relationshipNote": "Extends the evidence map to early auditory encoding and signal degradation.",
+              "sourceURLs": [
+                "https://pubmed.ncbi.nlm.nih.gov/40127932/",
+                "https://pubmed.ncbi.nlm.nih.gov/39713441/"
+              ],
+              "checkedAt": "2026-11-10",
+              "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+            }
+          }
+        ],
+        "trustScore": 1,
+        "trustAssessment": {
+          "status": "assessed",
+          "basis": "At least three peer-reviewed sources; design level is separate from editorial relevance."
+        }
+      },
+      {
+        "id": "masked-anaesthesia",
+        "title": "Speech under anaesthesia · language and physiological outcomes",
+        "description": "Retained as a distinct research strand: reduced consciousness offers another way to investigate language processing and later responses to externally delivered audio.",
+        "compactIndex": true,
+        "papers": [
+          {
+            "id": "masked-nowak2020",
+            "recordId": "pmid-33303476",
+            "title": "Effect of therapeutic suggestions during general anaesthesia on postoperative pain and opioid use: multicentre randomised controlled trial",
+            "journal": "BMJ",
+            "year": 2020,
+            "authors": "Nowak H, Zech N, Asmussen S, Rahmel T, Tryba M, Oprea G, Grause L, Schork K, Moeller M, Loeser J, Gyarmati K, Mittler C, Saller T, Zagler A, Lutz K, Adamzik M, Hansen E.",
+            "design": "Multicentre double-blind randomized controlled trial; 385 analysed",
+            "urls": [
+              "https://pmc.ncbi.nlm.nih.gov/articles/PMC7726311/"
+            ],
+            "doi": "10.1136/bmj.m4284",
+            "pmid": "33303476",
+            "quotes": [],
+            "citationCount": null,
+            "sourcePages": [],
+            "targets": [],
+            "categories": [],
+            "summary": "Music with therapeutic suggestions during general anaesthesia reduced postoperative opioid use relative to a blank recording. Median morphine-equivalent use was 4.0 versus 5.3 mg.",
+            "limitation": "The intervention combined music and suggestions. Anaesthesia differs from awake masking, and the design does not isolate the spoken component.",
+            "paperTrustAssessment": {
+              "scope": "Paper",
+              "status": "assessed",
+              "score": 3,
+              "peerReviewed": true,
+              "randomizedControlledTrial": true,
+              "blinding": "double",
+              "basis": "Multicentre double-blind randomized controlled trial; 385 analysed",
+              "sources": [
+                "https://pmc.ncbi.nlm.nih.gov/articles/PMC7726311/"
+              ],
+              "assessedAt": "2026-11-10"
+            },
+            "maskedLanguage": {
+              "priority": 13,
+              "quality": "Multicentre double-blind RCT",
+              "relevance": "Associated clinical evidence",
+              "function": "High-quality clinical evidence that externally delivered audio during an unconscious state may influence later physiological or behavioural outcomes.",
+              "origin": "Additional research"
+            },
+            "evidence": {
+              "evidenceType": "Multicentre double-blind randomized controlled trial; 385 analysed",
+              "relationshipNote": "High-quality clinical evidence that externally delivered audio during an unconscious state may influence later physiological or behavioural outcomes.",
+              "sourceURLs": [
+                "https://pmc.ncbi.nlm.nih.gov/articles/PMC7726311/"
+              ],
+              "checkedAt": "2026-11-10",
+              "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+            }
+          },
+          {
+            "id": "masked-rosendahl2016",
+            "recordId": "pmid-28007033",
+            "title": "Efficacy of therapeutic suggestions under general anesthesia: a systematic review and meta-analysis of randomized controlled trials",
+            "journal": "BMC Anesthesiology",
+            "year": 2016,
+            "authors": "Rosendahl J, Koranyi S, Jacob D, Zech N, Hansen E.",
+            "design": "Systematic review and meta-analysis; 32 randomized trials, 2,102 patients",
+            "urls": [
+              "https://pmc.ncbi.nlm.nih.gov/articles/PMC5178078/"
+            ],
+            "doi": "10.1186/s12871-016-0292-0",
+            "pmid": "28007033",
+            "quotes": [],
+            "citationCount": null,
+            "sourcePages": [],
+            "targets": [],
+            "categories": [],
+            "summary": "Pooled results found small effects for medication use and recovery, with little or no overall effect for pain and distress.",
+            "limitation": "Trials varied in interventions and methods. A review of trials is not itself a double-blind trial.",
+            "paperTrustAssessment": {
+              "scope": "Paper",
+              "status": "assessed",
+              "score": 1,
+              "peerReviewed": true,
+              "randomizedControlledTrial": false,
+              "blinding": "not-verified",
+              "basis": "Systematic review and meta-analysis; 32 randomized trials, 2,102 patients",
+              "sources": [
+                "https://pmc.ncbi.nlm.nih.gov/articles/PMC5178078/"
+              ],
+              "assessedAt": "2026-11-10"
+            },
+            "maskedLanguage": {
+              "priority": 14,
+              "quality": "Systematic review of randomized trials",
+              "relevance": "Associated clinical synthesis",
+              "function": "Places anaesthesia audio studies in a larger evidence base and identifies outcomes with stronger or weaker signals.",
+              "origin": "Additional research"
+            },
+            "evidence": {
+              "evidenceType": "Systematic review and meta-analysis; 32 randomized trials, 2,102 patients",
+              "relationshipNote": "Places anaesthesia audio studies in a larger evidence base and identifies outcomes with stronger or weaker signals.",
+              "sourceURLs": [
+                "https://pmc.ncbi.nlm.nih.gov/articles/PMC5178078/"
+              ],
+              "checkedAt": "2026-11-10",
+              "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+            }
+          },
+          {
+            "id": "masked-katlowitz2026",
+            "recordId": "masked-language-katlowitz2026",
+            "title": "Plasticity and language in the anaesthetized human hippocampus",
+            "journal": "Nature",
+            "year": 2026,
+            "authors": "Katlowitz KA, Cole ER, Mickiewicz EA, Shah S, Franch M, Adkinson JA, Belanger JL, Mathura RK, Meszéna D, McGinley M, Muñoz W, Banks GP, Cash SS, Hsu CW, Paulk AC, Provenza NR, Watrous AJ, Williams Z, Goldman AM, Krishnan V, Maheshwari A, Heilbronner SR, Kim R, Rungratsameetaweemana N, Hayden BY, Sheth SA.",
+            "design": "Human hippocampal single-unit recordings during anaesthesia",
+            "urls": [
+              "https://www.nature.com/articles/s41586-026-10448-0",
+              "https://pmc.ncbi.nlm.nih.gov/articles/PMC13275293/"
+            ],
+            "doi": "10.1038/s41586-026-10448-0",
+            "pmid": "",
+            "quotes": [],
+            "citationCount": null,
+            "sourcePages": [],
+            "targets": [],
+            "categories": [],
+            "summary": "Hippocampal recordings during propofol anaesthesia showed responses to language features and learning-related patterns. Natural-speech analyses included four participants and 375 units.",
+            "limitation": "Small neurosurgical sample; intact speech under anaesthesia is distinct from speech masked beneath music.",
+            "paperTrustAssessment": {
+              "scope": "Paper",
+              "status": "assessed",
+              "score": 1,
+              "peerReviewed": true,
+              "randomizedControlledTrial": false,
+              "blinding": "not-verified",
+              "basis": "Human hippocampal single-unit recordings during anaesthesia",
+              "sources": [
+                "https://www.nature.com/articles/s41586-026-10448-0"
+              ],
+              "assessedAt": "2026-11-10"
+            },
+            "maskedLanguage": {
+              "priority": 15,
+              "quality": "Direct human neuronal recordings; small sample",
+              "relevance": "Associated language mechanism",
+              "function": "Adds direct human neuronal evidence that language-related processing can persist during an unconscious state.",
+              "origin": "Additional research"
+            },
+            "evidence": {
+              "evidenceType": "Human hippocampal single-unit recordings during anaesthesia",
+              "relationshipNote": "Adds direct human neuronal evidence that language-related processing can persist during an unconscious state.",
+              "sourceURLs": [
+                "https://www.nature.com/articles/s41586-026-10448-0",
+                "https://pmc.ncbi.nlm.nih.gov/articles/PMC13275293/"
+              ],
+              "checkedAt": "2026-11-10",
+              "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+            }
+          }
+        ],
+        "trustScore": 1,
+        "trustAssessment": {
+          "status": "assessed",
+          "basis": "At least three peer-reviewed sources; design level is separate from editorial relevance."
+        }
+      },
+      {
+        "id": "masked-outcomes",
+        "title": "Masked audio · physiological and behavioural studies",
+        "description": "Outcome studies are ranked by design and relevance, with positive and null findings retained. Neural encoding, autonomic response and a lasting psychological change are separate questions.",
+        "compactIndex": true,
+        "papers": [
+          {
+            "id": "masked-greenwald1991",
+            "recordId": "masked-language-greenwald1991",
+            "title": "Double-Blind Tests of Subliminal Self-Help Audiotapes",
+            "journal": "Psychological Science",
+            "year": 1991,
+            "authors": "",
+            "design": "Double-blind randomized experiments; 237 participants across three replications",
+            "urls": [
+              "https://www.psychologicalscience.org/journals/psychological-science/j.1467-9280.1991.tb00112.x/"
+            ],
+            "doi": "10.1111/j.1467-9280.1991.tb00112.x",
+            "pmid": "",
+            "quotes": [],
+            "citationCount": null,
+            "sourcePages": [],
+            "targets": [],
+            "categories": [],
+            "summary": "A month of use produced no content-specific improvement in the targeted memory or self-esteem measures. Perceived improvement followed tape labels.",
+            "limitation": "These null outcomes constrain those tested self-help recordings; they do not negate auditory encoding or word priming.",
+            "paperTrustAssessment": {
+              "scope": "Paper",
+              "status": "assessed",
+              "score": 3,
+              "peerReviewed": true,
+              "randomizedControlledTrial": true,
+              "blinding": "double",
+              "basis": "Double-blind randomized experiments; 237 participants across three replications",
+              "sources": [
+                "https://www.psychologicalscience.org/journals/psychological-science/j.1467-9280.1991.tb00112.x/"
+              ],
+              "assessedAt": "2026-11-10"
+            },
+            "maskedLanguage": {
+              "priority": 16,
+              "quality": "Double-blind randomized evidence",
+              "relevance": "Direct masked-audio outcome test",
+              "function": "A strong design reference for separating message effects, expectations and general listening effects.",
+              "origin": "Additional research"
+            },
+            "evidence": {
+              "evidenceType": "Double-blind randomized experiments; 237 participants across three replications",
+              "relationshipNote": "A strong design reference for separating message effects, expectations and general listening effects.",
+              "sourceURLs": [
+                "https://www.psychologicalscience.org/journals/psychological-science/j.1467-9280.1991.tb00112.x/"
+              ],
+              "checkedAt": "2026-11-10",
+              "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+            }
+          },
+          {
+            "id": "masked-aarabi2023",
+            "recordId": "masked-language-aarabi2023",
+            "title": "Effect of Subliminal Auditory Stimulation on Components of Auditory Late Responses and Functional Magnetic Resonance Imaging Data in Adults with Normal Hearing",
+            "journal": "Auditory and Vestibular Research",
+            "year": 2023,
+            "authors": "",
+            "design": "Small controlled exposure study; EEG and fMRI",
+            "urls": [
+              "https://publish.kne-publishing.com/index.php/AVR/article/view/12934",
+              "https://publish.kne-publishing.com/index.php/AVR/article/download/12934/12173/14421"
+            ],
+            "doi": "10.18502/avr.v32i3.12934",
+            "pmid": "",
+            "quotes": [],
+            "citationCount": null,
+            "sourcePages": [],
+            "targets": [],
+            "categories": [],
+            "summary": "Words masked beneath instrumental music were presented repeatedly over ten days. The study reported changes in auditory evoked-potential amplitudes and some fMRI responses.",
+            "limitation": "Small groups and incompletely clear allocation and participant flow. Responses to audible test words were measured after exposure; structural brain change and emotional benefit were not established.",
+            "paperTrustAssessment": {
+              "scope": "Paper",
+              "status": "assessed",
+              "score": 1,
+              "peerReviewed": true,
+              "randomizedControlledTrial": false,
+              "blinding": "not-verified",
+              "basis": "Small controlled exposure study; EEG and fMRI",
+              "sources": [
+                "https://publish.kne-publishing.com/index.php/AVR/article/view/12934"
+              ],
+              "assessedAt": "2026-11-10"
+            },
+            "maskedLanguage": {
+              "priority": 17,
+              "quality": "Exploratory controlled study",
+              "relevance": "Direct delivery match",
+              "function": "A close delivery match for testing whether repeated speech beneath music can alter subsequent neural responses.",
+              "origin": "Gemini"
+            },
+            "evidence": {
+              "evidenceType": "Small controlled exposure study; EEG and fMRI",
+              "relationshipNote": "A close delivery match for testing whether repeated speech beneath music can alter subsequent neural responses.",
+              "sourceURLs": [
+                "https://publish.kne-publishing.com/index.php/AVR/article/view/12934",
+                "https://publish.kne-publishing.com/index.php/AVR/article/download/12934/12173/14421"
+              ],
+              "checkedAt": "2026-11-10",
+              "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+            }
+          },
+          {
+            "id": "masked-chakalis1992",
+            "recordId": "pmid-1608733",
+            "title": "Positive effects of subliminal stimulation on memory",
+            "journal": "Perceptual and Motor Skills",
+            "year": 1992,
+            "authors": "Chakalis E, Lowe G.",
+            "design": "Randomized three-group study; 60 participants",
+            "urls": [
+              "https://pubmed.ncbi.nlm.nih.gov/1608733/"
+            ],
+            "doi": "10.2466/pms.1992.74.3.956",
+            "pmid": "1608733",
+            "quotes": [],
+            "citationCount": null,
+            "sourcePages": [],
+            "targets": [],
+            "categories": [],
+            "summary": "The subliminal music group improved name recall after a short exposure; silence and music comparison groups were also included.",
+            "limitation": "The abstract reports within-group improvement; a verified between-group effect and blinding details are needed for stronger inference.",
+            "paperTrustAssessment": {
+              "scope": "Paper",
+              "status": "assessed",
+              "score": 2,
+              "peerReviewed": true,
+              "randomizedControlledTrial": true,
+              "blinding": "not-verified",
+              "basis": "Randomized three-group study; 60 participants",
+              "sources": [
+                "https://pubmed.ncbi.nlm.nih.gov/1608733/"
+              ],
+              "assessedAt": "2026-11-10"
+            },
+            "maskedLanguage": {
+              "priority": 18,
+              "quality": "Small randomized study; limited reporting",
+              "relevance": "Direct masked-audio outcome test",
+              "function": "An early positive behavioural signal linking masked verbal stimulation with memory performance.",
+              "origin": "Additional research"
+            },
+            "evidence": {
+              "evidenceType": "Randomized three-group study; 60 participants",
+              "relationshipNote": "An early positive behavioural signal linking masked verbal stimulation with memory performance.",
+              "sourceURLs": [
+                "https://pubmed.ncbi.nlm.nih.gov/1608733/"
+              ],
+              "checkedAt": "2026-11-10",
+              "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+            }
+          },
+          {
+            "id": "masked-egermann2006",
+            "recordId": "masked-language-egermann2006",
+            "title": "Is there an effect of subliminal messages in music on choice behavior?",
+            "journal": "Journal of Articles in Support of the Null Hypothesis",
+            "year": 2006,
+            "authors": "",
+            "design": "Blinded music-listening experiments; adults and children",
+            "urls": [
+              "https://www.jasnh.com/pdf/Vol4-No2-article1.pdf"
+            ],
+            "doi": "",
+            "pmid": "",
+            "quotes": [],
+            "citationCount": null,
+            "sourcePages": [],
+            "targets": [],
+            "categories": [],
+            "summary": "Messages embedded in music did not reliably change the tested word or drink choices.",
+            "limitation": "Choice outcomes differ from neural encoding, autonomic response and longer-term learning.",
+            "paperTrustAssessment": {
+              "scope": "Paper",
+              "status": "assessed",
+              "score": 1,
+              "peerReviewed": true,
+              "randomizedControlledTrial": false,
+              "blinding": "not-verified",
+              "basis": "Blinded music-listening experiments; adults and children",
+              "sources": [
+                "https://www.jasnh.com/pdf/Vol4-No2-article1.pdf"
+              ],
+              "assessedAt": "2026-11-10"
+            },
+            "maskedLanguage": {
+              "priority": 19,
+              "quality": "Controlled behavioural experiments",
+              "relevance": "Direct masked-music outcome test",
+              "function": "Tests a specific step from masked messages to overt decisions and helps select sensitive endpoints.",
+              "origin": "Additional research"
+            },
+            "evidence": {
+              "evidenceType": "Blinded music-listening experiments; adults and children",
+              "relationshipNote": "Tests a specific step from masked messages to overt decisions and helps select sensitive endpoints.",
+              "sourceURLs": [
+                "https://www.jasnh.com/pdf/Vol4-No2-article1.pdf"
+              ],
+              "checkedAt": "2026-11-10",
+              "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+            }
+          },
+          {
+            "id": "masked-borgeat1989",
+            "recordId": "pmid-2608414",
+            "title": "Psychophysiological responses to subliminal auditory suggestions for activation",
+            "journal": "Perceptual and Motor Skills",
+            "year": 1989,
+            "authors": "Borgeat F, Boissonneault J, Chaloult L, Elie R.",
+            "design": "Small psychophysiological experiment; 20 participants",
+            "urls": [
+              "https://pubmed.ncbi.nlm.nih.gov/2608414/"
+            ],
+            "doi": "10.1177/00315125890693-145",
+            "pmid": "2608414",
+            "quotes": [],
+            "citationCount": null,
+            "sourcePages": [],
+            "targets": [],
+            "categories": [],
+            "summary": "Masked activating suggestions were associated with a heart-rate response during a stress task; skin conductance did not show the same effect.",
+            "limitation": "Small, older study; heart rate is not heart-rate variability and the measures are not interchangeable.",
+            "paperTrustAssessment": {
+              "scope": "Paper",
+              "status": "assessed",
+              "score": 1,
+              "peerReviewed": true,
+              "randomizedControlledTrial": false,
+              "blinding": "not-verified",
+              "basis": "Small psychophysiological experiment; 20 participants",
+              "sources": [
+                "https://pubmed.ncbi.nlm.nih.gov/2608414/"
+              ],
+              "assessedAt": "2026-11-10"
+            },
+            "maskedLanguage": {
+              "priority": 20,
+              "quality": "Exploratory physiological experiment",
+              "relevance": "Direct masked-audio physiology",
+              "function": "An early physiological link for testing autonomic responses to masked verbal content.",
+              "origin": "Additional research"
+            },
+            "evidence": {
+              "evidenceType": "Small psychophysiological experiment; 20 participants",
+              "relationshipNote": "An early physiological link for testing autonomic responses to masked verbal content.",
+              "sourceURLs": [
+                "https://pubmed.ncbi.nlm.nih.gov/2608414/"
+              ],
+              "checkedAt": "2026-11-10",
+              "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+            }
+          },
+          {
+            "id": "masked-funk2022",
+            "recordId": "masked-language-funk2022",
+            "title": "Subliminal Priming with Positive Auditory Stimuli Significantly Improves Self-Esteem and Emotional Well-Being",
+            "journal": "European Journal of Medical and Health Sciences",
+            "year": 2022,
+            "authors": "",
+            "design": "Retrospective service study; 535 adults and children",
+            "urls": [
+              "https://www.ej-med.org/index.php/ejmed/article/view/1328"
+            ],
+            "doi": "10.24018/ejmed.2022.4.6.1328",
+            "pmid": "",
+            "quotes": [],
+            "citationCount": null,
+            "sourcePages": [],
+            "targets": [],
+            "categories": [],
+            "summary": "Self-reported wellbeing improved during a programme of repeated positive auditory sessions.",
+            "limitation": "No randomized comparator; provider involvement and self-report limit causal attribution. The publication title is retained verbatim.",
+            "paperTrustAssessment": {
+              "scope": "Paper",
+              "status": "assessed",
+              "score": 1,
+              "peerReviewed": true,
+              "randomizedControlledTrial": false,
+              "blinding": "not-verified",
+              "basis": "Retrospective service study; 535 adults and children",
+              "sources": [
+                "https://www.ej-med.org/index.php/ejmed/article/view/1328"
+              ],
+              "assessedAt": "2026-11-10"
+            },
+            "maskedLanguage": {
+              "priority": 21,
+              "quality": "Observational service data",
+              "relevance": "Direct intervention context",
+              "function": "Provides an observational signal and candidate psychological outcomes for prospective controlled work.",
+              "origin": "Gemini"
+            },
+            "evidence": {
+              "evidenceType": "Retrospective service study; 535 adults and children",
+              "relationshipNote": "Provides an observational signal and candidate psychological outcomes for prospective controlled work.",
+              "sourceURLs": [
+                "https://www.ej-med.org/index.php/ejmed/article/view/1328"
+              ],
+              "checkedAt": "2026-11-10",
+              "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+            }
+          },
+          {
+            "id": "masked-khalilpour2025",
+            "recordId": "masked-language-khalilpour2025",
+            "title": "Effectiveness of subliminal audio messages on depression and anxiety in women with hypertension: a quasi-experimental study",
+            "journal": "Social Determinants of Health",
+            "year": 2025,
+            "authors": "",
+            "design": "Author-described quasi-experimental study; 30 women",
+            "urls": [
+              "https://journals.sbmu.ac.ir/sdh/article/view/48724"
+            ],
+            "doi": "10.22037/sdh.v11i1.48724",
+            "pmid": "",
+            "quotes": [],
+            "citationCount": null,
+            "sourcePages": [],
+            "targets": [],
+            "categories": [],
+            "summary": "The report describes reduced anxiety and depression after six weeks of subliminal-audio sessions.",
+            "limitation": "Purposive recruitment; allocation, blinding and comparator details require full methodological confirmation. No verified double-blind classification.",
+            "paperTrustAssessment": {
+              "scope": "Paper",
+              "status": "assessed",
+              "score": 1,
+              "peerReviewed": true,
+              "randomizedControlledTrial": false,
+              "blinding": "not-verified",
+              "basis": "Author-described quasi-experimental study; 30 women",
+              "sources": [
+                "https://journals.sbmu.ac.ir/sdh/article/view/48724"
+              ],
+              "assessedAt": "2026-11-10"
+            },
+            "maskedLanguage": {
+              "priority": 22,
+              "quality": "Preliminary clinical report",
+              "relevance": "Direct intervention context",
+              "function": "Adds a preliminary clinical signal and a population for further replication.",
+              "origin": "Additional research"
+            },
+            "evidence": {
+              "evidenceType": "Author-described quasi-experimental study; 30 women",
+              "relationshipNote": "Adds a preliminary clinical signal and a population for further replication.",
+              "sourceURLs": [
+                "https://journals.sbmu.ac.ir/sdh/article/view/48724"
+              ],
+              "checkedAt": "2026-11-10",
+              "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+            }
+          },
+          {
+            "id": "masked-vieira2025",
+            "recordId": "masked-language-vieira2025",
+            "title": "Positive Auditory Stimuli and Its Effects on PTSD: A Case Study on Police Officers",
+            "journal": "European Journal of Medical and Health Sciences",
+            "year": 2025,
+            "authors": "",
+            "design": "Case series; three police officers",
+            "urls": [
+              "https://eu-opensci.org/index.php/ejmed/article/download/42290/10924/53575"
+            ],
+            "doi": "10.24018/ejmed.2025.7.5.2290",
+            "pmid": "",
+            "quotes": [],
+            "citationCount": null,
+            "sourcePages": [],
+            "targets": [],
+            "categories": [],
+            "summary": "The report describes self-reported changes during a positive-auditory-stimulation programme.",
+            "limitation": "Three uncontrolled cases, provider involvement and subjective outcomes; no causal estimate.",
+            "paperTrustAssessment": {
+              "scope": "Paper",
+              "status": "assessed",
+              "score": 1,
+              "peerReviewed": true,
+              "randomizedControlledTrial": false,
+              "blinding": "not-verified",
+              "basis": "Case series; three police officers",
+              "sources": [
+                "https://eu-opensci.org/index.php/ejmed/article/download/42290/10924/53575"
+              ],
+              "assessedAt": "2026-11-10"
+            },
+            "maskedLanguage": {
+              "priority": 23,
+              "quality": "Case series",
+              "relevance": "Direct intervention context",
+              "function": "Descriptive material for generating outcome questions and documenting intervention delivery.",
+              "origin": "Additional research"
+            },
+            "evidence": {
+              "evidenceType": "Case series; three police officers",
+              "relationshipNote": "Descriptive material for generating outcome questions and documenting intervention delivery.",
+              "sourceURLs": [
+                "https://eu-opensci.org/index.php/ejmed/article/download/42290/10924/53575"
+              ],
+              "checkedAt": "2026-11-10",
+              "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+            }
+          },
+          {
+            "id": "masked-motor2026",
+            "recordId": "pmid-42415977",
+            "title": "Subliminal Priming Effects on Motor and Cognitive Performance: Pilot Evidence With Implications for Neurorehabilitation",
+            "journal": "Neurosciences",
+            "year": 2026,
+            "authors": "Aljuhni RE, Alqadhi GA, Alhassan SA, Alanazi SA.",
+            "design": "Single-blind randomized pilot; 30 participants, three priming modalities",
+            "urls": [
+              "https://pmc.ncbi.nlm.nih.gov/articles/PMC13340606/"
+            ],
+            "doi": "10.17712/1658-3183.2803",
+            "pmid": "42415977",
+            "quotes": [],
+            "citationCount": null,
+            "sourcePages": [],
+            "targets": [],
+            "categories": [],
+            "summary": "The pilot compared priming modalities and reported selective motor and cognitive findings.",
+            "limitation": "Small groups, multiple outcomes and no sham group; selective findings need replication.",
+            "paperTrustAssessment": {
+              "scope": "Paper",
+              "status": "assessed",
+              "score": 2,
+              "peerReviewed": true,
+              "randomizedControlledTrial": true,
+              "blinding": "single",
+              "basis": "Single-blind randomized pilot; 30 participants, three priming modalities",
+              "sources": [
+                "https://pmc.ncbi.nlm.nih.gov/articles/PMC13340606/"
+              ],
+              "assessedAt": "2026-11-10"
+            },
+            "maskedLanguage": {
+              "priority": 24,
+              "quality": "Exploratory randomized pilot",
+              "relevance": "Associated priming outcomes",
+              "function": "Extends the outcome map beyond self-report and suggests objective performance measures.",
+              "origin": "Additional research"
+            },
+            "evidence": {
+              "evidenceType": "Single-blind randomized pilot; 30 participants, three priming modalities",
+              "relationshipNote": "Extends the outcome map beyond self-report and suggests objective performance measures.",
+              "sourceURLs": [
+                "https://pmc.ncbi.nlm.nih.gov/articles/PMC13340606/"
+              ],
+              "checkedAt": "2026-11-10",
+              "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+            }
+          }
+        ],
+        "trustScore": 2,
+        "trustAssessment": {
+          "status": "assessed",
+          "basis": "At least three peer-reviewed sources; design level is separate from editorial relevance."
+        }
+      },
+      {
+        "id": "masked-context",
+        "title": "Mantra, HRV and molecular research · measurement context",
+        "description": "Active mantra and meditation research supplies candidate pathways and measurements. These publications describe the role of meaning, breathing, stress regulation and molecular endpoints.",
+        "compactIndex": true,
+        "papers": [
+          {
+            "id": "masked-gao2019",
+            "recordId": "masked-language-gao2019",
+            "title": "The neurophysiological correlates of religious chanting",
+            "journal": "Scientific Reports",
+            "year": 2019,
+            "authors": "Gao J, Leung HK, Wu BWY, Skouras S, Sik HH.",
+            "design": "EEG and ECG in experienced practitioners; supplementary single-person fMRI",
+            "urls": [
+              "https://www.nature.com/articles/s41598-019-40200-w"
+            ],
+            "doi": "10.1038/s41598-019-40200-w",
+            "pmid": "",
+            "quotes": [],
+            "citationCount": null,
+            "sourcePages": [],
+            "targets": [],
+            "categories": [],
+            "summary": "Silent internal religious chanting was associated with neural and cardiac differences across comparison conditions.",
+            "limitation": "Participants actively recited internally. This is silent mental mantra, a different intervention from an external masked recording.",
+            "paperTrustAssessment": {
+              "scope": "Paper",
+              "status": "assessed",
+              "score": 1,
+              "peerReviewed": true,
+              "randomizedControlledTrial": false,
+              "blinding": "not-verified",
+              "basis": "EEG and ECG in experienced practitioners; supplementary single-person fMRI",
+              "sources": [
+                "https://www.nature.com/articles/s41598-019-40200-w"
+              ],
+              "assessedAt": "2026-11-10"
+            },
+            "maskedLanguage": {
+              "priority": 25,
+              "quality": "Small experimental study",
+              "relevance": "Meaningful-mantra context",
+              "function": "Helps frame the role of learned meaning, practice and personally meaningful mantra associations.",
+              "origin": "Additional research"
+            },
+            "evidence": {
+              "evidenceType": "EEG and ECG in experienced practitioners; supplementary single-person fMRI",
+              "relationshipNote": "Helps frame the role of learned meaning, practice and personally meaningful mantra associations.",
+              "sourceURLs": [
+                "https://www.nature.com/articles/s41598-019-40200-w"
+              ],
+              "checkedAt": "2026-11-10",
+              "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+            }
+          },
+          {
+            "id": "masked-gao2017",
+            "recordId": "pmid-28119651",
+            "title": "Repetitive Religious Chanting Modulates the Late-Stage Brain Response to Fear- and Stress-Provoking Pictures",
+            "journal": "Frontiers in Psychology",
+            "year": 2017,
+            "authors": "Gao J, Fan J, Wu BW, Halkias GT, Chau M, Fung PC, Chang C, Zhang Z, Hung YS, Sik H.",
+            "design": "EEG; active chanting and emotional pictures",
+            "urls": [
+              "https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2016.02055/full"
+            ],
+            "doi": "10.3389/fpsyg.2016.02055",
+            "pmid": "28119651",
+            "quotes": [],
+            "citationCount": null,
+            "sourcePages": [],
+            "targets": [],
+            "categories": [],
+            "summary": "Religious chanting modulated later brain responses to negative pictures.",
+            "limitation": "Active chanting; overlap with related research samples may limit independence. Early and late responses differed.",
+            "paperTrustAssessment": {
+              "scope": "Paper",
+              "status": "assessed",
+              "score": 1,
+              "peerReviewed": true,
+              "randomizedControlledTrial": false,
+              "blinding": "not-verified",
+              "basis": "EEG; active chanting and emotional pictures",
+              "sources": [
+                "https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2016.02055/full"
+              ],
+              "assessedAt": "2026-11-10"
+            },
+            "maskedLanguage": {
+              "priority": 26,
+              "quality": "Experimental EEG evidence",
+              "relevance": "Emotion and mantra context",
+              "function": "Supports testing whether learned associations and repetition alter later emotional appraisal.",
+              "origin": "Additional research"
+            },
+            "evidence": {
+              "evidenceType": "EEG; active chanting and emotional pictures",
+              "relationshipNote": "Supports testing whether learned associations and repetition alter later emotional appraisal.",
+              "sourceURLs": [
+                "https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2016.02055/full"
+              ],
+              "checkedAt": "2026-11-10",
+              "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+            }
+          },
+          {
+            "id": "masked-bernardi2001",
+            "recordId": "pmid-11751348",
+            "title": "Effect of rosary prayer and yoga mantras on autonomic cardiovascular rhythms: comparative study",
+            "journal": "BMJ",
+            "year": 2001,
+            "authors": "Bernardi L, Sleight P, Bandinelli G, Cencetti S, Fattorini L, Wdowczyc-Szulc J, Lagi A.",
+            "design": "Comparative physiological study; 23 participants",
+            "urls": [
+              "https://pmc.ncbi.nlm.nih.gov/articles/PMC61046/"
+            ],
+            "doi": "10.1136/bmj.323.7327.1446",
+            "pmid": "11751348",
+            "quotes": [],
+            "citationCount": null,
+            "sourcePages": [],
+            "targets": [],
+            "categories": [],
+            "summary": "Recitation slowed breathing towards six breaths per minute and increased cardiovascular rhythm coordination and baroreflex sensitivity.",
+            "limitation": "Active recitation directly changes breathing. An external masked track may not reproduce this respiratory behaviour.",
+            "paperTrustAssessment": {
+              "scope": "Paper",
+              "status": "assessed",
+              "score": 1,
+              "peerReviewed": true,
+              "randomizedControlledTrial": false,
+              "blinding": "not-verified",
+              "basis": "Comparative physiological study; 23 participants",
+              "sources": [
+                "https://pmc.ncbi.nlm.nih.gov/articles/PMC61046/"
+              ],
+              "assessedAt": "2026-11-10"
+            },
+            "maskedLanguage": {
+              "priority": 27,
+              "quality": "Controlled physiological comparison",
+              "relevance": "Autonomic mechanism context",
+              "function": "Identifies respiration as an important pathway and measurement variable in mantra-related autonomic effects.",
+              "origin": "Additional research"
+            },
+            "evidence": {
+              "evidenceType": "Comparative physiological study; 23 participants",
+              "relationshipNote": "Identifies respiration as an important pathway and measurement variable in mantra-related autonomic effects.",
+              "sourceURLs": [
+                "https://pmc.ncbi.nlm.nih.gov/articles/PMC61046/"
+              ],
+              "checkedAt": "2026-11-10",
+              "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+            }
+          },
+          {
+            "id": "masked-black2013",
+            "recordId": "pmid-22795617",
+            "title": "Yogic meditation reverses NF-κB and IRF-related transcriptome dynamics in leukocytes of family dementia caregivers in a randomized controlled trial",
+            "journal": "Psychoneuroendocrinology",
+            "year": 2013,
+            "authors": "Black DS, Cole SW, Irwin MR, Breen E, St Cyr NM, Nazarian N, Khalsa DS, Lavretsky H.",
+            "design": "Randomized active-meditation versus music study; 45 randomized, 39 completed",
+            "urls": [
+              "https://pubmed.ncbi.nlm.nih.gov/22795617/"
+            ],
+            "doi": "10.1016/j.psyneuen.2012.06.011",
+            "pmid": "22795617",
+            "quotes": [],
+            "citationCount": null,
+            "sourcePages": [],
+            "targets": [],
+            "categories": [],
+            "summary": "Eight weeks of Kirtan Kriya were associated with differences in leukocyte gene-expression patterns and inferred transcription-factor activity.",
+            "limitation": "Active multicomponent meditation, not masked audio. Peripheral gene expression does not establish a masked-language mechanism. Linked to the Lavretsky caregiver trial.",
+            "paperTrustAssessment": {
+              "scope": "Paper",
+              "status": "assessed",
+              "score": 2,
+              "peerReviewed": true,
+              "randomizedControlledTrial": true,
+              "blinding": "not-verified",
+              "basis": "Randomized active-meditation versus music study; 45 randomized, 39 completed",
+              "sources": [
+                "https://pubmed.ncbi.nlm.nih.gov/22795617/"
+              ],
+              "assessedAt": "2026-11-10"
+            },
+            "maskedLanguage": {
+              "priority": 28,
+              "quality": "Small randomized trial",
+              "relevance": "Molecular endpoint context",
+              "function": "Provides a molecular endpoint precedent for a future controlled study of stress regulation.",
+              "origin": "Additional research"
+            },
+            "evidence": {
+              "evidenceType": "Randomized active-meditation versus music study; 45 randomized, 39 completed",
+              "relationshipNote": "Provides a molecular endpoint precedent for a future controlled study of stress regulation.",
+              "sourceURLs": [
+                "https://pubmed.ncbi.nlm.nih.gov/22795617/"
+              ],
+              "checkedAt": "2026-11-10",
+              "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+            }
+          },
+          {
+            "id": "masked-lavretsky2013",
+            "recordId": "pmid-22407663",
+            "title": "A pilot study of yogic meditation for family dementia caregivers with depressive symptoms: effects on mental health, cognition, and telomerase activity",
+            "journal": "International Journal of Geriatric Psychiatry",
+            "year": 2013,
+            "authors": "Lavretsky H, Epel ES, Siddarth P, Nazarian N, Cyr NS, Khalsa DS, Lin J, Blackburn E, Irwin MR.",
+            "design": "Randomized caregiver meditation pilot; 39 completers",
+            "urls": [
+              "https://pubmed.ncbi.nlm.nih.gov/22407663/"
+            ],
+            "doi": "10.1002/gps.3790",
+            "pmid": "22407663",
+            "quotes": [],
+            "citationCount": null,
+            "sourcePages": [],
+            "targets": [],
+            "categories": [],
+            "summary": "The active-meditation comparison assessed mood, cognition and telomerase activity after eight weeks.",
+            "limitation": "Related to the Black transcriptome report; these publications do not count as independent trials.",
+            "paperTrustAssessment": {
+              "scope": "Paper",
+              "status": "assessed",
+              "score": 2,
+              "peerReviewed": true,
+              "randomizedControlledTrial": true,
+              "blinding": "not-verified",
+              "basis": "Randomized caregiver meditation pilot; 39 completers",
+              "sources": [
+                "https://pubmed.ncbi.nlm.nih.gov/22407663/"
+              ],
+              "assessedAt": "2026-11-10"
+            },
+            "maskedLanguage": {
+              "priority": 29,
+              "quality": "Small randomized trial",
+              "relevance": "Cellular endpoint context",
+              "function": "Provides a precedent for combining psychological and cellular measurements.",
+              "origin": "Additional research"
+            },
+            "evidence": {
+              "evidenceType": "Randomized caregiver meditation pilot; 39 completers",
+              "relationshipNote": "Provides a precedent for combining psychological and cellular measurements.",
+              "sourceURLs": [
+                "https://pubmed.ncbi.nlm.nih.gov/22407663/"
+              ],
+              "checkedAt": "2026-11-10",
+              "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+            }
+          },
+          {
+            "id": "masked-wahbeh2026",
+            "recordId": "masked-language-wahbeh2026",
+            "title": "Digital meditation at scale: a randomized citizen science trial comparing four meditation practices",
+            "journal": "BMC Psychology",
+            "year": 2026,
+            "authors": "",
+            "design": "Randomized digital trial; 1,211 participants assigned to meditation or music conditions",
+            "urls": [
+              "https://link.springer.com/article/10.1186/s40359-026-05869-5"
+            ],
+            "doi": "10.1186/s40359-026-05869-5",
+            "pmid": "",
+            "quotes": [],
+            "citationCount": null,
+            "sourcePages": [],
+            "targets": [],
+            "categories": [],
+            "summary": "Four weeks of practice were assessed with subjective, EEG and HRV measures. The preregistered primary findings did not survive multiplicity correction.",
+            "limitation": "Active practices, including mantra, differ from masked playback; substantial attrition complicates interpretation.",
+            "paperTrustAssessment": {
+              "scope": "Paper",
+              "status": "assessed",
+              "score": 2,
+              "peerReviewed": true,
+              "randomizedControlledTrial": true,
+              "blinding": "not-verified",
+              "basis": "Randomized digital trial; 1,211 participants assigned to meditation or music conditions",
+              "sources": [
+                "https://link.springer.com/article/10.1186/s40359-026-05869-5"
+              ],
+              "assessedAt": "2026-11-10"
+            },
+            "maskedLanguage": {
+              "priority": 30,
+              "quality": "Large randomized study; attrition limitations",
+              "relevance": "Digital evaluation context",
+              "function": "A useful design and feasibility reference for digital delivery, active controls, HRV and EEG.",
+              "origin": "Additional research"
+            },
+            "evidence": {
+              "evidenceType": "Randomized digital trial; 1,211 participants assigned to meditation or music conditions",
+              "relationshipNote": "A useful design and feasibility reference for digital delivery, active controls, HRV and EEG.",
+              "sourceURLs": [
+                "https://link.springer.com/article/10.1186/s40359-026-05869-5"
+              ],
+              "checkedAt": "2026-11-10",
+              "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+            }
+          },
+          {
+            "id": "masked-vickhoff2013",
+            "recordId": "masked-language-vickhoff2013",
+            "title": "Music structure determines heart rate variability of singers",
+            "journal": "Frontiers in Psychology",
+            "year": 2013,
+            "authors": "Vickhoff B, Malmgren H, Aström R, Nyberg G, Ekström SR, Engwall M, Snygg J, Nilsson M, Jörnsten R.",
+            "design": "Physiological experiments during singing",
+            "urls": [
+              "https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2013.00334/full"
+            ],
+            "doi": "10.3389/fpsyg.2013.00334",
+            "pmid": "",
+            "quotes": [],
+            "citationCount": null,
+            "sourcePages": [],
+            "targets": [],
+            "categories": [],
+            "summary": "Musical phrasing and breathing patterns organised heart-rate variability during singing and mantra-like phrases.",
+            "limitation": "Active vocalisation and coordinated breathing; this mechanism is not automatically present during passive masked listening.",
+            "paperTrustAssessment": {
+              "scope": "Paper",
+              "status": "assessed",
+              "score": 1,
+              "peerReviewed": true,
+              "randomizedControlledTrial": false,
+              "blinding": "not-verified",
+              "basis": "Physiological experiments during singing",
+              "sources": [
+                "https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2013.00334/full"
+              ],
+              "assessedAt": "2026-11-10"
+            },
+            "maskedLanguage": {
+              "priority": 31,
+              "quality": "Experimental physiology",
+              "relevance": "Music and breathing context",
+              "function": "Shows why respiration and musical structure need measurement alongside any spoken-message manipulation.",
+              "origin": "Additional research"
+            },
+            "evidence": {
+              "evidenceType": "Physiological experiments during singing",
+              "relationshipNote": "Shows why respiration and musical structure need measurement alongside any spoken-message manipulation.",
+              "sourceURLs": [
+                "https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2013.00334/full"
+              ],
+              "checkedAt": "2026-11-10",
+              "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+            }
+          },
+          {
+            "id": "masked-meditation2015",
+            "recordId": "masked-language-meditation2015",
+            "title": "Cardiovascular and nervous system changes during meditation",
+            "journal": "Frontiers in Human Neuroscience",
+            "year": 2015,
+            "authors": "Steinhubl SR, Wineinger NE, Patel S, Boeldt DL, Mackellar G, Porter V, Redmond JT, Muse ED, Nicholson L, Chopra D, Topol EJ.",
+            "design": "Physiological study during active meditation",
+            "urls": [
+              "https://www.frontiersin.org/journals/human-neuroscience/articles/10.3389/fnhum.2015.00145/full"
+            ],
+            "doi": "10.3389/fnhum.2015.00145",
+            "pmid": "",
+            "quotes": [],
+            "citationCount": null,
+            "sourcePages": [],
+            "targets": [],
+            "categories": [],
+            "summary": "Cardiovascular and neural measures changed during meditation; HRV measures did not all move in the same direction.",
+            "limitation": "Different HRV indices reflect different processes and depend on respiration, timing and experience.",
+            "paperTrustAssessment": {
+              "scope": "Paper",
+              "status": "assessed",
+              "score": 1,
+              "peerReviewed": true,
+              "randomizedControlledTrial": false,
+              "blinding": "not-verified",
+              "basis": "Physiological study during active meditation",
+              "sources": [
+                "https://www.frontiersin.org/journals/human-neuroscience/articles/10.3389/fnhum.2015.00145/full"
+              ],
+              "assessedAt": "2026-11-10"
+            },
+            "maskedLanguage": {
+              "priority": 32,
+              "quality": "Experimental physiology",
+              "relevance": "Autonomic measurement context",
+              "function": "Encourages endpoint-specific interpretation of autonomic effects.",
+              "origin": "Additional research"
+            },
+            "evidence": {
+              "evidenceType": "Physiological study during active meditation",
+              "relationshipNote": "Encourages endpoint-specific interpretation of autonomic effects.",
+              "sourceURLs": [
+                "https://www.frontiersin.org/journals/human-neuroscience/articles/10.3389/fnhum.2015.00145/full"
+              ],
+              "checkedAt": "2026-11-10",
+              "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+            }
+          },
+          {
+            "id": "masked-beats2025",
+            "recordId": "masked-language-beats2025",
+            "title": "Beating stress: music with monaural beats reduces anxiety and improves mood in a non-clinical population",
+            "journal": "PMC publication record",
+            "year": 2025,
+            "authors": "",
+            "design": "Single-blind randomized sound study; 308 participants",
+            "urls": [
+              "https://pmc.ncbi.nlm.nih.gov/articles/PMC12213757/"
+            ],
+            "doi": "",
+            "pmid": "",
+            "quotes": [],
+            "citationCount": null,
+            "sourcePages": [],
+            "targets": [],
+            "categories": [],
+            "summary": "The trial compared music with monaural beats, beats and pure-tone conditions on anxiety and mood.",
+            "limitation": "No music-only arm; nonlinguistic beats are distinct from verbal messages.",
+            "paperTrustAssessment": {
+              "scope": "Paper",
+              "status": "assessed",
+              "score": 2,
+              "peerReviewed": true,
+              "randomizedControlledTrial": true,
+              "blinding": "single",
+              "basis": "Single-blind randomized sound study; 308 participants",
+              "sources": [
+                "https://pmc.ncbi.nlm.nih.gov/articles/PMC12213757/"
+              ],
+              "assessedAt": "2026-11-10"
+            },
+            "maskedLanguage": {
+              "priority": 33,
+              "quality": "Randomized sound comparison",
+              "relevance": "Carrier-audio control context",
+              "function": "Documents potential effects from the carrier audio itself, informing controls for masked-language research.",
+              "origin": "Additional research"
+            },
+            "evidence": {
+              "evidenceType": "Single-blind randomized sound study; 308 participants",
+              "relationshipNote": "Documents potential effects from the carrier audio itself, informing controls for masked-language research.",
+              "sourceURLs": [
+                "https://pmc.ncbi.nlm.nih.gov/articles/PMC12213757/"
+              ],
+              "checkedAt": "2026-11-10",
+              "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+            }
+          },
+          {
+            "id": "masked-stress2017",
+            "recordId": "pmid-28497544",
+            "title": "Inducing unconscious stress: Cardiovascular activity in response to subliminal presentation of threatening and neutral words",
+            "journal": "Psychophysiology",
+            "year": 2017,
+            "authors": "van der Ploeg MM, Brosschot JF, Verkuil B, Gillie BL, Williams DP, Koenig J, Vasey MW, Thayer JF.",
+            "design": "Randomized subliminal visual-word experiment; 116 participants",
+            "urls": [
+              "https://pubmed.ncbi.nlm.nih.gov/28497544/"
+            ],
+            "doi": "10.1111/psyp.12891",
+            "pmid": "28497544",
+            "quotes": [],
+            "citationCount": null,
+            "sourcePages": [],
+            "targets": [],
+            "categories": [],
+            "summary": "Threatening versus neutral masked words increased total peripheral resistance significantly. Mean arterial pressure and HRV followed the predicted directions without statistically significant differences.",
+            "limitation": "Visual presentation; the cardiovascular endpoints differed in statistical support. Transfer to auditory masking remains a research question.",
+            "paperTrustAssessment": {
+              "scope": "Paper",
+              "status": "assessed",
+              "score": 1,
+              "peerReviewed": true,
+              "randomizedControlledTrial": false,
+              "blinding": "not-verified",
+              "basis": "Randomized subliminal visual-word experiment; 116 participants",
+              "sources": [
+                "https://pubmed.ncbi.nlm.nih.gov/28497544/"
+              ],
+              "assessedAt": "2026-11-10"
+            },
+            "maskedLanguage": {
+              "priority": 34,
+              "quality": "Randomized physiological experiment",
+              "relevance": "Cross-modal autonomic hypothesis",
+              "function": "Indexes a route for examining semantic content and autonomic measures across modalities.",
+              "origin": "Additional research"
+            },
+            "evidence": {
+              "evidenceType": "Randomized subliminal visual-word experiment; 116 participants",
+              "relationshipNote": "Indexes a route for examining semantic content and autonomic measures across modalities.",
+              "sourceURLs": [
+                "https://pubmed.ncbi.nlm.nih.gov/28497544/"
+              ],
+              "checkedAt": "2026-11-10",
+              "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+            }
+          },
+          {
+            "id": "masked-classification2019",
+            "recordId": "masked-language-classification2019",
+            "title": "What Is Meditation? Proposing an Empirically Derived Classification System",
+            "journal": "Frontiers in Psychology",
+            "year": 2019,
+            "authors": "Matko K, Sedlmeier P.",
+            "design": "Empirical classification of meditation techniques",
+            "urls": [
+              "https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2019.02276/full"
+            ],
+            "doi": "10.3389/fpsyg.2019.02276",
+            "pmid": "",
+            "quotes": [],
+            "citationCount": null,
+            "sourcePages": [],
+            "targets": [],
+            "categories": [],
+            "summary": "The paper maps different meditation practices and terminology.",
+            "limitation": "Terminology and classification context; not a test of masked-speech effects.",
+            "paperTrustAssessment": {
+              "scope": "Paper",
+              "status": "assessed",
+              "score": 1,
+              "peerReviewed": true,
+              "randomizedControlledTrial": false,
+              "blinding": "not-verified",
+              "basis": "Empirical classification of meditation techniques",
+              "sources": [
+                "https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2019.02276/full"
+              ],
+              "assessedAt": "2026-11-10"
+            },
+            "maskedLanguage": {
+              "priority": 35,
+              "quality": "Classification research",
+              "relevance": "Terminology",
+              "function": "Helps separate internally repeated mantra from an external acoustic intervention.",
+              "origin": "Additional research"
+            },
+            "evidence": {
+              "evidenceType": "Empirical classification of meditation techniques",
+              "relationshipNote": "Helps separate internally repeated mantra from an external acoustic intervention.",
+              "sourceURLs": [
+                "https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2019.02276/full"
+              ],
+              "checkedAt": "2026-11-10",
+              "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+            }
+          }
+        ],
+        "trustScore": 2,
+        "trustAssessment": {
+          "status": "assessed",
+          "basis": "At least three peer-reviewed sources; design level is separate from editorial relevance."
+        }
+      },
+      {
+        "id": "masked-background",
+        "title": "Original background references",
+        "description": "Every source supplied in the initial Gemini discussion is retained. Commercial explainers and the unverified video remain identifiable background sources.",
+        "compactIndex": true,
+        "papers": [
+          {
+            "id": "masked-emotiv",
+            "recordId": "masked-language-emotiv",
+            "title": "Do Subliminal Messages Work?",
+            "journal": "EMOTIV",
+            "year": null,
+            "authors": "",
+            "design": "Commercial explanatory article",
+            "urls": [
+              "https://www.emotiv.com/blog/do-subliminal-messages-work"
+            ],
+            "doi": "",
+            "pmid": "",
+            "quotes": [],
+            "citationCount": null,
+            "sourcePages": [],
+            "targets": [],
+            "categories": [],
+            "summary": "Explainer supplied in the original research discussion.",
+            "limitation": "Not a peer-reviewed experiment; empirical claims are evaluated through the linked primary-source index.",
+            "paperTrustAssessment": {
+              "scope": "Paper",
+              "status": "unrated",
+              "score": null,
+              "peerReviewed": false,
+              "randomizedControlledTrial": false,
+              "blinding": "not-verified",
+              "basis": "Commercial explanatory article",
+              "sources": [
+                "https://www.emotiv.com/blog/do-subliminal-messages-work"
+              ],
+              "assessedAt": "2026-11-10"
+            },
+            "maskedLanguage": {
+              "priority": 36,
+              "quality": "Background explainer",
+              "relevance": "Source provenance",
+              "function": "Retained for provenance and for tracing the background rationale to primary research.",
+              "origin": "Gemini"
+            },
+            "evidence": {
+              "evidenceType": "Commercial explanatory article",
+              "relationshipNote": "Retained for provenance and for tracing the background rationale to primary research.",
+              "sourceURLs": [
+                "https://www.emotiv.com/blog/do-subliminal-messages-work"
+              ],
+              "checkedAt": "2026-11-10",
+              "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+            }
+          },
+          {
+            "id": "masked-brainfm",
+            "recordId": "masked-language-brainfm",
+            "title": "The science of auditory masking",
+            "journal": "Brain.fm",
+            "year": 2026,
+            "authors": "",
+            "design": "Commercial explanatory article",
+            "urls": [
+              "https://www.brain.fm/blog/science-of-auditory-masking"
+            ],
+            "doi": "",
+            "pmid": "",
+            "quotes": [],
+            "citationCount": null,
+            "sourcePages": [],
+            "targets": [],
+            "categories": [],
+            "summary": "Overview of auditory masking supplied in the original discussion.",
+            "limitation": "Commercial background material; not an independent neural or clinical study.",
+            "paperTrustAssessment": {
+              "scope": "Paper",
+              "status": "unrated",
+              "score": null,
+              "peerReviewed": false,
+              "randomizedControlledTrial": false,
+              "blinding": "not-verified",
+              "basis": "Commercial explanatory article",
+              "sources": [
+                "https://www.brain.fm/blog/science-of-auditory-masking"
+              ],
+              "assessedAt": "2026-11-10"
+            },
+            "maskedLanguage": {
+              "priority": 37,
+              "quality": "Background explainer",
+              "relevance": "Source provenance",
+              "function": "Introduces terminology and preserves the original source trail.",
+              "origin": "Gemini"
+            },
+            "evidence": {
+              "evidenceType": "Commercial explanatory article",
+              "relationshipNote": "Introduces terminology and preserves the original source trail.",
+              "sourceURLs": [
+                "https://www.brain.fm/blog/science-of-auditory-masking"
+              ],
+              "checkedAt": "2026-11-10",
+              "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+            }
+          },
+          {
+            "id": "masked-video",
+            "recordId": "masked-language-video",
+            "title": "Supplied video reference · BEBxeP-1fAU",
+            "journal": "YouTube",
+            "year": null,
+            "authors": "",
+            "design": "Multimedia reference; content verification pending",
+            "urls": [
+              "https://www.youtube.com/watch?v=BEBxeP-1fAU"
+            ],
+            "doi": "",
+            "pmid": "",
+            "quotes": [],
+            "citationCount": null,
+            "sourcePages": [],
+            "targets": [],
+            "categories": [],
+            "summary": "The original video link is retained for completeness.",
+            "limitation": "Title, authorship and substantive content were not verified; no evidence rating assigned.",
+            "paperTrustAssessment": {
+              "scope": "Paper",
+              "status": "unrated",
+              "score": null,
+              "peerReviewed": false,
+              "randomizedControlledTrial": false,
+              "blinding": "not-verified",
+              "basis": "Multimedia reference; content verification pending",
+              "sources": [
+                "https://www.youtube.com/watch?v=BEBxeP-1fAU"
+              ],
+              "assessedAt": "2026-11-10"
+            },
+            "maskedLanguage": {
+              "priority": 38,
+              "quality": "Unverified multimedia",
+              "relevance": "Source provenance",
+              "function": "Preserves the supplied reference without assigning unverified scientific findings.",
+              "origin": "Gemini"
+            },
+            "evidence": {
+              "evidenceType": "Multimedia reference; content verification pending",
+              "relationshipNote": "Preserves the supplied reference without assigning unverified scientific findings.",
+              "sourceURLs": [
+                "https://www.youtube.com/watch?v=BEBxeP-1fAU"
+              ],
+              "checkedAt": "2026-11-10",
+              "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+            }
+          }
+        ],
+        "trustScore": null,
+        "trustAssessment": {
+          "status": "below-minimum",
+          "basis": "At least three peer-reviewed sources; design level is separate from editorial relevance."
+        }
+      }
+    ],
+    "maskedLanguage": true
+  },
+  "records": [
+    {
+      "id": "pmid-19715763",
+      "recordId": "pmid-19715763",
+      "title": "Cerebral bases of subliminal speech priming",
+      "journal": "NeuroImage",
+      "year": 2010,
+      "authors": "Kouider S, de Gardelle V, Dehaene S, Dupoux E, Pallier C.",
+      "design": "Behavioural priming and fMRI; 16 participants",
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/19715763/",
+        "https://www.pallier.org/papers/Kouider.Pallier.subliminal.priming.fmri.2009.pdf",
+        "https://www.semanticscholar.org/paper/Cerebral-bases-of-subliminal-speech-priming-Kouider-Gardelle/b44d347fb2834f322613575801dac798e4698004"
+      ],
+      "doi": "10.1016/j.neuroimage.2009.08.043",
+      "pmid": "19715763",
+      "quotes": [],
+      "citationCount": null,
+      "sourcePages": [],
+      "targets": [],
+      "categories": [],
+      "summary": "Masked, compressed spoken words influenced subsequent word processing. Repetition-related responses in temporal and insular regions occurred with prime identification near chance.",
+      "limitation": "Short, tightly controlled primes; repetition suppression indexes altered processing, not a measured emotional or therapeutic response.",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "peerReviewed": true,
+        "randomizedControlledTrial": false,
+        "blinding": "not-verified",
+        "basis": "Behavioural priming and fMRI; 16 participants",
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/19715763/"
+        ],
+        "assessedAt": "2026-11-10"
+      },
+      "maskedLanguage": {
+        "priority": 1,
+        "quality": "Controlled mechanistic evidence",
+        "relevance": "Direct mechanism",
+        "function": "Direct evidence that lexical processing can occur without reportable word identification.",
+        "origin": "Gemini"
+      },
+      "evidence": {
+        "evidenceType": "Behavioural priming and fMRI; 16 participants",
+        "relationshipNote": "Direct evidence that lexical processing can occur without reportable word identification.",
+        "sourceURLs": [
+          "https://pubmed.ncbi.nlm.nih.gov/19715763/",
+          "https://www.pallier.org/papers/Kouider.Pallier.subliminal.priming.fmri.2009.pdf",
+          "https://www.semanticscholar.org/paper/Cerebral-bases-of-subliminal-speech-priming-Kouider-Gardelle/b44d347fb2834f322613575801dac798e4698004"
+        ],
+        "checkedAt": "2026-11-10",
+        "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+      },
+      "aliases": [],
+      "collections": [
+        "language"
+      ],
+      "priority": 1,
+      "archiveEntries": [],
+      "origin": "update"
+    },
+    {
+      "id": "pmid-16102064",
+      "recordId": "pmid-16102064",
+      "title": "Subliminal speech priming",
+      "journal": "Psychological Science",
+      "year": 2005,
+      "authors": "Kouider S, Dupoux E.",
+      "design": "Controlled experiments with compressed and masked speech",
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/16102064/"
+      ],
+      "doi": "10.1111/j.1467-9280.2005.01584.x",
+      "pmid": "16102064",
+      "quotes": [],
+      "citationCount": null,
+      "sourcePages": [],
+      "targets": [],
+      "categories": [],
+      "summary": "Masked speech produced repetition priming, including effects across different voices. Evidence for semantic overlap was more limited.",
+      "limitation": "Word identity, phonological processing and sentence meaning are distinct levels of processing.",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "peerReviewed": true,
+        "randomizedControlledTrial": false,
+        "blinding": "not-verified",
+        "basis": "Controlled experiments with compressed and masked speech",
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/16102064/"
+        ],
+        "assessedAt": "2026-11-10"
+      },
+      "maskedLanguage": {
+        "priority": 2,
+        "quality": "Controlled mechanistic evidence",
+        "relevance": "Direct mechanism",
+        "function": "Establishes a behavioural route from a masked acoustic signal to word-level representations.",
+        "origin": "Additional research"
+      },
+      "evidence": {
+        "evidenceType": "Controlled experiments with compressed and masked speech",
+        "relationshipNote": "Establishes a behavioural route from a masked acoustic signal to word-level representations.",
+        "sourceURLs": [
+          "https://pubmed.ncbi.nlm.nih.gov/16102064/"
+        ],
+        "checkedAt": "2026-11-10",
+        "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+      },
+      "aliases": [],
+      "collections": [
+        "language"
+      ],
+      "priority": 1,
+      "archiveEntries": [],
+      "origin": "update"
+    },
+    {
+      "id": "pmid-37169066",
+      "recordId": "pmid-37169066",
+      "title": "The effects of speech masking on neural tracking of acoustic and semantic features of natural speech",
+      "journal": "Neuropsychologia",
+      "year": 2023,
+      "authors": "Yasmin S, Irsik VC, Johnsrude IS, Herrmann B.",
+      "design": "EEG during stories presented with competing speech",
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/37169066/"
+      ],
+      "doi": "10.1016/j.neuropsychologia.2023.108584",
+      "pmid": "37169066",
+      "quotes": [],
+      "citationCount": null,
+      "sourcePages": [],
+      "targets": [],
+      "categories": [],
+      "summary": "Acoustic and semantic tracking changed differently with masking. Semantic tracking remained measurable across several masking levels and weakened under the most severe masking.",
+      "limitation": "Participants attended to the stories; partially intelligible speech is distinct from objectively undetectable speech.",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "peerReviewed": true,
+        "randomizedControlledTrial": false,
+        "blinding": "not-verified",
+        "basis": "EEG during stories presented with competing speech",
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/37169066/"
+        ],
+        "assessedAt": "2026-11-10"
+      },
+      "maskedLanguage": {
+        "priority": 3,
+        "quality": "Controlled mechanistic evidence",
+        "relevance": "Direct mechanism",
+        "function": "Shows how speech meaning and timing can remain represented when competing sound obscures speech.",
+        "origin": "Gemini"
+      },
+      "evidence": {
+        "evidenceType": "EEG during stories presented with competing speech",
+        "relationshipNote": "Shows how speech meaning and timing can remain represented when competing sound obscures speech.",
+        "sourceURLs": [
+          "https://pubmed.ncbi.nlm.nih.gov/37169066/"
+        ],
+        "checkedAt": "2026-11-10",
+        "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+      },
+      "aliases": [],
+      "collections": [
+        "language"
+      ],
+      "priority": 1,
+      "archiveEntries": [],
+      "origin": "update"
+    },
+    {
+      "id": "masked-language-leonard2016",
+      "recordId": "masked-language-leonard2016",
+      "title": "Perceptual restoration of masked speech in human cortex",
+      "journal": "Nature Communications",
+      "year": 2016,
+      "authors": "Leonard MK, Baud MO, Sjerps MJ, Chang EF.",
+      "design": "Intracranial cortical recordings; five participants",
+      "urls": [
+        "https://www.nature.com/articles/ncomms13619"
+      ],
+      "doi": "10.1038/ncomms13619",
+      "pmid": "",
+      "quotes": [],
+      "citationCount": null,
+      "sourcePages": [],
+      "targets": [],
+      "categories": [],
+      "summary": "Neural responses reflected the speech sounds listeners perceived when noise replaced parts of words. Context and prior neural activity helped explain restoration.",
+      "limitation": "The experiment replaced parts of speech; it did not remove all acoustic information from an entire message.",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "peerReviewed": true,
+        "randomizedControlledTrial": false,
+        "blinding": "not-verified",
+        "basis": "Intracranial cortical recordings; five participants",
+        "sources": [
+          "https://www.nature.com/articles/ncomms13619"
+        ],
+        "assessedAt": "2026-11-10"
+      },
+      "maskedLanguage": {
+        "priority": 4,
+        "quality": "Controlled mechanistic evidence",
+        "relevance": "Direct mechanism",
+        "function": "Demonstrates reconstruction of missing speech information using surviving acoustic cues and expectations.",
+        "origin": "Additional research"
+      },
+      "evidence": {
+        "evidenceType": "Intracranial cortical recordings; five participants",
+        "relationshipNote": "Demonstrates reconstruction of missing speech information using surviving acoustic cues and expectations.",
+        "sourceURLs": [
+          "https://www.nature.com/articles/ncomms13619"
+        ],
+        "checkedAt": "2026-11-10",
+        "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+      },
+      "aliases": [],
+      "collections": [
+        "language"
+      ],
+      "priority": 1,
+      "archiveEntries": [],
+      "origin": "update"
+    },
+    {
+      "id": "masked-language-herrmann2025",
+      "recordId": "masked-language-herrmann2025",
+      "title": "Enhanced neural speech tracking through noise indicates stochastic resonance in humans",
+      "journal": "eLife",
+      "year": 2025,
+      "authors": "",
+      "design": "Five EEG experiments; peer-reviewed version of record",
+      "urls": [
+        "https://elifesciences.org/articles/100830"
+      ],
+      "doi": "10.7554/eLife.100830.3",
+      "pmid": "",
+      "quotes": [],
+      "citationCount": null,
+      "sourcePages": [],
+      "targets": [],
+      "categories": [],
+      "summary": "Minimal background noise enhanced neural tracking of speech amplitude onsets across a series of experiments.",
+      "limitation": "Speech remained intelligible and louder than the added noise. The result depends on signal-to-noise conditions and does not establish a universal mixing level.",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "peerReviewed": true,
+        "randomizedControlledTrial": false,
+        "blinding": "not-verified",
+        "basis": "Five EEG experiments; peer-reviewed version of record",
+        "sources": [
+          "https://elifesciences.org/articles/100830"
+        ],
+        "assessedAt": "2026-11-10"
+      },
+      "maskedLanguage": {
+        "priority": 5,
+        "quality": "Converging experimental evidence",
+        "relevance": "Direct mechanism",
+        "function": "Identifies a testable mechanism through which some noise conditions enhance early speech tracking.",
+        "origin": "Gemini"
+      },
+      "evidence": {
+        "evidenceType": "Five EEG experiments; peer-reviewed version of record",
+        "relationshipNote": "Identifies a testable mechanism through which some noise conditions enhance early speech tracking.",
+        "sourceURLs": [
+          "https://elifesciences.org/articles/100830"
+        ],
+        "checkedAt": "2026-11-10",
+        "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+      },
+      "aliases": [],
+      "collections": [
+        "language"
+      ],
+      "priority": 1,
+      "archiveEntries": [],
+      "origin": "update"
+    },
+    {
+      "id": "pmid-32752786",
+      "recordId": "pmid-32752786",
+      "title": "Auditory neural tracking and lexical processing of speech in noise: Masker type, spatial location, and language experience",
+      "journal": "Journal of the Acoustical Society of America",
+      "year": 2020,
+      "authors": "Song J, Martin L, Iverson P.",
+      "design": "EEG; speech-in-noise experiments",
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/32752786/"
+      ],
+      "doi": "10.1121/10.0001477",
+      "pmid": "32752786",
+      "quotes": [],
+      "citationCount": null,
+      "sourcePages": [],
+      "targets": [],
+      "categories": [],
+      "summary": "Masker type, spatial separation and language experience influenced neural tracking and lexical processing of attended speech.",
+      "limitation": "The task involved attended sentences; it does not establish full comprehension at every masking level.",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "peerReviewed": true,
+        "randomizedControlledTrial": false,
+        "blinding": "not-verified",
+        "basis": "EEG; speech-in-noise experiments",
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/32752786/"
+        ],
+        "assessedAt": "2026-11-10"
+      },
+      "maskedLanguage": {
+        "priority": 6,
+        "quality": "Controlled mechanistic evidence",
+        "relevance": "Direct mechanism",
+        "function": "Explains why masking, listening conditions and learned language knowledge alter speech extraction.",
+        "origin": "Gemini"
+      },
+      "evidence": {
+        "evidenceType": "EEG; speech-in-noise experiments",
+        "relationshipNote": "Explains why masking, listening conditions and learned language knowledge alter speech extraction.",
+        "sourceURLs": [
+          "https://pubmed.ncbi.nlm.nih.gov/32752786/"
+        ],
+        "checkedAt": "2026-11-10",
+        "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+      },
+      "aliases": [],
+      "collections": [
+        "language"
+      ],
+      "priority": 1,
+      "archiveEntries": [],
+      "origin": "update"
+    },
+    {
+      "id": "masked-language-gutschalk2008",
+      "recordId": "masked-language-gutschalk2008",
+      "title": "Neural Correlates of Auditory Perceptual Awareness under Informational Masking",
+      "journal": "PLOS Biology",
+      "year": 2008,
+      "authors": "Gutschalk A, Micheyl C, Oxenham AJ.",
+      "design": "MEG; detected and undetected tones in competing sounds",
+      "urls": [
+        "https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.0060138"
+      ],
+      "doi": "10.1371/journal.pbio.0060138",
+      "pmid": "",
+      "quotes": [],
+      "citationCount": null,
+      "sourcePages": [],
+      "targets": [],
+      "categories": [],
+      "summary": "Early auditory responses persisted for undetected tones, while later activity tracked perceptual awareness.",
+      "limitation": "Tone detection establishes an auditory processing principle; linguistic decoding requires additional evidence.",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "peerReviewed": true,
+        "randomizedControlledTrial": false,
+        "blinding": "not-verified",
+        "basis": "MEG; detected and undetected tones in competing sounds",
+        "sources": [
+          "https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.0060138"
+        ],
+        "assessedAt": "2026-11-10"
+      },
+      "maskedLanguage": {
+        "priority": 7,
+        "quality": "Controlled mechanistic evidence",
+        "relevance": "Associated auditory mechanism",
+        "function": "Separates sensory encoding from conscious access, a foundation for studying masked-language processing.",
+        "origin": "Gemini"
+      },
+      "evidence": {
+        "evidenceType": "MEG; detected and undetected tones in competing sounds",
+        "relationshipNote": "Separates sensory encoding from conscious access, a foundation for studying masked-language processing.",
+        "sourceURLs": [
+          "https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.0060138"
+        ],
+        "checkedAt": "2026-11-10",
+        "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+      },
+      "aliases": [],
+      "collections": [
+        "language"
+      ],
+      "priority": 1,
+      "archiveEntries": [],
+      "origin": "update"
+    },
+    {
+      "id": "pmid-41253014",
+      "recordId": "pmid-41253014",
+      "title": "Neural markers of speech processing during inattentional deafness",
+      "journal": "Cortex",
+      "year": 2025,
+      "authors": "Chen GR, McMurray EH, Hassin RR, Deouell LY.",
+      "design": "Two preregistered EEG experiments; 67 participants",
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/41253014/"
+      ],
+      "doi": "10.1016/j.cortex.2025.10.010",
+      "pmid": "41253014",
+      "quotes": [],
+      "citationCount": null,
+      "sourcePages": [],
+      "targets": [],
+      "categories": [],
+      "summary": "Neural differences between words and pseudowords remained measurable when attention was occupied and participants failed to notice the speech.",
+      "limitation": "Inattention and acoustic masking are different routes to reduced awareness. Task relevance affected processing.",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "peerReviewed": true,
+        "randomizedControlledTrial": false,
+        "blinding": "not-verified",
+        "basis": "Two preregistered EEG experiments; 67 participants",
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/41253014/"
+        ],
+        "assessedAt": "2026-11-10"
+      },
+      "maskedLanguage": {
+        "priority": 8,
+        "quality": "Controlled mechanistic evidence",
+        "relevance": "Associated lexical mechanism",
+        "function": "Supports lexical processing outside focal attention and motivates tests during music listening.",
+        "origin": "Additional research"
+      },
+      "evidence": {
+        "evidenceType": "Two preregistered EEG experiments; 67 participants",
+        "relationshipNote": "Supports lexical processing outside focal attention and motivates tests during music listening.",
+        "sourceURLs": [
+          "https://pubmed.ncbi.nlm.nih.gov/41253014/"
+        ],
+        "checkedAt": "2026-11-10",
+        "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+      },
+      "aliases": [],
+      "collections": [
+        "language"
+      ],
+      "priority": 1,
+      "archiveEntries": [],
+      "origin": "update"
+    },
+    {
+      "id": "pmid-37336758",
+      "recordId": "pmid-37336758",
+      "title": "Neurophysiological Evidence for Semantic Processing of Irrelevant Speech and Own-Name Detection in a Virtual Café",
+      "journal": "Journal of Neuroscience",
+      "year": 2023,
+      "authors": "Brown A, Pinto D, Burgart K, Zvilichovsky Y, Zion-Golumbic E.",
+      "design": "EEG and skin conductance; 50 recruited participants",
+      "urls": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC10324990/"
+      ],
+      "doi": "10.1523/JNEUROSCI.1731-22.2023",
+      "pmid": "37336758",
+      "quotes": [],
+      "citationCount": null,
+      "sourcePages": [],
+      "targets": [],
+      "categories": [],
+      "summary": "Unattended café speech elicited responses related to semantic violations and personally significant own-name information.",
+      "limitation": "Irrelevant speech was audible; own-name effects do not establish an effect for every familiar phrase.",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "peerReviewed": true,
+        "randomizedControlledTrial": false,
+        "blinding": "not-verified",
+        "basis": "EEG and skin conductance; 50 recruited participants",
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC10324990/"
+        ],
+        "assessedAt": "2026-11-10"
+      },
+      "maskedLanguage": {
+        "priority": 9,
+        "quality": "Controlled mechanistic evidence",
+        "relevance": "Associated semantic and salience mechanism",
+        "function": "Connects unattended language, personal relevance and physiological measures.",
+        "origin": "Additional research"
+      },
+      "evidence": {
+        "evidenceType": "EEG and skin conductance; 50 recruited participants",
+        "relationshipNote": "Connects unattended language, personal relevance and physiological measures.",
+        "sourceURLs": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC10324990/"
+        ],
+        "checkedAt": "2026-11-10",
+        "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+      },
+      "aliases": [],
+      "collections": [
+        "language"
+      ],
+      "priority": 1,
+      "archiveEntries": [],
+      "origin": "update"
+    },
+    {
+      "id": "pmid-22001789",
+      "recordId": "pmid-22001789",
+      "title": "Exposure to subliminal arousing stimuli induces robust activation in the amygdala, hippocampus, anterior cingulate, insular cortex and primary visual cortex: a systematic meta-analysis of fMRI studies",
+      "journal": "NeuroImage",
+      "year": 2012,
+      "authors": "Brooks SJ, Savov V, Allzén E, Benedict C, Fredriksson R, Schiöth HB.",
+      "design": "Systematic meta-analysis of fMRI studies",
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/22001789/"
+      ],
+      "doi": "10.1016/j.neuroimage.2011.09.077",
+      "pmid": "22001789",
+      "quotes": [],
+      "citationCount": null,
+      "sourcePages": [],
+      "targets": [],
+      "categories": [],
+      "summary": "Subliminal emotional stimuli recruited networks involved in salience and emotion; evidence differed by stimulus type, with prominent facial-stimulus findings.",
+      "limitation": "Much of this literature is visual. Its contribution is a cross-modal hypothesis about emotional processing.",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "peerReviewed": true,
+        "randomizedControlledTrial": false,
+        "blinding": "not-verified",
+        "basis": "Systematic meta-analysis of fMRI studies",
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/22001789/"
+        ],
+        "assessedAt": "2026-11-10"
+      },
+      "maskedLanguage": {
+        "priority": 10,
+        "quality": "Evidence synthesis; indirect modality",
+        "relevance": "Associated emotional mechanism",
+        "function": "Provides a general bridge between reduced awareness and emotion-related neural responses.",
+        "origin": "Gemini"
+      },
+      "evidence": {
+        "evidenceType": "Systematic meta-analysis of fMRI studies",
+        "relationshipNote": "Provides a general bridge between reduced awareness and emotion-related neural responses.",
+        "sourceURLs": [
+          "https://pubmed.ncbi.nlm.nih.gov/22001789/"
+        ],
+        "checkedAt": "2026-11-10",
+        "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+      },
+      "aliases": [],
+      "collections": [
+        "language"
+      ],
+      "priority": 1,
+      "archiveEntries": [],
+      "origin": "update"
+    },
+    {
+      "id": "masked-language-hung2020",
+      "recordId": "masked-language-hung2020",
+      "title": "Task-induced attention load guides and gates unconscious semantic interference",
+      "journal": "Nature Communications",
+      "year": 2020,
+      "authors": "Hung SM, Wu DA, Shimojo S.",
+      "design": "Controlled visual masking experiments",
+      "urls": [
+        "https://www.nature.com/articles/s41467-020-15439-x"
+      ],
+      "doi": "10.1038/s41467-020-15439-x",
+      "pmid": "",
+      "quotes": [],
+      "citationCount": null,
+      "sourcePages": [],
+      "targets": [],
+      "categories": [],
+      "summary": "Attentional load modulated unconscious semantic interference.",
+      "limitation": "Visual-word experiments; transfer to auditory music masking remains a research question.",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "peerReviewed": true,
+        "randomizedControlledTrial": false,
+        "blinding": "not-verified",
+        "basis": "Controlled visual masking experiments",
+        "sources": [
+          "https://www.nature.com/articles/s41467-020-15439-x"
+        ],
+        "assessedAt": "2026-11-10"
+      },
+      "maskedLanguage": {
+        "priority": 11,
+        "quality": "Controlled mechanistic evidence",
+        "relevance": "Associated attention mechanism",
+        "function": "Helps formulate when limited attention may permit or constrain implicit meaning processing.",
+        "origin": "Additional research"
+      },
+      "evidence": {
+        "evidenceType": "Controlled visual masking experiments",
+        "relationshipNote": "Helps formulate when limited attention may permit or constrain implicit meaning processing.",
+        "sourceURLs": [
+          "https://www.nature.com/articles/s41467-020-15439-x"
+        ],
+        "checkedAt": "2026-11-10",
+        "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+      },
+      "aliases": [],
+      "collections": [
+        "language"
+      ],
+      "priority": 1,
+      "archiveEntries": [],
+      "origin": "update"
+    },
+    {
+      "id": "pmid-40127932",
+      "recordId": "pmid-40127932",
+      "title": "The effect of speech masking on the human subcortical response to continuous speech",
+      "journal": "eNeuro",
+      "year": 2025,
+      "authors": "Polonenko MJ, Maddox RK.",
+      "design": "Auditory brainstem responses to competing speech; 25 participants",
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/40127932/",
+        "https://pubmed.ncbi.nlm.nih.gov/39713441/"
+      ],
+      "doi": "10.1523/ENEURO.0561-24.2025",
+      "pmid": "40127932",
+      "quotes": [],
+      "citationCount": null,
+      "sourcePages": [],
+      "targets": [],
+      "categories": [],
+      "summary": "Brainstem responses to individual speech streams remained measurable in mixtures. More competing talkers reduced response amplitude and increased latency.",
+      "limitation": "Published in 2025 after the indexed preprint. Brainstem encoding is an early processing stage, distinct from understanding meaning.",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "peerReviewed": true,
+        "randomizedControlledTrial": false,
+        "blinding": "not-verified",
+        "basis": "Auditory brainstem responses to competing speech; 25 participants",
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/40127932/"
+        ],
+        "assessedAt": "2026-11-10"
+      },
+      "maskedLanguage": {
+        "priority": 12,
+        "quality": "Controlled electrophysiological evidence",
+        "relevance": "Associated auditory mechanism",
+        "function": "Extends the evidence map to early auditory encoding and signal degradation.",
+        "origin": "Additional research"
+      },
+      "evidence": {
+        "evidenceType": "Auditory brainstem responses to competing speech; 25 participants",
+        "relationshipNote": "Extends the evidence map to early auditory encoding and signal degradation.",
+        "sourceURLs": [
+          "https://pubmed.ncbi.nlm.nih.gov/40127932/",
+          "https://pubmed.ncbi.nlm.nih.gov/39713441/"
+        ],
+        "checkedAt": "2026-11-10",
+        "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+      },
+      "aliases": [],
+      "collections": [
+        "language"
+      ],
+      "priority": 1,
+      "archiveEntries": [],
+      "origin": "update"
+    },
+    {
+      "id": "pmid-33303476",
+      "recordId": "pmid-33303476",
+      "title": "Effect of therapeutic suggestions during general anaesthesia on postoperative pain and opioid use: multicentre randomised controlled trial",
+      "journal": "BMJ",
+      "year": 2020,
+      "authors": "Nowak H, Zech N, Asmussen S, Rahmel T, Tryba M, Oprea G, Grause L, Schork K, Moeller M, Loeser J, Gyarmati K, Mittler C, Saller T, Zagler A, Lutz K, Adamzik M, Hansen E.",
+      "design": "Multicentre double-blind randomized controlled trial; 385 analysed",
+      "urls": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC7726311/"
+      ],
+      "doi": "10.1136/bmj.m4284",
+      "pmid": "33303476",
+      "quotes": [],
+      "citationCount": null,
+      "sourcePages": [],
+      "targets": [],
+      "categories": [],
+      "summary": "Music with therapeutic suggestions during general anaesthesia reduced postoperative opioid use relative to a blank recording. Median morphine-equivalent use was 4.0 versus 5.3 mg.",
+      "limitation": "The intervention combined music and suggestions. Anaesthesia differs from awake masking, and the design does not isolate the spoken component.",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 3,
+        "peerReviewed": true,
+        "randomizedControlledTrial": true,
+        "blinding": "double",
+        "basis": "Multicentre double-blind randomized controlled trial; 385 analysed",
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC7726311/"
+        ],
+        "assessedAt": "2026-11-10"
+      },
+      "maskedLanguage": {
+        "priority": 13,
+        "quality": "Multicentre double-blind RCT",
+        "relevance": "Associated clinical evidence",
+        "function": "High-quality clinical evidence that externally delivered audio during an unconscious state may influence later physiological or behavioural outcomes.",
+        "origin": "Additional research"
+      },
+      "evidence": {
+        "evidenceType": "Multicentre double-blind randomized controlled trial; 385 analysed",
+        "relationshipNote": "High-quality clinical evidence that externally delivered audio during an unconscious state may influence later physiological or behavioural outcomes.",
+        "sourceURLs": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC7726311/"
+        ],
+        "checkedAt": "2026-11-10",
+        "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+      },
+      "aliases": [],
+      "collections": [
+        "language"
+      ],
+      "priority": 1,
+      "archiveEntries": [],
+      "origin": "update"
+    },
+    {
+      "id": "pmid-28007033",
+      "recordId": "pmid-28007033",
+      "title": "Efficacy of therapeutic suggestions under general anesthesia: a systematic review and meta-analysis of randomized controlled trials",
+      "journal": "BMC Anesthesiology",
+      "year": 2016,
+      "authors": "Rosendahl J, Koranyi S, Jacob D, Zech N, Hansen E.",
+      "design": "Systematic review and meta-analysis; 32 randomized trials, 2,102 patients",
+      "urls": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC5178078/"
+      ],
+      "doi": "10.1186/s12871-016-0292-0",
+      "pmid": "28007033",
+      "quotes": [],
+      "citationCount": null,
+      "sourcePages": [],
+      "targets": [],
+      "categories": [],
+      "summary": "Pooled results found small effects for medication use and recovery, with little or no overall effect for pain and distress.",
+      "limitation": "Trials varied in interventions and methods. A review of trials is not itself a double-blind trial.",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "peerReviewed": true,
+        "randomizedControlledTrial": false,
+        "blinding": "not-verified",
+        "basis": "Systematic review and meta-analysis; 32 randomized trials, 2,102 patients",
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC5178078/"
+        ],
+        "assessedAt": "2026-11-10"
+      },
+      "maskedLanguage": {
+        "priority": 14,
+        "quality": "Systematic review of randomized trials",
+        "relevance": "Associated clinical synthesis",
+        "function": "Places anaesthesia audio studies in a larger evidence base and identifies outcomes with stronger or weaker signals.",
+        "origin": "Additional research"
+      },
+      "evidence": {
+        "evidenceType": "Systematic review and meta-analysis; 32 randomized trials, 2,102 patients",
+        "relationshipNote": "Places anaesthesia audio studies in a larger evidence base and identifies outcomes with stronger or weaker signals.",
+        "sourceURLs": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC5178078/"
+        ],
+        "checkedAt": "2026-11-10",
+        "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+      },
+      "aliases": [],
+      "collections": [
+        "language"
+      ],
+      "priority": 1,
+      "archiveEntries": [],
+      "origin": "update"
+    },
+    {
+      "id": "masked-language-katlowitz2026",
+      "recordId": "masked-language-katlowitz2026",
+      "title": "Plasticity and language in the anaesthetized human hippocampus",
+      "journal": "Nature",
+      "year": 2026,
+      "authors": "Katlowitz KA, Cole ER, Mickiewicz EA, Shah S, Franch M, Adkinson JA, Belanger JL, Mathura RK, Meszéna D, McGinley M, Muñoz W, Banks GP, Cash SS, Hsu CW, Paulk AC, Provenza NR, Watrous AJ, Williams Z, Goldman AM, Krishnan V, Maheshwari A, Heilbronner SR, Kim R, Rungratsameetaweemana N, Hayden BY, Sheth SA.",
+      "design": "Human hippocampal single-unit recordings during anaesthesia",
+      "urls": [
+        "https://www.nature.com/articles/s41586-026-10448-0",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC13275293/"
+      ],
+      "doi": "10.1038/s41586-026-10448-0",
+      "pmid": "",
+      "quotes": [],
+      "citationCount": null,
+      "sourcePages": [],
+      "targets": [],
+      "categories": [],
+      "summary": "Hippocampal recordings during propofol anaesthesia showed responses to language features and learning-related patterns. Natural-speech analyses included four participants and 375 units.",
+      "limitation": "Small neurosurgical sample; intact speech under anaesthesia is distinct from speech masked beneath music.",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "peerReviewed": true,
+        "randomizedControlledTrial": false,
+        "blinding": "not-verified",
+        "basis": "Human hippocampal single-unit recordings during anaesthesia",
+        "sources": [
+          "https://www.nature.com/articles/s41586-026-10448-0"
+        ],
+        "assessedAt": "2026-11-10"
+      },
+      "maskedLanguage": {
+        "priority": 15,
+        "quality": "Direct human neuronal recordings; small sample",
+        "relevance": "Associated language mechanism",
+        "function": "Adds direct human neuronal evidence that language-related processing can persist during an unconscious state.",
+        "origin": "Additional research"
+      },
+      "evidence": {
+        "evidenceType": "Human hippocampal single-unit recordings during anaesthesia",
+        "relationshipNote": "Adds direct human neuronal evidence that language-related processing can persist during an unconscious state.",
+        "sourceURLs": [
+          "https://www.nature.com/articles/s41586-026-10448-0",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13275293/"
+        ],
+        "checkedAt": "2026-11-10",
+        "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+      },
+      "aliases": [],
+      "collections": [
+        "language"
+      ],
+      "priority": 1,
+      "archiveEntries": [],
+      "origin": "update"
+    },
+    {
+      "id": "masked-language-greenwald1991",
+      "recordId": "masked-language-greenwald1991",
+      "title": "Double-Blind Tests of Subliminal Self-Help Audiotapes",
+      "journal": "Psychological Science",
+      "year": 1991,
+      "authors": "",
+      "design": "Double-blind randomized experiments; 237 participants across three replications",
+      "urls": [
+        "https://www.psychologicalscience.org/journals/psychological-science/j.1467-9280.1991.tb00112.x/"
+      ],
+      "doi": "10.1111/j.1467-9280.1991.tb00112.x",
+      "pmid": "",
+      "quotes": [],
+      "citationCount": null,
+      "sourcePages": [],
+      "targets": [],
+      "categories": [],
+      "summary": "A month of use produced no content-specific improvement in the targeted memory or self-esteem measures. Perceived improvement followed tape labels.",
+      "limitation": "These null outcomes constrain those tested self-help recordings; they do not negate auditory encoding or word priming.",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 3,
+        "peerReviewed": true,
+        "randomizedControlledTrial": true,
+        "blinding": "double",
+        "basis": "Double-blind randomized experiments; 237 participants across three replications",
+        "sources": [
+          "https://www.psychologicalscience.org/journals/psychological-science/j.1467-9280.1991.tb00112.x/"
+        ],
+        "assessedAt": "2026-11-10"
+      },
+      "maskedLanguage": {
+        "priority": 16,
+        "quality": "Double-blind randomized evidence",
+        "relevance": "Direct masked-audio outcome test",
+        "function": "A strong design reference for separating message effects, expectations and general listening effects.",
+        "origin": "Additional research"
+      },
+      "evidence": {
+        "evidenceType": "Double-blind randomized experiments; 237 participants across three replications",
+        "relationshipNote": "A strong design reference for separating message effects, expectations and general listening effects.",
+        "sourceURLs": [
+          "https://www.psychologicalscience.org/journals/psychological-science/j.1467-9280.1991.tb00112.x/"
+        ],
+        "checkedAt": "2026-11-10",
+        "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+      },
+      "aliases": [],
+      "collections": [
+        "language"
+      ],
+      "priority": 1,
+      "archiveEntries": [],
+      "origin": "update"
+    },
+    {
+      "id": "masked-language-aarabi2023",
+      "recordId": "masked-language-aarabi2023",
+      "title": "Effect of Subliminal Auditory Stimulation on Components of Auditory Late Responses and Functional Magnetic Resonance Imaging Data in Adults with Normal Hearing",
+      "journal": "Auditory and Vestibular Research",
+      "year": 2023,
+      "authors": "",
+      "design": "Small controlled exposure study; EEG and fMRI",
+      "urls": [
+        "https://publish.kne-publishing.com/index.php/AVR/article/view/12934",
+        "https://publish.kne-publishing.com/index.php/AVR/article/download/12934/12173/14421"
+      ],
+      "doi": "10.18502/avr.v32i3.12934",
+      "pmid": "",
+      "quotes": [],
+      "citationCount": null,
+      "sourcePages": [],
+      "targets": [],
+      "categories": [],
+      "summary": "Words masked beneath instrumental music were presented repeatedly over ten days. The study reported changes in auditory evoked-potential amplitudes and some fMRI responses.",
+      "limitation": "Small groups and incompletely clear allocation and participant flow. Responses to audible test words were measured after exposure; structural brain change and emotional benefit were not established.",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "peerReviewed": true,
+        "randomizedControlledTrial": false,
+        "blinding": "not-verified",
+        "basis": "Small controlled exposure study; EEG and fMRI",
+        "sources": [
+          "https://publish.kne-publishing.com/index.php/AVR/article/view/12934"
+        ],
+        "assessedAt": "2026-11-10"
+      },
+      "maskedLanguage": {
+        "priority": 17,
+        "quality": "Exploratory controlled study",
+        "relevance": "Direct delivery match",
+        "function": "A close delivery match for testing whether repeated speech beneath music can alter subsequent neural responses.",
+        "origin": "Gemini"
+      },
+      "evidence": {
+        "evidenceType": "Small controlled exposure study; EEG and fMRI",
+        "relationshipNote": "A close delivery match for testing whether repeated speech beneath music can alter subsequent neural responses.",
+        "sourceURLs": [
+          "https://publish.kne-publishing.com/index.php/AVR/article/view/12934",
+          "https://publish.kne-publishing.com/index.php/AVR/article/download/12934/12173/14421"
+        ],
+        "checkedAt": "2026-11-10",
+        "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+      },
+      "aliases": [],
+      "collections": [
+        "language"
+      ],
+      "priority": 1,
+      "archiveEntries": [],
+      "origin": "update"
+    },
+    {
+      "id": "pmid-1608733",
+      "recordId": "pmid-1608733",
+      "title": "Positive effects of subliminal stimulation on memory",
+      "journal": "Perceptual and Motor Skills",
+      "year": 1992,
+      "authors": "Chakalis E, Lowe G.",
+      "design": "Randomized three-group study; 60 participants",
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/1608733/"
+      ],
+      "doi": "10.2466/pms.1992.74.3.956",
+      "pmid": "1608733",
+      "quotes": [],
+      "citationCount": null,
+      "sourcePages": [],
+      "targets": [],
+      "categories": [],
+      "summary": "The subliminal music group improved name recall after a short exposure; silence and music comparison groups were also included.",
+      "limitation": "The abstract reports within-group improvement; a verified between-group effect and blinding details are needed for stronger inference.",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 2,
+        "peerReviewed": true,
+        "randomizedControlledTrial": true,
+        "blinding": "not-verified",
+        "basis": "Randomized three-group study; 60 participants",
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/1608733/"
+        ],
+        "assessedAt": "2026-11-10"
+      },
+      "maskedLanguage": {
+        "priority": 18,
+        "quality": "Small randomized study; limited reporting",
+        "relevance": "Direct masked-audio outcome test",
+        "function": "An early positive behavioural signal linking masked verbal stimulation with memory performance.",
+        "origin": "Additional research"
+      },
+      "evidence": {
+        "evidenceType": "Randomized three-group study; 60 participants",
+        "relationshipNote": "An early positive behavioural signal linking masked verbal stimulation with memory performance.",
+        "sourceURLs": [
+          "https://pubmed.ncbi.nlm.nih.gov/1608733/"
+        ],
+        "checkedAt": "2026-11-10",
+        "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+      },
+      "aliases": [],
+      "collections": [
+        "language"
+      ],
+      "priority": 1,
+      "archiveEntries": [],
+      "origin": "update"
+    },
+    {
+      "id": "masked-language-egermann2006",
+      "recordId": "masked-language-egermann2006",
+      "title": "Is there an effect of subliminal messages in music on choice behavior?",
+      "journal": "Journal of Articles in Support of the Null Hypothesis",
+      "year": 2006,
+      "authors": "",
+      "design": "Blinded music-listening experiments; adults and children",
+      "urls": [
+        "https://www.jasnh.com/pdf/Vol4-No2-article1.pdf"
+      ],
+      "doi": "",
+      "pmid": "",
+      "quotes": [],
+      "citationCount": null,
+      "sourcePages": [],
+      "targets": [],
+      "categories": [],
+      "summary": "Messages embedded in music did not reliably change the tested word or drink choices.",
+      "limitation": "Choice outcomes differ from neural encoding, autonomic response and longer-term learning.",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "peerReviewed": true,
+        "randomizedControlledTrial": false,
+        "blinding": "not-verified",
+        "basis": "Blinded music-listening experiments; adults and children",
+        "sources": [
+          "https://www.jasnh.com/pdf/Vol4-No2-article1.pdf"
+        ],
+        "assessedAt": "2026-11-10"
+      },
+      "maskedLanguage": {
+        "priority": 19,
+        "quality": "Controlled behavioural experiments",
+        "relevance": "Direct masked-music outcome test",
+        "function": "Tests a specific step from masked messages to overt decisions and helps select sensitive endpoints.",
+        "origin": "Additional research"
+      },
+      "evidence": {
+        "evidenceType": "Blinded music-listening experiments; adults and children",
+        "relationshipNote": "Tests a specific step from masked messages to overt decisions and helps select sensitive endpoints.",
+        "sourceURLs": [
+          "https://www.jasnh.com/pdf/Vol4-No2-article1.pdf"
+        ],
+        "checkedAt": "2026-11-10",
+        "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+      },
+      "aliases": [],
+      "collections": [
+        "language"
+      ],
+      "priority": 1,
+      "archiveEntries": [],
+      "origin": "update"
+    },
+    {
+      "id": "pmid-2608414",
+      "recordId": "pmid-2608414",
+      "title": "Psychophysiological responses to subliminal auditory suggestions for activation",
+      "journal": "Perceptual and Motor Skills",
+      "year": 1989,
+      "authors": "Borgeat F, Boissonneault J, Chaloult L, Elie R.",
+      "design": "Small psychophysiological experiment; 20 participants",
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/2608414/"
+      ],
+      "doi": "10.1177/00315125890693-145",
+      "pmid": "2608414",
+      "quotes": [],
+      "citationCount": null,
+      "sourcePages": [],
+      "targets": [],
+      "categories": [],
+      "summary": "Masked activating suggestions were associated with a heart-rate response during a stress task; skin conductance did not show the same effect.",
+      "limitation": "Small, older study; heart rate is not heart-rate variability and the measures are not interchangeable.",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "peerReviewed": true,
+        "randomizedControlledTrial": false,
+        "blinding": "not-verified",
+        "basis": "Small psychophysiological experiment; 20 participants",
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/2608414/"
+        ],
+        "assessedAt": "2026-11-10"
+      },
+      "maskedLanguage": {
+        "priority": 20,
+        "quality": "Exploratory physiological experiment",
+        "relevance": "Direct masked-audio physiology",
+        "function": "An early physiological link for testing autonomic responses to masked verbal content.",
+        "origin": "Additional research"
+      },
+      "evidence": {
+        "evidenceType": "Small psychophysiological experiment; 20 participants",
+        "relationshipNote": "An early physiological link for testing autonomic responses to masked verbal content.",
+        "sourceURLs": [
+          "https://pubmed.ncbi.nlm.nih.gov/2608414/"
+        ],
+        "checkedAt": "2026-11-10",
+        "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+      },
+      "aliases": [],
+      "collections": [
+        "language"
+      ],
+      "priority": 1,
+      "archiveEntries": [],
+      "origin": "update"
+    },
+    {
+      "id": "masked-language-funk2022",
+      "recordId": "masked-language-funk2022",
+      "title": "Subliminal Priming with Positive Auditory Stimuli Significantly Improves Self-Esteem and Emotional Well-Being",
+      "journal": "European Journal of Medical and Health Sciences",
+      "year": 2022,
+      "authors": "",
+      "design": "Retrospective service study; 535 adults and children",
+      "urls": [
+        "https://www.ej-med.org/index.php/ejmed/article/view/1328"
+      ],
+      "doi": "10.24018/ejmed.2022.4.6.1328",
+      "pmid": "",
+      "quotes": [],
+      "citationCount": null,
+      "sourcePages": [],
+      "targets": [],
+      "categories": [],
+      "summary": "Self-reported wellbeing improved during a programme of repeated positive auditory sessions.",
+      "limitation": "No randomized comparator; provider involvement and self-report limit causal attribution. The publication title is retained verbatim.",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "peerReviewed": true,
+        "randomizedControlledTrial": false,
+        "blinding": "not-verified",
+        "basis": "Retrospective service study; 535 adults and children",
+        "sources": [
+          "https://www.ej-med.org/index.php/ejmed/article/view/1328"
+        ],
+        "assessedAt": "2026-11-10"
+      },
+      "maskedLanguage": {
+        "priority": 21,
+        "quality": "Observational service data",
+        "relevance": "Direct intervention context",
+        "function": "Provides an observational signal and candidate psychological outcomes for prospective controlled work.",
+        "origin": "Gemini"
+      },
+      "evidence": {
+        "evidenceType": "Retrospective service study; 535 adults and children",
+        "relationshipNote": "Provides an observational signal and candidate psychological outcomes for prospective controlled work.",
+        "sourceURLs": [
+          "https://www.ej-med.org/index.php/ejmed/article/view/1328"
+        ],
+        "checkedAt": "2026-11-10",
+        "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+      },
+      "aliases": [],
+      "collections": [
+        "language"
+      ],
+      "priority": 1,
+      "archiveEntries": [],
+      "origin": "update"
+    },
+    {
+      "id": "masked-language-khalilpour2025",
+      "recordId": "masked-language-khalilpour2025",
+      "title": "Effectiveness of subliminal audio messages on depression and anxiety in women with hypertension: a quasi-experimental study",
+      "journal": "Social Determinants of Health",
+      "year": 2025,
+      "authors": "",
+      "design": "Author-described quasi-experimental study; 30 women",
+      "urls": [
+        "https://journals.sbmu.ac.ir/sdh/article/view/48724"
+      ],
+      "doi": "10.22037/sdh.v11i1.48724",
+      "pmid": "",
+      "quotes": [],
+      "citationCount": null,
+      "sourcePages": [],
+      "targets": [],
+      "categories": [],
+      "summary": "The report describes reduced anxiety and depression after six weeks of subliminal-audio sessions.",
+      "limitation": "Purposive recruitment; allocation, blinding and comparator details require full methodological confirmation. No verified double-blind classification.",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "peerReviewed": true,
+        "randomizedControlledTrial": false,
+        "blinding": "not-verified",
+        "basis": "Author-described quasi-experimental study; 30 women",
+        "sources": [
+          "https://journals.sbmu.ac.ir/sdh/article/view/48724"
+        ],
+        "assessedAt": "2026-11-10"
+      },
+      "maskedLanguage": {
+        "priority": 22,
+        "quality": "Preliminary clinical report",
+        "relevance": "Direct intervention context",
+        "function": "Adds a preliminary clinical signal and a population for further replication.",
+        "origin": "Additional research"
+      },
+      "evidence": {
+        "evidenceType": "Author-described quasi-experimental study; 30 women",
+        "relationshipNote": "Adds a preliminary clinical signal and a population for further replication.",
+        "sourceURLs": [
+          "https://journals.sbmu.ac.ir/sdh/article/view/48724"
+        ],
+        "checkedAt": "2026-11-10",
+        "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+      },
+      "aliases": [],
+      "collections": [
+        "language"
+      ],
+      "priority": 1,
+      "archiveEntries": [],
+      "origin": "update"
+    },
+    {
+      "id": "masked-language-vieira2025",
+      "recordId": "masked-language-vieira2025",
+      "title": "Positive Auditory Stimuli and Its Effects on PTSD: A Case Study on Police Officers",
+      "journal": "European Journal of Medical and Health Sciences",
+      "year": 2025,
+      "authors": "",
+      "design": "Case series; three police officers",
+      "urls": [
+        "https://eu-opensci.org/index.php/ejmed/article/download/42290/10924/53575"
+      ],
+      "doi": "10.24018/ejmed.2025.7.5.2290",
+      "pmid": "",
+      "quotes": [],
+      "citationCount": null,
+      "sourcePages": [],
+      "targets": [],
+      "categories": [],
+      "summary": "The report describes self-reported changes during a positive-auditory-stimulation programme.",
+      "limitation": "Three uncontrolled cases, provider involvement and subjective outcomes; no causal estimate.",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "peerReviewed": true,
+        "randomizedControlledTrial": false,
+        "blinding": "not-verified",
+        "basis": "Case series; three police officers",
+        "sources": [
+          "https://eu-opensci.org/index.php/ejmed/article/download/42290/10924/53575"
+        ],
+        "assessedAt": "2026-11-10"
+      },
+      "maskedLanguage": {
+        "priority": 23,
+        "quality": "Case series",
+        "relevance": "Direct intervention context",
+        "function": "Descriptive material for generating outcome questions and documenting intervention delivery.",
+        "origin": "Additional research"
+      },
+      "evidence": {
+        "evidenceType": "Case series; three police officers",
+        "relationshipNote": "Descriptive material for generating outcome questions and documenting intervention delivery.",
+        "sourceURLs": [
+          "https://eu-opensci.org/index.php/ejmed/article/download/42290/10924/53575"
+        ],
+        "checkedAt": "2026-11-10",
+        "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+      },
+      "aliases": [],
+      "collections": [
+        "language"
+      ],
+      "priority": 1,
+      "archiveEntries": [],
+      "origin": "update"
+    },
+    {
+      "id": "pmid-42415977",
+      "recordId": "pmid-42415977",
+      "title": "Subliminal Priming Effects on Motor and Cognitive Performance: Pilot Evidence With Implications for Neurorehabilitation",
+      "journal": "Neurosciences",
+      "year": 2026,
+      "authors": "Aljuhni RE, Alqadhi GA, Alhassan SA, Alanazi SA.",
+      "design": "Single-blind randomized pilot; 30 participants, three priming modalities",
+      "urls": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC13340606/"
+      ],
+      "doi": "10.17712/1658-3183.2803",
+      "pmid": "42415977",
+      "quotes": [],
+      "citationCount": null,
+      "sourcePages": [],
+      "targets": [],
+      "categories": [],
+      "summary": "The pilot compared priming modalities and reported selective motor and cognitive findings.",
+      "limitation": "Small groups, multiple outcomes and no sham group; selective findings need replication.",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 2,
+        "peerReviewed": true,
+        "randomizedControlledTrial": true,
+        "blinding": "single",
+        "basis": "Single-blind randomized pilot; 30 participants, three priming modalities",
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13340606/"
+        ],
+        "assessedAt": "2026-11-10"
+      },
+      "maskedLanguage": {
+        "priority": 24,
+        "quality": "Exploratory randomized pilot",
+        "relevance": "Associated priming outcomes",
+        "function": "Extends the outcome map beyond self-report and suggests objective performance measures.",
+        "origin": "Additional research"
+      },
+      "evidence": {
+        "evidenceType": "Single-blind randomized pilot; 30 participants, three priming modalities",
+        "relationshipNote": "Extends the outcome map beyond self-report and suggests objective performance measures.",
+        "sourceURLs": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13340606/"
+        ],
+        "checkedAt": "2026-11-10",
+        "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+      },
+      "aliases": [],
+      "collections": [
+        "language"
+      ],
+      "priority": 1,
+      "archiveEntries": [],
+      "origin": "update"
+    },
+    {
+      "id": "masked-language-gao2019",
+      "recordId": "masked-language-gao2019",
+      "title": "The neurophysiological correlates of religious chanting",
+      "journal": "Scientific Reports",
+      "year": 2019,
+      "authors": "Gao J, Leung HK, Wu BWY, Skouras S, Sik HH.",
+      "design": "EEG and ECG in experienced practitioners; supplementary single-person fMRI",
+      "urls": [
+        "https://www.nature.com/articles/s41598-019-40200-w"
+      ],
+      "doi": "10.1038/s41598-019-40200-w",
+      "pmid": "",
+      "quotes": [],
+      "citationCount": null,
+      "sourcePages": [],
+      "targets": [],
+      "categories": [],
+      "summary": "Silent internal religious chanting was associated with neural and cardiac differences across comparison conditions.",
+      "limitation": "Participants actively recited internally. This is silent mental mantra, a different intervention from an external masked recording.",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "peerReviewed": true,
+        "randomizedControlledTrial": false,
+        "blinding": "not-verified",
+        "basis": "EEG and ECG in experienced practitioners; supplementary single-person fMRI",
+        "sources": [
+          "https://www.nature.com/articles/s41598-019-40200-w"
+        ],
+        "assessedAt": "2026-11-10"
+      },
+      "maskedLanguage": {
+        "priority": 25,
+        "quality": "Small experimental study",
+        "relevance": "Meaningful-mantra context",
+        "function": "Helps frame the role of learned meaning, practice and personally meaningful mantra associations.",
+        "origin": "Additional research"
+      },
+      "evidence": {
+        "evidenceType": "EEG and ECG in experienced practitioners; supplementary single-person fMRI",
+        "relationshipNote": "Helps frame the role of learned meaning, practice and personally meaningful mantra associations.",
+        "sourceURLs": [
+          "https://www.nature.com/articles/s41598-019-40200-w"
+        ],
+        "checkedAt": "2026-11-10",
+        "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+      },
+      "aliases": [],
+      "collections": [
+        "language"
+      ],
+      "priority": 1,
+      "archiveEntries": [],
+      "origin": "update"
+    },
+    {
+      "id": "pmid-28119651",
+      "recordId": "pmid-28119651",
+      "title": "Repetitive Religious Chanting Modulates the Late-Stage Brain Response to Fear- and Stress-Provoking Pictures",
+      "journal": "Frontiers in Psychology",
+      "year": 2017,
+      "authors": "Gao J, Fan J, Wu BW, Halkias GT, Chau M, Fung PC, Chang C, Zhang Z, Hung YS, Sik H.",
+      "design": "EEG; active chanting and emotional pictures",
+      "urls": [
+        "https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2016.02055/full"
+      ],
+      "doi": "10.3389/fpsyg.2016.02055",
+      "pmid": "28119651",
+      "quotes": [],
+      "citationCount": null,
+      "sourcePages": [],
+      "targets": [],
+      "categories": [],
+      "summary": "Religious chanting modulated later brain responses to negative pictures.",
+      "limitation": "Active chanting; overlap with related research samples may limit independence. Early and late responses differed.",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "peerReviewed": true,
+        "randomizedControlledTrial": false,
+        "blinding": "not-verified",
+        "basis": "EEG; active chanting and emotional pictures",
+        "sources": [
+          "https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2016.02055/full"
+        ],
+        "assessedAt": "2026-11-10"
+      },
+      "maskedLanguage": {
+        "priority": 26,
+        "quality": "Experimental EEG evidence",
+        "relevance": "Emotion and mantra context",
+        "function": "Supports testing whether learned associations and repetition alter later emotional appraisal.",
+        "origin": "Additional research"
+      },
+      "evidence": {
+        "evidenceType": "EEG; active chanting and emotional pictures",
+        "relationshipNote": "Supports testing whether learned associations and repetition alter later emotional appraisal.",
+        "sourceURLs": [
+          "https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2016.02055/full"
+        ],
+        "checkedAt": "2026-11-10",
+        "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+      },
+      "aliases": [],
+      "collections": [
+        "language"
+      ],
+      "priority": 1,
+      "archiveEntries": [],
+      "origin": "update"
+    },
+    {
+      "id": "pmid-11751348",
+      "recordId": "pmid-11751348",
+      "title": "Effect of rosary prayer and yoga mantras on autonomic cardiovascular rhythms: comparative study",
+      "journal": "BMJ",
+      "year": 2001,
+      "authors": "Bernardi L, Sleight P, Bandinelli G, Cencetti S, Fattorini L, Wdowczyc-Szulc J, Lagi A.",
+      "design": "Comparative physiological study; 23 participants",
+      "urls": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC61046/"
+      ],
+      "doi": "10.1136/bmj.323.7327.1446",
+      "pmid": "11751348",
+      "quotes": [],
+      "citationCount": null,
+      "sourcePages": [],
+      "targets": [],
+      "categories": [],
+      "summary": "Recitation slowed breathing towards six breaths per minute and increased cardiovascular rhythm coordination and baroreflex sensitivity.",
+      "limitation": "Active recitation directly changes breathing. An external masked track may not reproduce this respiratory behaviour.",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "peerReviewed": true,
+        "randomizedControlledTrial": false,
+        "blinding": "not-verified",
+        "basis": "Comparative physiological study; 23 participants",
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC61046/"
+        ],
+        "assessedAt": "2026-11-10"
+      },
+      "maskedLanguage": {
+        "priority": 27,
+        "quality": "Controlled physiological comparison",
+        "relevance": "Autonomic mechanism context",
+        "function": "Identifies respiration as an important pathway and measurement variable in mantra-related autonomic effects.",
+        "origin": "Additional research"
+      },
+      "evidence": {
+        "evidenceType": "Comparative physiological study; 23 participants",
+        "relationshipNote": "Identifies respiration as an important pathway and measurement variable in mantra-related autonomic effects.",
+        "sourceURLs": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC61046/"
+        ],
+        "checkedAt": "2026-11-10",
+        "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+      },
+      "aliases": [],
+      "collections": [
+        "language"
+      ],
+      "priority": 1,
+      "archiveEntries": [],
+      "origin": "update"
+    },
+    {
+      "id": "pmid-22795617",
+      "recordId": "pmid-22795617",
+      "title": "Yogic meditation reverses NF-κB and IRF-related transcriptome dynamics in leukocytes of family dementia caregivers in a randomized controlled trial",
+      "journal": "Psychoneuroendocrinology",
+      "year": 2013,
+      "authors": "Black DS, Cole SW, Irwin MR, Breen E, St Cyr NM, Nazarian N, Khalsa DS, Lavretsky H.",
+      "design": "Randomized active-meditation versus music study; 45 randomized, 39 completed",
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/22795617/"
+      ],
+      "doi": "10.1016/j.psyneuen.2012.06.011",
+      "pmid": "22795617",
+      "quotes": [],
+      "citationCount": null,
+      "sourcePages": [],
+      "targets": [],
+      "categories": [],
+      "summary": "Eight weeks of Kirtan Kriya were associated with differences in leukocyte gene-expression patterns and inferred transcription-factor activity.",
+      "limitation": "Active multicomponent meditation, not masked audio. Peripheral gene expression does not establish a masked-language mechanism. Linked to the Lavretsky caregiver trial.",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 2,
+        "peerReviewed": true,
+        "randomizedControlledTrial": true,
+        "blinding": "not-verified",
+        "basis": "Randomized active-meditation versus music study; 45 randomized, 39 completed",
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/22795617/"
+        ],
+        "assessedAt": "2026-11-10"
+      },
+      "maskedLanguage": {
+        "priority": 28,
+        "quality": "Small randomized trial",
+        "relevance": "Molecular endpoint context",
+        "function": "Provides a molecular endpoint precedent for a future controlled study of stress regulation.",
+        "origin": "Additional research"
+      },
+      "evidence": {
+        "evidenceType": "Randomized active-meditation versus music study; 45 randomized, 39 completed",
+        "relationshipNote": "Provides a molecular endpoint precedent for a future controlled study of stress regulation.",
+        "sourceURLs": [
+          "https://pubmed.ncbi.nlm.nih.gov/22795617/"
+        ],
+        "checkedAt": "2026-11-10",
+        "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+      },
+      "aliases": [],
+      "collections": [
+        "language"
+      ],
+      "priority": 1,
+      "archiveEntries": [],
+      "origin": "update"
+    },
+    {
+      "id": "pmid-22407663",
+      "recordId": "pmid-22407663",
+      "title": "A pilot study of yogic meditation for family dementia caregivers with depressive symptoms: effects on mental health, cognition, and telomerase activity",
+      "journal": "International Journal of Geriatric Psychiatry",
+      "year": 2013,
+      "authors": "Lavretsky H, Epel ES, Siddarth P, Nazarian N, Cyr NS, Khalsa DS, Lin J, Blackburn E, Irwin MR.",
+      "design": "Randomized caregiver meditation pilot; 39 completers",
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/22407663/"
+      ],
+      "doi": "10.1002/gps.3790",
+      "pmid": "22407663",
+      "quotes": [],
+      "citationCount": null,
+      "sourcePages": [],
+      "targets": [],
+      "categories": [],
+      "summary": "The active-meditation comparison assessed mood, cognition and telomerase activity after eight weeks.",
+      "limitation": "Related to the Black transcriptome report; these publications do not count as independent trials.",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 2,
+        "peerReviewed": true,
+        "randomizedControlledTrial": true,
+        "blinding": "not-verified",
+        "basis": "Randomized caregiver meditation pilot; 39 completers",
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/22407663/"
+        ],
+        "assessedAt": "2026-11-10"
+      },
+      "maskedLanguage": {
+        "priority": 29,
+        "quality": "Small randomized trial",
+        "relevance": "Cellular endpoint context",
+        "function": "Provides a precedent for combining psychological and cellular measurements.",
+        "origin": "Additional research"
+      },
+      "evidence": {
+        "evidenceType": "Randomized caregiver meditation pilot; 39 completers",
+        "relationshipNote": "Provides a precedent for combining psychological and cellular measurements.",
+        "sourceURLs": [
+          "https://pubmed.ncbi.nlm.nih.gov/22407663/"
+        ],
+        "checkedAt": "2026-11-10",
+        "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+      },
+      "aliases": [],
+      "collections": [
+        "language"
+      ],
+      "priority": 1,
+      "archiveEntries": [],
+      "origin": "update"
+    },
+    {
+      "id": "masked-language-wahbeh2026",
+      "recordId": "masked-language-wahbeh2026",
+      "title": "Digital meditation at scale: a randomized citizen science trial comparing four meditation practices",
+      "journal": "BMC Psychology",
+      "year": 2026,
+      "authors": "",
+      "design": "Randomized digital trial; 1,211 participants assigned to meditation or music conditions",
+      "urls": [
+        "https://link.springer.com/article/10.1186/s40359-026-05869-5"
+      ],
+      "doi": "10.1186/s40359-026-05869-5",
+      "pmid": "",
+      "quotes": [],
+      "citationCount": null,
+      "sourcePages": [],
+      "targets": [],
+      "categories": [],
+      "summary": "Four weeks of practice were assessed with subjective, EEG and HRV measures. The preregistered primary findings did not survive multiplicity correction.",
+      "limitation": "Active practices, including mantra, differ from masked playback; substantial attrition complicates interpretation.",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 2,
+        "peerReviewed": true,
+        "randomizedControlledTrial": true,
+        "blinding": "not-verified",
+        "basis": "Randomized digital trial; 1,211 participants assigned to meditation or music conditions",
+        "sources": [
+          "https://link.springer.com/article/10.1186/s40359-026-05869-5"
+        ],
+        "assessedAt": "2026-11-10"
+      },
+      "maskedLanguage": {
+        "priority": 30,
+        "quality": "Large randomized study; attrition limitations",
+        "relevance": "Digital evaluation context",
+        "function": "A useful design and feasibility reference for digital delivery, active controls, HRV and EEG.",
+        "origin": "Additional research"
+      },
+      "evidence": {
+        "evidenceType": "Randomized digital trial; 1,211 participants assigned to meditation or music conditions",
+        "relationshipNote": "A useful design and feasibility reference for digital delivery, active controls, HRV and EEG.",
+        "sourceURLs": [
+          "https://link.springer.com/article/10.1186/s40359-026-05869-5"
+        ],
+        "checkedAt": "2026-11-10",
+        "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+      },
+      "aliases": [],
+      "collections": [
+        "language"
+      ],
+      "priority": 1,
+      "archiveEntries": [],
+      "origin": "update"
+    },
+    {
+      "id": "masked-language-vickhoff2013",
+      "recordId": "masked-language-vickhoff2013",
+      "title": "Music structure determines heart rate variability of singers",
+      "journal": "Frontiers in Psychology",
+      "year": 2013,
+      "authors": "Vickhoff B, Malmgren H, Aström R, Nyberg G, Ekström SR, Engwall M, Snygg J, Nilsson M, Jörnsten R.",
+      "design": "Physiological experiments during singing",
+      "urls": [
+        "https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2013.00334/full"
+      ],
+      "doi": "10.3389/fpsyg.2013.00334",
+      "pmid": "",
+      "quotes": [],
+      "citationCount": null,
+      "sourcePages": [],
+      "targets": [],
+      "categories": [],
+      "summary": "Musical phrasing and breathing patterns organised heart-rate variability during singing and mantra-like phrases.",
+      "limitation": "Active vocalisation and coordinated breathing; this mechanism is not automatically present during passive masked listening.",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "peerReviewed": true,
+        "randomizedControlledTrial": false,
+        "blinding": "not-verified",
+        "basis": "Physiological experiments during singing",
+        "sources": [
+          "https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2013.00334/full"
+        ],
+        "assessedAt": "2026-11-10"
+      },
+      "maskedLanguage": {
+        "priority": 31,
+        "quality": "Experimental physiology",
+        "relevance": "Music and breathing context",
+        "function": "Shows why respiration and musical structure need measurement alongside any spoken-message manipulation.",
+        "origin": "Additional research"
+      },
+      "evidence": {
+        "evidenceType": "Physiological experiments during singing",
+        "relationshipNote": "Shows why respiration and musical structure need measurement alongside any spoken-message manipulation.",
+        "sourceURLs": [
+          "https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2013.00334/full"
+        ],
+        "checkedAt": "2026-11-10",
+        "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+      },
+      "aliases": [],
+      "collections": [
+        "language"
+      ],
+      "priority": 1,
+      "archiveEntries": [],
+      "origin": "update"
+    },
+    {
+      "id": "masked-language-meditation2015",
+      "recordId": "masked-language-meditation2015",
+      "title": "Cardiovascular and nervous system changes during meditation",
+      "journal": "Frontiers in Human Neuroscience",
+      "year": 2015,
+      "authors": "Steinhubl SR, Wineinger NE, Patel S, Boeldt DL, Mackellar G, Porter V, Redmond JT, Muse ED, Nicholson L, Chopra D, Topol EJ.",
+      "design": "Physiological study during active meditation",
+      "urls": [
+        "https://www.frontiersin.org/journals/human-neuroscience/articles/10.3389/fnhum.2015.00145/full"
+      ],
+      "doi": "10.3389/fnhum.2015.00145",
+      "pmid": "",
+      "quotes": [],
+      "citationCount": null,
+      "sourcePages": [],
+      "targets": [],
+      "categories": [],
+      "summary": "Cardiovascular and neural measures changed during meditation; HRV measures did not all move in the same direction.",
+      "limitation": "Different HRV indices reflect different processes and depend on respiration, timing and experience.",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "peerReviewed": true,
+        "randomizedControlledTrial": false,
+        "blinding": "not-verified",
+        "basis": "Physiological study during active meditation",
+        "sources": [
+          "https://www.frontiersin.org/journals/human-neuroscience/articles/10.3389/fnhum.2015.00145/full"
+        ],
+        "assessedAt": "2026-11-10"
+      },
+      "maskedLanguage": {
+        "priority": 32,
+        "quality": "Experimental physiology",
+        "relevance": "Autonomic measurement context",
+        "function": "Encourages endpoint-specific interpretation of autonomic effects.",
+        "origin": "Additional research"
+      },
+      "evidence": {
+        "evidenceType": "Physiological study during active meditation",
+        "relationshipNote": "Encourages endpoint-specific interpretation of autonomic effects.",
+        "sourceURLs": [
+          "https://www.frontiersin.org/journals/human-neuroscience/articles/10.3389/fnhum.2015.00145/full"
+        ],
+        "checkedAt": "2026-11-10",
+        "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+      },
+      "aliases": [],
+      "collections": [
+        "language"
+      ],
+      "priority": 1,
+      "archiveEntries": [],
+      "origin": "update"
+    },
+    {
+      "id": "masked-language-beats2025",
+      "recordId": "masked-language-beats2025",
+      "title": "Beating stress: music with monaural beats reduces anxiety and improves mood in a non-clinical population",
+      "journal": "PMC publication record",
+      "year": 2025,
+      "authors": "",
+      "design": "Single-blind randomized sound study; 308 participants",
+      "urls": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC12213757/"
+      ],
+      "doi": "",
+      "pmid": "",
+      "quotes": [],
+      "citationCount": null,
+      "sourcePages": [],
+      "targets": [],
+      "categories": [],
+      "summary": "The trial compared music with monaural beats, beats and pure-tone conditions on anxiety and mood.",
+      "limitation": "No music-only arm; nonlinguistic beats are distinct from verbal messages.",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 2,
+        "peerReviewed": true,
+        "randomizedControlledTrial": true,
+        "blinding": "single",
+        "basis": "Single-blind randomized sound study; 308 participants",
+        "sources": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC12213757/"
+        ],
+        "assessedAt": "2026-11-10"
+      },
+      "maskedLanguage": {
+        "priority": 33,
+        "quality": "Randomized sound comparison",
+        "relevance": "Carrier-audio control context",
+        "function": "Documents potential effects from the carrier audio itself, informing controls for masked-language research.",
+        "origin": "Additional research"
+      },
+      "evidence": {
+        "evidenceType": "Single-blind randomized sound study; 308 participants",
+        "relationshipNote": "Documents potential effects from the carrier audio itself, informing controls for masked-language research.",
+        "sourceURLs": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC12213757/"
+        ],
+        "checkedAt": "2026-11-10",
+        "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+      },
+      "aliases": [],
+      "collections": [
+        "language"
+      ],
+      "priority": 1,
+      "archiveEntries": [],
+      "origin": "update"
+    },
+    {
+      "id": "pmid-28497544",
+      "recordId": "pmid-28497544",
+      "title": "Inducing unconscious stress: Cardiovascular activity in response to subliminal presentation of threatening and neutral words",
+      "journal": "Psychophysiology",
+      "year": 2017,
+      "authors": "van der Ploeg MM, Brosschot JF, Verkuil B, Gillie BL, Williams DP, Koenig J, Vasey MW, Thayer JF.",
+      "design": "Randomized subliminal visual-word experiment; 116 participants",
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/28497544/"
+      ],
+      "doi": "10.1111/psyp.12891",
+      "pmid": "28497544",
+      "quotes": [],
+      "citationCount": null,
+      "sourcePages": [],
+      "targets": [],
+      "categories": [],
+      "summary": "Threatening versus neutral masked words increased total peripheral resistance significantly. Mean arterial pressure and HRV followed the predicted directions without statistically significant differences.",
+      "limitation": "Visual presentation; the cardiovascular endpoints differed in statistical support. Transfer to auditory masking remains a research question.",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "peerReviewed": true,
+        "randomizedControlledTrial": false,
+        "blinding": "not-verified",
+        "basis": "Randomized subliminal visual-word experiment; 116 participants",
+        "sources": [
+          "https://pubmed.ncbi.nlm.nih.gov/28497544/"
+        ],
+        "assessedAt": "2026-11-10"
+      },
+      "maskedLanguage": {
+        "priority": 34,
+        "quality": "Randomized physiological experiment",
+        "relevance": "Cross-modal autonomic hypothesis",
+        "function": "Indexes a route for examining semantic content and autonomic measures across modalities.",
+        "origin": "Additional research"
+      },
+      "evidence": {
+        "evidenceType": "Randomized subliminal visual-word experiment; 116 participants",
+        "relationshipNote": "Indexes a route for examining semantic content and autonomic measures across modalities.",
+        "sourceURLs": [
+          "https://pubmed.ncbi.nlm.nih.gov/28497544/"
+        ],
+        "checkedAt": "2026-11-10",
+        "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+      },
+      "aliases": [],
+      "collections": [
+        "language"
+      ],
+      "priority": 1,
+      "archiveEntries": [],
+      "origin": "update"
+    },
+    {
+      "id": "masked-language-classification2019",
+      "recordId": "masked-language-classification2019",
+      "title": "What Is Meditation? Proposing an Empirically Derived Classification System",
+      "journal": "Frontiers in Psychology",
+      "year": 2019,
+      "authors": "Matko K, Sedlmeier P.",
+      "design": "Empirical classification of meditation techniques",
+      "urls": [
+        "https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2019.02276/full"
+      ],
+      "doi": "10.3389/fpsyg.2019.02276",
+      "pmid": "",
+      "quotes": [],
+      "citationCount": null,
+      "sourcePages": [],
+      "targets": [],
+      "categories": [],
+      "summary": "The paper maps different meditation practices and terminology.",
+      "limitation": "Terminology and classification context; not a test of masked-speech effects.",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "peerReviewed": true,
+        "randomizedControlledTrial": false,
+        "blinding": "not-verified",
+        "basis": "Empirical classification of meditation techniques",
+        "sources": [
+          "https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2019.02276/full"
+        ],
+        "assessedAt": "2026-11-10"
+      },
+      "maskedLanguage": {
+        "priority": 35,
+        "quality": "Classification research",
+        "relevance": "Terminology",
+        "function": "Helps separate internally repeated mantra from an external acoustic intervention.",
+        "origin": "Additional research"
+      },
+      "evidence": {
+        "evidenceType": "Empirical classification of meditation techniques",
+        "relationshipNote": "Helps separate internally repeated mantra from an external acoustic intervention.",
+        "sourceURLs": [
+          "https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2019.02276/full"
+        ],
+        "checkedAt": "2026-11-10",
+        "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+      },
+      "aliases": [],
+      "collections": [
+        "language"
+      ],
+      "priority": 1,
+      "archiveEntries": [],
+      "origin": "update"
+    },
+    {
+      "id": "masked-language-emotiv",
+      "recordId": "masked-language-emotiv",
+      "title": "Do Subliminal Messages Work?",
+      "journal": "EMOTIV",
+      "year": null,
+      "authors": "",
+      "design": "Commercial explanatory article",
+      "urls": [
+        "https://www.emotiv.com/blog/do-subliminal-messages-work"
+      ],
+      "doi": "",
+      "pmid": "",
+      "quotes": [],
+      "citationCount": null,
+      "sourcePages": [],
+      "targets": [],
+      "categories": [],
+      "summary": "Explainer supplied in the original research discussion.",
+      "limitation": "Not a peer-reviewed experiment; empirical claims are evaluated through the linked primary-source index.",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "unrated",
+        "score": null,
+        "peerReviewed": false,
+        "randomizedControlledTrial": false,
+        "blinding": "not-verified",
+        "basis": "Commercial explanatory article",
+        "sources": [
+          "https://www.emotiv.com/blog/do-subliminal-messages-work"
+        ],
+        "assessedAt": "2026-11-10"
+      },
+      "maskedLanguage": {
+        "priority": 36,
+        "quality": "Background explainer",
+        "relevance": "Source provenance",
+        "function": "Retained for provenance and for tracing the background rationale to primary research.",
+        "origin": "Gemini"
+      },
+      "evidence": {
+        "evidenceType": "Commercial explanatory article",
+        "relationshipNote": "Retained for provenance and for tracing the background rationale to primary research.",
+        "sourceURLs": [
+          "https://www.emotiv.com/blog/do-subliminal-messages-work"
+        ],
+        "checkedAt": "2026-11-10",
+        "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+      },
+      "aliases": [],
+      "collections": [
+        "language"
+      ],
+      "priority": 1,
+      "archiveEntries": [],
+      "origin": "update"
+    },
+    {
+      "id": "masked-language-brainfm",
+      "recordId": "masked-language-brainfm",
+      "title": "The science of auditory masking",
+      "journal": "Brain.fm",
+      "year": 2026,
+      "authors": "",
+      "design": "Commercial explanatory article",
+      "urls": [
+        "https://www.brain.fm/blog/science-of-auditory-masking"
+      ],
+      "doi": "",
+      "pmid": "",
+      "quotes": [],
+      "citationCount": null,
+      "sourcePages": [],
+      "targets": [],
+      "categories": [],
+      "summary": "Overview of auditory masking supplied in the original discussion.",
+      "limitation": "Commercial background material; not an independent neural or clinical study.",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "unrated",
+        "score": null,
+        "peerReviewed": false,
+        "randomizedControlledTrial": false,
+        "blinding": "not-verified",
+        "basis": "Commercial explanatory article",
+        "sources": [
+          "https://www.brain.fm/blog/science-of-auditory-masking"
+        ],
+        "assessedAt": "2026-11-10"
+      },
+      "maskedLanguage": {
+        "priority": 37,
+        "quality": "Background explainer",
+        "relevance": "Source provenance",
+        "function": "Introduces terminology and preserves the original source trail.",
+        "origin": "Gemini"
+      },
+      "evidence": {
+        "evidenceType": "Commercial explanatory article",
+        "relationshipNote": "Introduces terminology and preserves the original source trail.",
+        "sourceURLs": [
+          "https://www.brain.fm/blog/science-of-auditory-masking"
+        ],
+        "checkedAt": "2026-11-10",
+        "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+      },
+      "aliases": [],
+      "collections": [
+        "language"
+      ],
+      "priority": 1,
+      "archiveEntries": [],
+      "origin": "update"
+    },
+    {
+      "id": "masked-language-video",
+      "recordId": "masked-language-video",
+      "title": "Supplied video reference · BEBxeP-1fAU",
+      "journal": "YouTube",
+      "year": null,
+      "authors": "",
+      "design": "Multimedia reference; content verification pending",
+      "urls": [
+        "https://www.youtube.com/watch?v=BEBxeP-1fAU"
+      ],
+      "doi": "",
+      "pmid": "",
+      "quotes": [],
+      "citationCount": null,
+      "sourcePages": [],
+      "targets": [],
+      "categories": [],
+      "summary": "The original video link is retained for completeness.",
+      "limitation": "Title, authorship and substantive content were not verified; no evidence rating assigned.",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "unrated",
+        "score": null,
+        "peerReviewed": false,
+        "randomizedControlledTrial": false,
+        "blinding": "not-verified",
+        "basis": "Multimedia reference; content verification pending",
+        "sources": [
+          "https://www.youtube.com/watch?v=BEBxeP-1fAU"
+        ],
+        "assessedAt": "2026-11-10"
+      },
+      "maskedLanguage": {
+        "priority": 38,
+        "quality": "Unverified multimedia",
+        "relevance": "Source provenance",
+        "function": "Preserves the supplied reference without assigning unverified scientific findings.",
+        "origin": "Gemini"
+      },
+      "evidence": {
+        "evidenceType": "Multimedia reference; content verification pending",
+        "relationshipNote": "Preserves the supplied reference without assigning unverified scientific findings.",
+        "sourceURLs": [
+          "https://www.youtube.com/watch?v=BEBxeP-1fAU"
+        ],
+        "checkedAt": "2026-11-10",
+        "reviewScope": "Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review."
+      },
+      "aliases": [],
+      "collections": [
+        "language"
+      ],
+      "priority": 1,
+      "archiveEntries": [],
+      "origin": "update"
+    }
+  ],
+  "sourceCount": 38,
+  "geminiSourceCount": 11
+}
