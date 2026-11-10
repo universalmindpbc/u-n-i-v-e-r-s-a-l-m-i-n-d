@@ -1412,7 +1412,7 @@ The following JSON preserves the source fields, saved chart arrays, study interp
     "implementation_sources": [
       {
         "repository_path": "Informatics/quantum/index.html",
-        "sha256": "f6b99cc030f6314bda91d62922389dd002fa9c093e06844b1183395e4878b65c",
+        "sha256": "5f27c3fd0c622f5d9793cc8c405d9e963f223f1e351066470e8e2e5791426b9b",
         "scope": "Original primary-page source with generated reading blocks removed"
       },
       {
@@ -1467,7 +1467,7 @@ The following JSON preserves the source fields, saved chart arrays, study interp
       },
       {
         "repository_path": "research/informatics/astra-service/runner.py",
-        "sha256": "e45b788c7157e937312e4d07cbfd36a77a4dcafaafb8969a1ecaeff3b8e14a74",
+        "sha256": "283cc9e0b72310995675851a1b972cba7f256c39ca7844d42a9c0927c202e671",
         "scope": "Implementation source"
       },
       {

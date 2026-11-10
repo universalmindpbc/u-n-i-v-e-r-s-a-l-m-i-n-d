@@ -586,7 +586,7 @@ path,type,value
 /agent_architecture/implementation_sources,array,40
 /agent_architecture/implementation_sources/0,object,
 /agent_architecture/implementation_sources/0/repository_path,string,Informatics/quantum/index.html
-/agent_architecture/implementation_sources/0/sha256,string,f6b99cc030f6314bda91d62922389dd002fa9c093e06844b1183395e4878b65c
+/agent_architecture/implementation_sources/0/sha256,string,5f27c3fd0c622f5d9793cc8c405d9e963f223f1e351066470e8e2e5791426b9b
 /agent_architecture/implementation_sources/0/scope,string,Original primary-page source with generated reading blocks removed
 /agent_architecture/implementation_sources/1,object,
 /agent_architecture/implementation_sources/1/repository_path,string,Informatics/quantum/study.js
@@ -630,7 +630,7 @@ path,type,value
 /agent_architecture/implementation_sources/10/scope,string,Implementation source
 /agent_architecture/implementation_sources/11,object,
 /agent_architecture/implementation_sources/11/repository_path,string,research/informatics/astra-service/runner.py
-/agent_architecture/implementation_sources/11/sha256,string,e45b788c7157e937312e4d07cbfd36a77a4dcafaafb8969a1ecaeff3b8e14a74
+/agent_architecture/implementation_sources/11/sha256,string,283cc9e0b72310995675851a1b972cba7f256c39ca7844d42a9c0927c202e671
 /agent_architecture/implementation_sources/11/scope,string,Implementation source
 /agent_architecture/implementation_sources/12,object,
 /agent_architecture/implementation_sources/12/repository_path,string,research/informatics/astra-service/review_flow.py

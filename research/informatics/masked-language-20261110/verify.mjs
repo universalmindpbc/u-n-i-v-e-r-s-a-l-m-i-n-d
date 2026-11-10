@@ -33,6 +33,10 @@ for(const width of [1470,1024,390,320]){
  assert.equal(await page.locator('#topic-masked-lead .paper h4').first().innerText().then(t=>t.split('\n')[0].trim()),'Cerebral bases of subliminal speech priming');
  assert.match(await page.locator('.chapter-opening').innerText(),/Silent mental mantra/);
  assert.equal(await page.locator('#topic-masked-anaesthesia .masked-index-entry').count(),3);
+ assert.equal(await page.locator('#topic-masked-anaesthesia .masked-index-entry').first().locator('summary').first().locator('.trust-score svg').count(),3);
+ const egermann=page.locator('.masked-index-entry').filter({has:page.locator('#paper-masked-egermann2006')});
+ assert.equal(await egermann.locator('summary').first().locator('.trust-score svg').count(),2);
+ assert.equal(await page.locator('#topic-masked-background .trust-score').count(),0);
  await page.locator('#topic-masked-outcomes .masked-index-entry').first().locator('summary').first().click();
  assert.match(await page.locator('#topic-masked-outcomes .masked-index-entry').first().innerText(),/Function in the rationale/);
  const overflow=await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1);assert.equal(overflow,false,`overflow ${width}`);
@@ -44,9 +48,39 @@ for(const width of [1470,1024,390,320]){
  await visit(base+'library.html?collection=language');await page.locator('.masked-feature').waitFor();await page.locator('.masked-feature a').first().click();await page.locator('#topic-masked-lead').waitFor();
  await visit(base+'library.html?collection=language&query=subliminal%20speech%20priming');await page.locator('#results .search-paper').first().waitFor();assert.match(await page.locator('#results').innerText(),/Cerebral bases of subliminal speech priming/);
  await visit(base+'library.html?collection=language&chapter=7&embedded=1#topic-masked-anaesthesia');await page.locator('#topic-masked-anaesthesia').waitFor();assert.equal(await page.locator('body').evaluate(e=>e.classList.contains('embedded')),true);
+ if(width===1470){
+  const cases=[
+   ['physiology','Brain & nervous system','Cerebral bases'],
+   ['physiology','Heart rate & autonomic','Psychophysiological responses'],
+   ['category','Gene expression','Yogic meditation reverses'],
+   ['target','Telomerase','A pilot study of yogic meditation'],
+   ['condition','anxiety','Effectiveness of subliminal'],
+   ['community','defence','Positive Auditory Stimuli and Its Effects on PTSD'],
+   ['age','children','Is there an effect of subliminal messages'],
+   ['kind','single-blind','Is there an effect of subliminal messages'],
+   ['kind','double-blind','Effect of therapeutic suggestions'],
+   ['trust','2','Is there an effect of subliminal messages'],
+   ['trust','3','Effect of therapeutic suggestions'],
+   ['jadad','not-applicable','Cerebral bases'],
+   ['period','older','Cerebral bases'],
+   ['journal','neuroimage','Cerebral bases'],
+   ['topic','language:masked-lead','Cerebral bases'],
+   ['sort','title','Cerebral bases']
+  ];
+  for(const [key,value,query] of cases){
+   await visit(base+'library.html?collection=language&view=search&'+new URLSearchParams({query,[key]:value}));
+   await page.locator('#results .search-paper').first().waitFor();
+   assert.match(await page.locator('#results').innerText(),new RegExp(query),key);
+  }
+  await visit(base+'library.html?collection=language&view=search&query=subliminal');
+  await page.locator('#results .search-paper').first().waitFor();
+  await page.locator('#kind-toggle').click();
+  await page.locator('#kind-options input[value="single-blind"]').check();
+  assert.match(await page.locator('#results').innerText(),/Is there an effect of subliminal messages/);
+ }
  // Verify existing language chapter remains available.
  await visit(base+'library.html?collection=language&chapter=1');await page.locator('.chapter-opening h2').waitFor();assert.match(await page.locator('.chapter-opening h2').innerText(),/Mantra, mindfulness and molecular biology/);
- assert.deepEqual(errors,[]);results.push({width,leadStudies:5,indexedSources:33,sourceCount:38,originalReferences:11,overflow,search:true,download:true,embedded:true,existingChapter:true,errors});
+ assert.deepEqual(errors,[]);results.push({width,leadStudies:5,indexedSources:33,sourceCount:38,originalReferences:11,overflow,search:true,download:true,embedded:true,existingChapter:true,advancedFilterCases:width===1470?16:0,crossBadgeChecks:true,errors});
  await context.close();
 }
 await fs.writeFile(path.join(out,`${candidate?'candidate':'staging'}-browser.json`),JSON.stringify({mode:candidate?'candidate routed on permanent staging origin':'live staging',mutedProcess:true,playbackDisabled:true,results},null,2));

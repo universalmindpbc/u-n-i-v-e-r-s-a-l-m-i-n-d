@@ -44,6 +44,29 @@ add('emotiv','Do Subliminal Messages Work?','EMOTIV',None,'https://www.emotiv.co
 add('brainfm','The science of auditory masking','Brain.fm',2026,'https://www.brain.fm/blog/science-of-auditory-masking','Commercial explanatory article','Overview of auditory masking supplied in the original discussion.','Introduces terminology and preserves the original source trail.','Commercial background material; not an independent neural or clinical study.','background',quality='Background explainer',relevance='Source provenance',origin='Gemini',score=0)
 add('video','Supplied video reference · BEBxeP-1fAU','YouTube',None,'https://www.youtube.com/watch?v=BEBxeP-1fAU','Multimedia reference; content verification pending','The original video link is retained for completeness.','Preserves the supplied reference without assigning unverified scientific findings.','Title, authorship and substantive content were not verified; no evidence rating assigned.','background',quality='Unverified multimedia',relevance='Source provenance',origin='Gemini',score=0)
 
+# Facet assignments retain the population and measurement reported by each source.
+brain={'kouider2010','kouider2005','yasmin2023','leonard2016','herrmann2025','song2020','gutschalk2008','chen2025','brown2023','brooks2012','hung2020','subcortical2024','katlowitz2026','aarabi2023','motor2026','gao2019','gao2017','wahbeh2026','meditation2015'}
+heart={'brown2023','borgeat1989','gao2019','bernardi2001','wahbeh2026','vickhoff2013','meditation2015','stress2017'}
+clinical={'nowak2020','rosendahl2016','greenwald1991','chakalis1992','egermann2006','funk2022','khalilpour2025','vieira2025','motor2026','black2013','lavretsky2013','wahbeh2026','beats2025'}
+condition_map={'borgeat1989':['stress'],'khalilpour2025':['anxiety','depression'],'vieira2025':['ptsd'],'gao2017':['stress'],'black2013':['stress'],'lavretsky2013':['depression','stress'],'wahbeh2026':['stress'],'beats2025':['anxiety','stress'],'stress2017':['stress']}
+# No broad inference from auditory processing to clinical diagnoses or communities.
+adult={'kouider2010','kouider2005','yasmin2023','leonard2016','herrmann2025','song2020','gutschalk2008','chen2025','brown2023','hung2020','subcortical2024','nowak2020','katlowitz2026','greenwald1991','aarabi2023','chakalis1992','borgeat1989','khalilpour2025','vieira2025','motor2026','gao2019','gao2017','bernardi2001','black2013','lavretsky2013','wahbeh2026','meditation2015','beats2025','stress2017'}
+for row in rows:
+ slug=row['slug'];row['categories']=[]
+ for ids,category in [(brain,'Brain & nervous system'),(heart,'Heart rate & autonomic'),(clinical,'Clinical & self-report')]:
+  if slug in ids:row['categories'].append(category)
+ if slug=='black2013':row['categories']+=['Gene expression','Genetics & genomics','Molecular biomarkers']
+ if slug=='lavretsky2013':row['categories']+=['Molecular biomarkers']
+ row['targets']=['Telomerase'] if slug=='lavretsky2013' else []
+ row['conditions']=condition_map.get(slug,[])
+ row['ages']=['adults'] if slug in adult else ['not-specified']
+ if slug=='egermann2006':
+  row.update(score=2,blind='single',design='Participant-blinded controlled experiments; 66 adults and 82 children',quality='Single-blind controlled evidence',ages=['children','youth','adults'])
+ if slug=='funk2022':row['ages']=['children','adults']
+ if slug=='stress2017':row['score']=2
+ row['communities']=['defence'] if slug=='vieira2025' else []
+ row['randomized']=row['score']>=2 and slug!='egermann2006'
+
 intro=[
  'Controlled speech-priming, cortical recording and EEG studies show how acoustic cues can reach word recognition and, under some conditions, meaning through masking. The strongest, most relevant studies lead this chapter. Supporting sources explain the mechanisms that make a psychological or physiological response to externally delivered language a testable possibility.',
  'Sub-audible mantra here means an external spoken recording mixed beneath music, with words difficult or impossible to consciously distinguish. Silent mental mantra means actively repeating a phrase internally. The index identifies what each study contributes to the rationale for I AM and where the evidence leaves an open question.'
@@ -57,16 +80,17 @@ for group,title,description,compact in groups:
  for n,r in enumerate(rows):
   if r['group']!=group: continue
   rid='pmid-'+r['pmid'] if r['pmid'] else 'masked-language-'+r['slug']
-  assessment=dict(scope='Paper',status='assessed' if r['score'] else 'unrated',score=r['score'] or None,peerReviewed=bool(r['score']),randomizedControlledTrial=r['score']>=2,blinding=r['blind'],basis=r['design'],sources=r['urls'][:1],assessedAt='2026-11-10')
-  p=dict(id='masked-'+r['slug'],recordId=rid,title=r['title'],journal=r['journal'],year=r['year'],authors='',design=r['design'],urls=r['urls'],doi=r['doi'],pmid=r['pmid'],quotes=[],citationCount=None,sourcePages=[],targets=[],categories=[],summary=r['summary'],limitation=r['limitation'],paperTrustAssessment=assessment,maskedLanguage=dict(priority=n+1,quality=r['quality'],relevance=r['relevance'],function=r['role'],origin=r['origin']),evidence=dict(evidenceType=r['design'],relationshipNote=r['role'],sourceURLs=r['urls'],checkedAt='2026-11-10',reviewScope='Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review.'))
+  assessment=dict(scope='Paper',status='assessed' if r['score'] else 'unrated',score=r['score'] or None,peerReviewed=bool(r['score']),randomizedControlledTrial=r['randomized'],blinding=r['blind'],basis=r['design'],sources=r['urls'][:1],assessedAt='2026-11-10')
+  p=dict(id='masked-'+r['slug'],recordId=rid,title=r['title'],journal=r['journal'],year=r['year'],authors='',design=r['design'],urls=r['urls'],doi=r['doi'],pmid=r['pmid'],quotes=[],citationCount=None,sourcePages=[],targets=r['targets'],categories=r['categories'],summary=r['summary'],limitation=r['limitation'],paperTrustAssessment=assessment,maskedLanguage=dict(priority=n+1,quality=r['quality'],relevance=r['relevance'],function=r['role'],origin=r['origin']),filterEvidence=dict(categories=r['categories'],targets=r['targets'],conditions=r['conditions'],ageGroups=r['ages'],communities=r['communities'],basis=r['design'],sourceURLs=r['urls'],checkedAt='2026-11-10'),evidence=dict(evidenceType=r['design'],relationshipNote=r['role'],sourceURLs=r['urls'],checkedAt='2026-11-10',reviewScope='Targeted narrative evidence map; publication-specific access and limits stated. Not a systematic review.'))
   meta=metadata.get(rid,{})
   p['authors']=meta.get('authorString') or ''
   p['doi']=p['doi'] or meta.get('doi') or ''
   if r['slug']=='motor2026': p['journal']='Neurosciences'
+  p['jadad']={'status':'unassessed' if r['randomized'] else 'not-applicable','score':None}
   papers.append(p)
   records.append(dict(p,id=rid,aliases=[],collections=['language'],priority=1,archiveEntries=[],origin='update'))
  score=max([level for level in [1,2,3] if sum((p['paperTrustAssessment']['score'] or 0)>=level for p in papers)>=3],default=0)
- topics.append(dict(id='masked-'+group,title=title,description=description,compactIndex=compact,papers=papers,trustScore=score or None,trustAssessment=dict(status='assessed' if score else 'below-minimum',basis='At least three peer-reviewed sources; design level is separate from editorial relevance.')))
+ topics.append(dict(id='masked-'+group,title=title,description=description,compactIndex=compact,papers=papers,trustScore=score or None,trustAssessment=dict(status='assessed' if score else 'below-minimum',basis='Minimum three qualifying studies at the assigned design level; editorial relevance is separate.')))
 chapter=dict(number=7,title='Sub-audible mantra & masked-language processing',overview=intro,topics=topics,maskedLanguage=True)
 out=dict(schemaVersion='masked-language/v1',reviewedAt='2026-11-10',rankingMethod='Direct masked-language mechanisms first; supporting records ordered by relevance and design within each topic. Editorial appraisal is not GRADE or a validated numerical certainty score.',chapter=chapter,records=records,sourceCount=len(rows),geminiSourceCount=sum(r['origin']=='Gemini' for r in rows))
 (dest/'masked-language-expansion.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n')

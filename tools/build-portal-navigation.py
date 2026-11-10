@@ -10,6 +10,15 @@ portals={p['id']:p for p in config['portals']}
 def write(path,text):
  p=ROOT/path;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(text)
 def flat(portal):return [item for entry in portal['entries'] for item in [entry,*entry.get('children',[])]]
+# Research-only refresh preserves independently maintained portal chapters.
+if '--publication-sitemap-only' in sys.argv:
+ records=json.loads((ROOT/'research/informatics/discovery-20261026/build.json').read_text())['canonicalPaths']
+ urls=list(dict.fromkeys(ORIGIN+'/informatics/'+p for p in records if '/publications/' in p))
+ xml='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join('  <url><loc>'+escape(url)+'</loc></url>\n' for url in urls)+'</urlset>\n'
+ write('sitemaps/informatics-publications.xml',xml)
+ print(json.dumps({'publication_sitemap_entries':len(urls)}))
+ sys.exit(0)
+
 def plain(s):return re.sub(r'\s+',' ',unescape(re.sub('<[^>]+>',' ',s))).strip()
 def page(title,body,url):
  return '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+escape(title)+' · Universal Mind</title><meta name="description" content="'+escape(title)+' · pages in navigation order"><link rel="canonical" href="'+ORIGIN+url+'"><link rel="stylesheet" href="/read/wiki.css"><script src="/site-navigation/routes.js?v='+runtime_hash+'"></script></head><body><header><a href="/home/">Universal Mind</a><nav><a href="/sitemap/">Website map</a><a href="/read/">AI / LLM guide</a></nav></header><main><h1>'+escape(title)+'</h1>'+body+'</main></body></html>\n'
