@@ -52,7 +52,7 @@
     const review = /\breviews?\b|\bsynthesis\b/.test(text) || metaAnalysis;
     const trial = assessment ? assessment.randomizedControlledTrial===true : !review && !/\bnon\s*randomi[sz]ed\b/.test(text) && /randomi[sz](?:ed|ation)/.test(text);
     const blind = assessment?.blinding;
-    return !kind || kind === 'trial' && trial || kind === 'double-blind' && trial && (assessment ? blind==='double' : /double\s+(?:blind|mask)/.test(text)) || kind === 'single-blind' && trial && (assessment ? blind==='single' : /single\s+(?:blind|mask)/.test(text)) || kind === 'meta-analysis' && metaAnalysis || kind === 'review' && review || kind === 'animal' && /mouse|mice|\brats?\b|\bcells?\b|in vitro|animal|fibroblast|rhesus/.test(text);
+    return !kind || kind === 'trial' && trial || kind === 'double-blind' && trial && (assessment ? blind==='double' : /double\s+(?:blind|mask)/.test(text)) || kind === 'single-blind' && (assessment ? blind==='single' : /single\s+(?:blind|mask)/.test(text)) || kind === 'meta-analysis' && metaAnalysis || kind === 'review' && review || kind === 'animal' && /mouse|mice|\brats?\b|\bcells?\b|in vitro|animal|fibroblast|rhesus/.test(text);
   }
   function matchesTopicTrust(record, score, collection = 'all', topic = '') {
     return !score || record.topics.some(t => (collection === 'all' || t.collection === collection) && (!topic || t.key === topic) && t.trustScore === score);

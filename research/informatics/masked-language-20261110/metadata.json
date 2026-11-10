@@ -1,0 +1,262 @@
+{
+  "pmid-19715763": {
+    "id": "19715763",
+    "doi": "10.1016/j.neuroimage.2009.08.043",
+    "title": "Cerebral bases of subliminal speech priming.",
+    "authorString": "Kouider S, de Gardelle V, Dehaene S, Dupoux E, Pallier C.",
+    "journalTitle": "NeuroImage",
+    "pubYear": "2010",
+    "isOpenAccess": "N",
+    "firstPublicationDate": "2009-08-26"
+  },
+  "pmid-16102064": {
+    "id": "16102064",
+    "doi": "10.1111/j.1467-9280.2005.01584.x",
+    "title": "Subliminal speech priming.",
+    "authorString": "Kouider S, Dupoux E.",
+    "journalTitle": "Psychological science",
+    "pubYear": "2005",
+    "isOpenAccess": "N",
+    "firstPublicationDate": "2005-08-01"
+  },
+  "pmid-37169066": {
+    "id": "37169066",
+    "doi": "10.1016/j.neuropsychologia.2023.108584",
+    "title": "The effects of speech masking on neural tracking of acoustic and semantic features of natural speech.",
+    "authorString": "Yasmin S, Irsik VC, Johnsrude IS, Herrmann B.",
+    "journalTitle": "Neuropsychologia",
+    "pubYear": "2023",
+    "isOpenAccess": "N",
+    "firstPublicationDate": "2023-05-09"
+  },
+  "masked-language-leonard2016": {
+    "id": "27996973",
+    "doi": "10.1038/ncomms13619",
+    "title": "Perceptual restoration of masked speech in human cortex.",
+    "authorString": "Leonard MK, Baud MO, Sjerps MJ, Chang EF.",
+    "journalTitle": "Nature communications",
+    "pubYear": "2016",
+    "isOpenAccess": "Y",
+    "firstPublicationDate": "2016-12-20"
+  },
+  "pmid-32752786": {
+    "id": "32752786",
+    "doi": "10.1121/10.0001477",
+    "title": "Auditory neural tracking and lexical processing of speech in noise: Masker type, spatial location, and language experience.",
+    "authorString": "Song J, Martin L, Iverson P.",
+    "journalTitle": "The Journal of the Acoustical Society of America",
+    "pubYear": "2020",
+    "isOpenAccess": "N",
+    "firstPublicationDate": "2020-07-01"
+  },
+  "masked-language-gutschalk2008": {
+    "id": "18547141",
+    "doi": "10.1371/journal.pbio.0060138",
+    "title": "Neural correlates of auditory perceptual awareness under informational masking.",
+    "authorString": "Gutschalk A, Micheyl C, Oxenham AJ.",
+    "journalTitle": "PLoS biology",
+    "pubYear": "2008",
+    "isOpenAccess": "Y",
+    "firstPublicationDate": "2008-06-01"
+  },
+  "pmid-41253014": {
+    "id": "41253014",
+    "doi": "10.1016/j.cortex.2025.10.010",
+    "title": "Neural markers of speech processing during inattentional deafness&lt;sup&gt;☆&lt;/sup&gt;.",
+    "authorString": "Chen GR, McMurray EH, Hassin RR, Deouell LY.",
+    "journalTitle": "Cortex; a journal devoted to the study of the nervous system and behavior",
+    "pubYear": "2025",
+    "isOpenAccess": "N",
+    "firstPublicationDate": "2025-11-07"
+  },
+  "pmid-37336758": {
+    "id": "37336758",
+    "doi": "10.1523/jneurosci.1731-22.2023",
+    "title": "Neurophysiological Evidence for Semantic Processing of Irrelevant Speech and Own-Name Detection in a Virtual Café.",
+    "authorString": "Brown A, Pinto D, Burgart K, Zvilichovsky Y, Zion-Golumbic E.",
+    "journalTitle": "The Journal of neuroscience : the official journal of the Society for Neuroscience",
+    "pubYear": "2023",
+    "isOpenAccess": "N",
+    "firstPublicationDate": "2023-06-19"
+  },
+  "pmid-22001789": {
+    "id": "22001789",
+    "doi": "10.1016/j.neuroimage.2011.09.077",
+    "title": "Exposure to subliminal arousing stimuli induces robust activation in the amygdala, hippocampus, anterior cingulate, insular cortex and primary visual cortex: a systematic meta-analysis of fMRI studies.",
+    "authorString": "Brooks SJ, Savov V, Allzén E, Benedict C, Fredriksson R, Schiöth HB.",
+    "journalTitle": "NeuroImage",
+    "pubYear": "2012",
+    "isOpenAccess": "N",
+    "firstPublicationDate": "2011-10-07"
+  },
+  "masked-language-hung2020": {
+    "id": "32350246",
+    "doi": "10.1038/s41467-020-15439-x",
+    "title": "Task-induced attention load guides and gates unconscious semantic interference.",
+    "authorString": "Hung SM, Wu DA, Shimojo S.",
+    "journalTitle": "Nature communications",
+    "pubYear": "2020",
+    "isOpenAccess": "Y",
+    "firstPublicationDate": "2020-04-29"
+  },
+  "pmid-40127932": {
+    "id": "40127932",
+    "doi": "10.1523/eneuro.0561-24.2025",
+    "title": "The Effect of Speech Masking on the Human Subcortical Response to Continuous Speech.",
+    "authorString": "Polonenko MJ, Maddox RK.",
+    "journalTitle": "eNeuro",
+    "pubYear": "2025",
+    "isOpenAccess": "Y",
+    "firstPublicationDate": "2025-04-04"
+  },
+  "pmid-33303476": {
+    "id": "33303476",
+    "doi": "10.1136/bmj.m4284",
+    "title": "Effect of therapeutic suggestions during general anaesthesia on postoperative pain and opioid use: multicentre randomised controlled trial.",
+    "authorString": "Nowak H, Zech N, Asmussen S, Rahmel T, Tryba M, Oprea G, Grause L, Schork K, Moeller M, Loeser J, Gyarmati K, Mittler C, Saller T, Zagler A, Lutz K, Adamzik M, Hansen E.",
+    "journalTitle": "BMJ (Clinical research ed.)",
+    "pubYear": "2020",
+    "isOpenAccess": "Y",
+    "firstPublicationDate": "2020-12-10"
+  },
+  "pmid-28007033": {
+    "id": "28007033",
+    "doi": "10.1186/s12871-016-0292-0",
+    "title": "Efficacy of therapeutic suggestions under general anesthesia: a systematic review and meta-analysis of randomized controlled trials.",
+    "authorString": "Rosendahl J, Koranyi S, Jacob D, Zech N, Hansen E.",
+    "journalTitle": "BMC anesthesiology",
+    "pubYear": "2016",
+    "isOpenAccess": "Y",
+    "firstPublicationDate": "2016-12-22"
+  },
+  "masked-language-katlowitz2026": {
+    "id": "42092132",
+    "doi": "10.1038/s41586-026-10448-0",
+    "title": "Plasticity and language in the anaesthetized human hippocampus.",
+    "authorString": "Katlowitz KA, Cole ER, Mickiewicz EA, Shah S, Franch M, Adkinson JA, Belanger JL, Mathura RK, Meszéna D, McGinley M, Muñoz W, Banks GP, Cash SS, Hsu CW, Paulk AC, Provenza NR, Watrous AJ, Williams Z, Goldman AM, Krishnan V, Maheshwari A, Heilbronner SR, Kim R, Rungratsameetaweemana N, Hayden BY, Sheth SA.",
+    "journalTitle": "Nature",
+    "pubYear": "2026",
+    "isOpenAccess": "Y",
+    "firstPublicationDate": "2026-05-06"
+  },
+  "pmid-1608733": {
+    "id": "1608733",
+    "doi": "10.2466/pms.1992.74.3.956",
+    "title": "Positive effects of subliminal stimulation on memory.",
+    "authorString": "Chakalis E, Lowe G.",
+    "journalTitle": "Perceptual and motor skills",
+    "pubYear": "1992",
+    "isOpenAccess": "N",
+    "firstPublicationDate": "1992-06-01"
+  },
+  "pmid-2608414": {
+    "id": "2608414",
+    "doi": "10.1177/00315125890693-145",
+    "title": "Psychophysiological responses to subliminal auditory suggestions for activation.",
+    "authorString": "Borgeat F, Boissonneault J, Chaloult L, Elie R.",
+    "journalTitle": "Perceptual and motor skills",
+    "pubYear": "1989",
+    "isOpenAccess": "N",
+    "firstPublicationDate": "1989-12-01"
+  },
+  "pmid-42415977": {
+    "id": "42415977",
+    "doi": "10.17712/1658-3183.2803",
+    "title": "Subliminal Priming Effects on Motor and Cognitive Performance: Pilot Evidence With Implications for Neurorehabilitation.",
+    "authorString": "Aljuhni RE, Alqadhi GA, Alhassan SA, Alanazi SA.",
+    "journalTitle": "Neurosciences (Riyadh, Saudi Arabia)",
+    "pubYear": "2026",
+    "isOpenAccess": "Y",
+    "firstPublicationDate": "2026-03-01"
+  },
+  "masked-language-gao2019": {
+    "id": "30862790",
+    "doi": "10.1038/s41598-019-40200-w",
+    "title": "The neurophysiological correlates of religious chanting.",
+    "authorString": "Gao J, Leung HK, Wu BWY, Skouras S, Sik HH.",
+    "journalTitle": "Scientific reports",
+    "pubYear": "2019",
+    "isOpenAccess": "Y",
+    "firstPublicationDate": "2019-03-12"
+  },
+  "pmid-28119651": {
+    "id": "28119651",
+    "doi": "10.3389/fpsyg.2016.02055",
+    "title": "Repetitive Religious Chanting Modulates the Late-Stage Brain Response to Fear- and Stress-Provoking Pictures.",
+    "authorString": "Gao J, Fan J, Wu BW, Halkias GT, Chau M, Fung PC, Chang C, Zhang Z, Hung YS, Sik H.",
+    "journalTitle": "Frontiers in psychology",
+    "pubYear": "2016",
+    "isOpenAccess": "Y",
+    "firstPublicationDate": "2017-01-10"
+  },
+  "pmid-11751348": {
+    "id": "11751348",
+    "doi": "10.1136/bmj.323.7327.1446",
+    "title": "Effect of rosary prayer and yoga mantras on autonomic cardiovascular rhythms: comparative study.",
+    "authorString": "Bernardi L, Sleight P, Bandinelli G, Cencetti S, Fattorini L, Wdowczyc-Szulc J, Lagi A.",
+    "journalTitle": "BMJ (Clinical research ed.)",
+    "pubYear": "2001",
+    "isOpenAccess": "N",
+    "firstPublicationDate": "2001-12-01"
+  },
+  "pmid-22795617": {
+    "id": "22795617",
+    "doi": "10.1016/j.psyneuen.2012.06.011",
+    "title": "Yogic meditation reverses NF-κB and IRF-related transcriptome dynamics in leukocytes of family dementia caregivers in a randomized controlled trial.",
+    "authorString": "Black DS, Cole SW, Irwin MR, Breen E, St Cyr NM, Nazarian N, Khalsa DS, Lavretsky H.",
+    "journalTitle": "Psychoneuroendocrinology",
+    "pubYear": "2013",
+    "isOpenAccess": "N",
+    "firstPublicationDate": "2012-07-15"
+  },
+  "pmid-22407663": {
+    "id": "22407663",
+    "doi": "10.1002/gps.3790",
+    "title": "A pilot study of yogic meditation for family dementia caregivers with depressive symptoms: effects on mental health, cognition, and telomerase activity.",
+    "authorString": "Lavretsky H, Epel ES, Siddarth P, Nazarian N, Cyr NS, Khalsa DS, Lin J, Blackburn E, Irwin MR.",
+    "journalTitle": "International journal of geriatric psychiatry",
+    "pubYear": "2013",
+    "isOpenAccess": "N",
+    "firstPublicationDate": "2012-03-11"
+  },
+  "masked-language-vickhoff2013": {
+    "id": "23847555",
+    "doi": "10.3389/fpsyg.2013.00334",
+    "title": "Music structure determines heart rate variability of singers.",
+    "authorString": "Vickhoff B, Malmgren H, Aström R, Nyberg G, Ekström SR, Engwall M, Snygg J, Nilsson M, Jörnsten R.",
+    "journalTitle": "Frontiers in psychology",
+    "pubYear": "2013",
+    "isOpenAccess": "Y",
+    "firstPublicationDate": "2013-07-09"
+  },
+  "masked-language-meditation2015": {
+    "id": "25852526",
+    "doi": "10.3389/fnhum.2015.00145",
+    "title": "Cardiovascular and nervous system changes during meditation.",
+    "authorString": "Steinhubl SR, Wineinger NE, Patel S, Boeldt DL, Mackellar G, Porter V, Redmond JT, Muse ED, Nicholson L, Chopra D, Topol EJ.",
+    "journalTitle": "Frontiers in human neuroscience",
+    "pubYear": "2015",
+    "isOpenAccess": "Y",
+    "firstPublicationDate": "2015-03-18"
+  },
+  "pmid-28497544": {
+    "id": "28497544",
+    "doi": "10.1111/psyp.12891",
+    "title": "Inducing unconscious stress: Cardiovascular activity in response to subliminal presentation of threatening and neutral words.",
+    "authorString": "van der Ploeg MM, Brosschot JF, Verkuil B, Gillie BL, Williams DP, Koenig J, Vasey MW, Thayer JF.",
+    "journalTitle": "Psychophysiology",
+    "pubYear": "2017",
+    "isOpenAccess": "N",
+    "firstPublicationDate": "2017-05-12"
+  },
+  "masked-language-classification2019": {
+    "id": "31681085",
+    "doi": "10.3389/fpsyg.2019.02276",
+    "title": "What Is Meditation? Proposing an Empirically Derived Classification System.",
+    "authorString": "Matko K, Sedlmeier P.",
+    "journalTitle": "Frontiers in psychology",
+    "pubYear": "2019",
+    "isOpenAccess": "Y",
+    "firstPublicationDate": "2019-10-15"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "sourceCommit": "2f023e328cab280db882c241c71a60af748fcf5d",
+  "stagingURL": "https://staging.universalmind.tv/informatics/research/?collection=language&chapter=7",
+  "sources": 38,
+  "leadMechanismStudies": 5,
+  "originalGeminiReferences": 11,
+  "researchPublications": 35,
+  "backgroundReferences": 3,
+  "crossCounts": {
+    "one": 25,
+    "two": 8,
+    "three": 2,
+    "unrated": 3
+  },
+  "viewports": [
+    1470,
+    1024,
+    390,
+    320
+  ],
+  "advancedFilterChecks": 16,
+  "liveCSVMatchesSource": true,
+  "sourceAndManifestHTTPChecks": 8,
+  "publicationRecords": 1421,
+  "completeDatasetSources": 1198,
+  "datasetVersion": "156765f1be053076b6344a27e2a0ec06e87643c660c42e711f3aa376aae5b7ae",
+  "deploymentMethod": "./deploy-panthur-staging.sh informatics",
+  "productionModified": false,
+  "notes": [
+    "Full-text or bibliographic source access is recorded per entry; this is a targeted narrative evidence map.",
+    "Generated reading pages and complete data exports rebuilt through existing tools.",
+    "Two crosses represent randomized or verified single-blind studies; randomization and blinding remain separate filter fields.",
+    "Crosses are study-design classifications; editorial mechanism relevance is separately described."
+  ]
+}
