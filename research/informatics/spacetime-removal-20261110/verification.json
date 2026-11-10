@@ -1,0 +1,271 @@
+{
+  "verified_at": "2026-11-10T03:57:38.274544+00:00",
+  "source_commit": "0f4578dde30cfa62a52906105c93d134a928914f",
+  "http_checks": [
+    {
+      "url": "https://staging.universalmind.tv/informatics/spacetime/index.html",
+      "status": 404,
+      "final_url": "https://staging.universalmind.tv/informatics/spacetime/index.html",
+      "cache_status": "DYNAMIC",
+      "cache_control": null,
+      "age": null,
+      "date": "Tue, 10 Nov 2026 03:57:37 GMT"
+    },
+    {
+      "url": "https://staging.universalmind.tv/informatics/spacetime/app.mjs",
+      "status": 404,
+      "final_url": "https://staging.universalmind.tv/informatics/spacetime/app.mjs",
+      "cache_status": "DYNAMIC",
+      "cache_control": null,
+      "age": null,
+      "date": "Tue, 10 Nov 2026 03:57:37 GMT"
+    },
+    {
+      "url": "https://staging.universalmind.tv/informatics/spacetime/data.mjs",
+      "status": 404,
+      "final_url": "https://staging.universalmind.tv/informatics/spacetime/data.mjs",
+      "cache_status": "DYNAMIC",
+      "cache_control": null,
+      "age": null,
+      "date": "Tue, 10 Nov 2026 03:57:37 GMT"
+    },
+    {
+      "url": "https://staging.universalmind.tv/informatics/spacetime/environment.mjs",
+      "status": 404,
+      "final_url": "https://staging.universalmind.tv/informatics/spacetime/environment.mjs",
+      "cache_status": "DYNAMIC",
+      "cache_control": null,
+      "age": null,
+      "date": "Tue, 10 Nov 2026 03:57:37 GMT"
+    },
+    {
+      "url": "https://staging.universalmind.tv/informatics/spacetime/hls.min.js",
+      "status": 404,
+      "final_url": "https://staging.universalmind.tv/informatics/spacetime/hls.min.js",
+      "cache_status": "HIT",
+      "cache_control": "max-age=14400",
+      "age": "137",
+      "date": "Tue, 10 Nov 2026 03:57:37 GMT"
+    },
+    {
+      "url": "https://staging.universalmind.tv/informatics/spacetime/human.mjs",
+      "status": 404,
+      "final_url": "https://staging.universalmind.tv/informatics/spacetime/human.mjs",
+      "cache_status": "DYNAMIC",
+      "cache_control": null,
+      "age": null,
+      "date": "Tue, 10 Nov 2026 03:57:37 GMT"
+    },
+    {
+      "url": "https://staging.universalmind.tv/informatics/spacetime/kernel-manifest.mjs",
+      "status": 404,
+      "final_url": "https://staging.universalmind.tv/informatics/spacetime/kernel-manifest.mjs",
+      "cache_status": "DYNAMIC",
+      "cache_control": null,
+      "age": null,
+      "date": "Tue, 10 Nov 2026 03:57:37 GMT"
+    },
+    {
+      "url": "https://staging.universalmind.tv/informatics/spacetime/kernel.json",
+      "status": 404,
+      "final_url": "https://staging.universalmind.tv/informatics/spacetime/kernel.json",
+      "cache_status": "DYNAMIC",
+      "cache_control": null,
+      "age": null,
+      "date": "Tue, 10 Nov 2026 03:57:37 GMT"
+    },
+    {
+      "url": "https://staging.universalmind.tv/informatics/spacetime/kernel.schema.json",
+      "status": 404,
+      "final_url": "https://staging.universalmind.tv/informatics/spacetime/kernel.schema.json",
+      "cache_status": "DYNAMIC",
+      "cache_control": null,
+      "age": null,
+      "date": "Tue, 10 Nov 2026 03:57:37 GMT"
+    },
+    {
+      "url": "https://staging.universalmind.tv/informatics/spacetime/model.mjs",
+      "status": 404,
+      "final_url": "https://staging.universalmind.tv/informatics/spacetime/model.mjs",
+      "cache_status": "DYNAMIC",
+      "cache_control": null,
+      "age": null,
+      "date": "Tue, 10 Nov 2026 03:57:37 GMT"
+    },
+    {
+      "url": "https://staging.universalmind.tv/informatics/spacetime/navigation.mjs",
+      "status": 404,
+      "final_url": "https://staging.universalmind.tv/informatics/spacetime/navigation.mjs",
+      "cache_status": "DYNAMIC",
+      "cache_control": null,
+      "age": null,
+      "date": "Tue, 10 Nov 2026 03:57:37 GMT"
+    },
+    {
+      "url": "https://staging.universalmind.tv/informatics/spacetime/spacetime.css",
+      "status": 404,
+      "final_url": "https://staging.universalmind.tv/informatics/spacetime/spacetime.css",
+      "cache_status": "HIT",
+      "cache_control": "max-age=14400",
+      "age": "137",
+      "date": "Tue, 10 Nov 2026 03:57:37 GMT"
+    },
+    {
+      "url": "https://staging.universalmind.tv/informatics/spacetime/weather.mjs",
+      "status": 404,
+      "final_url": "https://staging.universalmind.tv/informatics/spacetime/weather.mjs",
+      "cache_status": "DYNAMIC",
+      "cache_control": null,
+      "age": null,
+      "date": "Tue, 10 Nov 2026 03:57:37 GMT"
+    },
+    {
+      "url": "https://staging.universalmind.tv/informatics/spacetime/data/TIMEWAVE-LICENSE.txt",
+      "status": 404,
+      "final_url": "https://staging.universalmind.tv/informatics/spacetime/data/TIMEWAVE-LICENSE.txt",
+      "cache_status": "DYNAMIC",
+      "cache_control": null,
+      "age": null,
+      "date": "Tue, 10 Nov 2026 03:57:37 GMT"
+    },
+    {
+      "url": "https://staging.universalmind.tv/informatics/spacetime/data/silso-monthly.txt",
+      "status": 404,
+      "final_url": "https://staging.universalmind.tv/informatics/spacetime/data/silso-monthly.txt",
+      "cache_status": "DYNAMIC",
+      "cache_control": null,
+      "age": null,
+      "date": "Tue, 10 Nov 2026 03:57:37 GMT"
+    },
+    {
+      "url": "https://staging.universalmind.tv/informatics/spacetime/data/silso-yearly.txt",
+      "status": 404,
+      "final_url": "https://staging.universalmind.tv/informatics/spacetime/data/silso-yearly.txt",
+      "cache_status": "DYNAMIC",
+      "cache_control": null,
+      "age": null,
+      "date": "Tue, 10 Nov 2026 03:57:37 GMT"
+    },
+    {
+      "url": "https://staging.universalmind.tv/informatics/spacetime/media/inner-planes-loop.mp4",
+      "status": 200,
+      "final_url": "https://staging.universalmind.tv/informatics/spacetime/media/inner-planes-loop.mp4",
+      "cache_status": "HIT",
+      "cache_control": "max-age=14400",
+      "age": "5395",
+      "date": "Tue, 10 Nov 2026 03:57:37 GMT"
+    },
+    {
+      "url": "https://staging.universalmind.tv/informatics/spacetime/",
+      "status": 404,
+      "final_url": "https://staging.universalmind.tv/informatics/spacetime/",
+      "cache_status": "DYNAMIC",
+      "cache_control": null,
+      "age": null,
+      "date": "Tue, 10 Nov 2026 03:57:37 GMT"
+    },
+    {
+      "url": "https://staging.universalmind.tv/informatics/spacetime",
+      "status": 404,
+      "final_url": "https://staging.universalmind.tv/informatics/spacetime",
+      "cache_status": "DYNAMIC",
+      "cache_control": null,
+      "age": null,
+      "date": "Tue, 10 Nov 2026 03:57:37 GMT"
+    },
+    {
+      "url": "https://staging.universalmind.tv/informatics/spacetime/data/",
+      "status": 404,
+      "final_url": "https://staging.universalmind.tv/informatics/spacetime/data/",
+      "cache_status": "DYNAMIC",
+      "cache_control": null,
+      "age": null,
+      "date": "Tue, 10 Nov 2026 03:57:37 GMT"
+    },
+    {
+      "url": "https://staging.universalmind.tv/informatics/spacetime/media/",
+      "status": 404,
+      "final_url": "https://staging.universalmind.tv/informatics/spacetime/media/",
+      "cache_status": "DYNAMIC",
+      "cache_control": null,
+      "age": null,
+      "date": "Tue, 10 Nov 2026 03:57:37 GMT"
+    },
+    {
+      "url": "https://staging.universalmind.tv/informatics/",
+      "status": 200,
+      "final_url": "https://staging.universalmind.tv/informatics/",
+      "cache_status": "DYNAMIC",
+      "cache_control": "no-store, no-cache, must-revalidate, max-age=0",
+      "age": null,
+      "date": "Tue, 10 Nov 2026 03:57:37 GMT",
+      "mentions_spacetime": false
+    },
+    {
+      "url": "https://staging.universalmind.tv/sitemap.xml",
+      "status": 200,
+      "final_url": "https://staging.universalmind.tv/sitemap.xml",
+      "cache_status": "DYNAMIC",
+      "cache_control": null,
+      "age": null,
+      "date": "Tue, 10 Nov 2026 03:57:37 GMT",
+      "mentions_spacetime": false
+    },
+    {
+      "url": "https://staging.universalmind.tv/llms.txt",
+      "status": 200,
+      "final_url": "https://staging.universalmind.tv/llms.txt",
+      "cache_status": "DYNAMIC",
+      "cache_control": null,
+      "age": null,
+      "date": "Tue, 10 Nov 2026 03:57:37 GMT",
+      "mentions_spacetime": false
+    },
+    {
+      "url": "https://staging.universalmind.tv/informatics/llms.txt",
+      "status": 200,
+      "final_url": "https://staging.universalmind.tv/informatics/llms.txt",
+      "cache_status": "DYNAMIC",
+      "cache_control": null,
+      "age": null,
+      "date": "Tue, 10 Nov 2026 03:57:37 GMT",
+      "mentions_spacetime": false
+    },
+    {
+      "url": "https://universalmind.tv/informatics/spacetime/",
+      "status": 404,
+      "final_url": "https://universalmind.tv/informatics/spacetime/",
+      "cache_status": "DYNAMIC",
+      "cache_control": null,
+      "age": null,
+      "date": "Tue, 10 Nov 2026 03:57:37 GMT"
+    },
+    {
+      "url": "https://staging.universalmind.tv/informatics/spacetime/media/inner-planes-loop.mp4?removed=20261110",
+      "status": 404,
+      "final_url": "https://staging.universalmind.tv/informatics/spacetime/media/inner-planes-loop.mp4?removed=20261110",
+      "cache_status": "HIT",
+      "cache_control": "max-age=14400",
+      "age": "119",
+      "date": "Tue, 10 Nov 2026 03:57:37 GMT"
+    }
+  ],
+  "ftp_spacetime_directory_absent": true,
+  "removed_files": 18,
+  "removed_directories": 3,
+  "unrelated_manifest_entries_unchanged": true,
+  "production_account_guard_verified": true,
+  "production_modified": false,
+  "research_records_preserved": true,
+  "browser_playback_started": false,
+  "remaining_cdn_cache": {
+    "url": "https://staging.universalmind.tv/informatics/spacetime/media/inner-planes-loop.mp4",
+    "status": 200,
+    "origin_deleted": true,
+    "cache_bypass_status": 404,
+    "purged": false,
+    "reason": "Authenticated Cloudflare dashboard session unavailable; existing OAuth scopes have no cache-purge permission. No cache or security settings changed.",
+    "observed_remaining_ttl_seconds": 9005,
+    "estimated_expiry_utc": "2026-11-10T06:27:42+00:00"
+  }
+}
