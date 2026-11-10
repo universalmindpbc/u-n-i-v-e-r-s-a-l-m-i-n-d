@@ -1,0 +1,37 @@
+{
+  "request": "Remove Spacetime from the active site and source. Preserve Git history and research records.",
+  "previous_staging_commit": "2cbd3579e5814f700282a2a45e232ae589e17870",
+  "deployment": "Existing deploy-panthur-staging.sh / Panthur FTP; staging account only.",
+  "retired_remote_files": [
+    "informatics/spacetime/index.html",
+    "informatics/spacetime/app.mjs",
+    "informatics/spacetime/data.mjs",
+    "informatics/spacetime/environment.mjs",
+    "informatics/spacetime/hls.min.js",
+    "informatics/spacetime/human.mjs",
+    "informatics/spacetime/kernel-manifest.mjs",
+    "informatics/spacetime/kernel.json",
+    "informatics/spacetime/kernel.schema.json",
+    "informatics/spacetime/model.mjs",
+    "informatics/spacetime/navigation.mjs",
+    "informatics/spacetime/spacetime.css",
+    "informatics/spacetime/weather.mjs",
+    "informatics/spacetime/data/TIMEWAVE-LICENSE.txt",
+    "informatics/spacetime/data/silso-monthly.txt",
+    "informatics/spacetime/data/silso-yearly.txt",
+    "informatics/spacetime/media/inner-planes-loop.mp4",
+    "informatics/spacetime/.htaccess"
+  ],
+  "retired_remote_directories": [
+    "informatics/spacetime/data",
+    "informatics/spacetime/media",
+    "informatics/spacetime"
+  ],
+  "local_checks": [
+    "Bash syntax for both deployment scripts",
+    "No whitespace errors",
+    "Exact 18-file deletion inventory matches previous source plus retired hls.min.js",
+    "Feature directory removed; former publish mode removed"
+  ],
+  "production_modified": false
+}
