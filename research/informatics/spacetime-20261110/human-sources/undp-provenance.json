@@ -1,0 +1,9 @@
+{
+  "source": "https://hdr.undp.org/sites/default/files/2025_HDR/HDR25_Composite_indices_complete_time_series.csv",
+  "retrieved": "2026-11-10",
+  "sha256": "61ed82e5b66c88dfca8ff9fac775c63981ecab6a254862af97acacc41c143117",
+  "original_bytes": 2001263,
+  "original_rows": 206,
+  "retained_row": "ZZK.WORLD",
+  "change": "Selected the publisher\u2019s World aggregate row; all fields retained."
+}

@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import {readFileSync,writeFileSync,mkdirSync} from 'node:fs';
 import {dirname,join,extname} from 'node:path';
 import {fileURLToPath} from 'node:url';
+import {HUMAN} from '../Informatics/spacetime/human.mjs';
 const {chromium}=await import(process.env.PLAYWRIGHT_MODULE||'/Users/benkorbel/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs');
 const root=dirname(dirname(fileURLToPath(import.meta.url))),live=process.argv.includes('--live');
 const out=join(root,'research/informatics/spacetime-20261110',live?'staging':'candidate');mkdirSync(out,{recursive:true});
@@ -35,6 +36,19 @@ try{
   if(width===1440||width===390)await page.screenshot({path:join(out,`${width}.png`),fullPage:true});
  }
  await page.setViewportSize({width:1440,height:1100});
+ for(const indicator of ['growth','development','positive','negative','satisfaction','market-return','market-price','market-volatility','conflict']){
+  await page.selectOption('#human-indicator',indicator);await page.click('#human-range');await page.waitForTimeout(40);
+  assert.ok((await page.locator('#human-coverage').innerText()).includes(indicator.startsWith('market-')?'United States':'World'));
+  assert.ok(await page.locator('#chart .observation').count()>15);
+  assert.ok(!(await page.locator('#chart').innerHTML()).match(/NaN|Infinity/));
+ }
+ assert.ok(await page.locator('#chart .uncertainty').count()>15);
+ await page.click('#reset');await page.selectOption('#human-indicator','market-return');await page.waitForTimeout(50);
+ await page.locator('.workspace').screenshot({path:join(out,'market.png')});
+ await page.click('.clock-detail summary');await page.fill('#from','2020-03-01');await page.fill('#through','2020-03-31');await page.click('#apply-dates');await page.waitForTimeout(40);
+ const expected=HUMAN.find(s=>s.id==='market-return').rows.find(r=>r.year===2020&&r.month===3).value.toLocaleString('en-AU',{maximumFractionDigits:2});
+ assert.ok((await page.locator('#readout').innerText()).includes(expected+' % per month'));
+ await page.click('.clock-detail summary');await page.click('#reset');
  for(const clock of ['day','month','year','decade']){
   await page.selectOption('#clock',clock);
   for(const method of ['values','change','multiscale','entropy']){
@@ -51,7 +65,7 @@ try{
  await page.click('#timewave-preset');await page.waitForTimeout(100);
  assert.ok(await page.locator('[data-layer=timewave]').isChecked());
  const downloadPromise=page.waitForEvent('download');await page.click('#export');const download=await downloadPromise;
- const chunks=[];for await(const chunk of await download.createReadStream())chunks.push(chunk);const exportData=JSON.parse(Buffer.concat(chunks).toString('utf8'));assert.equal(exportData.settings.throughUTC,'2012-12-21T11:00:00.000Z');assert.equal(exportData.evaluation.length,769);assert.equal(exportData.evaluation.at(-1).timewave,0);
+ const chunks=[];for await(const chunk of await download.createReadStream())chunks.push(chunk);const exportData=JSON.parse(Buffer.concat(chunks).toString('utf8'));assert.equal(exportData.settings.throughUTC,'2012-12-21T11:00:00.000Z');assert.equal(exportData.evaluation.length,769);assert.equal(exportData.evaluation.at(-1).timewave,0);assert.equal(exportData.human_indicator.id,'growth');assert.ok(exportData.human_indicator.rows.length>40);assert.equal(exportData.human_indicator.units,'% per year');
  await page.screenshot({path:join(out,'timewave.png'),fullPage:false});
  await page.click('[data-range="25"]');await page.waitForTimeout(50);
  await page.locator('#inspect').fill('1000');await page.locator('#inspect').dispatchEvent('input');
@@ -60,8 +74,9 @@ try{
  await page.click('#reset');await page.waitForTimeout(50);assert.equal(await page.inputValue('#clock'),'month');
  await page.locator('#inspect').focus();await page.keyboard.press('ArrowRight');assert.equal(await page.inputValue('#inspect'),'651');
  for(const layer of ['fibonacci','solar','king'])await page.locator(`[data-layer=${layer}]`).uncheck();
+ await page.selectOption('#human-indicator','none');
  await page.waitForTimeout(50);assert.match(await page.locator('#chart').textContent(),/Select a layer/);
- assert.deepEqual(report.errors,[]);report.checks=['page response','noindex','four viewport widths','64 hexagrams','16 clock/method combinations','dense envelopes','overlay','sequence space','historical zero','JSON download','date validation','reset','keyboard inspection','layer toggles'];
+ assert.deepEqual(report.errors,[]);report.checks=['page response','noindex','four viewport widths','64 hexagrams','16 clock/method combinations','dense envelopes','overlay','sequence space','historical zero','JSON download','date validation','reset','keyboard inspection','layer toggles','nine human and market choices','source coverage','conflict ranges','market monthly observations','human export'];
  await context.close();
 }finally{await browser.close();await server.close();writeFileSync(join(out,'verification.json'),JSON.stringify(report,null,2)+'\n');}
 console.log(JSON.stringify(report));

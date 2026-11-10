@@ -959,7 +959,7 @@ deploy_lab() {
 # Publish only committed Spacetime files; retain all unrelated manifest entries.
 deploy_spacetime() {
   local relative remote manifest_tmp
-  if [[ -n "$(git -C "$ROOT_DIR" status --porcelain --untracked-files=all -- Informatics/spacetime tools/check-spacetime.mjs tools/build-spacetime-data.py deploy-panthur-staging.sh deploy-panthurlive.sh)" ]]; then
+  if [[ -n "$(git -C "$ROOT_DIR" status --porcelain --untracked-files=all -- Informatics/spacetime tools/check-spacetime.mjs tools/build-spacetime-data.py tools/build-spacetime-human.py deploy-panthur-staging.sh deploy-panthurlive.sh)" ]]; then
     echo "Refusing to deploy uncommitted Spacetime source." >&2
     return 1
   fi

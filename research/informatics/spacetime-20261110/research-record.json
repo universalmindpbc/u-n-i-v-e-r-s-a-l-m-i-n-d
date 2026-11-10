@@ -20,7 +20,13 @@
     "King Wen sequence",
     "SILSO sunspot observations",
     "Timewave Zero historical model",
-    "Five sourced event annotations"
+    "Five sourced event annotations",
+    "Global economic growth: World Bank",
+    "Global HDI: UNDP",
+    "Global emotional experience indices: Gallup",
+    "Global thriving percentage: Gallup",
+    "Battle-related deaths with low/high estimates: UCDP",
+    "S&P 500 and predecessor monthly prices, price returns, trailing volatility: Robert Shiller"
   ],
   "future": [
     "Ionospheric observations",
@@ -59,8 +65,9 @@
       "note": "Conflict series from 1946; battle-related deaths from 1989."
     }
   ],
-  "candidate_status": "Recommendations only; no human indicator series loaded in edition 01",
+  "candidate_status": "Requested human indicator categories and selected S&P 500 benchmark implemented as nine interchangeable series. Planetary-adjusted HDI remains a candidate.",
   "validation": "See math-verification.json and staging/verification.json",
   "deployment_command": "./deploy-panthur-staging.sh informatics-spacetime",
-  "production": "No deployment authorized or performed"
+  "production": "No deployment authorized or performed",
+  "market_choice": "User selected S&P 500 on 10 November 2026."
 }

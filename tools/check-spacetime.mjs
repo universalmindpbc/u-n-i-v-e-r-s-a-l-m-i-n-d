@@ -6,6 +6,7 @@ import {join,dirname} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {ALPHA,KING,KING_BITS,KING_INTS,HAMMING,ANCHOR,ZERO,DAY,coordinate,fromCoordinate,entropy,transform,timewave,timewaveAt} from '../Informatics/spacetime/model.mjs';
 import {YEARLY,MONTHLY,KELLEY,META} from '../Informatics/spacetime/data.mjs';
+import {HUMAN} from '../Informatics/spacetime/human.mjs';
 const root=dirname(dirname(fileURLToPath(import.meta.url)));
 const close=(a,b,eps=1e-10)=>assert.ok(Math.abs(a-b)<=eps*Math.max(1,Math.abs(b)),`${a} differs from ${b}`);
 assert.deepEqual(ALPHA,JSON.parse(readFileSync(join(root,'Informatics/pilot-v1/m9.json'))).alpha.residues);
@@ -23,6 +24,21 @@ for(const seq of [ALPHA,KING])for(const x of [-193.25,0,.5,13.75,192]){
 assert.equal(YEARLY.length,326);assert.equal(MONTHLY.length,277*12);assert.equal(KELLEY.length,384);assert.equal(KELLEY[119],22);
 assert.equal(YEARLY[0].year,1700);assert.equal(YEARLY.at(-1).year,2025);assert.equal(MONTHLY[0].year,1749);
 assert.equal(timewaveAt(ZERO,KELLEY),0);assert.equal(timewaveAt(ZERO+DAY,KELLEY),null);
+assert.equal(HUMAN.length,9);
+for(const series of HUMAN){
+ assert.equal(new Set(series.rows.map(r=>r.date)).size,series.rows.length);
+ assert.ok(series.rows.every(r=>r.value===null||(r.value>=series.min&&r.value<=series.max)));
+ assert.ok(series.rows.every(r=>r.low===undefined||(r.low<=r.value&&r.value<=r.high)));
+}
+assert.ok(HUMAN.find(s=>s.id==='growth').rows.find(r=>r.year===2020).value<0);
+assert.equal(HUMAN.find(s=>s.id==='development').rows.at(-1).value,.756);
+assert.equal(HUMAN.find(s=>s.id==='satisfaction').rows.at(-1).year,2024);
+assert.equal(HUMAN.find(s=>s.id==='positive').rows.at(-1).value,70);
+assert.equal(HUMAN.find(s=>s.id==='negative').rows.at(-1).value,31);
+const price=HUMAN.find(s=>s.id==='market-price').rows,returns=HUMAN.find(s=>s.id==='market-return').rows,vol=HUMAN.find(s=>s.id==='market-volatility').rows;
+assert.equal(price.length,1860);assert.equal(price[0].value,4.44);assert.equal(price.at(-1).date,'2025-12-15');assert.equal(returns[0].value,null);assert.equal(vol[11].value,null);
+for(let i=1;i<price.length;i++)close(returns[i].value,100*(price[i].value-price[i-1].value)/price[i-1].value);
+const first=returns.slice(1,13).map(r=>r.value),mean=first.reduce((a,b)=>a+b,0)/12;close(vol[12].value,Math.sqrt(first.reduce((s,v)=>s+(v-mean)**2,0)/11)*Math.sqrt(12));
 const html=readFileSync(join(root,'Informatics/spacetime/index.html'),'utf8');
 assert.match(html,/<meta name="robots" content="noindex,nofollow,noarchive">/);
 assert.match(readFileSync(join(root,'Informatics/spacetime/.htaccess'),'utf8'),/X-Robots-Tag "noindex, nofollow, noarchive"/);
@@ -41,4 +57,4 @@ try {
  report={status:'passed',source:META.timewave_source,seed:META.timewave_seed,points:comparisons.length,max_absolute_error:Math.max(...comparisons.map(r=>r.absolute_error)),comparisons};
  if(process.argv.includes('--record'))writeFileSync(join(root,'research/informatics/spacetime-20261110/math-verification.json'),JSON.stringify(report,null,2)+'\n');
 }finally{rmSync(scratch,{recursive:true,force:true});}
-console.log(JSON.stringify({status:'passed',reference_points:report.points,max_absolute_error:report.max_absolute_error,checks:['Atlas alpha','King Wen binary encoding','shared periods','calendar reversibility','entropy','periodic transforms','solar coverage','noindex','Timewave C reference']}));
+console.log(JSON.stringify({status:'passed',reference_points:report.points,max_absolute_error:report.max_absolute_error,checks:['Atlas alpha','King Wen binary encoding','shared periods','calendar reversibility','entropy','periodic transforms','solar coverage','human source ranges','market returns and volatility','noindex','Timewave C reference']}));
