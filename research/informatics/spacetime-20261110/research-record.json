@@ -1,0 +1,66 @@
+{
+  "scope": "Unlisted Spacetime research page; permanent Panthur staging only",
+  "access": "Direct-link access without authentication; robots meta and HTTP noindex; absent from global navigation and discovery files",
+  "clock": {
+    "origin": "2000-01-01T00:00:00Z",
+    "default_step": "calendar month",
+    "presets": [
+      "day",
+      "month",
+      "year",
+      "decade"
+    ],
+    "fibonacci_positions": 24,
+    "king_wen_positions": 64,
+    "shared_position_repeat": 192,
+    "historical_timewave": "Kelley seed; Meyer evaluator; factor 64; normalization 64^3; zero 2012-12-21T11:00:00Z"
+  },
+  "loaded": [
+    "Fibonacci sequence",
+    "King Wen sequence",
+    "SILSO sunspot observations",
+    "Timewave Zero historical model",
+    "Five sourced event annotations"
+  ],
+  "future": [
+    "Ionospheric observations",
+    "Schumann resonances",
+    "Open Data Cube integration"
+  ],
+  "candidate_human_layers": [
+    {
+      "label": "Life satisfaction",
+      "source": "https://worldhappiness.report/data-sharing/",
+      "note": "Free headline downloads are three-year life-evaluation averages. Annual Gallup access needs separate review."
+    },
+    {
+      "label": "Emotional wellbeing",
+      "source": "https://www.gallup.com/405494/indicator-global-emotional-well-being.aspx",
+      "note": "Positive and negative daily experiences, surveyed and aggregated annually since 2006."
+    },
+    {
+      "label": "Human development",
+      "source": "https://hdr.undp.org/data-center/documentation-and-downloads",
+      "note": "HDI trends from 1990."
+    },
+    {
+      "label": "Planetary pressures-adjusted human development",
+      "source": "https://hdr.undp.org/planetary-pressures-adjusted-human-development-index",
+      "note": "Experimental HDI adjustment for carbon emissions and material footprint."
+    },
+    {
+      "label": "Economic growth",
+      "source": "https://databank.worldbank.org/metadataglossary/world-development-indicators/series/NY.GDP.MKTP.KD.ZG",
+      "note": "Real global GDP annual growth; companion real GDP per person; preserve annual cadence and source revisions."
+    },
+    {
+      "label": "Conflict",
+      "source": "https://ucdp.uu.se/downloads/",
+      "note": "Conflict series from 1946; battle-related deaths from 1989."
+    }
+  ],
+  "candidate_status": "Recommendations only; no human indicator series loaded in edition 01",
+  "validation": "See math-verification.json and staging/verification.json",
+  "deployment_command": "./deploy-panthur-staging.sh informatics-spacetime",
+  "production": "No deployment authorized or performed"
+}

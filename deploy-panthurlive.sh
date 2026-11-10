@@ -956,6 +956,28 @@ deploy_lab() {
   echo "Lab: committed source published through Panthur FTP."
 }
 
+# Publish only committed Spacetime files; retain all unrelated manifest entries.
+deploy_spacetime() {
+  local relative remote manifest_tmp
+  if [[ -n "$(git -C "$ROOT_DIR" status --porcelain --untracked-files=all -- Informatics/spacetime tools/check-spacetime.mjs tools/build-spacetime-data.py deploy-panthur-staging.sh deploy-panthurlive.sh)" ]]; then
+    echo "Refusing to deploy uncommitted Spacetime source." >&2
+    return 1
+  fi
+  git -C "$ROOT_DIR" ls-files --error-unmatch Informatics/spacetime/index.html Informatics/spacetime/.htaccess Informatics/spacetime/app.mjs Informatics/spacetime/model.mjs Informatics/spacetime/data.mjs >/dev/null || return 1
+  manifest_tmp="$(mktemp)"
+  if [[ -f "$MANIFEST_FILE" ]]; then
+    awk -F '\t' '$2 !~ /^informatics\/spacetime\//' "$MANIFEST_FILE" > "$manifest_tmp"
+  fi
+  # Set indexing headers first, then assets, then the entry document.
+  while IFS= read -r relative; do
+    remote="informatics/spacetime/${relative#Informatics/spacetime/}"
+    put_file "$ROOT_DIR/$relative" "$remote" || { rm -f "$manifest_tmp"; return 1; }
+    printf '%s\t%s\n' "$(file_hash "$ROOT_DIR/$relative")" "$remote" >> "$manifest_tmp"
+  done < <(printf '%s\n' 'Informatics/spacetime/.htaccess'; git -C "$ROOT_DIR" ls-files Informatics/spacetime | awk '$0 != "Informatics/spacetime/.htaccess" && $0 != "Informatics/spacetime/index.html"'; printf '%s\n' 'Informatics/spacetime/index.html')
+  mv "$manifest_tmp" "$MANIFEST_FILE"
+  echo "Spacetime: committed source published through Panthur FTP."
+}
+
 DEPLOY_MODE="${1:-iam}"
 
 if deployment_requires_owner_state_guard "$DEPLOY_MODE"; then
@@ -963,6 +985,9 @@ if deployment_requires_owner_state_guard "$DEPLOY_MODE"; then
 fi
 
 case "$DEPLOY_MODE" in
+  informatics-spacetime)
+    deploy_spacetime
+    ;;
   lab)
     deploy_lab
     ;;
