@@ -6,3 +6,70 @@
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 
 .human-controls{border-top:1px solid var(--line);padding-top:18px;margin-top:15px}.human-controls .small{margin:7px 0;font-size:10px}.human-controls>a{display:flex;align-items:center;gap:6px;font-size:10px;text-decoration:none;color:var(--ivory);margin:10px 0}.human-controls button{font-size:10px;padding:6px 8px;min-height:30px}.human-controls:has(select:disabled){opacity:.6}#chart .observation{stroke:var(--panel);stroke-width:1;fill:#efeee4}#chart .uncertainty{stroke:#efeee470;stroke-width:1}
+
+/* Zen keeps one comparison in view; Research retains the full workspace. */
+.mode-switch{display:flex;gap:5px;padding:5px;border:1px solid var(--line);border-radius:30px;background:var(--panel);flex-shrink:0}
+.mode-switch button{display:flex;align-items:center;justify-content:center;gap:9px;border:0;border-radius:24px;padding:10px 21px;min-height:44px;font-size:14px}
+.mode-switch svg{width:19px;height:19px}
+.zen-controls,.zen-context{display:none}
+body[data-view=zen] main{max-width:1370px}
+body[data-view=zen] .intro{padding:35px 0 30px;align-items:center}
+body[data-view=zen] .intro h1{font-size:64px}
+body[data-view=zen] .intro .eyebrow{font-size:10px;letter-spacing:.1em}
+body[data-view=zen] .workspace{display:block;background:linear-gradient(145deg,#15201f80,transparent 65%),var(--panel)}
+body[data-view=zen] .inspector,body[data-view=zen] .periods,body[data-view=zen] .view-switch,body[data-view=zen] .research-library,body[data-view=zen] #export{display:none}
+body[data-view=zen] .instrument-head{padding:30px 34px 20px}
+body[data-view=zen] .instrument-head h2{font-size:27px;letter-spacing:-.04em;line-height:1.25}
+body[data-view=zen] .instrument-head .eyebrow{margin-bottom:8px}
+body[data-view=zen] .zen-controls{display:flex;gap:20px;align-items:flex-end;padding:0 34px 23px}
+.zen-controls .field{min-width:0;width:280px;font-size:12px;margin:0;gap:8px}
+.zen-controls .zen-period{width:180px}
+.zen-controls select{min-height:44px;font-size:14px;padding:10px 12px;border-radius:7px}
+.zen-pattern{display:flex;gap:9px;align-items:center;cursor:pointer;min-height:44px;font-size:12px;margin-left:auto;position:relative;color:var(--muted);white-space:nowrap}
+.zen-pattern input{position:absolute;opacity:0;width:100%;height:100%;margin:0;cursor:pointer}
+.pattern-mark{display:grid;place-items:center;width:25px;height:25px;border:1px solid var(--line);border-radius:50%}
+.pattern-mark svg{width:13px;height:13px}
+.zen-pattern:has(input:checked){color:var(--mint)}
+.zen-pattern input:checked+.pattern-mark{background:#68dfc11a;border-color:var(--mint)}
+.zen-pattern input:checked+.pattern-mark svg{transform:rotate(45deg)}
+.zen-pattern input:focus-visible+.pattern-mark{outline:2px solid var(--mint);outline-offset:4px}
+body[data-view=zen] .chart-wrap{min-height:0;margin:0 12px}
+body[data-view=zen] #chart .series-title{font-size:15px;font-weight:400}
+body[data-view=zen] #chart .series-sub{font-size:11px}
+body[data-view=zen] #chart .trace{stroke-width:2}
+body[data-view=zen] #chart .trace[data-series=fibonacci]{stroke-width:1;stroke-dasharray:3 4;opacity:.65}
+body[data-view=zen] #chart .grid{stroke:#a9bcb510}
+body[data-view=zen] .scrubber{padding:12px 34px 0}
+body[data-view=zen] .scrubber label{font-size:12px}
+body[data-view=zen] .readout{padding:14px 34px 24px;gap:20px 45px;font-size:12px}
+body[data-view=zen] .readout strong{font-size:16px;letter-spacing:-.02em;font-weight:400}
+body[data-view=zen] .chart-footer{padding:13px 34px}
+body[data-view=zen] .chart-footer p{font-size:11px;max-width:none}
+body[data-view=zen] .zen-context{display:block;margin:18px 0 24px;color:var(--muted);font-size:12px}
+.zen-context summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:9px;width:fit-content;min-height:44px}
+.zen-context summary svg{width:14px;height:14px}
+.zen-context>div{max-width:800px;padding:0 0 14px;line-height:1.8}
+body[data-view=zen] footer{border-top:0;padding-top:0}
+@media(max-width:760px){
+ .intro .mode-switch{width:fit-content;margin-top:22px}
+ .mode-switch button{padding:9px 22px}
+ body[data-view=zen] .intro{padding:27px 0 23px}
+ body[data-view=zen] .intro h1{font-size:55px}
+ body[data-view=zen] .intro .eyebrow{font-size:9px;letter-spacing:.06em}
+ body[data-view=zen] .instrument-head{padding:23px 20px 19px}
+ body[data-view=zen] .instrument-head h2{font-size:25px}
+ body[data-view=zen] .zen-controls{padding:0 20px 20px;gap:13px;flex-wrap:wrap}
+ .zen-controls .field{width:100%}
+ .zen-controls .zen-period{width:calc(50% - 7px)}
+ .zen-controls select{font-size:13px;padding:10px}
+ .zen-pattern{font-size:11px;margin-left:auto;gap:6px}
+ body[data-view=zen] .chart-wrap{margin:0 3px}
+ body[data-view=zen] #chart .series-title{font-size:14px}
+ body[data-view=zen] #chart .series-sub{font-size:10px}
+ body[data-view=zen] .scrubber{padding:9px 20px 0}
+ body[data-view=zen] .readout{padding:12px 20px 20px;gap:15px 25px;font-size:11px}
+ body[data-view=zen] .readout strong{font-size:14px}
+ body[data-view=zen] .chart-footer{padding:12px 20px}
+ body[data-view=zen] .chart-footer p{font-size:10px}
+}
+@media(max-width:365px){.zen-controls .zen-period{width:100%}.zen-pattern{margin-left:0;min-height:35px}}

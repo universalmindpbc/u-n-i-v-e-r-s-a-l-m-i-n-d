@@ -5,7 +5,7 @@ import {fileURLToPath} from 'node:url';
 import {HUMAN} from '../Informatics/spacetime/human.mjs';
 const {chromium}=await import(process.env.PLAYWRIGHT_MODULE||'/Users/benkorbel/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs');
 const root=dirname(dirname(fileURLToPath(import.meta.url))),live=process.argv.includes('--live');
-const out=join(root,'research/informatics/spacetime-20261110',live?'staging':'candidate');mkdirSync(out,{recursive:true});
+const out=join(root,'research/informatics/spacetime-zen-20261110',live?'staging':'candidate');mkdirSync(out,{recursive:true});
 const server=await chromium.launchServer({headless:true,executablePath:process.env.CHROMIUM_BIN||'/Users/benkorbel/Library/Caches/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-mac-arm64/chrome-headless-shell',args:['--mute-audio']});
 assert.ok(server.process().spawnargs.includes('--mute-audio'));
 const browser=await chromium.connect(server.wsEndpoint());
@@ -36,6 +36,36 @@ try{
   if(width===1440||width===390)await page.screenshot({path:join(out,`${width}.png`),fullPage:true});
  }
  await page.setViewportSize({width:1440,height:1100});
+ assert.equal(await page.getAttribute('body','data-view'),'zen');
+ assert.ok(await page.locator('button[data-view=zen]').isVisible());
+ assert.ok(!(await page.locator('.inspector').isVisible()));
+ assert.ok(!(await page.locator('.research-library').isVisible()));
+ assert.equal(await page.locator('#chart .trace').count(),2);
+ const zenHeight=await page.locator('#chart').evaluate(e=>e.getBoundingClientRect().height);
+ await page.check('#zen-fibonacci');await page.waitForTimeout(60);
+ assert.equal(await page.locator('#chart .trace').count(),3);
+ assert.equal(await page.locator('#chart').evaluate(e=>e.getBoundingClientRect().height),zenHeight);
+ assert.match(await page.locator('#chart-note').innerText(),/scaled from 0–8/);
+ await page.uncheck('#zen-fibonacci');
+ for(const id of HUMAN.map(h=>h.id)){
+  await page.selectOption('#zen-indicator',id);await page.waitForTimeout(30);
+  assert.equal(await page.locator('#chart .trace').count(),2);
+  assert.ok(!(await page.locator('#chart').innerHTML()).match(/NaN|Infinity/));
+  assert.ok((await page.locator('#zen-source-note').textContent()).includes(HUMAN.find(h=>h.id===id).publisher));
+ }
+ await page.selectOption('#zen-indicator','growth');
+ await page.click('button[data-view=research]');
+ assert.ok(await page.locator('.inspector').isVisible());
+ await page.selectOption('#clock','year');await page.selectOption('#method','multiscale');await page.selectOption('#depth','4');
+ await page.locator('[data-layer=king]').uncheck();await page.click('[data-layout=overlay]');
+ await page.click('button[data-view=zen]');await page.waitForTimeout(40);
+ assert.equal(await page.locator('#chart .trace').count(),2);
+ await page.selectOption('#zen-indicator','market-return');await page.selectOption('#zen-range','100');
+ await page.click('button[data-view=research]');
+ assert.equal(await page.inputValue('#clock'),'year');assert.equal(await page.inputValue('#method'),'multiscale');assert.equal(await page.inputValue('#depth'),'4');
+ assert.equal(await page.inputValue('#human-indicator'),'market-return');assert.equal(await page.inputValue('#from'),'1926-01-01');
+ assert.ok(!(await page.locator('[data-layer=king]').isChecked()));assert.equal(await page.getAttribute('[data-layout=overlay]','aria-pressed'),'true');
+ await page.click('#reset');
  for(const indicator of ['growth','development','positive','negative','satisfaction','market-return','market-price','market-volatility','conflict']){
   await page.selectOption('#human-indicator',indicator);await page.click('#human-range');await page.waitForTimeout(40);
   assert.ok((await page.locator('#human-coverage').innerText()).includes(indicator.startsWith('market-')?'United States':'World'));
@@ -76,7 +106,7 @@ try{
  for(const layer of ['fibonacci','solar','king'])await page.locator(`[data-layer=${layer}]`).uncheck();
  await page.selectOption('#human-indicator','none');
  await page.waitForTimeout(50);assert.match(await page.locator('#chart').textContent(),/Select a layer/);
- assert.deepEqual(report.errors,[]);report.checks=['page response','noindex','four viewport widths','64 hexagrams','16 clock/method combinations','dense envelopes','overlay','sequence space','historical zero','JSON download','date validation','reset','keyboard inspection','layer toggles','nine human and market choices','source coverage','conflict ranges','market monthly observations','human export'];
+ assert.deepEqual(report.errors,[]);report.checks=['Zen default and visible switch','two observed series in Zen','optional Fibonacci overlay preserves chart height','nine Zen indicator choices','Research configuration preserved across view changes','page response','noindex','four viewport widths','64 hexagrams','16 clock/method combinations','dense envelopes','overlay','sequence space','historical zero','JSON download','date validation','reset','keyboard inspection','layer toggles','nine human and market choices','source coverage','conflict ranges','market monthly observations','human export'];
  await context.close();
 }finally{await browser.close();await server.close();writeFileSync(join(out,'verification.json'),JSON.stringify(report,null,2)+'\n');}
 console.log(JSON.stringify(report));

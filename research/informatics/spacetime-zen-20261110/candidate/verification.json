@@ -1,0 +1,57 @@
+{
+  "mode": "candidate interception",
+  "muted": true,
+  "viewports": [
+    {
+      "width": 1440,
+      "scroll": 1440,
+      "client": 1440,
+      "chart": 1260
+    },
+    {
+      "width": 1024,
+      "scroll": 1024,
+      "client": 1024,
+      "chart": 950
+    },
+    {
+      "width": 390,
+      "scroll": 390,
+      "client": 390,
+      "chart": 350
+    },
+    {
+      "width": 320,
+      "scroll": 320,
+      "client": 320,
+      "chart": 280
+    }
+  ],
+  "errors": [],
+  "checks": [
+    "Zen default and visible switch",
+    "two observed series in Zen",
+    "optional Fibonacci overlay preserves chart height",
+    "nine Zen indicator choices",
+    "Research configuration preserved across view changes",
+    "page response",
+    "noindex",
+    "four viewport widths",
+    "64 hexagrams",
+    "16 clock/method combinations",
+    "dense envelopes",
+    "overlay",
+    "sequence space",
+    "historical zero",
+    "JSON download",
+    "date validation",
+    "reset",
+    "keyboard inspection",
+    "layer toggles",
+    "nine human and market choices",
+    "source coverage",
+    "conflict ranges",
+    "market monthly observations",
+    "human export"
+  ]
+}

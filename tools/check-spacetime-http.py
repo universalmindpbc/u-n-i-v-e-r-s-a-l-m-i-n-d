@@ -34,6 +34,6 @@ for route in ['/informatics/','/sitemap.xml','/llms.txt','/informatics/sitemap.x
  except HTTPError as error:
   assert error.code==404,(route,error.code)
   report['discovery'].append({'path':route,'status':404})
-out=root/'research/informatics/spacetime-20261110/staging';out.mkdir(exist_ok=True)
+out=root/'research/informatics/spacetime-zen-20261110/staging';out.mkdir(parents=True,exist_ok=True)
 (out/'http-verification.json').write_text(json.dumps(report,indent=2)+'\n')
 print(json.dumps({'status':'passed','commit':commit,'files':len(report['files']),'discovery':report['discovery']}))
