@@ -16,9 +16,9 @@ export async function portalIdentity(request,env){
   return c.scope==='quantum-demo'&&c.aud===env.ALLOWED_ORIGIN&&Number.isInteger(c.exp)&&c.exp>now&&c.exp<=now+43200&&/^[a-f0-9]{64}$/.test(c.code||'')?c.code:false;
  }catch{return false;}
 }
-async function broker(env,demo){const r=await env.BUDGET.get(env.BUDGET.idFromName('astra-owner-v1')).fetch('https://budget/demo',{method:'POST',body:JSON.stringify({demo})});return json(await r.json(),r.status);}
+async function broker(env,demo){const namespace=env.SHARED_RESEARCH_BUDGET||env.BUDGET;const r=await namespace.get(namespace.idFromName('astra-owner-v1')).fetch('https://budget/demo',{method:'POST',body:JSON.stringify({demo})});return json(await r.json(),r.status);}
 export async function demoRoute(request,env){
- if(env.ALLOWED_ORIGIN!=='https://staging.universalmind.tv')return json({error:'Portal experiments are available on staging.'},404);
+ if(!['https://staging.universalmind.tv','https://universalmind.tv'].includes(env.ALLOWED_ORIGIN))return json({error:'Portal access is unavailable on this host.'},404);
  const path=new URL(request.url).pathname;
  if(path==='/agent/demo/control'){
   if(request.method!=='POST'||!env.ASTRA_WORKER_TOKEN||request.headers.get('Authorization')!=='Bearer '+env.ASTRA_WORKER_TOKEN)return json({error:'Worker authentication required.'},401);

@@ -1,0 +1,74 @@
+[
+  {
+    "file": "Informatics/atlas-guides/computer-vision-atlas.csv",
+    "hashOnly": true
+  },
+  {
+    "file": "Informatics/atlas-guides/computer-vision-atlas.json",
+    "hashOnly": true
+  },
+  {
+    "file": "Informatics/atlas-guides/computer-vision-atlas.md",
+    "hashOnly": true
+  },
+  {
+    "file": "Informatics/atlas-guides/language-atlas.csv",
+    "hashOnly": true
+  },
+  {
+    "file": "Informatics/atlas-guides/language-atlas.json",
+    "hashOnly": true
+  },
+  {
+    "file": "Informatics/atlas-guides/language-atlas.md",
+    "hashOnly": true
+  },
+  {
+    "file": "Informatics/atlas-guides/vision-atlas.csv",
+    "hashOnly": true
+  },
+  {
+    "file": "Informatics/atlas-guides/vision-atlas.json",
+    "hashOnly": true
+  },
+  {
+    "file": "Informatics/atlas-guides/vision-atlas.md",
+    "hashOnly": true
+  },
+  {
+    "file": "Informatics/index.html",
+    "hashOnly": true
+  },
+  {
+    "file": "Informatics/quantum/index.html",
+    "hashOnly": true
+  },
+  {
+    "file": "Informatics/quantum/reading/quantum-atlas.csv",
+    "hashOnly": true
+  },
+  {
+    "file": "Informatics/quantum/reading/quantum-atlas.json",
+    "hashOnly": true
+  },
+  {
+    "file": "Informatics/quantum/reading/quantum-atlas.md",
+    "hashOnly": true
+  },
+  {
+    "file": "Informatics/read/computer-vision/index.html",
+    "hashOnly": true
+  },
+  {
+    "file": "Informatics/read/data.html",
+    "hashOnly": true
+  },
+  {
+    "file": "Informatics/read/language/index.html",
+    "hashOnly": true
+  },
+  {
+    "file": "Informatics/read/vision/index.html",
+    "hashOnly": true
+  }
+]

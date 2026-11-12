@@ -20,7 +20,10 @@ export async function researchIdentity(request,env){
 }
 export async function ownerAllowed(request,env){return Boolean(await researchIdentity(request,env));}
 async function broker(env,payload){
- const r=await env.BUDGET.get(env.BUDGET.idFromName('astra-owner-v1')).fetch('https://budget/astra',{method:'POST',body:JSON.stringify({astra:payload})});
+ const send=namespace=>namespace.get(namespace.idFromName('astra-owner-v1')).fetch('https://budget/astra',{method:'POST',body:JSON.stringify({astra:payload})});
+ let r=await send(env.BUDGET);
+ // Existing production studies remain local. Portal studies retain the original shared ledger.
+ if(r.status===404&&env.SHARED_RESEARCH_BUDGET&&['get','record','delivery','shared-result','cancel','resume'].includes(payload.op))r=await send(env.SHARED_RESEARCH_BUDGET);
  if(!r.ok){const d=await r.json();throw fail(d.error||'Study service unavailable.',r.status);}return r.json();
 }
 export function astraTokenLimit(env){return ['https://staging.universalmind.tv','https://universalmind.tv'].includes(env.ALLOWED_ORIGIN)&&env.ASTRA_MODEL_TOKEN_LIMIT==='64000'?64000:24000;}
@@ -65,7 +68,7 @@ export async function astraRoute(request,env){
  if(match[2]&&request.method!==(match[2]==='record'?'GET':'POST'))return json({error:'This operation uses a different request method.'},405);
  if(match[2]==='delivery'){
   const raw=await request.text();if(raw.length>1000)return json({error:'Email request is too large.'},413);
-  const body=JSON.parse(raw);return json(await broker(env,{op:'delivery',id:match[1],clientId,portalId,email:body.email,enabled:body.enabled===true}));
+  const body=JSON.parse(raw);return json(await broker(env,{op:'delivery',id:match[1],clientId,portalId,email:body.email,enabled:body.enabled===true,resultOrigin:env.ALLOWED_ORIGIN}));
  }
  return json(await broker(env,{op:match[2]||'get',id:match[1],clientId,portalId}));
 }
@@ -111,9 +114,10 @@ export async function astraStorage(storage,b){
      if(task.notification&&task.notification.email===email&&task.notification.state!=='failed')return answer({delivery:deliveryView(task),resultToken:task.notification.token});
      if((task.notificationChanges||0)>=3)return answer({error:'The notification change limit for this study is reached.'},429);
      task.notificationChanges=(task.notificationChanges||0)+1;
-     task.notification={email,state:'waiting',token:[...crypto.getRandomValues(new Uint8Array(32))].map(x=>x.toString(16).padStart(2,'0')).join(''),eventId:crypto.randomUUID(),expires:now+30*86400000,attempts:0,nextAttempt:now};
+     task.notification={email,resultOrigin:['https://staging.universalmind.tv','https://universalmind.tv'].includes(b.resultOrigin)?b.resultOrigin:undefined,state:'waiting',token:[...crypto.getRandomValues(new Uint8Array(32))].map(x=>x.toString(16).padStart(2,'0')).join(''),eventId:crypto.randomUUID(),expires:now+30*86400000,attempts:0,nextAttempt:now};
      result=answer({delivery:deliveryView(task),resultToken:task.notification.token});
     }
+    await txn.put('study:'+task.id,task);return result;
    }else
    if(['resume','cancel'].includes(b.op)&&task.version===DEMO_VERSION)return answer({error:'This funded experiment retains its reservation and hardware receipts. Contact the project owner for cancellation or recovery.'},409);
    if(b.op==='resume'){

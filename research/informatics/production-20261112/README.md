@@ -1,0 +1,15 @@
+# Informatics production release — 12 November 2026
+
+Ben explicitly authorized production publication. The approved Informatics scope comes from staging `d791d9ca487371512851868fa0b1078f47ae58ed`, isolated from unrelated Lab and root Wiki work. Source candidate: `ff6a0eeaf`. The existing Panthur deployment published 129 changed assets to production and 30 compatibility assets to staging.
+
+The production service now uses Astra Max and the approved gene, PubMed, Europe PMC, Perplexity Search and Opus research integrations. The portal control and PHP endpoint now support both permanent hosts. Production retains its existing study store. A separate cross-script binding reuses the existing funded-demo and discovery ledgers, preserving one credit per code and the single US$100 demo pool; no allowance was reset. Session signing secrets were privately confirmed identical without publishing their values.
+
+The deployment regression checks exposed an email-preference fall-through into the worker lease handler. Saving a delivery preference now returns after persisting the notification. Shared funded studies retain the requesting site's results-link destination. Tests cover ownership, private result tokens, invalid tokens, delivery persistence and idempotency.
+
+Verification includes a real production request through the chat, a successful OpenAI response with Max reasoning receipts, and the rendered answer. Portal sign-in and credit status passed separately. Desktop/mobile controls, all three reading backgrounds, 51 exact versioned browser assets, 126 HTTP source/download hashes, and both complete export formats passed. Both JSON and CSV reconstruct all 1,198 source records. Research-library QA covers 38 new chapter records, 16 advanced filters, search, deep links and downloads. Geometry QA covers desktop/mobile E8 layers, three projections, 240 roots, controls and deep linking.
+
+A second logged-in conversational QA attempt was stopped before an OpenAI call: its conservative maximum reservation exceeded the remaining US$5 test allowance. This is a test-only header, not the normal visitor path. The blocked attempt and its receipts remain recorded; no extra credit was spent. The final UI-only checks made no model requests. Earlier staging evidence includes the full varied 15-turn conversation audit. No study, hardware or GPU job was launched.
+
+All generated publication changes after the approved source are checksum changes; approved prose and layout remain intact. The input placeholder retains Ben's exact wording. HTTP evidence keeps raw hashes and reverses only observed Cloudflare email protection and the exact analytics script plus its injected newline. PHP source hashes were checked through the existing FTP transport; private runtime configuration remains denied over HTTP.
+
+The production branch is based on the prior production commit and contains only this scoped promotion. Staging receives the release and audit through a merge that retains its unrelated approved development work and archived export records. These branch tips intentionally differ; the annotated production tag identifies the audited production commit.

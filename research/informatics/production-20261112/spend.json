@@ -1,0 +1,259 @@
+{
+  "approved": true,
+  "limitUSD": 5,
+  "approval": "Ben approved up to US$5 additional OpenAI credit for CUDA-Q conversation verification before and after portal access. No study, quantum hardware or paid GPU jobs.",
+  "calls": [
+    {
+      "id": "9a872520-0a5a-4ad4-ac5e-97a804f24bac",
+      "path": "/quantum/command",
+      "status": "reconciled",
+      "chargedUpperUSD": 0.009862499999999996
+    },
+    {
+      "id": "146c895d-a089-44bf-9a06-1829b294e2bb",
+      "path": "/research",
+      "status": "reconciled",
+      "chargedUpperUSD": 0.12257499999999988
+    },
+    {
+      "id": "8390d878-8605-4dc0-bfb7-964188da28a7",
+      "path": "/quantum/command",
+      "status": "reconciled",
+      "chargedUpperUSD": 0.010812500000000003
+    },
+    {
+      "id": "7a93dc4d-5ba5-45e0-9006-341a346317c2",
+      "path": "/research",
+      "status": "reconciled",
+      "chargedUpperUSD": 0.10501249999999995
+    },
+    {
+      "id": "1b86ab53-4d51-4e89-9734-00d67139abcc",
+      "path": "/quantum/command",
+      "status": "reconciled",
+      "chargedUpperUSD": 0.011787500000000006
+    },
+    {
+      "id": "c385e006-f0d4-403b-96e2-f66b16dd0f12",
+      "path": "/research",
+      "status": "reconciled",
+      "chargedUpperUSD": 0.11396249999999997
+    },
+    {
+      "id": "0453175f-052f-4e84-826b-e2daf1103a89",
+      "path": "/quantum/command",
+      "status": "reconciled",
+      "chargedUpperUSD": 0.012712500000000015
+    },
+    {
+      "id": "6deee065-65f1-41a0-9cfa-d307564e2b7a",
+      "path": "/research",
+      "status": "reconciled",
+      "chargedUpperUSD": 0.12341249999999993
+    },
+    {
+      "id": "f98b631d-2b64-43be-9552-9f3f57b92f9d",
+      "path": "/quantum/command",
+      "status": "reconciled",
+      "chargedUpperUSD": 0.013624999999999998
+    },
+    {
+      "id": "2304afc6-b478-46fc-88e1-e0ab2344d7de",
+      "path": "/research",
+      "status": "reconciled",
+      "chargedUpperUSD": 0.37411250000000007
+    },
+    {
+      "id": "aa599e3c-7bb6-41f8-ac54-9b124a7a8981",
+      "path": "/quantum/command",
+      "status": "reconciled",
+      "chargedUpperUSD": 0
+    },
+    {
+      "id": "774034fa-f854-4a66-be58-6fa74c193a52",
+      "path": "/quantum/command",
+      "status": "reconciled",
+      "chargedUpperUSD": 0.018375000000000002
+    },
+    {
+      "id": "f7a60081-b0bb-46c5-804c-0a578777bcf5",
+      "path": "/research",
+      "status": "reconciled",
+      "chargedUpperUSD": 0.6212624999999998
+    },
+    {
+      "id": "8d1840c4-cc69-448d-984f-292fad5e4d42",
+      "path": "/quantum/command",
+      "status": "reconciled",
+      "chargedUpperUSD": 0.02284999999999998
+    },
+    {
+      "id": "f33b1375-778f-4795-a9cf-3923925e3545",
+      "path": "/research",
+      "status": "reconciled",
+      "chargedUpperUSD": 0.24122500000000002
+    },
+    {
+      "id": "9eba34a6-1fa9-4cd7-8308-eca9b771733e",
+      "path": "/quantum/command",
+      "status": "reconciled",
+      "chargedUpperUSD": 0.0239375
+    },
+    {
+      "id": "2e80327f-5890-4dde-8a2d-fe36d07c072c",
+      "path": "/research",
+      "status": "reconciled",
+      "chargedUpperUSD": 0.2279875
+    },
+    {
+      "id": "58f68d68-7314-4493-9928-87b769f674ac",
+      "path": "/quantum/command",
+      "status": "reconciled",
+      "chargedUpperUSD": 0.009887499999999994
+    },
+    {
+      "id": "b9105aca-e92f-4a2b-b40c-cb71a81fe0e1",
+      "path": "/research",
+      "status": "reconciled",
+      "chargedUpperUSD": 0.273825
+    },
+    {
+      "id": "eff17ffe-d533-473d-a71d-989321ea61f2",
+      "path": "/quantum/command",
+      "status": "reconciled",
+      "chargedUpperUSD": 0.010937499999999989
+    },
+    {
+      "id": "d8a70552-edd1-4624-945c-794053dddb61",
+      "path": "/research",
+      "status": "reconciled",
+      "chargedUpperUSD": 0.13416249999999996
+    },
+    {
+      "id": "e7033edf-d3d0-4e1e-b32a-5a7e35a21792",
+      "path": "/quantum/command",
+      "status": "reconciled",
+      "chargedUpperUSD": 0.013587500000000002
+    },
+    {
+      "id": "ffb12c9c-a64e-4ab8-bf45-e3a7e0cf0dce",
+      "path": "/research",
+      "status": "reconciled",
+      "chargedUpperUSD": 0.10252499999999998
+    },
+    {
+      "id": "22ba29ef-16df-4cf8-bac6-d99556493440",
+      "path": "/quantum/command",
+      "status": "reconciled",
+      "chargedUpperUSD": 0.009887499999999994
+    },
+    {
+      "id": "04ad6023-15e8-4b6c-a44a-f3609e210fb6",
+      "path": "/research",
+      "status": "reconciled",
+      "chargedUpperUSD": 0.00014999999999999736
+    },
+    {
+      "id": "0a0e30e4-31e1-4de7-b81a-738bf1bdd83a",
+      "path": "/quantum/command",
+      "status": "reconciled",
+      "chargedUpperUSD": 0.009887499999999994
+    },
+    {
+      "id": "29435ec6-2de0-4c0b-a350-ab9bcfe93d1e",
+      "path": "/research",
+      "status": "reconciled",
+      "chargedUpperUSD": 0.2608250000000001
+    },
+    {
+      "id": "45e87f7c-78ea-4b86-8201-19d64cf772b5",
+      "path": "/quantum/command",
+      "status": "reconciled",
+      "chargedUpperUSD": 0.011050000000000004
+    },
+    {
+      "id": "d28c2a00-e803-4c29-bdf7-0d09d8e2690f",
+      "path": "/research",
+      "status": "reconciled",
+      "chargedUpperUSD": 0.2581
+    },
+    {
+      "id": "ed64d106-7daf-4762-9eba-5bf99280028b",
+      "path": "/quantum/command",
+      "status": "reconciled",
+      "chargedUpperUSD": 0.012087500000000001
+    },
+    {
+      "id": "d21c4a77-1495-45e1-9d74-c26b07dc534a",
+      "path": "/research",
+      "status": "reconciled",
+      "chargedUpperUSD": 0.00010000000000000286
+    },
+    {
+      "id": "cf436d8a-51cf-4df6-bd0c-74911b1e70a8",
+      "path": "/quantum/command",
+      "status": "reconciled",
+      "chargedUpperUSD": 0.012212500000000015
+    },
+    {
+      "id": "1c025811-32c0-4a2e-982d-88474887d96e",
+      "path": "/research",
+      "status": "reconciled",
+      "chargedUpperUSD": 0.12571250000000012
+    },
+    {
+      "id": "8e77143a-f45b-4b46-a291-3b7827fec220",
+      "path": "/quantum/command",
+      "status": "reconciled",
+      "chargedUpperUSD": 0.012212500000000015
+    },
+    {
+      "id": "9f776f77-3577-4579-a6d5-e57f2490d607",
+      "path": "/research",
+      "status": "reconciled",
+      "chargedUpperUSD": 0.12462499999999999
+    },
+    {
+      "id": "85f38a2a-24e2-40fd-84ff-cf709b599e4d",
+      "path": "/quantum/command",
+      "phase": "staging",
+      "status": "reconciled",
+      "chargedUpperUSD": 0.010187499999999988
+    },
+    {
+      "id": "bab2d36f-9bdc-4fad-afaa-cdf42246b3a1",
+      "path": "/research",
+      "phase": "staging",
+      "status": "reconciled",
+      "chargedUpperUSD": 0.13926250000000007
+    },
+    {
+      "id": "6d97c0cb-07b7-4e5b-8453-0022d16ff7c4",
+      "path": "/quantum/command",
+      "phase": "production",
+      "status": "reconciled",
+      "chargedUpperUSD": 0.010187499999999988
+    },
+    {
+      "id": "26e38bce-0481-4dcb-a8d9-9b182f74a983",
+      "path": "/research",
+      "phase": "production",
+      "status": "reconciled",
+      "chargedUpperUSD": 0.12868750000000007
+    },
+    {
+      "id": "c62580f0-0d0a-404e-92b5-704183fc921f",
+      "path": "/quantum/command",
+      "phase": "production",
+      "status": "reconciled",
+      "chargedUpperUSD": 0.011387499999999995
+    },
+    {
+      "id": "344ed378-8da1-4bf6-9412-ca2cac36d499",
+      "path": "/research",
+      "phase": "production",
+      "status": "reconciled",
+      "chargedUpperUSD": 0
+    }
+  ]
+}

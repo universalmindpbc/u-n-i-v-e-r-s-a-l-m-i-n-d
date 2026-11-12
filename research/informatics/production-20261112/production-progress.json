@@ -1,0 +1,537 @@
+{
+  "phase": "production",
+  "processAudioMuted": true,
+  "turns": [
+    {
+      "question": "In two sentences, can you use CUDA-Q CPU checks, and is that different from running on a physical quantum computer? Please explain access only; do not start a study.",
+      "answer": "UNIVERSAL ONE\nYes—I can use CUDA-Q for local CPU checks within supported workflows, including some that do not require portal login. These are classical simulations, not physical quantum runs; Aquila hardware runs require a reviewed plan and your explicit confirmation, and I’m not starting a study.",
+      "loggedIn": false,
+      "elapsedMs": 29218
+    }
+  ],
+  "requests": [
+    {
+      "path": "/quantum/command",
+      "status": 200,
+      "question": "In two sentences, can you use CUDA-Q CPU checks, and is that different from running on a physical quantum computer? Please explain access only; do not start a study.",
+      "portalHeaderPresent": false,
+      "response": {
+        "action": "research",
+        "question": "",
+        "provider_response_id": "resp_08989e15647c555c016af50ec9f8e887d1a13bd43897ade958",
+        "usage": {
+          "input_tokens": 735,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 20,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 755
+        },
+        "qaSpend": {
+          "limitUSD": 0.5,
+          "chargedUpperUSD": 0.010187499999999988,
+          "calls": [
+            {
+              "path": "/responses",
+              "model": "gpt-6-astra",
+              "inputTokenUpper": 12324,
+              "outputTokenUpper": 1400,
+              "boundMethod": "UTF-8 bytes plus framing",
+              "reservedUSD": 0.22405,
+              "chargedUpperUSD": 0.010187499999999999,
+              "usage": {
+                "input_tokens": 735,
+                "input_tokens_details": {
+                  "cache_write_tokens": 0,
+                  "cached_tokens": 0
+                },
+                "output_tokens": 20,
+                "output_tokens_details": {
+                  "reasoning_tokens": 0
+                },
+                "total_tokens": 755
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "path": "/research",
+      "status": 200,
+      "question": "In two sentences, can you use CUDA-Q CPU checks, and is that different from running on a physical quantum computer? Please explain access only; do not start a study.",
+      "portalHeaderPresent": false,
+      "response": {
+        "answer": "Yes—I can use CUDA-Q for local CPU checks within supported workflows, including some that do not require portal login. These are classical simulations, not physical quantum runs; Aquila hardware runs require a reviewed plan and your explicit confirmation, and I’m not starting a study.",
+        "sources": [],
+        "model": "gpt-6-astra",
+        "reasoning": "max",
+        "providerResponses": [
+          {
+            "id": "resp_08326649a6e1d10b016af50eccc65487d180ef6595f567c561",
+            "requestedReasoning": "max",
+            "providerReasoning": "max",
+            "status": "completed"
+          }
+        ],
+        "version": "research-20261026-daytab-v1",
+        "knowledgeVersions": {
+          "approvedYouth": {
+            "sourceBatch": "batch-f164c8325ea5f9c9.json",
+            "sourceSHA256": "f164c8325ea5f9c989c29524518b598913508117712826dc408f592b7f99a723",
+            "approvedAt": "2026-11-02",
+            "publications": 105
+          },
+          "biofeedback": {
+            "version": "lab-biofeedback-20261105-ratings",
+            "publications": 63
+          },
+          "publicGenes": "public-gene-data-20261109-v1",
+          "literature": "literature-20261110-v2"
+        },
+        "usage": {
+          "totalTokens": 7013,
+          "qaSpend": {
+            "limitUSD": 1.405075000000001,
+            "chargedUpperUSD": 0.12868750000000007,
+            "calls": [
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 40532,
+                "outputTokenUpper": 16384,
+                "boundMethod": "UTF-8 bytes plus framing",
+                "reservedUSD": 1.32585,
+                "chargedUpperUSD": 0.1286875,
+                "usage": {
+                  "input_tokens": 5919,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 5916,
+                    "cached_tokens": 0
+                  },
+                  "output_tokens": 1094,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 1034
+                  },
+                  "total_tokens": 7013
+                }
+              }
+            ]
+          }
+        },
+        "retrieval": {
+          "required": true,
+          "sourceCount": 1,
+          "contextMessages": 0,
+          "previousReferences": 0
+        }
+      }
+    },
+    {
+      "path": "/quantum/command",
+      "status": 200,
+      "question": "Now that I have signed in, did the CUDA-Q connection change, and is my funded study access verified? Nothing needs to run.",
+      "portalHeaderPresent": false,
+      "response": {
+        "action": "research",
+        "question": "",
+        "provider_response_id": "resp_06a71df666a36d53016af50ee5f07087d1879a34f887402f86",
+        "usage": {
+          "input_tokens": 831,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 20,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 851
+        },
+        "qaSpend": {
+          "limitUSD": 0.5,
+          "chargedUpperUSD": 0.011387499999999995,
+          "calls": [
+            {
+              "path": "/responses",
+              "model": "gpt-6-astra",
+              "inputTokenUpper": 12813,
+              "outputTokenUpper": 1400,
+              "boundMethod": "UTF-8 bytes plus framing",
+              "reservedUSD": 0.23016250000000002,
+              "chargedUpperUSD": 0.011387499999999998,
+              "usage": {
+                "input_tokens": 831,
+                "input_tokens_details": {
+                  "cache_write_tokens": 0,
+                  "cached_tokens": 0
+                },
+                "output_tokens": 20,
+                "output_tokens_details": {
+                  "reasoning_tokens": 0
+                },
+                "total_tokens": 851
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "path": "/research",
+      "status": 422,
+      "question": "Now that I have signed in, did the CUDA-Q connection change, and is my funded study access verified? Nothing needs to run.",
+      "portalHeaderPresent": true,
+      "response": {
+        "error": "QA spending guard stopped before another paid request.",
+        "qaSpend": {
+          "limitUSD": 1.265000000000001,
+          "chargedUpperUSD": 0,
+          "calls": [],
+          "blocked": {
+            "path": "/responses",
+            "inputTokenUpper": 41167,
+            "outputTokenUpper": 16384,
+            "reservedUSD": 1.3337875000000001,
+            "boundMethod": "UTF-8 bytes plus framing"
+          }
+        }
+      }
+    }
+  ],
+  "portalChecks": [
+    {
+      "status": 200,
+      "authenticated": false,
+      "credit": 0,
+      "available": true,
+      "poolRemainingUSD": 100,
+      "hasStudy": false
+    },
+    {
+      "status": 200,
+      "authenticated": true,
+      "credit": 1,
+      "available": true,
+      "poolRemainingUSD": 100,
+      "hasStudy": false
+    }
+  ],
+  "errors": [],
+  "blockedMutations": [],
+  "hardwareJobs": 0,
+  "gpuJobs": 0,
+  "servedAssets": [
+    {
+      "url": "https://universalmind.tv/informatics/science.css?v=qrc-15",
+      "status": 200,
+      "sha256": "3b1dc08557873620e70bbce2ad13d4f9526971fcefaeb7e49e3b8216b1f7808f",
+      "matched": true
+    },
+    {
+      "url": "https://universalmind.tv/informatics/universal-one.css?v=9",
+      "status": 200,
+      "sha256": "89afff1e41f8505b9d8db9f6e7ebd5a3d7f33c78d80c0d430f1d394a15446eb1",
+      "matched": true
+    },
+    {
+      "url": "https://universalmind.tv/informatics/library-launcher.css?v=4",
+      "status": 200,
+      "sha256": "2d230e7215cc10c868765d9050a5173d405d9ba343300116e512339bc682bdf9",
+      "matched": true
+    },
+    {
+      "url": "https://universalmind.tv/informatics/music-measurement.css?v=1",
+      "status": 200,
+      "sha256": "7543aabb560b07d18b6e966898f6c01097598f4775224b46e6c027cffbe8eb02",
+      "matched": true
+    },
+    {
+      "url": "https://universalmind.tv/informatics/page-markers.css?v=1",
+      "status": 200,
+      "sha256": "9a3d6808a97551225776eb2e80543651f4e5aecefb93ac5b74f63fd90ad5b03a",
+      "matched": true
+    },
+    {
+      "url": "https://universalmind.tv/informatics/molecular-entry.css?v=2",
+      "status": 200,
+      "sha256": "34e92170839e6613cd71325b857b5b3762fb6334f20bc9fae97a9d4fd2e18bd7",
+      "matched": true
+    },
+    {
+      "url": "https://universalmind.tv/informatics/shared-experience.css?v=1",
+      "status": 200,
+      "sha256": "c01069c6af3910971cf562666e86c6c2f7eb31074410656ef337808c20070b3c",
+      "matched": true
+    },
+    {
+      "url": "https://universalmind.tv/informatics/atlas.css?v=d89bcbd76042",
+      "status": 200,
+      "sha256": "d89bcbd76042385effb726577cdd97ed39b55ecdfb18c376690fca1e13e9ccce",
+      "matched": true
+    },
+    {
+      "url": "https://universalmind.tv/informatics/vision-science.css?v=1",
+      "status": 200,
+      "sha256": "8e241c43ae881a9c238ceeacead33064180f29d58669fef485d28c61409d9d14",
+      "matched": true
+    },
+    {
+      "url": "https://universalmind.tv/informatics/quantum-entry.css?v=1",
+      "status": 200,
+      "sha256": "111d9abb033000754bc1f23a18504a86743aac1a7d5f6733a9ce5a436d3fd851",
+      "matched": true
+    },
+    {
+      "url": "https://universalmind.tv/informatics/style.css?v=ai-wiki-20261026-1",
+      "status": 200,
+      "sha256": "25f3d5261da342d64fefb27a8418abee0c71bf174a8f459b29dbceb77766b332",
+      "matched": true
+    },
+    {
+      "url": "https://universalmind.tv/informatics/universal-one-live.js?v=quantum-20261109",
+      "status": 200,
+      "sha256": "aa42dd713823f05009e68cd43b8263d3a2f6b7a52a255df7ab93b4a272e10e83",
+      "matched": true
+    },
+    {
+      "url": "https://universalmind.tv/informatics/music-measurement.js?v=1",
+      "status": 200,
+      "sha256": "ca00e88ac12a729ec40e1bf2f6976e4eba38c5e3dbe4979739cc653748ca9e4c",
+      "matched": true
+    },
+    {
+      "url": "https://universalmind.tv/informatics/molecular-entry.js?v=00e18f6dc370",
+      "status": 200,
+      "sha256": "00e18f6dc370305dfb32bd3ea7db672289f1e67d00c458125ee1298239ace2ae",
+      "matched": true
+    },
+    {
+      "url": "https://universalmind.tv/informatics/universal-one-character.js?v=1",
+      "status": 200,
+      "sha256": "2840af3f8bb86465920540171971d8409f50aab6c0377f08d6ed854999375b31",
+      "matched": true
+    },
+    {
+      "url": "https://universalmind.tv/informatics/library-launcher.js?v=8",
+      "status": 200,
+      "sha256": "7701719bf40ba81e9e21b791f6ae02ceff5f8023e76250b340a51fd9674f22a9",
+      "matched": true
+    },
+    {
+      "url": "https://universalmind.tv/informatics/global-navigation.js?v=4493d996184a",
+      "status": 200,
+      "sha256": "4493d996184ac5a539d93cd2ea924a7cc309f0250ede87979bc23f3ada2e84f2",
+      "matched": true
+    },
+    {
+      "url": "https://universalmind.tv/informatics/universal-one-audio.js?v=2",
+      "status": 200,
+      "sha256": "38bae647336cc4d8543d2cf37802ef237238bc2ebadf64c96622cec519b6ca79",
+      "matched": true
+    },
+    {
+      "url": "https://universalmind.tv/informatics/universal-one-waveform.js?v=research-input-20261109",
+      "status": 200,
+      "sha256": "edc471ab2576bd46bc9743c3bb4c1485a869720c65dd52d3e852417e9109660d",
+      "matched": true
+    },
+    {
+      "url": "https://universalmind.tv/informatics/shared-experience.js?v=8a71ef2585d2",
+      "status": 200,
+      "sha256": "8a71ef2585d220ec6677c3fdcd87ccf15d9a495d9f475a0c87d388dc816ef437",
+      "matched": true
+    },
+    {
+      "url": "https://universalmind.tv/informatics/record-navigation.js?v=1",
+      "status": 200,
+      "sha256": "07058c2083567bd181e1adafcd6ead3d3782f519825b783ff634e268e51bd856",
+      "matched": true
+    },
+    {
+      "url": "https://universalmind.tv/informatics/science.js?v=27",
+      "status": 200,
+      "sha256": "3844b867a860e26cb0bc3113470759d4c49eee886f2d6591376dbf78516b3945",
+      "matched": true
+    },
+    {
+      "url": "https://universalmind.tv/informatics/vision-science.js?v=2",
+      "status": 200,
+      "sha256": "d3995b1d01eb19eb0152bb5af0e4cfb7c65c2c902bf683181deeb04fd6e71d5f",
+      "matched": true
+    },
+    {
+      "url": "https://universalmind.tv/informatics/universal-one-quantum.js?v=conversation-max-20261110",
+      "status": 200,
+      "sha256": "199e303b2a6fccc306f69535aed234a4776c992199a2308ef3cca96d2fdabb23",
+      "matched": true
+    },
+    {
+      "url": "https://universalmind.tv/informatics/science-studies.js?v=3",
+      "status": 200,
+      "sha256": "039949e3f67211f2f49228bc96f22d92780a970627fbf5fc0b8f46343cdb030d",
+      "matched": true
+    },
+    {
+      "url": "https://universalmind.tv/informatics/quantum-entry.js?v=6a90d8c53d2d",
+      "status": 200,
+      "sha256": "6a90d8c53d2dc52b3e4c137324ed022f7934a4617f409831e0d4c519840f58c8",
+      "matched": true
+    },
+    {
+      "url": "https://universalmind.tv/informatics/universal-one.js?v=conversation-max-20261110",
+      "status": 200,
+      "sha256": "0f83cccc5b443783928a4fe505d871af7fffa3ffce350d07c4510a163f2cdf53",
+      "matched": true
+    },
+    {
+      "url": "https://universalmind.tv/informatics/atlas-visuals.js?v=7",
+      "status": 200,
+      "sha256": "72ebebbb51ad51b094ec5072e051885fdf134ccd51bf0a9bc73ba9dfddbb5235",
+      "matched": true
+    },
+    {
+      "url": "https://universalmind.tv/informatics/landing.js?v=4",
+      "status": 200,
+      "sha256": "e488cf6baced5117dbd78b14031111dd350acec19ee87b495bddcd7a63edf939",
+      "matched": true
+    },
+    {
+      "url": "https://universalmind.tv/informatics/app.js?v=conversation-links-20261109",
+      "status": 200,
+      "sha256": "0983ea83bba24b97d70a8625f2015388c6ef4087770a11d525fffa31322690bd",
+      "matched": true
+    },
+    {
+      "url": "https://universalmind.tv/informatics/universal-one-routing.js?v=3",
+      "status": 200,
+      "sha256": "a45e3a5787e18b1b84e8c82ac7c304a2a959323e1c7b0ef449c92663c8730308",
+      "matched": true
+    },
+    {
+      "url": "https://universalmind.tv/informatics/universal-one-context.js?v=3",
+      "status": 200,
+      "sha256": "b6c7c3be31c13cbba82a1da5cb39d13e513313b46273e4c28dd856edb1488464",
+      "matched": true
+    },
+    {
+      "url": "https://universalmind.tv/informatics/shared-shell-route.js?v=1",
+      "status": 200,
+      "sha256": "6ecfcf7fc994a6a036e38cc426e3c5c2493c5c1f1e816df47f1198375f8f30b6",
+      "matched": true
+    },
+    {
+      "url": "https://universalmind.tv/informatics/quantum/biology.js?v=production-20261112",
+      "status": 200,
+      "sha256": "05c5cc9d3dd93d93ea05ae2d0b367d4ffe69e37f303466641b01f670f1efe610",
+      "matched": true
+    },
+    {
+      "url": "https://universalmind.tv/informatics/quantum/reading-theme.css?v=1",
+      "status": 200,
+      "sha256": "ed4b94399a59d31ccc75e66c1500d5f7273a3c3b5a19fde67a93890c5b619c38",
+      "matched": true
+    },
+    {
+      "url": "https://universalmind.tv/informatics/quantum/scientific-review.css?v=research-input-20261109",
+      "status": 200,
+      "sha256": "668e9ce6f4c2d4d45d396ca303ac8d465b7a56f8d59bb81209e7e541dd1d44b8",
+      "matched": true
+    },
+    {
+      "url": "https://universalmind.tv/informatics/quantum/reading-theme.js?v=1",
+      "status": 200,
+      "sha256": "23cbedf355f4aca351cb3797f66a98d7df6137f307d46f24c26962b009209904",
+      "matched": true
+    },
+    {
+      "url": "https://universalmind.tv/informatics/quantum/reading/links.css",
+      "status": 200,
+      "sha256": "64c041baff03db22377e2865d0682d786c858d70ed4fb89c50d0a12b28ff4680",
+      "matched": true
+    },
+    {
+      "url": "https://universalmind.tv/informatics/quantum/biology.css?v=research-input-20261109",
+      "status": 200,
+      "sha256": "8d6cf164bbc2f030f32eeca93cb143659edab5bb9018f9551d29efe68ea742d9",
+      "matched": true
+    },
+    {
+      "url": "https://universalmind.tv/informatics/quantum/portal.js?v=production-20261112",
+      "status": 200,
+      "sha256": "56fceaec74ba2d786ff0332bf2eb1dc5f04eaa98a14bffe2cb7e6da95b6aeeef",
+      "matched": true
+    },
+    {
+      "url": "https://universalmind.tv/informatics/quantum/conversation.js?v=chat-format-20261110",
+      "status": 200,
+      "sha256": "fe269b71f405778deef63da025252dbbcf478bda60f077a8e6955eb91bcaf799",
+      "matched": true
+    },
+    {
+      "url": "https://universalmind.tv/informatics/quantum/response-view.js?v=6",
+      "status": 200,
+      "sha256": "110f9c7dce539f61c13fb88132dabadafdea02363c4dca0b660283d7aa7abde1",
+      "matched": true
+    },
+    {
+      "url": "https://universalmind.tv/informatics/quantum/delivery.js?v=email-reader-20261109",
+      "status": 200,
+      "sha256": "96908cd3a53b8be930f70b14a377c71bf19931f5ac0eb3384b877d665b983360",
+      "matched": true
+    },
+    {
+      "url": "https://universalmind.tv/informatics/quantum/agent.js?v=portal-demo-20261109",
+      "status": 200,
+      "sha256": "1ea80dcf3e4da1f0a06a8a19d3667eebfdc14e7b9510941a13f03354ac932e22",
+      "matched": true
+    },
+    {
+      "url": "https://universalmind.tv/informatics/quantum/result-contract.js?v=2",
+      "status": 200,
+      "sha256": "2cf8be883a6da7b14213d813ee349125b4733367a7e1544d736f14fd16106180",
+      "matched": true
+    },
+    {
+      "url": "https://universalmind.tv/informatics/quantum/study.js?v=production-1",
+      "status": 200,
+      "sha256": "3f0bc61c9d7404e737e1638917b5b65b960778d9db53fcc79041d7685d47352d",
+      "matched": true
+    },
+    {
+      "url": "https://universalmind.tv/informatics/quantum/hypothesis.js?v=1",
+      "status": 200,
+      "sha256": "11bcf4afab33943cfa6f5d40aa644089d16b1a7f7875f910cc503a4a2abec063",
+      "matched": true
+    },
+    {
+      "url": "https://universalmind.tv/informatics/quantum/insights.js?v=production-1",
+      "status": 200,
+      "sha256": "f8fef1570bd08c683f2b7d320e3b5b9d7972d24d750873a047c25fe4dd57ae87",
+      "matched": true
+    },
+    {
+      "url": "https://universalmind.tv/informatics/quantum/study-progress.js?v=4",
+      "status": 200,
+      "sha256": "5a5fb5007f3837ee79b4f0e606fe05b5bec04983838839c888f94bd17780cefa",
+      "matched": true
+    },
+    {
+      "url": "https://universalmind.tv/informatics/quantum/scientific-review.js?v=live-3",
+      "status": 200,
+      "sha256": "36122cd98b6f4a42eed29b8d84689599fb9a0b1e2f9fb07c373ab0ec3deb86ec",
+      "matched": true
+    },
+    {
+      "url": "https://universalmind.tv/informatics/quantum/agent.js?v=production-1",
+      "status": 200,
+      "sha256": "1ea80dcf3e4da1f0a06a8a19d3667eebfdc14e7b9510941a13f03354ac932e22",
+      "matched": true
+    }
+  ],
+  "portalStatus": "1 funded study available."
+}

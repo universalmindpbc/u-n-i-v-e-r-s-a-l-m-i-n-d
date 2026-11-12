@@ -17,7 +17,9 @@ $file=$private.'/study-mail-'.$data['eventId'].'.json';$handle=@fopen($file,'c+'
 if(!$handle||!flock($handle,LOCK_EX))respond(['error'=>'Notification storage unavailable.'],503);
 @chmod($file,0600);$record=json_decode(stream_get_contents($handle),true);
 if(($record['accepted']??false)===true){flock($handle,LOCK_UN);fclose($handle);respond(['accepted'=>true]);}
-$link='https://'.$host.'/informatics/quantum/#study='.$data['studyId'].'&result='.$data['token'];
+$resultOrigin=$data['resultOrigin']??'https://'.$host;
+if(!in_array($resultOrigin,['https://staging.universalmind.tv','https://universalmind.tv'],true))respond(['error'=>'Invalid results destination.'],400);
+$link=$resultOrigin.'/informatics/quantum/#study='.$data['studyId'].'&result='.$data['token'];
 $message="Your Quantum Agents findings are ready.\n\nRead your study:\n".$link."\n\nThis private, read-only link expires in 30 days. Anyone with the link can read this study.\n\nYou requested this notification on Universal Informatics. No new study is started by opening the link.\n\nUniversal Informatics\nhttps://universalmind.tv/informatics/\n";
 $accepted=@mail($data['email'],'Your Quantum Agents findings are ready',$message,['From'=>'Universal Informatics <notifications@universalmind.tv>','Content-Type'=>'text/plain; charset=UTF-8','MIME-Version'=>'1.0','Message-ID'=>'<'.$data['eventId'].'@universalmind.tv>']);
 if($accepted){rewind($handle);ftruncate($handle,0);fwrite($handle,json_encode(['accepted'=>true,'at'=>gmdate('c')]));fflush($handle);}

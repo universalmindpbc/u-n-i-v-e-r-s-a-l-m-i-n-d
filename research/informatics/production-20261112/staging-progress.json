@@ -1,0 +1,133 @@
+{
+  "phase": "staging",
+  "processAudioMuted": true,
+  "turns": [],
+  "requests": [
+    {
+      "path": "/quantum/command",
+      "status": 200,
+      "question": "In two sentences, can you use CUDA-Q CPU checks, and is that different from running on a physical quantum computer? Please explain access only; do not start a study.",
+      "portalHeaderPresent": false,
+      "response": {
+        "action": "research",
+        "question": "",
+        "provider_response_id": "resp_0ab3a2d711e85358016af50c4e02c487d18ccb921badb0517f",
+        "usage": {
+          "input_tokens": 735,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 20,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 755
+        },
+        "qaSpend": {
+          "limitUSD": 0.5,
+          "chargedUpperUSD": 0.010187499999999988,
+          "calls": [
+            {
+              "path": "/responses",
+              "model": "gpt-6-astra",
+              "inputTokenUpper": 12324,
+              "outputTokenUpper": 1400,
+              "boundMethod": "UTF-8 bytes plus framing",
+              "reservedUSD": 0.22405,
+              "chargedUpperUSD": 0.010187499999999999,
+              "usage": {
+                "input_tokens": 735,
+                "input_tokens_details": {
+                  "cache_write_tokens": 0,
+                  "cached_tokens": 0
+                },
+                "output_tokens": 20,
+                "output_tokens_details": {
+                  "reasoning_tokens": 0
+                },
+                "total_tokens": 755
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "path": "/research",
+      "status": 200,
+      "question": "In two sentences, can you use CUDA-Q CPU checks, and is that different from running on a physical quantum computer? Please explain access only; do not start a study.",
+      "portalHeaderPresent": false,
+      "response": {
+        "answer": "Yes—I can use CUDA-Q for local CPU simulation checks in supported workflows, including some that do not require portal login. Physical quantum runs on QuEra Aquila are separate and require portal access via **Password** beside Dictate and Voice, a reviewed plan and your explicit confirmation; I’m not starting a study.",
+        "sources": [],
+        "model": "gpt-6-astra",
+        "reasoning": "max",
+        "providerResponses": [
+          {
+            "id": "resp_0bde6510093a63c1016af50c5299dc87d196e6f204712d377e",
+            "requestedReasoning": "max",
+            "providerReasoning": "max",
+            "status": "completed"
+          }
+        ],
+        "version": "research-20261026-daytab-v1",
+        "knowledgeVersions": {
+          "approvedYouth": {
+            "sourceBatch": "batch-f164c8325ea5f9c9.json",
+            "sourceSHA256": "f164c8325ea5f9c989c29524518b598913508117712826dc408f592b7f99a723",
+            "approvedAt": "2026-11-02",
+            "publications": 105
+          },
+          "biofeedback": {
+            "version": "lab-biofeedback-20261105-ratings",
+            "publications": 63
+          },
+          "publicGenes": "public-gene-data-20261109-v1",
+          "literature": "literature-20261110-v2"
+        },
+        "usage": {
+          "totalTokens": 7238,
+          "qaSpend": {
+            "limitUSD": 1.5545250000000008,
+            "chargedUpperUSD": 0.13926250000000007,
+            "calls": [
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 40580,
+                "outputTokenUpper": 16384,
+                "boundMethod": "UTF-8 bytes plus framing",
+                "reservedUSD": 1.32645,
+                "chargedUpperUSD": 0.1392625,
+                "usage": {
+                  "input_tokens": 5937,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 5934,
+                    "cached_tokens": 0
+                  },
+                  "output_tokens": 1301,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 1232
+                  },
+                  "total_tokens": 7238
+                }
+              }
+            ]
+          }
+        },
+        "retrieval": {
+          "required": true,
+          "sourceCount": 1,
+          "contextMessages": 0,
+          "previousReferences": 0
+        }
+      }
+    }
+  ],
+  "portalChecks": [],
+  "errors": [],
+  "blockedMutations": [],
+  "hardwareJobs": 0,
+  "gpuJobs": 0
+}

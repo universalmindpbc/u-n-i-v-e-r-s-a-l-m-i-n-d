@@ -25,7 +25,7 @@ export async function settleLiteratureAgent(storage,{reservation,chargedUSD}){
 export async function perplexityResearch(env,args,context={}){
  if(env.PERPLEXITY_AGENT_ENABLED!=='true'||!env.PERPLEXITY_API_KEY)return {status:'not_configured',message:'The optional research agent is not active.'};
  if(typeof args.query!=='string'||args.query.trim().length<5||args.query.length>1000||typeof args.reason!=='string'||args.reason.trim().length<10)return {status:'invalid_query',message:'Provide a focused question and the unresolved evidence gap.'};
- const guard=await env.BUDGET.get(env.BUDGET.idFromName('literature-agent-v1')).fetch('https://budget/literature-agent',{method:'POST',body:JSON.stringify({literatureAgent:true})});
+ const guard=await (env.SHARED_RESEARCH_BUDGET||env.BUDGET).get((env.SHARED_RESEARCH_BUDGET||env.BUDGET).idFromName('literature-agent-v1')).fetch('https://budget/literature-agent',{method:'POST',body:JSON.stringify({literatureAgent:true})});
  const reservation=await guard.json();if(!reservation.allowed)return {status:'allowance_unavailable',message:'The optional research-agent allowance is unavailable. Continue with the public literature tools.'};
  const input=[{type:'message',role:'user',content:JSON.stringify({query:args.query,reason:args.reason,existingEvidence:JSON.stringify(context).slice(0,10000)})}];
  const deadline=Date.now()+60000;
@@ -66,7 +66,7 @@ export async function perplexityResearch(env,args,context={}){
  const existingPapers=(Array.isArray(context)?context:[context]).flatMap(r=>r.papers||r.results||(r.paper?[r.paper]:[]));
  const papers=[...new Map([...existingPapers,...records.flatMap(r=>r.result.papers||r.result.results||(r.result.paper?[r.result.paper]:[]))].filter(p=>p.url).map(p=>[p.url,p])).values()].slice(0,12);
  const chargedUpperUSD=calls.reduce((sum,c)=>{const u=c.usage,known=Number.isFinite(u?.input_tokens)&&Number.isFinite(u?.output_tokens)&&u.input_tokens>=0&&u.output_tokens>=0;return sum+(known?Math.max(u.input_tokens*5/1e6+u.output_tokens*20/1e6,Number(u.cost?.total_cost)||0):c.reservedUSD);},0);
- let settlement;try{settlement=await(await env.BUDGET.get(env.BUDGET.idFromName('literature-agent-v1')).fetch('https://budget/literature-agent',{method:'POST',body:JSON.stringify({literatureAgentSettle:{reservation:reservation.reservation,chargedUSD:chargedUpperUSD}})})).json();}catch{settlement={settled:false};}
+ let settlement;try{settlement=await(await (env.SHARED_RESEARCH_BUDGET||env.BUDGET).get((env.SHARED_RESEARCH_BUDGET||env.BUDGET).idFromName('literature-agent-v1')).fetch('https://budget/literature-agent',{method:'POST',body:JSON.stringify({literatureAgentSettle:{reservation:reservation.reservation,chargedUSD:chargedUpperUSD}})})).json();}catch{settlement={settled:false};}
  return {status,provider:'Perplexity Agent API',model:literatureAgentModel,query:args.query,reason:args.reason,answer,receipt:{...receipt(),chargedUpperUSD,settlement},papers,records,interpretation:'An AI-generated literature brief for Astra and Gemini to assess against its original sources. This is not independent experimental confirmation. Uncertain calls retain their budget reservation.'};
 }
 

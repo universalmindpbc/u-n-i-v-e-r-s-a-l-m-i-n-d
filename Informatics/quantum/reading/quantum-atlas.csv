@@ -586,7 +586,7 @@ path,type,value
 /agent_architecture/implementation_sources,array,40
 /agent_architecture/implementation_sources/0,object,
 /agent_architecture/implementation_sources/0/repository_path,string,Informatics/quantum/index.html
-/agent_architecture/implementation_sources/0/sha256,string,5f27c3fd0c622f5d9793cc8c405d9e963f223f1e351066470e8e2e5791426b9b
+/agent_architecture/implementation_sources/0/sha256,string,cce1a9c8fac3347153a8d35b6223e4412ec19067406e911fb0ecc2b7bc134864
 /agent_architecture/implementation_sources/0/scope,string,Original primary-page source with generated reading blocks removed
 /agent_architecture/implementation_sources/1,object,
 /agent_architecture/implementation_sources/1/repository_path,string,Informatics/quantum/study.js
@@ -598,7 +598,7 @@ path,type,value
 /agent_architecture/implementation_sources/2/scope,string,Implementation source
 /agent_architecture/implementation_sources/3,object,
 /agent_architecture/implementation_sources/3/repository_path,string,Informatics/quantum/biology.js
-/agent_architecture/implementation_sources/3/sha256,string,42ac40ad12b26e467c3296190ce91a365473c2df15be81a37a15fa3ca0ac4ebd
+/agent_architecture/implementation_sources/3/sha256,string,05c5cc9d3dd93d93ea05ae2d0b367d4ffe69e37f303466641b01f670f1efe610
 /agent_architecture/implementation_sources/3/scope,string,Implementation source
 /agent_architecture/implementation_sources/4,object,
 /agent_architecture/implementation_sources/4/repository_path,string,Informatics/quantum/scientific-review.js
@@ -622,7 +622,7 @@ path,type,value
 /agent_architecture/implementation_sources/8/scope,string,Implementation source
 /agent_architecture/implementation_sources/9,object,
 /agent_architecture/implementation_sources/9/repository_path,string,cloudflare/informatics-astra.js
-/agent_architecture/implementation_sources/9/sha256,string,ddcd7cdab4acc208070ec814e270229692cfa258596f87d740a2cc4e4b9b5a4e
+/agent_architecture/implementation_sources/9/sha256,string,097e6cf44b6c719ff9ad36d6af764957843f98ddf4d2fd71e35cc624e040322f
 /agent_architecture/implementation_sources/9/scope,string,Implementation source
 /agent_architecture/implementation_sources/10,object,
 /agent_architecture/implementation_sources/10/repository_path,string,cloudflare/informatics-astra-memory.js
@@ -682,23 +682,23 @@ path,type,value
 /agent_architecture/implementation_sources/23/scope,string,Implementation source
 /agent_architecture/implementation_sources/24,object,
 /agent_architecture/implementation_sources/24/repository_path,string,Informatics/api/study-email.php
-/agent_architecture/implementation_sources/24/sha256,string,cb7018e9dfcd872b44cbf484d5bf901bac5e3b6cce8bd41d294a0fd3cbe67aeb
+/agent_architecture/implementation_sources/24/sha256,string,ee5d300dcb17ddb850f35f7033e21a54584581af4ed31af4efbcaee04a513654
 /agent_architecture/implementation_sources/24/scope,string,Implementation source
 /agent_architecture/implementation_sources/25,object,
 /agent_architecture/implementation_sources/25/repository_path,string,cloudflare/informatics-study-email.js
-/agent_architecture/implementation_sources/25/sha256,string,5a09dee8ed4b2ab3bd417d89090074d056ba13084ee3e563447d77fadbba441d
+/agent_architecture/implementation_sources/25/sha256,string,6dc138c667efbbba54b133f8efd311a6df9a6303d1078cd671e6a93e9ae3ddf1
 /agent_architecture/implementation_sources/25/scope,string,Implementation source
 /agent_architecture/implementation_sources/26,object,
 /agent_architecture/implementation_sources/26/repository_path,string,Informatics/quantum/portal.js
-/agent_architecture/implementation_sources/26/sha256,string,9731cb1bf1ef95707104a70018cfa777be4d4dcd27030c7c81b2fe3d5e1b62b5
+/agent_architecture/implementation_sources/26/sha256,string,56fceaec74ba2d786ff0332bf2eb1dc5f04eaa98a14bffe2cb7e6da95b6aeeef
 /agent_architecture/implementation_sources/26/scope,string,Implementation source
 /agent_architecture/implementation_sources/27,object,
 /agent_architecture/implementation_sources/27/repository_path,string,Informatics/api/quantum-portal.php
-/agent_architecture/implementation_sources/27/sha256,string,9a4d5179ebc099f74491f79330fbf3e95eb94e5822ffe9cb6aa7fadb15fc9700
+/agent_architecture/implementation_sources/27/sha256,string,333efb49e7971f50ec1cd37282eccdbddea9dcce444edc43bbef8c684508f2aa
 /agent_architecture/implementation_sources/27/scope,string,Implementation source
 /agent_architecture/implementation_sources/28,object,
 /agent_architecture/implementation_sources/28/repository_path,string,cloudflare/informatics-quantum-demo.js
-/agent_architecture/implementation_sources/28/sha256,string,8b283c37685adc7d73cb1e8363d17a24785b8efc4f45b36a05efcd937ba86154
+/agent_architecture/implementation_sources/28/sha256,string,ef6501f7fb93a39170e723fd2d336d73bfcbdf47e5e7cb77705e88afb71473bd
 /agent_architecture/implementation_sources/28/scope,string,Implementation source
 /agent_architecture/implementation_sources/29,object,
 /agent_architecture/implementation_sources/29/repository_path,string,research/informatics/portal-demo-20261109/worker.py
@@ -726,11 +726,11 @@ path,type,value
 /agent_architecture/implementation_sources/34/scope,string,Implementation source
 /agent_architecture/implementation_sources/35,object,
 /agent_architecture/implementation_sources/35/repository_path,string,cloudflare/informatics-literature-fallback.js
-/agent_architecture/implementation_sources/35/sha256,string,4196468c3b86a49243f673f0a92af4a27192eba20ed1cad12bd99e81c2ee9d96
+/agent_architecture/implementation_sources/35/sha256,string,b40482962359ec85b265bf1fe11baed242734085d68009d8f4a21dd14d1a5c7e
 /agent_architecture/implementation_sources/35/scope,string,Implementation source
 /agent_architecture/implementation_sources/36,object,
 /agent_architecture/implementation_sources/36/repository_path,string,cloudflare/informatics-research-worker.js
-/agent_architecture/implementation_sources/36/sha256,string,5689501d4001ccf319890fb8ae2d48c02ac89ba039c4324eb20fe0eecd94e066
+/agent_architecture/implementation_sources/36/sha256,string,faecfeeb3b93e7c312ae653b415b63b394b4e569925799fd94945216c6683218
 /agent_architecture/implementation_sources/36/scope,string,Implementation source
 /agent_architecture/implementation_sources/37,object,
 /agent_architecture/implementation_sources/37/repository_path,string,research/informatics/portal-demo-20261109/research_context.py
@@ -738,7 +738,7 @@ path,type,value
 /agent_architecture/implementation_sources/37/scope,string,Implementation source
 /agent_architecture/implementation_sources/38,object,
 /agent_architecture/implementation_sources/38/repository_path,string,cloudflare/informatics-literature-agent.js
-/agent_architecture/implementation_sources/38/sha256,string,3a107afec1ea8a953387f3ea6d80c67e56b518a3cfcb81b7390fdb15f36ab9fb
+/agent_architecture/implementation_sources/38/sha256,string,87916a7ed3db347e102b077627b7294a8f6275c851550addbd3f0eda9790cb1d
 /agent_architecture/implementation_sources/38/scope,string,Implementation source
 /agent_architecture/implementation_sources/39,object,
 /agent_architecture/implementation_sources/39/repository_path,string,Informatics/quantum/scientific-review.css

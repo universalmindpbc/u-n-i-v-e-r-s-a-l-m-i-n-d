@@ -5,7 +5,7 @@ header('Cache-Control: no-store');
 header('X-Content-Type-Options: nosniff');
 function portal_reply(array $data,int $status=200): never {http_response_code($status);echo json_encode($data);exit;}
 $host=strtolower(explode(':',$_SERVER['HTTP_HOST']??'')[0]);
-if($host!=='staging.universalmind.tv')portal_reply(['error'=>'Portal experiments are available on staging.'],404);
+if(!in_array($host,['staging.universalmind.tv','universalmind.tv'],true))portal_reply(['error'=>'Portal access is unavailable on this host.'],404);
 if(($_SERVER['REQUEST_METHOD']??'')!=='POST'||($_SERVER['HTTP_ORIGIN']??'')!=='https://'.$host)portal_reply(['error'=>'Open portal access on Quantum Atlas.'],403);
 $root=rtrim($_SERVER['DOCUMENT_ROOT'],'/');$private=$root.'/vogue/iam/api/.runtime-private';
 $config=json_decode((string)@file_get_contents($private.'/informatics-astra.json'),true);

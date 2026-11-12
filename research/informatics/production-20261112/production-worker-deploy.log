@@ -1,0 +1,30 @@
+
+ ⛅️ wrangler 4.152.0 (update available 4.160.1)
+───────────────────────────────────────────────
+Total Upload: 12938.08 KiB / gzip: 1253.68 KiB
+Worker Startup Time: 32 ms
+Your Worker has access to the following bindings:
+Binding                                                                                                  Resource                  
+env.BUDGET (ResearchBudget)                                                                              Durable Object            
+env.SHARED_RESEARCH_BUDGET (ResearchBudget, defined in informatics-universal-one-staging)                Durable Object            
+env.CONNECTOR_LIMIT (120 requests/60s)                                                                   Rate Limit                
+env.REQUEST_LIMIT (12 requests/60s)                                                                      Rate Limit                
+env.ALLOWED_ORIGIN ("https://universalmind.tv")                                                          Environment Variable      
+env.RESEARCH_MODEL ("gpt-6-astra")                                                                       Environment Variable      
+env.DATASET_VERSION ("research-20261026-daytab-v1")                                                      Environment Variable      
+env.CONNECTORS_ENABLED ("true")                                                                          Environment Variable      
+env.QUANTUM_PLANNING_ENABLED ("true")                                                                    Environment Variable      
+env.ASTRA_ENABLED ("true")                                                                               Environment Variable      
+env.ASTRA_MODEL_TOKEN_LIMIT ("64000")                                                                    Environment Variable      
+env.RESEARCH_REASONING_EFFORT ("max")                                                                    Environment Variable      
+env.QUANTUM_DEMO_ENABLED ("true")                                                                        Environment Variable      
+env.LIVE_LITERATURE_ENABLED ("true")                                                                     Environment Variable      
+env.PERPLEXITY_ENABLED ("true")                                                                          Environment Variable      
+env.PERPLEXITY_TOTAL_LIMIT_USD ("1")                                                                     Environment Variable      
+env.PERPLEXITY_AGENT_ENABLED ("true")                                                                    Environment Variable      
+env.PERPLEXITY_AGENT_TOTAL_LIMIT_USD ("3")                                                               Environment Variable      
+
+Uploaded informatics-universal-one (11.11 sec)
+Deployed informatics-universal-one triggers (0.65 sec)
+  https://informatics-universal-one.universalmind.workers.dev
+Current Version ID: 2b65b164-2b7b-418a-89e0-76d960fd7cfe

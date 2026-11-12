@@ -1,0 +1,29 @@
+
+ ⛅️ wrangler 4.152.0 (update available 4.160.1)
+───────────────────────────────────────────────
+Total Upload: 12938.08 KiB / gzip: 1253.68 KiB
+Worker Startup Time: 30 ms
+Your Worker has access to the following bindings:
+Binding                                                                        Resource                  
+env.BUDGET (ResearchBudget)                                                    Durable Object            
+env.CONNECTOR_LIMIT (120 requests/60s)                                         Rate Limit                
+env.REQUEST_LIMIT (12 requests/60s)                                            Rate Limit                
+env.ALLOWED_ORIGIN ("https://staging.universalmind.tv")                        Environment Variable      
+env.RESEARCH_MODEL ("gpt-6-astra")                                             Environment Variable      
+env.RESEARCH_REASONING_EFFORT ("max")                                          Environment Variable      
+env.DATASET_VERSION ("research-20261026-daytab-v1")                            Environment Variable      
+env.CONNECTORS_ENABLED ("true")                                                Environment Variable      
+env.QUANTUM_PLANNING_ENABLED ("true")                                          Environment Variable      
+env.ASTRA_ENABLED ("true")                                                     Environment Variable      
+env.ASTRA_MODEL_TOKEN_LIMIT ("64000")                                          Environment Variable      
+env.QUANTUM_DEMO_ENABLED ("true")                                              Environment Variable      
+env.LIVE_LITERATURE_ENABLED ("true")                                           Environment Variable      
+env.PERPLEXITY_ENABLED ("true")                                                Environment Variable      
+env.PERPLEXITY_TOTAL_LIMIT_USD ("1")                                           Environment Variable      
+env.PERPLEXITY_AGENT_ENABLED ("true")                                          Environment Variable      
+env.PERPLEXITY_AGENT_TOTAL_LIMIT_USD ("3")                                     Environment Variable      
+
+Uploaded informatics-universal-one-staging (9.83 sec)
+Deployed informatics-universal-one-staging triggers (0.73 sec)
+  https://informatics-universal-one-staging.universalmind.workers.dev
+Current Version ID: af3063e2-3cfc-4d92-9dae-5c2b7eea1cfc

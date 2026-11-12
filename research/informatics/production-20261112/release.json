@@ -1,0 +1,59 @@
+{
+  "approvedBy": "Ben",
+  "approval": "Hi GPT, please push Informatics to production. Thanks and Namaste.",
+  "approvalDate": "2026-11-12",
+  "approvedStagingCommit": "d791d9ca487371512851868fa0b1078f47ae58ed",
+  "previousProductionCommit": "02b6f47345e428021dcae8fd4a798ecdfb03969b",
+  "sourceCommit": "ff6a0eeafd417fa1ef8a1aecb60c9f5c113b8d5b",
+  "productionURL": "https://universalmind.tv/informatics/",
+  "quantumURL": "https://universalmind.tv/informatics/quantum/",
+  "stagingURL": "https://staging.universalmind.tv/informatics/quantum/",
+  "stagingWorkerVersion": "af3063e2-3cfc-4d92-9dae-5c2b7eea1cfc",
+  "productionWorkerVersion": "2b65b164-2b7b-418a-89e0-76d960fd7cfe",
+  "datasetVersion": "c89db84a19508685ef94ce1e38adb2e1673788929ca37c9502f24166b094ccce",
+  "datasetSources": 1198,
+  "completeFormatsVerified": [
+    "json",
+    "csv"
+  ],
+  "productionUploads": 129,
+  "stagingUploads": 30,
+  "liveHTTPHashMatches": 126,
+  "exactVersionedBrowserAssetMatches": 51,
+  "productionChat": {
+    "generatedReplyRendered": true,
+    "reasoning": "max",
+    "providerResponses": [
+      {
+        "id": "resp_08326649a6e1d10b016af50eccc65487d180ef6595f567c561",
+        "requestedReasoning": "max",
+        "providerReasoning": "max",
+        "status": "completed"
+      }
+    ]
+  },
+  "portalAuthenticated": true,
+  "sharedDemoPoolUSD": 100,
+  "remainingDemoPoolUSD": 100,
+  "backgroundModes": [
+    "black",
+    "white",
+    "video"
+  ],
+  "mobileOverflow": false,
+  "openAIQAApprovedUSD": 5,
+  "openAIQATotalUpperUSD": 3.734999999999999,
+  "hardwareJobsLaunched": 0,
+  "gpuJobsLaunched": 0,
+  "newStudiesLaunched": 0,
+  "limits": [
+    "One live production Astra Max reply verified end to end. A second logged-in reply was stopped by the remaining QA reservation ceiling before a provider request; authenticated portal state was verified separately. Earlier staging multi-turn verification remains in conversation-max-20261110.",
+    "Dedicated muted Chromium verified desktop and mobile dimensions. No microphone, Safari control or audible playback.",
+    "No new paid Perplexity, GPU or quantum study was run for this promotion. Existing Search and Opus accounting is shared with staging."
+  ],
+  "scopeExclusions": [
+    "Concurrent Universal Mind Lab and root Wiki edits",
+    "Historical staging-only complete export copies; retained in Git history; no existing remote archive was removed"
+  ],
+  "passed": true
+}

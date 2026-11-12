@@ -6,7 +6,7 @@ export async function notifyStudy(storage,env){
  for(const {id} of index.tasks){
   const task=await storage.get('study:'+id),n=task?.notification;
   if(!n||task.status!=='complete'||!['waiting','retrying'].includes(n.state)||n.nextAttempt>Date.now())continue;
-  const body=JSON.stringify({purpose:'quantum-study-ready-v1',eventId:n.eventId,studyId:id,email:n.email,token:n.token,expires:n.expires,timestamp:Math.floor(Date.now()/1000)});
+  const body=JSON.stringify({purpose:'quantum-study-ready-v1',resultOrigin:n.resultOrigin||env.ALLOWED_ORIGIN,eventId:n.eventId,studyId:id,email:n.email,token:n.token,expires:n.expires,timestamp:Math.floor(Date.now()/1000)});
   let accepted=false;
   try{
    const key=await crypto.subtle.importKey('raw',new TextEncoder().encode(env.ASTRA_SESSION_SECRET),{name:'HMAC',hash:'SHA-256'},false,['sign']);

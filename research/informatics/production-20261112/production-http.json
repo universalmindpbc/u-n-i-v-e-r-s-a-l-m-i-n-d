@@ -1,0 +1,1268 @@
+{
+  "passed": true,
+  "phase": "production",
+  "datasetVersion": "c89db84a19508685ef94ce1e38adb2e1673788929ca37c9502f24166b094ccce",
+  "files": [
+    {
+      "file": "Informatics/app.js",
+      "bytes": 19384,
+      "status": 200,
+      "sha256": "0983ea83bba24b97d70a8625f2015388c6ef4087770a11d525fffa31322690bd",
+      "servedSHA256": "0983ea83bba24b97d70a8625f2015388c6ef4087770a11d525fffa31322690bd",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "MISS"
+    },
+    {
+      "file": "Informatics/atlas-guides/computer-vision-atlas.csv",
+      "bytes": 2825,
+      "status": 200,
+      "sha256": "84d8fecba85c310ea9120e3a7fa6c4d2323c6e0989b3822e77a6bab254ec11f2",
+      "servedSHA256": "84d8fecba85c310ea9120e3a7fa6c4d2323c6e0989b3822e77a6bab254ec11f2",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "MISS"
+    },
+    {
+      "file": "Informatics/atlas-guides/computer-vision-atlas.json",
+      "bytes": 2448,
+      "status": 200,
+      "sha256": "576dfd992588581c398ea98eedbb555efea914ee9659e247c86510f9be6daa51",
+      "servedSHA256": "576dfd992588581c398ea98eedbb555efea914ee9659e247c86510f9be6daa51",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/atlas-guides/computer-vision-atlas.md",
+      "bytes": 1841,
+      "status": 200,
+      "sha256": "1ba4d5f7f04ee326dd6673667088c534d6d5bd7782bc0aed28e3c665b223a831",
+      "servedSHA256": "1ba4d5f7f04ee326dd6673667088c534d6d5bd7782bc0aed28e3c665b223a831",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/atlas-guides/geometry-atlas.csv",
+      "bytes": 10539626,
+      "status": 200,
+      "sha256": "555a581c3ca270449686dc878afd66f659fa9e9dc63898591eb6904428fe3e2c",
+      "servedSHA256": "555a581c3ca270449686dc878afd66f659fa9e9dc63898591eb6904428fe3e2c",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "MISS"
+    },
+    {
+      "file": "Informatics/atlas-guides/geometry-atlas.json",
+      "bytes": 9308014,
+      "status": 200,
+      "sha256": "50b61e2708e364a700b1161be89e5fecfd137966e22822423143293a1b111c49",
+      "servedSHA256": "50b61e2708e364a700b1161be89e5fecfd137966e22822423143293a1b111c49",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/atlas-guides/geometry-atlas.md",
+      "bytes": 9204044,
+      "status": 200,
+      "sha256": "a8834421fc0ecffb4acf3f0cef7397041214def6a648b0204e33398ce9a09df2",
+      "servedSHA256": "a8834421fc0ecffb4acf3f0cef7397041214def6a648b0204e33398ce9a09df2",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/atlas-guides/language-atlas.csv",
+      "bytes": 3171,
+      "status": 200,
+      "sha256": "aab1b76429dd560f05969f5e4a30a213850ae04225b386784ebd77dab3051ef1",
+      "servedSHA256": "aab1b76429dd560f05969f5e4a30a213850ae04225b386784ebd77dab3051ef1",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "MISS"
+    },
+    {
+      "file": "Informatics/atlas-guides/language-atlas.json",
+      "bytes": 2593,
+      "status": 200,
+      "sha256": "8b73970b689e9c15e2f74f8cfb9890aa47a03d6999c57088ec6f582d4dcfeaa5",
+      "servedSHA256": "8b73970b689e9c15e2f74f8cfb9890aa47a03d6999c57088ec6f582d4dcfeaa5",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/atlas-guides/language-atlas.md",
+      "bytes": 1759,
+      "status": 200,
+      "sha256": "79a49a90eebc1da0802091b83f253c35fd0a9ce8e5d5871adf40dfa8369899a8",
+      "servedSHA256": "79a49a90eebc1da0802091b83f253c35fd0a9ce8e5d5871adf40dfa8369899a8",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/atlas-guides/vision-atlas.csv",
+      "bytes": 10724,
+      "status": 200,
+      "sha256": "574af9c0b90e940f5e74f3bb3963c89e46ab2f5cba86167f93157ae5038f64dc",
+      "servedSHA256": "574af9c0b90e940f5e74f3bb3963c89e46ab2f5cba86167f93157ae5038f64dc",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "MISS"
+    },
+    {
+      "file": "Informatics/atlas-guides/vision-atlas.json",
+      "bytes": 8770,
+      "status": 200,
+      "sha256": "38fc896d247f7b2064b179299ebc6202a72e394826b222c0188d5efd149da026",
+      "servedSHA256": "38fc896d247f7b2064b179299ebc6202a72e394826b222c0188d5efd149da026",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/atlas-guides/vision-atlas.md",
+      "bytes": 6176,
+      "status": 200,
+      "sha256": "d9c513cdadc40ec5bccb885ac81d3cb654389619fb712844dd52d3326cd80762",
+      "servedSHA256": "d9c513cdadc40ec5bccb885ac81d3cb654389619fb712844dd52d3326cd80762",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/e8.css",
+      "bytes": 3992,
+      "status": 200,
+      "sha256": "fe6f648a5a61d0b1a3db7d24fb17aa68d0b096ebe6107abd67bfc05b271bc351",
+      "servedSHA256": "fe6f648a5a61d0b1a3db7d24fb17aa68d0b096ebe6107abd67bfc05b271bc351",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "MISS"
+    },
+    {
+      "file": "Informatics/e8.js",
+      "bytes": 10639,
+      "status": 200,
+      "sha256": "e367582a319155692d21c56c2c0597883354d40efc16316e5f387a49cb309dc6",
+      "servedSHA256": "e367582a319155692d21c56c2c0597883354d40efc16316e5f387a49cb309dc6",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "MISS"
+    },
+    {
+      "file": "Informatics/library-data/masked-language-expansion.json",
+      "bytes": 242194,
+      "status": 200,
+      "sha256": "9255e5121593d09ea0989b039428ec65a4d33e813b527e394fb673b0a0ecb550",
+      "servedSHA256": "9255e5121593d09ea0989b039428ec65a4d33e813b527e394fb673b0a0ecb550",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/library-data/masked-language-register.csv",
+      "bytes": 25726,
+      "status": 200,
+      "sha256": "c8f5d8c676ffe20d523567878ac1b56a050d58001dedcbefa811a8be38acfecf",
+      "servedSHA256": "c8f5d8c676ffe20d523567878ac1b56a050d58001dedcbefa811a8be38acfecf",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "MISS"
+    },
+    {
+      "file": "Informatics/library-model.js",
+      "bytes": 5855,
+      "status": 200,
+      "sha256": "3fe8ac5ff0b61e4348e5de0808e2f7956329df489b51ccf18a3f0163e00b376e",
+      "servedSHA256": "3fe8ac5ff0b61e4348e5de0808e2f7956329df489b51ccf18a3f0163e00b376e",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "MISS"
+    },
+    {
+      "file": "Informatics/library.css",
+      "bytes": 33116,
+      "status": 200,
+      "sha256": "a65e479b81a3673ef4c99059e1b7531db02e5700519cbe2905612103ba4a5462",
+      "servedSHA256": "a65e479b81a3673ef4c99059e1b7531db02e5700519cbe2905612103ba4a5462",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "MISS"
+    },
+    {
+      "file": "Informatics/library.js",
+      "bytes": 59150,
+      "status": 200,
+      "sha256": "32eaf4a9d7108abffb8fc3cf7f66cd2213f5183f9d6d92ac5aa887567a7900e0",
+      "servedSHA256": "32eaf4a9d7108abffb8fc3cf7f66cd2213f5183f9d6d92ac5aa887567a7900e0",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "MISS"
+    },
+    {
+      "file": "Informatics/llms.txt",
+      "bytes": 7473,
+      "status": 200,
+      "sha256": "e010a9bb2b37dbae51e5641183805614aa0f1acfbdf636d10432815f81f0a06a",
+      "servedSHA256": "e010a9bb2b37dbae51e5641183805614aa0f1acfbdf636d10432815f81f0a06a",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/pilot-v1/M1-M1001-CSV-README.txt",
+      "bytes": 4946,
+      "status": 200,
+      "sha256": "61095096bc519d4af88bd58990786e2b97f2085424d2454936aa0a6300a8227d",
+      "servedSHA256": "61095096bc519d4af88bd58990786e2b97f2085424d2454936aa0a6300a8227d",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/pilot-v1/M1-M1001-README.txt",
+      "bytes": 3619,
+      "status": 200,
+      "sha256": "9b00deacbc8bde4c9cf525caba71b7fffa425749f533b6e7396fadd1d0828a1d",
+      "servedSHA256": "9b00deacbc8bde4c9cf525caba71b7fffa425749f533b6e7396fadd1d0828a1d",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/pilot-v1/csv-records/m9.csv",
+      "bytes": 211226,
+      "status": 200,
+      "sha256": "a2d73c0a03188db589dd86acea143f43636550588043bfb0c9337aa182e8ad34",
+      "servedSHA256": "a2d73c0a03188db589dd86acea143f43636550588043bfb0c9337aa182e8ad34",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "MISS"
+    },
+    {
+      "file": "Informatics/pilot-v1/csv-shared/dataset.csv",
+      "bytes": 557770,
+      "status": 200,
+      "sha256": "ab78911801d5e89d51d68f797392ea4e507170d651f1724ee22f48d2759bd2ac",
+      "servedSHA256": "ab78911801d5e89d51d68f797392ea4e507170d651f1724ee22f48d2759bd2ac",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "MISS"
+    },
+    {
+      "file": "Informatics/pilot-v1/csv-shared/e8-m9-p24.csv",
+      "bytes": 66354,
+      "status": 200,
+      "sha256": "d139aa969caaac51b4793b8453c26b0d27878b51d007893629fc027a39791b9a",
+      "servedSHA256": "d139aa969caaac51b4793b8453c26b0d27878b51d007893629fc027a39791b9a",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "MISS"
+    },
+    {
+      "file": "Informatics/pilot-v1/csv-shared/index.csv",
+      "bytes": 423938,
+      "status": 200,
+      "sha256": "3a053b4242a4500bf516ea625ec932abdf3bda0cd2e1df18158e1c2378e5ab91",
+      "servedSHA256": "3a053b4242a4500bf516ea625ec932abdf3bda0cd2e1df18158e1c2378e5ab91",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "MISS"
+    },
+    {
+      "file": "Informatics/pilot-v1/csv-shared/m1-m1001.csv",
+      "bytes": 557770,
+      "status": 200,
+      "sha256": "ab78911801d5e89d51d68f797392ea4e507170d651f1724ee22f48d2759bd2ac",
+      "servedSHA256": "ab78911801d5e89d51d68f797392ea4e507170d651f1724ee22f48d2759bd2ac",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "MISS"
+    },
+    {
+      "file": "Informatics/pilot-v1/dataset.json",
+      "bytes": 267914,
+      "status": 200,
+      "sha256": "2c217f87bb29aa36285f2c74463a833a5a21afbeca711fdaff5b7c9892d86a1f",
+      "servedSHA256": "2c217f87bb29aa36285f2c74463a833a5a21afbeca711fdaff5b7c9892d86a1f",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/pilot-v1/e8-m9-p24.json",
+      "bytes": 34645,
+      "status": 200,
+      "sha256": "7205620a169193e400ad3ccb983c34ba902f7650551163b30d27cdf4ffbea570",
+      "servedSHA256": "7205620a169193e400ad3ccb983c34ba902f7650551163b30d27cdf4ffbea570",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/pilot-v1/family.js",
+      "bytes": 7221,
+      "status": 200,
+      "sha256": "df111cb7828e53a75c08bd671b54a51aff8e102f3cb8b257ff0571cc9ed2067f",
+      "servedSHA256": "df111cb7828e53a75c08bd671b54a51aff8e102f3cb8b257ff0571cc9ed2067f",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "MISS"
+    },
+    {
+      "file": "Informatics/pilot-v1/index.json",
+      "bytes": 215826,
+      "status": 200,
+      "sha256": "31329d27da1824f59b08fe1b43ab35e621afde4c902c9a5fd3032efc3c92dfd9",
+      "servedSHA256": "31329d27da1824f59b08fe1b43ab35e621afde4c902c9a5fd3032efc3c92dfd9",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/pilot-v1/m1-m1001-csv.zip",
+      "bytes": 86948488,
+      "status": 200,
+      "sha256": "847bc36e4d6c041fef1eabca64387c8ed4784541319aabd9797d639b8c3ad7fa",
+      "servedSHA256": "847bc36e4d6c041fef1eabca64387c8ed4784541319aabd9797d639b8c3ad7fa",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "MISS"
+    },
+    {
+      "file": "Informatics/pilot-v1/m1-m1001-data.zip",
+      "bytes": 59640000,
+      "status": 200,
+      "sha256": "d862d86d27b03440c6aa933fbcdcc79cb070a9578b83060096af18ef3567537e",
+      "servedSHA256": "d862d86d27b03440c6aa933fbcdcc79cb070a9578b83060096af18ef3567537e",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "MISS"
+    },
+    {
+      "file": "Informatics/pilot-v1/m1-m1001.csv",
+      "bytes": 3986657,
+      "status": 200,
+      "sha256": "72f37fe255c9cad9e547d0f0b7c7a055f77ecd75016008b76ddefec6d259e1b8",
+      "servedSHA256": "72f37fe255c9cad9e547d0f0b7c7a055f77ecd75016008b76ddefec6d259e1b8",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "MISS"
+    },
+    {
+      "file": "Informatics/pilot-v1/m1-m1001.json",
+      "bytes": 267914,
+      "status": 200,
+      "sha256": "2c217f87bb29aa36285f2c74463a833a5a21afbeca711fdaff5b7c9892d86a1f",
+      "servedSHA256": "2c217f87bb29aa36285f2c74463a833a5a21afbeca711fdaff5b7c9892d86a1f",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/pilot-v1/m9.json",
+      "bytes": 205702,
+      "status": 200,
+      "sha256": "fe100c70433b4dc0f6f640b75e5a9306f3a27dcdaccfff8207ca1e1618ba81f6",
+      "servedSHA256": "fe100c70433b4dc0f6f640b75e5a9306f3a27dcdaccfff8207ca1e1618ba81f6",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/quantum/agent.js",
+      "bytes": 11352,
+      "status": 200,
+      "sha256": "1ea80dcf3e4da1f0a06a8a19d3667eebfdc14e7b9510941a13f03354ac932e22",
+      "servedSHA256": "1ea80dcf3e4da1f0a06a8a19d3667eebfdc14e7b9510941a13f03354ac932e22",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "MISS"
+    },
+    {
+      "file": "Informatics/quantum/biology.css",
+      "bytes": 58967,
+      "status": 200,
+      "sha256": "8d6cf164bbc2f030f32eeca93cb143659edab5bb9018f9551d29efe68ea742d9",
+      "servedSHA256": "8d6cf164bbc2f030f32eeca93cb143659edab5bb9018f9551d29efe68ea742d9",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "MISS"
+    },
+    {
+      "file": "Informatics/quantum/biology.js",
+      "bytes": 25913,
+      "status": 200,
+      "sha256": "05c5cc9d3dd93d93ea05ae2d0b367d4ffe69e37f303466641b01f670f1efe610",
+      "servedSHA256": "05c5cc9d3dd93d93ea05ae2d0b367d4ffe69e37f303466641b01f670f1efe610",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "MISS"
+    },
+    {
+      "file": "Informatics/quantum/conversation.js",
+      "bytes": 6334,
+      "status": 200,
+      "sha256": "fe269b71f405778deef63da025252dbbcf478bda60f077a8e6955eb91bcaf799",
+      "servedSHA256": "fe269b71f405778deef63da025252dbbcf478bda60f077a8e6955eb91bcaf799",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "MISS"
+    },
+    {
+      "file": "Informatics/quantum/delivery.js",
+      "bytes": 5034,
+      "status": 200,
+      "sha256": "96908cd3a53b8be930f70b14a377c71bf19931f5ac0eb3384b877d665b983360",
+      "servedSHA256": "96908cd3a53b8be930f70b14a377c71bf19931f5ac0eb3384b877d665b983360",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "MISS"
+    },
+    {
+      "file": "Informatics/quantum/portal.js",
+      "bytes": 8420,
+      "status": 200,
+      "sha256": "56fceaec74ba2d786ff0332bf2eb1dc5f04eaa98a14bffe2cb7e6da95b6aeeef",
+      "servedSHA256": "56fceaec74ba2d786ff0332bf2eb1dc5f04eaa98a14bffe2cb7e6da95b6aeeef",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "MISS"
+    },
+    {
+      "file": "Informatics/quantum/reading-theme.css",
+      "bytes": 7257,
+      "status": 200,
+      "sha256": "ed4b94399a59d31ccc75e66c1500d5f7273a3c3b5a19fde67a93890c5b619c38",
+      "servedSHA256": "ed4b94399a59d31ccc75e66c1500d5f7273a3c3b5a19fde67a93890c5b619c38",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "MISS"
+    },
+    {
+      "file": "Informatics/quantum/reading-theme.js",
+      "bytes": 1701,
+      "status": 200,
+      "sha256": "23cbedf355f4aca351cb3797f66a98d7df6137f307d46f24c26962b009209904",
+      "servedSHA256": "23cbedf355f4aca351cb3797f66a98d7df6137f307d46f24c26962b009209904",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "MISS"
+    },
+    {
+      "file": "Informatics/quantum/reading/quantum-atlas.csv",
+      "bytes": 694613,
+      "status": 200,
+      "sha256": "56ccdb181dc82db75e831e3ca8a74b3814e9e7697d105934541e91303d5d8c1d",
+      "servedSHA256": "56ccdb181dc82db75e831e3ca8a74b3814e9e7697d105934541e91303d5d8c1d",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "MISS"
+    },
+    {
+      "file": "Informatics/quantum/reading/quantum-atlas.json",
+      "bytes": 335298,
+      "status": 200,
+      "sha256": "5586623b250f881066549f0ae28122401c304465187279777a31e8a16bc471da",
+      "servedSHA256": "5586623b250f881066549f0ae28122401c304465187279777a31e8a16bc471da",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/quantum/reading/quantum-atlas.md",
+      "bytes": 379740,
+      "status": 200,
+      "sha256": "a6cf161740e11b0ce2bd6af5cb10101e0036d845ee00d9760940d6ec4bd20715",
+      "servedSHA256": "a6cf161740e11b0ce2bd6af5cb10101e0036d845ee00d9760940d6ec4bd20715",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/quantum/scientific-review.css",
+      "bytes": 5199,
+      "status": 200,
+      "sha256": "668e9ce6f4c2d4d45d396ca303ac8d465b7a56f8d59bb81209e7e541dd1d44b8",
+      "servedSHA256": "668e9ce6f4c2d4d45d396ca303ac8d465b7a56f8d59bb81209e7e541dd1d44b8",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "MISS"
+    },
+    {
+      "file": "Informatics/research.js",
+      "bytes": 21603,
+      "status": 200,
+      "sha256": "f19fdd8ae872501abd7701ea9b3ed4eefff58f556dd9129050c9a0355fd1b2cd",
+      "servedSHA256": "f19fdd8ae872501abd7701ea9b3ed4eefff58f556dd9129050c9a0355fd1b2cd",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "MISS"
+    },
+    {
+      "file": "Informatics/universal-one-context.js",
+      "bytes": 4081,
+      "status": 200,
+      "sha256": "b6c7c3be31c13cbba82a1da5cb39d13e513313b46273e4c28dd856edb1488464",
+      "servedSHA256": "b6c7c3be31c13cbba82a1da5cb39d13e513313b46273e4c28dd856edb1488464",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "MISS"
+    },
+    {
+      "file": "Informatics/universal-one-live.js",
+      "bytes": 11842,
+      "status": 200,
+      "sha256": "aa42dd713823f05009e68cd43b8263d3a2f6b7a52a255df7ab93b4a272e10e83",
+      "servedSHA256": "aa42dd713823f05009e68cd43b8263d3a2f6b7a52a255df7ab93b4a272e10e83",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "MISS"
+    },
+    {
+      "file": "Informatics/universal-one-quantum.js",
+      "bytes": 2993,
+      "status": 200,
+      "sha256": "199e303b2a6fccc306f69535aed234a4776c992199a2308ef3cca96d2fdabb23",
+      "servedSHA256": "199e303b2a6fccc306f69535aed234a4776c992199a2308ef3cca96d2fdabb23",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "MISS"
+    },
+    {
+      "file": "Informatics/universal-one-waveform.js",
+      "bytes": 4801,
+      "status": 200,
+      "sha256": "edc471ab2576bd46bc9743c3bb4c1485a869720c65dd52d3e852417e9109660d",
+      "servedSHA256": "edc471ab2576bd46bc9743c3bb4c1485a869720c65dd52d3e852417e9109660d",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "MISS"
+    },
+    {
+      "file": "Informatics/universal-one.js",
+      "bytes": 25657,
+      "status": 200,
+      "sha256": "0f83cccc5b443783928a4fe505d871af7fffa3ffce350d07c4510a163f2cdf53",
+      "servedSHA256": "0f83cccc5b443783928a4fe505d871af7fffa3ffce350d07c4510a163f2cdf53",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "MISS"
+    },
+    {
+      "file": "Informatics/exports/manifest.json",
+      "bytes": 2399216,
+      "status": 200,
+      "sha256": "a68d4d3471b1c64a5773d8970db0ac77143848cb9efa3ba0ad1a134bbf9c4274",
+      "servedSHA256": "a68d4d3471b1c64a5773d8970db0ac77143848cb9efa3ba0ad1a134bbf9c4274",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/exports/manifest-c89db84a19508685ef94ce1e38adb2e1673788929ca37c9502f24166b094ccce.json",
+      "bytes": 2399216,
+      "status": 200,
+      "sha256": "a68d4d3471b1c64a5773d8970db0ac77143848cb9efa3ba0ad1a134bbf9c4274",
+      "servedSHA256": "a68d4d3471b1c64a5773d8970db0ac77143848cb9efa3ba0ad1a134bbf9c4274",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/exports/part-426426181da0d2a1d150cabc8e64497f9460918861bf5af31d86248890592dc8.bin",
+      "bytes": 50331648,
+      "status": 200,
+      "sha256": "426426181da0d2a1d150cabc8e64497f9460918861bf5af31d86248890592dc8",
+      "servedSHA256": "426426181da0d2a1d150cabc8e64497f9460918861bf5af31d86248890592dc8",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "MISS"
+    },
+    {
+      "file": "Informatics/exports/part-2d07c5c1ea86d083bc96aeceab9a54aabe44aeda347227a4d748852f25588f41.bin",
+      "bytes": 31062785,
+      "status": 200,
+      "sha256": "2d07c5c1ea86d083bc96aeceab9a54aabe44aeda347227a4d748852f25588f41",
+      "servedSHA256": "2d07c5c1ea86d083bc96aeceab9a54aabe44aeda347227a4d748852f25588f41",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "MISS"
+    },
+    {
+      "file": "Informatics/exports/part-cdaa34f8195bb064708738f4a21c1c96b945dfb0d6c3bfc8667ea928f4118c20.bin",
+      "bytes": 50331648,
+      "status": 200,
+      "sha256": "cdaa34f8195bb064708738f4a21c1c96b945dfb0d6c3bfc8667ea928f4118c20",
+      "servedSHA256": "cdaa34f8195bb064708738f4a21c1c96b945dfb0d6c3bfc8667ea928f4118c20",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "MISS"
+    },
+    {
+      "file": "Informatics/exports/part-bb3e005a2e869cfbf66b93a1fe0b2189cf94829fdd3bdf778b0c8680e1bf5607.bin",
+      "bytes": 50331648,
+      "status": 200,
+      "sha256": "bb3e005a2e869cfbf66b93a1fe0b2189cf94829fdd3bdf778b0c8680e1bf5607",
+      "servedSHA256": "bb3e005a2e869cfbf66b93a1fe0b2189cf94829fdd3bdf778b0c8680e1bf5607",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "MISS"
+    },
+    {
+      "file": "Informatics/exports/part-a01eddc05f5240295d03aa552f77b180d521dd86c302625d6f3e3ca1df643f34.bin",
+      "bytes": 50331648,
+      "status": 200,
+      "sha256": "a01eddc05f5240295d03aa552f77b180d521dd86c302625d6f3e3ca1df643f34",
+      "servedSHA256": "a01eddc05f5240295d03aa552f77b180d521dd86c302625d6f3e3ca1df643f34",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "MISS"
+    },
+    {
+      "file": "Informatics/exports/part-3c12c9ffdae5d8b5fd944a28b6e13111276831b5a4091df1adf3dfe92153e84e.bin",
+      "bytes": 515161,
+      "status": 200,
+      "sha256": "3c12c9ffdae5d8b5fd944a28b6e13111276831b5a4091df1adf3dfe92153e84e",
+      "servedSHA256": "3c12c9ffdae5d8b5fd944a28b6e13111276831b5a4091df1adf3dfe92153e84e",
+      "normalizedKnownCloudflareInjection": false,
+      "matched": true,
+      "cache": "MISS"
+    },
+    {
+      "file": "Informatics/chapters/about.html",
+      "bytes": 38537,
+      "status": 200,
+      "sha256": "81e7af9f73c27c01dbace376b548a909819e0c9ce9ba4ababe198ead872de73d",
+      "servedSHA256": "324d5919b87cbd53f60c699e7ddd998d430124be3054cc941b45a806187d0faf",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/chapters/connect.html",
+      "bytes": 44534,
+      "status": 200,
+      "sha256": "f00b12a53a9f2d00f821997341b47f2e0ea7edc110e2bd7c56e25be022664905",
+      "servedSHA256": "85362871c75ee3ba3db608cead5c4e6bf3497b669c3e04ac874c0658bb8053d3",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/chapters/geometry.html",
+      "bytes": 8956255,
+      "status": 200,
+      "sha256": "e3372699f1cefda4555ae7301b06381ec693274f590b18f3985fd366ed5ba23b",
+      "servedSHA256": "dc34b4d0d36d4d178b6c1023d6d41aaa11d8b1cdc7086b7ddf27811c2696469c",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/chapters/language.html",
+      "bytes": 40658,
+      "status": 200,
+      "sha256": "68f4068c171f10b4caa88fa00b961f2e339c874b20d61c78557d8afe877a3c38",
+      "servedSHA256": "5d9db8c425286ee448a5daf1f15a6b874d8da7e941c2f4a1d4df07a732f8f6af",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/chapters/molecular.html",
+      "bytes": 173961,
+      "status": 200,
+      "sha256": "12c3a86b8e3ad64cdbb9753520d1fdb6ea2cbe118a45a4898b758add8230e7d8",
+      "servedSHA256": "1aa1b79c58b88d696f65c172a99ffaed0e7f06458f506454fa485e2ce0acc549",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/chapters/partners.html",
+      "bytes": 40338,
+      "status": 200,
+      "sha256": "9442b90bc35368bf57382772ef8591cc0fc39da14ca643fa2b7e863ab8689637",
+      "servedSHA256": "191428038861c558a18aa32e0c0729adcd1c826c39c1035db8ff16a12a260f63",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/chapters/quantum.html",
+      "bytes": 333424,
+      "status": 200,
+      "sha256": "51a5a7ae44bae158c6ed2f7625b6882c98dbf02362934c4767a9f4d1a3e45d18",
+      "servedSHA256": "4c20168eb9c498d3710eb0ea8e58275b3a1ff37532f5b1293224d3922a35f5b7",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/chapters/research.html",
+      "bytes": 68380,
+      "status": 200,
+      "sha256": "7b9e2d536048500e879896868bcf5bfd79a0595d338f4d2ed1a915dcc15322b0",
+      "servedSHA256": "69587fb3ede1072dd471513b05d6e4de5a508fd65f7dfc064ff59fd54a382174",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/chapters/sound.html",
+      "bytes": 88856,
+      "status": 200,
+      "sha256": "6f9b5e9f9d51b4e2cc39139da459cd51d41a158af2ac142227807321a718f88a",
+      "servedSHA256": "0387203612d19dd04116eb97329aba3fdcd8f58c0f162e5b5dae437debb4e248",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/chapters/transcription.html",
+      "bytes": 355504,
+      "status": 200,
+      "sha256": "df4567ce527c7e06d0cddc5cee7f8dc6b8441c101dadca49d9e023902ab75d89",
+      "servedSHA256": "09aa8727e26e9826e3df1dead99ee500361adb6008a8267b43a8ed3846662667",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/chapters/vision.html",
+      "bytes": 50751,
+      "status": 200,
+      "sha256": "2651c36a14601196a82b39cfac24c792b5a486ffbf0bb78e51d905ec32a6b63b",
+      "servedSHA256": "7371c689e27eee05023203244275a84601612e0b9703dcb299a1497ab40bd169",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/connect.html",
+      "bytes": 12224,
+      "status": 200,
+      "sha256": "c1b284b4c5fd6fe64587584b6624f86e672633565510282ae7151b9e4cd9c736",
+      "servedSHA256": "5184298702a71cd55e109dfdbf2eab5d33c34f8a071af756e9f6e3f6618c73af",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/index.html",
+      "bytes": 602271,
+      "status": 200,
+      "sha256": "ae67248e5c0ac863e79e230cb41d41f2aa25e35fa452e13661760c6e5a6cf107",
+      "servedSHA256": "20b19185c082a6c3d93f37854239f45902bd38cefb79a036925f360f9eadbe69",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/library.html",
+      "bytes": 35906,
+      "status": 200,
+      "sha256": "04c49c74b095c37dac5bb5fdf6f0b612108526e765f2868cbb453bf10e266e07",
+      "servedSHA256": "7aaf307ff62dc54785819c9b79adf1afd05e5c6723d1a5e2dcc3ef16d6d61ab3",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/quantum/index.html",
+      "bytes": 440402,
+      "status": 200,
+      "sha256": "eda359998c44df2d9acdd42b2ad3d49da796048ac8dbd43e0f14d8f1af7da33e",
+      "servedSHA256": "d5cd35bcbed51a80f189602d47de9749d7b1cc6178c9bde0aaf0af32f625d678",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/read/atlas/index.html",
+      "bytes": 62073,
+      "status": 200,
+      "sha256": "70e2ebf1a21c12a14417581af702f9ef5b28f7deb9e9f94a56ac1e2829990b66",
+      "servedSHA256": "4806fc69189a078eb9bc625eceaf6527bc76a3323d20d6e6971f24ad3e1275aa",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/read/atlas/m9.html",
+      "bytes": 108329,
+      "status": 200,
+      "sha256": "25a198276fc0816705732333fa74f3e2dc524bed4697fba3729b7d047b74d774",
+      "servedSHA256": "2fb4f53a5e016059835f4da55c90612d70e7a87886f545b3677b9df00839a5e0",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/read/computer-vision/index.html",
+      "bytes": 3805,
+      "status": 200,
+      "sha256": "90285665ba6ce7c96d83c1ed1f44f5cdfed3d2ce7c31338e29bb923b38684424",
+      "servedSHA256": "ec72ce17b618923013ddd6c6cd42c99a3ed5fe64f3cdabb27a5839dcb786c87d",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/read/data.html",
+      "bytes": 184431,
+      "status": 200,
+      "sha256": "abf2c2085adc59a3d74dd4d863e74d754c8a7ed6607d94dc9fc199c030525894",
+      "servedSHA256": "03f669dfed28f57243280c9a8b3f8773c4a669f60ea046be8d5d713b253281bf",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/read/index.html",
+      "bytes": 9382,
+      "status": 200,
+      "sha256": "2980223a4e4759321608a5d45ac4f278f4df07b0269225b7bca4824c0cc5f2ed",
+      "servedSHA256": "199ee01fea0949e6d837d6f3322662f75bd9a110ca14aed11c2f7d553c9a4ad9",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/read/language/index.html",
+      "bytes": 3403,
+      "status": 200,
+      "sha256": "5600e7b454961188e416a752681507ca199ac812ad4a5cf1aa7bdaec99a7e04c",
+      "servedSHA256": "3730352a861373137574bbc0631485dd72e6864f56d32fda529fef8f587f0d8d",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/read/publications/index.html",
+      "bytes": 357403,
+      "status": 200,
+      "sha256": "0f5a15012d40371d45330455b019155049a5b10bc54b3d44a53cee1d8ba07be6",
+      "servedSHA256": "def66f8eb47e3c86d41fff5d402ee208f6a06efd82b653a03e907df5108db6d8",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/read/publications/masked-language-aarabi2023-92a36c4e.html",
+      "bytes": 13967,
+      "status": 200,
+      "sha256": "3681afd1d60992a8191ae315c28c6e28f970dd49d90b8460d849ca6ce6b86b90",
+      "servedSHA256": "220c7764953e8d5ba5e522c233ef5cb4c4da2c1a3fe38c5c9b0d3a8670163447",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/read/publications/masked-language-beats2025-ad605e23.html",
+      "bytes": 12855,
+      "status": 200,
+      "sha256": "578c49324a97a4fa2f825e12d1f2352593fc1a7126f8063e30d56e4ae45094bb",
+      "servedSHA256": "a368ba361a7946aaaa768ec9f2768f42de922cdf3e384fa1a1ae12e4f82d74eb",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/read/publications/masked-language-brainfm-fd6763c1.html",
+      "bytes": 11324,
+      "status": 200,
+      "sha256": "433748c08cdcba747c4bfcd6f90ba09e92eb47ad6e1e7ddb39876c9a21b77d43",
+      "servedSHA256": "c1c3599e833c8bed9ebb70b95a58dfc28a9453945a1484e50c40605421596ebd",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/read/publications/masked-language-classification2019-d174397f.html",
+      "bytes": 12310,
+      "status": 200,
+      "sha256": "1081541b9d38f853ef7a7fd557f4340a5aa32c4f524023dd43584a7c5b603b08",
+      "servedSHA256": "bc49665b4eda181009cf489ebd261b28b2973505fe7f2321392422798082bda2",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/read/publications/masked-language-egermann2006-ecec7f32.html",
+      "bytes": 12374,
+      "status": 200,
+      "sha256": "9690c10ba1619426af63f7f861e283e024af56ac9c79a11d8583d3ca4de0a3a9",
+      "servedSHA256": "5fe074260e2427015e96f8f1000d5c9aabb1dbbd85f1e01f8324e3bd1a62e766",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/read/publications/masked-language-emotiv-64d664e7.html",
+      "bytes": 11525,
+      "status": 200,
+      "sha256": "688293b720f01b19d206bfe5aa89ac35637d78b31b4682730876c784e17698f2",
+      "servedSHA256": "868d73112316dcd11b95bbefad70cd4dc6232f774f12dfb393ebb51cb20c3379",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/read/publications/masked-language-funk2022-e6d8efc8.html",
+      "bytes": 12558,
+      "status": 200,
+      "sha256": "5c014b7e4d0e33640e2f44cdfd6d946da74d22de53c5cadb7afc78e90ce5c0a0",
+      "servedSHA256": "885e1fbe29ac463c7df2e64e1ada403d631cea6d8ff1ed87ce72b7249aa1e449",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/read/publications/masked-language-gao2019-024d01fd.html",
+      "bytes": 12700,
+      "status": 200,
+      "sha256": "22abb087e9f4abda864c9e649246609c21999f30d4c8c79177fadbf2e9b9a120",
+      "servedSHA256": "f16d5c8d30308dc98614c2a643da49a562c7dc46907709c6bf40044279975495",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/read/publications/masked-language-greenwald1991-2fbc942d.html",
+      "bytes": 13179,
+      "status": 200,
+      "sha256": "55b78eeb17949e2997830c65bf48a5324cc573fcd1a8cf7ac2bc203559aae10d",
+      "servedSHA256": "f2f87ccdd9576777f6d0f73c08986a66b802a61efee581df29ff320fb2338f6a",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/read/publications/masked-language-gutschalk2008-37c13e3b.html",
+      "bytes": 12640,
+      "status": 200,
+      "sha256": "b5febe90d21648e575c94c9ee6fddf6ca14c230334ca4ccc80c43bc1417757ab",
+      "servedSHA256": "546e4466b27a8c40c10ee977798cce9dc7c99d5b8a3bd6383fbb35b2a36f54b8",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/read/publications/masked-language-herrmann2025-c23a506d.html",
+      "bytes": 12125,
+      "status": 200,
+      "sha256": "24c6643f531899b3a78e83ffb401e05fe7143acc9e708aca25d9c434754fd3b7",
+      "servedSHA256": "578fcff46e91543f11a0702bead0326ffe62c5790183837a4e2dc3c66671cbeb",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/read/publications/masked-language-hung2020-9d05084b.html",
+      "bytes": 11833,
+      "status": 200,
+      "sha256": "dcddaa104b43f307a1d8ecf2757f5a89979d8cac9a5c741905ea10063f3c230a",
+      "servedSHA256": "aa1820680db8be3bdcaa9907c30bc0426b7c0e7a703ac36dd9eb192b681c7781",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/read/publications/masked-language-katlowitz2026-a2b37cee.html",
+      "bytes": 13989,
+      "status": 200,
+      "sha256": "4adaaa15a7802a34c8ce55ac8bdbc06dd2995442a9bffd2bd7283a0190ebed80",
+      "servedSHA256": "7542647a23d6745a030d234a01d8dfc293ef400b6624fd64681f9787d5926150",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/read/publications/masked-language-khalilpour2025-547a9019.html",
+      "bytes": 13157,
+      "status": 200,
+      "sha256": "e2be10c2abfbf83de71abf1bc21776e01e2f2c65add5b13424175e0830fa8c64",
+      "servedSHA256": "74805ef85e510ea9d4d4af5d68aca269f4d2804225018ca924d6d4620f5f1e74",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/read/publications/masked-language-leonard2016-7e3a824e.html",
+      "bytes": 12323,
+      "status": 200,
+      "sha256": "4c9ae26af20c11afd6f0f06d0dc83a6477827e7732ab7cb472aa0c9eeb03241d",
+      "servedSHA256": "0ec1d20a077d04dd15aa05ba8bfefbe8b692e82355a34bdc7aa991e24a9ffcac",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/read/publications/masked-language-meditation2015-45c26707.html",
+      "bytes": 12916,
+      "status": 200,
+      "sha256": "31dacd027052e5618ce29e0db47f1ea217eedb041115cb85ee8875e66b1fc939",
+      "servedSHA256": "fb5b00a4f508fec326e4f60a700456d84a2e494aff5f7742effe7b20da171eac",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/read/publications/masked-language-video-c8ac5bf6.html",
+      "bytes": 11634,
+      "status": 200,
+      "sha256": "80778123aed6890ff6308245b770d379330eefcbd4338c17e066a3772bc2a8f7",
+      "servedSHA256": "b7bc3bd3a82988d47a84840327ce6b7d8dbb1c1f0096f401cdaf6be4821a56ad",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/read/publications/masked-language-vieira2025-92dd07f2.html",
+      "bytes": 12495,
+      "status": 200,
+      "sha256": "5a19ff551b2840c598c709a3e825b6874b87b5dedb0622e817ab0b89b2c20305",
+      "servedSHA256": "45e49a039bcc1400c60b8c47ff8cdebdf592cda312f9b19a680847f4fd23c128",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/read/publications/masked-language-wahbeh2026-a6a648a1.html",
+      "bytes": 13613,
+      "status": 200,
+      "sha256": "7b3ad610c3bc647ebcaf4ff0a3fe7472e07c4793be9f03cf1fb2bd8c1edf1188",
+      "servedSHA256": "5c9bfa702403b414a9dde91cb5526158b9ede3a8ff31b0a2a56eb30b7069fb6a",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/read/publications/pmid-11751348-57e56a4b.html",
+      "bytes": 12509,
+      "status": 200,
+      "sha256": "7ff729320f64e5e5d76a80d370b6055787a480d3950781932f5ad6b2aec7bca5",
+      "servedSHA256": "e2e819fc72907c4cb96b81f1397e6884a5bc2e05d0395781fe0fbe8561a7f095",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/read/publications/pmid-1608733-20a39dc7.html",
+      "bytes": 12105,
+      "status": 200,
+      "sha256": "eb5c22196b74f756c37dbf8d6d52b1465591b51908d5da4c9e9956724dd338b5",
+      "servedSHA256": "d2cb493d61933e235002fd95cce6a8e41c37595c24473693df62e1b7ad88d237",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/read/publications/pmid-16102064-e0c44605.html",
+      "bytes": 11956,
+      "status": 200,
+      "sha256": "cd8bfa549cd71a7828153aa6d99a4c8ccee87ca10d9f0cdb77272b3d32c750b5",
+      "servedSHA256": "c3601a7179a5fa5b302d1f124b622881db69889b1aaca270a8cc14a79c4203fe",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/read/publications/pmid-19715763-cd7f5560.html",
+      "bytes": 14072,
+      "status": 200,
+      "sha256": "5ad0b28fd26a049f8e2df4c40f9f0360bf43a6d466547badd7e084fb43914287",
+      "servedSHA256": "ed5e9b3010c3a3b555b27aab53e24f5927304e2af9af28eba20053deea3616f1",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/read/publications/pmid-22001789-58fff819.html",
+      "bytes": 12752,
+      "status": 200,
+      "sha256": "41920a3107dff06015e82932cb4de97d6409be807187f717d2fefc9bfd34061f",
+      "servedSHA256": "115a84160262345de644d15a4c4fd29e535287e4ea6bcbf1190762d1ab539d95",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/read/publications/pmid-22407663-5be223b6.html",
+      "bytes": 13279,
+      "status": 200,
+      "sha256": "25dc3da7432a03ba5cf83b38e6c28b70f43e5e96968243c33e1453698cfd3162",
+      "servedSHA256": "cc4bca9d4cc2c6cbf76678071e110e90804d6977c036bdf14f7c4d85d353c770",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/read/publications/pmid-23847555-8f35a628.html",
+      "bytes": 14327,
+      "status": 200,
+      "sha256": "3c00289a213a0d7bb64a0cd50de7faf720b6555be041e49cd817b4a98cd97301",
+      "servedSHA256": "ed7bc3db09b9d1bec02b6834e42098571225ff35e33954320a143ba2fa93bf48",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/read/publications/pmid-2608414-09194b3a.html",
+      "bytes": 12634,
+      "status": 200,
+      "sha256": "e2ed2b97b4fd6bb9cbb7c007dac168f9d3d875b3d2140eb521f464cde5665c9b",
+      "servedSHA256": "2a962b74bddea773abc83df85351f13371238d8147e64efff49ac78240635b25",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/read/publications/pmid-28007033-4fbf7d96.html",
+      "bytes": 12966,
+      "status": 200,
+      "sha256": "aedd2c4a621786efea0e17f4ae6fa5738f656f0f66d5c9e31feb5d8dd2329177",
+      "servedSHA256": "53c657bae2f02b2f10ac8d8a4804eac68ced78b10fe3bf82d22e4aff1af719f4",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/read/publications/pmid-28119651-bf54d3aa.html",
+      "bytes": 13008,
+      "status": 200,
+      "sha256": "ec53aaacca34bf6b0f308b2d8103a655d0f166494f705be93bfc2978717770f9",
+      "servedSHA256": "632e5cadecdd4f906a712857b3d96d0260bcee154aa26e6ee9592fc5241fa06e",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/read/publications/pmid-28497544-bb3f41ca.html",
+      "bytes": 13445,
+      "status": 200,
+      "sha256": "55f3348bd6ca89d732fc8c14f06e35f2d4bdc3ccdb6913fdab9eabd7dbc2c622",
+      "servedSHA256": "ce09c5c8a957aef8d476f54343dd83c72c0081b0f479d658f57e4b8d823da79b",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/read/publications/pmid-32752786-e128df28.html",
+      "bytes": 12206,
+      "status": 200,
+      "sha256": "ea7fa1ec63243f09ab628816448f28b8207bb8958eaf8914a86c569d9ab9c46f",
+      "servedSHA256": "38e66d5a24ea3420ecbac8ff7990d0de39d66af4a0f2e24c557791b6bb66fab6",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/read/publications/pmid-33303476-c8e17bf8.html",
+      "bytes": 13600,
+      "status": 200,
+      "sha256": "ec2c28a5a37bb4713c6283191e12cec573ef78aeedac721ac1106c04404d3210",
+      "servedSHA256": "1e247b9c11ee6155e9a8732ff922f821b49e6549c59daf384b86ebe3611c1928",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/read/publications/pmid-37169066-da62d778.html",
+      "bytes": 12476,
+      "status": 200,
+      "sha256": "2893d5528bbed9a78942eba190d9a04b641b8852310ac68f93b81a905209dd3f",
+      "servedSHA256": "33223ce562d5281b9b601a5b7870c376139bff5f456c6861563e265f19df9871",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/read/publications/pmid-37336758-2a935ad8.html",
+      "bytes": 12607,
+      "status": 200,
+      "sha256": "1f8f0774b3935e73ea3a34eacba17bcd6f5baf6f117c5a40676863b8cef77409",
+      "servedSHA256": "39774f3bc04c144414420a562b1ba36077e70cfb07515750ab6e016be673343a",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/read/publications/pmid-40127932-3dcefa18.html",
+      "bytes": 12834,
+      "status": 200,
+      "sha256": "6aad085e7f8fd5c055f513266714e6dadc4e3e40ebcd7b4d886504a8e5a907bd",
+      "servedSHA256": "3b750dc33559e8e1466d3ebc4c028194d9ef5b94b0f096f754aa4a7bd4282a36",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/read/publications/pmid-41253014-2d03e1aa.html",
+      "bytes": 12198,
+      "status": 200,
+      "sha256": "24c9640f1ade8a6a6ac20ae1541abf8ed5005687fcfb455adafcd90b61df1a93",
+      "servedSHA256": "0c890880ef69eb7fcbb04c158997a243b507c0e7d3b568080f691f22d771f993",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/read/publications/pmid-42415977-5bfc21ab.html",
+      "bytes": 12576,
+      "status": 200,
+      "sha256": "2787b60548e7138c7df33d06897a931e296634c06f0b399babb1060f29bed133",
+      "servedSHA256": "71eff09268d83dca92b15da3f603c434f01f59541977ab302539263b5ab7b8c4",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/read/publications/src-e9b23a765f28-9f5266bf.html",
+      "bytes": 15718,
+      "status": 200,
+      "sha256": "e1a5aa4438b7f2a336f3d83fa25dadcffc50573980d70b05d76625b427242bf8",
+      "servedSHA256": "5efc436534aaa1f5ffb9b3826c1203f7959393a53803fd0212a1816f88b62ede",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/read/quantum/index.html",
+      "bytes": 69669,
+      "status": 200,
+      "sha256": "4792bb6e99b757c27069b9e180355a3e5b84c45c3051d566e8593414b70a7fd8",
+      "servedSHA256": "3766ee8420bf4c178944b0e5305089a28d28d4c9193f186086c130b6223f9bce",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/read/vision/index.html",
+      "bytes": 8152,
+      "status": 200,
+      "sha256": "b9da3c10eeddbc2900c6d4624923742adfe00a443fac292a95e5e7a755d7ba71",
+      "servedSHA256": "58b13c32875b782ecb285241eebae55b6ca5e6d7b078b2a506d3b59f18445c91",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    },
+    {
+      "file": "Informatics/research.html",
+      "bytes": 22898,
+      "status": 200,
+      "sha256": "d3d9df1a440014973871ae0cafd6a2566a65ed92e4d20b124d918ab8b5787dfc",
+      "servedSHA256": "8a7cddcdff852bd3bdcfa3f02af457c9dae8ec02372991f9e630cc84aa8e9290",
+      "normalizedKnownCloudflareInjection": true,
+      "matched": true,
+      "cache": "DYNAMIC"
+    }
+  ],
+  "totalBytes": 434811616
+}
