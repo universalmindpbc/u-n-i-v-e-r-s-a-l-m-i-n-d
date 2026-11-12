@@ -11,7 +11,7 @@ def normal(s):
  s=re.sub(r'<span class="__cf_email__" data-cfemail="([a-f0-9]+)">[^<]*</span>',lambda x:decode(x[1]),s)
  s=re.sub(r'href="/cdn-cgi/l/email-protection#([a-f0-9]+)"',lambda x:'href="mailto:'+decode(x[1])+'"',s)
  s=re.sub(r'<script data-cfasync="false" src="/cdn-cgi/scripts/[a-f0-9]+/cloudflare-static/email-decode.min.js"></script>','',s)
- s=re.sub(r'<script defer src="https://static.cloudflareinsights.com/beacon.min.js[^\"]*"[^>]*></script>','',s)
+ s=re.sub(r'<script (?:defer|type="module") src="https://static.cloudflareinsights.com/beacon.min.js[^\"]*"[^>]*></script>\n?','',s)
  return s
 
 def check(p):
@@ -22,5 +22,9 @@ def check(p):
    if actual!=sha(local) and p.endswith('.html'):actual=sha(normal(b.decode()).encode());transformed=True
    return {'file':p,'bytes':len(b),'status':r.status,'sha256':sha(local),'servedSHA256':raw,'normalizedKnownCloudflareInjection':transformed,'matched':actual==sha(local),'cache':r.headers.get('CF-Cache-Status')}
  except Exception as e:return {'file':p,'matched':False,'error':str(e)}
+previous=json.loads((out/(phase+'-http.json')).read_text()) if os.environ.get('RETRY_FAILED')=='1' else None
+if previous:
+ files=[r['file'] for r in previous['files'] if not r['matched']]
 with ThreadPoolExecutor(max_workers=4) as pool:results=list(pool.map(check,files))
+if previous:results=[r for r in previous['files'] if r['matched']]+results
 report={'passed':all(r['matched'] for r in results),'phase':phase,'datasetVersion':m['dataset_version'],'files':results,'totalBytes':sum(r.get('bytes',0) for r in results)};(out/(phase+'-http.json')).write_text(json.dumps(report,indent=2)+'\n');print(json.dumps({'passed':report['passed'],'files':len(results),'totalBytes':report['totalBytes'],'failures':[x for x in results if not x['matched']]}));raise SystemExit(0 if report['passed'] else 1)

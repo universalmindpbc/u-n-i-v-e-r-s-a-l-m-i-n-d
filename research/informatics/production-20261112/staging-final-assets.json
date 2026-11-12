@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "files": [
+    {
+      "url": "https://staging.universalmind.tv/informatics/quantum/portal.js?v=production-20261112",
+      "status": 200,
+      "sha256": "56fceaec74ba2d786ff0332bf2eb1dc5f04eaa98a14bffe2cb7e6da95b6aeeef"
+    },
+    {
+      "url": "https://staging.universalmind.tv/informatics/quantum/biology.js?v=production-20261112",
+      "status": 200,
+      "sha256": "05c5cc9d3dd93d93ea05ae2d0b367d4ffe69e37f303466641b01f670f1efe610"
+    },
+    {
+      "url": "https://staging.universalmind.tv/informatics/exports/manifest.json",
+      "status": 200,
+      "sha256": "a68d4d3471b1c64a5773d8970db0ac77143848cb9efa3ba0ad1a134bbf9c4274"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{"question":"In two sentences, can you use CUDA-Q CPU checks, and is that different from running on a physical quantum computer? Please explain access only; do not start a study.","answer":"UNIVERSAL ONE\nYes—I can use CUDA-Q for local CPU checks within supported workflows, including some that do not require portal login. These are classical simulations, not physical quantum runs; Aquila hardware runs require a reviewed plan and your explicit confirmation, and I’m not starting a study.","loggedIn":false,"elapsedMs":29218}
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+locator.waitFor: Timeout 360000ms exceeded.
+Call log:
+[2m  - waiting for locator('#quantum-frame').contentFrame().locator('.chat-message[data-role=assistant]').nth(1) to be visible[22m
+
+    at ask (/private/tmp/um-informatics-production-20261112/research/informatics/production-20261112/verify-browser.mjs:20:287)
+    at async file:///private/tmp/um-informatics-production-20261112/research/informatics/production-20261112/verify-browser.mjs:23:26 {
+  log: [
+    "  - waiting for locator('#quantum-frame').contentFrame().locator('.chat-message[data-role=assistant]').nth(1) to be visible"
+  ],
+  name: 'TimeoutError'
+}
+
+Node.js v24.22.1

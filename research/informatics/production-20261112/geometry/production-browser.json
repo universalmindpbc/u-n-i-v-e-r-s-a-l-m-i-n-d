@@ -1,0 +1,489 @@
+{
+  "mode": "production",
+  "softwareRendering": true,
+  "processAudioMuted": true,
+  "playbackBlocked": true,
+  "nativeFullscreen": false,
+  "results": [
+    {
+      "width": 1470,
+      "mode": "symbolic",
+      "rootCount": 240,
+      "layerCombinations": 8,
+      "gammaInsetAnglesPreserved": true,
+      "spacing": {
+        "labelFont": "12px",
+        "labelBand": [
+          98.16781226116915,
+          113.63567129524199
+        ],
+        "rootRadii": [
+          162.159,
+          142.303,
+          135.684,
+          148.922,
+          138.994,
+          155.541,
+          152.231,
+          158.85,
+          132.375,
+          145.613,
+          145.612
+        ],
+        "radius": 165.46875,
+        "svgHeight": 354.9375,
+        "viewportHeight": 850,
+        "figureTop": 212,
+        "labels": 24,
+        "overlappingLabels": false,
+        "labelRingClear": true,
+        "clearOfCentralGeometry": true,
+        "separate": true,
+        "layout": "overlay",
+        "diameter": 803
+      },
+      "betaNativeCycle": true,
+      "cycleStep": true,
+      "guideIndependent": true,
+      "noHorizontalOverflow": true,
+      "viewportFit": {
+        "height": 850,
+        "figureTop": 212,
+        "figureBottom": 832,
+        "drawingHeight": 354.9375,
+        "sidebarBeside": true,
+        "controls": [
+          {
+            "id": "e8-projection",
+            "top": 236,
+            "bottom": 280
+          },
+          {
+            "id": "e8-guide",
+            "top": 237.5,
+            "bottom": 254.5
+          },
+          {
+            "id": "e8-alpha",
+            "top": 323.09375,
+            "bottom": 340.09375
+          },
+          {
+            "id": "e8-beta",
+            "top": 323.09375,
+            "bottom": 340.09375
+          },
+          {
+            "id": "e8-gamma",
+            "top": 323.09375,
+            "bottom": 340.09375
+          },
+          {
+            "id": "e8-step",
+            "top": 771.3125,
+            "bottom": 805.3125
+          }
+        ]
+      }
+    },
+    {
+      "width": 1470,
+      "mode": "p24",
+      "rootCount": 240,
+      "layerCombinations": 8,
+      "gammaInsetAnglesPreserved": true,
+      "spacing": {
+        "labelFont": "12px",
+        "labelBand": [
+          103.79363928803717,
+          119.26152341810031
+        ],
+        "rootRadii": [
+          162.159,
+          67.169,
+          42.332,
+          98.821,
+          64.245,
+          124.111,
+          133.188,
+          34.769,
+          83.94
+        ],
+        "radius": 165.46875,
+        "svgHeight": 354.9375,
+        "viewportHeight": 850,
+        "figureTop": 212,
+        "labels": 24,
+        "overlappingLabels": false,
+        "labelRingClear": true,
+        "clearOfCentralGeometry": true,
+        "separate": true,
+        "layout": "overlay",
+        "diameter": 803
+      },
+      "betaNativeCycle": true,
+      "cycleStep": true,
+      "guideIndependent": true,
+      "noHorizontalOverflow": true,
+      "viewportFit": {
+        "height": 850,
+        "figureTop": 212,
+        "figureBottom": 832,
+        "drawingHeight": 354.9375,
+        "sidebarBeside": true,
+        "controls": [
+          {
+            "id": "e8-projection",
+            "top": 236,
+            "bottom": 280
+          },
+          {
+            "id": "e8-guide",
+            "top": 237.5,
+            "bottom": 254.5
+          },
+          {
+            "id": "e8-alpha",
+            "top": 323.09375,
+            "bottom": 340.09375
+          },
+          {
+            "id": "e8-beta",
+            "top": 323.09375,
+            "bottom": 340.09375
+          },
+          {
+            "id": "e8-gamma",
+            "top": 323.09375,
+            "bottom": 340.09375
+          },
+          {
+            "id": "e8-step",
+            "top": 771.3125,
+            "bottom": 805.3125
+          }
+        ]
+      }
+    },
+    {
+      "width": 1470,
+      "mode": "p30",
+      "rootCount": 240,
+      "layerCombinations": 8,
+      "gammaInsetAnglesPreserved": true,
+      "spacing": {
+        "labelFont": "12px",
+        "labelBand": [
+          112.72881420768297,
+          128.19673112652166
+        ],
+        "rootRadii": [
+          81.526,
+          54.852,
+          33.901,
+          109.103,
+          131.912,
+          67.43,
+          100.22,
+          162.159
+        ],
+        "radius": 165.46875,
+        "svgHeight": 354.9375,
+        "viewportHeight": 850,
+        "figureTop": 212,
+        "labels": 24,
+        "overlappingLabels": false,
+        "labelRingClear": true,
+        "clearOfCentralGeometry": true,
+        "separate": true,
+        "layout": "overlay",
+        "diameter": 803
+      },
+      "betaNativeCycle": true,
+      "cycleStep": true,
+      "guideIndependent": true,
+      "noHorizontalOverflow": true,
+      "viewportFit": {
+        "height": 850,
+        "figureTop": 212,
+        "figureBottom": 832,
+        "drawingHeight": 354.9375,
+        "sidebarBeside": true,
+        "controls": [
+          {
+            "id": "e8-projection",
+            "top": 236,
+            "bottom": 280
+          },
+          {
+            "id": "e8-guide",
+            "top": 237.5,
+            "bottom": 254.5
+          },
+          {
+            "id": "e8-alpha",
+            "top": 323.09375,
+            "bottom": 340.09375
+          },
+          {
+            "id": "e8-beta",
+            "top": 323.09375,
+            "bottom": 340.09375
+          },
+          {
+            "id": "e8-gamma",
+            "top": 323.09375,
+            "bottom": 340.09375
+          },
+          {
+            "id": "e8-step",
+            "top": 771.3125,
+            "bottom": 805.3125
+          }
+        ]
+      }
+    },
+    {
+      "width": 390,
+      "mode": "symbolic",
+      "rootCount": 240,
+      "layerCombinations": 8,
+      "gammaInsetAnglesPreserved": true,
+      "spacing": {
+        "labelFont": "11px",
+        "labelBand": [
+          97.91320881505514,
+          111.36795989554463
+        ],
+        "rootRadii": [
+          160.23,
+          140.61,
+          134.07,
+          147.15,
+          137.34,
+          153.69,
+          150.42,
+          156.96,
+          130.8,
+          143.88
+        ],
+        "radius": 163.5,
+        "svgHeight": 351,
+        "viewportHeight": 735,
+        "figureTop": 343.5,
+        "labels": 24,
+        "overlappingLabels": false,
+        "labelRingClear": true,
+        "clearOfCentralGeometry": true,
+        "separate": true,
+        "layout": "overlay",
+        "diameter": 351
+      },
+      "betaNativeCycle": true,
+      "cycleStep": true,
+      "guideIndependent": true,
+      "noHorizontalOverflow": true,
+      "viewportFit": {
+        "height": 735,
+        "figureTop": 343.5,
+        "figureBottom": 1005.96875,
+        "drawingHeight": 351,
+        "sidebarBeside": false,
+        "controls": [
+          {
+            "id": "e8-projection",
+            "top": 367.5,
+            "bottom": 411.5
+          },
+          {
+            "id": "e8-guide",
+            "top": 429,
+            "bottom": 446
+          },
+          {
+            "id": "e8-alpha",
+            "top": 502.59375,
+            "bottom": 519.59375
+          },
+          {
+            "id": "e8-beta",
+            "top": 502.59375,
+            "bottom": 519.59375
+          },
+          {
+            "id": "e8-gamma",
+            "top": 502.59375,
+            "bottom": 519.59375
+          },
+          {
+            "id": "e8-step",
+            "top": 945.28125,
+            "bottom": 979.28125
+          }
+        ]
+      }
+    },
+    {
+      "width": 390,
+      "mode": "p24",
+      "rootCount": 240,
+      "layerCombinations": 8,
+      "gammaInsetAnglesPreserved": true,
+      "spacing": {
+        "labelFont": "11px",
+        "labelBand": [
+          103.47217142221399,
+          116.92692218594824
+        ],
+        "rootRadii": [
+          160.23,
+          66.369,
+          41.828,
+          97.645,
+          63.48,
+          122.635,
+          131.603,
+          34.355,
+          82.941
+        ],
+        "radius": 163.5,
+        "svgHeight": 351,
+        "viewportHeight": 735,
+        "figureTop": 343.5,
+        "labels": 24,
+        "overlappingLabels": false,
+        "labelRingClear": true,
+        "clearOfCentralGeometry": true,
+        "separate": true,
+        "layout": "overlay",
+        "diameter": 351
+      },
+      "betaNativeCycle": true,
+      "cycleStep": true,
+      "guideIndependent": true,
+      "noHorizontalOverflow": true,
+      "viewportFit": {
+        "height": 735,
+        "figureTop": 343.5,
+        "figureBottom": 1005.96875,
+        "drawingHeight": 351,
+        "sidebarBeside": false,
+        "controls": [
+          {
+            "id": "e8-projection",
+            "top": 367.5,
+            "bottom": 411.5
+          },
+          {
+            "id": "e8-guide",
+            "top": 429,
+            "bottom": 446
+          },
+          {
+            "id": "e8-alpha",
+            "top": 502.59375,
+            "bottom": 519.59375
+          },
+          {
+            "id": "e8-beta",
+            "top": 502.59375,
+            "bottom": 519.59375
+          },
+          {
+            "id": "e8-gamma",
+            "top": 502.59375,
+            "bottom": 519.59375
+          },
+          {
+            "id": "e8-step",
+            "top": 945.28125,
+            "bottom": 979.28125
+          }
+        ]
+      }
+    },
+    {
+      "width": 390,
+      "mode": "p30",
+      "rootCount": 240,
+      "layerCombinations": 8,
+      "gammaInsetAnglesPreserved": true,
+      "spacing": {
+        "labelFont": "11px",
+        "labelBand": [
+          112.30112929424116,
+          125.75588034302326
+        ],
+        "rootRadii": [
+          80.556,
+          54.2,
+          33.497,
+          107.805,
+          130.343,
+          66.627,
+          99.028,
+          160.23
+        ],
+        "radius": 163.5,
+        "svgHeight": 351,
+        "viewportHeight": 735,
+        "figureTop": 343.5,
+        "labels": 24,
+        "overlappingLabels": false,
+        "labelRingClear": true,
+        "clearOfCentralGeometry": true,
+        "separate": true,
+        "layout": "overlay",
+        "diameter": 351
+      },
+      "betaNativeCycle": true,
+      "cycleStep": true,
+      "guideIndependent": true,
+      "noHorizontalOverflow": true,
+      "viewportFit": {
+        "height": 735,
+        "figureTop": 343.5,
+        "figureBottom": 1005.96875,
+        "drawingHeight": 351,
+        "sidebarBeside": false,
+        "controls": [
+          {
+            "id": "e8-projection",
+            "top": 367.5,
+            "bottom": 411.5
+          },
+          {
+            "id": "e8-guide",
+            "top": 429,
+            "bottom": 446
+          },
+          {
+            "id": "e8-alpha",
+            "top": 502.59375,
+            "bottom": 519.59375
+          },
+          {
+            "id": "e8-beta",
+            "top": 502.59375,
+            "bottom": 519.59375
+          },
+          {
+            "id": "e8-gamma",
+            "top": 502.59375,
+            "bottom": 519.59375
+          },
+          {
+            "id": "e8-step",
+            "top": 945.28125,
+            "bottom": 979.28125
+          }
+        ]
+      }
+    },
+    {
+      "embedded": true,
+      "deepLink": true,
+      "rootCount": 240
+    }
+  ]
+}

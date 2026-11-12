@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "runtime": "Cloudflare workerd",
+  "paidCalls": 0,
+  "checks": [
+    "actual chat handler sends Max to Responses API",
+    "16384 output ceiling retains reasoning room",
+    "fresh operational facts reach model",
+    "follow-up history reaches model",
+    "provider reasoning receipt returned"
+  ]
+}

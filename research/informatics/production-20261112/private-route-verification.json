@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "phpSourceFiles": [
+    {
+      "path": "informatics/api/quantum-portal.php",
+      "sha256": "333efb49e7971f50ec1cd37282eccdbddea9dcce444edc43bbef8c684508f2aa",
+      "matched": true
+    },
+    {
+      "path": "informatics/api/study-email.php",
+      "sha256": "ee5d300dcb17ddb850f35f7033e21a54584581af4ed31af4efbcaee04a513654",
+      "matched": true
+    }
+  ],
+  "privateConfigurationHTTPStatus": 403
+}
