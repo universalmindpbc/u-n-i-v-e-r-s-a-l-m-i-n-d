@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "sourceFilesMatch": [
+    "quantum/portal.js?v=minimal-20261109",
+    "quantum/conversation.js?v=minimal-20261109",
+    "quantum/biology.css?v=portal-minimal-20261109",
+    "exports/manifest.json?snapshot=1794216272316"
+  ],
+  "usesActualPageAssetVersions": true
+}

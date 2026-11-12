@@ -1,0 +1,58 @@
+{
+  "passed": true,
+  "transport": "controlled-fixtures",
+  "checks": [
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "passwordOutsideChat": true,
+      "questionPreserved": true,
+      "technicalDetailsOptional": true,
+      "noPresetExperiment": true,
+      "explicitConfirmation": true,
+      "automaticFindings": true,
+      "fullRecordDownload": true,
+      "reloadWithoutNewRun": true,
+      "errors": []
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "passwordOutsideChat": true,
+      "questionPreserved": true,
+      "technicalDetailsOptional": true,
+      "noPresetExperiment": true,
+      "explicitConfirmation": true,
+      "automaticFindings": true,
+      "fullRecordDownload": true,
+      "reloadWithoutNewRun": true,
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "width": 1440,
+      "passwordOutsideChat": true,
+      "questionPreserved": true,
+      "technicalDetailsOptional": true,
+      "noPresetExperiment": true,
+      "explicitConfirmation": true,
+      "automaticFindings": true,
+      "fullRecordDownload": true,
+      "reloadWithoutNewRun": true,
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "passwordOutsideChat": true,
+      "questionPreserved": true,
+      "technicalDetailsOptional": true,
+      "noPresetExperiment": true,
+      "explicitConfirmation": true,
+      "automaticFindings": true,
+      "fullRecordDownload": true,
+      "reloadWithoutNewRun": true,
+      "errors": []
+    }
+  ]
+}

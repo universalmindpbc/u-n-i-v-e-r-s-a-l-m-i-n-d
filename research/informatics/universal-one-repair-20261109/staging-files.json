@@ -1,0 +1,191 @@
+{
+  "checks": [
+    {
+      "path": "Informatics/app.js",
+      "status": 200,
+      "sha256": "0983ea83bba24b97d70a8625f2015388c6ef4087770a11d525fffa31322690bd",
+      "matched": true
+    },
+    {
+      "path": "Informatics/chapters/about.html",
+      "status": 200,
+      "sha256": "2eab67f048a904596238b57f9d6468a9d8b844436f855662bcc55caacfa2ce73",
+      "matched": true
+    },
+    {
+      "path": "Informatics/chapters/connect.html",
+      "status": 200,
+      "sha256": "71acd05469e2403f68b21b9e25cae8c5d944b018c13711946aa4b76e0e111d89",
+      "matched": true
+    },
+    {
+      "path": "Informatics/chapters/geometry.html",
+      "status": 200,
+      "sha256": "b278a73cab81056f92d40decc74ee2dfd5dccfa45e86bcb1cff9b6a0cd5ad228",
+      "matched": true
+    },
+    {
+      "path": "Informatics/chapters/language.html",
+      "status": 200,
+      "sha256": "32ea21fe8e792d09c5fec3dc53ba72482e53650fd44296692ecebbd607f78963",
+      "matched": true
+    },
+    {
+      "path": "Informatics/chapters/molecular.html",
+      "status": 200,
+      "sha256": "40d24d78657c56faccc26d08da27807e0621dabead27abcd4c6c519b298adc52",
+      "matched": true
+    },
+    {
+      "path": "Informatics/chapters/partners.html",
+      "status": 200,
+      "sha256": "37a745e5f7aa23b8dc274b619589f2d7b794fd1d09a17910509a8406a0cb8d52",
+      "matched": true
+    },
+    {
+      "path": "Informatics/chapters/quantum.html",
+      "status": 200,
+      "sha256": "465263b093d02d336efc177ae9093186da0c8202a016149b9b96f26319795a1c",
+      "matched": true
+    },
+    {
+      "path": "Informatics/chapters/research.html",
+      "status": 200,
+      "sha256": "bbfff82d0584eafa4ea77e7142a77086bf869114483e5f6fe0dd5b42940f3289",
+      "matched": true
+    },
+    {
+      "path": "Informatics/chapters/sound.html",
+      "status": 200,
+      "sha256": "521528cfd0498d8f78d29f39e24a313f01e3a32c3b84082003192b0bd4c508ea",
+      "matched": true
+    },
+    {
+      "path": "Informatics/chapters/transcription.html",
+      "status": 200,
+      "sha256": "133800644b1a74170e3df79617efbc35d7dbe0166d9f9659087d8c7f9d9cf31f",
+      "matched": true
+    },
+    {
+      "path": "Informatics/chapters/vision.html",
+      "status": 200,
+      "sha256": "b0d377939d48311fa3f0fea2474705550ceafcab928d8ca5a2c3f45228d834e7",
+      "matched": true
+    },
+    {
+      "path": "Informatics/connect.html",
+      "status": 200,
+      "sha256": "c1b284b4c5fd6fe64587584b6624f86e672633565510282ae7151b9e4cd9c736",
+      "matched": true
+    },
+    {
+      "path": "Informatics/exports/manifest-116a5ed85d196ef19e8d265697532c814136924012cbe4e5ce69c05c47d620d1.json",
+      "status": 200,
+      "sha256": "6097ccd86ed6ed43ddff0ca053079f891c599a0ddd2f2e70f5f124e5f7bc73d9",
+      "matched": true
+    },
+    {
+      "path": "Informatics/exports/manifest-bf0fdf56ceae67926bc103ff573a9eca441c92b17e372f0786d075068e2d14fc.json",
+      "status": 200,
+      "sha256": "f025eb0c574429e2c91619cb118d8cfd6b5e0083f8a782378d5ded5064831773",
+      "matched": true
+    },
+    {
+      "path": "Informatics/exports/manifest.json",
+      "status": 200,
+      "sha256": "6097ccd86ed6ed43ddff0ca053079f891c599a0ddd2f2e70f5f124e5f7bc73d9",
+      "matched": true
+    },
+    {
+      "path": "Informatics/index.html",
+      "status": 200,
+      "sha256": "36513b9a9cc80c765a8a451d609bbefcbadaf58bb56fb02a9c9b0cc1b80bdc5a",
+      "matched": true
+    },
+    {
+      "path": "Informatics/library.html",
+      "status": 200,
+      "sha256": "94735fc49250196c5ad81502bb587938320f554e10a0191685e0d5d6a2eaf2e5",
+      "matched": true
+    },
+    {
+      "path": "Informatics/quantum/agent.js",
+      "status": 200,
+      "sha256": "6720201cf28c0efa8d1d56e77ccd283f4c7832270154aafcc56205c00e6fa8cc",
+      "matched": true
+    },
+    {
+      "path": "Informatics/quantum/biology.css",
+      "status": 200,
+      "sha256": "584370e3ea460db6c761e48071d56f7e557c645ccfb5529428090212ce0039a0",
+      "matched": true
+    },
+    {
+      "path": "Informatics/quantum/biology.js",
+      "status": 200,
+      "sha256": "c7fca39d684acc6db83ef81af8be08adb338710d143cd884f03553367bccc1b6",
+      "matched": true
+    },
+    {
+      "path": "Informatics/quantum/conversation.js",
+      "status": 200,
+      "sha256": "928ed78b06c98e5237d709ed217d9edaeeff89a36cc90e1e314041221e7a1f9f",
+      "matched": true
+    },
+    {
+      "path": "Informatics/quantum/delivery.js",
+      "status": 200,
+      "sha256": "1ba244e552d6e915456de34197a23a38ca8b38d779b9dc288b506494b041f9fd",
+      "matched": true
+    },
+    {
+      "path": "Informatics/quantum/index.html",
+      "status": 200,
+      "sha256": "cc6b858df1650ae3cdf60f6e44a8e2e71a081028523764fb090b9ee745a90de2",
+      "matched": true
+    },
+    {
+      "path": "Informatics/quantum/reading/quantum-atlas.csv",
+      "status": 200,
+      "sha256": "736a405dccc1376f76321584eba415dbd8ee7133633590ba7cdada89c11f292c",
+      "matched": true
+    },
+    {
+      "path": "Informatics/quantum/reading/quantum-atlas.json",
+      "status": 200,
+      "sha256": "a716ecb6642237e500a7980adcc8bc8a92789700a3dae393c44aecc2e8f46e66",
+      "matched": true
+    },
+    {
+      "path": "Informatics/quantum/reading/quantum-atlas.md",
+      "status": 200,
+      "sha256": "d19869d05cde5e428a08face56d42e28ff8c3e739876bb2944abca952467e9a2",
+      "matched": true
+    },
+    {
+      "path": "Informatics/read/data.html",
+      "status": 200,
+      "sha256": "2a45146dc94a411dd686f6477befa413765a966b59d2691fa17536351a6c1053",
+      "matched": true
+    },
+    {
+      "path": "Informatics/read/quantum/index.html",
+      "status": 200,
+      "sha256": "166a21895380acc2e9a51031d9282e617641de97d1fa3ec719f4d2dd00252079",
+      "matched": true
+    },
+    {
+      "path": "Informatics/universal-one-quantum.js",
+      "status": 200,
+      "sha256": "d1058d25e29d5576ef453cb6c7b13cdaf321de94a893519a805bae5c47e31693",
+      "matched": true
+    },
+    {
+      "path": "Informatics/universal-one.js",
+      "status": 200,
+      "sha256": "853d13c6a3627aa9ab3661c5dc343359a515796b1bf846360ed070ad7f016967",
+      "matched": true
+    }
+  ],
+  "allMatched": true
+}

@@ -1,0 +1,113 @@
+{
+  "commit": "2924819f3241c52a41f788c0090c235b2edefbe9",
+  "origin": "https://staging.universalmind.tv",
+  "files": [
+    {
+      "path": "/informatics/spacetime/app.mjs",
+      "status": 200,
+      "served_sha256": "5e4b6b43f91300bb823b2c35f684bbab6f72b173672a6c4b050bab0e1cd93916",
+      "source_sha256": "5e4b6b43f91300bb823b2c35f684bbab6f72b173672a6c4b050bab0e1cd93916",
+      "normalization": null,
+      "noindex": true,
+      "content_type": "application/javascript"
+    },
+    {
+      "path": "/informatics/spacetime/data.mjs",
+      "status": 200,
+      "served_sha256": "f2f7ac88f443c353dfb0cd1eb7aa0c65ddc161bd328e198b1c1f5edb2f7dffc1",
+      "source_sha256": "f2f7ac88f443c353dfb0cd1eb7aa0c65ddc161bd328e198b1c1f5edb2f7dffc1",
+      "normalization": null,
+      "noindex": true,
+      "content_type": "application/javascript"
+    },
+    {
+      "path": "/informatics/spacetime/data/TIMEWAVE-LICENSE.txt",
+      "status": 200,
+      "served_sha256": "6524925e40f0f1ebb0036c734c1f4ef32dd515687b3ad40249e686e2ac5fda1a",
+      "source_sha256": "6524925e40f0f1ebb0036c734c1f4ef32dd515687b3ad40249e686e2ac5fda1a",
+      "normalization": null,
+      "noindex": true,
+      "content_type": "text/plain"
+    },
+    {
+      "path": "/informatics/spacetime/data/silso-monthly.txt",
+      "status": 200,
+      "served_sha256": "a34b6b671e6465b266f080d4b87ac13c04aab6aab45a158dd5352ceab9e5304c",
+      "source_sha256": "a34b6b671e6465b266f080d4b87ac13c04aab6aab45a158dd5352ceab9e5304c",
+      "normalization": null,
+      "noindex": true,
+      "content_type": "text/plain"
+    },
+    {
+      "path": "/informatics/spacetime/data/silso-yearly.txt",
+      "status": 200,
+      "served_sha256": "7093eb8f5582a2d8e76580f32e6311ec758f0c1b969cadf99bcaba9f99726353",
+      "source_sha256": "7093eb8f5582a2d8e76580f32e6311ec758f0c1b969cadf99bcaba9f99726353",
+      "normalization": null,
+      "noindex": true,
+      "content_type": "text/plain"
+    },
+    {
+      "path": "/informatics/spacetime/human.mjs",
+      "status": 200,
+      "served_sha256": "f46609888c4e251971a212bb5e27661713f489f3ee130cbe263e22c55c33640a",
+      "source_sha256": "f46609888c4e251971a212bb5e27661713f489f3ee130cbe263e22c55c33640a",
+      "normalization": null,
+      "noindex": true,
+      "content_type": "application/javascript"
+    },
+    {
+      "path": "/informatics/spacetime/index.html",
+      "status": 200,
+      "served_sha256": "4e3f89b2af97bc93bab4ea14cff897b4d6a6dcecdbc9d21a6110faad95e9d3bd",
+      "source_sha256": "19eafc12c5f55ac4c68dfd9458b8ba4f72549d560713b5f3404bdc5397957433",
+      "normalization": "Removed one existing edge-injected Cloudflare analytics beacon for source comparison",
+      "noindex": true,
+      "content_type": "text/html"
+    },
+    {
+      "path": "/informatics/spacetime/model.mjs",
+      "status": 200,
+      "served_sha256": "07f56efcbe3852cb53d51728c23736b67fff19006b69b1f7fa674e34ea2b91ad",
+      "source_sha256": "07f56efcbe3852cb53d51728c23736b67fff19006b69b1f7fa674e34ea2b91ad",
+      "normalization": null,
+      "noindex": true,
+      "content_type": "application/javascript"
+    },
+    {
+      "path": "/informatics/spacetime/spacetime.css",
+      "status": 200,
+      "served_sha256": "8bba51b6284537e47f0c525971ade797cde79269fd7ed63a13d1f32780f181cc",
+      "source_sha256": "8bba51b6284537e47f0c525971ade797cde79269fd7ed63a13d1f32780f181cc",
+      "normalization": null,
+      "noindex": true,
+      "content_type": "text/css"
+    }
+  ],
+  "discovery": [
+    {
+      "path": "/informatics/",
+      "status": 200,
+      "spacetime_listed": false
+    },
+    {
+      "path": "/sitemap.xml",
+      "status": 200,
+      "spacetime_listed": false
+    },
+    {
+      "path": "/llms.txt",
+      "status": 200,
+      "spacetime_listed": false
+    },
+    {
+      "path": "/informatics/sitemap.xml",
+      "status": 404
+    },
+    {
+      "path": "/informatics/llms.txt",
+      "status": 200,
+      "spacetime_listed": false
+    }
+  ]
+}

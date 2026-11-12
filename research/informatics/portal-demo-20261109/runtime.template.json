@@ -1,0 +1,346 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "Isolated staging portal demo: one credit per code, question-led Wolfram/CUDA-Q/Aquila execution, shared USD100 reservation pool. Existing production runtime untouched.",
+  "Parameters": {
+    "SecretArn": {
+      "Type": "String"
+    },
+    "ImageUri": {
+      "Type": "String"
+    },
+    "DispatcherKey": {
+      "Type": "String"
+    },
+    "ScheduleState": {
+      "Type": "String",
+      "Default": "DISABLED",
+      "AllowedValues": [
+        "DISABLED",
+        "ENABLED"
+      ]
+    }
+  },
+  "Resources": {
+    "WorkerRole": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com"
+              },
+              "Action": "sts:AssumeRole"
+            }
+          ]
+        },
+        "Policies": [
+          {
+            "PolicyName": "PortalDemoOnly",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "secretsmanager:GetSecretValue"
+                  ],
+                  "Resource": {
+                    "Ref": "SecretArn"
+                  }
+                },
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "logs:CreateLogStream",
+                    "logs:PutLogEvents"
+                  ],
+                  "Resource": "arn:aws:logs:us-east-1:740168708062:log-group:/aws/lambda/informatics-portal-demo-staging-*:*"
+                },
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "braket:GetDevice"
+                  ],
+                  "Resource": "arn:aws:braket:us-east-1:740168708062:device/qpu/quera/Aquila"
+                },
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "braket:CreateQuantumTask"
+                  ],
+                  "Resource": [
+                    "arn:aws:braket:us-east-1::device/qpu/quera/Aquila",
+                    "arn:aws:braket:us-east-1:740168708062:device/qpu/quera/Aquila",
+                    "arn:aws:braket:us-east-1:740168708062:quantum-task/*"
+                  ],
+                  "Condition": {
+                    "StringEquals": {
+                      "aws:RequestTag/Project": "InformaticsPortalDemo"
+                    }
+                  }
+                },
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "braket:TagResource"
+                  ],
+                  "Resource": "arn:aws:braket:us-east-1:740168708062:quantum-task/*",
+                  "Condition": {
+                    "StringEquals": {
+                      "aws:RequestTag/Project": "InformaticsPortalDemo"
+                    }
+                  }
+                },
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "braket:GetQuantumTask"
+                  ],
+                  "Resource": "arn:aws:braket:us-east-1:740168708062:quantum-task/*",
+                  "Condition": {
+                    "StringEquals": {
+                      "aws:ResourceTag/Project": "InformaticsPortalDemo"
+                    }
+                  }
+                },
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "braket:SearchSpendingLimits"
+                  ],
+                  "Resource": "*"
+                },
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "s3:GetObject",
+                    "s3:PutObject"
+                  ],
+                  "Resource": [
+                    "arn:aws:s3:::informatics-astra-staging-740168708062-us-east-1/portal-demo-20261109/*",
+                    "arn:aws:s3:::amazon-braket-quantum-lab-740168708062-us-east-1/portal-demo-20261109/*"
+                  ]
+                },
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "s3:GetBucketLocation"
+                  ],
+                  "Resource": [
+                    "arn:aws:s3:::informatics-astra-staging-740168708062-us-east-1",
+                    "arn:aws:s3:::amazon-braket-quantum-lab-740168708062-us-east-1"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "DispatchRole": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com"
+              },
+              "Action": "sts:AssumeRole"
+            }
+          ]
+        },
+        "Policies": [
+          {
+            "PolicyName": "PortalDemoOnly",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "secretsmanager:GetSecretValue"
+                  ],
+                  "Resource": {
+                    "Ref": "SecretArn"
+                  }
+                },
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "logs:CreateLogStream",
+                    "logs:PutLogEvents"
+                  ],
+                  "Resource": "arn:aws:logs:us-east-1:740168708062:log-group:/aws/lambda/informatics-portal-demo-staging-*:*"
+                },
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "lambda:InvokeFunction"
+                  ],
+                  "Resource": {
+                    "Fn::GetAtt": [
+                      "Worker",
+                      "Arn"
+                    ]
+                  }
+                },
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "events:DisableRule"
+                  ],
+                  "Resource": "arn:aws:events:us-east-1:740168708062:rule/informatics-portal-demo-staging-dispatch"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "Worker": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "FunctionName": "informatics-portal-demo-staging-worker",
+        "Role": {
+          "Fn::GetAtt": [
+            "WorkerRole",
+            "Arn"
+          ]
+        },
+        "MemorySize": 2048,
+        "Timeout": 330,
+        "ReservedConcurrentExecutions": 1,
+        "Code": {
+          "ImageUri": {
+            "Ref": "ImageUri"
+          }
+        },
+        "Environment": {
+          "Variables": {
+            "ASTRA_SECRET_ARN": {
+              "Ref": "SecretArn"
+            },
+            "DEMO_STATE_BUCKET": "informatics-astra-staging-740168708062-us-east-1"
+          }
+        },
+        "PackageType": "Image"
+      }
+    },
+    "WorkerLogs": {
+      "Type": "AWS::Logs::LogGroup",
+      "Properties": {
+        "LogGroupName": "/aws/lambda/informatics-portal-demo-staging-worker",
+        "RetentionInDays": 7
+      }
+    },
+    "WorkerInvoke": {
+      "Type": "AWS::Lambda::EventInvokeConfig",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "Worker"
+        },
+        "Qualifier": "$LATEST",
+        "MaximumRetryAttempts": 0,
+        "MaximumEventAgeInSeconds": 60
+      }
+    },
+    "Dispatch": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "FunctionName": "informatics-portal-demo-staging-dispatch",
+        "Role": {
+          "Fn::GetAtt": [
+            "DispatchRole",
+            "Arn"
+          ]
+        },
+        "Runtime": "python3.12",
+        "Handler": "dispatch.handler",
+        "MemorySize": 128,
+        "Timeout": 15,
+        "ReservedConcurrentExecutions": 1,
+        "Code": {
+          "S3Bucket": "informatics-astra-staging-740168708062-us-east-1",
+          "S3Key": {
+            "Ref": "DispatcherKey"
+          }
+        },
+        "Environment": {
+          "Variables": {
+            "ASTRA_SECRET_ARN": {
+              "Ref": "SecretArn"
+            },
+            "DEMO_WORKER": {
+              "Ref": "Worker"
+            },
+            "DEMO_RULE": "informatics-portal-demo-staging-dispatch"
+          }
+        }
+      }
+    },
+    "DispatchLogs": {
+      "Type": "AWS::Logs::LogGroup",
+      "Properties": {
+        "LogGroupName": "/aws/lambda/informatics-portal-demo-staging-dispatch",
+        "RetentionInDays": 7
+      }
+    },
+    "DispatchInvoke": {
+      "Type": "AWS::Lambda::EventInvokeConfig",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "Dispatch"
+        },
+        "Qualifier": "$LATEST",
+        "MaximumRetryAttempts": 0,
+        "MaximumEventAgeInSeconds": 60
+      }
+    },
+    "Tick": {
+      "Type": "AWS::Events::Rule",
+      "Properties": {
+        "Name": "informatics-portal-demo-staging-dispatch",
+        "ScheduleExpression": "rate(1 minute)",
+        "State": {
+          "Ref": "ScheduleState"
+        },
+        "Targets": [
+          {
+            "Id": "portal-dispatch",
+            "Arn": {
+              "Fn::GetAtt": [
+                "Dispatch",
+                "Arn"
+              ]
+            },
+            "RetryPolicy": {
+              "MaximumRetryAttempts": 0
+            }
+          }
+        ]
+      }
+    },
+    "TickPermission": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "Dispatch"
+        },
+        "Action": "lambda:InvokeFunction",
+        "Principal": "events.amazonaws.com",
+        "SourceArn": {
+          "Fn::GetAtt": [
+            "Tick",
+            "Arn"
+          ]
+        }
+      }
+    }
+  }
+}

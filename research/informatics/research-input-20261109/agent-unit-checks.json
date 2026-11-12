@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "pinnedModel": "anthropic/claude-opus-5-5",
+  "maximumModelCalls": 3,
+  "maximumToolExecutions": 4,
+  "runReservationUSD": 0.75,
+  "concurrentAllowanceGate": true,
+  "paidRequests": 0
+}

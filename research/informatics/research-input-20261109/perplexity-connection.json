@@ -1,0 +1,47 @@
+{
+  "status": "retrieved",
+  "query": "GRIN2B transcription regulation binding sites research",
+  "reason": "Verify public scientific web discovery for the approved research integration.",
+  "provider": "Perplexity Search",
+  "requestId": "3ef6ae27-afbb-4daa-81d1-e89d539138fc",
+  "receipt": {
+    "retrievedAt": "2026-11-09T10:51:49.838Z",
+    "reservation": "connection-verification",
+    "reservedUSD": 0.005
+  },
+  "results": [
+    {
+      "title": "Functional human GRIN2B promoter polymorphism and ...",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5425128/",
+      "published": "2017-04-24",
+      "updated": "2025-09-18",
+      "coverage": "search-extracted text",
+      "extractedCharacters": 3194
+    },
+    {
+      "title": "CONSERVED HIGHER ORDER CHROMATIN REGULATES NMDA",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4258154/pdf/nihms639571.pdf",
+      "published": null,
+      "updated": "2025-03-28",
+      "coverage": "search-extracted text",
+      "extractedCharacters": 4636
+    },
+    {
+      "title": "Prenatal Bisphenol A Exposure is Linked to Epigenetic Changes in Glutamate Receptor Subunit Gene Grin2b in Female Rats and Humans",
+      "url": "https://www.nature.com/articles/s41598-018-29732-9",
+      "published": "2018-07-27",
+      "updated": "2018-07-27",
+      "coverage": "search-extracted text",
+      "extractedCharacters": 4007
+    },
+    {
+      "title": "Nuclear respiratory factor 2 regulates the expression of the same NMDA receptor subunit genes as NRF-1: Both factors act by a concurrent and parallel mechanism to couple energy metabolism and synaptic transmission",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3518722/",
+      "published": "2012-10-23",
+      "updated": "2025-07-23",
+      "coverage": "search-extracted text",
+      "extractedCharacters": 3468
+    }
+  ],
+  "interpretation": "Discovery results, not a completed scientific review. Verify the original paper and its metadata before treating a result as evidence. Do not describe extracted snippets as a full paper reading."
+}

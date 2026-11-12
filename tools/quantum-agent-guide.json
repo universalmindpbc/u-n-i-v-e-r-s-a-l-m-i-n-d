@@ -1,8 +1,8 @@
 {
-  "version": "2026-11-09-reasoning-production",
+  "version": "2026-11-09-live-research-1",
   "purpose": {
     "title": "What Quantum Atlas is for",
-    "summary": "Quantum Atlas makes computational biology and quantum research approachable through a scientific question written in ordinary language. A person brings the question; the platform coordinates AI scientific work, mathematical models, simulations, recorded quantum measurements and biological evidence, then returns an explanation with the underlying research record.",
+    "summary": "Universal Informatics is building an open-source quantum machine for mental health: a network of large language models and quantum computers working together as one. Quantum Atlas connects conversational scientific questions with genomics, biological research and quantum experiments, retaining the methods, evidence and limitations.",
     "why": "The purpose is to help people investigate whether a proposed pattern adds useful information to a biological problem. The current OXTR investigation asks whether Fibonacci, Phi Ratio and M9 P24 representations can help predict where proteins associate with DNA. That study is the first worked investigation within the wider natural-language research experience.",
     "human_explanation": "You can ask Quantum Atlas a biological research question without writing quantum code. Astra develops the supported investigation and explains the findings. Gemini reviews the design and the resulting report. Mathematical and computing tools supply calculations and measurements, while laboratory evidence provides a biological comparison. You can follow the stages, inspect the geometry, read the results in ordinary language and download the record. Your own AI can retrieve the public evidence through MCP or the API, or ask Universal One a research question through A2A. A persistent new study starts through the Quantum Atlas interface within its supported research scope.",
     "instructions_for_ai": [
@@ -17,13 +17,22 @@
       "Explain what Astra, Gemini, Wolfram, CUDA-Q and Aquila each contribute, in plain language.",
       "Walk me through the current OXTR investigation and explain what the results mean.",
       "Connect to the public research tools, retrieve the study and help me formulate a useful next question."
-    ]
+    ],
+    "vision": {
+      "headline": "Building an open-source quantum machine for mental health.",
+      "definition": "A network of large language models and quantum computers working together as one, connecting natural-language questions with genomics, biological research and quantum experiments, for mental health.",
+      "inspiration": "Inspired by platforms such as Strangeworks, Universal Informatics brings conversation, scientific models and computing into a shared research environment focused on mental health.",
+      "inspiration_source": "https://strangeworks.com/technology/compute",
+      "open_source_direction": "Open source is the project ethos and intended direction. Open collaboration is planned as the software matures. The current published permission-based source licence continues to apply.",
+      "evidence_boundary": "This is a development vision. Current experiments do not establish clinical benefits, and the comparison does not claim feature parity, endorsement or affiliation."
+    },
+    "audience": "Bioinformatics researchers and scientists with no quantum computing skills. Lead with their question, proposed investigation, expected findings and included credit. Keep device names, shot counts and cost calculations in optional technical detail. Agents handle computing choices, with gentle educational explanation on request."
   },
   "features": [
     {
-      "feature": "Ask a question",
-      "purpose": "Express the biological question in everyday language. The router identifies a supported calculation or a concrete missing capability.",
-      "human_value": "A clear starting point without writing quantum code."
+      "feature": "Live research conversation",
+      "purpose": "Talk with Universal One on the Quantum Atlas page using text, dictation or live voice. Refine your scientific question and explicitly ask the agents to run it.",
+      "human_value": "Progress and findings appear automatically in the same conversation. Follow-up discussion shares the saved study; reloading reconnects without submitting another run. Microphone input is visible beside dictation and inline voice controls. The original question prompt remains in place."
     },
     {
       "feature": "Study and live workflow",
@@ -69,6 +78,31 @@
       "feature": "Drug Discovery Network and Open Source Genomic Insights",
       "purpose": "The planned fifth stage connects reviewed findings with external research collaborators and shareable genomic insights.",
       "human_value": "Understand the intended path from an investigation to research collaboration. This stage is marked as a future feature."
+    },
+    {
+      "feature": "Results email",
+      "purpose": "Register an email address for the active study or the next launch. The completed study triggers one private results link, available for 30 days.",
+      "human_value": "Read the completed findings on another device. Email notification status is shown on the page."
+    },
+    {
+      "feature": "Public gene and binding evidence",
+      "purpose": "Explore candidate genes or another human or mouse gene using NCBI annotation, UCSC reference DNA, ENCODE measured binding regions and JASPAR motif models. NMDAR represents seven GRIN subunit genes.",
+      "human_value": "Retrieve source-qualified evidence without pre-downloading a fixed gene collection. Candidate names fill a draft; they never launch a study."
+    },
+    {
+      "feature": "Live literature review",
+      "purpose": "Search PubMed and Europe PMC, read abstracts and selected available open-access article passages, and share a source-qualified evidence packet with Astra and Gemini. Optional Perplexity discovery requires a configured server key and a funded allowance.",
+      "human_value": "A concise conversation explains the scientific answer; sources, reading coverage, retrieval dates and checksums remain available for inspection. Search results and model agreement do not establish a hypothesis."
+    },
+    {
+      "feature": "Reading backgrounds",
+      "purpose": "Choose Video, Black or White using the same saved background preference as Universal Research.",
+      "human_value": "Read the conversation and reports in the preferred visual setting."
+    },
+    {
+      "feature": "Specialist literature investigation",
+      "purpose": "Claude Opus 5.5 through the Perplexity Agent API can investigate an unresolved literature gap using bounded scientific search and available paper-reading tools.",
+      "human_value": "A cited research brief returns to Astra and Gemini, with the provider identity, source coverage and spending receipt retained."
     }
   ],
   "swarm": {
@@ -86,6 +120,12 @@
         "role": "Chief Scientist",
         "work": "Reviews the design and final findings against the supplied methods, measurements, source records and uncertainty. Returns approve, revise or human decision required.",
         "handoff": "Design feedback to Astra before execution; findings feedback before report delivery."
+      },
+      {
+        "name": "Perplexity · Claude Opus 5.5",
+        "role": "Deep research support",
+        "work": "Investigates unresolved evidence gaps with bounded scientific searches and available paper-reading tools. Provider refusals and unavailable sources are returned explicitly.",
+        "handoff": "Cited evidence brief and source records to Astra and Gemini. AI interpretation remains distinct from experimental confirmation."
       },
       {
         "name": "LangGraph",
@@ -126,8 +166,8 @@
       {
         "name": "Research memory and Universal One",
         "role": "Shared research context and public research conversation",
-        "work": "Astra retrieves mission, experiment and research-direction records plus literature from the research repository. Universal One exposes cited research answers and public evidence access.",
-        "handoff": "Versioned sources to the scientific workflow and to an external AI using the public interfaces."
+        "work": "Universal One shares one inline and floating conversation across text, dictation and voice. Explicit study commands use the same durable research session; progress and findings arrive automatically.",
+        "handoff": "Explicit run commands go to the Quantum Atlas conversation and durable Astra/Gemini service. Progress and results return to the conversation. Repeated commands reuse the active study; hardware spending remains disabled."
       },
       {
         "name": "Cloudflare broker, AWS worker and encrypted storage",
@@ -146,7 +186,7 @@
       {
         "id": "memory",
         "title": "Retrieve context",
-        "action": "Retrieve the mission, research directions, immutable experiment records and relevant literature."
+        "action": "Retrieve the mission, research directions, immutable experiment records and relevant library literature. On the staging research service, retrieve current PubMed and Europe PMC evidence with explicit abstract/full-text coverage for shared planning and review."
       },
       {
         "id": "audit",
@@ -198,7 +238,18 @@
     "execution_scope": "The current continuation uses the saved GPU/Aquila results and performs new classical and local CPU CUDA-Q calculations. Fresh Aquila jobs, paid GPU jobs and a fresh Wolfram kernel run are outside this recipe. The workflow labels recorded hardware evidence separately from current task progress.",
     "memory": "The shared research memory combines mission, research directions, versioned experiments and source-linked literature. Retrieval uses semantic and text search. The report retains the retrieved source context and evidence hashes.",
     "record": "A delivered study contains the original question, plan and provider receipts, review decisions and evidence packets, source provenance, calculations, program checks and complete JSON/CSV. A private task report becomes a public experiment only through the separate reviewed publication process.",
-    "extensions": "The broader swarm prototype includes mid-study scientific support, human-interruption routing and a publication outbox for Synapse and DeSci. Integrating those general adapters into every live recipe, public MCP/A2A study dispatch, optional document destinations and the Drug Discovery Network remain extensions. The live fixed recipe already includes Gemini design and final review."
+    "extensions": "The broader swarm prototype includes mid-study scientific support, human-interruption routing and a publication outbox for Synapse and DeSci. Integrating those general adapters into every live recipe, public MCP/A2A study dispatch, optional document destinations and the Drug Discovery Network remain extensions. The live fixed recipe already includes Gemini design and final review.",
+    "portal_demo": {
+      "environment": "staging",
+      "access": "Existing I AM portal password entered in a dedicated dialog outside the conversation. Passwords never enter model requests.",
+      "funding": "One funded study per code, up to USD25 total, within a shared USD100 pool. Preparation, computing and review share that allowance.",
+      "experiment": "The researcher supplies the question. Astra proposes its mathematical model, Wolfram Quantum Framework evaluates the Hamiltonian, CUDA-Q and an independent calculation check the numerical result, and Gemini reviews the design. Program count, settings and shots follow the research objective and the included credit. OXTR is a worked example, never a compulsory topic.",
+      "launch": "The proposed investigation is explained in plain language before a separate Run my study confirmation. Hardware execution requires validated settings, current pricing and an available supported device.",
+      "completion": "Automatic progress and findings, a plain-language report, optional method details and complete downloadable records.",
+      "future_routing": "Compare available Braket computers for scientific fit, capabilities, availability and budget. Document each connected executor explicitly; a recommendation does not establish execution support.",
+      "current_execution": "Staging supports validated global-drive analog programs on QuEra Aquila through Amazon Braket, with local exact simulation up to 12 atoms. Other device executors and larger simulation capacity remain integrations. Unsupported designs stop with an explicit dependency; they are never silently replaced with OXTR.",
+      "review": "Astra interprets the returned measurements and uncertainty. Gemini reviews the findings against the receipts and model checks. This reduces unsupported claims; model agreement alone does not establish scientific truth."
+    }
   },
   "participation": {
     "title": "How another AI can participate",
@@ -349,7 +400,7 @@
       "scope": "The current A2A agent returns a direct research answer. Persistent task dispatch, streaming and push notifications are outside its advertised capabilities. MCP and A2A do not submit new Aquila jobs or create the browser’s persistent Astra study."
     },
     "connect_guide": "https://universalmind.tv/informatics/connect.html",
-    "handoff": "For a new persistent investigation, help the person frame the question and open Quantum Atlas. The site establishes its research session, submits the question and tracks the resulting study. Keep the public research connector separate from the session-owned execution service.",
+    "handoff": "For a persistent investigation, open Quantum Atlas and frame the scientific question. The inline conversation and Universal One text, dictation and live voice commands use the same browser research session. Explicit run commands submit the supported question; progress and results reuse the saved study. The public MCP and A2A interfaces retain their read-only research scope.",
     "citation_contract": "Retain study IDs, immutable revision URLs, source hashes, provider receipts and review status when moving between agents. Link the evidence that supports the explanation, and preserve the original question throughout the handoff."
   },
   "source_paths": [
@@ -370,6 +421,28 @@
     "research/informatics/scientific-swarm/swarm.py",
     "research/informatics/scientific-swarm/ROLE_CONTRACT.md",
     "research/informatics/astra-service/reasoning_profile.py",
-    "research/informatics/scientific-swarm/providers.py"
+    "research/informatics/scientific-swarm/providers.py",
+    "Informatics/universal-one.js",
+    "Informatics/universal-one-live.js",
+    "Informatics/universal-one-quantum.js",
+    "cloudflare/informatics-quantum-command.js",
+    "Informatics/quantum/conversation.js",
+    "Informatics/quantum/delivery.js",
+    "Informatics/api/study-email.php",
+    "cloudflare/informatics-study-email.js",
+    "Informatics/quantum/portal.js",
+    "Informatics/api/quantum-portal.php",
+    "cloudflare/informatics-quantum-demo.js",
+    "research/informatics/portal-demo-20261109/worker.py",
+    "Informatics/universal-one-waveform.js",
+    "Informatics/quantum/reading-theme.js",
+    "Informatics/quantum/reading-theme.css",
+    "cloudflare/informatics-gene-data.js",
+    "cloudflare/informatics-literature.js",
+    "cloudflare/informatics-literature-fallback.js",
+    "cloudflare/informatics-research-worker.js",
+    "research/informatics/portal-demo-20261109/research_context.py",
+    "cloudflare/informatics-literature-agent.js",
+    "Informatics/quantum/scientific-review.css"
   ]
 }

@@ -1,0 +1,50 @@
+{
+  "passed": true,
+  "transport": "mocked",
+  "checks": [
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "inlineChat": true,
+      "followUp": true,
+      "automaticProgressAndResults": true,
+      "reloadRestored": true,
+      "duplicateStudyRequests": 0,
+      "emailInput": true,
+      "errors": []
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "inlineChat": true,
+      "followUp": true,
+      "automaticProgressAndResults": true,
+      "reloadRestored": true,
+      "duplicateStudyRequests": 0,
+      "emailInput": true,
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "width": 1440,
+      "inlineChat": true,
+      "followUp": true,
+      "automaticProgressAndResults": true,
+      "reloadRestored": true,
+      "duplicateStudyRequests": 0,
+      "emailInput": true,
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "inlineChat": true,
+      "followUp": true,
+      "automaticProgressAndResults": true,
+      "reloadRestored": true,
+      "duplicateStudyRequests": 0,
+      "emailInput": true,
+      "errors": []
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+{
+  "stagingBase": "13cef396fa92947af4ae4b66bc8f0d2b88d805b4",
+  "note": "Preserved the newer portal release. Regenerated combined Atlas sources and exports after rebase. Superseded in-flight export verification ended when the source dataset changed; the final combined revision is verified again."
+}

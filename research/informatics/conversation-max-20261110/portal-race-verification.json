@@ -1,0 +1,171 @@
+{
+  "paidStudyCalls": 0,
+  "hardwareJobs": 0,
+  "gpuJobs": 0,
+  "processAudioMuted": true,
+  "turns": [
+    {
+      "scenario": "Login transition preserves earlier truthful unauthenticated checks",
+      "question": "And now—is my portal credit verified, and did logging in change the CUDA-Q connection?",
+      "answer": "UNIVERSAL ONE\nYes—your portal is now authenticated, with 1 funded credit verified.\n\nLogging in changed your funded-study permission, not the CUDA-Q connection. CUDA-Q is connected for supported workflows using local CPU simulation, not a paid GPU service. Login did not switch it on, and credit verification itself has not launched a calculation.",
+      "portal": true,
+      "elapsedMs": 29261,
+      "providerResponses": [
+        {
+          "id": "resp_00bf67003010037e016af2a06550e487d0b5c08b21e08227a9",
+          "requestedReasoning": "max",
+          "providerReasoning": "max",
+          "status": "completed"
+        }
+      ]
+    }
+  ],
+  "requests": [
+    {
+      "path": "/quantum/command",
+      "status": 200,
+      "question": "And now—is my portal credit verified, and did logging in change the CUDA-Q connection?",
+      "sessionHeaderPresent": false,
+      "portalHeaderPresent": false,
+      "response": {
+        "action": "research",
+        "question": "",
+        "provider_response_id": "resp_0c53bf1c74cf4a42016af2a061fce487d0a7b303e1a22a88e2",
+        "usage": {
+          "input_tokens": 897,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 20,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 917
+        },
+        "qaSpend": {
+          "limitUSD": 0.5,
+          "chargedUpperUSD": 0.012212500000000015,
+          "calls": [
+            {
+              "path": "/responses",
+              "model": "gpt-6-astra",
+              "inputTokenUpper": 13062,
+              "outputTokenUpper": 1400,
+              "boundMethod": "UTF-8 bytes plus framing",
+              "reservedUSD": 0.233275,
+              "chargedUpperUSD": 0.012212500000000001,
+              "usage": {
+                "input_tokens": 897,
+                "input_tokens_details": {
+                  "cache_write_tokens": 0,
+                  "cached_tokens": 0
+                },
+                "output_tokens": 20,
+                "output_tokens_details": {
+                  "reasoning_tokens": 0
+                },
+                "total_tokens": 917
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "path": "/research",
+      "status": 200,
+      "question": "And now—is my portal credit verified, and did logging in change the CUDA-Q connection?",
+      "sessionHeaderPresent": true,
+      "portalHeaderPresent": true,
+      "response": {
+        "answer": "Yes—your portal is **now authenticated**, with **1 funded credit verified**.\n\nLogging in changed your funded-study permission, **not the CUDA-Q connection**. CUDA-Q is connected for supported workflows using **local CPU simulation**, not a paid GPU service. Login did not switch it on, and credit verification itself has not launched a calculation.",
+        "sources": [],
+        "model": "gpt-6-astra",
+        "reasoning": "max",
+        "providerResponses": [
+          {
+            "id": "resp_00bf67003010037e016af2a06550e487d0b5c08b21e08227a9",
+            "requestedReasoning": "max",
+            "providerReasoning": "max",
+            "status": "completed"
+          }
+        ],
+        "version": "research-20261026-daytab-v1",
+        "knowledgeVersions": {
+          "approvedYouth": {
+            "sourceBatch": "batch-f164c8325ea5f9c9.json",
+            "sourceSHA256": "f164c8325ea5f9c989c29524518b598913508117712826dc408f592b7f99a723",
+            "approvedAt": "2026-11-02",
+            "publications": 105
+          },
+          "biofeedback": {
+            "version": "lab-biofeedback-20261105-ratings",
+            "publications": 63
+          },
+          "publicGenes": "public-gene-data-20261109-v1",
+          "literature": "literature-20261110-v2"
+        },
+        "usage": {
+          "totalTokens": 7066,
+          "qaSpend": {
+            "limitUSD": 1.6893375000000006,
+            "chargedUpperUSD": 0.12462499999999999,
+            "calls": [
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 41329,
+                "outputTokenUpper": 16384,
+                "boundMethod": "UTF-8 bytes plus framing",
+                "reservedUSD": 1.3358125,
+                "chargedUpperUSD": 0.124625,
+                "usage": {
+                  "input_tokens": 6098,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 6095,
+                    "cached_tokens": 0
+                  },
+                  "output_tokens": 968,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 893
+                  },
+                  "total_tokens": 7066
+                }
+              }
+            ]
+          }
+        },
+        "retrieval": {
+          "required": true,
+          "sourceCount": 1,
+          "contextMessages": 4,
+          "previousReferences": 0
+        }
+      }
+    }
+  ],
+  "blockedMutations": [],
+  "errors": [],
+  "portalChecks": [
+    {
+      "status": 200,
+      "authenticated": false,
+      "credit": 0,
+      "available": true,
+      "hasStudy": false,
+      "error": null
+    },
+    {
+      "status": 200,
+      "authenticated": true,
+      "credit": 1,
+      "available": true,
+      "hasStudy": false,
+      "error": null
+    }
+  ],
+  "portalLoginStatus": 200,
+  "delayedAnonymousResponsePreservedLogin": true,
+  "passed": true
+}

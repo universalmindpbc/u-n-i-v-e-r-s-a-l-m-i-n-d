@@ -1,0 +1,16 @@
+import {guardedCommand} from './command-budget.mjs';
+import assert from 'node:assert/strict';import fs from 'node:fs/promises';import path from 'node:path';
+import {chromium} from '/Users/benkorbel/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs';
+const out='/Users/benkorbel/Documents/m o d u l 8 i n f i n i t y/i n f o r m a t i c s/research/universal-one-quantum-20261109';
+const server=await chromium.launchServer({executablePath:'/Users/benkorbel/Library/Caches/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-mac-arm64/chrome-headless-shell',headless:true,args:['--mute-audio','--autoplay-policy=user-gesture-required']});assert(server.process().spawnargs.includes('--mute-audio'));const browser=await chromium.connect(server.wsEndpoint());let context,page,count=0;const commands=[],network=[],answers=[];
+try{
+ context=await browser.newContext({viewport:{width:1440,height:1000},storageState:'/private/tmp/um-quantum-reasoning-session.json'});
+ await context.route('https://informatics-universal-one-staging.universalmind.workers.dev/**',route=>{const r=route.request(),p=new URL(r.url()).pathname;if(p==='/quantum/question')return route.abort();if(p==='/quantum/command'){if(++count>4)return route.abort();return guardedCommand(route);}if(p==='/research')return route.abort();return route.continue();});
+ page=await context.newPage();page.on('response',async r=>{if(r.url().includes('workers.dev')){network.push({path:new URL(r.url()).pathname,status:r.status()});if(r.url().endsWith('/quantum/command'))commands.push(await r.json());}});
+ await page.goto('https://staging.universalmind.tv/informatics/?entry=research&area=quantum',{waitUntil:'domcontentloaded'});await page.waitForFunction(()=>window.UniversalOneQuantum?.available());await page.locator('.uo .iam-realtime-voice__summon').click();
+ for(const q of ['What is the progress of my saved Quantum study?','Show the results of my saved study.','Please draft a question about OXTR occupancy and Phi Ratio. Do not run it.','Run my saved OXTR study again.']){
+  const n=await page.locator('.uo-message[data-role=assistant]').count();await page.locator('#uo-question').fill(q);await page.locator('[data-send]').click();await page.waitForFunction(n=>document.querySelectorAll('.uo-message[data-role=assistant]').length>n,n,{timeout:90000});answers.push({question:q,answer:await page.locator('.uo-message[data-role=assistant]').last().innerText()});
+ }
+ assert.deepEqual(commands.map(x=>x.action),['status','results','draft','start']);assert(network.some(x=>x.path.startsWith('/agent/studies/')&&x.status===200));assert(!network.some(x=>x.path==='/quantum/question'));assert.match(answers[3].answer,/already complete/);
+ await page.screenshot({path:path.join(out,'staging-commands.png')});const report={processAudioMuted:true,newStudies:0,commands,answers,network};await fs.writeFile(path.join(out,'staging-command-verification.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report));
+}finally{if(page){await page.evaluate(()=>window.UniversalOneResearch?.close()).catch(()=>{});for(const f of page.frames())await f.evaluate(()=>document.querySelectorAll('audio,video').forEach(x=>x.pause())).catch(()=>{});}await context?.close();await browser.close();await server.close();}

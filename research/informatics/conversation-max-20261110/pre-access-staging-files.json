@@ -1,0 +1,182 @@
+{
+  "passed": true,
+  "sourceCommit": "1a555b62e",
+  "integratedBaseline": "0494c2be5",
+  "datasetVersion": "ed4253c9183132baa45a17022637762937e7ed71615fc7f845542180b230fc84",
+  "files": [
+    {
+      "file": "Informatics/chapters/quantum.html",
+      "bytes": 333424,
+      "sha256": "0bf7e8061493fa5380d37a9614bc4c97bbbb3ad67ee66c718e4affe1453b1022",
+      "servedSHA256": "9099a9991f0882c4aee392267885e568368fb83812454dac52d5d592e77d7c60",
+      "cloudflareBeaconExcluded": true,
+      "matched": true
+    },
+    {
+      "file": "Informatics/exports/manifest-ed4253c9183132baa45a17022637762937e7ed71615fc7f845542180b230fc84.json",
+      "bytes": 2399216,
+      "sha256": "b406c8eb9053cafd70a9edd94900f80e4b499d3f651614216371e068489d8e23",
+      "servedSHA256": "b406c8eb9053cafd70a9edd94900f80e4b499d3f651614216371e068489d8e23",
+      "cloudflareBeaconExcluded": false,
+      "matched": true
+    },
+    {
+      "file": "Informatics/exports/manifest.json",
+      "bytes": 2399216,
+      "sha256": "b406c8eb9053cafd70a9edd94900f80e4b499d3f651614216371e068489d8e23",
+      "servedSHA256": "b406c8eb9053cafd70a9edd94900f80e4b499d3f651614216371e068489d8e23",
+      "cloudflareBeaconExcluded": false,
+      "matched": true
+    },
+    {
+      "file": "Informatics/exports/part-3580f4c559ec523c57fb3cf44fdc2c4f46f908d23ec457ceadc50e2d7af283b1.bin",
+      "bytes": 50331648,
+      "sha256": "3580f4c559ec523c57fb3cf44fdc2c4f46f908d23ec457ceadc50e2d7af283b1",
+      "servedSHA256": "3580f4c559ec523c57fb3cf44fdc2c4f46f908d23ec457ceadc50e2d7af283b1",
+      "cloudflareBeaconExcluded": false,
+      "matched": true
+    },
+    {
+      "file": "Informatics/exports/part-5cb29d383f0ea4356b18ac86a0a106164f1232a23a12510dc86fd3d98c7d52a3.bin",
+      "bytes": 50331648,
+      "sha256": "5cb29d383f0ea4356b18ac86a0a106164f1232a23a12510dc86fd3d98c7d52a3",
+      "servedSHA256": "5cb29d383f0ea4356b18ac86a0a106164f1232a23a12510dc86fd3d98c7d52a3",
+      "cloudflareBeaconExcluded": false,
+      "matched": true
+    },
+    {
+      "file": "Informatics/exports/part-a87ec5112d485dcb3349dbdf8170826fff6564e5f47b4e1cd84df3fa37105390.bin",
+      "bytes": 515201,
+      "sha256": "a87ec5112d485dcb3349dbdf8170826fff6564e5f47b4e1cd84df3fa37105390",
+      "servedSHA256": "a87ec5112d485dcb3349dbdf8170826fff6564e5f47b4e1cd84df3fa37105390",
+      "cloudflareBeaconExcluded": false,
+      "matched": true
+    },
+    {
+      "file": "Informatics/exports/part-cca9e69f4d9e3007d049c76fb60af60ec662978f4980520b6bef38eed7117f2b.bin",
+      "bytes": 31062742,
+      "sha256": "cca9e69f4d9e3007d049c76fb60af60ec662978f4980520b6bef38eed7117f2b",
+      "servedSHA256": "cca9e69f4d9e3007d049c76fb60af60ec662978f4980520b6bef38eed7117f2b",
+      "cloudflareBeaconExcluded": false,
+      "matched": true
+    },
+    {
+      "file": "Informatics/exports/part-d7a65918ce7baa6f0425110b0e35f3ef962f88cd36cf1de7c6077e705d9d4700.bin",
+      "bytes": 50331648,
+      "sha256": "d7a65918ce7baa6f0425110b0e35f3ef962f88cd36cf1de7c6077e705d9d4700",
+      "servedSHA256": "d7a65918ce7baa6f0425110b0e35f3ef962f88cd36cf1de7c6077e705d9d4700",
+      "cloudflareBeaconExcluded": false,
+      "matched": true
+    },
+    {
+      "file": "Informatics/exports/part-f81394a546d743ef67d5315a45663f4f9bea3fbf8dbbb1389f3ea0a284c93b5b.bin",
+      "bytes": 50331648,
+      "sha256": "f81394a546d743ef67d5315a45663f4f9bea3fbf8dbbb1389f3ea0a284c93b5b",
+      "servedSHA256": "f81394a546d743ef67d5315a45663f4f9bea3fbf8dbbb1389f3ea0a284c93b5b",
+      "cloudflareBeaconExcluded": false,
+      "matched": true
+    },
+    {
+      "file": "Informatics/index.html",
+      "bytes": 602271,
+      "sha256": "12ab8868c1f5864ca9beb21595230b1cdfd6fda91711b514020eec239998217d",
+      "servedSHA256": "cfbff87998c926ed83408a0a342e967bfc4712f042181bbceaadfaf710bf9ab7",
+      "cloudflareBeaconExcluded": true,
+      "matched": true
+    },
+    {
+      "file": "Informatics/quantum/biology.js",
+      "bytes": 25910,
+      "sha256": "596fc8fb3cbacb8006ccee41604fc2cab0c1aebe47fed0cbaf5defbb8f69ddb9",
+      "servedSHA256": "596fc8fb3cbacb8006ccee41604fc2cab0c1aebe47fed0cbaf5defbb8f69ddb9",
+      "cloudflareBeaconExcluded": false,
+      "matched": true
+    },
+    {
+      "file": "Informatics/quantum/index.html",
+      "bytes": 440408,
+      "sha256": "370d0346d6803bd9b8c3f5f4051b3585ecb420c6c59432bcf9dc96cb570d998a",
+      "servedSHA256": "bd13bb125667affbbebf5d13fa0b2d59c01c1d39e5ea878a57188158193cc36b",
+      "cloudflareBeaconExcluded": true,
+      "matched": true
+    },
+    {
+      "file": "Informatics/quantum/reading/quantum-atlas.csv",
+      "bytes": 694613,
+      "sha256": "808a5c102eef6afedfe80d34877ead4a19771ff7df8d1ab7120fa2e469bdf436",
+      "servedSHA256": "808a5c102eef6afedfe80d34877ead4a19771ff7df8d1ab7120fa2e469bdf436",
+      "cloudflareBeaconExcluded": false,
+      "matched": true
+    },
+    {
+      "file": "Informatics/quantum/reading/quantum-atlas.json",
+      "bytes": 335298,
+      "sha256": "4bc1cfbe26c42b2ab3b535f34fc4e0de37f5b1927b6b0d1f6e8b2e60c56e9a91",
+      "servedSHA256": "4bc1cfbe26c42b2ab3b535f34fc4e0de37f5b1927b6b0d1f6e8b2e60c56e9a91",
+      "cloudflareBeaconExcluded": false,
+      "matched": true
+    },
+    {
+      "file": "Informatics/quantum/reading/quantum-atlas.md",
+      "bytes": 379740,
+      "sha256": "e2e1db5d4ba6b8ca5a28cad2af01049a6ef0b3d515ffc3cf8874384bbab6633b",
+      "servedSHA256": "e2e1db5d4ba6b8ca5a28cad2af01049a6ef0b3d515ffc3cf8874384bbab6633b",
+      "cloudflareBeaconExcluded": false,
+      "matched": true
+    },
+    {
+      "file": "Informatics/read/data.html",
+      "bytes": 184431,
+      "sha256": "e903ae5aae3415874aa6a67c65b347e14237bd83f4e46c7e0112d16669e74500",
+      "servedSHA256": "5d3b4daff1b2b10ad535d7ac12c6ac16645cb8c14be29800216b4941cd618936",
+      "cloudflareBeaconExcluded": true,
+      "matched": true
+    },
+    {
+      "file": "Informatics/universal-one-context.js",
+      "bytes": 4081,
+      "sha256": "b6c7c3be31c13cbba82a1da5cb39d13e513313b46273e4c28dd856edb1488464",
+      "servedSHA256": "b6c7c3be31c13cbba82a1da5cb39d13e513313b46273e4c28dd856edb1488464",
+      "cloudflareBeaconExcluded": false,
+      "matched": true
+    },
+    {
+      "file": "Informatics/universal-one-quantum.js",
+      "bytes": 2993,
+      "sha256": "199e303b2a6fccc306f69535aed234a4776c992199a2308ef3cca96d2fdabb23",
+      "servedSHA256": "199e303b2a6fccc306f69535aed234a4776c992199a2308ef3cca96d2fdabb23",
+      "cloudflareBeaconExcluded": false,
+      "matched": true
+    },
+    {
+      "file": "Informatics/universal-one.js",
+      "bytes": 25657,
+      "sha256": "0f83cccc5b443783928a4fe505d871af7fffa3ffce350d07c4510a163f2cdf53",
+      "servedSHA256": "0f83cccc5b443783928a4fe505d871af7fffa3ffce350d07c4510a163f2cdf53",
+      "cloudflareBeaconExcluded": false,
+      "matched": true
+    }
+  ],
+  "health": {
+    "status": "ready",
+    "profile": "informatics-research",
+    "model": "gpt-6-astra",
+    "reasoning": "max",
+    "version": "research-20261026-daytab-v1",
+    "knowledgeVersions": {
+      "approvedYouth": {
+        "sourceBatch": "batch-f164c8325ea5f9c9.json",
+        "sourceSHA256": "f164c8325ea5f9c989c29524518b598913508117712826dc408f592b7f99a723",
+        "approvedAt": "2026-11-02",
+        "publications": 105
+      },
+      "biofeedback": {
+        "version": "lab-biofeedback-20261105-ratings",
+        "publications": 63
+      },
+      "publicGenes": "public-gene-data-20261109-v1",
+      "literature": "literature-20261110-v2"
+    }
+  },
+  "scope": "All changed mutable Informatics files and every part of the current full dataset. Earlier immutable export revisions retain their prior verification records."
+}

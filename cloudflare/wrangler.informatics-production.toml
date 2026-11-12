@@ -14,6 +14,13 @@ CONNECTORS_ENABLED = "true"
 QUANTUM_PLANNING_ENABLED = "true"
 ASTRA_ENABLED = "true"
 ASTRA_MODEL_TOKEN_LIMIT = "64000"
+RESEARCH_REASONING_EFFORT = "max"
+QUANTUM_DEMO_ENABLED = "true"
+LIVE_LITERATURE_ENABLED = "true"
+PERPLEXITY_ENABLED = "true"
+PERPLEXITY_TOTAL_LIMIT_USD = "1"
+PERPLEXITY_AGENT_ENABLED = "true"
+PERPLEXITY_AGENT_TOTAL_LIMIT_USD = "3"
 
 [[ratelimits]]
 name = "CONNECTOR_LIMIT"
@@ -28,6 +35,13 @@ simple = {limit = 12, period = 60}
 [[durable_objects.bindings]]
 name = "BUDGET"
 class_name = "ResearchBudget"
+
+# Preserve the single funded demo pool and discovery allowances across both sites.
+# Existing production studies and ordinary chat quotas retain their own BUDGET.
+[[durable_objects.bindings]]
+name = "SHARED_RESEARCH_BUDGET"
+class_name = "ResearchBudget"
+script_name = "informatics-universal-one-staging"
 
 [[migrations]]
 tag = "v1"

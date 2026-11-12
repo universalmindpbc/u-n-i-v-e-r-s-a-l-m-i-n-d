@@ -1,0 +1,21 @@
+{
+  "shared": {
+    "source_sha256": "8dad858a93575e2a343cace52f78826ffbfc7b54a90f3acae82c4414f1ac4c1a",
+    "build": "informatics-astra-staging:804f4105-b8ff-4fb8-8bcc-6f6f2f1db705",
+    "status": "SUCCEEDED",
+    "tests": 18,
+    "imageDigest": "sha256:710b8cff7ac5d5ff169d552695b89f67bb2508a4e2c359b2975aa19e2e9a6b42",
+    "activation": "awaiting approval",
+    "currentImageDigest": "sha256:82a80f28aaf412402c8baf16a90065fba7d6a069c1b35dd5e10bd9b75e694284"
+  },
+  "portal": {
+    "source_sha256": "6f6f6bf5947d4a21d3ee84c7d35f1525ced9df8bc09fc2b39db0d5472294e12e",
+    "build": "informatics-astra-staging:fbdd89af-c1a2-4137-885e-5d898f4ebb3f",
+    "status": "SUCCEEDED",
+    "imageDigest": "sha256:2c45bb478da306f39269c7c62a53fdddf99cc8b918db374c0534e1351fb3b27f",
+    "activation": "Active",
+    "stackStatus": "UPDATE_COMPLETE",
+    "permissionsChanged": false
+  },
+  "newQuantumJobs": 0
+}

@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "checks": [
+    "Active spacecraft selection and native source flags",
+    "Missing plasma values and signed Bz preserved",
+    "Correct X-ray band and contamination masks",
+    "Duplicate active observations rejected",
+    "Zoom keeps the focal time fixed and respects bounds/minimum span",
+    "Zoom-in/out round trip",
+    "Kp uses eight complete UTC intervals",
+    "Missing Kp remains null with a false mask",
+    "Future and incomplete intervals excluded",
+    "Delayed feed flagged",
+    "Invalid and duplicate inputs rejected",
+    "Current and legacy NOAA formats supported"
+  ]
+}

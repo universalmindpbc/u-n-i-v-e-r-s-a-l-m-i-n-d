@@ -94,11 +94,12 @@ research=read('research.html');m9models=extracted['geometry']['9']
 geo=[para('Fibonacci sequence','h2'),para('M1–M1001 · core calculations verified'),para('M9 / P24','h2')]
 for m in m9models:geo += [para(m['title'],'h2')]+[para(m[k]) for k in ['description','sequence','convention','calculation'] if m[k]]
 geo+=blocks(section(research,'<section id="epsilon-hypothesis"','<div class="downloads"'))
+geo+=blocks(section(research,'<section id="e8-view"','<section id="odom-view"'))
 geo+=blocks(section(research,'<section id="odom-view"','<div class="workspace"'))
 geo+=blocks(section(research,'<section id="family-view"','<div class="intro"'))
 geo+=blocks(section(research,'<section id="m9-comparison"','<details class="formation-details"><summary>Notable'))
 geo=[b for b in geo if b['text'] not in ['M family','M9 FAMILY · COMPARATIVE GEOMETRY','MATHEMATICAL CONTEXT','PHI AND FIBONACCI']]
-add('geometry',geo,['research.html','research.js','pilot-v1/index.json'],data={'record_explanations':extracted['geometry'],'records':json.loads(read('pilot-v1/index.json'))['records']},related=[{'label':label,'url':BASE+file} for file,label in [('pilot-v1/m1-m1001.json','Full M1–M1001 JSON'),('pilot-v1/m1-m1001-csv.zip','Complete CSV bundle'),('pilot-v1/m1-m1001-data.zip','Full data bundle'),('pilot-v1/m9-reduction-audit.json','Arithmetic audit')]])
+add('geometry',geo,['research.html','research.js','pilot-v1/index.json'],data={'record_explanations':extracted['geometry'],'records':json.loads(read('pilot-v1/index.json'))['records'],'e8_geometry':json.loads(read('pilot-v1/e8-m9-p24.json'))},related=[{'label':label,'url':BASE+file} for file,label in [('pilot-v1/m1-m1001.json','Full M1–M1001 JSON'),('pilot-v1/m1-m1001-csv.zip','Complete CSV bundle'),('pilot-v1/m1-m1001-data.zip','Full data bundle'),('pilot-v1/m9-reduction-audit.json','Arithmetic audit')]])
 mol=read('molecular/index.html');collection=section(mol,'<section id="collection-panel"','<section id="detail-panel"')
 mn=blocks(collection,BASE+'molecular/')
 mn+=blocks(section(mol,'<section id="representation-controls"','<section class="source-summary"'),BASE+'molecular/')

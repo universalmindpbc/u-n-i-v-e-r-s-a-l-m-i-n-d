@@ -1,0 +1,32 @@
+{
+  "date": "2026-11-10",
+  "source_commit": "80fc7d2ed4a6d8acae02c4dfe484100466b762d9",
+  "staging_url": "https://staging.universalmind.tv/informatics/spacetime/",
+  "production_modified": false,
+  "deployment": "Existing Panthur scoped FTP deployment; index uploaded last.",
+  "results": {
+    "http": "16 source files verified; MIME, noindex, CORS and public discovery exclusions checked; MP4 range request returned 206 and exactly 1024 requested bytes.",
+    "browser": "320, 390, 1024 and 1440px; real CDP two-finger pinch and touch pan; fixed clock; reset; all Zen patterns; all five live NOAA selections and JSON exports; Research regression checks.",
+    "media": "45-second H.264 MP4, no audio track, faststart; autoplays with no user gesture and loops in desktop/mobile Chromium; no playback buttons. Dedicated process-level mute confirmed and browsers closed.",
+    "data": "Original 9425 records and missing masks preserved; five dynamic feed registrations; active spacecraft, native fields and gaps verified; GOES energy-band selection and contamination masks checked.",
+    "mathematics": "All existing math/source checks pass; 121 independent C-reference Timewave points retain max absolute error 2.22e-16."
+  },
+  "boundaries": [
+    "Physical iPhone Safari remains for Ben to proof; emulated Chromium is not equivalent.",
+    "Online sentiment and hostility/bullying are selectable comparison intents with no connected social provider.",
+    "No relationship, causal finding or chaos/coherence analysis is claimed.",
+    "Universal One remains a design preview."
+  ],
+  "kernel_sha256": "1638b1785a1d37c34230f201d9ae0cd9665cdc455faf39660834587ae140e2fc",
+  "evidence": [
+    "implementation.json",
+    "navigation-data-verification.json",
+    "kernel-verification.json",
+    "staging/http-verification.json",
+    "staging/verification.json",
+    "staging/media-verification.json",
+    "staging/patterns-desktop.png",
+    "staging/patterns-mobile.png",
+    "staging/weather-mobile.png"
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "version": "quantum-question-v3",
+  "id": "7f62f1ec-b4e9-4797-b642-41e8a70c10f9",
+  "createdAt": "2026-11-09T20:16:07.128Z",
+  "question": "Test whether Fibonacci spacing, Phi Ratio and M9 P24 Alpha, Beta, Gamma and Epsilon improve transcription factor occupancy prediction around OXTR. Use the supported CPU recipe and recorded measurements, consult available primary literature, and retain Astra Max and both Gemini High scientific reviews. Do not submit any new quantum hardware or paid GPU job.",
+  "model": "gpt-6-astra",
+  "provider_response_id": "resp_0cd61e5b7c90355e016af22a04e95c87d08a9bb2679d3b5aab",
+  "route": "oxtr_occupancy",
+  "allowance": {
+    "allowed": true,
+    "unit": "AI questions",
+    "periods": {
+      "day": {
+        "key": "2026-11-09T00:00:00.000Z",
+        "used": 8,
+        "limit": 30,
+        "resetAt": "2026-11-10T00:00:00.000Z",
+        "remaining": 22
+      },
+      "week": {
+        "key": "2026-11-09T00:00:00.000Z",
+        "used": 8,
+        "limit": 120,
+        "resetAt": "2026-11-16T00:00:00.000Z",
+        "remaining": 112
+      },
+      "month": {
+        "key": "2026-11-01T00:00:00.000Z",
+        "used": 8,
+        "limit": 300,
+        "resetAt": "2026-12-01T00:00:00.000Z",
+        "remaining": 292
+      }
+    },
+    "resetAt": null,
+    "hardware": {
+      "available": false,
+      "reason": "The approved Study 01 batch is recorded separately. New hardware submissions are not enabled through this question endpoint."
+    }
+  },
+  "study": {
+    "id": "7c15c156-c1cb-4332-8f08-822156fb366b",
+    "version": "oxtr-follow-through-v1"
+  },
+  "status": "agent_running",
+  "message": "Astra will analyse the saved measurements and public DNA evidence. No new Aquila run will be submitted.",
+  "reports": {
+    "classical": null,
+    "simulation": null,
+    "quantum": null,
+    "comparison": null
+  },
+  "routing_receipt": {
+    "model": "gpt-6-astra",
+    "provider_response_id": "resp_0cd61e5b7c90355e016af22a04e95c87d08a9bb2679d3b5aab",
+    "total_tokens": 1553,
+    "service_tier": "default"
+  },
+  "agent": {
+    "id": "7c15c156-c1cb-4332-8f08-822156fb366b",
+    "version": "oxtr-follow-through-v1",
+    "question": "Test whether Fibonacci spacing, Phi Ratio and M9 P24 Alpha, Beta, Gamma and Epsilon improve transcription factor occupancy prediction around OXTR. Use the supported CPU recipe and recorded measurements, consult available primary literature, and retain Astra Max and both Gemini High scientific reviews. Do not submit any new quantum hardware or paid GPU job.",
+    "status": "queued",
+    "stage": "question",
+    "message": "Astra will analyse the saved measurements and public DNA evidence. No new Aquila run will be submitted.",
+    "createdAt": "2026-11-09T20:16:07.141Z",
+    "updatedAt": "2026-11-09T20:16:07.141Z",
+    "events": [],
+    "policy": {
+      "newAquilaUSD": 0,
+      "newPaidGPUUSD": 0,
+      "maxModelCalls": 4,
+      "requireGeminiReview": true,
+      "maxModelTokens": 64000
+    },
+    "routing_receipt": {
+      "model": "gpt-6-astra",
+      "provider_response_id": "resp_0cd61e5b7c90355e016af22a04e95c87d08a9bb2679d3b5aab",
+      "total_tokens": 1553,
+      "service_tier": "default"
+    },
+    "report": null,
+    "delivery": null
+  }
+}

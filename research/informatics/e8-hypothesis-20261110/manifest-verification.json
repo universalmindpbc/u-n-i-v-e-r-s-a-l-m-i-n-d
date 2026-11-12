@@ -1,0 +1,221 @@
+{
+  "passed": true,
+  "changedPublicFiles": [
+    {
+      "path": "Informatics/atlas-guides/computer-vision-atlas.csv",
+      "sha256": "24e5c2b8cefae9310cb0a9a4622e28dbd6aa5e644a7b4599f1b29f2f3ad33394"
+    },
+    {
+      "path": "Informatics/atlas-guides/computer-vision-atlas.json",
+      "sha256": "85e6668665f2a8f3b221467e03abd33752fe26bc8c16baa3013c31c77af6f926"
+    },
+    {
+      "path": "Informatics/atlas-guides/computer-vision-atlas.md",
+      "sha256": "16e9d01b51de393baea95978f043d71c24b604df63acb92dd738cec1bb3cd97b"
+    },
+    {
+      "path": "Informatics/atlas-guides/geometry-atlas.csv",
+      "sha256": "555a581c3ca270449686dc878afd66f659fa9e9dc63898591eb6904428fe3e2c"
+    },
+    {
+      "path": "Informatics/atlas-guides/geometry-atlas.json",
+      "sha256": "50b61e2708e364a700b1161be89e5fecfd137966e22822423143293a1b111c49"
+    },
+    {
+      "path": "Informatics/atlas-guides/geometry-atlas.md",
+      "sha256": "a8834421fc0ecffb4acf3f0cef7397041214def6a648b0204e33398ce9a09df2"
+    },
+    {
+      "path": "Informatics/atlas-guides/language-atlas.csv",
+      "sha256": "4866f4a24c9f6babd36ec9328fe7e71a234f456e170361bc99e0d54f659d295a"
+    },
+    {
+      "path": "Informatics/atlas-guides/language-atlas.json",
+      "sha256": "f35bc9de09b0feaadf6c3f4e4c1213e4847cd2f7b04b71c11c34aa3cd942fa8f"
+    },
+    {
+      "path": "Informatics/atlas-guides/language-atlas.md",
+      "sha256": "2de3bfa37a166a0bd3e32193a870d3ba78df87d3e922e4891bebbbf171387f72"
+    },
+    {
+      "path": "Informatics/atlas-guides/vision-atlas.csv",
+      "sha256": "825744158e9c234b8891c5e7b9f317a0092824c8448a771d763b71376c9d2c7e"
+    },
+    {
+      "path": "Informatics/atlas-guides/vision-atlas.json",
+      "sha256": "daebf4929bbbe0a7cd2117823671d7b7478f55da1e844ae14acfa6760d118b85"
+    },
+    {
+      "path": "Informatics/atlas-guides/vision-atlas.md",
+      "sha256": "50a1298a7bf7433e5d38913f9551b40ec310c94838e69b7898f2ea787c049a20"
+    },
+    {
+      "path": "Informatics/chapters/about.html",
+      "sha256": "81e7af9f73c27c01dbace376b548a909819e0c9ce9ba4ababe198ead872de73d"
+    },
+    {
+      "path": "Informatics/chapters/connect.html",
+      "sha256": "f00b12a53a9f2d00f821997341b47f2e0ea7edc110e2bd7c56e25be022664905"
+    },
+    {
+      "path": "Informatics/chapters/geometry.html",
+      "sha256": "e3372699f1cefda4555ae7301b06381ec693274f590b18f3985fd366ed5ba23b"
+    },
+    {
+      "path": "Informatics/chapters/language.html",
+      "sha256": "68f4068c171f10b4caa88fa00b961f2e339c874b20d61c78557d8afe877a3c38"
+    },
+    {
+      "path": "Informatics/chapters/molecular.html",
+      "sha256": "12c3a86b8e3ad64cdbb9753520d1fdb6ea2cbe118a45a4898b758add8230e7d8"
+    },
+    {
+      "path": "Informatics/chapters/partners.html",
+      "sha256": "9442b90bc35368bf57382772ef8591cc0fc39da14ca643fa2b7e863ab8689637"
+    },
+    {
+      "path": "Informatics/chapters/quantum.html",
+      "sha256": "afa6b36a23f29e93e19ae3f20e17fb73e5f0d60527f0edbce44d4bec0338f49e"
+    },
+    {
+      "path": "Informatics/chapters/research.html",
+      "sha256": "7b9e2d536048500e879896868bcf5bfd79a0595d338f4d2ed1a915dcc15322b0"
+    },
+    {
+      "path": "Informatics/chapters/sound.html",
+      "sha256": "6f9b5e9f9d51b4e2cc39139da459cd51d41a158af2ac142227807321a718f88a"
+    },
+    {
+      "path": "Informatics/chapters/transcription.html",
+      "sha256": "df4567ce527c7e06d0cddc5cee7f8dc6b8441c101dadca49d9e023902ab75d89"
+    },
+    {
+      "path": "Informatics/chapters/vision.html",
+      "sha256": "2651c36a14601196a82b39cfac24c792b5a486ffbf0bb78e51d905ec32a6b63b"
+    },
+    {
+      "path": "Informatics/exports/manifest.json",
+      "sha256": "af9e0bc0210a07d75cb46ae66720c1fb317453ed0609b92df40f0a6501a1643f"
+    },
+    {
+      "path": "Informatics/index.html",
+      "sha256": "869005e85a7d38fcc2ce2790d1bcae726d4d783f8d1ff98f827948ea5909a370"
+    },
+    {
+      "path": "Informatics/pilot-v1/M1-M1001-CSV-README.txt",
+      "sha256": "61095096bc519d4af88bd58990786e2b97f2085424d2454936aa0a6300a8227d"
+    },
+    {
+      "path": "Informatics/pilot-v1/M1-M1001-README.txt",
+      "sha256": "9b00deacbc8bde4c9cf525caba71b7fffa425749f533b6e7396fadd1d0828a1d"
+    },
+    {
+      "path": "Informatics/pilot-v1/csv-records/m9.csv",
+      "sha256": "a2d73c0a03188db589dd86acea143f43636550588043bfb0c9337aa182e8ad34"
+    },
+    {
+      "path": "Informatics/pilot-v1/csv-shared/dataset.csv",
+      "sha256": "ab78911801d5e89d51d68f797392ea4e507170d651f1724ee22f48d2759bd2ac"
+    },
+    {
+      "path": "Informatics/pilot-v1/csv-shared/e8-m9-p24.csv",
+      "sha256": "d139aa969caaac51b4793b8453c26b0d27878b51d007893629fc027a39791b9a"
+    },
+    {
+      "path": "Informatics/pilot-v1/csv-shared/index.csv",
+      "sha256": "3a053b4242a4500bf516ea625ec932abdf3bda0cd2e1df18158e1c2378e5ab91"
+    },
+    {
+      "path": "Informatics/pilot-v1/csv-shared/m1-m1001.csv",
+      "sha256": "ab78911801d5e89d51d68f797392ea4e507170d651f1724ee22f48d2759bd2ac"
+    },
+    {
+      "path": "Informatics/pilot-v1/dataset.json",
+      "sha256": "2c217f87bb29aa36285f2c74463a833a5a21afbeca711fdaff5b7c9892d86a1f"
+    },
+    {
+      "path": "Informatics/pilot-v1/e8-m9-p24.json",
+      "sha256": "7205620a169193e400ad3ccb983c34ba902f7650551163b30d27cdf4ffbea570"
+    },
+    {
+      "path": "Informatics/pilot-v1/index.json",
+      "sha256": "31329d27da1824f59b08fe1b43ab35e621afde4c902c9a5fd3032efc3c92dfd9"
+    },
+    {
+      "path": "Informatics/pilot-v1/m1-m1001-csv.zip",
+      "sha256": "847bc36e4d6c041fef1eabca64387c8ed4784541319aabd9797d639b8c3ad7fa"
+    },
+    {
+      "path": "Informatics/pilot-v1/m1-m1001-data.zip",
+      "sha256": "d862d86d27b03440c6aa933fbcdcc79cb070a9578b83060096af18ef3567537e"
+    },
+    {
+      "path": "Informatics/pilot-v1/m1-m1001.json",
+      "sha256": "2c217f87bb29aa36285f2c74463a833a5a21afbeca711fdaff5b7c9892d86a1f"
+    },
+    {
+      "path": "Informatics/pilot-v1/m9.json",
+      "sha256": "fe100c70433b4dc0f6f640b75e5a9306f3a27dcdaccfff8207ca1e1618ba81f6"
+    },
+    {
+      "path": "Informatics/read/atlas/index.html",
+      "sha256": "70e2ebf1a21c12a14417581af702f9ef5b28f7deb9e9f94a56ac1e2829990b66"
+    },
+    {
+      "path": "Informatics/read/atlas/m9.html",
+      "sha256": "25a198276fc0816705732333fa74f3e2dc524bed4697fba3729b7d047b74d774"
+    },
+    {
+      "path": "Informatics/read/computer-vision/index.html",
+      "sha256": "47b1bf9c4c62e3bdd7264eb121e9b3bd630de5ea90b19cf28956736c3644e536"
+    },
+    {
+      "path": "Informatics/read/data.html",
+      "sha256": "9436053557a6591fc688c3667344b1797b89d463a7fcdf4163b373efdf9f41fa"
+    },
+    {
+      "path": "Informatics/read/language/index.html",
+      "sha256": "8fbf63b79e4307f971c9395101566cde50dc3897bfbcab45623749df7607e4e1"
+    },
+    {
+      "path": "Informatics/read/vision/index.html",
+      "sha256": "0d62ffe3018f8021fec509f75fd3efe0fd39eefa1a6373f8c4121569919acecb"
+    },
+    {
+      "path": "Informatics/research.html",
+      "sha256": "d3d9df1a440014973871ae0cafd6a2566a65ed92e4d20b124d918ab8b5787dfc"
+    },
+    {
+      "path": "Informatics/research.js",
+      "sha256": "f19fdd8ae872501abd7701ea9b3ed4eefff58f556dd9129050c9a0355fd1b2cd"
+    },
+    {
+      "path": "Informatics/exports/manifest-0335e712cab8daf9f8b8db3be63af03f8d95f60ff33a8d89db00abc42b1cac96.json",
+      "sha256": "af9e0bc0210a07d75cb46ae66720c1fb317453ed0609b92df40f0a6501a1643f"
+    },
+    {
+      "path": "Informatics/exports/part-1bc8c59ac938fcf10e22c60abfe4b4c27175f0e7dcaae7a2e3a0e6e8e2c16203.bin",
+      "sha256": "1bc8c59ac938fcf10e22c60abfe4b4c27175f0e7dcaae7a2e3a0e6e8e2c16203"
+    },
+    {
+      "path": "Informatics/exports/part-27a4223901d29c140c6d7118327ac69584fa83c142cc8c9a5a9730edd88d081b.bin",
+      "sha256": "27a4223901d29c140c6d7118327ac69584fa83c142cc8c9a5a9730edd88d081b"
+    },
+    {
+      "path": "Informatics/exports/part-47fc7d58195ce26e322099193cb982127fb8534984dc379c74608688ca1b45db.bin",
+      "sha256": "47fc7d58195ce26e322099193cb982127fb8534984dc379c74608688ca1b45db"
+    },
+    {
+      "path": "Informatics/exports/part-92ac2be4de039dd07a4aceb9267f5f1c9300085508a82a9530571ea8b14e93e3.bin",
+      "sha256": "92ac2be4de039dd07a4aceb9267f5f1c9300085508a82a9530571ea8b14e93e3"
+    },
+    {
+      "path": "Informatics/exports/part-c7328534ef115cad8b1e1f6f0449c39e6b35344a4a8d8b89f92350ecd1db45ae.bin",
+      "sha256": "c7328534ef115cad8b1e1f6f0449c39e6b35344a4a8d8b89f92350ecd1db45ae"
+    },
+    {
+      "path": "Informatics/exports/part-f4be5526d343fda07e852d6fb19e8632fdd81b1af634265ab5b50304a3cb160e.bin",
+      "sha256": "f4be5526d343fda07e852d6fb19e8632fdd81b1af634265ab5b50304a3cb160e"
+    }
+  ]
+}

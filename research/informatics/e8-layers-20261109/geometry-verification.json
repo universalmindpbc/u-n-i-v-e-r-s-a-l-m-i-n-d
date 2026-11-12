@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "e8RootsAndProjectionDataUnchanged": true,
+  "nativeAlphaBetaGammaPreserved": true,
+  "gammaTrianglesAtAlphaIndices": [
+    0,
+    4,
+    8,
+    12,
+    16,
+    20
+  ],
+  "betaDoublingPath": [
+    4,
+    8,
+    7,
+    5,
+    1,
+    2,
+    4
+  ],
+  "typedCsvRoundtrip": true,
+  "geometryVersion": "e8-m9-p24-2026-11-09-v2"
+}

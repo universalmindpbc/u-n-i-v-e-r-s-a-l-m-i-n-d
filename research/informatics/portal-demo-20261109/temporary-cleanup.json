@@ -1,0 +1,119 @@
+{
+  "previous": {
+    "removed_task_generated_unused_files": [
+      {
+        "path": "Informatics/exports/part-cd36ede81b423435c062e196cd2dc59c8c118e1fa073a412768b322e171e7b65.bin",
+        "bytes": 50331648
+      },
+      {
+        "path": "Informatics/exports/part-d2a773e2c502140ac75c2401904b2157a46077f37f65000b19dc0ba74d7a0396.bin",
+        "bytes": 30958541
+      },
+      {
+        "path": "Informatics/exports/part-93db56dcd4ba07420483be66a7ba428d4a852fd41ef37252b699fb28486d994b.bin",
+        "bytes": 50331648
+      },
+      {
+        "path": "Informatics/exports/part-c1422870e46f5cddda51d8db8f95a11a9cd80f4a6f5a6b504e2d00368db0bb9c.bin",
+        "bytes": 50331648
+      },
+      {
+        "path": "Informatics/exports/part-0e6fbc61467b2b37f995c1aeabdc64b1ef6e279c0bba71d1dced9a3d6188af7c.bin",
+        "bytes": 50331648
+      },
+      {
+        "path": "Informatics/exports/part-34f1f0d3d2afc5cc729181c60e315737f1b2e9c24f507416a7f1d93d5156ded5.bin",
+        "bytes": 372554
+      },
+      {
+        "path": "research/informatics/portal-demo-20261109/candidate-portal-webkit-1440.png",
+        "bytes": 212523
+      },
+      {
+        "path": "research/informatics/portal-demo-20261109/candidate-portal-chromium-1440.png",
+        "bytes": 176480
+      },
+      {
+        "path": "research/informatics/portal-demo-20261109/candidate-portal-chromium-390.png",
+        "bytes": 96332
+      },
+      {
+        "path": "research/informatics/portal-demo-20261109/candidate-portal-webkit-390.png",
+        "bytes": 120469
+      },
+      {
+        "path": "research/informatics/portal-demo-20261109/template.json",
+        "bytes": 140477
+      },
+      {
+        "path": "Informatics/read/topic-directory.html.fragment",
+        "bytes": 2973
+      }
+    ],
+    "preserved": "All chat history, logs, production, source data, committed releases and current exports."
+  },
+  "additionalRemoved": [
+    {
+      "path": "Informatics/exports/manifest-74936592fae9f6ad8c5a41cbb9fd15cc13ad44aee575b67a2c454a2dfaae770f.json",
+      "bytes": 2398520
+    },
+    {
+      "path": "Informatics/exports/manifest-accbe63dd637e66af3a02bd3043c0b1faa51c3a881b89360147e888900e994a8.json",
+      "bytes": 2398520
+    },
+    {
+      "path": "Informatics/exports/part-00f902497fd9cc939fb933a93b61044ab970a790976cd5f1c9ae99a4e3191025.bin",
+      "bytes": 50331648
+    },
+    {
+      "path": "Informatics/exports/part-44ad1a05b6067eb19f6dd4cdfb132035267011450cec3c0ccff9baaeaa063d83.bin",
+      "bytes": 50331648
+    },
+    {
+      "path": "Informatics/exports/part-5cf7b20a047f675483c28f527efa4d80696169704edac10556d7d65cdaf115f0.bin",
+      "bytes": 30959266
+    },
+    {
+      "path": "Informatics/exports/part-5f53adafaf72c66b50dc87fa7a322e3e1fda0f9f5c2703dfdc97e010bd31442c.bin",
+      "bytes": 30959267
+    },
+    {
+      "path": "Informatics/exports/part-5ffcc0483a64215282d8bfa920ca107df2f0db0bc8c8c73ade48ded6c97afbb1.bin",
+      "bytes": 50331648
+    },
+    {
+      "path": "Informatics/exports/part-631fc27f793a61880582904a33c748e4bb4cdc5454dc0fae0a3bfb02e8937f21.bin",
+      "bytes": 50331648
+    },
+    {
+      "path": "Informatics/exports/part-8a58213f1ea1af09f7487f53daa6d8079327dc3199fb6cbe461bf2af897f3cb0.bin",
+      "bytes": 50331648
+    },
+    {
+      "path": "Informatics/exports/part-a74d538836b1c87de44ec48a56a6ac2f4991bf4021b37f47baa257354f43bcf4.bin",
+      "bytes": 50331648
+    },
+    {
+      "path": "Informatics/exports/part-a87d9d0cae5dca2f6f7f8a46d263b99e2710d0f3c9ce30be57579269b4c368d1.bin",
+      "bytes": 50331648
+    },
+    {
+      "path": "Informatics/exports/part-c09c4242e1c7c5abbd6554cc78d0bc4c2c602aa30f576716eb3ff141e015a156.bin",
+      "bytes": 373284
+    },
+    {
+      "path": "Informatics/exports/part-f27346b0ad752e5240c18a689c4610965ee018d211f3cb52f6a1e2300fe8ee82.bin",
+      "bytes": 50331648
+    },
+    {
+      "path": "Informatics/exports/part-f33ad29e80616a184c2f1a9e8455f38245c23ab03b962b1265e2dbc93ae464a8.bin",
+      "bytes": 373289
+    },
+    {
+      "path": "Informatics/read/topic-directory.html.fragment",
+      "bytes": 2973
+    }
+  ],
+  "additionalBytes": 470118303,
+  "freeBytes": 45402083328
+}

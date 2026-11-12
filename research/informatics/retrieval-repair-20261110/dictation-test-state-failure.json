@@ -1,0 +1,17 @@
+{
+  "mode": "dictation",
+  "newStudies": 0,
+  "syntheticInput": true,
+  "processAudioMuted": true,
+  "network": [
+    {
+      "path": "/quantum/capacity",
+      "status": 200
+    },
+    {
+      "path": "/transcribe",
+      "status": 200
+    }
+  ],
+  "responses": []
+}

@@ -76,7 +76,7 @@
     context.clearRect(0, 0, width, height);
     context.lineCap = "round";
     context.lineJoin = "round";
-    context.lineWidth = 3;
+    context.lineWidth = reducedMotion ? 2 + Math.min(5, level * 24) : 3;
     context.strokeStyle = state === "speaking"
       ? "rgba(228, 190, 123, .96)"
       : (state === "muted" ? "rgba(210, 220, 219, .52)" : "rgba(117, 223, 213, .96)");
@@ -115,6 +115,6 @@
     }
   }
 
- return {start:startMicrophoneWaveform,stop:stopMicrophoneWaveform,idle:drawWaveformIdle,getState:()=>({active:!!waveformAnalyser,level:waveformLevel})};
+ return {start:startMicrophoneWaveform,stop:stopMicrophoneWaveform,idle:drawWaveformIdle,attach(canvas){if(!canvases.includes(canvas))canvases.push(canvas);drawWaveformIdle();return()=>{const index=canvases.indexOf(canvas);if(index>=0)canvases.splice(index,1);};},getState:()=>({active:!!waveformAnalyser,level:waveformLevel})};
  };
 })();

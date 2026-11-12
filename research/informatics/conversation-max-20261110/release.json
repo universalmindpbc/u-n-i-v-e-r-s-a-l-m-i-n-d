@@ -1,0 +1,49 @@
+{
+  "passed": true,
+  "sourceCommit": "4b23ecb8f6328bf514b83c31dbfd2d62a8b14f4b",
+  "workerVersion": "8a510a9e-fa8d-4eb3-b779-8a8df07cda34",
+  "stagingURL": "https://staging.universalmind.tv/informatics/quantum/",
+  "conversationTurns": 15,
+  "providerResponses": 21,
+  "allProviderReasoning": "max",
+  "qaUpperBoundUSD": 3.4352874999999994,
+  "approvedQALimitUSD": 5,
+  "studyLaunchAttempts": 0,
+  "hardwareJobsLaunchedByQA": 0,
+  "gpuJobsLaunchedByQA": 0,
+  "liveFileHashMatches": 20,
+  "datasetVersion": "acf50bed6d4095c2acf160861b8b9feb6abe9a6fe18ddc839026257ff5ef293b",
+  "productionModified": false,
+  "productionRef": "02b6f47345e428021dcae8fd4a798ecdfb03969b",
+  "scenarios": [
+    "original CUDA-Q regression",
+    "original CUDA-Q regression",
+    "original CUDA-Q regression",
+    "original CUDA-Q regression",
+    "Disambiguation in plain language",
+    "Correcting the research target without authorizing execution",
+    "Follow-up preserves the corrected target",
+    "Topic switch and requested brevity",
+    "Fresh session rejects an unsupported login claim",
+    "Honest execution limits without a stock refusal",
+    "Natural acknowledgment without launching work",
+    "Fresh session cannot verify a claimed login",
+    "Unverified access is distinct from an exhausted credit",
+    "Actual login is checked on the next message without reloading",
+    "Login transition preserves earlier truthful unauthenticated checks"
+  ],
+  "semanticReview": {
+    "originalCapabilityDefect": "Fixed: generated direct answers, Max provider receipts, same CPU capability before and after login.",
+    "researchCorrection": "GRIN2A preserved in the subsequent unnamed follow-up; gene annotation was retrieved.",
+    "topicSwitch": "Responded in two sentences to the simulation-versus-hardware question.",
+    "unsupportedLoginClaim": "Correctly rejected; broader review found unnecessary refresh guidance and zero-credit inference, both repaired and retested.",
+    "accessTransition": "Final reply describes a new verified login without retracting an earlier accurate unauthenticated check.",
+    "naturalAcknowledgment": "Closed the exchange without starting work.",
+    "portalRace": "Reproduced before repair, three local ordering cases passed after repair, and delayed real staging response verified after deployment."
+  },
+  "limits": [
+    "Live browser checks used dedicated muted Chromium at desktop and mobile dimensions; this run did not operate Safari.",
+    "This release verifies conversation, authentication state and UI response ordering. It does not execute a quantum study or GPU job.",
+    "The initial conversation transport assertions passed while semantic review found additional issues; original responses and failed QA guards are preserved alongside the corrected checks."
+  ]
+}

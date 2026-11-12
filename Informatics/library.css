@@ -140,3 +140,11 @@ body.embedded .library-masthead,body.embedded .library-ambience{display:none}bod
 @media(max-width:640px){.youth-focus .library-intro h1{font-size:32px;overflow-wrap:anywhere}.youth-collection-bar{gap:8px}.youth-scope{font-size:14px}.youth-paper .age-population{padding:12px}}
 
 .youth-nav-icon{display:inline-block;width:16px;height:16px;vertical-align:-3px;flex-shrink:0}.youth-nav-back{transform:rotate(180deg)}
+
+/* Masked-language evidence chapter: scoped editorial hierarchy. */
+.masked-feature{border:1px solid var(--line,#d6dfe3);border-left:4px solid #1468a8;padding:1.4rem;margin:0 0 2rem;border-radius:.25rem}
+.masked-feature h2{margin:.25rem 0 .7rem}.masked-feature p{max-width:74ch}
+.masked-contribution{border-left:2px solid #1468a8;padding:.1rem 0 .1rem 1rem;margin:1rem 0}.masked-contribution p{margin:.35rem 0}
+.masked-index-entry{border-top:1px solid var(--line,#d6dfe3);padding:1rem 0;overflow-wrap:anywhere}.masked-index-entry>summary{cursor:pointer;line-height:1.5}.masked-index-title{font-weight:600}.masked-index-meta,.masked-index-role{display:block;margin-top:.4rem;font-size:.92em}.masked-index-meta{opacity:.78}.masked-index-entry .paper{margin:.8rem 0 0;padding-left:1rem;border-top:0}
+.masked-guide{border-top:1px solid var(--line,#d6dfe3);margin:1.5rem 0;padding-top:1rem}.masked-guide ol{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;padding-left:1.3rem}.masked-guide li{padding-right:1rem}.masked-guide li span{display:block;margin-top:.3rem}.masked-guide details{margin-top:1rem}.masked-guide summary{cursor:pointer;font-weight:600}.masked-guide .register-downloads{display:flex;gap:1rem;flex-wrap:wrap}
+@media(max-width:600px){.masked-guide ol{grid-template-columns:1fr}.masked-feature{padding:1rem}.masked-index-entry .paper{padding-left:0}}

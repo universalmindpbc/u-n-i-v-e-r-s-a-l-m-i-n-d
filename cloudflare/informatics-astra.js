@@ -1,4 +1,6 @@
 // Bounded research sessions; no page-level login. Provider credentials never reach the browser.
+import {publicStudy,deliveryView} from './informatics-study-email.js';
+import {portalIdentity,DEMO_VERSION} from './informatics-quantum-demo.js';
 import {retrieveAstraMemory} from './informatics-astra-memory.js';
 const json=(data,status=200)=>Response.json(data,{status,headers:{'Cache-Control':'no-store'}});
 const terminal=new Set(['complete','failed','cancelled','needs_attention']);
@@ -18,7 +20,10 @@ export async function researchIdentity(request,env){
 }
 export async function ownerAllowed(request,env){return Boolean(await researchIdentity(request,env));}
 async function broker(env,payload){
- const r=await env.BUDGET.get(env.BUDGET.idFromName('astra-owner-v1')).fetch('https://budget/astra',{method:'POST',body:JSON.stringify({astra:payload})});
+ const send=namespace=>namespace.get(namespace.idFromName('astra-owner-v1')).fetch('https://budget/astra',{method:'POST',body:JSON.stringify({astra:payload})});
+ let r=await send(env.BUDGET);
+ // Existing production studies remain local. Portal studies retain the original shared ledger.
+ if(r.status===404&&env.SHARED_RESEARCH_BUDGET&&['get','record','delivery','shared-result','cancel','resume'].includes(payload.op))r=await send(env.SHARED_RESEARCH_BUDGET);
  if(!r.ok){const d=await r.json();throw fail(d.error||'Study service unavailable.',r.status);}return r.json();
 }
 export function astraTokenLimit(env){return ['https://staging.universalmind.tv','https://universalmind.tv'].includes(env.ALLOWED_ORIGIN)&&env.ASTRA_MODEL_TOKEN_LIMIT==='64000'?64000:24000;}
@@ -48,23 +53,34 @@ export async function astraRoute(request,env){
   const body=JSON.parse(text);if(!['pending','claim','update','heartbeat'].includes(body.op))return json({error:'Unknown worker action.'},400);
   return json(await broker(env,body));
  }
+ const shared=path.match(/^\/agent\/studies\/([a-f0-9-]{36})\/result(?:\/(record))?$/);
+ if(shared&&request.method==='GET'){
+  const token=(request.headers.get('Authorization')||'').replace(/^Bearer /,'');
+  if(!/^[a-f0-9]{64}$/.test(token))return json({error:'This results link is invalid or expired.'},403);
+  return json(await broker(env,{op:'shared-result',id:shared[1],token,record:!!shared[2]}));
+ }
  const clientId=await researchIdentity(request,env);
  if(!clientId)return json({error:'Research session required. Reopen Quantum Atlas to reconnect.'},401);
  if(path==='/agent/access')return json({access:'research-session',newAquilaAllowed:false,newPaidGPUAllowed:false});
- const match=path.match(/^\/agent\/studies\/([a-f0-9-]{36})(?:\/(cancel|resume))?$/);
+ const portalId=await portalIdentity(request,env);
+ const match=path.match(/^\/agent\/studies\/([a-f0-9-]{36})(?:\/(cancel|resume|delivery|record))?$/);
  if(!match)return json({error:'Study not found.'},404);
- if(match[2]&&request.method!=='POST')return json({error:'Use POST to cancel.'},405);
- return json(await broker(env,{op:match[2]||'get',id:match[1],clientId}));
+ if(match[2]&&request.method!==(match[2]==='record'?'GET':'POST'))return json({error:'This operation uses a different request method.'},405);
+ if(match[2]==='delivery'){
+  const raw=await request.text();if(raw.length>1000)return json({error:'Email request is too large.'},413);
+  const body=JSON.parse(raw);return json(await broker(env,{op:'delivery',id:match[1],clientId,portalId,email:body.email,enabled:body.enabled===true,resultOrigin:env.ALLOWED_ORIGIN}));
+ }
+ return json(await broker(env,{op:match[2]||'get',id:match[1],clientId,portalId}));
 }
 export async function astraStorage(storage,b){
  return storage.transaction(async txn=>{
   const now=Date.now(),date=new Date(now).toISOString().slice(0,10),month=date.slice(0,7);
   let state=await txn.get('astra')||{tasks:[],daily:{},monthly:{}};
   state.tasks=await Promise.all(state.tasks.map(async t=>await txn.get('study:'+t.id)||t));
-  const safe=t=>{const {lease,...v}=t;return v;};
+  const safe=publicStudy;
   const answer=(d,status=200)=>({data:d,status});
   let result;
-  if(b.op==='pending')return answer({pending:state.tasks.some(t=>!terminal.has(t.status)&&(!t.lease||t.lease.until<now))});
+  if(b.op==='pending')return answer({pending:state.tasks.some(t=>t.version!==DEMO_VERSION&&!terminal.has(t.status)&&(!t.lease||t.lease.until<now))});
   if(b.op==='create'){
    if(b.modelTokenLimit!==undefined&&![24000,64000].includes(b.modelTokenLimit))return answer({error:'Unknown study allowance.'},400);
    if(b.modelTokenLimit===64000&&(!Number.isSafeInteger(b.routingReceipt?.total_tokens)||b.routingReceipt.total_tokens<=0||b.routingReceipt.total_tokens>=64000||b.routingReceipt.service_tier!=='default'))return answer({error:'A standard-price routing receipt is required.'},400);
@@ -76,13 +92,34 @@ export async function astraStorage(storage,b){
    const task={clientId:b.clientId||'legacy-owner',id:crypto.randomUUID(),version:'oxtr-follow-through-v1',requestKey:b.requestKey,question:b.question,status:'queued',stage:'question',message:'Astra will analyse the saved measurements and public DNA evidence. No new Aquila run will be submitted.',createdAt:new Date(now).toISOString(),updatedAt:new Date(now).toISOString(),events:[],policy:{newAquilaUSD:0,newPaidGPUUSD:0,maxModelCalls:4,requireGeminiReview:true,maxModelTokens:b.modelTokenLimit||24000},...(b.routingReceipt?{routing_receipt:b.routingReceipt}:{}),report:null};
    state.tasks.push(task);state.daily[date]=(state.daily[date]||0)+1;state.monthly[month]=(state.monthly[month]||0)+1;result=answer(safe(task));
   }else if(b.op==='claim'){
-   const task=state.tasks.find(t=>!terminal.has(t.status)&&(!t.lease||t.lease.until<now));
+   const task=state.tasks.find(t=>t.version!==DEMO_VERSION&&!terminal.has(t.status)&&(!t.lease||t.lease.until<now));
    if(!task)return answer({task:null});
    task.lease={token:crypto.randomUUID(),until:now+180000};task.status='running';task.updatedAt=new Date(now).toISOString();result=answer({task:safe(task),lease:task.lease.token});
   }else{
    const task=state.tasks.find(t=>t.id===b.id);if(!task)return answer({error:'Study not found.'},404);
-   if(b.clientId!==undefined&&(task.clientId||'legacy-owner')!==b.clientId)return answer({error:'Study not found in this research session.'},404);
+   if(b.clientId!==undefined&&(task.clientId||'legacy-owner')!==b.clientId&&!(task.portalId&&task.portalId===b.portalId))return answer({error:'Study not found in this research session.'},404);
+   const fullRecord=async()=>{if(!task.record)return task.report;const parts=await Promise.all(Array.from({length:task.record.chunks},(_,i)=>txn.get('study-record:'+task.id+':'+i)));if(parts.some(x=>typeof x!=='string'))throw Error('A study record part is unavailable.');return JSON.parse(parts.join(''));};
+   if(b.op==='shared-result'){
+    if(task.status!=='complete'||!task.notification||task.notification.token!==b.token||task.notification.expires<now)return answer({error:'This results link is invalid or expired.'},403);
+    return answer(b.record?await fullRecord():safe(task));
+   }
+   if(b.op==='record')return task.status==='complete'?answer(await fullRecord()):answer({error:'The complete record is available when findings are ready.'},409);
    if(b.op==='get')return answer(safe(task));
+   if(b.op==='delivery'){
+    if(!b.clientId)return answer({error:'Research session required.'},401);
+    if(!b.enabled){delete task.notification;result=answer({delivery:null});}
+    else{
+     const email=typeof b.email==='string'?b.email.trim():'';
+     if(email.length>254||! /^[A-Za-z0-9.!#$%&'*+\/=?^_`{|}~-]+@[A-Za-z0-9](?:[A-Za-z0-9.-]*[A-Za-z0-9])?\.[A-Za-z]{2,63}$/.test(email))return answer({error:'Enter a valid email address.'},400);
+     if(task.notification&&task.notification.email===email&&task.notification.state!=='failed')return answer({delivery:deliveryView(task),resultToken:task.notification.token});
+     if((task.notificationChanges||0)>=3)return answer({error:'The notification change limit for this study is reached.'},429);
+     task.notificationChanges=(task.notificationChanges||0)+1;
+     task.notification={email,resultOrigin:['https://staging.universalmind.tv','https://universalmind.tv'].includes(b.resultOrigin)?b.resultOrigin:undefined,state:'waiting',token:[...crypto.getRandomValues(new Uint8Array(32))].map(x=>x.toString(16).padStart(2,'0')).join(''),eventId:crypto.randomUUID(),expires:now+30*86400000,attempts:0,nextAttempt:now};
+     result=answer({delivery:deliveryView(task),resultToken:task.notification.token});
+    }
+    await txn.put('study:'+task.id,task);return result;
+   }else
+   if(['resume','cancel'].includes(b.op)&&task.version===DEMO_VERSION)return answer({error:'This funded experiment retains its reservation and hardware receipts. Contact the project owner for cancellation or recovery.'},409);
    if(b.op==='resume'){
     if(task.status!=='needs_attention')return answer({error:'Only a paused study can resume.'},409);task.status='queued';task.message='Saved analysis queued to resume within its existing allowance.';delete task.lease;result=answer(safe(task));
    }else if(b.op==='cancel'){
@@ -105,6 +142,6 @@ export async function astraStorage(storage,b){
    }
   }
   for(const task of state.tasks)await txn.put('study:'+task.id,task);
-  await txn.put('astra',{...state,tasks:state.tasks.map(({id,requestKey,status})=>({id,requestKey,status}))});return result;
+  await txn.put('astra',{...state,tasks:state.tasks.map(({id,requestKey,status,version})=>({id,requestKey,status,version}))});return result;
  });
 }

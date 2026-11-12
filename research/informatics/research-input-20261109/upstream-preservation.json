@@ -1,0 +1,35 @@
+{
+  "upstream": "e6efebb0d3d71c88b8d8e58aa086198f5ed83e0f",
+  "checks": [
+    {
+      "file": "Informatics/e8.css",
+      "sha256": "fe6f648a5a61d0b1a3db7d24fb17aa68d0b096ebe6107abd67bfc05b271bc351",
+      "matchesUpstream": true
+    },
+    {
+      "file": "Informatics/e8.js",
+      "sha256": "e367582a319155692d21c56c2c0597883354d40efc16316e5f387a49cb309dc6",
+      "matchesUpstream": true
+    },
+    {
+      "file": "Informatics/research.html",
+      "sha256": "3019cf66ca7efcce0c8508139897f41f6e4e7262b13b94b53885d21c8a3d0c5a",
+      "matchesUpstream": true
+    },
+    {
+      "file": "Informatics/research.js",
+      "sha256": "5382da7171d4258e7938b9d3d96a8807ec399f3d81a30dd2b9de518d016d8202",
+      "matchesUpstream": true
+    },
+    {
+      "file": "Informatics/pilot-v1/m9.json",
+      "sha256": "8b1d1eb28565af0b4299bb592c4c2656f565dafeb09a6e5568239784b17ee664",
+      "matchesUpstream": true
+    },
+    {
+      "file": "Informatics/atlas-guides/geometry-atlas.json",
+      "sha256": "e02194b93f3a9eee2354bbd684a5684f65fd5aeeaf265f7f2de946f9278c915b",
+      "matchesUpstream": true
+    }
+  ]
+}

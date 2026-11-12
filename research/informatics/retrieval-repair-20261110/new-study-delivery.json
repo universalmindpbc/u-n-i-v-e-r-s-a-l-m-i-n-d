@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "studyId": "7c15c156-c1cb-4332-8f08-822156fb366b",
+  "checks": [
+    {
+      "width": 1440,
+      "automaticStudyRestore": true,
+      "naturalLanguageAnswer": true,
+      "findingsButtonWorks": true,
+      "closeButtonWorks": true,
+      "paidRequests": 0
+    },
+    {
+      "width": 390,
+      "automaticStudyRestore": true,
+      "naturalLanguageAnswer": true,
+      "findingsButtonWorks": true,
+      "closeButtonWorks": true,
+      "paidRequests": 0
+    }
+  ]
+}

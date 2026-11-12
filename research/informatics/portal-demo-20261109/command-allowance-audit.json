@@ -1,0 +1,32 @@
+{
+  "approvedTotalUSD": 2,
+  "commandLimitUSD": 1.27,
+  "voiceAndTranscriptionReservedUSD": 0.73,
+  "commandAccountedUpperUSD": 1.0142625,
+  "portalAllocation": {
+    "approvedTotalUSD": 2,
+    "priorVoiceUpperUSD": 0.110496,
+    "unreconciledEarlierVoiceReserveUSD": 0.35,
+    "transcriptionReserveUSD": 0.05,
+    "finalVoiceUpperUSD": 0.133568,
+    "voiceTotalUpperUSD": 0.644064,
+    "transferFromUnusedVoiceReserveUSD": 0.05,
+    "blockedCommandPaidCalls": 0
+  },
+  "portalTestCalls": [
+    {
+      "id": "6cd1552a-ec22-43cb-b129-5bd9dd7e9e6f",
+      "chargedUpperUSD": 0,
+      "status": "reconciled",
+      "purpose": "staging portal command verification"
+    },
+    {
+      "id": "20d8b895-2103-453d-a739-e7b5ca407233",
+      "chargedUpperUSD": 0.009700000000000014,
+      "status": "reconciled",
+      "purpose": "staging portal command verification",
+      "providerResponse": "resp_023b620aac25be86016af18700e86c87d09bc07727aed56111"
+    }
+  ],
+  "unreconciledResearchReservationRetainedUSD": 0.88
+}

@@ -1,0 +1,48 @@
+{
+  "limitUSD": 1,
+  "reservedVoiceAndTranscriptionUSD": 1,
+  "calls": [
+    {
+      "id": "f4ec549a-9817-4eaf-8705-209728af189d",
+      "chargedUpperUSD": 0.007674999999999987,
+      "status": "reconciled",
+      "providerResponse": "resp_03a8d90a2359c44f016af15b66e86487d08056f006a4de9bd1"
+    },
+    {
+      "id": "b83706c3-c5cf-483d-897f-64cda60afe78",
+      "chargedUpperUSD": 0.009012500000000007,
+      "status": "reconciled",
+      "providerResponse": "resp_018f2c2f89e406aa016af15b699fe087d0abd9870c8f916697"
+    },
+    {
+      "id": "515b2c63-58ea-4dad-8e5b-12e0a5c1f735",
+      "chargedUpperUSD": 0.014137499999999997,
+      "status": "reconciled",
+      "providerResponse": "resp_0f16bbc3cc502423016af15b6bb06c87d0ae36eb594af7f082"
+    },
+    {
+      "id": "7bbb051b-cb18-4575-bca7-8771bef8108d",
+      "chargedUpperUSD": 0.01647499999999999,
+      "status": "reconciled",
+      "providerResponse": "resp_094d7ebf2ce65a72016af15b6ea2b087d09511eff4701d3269"
+    },
+    {
+      "id": "10320af8-398a-4a4c-be32-22d2f85e74eb",
+      "chargedUpperUSD": 0.007674999999999987,
+      "status": "reconciled",
+      "providerResponse": "resp_06f5ba2749fc20fa016af15ba39f5487d0adbca78658ce1f6b"
+    },
+    {
+      "id": "b93efe26-250a-484f-a447-a2480ccf3035",
+      "chargedUpperUSD": 0.008449999999999985,
+      "status": "reconciled",
+      "providerResponse": "resp_0e2d3590d1e154a2016af15bc10f1087d0948bef025ce64da2"
+    },
+    {
+      "id": "52814303-8d0c-45d1-afcc-dac979734481",
+      "chargedUpperUSD": 0.009525000000000006,
+      "status": "reconciled",
+      "providerResponse": "resp_001d2f88acfa9957016af15bf3569c87d096939784393d91da"
+    }
+  ]
+}

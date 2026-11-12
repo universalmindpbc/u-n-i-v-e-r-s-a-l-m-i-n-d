@@ -1,0 +1,24 @@
+{
+  "registered": true,
+  "mailServerAccepted": true,
+  "studyId": "c49a7769-9949-4a88-b819-38c3a7db56cd",
+  "newStudies": 0,
+  "network": [
+    {
+      "path": "/agent/studies/c49a7769-9949-4a88-b819-38c3a7db56cd",
+      "status": 200
+    },
+    {
+      "path": "/agent/studies/c49a7769-9949-4a88-b819-38c3a7db56cd/delivery",
+      "status": 200
+    },
+    {
+      "path": "/agent/studies/c49a7769-9949-4a88-b819-38c3a7db56cd",
+      "status": 200
+    }
+  ],
+  "recipientExcluded": true,
+  "recipientReceiptPending": false,
+  "recipientConfirmedDelivery": true,
+  "linkIssue": "Navigation removed the results fragment; repair preserves it and opens the report."
+}

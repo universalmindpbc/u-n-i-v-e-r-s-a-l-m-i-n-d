@@ -4,6 +4,17 @@ set -euo pipefail
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 NODE_BIN="${NODE_BIN:-}"
 
+# Retire the cancelled research route through the existing Panthur transport.
+if [[ "${1:-}" == "remove-spacetime" ]]; then
+  export FTP_HOST="${FTP_HOST:-sh00023.pa.smartservers.com.au}"
+  export FTP_USER="${FTP_USER:-stagingdeploy@universalmind.tv}"
+  export FTP_PASS_FILE="${FTP_PASS_FILE:-/private/tmp/um-staging-ftp-pass.txt}"
+  export FTP_KEYCHAIN_SERVICE="${FTP_KEYCHAIN_SERVICE:-universalmind-staging-ftp}"
+  export REMOTE_ROOT=""
+  export MANIFEST_FILE="${MANIFEST_FILE:-$ROOT_DIR/.panthur-staging-deploy-manifest.tsv}"
+  exec "$ROOT_DIR/deploy-panthurlive.sh" remove-spacetime
+fi
+
 # Lab publishes an independent concept route through the existing Panthur transport.
 if [[ "${1:-}" == "lab" ]]; then
   export NODE_BIN="${NODE_BIN:-/Users/benkorbel/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node}"

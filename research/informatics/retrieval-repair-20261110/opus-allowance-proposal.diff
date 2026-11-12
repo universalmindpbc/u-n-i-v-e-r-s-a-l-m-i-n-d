@@ -1,0 +1,5 @@
+--- a/cloudflare/wrangler.informatics-staging.toml
++++ b/cloudflare/wrangler.informatics-staging.toml
+@@
+-PERPLEXITY_AGENT_TOTAL_LIMIT_USD = "1"
++PERPLEXITY_AGENT_TOTAL_LIMIT_USD = "3"

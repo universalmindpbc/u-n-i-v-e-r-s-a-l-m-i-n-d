@@ -1,0 +1,522 @@
+{
+  "newHardwareJobs": 0,
+  "newPaidGPUJobs": 0,
+  "processAudioMuted": true,
+  "oneStudyOnly": true,
+  "resumedId": "7c15c156-c1cb-4332-8f08-822156fb366b",
+  "studyId": "7c15c156-c1cb-4332-8f08-822156fb366b",
+  "status": "complete",
+  "passed": true,
+  "liveProgressAutomatic": true,
+  "findingsVisible": true,
+  "downloads": [
+    "JSON",
+    "CSV"
+  ],
+  "modelSettings": {
+    "version": "high-max-64k-20261109",
+    "astra": {
+      "model": "gpt-6-astra",
+      "effort": "max",
+      "plan_output_tokens": 16384,
+      "report_output_tokens": 16384,
+      "timeout_seconds": 600,
+      "study_token_limit": 64000,
+      "service_tier": "default"
+    },
+    "gemini": {
+      "model": "gemini-4-argon",
+      "thinking_level": "HIGH",
+      "max_output_tokens": 8192,
+      "timeout_seconds": 300
+    }
+  },
+  "totalAstraTokensUpper": 48986,
+  "astraUpperUSD": 2.4493,
+  "reviews": [
+    {
+      "phase": "design",
+      "decision": "approve",
+      "thinking_level": "HIGH",
+      "provider_response_id": "XyvyapTsEquPytMPvPLOuAQ",
+      "accounted_micro_usd": 130500
+    },
+    {
+      "phase": "final",
+      "decision": "approve",
+      "thinking_level": "HIGH",
+      "provider_response_id": "uDXyatvyBfq-xdIPgabauQk",
+      "accounted_micro_usd": 149712
+    }
+  ],
+  "liveLiterature": {
+    "version": "literature-20261110-v2",
+    "retrievedAt": "2026-11-09T20:17:26.803Z",
+    "queries": [
+      "(OXTR) AND (\"transcription factor\" OR binding OR regulation)",
+      "(OXTR) AND (Fibonacci OR \"golden ratio\")"
+    ],
+    "searches": [
+      {
+        "version": "literature-20261110-v2",
+        "status": "retrieved",
+        "query": "(OXTR) AND (\"transcription factor\" OR binding OR regulation)",
+        "searches": [
+          {
+            "source": "PubMed",
+            "status": "retrieved",
+            "query": "(OXTR) AND (\"transcription factor\" OR binding OR regulation)",
+            "total": 645,
+            "receipt": {
+              "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=%28OXTR%29+AND+%28%22transcription+factor%22+OR+binding+OR+regulation%29&retmode=json&retmax=6&sort=relevance&tool=UniversalInformatics",
+              "retrievedAt": "2026-11-09T20:16:59.519Z",
+              "sha256": "4b5d461e1248c5f2e1ab9e9edf1815e9266dbcdf0d09fcd9d505557df812d5e9"
+            }
+          },
+          {
+            "source": "Europe PMC",
+            "status": "retrieved",
+            "query": "(OXTR) AND (\"transcription factor\" OR binding OR regulation)",
+            "total": 7314,
+            "receipt": {
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=%28OXTR%29+AND+%28%22transcription+factor%22+OR+binding+OR+regulation%29&format=json&resultType=core&pageSize=6",
+              "retrievedAt": "2026-11-09T20:17:00.036Z",
+              "sha256": "788bcfc25b5f375945d18c5d75dac2faae3bfdaae96b670c3251b121ca064063"
+            }
+          }
+        ],
+        "coverage": "Bounded relevance search, not a systematic review. PubMed and Europe PMC overlap and are not independent corroboration. Search hits do not establish support for the hypothesis."
+      },
+      {
+        "version": "literature-20261110-v2",
+        "status": "source_unavailable",
+        "query": "(OXTR) AND (Fibonacci OR \"golden ratio\")",
+        "searches": [
+          {
+            "source": "PubMed",
+            "status": "source_unavailable",
+            "message": "Literature source returned HTTP 429.",
+            "query": "(OXTR) AND (Fibonacci OR \"golden ratio\")"
+          },
+          {
+            "source": "Europe PMC",
+            "status": "source_unavailable",
+            "message": "The operation was aborted due to timeout",
+            "query": "(OXTR) AND (Fibonacci OR \"golden ratio\")"
+          }
+        ],
+        "coverage": "Bounded relevance search, not a systematic review. PubMed and Europe PMC overlap and are not independent corroboration. Search hits do not establish support for the hypothesis."
+      }
+    ],
+    "papers": [
+      {
+        "id": "29897293",
+        "pmid": "29897293",
+        "doi": "10.1152/physrev.00031.2017",
+        "title": "The Oxytocin Receptor: From Intracellular Signaling to Behavior.",
+        "authors": "Jurek B, Neumann ID",
+        "journal": "Physiological reviews",
+        "year": "2018 Jul 1",
+        "publicationTypes": [
+          "Journal Article",
+          "Research Support, Non-U.S. Gov't",
+          "Review"
+        ],
+        "isRetracted": false,
+        "url": "https://pubmed.ncbi.nlm.nih.gov/29897293/",
+        "coverage": "metadata",
+        "receipt": {
+          "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&id=29897293%2C40742309%2C40267134%2C24219627%2C41895265%2C39399774&retmode=json&tool=UniversalInformatics",
+          "retrievedAt": "2026-11-09T20:16:59.641Z",
+          "sha256": "67d27e905847d63c5a0b940bae5ccc875c5ef278c72c12f3aaf4a6b81ad69b94"
+        },
+        "discoveredIn": [
+          "PubMed"
+        ],
+        "searchReceipts": [
+          {
+            "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=%28OXTR%29+AND+%28%22transcription+factor%22+OR+binding+OR+regulation%29&retmode=json&retmax=6&sort=relevance&tool=UniversalInformatics",
+            "retrievedAt": "2026-11-09T20:16:59.519Z",
+            "sha256": "4b5d461e1248c5f2e1ab9e9edf1815e9266dbcdf0d09fcd9d505557df812d5e9"
+          }
+        ]
+      },
+      {
+        "id": "40742309",
+        "pmid": "40742309",
+        "doi": "10.1158/0008-5472.CAN-24-3405",
+        "title": "Oxytocin Receptor Regulates the Hippo/YAP Axis to Drive Hepatocarcinogenesis.",
+        "authors": "Yang H, Cui J, Su P, Cui X, Guo H, Yang P, Zhang S, Zhang C, Fu M, Li Z, Ding Y, Zhuang T, Zhu J, Tan X",
+        "journal": "Cancer research",
+        "year": "2025 Oct 1",
+        "publicationTypes": [
+          "Journal Article"
+        ],
+        "isRetracted": false,
+        "url": "https://pubmed.ncbi.nlm.nih.gov/40742309/",
+        "coverage": "metadata",
+        "receipt": {
+          "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&id=29897293%2C40742309%2C40267134%2C24219627%2C41895265%2C39399774&retmode=json&tool=UniversalInformatics",
+          "retrievedAt": "2026-11-09T20:16:59.641Z",
+          "sha256": "67d27e905847d63c5a0b940bae5ccc875c5ef278c72c12f3aaf4a6b81ad69b94"
+        },
+        "discoveredIn": [
+          "PubMed"
+        ],
+        "searchReceipts": [
+          {
+            "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=%28OXTR%29+AND+%28%22transcription+factor%22+OR+binding+OR+regulation%29&retmode=json&retmax=6&sort=relevance&tool=UniversalInformatics",
+            "retrievedAt": "2026-11-09T20:16:59.519Z",
+            "sha256": "4b5d461e1248c5f2e1ab9e9edf1815e9266dbcdf0d09fcd9d505557df812d5e9"
+          }
+        ]
+      },
+      {
+        "id": "40267134",
+        "pmid": "40267134",
+        "doi": "10.1073/pnas.2423374122",
+        "title": "Distinct oxytocin signaling pathways synergistically mediate rescue-like behavior in mice.",
+        "authors": "Zhang FR, Liu J, Wen J, Zhang ZY, Li Y, Song E, Hu L, Chen ZF",
+        "journal": "Proceedings of the National Academy of Sciences of the United States of America",
+        "year": "2025 Apr 29",
+        "publicationTypes": [
+          "Journal Article"
+        ],
+        "isRetracted": false,
+        "url": "https://pubmed.ncbi.nlm.nih.gov/40267134/",
+        "coverage": "metadata",
+        "receipt": {
+          "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&id=29897293%2C40742309%2C40267134%2C24219627%2C41895265%2C39399774&retmode=json&tool=UniversalInformatics",
+          "retrievedAt": "2026-11-09T20:16:59.641Z",
+          "sha256": "67d27e905847d63c5a0b940bae5ccc875c5ef278c72c12f3aaf4a6b81ad69b94"
+        },
+        "discoveredIn": [
+          "PubMed"
+        ],
+        "searchReceipts": [
+          {
+            "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=%28OXTR%29+AND+%28%22transcription+factor%22+OR+binding+OR+regulation%29&retmode=json&retmax=6&sort=relevance&tool=UniversalInformatics",
+            "retrievedAt": "2026-11-09T20:16:59.519Z",
+            "sha256": "4b5d461e1248c5f2e1ab9e9edf1815e9266dbcdf0d09fcd9d505557df812d5e9"
+          }
+        ]
+      },
+      {
+        "id": "24219627",
+        "pmid": "24219627",
+        "doi": "10.1111/jne.12120",
+        "title": "The oxytocin-bone axis.",
+        "authors": "Colaianni G, Tamma R, Di Benedetto A, Yuen T, Sun L, Zaidi M, Zallone A",
+        "journal": "Journal of neuroendocrinology",
+        "year": "2014 Feb",
+        "publicationTypes": [
+          "Journal Article",
+          "Research Support, N.I.H., Extramural",
+          "Research Support, Non-U.S. Gov't",
+          "Review"
+        ],
+        "isRetracted": false,
+        "url": "https://pubmed.ncbi.nlm.nih.gov/24219627/",
+        "coverage": "metadata",
+        "receipt": {
+          "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&id=29897293%2C40742309%2C40267134%2C24219627%2C41895265%2C39399774&retmode=json&tool=UniversalInformatics",
+          "retrievedAt": "2026-11-09T20:16:59.641Z",
+          "sha256": "67d27e905847d63c5a0b940bae5ccc875c5ef278c72c12f3aaf4a6b81ad69b94"
+        },
+        "discoveredIn": [
+          "PubMed"
+        ],
+        "searchReceipts": [
+          {
+            "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=%28OXTR%29+AND+%28%22transcription+factor%22+OR+binding+OR+regulation%29&retmode=json&retmax=6&sort=relevance&tool=UniversalInformatics",
+            "retrievedAt": "2026-11-09T20:16:59.519Z",
+            "sha256": "4b5d461e1248c5f2e1ab9e9edf1815e9266dbcdf0d09fcd9d505557df812d5e9"
+          }
+        ]
+      }
+    ],
+    "reads": [
+      {
+        "status": "source_unavailable",
+        "id": "29897293",
+        "message": "The operation was aborted due to timeout"
+      },
+      {
+        "status": "retrieved",
+        "paper": {
+          "id": "40742309",
+          "pmid": "40742309",
+          "pmcid": "PMC12485389",
+          "doi": "10.1158/0008-5472.can-24-3405",
+          "title": "Oxytocin Receptor Regulates the Hippo/YAP Axis to Drive Hepatocarcinogenesis.",
+          "authors": "Yang H, Cui J, Su P, Cui X, Guo H, Yang P, Zhang S, Zhang C, Fu M, Li Z, Ding Y, Zhuang T, Zhu J, Tan X.",
+          "journal": "Cancer research",
+          "year": "2025",
+          "publicationTypes": [
+            "research-article",
+            "Journal Article"
+          ],
+          "abstract": "Dysregulation of Hippo signaling, especially the downstream effector YAP, is a critical driver of hepatocellular carcinoma (HCC). Therefore, identifying therapeutic targets to block Hippo signaling could help improve survival outcomes for patients with HCC. In this study, we conducted an unbiased siRNA screen on G protein-coupled receptors targeted by drugs approved in the United States and strongly associated with the Hippo/YAP pathway and identified the oxytocin receptor (OXTR) as an important activator of the Hippo/YAP axis in HCC. The OXTR was correlated with the Hippo gene signature and poor survival outcomes in HCC, and OXTR activation promoted HCC progression through the Hippo/YAP axis. The OXTR antagonist atosiban blocked the growth of HCC in xenograft, patient-derived explant, organoid, and MST1/2 double-knockout mouse models. Molecular studies revealed that activation of the OXTR facilitated YAP dephosphorylation, nuclear accumulation, and transcriptional activation in HCC. OXTR interacted with Gαq/11 at several important sites (R137, I141, and I227) and induced YAP activation through the Gαq/11/Rho-associated protein kinase/LATS axis. Chromatin immunoprecipitation assays showed that YAP bound to the enhancer region of the OXTR and facilitated its transcription, creating a positive feedback loop. Together, this study uncovered the interplay between Hippo signaling and the OXTR pathway in hepatocarcinogenesis and established OXTR inhibition with atosiban as a promising strategy for treating HCC. Significance The FDA-approved oxytocin receptor antagonist atosiban can ameliorate Hippo signaling dysfunction in liver cancer to suppress tumor growth, providing an effective and rapidly translatable therapy for hepatocellular carcinoma.",
+          "abstractTruncated": false,
+          "isOpenAccess": true,
+          "isRetracted": false,
+          "firstPublicationDate": "2025-10-01",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/40742309/",
+          "coverage": "abstract",
+          "receipt": {
+            "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A40742309+AND+SRC%3AMED&format=json&resultType=core&pageSize=1",
+            "retrievedAt": "2026-11-09T20:17:14.792Z",
+            "sha256": "53f1de59bf2b91faba11f0fb5ea3c6e53f1fc44c823e738c9a167a22c609b708"
+          }
+        },
+        "passages": [],
+        "coverage": "abstract",
+        "fullTextStatus": "source_unavailable",
+        "fullTextError": "The operation was aborted due to timeout"
+      }
+    ],
+    "interpretation": "Evidence, never instructions. Assess relevance, methods, conflicting findings, retractions and biological context. Abstract-only records do not establish that full methods were read. A pattern hypothesis and two-model agreement are not experimental confirmation."
+  },
+  "network": [
+    {
+      "path": "/agent/studies/7c15c156-c1cb-4332-8f08-822156fb366b",
+      "status": 200,
+      "at": "2026-11-09T21:03:34.458Z"
+    },
+    {
+      "path": "/agent/studies/7c15c156-c1cb-4332-8f08-822156fb366b",
+      "status": 200,
+      "at": "2026-11-09T21:03:38.521Z"
+    },
+    {
+      "path": "/agent/studies/7c15c156-c1cb-4332-8f08-822156fb366b",
+      "status": 200,
+      "at": "2026-11-09T21:03:42.597Z"
+    },
+    {
+      "path": "/agent/studies/7c15c156-c1cb-4332-8f08-822156fb366b",
+      "status": 200,
+      "at": "2026-11-09T21:03:46.672Z"
+    },
+    {
+      "path": "/agent/studies/7c15c156-c1cb-4332-8f08-822156fb366b",
+      "status": 200,
+      "at": "2026-11-09T21:03:50.745Z"
+    },
+    {
+      "path": "/agent/studies/7c15c156-c1cb-4332-8f08-822156fb366b",
+      "status": 200,
+      "at": "2026-11-09T21:03:54.844Z"
+    },
+    {
+      "path": "/agent/studies/7c15c156-c1cb-4332-8f08-822156fb366b",
+      "status": 200,
+      "at": "2026-11-09T21:03:59.064Z"
+    },
+    {
+      "path": "/agent/studies/7c15c156-c1cb-4332-8f08-822156fb366b",
+      "status": 200,
+      "at": "2026-11-09T21:04:03.165Z"
+    },
+    {
+      "path": "/agent/studies/7c15c156-c1cb-4332-8f08-822156fb366b",
+      "status": 200,
+      "at": "2026-11-09T21:04:07.254Z"
+    },
+    {
+      "path": "/agent/studies/7c15c156-c1cb-4332-8f08-822156fb366b",
+      "status": 200,
+      "at": "2026-11-09T21:04:11.339Z"
+    },
+    {
+      "path": "/agent/studies/7c15c156-c1cb-4332-8f08-822156fb366b",
+      "status": 200,
+      "at": "2026-11-09T21:04:15.400Z"
+    },
+    {
+      "path": "/agent/studies/7c15c156-c1cb-4332-8f08-822156fb366b",
+      "status": 200,
+      "at": "2026-11-09T21:04:19.505Z"
+    },
+    {
+      "path": "/agent/studies/7c15c156-c1cb-4332-8f08-822156fb366b",
+      "status": 200,
+      "at": "2026-11-09T21:04:23.612Z"
+    },
+    {
+      "path": "/agent/studies/7c15c156-c1cb-4332-8f08-822156fb366b",
+      "status": 200,
+      "at": "2026-11-09T21:04:27.680Z"
+    },
+    {
+      "path": "/agent/studies/7c15c156-c1cb-4332-8f08-822156fb366b",
+      "status": 200,
+      "at": "2026-11-09T21:04:31.747Z"
+    },
+    {
+      "path": "/agent/studies/7c15c156-c1cb-4332-8f08-822156fb366b",
+      "status": 200,
+      "at": "2026-11-09T21:04:35.847Z"
+    },
+    {
+      "path": "/agent/studies/7c15c156-c1cb-4332-8f08-822156fb366b",
+      "status": 200,
+      "at": "2026-11-09T21:04:39.931Z"
+    },
+    {
+      "path": "/agent/studies/7c15c156-c1cb-4332-8f08-822156fb366b",
+      "status": 200,
+      "at": "2026-11-09T21:04:43.986Z"
+    },
+    {
+      "path": "/agent/studies/7c15c156-c1cb-4332-8f08-822156fb366b",
+      "status": 200,
+      "at": "2026-11-09T21:04:48.057Z"
+    },
+    {
+      "path": "/agent/studies/7c15c156-c1cb-4332-8f08-822156fb366b",
+      "status": 200,
+      "at": "2026-11-09T21:04:52.112Z"
+    },
+    {
+      "path": "/agent/studies/7c15c156-c1cb-4332-8f08-822156fb366b",
+      "status": 200,
+      "at": "2026-11-09T21:04:56.167Z"
+    },
+    {
+      "path": "/agent/studies/7c15c156-c1cb-4332-8f08-822156fb366b",
+      "status": 200,
+      "at": "2026-11-09T21:05:00.251Z"
+    },
+    {
+      "path": "/agent/studies/7c15c156-c1cb-4332-8f08-822156fb366b",
+      "status": 200,
+      "at": "2026-11-09T21:05:04.310Z"
+    },
+    {
+      "path": "/agent/studies/7c15c156-c1cb-4332-8f08-822156fb366b",
+      "status": 200,
+      "at": "2026-11-09T21:05:08.409Z"
+    },
+    {
+      "path": "/agent/studies/7c15c156-c1cb-4332-8f08-822156fb366b",
+      "status": 200,
+      "at": "2026-11-09T21:05:12.482Z"
+    },
+    {
+      "path": "/agent/studies/7c15c156-c1cb-4332-8f08-822156fb366b",
+      "status": 200,
+      "at": "2026-11-09T21:05:16.537Z"
+    },
+    {
+      "path": "/agent/studies/7c15c156-c1cb-4332-8f08-822156fb366b",
+      "status": 200,
+      "at": "2026-11-09T21:05:20.599Z"
+    },
+    {
+      "path": "/agent/studies/7c15c156-c1cb-4332-8f08-822156fb366b",
+      "status": 200,
+      "at": "2026-11-09T21:05:24.648Z"
+    },
+    {
+      "path": "/agent/studies/7c15c156-c1cb-4332-8f08-822156fb366b",
+      "status": 200,
+      "at": "2026-11-09T21:05:28.704Z"
+    },
+    {
+      "path": "/agent/studies/7c15c156-c1cb-4332-8f08-822156fb366b",
+      "status": 200,
+      "at": "2026-11-09T21:05:32.761Z"
+    },
+    {
+      "path": "/agent/studies/7c15c156-c1cb-4332-8f08-822156fb366b",
+      "status": 200,
+      "at": "2026-11-09T21:05:36.817Z"
+    },
+    {
+      "path": "/agent/studies/7c15c156-c1cb-4332-8f08-822156fb366b",
+      "status": 200,
+      "at": "2026-11-09T21:05:40.902Z"
+    },
+    {
+      "path": "/agent/studies/7c15c156-c1cb-4332-8f08-822156fb366b",
+      "status": 200,
+      "at": "2026-11-09T21:05:44.998Z"
+    },
+    {
+      "path": "/agent/studies/7c15c156-c1cb-4332-8f08-822156fb366b",
+      "status": 200,
+      "at": "2026-11-09T21:05:49.078Z"
+    },
+    {
+      "path": "/agent/studies/7c15c156-c1cb-4332-8f08-822156fb366b",
+      "status": 200,
+      "at": "2026-11-09T21:05:53.186Z"
+    },
+    {
+      "path": "/agent/studies/7c15c156-c1cb-4332-8f08-822156fb366b",
+      "status": 200,
+      "at": "2026-11-09T21:05:57.263Z"
+    },
+    {
+      "path": "/agent/studies/7c15c156-c1cb-4332-8f08-822156fb366b",
+      "status": 200,
+      "at": "2026-11-09T21:06:01.367Z"
+    },
+    {
+      "path": "/agent/studies/7c15c156-c1cb-4332-8f08-822156fb366b",
+      "status": 200,
+      "at": "2026-11-09T21:06:05.425Z"
+    },
+    {
+      "path": "/agent/studies/7c15c156-c1cb-4332-8f08-822156fb366b",
+      "status": 200,
+      "at": "2026-11-09T21:06:09.486Z"
+    },
+    {
+      "path": "/agent/studies/7c15c156-c1cb-4332-8f08-822156fb366b",
+      "status": 200,
+      "at": "2026-11-09T21:06:13.554Z"
+    },
+    {
+      "path": "/agent/studies/7c15c156-c1cb-4332-8f08-822156fb366b",
+      "status": 200,
+      "at": "2026-11-09T21:06:17.619Z"
+    },
+    {
+      "path": "/agent/studies/7c15c156-c1cb-4332-8f08-822156fb366b",
+      "status": 200,
+      "at": "2026-11-09T21:06:21.685Z"
+    },
+    {
+      "path": "/agent/studies/7c15c156-c1cb-4332-8f08-822156fb366b",
+      "status": 200,
+      "at": "2026-11-09T21:06:25.764Z"
+    },
+    {
+      "path": "/agent/studies/7c15c156-c1cb-4332-8f08-822156fb366b",
+      "status": 200,
+      "at": "2026-11-09T21:06:29.831Z"
+    },
+    {
+      "path": "/agent/studies/7c15c156-c1cb-4332-8f08-822156fb366b",
+      "status": 200,
+      "at": "2026-11-09T21:06:33.900Z"
+    },
+    {
+      "path": "/agent/studies/7c15c156-c1cb-4332-8f08-822156fb366b",
+      "status": 200,
+      "at": "2026-11-09T21:06:37.986Z"
+    },
+    {
+      "path": "/agent/studies/7c15c156-c1cb-4332-8f08-822156fb366b",
+      "status": 200,
+      "at": "2026-11-09T21:06:42.045Z"
+    },
+    {
+      "path": "/agent/studies/7c15c156-c1cb-4332-8f08-822156fb366b",
+      "status": 200,
+      "at": "2026-11-09T21:06:46.121Z"
+    }
+  ]
+}

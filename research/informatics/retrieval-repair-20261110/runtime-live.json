@@ -1,0 +1,101 @@
+{
+  "passed": true,
+  "runtime": "Cloudflare workerd via Miniflare",
+  "livePublicSources": true,
+  "paidRequests": 0,
+  "checks": [
+    {
+      "originalModeRejected": true,
+      "message": "Invalid redirect value, must be one of \"follow\" or \"manual\" (\"error\" won't be implemented since it does not make sense at the edge; use \"manual\" and check the response status code)."
+    },
+    {
+      "search": {
+        "status": "retrieved",
+        "sources": [
+          {
+            "source": "PubMed",
+            "status": "retrieved",
+            "receipt": {
+              "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=CD38+oxytocin&retmode=json&retmax=6&sort=relevance&tool=UniversalInformatics",
+              "retrievedAt": "2026-11-09T19:31:55.194Z",
+              "sha256": "91c1b0fb6aaad12d279f40c21c3f131e2c7e0e0a8b57f4614823d354af714bda"
+            }
+          },
+          {
+            "source": "Europe PMC",
+            "status": "retrieved",
+            "receipt": {
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=CD38+oxytocin&format=json&resultType=core&pageSize=6",
+              "retrievedAt": "2026-11-09T19:31:59.365Z",
+              "sha256": "18c5752c442658d02f6b2eedbd419ba9e9eeac68578ab4045d1f0965367339d6"
+            }
+          }
+        ],
+        "papers": [
+          {
+            "id": "32360414",
+            "title": "A Novel Role of CD38 and Oxytocin as Tandem Molecular Moderators of Human Social Behavior.",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/32360414/"
+          },
+          {
+            "id": "22227279",
+            "title": "CD38 and its role in oxytocin secretion and social behavior.",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/22227279/"
+          },
+          {
+            "id": "21881219",
+            "title": "CD38 gene knockout juvenile mice: a model of oxytocin signal defects in autism.",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/21881219/"
+          },
+          {
+            "id": "39814130",
+            "title": "CD38-mediated oxytocin signaling in paraventricular nucleus contributes to empathic pain.",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/39814130/"
+          },
+          {
+            "id": "28736241",
+            "title": "Oxytocin release via activation of TRPM2 and CD38 in the hypothalamus during hyperthermia in mice: Implication for autism spectrum disorder.",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/28736241/"
+          },
+          {
+            "id": "20141572",
+            "title": "CD38/cyclic ADP-ribose system: a new player for oxytocin secretion and regulation of social behaviour.",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/20141572/"
+          },
+          {
+            "id": "42716459",
+            "title": "Markers of the maternal oxytocin system and mother-infant bonding during the first postpartum year.",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/42716459/"
+          },
+          {
+            "id": "31682209",
+            "title": "Integrating Autism Spectrum Disorder Pathophysiology: Mitochondria, Vitamin A, CD38, Oxytocin, Serotonin and Melatonergic Alterations in the Placenta and Gut.",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/31682209/"
+          },
+          {
+            "id": "42257672",
+            "title": "Variability in medial prefrontal cortex responses to smiles in human infants is linked to genetic variation in the oxytocin system.",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/42257672/"
+          },
+          {
+            "id": "42001898",
+            "title": "Type III CD38 is present in the membrane of neurosecretory vesicles and has a cytosol-facing catalytic domain in primate oxytocin neurons.",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/42001898/"
+          }
+        ]
+      }
+    },
+    {
+      "read": {
+        "status": "retrieved",
+        "coverage": "selected_full_text_passages",
+        "fullTextReceipt": {
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4383902/fullTextXML",
+          "retrievedAt": "2026-11-09T19:32:05.072Z",
+          "sha256": "d221f54c277f5d97b718b1e42a0ecc693180997a08cf57f8afd1eb950f19d712"
+        },
+        "passages": 6
+      }
+    }
+  ]
+}

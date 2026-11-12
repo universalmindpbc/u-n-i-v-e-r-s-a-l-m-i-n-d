@@ -1,0 +1,52 @@
+{
+  "passed": true,
+  "receipt": {
+    "action": "portal_access",
+    "question": "",
+    "provider_response_id": "resp_03d5c362a041bafd016af19110f0fc87d0af89b0c03dcebb7c",
+    "usage": {
+      "input_tokens": 692,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 21,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 713
+    },
+    "qaSpend": {
+      "limitUSD": 0.25,
+      "chargedUpperUSD": 0.009700000000000014,
+      "calls": [
+        {
+          "path": "/responses",
+          "model": "gpt-6-astra",
+          "inputTokenUpper": 12118,
+          "outputTokenUpper": 1400,
+          "boundMethod": "UTF-8 bytes plus framing",
+          "reservedUSD": 0.221475,
+          "chargedUpperUSD": 0.0097,
+          "usage": {
+            "input_tokens": 692,
+            "input_tokens_details": {
+              "cache_write_tokens": 0,
+              "cached_tokens": 0
+            },
+            "output_tokens": 21,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 713
+          }
+        }
+      ]
+    }
+  },
+  "answer": "Enter your I AM portal password in the access window. Your password stays outside our conversation.",
+  "errors": [],
+  "newStudies": 0,
+  "hardwareSubmissions": 0,
+  "audioMuted": true
+}

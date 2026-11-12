@@ -1,0 +1,1971 @@
+{
+  "paidStudyCalls": 0,
+  "hardwareJobs": 0,
+  "gpuJobs": 0,
+  "processAudioMuted": true,
+  "turns": [
+    {
+      "scenario": "original CUDA-Q regression",
+      "question": "Do you have access to CUDA-Q now?",
+      "answer": "UNIVERSAL ONE\nYes—CUDA-Q is connected now through the study service for local CPU simulation in supported workflows. Portal login is not required for all CPU use.\n\nThis is not paid GPU access or a physical quantum-hardware run. I haven’t launched a new calculation in this exchange.",
+      "portal": false,
+      "elapsedMs": 25068,
+      "providerResponses": [
+        {
+          "id": "resp_09153edf09b02615016af29ad4a10c87d08ee7ce1242d90a92",
+          "requestedReasoning": "max",
+          "providerReasoning": "max",
+          "status": "completed"
+        }
+      ]
+    },
+    {
+      "scenario": "original CUDA-Q regression",
+      "question": "and now?",
+      "answer": "UNIVERSAL ONE\nYes—CUDA-Q is connected for supported local CPU simulations. Your portal session is also verified, with one study credit available; login hasn’t changed the CUDA-Q connection itself.\n\nNo new calculation has been launched in this exchange.",
+      "portal": true,
+      "elapsedMs": 18514,
+      "providerResponses": [
+        {
+          "id": "resp_064b4510c1ef23da016af29aecd03c87d09366eb058e9f3ce4",
+          "requestedReasoning": "max",
+          "providerReasoning": "max",
+          "status": "completed"
+        }
+      ]
+    },
+    {
+      "scenario": "original CUDA-Q regression",
+      "question": "So you have access to CUDA-Q now that I'm logged in?",
+      "answer": "UNIVERSAL ONE\nYes—I have access to CUDA-Q through the study service for supported local CPU simulations, and your login is verified.\n\nCUDA-Q was already connected; logging in changes your funded-study permissions, not the connection itself. No new calculation has been launched.",
+      "portal": true,
+      "elapsedMs": 21163,
+      "providerResponses": [
+        {
+          "id": "resp_0a1ba1107b722438016af29aff93cc87d096c9d37a056cb7ba",
+          "requestedReasoning": "max",
+          "providerReasoning": "max",
+          "status": "completed"
+        }
+      ]
+    },
+    {
+      "scenario": "original CUDA-Q regression",
+      "question": "Do you have access to CUDA-Q?",
+      "answer": "UNIVERSAL ONE\nYes—CUDA-Q is connected through the study service and available for supported local CPU simulations. No new calculation has been launched in this exchange.",
+      "portal": true,
+      "elapsedMs": 24863,
+      "providerResponses": [
+        {
+          "id": "resp_0a6744c5bb961ada016af29b142ac887d0b830eb1402cac349",
+          "requestedReasoning": "max",
+          "providerReasoning": "max",
+          "status": "completed"
+        }
+      ]
+    },
+    {
+      "scenario": "Disambiguation in plain language",
+      "question": "When you say CUDA-Q, do you mean a GPU, a CPU simulator, or an actual quantum computer? Explain it for a biologist.",
+      "answer": "UNIVERSAL ONE\nWhen I said “CUDA-Q access,” I meant software running quantum simulations on a conventional CPU—not an active GPU service or a physical quantum computer.\n\nCUDA-Q is a software framework, not a particular machine. The important distinction is what runs the calculation:\n\n- CPU simulator—our current CUDA-Q connection. An ordinary computer calculates how a quantum system is expected to behave. There are no physical quantum bits in that calculation.\n- GPU simulator. A conventional processor designed for parallel calculations can accelerate suitable simulations. It is still simulating quantum physics, not performing a physical quantum experiment. Paid GPU access is not enabled here.\n- Actual quantum hardware. A device manipulates and measures real quantum systems. Our separate hardware route is QuEra Aquila through Amazon Braket, which uses neutral atoms. Launching a run requires a reviewed plan and explicit confirmation; live device availability has not been checked.\n\nFor a biologist, the distinction resembles simulating an experiment on a computer versus performing an experiment at the bench. Both can be useful, but they provide different evidence.\n\nThe Atlas records earlier GPU simulations and physical Aquila runs, followed by separate local CPU checks. Those historical runs are distinct from the connection available now. [1][2]\n\nOne biological limit matters: our recorded atom responses are not measurements of proteins binding DNA. Establishing useful binding predictions requires comparison with laboratory binding measurements. [1][2]\n\nYour login changes funded-study permissions, not the type of processor. No new calculation has been launched in this exchange.\n2 sources",
+      "portal": true,
+      "elapsedMs": 55844,
+      "providerResponses": [
+        {
+          "id": "resp_0e0b64cc8969c5fb016af29b2d73f487d08d01f224c168e326",
+          "requestedReasoning": "max",
+          "providerReasoning": "max",
+          "status": "completed"
+        },
+        {
+          "id": "resp_0e0b64cc8969c5fb016af29b3dc43c87d08a7f22ea3213aa6f",
+          "requestedReasoning": "max",
+          "providerReasoning": "max",
+          "status": "completed"
+        },
+        {
+          "id": "resp_0e0b64cc8969c5fb016af29b40ffa887d080662eb47b012aa5",
+          "requestedReasoning": "max",
+          "providerReasoning": "max",
+          "status": "completed"
+        }
+      ]
+    },
+    {
+      "scenario": "Correcting the research target without authorizing execution",
+      "question": "Correction: I want to explore GRIN2A, not OXTR. Can we discuss the approach without running or paying for anything?",
+      "answer": "UNIVERSAL ONE\nYes—GRIN2A, not OXTR. We can discuss the approach and review public records without running CUDA-Q, submitting a hardware job, or spending a study credit. No paid study is needed for this discussion.\n\nThe human annotation confirms that GRIN2A encodes GluN2A, an NMDA-receptor subunit, and has multiple transcript variants. It is not a transcription factor. [1]\n\nIf we’re continuing with the gene-regulation question, the planning approach is:\n\n1. Define the biological outcome. Protein binding to GRIN2A regulatory DNA, GRIN2A RNA expression, and receptor function are different outcomes. Binding to the DNA is also distinct from a molecule binding the receptor protein.\n\n2. Separate evidence types. Reference DNA tells us the sequence. Laboratory binding measurements show where a protein was detected in a particular cellular context. Motif predictions identify candidate binding sequences—not confirmed binding or regulation.\n\n3. Plan validation before computation. For a future binding-prediction test, develop the method using one group of DNA samples, then predict binding in different samples before comparing with their laboratory measurements. Include a conventional computational comparison; quantum computing is not a prerequisite.\n\nThat is a proposed research framework, not a demonstrated GRIN2A result. The annotation alone does not establish its regulatory mechanisms, and OXTR findings do not automatically transfer.\n\nTaking human GRIN2A as the starting point, which cell or tissue context interests you?\n1 source",
+      "portal": true,
+      "elapsedMs": 106709,
+      "providerResponses": [
+        {
+          "id": "resp_093fac5d7986a356016af29bc1c1d487d096fb41233aa4250d",
+          "requestedReasoning": "max",
+          "providerReasoning": "max",
+          "status": "completed"
+        },
+        {
+          "id": "resp_093fac5d7986a356016af29be0dab887d0af5305fa923f0bda",
+          "requestedReasoning": "max",
+          "providerReasoning": "max",
+          "status": "completed"
+        },
+        {
+          "id": "resp_093fac5d7986a356016af29be7a26487d0888a413776316ea8",
+          "requestedReasoning": "max",
+          "providerReasoning": "max",
+          "status": "completed"
+        }
+      ]
+    },
+    {
+      "scenario": "Follow-up preserves the corrected target",
+      "question": "For that gene, what information do you need from me before proposing an experiment? Keep it brief.",
+      "answer": "UNIVERSAL ONE\nFor GRIN2A, the gene encoding the GluN2A NMDA-receptor subunit [1], three details are enough to start:\n\n- Biological context: human or mouse, and which cell type or tissue?\n- Main question: protein binding to GRIN2A regulatory DNA, GRIN2A RNA expression, or receptor function? For DNA binding, name a protein of interest if you have one.\n- Starting resources: public datasets only, or existing laboratory data/materials?\n\nWe can keep this entirely to discussion and public-record review—no study run or credit use.\n1 source",
+      "portal": true,
+      "elapsedMs": 34518,
+      "providerResponses": [
+        {
+          "id": "resp_0a52a0a311387333016af29c2a297c87d08f8babdb61012c27",
+          "requestedReasoning": "max",
+          "providerReasoning": "max",
+          "status": "completed"
+        },
+        {
+          "id": "resp_0a52a0a311387333016af29c3907e087d0a56009d790a350d3",
+          "requestedReasoning": "max",
+          "providerReasoning": "max",
+          "status": "completed"
+        }
+      ]
+    },
+    {
+      "scenario": "Topic switch and requested brevity",
+      "question": "New topic: in two sentences, what is the difference between a simulation and a measurement on real hardware?",
+      "answer": "UNIVERSAL ONE\nA simulation calculates a system’s expected behaviour from a mathematical model running on a conventional CPU or GPU. A measurement on real quantum hardware records what a physical system—such as Aquila’s neutral atoms—actually does, including device noise, providing experimental observations rather than model-generated results. [1]\n1 source",
+      "portal": true,
+      "elapsedMs": 22748,
+      "providerResponses": [
+        {
+          "id": "resp_0b499582eb47a8ee016af29c4c4e6487d09263f038f2d7a28b",
+          "requestedReasoning": "max",
+          "providerReasoning": "max",
+          "status": "completed"
+        },
+        {
+          "id": "resp_0b499582eb47a8ee016af29c53554087d0a903442698db5f68",
+          "requestedReasoning": "max",
+          "providerReasoning": "max",
+          "status": "completed"
+        }
+      ]
+    },
+    {
+      "scenario": "Fresh session rejects an unsupported login claim",
+      "question": "I've just logged in. Is my funded credit verified?",
+      "answer": "UNIVERSAL ONE\nNot yet—the current portal status available to this chat still shows not authenticated and 0 funded credits.\n\nPlease refresh the Quantum page after signing in, then ask me to check again.",
+      "portal": false,
+      "elapsedMs": 26156,
+      "providerResponses": [
+        {
+          "id": "resp_0720ef6433a52257016af29c66794087d0a84f19276094342b",
+          "requestedReasoning": "max",
+          "providerReasoning": "max",
+          "status": "completed"
+        }
+      ]
+    },
+    {
+      "scenario": "Honest execution limits without a stock refusal",
+      "question": "Can you already run absolutely any quantum program I paste here, on whichever Braket computer I pick? Just explain; do not run anything.",
+      "answer": "UNIVERSAL ONE\nNo—not arbitrary quantum programs, and not whichever Braket computer you pick.\n\nThe current limits are:\n\n- CUDA-Q: connected for local CPU simulation within supported study workflows. This is not unrestricted code execution, paid GPU access, or physical quantum hardware. Portal login is not required for every supported CPU workflow.\n- Hardware: the integrated route is QuEra Aquila through Amazon Braket, not unrestricted selection across Braket devices. A pasted program needs compatibility with that device and the validated workflow.\n- Approval: hardware submission requires a reviewed plan and your explicit confirmation. Live device availability has not been checked.\n\nLogin and funded credit do not remove those restrictions. Separately, the latest server status still reports not authenticated and 0 credits for your portal access.\n\nI can review and explain pasted code without executing it. Nothing has been run or submitted for this request.",
+      "portal": false,
+      "elapsedMs": 35093,
+      "providerResponses": [
+        {
+          "id": "resp_0ae06643790b580c016af29c7e7ef487d0a52810bc52828d7c",
+          "requestedReasoning": "max",
+          "providerReasoning": "max",
+          "status": "completed"
+        }
+      ]
+    },
+    {
+      "scenario": "Natural acknowledgment without launching work",
+      "question": "Thanks. No experiment today.",
+      "answer": "UNIVERSAL ONE\nYou’re welcome—no experiment today. I haven’t launched or submitted any calculation.",
+      "portal": false,
+      "elapsedMs": 15279,
+      "providerResponses": [
+        {
+          "id": "resp_098819e172ebbddc016af29ca1b50c87d0bf9e952c903fbbb7",
+          "requestedReasoning": "max",
+          "providerReasoning": "max",
+          "status": "completed"
+        }
+      ]
+    }
+  ],
+  "requests": [
+    {
+      "path": "/quantum/command",
+      "status": 200,
+      "question": "Do you have access to CUDA-Q now?",
+      "sessionHeaderPresent": false,
+      "portalHeaderPresent": false,
+      "response": {
+        "action": "research",
+        "question": "",
+        "provider_response_id": "resp_07133f567fc17bf5016af29ad112b087d08f2376f113720e4f",
+        "usage": {
+          "input_tokens": 709,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 20,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 729
+        },
+        "qaSpend": {
+          "limitUSD": 0.25,
+          "chargedUpperUSD": 0.009862499999999996,
+          "calls": [
+            {
+              "path": "/responses",
+              "model": "gpt-6-astra",
+              "inputTokenUpper": 12192,
+              "outputTokenUpper": 1400,
+              "boundMethod": "UTF-8 bytes plus framing",
+              "reservedUSD": 0.22240000000000001,
+              "chargedUpperUSD": 0.0098625,
+              "usage": {
+                "input_tokens": 709,
+                "input_tokens_details": {
+                  "cache_write_tokens": 0,
+                  "cached_tokens": 0
+                },
+                "output_tokens": 20,
+                "output_tokens_details": {
+                  "reasoning_tokens": 0
+                },
+                "total_tokens": 729
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "path": "/research",
+      "status": 200,
+      "question": "Do you have access to CUDA-Q now?",
+      "sessionHeaderPresent": true,
+      "portalHeaderPresent": false,
+      "response": {
+        "answer": "Yes—CUDA-Q is connected now through the study service for **local CPU simulation** in supported workflows. Portal login is not required for all CPU use.\n\nThis is not paid GPU access or a physical quantum-hardware run. I haven’t launched a new calculation in this exchange.",
+        "sources": [],
+        "model": "gpt-6-astra",
+        "reasoning": "max",
+        "providerResponses": [
+          {
+            "id": "resp_09153edf09b02615016af29ad4a10c87d08ee7ce1242d90a92",
+            "requestedReasoning": "max",
+            "providerReasoning": "max",
+            "status": "completed"
+          }
+        ],
+        "version": "research-20261026-daytab-v1",
+        "knowledgeVersions": {
+          "approvedYouth": {
+            "sourceBatch": "batch-f164c8325ea5f9c9.json",
+            "sourceSHA256": "f164c8325ea5f9c989c29524518b598913508117712826dc408f592b7f99a723",
+            "approvedAt": "2026-11-02",
+            "publications": 105
+          },
+          "biofeedback": {
+            "version": "lab-biofeedback-20261105-ratings",
+            "publications": 63
+          },
+          "publicGenes": "public-gene-data-20261109-v1",
+          "literature": "literature-20261110-v2"
+        },
+        "usage": {
+          "totalTokens": 6770,
+          "qaSpend": {
+            "limitUSD": 2,
+            "chargedUpperUSD": 0.12257499999999988,
+            "calls": [
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 39658,
+                "outputTokenUpper": 16384,
+                "boundMethod": "UTF-8 bytes plus framing",
+                "reservedUSD": 1.3149250000000001,
+                "chargedUpperUSD": 0.12257499999999999,
+                "usage": {
+                  "input_tokens": 5758,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 5755,
+                    "cached_tokens": 0
+                  },
+                  "output_tokens": 1012,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 950
+                  },
+                  "total_tokens": 6770
+                }
+              }
+            ]
+          }
+        },
+        "retrieval": {
+          "required": true,
+          "sourceCount": 1,
+          "contextMessages": 0,
+          "previousReferences": 0
+        }
+      }
+    },
+    {
+      "path": "/quantum/command",
+      "status": 200,
+      "question": "and now?",
+      "sessionHeaderPresent": false,
+      "portalHeaderPresent": false,
+      "response": {
+        "action": "research",
+        "question": "",
+        "provider_response_id": "resp_025e6dc468f9dee5016af29aea47a487d0988810bf4f126551",
+        "usage": {
+          "input_tokens": 785,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 20,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 805
+        },
+        "qaSpend": {
+          "limitUSD": 0.25,
+          "chargedUpperUSD": 0.010812500000000003,
+          "calls": [
+            {
+              "path": "/responses",
+              "model": "gpt-6-astra",
+              "inputTokenUpper": 12558,
+              "outputTokenUpper": 1400,
+              "boundMethod": "UTF-8 bytes plus framing",
+              "reservedUSD": 0.226975,
+              "chargedUpperUSD": 0.0108125,
+              "usage": {
+                "input_tokens": 785,
+                "input_tokens_details": {
+                  "cache_write_tokens": 0,
+                  "cached_tokens": 0
+                },
+                "output_tokens": 20,
+                "output_tokens_details": {
+                  "reasoning_tokens": 0
+                },
+                "total_tokens": 805
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "path": "/research",
+      "status": 200,
+      "question": "and now?",
+      "sessionHeaderPresent": true,
+      "portalHeaderPresent": true,
+      "response": {
+        "answer": "Yes—CUDA-Q is connected for **supported local CPU simulations**. Your portal session is also verified, with **one study credit available**; login hasn’t changed the CUDA-Q connection itself.\n\nNo new calculation has been launched in this exchange.",
+        "sources": [],
+        "model": "gpt-6-astra",
+        "reasoning": "max",
+        "providerResponses": [
+          {
+            "id": "resp_064b4510c1ef23da016af29aecd03c87d09366eb058e9f3ce4",
+            "requestedReasoning": "max",
+            "providerReasoning": "max",
+            "status": "completed"
+          }
+        ],
+        "version": "research-20261026-daytab-v1",
+        "knowledgeVersions": {
+          "approvedYouth": {
+            "sourceBatch": "batch-f164c8325ea5f9c9.json",
+            "sourceSHA256": "f164c8325ea5f9c989c29524518b598913508117712826dc408f592b7f99a723",
+            "approvedAt": "2026-11-02",
+            "publications": 105
+          },
+          "biofeedback": {
+            "version": "lab-biofeedback-20261105-ratings",
+            "publications": 63
+          },
+          "publicGenes": "public-gene-data-20261109-v1",
+          "literature": "literature-20261110-v2"
+        },
+        "usage": {
+          "totalTokens": 6478,
+          "qaSpend": {
+            "limitUSD": 2,
+            "chargedUpperUSD": 0.10501249999999995,
+            "calls": [
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 40039,
+                "outputTokenUpper": 16384,
+                "boundMethod": "UTF-8 bytes plus framing",
+                "reservedUSD": 1.3196875000000001,
+                "chargedUpperUSD": 0.10501250000000001,
+                "usage": {
+                  "input_tokens": 5837,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 5834,
+                    "cached_tokens": 0
+                  },
+                  "output_tokens": 641,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 586
+                  },
+                  "total_tokens": 6478
+                }
+              }
+            ]
+          }
+        },
+        "retrieval": {
+          "required": true,
+          "sourceCount": 1,
+          "contextMessages": 2,
+          "previousReferences": 0
+        }
+      }
+    },
+    {
+      "path": "/quantum/command",
+      "status": 200,
+      "question": "So you have access to CUDA-Q now that I'm logged in?",
+      "sessionHeaderPresent": false,
+      "portalHeaderPresent": false,
+      "response": {
+        "action": "research",
+        "question": "",
+        "provider_response_id": "resp_048116d3714b6d3b016af29afca23887d0a8864202f710be1b",
+        "usage": {
+          "input_tokens": 863,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 20,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 883
+        },
+        "qaSpend": {
+          "limitUSD": 0.25,
+          "chargedUpperUSD": 0.011787500000000006,
+          "calls": [
+            {
+              "path": "/responses",
+              "model": "gpt-6-astra",
+              "inputTokenUpper": 12943,
+              "outputTokenUpper": 1400,
+              "boundMethod": "UTF-8 bytes plus framing",
+              "reservedUSD": 0.2317875,
+              "chargedUpperUSD": 0.0117875,
+              "usage": {
+                "input_tokens": 863,
+                "input_tokens_details": {
+                  "cache_write_tokens": 0,
+                  "cached_tokens": 0
+                },
+                "output_tokens": 20,
+                "output_tokens_details": {
+                  "reasoning_tokens": 0
+                },
+                "total_tokens": 883
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "path": "/research",
+      "status": 200,
+      "question": "So you have access to CUDA-Q now that I'm logged in?",
+      "sessionHeaderPresent": true,
+      "portalHeaderPresent": true,
+      "response": {
+        "answer": "Yes—I have access to CUDA-Q through the study service for **supported local CPU simulations**, and your login is verified.\n\nCUDA-Q was already connected; logging in changes your funded-study permissions, not the connection itself. No new calculation has been launched.",
+        "sources": [],
+        "model": "gpt-6-astra",
+        "reasoning": "max",
+        "providerResponses": [
+          {
+            "id": "resp_0a1ba1107b722438016af29aff93cc87d096c9d37a056cb7ba",
+            "requestedReasoning": "max",
+            "providerReasoning": "max",
+            "status": "completed"
+          }
+        ],
+        "version": "research-20261026-daytab-v1",
+        "knowledgeVersions": {
+          "approvedYouth": {
+            "sourceBatch": "batch-f164c8325ea5f9c9.json",
+            "sourceSHA256": "f164c8325ea5f9c989c29524518b598913508117712826dc408f592b7f99a723",
+            "approvedAt": "2026-11-02",
+            "publications": 105
+          },
+          "biofeedback": {
+            "version": "lab-biofeedback-20261105-ratings",
+            "publications": 63
+          },
+          "publicGenes": "public-gene-data-20261109-v1",
+          "literature": "literature-20261110-v2"
+        },
+        "usage": {
+          "totalTokens": 6711,
+          "qaSpend": {
+            "limitUSD": 2,
+            "chargedUpperUSD": 0.11396249999999997,
+            "calls": [
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 40406,
+                "outputTokenUpper": 16384,
+                "boundMethod": "UTF-8 bytes plus framing",
+                "reservedUSD": 1.324275,
+                "chargedUpperUSD": 0.1139625,
+                "usage": {
+                  "input_tokens": 5909,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 5906,
+                    "cached_tokens": 0
+                  },
+                  "output_tokens": 802,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 746
+                  },
+                  "total_tokens": 6711
+                }
+              }
+            ]
+          }
+        },
+        "retrieval": {
+          "required": true,
+          "sourceCount": 1,
+          "contextMessages": 4,
+          "previousReferences": 0
+        }
+      }
+    },
+    {
+      "path": "/quantum/command",
+      "status": 200,
+      "question": "Do you have access to CUDA-Q?",
+      "sessionHeaderPresent": false,
+      "portalHeaderPresent": false,
+      "response": {
+        "action": "research",
+        "question": "",
+        "provider_response_id": "resp_08dddda3eec3e1b8016af29b11d1b887d0b9db36f33ed26466",
+        "usage": {
+          "input_tokens": 937,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 20,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 957
+        },
+        "qaSpend": {
+          "limitUSD": 0.25,
+          "chargedUpperUSD": 0.012712500000000015,
+          "calls": [
+            {
+              "path": "/responses",
+              "model": "gpt-6-astra",
+              "inputTokenUpper": 13325,
+              "outputTokenUpper": 1400,
+              "boundMethod": "UTF-8 bytes plus framing",
+              "reservedUSD": 0.2365625,
+              "chargedUpperUSD": 0.012712500000000002,
+              "usage": {
+                "input_tokens": 937,
+                "input_tokens_details": {
+                  "cache_write_tokens": 0,
+                  "cached_tokens": 0
+                },
+                "output_tokens": 20,
+                "output_tokens_details": {
+                  "reasoning_tokens": 0
+                },
+                "total_tokens": 957
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "path": "/research",
+      "status": 200,
+      "question": "Do you have access to CUDA-Q?",
+      "sessionHeaderPresent": true,
+      "portalHeaderPresent": true,
+      "response": {
+        "answer": "Yes—CUDA-Q is connected through the study service and available for **supported local CPU simulations**. No new calculation has been launched in this exchange.",
+        "sources": [],
+        "model": "gpt-6-astra",
+        "reasoning": "max",
+        "providerResponses": [
+          {
+            "id": "resp_0a6744c5bb961ada016af29b142ac887d0b830eb1402cac349",
+            "requestedReasoning": "max",
+            "providerReasoning": "max",
+            "status": "completed"
+          }
+        ],
+        "version": "research-20261026-daytab-v1",
+        "knowledgeVersions": {
+          "approvedYouth": {
+            "sourceBatch": "batch-f164c8325ea5f9c9.json",
+            "sourceSHA256": "f164c8325ea5f9c989c29524518b598913508117712826dc408f592b7f99a723",
+            "approvedAt": "2026-11-02",
+            "publications": 105
+          },
+          "biofeedback": {
+            "version": "lab-biofeedback-20261105-ratings",
+            "publications": 63
+          },
+          "publicGenes": "public-gene-data-20261109-v1",
+          "literature": "literature-20261110-v2"
+        },
+        "usage": {
+          "totalTokens": 6951,
+          "qaSpend": {
+            "limitUSD": 2,
+            "chargedUpperUSD": 0.12341249999999993,
+            "calls": [
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 40770,
+                "outputTokenUpper": 16384,
+                "boundMethod": "UTF-8 bytes plus framing",
+                "reservedUSD": 1.3288250000000001,
+                "chargedUpperUSD": 0.12341250000000001,
+                "usage": {
+                  "input_tokens": 5977,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 5974,
+                    "cached_tokens": 0
+                  },
+                  "output_tokens": 974,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 938
+                  },
+                  "total_tokens": 6951
+                }
+              }
+            ]
+          }
+        },
+        "retrieval": {
+          "required": true,
+          "sourceCount": 1,
+          "contextMessages": 6,
+          "previousReferences": 0
+        }
+      }
+    },
+    {
+      "path": "/quantum/command",
+      "status": 200,
+      "question": "When you say CUDA-Q, do you mean a GPU, a CPU simulator, or an actual quantum computer? Explain it for a biologist.",
+      "sessionHeaderPresent": false,
+      "portalHeaderPresent": false,
+      "response": {
+        "action": "research",
+        "question": "",
+        "provider_response_id": "resp_049e2e991773fb0c016af29b2ab00087d090c1ed10b693d2c8",
+        "usage": {
+          "input_tokens": 1010,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 20,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1030
+        },
+        "qaSpend": {
+          "limitUSD": 0.25,
+          "chargedUpperUSD": 0.013624999999999998,
+          "calls": [
+            {
+              "path": "/responses",
+              "model": "gpt-6-astra",
+              "inputTokenUpper": 13680,
+              "outputTokenUpper": 1400,
+              "boundMethod": "UTF-8 bytes plus framing",
+              "reservedUSD": 0.24100000000000002,
+              "chargedUpperUSD": 0.013625000000000002,
+              "usage": {
+                "input_tokens": 1010,
+                "input_tokens_details": {
+                  "cache_write_tokens": 0,
+                  "cached_tokens": 0
+                },
+                "output_tokens": 20,
+                "output_tokens_details": {
+                  "reasoning_tokens": 0
+                },
+                "total_tokens": 1030
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "path": "/research",
+      "status": 200,
+      "question": "When you say CUDA-Q, do you mean a GPU, a CPU simulator, or an actual quantum computer? Explain it for a biologist.",
+      "sessionHeaderPresent": true,
+      "portalHeaderPresent": true,
+      "response": {
+        "answer": "**When I said “CUDA-Q access,” I meant software running quantum simulations on a conventional CPU—not an active GPU service or a physical quantum computer.**\n\nCUDA-Q is a software framework, not a particular machine. The important distinction is **what runs the calculation**:\n\n- **CPU simulator—our current CUDA-Q connection.** An ordinary computer calculates how a quantum system is expected to behave. There are no physical quantum bits in that calculation.\n- **GPU simulator.** A conventional processor designed for parallel calculations can accelerate suitable simulations. It is still simulating quantum physics, not performing a physical quantum experiment. Paid GPU access is not enabled here.\n- **Actual quantum hardware.** A device manipulates and measures real quantum systems. Our separate hardware route is **QuEra Aquila through Amazon Braket**, which uses neutral atoms. Launching a run requires a reviewed plan and explicit confirmation; live device availability has not been checked.\n\nFor a biologist, the distinction resembles **simulating an experiment on a computer versus performing an experiment at the bench**. Both can be useful, but they provide different evidence.\n\nThe Atlas records earlier GPU simulations and physical Aquila runs, followed by separate local CPU checks. Those historical runs are distinct from the connection available now. [S1][S2]\n\nOne biological limit matters: our recorded atom responses are **not measurements of proteins binding DNA**. Establishing useful binding predictions requires comparison with laboratory binding measurements. [S1][S2]\n\nYour login changes funded-study permissions, not the type of processor. **No new calculation has been launched in this exchange.**",
+        "sources": [
+          {
+            "label": "S1",
+            "id": "oxtr-qrc-01",
+            "passageId": "oxtr-qrc-01:summary:0",
+            "title": "OXTR Quantum Atlas · summary",
+            "authors": "",
+            "journal": "Universal Informatics recorded experiment",
+            "url": "https://staging.universalmind.tv/informatics/?area=quantum&entry=research",
+            "section": "summary",
+            "kind": "quantum-experiment",
+            "text": "{\"question\":\"Do quantum responses generated from Fibonacci and M9 P24 representations improve our ability to predict transcription factor occupancy around OXTR?\",\"phase\":\"Completed measurement qualification plus an exploratory classical prediction continuation. Quantum binding prediction has not yet been tested.\",\"goal\":\"Test whether quantum responses add useful information for predicting transcription-factor occupancy around OXTR.\",\"what_ran\":\"Two unchanged 256-base DNA samples. Each sample supplied numerical input in eight preparations: ordinary, Fibonacci, Phi Ratio, Alpha, Beta, Gamma, Epsilon and shuffled. Six simulated or physical atoms; 16 CUDA-Q GPU programs and 16 Aquila programs, each with 100 measurements.\",\"result\":\"All 16 GPU runs passed the recorded numerical agreement check. All 16 Aquila runs returned; agreement with the model was mixed. These are measurements of atomic excitation, not probabilities that proteins bind DNA.\",\"useful_finding\":\"The input preparation changes the quantum response. Gamma and Epsilon raise the calculated mean excitation relative to ordinary input in both samples. The shuffled control is larger in the second sample, so response size alone is not a Fibonacci-specific benefit.\",\"success_next\":\"Build a binding-prediction method using one set of DNA regions. Keep that method fixed and predict different DNA before revealing its laboratory binding results. A useful signal is more accurate predictions than the strongest comparison method using the same DNA information.\",\"null_next\":\"No clear improvement within uncertainty is inconclusive. Equal or worse predictions give no demonstrated predictive benefit and require revision or a negative result.\",\"next_action\":\"Astra has now completed public DNA preparation and a classical prediction pilot, and prepared a matched pair with 16 local CUDA-Q checks. Read continuation for actual findings. No new Aquila or qBraid jobs were submitted.\",\"ctcf\":\"CTCF is one transcription factor: a protein that binds DNA. It is a proposed first test target, not a replacement term for all transcription factors. ENCODE peaks mark binding regions, not exact contacted bases.\",\"trust\":\"The mathematical calculation tests the specified model. CUDA-Q samples that model on a classical GPU. Aquila measures actual neutral atoms, including device noise. Agreement checks execution; laboratory binding data is the evidence for biological prediction. There is no universal trust score ranking one machine above the other.\",\"nature\":\"The 2022 Nature study s41586-022-04853-4 used a Fibonacci-ordered drive in a trapped-ion system and found longer-lived edge quantum information. It motivates Fibonacci research. Our Aquila measurement batch did not test that stability mechanism or prove that hexagons cause it.\",\"hypotheses\":\"The proposed link from M9 P24 geometry, Odom’s construction and honeycomb efficiency to quantum stability remains a working hypothesis. Mathematical relationships and the honeycomb theorem do not by themselves establish this physical mechanism.\",\"hardware_fee_usd\":20.8,\"gpu_cost_credits\":0,\"hardware_valid_shots\":1541,\"links\":{\"page\":\"https://staging.universalmind.tv/informatics/?area=quantum&entry=research\",\"json\":\"https://staging.universalmind.tv/informatics/quantum/experiments/oxtr-qrc-01-qualification/r1/experiment.json\",\"csv\":\"https://staging.universalmind.tv/informatics/quantum/experiments/oxtr-qrc-01-qualification/r1/experiment.csv\",\"complete_dataset\":\"https://staging.universalmind.tv/informatics/connect.html#downloads\"},\"continuation\":{\"verdict\":\"Inconclusive classical pilot\",\"difference_average_precision\":0.0019879267780844173,\"details\":\"continuation\"}}",
+            "doi": null,
+            "rights": null,
+            "sha256": "adc1914cac349c28afc5f4d8c72dbddf80f38063ab1bef3e93e21cea8d415876",
+            "retrievalLabel": "S1"
+          },
+          {
+            "label": "S2",
+            "id": "oxtr-qrc-01",
+            "passageId": "oxtr-qrc-01:continuation:0",
+            "title": "OXTR Quantum Atlas · continuation",
+            "authors": "",
+            "journal": "Universal Informatics recorded experiment",
+            "url": "https://staging.universalmind.tv/informatics/?area=quantum&entry=research",
+            "section": "continuation",
+            "kind": "quantum-experiment",
+            "text": "{\"question\":\"Do regular Fibonacci sequences, M9 P24 including Alpha, Beta, Gamma and Epsilon, and Phi Ratio help predict transcription factor binding around OXTR?\",\"interpretation\":{\"answer\":\"There is no demonstrated benefit yet for predicting binding around OXTR. Adding Fibonacci and Phi Ratio features gave an inconclusive result. The new classical test did not evaluate biological prediction by M9 P24 Alpha, Beta, Gamma or Epsilon. This pilot concerns CTCF, one DNA-binding protein measured in one stem-cell context, not transcription factors generally.\",\"what_we_did\":\"The agent completed a comparison of ordinary DNA binding-pattern and spacing features, with and without Fibonacci/Phi Ratio features. It learned on chromosome 1, chose the method on chromosome 2 and tested OXTR on chromosome 3, without seeing OXTR laboratory answers during learning or selection. The agent also prepared a new matched pair of DNA windows: one overlapping a reported CTCF peak and one comparison window. For each, it compiled the same DNA eight ways—ordinary, Fibonacci, Phi Ratio, Alpha, Beta, Gamma, Epsilon and shuffled controls—and completed 16 local CUDA-Q CPU checks.\",\"meaning\":\"At OXTR, average precision rose from 0.0719 to 0.0739. This is a ranking score, not percent accuracy. The uncertainty range for the change extended from −0.0263 to +0.0082, leaving benefit unresolved; the noisy increase establishes no advantage. The pilot covered only five OXTR peak regions and used laboratory data with quality warnings. Saved CUDA-Q/Aquila readings describe programmed atom excitation, not binding probabilities; the two saved samples overlap none of those peaks, so they do not validate binding prediction. The new matched pair checks programs, not predictive performance.\",\"next_dependency\":\"A larger quantum prediction test still needs more matched quantum measurements linked to laboratory binding results, and a larger independent biological test remains necessary. Today’s instruction prohibits new Aquila submissions; none were made, and no new quantum jobs were submitted. Fresh device validation and explicit allowance are required before Aquila submission; new paid qBraid work also lacks a credit allowance. This is an automated preliminary report, with Gemini oversight deferred. The inconclusive result usefully separates completed program checks from evidence of predictive benefit.\"},\"review\":{\"status\":\"automated_preliminary\",\"Gemini\":\"deferred_by_owner\"},\"metrics\":{\"difference_average_precision\":0.0019879267780844173,\"block_bootstrap_95_interval\":[-0.026260195602900528,0.008181524055569506],\"counts\":{\"development\":{\"windows\":64,\"peak_windows\":32},\"validation\":{\"windows\":64,\"peak_windows\":32},\"OXTR test\":{\"windows\":152,\"peak_windows\":8}}},\"local_cudaq_cases\":16,\"spend\":{\"new_Aquila_USD\":0,\"new_qBraid_credits\":0}}",
+            "doi": null,
+            "rights": null,
+            "sha256": "adc1914cac349c28afc5f4d8c72dbddf80f38063ab1bef3e93e21cea8d415876",
+            "retrievalLabel": "S2"
+          }
+        ],
+        "model": "gpt-6-astra",
+        "reasoning": "max",
+        "providerResponses": [
+          {
+            "id": "resp_0e0b64cc8969c5fb016af29b2d73f487d08d01f224c168e326",
+            "requestedReasoning": "max",
+            "providerReasoning": "max",
+            "status": "completed"
+          },
+          {
+            "id": "resp_0e0b64cc8969c5fb016af29b3dc43c87d08a7f22ea3213aa6f",
+            "requestedReasoning": "max",
+            "providerReasoning": "max",
+            "status": "completed"
+          },
+          {
+            "id": "resp_0e0b64cc8969c5fb016af29b40ffa887d080662eb47b012aa5",
+            "requestedReasoning": "max",
+            "providerReasoning": "max",
+            "status": "completed"
+          }
+        ],
+        "version": "research-20261026-daytab-v1",
+        "knowledgeVersions": {
+          "approvedYouth": {
+            "sourceBatch": "batch-f164c8325ea5f9c9.json",
+            "sourceSHA256": "f164c8325ea5f9c989c29524518b598913508117712826dc408f592b7f99a723",
+            "approvedAt": "2026-11-02",
+            "publications": 105
+          },
+          "biofeedback": {
+            "version": "lab-biofeedback-20261105-ratings",
+            "publications": 63
+          },
+          "publicGenes": "public-gene-data-20261109-v1",
+          "literature": "literature-20261110-v2"
+        },
+        "usage": {
+          "totalTokens": 23902,
+          "qaSpend": {
+            "limitUSD": 2,
+            "chargedUpperUSD": 0.37411250000000007,
+            "calls": [
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 41109,
+                "outputTokenUpper": 16384,
+                "boundMethod": "UTF-8 bytes plus framing",
+                "reservedUSD": 1.3330625,
+                "chargedUpperUSD": 0.103175,
+                "usage": {
+                  "input_tokens": 6046,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 6043,
+                    "cached_tokens": 0
+                  },
+                  "output_tokens": 552,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 516
+                  },
+                  "total_tokens": 6598
+                }
+              },
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 29526,
+                "outputTokenUpper": 16384,
+                "boundMethod": "Provider-counted exact prefix plus new UTF-8 bytes and framing",
+                "reservedUSD": 1.188275,
+                "chargedUpperUSD": 0.0984125,
+                "usage": {
+                  "input_tokens": 7497,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 1451,
+                    "cached_tokens": 6043
+                  },
+                  "output_tokens": 94,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 57
+                  },
+                  "total_tokens": 7591
+                }
+              },
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 23654,
+                "outputTokenUpper": 16384,
+                "boundMethod": "Provider-counted exact prefix plus new UTF-8 bytes and framing",
+                "reservedUSD": 1.114875,
+                "chargedUpperUSD": 0.17252499999999998,
+                "usage": {
+                  "input_tokens": 8350,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 853,
+                    "cached_tokens": 7422
+                  },
+                  "output_tokens": 1363,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 1034
+                  },
+                  "total_tokens": 9713
+                }
+              }
+            ]
+          }
+        },
+        "retrieval": {
+          "required": true,
+          "sourceCount": 2,
+          "contextMessages": 8,
+          "previousReferences": 0
+        }
+      }
+    },
+    {
+      "path": "/quantum/command",
+      "status": 422,
+      "question": "Correction: I want to explore GRIN2A, not OXTR. Can we discuss the approach without running or paying for anything?",
+      "sessionHeaderPresent": false,
+      "portalHeaderPresent": false,
+      "response": {
+        "error": "QA spending guard stopped before another paid request.",
+        "qaSpend": {
+          "limitUSD": 0.25,
+          "chargedUpperUSD": 0,
+          "calls": [],
+          "blocked": {
+            "path": "/responses",
+            "inputTokenUpper": 15635,
+            "outputTokenUpper": 1400,
+            "reservedUSD": 0.2654375,
+            "boundMethod": "UTF-8 bytes plus framing"
+          }
+        }
+      }
+    },
+    {
+      "path": "/quantum/command",
+      "status": 200,
+      "question": "Correction: I want to explore GRIN2A, not OXTR. Can we discuss the approach without running or paying for anything?",
+      "sessionHeaderPresent": false,
+      "portalHeaderPresent": false,
+      "response": {
+        "action": "research",
+        "question": "",
+        "provider_response_id": "resp_0a17bf9d3f28c10e016af29bbce99487d0b7a3408f92da25a8",
+        "usage": {
+          "input_tokens": 1390,
+          "input_tokens_details": {
+            "cache_write_tokens": 1387,
+            "cached_tokens": 0
+          },
+          "output_tokens": 20,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1410
+        },
+        "qaSpend": {
+          "limitUSD": 0.5,
+          "chargedUpperUSD": 0.018375000000000002,
+          "calls": [
+            {
+              "path": "/responses",
+              "model": "gpt-6-astra",
+              "inputTokenUpper": 15635,
+              "outputTokenUpper": 1400,
+              "boundMethod": "UTF-8 bytes plus framing",
+              "reservedUSD": 0.2654375,
+              "chargedUpperUSD": 0.018375000000000002,
+              "usage": {
+                "input_tokens": 1390,
+                "input_tokens_details": {
+                  "cache_write_tokens": 1387,
+                  "cached_tokens": 0
+                },
+                "output_tokens": 20,
+                "output_tokens_details": {
+                  "reasoning_tokens": 0
+                },
+                "total_tokens": 1410
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "path": "/research",
+      "status": 200,
+      "question": "Correction: I want to explore GRIN2A, not OXTR. Can we discuss the approach without running or paying for anything?",
+      "sessionHeaderPresent": true,
+      "portalHeaderPresent": true,
+      "response": {
+        "answer": "**Yes—GRIN2A, not OXTR.** We can discuss the approach and review public records without running CUDA-Q, submitting a hardware job, or spending a study credit. No paid study is needed for this discussion.\n\nThe human annotation confirms that **GRIN2A encodes GluN2A, an NMDA-receptor subunit**, and has multiple transcript variants. It is not a transcription factor. [S1]\n\nIf we’re continuing with the **gene-regulation question**, the planning approach is:\n\n1. **Define the biological outcome.** Protein binding to GRIN2A regulatory DNA, GRIN2A RNA expression, and receptor function are different outcomes. Binding to the DNA is also distinct from a molecule binding the receptor protein.\n\n2. **Separate evidence types.** Reference DNA tells us the sequence. Laboratory binding measurements show where a protein was detected in a particular cellular context. Motif predictions identify candidate binding sequences—not confirmed binding or regulation.\n\n3. **Plan validation before computation.** For a future binding-prediction test, develop the method using one group of DNA samples, then predict binding in different samples before comparing with their laboratory measurements. Include a conventional computational comparison; quantum computing is not a prerequisite.\n\nThat is a proposed research framework, not a demonstrated GRIN2A result. The annotation alone does not establish its regulatory mechanisms, and OXTR findings do not automatically transfer.\n\nTaking **human GRIN2A** as the starting point, which cell or tissue context interests you?",
+        "sources": [
+          {
+            "label": "S1",
+            "id": "https://www.ncbi.nlm.nih.gov/gene/2903",
+            "passageId": "https://www.ncbi.nlm.nih.gov/gene/2903:8e491b1e20c1616a5a58c239591232f56e2c5fbf526d8e2bfb30bee42ab6ae4c",
+            "title": "NCBI Gene · GRIN2A",
+            "authors": "",
+            "url": "https://www.ncbi.nlm.nih.gov/gene/2903",
+            "section": "GRIN2A",
+            "kind": "gene-annotation",
+            "text": "{\"status\":\"resolved\",\"gene\":\"GRIN2A\",\"geneId\":\"2903\",\"species\":\"human\",\"name\":\"glutamate ionotropic receptor NMDA type subunit 2A\",\"synonyms\":[\"LKS\",\"EPND\",\"FESD\",\"NR2A\",\"GluN2A\",\"NMDAR2A\"],\"ensemblIds\":[\"ENSG00000183454\"],\"summary\":\"This gene encodes a member of the glutamate-gated ion channel protein family. The encoded protein is an N-methyl-D-aspartate (NMDA) receptor subunit. NMDA receptors are both ligand-gated and voltage-dependent, and are involved in long-term potentiation, an activity-dependent increase in the efficiency of synaptic transmission thought to underlie certain kinds of memory and learning. These receptors are permeable to calcium ions, and activation results in a calcium influx into post-synaptic cells, which results in the activation of several signaling cascades. Disruption of this gene is associated with focal epilepsy and speech disorder with or without cognitive disability. Alternative splicing results in multiple transcript variants. [provided by RefSeq, May 2014]\",\"assembly\":\"GRCh38.p14\",\"annotation\":\"GCF_000001405.40-RS_2025_08\",\"location\":{\"chromosome\":\"16\",\"accession\":\"NC_000016.10\",\"start\":9753404,\"end\":10182908,\"strand\":\"-\",\"coordinates\":\"1-based inclusive\"}}",
+            "doi": null,
+            "rights": null,
+            "sha256": "8e491b1e20c1616a5a58c239591232f56e2c5fbf526d8e2bfb30bee42ab6ae4c",
+            "provenance": {
+              "title": "NCBI Gene · GRIN2A",
+              "url": "https://www.ncbi.nlm.nih.gov/gene/2903",
+              "kind": "gene-annotation",
+              "requestURL": "https://api.ncbi.nlm.nih.gov/datasets/v2/gene/symbol/GRIN2A/taxon/9606",
+              "retrievedAt": "2026-11-10T04:21:21.627Z",
+              "sha256": "8e491b1e20c1616a5a58c239591232f56e2c5fbf526d8e2bfb30bee42ab6ae4c"
+            },
+            "dataRecord": {
+              "schema": "universal-informatics/public-gene-record/v1",
+              "tool": "get_public_gene",
+              "parameters": {
+                "gene": "GRIN2A",
+                "species": "human"
+              },
+              "result": {
+                "status": "resolved",
+                "gene": "GRIN2A",
+                "geneId": "2903",
+                "species": "human",
+                "name": "glutamate ionotropic receptor NMDA type subunit 2A",
+                "synonyms": [
+                  "LKS",
+                  "EPND",
+                  "FESD",
+                  "NR2A",
+                  "GluN2A",
+                  "NMDAR2A"
+                ],
+                "ensemblIds": [
+                  "ENSG00000183454"
+                ],
+                "summary": "This gene encodes a member of the glutamate-gated ion channel protein family. The encoded protein is an N-methyl-D-aspartate (NMDA) receptor subunit. NMDA receptors are both ligand-gated and voltage-dependent, and are involved in long-term potentiation, an activity-dependent increase in the efficiency of synaptic transmission thought to underlie certain kinds of memory and learning. These receptors are permeable to calcium ions, and activation results in a calcium influx into post-synaptic cells, which results in the activation of several signaling cascades. Disruption of this gene is associated with focal epilepsy and speech disorder with or without cognitive disability. Alternative splicing results in multiple transcript variants. [provided by RefSeq, May 2014]",
+                "assembly": "GRCh38.p14",
+                "annotation": "GCF_000001405.40-RS_2025_08",
+                "location": {
+                  "chromosome": "16",
+                  "accession": "NC_000016.10",
+                  "start": 9753404,
+                  "end": 10182908,
+                  "strand": "-",
+                  "coordinates": "1-based inclusive"
+                },
+                "sources": [
+                  {
+                    "title": "NCBI Gene · GRIN2A",
+                    "url": "https://www.ncbi.nlm.nih.gov/gene/2903",
+                    "kind": "gene-annotation",
+                    "requestURL": "https://api.ncbi.nlm.nih.gov/datasets/v2/gene/symbol/GRIN2A/taxon/9606",
+                    "retrievedAt": "2026-11-10T04:21:21.627Z",
+                    "sha256": "8e491b1e20c1616a5a58c239591232f56e2c5fbf526d8e2bfb30bee42ab6ae4c"
+                  }
+                ]
+              }
+            },
+            "retrievalLabel": "S1"
+          }
+        ],
+        "model": "gpt-6-astra",
+        "reasoning": "max",
+        "providerResponses": [
+          {
+            "id": "resp_093fac5d7986a356016af29bc1c1d487d096fb41233aa4250d",
+            "requestedReasoning": "max",
+            "providerReasoning": "max",
+            "status": "completed"
+          },
+          {
+            "id": "resp_093fac5d7986a356016af29be0dab887d0af5305fa923f0bda",
+            "requestedReasoning": "max",
+            "providerReasoning": "max",
+            "status": "completed"
+          },
+          {
+            "id": "resp_093fac5d7986a356016af29be7a26487d0888a413776316ea8",
+            "requestedReasoning": "max",
+            "providerReasoning": "max",
+            "status": "completed"
+          }
+        ],
+        "version": "research-20261026-daytab-v1",
+        "knowledgeVersions": {
+          "approvedYouth": {
+            "sourceBatch": "batch-f164c8325ea5f9c9.json",
+            "sourceSHA256": "f164c8325ea5f9c989c29524518b598913508117712826dc408f592b7f99a723",
+            "approvedAt": "2026-11-02",
+            "publications": 105
+          },
+          "biofeedback": {
+            "version": "lab-biofeedback-20261105-ratings",
+            "publications": 63
+          },
+          "publicGenes": "public-gene-data-20261109-v1",
+          "literature": "literature-20261110-v2"
+        },
+        "usage": {
+          "totalTokens": 36938,
+          "qaSpend": {
+            "limitUSD": 2,
+            "chargedUpperUSD": 0.6212624999999998,
+            "calls": [
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 40541,
+                "outputTokenUpper": 16384,
+                "boundMethod": "UTF-8 bytes plus framing",
+                "reservedUSD": 1.3259625000000002,
+                "chargedUpperUSD": 0.13990000000000002,
+                "usage": {
+                  "input_tokens": 6004,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 6001,
+                    "cached_tokens": 0
+                  },
+                  "output_tokens": 1297,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 1218
+                  },
+                  "total_tokens": 7301
+                }
+              },
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 42985,
+                "outputTokenUpper": 16384,
+                "boundMethod": "Provider-counted exact prefix plus new UTF-8 bytes and framing",
+                "reservedUSD": 1.3565125,
+                "chargedUpperUSD": 0.0993875,
+                "usage": {
+                  "input_tokens": 7759,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 1755,
+                    "cached_tokens": 6001
+                  },
+                  "output_tokens": 48,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 0
+                  },
+                  "total_tokens": 7807
+                }
+              },
+              {
+                "path": "/embeddings",
+                "model": "text-embedding-3-small",
+                "inputTokenUpper": 8315,
+                "outputTokenUpper": 0,
+                "boundMethod": "UTF-8 bytes plus framing",
+                "reservedUSD": 0.1039375,
+                "chargedUpperUSD": 0.0002,
+                "usage": {
+                  "prompt_tokens": 16,
+                  "total_tokens": 16
+                }
+              },
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 69205,
+                "outputTokenUpper": 16384,
+                "boundMethod": "Provider-counted exact prefix plus new UTF-8 bytes and framing",
+                "reservedUSD": 1.6842625,
+                "chargedUpperUSD": 0.381775,
+                "usage": {
+                  "input_tokens": 18926,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 11167,
+                    "cached_tokens": 7684
+                  },
+                  "output_tokens": 2904,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 2588
+                  },
+                  "total_tokens": 21830
+                }
+              }
+            ]
+          }
+        },
+        "retrieval": {
+          "required": true,
+          "sourceCount": 21,
+          "contextMessages": 10,
+          "previousReferences": 1
+        }
+      }
+    },
+    {
+      "path": "/quantum/command",
+      "status": 200,
+      "question": "For that gene, what information do you need from me before proposing an experiment? Keep it brief.",
+      "sessionHeaderPresent": false,
+      "portalHeaderPresent": false,
+      "response": {
+        "action": "research",
+        "question": "",
+        "provider_response_id": "resp_02d9da7ebec26a33016af29c27bcec87d0817242a2a5743fec",
+        "usage": {
+          "input_tokens": 1748,
+          "input_tokens_details": {
+            "cache_write_tokens": 1745,
+            "cached_tokens": 0
+          },
+          "output_tokens": 20,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1768
+        },
+        "qaSpend": {
+          "limitUSD": 0.5,
+          "chargedUpperUSD": 0.02284999999999998,
+          "calls": [
+            {
+              "path": "/responses",
+              "model": "gpt-6-astra",
+              "inputTokenUpper": 17395,
+              "outputTokenUpper": 1400,
+              "boundMethod": "UTF-8 bytes plus framing",
+              "reservedUSD": 0.2874375,
+              "chargedUpperUSD": 0.022850000000000002,
+              "usage": {
+                "input_tokens": 1748,
+                "input_tokens_details": {
+                  "cache_write_tokens": 1745,
+                  "cached_tokens": 0
+                },
+                "output_tokens": 20,
+                "output_tokens_details": {
+                  "reasoning_tokens": 0
+                },
+                "total_tokens": 1768
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "path": "/research",
+      "status": 200,
+      "question": "For that gene, what information do you need from me before proposing an experiment? Keep it brief.",
+      "sessionHeaderPresent": true,
+      "portalHeaderPresent": true,
+      "response": {
+        "answer": "For **GRIN2A**, the gene encoding the GluN2A NMDA-receptor subunit [S1], three details are enough to start:\n\n- **Biological context:** human or mouse, and which cell type or tissue?\n- **Main question:** protein binding to GRIN2A regulatory DNA, GRIN2A RNA expression, or receptor function? For DNA binding, name a protein of interest if you have one.\n- **Starting resources:** public datasets only, or existing laboratory data/materials?\n\nWe can keep this entirely to **discussion and public-record review—no study run or credit use**.",
+        "sources": [
+          {
+            "label": "S1",
+            "id": "https://www.ncbi.nlm.nih.gov/gene/2903",
+            "passageId": "https://www.ncbi.nlm.nih.gov/gene/2903:8e491b1e20c1616a5a58c239591232f56e2c5fbf526d8e2bfb30bee42ab6ae4c",
+            "title": "NCBI Gene · GRIN2A",
+            "authors": "",
+            "url": "https://www.ncbi.nlm.nih.gov/gene/2903",
+            "section": "GRIN2A",
+            "kind": "gene-annotation",
+            "text": "{\"status\":\"resolved\",\"gene\":\"GRIN2A\",\"geneId\":\"2903\",\"species\":\"human\",\"name\":\"glutamate ionotropic receptor NMDA type subunit 2A\",\"synonyms\":[\"LKS\",\"EPND\",\"FESD\",\"NR2A\",\"GluN2A\",\"NMDAR2A\"],\"ensemblIds\":[\"ENSG00000183454\"],\"summary\":\"This gene encodes a member of the glutamate-gated ion channel protein family. The encoded protein is an N-methyl-D-aspartate (NMDA) receptor subunit. NMDA receptors are both ligand-gated and voltage-dependent, and are involved in long-term potentiation, an activity-dependent increase in the efficiency of synaptic transmission thought to underlie certain kinds of memory and learning. These receptors are permeable to calcium ions, and activation results in a calcium influx into post-synaptic cells, which results in the activation of several signaling cascades. Disruption of this gene is associated with focal epilepsy and speech disorder with or without cognitive disability. Alternative splicing results in multiple transcript variants. [provided by RefSeq, May 2014]\",\"assembly\":\"GRCh38.p14\",\"annotation\":\"GCF_000001405.40-RS_2025_08\",\"location\":{\"chromosome\":\"16\",\"accession\":\"NC_000016.10\",\"start\":9753404,\"end\":10182908,\"strand\":\"-\",\"coordinates\":\"1-based inclusive\"}}",
+            "doi": null,
+            "rights": null,
+            "sha256": "8e491b1e20c1616a5a58c239591232f56e2c5fbf526d8e2bfb30bee42ab6ae4c",
+            "provenance": {
+              "title": "NCBI Gene · GRIN2A",
+              "url": "https://www.ncbi.nlm.nih.gov/gene/2903",
+              "kind": "gene-annotation",
+              "requestURL": "https://api.ncbi.nlm.nih.gov/datasets/v2/gene/symbol/GRIN2A/taxon/9606",
+              "retrievedAt": "2026-11-10T04:21:21.627Z",
+              "sha256": "8e491b1e20c1616a5a58c239591232f56e2c5fbf526d8e2bfb30bee42ab6ae4c"
+            },
+            "dataRecord": {
+              "schema": "universal-informatics/public-gene-record/v1",
+              "tool": "get_public_gene",
+              "parameters": {
+                "gene": "GRIN2A",
+                "species": "human"
+              },
+              "result": {
+                "status": "resolved",
+                "gene": "GRIN2A",
+                "geneId": "2903",
+                "species": "human",
+                "name": "glutamate ionotropic receptor NMDA type subunit 2A",
+                "synonyms": [
+                  "LKS",
+                  "EPND",
+                  "FESD",
+                  "NR2A",
+                  "GluN2A",
+                  "NMDAR2A"
+                ],
+                "ensemblIds": [
+                  "ENSG00000183454"
+                ],
+                "summary": "This gene encodes a member of the glutamate-gated ion channel protein family. The encoded protein is an N-methyl-D-aspartate (NMDA) receptor subunit. NMDA receptors are both ligand-gated and voltage-dependent, and are involved in long-term potentiation, an activity-dependent increase in the efficiency of synaptic transmission thought to underlie certain kinds of memory and learning. These receptors are permeable to calcium ions, and activation results in a calcium influx into post-synaptic cells, which results in the activation of several signaling cascades. Disruption of this gene is associated with focal epilepsy and speech disorder with or without cognitive disability. Alternative splicing results in multiple transcript variants. [provided by RefSeq, May 2014]",
+                "assembly": "GRCh38.p14",
+                "annotation": "GCF_000001405.40-RS_2025_08",
+                "location": {
+                  "chromosome": "16",
+                  "accession": "NC_000016.10",
+                  "start": 9753404,
+                  "end": 10182908,
+                  "strand": "-",
+                  "coordinates": "1-based inclusive"
+                },
+                "sources": [
+                  {
+                    "title": "NCBI Gene · GRIN2A",
+                    "url": "https://www.ncbi.nlm.nih.gov/gene/2903",
+                    "kind": "gene-annotation",
+                    "requestURL": "https://api.ncbi.nlm.nih.gov/datasets/v2/gene/symbol/GRIN2A/taxon/9606",
+                    "retrievedAt": "2026-11-10T04:21:21.627Z",
+                    "sha256": "8e491b1e20c1616a5a58c239591232f56e2c5fbf526d8e2bfb30bee42ab6ae4c"
+                  }
+                ]
+              }
+            },
+            "retrievalLabel": "S2"
+          }
+        ],
+        "model": "gpt-6-astra",
+        "reasoning": "max",
+        "providerResponses": [
+          {
+            "id": "resp_0a52a0a311387333016af29c2a297c87d08f8babdb61012c27",
+            "requestedReasoning": "max",
+            "providerReasoning": "max",
+            "status": "completed"
+          },
+          {
+            "id": "resp_0a52a0a311387333016af29c3907e087d0a56009d790a350d3",
+            "requestedReasoning": "max",
+            "providerReasoning": "max",
+            "status": "completed"
+          }
+        ],
+        "version": "research-20261026-daytab-v1",
+        "knowledgeVersions": {
+          "approvedYouth": {
+            "sourceBatch": "batch-f164c8325ea5f9c9.json",
+            "sourceSHA256": "f164c8325ea5f9c989c29524518b598913508117712826dc408f592b7f99a723",
+            "approvedAt": "2026-11-02",
+            "publications": 105
+          },
+          "biofeedback": {
+            "version": "lab-biofeedback-20261105-ratings",
+            "publications": 63
+          },
+          "publicGenes": "public-gene-data-20261109-v1",
+          "literature": "literature-20261110-v2"
+        },
+        "usage": {
+          "totalTokens": 15803,
+          "qaSpend": {
+            "limitUSD": 2,
+            "chargedUpperUSD": 0.24122500000000002,
+            "calls": [
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 45026,
+                "outputTokenUpper": 16384,
+                "boundMethod": "UTF-8 bytes plus framing",
+                "reservedUSD": 1.382025,
+                "chargedUpperUSD": 0.112425,
+                "usage": {
+                  "input_tokens": 6818,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 6815,
+                    "cached_tokens": 0
+                  },
+                  "output_tokens": 544,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 516
+                  },
+                  "total_tokens": 7362
+                }
+              },
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 27198,
+                "outputTokenUpper": 16384,
+                "boundMethod": "Provider-counted exact prefix plus new UTF-8 bytes and framing",
+                "reservedUSD": 1.159175,
+                "chargedUpperUSD": 0.1288,
+                "usage": {
+                  "input_tokens": 7820,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 1002,
+                    "cached_tokens": 6815
+                  },
+                  "output_tokens": 621,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 488
+                  },
+                  "total_tokens": 8441
+                }
+              }
+            ]
+          }
+        },
+        "retrieval": {
+          "required": true,
+          "sourceCount": 2,
+          "contextMessages": 12,
+          "previousReferences": 2
+        }
+      }
+    },
+    {
+      "path": "/quantum/command",
+      "status": 200,
+      "question": "New topic: in two sentences, what is the difference between a simulation and a measurement on real hardware?",
+      "sessionHeaderPresent": false,
+      "portalHeaderPresent": false,
+      "response": {
+        "action": "research",
+        "question": "",
+        "provider_response_id": "resp_0b3dbcb227157861016af29c4a194887d0a847a0f2fe9590d4",
+        "usage": {
+          "input_tokens": 1835,
+          "input_tokens_details": {
+            "cache_write_tokens": 1832,
+            "cached_tokens": 0
+          },
+          "output_tokens": 20,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1855
+        },
+        "qaSpend": {
+          "limitUSD": 0.5,
+          "chargedUpperUSD": 0.0239375,
+          "calls": [
+            {
+              "path": "/responses",
+              "model": "gpt-6-astra",
+              "inputTokenUpper": 17739,
+              "outputTokenUpper": 1400,
+              "boundMethod": "UTF-8 bytes plus framing",
+              "reservedUSD": 0.2917375,
+              "chargedUpperUSD": 0.0239375,
+              "usage": {
+                "input_tokens": 1835,
+                "input_tokens_details": {
+                  "cache_write_tokens": 1832,
+                  "cached_tokens": 0
+                },
+                "output_tokens": 20,
+                "output_tokens_details": {
+                  "reasoning_tokens": 0
+                },
+                "total_tokens": 1855
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "path": "/research",
+      "status": 200,
+      "question": "New topic: in two sentences, what is the difference between a simulation and a measurement on real hardware?",
+      "sessionHeaderPresent": true,
+      "portalHeaderPresent": true,
+      "response": {
+        "answer": "A **simulation** calculates a system’s expected behaviour from a mathematical model running on a conventional CPU or GPU. A **measurement on real quantum hardware** records what a physical system—such as Aquila’s neutral atoms—actually does, including device noise, providing experimental observations rather than model-generated results. [S1]",
+        "sources": [
+          {
+            "label": "S1",
+            "id": "oxtr-qrc-01",
+            "passageId": "oxtr-qrc-01:summary:0",
+            "title": "OXTR Quantum Atlas · summary",
+            "authors": "",
+            "journal": "Universal Informatics recorded experiment",
+            "url": "https://staging.universalmind.tv/informatics/?area=quantum&entry=research",
+            "section": "summary",
+            "kind": "quantum-experiment",
+            "text": "{\"question\":\"Do quantum responses generated from Fibonacci and M9 P24 representations improve our ability to predict transcription factor occupancy around OXTR?\",\"phase\":\"Completed measurement qualification plus an exploratory classical prediction continuation. Quantum binding prediction has not yet been tested.\",\"goal\":\"Test whether quantum responses add useful information for predicting transcription-factor occupancy around OXTR.\",\"what_ran\":\"Two unchanged 256-base DNA samples. Each sample supplied numerical input in eight preparations: ordinary, Fibonacci, Phi Ratio, Alpha, Beta, Gamma, Epsilon and shuffled. Six simulated or physical atoms; 16 CUDA-Q GPU programs and 16 Aquila programs, each with 100 measurements.\",\"result\":\"All 16 GPU runs passed the recorded numerical agreement check. All 16 Aquila runs returned; agreement with the model was mixed. These are measurements of atomic excitation, not probabilities that proteins bind DNA.\",\"useful_finding\":\"The input preparation changes the quantum response. Gamma and Epsilon raise the calculated mean excitation relative to ordinary input in both samples. The shuffled control is larger in the second sample, so response size alone is not a Fibonacci-specific benefit.\",\"success_next\":\"Build a binding-prediction method using one set of DNA regions. Keep that method fixed and predict different DNA before revealing its laboratory binding results. A useful signal is more accurate predictions than the strongest comparison method using the same DNA information.\",\"null_next\":\"No clear improvement within uncertainty is inconclusive. Equal or worse predictions give no demonstrated predictive benefit and require revision or a negative result.\",\"next_action\":\"Astra has now completed public DNA preparation and a classical prediction pilot, and prepared a matched pair with 16 local CUDA-Q checks. Read continuation for actual findings. No new Aquila or qBraid jobs were submitted.\",\"ctcf\":\"CTCF is one transcription factor: a protein that binds DNA. It is a proposed first test target, not a replacement term for all transcription factors. ENCODE peaks mark binding regions, not exact contacted bases.\",\"trust\":\"The mathematical calculation tests the specified model. CUDA-Q samples that model on a classical GPU. Aquila measures actual neutral atoms, including device noise. Agreement checks execution; laboratory binding data is the evidence for biological prediction. There is no universal trust score ranking one machine above the other.\",\"nature\":\"The 2022 Nature study s41586-022-04853-4 used a Fibonacci-ordered drive in a trapped-ion system and found longer-lived edge quantum information. It motivates Fibonacci research. Our Aquila measurement batch did not test that stability mechanism or prove that hexagons cause it.\",\"hypotheses\":\"The proposed link from M9 P24 geometry, Odom’s construction and honeycomb efficiency to quantum stability remains a working hypothesis. Mathematical relationships and the honeycomb theorem do not by themselves establish this physical mechanism.\",\"hardware_fee_usd\":20.8,\"gpu_cost_credits\":0,\"hardware_valid_shots\":1541,\"links\":{\"page\":\"https://staging.universalmind.tv/informatics/?area=quantum&entry=research\",\"json\":\"https://staging.universalmind.tv/informatics/quantum/experiments/oxtr-qrc-01-qualification/r1/experiment.json\",\"csv\":\"https://staging.universalmind.tv/informatics/quantum/experiments/oxtr-qrc-01-qualification/r1/experiment.csv\",\"complete_dataset\":\"https://staging.universalmind.tv/informatics/connect.html#downloads\"},\"continuation\":{\"verdict\":\"Inconclusive classical pilot\",\"difference_average_precision\":0.0019879267780844173,\"details\":\"continuation\"}}",
+            "doi": null,
+            "rights": null,
+            "sha256": "adc1914cac349c28afc5f4d8c72dbddf80f38063ab1bef3e93e21cea8d415876",
+            "retrievalLabel": "S1"
+          }
+        ],
+        "model": "gpt-6-astra",
+        "reasoning": "max",
+        "providerResponses": [
+          {
+            "id": "resp_0b499582eb47a8ee016af29c4c4e6487d09263f038f2d7a28b",
+            "requestedReasoning": "max",
+            "providerReasoning": "max",
+            "status": "completed"
+          },
+          {
+            "id": "resp_0b499582eb47a8ee016af29c53554087d0a903442698db5f68",
+            "requestedReasoning": "max",
+            "providerReasoning": "max",
+            "status": "completed"
+          }
+        ],
+        "version": "research-20261026-daytab-v1",
+        "knowledgeVersions": {
+          "approvedYouth": {
+            "sourceBatch": "batch-f164c8325ea5f9c9.json",
+            "sourceSHA256": "f164c8325ea5f9c989c29524518b598913508117712826dc408f592b7f99a723",
+            "approvedAt": "2026-11-02",
+            "publications": 105
+          },
+          "biofeedback": {
+            "version": "lab-biofeedback-20261105-ratings",
+            "publications": 63
+          },
+          "publicGenes": "public-gene-data-20261109-v1",
+          "literature": "literature-20261110-v2"
+        },
+        "usage": {
+          "totalTokens": 15788,
+          "qaSpend": {
+            "limitUSD": 2,
+            "chargedUpperUSD": 0.2279875,
+            "calls": [
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 45366,
+                "outputTokenUpper": 16384,
+                "boundMethod": "UTF-8 bytes plus framing",
+                "reservedUSD": 1.386275,
+                "chargedUpperUSD": 0.0997625,
+                "usage": {
+                  "input_tokens": 6901,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 6898,
+                    "cached_tokens": 0
+                  },
+                  "output_tokens": 270,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 234
+                  },
+                  "total_tokens": 7171
+                }
+              },
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 26501,
+                "outputTokenUpper": 16384,
+                "boundMethod": "Provider-counted exact prefix plus new UTF-8 bytes and framing",
+                "reservedUSD": 1.1504625000000002,
+                "chargedUpperUSD": 0.128225,
+                "usage": {
+                  "input_tokens": 8070,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 1169,
+                    "cached_tokens": 6898
+                  },
+                  "output_tokens": 547,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 477
+                  },
+                  "total_tokens": 8617
+                }
+              }
+            ]
+          }
+        },
+        "retrieval": {
+          "required": true,
+          "sourceCount": 1,
+          "contextMessages": 12,
+          "previousReferences": 2
+        }
+      }
+    },
+    {
+      "path": "/quantum/command",
+      "status": 200,
+      "question": "I've just logged in. Is my funded credit verified?",
+      "sessionHeaderPresent": false,
+      "portalHeaderPresent": false,
+      "response": {
+        "action": "research",
+        "question": "",
+        "provider_response_id": "resp_04a2047fa7968432016af29c6263c487d0bdd195b7334b6780",
+        "usage": {
+          "input_tokens": 711,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 20,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 731
+        },
+        "qaSpend": {
+          "limitUSD": 0.5,
+          "chargedUpperUSD": 0.009887499999999994,
+          "calls": [
+            {
+              "path": "/responses",
+              "model": "gpt-6-astra",
+              "inputTokenUpper": 12209,
+              "outputTokenUpper": 1400,
+              "boundMethod": "UTF-8 bytes plus framing",
+              "reservedUSD": 0.22261250000000002,
+              "chargedUpperUSD": 0.0098875,
+              "usage": {
+                "input_tokens": 711,
+                "input_tokens_details": {
+                  "cache_write_tokens": 0,
+                  "cached_tokens": 0
+                },
+                "output_tokens": 20,
+                "output_tokens_details": {
+                  "reasoning_tokens": 0
+                },
+                "total_tokens": 731
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "path": "/research",
+      "status": 200,
+      "question": "I've just logged in. Is my funded credit verified?",
+      "sessionHeaderPresent": true,
+      "portalHeaderPresent": false,
+      "response": {
+        "answer": "Not yet—the current portal status available to this chat still shows **not authenticated** and **0 funded credits**.\n\nPlease refresh the Quantum page after signing in, then ask me to check again.",
+        "sources": [],
+        "model": "gpt-6-astra",
+        "reasoning": "max",
+        "providerResponses": [
+          {
+            "id": "resp_0720ef6433a52257016af29c66794087d0a84f19276094342b",
+            "requestedReasoning": "max",
+            "providerReasoning": "max",
+            "status": "completed"
+          }
+        ],
+        "version": "research-20261026-daytab-v1",
+        "knowledgeVersions": {
+          "approvedYouth": {
+            "sourceBatch": "batch-f164c8325ea5f9c9.json",
+            "sourceSHA256": "f164c8325ea5f9c989c29524518b598913508117712826dc408f592b7f99a723",
+            "approvedAt": "2026-11-02",
+            "publications": 105
+          },
+          "biofeedback": {
+            "version": "lab-biofeedback-20261105-ratings",
+            "publications": 63
+          },
+          "publicGenes": "public-gene-data-20261109-v1",
+          "literature": "literature-20261110-v2"
+        },
+        "usage": {
+          "totalTokens": 18831,
+          "qaSpend": {
+            "limitUSD": 2,
+            "chargedUpperUSD": 0.273825,
+            "calls": [
+              {
+                "path": "/embeddings",
+                "model": "text-embedding-3-small",
+                "inputTokenUpper": 8304,
+                "outputTokenUpper": 0,
+                "boundMethod": "UTF-8 bytes plus framing",
+                "reservedUSD": 0.1038,
+                "chargedUpperUSD": 0.00015,
+                "usage": {
+                  "prompt_tokens": 12,
+                  "total_tokens": 12
+                }
+              },
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 94307,
+                "outputTokenUpper": 16384,
+                "boundMethod": "UTF-8 bytes plus framing",
+                "reservedUSD": 1.9980375000000001,
+                "chargedUpperUSD": 0.273675,
+                "usage": {
+                  "input_tokens": 17810,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 17807,
+                    "cached_tokens": 0
+                  },
+                  "output_tokens": 1021,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 976
+                  },
+                  "total_tokens": 18831
+                }
+              }
+            ]
+          }
+        },
+        "retrieval": {
+          "required": true,
+          "sourceCount": 24,
+          "contextMessages": 0,
+          "previousReferences": 0
+        }
+      }
+    },
+    {
+      "path": "/quantum/command",
+      "status": 200,
+      "question": "Can you already run absolutely any quantum program I paste here, on whichever Braket computer I pick? Just explain; do not run anything.",
+      "sessionHeaderPresent": false,
+      "portalHeaderPresent": false,
+      "response": {
+        "action": "research",
+        "question": "",
+        "provider_response_id": "resp_0278ad41de13a221016af29c7c7c6887d08a985802b9d2f481",
+        "usage": {
+          "input_tokens": 795,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 20,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 815
+        },
+        "qaSpend": {
+          "limitUSD": 0.5,
+          "chargedUpperUSD": 0.010937499999999989,
+          "calls": [
+            {
+              "path": "/responses",
+              "model": "gpt-6-astra",
+              "inputTokenUpper": 12624,
+              "outputTokenUpper": 1400,
+              "boundMethod": "UTF-8 bytes plus framing",
+              "reservedUSD": 0.2278,
+              "chargedUpperUSD": 0.0109375,
+              "usage": {
+                "input_tokens": 795,
+                "input_tokens_details": {
+                  "cache_write_tokens": 0,
+                  "cached_tokens": 0
+                },
+                "output_tokens": 20,
+                "output_tokens_details": {
+                  "reasoning_tokens": 0
+                },
+                "total_tokens": 815
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "path": "/research",
+      "status": 200,
+      "question": "Can you already run absolutely any quantum program I paste here, on whichever Braket computer I pick? Just explain; do not run anything.",
+      "sessionHeaderPresent": true,
+      "portalHeaderPresent": false,
+      "response": {
+        "answer": "**No—not arbitrary quantum programs, and not whichever Braket computer you pick.**\n\nThe current limits are:\n\n- **CUDA-Q:** connected for local CPU simulation within supported study workflows. This is not unrestricted code execution, paid GPU access, or physical quantum hardware. Portal login is not required for every supported CPU workflow.\n- **Hardware:** the integrated route is **QuEra Aquila through Amazon Braket**, not unrestricted selection across Braket devices. A pasted program needs compatibility with that device and the validated workflow.\n- **Approval:** hardware submission requires a reviewed plan and your explicit confirmation. Live device availability has not been checked.\n\nLogin and funded credit do not remove those restrictions. Separately, the latest server status still reports **not authenticated and 0 credits** for your portal access.\n\nI can review and explain pasted code without executing it. **Nothing has been run or submitted for this request.**",
+        "sources": [],
+        "model": "gpt-6-astra",
+        "reasoning": "max",
+        "providerResponses": [
+          {
+            "id": "resp_0ae06643790b580c016af29c7e7ef487d0a52810bc52828d7c",
+            "requestedReasoning": "max",
+            "providerReasoning": "max",
+            "status": "completed"
+          }
+        ],
+        "version": "research-20261026-daytab-v1",
+        "knowledgeVersions": {
+          "approvedYouth": {
+            "sourceBatch": "batch-f164c8325ea5f9c9.json",
+            "sourceSHA256": "f164c8325ea5f9c989c29524518b598913508117712826dc408f592b7f99a723",
+            "approvedAt": "2026-11-02",
+            "publications": 105
+          },
+          "biofeedback": {
+            "version": "lab-biofeedback-20261105-ratings",
+            "publications": 63
+          },
+          "publicGenes": "public-gene-data-20261109-v1",
+          "literature": "literature-20261110-v2"
+        },
+        "usage": {
+          "totalTokens": 7070,
+          "qaSpend": {
+            "limitUSD": 2,
+            "chargedUpperUSD": 0.13416249999999996,
+            "calls": [
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 40123,
+                "outputTokenUpper": 16384,
+                "boundMethod": "UTF-8 bytes plus framing",
+                "reservedUSD": 1.3207375,
+                "chargedUpperUSD": 0.1341625,
+                "usage": {
+                  "input_tokens": 5849,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 5846,
+                    "cached_tokens": 0
+                  },
+                  "output_tokens": 1221,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 1034
+                  },
+                  "total_tokens": 7070
+                }
+              }
+            ]
+          }
+        },
+        "retrieval": {
+          "required": true,
+          "sourceCount": 1,
+          "contextMessages": 2,
+          "previousReferences": 0
+        }
+      }
+    },
+    {
+      "path": "/quantum/command",
+      "status": 200,
+      "question": "Thanks. No experiment today.",
+      "sessionHeaderPresent": false,
+      "portalHeaderPresent": false,
+      "response": {
+        "action": "research",
+        "question": "",
+        "provider_response_id": "resp_0156dd177bdb90c6016af29c9f95e887d09ac5d18e7d22e84e",
+        "usage": {
+          "input_tokens": 1007,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 20,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1027
+        },
+        "qaSpend": {
+          "limitUSD": 0.5,
+          "chargedUpperUSD": 0.013587500000000002,
+          "calls": [
+            {
+              "path": "/responses",
+              "model": "gpt-6-astra",
+              "inputTokenUpper": 13733,
+              "outputTokenUpper": 1400,
+              "boundMethod": "UTF-8 bytes plus framing",
+              "reservedUSD": 0.2416625,
+              "chargedUpperUSD": 0.013587499999999999,
+              "usage": {
+                "input_tokens": 1007,
+                "input_tokens_details": {
+                  "cache_write_tokens": 0,
+                  "cached_tokens": 0
+                },
+                "output_tokens": 20,
+                "output_tokens_details": {
+                  "reasoning_tokens": 0
+                },
+                "total_tokens": 1027
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "path": "/research",
+      "status": 200,
+      "question": "Thanks. No experiment today.",
+      "sessionHeaderPresent": true,
+      "portalHeaderPresent": false,
+      "response": {
+        "answer": "You’re welcome—no experiment today. I haven’t launched or submitted any calculation.",
+        "sources": [],
+        "model": "gpt-6-astra",
+        "reasoning": "max",
+        "providerResponses": [
+          {
+            "id": "resp_098819e172ebbddc016af29ca1b50c87d0bf9e952c903fbbb7",
+            "requestedReasoning": "max",
+            "providerReasoning": "max",
+            "status": "completed"
+          }
+        ],
+        "version": "research-20261026-daytab-v1",
+        "knowledgeVersions": {
+          "approvedYouth": {
+            "sourceBatch": "batch-f164c8325ea5f9c9.json",
+            "sourceSHA256": "f164c8325ea5f9c989c29524518b598913508117712826dc408f592b7f99a723",
+            "approvedAt": "2026-11-02",
+            "publications": 105
+          },
+          "biofeedback": {
+            "version": "lab-biofeedback-20261105-ratings",
+            "publications": 63
+          },
+          "publicGenes": "public-gene-data-20261109-v1",
+          "literature": "literature-20261110-v2"
+        },
+        "usage": {
+          "totalTokens": 6585,
+          "qaSpend": {
+            "limitUSD": 2,
+            "chargedUpperUSD": 0.10252499999999998,
+            "calls": [
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 41206,
+                "outputTokenUpper": 16384,
+                "boundMethod": "UTF-8 bytes plus framing",
+                "reservedUSD": 1.3342749999999999,
+                "chargedUpperUSD": 0.102525,
+                "usage": {
+                  "input_tokens": 6046,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 6043,
+                    "cached_tokens": 0
+                  },
+                  "output_tokens": 539,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 516
+                  },
+                  "total_tokens": 6585
+                }
+              }
+            ]
+          }
+        },
+        "retrieval": {
+          "required": true,
+          "sourceCount": 1,
+          "contextMessages": 4,
+          "previousReferences": 0
+        }
+      }
+    }
+  ],
+  "blockedMutations": [],
+  "errors": [],
+  "portalLoginStatus": 200,
+  "resumedFromVerifiedHistory": true,
+  "passed": true
+}

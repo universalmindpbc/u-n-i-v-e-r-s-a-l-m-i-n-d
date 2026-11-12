@@ -1,0 +1,14 @@
+{
+  "approvedConversationAllowanceUSD": 2,
+  "commandCalls": 7,
+  "commandChargedUpperUSD": 0.07294999999999996,
+  "realtimeResponses": 3,
+  "realtimeConservativeTokenEstimateUSD": 0.11049600000000001,
+  "realtimeEstimateMethod": "All observed input/output tokens charged at the higher audio rates; cached savings ignored",
+  "transcriptionAllowancesReservedUSD": 0.01,
+  "pricingSource": "https://developers.openai.com/api/docs/pricing",
+  "actualInvoiceNotRead": true,
+  "processAudioMuted": true,
+  "realMicrophoneUsed": false,
+  "conservativeConversationEstimateUSD": 0.19344599999999998
+}

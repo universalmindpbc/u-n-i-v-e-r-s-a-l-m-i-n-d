@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "paidRequests": 0,
+  "checks": [
+    "Coordinates, truncation, XML passages, search decomposition, unavailable sources and spending ceiling",
+    "Live NCBI, UCSC, ENCODE, JASPAR, PubMed, Europe PMC and available full-text reading"
+  ]
+}

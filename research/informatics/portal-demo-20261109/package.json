@@ -1,0 +1,10 @@
+{
+  "source.zip": {
+    "bytes": 20465,
+    "sha256": "6f6f6bf5947d4a21d3ee84c7d35f1525ced9df8bc09fc2b39db0d5472294e12e"
+  },
+  "dispatcher.zip": {
+    "bytes": 844,
+    "sha256": "668ccb34f20ff9d21025e283709ed0bd304f077c392f70897828f24c5c1ac6bb"
+  }
+}

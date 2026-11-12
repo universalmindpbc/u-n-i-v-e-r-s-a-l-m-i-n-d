@@ -1,0 +1,64 @@
+{
+  "mode": "staging",
+  "muted": true,
+  "viewports": [
+    {
+      "width": 1440,
+      "scroll": 1440,
+      "client": 1440,
+      "chart": 1260
+    },
+    {
+      "width": 1024,
+      "scroll": 1024,
+      "client": 1024,
+      "chart": 950
+    },
+    {
+      "width": 390,
+      "scroll": 390,
+      "client": 390,
+      "chart": 350
+    },
+    {
+      "width": 320,
+      "scroll": 320,
+      "client": 320,
+      "chart": 280
+    }
+  ],
+  "errors": [],
+  "checks": [
+    "Real two-finger CDP pinch and touch pan, viewport scale preserved",
+    "Zoom reset and fixed sequence clock",
+    "Five live space-weather choices, Kp intervals, native minute traces, log X-rays, zoom and JSON export",
+    "Missing social provider is explicit",
+    "Universal One preview, Escape and focus return",
+    "Native silent autoplay markup and no playback controls",
+    "Kernel JSON retrieval and export reference",
+    "Zen default and visible switch",
+    "two observed series in Zen",
+    "Fibonacci and King Wen native yearly steps on a separate scale; historical Timewave option",
+    "nine Zen indicator choices",
+    "Research configuration preserved across view changes",
+    "page response",
+    "noindex",
+    "four viewport widths",
+    "64 hexagrams",
+    "16 clock/method combinations",
+    "dense envelopes",
+    "overlay",
+    "sequence space",
+    "historical zero",
+    "JSON download",
+    "date validation",
+    "reset",
+    "keyboard inspection",
+    "layer toggles",
+    "nine human and market choices",
+    "source coverage",
+    "conflict ranges",
+    "market monthly observations",
+    "human export"
+  ]
+}

@@ -5,7 +5,7 @@
 const knownInputs=new WeakMap(),pendingInputs=new WeakMap();
 const bytes=value=>new TextEncoder().encode(JSON.stringify(value)).length;
 export function qaSpendLedger(limit){
- const n=Number(limit);return Number.isFinite(n)&&n>0&&n<=0.95?{limitUSD:n,chargedUpperUSD:0,calls:[]}:null;
+ const n=Number(limit);return Number.isFinite(n)&&n>0&&n<=2.25?{limitUSD:n,chargedUpperUSD:0,calls:[]}:null;
 }
 export function reserveQACall(ledger,path,body){
  if(!ledger)return null;
@@ -21,7 +21,7 @@ export function reserveQACall(ledger,path,body){
  }
  if(inputUpper>=272000)throw Object.assign(new Error('QA request exceeds the verified short-context pricing range.'),{status:422,publicMessage:true});
  const outputUpper=path==='/responses'?body.max_output_tokens:0;
- if(!Number.isInteger(outputUpper)||outputUpper<0||outputUpper>1400)throw Object.assign(new Error('QA output tokens need an explicit bounded limit.'),{status:422,publicMessage:true});
+ if(!Number.isInteger(outputUpper)||outputUpper<0||outputUpper>16384)throw Object.assign(new Error('QA output tokens need an explicit bounded limit.'),{status:422,publicMessage:true});
  const reservedUSD=inputUpper*12.5/1e6+outputUpper*50/1e6;
  if(ledger.chargedUpperUSD+reservedUSD>ledger.limitUSD){ledger.blocked={path,inputTokenUpper:inputUpper,outputTokenUpper:outputUpper,reservedUSD,boundMethod};throw Object.assign(new Error('QA spending guard stopped before another paid request.'),{status:422,publicMessage:true});}
  const row={path,model:body.model,inputTokenUpper:inputUpper,outputTokenUpper:outputUpper,boundMethod,reservedUSD,chargedUpperUSD:reservedUSD,usage:null};

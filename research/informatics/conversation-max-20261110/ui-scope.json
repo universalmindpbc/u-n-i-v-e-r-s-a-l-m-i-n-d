@@ -1,0 +1,17 @@
+[
+  {
+    "file": "Informatics/index.html",
+    "onlyScriptCacheAndSourceHashChanges": true,
+    "sha256": "cea51ae6aea8c4c51210d017aa4c78b9df5d5112a5d63a33ef8986ebde5f9417"
+  },
+  {
+    "file": "Informatics/chapters/quantum.html",
+    "onlyScriptCacheAndSourceHashChanges": true,
+    "sha256": "51a5a7ae44bae158c6ed2f7625b6882c98dbf02362934c4767a9f4d1a3e45d18"
+  },
+  {
+    "file": "Informatics/quantum/index.html",
+    "onlyScriptCacheAndSourceHashChanges": true,
+    "sha256": "6b662300f6d39666db2296d721423feb4f434bba84514061288212e8ca9b83d2"
+  }
+]

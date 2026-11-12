@@ -1,0 +1,16 @@
+{
+  "date": "2026-11-09",
+  "environment": "staging",
+  "fixes": [
+    "Safari absolute helper imports and retry",
+    "One user message on failed-request retry",
+    "Inline text/dictation/voice conversation",
+    "Automatic progress, findings and saved-study restoration",
+    "Explicit swarm versus hardware capability replies",
+    "Private email result links and durable completion notifications"
+  ],
+  "paidVerification": "Remaining approved US$2 conversation allowance; no new study or paid quantum/GPU jobs",
+  "emailVerification": "One results notification to the address supplied by Ben; address excluded from audit files",
+  "productionModified": false,
+  "candidateBrowserTests": "Synthetic capture and mocked study/API responses; live provider verification follows deployment"
+}

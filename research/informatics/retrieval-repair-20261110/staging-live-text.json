@@ -1,0 +1,413 @@
+{
+  "mode": "text",
+  "newStudies": 0,
+  "syntheticInput": true,
+  "processAudioMuted": true,
+  "network": [
+    {
+      "path": "/quantum/capacity",
+      "status": 200
+    },
+    {
+      "path": "/quantum/command",
+      "status": 200
+    },
+    {
+      "path": "/research",
+      "status": 200
+    }
+  ],
+  "responses": [
+    {
+      "path": "/quantum/command",
+      "status": 200,
+      "body": {
+        "action": "research",
+        "question": "",
+        "provider_response_id": "resp_0cbc5611adb0f7f3016af220bb9cc087d098244d054c78855c",
+        "usage": {
+          "input_tokens": 795,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 20,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 815
+        },
+        "qaSpend": {
+          "limitUSD": 0.95,
+          "chargedUpperUSD": 0.010937499999999989,
+          "calls": [
+            {
+              "path": "/responses",
+              "model": "gpt-6-astra",
+              "inputTokenUpper": 12653,
+              "outputTokenUpper": 1400,
+              "boundMethod": "UTF-8 bytes plus framing",
+              "reservedUSD": 0.22816250000000002,
+              "chargedUpperUSD": 0.0109375,
+              "usage": {
+                "input_tokens": 795,
+                "input_tokens_details": {
+                  "cache_write_tokens": 0,
+                  "cached_tokens": 0
+                },
+                "output_tokens": 20,
+                "output_tokens_details": {
+                  "reasoning_tokens": 0
+                },
+                "total_tokens": 815
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "path": "/research",
+      "status": 200,
+      "body": {
+        "answer": "**All three connections returned sources.** I searched `CD38 AND oxytocin` first, then made one Perplexity Search call.\n\n- **PubMed — successful.** Returned *CD38 and its role in oxytocin secretion and social behavior*, Higashida et al., *Hormones and Behavior* (2012), DOI: 10.1016/j.yhbeh.2011.12.011. [S1]\n- **Europe PMC — successful.** Returned *Type III CD38 is present in the membrane of neurosecretory vesicles and has a cytosol-facing catalytic domain in primate oxytocin neurons*, Miyamoto et al., *Journal of Neuroendocrinology* (2026), DOI: 10.1111/jne.70187. [S2]\n- **Perplexity Search — successful, with limited publisher access.** Returned the original ScienceDirect page for the Higashida review, including authors and a March 2012 publication date. Its extracted text also reported a content-access problem, so this was not a full publisher-page verification. [S3]\n\n**Correction-check limit:** No correction notice appeared in the returned results; that does not verify that none exists. The publisher-version-history gap remains unresolved.\n\nNo Opus agent was called, and no study was run.",
+        "sources": [
+          {
+            "label": "S1",
+            "id": "22227279",
+            "passageId": "22227279:4db2baf564098ced4a6ffd00095337910e33b4ee81e10f1c064e108a7fec6c00",
+            "title": "CD38 and its role in oxytocin secretion and social behavior.",
+            "authors": "",
+            "journal": "Hormones and behavior",
+            "year": "2012 Mar",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/22227279/",
+            "section": "Live literature",
+            "kind": "Bounded relevance search, not a systematic review. PubMed and Europe PMC overlap and are not independent corroboration. Search hits do not establish support for the hypothesis.",
+            "text": "{\"id\":\"22227279\",\"pmid\":\"22227279\",\"doi\":\"10.1016/j.yhbeh.2011.12.011\",\"title\":\"CD38 and its role in oxytocin secretion and social behavior.\",\"authors\":\"Higashida H, Yokoyama S, Kikuchi M, Munesue T\",\"journal\":\"Hormones and behavior\",\"year\":\"2012 Mar\",\"publicationTypes\":[\"Journal Article\",\"Research Support, Non-U.S. Gov't\",\"Review\"],\"isRetracted\":false,\"url\":\"https://pubmed.ncbi.nlm.nih.gov/22227279/\",\"coverage\":\"metadata\",\"receipt\":{\"url\":\"https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&id=32360414%2C22227279%2C28736241%2C35873827%2C31682209%2C36440788&retmode=json&tool=UniversalInformatics\",\"retrievedAt\":\"2026-11-09T19:36:36.100Z\",\"sha256\":\"4db2baf564098ced4a6ffd00095337910e33b4ee81e10f1c064e108a7fec6c00\"},\"discoveredIn\":[\"PubMed\"],\"searchReceipts\":[{\"url\":\"https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=CD38+AND+oxytocin&retmode=json&retmax=6&sort=relevance&tool=UniversalInformatics\",\"retrievedAt\":\"2026-11-09T19:36:35.413Z\",\"sha256\":\"0e01afae5be52b38a9a65225adf60cfd4735a21ec8c3609bd3f2f5cd2c052112\"}]}",
+            "doi": null,
+            "rights": null,
+            "sha256": "4db2baf564098ced4a6ffd00095337910e33b4ee81e10f1c064e108a7fec6c00",
+            "provenance": {
+              "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&id=32360414%2C22227279%2C28736241%2C35873827%2C31682209%2C36440788&retmode=json&tool=UniversalInformatics",
+              "retrievedAt": "2026-11-09T19:36:36.100Z",
+              "sha256": "4db2baf564098ced4a6ffd00095337910e33b4ee81e10f1c064e108a7fec6c00"
+            },
+            "dataRecord": {
+              "schema": "universal-informatics/literature-record/v1",
+              "tool": "search_literature",
+              "parameters": {
+                "query": "CD38 AND oxytocin"
+              },
+              "result": {
+                "paper": {
+                  "id": "22227279",
+                  "pmid": "22227279",
+                  "doi": "10.1016/j.yhbeh.2011.12.011",
+                  "title": "CD38 and its role in oxytocin secretion and social behavior.",
+                  "authors": "Higashida H, Yokoyama S, Kikuchi M, Munesue T",
+                  "journal": "Hormones and behavior",
+                  "year": "2012 Mar",
+                  "publicationTypes": [
+                    "Journal Article",
+                    "Research Support, Non-U.S. Gov't",
+                    "Review"
+                  ],
+                  "isRetracted": false,
+                  "url": "https://pubmed.ncbi.nlm.nih.gov/22227279/",
+                  "coverage": "metadata",
+                  "receipt": {
+                    "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&id=32360414%2C22227279%2C28736241%2C35873827%2C31682209%2C36440788&retmode=json&tool=UniversalInformatics",
+                    "retrievedAt": "2026-11-09T19:36:36.100Z",
+                    "sha256": "4db2baf564098ced4a6ffd00095337910e33b4ee81e10f1c064e108a7fec6c00"
+                  },
+                  "discoveredIn": [
+                    "PubMed"
+                  ],
+                  "searchReceipts": [
+                    {
+                      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=CD38+AND+oxytocin&retmode=json&retmax=6&sort=relevance&tool=UniversalInformatics",
+                      "retrievedAt": "2026-11-09T19:36:35.413Z",
+                      "sha256": "0e01afae5be52b38a9a65225adf60cfd4735a21ec8c3609bd3f2f5cd2c052112"
+                    }
+                  ]
+                },
+                "searches": [
+                  {
+                    "source": "PubMed",
+                    "status": "retrieved",
+                    "query": "CD38 AND oxytocin",
+                    "total": 141,
+                    "receipt": {
+                      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=CD38+AND+oxytocin&retmode=json&retmax=6&sort=relevance&tool=UniversalInformatics",
+                      "retrievedAt": "2026-11-09T19:36:35.413Z",
+                      "sha256": "0e01afae5be52b38a9a65225adf60cfd4735a21ec8c3609bd3f2f5cd2c052112"
+                    }
+                  },
+                  {
+                    "source": "Europe PMC",
+                    "status": "retrieved",
+                    "query": "CD38 AND oxytocin",
+                    "total": 656,
+                    "receipt": {
+                      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=CD38+AND+oxytocin&format=json&resultType=core&pageSize=6",
+                      "retrievedAt": "2026-11-09T19:36:39.093Z",
+                      "sha256": "0239a5e5e2176057362a456e2b2cd2856a770866dfff1e41a7bb65499d28b93d"
+                    }
+                  }
+                ],
+                "coverage": "Bounded relevance search, not a systematic review. PubMed and Europe PMC overlap and are not independent corroboration. Search hits do not establish support for the hypothesis."
+              }
+            },
+            "retrievalLabel": "S3"
+          },
+          {
+            "label": "S2",
+            "id": "42001898",
+            "passageId": "42001898:0239a5e5e2176057362a456e2b2cd2856a770866dfff1e41a7bb65499d28b93d",
+            "title": "Type III CD38 is present in the membrane of neurosecretory vesicles and has a cytosol-facing catalytic domain in primate oxytocin neurons.",
+            "authors": "",
+            "journal": "Journal of neuroendocrinology",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/42001898/",
+            "section": "Live literature",
+            "kind": "Bounded relevance search, not a systematic review. PubMed and Europe PMC overlap and are not independent corroboration. Search hits do not establish support for the hypothesis.",
+            "text": "{\"id\":\"42001898\",\"pmid\":\"42001898\",\"pmcid\":\"PMC13092349\",\"doi\":\"10.1111/jne.70187\",\"title\":\"Type III CD38 is present in the membrane of neurosecretory vesicles and has a cytosol-facing catalytic domain in primate oxytocin neurons.\",\"authors\":\"Miyamoto T, Matsushima A, Otubo A, Song C, Murata K, Oti T, Sakamoto H.\",\"journal\":\"Journal of neuroendocrinology\",\"year\":\"2026\",\"publicationTypes\":[\"research-article\",\"Journal Article\"],\"abstract\":\"CD38, an ADP-ribosyl cyclase that generates cyclic ADP-ribose (cADPR), is essential for Ca 2+ -dependent oxytocin release. However, its subcellular localisation and membrane topology within oxytocin neurones have remained unclear. We investigated the distribution and orientation of CD38 in oxytocin-producing neurones of Japanese macaques (Macaca fuscata) using immunoelectron microscopy combined with biochemical isolation of neurosecretory vesicles (NSVs). CD38 immunoreactivity was selectively detected on oxytocin-containing NSVs in axon terminals in the posterior pituitary and dendrites of the supraoptic nucleus, whereas vasopressin vesicles and the plasma membrane lacked detectable labelling. Cryo-electron microscopy confirmed the structural integrity of purified NSV fractions, and Western blotting verified the presence of CD38 protein within these fractions. Permeabilisation-dependent immunogold labelling further demonstrated that the NSV membrane localisation of CD38 and that the N-terminal region of CD38 is oriented toward the vesicle lumen, consistent with a type III membrane topology in which the catalytic domain faces the cytosol. This arrangement positions the active site near cytosolic NAD + , enabling localised cADPR production adjacent to Ca 2+ -mobilising channels that support regulated exocytosis. These findings identify, in primate oxytocin neurones, a previously unrecognised, vesicle-associated pool of CD38 with a cytosol-facing catalytic domain and provide a structural framework for understanding how intracellular type III CD38 contributes to neuropeptide release.\",\"abstractTruncated\":false,\"isOpenAccess\":true,\"isRetracted\":false,\"firstPublicationDate\":\"2026-04-01\",\"url\":\"https://pubmed.ncbi.nlm.nih.gov/42001898/\",\"coverage\":\"abstract\",\"receipt\":{\"url\":\"https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=CD38+AND+oxytocin&format=json&resultType=core&pageSize=6\",\"retrievedAt\":\"2026-11-09T19:36:39.093Z\",\"sha256\":\"0239a5e5e2176057362a456e2b2cd2856a770866dfff1e41a7bb65499d28b93d\"},\"discoveredIn\":[\"Europe PMC\"],\"searchReceipts\":[{\"url\":\"https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=CD38+AND+oxytocin&format=json&resultType=core&pageSize=6\",\"retrievedAt\":\"2026-11-09T19:36:39.093Z\",\"sha256\":\"0239a5e5e2176057362a456e2b2cd2856a770866dfff1e41a7bb65499d28b93d\"}]}",
+            "doi": null,
+            "rights": null,
+            "sha256": "0239a5e5e2176057362a456e2b2cd2856a770866dfff1e41a7bb65499d28b93d",
+            "provenance": {
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=CD38+AND+oxytocin&format=json&resultType=core&pageSize=6",
+              "retrievedAt": "2026-11-09T19:36:39.093Z",
+              "sha256": "0239a5e5e2176057362a456e2b2cd2856a770866dfff1e41a7bb65499d28b93d"
+            },
+            "dataRecord": {
+              "schema": "universal-informatics/literature-record/v1",
+              "tool": "search_literature",
+              "parameters": {
+                "query": "CD38 AND oxytocin"
+              },
+              "result": {
+                "paper": {
+                  "id": "42001898",
+                  "pmid": "42001898",
+                  "pmcid": "PMC13092349",
+                  "doi": "10.1111/jne.70187",
+                  "title": "Type III CD38 is present in the membrane of neurosecretory vesicles and has a cytosol-facing catalytic domain in primate oxytocin neurons.",
+                  "authors": "Miyamoto T, Matsushima A, Otubo A, Song C, Murata K, Oti T, Sakamoto H.",
+                  "journal": "Journal of neuroendocrinology",
+                  "year": "2026",
+                  "publicationTypes": [
+                    "research-article",
+                    "Journal Article"
+                  ],
+                  "abstract": "CD38, an ADP-ribosyl cyclase that generates cyclic ADP-ribose (cADPR), is essential for Ca 2+ -dependent oxytocin release. However, its subcellular localisation and membrane topology within oxytocin neurones have remained unclear. We investigated the distribution and orientation of CD38 in oxytocin-producing neurones of Japanese macaques (Macaca fuscata) using immunoelectron microscopy combined with biochemical isolation of neurosecretory vesicles (NSVs). CD38 immunoreactivity was selectively detected on oxytocin-containing NSVs in axon terminals in the posterior pituitary and dendrites of the supraoptic nucleus, whereas vasopressin vesicles and the plasma membrane lacked detectable labelling. Cryo-electron microscopy confirmed the structural integrity of purified NSV fractions, and Western blotting verified the presence of CD38 protein within these fractions. Permeabilisation-dependent immunogold labelling further demonstrated that the NSV membrane localisation of CD38 and that the N-terminal region of CD38 is oriented toward the vesicle lumen, consistent with a type III membrane topology in which the catalytic domain faces the cytosol. This arrangement positions the active site near cytosolic NAD + , enabling localised cADPR production adjacent to Ca 2+ -mobilising channels that support regulated exocytosis. These findings identify, in primate oxytocin neurones, a previously unrecognised, vesicle-associated pool of CD38 with a cytosol-facing catalytic domain and provide a structural framework for understanding how intracellular type III CD38 contributes to neuropeptide release.",
+                  "abstractTruncated": false,
+                  "isOpenAccess": true,
+                  "isRetracted": false,
+                  "firstPublicationDate": "2026-04-01",
+                  "url": "https://pubmed.ncbi.nlm.nih.gov/42001898/",
+                  "coverage": "abstract",
+                  "receipt": {
+                    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=CD38+AND+oxytocin&format=json&resultType=core&pageSize=6",
+                    "retrievedAt": "2026-11-09T19:36:39.093Z",
+                    "sha256": "0239a5e5e2176057362a456e2b2cd2856a770866dfff1e41a7bb65499d28b93d"
+                  },
+                  "discoveredIn": [
+                    "Europe PMC"
+                  ],
+                  "searchReceipts": [
+                    {
+                      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=CD38+AND+oxytocin&format=json&resultType=core&pageSize=6",
+                      "retrievedAt": "2026-11-09T19:36:39.093Z",
+                      "sha256": "0239a5e5e2176057362a456e2b2cd2856a770866dfff1e41a7bb65499d28b93d"
+                    }
+                  ]
+                },
+                "searches": [
+                  {
+                    "source": "PubMed",
+                    "status": "retrieved",
+                    "query": "CD38 AND oxytocin",
+                    "total": 141,
+                    "receipt": {
+                      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=CD38+AND+oxytocin&retmode=json&retmax=6&sort=relevance&tool=UniversalInformatics",
+                      "retrievedAt": "2026-11-09T19:36:35.413Z",
+                      "sha256": "0e01afae5be52b38a9a65225adf60cfd4735a21ec8c3609bd3f2f5cd2c052112"
+                    }
+                  },
+                  {
+                    "source": "Europe PMC",
+                    "status": "retrieved",
+                    "query": "CD38 AND oxytocin",
+                    "total": 656,
+                    "receipt": {
+                      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=CD38+AND+oxytocin&format=json&resultType=core&pageSize=6",
+                      "retrievedAt": "2026-11-09T19:36:39.093Z",
+                      "sha256": "0239a5e5e2176057362a456e2b2cd2856a770866dfff1e41a7bb65499d28b93d"
+                    }
+                  }
+                ],
+                "coverage": "Bounded relevance search, not a systematic review. PubMed and Europe PMC overlap and are not independent corroboration. Search hits do not establish support for the hypothesis."
+              }
+            },
+            "retrievalLabel": "S10"
+          },
+          {
+            "label": "S3",
+            "id": "https://www.sciencedirect.com/science/article/abs/pii/S0018506X11002881",
+            "passageId": "https://www.sciencedirect.com/science/article/abs/pii/S0018506X11002881:literature-20261110-v2",
+            "title": "CD38 and its role in oxytocin secretion and social behavior",
+            "authors": "",
+            "url": "https://www.sciencedirect.com/science/article/abs/pii/S0018506X11002881",
+            "section": "Live literature",
+            "kind": "search-extracted text",
+            "text": "{\"title\":\"CD38 and its role in oxytocin secretion and social behavior\",\"url\":\"https://www.sciencedirect.com/science/article/abs/pii/S0018506X11002881\",\"text\":\"## Title\\nCD38 and its role in oxytocin secretion and social behavior\\n## Authors\\nHigashida Haruhiro\\nYokoyama Shigeru\\nKikuchi Mitsuru\\nMunesue Toshio\\n## Tags\\nBehavioral Neuroscience; Endocrine and Autonomic Systems; Endocrinology\\n## Issued at\\n03/01/2012\\n...\\n# There was a problem providing the content you requested\\n## References\\n- [CD38 is critical for social behaviour by regulating oxytocin secretion](https://doi.org/10.1038/nature05526)\",\"published\":null,\"updated\":\"2024-10-16\",\"coverage\":\"search-extracted text\"}",
+            "doi": null,
+            "rights": null,
+            "sha256": null,
+            "provenance": {
+              "retrievedAt": "2026-11-09T19:36:45.682Z",
+              "reservation": 2,
+              "reservedUSD": 0.005
+            },
+            "dataRecord": {
+              "schema": "universal-informatics/literature-record/v1",
+              "tool": "search_literature_fallback",
+              "parameters": {
+                "query": "Check original publisher pages for CD38 oxytocin papers: \"CD38 and its role in oxytocin secretion and social behavior\" DOI 10.1016/j.yhbeh.2011.12.011 and \"Type III CD38 is present in the membrane of neurosecretory vesicles\" DOI 10.1111/jne.70187. Return publisher links, publication details and any linked correction or retraction notices; distinguish not found from verified absent.",
+                "reason": "PubMed and Europe PMC returned sources, but the bounded records lack original-publisher version history and linked correction details. This single Perplexity Search call checks that explicit metadata gap for the requested connection test."
+              },
+              "result": {
+                "paper": {
+                  "title": "CD38 and its role in oxytocin secretion and social behavior",
+                  "url": "https://www.sciencedirect.com/science/article/abs/pii/S0018506X11002881",
+                  "text": "## Title\nCD38 and its role in oxytocin secretion and social behavior\n## Authors\nHigashida Haruhiro\nYokoyama Shigeru\nKikuchi Mitsuru\nMunesue Toshio\n## Tags\nBehavioral Neuroscience; Endocrine and Autonomic Systems; Endocrinology\n## Issued at\n03/01/2012\n...\n# There was a problem providing the content you requested\n## References\n- [CD38 is critical for social behaviour by regulating oxytocin secretion](https://doi.org/10.1038/nature05526)",
+                  "published": null,
+                  "updated": "2024-10-16",
+                  "coverage": "search-extracted text"
+                }
+              }
+            },
+            "retrievalLabel": "S14"
+          }
+        ],
+        "model": "gpt-6-astra",
+        "version": "research-20261026-daytab-v1",
+        "knowledgeVersions": {
+          "approvedYouth": {
+            "sourceBatch": "batch-f164c8325ea5f9c9.json",
+            "sourceSHA256": "f164c8325ea5f9c989c29524518b598913508117712826dc408f592b7f99a723",
+            "approvedAt": "2026-11-02",
+            "publications": 105
+          },
+          "biofeedback": {
+            "version": "lab-biofeedback-20261105-ratings",
+            "publications": 63
+          },
+          "publicGenes": "public-gene-data-20261109-v1",
+          "literature": "literature-20261110-v2"
+        },
+        "usage": {
+          "totalTokens": 29091,
+          "qaSpend": {
+            "limitUSD": 0.95,
+            "chargedUpperUSD": 0.38103750000000003,
+            "calls": [
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 34173,
+                "outputTokenUpper": 1400,
+                "boundMethod": "UTF-8 bytes plus framing",
+                "reservedUSD": 0.4971625,
+                "chargedUpperUSD": 0.0611125,
+                "usage": {
+                  "input_tokens": 4789,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 4786,
+                    "cached_tokens": 0
+                  },
+                  "output_tokens": 25,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 0
+                  },
+                  "total_tokens": 4814
+                }
+              },
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 34456,
+                "outputTokenUpper": 1400,
+                "boundMethod": "Provider-counted exact prefix plus new UTF-8 bytes and framing",
+                "reservedUSD": 0.5007,
+                "chargedUpperUSD": 0.14401250000000002,
+                "usage": {
+                  "input_tokens": 10881,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 6092,
+                    "cached_tokens": 4786
+                  },
+                  "output_tokens": 160,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 0
+                  },
+                  "total_tokens": 11041
+                }
+              },
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 27858,
+                "outputTokenUpper": 1400,
+                "boundMethod": "Provider-counted exact prefix plus new UTF-8 bytes and framing",
+                "reservedUSD": 0.418225,
+                "chargedUpperUSD": 0.1759125,
+                "usage": {
+                  "input_tokens": 12957,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 2076,
+                    "cached_tokens": 10806
+                  },
+                  "output_tokens": 279,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 0
+                  },
+                  "total_tokens": 13236
+                }
+              }
+            ]
+          }
+        },
+        "retrieval": {
+          "required": true,
+          "sourceCount": 16,
+          "contextMessages": 0,
+          "previousReferences": 0
+        }
+      }
+    }
+  ],
+  "answer": "UNIVERSAL ONE\n**All three connections returned sources.** I searched `CD38 AND oxytocin` first, then made one Perplexity Search call.\n\n- **PubMed — successful.** Returned *CD38 and its role in oxytocin secretion and social behavior*, Higashida et al., *Hormones and Behavior* (2012), DOI: 10.1016/j.yhbeh.2011.12.011. [S1]\n- **Europe PMC — successful.** Returned *Type III CD38 is present in the membrane of neurosecretory vesicles and has a cytosol-facing catalytic domain in primate oxytocin neurons*, Miyamoto et al., *Journal of Neuroendocrinology* (2026), DOI: 10.1111/jne.70187. [S2]\n- **Perplexity Search — successful, with limited publisher access.** Returned the original ScienceDirect page for the Higashida review, including authors and a March 2012 publication date. Its extracted text also reported a content-access problem, so this was not a full publisher-page verification. [S3]\n\n**Correction-check limit:** No correction notice appeared in the returned results; that does not verify that none exists. The publisher-version-history gap remains unresolved.\n\nNo Opus agent was called, and no study was run.\n3 sources",
+  "sourceRecords": [
+    {
+      "label": "S1",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/22227279/",
+      "schema": "universal-informatics/literature-record/v1",
+      "tool": "search_literature"
+    },
+    {
+      "label": "S2",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42001898/",
+      "schema": "universal-informatics/literature-record/v1",
+      "tool": "search_literature"
+    },
+    {
+      "label": "S3",
+      "url": "https://www.sciencedirect.com/science/article/abs/pii/S0018506X11002881",
+      "schema": "universal-informatics/literature-record/v1",
+      "tool": "search_literature_fallback"
+    }
+  ],
+  "passed": true
+}

@@ -1,8 +1,11 @@
 const endpoint=location.hostname==='staging.universalmind.tv'?'https://informatics-universal-one-staging.universalmind.workers.dev':'https://informatics-universal-one.universalmind.workers.dev';
 const $=s=>document.querySelector(s),el=(tag,text,cls)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;};
+const resultTokens=new Map();
+export function rememberResultToken(id,token){resultTokens.set(id,token);try{sessionStorage.setItem('quantum-result-token:'+id,token);}catch{}}
+function resultToken(id){try{return resultTokens.get(id)||sessionStorage.getItem('quantum-result-token:'+id);}catch{return resultTokens.get(id);}}
 const tokenKey='astra-research-session-v1';let timer,task=null,changed=()=>{};
 function token(){try{return localStorage.getItem(tokenKey)||'';}catch{return '';}}
-export function agentHeaders(){return token()?{Authorization:'Bearer '+token()}:{};}
+export function agentHeaders(){const headers=token()?{Authorization:'Bearer '+token()}:{};try{const portal=sessionStorage.getItem('quantum-portal-session-v1');if(portal)headers['X-Quantum-Portal']=portal;}catch{}return headers;}
 let connecting;
 export async function ensureAgentSession(){
  if(!['staging.universalmind.tv','universalmind.tv'].includes(location.hostname))return;
@@ -13,9 +16,9 @@ export async function ensureAgentSession(){
 function save(value,name,type='application/json'){const text=typeof value==='string'?value:JSON.stringify(value,null,2),url=URL.createObjectURL(new Blob([text],{type})),a=el('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),3000);}
 function csv(value){const rows=[['field','type','value','escaped']];function walk(v,path){const type=v===null?'null':Array.isArray(v)?'array':typeof v;let text=type==='object'||type==='array'?'':String(v??'');const escaped=/^[=+@\-\t\r]/.test(text);if(escaped)text="'"+text;rows.push([path,type,text,escaped?'1':'0']);if(v!==null&&typeof v==='object')for(const [k,x]of Object.entries(v))walk(x,path+'/'+k.replace(/~/g,'~0').replace(/\//g,'~1'));}walk(value,'');return rows.map(r=>r.map(v=>'"'+v.replace(/"/g,'""')+'"').join(',')).join('\r\n');}
 
-function show(t){task=t;const box=$('#agent-progress');box.hidden=false;$('#agent-status').textContent=t.status==='complete'?'Your analysis is ready':t.status==='queued'?'Astra is waiting for the research worker':t.status==='needs_attention'?'Progress saved · service attention needed':t.status==='cancelled'?'Study cancelled':'Astra is working on your question';$('#agent-message').textContent=t.message;$('#agent-open').hidden=!t.report;$('#agent-cancel').hidden=['complete','failed','cancelled','needs_attention'].includes(t.status);$('#agent-history').replaceChildren();for(const e of t.events||[])$('#agent-history').append(el('li',e.message));window.dispatchEvent(new CustomEvent('quantum:agent',{detail:t}));changed(t);}
+function show(t){task=t;const box=$('#agent-progress');box.hidden=false;$('#agent-status').textContent=t.status==='complete'?'Your analysis is ready':t.status==='awaiting_confirmation'?'Your investigation is ready to review':t.status==='queued'?'Astra is waiting for the research worker':t.status==='needs_attention'?'Progress saved · service attention needed':t.status==='cancelled'?'Study cancelled':t.status==='failed'?'The analysis stopped':'Astra is working on your question';$('#agent-message').textContent=t.message;$('#agent-open').hidden=!t.report;$('#agent-cancel').hidden=t.version==='quantum-portal-experiment-v1'||['complete','failed','cancelled','needs_attention'].includes(t.status);$('#agent-history').replaceChildren();for(const e of t.events||[])$('#agent-history').append(el('li',e.message));window.dispatchEvent(new CustomEvent('quantum:agent',{detail:t}));changed(t);parent.postMessage({type:'quantum:study-progress',task:{id:t.id,question:t.question,status:t.status,stage:t.stage,message:t.message,plan:t.plan?{title:t.plan.title,cost:t.plan.cost}:null,updatedAt:t.updatedAt,report:t.report?{narrative:t.report.narrative}:null}},location.origin);}
 export function followAgent(t,onChange){clearTimeout(timer);changed=onChange;show(t);if(!['complete','failed','cancelled','needs_attention'].includes(t.status))timer=setTimeout(poll,4000);}
-async function poll(){try{await ensureAgentSession();const r=await fetch(endpoint+'/agent/studies/'+task.id,{headers:agentHeaders(),signal:AbortSignal.timeout(20000)});if(!r.ok)throw Error(r.status===401?'Reconnect to reopen the saved agent study.':'Progress is temporarily unavailable. Your task remains saved.');followAgent(await r.json(),changed);}catch(e){$('#agent-message').textContent=e.message;timer=setTimeout(poll,15000);}}
+async function poll(){try{await ensureAgentSession();const r=await fetch(endpoint+'/agent/studies/'+task.id,{headers:agentHeaders(),signal:AbortSignal.timeout(20000)});if(!r.ok)throw Error(r.status===401?'Reconnect to reopen the saved agent study.':'Progress is temporarily unavailable. Your task remains saved.');followAgent(await r.json(),changed);}catch(e){$('#agent-message').textContent=e.message;parent.postMessage({type:'quantum:study-progress',task:{id:task.id,question:task.question,status:task.status,stage:task.stage,message:e.message+' Reconnecting automatically.',connection:'retrying'}},location.origin);timer=setTimeout(poll,15000);}}
 export function resetAgent(){clearTimeout(timer);task=null;$('#agent-progress').hidden=true;window.dispatchEvent(new CustomEvent('quantum:agent',{detail:null}));}
 export function renderAgentReport(slot,t,{integrated=false}={}){
  const r=t.report;if(!r){slot.append(el('h3','Your study is still in progress'),el('p',t.message));return;}
@@ -25,6 +28,7 @@ export function renderAgentReport(slot,t,{integrated=false}={}){
  const callout=el('div',undefined,'agent-finding');callout.append(el('p',answer));slot.append(callout);
  for(const [key,title]of[['what_we_did','What the agent completed'],['meaning','What this means for your question'],...(!integrated?[['next_dependency','Where this run stops']]:[])]){slot.append(el('h4',title),el('p',r.narrative[key]));}
  if(r.reviews?.length){const review=r.reviews.filter(x=>x.phase==='final').at(-1);if(review){const stamp=el('div',undefined,'recorded-review-stamp');stamp.append(el('strong','Reviewed by Gemini 4 Argon'),el('time',new Date(review.reviewed_at).toLocaleString()),el('p',review.summary));slot.append(stamp);}}
+ if(r.version==='quantum-portal-experiment-v1'){renderExperimentDetails(slot,t);return;}
  const a=r.analysis;slot.append(el('h4','The comparison, in plain numbers'),el('p','CTCF is one protein that binds DNA. We checked whether each method ranked the eight OXTR windows overlapping reported CTCF regions above the other 144 windows. The laboratory map contains five peak regions; some span more than one window.'));
  const table=el('table',undefined,'agent-table');table.append(el('caption','Average precision is a ranking score from 0 to 1. Higher is better; it is not percentage accuracy.'));
  const head=el('tr');for(const h of ['Method','OXTR ranking score'])head.append(el('th',h));table.append(head);
@@ -39,4 +43,15 @@ export function setupAgent(open){
  if(!['staging.universalmind.tv','universalmind.tv'].includes(location.hostname))return;
  $('#agent-open').onclick=()=>open(task);$('#agent-cancel').onclick=async()=>{try{await ensureAgentSession();const r=await fetch(endpoint+'/agent/studies/'+task.id+'/cancel',{method:'POST',headers:agentHeaders()});if(!r.ok)throw Error('Cancellation is not confirmed. Retry.');followAgent(await r.json(),changed);}catch(e){$('#agent-message').textContent=e.message;}};
  window.addEventListener('pagehide',()=>clearTimeout(timer));
+}
+
+function renderExperimentDetails(slot,t){
+ const r=t.report,details=el('details');details.append(el('summary','Measurements, methods and verification'));
+ details.append(el('p',r.experiment?.method),el('p',r.experiment?.limits));
+ const table=el('table',undefined,'agent-table'),head=el('tr');for(const title of ['Program','Returned shots','Fully occupied shots','Status'])head.append(el('th',title));table.append(head);
+ for(const m of r.measurements){const row=el('tr');for(const v of [m.id,m.returned_shots??'—',m.fully_occupied_shots??'—',m.status])row.append(el('td',String(v)));table.append(row);}details.append(table);
+ slot.append(details);
+ for(const review of r.reviews||[])details.append(el('p','Gemini '+review.phase+' review: '+review.summary));
+ slot.append(el('p','Program files, raw measurements, task references, uncertainty, model usage and verification hashes are retained in your complete study record.'));
+ const downloads=el('div',undefined,'completed-study-actions');for(const format of ['JSON','CSV']){const b=el('button','Download study '+format,'text-button');b.onclick=async()=>{b.disabled=true;try{await ensureAgentSession();const shared=resultToken(t.id),response=await fetch(endpoint+'/agent/studies/'+t.id+(shared?'/result/record':'/record'),{headers:shared?{Authorization:'Bearer '+shared}:agentHeaders(),signal:AbortSignal.timeout(30000)}),record=await response.json();if(!response.ok)throw Error(record.error||'The complete record is temporarily unavailable.');save(format==='JSON'?record:csv(record),'study-'+t.id+'.'+format.toLowerCase(),format==='CSV'?'text/csv':'application/json');}catch(error){details.open=true;details.append(el('p',error.message));}finally{b.disabled=false;}};downloads.append(b);}slot.append(downloads);
 }

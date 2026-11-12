@@ -1,0 +1,233 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "mode": "WebKit synthetic dictation to real transcription to Send",
+      "transcript": "Hi GPT, do you have access to the Universal Quantum Agent Swarm?",
+      "answer": "Yes. On this Quantum Atlas page, I am connected to the Quantum Agents swarm: GPT-6 Astra with Max reasoning and Gemini 4 Argon with High Thinking. I can draft your question, start a supported investigation, check its progress and explain its saved results.\n\nYou can dictate into this text chat and select Send, type your command, or use Voice. To begin, say “Run this study.” New paid quantum and GPU jobs remain disabled."
+    },
+    {
+      "question": "First, I wanna know if you can connect to Amazon Bracket and Aquila.",
+      "answer": "The project has recorded measurements from QuEra Aquila through Amazon Braket. I can help you retrieve those results and start supported Quantum Agents investigations using recorded measurements and CPU simulations.\n\nNew hardware submissions are disabled in this chat, so I cannot send a new algorithm to Aquila or another quantum computer from here."
+    },
+    {
+      "question": "I'm wanting to know if you can connect to a quantum computer to run algorithms on it.",
+      "answer": "The project has recorded measurements from QuEra Aquila through Amazon Braket. I can help you retrieve those results and start supported Quantum Agents investigations using recorded measurements and CPU simulations.\n\nNew hardware submissions are disabled in this chat, so I cannot send a new algorithm to Aquila or another quantum computer from here."
+    },
+    {
+      "mode": "Live research lookup",
+      "answer": "OXTR stands for **oxytocin receptor** and is the gene symbol for the gene that encodes this receptor. [S1] The receptor is a protein that binds oxytocin, allowing cells to respond to its signals. [S2]"
+    }
+  ],
+  "commands": [
+    {
+      "action": "capabilities",
+      "question": "",
+      "provider_response_id": "resp_04ccbdd644aaed51016af16a7ab1c487d09cbefd0133d11229",
+      "usage": {
+        "input_tokens": 594,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 21,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 615
+      },
+      "qaSpend": {
+        "limitUSD": 0.4,
+        "chargedUpperUSD": 0.00847500000000001,
+        "calls": [
+          {
+            "path": "/responses",
+            "model": "gpt-6-astra",
+            "inputTokenUpper": 11578,
+            "outputTokenUpper": 1400,
+            "boundMethod": "UTF-8 bytes plus framing",
+            "reservedUSD": 0.214725,
+            "chargedUpperUSD": 0.008475,
+            "usage": {
+              "input_tokens": 594,
+              "input_tokens_details": {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0
+              },
+              "output_tokens": 21,
+              "output_tokens_details": {
+                "reasoning_tokens": 0
+              },
+              "total_tokens": 615
+            }
+          }
+        ]
+      }
+    },
+    {
+      "action": "hardware_capabilities",
+      "question": "",
+      "provider_response_id": "resp_081f7a6969e883d3016af16a7d223487d083e122d09b1d3022",
+      "usage": {
+        "input_tokens": 719,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 22,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 741
+      },
+      "qaSpend": {
+        "limitUSD": 0.4,
+        "chargedUpperUSD": 0.0100875,
+        "calls": [
+          {
+            "path": "/responses",
+            "model": "gpt-6-astra",
+            "inputTokenUpper": 12154,
+            "outputTokenUpper": 1400,
+            "boundMethod": "UTF-8 bytes plus framing",
+            "reservedUSD": 0.221925,
+            "chargedUpperUSD": 0.010087500000000001,
+            "usage": {
+              "input_tokens": 719,
+              "input_tokens_details": {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0
+              },
+              "output_tokens": 22,
+              "output_tokens_details": {
+                "reasoning_tokens": 0
+              },
+              "total_tokens": 741
+            }
+          }
+        ]
+      }
+    },
+    {
+      "action": "hardware_capabilities",
+      "question": "",
+      "provider_response_id": "resp_0896e1b2bd116adf016af16a7f5bcc87d0bc887fcadd439a03",
+      "usage": {
+        "input_tokens": 814,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 22,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 836
+      },
+      "qaSpend": {
+        "limitUSD": 0.4,
+        "chargedUpperUSD": 0.011275000000000007,
+        "calls": [
+          {
+            "path": "/responses",
+            "model": "gpt-6-astra",
+            "inputTokenUpper": 12672,
+            "outputTokenUpper": 1400,
+            "boundMethod": "UTF-8 bytes plus framing",
+            "reservedUSD": 0.22840000000000002,
+            "chargedUpperUSD": 0.011275,
+            "usage": {
+              "input_tokens": 814,
+              "input_tokens_details": {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0
+              },
+              "output_tokens": 22,
+              "output_tokens_details": {
+                "reasoning_tokens": 0
+              },
+              "total_tokens": 836
+            }
+          }
+        ]
+      }
+    },
+    {
+      "action": "research",
+      "question": "",
+      "provider_response_id": "resp_0fb62961ff79f8b1016af16a8206f887d0b80e224e9a500c55",
+      "usage": {
+        "input_tokens": 908,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 20,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 928
+      },
+      "qaSpend": {
+        "limitUSD": 0.4,
+        "chargedUpperUSD": 0.01235,
+        "calls": [
+          {
+            "path": "/responses",
+            "model": "gpt-6-astra",
+            "inputTokenUpper": 13176,
+            "outputTokenUpper": 1400,
+            "boundMethod": "UTF-8 bytes plus framing",
+            "reservedUSD": 0.23470000000000002,
+            "chargedUpperUSD": 0.01235,
+            "usage": {
+              "input_tokens": 908,
+              "input_tokens_details": {
+                "cache_write_tokens": 0,
+                "cached_tokens": 0
+              },
+              "output_tokens": 20,
+              "output_tokens_details": {
+                "reasoning_tokens": 0
+              },
+              "total_tokens": 928
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "network": [
+    {
+      "path": "/quantum/capacity",
+      "status": 200
+    },
+    {
+      "path": "/transcribe",
+      "status": 200
+    },
+    {
+      "path": "/quantum/command",
+      "status": 200
+    },
+    {
+      "path": "/quantum/command",
+      "status": 200
+    },
+    {
+      "path": "/quantum/command",
+      "status": 200
+    },
+    {
+      "path": "/quantum/command",
+      "status": 200
+    },
+    {
+      "path": "/research",
+      "status": 200
+    }
+  ],
+  "errors": [],
+  "newStudies": 0,
+  "playbackBlocked": true
+}

@@ -1,0 +1,11 @@
+{
+  "JSON_matches_delivered_report": true,
+  "CSV_all_fields_equivalent": true,
+  "CSV_fields": 4642,
+  "astra_total_tokens": 23571,
+  "gemini_recorded_micro_usd": 238840,
+  "downloads": {
+    "verified-study.json": "70d2c443e3ba42c99dfda7c042b27c915569e087275297bb571fec9df98e4373",
+    "verified-study.csv": "fe2755d5eb3d3be3c97b01889c6a9c6926c4062735f32bf4f128a840d141eccf"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "path": "quantum/portal.js",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "quantum/agent.js",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "universal-one-quantum.js",
+      "matchesCommittedSource": true
+    },
+    {
+      "path": "exports/manifest.json",
+      "matchesCommittedSource": true
+    },
+    {
+      "portalInvalidPassword": 403,
+      "phpExecuted": true
+    }
+  ]
+}

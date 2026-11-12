@@ -1,0 +1,559 @@
+{
+  "paidStudyCalls": 0,
+  "hardwareJobs": 0,
+  "gpuJobs": 0,
+  "processAudioMuted": true,
+  "turns": [
+    {
+      "scenario": "Fresh session cannot verify a claimed login",
+      "question": "I've just logged in. Is my funded credit verified?",
+      "answer": "UNIVERSAL ONE\nNot yet. The latest portal check still shows this chat as unauthenticated, so your funded credit is unverified—that does not mean zero credit.\n\nUse Password beside Dictate and Voice to authenticate, then message me again. Status is checked on every message; no page refresh is needed.",
+      "portal": false,
+      "elapsedMs": 24946,
+      "providerResponses": [
+        {
+          "id": "resp_021cca39cca5a0b4016af29d81e57887d096919bb3bb7f5737",
+          "requestedReasoning": "max",
+          "providerReasoning": "max",
+          "status": "completed"
+        }
+      ]
+    },
+    {
+      "scenario": "Unverified access is distinct from an exhausted credit",
+      "question": "Does that mean my code has no credit?",
+      "answer": "UNIVERSAL ONE\nNo—unverified does not mean zero credit. This chat is still unauthenticated, so I cannot confirm your code’s balance.\n\nUse Password beside Dictate and Voice to authenticate. Status is checked again on your next message; no refresh is needed.",
+      "portal": false,
+      "elapsedMs": 22678,
+      "providerResponses": [
+        {
+          "id": "resp_0593e0825aea59c6016af29d99239887d0b0b1a3cfb5ed1870",
+          "requestedReasoning": "max",
+          "providerReasoning": "max",
+          "status": "completed"
+        }
+      ]
+    },
+    {
+      "scenario": "Actual login is checked on the next message without reloading",
+      "question": "And now—is my portal credit verified, and did logging in change the CUDA-Q connection?",
+      "answer": "UNIVERSAL ONE\nYes—your portal is verified, with 1 funded credit. My earlier replies saying this chat was unauthenticated were incorrect.\n\nLogging in did not change the CUDA-Q connection. CUDA-Q is connected for local CPU simulation in supported study workflows; portal login does not turn it on or enable a paid GPU service.\n\nLogin verifies funded-study permissions. It does not itself launch a calculation.",
+      "portal": true,
+      "elapsedMs": 28523,
+      "providerResponses": [
+        {
+          "id": "resp_0a8e6e89ba9422c4016af29e93268087d0b46de0b63465ad6d",
+          "requestedReasoning": "max",
+          "providerReasoning": "max",
+          "status": "completed"
+        }
+      ]
+    }
+  ],
+  "requests": [
+    {
+      "path": "/quantum/command",
+      "status": 200,
+      "question": "I've just logged in. Is my funded credit verified?",
+      "sessionHeaderPresent": false,
+      "portalHeaderPresent": false,
+      "response": {
+        "action": "research",
+        "question": "",
+        "provider_response_id": "resp_056dd938fef975ee016af29d7e1ec887d0b24ab8a8a8f2d821",
+        "usage": {
+          "input_tokens": 711,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 20,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 731
+        },
+        "qaSpend": {
+          "limitUSD": 0.5,
+          "chargedUpperUSD": 0.009887499999999994,
+          "calls": [
+            {
+              "path": "/responses",
+              "model": "gpt-6-astra",
+              "inputTokenUpper": 12209,
+              "outputTokenUpper": 1400,
+              "boundMethod": "UTF-8 bytes plus framing",
+              "reservedUSD": 0.22261250000000002,
+              "chargedUpperUSD": 0.0098875,
+              "usage": {
+                "input_tokens": 711,
+                "input_tokens_details": {
+                  "cache_write_tokens": 0,
+                  "cached_tokens": 0
+                },
+                "output_tokens": 20,
+                "output_tokens_details": {
+                  "reasoning_tokens": 0
+                },
+                "total_tokens": 731
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "path": "/research",
+      "status": 200,
+      "question": "I've just logged in. Is my funded credit verified?",
+      "sessionHeaderPresent": true,
+      "portalHeaderPresent": false,
+      "response": {
+        "answer": "Not yet. The latest portal check still shows this chat as unauthenticated, so your funded credit is **unverified**—that does not mean zero credit.\n\nUse **Password** beside **Dictate** and **Voice** to authenticate, then message me again. Status is checked on every message; no page refresh is needed.",
+        "sources": [],
+        "model": "gpt-6-astra",
+        "reasoning": "max",
+        "providerResponses": [
+          {
+            "id": "resp_021cca39cca5a0b4016af29d81e57887d096919bb3bb7f5737",
+            "requestedReasoning": "max",
+            "providerReasoning": "max",
+            "status": "completed"
+          }
+        ],
+        "version": "research-20261026-daytab-v1",
+        "knowledgeVersions": {
+          "approvedYouth": {
+            "sourceBatch": "batch-f164c8325ea5f9c9.json",
+            "sourceSHA256": "f164c8325ea5f9c989c29524518b598913508117712826dc408f592b7f99a723",
+            "approvedAt": "2026-11-02",
+            "publications": 105
+          },
+          "biofeedback": {
+            "version": "lab-biofeedback-20261105-ratings",
+            "publications": 63
+          },
+          "publicGenes": "public-gene-data-20261109-v1",
+          "literature": "literature-20261110-v2"
+        },
+        "usage": {
+          "totalTokens": 18661,
+          "qaSpend": {
+            "limitUSD": 2.25,
+            "chargedUpperUSD": 0.2608250000000001,
+            "calls": [
+              {
+                "path": "/embeddings",
+                "model": "text-embedding-3-small",
+                "inputTokenUpper": 8304,
+                "outputTokenUpper": 0,
+                "boundMethod": "UTF-8 bytes plus framing",
+                "reservedUSD": 0.1038,
+                "chargedUpperUSD": 0.00015,
+                "usage": {
+                  "prompt_tokens": 12,
+                  "total_tokens": 12
+                }
+              },
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 94933,
+                "outputTokenUpper": 16384,
+                "boundMethod": "UTF-8 bytes plus framing",
+                "reservedUSD": 2.0058625,
+                "chargedUpperUSD": 0.260675,
+                "usage": {
+                  "input_tokens": 17930,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 17927,
+                    "cached_tokens": 0
+                  },
+                  "output_tokens": 731,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 658
+                  },
+                  "total_tokens": 18661
+                }
+              }
+            ]
+          }
+        },
+        "retrieval": {
+          "required": true,
+          "sourceCount": 24,
+          "contextMessages": 0,
+          "previousReferences": 0
+        }
+      }
+    },
+    {
+      "path": "/quantum/command",
+      "status": 200,
+      "question": "Does that mean my code has no credit?",
+      "sessionHeaderPresent": false,
+      "portalHeaderPresent": false,
+      "response": {
+        "action": "research",
+        "question": "",
+        "provider_response_id": "resp_058871bee35c7fa0016af29d95e14887d0bb5c486f7c36bcdb",
+        "usage": {
+          "input_tokens": 804,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 20,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 824
+        },
+        "qaSpend": {
+          "limitUSD": 0.5,
+          "chargedUpperUSD": 0.011050000000000004,
+          "calls": [
+            {
+              "path": "/responses",
+              "model": "gpt-6-astra",
+              "inputTokenUpper": 12630,
+              "outputTokenUpper": 1400,
+              "boundMethod": "UTF-8 bytes plus framing",
+              "reservedUSD": 0.227875,
+              "chargedUpperUSD": 0.01105,
+              "usage": {
+                "input_tokens": 804,
+                "input_tokens_details": {
+                  "cache_write_tokens": 0,
+                  "cached_tokens": 0
+                },
+                "output_tokens": 20,
+                "output_tokens_details": {
+                  "reasoning_tokens": 0
+                },
+                "total_tokens": 824
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "path": "/research",
+      "status": 200,
+      "question": "Does that mean my code has no credit?",
+      "sessionHeaderPresent": true,
+      "portalHeaderPresent": false,
+      "response": {
+        "answer": "No—**unverified does not mean zero credit**. This chat is still unauthenticated, so I cannot confirm your code’s balance.\n\nUse **Password** beside **Dictate** and **Voice** to authenticate. Status is checked again on your next message; no refresh is needed.",
+        "sources": [],
+        "model": "gpt-6-astra",
+        "reasoning": "max",
+        "providerResponses": [
+          {
+            "id": "resp_0593e0825aea59c6016af29d99239887d0b0b1a3cfb5ed1870",
+            "requestedReasoning": "max",
+            "providerReasoning": "max",
+            "status": "completed"
+          }
+        ],
+        "version": "research-20261026-daytab-v1",
+        "knowledgeVersions": {
+          "approvedYouth": {
+            "sourceBatch": "batch-f164c8325ea5f9c9.json",
+            "sourceSHA256": "f164c8325ea5f9c989c29524518b598913508117712826dc408f592b7f99a723",
+            "approvedAt": "2026-11-02",
+            "publications": 105
+          },
+          "biofeedback": {
+            "version": "lab-biofeedback-20261105-ratings",
+            "publications": 63
+          },
+          "publicGenes": "public-gene-data-20261109-v1",
+          "literature": "literature-20261110-v2"
+        },
+        "usage": {
+          "totalTokens": 18191,
+          "qaSpend": {
+            "limitUSD": 2.1097625000000004,
+            "chargedUpperUSD": 0.2581,
+            "calls": [
+              {
+                "path": "/embeddings",
+                "model": "text-embedding-3-small",
+                "inputTokenUpper": 8365,
+                "outputTokenUpper": 0,
+                "boundMethod": "UTF-8 bytes plus framing",
+                "reservedUSD": 0.1045625,
+                "chargedUpperUSD": 0.0003,
+                "usage": {
+                  "prompt_tokens": 24,
+                  "total_tokens": 24
+                }
+              },
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 92514,
+                "outputTokenUpper": 16384,
+                "boundMethod": "UTF-8 bytes plus framing",
+                "reservedUSD": 1.975625,
+                "chargedUpperUSD": 0.25780000000000003,
+                "usage": {
+                  "input_tokens": 17380,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 17377,
+                    "cached_tokens": 0
+                  },
+                  "output_tokens": 811,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 746
+                  },
+                  "total_tokens": 18191
+                }
+              }
+            ]
+          }
+        },
+        "retrieval": {
+          "required": true,
+          "sourceCount": 24,
+          "contextMessages": 2,
+          "previousReferences": 0
+        }
+      }
+    },
+    {
+      "path": "/quantum/command",
+      "status": 200,
+      "question": "And now—is my portal access verified?",
+      "sessionHeaderPresent": false,
+      "portalHeaderPresent": false,
+      "response": {
+        "action": "research",
+        "question": "",
+        "provider_response_id": "resp_09d9a11a85eabb27016af29dad857c87d08d4475d04cd44c5a",
+        "usage": {
+          "input_tokens": 887,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 20,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 907
+        },
+        "qaSpend": {
+          "limitUSD": 0.5,
+          "chargedUpperUSD": 0.012087500000000001,
+          "calls": [
+            {
+              "path": "/responses",
+              "model": "gpt-6-astra",
+              "inputTokenUpper": 13013,
+              "outputTokenUpper": 1400,
+              "boundMethod": "UTF-8 bytes plus framing",
+              "reservedUSD": 0.2326625,
+              "chargedUpperUSD": 0.012087500000000001,
+              "usage": {
+                "input_tokens": 887,
+                "input_tokens_details": {
+                  "cache_write_tokens": 0,
+                  "cached_tokens": 0
+                },
+                "output_tokens": 20,
+                "output_tokens_details": {
+                  "reasoning_tokens": 0
+                },
+                "total_tokens": 907
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "path": "/research",
+      "status": 422,
+      "question": "And now—is my portal access verified?",
+      "sessionHeaderPresent": true,
+      "portalHeaderPresent": true,
+      "response": {
+        "error": "QA spending guard stopped before another paid request.",
+        "qaSpend": {
+          "limitUSD": 1.8395750000000008,
+          "chargedUpperUSD": 0.00010000000000000286,
+          "calls": [
+            {
+              "path": "/embeddings",
+              "model": "text-embedding-3-small",
+              "inputTokenUpper": 8293,
+              "outputTokenUpper": 0,
+              "boundMethod": "UTF-8 bytes plus framing",
+              "reservedUSD": 0.1036625,
+              "chargedUpperUSD": 0.0001,
+              "usage": {
+                "prompt_tokens": 8,
+                "total_tokens": 8
+              }
+            }
+          ],
+          "blocked": {
+            "path": "/responses",
+            "inputTokenUpper": 91850,
+            "outputTokenUpper": 16384,
+            "reservedUSD": 1.9673250000000002,
+            "boundMethod": "UTF-8 bytes plus framing"
+          }
+        }
+      }
+    },
+    {
+      "path": "/quantum/command",
+      "status": 200,
+      "question": "And now—is my portal credit verified, and did logging in change the CUDA-Q connection?",
+      "sessionHeaderPresent": false,
+      "portalHeaderPresent": false,
+      "response": {
+        "action": "research",
+        "question": "",
+        "provider_response_id": "resp_000c0c005b8d1dae016af29e8f2b9487d08ea6bfd3cf98a3c9",
+        "usage": {
+          "input_tokens": 897,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 20,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 917
+        },
+        "qaSpend": {
+          "limitUSD": 0.5,
+          "chargedUpperUSD": 0.012212500000000015,
+          "calls": [
+            {
+              "path": "/responses",
+              "model": "gpt-6-astra",
+              "inputTokenUpper": 13062,
+              "outputTokenUpper": 1400,
+              "boundMethod": "UTF-8 bytes plus framing",
+              "reservedUSD": 0.233275,
+              "chargedUpperUSD": 0.012212500000000001,
+              "usage": {
+                "input_tokens": 897,
+                "input_tokens_details": {
+                  "cache_write_tokens": 0,
+                  "cached_tokens": 0
+                },
+                "output_tokens": 20,
+                "output_tokens_details": {
+                  "reasoning_tokens": 0
+                },
+                "total_tokens": 917
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "path": "/research",
+      "status": 200,
+      "question": "And now—is my portal credit verified, and did logging in change the CUDA-Q connection?",
+      "sessionHeaderPresent": true,
+      "portalHeaderPresent": true,
+      "response": {
+        "answer": "Yes—your portal is **verified, with 1 funded credit**. My earlier replies saying this chat was unauthenticated were incorrect.\n\n**Logging in did not change the CUDA-Q connection.** CUDA-Q is connected for local CPU simulation in supported study workflows; portal login does not turn it on or enable a paid GPU service.\n\nLogin verifies funded-study permissions. It does not itself launch a calculation.",
+        "sources": [],
+        "model": "gpt-6-astra",
+        "reasoning": "max",
+        "providerResponses": [
+          {
+            "id": "resp_0a8e6e89ba9422c4016af29e93268087d0b46de0b63465ad6d",
+            "requestedReasoning": "max",
+            "providerReasoning": "max",
+            "status": "completed"
+          }
+        ],
+        "version": "research-20261026-daytab-v1",
+        "knowledgeVersions": {
+          "approvedYouth": {
+            "sourceBatch": "batch-f164c8325ea5f9c9.json",
+            "sourceSHA256": "f164c8325ea5f9c989c29524518b598913508117712826dc408f592b7f99a723",
+            "approvedAt": "2026-11-02",
+            "publications": 105
+          },
+          "biofeedback": {
+            "version": "lab-biofeedback-20261105-ratings",
+            "publications": 63
+          },
+          "publicGenes": "public-gene-data-20261109-v1",
+          "literature": "literature-20261110-v2"
+        },
+        "usage": {
+          "totalTokens": 7063,
+          "qaSpend": {
+            "limitUSD": 1.8272625000000007,
+            "chargedUpperUSD": 0.12571250000000012,
+            "calls": [
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 41165,
+                "outputTokenUpper": 16384,
+                "boundMethod": "UTF-8 bytes plus framing",
+                "reservedUSD": 1.3337625000000002,
+                "chargedUpperUSD": 0.1257125,
+                "usage": {
+                  "input_tokens": 6065,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 6062,
+                    "cached_tokens": 0
+                  },
+                  "output_tokens": 998,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 911
+                  },
+                  "total_tokens": 7063
+                }
+              }
+            ]
+          }
+        },
+        "retrieval": {
+          "required": true,
+          "sourceCount": 1,
+          "contextMessages": 4,
+          "previousReferences": 0
+        }
+      }
+    }
+  ],
+  "blockedMutations": [],
+  "errors": [],
+  "portalLoginStatus": 200,
+  "resumedFromVerifiedHistory": true,
+  "portalChecks": [
+    {
+      "status": 200,
+      "authenticated": false,
+      "credit": 0,
+      "available": true,
+      "hasStudy": false,
+      "error": null
+    },
+    {
+      "status": 200,
+      "authenticated": true,
+      "credit": 1,
+      "available": true,
+      "hasStudy": false,
+      "error": null
+    }
+  ]
+}

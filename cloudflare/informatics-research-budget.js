@@ -1,3 +1,7 @@
+import {reserveLiteratureSearch} from './informatics-literature-fallback.js';
+import {reserveLiteratureAgent,settleLiteratureAgent} from './informatics-literature-agent.js';
+import {demoStorage} from './informatics-quantum-demo.js';
+import {notifyStudy,scheduleNotifications} from './informatics-study-email.js';
 import {astraStorage} from './informatics-astra.js';
 // A question is reserved once. Its bounded retrieval/model loop is included.
 // Automated verification uses a separately authenticated, equally bounded pool.
@@ -7,10 +11,15 @@ export class BudgetError extends Error {
  constructor(kind,resetAt){super(`The daily ${kind==='research_question'?'research':kind} allowance is used. It resets at 00:00 UTC. Please try again after the reset.`);this.status=429;this.code='daily_allowance';this.kind=kind;this.resetAt=resetAt;}
 }
 export class ResearchBudget {
- constructor(state){this.state=state;}
+ constructor(state,env){this.state=state;this.env=env;}
+ async alarm(){await notifyStudy(this.state.storage,this.env);}
  async fetch(request){
-  const {kind,inspect,scope,quantum,astra}=await request.json();
-  if(astra){const r=await astraStorage(this.state.storage,astra);return Response.json(r.data,{status:r.status});}
+  const {kind,inspect,scope,quantum,astra,demo,literatureSearch,literatureAgent,literatureAgentSettle}=await request.json();
+  if(literatureSearch)return Response.json(await reserveLiteratureSearch(this.state.storage,this.env));
+  if(literatureAgent)return Response.json(await reserveLiteratureAgent(this.state.storage,this.env));
+  if(literatureAgentSettle)return Response.json(await settleLiteratureAgent(this.state.storage,literatureAgentSettle));
+  if(demo){const r=await demoStorage(this.state.storage,demo);if(r.status===200&&demo.op==='update')await scheduleNotifications(this.state.storage);return Response.json(r.data,{status:r.status});}
+  if(astra){const r=await astraStorage(this.state.storage,astra);if(r.status===200&&['delivery','update'].includes(astra.op))await scheduleNotifications(this.state.storage);return Response.json(r.data,{status:r.status});}
   if(quantum)return Response.json(await pooledPlanning(this.state.storage,inspect));
   const scopedLimits=scope==='connectors'?{...limits,research_question:30}:limits;
   if(!inspect&&!limits[kind])return new Response('{}',{status:400});

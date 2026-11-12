@@ -1,0 +1,63 @@
+{
+  "passed": true,
+  "runtime": "Cloudflare workerd via Miniflare",
+  "livePublicSources": false,
+  "paidRequests": 0,
+  "checks": [
+    {
+      "originalModeRejected": true,
+      "message": "Invalid redirect value, must be one of \"follow\" or \"manual\" (\"error\" won't be implemented since it does not make sense at the edge; use \"manual\" and check the response status code)."
+    },
+    {
+      "search": {
+        "status": "retrieved",
+        "sources": [
+          {
+            "source": "PubMed",
+            "status": "retrieved",
+            "receipt": {
+              "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=CD38+oxytocin&retmode=json&retmax=6&sort=relevance&tool=UniversalInformatics",
+              "retrievedAt": "2026-11-09T19:56:22.587Z",
+              "sha256": "a33fc8dcc05a17c1184fcbb7d8f21149e9b5d7d137d05cecf2806d7ff9cde21d"
+            }
+          },
+          {
+            "source": "Europe PMC",
+            "status": "retrieved",
+            "receipt": {
+              "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=CD38+oxytocin&format=json&resultType=core&pageSize=6",
+              "retrievedAt": "2026-11-09T19:56:22.600Z",
+              "sha256": "2120755d96c5d9e93e35e327b82cc38f4e3a141d131999c4926eca19c1e4f8fb"
+            }
+          }
+        ],
+        "papers": [
+          {
+            "id": "12345",
+            "title": "CD38 fixture",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/12345/"
+          }
+        ]
+      }
+    },
+    {
+      "read": {
+        "status": "retrieved",
+        "coverage": "selected_full_text_passages",
+        "fullTextReceipt": {
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4383902/fullTextXML",
+          "retrievedAt": "2026-11-09T19:56:22.606Z",
+          "sha256": "e10a0012d44a665e3ebb6fca70113de8891c4aae2384ecf6623dc3d5932921c2"
+        },
+        "passages": 1
+      }
+    },
+    {
+      "perplexityTransport": "Search and Agent API success fixtures dispatched by workerd"
+    },
+    {
+      "redirectResponsesRejected": true,
+      "redirectTargetsContacted": 0
+    }
+  ]
+}

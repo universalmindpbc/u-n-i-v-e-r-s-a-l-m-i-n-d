@@ -1,0 +1,23 @@
+{
+  "runtime": "Cloudflare workerd via Miniflare",
+  "paidRequests": 0,
+  "passed": false,
+  "result": {
+    "status": "source_unavailable",
+    "message": "The public database returned HTTP 403.",
+    "retryable": true
+  },
+  "requests": [
+    {
+      "url": "https://api.ncbi.nlm.nih.gov/datasets/v2/gene/symbol/SLC6A4/taxon/9606",
+      "status": 200
+    },
+    {
+      "url": "https://www.encodeproject.org/search/?type=File&status=released&assembly=GRCh38&file_format=bed&file_format_type=narrowPeak&assay_title=TF+ChIP-seq&output_type=IDR+thresholded+peaks&format=json&limit=3&target.label=CTCF&biosample_ontology.term_name=H1",
+      "status": 403,
+      "contentType": "text/html",
+      "retryAfter": null,
+      "excerpt": "<html>\r\n<head><title>403 Forbidden</title></head>\r\n<body>\r\n<center><h1>403 Forbidden</h1></center>\r\n</body>\r\n</html>\r\n"
+    }
+  ]
+}

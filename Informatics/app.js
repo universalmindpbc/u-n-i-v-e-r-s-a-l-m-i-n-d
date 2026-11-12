@@ -47,6 +47,7 @@ function syncURL(){
  else target=new URL(window.InformaticsNavigation.entries.find(e=>e.id===area)?.url||'/informatics/',location.origin);
  for(const [key,value]of (window.PortalRoutes.resolve(current.href)?.id===area?current.searchParams:[]))if(!['entry','area','atlas','about','record','record-mode','section'].includes(key))target.searchParams.set(key,value);
  if(pendingRoute?.id===area){target.search=new URL(pendingRoute.href).search;target.hash=new URL(pendingRoute.href).hash;}
+ if(area==='quantum'&&/^#study=[a-f0-9-]{36}&result=[a-f0-9]{64}$/.test(current.hash))target.hash=current.hash;
  if(area==='research'){target.search=document.documentElement.dataset.libraryQuery||'';target.hash=document.documentElement.dataset.libraryHash||'';}
  if(area==='geometry'){target.searchParams.set('record',recordId);target.searchParams.set('record-mode',recordMode);target.hash=recordView;}
  window.PortalRoutes.commit(target.href,routeHistoryMode);
@@ -105,12 +106,12 @@ document.addEventListener('science:open-atlas',event=>{
  if(!entered)launch.click();chooseRecord(M9,'research',view);
 });
 // Research navigation retains the frame; first entry starts muted background video.
-function navigateFromResearch(name){
+function navigateFromResearch(name,{focus=true}={}){
  if(name!=='home'&&!areas.includes(name))return;
  document.querySelectorAll('dialog[open]').forEach(d=>d.close());
  const firstEntry=!entered;entered=true;document.body.dataset.entered='true';$('#landing').hidden=true;experience.hidden=false;
  if(firstEntry&&!film.src){film.muted=true;film.src=film.dataset.src;film.play().catch(()=>{});syncSound();}
- showArea(name,{focus:true});
+ showArea(name,{focus:focus&&!firstEntry});
 }
 document.addEventListener('atlas:navigate',event=>{routeHistoryMode=event.routeHistoryMode||'push';navigateFromResearch(event.detail);});
 function navigateRoute(route,mode='push'){
@@ -134,7 +135,7 @@ window.addEventListener('pagehide',()=>{film.pause();playing=false;});
 document.addEventListener('visibilitychange',()=>{last=null;if(document.hidden)film.pause();else if(entered)film.play().catch(()=>{});});
 function frame(now){const dt=last===null?0:Math.min(now-last,60);last=now;if(entered&&playing&&!document.hidden){elapsed=Math.min(total-1,elapsed+dt);if(elapsed>=total-1)playing=false;render();}requestAnimationFrame(frame);}render();requestAnimationFrame(frame);
 document.dispatchEvent(new Event('atlas:ready'));
-if(initialParams.get('entry')==='research'&&[...areas,'transcription'].includes(initialParams.get('area'))){const enter=()=>{routeHistoryMode='replace';navigateFromResearch(initialParams.get('area'));};if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',enter,{once:true});else enter();}
+if(initialParams.get('entry')==='research'&&[...areas,'transcription'].includes(initialParams.get('area'))){const enter=()=>{routeHistoryMode='replace';navigateFromResearch(initialParams.get('area'),{focus:false});};if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',enter,{once:true});else enter();}
 })().catch(error=>{console.error(error);document.querySelector('#launch-status').textContent='Unable to load geometry. Please reload.';});
 
 // About opens from the discreet static title.

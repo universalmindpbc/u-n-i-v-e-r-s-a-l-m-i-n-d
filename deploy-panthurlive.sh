@@ -956,6 +956,47 @@ deploy_lab() {
   echo "Lab: committed source published through Panthur FTP."
 }
 
+# Remove only the inventoried Spacetime files from the staging account.
+remove_spacetime() {
+  local relative manifest_tmp
+  local -a commands=()
+  local -a retired_files=(
+    index.html app.mjs data.mjs environment.mjs hls.min.js human.mjs
+    kernel-manifest.mjs kernel.json kernel.schema.json model.mjs navigation.mjs
+    spacetime.css weather.mjs data/TIMEWAVE-LICENSE.txt data/silso-monthly.txt
+    data/silso-yearly.txt media/inner-planes-loop.mp4 .htaccess
+  )
+  if [[ "$FTP_HOST" != "sh00023.pa.smartservers.com.au" || "$FTP_USER" != "stagingdeploy@universalmind.tv" || -n "$REMOTE_ROOT" || "$MANIFEST_FILE" != "$ROOT_DIR/.panthur-staging-deploy-manifest.tsv" ]]; then
+    echo "Spacetime removal is restricted to the configured Panthur staging account." >&2
+    return 1
+  fi
+  if [[ -n "$(git -C "$ROOT_DIR" status --porcelain --untracked-files=all -- Informatics/spacetime 'tools/*spacetime*' deploy-panthur-staging.sh deploy-panthurlive.sh)" ]]; then
+    echo "Commit the Spacetime removal before deploying it." >&2
+    return 1
+  fi
+  if [[ -n "$(git -C "$ROOT_DIR" ls-tree -r --name-only HEAD -- Informatics/spacetime)" || -e "$ROOT_DIR/Informatics/spacetime" ]]; then
+    echo "The committed source still contains Spacetime." >&2
+    return 1
+  fi
+  for relative in "${retired_files[@]}"; do
+    # The leading asterisk tolerates an already absent file; it is not a path wildcard.
+    commands+=(--quote "*DELE informatics/spacetime/$relative")
+  done
+  commands+=(--quote "*RMD informatics/spacetime/data" --quote "*RMD informatics/spacetime/media")
+  # This final command fails if any unlisted file or directory remains.
+  commands+=(--quote "RMD informatics/spacetime")
+  curl --globoff --fail --silent --show-error \
+    --connect-timeout 30 --max-time 180 \
+    --user "$FTP_USER:$FTP_PASS" "${commands[@]}" \
+    "ftp://$FTP_HOST/" --output /dev/null || return 1
+  manifest_tmp="$(mktemp)"
+  if [[ -f "$MANIFEST_FILE" ]]; then
+    awk -F '\t' '$2 !~ /^informatics\/spacetime\//' "$MANIFEST_FILE" > "$manifest_tmp"
+  fi
+  mv "$manifest_tmp" "$MANIFEST_FILE"
+  echo "Spacetime removed from Panthur staging; unrelated manifest entries retained."
+}
+
 DEPLOY_MODE="${1:-iam}"
 
 if deployment_requires_owner_state_guard "$DEPLOY_MODE"; then
@@ -963,6 +1004,9 @@ if deployment_requires_owner_state_guard "$DEPLOY_MODE"; then
 fi
 
 case "$DEPLOY_MODE" in
+  remove-spacetime)
+    remove_spacetime
+    ;;
   lab)
     deploy_lab
     ;;

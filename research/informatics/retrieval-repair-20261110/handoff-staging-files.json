@@ -1,0 +1,146 @@
+{
+  "passed": true,
+  "commit": "1d4c7986b6d4bf0bf27ec0df761ebef8cbaaea87",
+  "files": [
+    {
+      "file": "Informatics/chapters/quantum.html",
+      "bytes": 333417,
+      "sha256": "c533a912aa5fa685d70489dc628ad63a8dbf99415b0479624df08576a0715b8b",
+      "served_sha256": "f81c73bc3de6fd4a9670c53782871d69780fd220d04072cb519fbe5f97214dfb",
+      "cloudflareBeaconExcluded": true,
+      "matched": true
+    },
+    {
+      "file": "Informatics/exports/manifest-30d8906673e8ea8966e9f23134ec02fbc3f3fdb347e776661cbac21e6e940dbf.json",
+      "bytes": 2398727,
+      "sha256": "631ca0a8b81291b9ce9af92772e82b788a676c6eddcc15789f5503e18e722ec4",
+      "served_sha256": "631ca0a8b81291b9ce9af92772e82b788a676c6eddcc15789f5503e18e722ec4",
+      "cloudflareBeaconExcluded": false,
+      "matched": true
+    },
+    {
+      "file": "Informatics/exports/manifest.json",
+      "bytes": 2398727,
+      "sha256": "631ca0a8b81291b9ce9af92772e82b788a676c6eddcc15789f5503e18e722ec4",
+      "served_sha256": "631ca0a8b81291b9ce9af92772e82b788a676c6eddcc15789f5503e18e722ec4",
+      "cloudflareBeaconExcluded": false,
+      "matched": true
+    },
+    {
+      "file": "Informatics/exports/part-1c7fcbe2d4fecb70b1b66907f5b66bcecf97fc92cf91e7f23f27f857edfc1cdb.bin",
+      "bytes": 471069,
+      "sha256": "1c7fcbe2d4fecb70b1b66907f5b66bcecf97fc92cf91e7f23f27f857edfc1cdb",
+      "served_sha256": "1c7fcbe2d4fecb70b1b66907f5b66bcecf97fc92cf91e7f23f27f857edfc1cdb",
+      "cloudflareBeaconExcluded": false,
+      "matched": true
+    },
+    {
+      "file": "Informatics/exports/part-2ddab3b8d05bf1aeab597e5369a8348d28745e08711e6c0c582d78842c98632a.bin",
+      "bytes": 50331648,
+      "sha256": "2ddab3b8d05bf1aeab597e5369a8348d28745e08711e6c0c582d78842c98632a",
+      "served_sha256": "2ddab3b8d05bf1aeab597e5369a8348d28745e08711e6c0c582d78842c98632a",
+      "cloudflareBeaconExcluded": false,
+      "matched": true
+    },
+    {
+      "file": "Informatics/exports/part-429deb424f1eac92cd371fe7424dfabbde3bb0a53191b784a3c2477f951459f9.bin",
+      "bytes": 50331648,
+      "sha256": "429deb424f1eac92cd371fe7424dfabbde3bb0a53191b784a3c2477f951459f9",
+      "served_sha256": "429deb424f1eac92cd371fe7424dfabbde3bb0a53191b784a3c2477f951459f9",
+      "cloudflareBeaconExcluded": false,
+      "matched": true
+    },
+    {
+      "file": "Informatics/exports/part-7e5f780660bd9972fc311f2ae62ea338383361bfe4029f7f79160ebbcc90cc40.bin",
+      "bytes": 31026014,
+      "sha256": "7e5f780660bd9972fc311f2ae62ea338383361bfe4029f7f79160ebbcc90cc40",
+      "served_sha256": "7e5f780660bd9972fc311f2ae62ea338383361bfe4029f7f79160ebbcc90cc40",
+      "cloudflareBeaconExcluded": false,
+      "matched": true
+    },
+    {
+      "file": "Informatics/exports/part-895684b8c490973957672714cc7bc42506088ef77dbcc4ff893479bcd92e18b1.bin",
+      "bytes": 50331648,
+      "sha256": "895684b8c490973957672714cc7bc42506088ef77dbcc4ff893479bcd92e18b1",
+      "served_sha256": "895684b8c490973957672714cc7bc42506088ef77dbcc4ff893479bcd92e18b1",
+      "cloudflareBeaconExcluded": false,
+      "matched": true
+    },
+    {
+      "file": "Informatics/exports/part-8c3639dd980345a83d128121eee6876452475bb01e308caa8296b13e5f193b36.bin",
+      "bytes": 50331648,
+      "sha256": "8c3639dd980345a83d128121eee6876452475bb01e308caa8296b13e5f193b36",
+      "served_sha256": "8c3639dd980345a83d128121eee6876452475bb01e308caa8296b13e5f193b36",
+      "cloudflareBeaconExcluded": false,
+      "matched": true
+    },
+    {
+      "file": "Informatics/index.html",
+      "bytes": 597343,
+      "sha256": "8b1904a4f3bfe16da5e84b290f1be9e3d467fd2032b726f75197b2e93ddaa685",
+      "served_sha256": "f8659a58c708695f3cf426b4c5f81f1029da1b0b067d590e55776671851fc989",
+      "cloudflareBeaconExcluded": true,
+      "matched": true
+    },
+    {
+      "file": "Informatics/quantum/index.html",
+      "bytes": 440406,
+      "sha256": "37bf915ef2894a04c95602b864d360c8b07052599a95e80c31c02aa2840d1414",
+      "served_sha256": "9f606be28a127b1d86ce42a1acc26f640e74d4c0188451a9debcf6ace6498e3f",
+      "cloudflareBeaconExcluded": true,
+      "matched": true
+    },
+    {
+      "file": "Informatics/quantum/reading/quantum-atlas.csv",
+      "bytes": 694613,
+      "sha256": "7b4650d76bedb3d22a6b9d756a73e1e8ad7a4637898411b6e0e4b914efd4c43c",
+      "served_sha256": "7b4650d76bedb3d22a6b9d756a73e1e8ad7a4637898411b6e0e4b914efd4c43c",
+      "cloudflareBeaconExcluded": false,
+      "matched": true
+    },
+    {
+      "file": "Informatics/quantum/reading/quantum-atlas.json",
+      "bytes": 335298,
+      "sha256": "abe85cd28ee3845875fee847fd2daea2215f8833633846dae617c793b9121ee6",
+      "served_sha256": "abe85cd28ee3845875fee847fd2daea2215f8833633846dae617c793b9121ee6",
+      "cloudflareBeaconExcluded": false,
+      "matched": true
+    },
+    {
+      "file": "Informatics/quantum/reading/quantum-atlas.md",
+      "bytes": 379740,
+      "sha256": "077b467c3934a19b68473093bf84537df5ff2b9cfe79f63de50db96a3ee11738",
+      "served_sha256": "077b467c3934a19b68473093bf84537df5ff2b9cfe79f63de50db96a3ee11738",
+      "cloudflareBeaconExcluded": false,
+      "matched": true
+    },
+    {
+      "file": "Informatics/read/data.html",
+      "bytes": 184047,
+      "sha256": "6a1bf0dff7d8fad2d272768ed63e74123bf9317c7a70ad6309243cdb7df74af2",
+      "served_sha256": "788cadea34eb3c58cb0ba1a884a771ef6ad5638d9f6e2ca4fc3bc52d972c641b",
+      "cloudflareBeaconExcluded": true,
+      "matched": true
+    }
+  ],
+  "health": {
+    "status": "ready",
+    "profile": "informatics-research",
+    "model": "gpt-6-astra",
+    "version": "research-20261026-daytab-v1",
+    "knowledgeVersions": {
+      "approvedYouth": {
+        "sourceBatch": "batch-f164c8325ea5f9c9.json",
+        "sourceSHA256": "f164c8325ea5f9c989c29524518b598913508117712826dc408f592b7f99a723",
+        "approvedAt": "2026-11-02",
+        "publications": 105
+      },
+      "biofeedback": {
+        "version": "lab-biofeedback-20261105-ratings",
+        "publications": 63
+      },
+      "publicGenes": "public-gene-data-20261109-v1",
+      "literature": "literature-20261110-v2"
+    }
+  }
+}

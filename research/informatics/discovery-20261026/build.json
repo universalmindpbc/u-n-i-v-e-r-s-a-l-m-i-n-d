@@ -1,14 +1,14 @@
 {
-  "datasetManifestSHA256": "1e23c49ed432edda67afbe4e624e9406e5df87fe5ec79622cae77f8afd6f4ea1",
+  "datasetManifestSHA256": "1519b17767aa07ff9d3db5829dcac060d2838b97ef052538fdf411813eeda6c2",
   "generatedAt": "2026-10-26",
-  "publications": 1385,
+  "publications": 1421,
   "atlas": 1001,
   "experiments": 2,
-  "pages": 2403,
+  "pages": 2439,
   "sourceHashes": [
     {
       "path": "library.js",
-      "sha256": "fe9f1d3d52f9e9337dd997365b5070a15714117e5f4bd9e5f8b68f57eca775b8"
+      "sha256": "32eaf4a9d7108abffb8fc3cf7f66cd2213f5183f9d6d92ac5aa887567a7900e0"
     },
     {
       "path": "library-data/sound-edition.json",
@@ -71,11 +71,15 @@
       "sha256": "e7fb31adfa8b99fbcc97008e0607f3f7dceda8aad8be3ee35a21bcb0155133cc"
     },
     {
+      "path": "library-data/masked-language-expansion.json",
+      "sha256": "9255e5121593d09ea0989b039428ec65a4d33e813b527e394fb673b0a0ecb550"
+    },
+    {
       "path": "library-model.js",
-      "sha256": "00df8dc93a90a09af387c5f32830d1dc3f4b994b1941b7cb066e898b56934841"
+      "sha256": "3fe8ac5ff0b61e4348e5de0808e2f7956329df489b51ccf18a3f0163e00b376e"
     }
   ],
-  "publicationRecordSHA256": "d8018552622cb37373f71b7efb6bb81517e2ffac8ca2560c6702d3a89748c664",
+  "publicationRecordSHA256": "5dd11cf3b303c2d24dcf69d0c239f0ab2792803a056bce0a5396eb7a8a9d26b8",
   "canonicalPaths": [
     "",
     "connect.html",
@@ -1473,6 +1477,42 @@
     "read/publications/youth-pmid-33079071-1283aaad.html",
     "read/publications/youth-pmid-36342533-f37fdd7f.html",
     "read/publications/youth-pmid-38192586-fbbc0e84.html",
+    "read/publications/pmid-19715763-cd7f5560.html",
+    "read/publications/pmid-16102064-e0c44605.html",
+    "read/publications/pmid-37169066-da62d778.html",
+    "read/publications/masked-language-leonard2016-7e3a824e.html",
+    "read/publications/masked-language-herrmann2025-c23a506d.html",
+    "read/publications/pmid-32752786-e128df28.html",
+    "read/publications/masked-language-gutschalk2008-37c13e3b.html",
+    "read/publications/pmid-41253014-2d03e1aa.html",
+    "read/publications/pmid-37336758-2a935ad8.html",
+    "read/publications/pmid-22001789-58fff819.html",
+    "read/publications/masked-language-hung2020-9d05084b.html",
+    "read/publications/pmid-40127932-3dcefa18.html",
+    "read/publications/pmid-33303476-c8e17bf8.html",
+    "read/publications/pmid-28007033-4fbf7d96.html",
+    "read/publications/masked-language-katlowitz2026-a2b37cee.html",
+    "read/publications/masked-language-greenwald1991-2fbc942d.html",
+    "read/publications/masked-language-aarabi2023-92a36c4e.html",
+    "read/publications/pmid-1608733-20a39dc7.html",
+    "read/publications/masked-language-egermann2006-ecec7f32.html",
+    "read/publications/pmid-2608414-09194b3a.html",
+    "read/publications/masked-language-funk2022-e6d8efc8.html",
+    "read/publications/masked-language-khalilpour2025-547a9019.html",
+    "read/publications/masked-language-vieira2025-92dd07f2.html",
+    "read/publications/pmid-42415977-5bfc21ab.html",
+    "read/publications/masked-language-gao2019-024d01fd.html",
+    "read/publications/pmid-28119651-bf54d3aa.html",
+    "read/publications/pmid-11751348-57e56a4b.html",
+    "read/publications/pmid-22407663-5be223b6.html",
+    "read/publications/masked-language-wahbeh2026-a6a648a1.html",
+    "read/publications/masked-language-meditation2015-45c26707.html",
+    "read/publications/masked-language-beats2025-ad605e23.html",
+    "read/publications/pmid-28497544-bb3f41ca.html",
+    "read/publications/masked-language-classification2019-d174397f.html",
+    "read/publications/masked-language-emotiv-64d664e7.html",
+    "read/publications/masked-language-brainfm-fd6763c1.html",
+    "read/publications/masked-language-video-c8ac5bf6.html",
     "read/publications/index.html",
     "read/hyperspectral/index.html",
     "read/atlas/m1.html",

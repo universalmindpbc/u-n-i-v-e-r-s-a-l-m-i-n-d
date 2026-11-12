@@ -1,0 +1,110 @@
+{
+  "date": "2026-11-10",
+  "implemented": {
+    "default": "Zen",
+    "interface": "Prominent Zen / Research switch. Zen shows solar activity and one human or market indicator, a time-period selector and optional Fibonacci overlay. Sources remain available in one disclosure.",
+    "preservation": "Research keeps every existing layer, historical Timewave, transforms, sequence table and export. Views share selected dates and human measure while retaining separate layer visibility and Research transform settings.",
+    "fibonacci_overlay": "Raw residues on a 0\u20138 scale, mapped to the solar chart height. The legend identifies the mapping. Shared clock and origin remain accessible in Research.",
+    "validation": "See candidate/verification.json and staging/verification.json."
+  },
+  "social_data_boundary": {
+    "user_direction": "Import existing analysed data from researchers, platforms or commercial providers. Do not build a social crawler, sentiment classifier, bullying detector or moderation pipeline.",
+    "kp": "Retain Kp at its native three-hour resolution, with eight intervals per UTC day and a 24-hour inspection window. Hp60 is optional and not a prerequisite.",
+    "hypothesis": "Investigate associations between geomagnetic activity indexed by Kp and aggregate online behaviour, including predefined delayed responses. Physiological and psychological mechanisms remain hypotheses requiring separate evidence.",
+    "status": "No social provider or Kp feed has been integrated in this release."
+  },
+  "provider_shortlist": [
+    {
+      "name": "Brandwatch",
+      "fit": "Existing hourly sentiment and emotion charts with CSV export. Consumer Research also documents aggregate API retrieval. Closest documented route for a near-term emotional-tone comparison.",
+      "cadence": "Hourly, daily, weekly and monthly in the documented Listen interface",
+      "access": "Commercial. Confirm product, historical coverage, aggregate API entitlement and display rights before selecting a plan.",
+      "limit": "Emotion classification in the documented Listen product is English-only. Sentiment and anger are distinct from hate speech or bullying. Coverage reflects the chosen query and supported sources.",
+      "sources": [
+        "https://social-media-management-help.brandwatch.com/en/articles/17450103-viewing-and-analyzing-listen-social-listening-searches",
+        "https://developers.brandwatch.com/docs/data-retrieval",
+        "https://www.brandwatch.com/plans/"
+      ]
+    },
+    {
+      "name": "HateLab / Nisien HERO",
+      "fit": "Cardiff University research led by Professors Matt Williams and Pete Burnap, developed into Nisien's online safeguarding platform. Strongest thematic match for hate and abuse.",
+      "cadence": "Provider advertises real-time monitoring; three-hour aggregate delivery is unconfirmed",
+      "access": "Research partnership or commercial discussion. No public aggregate API or fixed price was verified.",
+      "sources": [
+        "https://www.cardiff.ac.uk/social-sciences/research/impact/hatelab",
+        "https://nisien.ai/about-us/",
+        "https://nisien.ai/"
+      ]
+    },
+    {
+      "name": "Public Discourse Indicator",
+      "fit": "Already classified toxicity and hate-speech proportions in Swiss news comments, including uncertainty ranges.",
+      "cadence": "Weekly",
+      "access": "Public aggregate CSV download successfully retrieved; redistribution terms need confirmation before integration.",
+      "limit": "German and French news-comment populations. Useful for longer comparisons; not a three-hour feed.",
+      "sources": [
+        "https://www.public-discourse.org/en/public-discourse-indicator",
+        "https://www.public-discourse.org/api/stats_download"
+      ]
+    },
+    {
+      "name": "University of Vermont Hedonometer",
+      "fit": "Already calculated daily happiness scores from online language; useful as a historical comparison.",
+      "cadence": "Daily",
+      "access": "Public API documented under CC BY-NC-SA 4.0. API retrieval succeeded.",
+      "limit": "The English Twitter query for dates from 1 January 2026 returned zero records. Do not present this source as a verified current feed or a bullying measure.",
+      "sources": [
+        "https://hedonometer.org/api.html"
+      ]
+    }
+  ],
+  "platform_partnerships": {
+    "direction": "Meta or X partnerships remain options for provider-supplied aggregate measures. Their standard public-content access tools alone do not meet the request for finished behavioural indices.",
+    "sources": [
+      "https://about.fb.com/news/2023/11/new-tools-to-support-independent-research/",
+      "https://docs.x.com/x-api/introduction"
+    ]
+  },
+  "universal_one": {
+    "status": "Bottom-right planet design preview added in Zen and Research; no AI API or training connection.",
+    "role": "A guide in Zen and Research that helps ask questions, compare self-similarity within and between series, and distinguish visual structure, statistical evidence and interpretation.",
+    "data_foundation": "Retain source observations and versioned JSON/CSV with native units, sampling cadence, missingness, timezone and transformations. The current page exports JSON; a dedicated CSV view export is a future addition.",
+    "analysis": "Predefine relevant scales and lags, compare with baselines that preserve autocorrelation, account for searching many patterns, and test on held-out periods. Report effect sizes, uncertainty and sensitivity to normalization or phase choices.",
+    "outcomes": "A repeatable relationship, an inconclusive result and a chance-level match are all valid findings. Visual resemblance alone establishes neither causation nor meaning."
+  },
+  "mini_tensor": {
+    "status": "Implemented kernel.json plus JSON Schema, content hash manifest and view export reference",
+    "series": 11,
+    "records": 9425,
+    "models": 3,
+    "analysis": "Protocol only; no correlation, coherence or chaos results asserted; no MCP server or agent execution added."
+  },
+  "background": {
+    "selected": "Existing Inner Planes: ISS - The Blue Pearl",
+    "cloudflare_uid": "08d6983ef6584f2b8659ceaf0cfa248a",
+    "stream_max_resolution": "1280x720 verified from master manifest",
+    "presentation": "Silent loop with black overlay, pause control and reduced-motion support",
+    "ultimate_direction": "Measured weather, thermal or hyperspectral visualisations. Simulated filters, if added later, require an artistic-visualisation label.",
+    "candidates": [
+      {
+        "title": "NASA Earth System Science Spheres",
+        "url": "https://svs.gsfc.nasa.gov/31365/",
+        "resolution": "1920x1080 and 3840x2160",
+        "note": "Rotating globes with PACE, SWOT and GRACE-FO data; PACE biosphere maps chlorophyll and plant pigments, distinct from temperature."
+      },
+      {
+        "title": "NASA Sea Surface Temperature \u2014 Near Real Time",
+        "url": "https://svs.gsfc.nasa.gov/5101/",
+        "resolution": "4096x2048",
+        "note": "MUR sea surface temperature analysis visualisation; thermal mapping, distinct from hyperspectral imaging."
+      },
+      {
+        "title": "NOAA GOES weather imagery",
+        "url": "https://svs.gsfc.nasa.gov/5120/",
+        "resolution": "2160x2160",
+        "note": "Multispectral GeoColor; daytime visible and nighttime infrared with static night-light reference."
+      }
+    ]
+  }
+}

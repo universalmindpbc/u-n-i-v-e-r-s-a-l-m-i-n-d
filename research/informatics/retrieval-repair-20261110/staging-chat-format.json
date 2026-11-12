@@ -1,0 +1,44 @@
+{
+  "passed": true,
+  "paidRequests": 0,
+  "capturedLiveResponseReplayed": true,
+  "liveStagingAssets": true,
+  "checks": [
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "boldFormatted": true,
+      "citationOpensSource": true,
+      "originalPrompt": true,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "engine": "chromium",
+      "width": 320,
+      "boldFormatted": true,
+      "citationOpensSource": true,
+      "originalPrompt": true,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "width": 1440,
+      "boldFormatted": true,
+      "citationOpensSource": true,
+      "originalPrompt": true,
+      "overflow": false,
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "width": 320,
+      "boldFormatted": true,
+      "citationOpensSource": true,
+      "originalPrompt": true,
+      "overflow": false,
+      "errors": []
+    }
+  ]
+}
