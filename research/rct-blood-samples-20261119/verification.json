@@ -1,0 +1,40 @@
+{
+  "date": "2026-11-19",
+  "source_commit": "300755a7a22aaef6a347c3902b791f3ce7c8580e",
+  "notion_page": "https://app.notion.com/p/3c47b9c99c56805585e9c40f37706add",
+  "notion_replacements": 9,
+  "notion_readback_matches_expected": true,
+  "notion_edits_match_both_pages_and_pdf": true,
+  "pdf_pages": 16,
+  "pdf_visual_review": "All 16 rendered pages reviewed; collection, Phase 3 and budget wording remains legible.",
+  "source_check": "130 exact fragments in approved order",
+  "browser_checks": [
+    "desktop 1440x1000",
+    "mobile 390x844",
+    "current and legacy Research routes",
+    "both PDF download controls on each viewport and route",
+    "download bytes equal committed PDF",
+    "zero page or console errors",
+    "zero horizontal overflow",
+    "zero buccal or swab references"
+  ],
+  "deploy_method": "./deploy-panthur-staging.sh rct-research",
+  "production_modified": false,
+  "uploaded_files": [
+    {
+      "path": "i  a m/a s s e t s/research/modul8-infinity-rct-scientific-briefing-v1.pdf",
+      "url": "https://staging.universalmind.tv/vogue/iam/a%20s%20s%20e%20t%20s/research/modul8-infinity-rct-scientific-briefing-v1.pdf?v=rct-blood-df6e1a25d689",
+      "sha256": "df6e1a25d6891ba3714022b7e83d6baba128686e9f2bcb66488c4543b364ca4e"
+    },
+    {
+      "path": "i  a m/research.html",
+      "url": "https://staging.universalmind.tv/vogue/iam/research.html",
+      "sha256": "83e605265aeecb4455d108f46f0e9dcf7964d226276d511b8bbc9095fe690fe0"
+    },
+    {
+      "path": "iam/research/index.html",
+      "url": "https://staging.universalmind.tv/iam/research/",
+      "sha256": "bc02dbd75d8703388f09ea2d49cc275ee4e3a54d85c85671dcc986eb5fd6755a"
+    }
+  ]
+}

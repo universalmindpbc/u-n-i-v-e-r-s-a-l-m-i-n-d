@@ -1,0 +1,85 @@
+{
+  "passed": true,
+  "chromiumProcessMuted": true,
+  "target": "https://staging.universalmind.tv/vogue/iam/research.html",
+  "results": [
+    {
+      "viewport": {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      },
+      "state": {
+        "vision": "modul8 infinity represents our underlying platform capability—exploring the frontier of real-time targeted gene expression and epigenetic modulation through prescription sound radiation, EMDR, and sub-audible mantra, together as one — paired with pioneering hyperspectral computer vision research toward contact-free, non-invasive inference of gene expression in real time.",
+        "contact": "Universal Mind bk@universalmind.tv universalmind.tv Universal Mind TV, PBC (A Delaware Public Benefit Corporation) ABN: 15 885 248 650",
+        "contactVisible": true,
+        "hasExpectedVision": true,
+        "hasOldVision": false,
+        "hasOldSpecimenLanguage": false,
+        "downloads": [
+          {
+            "href": "a s s e t s/research/modul8-infinity-rct-scientific-briefing-v1.pdf?v=rct-blood-df6e1a25d689",
+            "text": "Download Scientific Briefing (PDF)",
+            "visible": true,
+            "width": 293.09375,
+            "height": 48
+          },
+          {
+            "href": "a s s e t s/research/modul8-infinity-rct-scientific-briefing-v1.pdf?v=rct-blood-df6e1a25d689",
+            "text": "Download Scientific Briefing (PDF)",
+            "visible": true,
+            "width": 293.09375,
+            "height": 48
+          }
+        ],
+        "allDownloadTargetsCorrect": true,
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "horizontalOverflow": false,
+        "mediaCount": 0
+      },
+      "pdfStatus": 200,
+      "pageErrors": [],
+      "consoleErrors": []
+    },
+    {
+      "viewport": {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "state": {
+        "vision": "modul8 infinity represents our underlying platform capability—exploring the frontier of real-time targeted gene expression and epigenetic modulation through prescription sound radiation, EMDR, and sub-audible mantra, together as one — paired with pioneering hyperspectral computer vision research toward contact-free, non-invasive inference of gene expression in real time.",
+        "contact": "Universal Mind bk@universalmind.tv universalmind.tv Universal Mind TV, PBC (A Delaware Public Benefit Corporation) ABN: 15 885 248 650",
+        "contactVisible": true,
+        "hasExpectedVision": true,
+        "hasOldVision": false,
+        "hasOldSpecimenLanguage": false,
+        "downloads": [
+          {
+            "href": "a s s e t s/research/modul8-infinity-rct-scientific-briefing-v1.pdf?v=rct-blood-df6e1a25d689",
+            "text": "Download Scientific Briefing (PDF)",
+            "visible": true,
+            "width": 350,
+            "height": 48
+          },
+          {
+            "href": "a s s e t s/research/modul8-infinity-rct-scientific-briefing-v1.pdf?v=rct-blood-df6e1a25d689",
+            "text": "Download Scientific Briefing (PDF)",
+            "visible": true,
+            "width": 350,
+            "height": 48
+          }
+        ],
+        "allDownloadTargetsCorrect": true,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "horizontalOverflow": false,
+        "mediaCount": 0
+      },
+      "pdfStatus": 200,
+      "pageErrors": [],
+      "consoleErrors": []
+    }
+  ]
+}
