@@ -859,6 +859,36 @@ deploy_events() {
   echo "Events: committed source published through Panthur FTP."
 }
 
+# Publish both RCT reading routes and their PDF through the existing transport.
+deploy_rct_research() {
+  local index relative remote manifest_key manifest_tmp
+  local paths=("i  a m/a s s e t s/research/modul8-infinity-rct-scientific-briefing-v1.pdf" "i  a m/research.html" "iam/research/index.html")
+  local destinations=("vogue/iam/a s s e t s/research/modul8-infinity-rct-scientific-briefing-v1.pdf" "vogue/iam/research.html" "iam/research/index.html")
+  if [[ -n "$(git -C "$ROOT_DIR" status --porcelain --untracked-files=all -- "${paths[@]}")" ]]; then
+    echo "Refusing to deploy uncommitted RCT research source." >&2
+    return 1
+  fi
+  for relative in "${paths[@]}"; do
+    git -C "$ROOT_DIR" ls-files --error-unmatch "$relative" >/dev/null || return 1
+    [[ -f "$ROOT_DIR/$relative" ]] || return 1
+  done
+  manifest_tmp="$(mktemp)"
+  if [[ -f "$MANIFEST_FILE" ]]; then
+    cp "$MANIFEST_FILE" "$manifest_tmp"
+  fi
+  for index in "${!paths[@]}"; do
+    relative="${paths[$index]}"
+    remote="${destinations[$index]}"
+    manifest_key="${remote#vogue/iam/}"
+    put_file "$ROOT_DIR/$relative" "$remote" || { rm -f "$manifest_tmp"; return 1; }
+    awk -F '\t' -v key="$manifest_key" '$2 != key' "$manifest_tmp" > "$manifest_tmp.next"
+    mv "$manifest_tmp.next" "$manifest_tmp"
+    printf '%s\t%s\n' "$(file_hash "$ROOT_DIR/$relative")" "$manifest_key" >> "$manifest_tmp"
+  done
+  mv "$manifest_tmp" "$MANIFEST_FILE"
+  echo "RCT research: two reading routes and one PDF published through Panthur FTP."
+}
+
 # Publish the organisation guide through the existing Panthur transport.
 deploy_ai_wiki() {
   local relative manifest_tmp
@@ -1004,6 +1034,9 @@ if deployment_requires_owner_state_guard "$DEPLOY_MODE"; then
 fi
 
 case "$DEPLOY_MODE" in
+  rct-research)
+    deploy_rct_research
+    ;;
   remove-spacetime)
     remove_spacetime
     ;;
@@ -1083,7 +1116,7 @@ case "$DEPLOY_MODE" in
     provision_sovereignty_runtime configure
     ;;
   *)
-    echo "Usage: $0 [lab|ai-wiki|happiness|directory|events|iam|iam-fast|fast|changed|iam-changed|mark|media|redirects|all|all-fast|all-changed|seed-owner-state|owner-password-reset|sovereignty-seed|sovereignty-configure]" >&2
+    echo "Usage: $0 [rct-research|lab|ai-wiki|happiness|directory|events|iam|iam-fast|fast|changed|iam-changed|mark|media|redirects|all|all-fast|all-changed|seed-owner-state|owner-password-reset|sovereignty-seed|sovereignty-configure]" >&2
     exit 2
     ;;
 esac

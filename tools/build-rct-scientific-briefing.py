@@ -53,7 +53,7 @@ LOGO = ROOT / "i  a m" / "a s s e t s" / "Universal Mind [ I o H ] Logo 512.png"
 DOCUMENT_TITLE = "modul8 infinity Randomized Controlled Trial"
 DOCUMENT_SUBTITLE = "Scientific Briefing for Research and Institutional Partners"
 DOCUMENT_VERSION = "Version 1 - Partner Review Brief"
-DOCUMENT_DATE = "31 August 2026"
+DOCUMENT_DATE = "19 November 2026"
 STATUS_STATEMENT = (
     "This briefing describes a proposed randomized controlled trial. It is not "
     "a registered or ethics-approved clinical trial protocol. Final design "

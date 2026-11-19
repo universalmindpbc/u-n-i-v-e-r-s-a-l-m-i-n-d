@@ -61,7 +61,10 @@ fi
 "$NODE_BIN" "$ROOT_DIR/tools/check-portal-navigation.mjs"
 
 # Events is an independent PHP microsite; validate its own source for scoped releases.
-if [[ "${1:-}" == ai-wiki ]]; then
+if [[ "${1:-}" == rct-research ]]; then
+  python3 "$ROOT_DIR/tools/check-research-page-copy.py"
+  "$NODE_BIN" --check "$ROOT_DIR/tools/check-rct-scientific-briefing-browser.mjs"
+elif [[ "${1:-}" == ai-wiki ]]; then
   python3 "$ROOT_DIR/tools/build-universal-mind-wiki.py" --check
   python3 "$ROOT_DIR/tools/check-universal-mind-wiki.py"
   "$NODE_BIN" "$ROOT_DIR/tools/check-directory-source.mjs"

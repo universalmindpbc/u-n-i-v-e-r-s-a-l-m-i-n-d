@@ -12,10 +12,10 @@ const chromiumExecutable = process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE
 const screenshotDir = process.env.RCT_SCREENSHOT_DIR || "";
 if (screenshotDir) fs.mkdirSync(screenshotDir, { recursive: true });
 
-const expectedVision = "modul8 infinity represents our underlying platform capability—exploring the frontier of real-time targeted gene expression and epigenetic modulation through prescription sound radiation, EMDR, and silent mantra, together as one — paired with pioneering hyperspectral computer vision research toward contact-free, non-invasive inference of gene expression in real time.";
+const expectedVision = "modul8 infinity represents our underlying platform capability—exploring the frontier of real-time targeted gene expression and epigenetic modulation through prescription sound radiation, EMDR, and sub-audible mantra, together as one — paired with pioneering hyperspectral computer vision research toward contact-free, non-invasive inference of gene expression in real time.";
 const expectedContact = "Universal Mind bk@universalmind.tv universalmind.tv Universal Mind TV, PBC (A Delaware Public Benefit Corporation) ABN: 15 885 248 650";
-const oldVisionFragment = "prescription sound radiation, EMDR, and silent mantra.";
-const expectedPdfPath = "a s s e t s/research/modul8-infinity-rct-scientific-briefing-v1.pdf?v=rct-mitosis-b8941947cd8d";
+const oldVisionFragment = "prescription sound radiation, EMDR, and sub-audible mantra.";
+const expectedPdfPath = "a s s e t s/research/modul8-infinity-rct-scientific-briefing-v1.pdf?v=rct-blood-df6e1a25d689";
 const viewports = [
   { name: "desktop", width: 1440, height: 1000 },
   { name: "mobile", width: 390, height: 844 },
@@ -82,6 +82,7 @@ try {
         contactVisible: Boolean(contactRect && contactRect.width > 0 && contactRect.height > 0),
         hasExpectedVision: bodyText.includes(expectedVision),
         hasOldVision: bodyText.includes(oldVisionFragment),
+        hasOldSpecimenLanguage: /\b(?:buccal|swabs?)\b/i.test(bodyText),
         downloads,
         allDownloadTargetsCorrect: downloads.every((item) => item.href === expectedPdfPath),
         scrollWidth: document.documentElement.scrollWidth,
@@ -94,6 +95,7 @@ try {
     assert.equal(state.vision, expectedVision, `${viewport.name}: exact Notion Vision Statement must render`);
     assert.equal(state.hasExpectedVision, true, `${viewport.name}: updated Vision Statement is absent`);
     assert.equal(state.hasOldVision, false, `${viewport.name}: superseded Vision Statement remains visible`);
+    assert.equal(state.hasOldSpecimenLanguage, false, `${viewport.name}: superseded specimen wording remains visible`);
     assert.equal(state.contact, expectedContact, `${viewport.name}: exact contact block must render once`);
     assert.equal(state.contactVisible, true, `${viewport.name}: contact block must be visibly laid out`);
     assert.equal(state.downloads.length, 2, `${viewport.name}: top and bottom PDF downloads must both render`);
@@ -109,10 +111,10 @@ try {
     assert.equal(await mitosisPanel.locator("article").count(), 4, `${viewport.name}: all four mitotic protocol groups must render`);
     assert.equal(await mitosisPanel.locator("li").count(), 6, `${viewport.name}: four sampling stages and two laboratory pipelines must render`);
     const mitosisText = await mitosisPanel.innerText();
-    assert.ok(mitosisText.includes("Day 28 Cumulative Outcome (Swab 3):"), `${viewport.name}: cumulative sampling endpoint must render`);
+    assert.ok(mitosisText.includes("Day 28 Cumulative Outcome (Blood Sample 3):"), `${viewport.name}: cumulative sampling endpoint must render`);
     assert.ok(mitosisText.includes("micronuclei frequencies, karyorrhexis, and nuclear abnormalities"), `${viewport.name}: cellular imaging measures must render`);
 
-    const pdfUrl = new URL(expectedPdfPath, target).href;
+    const pdfUrl = await page.locator("a[download]").first().evaluate((anchor) => anchor.href);
     const pdfResponse = await context.request.get(pdfUrl, { timeout: 45_000 });
     assert.equal(pdfResponse.status(), 200, `${viewport.name}: PDF must return HTTP 200`);
     assert.match(pdfResponse.headers()["content-type"] || "", /application\/pdf/i, `${viewport.name}: PDF content type must be application/pdf`);
