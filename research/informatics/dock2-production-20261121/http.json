@@ -1,0 +1,505 @@
+{
+  "passed": true,
+  "assets": [
+    {
+      "path": "informatics/exports/manifest-a3bd2c857b8c4fac79ad31932a81ba8e937be1cbb681d45eb23a8a046d05a9c5.json",
+      "bytes": 2399699,
+      "rawSHA256": "56cefef1c3987d56bb1075b5b129ce573cfde9c582a3ec5265be752330a9c5b9",
+      "expectedSHA256": "56cefef1c3987d56bb1075b5b129ce573cfde9c582a3ec5265be752330a9c5b9",
+      "normalizedSHA256": "56cefef1c3987d56bb1075b5b129ce573cfde9c582a3ec5265be752330a9c5b9",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/exports/part-22c5bed2e2ba160169fd823e02761ea9b37dac96ece9a154fec7edf7dc4ce979.bin",
+      "bytes": 50331648,
+      "rawSHA256": "22c5bed2e2ba160169fd823e02761ea9b37dac96ece9a154fec7edf7dc4ce979",
+      "expectedSHA256": "22c5bed2e2ba160169fd823e02761ea9b37dac96ece9a154fec7edf7dc4ce979",
+      "normalizedSHA256": "22c5bed2e2ba160169fd823e02761ea9b37dac96ece9a154fec7edf7dc4ce979",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/exports/part-26e8981609aa66d17a59d813beee9244f73ae41e9cf91e1070dc656c384c7c05.bin",
+      "bytes": 613459,
+      "rawSHA256": "26e8981609aa66d17a59d813beee9244f73ae41e9cf91e1070dc656c384c7c05",
+      "expectedSHA256": "26e8981609aa66d17a59d813beee9244f73ae41e9cf91e1070dc656c384c7c05",
+      "normalizedSHA256": "26e8981609aa66d17a59d813beee9244f73ae41e9cf91e1070dc656c384c7c05",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/exports/part-51c9c0343d763ef61cdf5b6b4b0a49e42dbeaac9efbeb6c8aa79aaa868b053ef.bin",
+      "bytes": 50331648,
+      "rawSHA256": "51c9c0343d763ef61cdf5b6b4b0a49e42dbeaac9efbeb6c8aa79aaa868b053ef",
+      "expectedSHA256": "51c9c0343d763ef61cdf5b6b4b0a49e42dbeaac9efbeb6c8aa79aaa868b053ef",
+      "normalizedSHA256": "51c9c0343d763ef61cdf5b6b4b0a49e42dbeaac9efbeb6c8aa79aaa868b053ef",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/exports/part-6eed1dc013ca88ea9a014aeab33f01da6da4c59f18b583a8e3ab44d6d3d0a87d.bin",
+      "bytes": 50331648,
+      "rawSHA256": "6eed1dc013ca88ea9a014aeab33f01da6da4c59f18b583a8e3ab44d6d3d0a87d",
+      "expectedSHA256": "6eed1dc013ca88ea9a014aeab33f01da6da4c59f18b583a8e3ab44d6d3d0a87d",
+      "normalizedSHA256": "6eed1dc013ca88ea9a014aeab33f01da6da4c59f18b583a8e3ab44d6d3d0a87d",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/exports/part-8b0527e39bec7220fa9e1119b63949c5d11aa7bca99ad7a3c1c65949789ead78.bin",
+      "bytes": 50331648,
+      "rawSHA256": "8b0527e39bec7220fa9e1119b63949c5d11aa7bca99ad7a3c1c65949789ead78",
+      "expectedSHA256": "8b0527e39bec7220fa9e1119b63949c5d11aa7bca99ad7a3c1c65949789ead78",
+      "normalizedSHA256": "8b0527e39bec7220fa9e1119b63949c5d11aa7bca99ad7a3c1c65949789ead78",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/exports/part-e766f72d8aed4351cc6577de75b6f17a809d52da596ab146fddee6f4e7e3c7ab.bin",
+      "bytes": 31121576,
+      "rawSHA256": "e766f72d8aed4351cc6577de75b6f17a809d52da596ab146fddee6f4e7e3c7ab",
+      "expectedSHA256": "e766f72d8aed4351cc6577de75b6f17a809d52da596ab146fddee6f4e7e3c7ab",
+      "normalizedSHA256": "e766f72d8aed4351cc6577de75b6f17a809d52da596ab146fddee6f4e7e3c7ab",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/library-data/clinical-conditions.json",
+      "bytes": 147245,
+      "rawSHA256": "ef9080831a3eedb869297f38e8f076464c0630fce5cdd93b2d91dddf1064ea24",
+      "expectedSHA256": "ef9080831a3eedb869297f38e8f076464c0630fce5cdd93b2d91dddf1064ea24",
+      "normalizedSHA256": "ef9080831a3eedb869297f38e8f076464c0630fce5cdd93b2d91dddf1064ea24",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/library-data/dock2-research-register.csv",
+      "bytes": 31931,
+      "rawSHA256": "dbe713ff8767f3aebd6ae155f9e23cca7bb95b4acda8b4148759b1a0335d4695",
+      "expectedSHA256": "dbe713ff8767f3aebd6ae155f9e23cca7bb95b4acda8b4148759b1a0335d4695",
+      "normalizedSHA256": "dbe713ff8767f3aebd6ae155f9e23cca7bb95b4acda8b4148759b1a0335d4695",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/library-data/dock2-research-register.json",
+      "bytes": 55699,
+      "rawSHA256": "40b872d4e30ebf251d8f27536738e92c9bdb7a70b0763cfcd4dcf1f6e9695faa",
+      "expectedSHA256": "40b872d4e30ebf251d8f27536738e92c9bdb7a70b0763cfcd4dcf1f6e9695faa",
+      "normalizedSHA256": "40b872d4e30ebf251d8f27536738e92c9bdb7a70b0763cfcd4dcf1f6e9695faa",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/library-data/general-edition.json",
+      "bytes": 1702091,
+      "rawSHA256": "8f60903833be3ee9f4424fe058f5d89889d861152a1a56a2743c2bc0fda104eb",
+      "expectedSHA256": "8f60903833be3ee9f4424fe058f5d89889d861152a1a56a2743c2bc0fda104eb",
+      "normalizedSHA256": "8f60903833be3ee9f4424fe058f5d89889d861152a1a56a2743c2bc0fda104eb",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/library-data/library.json",
+      "bytes": 4061002,
+      "rawSHA256": "a9cbac54a4cbb16af8556a2cc7eca7498cd6924108594e77559cabd96c220ef1",
+      "expectedSHA256": "a9cbac54a4cbb16af8556a2cc7eca7498cd6924108594e77559cabd96c220ef1",
+      "normalizedSHA256": "a9cbac54a4cbb16af8556a2cc7eca7498cd6924108594e77559cabd96c220ef1",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/llms.txt",
+      "bytes": 7663,
+      "rawSHA256": "5889609a92d2526697eeb5d8c51a0555ad4f111f1ea944dfda549b7e15fb5791",
+      "expectedSHA256": "5889609a92d2526697eeb5d8c51a0555ad4f111f1ea944dfda549b7e15fb5791",
+      "normalizedSHA256": "5889609a92d2526697eeb5d8c51a0555ad4f111f1ea944dfda549b7e15fb5791",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "sitemaps/informatics-publications.xml",
+      "bytes": 160888,
+      "rawSHA256": "7b1da5a8a402437508b978ea2adeeaa4e7baa40718a60b4bcbe9c69bc533a158",
+      "expectedSHA256": "7b1da5a8a402437508b978ea2adeeaa4e7baa40718a60b4bcbe9c69bc533a158",
+      "normalizedSHA256": "7b1da5a8a402437508b978ea2adeeaa4e7baa40718a60b4bcbe9c69bc533a158",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "sitemaps/informatics-records.xml",
+      "bytes": 83584,
+      "rawSHA256": "e71b6cef61ec32bcfc8200381877a86659368253b9bfd6026d7d4661dec49c3a",
+      "expectedSHA256": "e71b6cef61ec32bcfc8200381877a86659368253b9bfd6026d7d4661dec49c3a",
+      "normalizedSHA256": "e71b6cef61ec32bcfc8200381877a86659368253b9bfd6026d7d4661dec49c3a",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/library.html",
+      "bytes": 35529,
+      "rawSHA256": "2580580ef9d7490af3314f6fd393aae376cf654b15b24b32b7ffb981316fe315",
+      "expectedSHA256": "2580580ef9d7490af3314f6fd393aae376cf654b15b24b32b7ffb981316fe315",
+      "normalizedSHA256": "2580580ef9d7490af3314f6fd393aae376cf654b15b24b32b7ffb981316fe315",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/library.js",
+      "bytes": 60468,
+      "rawSHA256": "a110c9b51959500a702568138a009b92139ac26cc7f4c673fedbcf45f3db0099",
+      "expectedSHA256": "a110c9b51959500a702568138a009b92139ac26cc7f4c673fedbcf45f3db0099",
+      "normalizedSHA256": "a110c9b51959500a702568138a009b92139ac26cc7f4c673fedbcf45f3db0099",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/data.html",
+      "bytes": 184442,
+      "rawSHA256": "bae7d5aef05ed3581564c3aaa89ed96669dc7e2db413db15cbe831ddce098c8b",
+      "expectedSHA256": "bae7d5aef05ed3581564c3aaa89ed96669dc7e2db413db15cbe831ddce098c8b",
+      "normalizedSHA256": "bae7d5aef05ed3581564c3aaa89ed96669dc7e2db413db15cbe831ddce098c8b",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/dock2/index.html",
+      "bytes": 36380,
+      "rawSHA256": "fa6fbad6c3692728689a4eff50432917d69dd16fe58a55f34e903b71bf443721",
+      "expectedSHA256": "fa6fbad6c3692728689a4eff50432917d69dd16fe58a55f34e903b71bf443721",
+      "normalizedSHA256": "fa6fbad6c3692728689a4eff50432917d69dd16fe58a55f34e903b71bf443721",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/index.html",
+      "bytes": 9106,
+      "rawSHA256": "36a6d59dfe90c49732f8ae233e1a0c91d7530776c84f5165e6df39eca6724bef",
+      "expectedSHA256": "36a6d59dfe90c49732f8ae233e1a0c91d7530776c84f5165e6df39eca6724bef",
+      "normalizedSHA256": "36a6d59dfe90c49732f8ae233e1a0c91d7530776c84f5165e6df39eca6724bef",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/dock2-book2022-ceb5ccad.html",
+      "bytes": 11205,
+      "rawSHA256": "ddc870b29e0c20f98f4bf506fba3de3aa02b23d4a4aa224258c8c211893a6d5f",
+      "expectedSHA256": "ddc870b29e0c20f98f4bf506fba3de3aa02b23d4a4aa224258c8c211893a6d5f",
+      "normalizedSHA256": "ddc870b29e0c20f98f4bf506fba3de3aa02b23d4a4aa224258c8c211893a6d5f",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/dock2-cimino2009-f1715f7e.html",
+      "bytes": 11252,
+      "rawSHA256": "f3075752daec940c71fea7e56ee69c281d4a42bfbd475febf46f5f6d2cbbaaaf",
+      "expectedSHA256": "f3075752daec940c71fea7e56ee69c281d4a42bfbd475febf46f5f6d2cbbaaaf",
+      "normalizedSHA256": "f3075752daec940c71fea7e56ee69c281d4a42bfbd475febf46f5f6d2cbbaaaf",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/dock2-combat2024-dc9e31a0.html",
+      "bytes": 11943,
+      "rawSHA256": "fcc0a3343a1ba341757d27c5cbc7fbb22ab36089812bc00ee7b5ef9b9bebb87d",
+      "expectedSHA256": "fcc0a3343a1ba341757d27c5cbc7fbb22ab36089812bc00ee7b5ef9b9bebb87d",
+      "normalizedSHA256": "fcc0a3343a1ba341757d27c5cbc7fbb22ab36089812bc00ee7b5ef9b9bebb87d",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/dock2-comorbid2019-3334edd1.html",
+      "bytes": 10593,
+      "rawSHA256": "2e1ce21580b148982b7c1a37a7e147b864dc9b37521b4cefaf226f0841faad84",
+      "expectedSHA256": "2e1ce21580b148982b7c1a37a7e147b864dc9b37521b4cefaf226f0841faad84",
+      "normalizedSHA256": "2e1ce21580b148982b7c1a37a7e147b864dc9b37521b4cefaf226f0841faad84",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/dock2-frontiers2022-4b68f38c.html",
+      "bytes": 11859,
+      "rawSHA256": "ffec16113bc9ce1ab4e507d37e09de460d7668f9a007008169f6502a23c679e6",
+      "expectedSHA256": "ffec16113bc9ce1ab4e507d37e09de460d7668f9a007008169f6502a23c679e6",
+      "normalizedSHA256": "ffec16113bc9ce1ab4e507d37e09de460d7668f9a007008169f6502a23c679e6",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/dock2-howie2019-97054384.html",
+      "bytes": 11290,
+      "rawSHA256": "5e08fd425a3d9583bbeca032f47fa0a3838199de942ee4848c69628690437b59",
+      "expectedSHA256": "5e08fd425a3d9583bbeca032f47fa0a3838199de942ee4848c69628690437b59",
+      "normalizedSHA256": "5e08fd425a3d9583bbeca032f47fa0a3838199de942ee4848c69628690437b59",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/dock2-hummel2022-5b3a8ff0.html",
+      "bytes": 12899,
+      "rawSHA256": "127772564dadc47431c5d6ec96653ad08ac380c05560f84184e210af06c63003",
+      "expectedSHA256": "127772564dadc47431c5d6ec96653ad08ac380c05560f84184e210af06c63003",
+      "normalizedSHA256": "127772564dadc47431c5d6ec96653ad08ac380c05560f84184e210af06c63003",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/dock2-immune2022-731e2c3c.html",
+      "bytes": 12574,
+      "rawSHA256": "438a58da13206a65a6189ffc3b12d4b8a7a3264dd9120f323f0ab7e853166499",
+      "expectedSHA256": "438a58da13206a65a6189ffc3b12d4b8a7a3264dd9120f323f0ab7e853166499",
+      "normalizedSHA256": "438a58da13206a65a6189ffc3b12d4b8a7a3264dd9120f323f0ab7e853166499",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/dock2-inheritance2024-31b9e874.html",
+      "bytes": 10756,
+      "rawSHA256": "13100b80f9cf3ba26208659618e12331f08f172cbeb9bbf9c3d2272e90fbbf4b",
+      "expectedSHA256": "13100b80f9cf3ba26208659618e12331f08f172cbeb9bbf9c3d2272e90fbbf4b",
+      "normalizedSHA256": "13100b80f9cf3ba26208659618e12331f08f172cbeb9bbf9c3d2272e90fbbf4b",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/dock2-konstanz2022-79ff4398.html",
+      "bytes": 11748,
+      "rawSHA256": "01b3a16a2ecf6694637cddadf0bb5886d89a1c0c46be58e92a3bc8326a9520ee",
+      "expectedSHA256": "01b3a16a2ecf6694637cddadf0bb5886d89a1c0c46be58e92a3bc8326a9520ee",
+      "normalizedSHA256": "01b3a16a2ecf6694637cddadf0bb5886d89a1c0c46be58e92a3bc8326a9520ee",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/dock2-montalvo2022-4d2b2e61.html",
+      "bytes": 12742,
+      "rawSHA256": "579ee0370e38f427ec54eb0a6b5e7055fda580c19171dd9c7d271e66b162c4cc",
+      "expectedSHA256": "579ee0370e38f427ec54eb0a6b5e7055fda580c19171dd9c7d271e66b162c4cc",
+      "normalizedSHA256": "579ee0370e38f427ec54eb0a6b5e7055fda580c19171dd9c7d271e66b162c4cc",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/dock2-morrison2019-c2b91c29.html",
+      "bytes": 11715,
+      "rawSHA256": "0f6f14c6d9b857bd340b63fa3a4760e1efb5a97ccaac796a8bf6f0444986d683",
+      "expectedSHA256": "0f6f14c6d9b857bd340b63fa3a4760e1efb5a97ccaac796a8bf6f0444986d683",
+      "normalizedSHA256": "0f6f14c6d9b857bd340b63fa3a4760e1efb5a97ccaac796a8bf6f0444986d683",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/dock2-nothling2021-cdae3118.html",
+      "bytes": 12654,
+      "rawSHA256": "3ed572deb1adff059ece25e992828667628d51c61e12c181c28a770efa425f0f",
+      "expectedSHA256": "3ed572deb1adff059ece25e992828667628d51c61e12c181c28a770efa425f0f",
+      "normalizedSHA256": "3ed572deb1adff059ece25e992828667628d51c61e12c181c28a770efa425f0f",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/dock2-pfeiffer2018-d21878c8.html",
+      "bytes": 10330,
+      "rawSHA256": "f964abc6043d42493e744e459730cb6d782db02388ed91c0695be27968bd0dbf",
+      "expectedSHA256": "f964abc6043d42493e744e459730cb6d782db02388ed91c0695be27968bd0dbf",
+      "normalizedSHA256": "f964abc6043d42493e744e459730cb6d782db02388ed91c0695be27968bd0dbf",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/dock2-qut2025-c54f8f72.html",
+      "bytes": 10824,
+      "rawSHA256": "6acc8976ca1d731b9bb807a3d6be6d6c2b8eb65b8c619026d8ddc7fdb6a52a81",
+      "expectedSHA256": "6acc8976ca1d731b9bb807a3d6be6d6c2b8eb65b8c619026d8ddc7fdb6a52a81",
+      "normalizedSHA256": "6acc8976ca1d731b9bb807a3d6be6d6c2b8eb65b8c619026d8ddc7fdb6a52a81",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/dock2-rats2022-768954b0.html",
+      "bytes": 11282,
+      "rawSHA256": "c54196e0be5e908a3dad02cf0269ade3816de59fc205a8d13f98c81204171ca9",
+      "expectedSHA256": "c54196e0be5e908a3dad02cf0269ade3816de59fc205a8d13f98c81204171ca9",
+      "normalizedSHA256": "c54196e0be5e908a3dad02cf0269ade3816de59fc205a8d13f98c81204171ca9",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/dock2-rubens2025-56e26770.html",
+      "bytes": 12015,
+      "rawSHA256": "2a0b41136f9991d7df97664ac455d6403bf8c341ac272468d93417970eb5d6fc",
+      "expectedSHA256": "2a0b41136f9991d7df97664ac455d6403bf8c341ac272468d93417970eb5d6fc",
+      "normalizedSHA256": "2a0b41136f9991d7df97664ac455d6403bf8c341ac272468d93417970eb5d6fc",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/dock2-social2023-71fcb29e.html",
+      "bytes": 10611,
+      "rawSHA256": "49d38c3f083b7c29a9dce2e9e7130d89c67f06188c5bec6f247251e928896fe9",
+      "expectedSHA256": "49d38c3f083b7c29a9dce2e9e7130d89c67f06188c5bec6f247251e928896fe9",
+      "normalizedSHA256": "49d38c3f083b7c29a9dce2e9e7130d89c67f06188c5bec6f247251e928896fe9",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/dock2-stellenbosch-4260e416.html",
+      "bytes": 11910,
+      "rawSHA256": "3bf95eda206d013d2157ddcc9be1be888bb4d242ff6d48fb3dcd0a1186bbb943",
+      "expectedSHA256": "3bf95eda206d013d2157ddcc9be1be888bb4d242ff6d48fb3dcd0a1186bbb943",
+      "normalizedSHA256": "3bf95eda206d013d2157ddcc9be1be888bb4d242ff6d48fb3dcd0a1186bbb943",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/dock2-susceptibility2021-12242c60.html",
+      "bytes": 11524,
+      "rawSHA256": "c9478b05f8d19648914b53bbcd40398be1119dac1975a0f162fc3f50b6681ebd",
+      "expectedSHA256": "c9478b05f8d19648914b53bbcd40398be1119dac1975a0f162fc3f50b6681ebd",
+      "normalizedSHA256": "c9478b05f8d19648914b53bbcd40398be1119dac1975a0f162fc3f50b6681ebd",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/dock2-va-emdr-79b930a6.html",
+      "bytes": 11417,
+      "rawSHA256": "5c228f81bf82181045f3d558952064743c866e30171fbd1be373fdd9bd15eb37",
+      "expectedSHA256": "5c228f81bf82181045f3d558952064743c866e30171fbd1be373fdd9bd15eb37",
+      "normalizedSHA256": "5c228f81bf82181045f3d558952064743c866e30171fbd1be373fdd9bd15eb37",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/dv-vision-426ce6386119-13fd6b54.html",
+      "bytes": 61819,
+      "rawSHA256": "feb5b1e718a3af18be6352bd6e5192e27e0912e0d50b3558c3273e5160d104ae",
+      "expectedSHA256": "feb5b1e718a3af18be6352bd6e5192e27e0912e0d50b3558c3273e5160d104ae",
+      "normalizedSHA256": "feb5b1e718a3af18be6352bd6e5192e27e0912e0d50b3558c3273e5160d104ae",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/index.html",
+      "bytes": 365248,
+      "rawSHA256": "4df0438de5e891bcadef04439d24130f37f8b22349241dbc9dcf676aa4fe349d",
+      "expectedSHA256": "4df0438de5e891bcadef04439d24130f37f8b22349241dbc9dcf676aa4fe349d",
+      "normalizedSHA256": "4df0438de5e891bcadef04439d24130f37f8b22349241dbc9dcf676aa4fe349d",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/pmid-28795405-ed1fba4f.html",
+      "bytes": 19321,
+      "rawSHA256": "e485eb61a84c0ad1e37461e62f85f79bfc7444e2e3f79fdb3363e6602d9068f6",
+      "expectedSHA256": "e485eb61a84c0ad1e37461e62f85f79bfc7444e2e3f79fdb3363e6602d9068f6",
+      "normalizedSHA256": "e485eb61a84c0ad1e37461e62f85f79bfc7444e2e3f79fdb3363e6602d9068f6",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/pmid-29949770-4f65702e.html",
+      "bytes": 12037,
+      "rawSHA256": "cfe33e8fea7b5c21922211e72061b5842131082a9be1d055a4bd211466950551",
+      "expectedSHA256": "cfe33e8fea7b5c21922211e72061b5842131082a9be1d055a4bd211466950551",
+      "normalizedSHA256": "cfe33e8fea7b5c21922211e72061b5842131082a9be1d055a4bd211466950551",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/pmid-30415783-b912ea9c.html",
+      "bytes": 11984,
+      "rawSHA256": "f5a22d1ffb47121b72d32ace847f57c474f36fcb3ff6d14c529d5913bb202672",
+      "expectedSHA256": "f5a22d1ffb47121b72d32ace847f57c474f36fcb3ff6d14c529d5913bb202672",
+      "normalizedSHA256": "f5a22d1ffb47121b72d32ace847f57c474f36fcb3ff6d14c529d5913bb202672",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/pmid-31195163-79bc74cf.html",
+      "bytes": 12765,
+      "rawSHA256": "96e8f3d1788f645f165fdd9c5da02b53668bac210c932e207afcec6aabf63bb4",
+      "expectedSHA256": "96e8f3d1788f645f165fdd9c5da02b53668bac210c932e207afcec6aabf63bb4",
+      "normalizedSHA256": "96e8f3d1788f645f165fdd9c5da02b53668bac210c932e207afcec6aabf63bb4",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/pmid-31839899-d276ee4a.html",
+      "bytes": 12486,
+      "rawSHA256": "5a5a17de7b9c1d1d92a65b882df538da3fec54a4657f203f517e0f2bbf699253",
+      "expectedSHA256": "5a5a17de7b9c1d1d92a65b882df538da3fec54a4657f203f517e0f2bbf699253",
+      "normalizedSHA256": "5a5a17de7b9c1d1d92a65b882df538da3fec54a4657f203f517e0f2bbf699253",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/pmid-32171335-7f8fe037.html",
+      "bytes": 13983,
+      "rawSHA256": "13049a9f1ab6daf866c8e2626b74dd0a12d224715cfee6eb5b7520a293954c36",
+      "expectedSHA256": "13049a9f1ab6daf866c8e2626b74dd0a12d224715cfee6eb5b7520a293954c36",
+      "normalizedSHA256": "13049a9f1ab6daf866c8e2626b74dd0a12d224715cfee6eb5b7520a293954c36",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/pmid-33349712-8cda6782.html",
+      "bytes": 12215,
+      "rawSHA256": "57659b5f7663ffbc28d78d1472e6a94813347cc2fdc6e1a1f96e8ebf6a8d086e",
+      "expectedSHA256": "57659b5f7663ffbc28d78d1472e6a94813347cc2fdc6e1a1f96e8ebf6a8d086e",
+      "normalizedSHA256": "57659b5f7663ffbc28d78d1472e6a94813347cc2fdc6e1a1f96e8ebf6a8d086e",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/pmid-34239411-b4fa4dd9.html",
+      "bytes": 12682,
+      "rawSHA256": "128ea915cf8bc7e901ce0ce5eec2a1b1216d6994555e468228b1475ea45a51a7",
+      "expectedSHA256": "128ea915cf8bc7e901ce0ce5eec2a1b1216d6994555e468228b1475ea45a51a7",
+      "normalizedSHA256": "128ea915cf8bc7e901ce0ce5eec2a1b1216d6994555e468228b1475ea45a51a7",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/pmid-34282125-e227ca7c.html",
+      "bytes": 13172,
+      "rawSHA256": "1d7b37dacea7e99ac2abcbbc8c641263fb565ce447c6ec861ca41d4621e978de",
+      "expectedSHA256": "1d7b37dacea7e99ac2abcbbc8c641263fb565ce447c6ec861ca41d4621e978de",
+      "normalizedSHA256": "1d7b37dacea7e99ac2abcbbc8c641263fb565ce447c6ec861ca41d4621e978de",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/pmid-39696436-361107bc.html",
+      "bytes": 19967,
+      "rawSHA256": "10b5c818f1cf3d960e7d6a808db5a48ef7d2d11452e9d501a4f21406728665f6",
+      "expectedSHA256": "10b5c818f1cf3d960e7d6a808db5a48ef7d2d11452e9d501a4f21406728665f6",
+      "normalizedSHA256": "10b5c818f1cf3d960e7d6a808db5a48ef7d2d11452e9d501a4f21406728665f6",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/pmid-40533550-d7136044.html",
+      "bytes": 14622,
+      "rawSHA256": "02649b6ec49717211f1c66651aeb29636c7fcc3c3212cd82c0a6fd09a4d6c036",
+      "expectedSHA256": "02649b6ec49717211f1c66651aeb29636c7fcc3c3212cd82c0a6fd09a4d6c036",
+      "normalizedSHA256": "02649b6ec49717211f1c66651aeb29636c7fcc3c3212cd82c0a6fd09a4d6c036",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/exports/manifest.json",
+      "bytes": 2399699,
+      "rawSHA256": "56cefef1c3987d56bb1075b5b129ce573cfde9c582a3ec5265be752330a9c5b9",
+      "expectedSHA256": "56cefef1c3987d56bb1075b5b129ce573cfde9c582a3ec5265be752330a9c5b9",
+      "normalizedSHA256": "56cefef1c3987d56bb1075b5b129ce573cfde9c582a3ec5265be752330a9c5b9",
+      "observedHostInjections": [],
+      "matched": true
+    }
+  ],
+  "completeExportParts": 6,
+  "totalBytesVerified": 245262497,
+  "roundtripEvidence": "research/informatics/dock2-research-20261121/roundtrip.json",
+  "roundtripAppliesToIdenticalPublishedBytes": true,
+  "datasetRecords": 1200
+}

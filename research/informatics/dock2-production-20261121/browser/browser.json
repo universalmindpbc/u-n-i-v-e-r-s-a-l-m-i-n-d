@@ -1,0 +1,123 @@
+{
+  "production": true,
+  "mutedProcess": true,
+  "mediaPlaybackDisabled": true,
+  "checks": [
+    {
+      "chapter": 12,
+      "topics": 6,
+      "sources": 33,
+      "chapterOrder": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "scientificBoundaries": true
+    },
+    {
+      "viewport": 1470,
+      "layout": {
+        "width": 1470,
+        "scroll": 1470
+      }
+    },
+    {
+      "viewport": 1024,
+      "layout": {
+        "width": 1024,
+        "scroll": 1024
+      }
+    },
+    {
+      "viewport": 390,
+      "layout": {
+        "width": 390,
+        "scroll": 390
+      }
+    },
+    {
+      "viewport": 320,
+      "layout": {
+        "width": 320,
+        "scroll": 320
+      }
+    },
+    {
+      "citationDialog": true
+    },
+    {
+      "dock2FilterMatches": 15
+    },
+    {
+      "originalStudySearch": true
+    },
+    {
+      "readingPageSources": 33,
+      "sourceRegister": true
+    },
+    {
+      "languageRegression": true
+    }
+  ],
+  "liveAssets": [
+    {
+      "path": "library.js",
+      "sha256": "a110c9b51959500a702568138a009b92139ac26cc7f4c673fedbcf45f3db0099"
+    },
+    {
+      "path": "library-data/general-edition.json",
+      "sha256": "8f60903833be3ee9f4424fe058f5d89889d861152a1a56a2743c2bc0fda104eb"
+    },
+    {
+      "path": "library-data/library.json",
+      "sha256": "a9cbac54a4cbb16af8556a2cc7eca7498cd6924108594e77559cabd96c220ef1"
+    },
+    {
+      "path": "library-data/clinical-conditions.json",
+      "sha256": "ef9080831a3eedb869297f38e8f076464c0630fce5cdd93b2d91dddf1064ea24"
+    },
+    {
+      "path": "exports/manifest.json",
+      "sha256": "56cefef1c3987d56bb1075b5b129ce573cfde9c582a3ec5265be752330a9c5b9"
+    }
+  ],
+  "completeExportParts": [
+    {
+      "file": "part-6eed1dc013ca88ea9a014aeab33f01da6da4c59f18b583a8e3ab44d6d3d0a87d.bin",
+      "bytes": 50331648
+    },
+    {
+      "file": "part-e766f72d8aed4351cc6577de75b6f17a809d52da596ab146fddee6f4e7e3c7ab.bin",
+      "bytes": 31121576
+    },
+    {
+      "file": "part-51c9c0343d763ef61cdf5b6b4b0a49e42dbeaac9efbeb6c8aa79aaa868b053ef.bin",
+      "bytes": 50331648
+    },
+    {
+      "file": "part-8b0527e39bec7220fa9e1119b63949c5d11aa7bca99ad7a3c1c65949789ead78.bin",
+      "bytes": 50331648
+    },
+    {
+      "file": "part-22c5bed2e2ba160169fd823e02761ea9b37dac96ece9a154fec7edf7dc4ce979.bin",
+      "bytes": 50331648
+    },
+    {
+      "file": "part-26e8981609aa66d17a59d813beee9244f73ae41e9cf91e1070dc656c384c7c05.bin",
+      "bytes": 613459
+    }
+  ],
+  "passed": true,
+  "finalUrl": "https://universalmind.tv/informatics/research/?collection=language&chapter=7",
+  "network": [],
+  "errors": []
+}

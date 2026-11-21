@@ -1,0 +1,21 @@
+{
+  "status": "Production verified",
+  "approvedStagingCommit": "89e4c0547526f9d9345bf06c4ceee09a9369a022",
+  "tag": "production-2026-11-21-1705",
+  "productionURL": "https://universalmind.tv/informatics/research/?collection=general&chapter=12",
+  "stagingURL": "https://staging.universalmind.tv/informatics/research/?collection=general&chapter=12",
+  "sourceCount": 33,
+  "topics": 6,
+  "matchedProductionAssets": 55,
+  "completeExportPartsVerified": 6,
+  "completeDatasetRecords": 1200,
+  "websiteSourceMatchesApprovedStaging": true,
+  "browserWidths": [
+    1470,
+    1024,
+    390,
+    320
+  ],
+  "mediaPlaybackDisabled": true,
+  "unrelatedHistoricalExportsExcluded": 147
+}
