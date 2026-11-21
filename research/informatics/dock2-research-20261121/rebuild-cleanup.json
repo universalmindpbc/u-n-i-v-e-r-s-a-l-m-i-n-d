@@ -1,0 +1,62 @@
+{
+  "removedUnpublishedIntermediateExports": [
+    {
+      "file": "Informatics/exports/manifest-16bd860f55ec44ff0f28f487f018fb4746154bf6467b0b51f2539d38990cd887.json",
+      "bytes": 2399699
+    },
+    {
+      "file": "Informatics/exports/manifest-bae1414e5339e3b8319fe41e5bc14dc6823b18a1f63efde29a3833bdac3bfea9.json",
+      "bytes": 2399699
+    },
+    {
+      "file": "Informatics/exports/part-17721a5b4a88051c65981447ed070236442a9724de9e1f7c5e4f85f793b3b3ee.bin",
+      "bytes": 50331648
+    },
+    {
+      "file": "Informatics/exports/part-732bb43756091af30a19c21b22377263927b9dc5bdd06a7320bfaf4a0c129390.bin",
+      "bytes": 50331648
+    },
+    {
+      "file": "Informatics/exports/part-7951e9ea984d78954edd1402311226214d85aeaefc2ff63f356a9c60df6e4a48.bin",
+      "bytes": 613360
+    },
+    {
+      "file": "Informatics/exports/part-926dd7289790ead3f73f2fe838739c18c488a9b279c219c4fb782477fc134cb6.bin",
+      "bytes": 50331648
+    },
+    {
+      "file": "Informatics/exports/part-9d7fffa747d87d483b820383bafaaed489c83c033c93cdd369da2040bbe40654.bin",
+      "bytes": 31121389
+    },
+    {
+      "file": "Informatics/exports/part-a4bb7119dc3931e070a9b4a09d7188077c38789db81a225d03c899258f811cf2.bin",
+      "bytes": 50331648
+    },
+    {
+      "file": "Informatics/exports/part-aeeadf36aeacaa25327f043818420c1873a14de09399d26bce1b29ed4b44dd75.bin",
+      "bytes": 50331648
+    },
+    {
+      "file": "Informatics/exports/part-b6c504ae9a2d3981949e6b7fcd9573585ee7f68ecfd5d3b9780946dc131b2fd3.bin",
+      "bytes": 31121586
+    },
+    {
+      "file": "Informatics/exports/part-cf74dd100dca791ee310df2423e471ee57e0b053fd88ee579076bf1736c4a1da.bin",
+      "bytes": 50331648
+    },
+    {
+      "file": "Informatics/exports/part-da6709cd134b8b4d205357e9ab9e701d5bcaf2c9a492369f8fc6515c30634c8b.bin",
+      "bytes": 50331648
+    },
+    {
+      "file": "Informatics/exports/part-ec74679e78d7128119c6ffb176f7c2446e53a34ceac934bb31f23c46ba2e89b9.bin",
+      "bytes": 50331648
+    },
+    {
+      "file": "Informatics/exports/part-fe461d433a5200c37a6f5ec06cd37e7435c78df105d5de6df472ded0e083dadf.bin",
+      "bytes": 613199
+    }
+  ],
+  "retainedFinalVersion": "a3bd2c857b8c4fac79ad31932a81ba8e937be1cbb681d45eb23a8a046d05a9c5",
+  "trackedHistoricalExportsRetained": true
+}

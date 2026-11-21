@@ -654,14 +654,14 @@ deploy_informatics() {
   python3 "$ROOT_DIR/tools/export-informatics.py" --check || return 1
   # Same Panthur FTP transport and manifest. Validate the entire scoped source
   # before uploading; publish entry points only after all referenced assets exist.
-  if ! git -C "$ROOT_DIR" diff --quiet HEAD -- Informatics research/informatics/legacy-uppercase.htaccess sitemaps/informatics-publications.xml; then
+  if ! git -C "$ROOT_DIR" diff --quiet HEAD -- Informatics research/informatics/legacy-uppercase.htaccess sitemaps/informatics-publications.xml sitemaps/informatics-records.xml; then
     echo "Refusing to deploy uncommitted Informatics source." >&2
     return 1
   fi
   manifest_tmp="$(mktemp)"
   queue_tmp="$(mktemp)"
   if [[ -f "$MANIFEST_FILE" ]]; then
-    awk -F '\t' '$2 !~ /^(Informatics|informatics)\// && $2 != "sitemaps/informatics-publications.xml"' "$MANIFEST_FILE" > "$manifest_tmp"
+    awk -F '\t' '$2 !~ /^(Informatics|informatics)\// && $2 != "sitemaps/informatics-publications.xml" && $2 != "sitemaps/informatics-records.xml"' "$MANIFEST_FILE" > "$manifest_tmp"
   fi
   python3 - "$ROOT_DIR" "$MANIFEST_FILE" "$manifest_tmp" "$queue_tmp" <<'PYQUEUE'
 import hashlib, pathlib, subprocess, sys
@@ -671,7 +671,7 @@ if old_file.exists():
     for line in old_file.read_text().splitlines():
         digest, path = line.split('\t', 1)
         old[path] = digest
-tracked = subprocess.check_output(['git', '-C', str(root), 'ls-files', '-z', 'Informatics', 'research/informatics/legacy-uppercase.htaccess', 'sitemaps/informatics-publications.xml']).decode().split('\0')
+tracked = subprocess.check_output(['git', '-C', str(root), 'ls-files', '-z', 'Informatics', 'research/informatics/legacy-uppercase.htaccess', 'sitemaps/informatics-publications.xml', 'sitemaps/informatics-records.xml']).decode().split('\0')
 entries = []
 for path in filter(None, tracked):
     remote = 'Informatics/.htaccess' if path.endswith('legacy-uppercase.htaccess') else 'informatics/' + path.removeprefix('Informatics/')

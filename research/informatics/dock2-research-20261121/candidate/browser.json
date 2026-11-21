@@ -1,0 +1,105 @@
+{
+  "candidate": true,
+  "mutedProcess": true,
+  "mediaPlaybackDisabled": true,
+  "checks": [
+    {
+      "chapter": 12,
+      "topics": 6,
+      "sources": 33,
+      "chapterOrder": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "scientificBoundaries": true
+    },
+    {
+      "viewport": 1470,
+      "layout": {
+        "width": 1470,
+        "scroll": 1470
+      }
+    },
+    {
+      "viewport": 1024,
+      "layout": {
+        "width": 1024,
+        "scroll": 1024
+      }
+    },
+    {
+      "viewport": 390,
+      "layout": {
+        "width": 390,
+        "scroll": 390
+      }
+    },
+    {
+      "viewport": 320,
+      "layout": {
+        "width": 320,
+        "scroll": 320
+      }
+    },
+    {
+      "citationDialog": true
+    },
+    {
+      "dock2FilterMatches": 15
+    },
+    {
+      "originalStudySearch": true
+    },
+    {
+      "readingPageSources": 33,
+      "sourceRegister": true
+    },
+    {
+      "languageRegression": true
+    }
+  ],
+  "passed": true,
+  "finalUrl": "https://staging.universalmind.tv/informatics/research/?collection=language&chapter=7",
+  "frames": [
+    {
+      "url": "https://staging.universalmind.tv/informatics/research/?collection=language&chapter=7",
+      "text": "UNIVERSAL\nINFORMATICS\nResearch Atlas\n⌄\n♪̸\n⛶\n×\nAsk a research question"
+    },
+    {
+      "url": "about:blank",
+      "text": ""
+    },
+    {
+      "url": "about:blank",
+      "text": ""
+    },
+    {
+      "url": "https://staging.universalmind.tv/informatics/library.html?collection=language&chapter=7&embedded=1",
+      "text": "Skip to research\nReading background\nVideo\nBlack\nWhite\n\nUNIVERSAL RESEARCH\n\nUniversal Research\n\nA collected library for exploring how sound, vision and language modulate gene expression.\n\nHow to navigate\n\nChoose a chapter or subchapter from the contents, or search papers by topic, gene, journal, physiology or study design. Select an article title to open the publication.\n\nTrust Factor\nAt least 3 verified double-blind studies\nAt least 3 randomized or single-blind studies\nAt least 3 peer-reviewed journal articles\n\nIndividual papers: one cross for a peer-reviewed publication; two for a randomized controlled or verified single-blind study; three for a verified double-blind study. Each subchapter must contain at least three distinct qualifying studies to reach the corresponding level.\n\nSound\nVision\nLanguage\nGeneral\nAll research\nPapers & references\n653\nJournals\n318\nRecorded citations\n18,513\n\nEach publication and identified journal is counted once. Citation counts are available for 143 of 653 publications; these are historical counts, not live totals.\n\nUNIVERSAL MIND’S SCIENTIFIC SCORECARD\nLanguage research assessment\nB\nPositive systematic evidence\nRead chapters\nSearch papers\nSearch resear"
+    },
+    {
+      "url": "about:blank",
+      "text": ""
+    },
+    {
+      "url": "about:blank",
+      "text": ""
+    },
+    {
+      "url": "about:blank",
+      "text": ""
+    }
+  ],
+  "network": [],
+  "errors": []
+}

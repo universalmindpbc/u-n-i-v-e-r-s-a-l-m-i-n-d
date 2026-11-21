@@ -1,0 +1,14 @@
+{
+  "attachment": "supplied-scholar-links.pdf",
+  "attachmentSHA256": "b33b7ab817ec66c851d140bea674d73aec3dc38f061f0b045c3857d721bfd191",
+  "suppliedUniqueSources": 20,
+  "retainedSources": 33,
+  "additionalSources": 13,
+  "newUniqueLibraryPublications": 31,
+  "reusedPublications": [
+    "pmid-28795405",
+    "dv-vision-426ce6386119"
+  ],
+  "reviewType": "Targeted narrative evidence map. Supplied links screened; primary results and relevant full-text passages assessed where accessible. Not a systematic review or clinical biomarker validation.",
+  "sourceRegister": "Informatics/library-data/dock2-research-register.json"
+}

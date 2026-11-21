@@ -1,0 +1,41 @@
+{
+  "passed": true,
+  "chapter": 12,
+  "topics": 6,
+  "sourceCount": 33,
+  "suppliedUniqueSources": 20,
+  "additionalSources": 13,
+  "newUniqueLibraryPublications": 31,
+  "sourceAccess": {
+    "Relevant full-text methods and results reviewed": 12,
+    "Main paper and Supplementary Table 5 inspected directly": 1,
+    "Official guidance reviewed; accessed 21 November 2026": 1,
+    "Publication metadata and abstract reviewed": 1,
+    "Publication identity and reported mechanistic findings reviewed": 1,
+    "Publisher abstract and publicly available author manuscript passages reviewed": 1,
+    "Abstract, metadata and accessible figure descriptions reviewed": 1,
+    "Main article and DOCK2 relevance screened": 1,
+    "Relevant full-text sections and source citations reviewed": 1,
+    "Metadata and abstract only; full text unavailable": 1,
+    "Relevant full-text sections and citations reviewed": 5,
+    "Abstract, metadata and references only; full text unavailable": 1,
+    "Full-text DOCK2 passages and table reviewed": 1,
+    "Relevant full-text passages reviewed": 1,
+    "Indexed full-text DOCK2 table and relevant passages reviewed": 1,
+    "Thesis DOCK2 passages and tables reviewed": 1,
+    "Title pages and all text-search DOCK2 occurrences reviewed": 1,
+    "Supplied title and repository link screened; full text unavailable": 1
+  },
+  "scope": "Exploratory intervention-response outcome alongside clinical outcomes",
+  "registerJSONCSVRowsMatched": 33,
+  "priorRecordUpdates": [
+    "pmid-28795405"
+  ],
+  "baselineCommit": "8d281f92f0af5882c66cb4d5d4384d8ef73e0fef",
+  "reviewedSourceFiles": {
+    "Informatics/library-data/general-edition.json": "8f60903833be3ee9f4424fe058f5d89889d861152a1a56a2743c2bc0fda104eb",
+    "Informatics/library-data/library.json": "a9cbac54a4cbb16af8556a2cc7eca7498cd6924108594e77559cabd96c220ef1",
+    "Informatics/library-data/dock2-research-register.json": "40b872d4e30ebf251d8f27536738e92c9bdb7a70b0763cfcd4dcf1f6e9695faa",
+    "Informatics/library-data/dock2-research-register.csv": "dbe713ff8767f3aebd6ae155f9e23cca7bb95b4acda8b4148759b1a0335d4695"
+  }
+}

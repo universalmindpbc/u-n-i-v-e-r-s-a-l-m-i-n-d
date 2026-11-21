@@ -1,14 +1,14 @@
 {
-  "datasetManifestSHA256": "a68d4d3471b1c64a5773d8970db0ac77143848cb9efa3ba0ad1a134bbf9c4274",
+  "datasetManifestSHA256": "56cefef1c3987d56bb1075b5b129ce573cfde9c582a3ec5265be752330a9c5b9",
   "generatedAt": "2026-10-26",
-  "publications": 1421,
+  "publications": 1452,
   "atlas": 1001,
   "experiments": 2,
-  "pages": 2439,
+  "pages": 2471,
   "sourceHashes": [
     {
       "path": "library.js",
-      "sha256": "32eaf4a9d7108abffb8fc3cf7f66cd2213f5183f9d6d92ac5aa887567a7900e0"
+      "sha256": "a110c9b51959500a702568138a009b92139ac26cc7f4c673fedbcf45f3db0099"
     },
     {
       "path": "library-data/sound-edition.json",
@@ -16,7 +16,7 @@
     },
     {
       "path": "library-data/library.json",
-      "sha256": "9e8c73b42c5cb5cf04250910279d93ba58b3504a6230aac5020a6c1b0cb0698d"
+      "sha256": "a9cbac54a4cbb16af8556a2cc7eca7498cd6924108594e77559cabd96c220ef1"
     },
     {
       "path": "library-data/publication-access.json",
@@ -28,7 +28,7 @@
     },
     {
       "path": "library-data/general-edition.json",
-      "sha256": "c0ce0dde985c954f18f29e58f899c192a67861652d12c3b168415a69e46c537c"
+      "sha256": "8f60903833be3ee9f4424fe058f5d89889d861152a1a56a2743c2bc0fda104eb"
     },
     {
       "path": "library-data/mindfulness-expansion.json",
@@ -44,7 +44,7 @@
     },
     {
       "path": "library-data/clinical-conditions.json",
-      "sha256": "72d41ef50d5718e18152fa6ff280f8bccc59855aef47ee578a46da718eaf4040"
+      "sha256": "ef9080831a3eedb869297f38e8f076464c0630fce5cdd93b2d91dddf1064ea24"
     },
     {
       "path": "library-data/nature-expansion.json",
@@ -79,7 +79,7 @@
       "sha256": "3fe8ac5ff0b61e4348e5de0808e2f7956329df489b51ccf18a3f0163e00b376e"
     }
   ],
-  "publicationRecordSHA256": "5dd11cf3b303c2d24dcf69d0c239f0ab2792803a056bce0a5396eb7a8a9d26b8",
+  "publicationRecordSHA256": "c93e43912cb6c8185440c05ac459fc2c6ae09737e6fdb41715b0b370def349e4",
   "canonicalPaths": [
     "",
     "connect.html",
@@ -887,6 +887,38 @@
     "read/publications/pmid-36006668-bd97f85f.html",
     "read/publications/pmid-39808431-1935f9aa.html",
     "read/publications/pmid-42599846-aca0287d.html",
+    "read/publications/dv-vision-426ce6386119-13fd6b54.html",
+    "read/publications/dock2-va-emdr-79b930a6.html",
+    "read/publications/pmid-34282125-e227ca7c.html",
+    "read/publications/dock2-hummel2022-5b3a8ff0.html",
+    "read/publications/pmid-30415783-b912ea9c.html",
+    "read/publications/pmid-31195163-79bc74cf.html",
+    "read/publications/pmid-34239411-b4fa4dd9.html",
+    "read/publications/pmid-31839899-d276ee4a.html",
+    "read/publications/pmid-32171335-7f8fe037.html",
+    "read/publications/dock2-montalvo2022-4d2b2e61.html",
+    "read/publications/pmid-39696436-361107bc.html",
+    "read/publications/dock2-rubens2025-56e26770.html",
+    "read/publications/dock2-nothling2021-cdae3118.html",
+    "read/publications/dock2-cimino2009-f1715f7e.html",
+    "read/publications/pmid-29949770-4f65702e.html",
+    "read/publications/dock2-immune2022-731e2c3c.html",
+    "read/publications/pmid-33349712-8cda6782.html",
+    "read/publications/pmid-40533550-d7136044.html",
+    "read/publications/dock2-frontiers2022-4b68f38c.html",
+    "read/publications/dock2-book2022-ceb5ccad.html",
+    "read/publications/dock2-susceptibility2021-12242c60.html",
+    "read/publications/dock2-morrison2019-c2b91c29.html",
+    "read/publications/dock2-comorbid2019-3334edd1.html",
+    "read/publications/dock2-inheritance2024-31b9e874.html",
+    "read/publications/dock2-combat2024-dc9e31a0.html",
+    "read/publications/dock2-social2023-71fcb29e.html",
+    "read/publications/dock2-rats2022-768954b0.html",
+    "read/publications/dock2-pfeiffer2018-d21878c8.html",
+    "read/publications/dock2-howie2019-97054384.html",
+    "read/publications/dock2-qut2025-c54f8f72.html",
+    "read/publications/dock2-konstanz2022-79ff4398.html",
+    "read/publications/dock2-stellenbosch-4260e416.html",
     "read/publications/pmid-41534731-3d1f7c57.html",
     "read/publications/pmid-36350591-ddbc6cb7.html",
     "read/publications/pmid-35820992-1f94d7d6.html",
@@ -1310,7 +1342,6 @@
     "read/publications/dv-vision-42529059-ed030cb6.html",
     "read/publications/dv-vision-38868491-3889e875.html",
     "read/publications/dv-vision-38629403-047d475c.html",
-    "read/publications/dv-vision-426ce6386119-13fd6b54.html",
     "read/publications/dv-children-31114620-f636aada.html",
     "read/publications/dv-vision-d1f88a25c475-89a09758.html",
     "read/publications/dv-reviews-cont-39302822-06852f39.html",
@@ -1515,6 +1546,7 @@
     "read/publications/masked-language-video-c8ac5bf6.html",
     "read/publications/index.html",
     "read/hyperspectral/index.html",
+    "read/dock2/index.html",
     "read/atlas/m1.html",
     "read/atlas/m2.html",
     "read/atlas/m3.html",

@@ -1,6 +1,6 @@
 {
   "schema": "universal-informatics/complete-dataset/v1",
-  "dataset_version": "c89db84a19508685ef94ce1e38adb2e1673788929ca37c9502f24166b094ccce",
+  "dataset_version": "a3bd2c857b8c4fac79ad31932a81ba8e937be1cbb681d45eb23a8a046d05a9c5",
   "sources": [
     {
       "id": "atlas-guides/computer-vision-atlas.csv",
@@ -95,13 +95,25 @@
     {
       "id": "library-data/clinical-conditions.json",
       "source_path": "library-data/clinical-conditions.json",
-      "sha256": "72d41ef50d5718e18152fa6ff280f8bccc59855aef47ee578a46da718eaf4040",
+      "sha256": "ef9080831a3eedb869297f38e8f076464c0630fce5cdd93b2d91dddf1064ea24",
       "format": "json"
     },
     {
       "id": "library-data/community-index.json",
       "source_path": "library-data/community-index.json",
       "sha256": "e5dba9eae8102ef73fa983dcab8d1b387e87b2c2725a14d9c66c0ca4c3acf016",
+      "format": "json"
+    },
+    {
+      "id": "library-data/dock2-research-register.csv",
+      "source_path": "library-data/dock2-research-register.csv",
+      "sha256": "dbe713ff8767f3aebd6ae155f9e23cca7bb95b4acda8b4148759b1a0335d4695",
+      "format": "csv"
+    },
+    {
+      "id": "library-data/dock2-research-register.json",
+      "source_path": "library-data/dock2-research-register.json",
+      "sha256": "40b872d4e30ebf251d8f27536738e92c9bdb7a70b0763cfcd4dcf1f6e9695faa",
       "format": "json"
     },
     {
@@ -125,7 +137,7 @@
     {
       "id": "library-data/general-edition.json",
       "source_path": "library-data/general-edition.json",
-      "sha256": "c0ce0dde985c954f18f29e58f899c192a67861652d12c3b168415a69e46c537c",
+      "sha256": "8f60903833be3ee9f4424fe058f5d89889d861152a1a56a2743c2bc0fda104eb",
       "format": "json"
     },
     {
@@ -161,7 +173,7 @@
     {
       "id": "library-data/library.json",
       "source_path": "library-data/library.json",
-      "sha256": "9e8c73b42c5cb5cf04250910279d93ba58b3504a6230aac5020a6c1b0cb0698d",
+      "sha256": "a9cbac54a4cbb16af8556a2cc7eca7498cd6924108594e77559cabd96c220ef1",
       "format": "json"
     },
     {
@@ -52286,49 +52298,49 @@
   "downloads": {
     "json": {
       "file": "informatics-complete.json.gz",
-      "bytes": 81394433,
-      "uncompressed_bytes": 793235887,
-      "sha256": "51039dc12529bd7324106edca3c6eaec5029e56309175801bc5b1de175f70f93",
-      "uncompressed_sha256": "84d8eee6111b855e0ad0981cec28818d3a2f4d81a18d76315a40765cd4f5f18b",
+      "bytes": 81453224,
+      "uncompressed_bytes": 793479004,
+      "sha256": "dc30444778aa674c52b4410484ee658b34f4afffd808999d9c42676bd253b485",
+      "uncompressed_sha256": "344e033e540ebe7f3e7b78d6a27d607da78a30244709fd3f56d73468ae1a3d2c",
       "parts": [
         {
-          "file": "part-426426181da0d2a1d150cabc8e64497f9460918861bf5af31d86248890592dc8.bin",
+          "file": "part-6eed1dc013ca88ea9a014aeab33f01da6da4c59f18b583a8e3ab44d6d3d0a87d.bin",
           "bytes": 50331648,
-          "sha256": "426426181da0d2a1d150cabc8e64497f9460918861bf5af31d86248890592dc8"
+          "sha256": "6eed1dc013ca88ea9a014aeab33f01da6da4c59f18b583a8e3ab44d6d3d0a87d"
         },
         {
-          "file": "part-2d07c5c1ea86d083bc96aeceab9a54aabe44aeda347227a4d748852f25588f41.bin",
-          "bytes": 31062785,
-          "sha256": "2d07c5c1ea86d083bc96aeceab9a54aabe44aeda347227a4d748852f25588f41"
+          "file": "part-e766f72d8aed4351cc6577de75b6f17a809d52da596ab146fddee6f4e7e3c7ab.bin",
+          "bytes": 31121576,
+          "sha256": "e766f72d8aed4351cc6577de75b6f17a809d52da596ab146fddee6f4e7e3c7ab"
         }
       ]
     },
     "csv": {
       "file": "informatics-complete.csv.gz",
-      "bytes": 151510105,
-      "uncompressed_bytes": 2480429802,
-      "sha256": "61006ce0234f5693cbaace16625a8442049c5b4848c503bf82fad754b9e20968",
-      "uncompressed_sha256": "cee6d955102a2070f3c239cb8daa6f5af37ea532eed5734fa13f4a47bda02911",
+      "bytes": 151608403,
+      "uncompressed_bytes": 2480931134,
+      "sha256": "f968be8aab848e5ea8c1cf94dbf98df7a3ebee55a139240995967c521f962067",
+      "uncompressed_sha256": "1cd53aeab103e838ddc4b10eda2f120319683920a3e435ee95d8fcfaff80930a",
       "parts": [
         {
-          "file": "part-cdaa34f8195bb064708738f4a21c1c96b945dfb0d6c3bfc8667ea928f4118c20.bin",
+          "file": "part-51c9c0343d763ef61cdf5b6b4b0a49e42dbeaac9efbeb6c8aa79aaa868b053ef.bin",
           "bytes": 50331648,
-          "sha256": "cdaa34f8195bb064708738f4a21c1c96b945dfb0d6c3bfc8667ea928f4118c20"
+          "sha256": "51c9c0343d763ef61cdf5b6b4b0a49e42dbeaac9efbeb6c8aa79aaa868b053ef"
         },
         {
-          "file": "part-bb3e005a2e869cfbf66b93a1fe0b2189cf94829fdd3bdf778b0c8680e1bf5607.bin",
+          "file": "part-8b0527e39bec7220fa9e1119b63949c5d11aa7bca99ad7a3c1c65949789ead78.bin",
           "bytes": 50331648,
-          "sha256": "bb3e005a2e869cfbf66b93a1fe0b2189cf94829fdd3bdf778b0c8680e1bf5607"
+          "sha256": "8b0527e39bec7220fa9e1119b63949c5d11aa7bca99ad7a3c1c65949789ead78"
         },
         {
-          "file": "part-a01eddc05f5240295d03aa552f77b180d521dd86c302625d6f3e3ca1df643f34.bin",
+          "file": "part-22c5bed2e2ba160169fd823e02761ea9b37dac96ece9a154fec7edf7dc4ce979.bin",
           "bytes": 50331648,
-          "sha256": "a01eddc05f5240295d03aa552f77b180d521dd86c302625d6f3e3ca1df643f34"
+          "sha256": "22c5bed2e2ba160169fd823e02761ea9b37dac96ece9a154fec7edf7dc4ce979"
         },
         {
-          "file": "part-3c12c9ffdae5d8b5fd944a28b6e13111276831b5a4091df1adf3dfe92153e84e.bin",
-          "bytes": 515161,
-          "sha256": "3c12c9ffdae5d8b5fd944a28b6e13111276831b5a4091df1adf3dfe92153e84e"
+          "file": "part-26e8981609aa66d17a59d813beee9244f73ae41e9cf91e1070dc656c384c7c05.bin",
+          "bytes": 613459,
+          "sha256": "26e8981609aa66d17a59d813beee9244f73ae41e9cf91e1070dc656c384c7c05"
         }
       ]
     }

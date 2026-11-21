@@ -1,0 +1,980 @@
+{
+  "schemaVersion": "dock2-research/v1",
+  "reviewedAt": "2026-11-21",
+  "title": "DOCK2, trauma and PTSD: DNA methylation and gene expression",
+  "purpose": [
+    "Universal Mind is investigating whether its interventions, developed around hypotheses concerning oxytocin receptor signalling, are associated with changes in DOCK2 gene expression or DNA methylation. DOCK2 is an exploratory biological outcome alongside symptoms, functioning and wellbeing. The aim is to test whether it can provide an early signal of intervention response.",
+    "DOCK2 means dedicator of cytokinesis 2. It is distinct from the DOC2 family. Published human studies connect DOCK2 with PTSD-associated methylation, with limited expression evidence and mixed replication. These observations motivate a longitudinal research question; they do not establish a beneficial direction of change or a validated surrogate for recovery.",
+    "Research purpose: intervention response, not initial diagnosis. The proposed chain from an intervention to OXTR-related biology, to DOCK2 change, to clinical benefit contains several untested links. Measuring each link separately keeps the hypothesis testable. Literature reviewed 21 November 2026; this is a targeted narrative evidence map, not a systematic review."
+  ],
+  "reviewMethod": "Targeted narrative evidence map. Supplied links screened; primary results and relevant full-text passages assessed where accessible. Not a systematic review or clinical biomarker validation.",
+  "sourceCount": 33,
+  "suppliedUniqueSources": 20,
+  "duplicateSuppliedLink": "The Frontiers 2022 review appears twice in the supplied PDF; one source is retained.",
+  "records": [
+    {
+      "key": "mehta2017",
+      "title": "Genomewide DNA methylation analysis in combat veterans reveals a novel locus for PTSD",
+      "year": 2017,
+      "journal": "Acta Psychiatrica Scandinavica",
+      "doi": "10.1111/acps.12778",
+      "urls": [
+        "https://doi.org/10.1111/acps.12778",
+        "https://pubmed.ncbi.nlm.nih.gov/28795405/"
+      ],
+      "group": "human",
+      "design": "Human blood methylation and expression; 96 veterans and 115 independent replication participants",
+      "summary": "Lower methylation at DOCK2 cg16277944 was associated with greater PTSD symptom severity and replicated in a separate cohort (p = 0.0028). Post-hoc blood analyses found a modest inverse methylation–expression association (r = −0.21) and a group difference in DOCK2 expression.",
+      "limitation": "Cross-sectional, male samples; discovery used a 10% false-discovery-rate threshold. Association does not establish intervention responsiveness. Genetic variation also influenced methylation. The 211 participants are the total across both cohorts, not the discovery sample alone.",
+      "sourceAccess": "Relevant full-text methods and results reviewed",
+      "targets": [
+        "DOCK2"
+      ],
+      "peerReviewed": true,
+      "authors": "Mehta D., Bruenig D., Carrillo‐Roa T., Lawford B., Harvey W., Morris C. P., Smith A. K., Binder E. B., Young R. McD, Voisey J.",
+      "pmid": "28795405",
+      "supplied": true,
+      "recordId": "pmid-28795405",
+      "studyFamilyId": "dock2-veterans-mehta",
+      "bibliographicVerification": {
+        "provider": "Crossref DOI metadata",
+        "checkedAt": "2026-11-21",
+        "doi": "10.1111/acps.12778",
+        "matchedTitle": "Genomewide DNA methylation analysis in combat veterans reveals a novel locus for PTSD"
+      }
+    },
+    {
+      "key": "mehta2019",
+      "title": "DNA methylation from germline cells in veterans with PTSD",
+      "year": 2019,
+      "journal": "Journal of Psychiatric Research",
+      "doi": "10.1016/j.jpsychires.2019.06.001",
+      "urls": [
+        "https://doi.org/10.1016/j.jpsychires.2019.06.001",
+        "https://pubmed.ncbi.nlm.nih.gov/31195163/"
+      ],
+      "group": "human",
+      "design": "Exploratory sperm and blood methylation; 38 sperm samples",
+      "summary": "DOCK2 appeared among nominally associated loci shared between sperm and blood. This extends the tissue question raised by the earlier veteran study.",
+      "limitation": "The veteran cohort overlaps earlier work. DOCK2 was not one of the genome-wide significant sperm findings; cross-tissue overlap was not significant enrichment. No offspring molecular data established transmission of DOCK2 methylation or trauma.",
+      "sourceAccess": "Relevant full-text methods and results reviewed",
+      "targets": [
+        "DOCK2"
+      ],
+      "peerReviewed": true,
+      "authors": "Mehta Divya, Pelzer Elise S., Bruenig Dagmar, Lawford Bruce, McLeay Sarah, Morris Charles P., Gibson John N., Young Ross McD., Voisey Joanne, McLeay Sarah, Harvey Wendy, Romaniuk Madeline, Crawford Darrell, Colquhoun David, Young Ross McD., Dwyer Miriam, Gibson John, O'Sullivan Robyn, Cooksley Graham, Strakosch Christopher, Thomson Rachel, Voisey Joanne, Lawford Bruce",
+      "pmid": "31195163",
+      "supplied": true,
+      "recordId": "pmid-31195163",
+      "studyFamilyId": "dock2-veterans-mehta",
+      "bibliographicVerification": {
+        "provider": "Crossref DOI metadata",
+        "checkedAt": "2026-11-21",
+        "doi": "10.1016/j.jpsychires.2019.06.001",
+        "matchedTitle": "DNA methylation from germline cells in veterans with PTSD"
+      }
+    },
+    {
+      "key": "bainomugisa2021",
+      "title": "Using Monozygotic Twins to Dissect Common Genes in Posttraumatic Stress Disorder and Migraine",
+      "year": 2021,
+      "journal": "Frontiers in Neuroscience",
+      "doi": "10.3389/fnins.2021.678350",
+      "urls": [
+        "https://doi.org/10.3389/fnins.2021.678350",
+        "https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2021.678350/full"
+      ],
+      "group": "human",
+      "design": "Blood methylation; six identical-twin pairs discordant for PTSD",
+      "summary": "DOCK2 was among candidate genes with methylation associations surviving gene-wise Bonferroni correction. The design matches inherited sequence and many demographic factors within twin pairs. Separate migraine analyses also implicated DOCK2.",
+      "limitation": "Only 12 PTSD-study participants. This is support at the gene level, without confirmed replication here of cg16277944. Different CpG sites changed in different directions. Gene-wise correction is distinct from genome-wide discovery significance, and migraine overlap limits specificity.",
+      "sourceAccess": "Relevant full-text methods and results reviewed",
+      "targets": [
+        "DOCK2"
+      ],
+      "peerReviewed": true,
+      "authors": "Bainomugisa C et al.",
+      "pmid": "34239411",
+      "supplied": true,
+      "recordId": "pmid-34239411",
+      "studyFamilyId": "dock2-twins-2021"
+    },
+    {
+      "key": "sheerin2019",
+      "title": "A preliminary investigation of rare variants associated with genetic risk for PTSD in a natural disaster-exposed adolescent sample",
+      "year": 2019,
+      "journal": "European Journal of Psychotraumatology",
+      "doi": "10.1080/20008198.2019.1688935",
+      "urls": [
+        "https://doi.org/10.1080/20008198.2019.1688935",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC6896412/"
+      ],
+      "group": "human",
+      "design": "Rare-variant gene-burden analysis; 707 tornado-exposed adolescents",
+      "summary": "Rare variation in DOCK2 was associated with PTSD symptom burden in this preliminary genetic analysis, providing a distinct line of human evidence.",
+      "limitation": "DNA sequence variation is different from methylation or RNA expression. Small numbers of rare-variant carriers and exploratory analyses limit inference. This does not test intervention-related DOCK2 change.",
+      "sourceAccess": "Relevant full-text methods and results reviewed",
+      "targets": [
+        "DOCK2"
+      ],
+      "peerReviewed": true,
+      "authors": "Sheerin Christina M., Vladimirov Vladimir, Williamson Vernell, Bountress Kaitlin, K. Danielson Carla, Ruggiero Kenneth, Amstadter Ananda B.",
+      "pmid": "31839899",
+      "supplied": false,
+      "recordId": "pmid-31839899",
+      "studyFamilyId": "pmid-31839899",
+      "bibliographicVerification": {
+        "provider": "Crossref DOI metadata",
+        "checkedAt": "2026-11-21",
+        "doi": "10.1080/20008198.2019.1688935",
+        "matchedTitle": "A preliminary investigation of rare variants associated with genetic risk for PTSD in a natural disaster-exposed adolescent sample"
+      }
+    },
+    {
+      "key": "logue2020",
+      "title": "An epigenome-wide association study of posttraumatic stress disorder in US veterans implicates several new DNA methylation loci",
+      "year": 2020,
+      "journal": "Clinical Epigenetics",
+      "doi": "10.1186/s13148-020-0820-0",
+      "urls": [
+        "https://doi.org/10.1186/s13148-020-0820-0",
+        "https://link.springer.com/article/10.1186/s13148-020-0820-0"
+      ],
+      "group": "replication",
+      "design": "Blood methylation EWAS; 513 veterans",
+      "summary": "Supplementary Table 5 explicitly tested the original DOCK2 site cg16277944: p = 0.21 and adjusted p = 0.69. This study did not replicate that association.",
+      "limitation": "An unsuccessful replication reduces confidence in a broadly reliable marker; it does not rule out effects in every population, tissue or symptom definition. A case-control replication also does not directly test response to treatment.",
+      "sourceAccess": "Main paper and Supplementary Table 5 inspected directly",
+      "targets": [
+        "DOCK2"
+      ],
+      "peerReviewed": true,
+      "authors": "Logue Mark W., Miller Mark W., Wolf Erika J., Huber Bertrand Russ, Morrison Filomene G., Zhou Zhenwei, Zheng Yuanchao, Smith Alicia K., Daskalakis Nikolaos P., Ratanatharathorn Andrew, Uddin Monica, Nievergelt Caroline M., Ashley-Koch Allison E., Baker Dewleen G., Beckham Jean C., Garrett Melanie E., Boks Marco P., Geuze Elbert, Grant Gerald A., Hauser Michael A., Kessler Ronald C., Kimbrel Nathan A., Maihofer Adam X., Marx Christine E., Qin Xue-Jun, Risbrough Victoria B., Rutten Bart P. F., Stein Murray B., Ursano Robert J., Vermetten Eric, Vinkers Christiaan H., Ware Erin B., Stone Annjanette, Schichman Steven A., McGlinchey Regina E., Milberg William P., Hayes Jasmeet P., Verfaellie Mieke",
+      "pmid": "32171335",
+      "supplied": false,
+      "recordId": "pmid-32171335",
+      "studyFamilyId": "pmid-32171335",
+      "bibliographicVerification": {
+        "provider": "Crossref DOI metadata",
+        "checkedAt": "2026-11-21",
+        "doi": "10.1186/s13148-020-0820-0",
+        "matchedTitle": "An epigenome-wide association study of posttraumatic stress disorder in US veterans implicates several new DNA methylation loci"
+      }
+    },
+    {
+      "key": "montalvo2022",
+      "title": "Epigenome-wide association study of posttraumatic stress disorder identifies novel loci in U.S. military veterans",
+      "year": 2022,
+      "journal": "Translational Psychiatry",
+      "doi": "10.1038/s41398-022-01822-3",
+      "urls": [
+        "https://doi.org/10.1038/s41398-022-01822-3",
+        "https://www.nature.com/articles/s41398-022-01822-3"
+      ],
+      "group": "replication",
+      "design": "Saliva methylation EWAS; 1,135 male European–American veterans",
+      "summary": "The article cites the earlier DOCK2 study as background. Its reported genome-wide significant results concern other loci.",
+      "limitation": "A background citation is not independent confirmation. Saliva and blood are different tissues, and absence from the leading findings alone is not an exact-site negative replication.",
+      "sourceAccess": "Relevant full-text methods and results reviewed",
+      "targets": [
+        "DOCK2"
+      ],
+      "peerReviewed": true,
+      "authors": "Montalvo-Ortiz Janitza L., Gelernter Joel, Cheng Zhongshan, Girgenti Matthew J., Xu Ke, Zhang Xinyu, Gopalan Shyamalika, Zhou Hang, Duman Ronald S., Southwick Steven M., Krystal John H.,  , Friedman Matthew J., Duman Ronald S., Girgenti Matthew J., Krystal John H., Montalvo-Ortiz Janitza L., Pietrzak Robert H.",
+      "pmid": "",
+      "supplied": true,
+      "recordId": "dock2-montalvo2022",
+      "studyFamilyId": "dock2-montalvo2022",
+      "bibliographicVerification": {
+        "provider": "Crossref DOI metadata",
+        "checkedAt": "2026-11-21",
+        "doi": "10.1038/s41398-022-01822-3",
+        "matchedTitle": "Epigenome-wide association study of posttraumatic stress disorder identifies novel loci in U.S. military veterans"
+      }
+    },
+    {
+      "key": "katrinli2024",
+      "title": "Epigenome-wide association studies identify novel DNA methylation sites associated with PTSD: a meta-analysis of 23 military and civilian cohorts",
+      "year": 2024,
+      "journal": "Genome Medicine",
+      "doi": "10.1186/s13073-024-01417-1",
+      "urls": [
+        "https://doi.org/10.1186/s13073-024-01417-1",
+        "https://link.springer.com/article/10.1186/s13073-024-01417-1"
+      ],
+      "group": "replication",
+      "design": "Blood methylation meta-analysis; 5,077 participants in 23 cohorts",
+      "summary": "The published meta-analysis identified 11 principal significant CpG associations. DOCK2 was not among the reported principal significant loci.",
+      "limitation": "This supplies large-cohort context, not a DOCK2 treatment-response test. Absence from the principal findings alone is insufficient to label this an exact-site DOCK2 replication failure.",
+      "sourceAccess": "Relevant full-text methods and results reviewed",
+      "targets": [],
+      "peerReviewed": true,
+      "authors": "Katrinli Seyma, Wani Agaz H., Maihofer Adam X., Ratanatharathorn Andrew, Daskalakis Nikolaos P., Montalvo-Ortiz Janitza, Núñez-Ríos Diana L., Zannas Anthony S., Zhao Xiang, Aiello Allison E., Ashley-Koch Allison E., Avetyan Diana, Baker Dewleen G., Beckham Jean C., Boks Marco P., Brick Leslie A., Bromet Evelyn, Champagne Frances A., Chen Chia-Yen, Dalvie Shareefa, Dennis Michelle F., Fatumo Segun, Fortier Catherine, Galea Sandro, Garrett Melanie E., Geuze Elbert, Grant Gerald, Hauser Michael A., Hayes Jasmeet P., Hemmings Sian M. J., Huber Bertrand Russel, Jajoo Aarti, Jansen Stefan, Kessler Ronald C., Kimbrel Nathan A., King Anthony P., Kleinman Joel E., Koen Nastassja, Koenen Karestan C., Kuan Pei-Fen, Liberzon Israel, Linnstaedt Sarah D., Lori Adriana, Luft Benjamin J., Luykx Jurjen J., Marx Christine E., McLean Samuel A., Mehta Divya, Milberg William, Miller Mark W., Mufford Mary S., Musanabaganwa Clarisse, Mutabaruka Jean, Mutesa Leon, Nemeroff Charles B., Nugent Nicole R., Orcutt Holly K., Qin Xue-Jun, Rauch Sheila A. M., Ressler Kerry J., Risbrough Victoria B., Rutembesa Eugène, Rutten Bart P. F., Seedat Soraya, Stein Dan J., Stein Murray B., Toikumo Sylvanus, Ursano Robert J., Uwineza Annette, Verfaellie Mieke H., Vermetten Eric, Vinkers Christiaan H., Ware Erin B., Wildman Derek E., Wolf Erika J., Young Ross McD, Zhao Ying, van den Heuvel Leigh L.,  , Alisch Reid S., Amstadter Ananda B, Armstrong Don, Basu Archana, Bjorklund Nicole L, Chaiyachati Barbara H, Ensink Judith B M, Fleming Leland L, Gelernter Joel, Herringa Ryan J, Jain Sonia, Juvinao-Quintero Diana L, Ketema Elizabeth, Martínez-Magaña José J, Misganaw Burook, Nagamatsu Shiela Tiemi, Nispeling Danny M, Pfeiffer John, Schmahl Christian, Shinozaki Gen, Snijders Clara, Sumner Jennifer A, Swart Patricia C, Tyrka Audrey, van Zuiden Mirjam, Womersley Jaqueline S, Youssef Nagy A, Zheng Yuanchao, Zhu Yiwen, Zillich Lea,  , Arasappan Dhivya, Berretta Sabina, Bharadwaj Rahul A., Collado-Torres Leonardo, Chatzinakos Christos, DiPietro Chris P., Duong Duc M., Deep-Soboslay Amy, Eagles Nick, Huuki Louise, Hyde Thomas, Iatrou Artemis, Pertea Geo, Ross Deanna, Seyfried Nicholas T., Shin Joo Heon,  , Alvarez Victor E., Benedek David, Che Alicia, Cruz Dianne A., Davis David A., Girgenti Matthew J., Hoffman Ellen, Holtzheimer Paul E., Kaye Alfred, Krystal John H., Labadorf Adam T., Keane Terence M., McKee Ann, Marx Brian, Noller Crystal, Pierce Meghan, Scott William K., Schnurr Paula, DiSano Krista, Stein Thor, Williamson Douglas E., Young Keith A., Uddin Monica, Nievergelt Caroline M., Smith Alicia K., Logue Mark W.",
+      "pmid": "39696436",
+      "supplied": false,
+      "recordId": "pmid-39696436",
+      "studyFamilyId": "pmid-39696436",
+      "bibliographicVerification": {
+        "provider": "Crossref DOI metadata",
+        "checkedAt": "2026-11-21",
+        "doi": "10.1186/s13073-024-01417-1",
+        "matchedTitle": "Epigenome-wide association studies identify novel DNA methylation sites associated with PTSD: a meta-analysis of 23 military and civilian cohorts"
+      }
+    },
+    {
+      "key": "rubens2025",
+      "title": "A Pilot Epigenome-Wide Study of Posttraumatic Growth: Identifying Novel Candidates for Future Research",
+      "year": 2025,
+      "journal": "Epigenomes",
+      "doi": "10.3390/epigenomes9040039",
+      "urls": [
+        "https://doi.org/10.3390/epigenomes9040039",
+        "https://www.mdpi.com/2075-4655/9/4/39"
+      ],
+      "group": "replication",
+      "design": "Pilot longitudinal methylation study; 39 discovery participants and 51 replication participants",
+      "summary": "The candidate-gene analysis included DOCK2. Its nominal associations did not survive correction within the gene.",
+      "limitation": "The outcome was posttraumatic growth, which differs from PTSD severity or recovery. This result neither validates DOCK2 as an intervention outcome nor directly refutes a PTSD-specific association.",
+      "sourceAccess": "Relevant full-text methods and results reviewed",
+      "targets": [
+        "DOCK2"
+      ],
+      "peerReviewed": true,
+      "authors": "Rubens Mackenzie, Pinto Paul Ruiz, Sathyanarayanan Anita, Miller Olivia, Mullens Amy B., Bruenig Dagmar, Obst Patricia, Shakespeare-Finch Jane, Mehta Divya",
+      "pmid": "",
+      "supplied": false,
+      "recordId": "dock2-rubens2025",
+      "studyFamilyId": "dock2-rubens2025",
+      "bibliographicVerification": {
+        "provider": "Crossref DOI metadata",
+        "checkedAt": "2026-11-21",
+        "doi": "10.3390/epigenomes9040039",
+        "matchedTitle": "A Pilot Epigenome-Wide Study of Posttraumatic Growth: Identifying Novel Candidates for Future Research"
+      }
+    },
+    {
+      "key": "nothling2021",
+      "title": "Genome-wide differentially methylated genes associated with posttraumatic stress disorder and longitudinal change in methylation in rape survivors",
+      "year": 2021,
+      "journal": "Translational Psychiatry",
+      "doi": "10.1038/s41398-021-01608-z",
+      "urls": [
+        "https://doi.org/10.1038/s41398-021-01608-z",
+        "https://www.nature.com/articles/s41398-021-01608-z"
+      ],
+      "group": "replication",
+      "design": "Discovery EWAS in 48 women; targeted longitudinal analyses in 96 participants",
+      "summary": "This study extends PTSD methylation research to rape survivors and evaluates longitudinal changes in BRSK2 and ADCYAP1.",
+      "limitation": "The highlighted findings concern other genes. This supplies population and longitudinal-method context, not a new DOCK2 result. Several targeted associations did not remain significant in adjusted models.",
+      "sourceAccess": "Relevant full-text methods and results reviewed",
+      "targets": [],
+      "peerReviewed": true,
+      "authors": "Nöthling Jani, Abrahams Naeemah, Toikumo Sylvanus, Suderman Matthew, Mhlongo Shibe, Lombard Carl, Seedat Soraya, Hemmings Sian Megan Joanna",
+      "pmid": "",
+      "supplied": false,
+      "recordId": "dock2-nothling2021",
+      "studyFamilyId": "dock2-nothling2021",
+      "bibliographicVerification": {
+        "provider": "Crossref DOI metadata",
+        "checkedAt": "2026-11-21",
+        "doi": "10.1038/s41398-021-01608-z",
+        "matchedTitle": "Genome-wide differentially methylated genes associated with posttraumatic stress disorder and longitudinal change in methylation in rape survivors"
+      }
+    },
+    {
+      "key": "emdr2021",
+      "title": "Phase-based treatment versus immediate trauma-focused treatment for post-traumatic stress disorder due to childhood abuse: randomised clinical trial",
+      "year": 2021,
+      "journal": "BJPsych Open",
+      "doi": "10.1192/bjo.2021.1057",
+      "urls": [
+        "https://doi.org/10.1192/bjo.2021.1057",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC8612023/"
+      ],
+      "group": "response",
+      "design": "Randomised trial; 121 adults; EMDR versus STAIR followed by EMDR",
+      "summary": "PTSD symptoms improved in both treatment groups, with no significant between-group difference at post-treatment or follow-up. This supports the clinical rationale for investigating biological correlates of improvement during established EMDR therapy.",
+      "limitation": "Both groups received clinician-delivered EMDR. The trial did not measure DOCK2 or establish OXTR mediation. Its efficacy findings cannot be transferred automatically to isolated eye movements, audio, visual stimuli or Universal Mind components.",
+      "sourceAccess": "Relevant full-text methods and results reviewed",
+      "targets": [],
+      "peerReviewed": true,
+      "authors": "van Vliet Noortje I., Huntjens Rafaele J. C., van Dijk Maarten K., Bachrach Nathan, Meewisse Marie-Louise, de Jongh Ad",
+      "pmid": "",
+      "supplied": false,
+      "recordId": "dv-vision-426ce6386119",
+      "studyFamilyId": "dv-vision-426ce6386119",
+      "bibliographicVerification": {
+        "provider": "Crossref DOI metadata",
+        "checkedAt": "2026-11-21",
+        "doi": "10.1192/bjo.2021.1057",
+        "matchedTitle": "Phase-based treatment versus immediate trauma-focused treatment for post-traumatic stress disorder due to childhood abuse: randomised clinical trial"
+      }
+    },
+    {
+      "key": "va-emdr",
+      "title": "Eye Movement Desensitization and Reprocessing for PTSD",
+      "year": 2023,
+      "journal": "VA National Center for PTSD",
+      "doi": "",
+      "urls": [
+        "https://www.ptsd.va.gov/professional/treat/txessentials/emdr_pro.asp"
+      ],
+      "group": "response",
+      "design": "Official clinical guidance; evidence summary",
+      "summary": "VA/DoD guidance identifies EMDR as a recommended trauma-focused psychotherapy. The clinical protocol provides a relevant reference intervention for trauma research.",
+      "limitation": "Guidance is not a new trial and does not establish a DOCK2 response marker or efficacy of a specific Universal Mind intervention.",
+      "sourceAccess": "Official guidance reviewed; accessed 21 November 2026",
+      "targets": [],
+      "peerReviewed": false,
+      "authors": "VA National Center for PTSD",
+      "pmid": "",
+      "supplied": false,
+      "recordId": "dock2-va-emdr",
+      "studyFamilyId": "dock2-va-emdr"
+    },
+    {
+      "key": "yang2021",
+      "title": "Longitudinal genome-wide methylation study of PTSD treatment using prolonged exposure and hydrocortisone",
+      "year": 2021,
+      "journal": "Translational Psychiatry",
+      "doi": "10.1038/s41398-021-01513-5",
+      "urls": [
+        "https://doi.org/10.1038/s41398-021-01513-5",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC8289875/"
+      ],
+      "group": "response",
+      "design": "Longitudinal molecular analysis within a randomised augmentation trial; 42 participants in the reported table",
+      "summary": "The study measured methylation before and after prolonged-exposure therapy and at follow-up, identifying candidate associations with recovery including FKBP5 and CREB–BDNF signalling.",
+      "limitation": "This supports the research strategy of pairing molecular change with clinical change. It does not establish a DOCK2 endpoint, EMDR-specific mechanism or an effect of Universal Mind interventions; the molecular analysis was small.",
+      "sourceAccess": "Relevant full-text methods and results reviewed",
+      "targets": [],
+      "peerReviewed": true,
+      "authors": "Yang Ruoting, Xu Changxin, Bierer Linda M., Flory Janine D., Gautam Aarti, Bader Heather N., Lehrner Amy, Makotkine Iouri, Desarnaud Frank, Miller Stacy A., Jett Marti, Hammamieh Rasha, Yehuda Rachel",
+      "pmid": "34282125",
+      "supplied": false,
+      "recordId": "pmid-34282125",
+      "studyFamilyId": "pmid-34282125",
+      "bibliographicVerification": {
+        "provider": "Crossref DOI metadata",
+        "checkedAt": "2026-11-21",
+        "doi": "10.1038/s41398-021-01513-5",
+        "matchedTitle": "Longitudinal genome-wide methylation study of PTSD treatment using prolonged exposure and hydrocortisone"
+      }
+    },
+    {
+      "key": "hummel2022",
+      "title": "No evidence for intervention-associated DNA methylation changes in monocytes of patients with posttraumatic stress disorder",
+      "year": 2022,
+      "journal": "Scientific Reports",
+      "doi": "10.1038/s41598-022-22177-1",
+      "urls": [
+        "https://doi.org/10.1038/s41598-022-22177-1",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC9576776/"
+      ],
+      "group": "response",
+      "design": "Pre/post treatment study; isolated monocytes from 60 women with PTSD",
+      "summary": "Despite symptom improvement, the study found no major recurrent treatment-associated methylation changes in the tested regions of NR3C1, FKBP5, SLC6A4 or OXTR. It highlights the value of controlling blood-cell composition.",
+      "limitation": "DOCK2 was not one of these four targeted genes. Only one cell type was examined; exploratory whole-genome sequencing used two patients. RNA expression may change independently of methylation.",
+      "sourceAccess": "Relevant full-text methods and results reviewed",
+      "targets": [
+        "OXTR"
+      ],
+      "peerReviewed": true,
+      "authors": "Hummel Elisabeth, Elgizouli Magdeldin, Sicorello Maurizio, Leitão Elsa, Beygo Jasmin, Schröder Christopher, Zeschnigk Michael, Müller Svenja, Herpertz Stephan, Moser Dirk, Kessler Henrik, Horsthemke Bernhard, Kumsta Robert",
+      "pmid": "",
+      "supplied": false,
+      "recordId": "dock2-hummel2022",
+      "studyFamilyId": "dock2-hummel2022",
+      "bibliographicVerification": {
+        "provider": "Crossref DOI metadata",
+        "checkedAt": "2026-11-21",
+        "doi": "10.1038/s41598-022-22177-1",
+        "matchedTitle": "No evidence for intervention-associated DNA methylation changes in monocytes of patients with posttraumatic stress disorder"
+      }
+    },
+    {
+      "key": "nawijn2019",
+      "title": "Oxytocin receptor gene methylation in male and female PTSD patients and trauma-exposed controls",
+      "year": 2019,
+      "journal": "European Neuropsychopharmacology",
+      "doi": "10.1016/j.euroneuro.2018.10.006",
+      "urls": [
+        "https://doi.org/10.1016/j.euroneuro.2018.10.006",
+        "https://pubmed.ncbi.nlm.nih.gov/30415783/"
+      ],
+      "group": "response",
+      "design": "Human case-control OXTR methylation study",
+      "summary": "This study examines OXTR methylation in PTSD and trauma-exposed controls and reports sex-dependent associations relevant to the oxytocin-system research rationale.",
+      "limitation": "The modest sample and observational design limit interpretation. OXTR methylation is not direct receptor activation, and this study does not demonstrate an OXTR-to-DOCK2 intervention pathway.",
+      "sourceAccess": "Publication metadata and abstract reviewed",
+      "targets": [
+        "OXTR"
+      ],
+      "peerReviewed": true,
+      "authors": "Nawijn L., Krzyzewska I.M., van Zuiden M., Henneman P., Koch S.B.J., Mul A.N., Frijling J.L., Veltman D.J., Mannens M.M.A.M., Olff M.",
+      "pmid": "30415783",
+      "supplied": false,
+      "recordId": "pmid-30415783",
+      "studyFamilyId": "pmid-30415783",
+      "bibliographicVerification": {
+        "provider": "Crossref DOI metadata",
+        "checkedAt": "2026-11-21",
+        "doi": "10.1016/j.euroneuro.2018.10.006",
+        "matchedTitle": "Oxytocin receptor gene methylation in male and female PTSD patients and trauma-exposed controls"
+      }
+    },
+    {
+      "key": "cimino2009",
+      "title": "DOCK2 is a microglial specific regulator of central nervous system innate immunity found in normal and Alzheimer’s disease brain",
+      "year": 2009,
+      "journal": "The American Journal of Pathology",
+      "doi": "10.2353/ajpath.2009.090443",
+      "urls": [
+        "https://doi.org/10.2353/ajpath.2009.090443"
+      ],
+      "group": "mechanisms",
+      "design": "Experimental microglial and brain-tissue research",
+      "summary": "DOCK2 has an experimental role in microglial innate immune function, providing biological context for investigating neuroimmune pathways.",
+      "limitation": "This is not a PTSD intervention study. Microglial biology does not establish that a peripheral DOCK2 assay measures brain recovery or that oxytocin signalling changes DOCK2.",
+      "sourceAccess": "Publication identity and reported mechanistic findings reviewed",
+      "targets": [
+        "DOCK2"
+      ],
+      "peerReviewed": true,
+      "authors": "Cimino Patrick J., Sokal Izabela, Leverenz James, Fukui Yoshinori, Montine Thomas J.",
+      "pmid": "",
+      "supplied": false,
+      "recordId": "dock2-cimino2009",
+      "studyFamilyId": "dock2-cimino2009",
+      "bibliographicVerification": {
+        "provider": "Crossref DOI metadata",
+        "checkedAt": "2026-11-21",
+        "doi": "10.2353/ajpath.2009.090443",
+        "matchedTitle": "DOCK2 Is a Microglial Specific Regulator of Central Nervous System Innate Immunity Found in Normal and Alzheimer’s Disease Brain"
+      }
+    },
+    {
+      "key": "morikawa2018",
+      "title": "The Molecular Motor KIF21B Mediates Synaptic Plasticity and Fear Extinction by Terminating Rac1 Activation",
+      "year": 2018,
+      "journal": "Cell Reports",
+      "doi": "10.1016/j.celrep.2018.05.089",
+      "urls": [
+        "https://doi.org/10.1016/j.celrep.2018.05.089",
+        "https://www.cell.com/cell-reports/fulltext/S2211-1247(18)30870-2"
+      ],
+      "group": "mechanisms",
+      "design": "Preclinical mouse and cellular fear-extinction experiments",
+      "summary": "The experiments connect KIF21B, Rac1/ELMO1/Dock signalling and fear extinction, supplying adjacent mechanistic context.",
+      "limitation": "The work concerns a Dock signalling complex including Dock180/DOCK1. It is not a human DOCK2 methylation or expression validation study; inhibitor-related DOCK2 citations do not establish DOCK2-specific treatment efficacy.",
+      "sourceAccess": "Publisher abstract and publicly available author manuscript passages reviewed",
+      "targets": [],
+      "peerReviewed": true,
+      "authors": "Morikawa Momo, Tanaka Yosuke, Cho Hyun-Soo, Yoshihara Masaharu, Hirokawa Nobutaka",
+      "pmid": "29949770",
+      "supplied": true,
+      "recordId": "pmid-29949770",
+      "studyFamilyId": "pmid-29949770",
+      "bibliographicVerification": {
+        "provider": "Crossref DOI metadata",
+        "checkedAt": "2026-11-21",
+        "doi": "10.1016/j.celrep.2018.05.089",
+        "matchedTitle": "The Molecular Motor KIF21B Mediates Synaptic Plasticity and Fear Extinction by Terminating Rac1 Activation"
+      }
+    },
+    {
+      "key": "immune2022",
+      "title": "Central and Peripheral Immune Dysregulation in Posttraumatic Stress Disorder: Convergent Multi-Omics Evidence",
+      "year": 2022,
+      "journal": "Biomedicines",
+      "doi": "10.3390/biomedicines10051107",
+      "urls": [
+        "https://doi.org/10.3390/biomedicines10051107",
+        "https://www.mdpi.com/2227-9059/10/5/1107"
+      ],
+      "group": "mechanisms",
+      "design": "Review with cross-study convergence analysis",
+      "summary": "The authors identify DOCK2 among immune-related genes overlapping animal-model and human postmortem brain transcriptomic findings. This provides a research lead linking peripheral associations with central immune biology.",
+      "limitation": "The DOCK2 convergence statement was reviewed in the synthesis; a DOCK2-specific effect estimate from each underlying brain dataset was not independently reconstructed. It supplies mechanistic context, not proof of OXTR mediation or a validated intervention endpoint.",
+      "sourceAccess": "Relevant full-text methods and results reviewed",
+      "targets": [
+        "DOCK2"
+      ],
+      "peerReviewed": true,
+      "authors": "Núñez-Rios Diana L., Martínez-Magaña José J., Nagamatsu Sheila T., Andrade-Brito Diego E., Forero Diego A., Orozco-Castaño Carlos A., Montalvo-Ortiz Janitza L.",
+      "pmid": "",
+      "supplied": true,
+      "recordId": "dock2-immune2022",
+      "studyFamilyId": "dock2-immune2022",
+      "bibliographicVerification": {
+        "provider": "Crossref DOI metadata",
+        "checkedAt": "2026-11-21",
+        "doi": "10.3390/biomedicines10051107",
+        "matchedTitle": "Central and Peripheral Immune Dysregulation in Posttraumatic Stress Disorder: Convergent Multi-Omics Evidence"
+      }
+    },
+    {
+      "key": "girgenti2021",
+      "title": "Transcriptomic organization of the human brain in post-traumatic stress disorder",
+      "year": 2021,
+      "journal": "Nature Neuroscience",
+      "doi": "10.1038/s41593-020-00748-7",
+      "urls": [
+        "https://doi.org/10.1038/s41593-020-00748-7",
+        "https://pubmed.ncbi.nlm.nih.gov/33349712/"
+      ],
+      "group": "mechanisms",
+      "design": "Human postmortem prefrontal-cortex transcriptomics",
+      "summary": "This primary brain study maps PTSD-associated gene-expression networks and is cited by the immune-convergence review.",
+      "limitation": "Abstract and accessible figures establish the broad transcriptomic context. A DOCK2-specific result was not independently extracted from its supplementary datasets; this is not counted as a separate confirmed DOCK2 replication.",
+      "sourceAccess": "Abstract, metadata and accessible figure descriptions reviewed",
+      "targets": [],
+      "peerReviewed": true,
+      "authors": "Girgenti Matthew J., Wang Jiawei, Ji Dingjue, Cruz Dianne A., Stein Murray B., Gelernter Joel, Young Keith A., Huber Bertrand R., Williamson Douglas E., Friedman Matthew J., Krystal John H., Zhao Hongyu, Duman Ronald S.",
+      "pmid": "33349712",
+      "supplied": false,
+      "recordId": "pmid-33349712",
+      "studyFamilyId": "pmid-33349712",
+      "bibliographicVerification": {
+        "provider": "Crossref DOI metadata",
+        "checkedAt": "2026-11-21",
+        "doi": "10.1038/s41593-020-00748-7",
+        "matchedTitle": "Transcriptomic organization of the human brain in post-traumatic stress disorder"
+      }
+    },
+    {
+      "key": "hwang2025",
+      "title": "Single-cell transcriptomic and chromatin dynamics of the human brain in PTSD",
+      "year": 2025,
+      "journal": "Nature",
+      "doi": "10.1038/s41586-025-09083-y",
+      "urls": [
+        "https://doi.org/10.1038/s41586-025-09083-y",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC12267058/"
+      ],
+      "group": "mechanisms",
+      "design": "Single-nucleus brain transcriptomic and chromatin analysis; 111 postmortem donors",
+      "summary": "The study identifies cell-specific PTSD-associated molecular changes, including neuronal and immune-related pathways. It illustrates why tissue and cell type matter when interpreting a blood-based candidate.",
+      "limitation": "The main text does not establish DOCK2 as an intervention-response marker. This is broader mechanistic context, not a clinical trial or a DOCK2 replication.",
+      "sourceAccess": "Main article and DOCK2 relevance screened",
+      "targets": [],
+      "peerReviewed": true,
+      "authors": "Hwang Ahyeon, Skarica Mario, Xu Siwei, Coudriet Jensine, Lee Che Yu, Lin Lin, Terwilliger Rosemarie, Sliby Alexa-Nicole, Wang Jiawei, Nguyen Tuan, Li Hongyu, Wu Min, Dai Yi, Duan Ziheng, Srinivasan Shushrruth Sai, Zhang Xiangyu, Lin Yingxin, Cruz Dianne, Deans P. J. Michael,  , Alvarez Victor E., Benedek David, Che Alicia, Cruz Dianne A., Davis David A., Hoffman Ellen, Kaye Alfred, Labadorf Adam T., Keane Terence M., Logue Mark W., McKee Ann, Marx Brian, Miller Mark W., Noller Crystal, Montalvo-Ortiz Janitza, Pierce Meghan, Scott William K., Schnurr Paula, DiSano Krista, Stein Thor, Ursano Robert, Wolf Erika J., Huber Bertrand R., Levey Daniel, Glausier Jill R., Lewis David A., Gelernter Joel, Holtzheimer Paul E., Friedman Matthew J., Gerstein Mark, Sestan Nenad, Brennand Kristen J., Xu Ke, Zhao Hongyu, Krystal John H., Young Keith A., Williamson Douglas E., Che Alicia, Zhang Jing, Girgenti Matthew J.",
+      "pmid": "40533550",
+      "supplied": false,
+      "recordId": "pmid-40533550",
+      "studyFamilyId": "pmid-40533550",
+      "bibliographicVerification": {
+        "provider": "Crossref DOI metadata",
+        "checkedAt": "2026-11-21",
+        "doi": "10.1038/s41586-025-09083-y",
+        "matchedTitle": "Single-cell transcriptomic and chromatin dynamics of the human brain in PTSD"
+      }
+    },
+    {
+      "key": "frontiers2022",
+      "title": "A narrative review of the epigenetics of post-traumatic stress disorder and post-traumatic stress disorder treatment",
+      "year": 2022,
+      "journal": "Frontiers in Psychiatry",
+      "doi": "10.3389/fpsyt.2022.857087",
+      "urls": [
+        "https://doi.org/10.3389/fpsyt.2022.857087",
+        "https://www.frontiersin.org/journals/psychiatry/articles/10.3389/fpsyt.2022.857087/full"
+      ],
+      "group": "reviews",
+      "design": "Narrative review",
+      "summary": "Reviews PTSD epigenetics and treatment research, including the original DOCK2 association and the broader question of molecular change during recovery.",
+      "limitation": "Its DOCK2 discussion cites earlier primary work. Two entries in the supplied search list link to this same article; they represent one source, not two independent studies.",
+      "sourceAccess": "Relevant full-text sections and source citations reviewed",
+      "targets": [
+        "DOCK2"
+      ],
+      "peerReviewed": true,
+      "authors": "Cao-Lei Lei, Saumier Daniel, Fortin Justine, Brunet Alain",
+      "pmid": "",
+      "supplied": true,
+      "recordId": "dock2-frontiers2022",
+      "studyFamilyId": "dock2-frontiers2022",
+      "bibliographicVerification": {
+        "provider": "Crossref DOI metadata",
+        "checkedAt": "2026-11-21",
+        "doi": "10.3389/fpsyt.2022.857087",
+        "matchedTitle": "A narrative review of the epigenetics of post-traumatic stress disorder and post-traumatic stress disorder treatment"
+      }
+    },
+    {
+      "key": "book2022",
+      "title": "How stress affects gene expression through epigenetic modifications",
+      "year": 2022,
+      "journal": "Book chapter",
+      "doi": "10.1016/B978-0-12-823039-8.00014-9",
+      "urls": [
+        "https://doi.org/10.1016/B978-0-12-823039-8.00014-9",
+        "https://www.sciencedirect.com/science/chapter/edited-volume/abs/pii/B9780128230398000149"
+      ],
+      "group": "reviews",
+      "design": "Book chapter; access-limited synthesis",
+      "summary": "Provides background on stress, gene regulation and epigenetic mechanisms.",
+      "limitation": "Only metadata and abstract were accessible. No new DOCK2 cohort or specific result is inferred from the unavailable chapter.",
+      "sourceAccess": "Metadata and abstract only; full text unavailable",
+      "targets": [],
+      "peerReviewed": false,
+      "authors": "Bainomugisa Charlotte, Mehta Divya",
+      "pmid": "",
+      "supplied": true,
+      "recordId": "dock2-book2022",
+      "studyFamilyId": "dock2-book2022",
+      "bibliographicVerification": {
+        "provider": "Crossref DOI metadata",
+        "checkedAt": "2026-11-21",
+        "doi": "10.1016/B978-0-12-823039-8.00014-9",
+        "matchedTitle": "How stress affects gene expression through epigenetic modifications"
+      }
+    },
+    {
+      "key": "susceptibility2021",
+      "title": "The Molecular Biology of Susceptibility to Post-Traumatic Stress Disorder: Highlights of Epigenetics and Epigenomics",
+      "year": 2021,
+      "journal": "International Journal of Molecular Sciences",
+      "doi": "10.3390/ijms221910743",
+      "urls": [
+        "https://doi.org/10.3390/ijms221910743",
+        "https://www.mdpi.com/1422-0067/22/19/10743"
+      ],
+      "group": "reviews",
+      "design": "Narrative review",
+      "summary": "Summarises epigenetic susceptibility research and discusses DOCK2 across earlier studies.",
+      "limitation": "This is synthesis rather than independent replication. Sample sizes, statistical thresholds and the direction of methylation are taken from the primary papers in this chapter, resolving inconsistencies in secondary summaries.",
+      "sourceAccess": "Relevant full-text sections and citations reviewed",
+      "targets": [
+        "DOCK2"
+      ],
+      "peerReviewed": true,
+      "authors": "Al Jowf Ghazi I., Snijders Clara, Rutten Bart P. F., de Nijs Laurence, Eijssen Lars M. T.",
+      "pmid": "",
+      "supplied": true,
+      "recordId": "dock2-susceptibility2021",
+      "studyFamilyId": "dock2-susceptibility2021",
+      "bibliographicVerification": {
+        "provider": "Crossref DOI metadata",
+        "checkedAt": "2026-11-21",
+        "doi": "10.3390/ijms221910743",
+        "matchedTitle": "The Molecular Biology of Susceptibility to Post-Traumatic Stress Disorder: Highlights of Epigenetics and Epigenomics"
+      }
+    },
+    {
+      "key": "morrison2019",
+      "title": "DNA Methylation Correlates of PTSD: Recent Findings and Technical Challenges",
+      "year": 2019,
+      "journal": "Progress in Neuro-Psychopharmacology and Biological Psychiatry",
+      "doi": "10.1016/j.pnpbp.2018.11.011",
+      "urls": [
+        "https://doi.org/10.1016/j.pnpbp.2018.11.011",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC6314898/"
+      ],
+      "group": "reviews",
+      "design": "Review of methylation evidence and methods",
+      "summary": "Discusses the original DOCK2 discovery and replication alongside technical challenges in PTSD methylation research.",
+      "limitation": "It is a secondary account of existing cohorts. Tissue, cell composition, study design and independent replication remain central to interpreting candidate markers.",
+      "sourceAccess": "Relevant full-text sections and citations reviewed",
+      "targets": [
+        "DOCK2"
+      ],
+      "peerReviewed": true,
+      "authors": "Morrison Filomene G., Miller Mark W., Logue Mark W., Assef Michele, Wolf Erika J.",
+      "pmid": "",
+      "supplied": true,
+      "recordId": "dock2-morrison2019",
+      "studyFamilyId": "dock2-morrison2019",
+      "bibliographicVerification": {
+        "provider": "Crossref DOI metadata",
+        "checkedAt": "2026-11-21",
+        "doi": "10.1016/j.pnpbp.2018.11.011",
+        "matchedTitle": "DNA methylation correlates of PTSD: Recent findings and technical challenges"
+      }
+    },
+    {
+      "key": "comorbid2019",
+      "title": "A Review of Epigenetics of PTSD in Comorbid Psychiatric Conditions",
+      "year": 2019,
+      "journal": "Genes",
+      "doi": "10.3390/genes10020140",
+      "urls": [
+        "https://doi.org/10.3390/genes10020140",
+        "https://www.mdpi.com/2073-4425/10/2/140"
+      ],
+      "group": "reviews",
+      "design": "Narrative review",
+      "summary": "Places DOCK2 in the wider context of PTSD epigenetics and psychiatric comorbidity.",
+      "limitation": "The DOCK2 account draws on the 2017 study. It adds context rather than a new sample, intervention or independent confirmation.",
+      "sourceAccess": "Relevant full-text sections and citations reviewed",
+      "targets": [
+        "DOCK2"
+      ],
+      "peerReviewed": true,
+      "authors": "Blacker Caren J., Frye Mark A., Morava Eva, Kozicz Tamas, Veldic Marin",
+      "pmid": "",
+      "supplied": true,
+      "recordId": "dock2-comorbid2019",
+      "studyFamilyId": "dock2-comorbid2019",
+      "bibliographicVerification": {
+        "provider": "Crossref DOI metadata",
+        "checkedAt": "2026-11-21",
+        "doi": "10.3390/genes10020140",
+        "matchedTitle": "A Review of Epigenetics of PTSD in Comorbid Psychiatric Conditions"
+      }
+    },
+    {
+      "key": "inheritance2024",
+      "title": "Mechanisms of Epigenetic Inheritance in Post-Traumatic Stress Disorder",
+      "year": 2024,
+      "journal": "Life",
+      "doi": "10.3390/life14010098",
+      "urls": [
+        "https://doi.org/10.3390/life14010098",
+        "https://www.mdpi.com/2075-1729/14/1/98"
+      ],
+      "group": "reviews",
+      "design": "Narrative review",
+      "summary": "Lists DOCK2 within a wider discussion of PTSD-associated epigenetic findings and intergenerational hypotheses.",
+      "limitation": "Listing DOCK2 does not establish human germline transmission, inherited trauma or an intervention effect. The primary sperm study lacks offspring molecular validation.",
+      "sourceAccess": "Relevant full-text sections and citations reviewed",
+      "targets": [
+        "DOCK2"
+      ],
+      "peerReviewed": true,
+      "authors": "Chou Pei-Chen, Huang Yu-Chi, Yu Sebastian",
+      "pmid": "",
+      "supplied": true,
+      "recordId": "dock2-inheritance2024",
+      "studyFamilyId": "dock2-inheritance2024",
+      "bibliographicVerification": {
+        "provider": "Crossref DOI metadata",
+        "checkedAt": "2026-11-21",
+        "doi": "10.3390/life14010098",
+        "matchedTitle": "Mechanisms of Epigenetic Inheritance in Post-Traumatic Stress Disorder"
+      }
+    },
+    {
+      "key": "combat2024",
+      "title": "Prominent genetic variants and epigenetic changes in post-traumatic stress disorder among combat veterans",
+      "year": 2024,
+      "journal": "Molecular Biology Reports",
+      "doi": "10.1007/s11033-024-09276-0",
+      "urls": [
+        "https://doi.org/10.1007/s11033-024-09276-0",
+        "https://link.springer.com/article/10.1007/s11033-024-09276-0"
+      ],
+      "group": "reviews",
+      "design": "Review; full-text access limited",
+      "summary": "The accessible abstract and reference list cover genetic and epigenetic research in combat-related PTSD.",
+      "limitation": "Full text was unavailable. It is retained for provenance without assigning an unverified DOCK2-specific finding or counting it as an independent experiment.",
+      "sourceAccess": "Abstract, metadata and references only; full text unavailable",
+      "targets": [],
+      "peerReviewed": true,
+      "authors": "Baghaei Ahmadali, Zoshk Mojtaba Yousefi, Hosseini Mohsen, Fasihi Hossein, Nassireslami Ehsan, Shayesteh Sevda, Laripour Reza, Amoli Aynaz Eslami, Heidari Reza, Chamanara Mohsen",
+      "pmid": "",
+      "supplied": true,
+      "recordId": "dock2-combat2024",
+      "studyFamilyId": "dock2-combat2024",
+      "bibliographicVerification": {
+        "provider": "Crossref DOI metadata",
+        "checkedAt": "2026-11-21",
+        "doi": "10.1007/s11033-024-09276-0",
+        "matchedTitle": "Prominent genetic variants and epigenetic changes in post-traumatic stress disorder among combat veterans"
+      }
+    },
+    {
+      "key": "social2023",
+      "title": "Epigenetic Effects of Social Stress and Epigenetic Inheritance",
+      "year": 2023,
+      "journal": "Current Approaches in Psychiatry",
+      "doi": "10.18863/pgy.1059315",
+      "urls": [
+        "https://doi.org/10.18863/pgy.1059315",
+        "https://dergipark.org.tr/en/pub/pgy/article/1059315"
+      ],
+      "group": "reviews",
+      "design": "Narrative review",
+      "summary": "Reviews social stress and epigenetic inheritance, including earlier PTSD and germline-methylation research.",
+      "limitation": "No independent DOCK2 cohort is introduced. Animal inheritance findings and human associations require separate interpretation.",
+      "sourceAccess": "Relevant full-text sections and citations reviewed",
+      "targets": [],
+      "peerReviewed": true,
+      "authors": "EKMEKCİ Halime Sena, MUFTAREVİÇ Sümeyye",
+      "pmid": "",
+      "supplied": true,
+      "recordId": "dock2-social2023",
+      "studyFamilyId": "dock2-social2023",
+      "bibliographicVerification": {
+        "provider": "Crossref DOI metadata",
+        "checkedAt": "2026-11-21",
+        "doi": "10.18863/pgy.1059315",
+        "matchedTitle": "Epigenetic Effects of Social Stress and Epigenetic Inheritance"
+      }
+    },
+    {
+      "key": "rats2022",
+      "title": "Epigenetic Approach to PTSD: In the Aspects of Rat Models",
+      "year": 2022,
+      "journal": "Global Medical Genetics",
+      "doi": "10.1055/s-0041-1736633",
+      "urls": [
+        "https://doi.org/10.1055/s-0041-1736633",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC8837403/"
+      ],
+      "group": "reviews",
+      "design": "Review of animal models and human epigenetic findings",
+      "summary": "Discusses DOCK2 among human PTSD methylation candidates while reviewing experimental stress models.",
+      "limitation": "Its table labels DOCK2 hypermethylation, whereas the original cg16277944 finding links lower methylation with greater symptom severity. This chapter follows the primary study and retains site-specific directions.",
+      "sourceAccess": "Full-text DOCK2 passages and table reviewed",
+      "targets": [
+        "DOCK2"
+      ],
+      "peerReviewed": true,
+      "authors": "Aykac Asli, Kalkan Rasime",
+      "pmid": "",
+      "supplied": true,
+      "recordId": "dock2-rats2022",
+      "studyFamilyId": "dock2-rats2022",
+      "bibliographicVerification": {
+        "provider": "Crossref DOI metadata",
+        "checkedAt": "2026-11-21",
+        "doi": "10.1055/s-0041-1736633",
+        "matchedTitle": "Epigenetic Approach to PTSD: In the Aspects of Rat Models"
+      }
+    },
+    {
+      "key": "pfeiffer2018",
+      "title": "Traumatic Stress Epigenetics",
+      "year": 2018,
+      "journal": "Current Behavioral Neuroscience Reports",
+      "doi": "10.1007/s40473-018-0143-z",
+      "urls": [
+        "https://doi.org/10.1007/s40473-018-0143-z",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC6138446/"
+      ],
+      "group": "reviews",
+      "design": "Review",
+      "summary": "Places the original DOCK2 finding among immune, endocrine and neural epigenetic research on traumatic stress.",
+      "limitation": "The DOCK2 citation refers to the existing primary association study. The review does not validate a treatment-response assay.",
+      "sourceAccess": "Relevant full-text passages reviewed",
+      "targets": [
+        "DOCK2"
+      ],
+      "peerReviewed": true,
+      "authors": "Pfeiffer John R., Mutesa Leon, Uddin Monica",
+      "pmid": "",
+      "supplied": true,
+      "recordId": "dock2-pfeiffer2018",
+      "studyFamilyId": "dock2-pfeiffer2018",
+      "bibliographicVerification": {
+        "provider": "Crossref DOI metadata",
+        "checkedAt": "2026-11-21",
+        "doi": "10.1007/s40473-018-0143-z",
+        "matchedTitle": "Traumatic Stress Epigenetics"
+      }
+    },
+    {
+      "key": "howie2019",
+      "title": "A review of epigenetic contributions to post-traumatic stress disorder",
+      "year": 2019,
+      "journal": "Dialogues in Clinical Neuroscience",
+      "doi": "10.31887/DCNS.2019.21.4/kressler",
+      "urls": [
+        "https://doi.org/10.31887/DCNS.2019.21.4/kressler",
+        "https://www.tandfonline.com/doi/full/10.31887/DCNS.2019.21.4/kressler"
+      ],
+      "group": "reviews",
+      "design": "Review",
+      "summary": "Summarises methylation, chromatin and RNA-related research, including the Mehta DOCK2 finding.",
+      "limitation": "Its table labels 211 as the discovery sample; the primary paper reports 96 discovery participants plus 115 replication participants, totalling 211. This chapter uses the primary figures.",
+      "sourceAccess": "Indexed full-text DOCK2 table and relevant passages reviewed",
+      "targets": [
+        "DOCK2"
+      ],
+      "peerReviewed": true,
+      "authors": "Howie Hunter, Rijal Chuda M., Ressler Kerry J.",
+      "pmid": "",
+      "supplied": true,
+      "recordId": "dock2-howie2019",
+      "studyFamilyId": "dock2-howie2019",
+      "bibliographicVerification": {
+        "provider": "Crossref DOI metadata",
+        "checkedAt": "2026-11-21",
+        "doi": "10.31887/DCNS.2019.21.4/kressler",
+        "matchedTitle": "A review of epigenetic contributions to post-traumatic stress disorder"
+      }
+    },
+    {
+      "key": "qut2025",
+      "title": "The Role of Genetics and Epigenetics in Post-Traumatic Stress and Migraine Disorders",
+      "year": 2025,
+      "journal": "Queensland University of Technology",
+      "doi": "",
+      "urls": [
+        "https://eprints.qut.edu.au/256897/"
+      ],
+      "group": "theses",
+      "design": "PhD by publication; thesis",
+      "summary": "Chapter 4 contains the monozygotic-twin study published in Frontiers in Neuroscience. DOCK2 passages and associated tables were checked in the thesis.",
+      "limitation": "The thesis and the 2021 article share the same twin evidence and count as one study. Thesis examination is distinct from journal peer review.",
+      "sourceAccess": "Thesis DOCK2 passages and tables reviewed",
+      "targets": [
+        "DOCK2"
+      ],
+      "peerReviewed": false,
+      "authors": "Bainomugisa C",
+      "pmid": "",
+      "supplied": true,
+      "recordId": "dock2-qut2025",
+      "studyFamilyId": "dock2-twins-2021"
+    },
+    {
+      "key": "konstanz2022",
+      "title": "Sequel of war: Investigating appetitive aggression, violence perpetration, PTSD symptoms and treatment effects using psychological and epigenetic variables",
+      "year": 2022,
+      "journal": "University of Konstanz",
+      "doi": "",
+      "urls": [
+        "https://kops.uni-konstanz.de/server/api/core/bitstreams/5bd1e613-8a79-40f1-9d38-b8585ac91973/content"
+      ],
+      "group": "theses",
+      "design": "Doctoral thesis",
+      "summary": "The DOCK2 reference occurs in background discussion of earlier PTSD methylation work.",
+      "limitation": "Searching the thesis for DOCK2 did not identify a separate reported DOCK2 intervention result. This record preserves the supplied source without treating a background citation as new evidence.",
+      "sourceAccess": "Title pages and all text-search DOCK2 occurrences reviewed",
+      "targets": [
+        "DOCK2"
+      ],
+      "peerReviewed": false,
+      "authors": "Rukundo-Zeller AC",
+      "pmid": "",
+      "supplied": true,
+      "recordId": "dock2-konstanz2022",
+      "studyFamilyId": "dock2-konstanz2022"
+    },
+    {
+      "key": "stellenbosch",
+      "title": "Epigenomic analysis of posttraumatic stress disorder in female rape survivors in South Africa",
+      "year": null,
+      "journal": "Stellenbosch University",
+      "doi": "",
+      "urls": [
+        "https://scholar.sun.ac.za/items/683ceac9-b32e-4100-9450-34dc3cdabe34"
+      ],
+      "group": "theses",
+      "design": "Thesis source supplied for review; access unresolved",
+      "summary": "The supplied source concerns PTSD epigenomics in female rape survivors. Related peer-reviewed work by Nöthling and colleagues is separately listed in this chapter.",
+      "limitation": "The repository blocked full-text access. No thesis-specific DOCK2 finding, date or sample size is inferred, and overlap with the related article is not counted as independent confirmation.",
+      "sourceAccess": "Supplied title and repository link screened; full text unavailable",
+      "targets": [],
+      "peerReviewed": false,
+      "authors": "",
+      "pmid": "",
+      "supplied": true,
+      "recordId": "dock2-stellenbosch",
+      "studyFamilyId": "dock2-stellenbosch"
+    }
+  ]
+}

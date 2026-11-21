@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "path": "library-data/general-edition.json",
+      "sha256": "c0ce0dde985c954f18f29e58f899c192a67861652d12c3b168415a69e46c537c"
+    },
+    {
+      "path": "library.js",
+      "sha256": "32eaf4a9d7108abffb8fc3cf7f66cd2213f5183f9d6d92ac5aa887567a7900e0"
+    }
+  ]
+}

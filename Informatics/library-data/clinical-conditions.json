@@ -4363,6 +4363,318 @@
           }
         ]
       }
+    ],
+    "pmid-31195163": [
+      {
+        "id": "ptsd",
+        "evidence": [
+          {
+            "field": "publication title",
+            "text": "DNA methylation from germline cells in veterans with PTSD",
+            "sourceURL": "https://doi.org/10.1016/j.jpsychires.2019.06.001"
+          }
+        ]
+      }
+    ],
+    "pmid-34239411": [
+      {
+        "id": "ptsd",
+        "evidence": [
+          {
+            "field": "publication title",
+            "text": "Using Monozygotic Twins to Dissect Common Genes in Posttraumatic Stress Disorder and Migraine",
+            "sourceURL": "https://doi.org/10.3389/fnins.2021.678350"
+          }
+        ]
+      }
+    ],
+    "pmid-31839899": [
+      {
+        "id": "ptsd",
+        "evidence": [
+          {
+            "field": "publication title",
+            "text": "A preliminary investigation of rare variants associated with genetic risk for PTSD in a natural disaster-exposed adolescent sample",
+            "sourceURL": "https://doi.org/10.1080/20008198.2019.1688935"
+          }
+        ]
+      }
+    ],
+    "pmid-32171335": [
+      {
+        "id": "ptsd",
+        "evidence": [
+          {
+            "field": "publication title",
+            "text": "An epigenome-wide association study of posttraumatic stress disorder in US veterans implicates several new DNA methylation loci",
+            "sourceURL": "https://doi.org/10.1186/s13148-020-0820-0"
+          }
+        ]
+      }
+    ],
+    "dock2-montalvo2022": [
+      {
+        "id": "ptsd",
+        "evidence": [
+          {
+            "field": "publication title",
+            "text": "Epigenome-wide association study of posttraumatic stress disorder identifies novel loci in U.S. military veterans",
+            "sourceURL": "https://doi.org/10.1038/s41398-022-01822-3"
+          }
+        ]
+      }
+    ],
+    "pmid-39696436": [
+      {
+        "id": "ptsd",
+        "evidence": [
+          {
+            "field": "publication title",
+            "text": "Epigenome-wide association studies identify novel DNA methylation sites associated with PTSD: a meta-analysis of 23 military and civilian cohorts",
+            "sourceURL": "https://doi.org/10.1186/s13073-024-01417-1"
+          }
+        ]
+      }
+    ],
+    "dock2-nothling2021": [
+      {
+        "id": "ptsd",
+        "evidence": [
+          {
+            "field": "publication title",
+            "text": "Genome-wide differentially methylated genes associated with posttraumatic stress disorder and longitudinal change in methylation in rape survivors",
+            "sourceURL": "https://doi.org/10.1038/s41398-021-01608-z"
+          }
+        ]
+      }
+    ],
+    "dv-vision-426ce6386119": [
+      {
+        "id": "ptsd",
+        "evidence": [
+          {
+            "field": "publication title",
+            "text": "Phase-based treatment versus immediate trauma-focused treatment for post-traumatic stress disorder due to childhood abuse: randomised clinical trial",
+            "sourceURL": "https://doi.org/10.1192/bjo.2021.1057"
+          }
+        ]
+      }
+    ],
+    "dock2-va-emdr": [
+      {
+        "id": "ptsd",
+        "evidence": [
+          {
+            "field": "publication title",
+            "text": "Eye Movement Desensitization and Reprocessing for PTSD",
+            "sourceURL": "https://www.ptsd.va.gov/professional/treat/txessentials/emdr_pro.asp"
+          }
+        ]
+      }
+    ],
+    "pmid-34282125": [
+      {
+        "id": "ptsd",
+        "evidence": [
+          {
+            "field": "publication title",
+            "text": "Longitudinal genome-wide methylation study of PTSD treatment using prolonged exposure and hydrocortisone",
+            "sourceURL": "https://doi.org/10.1038/s41398-021-01513-5"
+          }
+        ]
+      }
+    ],
+    "dock2-hummel2022": [
+      {
+        "id": "ptsd",
+        "evidence": [
+          {
+            "field": "publication title",
+            "text": "No evidence for intervention-associated DNA methylation changes in monocytes of patients with posttraumatic stress disorder",
+            "sourceURL": "https://doi.org/10.1038/s41598-022-22177-1"
+          }
+        ]
+      }
+    ],
+    "pmid-30415783": [
+      {
+        "id": "ptsd",
+        "evidence": [
+          {
+            "field": "publication title",
+            "text": "Oxytocin receptor gene methylation in male and female PTSD patients and trauma-exposed controls",
+            "sourceURL": "https://doi.org/10.1016/j.euroneuro.2018.10.006"
+          }
+        ]
+      }
+    ],
+    "dock2-immune2022": [
+      {
+        "id": "ptsd",
+        "evidence": [
+          {
+            "field": "publication title",
+            "text": "Central and Peripheral Immune Dysregulation in Posttraumatic Stress Disorder: Convergent Multi-Omics Evidence",
+            "sourceURL": "https://doi.org/10.3390/biomedicines10051107"
+          }
+        ]
+      }
+    ],
+    "pmid-33349712": [
+      {
+        "id": "ptsd",
+        "evidence": [
+          {
+            "field": "publication title",
+            "text": "Transcriptomic organization of the human brain in post-traumatic stress disorder",
+            "sourceURL": "https://doi.org/10.1038/s41593-020-00748-7"
+          }
+        ]
+      }
+    ],
+    "pmid-40533550": [
+      {
+        "id": "ptsd",
+        "evidence": [
+          {
+            "field": "publication title",
+            "text": "Single-cell transcriptomic and chromatin dynamics of the human brain in PTSD",
+            "sourceURL": "https://doi.org/10.1038/s41586-025-09083-y"
+          }
+        ]
+      }
+    ],
+    "dock2-frontiers2022": [
+      {
+        "id": "ptsd",
+        "evidence": [
+          {
+            "field": "publication title",
+            "text": "A narrative review of the epigenetics of post-traumatic stress disorder and post-traumatic stress disorder treatment",
+            "sourceURL": "https://doi.org/10.3389/fpsyt.2022.857087"
+          }
+        ]
+      }
+    ],
+    "dock2-susceptibility2021": [
+      {
+        "id": "ptsd",
+        "evidence": [
+          {
+            "field": "publication title",
+            "text": "The Molecular Biology of Susceptibility to Post-Traumatic Stress Disorder: Highlights of Epigenetics and Epigenomics",
+            "sourceURL": "https://doi.org/10.3390/ijms221910743"
+          }
+        ]
+      }
+    ],
+    "dock2-morrison2019": [
+      {
+        "id": "ptsd",
+        "evidence": [
+          {
+            "field": "publication title",
+            "text": "DNA Methylation Correlates of PTSD: Recent Findings and Technical Challenges",
+            "sourceURL": "https://doi.org/10.1016/j.pnpbp.2018.11.011"
+          }
+        ]
+      }
+    ],
+    "dock2-comorbid2019": [
+      {
+        "id": "ptsd",
+        "evidence": [
+          {
+            "field": "publication title",
+            "text": "A Review of Epigenetics of PTSD in Comorbid Psychiatric Conditions",
+            "sourceURL": "https://doi.org/10.3390/genes10020140"
+          }
+        ]
+      }
+    ],
+    "dock2-inheritance2024": [
+      {
+        "id": "ptsd",
+        "evidence": [
+          {
+            "field": "publication title",
+            "text": "Mechanisms of Epigenetic Inheritance in Post-Traumatic Stress Disorder",
+            "sourceURL": "https://doi.org/10.3390/life14010098"
+          }
+        ]
+      }
+    ],
+    "dock2-combat2024": [
+      {
+        "id": "ptsd",
+        "evidence": [
+          {
+            "field": "publication title",
+            "text": "Prominent genetic variants and epigenetic changes in post-traumatic stress disorder among combat veterans",
+            "sourceURL": "https://doi.org/10.1007/s11033-024-09276-0"
+          }
+        ]
+      }
+    ],
+    "dock2-rats2022": [
+      {
+        "id": "ptsd",
+        "evidence": [
+          {
+            "field": "publication title",
+            "text": "Epigenetic Approach to PTSD: In the Aspects of Rat Models",
+            "sourceURL": "https://doi.org/10.1055/s-0041-1736633"
+          }
+        ]
+      }
+    ],
+    "dock2-howie2019": [
+      {
+        "id": "ptsd",
+        "evidence": [
+          {
+            "field": "publication title",
+            "text": "A review of epigenetic contributions to post-traumatic stress disorder",
+            "sourceURL": "https://doi.org/10.31887/DCNS.2019.21.4/kressler"
+          }
+        ]
+      }
+    ],
+    "dock2-qut2025": [
+      {
+        "id": "ptsd",
+        "evidence": [
+          {
+            "field": "publication title",
+            "text": "The Role of Genetics and Epigenetics in Post-Traumatic Stress and Migraine Disorders",
+            "sourceURL": "https://eprints.qut.edu.au/256897/"
+          }
+        ]
+      }
+    ],
+    "dock2-konstanz2022": [
+      {
+        "id": "ptsd",
+        "evidence": [
+          {
+            "field": "publication title",
+            "text": "Sequel of war: Investigating appetitive aggression, violence perpetration, PTSD symptoms and treatment effects using psychological and epigenetic variables",
+            "sourceURL": "https://kops.uni-konstanz.de/server/api/core/bitstreams/5bd1e613-8a79-40f1-9d38-b8585ac91973/content"
+          }
+        ]
+      }
+    ],
+    "dock2-stellenbosch": [
+      {
+        "id": "ptsd",
+        "evidence": [
+          {
+            "field": "publication title",
+            "text": "Epigenomic analysis of posttraumatic stress disorder in female rape survivors in South Africa",
+            "sourceURL": "https://scholar.sun.ac.za/items/683ceac9-b32e-4100-9450-34dc3cdabe34"
+          }
+        ]
+      }
     ]
   },
   "classificationNotes": {

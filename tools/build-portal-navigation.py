@@ -16,7 +16,14 @@ if '--publication-sitemap-only' in sys.argv:
  urls=list(dict.fromkeys(ORIGIN+'/informatics/'+p for p in records if '/publications/' in p))
  xml='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join('  <url><loc>'+escape(url)+'</loc></url>\n' for url in urls)+'</urlset>\n'
  write('sitemaps/informatics-publications.xml',xml)
- print(json.dumps({'publication_sitemap_entries':len(urls)}))
+ record_map=ROOT/'sitemaps/informatics-records.xml'
+ record_xml=record_map.read_text()
+ reading_urls=[ORIGIN+'/informatics/'+p for p in records if p.startswith('read/') and '/publications/' not in p]
+ additions=[url for url in reading_urls if escape(url)+'</loc>' not in record_xml]
+ if additions:
+  record_xml=record_xml.replace('</urlset>',''.join('  <url><loc>'+escape(url)+'</loc></url>\n' for url in additions)+'</urlset>')
+  write('sitemaps/informatics-records.xml',record_xml)
+ print(json.dumps({'publication_sitemap_entries':len(urls),'reading_sitemap_additions':len(additions)}))
  sys.exit(0)
 
 def plain(s):return re.sub(r'\s+',' ',unescape(re.sub('<[^>]+>',' ',s))).strip()
