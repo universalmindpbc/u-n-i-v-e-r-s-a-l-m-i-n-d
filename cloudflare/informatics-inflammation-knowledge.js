@@ -1,21 +1,24 @@
 // Read-only retrieval of the published General chapters. No database mutation or fine-tuning.
 import {createHash} from 'node:crypto';
 import edition from '../Informatics/library-data/general-edition.json' with {type:'json'};
+import library from '../Informatics/library-data/library.json' with {type:'json'};
 import dock2 from '../Informatics/library-data/dock2-research-register.json' with {type:'json'};
 import oxtr from '../Informatics/library-data/oxtr-il6-research-register.json' with {type:'json'};
 import {youthMatches} from './informatics-youth-knowledge.js';
 
 const registers={'dock2-trauma-ptsd':dock2,'oxtr-il6-inflammation':oxtr};
 const chapters=edition.chapters.filter(c=>registers[c.id]);
+const libraryById=new Map(library.records.map(r=>[r.id,r]));
 const normal=value=>String(value||'').trim().toLowerCase().replace(/^https?:\/\/(?:dx\.)?doi\.org\//,'').replace(/[‐‑–—]/g,'-');
 export const inflammationRecords=chapters.flatMap(c=>registers[c.id].records.map(r=>{
  const papers=c.topics.flatMap(t=>t.papers).filter(p=>p.recordId===r.recordId);
- return {...papers[0],...r,id:r.recordId,aliases:[...new Set(papers.map(p=>p.id).filter(Boolean))],collections:['general'],conditions:c.id==='dock2-trauma-ptsd'?['PTSD']:[],researchChapter:c.id,reviewedAt:registers[c.id].reviewedAt};
+ const metadata=libraryById.get(r.recordId);
+ return {...papers[0],...r,id:r.recordId,aliases:[...new Set(papers.map(p=>p.id).filter(Boolean))],collections:metadata?.collections||['general'],conditions:metadata?.conditions||[],researchChapter:c.id,reviewedAt:registers[c.id].reviewedAt};
 }));
 const byIdentity=new Map(inflammationRecords.flatMap(r=>[r.id,r.doi,r.pmid,...r.aliases].filter(Boolean).map(id=>[normal(id),r])));
 export const inflammationRecord=id=>byIdentity.get(normal(id));
 export const inflammationReplaces=row=>!![row.id,row.data?.doi,row.data?.pmid].filter(Boolean).find(inflammationRecord);
-export const inflammationVersion={version:'general-inflammation-20261125-v2',sourceSHA256:createHash('sha256').update(JSON.stringify({chapters,registers})).digest('hex'),sourceRecords:inflammationRecords.length,chapters:chapters.map(c=>({id:c.id,number:c.number,sourceRecords:registers[c.id].sourceCount,reviewedAt:registers[c.id].reviewedAt}))};
+export const inflammationVersion={version:'general-inflammation-20261125-v3',sourceSHA256:createHash('sha256').update(JSON.stringify({chapters,registers,classifications:inflammationRecords.map(({id,collections,conditions})=>({id,collections,conditions}))})).digest('hex'),sourceRecords:inflammationRecords.length,chapters:chapters.map(c=>({id:c.id,number:c.number,sourceRecords:registers[c.id].sourceCount,reviewedAt:registers[c.id].reviewedAt}))};
 
 function directChapters(query){
  const q=normal(query),ids=[];

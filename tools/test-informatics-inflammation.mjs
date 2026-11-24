@@ -7,10 +7,14 @@ import {connectorTools,openAPI} from '../cloudflare/informatics-connectors.js';
 let checks=0;
 function check(name,run){run();checks++;console.log('PASS '+name);}
 const registers=await Promise.all(['dock2','oxtr-il6'].map(async n=>JSON.parse(await readFile(new URL('../Informatics/library-data/'+n+'-research-register.json',import.meta.url)))));
+const library=JSON.parse(await readFile(new URL('../Informatics/library-data/library.json',import.meta.url)));
 check('All 75 source records preserve current appraisals and identifiers',()=>{
  assert.equal(records.length,75);assert.equal(new Set(records.map(r=>r.id)).size,75);
  for(const source of registers.flatMap(r=>r.records)){
   const record=lookup(source.recordId);assert(record);
+  const canonical=library.records.find(r=>r.id===record.id);assert(canonical);
+  assert.deepEqual(record.collections,canonical.collections);
+  assert.deepEqual(record.conditions,canonical.conditions||[]);
   for(const field of Object.keys(source))assert.deepEqual(record[field],source[field]);
   for(const id of [record.id,record.doi,record.pmid,...record.aliases].filter(Boolean))assert.equal(lookup(id),record);
   if(record.doi)assert.equal(lookup('HTTPS://DOI.ORG/'+record.doi.toUpperCase()),record);
