@@ -1,0 +1,1578 @@
+{
+  "passed": true,
+  "processAudioMuted": true,
+  "hardwareJobs": 0,
+  "studyCalls": 0,
+  "limitUSD": 6,
+  "chargedUpperUSD": 3.7746250000000003,
+  "requests": [
+    {
+      "question": "From our published review, how strong is the evidence that oxytocin/OXTR reduces IL-6 in cells, animals and humans? Include positive and null human findings. Keep it concise.",
+      "status": 200,
+      "response": {
+        "answer": "**Cells — strong evidence in selected models.** One study reported 56% lower stimulated IL‑6 release in cultured human macrophages and 26% lower release in endothelial cells. However, separate human donor-cell experiments found no cytokine suppression: the effect is not universal across cell types and conditions. [S1] [S2]\n\n**Animals — substantial mechanistic support.** Multiple tissue and disease models, including receptor-deletion experiments, support an anti-inflammatory role for oxytocin–OXTR signalling. Small studies, selected sexes and experimental injury/exposure conditions limit translation to people. [S3]\n\n**Humans — emerging, promising and mixed.**\n- **Positive:** A randomized crossover study in **10 healthy men** found that intravenous oxytocin attenuated the acute endotoxin-induced IL‑6 response. This is a small proof-of-mechanism finding, not evidence of sustained benefit or equivalent effects from intranasal delivery; the review’s appraisal used the abstract. [S4]\n- **Null:** An **eight-week intranasal trial in 61 adults with obesity** found no inflammatory-protein effects surviving correction for multiple testing. This broader proteomic result is reported in a **conference abstract**, not a complete clinical report. [S5]\n- **Opposite/context-dependent:** In an **80-couple trial**, oxytocin plus positive interaction was associated with **higher local wound IL‑6 in women**. Wound-fluid IL‑6 is distinct from systemic inflammation and can participate in repair. [S6]\n\n**Bottom line:** Sustained systemic IL‑6 lowering and clinical anti-inflammatory efficacy remain unestablished. Lower IL‑6 is not universally better, and the proposed intervention → OXTR → IL‑6 → benefit pathway remains a hypothesis. These strength judgments come from a narrative review, not formal certainty grading. [S3]",
+        "sources": [
+          {
+            "label": "S1",
+            "id": "pmid-18940936",
+            "passageId": null,
+            "title": "Oxytocin attenuates NADPH-dependent superoxide activity and IL-6 secretion in macrophages and vascular cells",
+            "authors": "Szeto A, Nation DA, Mendez AJ, Dominguez-Bendala J, Brooks LG, Schneiderman N, McCabe PM.",
+            "journal": "American journal of physiology. Endocrinology and metabolism",
+            "year": 2008,
+            "url": "https://doi.org/10.1152/ajpendo.90718.2008",
+            "section": "Library record",
+            "kind": "approved-record",
+            "text": "Oxytocin reduced stimulated IL-6 release by 56% in macrophages and 26% in endothelial cells in the reported experiments, alongside lower NADPH-dependent superoxide activity. The cells expressed OXTR, connecting an inflammatory readout with a plausible receptor pathway.",
+            "doi": "10.1152/ajpendo.90718.2008",
+            "rights": null,
+            "sha256": null,
+            "retrievalLabel": "S2"
+          },
+          {
+            "label": "S2",
+            "id": "pmid-23899661",
+            "passageId": null,
+            "title": "Oxytocin does not attenuate the ex vivo production of inflammatory cytokines by lipopolysaccharide-activated monocytes and macrophages from healthy male and female donors",
+            "authors": "Ross KM, McDonald-Jones G, Miller GE.",
+            "journal": "Neuroimmunomodulation",
+            "year": 2013,
+            "url": "https://doi.org/10.1159/000351610",
+            "section": "Library record",
+            "kind": "approved-record",
+            "text": "Oxytocin did not attenuate LPS-induced inflammatory cytokine production across the tested conditions. The investigators examined donor sex, cell preparation, doses and pre-incubation as potential explanations for differences from earlier work.",
+            "doi": "10.1159/000351610",
+            "rights": null,
+            "sha256": null,
+            "retrievalLabel": "S3"
+          },
+          {
+            "label": "S3",
+            "id": "oxtr-il6-inflammation",
+            "passageId": "oxtr-il6-inflammation:overview",
+            "title": "Oxytocin, OXTR and inflammation: a focus on IL-6",
+            "authors": "",
+            "url": "https://staging.universalmind.tv/informatics/research/?collection=general&chapter=13",
+            "section": "Library record",
+            "kind": "published-research-guide",
+            "text": "{\"id\":\"oxtr-il6-inflammation\",\"title\":\"Oxytocin, OXTR and inflammation: a focus on IL-6\",\"url\":\"https://staging.universalmind.tv/informatics/research/?collection=general&chapter=13\",\"version\":{\"version\":\"general-inflammation-20261125\",\"sourceSHA256\":\"16c2d0a323c71126eb6c5a19878d022ed5a2eaff4c8e8951d65aa28e31b9c0b3\",\"sourceRecords\":75,\"chapters\":[{\"id\":\"dock2-trauma-ptsd\",\"number\":12,\"sourceRecords\":33,\"reviewedAt\":\"2026-11-21\"},{\"id\":\"oxtr-il6-inflammation\",\"number\":13,\"sourceRecords\":42,\"reviewedAt\":\"2026-11-24\"}]},\"reviewedAt\":\"2026-11-24\",\"sourceCount\":42,\"reviewMethod\":[\"The supplied PDF contained 19 distinct scholarly sources after deduplication. This chapter retains all 19 and adds primary human experiments, negative studies, receptor-mechanism papers, assay research and official reference records. The resulting 42 sources include reviews, a thesis, a conference abstract, gene records and a withdrawn trial registration; 42 sources does not mean 42 independent experiments.\",\"Searches covered oxytocin/OXTR with IL-6, inflammatory cytokines, microglia, macrophages, colitis, human randomised trials, endotoxin, wound healing, proteomics, methylation and assay validation. PubMed/Europe PMC, publisher pages, accessible full text, university repositories and ClinicalTrials.gov were checked. Source records state whether full text, an abstract or a registry was available. This is a deep narrative analysis, not a preregistered systematic review, exhaustive search or meta-analysis.\",\"No pooled effect size is presented because populations, species, tissues, routes, doses, timing and outcomes differ substantially. Formal risk-of-bias and GRADE assessments were not performed. The overview uses qualitative judgments about mechanistic support and human translation; publication design icons are not certainty grades. Publication bias and selective reporting remain possible, particularly across small preclinical experiments.\",\"Reviews help locate original studies but do not add independent experimental replication. The master’s thesis and later macrophage publication share a research lineage; full-text access was insufficient to resolve exact data overlap. The two couple studies explicitly share a trial family. These relationships are recorded so source volume does not inflate confidence.\",\"Source checking also identified a gene-identity error in one supplied review. The chapter retains that paper for provenance, flags the error and uses official gene annotations for the hormone–receptor distinction. Claims about tissue-specific effects, negative results and human uncertainty are retained even when they complicate the therapeutic narrative.\"],\"overview\":[\"Oxytocin–OXTR signalling can regulate inflammation in selected cell and animal models, including pathways involving interleukin-6 (IL-6). The mechanistic evidence is strong in several defined systems. Human evidence is emerging and promising, but mixed and context-dependent; sustained systemic IL-6 lowering and clinical anti-inflammatory efficacy are not established.\",\"This chapter follows the evidence from human-derived cells and receptor-perturbation experiments to animal disease models and human studies. It distinguishes inflammatory markers from regulatory markers, tissue RNA from secreted protein, and receptor hypotheses from demonstrated causal mechanisms.\",\"For Universal Mind, the evidence supports a focused human research question: can a defined intervention change IL-6 and related immune measures, alongside meaningful outcomes, and is OXTR-related biology involved? That is a testable opportunity, not an established treatment claim.\"],\"evidenceOverview\":[{\"label\":\"In a dish\",\"strength\":\"Strong in selected models\",\"finding\":\"Direct IL-6 and signalling effects; mechanistic perturbations ",
+            "doi": null,
+            "rights": null,
+            "sha256": "16c2d0a323c71126eb6c5a19878d022ed5a2eaff4c8e8951d65aa28e31b9c0b3",
+            "retrievalLabel": "S1"
+          },
+          {
+            "label": "S4",
+            "id": "pmid-18593851",
+            "passageId": null,
+            "title": "Oxytocin alleviates the neuroendocrine and cytokine response to bacterial endotoxin in healthy men",
+            "authors": "Clodi M, Vila G, Geyeregger R, Riedl M, Stulnig TM, Struck J, Luger TA, Luger A.",
+            "journal": "American journal of physiology. Endocrinology and metabolism",
+            "year": 2008,
+            "url": "https://doi.org/10.1152/ajpendo.90263.2008",
+            "section": "Library record",
+            "kind": "approved-record",
+            "text": "Intravenous oxytocin attenuated the acute endotoxin-induced IL-6, TNF and stress-hormone response. Several regulatory mediators, including IL-1 receptor antagonist and IL-4, also decreased. Parallel human monocyte/PBMC experiments did not reproduce direct cytokine suppression.",
+            "doi": "10.1152/ajpendo.90263.2008",
+            "rights": null,
+            "sha256": null,
+            "retrievalLabel": "S4"
+          },
+          {
+            "label": "S5",
+            "id": "oxtr-il6-boutin2025",
+            "passageId": null,
+            "title": "SAT-059 Randomized Controlled Trial Examining Effects of 8 weeks of Intranasal Oxytocin on the Circulating Inflammatory Proteome in Adults with Obesity",
+            "authors": "Boutin R and colleagues",
+            "journal": "Journal of the Endocrine Society",
+            "year": 2025,
+            "url": "https://doi.org/10.1210/jendso/bvaf149.1541",
+            "section": "Library record",
+            "kind": "approved-record",
+            "text": "The inflammatory proteome analysis reported no treatment effects that survived Benjamini–Hochberg correction. Some nominal findings pointed toward increased inflammatory proteins rather than a consistent reduction.",
+            "doi": "10.1210/jendso/bvaf149.1541",
+            "rights": null,
+            "sha256": null,
+            "retrievalLabel": "S5"
+          },
+          {
+            "label": "S6",
+            "id": "pmid-36058418",
+            "passageId": null,
+            "title": "Effects of intranasal oxytocin and positive couple interaction on immune factors in skin wounds",
+            "authors": "Ditzen B, Aguilar-Raab C, Winter F, Hernández C, Schneider E, Bodenmann G, Heinrichs M, Ehlert U, Läuchli S.",
+            "journal": "Brain, behavior, and immunity",
+            "year": 2023,
+            "url": "https://doi.org/10.1016/j.bbi.2022.08.011",
+            "section": "Library record",
+            "kind": "approved-record",
+            "text": "Wound-fluid cytokines depended on sex and interaction context. Among women, oxytocin combined with a positive couple interaction was associated with lower IL-1β and higher IL-6; TNF did not show the same assignment effect.",
+            "doi": "10.1016/j.bbi.2022.08.011",
+            "rights": null,
+            "sha256": null,
+            "retrievalLabel": "S6"
+          }
+        ],
+        "model": "gpt-6-astra",
+        "reasoning": "max",
+        "providerResponses": [
+          {
+            "id": "resp_0b937cb33d358ff1016b05db7b690c87d086b2d7cf4e8f94c7",
+            "requestedReasoning": "max",
+            "providerReasoning": "max",
+            "status": "completed"
+          },
+          {
+            "id": "resp_0b937cb33d358ff1016b05db89e83c87d0a5a37f6698092e7d",
+            "requestedReasoning": "max",
+            "providerReasoning": "max",
+            "status": "completed"
+          },
+          {
+            "id": "resp_0b937cb33d358ff1016b05db8d596887d09e2564178c9bdd09",
+            "requestedReasoning": "max",
+            "providerReasoning": "max",
+            "status": "completed"
+          }
+        ],
+        "version": "research-20261026-daytab-v1",
+        "knowledgeVersions": {
+          "approvedYouth": {
+            "sourceBatch": "batch-f164c8325ea5f9c9.json",
+            "sourceSHA256": "f164c8325ea5f9c989c29524518b598913508117712826dc408f592b7f99a723",
+            "approvedAt": "2026-11-02",
+            "publications": 105
+          },
+          "biofeedback": {
+            "version": "lab-biofeedback-20261105-ratings",
+            "publications": 63
+          },
+          "inflammation": {
+            "version": "general-inflammation-20261125",
+            "sourceSHA256": "16c2d0a323c71126eb6c5a19878d022ed5a2eaff4c8e8951d65aa28e31b9c0b3",
+            "sourceRecords": 75,
+            "chapters": [
+              {
+                "id": "dock2-trauma-ptsd",
+                "number": 12,
+                "sourceRecords": 33,
+                "reviewedAt": "2026-11-21"
+              },
+              {
+                "id": "oxtr-il6-inflammation",
+                "number": 13,
+                "sourceRecords": 42,
+                "reviewedAt": "2026-11-24"
+              }
+            ]
+          },
+          "publicGenes": "public-gene-data-20261109-v1",
+          "literature": "literature-20261110-v2"
+        },
+        "usage": {
+          "totalTokens": 51360,
+          "qaSpend": {
+            "limitUSD": 2.25,
+            "chargedUpperUSD": 0.7248000000000001,
+            "calls": [
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 62191,
+                "outputTokenUpper": 16384,
+                "boundMethod": "UTF-8 bytes plus framing",
+                "reservedUSD": 1.5965875,
+                "chargedUpperUSD": 0.160775,
+                "usage": {
+                  "input_tokens": 10694,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 10691,
+                    "cache_write_tokens_details": {
+                      "ttl_12h_tokens": 0,
+                      "ttl_30m_tokens": 10691
+                    },
+                    "cached_tokens": 0
+                  },
+                  "output_tokens": 542,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 506
+                  },
+                  "total_tokens": 11236
+                }
+              },
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 56680,
+                "outputTokenUpper": 16384,
+                "boundMethod": "Provider-counted exact prefix plus new UTF-8 bytes and framing",
+                "reservedUSD": 1.5277,
+                "chargedUpperUSD": 0.21695,
+                "usage": {
+                  "input_tokens": 17196,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 6502,
+                    "cache_write_tokens_details": {
+                      "ttl_12h_tokens": 0,
+                      "ttl_30m_tokens": 6502
+                    },
+                    "cached_tokens": 10691
+                  },
+                  "output_tokens": 40,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 0
+                  },
+                  "total_tokens": 17236
+                }
+              },
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 44313,
+                "outputTokenUpper": 16384,
+                "boundMethod": "Provider-counted exact prefix plus new UTF-8 bytes and framing",
+                "reservedUSD": 1.3731125,
+                "chargedUpperUSD": 0.34707499999999997,
+                "usage": {
+                  "input_tokens": 21262,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 4066,
+                    "cache_write_tokens_details": {
+                      "ttl_12h_tokens": 0,
+                      "ttl_30m_tokens": 4066
+                    },
+                    "cached_tokens": 17121
+                  },
+                  "output_tokens": 1626,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 1239
+                  },
+                  "total_tokens": 22888
+                }
+              }
+            ]
+          }
+        },
+        "retrieval": {
+          "required": true,
+          "sourceCount": 9,
+          "contextMessages": 0,
+          "previousReferences": 0
+        }
+      }
+    },
+    {
+      "question": "From that chapter, which anti-inflammatory markers accompany IL-6, and why is lower IL-6 not always better? Please cite the reviewed sources.",
+      "status": 200,
+      "response": {
+        "answer": "**The chapter’s main anti-inflammatory/regulatory companions to IL‑6 are IL‑10 and IL‑1RA** (IL‑1 receptor antagonist). It also includes:\n- **IL‑4, IL‑13 and TGF‑β:** context-dependent immune regulation and tissue repair—not universally beneficial when increased.\n- **Adiponectin:** metabolic context, with the oxytocin evidence principally preclinical.\n- **hs‑CRP, TNF, IL‑1β and serum amyloid A:** complementary **inflammatory**, not anti-inflammatory, markers. [S1]\n\n**Why lower IL‑6 is not always better**\n\n1. **IL‑6 can trigger regulatory responses.** In the reviewed human experiment by **Steensberg et al. (2003)**, IL‑6 infusion increased IL‑10, IL‑1RA and cortisol without a parallel TNF rise. This was an acute IL‑6 experiment—not evidence of oxytocin efficacy or a benefit from persistently elevated IL‑6. The chapter’s appraisal used the abstract. [S2]\n\n2. **Location and timing change its meaning.** Persistent circulating elevation, a transient exercise-related response and local wound repair are different biological situations. Local IL‑6 can participate in repair; it is not interchangeable with systemic inflammatory burden. [S1]\n\n3. **The signalling route matters.** **Jostock et al. (2001)** demonstrated that soluble gp130 inhibited IL‑6/soluble-receptor trans-signalling in laboratory systems. That supports examining pathway context, but does not establish that oxytocin selectively blocks this route. [S3]\n\n**Interpret the pattern, not just the direction:** IL‑10 and IL‑1RA can also decline when the provoking inflammatory response subsides. Neither “lower IL‑6” nor “higher regulatory cytokines” alone establishes benefit; tissue, timing and meaningful outcomes remain essential. [S1]",
+        "sources": [
+          {
+            "label": "S1",
+            "id": "oxtr-il6-inflammation",
+            "passageId": "oxtr-il6-inflammation:oxtr-il6-il6",
+            "title": "Oxytocin, OXTR and inflammation: a focus on IL-6",
+            "authors": "",
+            "url": "https://staging.universalmind.tv/informatics/research/?collection=general&chapter=13",
+            "section": "Library record",
+            "kind": "published-research-guide",
+            "text": "{\"id\":\"oxtr-il6-inflammation\",\"title\":\"Oxytocin, OXTR and inflammation: a focus on IL-6\",\"url\":\"https://staging.universalmind.tv/informatics/research/?collection=general&chapter=13\",\"version\":{\"version\":\"general-inflammation-20261125\",\"sourceSHA256\":\"16c2d0a323c71126eb6c5a19878d022ed5a2eaff4c8e8951d65aa28e31b9c0b3\",\"sourceRecords\":75,\"chapters\":[{\"id\":\"dock2-trauma-ptsd\",\"number\":12,\"sourceRecords\":33,\"reviewedAt\":\"2026-11-21\"},{\"id\":\"oxtr-il6-inflammation\",\"number\":13,\"sourceRecords\":42,\"reviewedAt\":\"2026-11-24\"}]},\"reviewedAt\":\"2026-11-24\",\"sourceCount\":42,\"reviewMethod\":[\"The supplied PDF contained 19 distinct scholarly sources after deduplication. This chapter retains all 19 and adds primary human experiments, negative studies, receptor-mechanism papers, assay research and official reference records. The resulting 42 sources include reviews, a thesis, a conference abstract, gene records and a withdrawn trial registration; 42 sources does not mean 42 independent experiments.\",\"Searches covered oxytocin/OXTR with IL-6, inflammatory cytokines, microglia, macrophages, colitis, human randomised trials, endotoxin, wound healing, proteomics, methylation and assay validation. PubMed/Europe PMC, publisher pages, accessible full text, university repositories and ClinicalTrials.gov were checked. Source records state whether full text, an abstract or a registry was available. This is a deep narrative analysis, not a preregistered systematic review, exhaustive search or meta-analysis.\",\"No pooled effect size is presented because populations, species, tissues, routes, doses, timing and outcomes differ substantially. Formal risk-of-bias and GRADE assessments were not performed. The overview uses qualitative judgments about mechanistic support and human translation; publication design icons are not certainty grades. Publication bias and selective reporting remain possible, particularly across small preclinical experiments.\",\"Reviews help locate original studies but do not add independent experimental replication. The master’s thesis and later macrophage publication share a research lineage; full-text access was insufficient to resolve exact data overlap. The two couple studies explicitly share a trial family. These relationships are recorded so source volume does not inflate confidence.\",\"Source checking also identified a gene-identity error in one supplied review. The chapter retains that paper for provenance, flags the error and uses official gene annotations for the hormone–receptor distinction. Claims about tissue-specific effects, negative results and human uncertainty are retained even when they complicate the therapeutic narrative.\"],\"overview\":[\"Oxytocin–OXTR signalling can regulate inflammation in selected cell and animal models, including pathways involving interleukin-6 (IL-6). The mechanistic evidence is strong in several defined systems. Human evidence is emerging and promising, but mixed and context-dependent; sustained systemic IL-6 lowering and clinical anti-inflammatory efficacy are not established.\",\"This chapter follows the evidence from human-derived cells and receptor-perturbation experiments to animal disease models and human studies. It distinguishes inflammatory markers from regulatory markers, tissue RNA from secreted protein, and receptor hypotheses from demonstrated causal mechanisms.\",\"For Universal Mind, the evidence supports a focused human research question: can a defined intervention change IL-6 and related immune measures, alongside meaningful outcomes, and is OXTR-related biology involved? That is a testable opportunity, not an established treatment claim.\"],\"evidenceOverview\":[{\"label\":\"In a dish\",\"strength\":\"Strong in selected models\",\"finding\":\"Direct IL-6 and signalling effects; mechanistic perturbations ",
+            "doi": null,
+            "rights": null,
+            "sha256": "16c2d0a323c71126eb6c5a19878d022ed5a2eaff4c8e8951d65aa28e31b9c0b3",
+            "retrievalLabel": "S8"
+          },
+          {
+            "label": "S2",
+            "id": "pmid-12857678",
+            "passageId": null,
+            "title": "IL-6 enhances plasma IL-1ra, IL-10, and cortisol in humans",
+            "authors": "Steensberg A, Fischer CP, Keller C, Møller K, Pedersen BK.",
+            "journal": "American journal of physiology. Endocrinology and metabolism",
+            "year": 2003,
+            "url": "https://doi.org/10.1152/ajpendo.00074.2003",
+            "section": "Library record",
+            "kind": "approved-record",
+            "text": "IL-6 infusion increased circulating IL-10, IL-1 receptor antagonist and cortisol without inducing a parallel TNF response. This illustrates a regulatory role for IL-6 under a defined acute exposure.",
+            "doi": "10.1152/ajpendo.00074.2003",
+            "rights": null,
+            "sha256": null,
+            "retrievalLabel": "S9"
+          },
+          {
+            "label": "S3",
+            "id": "pmid-11121117",
+            "passageId": null,
+            "title": "Soluble gp130 is the natural inhibitor of soluble interleukin-6 receptor transsignaling responses",
+            "authors": "Jostock T, Müllberg J, Ozbek S, Atreya R, Blinn G, Voltz N, Fischer M, Neurath MF, Rose-John S.",
+            "journal": "European journal of biochemistry",
+            "year": 2001,
+            "url": "https://doi.org/10.1046/j.1432-1327.2001.01867.x",
+            "section": "Library record",
+            "kind": "approved-record",
+            "text": "Soluble gp130 inhibited IL-6/soluble-IL-6-receptor trans-signalling responses in the tested systems, providing a mechanistic distinction from classical membrane-receptor signalling.",
+            "doi": "10.1046/j.1432-1327.2001.01867.x",
+            "rights": null,
+            "sha256": null,
+            "retrievalLabel": "S10"
+          }
+        ],
+        "model": "gpt-6-astra",
+        "reasoning": "max",
+        "providerResponses": [
+          {
+            "id": "resp_0df019cf3ec78ab2016b05dbae1ee087d0ab62f8d4a092a22a",
+            "requestedReasoning": "max",
+            "providerReasoning": "max",
+            "status": "completed"
+          },
+          {
+            "id": "resp_0df019cf3ec78ab2016b05dbb8eae887d0bcd71406a6a8067d",
+            "requestedReasoning": "max",
+            "providerReasoning": "max",
+            "status": "completed"
+          },
+          {
+            "id": "resp_0df019cf3ec78ab2016b05dbbc6d6c87d09e200366fe0b00f1",
+            "requestedReasoning": "max",
+            "providerReasoning": "max",
+            "status": "completed"
+          }
+        ],
+        "version": "research-20261026-daytab-v1",
+        "knowledgeVersions": {
+          "approvedYouth": {
+            "sourceBatch": "batch-f164c8325ea5f9c9.json",
+            "sourceSHA256": "f164c8325ea5f9c989c29524518b598913508117712826dc408f592b7f99a723",
+            "approvedAt": "2026-11-02",
+            "publications": 105
+          },
+          "biofeedback": {
+            "version": "lab-biofeedback-20261105-ratings",
+            "publications": 63
+          },
+          "inflammation": {
+            "version": "general-inflammation-20261125",
+            "sourceSHA256": "16c2d0a323c71126eb6c5a19878d022ed5a2eaff4c8e8951d65aa28e31b9c0b3",
+            "sourceRecords": 75,
+            "chapters": [
+              {
+                "id": "dock2-trauma-ptsd",
+                "number": 12,
+                "sourceRecords": 33,
+                "reviewedAt": "2026-11-21"
+              },
+              {
+                "id": "oxtr-il6-inflammation",
+                "number": 13,
+                "sourceRecords": 42,
+                "reviewedAt": "2026-11-24"
+              }
+            ]
+          },
+          "publicGenes": "public-gene-data-20261109-v1",
+          "literature": "literature-20261110-v2"
+        },
+        "usage": {
+          "totalTokens": 46115,
+          "qaSpend": {
+            "limitUSD": 2.25,
+            "chargedUpperUSD": 0.6671874999999998,
+            "calls": [
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 65738,
+                "outputTokenUpper": 16384,
+                "boundMethod": "UTF-8 bytes plus framing",
+                "reservedUSD": 1.6409250000000002,
+                "chargedUpperUSD": 0.1665875,
+                "usage": {
+                  "input_tokens": 11439,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 6792,
+                    "cache_write_tokens_details": {
+                      "ttl_12h_tokens": 0,
+                      "ttl_30m_tokens": 6792
+                    },
+                    "cached_tokens": 4644
+                  },
+                  "output_tokens": 472,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 429
+                  },
+                  "total_tokens": 11911
+                }
+              },
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 46893,
+                "outputTokenUpper": 16384,
+                "boundMethod": "Provider-counted exact prefix plus new UTF-8 bytes and framing",
+                "reservedUSD": 1.4053625,
+                "chargedUpperUSD": 0.1998,
+                "usage": {
+                  "input_tokens": 15888,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 4449,
+                    "cache_write_tokens_details": {
+                      "ttl_12h_tokens": 0,
+                      "ttl_30m_tokens": 4449
+                    },
+                    "cached_tokens": 11436
+                  },
+                  "output_tokens": 24,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 0
+                  },
+                  "total_tokens": 15912
+                }
+              },
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 26306,
+                "outputTokenUpper": 16384,
+                "boundMethod": "Provider-counted exact prefix plus new UTF-8 bytes and framing",
+                "reservedUSD": 1.148025,
+                "chargedUpperUSD": 0.3008,
+                "usage": {
+                  "input_tokens": 16368,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 480,
+                    "cache_write_tokens_details": {
+                      "ttl_12h_tokens": 0,
+                      "ttl_30m_tokens": 480
+                    },
+                    "cached_tokens": 15813
+                  },
+                  "output_tokens": 1924,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 1524
+                  },
+                  "total_tokens": 18292
+                }
+              }
+            ]
+          }
+        },
+        "retrieval": {
+          "required": true,
+          "sourceCount": 11,
+          "contextMessages": 2,
+          "previousReferences": 6
+        }
+      }
+    },
+    {
+      "question": "From our published DOCK2/PTSD chapter, can we use DOCK2 expression or methylation as a validated marker of response to Universal Mind interventions? Explain the human evidence and replication limits in a short answer.",
+      "status": 200,
+      "response": {
+        "answer": "**No—not as a validated response marker.** The published chapter treats DOCK2 expression and methylation as exploratory outcomes alongside symptoms, functioning and wellbeing, not established indicators that Universal Mind interventions produce recovery. [S1]\n\n- **Human evidence:** A 2017 blood study of 96 male veterans linked lower methylation at DOCK2 site cg16277944 with greater PTSD severity; the association replicated in 115 independent participants. Post-hoc analyses found a modest inverse methylation–expression correlation (r = −0.21) and a group difference in expression. These were cross-sectional associations, not evidence that either measure tracks treatment response; discovery also used a 10% false-discovery-rate threshold. [S2]\n- **Replication is mixed:** A subsequent study of 513 veterans explicitly tested the same site and did not replicate the association (p = 0.21; adjusted p = 0.69). That limits confidence in a broadly reliable marker without ruling out context-specific effects. [S3] A larger meta-analysis of 5,077 participants across 23 cohorts did not identify DOCK2 among its principal significant loci—but absence from those findings is not, by itself, an exact-site replication failure. [S4]\n\n**For Universal Mind:** expression, methylation and clinical improvement remain separate outcomes. The proposed intervention → OXTR-related biology → DOCK2 change → benefit pathway contains untested links, and no beneficial direction of DOCK2 change is established. Measuring it for research is consistent with the chapter; interpreting a change as validated evidence of response is not. [S1]",
+        "sources": [
+          {
+            "label": "S1",
+            "id": "dock2-trauma-ptsd",
+            "passageId": "dock2-trauma-ptsd:dock2-replication",
+            "title": "DOCK2, trauma and PTSD: DNA methylation and gene expression",
+            "authors": "",
+            "url": "https://staging.universalmind.tv/informatics/research/?collection=general&chapter=12",
+            "section": "Library record",
+            "kind": "published-research-guide",
+            "text": "{\"id\":\"dock2-trauma-ptsd\",\"title\":\"DOCK2, trauma and PTSD: DNA methylation and gene expression\",\"url\":\"https://staging.universalmind.tv/informatics/research/?collection=general&chapter=12\",\"version\":{\"version\":\"general-inflammation-20261125\",\"sourceSHA256\":\"16c2d0a323c71126eb6c5a19878d022ed5a2eaff4c8e8951d65aa28e31b9c0b3\",\"sourceRecords\":75,\"chapters\":[{\"id\":\"dock2-trauma-ptsd\",\"number\":12,\"sourceRecords\":33,\"reviewedAt\":\"2026-11-21\"},{\"id\":\"oxtr-il6-inflammation\",\"number\":13,\"sourceRecords\":42,\"reviewedAt\":\"2026-11-24\"}]},\"reviewedAt\":\"2026-11-21\",\"sourceCount\":33,\"reviewMethod\":\"Targeted narrative evidence map. Supplied links screened; primary results and relevant full-text passages assessed where accessible. Not a systematic review or clinical biomarker validation.\",\"overview\":[\"Universal Mind is investigating whether its interventions, developed around hypotheses concerning oxytocin receptor signalling, are associated with changes in DOCK2 gene expression or DNA methylation. DOCK2 is an exploratory biological outcome alongside symptoms, functioning and wellbeing. The aim is to test whether it can provide an early signal of intervention response.\",\"DOCK2 means dedicator of cytokinesis 2. It is distinct from the DOC2 family. Published human studies connect DOCK2 with PTSD-associated methylation, with limited expression evidence and mixed replication. These observations motivate a longitudinal research question; they do not establish a beneficial direction of change or a validated surrogate for recovery.\",\"Research purpose: intervention response, not initial diagnosis. The proposed chain from an intervention to OXTR-related biology, to DOCK2 change, to clinical benefit contains several untested links. Measuring each link separately keeps the hypothesis testable. Literature reviewed 21 November 2026; this is a targeted narrative evidence map, not a systematic review.\"],\"topics\":[{\"id\":\"dock2-replication\",\"number\":\"12.3\",\"title\":\"Replication, larger cohorts and longitudinal context\",\"description\":\"The unsuccessful exact-site replication belongs beside the positive findings. Larger studies that mention earlier DOCK2 work or highlight other loci are labelled accordingly. Posttraumatic growth and PTSD symptom recovery are separate outcomes.\",\"trustAssessment\":{\"status\":\"exploratory\",\"basis\":\"Study-specific evidence is described; no formal certainty grade assigned to this research hypothesis.\"},\"paragraphs\":[],\"sourceIds\":[\"pmid-32171335\",\"dock2-montalvo2022\",\"pmid-39696436\",\"dock2-rubens2025\",\"dock2-nothling2021\"]}],\"matchedRecords\":5,\"offset\":0,\"nextOffset\":null,\"downloads\":{\"json\":\"https://staging.universalmind.tv/informatics/library-data/dock2-research-register.json\",\"csv\":\"https://staging.universalmind.tv/informatics/library-data/dock2-research-register.csv\",\"reading\":\"https://staging.universalmind.tv/informatics/read/dock2/index.html\"},\"knowledgeMethod\":\"Versioned retrieval of the published source appraisals and chapter synthesis. Source counts include different evidence types and linked reports; they are not counts of independent experiments. Full-text access remains source-specific. No model fine-tuning.\"}",
+            "doi": null,
+            "rights": null,
+            "sha256": "16c2d0a323c71126eb6c5a19878d022ed5a2eaff4c8e8951d65aa28e31b9c0b3",
+            "retrievalLabel": "S8"
+          },
+          {
+            "label": "S2",
+            "id": "pmid-28795405",
+            "passageId": null,
+            "title": "Genomewide DNA methylation analysis in combat veterans reveals a novel locus for PTSD",
+            "authors": "Mehta D., Bruenig D., Carrillo‐Roa T., Lawford B., Harvey W., Morris C. P., Smith A. K., Binder E. B., Young R. McD, Voisey J.",
+            "journal": "Acta Psychiatrica Scandinavica",
+            "year": 2017,
+            "url": "https://doi.org/10.1111/acps.12778",
+            "section": "Library record",
+            "kind": "approved-record",
+            "text": "Lower methylation at DOCK2 cg16277944 was associated with greater PTSD symptom severity and replicated in a separate cohort (p = 0.0028). Post-hoc blood analyses found a modest inverse methylation–expression association (r = −0.21) and a group difference in DOCK2 expression.",
+            "doi": "10.1111/acps.12778",
+            "rights": null,
+            "sha256": null,
+            "retrievalLabel": "S2"
+          },
+          {
+            "label": "S3",
+            "id": "pmid-32171335",
+            "passageId": null,
+            "title": "An epigenome-wide association study of posttraumatic stress disorder in US veterans implicates several new DNA methylation loci",
+            "authors": "Logue Mark W., Miller Mark W., Wolf Erika J., Huber Bertrand Russ, Morrison Filomene G., Zhou Zhenwei, Zheng Yuanchao, Smith Alicia K., Daskalakis Nikolaos P., Ratanatharathorn Andrew, Uddin Monica, Nievergelt Caroline M., Ashley-Koch Allison E., Baker Dewleen G., Beckham Jean C., Garrett Melanie E., Boks Marco P., Geuze Elbert, Grant Gerald A., Hauser Michael A., Kessler Ronald C., Kimbrel Nathan A., Maihofer Adam X., Marx Christine E., Qin Xue-Jun, Risbrough Victoria B., Rutten Bart P. F., Stein Murray B., Ursano Robert J., Vermetten Eric, Vinkers Christiaan H., Ware Erin B., Stone Annjanette, Schichman Steven A., McGlinchey Regina E., Milberg William P., Hayes Jasmeet P., Verfaellie Mieke",
+            "journal": "Clinical Epigenetics",
+            "year": 2020,
+            "url": "https://doi.org/10.1186/s13148-020-0820-0",
+            "section": "Library record",
+            "kind": "approved-record",
+            "text": "Supplementary Table 5 explicitly tested the original DOCK2 site cg16277944: p = 0.21 and adjusted p = 0.69. This study did not replicate that association.",
+            "doi": "10.1186/s13148-020-0820-0",
+            "rights": null,
+            "sha256": null,
+            "retrievalLabel": "S9"
+          },
+          {
+            "label": "S4",
+            "id": "pmid-39696436",
+            "passageId": null,
+            "title": "Epigenome-wide association studies identify novel DNA methylation sites associated with PTSD: a meta-analysis of 23 military and civilian cohorts",
+            "authors": "Katrinli Seyma, Wani Agaz H., Maihofer Adam X., Ratanatharathorn Andrew, Daskalakis Nikolaos P., Montalvo-Ortiz Janitza, Núñez-Ríos Diana L., Zannas Anthony S., Zhao Xiang, Aiello Allison E., Ashley-Koch Allison E., Avetyan Diana, Baker Dewleen G., Beckham Jean C., Boks Marco P., Brick Leslie A., Bromet Evelyn, Champagne Frances A., Chen Chia-Yen, Dalvie Shareefa, Dennis Michelle F., Fatumo Segun, Fortier Catherine, Galea Sandro, Garrett Melanie E., Geuze Elbert, Grant Gerald, Hauser Michael A., Hayes Jasmeet P., Hemmings Sian M. J., Huber Bertrand Russel, Jajoo Aarti, Jansen Stefan, Kessler Ronald C., Kimbrel Nathan A., King Anthony P., Kleinman Joel E., Koen Nastassja, Koenen Karestan C., Kuan Pei-Fen, Liberzon Israel, Linnstaedt Sarah D., Lori Adriana, Luft Benjamin J., Luykx Jurjen J., Marx Christine E., McLean Samuel A., Mehta Divya, Milberg William, Miller Mark W., Mufford Mary S., Musanabaganwa Clarisse, Mutabaruka Jean, Mutesa Leon, Nemeroff Charles B., Nugent Nicole R., Orcutt Holly K., Qin Xue-Jun, Rauch Sheila A. M., Ressler Kerry J., Risbrough Victoria B., Rutembesa Eugène, Rutten Bart P. F., Seedat Soraya, Stein Dan J., Stein Murray B., Toikumo Sylvanus, Ursano Robert J., Uwineza Annette, Verfaellie Mieke H., Vermetten Eric, Vinkers Christiaan H., Ware Erin B., Wildman Derek E., Wolf Erika J., Young Ross McD, Zhao Ying, van den Heuvel Leigh L.,  , Alisch Reid S., Amstadter Ananda B, Armstrong Don, Basu Archana, Bjorklund Nicole L, Chaiyachati Barbara H, Ensink Judith B M, Fleming Leland L, Gelernter Joel, Herringa Ryan J, Jain Sonia, Juvinao-Quintero Diana L, Ketema Elizabeth, Martínez-Magaña José J, Misganaw Burook, Nagamatsu Shiela Tiemi, Nispeling Danny M, Pfeiffer John, Schmahl Christian, Shinozaki Gen, Snijders Clara, Sumner Jennifer A, Swart Patricia C, Tyrka Audrey, van Zuiden Mirjam, Womersley Jaqueline S, Youssef Nagy A, Zheng Yuanchao, Zhu Yiwen, Zillich Lea,  , Arasappan Dhivya, Berretta Sabina, Bharadwaj Rahul A., Collado-Torres Leonardo, Chatzinakos Christos, DiPietro Chris P., Duong Duc M., Deep-Soboslay Amy, Eagles Nick, Huuki Louise, Hyde Thomas, Iatrou Artemis, Pertea Geo, Ross Deanna, Seyfried Nicholas T., Shin Joo Heon,  , Alvarez Victor E., Benedek David, Che Alicia, Cruz Dianne A., Davis David A., Girgenti Matthew J., Hoffman Ellen, Holtzheimer Paul E., Kaye Alfred, Krystal John H., Labadorf Adam T., Keane Terence M., McKee Ann, Marx Brian, Noller Crystal, Pierce Meghan, Scott William K., Schnurr Paula, DiSano Krista, Stein Thor, Williamson Douglas E., Young Keith A., Uddin Monica, Nievergelt Caroline M., Smith Alicia K., Logue Mark W.",
+            "journal": "Genome Medicine",
+            "year": 2024,
+            "url": "https://doi.org/10.1186/s13073-024-01417-1",
+            "section": "Library record",
+            "kind": "approved-record",
+            "text": "The published meta-analysis identified 11 principal significant CpG associations. DOCK2 was not among the reported principal significant loci.",
+            "doi": "10.1186/s13073-024-01417-1",
+            "rights": null,
+            "sha256": null,
+            "retrievalLabel": "S4"
+          }
+        ],
+        "model": "gpt-6-astra",
+        "reasoning": "max",
+        "providerResponses": [
+          {
+            "id": "resp_01242c59fd0e8f5d016b05dbe4ba3887d091830ab5a049b544",
+            "requestedReasoning": "max",
+            "providerReasoning": "max",
+            "status": "completed"
+          },
+          {
+            "id": "resp_01242c59fd0e8f5d016b05dbef6c6887d0809210cbf92abef4",
+            "requestedReasoning": "max",
+            "providerReasoning": "max",
+            "status": "completed"
+          },
+          {
+            "id": "resp_01242c59fd0e8f5d016b05dbf24e9487d09b35ea5a3029c4d4",
+            "requestedReasoning": "max",
+            "providerReasoning": "max",
+            "status": "completed"
+          }
+        ],
+        "version": "research-20261026-daytab-v1",
+        "knowledgeVersions": {
+          "approvedYouth": {
+            "sourceBatch": "batch-f164c8325ea5f9c9.json",
+            "sourceSHA256": "f164c8325ea5f9c989c29524518b598913508117712826dc408f592b7f99a723",
+            "approvedAt": "2026-11-02",
+            "publications": 105
+          },
+          "biofeedback": {
+            "version": "lab-biofeedback-20261105-ratings",
+            "publications": 63
+          },
+          "inflammation": {
+            "version": "general-inflammation-20261125",
+            "sourceSHA256": "16c2d0a323c71126eb6c5a19878d022ed5a2eaff4c8e8951d65aa28e31b9c0b3",
+            "sourceRecords": 75,
+            "chapters": [
+              {
+                "id": "dock2-trauma-ptsd",
+                "number": 12,
+                "sourceRecords": 33,
+                "reviewedAt": "2026-11-21"
+              },
+              {
+                "id": "oxtr-il6-inflammation",
+                "number": 13,
+                "sourceRecords": 42,
+                "reviewedAt": "2026-11-24"
+              }
+            ]
+          },
+          "publicGenes": "public-gene-data-20261109-v1",
+          "literature": "literature-20261110-v2"
+        },
+        "usage": {
+          "totalTokens": 35226,
+          "qaSpend": {
+            "limitUSD": 2.25,
+            "chargedUpperUSD": 0.509325,
+            "calls": [
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 53208,
+                "outputTokenUpper": 16384,
+                "boundMethod": "UTF-8 bytes plus framing",
+                "reservedUSD": 1.4843000000000002,
+                "chargedUpperUSD": 0.13235,
+                "usage": {
+                  "input_tokens": 8796,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 4149,
+                    "cache_write_tokens_details": {
+                      "ttl_12h_tokens": 0,
+                      "ttl_30m_tokens": 4149
+                    },
+                    "cached_tokens": 4644
+                  },
+                  "output_tokens": 448,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 405
+                  },
+                  "total_tokens": 9244
+                }
+              },
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 38607,
+                "outputTokenUpper": 16384,
+                "boundMethod": "Provider-counted exact prefix plus new UTF-8 bytes and framing",
+                "reservedUSD": 1.3017875,
+                "chargedUpperUSD": 0.15183750000000001,
+                "usage": {
+                  "input_tokens": 12051,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 3255,
+                    "cache_write_tokens_details": {
+                      "ttl_12h_tokens": 0,
+                      "ttl_30m_tokens": 3255
+                    },
+                    "cached_tokens": 8793
+                  },
+                  "output_tokens": 24,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 0
+                  },
+                  "total_tokens": 12075
+                }
+              },
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 22692,
+                "outputTokenUpper": 16384,
+                "boundMethod": "Provider-counted exact prefix plus new UTF-8 bytes and framing",
+                "reservedUSD": 1.10285,
+                "chargedUpperUSD": 0.2251375,
+                "usage": {
+                  "input_tokens": 12539,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 488,
+                    "cache_write_tokens_details": {
+                      "ttl_12h_tokens": 0,
+                      "ttl_30m_tokens": 488
+                    },
+                    "cached_tokens": 11976
+                  },
+                  "output_tokens": 1368,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 1034
+                  },
+                  "total_tokens": 13907
+                }
+              }
+            ]
+          }
+        },
+        "retrieval": {
+          "required": true,
+          "sourceCount": 12,
+          "contextMessages": 0,
+          "previousReferences": 0
+        }
+      }
+    },
+    {
+      "question": "What are the main measurement limits for that candidate? Keep it brief and refer to the chapter.",
+      "status": 200,
+      "response": {
+        "answer": "**Chapter 12 highlights four measurement limits for DOCK2:**\n\n- **Separate readouts:** RNA expression and methylation at specific DNA sites measure different things. Neither directly measures oxytocin signalling or immune-protein function; increased values are not automatically beneficial. [S1]\n- **Sample and confounding effects:** Tissue, blood-cell composition, collection timing and laboratory methods matter. Medication, smoking, recent infection and genetic variation also complicate interpretation. [S1][S2]\n- **Signal versus measurement noise:** A credible change needs reproducibility, an effect exceeding technical variation, a suitable comparison condition, and prespecified endpoints with correction for multiple testing. [S1]\n- **Uncertain link to improvement:** The main human study was cross-sectional, and its methylation–expression correlation was modest (r = −0.21). That does not establish that either measurement tracks an individual’s intervention response. [S2]\n\n**The chapter’s conclusion:** pair repeated DOCK2 measurements with validated symptom and functioning measures. Molecular change alone is not evidence of benefit, and clinical improvement without DOCK2 change remains meaningful. [S1]",
+        "sources": [
+          {
+            "label": "S1",
+            "id": "dock2-trauma-ptsd",
+            "passageId": "dock2-trauma-ptsd:dock2-response",
+            "title": "DOCK2, trauma and PTSD: DNA methylation and gene expression",
+            "authors": "",
+            "url": "https://staging.universalmind.tv/informatics/research/?collection=general&chapter=12",
+            "section": "Library record",
+            "kind": "published-research-guide",
+            "text": "{\"id\":\"dock2-trauma-ptsd\",\"title\":\"DOCK2, trauma and PTSD: DNA methylation and gene expression\",\"url\":\"https://staging.universalmind.tv/informatics/research/?collection=general&chapter=12\",\"version\":{\"version\":\"general-inflammation-20261125\",\"sourceSHA256\":\"16c2d0a323c71126eb6c5a19878d022ed5a2eaff4c8e8951d65aa28e31b9c0b3\",\"sourceRecords\":75,\"chapters\":[{\"id\":\"dock2-trauma-ptsd\",\"number\":12,\"sourceRecords\":33,\"reviewedAt\":\"2026-11-21\"},{\"id\":\"oxtr-il6-inflammation\",\"number\":13,\"sourceRecords\":42,\"reviewedAt\":\"2026-11-24\"}]},\"reviewedAt\":\"2026-11-21\",\"sourceCount\":33,\"reviewMethod\":\"Targeted narrative evidence map. Supplied links screened; primary results and relevant full-text passages assessed where accessible. Not a systematic review or clinical biomarker validation.\",\"overview\":[\"Universal Mind is investigating whether its interventions, developed around hypotheses concerning oxytocin receptor signalling, are associated with changes in DOCK2 gene expression or DNA methylation. DOCK2 is an exploratory biological outcome alongside symptoms, functioning and wellbeing. The aim is to test whether it can provide an early signal of intervention response.\",\"DOCK2 means dedicator of cytokinesis 2. It is distinct from the DOC2 family. Published human studies connect DOCK2 with PTSD-associated methylation, with limited expression evidence and mixed replication. These observations motivate a longitudinal research question; they do not establish a beneficial direction of change or a validated surrogate for recovery.\",\"Research purpose: intervention response, not initial diagnosis. The proposed chain from an intervention to OXTR-related biology, to DOCK2 change, to clinical benefit contains several untested links. Measuring each link separately keeps the hypothesis testable. Literature reviewed 21 November 2026; this is a targeted narrative evidence map, not a systematic review.\"],\"topics\":[{\"id\":\"dock2-response\",\"number\":\"12.1\",\"title\":\"Research purpose · intervention response and OXTR\",\"description\":\"What excites us: the possibility of pairing lived improvement with repeatable molecular measurements, and of learning whether immune-related biology changes during recovery. Published psychotherapy studies demonstrate ways to examine molecular trajectories, while their positive and null findings help define a rigorous test.\",\"trustAssessment\":{\"status\":\"exploratory\",\"basis\":\"Study-specific evidence is described; no formal certainty grade assigned to this research hypothesis.\"},\"paragraphs\":[\"EMDR has clinical efficacy evidence as a complete trauma-focused psychotherapy delivered by trained clinicians. Universal Mind’s experimental visual, auditory and other components require their own evaluation; using an EMDR-related component does not establish the efficacy of the full therapy or an OXTR mechanism.\",\"Measure RNA expression and DNA methylation separately. RNA abundance measures gene output; methylation measures chemical marks at specified DNA sites. Neither directly measures oxytocin release, receptor activation or immune-protein function. Increased expression and increased methylation are not automatically beneficial.\",\"A proposed longitudinal study pairs baseline, early, post-intervention and follow-up samples with validated symptom and functioning measures, a suitable comparison condition, and a prespecified analysis. Match tissue, collection time and laboratory methods; assess cell composition, medication, smoking, recent infection and other relevant confounders. Register candidate CpGs, expression endpoints, timing and multiple-testing correction before analysis.\",\"An early molecular association becomes informative when it is reproducible, exceeds technical variation, differs meaningfully from the comparison condition and relates to late",
+            "doi": null,
+            "rights": null,
+            "sha256": "16c2d0a323c71126eb6c5a19878d022ed5a2eaff4c8e8951d65aa28e31b9c0b3",
+            "retrievalLabel": "S8"
+          },
+          {
+            "label": "S2",
+            "id": "pmid-28795405",
+            "passageId": null,
+            "title": "Genomewide DNA methylation analysis in combat veterans reveals a novel locus for PTSD",
+            "authors": "Mehta D., Bruenig D., Carrillo‐Roa T., Lawford B., Harvey W., Morris C. P., Smith A. K., Binder E. B., Young R. McD, Voisey J.",
+            "journal": "Acta Psychiatrica Scandinavica",
+            "year": 2017,
+            "url": "https://doi.org/10.1111/acps.12778",
+            "section": "Library record",
+            "kind": "approved-record",
+            "text": "Lower methylation at DOCK2 cg16277944 was associated with greater PTSD symptom severity and replicated in a separate cohort (p = 0.0028). Post-hoc blood analyses found a modest inverse methylation–expression association (r = −0.21) and a group difference in DOCK2 expression.",
+            "doi": "10.1111/acps.12778",
+            "rights": null,
+            "sha256": null,
+            "retrievalLabel": "S2"
+          }
+        ],
+        "model": "gpt-6-astra",
+        "reasoning": "max",
+        "providerResponses": [
+          {
+            "id": "resp_0c9296e1249993d8016b05dc11b33c87d0b54474cb54de4795",
+            "requestedReasoning": "max",
+            "providerReasoning": "max",
+            "status": "completed"
+          },
+          {
+            "id": "resp_0c9296e1249993d8016b05dc1b27e887d089396e712e1c4634",
+            "requestedReasoning": "max",
+            "providerReasoning": "max",
+            "status": "completed"
+          },
+          {
+            "id": "resp_0c9296e1249993d8016b05dc1da87487d0b31144d4262098bc",
+            "requestedReasoning": "max",
+            "providerReasoning": "max",
+            "status": "completed"
+          }
+        ],
+        "version": "research-20261026-daytab-v1",
+        "knowledgeVersions": {
+          "approvedYouth": {
+            "sourceBatch": "batch-f164c8325ea5f9c9.json",
+            "sourceSHA256": "f164c8325ea5f9c989c29524518b598913508117712826dc408f592b7f99a723",
+            "approvedAt": "2026-11-02",
+            "publications": 105
+          },
+          "biofeedback": {
+            "version": "lab-biofeedback-20261105-ratings",
+            "publications": 63
+          },
+          "inflammation": {
+            "version": "general-inflammation-20261125",
+            "sourceSHA256": "16c2d0a323c71126eb6c5a19878d022ed5a2eaff4c8e8951d65aa28e31b9c0b3",
+            "sourceRecords": 75,
+            "chapters": [
+              {
+                "id": "dock2-trauma-ptsd",
+                "number": 12,
+                "sourceRecords": 33,
+                "reviewedAt": "2026-11-21"
+              },
+              {
+                "id": "oxtr-il6-inflammation",
+                "number": 13,
+                "sourceRecords": 42,
+                "reviewedAt": "2026-11-24"
+              }
+            ]
+          },
+          "publicGenes": "public-gene-data-20261109-v1",
+          "literature": "literature-20261110-v2"
+        },
+        "usage": {
+          "totalTokens": 41689,
+          "qaSpend": {
+            "limitUSD": 2.25,
+            "chargedUpperUSD": 0.5839624999999999,
+            "calls": [
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 56062,
+                "outputTokenUpper": 16384,
+                "boundMethod": "UTF-8 bytes plus framing",
+                "reservedUSD": 1.519975,
+                "chargedUpperUSD": 0.1353375,
+                "usage": {
+                  "input_tokens": 9367,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 4720,
+                    "cache_write_tokens_details": {
+                      "ttl_12h_tokens": 0,
+                      "ttl_30m_tokens": 4720
+                    },
+                    "cached_tokens": 4644
+                  },
+                  "output_tokens": 365,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 328
+                  },
+                  "total_tokens": 9732
+                }
+              },
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 43955,
+                "outputTokenUpper": 16384,
+                "boundMethod": "Provider-counted exact prefix plus new UTF-8 bytes and framing",
+                "reservedUSD": 1.3686375000000002,
+                "chargedUpperUSD": 0.174325,
+                "usage": {
+                  "input_tokens": 13790,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 4423,
+                    "cache_write_tokens_details": {
+                      "ttl_12h_tokens": 0,
+                      "ttl_30m_tokens": 4423
+                    },
+                    "cached_tokens": 9364
+                  },
+                  "output_tokens": 39,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 0
+                  },
+                  "total_tokens": 13829
+                }
+              },
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 36692,
+                "outputTokenUpper": 16384,
+                "boundMethod": "Provider-counted exact prefix plus new UTF-8 bytes and framing",
+                "reservedUSD": 1.27785,
+                "chargedUpperUSD": 0.2743,
+                "usage": {
+                  "input_tokens": 16856,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 3066,
+                    "cache_write_tokens_details": {
+                      "ttl_12h_tokens": 0,
+                      "ttl_30m_tokens": 3066
+                    },
+                    "cached_tokens": 13715
+                  },
+                  "output_tokens": 1272,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 1034
+                  },
+                  "total_tokens": 18128
+                }
+              }
+            ]
+          }
+        },
+        "retrieval": {
+          "required": true,
+          "sourceCount": 12,
+          "contextMessages": 2,
+          "previousReferences": 4
+        }
+      }
+    },
+    {
+      "question": "From our published DOCK2/PTSD chapter, briefly explain why DOCK2 remains an exploratory intervention-response measure. Cite the human findings and their limits.",
+      "status": 200,
+      "response": {
+        "answer": "**DOCK2 remains exploratory because association with PTSD is not the same as demonstrated intervention responsiveness.** The chapter reports human DOCK2 methylation associations, but limited expression evidence, mixed replication and no established beneficial direction of change. [S1]\n\n- **Replication is inconsistent.** In 513 veterans, the original DOCK2 methylation site, cg16277944, did not replicate (p = 0.21; adjusted p = 0.69). This weakens confidence in a broadly reliable marker, without ruling out population-specific effects. It was not a treatment-response test. [S2]\n- **Larger studies do not establish validation.** A 23-cohort meta-analysis involving 5,077 people did not identify DOCK2 among its principal significant loci. That is important context—not, by itself, an exact-site replication failure. [S3]\n- **Treatment studies provide indirect, mixed evidence.** A small longitudinal study identified recovery-associated methylation candidates involving FKBP5 and CREB–BDNF signalling, but did not validate DOCK2. Separately, 60 women improved clinically without major recurrent methylation changes in four targeted genes, including OXTR; DOCK2 was not one of those targets. [S4][S5]\n\nThe chapter therefore positions DOCK2 as a research measure **alongside symptoms, functioning and wellbeing—not a substitute for clinical improvement**. Methylation and RNA expression remain separate outcomes, and the proposed intervention → OXTR-related biology → DOCK2 → benefit pathway remains unproven. A DOCK2 change alone is not evidence of recovery. [S1]",
+        "sources": [
+          {
+            "label": "S1",
+            "id": "dock2-trauma-ptsd",
+            "passageId": "dock2-trauma-ptsd:dock2-response",
+            "title": "DOCK2, trauma and PTSD: DNA methylation and gene expression",
+            "authors": "",
+            "url": "https://staging.universalmind.tv/informatics/research/?collection=general&chapter=12",
+            "section": "Library record",
+            "kind": "published-research-guide",
+            "text": "{\"id\":\"dock2-trauma-ptsd\",\"title\":\"DOCK2, trauma and PTSD: DNA methylation and gene expression\",\"url\":\"https://staging.universalmind.tv/informatics/research/?collection=general&chapter=12\",\"version\":{\"version\":\"general-inflammation-20261125-v2\",\"sourceSHA256\":\"16c2d0a323c71126eb6c5a19878d022ed5a2eaff4c8e8951d65aa28e31b9c0b3\",\"sourceRecords\":75,\"chapters\":[{\"id\":\"dock2-trauma-ptsd\",\"number\":12,\"sourceRecords\":33,\"reviewedAt\":\"2026-11-21\"},{\"id\":\"oxtr-il6-inflammation\",\"number\":13,\"sourceRecords\":42,\"reviewedAt\":\"2026-11-24\"}]},\"reviewedAt\":\"2026-11-21\",\"sourceCount\":33,\"reviewMethod\":\"Targeted narrative evidence map. Supplied links screened; primary results and relevant full-text passages assessed where accessible. Not a systematic review or clinical biomarker validation.\",\"overview\":[\"Universal Mind is investigating whether its interventions, developed around hypotheses concerning oxytocin receptor signalling, are associated with changes in DOCK2 gene expression or DNA methylation. DOCK2 is an exploratory biological outcome alongside symptoms, functioning and wellbeing. The aim is to test whether it can provide an early signal of intervention response.\",\"DOCK2 means dedicator of cytokinesis 2. It is distinct from the DOC2 family. Published human studies connect DOCK2 with PTSD-associated methylation, with limited expression evidence and mixed replication. These observations motivate a longitudinal research question; they do not establish a beneficial direction of change or a validated surrogate for recovery.\",\"Research purpose: intervention response, not initial diagnosis. The proposed chain from an intervention to OXTR-related biology, to DOCK2 change, to clinical benefit contains several untested links. Measuring each link separately keeps the hypothesis testable. Literature reviewed 21 November 2026; this is a targeted narrative evidence map, not a systematic review.\"],\"topics\":[{\"id\":\"dock2-response\",\"number\":\"12.1\",\"title\":\"Research purpose · intervention response and OXTR\",\"description\":\"What excites us: the possibility of pairing lived improvement with repeatable molecular measurements, and of learning whether immune-related biology changes during recovery. Published psychotherapy studies demonstrate ways to examine molecular trajectories, while their positive and null findings help define a rigorous test.\",\"trustAssessment\":{\"status\":\"exploratory\",\"basis\":\"Study-specific evidence is described; no formal certainty grade assigned to this research hypothesis.\"},\"paragraphs\":[\"EMDR has clinical efficacy evidence as a complete trauma-focused psychotherapy delivered by trained clinicians. Universal Mind’s experimental visual, auditory and other components require their own evaluation; using an EMDR-related component does not establish the efficacy of the full therapy or an OXTR mechanism.\",\"Measure RNA expression and DNA methylation separately. RNA abundance measures gene output; methylation measures chemical marks at specified DNA sites. Neither directly measures oxytocin release, receptor activation or immune-protein function. Increased expression and increased methylation are not automatically beneficial.\",\"A proposed longitudinal study pairs baseline, early, post-intervention and follow-up samples with validated symptom and functioning measures, a suitable comparison condition, and a prespecified analysis. Match tissue, collection time and laboratory methods; assess cell composition, medication, smoking, recent infection and other relevant confounders. Register candidate CpGs, expression endpoints, timing and multiple-testing correction before analysis.\",\"An early molecular association becomes informative when it is reproducible, exceeds technical variation, differs meaningfully from the comparison condition and relates to l",
+            "doi": null,
+            "rights": null,
+            "sha256": "16c2d0a323c71126eb6c5a19878d022ed5a2eaff4c8e8951d65aa28e31b9c0b3",
+            "retrievalLabel": "S8"
+          },
+          {
+            "label": "S2",
+            "id": "pmid-32171335",
+            "passageId": null,
+            "title": "An epigenome-wide association study of posttraumatic stress disorder in US veterans implicates several new DNA methylation loci",
+            "authors": "Logue Mark W., Miller Mark W., Wolf Erika J., Huber Bertrand Russ, Morrison Filomene G., Zhou Zhenwei, Zheng Yuanchao, Smith Alicia K., Daskalakis Nikolaos P., Ratanatharathorn Andrew, Uddin Monica, Nievergelt Caroline M., Ashley-Koch Allison E., Baker Dewleen G., Beckham Jean C., Garrett Melanie E., Boks Marco P., Geuze Elbert, Grant Gerald A., Hauser Michael A., Kessler Ronald C., Kimbrel Nathan A., Maihofer Adam X., Marx Christine E., Qin Xue-Jun, Risbrough Victoria B., Rutten Bart P. F., Stein Murray B., Ursano Robert J., Vermetten Eric, Vinkers Christiaan H., Ware Erin B., Stone Annjanette, Schichman Steven A., McGlinchey Regina E., Milberg William P., Hayes Jasmeet P., Verfaellie Mieke",
+            "journal": "Clinical Epigenetics",
+            "year": 2020,
+            "url": "https://doi.org/10.1186/s13148-020-0820-0",
+            "section": "Library record",
+            "kind": "approved-record",
+            "text": "Supplementary Table 5 explicitly tested the original DOCK2 site cg16277944: p = 0.21 and adjusted p = 0.69. This study did not replicate that association.",
+            "doi": "10.1186/s13148-020-0820-0",
+            "rights": null,
+            "sha256": null,
+            "retrievalLabel": "S14"
+          },
+          {
+            "label": "S3",
+            "id": "pmid-39696436",
+            "passageId": null,
+            "title": "Epigenome-wide association studies identify novel DNA methylation sites associated with PTSD: a meta-analysis of 23 military and civilian cohorts",
+            "authors": "Katrinli Seyma, Wani Agaz H., Maihofer Adam X., Ratanatharathorn Andrew, Daskalakis Nikolaos P., Montalvo-Ortiz Janitza, Núñez-Ríos Diana L., Zannas Anthony S., Zhao Xiang, Aiello Allison E., Ashley-Koch Allison E., Avetyan Diana, Baker Dewleen G., Beckham Jean C., Boks Marco P., Brick Leslie A., Bromet Evelyn, Champagne Frances A., Chen Chia-Yen, Dalvie Shareefa, Dennis Michelle F., Fatumo Segun, Fortier Catherine, Galea Sandro, Garrett Melanie E., Geuze Elbert, Grant Gerald, Hauser Michael A., Hayes Jasmeet P., Hemmings Sian M. J., Huber Bertrand Russel, Jajoo Aarti, Jansen Stefan, Kessler Ronald C., Kimbrel Nathan A., King Anthony P., Kleinman Joel E., Koen Nastassja, Koenen Karestan C., Kuan Pei-Fen, Liberzon Israel, Linnstaedt Sarah D., Lori Adriana, Luft Benjamin J., Luykx Jurjen J., Marx Christine E., McLean Samuel A., Mehta Divya, Milberg William, Miller Mark W., Mufford Mary S., Musanabaganwa Clarisse, Mutabaruka Jean, Mutesa Leon, Nemeroff Charles B., Nugent Nicole R., Orcutt Holly K., Qin Xue-Jun, Rauch Sheila A. M., Ressler Kerry J., Risbrough Victoria B., Rutembesa Eugène, Rutten Bart P. F., Seedat Soraya, Stein Dan J., Stein Murray B., Toikumo Sylvanus, Ursano Robert J., Uwineza Annette, Verfaellie Mieke H., Vermetten Eric, Vinkers Christiaan H., Ware Erin B., Wildman Derek E., Wolf Erika J., Young Ross McD, Zhao Ying, van den Heuvel Leigh L.,  , Alisch Reid S., Amstadter Ananda B, Armstrong Don, Basu Archana, Bjorklund Nicole L, Chaiyachati Barbara H, Ensink Judith B M, Fleming Leland L, Gelernter Joel, Herringa Ryan J, Jain Sonia, Juvinao-Quintero Diana L, Ketema Elizabeth, Martínez-Magaña José J, Misganaw Burook, Nagamatsu Shiela Tiemi, Nispeling Danny M, Pfeiffer John, Schmahl Christian, Shinozaki Gen, Snijders Clara, Sumner Jennifer A, Swart Patricia C, Tyrka Audrey, van Zuiden Mirjam, Womersley Jaqueline S, Youssef Nagy A, Zheng Yuanchao, Zhu Yiwen, Zillich Lea,  , Arasappan Dhivya, Berretta Sabina, Bharadwaj Rahul A., Collado-Torres Leonardo, Chatzinakos Christos, DiPietro Chris P., Duong Duc M., Deep-Soboslay Amy, Eagles Nick, Huuki Louise, Hyde Thomas, Iatrou Artemis, Pertea Geo, Ross Deanna, Seyfried Nicholas T., Shin Joo Heon,  , Alvarez Victor E., Benedek David, Che Alicia, Cruz Dianne A., Davis David A., Girgenti Matthew J., Hoffman Ellen, Holtzheimer Paul E., Kaye Alfred, Krystal John H., Labadorf Adam T., Keane Terence M., McKee Ann, Marx Brian, Noller Crystal, Pierce Meghan, Scott William K., Schnurr Paula, DiSano Krista, Stein Thor, Williamson Douglas E., Young Keith A., Uddin Monica, Nievergelt Caroline M., Smith Alicia K., Logue Mark W.",
+            "journal": "Genome Medicine",
+            "year": 2024,
+            "url": "https://doi.org/10.1186/s13073-024-01417-1",
+            "section": "Library record",
+            "kind": "approved-record",
+            "text": "The published meta-analysis identified 11 principal significant CpG associations. DOCK2 was not among the reported principal significant loci.",
+            "doi": "10.1186/s13073-024-01417-1",
+            "rights": null,
+            "sha256": null,
+            "retrievalLabel": "S4"
+          },
+          {
+            "label": "S4",
+            "id": "pmid-34282125",
+            "passageId": null,
+            "title": "Longitudinal genome-wide methylation study of PTSD treatment using prolonged exposure and hydrocortisone",
+            "authors": "Yang Ruoting, Xu Changxin, Bierer Linda M., Flory Janine D., Gautam Aarti, Bader Heather N., Lehrner Amy, Makotkine Iouri, Desarnaud Frank, Miller Stacy A., Jett Marti, Hammamieh Rasha, Yehuda Rachel",
+            "journal": "Translational Psychiatry",
+            "year": 2021,
+            "url": "https://doi.org/10.1038/s41398-021-01513-5",
+            "section": "Library record",
+            "kind": "approved-record",
+            "text": "The study measured methylation before and after prolonged-exposure therapy and at follow-up, identifying candidate associations with recovery including FKBP5 and CREB–BDNF signalling.",
+            "doi": "10.1038/s41398-021-01513-5",
+            "rights": null,
+            "sha256": null,
+            "retrievalLabel": "S11"
+          },
+          {
+            "label": "S5",
+            "id": "dock2-hummel2022",
+            "passageId": null,
+            "title": "No evidence for intervention-associated DNA methylation changes in monocytes of patients with posttraumatic stress disorder",
+            "authors": "Hummel Elisabeth, Elgizouli Magdeldin, Sicorello Maurizio, Leitão Elsa, Beygo Jasmin, Schröder Christopher, Zeschnigk Michael, Müller Svenja, Herpertz Stephan, Moser Dirk, Kessler Henrik, Horsthemke Bernhard, Kumsta Robert",
+            "journal": "Scientific Reports",
+            "year": 2022,
+            "url": "https://doi.org/10.1038/s41598-022-22177-1",
+            "section": "Library record",
+            "kind": "approved-record",
+            "text": "Despite symptom improvement, the study found no major recurrent treatment-associated methylation changes in the tested regions of NR3C1, FKBP5, SLC6A4 or OXTR. It highlights the value of controlling blood-cell composition.",
+            "doi": "10.1038/s41598-022-22177-1",
+            "rights": null,
+            "sha256": null,
+            "retrievalLabel": "S5"
+          }
+        ],
+        "model": "gpt-6-astra",
+        "reasoning": "max",
+        "providerResponses": [
+          {
+            "id": "resp_0e45b51c567df28d016b05dc7be30487d0a70aea80d0e2b1f9",
+            "requestedReasoning": "max",
+            "providerReasoning": "max",
+            "status": "completed"
+          },
+          {
+            "id": "resp_0e45b51c567df28d016b05dc85769c87d0bb1219824092aa54",
+            "requestedReasoning": "max",
+            "providerReasoning": "max",
+            "status": "completed"
+          },
+          {
+            "id": "resp_0e45b51c567df28d016b05dc87264087d08706f1565957c350",
+            "requestedReasoning": "max",
+            "providerReasoning": "max",
+            "status": "completed"
+          }
+        ],
+        "version": "research-20261026-daytab-v1",
+        "knowledgeVersions": {
+          "approvedYouth": {
+            "sourceBatch": "batch-f164c8325ea5f9c9.json",
+            "sourceSHA256": "f164c8325ea5f9c989c29524518b598913508117712826dc408f592b7f99a723",
+            "approvedAt": "2026-11-02",
+            "publications": 105
+          },
+          "biofeedback": {
+            "version": "lab-biofeedback-20261105-ratings",
+            "publications": 63
+          },
+          "inflammation": {
+            "version": "general-inflammation-20261125-v2",
+            "sourceSHA256": "16c2d0a323c71126eb6c5a19878d022ed5a2eaff4c8e8951d65aa28e31b9c0b3",
+            "sourceRecords": 75,
+            "chapters": [
+              {
+                "id": "dock2-trauma-ptsd",
+                "number": 12,
+                "sourceRecords": 33,
+                "reviewedAt": "2026-11-21"
+              },
+              {
+                "id": "oxtr-il6-inflammation",
+                "number": 13,
+                "sourceRecords": 42,
+                "reviewedAt": "2026-11-24"
+              }
+            ]
+          },
+          "publicGenes": "public-gene-data-20261109-v1",
+          "literature": "literature-20261110-v2"
+        },
+        "usage": {
+          "totalTokens": 39518,
+          "qaSpend": {
+            "limitUSD": 2.25,
+            "chargedUpperUSD": 0.6214000000000002,
+            "calls": [
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 53154,
+                "outputTokenUpper": 16384,
+                "boundMethod": "UTF-8 bytes plus framing",
+                "reservedUSD": 1.483625,
+                "chargedUpperUSD": 0.131175,
+                "usage": {
+                  "input_tokens": 8786,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 4139,
+                    "cache_write_tokens_details": {
+                      "ttl_12h_tokens": 0,
+                      "ttl_30m_tokens": 4139
+                    },
+                    "cached_tokens": 4644
+                  },
+                  "output_tokens": 427,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 386
+                  },
+                  "total_tokens": 9213
+                }
+              },
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 39474,
+                "outputTokenUpper": 16384,
+                "boundMethod": "Provider-counted exact prefix plus new UTF-8 bytes and framing",
+                "reservedUSD": 1.3126250000000002,
+                "chargedUpperUSD": 0.155075,
+                "usage": {
+                  "input_tokens": 12242,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 3456,
+                    "cache_write_tokens_details": {
+                      "ttl_12h_tokens": 0,
+                      "ttl_30m_tokens": 3456
+                    },
+                    "cached_tokens": 8783
+                  },
+                  "output_tokens": 41,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 0
+                  },
+                  "total_tokens": 12283
+                }
+              },
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 33487,
+                "outputTokenUpper": 16384,
+                "boundMethod": "Provider-counted exact prefix plus new UTF-8 bytes and framing",
+                "reservedUSD": 1.2377875,
+                "chargedUpperUSD": 0.33515,
+                "usage": {
+                  "input_tokens": 15092,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 2850,
+                    "cache_write_tokens_details": {
+                      "ttl_12h_tokens": 0,
+                      "ttl_30m_tokens": 2850
+                    },
+                    "cached_tokens": 12167
+                  },
+                  "output_tokens": 2930,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 2588
+                  },
+                  "total_tokens": 18022
+                }
+              }
+            ]
+          }
+        },
+        "retrieval": {
+          "required": true,
+          "sourceCount": 17,
+          "contextMessages": 0,
+          "previousReferences": 0
+        }
+      }
+    },
+    {
+      "question": "From our published OXTR/IL-6 chapter, briefly explain the human findings and why IL-6 changes alone do not establish benefit. Include one positive and one null finding.",
+      "status": 200,
+      "response": {
+        "answer": "The chapter describes **human evidence as emerging, promising and mixed**. Sustained IL-6 lowering and clinical anti-inflammatory efficacy remain unestablished. [S1]\n\n- **Positive finding:** In a randomised placebo-controlled crossover study of **10 healthy men**, intravenous oxytocin reduced the acute endotoxin-induced IL-6, TNF and stress-hormone responses. This small experimental-challenge result—appraised from the indexed abstract—does not establish lasting benefit in chronic disease. [S2]\n- **Null clinical finding:** In the **80-couple wound-healing trial**, oxytocin had no general main effect on healing. A signal for oxytocin combined with positive interaction weakened in sensitivity analysis, highlighting the importance of context. [S3]\n\n**Why IL-6 changes alone do not establish benefit:** IL-6 participates in inflammation **and tissue repair**. Local wound IL-6 and circulating IL-6 measure different processes; timing and biological context matter. A decrease is not automatically beneficial, and an increase is not automatically harmful. Evidence of benefit requires meaningful health outcomes alongside the biomarker change. An IL-6 change also does not, by itself, demonstrate OXTR activation or prove that IL-6 caused an improvement. [S1]",
+        "sources": [
+          {
+            "label": "S1",
+            "id": "oxtr-il6-inflammation",
+            "passageId": "oxtr-il6-inflammation:oxtr-il6-human",
+            "title": "Oxytocin, OXTR and inflammation: a focus on IL-6",
+            "authors": "",
+            "url": "https://staging.universalmind.tv/informatics/research/?collection=general&chapter=13",
+            "section": "Library record",
+            "kind": "published-research-guide",
+            "text": "{\"id\":\"oxtr-il6-inflammation\",\"title\":\"Oxytocin, OXTR and inflammation: a focus on IL-6\",\"url\":\"https://staging.universalmind.tv/informatics/research/?collection=general&chapter=13\",\"version\":{\"version\":\"general-inflammation-20261125-v3\",\"sourceSHA256\":\"7b58c89f93dadb5891b79f2ba113bfa0529dca253c5fb75c9842c77a8f3d67f5\",\"sourceRecords\":75,\"chapters\":[{\"id\":\"dock2-trauma-ptsd\",\"number\":12,\"sourceRecords\":33,\"reviewedAt\":\"2026-11-21\"},{\"id\":\"oxtr-il6-inflammation\",\"number\":13,\"sourceRecords\":42,\"reviewedAt\":\"2026-11-24\"}]},\"reviewedAt\":\"2026-11-24\",\"sourceCount\":42,\"reviewMethod\":[\"The supplied PDF contained 19 distinct scholarly sources after deduplication. This chapter retains all 19 and adds primary human experiments, negative studies, receptor-mechanism papers, assay research and official reference records. The resulting 42 sources include reviews, a thesis, a conference abstract, gene records and a withdrawn trial registration; 42 sources does not mean 42 independent experiments.\",\"Searches covered oxytocin/OXTR with IL-6, inflammatory cytokines, microglia, macrophages, colitis, human randomised trials, endotoxin, wound healing, proteomics, methylation and assay validation. PubMed/Europe PMC, publisher pages, accessible full text, university repositories and ClinicalTrials.gov were checked. Source records state whether full text, an abstract or a registry was available. This is a deep narrative analysis, not a preregistered systematic review, exhaustive search or meta-analysis.\",\"No pooled effect size is presented because populations, species, tissues, routes, doses, timing and outcomes differ substantially. Formal risk-of-bias and GRADE assessments were not performed. The overview uses qualitative judgments about mechanistic support and human translation; publication design icons are not certainty grades. Publication bias and selective reporting remain possible, particularly across small preclinical experiments.\",\"Reviews help locate original studies but do not add independent experimental replication. The master’s thesis and later macrophage publication share a research lineage; full-text access was insufficient to resolve exact data overlap. The two couple studies explicitly share a trial family. These relationships are recorded so source volume does not inflate confidence.\",\"Source checking also identified a gene-identity error in one supplied review. The chapter retains that paper for provenance, flags the error and uses official gene annotations for the hormone–receptor distinction. Claims about tissue-specific effects, negative results and human uncertainty are retained even when they complicate the therapeutic narrative.\"],\"overview\":[\"Oxytocin–OXTR signalling can regulate inflammation in selected cell and animal models, including pathways involving interleukin-6 (IL-6). The mechanistic evidence is strong in several defined systems. Human evidence is emerging and promising, but mixed and context-dependent; sustained systemic IL-6 lowering and clinical anti-inflammatory efficacy are not established.\",\"This chapter follows the evidence from human-derived cells and receptor-perturbation experiments to animal disease models and human studies. It distinguishes inflammatory markers from regulatory markers, tissue RNA from secreted protein, and receptor hypotheses from demonstrated causal mechanisms.\",\"For Universal Mind, the evidence supports a focused human research question: can a defined intervention change IL-6 and related immune measures, alongside meaningful outcomes, and is OXTR-related biology involved? That is a testable opportunity, not an established treatment claim.\"],\"evidenceOverview\":[{\"label\":\"In a dish\",\"strength\":\"Strong in selected models\",\"finding\":\"Direct IL-6 and signalling effects; mechanistic perturbatio",
+            "doi": null,
+            "rights": null,
+            "sha256": "7b58c89f93dadb5891b79f2ba113bfa0529dca253c5fb75c9842c77a8f3d67f5",
+            "retrievalLabel": "S8"
+          },
+          {
+            "label": "S2",
+            "id": "pmid-18593851",
+            "passageId": null,
+            "title": "Oxytocin alleviates the neuroendocrine and cytokine response to bacterial endotoxin in healthy men",
+            "authors": "Clodi M, Vila G, Geyeregger R, Riedl M, Stulnig TM, Struck J, Luger TA, Luger A.",
+            "journal": "American journal of physiology. Endocrinology and metabolism",
+            "year": 2008,
+            "url": "https://doi.org/10.1152/ajpendo.90263.2008",
+            "section": "Library record",
+            "kind": "approved-record",
+            "text": "Intravenous oxytocin attenuated the acute endotoxin-induced IL-6, TNF and stress-hormone response. Several regulatory mediators, including IL-1 receptor antagonist and IL-4, also decreased. Parallel human monocyte/PBMC experiments did not reproduce direct cytokine suppression.",
+            "doi": "10.1152/ajpendo.90263.2008",
+            "rights": null,
+            "sha256": null,
+            "retrievalLabel": "S4"
+          },
+          {
+            "label": "S3",
+            "id": "pmid-41222549",
+            "passageId": null,
+            "title": "Intranasal Oxytocin and Physical Intimacy for Dermatological Wound Healing and Neuroendocrine Stress: A Randomized Clinical Trial",
+            "authors": "Schneider E, Hernández C, Brock R, Eckstein M, Bodenmann G, Heinrichs M, Ehlert U, Läuchli S, Ditzen B.",
+            "journal": "JAMA psychiatry",
+            "year": 2026,
+            "url": "https://doi.org/10.1001/jamapsychiatry.2025.3705",
+            "section": "Library record",
+            "kind": "approved-record",
+            "text": "The combined oxytocin and positive-interaction condition showed a modest wound-healing association (p = 0.048), which weakened in a sensitivity analysis (p = 0.10). The findings emphasise interpersonal context.",
+            "doi": "10.1001/jamapsychiatry.2025.3705",
+            "rights": null,
+            "sha256": null,
+            "retrievalLabel": "S7"
+          }
+        ],
+        "model": "gpt-6-astra",
+        "reasoning": "max",
+        "providerResponses": [
+          {
+            "id": "resp_08428559fa33a2ec016b05dd2d162087d0bc9259dee91ebfad",
+            "requestedReasoning": "max",
+            "providerReasoning": "max",
+            "status": "completed"
+          },
+          {
+            "id": "resp_08428559fa33a2ec016b05dd3940e887d0bbb11e4f363c2e63",
+            "requestedReasoning": "max",
+            "providerReasoning": "max",
+            "status": "completed"
+          },
+          {
+            "id": "resp_08428559fa33a2ec016b05dd3b9b6887d0b186c1fc95231206",
+            "requestedReasoning": "max",
+            "providerReasoning": "max",
+            "status": "completed"
+          }
+        ],
+        "version": "research-20261026-daytab-v1",
+        "knowledgeVersions": {
+          "approvedYouth": {
+            "sourceBatch": "batch-f164c8325ea5f9c9.json",
+            "sourceSHA256": "f164c8325ea5f9c989c29524518b598913508117712826dc408f592b7f99a723",
+            "approvedAt": "2026-11-02",
+            "publications": 105
+          },
+          "biofeedback": {
+            "version": "lab-biofeedback-20261105-ratings",
+            "publications": 63
+          },
+          "inflammation": {
+            "version": "general-inflammation-20261125-v3",
+            "sourceSHA256": "7b58c89f93dadb5891b79f2ba113bfa0529dca253c5fb75c9842c77a8f3d67f5",
+            "sourceRecords": 75,
+            "chapters": [
+              {
+                "id": "dock2-trauma-ptsd",
+                "number": 12,
+                "sourceRecords": 33,
+                "reviewedAt": "2026-11-21"
+              },
+              {
+                "id": "oxtr-il6-inflammation",
+                "number": 13,
+                "sourceRecords": 42,
+                "reviewedAt": "2026-11-24"
+              }
+            ]
+          },
+          "publicGenes": "public-gene-data-20261109-v1",
+          "literature": "literature-20261110-v2"
+        },
+        "usage": {
+          "totalTokens": 44685,
+          "qaSpend": {
+            "limitUSD": 2.25,
+            "chargedUpperUSD": 0.6679500000000002,
+            "calls": [
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 62188,
+                "outputTokenUpper": 16384,
+                "boundMethod": "UTF-8 bytes plus framing",
+                "reservedUSD": 1.5965500000000001,
+                "chargedUpperUSD": 0.16155,
+                "usage": {
+                  "input_tokens": 10692,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 6045,
+                    "cache_write_tokens_details": {
+                      "ttl_12h_tokens": 0,
+                      "ttl_30m_tokens": 6045
+                    },
+                    "cached_tokens": 4644
+                  },
+                  "output_tokens": 558,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 516
+                  },
+                  "total_tokens": 11250
+                }
+              },
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 47515,
+                "outputTokenUpper": 16384,
+                "boundMethod": "Provider-counted exact prefix plus new UTF-8 bytes and framing",
+                "reservedUSD": 1.4131375,
+                "chargedUpperUSD": 0.19215000000000002,
+                "usage": {
+                  "input_tokens": 15276,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 4584,
+                    "cache_write_tokens_details": {
+                      "ttl_12h_tokens": 0,
+                      "ttl_30m_tokens": 4584
+                    },
+                    "cached_tokens": 10689
+                  },
+                  "output_tokens": 24,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 0
+                  },
+                  "total_tokens": 15300
+                }
+              },
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 25987,
+                "outputTokenUpper": 16384,
+                "boundMethod": "Provider-counted exact prefix plus new UTF-8 bytes and framing",
+                "reservedUSD": 1.1440375,
+                "chargedUpperUSD": 0.31425000000000003,
+                "usage": {
+                  "input_tokens": 15800,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 524,
+                    "cache_write_tokens_details": {
+                      "ttl_12h_tokens": 0,
+                      "ttl_30m_tokens": 524
+                    },
+                    "cached_tokens": 15201
+                  },
+                  "output_tokens": 2335,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 2070
+                  },
+                  "total_tokens": 18135
+                }
+              }
+            ]
+          }
+        },
+        "retrieval": {
+          "required": true,
+          "sourceCount": 9,
+          "contextMessages": 0,
+          "previousReferences": 0
+        }
+      }
+    }
+  ],
+  "turns": [
+    {
+      "question": "From our published review, how strong is the evidence that oxytocin/OXTR reduces IL-6 in cells, animals and humans? Include positive and null human findings. Keep it concise.",
+      "rendered": "UNIVERSAL ONE\nCells — strong evidence in selected models. One study reported 56% lower stimulated IL‑6 release in cultured human macrophages and 26% lower release in endothelial cells. However, separate human donor-cell experiments found no cytokine suppression: the effect is not universal across cell types and conditions. [1] [2]\n\nAnimals — substantial mechanistic support. Multiple tissue and disease models, including receptor-deletion experiments, support an anti-inflammatory role for oxytocin–OXTR signalling. Small studies, selected sexes and experimental injury/exposure conditions limit translation to people. [3]\n\nHumans — emerging, promising and mixed.\n- Positive: A randomized crossover study in 10 healthy men found that intravenous oxytocin attenuated the acute endotoxin-induced IL‑6 response. This is a small proof-of-mechanism finding, not evidence of sustained benefit or equivalent effects from intranasal delivery; the review’s appraisal used the abstract. [4]\n- Null: An eight-week intranasal trial in 61 adults with obesity found no inflammatory-protein effects surviving correction for multiple testing. This broader proteomic result is reported in a conference abstract, not a complete clinical report. [5]\n- Opposite/context-dependent: In an 80-couple trial, oxytocin plus positive interaction was associated with higher local wound IL‑6 in women. Wound-fluid IL‑6 is distinct from systemic inflammation and can participate in repair. [6]\n\nBottom line: Sustained systemic IL‑6 lowering and clinical anti-inflammatory efficacy remain unestablished. Lower IL‑6 is not universally better, and the proposed intervention → OXTR → IL‑6 → benefit pathway remains a hypothesis. These strength judgments come from a narrative review, not formal certainty grading. [3]\n6 sources\nRead aloud",
+      "elapsedMs": 53540,
+      "citations": [
+        {
+          "id": "pmid-18940936",
+          "url": "https://doi.org/10.1152/ajpendo.90718.2008"
+        },
+        {
+          "id": "pmid-23899661",
+          "url": "https://doi.org/10.1159/000351610"
+        },
+        {
+          "id": "oxtr-il6-inflammation",
+          "url": "https://staging.universalmind.tv/informatics/research/?collection=general&chapter=13"
+        },
+        {
+          "id": "pmid-18593851",
+          "url": "https://doi.org/10.1152/ajpendo.90263.2008"
+        },
+        {
+          "id": "oxtr-il6-boutin2025",
+          "url": "https://doi.org/10.1210/jendso/bvaf149.1541"
+        },
+        {
+          "id": "pmid-36058418",
+          "url": "https://doi.org/10.1016/j.bbi.2022.08.011"
+        }
+      ],
+      "providerResponses": [
+        {
+          "id": "resp_0b937cb33d358ff1016b05db7b690c87d086b2d7cf4e8f94c7",
+          "requestedReasoning": "max",
+          "providerReasoning": "max",
+          "status": "completed"
+        },
+        {
+          "id": "resp_0b937cb33d358ff1016b05db89e83c87d0a5a37f6698092e7d",
+          "requestedReasoning": "max",
+          "providerReasoning": "max",
+          "status": "completed"
+        },
+        {
+          "id": "resp_0b937cb33d358ff1016b05db8d596887d09e2564178c9bdd09",
+          "requestedReasoning": "max",
+          "providerReasoning": "max",
+          "status": "completed"
+        }
+      ]
+    },
+    {
+      "question": "From that chapter, which anti-inflammatory markers accompany IL-6, and why is lower IL-6 not always better? Please cite the reviewed sources.",
+      "rendered": "UNIVERSAL ONE\nThe chapter’s main anti-inflammatory/regulatory companions to IL‑6 are IL‑10 and IL‑1RA (IL‑1 receptor antagonist). It also includes:\n- IL‑4, IL‑13 and TGF‑β: context-dependent immune regulation and tissue repair—not universally beneficial when increased.\n- Adiponectin: metabolic context, with the oxytocin evidence principally preclinical.\n- hs‑CRP, TNF, IL‑1β and serum amyloid A: complementary inflammatory, not anti-inflammatory, markers. [1]\n\nWhy lower IL‑6 is not always better\n\n1. IL‑6 can trigger regulatory responses. In the reviewed human experiment by Steensberg et al. (2003), IL‑6 infusion increased IL‑10, IL‑1RA and cortisol without a parallel TNF rise. This was an acute IL‑6 experiment—not evidence of oxytocin efficacy or a benefit from persistently elevated IL‑6. The chapter’s appraisal used the abstract. [2]\n\n2. Location and timing change its meaning. Persistent circulating elevation, a transient exercise-related response and local wound repair are different biological situations. Local IL‑6 can participate in repair; it is not interchangeable with systemic inflammatory burden. [1]\n\n3. The signalling route matters. Jostock et al. (2001) demonstrated that soluble gp130 inhibited IL‑6/soluble-receptor trans-signalling in laboratory systems. That supports examining pathway context, but does not establish that oxytocin selectively blocks this route. [3]\n\nInterpret the pattern, not just the direction: IL‑10 and IL‑1RA can also decline when the provoking inflammatory response subsides. Neither “lower IL‑6” nor “higher regulatory cytokines” alone establishes benefit; tissue, timing and meaningful outcomes remain essential. [1]\n3 sources\nRead aloud",
+      "elapsedMs": 54563,
+      "citations": [
+        {
+          "id": "oxtr-il6-inflammation",
+          "url": "https://staging.universalmind.tv/informatics/research/?collection=general&chapter=13"
+        },
+        {
+          "id": "pmid-12857678",
+          "url": "https://doi.org/10.1152/ajpendo.00074.2003"
+        },
+        {
+          "id": "pmid-11121117",
+          "url": "https://doi.org/10.1046/j.1432-1327.2001.01867.x"
+        }
+      ],
+      "providerResponses": [
+        {
+          "id": "resp_0df019cf3ec78ab2016b05dbae1ee087d0ab62f8d4a092a22a",
+          "requestedReasoning": "max",
+          "providerReasoning": "max",
+          "status": "completed"
+        },
+        {
+          "id": "resp_0df019cf3ec78ab2016b05dbb8eae887d0bcd71406a6a8067d",
+          "requestedReasoning": "max",
+          "providerReasoning": "max",
+          "status": "completed"
+        },
+        {
+          "id": "resp_0df019cf3ec78ab2016b05dbbc6d6c87d09e200366fe0b00f1",
+          "requestedReasoning": "max",
+          "providerReasoning": "max",
+          "status": "completed"
+        }
+      ]
+    },
+    {
+      "question": "From our published DOCK2/PTSD chapter, can we use DOCK2 expression or methylation as a validated marker of response to Universal Mind interventions? Explain the human evidence and replication limits in a short answer.",
+      "rendered": "UNIVERSAL ONE\nNo—not as a validated response marker. The published chapter treats DOCK2 expression and methylation as exploratory outcomes alongside symptoms, functioning and wellbeing, not established indicators that Universal Mind interventions produce recovery. [1]\n\n- Human evidence: A 2017 blood study of 96 male veterans linked lower methylation at DOCK2 site cg16277944 with greater PTSD severity; the association replicated in 115 independent participants. Post-hoc analyses found a modest inverse methylation–expression correlation (r = −0.21) and a group difference in expression. These were cross-sectional associations, not evidence that either measure tracks treatment response; discovery also used a 10% false-discovery-rate threshold. [2]\n- Replication is mixed: A subsequent study of 513 veterans explicitly tested the same site and did not replicate the association (p = 0.21; adjusted p = 0.69). That limits confidence in a broadly reliable marker without ruling out context-specific effects. [3] A larger meta-analysis of 5,077 participants across 23 cohorts did not identify DOCK2 among its principal significant loci—but absence from those findings is not, by itself, an exact-site replication failure. [4]\n\nFor Universal Mind: expression, methylation and clinical improvement remain separate outcomes. The proposed intervention → OXTR-related biology → DOCK2 change → benefit pathway contains untested links, and no beneficial direction of DOCK2 change is established. Measuring it for research is consistent with the chapter; interpreting a change as validated evidence of response is not. [1]\n4 sources\nRead aloud",
+      "elapsedMs": 44968,
+      "citations": [
+        {
+          "id": "dock2-trauma-ptsd",
+          "url": "https://staging.universalmind.tv/informatics/research/?collection=general&chapter=12"
+        },
+        {
+          "id": "pmid-28795405",
+          "url": "https://doi.org/10.1111/acps.12778"
+        },
+        {
+          "id": "pmid-32171335",
+          "url": "https://doi.org/10.1186/s13148-020-0820-0"
+        },
+        {
+          "id": "pmid-39696436",
+          "url": "https://doi.org/10.1186/s13073-024-01417-1"
+        }
+      ],
+      "providerResponses": [
+        {
+          "id": "resp_01242c59fd0e8f5d016b05dbe4ba3887d091830ab5a049b544",
+          "requestedReasoning": "max",
+          "providerReasoning": "max",
+          "status": "completed"
+        },
+        {
+          "id": "resp_01242c59fd0e8f5d016b05dbef6c6887d0809210cbf92abef4",
+          "requestedReasoning": "max",
+          "providerReasoning": "max",
+          "status": "completed"
+        },
+        {
+          "id": "resp_01242c59fd0e8f5d016b05dbf24e9487d09b35ea5a3029c4d4",
+          "requestedReasoning": "max",
+          "providerReasoning": "max",
+          "status": "completed"
+        }
+      ]
+    },
+    {
+      "question": "What are the main measurement limits for that candidate? Keep it brief and refer to the chapter.",
+      "rendered": "UNIVERSAL ONE\nChapter 12 highlights four measurement limits for DOCK2:\n\n- Separate readouts: RNA expression and methylation at specific DNA sites measure different things. Neither directly measures oxytocin signalling or immune-protein function; increased values are not automatically beneficial. [1]\n- Sample and confounding effects: Tissue, blood-cell composition, collection timing and laboratory methods matter. Medication, smoking, recent infection and genetic variation also complicate interpretation. [1][2]\n- Signal versus measurement noise: A credible change needs reproducibility, an effect exceeding technical variation, a suitable comparison condition, and prespecified endpoints with correction for multiple testing. [1]\n- Uncertain link to improvement: The main human study was cross-sectional, and its methylation–expression correlation was modest (r = −0.21). That does not establish that either measurement tracks an individual’s intervention response. [2]\n\nThe chapter’s conclusion: pair repeated DOCK2 measurements with validated symptom and functioning measures. Molecular change alone is not evidence of benefit, and clinical improvement without DOCK2 change remains meaningful. [1]\n2 sources\nRead aloud",
+      "elapsedMs": 41219,
+      "citations": [
+        {
+          "id": "dock2-trauma-ptsd",
+          "url": "https://staging.universalmind.tv/informatics/research/?collection=general&chapter=12"
+        },
+        {
+          "id": "pmid-28795405",
+          "url": "https://doi.org/10.1111/acps.12778"
+        }
+      ],
+      "providerResponses": [
+        {
+          "id": "resp_0c9296e1249993d8016b05dc11b33c87d0b54474cb54de4795",
+          "requestedReasoning": "max",
+          "providerReasoning": "max",
+          "status": "completed"
+        },
+        {
+          "id": "resp_0c9296e1249993d8016b05dc1b27e887d089396e712e1c4634",
+          "requestedReasoning": "max",
+          "providerReasoning": "max",
+          "status": "completed"
+        },
+        {
+          "id": "resp_0c9296e1249993d8016b05dc1da87487d0b31144d4262098bc",
+          "requestedReasoning": "max",
+          "providerReasoning": "max",
+          "status": "completed"
+        }
+      ]
+    },
+    {
+      "question": "From our published DOCK2/PTSD chapter, briefly explain why DOCK2 remains an exploratory intervention-response measure. Cite the human findings and their limits.",
+      "rendered": "UNIVERSAL ONE\nDOCK2 remains exploratory because association with PTSD is not the same as demonstrated intervention responsiveness. The chapter reports human DOCK2 methylation associations, but limited expression evidence, mixed replication and no established beneficial direction of change. [1]\n\n- Replication is inconsistent. In 513 veterans, the original DOCK2 methylation site, cg16277944, did not replicate (p = 0.21; adjusted p = 0.69). This weakens confidence in a broadly reliable marker, without ruling out population-specific effects. It was not a treatment-response test. [2]\n- Larger studies do not establish validation. A 23-cohort meta-analysis involving 5,077 people did not identify DOCK2 among its principal significant loci. That is important context—not, by itself, an exact-site replication failure. [3]\n- Treatment studies provide indirect, mixed evidence. A small longitudinal study identified recovery-associated methylation candidates involving FKBP5 and CREB–BDNF signalling, but did not validate DOCK2. Separately, 60 women improved clinically without major recurrent methylation changes in four targeted genes, including OXTR; DOCK2 was not one of those targets. [4][5]\n\nThe chapter therefore positions DOCK2 as a research measure alongside symptoms, functioning and wellbeing—not a substitute for clinical improvement. Methylation and RNA expression remain separate outcomes, and the proposed intervention → OXTR-related biology → DOCK2 → benefit pathway remains unproven. A DOCK2 change alone is not evidence of recovery. [1]\n5 sources\nRead aloud",
+      "elapsedMs": 74108,
+      "citations": [
+        {
+          "id": "dock2-trauma-ptsd",
+          "url": "https://staging.universalmind.tv/informatics/research/?collection=general&chapter=12"
+        },
+        {
+          "id": "pmid-32171335",
+          "url": "https://doi.org/10.1186/s13148-020-0820-0"
+        },
+        {
+          "id": "pmid-39696436",
+          "url": "https://doi.org/10.1186/s13073-024-01417-1"
+        },
+        {
+          "id": "pmid-34282125",
+          "url": "https://doi.org/10.1038/s41398-021-01513-5"
+        },
+        {
+          "id": "dock2-hummel2022",
+          "url": "https://doi.org/10.1038/s41598-022-22177-1"
+        }
+      ],
+      "providerResponses": [
+        {
+          "id": "resp_0e45b51c567df28d016b05dc7be30487d0a70aea80d0e2b1f9",
+          "requestedReasoning": "max",
+          "providerReasoning": "max",
+          "status": "completed"
+        },
+        {
+          "id": "resp_0e45b51c567df28d016b05dc85769c87d0bb1219824092aa54",
+          "requestedReasoning": "max",
+          "providerReasoning": "max",
+          "status": "completed"
+        },
+        {
+          "id": "resp_0e45b51c567df28d016b05dc87264087d08706f1565957c350",
+          "requestedReasoning": "max",
+          "providerReasoning": "max",
+          "status": "completed"
+        }
+      ]
+    },
+    {
+      "question": "From our published OXTR/IL-6 chapter, briefly explain the human findings and why IL-6 changes alone do not establish benefit. Include one positive and one null finding.",
+      "rendered": "UNIVERSAL ONE\nThe chapter describes human evidence as emerging, promising and mixed. Sustained IL-6 lowering and clinical anti-inflammatory efficacy remain unestablished. [1]\n\n- Positive finding: In a randomised placebo-controlled crossover study of 10 healthy men, intravenous oxytocin reduced the acute endotoxin-induced IL-6, TNF and stress-hormone responses. This small experimental-challenge result—appraised from the indexed abstract—does not establish lasting benefit in chronic disease. [2]\n- Null clinical finding: In the 80-couple wound-healing trial, oxytocin had no general main effect on healing. A signal for oxytocin combined with positive interaction weakened in sensitivity analysis, highlighting the importance of context. [3]\n\nWhy IL-6 changes alone do not establish benefit: IL-6 participates in inflammation and tissue repair. Local wound IL-6 and circulating IL-6 measure different processes; timing and biological context matter. A decrease is not automatically beneficial, and an increase is not automatically harmful. Evidence of benefit requires meaningful health outcomes alongside the biomarker change. An IL-6 change also does not, by itself, demonstrate OXTR activation or prove that IL-6 caused an improvement. [1]\n3 sources\nRead aloud",
+      "elapsedMs": 62919,
+      "citations": [
+        {
+          "id": "oxtr-il6-inflammation",
+          "url": "https://staging.universalmind.tv/informatics/research/?collection=general&chapter=13"
+        },
+        {
+          "id": "pmid-18593851",
+          "url": "https://doi.org/10.1152/ajpendo.90263.2008"
+        },
+        {
+          "id": "pmid-41222549",
+          "url": "https://doi.org/10.1001/jamapsychiatry.2025.3705"
+        }
+      ],
+      "providerResponses": [
+        {
+          "id": "resp_08428559fa33a2ec016b05dd2d162087d0bc9259dee91ebfad",
+          "requestedReasoning": "max",
+          "providerReasoning": "max",
+          "status": "completed"
+        },
+        {
+          "id": "resp_08428559fa33a2ec016b05dd3940e887d0bbb11e4f363c2e63",
+          "requestedReasoning": "max",
+          "providerReasoning": "max",
+          "status": "completed"
+        },
+        {
+          "id": "resp_08428559fa33a2ec016b05dd3b9b6887d0b186c1fc95231206",
+          "requestedReasoning": "max",
+          "providerReasoning": "max",
+          "status": "completed"
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "blocked": [],
+  "finalRevisionCitationInteractionVerified": true
+}

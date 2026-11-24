@@ -1,0 +1,11 @@
+{
+  "cloudflare/informatics-inflammation-knowledge.js": "f2c04eeac063217576592740bde23496d588a6ab3617692ad7ef38246175e143",
+  "cloudflare/informatics-research-worker.js": "46556112eff3bbdd15ded361ced4b010dd431657902778445b0f87670ae79705",
+  "cloudflare/informatics-repository.js": "4eec05b7abbc1909b3bae10520cccc37159a6129c64ba3b55579044ff71a7f35",
+  "cloudflare/informatics-connectors.js": "9caa19641b1efb2c41d665a7089fdc6f60703e69b0462ea9a1a45baec5c9e86f",
+  "cloudflare/wrangler.informatics-staging.toml": "ef075e408e20b522a7a11ab282546daf77dc4a149b8baba908dd75f7c0fdb342",
+  "Informatics/library-data/general-edition.json": "d098bba0311be520464dd5569a6cff9131de1aeaddddebaca31157c395fac187",
+  "Informatics/library-data/dock2-research-register.json": "40b872d4e30ebf251d8f27536738e92c9bdb7a70b0763cfcd4dcf1f6e9695faa",
+  "Informatics/library-data/oxtr-il6-research-register.json": "97a6b06b8712237a246a20464b001ad68e4d2e92cc73be7245685736c0e80070",
+  "Informatics/library-data/library.json": "2be2bbc20455571e7dc73c9ab7859f1e89cecc0f88e698c0e51629ea53e607af"
+}
