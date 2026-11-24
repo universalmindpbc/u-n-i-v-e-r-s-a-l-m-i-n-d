@@ -1,0 +1,2 @@
+{"passed": true, "completeExportParts": 6, "totalBytesVerified": 245765068, "roundtripEvidence": "research/informatics/oxtr-il6-20261124/export-roundtrip.json", "roundtripAppliesToIdenticalPublishedBytes": true, "datasetRecords": 1202}
+{"failures": []}

@@ -1,0 +1,129 @@
+{
+  "production": true,
+  "candidate": false,
+  "mutedProcess": true,
+  "mediaPlaybackDisabled": true,
+  "checks": [
+    {
+      "chapter": 13,
+      "topics": 10,
+      "sources": 42,
+      "chapterOrder": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "scientificBoundaries": true
+    },
+    {
+      "viewport": 1470,
+      "layout": {
+        "width": 1470,
+        "scroll": 1470
+      }
+    },
+    {
+      "viewport": 1024,
+      "layout": {
+        "width": 1024,
+        "scroll": 1024
+      }
+    },
+    {
+      "viewport": 390,
+      "layout": {
+        "width": 390,
+        "scroll": 390
+      }
+    },
+    {
+      "viewport": 320,
+      "layout": {
+        "width": 320,
+        "scroll": 320
+      }
+    },
+    {
+      "citationDialog": true
+    },
+    {
+      "il6FilterMatches": 15
+    },
+    {
+      "originalStudySearch": true
+    },
+    {
+      "readingPageSources": 42,
+      "sourceRegister": true
+    },
+    {
+      "languageRegression": true
+    },
+    {
+      "dock2Regression": true
+    }
+  ],
+  "liveAssets": [
+    {
+      "path": "library.js",
+      "sha256": "794d2354e760d1d5679a80103cc0bcdea5c7154679b66d774f8470ac1cafa901"
+    },
+    {
+      "path": "library.css",
+      "sha256": "8b7be4c8e885df36d57a00329bc804134e5cbc1b9c1206982d6f31456a62a91a"
+    },
+    {
+      "path": "library-data/general-edition.json",
+      "sha256": "d098bba0311be520464dd5569a6cff9131de1aeaddddebaca31157c395fac187"
+    },
+    {
+      "path": "library-data/library.json",
+      "sha256": "2be2bbc20455571e7dc73c9ab7859f1e89cecc0f88e698c0e51629ea53e607af"
+    },
+    {
+      "path": "exports/manifest.json",
+      "sha256": "d62674aff166d848836fda1bde1a05fd3261ec640a26ef1ed4fb38b0b8e854c8"
+    }
+  ],
+  "completeExportParts": [
+    {
+      "file": "part-b7dcec73a332ca26e00afdd6f46251c17d380d33cb9af31f60fd9fc8c4d0e06d.bin",
+      "bytes": 50331648
+    },
+    {
+      "file": "part-5ac27b02873d0e80dee4df1383c8e148b36ddeae2f4ffe8c2f1c8bee3dec65a3.bin",
+      "bytes": 31197376
+    },
+    {
+      "file": "part-a06ca47474811f0db8c8870332cf338e7ed0362e43b0d2a137c7311eade3736d.bin",
+      "bytes": 50331648
+    },
+    {
+      "file": "part-6b061cd0fe4d5522850b4a7bf1614931455ce199a1a6eeebac5894f57de4ecca.bin",
+      "bytes": 50331648
+    },
+    {
+      "file": "part-83e081a3ce1c6b9faf6719ecaef2f245580a8f3e3933635cddb43ebee27a27a3.bin",
+      "bytes": 50331648
+    },
+    {
+      "file": "part-3d1a4c7a88f56daf345580575a4b4aa64a4e664a6bd00be1b38e3152ac8e05f9.bin",
+      "bytes": 679854
+    }
+  ],
+  "stagingGeneralSHA256": "d098bba0311be520464dd5569a6cff9131de1aeaddddebaca31157c395fac187",
+  "passed": true,
+  "finalUrl": "https://universalmind.tv/informatics/research/?collection=general&chapter=12",
+  "network": [],
+  "errors": []
+}

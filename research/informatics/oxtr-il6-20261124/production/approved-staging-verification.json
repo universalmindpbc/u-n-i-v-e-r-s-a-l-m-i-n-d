@@ -1,0 +1,31 @@
+{
+  "approvedCommit": "e504e119fe2902d2dcf8788277faeff04393b36e",
+  "checks": [
+    {
+      "path": "library-data/general-edition.json",
+      "sha256": "d098bba0311be520464dd5569a6cff9131de1aeaddddebaca31157c395fac187",
+      "matchesApprovedCommit": true
+    },
+    {
+      "path": "library-data/library.json",
+      "sha256": "2be2bbc20455571e7dc73c9ab7859f1e89cecc0f88e698c0e51629ea53e607af",
+      "matchesApprovedCommit": true
+    },
+    {
+      "path": "library.js",
+      "sha256": "794d2354e760d1d5679a80103cc0bcdea5c7154679b66d774f8470ac1cafa901",
+      "matchesApprovedCommit": true
+    },
+    {
+      "path": "library.css",
+      "sha256": "8b7be4c8e885df36d57a00329bc804134e5cbc1b9c1206982d6f31456a62a91a",
+      "matchesApprovedCommit": true
+    },
+    {
+      "path": "exports/manifest.json",
+      "sha256": "d62674aff166d848836fda1bde1a05fd3261ec640a26ef1ed4fb38b0b8e854c8",
+      "matchesApprovedCommit": true
+    }
+  ],
+  "passed": true
+}

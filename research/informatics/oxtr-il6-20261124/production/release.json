@@ -1,0 +1,22 @@
+{
+  "status": "Production verified",
+  "approvedStagingCommit": "e504e119fe2902d2dcf8788277faeff04393b36e",
+  "tag": "production-2026-11-24-1410",
+  "productionURL": "https://universalmind.tv/informatics/research/?collection=general&chapter=13",
+  "stagingURL": "https://staging.universalmind.tv/informatics/research/?collection=general&chapter=13",
+  "sourceCount": 42,
+  "topics": 10,
+  "matchedProductionAssets": 64,
+  "completeExportPartsVerified": 6,
+  "completeDatasetRecords": 1202,
+  "websiteSourceMatchesApprovedStaging": true,
+  "browserWidths": [
+    1470,
+    1024,
+    390,
+    320
+  ],
+  "mediaPlaybackDisabled": true,
+  "unrelatedHistoricalExportsExcluded": 147,
+  "interruptedAttemptRepair": "26 historical files created by the first attempt were removed; all 147 excluded URLs returned 404 after repair. Only the approved 64 assets differ in the recorded production manifest."
+}

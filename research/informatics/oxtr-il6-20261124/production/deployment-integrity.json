@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "approvedStagingCommit": "e504e119fe2902d2dcf8788277faeff04393b36e",
+  "changedAssets": 64,
+  "previousProductionEntriesRetained": true,
+  "historicalSelectionExclusionsNotRecordedAsDeployed": 147,
+  "manifestSHA256": "0306d52f3333696d6e93c0be91640c3a46e5d6cc45b039a34d83719ee4577b12"
+}

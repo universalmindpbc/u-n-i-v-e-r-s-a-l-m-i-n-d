@@ -1,0 +1,586 @@
+{
+  "passed": true,
+  "assets": [
+    {
+      "path": "informatics/exports/manifest-1f098ee8df0c2a96e2528f42225a89074a9a251f2853b6f8c0fa117f96a27786.json",
+      "bytes": 2400194,
+      "rawSHA256": "d62674aff166d848836fda1bde1a05fd3261ec640a26ef1ed4fb38b0b8e854c8",
+      "expectedSHA256": "d62674aff166d848836fda1bde1a05fd3261ec640a26ef1ed4fb38b0b8e854c8",
+      "normalizedSHA256": "d62674aff166d848836fda1bde1a05fd3261ec640a26ef1ed4fb38b0b8e854c8",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/exports/manifest.json",
+      "bytes": 2400194,
+      "rawSHA256": "d62674aff166d848836fda1bde1a05fd3261ec640a26ef1ed4fb38b0b8e854c8",
+      "expectedSHA256": "d62674aff166d848836fda1bde1a05fd3261ec640a26ef1ed4fb38b0b8e854c8",
+      "normalizedSHA256": "d62674aff166d848836fda1bde1a05fd3261ec640a26ef1ed4fb38b0b8e854c8",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/exports/part-3d1a4c7a88f56daf345580575a4b4aa64a4e664a6bd00be1b38e3152ac8e05f9.bin",
+      "bytes": 679854,
+      "rawSHA256": "3d1a4c7a88f56daf345580575a4b4aa64a4e664a6bd00be1b38e3152ac8e05f9",
+      "expectedSHA256": "3d1a4c7a88f56daf345580575a4b4aa64a4e664a6bd00be1b38e3152ac8e05f9",
+      "normalizedSHA256": "3d1a4c7a88f56daf345580575a4b4aa64a4e664a6bd00be1b38e3152ac8e05f9",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/exports/part-5ac27b02873d0e80dee4df1383c8e148b36ddeae2f4ffe8c2f1c8bee3dec65a3.bin",
+      "bytes": 31197376,
+      "rawSHA256": "5ac27b02873d0e80dee4df1383c8e148b36ddeae2f4ffe8c2f1c8bee3dec65a3",
+      "expectedSHA256": "5ac27b02873d0e80dee4df1383c8e148b36ddeae2f4ffe8c2f1c8bee3dec65a3",
+      "normalizedSHA256": "5ac27b02873d0e80dee4df1383c8e148b36ddeae2f4ffe8c2f1c8bee3dec65a3",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/exports/part-6b061cd0fe4d5522850b4a7bf1614931455ce199a1a6eeebac5894f57de4ecca.bin",
+      "bytes": 50331648,
+      "rawSHA256": "6b061cd0fe4d5522850b4a7bf1614931455ce199a1a6eeebac5894f57de4ecca",
+      "expectedSHA256": "6b061cd0fe4d5522850b4a7bf1614931455ce199a1a6eeebac5894f57de4ecca",
+      "normalizedSHA256": "6b061cd0fe4d5522850b4a7bf1614931455ce199a1a6eeebac5894f57de4ecca",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/exports/part-83e081a3ce1c6b9faf6719ecaef2f245580a8f3e3933635cddb43ebee27a27a3.bin",
+      "bytes": 50331648,
+      "rawSHA256": "83e081a3ce1c6b9faf6719ecaef2f245580a8f3e3933635cddb43ebee27a27a3",
+      "expectedSHA256": "83e081a3ce1c6b9faf6719ecaef2f245580a8f3e3933635cddb43ebee27a27a3",
+      "normalizedSHA256": "83e081a3ce1c6b9faf6719ecaef2f245580a8f3e3933635cddb43ebee27a27a3",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/exports/part-a06ca47474811f0db8c8870332cf338e7ed0362e43b0d2a137c7311eade3736d.bin",
+      "bytes": 50331648,
+      "rawSHA256": "a06ca47474811f0db8c8870332cf338e7ed0362e43b0d2a137c7311eade3736d",
+      "expectedSHA256": "a06ca47474811f0db8c8870332cf338e7ed0362e43b0d2a137c7311eade3736d",
+      "normalizedSHA256": "a06ca47474811f0db8c8870332cf338e7ed0362e43b0d2a137c7311eade3736d",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/exports/part-b7dcec73a332ca26e00afdd6f46251c17d380d33cb9af31f60fd9fc8c4d0e06d.bin",
+      "bytes": 50331648,
+      "rawSHA256": "b7dcec73a332ca26e00afdd6f46251c17d380d33cb9af31f60fd9fc8c4d0e06d",
+      "expectedSHA256": "b7dcec73a332ca26e00afdd6f46251c17d380d33cb9af31f60fd9fc8c4d0e06d",
+      "normalizedSHA256": "b7dcec73a332ca26e00afdd6f46251c17d380d33cb9af31f60fd9fc8c4d0e06d",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/library-data/general-edition.json",
+      "bytes": 1867055,
+      "rawSHA256": "d098bba0311be520464dd5569a6cff9131de1aeaddddebaca31157c395fac187",
+      "expectedSHA256": "d098bba0311be520464dd5569a6cff9131de1aeaddddebaca31157c395fac187",
+      "normalizedSHA256": "d098bba0311be520464dd5569a6cff9131de1aeaddddebaca31157c395fac187",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/library-data/library.json",
+      "bytes": 4185040,
+      "rawSHA256": "2be2bbc20455571e7dc73c9ab7859f1e89cecc0f88e698c0e51629ea53e607af",
+      "expectedSHA256": "2be2bbc20455571e7dc73c9ab7859f1e89cecc0f88e698c0e51629ea53e607af",
+      "normalizedSHA256": "2be2bbc20455571e7dc73c9ab7859f1e89cecc0f88e698c0e51629ea53e607af",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/library-data/oxtr-il6-research-register.csv",
+      "bytes": 41163,
+      "rawSHA256": "df9cb439f4807c20cfe8876e43cc87487356cfe80419add5d466febe7d09c655",
+      "expectedSHA256": "df9cb439f4807c20cfe8876e43cc87487356cfe80419add5d466febe7d09c655",
+      "normalizedSHA256": "df9cb439f4807c20cfe8876e43cc87487356cfe80419add5d466febe7d09c655",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/library-data/oxtr-il6-research-register.json",
+      "bytes": 126263,
+      "rawSHA256": "97a6b06b8712237a246a20464b001ad68e4d2e92cc73be7245685736c0e80070",
+      "expectedSHA256": "97a6b06b8712237a246a20464b001ad68e4d2e92cc73be7245685736c0e80070",
+      "normalizedSHA256": "97a6b06b8712237a246a20464b001ad68e4d2e92cc73be7245685736c0e80070",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/library.css",
+      "bytes": 34557,
+      "rawSHA256": "8b7be4c8e885df36d57a00329bc804134e5cbc1b9c1206982d6f31456a62a91a",
+      "expectedSHA256": "8b7be4c8e885df36d57a00329bc804134e5cbc1b9c1206982d6f31456a62a91a",
+      "normalizedSHA256": "8b7be4c8e885df36d57a00329bc804134e5cbc1b9c1206982d6f31456a62a91a",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/library.html",
+      "bytes": 35525,
+      "rawSHA256": "1e8bca84157465d1cd110074187b4afcc85dede44de71ad5a092da326538e0a2",
+      "expectedSHA256": "1e8bca84157465d1cd110074187b4afcc85dede44de71ad5a092da326538e0a2",
+      "normalizedSHA256": "1e8bca84157465d1cd110074187b4afcc85dede44de71ad5a092da326538e0a2",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/library.js",
+      "bytes": 62171,
+      "rawSHA256": "794d2354e760d1d5679a80103cc0bcdea5c7154679b66d774f8470ac1cafa901",
+      "expectedSHA256": "794d2354e760d1d5679a80103cc0bcdea5c7154679b66d774f8470ac1cafa901",
+      "normalizedSHA256": "794d2354e760d1d5679a80103cc0bcdea5c7154679b66d774f8470ac1cafa901",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/llms.txt",
+      "bytes": 7892,
+      "rawSHA256": "fa74f76a1caa1aee79657268400df1ab34a8f28935f5bb8b2918b8e994541199",
+      "expectedSHA256": "fa74f76a1caa1aee79657268400df1ab34a8f28935f5bb8b2918b8e994541199",
+      "normalizedSHA256": "fa74f76a1caa1aee79657268400df1ab34a8f28935f5bb8b2918b8e994541199",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/data.html",
+      "bytes": 184832,
+      "rawSHA256": "aca7b927c7dad74bc0929d85f4d2a0ebfbb3ccaa4c0f01462060a54ee7e2e147",
+      "expectedSHA256": "aca7b927c7dad74bc0929d85f4d2a0ebfbb3ccaa4c0f01462060a54ee7e2e147",
+      "normalizedSHA256": "aca7b927c7dad74bc0929d85f4d2a0ebfbb3ccaa4c0f01462060a54ee7e2e147",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/index.html",
+      "bytes": 9192,
+      "rawSHA256": "61cf8ac900f13a669bc29fc98df3f3da995a48de101342635edb09021f2e471f",
+      "expectedSHA256": "61cf8ac900f13a669bc29fc98df3f3da995a48de101342635edb09021f2e471f",
+      "normalizedSHA256": "61cf8ac900f13a669bc29fc98df3f3da995a48de101342635edb09021f2e471f",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/oxtr-il6/index.html",
+      "bytes": 74691,
+      "rawSHA256": "e3929ec95f1f4b73aac1a9df7dd89a7f7e2acf9a627ed6a4fe0f387266616a9c",
+      "expectedSHA256": "e3929ec95f1f4b73aac1a9df7dd89a7f7e2acf9a627ed6a4fe0f387266616a9c",
+      "normalizedSHA256": "e3929ec95f1f4b73aac1a9df7dd89a7f7e2acf9a627ed6a4fe0f387266616a9c",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/index.html",
+      "bytes": 377501,
+      "rawSHA256": "f6aa902f777d123296c5090fd56035b8015fc23c4f0d67f235d8ebd1f181da1f",
+      "expectedSHA256": "f6aa902f777d123296c5090fd56035b8015fc23c4f0d67f235d8ebd1f181da1f",
+      "normalizedSHA256": "f6aa902f777d123296c5090fd56035b8015fc23c4f0d67f235d8ebd1f181da1f",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/oxtr-il6-boutin2025-94d964fd.html",
+      "bytes": 12997,
+      "rawSHA256": "35f2aea20a6b4d1ed46e8cea142504a2f2b364997416e3d1bb9fb69d4658197d",
+      "expectedSHA256": "35f2aea20a6b4d1ed46e8cea142504a2f2b364997416e3d1bb9fb69d4658197d",
+      "normalizedSHA256": "35f2aea20a6b4d1ed46e8cea142504a2f2b364997416e3d1bb9fb69d4658197d",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/oxtr-il6-naeem2026-38dd3f84.html",
+      "bytes": 11861,
+      "rawSHA256": "a132a2f814d7c9983dd04e4b8e1e3c983085532ee057c4b4c83292e6c785da3c",
+      "expectedSHA256": "a132a2f814d7c9983dd04e4b8e1e3c983085532ee057c4b4c83292e6c785da3c",
+      "normalizedSHA256": "a132a2f814d7c9983dd04e4b8e1e3c983085532ee057c4b4c83292e6c785da3c",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/oxtr-il6-oscovid19-f5802408.html",
+      "bytes": 12030,
+      "rawSHA256": "a3d5e93a65fe4871744144df8f42f384e98b119a6350b7405d418f8afff99864",
+      "expectedSHA256": "a3d5e93a65fe4871744144df8f42f384e98b119a6350b7405d418f8afff99864",
+      "normalizedSHA256": "a3d5e93a65fe4871744144df8f42f384e98b119a6350b7405d418f8afff99864",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/oxtr-il6-oxt-gene-05f41920.html",
+      "bytes": 10322,
+      "rawSHA256": "b5cca15ef9d718a69248370cb88b5ab46e70b4f2cfdc82d1b3dc252de82bbf61",
+      "expectedSHA256": "b5cca15ef9d718a69248370cb88b5ab46e70b4f2cfdc82d1b3dc252de82bbf61",
+      "normalizedSHA256": "b5cca15ef9d718a69248370cb88b5ab46e70b4f2cfdc82d1b3dc252de82bbf61",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/oxtr-il6-oxtr-gene-86bdc68e.html",
+      "bytes": 10275,
+      "rawSHA256": "3ab9fd2053afdb7bbb5e4dabb0d2d591690d40ab764b9dc3c9dc7a9b80411c9f",
+      "expectedSHA256": "3ab9fd2053afdb7bbb5e4dabb0d2d591690d40ab764b9dc3c9dc7a9b80411c9f",
+      "normalizedSHA256": "3ab9fd2053afdb7bbb5e4dabb0d2d591690d40ab764b9dc3c9dc7a9b80411c9f",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/oxtr-il6-sun2015-f3a13140.html",
+      "bytes": 12521,
+      "rawSHA256": "d4db8124706250ad80b760834bd130c943c0a54578305a68828692a57947d1a1",
+      "expectedSHA256": "d4db8124706250ad80b760834bd130c943c0a54578305a68828692a57947d1a1",
+      "normalizedSHA256": "d4db8124706250ad80b760834bd130c943c0a54578305a68828692a57947d1a1",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/pmid-11121117-97ad74aa.html",
+      "bytes": 12029,
+      "rawSHA256": "decba26ccffeeefabe342471ae6e803324e16c51e7c9ec1d0db6c0a7392ca759",
+      "expectedSHA256": "decba26ccffeeefabe342471ae6e803324e16c51e7c9ec1d0db6c0a7392ca759",
+      "normalizedSHA256": "decba26ccffeeefabe342471ae6e803324e16c51e7c9ec1d0db6c0a7392ca759",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/pmid-12857678-9f221bf9.html",
+      "bytes": 11727,
+      "rawSHA256": "b4b11029b6f7dc62d82115fce9ceb025d11959b38a5b5ee5b4c3726ab3048c1f",
+      "expectedSHA256": "b4b11029b6f7dc62d82115fce9ceb025d11959b38a5b5ee5b4c3726ab3048c1f",
+      "normalizedSHA256": "b4b11029b6f7dc62d82115fce9ceb025d11959b38a5b5ee5b4c3726ab3048c1f",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/pmid-18593851-99a1b206.html",
+      "bytes": 12752,
+      "rawSHA256": "32f981362178fdb125e93b4d6f3117c494d9abf03251c244f6b8f604f3059160",
+      "expectedSHA256": "32f981362178fdb125e93b4d6f3117c494d9abf03251c244f6b8f604f3059160",
+      "normalizedSHA256": "32f981362178fdb125e93b4d6f3117c494d9abf03251c244f6b8f604f3059160",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/pmid-18940936-dceccd14.html",
+      "bytes": 12357,
+      "rawSHA256": "4cd2d0513d5cd1b7ac4a78f3c58bd24edc0d4f5696ad7428c65a93b4afa34cd2",
+      "expectedSHA256": "4cd2d0513d5cd1b7ac4a78f3c58bd24edc0d4f5696ad7428c65a93b4afa34cd2",
+      "normalizedSHA256": "4cd2d0513d5cd1b7ac4a78f3c58bd24edc0d4f5696ad7428c65a93b4afa34cd2",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/pmid-21636661-f8f20bbe.html",
+      "bytes": 11901,
+      "rawSHA256": "e3d92b475047e17c0a085f20976d141a5fc245192cb7d3c0ab5654f5a6392a3d",
+      "expectedSHA256": "e3d92b475047e17c0a085f20976d141a5fc245192cb7d3c0ab5654f5a6392a3d",
+      "normalizedSHA256": "e3d92b475047e17c0a085f20976d141a5fc245192cb7d3c0ab5654f5a6392a3d",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/pmid-23899661-bbd961df.html",
+      "bytes": 12126,
+      "rawSHA256": "f89d227a0059f9daf272f97d10c930b5b2c62508b912398d4dbd397d7e77393b",
+      "expectedSHA256": "f89d227a0059f9daf272f97d10c930b5b2c62508b912398d4dbd397d7e77393b",
+      "normalizedSHA256": "f89d227a0059f9daf272f97d10c930b5b2c62508b912398d4dbd397d7e77393b",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/pmid-25147234-669001b2.html",
+      "bytes": 12228,
+      "rawSHA256": "7bda8e12accdfc62e72781bae3cbb95c50f021451f5f68e97070f496996c3e46",
+      "expectedSHA256": "7bda8e12accdfc62e72781bae3cbb95c50f021451f5f68e97070f496996c3e46",
+      "normalizedSHA256": "7bda8e12accdfc62e72781bae3cbb95c50f021451f5f68e97070f496996c3e46",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/pmid-25451977-1eaa6a1d.html",
+      "bytes": 11747,
+      "rawSHA256": "35f675349bd99eac6d0dc625065de827fb0d2125b17fa22fe4332d587c588440",
+      "expectedSHA256": "35f675349bd99eac6d0dc625065de827fb0d2125b17fa22fe4332d587c588440",
+      "normalizedSHA256": "35f675349bd99eac6d0dc625065de827fb0d2125b17fa22fe4332d587c588440",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/pmid-27075756-8c9bb6d3.html",
+      "bytes": 12124,
+      "rawSHA256": "76005fdd096a21ddcc67bd408fb82c46ecf7eb6c7cf43a86c5291fc2cbe06e60",
+      "expectedSHA256": "76005fdd096a21ddcc67bd408fb82c46ecf7eb6c7cf43a86c5291fc2cbe06e60",
+      "normalizedSHA256": "76005fdd096a21ddcc67bd408fb82c46ecf7eb6c7cf43a86c5291fc2cbe06e60",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/pmid-28049625-ab33a9b7.html",
+      "bytes": 12525,
+      "rawSHA256": "87d4add844b4a40648d6a1bd633b0c4bdc2bcbea62107f26efa92b3c3ea97dc9",
+      "expectedSHA256": "87d4add844b4a40648d6a1bd633b0c4bdc2bcbea62107f26efa92b3c3ea97dc9",
+      "normalizedSHA256": "87d4add844b4a40648d6a1bd633b0c4bdc2bcbea62107f26efa92b3c3ea97dc9",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/pmid-30506969-d1755a1b.html",
+      "bytes": 11982,
+      "rawSHA256": "690cb2f4744213a9e72b0c6e853befe62beebb36f2f95975d9f79269f614543b",
+      "expectedSHA256": "690cb2f4744213a9e72b0c6e853befe62beebb36f2f95975d9f79269f614543b",
+      "normalizedSHA256": "690cb2f4744213a9e72b0c6e853befe62beebb36f2f95975d9f79269f614543b",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/pmid-30801661-ce0b6b51.html",
+      "bytes": 11641,
+      "rawSHA256": "89fde507c776162675ab9dc625d1a155878c349b4100d31260b6968b0ca5f890",
+      "expectedSHA256": "89fde507c776162675ab9dc625d1a155878c349b4100d31260b6968b0ca5f890",
+      "normalizedSHA256": "89fde507c776162675ab9dc625d1a155878c349b4100d31260b6968b0ca5f890",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/pmid-31159306-15b5d0a2.html",
+      "bytes": 11612,
+      "rawSHA256": "b2037ac2cc9103cbdcc357f0d260ba7b947abbfbf407fb8a52124eb49b9805f4",
+      "expectedSHA256": "b2037ac2cc9103cbdcc357f0d260ba7b947abbfbf407fb8a52124eb49b9805f4",
+      "normalizedSHA256": "b2037ac2cc9103cbdcc357f0d260ba7b947abbfbf407fb8a52124eb49b9805f4",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/pmid-31519790-e309fdfa.html",
+      "bytes": 11923,
+      "rawSHA256": "f5d9c53fd3a39a5daa190ca92ae1a4aab46db073b3fbd89ae6f88050016679b5",
+      "expectedSHA256": "f5d9c53fd3a39a5daa190ca92ae1a4aab46db073b3fbd89ae6f88050016679b5",
+      "normalizedSHA256": "f5d9c53fd3a39a5daa190ca92ae1a4aab46db073b3fbd89ae6f88050016679b5",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/pmid-32438751-1ae15623.html",
+      "bytes": 11356,
+      "rawSHA256": "2a84b21e06246cb6402209239b0b6277c4daed57e32e9f36f5e83eeee7c11ee4",
+      "expectedSHA256": "2a84b21e06246cb6402209239b0b6277c4daed57e32e9f36f5e83eeee7c11ee4",
+      "normalizedSHA256": "2a84b21e06246cb6402209239b0b6277c4daed57e32e9f36f5e83eeee7c11ee4",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/pmid-32809918-ed7e8c19.html",
+      "bytes": 12335,
+      "rawSHA256": "eae4f8b60ac85f746e189f3d505020780f04cae0c5173b75ca6ee353962f795d",
+      "expectedSHA256": "eae4f8b60ac85f746e189f3d505020780f04cae0c5173b75ca6ee353962f795d",
+      "normalizedSHA256": "eae4f8b60ac85f746e189f3d505020780f04cae0c5173b75ca6ee353962f795d",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/pmid-32819381-6e110013.html",
+      "bytes": 11783,
+      "rawSHA256": "b0fbe6f7955b714683dde8ce2dc0a665e90cc1da50109a0cc24df18a99220a4e",
+      "expectedSHA256": "b0fbe6f7955b714683dde8ce2dc0a665e90cc1da50109a0cc24df18a99220a4e",
+      "normalizedSHA256": "b0fbe6f7955b714683dde8ce2dc0a665e90cc1da50109a0cc24df18a99220a4e",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/pmid-32914674-34e96434.html",
+      "bytes": 12230,
+      "rawSHA256": "ac90684ff065fad978cc2b8124e71c7050c04ae53cca7afc960a737ab4525915",
+      "expectedSHA256": "ac90684ff065fad978cc2b8124e71c7050c04ae53cca7afc960a737ab4525915",
+      "normalizedSHA256": "ac90684ff065fad978cc2b8124e71c7050c04ae53cca7afc960a737ab4525915",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/pmid-33564880-cee0dcbd.html",
+      "bytes": 12508,
+      "rawSHA256": "15da161aa25f69507ac5ab9e59928de15bb640a2dda702edda8660adff526a5c",
+      "expectedSHA256": "15da161aa25f69507ac5ab9e59928de15bb640a2dda702edda8660adff526a5c",
+      "normalizedSHA256": "15da161aa25f69507ac5ab9e59928de15bb640a2dda702edda8660adff526a5c",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/pmid-34638587-c61b5797.html",
+      "bytes": 12175,
+      "rawSHA256": "251be7f950316a9154af8bd5e6ef278dd71500e0d7dd1a37e891eb8564a55ec9",
+      "expectedSHA256": "251be7f950316a9154af8bd5e6ef278dd71500e0d7dd1a37e891eb8564a55ec9",
+      "normalizedSHA256": "251be7f950316a9154af8bd5e6ef278dd71500e0d7dd1a37e891eb8564a55ec9",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/pmid-35572539-f443b55c.html",
+      "bytes": 12019,
+      "rawSHA256": "4798093f9269bb0a8b39f640fabe3707a669667a18539efa6085e7eb89229312",
+      "expectedSHA256": "4798093f9269bb0a8b39f640fabe3707a669667a18539efa6085e7eb89229312",
+      "normalizedSHA256": "4798093f9269bb0a8b39f640fabe3707a669667a18539efa6085e7eb89229312",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/pmid-35858111-66396731.html",
+      "bytes": 11594,
+      "rawSHA256": "651a31b56919ec6a90f2312fe724a302c8b0a60ddeb479dba6ccf22d9280e45a",
+      "expectedSHA256": "651a31b56919ec6a90f2312fe724a302c8b0a60ddeb479dba6ccf22d9280e45a",
+      "normalizedSHA256": "651a31b56919ec6a90f2312fe724a302c8b0a60ddeb479dba6ccf22d9280e45a",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/pmid-36058418-1950f5e7.html",
+      "bytes": 12459,
+      "rawSHA256": "5f7fb969eee09c62d6602a7d018d5dfbeff05c4f64a3a08c923256a45c2e24ce",
+      "expectedSHA256": "5f7fb969eee09c62d6602a7d018d5dfbeff05c4f64a3a08c923256a45c2e24ce",
+      "normalizedSHA256": "5f7fb969eee09c62d6602a7d018d5dfbeff05c4f64a3a08c923256a45c2e24ce",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/pmid-36497156-159465eb.html",
+      "bytes": 11513,
+      "rawSHA256": "f665a89798bf46c4f17ccdf29bfd489b22da8494c46176dfb0368dbd6cc18e22",
+      "expectedSHA256": "f665a89798bf46c4f17ccdf29bfd489b22da8494c46176dfb0368dbd6cc18e22",
+      "normalizedSHA256": "f665a89798bf46c4f17ccdf29bfd489b22da8494c46176dfb0368dbd6cc18e22",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/pmid-36881032-e18c41ec.html",
+      "bytes": 12471,
+      "rawSHA256": "c41095534f69be950b8ec5b3caabfeb24917ae3ae681a4251d97c5431d71e3d1",
+      "expectedSHA256": "c41095534f69be950b8ec5b3caabfeb24917ae3ae681a4251d97c5431d71e3d1",
+      "normalizedSHA256": "c41095534f69be950b8ec5b3caabfeb24917ae3ae681a4251d97c5431d71e3d1",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/pmid-37360277-fa42c998.html",
+      "bytes": 11951,
+      "rawSHA256": "193d052fe2180b98f92ca9196abd77ced8d8f365de7bf5568273bf49d621ffc1",
+      "expectedSHA256": "193d052fe2180b98f92ca9196abd77ced8d8f365de7bf5568273bf49d621ffc1",
+      "normalizedSHA256": "193d052fe2180b98f92ca9196abd77ced8d8f365de7bf5568273bf49d621ffc1",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/pmid-38226427-03c77852.html",
+      "bytes": 11212,
+      "rawSHA256": "ee8c05354406d55053a6fdc8ca41bf72910f216bbdbd54dbc43593f80e49fd36",
+      "expectedSHA256": "ee8c05354406d55053a6fdc8ca41bf72910f216bbdbd54dbc43593f80e49fd36",
+      "normalizedSHA256": "ee8c05354406d55053a6fdc8ca41bf72910f216bbdbd54dbc43593f80e49fd36",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/pmid-38461957-671195d2.html",
+      "bytes": 13250,
+      "rawSHA256": "a0a0ca713e2b6dfc15de60a6c351e86c7fe823a2e8b84e4fb0fecc2efe378d7c",
+      "expectedSHA256": "a0a0ca713e2b6dfc15de60a6c351e86c7fe823a2e8b84e4fb0fecc2efe378d7c",
+      "normalizedSHA256": "a0a0ca713e2b6dfc15de60a6c351e86c7fe823a2e8b84e4fb0fecc2efe378d7c",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/pmid-38979515-edc3739c.html",
+      "bytes": 12397,
+      "rawSHA256": "45dcf68add41e2df3828efd2f3fca6309034a3237854393b479b2b24c9db23ef",
+      "expectedSHA256": "45dcf68add41e2df3828efd2f3fca6309034a3237854393b479b2b24c9db23ef",
+      "normalizedSHA256": "45dcf68add41e2df3828efd2f3fca6309034a3237854393b479b2b24c9db23ef",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/pmid-40285614-affff8f0.html",
+      "bytes": 12434,
+      "rawSHA256": "376b45a97eae8ad63dce2c84419d514199271c1c7008ecd271be168d3e83de93",
+      "expectedSHA256": "376b45a97eae8ad63dce2c84419d514199271c1c7008ecd271be168d3e83de93",
+      "normalizedSHA256": "376b45a97eae8ad63dce2c84419d514199271c1c7008ecd271be168d3e83de93",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/pmid-41222549-6f203d02.html",
+      "bytes": 12430,
+      "rawSHA256": "54c965b44be33b32121244927dde42ff0d31688881e4a20fb4102e6486fef71c",
+      "expectedSHA256": "54c965b44be33b32121244927dde42ff0d31688881e4a20fb4102e6486fef71c",
+      "normalizedSHA256": "54c965b44be33b32121244927dde42ff0d31688881e4a20fb4102e6486fef71c",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/pmid-41239825-6caf73a8.html",
+      "bytes": 12028,
+      "rawSHA256": "a4aaf0f17081b7406373a96e628498937920e068d06895236701357b39d70cd1",
+      "expectedSHA256": "a4aaf0f17081b7406373a96e628498937920e068d06895236701357b39d70cd1",
+      "normalizedSHA256": "a4aaf0f17081b7406373a96e628498937920e068d06895236701357b39d70cd1",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/pmid-41598260-700796db.html",
+      "bytes": 12022,
+      "rawSHA256": "cca3841e05a50420b8f7accedf1a074ae7206dd67e479cf88f9ced7d317e8d4c",
+      "expectedSHA256": "cca3841e05a50420b8f7accedf1a074ae7206dd67e479cf88f9ced7d317e8d4c",
+      "normalizedSHA256": "cca3841e05a50420b8f7accedf1a074ae7206dd67e479cf88f9ced7d317e8d4c",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/pmid-41806102-cf830754.html",
+      "bytes": 12099,
+      "rawSHA256": "2098fbad5852e54686b58a78052b35c4e3283fc8e5d23b842cb17cc352a0a997",
+      "expectedSHA256": "2098fbad5852e54686b58a78052b35c4e3283fc8e5d23b842cb17cc352a0a997",
+      "normalizedSHA256": "2098fbad5852e54686b58a78052b35c4e3283fc8e5d23b842cb17cc352a0a997",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/pmid-42049099-d19958c5.html",
+      "bytes": 12532,
+      "rawSHA256": "86947fa8376a9f2d13b298496e41d883381b2e628e0224325ad6371f1395b400",
+      "expectedSHA256": "86947fa8376a9f2d13b298496e41d883381b2e628e0224325ad6371f1395b400",
+      "normalizedSHA256": "86947fa8376a9f2d13b298496e41d883381b2e628e0224325ad6371f1395b400",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "informatics/read/publications/pmid-42156189-15f9c482.html",
+      "bytes": 12418,
+      "rawSHA256": "f0a741e3ca3b78202ab70e31ca7501109b182eb8f1fc493b2cf74ee216c6aff6",
+      "expectedSHA256": "f0a741e3ca3b78202ab70e31ca7501109b182eb8f1fc493b2cf74ee216c6aff6",
+      "normalizedSHA256": "f0a741e3ca3b78202ab70e31ca7501109b182eb8f1fc493b2cf74ee216c6aff6",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "sitemaps/informatics-publications.xml",
+      "bytes": 165410,
+      "rawSHA256": "5a78e905215f63554ab889924ab7c10209b9090e6a39755de4c061b6f1846f19",
+      "expectedSHA256": "5a78e905215f63554ab889924ab7c10209b9090e6a39755de4c061b6f1846f19",
+      "normalizedSHA256": "5a78e905215f63554ab889924ab7c10209b9090e6a39755de4c061b6f1846f19",
+      "observedHostInjections": [],
+      "matched": true
+    },
+    {
+      "path": "sitemaps/informatics-records.xml",
+      "bytes": 83670,
+      "rawSHA256": "1c20029601e6c07cd4f523460c9127818dbe0b4180b3f79b1e350f6995c89878",
+      "expectedSHA256": "1c20029601e6c07cd4f523460c9127818dbe0b4180b3f79b1e350f6995c89878",
+      "normalizedSHA256": "1c20029601e6c07cd4f523460c9127818dbe0b4180b3f79b1e350f6995c89878",
+      "observedHostInjections": [],
+      "matched": true
+    }
+  ],
+  "completeExportParts": 6,
+  "totalBytesVerified": 245765068,
+  "roundtripEvidence": "research/informatics/oxtr-il6-20261124/export-roundtrip.json",
+  "roundtripAppliesToIdenticalPublishedBytes": true,
+  "datasetRecords": 1202
+}

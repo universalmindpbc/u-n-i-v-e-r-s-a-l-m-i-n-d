@@ -1,0 +1,33 @@
+{
+  "removedFilesCreatedByInterruptedAttempt": [
+    "informatics/exports/manifest-01c28808841efdd7e0d69441c85a3d5e7c96389b7faaa7a53da97b006bd3d4c5.json",
+    "informatics/exports/manifest-0335e712cab8daf9f8b8db3be63af03f8d95f60ff33a8d89db00abc42b1cac96.json",
+    "informatics/exports/manifest-04adc925ac200a3ab09a5f060affa381f1f933388def2630b7badade15792992.json",
+    "informatics/exports/manifest-1062e86d2ea6c5c94d5c4b647ddd3b08dd49d7733d1806f790298cfb53787f24.json",
+    "informatics/exports/manifest-116a5ed85d196ef19e8d265697532c814136924012cbe4e5ce69c05c47d620d1.json",
+    "informatics/exports/manifest-156765f1be053076b6344a27e2a0ec06e87643c660c42e711f3aa376aae5b7ae.json",
+    "informatics/exports/manifest-22b751e8dbb2bc6efdd7c06b5f4f6912f980a4ca03e7e7a7c445d9cddfde163c.json",
+    "informatics/exports/manifest-30d8906673e8ea8966e9f23134ec02fbc3f3fdb347e776661cbac21e6e940dbf.json",
+    "informatics/exports/manifest-4e857a0c8191b4c7908250cc0cd16a0480a5391530d083a85570c9759b7c827e.json",
+    "informatics/exports/manifest-5569ba5f70d3ea8ffcf400695531fada70146fb73cc3ae52709b5145d2a6e588.json",
+    "informatics/exports/manifest-55927ba5eaede6dab44c03da797c8d7888bebf7cf0088671ec864e3189b1cb1f.json",
+    "informatics/exports/manifest-6f3a89dbc38ade1bc74b4cafc2daece51ba59d7a5028089b57aae8715ca187aa.json",
+    "informatics/exports/manifest-814283a6612bdb1bd272b44f5f50cb98c0447f3e940ae6d18cd63cb6735cd8ce.json",
+    "informatics/exports/manifest-acf50bed6d4095c2acf160861b8b9feb6abe9a6fe18ddc839026257ff5ef293b.json",
+    "informatics/exports/manifest-bf0fdf56ceae67926bc103ff573a9eca441c92b17e372f0786d075068e2d14fc.json",
+    "informatics/exports/manifest-bf4b854abc36cb40ac3a5aead64feb9804b3679045d2c79f2b833ab51e3bf450.json",
+    "informatics/exports/manifest-c3687bdb3a8ca72891be9ae1e446a1cedf504345597fb504cdf25da8834bf410.json",
+    "informatics/exports/manifest-d1153313e6d23baa579a173a4a46c41be9e9b7738dd42a3b1abdd5d7e8d910eb.json",
+    "informatics/exports/manifest-df1e668f95ea57203af8999b15c82489b1fd47b5dad5566885b36a189d5a7932.json",
+    "informatics/exports/manifest-ed4253c9183132baa45a17022637762937e7ed71615fc7f845542180b230fc84.json",
+    "informatics/exports/manifest-fa67557867eea17ab6e38ab75eaa18cc266e857acd442058386592412c4c3686.json",
+    "informatics/exports/part-01e47674c665d050a16283c7b565349dc8ae7021def97714e6ca6ab4774e4008.bin",
+    "informatics/exports/part-0271bd52b2fad69dc77e0f72fc35830dbcb684fe049c66807f24af953d35664e.bin",
+    "informatics/exports/part-056a6eaf357901a9ca4222a782460303272a930d8a71498355a3739b9d09774f.bin",
+    "informatics/exports/part-0708ad9974110151358ad577ba9838d1bab89164f92b98915f583f9881118e11.bin",
+    "informatics/exports/part-073f6015a8242456962701801f8290b515ad39b277f075f6d0dca6701ad18355.bin"
+  ],
+  "fileCount": 26,
+  "bytesRemoved": 258096971,
+  "basis": "Prior release recorded 404; HTTP Last-Modified confirms creation during this interrupted attempt; files are outside the approved source delta. Original source bytes remain in Git and staging."
+}
