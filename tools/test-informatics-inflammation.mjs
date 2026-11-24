@@ -37,6 +37,8 @@ check('Target detection and follow-ups preserve subject without gene conflation'
  assert.deepEqual(subjects('OXTR and IL-6'),['oxtr-il6-inflammation']);
  assert.deepEqual(subjects('DOCK2 and IL6'),['dock2-trauma-ptsd','oxtr-il6-inflammation']);
  assert.deepEqual(subjects('What are its limits?',[{role:'user',content:'DOCK2 in PTSD'}]),['dock2-trauma-ptsd']);
+ assert.deepEqual(subjects('What are its limits?',[{role:'user',content:'DOCK2 in PTSD'},{role:'user',content:'Explain music therapy'}]),[]);
+ assert.deepEqual(subjects('Explain that more',[{role:'user',content:'DOCK2 in PTSD'},{role:'user',content:'What are its limits?'}]),['dock2-trauma-ptsd']);
  for(const q of ['DOC2','CK2','Pisano periods','Music and youth'])assert.deepEqual(subjects(q,[{role:'user',content:'OXTR and IL6'}]),[]);
  assert.equal(search('CK2').length,0);
 });

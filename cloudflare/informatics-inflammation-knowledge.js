@@ -15,7 +15,7 @@ export const inflammationRecords=chapters.flatMap(c=>registers[c.id].records.map
 const byIdentity=new Map(inflammationRecords.flatMap(r=>[r.id,r.doi,r.pmid,...r.aliases].filter(Boolean).map(id=>[normal(id),r])));
 export const inflammationRecord=id=>byIdentity.get(normal(id));
 export const inflammationReplaces=row=>!![row.id,row.data?.doi,row.data?.pmid].filter(Boolean).find(inflammationRecord);
-export const inflammationVersion={version:'general-inflammation-20261125',sourceSHA256:createHash('sha256').update(JSON.stringify({chapters,registers})).digest('hex'),sourceRecords:inflammationRecords.length,chapters:chapters.map(c=>({id:c.id,number:c.number,sourceRecords:registers[c.id].sourceCount,reviewedAt:registers[c.id].reviewedAt}))};
+export const inflammationVersion={version:'general-inflammation-20261125-v2',sourceSHA256:createHash('sha256').update(JSON.stringify({chapters,registers})).digest('hex'),sourceRecords:inflammationRecords.length,chapters:chapters.map(c=>({id:c.id,number:c.number,sourceRecords:registers[c.id].sourceCount,reviewedAt:registers[c.id].reviewedAt}))};
 
 function directChapters(query){
  const q=normal(query),ids=[];
@@ -27,10 +27,12 @@ function directChapters(query){
 export function inflammationChapters(query,history=[]){
  const direct=directChapters(query);if(direct.length)return direct;
  // Carry the subject only for short, referential follow-ups, never a new unrelated topic.
- if(!/\b(?:it|its|they|them|those|that|this|these|both|same|more|follow.up)\b/i.test(query))return [];
+ const referential=q=>/\b(?:it|its|they|them|those|that|this|these|both|same|more|follow.up)\b/i.test(q);
+ if(!referential(query))return [];
  for(const m of history.slice(-6).reverse()){
   if(m.role!=='user')continue;
   const previous=directChapters(m.content||'');if(previous.length)return previous;
+  if(!referential(m.content||''))return [];
  }
  return [];
 }
