@@ -70,7 +70,8 @@ An extensive, clinically searchable research index spanning sound and auditory e
 ## Read without a connector
 
 - [Research and evidence](https://universalmind.tv/informatics/read/): Plain HTML overview.
-- [Publications](https://universalmind.tv/informatics/read/publications/index.html): 1452 approved records, citations, summaries, limitations and topic assessment context.
+- [Publications](https://universalmind.tv/informatics/read/publications/index.html): 1494 approved records, citations, summaries, limitations and topic assessment context.
+- [Oxytocin, OXTR and IL-6](https://universalmind.tv/informatics/read/oxtr-il6/index.html): 42 sources across cells, animals and humans; context-dependent inflammation, regulatory markers and a testable human research direction.
 - [DOCK2, trauma and PTSD](https://universalmind.tv/informatics/read/dock2/index.html): Exploratory intervention-response research, OXTR hypotheses and 33 sources with explicit limitations.
 - [Hyperspectral Imaging](https://universalmind.tv/informatics/read/hyperspectral/index.html): Six subchapters, 240 original citation entries and 13 timeline milestones.
 - [Geometry Atlas](https://universalmind.tv/informatics/read/atlas/index.html): 1,001 records with complete JSON and CSV links.

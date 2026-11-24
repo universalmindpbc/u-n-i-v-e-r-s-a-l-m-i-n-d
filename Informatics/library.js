@@ -36,7 +36,7 @@
   }
   const topicScoreStatus = topic => topic.trustAssessment?.status === 'exploratory' ? '<span class="topic-score-status">Exploratory research · certainty not graded</span>' : topic.trustAssessment?.status === 'clinical-guidance' ? '<span class="topic-score-status">Clinical guidance</span>' : topic.trustAssessment?.status === 'below-minimum' ? '<span class="topic-score-status">Not yet graded · minimum 3 papers</span>' : '';
   function topicCounts(topic) {
-    return `<span class="contents-topic-meta"><span class="paper-count">${(topic.id.startsWith('masked-') || topic.id.startsWith('dock2-')) ? topic.papers.length+' sources' : paperCount(topic.papers)}</span>${crosses(topic.trustScore)}${topicScoreStatus(topic)}</span>`;
+    return `<span class="contents-topic-meta"><span class="paper-count">${(topic.id.startsWith('masked-') || topic.id.startsWith('dock2-') || topic.id.startsWith('oxtr-il6-')) ? topic.papers.length+' sources' : paperCount(topic.papers)}</span>${crosses(topic.trustScore)}${topicScoreStatus(topic)}</span>`;
   }
   $('#trust-key').innerHTML = [[3,'At least 3 verified double-blind studies'],[2,'At least 3 randomized or single-blind studies'],[1,'At least 3 peer-reviewed journal articles']].map(([score,label]) => `<div>${crosses(score)}<span>${label}</span></div>`).join('');
   function route(number = 0, topic = '', destination = collection) {
@@ -156,6 +156,18 @@
     if (!register) return '';
     return `<p class="register-downloads"><a href="${esc(safeURL(register.json))}" download>Complete source register · JSON</a><a href="${esc(safeURL(register.csv))}" download>Source index · CSV</a><a href="${esc(safeURL(register.reading))}" target="_blank" rel="noopener noreferrer">Read or print the complete chapter</a></p>`;
   }
+  function researchEvidenceOverview(chapter) {
+    if (!chapter.evidenceOverview) return '';
+    return `<section class="evidence-overview" aria-label="Evidence across cells, animals and humans"><div class="evidence-levels">${chapter.evidenceOverview.map(row=>`<div class="evidence-level"><h3>${esc(row.label)}</h3><p class="evidence-strength">${esc(row.strength)}</p><p>${esc(row.finding)}</p><p class="evidence-boundary">${esc(row.boundary)}</p></div>`).join('')}</div><p class="evidence-note">${esc(chapter.evidenceOverviewNote)}</p></section>`;
+  }
+  function researchParagraphs(topic, chapter) {
+    const localPapers = chapter.topics.flatMap(t=>t.papers);
+    return (topic.paragraphs || []).map((text,index)=>`<p class="topic-description">${esc(text)}${topic.paragraphSources?.[index]?.length ? `<span class="paragraph-sources">${topic.paragraphSources[index].map(source=>{const paper=localPapers.find(p=>p.recordId===source.recordId);return paper ? `<button class="text-button" data-paper-detail="${esc(paper.id)}">${esc(source.label)}</button>` : '';}).join(' · ')}</span>` : ''}</p>`).join('');
+  }
+  function researchBiomarkers(topic) {
+    if (!topic.biomarkers) return '';
+    return `<section class="biomarker-guide" aria-label="Proposed biomarker guide"><h4>Proposed biomarker guide</h4><dl>${topic.biomarkers.map(row=>`<div><dt>${esc(row.marker)}</dt><dd><strong>${esc(row.role)}</strong><p>${esc(row.interpretation)}</p></dd></div>`).join('')}</dl></section>`;
+  }
   function paperMarkup(paper, heading = 'h4') {
     const quotes = paper.quotes || [];
     const review = paper.quotationReview;
@@ -205,7 +217,7 @@
     const chapterIndex = edition.chapters.indexOf(chapter);
     const previous = edition.chapters[chapterIndex - 1];
     const next = edition.chapters[chapterIndex + 1];
-    return `<div class="narrative-layout">${rail}<div class="chapter-reader"><div class="chapter-opening"><p class="eyebrow">${esc(collectionTitle(collection))} · CHAPTER ${String(chapter.number).padStart(2,'0')}</p><h2>${esc(chapter.title)}</h2><p class="paper-count">${chapter.maskedLanguage ? '38 sources · 35 research publications · 3 background references' : chapter.researchRegister ? chapter.researchRegister.count+' sources' : paperCount(chapter.topics.flatMap(t=>t.papers))}</p>${(overviewAtTopic ? [] : chapter.overview || []).map(p=>`<p class="chapter-overview">${esc(p)}</p>`).join('')}${chapter.maskedLanguage ? maskedChapterGuide(chapter) : ''}${researchRegisterLinks(chapter)}${chapter.sourceRegister ? '<p><a href="#chapter-source-register">Browse all 240 bibliography entries and downloads ↓</a></p>' : ''}</div>${chapter.topics.map(topic => `<section class="topic" id="topic-${topic.id}"><div class="topic-heading"><h3>${esc(topic.title)}</h3>${crosses(topic.trustScore,true)}</div><p class="paper-count">${(topic.id.startsWith('masked-') || topic.id.startsWith('dock2-')) ? topic.papers.length+' sources' : paperCount(topic.papers)}${topicScoreStatus(topic)}</p>${topic.description ? `<p class="topic-description">${esc(topic.description)}</p>` : ''}${[...(topic.id==='domestic-family-violence' ? chapter.overview || [] : []),...(topic.paragraphs || [])].map(p=>`<p class="topic-description">${esc(p)}</p>`).join('')}${topic.id==='imaging-evolution' ? timelineMarkup(chapter) : ''}${topic.papers.map(p => topic.compactIndex ? maskedIndexEntry(p) : paperMarkup(p)).join('')}</section>`).join('')}${sourceRegisterMarkup(chapter)}<nav class="chapter-pagination" aria-label="Read another chapter">${previous ? `<a data-chapter="${previous.number}" href="${esc(route(previous.number))}">← ${esc(previous.title)}</a>` : `<a data-chapter="0" href="${esc(route())}">← Contents</a>`}${next ? `<a data-chapter="${next.number}" href="${esc(route(next.number))}">${esc(next.title)} →</a>` : `<a data-chapter="0" href="${esc(route())}">Back to contents ↑</a>`}</nav></div></div>`;
+    return `<div class="narrative-layout">${rail}<div class="chapter-reader"><div class="chapter-opening"><p class="eyebrow">${esc(collectionTitle(collection))} · CHAPTER ${String(chapter.number).padStart(2,'0')}</p><h2>${esc(chapter.title)}</h2><p class="paper-count">${chapter.maskedLanguage ? '38 sources · 35 research publications · 3 background references' : chapter.researchRegister ? chapter.researchRegister.count+' sources' : paperCount(chapter.topics.flatMap(t=>t.papers))}</p>${(overviewAtTopic ? [] : chapter.overview || []).map(p=>`<p class="chapter-overview">${esc(p)}</p>`).join('')}${chapter.maskedLanguage ? maskedChapterGuide(chapter) : ''}${researchEvidenceOverview(chapter)}${researchRegisterLinks(chapter)}${chapter.sourceRegister ? '<p><a href="#chapter-source-register">Browse all 240 bibliography entries and downloads ↓</a></p>' : ''}</div>${chapter.topics.map(topic => `<section class="topic" id="topic-${topic.id}"><div class="topic-heading"><h3>${esc(topic.title)}</h3>${crosses(topic.trustScore,true)}</div><p class="paper-count">${(topic.id.startsWith('masked-') || topic.id.startsWith('dock2-') || topic.id.startsWith('oxtr-il6-')) ? topic.papers.length+' sources' : paperCount(topic.papers)}${topicScoreStatus(topic)}</p>${topic.description ? `<p class="topic-description">${esc(topic.description)}</p>` : ''}${(topic.id==='domestic-family-violence' ? chapter.overview || [] : []).map(p=>`<p class="topic-description">${esc(p)}</p>`).join('')}${researchParagraphs(topic,chapter)}${researchBiomarkers(topic)}${topic.id==='imaging-evolution' ? timelineMarkup(chapter) : ''}${topic.papers.map(p => topic.compactIndex ? maskedIndexEntry(p) : paperMarkup(p)).join('')}</section>`).join('')}${sourceRegisterMarkup(chapter)}<nav class="chapter-pagination" aria-label="Read another chapter">${previous ? `<a data-chapter="${previous.number}" href="${esc(route(previous.number))}">← ${esc(previous.title)}</a>` : `<a data-chapter="0" href="${esc(route())}">← Contents</a>`}${next ? `<a data-chapter="${next.number}" href="${esc(route(next.number))}">${esc(next.title)} →</a>` : `<a data-chapter="0" href="${esc(route())}">Back to contents ↑</a>`}</nav></div></div>`;
   }
   function filter() {
     const q = normalize($('#query').value).split(' ').filter(Boolean);
@@ -405,7 +417,7 @@
   async function load() {
     $('#load-error').hidden = true;
     try {
-      const responses = await Promise.all(['sound-edition','library','publication-access','language-edition','general-edition','mindfulness-expansion','vision-edition','vision-expansion','clinical-conditions','nature-expansion','fulltext-availability','fibonacci-expansion','hyperspectral-expansion','domestic-violence-expansion','youth-expansion','community-index','age-index','masked-language-expansion'].map(name=>fetch('library-data/'+name+'.json?v=dock2-20261121')));
+      const responses = await Promise.all(['sound-edition','library','publication-access','language-edition','general-edition','mindfulness-expansion','vision-edition','vision-expansion','clinical-conditions','nature-expansion','fulltext-availability','fibonacci-expansion','hyperspectral-expansion','domestic-violence-expansion','youth-expansion','community-index','age-index','masked-language-expansion'].map(name=>fetch('library-data/'+name+'.json?v=oxtr-il6-20261124')));
       if (responses.some(response => !response.ok)) throw new Error('Research unavailable');
       const [sound,data,access,language,general,expansion,vision,visionExpansion,conditions,natureExpansion,fulltexts,fibonacciExpansion,hyperspectralExpansion,dvExpansion,youthExpansion,communities,ages,maskedLanguage] = await Promise.all(responses.map(response=>response.json()));
       if (communities.schemaVersion!=='communities-contexts/v2' || communities.records.length!==communities.recordCount) throw new Error('Invalid community classifications');
@@ -449,7 +461,7 @@
       data.records = [...byId.values()];
       for (const [name,book] of Object.entries(editions)) for (const chapter of book.chapters) for (const topic of chapter.topics) for (const paper of topic.papers) {
         const approved = byId.get(paper.recordId);
-        if (approved?.publicationApproval && chapter.id !== 'dock2-trauma-ptsd') {
+        if (approved?.publicationApproval && !['dock2-trauma-ptsd','oxtr-il6-inflammation'].includes(chapter.id)) {
           const id=paper.id, recordId=paper.recordId;
           Object.assign(paper,approved,{id,recordId});
         }
@@ -466,8 +478,8 @@
       restoreFilters(params);
       records = buildRecords(data);
       const ageById=new Map(ageData.records.map(row=>[row.recordId,row]));
-      for (const record of data.records.filter(row=>row.dock2Research)) {
-        if (!ageById.has(record.id)) ageById.set(record.id,{recordId:record.id,groups:['not-specified'],reportedAges:null,youthScope:null,sourceURL:record.urls?.[0],basisType:'Age range not separately classified in the DOCK2 evidence review'});
+      for (const record of data.records.filter(row=>row.dock2Research || row.oxtrIl6Research)) {
+        if (!ageById.has(record.id)) ageById.set(record.id,{recordId:record.id,groups:['not-specified'],reportedAges:null,youthScope:null,sourceURL:record.urls?.[0],basisType:'Age range not separately classified in this evidence review; see the study description'});
       }
       for(const record of records){const age=ageById.get(record.id);if(!age)throw new Error('Missing age classification');record.ageGroups=age.groups;record.agePopulation=age;record.conditionEvidence=[record.id,...record.aliases].flatMap(id=>clinicalConditions[id] || []);record.conditions=[...new Set(record.conditionEvidence.map(c=>c.id))];communityModel.attach(record,communityData);}
       populateFilters(); loading = false; render();

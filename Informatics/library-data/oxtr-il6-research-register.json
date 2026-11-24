@@ -1,0 +1,2592 @@
+{
+  "schemaVersion": "oxtr-il6-research/v1",
+  "reviewedAt": "2026-11-24",
+  "title": "Oxytocin, OXTR and inflammation: a focus on IL-6",
+  "purpose": [
+    "Oxytocin–OXTR signalling can regulate inflammation in selected cell and animal models, including pathways involving interleukin-6 (IL-6). The mechanistic evidence is strong in several defined systems. Human evidence is emerging and promising, but mixed and context-dependent; sustained systemic IL-6 lowering and clinical anti-inflammatory efficacy are not established.",
+    "This chapter follows the evidence from human-derived cells and receptor-perturbation experiments to animal disease models and human studies. It distinguishes inflammatory markers from regulatory markers, tissue RNA from secreted protein, and receptor hypotheses from demonstrated causal mechanisms.",
+    "For Universal Mind, the evidence supports a focused human research question: can a defined intervention change IL-6 and related immune measures, alongside meaningful outcomes, and is OXTR-related biology involved? That is a testable opportunity, not an established treatment claim."
+  ],
+  "reviewMethod": [
+    "The supplied PDF contained 19 distinct scholarly sources after deduplication. This chapter retains all 19 and adds primary human experiments, negative studies, receptor-mechanism papers, assay research and official reference records. The resulting 42 sources include reviews, a thesis, a conference abstract, gene records and a withdrawn trial registration; 42 sources does not mean 42 independent experiments.",
+    "Searches covered oxytocin/OXTR with IL-6, inflammatory cytokines, microglia, macrophages, colitis, human randomised trials, endotoxin, wound healing, proteomics, methylation and assay validation. PubMed/Europe PMC, publisher pages, accessible full text, university repositories and ClinicalTrials.gov were checked. Source records state whether full text, an abstract or a registry was available. This is a deep narrative analysis, not a preregistered systematic review, exhaustive search or meta-analysis.",
+    "No pooled effect size is presented because populations, species, tissues, routes, doses, timing and outcomes differ substantially. Formal risk-of-bias and GRADE assessments were not performed. The overview uses qualitative judgments about mechanistic support and human translation; publication design icons are not certainty grades. Publication bias and selective reporting remain possible, particularly across small preclinical experiments.",
+    "Reviews help locate original studies but do not add independent experimental replication. The master’s thesis and later macrophage publication share a research lineage; full-text access was insufficient to resolve exact data overlap. The two couple studies explicitly share a trial family. These relationships are recorded so source volume does not inflate confidence.",
+    "Source checking also identified a gene-identity error in one supplied review. The chapter retains that paper for provenance, flags the error and uses official gene annotations for the hormone–receptor distinction. Claims about tissue-specific effects, negative results and human uncertainty are retained even when they complicate the therapeutic narrative."
+  ],
+  "sourceCount": 42,
+  "suppliedUniqueSources": 19,
+  "additionalSources": 23,
+  "duplicateHandling": "Repeated hyperlinks and alternate URLs to the same publication were collapsed; the unrelated radio link was excluded. Shared trial families are explicitly linked.",
+  "evidenceOverview": [
+    {
+      "label": "In a dish",
+      "strength": "Strong in selected models",
+      "finding": "Direct IL-6 and signalling effects; mechanistic perturbations in several systems.",
+      "boundary": "Human donor-cell null results and pro-inflammatory gestational responses limit generalisation."
+    },
+    {
+      "label": "In animals",
+      "strength": "Substantial mechanistic support",
+      "finding": "Multiple tissues and disease models, including receptor deletion and functional outcomes.",
+      "boundary": "Small studies, selected sexes, experimental injury and exposure differences limit translation."
+    },
+    {
+      "label": "In humans",
+      "strength": "Emerging, promising and mixed",
+      "finding": "An acute endotoxin signal plus context-dependent cytokine and wound findings.",
+      "boundary": "No established sustained anti-inflammatory efficacy or validated Universal Mind OXTR–IL-6 pathway."
+    }
+  ],
+  "biomarkers": [
+    {
+      "marker": "IL-6 protein",
+      "role": "Candidate primary inflammatory outcome",
+      "interpretation": "Specify blood or tissue, baseline or challenge response, timing and assay sensitivity. A lower value is not automatically beneficial in every setting."
+    },
+    {
+      "marker": "IL6 messenger RNA",
+      "role": "Cellular expression outcome",
+      "interpretation": "Reflects transcription in the sampled cells. It is not interchangeable with secreted protein or circulating IL-6."
+    },
+    {
+      "marker": "IL-10 and IL-1RA",
+      "role": "Regulatory cytokine panel",
+      "interpretation": "Measure alongside inflammatory burden. Values may decline when the provoking inflammatory response declines."
+    },
+    {
+      "marker": "hs-CRP, TNF and IL-1β",
+      "role": "Complementary inflammatory context",
+      "interpretation": "CRP integrates a downstream acute-phase response; TNF and IL-1β have distinct kinetics. These are not anti-inflammatory markers."
+    },
+    {
+      "marker": "Adiponectin; serum amyloid A",
+      "role": "Metabolic and acute-phase context",
+      "interpretation": "Adiponectin can support a metabolic mechanism; SAA is an inflammatory acute-phase marker. The oxytocin evidence here is principally preclinical."
+    },
+    {
+      "marker": "sIL-6R and soluble gp130",
+      "role": "Exploratory IL-6 pathway context",
+      "interpretation": "Concentrations alone do not establish functional trans-signalling. Cell-response assays can test a specific pathway hypothesis."
+    },
+    {
+      "marker": "IL-4, IL-13 and TGF-β",
+      "role": "Context-dependent regulation and repair",
+      "interpretation": "Avoid a universally beneficial direction. Interpret with tissue remodelling, immune state and the study question."
+    },
+    {
+      "marker": "OXTR RNA, protein and methylation",
+      "role": "Exploratory receptor-related measures",
+      "interpretation": "Specify cell type, CpG site and assay. Expression or methylation is not receptor occupancy, activation or central target engagement."
+    },
+    {
+      "marker": "Plasma oxytocin",
+      "role": "Exploratory hormone measurement",
+      "interpretation": "Validate the complete analytical method. A concentration is not proof that the intervention acted through OXTR."
+    },
+    {
+      "marker": "Blood counts and NLR",
+      "role": "Covariate or prespecified moderator",
+      "interpretation": "Cell composition can affect molecular assays. NLR is an indirect index and is not a substitute for IL-6."
+    }
+  ],
+  "records": [
+    {
+      "key": "szeto2008",
+      "title": "Oxytocin attenuates NADPH-dependent superoxide activity and IL-6 secretion in macrophages and vascular cells",
+      "doi": "10.1152/ajpendo.90718.2008",
+      "pmid": "18940936",
+      "year": 2008,
+      "authors": "Szeto A, Nation DA, Mendez AJ, Dominguez-Bendala J, Brooks LG, Schneiderman N, McCabe PM.",
+      "journal": "American journal of physiology. Endocrinology and metabolism",
+      "urls": [
+        "https://doi.org/10.1152/ajpendo.90718.2008",
+        "https://pubmed.ncbi.nlm.nih.gov/18940936/"
+      ],
+      "group": "cells",
+      "design": "Cultured human macrophage and vascular-cell experiments",
+      "summary": "Oxytocin reduced stimulated IL-6 release by 56% in macrophages and 26% in endothelial cells in the reported experiments, alongside lower NADPH-dependent superoxide activity. The cells expressed OXTR, connecting an inflammatory readout with a plausible receptor pathway.",
+      "limitation": "These are laboratory effects in selected cell systems. They are not treatment-effect estimates in people and do not establish that ordinary changes in circulating oxytocin produce equivalent exposure.",
+      "sourceAccess": "Relevant full-text methods and results reviewed",
+      "supplied": true,
+      "targets": [
+        "OXT",
+        "OXTR",
+        "IL6"
+      ],
+      "peerReviewed": true,
+      "randomizedControlledTrial": false,
+      "blinding": "not-assigned",
+      "studyFamilyId": "oxtr-il6-szeto2008",
+      "recordId": "pmid-18940936",
+      "bibliographicVerification": {
+        "provider": "Europe PMC core record",
+        "checkedAt": "2026-11-24"
+      },
+      "evidenceRole": "Study-specific evidence; translation and limitations retained",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "peerReviewed": true,
+        "randomizedControlledTrial": false,
+        "blinding": "not-assigned",
+        "basis": "Study-design shorthand only; not a formal risk-of-bias, certainty or clinical-efficacy grade. Cultured human macrophage and vascular-cell experiments",
+        "sources": [
+          "https://doi.org/10.1152/ajpendo.90718.2008",
+          "https://pubmed.ncbi.nlm.nih.gov/18940936/"
+        ],
+        "assessedAt": "2026-11-24"
+      },
+      "evidence": {
+        "evidenceType": "Cultured human macrophage and vascular-cell experiments",
+        "relationshipNote": "Study-specific evidence; translation and limitations retained",
+        "sourceURLs": [
+          "https://doi.org/10.1152/ajpendo.90718.2008",
+          "https://pubmed.ncbi.nlm.nih.gov/18940936/"
+        ],
+        "checkedAt": "2026-11-24",
+        "reviewScope": "Relevant full-text methods and results reviewed",
+        "clinicalValidation": "No validated Universal Mind intervention–OXTR–IL-6 causal chain",
+        "studyFamilyId": "oxtr-il6-szeto2008"
+      }
+    },
+    {
+      "key": "szeto2017",
+      "title": "Regulation of the macrophage oxytocin receptor in response to inflammation",
+      "doi": "10.1152/ajpendo.00346.2016",
+      "pmid": "28049625",
+      "year": 2017,
+      "authors": "Szeto A, Sun-Suslow N, Mendez AJ, Hernandez RI, Wagner KV, McCabe PM.",
+      "journal": "American journal of physiology. Endocrinology and metabolism",
+      "urls": [
+        "https://doi.org/10.1152/ajpendo.00346.2016",
+        "https://pubmed.ncbi.nlm.nih.gov/28049625/"
+      ],
+      "group": "cells",
+      "design": "THP-1 and primary human macrophage experiments with inflammatory stimulation",
+      "summary": "Inflammatory stimulation markedly increased OXTR expression in human macrophages. NF-κB inhibition prevented this induction; oxytocin activated ERK signalling and reduced IL-6 secretion in activated cells. The study supports a possible feedback response to inflammation.",
+      "limitation": "Inflammation itself can increase OXTR expression, so a higher receptor transcript is not intrinsically a recovery marker. The reported response differed in mouse macrophages. Expression, receptor protein and signalling require separate measurements.",
+      "sourceAccess": "Relevant full-text methods and results reviewed",
+      "supplied": true,
+      "targets": [
+        "OXT",
+        "OXTR",
+        "IL6"
+      ],
+      "peerReviewed": true,
+      "randomizedControlledTrial": false,
+      "blinding": "not-assigned",
+      "studyFamilyId": "oxtr-il6-szeto2017",
+      "recordId": "pmid-28049625",
+      "bibliographicVerification": {
+        "provider": "Europe PMC core record",
+        "checkedAt": "2026-11-24"
+      },
+      "evidenceRole": "Study-specific evidence; translation and limitations retained",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "peerReviewed": true,
+        "randomizedControlledTrial": false,
+        "blinding": "not-assigned",
+        "basis": "Study-design shorthand only; not a formal risk-of-bias, certainty or clinical-efficacy grade. THP-1 and primary human macrophage experiments with inflammatory stimulation",
+        "sources": [
+          "https://doi.org/10.1152/ajpendo.00346.2016",
+          "https://pubmed.ncbi.nlm.nih.gov/28049625/"
+        ],
+        "assessedAt": "2026-11-24"
+      },
+      "evidence": {
+        "evidenceType": "THP-1 and primary human macrophage experiments with inflammatory stimulation",
+        "relationshipNote": "Study-specific evidence; translation and limitations retained",
+        "sourceURLs": [
+          "https://doi.org/10.1152/ajpendo.00346.2016",
+          "https://pubmed.ncbi.nlm.nih.gov/28049625/"
+        ],
+        "checkedAt": "2026-11-24",
+        "reviewScope": "Relevant full-text methods and results reviewed",
+        "clinicalValidation": "No validated Universal Mind intervention–OXTR–IL-6 causal chain",
+        "studyFamilyId": "oxtr-il6-szeto2017"
+      }
+    },
+    {
+      "key": "ross2013",
+      "title": "Oxytocin does not attenuate the ex vivo production of inflammatory cytokines by lipopolysaccharide-activated monocytes and macrophages from healthy male and female donors",
+      "doi": "10.1159/000351610",
+      "pmid": "23899661",
+      "year": 2013,
+      "authors": "Ross KM, McDonald-Jones G, Miller GE.",
+      "journal": "Neuroimmunomodulation",
+      "urls": [
+        "https://doi.org/10.1159/000351610",
+        "https://pubmed.ncbi.nlm.nih.gov/23899661/"
+      ],
+      "group": "cells",
+      "design": "Ex vivo human donor monocyte and macrophage experiments",
+      "summary": "Oxytocin did not attenuate LPS-induced inflammatory cytokine production across the tested conditions. The investigators examined donor sex, cell preparation, doses and pre-incubation as potential explanations for differences from earlier work.",
+      "limitation": "This is a meaningful negative result in human-derived cells. Cell source, differentiation, receptor availability and challenge conditions may change the response; a universal direct macrophage effect is not established.",
+      "sourceAccess": "Relevant full-text methods and results reviewed",
+      "supplied": false,
+      "targets": [
+        "OXT",
+        "OXTR",
+        "IL6"
+      ],
+      "peerReviewed": true,
+      "randomizedControlledTrial": false,
+      "blinding": "not-assigned",
+      "studyFamilyId": "oxtr-il6-ross2013",
+      "recordId": "pmid-23899661",
+      "bibliographicVerification": {
+        "provider": "Europe PMC core record",
+        "checkedAt": "2026-11-24"
+      },
+      "evidenceRole": "Study-specific evidence; translation and limitations retained",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "peerReviewed": true,
+        "randomizedControlledTrial": false,
+        "blinding": "not-assigned",
+        "basis": "Study-design shorthand only; not a formal risk-of-bias, certainty or clinical-efficacy grade. Ex vivo human donor monocyte and macrophage experiments",
+        "sources": [
+          "https://doi.org/10.1159/000351610",
+          "https://pubmed.ncbi.nlm.nih.gov/23899661/"
+        ],
+        "assessedAt": "2026-11-24"
+      },
+      "evidence": {
+        "evidenceType": "Ex vivo human donor monocyte and macrophage experiments",
+        "relationshipNote": "Study-specific evidence; translation and limitations retained",
+        "sourceURLs": [
+          "https://doi.org/10.1159/000351610",
+          "https://pubmed.ncbi.nlm.nih.gov/23899661/"
+        ],
+        "checkedAt": "2026-11-24",
+        "reviewScope": "Relevant full-text methods and results reviewed",
+        "clinicalValidation": "No validated Universal Mind intervention–OXTR–IL-6 causal chain",
+        "studyFamilyId": "oxtr-il6-ross2013"
+      }
+    },
+    {
+      "key": "kim2015",
+      "title": "Oxytocin activates NF-κB-mediated inflammatory pathways in human gestational tissues",
+      "doi": "10.1016/j.mce.2014.11.008",
+      "pmid": "25451977",
+      "year": 2015,
+      "authors": "Kim SH, MacIntyre DA, Firmino Da Silva M, Blanks AM, Lee YS, Thornton S, Bennett PR, Terzidou V.",
+      "journal": "Molecular and cellular endocrinology",
+      "urls": [
+        "https://doi.org/10.1016/j.mce.2014.11.008",
+        "https://pubmed.ncbi.nlm.nih.gov/25451977/"
+      ],
+      "group": "cells",
+      "design": "Human gestational-tissue cell experiments",
+      "summary": "Oxytocin activated NF-κB and MAPK signalling and increased inflammatory and prostaglandin-related responses in human myometrial and amnion cells. This fits the inflammatory physiology of labour.",
+      "limitation": "Gestational tissue has specialised biology. The result demonstrates tissue specificity; it does not establish that oxytocin causes general systemic inflammation in other populations.",
+      "sourceAccess": "Indexed abstract and bibliographic record reviewed",
+      "supplied": false,
+      "targets": [
+        "OXT",
+        "OXTR",
+        "IL6"
+      ],
+      "peerReviewed": true,
+      "randomizedControlledTrial": false,
+      "blinding": "not-assigned",
+      "studyFamilyId": "oxtr-il6-kim2015",
+      "recordId": "pmid-25451977",
+      "bibliographicVerification": {
+        "provider": "Europe PMC core record",
+        "checkedAt": "2026-11-24"
+      },
+      "evidenceRole": "Study-specific evidence; translation and limitations retained",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "peerReviewed": true,
+        "randomizedControlledTrial": false,
+        "blinding": "not-assigned",
+        "basis": "Study-design shorthand only; not a formal risk-of-bias, certainty or clinical-efficacy grade. Human gestational-tissue cell experiments",
+        "sources": [
+          "https://doi.org/10.1016/j.mce.2014.11.008",
+          "https://pubmed.ncbi.nlm.nih.gov/25451977/"
+        ],
+        "assessedAt": "2026-11-24"
+      },
+      "evidence": {
+        "evidenceType": "Human gestational-tissue cell experiments",
+        "relationshipNote": "Study-specific evidence; translation and limitations retained",
+        "sourceURLs": [
+          "https://doi.org/10.1016/j.mce.2014.11.008",
+          "https://pubmed.ncbi.nlm.nih.gov/25451977/"
+        ],
+        "checkedAt": "2026-11-24",
+        "reviewScope": "Indexed abstract and bibliographic record reviewed",
+        "clinicalValidation": "No validated Universal Mind intervention–OXTR–IL-6 causal chain",
+        "studyFamilyId": "oxtr-il6-kim2015"
+      }
+    },
+    {
+      "key": "cho2019",
+      "title": "Oxytocin alleviates cellular senescence through oxytocin receptor-mediated extracellular signal-regulated kinase/Nrf2 signalling",
+      "doi": "10.1111/bjd.17824",
+      "pmid": "30801661",
+      "year": 2019,
+      "authors": "Cho SY, Kim AY, Kim J, Choi DH, Son ED, Shin DW.",
+      "journal": "The British journal of dermatology",
+      "urls": [
+        "https://doi.org/10.1111/bjd.17824",
+        "https://pubmed.ncbi.nlm.nih.gov/30801661/"
+      ],
+      "group": "cells",
+      "design": "Human dermal fibroblast senescence experiments",
+      "summary": "Oxytocin reduced cellular senescence-related changes through OXTR-associated ERK/Nrf2 signalling. Receptor expression and the response varied with donor age and OXTR methylation.",
+      "limitation": "A human-derived cell culture remains preclinical evidence. Senescence markers are not interchangeable with circulating IL-6 or a demonstrated clinical anti-inflammatory benefit.",
+      "sourceAccess": "Indexed abstract and bibliographic record reviewed",
+      "supplied": false,
+      "targets": [
+        "OXT",
+        "OXTR",
+        "NFE2L2"
+      ],
+      "peerReviewed": true,
+      "randomizedControlledTrial": false,
+      "blinding": "not-assigned",
+      "studyFamilyId": "oxtr-il6-cho2019",
+      "recordId": "pmid-30801661",
+      "bibliographicVerification": {
+        "provider": "Europe PMC core record",
+        "checkedAt": "2026-11-24"
+      },
+      "evidenceRole": "Study-specific evidence; translation and limitations retained",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "peerReviewed": true,
+        "randomizedControlledTrial": false,
+        "blinding": "not-assigned",
+        "basis": "Study-design shorthand only; not a formal risk-of-bias, certainty or clinical-efficacy grade. Human dermal fibroblast senescence experiments",
+        "sources": [
+          "https://doi.org/10.1111/bjd.17824",
+          "https://pubmed.ncbi.nlm.nih.gov/30801661/"
+        ],
+        "assessedAt": "2026-11-24"
+      },
+      "evidence": {
+        "evidenceType": "Human dermal fibroblast senescence experiments",
+        "relationshipNote": "Study-specific evidence; translation and limitations retained",
+        "sourceURLs": [
+          "https://doi.org/10.1111/bjd.17824",
+          "https://pubmed.ncbi.nlm.nih.gov/30801661/"
+        ],
+        "checkedAt": "2026-11-24",
+        "reviewScope": "Indexed abstract and bibliographic record reviewed",
+        "clinicalValidation": "No validated Universal Mind intervention–OXTR–IL-6 causal chain",
+        "studyFamilyId": "oxtr-il6-cho2019"
+      }
+    },
+    {
+      "key": "yuan2016",
+      "title": "Oxytocin inhibits lipopolysaccharide-induced inflammation in microglial cells and attenuates microglial activation in lipopolysaccharide-treated mice",
+      "doi": "10.1186/s12974-016-0541-7",
+      "pmid": "27075756",
+      "year": 2016,
+      "authors": "Yuan L, Liu S, Bai X, Gao Y, Liu G, Wang X, Liu D, Li T, Hao A, Wang Z.",
+      "journal": "Journal of neuroinflammation",
+      "urls": [
+        "https://doi.org/10.1186/s12974-016-0541-7",
+        "https://pubmed.ncbi.nlm.nih.gov/27075756/"
+      ],
+      "group": "preclinical",
+      "design": "BV-2 and primary microglia; LPS-challenged male mice",
+      "summary": "Oxytocin pretreatment reduced inflammatory responses in microglial systems and microglial activation in mice. ERK and p38 responses were reduced under the tested conditions, while JNK did not show the same pattern.",
+      "limitation": "Pretreatment of an acute endotoxin model differs from treating established human neuroinflammatory disease. Concentrations, route and timing constrain translation; peripheral cytokines do not directly measure brain inflammation.",
+      "sourceAccess": "Relevant full-text methods and results reviewed",
+      "supplied": false,
+      "targets": [
+        "OXT",
+        "OXTR"
+      ],
+      "peerReviewed": true,
+      "randomizedControlledTrial": false,
+      "blinding": "not-assigned",
+      "studyFamilyId": "oxtr-il6-yuan2016",
+      "recordId": "pmid-27075756",
+      "bibliographicVerification": {
+        "provider": "Europe PMC core record",
+        "checkedAt": "2026-11-24"
+      },
+      "evidenceRole": "Study-specific evidence; translation and limitations retained",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "peerReviewed": true,
+        "randomizedControlledTrial": false,
+        "blinding": "not-assigned",
+        "basis": "Study-design shorthand only; not a formal risk-of-bias, certainty or clinical-efficacy grade. BV-2 and primary microglia; LPS-challenged male mice",
+        "sources": [
+          "https://doi.org/10.1186/s12974-016-0541-7",
+          "https://pubmed.ncbi.nlm.nih.gov/27075756/"
+        ],
+        "assessedAt": "2026-11-24"
+      },
+      "evidence": {
+        "evidenceType": "BV-2 and primary microglia; LPS-challenged male mice",
+        "relationshipNote": "Study-specific evidence; translation and limitations retained",
+        "sourceURLs": [
+          "https://doi.org/10.1186/s12974-016-0541-7",
+          "https://pubmed.ncbi.nlm.nih.gov/27075756/"
+        ],
+        "checkedAt": "2026-11-24",
+        "reviewScope": "Relevant full-text methods and results reviewed",
+        "clinicalValidation": "No validated Universal Mind intervention–OXTR–IL-6 causal chain",
+        "studyFamilyId": "oxtr-il6-yuan2016"
+      }
+    },
+    {
+      "key": "inoue2019",
+      "title": "Oxytocin Suppresses Inflammatory Responses Induced by Lipopolysaccharide through Inhibition of the eIF-2-ATF4 Pathway in Mouse Microglia",
+      "doi": "10.3390/cells8060527",
+      "pmid": "31159306",
+      "year": 2019,
+      "authors": "Inoue T, Yamakage H, Tanaka M, Kusakabe T, Shimatsu A, Satoh-Asahara N.",
+      "journal": "Cells",
+      "urls": [
+        "https://doi.org/10.3390/cells8060527",
+        "https://pubmed.ncbi.nlm.nih.gov/31159306/"
+      ],
+      "group": "cells",
+      "design": "Mouse MG6 microglial cell experiments",
+      "summary": "Oxytocin reduced LPS-associated IL-6, TNF and IL-1β responses and inhibited the eIF2α–ATF4 stress pathway. An oxytocin-receptor antagonist reversed the suppression in the tested model.",
+      "limitation": "The study used a mouse cell line and small numbers of independent experiments. NF-κB p65 and p38 were not notably altered at the assessed time points, illustrating that one signalling account does not fit every model.",
+      "sourceAccess": "Relevant full-text methods and results reviewed",
+      "supplied": false,
+      "targets": [
+        "OXT",
+        "OXTR",
+        "IL6"
+      ],
+      "peerReviewed": true,
+      "randomizedControlledTrial": false,
+      "blinding": "not-assigned",
+      "studyFamilyId": "oxtr-il6-inoue2019",
+      "recordId": "pmid-31159306",
+      "bibliographicVerification": {
+        "provider": "Europe PMC core record",
+        "checkedAt": "2026-11-24"
+      },
+      "evidenceRole": "Study-specific evidence; translation and limitations retained",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "peerReviewed": true,
+        "randomizedControlledTrial": false,
+        "blinding": "not-assigned",
+        "basis": "Study-design shorthand only; not a formal risk-of-bias, certainty or clinical-efficacy grade. Mouse MG6 microglial cell experiments",
+        "sources": [
+          "https://doi.org/10.3390/cells8060527",
+          "https://pubmed.ncbi.nlm.nih.gov/31159306/"
+        ],
+        "assessedAt": "2026-11-24"
+      },
+      "evidence": {
+        "evidenceType": "Mouse MG6 microglial cell experiments",
+        "relationshipNote": "Study-specific evidence; translation and limitations retained",
+        "sourceURLs": [
+          "https://doi.org/10.3390/cells8060527",
+          "https://pubmed.ncbi.nlm.nih.gov/31159306/"
+        ],
+        "checkedAt": "2026-11-24",
+        "reviewScope": "Relevant full-text methods and results reviewed",
+        "clinicalValidation": "No validated Universal Mind intervention–OXTR–IL-6 causal chain",
+        "studyFamilyId": "oxtr-il6-inoue2019"
+      }
+    },
+    {
+      "key": "hwang2026",
+      "title": "Oxytocin Modulates Microglial IL-17-Linked Inflammatory Pathways Through the IL-6/COX-2",
+      "doi": "10.3390/life16010105",
+      "pmid": "41598260",
+      "year": 2026,
+      "authors": "Hwang W, Jang YH, Hong J, Kang S, Hur JK, Lee HJ.",
+      "journal": "Life (Basel, Switzerland)",
+      "urls": [
+        "https://doi.org/10.3390/life16010105",
+        "https://pubmed.ncbi.nlm.nih.gov/41598260/"
+      ],
+      "group": "cells",
+      "design": "BV-2 mouse microglial RNA sequencing and gene-expression experiments",
+      "summary": "Oxytocin pretreatment reduced IL6 and COX2 transcripts after LPS challenge. Transcriptomic enrichment implicated IL-17-linked inflammatory pathways; TNF and IBA1 transcript changes were not significant in the reported targeted comparison.",
+      "limitation": "Pathway enrichment is not direct evidence of IL-17 blockade. This cell study does not establish reduced secreted IL-6, human brain exposure or clinical benefit; receptor-specific causality was not established by a knockout or antagonist experiment.",
+      "sourceAccess": "Relevant full-text methods and results reviewed",
+      "supplied": true,
+      "targets": [
+        "OXT",
+        "OXTR",
+        "IL6"
+      ],
+      "peerReviewed": true,
+      "randomizedControlledTrial": false,
+      "blinding": "not-assigned",
+      "studyFamilyId": "oxtr-il6-hwang2026",
+      "recordId": "pmid-41598260",
+      "bibliographicVerification": {
+        "provider": "Europe PMC core record",
+        "checkedAt": "2026-11-24"
+      },
+      "evidenceRole": "Study-specific evidence; translation and limitations retained",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "peerReviewed": true,
+        "randomizedControlledTrial": false,
+        "blinding": "not-assigned",
+        "basis": "Study-design shorthand only; not a formal risk-of-bias, certainty or clinical-efficacy grade. BV-2 mouse microglial RNA sequencing and gene-expression experiments",
+        "sources": [
+          "https://doi.org/10.3390/life16010105",
+          "https://pubmed.ncbi.nlm.nih.gov/41598260/"
+        ],
+        "assessedAt": "2026-11-24"
+      },
+      "evidence": {
+        "evidenceType": "BV-2 mouse microglial RNA sequencing and gene-expression experiments",
+        "relationshipNote": "Study-specific evidence; translation and limitations retained",
+        "sourceURLs": [
+          "https://doi.org/10.3390/life16010105",
+          "https://pubmed.ncbi.nlm.nih.gov/41598260/"
+        ],
+        "checkedAt": "2026-11-24",
+        "reviewScope": "Relevant full-text methods and results reviewed",
+        "clinicalValidation": "No validated Universal Mind intervention–OXTR–IL-6 causal chain",
+        "studyFamilyId": "oxtr-il6-hwang2026"
+      }
+    },
+    {
+      "key": "mairesse2019",
+      "title": "Oxytocin receptor agonist reduces perinatal brain damage by targeting microglia",
+      "doi": "10.1002/glia.23546",
+      "pmid": "30506969",
+      "year": 2019,
+      "authors": "Mairesse J, Zinni M, Pansiot J, Hassan-Abdi R, Demene C, Colella M, Charriaut-Marlangue C, Rideau Batista Novais A, Tanter M, Maccari S, Gressens P, Vaiman D, Soussi-Yanicostas N, Baud O.",
+      "journal": "Glia",
+      "urls": [
+        "https://doi.org/10.1002/glia.23546",
+        "https://pubmed.ncbi.nlm.nih.gov/30506969/"
+      ],
+      "group": "preclinical",
+      "design": "Perinatal brain-injury models in rats, zebrafish and microglia",
+      "summary": "The OXTR agonist carbetocin reduced microglial inflammatory responses and improved aspects of myelination, brain connectivity and later behaviour in experimental perinatal injury.",
+      "limitation": "Carbetocin is a related pharmacological agonist, with its own exposure and receptor profile. Developmental animal injury models do not establish efficacy or safety for human infants or equivalence to a behavioural intervention.",
+      "sourceAccess": "Indexed abstract and bibliographic record reviewed",
+      "supplied": true,
+      "targets": [
+        "OXTR"
+      ],
+      "peerReviewed": true,
+      "randomizedControlledTrial": false,
+      "blinding": "not-assigned",
+      "studyFamilyId": "oxtr-il6-mairesse2019",
+      "recordId": "pmid-30506969",
+      "bibliographicVerification": {
+        "provider": "Europe PMC core record",
+        "checkedAt": "2026-11-24"
+      },
+      "evidenceRole": "Study-specific evidence; translation and limitations retained",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "peerReviewed": true,
+        "randomizedControlledTrial": false,
+        "blinding": "not-assigned",
+        "basis": "Study-design shorthand only; not a formal risk-of-bias, certainty or clinical-efficacy grade. Perinatal brain-injury models in rats, zebrafish and microglia",
+        "sources": [
+          "https://doi.org/10.1002/glia.23546",
+          "https://pubmed.ncbi.nlm.nih.gov/30506969/"
+        ],
+        "assessedAt": "2026-11-24"
+      },
+      "evidence": {
+        "evidenceType": "Perinatal brain-injury models in rats, zebrafish and microglia",
+        "relationshipNote": "Study-specific evidence; translation and limitations retained",
+        "sourceURLs": [
+          "https://doi.org/10.1002/glia.23546",
+          "https://pubmed.ncbi.nlm.nih.gov/30506969/"
+        ],
+        "checkedAt": "2026-11-24",
+        "reviewScope": "Indexed abstract and bibliographic record reviewed",
+        "clinicalValidation": "No validated Universal Mind intervention–OXTR–IL-6 causal chain",
+        "studyFamilyId": "oxtr-il6-mairesse2019"
+      }
+    },
+    {
+      "key": "gong2026",
+      "title": "Oxytocin alleviates the cognitive and memory dysfunction caused by neuroinflammation through blocking the TLR4/NLRP3/NF-κB signaling pathway",
+      "doi": "10.1016/j.brainresbull.2026.111904",
+      "pmid": "42049099",
+      "year": 2026,
+      "authors": "Gong H, Wang Y, Ou Y, Zhou M, Wu G, Che M, Li K, Chen R, Xiong Z, Ling X, Wang H, Wang X, Ye X, Feng Z, Qi S.",
+      "journal": "Brain research bulletin",
+      "urls": [
+        "https://doi.org/10.1016/j.brainresbull.2026.111904",
+        "https://pubmed.ncbi.nlm.nih.gov/42049099/"
+      ],
+      "group": "animals",
+      "design": "LPS neuroinflammation and memory experiments in adult male mice",
+      "summary": "Oxytocin improved cognitive and synaptic measures and reduced inflammatory markers including IL-6 in the reported mouse model. Atosiban reversed effects; NLRP3 inhibition mimicked benefits and inflammasome activation counteracted them.",
+      "limitation": "Assessment here relies on the indexed abstract. Atosiban has vasopressin-receptor activity as well as OXTR antagonism, so reversal alone does not isolate OXTR with perfect specificity. Acute male-mouse results require independent translation.",
+      "sourceAccess": "Indexed abstract and bibliographic record reviewed",
+      "supplied": false,
+      "targets": [
+        "OXT",
+        "OXTR",
+        "IL6"
+      ],
+      "peerReviewed": true,
+      "randomizedControlledTrial": false,
+      "blinding": "not-assigned",
+      "studyFamilyId": "oxtr-il6-gong2026",
+      "recordId": "pmid-42049099",
+      "bibliographicVerification": {
+        "provider": "Europe PMC core record",
+        "checkedAt": "2026-11-24"
+      },
+      "evidenceRole": "Study-specific evidence; translation and limitations retained",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "peerReviewed": true,
+        "randomizedControlledTrial": false,
+        "blinding": "not-assigned",
+        "basis": "Study-design shorthand only; not a formal risk-of-bias, certainty or clinical-efficacy grade. LPS neuroinflammation and memory experiments in adult male mice",
+        "sources": [
+          "https://doi.org/10.1016/j.brainresbull.2026.111904",
+          "https://pubmed.ncbi.nlm.nih.gov/42049099/"
+        ],
+        "assessedAt": "2026-11-24"
+      },
+      "evidence": {
+        "evidenceType": "LPS neuroinflammation and memory experiments in adult male mice",
+        "relationshipNote": "Study-specific evidence; translation and limitations retained",
+        "sourceURLs": [
+          "https://doi.org/10.1016/j.brainresbull.2026.111904",
+          "https://pubmed.ncbi.nlm.nih.gov/42049099/"
+        ],
+        "checkedAt": "2026-11-24",
+        "reviewScope": "Indexed abstract and bibliographic record reviewed",
+        "clinicalValidation": "No validated Universal Mind intervention–OXTR–IL-6 causal chain",
+        "studyFamilyId": "oxtr-il6-gong2026"
+      }
+    },
+    {
+      "key": "welch2014",
+      "title": "Oxytocin regulates gastrointestinal motility, inflammation, macromolecular permeability, and mucosal maintenance in mice",
+      "doi": "10.1152/ajpgi.00176.2014",
+      "pmid": "25147234",
+      "year": 2014,
+      "authors": "Welch MG, Margolis KG, Li Z, Gershon MD.",
+      "journal": "American journal of physiology. Gastrointestinal and liver physiology",
+      "urls": [
+        "https://doi.org/10.1152/ajpgi.00176.2014",
+        "https://pubmed.ncbi.nlm.nih.gov/25147234/"
+      ],
+      "group": "animals",
+      "design": "Wild-type and OXTR-knockout mouse gastrointestinal experiments",
+      "summary": "Loss of OXTR altered intestinal function and barrier measures and worsened experimental colitis. Oxytocin protected receptor-intact animals in relevant experiments, supporting a role for endogenous signalling in mucosal maintenance.",
+      "limitation": "Whole-body receptor deletion can alter development and baseline physiology. It does not model a selective adult human treatment, and gastrointestinal effects can differ from blood cytokine responses.",
+      "sourceAccess": "Relevant full-text methods and results reviewed",
+      "supplied": true,
+      "targets": [
+        "OXT",
+        "OXTR"
+      ],
+      "peerReviewed": true,
+      "randomizedControlledTrial": false,
+      "blinding": "not-assigned",
+      "studyFamilyId": "oxtr-il6-welch2014",
+      "recordId": "pmid-25147234",
+      "bibliographicVerification": {
+        "provider": "Europe PMC core record",
+        "checkedAt": "2026-11-24"
+      },
+      "evidenceRole": "Study-specific evidence; translation and limitations retained",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "peerReviewed": true,
+        "randomizedControlledTrial": false,
+        "blinding": "not-assigned",
+        "basis": "Study-design shorthand only; not a formal risk-of-bias, certainty or clinical-efficacy grade. Wild-type and OXTR-knockout mouse gastrointestinal experiments",
+        "sources": [
+          "https://doi.org/10.1152/ajpgi.00176.2014",
+          "https://pubmed.ncbi.nlm.nih.gov/25147234/"
+        ],
+        "assessedAt": "2026-11-24"
+      },
+      "evidence": {
+        "evidenceType": "Wild-type and OXTR-knockout mouse gastrointestinal experiments",
+        "relationshipNote": "Study-specific evidence; translation and limitations retained",
+        "sourceURLs": [
+          "https://doi.org/10.1152/ajpgi.00176.2014",
+          "https://pubmed.ncbi.nlm.nih.gov/25147234/"
+        ],
+        "checkedAt": "2026-11-24",
+        "reviewScope": "Relevant full-text methods and results reviewed",
+        "clinicalValidation": "No validated Universal Mind intervention–OXTR–IL-6 causal chain",
+        "studyFamilyId": "oxtr-il6-welch2014"
+      }
+    },
+    {
+      "key": "tang2019",
+      "title": "Oxytocin system alleviates intestinal inflammation by regulating macrophages polarization in experimental colitis",
+      "doi": "10.1042/CS20190756",
+      "pmid": "31519790",
+      "year": 2019,
+      "authors": "Tang Y, Shi Y, Gao Y, Xu X, Han T, Li J, Liu C.",
+      "journal": "Clinical science (London, England : 1979)",
+      "urls": [
+        "https://doi.org/10.1042/CS20190756",
+        "https://pubmed.ncbi.nlm.nih.gov/31519790/"
+      ],
+      "group": "animals",
+      "design": "Experimental mouse colitis and macrophage OXTR perturbation",
+      "summary": "Oxytocin reduced inflammatory mediators including IL-6 and favoured IL-4-responsive macrophage features. Myeloid OXTR deficiency worsened colitis; β-arrestin-2, NF-κB and STAT6 experiments provided mechanistic support.",
+      "limitation": "M1/M2 labels simplify a continuum of macrophage states. Mouse Arg1, CD206 and Chil3 responses are not validated human recovery endpoints; barrier injury and cytokines remain model-specific.",
+      "sourceAccess": "Indexed abstract and bibliographic record reviewed",
+      "supplied": true,
+      "targets": [
+        "OXT",
+        "OXTR",
+        "IL6"
+      ],
+      "peerReviewed": true,
+      "randomizedControlledTrial": false,
+      "blinding": "not-assigned",
+      "studyFamilyId": "oxtr-il6-tang2019",
+      "recordId": "pmid-31519790",
+      "bibliographicVerification": {
+        "provider": "Europe PMC core record",
+        "checkedAt": "2026-11-24"
+      },
+      "evidenceRole": "Study-specific evidence; translation and limitations retained",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "peerReviewed": true,
+        "randomizedControlledTrial": false,
+        "blinding": "not-assigned",
+        "basis": "Study-design shorthand only; not a formal risk-of-bias, certainty or clinical-efficacy grade. Experimental mouse colitis and macrophage OXTR perturbation",
+        "sources": [
+          "https://doi.org/10.1042/CS20190756",
+          "https://pubmed.ncbi.nlm.nih.gov/31519790/"
+        ],
+        "assessedAt": "2026-11-24"
+      },
+      "evidence": {
+        "evidenceType": "Experimental mouse colitis and macrophage OXTR perturbation",
+        "relationshipNote": "Study-specific evidence; translation and limitations retained",
+        "sourceURLs": [
+          "https://doi.org/10.1042/CS20190756",
+          "https://pubmed.ncbi.nlm.nih.gov/31519790/"
+        ],
+        "checkedAt": "2026-11-24",
+        "reviewScope": "Indexed abstract and bibliographic record reviewed",
+        "clinicalValidation": "No validated Universal Mind intervention–OXTR–IL-6 causal chain",
+        "studyFamilyId": "oxtr-il6-tang2019"
+      }
+    },
+    {
+      "key": "dou2021",
+      "title": "Oxytocin signalling in dendritic cells regulates immune tolerance in the intestine and alleviates DSS-induced colitis",
+      "doi": "10.1042/CS20201438",
+      "pmid": "33564880",
+      "year": 2021,
+      "authors": "Dou D, Liang J, Zhai X, Li G, Wang H, Han L, Lin L, Ren Y, Liu S, Liu C, Guo W, Li J.",
+      "journal": "Clinical science (London, England : 1979)",
+      "urls": [
+        "https://doi.org/10.1042/CS20201438",
+        "https://pubmed.ncbi.nlm.nih.gov/33564880/"
+      ],
+      "group": "animals",
+      "design": "Mouse dendritic-cell OXTR deletion and transfer experiments; human observational component",
+      "summary": "OXTR signalling restrained dendritic-cell maturation and intestinal inflammatory responses, with PI3K/AKT involvement. Cell-specific receptor deletion worsened DSS colitis, while transfer of oxytocin-pretreated dendritic cells was protective.",
+      "limitation": "Human ulcerative-colitis observations in the paper do not constitute a treatment trial. Cell transfer and mouse receptor deletion test mechanisms that differ substantially from intranasal or psychosocial interventions.",
+      "sourceAccess": "Indexed abstract and bibliographic record reviewed",
+      "supplied": true,
+      "targets": [
+        "OXT",
+        "OXTR",
+        "IL6"
+      ],
+      "peerReviewed": true,
+      "randomizedControlledTrial": false,
+      "blinding": "not-assigned",
+      "studyFamilyId": "oxtr-il6-dou2021",
+      "recordId": "pmid-33564880",
+      "bibliographicVerification": {
+        "provider": "Europe PMC core record",
+        "checkedAt": "2026-11-24"
+      },
+      "evidenceRole": "Study-specific evidence; translation and limitations retained",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "peerReviewed": true,
+        "randomizedControlledTrial": false,
+        "blinding": "not-assigned",
+        "basis": "Study-design shorthand only; not a formal risk-of-bias, certainty or clinical-efficacy grade. Mouse dendritic-cell OXTR deletion and transfer experiments; human observational component",
+        "sources": [
+          "https://doi.org/10.1042/CS20201438",
+          "https://pubmed.ncbi.nlm.nih.gov/33564880/"
+        ],
+        "assessedAt": "2026-11-24"
+      },
+      "evidence": {
+        "evidenceType": "Mouse dendritic-cell OXTR deletion and transfer experiments; human observational component",
+        "relationshipNote": "Study-specific evidence; translation and limitations retained",
+        "sourceURLs": [
+          "https://doi.org/10.1042/CS20201438",
+          "https://pubmed.ncbi.nlm.nih.gov/33564880/"
+        ],
+        "checkedAt": "2026-11-24",
+        "reviewScope": "Indexed abstract and bibliographic record reviewed",
+        "clinicalValidation": "No validated Universal Mind intervention–OXTR–IL-6 causal chain",
+        "studyFamilyId": "oxtr-il6-dou2021"
+      }
+    },
+    {
+      "key": "wang2024",
+      "title": "Oxytocin Alleviates Colitis and Colitis-Associated Colorectal Tumorigenesis via Noncanonical Fucosylation",
+      "doi": "10.34133/research.0407",
+      "pmid": "38979515",
+      "year": 2024,
+      "authors": "Wang X, Chen D, Guo M, Ning Y, Geng M, Guo J, Gao J, Zhao D, Zhang Y, Li Q, Li L, Li S, Li Y, Xie X, Zuo X, Li J.",
+      "journal": "Research (Washington, D.C.)",
+      "urls": [
+        "https://doi.org/10.34133/research.0407",
+        "https://pubmed.ncbi.nlm.nih.gov/38979515/"
+      ],
+      "group": "preclinical",
+      "design": "Intestinal epithelial OXTR experiments and mouse colitis; human tissue associations",
+      "summary": "The study links OXTR signalling to B3GNT7-dependent noncanonical fucosylation, MUC2 maturation and the mucus barrier. Experimental receptor loss and treatment effects supported a barrier-related pathway in mouse colitis and associated tumour formation.",
+      "limitation": "Human biopsy associations do not establish human treatment efficacy. Reduced tumour development in an inflammatory mouse model is not evidence that oxytocin treats human colorectal cancer.",
+      "sourceAccess": "Relevant full-text methods and results reviewed",
+      "supplied": false,
+      "targets": [
+        "OXT",
+        "OXTR",
+        "B3GNT7"
+      ],
+      "peerReviewed": true,
+      "randomizedControlledTrial": false,
+      "blinding": "not-assigned",
+      "studyFamilyId": "oxtr-il6-wang2024",
+      "recordId": "pmid-38979515",
+      "bibliographicVerification": {
+        "provider": "Europe PMC core record",
+        "checkedAt": "2026-11-24"
+      },
+      "evidenceRole": "Study-specific evidence; translation and limitations retained",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "peerReviewed": true,
+        "randomizedControlledTrial": false,
+        "blinding": "not-assigned",
+        "basis": "Study-design shorthand only; not a formal risk-of-bias, certainty or clinical-efficacy grade. Intestinal epithelial OXTR experiments and mouse colitis; human tissue associations",
+        "sources": [
+          "https://doi.org/10.34133/research.0407",
+          "https://pubmed.ncbi.nlm.nih.gov/38979515/"
+        ],
+        "assessedAt": "2026-11-24"
+      },
+      "evidence": {
+        "evidenceType": "Intestinal epithelial OXTR experiments and mouse colitis; human tissue associations",
+        "relationshipNote": "Study-specific evidence; translation and limitations retained",
+        "sourceURLs": [
+          "https://doi.org/10.34133/research.0407",
+          "https://pubmed.ncbi.nlm.nih.gov/38979515/"
+        ],
+        "checkedAt": "2026-11-24",
+        "reviewScope": "Relevant full-text methods and results reviewed",
+        "clinicalValidation": "No validated Universal Mind intervention–OXTR–IL-6 causal chain",
+        "studyFamilyId": "oxtr-il6-wang2024"
+      }
+    },
+    {
+      "key": "szeto2020",
+      "title": "Oxytocin reduces adipose tissue inflammation in obese mice",
+      "doi": "10.1186/s12944-020-01364-x",
+      "pmid": "32819381",
+      "year": 2020,
+      "authors": "Szeto A, Cecati M, Ahmed R, McCabe PM, Mendez AJ.",
+      "journal": "Lipids in health and disease",
+      "urls": [
+        "https://doi.org/10.1186/s12944-020-01364-x",
+        "https://pubmed.ncbi.nlm.nih.gov/32819381/"
+      ],
+      "group": "animals",
+      "design": "Eight-week oxytocin infusion in obese diabetic db/db mice",
+      "summary": "Oxytocin reduced adipose inflammatory-cell infiltration and IL6/TNF expression, increased adiponectin, and lowered circulating serum amyloid A. Body weight and glycaemic outcomes did not improve in parallel.",
+      "limitation": "The groups were small (vehicle 8; oxytocin 10), with fewer samples for some assays. Tissue RNA, circulating proteins and metabolic outcomes are distinct; these findings do not establish a human obesity treatment.",
+      "sourceAccess": "Relevant full-text methods and results reviewed",
+      "supplied": true,
+      "targets": [
+        "OXT",
+        "OXTR",
+        "IL6",
+        "ADIPOQ",
+        "TNF"
+      ],
+      "peerReviewed": true,
+      "randomizedControlledTrial": false,
+      "blinding": "not-assigned",
+      "studyFamilyId": "oxtr-il6-szeto2020",
+      "recordId": "pmid-32819381",
+      "bibliographicVerification": {
+        "provider": "Europe PMC core record",
+        "checkedAt": "2026-11-24"
+      },
+      "evidenceRole": "Study-specific evidence; translation and limitations retained",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "peerReviewed": true,
+        "randomizedControlledTrial": false,
+        "blinding": "not-assigned",
+        "basis": "Study-design shorthand only; not a formal risk-of-bias, certainty or clinical-efficacy grade. Eight-week oxytocin infusion in obese diabetic db/db mice",
+        "sources": [
+          "https://doi.org/10.1186/s12944-020-01364-x",
+          "https://pubmed.ncbi.nlm.nih.gov/32819381/"
+        ],
+        "assessedAt": "2026-11-24"
+      },
+      "evidence": {
+        "evidenceType": "Eight-week oxytocin infusion in obese diabetic db/db mice",
+        "relationshipNote": "Study-specific evidence; translation and limitations retained",
+        "sourceURLs": [
+          "https://doi.org/10.1186/s12944-020-01364-x",
+          "https://pubmed.ncbi.nlm.nih.gov/32819381/"
+        ],
+        "checkedAt": "2026-11-24",
+        "reviewScope": "Relevant full-text methods and results reviewed",
+        "clinicalValidation": "No validated Universal Mind intervention–OXTR–IL-6 causal chain",
+        "studyFamilyId": "oxtr-il6-szeto2020"
+      }
+    },
+    {
+      "key": "dmytrenko2024",
+      "title": "Oxytocin alleviates periodontitis in adult rats",
+      "doi": "10.1111/jre.13212",
+      "pmid": "38226427",
+      "year": 2024,
+      "authors": "Dmytrenko G, Fernández-Solari J, Correa F, De Laurentiis A.",
+      "journal": "Journal of periodontal research",
+      "urls": [
+        "https://doi.org/10.1111/jre.13212",
+        "https://pubmed.ncbi.nlm.nih.gov/38226427/"
+      ],
+      "group": "animals",
+      "design": "Ligature-induced periodontitis in adult male rats",
+      "summary": "Systemic oxytocin attenuated gingival inflammatory mediators including IL-6, IL-1β and TNF and reduced bone loss in the experimental periodontitis model.",
+      "limitation": "This assessment uses the abstract. Local gingival effects in male rats do not establish reduced human blood IL-6 or clinical periodontal efficacy.",
+      "sourceAccess": "Indexed abstract and bibliographic record reviewed",
+      "supplied": true,
+      "targets": [
+        "OXT",
+        "OXTR",
+        "IL6"
+      ],
+      "peerReviewed": true,
+      "randomizedControlledTrial": false,
+      "blinding": "not-assigned",
+      "studyFamilyId": "oxtr-il6-dmytrenko2024",
+      "recordId": "pmid-38226427",
+      "bibliographicVerification": {
+        "provider": "Europe PMC core record",
+        "checkedAt": "2026-11-24"
+      },
+      "evidenceRole": "Study-specific evidence; translation and limitations retained",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "peerReviewed": true,
+        "randomizedControlledTrial": false,
+        "blinding": "not-assigned",
+        "basis": "Study-design shorthand only; not a formal risk-of-bias, certainty or clinical-efficacy grade. Ligature-induced periodontitis in adult male rats",
+        "sources": [
+          "https://doi.org/10.1111/jre.13212",
+          "https://pubmed.ncbi.nlm.nih.gov/38226427/"
+        ],
+        "assessedAt": "2026-11-24"
+      },
+      "evidence": {
+        "evidenceType": "Ligature-induced periodontitis in adult male rats",
+        "relationshipNote": "Study-specific evidence; translation and limitations retained",
+        "sourceURLs": [
+          "https://doi.org/10.1111/jre.13212",
+          "https://pubmed.ncbi.nlm.nih.gov/38226427/"
+        ],
+        "checkedAt": "2026-11-24",
+        "reviewScope": "Indexed abstract and bibliographic record reviewed",
+        "clinicalValidation": "No validated Universal Mind intervention–OXTR–IL-6 causal chain",
+        "studyFamilyId": "oxtr-il6-dmytrenko2024"
+      }
+    },
+    {
+      "key": "zhang2025",
+      "title": "Oxytocin-Mediate Modulation of Splenic Immunosuppression in Chronic Social Stress Through Neuroendocrine Pathways",
+      "doi": "10.1002/advs.202500849",
+      "pmid": "40285614",
+      "year": 2025,
+      "authors": "Zhang YS, Chen HC, Cao JX, Zhou SW, Ma YZ, Jing YH.",
+      "journal": "Advanced science (Weinheim, Baden-Wurttemberg, Germany)",
+      "urls": [
+        "https://doi.org/10.1002/advs.202500849",
+        "https://pubmed.ncbi.nlm.nih.gov/40285614/"
+      ],
+      "group": "animals",
+      "design": "Chronic social-stress and splenic immune experiments in male mice",
+      "summary": "Oxytocin-related signalling was associated with a shift toward regulatory T cells and M2-like macrophages, lower IL-6 and other inflammatory mediators, and higher IL-10, IL-4 and TGF-β. Denervation and receptor blockade disrupted this adaptive response.",
+      "limitation": "The study concerns stress-associated immunosuppression and survival, not a general increase in immunity. Reduced effector-cell activity can be protective in one context and undesirable in another. Male-mouse findings do not establish a human intervention pathway.",
+      "sourceAccess": "Relevant full-text methods and results reviewed",
+      "supplied": true,
+      "targets": [
+        "OXT",
+        "OXTR",
+        "IL6",
+        "IL10",
+        "TGFB1"
+      ],
+      "peerReviewed": true,
+      "randomizedControlledTrial": false,
+      "blinding": "not-assigned",
+      "studyFamilyId": "oxtr-il6-zhang2025",
+      "recordId": "pmid-40285614",
+      "bibliographicVerification": {
+        "provider": "Europe PMC core record",
+        "checkedAt": "2026-11-24"
+      },
+      "evidenceRole": "Study-specific evidence; translation and limitations retained",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "peerReviewed": true,
+        "randomizedControlledTrial": false,
+        "blinding": "not-assigned",
+        "basis": "Study-design shorthand only; not a formal risk-of-bias, certainty or clinical-efficacy grade. Chronic social-stress and splenic immune experiments in male mice",
+        "sources": [
+          "https://doi.org/10.1002/advs.202500849",
+          "https://pubmed.ncbi.nlm.nih.gov/40285614/"
+        ],
+        "assessedAt": "2026-11-24"
+      },
+      "evidence": {
+        "evidenceType": "Chronic social-stress and splenic immune experiments in male mice",
+        "relationshipNote": "Study-specific evidence; translation and limitations retained",
+        "sourceURLs": [
+          "https://doi.org/10.1002/advs.202500849",
+          "https://pubmed.ncbi.nlm.nih.gov/40285614/"
+        ],
+        "checkedAt": "2026-11-24",
+        "reviewScope": "Relevant full-text methods and results reviewed",
+        "clinicalValidation": "No validated Universal Mind intervention–OXTR–IL-6 causal chain",
+        "studyFamilyId": "oxtr-il6-zhang2025"
+      }
+    },
+    {
+      "key": "clodi2008",
+      "title": "Oxytocin alleviates the neuroendocrine and cytokine response to bacterial endotoxin in healthy men",
+      "doi": "10.1152/ajpendo.90263.2008",
+      "pmid": "18593851",
+      "year": 2008,
+      "authors": "Clodi M, Vila G, Geyeregger R, Riedl M, Stulnig TM, Struck J, Luger TA, Luger A.",
+      "journal": "American journal of physiology. Endocrinology and metabolism",
+      "urls": [
+        "https://doi.org/10.1152/ajpendo.90263.2008",
+        "https://pubmed.ncbi.nlm.nih.gov/18593851/"
+      ],
+      "group": "human",
+      "design": "Randomised placebo-controlled crossover endotoxin challenge in 10 healthy men",
+      "summary": "Intravenous oxytocin attenuated the acute endotoxin-induced IL-6, TNF and stress-hormone response. Several regulatory mediators, including IL-1 receptor antagonist and IL-4, also decreased. Parallel human monocyte/PBMC experiments did not reproduce direct cytokine suppression.",
+      "limitation": "Ten healthy men under acute experimental inflammation cannot establish sustained benefit in chronic disease, other sexes or intranasal delivery. An indirect neuroendocrine or autonomic mechanism remains a possibility rather than a demonstrated causal chain.",
+      "sourceAccess": "Indexed abstract and bibliographic record reviewed",
+      "supplied": false,
+      "targets": [
+        "OXT",
+        "OXTR",
+        "IL6",
+        "IL1RN",
+        "TNF"
+      ],
+      "peerReviewed": true,
+      "randomizedControlledTrial": true,
+      "blinding": "not-assigned",
+      "studyFamilyId": "oxtr-il6-clodi2008",
+      "recordId": "pmid-18593851",
+      "bibliographicVerification": {
+        "provider": "Europe PMC core record",
+        "checkedAt": "2026-11-24"
+      },
+      "evidenceRole": "Study-specific evidence; translation and limitations retained",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 2,
+        "peerReviewed": true,
+        "randomizedControlledTrial": true,
+        "blinding": "not-assigned",
+        "basis": "Study-design shorthand only; not a formal risk-of-bias, certainty or clinical-efficacy grade. Randomised placebo-controlled crossover endotoxin challenge in 10 healthy men",
+        "sources": [
+          "https://doi.org/10.1152/ajpendo.90263.2008",
+          "https://pubmed.ncbi.nlm.nih.gov/18593851/"
+        ],
+        "assessedAt": "2026-11-24"
+      },
+      "evidence": {
+        "evidenceType": "Randomised placebo-controlled crossover endotoxin challenge in 10 healthy men",
+        "relationshipNote": "Study-specific evidence; translation and limitations retained",
+        "sourceURLs": [
+          "https://doi.org/10.1152/ajpendo.90263.2008",
+          "https://pubmed.ncbi.nlm.nih.gov/18593851/"
+        ],
+        "checkedAt": "2026-11-24",
+        "reviewScope": "Indexed abstract and bibliographic record reviewed",
+        "clinicalValidation": "No validated Universal Mind intervention–OXTR–IL-6 causal chain",
+        "studyFamilyId": "oxtr-il6-clodi2008"
+      }
+    },
+    {
+      "key": "ditzen2023",
+      "title": "Effects of intranasal oxytocin and positive couple interaction on immune factors in skin wounds",
+      "doi": "10.1016/j.bbi.2022.08.011",
+      "pmid": "36058418",
+      "year": 2023,
+      "authors": "Ditzen B, Aguilar-Raab C, Winter F, Hernández C, Schneider E, Bodenmann G, Heinrichs M, Ehlert U, Läuchli S.",
+      "journal": "Brain, behavior, and immunity",
+      "urls": [
+        "https://doi.org/10.1016/j.bbi.2022.08.011",
+        "https://pubmed.ncbi.nlm.nih.gov/36058418/"
+      ],
+      "group": "human",
+      "design": "Randomised 2 × 2 intranasal oxytocin and couple-interaction study; 80 couples",
+      "summary": "Wound-fluid cytokines depended on sex and interaction context. Among women, oxytocin combined with a positive couple interaction was associated with lower IL-1β and higher IL-6; TNF did not show the same assignment effect.",
+      "limitation": "Local wound IL-6 can participate in repair and is not equivalent to systemic inflammatory burden. Many early IL-6 measurements were below detection. This is the same trial population later analysed for wound healing by Schneider and colleagues.",
+      "sourceAccess": "Relevant full-text methods and results reviewed",
+      "supplied": false,
+      "targets": [
+        "OXT",
+        "OXTR",
+        "IL6"
+      ],
+      "peerReviewed": true,
+      "randomizedControlledTrial": true,
+      "blinding": "double",
+      "studyFamilyId": "oxtr-il6-couples-NCT01594775",
+      "recordId": "pmid-36058418",
+      "bibliographicVerification": {
+        "provider": "Europe PMC core record",
+        "checkedAt": "2026-11-24"
+      },
+      "evidenceRole": "Study-specific evidence; translation and limitations retained",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 3,
+        "peerReviewed": true,
+        "randomizedControlledTrial": true,
+        "blinding": "double",
+        "basis": "Study-design shorthand only; not a formal risk-of-bias, certainty or clinical-efficacy grade. Randomised 2 × 2 intranasal oxytocin and couple-interaction study; 80 couples",
+        "sources": [
+          "https://doi.org/10.1016/j.bbi.2022.08.011",
+          "https://pubmed.ncbi.nlm.nih.gov/36058418/"
+        ],
+        "assessedAt": "2026-11-24"
+      },
+      "evidence": {
+        "evidenceType": "Randomised 2 × 2 intranasal oxytocin and couple-interaction study; 80 couples",
+        "relationshipNote": "Study-specific evidence; translation and limitations retained",
+        "sourceURLs": [
+          "https://doi.org/10.1016/j.bbi.2022.08.011",
+          "https://pubmed.ncbi.nlm.nih.gov/36058418/"
+        ],
+        "checkedAt": "2026-11-24",
+        "reviewScope": "Relevant full-text methods and results reviewed",
+        "clinicalValidation": "No validated Universal Mind intervention–OXTR–IL-6 causal chain",
+        "studyFamilyId": "oxtr-il6-couples-NCT01594775"
+      }
+    },
+    {
+      "key": "schneider2026",
+      "title": "Intranasal Oxytocin and Physical Intimacy for Dermatological Wound Healing and Neuroendocrine Stress: A Randomized Clinical Trial",
+      "doi": "10.1001/jamapsychiatry.2025.3705",
+      "pmid": "41222549",
+      "year": 2026,
+      "authors": "Schneider E, Hernández C, Brock R, Eckstein M, Bodenmann G, Heinrichs M, Ehlert U, Läuchli S, Ditzen B.",
+      "journal": "JAMA psychiatry",
+      "urls": [
+        "https://doi.org/10.1001/jamapsychiatry.2025.3705",
+        "https://pubmed.ncbi.nlm.nih.gov/41222549/"
+      ],
+      "group": "human",
+      "design": "Randomised couple-interaction trial; wound-healing analysis of the same 80 couples",
+      "summary": "The combined oxytocin and positive-interaction condition showed a modest wound-healing association (p = 0.048), which weakened in a sensitivity analysis (p = 0.10). The findings emphasise interpersonal context.",
+      "limitation": "This is not an independent replication of the Ditzen cytokine study and does not establish IL-6 mediation. There was no general oxytocin main effect. The corrected publication record was used.",
+      "sourceAccess": "Relevant full-text methods and results reviewed",
+      "supplied": false,
+      "targets": [
+        "OXT",
+        "OXTR"
+      ],
+      "peerReviewed": true,
+      "randomizedControlledTrial": true,
+      "blinding": "double",
+      "studyFamilyId": "oxtr-il6-couples-NCT01594775",
+      "recordId": "pmid-41222549",
+      "bibliographicVerification": {
+        "provider": "Europe PMC core record",
+        "checkedAt": "2026-11-24"
+      },
+      "evidenceRole": "Study-specific evidence; translation and limitations retained",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 3,
+        "peerReviewed": true,
+        "randomizedControlledTrial": true,
+        "blinding": "double",
+        "basis": "Study-design shorthand only; not a formal risk-of-bias, certainty or clinical-efficacy grade. Randomised couple-interaction trial; wound-healing analysis of the same 80 couples",
+        "sources": [
+          "https://doi.org/10.1001/jamapsychiatry.2025.3705",
+          "https://pubmed.ncbi.nlm.nih.gov/41222549/"
+        ],
+        "assessedAt": "2026-11-24"
+      },
+      "evidence": {
+        "evidenceType": "Randomised couple-interaction trial; wound-healing analysis of the same 80 couples",
+        "relationshipNote": "Study-specific evidence; translation and limitations retained",
+        "sourceURLs": [
+          "https://doi.org/10.1001/jamapsychiatry.2025.3705",
+          "https://pubmed.ncbi.nlm.nih.gov/41222549/"
+        ],
+        "checkedAt": "2026-11-24",
+        "reviewScope": "Relevant full-text methods and results reviewed",
+        "clinicalValidation": "No validated Universal Mind intervention–OXTR–IL-6 causal chain",
+        "studyFamilyId": "oxtr-il6-couples-NCT01594775"
+      }
+    },
+    {
+      "key": "wakuda2024",
+      "title": "Oxytocin-induced increases in cytokines and clinical effect on the core social features of autism: Analyses of RCT datasets",
+      "doi": "10.1016/j.bbi.2024.03.013",
+      "pmid": "38461957",
+      "year": 2024,
+      "authors": "Wakuda T, Benner S, Uemura Y, Nishimura T, Kojima M, Kuroda M, Matsumoto K, Kanai C, Inada N, Harada T, Kameno Y, Munesue T, Inoue J, Umemura K, Yamauchi A, Ogawa N, Kushima I, Suyama S, Saito T, Hamada J, Kano Y, Honda N, Kikuchi S, Seto M, Tomita H, Miyoshi N, Matsumoto M, Kawaguchi Y, Kanai K, Ikeda M, Nakamura I, Isomura S, Hirano Y, Onitsuka T, Ozaki N, Kosaka H, Okada T, Kuwabara H, Yamasue H.",
+      "journal": "Brain, behavior, and immunity",
+      "urls": [
+        "https://doi.org/10.1016/j.bbi.2024.03.013",
+        "https://pubmed.ncbi.nlm.nih.gov/38461957/"
+      ],
+      "group": "human",
+      "design": "Cytokine analyses of two randomised-trial datasets; 207 adult men with autism",
+      "summary": "A four-week intranasal formulation analysis found increases in IL-7, IL-9 and MIP-1β at a particular dose, with an inverted-U response pattern. These immune changes accompanied analyses of social outcomes.",
+      "limitation": "The result does not demonstrate IL-6 lowering or reduced brain inflammation. It involves formulation- and dose-specific findings in men; a within-dataset confirmation is not a new independent trial.",
+      "sourceAccess": "Indexed abstract and bibliographic record reviewed",
+      "supplied": false,
+      "targets": [
+        "OXT",
+        "OXTR",
+        "IL7",
+        "IL9",
+        "CCL4"
+      ],
+      "peerReviewed": true,
+      "randomizedControlledTrial": true,
+      "blinding": "double",
+      "studyFamilyId": "oxtr-il6-wakuda2024",
+      "recordId": "pmid-38461957",
+      "bibliographicVerification": {
+        "provider": "Europe PMC core record",
+        "checkedAt": "2026-11-24"
+      },
+      "evidenceRole": "Study-specific evidence; translation and limitations retained",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 3,
+        "peerReviewed": true,
+        "randomizedControlledTrial": true,
+        "blinding": "double",
+        "basis": "Study-design shorthand only; not a formal risk-of-bias, certainty or clinical-efficacy grade. Cytokine analyses of two randomised-trial datasets; 207 adult men with autism",
+        "sources": [
+          "https://doi.org/10.1016/j.bbi.2024.03.013",
+          "https://pubmed.ncbi.nlm.nih.gov/38461957/"
+        ],
+        "assessedAt": "2026-11-24"
+      },
+      "evidence": {
+        "evidenceType": "Cytokine analyses of two randomised-trial datasets; 207 adult men with autism",
+        "relationshipNote": "Study-specific evidence; translation and limitations retained",
+        "sourceURLs": [
+          "https://doi.org/10.1016/j.bbi.2024.03.013",
+          "https://pubmed.ncbi.nlm.nih.gov/38461957/"
+        ],
+        "checkedAt": "2026-11-24",
+        "reviewScope": "Indexed abstract and bibliographic record reviewed",
+        "clinicalValidation": "No validated Universal Mind intervention–OXTR–IL-6 causal chain",
+        "studyFamilyId": "oxtr-il6-wakuda2024"
+      }
+    },
+    {
+      "key": "breithaupt2026",
+      "title": "Identification of intranasal oxytocin plasma proteome signatures",
+      "doi": "10.1007/s12020-025-04529-9",
+      "pmid": "41806102",
+      "year": 2026,
+      "authors": "Breithaupt L, Harshman SG, Botros PM, Zhang Z, Holman K, Boutin R, Galbiati F, Maso AA, Lo J, Soukas A, Sadreyev RI, McCormack SE, Lawson EA.",
+      "journal": "Endocrine",
+      "urls": [
+        "https://doi.org/10.1007/s12020-025-04529-9",
+        "https://pubmed.ncbi.nlm.nih.gov/41806102/"
+      ],
+      "group": "human",
+      "design": "Double-blind randomised crossover study in 25 men; proteomics in 19",
+      "summary": "A single intranasal oxytocin dose altered a plasma proteomic signature over approximately one hour. Analyses covered 4,725 proteins and identified 198 differential proteins, including immune-related pathways.",
+      "limitation": "Exploratory proteomic changes do not identify a validated anti-inflammatory clinical response. Small acute male-only sampling, assay multiplicity and the need for independent targeted replication limit translation.",
+      "sourceAccess": "Indexed abstract and bibliographic record reviewed",
+      "supplied": false,
+      "targets": [
+        "OXT",
+        "OXTR"
+      ],
+      "peerReviewed": true,
+      "randomizedControlledTrial": true,
+      "blinding": "double",
+      "studyFamilyId": "oxtr-il6-breithaupt2026",
+      "recordId": "pmid-41806102",
+      "bibliographicVerification": {
+        "provider": "Europe PMC core record",
+        "checkedAt": "2026-11-24"
+      },
+      "evidenceRole": "Study-specific evidence; translation and limitations retained",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 3,
+        "peerReviewed": true,
+        "randomizedControlledTrial": true,
+        "blinding": "double",
+        "basis": "Study-design shorthand only; not a formal risk-of-bias, certainty or clinical-efficacy grade. Double-blind randomised crossover study in 25 men; proteomics in 19",
+        "sources": [
+          "https://doi.org/10.1007/s12020-025-04529-9",
+          "https://pubmed.ncbi.nlm.nih.gov/41806102/"
+        ],
+        "assessedAt": "2026-11-24"
+      },
+      "evidence": {
+        "evidenceType": "Double-blind randomised crossover study in 25 men; proteomics in 19",
+        "relationshipNote": "Study-specific evidence; translation and limitations retained",
+        "sourceURLs": [
+          "https://doi.org/10.1007/s12020-025-04529-9",
+          "https://pubmed.ncbi.nlm.nih.gov/41806102/"
+        ],
+        "checkedAt": "2026-11-24",
+        "reviewScope": "Indexed abstract and bibliographic record reviewed",
+        "clinicalValidation": "No validated Universal Mind intervention–OXTR–IL-6 causal chain",
+        "studyFamilyId": "oxtr-il6-breithaupt2026"
+      }
+    },
+    {
+      "key": "boutin2025",
+      "title": "SAT-059 Randomized Controlled Trial Examining Effects of 8 weeks of Intranasal Oxytocin on the Circulating Inflammatory Proteome in Adults with Obesity",
+      "doi": "10.1210/jendso/bvaf149.1541",
+      "pmid": null,
+      "year": 2025,
+      "authors": "Boutin R and colleagues",
+      "journal": "Journal of the Endocrine Society",
+      "urls": [
+        "https://doi.org/10.1210/jendso/bvaf149.1541",
+        "https://academic.oup.com/jes/article/9/Supplement_1/bvaf149.1541/8298745"
+      ],
+      "group": "conference",
+      "design": "Conference abstract: eight-week placebo-controlled trial in 61 adults with obesity",
+      "summary": "The inflammatory proteome analysis reported no treatment effects that survived Benjamini–Hochberg correction. Some nominal findings pointed toward increased inflammatory proteins rather than a consistent reduction.",
+      "limitation": "This is a conference abstract, with limited methodological detail, rather than a complete peer-reviewed clinical report. The corrected null result remains relevant and does not prove exact equivalence or absence of every possible effect.",
+      "sourceAccess": "Indexed abstract and bibliographic record reviewed",
+      "supplied": false,
+      "targets": [
+        "OXT",
+        "OXTR"
+      ],
+      "peerReviewed": false,
+      "randomizedControlledTrial": true,
+      "blinding": "not-assigned",
+      "studyFamilyId": "oxtr-il6-boutin2025",
+      "recordId": "oxtr-il6-boutin2025",
+      "bibliographicVerification": {
+        "provider": "Europe PMC core record",
+        "checkedAt": "2026-11-24"
+      },
+      "evidenceRole": "Study-specific evidence; translation and limitations retained",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "not-applicable",
+        "score": null,
+        "peerReviewed": false,
+        "randomizedControlledTrial": true,
+        "blinding": "not-assigned",
+        "basis": "Study-design shorthand only; not a formal risk-of-bias, certainty or clinical-efficacy grade. Conference abstract: eight-week placebo-controlled trial in 61 adults with obesity",
+        "sources": [
+          "https://doi.org/10.1210/jendso/bvaf149.1541",
+          "https://academic.oup.com/jes/article/9/Supplement_1/bvaf149.1541/8298745"
+        ],
+        "assessedAt": "2026-11-24"
+      },
+      "evidence": {
+        "evidenceType": "Conference abstract: eight-week placebo-controlled trial in 61 adults with obesity",
+        "relationshipNote": "Study-specific evidence; translation and limitations retained",
+        "sourceURLs": [
+          "https://doi.org/10.1210/jendso/bvaf149.1541",
+          "https://academic.oup.com/jes/article/9/Supplement_1/bvaf149.1541/8298745"
+        ],
+        "checkedAt": "2026-11-24",
+        "reviewScope": "Indexed abstract and bibliographic record reviewed",
+        "clinicalValidation": "No validated Universal Mind intervention–OXTR–IL-6 causal chain",
+        "studyFamilyId": "oxtr-il6-boutin2025"
+      }
+    },
+    {
+      "key": "sedoff2026",
+      "title": "Biological modulators of treatment outcome during psychiatric care: The interplay between inflammation and oxytocin",
+      "doi": "10.1016/j.psyneuen.2026.107894",
+      "pmid": "42156189",
+      "year": 2026,
+      "authors": "Sedoff O, Brugnera A, Tasca GA, Maoz H, Bloch Y, Tzur Bitan D.",
+      "journal": "Psychoneuroendocrinology",
+      "urls": [
+        "https://doi.org/10.1016/j.psyneuen.2026.107894",
+        "https://pubmed.ncbi.nlm.nih.gov/42156189/"
+      ],
+      "group": "human",
+      "design": "Secondary analysis of a four-week randomised psychiatric inpatient trial; 72 participants",
+      "summary": "Baseline neutrophil-to-lymphocyte ratio moderated the oxytocin-associated depression outcome. Benefit was observed in the lower-inflammation subgroup, rather than the higher-inflammation subgroup, in this analysis.",
+      "limitation": "NLR is an indirect inflammatory index, and IL-6 change was not established here. A moderator of symptom response is not evidence that treatment reduced inflammation; subgroup results need prospective confirmation.",
+      "sourceAccess": "Indexed abstract and bibliographic record reviewed",
+      "supplied": false,
+      "targets": [
+        "OXT",
+        "OXTR"
+      ],
+      "peerReviewed": true,
+      "randomizedControlledTrial": true,
+      "blinding": "not-assigned",
+      "studyFamilyId": "oxtr-il6-sedoff2026",
+      "recordId": "pmid-42156189",
+      "bibliographicVerification": {
+        "provider": "Europe PMC core record",
+        "checkedAt": "2026-11-24"
+      },
+      "evidenceRole": "Study-specific evidence; translation and limitations retained",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 2,
+        "peerReviewed": true,
+        "randomizedControlledTrial": true,
+        "blinding": "not-assigned",
+        "basis": "Study-design shorthand only; not a formal risk-of-bias, certainty or clinical-efficacy grade. Secondary analysis of a four-week randomised psychiatric inpatient trial; 72 participants",
+        "sources": [
+          "https://doi.org/10.1016/j.psyneuen.2026.107894",
+          "https://pubmed.ncbi.nlm.nih.gov/42156189/"
+        ],
+        "assessedAt": "2026-11-24"
+      },
+      "evidence": {
+        "evidenceType": "Secondary analysis of a four-week randomised psychiatric inpatient trial; 72 participants",
+        "relationshipNote": "Study-specific evidence; translation and limitations retained",
+        "sourceURLs": [
+          "https://doi.org/10.1016/j.psyneuen.2026.107894",
+          "https://pubmed.ncbi.nlm.nih.gov/42156189/"
+        ],
+        "checkedAt": "2026-11-24",
+        "reviewScope": "Indexed abstract and bibliographic record reviewed",
+        "clinicalValidation": "No validated Universal Mind intervention–OXTR–IL-6 causal chain",
+        "studyFamilyId": "oxtr-il6-sedoff2026"
+      }
+    },
+    {
+      "key": "wright2026",
+      "title": "Unraveling the impact of oxytocin receptor gene methylation on stress and inflammation in older adults",
+      "doi": "10.1111/jne.70113",
+      "pmid": "41239825",
+      "year": 2026,
+      "authors": "Wright KA, Polk RJ, Lin T, Chen S, Yang J, Krol K, Perkeybile A, Mendez A, Connelly J, Ebner NC.",
+      "journal": "Journal of neuroendocrinology",
+      "urls": [
+        "https://doi.org/10.1111/jne.70113",
+        "https://pubmed.ncbi.nlm.nih.gov/41239825/"
+      ],
+      "group": "human",
+      "design": "Observational OXTR methylation, stress and TNF study; 116 older adults",
+      "summary": "OXTR methylation at a specific CpG site interacted with perceived stress in relation to TNF. The study links a peripheral epigenetic measure with inflammatory variation in older adults.",
+      "limitation": "The association does not establish IL-6 reduction, OXTR activation or treatment response. Methylation effects depend on site and tissue. Published online in 2025 and assigned to the 2026 journal volume.",
+      "sourceAccess": "Indexed abstract and bibliographic record reviewed",
+      "supplied": false,
+      "targets": [
+        "OXTR",
+        "TNF"
+      ],
+      "peerReviewed": true,
+      "randomizedControlledTrial": false,
+      "blinding": "not-assigned",
+      "studyFamilyId": "oxtr-il6-wright2026",
+      "recordId": "pmid-41239825",
+      "bibliographicVerification": {
+        "provider": "Europe PMC core record",
+        "checkedAt": "2026-11-24"
+      },
+      "evidenceRole": "Study-specific evidence; translation and limitations retained",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "peerReviewed": true,
+        "randomizedControlledTrial": false,
+        "blinding": "not-assigned",
+        "basis": "Study-design shorthand only; not a formal risk-of-bias, certainty or clinical-efficacy grade. Observational OXTR methylation, stress and TNF study; 116 older adults",
+        "sources": [
+          "https://doi.org/10.1111/jne.70113",
+          "https://pubmed.ncbi.nlm.nih.gov/41239825/"
+        ],
+        "assessedAt": "2026-11-24"
+      },
+      "evidence": {
+        "evidenceType": "Observational OXTR methylation, stress and TNF study; 116 older adults",
+        "relationshipNote": "Study-specific evidence; translation and limitations retained",
+        "sourceURLs": [
+          "https://doi.org/10.1111/jne.70113",
+          "https://pubmed.ncbi.nlm.nih.gov/41239825/"
+        ],
+        "checkedAt": "2026-11-24",
+        "reviewScope": "Indexed abstract and bibliographic record reviewed",
+        "clinicalValidation": "No validated Universal Mind intervention–OXTR–IL-6 causal chain",
+        "studyFamilyId": "oxtr-il6-wright2026"
+      }
+    },
+    {
+      "key": "steensberg2003",
+      "title": "IL-6 enhances plasma IL-1ra, IL-10, and cortisol in humans",
+      "doi": "10.1152/ajpendo.00074.2003",
+      "pmid": "12857678",
+      "year": 2003,
+      "authors": "Steensberg A, Fischer CP, Keller C, Møller K, Pedersen BK.",
+      "journal": "American journal of physiology. Endocrinology and metabolism",
+      "urls": [
+        "https://doi.org/10.1152/ajpendo.00074.2003",
+        "https://pubmed.ncbi.nlm.nih.gov/12857678/"
+      ],
+      "group": "context",
+      "design": "Experimental recombinant IL-6 infusion in humans",
+      "summary": "IL-6 infusion increased circulating IL-10, IL-1 receptor antagonist and cortisol without inducing a parallel TNF response. This illustrates a regulatory role for IL-6 under a defined acute exposure.",
+      "limitation": "This was an IL-6 experiment, not an oxytocin trial. It does not establish that persistent IL-6 elevation is beneficial or that oxytocin reproduces the same response.",
+      "sourceAccess": "Indexed abstract and bibliographic record reviewed",
+      "supplied": false,
+      "targets": [
+        "IL6",
+        "IL10",
+        "IL1RN"
+      ],
+      "peerReviewed": true,
+      "randomizedControlledTrial": false,
+      "blinding": "not-assigned",
+      "studyFamilyId": "oxtr-il6-steensberg2003",
+      "recordId": "pmid-12857678",
+      "bibliographicVerification": {
+        "provider": "Europe PMC core record",
+        "checkedAt": "2026-11-24"
+      },
+      "evidenceRole": "Context or methods; not direct OXTR anti-inflammatory efficacy evidence",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "peerReviewed": true,
+        "randomizedControlledTrial": false,
+        "blinding": "not-assigned",
+        "basis": "Study-design shorthand only; not a formal risk-of-bias, certainty or clinical-efficacy grade. Experimental recombinant IL-6 infusion in humans",
+        "sources": [
+          "https://doi.org/10.1152/ajpendo.00074.2003",
+          "https://pubmed.ncbi.nlm.nih.gov/12857678/"
+        ],
+        "assessedAt": "2026-11-24"
+      },
+      "evidence": {
+        "evidenceType": "Experimental recombinant IL-6 infusion in humans",
+        "relationshipNote": "Context or methods; not direct OXTR anti-inflammatory efficacy evidence",
+        "sourceURLs": [
+          "https://doi.org/10.1152/ajpendo.00074.2003",
+          "https://pubmed.ncbi.nlm.nih.gov/12857678/"
+        ],
+        "checkedAt": "2026-11-24",
+        "reviewScope": "Indexed abstract and bibliographic record reviewed",
+        "clinicalValidation": "No validated Universal Mind intervention–OXTR–IL-6 causal chain",
+        "studyFamilyId": "oxtr-il6-steensberg2003"
+      }
+    },
+    {
+      "key": "jostock2001",
+      "title": "Soluble gp130 is the natural inhibitor of soluble interleukin-6 receptor transsignaling responses",
+      "doi": "10.1046/j.1432-1327.2001.01867.x",
+      "pmid": "11121117",
+      "year": 2001,
+      "authors": "Jostock T, Müllberg J, Ozbek S, Atreya R, Blinn G, Voltz N, Fischer M, Neurath MF, Rose-John S.",
+      "journal": "European journal of biochemistry",
+      "urls": [
+        "https://doi.org/10.1046/j.1432-1327.2001.01867.x",
+        "https://pubmed.ncbi.nlm.nih.gov/11121117/"
+      ],
+      "group": "context",
+      "design": "Recombinant soluble gp130 and IL-6 receptor signalling experiments",
+      "summary": "Soluble gp130 inhibited IL-6/soluble-IL-6-receptor trans-signalling responses in the tested systems, providing a mechanistic distinction from classical membrane-receptor signalling.",
+      "limitation": "Selectivity depends on the experimental concentration and system. This is pathway biology, not evidence that oxytocin selectively inhibits IL-6 trans-signalling.",
+      "sourceAccess": "Indexed abstract and bibliographic record reviewed",
+      "supplied": false,
+      "targets": [
+        "IL6",
+        "IL6R",
+        "IL6ST"
+      ],
+      "peerReviewed": true,
+      "randomizedControlledTrial": false,
+      "blinding": "not-assigned",
+      "studyFamilyId": "oxtr-il6-jostock2001",
+      "recordId": "pmid-11121117",
+      "bibliographicVerification": {
+        "provider": "Europe PMC core record",
+        "checkedAt": "2026-11-24"
+      },
+      "evidenceRole": "Context or methods; not direct OXTR anti-inflammatory efficacy evidence",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "peerReviewed": true,
+        "randomizedControlledTrial": false,
+        "blinding": "not-assigned",
+        "basis": "Study-design shorthand only; not a formal risk-of-bias, certainty or clinical-efficacy grade. Recombinant soluble gp130 and IL-6 receptor signalling experiments",
+        "sources": [
+          "https://doi.org/10.1046/j.1432-1327.2001.01867.x",
+          "https://pubmed.ncbi.nlm.nih.gov/11121117/"
+        ],
+        "assessedAt": "2026-11-24"
+      },
+      "evidence": {
+        "evidenceType": "Recombinant soluble gp130 and IL-6 receptor signalling experiments",
+        "relationshipNote": "Context or methods; not direct OXTR anti-inflammatory efficacy evidence",
+        "sourceURLs": [
+          "https://doi.org/10.1046/j.1432-1327.2001.01867.x",
+          "https://pubmed.ncbi.nlm.nih.gov/11121117/"
+        ],
+        "checkedAt": "2026-11-24",
+        "reviewScope": "Indexed abstract and bibliographic record reviewed",
+        "clinicalValidation": "No validated Universal Mind intervention–OXTR–IL-6 causal chain",
+        "studyFamilyId": "oxtr-il6-jostock2001"
+      }
+    },
+    {
+      "key": "olamkicept2023",
+      "title": "Effect of Induction Therapy With Olamkicept vs Placebo on Clinical Response in Patients With Active Ulcerative Colitis: A Randomized Clinical Trial",
+      "doi": "10.1001/jama.2023.1084",
+      "pmid": "36881032",
+      "year": 2023,
+      "authors": "Zhang S, Chen B, Wang B, Chen H, Li Y, Cao Q, Zhong J, Shieh MJ, Ran Z, Tang T, Yang M, Xu B, Wang Q, Liu Y, Ma L, Wang X, Zhang N, Zhang S, Guo W, Huang L, Schreiber S, Chen M.",
+      "journal": "JAMA",
+      "urls": [
+        "https://doi.org/10.1001/jama.2023.1084",
+        "https://pubmed.ncbi.nlm.nih.gov/36881032/"
+      ],
+      "group": "context",
+      "design": "Phase 2 randomised trial of olamkicept in 91 adults with active ulcerative colitis",
+      "summary": "The higher olamkicept dose improved clinical response relative to placebo, supporting the clinical relevance of targeting IL-6 trans-signalling in this disease context. The lower-dose comparison was not significant.",
+      "limitation": "Olamkicept is a soluble-gp130-based agent, not oxytocin. Its efficacy cannot be transferred to OXTR interventions or interpreted as proof of an OXTR–IL-6 mechanism.",
+      "sourceAccess": "Relevant full-text methods and results reviewed",
+      "supplied": false,
+      "targets": [
+        "IL6",
+        "IL6R",
+        "IL6ST"
+      ],
+      "peerReviewed": true,
+      "randomizedControlledTrial": true,
+      "blinding": "double",
+      "studyFamilyId": "oxtr-il6-olamkicept2023",
+      "recordId": "pmid-36881032",
+      "bibliographicVerification": {
+        "provider": "Europe PMC core record",
+        "checkedAt": "2026-11-24"
+      },
+      "evidenceRole": "Context or methods; not direct OXTR anti-inflammatory efficacy evidence",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 3,
+        "peerReviewed": true,
+        "randomizedControlledTrial": true,
+        "blinding": "double",
+        "basis": "Study-design shorthand only; not a formal risk-of-bias, certainty or clinical-efficacy grade. Phase 2 randomised trial of olamkicept in 91 adults with active ulcerative colitis",
+        "sources": [
+          "https://doi.org/10.1001/jama.2023.1084",
+          "https://pubmed.ncbi.nlm.nih.gov/36881032/"
+        ],
+        "assessedAt": "2026-11-24"
+      },
+      "evidence": {
+        "evidenceType": "Phase 2 randomised trial of olamkicept in 91 adults with active ulcerative colitis",
+        "relationshipNote": "Context or methods; not direct OXTR anti-inflammatory efficacy evidence",
+        "sourceURLs": [
+          "https://doi.org/10.1001/jama.2023.1084",
+          "https://pubmed.ncbi.nlm.nih.gov/36881032/"
+        ],
+        "checkedAt": "2026-11-24",
+        "reviewScope": "Relevant full-text methods and results reviewed",
+        "clinicalValidation": "No validated Universal Mind intervention–OXTR–IL-6 causal chain",
+        "studyFamilyId": "oxtr-il6-olamkicept2023"
+      }
+    },
+    {
+      "key": "szeto2011",
+      "title": "Evaluation of enzyme immunoassay and radioimmunoassay methods for the measurement of plasma oxytocin",
+      "doi": "10.1097/PSY.0b013e31821df0c2",
+      "pmid": "21636661",
+      "year": 2011,
+      "authors": "Szeto A, McCabe PM, Nation DA, Tabak BA, Rossetti MA, McCullough ME, Schneiderman N, Mendez AJ.",
+      "journal": "Psychosomatic medicine",
+      "urls": [
+        "https://doi.org/10.1097/PSY.0b013e31821df0c2",
+        "https://pubmed.ncbi.nlm.nih.gov/21636661/"
+      ],
+      "group": "methods",
+      "design": "Human plasma oxytocin immunoassay comparison",
+      "summary": "Measurements differed substantially between enzyme immunoassay and radioimmunoassay and between extraction conditions. The paper demonstrates how analytical procedure changes the reported oxytocin concentration.",
+      "limitation": "A plasma concentration is not direct receptor occupancy or central target engagement. Assay results require platform-specific validation rather than comparison across incompatible procedures.",
+      "sourceAccess": "Relevant full-text methods and results reviewed",
+      "supplied": false,
+      "targets": [
+        "OXT"
+      ],
+      "peerReviewed": true,
+      "randomizedControlledTrial": false,
+      "blinding": "not-assigned",
+      "studyFamilyId": "oxtr-il6-szeto2011",
+      "recordId": "pmid-21636661",
+      "bibliographicVerification": {
+        "provider": "Europe PMC core record",
+        "checkedAt": "2026-11-24"
+      },
+      "evidenceRole": "Context or methods; not direct OXTR anti-inflammatory efficacy evidence",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "peerReviewed": true,
+        "randomizedControlledTrial": false,
+        "blinding": "not-assigned",
+        "basis": "Study-design shorthand only; not a formal risk-of-bias, certainty or clinical-efficacy grade. Human plasma oxytocin immunoassay comparison",
+        "sources": [
+          "https://doi.org/10.1097/PSY.0b013e31821df0c2",
+          "https://pubmed.ncbi.nlm.nih.gov/21636661/"
+        ],
+        "assessedAt": "2026-11-24"
+      },
+      "evidence": {
+        "evidenceType": "Human plasma oxytocin immunoassay comparison",
+        "relationshipNote": "Context or methods; not direct OXTR anti-inflammatory efficacy evidence",
+        "sourceURLs": [
+          "https://doi.org/10.1097/PSY.0b013e31821df0c2",
+          "https://pubmed.ncbi.nlm.nih.gov/21636661/"
+        ],
+        "checkedAt": "2026-11-24",
+        "reviewScope": "Relevant full-text methods and results reviewed",
+        "clinicalValidation": "No validated Universal Mind intervention–OXTR–IL-6 causal chain",
+        "studyFamilyId": "oxtr-il6-szeto2011"
+      }
+    },
+    {
+      "key": "gan2023",
+      "title": "Inaccuracies in plasma oxytocin extraction and enzyme immunoassay techniques",
+      "doi": "10.1016/j.cpnec.2023.100188",
+      "pmid": "37360277",
+      "year": 2023,
+      "authors": "Gan HW, Leeson C, Aitkenhead H, Dattani M.",
+      "journal": "Comprehensive psychoneuroendocrinology",
+      "urls": [
+        "https://doi.org/10.1016/j.cpnec.2023.100188",
+        "https://pubmed.ncbi.nlm.nih.gov/37360277/"
+      ],
+      "group": "methods",
+      "design": "Oxytocin extraction and enzyme-immunoassay validation experiments",
+      "summary": "Extraction procedures produced substantial and variable analyte loss. The investigators evaluated a particular non-extracted assay approach, illustrating that analytical validity depends on the complete method.",
+      "limitation": "The result does not validate all commercial assays or justify a universal extraction rule. Recovery, specificity, dilution behaviour, precision and matrix effects need evaluation for the selected platform.",
+      "sourceAccess": "Relevant full-text methods and results reviewed",
+      "supplied": false,
+      "targets": [
+        "OXT"
+      ],
+      "peerReviewed": true,
+      "randomizedControlledTrial": false,
+      "blinding": "not-assigned",
+      "studyFamilyId": "oxtr-il6-gan2023",
+      "recordId": "pmid-37360277",
+      "bibliographicVerification": {
+        "provider": "Europe PMC core record",
+        "checkedAt": "2026-11-24"
+      },
+      "evidenceRole": "Context or methods; not direct OXTR anti-inflammatory efficacy evidence",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "peerReviewed": true,
+        "randomizedControlledTrial": false,
+        "blinding": "not-assigned",
+        "basis": "Study-design shorthand only; not a formal risk-of-bias, certainty or clinical-efficacy grade. Oxytocin extraction and enzyme-immunoassay validation experiments",
+        "sources": [
+          "https://doi.org/10.1016/j.cpnec.2023.100188",
+          "https://pubmed.ncbi.nlm.nih.gov/37360277/"
+        ],
+        "assessedAt": "2026-11-24"
+      },
+      "evidence": {
+        "evidenceType": "Oxytocin extraction and enzyme-immunoassay validation experiments",
+        "relationshipNote": "Context or methods; not direct OXTR anti-inflammatory efficacy evidence",
+        "sourceURLs": [
+          "https://doi.org/10.1016/j.cpnec.2023.100188",
+          "https://pubmed.ncbi.nlm.nih.gov/37360277/"
+        ],
+        "checkedAt": "2026-11-24",
+        "reviewScope": "Relevant full-text methods and results reviewed",
+        "clinicalValidation": "No validated Universal Mind intervention–OXTR–IL-6 causal chain",
+        "studyFamilyId": "oxtr-il6-gan2023"
+      }
+    },
+    {
+      "key": "imami2020",
+      "title": "Oxytocin's anti-inflammatory and proimmune functions in COVID-19: a transcriptomic signature-based approach",
+      "doi": "10.1152/physiolgenomics.00095.2020",
+      "pmid": "32809918",
+      "year": 2020,
+      "authors": "Imami AS, O'Donovan SM, Creeden JF, Wu X, Eby H, McCullumsmith CB, Uvnäs-Moberg K, McCullumsmith RE, Andari E.",
+      "journal": "Physiological genomics",
+      "urls": [
+        "https://doi.org/10.1152/physiolgenomics.00095.2020",
+        "https://pubmed.ncbi.nlm.nih.gov/32809918/"
+      ],
+      "group": "computational",
+      "design": "Computational comparison of perturbational transcriptomic signatures",
+      "summary": "The analysis found overlap between a carbetocin-related expression signature and inflammatory-gene perturbations, including IL1B and IL6 knockdown signatures. It generated a hypothesis about immune effects relevant to COVID-19.",
+      "limitation": "Signature similarity does not establish receptor engagement, cytokine reduction or patient benefit. The paper contains no completed oxytocin efficacy trial in COVID-19.",
+      "sourceAccess": "Indexed abstract and bibliographic record reviewed",
+      "supplied": true,
+      "targets": [
+        "OXT",
+        "OXTR",
+        "IL6"
+      ],
+      "peerReviewed": true,
+      "randomizedControlledTrial": false,
+      "blinding": "not-assigned",
+      "studyFamilyId": "oxtr-il6-imami2020",
+      "recordId": "pmid-32809918",
+      "bibliographicVerification": {
+        "provider": "Europe PMC core record",
+        "checkedAt": "2026-11-24"
+      },
+      "evidenceRole": "Context or methods; not direct OXTR anti-inflammatory efficacy evidence",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "peerReviewed": true,
+        "randomizedControlledTrial": false,
+        "blinding": "not-assigned",
+        "basis": "Study-design shorthand only; not a formal risk-of-bias, certainty or clinical-efficacy grade. Computational comparison of perturbational transcriptomic signatures",
+        "sources": [
+          "https://doi.org/10.1152/physiolgenomics.00095.2020",
+          "https://pubmed.ncbi.nlm.nih.gov/32809918/"
+        ],
+        "assessedAt": "2026-11-24"
+      },
+      "evidence": {
+        "evidenceType": "Computational comparison of perturbational transcriptomic signatures",
+        "relationshipNote": "Context or methods; not direct OXTR anti-inflammatory efficacy evidence",
+        "sourceURLs": [
+          "https://doi.org/10.1152/physiolgenomics.00095.2020",
+          "https://pubmed.ncbi.nlm.nih.gov/32809918/"
+        ],
+        "checkedAt": "2026-11-24",
+        "reviewScope": "Indexed abstract and bibliographic record reviewed",
+        "clinicalValidation": "No validated Universal Mind intervention–OXTR–IL-6 causal chain",
+        "studyFamilyId": "oxtr-il6-imami2020"
+      }
+    },
+    {
+      "key": "buemann2021",
+      "title": "Can intravenous oxytocin infusion counteract hyperinflammation in COVID-19 infected patients?",
+      "doi": "10.1080/15622975.2020.1814408",
+      "pmid": "32914674",
+      "year": 2021,
+      "authors": "Buemann B, Marazziti D, Uvnäs-Moberg K.",
+      "journal": "The world journal of biological psychiatry : the official journal of the World Federation of Societies of Biological Psychiatry",
+      "urls": [
+        "https://doi.org/10.1080/15622975.2020.1814408",
+        "https://pubmed.ncbi.nlm.nih.gov/32914674/"
+      ],
+      "group": "review",
+      "design": "Mechanistic review and intravenous oxytocin treatment proposal",
+      "summary": "The authors proposed oxytocin as a candidate response to hyperinflammation in COVID-19, drawing on neuroendocrine and preclinical literature.",
+      "limitation": "A treatment proposal is not an intervention result. Published online in 2020, with a 2021 journal issue; the separately registered OsCOVID19 trial was withdrawn before enrolment.",
+      "sourceAccess": "Indexed abstract and bibliographic record reviewed",
+      "supplied": true,
+      "targets": [
+        "OXT",
+        "OXTR",
+        "IL6"
+      ],
+      "peerReviewed": true,
+      "randomizedControlledTrial": false,
+      "blinding": "not-assigned",
+      "studyFamilyId": "oxtr-il6-buemann2021",
+      "recordId": "pmid-32914674",
+      "bibliographicVerification": {
+        "provider": "Europe PMC core record",
+        "checkedAt": "2026-11-24"
+      },
+      "evidenceRole": "Context or methods; not direct OXTR anti-inflammatory efficacy evidence",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "peerReviewed": true,
+        "randomizedControlledTrial": null,
+        "blinding": "not-assigned",
+        "basis": "Study-design shorthand only; not a formal risk-of-bias, certainty or clinical-efficacy grade. Mechanistic review and intravenous oxytocin treatment proposal",
+        "sources": [
+          "https://doi.org/10.1080/15622975.2020.1814408",
+          "https://pubmed.ncbi.nlm.nih.gov/32914674/"
+        ],
+        "assessedAt": "2026-11-24"
+      },
+      "evidence": {
+        "evidenceType": "Mechanistic review and intravenous oxytocin treatment proposal",
+        "relationshipNote": "Context or methods; not direct OXTR anti-inflammatory efficacy evidence",
+        "sourceURLs": [
+          "https://doi.org/10.1080/15622975.2020.1814408",
+          "https://pubmed.ncbi.nlm.nih.gov/32914674/"
+        ],
+        "checkedAt": "2026-11-24",
+        "reviewScope": "Indexed abstract and bibliographic record reviewed",
+        "clinicalValidation": "No validated Universal Mind intervention–OXTR–IL-6 causal chain",
+        "studyFamilyId": "oxtr-il6-buemann2021"
+      }
+    },
+    {
+      "key": "friuli2021",
+      "title": "Targeting the Oxytocinergic System: A Possible Pharmacological Strategy for the Treatment of Inflammation Occurring in Different Chronic Diseases",
+      "doi": "10.3390/ijms221910250",
+      "pmid": "34638587",
+      "year": 2021,
+      "authors": "Friuli M, Eramo B, Valenza M, Scuderi C, Provensi G, Romano A.",
+      "journal": "International journal of molecular sciences",
+      "urls": [
+        "https://doi.org/10.3390/ijms221910250",
+        "https://pubmed.ncbi.nlm.nih.gov/34638587/"
+      ],
+      "group": "review",
+      "design": "Narrative review of oxytocinergic signalling across chronic-disease models",
+      "summary": "Maps anti-inflammatory mechanisms and potential disease applications across cell and animal studies, providing a useful route to primary research.",
+      "limitation": "The review is not an independent replication of the studies it cites. Broad therapeutic conclusions need evaluation against the human trials and counterexamples in this chapter.",
+      "sourceAccess": "Indexed abstract and bibliographic record reviewed",
+      "supplied": true,
+      "targets": [
+        "OXT",
+        "OXTR",
+        "IL6"
+      ],
+      "peerReviewed": true,
+      "randomizedControlledTrial": false,
+      "blinding": "not-assigned",
+      "studyFamilyId": "oxtr-il6-friuli2021",
+      "recordId": "pmid-34638587",
+      "bibliographicVerification": {
+        "provider": "Europe PMC core record",
+        "checkedAt": "2026-11-24"
+      },
+      "evidenceRole": "Context or methods; not direct OXTR anti-inflammatory efficacy evidence",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "peerReviewed": true,
+        "randomizedControlledTrial": null,
+        "blinding": "not-assigned",
+        "basis": "Study-design shorthand only; not a formal risk-of-bias, certainty or clinical-efficacy grade. Narrative review of oxytocinergic signalling across chronic-disease models",
+        "sources": [
+          "https://doi.org/10.3390/ijms221910250",
+          "https://pubmed.ncbi.nlm.nih.gov/34638587/"
+        ],
+        "assessedAt": "2026-11-24"
+      },
+      "evidence": {
+        "evidenceType": "Narrative review of oxytocinergic signalling across chronic-disease models",
+        "relationshipNote": "Context or methods; not direct OXTR anti-inflammatory efficacy evidence",
+        "sourceURLs": [
+          "https://doi.org/10.3390/ijms221910250",
+          "https://pubmed.ncbi.nlm.nih.gov/34638587/"
+        ],
+        "checkedAt": "2026-11-24",
+        "reviewScope": "Indexed abstract and bibliographic record reviewed",
+        "clinicalValidation": "No validated Universal Mind intervention–OXTR–IL-6 causal chain",
+        "studyFamilyId": "oxtr-il6-friuli2021"
+      }
+    },
+    {
+      "key": "gonzalez2022",
+      "title": "Oxytocin and microglia in the development of social behaviour",
+      "doi": "10.1098/rstb.2021.0059",
+      "pmid": "35858111",
+      "year": 2022,
+      "authors": "Gonzalez A, Hammock EAD.",
+      "journal": "Philosophical transactions of the Royal Society of London. Series B, Biological sciences",
+      "urls": [
+        "https://doi.org/10.1098/rstb.2021.0059",
+        "https://pubmed.ncbi.nlm.nih.gov/35858111/"
+      ],
+      "group": "review",
+      "design": "Review of oxytocin, microglia and social development",
+      "summary": "Connects oxytocin signalling with microglial development and social-behaviour research, highlighting interactions between neural and immune systems.",
+      "limitation": "Developmental mechanisms and animal behaviour do not establish adult human IL-6 lowering or efficacy of a social intervention.",
+      "sourceAccess": "Indexed abstract and bibliographic record reviewed",
+      "supplied": true,
+      "targets": [
+        "OXT",
+        "OXTR"
+      ],
+      "peerReviewed": true,
+      "randomizedControlledTrial": false,
+      "blinding": "not-assigned",
+      "studyFamilyId": "oxtr-il6-gonzalez2022",
+      "recordId": "pmid-35858111",
+      "bibliographicVerification": {
+        "provider": "Europe PMC core record",
+        "checkedAt": "2026-11-24"
+      },
+      "evidenceRole": "Context or methods; not direct OXTR anti-inflammatory efficacy evidence",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "peerReviewed": true,
+        "randomizedControlledTrial": null,
+        "blinding": "not-assigned",
+        "basis": "Study-design shorthand only; not a formal risk-of-bias, certainty or clinical-efficacy grade. Review of oxytocin, microglia and social development",
+        "sources": [
+          "https://doi.org/10.1098/rstb.2021.0059",
+          "https://pubmed.ncbi.nlm.nih.gov/35858111/"
+        ],
+        "assessedAt": "2026-11-24"
+      },
+      "evidence": {
+        "evidenceType": "Review of oxytocin, microglia and social development",
+        "relationshipNote": "Context or methods; not direct OXTR anti-inflammatory efficacy evidence",
+        "sourceURLs": [
+          "https://doi.org/10.1098/rstb.2021.0059",
+          "https://pubmed.ncbi.nlm.nih.gov/35858111/"
+        ],
+        "checkedAt": "2026-11-24",
+        "reviewScope": "Indexed abstract and bibliographic record reviewed",
+        "clinicalValidation": "No validated Universal Mind intervention–OXTR–IL-6 causal chain",
+        "studyFamilyId": "oxtr-il6-gonzalez2022"
+      }
+    },
+    {
+      "key": "mehdi2022",
+      "title": "Oxytocin and Related Peptide Hormones: Candidate Anti-Inflammatory Therapy in Early Stages of Sepsis",
+      "doi": "10.3389/fimmu.2022.864007",
+      "pmid": "35572539",
+      "year": 2022,
+      "authors": "Mehdi SF, Pusapati S, Khenhrani RR, Farooqi MS, Sarwar S, Alnasarat A, Mathur N, Metz CN, LeRoith D, Tracey KJ, Yang H, Brownstein MJ, Roth J.",
+      "journal": "Frontiers in immunology",
+      "urls": [
+        "https://doi.org/10.3389/fimmu.2022.864007",
+        "https://pubmed.ncbi.nlm.nih.gov/35572539/"
+      ],
+      "group": "review",
+      "design": "Review of oxytocin and related peptide candidates in early sepsis",
+      "summary": "Integrates preclinical anti-inflammatory findings and proposes potential therapeutic roles for oxytocin and related peptides in early sepsis.",
+      "limitation": "Candidate status is not clinical validation. Sepsis involves changing immune states, and suppression of an inflammatory marker alone is not evidence of improved survival.",
+      "sourceAccess": "Indexed abstract and bibliographic record reviewed",
+      "supplied": true,
+      "targets": [
+        "OXT",
+        "OXTR",
+        "IL6"
+      ],
+      "peerReviewed": true,
+      "randomizedControlledTrial": false,
+      "blinding": "not-assigned",
+      "studyFamilyId": "oxtr-il6-mehdi2022",
+      "recordId": "pmid-35572539",
+      "bibliographicVerification": {
+        "provider": "Europe PMC core record",
+        "checkedAt": "2026-11-24"
+      },
+      "evidenceRole": "Context or methods; not direct OXTR anti-inflammatory efficacy evidence",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "peerReviewed": true,
+        "randomizedControlledTrial": null,
+        "blinding": "not-assigned",
+        "basis": "Study-design shorthand only; not a formal risk-of-bias, certainty or clinical-efficacy grade. Review of oxytocin and related peptide candidates in early sepsis",
+        "sources": [
+          "https://doi.org/10.3389/fimmu.2022.864007",
+          "https://pubmed.ncbi.nlm.nih.gov/35572539/"
+        ],
+        "assessedAt": "2026-11-24"
+      },
+      "evidence": {
+        "evidenceType": "Review of oxytocin and related peptide candidates in early sepsis",
+        "relationshipNote": "Context or methods; not direct OXTR anti-inflammatory efficacy evidence",
+        "sourceURLs": [
+          "https://doi.org/10.3389/fimmu.2022.864007",
+          "https://pubmed.ncbi.nlm.nih.gov/35572539/"
+        ],
+        "checkedAt": "2026-11-24",
+        "reviewScope": "Indexed abstract and bibliographic record reviewed",
+        "clinicalValidation": "No validated Universal Mind intervention–OXTR–IL-6 causal chain",
+        "studyFamilyId": "oxtr-il6-mehdi2022"
+      }
+    },
+    {
+      "key": "panaro2020",
+      "title": "Hypothalamic Neuropeptide Brain Protection: Focus on Oxytocin",
+      "doi": "10.3390/jcm9051534",
+      "pmid": "32438751",
+      "year": 2020,
+      "authors": "Panaro MA, Benameur T, Porro C.",
+      "journal": "Journal of clinical medicine",
+      "urls": [
+        "https://doi.org/10.3390/jcm9051534",
+        "https://pubmed.ncbi.nlm.nih.gov/32438751/"
+      ],
+      "group": "review",
+      "design": "Review of hypothalamic oxytocin and brain-protection mechanisms",
+      "summary": "Surveys proposed neuroprotective pathways, including interactions with microglia, oxidative stress and inflammatory signalling.",
+      "limitation": "The reviewed mechanisms do not establish that peripheral oxytocin concentrations measure brain exposure or that clinical neuroprotection has been demonstrated.",
+      "sourceAccess": "Indexed abstract and bibliographic record reviewed",
+      "supplied": true,
+      "targets": [
+        "OXT",
+        "OXTR"
+      ],
+      "peerReviewed": true,
+      "randomizedControlledTrial": false,
+      "blinding": "not-assigned",
+      "studyFamilyId": "oxtr-il6-panaro2020",
+      "recordId": "pmid-32438751",
+      "bibliographicVerification": {
+        "provider": "Europe PMC core record",
+        "checkedAt": "2026-11-24"
+      },
+      "evidenceRole": "Context or methods; not direct OXTR anti-inflammatory efficacy evidence",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "peerReviewed": true,
+        "randomizedControlledTrial": null,
+        "blinding": "not-assigned",
+        "basis": "Study-design shorthand only; not a formal risk-of-bias, certainty or clinical-efficacy grade. Review of hypothalamic oxytocin and brain-protection mechanisms",
+        "sources": [
+          "https://doi.org/10.3390/jcm9051534",
+          "https://pubmed.ncbi.nlm.nih.gov/32438751/"
+        ],
+        "assessedAt": "2026-11-24"
+      },
+      "evidence": {
+        "evidenceType": "Review of hypothalamic oxytocin and brain-protection mechanisms",
+        "relationshipNote": "Context or methods; not direct OXTR anti-inflammatory efficacy evidence",
+        "sourceURLs": [
+          "https://doi.org/10.3390/jcm9051534",
+          "https://pubmed.ncbi.nlm.nih.gov/32438751/"
+        ],
+        "checkedAt": "2026-11-24",
+        "reviewScope": "Indexed abstract and bibliographic record reviewed",
+        "clinicalValidation": "No validated Universal Mind intervention–OXTR–IL-6 causal chain",
+        "studyFamilyId": "oxtr-il6-panaro2020"
+      }
+    },
+    {
+      "key": "knoop2022",
+      "title": "The Role of Oxytocin in Abnormal Brain Development: Effect on Glial Cells and Neuroinflammation",
+      "doi": "10.3390/cells11233899",
+      "pmid": "36497156",
+      "year": 2022,
+      "authors": "Knoop M, Possovre ML, Jacquens A, Charlet A, Baud O, Darbon P.",
+      "journal": "Cells",
+      "urls": [
+        "https://doi.org/10.3390/cells11233899",
+        "https://pubmed.ncbi.nlm.nih.gov/36497156/"
+      ],
+      "group": "review",
+      "design": "Review of glia, neuroinflammation and abnormal brain development",
+      "summary": "Summarises developmental glial mechanisms that connect oxytocin-related signalling with inflammation and brain injury models.",
+      "limitation": "Developmental animal and cell evidence remains distinct from a human therapeutic trial. Several underlying studies overlap with other reviews in the supplied collection.",
+      "sourceAccess": "Indexed abstract and bibliographic record reviewed",
+      "supplied": true,
+      "targets": [
+        "OXT",
+        "OXTR"
+      ],
+      "peerReviewed": true,
+      "randomizedControlledTrial": false,
+      "blinding": "not-assigned",
+      "studyFamilyId": "oxtr-il6-knoop2022",
+      "recordId": "pmid-36497156",
+      "bibliographicVerification": {
+        "provider": "Europe PMC core record",
+        "checkedAt": "2026-11-24"
+      },
+      "evidenceRole": "Context or methods; not direct OXTR anti-inflammatory efficacy evidence",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "peerReviewed": true,
+        "randomizedControlledTrial": null,
+        "blinding": "not-assigned",
+        "basis": "Study-design shorthand only; not a formal risk-of-bias, certainty or clinical-efficacy grade. Review of glia, neuroinflammation and abnormal brain development",
+        "sources": [
+          "https://doi.org/10.3390/cells11233899",
+          "https://pubmed.ncbi.nlm.nih.gov/36497156/"
+        ],
+        "assessedAt": "2026-11-24"
+      },
+      "evidence": {
+        "evidenceType": "Review of glia, neuroinflammation and abnormal brain development",
+        "relationshipNote": "Context or methods; not direct OXTR anti-inflammatory efficacy evidence",
+        "sourceURLs": [
+          "https://doi.org/10.3390/cells11233899",
+          "https://pubmed.ncbi.nlm.nih.gov/36497156/"
+        ],
+        "checkedAt": "2026-11-24",
+        "reviewScope": "Indexed abstract and bibliographic record reviewed",
+        "clinicalValidation": "No validated Universal Mind intervention–OXTR–IL-6 causal chain",
+        "studyFamilyId": "oxtr-il6-knoop2022"
+      }
+    },
+    {
+      "key": "naeem2026",
+      "title": "Current Research on the Relationships Between Oxytocin and the Immune System: An Updated Study",
+      "doi": "10.66224/ARI.81.3.3451",
+      "pmid": null,
+      "year": 2026,
+      "authors": "Naeem MY, Alp Arici EC, Abbas S, Selamoglu Z",
+      "journal": "Archives of Razi Institute",
+      "urls": [
+        "https://archrazi.areeo.ac.ir/article_134161.html",
+        "https://doi.org/10.66224/ARI.81.3.3451"
+      ],
+      "group": "review",
+      "design": "Narrative review; source appraisal",
+      "summary": "A broad review from the supplied search collection maps proposed relationships between oxytocin and immunity. It is retained as a reading lead and provenance record.",
+      "limitation": "Section 3.2 incorrectly describes OXTR as encoding oxytocin. OXT encodes the hormone precursor; OXTR encodes its receptor. This chapter uses the official gene records for that distinction and does not rely on this review for gene identity.",
+      "sourceAccess": "Publisher text reviewed; DOI not retrieved in Europe PMC",
+      "supplied": true,
+      "targets": [
+        "OXT",
+        "OXTR",
+        "IL6"
+      ],
+      "peerReviewed": true,
+      "randomizedControlledTrial": false,
+      "blinding": "not-assigned",
+      "studyFamilyId": "oxtr-il6-naeem2026",
+      "recordId": "oxtr-il6-naeem2026",
+      "bibliographicVerification": {
+        "provider": "Publisher or official repository record",
+        "checkedAt": "2026-11-24"
+      },
+      "evidenceRole": "Context or methods; not direct OXTR anti-inflammatory efficacy evidence",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "assessed",
+        "score": 1,
+        "peerReviewed": true,
+        "randomizedControlledTrial": null,
+        "blinding": "not-assigned",
+        "basis": "Study-design shorthand only; not a formal risk-of-bias, certainty or clinical-efficacy grade. Narrative review; source appraisal",
+        "sources": [
+          "https://archrazi.areeo.ac.ir/article_134161.html",
+          "https://doi.org/10.66224/ARI.81.3.3451"
+        ],
+        "assessedAt": "2026-11-24"
+      },
+      "evidence": {
+        "evidenceType": "Narrative review; source appraisal",
+        "relationshipNote": "Context or methods; not direct OXTR anti-inflammatory efficacy evidence",
+        "sourceURLs": [
+          "https://archrazi.areeo.ac.ir/article_134161.html",
+          "https://doi.org/10.66224/ARI.81.3.3451"
+        ],
+        "checkedAt": "2026-11-24",
+        "reviewScope": "Publisher text reviewed; DOI not retrieved in Europe PMC",
+        "clinicalValidation": "No validated Universal Mind intervention–OXTR–IL-6 causal chain",
+        "studyFamilyId": "oxtr-il6-naeem2026"
+      }
+    },
+    {
+      "key": "sun2015",
+      "title": "The Oxytocin Receptor as an Acute Phase Protein and its Signaling Pathways in Response to Inflammation",
+      "doi": null,
+      "pmid": null,
+      "year": 2015,
+      "authors": "Ni Sun-Suslow",
+      "journal": "University of Miami thesis repository",
+      "urls": [
+        "https://scholarship.miami.edu/esploro/outputs/graduate/The-Oxytocin-Receptor-as-an-Acute/991031447797402976"
+      ],
+      "group": "thesis",
+      "design": "University of Miami master’s thesis; repository abstract",
+      "summary": "The abstract reports inflammatory induction of OXTR in THP-1 cells and investigates NF-κB-associated regulation. IL-6 alone did not reproduce the LPS-related receptor increase in the reported experiment.",
+      "limitation": "Full text was restricted at review. This work comes from the research lineage of the later Szeto macrophage paper; it is not counted as an independent replication. The exact dataset overlap remains unresolved.",
+      "sourceAccess": "Repository abstract and bibliographic record reviewed",
+      "supplied": true,
+      "targets": [
+        "OXT",
+        "OXTR",
+        "IL6"
+      ],
+      "peerReviewed": false,
+      "randomizedControlledTrial": false,
+      "blinding": "not-assigned",
+      "studyFamilyId": "oxtr-il6-szeto-macrophage-lineage",
+      "recordId": "oxtr-il6-sun2015",
+      "bibliographicVerification": {
+        "provider": "Publisher or official repository record",
+        "checkedAt": "2026-11-24"
+      },
+      "evidenceRole": "Context or methods; not direct OXTR anti-inflammatory efficacy evidence",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "not-applicable",
+        "score": null,
+        "peerReviewed": false,
+        "randomizedControlledTrial": null,
+        "blinding": "not-assigned",
+        "basis": "Study-design shorthand only; not a formal risk-of-bias, certainty or clinical-efficacy grade. University of Miami master’s thesis; repository abstract",
+        "sources": [
+          "https://scholarship.miami.edu/esploro/outputs/graduate/The-Oxytocin-Receptor-as-an-Acute/991031447797402976"
+        ],
+        "assessedAt": "2026-11-24"
+      },
+      "evidence": {
+        "evidenceType": "University of Miami master’s thesis; repository abstract",
+        "relationshipNote": "Context or methods; not direct OXTR anti-inflammatory efficacy evidence",
+        "sourceURLs": [
+          "https://scholarship.miami.edu/esploro/outputs/graduate/The-Oxytocin-Receptor-as-an-Acute/991031447797402976"
+        ],
+        "checkedAt": "2026-11-24",
+        "reviewScope": "Repository abstract and bibliographic record reviewed",
+        "clinicalValidation": "No validated Universal Mind intervention–OXTR–IL-6 causal chain",
+        "studyFamilyId": "oxtr-il6-szeto-macrophage-lineage"
+      }
+    },
+    {
+      "key": "oxt-gene",
+      "title": "OXT oxytocin/neurophysin I prepropeptide",
+      "doi": null,
+      "pmid": null,
+      "year": null,
+      "authors": "National Center for Biotechnology Information",
+      "journal": "NCBI Gene",
+      "urls": [
+        "https://www.ncbi.nlm.nih.gov/gene/5020"
+      ],
+      "group": "reference",
+      "design": "Official human gene reference",
+      "summary": "OXT encodes the oxytocin/neurophysin I precursor on chromosome 20.",
+      "limitation": "A gene annotation establishes molecular identity, not anti-inflammatory efficacy or intervention target engagement.",
+      "sourceAccess": "Official gene annotation reviewed",
+      "supplied": false,
+      "targets": [
+        "OXT"
+      ],
+      "peerReviewed": false,
+      "randomizedControlledTrial": false,
+      "blinding": "not-assigned",
+      "studyFamilyId": "oxtr-il6-oxt-gene",
+      "recordId": "oxtr-il6-oxt-gene",
+      "bibliographicVerification": {
+        "provider": "Publisher or official repository record",
+        "checkedAt": "2026-11-24"
+      },
+      "evidenceRole": "Context or methods; not direct OXTR anti-inflammatory efficacy evidence",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "not-applicable",
+        "score": null,
+        "peerReviewed": false,
+        "randomizedControlledTrial": null,
+        "blinding": "not-assigned",
+        "basis": "Study-design shorthand only; not a formal risk-of-bias, certainty or clinical-efficacy grade. Official human gene reference",
+        "sources": [
+          "https://www.ncbi.nlm.nih.gov/gene/5020"
+        ],
+        "assessedAt": "2026-11-24"
+      },
+      "evidence": {
+        "evidenceType": "Official human gene reference",
+        "relationshipNote": "Context or methods; not direct OXTR anti-inflammatory efficacy evidence",
+        "sourceURLs": [
+          "https://www.ncbi.nlm.nih.gov/gene/5020"
+        ],
+        "checkedAt": "2026-11-24",
+        "reviewScope": "Official gene annotation reviewed",
+        "clinicalValidation": "No validated Universal Mind intervention–OXTR–IL-6 causal chain",
+        "studyFamilyId": "oxtr-il6-oxt-gene"
+      }
+    },
+    {
+      "key": "oxtr-gene",
+      "title": "OXTR oxytocin receptor",
+      "doi": null,
+      "pmid": null,
+      "year": null,
+      "authors": "National Center for Biotechnology Information",
+      "journal": "NCBI Gene",
+      "urls": [
+        "https://www.ncbi.nlm.nih.gov/gene/5021"
+      ],
+      "group": "reference",
+      "design": "Official human gene reference",
+      "summary": "OXTR encodes the oxytocin G-protein-coupled receptor on chromosome 3.",
+      "limitation": "A gene annotation establishes molecular identity, not anti-inflammatory efficacy or intervention target engagement.",
+      "sourceAccess": "Official gene annotation reviewed",
+      "supplied": false,
+      "targets": [
+        "OXTR"
+      ],
+      "peerReviewed": false,
+      "randomizedControlledTrial": false,
+      "blinding": "not-assigned",
+      "studyFamilyId": "oxtr-il6-oxtr-gene",
+      "recordId": "oxtr-il6-oxtr-gene",
+      "bibliographicVerification": {
+        "provider": "Publisher or official repository record",
+        "checkedAt": "2026-11-24"
+      },
+      "evidenceRole": "Context or methods; not direct OXTR anti-inflammatory efficacy evidence",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "not-applicable",
+        "score": null,
+        "peerReviewed": false,
+        "randomizedControlledTrial": null,
+        "blinding": "not-assigned",
+        "basis": "Study-design shorthand only; not a formal risk-of-bias, certainty or clinical-efficacy grade. Official human gene reference",
+        "sources": [
+          "https://www.ncbi.nlm.nih.gov/gene/5021"
+        ],
+        "assessedAt": "2026-11-24"
+      },
+      "evidence": {
+        "evidenceType": "Official human gene reference",
+        "relationshipNote": "Context or methods; not direct OXTR anti-inflammatory efficacy evidence",
+        "sourceURLs": [
+          "https://www.ncbi.nlm.nih.gov/gene/5021"
+        ],
+        "checkedAt": "2026-11-24",
+        "reviewScope": "Official gene annotation reviewed",
+        "clinicalValidation": "No validated Universal Mind intervention–OXTR–IL-6 causal chain",
+        "studyFamilyId": "oxtr-il6-oxtr-gene"
+      }
+    },
+    {
+      "key": "oscovid19",
+      "title": "Phase II, Multicenter, Open-label, Rct With an Adaptive Design, to Assess Efficacy of Intravenous Administration of Oxytocin in Hospitalized Patients Affected by COVID-19",
+      "doi": null,
+      "pmid": null,
+      "year": 2020,
+      "authors": "Azienda Ospedaliero-Universitaria di Parma",
+      "journal": "ClinicalTrials.gov",
+      "urls": [
+        "https://clinicaltrials.gov/study/NCT04386447"
+      ],
+      "group": "registry",
+      "design": "Withdrawn clinical trial registration; no enrolled participants",
+      "summary": "OsCOVID19 (NCT04386447) was registered to test intravenous oxytocin in hospitalised COVID-19 patients. The registry records withdrawal because the Italian Medicines Agency did not approve the study; actual enrolment is zero.",
+      "limitation": "A withdrawn registration supplies no efficacy or safety results. Registry last update: 14 January 2021; status checked 24 November 2026.",
+      "sourceAccess": "Official ClinicalTrials.gov API record reviewed",
+      "supplied": false,
+      "targets": [
+        "OXT",
+        "OXTR",
+        "IL6"
+      ],
+      "peerReviewed": false,
+      "randomizedControlledTrial": false,
+      "blinding": "not-assigned",
+      "studyFamilyId": "oxtr-il6-oscovid19",
+      "trialId": "NCT04386447",
+      "recordId": "oxtr-il6-oscovid19",
+      "bibliographicVerification": {
+        "provider": "Publisher or official repository record",
+        "checkedAt": "2026-11-24"
+      },
+      "evidenceRole": "Context or methods; not direct OXTR anti-inflammatory efficacy evidence",
+      "paperTrustAssessment": {
+        "scope": "Paper",
+        "status": "not-applicable",
+        "score": null,
+        "peerReviewed": false,
+        "randomizedControlledTrial": null,
+        "blinding": "not-assigned",
+        "basis": "Study-design shorthand only; not a formal risk-of-bias, certainty or clinical-efficacy grade. Withdrawn clinical trial registration; no enrolled participants",
+        "sources": [
+          "https://clinicaltrials.gov/study/NCT04386447"
+        ],
+        "assessedAt": "2026-11-24"
+      },
+      "evidence": {
+        "evidenceType": "Withdrawn clinical trial registration; no enrolled participants",
+        "relationshipNote": "Context or methods; not direct OXTR anti-inflammatory efficacy evidence",
+        "sourceURLs": [
+          "https://clinicaltrials.gov/study/NCT04386447"
+        ],
+        "checkedAt": "2026-11-24",
+        "reviewScope": "Official ClinicalTrials.gov API record reviewed",
+        "clinicalValidation": "No validated Universal Mind intervention–OXTR–IL-6 causal chain",
+        "studyFamilyId": "oxtr-il6-oscovid19"
+      }
+    }
+  ]
+}

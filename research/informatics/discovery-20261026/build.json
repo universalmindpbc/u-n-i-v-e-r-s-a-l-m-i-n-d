@@ -1,14 +1,14 @@
 {
-  "datasetManifestSHA256": "56cefef1c3987d56bb1075b5b129ce573cfde9c582a3ec5265be752330a9c5b9",
+  "datasetManifestSHA256": "d62674aff166d848836fda1bde1a05fd3261ec640a26ef1ed4fb38b0b8e854c8",
   "generatedAt": "2026-10-26",
-  "publications": 1452,
+  "publications": 1494,
   "atlas": 1001,
   "experiments": 2,
-  "pages": 2471,
+  "pages": 2514,
   "sourceHashes": [
     {
       "path": "library.js",
-      "sha256": "a110c9b51959500a702568138a009b92139ac26cc7f4c673fedbcf45f3db0099"
+      "sha256": "794d2354e760d1d5679a80103cc0bcdea5c7154679b66d774f8470ac1cafa901"
     },
     {
       "path": "library-data/sound-edition.json",
@@ -16,7 +16,7 @@
     },
     {
       "path": "library-data/library.json",
-      "sha256": "a9cbac54a4cbb16af8556a2cc7eca7498cd6924108594e77559cabd96c220ef1"
+      "sha256": "2be2bbc20455571e7dc73c9ab7859f1e89cecc0f88e698c0e51629ea53e607af"
     },
     {
       "path": "library-data/publication-access.json",
@@ -28,7 +28,7 @@
     },
     {
       "path": "library-data/general-edition.json",
-      "sha256": "8f60903833be3ee9f4424fe058f5d89889d861152a1a56a2743c2bc0fda104eb"
+      "sha256": "d098bba0311be520464dd5569a6cff9131de1aeaddddebaca31157c395fac187"
     },
     {
       "path": "library-data/mindfulness-expansion.json",
@@ -79,7 +79,7 @@
       "sha256": "3fe8ac5ff0b61e4348e5de0808e2f7956329df489b51ccf18a3f0163e00b376e"
     }
   ],
-  "publicationRecordSHA256": "c93e43912cb6c8185440c05ac459fc2c6ae09737e6fdb41715b0b370def349e4",
+  "publicationRecordSHA256": "b803a0646325e77f4a286936320a2cb72cbc3015cdc8e3578fb254bd4a844f2b",
   "canonicalPaths": [
     "",
     "connect.html",
@@ -919,6 +919,48 @@
     "read/publications/dock2-qut2025-c54f8f72.html",
     "read/publications/dock2-konstanz2022-79ff4398.html",
     "read/publications/dock2-stellenbosch-4260e416.html",
+    "read/publications/pmid-18940936-dceccd14.html",
+    "read/publications/pmid-28049625-ab33a9b7.html",
+    "read/publications/pmid-23899661-bbd961df.html",
+    "read/publications/pmid-25451977-1eaa6a1d.html",
+    "read/publications/pmid-30801661-ce0b6b51.html",
+    "read/publications/pmid-27075756-8c9bb6d3.html",
+    "read/publications/pmid-31159306-15b5d0a2.html",
+    "read/publications/pmid-41598260-700796db.html",
+    "read/publications/pmid-30506969-d1755a1b.html",
+    "read/publications/pmid-42049099-d19958c5.html",
+    "read/publications/pmid-25147234-669001b2.html",
+    "read/publications/pmid-31519790-e309fdfa.html",
+    "read/publications/pmid-33564880-cee0dcbd.html",
+    "read/publications/pmid-38979515-edc3739c.html",
+    "read/publications/pmid-32819381-6e110013.html",
+    "read/publications/pmid-38226427-03c77852.html",
+    "read/publications/pmid-40285614-affff8f0.html",
+    "read/publications/pmid-18593851-99a1b206.html",
+    "read/publications/pmid-36058418-1950f5e7.html",
+    "read/publications/pmid-41222549-6f203d02.html",
+    "read/publications/pmid-38461957-671195d2.html",
+    "read/publications/pmid-41806102-cf830754.html",
+    "read/publications/oxtr-il6-boutin2025-94d964fd.html",
+    "read/publications/pmid-42156189-15f9c482.html",
+    "read/publications/pmid-41239825-6caf73a8.html",
+    "read/publications/pmid-12857678-9f221bf9.html",
+    "read/publications/pmid-11121117-97ad74aa.html",
+    "read/publications/pmid-36881032-e18c41ec.html",
+    "read/publications/pmid-21636661-f8f20bbe.html",
+    "read/publications/pmid-37360277-fa42c998.html",
+    "read/publications/pmid-32809918-ed7e8c19.html",
+    "read/publications/pmid-32914674-34e96434.html",
+    "read/publications/pmid-34638587-c61b5797.html",
+    "read/publications/pmid-35858111-66396731.html",
+    "read/publications/pmid-35572539-f443b55c.html",
+    "read/publications/pmid-32438751-1ae15623.html",
+    "read/publications/pmid-36497156-159465eb.html",
+    "read/publications/oxtr-il6-naeem2026-38dd3f84.html",
+    "read/publications/oxtr-il6-sun2015-f3a13140.html",
+    "read/publications/oxtr-il6-oxt-gene-05f41920.html",
+    "read/publications/oxtr-il6-oxtr-gene-86bdc68e.html",
+    "read/publications/oxtr-il6-oscovid19-f5802408.html",
     "read/publications/pmid-41534731-3d1f7c57.html",
     "read/publications/pmid-36350591-ddbc6cb7.html",
     "read/publications/pmid-35820992-1f94d7d6.html",
@@ -1547,6 +1589,7 @@
     "read/publications/index.html",
     "read/hyperspectral/index.html",
     "read/dock2/index.html",
+    "read/oxtr-il6/index.html",
     "read/atlas/m1.html",
     "read/atlas/m2.html",
     "read/atlas/m3.html",
