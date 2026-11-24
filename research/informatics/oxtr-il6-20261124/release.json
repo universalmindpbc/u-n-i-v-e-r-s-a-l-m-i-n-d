@@ -1,0 +1,37 @@
+{
+  "date": "2026-11-24",
+  "sourceCommit": "0b0174ca2c8b799d4ff9af125b71eea6fe57c43e",
+  "stagingURL": "https://staging.universalmind.tv/informatics/research/?collection=general&chapter=13",
+  "readingURL": "https://staging.universalmind.tv/informatics/read/oxtr-il6/index.html",
+  "deployment": "Existing ./deploy-panthur-staging.sh informatics; Panthur FTP; 64 changed assets",
+  "sourceCount": 42,
+  "seedSources": 19,
+  "topics": 10,
+  "reviewType": "Targeted narrative evidence map; no formal certainty grading or meta-analysis",
+  "verification": {
+    "sourceAndCitationValidation": true,
+    "priorGeneralChaptersPreserved": 12,
+    "jsonCsvRoundtripSources": 1202,
+    "liveDesktopMobileWidths": [
+      1470,
+      1024,
+      390,
+      320
+    ],
+    "citationDialog": true,
+    "IL6Filter": true,
+    "sourceSearch": true,
+    "downloadBytesMatched": true,
+    "changedCoreAssetsMatched": true,
+    "exportPartsAvailable": 6,
+    "languageAndDock2Regression": true,
+    "browserErrors": [],
+    "audioMutedAtProcessLaunch": true,
+    "mediaPlaybackDisabled": true,
+    "automatedBrowserClosed": true
+  },
+  "productionModified": false,
+  "productionGeneralSHA256": "8f60903833be3ee9f4424fe058f5d89889d861152a1a56a2743c2bc0fda104eb",
+  "productionBranchBefore": "1006bf6b3a5e84ab5d0ff58e2967c0a9b18750a4",
+  "gitHubRecord": "Source and verification commits to origin/staging; verified after push"
+}

@@ -1,4 +1,7 @@
 {"passed":true,"legacyRoutes":14,"chapterChecks":29,"orderedMaps":3,"retainedParentHistory":true}
 {"passed": true, "robotDecisions": 270, "HTMLPages": 2514, "localLinks": 31169, "publicationRecords": 1494, "atlasRecords": 1001, "experimentRecords": 2, "sourceFilesMatched": 18}
 {"passed": true, "sources": 1202, "version": "1f098ee8df0c2a96e2528f42225a89074a9a251f2853b6f8c0fa117f96a27786"}
-Refusing to deploy uncommitted Informatics source.
+Informatics: 14294 tracked assets; 64 changed uploads via Panthur FTP.
+Informatics: uploaded 64/64 changed assets.
+Informatics: completed changed uploads through the existing Panthur curl/FTP transport.
+Deploy complete: informatics

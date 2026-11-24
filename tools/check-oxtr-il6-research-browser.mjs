@@ -54,8 +54,7 @@ try{
  for(const width of[1470,1024,390,320]){
   await page.setViewportSize({width,height:width<600?844:1000});
   await page.waitForTimeout(180);
-  await frame.locator('html').evaluate(()=>window.scrollTo(0,0));
-  await page.evaluate(()=>window.scrollTo(0,0));
+  await frame.locator('.chapter-opening h2').evaluate(el=>{el.scrollIntoView({block:'start'});window.scrollBy(0,-140);});
   const layout=await frame.locator('html').evaluate(el=>({width:el.clientWidth,scroll:el.scrollWidth}));
   assert(layout.scroll<=layout.width+2,JSON.stringify({width,layout}));
   await page.screenshot({path:path.join(out,`${width}.png`)});
