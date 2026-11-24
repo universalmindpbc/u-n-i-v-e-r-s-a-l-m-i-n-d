@@ -1,0 +1,28 @@
+{
+  "approvedCandidate": "c348d1105ec7aceb2b97e080ffde6f520a6d1ff3",
+  "productionBase": "867a2a63c794673f67dc76df258fcd2d292d6b4c",
+  "authorisation": "Ben explicitly requested production publication in this chat on 25 November 2026.",
+  "changedPaths": [
+    "cloudflare/informatics-connectors.js",
+    "cloudflare/informatics-inflammation-knowledge.js",
+    "cloudflare/informatics-repository.js",
+    "cloudflare/informatics-research-worker.js",
+    "research/informatics/universal-one-inflammation-20261125/README.md",
+    "research/informatics/universal-one-inflammation-20261125/api-verification.json",
+    "research/informatics/universal-one-inflammation-20261125/before.json",
+    "research/informatics/universal-one-inflammation-20261125/live-verification.json",
+    "research/informatics/universal-one-inflammation-20261125/local-tests.log",
+    "research/informatics/universal-one-inflammation-20261125/release.json",
+    "research/informatics/universal-one-inflammation-20261125/source-sha256.json",
+    "research/informatics/universal-one-inflammation-20261125/staging-desktop.png",
+    "research/informatics/universal-one-inflammation-20261125/staging-mobile.png",
+    "research/informatics/universal-one-inflammation-20261125/verify-api.py",
+    "research/informatics/universal-one-inflammation-20261125/verify-live.mjs",
+    "research/informatics/universal-one-inflammation-20261125/worker-deploy-final.log",
+    "research/informatics/universal-one-inflammation-20261125/worker-deploy.log",
+    "tools/test-informatics-inflammation.mjs"
+  ],
+  "staticUploads": 0,
+  "sharedDatabaseWrites": 0,
+  "method": "Existing informatics production Worker deployment; no static website asset changes"
+}

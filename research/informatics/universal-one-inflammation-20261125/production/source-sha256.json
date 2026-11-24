@@ -1,0 +1,7 @@
+{
+  "cloudflare/wrangler.informatics-production.toml": "d983bb83f01d36d0c78fe81cac5bf77b4463c40db42926088ec58a6c05f27a8f",
+  "cloudflare/informatics-research-worker.js": "46556112eff3bbdd15ded361ced4b010dd431657902778445b0f87670ae79705",
+  "cloudflare/informatics-repository.js": "4eec05b7abbc1909b3bae10520cccc37159a6129c64ba3b55579044ff71a7f35",
+  "cloudflare/informatics-connectors.js": "9caa19641b1efb2c41d665a7089fdc6f60703e69b0462ea9a1a45baec5c9e86f",
+  "cloudflare/informatics-inflammation-knowledge.js": "f2c04eeac063217576592740bde23496d588a6ab3617692ad7ef38246175e143"
+}
