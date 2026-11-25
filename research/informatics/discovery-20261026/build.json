@@ -1,5 +1,5 @@
 {
-  "datasetManifestSHA256": "4d008c5356f7e8b8c49b7f9d35da084706a59b09ead3930dc713af749baabbc9",
+  "datasetManifestSHA256": "9873587fed9ce62ba4704cdb9dd2902b553cb7fd2edf87e15219d09b401143a1",
   "generatedAt": "2026-10-26",
   "publications": 1501,
   "atlas": 1001,
@@ -8,15 +8,15 @@
   "sourceHashes": [
     {
       "path": "library.js",
-      "sha256": "330b681a187f72d5cc770306104ea12c32a50548da65f769e091e3dad8fb4148"
+      "sha256": "b7d27edeef18a62f7821e48b360b450ec4855628b281e11decc8d59ea6fd49bc"
     },
     {
       "path": "library-data/sound-edition.json",
-      "sha256": "50d42afb56afa4151f11d065eb21b0f04157ec71b6653e0d533f081a8d48920e"
+      "sha256": "ddcf473bfefbf39a4caf33eee98ae6112749e50643b5f8b67a330e7c45b76d3c"
     },
     {
       "path": "library-data/library.json",
-      "sha256": "e0acf4c0bb943433b2f877e53ac4d870983830ce14aa64d744a812fea6086a02"
+      "sha256": "cb62c1ca9f3fc5979db49f2e1186e00a9d2a2f175db74d94e29d1c52342a3a0c"
     },
     {
       "path": "library-data/publication-access.json",
@@ -79,7 +79,7 @@
       "sha256": "3fe8ac5ff0b61e4348e5de0808e2f7956329df489b51ccf18a3f0163e00b376e"
     }
   ],
-  "publicationRecordSHA256": "c6c3d0ae54bd86e97087b296bc2244de9e6f1531a17a8e61f363922f44f6517d",
+  "publicationRecordSHA256": "92b92621d1c50da44717006abe352246922c8d02493164f02ba7647533b82638",
   "canonicalPaths": [
     "",
     "connect.html",

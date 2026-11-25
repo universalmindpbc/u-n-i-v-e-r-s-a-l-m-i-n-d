@@ -7,7 +7,7 @@ const normal=value=>String(value||'').trim().toLowerCase().replace(/^https?:\/\/
 const identities=new Map(sound528Records.flatMap(r=>[r.id,r.doi,r.pmid,...r.aliases].filter(Boolean).map(id=>[normal(id),r])));
 export const sound528Record=id=>identities.get(normal(id));
 export const sound528Replaces=row=>[row.id,row.data?.doi,row.data?.pmid].some(id=>id&&sound528Record(id));
-export const sound528Version={version:'sound528-20261125-v2',sourceSHA256:createHash('sha256').update(JSON.stringify(register)).digest('hex'),sourceRecords:sound528Records.length,completedAuthorReportedRCTs:5,explicitly528HzRCTs:4};
+export const sound528Version={version:'sound528-20261125-v3',sourceSHA256:createHash('sha256').update(JSON.stringify(register)).digest('hex'),sourceRecords:sound528Records.length,completedAuthorReportedRCTs:5,explicitly528HzRCTs:4};
 const direct=query=>/\b(?:528|444)\s*(?:hz|hertz)?\b|solfeggio|sound of tranquillit/i.test(query)||!!sound528Record(query);
 export function sound528Relevant(query,history=[]){
  if(direct(query))return true;

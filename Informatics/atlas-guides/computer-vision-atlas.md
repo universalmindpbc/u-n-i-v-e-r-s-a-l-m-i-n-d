@@ -24,4 +24,4 @@ The initial biological application is to investigate spectral patterns potential
 
 ## Sources
 
-- [index.html](https://universalmind.tv/informatics/index.html) · SHA-256: 3856e5912ef93f84834dd8041ce35e3efd66e909000736b8227beb27efd3b471 · HTML with generated Atlas narrative blocks removed
+- [index.html](https://universalmind.tv/informatics/index.html) · SHA-256: 70af888c2bd0150dc8624dfdd60b727c4145b82fbae80fa434256f80ba9d10d9 · HTML with generated Atlas narrative blocks removed

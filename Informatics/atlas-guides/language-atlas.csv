@@ -51,7 +51,7 @@ path,type,value
 /sources/0,object,
 /sources/0/path,string,index.html
 /sources/0/url,string,https://universalmind.tv/informatics/index.html
-/sources/0/sha256,string,3856e5912ef93f84834dd8041ce35e3efd66e909000736b8227beb27efd3b471
+/sources/0/sha256,string,70af888c2bd0150dc8624dfdd60b727c4145b82fbae80fa434256f80ba9d10d9
 /sources/0/sha256_scope,string,HTML with generated Atlas narrative blocks removed
 /downloads,object,
 /downloads/json,string,https://universalmind.tv/informatics/atlas-guides/language-atlas.json?v=2026-11-01-page-narrative-4

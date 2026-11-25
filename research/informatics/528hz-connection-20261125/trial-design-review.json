@@ -1,0 +1,44 @@
+{
+  "reviewedAt": "2026-11-25",
+  "principles": {
+    "randomized": "Assignment to study conditions is by chance",
+    "controlled": "At least one comparison condition is included; sham treatment is optional",
+    "blinded": "Information about assignment is withheld from specified people; this is separate from random assignment",
+    "guidance": "https://www.consort-spirit.org/item20a-whowasblinded"
+  },
+  "trials": [
+    {
+      "id": "sound528-heti2024",
+      "totalAnalysed": 48,
+      "interventionAnalysed": 24,
+      "comparison": "Neutral reading, 24 participants",
+      "blinding": "Not clearly reported",
+      "source": "https://veterinaria.org/index.php/REDVET/article/download/787/500/"
+    },
+    {
+      "id": "hsi-c2e2e55e945231",
+      "totalRandomized": 60,
+      "interventionRandomized": 30,
+      "interventionCompleted": 27,
+      "comparison": "Standard care, 30 randomized; 28 completed",
+      "blinding": "Not clearly reported",
+      "source": "https://journals.sagepub.com/doi/10.1177/09727531251390261"
+    },
+    {
+      "id": "sound528-ravikumar2026",
+      "totalRandomized": 100,
+      "interventionRandomized": 50,
+      "comparison": "Remotely delivered music, 50 participants",
+      "blinding": "Blood-pressure assessors and cortisol laboratory personnel blinded; participant blinding reported, implementation unclear because settings differed",
+      "source": "https://assets.cureus.com/uploads/original_article/pdf/465976/20260903-1742260-urf4g2.pdf"
+    },
+    {
+      "id": "sound528-bozok2026",
+      "totalRandomized": 162,
+      "interventionRandomized": 54,
+      "comparison": "432 Hz music and no music, 54 participants each",
+      "blinding": "Not clearly reported for this trial",
+      "source": "https://onlinelibrary.wiley.com/doi/10.1002/brb3.71452"
+    }
+  ]
+}

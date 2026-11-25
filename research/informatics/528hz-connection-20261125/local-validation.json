@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "sourceRecords": 1203,
+  "datasetVersion": "3bb4c79305ee4479776088a5002585a75682da1314bd61a9782488796c2ec71b",
+  "discovery": {
+    "HTMLPages": 2522,
+    "localLinks": 31269,
+    "publicationRecords": 1501,
+    "atlasRecords": 1001,
+    "experimentRecords": 2
+  },
+  "retrieval": {
+    "sourceRecords": 12,
+    "explicitly528HzRCTs": 4,
+    "version": "sound528-20261125-v3"
+  },
+  "akimotoRecordUnchanged": true,
+  "introWords": 109
+}

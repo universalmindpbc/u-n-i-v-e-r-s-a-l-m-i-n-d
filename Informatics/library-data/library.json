@@ -82750,8 +82750,8 @@
         "Heart rate & autonomic"
       ],
       "targets": [],
-      "kind": "Randomized controlled trial; 100 adults; four weeks",
-      "design": "Randomized controlled trial; 100 adults; four weeks",
+      "kind": "Randomized controlled trial; 100 adults; four weeks; blinded blood-pressure and laboratory assessors",
+      "design": "Randomized controlled trial; 100 adults; four weeks; blinded blood-pressure and laboratory assessors",
       "finding": "Daily sound meditation incorporating recorded 528 Hz audio and acoustic instruments outperformed remotely delivered music on anxiety, depression, salivary cortisol and blood pressure. Adjusted differences included HADS anxiety −2.55 points (95% CI −3.62 to −1.48) and cortisol −2.54 nmol/L (−2.95 to −2.13).",
       "summary": "Daily sound meditation incorporating recorded 528 Hz audio and acoustic instruments outperformed remotely delivered music on anxiety, depression, salivary cortisol and blood pressure. Adjusted differences included HADS anxiety −2.55 points (95% CI −3.62 to −1.48) and cortisol −2.54 nmol/L (−2.95 to −2.13).",
       "limitation": "In-person group meditation, instruments, equipment and extra home practice differed from the online control. Their contributions cannot be separated. Follow-up ended at four weeks, acoustic calibration was incomplete, and the registered POMS-SF outcome was omitted.",
@@ -82759,15 +82759,15 @@
       "archiveEntries": [],
       "priority": 1,
       "stars": 2,
-      "ratingBasis": "Lottery allocation assigned 50 participants per arm; all completed follow-up. Baseline-adjusted ANCOVA and Holm correction were reported. Blood-pressure and laboratory assessors were masked; credible participant double blinding was not established.",
+      "ratingBasis": "Lottery allocation assigned 50 participants per arm; all completed follow-up. Baseline-adjusted ANCOVA and Holm correction were reported. Blood-pressure and laboratory assessors were blinded. The paper also reports participant blinding, but its implementation is unclear because the intervention was delivered in person and the control remotely.",
       "paperTrustAssessment": {
         "score": 2,
         "scope": "Paper",
         "status": "assessed",
         "randomizedControlledTrial": true,
-        "blinding": "not-confirmed",
+        "blinding": "assessor-masked",
         "peerReviewed": true,
-        "basis": "Lottery allocation assigned 50 participants per arm; all completed follow-up. Baseline-adjusted ANCOVA and Holm correction were reported. Blood-pressure and laboratory assessors were masked; credible participant double blinding was not established.",
+        "basis": "Lottery allocation assigned 50 participants per arm; all completed follow-up. Baseline-adjusted ANCOVA and Holm correction were reported. Blood-pressure and laboratory assessors were blinded. The paper also reports participant blinding, but its implementation is unclear because the intervention was delivered in person and the control remotely.",
         "sources": [
           "https://doi.org/10.7759/cureus.115693",
           "https://assets.cureus.com/uploads/original_article/pdf/465976/20260903-1742260-urf4g2.pdf"
@@ -82776,12 +82776,17 @@
         "assessedAt": "2026-11-25"
       },
       "studyDesignAssessment": {
-        "basis": "Lottery allocation assigned 50 participants per arm; all completed follow-up. Baseline-adjusted ANCOVA and Holm correction were reported. Blood-pressure and laboratory assessors were masked; credible participant double blinding was not established.",
+        "basis": "Lottery allocation assigned 50 participants per arm; all completed follow-up. Baseline-adjusted ANCOVA and Holm correction were reported. Blood-pressure and laboratory assessors were blinded. The paper also reports participant blinding, but its implementation is unclear because the intervention was delivered in person and the control remotely.",
         "sources": [
           "https://doi.org/10.7759/cureus.115693",
           "https://assets.cureus.com/uploads/original_article/pdf/465976/20260903-1742260-urf4g2.pdf"
         ],
-        "reviewedAt": "2026-11-25"
+        "reviewedAt": "2026-11-25",
+        "maskingRoles": {
+          "participants": "Reported blinded; implementation unclear because delivery settings differed",
+          "blood-pressure assessors": "Blinded to group allocation",
+          "cortisol laboratory personnel": "Blinded to group allocation"
+        }
       },
       "jadad": {
         "status": "unassessed",

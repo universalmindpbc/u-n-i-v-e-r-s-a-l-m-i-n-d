@@ -1,0 +1,23 @@
+{
+  "overview": "Four randomized controlled trials with 48–162 participants now complement the earlier research, including one reporting blinded outcome assessment. This strengthens the evidence base for promising short-term stress and anxiety effects and potential increased felt connection through oxytocin pathways. The connection benefit remains a hypothesis. Findings remain preliminary: study quality varies, follow-up is limited, and some outcomes show no significant change.",
+  "blindingAssessment": "Lottery allocation assigned 50 participants per arm; all completed follow-up. Baseline-adjusted ANCOVA and Holm correction were reported. Blood-pressure and laboratory assessors were blinded. The paper also reports participant blinding, but its implementation is unclear because the intervention was delivered in person and the control remotely.",
+  "unchangedAkimotoSummary": "Oxytocin almost doubled within five minutes of listening to 528 Hz music. The increase with 440 Hz music was not statistically significant. Mean saliva levels rose from 37.57 to 73.58 pg/mL in the 528 Hz condition (p < 0.038). Cortisol also fell later after 528 Hz music.",
+  "changes": {
+    "Informatics/library-data/sound-edition.json": {
+      "overview": 1,
+      "blindingAssessment": 3
+    },
+    "Informatics/library-data/528hz-research-register.json": {
+      "overview": 1,
+      "blindingAssessment": 6
+    },
+    "Informatics/library-data/library.json": {
+      "overview": 0,
+      "blindingAssessment": 3
+    },
+    "Informatics/library.html": {
+      "overview": 1,
+      "blindingAssessment": 0
+    }
+  }
+}
