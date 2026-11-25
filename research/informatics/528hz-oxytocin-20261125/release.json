@@ -1,0 +1,28 @@
+{
+  "status": "verified-staging",
+  "sourceCommit": "b7fa6f8a9bc5d07b8be32f1cd5292e729f1a1bb7",
+  "baseStagingCommit": "d882dcc4ff49d41f78b600f8e137431914db78d9",
+  "productionCommitUnchanged": "4775cce3f43df0f9d6957ad434bca7445b2c2e63",
+  "url": "https://staging.universalmind.tv/informatics/research/?collection=sound&chapter=1#topic-ii",
+  "workerVersion": "3fb91750-0ec7-428a-810c-f8c6304924eb",
+  "knowledgeVersion": {
+    "version": "sound528-20261125-v2",
+    "sourceSHA256": "dc89ddbd71f16b00c2a63022cbefb07859682cac5f8984d26233964b12db7370",
+    "sourceRecords": 12,
+    "completedAuthorReportedRCTs": 5,
+    "explicitly528HzRCTs": 4
+  },
+  "checks": [
+    "staging-qa.json",
+    "api-verification.json",
+    "site-verification.json",
+    "live-verification.json",
+    "complete-exports-qa.json"
+  ],
+  "deployedAssets": 34,
+  "fullDatasetSources": 1203,
+  "apiRecords": 1136,
+  "modelRequests": 1,
+  "modelQACostUpperUSD": 0.47516250000000015,
+  "productionModified": false
+}

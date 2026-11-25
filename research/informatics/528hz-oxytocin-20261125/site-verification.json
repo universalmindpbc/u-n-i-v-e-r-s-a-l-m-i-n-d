@@ -1,0 +1,178 @@
+{
+  "passed": true,
+  "exactFilesMatched": 34,
+  "bytesVerified": 246029205,
+  "elapsedSeconds": 9.6,
+  "files": [
+    {
+      "path": "informatics/atlas-guides/computer-vision-atlas.csv",
+      "bytes": 2825,
+      "sha256": "6cd5a38768cd0349f0f5cff48c66448bde6ac4240132c98ed19f2279a9e0b280"
+    },
+    {
+      "path": "informatics/atlas-guides/computer-vision-atlas.json",
+      "bytes": 2448,
+      "sha256": "b88c7fd9f3ee49bfeea3c8ccf290a4eacc4fd78ae89ac31328ac6c7a3c44e0bd"
+    },
+    {
+      "path": "informatics/atlas-guides/computer-vision-atlas.md",
+      "bytes": 1841,
+      "sha256": "0ab4e463827084fde8dd97d6551f66c849d9355c816e429fc84372ea7e971829"
+    },
+    {
+      "path": "informatics/atlas-guides/language-atlas.csv",
+      "bytes": 3171,
+      "sha256": "a529834543e9cb8cc34a09c3d407414f40e22879545a9b6cc42a1faed2fbd850"
+    },
+    {
+      "path": "informatics/atlas-guides/language-atlas.json",
+      "bytes": 2593,
+      "sha256": "9b86f9b9d109389b3a4c10e29644d1db6a8cc657cee80de8f98417969a23bec8"
+    },
+    {
+      "path": "informatics/atlas-guides/language-atlas.md",
+      "bytes": 1759,
+      "sha256": "b3d9ef9c79be4717c7c199728737dba6e0ee9952ded494ca7584970d72b86d81"
+    },
+    {
+      "path": "informatics/atlas-guides/vision-atlas.csv",
+      "bytes": 10724,
+      "sha256": "75a57c5b9b0f841a97acd0b0d4359956a82f8e0e2c1295914da985ebdf83ca0b"
+    },
+    {
+      "path": "informatics/atlas-guides/vision-atlas.json",
+      "bytes": 8770,
+      "sha256": "0ff829e2b919db51ccceae3f444b272fbc4ce93d6911233053dad45df78c3cbf"
+    },
+    {
+      "path": "informatics/atlas-guides/vision-atlas.md",
+      "bytes": 6176,
+      "sha256": "21e7c8e01a6716225822c31431beda5ea14fee2a6ef119dac07acbea9cd88754"
+    },
+    {
+      "path": "informatics/exports/manifest-acbea60cd503ff028ea386cc5085ab03047282bc8478c5530fc49d6fd096949c.json",
+      "bytes": 2400437,
+      "sha256": "4d008c5356f7e8b8c49b7f9d35da084706a59b09ead3930dc713af749baabbc9"
+    },
+    {
+      "path": "informatics/exports/manifest.json",
+      "bytes": 2400437,
+      "sha256": "4d008c5356f7e8b8c49b7f9d35da084706a59b09ead3930dc713af749baabbc9"
+    },
+    {
+      "path": "informatics/exports/part-14242e6fd7f483fad6237ba702a18fe8e57866d812440d4a1f0366b2a54e0f0d.bin",
+      "bytes": 729295,
+      "sha256": "14242e6fd7f483fad6237ba702a18fe8e57866d812440d4a1f0366b2a54e0f0d"
+    },
+    {
+      "path": "informatics/exports/part-15602a836d45c82e394378fddabb73e5549897ce5391f7dec405ba1236ce543b.bin",
+      "bytes": 50331648,
+      "sha256": "15602a836d45c82e394378fddabb73e5549897ce5391f7dec405ba1236ce543b"
+    },
+    {
+      "path": "informatics/exports/part-33cf63322ac56c139bac598fe9153444d853e4f2dfb20a5c240cd67efa6d0372.bin",
+      "bytes": 50331648,
+      "sha256": "33cf63322ac56c139bac598fe9153444d853e4f2dfb20a5c240cd67efa6d0372"
+    },
+    {
+      "path": "informatics/exports/part-6eb852cc72ba0c497735a5d4ec978edba381acfa3d97f5e810f2ec74d92e7322.bin",
+      "bytes": 50331648,
+      "sha256": "6eb852cc72ba0c497735a5d4ec978edba381acfa3d97f5e810f2ec74d92e7322"
+    },
+    {
+      "path": "informatics/exports/part-7ecea7435df7f15499d35f5d36ac68ab1a7ca2734d9716679c79571b9ccb709d.bin",
+      "bytes": 50331648,
+      "sha256": "7ecea7435df7f15499d35f5d36ac68ab1a7ca2734d9716679c79571b9ccb709d"
+    },
+    {
+      "path": "informatics/exports/part-a48074c1e34e2b793029f4244198bbc37d38ab2081d6732296a5a4b61137b7ab.bin",
+      "bytes": 31227536,
+      "sha256": "a48074c1e34e2b793029f4244198bbc37d38ab2081d6732296a5a4b61137b7ab"
+    },
+    {
+      "path": "informatics/index.html",
+      "bytes": 603537,
+      "sha256": "80c388a61a2edb6e95e69169c4a0016c14ce74f4875e6cd7614c5f0b9fcc7faf"
+    },
+    {
+      "path": "informatics/library-data/528hz-research-register.json",
+      "bytes": 119484,
+      "sha256": "577186f221d4dbcdb3c2c62d6377062b2ac07a1f1c942bfe0b37aaa9dd52cdc4"
+    },
+    {
+      "path": "informatics/library-data/library.json",
+      "bytes": 4211484,
+      "sha256": "e0acf4c0bb943433b2f877e53ac4d870983830ce14aa64d744a812fea6086a02"
+    },
+    {
+      "path": "informatics/library-data/sound-edition.json",
+      "bytes": 776215,
+      "sha256": "50d42afb56afa4151f11d065eb21b0f04157ec71b6653e0d533f081a8d48920e"
+    },
+    {
+      "path": "informatics/library.html",
+      "bytes": 36352,
+      "sha256": "faa86a85340935e3e8965d3c48f89d44af372381efce5fed45137cf6be491731"
+    },
+    {
+      "path": "informatics/library.js",
+      "bytes": 62268,
+      "sha256": "330b681a187f72d5cc770306104ea12c32a50548da65f769e091e3dad8fb4148"
+    },
+    {
+      "path": "informatics/quantum/index.html",
+      "bytes": 441666,
+      "sha256": "aa9fab79863909a556d9ab6b4ff02efd0bd77373c687fdd65bebb6b5ce80827b"
+    },
+    {
+      "path": "informatics/quantum/reading/quantum-atlas.csv",
+      "bytes": 697389,
+      "sha256": "a5d2617a6a574ce4e19be000bbe442a4d13e22ee1208052796bece78a95d354a"
+    },
+    {
+      "path": "informatics/quantum/reading/quantum-atlas.json",
+      "bytes": 336671,
+      "sha256": "bdb372c4c44387b041f539e7b749558fbc21ca351cd3306106564bf56056e102"
+    },
+    {
+      "path": "informatics/quantum/reading/quantum-atlas.md",
+      "bytes": 381352,
+      "sha256": "b67ce6cafcd39bb884d752443df219ade0c7657488b208baed57cdc5ab9aad46"
+    },
+    {
+      "path": "informatics/read/528hz/index.html",
+      "bytes": 14595,
+      "sha256": "103707a467fc67e451f60ee1c08b43b91f53ed32f295386f7f8202905034ef73"
+    },
+    {
+      "path": "informatics/read/computer-vision/index.html",
+      "bytes": 3438,
+      "sha256": "9f2e03361450bf9697d1a85f3191e8f72ed8910ff2512ea20e6e545c15269c63"
+    },
+    {
+      "path": "informatics/read/data.html",
+      "bytes": 185022,
+      "sha256": "3cc37d5c9c09ca035011c0f1e03406afec98fe053c0b8e4a8c1c40bc9ca97c36"
+    },
+    {
+      "path": "informatics/read/language/index.html",
+      "bytes": 3036,
+      "sha256": "af0370a7fd882a0c9f2c847a2b04bc50cd2bb4c71a63de039a776578ccc2a6f5"
+    },
+    {
+      "path": "informatics/read/publications/sound528-heti2024-d1e87ac4.html",
+      "bytes": 14480,
+      "sha256": "a690c11c9516c72e1ac7d39a0d70b26d9900331377240249b9f59389ae428b98"
+    },
+    {
+      "path": "informatics/read/publications/src-ae3dc0d94fef-3efc2979.html",
+      "bytes": 9827,
+      "sha256": "58b68f88ebf7801f5c3ad40885221c2be484f737cfd811d977980bbd75b46d2a"
+    },
+    {
+      "path": "informatics/read/vision/index.html",
+      "bytes": 7785,
+      "sha256": "baec5a92fb880a7f8423c9df077d1dffcba3442099574095061346e5bdaa06aa"
+    }
+  ]
+}
