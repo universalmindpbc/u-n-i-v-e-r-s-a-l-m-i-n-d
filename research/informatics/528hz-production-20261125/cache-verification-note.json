@@ -1,0 +1,7 @@
+{
+  "finding": "HEAD responses requested during active uploads cached partial sizes or HTTP 404 for the verification URL.",
+  "resolution": "Use a unique run and attempt query for each availability check and matching GET; verify full size and SHA-256 before marking any file complete.",
+  "applicationSourceChanged": false,
+  "deploymentMethodChanged": false,
+  "initialPartialCheckRetained": "initial-availability-check.json"
+}

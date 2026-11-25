@@ -1,0 +1,16 @@
+{
+  "approvedCommit": "1f2363bf6de2fd9c2182b36a947c55bdcea3dc0b",
+  "productionBase": "4775cce3f43df0f9d6957ad434bca7445b2c2e63",
+  "applicationSourceUnchanged": true,
+  "sourceTrees": {
+    "Informatics": "ef212083b2347275c22e30285755012f142a9271",
+    "cloudflare": "1a99a26370232bc87b72d260f80088878700ca8b"
+  },
+  "exportManifestVersion": "3bb4c79305ee4479776088a5002585a75682da1314bd61a9782488796c2ec71b",
+  "preflight": {
+    "discoveryPassed": true,
+    "completeExportManifestPassed": true,
+    "sound528RetrievalPassed": true
+  },
+  "fullJSONCSVRoundtrip": "Verified on approved staging; production byte comparison checks the identical export parts"
+}

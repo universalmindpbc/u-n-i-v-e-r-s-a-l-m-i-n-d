@@ -1,0 +1,29 @@
+{
+  "approvedCandidate": "1f2363bf6de2fd9c2182b36a947c55bdcea3dc0b",
+  "productionBase": "4775cce3f43df0f9d6957ad434bca7445b2c2e63",
+  "date": "2026-11-25T20:29:25.538921+11:00",
+  "tag": "production-2026-11-25-2029",
+  "productionURL": "https://universalmind.tv/informatics/research/?collection=sound&chapter=1#topic-ii",
+  "stagingURL": "https://staging.universalmind.tv/informatics/research/?collection=sound&chapter=1#topic-ii",
+  "workerVersion": "82c0b2ee-c33f-4099-87cb-08f10bc390c6",
+  "previousWorkerVersion": "a5c905dd-3150-493a-a7e4-88af394a1117",
+  "knowledgeVersion": {
+    "version": "sound528-20261125-v3",
+    "sourceSHA256": "5704b741bbc4132e8e271fb8cd0c9c913a7d91ab574a8588e15b0e6957c130ec",
+    "sourceRecords": 12,
+    "completedAuthorReportedRCTs": 5,
+    "explicitly528HzRCTs": 4
+  },
+  "staticUploads": 220,
+  "verifiedBytes": 5659651906,
+  "sourceRecords": 12,
+  "exportAPIRecords": 1136,
+  "completeDatasetSources": 1203,
+  "renderedOpenAIAnswers": 1,
+  "productionQAConservativeUSD": 0.671475,
+  "combinedTaskQAConservativeUSD": 3.1481500000000002,
+  "taskQALimitUSD": 6,
+  "applicationSourceUnchangedFromApprovedStaging": true,
+  "productionVerified": true,
+  "stagingServiceUnchanged": true
+}
