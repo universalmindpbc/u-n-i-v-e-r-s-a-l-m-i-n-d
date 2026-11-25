@@ -52043,8 +52043,8 @@
       "legacyArticleStars": null,
       "legacyRatingBasis": "Unrated until publication and study design are checked.",
       "authors": "Akimoto K, Hu A, Yamaguchi T, Kobayashi H.",
-      "summary": "Nine adults heard the same piano music at standard tuning and A4 = 444 Hz on separate days. The latter places C5 near 528 Hz. Cortisol, oxytocin and some mood measures changed within that condition; chromogranin A did not change significantly.",
-      "limitation": "The sample was nine, with eight usable ECG recordings. Randomized condition order was not reported. Significance within one condition and not another does not establish a statistically significant difference between conditions.",
+      "summary": "Oxytocin almost doubled within five minutes of listening to 528 Hz music. The increase with 440 Hz music was not statistically significant. Mean saliva levels rose from 37.57 to 73.58 pg/mL in the 528 Hz condition (p < 0.038). Cortisol also fell later after 528 Hz music.",
+      "limitation": "Nine healthy adults took part. These short-term saliva findings need independent replication in larger samples.",
       "design": "Small participant-masked crossover study"
     },
     {
@@ -82686,7 +82686,7 @@
       "archiveEntries": [],
       "priority": 1,
       "stars": 2,
-      "ratingBasis": "The full paper explicitly reports random allocation to two groups of 24. Its design meets the library RCT category, while serious reporting weaknesses remain. The CABI link is another record for this publication, as confirmed by the supplied title.",
+      "ratingBasis": "The full paper explicitly reports random allocation to two groups of 24. Its design meets the library RCT category, while serious reporting weaknesses remain.",
       "paperTrustAssessment": {
         "score": 2,
         "scope": "Paper",
@@ -82694,7 +82694,7 @@
         "randomizedControlledTrial": true,
         "blinding": "not-confirmed",
         "peerReviewed": true,
-        "basis": "The full paper explicitly reports random allocation to two groups of 24. Its design meets the library RCT category, while serious reporting weaknesses remain. The CABI link is another record for this publication, as confirmed by the supplied title.",
+        "basis": "The full paper explicitly reports random allocation to two groups of 24. Its design meets the library RCT category, while serious reporting weaknesses remain.",
         "sources": [
           "https://doi.org/10.69980/redvet.v25i1S.787",
           "https://veterinaria.org/index.php/REDVET/article/download/787/500/",
@@ -82704,7 +82704,7 @@
         "assessedAt": "2026-11-25"
       },
       "studyDesignAssessment": {
-        "basis": "The full paper explicitly reports random allocation to two groups of 24. Its design meets the library RCT category, while serious reporting weaknesses remain. The CABI link is another record for this publication, as confirmed by the supplied title.",
+        "basis": "The full paper explicitly reports random allocation to two groups of 24. Its design meets the library RCT category, while serious reporting weaknesses remain.",
         "sources": [
           "https://doi.org/10.69980/redvet.v25i1S.787",
           "https://veterinaria.org/index.php/REDVET/article/download/787/500/",

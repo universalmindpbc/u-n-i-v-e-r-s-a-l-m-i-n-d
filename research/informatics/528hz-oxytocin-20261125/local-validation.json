@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "exportManifest": {
+    "sourceRecords": 1203,
+    "version": "acbea60cd503ff028ea386cc5085ab03047282bc8478c5530fc49d6fd096949c"
+  },
+  "discovery": {
+    "HTMLPages": 2522,
+    "publicationRecords": 1501,
+    "atlasRecords": 1001,
+    "experimentRecords": 2,
+    "localLinks": 31269,
+    "sourceFilesMatched": 18
+  },
+  "candidateBrowserQA": "candidate-qa.json",
+  "scope": "Restore the requested five-minute oxytocin result and concise research highlights; preserve the existing white research background and evidence grading."
+}

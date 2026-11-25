@@ -3257,7 +3257,7 @@
               "archiveEntries": [],
               "priority": 1,
               "stars": 2,
-              "ratingBasis": "The full paper explicitly reports random allocation to two groups of 24. Its design meets the library RCT category, while serious reporting weaknesses remain. The CABI link is another record for this publication, as confirmed by the supplied title.",
+              "ratingBasis": "The full paper explicitly reports random allocation to two groups of 24. Its design meets the library RCT category, while serious reporting weaknesses remain.",
               "paperTrustAssessment": {
                 "score": 2,
                 "scope": "Paper",
@@ -3265,7 +3265,7 @@
                 "randomizedControlledTrial": true,
                 "blinding": "not-confirmed",
                 "peerReviewed": true,
-                "basis": "The full paper explicitly reports random allocation to two groups of 24. Its design meets the library RCT category, while serious reporting weaknesses remain. The CABI link is another record for this publication, as confirmed by the supplied title.",
+                "basis": "The full paper explicitly reports random allocation to two groups of 24. Its design meets the library RCT category, while serious reporting weaknesses remain.",
                 "sources": [
                   "https://doi.org/10.69980/redvet.v25i1S.787",
                   "https://veterinaria.org/index.php/REDVET/article/download/787/500/",
@@ -3275,7 +3275,7 @@
                 "assessedAt": "2026-11-25"
               },
               "studyDesignAssessment": {
-                "basis": "The full paper explicitly reports random allocation to two groups of 24. Its design meets the library RCT category, while serious reporting weaknesses remain. The CABI link is another record for this publication, as confirmed by the supplied title.",
+                "basis": "The full paper explicitly reports random allocation to two groups of 24. Its design meets the library RCT category, while serious reporting weaknesses remain.",
                 "sources": [
                   "https://doi.org/10.69980/redvet.v25i1S.787",
                   "https://veterinaria.org/index.php/REDVET/article/download/787/500/",
@@ -3397,8 +3397,8 @@
               "aliases": [
                 "portal-75ae9eff6740"
               ],
-              "summary": "Nine adults heard the same piano music at standard tuning and A4 = 444 Hz on separate days. The latter places C5 near 528 Hz. Cortisol, oxytocin and some mood measures changed within that condition; chromogranin A did not change significantly.",
-              "limitation": "The sample was nine, with eight usable ECG recordings. Randomized condition order was not reported. Significance within one condition and not another does not establish a statistically significant difference between conditions.",
+              "summary": "Oxytocin almost doubled within five minutes of listening to 528 Hz music. The increase with 440 Hz music was not statistically significant. Mean saliva levels rose from 37.57 to 73.58 pg/mL in the 528 Hz condition (p < 0.038). Cortisol also fell later after 528 Hz music.",
+              "limitation": "Nine healthy adults took part. These short-term saliva findings need independent replication in larger samples.",
               "summarySource": {
                 "name": "I AM portal",
                 "url": "https://doi.org/10.4236/health.2018.109088",
@@ -3896,44 +3896,30 @@
               "peer-reviewed": 6
             },
             "assessedAt": "2026-11-25",
-            "basis": "Four distinct completed RCTs explicitly include 528 Hz. Related-device trials, protocols, uncertain designs and duplicate reports do not inflate this threshold. This design badge is separate from certainty of benefit."
+            "basis": "Four distinct completed RCTs explicitly include 528 Hz. This design badge is separate from certainty of benefit."
           },
-          "description": "A growing, preliminary evidence base across the 528 Hz tuning family. Human trials now sit alongside the earlier piano, animal, cell and auditory research. The family includes pure tones, A4 = 444 Hz tuning with C5 near 528 Hz, music and chanting.",
+          "description": "A small, active research field with promising findings for short-term stress and anxiety.",
           "paragraphs": [
-            "This chapter includes 12 distinct publications: the four original references plus eight additions. The CABI and REDVET links identify one paper, and the Mental Health Daily article describes the Cureus trial. Those duplicate links add access routes, not independent studies. The radio link is not a research publication.",
-            "Five completed papers describe randomized controlled designs: Bozok, Bhoot, Heti, Ravikumar and Pomazan. Four explicitly include a 528 Hz intervention; Pomazan provides related device-based frequency research. Unhale reports randomized blocks with unresolved trial classification. MINTREP is a protocol, and the IEEE paper remains a methods-verification lead.",
-            "Two blue crosses reflect the library threshold of at least three distinct randomized controlled trials. Four trials explicitly including 528 Hz meet that design threshold. The badge describes study design and volume; it is separate from research quality, effect size, replication and certainty of benefit.",
-            "The strongest interpretation is an expanded basis for testing short-term stress and anxiety effects across this tuning family. The literature includes self-report, cortisol, blood pressure, HRV and exploratory salivary proteins. Different outcomes offer complementary observations, but they are not interchangeable measures of one proven mechanism.",
-            "The newer human trials make this a more substantial research programme than the original four references alone. Confidence remains limited by modest samples, incomplete masking, reporting inconsistencies, varied interventions and limited follow-up. Salivary biomarkers cannot establish brain changes or a durable clinical benefit. Findings apply to the studied listening or meditation programmes; the contribution of tuning remains a separate question.",
-            "A useful next study can compare the same performance at standard and 444 Hz tuning, a calibrated 528 Hz tone, and an appropriate control. Match duration, loudness, setting and contact; conceal track labels and assessor allocation where feasible; preregister one primary stress outcome, collect repeated cortisol samples and respiration-aware HRV, and include follow-up. This can test the family coherently while identifying which components matter."
+            "Oxytocin almost doubled within five minutes of listening to 528 Hz music in the 2018 study; the increase with 440 Hz music was not statistically significant. Other studies report reductions in anxiety, cortisol and blood pressure.",
+            "Several randomized trials now complement the earlier human and laboratory studies. The evidence remains preliminary: samples are generally small, blinding and reporting vary, follow-up is short, and some outcomes show no significant change."
           ],
           "paragraphSources": [
-            [],
             [
               {
-                "recordId": "sound528-bozok2026",
-                "label": "Bozok ÜG 2026"
-              },
-              {
-                "recordId": "hsi-c2e2e55e945231",
-                "label": "Bhoot A 2025"
-              },
-              {
-                "recordId": "sound528-heti2024",
-                "label": "Heti M 2024"
+                "recordId": "src-ae3dc0d94fef",
+                "label": "Akimoto 2018",
+                "summary": "Oxytocin almost doubled within five minutes of listening to 528 Hz music. The increase with 440 Hz music was not statistically significant. Mean saliva levels rose from 37.57 to 73.58 pg/mL in the 528 Hz condition (p < 0.038). Cortisol also fell later after 528 Hz music.",
+                "limitation": "Nine healthy adults took part. These short-term saliva findings need independent replication in larger samples."
               },
               {
                 "recordId": "sound528-ravikumar2026",
-                "label": "Ravikumar H 2026"
+                "label": "Ravikumar 2026"
               },
               {
-                "recordId": "sound528-pomazan2023",
-                "label": "Pomazan VM 2023"
+                "recordId": "hsi-c2e2e55e945231",
+                "label": "Bhoot 2025"
               }
             ],
-            [],
-            [],
-            [],
             []
           ],
           "sourceAudit": {
@@ -3944,19 +3930,7 @@
             "explicitly528HzRCTs": 4,
             "randomizedBlockClassification": "unresolved",
             "protocolPublications": 1,
-            "methodsPending": 1,
-            "duplicateLinks": [
-              {
-                "url": "https://www.cabidigitallibrary.org/doi/full/10.5555/20240419729",
-                "publication": "10.69980/redvet.v25i1S.787",
-                "basis": "Title confirmed by Ben; CABI access blocked"
-              },
-              {
-                "url": "https://mentalhealthdaily.com/2026/11/05/sound-meditation-singing-bowls-anxiety-depression-cortisol-blood-pressure-trial/",
-                "publication": "10.7759/cureus.115693",
-                "basis": "News report cites the same trial"
-              }
-            ]
+            "methodsPending": 1
           }
         },
         {

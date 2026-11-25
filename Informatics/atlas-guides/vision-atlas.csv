@@ -141,7 +141,7 @@ path,type,value
 /sources/0,object,
 /sources/0/path,string,index.html
 /sources/0/url,string,https://universalmind.tv/informatics/index.html
-/sources/0/sha256,string,2d665f5d20e62f92912723b03bb0cee4a80d43d3504746a698d61ee2829c55c1
+/sources/0/sha256,string,3856e5912ef93f84834dd8041ce35e3efd66e909000736b8227beb27efd3b471
 /sources/0/sha256_scope,string,HTML with generated Atlas narrative blocks removed
 /sources/1,object,
 /sources/1/path,string,vision-science.js
