@@ -1,22 +1,22 @@
 {
-  "datasetManifestSHA256": "d62674aff166d848836fda1bde1a05fd3261ec640a26ef1ed4fb38b0b8e854c8",
+  "datasetManifestSHA256": "e82376249e6726bb512d0dc08470202700654541f4f009b481b79accc43887ab",
   "generatedAt": "2026-10-26",
-  "publications": 1494,
+  "publications": 1501,
   "atlas": 1001,
   "experiments": 2,
-  "pages": 2514,
+  "pages": 2522,
   "sourceHashes": [
     {
       "path": "library.js",
-      "sha256": "794d2354e760d1d5679a80103cc0bcdea5c7154679b66d774f8470ac1cafa901"
+      "sha256": "691efcf1fcf8b098d50f4b01e0e0062b83c88dbf2abf184296507a3596c0b5ee"
     },
     {
       "path": "library-data/sound-edition.json",
-      "sha256": "45cca9765db111a9572a5b4e979a01fed477f5065f78fd43e0df49693a11baa3"
+      "sha256": "3b7a3e1dc450de9d94a0c2b0f94152ddb17aade8f432ba21fd384109ff550427"
     },
     {
       "path": "library-data/library.json",
-      "sha256": "2be2bbc20455571e7dc73c9ab7859f1e89cecc0f88e698c0e51629ea53e607af"
+      "sha256": "05da4a14483784e2ceee62a0561f665959aa1c5dea0a8fc491376ca5c773bb59"
     },
     {
       "path": "library-data/publication-access.json",
@@ -44,7 +44,7 @@
     },
     {
       "path": "library-data/clinical-conditions.json",
-      "sha256": "ef9080831a3eedb869297f38e8f076464c0630fce5cdd93b2d91dddf1064ea24"
+      "sha256": "c9af85ddb17160a33f02f73da0cc3a507596a76d6113ae1b5af6cfef7ad98b3c"
     },
     {
       "path": "library-data/nature-expansion.json",
@@ -60,7 +60,7 @@
     },
     {
       "path": "library-data/hyperspectral-expansion.json",
-      "sha256": "7c40d251a8f3055c8d36fcac7e6596f51f469ff1a713b02a8978544bee4fdc4a"
+      "sha256": "e9621a9378b6b56a2d0d2baa0625cdd9172adf05f75ab545e15811bd4c7d69e4"
     },
     {
       "path": "library-data/domestic-violence-expansion.json",
@@ -79,7 +79,7 @@
       "sha256": "3fe8ac5ff0b61e4348e5de0808e2f7956329df489b51ccf18a3f0163e00b376e"
     }
   ],
-  "publicationRecordSHA256": "b803a0646325e77f4a286936320a2cb72cbc3015cdc8e3578fb254bd4a844f2b",
+  "publicationRecordSHA256": "e5786148008439dc356b1b48d7435d330ef5b43431ecaf7b666a00853fe2dffa",
   "canonicalPaths": [
     "",
     "connect.html",
@@ -961,6 +961,13 @@
     "read/publications/oxtr-il6-oxt-gene-05f41920.html",
     "read/publications/oxtr-il6-oxtr-gene-86bdc68e.html",
     "read/publications/oxtr-il6-oscovid19-f5802408.html",
+    "read/publications/sound528-bozok2026-7b1f072c.html",
+    "read/publications/sound528-heti2024-d1e87ac4.html",
+    "read/publications/sound528-ravikumar2026-4df7110f.html",
+    "read/publications/sound528-unhale2023-af4ea401.html",
+    "read/publications/sound528-pomazan2023-ee1076b1.html",
+    "read/publications/sound528-khalisha2026-ab128fb6.html",
+    "read/publications/sound528-feneberg2020-6fadd0da.html",
     "read/publications/pmid-41534731-3d1f7c57.html",
     "read/publications/pmid-36350591-ddbc6cb7.html",
     "read/publications/pmid-35820992-1f94d7d6.html",
@@ -1587,6 +1594,7 @@
     "read/publications/masked-language-brainfm-fd6763c1.html",
     "read/publications/masked-language-video-c8ac5bf6.html",
     "read/publications/index.html",
+    "read/528hz/index.html",
     "read/hyperspectral/index.html",
     "read/dock2/index.html",
     "read/oxtr-il6/index.html",

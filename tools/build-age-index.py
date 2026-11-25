@@ -14,6 +14,11 @@ def render():
     for row in [*approved['ages'],*youth['ages']]:
         merged[row['recordId']]=row
     public.update(records=list(merged.values()),recordCount=len(merged),updatedAt=youth['approvedAt'])
+    sound=json.loads((ROOT/'Informatics/library-data/528hz-research-register.json').read_text())
+    # Retain later published classifications absent from the original audit.
+    for row in json.loads(TARGET.read_text())['records']: merged.setdefault(row['recordId'],row)
+    for row in sound['ages']: merged[row['recordId']]=row
+    public.update(records=list(merged.values()),recordCount=len(merged),updatedAt=sound['reviewedAt'])
     return json.dumps(public,indent=2,ensure_ascii=False)+'\n'
 if __name__=='__main__':
     parser=argparse.ArgumentParser();parser.add_argument('--check',action='store_true');args=parser.parse_args();text=render()

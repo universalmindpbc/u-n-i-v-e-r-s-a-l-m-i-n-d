@@ -8867,7 +8867,10 @@
       ],
       "sourceCollection": "Hyperspectral Imaging · patent section 2.4",
       "sourceVerification": "Bibliographic metadata matched; scientific claims await appraisal.",
-      "sourceType": "Journal publication"
+      "sourceType": "Journal publication",
+      "summary": "Cell-culture research examines viability and oxidative-stress measures after ethanol and 528 Hz sound exposure.",
+      "limitation": "Cultured-cell outcomes do not establish treatment efficacy for alcohol dependence or regeneration of the human brain.",
+      "design": "In-vitro astrocyte experiment"
     },
     {
       "id": "pmid-30414050",
@@ -8990,42 +8993,56 @@
       ],
       "sourceCollection": "Hyperspectral Imaging · patent section 2.4",
       "sourceVerification": "Bibliographic metadata matched; scientific claims await appraisal.",
-      "sourceType": "Journal publication"
+      "sourceType": "Journal publication",
+      "summary": "Rat-brain and behavioural research examines 528 Hz exposure at different sound intensities.",
+      "limitation": "Animal tissue and behavioural findings provide mechanistic context; they do not establish human treatment effects. The reported 100 dB condition is not a recommended human listening level.",
+      "design": "Preclinical rat experiment"
     },
     {
       "id": "hsi-c2e2e55e945231",
-      "title": "Effect of OM Chanting of 528Hz Frequency on Heart Rate Variability, Psychological Wellbeing, and Quality of Sleep in Patients of Hypertension: A Randomised Controlled Trial.",
+      "title": "Effect of OM Chanting of 528Hz Frequency on Heart Rate Variability, Psychological Wellbeing, and Quality of Sleep in Patients of Hypertension: A Randomised Controlled Trial",
       "authors": "Bhoot A, Chowdhury AB, Shah H, Vaishnav B.",
-      "journal": "Annals of neurosciences",
+      "journal": "Annals of Neurosciences",
       "year": 2025,
       "doi": "10.1177/09727531251390261",
       "pmid": "41395351",
       "urls": [
-        "https://pubmed.ncbi.nlm.nih.gov/41395351/",
         "https://doi.org/10.1177/09727531251390261",
         "https://pmc.ncbi.nlm.nih.gov/articles/PMC12700779/"
       ],
       "collections": [
-        "general"
+        "general",
+        "sound"
       ],
       "categories": [
-        "Hyperspectral Imaging"
+        "Clinical & self-report",
+        "Hyperspectral Imaging",
+        "Heart rate & autonomic"
       ],
       "targets": [],
       "origin": "hyperspectral-bibliography",
-      "design": "Journal publication",
-      "kind": "Journal publication",
-      "finding": "Reference associated with 528 Hz Sound Frequency and Oxytocin Modulation.",
-      "limitation": "Bibliographic metadata matched; scientific claims await appraisal.",
+      "design": "Randomized controlled trial; 60 patients; 55 completed four weeks",
+      "kind": "Randomized controlled trial; 60 patients; 55 completed four weeks",
+      "finding": "Fifteen minutes of daily listening to 528 Hz OM chanting plus standard care produced promising blood-pressure and perceived-stress results against standard care. Pulse and systolic-pressure time-by-group interactions were significant; SDNN and RMSSD interactions were not. Between-group sleep and total wellbeing differences were not significant.",
+      "limitation": "The study evaluates a chanting-and-listening practice. There is no matched recording at another tuning, and five participants were lost to follow-up. Multiple outcomes and differing statistical results limit a broad claim of improved autonomic function or sleep.",
       "quotes": [],
       "archiveEntries": [],
       "citationCount": null,
       "priority": 1,
       "paperTrustAssessment": {
+        "score": 2,
         "scope": "Paper",
-        "status": "unassessed",
-        "score": null,
-        "basis": "Bibliographic identity checks do not establish study design, blinding or evidential strength."
+        "status": "assessed",
+        "randomizedControlledTrial": true,
+        "blinding": "not-confirmed",
+        "peerReviewed": true,
+        "basis": "WINPEPI software allocated 30 patients per group. Standard care was the comparator. Participant and assessor masking were not established. Full-text tables were checked alongside the abstract.",
+        "sources": [
+          "https://doi.org/10.1177/09727531251390261",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC12700779/"
+        ],
+        "reviewScope": "Publication-specific methods and results review; separate from a formal risk-of-bias instrument.",
+        "assessedAt": "2026-11-25"
       },
       "jadad": {
         "status": "unassessed",
@@ -9061,8 +9078,28 @@
         }
       ],
       "sourceCollection": "Hyperspectral Imaging · patent section 2.4",
-      "sourceVerification": "Bibliographic metadata matched; scientific claims await appraisal.",
-      "sourceType": "Journal publication"
+      "sourceVerification": "Full text reviewed",
+      "sourceType": "Journal publication",
+      "summary": "Fifteen minutes of daily listening to 528 Hz OM chanting plus standard care produced promising blood-pressure and perceived-stress results against standard care. Pulse and systolic-pressure time-by-group interactions were significant; SDNN and RMSSD interactions were not. Between-group sleep and total wellbeing differences were not significant.",
+      "stars": 2,
+      "ratingBasis": "WINPEPI software allocated 30 patients per group. Standard care was the comparator. Participant and assessor masking were not established. Full-text tables were checked alongside the abstract.",
+      "studyDesignAssessment": {
+        "basis": "WINPEPI software allocated 30 patients per group. Standard care was the comparator. Participant and assessor masking were not established. Full-text tables were checked alongside the abstract.",
+        "sources": [
+          "https://doi.org/10.1177/09727531251390261",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC12700779/"
+        ],
+        "reviewedAt": "2026-11-25"
+      },
+      "evidence": {
+        "trialId": "10.1177/09727531251390261",
+        "researchRole": "528 Hz intervention",
+        "sampleSize": 60
+      },
+      "conditions": [
+        "stress",
+        "sleep"
+      ]
     },
     {
       "id": "hsi-d7705f9004e7f6",

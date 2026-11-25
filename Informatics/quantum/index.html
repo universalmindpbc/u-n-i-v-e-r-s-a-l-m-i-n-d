@@ -154,7 +154,7 @@
   &quot;MCP-Protocol-Version&quot;: &quot;2025-11-25&quot;
 }</code></pre>
 <ol><li>Initialize the connection and send notifications/initialized.</li><li>Discover tools/list and use the returned input schemas.</li><li>Call get_inventory for the current dataset version and scope.</li><li>Call get_quantum_study with id oxtr-qrc-01 and section summary, then request the relevant sections.</li><li>Follow measurements.data.page.nextOffset until it is null. Use get_atlas_record for canonical sequence definitions and search_publications/get_publication for source research.</li><li>Return a human explanation that cites the record URL, study ID, sourceSHA256 and the appropriate evidence status.</li></ol>
-<div class="table-wrap"><table><caption>Discoverable MCP tools</caption><thead><tr><th scope="col">Tool</th><th scope="col">Purpose</th></tr></thead><tbody><tr><td>get_quantum_study</td><td>Read the recorded OXTR Quantum Atlas experiment, sequence definitions, actual measurements, comparison, timing, next test and downloads.</td></tr><tr><td>search</td><td>Find publication and Atlas record IDs. Fetch records before making study-specific claims.</td></tr><tr><td>fetch</td><td>Fetch an approved publication or Atlas overview from a search result ID. Atlas analysis sections are accessible through get_atlas_record; the URL returns the complete record.</td></tr><tr><td>get_inventory</td><td>Exact current counts, dataset version and access scope.</td></tr><tr><td>search_publications</td><td>Search approved publication records. OR within each filter; AND across filters. Paginate using nextOffset.</td></tr><tr><td>get_publication</td><td>Read an approved publication by ID, DOI or PMID. Preserve quotations and evidence status.</td></tr><tr><td>get_passages</td><td>Read CC BY or CC0 full-text passages. Preserve attribution and licence. Other full texts are unavailable through this public connector.</td></tr><tr><td>list_atlas_records</td><td>Search or list all M1–M1001 records or the M9 family. Commentary is searchable. A family result is mathematical, not biological evidence.</td></tr><tr><td>get_atlas_record</td><td>Read Atlas commentary, analysis, probability, hypotheses and nested sequences. Default summary lists section paths. Request a dotted section path for detail. Large objects return field paths; arrays use offset and limit. Full canonical data is available at the returned API URL.</td></tr></tbody></table></div>
+<div class="table-wrap"><table><caption>Discoverable MCP tools</caption><thead><tr><th scope="col">Tool</th><th scope="col">Purpose</th></tr></thead><tbody><tr><td>get_research_chapter</td><td>Read published research on the 528 Hz tuning family, DOCK2/PTSD or OXTR/IL-6. Includes synthesis, source access, mixed findings and study-family limits. Use topic for detailed narrative; paginate source records.</td></tr><tr><td>get_quantum_study</td><td>Read the recorded OXTR Quantum Atlas experiment, sequence definitions, actual measurements, comparison, timing, next test and downloads.</td></tr><tr><td>search</td><td>Find publication and Atlas record IDs. Fetch records before making study-specific claims.</td></tr><tr><td>fetch</td><td>Fetch an approved publication or Atlas overview from a search result ID. Atlas analysis sections are accessible through get_atlas_record; the URL returns the complete record.</td></tr><tr><td>get_inventory</td><td>Exact current counts, dataset version and access scope.</td></tr><tr><td>search_publications</td><td>Search approved publication records. OR within each filter; AND across filters. Paginate using nextOffset.</td></tr><tr><td>get_publication</td><td>Read an approved publication by ID, DOI or PMID. Preserve quotations and evidence status.</td></tr><tr><td>get_passages</td><td>Read CC BY or CC0 full-text passages. Preserve attribution and licence. Other full texts are unavailable through this public connector.</td></tr><tr><td>list_atlas_records</td><td>Search or list all M1–M1001 records or the M9 family. Commentary is searchable. A family result is mathematical, not biological evidence.</td></tr><tr><td>get_atlas_record</td><td>Read Atlas commentary, analysis, probability, hypotheses and nested sequences. Default summary lists section paths. Request a dotted section path for detail. Large objects return field paths; arrays use offset and limit. Full canonical data is available at the returned API URL.</td></tr></tbody></table></div>
 <h3>Connection and study-reading requests</h3>
 <pre><code>{
   &quot;jsonrpc&quot;: &quot;2.0&quot;,
@@ -755,6 +755,46 @@
         "continuation": "The current MCP tool schema lists eight Quantum sections. The API also exposes continuation, which contains the later classical pilot and local CUDA-Q findings. Retrieve that section through the REST URL below; discover the current MCP schema before selecting a section.",
         "tools": [
           {
+            "name": "get_research_chapter",
+            "description": "Read published research on the 528 Hz tuning family, DOCK2/PTSD or OXTR/IL-6. Includes synthesis, source access, mixed findings and study-family limits. Use topic for detailed narrative; paginate source records.",
+            "inputSchema": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "enum": [
+                    "dock2-trauma-ptsd",
+                    "oxtr-il6-inflammation",
+                    "528hz-sound-tuning"
+                  ]
+                },
+                "topic": {
+                  "type": "string",
+                  "maxLength": 100
+                },
+                "query": {
+                  "type": "string",
+                  "maxLength": 800
+                },
+                "offset": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 75
+                }
+              },
+              "required": [
+                "id"
+              ]
+            },
+            "annotations": {
+              "readOnlyHint": true,
+              "destructiveHint": false,
+              "idempotentHint": true,
+              "openWorldHint": false
+            }
+          },
+          {
             "name": "get_quantum_study",
             "description": "Read the recorded OXTR Quantum Atlas experiment, sequence definitions, actual measurements, comparison, timing, next test and downloads.",
             "inputSchema": {
@@ -1132,7 +1172,7 @@
       },
       {
         "repository_path": "cloudflare/informatics-connectors.js",
-        "sha256": "1c0ad31d1d9eb6d53b3615777d0714eb7bf42a2f4f86f91646a413a97052ca7a",
+        "sha256": "63319e8fc010f954f450191443aba4b35f6579b44929477b8e803ee66020a567",
         "scope": "Implementation source"
       },
       {
@@ -1282,7 +1322,7 @@
       },
       {
         "repository_path": "cloudflare/informatics-research-worker.js",
-        "sha256": "faecfeeb3b93e7c312ae653b415b63b394b4e569925799fd94945216c6683218",
+        "sha256": "6914128269d4076184e9def7db2d88e7a491fcc69f44bc7e66cb3f1df3f1c74a",
         "scope": "Implementation source"
       },
       {

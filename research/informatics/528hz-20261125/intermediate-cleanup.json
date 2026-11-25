@@ -1,0 +1,61 @@
+{
+  "removedUnusedTaskExports": [
+    {
+      "path": "Informatics/exports/manifest-164dd145a88b76a01fbd0b2126109608b0275d7b1934fd8a6e4599a01bfec235.json",
+      "bytes": 2400194
+    },
+    {
+      "path": "Informatics/exports/manifest-29bea829368cd74b0b5b429d784462b23a1855d6954f42e8af0ec4119892b5a3.json",
+      "bytes": 2400194
+    },
+    {
+      "path": "Informatics/exports/part-269df2216446a638360139c7822a3a3c9191c93d0efe691f514cf817e693e480.bin",
+      "bytes": 50331648
+    },
+    {
+      "path": "Informatics/exports/part-49539c45b78f22ef94df4b47665799d69bfc8213927dbe0b15f7fb33bc5ee967.bin",
+      "bytes": 716775
+    },
+    {
+      "path": "Informatics/exports/part-56a6f5f66fc8d18dbaf9fa57e894f06def79783f42442e1e56c4e55a46f3d709.bin",
+      "bytes": 31205229
+    },
+    {
+      "path": "Informatics/exports/part-6ba7dedea4a28ed0c01f090118ca486fd4a90ef973774b2ebb3654fecc62eb96.bin",
+      "bytes": 50331648
+    },
+    {
+      "path": "Informatics/exports/part-8fc67d3a403015e7d10b2ee97c011e5300922928c1ece3ce5b2b57febbcf7a0c.bin",
+      "bytes": 50331648
+    },
+    {
+      "path": "Informatics/exports/part-922a67558b116109b1c585b58864e181218ef099e3bdee7c48d4abf21e826184.bin",
+      "bytes": 50331648
+    },
+    {
+      "path": "Informatics/exports/part-9a3e27258fc292227987454521d032b85028d7f3cb6c1af5984b3031477a0a43.bin",
+      "bytes": 50331648
+    },
+    {
+      "path": "Informatics/exports/part-a5a348dc96c048367eba2eabc029ff174b85d8b9218256d6d050fabbe478d5ff.bin",
+      "bytes": 716939
+    },
+    {
+      "path": "Informatics/exports/part-af8f3732eafd70c1a1e0c0922061d389014faf3d16d5697457d711aa6c2d04f8.bin",
+      "bytes": 50331648
+    },
+    {
+      "path": "Informatics/exports/part-bb0326c9f32f4f3d4af2479dc6f941924c6d07da7b4a218e778e0b7d899ae7f9.bin",
+      "bytes": 31205071
+    },
+    {
+      "path": "Informatics/exports/part-c65d3e06478311967ed6b456a2fe3b908ec71b74e17fecf50e1c7fcf33888ae6.bin",
+      "bytes": 50331648
+    },
+    {
+      "path": "Informatics/exports/part-eeed04e7d0496e534d52896126850a43c8e1f83547ba0537774c15271fa94cf8.bin",
+      "bytes": 50331648
+    }
+  ],
+  "preservedHistoricalTrackedExports": true
+}

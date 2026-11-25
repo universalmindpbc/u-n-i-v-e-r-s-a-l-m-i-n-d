@@ -155,6 +155,7 @@ HTTP JSON-RPC; responses are JSON. The endpoint accepts application/json and tex
 
 | Tool | Purpose |
 | --- | --- |
+| get_research_chapter | Read published research on the 528 Hz tuning family, DOCK2/PTSD or OXTR/IL-6. Includes synthesis, source access, mixed findings and study-family limits. Use topic for detailed narrative; paginate source records. |
 | get_quantum_study | Read the recorded OXTR Quantum Atlas experiment, sequence definitions, actual measurements, comparison, timing, next test and downloads. |
 | search | Find publication and Atlas record IDs. Fetch records before making study-specific claims. |
 | fetch | Fetch an approved publication or Atlas overview from a search result ID. Atlas analysis sections are accessible through get_atlas_record; the URL returns the complete record. |
@@ -1065,6 +1066,46 @@ The following JSON preserves the source fields, saved chart arrays, study interp
         "continuation": "The current MCP tool schema lists eight Quantum sections. The API also exposes continuation, which contains the later classical pilot and local CUDA-Q findings. Retrieve that section through the REST URL below; discover the current MCP schema before selecting a section.",
         "tools": [
           {
+            "name": "get_research_chapter",
+            "description": "Read published research on the 528 Hz tuning family, DOCK2/PTSD or OXTR/IL-6. Includes synthesis, source access, mixed findings and study-family limits. Use topic for detailed narrative; paginate source records.",
+            "inputSchema": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "enum": [
+                    "dock2-trauma-ptsd",
+                    "oxtr-il6-inflammation",
+                    "528hz-sound-tuning"
+                  ]
+                },
+                "topic": {
+                  "type": "string",
+                  "maxLength": 100
+                },
+                "query": {
+                  "type": "string",
+                  "maxLength": 800
+                },
+                "offset": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 75
+                }
+              },
+              "required": [
+                "id"
+              ]
+            },
+            "annotations": {
+              "readOnlyHint": true,
+              "destructiveHint": false,
+              "idempotentHint": true,
+              "openWorldHint": false
+            }
+          },
+          {
             "name": "get_quantum_study",
             "description": "Read the recorded OXTR Quantum Atlas experiment, sequence definitions, actual measurements, comparison, timing, next test and downloads.",
             "inputSchema": {
@@ -1442,7 +1483,7 @@ The following JSON preserves the source fields, saved chart arrays, study interp
       },
       {
         "repository_path": "cloudflare/informatics-connectors.js",
-        "sha256": "1c0ad31d1d9eb6d53b3615777d0714eb7bf42a2f4f86f91646a413a97052ca7a",
+        "sha256": "63319e8fc010f954f450191443aba4b35f6579b44929477b8e803ee66020a567",
         "scope": "Implementation source"
       },
       {
@@ -1592,7 +1633,7 @@ The following JSON preserves the source fields, saved chart arrays, study interp
       },
       {
         "repository_path": "cloudflare/informatics-research-worker.js",
-        "sha256": "faecfeeb3b93e7c312ae653b415b63b394b4e569925799fd94945216c6683218",
+        "sha256": "6914128269d4076184e9def7db2d88e7a491fcc69f44bc7e66cb3f1df3f1c74a",
         "scope": "Implementation source"
       },
       {

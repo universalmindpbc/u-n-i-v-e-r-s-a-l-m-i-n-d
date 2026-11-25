@@ -7,7 +7,9 @@
   const read = key => { try { return localStorage.getItem(key); } catch { return null; } };
   const save = (key, value) => { try { localStorage.setItem(key, value); } catch {} };
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
-  let mode = modes.includes(read(themeKey)) ? read(themeKey) : 'video';
+  // Every research visit starts with the readable white surface.
+  // Background controls remain available for the current visit.
+  let mode = 'white';
   let paused = read(motionKey) === null ? reducedMotion.matches : read(motionKey) === 'true';
   let film;const shared=window.parent!==window&&!!parent.document.querySelector('#experience');
   root.dataset.readingBackground = mode;
@@ -45,7 +47,7 @@
   }
 
   function setMode(value, persist = true) {
-    mode = modes.includes(value) ? value : 'video';
+    mode = modes.includes(value) ? value : 'white';
     root.dataset.readingBackground = mode;
     if (persist) save(themeKey, mode);
     syncFilm();
@@ -80,8 +82,8 @@
     setMode(mode, false);
   }
 
+  window.UniversalResearchTheme = {reset: () => setMode('white', false)};
   window.addEventListener('storage', event => {
-    if (event.key === themeKey || event.key === null) setMode(read(themeKey), false);
     if (event.key === motionKey || event.key === null) {
       paused = read(motionKey) === null ? reducedMotion.matches : read(motionKey) === 'true';
       syncFilm();

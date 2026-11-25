@@ -3088,85 +3088,299 @@
         {
           "id": "ii",
           "number": "1.2",
-          "title": "528 Hz sound: gene expression, hormonal responses and cell studies",
-          "trustScore": null,
+          "title": "528 Hz sound and tuning: human trials, biomarkers and preclinical research",
+          "trustScore": 2,
           "sourcePage": 15,
-          "context": "Salivary hormones, gene expression in rat brain tissue and outcomes in cultured cells are different measures. Each study retains its own experimental context.",
+          "context": "The 528 Hz family includes pure tones, A4 = 444 Hz tuning with C5 near 528 Hz, music and chanting. Each intervention retains its own description.",
           "papers": [
+            {
+              "id": "ii-sound528-bozok2026",
+              "title": "Acute Music-Frequency Exposure Modulates Salivary Stress and Neurotrophic Markers in Young Adults: A Randomized Controlled Trial",
+              "authors": "Bozok ÜG, Böyük Özcan G, Bayraktar B, Özen D.",
+              "journal": "Brain and Behavior",
+              "year": 2026,
+              "doi": "10.1002/brb3.71452",
+              "pmid": null,
+              "urls": [
+                "https://doi.org/10.1002/brb3.71452"
+              ],
+              "collections": [
+                "sound"
+              ],
+              "origin": "update",
+              "categories": [
+                "Molecular biomarkers",
+                "Clinical & self-report"
+              ],
+              "targets": [],
+              "kind": "Randomized controlled trial; 162 students; three parallel groups",
+              "design": "Randomized controlled trial; 162 students; three parallel groups",
+              "finding": "After 20 minutes of 528 Hz-labelled instrumental music, salivary CREB was higher and GRP78 lower than in the no-music group. Stroop performance did not differ. Table 1 gives 528 Hz and control the same BDNF significance label, despite the more positive abstract.",
+              "summary": "After 20 minutes of 528 Hz-labelled instrumental music, salivary CREB was higher and GRP78 lower than in the no-music group. Stroop performance did not differ. Table 1 gives 528 Hz and control the same BDNF significance label, despite the more positive abstract.",
+              "limitation": "Exploratory salivary measures do not establish brain neuroplasticity, neuroprotection or experienced stress relief. Audio calibration and masking are insufficiently described. The abstract/table disagreement and inconsistent baseline-sampling description reduce confidence.",
+              "quotes": [],
+              "archiveEntries": [],
+              "priority": 1,
+              "stars": 2,
+              "ratingBasis": "The methods report manual permuted-block allocation to 528 Hz music, 432 Hz music or no music (54 per group). All 162 completed the acute assessment. Double blinding is not established; the reported registration label is not an NCT identifier.",
+              "paperTrustAssessment": {
+                "score": 2,
+                "scope": "Paper",
+                "status": "assessed",
+                "randomizedControlledTrial": true,
+                "blinding": "not-confirmed",
+                "peerReviewed": true,
+                "basis": "The methods report manual permuted-block allocation to 528 Hz music, 432 Hz music or no music (54 per group). All 162 completed the acute assessment. Double blinding is not established; the reported registration label is not an NCT identifier.",
+                "sources": [
+                  "https://doi.org/10.1002/brb3.71452"
+                ],
+                "reviewScope": "Publication-specific methods and results review; separate from a formal risk-of-bias instrument.",
+                "assessedAt": "2026-11-25"
+              },
+              "studyDesignAssessment": {
+                "basis": "The methods report manual permuted-block allocation to 528 Hz music, 432 Hz music or no music (54 per group). All 162 completed the acute assessment. Double blinding is not established; the reported registration label is not an NCT identifier.",
+                "sources": [
+                  "https://doi.org/10.1002/brb3.71452"
+                ],
+                "reviewedAt": "2026-11-25"
+              },
+              "jadad": {
+                "status": "unassessed",
+                "score": null
+              },
+              "citationCount": null,
+              "evidence": {
+                "trialId": "10.1002/brb3.71452",
+                "researchRole": "528 Hz intervention",
+                "sampleSize": 162
+              },
+              "sourceType": "Journal publication",
+              "sourceVerification": "Full text reviewed",
+              "recordId": "sound528-bozok2026",
+              "sourcePages": []
+            },
+            {
+              "id": "ii-hsi-c2e2e55e945231",
+              "title": "Effect of OM Chanting of 528Hz Frequency on Heart Rate Variability, Psychological Wellbeing, and Quality of Sleep in Patients of Hypertension: A Randomised Controlled Trial",
+              "authors": "Bhoot A, Chowdhury AB, Shah H, Vaishnav B.",
+              "journal": "Annals of Neurosciences",
+              "year": 2025,
+              "doi": "10.1177/09727531251390261",
+              "pmid": "41395351",
+              "urls": [
+                "https://doi.org/10.1177/09727531251390261",
+                "https://pmc.ncbi.nlm.nih.gov/articles/PMC12700779/"
+              ],
+              "collections": [
+                "sound"
+              ],
+              "origin": "update",
+              "categories": [
+                "Clinical & self-report"
+              ],
+              "targets": [],
+              "kind": "Randomized controlled trial; 60 patients; 55 completed four weeks",
+              "design": "Randomized controlled trial; 60 patients; 55 completed four weeks",
+              "finding": "Fifteen minutes of daily listening to 528 Hz OM chanting plus standard care produced promising blood-pressure and perceived-stress results against standard care. Pulse and systolic-pressure time-by-group interactions were significant; SDNN and RMSSD interactions were not. Between-group sleep and total wellbeing differences were not significant.",
+              "summary": "Fifteen minutes of daily listening to 528 Hz OM chanting plus standard care produced promising blood-pressure and perceived-stress results against standard care. Pulse and systolic-pressure time-by-group interactions were significant; SDNN and RMSSD interactions were not. Between-group sleep and total wellbeing differences were not significant.",
+              "limitation": "The study evaluates a chanting-and-listening practice. There is no matched recording at another tuning, and five participants were lost to follow-up. Multiple outcomes and differing statistical results limit a broad claim of improved autonomic function or sleep.",
+              "quotes": [],
+              "archiveEntries": [],
+              "priority": 1,
+              "stars": 2,
+              "ratingBasis": "WINPEPI software allocated 30 patients per group. Standard care was the comparator. Participant and assessor masking were not established. Full-text tables were checked alongside the abstract.",
+              "paperTrustAssessment": {
+                "score": 2,
+                "scope": "Paper",
+                "status": "assessed",
+                "randomizedControlledTrial": true,
+                "blinding": "not-confirmed",
+                "peerReviewed": true,
+                "basis": "WINPEPI software allocated 30 patients per group. Standard care was the comparator. Participant and assessor masking were not established. Full-text tables were checked alongside the abstract.",
+                "sources": [
+                  "https://doi.org/10.1177/09727531251390261",
+                  "https://pmc.ncbi.nlm.nih.gov/articles/PMC12700779/"
+                ],
+                "reviewScope": "Publication-specific methods and results review; separate from a formal risk-of-bias instrument.",
+                "assessedAt": "2026-11-25"
+              },
+              "studyDesignAssessment": {
+                "basis": "WINPEPI software allocated 30 patients per group. Standard care was the comparator. Participant and assessor masking were not established. Full-text tables were checked alongside the abstract.",
+                "sources": [
+                  "https://doi.org/10.1177/09727531251390261",
+                  "https://pmc.ncbi.nlm.nih.gov/articles/PMC12700779/"
+                ],
+                "reviewedAt": "2026-11-25"
+              },
+              "jadad": {
+                "status": "unassessed",
+                "score": null
+              },
+              "citationCount": null,
+              "evidence": {
+                "trialId": "10.1177/09727531251390261",
+                "researchRole": "528 Hz intervention",
+                "sampleSize": 60
+              },
+              "sourceType": "Journal publication",
+              "sourceVerification": "Full text reviewed",
+              "recordId": "hsi-c2e2e55e945231",
+              "sourcePages": []
+            },
+            {
+              "id": "ii-sound528-heti2024",
+              "title": "528Hz: The Sound Of Tranquillity And Its Effect On Anxiety",
+              "authors": "Heti M, Yeshaswini V.",
+              "journal": "Revista Electrónica de Veterinaria",
+              "year": 2024,
+              "doi": "10.69980/redvet.v25i1S.787",
+              "pmid": null,
+              "urls": [
+                "https://doi.org/10.69980/redvet.v25i1S.787",
+                "https://veterinaria.org/index.php/REDVET/article/download/787/500/",
+                "https://www.cabidigitallibrary.org/doi/full/10.5555/20240419729"
+              ],
+              "collections": [
+                "sound"
+              ],
+              "origin": "update",
+              "categories": [
+                "Clinical & self-report"
+              ],
+              "targets": [],
+              "kind": "Reported randomized controlled experiment; 48 analysed; single session",
+              "design": "Reported randomized controlled experiment; 48 analysed; single session",
+              "finding": "A three-minute exposure described as a pure 528 Hz tone was compared with neutral reading. Mean state-anxiety scores fell by 4.63 points in the sound group and 0.83 in controls; the reported time-by-group interaction was p = .036.",
+              "summary": "A three-minute exposure described as a pure 528 Hz tone was compared with neutral reading. Mean state-anxiety scores fell by 4.63 points in the sound group and 0.83 in controls; the reported time-by-group interaction was p = .036.",
+              "limitation": "Random sequence generation and concealment are unspecified. Participant-flow arithmetic, outlier handling, STAI descriptions and statistical reporting contain inconsistencies. No biomarkers or sustained outcomes were measured. Treat this as a low-confidence preliminary result.",
+              "quotes": [],
+              "archiveEntries": [],
+              "priority": 1,
+              "stars": 2,
+              "ratingBasis": "The full paper explicitly reports random allocation to two groups of 24. Its design meets the library RCT category, while serious reporting weaknesses remain. The CABI link is another record for this publication, as confirmed by the supplied title.",
+              "paperTrustAssessment": {
+                "score": 2,
+                "scope": "Paper",
+                "status": "assessed",
+                "randomizedControlledTrial": true,
+                "blinding": "not-confirmed",
+                "peerReviewed": true,
+                "basis": "The full paper explicitly reports random allocation to two groups of 24. Its design meets the library RCT category, while serious reporting weaknesses remain. The CABI link is another record for this publication, as confirmed by the supplied title.",
+                "sources": [
+                  "https://doi.org/10.69980/redvet.v25i1S.787",
+                  "https://veterinaria.org/index.php/REDVET/article/download/787/500/",
+                  "https://www.cabidigitallibrary.org/doi/full/10.5555/20240419729"
+                ],
+                "reviewScope": "Publication-specific methods and results review; separate from a formal risk-of-bias instrument.",
+                "assessedAt": "2026-11-25"
+              },
+              "studyDesignAssessment": {
+                "basis": "The full paper explicitly reports random allocation to two groups of 24. Its design meets the library RCT category, while serious reporting weaknesses remain. The CABI link is another record for this publication, as confirmed by the supplied title.",
+                "sources": [
+                  "https://doi.org/10.69980/redvet.v25i1S.787",
+                  "https://veterinaria.org/index.php/REDVET/article/download/787/500/",
+                  "https://www.cabidigitallibrary.org/doi/full/10.5555/20240419729"
+                ],
+                "reviewedAt": "2026-11-25"
+              },
+              "jadad": {
+                "status": "unassessed",
+                "score": null
+              },
+              "citationCount": null,
+              "evidence": {
+                "trialId": "10.69980/redvet.v25i1S.787",
+                "researchRole": "528 Hz intervention",
+                "sampleSize": 48
+              },
+              "sourceType": "Journal publication",
+              "sourceVerification": "Full text reviewed",
+              "recordId": "sound528-heti2024",
+              "sourcePages": []
+            },
+            {
+              "id": "ii-sound528-ravikumar2026",
+              "title": "Effects of a Sound-Based Meditative Intervention on Anxiety, Depression, Salivary Cortisol Levels, and Blood Pressure: A Randomized Controlled Trial",
+              "authors": "Ravikumar H, Sathyanarayanan S.",
+              "journal": "Cureus",
+              "year": 2026,
+              "doi": "10.7759/cureus.115693",
+              "pmid": null,
+              "urls": [
+                "https://doi.org/10.7759/cureus.115693",
+                "https://assets.cureus.com/uploads/original_article/pdf/465976/20260903-1742260-urf4g2.pdf"
+              ],
+              "collections": [
+                "sound"
+              ],
+              "origin": "update",
+              "categories": [
+                "Molecular biomarkers",
+                "Clinical & self-report",
+                "Heart rate & autonomic"
+              ],
+              "targets": [],
+              "kind": "Randomized controlled trial; 100 adults; four weeks",
+              "design": "Randomized controlled trial; 100 adults; four weeks",
+              "finding": "Daily sound meditation incorporating recorded 528 Hz audio and acoustic instruments outperformed remotely delivered music on anxiety, depression, salivary cortisol and blood pressure. Adjusted differences included HADS anxiety −2.55 points (95% CI −3.62 to −1.48) and cortisol −2.54 nmol/L (−2.95 to −2.13).",
+              "summary": "Daily sound meditation incorporating recorded 528 Hz audio and acoustic instruments outperformed remotely delivered music on anxiety, depression, salivary cortisol and blood pressure. Adjusted differences included HADS anxiety −2.55 points (95% CI −3.62 to −1.48) and cortisol −2.54 nmol/L (−2.95 to −2.13).",
+              "limitation": "In-person group meditation, instruments, equipment and extra home practice differed from the online control. Their contributions cannot be separated. Follow-up ended at four weeks, acoustic calibration was incomplete, and the registered POMS-SF outcome was omitted.",
+              "quotes": [],
+              "archiveEntries": [],
+              "priority": 1,
+              "stars": 2,
+              "ratingBasis": "Lottery allocation assigned 50 participants per arm; all completed follow-up. Baseline-adjusted ANCOVA and Holm correction were reported. Blood-pressure and laboratory assessors were masked; credible participant double blinding was not established.",
+              "paperTrustAssessment": {
+                "score": 2,
+                "scope": "Paper",
+                "status": "assessed",
+                "randomizedControlledTrial": true,
+                "blinding": "not-confirmed",
+                "peerReviewed": true,
+                "basis": "Lottery allocation assigned 50 participants per arm; all completed follow-up. Baseline-adjusted ANCOVA and Holm correction were reported. Blood-pressure and laboratory assessors were masked; credible participant double blinding was not established.",
+                "sources": [
+                  "https://doi.org/10.7759/cureus.115693",
+                  "https://assets.cureus.com/uploads/original_article/pdf/465976/20260903-1742260-urf4g2.pdf"
+                ],
+                "reviewScope": "Publication-specific methods and results review; separate from a formal risk-of-bias instrument.",
+                "assessedAt": "2026-11-25"
+              },
+              "studyDesignAssessment": {
+                "basis": "Lottery allocation assigned 50 participants per arm; all completed follow-up. Baseline-adjusted ANCOVA and Holm correction were reported. Blood-pressure and laboratory assessors were masked; credible participant double blinding was not established.",
+                "sources": [
+                  "https://doi.org/10.7759/cureus.115693",
+                  "https://assets.cureus.com/uploads/original_article/pdf/465976/20260903-1742260-urf4g2.pdf"
+                ],
+                "reviewedAt": "2026-11-25"
+              },
+              "jadad": {
+                "status": "unassessed",
+                "score": null
+              },
+              "citationCount": null,
+              "evidence": {
+                "trialId": "CTRI/2025/01/078996",
+                "researchRole": "528 Hz intervention",
+                "sampleSize": 100
+              },
+              "sourceType": "Journal publication",
+              "sourceVerification": "Full text reviewed",
+              "recordId": "sound528-ravikumar2026",
+              "sourcePages": []
+            },
             {
               "id": "ii-src-ae3dc0d94fef",
               "recordId": "src-ae3dc0d94fef",
               "title": "Effect of 528 Hz Music on the Endocrine System and Autonomic Nervous System",
-              "journal": "Scientific Research Publishing",
+              "journal": "Health",
               "year": 2018,
-              "authors": "",
+              "authors": "Akimoto K, Hu A, Yamaguchi T, Kobayashi H.",
               "design": "Small participant-masked crossover study",
               "urls": [
                 "https://www.scirp.org/pdf/Health_2018090514214117.pdf",
                 "https://doi.org/10.4236/health.2018.109088"
               ],
-              "quotes": [
-                [
-                  {
-                    "text": "“",
-                    "emphasis": false
-                  },
-                  {
-                    "text": " In the 528 Hz condition",
-                    "emphasis": true
-                  },
-                  {
-                    "text": " , mean levels of",
-                    "emphasis": false
-                  },
-                  {
-                    "text": " cortisol significantly decreased",
-                    "emphasis": true
-                  },
-                  {
-                    "text": " ,",
-                    "emphasis": false
-                  },
-                  {
-                    "text": " chromogranin A tended to decrease",
-                    "emphasis": true
-                  },
-                  {
-                    "text": " , and",
-                    "emphasis": false
-                  },
-                  {
-                    "text": " oxytocin doubled after only 5 minutes of music exposure",
-                    "emphasis": true
-                  },
-                  {
-                    "text": " . However, no significant change was observed in any salivary biomarkers in the 440 Hz condition.”",
-                    "emphasis": false
-                  }
-                ],
-                [
-                  {
-                    "text": "The influence of music on the autonomic nervous system and endocrine system varies depending on the frequency of the music, and furthermore, that",
-                    "emphasis": false
-                  },
-                  {
-                    "text": " 528 Hz music has an especially strong stress-reducing effect",
-                    "emphasis": true
-                  },
-                  {
-                    "text": " , even",
-                    "emphasis": false
-                  },
-                  {
-                    "text": " following only five minutes of exposure",
-                    "emphasis": true
-                  },
-                  {
-                    "text": " .”",
-                    "emphasis": false
-                  }
-                ]
-              ],
+              "quotes": [],
               "citationCount": 4,
               "sourcePages": [
                 15
@@ -3178,31 +3392,34 @@
                 "Molecular biomarkers",
                 "Heart rate & autonomic"
               ],
-              "doi": null,
+              "doi": "10.4236/health.2018.109088",
               "pmid": null,
               "aliases": [
                 "portal-75ae9eff6740"
               ],
-              "summary": "After five minutes of 528 Hz music, mean salivary oxytocin rose from 37.57 to 73.58 and cortisol later fell from 0.43 to 0.25; neither change was significant with 440 Hz music.",
-              "limitation": "Only nine healthy adults participated. The short comparison is intriguing biomarker evidence, not clinical proof, and requires larger independent preregistered replication.",
+              "summary": "Nine adults heard the same piano music at standard tuning and A4 = 444 Hz on separate days. The latter places C5 near 528 Hz. Cortisol, oxytocin and some mood measures changed within that condition; chromogranin A did not change significantly.",
+              "limitation": "The sample was nine, with eight usable ECG recordings. Randomized condition order was not reported. Significance within one condition and not another does not establish a statistically significant difference between conditions.",
               "summarySource": {
                 "name": "I AM portal",
                 "url": "https://doi.org/10.4236/health.2018.109088",
                 "reviewedAt": "2026-08-15"
               },
               "paperTrustAssessment": {
-                "score": null,
+                "score": 1,
                 "scope": "Paper",
-                "status": "unassessed",
-                "randomizedControlledTrial": null,
-                "blinding": "not-confirmed",
-                "peerReviewed": false,
-                "basis": "Publication-specific design or publication status remains unconfirmed.",
+                "status": "assessed",
+                "randomizedControlledTrial": false,
+                "blinding": "participant-masked",
+                "peerReviewed": true,
+                "basis": "Small crossover study; participants were not told the tuning. Randomized order and double blinding were not established.",
                 "sources": [
-                  "https://www.scirp.org/pdf/Health_2018090514214117.pdf"
+                  "https://doi.org/10.4236/health.2018.109088"
                 ],
-                "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
-                "assessedAt": "2026-10-27"
+                "assessedAt": "2026-11-25"
+              },
+              "quotationReview": {
+                "basis": "Original extracts remain in the archived source record; current display uses the checked summary.",
+                "reviewedAt": "2026-11-25"
               }
             },
             {
@@ -3212,7 +3429,7 @@
               "journal": "Genes and Genomics",
               "year": 2019,
               "authors": "Babayi Daylari T, Riazi GH, Pooyan S, Fathi E, Hedayati Katouli F.",
-              "design": "",
+              "design": "Preclinical rat experiment",
               "urls": [
                 "https://link.springer.com/article/10.1007/s13258-018-0753-6"
               ],
@@ -3263,7 +3480,9 @@
                 ],
                 "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
                 "assessedAt": "2026-10-27"
-              }
+              },
+              "summary": "Rat-brain and behavioural research examines 528 Hz exposure at different sound intensities.",
+              "limitation": "Animal tissue and behavioural findings provide mechanistic context; they do not establish human treatment effects. The reported 100 dB condition is not a recommended human listening level."
             },
             {
               "id": "ii-src-76124b78a2d9",
@@ -3272,7 +3491,7 @@
               "journal": "Journal of Addiction Research & Therapy",
               "year": null,
               "authors": "",
-              "design": "",
+              "design": "In-vitro astrocyte experiment",
               "urls": [
                 "https://www.omicsonline.org/open-access/the-effects-of-528-hz-sound-wave-to-reduce-cell-death-in-human-astrocyteprimary-cell-culture-treated-with-ethanol-2155-6105-1000335.php?aid=91771"
               ],
@@ -3319,7 +3538,9 @@
                 ],
                 "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
                 "assessedAt": "2026-10-27"
-              }
+              },
+              "summary": "Cell-culture research examines viability and oxidative-stress measures after ethanol and 528 Hz sound exposure.",
+              "limitation": "Cultured-cell outcomes do not establish treatment efficacy for alcohol dependence or regeneration of the human brain."
             },
             {
               "id": "ii-src-aecb8b44badd",
@@ -3328,7 +3549,7 @@
               "journal": "NASA",
               "year": null,
               "authors": "",
-              "design": "",
+              "design": "Auditory coding reference; not a stress-reduction trial",
               "urls": [
                 "https://ntrs.nasa.gov/archive/nasa/casi.ntrs.nasa.gov/19760013713.pdf"
               ],
@@ -3369,31 +3590,373 @@
                 ],
                 "reviewScope": "Existing publication-specific assessments and bibliographic indexing; no blanket full-text appraisal.",
                 "assessedAt": "2026-10-27"
-              }
+              },
+              "summary": "This archival auditory-coding paper uses a 528 Hz reference in a pitch-comparison context.",
+              "limitation": "Retained as auditory-science background. It supplies no evidence of therapeutic stress reduction at 528 Hz."
+            },
+            {
+              "id": "ii-sound528-unhale2023",
+              "title": "Study On Impact of Sound Frequency on Human Well Being Using Randomized Block Design",
+              "authors": "Unhale SI, Khairnar SL, Joshi MA.",
+              "journal": "Journal of Advanced Zoology",
+              "year": 2023,
+              "doi": "10.53555/jaz.v44iS8.3467",
+              "pmid": null,
+              "urls": [
+                "https://doi.org/10.53555/jaz.v44iS8.3467",
+                "https://jazindia.com/index.php/jaz/article/download/3467/2917/5261"
+              ],
+              "collections": [
+                "sound"
+              ],
+              "origin": "update",
+              "categories": [
+                "Clinical & self-report",
+                "Heart rate & autonomic"
+              ],
+              "targets": [],
+              "kind": "Reported randomized block experiment; RCT eligibility unresolved",
+              "design": "Reported randomized block experiment; RCT eligibility unresolved",
+              "finding": "The report includes 57 participants aged 17–20 and exposures labelled 379, 430 and 528 Hz. Mean ratings for calmness, focus and stress relief were higher at 430 Hz than at 528 Hz. A pooled before-and-after heart-rate reduction from 80.56 to 79.25 bpm does not separate the frequencies.",
+              "summary": "The report includes 57 participants aged 17–20 and exposures labelled 379, 430 and 528 Hz. Mean ratings for calmness, focus and stress relief were higher at 430 Hz than at 528 Hz. A pooled before-and-after heart-rate reduction from 80.56 to 79.25 bpm does not separate the frequencies.",
+              "limitation": "The allocation and repeated-exposure structure are unclear; group sizes, sequence concealment and frequency-specific heart-rate comparisons are not adequately reported. A pooled change cannot identify the effect of 528 Hz. Randomized block design is a randomization method, but the reporting is insufficient to confirm a qualifying controlled trial here.",
+              "quotes": [],
+              "archiveEntries": [],
+              "priority": 1,
+              "stars": 1,
+              "ratingBasis": "The methods state random assignment within eight blocks, while also describing three exposures per participant. Retain the author-reported design and mark RCT eligibility unresolved rather than infer an independently verified RCT.",
+              "paperTrustAssessment": {
+                "score": 1,
+                "scope": "Paper",
+                "status": "assessed",
+                "randomizedControlledTrial": null,
+                "blinding": "not-confirmed",
+                "peerReviewed": true,
+                "basis": "The methods state random assignment within eight blocks, while also describing three exposures per participant. Retain the author-reported design and mark RCT eligibility unresolved rather than infer an independently verified RCT.",
+                "sources": [
+                  "https://doi.org/10.53555/jaz.v44iS8.3467",
+                  "https://jazindia.com/index.php/jaz/article/download/3467/2917/5261"
+                ],
+                "reviewScope": "Publication-specific methods and results review; separate from a formal risk-of-bias instrument.",
+                "assessedAt": "2026-11-25"
+              },
+              "studyDesignAssessment": {
+                "basis": "The methods state random assignment within eight blocks, while also describing three exposures per participant. Retain the author-reported design and mark RCT eligibility unresolved rather than infer an independently verified RCT.",
+                "sources": [
+                  "https://doi.org/10.53555/jaz.v44iS8.3467",
+                  "https://jazindia.com/index.php/jaz/article/download/3467/2917/5261"
+                ],
+                "reviewedAt": "2026-11-25"
+              },
+              "jadad": {
+                "status": "unassessed",
+                "score": null
+              },
+              "citationCount": null,
+              "evidence": {
+                "trialId": "10.53555/jaz.v44iS8.3467",
+                "researchRole": "528 Hz intervention",
+                "sampleSize": 57
+              },
+              "sourceType": "Journal publication",
+              "sourceVerification": "Full text reviewed",
+              "recordId": "sound528-unhale2023",
+              "sourcePages": []
+            },
+            {
+              "id": "ii-sound528-pomazan2023",
+              "title": "Instruments for sound therapy vs. music therapy for teenager's emotional development",
+              "authors": "Pomazan VM.",
+              "journal": "Proceedings of ICSIE 2023 · ACM",
+              "year": 2023,
+              "doi": "10.1145/3634848.3634863",
+              "pmid": null,
+              "urls": [
+                "https://doi.org/10.1145/3634848.3634863",
+                "https://www.researchgate.net/publication/377686510_Instruments_for_sound_therapy_vs_music_therapy_for_teenager%27s_emotional_development"
+              ],
+              "collections": [
+                "sound"
+              ],
+              "origin": "update",
+              "categories": [
+                "Clinical & self-report"
+              ],
+              "targets": [],
+              "kind": "Author-reported randomized controlled conference study; 28 adolescents",
+              "design": "Author-reported randomized controlled conference study; 28 adolescents",
+              "finding": "The paper describes randomized groups receiving a sound device, active music therapy or control. It reports improvements in emotional self-ratings, without a significant difference between the two therapy groups.",
+              "summary": "The paper describes randomized groups receiving a sound device, active music therapy or control. It reports improvements in emotional self-ratings, without a significant difference between the two therapy groups.",
+              "limitation": "Only eight participants received the sound device. The described frequencies are 240–500 Hz with a 410–450 Hz base; 528 Hz appears in the conceptual Solfeggio mapping, rather than as a verified delivered tone. This is related frequency-family context with uncertain transfer to 528 Hz listening.",
+              "quotes": [],
+              "archiveEntries": [],
+              "priority": 1,
+              "stars": 2,
+              "ratingBasis": "The full conference paper reports random distribution of 28 participants (8/10/10) but gives no sequence or concealment method. It is retained as an author-reported RCT, with masking unconfirmed, and separated from the four trials explicitly including 528 Hz.",
+              "paperTrustAssessment": {
+                "score": 2,
+                "scope": "Paper",
+                "status": "assessed",
+                "randomizedControlledTrial": true,
+                "blinding": "not-confirmed",
+                "peerReviewed": true,
+                "basis": "The full conference paper reports random distribution of 28 participants (8/10/10) but gives no sequence or concealment method. It is retained as an author-reported RCT, with masking unconfirmed, and separated from the four trials explicitly including 528 Hz.",
+                "sources": [
+                  "https://doi.org/10.1145/3634848.3634863",
+                  "https://www.researchgate.net/publication/377686510_Instruments_for_sound_therapy_vs_music_therapy_for_teenager%27s_emotional_development"
+                ],
+                "reviewScope": "Publication-specific methods and results review; separate from a formal risk-of-bias instrument.",
+                "assessedAt": "2026-11-25"
+              },
+              "studyDesignAssessment": {
+                "basis": "The full conference paper reports random distribution of 28 participants (8/10/10) but gives no sequence or concealment method. It is retained as an author-reported RCT, with masking unconfirmed, and separated from the four trials explicitly including 528 Hz.",
+                "sources": [
+                  "https://doi.org/10.1145/3634848.3634863",
+                  "https://www.researchgate.net/publication/377686510_Instruments_for_sound_therapy_vs_music_therapy_for_teenager%27s_emotional_development"
+                ],
+                "reviewedAt": "2026-11-25"
+              },
+              "jadad": {
+                "status": "unassessed",
+                "score": null
+              },
+              "citationCount": null,
+              "evidence": {
+                "trialId": "10.1145/3634848.3634863",
+                "researchRole": "Related frequency-family context",
+                "sampleSize": 28
+              },
+              "sourceType": "Conference paper",
+              "sourceVerification": "Full text reviewed",
+              "recordId": "sound528-pomazan2023",
+              "sourcePages": []
+            },
+            {
+              "id": "ii-sound528-khalisha2026",
+              "title": "Real-Time Analysis of Therapeutic Board Game and Sound Therapy Effects on Adolescent Mental Health Using Facial Emotion and Stress Detection",
+              "authors": "Khalisha S, Alfarezy K, Villanda TM, Herlambang AF, Rahaman MS, Fikry M.",
+              "journal": "IEEE International Conference on Activity and Behavior Computing",
+              "year": 2026,
+              "doi": "10.1109/ABC68169.2026.11567273",
+              "pmid": null,
+              "urls": [
+                "https://doi.org/10.1109/ABC68169.2026.11567273",
+                "https://ieeexplore.ieee.org/abstract/document/11567273"
+              ],
+              "collections": [
+                "sound"
+              ],
+              "origin": "update",
+              "categories": [
+                "Clinical & self-report"
+              ],
+              "targets": [],
+              "kind": "Conference publication; study design awaiting full-text verification",
+              "design": "Conference publication; study design awaiting full-text verification",
+              "finding": "The publication identity is verified through publisher-deposited Crossref metadata. The title concerns board-game and sound interventions with facial-emotion and stress detection.",
+              "summary": "The publication identity is verified through publisher-deposited Crossref metadata. The title concerns board-game and sound interventions with facial-emotion and stress detection.",
+              "limitation": "Full methods were inaccessible during this review. Sample size, random allocation, delivered frequencies and treatment findings remain unverified. Retained as a research lead; no RCT or efficacy claim is assigned.",
+              "quotes": [],
+              "archiveEntries": [],
+              "priority": 1,
+              "stars": null,
+              "ratingBasis": "Bibliographic verification establishes the publication, not its trial design. RCT eligibility remains unresolved.",
+              "paperTrustAssessment": {
+                "score": null,
+                "scope": "Paper",
+                "status": "unassessed",
+                "randomizedControlledTrial": null,
+                "blinding": "not-confirmed",
+                "peerReviewed": false,
+                "basis": "Bibliographic verification establishes the publication, not its trial design. RCT eligibility remains unresolved.",
+                "sources": [
+                  "https://doi.org/10.1109/ABC68169.2026.11567273",
+                  "https://ieeexplore.ieee.org/abstract/document/11567273"
+                ],
+                "reviewScope": "Publication-specific methods and results review; separate from a formal risk-of-bias instrument.",
+                "assessedAt": "2026-11-25"
+              },
+              "studyDesignAssessment": {
+                "basis": "Bibliographic verification establishes the publication, not its trial design. RCT eligibility remains unresolved.",
+                "sources": [
+                  "https://doi.org/10.1109/ABC68169.2026.11567273",
+                  "https://ieeexplore.ieee.org/abstract/document/11567273"
+                ],
+                "reviewedAt": "2026-11-25"
+              },
+              "jadad": {
+                "status": "unassessed",
+                "score": null
+              },
+              "citationCount": null,
+              "evidence": {
+                "trialId": "10.1109/ABC68169.2026.11567273",
+                "researchRole": "Research lead; methods pending",
+                "sampleSize": null
+              },
+              "sourceType": "Conference paper",
+              "sourceVerification": "Crossref identity verified; full methods unavailable",
+              "recordId": "sound528-khalisha2026",
+              "sourcePages": []
+            },
+            {
+              "id": "ii-sound528-feneberg2020",
+              "title": "Efficacy, Treatment Characteristics, and Biopsychological Mechanisms of Music-Listening Interventions in Reducing Pain (MINTREP): Study Protocol of a Three-Armed Pilot Randomized Controlled Trial",
+              "authors": "Feneberg AC, Kappert MB, Maidhof RM, Doering BK, Olbrich D, Nater UM.",
+              "journal": "Frontiers in Psychiatry",
+              "year": 2020,
+              "doi": "10.3389/fpsyt.2020.518316",
+              "pmid": null,
+              "urls": [
+                "https://doi.org/10.3389/fpsyt.2020.518316"
+              ],
+              "collections": [
+                "sound"
+              ],
+              "origin": "update",
+              "categories": [
+                "Clinical & self-report"
+              ],
+              "targets": [],
+              "kind": "Randomized controlled trial protocol; no outcome results in this publication",
+              "design": "Randomized controlled trial protocol; no outcome results in this publication",
+              "finding": "This protocol plans 90 participants and ten listening sessions comparing frequency-filtered, unmodified and self-selected music. It cites the earlier 444 Hz-tuned piano study and offers useful methods for examining music, stress and pain.",
+              "summary": "This protocol plans 90 participants and ten listening sessions comparing frequency-filtered, unmodified and self-selected music. It cites the earlier 444 Hz-tuned piano study and offers useful methods for examining music, stress and pain.",
+              "limitation": "The proposed filtering spans 50–4,000 Hz. This publication supplies no completed outcome evidence and does not specify a 528 Hz treatment arm. Its planned randomization cannot be counted as a completed 528 Hz RCT.",
+              "quotes": [],
+              "archiveEntries": [],
+              "priority": 1,
+              "stars": 1,
+              "ratingBasis": "Publisher identifies this as a study protocol. Planned masking and allocation are clearly described; the protocol is excluded from completed-trial counts.",
+              "paperTrustAssessment": {
+                "score": 1,
+                "scope": "Paper",
+                "status": "assessed",
+                "randomizedControlledTrial": false,
+                "blinding": "not-confirmed",
+                "peerReviewed": true,
+                "basis": "Publisher identifies this as a study protocol. Planned masking and allocation are clearly described; the protocol is excluded from completed-trial counts.",
+                "sources": [
+                  "https://doi.org/10.3389/fpsyt.2020.518316"
+                ],
+                "reviewScope": "Publication-specific methods and results review; separate from a formal risk-of-bias instrument.",
+                "assessedAt": "2026-11-25"
+              },
+              "studyDesignAssessment": {
+                "basis": "Publisher identifies this as a study protocol. Planned masking and allocation are clearly described; the protocol is excluded from completed-trial counts.",
+                "sources": [
+                  "https://doi.org/10.3389/fpsyt.2020.518316"
+                ],
+                "reviewedAt": "2026-11-25"
+              },
+              "jadad": {
+                "status": "unassessed",
+                "score": null
+              },
+              "citationCount": null,
+              "evidence": {
+                "trialId": "10.3389/fpsyt.2020.518316",
+                "researchRole": "Methods and protocol context",
+                "sampleSize": null
+              },
+              "sourceType": "Study protocol",
+              "sourceVerification": "Full text reviewed",
+              "recordId": "sound528-feneberg2020",
+              "sourcePages": []
             }
           ],
           "sourceTrustScore": 1,
           "trustAssessment": {
-            "score": null,
+            "score": 2,
             "scope": "Subchapter",
             "minimumQualifyingStudies": 3,
-            "status": "below-minimum",
+            "status": "assessed",
             "qualifyingRecords": {
               "double-blind-rct": [],
-              "rct": [],
+              "rct": [
+                "sound528-bozok2026",
+                "hsi-c2e2e55e945231",
+                "sound528-heti2024",
+                "sound528-ravikumar2026"
+              ],
               "single-blind-rct": [],
               "peer-reviewed": [
+                "sound528-bozok2026",
+                "hsi-c2e2e55e945231",
+                "sound528-heti2024",
+                "sound528-ravikumar2026",
+                "src-ae3dc0d94fef",
                 "pmid-30414050"
               ]
             },
             "counts": {
               "double-blind-rct": 0,
-              "rct": 0,
+              "rct": 4,
               "single-blind-rct": 0,
-              "peer-reviewed": 1
+              "peer-reviewed": 6
             },
-            "assessedAt": "2026-10-27",
-            "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
+            "assessedAt": "2026-11-25",
+            "basis": "Four distinct completed RCTs explicitly include 528 Hz. Related-device trials, protocols, uncertain designs and duplicate reports do not inflate this threshold. This design badge is separate from certainty of benefit."
+          },
+          "description": "A growing, preliminary evidence base across the 528 Hz tuning family. Human trials now sit alongside the earlier piano, animal, cell and auditory research. The family includes pure tones, A4 = 444 Hz tuning with C5 near 528 Hz, music and chanting.",
+          "paragraphs": [
+            "This chapter includes 12 distinct publications: the four original references plus eight additions. The CABI and REDVET links identify one paper, and the Mental Health Daily article describes the Cureus trial. Those duplicate links add access routes, not independent studies. The radio link is not a research publication.",
+            "Five completed papers describe randomized controlled designs: Bozok, Bhoot, Heti, Ravikumar and Pomazan. Four explicitly include a 528 Hz intervention; Pomazan provides related device-based frequency research. Unhale reports randomized blocks with unresolved trial classification. MINTREP is a protocol, and the IEEE paper remains a methods-verification lead.",
+            "Two blue crosses reflect the library threshold of at least three distinct randomized controlled trials. Four trials explicitly including 528 Hz meet that design threshold. The badge describes study design and volume; it is separate from research quality, effect size, replication and certainty of benefit.",
+            "The strongest interpretation is an expanded basis for testing short-term stress and anxiety effects across this tuning family. The literature includes self-report, cortisol, blood pressure, HRV and exploratory salivary proteins. Different outcomes offer complementary observations, but they are not interchangeable measures of one proven mechanism.",
+            "The newer human trials make this a more substantial research programme than the original four references alone. Confidence remains limited by modest samples, incomplete masking, reporting inconsistencies, varied interventions and limited follow-up. Salivary biomarkers cannot establish brain changes or a durable clinical benefit. Findings apply to the studied listening or meditation programmes; the contribution of tuning remains a separate question.",
+            "A useful next study can compare the same performance at standard and 444 Hz tuning, a calibrated 528 Hz tone, and an appropriate control. Match duration, loudness, setting and contact; conceal track labels and assessor allocation where feasible; preregister one primary stress outcome, collect repeated cortisol samples and respiration-aware HRV, and include follow-up. This can test the family coherently while identifying which components matter."
+          ],
+          "paragraphSources": [
+            [],
+            [
+              {
+                "recordId": "sound528-bozok2026",
+                "label": "Bozok ÜG 2026"
+              },
+              {
+                "recordId": "hsi-c2e2e55e945231",
+                "label": "Bhoot A 2025"
+              },
+              {
+                "recordId": "sound528-heti2024",
+                "label": "Heti M 2024"
+              },
+              {
+                "recordId": "sound528-ravikumar2026",
+                "label": "Ravikumar H 2026"
+              },
+              {
+                "recordId": "sound528-pomazan2023",
+                "label": "Pomazan VM 2023"
+              }
+            ],
+            [],
+            [],
+            [],
+            []
+          ],
+          "sourceAudit": {
+            "reviewedAt": "2026-11-25",
+            "publications": 12,
+            "addedToTopic": 8,
+            "completedAuthorReportedRCTs": 5,
+            "explicitly528HzRCTs": 4,
+            "randomizedBlockClassification": "unresolved",
+            "protocolPublications": 1,
+            "methodsPending": 1,
+            "duplicateLinks": [
+              {
+                "url": "https://www.cabidigitallibrary.org/doi/full/10.5555/20240419729",
+                "publication": "10.69980/redvet.v25i1S.787",
+                "basis": "Title confirmed by Ben; CABI access blocked"
+              },
+              {
+                "url": "https://mentalhealthdaily.com/2026/11/05/sound-meditation-singing-bowls-anxiety-depression-cortisol-blood-pressure-trial/",
+                "publication": "10.7759/cureus.115693",
+                "basis": "News report cites the same trial"
+              }
+            ]
           }
         },
         {
@@ -16261,7 +16824,7 @@
   ],
   "source": "Sound Medical Research",
   "sourceSHA256": "e7adb2ee44d4758656ca3c74d0a150bf3b81e75d159874cc7257aa096cdd75fe",
-  "paperCount": 306,
+  "paperCount": 314,
   "topicCount": 19,
-  "uniquePaperCount": 299
+  "uniquePaperCount": 307
 }

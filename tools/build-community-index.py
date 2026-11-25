@@ -35,6 +35,11 @@ def render():
         replaced={m['categoryId'] for m in row['matches']}
         merged[row['recordId']]={**row,'matches':[m for m in old['matches'] if m['categoryId'] not in replaced]+row['matches']}
     public.update(records=list(merged.values()),recordCount=len(merged),updatedAt=youth['approvedAt'])
+    sound=json.loads((ROOT/'Informatics/library-data/528hz-research-register.json').read_text())
+    # Retain later published classifications absent from the original audit.
+    for row in json.loads(TARGET.read_text())['records']: merged.setdefault(row['recordId'],row)
+    for row in sound['communities']: merged.setdefault(row['recordId'],row)
+    public.update(records=list(merged.values()),recordCount=len(merged),updatedAt=sound['reviewedAt'])
     return json.dumps(public, indent=2, ensure_ascii=False) + '\n'
 
 if __name__ == '__main__':

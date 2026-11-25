@@ -4675,6 +4675,99 @@
           }
         ]
       }
+    ],
+    "sound528-bozok2026": [
+      {
+        "id": "stress",
+        "evidence": [
+          {
+            "field": "publication review",
+            "text": "After 20 minutes of 528 Hz-labelled instrumental music, salivary CREB was higher and GRP78 lower than in the no-music group. Stroop performance did not differ. Table 1 gives 528 Hz and control the same BDNF significance label, despite the more positive abstract.",
+            "sourceURL": "https://doi.org/10.1002/brb3.71452"
+          }
+        ]
+      }
+    ],
+    "sound528-heti2024": [
+      {
+        "id": "anxiety",
+        "evidence": [
+          {
+            "field": "publication review",
+            "text": "A three-minute exposure described as a pure 528 Hz tone was compared with neutral reading. Mean state-anxiety scores fell by 4.63 points in the sound group and 0.83 in controls; the reported time-by-group interaction was p = .036.",
+            "sourceURL": "https://doi.org/10.69980/redvet.v25i1S.787"
+          }
+        ]
+      }
+    ],
+    "sound528-ravikumar2026": [
+      {
+        "id": "stress",
+        "evidence": [
+          {
+            "field": "publication review",
+            "text": "Daily sound meditation incorporating recorded 528 Hz audio and acoustic instruments outperformed remotely delivered music on anxiety, depression, salivary cortisol and blood pressure. Adjusted differences included HADS anxiety −2.55 points (95% CI −3.62 to −1.48) and cortisol −2.54 nmol/L (−2.95 to −2.13).",
+            "sourceURL": "https://doi.org/10.7759/cureus.115693"
+          }
+        ]
+      },
+      {
+        "id": "anxiety",
+        "evidence": [
+          {
+            "field": "publication review",
+            "text": "Daily sound meditation incorporating recorded 528 Hz audio and acoustic instruments outperformed remotely delivered music on anxiety, depression, salivary cortisol and blood pressure. Adjusted differences included HADS anxiety −2.55 points (95% CI −3.62 to −1.48) and cortisol −2.54 nmol/L (−2.95 to −2.13).",
+            "sourceURL": "https://doi.org/10.7759/cureus.115693"
+          }
+        ]
+      },
+      {
+        "id": "depression",
+        "evidence": [
+          {
+            "field": "publication review",
+            "text": "Daily sound meditation incorporating recorded 528 Hz audio and acoustic instruments outperformed remotely delivered music on anxiety, depression, salivary cortisol and blood pressure. Adjusted differences included HADS anxiety −2.55 points (95% CI −3.62 to −1.48) and cortisol −2.54 nmol/L (−2.95 to −2.13).",
+            "sourceURL": "https://doi.org/10.7759/cureus.115693"
+          }
+        ]
+      }
+    ],
+    "sound528-unhale2023": [
+      {
+        "id": "stress",
+        "evidence": [
+          {
+            "field": "publication review",
+            "text": "The report includes 57 participants aged 17–20 and exposures labelled 379, 430 and 528 Hz. Mean ratings for calmness, focus and stress relief were higher at 430 Hz than at 528 Hz. A pooled before-and-after heart-rate reduction from 80.56 to 79.25 bpm does not separate the frequencies.",
+            "sourceURL": "https://doi.org/10.53555/jaz.v44iS8.3467"
+          }
+        ]
+      }
+    ],
+    "sound528-pomazan2023": [],
+    "sound528-khalisha2026": [],
+    "sound528-feneberg2020": [],
+    "hsi-c2e2e55e945231": [
+      {
+        "id": "stress",
+        "evidence": [
+          {
+            "field": "publication review",
+            "text": "The trial measures perceived stress and sleep quality; these labels identify outcomes, not established benefits.",
+            "sourceURL": "https://doi.org/10.1177/09727531251390261"
+          }
+        ]
+      },
+      {
+        "id": "sleep",
+        "evidence": [
+          {
+            "field": "publication review",
+            "text": "The trial measures perceived stress and sleep quality; these labels identify outcomes, not established benefits.",
+            "sourceURL": "https://doi.org/10.1177/09727531251390261"
+          }
+        ]
+      }
     ]
   },
   "classificationNotes": {

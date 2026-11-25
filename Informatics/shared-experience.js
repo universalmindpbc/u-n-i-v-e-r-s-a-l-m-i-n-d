@@ -23,6 +23,7 @@
     if (area === 'research') document.documentElement.dataset.libraryQuery = url.search;
     url.searchParams.set('embedded', '1');
     window.PortalRoutes.loadFrame(frame, url.href);
+    frame.contentWindow?.UniversalResearchTheme?.reset();
   }
   document.addEventListener('atlas:area', event => load(event.detail));
   document.addEventListener('click', event => {
