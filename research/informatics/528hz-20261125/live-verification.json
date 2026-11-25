@@ -1,0 +1,554 @@
+{
+  "passed": true,
+  "processAudioMuted": true,
+  "limitUSD": 6,
+  "chargedUpperUSD": 1.3480750000000001,
+  "requests": [
+    {
+      "question": "From our updated 528 Hz chapter, how many distinct publications and completed RCT reports are included, why does it receive two blue crosses, and how promising is the research? Please use the reviewed chapter and keep the answer concise.",
+      "status": 200,
+      "response": {
+        "answer": "**The chapter contains 12 distinct publications after deduplication, including five completed reports describing RCT designs.** Four explicitly include 528 Hz; the fifth concerns related device-based frequency research. Unhale’s RCT classification remains unresolved, MINTREP is a protocol, and the IEEE paper’s methods remain unverified. [S1]\n\n**Two blue crosses** reflect the library threshold of **at least three distinct qualifying RCTs**; four explicitly including 528 Hz meet it. The badge describes study design and volume—not high certainty, strong replication or proven benefit. [S1]\n\n**The research is promising but preliminary**, especially for short-term stress and anxiety. Positive psychological, cortisol and blood-pressure findings coexist with mixed salivary biomarkers and nonsignificant findings for some sleep and heart-rate-variability outcomes. [S2][S3][S4]\n\nThe interventions differ: pure 528 Hz tones, A4 = 444 Hz–tuned music with C5 near 528 Hz, 528 Hz-labelled music, and listening to OM chanting. Modest samples, incomplete masking, reporting weaknesses, short follow-up and confounding by music, meditation and setting limit confidence. The chapter provides a stronger basis for further testing, **not established frequency-specific or lasting clinical efficacy**; salivary changes also do not establish brain changes. [S1][S4]",
+        "sources": [
+          {
+            "label": "S1",
+            "id": "528hz-sound-tuning",
+            "passageId": "528hz-sound-tuning:overview",
+            "title": "528 Hz sound and tuning: human trials, biomarkers and preclinical research",
+            "authors": "",
+            "url": "https://staging.universalmind.tv/informatics/research/?collection=sound&chapter=1#topic-ii",
+            "section": "Library record",
+            "kind": "published-research-guide",
+            "text": "{\"id\":\"528hz-sound-tuning\",\"title\":\"528 Hz sound and tuning: human trials, biomarkers and preclinical research\",\"url\":\"https://staging.universalmind.tv/informatics/research/?collection=sound&chapter=1#topic-ii\",\"version\":{\"version\":\"sound528-20261125-v1\",\"sourceSHA256\":\"abac19e1cad7cba37ae0f4a0f4c15a3a51d2518fee29325dbb589727d29ea07a\",\"sourceRecords\":12,\"completedAuthorReportedRCTs\":5,\"explicitly528HzRCTs\":4},\"reviewedAt\":\"2026-11-25\",\"sourceCount\":12,\"reviewMethod\":\"Publication-specific primary-source review; IEEE methods unavailable. Design counts are separate from certainty of benefit.\",\"sourceAudit\":{\"reviewedAt\":\"2026-11-25\",\"publications\":12,\"addedToTopic\":8,\"completedAuthorReportedRCTs\":5,\"explicitly528HzRCTs\":4,\"randomizedBlockClassification\":\"unresolved\",\"protocolPublications\":1,\"methodsPending\":1,\"duplicateLinks\":[{\"url\":\"https://www.cabidigitallibrary.org/doi/full/10.5555/20240419729\",\"publication\":\"10.69980/redvet.v25i1S.787\",\"basis\":\"Title confirmed by Ben; CABI access blocked\"},{\"url\":\"https://mentalhealthdaily.com/2026/11/05/sound-meditation-singing-bowls-anxiety-depression-cortisol-blood-pressure-trial/\",\"publication\":\"10.7759/cureus.115693\",\"basis\":\"News report cites the same trial\"}]},\"overview\":[\"The 528 Hz family includes pure tones, A4 = 444 Hz tuning with C5 near 528 Hz, music and chanting. Each intervention retains its own description.\",\"This chapter includes 12 distinct publications: the four original references plus eight additions. The CABI and REDVET links identify one paper, and the Mental Health Daily article describes the Cureus trial. Those duplicate links add access routes, not independent studies. The radio link is not a research publication.\",\"Five completed papers describe randomized controlled designs: Bozok, Bhoot, Heti, Ravikumar and Pomazan. Four explicitly include a 528 Hz intervention; Pomazan provides related device-based frequency research. Unhale reports randomized blocks with unresolved trial classification. MINTREP is a protocol, and the IEEE paper remains a methods-verification lead.\",\"Two blue crosses reflect the library threshold of at least three distinct randomized controlled trials. Four trials explicitly including 528 Hz meet that design threshold. The badge describes study design and volume; it is separate from research quality, effect size, replication and certainty of benefit.\",\"The strongest interpretation is an expanded basis for testing short-term stress and anxiety effects across this tuning family. The literature includes self-report, cortisol, blood pressure, HRV and exploratory salivary proteins. Different outcomes offer complementary observations, but they are not interchangeable measures of one proven mechanism.\",\"The newer human trials make this a more substantial research programme than the original four references alone. Confidence remains limited by modest samples, incomplete masking, reporting inconsistencies, varied interventions and limited follow-up. Salivary biomarkers cannot establish brain changes or a durable clinical benefit. Findings apply to the studied listening or meditation programmes; the contribution of tuning remains a separate question.\",\"A useful next study can compare the same performance at standard and 444 Hz tuning, a calibrated 528 Hz tone, and an appropriate control. Match duration, loudness, setting and contact; conceal track labels and assessor allocation where feasible; preregister one primary stress outcome, collect repeated cortisol samples and respiration-aware HRV, and include follow-up. This can test the family coherently while identifying which components matter.\"],\"trustAssessment\":{\"score\":2,\"scope\":\"Subchapter\",\"minimumQualifyingStudies\":3,\"status\":\"assessed\",\"qualifyingRecords\":{\"double-blind-rct\":[],\"rct\":[\"sound528-bozok202",
+            "doi": null,
+            "rights": null,
+            "sha256": "abac19e1cad7cba37ae0f4a0f4c15a3a51d2518fee29325dbb589727d29ea07a",
+            "retrievalLabel": "S1"
+          },
+          {
+            "label": "S2",
+            "id": "sound528-bozok2026",
+            "passageId": null,
+            "title": "Acute Music-Frequency Exposure Modulates Salivary Stress and Neurotrophic Markers in Young Adults: A Randomized Controlled Trial",
+            "authors": "Bozok ÜG, Böyük Özcan G, Bayraktar B, Özen D.",
+            "journal": "Brain and Behavior",
+            "year": 2026,
+            "url": "https://doi.org/10.1002/brb3.71452",
+            "section": "Library record",
+            "kind": "approved-record",
+            "text": "After 20 minutes of 528 Hz-labelled instrumental music, salivary CREB was higher and GRP78 lower than in the no-music group. Stroop performance did not differ. Table 1 gives 528 Hz and control the same BDNF significance label, despite the more positive abstract.",
+            "doi": "10.1002/brb3.71452",
+            "rights": null,
+            "sha256": null,
+            "retrievalLabel": "S2"
+          },
+          {
+            "label": "S3",
+            "id": "hsi-c2e2e55e945231",
+            "passageId": null,
+            "title": "Effect of OM Chanting of 528Hz Frequency on Heart Rate Variability, Psychological Wellbeing, and Quality of Sleep in Patients of Hypertension: A Randomised Controlled Trial",
+            "authors": "Bhoot A, Chowdhury AB, Shah H, Vaishnav B.",
+            "journal": "Annals of Neurosciences",
+            "year": 2025,
+            "url": "https://doi.org/10.1177/09727531251390261",
+            "section": "Library record",
+            "kind": "approved-record",
+            "text": "Fifteen minutes of daily listening to 528 Hz OM chanting plus standard care produced promising blood-pressure and perceived-stress results against standard care. Pulse and systolic-pressure time-by-group interactions were significant; SDNN and RMSSD interactions were not. Between-group sleep and total wellbeing differences were not significant.",
+            "doi": "10.1177/09727531251390261",
+            "rights": null,
+            "sha256": null,
+            "retrievalLabel": "S3"
+          },
+          {
+            "label": "S4",
+            "id": "sound528-ravikumar2026",
+            "passageId": null,
+            "title": "Effects of a Sound-Based Meditative Intervention on Anxiety, Depression, Salivary Cortisol Levels, and Blood Pressure: A Randomized Controlled Trial",
+            "authors": "Ravikumar H, Sathyanarayanan S.",
+            "journal": "Cureus",
+            "year": 2026,
+            "url": "https://doi.org/10.7759/cureus.115693",
+            "section": "Library record",
+            "kind": "approved-record",
+            "text": "Daily sound meditation incorporating recorded 528 Hz audio and acoustic instruments outperformed remotely delivered music on anxiety, depression, salivary cortisol and blood pressure. Adjusted differences included HADS anxiety −2.55 points (95% CI −3.62 to −1.48) and cortisol −2.54 nmol/L (−2.95 to −2.13).",
+            "doi": "10.7759/cureus.115693",
+            "rights": null,
+            "sha256": null,
+            "retrievalLabel": "S5"
+          }
+        ],
+        "model": "gpt-6-astra",
+        "reasoning": "max",
+        "providerResponses": [
+          {
+            "id": "resp_07960092c04665ad016b0693e2cd8487d09c793e81a338c52f",
+            "requestedReasoning": "max",
+            "providerReasoning": "max",
+            "status": "completed"
+          },
+          {
+            "id": "resp_07960092c04665ad016b0693f0133c87d09e43e4b5617ee67f",
+            "requestedReasoning": "max",
+            "providerReasoning": "max",
+            "status": "completed"
+          },
+          {
+            "id": "resp_07960092c04665ad016b0693f273e487d09b6a735d77585f17",
+            "requestedReasoning": "max",
+            "providerReasoning": "max",
+            "status": "completed"
+          }
+        ],
+        "version": "research-20261026-daytab-v1",
+        "knowledgeVersions": {
+          "approvedYouth": {
+            "sourceBatch": "batch-f164c8325ea5f9c9.json",
+            "sourceSHA256": "f164c8325ea5f9c989c29524518b598913508117712826dc408f592b7f99a723",
+            "approvedAt": "2026-11-02",
+            "publications": 105
+          },
+          "biofeedback": {
+            "version": "lab-biofeedback-20261105-ratings",
+            "publications": 63
+          },
+          "inflammation": {
+            "version": "general-inflammation-20261125-v3",
+            "sourceSHA256": "7b58c89f93dadb5891b79f2ba113bfa0529dca253c5fb75c9842c77a8f3d67f5",
+            "sourceRecords": 75,
+            "chapters": [
+              {
+                "id": "dock2-trauma-ptsd",
+                "number": 12,
+                "sourceRecords": 33,
+                "reviewedAt": "2026-11-21"
+              },
+              {
+                "id": "oxtr-il6-inflammation",
+                "number": 13,
+                "sourceRecords": 42,
+                "reviewedAt": "2026-11-24"
+              }
+            ]
+          },
+          "sound528": {
+            "version": "sound528-20261125-v1",
+            "sourceSHA256": "abac19e1cad7cba37ae0f4a0f4c15a3a51d2518fee29325dbb589727d29ea07a",
+            "sourceRecords": 12,
+            "completedAuthorReportedRCTs": 5,
+            "explicitly528HzRCTs": 4
+          },
+          "publicGenes": "public-gene-data-20261109-v1",
+          "literature": "literature-20261110-v2"
+        },
+        "usage": {
+          "totalTokens": 47064,
+          "qaSpend": {
+            "limitUSD": 2.25,
+            "chargedUpperUSD": 0.6699750000000002,
+            "calls": [
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 61679,
+                "outputTokenUpper": 16384,
+                "boundMethod": "UTF-8 bytes plus framing",
+                "reservedUSD": 1.5901875,
+                "chargedUpperUSD": 0.16010000000000002,
+                "usage": {
+                  "input_tokens": 10600,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 10597,
+                    "cache_write_tokens_details": {
+                      "ttl_12h_tokens": 0,
+                      "ttl_30m_tokens": 10597
+                    },
+                    "cached_tokens": 0
+                  },
+                  "output_tokens": 552,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 516
+                  },
+                  "total_tokens": 11152
+                }
+              },
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 54880,
+                "outputTokenUpper": 16384,
+                "boundMethod": "Provider-counted exact prefix plus new UTF-8 bytes and framing",
+                "reservedUSD": 1.5052,
+                "chargedUpperUSD": 0.211475,
+                "usage": {
+                  "input_tokens": 16814,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 6214,
+                    "cache_write_tokens_details": {
+                      "ttl_12h_tokens": 0,
+                      "ttl_30m_tokens": 6214
+                    },
+                    "cached_tokens": 10597
+                  },
+                  "output_tokens": 26,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 0
+                  },
+                  "total_tokens": 16840
+                }
+              },
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 28097,
+                "outputTokenUpper": 16384,
+                "boundMethod": "Provider-counted exact prefix plus new UTF-8 bytes and framing",
+                "reservedUSD": 1.1704125,
+                "chargedUpperUSD": 0.2984,
+                "usage": {
+                  "input_tokens": 17472,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 658,
+                    "cache_write_tokens_details": {
+                      "ttl_12h_tokens": 0,
+                      "ttl_30m_tokens": 658
+                    },
+                    "cached_tokens": 16739
+                  },
+                  "output_tokens": 1600,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 1313
+                  },
+                  "total_tokens": 19072
+                }
+              }
+            ]
+          }
+        },
+        "retrieval": {
+          "required": true,
+          "sourceCount": 7,
+          "contextMessages": 0,
+          "previousReferences": 0
+        }
+      }
+    },
+    {
+      "question": "Does that evidence establish a unique tuning effect or lasting clinical benefit? Include a positive finding and a non-significant or conflicting result from the same chapter, and keep 444 Hz piano tuning within the family.",
+      "status": 200,
+      "response": {
+        "answer": "**No—the chapter does not establish a unique tuning effect or lasting clinical benefit.** It offers promising but preliminary evidence for short-term stress and anxiety outcomes. [S1]\n\n- **Positive finding:** In a 100-person, four-week RCT, meditation incorporating recorded 528 Hz audio and acoustic instruments produced lower anxiety scores than remotely delivered music: an adjusted difference of −2.55 HADS points. However, setting, meditation and home practice also differed, so the result does not isolate tuning. Follow-up ended at four weeks. [S2]\n- **Non-significant finding:** In the 528 Hz OM-chanting listening trial, between-group differences in sleep and total wellbeing were not significant. Changes in two heart-rate-variability measures also lacked significant time-by-group interactions. [S3]\n\n**A4 = 444 Hz piano tuning remains within this family**, placing C5 near 528 Hz; it is tuned music, not a pure 528 Hz tone. The nine-person piano crossover study reported changes in cortisol, oxytocin and some mood measures, but chromogranin A did not change significantly. Significance within one tuning condition, but not another, does not establish a difference between tunings. [S4]\n\nModest samples, masking/reporting weaknesses and limited follow-up restrict confidence. Salivary changes do not establish brain changes or durable clinical efficacy. [S1]",
+        "sources": [
+          {
+            "label": "S1",
+            "id": "528hz-sound-tuning",
+            "passageId": "528hz-sound-tuning:overview",
+            "title": "528 Hz sound and tuning: human trials, biomarkers and preclinical research",
+            "authors": "",
+            "url": "https://staging.universalmind.tv/informatics/research/?collection=sound&chapter=1#topic-ii",
+            "section": "Library record",
+            "kind": "published-research-guide",
+            "text": "{\"id\":\"528hz-sound-tuning\",\"title\":\"528 Hz sound and tuning: human trials, biomarkers and preclinical research\",\"url\":\"https://staging.universalmind.tv/informatics/research/?collection=sound&chapter=1#topic-ii\",\"version\":{\"version\":\"sound528-20261125-v1\",\"sourceSHA256\":\"abac19e1cad7cba37ae0f4a0f4c15a3a51d2518fee29325dbb589727d29ea07a\",\"sourceRecords\":12,\"completedAuthorReportedRCTs\":5,\"explicitly528HzRCTs\":4},\"reviewedAt\":\"2026-11-25\",\"sourceCount\":12,\"reviewMethod\":\"Publication-specific primary-source review; IEEE methods unavailable. Design counts are separate from certainty of benefit.\",\"sourceAudit\":{\"reviewedAt\":\"2026-11-25\",\"publications\":12,\"addedToTopic\":8,\"completedAuthorReportedRCTs\":5,\"explicitly528HzRCTs\":4,\"randomizedBlockClassification\":\"unresolved\",\"protocolPublications\":1,\"methodsPending\":1,\"duplicateLinks\":[{\"url\":\"https://www.cabidigitallibrary.org/doi/full/10.5555/20240419729\",\"publication\":\"10.69980/redvet.v25i1S.787\",\"basis\":\"Title confirmed by Ben; CABI access blocked\"},{\"url\":\"https://mentalhealthdaily.com/2026/11/05/sound-meditation-singing-bowls-anxiety-depression-cortisol-blood-pressure-trial/\",\"publication\":\"10.7759/cureus.115693\",\"basis\":\"News report cites the same trial\"}]},\"overview\":[\"The 528 Hz family includes pure tones, A4 = 444 Hz tuning with C5 near 528 Hz, music and chanting. Each intervention retains its own description.\",\"This chapter includes 12 distinct publications: the four original references plus eight additions. The CABI and REDVET links identify one paper, and the Mental Health Daily article describes the Cureus trial. Those duplicate links add access routes, not independent studies. The radio link is not a research publication.\",\"Five completed papers describe randomized controlled designs: Bozok, Bhoot, Heti, Ravikumar and Pomazan. Four explicitly include a 528 Hz intervention; Pomazan provides related device-based frequency research. Unhale reports randomized blocks with unresolved trial classification. MINTREP is a protocol, and the IEEE paper remains a methods-verification lead.\",\"Two blue crosses reflect the library threshold of at least three distinct randomized controlled trials. Four trials explicitly including 528 Hz meet that design threshold. The badge describes study design and volume; it is separate from research quality, effect size, replication and certainty of benefit.\",\"The strongest interpretation is an expanded basis for testing short-term stress and anxiety effects across this tuning family. The literature includes self-report, cortisol, blood pressure, HRV and exploratory salivary proteins. Different outcomes offer complementary observations, but they are not interchangeable measures of one proven mechanism.\",\"The newer human trials make this a more substantial research programme than the original four references alone. Confidence remains limited by modest samples, incomplete masking, reporting inconsistencies, varied interventions and limited follow-up. Salivary biomarkers cannot establish brain changes or a durable clinical benefit. Findings apply to the studied listening or meditation programmes; the contribution of tuning remains a separate question.\",\"A useful next study can compare the same performance at standard and 444 Hz tuning, a calibrated 528 Hz tone, and an appropriate control. Match duration, loudness, setting and contact; conceal track labels and assessor allocation where feasible; preregister one primary stress outcome, collect repeated cortisol samples and respiration-aware HRV, and include follow-up. This can test the family coherently while identifying which components matter.\"],\"trustAssessment\":{\"score\":2,\"scope\":\"Subchapter\",\"minimumQualifyingStudies\":3,\"status\":\"assessed\",\"qualifyingRecords\":{\"double-blind-rct\":[],\"rct\":[\"sound528-bozok202",
+            "doi": null,
+            "rights": null,
+            "sha256": "abac19e1cad7cba37ae0f4a0f4c15a3a51d2518fee29325dbb589727d29ea07a",
+            "retrievalLabel": "S1"
+          },
+          {
+            "label": "S2",
+            "id": "sound528-ravikumar2026",
+            "passageId": null,
+            "title": "Effects of a Sound-Based Meditative Intervention on Anxiety, Depression, Salivary Cortisol Levels, and Blood Pressure: A Randomized Controlled Trial",
+            "authors": "Ravikumar H, Sathyanarayanan S.",
+            "journal": "Cureus",
+            "year": 2026,
+            "url": "https://doi.org/10.7759/cureus.115693",
+            "section": "Library record",
+            "kind": "approved-record",
+            "text": "Daily sound meditation incorporating recorded 528 Hz audio and acoustic instruments outperformed remotely delivered music on anxiety, depression, salivary cortisol and blood pressure. Adjusted differences included HADS anxiety −2.55 points (95% CI −3.62 to −1.48) and cortisol −2.54 nmol/L (−2.95 to −2.13).",
+            "doi": "10.7759/cureus.115693",
+            "rights": null,
+            "sha256": null,
+            "retrievalLabel": "S5"
+          },
+          {
+            "label": "S3",
+            "id": "hsi-c2e2e55e945231",
+            "passageId": null,
+            "title": "Effect of OM Chanting of 528Hz Frequency on Heart Rate Variability, Psychological Wellbeing, and Quality of Sleep in Patients of Hypertension: A Randomised Controlled Trial",
+            "authors": "Bhoot A, Chowdhury AB, Shah H, Vaishnav B.",
+            "journal": "Annals of Neurosciences",
+            "year": 2025,
+            "url": "https://doi.org/10.1177/09727531251390261",
+            "section": "Library record",
+            "kind": "approved-record",
+            "text": "Fifteen minutes of daily listening to 528 Hz OM chanting plus standard care produced promising blood-pressure and perceived-stress results against standard care. Pulse and systolic-pressure time-by-group interactions were significant; SDNN and RMSSD interactions were not. Between-group sleep and total wellbeing differences were not significant.",
+            "doi": "10.1177/09727531251390261",
+            "rights": null,
+            "sha256": null,
+            "retrievalLabel": "S3"
+          },
+          {
+            "label": "S4",
+            "id": "src-ae3dc0d94fef",
+            "passageId": null,
+            "title": "Effect of 528 Hz Music on the Endocrine System and Autonomic Nervous System",
+            "authors": "Akimoto K, Hu A, Yamaguchi T, Kobayashi H.",
+            "journal": "Health",
+            "year": 2018,
+            "url": "https://www.scirp.org/pdf/Health_2018090514214117.pdf",
+            "section": "Library record",
+            "kind": "approved-record",
+            "text": "Nine adults heard the same piano music at standard tuning and A4 = 444 Hz on separate days. The latter places C5 near 528 Hz. Cortisol, oxytocin and some mood measures changed within that condition; chromogranin A did not change significantly.",
+            "doi": "10.4236/health.2018.109088",
+            "rights": null,
+            "sha256": null,
+            "retrievalLabel": "S6"
+          }
+        ],
+        "model": "gpt-6-astra",
+        "reasoning": "max",
+        "providerResponses": [
+          {
+            "id": "resp_0d2b513eb2cc80a1016b069415408887d08df240406df29d35",
+            "requestedReasoning": "max",
+            "providerReasoning": "max",
+            "status": "completed"
+          },
+          {
+            "id": "resp_0d2b513eb2cc80a1016b069421dde887d0a9c26354393a9384",
+            "requestedReasoning": "max",
+            "providerReasoning": "max",
+            "status": "completed"
+          },
+          {
+            "id": "resp_0d2b513eb2cc80a1016b069423cb7087d0ab065e1ea5c89385",
+            "requestedReasoning": "max",
+            "providerReasoning": "max",
+            "status": "completed"
+          }
+        ],
+        "version": "research-20261026-daytab-v1",
+        "knowledgeVersions": {
+          "approvedYouth": {
+            "sourceBatch": "batch-f164c8325ea5f9c9.json",
+            "sourceSHA256": "f164c8325ea5f9c989c29524518b598913508117712826dc408f592b7f99a723",
+            "approvedAt": "2026-11-02",
+            "publications": 105
+          },
+          "biofeedback": {
+            "version": "lab-biofeedback-20261105-ratings",
+            "publications": 63
+          },
+          "inflammation": {
+            "version": "general-inflammation-20261125-v3",
+            "sourceSHA256": "7b58c89f93dadb5891b79f2ba113bfa0529dca253c5fb75c9842c77a8f3d67f5",
+            "sourceRecords": 75,
+            "chapters": [
+              {
+                "id": "dock2-trauma-ptsd",
+                "number": 12,
+                "sourceRecords": 33,
+                "reviewedAt": "2026-11-21"
+              },
+              {
+                "id": "oxtr-il6-inflammation",
+                "number": 13,
+                "sourceRecords": 42,
+                "reviewedAt": "2026-11-24"
+              }
+            ]
+          },
+          "sound528": {
+            "version": "sound528-20261125-v1",
+            "sourceSHA256": "abac19e1cad7cba37ae0f4a0f4c15a3a51d2518fee29325dbb589727d29ea07a",
+            "sourceRecords": 12,
+            "completedAuthorReportedRCTs": 5,
+            "explicitly528HzRCTs": 4
+          },
+          "publicGenes": "public-gene-data-20261109-v1",
+          "literature": "literature-20261110-v2"
+        },
+        "usage": {
+          "totalTokens": 48536,
+          "qaSpend": {
+            "limitUSD": 2.25,
+            "chargedUpperUSD": 0.6781,
+            "calls": [
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 64532,
+                "outputTokenUpper": 16384,
+                "boundMethod": "UTF-8 bytes plus framing",
+                "reservedUSD": 1.62585,
+                "chargedUpperUSD": 0.167375,
+                "usage": {
+                  "input_tokens": 11182,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 6340,
+                    "cache_write_tokens_details": {
+                      "ttl_12h_tokens": 0,
+                      "ttl_30m_tokens": 6340
+                    },
+                    "cached_tokens": 4839
+                  },
+                  "output_tokens": 552,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 516
+                  },
+                  "total_tokens": 11734
+                }
+              },
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 55442,
+                "outputTokenUpper": 16384,
+                "boundMethod": "Provider-counted exact prefix plus new UTF-8 bytes and framing",
+                "reservedUSD": 1.512225,
+                "chargedUpperUSD": 0.21875,
+                "usage": {
+                  "input_tokens": 17396,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 6214,
+                    "cache_write_tokens_details": {
+                      "ttl_12h_tokens": 0,
+                      "ttl_30m_tokens": 6214
+                    },
+                    "cached_tokens": 11179
+                  },
+                  "output_tokens": 26,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 0
+                  },
+                  "total_tokens": 17422
+                }
+              },
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 28679,
+                "outputTokenUpper": 16384,
+                "boundMethod": "Provider-counted exact prefix plus new UTF-8 bytes and framing",
+                "reservedUSD": 1.1776875,
+                "chargedUpperUSD": 0.291975,
+                "usage": {
+                  "input_tokens": 18054,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 658,
+                    "cache_write_tokens_details": {
+                      "ttl_12h_tokens": 0,
+                      "ttl_30m_tokens": 658
+                    },
+                    "cached_tokens": 17321
+                  },
+                  "output_tokens": 1326,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 1034
+                  },
+                  "total_tokens": 19380
+                }
+              }
+            ]
+          }
+        },
+        "retrieval": {
+          "required": true,
+          "sourceCount": 7,
+          "contextMessages": 2,
+          "previousReferences": 4
+        }
+      }
+    }
+  ],
+  "turns": [
+    {
+      "question": "From our updated 528 Hz chapter, how many distinct publications and completed RCT reports are included, why does it receive two blue crosses, and how promising is the research? Please use the reviewed chapter and keep the answer concise.",
+      "rendered": "UNIVERSAL ONE\nThe chapter contains 12 distinct publications after deduplication, including five completed reports describing RCT designs. Four explicitly include 528 Hz; the fifth concerns related device-based frequency research. Unhale’s RCT classification remains unresolved, MINTREP is a protocol, and the IEEE paper’s methods remain unverified. [1]\n\nTwo blue crosses reflect the library threshold of at least three distinct qualifying RCTs; four explicitly including 528 Hz meet it. The badge describes study design and volume—not high certainty, strong replication or proven benefit. [1]\n\nThe research is promising but preliminary, especially for short-term stress and anxiety. Positive psychological, cortisol and blood-pressure findings coexist with mixed salivary biomarkers and nonsignificant findings for some sleep and heart-rate-variability outcomes. [2][3][4]\n\nThe interventions differ: pure 528 Hz tones, A4 = 444 Hz–tuned music with C5 near 528 Hz, 528 Hz-labelled music, and listening to OM chanting. Modest samples, incomplete masking, reporting weaknesses, short follow-up and confounding by music, meditation and setting limit confidence. The chapter provides a stronger basis for further testing, not established frequency-specific or lasting clinical efficacy; salivary changes also do not establish brain changes. [1][4]\n4 sources\nRead aloud",
+      "elapsedMs": 51849,
+      "citations": [
+        {
+          "id": "528hz-sound-tuning",
+          "url": "https://staging.universalmind.tv/informatics/research/?collection=sound&chapter=1#topic-ii"
+        },
+        {
+          "id": "sound528-bozok2026",
+          "url": "https://doi.org/10.1002/brb3.71452"
+        },
+        {
+          "id": "hsi-c2e2e55e945231",
+          "url": "https://doi.org/10.1177/09727531251390261"
+        },
+        {
+          "id": "sound528-ravikumar2026",
+          "url": "https://doi.org/10.7759/cureus.115693"
+        }
+      ],
+      "providerResponses": [
+        {
+          "id": "resp_07960092c04665ad016b0693e2cd8487d09c793e81a338c52f",
+          "requestedReasoning": "max",
+          "providerReasoning": "max",
+          "status": "completed"
+        },
+        {
+          "id": "resp_07960092c04665ad016b0693f0133c87d09e43e4b5617ee67f",
+          "requestedReasoning": "max",
+          "providerReasoning": "max",
+          "status": "completed"
+        },
+        {
+          "id": "resp_07960092c04665ad016b0693f273e487d09b6a735d77585f17",
+          "requestedReasoning": "max",
+          "providerReasoning": "max",
+          "status": "completed"
+        }
+      ]
+    },
+    {
+      "question": "Does that evidence establish a unique tuning effect or lasting clinical benefit? Include a positive finding and a non-significant or conflicting result from the same chapter, and keep 444 Hz piano tuning within the family.",
+      "rendered": "UNIVERSAL ONE\nNo—the chapter does not establish a unique tuning effect or lasting clinical benefit. It offers promising but preliminary evidence for short-term stress and anxiety outcomes. [1]\n\n- Positive finding: In a 100-person, four-week RCT, meditation incorporating recorded 528 Hz audio and acoustic instruments produced lower anxiety scores than remotely delivered music: an adjusted difference of −2.55 HADS points. However, setting, meditation and home practice also differed, so the result does not isolate tuning. Follow-up ended at four weeks. [2]\n- Non-significant finding: In the 528 Hz OM-chanting listening trial, between-group differences in sleep and total wellbeing were not significant. Changes in two heart-rate-variability measures also lacked significant time-by-group interactions. [3]\n\nA4 = 444 Hz piano tuning remains within this family, placing C5 near 528 Hz; it is tuned music, not a pure 528 Hz tone. The nine-person piano crossover study reported changes in cortisol, oxytocin and some mood measures, but chromogranin A did not change significantly. Significance within one tuning condition, but not another, does not establish a difference between tunings. [4]\n\nModest samples, masking/reporting weaknesses and limited follow-up restrict confidence. Salivary changes do not establish brain changes or durable clinical efficacy. [1]\n4 sources\nRead aloud",
+      "elapsedMs": 44441,
+      "citations": [
+        {
+          "id": "528hz-sound-tuning",
+          "url": "https://staging.universalmind.tv/informatics/research/?collection=sound&chapter=1#topic-ii"
+        },
+        {
+          "id": "sound528-ravikumar2026",
+          "url": "https://doi.org/10.7759/cureus.115693"
+        },
+        {
+          "id": "hsi-c2e2e55e945231",
+          "url": "https://doi.org/10.1177/09727531251390261"
+        },
+        {
+          "id": "src-ae3dc0d94fef",
+          "url": "https://www.scirp.org/pdf/Health_2018090514214117.pdf"
+        }
+      ],
+      "providerResponses": [
+        {
+          "id": "resp_0d2b513eb2cc80a1016b069415408887d08df240406df29d35",
+          "requestedReasoning": "max",
+          "providerReasoning": "max",
+          "status": "completed"
+        },
+        {
+          "id": "resp_0d2b513eb2cc80a1016b069421dde887d0a9c26354393a9384",
+          "requestedReasoning": "max",
+          "providerReasoning": "max",
+          "status": "completed"
+        },
+        {
+          "id": "resp_0d2b513eb2cc80a1016b069423cb7087d0ab065e1ea5c89385",
+          "requestedReasoning": "max",
+          "providerReasoning": "max",
+          "status": "completed"
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "blocked": []
+}

@@ -1,0 +1,23 @@
+{
+  "date": "2026-11-25",
+  "environment": "staging",
+  "sourceCommit": "7c1f5c6b09c44d76d8ba2b27bd15309b961b0865",
+  "workerVersion": "fd8be770-769d-4777-9adc-5afd574dd428",
+  "knowledgeVersion": "sound528-20261125-v1",
+  "proofURL": "https://staging.universalmind.tv/informatics/research/?collection=sound&chapter=1#topic-ii",
+  "distinctPublications": 12,
+  "additions": 8,
+  "completedAuthorReportedRCTs": 5,
+  "explicit528HzRCTs": 4,
+  "topicCrosses": 2,
+  "productionModified": false,
+  "verification": {
+    "stagingAssets": 59,
+    "completeDatasetSources": 1203,
+    "publicAPIRecords": 1136,
+    "liveCitedAnswers": 2,
+    "desktopAndMobile": true,
+    "whiteResearchCollections": true
+  },
+  "qaChargedUpperUSD": 1.3480750000000001
+}

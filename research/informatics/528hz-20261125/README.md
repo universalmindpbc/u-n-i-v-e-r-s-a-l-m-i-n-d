@@ -35,3 +35,13 @@ The expanded collection supports a small, active research area with preliminary 
 - Complete JSON/CSV reconstruction, discovery checks and deployment verification are recorded alongside this file as they finish.
 
 The one-off `update.py` records the original import operation; its assertion prevents reapplication over the expanded chapter. `source-review.json` retains the final appraisals. Only source and compact verification evidence enter Git; downloaded third-party articles remain outside the repository. Age and community builders retain 62 later published classifications absent from the older audits while adding the new records.
+
+## Completed staging release
+
+Source commit: `7c1f5c6b09c44d76d8ba2b27bd15309b961b0865`. Worker version: `fd8be770-769d-4777-9adc-5afd574dd428`.
+
+All 59 changed Panthur assets match the committed bytes. Complete JSON and CSV reconstruct all 1,203 structured sources. The public retrieval exports reconstruct all 1,136 records identically, including exact matches for all 12 chapter appraisals; REST and MCP agree. Desktop/mobile navigation and two real rendered, cited GPT-6 Astra answers passed. Production service health and inventory fingerprints remain unchanged. The two-answer QA conservative usage bound was US$1.348075.
+
+Proof: https://staging.universalmind.tv/informatics/research/?collection=sound&chapter=1#topic-ii
+
+Production has not been modified.
