@@ -1,0 +1,7 @@
+{"passed":true,"legacyRoutes":14,"chapterChecks":29,"orderedMaps":3,"retainedParentHistory":true}
+{"passed": true, "robotDecisions": 270, "HTMLPages": 2522, "localLinks": 31269, "publicationRecords": 1501, "atlasRecords": 1001, "experimentRecords": 2, "sourceFilesMatched": 18}
+{"passed": true, "sources": 1203, "version": "3bb4c79305ee4479776088a5002585a75682da1314bd61a9782488796c2ec71b"}
+Informatics: 14324 tracked assets; 34 changed uploads via Panthur FTP.
+Informatics: uploaded 34/34 changed assets.
+Informatics: completed changed uploads through the existing Panthur curl/FTP transport.
+Deploy complete: informatics

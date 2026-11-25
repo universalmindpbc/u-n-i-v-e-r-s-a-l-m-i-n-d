@@ -1,0 +1,43 @@
+{
+  "mode": "deployed staging",
+  "audio": "Chromium launched with --mute-audio; media requests and playback blocked",
+  "checks": [
+    {
+      "viewport": "desktop",
+      "sourceCount": 12,
+      "blueCrosses": 2,
+      "whiteDefaultWithSavedBlack": true,
+      "collections": [
+        "sound",
+        "vision",
+        "language",
+        "general",
+        "all"
+      ],
+      "paperDialogWhite": true,
+      "search": true,
+      "staticReaderWhite": true,
+      "horizontalOverflow": false,
+      "pageErrors": []
+    },
+    {
+      "viewport": "mobile",
+      "sourceCount": 12,
+      "blueCrosses": 2,
+      "whiteDefaultWithSavedBlack": true,
+      "collections": [
+        "sound",
+        "vision",
+        "language",
+        "general",
+        "all"
+      ],
+      "paperDialogWhite": true,
+      "search": true,
+      "staticReaderWhite": true,
+      "horizontalOverflow": false,
+      "pageErrors": []
+    }
+  ],
+  "passed": true
+}
