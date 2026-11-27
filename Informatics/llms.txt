@@ -65,14 +65,14 @@ To understand the geometry presented across this bioinformatics website, retriev
 
 ## Research library
 
-An extensive, clinically searchable research index spanning sound and auditory entrainment, EMDR, mindfulness-based stress reduction, mantra and hyperspectral imaging. Explore more than 1,500 publications by intervention, clinical condition, gene expression, molecular target, study design and journal, with transparent topic-level trust ratings.
+An extensive, clinically searchable research index spanning sound and auditory entrainment, EMDR, mindfulness-based stress reduction, mantra and hyperspectral imaging. Explore more than 1,600 publications by intervention, clinical condition, gene expression, molecular target, study design and journal, with transparent topic-level trust ratings.
 
 ## Read without a connector
 
 - [Research and evidence](https://universalmind.tv/informatics/read/): Plain HTML overview.
-- [Publications](https://universalmind.tv/informatics/read/publications/index.html): 1501 approved records, citations, summaries, limitations and topic assessment context.
+- [Publications](https://universalmind.tv/informatics/read/publications/index.html): 1621 approved records, citations, summaries, limitations and topic assessment context.
 - [528 Hz tuning-family research](https://universalmind.tv/informatics/read/528hz/index.html): 12 distinct publications, trial classifications, biomarkers, mixed findings and research quality.
-- [Oxytocin, OXTR and IL-6](https://universalmind.tv/informatics/read/oxtr-il6/index.html): 42 sources across cells, animals and humans; context-dependent inflammation, regulatory markers and a testable human research direction.
+- [Oxytocin, OXTR and IL-6](https://universalmind.tv/informatics/read/oxtr-il6/index.html): 162 sources: the original OXTR evidence plus 120 peer-reviewed mental-health and contextual publications; randomized trials, mixed findings and a testable human research direction.
 - [DOCK2, trauma and PTSD](https://universalmind.tv/informatics/read/dock2/index.html): Exploratory intervention-response research, OXTR hypotheses and 33 sources with explicit limitations.
 - [Hyperspectral Imaging](https://universalmind.tv/informatics/read/hyperspectral/index.html): Six subchapters, 240 original citation entries and 13 timeline milestones.
 - [Geometry Atlas](https://universalmind.tv/informatics/read/atlas/index.html): 1,001 records with complete JSON and CSV links.

@@ -154,7 +154,7 @@
   function researchRegisterLinks(chapter) {
     const register = chapter.researchRegister;
     if (!register) return '';
-    return `<p class="register-downloads"><a href="${esc(safeURL(register.json))}" download>Complete source register · JSON</a><a href="${esc(safeURL(register.csv))}" download>Source index · CSV</a><a href="${esc(safeURL(register.reading))}" target="_blank" rel="noopener noreferrer">Read or print the complete chapter</a></p>`;
+    return `<p class="register-downloads"><a href="${esc(safeURL(register.json))}" download>Complete source register · JSON</a><a href="${esc(safeURL(register.csv))}" download>Source index · CSV</a><a href="${esc(safeURL(register.reading))}" target="_blank" rel="noopener noreferrer">Read or print the complete chapter</a></p>${chapter.mentalHealthRegister ? `<p class="register-downloads"><a href="${esc(safeURL(chapter.mentalHealthRegister.json))}" download>Mental-health expansion · JSON</a><a href="${esc(safeURL(chapter.mentalHealthRegister.csv))}" download>Mental-health expansion · CSV</a></p>` : ''}`;
   }
   function researchEvidenceOverview(chapter) {
     if (!chapter.evidenceOverview) return '';
@@ -419,7 +419,7 @@
   async function load() {
     $('#load-error').hidden = true;
     try {
-      const responses = await Promise.all(['sound-edition','library','publication-access','language-edition','general-edition','mindfulness-expansion','vision-edition','vision-expansion','clinical-conditions','nature-expansion','fulltext-availability','fibonacci-expansion','hyperspectral-expansion','domestic-violence-expansion','youth-expansion','community-index','age-index','masked-language-expansion'].map(name=>fetch('library-data/'+name+'.json?v=sound528-connection-20261125')));
+      const responses = await Promise.all(['sound-edition','library','publication-access','language-edition','general-edition','mindfulness-expansion','vision-edition','vision-expansion','clinical-conditions','nature-expansion','fulltext-availability','fibonacci-expansion','hyperspectral-expansion','domestic-violence-expansion','youth-expansion','community-index','age-index','masked-language-expansion'].map(name=>fetch('library-data/'+name+'.json?v=il6-mental-health-20261128')));
       if (responses.some(response => !response.ok)) throw new Error('Research unavailable');
       const [sound,data,access,language,general,expansion,vision,visionExpansion,conditions,natureExpansion,fulltexts,fibonacciExpansion,hyperspectralExpansion,dvExpansion,youthExpansion,communities,ages,maskedLanguage] = await Promise.all(responses.map(response=>response.json()));
       if (communities.schemaVersion!=='communities-contexts/v2' || communities.records.length!==communities.recordCount) throw new Error('Invalid community classifications');

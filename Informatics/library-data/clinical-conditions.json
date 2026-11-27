@@ -65,6 +65,10 @@
     {
       "id": "dementia",
       "label": "Dementia / Alzheimer’s disease"
+    },
+    {
+      "id": "suicidality",
+      "label": "Suicidal ideation / behaviour"
     }
   ],
   "records": {
@@ -4765,6 +4769,1860 @@
             "field": "publication review",
             "text": "The trial measures perceived stress and sleep quality; these labels identify outcomes, not established benefits.",
             "sourceURL": "https://doi.org/10.1177/09727531251390261"
+          }
+        ]
+      }
+    ],
+    "pmid-42160062": [
+      {
+        "id": "depression",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Interleukin 6 as a Treatment Target for Depression: A Proof-of-Concept Randomized Clinical Trial.",
+            "matchedText": "depression",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-29090685": [
+      {
+        "id": "psychosis",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "A Randomized, Double-Blind, Placebo-Controlled Clinical Trial of Tocilizumab, An Interleukin-6 Receptor Antibody, For Residual Symptoms in Schizophrenia.",
+            "matchedText": "psychosis",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      },
+      {
+        "id": "schizophrenia",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "A Randomized, Double-Blind, Placebo-Controlled Clinical Trial of Tocilizumab, An Interleukin-6 Receptor Antibody, For Residual Symptoms in Schizophrenia.",
+            "matchedText": "schizophrenia",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-30322824": [
+      {
+        "id": "psychosis",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "The benefit of minocycline on negative symptoms of schizophrenia in patients with recent-onset psychosis (BeneMin): a randomised, double-blind, placebo-controlled trial.",
+            "matchedText": "psychosis",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      },
+      {
+        "id": "schizophrenia",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "The benefit of minocycline on negative symptoms of schizophrenia in patients with recent-onset psychosis (BeneMin): a randomised, double-blind, placebo-controlled trial.",
+            "matchedText": "schizophrenia",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-29678772": [
+      {
+        "id": "psychosis",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Minocycline adjunctive treatment to risperidone for negative symptoms in schizophrenia: Association with pro-inflammatory cytokine levels.",
+            "matchedText": "psychosis",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      },
+      {
+        "id": "schizophrenia",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Minocycline adjunctive treatment to risperidone for negative symptoms in schizophrenia: Association with pro-inflammatory cytokine levels.",
+            "matchedText": "schizophrenia",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-37069570": [
+      {
+        "id": "psychosis",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Berberine improves negative symptoms and cognitive function in patients with chronic schizophrenia via anti-inflammatory effect: a randomized clinical trial.",
+            "matchedText": "psychosis",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      },
+      {
+        "id": "schizophrenia",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Berberine improves negative symptoms and cognitive function in patients with chronic schizophrenia via anti-inflammatory effect: a randomized clinical trial.",
+            "matchedText": "schizophrenia",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-37848096": [
+      {
+        "id": "psychosis",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Adjunctive canakinumab reduces peripheral inflammation markers and improves positive symptoms in people with schizophrenia and inflammation: A randomized control trial.",
+            "matchedText": "psychosis",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      },
+      {
+        "id": "schizophrenia",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Adjunctive canakinumab reduces peripheral inflammation markers and improves positive symptoms in people with schizophrenia and inflammation: A randomized control trial.",
+            "matchedText": "schizophrenia",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-39128677": [
+      {
+        "id": "bipolar",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Efficacy of pentoxifylline for the treatment of bipolar I/II patients with treatment-resistant depression: A proof-of-concept, randomized, double-blind, placebo-controlled trial.",
+            "matchedText": "bipolar",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-32600481": [
+      {
+        "id": "bipolar",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Interleukin-6 and total antioxidant capacity levels following N-acetylcysteine and a combination nutraceutical intervention in a randomised controlled trial for bipolar disorder.",
+            "matchedText": "bipolar",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-24717258": [
+      {
+        "id": "bipolar",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "The effects of add-on low-dose memantine on cytokine levels in bipolar II depression: a 12-week double-blind, randomized controlled trial.",
+            "matchedText": "bipolar",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-24554598": [
+      {
+        "id": "bipolar",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Effects of celecoxib on inflammatory markers in bipolar patients undergoing electroconvulsive therapy: a placebo-controlled, double-blind, randomised study.",
+            "matchedText": "bipolar",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-29362444": [
+      {
+        "id": "bipolar",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Treatment of bipolar depression with minocycline and/or aspirin: an adaptive, 2×2 double-blind, randomized, placebo-controlled, phase IIA clinical trial.",
+            "matchedText": "bipolar",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-31920220": [
+      {
+        "id": "bipolar",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Changes in inflammation with treatment for bipolar II depression: Pilot trial data on differential effects of psychotherapy and medication.",
+            "matchedText": "bipolar",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-34778863": [
+      {
+        "id": "ptsd",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Transcutaneous Cervical Vagal Nerve Stimulation in Patients with Posttraumatic Stress Disorder (PTSD): A Pilot Study of Effects on PTSD Symptoms and Interleukin-6 Response to Stress.",
+            "matchedText": "ptsd",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      },
+      {
+        "id": "trauma",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Transcutaneous Cervical Vagal Nerve Stimulation in Patients with Posttraumatic Stress Disorder (PTSD): A Pilot Study of Effects on PTSD Symptoms and Interleukin-6 Response to Stress.",
+            "matchedText": "trauma",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-34589887": [
+      {
+        "id": "ptsd",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Transcutaneous vagal nerve stimulation blocks stress-induced activation of Interleukin-6 and interferon-γ in posttraumatic stress disorder: A double-blind, randomized, sham-controlled trial.",
+            "matchedText": "ptsd",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      },
+      {
+        "id": "trauma",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Transcutaneous vagal nerve stimulation blocks stress-induced activation of Interleukin-6 and interferon-γ in posttraumatic stress disorder: A double-blind, randomized, sham-controlled trial.",
+            "matchedText": "trauma",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-36938380": [
+      {
+        "id": "ptsd",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Biomarker Response to Mindfulness Intervention in Veterans Diagnosed with Post-traumatic Stress Disorder.",
+            "matchedText": "ptsd",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      },
+      {
+        "id": "trauma",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Biomarker Response to Mindfulness Intervention in Veterans Diagnosed with Post-traumatic Stress Disorder.",
+            "matchedText": "trauma",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-38725444": [
+      {
+        "id": "anxiety",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Inflammatory markers changes following acceptance-based behavioral psychotherapy in generalized anxiety disorder patients: Evidence from a randomized controlled trial.",
+            "matchedText": "anxiety",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-31163212": [
+      {
+        "id": "anxiety",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Effects of SSRIs on peripheral inflammatory cytokines in patients with Generalized Anxiety Disorder.",
+            "matchedText": "anxiety",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-36052304": [
+      {
+        "id": "adhd",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Effect of Vitamin D Supplementation on Inflammatory Biomarkers in School-Aged Children with Attention Deficit Hyperactivity Disorder.",
+            "matchedText": "adhd",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-24568073": [
+      {
+        "id": "adhd",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Effect of n-3 supplementation on hyperactivity, oxidative stress and inflammatory mediators in children with attention-deficit-hyperactivity disorder.",
+            "matchedText": "adhd",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-32256407": [
+      {
+        "id": "adhd",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "A Pilot Randomized Control Trial With the Probiotic Strain Lactobacillus rhamnosus GG (LGG) in ADHD: Children and Adolescents Report Better Health-Related Quality of Life.",
+            "matchedText": "adhd",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-38677624": [
+      {
+        "id": "depression",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "The antidepressant effect of whole-body hyperthermia is associated with the classical interleukin-6 signaling pathway.",
+            "matchedText": "depression",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-40305022": [
+      {
+        "id": "substance-use",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "A Neuroimmune Modulator for Alcohol Use Disorder: A Randomized Clinical Trial.",
+            "matchedText": "substance-use",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-35754106": [
+      {
+        "id": "substance-use",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Effects of ibudilast on central and peripheral markers of inflammation in alcohol use disorder: A randomized clinical trial.",
+            "matchedText": "substance-use",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-40630018": [
+      {
+        "id": "substance-use",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Effect of the GLP-1 receptor agonist exenatide on pro-inflammatory and metabolic biomarkers in individuals with alcohol use disorder: Post hoc results from a randomized, double-blinded, placebo-controlled clinical trial.",
+            "matchedText": "substance-use",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-33719920": [
+      {
+        "id": "substance-use",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "A sham-controlled clinical trial to examine the effect of bilateral tDCS on craving, TNF-α and IL-6 expression levels, and impulsivity of males with opioid use disorder.",
+            "matchedText": "substance-use",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-25988317": [
+      {
+        "id": "substance-use",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Low-dose memantine attenuated methadone dose in opioid-dependent patients: a 12-week double-blind randomized controlled trial.",
+            "matchedText": "substance-use",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-25716777": [
+      {
+        "id": "substance-use",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "A placebo-controlled trial of dextromethorphan as an adjunct in opioid-dependent patients undergoing methadone maintenance treatment.",
+            "matchedText": "substance-use",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-34331010": [
+      {
+        "id": "substance-use",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Exploring cannabidiol effects on inflammatory markers in individuals with cocaine use disorder: a randomized controlled trial.",
+            "matchedText": "substance-use",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-31812878": [
+      {
+        "id": "substance-use",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Ibudilast attenuates peripheral inflammatory effects of methamphetamine in patients with methamphetamine use disorder.",
+            "matchedText": "substance-use",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-34432333": [
+      {
+        "id": "substance-use",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Elevated serum levels of TNF-α, IL-6, and IL-18 in chronic methamphetamine users.",
+            "matchedText": "substance-use",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-34413283": [
+      {
+        "id": "adhd",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Cortisol and inflammatory biomarker levels in youths with attention deficit hyperactivity disorder (ADHD): evidence from a systematic review with meta-analysis.",
+            "matchedText": "adhd",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-35660454": [
+      {
+        "id": "adhd",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Peripheral blood inflammatory markers in patients with attention deficit/hyperactivity disorder (ADHD): A systematic review and meta-analysis.",
+            "matchedText": "adhd",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-42287409": [
+      {
+        "id": "adhd",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Inflammatory cytokine alterations in autism spectrum disorder and attention-deficit/hyperactivity disorder: a systematic review and network meta-analysis.",
+            "matchedText": "adhd",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-33936305": [
+      {
+        "id": "adhd",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Serum Levels of Interleukin-6 and Tumor Necrosis Factor Alpha in Children With Attention-Deficit Hyperactivity Disorder.",
+            "matchedText": "adhd",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-30430896": [
+      {
+        "id": "adhd",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Serum Interleukin-6 Level in Children With Attention-Deficit Hyperactivity Disorder (ADHD).",
+            "matchedText": "adhd",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-28262601": [
+      {
+        "id": "adhd",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "IL-6 and TNF-α in unmedicated adults with ADHD: Relationship to cortisol awakening response.",
+            "matchedText": "adhd",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-20534153": [
+      {
+        "id": "adhd",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Attention-deficit hyperactivity disorder (ADHD) and glial integrity: an exploration of associations of cytokines and kynurenine metabolites with symptoms and attention.",
+            "matchedText": "adhd",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-35197458": [
+      {
+        "id": "adhd",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Gut microbiota and plasma cytokine levels in patients with attention-deficit/hyperactivity disorder.",
+            "matchedText": "adhd",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-37511467": [
+      {
+        "id": "adhd",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Peripheral Inflammatory Markers in Autism Spectrum Disorder and Attention Deficit/Hyperactivity Disorder at Adolescent Age.",
+            "matchedText": "adhd",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-32707260": [
+      {
+        "id": "adhd",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Evaluation of maternal inflammation as a marker of future offspring ADHD symptoms: A prospective investigation.",
+            "matchedText": "adhd",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-36597271": [
+      {
+        "id": "adhd",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "The role of inflammation in the prospective associations between early childhood sleep problems and ADHD at 10 years: findings from a UK birth cohort study.",
+            "matchedText": "adhd",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-34371132": [
+      {
+        "id": "adhd",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Attention-deficit/hyperactivity disorder has a state-dependent association with asthma: The role of systemic inflammation in a population-based birth cohort followed from childhood to adulthood.",
+            "matchedText": "adhd",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-20015486": [
+      {
+        "id": "depression",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "A meta-analysis of cytokines in major depression.",
+            "matchedText": "depression",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-26065825": [
+      {
+        "id": "depression",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Cumulative meta-analysis of interleukins 6 and 1β, tumour necrosis factor α and C-reactive protein in patients with major depressive disorder.",
+            "matchedText": "depression",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-32807846": [
+      {
+        "id": "depression",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "The longitudinal associations of inflammatory biomarkers and depression revisited: systematic review, meta-analysis, and meta-regression.",
+            "matchedText": "depression",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-25133871": [
+      {
+        "id": "depression",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Association of serum interleukin 6 and C-reactive protein in childhood with depression and psychosis in young adult life: a population-based longitudinal study.",
+            "matchedText": "depression",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      },
+      {
+        "id": "psychosis",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Association of serum interleukin 6 and C-reactive protein in childhood with depression and psychosis in young adult life: a population-based longitudinal study.",
+            "matchedText": "psychosis",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-34505025": [
+      {
+        "id": "depression",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Role of inflammation in depression and anxiety: Tests for disorder specificity, linearity and potential causality of association in the UK Biobank.",
+            "matchedText": "depression",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-33631287": [
+      {
+        "id": "depression",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Depression and interleukin-6 signaling: A Mendelian Randomization study.",
+            "matchedText": "depression",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-37217205": [],
+    "pmid-33079133": [
+      {
+        "id": "depression",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Dissecting the Association Between Inflammation, Metabolic Dysregulation, and Specific Depressive Symptoms: A Genetic Correlation and 2-Sample Mendelian Randomization Study.",
+            "matchedText": "depression",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-34135474": [
+      {
+        "id": "depression",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Association of inflammation with depression and anxiety: evidence for symptom-specificity and potential causality from UK Biobank and NESDA cohorts.",
+            "matchedText": "depression",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-36893912": [],
+    "pmid-34332041": [
+      {
+        "id": "bipolar",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Peripheral levels of C-reactive protein, tumor necrosis factor-α, interleukin-6, and interleukin-1β across the mood spectrum in bipolar disorder: A meta-analysis of mean differences and variability.",
+            "matchedText": "bipolar",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-30113291": [
+      {
+        "id": "bipolar",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Neurotrophins, cytokines, oxidative stress mediators and mood state in bipolar disorder: systematic review and meta-analyses.",
+            "matchedText": "bipolar",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-23419545": [
+      {
+        "id": "bipolar",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Cytokine alterations in bipolar disorder: a meta-analysis of 30 studies.",
+            "matchedText": "bipolar",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-25451609": [
+      {
+        "id": "bipolar",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Elevated levels of IL-6 and IL-18 in manic and hypomanic states in rapid cycling bipolar disorder patients.",
+            "matchedText": "bipolar",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      },
+      {
+        "id": "mania",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Elevated levels of IL-6 and IL-18 in manic and hypomanic states in rapid cycling bipolar disorder patients.",
+            "matchedText": "mania",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-27476619": [
+      {
+        "id": "bipolar",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Childhood interleukin-6, C-reactive protein and atopic disorders as risk factors for hypomanic symptoms in young adulthood: a longitudinal birth cohort study.",
+            "matchedText": "bipolar",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      },
+      {
+        "id": "mania",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Childhood interleukin-6, C-reactive protein and atopic disorders as risk factors for hypomanic symptoms in young adulthood: a longitudinal birth cohort study.",
+            "matchedText": "mania",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-21138659": [
+      {
+        "id": "bipolar",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Elevation of cerebrospinal fluid interleukin-1ß in bipolar disorder.",
+            "matchedText": "bipolar",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-19251324": [
+      {
+        "id": "bipolar",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Comparison of cytokine levels in depressed, manic and euthymic patients with bipolar disorder.",
+            "matchedText": "bipolar",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      },
+      {
+        "id": "mania",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Comparison of cytokine levels in depressed, manic and euthymic patients with bipolar disorder.",
+            "matchedText": "mania",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-17845274": [
+      {
+        "id": "bipolar",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Immune variations in bipolar disorder: phasic differences.",
+            "matchedText": "bipolar",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      },
+      {
+        "id": "mania",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Immune variations in bipolar disorder: phasic differences.",
+            "matchedText": "mania",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-32871531": [
+      {
+        "id": "bipolar",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Association of pro-inflammatory cytokines with clinical features in euthymic patients with Bipolar-I-Disorder.",
+            "matchedText": "bipolar",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-21641581": [
+      {
+        "id": "psychosis",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Meta-analysis of cytokine alterations in schizophrenia: clinical status and antipsychotic effects.",
+            "matchedText": "psychosis",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      },
+      {
+        "id": "schizophrenia",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Meta-analysis of cytokine alterations in schizophrenia: clinical status and antipsychotic effects.",
+            "matchedText": "schizophrenia",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-24704219": [
+      {
+        "id": "psychosis",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Cytokine function in medication-naive first episode psychosis: a systematic review and meta-analysis.",
+            "matchedText": "psychosis",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      },
+      {
+        "id": "schizophrenia",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Cytokine function in medication-naive first episode psychosis: a systematic review and meta-analysis.",
+            "matchedText": "schizophrenia",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-33529887": [
+      {
+        "id": "psychosis",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Serum interleukin-6 in schizophrenia: A system review and meta-analysis.",
+            "matchedText": "psychosis",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      },
+      {
+        "id": "schizophrenia",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Serum interleukin-6 in schizophrenia: A system review and meta-analysis.",
+            "matchedText": "schizophrenia",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-37103677": [
+      {
+        "id": "psychosis",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Effects of IL-6/IL-6R axis alterations in serum, plasma and cerebrospinal fluid with the schizophrenia: an updated review and meta-analysis of 58 studies.",
+            "matchedText": "psychosis",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      },
+      {
+        "id": "schizophrenia",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Effects of IL-6/IL-6R axis alterations in serum, plasma and cerebrospinal fluid with the schizophrenia: an updated review and meta-analysis of 58 studies.",
+            "matchedText": "schizophrenia",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-38364730": [
+      {
+        "id": "psychosis",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Inflammatory cerebrospinal fluid markers in schizophrenia spectrum disorders: A systematic review and meta-analysis of 69 studies with 5710 participants.",
+            "matchedText": "psychosis",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      },
+      {
+        "id": "schizophrenia",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Inflammatory cerebrospinal fluid markers in schizophrenia spectrum disorders: A systematic review and meta-analysis of 69 studies with 5710 participants.",
+            "matchedText": "schizophrenia",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-33740587": [
+      {
+        "id": "psychosis",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Immune-inflammatory markers and psychosis risk: A systematic review and meta-analysis.",
+            "matchedText": "psychosis",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      },
+      {
+        "id": "schizophrenia",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Immune-inflammatory markers and psychosis risk: A systematic review and meta-analysis.",
+            "matchedText": "schizophrenia",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-30407606": [
+      {
+        "id": "psychosis",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "A Meta-analysis of Immune Parameters, Variability, and Assessment of Modal Distribution in Psychosis and Test of the Immune Subgroup Hypothesis.",
+            "matchedText": "psychosis",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      },
+      {
+        "id": "schizophrenia",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "A Meta-analysis of Immune Parameters, Variability, and Assessment of Modal Distribution in Psychosis and Test of the Immune Subgroup Hypothesis.",
+            "matchedText": "schizophrenia",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-29094161": [
+      {
+        "id": "psychosis",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Inflammatory Biomarkers and Risk of Schizophrenia: A 2-Sample Mendelian Randomization Study.",
+            "matchedText": "psychosis",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      },
+      {
+        "id": "schizophrenia",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Inflammatory Biomarkers and Risk of Schizophrenia: A 2-Sample Mendelian Randomization Study.",
+            "matchedText": "schizophrenia",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-26903267": [],
+    "pmid-36863384": [
+      {
+        "id": "psychosis",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Alteration patterns of peripheral concentrations of cytokines and associated inflammatory proteins in acute and chronic stages of schizophrenia: a systematic review and network meta-analysis.",
+            "matchedText": "psychosis",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      },
+      {
+        "id": "schizophrenia",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Alteration patterns of peripheral concentrations of cytokines and associated inflammatory proteins in acute and chronic stages of schizophrenia: a systematic review and network meta-analysis.",
+            "matchedText": "schizophrenia",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-26544749": [
+      {
+        "id": "ptsd",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Inflammatory markers in post-traumatic stress disorder: a systematic review, meta-analysis, and meta-regression.",
+            "matchedText": "ptsd",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      },
+      {
+        "id": "trauma",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Inflammatory markers in post-traumatic stress disorder: a systematic review, meta-analysis, and meta-regression.",
+            "matchedText": "trauma",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-32158005": [
+      {
+        "id": "ptsd",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Immune biomarkers alterations in post-traumatic stress disorder: A systematic review and meta-analysis.",
+            "matchedText": "ptsd",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      },
+      {
+        "id": "trauma",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Immune biomarkers alterations in post-traumatic stress disorder: A systematic review and meta-analysis.",
+            "matchedText": "trauma",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-35477973": [
+      {
+        "id": "ptsd",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Inflammatory and oxidative stress markers in post-traumatic stress disorder: a systematic review and meta-analysis.",
+            "matchedText": "ptsd",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      },
+      {
+        "id": "trauma",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Inflammatory and oxidative stress markers in post-traumatic stress disorder: a systematic review and meta-analysis.",
+            "matchedText": "trauma",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-41115574": [
+      {
+        "id": "ptsd",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Aberrations in peripheral blood interleukin-6 levels in post-traumatic stress disorder: A systematic review and meta-analysis.",
+            "matchedText": "ptsd",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      },
+      {
+        "id": "trauma",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Aberrations in peripheral blood interleukin-6 levels in post-traumatic stress disorder: A systematic review and meta-analysis.",
+            "matchedText": "trauma",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-33988765": [
+      {
+        "id": "ptsd",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Interleukin-6 secretion upon acute psychosocial stress as a potential predictor of psychotherapy outcome in posttraumatic stress disorder.",
+            "matchedText": "ptsd",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      },
+      {
+        "id": "trauma",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Interleukin-6 secretion upon acute psychosocial stress as a potential predictor of psychotherapy outcome in posttraumatic stress disorder.",
+            "matchedText": "trauma",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-30199144": [
+      {
+        "id": "anxiety",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "The association between anxiety, traumatic stress, and obsessive-compulsive disorders and chronic inflammation: A systematic review and meta-analysis.",
+            "matchedText": "anxiety",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-34908836": [
+      {
+        "id": "anxiety",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Alterations in Peripheral C-Reactive Protein and Inflammatory Cytokine Levels in Patients with Panic Disorder: A Systematic Review and Meta-Analysis.",
+            "matchedText": "anxiety",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-29241050": [
+      {
+        "id": "anxiety",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Cytokine alterations in panic disorder: A systematic review.",
+            "matchedText": "anxiety",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-37779624": [
+      {
+        "id": "suicidality",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Association of interleukin-6 with suicidal ideation in veterans: a longitudinal perspective.",
+            "matchedText": "suicidality",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-38549611": [
+      {
+        "id": "suicidality",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Association between cytokines and suicidality in patients with psychosis: A multicentre longitudinal analysis.",
+            "matchedText": "suicidality",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-41272690": [
+      {
+        "id": "suicidality",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Pro-inflammatory cytokines level in depressed patients with suicidal behaviour: a systematic review and meta-analysis.",
+            "matchedText": "suicidality",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-37356288": [
+      {
+        "id": "suicidality",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Immune-related biomarkers and suicidal behaviors: A meta-analysis.",
+            "matchedText": "suicidality",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-25541493": [
+      {
+        "id": "suicidality",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Meta-Analysis of Cytokines and Chemokines in Suicidality: Distinguishing Suicidal Versus Nonsuicidal Patients.",
+            "matchedText": "suicidality",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-34280025": [
+      {
+        "id": "suicidality",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Interleukin-6 Levels in Serum, Plasma, and Cerebral Spinal Fluid in Individuals with Suicide Behavior: Systematic Review and Meta-Analysis with Meta-Regression.",
+            "matchedText": "suicidality",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-36351891": [
+      {
+        "id": "ptsd",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Pro- and anti-inflammatory cytokines Interleukin-6 and Interleukin-10 predict therapy outcome of female patients with posttraumatic stress disorder.",
+            "matchedText": "ptsd",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      },
+      {
+        "id": "trauma",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Pro- and anti-inflammatory cytokines Interleukin-6 and Interleukin-10 predict therapy outcome of female patients with posttraumatic stress disorder.",
+            "matchedText": "trauma",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-36115323": [
+      {
+        "id": "ptsd",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Trauma, psychological distress and markers of systemic inflammation among US women: A longitudinal study.",
+            "matchedText": "ptsd",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      },
+      {
+        "id": "trauma",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Trauma, psychological distress and markers of systemic inflammation among US women: A longitudinal study.",
+            "matchedText": "trauma",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-36732491": [
+      {
+        "id": "ptsd",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Acute stress responses of autonomous nervous system, HPA axis, and inflammatory system in posttraumatic stress disorder.",
+            "matchedText": "ptsd",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      },
+      {
+        "id": "trauma",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Acute stress responses of autonomous nervous system, HPA axis, and inflammatory system in posttraumatic stress disorder.",
+            "matchedText": "trauma",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-23612048": [
+      {
+        "id": "anxiety",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Anxiety disorders and inflammation in a large adult cohort.",
+            "matchedText": "anxiety",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-34758380": [
+      {
+        "id": "anxiety",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "The immune-kynurenine pathway in social anxiety disorder.",
+            "matchedText": "anxiety",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-35202735": [
+      {
+        "id": "suicidality",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Associations of three major physiological stress systems with suicidal ideation and suicide attempts in patients with a depressive and/or anxiety disorder.",
+            "matchedText": "suicidality",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-33388702": [
+      {
+        "id": "suicidality",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Relationships between inflammatory markers and suicide risk status in major depression.",
+            "matchedText": "suicidality",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-30844329": [
+      {
+        "id": "suicidality",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Estimation of IL-6, INFγ, and Lipid Profile in Suicidal and Nonsuicidal Adults with Major Depressive Disorder.",
+            "matchedText": "suicidality",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-34730074": [
+      {
+        "id": "suicidality",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Inflammation biomarkers in suicide attempts and their relation to abuse, global functioning and cognition.",
+            "matchedText": "suicidality",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-22516310": [
+      {
+        "id": "depression",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Effect of celecoxib add-on treatment on symptoms and serum IL-6 concentrations in patients with major depressive disorder: randomized double-blind placebo-controlled study.",
+            "matchedText": "depression",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-33504955": [
+      {
+        "id": "depression",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Augmentation therapy with minocycline in treatment-resistant depression patients with low-grade peripheral inflammation: results from a double-blind randomised clinical trial.",
+            "matchedText": "depression",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-34937590": [
+      {
+        "id": "depression",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Exploring interleukin-6, lipopolysaccharide-binding protein and brain-derived neurotrophic factor following 12 weeks of adjunctive minocycline treatment for depression.",
+            "matchedText": "depression",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-30153598": [
+      {
+        "id": "depression",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Rapid inflammation modulation and antidepressant efficacy of a low-dose ketamine infusion in treatment-resistant depression: A randomized, double-blind control study.",
+            "matchedText": "depression",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-30205379": [
+      {
+        "id": "depression",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "The Phosphodiesterase Inhibitor Pentoxifylline as a Novel Adjunct to Antidepressants in Major Depressive Disorder Patients: A Proof-of-Concept, Randomized, Double-Blind, Placebo-Controlled Trial.",
+            "matchedText": "depression",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-30388595": [
+      {
+        "id": "depression",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Probiotic Lactobacillus Plantarum 299v decreases kynurenine concentration and improves cognitive functions in patients with major depression: A double-blind, randomized, placebo controlled study.",
+            "matchedText": "depression",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-23602205": [
+      {
+        "id": "depression",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Effects of zinc supplementation on efficacy of antidepressant therapy, inflammatory cytokines, and brain-derived neurotrophic factor in patients with major depression.",
+            "matchedText": "depression",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-31141465": [
+      {
+        "id": "depression",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Benefits of Yoga on IL-6: Findings from a Randomized Controlled Trial of Yoga for Depression.",
+            "matchedText": "depression",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-26802811": [
+      {
+        "id": "depression",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Pro-inflammatory cytokines and psychotherapy in depression: Results from a randomized clinical trial.",
+            "matchedText": "depression",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-36005883": [
+      {
+        "id": "depression",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Omega-3 Fatty Acids for Major Depressive Disorder With High Inflammation: A Randomized Dose-Finding Clinical Trial.",
+            "matchedText": "depression",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-40188855": [
+      {
+        "id": "depression",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Lack of relationships between ketamine treatment and peripheral neurotrophic and inflammatory factors in a randomized controlled ketamine trial of major depressive disorder.",
+            "matchedText": "depression",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-32533781": [
+      {
+        "id": "substance-use",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Aberrations in peripheral inflammatory cytokine levels in substance use disorders: a meta-analysis of 74 studies.",
+            "matchedText": "substance-use",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-35995431": [
+      {
+        "id": "substance-use",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Inflammatory cytokines and alcohol use disorder: systematic review and meta-analysis.",
+            "matchedText": "substance-use",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-31513981": [
+      {
+        "id": "substance-use",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Correlation between interleukin-6 levels and methadone maintenance therapy outcomes.",
+            "matchedText": "substance-use",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-30071446": [
+      {
+        "id": "substance-use",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Correlation of cytokines, BDNF levels, and memory function in patients with opioid use disorder undergoing methadone maintenance treatment.",
+            "matchedText": "substance-use",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-25660662": [
+      {
+        "id": "substance-use",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Inflammatory response in heroin addicts undergoing methadone maintenance treatment.",
+            "matchedText": "substance-use",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-36181736": [
+      {
+        "id": "substance-use",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Association Between Inflammatory Cytokines, Executive Function, and Substance Use in Patients With Opioid Use Disorder and Amphetamine-Type Stimulants Use Disorder.",
+            "matchedText": "substance-use",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-31749792": [
+      {
+        "id": "substance-use",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Cocaine Use Disorder Is Associated With Changes in Th1/Th2/Th17 Cytokines and Lymphocytes Subsets.",
+            "matchedText": "substance-use",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-39504756": [
+      {
+        "id": "substance-use",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Influence of cocaine use reduction on markers of immune function.",
+            "matchedText": "substance-use",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-37424424": [
+      {
+        "id": "substance-use",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Oxidative Stress and Inflammatory Biomarkers in People with Methamphetamine Use Disorder.",
+            "matchedText": "substance-use",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-15282117": [
+      {
+        "id": "substance-use",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Serum cytokine concentrations in alcohol-dependent individuals without liver disease.",
+            "matchedText": "substance-use",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-31736187": [
+      {
+        "id": "substance-use",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Stress-related suppression of peripheral cytokines predicts future relapse in alcohol-dependent individuals with and without subclinical depression.",
+            "matchedText": "substance-use",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-31541874": [
+      {
+        "id": "substance-use",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Peripheral proinflammatory markers are upregulated in abstinent alcohol-dependent patients but are not affected by cognitive bias modification: Preliminary findings.",
+            "matchedText": "substance-use",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-37484196": [
+      {
+        "id": "substance-use",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "IL-6, but not TNF-α, response to alcohol cues and acute consumption associated with neural cue reactivity, craving, and future drinking in binge drinkers.",
+            "matchedText": "substance-use",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-32554630": [
+      {
+        "id": "substance-use",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Recent cannabis use in HIV is associated with reduced inflammatory markers in CSF and blood.",
+            "matchedText": "substance-use",
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      }
+    ],
+    "pmid-25274579": [
+      {
+        "id": "substance-use",
+        "evidence": [
+          {
+            "field": "reviewed-study-population",
+            "text": "Cigarette smoking and variations in systemic immune and inflammation markers.",
+            "matchedText": "substance-use",
+            "reviewedAt": "2026-11-28"
           }
         ]
       }

@@ -130,7 +130,7 @@ export function repository(db,env,base){
  }
  async function call(name,args={}){
   if(name==='get_quantum_study')return quantumKnowledge(args,env.ALLOWED_ORIGIN);
-  if(name==='get_research_chapter'){const result=(args.id==='528hz-sound-tuning'?sound528Knowledge:inflammationKnowledge)({id:textArg(args.id,'id',100),topic:textArg(args.topic,'topic',100),query:textArg(args.query,'query'),offset:integerArg(args.offset,'offset',75)},env.ALLOWED_ORIGIN);if(!result)throw new RepositoryError('Research chapter or topic not found.',404);return wrap(result);}
+  if(name==='get_research_chapter'){const result=(args.id==='528hz-sound-tuning'?sound528Knowledge:inflammationKnowledge)({id:textArg(args.id,'id',100),topic:textArg(args.topic,'topic',100),query:textArg(args.query,'query'),offset:integerArg(args.offset,'offset',500)},env.ALLOWED_ORIGIN);if(!result)throw new RepositoryError('Research chapter or topic not found.',404);return wrap(result);}
   if(name==='get_inventory')return inventory();
   if(name==='search_publications')return publications(args);
   if(name==='get_publication')return publication(args.id);

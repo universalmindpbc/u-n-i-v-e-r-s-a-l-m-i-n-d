@@ -18,7 +18,7 @@ export const inflammationRecords=chapters.flatMap(c=>registers[c.id].records.map
 const byIdentity=new Map(inflammationRecords.flatMap(r=>[r.id,r.doi,r.pmid,...r.aliases].filter(Boolean).map(id=>[normal(id),r])));
 export const inflammationRecord=id=>byIdentity.get(normal(id));
 export const inflammationReplaces=row=>!![row.id,row.data?.doi,row.data?.pmid].filter(Boolean).find(inflammationRecord);
-export const inflammationVersion={version:'general-inflammation-20261125-v3',sourceSHA256:createHash('sha256').update(JSON.stringify({chapters,registers,classifications:inflammationRecords.map(({id,collections,conditions})=>({id,collections,conditions}))})).digest('hex'),sourceRecords:inflammationRecords.length,chapters:chapters.map(c=>({id:c.id,number:c.number,sourceRecords:registers[c.id].sourceCount,reviewedAt:registers[c.id].reviewedAt}))};
+export const inflammationVersion={version:'general-inflammation-20261128-v4',sourceSHA256:createHash('sha256').update(JSON.stringify({chapters,registers,classifications:inflammationRecords.map(({id,collections,conditions})=>({id,collections,conditions}))})).digest('hex'),sourceRecords:inflammationRecords.length,chapters:chapters.map(c=>({id:c.id,number:c.number,sourceRecords:registers[c.id].sourceCount,reviewedAt:registers[c.id].reviewedAt}))};
 
 function directChapters(query){
  const q=normal(query),ids=[];
@@ -54,18 +54,45 @@ const anchors={
  'dock2-trauma-ptsd':['mehta2017','bainomugisa2021','katrinli2024','hummel2022'],
  'oxtr-il6-inflammation':['szeto2008','ross2013','clodi2008','boutin2025','ditzen2023','schneider2026']
 };
+
+const clinicalRoutes=[
+ ['hypomania',/hypomani/i],['mania',/(?<!hypo)mani[ac]/i],['bipolar',/bipolar/i],
+ ['depression',/depress/i],['psychosis',/schizophren|psychosis|psychotic/i],
+ ['ptsd',/ptsd|trauma/i],['anxiety',/anxiety|panic|gad|phobia/i],
+ ['suicidality',/suicid|self.harm/i],['adhd',/adhd|attention.deficit/i],
+ ['alcohol',/alcohol|drinking|\baud\b/i],['opioids',/opioid|methadone|heroin/i],
+ ['stimulants',/stimulant|methamphetamine|cocaine/i],['cannabis-nicotine',/cannabis|nicotine|tobacco|smoking/i]
+];
+const clinicalAnchors=['42160062','29090685','30322824','40305022','39128677','36052304','24568073','32256407','42287409','35660454','34413283','38725444','23612048','34778863','36938380','37779624','41272690','27476619','25451609','39504756','37424424'];
+function relevantNarratives(chapter,query){
+ if(!query||chapter.id!=='oxtr-il6-inflammation')return [];
+ const keys=clinicalRoutes.filter(([key,rx])=>rx.test(query)&&!(key==='depression'&&/bipolar/i.test(query))).map(([key])=>key);
+ if(/addiction|substance.use/i.test(query)&&!keys.some(k=>['alcohol','opioids','stimulants'].includes(k)))keys.push('alcohol','opioids','stimulants');
+ if(!keys.length&&/mental|psychiatr|illness|disease|all.*literature|systems|hypothesis/i.test(query))keys.push('mental-health-map','systems-hypothesis');
+ return keys.map(k=>chapter.topics.find(t=>t.id==='oxtr-il6-'+k)).filter(Boolean).slice(0,3);
+}
+
 export function inflammationKnowledge(args={},origin='https://staging.universalmind.tv'){
  const chapter=chapters.find(c=>c.id===args.id);if(!chapter)return null;
+ const narratives=relevantNarratives(chapter,args.query||'');
  const register=registers[chapter.id],topic=args.topic?chapter.topics.find(t=>t.id===args.topic):null;
  if(args.topic&&!topic)return null;
  let rows=inflammationRecords.filter(r=>r.researchChapter===chapter.id);
  if(topic){const ids=new Set(topic.papers.map(p=>p.recordId));rows=rows.filter(r=>ids.has(r.id));}
- if(args.query){const eligible=new Set(rows.map(r=>r.id));rows=inflammationSearch(args.query,{},75).filter(r=>eligible.has(r.id));}
+ if(args.query){
+  const topicIds=new Set(narratives.flatMap(t=>t.papers.map(p=>p.recordId)));
+  const eligible=new Set(rows.filter(r=>!topicIds.size||topicIds.has(r.id)).map(r=>r.id));
+  rows=inflammationSearch(args.query,{},500).filter(r=>eligible.has(r.id));
+  if(narratives.length){
+   const ranked=rows.map((r,i)=>({r,i,anchor:clinicalAnchors.includes(r.pmid)}));
+   rows=ranked.sort((a,b)=>Number(b.anchor)-Number(a.anchor)||a.i-b.i).map(x=>x.r);
+  }
+ }
  else if(!topic){const keys=anchors[chapter.id],rank=r=>keys.includes(r.key)?keys.indexOf(r.key):100;rows.sort((a,b)=>rank(a)-rank(b));}
  const offset=Math.max(0,Number(args.offset)||0),limit=6;
  return {id:chapter.id,title:chapter.title,url:`${origin}/informatics/research/?collection=general&chapter=${chapter.number}`,version:inflammationVersion,reviewedAt:register.reviewedAt,sourceCount:register.sourceCount,reviewMethod:register.reviewMethod,overview:chapter.overview,evidenceOverview:chapter.evidenceOverview,evidenceOverviewNote:chapter.evidenceOverviewNote,biomarkers:register.biomarkers,
   topics:(topic?[topic]:chapter.topics).map(({papers,paragraphs,paragraphSources,...t})=>({...t,...(topic?{paragraphs,paragraphSources}:{}),sourceIds:papers.map(p=>p.recordId)})),
-  matchedRecords:rows.length,offset,nextOffset:offset+limit<rows.length?offset+limit:null,records:rows.slice(offset,offset+limit),
+  matchedNarratives:narratives.map(({papers,...t})=>t),mentalHealthPublicationCount:register.mentalHealthPublicationCount||null,expansionPublicationCount:register.expansionPublicationCount||null,matchedRecords:rows.length,offset,nextOffset:offset+limit<rows.length?offset+limit:null,records:rows.slice(offset,offset+limit),
   downloads:Object.fromEntries(['json','csv','reading'].map(k=>[k,`${origin}/informatics/${chapter.researchRegister[k]}`])),
   knowledgeMethod:'Versioned retrieval of the published source appraisals and chapter synthesis. Source counts include different evidence types and linked reports; they are not counts of independent experiments. Full-text access remains source-specific. No model fine-tuning.'};
 }

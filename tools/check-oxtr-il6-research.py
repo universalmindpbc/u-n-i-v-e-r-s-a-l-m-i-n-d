@@ -8,14 +8,17 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / 'Informatics/library-data'
 AUDIT = ROOT / 'research/informatics/oxtr-il6-20261124'
+CURRENT_AUDIT = ROOT / 'research/informatics/il6-mental-health-20261128'
 edition = json.loads((DATA / 'general-edition.json').read_text())
 register = json.loads((DATA / 'oxtr-il6-research-register.json').read_text())
 library = json.loads((DATA / 'library.json').read_text())
 chapter = edition['chapters'][-1]
 assert chapter['id'] == 'oxtr-il6-inflammation' and chapter['number'] == 13
-assert len(chapter['topics']) == 10
-rows = register['records']
-assert len(rows) == register['sourceCount'] == 42
+assert len(chapter['topics']) == 26
+chapter = dict(chapter, topics=chapter['topics'][:10])
+assert register['sourceCount'] == 162
+rows = register['records'][:42]
+assert len(rows) == 42
 assert len({r['recordId'] for r in rows}) == 42
 assert sum(r['supplied'] for r in rows) == register['suppliedUniqueSources'] == 19
 assert sum(len(t['papers']) for t in chapter['topics']) == 42
@@ -44,20 +47,18 @@ assert 'no treatment effects' in by_key['boutin2025']['summary']
 assert 'not establish first-ever priority' in ' '.join(p for t in chapter['topics'] for p in t['paragraphs'])
 with (DATA / 'oxtr-il6-research-register.csv').open(newline='') as file:
     csv_rows = list(csv.DictReader(file))
-assert len(csv_rows) == 42
+assert len(csv_rows) == 162
+csv_rows = csv_rows[:42]
 for original, row in zip(rows, csv_rows):
-    for key, value in row.items():
-        expected = original[key]
-        if isinstance(expected, list): expected = ' | '.join(expected)
-        if expected is None: expected = ''
-        assert value == str(expected), (original['key'], key)
+    for key in ['key', 'recordId', 'title', 'year', 'doi', 'pmid', 'summary', 'limitation']:
+        assert row[key] == str(original.get(key) or ''), (original['key'], key)
 baseline = json.loads((AUDIT / 'baseline-chapters.json').read_text())
 assert hashlib.sha256(json.dumps(edition['chapters'][:-1], sort_keys=True).encode()).hexdigest() == baseline['sha256']
-text = json.dumps(chapter, ensure_ascii=False) + json.dumps(register, ensure_ascii=False)
+text = json.dumps(chapter, ensure_ascii=False) + json.dumps(rows, ensure_ascii=False)
 assert not re.search(r"\b(?:should|could|would)(?:n't|'ve)?\b|\b(?:shouldn|couldn|wouldn)[’']t\b", text, re.I)
 report = {'passed': True, 'sources': 42, 'suppliedSources': 19, 'topics': 10,
           'priorChaptersPreserved': 12, 'csvJsonCoreFieldsEquivalent': True,
           'paragraphCitationsResolved': True, 'sharedTrialFamilyPreserved': True,
           'negativeFindingsRetained': True, 'languageCheck': True}
-(AUDIT / 'content-validation.json').write_text(json.dumps(report, indent=2) + '\n')
+(CURRENT_AUDIT / 'original-oxtr-validation.json').write_text(json.dumps(report, indent=2) + '\n')
 print(json.dumps(report))

@@ -344,7 +344,7 @@ path,type,value
 /agent_architecture/participation/mcp/tools/0/inputSchema/properties/offset,object,
 /agent_architecture/participation/mcp/tools/0/inputSchema/properties/offset/type,string,integer
 /agent_architecture/participation/mcp/tools/0/inputSchema/properties/offset/minimum,number,0
-/agent_architecture/participation/mcp/tools/0/inputSchema/properties/offset/maximum,number,75
+/agent_architecture/participation/mcp/tools/0/inputSchema/properties/offset/maximum,number,500
 /agent_architecture/participation/mcp/tools/0/inputSchema/required,array,1
 /agent_architecture/participation/mcp/tools/0/inputSchema/required/0,string,id
 /agent_architecture/participation/mcp/tools/0/annotations,object,
@@ -640,7 +640,7 @@ path,type,value
 /agent_architecture/implementation_sources/5/scope,string,Implementation source
 /agent_architecture/implementation_sources/6,object,
 /agent_architecture/implementation_sources/6/repository_path,string,cloudflare/informatics-connectors.js
-/agent_architecture/implementation_sources/6/sha256,string,63319e8fc010f954f450191443aba4b35f6579b44929477b8e803ee66020a567
+/agent_architecture/implementation_sources/6/sha256,string,6dd12695bacafdc29e99192561ea93855b64daadef3db200d3640d9c256802e0
 /agent_architecture/implementation_sources/6/scope,string,Implementation source
 /agent_architecture/implementation_sources/7,object,
 /agent_architecture/implementation_sources/7/repository_path,string,cloudflare/informatics-quantum-knowledge.js
@@ -760,7 +760,7 @@ path,type,value
 /agent_architecture/implementation_sources/35/scope,string,Implementation source
 /agent_architecture/implementation_sources/36,object,
 /agent_architecture/implementation_sources/36/repository_path,string,cloudflare/informatics-research-worker.js
-/agent_architecture/implementation_sources/36/sha256,string,138192fc0f0f5f71f16124fc6d721eabf7ced2637aa8945bffce0199a971a57d
+/agent_architecture/implementation_sources/36/sha256,string,663d80e480d0abdc435727fb942e52a4c74ecec852d284d69df131dc19c00e7c
 /agent_architecture/implementation_sources/36/scope,string,Implementation source
 /agent_architecture/implementation_sources/37,object,
 /agent_architecture/implementation_sources/37/repository_path,string,research/informatics/portal-demo-20261109/research_context.py

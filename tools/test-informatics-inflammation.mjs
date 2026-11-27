@@ -8,8 +8,8 @@ let checks=0;
 function check(name,run){run();checks++;console.log('PASS '+name);}
 const registers=await Promise.all(['dock2','oxtr-il6'].map(async n=>JSON.parse(await readFile(new URL('../Informatics/library-data/'+n+'-research-register.json',import.meta.url)))));
 const library=JSON.parse(await readFile(new URL('../Informatics/library-data/library.json',import.meta.url)));
-check('All 75 source records preserve current appraisals and identifiers',()=>{
- assert.equal(records.length,75);assert.equal(new Set(records.map(r=>r.id)).size,75);
+check('All 195 source records preserve current appraisals and identifiers',()=>{
+ assert.equal(records.length,195);assert.equal(new Set(records.map(r=>r.id)).size,195);
  for(const source of registers.flatMap(r=>r.records)){
   const record=lookup(source.recordId);assert(record);
   const canonical=library.records.find(r=>r.id===record.id);assert(canonical);
@@ -70,15 +70,27 @@ do{const result=await repo.publications({limit:100,offset});all.push(...result.r
 check('Repository union, duplicate exclusion and pagination agree',()=>{
  assert.equal(all.length,inventory.counts.publications);assert.equal(new Set(all.map(r=>r.id)).size,all.length);
  for(const r of records)assert.deepEqual(all.find(x=>x.id===r.id),r);
- assert.equal(inventory.coverage.inflammationSourceRecords,75);
+ assert.equal(inventory.coverage.inflammationSourceRecords,195);
  assert(inventory.datasetVersion.includes(inflammationVersion.sourceSHA256.slice(0,12)));
  assert(recordsCSV(records,'publications').includes('No validated Universal Mind'));
 });
 for(const r of records)assert.deepEqual((await repo.publication(r.id)).record,r);
 const chapter=await repo.call('get_research_chapter',{id:'oxtr-il6-inflammation',topic:'oxtr-il6-il6'});
 check('REST and MCP expose the same chapter and biomarker narrative',()=>{
- assert.equal(chapter.topics[0].id,'oxtr-il6-il6');assert.equal(chapter.sourceCount,42);
+ assert.equal(chapter.topics[0].id,'oxtr-il6-il6');assert.equal(chapter.sourceCount,162);
  assert(connectorTools.some(t=>t.name==='get_research_chapter'));
  assert(openAPI({ALLOWED_ORIGIN:'https://staging.universalmind.tv'},'https://api.example').paths['/api/v1/research-chapters/{id}']);
+});
+check('Mental-health questions retrieve condition-specific narrative and full appraisals',()=>{
+ for(const [query,key] of [['IL6 and depression','depression'],['IL6 schizophrenia','psychosis'],['IL6 bipolar depression','bipolar'],['IL6 mania','mania'],['IL6 hypomania','hypomania'],['IL6 anxiety','anxiety'],['IL6 PTSD','ptsd'],['IL6 suicidal ideation','suicidality'],['IL6 ADHD','adhd'],['IL6 alcohol','alcohol'],['IL6 opioids','opioids'],['IL6 methamphetamine','stimulants']]){
+  const result=guide({id:'oxtr-il6-inflammation',query});
+  assert(result.matchedNarratives.some(t=>t.id==='oxtr-il6-'+key),query);
+  assert(result.records.length>0,query);assert.equal(result.mentalHealthPublicationCount,117);
+ }
+ assert.equal(lookup('37069570').blinding,'open-label');
+ assert.equal(lookup('33719920').randomizedControlledTrial,false);
+ assert.match(lookup('42160062').summary,/no statistically significant/);
+ assert.match(lookup('40305022').summary,/did not reduce/);
+ assert.match(lookup('36052304').summary,/did not significantly/);
 });
 console.log(JSON.stringify({passed:true,checks,sourceRecords:records.length,version:inflammationVersion}));

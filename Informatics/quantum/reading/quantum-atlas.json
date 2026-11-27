@@ -422,7 +422,7 @@
                 "offset": {
                   "type": "integer",
                   "minimum": 0,
-                  "maximum": 75
+                  "maximum": 500
                 }
               },
               "required": [
@@ -814,7 +814,7 @@
       },
       {
         "repository_path": "cloudflare/informatics-connectors.js",
-        "sha256": "63319e8fc010f954f450191443aba4b35f6579b44929477b8e803ee66020a567",
+        "sha256": "6dd12695bacafdc29e99192561ea93855b64daadef3db200d3640d9c256802e0",
         "scope": "Implementation source"
       },
       {
@@ -964,7 +964,7 @@
       },
       {
         "repository_path": "cloudflare/informatics-research-worker.js",
-        "sha256": "138192fc0f0f5f71f16124fc6d721eabf7ced2637aa8945bffce0199a971a57d",
+        "sha256": "663d80e480d0abdc435727fb942e52a4c74ecec852d284d69df131dc19c00e7c",
         "scope": "Implementation source"
       },
       {
