@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "sourceDiffCheck": "Public source checked with CRLF CSV line endings allowed. Historical command logs excluded from source-whitespace rules.",
+  "approvedSourceBytesChanged": false,
+  "topicTests": 8,
+  "paperTests": 9,
+  "inflammationChecks": 8,
+  "datasetSources": 1205
+}

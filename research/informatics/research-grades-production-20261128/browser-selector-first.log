@@ -1,0 +1,18 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+locator.click: Error: strict mode violation: locator('.search-paper [data-record="pmid-18593851"]') resolved to 2 elements:
+    1) <button data-record="pmid-18593851">Oxytocin alleviates the neuroendocrine and cytoki…</button> aka getByRole('button', { name: 'Oxytocin alleviates the' })
+    2) <button class="text-button" data-record="pmid-18593851">Read paper →</button> aka getByRole('button', { name: 'Read paper →' })
+
+Call log:
+[2m  - waiting for locator('#research-frame').contentFrame().locator('.search-paper [data-record="pmid-18593851"]')[22m
+
+    at /private/tmp/um-research-production-20261128/research/informatics/research-grades-production-20261128/verify-browser.mjs:80:69 {
+  log: [
+    `  - waiting for locator('#research-frame').contentFrame().locator('.search-paper [data-record="pmid-18593851"]')`
+  ]
+}
+
+Node.js v24.22.3
