@@ -124,7 +124,7 @@ async function research(env,request){
   if(name==='get_research_chapter'){
    const result=(args.id==='528hz-sound-tuning'?sound528Knowledge:inflammationKnowledge)(args,env.ALLOWED_ORIGIN);if(!result)return {error:'Research chapter or topic not found'};
    const label=source({id:result.id,passage_id:result.id+':'+(args.topic||'overview'),data:{title:result.title,urls:[result.url]},kind:'published-research-guide',text:JSON.stringify({...result,records:undefined}),sha256:result.version.sourceSHA256});
-   const modelResult=['oxtr-il6-inflammation','il6-mental-health'].includes(args.id)?{...result,topics:result.topics.map(({id,title,paragraphs,paragraphSources,sourceIds})=>({id,title,sourceCount:sourceIds.length,...(paragraphs?{paragraphs,paragraphSources}:{} )}))}:result;
+   const modelResult=['oxtr-il6-inflammation','il6-mental-health'].includes(args.id)?{...result,topics:result.topics.map(({id,title,paragraphs,paragraphSources,sourceIds,trustScore,trustAssessment})=>({id,title,trustScore,trustAssessment:trustAssessment?{status:trustAssessment.status,counts:trustAssessment.counts}:null,sourceCount:sourceIds.length,...(paragraphs?{paragraphs,paragraphSources}:{} )}))}:result;
    return {...modelResult,citation:label,records:result.records.map(data=>record({id:data.id,data}))};
   }
   if(name==='get_biofeedback_evidence'){

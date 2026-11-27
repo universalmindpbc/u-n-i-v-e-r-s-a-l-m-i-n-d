@@ -1,6 +1,10 @@
 import csv,json,re,hashlib,subprocess
 from pathlib import Path
-P=Path(__file__).resolve().parents[1];D=P/'Informatics/library-data';A=P/'research/informatics/il6-chapter-split-20261128'
+P=Path(__file__).resolve().parents[1];D=P/'Informatics/library-data';A=P/'research/informatics/research-grades-20261128'
+def content_only(value):
+ if isinstance(value,list):return [content_only(x) for x in value]
+ if isinstance(value,dict):return {k:content_only(v) for k,v in value.items() if k not in ['trustScore','trustAssessment']}
+ return value
 load=lambda f:json.loads((D/f).read_text())
 r=load('il6-mental-health-research-register.json');combined=load('oxtr-il6-research-register.json');g=load('general-edition.json');c=next(x for x in g['chapters'] if x.get('id')=='oxtr-il6-inflammation');L=load('library.json');mental=next(x for x in g['chapters'] if x.get('id')=='il6-mental-health')
 assert len(r['records'])==120 and sum(x['countedMentalHealthPublication'] for x in r['records'])==117
@@ -28,10 +32,10 @@ for name,reg in [('il6-mental-health',r),('oxtr-il6',combined)]:
    expected=x.get(k,'');expected=json.dumps(expected,ensure_ascii=False) if isinstance(expected,(list,dict)) else str(expected if expected is not None else '')
    assert v==expected,(name,x['recordId'],k)
 base=json.loads(subprocess.check_output(['git','show','f165b4a8ea49087f96320c7e595f917635afbd29:Informatics/library-data/general-edition.json'],cwd=P))
-assert g['chapters'][:12]==base['chapters'][:-1]
+assert content_only(g['chapters'][:12])==content_only(base['chapters'][:-1])
 baseReg=json.loads(subprocess.check_output(['git','show','f165b4a8ea49087f96320c7e595f917635afbd29:Informatics/library-data/oxtr-il6-research-register.json'],cwd=P))
 assert combined['records'][:42]==baseReg['records']
-assert c['topics'][:10]==base['chapters'][-1]['topics']
+assert content_only(c['topics'][:10])==content_only(base['chapters'][-1]['topics'])
 prior=json.loads(subprocess.check_output(['git','show','0a931f233:Informatics/library-data/il6-mental-health-research-register.json'],cwd=P))
 assert r['records']==prior['records'], 'Every reviewed publication is preserved'
 by={x['pmid']:x for x in r['records']}
@@ -46,4 +50,4 @@ for x in r['records']:
 text=' '.join(c['overview']+mental['overview']+[p for t in mental['topics'] for p in t['paragraphs']]+[v for x in r['records'] for v in [x['summary'],x['limitation']]])
 assert not re.search(r'\b(?:sh'+'ould|co'+'uld|wo'+'uld)(?:n[’\']t)?\b',text,re.I)
 report={'passed':True,'publications':120,'directMentalHealth':117,'contextual':3,'combinedSources':162,'separateChapters':[13,14],'chapter14Title':mental['title'],'priorChaptersPreserved':12,'originalSourcesPreserved':42,'jsonCsvEquivalent':True,'citationsResolved':True,'individualAppraisals':True,'maskingAndFamilyBoundaries':True}
-(A/'content-validation.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report))
+(A/'mental-health-validation.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report))
