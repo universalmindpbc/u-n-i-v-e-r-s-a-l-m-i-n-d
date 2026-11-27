@@ -761,7 +761,7 @@ path,type,value
 /agent_architecture/implementation_sources/35/scope,string,Implementation source
 /agent_architecture/implementation_sources/36,object,
 /agent_architecture/implementation_sources/36/repository_path,string,cloudflare/informatics-research-worker.js
-/agent_architecture/implementation_sources/36/sha256,string,2a1f47e0b937204a1d3437dd1a3053f12995bc75907fc8c0114d02bcedb83694
+/agent_architecture/implementation_sources/36/sha256,string,5ee6eccc4290cd8687403fb6870c7e1655de59a941f0614396c10186951806d6
 /agent_architecture/implementation_sources/36/scope,string,Implementation source
 /agent_architecture/implementation_sources/37,object,
 /agent_architecture/implementation_sources/37/repository_path,string,research/informatics/portal-demo-20261109/research_context.py
