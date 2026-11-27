@@ -1,0 +1,48 @@
+{
+  "date": "2026-11-28",
+  "status": "Staging verified; awaiting production approval",
+  "baselineCommit": "0a931f23394961d0b329b97f272ca23090f793fa",
+  "sourceCommit": "02896f2dbb752bd476bd3cf2b37c401563b2dd6d",
+  "chapters": [
+    {
+      "number": 13,
+      "title": "Oxytocin, OXTR and IL-6",
+      "sourceCount": 42,
+      "topics": 10,
+      "url": "https://staging.universalmind.tv/informatics/research/?collection=general&chapter=13"
+    },
+    {
+      "number": 14,
+      "title": "IL-6 and mental health",
+      "sourceCount": 120,
+      "topics": 16,
+      "url": "https://staging.universalmind.tv/informatics/research/?collection=general&chapter=14"
+    }
+  ],
+  "preservation": {
+    "originalOXTRSources": 42,
+    "mentalHealthPublications": 120,
+    "directMentalHealth": 117,
+    "contextual": 3,
+    "priorChapters": 12
+  },
+  "summary": "Three titled prose sections explicitly describe oxytocin/OXTR evidence in laboratory cells, animals and humans; the five-card overview is removed.",
+  "workerVersionID": "7ee96ecf-c7db-4bae-933f-9055301f9456",
+  "knowledgeVersion": "general-inflammation-20261128-v5",
+  "knowledgeSourceSHA256": "21cfc27c5ab807a58257d117920f149d9d64eb1b2244c9601207f7bb83c43e80",
+  "verification": {
+    "sourceIntegrity": true,
+    "completeJSONCSVReconstructedSources": 1205,
+    "HTTPAssets": 159,
+    "desktopAndMobile": true,
+    "chapterLinksAndCitationDialog": true,
+    "liveCitedAIAnswers": 2,
+    "chargedUpperUSD": 1.5090124999999999,
+    "qaTotalCeilingUSD": 6,
+    "qaPerRequestCeilingUSD": 2,
+    "processAudioMuted": true,
+    "playbackDisabled": true
+  },
+  "productionModified": false,
+  "localIsolation": "The shared owning checkout and its checked-out staging branch were preserved; the detached task candidate is pushed directly to remote staging."
+}

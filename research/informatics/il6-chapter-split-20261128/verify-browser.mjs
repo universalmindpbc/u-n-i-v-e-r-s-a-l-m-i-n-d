@@ -36,13 +36,13 @@ try{
  report.checks.push({distinctContentsChapters:true,mentalHealthSources:120,conditionHeadings:headings,citationDialog:true});
  async function capture(name,width){await page.setViewportSize({width,height:1050});await frame.locator('.chapter-opening h2').evaluate(el=>{el.scrollIntoView({block:'start'});window.scrollBy(0,-140);});const layout=await frame.locator('html').evaluate(el=>({width:el.clientWidth,scroll:el.scrollWidth}));assert(layout.scroll<=layout.width+2);await page.screenshot({path:path.join(out,name+'.png')});report.checks.push({name,width,layout});}
  await capture('mental-health-desktop',1470);await capture('mental-health-mobile',390);
- await frame.locator('.related-research [data-chapter="13"]').click();
+ await frame.locator('.related-research [data-chapter="13"]').click();await frame.getByRole('heading',{name:'Oxytocin, OXTR and IL-6',exact:true}).waitFor();
  assert.equal(await frame.locator('.chapter-opening h2').innerText(),'Oxytocin, OXTR and IL-6');assert.equal(await frame.locator('.chapter-reader .topic').count(),10);assert.equal(await frame.locator('.chapter-reader .paper').count(),42);
  assert.match(await frame.locator('#evidence-summary-title').innerText(),/oxytocin and OXTR.*IL-6/);
  assert.deepEqual(await frame.locator('.evidence-summary-row h4').allTextContents(),['Laboratory cell studies','Animal studies','Human studies']);assert.equal(await frame.locator('.evidence-levels').count(),0);
  for(const width of [1470,390,320]){await capture('oxtr-'+width,width);await frame.locator('#evidence-summary-title').evaluate(el=>{el.scrollIntoView({block:'start'});window.scrollBy(0,-130);});await page.screenshot({path:path.join(out,'oxtr-summary-'+width+'.png')});}
  report.checks.push({OXTRSources:42,scopedSummary:true,noUnlabelledCards:true});
- await frame.locator('.related-research [data-chapter="14"]').click();assert.equal(await frame.locator('.chapter-opening h2').innerText(),'IL-6 and mental health');
+ await frame.locator('.related-research [data-chapter="14"]').click();await frame.getByRole('heading',{name:'IL-6 and mental health',exact:true}).waitFor();assert.equal(await frame.locator('.chapter-opening h2').innerText(),'IL-6 and mental health');
  if(!candidate){for(const [stem,count] of [['oxtr-il6',42],['il6-mental-health',120]]){const response=await context.request.get('https://staging.universalmind.tv/informatics/library-data/'+stem+'-research-register.json?v=chapter-split');assert(response.ok());const data=await response.json();assert.equal(data.records.length,count);assert.deepEqual(data,JSON.parse(await fs.readFile(path.join(root,'Informatics/library-data/'+stem+'-research-register.json'),'utf8')));}}
  for(const [slug,count,title] of [['oxtr-il6',42,'Oxytocin, OXTR and IL-6'],['il6-mental-health',120,'IL-6 and mental health']]){await page.goto('https://staging.universalmind.tv/informatics/read/'+slug+'/index.html',{waitUntil:'domcontentloaded'});assert.equal(await page.locator('h1').innerText(),title);assert.equal(await page.locator('article').count(),count);}
  assert.deepEqual(report.errors,[]);report.passed=true;

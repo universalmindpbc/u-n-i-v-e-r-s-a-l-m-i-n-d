@@ -1,0 +1,48 @@
+{
+  "candidate": false,
+  "processAudioMuted": true,
+  "mediaPlaybackDisabled": true,
+  "checks": [
+    {
+      "distinctContentsChapters": true,
+      "mentalHealthSources": 120,
+      "conditionHeadings": [
+        "IL-6 and mental health: overview",
+        "Depression",
+        "Schizophrenia and psychosis",
+        "Bipolar disorder: depression and euthymia",
+        "Mania",
+        "Hypomania",
+        "Anxiety disorders",
+        "PTSD and trauma",
+        "Suicidal ideation and behaviour",
+        "ADHD",
+        "Addiction: alcohol use disorder",
+        "Addiction: opioid use disorder",
+        "Addiction: stimulant use disorders",
+        "Cannabis and nicotine: evidence and gaps",
+        "OXTR and IL-6 in mental illness: a research hypothesis",
+        "Review method and limitations"
+      ],
+      "citationDialog": true
+    },
+    {
+      "name": "mental-health-desktop",
+      "width": 1470,
+      "layout": {
+        "width": 1470,
+        "scroll": 1470
+      }
+    },
+    {
+      "name": "mental-health-mobile",
+      "width": 390,
+      "layout": {
+        "width": 390,
+        "scroll": 390
+      }
+    }
+  ],
+  "errors": [],
+  "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ 'IL-6 and mental health'\n- 'Oxytocin, OXTR and IL-6'\n"
+}
