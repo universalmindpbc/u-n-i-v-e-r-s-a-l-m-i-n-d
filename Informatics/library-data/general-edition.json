@@ -32764,51 +32764,34 @@
     {
       "number": 13,
       "id": "oxtr-il6-inflammation",
-      "title": "IL-6, mental health and inflammation: oxytocin and OXTR pathways",
+      "title": "Oxytocin, OXTR and IL-6",
       "overview": [
-        "IL-6 is associated with several mental-health conditions, especially depression, psychosis, bipolar disorder, PTSD and substance use disorders. The evidence varies by diagnosis, mood state, specimen and study design. It does not establish IL-6 as a universal cause of mental illness or prove that lowering it improves every condition.",
-        "This chapter retains the original 42-source OXTR analysis and adds 120 peer-reviewed publications: 117 directly relevant mental-health papers plus three contextual substance-exposure papers. Randomized trials lead the appraisal; positive, null and opposite-direction findings remain visible. Publication counts are not counts of independent experiments.",
-        "Oxytocin–OXTR anti-inflammatory mechanisms have strong support in selected cell models and substantial animal evidence. Human OXTR–IL-6 evidence is emerging, promising and mixed. Direct IL-6 receptor trials in depression and schizophrenia remain small, inconclusive or negative; a sustained clinical benefit through the proposed Universal Mind pathway is unestablished.",
-        "The systems-biology opportunity is a testable human hypothesis: does a defined intervention alter OXTR-related biology, IL-6 signalling and meaningful outcomes, and which links are actually demonstrated? Each link needs evidence. Universal One retrieves this same appraised literature, with source-specific access and limitations."
+        "Oxytocin acts through OXTR, the oxytocin receptor. This chapter examines how that signalling pathway affects interleukin-6 (IL-6) and other inflammation markers, from cell experiments to animal models and human studies.",
+        "The 42-source review includes positive, null and opposite-direction results. Effects vary by tissue, dose and experimental setting. Human findings are emerging and mixed; a lasting anti-inflammatory treatment benefit is not established."
       ],
       "evidenceOverview": [
         {
-          "label": "In a dish",
-          "strength": "Strong in selected models",
-          "finding": "Direct IL-6 and signalling effects; mechanistic perturbations in several systems.",
-          "boundary": "Human donor-cell null results and pro-inflammatory gestational responses limit generalisation."
+          "label": "Laboratory cell studies",
+          "finding": "Oxytocin reduced IL-6 release and other inflammation signals in some cell experiments. Several studies tested whether these effects depended on OXTR or related signalling pathways.",
+          "boundary": "Other experiments found no reduction. Responses also differed by tissue: pregnancy-related tissues sometimes showed increased inflammation."
         },
         {
-          "label": "In animals",
-          "strength": "Substantial mechanistic support",
-          "finding": "Multiple tissues and disease models, including receptor deletion and functional outcomes.",
-          "boundary": "Small studies, selected sexes, experimental injury and exposure differences limit translation."
+          "label": "Animal studies",
+          "finding": "Oxytocin or OXTR-related interventions reduced inflammatory signals and improved some tissue or behavioural outcomes in several animal models.",
+          "boundary": "Animal disease models, doses and biology differ from human conditions. These results do not establish a treatment benefit in people."
         },
         {
-          "label": "In humans",
-          "strength": "Emerging, promising and mixed",
-          "finding": "An acute endotoxin signal plus context-dependent cytokine and wound findings.",
-          "boundary": "No established sustained anti-inflammatory efficacy or validated Universal Mind OXTR–IL-6 pathway."
-        },
-        {
-          "label": "Mental-health associations",
-          "strength": "Repeated, diagnosis-dependent",
-          "finding": "120 peer-reviewed publications, including 117 directly relevant mental-health papers.",
-          "boundary": "Association, temporal sequence and genetic proxies are not interchangeable with treatment effects."
-        },
-        {
-          "label": "Clinical intervention",
-          "strength": "Mixed; direct blockade unproven",
-          "finding": "Small direct IL-6R trials and many indirect biomarker trials include null and discordant results.",
-          "boundary": "Neither routine IL-6 treatment nor the proposed OXTR–IL-6 causal chain is established."
+          "label": "Human studies",
+          "finding": "Human studies report some short-term inflammation effects, alongside null findings and increases in IL-6. The findings are promising, but mixed.",
+          "boundary": "The evidence does not yet establish a lasting anti-inflammatory treatment effect or show that an OXTR-based intervention improves mental illness by lowering IL-6."
         }
       ],
-      "evidenceOverviewNote": "Qualitative synthesis, not formal certainty grading. Positive, null and opposite-direction findings are included.",
+      "evidenceOverviewNote": "The detailed studies and their limitations follow below.",
       "researchRegister": {
         "json": "library-data/oxtr-il6-research-register.json",
         "csv": "library-data/oxtr-il6-research-register.csv",
         "reading": "read/oxtr-il6/index.html",
-        "count": 162
+        "count": 42
       },
       "topics": [
         {
@@ -35685,15 +35668,50 @@
             "status": "exploratory",
             "basis": "Qualitative narrative synthesis; no formal certainty grade or pooled treatment estimate."
           }
-        },
+        }
+      ],
+      "evidenceOverviewTitle": "How oxytocin and OXTR affect IL-6: what the studies show",
+      "evidenceOverviewIntro": "The three summaries below all concern oxytocin or its receptor, OXTR, and their effects on inflammation. They describe different kinds of experiments, not three stages of a proven treatment.",
+      "relatedChapters": [
         {
-          "id": "oxtr-il6-mental-health-map",
-          "number": "13.11",
-          "title": "IL-6 across mental health: the evidence map",
+          "number": 14,
+          "title": "IL-6 and mental health"
+        }
+      ]
+    },
+    {
+      "number": 14,
+      "id": "il6-mental-health",
+      "title": "IL-6 and mental health",
+      "overview": [
+        "Interleukin-6 (IL-6) is an immune signalling protein. This chapter examines its relationship with mental illness, with a separate section for each condition and related clinical outcome.",
+        "The review contains 120 peer-reviewed publications: 117 directly relevant mental-health papers and three contextual substance-exposure papers. Randomized trials lead the appraisal. Positive, null and opposite-direction findings remain visible; publication counts are not counts of independent studies.",
+        "An association with IL-6 does not establish that IL-6 causes a condition or that lowering it improves symptoms. The evidence varies by diagnosis, mood state, specimen and study design. ADHD is a neurodevelopmental condition; suicidal ideation and behaviour are outcomes considered separately from a diagnosis.",
+        "The relationship between this literature and oxytocin/OXTR interventions is considered as a research hypothesis. The separate oxytocin, OXTR and IL-6 chapter contains the original cell, animal and human pathway review."
+      ],
+      "researchRegister": {
+        "json": "library-data/il6-mental-health-research-register.json",
+        "csv": "library-data/il6-mental-health-research-register.csv",
+        "reading": "read/il6-mental-health/index.html",
+        "count": 120
+      },
+      "mentalHealthPublicationCount": 117,
+      "expansionPublicationCount": 120,
+      "relatedChapters": [
+        {
+          "number": 13,
+          "title": "Oxytocin, OXTR and IL-6"
+        }
+      ],
+      "topics": [
+        {
+          "id": "il6-mental-health-mental-health-map",
+          "number": "14.1",
+          "title": "IL-6 and mental health: overview",
           "description": "A shared research pathway with diagnosis-specific limits.",
           "paragraphs": [
             "IL-6 is a credible transdiagnostic research pathway, with repeated group-level associations across depression, psychosis, bipolar disorder, PTSD and substance use disorders. That does not establish IL-6 as the core cause of every mental illness, or as abnormal in every affected person. Anxiety and ADHD findings are less consistent. The most useful question is which phenotype, tissue, time course and signalling process is involved, and whether changing that process improves an outcome that matters to people.",
-            "This expansion contains 120 peer-reviewed publications: 117 directly relevant mental-health papers and three contextual substance-exposure papers. These are publications, not 120 independent experiments or 120 randomized trials. Reviews reuse primary studies, some reports share cohorts, and several analyses are secondary outcomes from trials. The original 42-source OXTR register remains alongside this expansion; its source types include material beyond peer-reviewed experiments. The combined chapter has 162 distinct source records.",
+            "This chapter contains 120 peer-reviewed publications: 117 directly relevant mental-health papers and three contextual substance-exposure papers. These are publications, not 120 independent experiments or 120 randomized trials. Reviews reuse primary studies, some reports share cohorts, and several analyses are secondary outcomes from trials. The original 42-source OXTR register remains alongside this expansion; its source types include material beyond peer-reviewed experiments. The combined chapter has 162 distinct source records.",
             "The hierarchy begins with direct pathway intervention, followed by randomized interventions that measure IL-6, genetic and longitudinal studies, case-control comparisons, and mechanistic work. A treatment RCT can establish an intervention effect without proving that IL-6 mediated it. A meta-analysis can strengthen evidence for an association while inheriting confounding from the studies it pools. A genetic instrument can help test causality, but is not equivalent to a prescription or a short-term change in blood IL-6.",
             "Childhood IL-6 preceded later depression and psychotic experiences in ALSPAC, but the estimate for diagnosed psychotic disorder was imprecise. Temporal ordering is useful evidence, not a complete causal demonstration. Similar cohort names across papers signal related evidence rather than new independent populations. No individual diagnostic threshold or reliable suicide-risk classifier is established by this evidence map."
           ],
@@ -36048,9 +36066,9 @@
           "mentalHealthExpansion": true
         },
         {
-          "id": "oxtr-il6-depression",
-          "number": "13.12",
-          "title": "Depression: association is stronger than treatment proof",
+          "id": "il6-mental-health-depression",
+          "number": "14.2",
+          "title": "Depression",
           "description": "Direct IL-6 receptor trials, adjunctive RCTs, symptoms and genetic evidence.",
           "paragraphs": [
             "The most direct test in this set is the 2026 double-blind tocilizumab trial in difficult-to-treat depression with repeatedly elevated CRP. Thirty people were randomized and 29 received an infusion. The primary day-14 somatic outcome was null: adjusted difference −0.12, 95% CI −2.51 to 2.28. Later patterns favouring treatment justify further investigation, but do not establish efficacy. Small descriptive response and remission differences are especially unstable. Baseline CRP, not IL-6, tracked improvement.",
@@ -37345,8 +37363,8 @@
           "mentalHealthExpansion": true
         },
         {
-          "id": "oxtr-il6-psychosis",
-          "number": "13.13",
+          "id": "il6-mental-health-psychosis",
+          "number": "14.3",
           "title": "Schizophrenia and psychosis",
           "description": "Peripheral and central associations; direct blockade remains unproven.",
           "paragraphs": [
@@ -38258,9 +38276,9 @@
           "mentalHealthExpansion": true
         },
         {
-          "id": "oxtr-il6-bipolar",
-          "number": "13.14",
-          "title": "Bipolar depression and euthymia",
+          "id": "il6-mental-health-bipolar",
+          "number": "14.4",
+          "title": "Bipolar disorder: depression and euthymia",
           "description": "Mood states, medication and biomarker change require separate interpretation.",
           "paragraphs": [
             "Bipolar depression has several randomized biomarker studies, with mixed or negative clinical results. Pentoxifylline reduced inflammatory markers but did not beat placebo overall. Memantine added to valproate changed TNF but not IL-6 or clinical outcomes between groups. NAC-related analyses likewise did not demonstrate an overall IL-6 reduction. A cytokine response is not automatically a mood response.",
@@ -38971,9 +38989,9 @@
           "mentalHealthExpansion": true
         },
         {
-          "id": "oxtr-il6-mania",
-          "number": "13.15",
-          "title": "Mania: state-sensitive and heterogeneous",
+          "id": "il6-mental-health-mania",
+          "number": "14.5",
+          "title": "Mania",
           "description": "Positive findings coexist with smaller opposite-direction studies.",
           "paragraphs": [
             "Some phase-comparison studies show elevated IL-6 during mania, with less consistent differences during remission. A longitudinal rapid-cycling study found higher IL-6 and IL-18 in manic/hypomanic states than depressed or euthymic states after adjustment. Repeated within-person sampling is particularly useful for testing whether inflammation tracks an episode.",
@@ -39195,9 +39213,9 @@
           "mentalHealthExpansion": true
         },
         {
-          "id": "oxtr-il6-hypomania",
-          "number": "13.16",
-          "title": "Hypomania: a specific evidence gap",
+          "id": "il6-mental-health-hypomania",
+          "number": "14.6",
+          "title": "Hypomania",
           "description": "Do not substitute bipolar depression or pooled mania findings for hypomania.",
           "paragraphs": [
             "The clearest dedicated longitudinal lead links higher childhood IL-6 with hypomanic features at age 22 in ALSPAC. The adjusted top-versus-bottom-third odds ratio was 1.77, with a 95% confidence interval of 1.10–2.85. The association persisted after adjustment for depression at 18, but the outcome was a self-report hypomania checklist rather than confirmed bipolar disorder.",
@@ -39304,9 +39322,9 @@
           "mentalHealthExpansion": true
         },
         {
-          "id": "oxtr-il6-anxiety",
-          "number": "13.17",
-          "title": "Anxiety disorders: GAD, panic and social anxiety",
+          "id": "il6-mental-health-anxiety",
+          "number": "14.7",
+          "title": "Anxiety disorders",
           "description": "Diagnosis-specific positive and null findings.",
           "paragraphs": [
             "Anxiety is not one inflammatory phenotype. In a large NESDA analysis, current anxiety disorders did not show an overall adjusted IL-6 association; social phobia sometimes showed lower values. Panic-disorder meta-analyses report higher IL-6 but with considerable heterogeneity. A broad anxiety-related meta-analysis found that PTSD largely drove the pooled inflammatory result.",
@@ -39769,8 +39787,8 @@
           "mentalHealthExpansion": true
         },
         {
-          "id": "oxtr-il6-ptsd",
-          "number": "13.18",
+          "id": "il6-mental-health-ptsd",
+          "number": "14.8",
           "title": "PTSD and trauma",
           "description": "Trauma exposure, disorder, stress reactivity and recovery are distinct.",
           "paragraphs": [
@@ -40490,8 +40508,8 @@
           "mentalHealthExpansion": true
         },
         {
-          "id": "oxtr-il6-suicidality",
-          "number": "13.19",
+          "id": "il6-mental-health-suicidality",
+          "number": "14.9",
           "title": "Suicidal ideation and behaviour",
           "description": "Association does not establish individual prediction or prevention.",
           "paragraphs": [
@@ -41156,9 +41174,9 @@
           "mentalHealthExpansion": true
         },
         {
-          "id": "oxtr-il6-adhd",
-          "number": "13.20",
-          "title": "ADHD: a mixed and developing literature",
+          "id": "il6-mental-health-adhd",
+          "number": "14.10",
+          "title": "ADHD",
           "description": "Paediatric findings, adult null results and intervention limits.",
           "paragraphs": [
             "ADHD is a neurodevelopmental condition. Its IL-6 literature is smaller and less consistent than the depression or psychosis literature. A 2021 synthesis found no significant IL-6 difference; a 2022 synthesis found an elevation that lost significance when individual studies were removed. A 2026 network meta-analysis highlighted elevated IL-6 for autism, while ADHD findings centred on other markers. Autism results are not ADHD results.",
@@ -42127,9 +42145,9 @@
           "mentalHealthExpansion": true
         },
         {
-          "id": "oxtr-il6-alcohol",
-          "number": "13.21",
-          "title": "Alcohol use disorder",
+          "id": "il6-mental-health-alcohol",
+          "number": "14.11",
+          "title": "Addiction: alcohol use disorder",
           "description": "Exposure, withdrawal and recovery produce different immune patterns.",
           "paragraphs": [
             "The 102-person, double-masked ibudilast trial found no benefit on heavy drinking and no peripheral inflammatory-marker effect. Its earlier two-week biomarker trial produced selected, often nominal signals; those findings did not establish a specific IL-6 mechanism and did not replicate as overall efficacy in the larger trial. Exenatide also failed to change inflammatory biomarkers in a post hoc AUD trial analysis.",
@@ -42677,9 +42695,9 @@
           "mentalHealthExpansion": true
         },
         {
-          "id": "oxtr-il6-opioids",
-          "number": "13.22",
-          "title": "Opioid use disorder",
+          "id": "il6-mental-health-opioids",
+          "number": "14.12",
+          "title": "Addiction: opioid use disorder",
           "description": "Treatment cohorts and small intervention studies.",
           "paragraphs": [
             "Memantine and dextromethorphan adjunct trials during methadone treatment reported selected treatment and immune findings, mainly involving TNF or regulatory markers. They did not establish a selective IL-6 mechanism. A very small sham-controlled tDCS study improved impulsivity but did not significantly reduce IL-6. A double-blind label is recorded separately from confirmation of random allocation.",
@@ -43152,9 +43170,9 @@
           "mentalHealthExpansion": true
         },
         {
-          "id": "oxtr-il6-stimulants",
-          "number": "13.23",
-          "title": "Stimulant use disorders: cocaine and methamphetamine",
+          "id": "il6-mental-health-stimulants",
+          "number": "14.13",
+          "title": "Addiction: stimulant use disorders",
           "description": "Inflammatory signals are neither uniform nor synonymous with relapse reduction.",
           "paragraphs": [
             "An exploratory CBD analysis in cocaine use disorder reported lower IL-6, but a biomarker result alone does not demonstrate abstinence or relapse prevention. A small ibudilast methamphetamine challenge study attenuated selected inflammatory measures; its positive treatment findings did not establish suppression of the later IL-6 response.",
@@ -43562,9 +43580,9 @@
           "mentalHealthExpansion": true
         },
         {
-          "id": "oxtr-il6-cannabis-nicotine",
-          "number": "13.24",
-          "title": "Cannabis and nicotine: contextual evidence and gaps",
+          "id": "il6-mental-health-cannabis-nicotine",
+          "number": "14.14",
+          "title": "Cannabis and nicotine: evidence and gaps",
           "description": "Exposure studies are not trials of diagnosed use disorders.",
           "paragraphs": [
             "The two contextual papers retained here concern cannabis exposure in people with and without HIV, and cigarette smoking in older adults. Neither establishes IL-6 as a causal pathway in cannabis-use disorder or nicotine dependence. These papers are excluded from the 117 directly relevant mental-health count. The third contextual paper is the binge-drinking cue experiment.",
@@ -43732,9 +43750,9 @@
           "mentalHealthExpansion": true
         },
         {
-          "id": "oxtr-il6-systems-hypothesis",
-          "number": "13.25",
-          "title": "From OXTR to mental-health outcomes: a testable hypothesis",
+          "id": "il6-mental-health-systems-hypothesis",
+          "number": "14.15",
+          "title": "OXTR and IL-6 in mental illness: a research hypothesis",
           "description": "Separate each link in the proposed causal chain.",
           "paragraphs": [
             "A plausible systems model connects a defined intervention to OXTR-related signalling, immune regulation, neural or behavioural change, and meaningful clinical outcomes. The existing cell and animal OXTR literature supports selected links. The mental-health literature supports IL-6 associations and some pathway hypotheses. Combining those literatures creates a research hypothesis; it does not complete the causal chain in humans.",
@@ -43850,9 +43868,9 @@
           "mentalHealthExpansion": true
         },
         {
-          "id": "oxtr-il6-mental-health-method",
-          "number": "13.26",
-          "title": "Review method, quality and remaining gaps",
+          "id": "il6-mental-health-mental-health-method",
+          "number": "14.16",
+          "title": "Review method and limitations",
           "description": "Transparent source counts, access depth and limits.",
           "paragraphs": [
             "Searches and identifier checks were conducted on 28 November 2026 using public PubMed/Europe PMC records, publisher pages and accessible full text, with trial-first, diagnosis-specific and contradictory-result searches. The register contains 120 unique peer-reviewed publications, including 117 directly relevant mental-health papers and three contextual exposure papers. Protocols, registry entries, preprints and correction notices are not counted as new publications in this expansion.",
@@ -43889,16 +43907,7 @@
           },
           "mentalHealthExpansion": true
         }
-      ],
-      "mentalHealthPublicationCount": 117,
-      "expansionPublicationCount": 120,
-      "mentalHealthRegister": {
-        "json": "library-data/il6-mental-health-research-register.json",
-        "csv": "library-data/il6-mental-health-research-register.csv",
-        "count": 120,
-        "directlyRelevant": 117,
-        "contextual": 3
-      }
+      ]
     }
   ],
   "paperCount": 663,

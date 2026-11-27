@@ -8,7 +8,7 @@
   ],
   "duplicateHandling": "Unique publication identities are counted once. Reviews overlap primary studies; linked reports and cohorts retain family identifiers. Three exposure papers are contextual and excluded from the 117 directly relevant mental-health count.",
   "schemaVersion": "il6-mental-health/v1",
-  "title": "IL-6 and mental health: publication register",
+  "title": "IL-6 and mental health",
   "sourceCount": 120,
   "directlyRelevantMentalHealthPublications": 117,
   "contextualExposurePublications": 3,
@@ -8962,5 +8962,15 @@
     "suicidality": 10
   },
   "searchMethod": "Bounded targeted searches and purposive narrative appraisal; no claim of exhaustive systematic coverage.",
-  "fullTextPassagesReviewed": 9
+  "fullTextPassagesReviewed": 9,
+  "chapterId": "il6-mental-health",
+  "chapterNumber": 14,
+  "purpose": [
+    "Interleukin-6 (IL-6) is an immune signalling protein. This chapter examines its relationship with mental illness, with a separate section for each condition and related clinical outcome.",
+    "The review contains 120 peer-reviewed publications: 117 directly relevant mental-health papers and three contextual substance-exposure papers. Randomized trials lead the appraisal. Positive, null and opposite-direction findings remain visible; publication counts are not counts of independent studies.",
+    "An association with IL-6 does not establish that IL-6 causes a condition or that lowering it improves symptoms. The evidence varies by diagnosis, mood state, specimen and study design. ADHD is a neurodevelopmental condition; suicidal ideation and behaviour are outcomes considered separately from a diagnosis.",
+    "The relationship between this literature and oxytocin/OXTR interventions is considered as a research hypothesis. The separate oxytocin, OXTR and IL-6 chapter contains the original cell, animal and human pathway review."
+  ],
+  "mentalHealthPublicationCount": 117,
+  "expansionPublicationCount": 120
 }
