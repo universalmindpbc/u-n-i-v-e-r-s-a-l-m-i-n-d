@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "assets": [
+    {
+      "url": "https://staging.universalmind.tv/informatics/library.js?v=research-grades-20261128",
+      "sha256": "46ca8de4e1bfabb0e6cd333a03e801430285fbfcfe013d26c0bd85fafe078849",
+      "matched": true
+    },
+    {
+      "url": "https://staging.universalmind.tv/informatics/library-data/general-edition.json?v=research-grades-20261128",
+      "sha256": "aca933f832ab538bf45d9d8409456429361a85cf6268a87061851cf2e314ed04",
+      "matched": true
+    },
+    {
+      "url": "https://staging.universalmind.tv/informatics/library-data/sound-edition.json?v=research-grades-20261128",
+      "sha256": "02bb5d490445a2fa4c20c34b1cccfb9896cfb1a31aadfeeb7e68fec78554c424",
+      "matched": true
+    },
+    {
+      "url": "https://staging.universalmind.tv/informatics/library-data/vision-edition.json?v=research-grades-20261128",
+      "sha256": "063be4b3d21ad1f34e68aed09f0761a971ac703da48b2fae1e658272ae016a90",
+      "matched": true
+    },
+    {
+      "url": "https://staging.universalmind.tv/informatics/library-data/language-edition.json?v=research-grades-20261128",
+      "sha256": "6bf591389fd9e43128324edcbf2259f3c0f4d51347cea47723865dc36e389ac9",
+      "matched": true
+    }
+  ]
+}

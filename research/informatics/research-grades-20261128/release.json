@@ -1,0 +1,50 @@
+{
+  "date": "2026-11-28",
+  "sourceCommit": "28fcbba45025f4e3fcc90ae276e954ef9871a54b",
+  "stagingURL": "https://staging.universalmind.tv/informatics/research/?collection=general",
+  "mentalHealthURL": "https://staging.universalmind.tv/informatics/research/?collection=general&chapter=14",
+  "workerVersion": "dd79527d-da3e-4eab-8552-b557c6faa2a2",
+  "knowledgeVersion": {
+    "version": "general-inflammation-20261128-v6",
+    "sourceSHA256": "926d13f64a0becf73f0b7cf564afc2b71451f8e24cacbb26026e3c600ab272af",
+    "sourceRecords": 195,
+    "chapters": [
+      {
+        "id": "dock2-trauma-ptsd",
+        "number": 12,
+        "sourceRecords": 33,
+        "reviewedAt": "2026-11-21"
+      },
+      {
+        "id": "oxtr-il6-inflammation",
+        "number": 13,
+        "sourceRecords": 42,
+        "reviewedAt": "2026-11-28"
+      },
+      {
+        "id": "il6-mental-health",
+        "number": 14,
+        "sourceRecords": 120,
+        "reviewedAt": "2026-11-28"
+      }
+    ]
+  },
+  "chaptersAudited": 30,
+  "topicsAudited": 130,
+  "chaptersRated": 28,
+  "generalChaptersRated": 14,
+  "topicRatingsChanged": 19,
+  "sourceAppraisalsPreserved": 195,
+  "completeDatasetSources": 1205,
+  "publicFilesVerified": 153,
+  "completeExportPartsVerified": 6,
+  "liveGPT": {
+    "passed": true,
+    "requests": 1,
+    "chargedUpperUSD": 0.8538375,
+    "reasoning": "max",
+    "citationsInteractive": true
+  },
+  "productionModified": false,
+  "boundaryMain": "f165b4a8ea49087f96320c7e595f917635afbd29"
+}

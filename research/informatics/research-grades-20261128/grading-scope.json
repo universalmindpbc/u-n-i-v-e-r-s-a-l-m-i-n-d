@@ -1,0 +1,22 @@
+{
+  "scope": "Chapters aggregate their indexed publications; subchapters use publications indexed in that subchapter.",
+  "crossReferences": "A cross-reference does not transfer a trial grade to another diagnosis, a methods discussion or a research hypothesis.",
+  "thresholds": {
+    "1": "At least three distinct peer-reviewed study units",
+    "2": "At least three distinct eligible randomized controlled trial units",
+    "3": "At least three distinct eligible double-blind randomized controlled trial units"
+  },
+  "exclusions": "Guidelines, conference abstracts, unpublished material and unresolved sources do not acquire a peer-reviewed study rating.",
+  "chapterExceptions": [
+    {
+      "collection": "vision",
+      "number": 2,
+      "reason": "Clinical guidance documents"
+    },
+    {
+      "collection": "vision",
+      "number": 5,
+      "reason": "Two qualifying peer-reviewed sources"
+    }
+  ]
+}

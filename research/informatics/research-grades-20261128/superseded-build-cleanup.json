@@ -1,0 +1,34 @@
+{
+  "removed": [
+    {
+      "path": "Informatics/exports/manifest-68325d6d85ee872ac2f7005b74bc8dcaf3613f1a900d9b176bcd4ca5056c8681.json",
+      "bytes": 2400969
+    },
+    {
+      "path": "Informatics/exports/part-2bf06aa2b4b83106a18da625733ca436938dc8ddfc3a9c96c26bf083c3d0e819.bin",
+      "bytes": 50331648
+    },
+    {
+      "path": "Informatics/exports/part-392cb40fee841c892daa9c9aba761983c4539800aaf92beed57badfcc8e576c7.bin",
+      "bytes": 31434582
+    },
+    {
+      "path": "Informatics/exports/part-9ac149560e1a220df2ff1563ddbfd803d8d223dfebb5553e8030cebc34256ffb.bin",
+      "bytes": 1043922
+    },
+    {
+      "path": "Informatics/exports/part-9e02ecd757b16288e2fba51f4d808c248c1a538c668474dcc53c7e15f2d032fa.bin",
+      "bytes": 50331648
+    },
+    {
+      "path": "Informatics/exports/part-a59b6b9e350d7bcbafb0a71873279b59d0c1ea4f35b073bf92c1dd928b3ca5b8.bin",
+      "bytes": 50331648
+    },
+    {
+      "path": "Informatics/exports/part-b0b37c627fcd065d5f23fb8260ead958cd149668d6f3491100c3cad14ae4c8e8.bin",
+      "bytes": 50331648
+    }
+  ],
+  "bytesFreed": 236206065,
+  "basis": "Only untracked files from the completed preliminary build; current manifest parts and every tracked historical export retained."
+}

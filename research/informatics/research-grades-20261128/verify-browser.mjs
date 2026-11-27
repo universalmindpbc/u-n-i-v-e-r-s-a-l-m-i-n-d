@@ -64,6 +64,7 @@ try{
     assert.match(await frame.locator('.chapter-opening').innerText(),/blood IL-6 tests measure the encoded protein/);
     assert.equal(await frame.locator('.gene-reference a').getAttribute('href'),'https://www.ncbi.nlm.nih.gov/gene/3569');
    }
+   if(collection==='general'&&[10,12,14].includes(chapter.number)){await capture('chapter-'+chapter.number+'-desktop',1470);await capture('chapter-'+chapter.number+'-mobile',390);}
    report.checks.push({collection,chapter:chapter.number,chapterScore:chapter.trustScore,topicScoresVerified:chapter.topics.length});
   }
  }

@@ -1,0 +1,8 @@
+{
+  "date": "2026-11-28",
+  "totalUpperUSD": 4,
+  "perRequestUSD": 2,
+  "maximumRequests": 2,
+  "reasoning": "max",
+  "purpose": "Verify a real Universal One response in staging on IL6 gene expression and study-design ratings; no fine-tuning or hardware jobs."
+}
