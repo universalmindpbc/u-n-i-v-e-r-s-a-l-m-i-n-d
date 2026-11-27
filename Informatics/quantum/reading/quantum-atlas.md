@@ -155,7 +155,7 @@ HTTP JSON-RPC; responses are JSON. The endpoint accepts application/json and tex
 
 | Tool | Purpose |
 | --- | --- |
-| get_research_chapter | Read published research on the 528 Hz tuning family, DOCK2/PTSD or OXTR/IL-6. Includes synthesis, source access, mixed findings and study-family limits. Use topic for detailed narrative; paginate source records. |
+| get_research_chapter | Read published research on the 528 Hz tuning family, DOCK2/PTSD, OXTR/IL-6 or IL-6 and mental health. Includes synthesis, source access, mixed findings and study-family limits. Use topic for detailed narrative; paginate source records. |
 | get_quantum_study | Read the recorded OXTR Quantum Atlas experiment, sequence definitions, actual measurements, comparison, timing, next test and downloads. |
 | search | Find publication and Atlas record IDs. Fetch records before making study-specific claims. |
 | fetch | Fetch an approved publication or Atlas overview from a search result ID. Atlas analysis sections are accessible through get_atlas_record; the URL returns the complete record. |
@@ -1067,7 +1067,7 @@ The following JSON preserves the source fields, saved chart arrays, study interp
         "tools": [
           {
             "name": "get_research_chapter",
-            "description": "Read published research on the 528 Hz tuning family, DOCK2/PTSD or OXTR/IL-6. Includes synthesis, source access, mixed findings and study-family limits. Use topic for detailed narrative; paginate source records.",
+            "description": "Read published research on the 528 Hz tuning family, DOCK2/PTSD, OXTR/IL-6 or IL-6 and mental health. Includes synthesis, source access, mixed findings and study-family limits. Use topic for detailed narrative; paginate source records.",
             "inputSchema": {
               "type": "object",
               "additionalProperties": false,
@@ -1077,6 +1077,7 @@ The following JSON preserves the source fields, saved chart arrays, study interp
                   "enum": [
                     "dock2-trauma-ptsd",
                     "oxtr-il6-inflammation",
+                    "il6-mental-health",
                     "528hz-sound-tuning"
                   ]
                 },
@@ -1483,7 +1484,7 @@ The following JSON preserves the source fields, saved chart arrays, study interp
       },
       {
         "repository_path": "cloudflare/informatics-connectors.js",
-        "sha256": "6dd12695bacafdc29e99192561ea93855b64daadef3db200d3640d9c256802e0",
+        "sha256": "a63d72648bb416933748fe0a9771949b5c509a483f7c6655a6de7a2baf78f42f",
         "scope": "Implementation source"
       },
       {
@@ -1633,7 +1634,7 @@ The following JSON preserves the source fields, saved chart arrays, study interp
       },
       {
         "repository_path": "cloudflare/informatics-research-worker.js",
-        "sha256": "7d301bb60f3d71142d2f2011565324d64bae47bce58879c0e713672f68eaec69",
+        "sha256": "e04bc6ded29e7ac2573364edd933b3ef5cce95fdc0298b2b00ca89d0debc8b2f",
         "scope": "Implementation source"
       },
       {

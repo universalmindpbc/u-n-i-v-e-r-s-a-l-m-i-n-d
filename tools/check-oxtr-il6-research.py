@@ -8,15 +8,15 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / 'Informatics/library-data'
 AUDIT = ROOT / 'research/informatics/oxtr-il6-20261124'
-CURRENT_AUDIT = ROOT / 'research/informatics/il6-mental-health-20261128'
+CURRENT_AUDIT = ROOT / 'research/informatics/il6-chapter-split-20261128'
 edition = json.loads((DATA / 'general-edition.json').read_text())
 register = json.loads((DATA / 'oxtr-il6-research-register.json').read_text())
 library = json.loads((DATA / 'library.json').read_text())
-chapter = edition['chapters'][-1]
+chapter = next(c for c in edition['chapters'] if c.get('id')=='oxtr-il6-inflammation')
 assert chapter['id'] == 'oxtr-il6-inflammation' and chapter['number'] == 13
-assert len(chapter['topics']) == 26
+assert len(chapter['topics']) == 10
 chapter = dict(chapter, topics=chapter['topics'][:10])
-assert register['sourceCount'] == 162
+assert register['sourceCount'] == 42
 rows = register['records'][:42]
 assert len(rows) == 42
 assert len({r['recordId'] for r in rows}) == 42
@@ -47,13 +47,13 @@ assert 'no treatment effects' in by_key['boutin2025']['summary']
 assert 'not establish first-ever priority' in ' '.join(p for t in chapter['topics'] for p in t['paragraphs'])
 with (DATA / 'oxtr-il6-research-register.csv').open(newline='') as file:
     csv_rows = list(csv.DictReader(file))
-assert len(csv_rows) == 162
+assert len(csv_rows) == 42
 csv_rows = csv_rows[:42]
 for original, row in zip(rows, csv_rows):
     for key in ['key', 'recordId', 'title', 'year', 'doi', 'pmid', 'summary', 'limitation']:
         assert row[key] == str(original.get(key) or ''), (original['key'], key)
 baseline = json.loads((AUDIT / 'baseline-chapters.json').read_text())
-assert hashlib.sha256(json.dumps(edition['chapters'][:-1], sort_keys=True).encode()).hexdigest() == baseline['sha256']
+assert hashlib.sha256(json.dumps(edition['chapters'][:12], sort_keys=True).encode()).hexdigest() == baseline['sha256']
 text = json.dumps(chapter, ensure_ascii=False) + json.dumps(rows, ensure_ascii=False)
 assert not re.search(r"\b(?:should|could|would)(?:n't|'ve)?\b|\b(?:shouldn|couldn|wouldn)[’']t\b", text, re.I)
 report = {'passed': True, 'sources': 42, 'suppliedSources': 19, 'topics': 10,

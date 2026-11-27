@@ -1,0 +1,7 @@
+{
+  "maximumTotalUSD": 6,
+  "maximumPerRequestUSD": 2,
+  "maximumRequests": 3,
+  "purpose": "Verify separate-chapter knowledge and a condition-specific answer through the staging UI",
+  "reasoning": "max"
+}

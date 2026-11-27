@@ -324,17 +324,18 @@ path,type,value
 /agent_architecture/participation/mcp/tools,array,10
 /agent_architecture/participation/mcp/tools/0,object,
 /agent_architecture/participation/mcp/tools/0/name,string,get_research_chapter
-/agent_architecture/participation/mcp/tools/0/description,string,"Read published research on the 528 Hz tuning family, DOCK2/PTSD or OXTR/IL-6. Includes synthesis, source access, mixed findings and study-family limits. Use topic for detailed narrative; paginate source records."
+/agent_architecture/participation/mcp/tools/0/description,string,"Read published research on the 528 Hz tuning family, DOCK2/PTSD, OXTR/IL-6 or IL-6 and mental health. Includes synthesis, source access, mixed findings and study-family limits. Use topic for detailed narrative; paginate source records."
 /agent_architecture/participation/mcp/tools/0/inputSchema,object,
 /agent_architecture/participation/mcp/tools/0/inputSchema/type,string,object
 /agent_architecture/participation/mcp/tools/0/inputSchema/additionalProperties,boolean,false
 /agent_architecture/participation/mcp/tools/0/inputSchema/properties,object,
 /agent_architecture/participation/mcp/tools/0/inputSchema/properties/id,object,
 /agent_architecture/participation/mcp/tools/0/inputSchema/properties/id/type,string,string
-/agent_architecture/participation/mcp/tools/0/inputSchema/properties/id/enum,array,3
+/agent_architecture/participation/mcp/tools/0/inputSchema/properties/id/enum,array,4
 /agent_architecture/participation/mcp/tools/0/inputSchema/properties/id/enum/0,string,dock2-trauma-ptsd
 /agent_architecture/participation/mcp/tools/0/inputSchema/properties/id/enum/1,string,oxtr-il6-inflammation
-/agent_architecture/participation/mcp/tools/0/inputSchema/properties/id/enum/2,string,528hz-sound-tuning
+/agent_architecture/participation/mcp/tools/0/inputSchema/properties/id/enum/2,string,il6-mental-health
+/agent_architecture/participation/mcp/tools/0/inputSchema/properties/id/enum/3,string,528hz-sound-tuning
 /agent_architecture/participation/mcp/tools/0/inputSchema/properties/topic,object,
 /agent_architecture/participation/mcp/tools/0/inputSchema/properties/topic/type,string,string
 /agent_architecture/participation/mcp/tools/0/inputSchema/properties/topic/maxLength,number,100
@@ -640,7 +641,7 @@ path,type,value
 /agent_architecture/implementation_sources/5/scope,string,Implementation source
 /agent_architecture/implementation_sources/6,object,
 /agent_architecture/implementation_sources/6/repository_path,string,cloudflare/informatics-connectors.js
-/agent_architecture/implementation_sources/6/sha256,string,6dd12695bacafdc29e99192561ea93855b64daadef3db200d3640d9c256802e0
+/agent_architecture/implementation_sources/6/sha256,string,a63d72648bb416933748fe0a9771949b5c509a483f7c6655a6de7a2baf78f42f
 /agent_architecture/implementation_sources/6/scope,string,Implementation source
 /agent_architecture/implementation_sources/7,object,
 /agent_architecture/implementation_sources/7/repository_path,string,cloudflare/informatics-quantum-knowledge.js
@@ -760,7 +761,7 @@ path,type,value
 /agent_architecture/implementation_sources/35/scope,string,Implementation source
 /agent_architecture/implementation_sources/36,object,
 /agent_architecture/implementation_sources/36/repository_path,string,cloudflare/informatics-research-worker.js
-/agent_architecture/implementation_sources/36/sha256,string,7d301bb60f3d71142d2f2011565324d64bae47bce58879c0e713672f68eaec69
+/agent_architecture/implementation_sources/36/sha256,string,e04bc6ded29e7ac2573364edd933b3ef5cce95fdc0298b2b00ca89d0debc8b2f
 /agent_architecture/implementation_sources/36/scope,string,Implementation source
 /agent_architecture/implementation_sources/37,object,
 /agent_architecture/implementation_sources/37/repository_path,string,research/informatics/portal-demo-20261109/research_context.py

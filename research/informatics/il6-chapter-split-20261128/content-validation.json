@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "publications": 120,
+  "directMentalHealth": 117,
+  "contextual": 3,
+  "combinedSources": 162,
+  "separateChapters": [
+    13,
+    14
+  ],
+  "chapter14Title": "IL-6 and mental health",
+  "priorChaptersPreserved": 12,
+  "originalSourcesPreserved": 42,
+  "jsonCsvEquivalent": true,
+  "citationsResolved": true,
+  "individualAppraisals": true,
+  "maskingAndFamilyBoundaries": true
+}

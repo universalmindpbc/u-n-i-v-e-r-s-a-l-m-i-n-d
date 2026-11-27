@@ -6,7 +6,7 @@ import {connectorTools,openAPI} from '../cloudflare/informatics-connectors.js';
 
 let checks=0;
 function check(name,run){run();checks++;console.log('PASS '+name);}
-const registers=await Promise.all(['dock2','oxtr-il6'].map(async n=>JSON.parse(await readFile(new URL('../Informatics/library-data/'+n+'-research-register.json',import.meta.url)))));
+const registers=await Promise.all(['dock2','oxtr-il6','il6-mental-health'].map(async n=>JSON.parse(await readFile(new URL('../Informatics/library-data/'+n+'-research-register.json',import.meta.url)))));
 const library=JSON.parse(await readFile(new URL('../Informatics/library-data/library.json',import.meta.url)));
 check('All 195 source records preserve current appraisals and identifiers',()=>{
  assert.equal(records.length,195);assert.equal(new Set(records.map(r=>r.id)).size,195);
@@ -38,6 +38,8 @@ check('Evidence boundaries, negative findings and linked reports remain availabl
  assert(guide({id:'dock2-trauma-ptsd'}).records.some(r=>r.key==='katrinli2024'));
 });
 check('Target detection and follow-ups preserve subject without gene conflation',()=>{
+ assert.deepEqual(subjects('IL-6 and mental health'),['il6-mental-health']);
+ assert.deepEqual(subjects('IL-6 and depression'),['il6-mental-health']);
  assert.deepEqual(subjects('OXTR and IL-6'),['oxtr-il6-inflammation']);
  assert.deepEqual(subjects('DOCK2 and IL6'),['dock2-trauma-ptsd','oxtr-il6-inflammation']);
  assert.deepEqual(subjects('What are its limits?',[{role:'user',content:'DOCK2 in PTSD'}]),['dock2-trauma-ptsd']);
@@ -77,14 +79,14 @@ check('Repository union, duplicate exclusion and pagination agree',()=>{
 for(const r of records)assert.deepEqual((await repo.publication(r.id)).record,r);
 const chapter=await repo.call('get_research_chapter',{id:'oxtr-il6-inflammation',topic:'oxtr-il6-il6'});
 check('REST and MCP expose the same chapter and biomarker narrative',()=>{
- assert.equal(chapter.topics[0].id,'oxtr-il6-il6');assert.equal(chapter.sourceCount,162);
+ assert.equal(chapter.topics[0].id,'oxtr-il6-il6');assert.equal(chapter.sourceCount,42);
  assert(connectorTools.some(t=>t.name==='get_research_chapter'));
  assert(openAPI({ALLOWED_ORIGIN:'https://staging.universalmind.tv'},'https://api.example').paths['/api/v1/research-chapters/{id}']);
 });
 check('Mental-health questions retrieve condition-specific narrative and full appraisals',()=>{
  for(const [query,key] of [['IL6 and depression','depression'],['IL6 schizophrenia','psychosis'],['IL6 bipolar depression','bipolar'],['IL6 mania','mania'],['IL6 hypomania','hypomania'],['IL6 anxiety','anxiety'],['IL6 PTSD','ptsd'],['IL6 suicidal ideation','suicidality'],['IL6 ADHD','adhd'],['IL6 alcohol','alcohol'],['IL6 opioids','opioids'],['IL6 methamphetamine','stimulants']]){
-  const result=guide({id:'oxtr-il6-inflammation',query});
-  assert(result.matchedNarratives.some(t=>t.id==='oxtr-il6-'+key),query);
+  const result=guide({id:'il6-mental-health',query});
+  assert(result.matchedNarratives.some(t=>t.id==='il6-mental-health-'+key),query);
   assert(result.records.length>0,query);assert.equal(result.mentalHealthPublicationCount,117);
  }
  assert.equal(lookup('37069570').blinding,'open-label');

@@ -86,5 +86,5 @@ In short, the optical pathway preferences these shapes because hexagons enclose 
 
 ## Sources
 
-- [index.html](https://universalmind.tv/informatics/index.html) · SHA-256: bc1b557610541979bb467317a3431fa88b667e12beaf5caa46119671c8e9ef17 · HTML with generated Atlas narrative blocks removed
+- [index.html](https://universalmind.tv/informatics/index.html) · SHA-256: ddae4a067aca010c9d483bfe3f7144b148901f58c54b2e11a0e072895a13ec5d · HTML with generated Atlas narrative blocks removed
 - [vision-science.js](https://universalmind.tv/informatics/vision-science.js) · SHA-256: d3995b1d01eb19eb0152bb5af0e4cfb7c65c2c902bf683181deeb04fd6e71d5f · Exact file bytes

@@ -1,14 +1,14 @@
 {
-  "datasetManifestSHA256": "53c144f86998da40ca61b3275de8d501f0fa52ee870bf21c634c146aa954ba85",
+  "datasetManifestSHA256": "dcea74fc4a1409f6abbc020f354c991e6eab3702fa409bdc61c6000149377907",
   "generatedAt": "2026-10-26",
   "publications": 1621,
   "atlas": 1001,
   "experiments": 2,
-  "pages": 2642,
+  "pages": 2643,
   "sourceHashes": [
     {
       "path": "library.js",
-      "sha256": "c67fffa893e546afd2215584bdd26210d289053b4625f2dc9445d9da0912eb55"
+      "sha256": "51465a5f445a603cdab5182699aefa494e543ce7671b50c28c6102f229b545e3"
     },
     {
       "path": "library-data/sound-edition.json",
@@ -28,7 +28,7 @@
     },
     {
       "path": "library-data/general-edition.json",
-      "sha256": "53922bbe3b6ce01386df94b9c4b3405fb05d2e7c104db97eea6e1b5dba7f7cbb"
+      "sha256": "9c73d96594cd36aa37a649ff834babafdd69883d69863b79bff4d1632251bd50"
     },
     {
       "path": "library-data/mindfulness-expansion.json",
@@ -79,7 +79,7 @@
       "sha256": "3fe8ac5ff0b61e4348e5de0808e2f7956329df489b51ccf18a3f0163e00b376e"
     }
   ],
-  "publicationRecordSHA256": "cfa49c612e81d6dcfe8c5ba5511b3a73cc841b98758f098ac5f1d9f7b0faf2ba",
+  "publicationRecordSHA256": "5a52f77a1ce7e7bd8320b362e2133ebf27b28a2b862e0be6a5f35383f4a54e89",
   "canonicalPaths": [
     "",
     "connect.html",
@@ -1718,6 +1718,7 @@
     "read/hyperspectral/index.html",
     "read/dock2/index.html",
     "read/oxtr-il6/index.html",
+    "read/il6-mental-health/index.html",
     "read/atlas/m1.html",
     "read/atlas/m2.html",
     "read/atlas/m3.html",
