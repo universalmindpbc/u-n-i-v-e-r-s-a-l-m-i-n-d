@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "coverage": {
+    "dock2": {
+      "expected": 33,
+      "exactAppraisalMatches": 33,
+      "chapterRESTAndMCPAgree": true
+    },
+    "oxtr-il6": {
+      "expected": 162,
+      "exactAppraisalMatches": 162,
+      "chapterRESTAndMCPAgree": true
+    }
+  },
+  "exportPages": 13,
+  "jsonCSVReconstructedRecords": 1256,
+  "chapterRecordsPaged": 162,
+  "productionUnchangedSHA256": {
+    "general": "d098bba0311be520464dd5569a6cff9131de1aeaddddebaca31157c395fac187",
+    "health": "5c7b7e8321f13185d68bb59e172962aa4e8ca16400d7702f17b93bfafdfeb371"
+  }
+}

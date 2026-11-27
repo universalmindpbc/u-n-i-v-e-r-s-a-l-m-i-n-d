@@ -1,0 +1,148 @@
+{
+  "passed": true,
+  "inventory": {
+    "schemaVersion": "1.0",
+    "datasetVersion": "research-20261026-daytab-v1+youth-f164c8325ea5+lab-biofeedback-20261105-ratings+general-inflammation-20261128-v4-29947bebd8f6+sound528-20261125-v3-5704b741bbc4",
+    "sourceVersions": {
+      "publicationDatabase": "research-20261026-daytab-v1",
+      "approvedYouth": {
+        "sourceBatch": "batch-f164c8325ea5f9c9.json",
+        "sourceSHA256": "f164c8325ea5f9c989c29524518b598913508117712826dc408f592b7f99a723",
+        "approvedAt": "2026-11-02",
+        "publications": 105
+      },
+      "biofeedback": {
+        "version": "lab-biofeedback-20261105-ratings",
+        "publications": 63
+      },
+      "inflammation": {
+        "version": "general-inflammation-20261128-v4",
+        "sourceSHA256": "29947bebd8f68654b7e7172773bee5efea92a592f4f58fe1056571eb4732be6a",
+        "sourceRecords": 195,
+        "chapters": [
+          {
+            "id": "dock2-trauma-ptsd",
+            "number": 12,
+            "sourceRecords": 33,
+            "reviewedAt": "2026-11-21"
+          },
+          {
+            "id": "oxtr-il6-inflammation",
+            "number": 13,
+            "sourceRecords": 162,
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      },
+      "sound528": {
+        "version": "sound528-20261125-v3",
+        "sourceSHA256": "5704b741bbc4132e8e271fb8cd0c9c913a7d91ab574a8588e15b0e6957c130ec",
+        "sourceRecords": 12,
+        "completedAuthorReportedRCTs": 5,
+        "explicitly528HzRCTs": 4
+      }
+    },
+    "counts": {
+      "publications": 1256,
+      "atlas": 1001,
+      "full_texts": 149,
+      "public_full_texts": 146,
+      "m9_family": 111
+    },
+    "coverage": {
+      "databasePublications": 891,
+      "approvedYouthPublications": 105,
+      "biofeedbackPublications": 63,
+      "inflammationSourceRecords": 195,
+      "sound528SourceRecords": 12,
+      "replacedDatabaseRows": 10,
+      "note": "Read-only union of the publication database and youth, biofeedback and General inflammation and 528 Hz source appraisals. Other browser-only collections can have different coverage. No new full text is indexed."
+    },
+    "access": {
+      "records": "Public publication metadata, approved summaries and quotations; complete Atlas records and commentary.",
+      "passages": "CC BY and CC0 passages only, with source, attribution and licence. Other full texts remain outside public exports.",
+      "writing": false
+    },
+    "links": {
+      "researchChapters": [
+        "https://informatics-universal-one-staging.universalmind.workers.dev/api/v1/research-chapters/dock2-trauma-ptsd",
+        "https://informatics-universal-one-staging.universalmind.workers.dev/api/v1/research-chapters/oxtr-il6-inflammation",
+        "https://informatics-universal-one-staging.universalmind.workers.dev/api/v1/research-chapters/528hz-sound-tuning"
+      ],
+      "publications": "https://informatics-universal-one-staging.universalmind.workers.dev/api/v1/publications",
+      "atlas": "https://informatics-universal-one-staging.universalmind.workers.dev/api/v1/atlas",
+      "openapi": "https://informatics-universal-one-staging.universalmind.workers.dev/api/v1/openapi.json",
+      "mcp": "https://informatics-universal-one-staging.universalmind.workers.dev/mcp",
+      "agentCard": "https://informatics-universal-one-staging.universalmind.workers.dev/.well-known/agent-card.json",
+      "guide": "https://staging.universalmind.tv/informatics/connect.html",
+      "quantum": "https://informatics-universal-one-staging.universalmind.workers.dev/api/v1/quantum/oxtr-qrc-01",
+      "completeDataset": "https://staging.universalmind.tv/informatics/exports/manifest.json"
+    }
+  },
+  "health": {
+    "status": "ready",
+    "profile": "informatics-research",
+    "model": "gpt-6-astra",
+    "reasoning": "max",
+    "version": "research-20261026-daytab-v1",
+    "knowledgeVersions": {
+      "approvedYouth": {
+        "sourceBatch": "batch-f164c8325ea5f9c9.json",
+        "sourceSHA256": "f164c8325ea5f9c989c29524518b598913508117712826dc408f592b7f99a723",
+        "approvedAt": "2026-11-02",
+        "publications": 105
+      },
+      "biofeedback": {
+        "version": "lab-biofeedback-20261105-ratings",
+        "publications": 63
+      },
+      "inflammation": {
+        "version": "general-inflammation-20261128-v4",
+        "sourceSHA256": "29947bebd8f68654b7e7172773bee5efea92a592f4f58fe1056571eb4732be6a",
+        "sourceRecords": 195,
+        "chapters": [
+          {
+            "id": "dock2-trauma-ptsd",
+            "number": 12,
+            "sourceRecords": 33,
+            "reviewedAt": "2026-11-21"
+          },
+          {
+            "id": "oxtr-il6-inflammation",
+            "number": 13,
+            "sourceRecords": 162,
+            "reviewedAt": "2026-11-28"
+          }
+        ]
+      },
+      "sound528": {
+        "version": "sound528-20261125-v3",
+        "sourceSHA256": "5704b741bbc4132e8e271fb8cd0c9c913a7d91ab574a8588e15b0e6957c130ec",
+        "sourceRecords": 12,
+        "completedAuthorReportedRCTs": 5,
+        "explicitly528HzRCTs": 4
+      },
+      "publicGenes": "public-gene-data-20261109-v1",
+      "literature": "literature-20261110-v2"
+    }
+  },
+  "coverage": {
+    "dock2": {
+      "expected": 33,
+      "exactAppraisalMatches": 33,
+      "chapterRESTAndMCPAgree": true
+    },
+    "oxtr-il6": {
+      "expected": 162,
+      "exactAppraisalMatches": 162,
+      "chapterRESTAndMCPAgree": true
+    }
+  },
+  "exportPages": 13,
+  "jsonCSVReconstructedRecords": 1256,
+  "chapterRecordsPaged": 162,
+  "productionUnchangedSHA256": {
+    "general": "d098bba0311be520464dd5569a6cff9131de1aeaddddebaca31157c395fac187",
+    "health": "5c7b7e8321f13185d68bb59e172962aa4e8ca16400d7702f17b93bfafdfeb371"
+  }
+}

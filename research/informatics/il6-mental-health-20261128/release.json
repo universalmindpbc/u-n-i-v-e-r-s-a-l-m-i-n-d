@@ -1,0 +1,53 @@
+{
+  "date": "2026-11-28",
+  "status": "staging verified; awaiting Ben production approval",
+  "sourceCommit": "65efe5151cbd4045de3ab41095935b8b67e79125",
+  "baselineCommit": "f165b4a8ea49087f96320c7e595f917635afbd29",
+  "stagingURL": "https://staging.universalmind.tv/informatics/research/?collection=general&chapter=13",
+  "workerVersionID": "0e9c3a91-4321-4bd9-8a07-8f62b3829ac6",
+  "knowledgeVersion": "general-inflammation-20261128-v4",
+  "publicationCounts": {
+    "new": 120,
+    "directMentalHealth": 117,
+    "contextual": 3,
+    "originalOXTR": 42,
+    "combinedChapter": 162,
+    "withDOCK2": 195
+  },
+  "chapterSections": 26,
+  "datasetSources": 1205,
+  "datasetVersion": "2557e4e0963afda1bc47b0421d6f659a5ea0b958ebf5e6b6de3e27820cce4713",
+  "datasetManifestSHA256": "53c144f86998da40ca61b3275de8d501f0fa52ee870bf21c634c146aa954ba85",
+  "verification": {
+    "content": "content-validation.json",
+    "originalOXTR": "original-oxtr-validation.json",
+    "completeJSONCSVRoundtrip": "roundtrip.json",
+    "API": "api-verification.json",
+    "HTTP": "http.json",
+    "browser": "browser/browser.json",
+    "UniversalOne": "live-verification.json"
+  },
+  "qa": {
+    "successfulUIAnswers": 5,
+    "totalRequestsIncludingResolvedGuardFailure": 6,
+    "chargedUpperUSD": 3.875574999999999,
+    "maximumTotalUSD": 12,
+    "maximumPerRequestUSD": 2,
+    "reasoning": "max",
+    "processAudioMuted": true,
+    "mediaPlayback": false
+  },
+  "resolvedIssues": [
+    "New mental-health records explicitly use the existing unclassified-age fallback.",
+    "Model topic index compacted; full source appraisals and public API remain available.",
+    "Five audit URLs cached the first revision; final versioned user-facing URLs and fresh audit URLs match source."
+  ],
+  "productionModified": false,
+  "limitations": [
+    "Structured narrative evidence map, not a registered systematic review or formal GRADE assessment.",
+    "All 120 indexed abstracts appraised; selected full-text passages assessed for nine papers.",
+    "Five linked correction notices flagged; their full correction content remains unresolved.",
+    "Publication totals are not counts of independent trials.",
+    "Universal One uses versioned retrieval; no model fine-tuning."
+  ]
+}

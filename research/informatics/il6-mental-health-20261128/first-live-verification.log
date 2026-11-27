@@ -1,0 +1,19 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: {"error":"QA spending guard stopped before another paid request.","qaSpend":{"limitUSD":2,"chargedUpperUSD":0.2193624999999999,"calls":[{"path":"/responses","model":"gpt-6-astra","inputTokenUpper":83968,"outputTokenUpper":16384,"boundMethod":"UTF-8 bytes plus framing","reservedUSD":1.8688000000000002,"chargedUpperUSD":0.21936250000000002,"usage":{"input_tokens":15685,"input_tokens_details":{"cache_write_tokens":15682,"cache_write_tokens_details":{"ttl_12h_tokens":0,"ttl_30m_tokens":15682},"cached_tokens":0},"output_tokens":466,"output_tokens_details":{"reasoning_tokens":424},"total_tokens":16151}}],"blocked":{"path":"/responses","inputTokenUpper":78810,"outputTokenUpper":16384,"reservedUSD":1.804325,"boundMethod":"Provider-counted exact prefix plus new UTF-8 bytes and framing"}}}
+
+422 !== 200
+
+    at ask (file:///private/tmp/um-il6-mental-health-20261128/research/informatics/il6-mental-health-20261128/verify-live.mjs:44:10)
+    at async file:///private/tmp/um-il6-mental-health-20261128/research/informatics/il6-mental-health-20261128/verify-live.mjs:62:3 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 422,
+  expected: 200,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.22.3

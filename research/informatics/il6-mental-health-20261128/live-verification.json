@@ -1,0 +1,1499 @@
+{
+  "passed": true,
+  "processAudioMuted": true,
+  "hardwareJobs": 0,
+  "studyCalls": 0,
+  "limitUSD": 12,
+  "chargedUpperUSD": 3.875574999999999,
+  "requests": [
+    {
+      "question": "Compare direct IL-6 receptor trials in depression and schizophrenia in our expanded chapter. Did tocilizumab establish efficacy? Include trial sizes and limitations. Keep it under 180 words.",
+      "status": 422,
+      "response": {
+        "error": "QA spending guard stopped before another paid request.",
+        "qaSpend": {
+          "limitUSD": 2,
+          "chargedUpperUSD": 0.2193624999999999,
+          "calls": [
+            {
+              "path": "/responses",
+              "model": "gpt-6-astra",
+              "inputTokenUpper": 83968,
+              "outputTokenUpper": 16384,
+              "boundMethod": "UTF-8 bytes plus framing",
+              "reservedUSD": 1.8688000000000002,
+              "chargedUpperUSD": 0.21936250000000002,
+              "usage": {
+                "input_tokens": 15685,
+                "input_tokens_details": {
+                  "cache_write_tokens": 15682,
+                  "cache_write_tokens_details": {
+                    "ttl_12h_tokens": 0,
+                    "ttl_30m_tokens": 15682
+                  },
+                  "cached_tokens": 0
+                },
+                "output_tokens": 466,
+                "output_tokens_details": {
+                  "reasoning_tokens": 424
+                },
+                "total_tokens": 16151
+              }
+            }
+          ],
+          "blocked": {
+            "path": "/responses",
+            "inputTokenUpper": 78810,
+            "outputTokenUpper": 16384,
+            "reservedUSD": 1.804325,
+            "boundMethod": "Provider-counted exact prefix plus new UTF-8 bytes and framing"
+          }
+        }
+      }
+    },
+    {
+      "question": "Compare direct IL-6 receptor trials in depression and schizophrenia in our expanded chapter. Did tocilizumab establish efficacy? Include trial sizes and limitations. Keep it under 180 words.",
+      "status": 200,
+      "response": {
+        "answer": "**No—tocilizumab did not establish efficacy in either diagnosis.** Both trials were randomized, double-blind and placebo-controlled. [S1][S2]\n\n- **Depression (2026):** **30 randomized; 29 received an infusion.** This inflammation-enriched proof-of-concept trial tested one infusion. The primary day-14 somatic-symptom outcome was null: adjusted difference −0.12 (95% CI −2.51 to 2.28). Later favourable trends and descriptive response/remission differences remain exploratory. Limitations include the small, selected sample and only four weeks’ follow-up. [S2]\n\n- **Schizophrenia (2018):** **36 adults** with stable, chronically symptomatic illness; three monthly infusions versus placebo. No benefit emerged for symptoms or cognition. CRP decreased while circulating IL-6 increased—biological effects without demonstrated clinical improvement. The small, chronic-illness sample leaves effects in early or inflammation-selected psychosis unresolved. [S1]\n\n**Source limits:** Depression appraisal included selected full-text passages; schizophrenia appraisal relied on the indexed abstract without comprehensive full-text methods review. Neither trial establishes sustained benefit, and these findings do not rule out benefit in every possible subgroup. [S1][S2]",
+        "sources": [
+          {
+            "label": "S1",
+            "id": "pmid-29090685",
+            "passageId": null,
+            "title": "A Randomized, Double-Blind, Placebo-Controlled Clinical Trial of Tocilizumab, An Interleukin-6 Receptor Antibody, For Residual Symptoms in Schizophrenia.",
+            "authors": "Girgis RR, Ciarleglio A, Choo T, Haynes G, Bathon JM, Cremers S, Kantrowitz JT, Lieberman JA, Brown AS.",
+            "journal": "Neuropsychopharmacology : official publication of the American College of Neuropsychopharmacology",
+            "year": 2018,
+            "url": "https://pubmed.ncbi.nlm.nih.gov/29090685/",
+            "section": "Library record",
+            "kind": "approved-record",
+            "text": "Three monthly tocilizumab infusions did not improve PANSS or cognitive outcomes. CRP fell while circulating IL-6 increased, illustrating that receptor blockade and measured ligand concentration are different endpoints.",
+            "doi": "10.1038/npp.2017.258",
+            "rights": null,
+            "sha256": null,
+            "retrievalLabel": "S2"
+          },
+          {
+            "label": "S2",
+            "id": "pmid-42160062",
+            "passageId": null,
+            "title": "Interleukin 6 as a Treatment Target for Depression: A Proof-of-Concept Randomized Clinical Trial.",
+            "authors": "Foley ÉM, Turner N, Margelyte R, Jones HJ, Kaser M, Lewis G, Jones PB, Khandaker GM.",
+            "journal": "JAMA psychiatry",
+            "year": 2026,
+            "url": "https://pubmed.ncbi.nlm.nih.gov/42160062/",
+            "section": "Library record",
+            "kind": "approved-record",
+            "text": "A single tocilizumab infusion produced no statistically significant improvement in the primary day-14 somatic depression outcome (adjusted difference −0.12; 95% CI −2.51 to 2.28). Later symptom trends favouring treatment are hypothesis-generating. Baseline CRP, not IL-6, tracked improvement.",
+            "doi": "10.1001/jamapsychiatry.2026.1053",
+            "rights": null,
+            "sha256": null,
+            "retrievalLabel": "S3"
+          }
+        ],
+        "model": "gpt-6-astra",
+        "reasoning": "max",
+        "providerResponses": [
+          {
+            "id": "resp_0ac7f96a58772ab7016b09dadb2fd087d0b347661b48bbe934",
+            "requestedReasoning": "max",
+            "providerReasoning": "max",
+            "status": "completed"
+          },
+          {
+            "id": "resp_0ac7f96a58772ab7016b09dae129b487d094c695130ebfec5e",
+            "requestedReasoning": "max",
+            "providerReasoning": "max",
+            "status": "completed"
+          },
+          {
+            "id": "resp_0ac7f96a58772ab7016b09dae3482c87d08e0d7188aa4841bb",
+            "requestedReasoning": "max",
+            "providerReasoning": "max",
+            "status": "completed"
+          }
+        ],
+        "version": "research-20261026-daytab-v1",
+        "knowledgeVersions": {
+          "approvedYouth": {
+            "sourceBatch": "batch-f164c8325ea5f9c9.json",
+            "sourceSHA256": "f164c8325ea5f9c989c29524518b598913508117712826dc408f592b7f99a723",
+            "approvedAt": "2026-11-02",
+            "publications": 105
+          },
+          "biofeedback": {
+            "version": "lab-biofeedback-20261105-ratings",
+            "publications": 63
+          },
+          "inflammation": {
+            "version": "general-inflammation-20261128-v4",
+            "sourceSHA256": "29947bebd8f68654b7e7172773bee5efea92a592f4f58fe1056571eb4732be6a",
+            "sourceRecords": 195,
+            "chapters": [
+              {
+                "id": "dock2-trauma-ptsd",
+                "number": 12,
+                "sourceRecords": 33,
+                "reviewedAt": "2026-11-21"
+              },
+              {
+                "id": "oxtr-il6-inflammation",
+                "number": 13,
+                "sourceRecords": 162,
+                "reviewedAt": "2026-11-28"
+              }
+            ]
+          },
+          "sound528": {
+            "version": "sound528-20261125-v3",
+            "sourceSHA256": "5704b741bbc4132e8e271fb8cd0c9c913a7d91ab574a8588e15b0e6957c130ec",
+            "sourceRecords": 12,
+            "completedAuthorReportedRCTs": 5,
+            "explicitly528HzRCTs": 4
+          },
+          "publicGenes": "public-gene-data-20261109-v1",
+          "literature": "literature-20261110-v2"
+        },
+        "usage": {
+          "totalTokens": 46918,
+          "qaSpend": {
+            "limitUSD": 2,
+            "chargedUpperUSD": 0.65705,
+            "calls": [
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 69382,
+                "outputTokenUpper": 16384,
+                "boundMethod": "UTF-8 bytes plus framing",
+                "reservedUSD": 1.6864750000000002,
+                "chargedUpperUSD": 0.168525,
+                "usage": {
+                  "input_tokens": 12358,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 12355,
+                    "cache_write_tokens_details": {
+                      "ttl_12h_tokens": 0,
+                      "ttl_30m_tokens": 12355
+                    },
+                    "cached_tokens": 0
+                  },
+                  "output_tokens": 281,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 241
+                  },
+                  "total_tokens": 12639
+                }
+              },
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 42979,
+                "outputTokenUpper": 16384,
+                "boundMethod": "Provider-counted exact prefix plus new UTF-8 bytes and framing",
+                "reservedUSD": 1.3564375000000002,
+                "chargedUpperUSD": 0.202,
+                "usage": {
+                  "input_tokens": 16064,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 3706,
+                    "cache_write_tokens_details": {
+                      "ttl_12h_tokens": 0,
+                      "ttl_30m_tokens": 3706
+                    },
+                    "cached_tokens": 12355
+                  },
+                  "output_tokens": 24,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 0
+                  },
+                  "total_tokens": 16088
+                }
+              },
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 26758,
+                "outputTokenUpper": 16384,
+                "boundMethod": "Provider-counted exact prefix plus new UTF-8 bytes and framing",
+                "reservedUSD": 1.153675,
+                "chargedUpperUSD": 0.28652500000000003,
+                "usage": {
+                  "input_tokens": 16614,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 550,
+                    "cache_write_tokens_details": {
+                      "ttl_12h_tokens": 0,
+                      "ttl_30m_tokens": 550
+                    },
+                    "cached_tokens": 15989
+                  },
+                  "output_tokens": 1577,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 1307
+                  },
+                  "total_tokens": 18191
+                }
+              }
+            ]
+          }
+        },
+        "retrieval": {
+          "required": true,
+          "sourceCount": 7,
+          "contextMessages": 0,
+          "previousReferences": 0
+        }
+      }
+    },
+    {
+      "question": "From our IL-6 review, distinguish bipolar depression, mania, hypomania and euthymia. Is the evidence specific to hypomania? Keep it under 180 words.",
+      "status": 200,
+      "response": {
+        "answer": "**Only limited evidence is hypomania-specific—not the broader bipolar evidence.** [S1]\n\n- **Bipolar depression:** depressive episodes in bipolar I or II. Trials show mixed results: pentoxifylline lowered IL-6 without improving depression more than placebo overall. Bipolar II depression is not hypomania. [S2][S1]\n- **Mania:** marked mood elevation/irritability and activation, with substantial impairment. IL-6 elevations are reported, but findings vary. The rapid-cycling study pooled mania and hypomania, preventing a separate hypomania estimate. [S3][S1]\n- **Hypomania:** less severe elevation/activation, without mania’s marked impairment. The clearest dedicated study associated childhood IL-6 with self-reported hypomanic features at 22: adjusted odds ratio 1.77 (95% CI 1.10–2.85), highest versus lowest third. This was observational—not confirmed bipolar diagnosis or treatment evidence. [S4][S1]\n- **Euthymia:** relatively stable mood outside episodes. Blood IL-6 can still be elevated; cerebrospinal-fluid findings differ. [S3]\n\n**Our review identified no convincing hypomania-specific IL-6 intervention benefit.** The dedicated cohort appraisal was abstract-based. [S1][S4]",
+        "sources": [
+          {
+            "label": "S1",
+            "id": "oxtr-il6-inflammation",
+            "passageId": "oxtr-il6-inflammation:oxtr-il6-hypomania",
+            "title": "IL-6, mental health and inflammation: oxytocin and OXTR pathways",
+            "authors": "",
+            "url": "https://staging.universalmind.tv/informatics/research/?collection=general&chapter=13",
+            "section": "Library record",
+            "kind": "published-research-guide",
+            "text": "{\"id\":\"oxtr-il6-inflammation\",\"title\":\"IL-6, mental health and inflammation: oxytocin and OXTR pathways\",\"url\":\"https://staging.universalmind.tv/informatics/research/?collection=general&chapter=13\",\"version\":{\"version\":\"general-inflammation-20261128-v4\",\"sourceSHA256\":\"29947bebd8f68654b7e7172773bee5efea92a592f4f58fe1056571eb4732be6a\",\"sourceRecords\":195,\"chapters\":[{\"id\":\"dock2-trauma-ptsd\",\"number\":12,\"sourceRecords\":33,\"reviewedAt\":\"2026-11-21\"},{\"id\":\"oxtr-il6-inflammation\",\"number\":13,\"sourceRecords\":162,\"reviewedAt\":\"2026-11-28\"}]},\"reviewedAt\":\"2026-11-28\",\"sourceCount\":162,\"reviewMethod\":[\"Searches and identifier checks were conducted on 28 November 2026 using public PubMed/Europe PMC records, publisher pages and accessible full text, with trial-first, diagnosis-specific and contradictory-result searches. The register contains 120 unique peer-reviewed publications, including 117 directly relevant mental-health papers and three contextual exposure papers. Protocols, registry entries, preprints and correction notices are not counted as new publications in this expansion.\",\"This is a structured narrative evidence map, not a registered systematic review, an exhaustive database search, an individual-participant meta-analysis or a formal GRADE assessment. Searches were bounded and selection was purposive. All included abstracts were appraised; selected available full-text methods and results were checked for pivotal trials. Each record states access depth. Linked correction notices remain attached, with unresolved correction content explicitly flagged.\",\"Nature-family, Frontiers and other specialist journals are represented, together with veteran and Navy-associated research. PubMed/NIH indexing and a government domain aid traceability; they do not guarantee low bias. Sample size, randomization, masking, outcome prespecification, attrition, comparator, confounding, multiplicity and replication carry more weight than a publisher or domain name. Publication Trust Factor is study-design shorthand, not a clinical-efficacy or certainty grade.\",\"The companion register retains original identifiers, individual findings, limitations, trial/cohort-family links and bibliographic provenance. Reviews overlap primary studies. Where cohort independence, masking or a correction cannot be resolved, uncertainty remains visible. The website-wide JSON/CSV snapshots and Universal One use the same appraised records. Updating Universal One means versioned retrieval knowledge; it does not mean that model weights were fine-tuned.\"],\"overview\":[\"IL-6 is associated with several mental-health conditions, especially depression, psychosis, bipolar disorder, PTSD and substance use disorders. The evidence varies by diagnosis, mood state, specimen and study design. It does not establish IL-6 as a universal cause of mental illness or prove that lowering it improves every condition.\",\"This chapter retains the original 42-source OXTR analysis and adds 120 peer-reviewed publications: 117 directly relevant mental-health papers plus three contextual substance-exposure papers. Randomized trials lead the appraisal; positive, null and opposite-direction findings remain visible. Publication counts are not counts of independent experiments.\",\"Oxytocin–OXTR anti-inflammatory mechanisms have strong support in selected cell models and substantial animal evidence. Human OXTR–IL-6 evidence is emerging, promising and mixed. Direct IL-6 receptor trials in depression and schizophrenia remain small, inconclusive or negative; a sustained clinical benefit through the proposed Universal Mind pathway is unestablished.\",\"The systems-biology opportunity is a testable human hypothesis: does a defined intervention alter OXTR-related biology, IL-6 signalling and meaningful outcomes, and whi",
+            "doi": null,
+            "rights": null,
+            "sha256": "29947bebd8f68654b7e7172773bee5efea92a592f4f58fe1056571eb4732be6a",
+            "retrievalLabel": "S8"
+          },
+          {
+            "label": "S2",
+            "id": "pmid-39128677",
+            "passageId": null,
+            "title": "Efficacy of pentoxifylline for the treatment of bipolar I/II patients with treatment-resistant depression: A proof-of-concept, randomized, double-blind, placebo-controlled trial.",
+            "authors": "Mohammad TAM, Mohammad TAM, Shawis TN.",
+            "journal": "Brain research bulletin",
+            "year": 2024,
+            "url": "https://pubmed.ncbi.nlm.nih.gov/39128677/",
+            "section": "Library record",
+            "kind": "approved-record",
+            "text": "Pentoxifylline lowered inflammatory markers including IL-6 but did not outperform placebo on overall bipolar depression outcomes. A baseline-CRP interaction suggested a possible inflammation-related subgroup.",
+            "doi": "10.1016/j.brainresbull.2024.111047",
+            "rights": null,
+            "sha256": null,
+            "retrievalLabel": "S3"
+          },
+          {
+            "label": "S3",
+            "id": "oxtr-il6-inflammation",
+            "passageId": "oxtr-il6-inflammation:oxtr-il6-bipolar",
+            "title": "IL-6, mental health and inflammation: oxytocin and OXTR pathways",
+            "authors": "",
+            "url": "https://staging.universalmind.tv/informatics/research/?collection=general&chapter=13",
+            "section": "Library record",
+            "kind": "published-research-guide",
+            "text": "{\"id\":\"oxtr-il6-inflammation\",\"title\":\"IL-6, mental health and inflammation: oxytocin and OXTR pathways\",\"url\":\"https://staging.universalmind.tv/informatics/research/?collection=general&chapter=13\",\"version\":{\"version\":\"general-inflammation-20261128-v4\",\"sourceSHA256\":\"29947bebd8f68654b7e7172773bee5efea92a592f4f58fe1056571eb4732be6a\",\"sourceRecords\":195,\"chapters\":[{\"id\":\"dock2-trauma-ptsd\",\"number\":12,\"sourceRecords\":33,\"reviewedAt\":\"2026-11-21\"},{\"id\":\"oxtr-il6-inflammation\",\"number\":13,\"sourceRecords\":162,\"reviewedAt\":\"2026-11-28\"}]},\"reviewedAt\":\"2026-11-28\",\"sourceCount\":162,\"reviewMethod\":[\"Searches and identifier checks were conducted on 28 November 2026 using public PubMed/Europe PMC records, publisher pages and accessible full text, with trial-first, diagnosis-specific and contradictory-result searches. The register contains 120 unique peer-reviewed publications, including 117 directly relevant mental-health papers and three contextual exposure papers. Protocols, registry entries, preprints and correction notices are not counted as new publications in this expansion.\",\"This is a structured narrative evidence map, not a registered systematic review, an exhaustive database search, an individual-participant meta-analysis or a formal GRADE assessment. Searches were bounded and selection was purposive. All included abstracts were appraised; selected available full-text methods and results were checked for pivotal trials. Each record states access depth. Linked correction notices remain attached, with unresolved correction content explicitly flagged.\",\"Nature-family, Frontiers and other specialist journals are represented, together with veteran and Navy-associated research. PubMed/NIH indexing and a government domain aid traceability; they do not guarantee low bias. Sample size, randomization, masking, outcome prespecification, attrition, comparator, confounding, multiplicity and replication carry more weight than a publisher or domain name. Publication Trust Factor is study-design shorthand, not a clinical-efficacy or certainty grade.\",\"The companion register retains original identifiers, individual findings, limitations, trial/cohort-family links and bibliographic provenance. Reviews overlap primary studies. Where cohort independence, masking or a correction cannot be resolved, uncertainty remains visible. The website-wide JSON/CSV snapshots and Universal One use the same appraised records. Updating Universal One means versioned retrieval knowledge; it does not mean that model weights were fine-tuned.\"],\"overview\":[\"IL-6 is associated with several mental-health conditions, especially depression, psychosis, bipolar disorder, PTSD and substance use disorders. The evidence varies by diagnosis, mood state, specimen and study design. It does not establish IL-6 as a universal cause of mental illness or prove that lowering it improves every condition.\",\"This chapter retains the original 42-source OXTR analysis and adds 120 peer-reviewed publications: 117 directly relevant mental-health papers plus three contextual substance-exposure papers. Randomized trials lead the appraisal; positive, null and opposite-direction findings remain visible. Publication counts are not counts of independent experiments.\",\"Oxytocin–OXTR anti-inflammatory mechanisms have strong support in selected cell models and substantial animal evidence. Human OXTR–IL-6 evidence is emerging, promising and mixed. Direct IL-6 receptor trials in depression and schizophrenia remain small, inconclusive or negative; a sustained clinical benefit through the proposed Universal Mind pathway is unestablished.\",\"The systems-biology opportunity is a testable human hypothesis: does a defined intervention alter OXTR-related biology, IL-6 signalling and meaningful outcomes, and whi",
+            "doi": null,
+            "rights": null,
+            "sha256": "29947bebd8f68654b7e7172773bee5efea92a592f4f58fe1056571eb4732be6a",
+            "retrievalLabel": "S9"
+          },
+          {
+            "label": "S4",
+            "id": "pmid-27476619",
+            "passageId": null,
+            "title": "Childhood interleukin-6, C-reactive protein and atopic disorders as risk factors for hypomanic symptoms in young adulthood: a longitudinal birth cohort study.",
+            "authors": "Hayes JF, Khandaker GM, Anderson J, Mackay D, Zammit S, Lewis G, Smith DJ, Osborn DP.",
+            "journal": "Psychological medicine",
+            "year": 2017,
+            "url": "https://pubmed.ncbi.nlm.nih.gov/27476619/",
+            "section": "Library record",
+            "kind": "approved-record",
+            "text": "Higher childhood IL-6 predicted later hypomanic features; the adjusted top-versus-bottom-third OR was 1.77 (95% CI 1.10–2.85), persisting after adjustment for earlier depression.",
+            "doi": "10.1017/s0033291716001574",
+            "rights": null,
+            "sha256": null,
+            "retrievalLabel": "S4"
+          }
+        ],
+        "model": "gpt-6-astra",
+        "reasoning": "max",
+        "providerResponses": [
+          {
+            "id": "resp_05c86e954ff3fcc2016b09db0597a487d08f26dc68daa1209f",
+            "requestedReasoning": "max",
+            "providerReasoning": "max",
+            "status": "completed"
+          },
+          {
+            "id": "resp_05c86e954ff3fcc2016b09db0e963c87d0903b748f8d351878",
+            "requestedReasoning": "max",
+            "providerReasoning": "max",
+            "status": "completed"
+          },
+          {
+            "id": "resp_05c86e954ff3fcc2016b09db10874887d099d9b21afca36426",
+            "requestedReasoning": "max",
+            "providerReasoning": "max",
+            "status": "completed"
+          }
+        ],
+        "version": "research-20261026-daytab-v1",
+        "knowledgeVersions": {
+          "approvedYouth": {
+            "sourceBatch": "batch-f164c8325ea5f9c9.json",
+            "sourceSHA256": "f164c8325ea5f9c989c29524518b598913508117712826dc408f592b7f99a723",
+            "approvedAt": "2026-11-02",
+            "publications": 105
+          },
+          "biofeedback": {
+            "version": "lab-biofeedback-20261105-ratings",
+            "publications": 63
+          },
+          "inflammation": {
+            "version": "general-inflammation-20261128-v4",
+            "sourceSHA256": "29947bebd8f68654b7e7172773bee5efea92a592f4f58fe1056571eb4732be6a",
+            "sourceRecords": 195,
+            "chapters": [
+              {
+                "id": "dock2-trauma-ptsd",
+                "number": 12,
+                "sourceRecords": 33,
+                "reviewedAt": "2026-11-21"
+              },
+              {
+                "id": "oxtr-il6-inflammation",
+                "number": 13,
+                "sourceRecords": 162,
+                "reviewedAt": "2026-11-28"
+              }
+            ]
+          },
+          "sound528": {
+            "version": "sound528-20261125-v3",
+            "sourceSHA256": "5704b741bbc4132e8e271fb8cd0c9c913a7d91ab574a8588e15b0e6957c130ec",
+            "sourceRecords": 12,
+            "completedAuthorReportedRCTs": 5,
+            "explicitly528HzRCTs": 4
+          },
+          "publicGenes": "public-gene-data-20261109-v1",
+          "literature": "literature-20261110-v2"
+        },
+        "usage": {
+          "totalTokens": 50429,
+          "qaSpend": {
+            "limitUSD": 2,
+            "chargedUpperUSD": 0.7511124999999998,
+            "calls": [
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 68406,
+                "outputTokenUpper": 16384,
+                "boundMethod": "UTF-8 bytes plus framing",
+                "reservedUSD": 1.6742750000000002,
+                "chargedUpperUSD": 0.16951249999999998,
+                "usage": {
+                  "input_tokens": 12045,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 6740,
+                    "cache_write_tokens_details": {
+                      "ttl_12h_tokens": 0,
+                      "ttl_30m_tokens": 6740
+                    },
+                    "cached_tokens": 5302
+                  },
+                  "output_tokens": 379,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 334
+                  },
+                  "total_tokens": 12424
+                }
+              },
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 40172,
+                "outputTokenUpper": 16384,
+                "boundMethod": "Provider-counted exact prefix plus new UTF-8 bytes and framing",
+                "reservedUSD": 1.32135,
+                "chargedUpperUSD": 0.189575,
+                "usage": {
+                  "input_tokens": 14998,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 2953,
+                    "cache_write_tokens_details": {
+                      "ttl_12h_tokens": 0,
+                      "ttl_30m_tokens": 2953
+                    },
+                    "cached_tokens": 12042
+                  },
+                  "output_tokens": 42,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 0
+                  },
+                  "total_tokens": 15040
+                }
+              },
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 47571,
+                "outputTokenUpper": 16384,
+                "boundMethod": "Provider-counted exact prefix plus new UTF-8 bytes and framing",
+                "reservedUSD": 1.4138375,
+                "chargedUpperUSD": 0.39202499999999996,
+                "usage": {
+                  "input_tokens": 20166,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 5168,
+                    "cache_write_tokens_details": {
+                      "ttl_12h_tokens": 0,
+                      "ttl_30m_tokens": 5168
+                    },
+                    "cached_tokens": 14923
+                  },
+                  "output_tokens": 2799,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 2513
+                  },
+                  "total_tokens": 22965
+                }
+              }
+            ]
+          }
+        },
+        "retrieval": {
+          "required": true,
+          "sourceCount": 12,
+          "contextMessages": 0,
+          "previousReferences": 0
+        }
+      }
+    },
+    {
+      "question": "What does our IL-6 review find for anxiety, PTSD and suicidal ideation? Contrast randomized findings, null results and association. Is IL-6 a validated suicide-risk test? This is a research question. Keep it under 220 words.",
+      "status": 200,
+      "response": {
+        "answer": "**Anxiety:** Panic-disorder meta-analyses report higher IL-6, but NESDA found no overall adjusted association with anxiety disorders. [S1][S2] A 77-person randomized generalized-anxiety psychotherapy trial found symptom improvement without inflammatory improvement; IL-6 increased in the acceptance-based arm. [S3]\n\n**PTSD:** Meta-analyses associate PTSD with higher IL-6, but estimates vary with trauma exposure among controls and other confounders. [S1] A 20-person double-blind, sham-controlled vagus-stimulation pilot improved symptoms and blocked stress-evoked IL-6 responses—not proof that IL-6 changes mediated benefit. Related reports are not independent replications. [S4][S1] Conversely, pooled mindfulness trials involving 210 veterans found no between-group difference in IL-6 change despite clinical improvement. [S5]\n\n**Suicidal ideation:** In veterans, IL-6 tracked ideation severity but did not predict whether ideation was present. [S6] A 2025 meta-analysis found higher IL-6 versus healthy controls, but no significant difference between depressed people with versus without suicidal behaviour, with extreme heterogeneity. [S7]\n\n**No—IL-6 is not a validated suicide-risk test.** Ideation, attempts and suicide deaths are distinct outcomes. Association does not establish individual prediction, and no randomized evidence here establishes suicide prevention through IL-6 lowering. [S1]\n\nThis is a narrative evidence map; most cited study appraisals were principally abstract-based. [S1]",
+        "sources": [
+          {
+            "label": "S1",
+            "id": "oxtr-il6-inflammation",
+            "passageId": "oxtr-il6-inflammation:overview",
+            "title": "IL-6, mental health and inflammation: oxytocin and OXTR pathways",
+            "authors": "",
+            "url": "https://staging.universalmind.tv/informatics/research/?collection=general&chapter=13",
+            "section": "Library record",
+            "kind": "published-research-guide",
+            "text": "{\"id\":\"oxtr-il6-inflammation\",\"title\":\"IL-6, mental health and inflammation: oxytocin and OXTR pathways\",\"url\":\"https://staging.universalmind.tv/informatics/research/?collection=general&chapter=13\",\"version\":{\"version\":\"general-inflammation-20261128-v4\",\"sourceSHA256\":\"29947bebd8f68654b7e7172773bee5efea92a592f4f58fe1056571eb4732be6a\",\"sourceRecords\":195,\"chapters\":[{\"id\":\"dock2-trauma-ptsd\",\"number\":12,\"sourceRecords\":33,\"reviewedAt\":\"2026-11-21\"},{\"id\":\"oxtr-il6-inflammation\",\"number\":13,\"sourceRecords\":162,\"reviewedAt\":\"2026-11-28\"}]},\"reviewedAt\":\"2026-11-28\",\"sourceCount\":162,\"reviewMethod\":[\"Searches and identifier checks were conducted on 28 November 2026 using public PubMed/Europe PMC records, publisher pages and accessible full text, with trial-first, diagnosis-specific and contradictory-result searches. The register contains 120 unique peer-reviewed publications, including 117 directly relevant mental-health papers and three contextual exposure papers. Protocols, registry entries, preprints and correction notices are not counted as new publications in this expansion.\",\"This is a structured narrative evidence map, not a registered systematic review, an exhaustive database search, an individual-participant meta-analysis or a formal GRADE assessment. Searches were bounded and selection was purposive. All included abstracts were appraised; selected available full-text methods and results were checked for pivotal trials. Each record states access depth. Linked correction notices remain attached, with unresolved correction content explicitly flagged.\",\"Nature-family, Frontiers and other specialist journals are represented, together with veteran and Navy-associated research. PubMed/NIH indexing and a government domain aid traceability; they do not guarantee low bias. Sample size, randomization, masking, outcome prespecification, attrition, comparator, confounding, multiplicity and replication carry more weight than a publisher or domain name. Publication Trust Factor is study-design shorthand, not a clinical-efficacy or certainty grade.\",\"The companion register retains original identifiers, individual findings, limitations, trial/cohort-family links and bibliographic provenance. Reviews overlap primary studies. Where cohort independence, masking or a correction cannot be resolved, uncertainty remains visible. The website-wide JSON/CSV snapshots and Universal One use the same appraised records. Updating Universal One means versioned retrieval knowledge; it does not mean that model weights were fine-tuned.\"],\"overview\":[\"IL-6 is associated with several mental-health conditions, especially depression, psychosis, bipolar disorder, PTSD and substance use disorders. The evidence varies by diagnosis, mood state, specimen and study design. It does not establish IL-6 as a universal cause of mental illness or prove that lowering it improves every condition.\",\"This chapter retains the original 42-source OXTR analysis and adds 120 peer-reviewed publications: 117 directly relevant mental-health papers plus three contextual substance-exposure papers. Randomized trials lead the appraisal; positive, null and opposite-direction findings remain visible. Publication counts are not counts of independent experiments.\",\"Oxytocin–OXTR anti-inflammatory mechanisms have strong support in selected cell models and substantial animal evidence. Human OXTR–IL-6 evidence is emerging, promising and mixed. Direct IL-6 receptor trials in depression and schizophrenia remain small, inconclusive or negative; a sustained clinical benefit through the proposed Universal Mind pathway is unestablished.\",\"The systems-biology opportunity is a testable human hypothesis: does a defined intervention alter OXTR-related biology, IL-6 signalling and meaningful outcomes, and whi",
+            "doi": null,
+            "rights": null,
+            "sha256": "29947bebd8f68654b7e7172773bee5efea92a592f4f58fe1056571eb4732be6a",
+            "retrievalLabel": "S1"
+          },
+          {
+            "label": "S2",
+            "id": "pmid-23612048",
+            "passageId": null,
+            "title": "Anxiety disorders and inflammation in a large adult cohort.",
+            "authors": "Vogelzangs N, Beekman AT, de Jonge P, Penninx BW.",
+            "journal": "Translational psychiatry",
+            "year": 2013,
+            "url": "https://pubmed.ncbi.nlm.nih.gov/23612048/",
+            "section": "Library record",
+            "kind": "approved-record",
+            "text": "After adjustment, anxiety disorders showed no overall IL-6 or TNF association. Social phobia, particularly in women, was associated with lower IL-6 within anxiety groups.",
+            "doi": "10.1038/tp.2013.27",
+            "rights": null,
+            "sha256": null,
+            "retrievalLabel": "S5"
+          },
+          {
+            "label": "S3",
+            "id": "pmid-38725444",
+            "passageId": null,
+            "title": "Inflammatory markers changes following acceptance-based behavioral psychotherapy in generalized anxiety disorder patients: Evidence from a randomized controlled trial.",
+            "authors": "Gandarela L, de A Sampaio TP, Marçal L, Burdmann EA, Neto FL, Bernik MA.",
+            "journal": "Brain, behavior, & immunity - health",
+            "year": 2024,
+            "url": "https://pubmed.ncbi.nlm.nih.gov/38725444/",
+            "section": "Library record",
+            "kind": "approved-record",
+            "text": "Acceptance-based therapy improved symptoms but did not reduce the inflammatory profile relative to supportive therapy. IL-6 increased in the experimental group; most symptom–biomarker correlations were absent.",
+            "doi": "10.1016/j.bbih.2024.100779",
+            "rights": null,
+            "sha256": null,
+            "retrievalLabel": "S3"
+          },
+          {
+            "label": "S4",
+            "id": "pmid-34778863",
+            "passageId": null,
+            "title": "Transcutaneous Cervical Vagal Nerve Stimulation in Patients with Posttraumatic Stress Disorder (PTSD): A Pilot Study of Effects on PTSD Symptoms and Interleukin-6 Response to Stress.",
+            "authors": "Bremner JD, Wittbrodt MT, Gurel NZ, Shandhi MH, Gazi AH, Jiao Y, Levantsevych OM, Huang M, Beckwith J, Herring I, Murrah N, Driggers EG, Ko YA, Alkhalaf ML, Soudan M, Shallenberger L, Hankus AN, Nye JA, Park J, Woodbury A, Mehta PK, Rapaport MH, Vaccarino V, Shah AJ, Pearce BD, Inan OT.",
+            "journal": "Journal of affective disorders reports",
+            "year": 2021,
+            "url": "https://pubmed.ncbi.nlm.nih.gov/34778863/",
+            "section": "Library record",
+            "kind": "approved-record",
+            "text": "Three months of cervical vagus nerve stimulation reduced self-reported PTSD symptoms and blocked IL-6 responses to traumatic scripts in this pilot.",
+            "doi": "10.1016/j.jadr.2021.100190",
+            "rights": null,
+            "sha256": null,
+            "retrievalLabel": "S6"
+          },
+          {
+            "label": "S5",
+            "id": "pmid-36938380",
+            "passageId": null,
+            "title": "Biomarker Response to Mindfulness Intervention in Veterans Diagnosed with Post-traumatic Stress Disorder.",
+            "authors": "Shapira I, Richman J, Pace TWW, Lim KO, Polusny MA, Hamner MB, Bremner JD, Mumba MN, Jacobs ML, Pilkinton P, Davis LL.",
+            "journal": "Mindfulness",
+            "year": 2022,
+            "url": "https://pubmed.ncbi.nlm.nih.gov/36938380/",
+            "section": "Library record",
+            "kind": "approved-record",
+            "text": "Mindfulness and active-control psychotherapy did not differ in IL-6 or CRP change. Improved PTSD symptoms were associated with increased, rather than decreased, IL-6 and CRP in exploratory analyses.",
+            "doi": "10.1007/s12671-022-01969-6",
+            "rights": null,
+            "sha256": null,
+            "retrievalLabel": "S7"
+          },
+          {
+            "label": "S6",
+            "id": "pmid-37779624",
+            "passageId": null,
+            "title": "Association of interleukin-6 with suicidal ideation in veterans: a longitudinal perspective.",
+            "authors": "Sun S, Wilson CM, Alter S, Ge Y, Hazlett EA, Goodman M, Yehuda R, Galfalvy H, Haghighi F.",
+            "journal": "Frontiers in psychiatry",
+            "year": 2023,
+            "url": "https://pubmed.ncbi.nlm.nih.gov/37779624/",
+            "section": "Library record",
+            "kind": "approved-record",
+            "text": "IL-6 was associated with severity of suicidal ideation, but did not predict its presence (OR 1.34; 95% CI 0.77–2.33). Cytokines declined over time in depressed attempters.",
+            "doi": "10.3389/fpsyt.2023.1231031",
+            "rights": null,
+            "sha256": null,
+            "retrievalLabel": "S2"
+          },
+          {
+            "label": "S7",
+            "id": "pmid-41272690",
+            "passageId": null,
+            "title": "Pro-inflammatory cytokines level in depressed patients with suicidal behaviour: a systematic review and meta-analysis.",
+            "authors": "Moshfeghinia R, Ghahramani M, Naderian R, Mostafavi S, Arman A, Mohagheghzadeh H, Haghighifard E, Tahmasebi S, Kanannejad Z, Javanbakht A, Ahmadi J.",
+            "journal": "Annals of general psychiatry",
+            "year": 2025,
+            "url": "https://pubmed.ncbi.nlm.nih.gov/41272690/",
+            "section": "Library record",
+            "kind": "approved-record",
+            "text": "IL-6 was higher in depressed people with suicidal behaviour than healthy controls, but did not significantly distinguish depressed people with versus without suicidal behaviour (SMD 0.42; 95% CI −0.58 to 1.42).",
+            "doi": "10.1186/s12991-025-00609-2",
+            "rights": null,
+            "sha256": null,
+            "retrievalLabel": "S4"
+          }
+        ],
+        "model": "gpt-6-astra",
+        "reasoning": "max",
+        "providerResponses": [
+          {
+            "id": "resp_0c8465e4e5f0477a016b09db499c9487d0a9a3888671576a07",
+            "requestedReasoning": "max",
+            "providerReasoning": "max",
+            "status": "completed"
+          },
+          {
+            "id": "resp_0c8465e4e5f0477a016b09db4f90b887d0aa5d7b9810060472",
+            "requestedReasoning": "max",
+            "providerReasoning": "max",
+            "status": "completed"
+          },
+          {
+            "id": "resp_0c8465e4e5f0477a016b09db5187f487d0bc973595a787c600",
+            "requestedReasoning": "max",
+            "providerReasoning": "max",
+            "status": "completed"
+          }
+        ],
+        "version": "research-20261026-daytab-v1",
+        "knowledgeVersions": {
+          "approvedYouth": {
+            "sourceBatch": "batch-f164c8325ea5f9c9.json",
+            "sourceSHA256": "f164c8325ea5f9c989c29524518b598913508117712826dc408f592b7f99a723",
+            "approvedAt": "2026-11-02",
+            "publications": 105
+          },
+          "biofeedback": {
+            "version": "lab-biofeedback-20261105-ratings",
+            "publications": 63
+          },
+          "inflammation": {
+            "version": "general-inflammation-20261128-v4",
+            "sourceSHA256": "29947bebd8f68654b7e7172773bee5efea92a592f4f58fe1056571eb4732be6a",
+            "sourceRecords": 195,
+            "chapters": [
+              {
+                "id": "dock2-trauma-ptsd",
+                "number": 12,
+                "sourceRecords": 33,
+                "reviewedAt": "2026-11-21"
+              },
+              {
+                "id": "oxtr-il6-inflammation",
+                "number": 13,
+                "sourceRecords": 162,
+                "reviewedAt": "2026-11-28"
+              }
+            ]
+          },
+          "sound528": {
+            "version": "sound528-20261125-v3",
+            "sourceSHA256": "5704b741bbc4132e8e271fb8cd0c9c913a7d91ab574a8588e15b0e6957c130ec",
+            "sourceRecords": 12,
+            "completedAuthorReportedRCTs": 5,
+            "explicitly528HzRCTs": 4
+          },
+          "publicGenes": "public-gene-data-20261109-v1",
+          "literature": "literature-20261110-v2"
+        },
+        "usage": {
+          "totalTokens": 55680,
+          "qaSpend": {
+            "limitUSD": 2,
+            "chargedUpperUSD": 0.8161499999999999,
+            "calls": [
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 69981,
+                "outputTokenUpper": 16384,
+                "boundMethod": "UTF-8 bytes plus framing",
+                "reservedUSD": 1.6939625,
+                "chargedUpperUSD": 0.16885,
+                "usage": {
+                  "input_tokens": 12448,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 7143,
+                    "cache_write_tokens_details": {
+                      "ttl_12h_tokens": 0,
+                      "ttl_30m_tokens": 7143
+                    },
+                    "cached_tokens": 5302
+                  },
+                  "output_tokens": 265,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 222
+                  },
+                  "total_tokens": 12713
+                }
+              },
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 59050,
+                "outputTokenUpper": 16384,
+                "boundMethod": "Provider-counted exact prefix plus new UTF-8 bytes and framing",
+                "reservedUSD": 1.557325,
+                "chargedUpperUSD": 0.2481875,
+                "usage": {
+                  "input_tokens": 19759,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 7311,
+                    "cache_write_tokens_details": {
+                      "ttl_12h_tokens": 0,
+                      "ttl_30m_tokens": 7311
+                    },
+                    "cached_tokens": 12445
+                  },
+                  "output_tokens": 24,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 0
+                  },
+                  "total_tokens": 19783
+                }
+              },
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 30461,
+                "outputTokenUpper": 16384,
+                "boundMethod": "Provider-counted exact prefix plus new UTF-8 bytes and framing",
+                "reservedUSD": 1.1999625,
+                "chargedUpperUSD": 0.3991125,
+                "usage": {
+                  "input_tokens": 20269,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 510,
+                    "cache_write_tokens_details": {
+                      "ttl_12h_tokens": 0,
+                      "ttl_30m_tokens": 510
+                    },
+                    "cached_tokens": 19684
+                  },
+                  "output_tokens": 2915,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 2588
+                  },
+                  "total_tokens": 23184
+                }
+              }
+            ]
+          }
+        },
+        "retrieval": {
+          "required": true,
+          "sourceCount": 7,
+          "contextMessages": 0,
+          "previousReferences": 0
+        }
+      }
+    },
+    {
+      "question": "Does our expanded review establish that IL-6 causes ADHD or that lowering it treats ADHD? Compare the randomized and pooled evidence, including null results. Keep it under 180 words.",
+      "status": 200,
+      "response": {
+        "answer": "**No.** The expanded review establishes neither that IL-6 causes ADHD nor that lowering it treats ADHD. [S1]\n\n**Randomized evidence:** The eight-week omega-3 trial (103 children) reported reduced IL-6 and improved parent-rated symptoms, but parallel changes do not prove that IL-6 reduction caused improvement. [S2] Vitamin D did not significantly reduce IL-6 versus placebo after three months. [S3] In the probiotic pilot, IL-6 declined in both probiotic and placebo groups—not a treatment-specific effect. [S4] These supplement trials do not isolate IL-6 as the therapeutic mechanism.\n\n**Pooled evidence:** The 2021 meta-analysis found no significant IL-6 difference (p=0.09), which does not prove equivalence. [S5] The 2022 analysis found higher IL-6, but significance disappeared when individual studies were removed. [S6] The 2026 network meta-analysis highlighted elevated IL-6 in autism; ADHD signals concerned other markers. Autism findings cannot be transferred to ADHD. [S7]\n\nOverall, associations, biomarker changes and symptom benefits are separate findings. Several appraisals relied on abstracts; full-text assessment was limited. [S1]",
+        "sources": [
+          {
+            "label": "S1",
+            "id": "oxtr-il6-inflammation",
+            "passageId": "oxtr-il6-inflammation:oxtr-il6-adhd",
+            "title": "IL-6, mental health and inflammation: oxytocin and OXTR pathways",
+            "authors": "",
+            "url": "https://staging.universalmind.tv/informatics/research/?collection=general&chapter=13",
+            "section": "Library record",
+            "kind": "published-research-guide",
+            "text": "{\"id\":\"oxtr-il6-inflammation\",\"title\":\"IL-6, mental health and inflammation: oxytocin and OXTR pathways\",\"url\":\"https://staging.universalmind.tv/informatics/research/?collection=general&chapter=13\",\"version\":{\"version\":\"general-inflammation-20261128-v4\",\"sourceSHA256\":\"29947bebd8f68654b7e7172773bee5efea92a592f4f58fe1056571eb4732be6a\",\"sourceRecords\":195,\"chapters\":[{\"id\":\"dock2-trauma-ptsd\",\"number\":12,\"sourceRecords\":33,\"reviewedAt\":\"2026-11-21\"},{\"id\":\"oxtr-il6-inflammation\",\"number\":13,\"sourceRecords\":162,\"reviewedAt\":\"2026-11-28\"}]},\"reviewedAt\":\"2026-11-28\",\"sourceCount\":162,\"reviewMethod\":[\"Searches and identifier checks were conducted on 28 November 2026 using public PubMed/Europe PMC records, publisher pages and accessible full text, with trial-first, diagnosis-specific and contradictory-result searches. The register contains 120 unique peer-reviewed publications, including 117 directly relevant mental-health papers and three contextual exposure papers. Protocols, registry entries, preprints and correction notices are not counted as new publications in this expansion.\",\"This is a structured narrative evidence map, not a registered systematic review, an exhaustive database search, an individual-participant meta-analysis or a formal GRADE assessment. Searches were bounded and selection was purposive. All included abstracts were appraised; selected available full-text methods and results were checked for pivotal trials. Each record states access depth. Linked correction notices remain attached, with unresolved correction content explicitly flagged.\",\"Nature-family, Frontiers and other specialist journals are represented, together with veteran and Navy-associated research. PubMed/NIH indexing and a government domain aid traceability; they do not guarantee low bias. Sample size, randomization, masking, outcome prespecification, attrition, comparator, confounding, multiplicity and replication carry more weight than a publisher or domain name. Publication Trust Factor is study-design shorthand, not a clinical-efficacy or certainty grade.\",\"The companion register retains original identifiers, individual findings, limitations, trial/cohort-family links and bibliographic provenance. Reviews overlap primary studies. Where cohort independence, masking or a correction cannot be resolved, uncertainty remains visible. The website-wide JSON/CSV snapshots and Universal One use the same appraised records. Updating Universal One means versioned retrieval knowledge; it does not mean that model weights were fine-tuned.\"],\"overview\":[\"IL-6 is associated with several mental-health conditions, especially depression, psychosis, bipolar disorder, PTSD and substance use disorders. The evidence varies by diagnosis, mood state, specimen and study design. It does not establish IL-6 as a universal cause of mental illness or prove that lowering it improves every condition.\",\"This chapter retains the original 42-source OXTR analysis and adds 120 peer-reviewed publications: 117 directly relevant mental-health papers plus three contextual substance-exposure papers. Randomized trials lead the appraisal; positive, null and opposite-direction findings remain visible. Publication counts are not counts of independent experiments.\",\"Oxytocin–OXTR anti-inflammatory mechanisms have strong support in selected cell models and substantial animal evidence. Human OXTR–IL-6 evidence is emerging, promising and mixed. Direct IL-6 receptor trials in depression and schizophrenia remain small, inconclusive or negative; a sustained clinical benefit through the proposed Universal Mind pathway is unestablished.\",\"The systems-biology opportunity is a testable human hypothesis: does a defined intervention alter OXTR-related biology, IL-6 signalling and meaningful outcomes, and whi",
+            "doi": null,
+            "rights": null,
+            "sha256": "29947bebd8f68654b7e7172773bee5efea92a592f4f58fe1056571eb4732be6a",
+            "retrievalLabel": "S8"
+          },
+          {
+            "label": "S2",
+            "id": "pmid-24568073",
+            "passageId": null,
+            "title": "Effect of n-3 supplementation on hyperactivity, oxidative stress and inflammatory mediators in children with attention-deficit-hyperactivity disorder.",
+            "authors": "Hariri M, Djazayery A, Djalali M, Saedisomeolia A, Rahimi A, Abdolahian E.",
+            "journal": "Malaysian journal of nutrition",
+            "year": 2012,
+            "url": "https://pubmed.ncbi.nlm.nih.gov/24568073/",
+            "section": "Library record",
+            "kind": "approved-record",
+            "text": "Eight weeks of EPA/DHA added to maintenance treatment reduced IL-6 and CRP and improved parent-rated symptoms in the reported study.",
+            "doi": null,
+            "rights": null,
+            "sha256": null,
+            "retrievalLabel": "S7"
+          },
+          {
+            "label": "S3",
+            "id": "pmid-36052304",
+            "passageId": null,
+            "title": "Effect of Vitamin D Supplementation on Inflammatory Biomarkers in School-Aged Children with Attention Deficit Hyperactivity Disorder.",
+            "authors": "Samadi M, Gholami F, Seyedi M, Jalali M, Effatpanah M, Yekaninejad MS, Abdolahi M, Chamari M, Mohammadzadeh Honarvar N.",
+            "journal": "International journal of clinical practice",
+            "year": 2022,
+            "url": "https://pubmed.ncbi.nlm.nih.gov/36052304/",
+            "section": "Library record",
+            "kind": "approved-record",
+            "text": "Vitamin D increased circulating vitamin D but did not significantly reduce IL-6 or TNF compared with placebo after three months.",
+            "doi": "10.1155/2022/1256408",
+            "rights": null,
+            "sha256": null,
+            "retrievalLabel": "S5"
+          },
+          {
+            "label": "S4",
+            "id": "pmid-32256407",
+            "passageId": null,
+            "title": "A Pilot Randomized Control Trial With the Probiotic Strain Lactobacillus rhamnosus GG (LGG) in ADHD: Children and Adolescents Report Better Health-Related Quality of Life.",
+            "authors": "Kumperscak HG, Gricar A, Ülen I, Micetic-Turk D.",
+            "journal": "Frontiers in psychiatry",
+            "year": 2020,
+            "url": "https://pubmed.ncbi.nlm.nih.gov/32256407/",
+            "section": "Library record",
+            "kind": "approved-record",
+            "text": "Probiotic supplementation improved child-reported quality of life, while parent/teacher findings were less consistent. IL-6 decreased in both probiotic and placebo groups.",
+            "doi": "10.3389/fpsyt.2020.00181",
+            "rights": null,
+            "sha256": null,
+            "retrievalLabel": "S4"
+          },
+          {
+            "label": "S5",
+            "id": "pmid-34413283",
+            "passageId": null,
+            "title": "Cortisol and inflammatory biomarker levels in youths with attention deficit hyperactivity disorder (ADHD): evidence from a systematic review with meta-analysis.",
+            "authors": "Chang JP, Su KP, Mondelli V, Pariante CM.",
+            "journal": "Translational psychiatry",
+            "year": 2021,
+            "url": "https://pubmed.ncbi.nlm.nih.gov/34413283/",
+            "section": "Library record",
+            "kind": "approved-record",
+            "text": "The pooled inflammatory evidence did not show a significant IL-6 difference (p=0.09), despite a lower TNF signal. Most studies in the broader review concerned cortisol, not cytokines.",
+            "doi": "10.1038/s41398-021-01550-0",
+            "rights": null,
+            "sha256": null,
+            "retrievalLabel": "S2"
+          },
+          {
+            "label": "S6",
+            "id": "pmid-35660454",
+            "passageId": null,
+            "title": "Peripheral blood inflammatory markers in patients with attention deficit/hyperactivity disorder (ADHD): A systematic review and meta-analysis.",
+            "authors": "Misiak B, Wójta-Kempa M, Samochowiec J, Schiweck C, Aichholzer M, Reif A, Samochowiec A, Stańczykiewicz B.",
+            "journal": "Progress in neuro-psychopharmacology & biological psychiatry",
+            "year": 2022,
+            "url": "https://pubmed.ncbi.nlm.nih.gov/35660454/",
+            "section": "Library record",
+            "kind": "approved-record",
+            "text": "ADHD was associated with higher peripheral IL-6 (pooled g about 0.7), but removal of individual studies made the pooled result nonsignificant. Other cytokines had different or absent associations.",
+            "doi": "10.1016/j.pnpbp.2022.110581",
+            "rights": null,
+            "sha256": null,
+            "retrievalLabel": "S3"
+          },
+          {
+            "label": "S7",
+            "id": "pmid-42287409",
+            "passageId": null,
+            "title": "Inflammatory cytokine alterations in autism spectrum disorder and attention-deficit/hyperactivity disorder: a systematic review and network meta-analysis.",
+            "authors": "Chen Q, Sun Y, Pan N, Long Y, Cao Y, Luo Y, Xin K, Chen P, Wang Y, Shu M, Chen Y, Gong Q.",
+            "journal": "European child & adolescent psychiatry",
+            "year": 2026,
+            "url": "https://pubmed.ncbi.nlm.nih.gov/42287409/",
+            "section": "Library record",
+            "kind": "approved-record",
+            "text": "The analysis found distinct immune patterns: elevated IL-6 was highlighted for autism, while ADHD findings centred on lower TNF, IL-2 and MCP-1.",
+            "doi": "10.1007/s00787-026-03068-6",
+            "rights": null,
+            "sha256": null,
+            "retrievalLabel": "S6"
+          }
+        ],
+        "model": "gpt-6-astra",
+        "reasoning": "max",
+        "providerResponses": [
+          {
+            "id": "resp_08e4e222e0d656a0016b09db86e21087d0851105dce5ca7492",
+            "requestedReasoning": "max",
+            "providerReasoning": "max",
+            "status": "completed"
+          },
+          {
+            "id": "resp_08e4e222e0d656a0016b09db90d97c87d0b1fbefd301c21c14",
+            "requestedReasoning": "max",
+            "providerReasoning": "max",
+            "status": "completed"
+          },
+          {
+            "id": "resp_08e4e222e0d656a0016b09db931a9087d095593f1970be0d48",
+            "requestedReasoning": "max",
+            "providerReasoning": "max",
+            "status": "completed"
+          }
+        ],
+        "version": "research-20261026-daytab-v1",
+        "knowledgeVersions": {
+          "approvedYouth": {
+            "sourceBatch": "batch-f164c8325ea5f9c9.json",
+            "sourceSHA256": "f164c8325ea5f9c989c29524518b598913508117712826dc408f592b7f99a723",
+            "approvedAt": "2026-11-02",
+            "publications": 105
+          },
+          "biofeedback": {
+            "version": "lab-biofeedback-20261105-ratings",
+            "publications": 63
+          },
+          "inflammation": {
+            "version": "general-inflammation-20261128-v4",
+            "sourceSHA256": "29947bebd8f68654b7e7172773bee5efea92a592f4f58fe1056571eb4732be6a",
+            "sourceRecords": 195,
+            "chapters": [
+              {
+                "id": "dock2-trauma-ptsd",
+                "number": 12,
+                "sourceRecords": 33,
+                "reviewedAt": "2026-11-21"
+              },
+              {
+                "id": "oxtr-il6-inflammation",
+                "number": 13,
+                "sourceRecords": 162,
+                "reviewedAt": "2026-11-28"
+              }
+            ]
+          },
+          "sound528": {
+            "version": "sound528-20261125-v3",
+            "sourceSHA256": "5704b741bbc4132e8e271fb8cd0c9c913a7d91ab574a8588e15b0e6957c130ec",
+            "sourceRecords": 12,
+            "completedAuthorReportedRCTs": 5,
+            "explicitly528HzRCTs": 4
+          },
+          "publicGenes": "public-gene-data-20261109-v1",
+          "literature": "literature-20261110-v2"
+        },
+        "usage": {
+          "totalTokens": 48277,
+          "qaSpend": {
+            "limitUSD": 2,
+            "chargedUpperUSD": 0.72365,
+            "calls": [
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 64655,
+                "outputTokenUpper": 16384,
+                "boundMethod": "UTF-8 bytes plus framing",
+                "reservedUSD": 1.6273875,
+                "chargedUpperUSD": 0.15712500000000001,
+                "usage": {
+                  "input_tokens": 11246,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 5941,
+                    "cache_write_tokens_details": {
+                      "ttl_12h_tokens": 0,
+                      "ttl_30m_tokens": 5941
+                    },
+                    "cached_tokens": 5302
+                  },
+                  "output_tokens": 331,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 287
+                  },
+                  "total_tokens": 11577
+                }
+              },
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 50197,
+                "outputTokenUpper": 16384,
+                "boundMethod": "Provider-counted exact prefix plus new UTF-8 bytes and framing",
+                "reservedUSD": 1.4466625,
+                "chargedUpperUSD": 0.209875,
+                "usage": {
+                  "input_tokens": 16694,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 5448,
+                    "cache_write_tokens_details": {
+                      "ttl_12h_tokens": 0,
+                      "ttl_30m_tokens": 5448
+                    },
+                    "cached_tokens": 11243
+                  },
+                  "output_tokens": 24,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 0
+                  },
+                  "total_tokens": 16718
+                }
+              },
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 27118,
+                "outputTokenUpper": 16384,
+                "boundMethod": "Provider-counted exact prefix plus new UTF-8 bytes and framing",
+                "reservedUSD": 1.158175,
+                "chargedUpperUSD": 0.35665,
+                "usage": {
+                  "input_tokens": 17132,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 438,
+                    "cache_write_tokens_details": {
+                      "ttl_12h_tokens": 0,
+                      "ttl_30m_tokens": 438
+                    },
+                    "cached_tokens": 16619
+                  },
+                  "output_tokens": 2850,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 2588
+                  },
+                  "total_tokens": 19982
+                }
+              }
+            ]
+          }
+        },
+        "retrieval": {
+          "required": true,
+          "sourceCount": 8,
+          "contextMessages": 0,
+          "previousReferences": 0
+        }
+      }
+    },
+    {
+      "question": "Summarize the IL-6 evidence for addiction: alcohol, opioids, stimulants, cannabis and nicotine. Include the larger ibudilast result and distinguish exposure from a diagnosed disorder. Keep it under 200 words.",
+      "status": 200,
+      "response": {
+        "answer": "- **Alcohol:** Diagnosed alcohol use disorder is associated with moderately higher IL-6, with drinking, withdrawal and health-related confounding. The larger **102-person, 12-week, double-blind ibudilast trial found no benefit on heavy drinking or peripheral inflammatory markers** versus placebo, limiting earlier pilot signals. [S1][S2]\n\n- **Opioids:** Higher IL-6 correlates with poorer methadone-treatment and cognitive outcomes. Confounding and reverse causation remain; intervention studies have not established an IL-6-mediated benefit. [S1]\n\n- **Stimulants:** Methamphetamine findings include elevated and unchanged IL-6. In cocaine research, the greatest use reduction accompanied increased IL-6—lower is not automatically better. [S1]\n\n- **Cannabis:** The retained study concerns cannabis exposure in people with and without HIV, **not diagnosed cannabis-use disorder**. Main associations involved other inflammatory markers, not demonstrated IL-6 treatment efficacy. [S3]\n\n- **Nicotine:** The retained evidence concerns cigarette smoking in older adults, **not isolated nicotine or diagnosed dependence**. Higher CRP and lower soluble IL-6 receptor indicate a mixed profile; the receptor is distinct from IL-6 itself. [S4]\n\n**Bottom line:** Exposure, diagnosed disorder, withdrawal and recovery are distinct. Biomarker associations or changes do not establish causation or clinical benefit. [S1]",
+        "sources": [
+          {
+            "label": "S1",
+            "id": "oxtr-il6-inflammation",
+            "passageId": "oxtr-il6-inflammation:oxtr-il6-cannabis-nicotine",
+            "title": "IL-6, mental health and inflammation: oxytocin and OXTR pathways",
+            "authors": "",
+            "url": "https://staging.universalmind.tv/informatics/research/?collection=general&chapter=13",
+            "section": "Library record",
+            "kind": "published-research-guide",
+            "text": "{\"id\":\"oxtr-il6-inflammation\",\"title\":\"IL-6, mental health and inflammation: oxytocin and OXTR pathways\",\"url\":\"https://staging.universalmind.tv/informatics/research/?collection=general&chapter=13\",\"version\":{\"version\":\"general-inflammation-20261128-v4\",\"sourceSHA256\":\"29947bebd8f68654b7e7172773bee5efea92a592f4f58fe1056571eb4732be6a\",\"sourceRecords\":195,\"chapters\":[{\"id\":\"dock2-trauma-ptsd\",\"number\":12,\"sourceRecords\":33,\"reviewedAt\":\"2026-11-21\"},{\"id\":\"oxtr-il6-inflammation\",\"number\":13,\"sourceRecords\":162,\"reviewedAt\":\"2026-11-28\"}]},\"reviewedAt\":\"2026-11-28\",\"sourceCount\":162,\"reviewMethod\":[\"Searches and identifier checks were conducted on 28 November 2026 using public PubMed/Europe PMC records, publisher pages and accessible full text, with trial-first, diagnosis-specific and contradictory-result searches. The register contains 120 unique peer-reviewed publications, including 117 directly relevant mental-health papers and three contextual exposure papers. Protocols, registry entries, preprints and correction notices are not counted as new publications in this expansion.\",\"This is a structured narrative evidence map, not a registered systematic review, an exhaustive database search, an individual-participant meta-analysis or a formal GRADE assessment. Searches were bounded and selection was purposive. All included abstracts were appraised; selected available full-text methods and results were checked for pivotal trials. Each record states access depth. Linked correction notices remain attached, with unresolved correction content explicitly flagged.\",\"Nature-family, Frontiers and other specialist journals are represented, together with veteran and Navy-associated research. PubMed/NIH indexing and a government domain aid traceability; they do not guarantee low bias. Sample size, randomization, masking, outcome prespecification, attrition, comparator, confounding, multiplicity and replication carry more weight than a publisher or domain name. Publication Trust Factor is study-design shorthand, not a clinical-efficacy or certainty grade.\",\"The companion register retains original identifiers, individual findings, limitations, trial/cohort-family links and bibliographic provenance. Reviews overlap primary studies. Where cohort independence, masking or a correction cannot be resolved, uncertainty remains visible. The website-wide JSON/CSV snapshots and Universal One use the same appraised records. Updating Universal One means versioned retrieval knowledge; it does not mean that model weights were fine-tuned.\"],\"overview\":[\"IL-6 is associated with several mental-health conditions, especially depression, psychosis, bipolar disorder, PTSD and substance use disorders. The evidence varies by diagnosis, mood state, specimen and study design. It does not establish IL-6 as a universal cause of mental illness or prove that lowering it improves every condition.\",\"This chapter retains the original 42-source OXTR analysis and adds 120 peer-reviewed publications: 117 directly relevant mental-health papers plus three contextual substance-exposure papers. Randomized trials lead the appraisal; positive, null and opposite-direction findings remain visible. Publication counts are not counts of independent experiments.\",\"Oxytocin–OXTR anti-inflammatory mechanisms have strong support in selected cell models and substantial animal evidence. Human OXTR–IL-6 evidence is emerging, promising and mixed. Direct IL-6 receptor trials in depression and schizophrenia remain small, inconclusive or negative; a sustained clinical benefit through the proposed Universal Mind pathway is unestablished.\",\"The systems-biology opportunity is a testable human hypothesis: does a defined intervention alter OXTR-related biology, IL-6 signalling and meaningful outcomes, and whi",
+            "doi": null,
+            "rights": null,
+            "sha256": "29947bebd8f68654b7e7172773bee5efea92a592f4f58fe1056571eb4732be6a",
+            "retrievalLabel": "S8"
+          },
+          {
+            "label": "S2",
+            "id": "pmid-40305022",
+            "passageId": null,
+            "title": "A Neuroimmune Modulator for Alcohol Use Disorder: A Randomized Clinical Trial.",
+            "authors": "Ray LA, Meredith LR, Grodin EN, Belnap MA, Nieto SJ, Baskerville WA, Donato S, Shoptaw SJ, Gillis AJ, Irwin MR, Miotto K, Enders CK.",
+            "journal": "JAMA network open",
+            "year": 2025,
+            "url": "https://pubmed.ncbi.nlm.nih.gov/40305022/",
+            "section": "Library record",
+            "kind": "approved-record",
+            "text": "Twelve weeks of ibudilast did not reduce heavy drinking relative to placebo and did not change peripheral inflammatory markers. The primary heavy-drinking estimate was 0.06 (95% CI −0.09 to 0.21).",
+            "doi": "10.1001/jamanetworkopen.2025.7523",
+            "rights": null,
+            "sha256": null,
+            "retrievalLabel": "S2"
+          },
+          {
+            "label": "S3",
+            "id": "pmid-32554630",
+            "passageId": null,
+            "title": "Recent cannabis use in HIV is associated with reduced inflammatory markers in CSF and blood.",
+            "authors": "Ellis RJ, Peterson SN, Li Y, Schrier R, Iudicello J, Letendre S, Morgan E, Tang B, Grant I, Cherner M.",
+            "journal": "Neurology(R) neuroimmunology & neuroinflammation",
+            "year": 2020,
+            "url": "https://pubmed.ncbi.nlm.nih.gov/32554630/",
+            "section": "Library record",
+            "kind": "approved-record",
+            "text": "Recent cannabis use related to lower composite inflammatory measures in blood and CSF. The main associations involved markers other than IL-6.",
+            "doi": "10.1212/nxi.0000000000000809",
+            "rights": null,
+            "sha256": null,
+            "retrievalLabel": "S9"
+          },
+          {
+            "label": "S4",
+            "id": "pmid-25274579",
+            "passageId": null,
+            "title": "Cigarette smoking and variations in systemic immune and inflammation markers.",
+            "authors": "Shiels MS, Katki HA, Freedman ND, Purdue MP, Wentzensen N, Trabert B, Kitahara CM, Furr M, Li Y, Kemp TJ, Goedert JJ, Chang CM, Engels EA, Caporaso NE, Pinto LA, Hildesheim A, Chaturvedi AK.",
+            "journal": "Journal of the National Cancer Institute",
+            "year": 2014,
+            "url": "https://pubmed.ncbi.nlm.nih.gov/25274579/",
+            "section": "Library record",
+            "kind": "approved-record",
+            "text": "Smoking was associated with a mixed immune profile, including higher CRP and lower soluble IL-6 receptor and several regulatory markers.",
+            "doi": "10.1093/jnci/dju294",
+            "rights": null,
+            "sha256": null,
+            "retrievalLabel": "S10"
+          }
+        ],
+        "model": "gpt-6-astra",
+        "reasoning": "max",
+        "providerResponses": [
+          {
+            "id": "resp_0f77f2e13a3b87f7016b09dbc4c7dc87d0b519a8ad3ad7acdc",
+            "requestedReasoning": "max",
+            "providerReasoning": "max",
+            "status": "completed"
+          },
+          {
+            "id": "resp_0f77f2e13a3b87f7016b09dbcd065487d0ba219f87a42cd026",
+            "requestedReasoning": "max",
+            "providerReasoning": "max",
+            "status": "completed"
+          },
+          {
+            "id": "resp_0f77f2e13a3b87f7016b09dbcf9dd487d0a6080903fdaba077",
+            "requestedReasoning": "max",
+            "providerReasoning": "max",
+            "status": "completed"
+          }
+        ],
+        "version": "research-20261026-daytab-v1",
+        "knowledgeVersions": {
+          "approvedYouth": {
+            "sourceBatch": "batch-f164c8325ea5f9c9.json",
+            "sourceSHA256": "f164c8325ea5f9c989c29524518b598913508117712826dc408f592b7f99a723",
+            "approvedAt": "2026-11-02",
+            "publications": 105
+          },
+          "biofeedback": {
+            "version": "lab-biofeedback-20261105-ratings",
+            "publications": 63
+          },
+          "inflammation": {
+            "version": "general-inflammation-20261128-v4",
+            "sourceSHA256": "29947bebd8f68654b7e7172773bee5efea92a592f4f58fe1056571eb4732be6a",
+            "sourceRecords": 195,
+            "chapters": [
+              {
+                "id": "dock2-trauma-ptsd",
+                "number": 12,
+                "sourceRecords": 33,
+                "reviewedAt": "2026-11-21"
+              },
+              {
+                "id": "oxtr-il6-inflammation",
+                "number": 13,
+                "sourceRecords": 162,
+                "reviewedAt": "2026-11-28"
+              }
+            ]
+          },
+          "sound528": {
+            "version": "sound528-20261125-v3",
+            "sourceSHA256": "5704b741bbc4132e8e271fb8cd0c9c913a7d91ab574a8588e15b0e6957c130ec",
+            "sourceRecords": 12,
+            "completedAuthorReportedRCTs": 5,
+            "explicitly528HzRCTs": 4
+          },
+          "publicGenes": "public-gene-data-20261109-v1",
+          "literature": "literature-20261110-v2"
+        },
+        "usage": {
+          "totalTokens": 46883,
+          "qaSpend": {
+            "limitUSD": 2,
+            "chargedUpperUSD": 0.70825,
+            "calls": [
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 69187,
+                "outputTokenUpper": 16384,
+                "boundMethod": "UTF-8 bytes plus framing",
+                "reservedUSD": 1.6840375,
+                "chargedUpperUSD": 0.169575,
+                "usage": {
+                  "input_tokens": 12162,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 6857,
+                    "cache_write_tokens_details": {
+                      "ttl_12h_tokens": 0,
+                      "ttl_30m_tokens": 6857
+                    },
+                    "cached_tokens": 5302
+                  },
+                  "output_tokens": 351,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 304
+                  },
+                  "total_tokens": 12513
+                }
+              },
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 42056,
+                "outputTokenUpper": 16384,
+                "boundMethod": "Provider-counted exact prefix plus new UTF-8 bytes and framing",
+                "reservedUSD": 1.3449,
+                "chargedUpperUSD": 0.1946125,
+                "usage": {
+                  "input_tokens": 15473,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 3311,
+                    "cache_write_tokens_details": {
+                      "ttl_12h_tokens": 0,
+                      "ttl_30m_tokens": 3311
+                    },
+                    "cached_tokens": 12159
+                  },
+                  "output_tokens": 24,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 0
+                  },
+                  "total_tokens": 15497
+                }
+              },
+              {
+                "path": "/responses",
+                "model": "gpt-6-astra",
+                "inputTokenUpper": 26079,
+                "outputTokenUpper": 16384,
+                "boundMethod": "Provider-counted exact prefix plus new UTF-8 bytes and framing",
+                "reservedUSD": 1.1451875,
+                "chargedUpperUSD": 0.3440625,
+                "usage": {
+                  "input_tokens": 15989,
+                  "input_tokens_details": {
+                    "cache_write_tokens": 516,
+                    "cache_write_tokens_details": {
+                      "ttl_12h_tokens": 0,
+                      "ttl_30m_tokens": 516
+                    },
+                    "cached_tokens": 15398
+                  },
+                  "output_tokens": 2884,
+                  "output_tokens_details": {
+                    "reasoning_tokens": 2588
+                  },
+                  "total_tokens": 18873
+                }
+              }
+            ]
+          }
+        },
+        "retrieval": {
+          "required": true,
+          "sourceCount": 10,
+          "contextMessages": 0,
+          "previousReferences": 0
+        }
+      }
+    }
+  ],
+  "turns": [
+    {
+      "question": "Compare direct IL-6 receptor trials in depression and schizophrenia in our expanded chapter. Did tocilizumab establish efficacy? Include trial sizes and limitations. Keep it under 180 words.",
+      "rendered": "UNIVERSAL ONE\nNo—tocilizumab did not establish efficacy in either diagnosis. Both trials were randomized, double-blind and placebo-controlled. [1][2]\n\n- Depression (2026): 30 randomized; 29 received an infusion. This inflammation-enriched proof-of-concept trial tested one infusion. The primary day-14 somatic-symptom outcome was null: adjusted difference −0.12 (95% CI −2.51 to 2.28). Later favourable trends and descriptive response/remission differences remain exploratory. Limitations include the small, selected sample and only four weeks’ follow-up. [2]\n\n- Schizophrenia (2018): 36 adults with stable, chronically symptomatic illness; three monthly infusions versus placebo. No benefit emerged for symptoms or cognition. CRP decreased while circulating IL-6 increased—biological effects without demonstrated clinical improvement. The small, chronic-illness sample leaves effects in early or inflammation-selected psychosis unresolved. [1]\n\nSource limits: Depression appraisal included selected full-text passages; schizophrenia appraisal relied on the indexed abstract without comprehensive full-text methods review. Neither trial establishes sustained benefit, and these findings do not rule out benefit in every possible subgroup. [1][2]\n2 sources\nRead aloud",
+      "elapsedMs": 43453,
+      "citations": [
+        {
+          "id": "pmid-29090685",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/29090685/"
+        },
+        {
+          "id": "pmid-42160062",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/42160062/"
+        }
+      ],
+      "providerResponses": [
+        {
+          "id": "resp_0ac7f96a58772ab7016b09dadb2fd087d0b347661b48bbe934",
+          "requestedReasoning": "max",
+          "providerReasoning": "max",
+          "status": "completed"
+        },
+        {
+          "id": "resp_0ac7f96a58772ab7016b09dae129b487d094c695130ebfec5e",
+          "requestedReasoning": "max",
+          "providerReasoning": "max",
+          "status": "completed"
+        },
+        {
+          "id": "resp_0ac7f96a58772ab7016b09dae3482c87d08e0d7188aa4841bb",
+          "requestedReasoning": "max",
+          "providerReasoning": "max",
+          "status": "completed"
+        }
+      ]
+    },
+    {
+      "question": "From our IL-6 review, distinguish bipolar depression, mania, hypomania and euthymia. Is the evidence specific to hypomania? Keep it under 180 words.",
+      "rendered": "UNIVERSAL ONE\nOnly limited evidence is hypomania-specific—not the broader bipolar evidence. [1]\n\n- Bipolar depression: depressive episodes in bipolar I or II. Trials show mixed results: pentoxifylline lowered IL-6 without improving depression more than placebo overall. Bipolar II depression is not hypomania. [2][1]\n- Mania: marked mood elevation/irritability and activation, with substantial impairment. IL-6 elevations are reported, but findings vary. The rapid-cycling study pooled mania and hypomania, preventing a separate hypomania estimate. [3][1]\n- Hypomania: less severe elevation/activation, without mania’s marked impairment. The clearest dedicated study associated childhood IL-6 with self-reported hypomanic features at 22: adjusted odds ratio 1.77 (95% CI 1.10–2.85), highest versus lowest third. This was observational—not confirmed bipolar diagnosis or treatment evidence. [4][1]\n- Euthymia: relatively stable mood outside episodes. Blood IL-6 can still be elevated; cerebrospinal-fluid findings differ. [3]\n\nOur review identified no convincing hypomania-specific IL-6 intervention benefit. The dedicated cohort appraisal was abstract-based. [1][4]\n4 sources\nRead aloud",
+      "elapsedMs": 67995,
+      "citations": [
+        {
+          "id": "oxtr-il6-inflammation",
+          "url": "https://staging.universalmind.tv/informatics/research/?collection=general&chapter=13"
+        },
+        {
+          "id": "pmid-39128677",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/39128677/"
+        },
+        {
+          "id": "oxtr-il6-inflammation",
+          "url": "https://staging.universalmind.tv/informatics/research/?collection=general&chapter=13"
+        },
+        {
+          "id": "pmid-27476619",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/27476619/"
+        }
+      ],
+      "providerResponses": [
+        {
+          "id": "resp_05c86e954ff3fcc2016b09db0597a487d08f26dc68daa1209f",
+          "requestedReasoning": "max",
+          "providerReasoning": "max",
+          "status": "completed"
+        },
+        {
+          "id": "resp_05c86e954ff3fcc2016b09db0e963c87d0903b748f8d351878",
+          "requestedReasoning": "max",
+          "providerReasoning": "max",
+          "status": "completed"
+        },
+        {
+          "id": "resp_05c86e954ff3fcc2016b09db10874887d099d9b21afca36426",
+          "requestedReasoning": "max",
+          "providerReasoning": "max",
+          "status": "completed"
+        }
+      ]
+    },
+    {
+      "question": "What does our IL-6 review find for anxiety, PTSD and suicidal ideation? Contrast randomized findings, null results and association. Is IL-6 a validated suicide-risk test? This is a research question. Keep it under 220 words.",
+      "rendered": "UNIVERSAL ONE\nAnxiety: Panic-disorder meta-analyses report higher IL-6, but NESDA found no overall adjusted association with anxiety disorders. [1][2] A 77-person randomized generalized-anxiety psychotherapy trial found symptom improvement without inflammatory improvement; IL-6 increased in the acceptance-based arm. [3]\n\nPTSD: Meta-analyses associate PTSD with higher IL-6, but estimates vary with trauma exposure among controls and other confounders. [1] A 20-person double-blind, sham-controlled vagus-stimulation pilot improved symptoms and blocked stress-evoked IL-6 responses—not proof that IL-6 changes mediated benefit. Related reports are not independent replications. [4][1] Conversely, pooled mindfulness trials involving 210 veterans found no between-group difference in IL-6 change despite clinical improvement. [5]\n\nSuicidal ideation: In veterans, IL-6 tracked ideation severity but did not predict whether ideation was present. [6] A 2025 meta-analysis found higher IL-6 versus healthy controls, but no significant difference between depressed people with versus without suicidal behaviour, with extreme heterogeneity. [7]\n\nNo—IL-6 is not a validated suicide-risk test. Ideation, attempts and suicide deaths are distinct outcomes. Association does not establish individual prediction, and no randomized evidence here establishes suicide prevention through IL-6 lowering. [1]\n\nThis is a narrative evidence map; most cited study appraisals were principally abstract-based. [1]\n7 sources\nRead aloud",
+      "elapsedMs": 61380,
+      "citations": [
+        {
+          "id": "oxtr-il6-inflammation",
+          "url": "https://staging.universalmind.tv/informatics/research/?collection=general&chapter=13"
+        },
+        {
+          "id": "pmid-23612048",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/23612048/"
+        },
+        {
+          "id": "pmid-38725444",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/38725444/"
+        },
+        {
+          "id": "pmid-34778863",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/34778863/"
+        },
+        {
+          "id": "pmid-36938380",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/36938380/"
+        },
+        {
+          "id": "pmid-37779624",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/37779624/"
+        },
+        {
+          "id": "pmid-41272690",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/41272690/"
+        }
+      ],
+      "providerResponses": [
+        {
+          "id": "resp_0c8465e4e5f0477a016b09db499c9487d0a9a3888671576a07",
+          "requestedReasoning": "max",
+          "providerReasoning": "max",
+          "status": "completed"
+        },
+        {
+          "id": "resp_0c8465e4e5f0477a016b09db4f90b887d0aa5d7b9810060472",
+          "requestedReasoning": "max",
+          "providerReasoning": "max",
+          "status": "completed"
+        },
+        {
+          "id": "resp_0c8465e4e5f0477a016b09db5187f487d0bc973595a787c600",
+          "requestedReasoning": "max",
+          "providerReasoning": "max",
+          "status": "completed"
+        }
+      ]
+    },
+    {
+      "question": "Does our expanded review establish that IL-6 causes ADHD or that lowering it treats ADHD? Compare the randomized and pooled evidence, including null results. Keep it under 180 words.",
+      "rendered": "UNIVERSAL ONE\nNo. The expanded review establishes neither that IL-6 causes ADHD nor that lowering it treats ADHD. [1]\n\nRandomized evidence: The eight-week omega-3 trial (103 children) reported reduced IL-6 and improved parent-rated symptoms, but parallel changes do not prove that IL-6 reduction caused improvement. [2] Vitamin D did not significantly reduce IL-6 versus placebo after three months. [3] In the probiotic pilot, IL-6 declined in both probiotic and placebo groups—not a treatment-specific effect. [4] These supplement trials do not isolate IL-6 as the therapeutic mechanism.\n\nPooled evidence: The 2021 meta-analysis found no significant IL-6 difference (p=0.09), which does not prove equivalence. [5] The 2022 analysis found higher IL-6, but significance disappeared when individual studies were removed. [6] The 2026 network meta-analysis highlighted elevated IL-6 in autism; ADHD signals concerned other markers. Autism findings cannot be transferred to ADHD. [7]\n\nOverall, associations, biomarker changes and symptom benefits are separate findings. Several appraisals relied on abstracts; full-text assessment was limited. [1]\n7 sources\nRead aloud",
+      "elapsedMs": 61852,
+      "citations": [
+        {
+          "id": "oxtr-il6-inflammation",
+          "url": "https://staging.universalmind.tv/informatics/research/?collection=general&chapter=13"
+        },
+        {
+          "id": "pmid-24568073",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/24568073/"
+        },
+        {
+          "id": "pmid-36052304",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/36052304/"
+        },
+        {
+          "id": "pmid-32256407",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/32256407/"
+        },
+        {
+          "id": "pmid-34413283",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/34413283/"
+        },
+        {
+          "id": "pmid-35660454",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/35660454/"
+        },
+        {
+          "id": "pmid-42287409",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/42287409/"
+        }
+      ],
+      "providerResponses": [
+        {
+          "id": "resp_08e4e222e0d656a0016b09db86e21087d0851105dce5ca7492",
+          "requestedReasoning": "max",
+          "providerReasoning": "max",
+          "status": "completed"
+        },
+        {
+          "id": "resp_08e4e222e0d656a0016b09db90d97c87d0b1fbefd301c21c14",
+          "requestedReasoning": "max",
+          "providerReasoning": "max",
+          "status": "completed"
+        },
+        {
+          "id": "resp_08e4e222e0d656a0016b09db931a9087d095593f1970be0d48",
+          "requestedReasoning": "max",
+          "providerReasoning": "max",
+          "status": "completed"
+        }
+      ]
+    },
+    {
+      "question": "Summarize the IL-6 evidence for addiction: alcohol, opioids, stimulants, cannabis and nicotine. Include the larger ibudilast result and distinguish exposure from a diagnosed disorder. Keep it under 200 words.",
+      "rendered": "UNIVERSAL ONE\n- Alcohol: Diagnosed alcohol use disorder is associated with moderately higher IL-6, with drinking, withdrawal and health-related confounding. The larger 102-person, 12-week, double-blind ibudilast trial found no benefit on heavy drinking or peripheral inflammatory markers versus placebo, limiting earlier pilot signals. [1][2]\n\n- Opioids: Higher IL-6 correlates with poorer methadone-treatment and cognitive outcomes. Confounding and reverse causation remain; intervention studies have not established an IL-6-mediated benefit. [1]\n\n- Stimulants: Methamphetamine findings include elevated and unchanged IL-6. In cocaine research, the greatest use reduction accompanied increased IL-6—lower is not automatically better. [1]\n\n- Cannabis: The retained study concerns cannabis exposure in people with and without HIV, not diagnosed cannabis-use disorder. Main associations involved other inflammatory markers, not demonstrated IL-6 treatment efficacy. [3]\n\n- Nicotine: The retained evidence concerns cigarette smoking in older adults, not isolated nicotine or diagnosed dependence. Higher CRP and lower soluble IL-6 receptor indicate a mixed profile; the receptor is distinct from IL-6 itself. [4]\n\nBottom line: Exposure, diagnosed disorder, withdrawal and recovery are distinct. Biomarker associations or changes do not establish causation or clinical benefit. [1]\n4 sources\nRead aloud",
+      "elapsedMs": 71039,
+      "citations": [
+        {
+          "id": "oxtr-il6-inflammation",
+          "url": "https://staging.universalmind.tv/informatics/research/?collection=general&chapter=13"
+        },
+        {
+          "id": "pmid-40305022",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/40305022/"
+        },
+        {
+          "id": "pmid-32554630",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/32554630/"
+        },
+        {
+          "id": "pmid-25274579",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/25274579/"
+        }
+      ],
+      "providerResponses": [
+        {
+          "id": "resp_0f77f2e13a3b87f7016b09dbc4c7dc87d0b519a8ad3ad7acdc",
+          "requestedReasoning": "max",
+          "providerReasoning": "max",
+          "status": "completed"
+        },
+        {
+          "id": "resp_0f77f2e13a3b87f7016b09dbcd065487d0ba219f87a42cd026",
+          "requestedReasoning": "max",
+          "providerReasoning": "max",
+          "status": "completed"
+        },
+        {
+          "id": "resp_0f77f2e13a3b87f7016b09dbcf9dd487d0a6080903fdaba077",
+          "requestedReasoning": "max",
+          "providerReasoning": "max",
+          "status": "completed"
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "blocked": [],
+  "finalRevisionCitationInteractionVerified": true
+}

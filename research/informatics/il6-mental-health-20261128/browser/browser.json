@@ -1,0 +1,165 @@
+{
+  "candidate": false,
+  "mutedProcess": true,
+  "mediaPlaybackDisabled": true,
+  "checks": [
+    {
+      "chapter": 13,
+      "topics": 26,
+      "sources": 162,
+      "chapterOrder": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "scientificBoundaries": true
+    },
+    {
+      "viewport": 1470,
+      "layout": {
+        "width": 1470,
+        "scroll": 1470
+      }
+    },
+    {
+      "viewport": 1024,
+      "layout": {
+        "width": 1024,
+        "scroll": 1024
+      }
+    },
+    {
+      "viewport": 390,
+      "layout": {
+        "width": 390,
+        "scroll": 390
+      }
+    },
+    {
+      "viewport": 320,
+      "layout": {
+        "width": 320,
+        "scroll": 320
+      }
+    },
+    {
+      "citationDialog": true
+    },
+    {
+      "il6FilterMatches": 15
+    },
+    {
+      "originalStudySearch": true
+    },
+    {
+      "readingPageSources": 162,
+      "sourceRegister": true
+    },
+    {
+      "languageRegression": true
+    },
+    {
+      "dock2Regression": true
+    }
+  ],
+  "liveAssets": [
+    {
+      "path": "library-data/il6-mental-health-research-register.json",
+      "sha256": "3464eb92f29ee34aa718e0879bd782bf1106d183dc1738c9d94bcf07374f69c7"
+    },
+    {
+      "path": "library-data/il6-mental-health-research-register.csv",
+      "sha256": "035f1f7df4b6619e713f5e4b1ba4562a1856772f873c39a36cc0c3011b1fb299"
+    },
+    {
+      "path": "library.js",
+      "sha256": "c67fffa893e546afd2215584bdd26210d289053b4625f2dc9445d9da0912eb55"
+    },
+    {
+      "path": "library.css",
+      "sha256": "8b7be4c8e885df36d57a00329bc804134e5cbc1b9c1206982d6f31456a62a91a"
+    },
+    {
+      "path": "library-data/general-edition.json",
+      "sha256": "53922bbe3b6ce01386df94b9c4b3405fb05d2e7c104db97eea6e1b5dba7f7cbb"
+    },
+    {
+      "path": "library-data/library.json",
+      "sha256": "8d18b49c2dd357d8d7145bf84ae1abbc03445493e7a737f793a2900160a1a101"
+    },
+    {
+      "path": "exports/manifest.json",
+      "sha256": "53c144f86998da40ca61b3275de8d501f0fa52ee870bf21c634c146aa954ba85"
+    }
+  ],
+  "completeExportParts": [
+    {
+      "file": "part-075cf55c5235fdca29331573cb93ad1c24d758508fda8fd1ca65c75246e2d704.bin",
+      "bytes": 50331648
+    },
+    {
+      "file": "part-aab5983a6d1052d1a5d27e3803a3b6832cdca19d9c9df52f895d82cc3f830fa9.bin",
+      "bytes": 31506364
+    },
+    {
+      "file": "part-089f6552299a69a640ad04d37cffbfcd2129d47989d4b94eac235a74e10de4f2.bin",
+      "bytes": 50331648
+    },
+    {
+      "file": "part-21d47626b82958b864810d48488e3930f81fe61ec92300af4f11cf9bc7b7fe2f.bin",
+      "bytes": 50331648
+    },
+    {
+      "file": "part-5099c5cfce3f0e0f0d719b80ebb0309f170a92677259d4f722d0178213aa13be.bin",
+      "bytes": 50331648
+    },
+    {
+      "file": "part-20fed54d1f9ff1dce01e7682859a73bf8aefafbc7c18c9919f216e6c711ef26b.bin",
+      "bytes": 1110619
+    }
+  ],
+  "productionGeneralSHA256": "d098bba0311be520464dd5569a6cff9131de1aeaddddebaca31157c395fac187",
+  "passed": true,
+  "finalUrl": "https://staging.universalmind.tv/informatics/research/?collection=general&chapter=12",
+  "network": [
+    {
+      "url": "https://staging.universalmind.tv/cdn-cgi/rum?",
+      "error": "net::ERR_FAILED"
+    },
+    {
+      "url": "https://staging.universalmind.tv/cdn-cgi/rum?",
+      "error": "net::ERR_FAILED"
+    },
+    {
+      "url": "https://staging.universalmind.tv/cdn-cgi/rum?",
+      "error": "net::ERR_FAILED"
+    },
+    {
+      "url": "https://staging.universalmind.tv/cdn-cgi/rum?",
+      "error": "net::ERR_FAILED"
+    },
+    {
+      "url": "https://staging.universalmind.tv/cdn-cgi/rum?",
+      "error": "net::ERR_FAILED"
+    },
+    {
+      "url": "https://staging.universalmind.tv/cdn-cgi/rum?",
+      "error": "net::ERR_FAILED"
+    },
+    {
+      "url": "https://staging.universalmind.tv/cdn-cgi/rum?",
+      "error": "net::ERR_FAILED"
+    }
+  ],
+  "errors": []
+}

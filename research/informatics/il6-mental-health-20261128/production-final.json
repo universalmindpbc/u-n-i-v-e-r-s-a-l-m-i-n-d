@@ -1,0 +1,12 @@
+{
+  "general": {
+    "url": "https://universalmind.tv/informatics/library-data/general-edition.json",
+    "sha256": "d098bba0311be520464dd5569a6cff9131de1aeaddddebaca31157c395fac187",
+    "unchanged": true
+  },
+  "health": {
+    "url": "https://informatics-universal-one.universalmind.workers.dev/health",
+    "sha256": "5c7b7e8321f13185d68bb59e172962aa4e8ca16400d7702f17b93bfafdfeb371",
+    "unchanged": true
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "candidate": false,
+  "mutedProcess": true,
+  "mediaPlaybackDisabled": true,
+  "checks": [],
+  "finalUrl": "https://staging.universalmind.tv/informatics/research/?collection=general&chapter=13",
+  "frames": [
+    {
+      "url": "https://staging.universalmind.tv/informatics/research/?collection=general&chapter=13",
+      "text": "UNIVERSAL\nINFORMATICS\nResearch Atlas\n⌄\n♪̸\n⛶\n×\nAsk a research question"
+    },
+    {
+      "url": "about:blank",
+      "text": ""
+    },
+    {
+      "url": "about:blank",
+      "text": ""
+    },
+    {
+      "url": "https://staging.universalmind.tv/informatics/library.html?collection=general&chapter=13&embedded=1",
+      "text": "Skip to research\nReading background\nVideo\nBlack\nWhite\n\nUNIVERSAL RESEARCH\n\nUniversal Research\n\nA collected library for exploring how sound, vision and language modulate gene expression.\n\nHow to navigate\n\nChoose a chapter or subchapter from the contents, or search papers by topic, gene, journal, physiology or study design. Select an article title to open the publication.\n\nTrust Factor\nAt least 3 verified double-blind studies\nAt least 3 randomized or single-blind studies\nAt least 3 peer-reviewed journal articles\n\nIndividual papers: one cross for a peer-reviewed publication; two for a randomized controlled or verified single-blind study; three for a verified double-blind study. Each subchapter must contain at least three distinct qualifying studies to reach the corresponding level.\n\nSound\nVision\nLanguage\nGeneral\nAll research\nRead chapters\nSearch papers\nSearch research\nSearch\n\nThe research did not load.\n\nTry again"
+    },
+    {
+      "url": "about:blank",
+      "text": ""
+    },
+    {
+      "url": "about:blank",
+      "text": ""
+    },
+    {
+      "url": "about:blank",
+      "text": ""
+    }
+  ],
+  "network": [
+    {
+      "url": "https://staging.universalmind.tv/cdn-cgi/rum?",
+      "error": "net::ERR_FAILED"
+    },
+    {
+      "url": "https://staging.universalmind.tv/cdn-cgi/rum?",
+      "error": "net::ERR_FAILED"
+    }
+  ],
+  "errors": []
+}

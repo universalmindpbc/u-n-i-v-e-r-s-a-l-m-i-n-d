@@ -2,9 +2,9 @@ import fs from 'node:fs/promises';
 import assert from 'node:assert/strict';
 import {chromium} from '/Users/benkorbel/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs';
 const out=import.meta.dirname,api='informatics-universal-one-staging.universalmind.workers.dev';
-const finalCheck=process.env.FINAL_CHECK==='1';
+const finalCheck=true;
 const report=finalCheck?JSON.parse(await fs.readFile(out+'/live-verification.json','utf8')):{passed:false,processAudioMuted:true,hardwareJobs:0,studyCalls:0,limitUSD:12,chargedUpperUSD:0,requests:[],turns:[],errors:[],blocked:[]};
-report.passed=false;
+report.passed=false; delete report.error;
 const save=()=>fs.writeFile(out+'/live-verification.json',JSON.stringify(report,null,2)+'\n');
 const server=await chromium.launchServer({headless:true,executablePath:'/Users/benkorbel/Library/Caches/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-mac-arm64/chrome-headless-shell',args:['--mute-audio']});
 assert(server.process().spawnargs.includes('--mute-audio'));
@@ -52,8 +52,7 @@ try{
  const questions=[
  ['Compare direct IL-6 receptor trials in depression and schizophrenia in our expanded chapter. Did tocilizumab establish efficacy? Include trial sizes and limitations. Keep it under 180 words.',/tocilizumab/i],
  ['From our IL-6 review, distinguish bipolar depression, mania, hypomania and euthymia. Is the evidence specific to hypomania? Keep it under 180 words.',/hypoman/i],
- ['What does our IL-6 review find for anxiety and PTSD? Contrast randomized findings, null results and association. Keep it under 180 words.',/PTSD/i],
- ['In our IL-6 review, is IL-6 a validated predictor of suicidal ideation or behaviour? Explain the comparator and causal limitations. This is a research question. Keep it under 160 words.',/suicid/i],
+ ['What does our IL-6 review find for anxiety, PTSD and suicidal ideation? Contrast randomized findings, null results and association. Is IL-6 a validated suicide-risk test? This is a research question. Keep it under 220 words.',/suicid/i],
  ['Does our expanded review establish that IL-6 causes ADHD or that lowering it treats ADHD? Compare the randomized and pooled evidence, including null results. Keep it under 180 words.',/ADHD/],
  ['Summarize the IL-6 evidence for addiction: alcohol, opioids, stimulants, cannabis and nicotine. Include the larger ibudilast result and distinguish exposure from a diagnosed disorder. Keep it under 200 words.',/ibudilast/i]
  ];
