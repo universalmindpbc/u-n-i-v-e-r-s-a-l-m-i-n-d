@@ -10,6 +10,8 @@ for key in ['pmid','doi','recordId']:
 ids={x['recordId'] for x in combined['records']};assert len(ids)==162
 assert [x['recordId'] for t in c['topics'] for x in t['papers']].__len__()==162
 assert ids <= {x['id'] for x in L['records']}
+assert 'row.il6MentalHealthResearch' in (P/'Informatics/library.js').read_text(), 'New records need explicit age fallback'
+assert all(next(x for x in L['records'] if x['id']==y['recordId']).get('il6MentalHealthResearch') for y in r['records'])
 for t in c['topics']:
  assert len(t['paragraphs'])==len(t['paragraphSources'])
  for refs in t['paragraphSources']:

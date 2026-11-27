@@ -1,5 +1,5 @@
 {
-  "datasetManifestSHA256": "db716fa665d88f678efa284938336c049effd99cfc71f58a00c7d8caebd0966c",
+  "datasetManifestSHA256": "53c144f86998da40ca61b3275de8d501f0fa52ee870bf21c634c146aa954ba85",
   "generatedAt": "2026-10-26",
   "publications": 1621,
   "atlas": 1001,
@@ -8,7 +8,7 @@
   "sourceHashes": [
     {
       "path": "library.js",
-      "sha256": "7e5aef47eec377d7b9d43c929fada011e13a886ee704535cec69e85e2504d4e5"
+      "sha256": "c67fffa893e546afd2215584bdd26210d289053b4625f2dc9445d9da0912eb55"
     },
     {
       "path": "library-data/sound-edition.json",

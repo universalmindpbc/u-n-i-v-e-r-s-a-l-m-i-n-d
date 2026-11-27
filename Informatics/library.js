@@ -480,7 +480,7 @@
       restoreFilters(params);
       records = buildRecords(data);
       const ageById=new Map(ageData.records.map(row=>[row.recordId,row]));
-      for (const record of data.records.filter(row=>row.dock2Research || row.oxtrIl6Research)) {
+      for (const record of data.records.filter(row=>row.dock2Research || row.oxtrIl6Research || row.il6MentalHealthResearch)) {
         if (!ageById.has(record.id)) ageById.set(record.id,{recordId:record.id,groups:['not-specified'],reportedAges:null,youthScope:null,sourceURL:record.urls?.[0],basisType:'Age range not separately classified in this evidence review; see the study description'});
       }
       for(const record of records){const age=ageById.get(record.id);if(!age)throw new Error('Missing age classification');record.ageGroups=age.groups;record.agePopulation=age;record.conditionEvidence=[record.id,...record.aliases].flatMap(id=>clinicalConditions[id] || []);record.conditions=[...new Set(record.conditionEvidence.map(c=>c.id))];communityModel.attach(record,communityData);}
