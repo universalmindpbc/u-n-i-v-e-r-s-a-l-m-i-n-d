@@ -8972,5 +8972,11 @@
     "The relationship between this literature and oxytocin/OXTR interventions is considered as a research hypothesis. The separate oxytocin, OXTR and IL-6 chapter contains the original cell, animal and human pathway review."
   ],
   "mentalHealthPublicationCount": 117,
-  "expansionPublicationCount": 120
+  "expansionPublicationCount": 120,
+  "geneExpressionContext": {
+    "geneSymbol": "IL6",
+    "encodedProtein": "Interleukin-6 (IL-6)",
+    "reference": "https://www.ncbi.nlm.nih.gov/gene/3569",
+    "interpretation": "IL6 RNA expression, DNA methylation, genetic variation, IL-6 protein concentration and receptor signalling are separate outcomes. Most clinical biomarker studies measure circulating IL-6 protein, which alone does not establish altered IL6 transcription or brain expression."
+  }
 }

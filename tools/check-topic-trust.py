@@ -38,6 +38,18 @@ class TopicTrustTests(unittest.TestCase):
         self.assertIsNone(assessment['score'])
         self.assertEqual(assessment['counts']['double-blind-rct'], 1)
 
+    def test_linked_reports_use_recorded_study_family(self):
+        records = [paper(i, 'double-blind-rct') for i in range(3)]
+        for record in records: record['studyFamilyId'] = 'shared-trial'
+        assessment = assess_topic(records)
+        self.assertIsNone(assessment['score'])
+        self.assertEqual(assessment['counts']['double-blind-rct'], 1)
+
+    def test_conference_trial_does_not_qualify(self):
+        records = [paper(i, 'double-blind-rct') for i in range(2)]
+        records.append({'id': 'abstract', 'paperTrustAssessment': {'score': None, 'peerReviewed': False, 'randomizedControlledTrial': True, 'blinding': 'double'}})
+        self.assertIsNone(assess_topic(records)['score'])
+
     def test_unconfirmed_material_does_not_reach_minimum(self):
         for category in ['peer-reviewed', 'protocol', 'context']:
             records = [paper(i, category, peer_reviewed=False) for i in range(3)]

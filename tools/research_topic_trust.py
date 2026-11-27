@@ -7,10 +7,10 @@ def assess_topic(records):
     for record in records:
         paper = record.get('paperTrustAssessment') or assess_paper(record)
         publication = str(record.get('doi') or record.get('pmid') or record['id']).lower()
-        trial = (record.get('evidence') or {}).get('trialId') or publication
+        trial = record.get('randomizedStudyUnitId') or record.get('studyFamilyId') or (record.get('evidence') or {}).get('trialId') or (record.get('evidence') or {}).get('studyFamilyId') or publication
         if paper.get('peerReviewed') and paper.get('score'):
             groups['peer-reviewed'].setdefault(trial, record['id'])
-        if paper.get('randomizedControlledTrial'):
+        if paper.get('peerReviewed') and paper.get('score') in (2, 3) and paper.get('randomizedControlledTrial'):
             groups['rct'].setdefault(trial, record['id'])
             if paper.get('blinding') == 'double': groups['double-blind-rct'].setdefault(trial, record['id'])
             if paper.get('blinding') == 'single': groups['single-blind-rct'].setdefault(trial, record['id'])

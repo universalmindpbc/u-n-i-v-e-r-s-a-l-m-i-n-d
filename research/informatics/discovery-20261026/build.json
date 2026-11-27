@@ -8,11 +8,11 @@
   "sourceHashes": [
     {
       "path": "library.js",
-      "sha256": "51465a5f445a603cdab5182699aefa494e543ce7671b50c28c6102f229b545e3"
+      "sha256": "46ca8de4e1bfabb0e6cd333a03e801430285fbfcfe013d26c0bd85fafe078849"
     },
     {
       "path": "library-data/sound-edition.json",
-      "sha256": "ddcf473bfefbf39a4caf33eee98ae6112749e50643b5f8b67a330e7c45b76d3c"
+      "sha256": "02bb5d490445a2fa4c20c34b1cccfb9896cfb1a31aadfeeb7e68fec78554c424"
     },
     {
       "path": "library-data/library.json",
@@ -24,11 +24,11 @@
     },
     {
       "path": "library-data/language-edition.json",
-      "sha256": "468fc7261aebe1c58c66bd73fe647ccfedb5f4082b44b31a7aa72a603705cd41"
+      "sha256": "6bf591389fd9e43128324edcbf2259f3c0f4d51347cea47723865dc36e389ac9"
     },
     {
       "path": "library-data/general-edition.json",
-      "sha256": "9c73d96594cd36aa37a649ff834babafdd69883d69863b79bff4d1632251bd50"
+      "sha256": "aca933f832ab538bf45d9d8409456429361a85cf6268a87061851cf2e314ed04"
     },
     {
       "path": "library-data/mindfulness-expansion.json",
@@ -36,7 +36,7 @@
     },
     {
       "path": "library-data/vision-edition.json",
-      "sha256": "72b7f957c48b7db15ef18a13ae70883a816dc946c0f1c480d2873ca84bca1577"
+      "sha256": "063be4b3d21ad1f34e68aed09f0761a971ac703da48b2fae1e658272ae016a90"
     },
     {
       "path": "library-data/vision-expansion.json",
@@ -79,7 +79,7 @@
       "sha256": "3fe8ac5ff0b61e4348e5de0808e2f7956329df489b51ccf18a3f0163e00b376e"
     }
   ],
-  "publicationRecordSHA256": "5a52f77a1ce7e7bd8320b362e2133ebf27b28a2b862e0be6a5f35383f4a54e89",
+  "publicationRecordSHA256": "4eabc95a05993272f90f5bb42d81d9917e6178be6c5a33cc684eb276f1ba7ac3",
   "canonicalPaths": [
     "",
     "connect.html",

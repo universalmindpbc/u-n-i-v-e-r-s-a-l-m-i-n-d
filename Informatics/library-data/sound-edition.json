@@ -2989,9 +2989,7 @@
               "double-blind-rct": [
                 "pmid-28544507",
                 "pmid-25452734",
-                "src-e3b0fd44d504",
                 "pmid-29297265",
-                "src-d2427f4063b3",
                 "pmid-20117669",
                 "pmid-16115248",
                 "pmid-22171868",
@@ -3002,13 +3000,10 @@
               "rct": [
                 "pmid-28544507",
                 "pmid-25452734",
-                "src-e3b0fd44d504",
                 "pmid-29297265",
-                "src-d2427f4063b3",
                 "pmid-20117669",
                 "pmid-16115248",
                 "pmid-22171868",
-                "src-1023e40a3842",
                 "pmid-25635925",
                 "pmid-41450809",
                 "pmid-41911215",
@@ -3076,12 +3071,12 @@
               ]
             },
             "counts": {
-              "double-blind-rct": 11,
-              "rct": 30,
+              "double-blind-rct": 9,
+              "rct": 27,
               "single-blind-rct": 1,
               "peer-reviewed": 38
             },
-            "assessedAt": "2026-10-27",
+            "assessedAt": "2026-11-28",
             "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           }
         },
@@ -3882,7 +3877,8 @@
                 "sound528-bozok2026",
                 "hsi-c2e2e55e945231",
                 "sound528-heti2024",
-                "sound528-ravikumar2026"
+                "sound528-ravikumar2026",
+                "sound528-pomazan2023"
               ],
               "single-blind-rct": [],
               "peer-reviewed": [
@@ -3891,17 +3887,20 @@
                 "sound528-heti2024",
                 "sound528-ravikumar2026",
                 "src-ae3dc0d94fef",
-                "pmid-30414050"
+                "pmid-30414050",
+                "sound528-unhale2023",
+                "sound528-pomazan2023",
+                "sound528-feneberg2020"
               ]
             },
             "counts": {
               "double-blind-rct": 0,
-              "rct": 4,
+              "rct": 5,
               "single-blind-rct": 0,
-              "peer-reviewed": 6
+              "peer-reviewed": 9
             },
-            "assessedAt": "2026-11-25",
-            "basis": "Four distinct completed RCTs explicitly include 528 Hz. This design badge is separate from certainty of benefit."
+            "assessedAt": "2026-11-28",
+            "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           },
           "description": "A small, active research field with promising findings for short-term stress and anxiety.",
           "paragraphs": [
@@ -5037,11 +5036,141 @@
               "single-blind-rct": 0,
               "peer-reviewed": 11
             },
-            "assessedAt": "2026-10-27",
+            "assessedAt": "2026-11-28",
             "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           }
         }
-      ]
+      ],
+      "trustAssessment": {
+        "score": 3,
+        "scope": "Chapter",
+        "minimumQualifyingStudies": 3,
+        "status": "assessed",
+        "qualifyingRecords": {
+          "double-blind-rct": [
+            "pmid-28544507",
+            "pmid-25452734",
+            "pmid-29297265",
+            "pmid-20117669",
+            "pmid-16115248",
+            "pmid-22171868",
+            "pmid-42307797",
+            "pmid-32564499",
+            "pmid-40269359",
+            "pmid-29170944",
+            "src-8ad1130190f0"
+          ],
+          "rct": [
+            "pmid-28544507",
+            "pmid-25452734",
+            "pmid-29297265",
+            "pmid-20117669",
+            "pmid-16115248",
+            "pmid-22171868",
+            "pmid-25635925",
+            "pmid-41450809",
+            "pmid-41911215",
+            "pmid-40795897",
+            "pmid-40563070",
+            "pmid-42671585",
+            "pmid-42307797",
+            "pmid-39088370",
+            "pmid-32653082",
+            "pmid-36011825",
+            "pmid-38319068",
+            "pmid-32564499",
+            "pmid-33107329",
+            "pmid-32412916",
+            "pmid-40269359",
+            "pmid-36790246",
+            "pmid-35713444",
+            "pmid-38982009",
+            "pmid-42116620",
+            "pmid-40621706",
+            "pmid-35655482",
+            "sound528-bozok2026",
+            "hsi-c2e2e55e945231",
+            "sound528-heti2024",
+            "sound528-ravikumar2026",
+            "sound528-pomazan2023",
+            "pmid-29170944",
+            "pmid-20378181",
+            "src-8ad1130190f0"
+          ],
+          "single-blind-rct": [
+            "pmid-38319068"
+          ],
+          "peer-reviewed": [
+            "pmid-28544507",
+            "pmid-25452734",
+            "pmid-29297265",
+            "pmid-20117669",
+            "pmid-16115248",
+            "pmid-22171868",
+            "pmid-25635925",
+            "pmid-30073406",
+            "doi-98d676644dd46a51",
+            "pmid-26541421",
+            "pmid-25345689",
+            "pmid-26612201",
+            "pmid-20453018",
+            "pmid-17309374",
+            "pmid-9423966",
+            "pmid-11191043",
+            "pmid-17827173",
+            "pmid-39004412",
+            "pmid-41450809",
+            "pmid-41911215",
+            "pmid-40795897",
+            "pmid-40563070",
+            "pmid-42671585",
+            "pmid-42307797",
+            "pmid-39088370",
+            "pmid-32653082",
+            "pmid-36011825",
+            "pmid-38319068",
+            "pmid-32564499",
+            "pmid-33107329",
+            "pmid-32412916",
+            "pmid-40269359",
+            "pmid-36790246",
+            "pmid-35713444",
+            "pmid-38982009",
+            "pmid-42116620",
+            "pmid-40621706",
+            "pmid-35655482",
+            "sound528-bozok2026",
+            "hsi-c2e2e55e945231",
+            "sound528-heti2024",
+            "sound528-ravikumar2026",
+            "src-ae3dc0d94fef",
+            "pmid-30414050",
+            "sound528-unhale2023",
+            "sound528-pomazan2023",
+            "sound528-feneberg2020",
+            "pmid-33111597",
+            "pmid-30889982",
+            "pmid-20640802",
+            "pmid-19696930",
+            "pmid-29170944",
+            "pmid-17478041",
+            "pmid-31518601",
+            "pmid-20378181",
+            "src-8ad1130190f0",
+            "pmid-34050123",
+            "pmid-31794974"
+          ]
+        },
+        "counts": {
+          "double-blind-rct": 11,
+          "rct": 35,
+          "single-blind-rct": 1,
+          "peer-reviewed": 58
+        },
+        "assessedAt": "2026-11-28",
+        "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
+      },
+      "trustScore": 3
     },
     {
       "number": 2,
@@ -7262,29 +7391,21 @@
             "status": "assessed",
             "qualifyingRecords": {
               "double-blind-rct": [
-                "src-d57b7c82f21d",
-                "src-18c0ce413c5b",
                 "pmid-11472279",
-                "src-5e9624ec353b",
                 "pmid-18979928",
                 "pmid-11319676",
                 "pmid-19673817"
               ],
               "rct": [
-                "src-d57b7c82f21d",
-                "src-18c0ce413c5b",
                 "pmid-11472279",
-                "src-5e9624ec353b",
                 "pmid-18979928",
                 "pmid-11319676",
                 "pmid-19673817",
                 "pmid-20492042",
-                "src-57c7d2ae83b8",
                 "doi-1ee8c9dc33b350fa",
                 "pmid-19583647",
                 "pmid-20685168",
-                "pmid-18005804",
-                "src-badc7276ec5f"
+                "pmid-18005804"
               ],
               "single-blind-rct": [],
               "peer-reviewed": [
@@ -7321,12 +7442,12 @@
               ]
             },
             "counts": {
-              "double-blind-rct": 7,
-              "rct": 14,
+              "double-blind-rct": 4,
+              "rct": 9,
               "single-blind-rct": 0,
               "peer-reviewed": 30
             },
-            "assessedAt": "2026-10-27",
+            "assessedAt": "2026-11-28",
             "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           }
         },
@@ -7334,7 +7455,7 @@
           "id": "viii",
           "number": "2.2",
           "title": "Music and therapeutic suggestions during surgery and recovery",
-          "trustScore": 3,
+          "trustScore": null,
           "sourcePage": 61,
           "context": "",
           "papers": [
@@ -7475,19 +7596,15 @@
           ],
           "sourceTrustScore": 3,
           "trustAssessment": {
-            "score": 3,
+            "score": null,
             "scope": "Subchapter",
             "minimumQualifyingStudies": 3,
-            "status": "assessed",
+            "status": "below-minimum",
             "qualifyingRecords": {
               "double-blind-rct": [
-                "src-d57b7c82f21d",
-                "src-903e9e8075af",
                 "pmid-11472279"
               ],
               "rct": [
-                "src-d57b7c82f21d",
-                "src-903e9e8075af",
                 "pmid-11472279"
               ],
               "single-blind-rct": [],
@@ -7496,12 +7613,12 @@
               ]
             },
             "counts": {
-              "double-blind-rct": 3,
-              "rct": 3,
+              "double-blind-rct": 1,
+              "rct": 1,
               "single-blind-rct": 0,
               "peer-reviewed": 1
             },
-            "assessedAt": "2026-10-27",
+            "assessedAt": "2026-11-28",
             "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           }
         },
@@ -8988,11 +9105,101 @@
               "single-blind-rct": 0,
               "peer-reviewed": 21
             },
-            "assessedAt": "2026-10-27",
+            "assessedAt": "2026-11-28",
             "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           }
         }
-      ]
+      ],
+      "trustAssessment": {
+        "score": 3,
+        "scope": "Chapter",
+        "minimumQualifyingStudies": 3,
+        "status": "assessed",
+        "qualifyingRecords": {
+          "double-blind-rct": [
+            "pmid-11472279",
+            "pmid-18979928",
+            "pmid-11319676",
+            "pmid-19673817"
+          ],
+          "rct": [
+            "pmid-11472279",
+            "pmid-18979928",
+            "pmid-11319676",
+            "pmid-19673817",
+            "pmid-20492042",
+            "doi-1ee8c9dc33b350fa",
+            "pmid-19583647",
+            "pmid-20685168",
+            "pmid-18005804",
+            "pmid-24092689",
+            "pmid-22937145"
+          ],
+          "single-blind-rct": [],
+          "peer-reviewed": [
+            "pmid-11472279",
+            "pmid-18979928",
+            "pmid-11319676",
+            "pmid-19673817",
+            "pmid-20492042",
+            "pmid-24876768",
+            "doi-1ee8c9dc33b350fa",
+            "pmid-21716581",
+            "pmid-19583647",
+            "pmid-20685168",
+            "pmid-18005804",
+            "pmid-19673808",
+            "pmid-24883104",
+            "pmid-24137142",
+            "pmid-21062776",
+            "pmid-25324805",
+            "pmid-29211795",
+            "pmid-14681168",
+            "pmid-23847555",
+            "pmid-26441614",
+            "pmid-15669447",
+            "pmid-21397659",
+            "pmid-12455680",
+            "doi-e7641c6e0eb6fd54",
+            "pmid-18710596",
+            "pmid-40547443",
+            "pmid-40655918",
+            "pmid-21217764",
+            "pmid-38049408",
+            "pmid-24552785",
+            "pmid-11792664",
+            "pmid-8955924",
+            "pmid-27790154",
+            "pmid-2914733",
+            "pmid-12531722",
+            "pmid-6532580",
+            "pmid-4029259",
+            "pmid-3938842",
+            "pmid-12001882",
+            "pmid-11179406",
+            "pmid-24092689",
+            "pmid-10829412",
+            "pmid-15951338",
+            "pmid-25324790",
+            "pmid-22144961",
+            "pmid-31507444",
+            "pmid-21423358",
+            "pmid-21423355",
+            "pmid-22937145",
+            "pmid-32655132",
+            "pmid-28798255"
+          ]
+        },
+        "counts": {
+          "double-blind-rct": 4,
+          "rct": 11,
+          "single-blind-rct": 0,
+          "peer-reviewed": 51
+        },
+        "assessedAt": "2026-11-28",
+        "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
+      },
+      "trustScore": 3
     },
     {
       "number": 3,
@@ -9290,7 +9497,7 @@
               "single-blind-rct": 0,
               "peer-reviewed": 5
             },
-            "assessedAt": "2026-10-27",
+            "assessedAt": "2026-11-28",
             "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           }
         },
@@ -9787,7 +9994,7 @@
               "single-blind-rct": 0,
               "peer-reviewed": 4
             },
-            "assessedAt": "2026-10-27",
+            "assessedAt": "2026-11-28",
             "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           }
         },
@@ -9876,11 +10083,46 @@
               "single-blind-rct": 0,
               "peer-reviewed": 1
             },
-            "assessedAt": "2026-10-27",
+            "assessedAt": "2026-11-28",
             "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           }
         }
-      ]
+      ],
+      "trustAssessment": {
+        "score": 1,
+        "scope": "Chapter",
+        "minimumQualifyingStudies": 3,
+        "status": "assessed",
+        "qualifyingRecords": {
+          "double-blind-rct": [],
+          "rct": [
+            "pmid-23435350",
+            "pmid-15668624"
+          ],
+          "single-blind-rct": [],
+          "peer-reviewed": [
+            "pmid-23435350",
+            "pmid-17261984",
+            "pmid-17543993",
+            "pmid-20099470",
+            "pmid-25806429",
+            "pmid-22303405",
+            "pmid-24137142",
+            "pmid-18706452",
+            "pmid-30618659",
+            "pmid-15668624"
+          ]
+        },
+        "counts": {
+          "double-blind-rct": 0,
+          "rct": 2,
+          "single-blind-rct": 0,
+          "peer-reviewed": 10
+        },
+        "assessedAt": "2026-11-28",
+        "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
+      },
+      "trustScore": 1
     },
     {
       "number": 4,
@@ -10362,7 +10604,7 @@
               "single-blind-rct": 0,
               "peer-reviewed": 8
             },
-            "assessedAt": "2026-10-27",
+            "assessedAt": "2026-11-28",
             "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           }
         },
@@ -11027,7 +11269,7 @@
               "single-blind-rct": 0,
               "peer-reviewed": 6
             },
-            "assessedAt": "2026-10-27",
+            "assessedAt": "2026-11-28",
             "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           }
         },
@@ -11136,11 +11378,61 @@
               "single-blind-rct": 0,
               "peer-reviewed": 1
             },
-            "assessedAt": "2026-10-27",
+            "assessedAt": "2026-11-28",
             "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           }
         }
-      ]
+      ],
+      "trustAssessment": {
+        "score": 3,
+        "scope": "Chapter",
+        "minimumQualifyingStudies": 3,
+        "status": "assessed",
+        "qualifyingRecords": {
+          "double-blind-rct": [
+            "pmid-17573044",
+            "src-d0bf23be01d8",
+            "src-11c37f0b338c",
+            "pmid-16254067"
+          ],
+          "rct": [
+            "pmid-17573044",
+            "src-d0bf23be01d8",
+            "src-11c37f0b338c",
+            "pmid-16314076",
+            "pmid-11955466",
+            "pmid-16254067",
+            "pmid-10686266"
+          ],
+          "single-blind-rct": [],
+          "peer-reviewed": [
+            "pmid-17573044",
+            "src-d0bf23be01d8",
+            "src-11c37f0b338c",
+            "pmid-16314076",
+            "pmid-11955466",
+            "pmid-16254067",
+            "pmid-9614593",
+            "pmid-10686266",
+            "pmid-28703754",
+            "pmid-16275477",
+            "pmid-26785376",
+            "doi-bbac53b23500d8b1",
+            "pmid-10485122",
+            "doi-d40c8b9c8ed571ad",
+            "doi-4177d8a1b6597791"
+          ]
+        },
+        "counts": {
+          "double-blind-rct": 4,
+          "rct": 7,
+          "single-blind-rct": 0,
+          "peer-reviewed": 15
+        },
+        "assessedAt": "2026-11-28",
+        "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
+      },
+      "trustScore": 3
     },
     {
       "number": 5,
@@ -11457,7 +11749,7 @@
               "single-blind-rct": 0,
               "peer-reviewed": 2
             },
-            "assessedAt": "2026-10-27",
+            "assessedAt": "2026-11-28",
             "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           }
         },
@@ -13694,6 +13986,7 @@
                 "doi-bfab13a657ed2d81",
                 "doi-dd7b3c097a436b46",
                 "doi-07f639404ec1fc0d",
+                "src-47a527b4dc03",
                 "doi-61628ddd002899ff",
                 "doi-a5e4ecfa6a07bf01",
                 "pmid-21488604",
@@ -13708,9 +14001,9 @@
               "double-blind-rct": 0,
               "rct": 0,
               "single-blind-rct": 0,
-              "peer-reviewed": 12
+              "peer-reviewed": 13
             },
-            "assessedAt": "2026-10-27",
+            "assessedAt": "2026-11-28",
             "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           }
         },
@@ -13933,7 +14226,7 @@
               "single-blind-rct": 0,
               "peer-reviewed": 3
             },
-            "assessedAt": "2026-10-27",
+            "assessedAt": "2026-11-28",
             "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           }
         },
@@ -14353,11 +14646,65 @@
               "single-blind-rct": 0,
               "peer-reviewed": 7
             },
-            "assessedAt": "2026-10-27",
+            "assessedAt": "2026-11-28",
             "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           }
         }
-      ]
+      ],
+      "trustAssessment": {
+        "score": 2,
+        "scope": "Chapter",
+        "minimumQualifyingStudies": 3,
+        "status": "assessed",
+        "qualifyingRecords": {
+          "double-blind-rct": [
+            "pmid-28544507",
+            "src-8ad1130190f0"
+          ],
+          "rct": [
+            "pmid-28544507",
+            "src-8ad1130190f0",
+            "pmid-24828126"
+          ],
+          "single-blind-rct": [],
+          "peer-reviewed": [
+            "pmid-28544507",
+            "src-8ad1130190f0",
+            "pmid-15913391",
+            "doi-bfab13a657ed2d81",
+            "doi-dd7b3c097a436b46",
+            "doi-07f639404ec1fc0d",
+            "src-47a527b4dc03",
+            "doi-61628ddd002899ff",
+            "doi-a5e4ecfa6a07bf01",
+            "pmid-21488604",
+            "doi-ee4dbad2ce729f10",
+            "doi-e5864f2618900cc4",
+            "doi-733bb2dac57b6cc9",
+            "doi-a11edc2c0d807446",
+            "doi-fb45fb2373911e26",
+            "doi-82aafc04d055ceed",
+            "doi-53aa4106dfd35960",
+            "doi-7bca5becd0049aeb",
+            "pmid-24828126",
+            "pmid-18991533",
+            "doi-2f7b8dd67e1c8bbb",
+            "doi-0017e1c8036baaa5",
+            "doi-890fefc8f3be30c0",
+            "doi-206bca1736dab071",
+            "doi-b1734615d2614781"
+          ]
+        },
+        "counts": {
+          "double-blind-rct": 2,
+          "rct": 3,
+          "single-blind-rct": 0,
+          "peer-reviewed": 25
+        },
+        "assessedAt": "2026-11-28",
+        "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
+      },
+      "trustScore": 2
     },
     {
       "number": 6,
@@ -15062,7 +15409,7 @@
               "single-blind-rct": 0,
               "peer-reviewed": 9
             },
-            "assessedAt": "2026-10-27",
+            "assessedAt": "2026-11-28",
             "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           }
         },
@@ -16221,7 +16568,7 @@
               "single-blind-rct": 0,
               "peer-reviewed": 15
             },
-            "assessedAt": "2026-10-27",
+            "assessedAt": "2026-11-28",
             "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           }
         },
@@ -16759,20 +17106,15 @@
             "status": "assessed",
             "qualifyingRecords": {
               "double-blind-rct": [
-                "src-ef07290a540d",
                 "pmid-23352229",
-                "src-d5dc29829a02",
                 "pmid-24099859",
                 "pmid-28087128",
                 "pmid-24799299",
                 "pmid-29055680"
               ],
               "rct": [
-                "src-ef07290a540d",
                 "pmid-23352229",
-                "src-d5dc29829a02",
                 "pmid-24099859",
-                "src-ebacdf327973",
                 "pmid-28087128",
                 "pmid-24799299",
                 "pmid-29055680"
@@ -16789,16 +17131,81 @@
               ]
             },
             "counts": {
-              "double-blind-rct": 7,
-              "rct": 8,
+              "double-blind-rct": 5,
+              "rct": 5,
               "single-blind-rct": 0,
               "peer-reviewed": 7
             },
-            "assessedAt": "2026-10-27",
+            "assessedAt": "2026-11-28",
             "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           }
         }
-      ]
+      ],
+      "trustAssessment": {
+        "score": 3,
+        "scope": "Chapter",
+        "minimumQualifyingStudies": 3,
+        "status": "assessed",
+        "qualifyingRecords": {
+          "double-blind-rct": [
+            "pmid-23352229",
+            "pmid-24099859",
+            "pmid-28087128",
+            "pmid-24799299",
+            "pmid-29055680"
+          ],
+          "rct": [
+            "pmid-23352229",
+            "pmid-24099859",
+            "pmid-28087128",
+            "pmid-24799299",
+            "pmid-29055680"
+          ],
+          "single-blind-rct": [],
+          "peer-reviewed": [
+            "pmid-28890000",
+            "pmid-25001970",
+            "pmid-28669546",
+            "pmid-20557568",
+            "pmid-9924746",
+            "pmid-27425032",
+            "pmid-28728017",
+            "pmid-30737392",
+            "pmid-20493150",
+            "pmid-21896752",
+            "pmid-17994268",
+            "pmid-25935637",
+            "pmid-26903384",
+            "pmid-30135663",
+            "pmid-28526450",
+            "pmid-32795360",
+            "pmid-22123970",
+            "pmid-28912494",
+            "pmid-31587084",
+            "pmid-26178189",
+            "pmid-26738630",
+            "pmid-26121678",
+            "pmid-30605805",
+            "pmid-31521905",
+            "pmid-23352229",
+            "pmid-24099859",
+            "pmid-28087128",
+            "pmid-24799299",
+            "pmid-30108475",
+            "pmid-29055680",
+            "pmid-17987115"
+          ]
+        },
+        "counts": {
+          "double-blind-rct": 5,
+          "rct": 5,
+          "single-blind-rct": 0,
+          "peer-reviewed": 31
+        },
+        "assessedAt": "2026-11-28",
+        "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
+      },
+      "trustScore": 3
     }
   ],
   "source": "Sound Medical Research",

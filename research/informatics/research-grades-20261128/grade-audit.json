@@ -1,0 +1,512 @@
+{
+  "date": "2026-11-28",
+  "rules": "Existing three-distinct-study thresholds; paper-specific assessments retained; linked trial reports count once.",
+  "chapters": [
+    {
+      "collection": "sound",
+      "number": 1,
+      "title": "Brain entrainment, sound and gene expression",
+      "score": 3,
+      "counts": {
+        "double-blind-rct": 11,
+        "rct": 35,
+        "single-blind-rct": 1,
+        "peer-reviewed": 58
+      },
+      "topics": 3
+    },
+    {
+      "collection": "sound",
+      "number": 2,
+      "title": "Music, heart-rate variability and autonomic regulation",
+      "score": 3,
+      "counts": {
+        "double-blind-rct": 4,
+        "rct": 11,
+        "single-blind-rct": 0,
+        "peer-reviewed": 51
+      },
+      "topics": 3
+    },
+    {
+      "collection": "sound",
+      "number": 3,
+      "title": "Music and gene expression",
+      "score": 1,
+      "counts": {
+        "double-blind-rct": 0,
+        "rct": 2,
+        "single-blind-rct": 0,
+        "peer-reviewed": 10
+      },
+      "topics": 3
+    },
+    {
+      "collection": "sound",
+      "number": 4,
+      "title": "Electromagnetic stimulation and Schumann resonance",
+      "score": 3,
+      "counts": {
+        "double-blind-rct": 4,
+        "rct": 7,
+        "single-blind-rct": 0,
+        "peer-reviewed": 15
+      },
+      "topics": 3
+    },
+    {
+      "collection": "sound",
+      "number": 5,
+      "title": "Brain entrainment, music and mental health in at-risk communities",
+      "score": 2,
+      "counts": {
+        "double-blind-rct": 2,
+        "rct": 3,
+        "single-blind-rct": 0,
+        "peer-reviewed": 25
+      },
+      "topics": 4
+    },
+    {
+      "collection": "sound",
+      "number": 6,
+      "title": "OXTR, human connection and psychological resources",
+      "score": 3,
+      "counts": {
+        "double-blind-rct": 5,
+        "rct": 5,
+        "single-blind-rct": 0,
+        "peer-reviewed": 31
+      },
+      "topics": 3
+    },
+    {
+      "collection": "vision",
+      "number": 1,
+      "title": "EMDR: PTSD and mental health",
+      "score": 2,
+      "counts": {
+        "double-blind-rct": 0,
+        "rct": 29,
+        "single-blind-rct": 13,
+        "peer-reviewed": 48
+      },
+      "topics": 6
+    },
+    {
+      "collection": "vision",
+      "number": 2,
+      "title": "Clinical guidance on EMDR for PTSD",
+      "score": null,
+      "counts": {
+        "double-blind-rct": 0,
+        "rct": 0,
+        "single-blind-rct": 0,
+        "peer-reviewed": 0
+      },
+      "topics": 3
+    },
+    {
+      "collection": "vision",
+      "number": 3,
+      "title": "Group, online and EMDR-derived self-help interventions",
+      "score": 2,
+      "counts": {
+        "double-blind-rct": 0,
+        "rct": 6,
+        "single-blind-rct": 0,
+        "peer-reviewed": 23
+      },
+      "topics": 3
+    },
+    {
+      "collection": "vision",
+      "number": 4,
+      "title": "EMDR and molecular research",
+      "score": 1,
+      "counts": {
+        "double-blind-rct": 0,
+        "rct": 2,
+        "single-blind-rct": 0,
+        "peer-reviewed": 9
+      },
+      "topics": 3
+    },
+    {
+      "collection": "vision",
+      "number": 5,
+      "title": "Bilateral stimulation and neural mechanisms",
+      "score": null,
+      "counts": {
+        "double-blind-rct": 0,
+        "rct": 0,
+        "single-blind-rct": 0,
+        "peer-reviewed": 2
+      },
+      "topics": 1
+    },
+    {
+      "collection": "vision",
+      "number": 6,
+      "title": "Geometry of vision",
+      "score": 1,
+      "counts": {
+        "double-blind-rct": 0,
+        "rct": 0,
+        "single-blind-rct": 0,
+        "peer-reviewed": 3
+      },
+      "topics": 1
+    },
+    {
+      "collection": "language",
+      "number": 1,
+      "title": "Mantra, mindfulness and molecular biology",
+      "score": 3,
+      "counts": {
+        "double-blind-rct": 7,
+        "rct": 39,
+        "single-blind-rct": 9,
+        "peer-reviewed": 82
+      },
+      "topics": 6
+    },
+    {
+      "collection": "language",
+      "number": 2,
+      "title": "Mindfulness, physiology and mental health",
+      "score": 3,
+      "counts": {
+        "double-blind-rct": 3,
+        "rct": 37,
+        "single-blind-rct": 5,
+        "peer-reviewed": 102
+      },
+      "topics": 5
+    },
+    {
+      "collection": "language",
+      "number": 3,
+      "title": "Mental health, communities and access to care",
+      "score": 2,
+      "counts": {
+        "double-blind-rct": 0,
+        "rct": 6,
+        "single-blind-rct": 1,
+        "peer-reviewed": 57
+      },
+      "topics": 8
+    },
+    {
+      "collection": "language",
+      "number": 4,
+      "title": "Mindfulness: molecular studies and clinical trials",
+      "score": 2,
+      "counts": {
+        "double-blind-rct": 2,
+        "rct": 37,
+        "single-blind-rct": 11,
+        "peer-reviewed": 46
+      },
+      "topics": 3
+    },
+    {
+      "collection": "general",
+      "number": 1,
+      "title": "Oxytocin pathways and social connection",
+      "score": 3,
+      "counts": {
+        "double-blind-rct": 5,
+        "rct": 5,
+        "single-blind-rct": 0,
+        "peer-reviewed": 33
+      },
+      "topics": 4
+    },
+    {
+      "collection": "general",
+      "number": 2,
+      "title": "Schumann resonance and electromagnetic research",
+      "score": 2,
+      "counts": {
+        "double-blind-rct": 2,
+        "rct": 3,
+        "single-blind-rct": 0,
+        "peer-reviewed": 18
+      },
+      "topics": 3
+    },
+    {
+      "collection": "general",
+      "number": 3,
+      "title": "Molecular hydrogen",
+      "score": 3,
+      "counts": {
+        "double-blind-rct": 5,
+        "rct": 6,
+        "single-blind-rct": 0,
+        "peer-reviewed": 17
+      },
+      "topics": 1
+    },
+    {
+      "collection": "general",
+      "number": 4,
+      "title": "Digital health, communication and access",
+      "score": 2,
+      "counts": {
+        "double-blind-rct": 0,
+        "rct": 6,
+        "single-blind-rct": 1,
+        "peer-reviewed": 31
+      },
+      "topics": 3
+    },
+    {
+      "collection": "general",
+      "number": 5,
+      "title": "Population health and wellbeing",
+      "score": 1,
+      "counts": {
+        "double-blind-rct": 0,
+        "rct": 1,
+        "single-blind-rct": 0,
+        "peer-reviewed": 24
+      },
+      "topics": 3
+    },
+    {
+      "collection": "general",
+      "number": 6,
+      "title": "Visual interventions and art therapy",
+      "score": 1,
+      "counts": {
+        "double-blind-rct": 0,
+        "rct": 0,
+        "single-blind-rct": 0,
+        "peer-reviewed": 4
+      },
+      "topics": 4
+    },
+    {
+      "collection": "general",
+      "number": 7,
+      "title": "Computing, trust and economics",
+      "score": 1,
+      "counts": {
+        "double-blind-rct": 0,
+        "rct": 0,
+        "single-blind-rct": 0,
+        "peer-reviewed": 7
+      },
+      "topics": 3
+    },
+    {
+      "collection": "general",
+      "number": 8,
+      "title": "Neurotransmitters, stress and synaptic plasticity",
+      "score": 1,
+      "counts": {
+        "double-blind-rct": 1,
+        "rct": 1,
+        "single-blind-rct": 0,
+        "peer-reviewed": 14
+      },
+      "topics": 3
+    },
+    {
+      "collection": "general",
+      "number": 9,
+      "title": "Fibonacci mathematics in computation and biology",
+      "score": 1,
+      "counts": {
+        "double-blind-rct": 0,
+        "rct": 0,
+        "single-blind-rct": 0,
+        "peer-reviewed": 24
+      },
+      "topics": 5
+    },
+    {
+      "collection": "general",
+      "number": 10,
+      "title": "Quantum Computing: geometry, stability and error correction",
+      "score": 1,
+      "counts": {
+        "double-blind-rct": 0,
+        "rct": 0,
+        "single-blind-rct": 0,
+        "peer-reviewed": 10
+      },
+      "topics": 5
+    },
+    {
+      "collection": "general",
+      "number": 11,
+      "title": "Hyperspectral Imaging",
+      "score": 1,
+      "counts": {
+        "double-blind-rct": 0,
+        "rct": 0,
+        "single-blind-rct": 0,
+        "peer-reviewed": 7
+      },
+      "topics": 6
+    },
+    {
+      "collection": "general",
+      "number": 12,
+      "title": "DOCK2, trauma and PTSD: DNA methylation and gene expression",
+      "score": 1,
+      "counts": {
+        "double-blind-rct": 0,
+        "rct": 1,
+        "single-blind-rct": 0,
+        "peer-reviewed": 27
+      },
+      "topics": 6
+    },
+    {
+      "collection": "general",
+      "number": 13,
+      "title": "Oxytocin, OXTR and IL-6",
+      "score": 3,
+      "counts": {
+        "double-blind-rct": 4,
+        "rct": 6,
+        "single-blind-rct": 0,
+        "peer-reviewed": 36
+      },
+      "topics": 10
+    },
+    {
+      "collection": "general",
+      "number": 14,
+      "title": "IL-6 and mental health",
+      "score": 3,
+      "counts": {
+        "double-blind-rct": 25,
+        "rct": 37,
+        "single-blind-rct": 0,
+        "peer-reviewed": 112
+      },
+      "topics": 16
+    }
+  ],
+  "changes": [
+    {
+      "collection": "sound",
+      "id": "viii",
+      "from": 3,
+      "to": null
+    },
+    {
+      "collection": "general",
+      "id": "optical-physiology",
+      "from": null,
+      "to": 1
+    },
+    {
+      "collection": "general",
+      "id": "dock2-response",
+      "from": null,
+      "to": 1
+    },
+    {
+      "collection": "general",
+      "id": "dock2-human",
+      "from": null,
+      "to": 1
+    },
+    {
+      "collection": "general",
+      "id": "dock2-replication",
+      "from": null,
+      "to": 1
+    },
+    {
+      "collection": "general",
+      "id": "dock2-mechanisms",
+      "from": null,
+      "to": 1
+    },
+    {
+      "collection": "general",
+      "id": "dock2-reviews",
+      "from": null,
+      "to": 1
+    },
+    {
+      "collection": "general",
+      "id": "oxtr-il6-cells",
+      "from": null,
+      "to": 1
+    },
+    {
+      "collection": "general",
+      "id": "oxtr-il6-brain",
+      "from": null,
+      "to": 1
+    },
+    {
+      "collection": "general",
+      "id": "oxtr-il6-gut",
+      "from": null,
+      "to": 1
+    },
+    {
+      "collection": "general",
+      "id": "oxtr-il6-systemic",
+      "from": null,
+      "to": 1
+    },
+    {
+      "collection": "general",
+      "id": "oxtr-il6-human",
+      "from": null,
+      "to": 2
+    },
+    {
+      "collection": "general",
+      "id": "oxtr-il6-new-human",
+      "from": null,
+      "to": 1
+    },
+    {
+      "collection": "general",
+      "id": "oxtr-il6-il6",
+      "from": null,
+      "to": 1
+    },
+    {
+      "collection": "general",
+      "id": "oxtr-il6-appraisal",
+      "from": null,
+      "to": 1
+    },
+    {
+      "collection": "general",
+      "id": "il6-mental-health-hypomania",
+      "from": 1,
+      "to": null
+    },
+    {
+      "collection": "general",
+      "id": "il6-mental-health-cannabis-nicotine",
+      "from": 1,
+      "to": null
+    },
+    {
+      "collection": "general",
+      "id": "il6-mental-health-systems-hypothesis",
+      "from": 1,
+      "to": null
+    },
+    {
+      "collection": "general",
+      "id": "il6-mental-health-mental-health-method",
+      "from": 1,
+      "to": null
+    }
+  ]
+}

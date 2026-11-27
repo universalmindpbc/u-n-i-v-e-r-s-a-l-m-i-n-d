@@ -19,7 +19,7 @@ export const inflammationRecords=chapters.flatMap(c=>registers[c.id].records.map
 const byIdentity=new Map(inflammationRecords.flatMap(r=>[r.id,r.doi,r.pmid,...r.aliases].filter(Boolean).map(id=>[normal(id),r])));
 export const inflammationRecord=id=>byIdentity.get(normal(id));
 export const inflammationReplaces=row=>!![row.id,row.data?.doi,row.data?.pmid].filter(Boolean).find(inflammationRecord);
-export const inflammationVersion={version:'general-inflammation-20261128-v5',sourceSHA256:createHash('sha256').update(JSON.stringify({chapters,registers,classifications:inflammationRecords.map(({id,collections,conditions})=>({id,collections,conditions}))})).digest('hex'),sourceRecords:inflammationRecords.length,chapters:chapters.map(c=>({id:c.id,number:c.number,sourceRecords:registers[c.id].sourceCount,reviewedAt:registers[c.id].reviewedAt}))};
+export const inflammationVersion={version:'general-inflammation-20261128-v6',sourceSHA256:createHash('sha256').update(JSON.stringify({chapters,registers,classifications:inflammationRecords.map(({id,collections,conditions})=>({id,collections,conditions}))})).digest('hex'),sourceRecords:inflammationRecords.length,chapters:chapters.map(c=>({id:c.id,number:c.number,sourceRecords:registers[c.id].sourceCount,reviewedAt:registers[c.id].reviewedAt}))};
 
 function directChapters(query){
  const q=normal(query),ids=[];
@@ -96,7 +96,7 @@ export function inflammationKnowledge(args={},origin='https://staging.universalm
  }
  else if(!topic){const keys=anchors[chapter.id],rank=r=>keys.includes(r.key)?keys.indexOf(r.key):100;rows.sort((a,b)=>rank(a)-rank(b));}
  const offset=Math.max(0,Number(args.offset)||0),limit=6;
- return {id:chapter.id,title:chapter.title,url:`${origin}/informatics/research/?collection=general&chapter=${chapter.number}`,version:inflammationVersion,reviewedAt:register.reviewedAt,sourceCount:register.sourceCount,reviewMethod:register.reviewMethod,overview:chapter.overview,evidenceOverviewTitle:chapter.evidenceOverviewTitle,evidenceOverviewIntro:chapter.evidenceOverviewIntro,evidenceOverview:chapter.evidenceOverview,evidenceOverviewNote:chapter.evidenceOverviewNote,biomarkers:register.biomarkers,
+ return {id:chapter.id,title:chapter.title,url:`${origin}/informatics/research/?collection=general&chapter=${chapter.number}`,version:inflammationVersion,reviewedAt:register.reviewedAt,sourceCount:register.sourceCount,reviewMethod:register.reviewMethod,overview:chapter.overview,geneReference:chapter.geneReference,trustScore:chapter.trustScore,trustAssessment:chapter.trustAssessment,evidenceOverviewTitle:chapter.evidenceOverviewTitle,evidenceOverviewIntro:chapter.evidenceOverviewIntro,evidenceOverview:chapter.evidenceOverview,evidenceOverviewNote:chapter.evidenceOverviewNote,biomarkers:register.biomarkers,
   topics:(topic?[topic]:chapter.topics).map(({papers,paragraphs,paragraphSources,...t})=>({...t,...(topic?{paragraphs,paragraphSources}:{}),sourceIds:papers.map(p=>p.recordId)})),
   matchedNarratives:narratives.map(({papers,...t})=>t),mentalHealthPublicationCount:register.mentalHealthPublicationCount||null,expansionPublicationCount:register.expansionPublicationCount||null,matchedRecords:rows.length,offset,nextOffset:offset+limit<rows.length?offset+limit:null,records:rows.slice(offset,offset+limit),
   downloads:Object.fromEntries(['json','csv','reading'].map(k=>[k,`${origin}/informatics/${chapter.researchRegister[k]}`])),

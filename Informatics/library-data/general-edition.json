@@ -705,7 +705,7 @@
               "single-blind-rct": 0,
               "peer-reviewed": 9
             },
-            "assessedAt": "2026-10-27",
+            "assessedAt": "2026-11-28",
             "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           }
         },
@@ -1865,7 +1865,7 @@
               "single-blind-rct": 0,
               "peer-reviewed": 15
             },
-            "assessedAt": "2026-10-27",
+            "assessedAt": "2026-11-28",
             "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           }
         },
@@ -2404,20 +2404,15 @@
             "status": "assessed",
             "qualifyingRecords": {
               "double-blind-rct": [
-                "src-ef07290a540d",
                 "pmid-23352229",
-                "src-d5dc29829a02",
                 "pmid-24099859",
                 "pmid-28087128",
                 "pmid-24799299",
                 "pmid-29055680"
               ],
               "rct": [
-                "src-ef07290a540d",
                 "pmid-23352229",
-                "src-d5dc29829a02",
                 "pmid-24099859",
-                "src-ebacdf327973",
                 "pmid-28087128",
                 "pmid-24799299",
                 "pmid-29055680"
@@ -2434,12 +2429,12 @@
               ]
             },
             "counts": {
-              "double-blind-rct": 7,
-              "rct": 8,
+              "double-blind-rct": 5,
+              "rct": 5,
               "single-blind-rct": 0,
               "peer-reviewed": 7
             },
-            "assessedAt": "2026-10-27",
+            "assessedAt": "2026-11-28",
             "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           }
         },
@@ -2669,11 +2664,78 @@
               "single-blind-rct": 0,
               "peer-reviewed": 3
             },
-            "assessedAt": "2026-10-27",
+            "assessedAt": "2026-11-28",
             "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           }
         }
-      ]
+      ],
+      "trustAssessment": {
+        "score": 3,
+        "scope": "Chapter",
+        "minimumQualifyingStudies": 3,
+        "status": "assessed",
+        "qualifyingRecords": {
+          "double-blind-rct": [
+            "pmid-23352229",
+            "pmid-24099859",
+            "pmid-28087128",
+            "pmid-24799299",
+            "pmid-29055680"
+          ],
+          "rct": [
+            "pmid-23352229",
+            "pmid-24099859",
+            "pmid-28087128",
+            "pmid-24799299",
+            "pmid-29055680"
+          ],
+          "single-blind-rct": [],
+          "peer-reviewed": [
+            "pmid-28890000",
+            "pmid-25001970",
+            "pmid-28669546",
+            "pmid-20557568",
+            "pmid-9924746",
+            "pmid-27425032",
+            "pmid-28728017",
+            "pmid-30737392",
+            "pmid-20493150",
+            "pmid-21896752",
+            "pmid-17994268",
+            "pmid-25935637",
+            "pmid-26903384",
+            "pmid-30135663",
+            "pmid-28526450",
+            "pmid-32795360",
+            "pmid-22123970",
+            "pmid-28912494",
+            "pmid-31587084",
+            "pmid-26178189",
+            "pmid-26738630",
+            "pmid-26121678",
+            "pmid-30605805",
+            "pmid-31521905",
+            "pmid-23352229",
+            "pmid-24099859",
+            "pmid-28087128",
+            "pmid-24799299",
+            "pmid-30108475",
+            "pmid-29055680",
+            "pmid-17987115",
+            "pmid-27317929",
+            "pmid-27543885"
+          ]
+        },
+        "counts": {
+          "double-blind-rct": 5,
+          "rct": 5,
+          "single-blind-rct": 0,
+          "peer-reviewed": 33
+        },
+        "assessedAt": "2026-11-28",
+        "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
+      },
+      "trustScore": 3
     },
     {
       "number": 2,
@@ -3779,7 +3841,7 @@
               "single-blind-rct": 0,
               "peer-reviewed": 11
             },
-            "assessedAt": "2026-10-27",
+            "assessedAt": "2026-11-28",
             "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           }
         },
@@ -4445,7 +4507,7 @@
               "single-blind-rct": 0,
               "peer-reviewed": 6
             },
-            "assessedAt": "2026-10-27",
+            "assessedAt": "2026-11-28",
             "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           }
         },
@@ -4555,11 +4617,58 @@
               "single-blind-rct": 0,
               "peer-reviewed": 1
             },
-            "assessedAt": "2026-10-27",
+            "assessedAt": "2026-11-28",
             "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           }
         }
-      ]
+      ],
+      "trustAssessment": {
+        "score": 2,
+        "scope": "Chapter",
+        "minimumQualifyingStudies": 3,
+        "status": "assessed",
+        "qualifyingRecords": {
+          "double-blind-rct": [
+            "pmid-29170944",
+            "src-8ad1130190f0"
+          ],
+          "rct": [
+            "pmid-29170944",
+            "pmid-20378181",
+            "src-8ad1130190f0"
+          ],
+          "single-blind-rct": [],
+          "peer-reviewed": [
+            "pmid-33111597",
+            "pmid-30889982",
+            "pmid-20640802",
+            "pmid-19696930",
+            "pmid-29170944",
+            "pmid-17478041",
+            "pmid-31518601",
+            "pmid-20378181",
+            "src-8ad1130190f0",
+            "pmid-34050123",
+            "pmid-31794974",
+            "pmid-28703754",
+            "pmid-16275477",
+            "pmid-26785376",
+            "doi-bbac53b23500d8b1",
+            "pmid-10485122",
+            "doi-d40c8b9c8ed571ad",
+            "doi-4177d8a1b6597791"
+          ]
+        },
+        "counts": {
+          "double-blind-rct": 2,
+          "rct": 3,
+          "single-blind-rct": 0,
+          "peer-reviewed": 18
+        },
+        "assessedAt": "2026-11-28",
+        "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
+      },
+      "trustScore": 2
     },
     {
       "number": 3,
@@ -5463,11 +5572,63 @@
               "single-blind-rct": 0,
               "peer-reviewed": 17
             },
-            "assessedAt": "2026-10-27",
+            "assessedAt": "2026-11-28",
             "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           }
         }
-      ]
+      ],
+      "trustAssessment": {
+        "score": 3,
+        "scope": "Chapter",
+        "minimumQualifyingStudies": 3,
+        "status": "assessed",
+        "qualifyingRecords": {
+          "double-blind-rct": [
+            "pmid-24929023",
+            "pmid-23400965",
+            "pmid-22146674",
+            "pmid-25978109",
+            "pmid-29110615"
+          ],
+          "rct": [
+            "pmid-24929023",
+            "pmid-23400965",
+            "pmid-22146674",
+            "pmid-25978109",
+            "pmid-29110615",
+            "pmid-28669654"
+          ],
+          "single-blind-rct": [],
+          "peer-reviewed": [
+            "pmid-24929023",
+            "pmid-23400965",
+            "pmid-22146674",
+            "pmid-25978109",
+            "pmid-29110615",
+            "pmid-28669654",
+            "pmid-23742229",
+            "pmid-28359771",
+            "pmid-29497485",
+            "pmid-30053086",
+            "pmid-29683360",
+            "pmid-28386342",
+            "pmid-22482765",
+            "pmid-22742936",
+            "pmid-20490324",
+            "pmid-28721265",
+            "pmid-28890349"
+          ]
+        },
+        "counts": {
+          "double-blind-rct": 5,
+          "rct": 6,
+          "single-blind-rct": 0,
+          "peer-reviewed": 17
+        },
+        "assessedAt": "2026-11-28",
+        "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
+      },
+      "trustScore": 3
     },
     {
       "number": 4,
@@ -6504,7 +6665,7 @@
               "single-blind-rct": 0,
               "peer-reviewed": 14
             },
-            "assessedAt": "2026-10-27",
+            "assessedAt": "2026-11-28",
             "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           }
         },
@@ -8681,7 +8842,7 @@
               "single-blind-rct": 0,
               "peer-reviewed": 12
             },
-            "assessedAt": "2026-10-27",
+            "assessedAt": "2026-11-28",
             "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           }
         },
@@ -9169,8 +9330,6 @@
               "rct": [
                 "pmid-28281353",
                 "pmid-29899015",
-                "src-62baf77006d6",
-                "src-7447bc610298",
                 "pmid-30003481"
               ],
               "single-blind-rct": [
@@ -9186,15 +9345,77 @@
             },
             "counts": {
               "double-blind-rct": 0,
-              "rct": 5,
+              "rct": 3,
               "single-blind-rct": 1,
               "peer-reviewed": 5
             },
-            "assessedAt": "2026-10-27",
+            "assessedAt": "2026-11-28",
             "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           }
         }
-      ]
+      ],
+      "trustAssessment": {
+        "score": 2,
+        "scope": "Chapter",
+        "minimumQualifyingStudies": 3,
+        "status": "assessed",
+        "qualifyingRecords": {
+          "double-blind-rct": [],
+          "rct": [
+            "pmid-28588005",
+            "pmid-26679295",
+            "pmid-30545815",
+            "pmid-28281353",
+            "pmid-29899015",
+            "pmid-30003481"
+          ],
+          "single-blind-rct": [
+            "pmid-28281353"
+          ],
+          "peer-reviewed": [
+            "pmid-28588005",
+            "pmid-26679295",
+            "pmid-30545815",
+            "pmid-25333470",
+            "pmid-25881089",
+            "pmid-26647109",
+            "pmid-26744309",
+            "pmid-23615206",
+            "pmid-19275991",
+            "pmid-27707822",
+            "pmid-30804863",
+            "pmid-30858710",
+            "pmid-30949846",
+            "pmid-30552076",
+            "doi-3033fb68b3cc2d76",
+            "pmid-24609454",
+            "pmid-31097900",
+            "pmid-25046280",
+            "pmid-24001876",
+            "pmid-27417882",
+            "pmid-28481610",
+            "pmid-25653222",
+            "doi-66e3650652d792e2",
+            "doi-335fd4c429caa4ae",
+            "doi-94ef326e2e9a602d",
+            "pmid-27225519",
+            "pmid-30049225",
+            "pmid-28281353",
+            "pmid-27603755",
+            "pmid-29899015",
+            "pmid-30003481"
+          ]
+        },
+        "counts": {
+          "double-blind-rct": 0,
+          "rct": 6,
+          "single-blind-rct": 1,
+          "peer-reviewed": 31
+        },
+        "assessedAt": "2026-11-28",
+        "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
+      },
+      "trustScore": 2
     },
     {
       "number": 5,
@@ -10045,7 +10266,7 @@
               "single-blind-rct": 0,
               "peer-reviewed": 10
             },
-            "assessedAt": "2026-10-27",
+            "assessedAt": "2026-11-28",
             "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           }
         },
@@ -10472,7 +10693,7 @@
               "single-blind-rct": 0,
               "peer-reviewed": 6
             },
-            "assessedAt": "2026-10-27",
+            "assessedAt": "2026-11-28",
             "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           }
         },
@@ -11028,11 +11249,59 @@
               "single-blind-rct": 0,
               "peer-reviewed": 8
             },
-            "assessedAt": "2026-10-27",
+            "assessedAt": "2026-11-28",
             "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           }
         }
-      ]
+      ],
+      "trustAssessment": {
+        "score": 1,
+        "scope": "Chapter",
+        "minimumQualifyingStudies": 3,
+        "status": "assessed",
+        "qualifyingRecords": {
+          "double-blind-rct": [],
+          "rct": [
+            "pmid-15310251"
+          ],
+          "single-blind-rct": [],
+          "peer-reviewed": [
+            "pmid-11437809",
+            "pmid-11127626",
+            "pmid-14961935",
+            "pmid-28222713",
+            "pmid-17938152",
+            "pmid-19875131",
+            "pmid-19654388",
+            "pmid-17450451",
+            "pmid-16476137",
+            "pmid-16388071",
+            "pmid-17441816",
+            "pmid-17508316",
+            "pmid-22304605",
+            "pmid-11421971",
+            "pmid-19646284",
+            "pmid-20367644",
+            "pmid-28795405",
+            "pmid-26074123",
+            "pmid-29769367",
+            "pmid-28103407",
+            "pmid-9119558",
+            "pmid-18833581",
+            "pmid-15310251",
+            "pmid-21967386"
+          ]
+        },
+        "counts": {
+          "double-blind-rct": 0,
+          "rct": 1,
+          "single-blind-rct": 0,
+          "peer-reviewed": 24
+        },
+        "assessedAt": "2026-11-28",
+        "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
+      },
+      "trustScore": 1
     },
     {
       "number": 6,
@@ -11142,7 +11411,7 @@
               "single-blind-rct": 0,
               "peer-reviewed": 0
             },
-            "assessedAt": "2026-10-27",
+            "assessedAt": "2026-11-28",
             "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           }
         },
@@ -11214,7 +11483,7 @@
               "single-blind-rct": 0,
               "peer-reviewed": 1
             },
-            "assessedAt": "2026-10-27",
+            "assessedAt": "2026-11-28",
             "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           }
         },
@@ -11285,7 +11554,7 @@
               "single-blind-rct": 0,
               "peer-reviewed": 1
             },
-            "assessedAt": "2026-10-27",
+            "assessedAt": "2026-11-28",
             "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           }
         },
@@ -11395,11 +11664,37 @@
               "single-blind-rct": 0,
               "peer-reviewed": 2
             },
-            "assessedAt": "2026-10-27",
+            "assessedAt": "2026-11-28",
             "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           }
         }
-      ]
+      ],
+      "trustAssessment": {
+        "score": 1,
+        "scope": "Chapter",
+        "minimumQualifyingStudies": 3,
+        "status": "assessed",
+        "qualifyingRecords": {
+          "double-blind-rct": [],
+          "rct": [],
+          "single-blind-rct": [],
+          "peer-reviewed": [
+            "pmid-26347062",
+            "doi-2f565d066e4e774b",
+            "doi-b2b4a7cf6604ec4e",
+            "doi-befa7b53c55cb589"
+          ]
+        },
+        "counts": {
+          "double-blind-rct": 0,
+          "rct": 0,
+          "single-blind-rct": 0,
+          "peer-reviewed": 4
+        },
+        "assessedAt": "2026-11-28",
+        "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
+      },
+      "trustScore": 1
     },
     {
       "number": 7,
@@ -11909,7 +12204,7 @@
               "single-blind-rct": 0,
               "peer-reviewed": 2
             },
-            "assessedAt": "2026-10-27",
+            "assessedAt": "2026-11-28",
             "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           }
         },
@@ -12911,7 +13206,7 @@
               "single-blind-rct": 0,
               "peer-reviewed": 3
             },
-            "assessedAt": "2026-10-27",
+            "assessedAt": "2026-11-28",
             "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           }
         },
@@ -13617,11 +13912,40 @@
               "single-blind-rct": 0,
               "peer-reviewed": 2
             },
-            "assessedAt": "2026-10-27",
+            "assessedAt": "2026-11-28",
             "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           }
         }
-      ]
+      ],
+      "trustAssessment": {
+        "score": 1,
+        "scope": "Chapter",
+        "minimumQualifyingStudies": 3,
+        "status": "assessed",
+        "qualifyingRecords": {
+          "double-blind-rct": [],
+          "rct": [],
+          "single-blind-rct": [],
+          "peer-reviewed": [
+            "src-9329423f6826",
+            "pmid-22891157",
+            "doi-16fea1e714a7ade6",
+            "doi-06a35c77903dbedd",
+            "doi-16f513abd981c573",
+            "pmid-18356530",
+            "doi-b76baa5fd9acdf58"
+          ]
+        },
+        "counts": {
+          "double-blind-rct": 0,
+          "rct": 0,
+          "single-blind-rct": 0,
+          "peer-reviewed": 7
+        },
+        "assessedAt": "2026-11-28",
+        "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
+      },
+      "trustScore": 1
     },
     {
       "number": 8,
@@ -14305,7 +14629,7 @@
               "single-blind-rct": 0,
               "peer-reviewed": 8
             },
-            "assessedAt": "2026-10-27",
+            "assessedAt": "2026-11-28",
             "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           },
           "number": "8.1",
@@ -14576,7 +14900,7 @@
               "single-blind-rct": 0,
               "peer-reviewed": 3
             },
-            "assessedAt": "2026-10-27",
+            "assessedAt": "2026-11-28",
             "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           },
           "number": "8.2",
@@ -14844,13 +15168,53 @@
               "single-blind-rct": 0,
               "peer-reviewed": 3
             },
-            "assessedAt": "2026-10-27",
+            "assessedAt": "2026-11-28",
             "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           },
           "number": "8.3",
           "sourceTrustScore": 1
         }
-      ]
+      ],
+      "trustAssessment": {
+        "score": 1,
+        "scope": "Chapter",
+        "minimumQualifyingStudies": 3,
+        "status": "assessed",
+        "qualifyingRecords": {
+          "double-blind-rct": [
+            "pmid-39313675"
+          ],
+          "rct": [
+            "pmid-39313675"
+          ],
+          "single-blind-rct": [],
+          "peer-reviewed": [
+            "pmid-17287729",
+            "pmid-24025838",
+            "pmid-22824810",
+            "pmid-30301953",
+            "pmid-30944474",
+            "pmid-37938765",
+            "pmid-39313675",
+            "pmid-41663511",
+            "pmid-32313029",
+            "pmid-24464043",
+            "pmid-37730989",
+            "pmid-19234457",
+            "pmid-29184215",
+            "pmid-17514195"
+          ]
+        },
+        "counts": {
+          "double-blind-rct": 1,
+          "rct": 1,
+          "single-blind-rct": 0,
+          "peer-reviewed": 14
+        },
+        "assessedAt": "2026-11-28",
+        "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
+      },
+      "trustScore": 1
     },
     {
       "title": "Fibonacci mathematics in computation and biology",
@@ -14886,7 +15250,7 @@
               "single-blind-rct": 0,
               "peer-reviewed": 7
             },
-            "assessedAt": "2026-10-27",
+            "assessedAt": "2026-11-28",
             "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           },
           "papers": [
@@ -15419,7 +15783,7 @@
               "single-blind-rct": 0,
               "peer-reviewed": 3
             },
-            "assessedAt": "2026-10-27",
+            "assessedAt": "2026-11-28",
             "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           },
           "papers": [
@@ -15668,7 +16032,7 @@
               "single-blind-rct": 0,
               "peer-reviewed": 3
             },
-            "assessedAt": "2026-10-27",
+            "assessedAt": "2026-11-28",
             "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           },
           "papers": [
@@ -15920,7 +16284,7 @@
               "single-blind-rct": 0,
               "peer-reviewed": 10
             },
-            "assessedAt": "2026-10-27",
+            "assessedAt": "2026-11-28",
             "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           },
           "papers": [
@@ -16656,7 +17020,7 @@
               "single-blind-rct": 0,
               "peer-reviewed": 1
             },
-            "assessedAt": "2026-10-27",
+            "assessedAt": "2026-11-28",
             "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           },
           "papers": [
@@ -16735,7 +17099,53 @@
           "number": "9.5",
           "sourceTrustScore": null
         }
-      ]
+      ],
+      "trustAssessment": {
+        "score": 1,
+        "scope": "Chapter",
+        "minimumQualifyingStudies": 3,
+        "status": "assessed",
+        "qualifyingRecords": {
+          "double-blind-rct": [],
+          "rct": [],
+          "single-blind-rct": [],
+          "peer-reviewed": [
+            "nature-fibonacci-srep27347",
+            "nature-fibonacci-srep15358",
+            "nature-fibonacci-s41598-023-34880-8",
+            "nature-fibonacci-nature02081",
+            "nature-fibonacci-nature12791",
+            "nature-fibonacci-s41598-021-93133-8",
+            "nature-fibonacci-s41598-017-13767-5",
+            "nature-fibonacci-srep39821",
+            "nature-fibonacci-s41540-026-00733-z",
+            "nature-fibonacci-s41586-025-09570-2",
+            "nature-fibonacci-s41598-023-28367-9",
+            "nature-fibonacci-s41598-026-66284-9",
+            "nature-fibonacci-s41598-024-62260-3",
+            "nature-fibonacci-s41598-020-64065-6",
+            "nature-fibonacci-s41567-020-0908-7",
+            "nature-fibonacci-s41467-020-15760-5",
+            "nature-fibonacci-srep38651",
+            "nature-fibonacci-s41467-018-05950-7",
+            "nature-fibonacci-s41598-020-67567-5",
+            "nature-fibonacci-s41598-017-02170-9",
+            "nature-fibonacci-nphoton.2009.285",
+            "nature-fibonacci-s42005-025-02264-1",
+            "nature-fibonacci-s41598-026-40652-x",
+            "nature-fibonacci-s41598-020-72218-w"
+          ]
+        },
+        "counts": {
+          "double-blind-rct": 0,
+          "rct": 0,
+          "single-blind-rct": 0,
+          "peer-reviewed": 24
+        },
+        "assessedAt": "2026-11-28",
+        "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
+      },
+      "trustScore": 1
     },
     {
       "number": 10,
@@ -16769,7 +17179,7 @@
               "single-blind-rct": 0,
               "peer-reviewed": 5
             },
-            "assessedAt": "2026-10-27",
+            "assessedAt": "2026-11-28",
             "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           },
           "papers": [
@@ -17221,7 +17631,7 @@
               "single-blind-rct": 0,
               "peer-reviewed": 0
             },
-            "assessedAt": "2026-10-27",
+            "assessedAt": "2026-11-28",
             "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           },
           "papers": [
@@ -17338,7 +17748,7 @@
               "single-blind-rct": 0,
               "peer-reviewed": 2
             },
-            "assessedAt": "2026-10-27",
+            "assessedAt": "2026-11-28",
             "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           },
           "papers": [
@@ -17628,7 +18038,7 @@
               "single-blind-rct": 0,
               "peer-reviewed": 2
             },
-            "assessedAt": "2026-10-27",
+            "assessedAt": "2026-11-28",
             "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           },
           "papers": [
@@ -17836,7 +18246,7 @@
               "single-blind-rct": 0,
               "peer-reviewed": 1
             },
-            "assessedAt": "2026-10-27",
+            "assessedAt": "2026-11-28",
             "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           },
           "papers": [
@@ -17925,7 +18335,39 @@
           "number": "10.5",
           "sourceTrustScore": null
         }
-      ]
+      ],
+      "trustAssessment": {
+        "score": 1,
+        "scope": "Chapter",
+        "minimumQualifyingStudies": 3,
+        "status": "assessed",
+        "qualifyingRecords": {
+          "double-blind-rct": [],
+          "rct": [],
+          "single-blind-rct": [],
+          "peer-reviewed": [
+            "nature-fibonacci-s41567-024-02529-6",
+            "nature-fibonacci-s41467-025-61493-8",
+            "nature-fibonacci-s41586-022-04853-4",
+            "nature-fibonacci-nphys1396",
+            "nature-fibonacci-srep46302",
+            "quantum-honeycomb-hastings-haah-2021",
+            "quantum-heavy-hex-scaling-2026",
+            "quantum-kagome-edge-states-2026",
+            "quantum-rydberg-local-error-correction-2024",
+            "quantum-haah-fractal-code-2011"
+          ]
+        },
+        "counts": {
+          "double-blind-rct": 0,
+          "rct": 0,
+          "single-blind-rct": 0,
+          "peer-reviewed": 10
+        },
+        "assessedAt": "2026-11-28",
+        "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
+      },
+      "trustScore": 1
     },
     {
       "number": 11,
@@ -17943,10 +18385,24 @@
           "title": "Evolution of Hyperspectral, Smartphone and Infrared Technologies",
           "trustScore": null,
           "trustAssessment": {
-            "scope": "Subchapter",
-            "status": "not-assessed",
             "score": null,
-            "basis": "The source inventory is complete. Unresolved identities remain flagged, and topic evidence thresholds have not been assigned."
+            "scope": "Subchapter",
+            "minimumQualifyingStudies": 3,
+            "status": "below-minimum",
+            "qualifyingRecords": {
+              "double-blind-rct": [],
+              "rct": [],
+              "single-blind-rct": [],
+              "peer-reviewed": []
+            },
+            "counts": {
+              "double-blind-rct": 0,
+              "rct": 0,
+              "single-blind-rct": 0,
+              "peer-reviewed": 0
+            },
+            "assessedAt": "2026-11-28",
+            "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           },
           "paragraphs": [
             "The source timeline traces several routes to portable optical sensing: external camera attachments, embedded spectrometers, tunable filters and computational reconstruction. These routes solve different acquisition problems. A device that measures a spectrum at one point, a depth camera and a thermal imager each capture different information from a hyperspectral image cube.",
@@ -18394,10 +18850,24 @@
           "title": "Computational Imaging and Spectral Reconstruction",
           "trustScore": null,
           "trustAssessment": {
-            "scope": "Subchapter",
-            "status": "not-assessed",
             "score": null,
-            "basis": "The source inventory is complete. Unresolved identities remain flagged, and topic evidence thresholds have not been assigned."
+            "scope": "Subchapter",
+            "minimumQualifyingStudies": 3,
+            "status": "below-minimum",
+            "qualifyingRecords": {
+              "double-blind-rct": [],
+              "rct": [],
+              "single-blind-rct": [],
+              "peer-reviewed": []
+            },
+            "counts": {
+              "double-blind-rct": 0,
+              "rct": 0,
+              "single-blind-rct": 0,
+              "peer-reviewed": 0
+            },
+            "assessedAt": "2026-11-28",
+            "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           },
           "paragraphs": [
             "Spectral reconstruction estimates wavelength-dependent information from camera measurements. The inversion depends on calibration, illumination, sensor response and model assumptions. The research spans sparse recovery, neural networks and methods using a physical colour reference chart. Reconstructed channels carry the conditions of the method that produced them.",
@@ -18706,12 +19176,33 @@
           "id": "optical-physiology",
           "number": "11.3",
           "title": "Optical Physiology and Tissue Imaging",
-          "trustScore": null,
+          "trustScore": 1,
           "trustAssessment": {
+            "score": 1,
             "scope": "Subchapter",
-            "status": "not-assessed",
-            "score": null,
-            "basis": "The source inventory is complete. Unresolved identities remain flagged, and topic evidence thresholds have not been assigned."
+            "minimumQualifyingStudies": 3,
+            "status": "assessed",
+            "qualifyingRecords": {
+              "double-blind-rct": [],
+              "rct": [],
+              "single-blind-rct": [],
+              "peer-reviewed": [
+                "pmid-33071746",
+                "pmid-36618821",
+                "pmid-11792664",
+                "pmid-27790154",
+                "pmid-12531722",
+                "pmid-2914733"
+              ]
+            },
+            "counts": {
+              "double-blind-rct": 0,
+              "rct": 0,
+              "single-blind-rct": 0,
+              "peer-reviewed": 6
+            },
+            "assessedAt": "2026-11-28",
+            "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           },
           "paragraphs": [
             "Optical physiology studies connect image variation with quantities such as blood volume, perfusion and oxygenation. The source collection brings rPPG, tissue hyperspectral imaging, skin fluorescence and endoscopic reconstruction into one reading path. Each method retains its own hardware, tissue and reference measurement.",
@@ -20841,10 +21332,24 @@
           "title": "Autofluorescence and Molecular Sensing",
           "trustScore": null,
           "trustAssessment": {
-            "scope": "Subchapter",
-            "status": "not-assessed",
             "score": null,
-            "basis": "The source inventory is complete. Unresolved identities remain flagged, and topic evidence thresholds have not been assigned."
+            "scope": "Subchapter",
+            "minimumQualifyingStudies": 3,
+            "status": "below-minimum",
+            "qualifyingRecords": {
+              "double-blind-rct": [],
+              "rct": [],
+              "single-blind-rct": [],
+              "peer-reviewed": []
+            },
+            "counts": {
+              "double-blind-rct": 0,
+              "rct": 0,
+              "single-blind-rct": 0,
+              "peer-reviewed": 0
+            },
+            "assessedAt": "2026-11-28",
+            "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           },
           "paragraphs": [
             "Autofluorescence describes light emitted by endogenous molecules after excitation. The cited work covers metabolic coenzymes, proteins, tissue fluorescence and image analysis. Interpretation depends on excitation and emission bands, optical depth, background signals and the mixture of fluorophores in the sample.",
@@ -22725,10 +23230,26 @@
           "title": "Imaging, Transcriptomics and Gene Regulation",
           "trustScore": null,
           "trustAssessment": {
-            "scope": "Subchapter",
-            "status": "not-assessed",
             "score": null,
-            "basis": "The source inventory is complete. Unresolved identities remain flagged, and topic evidence thresholds have not been assigned."
+            "scope": "Subchapter",
+            "minimumQualifyingStudies": 3,
+            "status": "below-minimum",
+            "qualifyingRecords": {
+              "double-blind-rct": [],
+              "rct": [],
+              "single-blind-rct": [],
+              "peer-reviewed": [
+                "pmid-17854483"
+              ]
+            },
+            "counts": {
+              "double-blind-rct": 0,
+              "rct": 0,
+              "single-blind-rct": 0,
+              "peer-reviewed": 1
+            },
+            "assessedAt": "2026-11-28",
+            "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           },
           "paragraphs": [
             "SpectralSeq pairs hyperspectral autofluorescence microscopy and RNA sequencing from the same individual cells. The published study connects optical and morphological features with transcriptomic variation in the tested cell system. NPL-9b records the publication; NPL-9 and NPL-214 retain its HyperSeq preprint provenance.",
@@ -24152,10 +24673,24 @@
           "title": "Patent Landscape and Related Technologies",
           "trustScore": null,
           "trustAssessment": {
-            "scope": "Subchapter",
-            "status": "not-assessed",
             "score": null,
-            "basis": "The source inventory is complete. Unresolved identities remain flagged, and topic evidence thresholds have not been assigned."
+            "scope": "Subchapter",
+            "minimumQualifyingStudies": 3,
+            "status": "below-minimum",
+            "qualifyingRecords": {
+              "double-blind-rct": [],
+              "rct": [],
+              "single-blind-rct": [],
+              "peer-reviewed": []
+            },
+            "counts": {
+              "double-blind-rct": 0,
+              "rct": 0,
+              "single-blind-rct": 0,
+              "peer-reviewed": 0
+            },
+            "assessedAt": "2026-11-28",
+            "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           },
           "paragraphs": [
             "The original list contains 11 patent entries spanning imaging, physiological sensing and related identity or reward systems. Each number is retained exactly as cited, alongside its resolved public title when available. Disagreements between the bibliography description and the public record remain visible.",
@@ -30976,7 +31511,36 @@
           "lastEditedAt": "2026-06-15T01:30:00.511Z",
           "textSHA256": "de92c6fdee64710419b9a02c2084b4c4e6929aede1f6b721cbe1429901582600"
         }
-      ]
+      ],
+      "trustAssessment": {
+        "score": 1,
+        "scope": "Chapter",
+        "minimumQualifyingStudies": 3,
+        "status": "assessed",
+        "qualifyingRecords": {
+          "double-blind-rct": [],
+          "rct": [],
+          "single-blind-rct": [],
+          "peer-reviewed": [
+            "pmid-33071746",
+            "pmid-36618821",
+            "pmid-11792664",
+            "pmid-27790154",
+            "pmid-12531722",
+            "pmid-2914733",
+            "pmid-17854483"
+          ]
+        },
+        "counts": {
+          "double-blind-rct": 0,
+          "rct": 0,
+          "single-blind-rct": 0,
+          "peer-reviewed": 7
+        },
+        "assessedAt": "2026-11-28",
+        "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
+      },
+      "trustScore": 1
     },
     {
       "number": 12,
@@ -31252,9 +31816,33 @@
             }
           ],
           "trustAssessment": {
-            "status": "exploratory",
-            "basis": "Study-specific evidence is described; no formal certainty grade assigned to this research hypothesis."
-          }
+            "score": 1,
+            "scope": "Subchapter",
+            "minimumQualifyingStudies": 3,
+            "status": "assessed",
+            "qualifyingRecords": {
+              "double-blind-rct": [],
+              "rct": [
+                "dv-vision-426ce6386119"
+              ],
+              "single-blind-rct": [],
+              "peer-reviewed": [
+                "dv-vision-426ce6386119",
+                "pmid-34282125",
+                "dock2-hummel2022",
+                "pmid-30415783"
+              ]
+            },
+            "counts": {
+              "double-blind-rct": 0,
+              "rct": 1,
+              "single-blind-rct": 0,
+              "peer-reviewed": 4
+            },
+            "assessedAt": "2026-11-28",
+            "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
+          },
+          "trustScore": 1
         },
         {
           "id": "dock2-human",
@@ -31476,9 +32064,30 @@
             }
           ],
           "trustAssessment": {
-            "status": "exploratory",
-            "basis": "Study-specific evidence is described; no formal certainty grade assigned to this research hypothesis."
-          }
+            "score": 1,
+            "scope": "Subchapter",
+            "minimumQualifyingStudies": 3,
+            "status": "assessed",
+            "qualifyingRecords": {
+              "double-blind-rct": [],
+              "rct": [],
+              "single-blind-rct": [],
+              "peer-reviewed": [
+                "pmid-28795405",
+                "pmid-34239411",
+                "pmid-31839899"
+              ]
+            },
+            "counts": {
+              "double-blind-rct": 0,
+              "rct": 0,
+              "single-blind-rct": 0,
+              "peer-reviewed": 3
+            },
+            "assessedAt": "2026-11-28",
+            "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
+          },
+          "trustScore": 1
         },
         {
           "id": "dock2-replication",
@@ -31745,9 +32354,32 @@
             }
           ],
           "trustAssessment": {
-            "status": "exploratory",
-            "basis": "Study-specific evidence is described; no formal certainty grade assigned to this research hypothesis."
-          }
+            "score": 1,
+            "scope": "Subchapter",
+            "minimumQualifyingStudies": 3,
+            "status": "assessed",
+            "qualifyingRecords": {
+              "double-blind-rct": [],
+              "rct": [],
+              "single-blind-rct": [],
+              "peer-reviewed": [
+                "pmid-32171335",
+                "dock2-montalvo2022",
+                "pmid-39696436",
+                "dock2-rubens2025",
+                "dock2-nothling2021"
+              ]
+            },
+            "counts": {
+              "double-blind-rct": 0,
+              "rct": 0,
+              "single-blind-rct": 0,
+              "peer-reviewed": 5
+            },
+            "assessedAt": "2026-11-28",
+            "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
+          },
+          "trustScore": 1
         },
         {
           "id": "dock2-mechanisms",
@@ -32011,9 +32643,32 @@
             }
           ],
           "trustAssessment": {
-            "status": "exploratory",
-            "basis": "Study-specific evidence is described; no formal certainty grade assigned to this research hypothesis."
-          }
+            "score": 1,
+            "scope": "Subchapter",
+            "minimumQualifyingStudies": 3,
+            "status": "assessed",
+            "qualifyingRecords": {
+              "double-blind-rct": [],
+              "rct": [],
+              "single-blind-rct": [],
+              "peer-reviewed": [
+                "dock2-cimino2009",
+                "pmid-29949770",
+                "dock2-immune2022",
+                "pmid-33349712",
+                "pmid-40533550"
+              ]
+            },
+            "counts": {
+              "double-blind-rct": 0,
+              "rct": 0,
+              "single-blind-rct": 0,
+              "peer-reviewed": 5
+            },
+            "assessedAt": "2026-11-28",
+            "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
+          },
+          "trustScore": 1
         },
         {
           "id": "dock2-reviews",
@@ -32590,9 +33245,37 @@
             }
           ],
           "trustAssessment": {
-            "status": "exploratory",
-            "basis": "Study-specific evidence is described; no formal certainty grade assigned to this research hypothesis."
-          }
+            "score": 1,
+            "scope": "Subchapter",
+            "minimumQualifyingStudies": 3,
+            "status": "assessed",
+            "qualifyingRecords": {
+              "double-blind-rct": [],
+              "rct": [],
+              "single-blind-rct": [],
+              "peer-reviewed": [
+                "dock2-frontiers2022",
+                "dock2-susceptibility2021",
+                "dock2-morrison2019",
+                "dock2-comorbid2019",
+                "dock2-inheritance2024",
+                "dock2-combat2024",
+                "dock2-social2023",
+                "dock2-rats2022",
+                "dock2-pfeiffer2018",
+                "dock2-howie2019"
+              ]
+            },
+            "counts": {
+              "double-blind-rct": 0,
+              "rct": 0,
+              "single-blind-rct": 0,
+              "peer-reviewed": 10
+            },
+            "assessedAt": "2026-11-28",
+            "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
+          },
+          "trustScore": 1
         },
         {
           "id": "dock2-theses",
@@ -32748,9 +33431,26 @@
             }
           ],
           "trustAssessment": {
-            "status": "exploratory",
-            "basis": "Study-specific evidence is described; no formal certainty grade assigned to this research hypothesis."
-          }
+            "score": null,
+            "scope": "Subchapter",
+            "minimumQualifyingStudies": 3,
+            "status": "below-minimum",
+            "qualifyingRecords": {
+              "double-blind-rct": [],
+              "rct": [],
+              "single-blind-rct": [],
+              "peer-reviewed": []
+            },
+            "counts": {
+              "double-blind-rct": 0,
+              "rct": 0,
+              "single-blind-rct": 0,
+              "peer-reviewed": 0
+            },
+            "assessedAt": "2026-11-28",
+            "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
+          },
+          "trustScore": null
         }
       ],
       "id": "dock2-trauma-ptsd",
@@ -32759,7 +33459,58 @@
         "csv": "library-data/dock2-research-register.csv",
         "reading": "read/dock2/index.html",
         "count": 33
-      }
+      },
+      "trustAssessment": {
+        "score": 1,
+        "scope": "Chapter",
+        "minimumQualifyingStudies": 3,
+        "status": "assessed",
+        "qualifyingRecords": {
+          "double-blind-rct": [],
+          "rct": [
+            "dv-vision-426ce6386119"
+          ],
+          "single-blind-rct": [],
+          "peer-reviewed": [
+            "dv-vision-426ce6386119",
+            "pmid-34282125",
+            "dock2-hummel2022",
+            "pmid-30415783",
+            "pmid-28795405",
+            "pmid-34239411",
+            "pmid-31839899",
+            "pmid-32171335",
+            "dock2-montalvo2022",
+            "pmid-39696436",
+            "dock2-rubens2025",
+            "dock2-nothling2021",
+            "dock2-cimino2009",
+            "pmid-29949770",
+            "dock2-immune2022",
+            "pmid-33349712",
+            "pmid-40533550",
+            "dock2-frontiers2022",
+            "dock2-susceptibility2021",
+            "dock2-morrison2019",
+            "dock2-comorbid2019",
+            "dock2-inheritance2024",
+            "dock2-combat2024",
+            "dock2-social2023",
+            "dock2-rats2022",
+            "dock2-pfeiffer2018",
+            "dock2-howie2019"
+          ]
+        },
+        "counts": {
+          "double-blind-rct": 0,
+          "rct": 1,
+          "single-blind-rct": 0,
+          "peer-reviewed": 27
+        },
+        "assessedAt": "2026-11-28",
+        "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
+      },
+      "trustScore": 1
     },
     {
       "number": 13,
@@ -33129,9 +33880,32 @@
             }
           ],
           "trustAssessment": {
-            "status": "exploratory",
-            "basis": "Qualitative narrative synthesis; no formal certainty grade or pooled treatment estimate."
-          }
+            "score": 1,
+            "scope": "Subchapter",
+            "minimumQualifyingStudies": 3,
+            "status": "assessed",
+            "qualifyingRecords": {
+              "double-blind-rct": [],
+              "rct": [],
+              "single-blind-rct": [],
+              "peer-reviewed": [
+                "pmid-18940936",
+                "pmid-28049625",
+                "pmid-23899661",
+                "pmid-25451977",
+                "pmid-30801661"
+              ]
+            },
+            "counts": {
+              "double-blind-rct": 0,
+              "rct": 0,
+              "single-blind-rct": 0,
+              "peer-reviewed": 5
+            },
+            "assessedAt": "2026-11-28",
+            "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
+          },
+          "trustScore": 1
         },
         {
           "id": "oxtr-il6-brain",
@@ -33461,9 +34235,32 @@
             }
           ],
           "trustAssessment": {
-            "status": "exploratory",
-            "basis": "Qualitative narrative synthesis; no formal certainty grade or pooled treatment estimate."
-          }
+            "score": 1,
+            "scope": "Subchapter",
+            "minimumQualifyingStudies": 3,
+            "status": "assessed",
+            "qualifyingRecords": {
+              "double-blind-rct": [],
+              "rct": [],
+              "single-blind-rct": [],
+              "peer-reviewed": [
+                "pmid-27075756",
+                "pmid-31159306",
+                "pmid-41598260",
+                "pmid-30506969",
+                "pmid-42049099"
+              ]
+            },
+            "counts": {
+              "double-blind-rct": 0,
+              "rct": 0,
+              "single-blind-rct": 0,
+              "peer-reviewed": 5
+            },
+            "assessedAt": "2026-11-28",
+            "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
+          },
+          "trustScore": 1
         },
         {
           "id": "oxtr-il6-gut",
@@ -33733,9 +34530,31 @@
             }
           ],
           "trustAssessment": {
-            "status": "exploratory",
-            "basis": "Qualitative narrative synthesis; no formal certainty grade or pooled treatment estimate."
-          }
+            "score": 1,
+            "scope": "Subchapter",
+            "minimumQualifyingStudies": 3,
+            "status": "assessed",
+            "qualifyingRecords": {
+              "double-blind-rct": [],
+              "rct": [],
+              "single-blind-rct": [],
+              "peer-reviewed": [
+                "pmid-25147234",
+                "pmid-31519790",
+                "pmid-33564880",
+                "pmid-38979515"
+              ]
+            },
+            "counts": {
+              "double-blind-rct": 0,
+              "rct": 0,
+              "single-blind-rct": 0,
+              "peer-reviewed": 4
+            },
+            "assessedAt": "2026-11-28",
+            "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
+          },
+          "trustScore": 1
         },
         {
           "id": "oxtr-il6-systemic",
@@ -33951,9 +34770,30 @@
             }
           ],
           "trustAssessment": {
-            "status": "exploratory",
-            "basis": "Qualitative narrative synthesis; no formal certainty grade or pooled treatment estimate."
-          }
+            "score": 1,
+            "scope": "Subchapter",
+            "minimumQualifyingStudies": 3,
+            "status": "assessed",
+            "qualifyingRecords": {
+              "double-blind-rct": [],
+              "rct": [],
+              "single-blind-rct": [],
+              "peer-reviewed": [
+                "pmid-32819381",
+                "pmid-38226427",
+                "pmid-40285614"
+              ]
+            },
+            "counts": {
+              "double-blind-rct": 0,
+              "rct": 0,
+              "single-blind-rct": 0,
+              "peer-reviewed": 3
+            },
+            "assessedAt": "2026-11-28",
+            "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
+          },
+          "trustScore": 1
         },
         {
           "id": "oxtr-il6-human",
@@ -34230,9 +35070,37 @@
             }
           ],
           "trustAssessment": {
-            "status": "exploratory",
-            "basis": "Qualitative narrative synthesis; no formal certainty grade or pooled treatment estimate."
-          }
+            "score": 2,
+            "scope": "Subchapter",
+            "minimumQualifyingStudies": 3,
+            "status": "assessed",
+            "qualifyingRecords": {
+              "double-blind-rct": [
+                "pmid-36058418",
+                "pmid-38461957"
+              ],
+              "rct": [
+                "pmid-18593851",
+                "pmid-36058418",
+                "pmid-38461957"
+              ],
+              "single-blind-rct": [],
+              "peer-reviewed": [
+                "pmid-18593851",
+                "pmid-36058418",
+                "pmid-38461957"
+              ]
+            },
+            "counts": {
+              "double-blind-rct": 2,
+              "rct": 3,
+              "single-blind-rct": 0,
+              "peer-reviewed": 3
+            },
+            "assessedAt": "2026-11-28",
+            "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
+          },
+          "trustScore": 2
         },
         {
           "id": "oxtr-il6-new-human",
@@ -34490,9 +35358,35 @@
             }
           ],
           "trustAssessment": {
-            "status": "exploratory",
-            "basis": "Qualitative narrative synthesis; no formal certainty grade or pooled treatment estimate."
-          }
+            "score": 1,
+            "scope": "Subchapter",
+            "minimumQualifyingStudies": 3,
+            "status": "assessed",
+            "qualifyingRecords": {
+              "double-blind-rct": [
+                "pmid-41806102"
+              ],
+              "rct": [
+                "pmid-41806102",
+                "pmid-42156189"
+              ],
+              "single-blind-rct": [],
+              "peer-reviewed": [
+                "pmid-41806102",
+                "pmid-42156189",
+                "pmid-41239825"
+              ]
+            },
+            "counts": {
+              "double-blind-rct": 1,
+              "rct": 2,
+              "single-blind-rct": 0,
+              "peer-reviewed": 3
+            },
+            "assessedAt": "2026-11-28",
+            "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
+          },
+          "trustScore": 1
         },
         {
           "id": "oxtr-il6-il6",
@@ -34715,8 +35609,32 @@
             }
           ],
           "trustAssessment": {
-            "status": "exploratory",
-            "basis": "Qualitative narrative synthesis; no formal certainty grade or pooled treatment estimate."
+            "score": 1,
+            "scope": "Subchapter",
+            "minimumQualifyingStudies": 3,
+            "status": "assessed",
+            "qualifyingRecords": {
+              "double-blind-rct": [
+                "pmid-36881032"
+              ],
+              "rct": [
+                "pmid-36881032"
+              ],
+              "single-blind-rct": [],
+              "peer-reviewed": [
+                "pmid-12857678",
+                "pmid-11121117",
+                "pmid-36881032"
+              ]
+            },
+            "counts": {
+              "double-blind-rct": 1,
+              "rct": 1,
+              "single-blind-rct": 0,
+              "peer-reviewed": 3
+            },
+            "assessedAt": "2026-11-28",
+            "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           },
           "biomarkers": [
             {
@@ -34769,7 +35687,8 @@
               "role": "Covariate or prespecified moderator",
               "interpretation": "Cell composition can affect molecular assays. NLR is an indirect index and is not a substitute for IL-6."
             }
-          ]
+          ],
+          "trustScore": 1
         },
         {
           "id": "oxtr-il6-universal-mind",
@@ -35034,9 +35953,29 @@
             }
           ],
           "trustAssessment": {
-            "status": "exploratory",
-            "basis": "Qualitative narrative synthesis; no formal certainty grade or pooled treatment estimate."
-          }
+            "score": null,
+            "scope": "Subchapter",
+            "minimumQualifyingStudies": 3,
+            "status": "below-minimum",
+            "qualifyingRecords": {
+              "double-blind-rct": [],
+              "rct": [],
+              "single-blind-rct": [],
+              "peer-reviewed": [
+                "pmid-21636661",
+                "pmid-37360277"
+              ]
+            },
+            "counts": {
+              "double-blind-rct": 0,
+              "rct": 0,
+              "single-blind-rct": 0,
+              "peer-reviewed": 2
+            },
+            "assessedAt": "2026-11-28",
+            "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
+          },
+          "trustScore": null
         },
         {
           "id": "oxtr-il6-hypotheses",
@@ -35230,9 +36169,29 @@
             }
           ],
           "trustAssessment": {
-            "status": "exploratory",
-            "basis": "Qualitative narrative synthesis; no formal certainty grade or pooled treatment estimate."
-          }
+            "score": null,
+            "scope": "Subchapter",
+            "minimumQualifyingStudies": 3,
+            "status": "below-minimum",
+            "qualifyingRecords": {
+              "double-blind-rct": [],
+              "rct": [],
+              "single-blind-rct": [],
+              "peer-reviewed": [
+                "pmid-32809918",
+                "pmid-32914674"
+              ]
+            },
+            "counts": {
+              "double-blind-rct": 0,
+              "rct": 0,
+              "single-blind-rct": 0,
+              "peer-reviewed": 2
+            },
+            "assessedAt": "2026-11-28",
+            "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
+          },
+          "trustScore": null
         },
         {
           "id": "oxtr-il6-appraisal",
@@ -35665,9 +36624,33 @@
             }
           ],
           "trustAssessment": {
-            "status": "exploratory",
-            "basis": "Qualitative narrative synthesis; no formal certainty grade or pooled treatment estimate."
-          }
+            "score": 1,
+            "scope": "Subchapter",
+            "minimumQualifyingStudies": 3,
+            "status": "assessed",
+            "qualifyingRecords": {
+              "double-blind-rct": [],
+              "rct": [],
+              "single-blind-rct": [],
+              "peer-reviewed": [
+                "pmid-34638587",
+                "pmid-35858111",
+                "pmid-35572539",
+                "pmid-32438751",
+                "pmid-36497156",
+                "oxtr-il6-naeem2026"
+              ]
+            },
+            "counts": {
+              "double-blind-rct": 0,
+              "rct": 0,
+              "single-blind-rct": 0,
+              "peer-reviewed": 6
+            },
+            "assessedAt": "2026-11-28",
+            "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
+          },
+          "trustScore": 1
         }
       ],
       "evidenceOverviewTitle": "How oxytocin and OXTR affect IL-6: what the studies show",
@@ -35677,14 +36660,85 @@
           "number": 14,
           "title": "IL-6 and mental health"
         }
-      ]
+      ],
+      "trustAssessment": {
+        "score": 3,
+        "scope": "Chapter",
+        "minimumQualifyingStudies": 3,
+        "status": "assessed",
+        "qualifyingRecords": {
+          "double-blind-rct": [
+            "pmid-36058418",
+            "pmid-38461957",
+            "pmid-41806102",
+            "pmid-36881032"
+          ],
+          "rct": [
+            "pmid-18593851",
+            "pmid-36058418",
+            "pmid-38461957",
+            "pmid-41806102",
+            "pmid-42156189",
+            "pmid-36881032"
+          ],
+          "single-blind-rct": [],
+          "peer-reviewed": [
+            "pmid-18940936",
+            "pmid-28049625",
+            "pmid-23899661",
+            "pmid-25451977",
+            "pmid-30801661",
+            "pmid-27075756",
+            "pmid-31159306",
+            "pmid-41598260",
+            "pmid-30506969",
+            "pmid-42049099",
+            "pmid-25147234",
+            "pmid-31519790",
+            "pmid-33564880",
+            "pmid-38979515",
+            "pmid-32819381",
+            "pmid-38226427",
+            "pmid-40285614",
+            "pmid-18593851",
+            "pmid-36058418",
+            "pmid-38461957",
+            "pmid-41806102",
+            "pmid-42156189",
+            "pmid-41239825",
+            "pmid-12857678",
+            "pmid-11121117",
+            "pmid-36881032",
+            "pmid-21636661",
+            "pmid-37360277",
+            "pmid-32809918",
+            "pmid-32914674",
+            "pmid-34638587",
+            "pmid-35858111",
+            "pmid-35572539",
+            "pmid-32438751",
+            "pmid-36497156",
+            "oxtr-il6-naeem2026"
+          ]
+        },
+        "counts": {
+          "double-blind-rct": 4,
+          "rct": 6,
+          "single-blind-rct": 0,
+          "peer-reviewed": 36
+        },
+        "assessedAt": "2026-11-28",
+        "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
+      },
+      "trustScore": 3
     },
     {
       "number": 14,
       "id": "il6-mental-health",
       "title": "IL-6 and mental health",
       "overview": [
-        "Interleukin-6 (IL-6) is an immune signalling protein. This chapter examines its relationship with mental illness, with a separate section for each condition and related clinical outcome.",
+        "IL6 is the gene that encodes interleukin-6 (IL-6), a cytokine involved in immune signalling. This chapter examines IL6 gene regulation and the IL-6 pathway in mental health, with a separate section for each condition and related clinical outcome.",
+        "Gene expression and protein concentration are different measurements. IL6 expression is assessed through RNA, while blood IL-6 tests measure the encoded protein. Much of the mental-health literature measures circulating IL-6 protein; those findings do not by themselves establish altered IL6 expression in the brain. DNA methylation, genetic variation, RNA expression, protein concentration and receptor signalling are identified separately throughout the research.",
         "The review contains 120 peer-reviewed publications: 117 directly relevant mental-health papers and three contextual substance-exposure papers. Randomized trials lead the appraisal. Positive, null and opposite-direction findings remain visible; publication counts are not counts of independent studies.",
         "An association with IL-6 does not establish that IL-6 causes a condition or that lowering it improves symptoms. The evidence varies by diagnosis, mood state, specimen and study design. ADHD is a neurodevelopmental condition; suicidal ideation and behaviour are outcomes considered separately from a diagnosis.",
         "The relationship between this literature and oxytocin/OXTR interventions is considered as a research hypothesis. The separate oxytocin, OXTR and IL-6 chapter contains the original cell, animal and human pathway review."
@@ -36058,10 +37112,30 @@
           ],
           "trustScore": 1,
           "trustAssessment": {
+            "score": 1,
+            "scope": "Subchapter",
+            "minimumQualifyingStudies": 3,
             "status": "assessed",
-            "basis": "Publication design and distinct trial-family count; not a certainty grade or proof of IL-6-mediated benefit.",
-            "distinctRandomizedFamilies": 0,
-            "distinctDoubleBlindFamilies": 0
+            "qualifyingRecords": {
+              "double-blind-rct": [],
+              "rct": [],
+              "single-blind-rct": [],
+              "peer-reviewed": [
+                "pmid-25133871",
+                "pmid-37217205",
+                "pmid-36893912",
+                "pmid-26903267",
+                "pmid-32533781"
+              ]
+            },
+            "counts": {
+              "double-blind-rct": 0,
+              "rct": 0,
+              "single-blind-rct": 0,
+              "peer-reviewed": 5
+            },
+            "assessedAt": "2026-11-28",
+            "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           },
           "mentalHealthExpansion": true
         },
@@ -37355,10 +38429,65 @@
           ],
           "trustScore": 3,
           "trustAssessment": {
+            "score": 3,
+            "scope": "Subchapter",
+            "minimumQualifyingStudies": 3,
             "status": "assessed",
-            "basis": "Publication design and distinct trial-family count; not a certainty grade or proof of IL-6-mediated benefit.",
-            "distinctRandomizedFamilies": 12,
-            "distinctDoubleBlindFamilies": 8
+            "qualifyingRecords": {
+              "double-blind-rct": [
+                "pmid-42160062",
+                "pmid-38677624",
+                "pmid-22516310",
+                "pmid-33504955",
+                "pmid-30153598",
+                "pmid-30205379",
+                "pmid-30388595",
+                "pmid-23602205"
+              ],
+              "rct": [
+                "pmid-42160062",
+                "pmid-38677624",
+                "pmid-22516310",
+                "pmid-33504955",
+                "pmid-34937590",
+                "pmid-30153598",
+                "pmid-30205379",
+                "pmid-30388595",
+                "pmid-23602205",
+                "pmid-31141465",
+                "pmid-36005883",
+                "pmid-40188855"
+              ],
+              "single-blind-rct": [],
+              "peer-reviewed": [
+                "pmid-42160062",
+                "pmid-38677624",
+                "pmid-20015486",
+                "pmid-26065825",
+                "pmid-32807846",
+                "pmid-34505025",
+                "pmid-34135474",
+                "pmid-22516310",
+                "pmid-33504955",
+                "pmid-34937590",
+                "pmid-30153598",
+                "pmid-30205379",
+                "pmid-30388595",
+                "pmid-23602205",
+                "pmid-31141465",
+                "pmid-26802811",
+                "pmid-36005883",
+                "pmid-40188855"
+              ]
+            },
+            "counts": {
+              "double-blind-rct": 8,
+              "rct": 12,
+              "single-blind-rct": 0,
+              "peer-reviewed": 18
+            },
+            "assessedAt": "2026-11-28",
+            "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           },
           "mentalHealthExpansion": true
         },
@@ -38268,10 +39397,50 @@
           ],
           "trustScore": 3,
           "trustAssessment": {
+            "score": 3,
+            "scope": "Subchapter",
+            "minimumQualifyingStudies": 3,
             "status": "assessed",
-            "basis": "Publication design and distinct trial-family count; not a certainty grade or proof of IL-6-mediated benefit.",
-            "distinctRandomizedFamilies": 5,
-            "distinctDoubleBlindFamilies": 4
+            "qualifyingRecords": {
+              "double-blind-rct": [
+                "pmid-29090685",
+                "pmid-30322824",
+                "pmid-29678772",
+                "pmid-37848096"
+              ],
+              "rct": [
+                "pmid-29090685",
+                "pmid-30322824",
+                "pmid-29678772",
+                "pmid-37069570",
+                "pmid-37848096"
+              ],
+              "single-blind-rct": [],
+              "peer-reviewed": [
+                "pmid-29090685",
+                "pmid-30322824",
+                "pmid-29678772",
+                "pmid-37069570",
+                "pmid-37848096",
+                "pmid-21641581",
+                "pmid-24704219",
+                "pmid-33529887",
+                "pmid-37103677",
+                "pmid-38364730",
+                "pmid-33740587",
+                "pmid-30407606",
+                "pmid-29094161",
+                "pmid-36863384"
+              ]
+            },
+            "counts": {
+              "double-blind-rct": 4,
+              "rct": 5,
+              "single-blind-rct": 0,
+              "peer-reviewed": 14
+            },
+            "assessedAt": "2026-11-28",
+            "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           },
           "mentalHealthExpansion": true
         },
@@ -38981,10 +40150,48 @@
           ],
           "trustScore": 3,
           "trustAssessment": {
+            "score": 3,
+            "scope": "Subchapter",
+            "minimumQualifyingStudies": 3,
             "status": "assessed",
-            "basis": "Publication design and distinct trial-family count; not a certainty grade or proof of IL-6-mediated benefit.",
-            "distinctRandomizedFamilies": 6,
-            "distinctDoubleBlindFamilies": 4
+            "qualifyingRecords": {
+              "double-blind-rct": [
+                "pmid-39128677",
+                "pmid-24717258",
+                "pmid-24554598",
+                "pmid-29362444"
+              ],
+              "rct": [
+                "pmid-39128677",
+                "pmid-32600481",
+                "pmid-24717258",
+                "pmid-24554598",
+                "pmid-29362444",
+                "pmid-31920220"
+              ],
+              "single-blind-rct": [],
+              "peer-reviewed": [
+                "pmid-39128677",
+                "pmid-32600481",
+                "pmid-24717258",
+                "pmid-24554598",
+                "pmid-29362444",
+                "pmid-31920220",
+                "pmid-34332041",
+                "pmid-30113291",
+                "pmid-23419545",
+                "pmid-21138659",
+                "pmid-32871531"
+              ]
+            },
+            "counts": {
+              "double-blind-rct": 4,
+              "rct": 6,
+              "single-blind-rct": 0,
+              "peer-reviewed": 11
+            },
+            "assessedAt": "2026-11-28",
+            "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           },
           "mentalHealthExpansion": true
         },
@@ -39205,10 +40412,28 @@
           ],
           "trustScore": 1,
           "trustAssessment": {
+            "score": 1,
+            "scope": "Subchapter",
+            "minimumQualifyingStudies": 3,
             "status": "assessed",
-            "basis": "Publication design and distinct trial-family count; not a certainty grade or proof of IL-6-mediated benefit.",
-            "distinctRandomizedFamilies": 0,
-            "distinctDoubleBlindFamilies": 0
+            "qualifyingRecords": {
+              "double-blind-rct": [],
+              "rct": [],
+              "single-blind-rct": [],
+              "peer-reviewed": [
+                "pmid-19251324",
+                "pmid-17845274",
+                "pmid-25451609"
+              ]
+            },
+            "counts": {
+              "double-blind-rct": 0,
+              "rct": 0,
+              "single-blind-rct": 0,
+              "peer-reviewed": 3
+            },
+            "assessedAt": "2026-11-28",
+            "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           },
           "mentalHealthExpansion": true
         },
@@ -39312,12 +40537,28 @@
               "limitation": "A hypomania checklist is not a confirmed bipolar diagnosis. Attrition and residual confounding remain; this shares the ALSPAC cohort with other included papers. Access: Indexed abstract reviewed; full-text methods not comprehensively assessed."
             }
           ],
-          "trustScore": 1,
+          "trustScore": null,
           "trustAssessment": {
-            "status": "assessed",
-            "basis": "Publication design and distinct trial-family count; not a certainty grade or proof of IL-6-mediated benefit.",
-            "distinctRandomizedFamilies": 0,
-            "distinctDoubleBlindFamilies": 0
+            "score": null,
+            "scope": "Subchapter",
+            "minimumQualifyingStudies": 3,
+            "status": "below-minimum",
+            "qualifyingRecords": {
+              "double-blind-rct": [],
+              "rct": [],
+              "single-blind-rct": [],
+              "peer-reviewed": [
+                "pmid-27476619"
+              ]
+            },
+            "counts": {
+              "double-blind-rct": 0,
+              "rct": 0,
+              "single-blind-rct": 0,
+              "peer-reviewed": 1
+            },
+            "assessedAt": "2026-11-28",
+            "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           },
           "mentalHealthExpansion": true
         },
@@ -39779,10 +41020,34 @@
           ],
           "trustScore": 1,
           "trustAssessment": {
+            "score": 1,
+            "scope": "Subchapter",
+            "minimumQualifyingStudies": 3,
             "status": "assessed",
-            "basis": "Publication design and distinct trial-family count; not a certainty grade or proof of IL-6-mediated benefit.",
-            "distinctRandomizedFamilies": 1,
-            "distinctDoubleBlindFamilies": 0
+            "qualifyingRecords": {
+              "double-blind-rct": [],
+              "rct": [
+                "pmid-38725444"
+              ],
+              "single-blind-rct": [],
+              "peer-reviewed": [
+                "pmid-38725444",
+                "pmid-31163212",
+                "pmid-30199144",
+                "pmid-34908836",
+                "pmid-29241050",
+                "pmid-23612048",
+                "pmid-34758380"
+              ]
+            },
+            "counts": {
+              "double-blind-rct": 0,
+              "rct": 1,
+              "single-blind-rct": 0,
+              "peer-reviewed": 7
+            },
+            "assessedAt": "2026-11-28",
+            "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           },
           "mentalHealthExpansion": true
         },
@@ -40500,10 +41765,39 @@
           ],
           "trustScore": 1,
           "trustAssessment": {
+            "score": 1,
+            "scope": "Subchapter",
+            "minimumQualifyingStudies": 3,
             "status": "assessed",
-            "basis": "Publication design and distinct trial-family count; not a certainty grade or proof of IL-6-mediated benefit.",
-            "distinctRandomizedFamilies": 2,
-            "distinctDoubleBlindFamilies": 1
+            "qualifyingRecords": {
+              "double-blind-rct": [
+                "pmid-34778863"
+              ],
+              "rct": [
+                "pmid-34778863",
+                "pmid-36938380"
+              ],
+              "single-blind-rct": [],
+              "peer-reviewed": [
+                "pmid-34778863",
+                "pmid-36938380",
+                "pmid-26544749",
+                "pmid-32158005",
+                "pmid-35477973",
+                "pmid-41115574",
+                "pmid-33988765",
+                "pmid-36115323",
+                "pmid-36732491"
+              ]
+            },
+            "counts": {
+              "double-blind-rct": 1,
+              "rct": 2,
+              "single-blind-rct": 0,
+              "peer-reviewed": 9
+            },
+            "assessedAt": "2026-11-28",
+            "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           },
           "mentalHealthExpansion": true
         },
@@ -41166,10 +42460,35 @@
           ],
           "trustScore": 1,
           "trustAssessment": {
+            "score": 1,
+            "scope": "Subchapter",
+            "minimumQualifyingStudies": 3,
             "status": "assessed",
-            "basis": "Publication design and distinct trial-family count; not a certainty grade or proof of IL-6-mediated benefit.",
-            "distinctRandomizedFamilies": 0,
-            "distinctDoubleBlindFamilies": 0
+            "qualifyingRecords": {
+              "double-blind-rct": [],
+              "rct": [],
+              "single-blind-rct": [],
+              "peer-reviewed": [
+                "pmid-37779624",
+                "pmid-38549611",
+                "pmid-41272690",
+                "pmid-37356288",
+                "pmid-25541493",
+                "pmid-34280025",
+                "pmid-35202735",
+                "pmid-33388702",
+                "pmid-30844329",
+                "pmid-34730074"
+              ]
+            },
+            "counts": {
+              "double-blind-rct": 0,
+              "rct": 0,
+              "single-blind-rct": 0,
+              "peer-reviewed": 10
+            },
+            "assessedAt": "2026-11-28",
+            "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           },
           "mentalHealthExpansion": true
         },
@@ -42137,10 +43456,48 @@
           ],
           "trustScore": 3,
           "trustAssessment": {
+            "score": 3,
+            "scope": "Subchapter",
+            "minimumQualifyingStudies": 3,
             "status": "assessed",
-            "basis": "Publication design and distinct trial-family count; not a certainty grade or proof of IL-6-mediated benefit.",
-            "distinctRandomizedFamilies": 3,
-            "distinctDoubleBlindFamilies": 3
+            "qualifyingRecords": {
+              "double-blind-rct": [
+                "pmid-36052304",
+                "pmid-24568073",
+                "pmid-32256407"
+              ],
+              "rct": [
+                "pmid-36052304",
+                "pmid-24568073",
+                "pmid-32256407"
+              ],
+              "single-blind-rct": [],
+              "peer-reviewed": [
+                "pmid-36052304",
+                "pmid-24568073",
+                "pmid-32256407",
+                "pmid-34413283",
+                "pmid-35660454",
+                "pmid-42287409",
+                "pmid-33936305",
+                "pmid-30430896",
+                "pmid-28262601",
+                "pmid-20534153",
+                "pmid-35197458",
+                "pmid-37511467",
+                "pmid-32707260",
+                "pmid-36597271",
+                "pmid-34371132"
+              ]
+            },
+            "counts": {
+              "double-blind-rct": 3,
+              "rct": 3,
+              "single-blind-rct": 0,
+              "peer-reviewed": 15
+            },
+            "assessedAt": "2026-11-28",
+            "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           },
           "mentalHealthExpansion": true
         },
@@ -42687,10 +44044,42 @@
           ],
           "trustScore": 3,
           "trustAssessment": {
+            "score": 3,
+            "scope": "Subchapter",
+            "minimumQualifyingStudies": 3,
             "status": "assessed",
-            "basis": "Publication design and distinct trial-family count; not a certainty grade or proof of IL-6-mediated benefit.",
-            "distinctRandomizedFamilies": 4,
-            "distinctDoubleBlindFamilies": 3
+            "qualifyingRecords": {
+              "double-blind-rct": [
+                "pmid-40305022",
+                "pmid-40630018",
+                "pmid-31541874"
+              ],
+              "rct": [
+                "pmid-40305022",
+                "pmid-35754106",
+                "pmid-40630018",
+                "pmid-31541874"
+              ],
+              "single-blind-rct": [],
+              "peer-reviewed": [
+                "pmid-40305022",
+                "pmid-35754106",
+                "pmid-40630018",
+                "pmid-35995431",
+                "pmid-15282117",
+                "pmid-31736187",
+                "pmid-31541874",
+                "pmid-37484196"
+              ]
+            },
+            "counts": {
+              "double-blind-rct": 3,
+              "rct": 4,
+              "single-blind-rct": 0,
+              "peer-reviewed": 8
+            },
+            "assessedAt": "2026-11-28",
+            "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           },
           "mentalHealthExpansion": true
         },
@@ -43162,10 +44551,37 @@
           ],
           "trustScore": 1,
           "trustAssessment": {
+            "score": 1,
+            "scope": "Subchapter",
+            "minimumQualifyingStudies": 3,
             "status": "assessed",
-            "basis": "Publication design and distinct trial-family count; not a certainty grade or proof of IL-6-mediated benefit.",
-            "distinctRandomizedFamilies": 2,
-            "distinctDoubleBlindFamilies": 2
+            "qualifyingRecords": {
+              "double-blind-rct": [
+                "pmid-25988317",
+                "pmid-25716777"
+              ],
+              "rct": [
+                "pmid-25988317",
+                "pmid-25716777"
+              ],
+              "single-blind-rct": [],
+              "peer-reviewed": [
+                "pmid-33719920",
+                "pmid-25988317",
+                "pmid-25716777",
+                "pmid-31513981",
+                "pmid-25660662",
+                "pmid-36181736"
+              ]
+            },
+            "counts": {
+              "double-blind-rct": 2,
+              "rct": 2,
+              "single-blind-rct": 0,
+              "peer-reviewed": 6
+            },
+            "assessedAt": "2026-11-28",
+            "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           },
           "mentalHealthExpansion": true
         },
@@ -43572,10 +44988,34 @@
           ],
           "trustScore": 1,
           "trustAssessment": {
+            "score": 1,
+            "scope": "Subchapter",
+            "minimumQualifyingStudies": 3,
             "status": "assessed",
-            "basis": "Publication design and distinct trial-family count; not a certainty grade or proof of IL-6-mediated benefit.",
-            "distinctRandomizedFamilies": 2,
-            "distinctDoubleBlindFamilies": 0
+            "qualifyingRecords": {
+              "double-blind-rct": [],
+              "rct": [
+                "pmid-34331010",
+                "pmid-39504756"
+              ],
+              "single-blind-rct": [],
+              "peer-reviewed": [
+                "pmid-34331010",
+                "pmid-31812878",
+                "pmid-34432333",
+                "pmid-31749792",
+                "pmid-39504756",
+                "pmid-37424424"
+              ]
+            },
+            "counts": {
+              "double-blind-rct": 0,
+              "rct": 2,
+              "single-blind-rct": 0,
+              "peer-reviewed": 6
+            },
+            "assessedAt": "2026-11-28",
+            "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           },
           "mentalHealthExpansion": true
         },
@@ -43740,12 +45180,29 @@
               "limitation": "Contextual tobacco-exposure evidence rather than a nicotine-dependence mechanism study. Soluble receptor is distinct from IL-6 protein, and smoking confounds psychiatric biomarker comparisons. Access: Indexed abstract reviewed; full-text methods not comprehensively assessed."
             }
           ],
-          "trustScore": 1,
+          "trustScore": null,
           "trustAssessment": {
-            "status": "assessed",
-            "basis": "Publication design and distinct trial-family count; not a certainty grade or proof of IL-6-mediated benefit.",
-            "distinctRandomizedFamilies": 0,
-            "distinctDoubleBlindFamilies": 0
+            "score": null,
+            "scope": "Subchapter",
+            "minimumQualifyingStudies": 3,
+            "status": "below-minimum",
+            "qualifyingRecords": {
+              "double-blind-rct": [],
+              "rct": [],
+              "single-blind-rct": [],
+              "peer-reviewed": [
+                "pmid-32554630",
+                "pmid-25274579"
+              ]
+            },
+            "counts": {
+              "double-blind-rct": 0,
+              "rct": 0,
+              "single-blind-rct": 0,
+              "peer-reviewed": 2
+            },
+            "assessedAt": "2026-11-28",
+            "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           },
           "mentalHealthExpansion": true
         },
@@ -43858,12 +45315,26 @@
             ]
           ],
           "papers": [],
-          "trustScore": 1,
+          "trustScore": null,
           "trustAssessment": {
-            "status": "assessed",
-            "basis": "Publication design and distinct trial-family count; not a certainty grade or proof of IL-6-mediated benefit.",
-            "distinctRandomizedFamilies": 0,
-            "distinctDoubleBlindFamilies": 0
+            "score": null,
+            "scope": "Subchapter",
+            "minimumQualifyingStudies": 3,
+            "status": "below-minimum",
+            "qualifyingRecords": {
+              "double-blind-rct": [],
+              "rct": [],
+              "single-blind-rct": [],
+              "peer-reviewed": []
+            },
+            "counts": {
+              "double-blind-rct": 0,
+              "rct": 0,
+              "single-blind-rct": 0,
+              "peer-reviewed": 0
+            },
+            "assessedAt": "2026-11-28",
+            "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           },
           "mentalHealthExpansion": true
         },
@@ -43898,16 +45369,234 @@
             []
           ],
           "papers": [],
-          "trustScore": 1,
+          "trustScore": null,
           "trustAssessment": {
-            "status": "assessed",
-            "basis": "Publication design and distinct trial-family count; not a certainty grade or proof of IL-6-mediated benefit.",
-            "distinctRandomizedFamilies": 0,
-            "distinctDoubleBlindFamilies": 0
+            "score": null,
+            "scope": "Subchapter",
+            "minimumQualifyingStudies": 3,
+            "status": "below-minimum",
+            "qualifyingRecords": {
+              "double-blind-rct": [],
+              "rct": [],
+              "single-blind-rct": [],
+              "peer-reviewed": []
+            },
+            "counts": {
+              "double-blind-rct": 0,
+              "rct": 0,
+              "single-blind-rct": 0,
+              "peer-reviewed": 0
+            },
+            "assessedAt": "2026-11-28",
+            "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
           },
           "mentalHealthExpansion": true
         }
-      ]
+      ],
+      "trustAssessment": {
+        "score": 3,
+        "scope": "Chapter",
+        "minimumQualifyingStudies": 3,
+        "status": "assessed",
+        "qualifyingRecords": {
+          "double-blind-rct": [
+            "pmid-42160062",
+            "pmid-38677624",
+            "pmid-22516310",
+            "pmid-33504955",
+            "pmid-30153598",
+            "pmid-30205379",
+            "pmid-30388595",
+            "pmid-23602205",
+            "pmid-29090685",
+            "pmid-30322824",
+            "pmid-29678772",
+            "pmid-37848096",
+            "pmid-39128677",
+            "pmid-24717258",
+            "pmid-24554598",
+            "pmid-29362444",
+            "pmid-34778863",
+            "pmid-36052304",
+            "pmid-24568073",
+            "pmid-32256407",
+            "pmid-40305022",
+            "pmid-40630018",
+            "pmid-31541874",
+            "pmid-25988317",
+            "pmid-25716777"
+          ],
+          "rct": [
+            "pmid-42160062",
+            "pmid-38677624",
+            "pmid-22516310",
+            "pmid-33504955",
+            "pmid-34937590",
+            "pmid-30153598",
+            "pmid-30205379",
+            "pmid-30388595",
+            "pmid-23602205",
+            "pmid-31141465",
+            "pmid-36005883",
+            "pmid-40188855",
+            "pmid-29090685",
+            "pmid-30322824",
+            "pmid-29678772",
+            "pmid-37069570",
+            "pmid-37848096",
+            "pmid-39128677",
+            "pmid-32600481",
+            "pmid-24717258",
+            "pmid-24554598",
+            "pmid-29362444",
+            "pmid-31920220",
+            "pmid-38725444",
+            "pmid-34778863",
+            "pmid-36938380",
+            "pmid-36052304",
+            "pmid-24568073",
+            "pmid-32256407",
+            "pmid-40305022",
+            "pmid-35754106",
+            "pmid-40630018",
+            "pmid-31541874",
+            "pmid-25988317",
+            "pmid-25716777",
+            "pmid-34331010",
+            "pmid-39504756"
+          ],
+          "single-blind-rct": [],
+          "peer-reviewed": [
+            "pmid-25133871",
+            "pmid-37217205",
+            "pmid-36893912",
+            "pmid-26903267",
+            "pmid-32533781",
+            "pmid-42160062",
+            "pmid-38677624",
+            "pmid-20015486",
+            "pmid-26065825",
+            "pmid-32807846",
+            "pmid-34505025",
+            "pmid-34135474",
+            "pmid-22516310",
+            "pmid-33504955",
+            "pmid-34937590",
+            "pmid-30153598",
+            "pmid-30205379",
+            "pmid-30388595",
+            "pmid-23602205",
+            "pmid-31141465",
+            "pmid-26802811",
+            "pmid-36005883",
+            "pmid-40188855",
+            "pmid-29090685",
+            "pmid-30322824",
+            "pmid-29678772",
+            "pmid-37069570",
+            "pmid-37848096",
+            "pmid-21641581",
+            "pmid-24704219",
+            "pmid-33529887",
+            "pmid-37103677",
+            "pmid-38364730",
+            "pmid-33740587",
+            "pmid-30407606",
+            "pmid-29094161",
+            "pmid-36863384",
+            "pmid-39128677",
+            "pmid-32600481",
+            "pmid-24717258",
+            "pmid-24554598",
+            "pmid-29362444",
+            "pmid-31920220",
+            "pmid-34332041",
+            "pmid-30113291",
+            "pmid-23419545",
+            "pmid-21138659",
+            "pmid-32871531",
+            "pmid-19251324",
+            "pmid-17845274",
+            "pmid-25451609",
+            "pmid-38725444",
+            "pmid-31163212",
+            "pmid-30199144",
+            "pmid-34908836",
+            "pmid-29241050",
+            "pmid-23612048",
+            "pmid-34758380",
+            "pmid-34778863",
+            "pmid-36938380",
+            "pmid-26544749",
+            "pmid-32158005",
+            "pmid-35477973",
+            "pmid-41115574",
+            "pmid-33988765",
+            "pmid-36115323",
+            "pmid-36732491",
+            "pmid-37779624",
+            "pmid-38549611",
+            "pmid-41272690",
+            "pmid-37356288",
+            "pmid-25541493",
+            "pmid-34280025",
+            "pmid-33388702",
+            "pmid-30844329",
+            "pmid-34730074",
+            "pmid-36052304",
+            "pmid-24568073",
+            "pmid-32256407",
+            "pmid-34413283",
+            "pmid-35660454",
+            "pmid-42287409",
+            "pmid-33936305",
+            "pmid-30430896",
+            "pmid-28262601",
+            "pmid-20534153",
+            "pmid-35197458",
+            "pmid-37511467",
+            "pmid-32707260",
+            "pmid-34371132",
+            "pmid-40305022",
+            "pmid-35754106",
+            "pmid-40630018",
+            "pmid-35995431",
+            "pmid-15282117",
+            "pmid-31736187",
+            "pmid-31541874",
+            "pmid-37484196",
+            "pmid-33719920",
+            "pmid-25988317",
+            "pmid-25716777",
+            "pmid-31513981",
+            "pmid-25660662",
+            "pmid-36181736",
+            "pmid-34331010",
+            "pmid-31812878",
+            "pmid-34432333",
+            "pmid-31749792",
+            "pmid-39504756",
+            "pmid-37424424",
+            "pmid-32554630",
+            "pmid-25274579"
+          ]
+        },
+        "counts": {
+          "double-blind-rct": 25,
+          "rct": 37,
+          "single-blind-rct": 0,
+          "peer-reviewed": 112
+        },
+        "assessedAt": "2026-11-28",
+        "basis": "Highest threshold supported by the recorded paper assessments; repeated reports of an identified trial count once."
+      },
+      "trustScore": 3,
+      "geneReference": {
+        "title": "IL6 gene reference · NCBI Gene",
+        "url": "https://www.ncbi.nlm.nih.gov/gene/3569",
+        "symbol": "IL6",
+        "encodedProtein": "Interleukin-6 (IL-6)"
+      }
     }
   ],
   "paperCount": 663,
