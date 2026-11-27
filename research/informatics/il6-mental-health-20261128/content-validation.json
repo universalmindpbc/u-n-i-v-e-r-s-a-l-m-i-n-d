@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "publications": 120,
+  "directMentalHealth": 117,
+  "contextual": 3,
+  "combinedSources": 162,
+  "priorChaptersPreserved": 12,
+  "originalSourcesPreserved": 42,
+  "jsonCsvEquivalent": true,
+  "citationsResolved": true,
+  "individualAppraisals": true,
+  "maskingAndFamilyBoundaries": true
+}

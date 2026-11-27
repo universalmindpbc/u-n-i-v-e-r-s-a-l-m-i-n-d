@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "sources": 42,
+  "suppliedSources": 19,
+  "topics": 10,
+  "priorChaptersPreserved": 12,
+  "csvJsonCoreFieldsEquivalent": true,
+  "paragraphCitationsResolved": true,
+  "sharedTrialFamilyPreserved": true,
+  "negativeFindingsRetained": true,
+  "languageCheck": true
+}

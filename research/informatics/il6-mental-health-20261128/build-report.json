@@ -1,0 +1,24 @@
+{
+  "sources": 162,
+  "expansionPublications": 120,
+  "directMentalHealthPublications": 117,
+  "contextual": 3,
+  "topics": 26,
+  "newDomains": {
+    "depression": 20,
+    "psychosis": 14,
+    "bipolar": 15,
+    "ptsd": 11,
+    "anxiety": 7,
+    "adhd": 15,
+    "addiction": 24,
+    "transdiagnostic": 4,
+    "suicidality": 10
+  },
+  "randomizedReports": 38,
+  "doubleBlindReports": 26,
+  "fullTextPassageAppraisals": 9,
+  "linkedCorrectionNotices": 5,
+  "wordCountNewNarrative": 3319,
+  "wordCountSourceAppraisals": 4995
+}

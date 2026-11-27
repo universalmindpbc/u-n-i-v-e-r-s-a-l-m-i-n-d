@@ -1,0 +1,407 @@
+{
+  "depression": {
+    "query": "SRC:MED AND FIRST_PDATE:[1900-01-01 TO 2026-11-28] AND (TITLE_ABS:(\"interleukin-6\" OR \"IL-6\" OR IL6 OR \"interleukin 6\") AND TITLE_ABS:(depression OR depressive))",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-28%5D+AND+%28TITLE_ABS%3A%28%22interleukin-6%22+OR+%22IL-6%22+OR+IL6+OR+%22interleukin+6%22%29+AND+TITLE_ABS%3A%28depression+OR+depressive%29%29&format=json&resultType=core&pageSize=100",
+    "searchedAt": "2026-11-28",
+    "sha256": "1a33ad413c1bf984366530900121548e10f8fdd09c98cbb911feea59f34f0357",
+    "hitCount": 5478,
+    "nextCursorMark": "AoIIQJ0JGSg1NDQ4NjA2NQ==",
+    "retrieved": 100
+  },
+  "depression_trials": {
+    "query": "SRC:MED AND FIRST_PDATE:[1900-01-01 TO 2026-11-28] AND (TITLE_ABS:(\"interleukin-6\" OR \"IL-6\" OR IL6 OR \"interleukin 6\") AND TITLE_ABS:(depression OR depressive) AND (PUB_TYPE:\"Randomized Controlled Trial\" OR TITLE_ABS:randomized OR TITLE_ABS:randomised))",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-28%5D+AND+%28TITLE_ABS%3A%28%22interleukin-6%22+OR+%22IL-6%22+OR+IL6+OR+%22interleukin+6%22%29+AND+TITLE_ABS%3A%28depression+OR+depressive%29+AND+%28PUB_TYPE%3A%22Randomized+Controlled+Trial%22+OR+TITLE_ABS%3Arandomized+OR+TITLE_ABS%3Arandomised%29%29&format=json&resultType=core&pageSize=100",
+    "searchedAt": "2026-11-28",
+    "sha256": "996ebe751f7c2110c2e7f9e05990c2437c2a0d54caf2c62fe82005f0439ea9d6",
+    "hitCount": 527,
+    "nextCursorMark": "AoIIQGKfXyg1MTg0MTIxOQ==",
+    "retrieved": 100
+  },
+  "psychosis": {
+    "query": "SRC:MED AND FIRST_PDATE:[1900-01-01 TO 2026-11-28] AND (TITLE_ABS:(\"interleukin-6\" OR \"IL-6\" OR IL6 OR \"interleukin 6\") AND TITLE_ABS:(schizophrenia OR psychosis OR psychotic))",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-28%5D+AND+%28TITLE_ABS%3A%28%22interleukin-6%22+OR+%22IL-6%22+OR+IL6+OR+%22interleukin+6%22%29+AND+TITLE_ABS%3A%28schizophrenia+OR+psychosis+OR+psychotic%29%29&format=json&resultType=core&pageSize=100",
+    "searchedAt": "2026-11-28",
+    "sha256": "f27b1f6d193614e2e91193ab05f5f0c5e5851373e2477e86494240db19be0623",
+    "hitCount": 1005,
+    "nextCursorMark": "AoIIQEwIiig1Njk5OTkxNQ==",
+    "retrieved": 100
+  },
+  "psychosis_trials": {
+    "query": "SRC:MED AND FIRST_PDATE:[1900-01-01 TO 2026-11-28] AND (TITLE_ABS:(\"interleukin-6\" OR \"IL-6\" OR IL6 OR \"interleukin 6\") AND TITLE_ABS:(schizophrenia OR psychosis OR psychotic) AND (PUB_TYPE:\"Randomized Controlled Trial\" OR TITLE_ABS:randomized OR TITLE_ABS:randomised))",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-28%5D+AND+%28TITLE_ABS%3A%28%22interleukin-6%22+OR+%22IL-6%22+OR+IL6+OR+%22interleukin+6%22%29+AND+TITLE_ABS%3A%28schizophrenia+OR+psychosis+OR+psychotic%29+AND+%28PUB_TYPE%3A%22Randomized+Controlled+Trial%22+OR+TITLE_ABS%3Arandomized+OR+TITLE_ABS%3Arandomised%29%29&format=json&resultType=core&pageSize=100",
+    "searchedAt": "2026-11-28",
+    "sha256": "61e40a8d80086ef279c6da2cb5cbde4b7706d50468ec4d8ce8f724defaec4d9f",
+    "hitCount": 45,
+    "nextCursorMark": null,
+    "retrieved": 45
+  },
+  "bipolar": {
+    "query": "SRC:MED AND FIRST_PDATE:[1900-01-01 TO 2026-11-28] AND (TITLE_ABS:(\"interleukin-6\" OR \"IL-6\" OR IL6 OR \"interleukin 6\") AND TITLE_ABS:(bipolar OR mania OR manic OR hypomania OR hypomanic))",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-28%5D+AND+%28TITLE_ABS%3A%28%22interleukin-6%22+OR+%22IL-6%22+OR+IL6+OR+%22interleukin+6%22%29+AND+TITLE_ABS%3A%28bipolar+OR+mania+OR+manic+OR+hypomania+OR+hypomanic%29%29&format=json&resultType=core&pageSize=100",
+    "searchedAt": "2026-11-28",
+    "sha256": "b0f3e13b963764a1a86b8e025b130b6777690ee1384b9956a3e7cc0b104e765f",
+    "hitCount": 454,
+    "nextCursorMark": "AoIIQAUsKCg1NDA0Mjk4NQ==",
+    "retrieved": 100
+  },
+  "bipolar_trials": {
+    "query": "SRC:MED AND FIRST_PDATE:[1900-01-01 TO 2026-11-28] AND (TITLE_ABS:(\"interleukin-6\" OR \"IL-6\" OR IL6 OR \"interleukin 6\") AND TITLE_ABS:(bipolar OR mania OR manic OR hypomania OR hypomanic) AND (PUB_TYPE:\"Randomized Controlled Trial\" OR TITLE_ABS:randomized OR TITLE_ABS:randomised))",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-28%5D+AND+%28TITLE_ABS%3A%28%22interleukin-6%22+OR+%22IL-6%22+OR+IL6+OR+%22interleukin+6%22%29+AND+TITLE_ABS%3A%28bipolar+OR+mania+OR+manic+OR+hypomania+OR+hypomanic%29+AND+%28PUB_TYPE%3A%22Randomized+Controlled+Trial%22+OR+TITLE_ABS%3Arandomized+OR+TITLE_ABS%3Arandomised%29%29&format=json&resultType=core&pageSize=100",
+    "searchedAt": "2026-11-28",
+    "sha256": "e2f1168fa69aa3ef6443db3b1d26a7ff9976b0665a4f1e36a2d33ac7d0af2a71",
+    "hitCount": 33,
+    "nextCursorMark": null,
+    "retrieved": 33
+  },
+  "ptsd": {
+    "query": "SRC:MED AND FIRST_PDATE:[1900-01-01 TO 2026-11-28] AND (TITLE_ABS:(\"interleukin-6\" OR \"IL-6\" OR IL6 OR \"interleukin 6\") AND TITLE_ABS:(PTSD OR \"post-traumatic stress\" OR \"posttraumatic stress\"))",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-28%5D+AND+%28TITLE_ABS%3A%28%22interleukin-6%22+OR+%22IL-6%22+OR+IL6+OR+%22interleukin+6%22%29+AND+TITLE_ABS%3A%28PTSD+OR+%22post-traumatic+stress%22+OR+%22posttraumatic+stress%22%29%29&format=json&resultType=core&pageSize=100",
+    "searchedAt": "2026-11-28",
+    "sha256": "67fad047771d574315a1be3b7dbeb33081c7a3831087030a1aaf2e3c46d430ca",
+    "hitCount": 295,
+    "nextCursorMark": "AoIIQDEq3Cg1MTMxNzk5OQ==",
+    "retrieved": 100
+  },
+  "ptsd_trials": {
+    "query": "SRC:MED AND FIRST_PDATE:[1900-01-01 TO 2026-11-28] AND (TITLE_ABS:(\"interleukin-6\" OR \"IL-6\" OR IL6 OR \"interleukin 6\") AND TITLE_ABS:(PTSD OR \"post-traumatic stress\" OR \"posttraumatic stress\") AND (PUB_TYPE:\"Randomized Controlled Trial\" OR TITLE_ABS:randomized OR TITLE_ABS:randomised))",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-28%5D+AND+%28TITLE_ABS%3A%28%22interleukin-6%22+OR+%22IL-6%22+OR+IL6+OR+%22interleukin+6%22%29+AND+TITLE_ABS%3A%28PTSD+OR+%22post-traumatic+stress%22+OR+%22posttraumatic+stress%22%29+AND+%28PUB_TYPE%3A%22Randomized+Controlled+Trial%22+OR+TITLE_ABS%3Arandomized+OR+TITLE_ABS%3Arandomised%29%29&format=json&resultType=core&pageSize=100",
+    "searchedAt": "2026-11-28",
+    "sha256": "e6a2fbe6890eb29c37fa2130359d0d8c678d3d713f8d09684235ce4644f334de",
+    "hitCount": 9,
+    "nextCursorMark": null,
+    "retrieved": 9
+  },
+  "anxiety": {
+    "query": "SRC:MED AND FIRST_PDATE:[1900-01-01 TO 2026-11-28] AND (TITLE_ABS:(\"interleukin-6\" OR \"IL-6\" OR IL6 OR \"interleukin 6\") AND TITLE_ABS:(\"anxiety disorder\" OR \"panic disorder\" OR \"social anxiety\" OR \"generalized anxiety\"))",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-28%5D+AND+%28TITLE_ABS%3A%28%22interleukin-6%22+OR+%22IL-6%22+OR+IL6+OR+%22interleukin+6%22%29+AND+TITLE_ABS%3A%28%22anxiety+disorder%22+OR+%22panic+disorder%22+OR+%22social+anxiety%22+OR+%22generalized+anxiety%22%29%29&format=json&resultType=core&pageSize=100",
+    "searchedAt": "2026-11-28",
+    "sha256": "3379b2e1ac26cfb1419f0926924f1f0936e5288281a232905e008d695964c0f1",
+    "hitCount": 122,
+    "nextCursorMark": "AoIIP2UIXCg0NDg1MTA5MA==",
+    "retrieved": 100
+  },
+  "anxiety_trials": {
+    "query": "SRC:MED AND FIRST_PDATE:[1900-01-01 TO 2026-11-28] AND (TITLE_ABS:(\"interleukin-6\" OR \"IL-6\" OR IL6 OR \"interleukin 6\") AND TITLE_ABS:(\"anxiety disorder\" OR \"panic disorder\" OR \"social anxiety\" OR \"generalized anxiety\") AND (PUB_TYPE:\"Randomized Controlled Trial\" OR TITLE_ABS:randomized OR TITLE_ABS:randomised))",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-28%5D+AND+%28TITLE_ABS%3A%28%22interleukin-6%22+OR+%22IL-6%22+OR+IL6+OR+%22interleukin+6%22%29+AND+TITLE_ABS%3A%28%22anxiety+disorder%22+OR+%22panic+disorder%22+OR+%22social+anxiety%22+OR+%22generalized+anxiety%22%29+AND+%28PUB_TYPE%3A%22Randomized+Controlled+Trial%22+OR+TITLE_ABS%3Arandomized+OR+TITLE_ABS%3Arandomised%29%29&format=json&resultType=core&pageSize=100",
+    "searchedAt": "2026-11-28",
+    "sha256": "1cadaaa47e1f8101ae1d14e934546f25b55a1feec0d40c0ae7f932e2b7104c02",
+    "hitCount": 14,
+    "nextCursorMark": null,
+    "retrieved": 14
+  },
+  "suicidality": {
+    "query": "SRC:MED AND FIRST_PDATE:[1900-01-01 TO 2026-11-28] AND (TITLE_ABS:(\"interleukin-6\" OR \"IL-6\" OR IL6 OR \"interleukin 6\") AND TITLE_ABS:(suicide OR suicidal OR suicidality))",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-28%5D+AND+%28TITLE_ABS%3A%28%22interleukin-6%22+OR+%22IL-6%22+OR+IL6+OR+%22interleukin+6%22%29+AND+TITLE_ABS%3A%28suicide+OR+suicidal+OR+suicidality%29%29&format=json&resultType=core&pageSize=100",
+    "searchedAt": "2026-11-28",
+    "sha256": "cdb8ed922c5e2c410dab063e7b0551908d456b924c3a1f2b1ddee9d2fc68f62a",
+    "hitCount": 278,
+    "nextCursorMark": "AoIIP/OM+ig0NDg2MzAzMA==",
+    "retrieved": 100
+  },
+  "adhd": {
+    "query": "SRC:MED AND FIRST_PDATE:[1900-01-01 TO 2026-11-28] AND (TITLE_ABS:(\"interleukin-6\" OR \"IL-6\" OR IL6 OR \"interleukin 6\") AND TITLE_ABS:(ADHD OR \"attention deficit\" OR \"attention-deficit\"))",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-28%5D+AND+%28TITLE_ABS%3A%28%22interleukin-6%22+OR+%22IL-6%22+OR+IL6+OR+%22interleukin+6%22%29+AND+TITLE_ABS%3A%28ADHD+OR+%22attention+deficit%22+OR+%22attention-deficit%22%29%29&format=json&resultType=core&pageSize=100",
+    "searchedAt": "2026-11-28",
+    "sha256": "22660dd4ee1d18f3be7f721dd69d2b5fe11a34f8fee8d1eade87c25f54bd5dc7",
+    "hitCount": 100,
+    "nextCursorMark": null,
+    "retrieved": 100
+  },
+  "adhd_trials": {
+    "query": "SRC:MED AND FIRST_PDATE:[1900-01-01 TO 2026-11-28] AND (TITLE_ABS:(\"interleukin-6\" OR \"IL-6\" OR IL6 OR \"interleukin 6\") AND TITLE_ABS:(ADHD OR \"attention deficit\" OR \"attention-deficit\") AND (PUB_TYPE:\"Randomized Controlled Trial\" OR TITLE_ABS:randomized OR TITLE_ABS:randomised))",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-28%5D+AND+%28TITLE_ABS%3A%28%22interleukin-6%22+OR+%22IL-6%22+OR+IL6+OR+%22interleukin+6%22%29+AND+TITLE_ABS%3A%28ADHD+OR+%22attention+deficit%22+OR+%22attention-deficit%22%29+AND+%28PUB_TYPE%3A%22Randomized+Controlled+Trial%22+OR+TITLE_ABS%3Arandomized+OR+TITLE_ABS%3Arandomised%29%29&format=json&resultType=core&pageSize=100",
+    "searchedAt": "2026-11-28",
+    "sha256": "43bf51ddd4a517586626b06798c91995d22ed4a7fe2ebac91e4d3c9173210596",
+    "hitCount": 4,
+    "nextCursorMark": null,
+    "retrieved": 4
+  },
+  "alcohol": {
+    "query": "SRC:MED AND FIRST_PDATE:[1900-01-01 TO 2026-11-28] AND (TITLE_ABS:(\"interleukin-6\" OR \"IL-6\" OR IL6 OR \"interleukin 6\") AND TITLE_ABS:(\"alcohol use disorder\" OR \"alcohol dependence\" OR \"alcohol withdrawal\" OR alcoholism))",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-28%5D+AND+%28TITLE_ABS%3A%28%22interleukin-6%22+OR+%22IL-6%22+OR+IL6+OR+%22interleukin+6%22%29+AND+TITLE_ABS%3A%28%22alcohol+use+disorder%22+OR+%22alcohol+dependence%22+OR+%22alcohol+withdrawal%22+OR+alcoholism%29%29&format=json&resultType=core&pageSize=100",
+    "searchedAt": "2026-11-28",
+    "sha256": "477e79c78608fef2da7497d89441bab9e10edc9cba080e51b11d226d265aa6e2",
+    "hitCount": 200,
+    "nextCursorMark": "AoIIP6l0NCg0ODIzMTQ1MQ==",
+    "retrieved": 100
+  },
+  "alcohol_trials": {
+    "query": "SRC:MED AND FIRST_PDATE:[1900-01-01 TO 2026-11-28] AND (TITLE_ABS:(\"interleukin-6\" OR \"IL-6\" OR IL6 OR \"interleukin 6\") AND TITLE_ABS:(\"alcohol use disorder\" OR \"alcohol dependence\" OR \"alcohol withdrawal\" OR alcoholism) AND (PUB_TYPE:\"Randomized Controlled Trial\" OR TITLE_ABS:randomized OR TITLE_ABS:randomised))",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-28%5D+AND+%28TITLE_ABS%3A%28%22interleukin-6%22+OR+%22IL-6%22+OR+IL6+OR+%22interleukin+6%22%29+AND+TITLE_ABS%3A%28%22alcohol+use+disorder%22+OR+%22alcohol+dependence%22+OR+%22alcohol+withdrawal%22+OR+alcoholism%29+AND+%28PUB_TYPE%3A%22Randomized+Controlled+Trial%22+OR+TITLE_ABS%3Arandomized+OR+TITLE_ABS%3Arandomised%29%29&format=json&resultType=core&pageSize=100",
+    "searchedAt": "2026-11-28",
+    "sha256": "2bd983696d5c52c2f6cecefec48069c77169573c376f18b85c8bf25b8b50fefa",
+    "hitCount": 17,
+    "nextCursorMark": null,
+    "retrieved": 17
+  },
+  "opioids": {
+    "query": "SRC:MED AND FIRST_PDATE:[1900-01-01 TO 2026-11-28] AND (TITLE_ABS:(\"interleukin-6\" OR \"IL-6\" OR IL6 OR \"interleukin 6\") AND TITLE_ABS:(\"opioid use disorder\" OR \"opioid dependence\" OR \"heroin dependence\" OR \"heroin addiction\" OR \"methadone maintenance\"))",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-28%5D+AND+%28TITLE_ABS%3A%28%22interleukin-6%22+OR+%22IL-6%22+OR+IL6+OR+%22interleukin+6%22%29+AND+TITLE_ABS%3A%28%22opioid+use+disorder%22+OR+%22opioid+dependence%22+OR+%22heroin+dependence%22+OR+%22heroin+addiction%22+OR+%22methadone+maintenance%22%29%29&format=json&resultType=core&pageSize=100",
+    "searchedAt": "2026-11-28",
+    "sha256": "f277b0596bd447fd9454bc19102381f68b622e7ba94966302055beee2b026f34",
+    "hitCount": 34,
+    "nextCursorMark": null,
+    "retrieved": 34
+  },
+  "stimulants": {
+    "query": "SRC:MED AND FIRST_PDATE:[1900-01-01 TO 2026-11-28] AND (TITLE_ABS:(\"interleukin-6\" OR \"IL-6\" OR IL6 OR \"interleukin 6\") AND TITLE_ABS:(\"methamphetamine use\" OR \"methamphetamine dependence\" OR \"cocaine dependence\" OR \"cocaine use disorder\"))",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-28%5D+AND+%28TITLE_ABS%3A%28%22interleukin-6%22+OR+%22IL-6%22+OR+IL6+OR+%22interleukin+6%22%29+AND+TITLE_ABS%3A%28%22methamphetamine+use%22+OR+%22methamphetamine+dependence%22+OR+%22cocaine+dependence%22+OR+%22cocaine+use+disorder%22%29%29&format=json&resultType=core&pageSize=100",
+    "searchedAt": "2026-11-28",
+    "sha256": "339655e02fcaeb1c05696b50b95e3f46480d884c23a73218e6d0a234187c3dbf",
+    "hitCount": 23,
+    "nextCursorMark": null,
+    "retrieved": 23
+  },
+  "cannabis_nicotine": {
+    "query": "SRC:MED AND FIRST_PDATE:[1900-01-01 TO 2026-11-28] AND (TITLE_ABS:(\"interleukin-6\" OR \"IL-6\" OR IL6 OR \"interleukin 6\") AND TITLE_ABS:(\"cannabis use\" OR \"cannabis dependence\" OR \"nicotine dependence\" OR \"smoking cessation\"))",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-28%5D+AND+%28TITLE_ABS%3A%28%22interleukin-6%22+OR+%22IL-6%22+OR+IL6+OR+%22interleukin+6%22%29+AND+TITLE_ABS%3A%28%22cannabis+use%22+OR+%22cannabis+dependence%22+OR+%22nicotine+dependence%22+OR+%22smoking+cessation%22%29%29&format=json&resultType=core&pageSize=100",
+    "searchedAt": "2026-11-28",
+    "sha256": "c1b1338c772f0cd322048f494927da90a215bee41523660d88fb405e425648b8",
+    "hitCount": 110,
+    "nextCursorMark": "AoIIPxizJigyNzcwNTc3OQ==",
+    "retrieved": 100
+  },
+  "direct_target": {
+    "query": "SRC:MED AND FIRST_PDATE:[1900-01-01 TO 2026-11-28] AND ((tocilizumab OR sirukumab OR siltuximab OR ziltivekimab) AND (depression OR schizophrenia OR psychosis))",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-28%5D+AND+%28%28tocilizumab+OR+sirukumab+OR+siltuximab+OR+ziltivekimab%29+AND+%28depression+OR+schizophrenia+OR+psychosis%29%29&format=json&resultType=core&pageSize=100",
+    "searchedAt": "2026-11-28",
+    "sha256": "87fb2186885600a683c0006670f0b143d741f8b155e625d3fdd7b8eed78ec3fa",
+    "hitCount": 8943,
+    "nextCursorMark": "AoIIQE6nbig1NTM2MTY1Mg==",
+    "retrieved": 100
+  },
+  "causal_genetics": {
+    "query": "SRC:MED AND FIRST_PDATE:[1900-01-01 TO 2026-11-28] AND (TITLE_ABS:(\"interleukin-6\" OR \"IL-6\" OR IL6 OR \"interleukin 6\") AND (depression OR bipolar OR schizophrenia OR ADHD OR suicide OR anxiety) AND (\"Mendelian randomization\" OR \"Mendelian randomisation\" OR genetic))",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-28%5D+AND+%28TITLE_ABS%3A%28%22interleukin-6%22+OR+%22IL-6%22+OR+IL6+OR+%22interleukin+6%22%29+AND+%28depression+OR+bipolar+OR+schizophrenia+OR+ADHD+OR+suicide+OR+anxiety%29+AND+%28%22Mendelian+randomization%22+OR+%22Mendelian+randomisation%22+OR+genetic%29%29&format=json&resultType=core&pageSize=100",
+    "searchedAt": "2026-11-28",
+    "sha256": "dbe327ba54ccedd319bd810b35fbd0e4034751a53463dfa85127db5fc545951a",
+    "hitCount": 3783,
+    "nextCursorMark": "AoIIQL6Iiyg1NDIwMDU4Nw==",
+    "retrieved": 100
+  },
+  "prospective": {
+    "query": "SRC:MED AND FIRST_PDATE:[1900-01-01 TO 2026-11-28] AND (TITLE_ABS:(\"interleukin-6\" OR \"IL-6\" OR IL6 OR \"interleukin 6\") AND (depression OR bipolar OR schizophrenia OR PTSD OR suicidality) AND (prospective OR longitudinal OR cohort))",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-28%5D+AND+%28TITLE_ABS%3A%28%22interleukin-6%22+OR+%22IL-6%22+OR+IL6+OR+%22interleukin+6%22%29+AND+%28depression+OR+bipolar+OR+schizophrenia+OR+PTSD+OR+suicidality%29+AND+%28prospective+OR+longitudinal+OR+cohort%29%29&format=json&resultType=core&pageSize=100",
+    "searchedAt": "2026-11-28",
+    "sha256": "eaddcce1b4edddf7cee5abf18416c2c375fa26cc9947bf6a78b4e23d9467658c",
+    "hitCount": 5507,
+    "nextCursorMark": "AoIIQNksWyg1NjY0NjkwNA==",
+    "retrieved": 100
+  },
+  "transdiagnostic": {
+    "query": "SRC:MED AND FIRST_PDATE:[1900-01-01 TO 2026-11-28] AND (TITLE_ABS:(\"interleukin-6\" OR \"IL-6\" OR IL6 OR \"interleukin 6\") AND (\"mental disorders\" OR transdiagnostic OR \"psychiatric disorders\") AND (meta-analysis OR review))",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-28%5D+AND+%28TITLE_ABS%3A%28%22interleukin-6%22+OR+%22IL-6%22+OR+IL6+OR+%22interleukin+6%22%29+AND+%28%22mental+disorders%22+OR+transdiagnostic+OR+%22psychiatric+disorders%22%29+AND+%28meta-analysis+OR+review%29%29&format=json&resultType=core&pageSize=100",
+    "searchedAt": "2026-11-28",
+    "sha256": "cafff05e748fa83e51da3b8d63f9041b3a81c47327564f73e9533721fd4bd7d9",
+    "hitCount": 2318,
+    "nextCursorMark": "AoIIQKU8QCg1NTk0NDQ3Nw==",
+    "retrieved": 100
+  },
+  "substance_meta": {
+    "query": "SRC:MED AND FIRST_PDATE:[1900-01-01 TO 2026-11-28] AND ((\"interleukin-6\" OR \"IL-6\" OR IL6 OR \"interleukin 6\") AND (\"substance use disorders\" OR addiction) AND (meta-analysis OR \"systematic review\"))",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-28%5D+AND+%28%28%22interleukin-6%22+OR+%22IL-6%22+OR+IL6+OR+%22interleukin+6%22%29+AND+%28%22substance+use+disorders%22+OR+addiction%29+AND+%28meta-analysis+OR+%22systematic+review%22%29%29&format=json&resultType=core&pageSize=100",
+    "searchedAt": "2026-11-28",
+    "sha256": "fa6d0d2fe6ab31ef2089f30ae8889c5ccde51364ff18c533ea307a98743af11b",
+    "hitCount": 4280,
+    "nextCursorMark": "AoIIQKOQySg1NDE3Nzg5Mg==",
+    "retrieved": 100
+  },
+  "depression_meta": {
+    "query": "SRC:MED AND FIRST_PDATE:[1900-01-01 TO 2026-11-28] AND (TITLE_ABS:(\"interleukin-6\" OR \"IL-6\" OR IL6 OR \"interleukin 6\") AND TITLE_ABS:(depression OR depressive) AND (PUB_TYPE:\"Meta-Analysis\" OR TITLE:\"systematic review\"))",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-28%5D+AND+%28TITLE_ABS%3A%28%22interleukin-6%22+OR+%22IL-6%22+OR+IL6+OR+%22interleukin+6%22%29+AND+TITLE_ABS%3A%28depression+OR+depressive%29+AND+%28PUB_TYPE%3A%22Meta-Analysis%22+OR+TITLE%3A%22systematic+review%22%29%29&format=json&resultType=core&pageSize=100",
+    "searchedAt": "2026-11-28",
+    "sha256": "525e95d48235ee322629972438549fbbc1d46961bb4d525687f1d3b85641f4b7",
+    "hitCount": 185,
+    "nextCursorMark": "AoIIQA1afCgzODY5MDMzOQ==",
+    "retrieved": 100
+  },
+  "depression_earlier": {
+    "query": "SRC:MED AND FIRST_PDATE:[1900-01-01 TO 2026-11-28] AND (TITLE_ABS:(\"interleukin-6\" OR \"IL-6\" OR IL6 OR \"interleukin 6\") AND TITLE_ABS:(depression OR depressive) AND FIRST_PDATE:[1900-01-01 TO 2022-12-31] sort_cited:y)",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-28%5D+AND+%28TITLE_ABS%3A%28%22interleukin-6%22+OR+%22IL-6%22+OR+IL6+OR+%22interleukin+6%22%29+AND+TITLE_ABS%3A%28depression+OR+depressive%29+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2022-12-31%5D+sort_cited%3Ay%29&format=json&resultType=core&pageSize=100",
+    "searchedAt": "2026-11-28",
+    "sha256": "a5017e59170f1b2f8863ad54d7ab497253b184dea949d731fec5dac3f0b8e28f",
+    "hitCount": 94,
+    "nextCursorMark": null,
+    "retrieved": 94
+  },
+  "psychosis_meta": {
+    "query": "SRC:MED AND FIRST_PDATE:[1900-01-01 TO 2026-11-28] AND (TITLE_ABS:(\"interleukin-6\" OR \"IL-6\" OR IL6 OR \"interleukin 6\") AND TITLE_ABS:(schizophrenia OR psychosis OR psychotic) AND (PUB_TYPE:\"Meta-Analysis\" OR TITLE:\"systematic review\"))",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-28%5D+AND+%28TITLE_ABS%3A%28%22interleukin-6%22+OR+%22IL-6%22+OR+IL6+OR+%22interleukin+6%22%29+AND+TITLE_ABS%3A%28schizophrenia+OR+psychosis+OR+psychotic%29+AND+%28PUB_TYPE%3A%22Meta-Analysis%22+OR+TITLE%3A%22systematic+review%22%29%29&format=json&resultType=core&pageSize=100",
+    "searchedAt": "2026-11-28",
+    "sha256": "81d72e2701bb4269335fb8abc7cc7f0bec0e511c928b934115ffeaaa8a097fda",
+    "hitCount": 50,
+    "nextCursorMark": null,
+    "retrieved": 50
+  },
+  "psychosis_earlier": {
+    "query": "SRC:MED AND FIRST_PDATE:[1900-01-01 TO 2026-11-28] AND (TITLE_ABS:(\"interleukin-6\" OR \"IL-6\" OR IL6 OR \"interleukin 6\") AND TITLE_ABS:(schizophrenia OR psychosis OR psychotic) AND FIRST_PDATE:[1900-01-01 TO 2022-12-31] sort_cited:y)",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-28%5D+AND+%28TITLE_ABS%3A%28%22interleukin-6%22+OR+%22IL-6%22+OR+IL6+OR+%22interleukin+6%22%29+AND+TITLE_ABS%3A%28schizophrenia+OR+psychosis+OR+psychotic%29+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2022-12-31%5D+sort_cited%3Ay%29&format=json&resultType=core&pageSize=100",
+    "searchedAt": "2026-11-28",
+    "sha256": "e44e273156958954eabd46682474529fbbfa251133c39bb45832220ceb89c231",
+    "hitCount": 6,
+    "nextCursorMark": null,
+    "retrieved": 6
+  },
+  "bipolar_meta": {
+    "query": "SRC:MED AND FIRST_PDATE:[1900-01-01 TO 2026-11-28] AND (TITLE_ABS:(\"interleukin-6\" OR \"IL-6\" OR IL6 OR \"interleukin 6\") AND TITLE_ABS:(bipolar OR mania OR manic OR hypomania OR hypomanic) AND (PUB_TYPE:\"Meta-Analysis\" OR TITLE:\"systematic review\"))",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-28%5D+AND+%28TITLE_ABS%3A%28%22interleukin-6%22+OR+%22IL-6%22+OR+IL6+OR+%22interleukin+6%22%29+AND+TITLE_ABS%3A%28bipolar+OR+mania+OR+manic+OR+hypomania+OR+hypomanic%29+AND+%28PUB_TYPE%3A%22Meta-Analysis%22+OR+TITLE%3A%22systematic+review%22%29%29&format=json&resultType=core&pageSize=100",
+    "searchedAt": "2026-11-28",
+    "sha256": "f674f0a0d9343d88431955c365aa54676e65c61094a91283b865b46a5cf49913",
+    "hitCount": 26,
+    "nextCursorMark": null,
+    "retrieved": 26
+  },
+  "bipolar_earlier": {
+    "query": "SRC:MED AND FIRST_PDATE:[1900-01-01 TO 2026-11-28] AND (TITLE_ABS:(\"interleukin-6\" OR \"IL-6\" OR IL6 OR \"interleukin 6\") AND TITLE_ABS:(bipolar OR mania OR manic OR hypomania OR hypomanic) AND FIRST_PDATE:[1900-01-01 TO 2022-12-31] sort_cited:y)",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-28%5D+AND+%28TITLE_ABS%3A%28%22interleukin-6%22+OR+%22IL-6%22+OR+IL6+OR+%22interleukin+6%22%29+AND+TITLE_ABS%3A%28bipolar+OR+mania+OR+manic+OR+hypomania+OR+hypomanic%29+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2022-12-31%5D+sort_cited%3Ay%29&format=json&resultType=core&pageSize=100",
+    "searchedAt": "2026-11-28",
+    "sha256": "a4d244056834679d0908ca4d9a115f9f49f4501dc8fde74b987c6cc5a1815941",
+    "hitCount": 0,
+    "nextCursorMark": null,
+    "retrieved": 0
+  },
+  "ptsd_meta": {
+    "query": "SRC:MED AND FIRST_PDATE:[1900-01-01 TO 2026-11-28] AND (TITLE_ABS:(\"interleukin-6\" OR \"IL-6\" OR IL6 OR \"interleukin 6\") AND TITLE_ABS:(PTSD OR \"post-traumatic stress\" OR \"posttraumatic stress\") AND (PUB_TYPE:\"Meta-Analysis\" OR TITLE:\"systematic review\"))",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-28%5D+AND+%28TITLE_ABS%3A%28%22interleukin-6%22+OR+%22IL-6%22+OR+IL6+OR+%22interleukin+6%22%29+AND+TITLE_ABS%3A%28PTSD+OR+%22post-traumatic+stress%22+OR+%22posttraumatic+stress%22%29+AND+%28PUB_TYPE%3A%22Meta-Analysis%22+OR+TITLE%3A%22systematic+review%22%29%29&format=json&resultType=core&pageSize=100",
+    "searchedAt": "2026-11-28",
+    "sha256": "d23907107dbc4c834cf30455db1148629e619e66a3f188562216a2b790f79414",
+    "hitCount": 16,
+    "nextCursorMark": null,
+    "retrieved": 16
+  },
+  "ptsd_earlier": {
+    "query": "SRC:MED AND FIRST_PDATE:[1900-01-01 TO 2026-11-28] AND (TITLE_ABS:(\"interleukin-6\" OR \"IL-6\" OR IL6 OR \"interleukin 6\") AND TITLE_ABS:(PTSD OR \"post-traumatic stress\" OR \"posttraumatic stress\") AND FIRST_PDATE:[1900-01-01 TO 2022-12-31] sort_cited:y)",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-28%5D+AND+%28TITLE_ABS%3A%28%22interleukin-6%22+OR+%22IL-6%22+OR+IL6+OR+%22interleukin+6%22%29+AND+TITLE_ABS%3A%28PTSD+OR+%22post-traumatic+stress%22+OR+%22posttraumatic+stress%22%29+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2022-12-31%5D+sort_cited%3Ay%29&format=json&resultType=core&pageSize=100",
+    "searchedAt": "2026-11-28",
+    "sha256": "8758aa0080809fcbe679be3644c627c5a3efd6eb5e322edaa45a5772cdecad15",
+    "hitCount": 8,
+    "nextCursorMark": null,
+    "retrieved": 8
+  },
+  "anxiety_meta": {
+    "query": "SRC:MED AND FIRST_PDATE:[1900-01-01 TO 2026-11-28] AND (TITLE_ABS:(\"interleukin-6\" OR \"IL-6\" OR IL6 OR \"interleukin 6\") AND TITLE_ABS:(\"anxiety disorder\" OR \"panic disorder\" OR \"social anxiety\" OR \"generalized anxiety\") AND (PUB_TYPE:\"Meta-Analysis\" OR TITLE:\"systematic review\"))",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-28%5D+AND+%28TITLE_ABS%3A%28%22interleukin-6%22+OR+%22IL-6%22+OR+IL6+OR+%22interleukin+6%22%29+AND+TITLE_ABS%3A%28%22anxiety+disorder%22+OR+%22panic+disorder%22+OR+%22social+anxiety%22+OR+%22generalized+anxiety%22%29+AND+%28PUB_TYPE%3A%22Meta-Analysis%22+OR+TITLE%3A%22systematic+review%22%29%29&format=json&resultType=core&pageSize=100",
+    "searchedAt": "2026-11-28",
+    "sha256": "7fb8a8f7dd738b558719a788988d13d8e9aa5cc3e26720d59e946ba59ff779a7",
+    "hitCount": 9,
+    "nextCursorMark": null,
+    "retrieved": 9
+  },
+  "anxiety_earlier": {
+    "query": "SRC:MED AND FIRST_PDATE:[1900-01-01 TO 2026-11-28] AND (TITLE_ABS:(\"interleukin-6\" OR \"IL-6\" OR IL6 OR \"interleukin 6\") AND TITLE_ABS:(\"anxiety disorder\" OR \"panic disorder\" OR \"social anxiety\" OR \"generalized anxiety\") AND FIRST_PDATE:[1900-01-01 TO 2022-12-31] sort_cited:y)",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-28%5D+AND+%28TITLE_ABS%3A%28%22interleukin-6%22+OR+%22IL-6%22+OR+IL6+OR+%22interleukin+6%22%29+AND+TITLE_ABS%3A%28%22anxiety+disorder%22+OR+%22panic+disorder%22+OR+%22social+anxiety%22+OR+%22generalized+anxiety%22%29+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2022-12-31%5D+sort_cited%3Ay%29&format=json&resultType=core&pageSize=100",
+    "searchedAt": "2026-11-28",
+    "sha256": "688459db3a8f37eb8940c3fe0d9de58c33428d3f3cc6ea3465be4118b3a4112a",
+    "hitCount": 0,
+    "nextCursorMark": null,
+    "retrieved": 0
+  },
+  "suicidality_meta": {
+    "query": "SRC:MED AND FIRST_PDATE:[1900-01-01 TO 2026-11-28] AND (TITLE_ABS:(\"interleukin-6\" OR \"IL-6\" OR IL6 OR \"interleukin 6\") AND TITLE_ABS:(suicide OR suicidal OR suicidality) AND (PUB_TYPE:\"Meta-Analysis\" OR TITLE:\"systematic review\"))",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-28%5D+AND+%28TITLE_ABS%3A%28%22interleukin-6%22+OR+%22IL-6%22+OR+IL6+OR+%22interleukin+6%22%29+AND+TITLE_ABS%3A%28suicide+OR+suicidal+OR+suicidality%29+AND+%28PUB_TYPE%3A%22Meta-Analysis%22+OR+TITLE%3A%22systematic+review%22%29%29&format=json&resultType=core&pageSize=100",
+    "searchedAt": "2026-11-28",
+    "sha256": "a620ecf43df7122f316d35d95a1aeacf409373430c7c562c9f05ce3ac1237c6f",
+    "hitCount": 14,
+    "nextCursorMark": null,
+    "retrieved": 14
+  },
+  "suicidality_earlier": {
+    "query": "SRC:MED AND FIRST_PDATE:[1900-01-01 TO 2026-11-28] AND (TITLE_ABS:(\"interleukin-6\" OR \"IL-6\" OR IL6 OR \"interleukin 6\") AND TITLE_ABS:(suicide OR suicidal OR suicidality) AND FIRST_PDATE:[1900-01-01 TO 2022-12-31] sort_cited:y)",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-28%5D+AND+%28TITLE_ABS%3A%28%22interleukin-6%22+OR+%22IL-6%22+OR+IL6+OR+%22interleukin+6%22%29+AND+TITLE_ABS%3A%28suicide+OR+suicidal+OR+suicidality%29+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2022-12-31%5D+sort_cited%3Ay%29&format=json&resultType=core&pageSize=100",
+    "searchedAt": "2026-11-28",
+    "sha256": "013af2e2096b5c399953727505de1ae7c35a797b0022c2b676d9fa294ef95419",
+    "hitCount": 2,
+    "nextCursorMark": null,
+    "retrieved": 2
+  },
+  "alcohol_meta": {
+    "query": "SRC:MED AND FIRST_PDATE:[1900-01-01 TO 2026-11-28] AND (TITLE_ABS:(\"interleukin-6\" OR \"IL-6\" OR IL6 OR \"interleukin 6\") AND TITLE_ABS:(\"alcohol use disorder\" OR \"alcohol dependence\" OR \"alcohol withdrawal\" OR alcoholism) AND (PUB_TYPE:\"Meta-Analysis\" OR TITLE:\"systematic review\"))",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-28%5D+AND+%28TITLE_ABS%3A%28%22interleukin-6%22+OR+%22IL-6%22+OR+IL6+OR+%22interleukin+6%22%29+AND+TITLE_ABS%3A%28%22alcohol+use+disorder%22+OR+%22alcohol+dependence%22+OR+%22alcohol+withdrawal%22+OR+alcoholism%29+AND+%28PUB_TYPE%3A%22Meta-Analysis%22+OR+TITLE%3A%22systematic+review%22%29%29&format=json&resultType=core&pageSize=100",
+    "searchedAt": "2026-11-28",
+    "sha256": "1673df4997fa7069956f127ae2f35cc50053015cda59fc34119b8313c77c207a",
+    "hitCount": 2,
+    "nextCursorMark": null,
+    "retrieved": 2
+  },
+  "alcohol_earlier": {
+    "query": "SRC:MED AND FIRST_PDATE:[1900-01-01 TO 2026-11-28] AND (TITLE_ABS:(\"interleukin-6\" OR \"IL-6\" OR IL6 OR \"interleukin 6\") AND TITLE_ABS:(\"alcohol use disorder\" OR \"alcohol dependence\" OR \"alcohol withdrawal\" OR alcoholism) AND FIRST_PDATE:[1900-01-01 TO 2022-12-31] sort_cited:y)",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-28%5D+AND+%28TITLE_ABS%3A%28%22interleukin-6%22+OR+%22IL-6%22+OR+IL6+OR+%22interleukin+6%22%29+AND+TITLE_ABS%3A%28%22alcohol+use+disorder%22+OR+%22alcohol+dependence%22+OR+%22alcohol+withdrawal%22+OR+alcoholism%29+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2022-12-31%5D+sort_cited%3Ay%29&format=json&resultType=core&pageSize=100",
+    "searchedAt": "2026-11-28",
+    "sha256": "7a29b6688879512ed17d02f933e3ec29e2390113bde1c14f6e652e0cd0a44ee9",
+    "hitCount": 0,
+    "nextCursorMark": null,
+    "retrieved": 0
+  },
+  "opioids_meta": {
+    "query": "SRC:MED AND FIRST_PDATE:[1900-01-01 TO 2026-11-28] AND (TITLE_ABS:(\"interleukin-6\" OR \"IL-6\" OR IL6 OR \"interleukin 6\") AND TITLE_ABS:(\"opioid use disorder\" OR \"opioid dependence\" OR \"heroin dependence\" OR \"heroin addiction\" OR \"methadone maintenance\") AND (PUB_TYPE:\"Meta-Analysis\" OR TITLE:\"systematic review\"))",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-28%5D+AND+%28TITLE_ABS%3A%28%22interleukin-6%22+OR+%22IL-6%22+OR+IL6+OR+%22interleukin+6%22%29+AND+TITLE_ABS%3A%28%22opioid+use+disorder%22+OR+%22opioid+dependence%22+OR+%22heroin+dependence%22+OR+%22heroin+addiction%22+OR+%22methadone+maintenance%22%29+AND+%28PUB_TYPE%3A%22Meta-Analysis%22+OR+TITLE%3A%22systematic+review%22%29%29&format=json&resultType=core&pageSize=100",
+    "searchedAt": "2026-11-28",
+    "sha256": "d2518cd1916d2f839375359d026d011106fdef7d68e5cab1d31513775b995490",
+    "hitCount": 0,
+    "nextCursorMark": null,
+    "retrieved": 0
+  },
+  "opioids_earlier": {
+    "query": "SRC:MED AND FIRST_PDATE:[1900-01-01 TO 2026-11-28] AND (TITLE_ABS:(\"interleukin-6\" OR \"IL-6\" OR IL6 OR \"interleukin 6\") AND TITLE_ABS:(\"opioid use disorder\" OR \"opioid dependence\" OR \"heroin dependence\" OR \"heroin addiction\" OR \"methadone maintenance\") AND FIRST_PDATE:[1900-01-01 TO 2022-12-31] sort_cited:y)",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-28%5D+AND+%28TITLE_ABS%3A%28%22interleukin-6%22+OR+%22IL-6%22+OR+IL6+OR+%22interleukin+6%22%29+AND+TITLE_ABS%3A%28%22opioid+use+disorder%22+OR+%22opioid+dependence%22+OR+%22heroin+dependence%22+OR+%22heroin+addiction%22+OR+%22methadone+maintenance%22%29+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2022-12-31%5D+sort_cited%3Ay%29&format=json&resultType=core&pageSize=100",
+    "searchedAt": "2026-11-28",
+    "sha256": "f670d052cfdd338d268a950dd81a361f81f146646ee232534290bcc466571021",
+    "hitCount": 0,
+    "nextCursorMark": null,
+    "retrieved": 0
+  },
+  "stimulants_meta": {
+    "query": "SRC:MED AND FIRST_PDATE:[1900-01-01 TO 2026-11-28] AND (TITLE_ABS:(\"interleukin-6\" OR \"IL-6\" OR IL6 OR \"interleukin 6\") AND TITLE_ABS:(\"methamphetamine use\" OR \"methamphetamine dependence\" OR \"cocaine dependence\" OR \"cocaine use disorder\") AND (PUB_TYPE:\"Meta-Analysis\" OR TITLE:\"systematic review\"))",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-28%5D+AND+%28TITLE_ABS%3A%28%22interleukin-6%22+OR+%22IL-6%22+OR+IL6+OR+%22interleukin+6%22%29+AND+TITLE_ABS%3A%28%22methamphetamine+use%22+OR+%22methamphetamine+dependence%22+OR+%22cocaine+dependence%22+OR+%22cocaine+use+disorder%22%29+AND+%28PUB_TYPE%3A%22Meta-Analysis%22+OR+TITLE%3A%22systematic+review%22%29%29&format=json&resultType=core&pageSize=100",
+    "searchedAt": "2026-11-28",
+    "sha256": "082684ca4a7ff8b5859a424216f3689d9a3f48753555839167f2a7be2a8ece0b",
+    "hitCount": 0,
+    "nextCursorMark": null,
+    "retrieved": 0
+  },
+  "stimulants_earlier": {
+    "query": "SRC:MED AND FIRST_PDATE:[1900-01-01 TO 2026-11-28] AND (TITLE_ABS:(\"interleukin-6\" OR \"IL-6\" OR IL6 OR \"interleukin 6\") AND TITLE_ABS:(\"methamphetamine use\" OR \"methamphetamine dependence\" OR \"cocaine dependence\" OR \"cocaine use disorder\") AND FIRST_PDATE:[1900-01-01 TO 2022-12-31] sort_cited:y)",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-28%5D+AND+%28TITLE_ABS%3A%28%22interleukin-6%22+OR+%22IL-6%22+OR+IL6+OR+%22interleukin+6%22%29+AND+TITLE_ABS%3A%28%22methamphetamine+use%22+OR+%22methamphetamine+dependence%22+OR+%22cocaine+dependence%22+OR+%22cocaine+use+disorder%22%29+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2022-12-31%5D+sort_cited%3Ay%29&format=json&resultType=core&pageSize=100",
+    "searchedAt": "2026-11-28",
+    "sha256": "37ed358807a0e8a5059cbdce81776620f69633dcc1a51c3b382f62152da0022c",
+    "hitCount": 0,
+    "nextCursorMark": null,
+    "retrieved": 0
+  },
+  "depression_earlier_trials": {
+    "query": "SRC:MED AND FIRST_PDATE:[1900-01-01 TO 2026-11-28] AND (TITLE_ABS:(\"interleukin-6\" OR \"IL-6\" OR IL6 OR \"interleukin 6\") AND TITLE_ABS:(depression OR depressive) AND FIRST_PDATE:[1900-01-01 TO 2022-12-31] AND PUB_TYPE:\"Randomized Controlled Trial\")",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-28%5D+AND+%28TITLE_ABS%3A%28%22interleukin-6%22+OR+%22IL-6%22+OR+IL6+OR+%22interleukin+6%22%29+AND+TITLE_ABS%3A%28depression+OR+depressive%29+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2022-12-31%5D+AND+PUB_TYPE%3A%22Randomized+Controlled+Trial%22%29&format=json&resultType=core&pageSize=100",
+    "searchedAt": "2026-11-28",
+    "sha256": "39ddf743f9a0d1256bfee870cbedb6e7512a66df18af7a9dc7ad735ab4f55a74",
+    "hitCount": 210,
+    "nextCursorMark": "AoIIP5v4YigzNzU1OTMzMg==",
+    "retrieved": 100
+  },
+  "il6_genetics": {
+    "query": "SRC:MED AND FIRST_PDATE:[1900-01-01 TO 2026-11-28] AND (TITLE_ABS:(\"interleukin-6\" OR IL6) AND TITLE_ABS:(\"Mendelian randomization\" OR \"Mendelian randomisation\") AND TITLE_ABS:(depression OR schizophrenia OR bipolar OR ADHD))",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-28%5D+AND+%28TITLE_ABS%3A%28%22interleukin-6%22+OR+IL6%29+AND+TITLE_ABS%3A%28%22Mendelian+randomization%22+OR+%22Mendelian+randomisation%22%29+AND+TITLE_ABS%3A%28depression+OR+schizophrenia+OR+bipolar+OR+ADHD%29%29&format=json&resultType=core&pageSize=100",
+    "searchedAt": "2026-11-28",
+    "sha256": "b84bcc7776c2b4a7fa3aadc7aca714414dbafbc848a021560433cc99158ca82e",
+    "hitCount": 19,
+    "nextCursorMark": null,
+    "retrieved": 19
+  },
+  "ibudilast": {
+    "query": "SRC:MED AND FIRST_PDATE:[1900-01-01 TO 2026-11-28] AND (TITLE_ABS:ibudilast AND TITLE_ABS:(\"alcohol use disorder\" OR \"methamphetamine dependence\"))",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-28%5D+AND+%28TITLE_ABS%3Aibudilast+AND+TITLE_ABS%3A%28%22alcohol+use+disorder%22+OR+%22methamphetamine+dependence%22%29%29&format=json&resultType=core&pageSize=100",
+    "searchedAt": "2026-11-28",
+    "sha256": "31e0e18609ed63a7bdc0d8bd37224efda392d3be52ac328f8b926b23668b841a",
+    "hitCount": 26,
+    "nextCursorMark": null,
+    "retrieved": 26
+  },
+  "il6_signalling": {
+    "query": "SRC:MED AND FIRST_PDATE:[1900-01-01 TO 2026-11-28] AND (TITLE_ABS:(\"interleukin-6 signalling\" OR \"interleukin-6 signaling\") AND TITLE_ABS:(depression OR psychosis))",
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=SRC%3AMED+AND+FIRST_PDATE%3A%5B1900-01-01+TO+2026-11-28%5D+AND+%28TITLE_ABS%3A%28%22interleukin-6+signalling%22+OR+%22interleukin-6+signaling%22%29+AND+TITLE_ABS%3A%28depression+OR+psychosis%29%29&format=json&resultType=core&pageSize=100",
+    "searchedAt": "2026-11-28",
+    "sha256": "e458191e2ead184d597a22deb2e3a3766de52bdc3e21543b6ad89b84ba006cc4",
+    "hitCount": 6,
+    "nextCursorMark": null,
+    "retrieved": 6
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "42160062": {
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13191455/fullTextXML",
+    "sha256": "a98e3a913a89c74dbdadbebc54ee4c609f396509a874c23a49c04cf3133b7ea0",
+    "bytes": 61346
+  },
+  "29090685": "HTTP Error 500: ",
+  "30322824": {
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6206257/fullTextXML",
+    "sha256": "a5fdb353e39e27f624b38f1f92e4f2f3c6d41f5d38222164a4ef26a08858d3f6",
+    "bytes": 113791
+  },
+  "29362444": {
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5802452/fullTextXML",
+    "sha256": "2a8eab7885cff6ae6c048e5d57e66962cd241d17ae65a4a3ecc4caeb34c5f158",
+    "bytes": 108286
+  },
+  "34778863": "HTTP Error 500: ",
+  "34589887": {
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8474180/fullTextXML",
+    "sha256": "805cc18ca27f4d860f16f29c3a9cb11c897e00856986f414e361c7f86b8b8f71",
+    "bytes": 332706
+  },
+  "36938380": "HTTP Error 500: ",
+  "38725444": {
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11081778/fullTextXML",
+    "sha256": "00e232d44d09b330ae9dceb47f6a4bc33fc6b924096ebf4f6d722456ff98657c",
+    "bytes": 166906
+  },
+  "36052304": {
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9423974/fullTextXML",
+    "sha256": "fa7f0af0a589a4d32226bc8cf8aaff8bb76a647e6e411ddfbc7d0950af043d30",
+    "bytes": 111706
+  },
+  "32256407": {
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7092625/fullTextXML",
+    "sha256": "7a4290e36514dcb94f32d6e5e62d802661645e4a076410800243f0776e4a4006",
+    "bytes": 110688
+  },
+  "38677624": "HTTP Error 500: ",
+  "40305022": {
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12044506/fullTextXML",
+    "sha256": "07f2e1f1d4b7a9a2a24cf3d91a5546179262ea2c1d5cd5cbbae2a49172c5089f",
+    "bytes": 105966
+  },
+  "35754106": "HTTP Error 500: ",
+  "25133871": "HTTP Error 500: ",
+  "37069570": {
+    "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10108529/fullTextXML",
+    "sha256": "67d7d9f9571148b1e155a0f9e278e8b6776dd4324179b19bbcfbb9797dedde3c",
+    "bytes": 146242
+  }
+}

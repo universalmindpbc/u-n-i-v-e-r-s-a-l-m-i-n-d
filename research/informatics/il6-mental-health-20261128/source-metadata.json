@@ -1,0 +1,4327 @@
+{
+  "42160062": {
+    "pmid": "42160062",
+    "pmcid": "PMC13191455",
+    "doi": "10.1001/jamapsychiatry.2026.1053",
+    "title": "Interleukin 6 as a Treatment Target for Depression: A Proof-of-Concept Randomized Clinical Trial.",
+    "authorString": "Foley ÉM, Turner N, Margelyte R, Jones HJ, Kaser M, Lewis G, Jones PB, Khandaker GM.",
+    "pubYear": "2026",
+    "journalInfo": {
+      "issue": "8",
+      "volume": "83",
+      "journalIssueId": 4238614,
+      "dateOfPublication": "2026 Aug",
+      "monthOfPublication": 8,
+      "yearOfPublication": 2026,
+      "journal": {
+        "medlineAbbreviation": "JAMA Psychiatry",
+        "title": "JAMA psychiatry",
+        "essn": "2168-6238",
+        "issn": "2168-622X",
+        "nlmid": "101589550",
+        "isoabbreviation": "JAMA Psychiatry"
+      },
+      "printPublicationDate": "2026-08-01"
+    },
+    "firstPublicationDate": "2026-08-01",
+    "pubTypeList": {
+      "pubType": [
+        "brief-report",
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "af444642be24b6c37e0cb1b793ba7620eb6f8f1e9aaac0cbafb6cd9d2886a9ca"
+  },
+  "29090685": {
+    "pmid": "29090685",
+    "pmcid": "PMC5916349",
+    "doi": "10.1038/npp.2017.258",
+    "title": "A Randomized, Double-Blind, Placebo-Controlled Clinical Trial of Tocilizumab, An Interleukin-6 Receptor Antibody, For Residual Symptoms in Schizophrenia.",
+    "authorString": "Girgis RR, Ciarleglio A, Choo T, Haynes G, Bathon JM, Cremers S, Kantrowitz JT, Lieberman JA, Brown AS.",
+    "pubYear": "2018",
+    "journalInfo": {
+      "issue": "6",
+      "volume": "43",
+      "journalIssueId": 2674330,
+      "dateOfPublication": "2018 May",
+      "monthOfPublication": 5,
+      "yearOfPublication": 2018,
+      "journal": {
+        "medlineAbbreviation": "Neuropsychopharmacology",
+        "title": "Neuropsychopharmacology : official publication of the American College of Neuropsychopharmacology",
+        "essn": "1740-634X",
+        "issn": "0893-133X",
+        "nlmid": "8904907",
+        "isoabbreviation": "Neuropsychopharmacology"
+      },
+      "printPublicationDate": "2018-05-01"
+    },
+    "firstPublicationDate": "2017-11-01",
+    "pubTypeList": {
+      "pubType": [
+        "Research Support, Non-U.S. Gov't",
+        "research-article",
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "e32daf0c307873da73195933d77405c513926692b9943c687ae5836b8e74151e"
+  },
+  "30322824": {
+    "pmid": "30322824",
+    "pmcid": "PMC6206257",
+    "doi": "10.1016/s2215-0366(18)30345-6",
+    "title": "The benefit of minocycline on negative symptoms of schizophrenia in patients with recent-onset psychosis (BeneMin): a randomised, double-blind, placebo-controlled trial.",
+    "authorString": "Deakin B, Suckling J, Barnes TRE, Byrne K, Chaudhry IB, Dazzan P, Drake RJ, Giordano A, Husain N, Jones PB, Joyce E, Knox E, Krynicki C, Lawrie SM, Lewis S, Lisiecka-Ford DM, Nikkheslat N, Pariante CM, Smallman R, Watson A, Williams SCR, Upthegrove R, Dunn G, BeneMin Study team.",
+    "pubYear": "2018",
+    "journalInfo": {
+      "issue": "11",
+      "volume": "5",
+      "journalIssueId": 2745340,
+      "dateOfPublication": "2018 Nov",
+      "monthOfPublication": 11,
+      "yearOfPublication": 2018,
+      "journal": {
+        "medlineAbbreviation": "Lancet Psychiatry",
+        "title": "The lancet. Psychiatry",
+        "essn": "2215-0374",
+        "issn": "2215-0366",
+        "nlmid": "101638123",
+        "isoabbreviation": "Lancet Psychiatry"
+      },
+      "printPublicationDate": "2018-11-01"
+    },
+    "firstPublicationDate": "2018-10-12",
+    "pubTypeList": {
+      "pubType": [
+        "research-article",
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": {
+      "commentCorrection": [
+        {
+          "source": "MED",
+          "id": "30322823",
+          "reference": "Lancet Psychiatry. 2018 Nov;5(11):856-857. doi: 10.1016/S2215-0366(18)30389-4.",
+          "type": "Comment in",
+          "orderIn": 1
+        },
+        {
+          "source": "MED",
+          "id": "30392729",
+          "reference": "Lancet Psychiatry. 2018 Dec;5(12):e28. doi: 10.1016/S2215-0366(18)30431-0.",
+          "type": "Erratum in",
+          "orderIn": 2
+        },
+        {
+          "source": "MED",
+          "id": "30665992",
+          "reference": "Evid Based Ment Health. 2019 Feb;22(1):e3. doi: 10.1136/ebmental-2018-300070.",
+          "type": "Comment in",
+          "orderIn": 3
+        }
+      ]
+    },
+    "retrievedRecordSHA256": "aaa6538e8cc510c7ad0150a7c78a09860c3033d22c89bb4867b9cee61befe250"
+  },
+  "29678772": {
+    "pmid": "29678772",
+    "pmcid": null,
+    "doi": "10.1016/j.pnpbp.2018.04.004",
+    "title": "Minocycline adjunctive treatment to risperidone for negative symptoms in schizophrenia: Association with pro-inflammatory cytokine levels.",
+    "authorString": "Zhang L, Zheng H, Wu R, Zhu F, Kosten TR, Zhang XY, Zhao J.",
+    "pubYear": "2018",
+    "journalInfo": {
+      "volume": "85",
+      "journalIssueId": 2685671,
+      "dateOfPublication": "2018 Jul",
+      "monthOfPublication": 7,
+      "yearOfPublication": 2018,
+      "journal": {
+        "medlineAbbreviation": "Prog Neuropsychopharmacol Biol Psychiatry",
+        "title": "Progress in neuro-psychopharmacology & biological psychiatry",
+        "essn": "1878-4216",
+        "issn": "0278-5846",
+        "nlmid": "8211617",
+        "isoabbreviation": "Prog Neuropsychopharmacol Biol Psychiatry"
+      },
+      "printPublicationDate": "2018-07-01"
+    },
+    "firstPublicationDate": "2018-04-17",
+    "pubTypeList": {
+      "pubType": [
+        "Research Support, Non-U.S. Gov't",
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "220f4f21fe17e3c2e94611f852b5a0bf4c249aa3126c00e2f1163958a1ead350"
+  },
+  "37069570": {
+    "pmid": "37069570",
+    "pmcid": "PMC10108529",
+    "doi": "10.1186/s13020-023-00746-4",
+    "title": "Berberine improves negative symptoms and cognitive function in patients with chronic schizophrenia via anti-inflammatory effect: a randomized clinical trial.",
+    "authorString": "Pu Z, Wen H, Jiang H, Hou Q, Yan H.",
+    "pubYear": "2023",
+    "journalInfo": {
+      "issue": "1",
+      "volume": "18",
+      "journalIssueId": 3535887,
+      "dateOfPublication": "2023 Apr",
+      "monthOfPublication": 4,
+      "yearOfPublication": 2023,
+      "journal": {
+        "medlineAbbreviation": "Chin Med",
+        "title": "Chinese medicine",
+        "essn": "1749-8546",
+        "issn": "1749-8546",
+        "nlmid": "101265109",
+        "isoabbreviation": "Chin Med"
+      },
+      "printPublicationDate": "2023-04-01"
+    },
+    "firstPublicationDate": "2023-04-17",
+    "pubTypeList": {
+      "pubType": [
+        "research-article",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "33776c4115b9a2040f6081f3bb29ba7f891f7dc7a64347476e1156a2c5b7d5b1"
+  },
+  "37848096": {
+    "pmid": "37848096",
+    "pmcid": null,
+    "doi": "10.1016/j.bbi.2023.10.012",
+    "title": "Adjunctive canakinumab reduces peripheral inflammation markers and improves positive symptoms in people with schizophrenia and inflammation: A randomized control trial.",
+    "authorString": "Weickert TW, Jacomb I, Lenroot R, Lappin J, Weinberg D, Brooks WS, Brown D, Pellen D, Kindler J, Mohan A, Wakefield D, Lloyd AR, Stanton C, O'Donnell M, Liu D, Galletly C, Shannon Weickert C.",
+    "pubYear": "2024",
+    "journalInfo": {
+      "volume": "115",
+      "journalIssueId": 3681438,
+      "dateOfPublication": "2024 Jan",
+      "monthOfPublication": 1,
+      "yearOfPublication": 2024,
+      "journal": {
+        "medlineAbbreviation": "Brain Behav Immun",
+        "title": "Brain, behavior, and immunity",
+        "essn": "1090-2139",
+        "issn": "0889-1591",
+        "nlmid": "8800478",
+        "isoabbreviation": "Brain Behav Immun"
+      },
+      "printPublicationDate": "2024-01-01"
+    },
+    "firstPublicationDate": "2023-10-15",
+    "pubTypeList": {
+      "pubType": [
+        "Research Support, Non-U.S. Gov't",
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "68816f697f93c5bd2917c50b51dcd6ead7bd271bedaace26d3fba28b2f377933"
+  },
+  "39128677": {
+    "pmid": "39128677",
+    "pmcid": null,
+    "doi": "10.1016/j.brainresbull.2024.111047",
+    "title": "Efficacy of pentoxifylline for the treatment of bipolar I/II patients with treatment-resistant depression: A proof-of-concept, randomized, double-blind, placebo-controlled trial.",
+    "authorString": "Mohammad TAM, Mohammad TAM, Shawis TN.",
+    "pubYear": "2024",
+    "journalInfo": {
+      "volume": "216",
+      "journalIssueId": 3826485,
+      "dateOfPublication": "2024 Oct",
+      "monthOfPublication": 10,
+      "yearOfPublication": 2024,
+      "journal": {
+        "medlineAbbreviation": "Brain Res Bull",
+        "title": "Brain research bulletin",
+        "essn": "1873-2747",
+        "issn": "0361-9230",
+        "nlmid": "7605818",
+        "isoabbreviation": "Brain Res Bull"
+      },
+      "printPublicationDate": "2024-10-01"
+    },
+    "firstPublicationDate": "2024-08-10",
+    "pubTypeList": {
+      "pubType": [
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "7e71bfcf66b36b7daab12b451131245c4c997d309a7fedf94fad23e597a854ad"
+  },
+  "32600481": {
+    "pmid": "32600481",
+    "pmcid": null,
+    "doi": "10.1017/neu.2020.25",
+    "title": "Interleukin-6 and total antioxidant capacity levels following <i>N</i>-acetylcysteine and a combination nutraceutical intervention in a randomised controlled trial for bipolar disorder.",
+    "authorString": "Bortolasci CC, Voigt C, Turner A, Mohebbi M, Gray L, Dodd S, Walder K, Berk M, Cotton SM, Malhi GS, Ng CH, Dowling N, Sarris J, Dean OM.",
+    "pubYear": "2020",
+    "journalInfo": {
+      "issue": "6",
+      "volume": "32",
+      "journalIssueId": 3051143,
+      "dateOfPublication": "2020 Dec",
+      "monthOfPublication": 12,
+      "yearOfPublication": 2020,
+      "journal": {
+        "medlineAbbreviation": "Acta Neuropsychiatr",
+        "title": "Acta neuropsychiatrica",
+        "essn": "1601-5215",
+        "issn": "0924-2708",
+        "nlmid": "9612501",
+        "isoabbreviation": "Acta Neuropsychiatr"
+      },
+      "printPublicationDate": "2020-12-01"
+    },
+    "firstPublicationDate": "2020-06-30",
+    "pubTypeList": {
+      "pubType": [
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "1f28ed5c613be57550b866ce4a22461c17a05bfffd821c3727a26a003fa8edad"
+  },
+  "24717258": {
+    "pmid": "24717258",
+    "pmcid": null,
+    "doi": "10.1097/jcp.0000000000000109",
+    "title": "The effects of add-on low-dose memantine on cytokine levels in bipolar II depression: a 12-week double-blind, randomized controlled trial.",
+    "authorString": "Lee SY, Chen SL, Chang YH, Chen PS, Huang SY, Tzeng NS, Wang YS, Wang LJ, Lee IH, Wang TY, Yeh TL, Yang YK, Hong JS, Lu RB.",
+    "pubYear": "2014",
+    "journalInfo": {
+      "issue": "3",
+      "volume": "34",
+      "journalIssueId": 2154875,
+      "dateOfPublication": "2014 Jun",
+      "monthOfPublication": 6,
+      "yearOfPublication": 2014,
+      "journal": {
+        "medlineAbbreviation": "J Clin Psychopharmacol",
+        "title": "Journal of clinical psychopharmacology",
+        "essn": "1533-712X",
+        "issn": "0271-0749",
+        "nlmid": "8109496",
+        "isoabbreviation": "J Clin Psychopharmacol"
+      },
+      "printPublicationDate": "2014-06-01"
+    },
+    "firstPublicationDate": "2014-06-01",
+    "pubTypeList": {
+      "pubType": [
+        "Research Support, Non-U.S. Gov't",
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "07cbb36bcf75272819d9cdc6056a48d1663a044aecb083aeb6c4ded371e85b37"
+  },
+  "24554598": {
+    "pmid": "24554598",
+    "pmcid": null,
+    "doi": "10.4414/smw.2014.13880",
+    "title": "Effects of celecoxib on inflammatory markers in bipolar patients undergoing electroconvulsive therapy: a placebo-controlled, double-blind, randomised study.",
+    "authorString": "Kargar M, Yousefi A, Mojtahedzadeh M, Akhondzadeh S, Artounian V, Abdollahi A, Ahmadvand A, Ghaeli P.",
+    "pubYear": "2014",
+    "journalInfo": {
+      "volume": "144",
+      "journalIssueId": 2481171,
+      "dateOfPublication": "2014 Feb",
+      "monthOfPublication": 2,
+      "yearOfPublication": 2014,
+      "journal": {
+        "medlineAbbreviation": "Swiss Med Wkly",
+        "title": "Swiss medical weekly",
+        "essn": "1424-3997",
+        "issn": "1424-7860",
+        "nlmid": "100970884",
+        "isoabbreviation": "Swiss Med Wkly"
+      },
+      "printPublicationDate": "2014-02-01"
+    },
+    "firstPublicationDate": "2014-02-19",
+    "pubTypeList": {
+      "pubType": [
+        "Research Support, Non-U.S. Gov't",
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "4f8727fd3639f83009c3aaf2a470f6fe15063c02c096e0ca9779f8278a7cada8"
+  },
+  "29362444": {
+    "pmid": "29362444",
+    "pmcid": "PMC5802452",
+    "doi": "10.1038/s41398-017-0073-7",
+    "title": "Treatment of bipolar depression with minocycline and/or aspirin: an adaptive, 2×2 double-blind, randomized, placebo-controlled, phase IIA clinical trial.",
+    "authorString": "Savitz JB, Teague TK, Misaki M, Macaluso M, Wurfel BE, Meyer M, Drevets D, Yates W, Gleason O, Drevets WC, Preskorn SH.",
+    "pubYear": "2018",
+    "journalInfo": {
+      "issue": "1",
+      "volume": "8",
+      "journalIssueId": 2638668,
+      "dateOfPublication": "2018 Jan",
+      "monthOfPublication": 1,
+      "yearOfPublication": 2018,
+      "journal": {
+        "medlineAbbreviation": "Transl Psychiatry",
+        "title": "Translational psychiatry",
+        "essn": "2158-3188",
+        "issn": "2158-3188",
+        "nlmid": "101562664",
+        "isoabbreviation": "Transl Psychiatry"
+      },
+      "printPublicationDate": "2018-01-01"
+    },
+    "firstPublicationDate": "2018-01-24",
+    "pubTypeList": {
+      "pubType": [
+        "Clinical Trial, Phase II",
+        "Research Support, Non-U.S. Gov't",
+        "research-article",
+        "Multicenter Study",
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "b8e630c70b1e4745f619761b9fe50fa74e813a488c59cbb88b6b3ad03cc6f700"
+  },
+  "31920220": {
+    "pmid": "31920220",
+    "pmcid": "PMC6952070",
+    "doi": "10.1016/j.npbr.2019.07.007",
+    "title": "Changes in inflammation with treatment for bipolar II depression: Pilot trial data on differential effects of psychotherapy and medication.",
+    "authorString": "Fiedorowicz JG, Cyranowski JM, Liu Z, Swartz HA.",
+    "pubYear": "2019",
+    "journalInfo": {
+      "volume": "33",
+      "journalIssueId": 2900493,
+      "dateOfPublication": "2019 Sep",
+      "monthOfPublication": 9,
+      "yearOfPublication": 2019,
+      "journal": {
+        "medlineAbbreviation": "Neurol Psychiatry Brain Res",
+        "title": "Neurology, psychiatry, and brain research",
+        "essn": "2212-8581",
+        "issn": "0941-9500",
+        "nlmid": "9301300",
+        "isoabbreviation": "Neurol Psychiatry Brain Res"
+      },
+      "printPublicationDate": "2019-09-01"
+    },
+    "firstPublicationDate": "2019-08-10",
+    "pubTypeList": {
+      "pubType": [
+        "research-article",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "60959dab57df2e8fd5f0e7716dc4becdab4fd38143ba1aad0b91c5b720e66543"
+  },
+  "34778863": {
+    "pmid": "34778863",
+    "pmcid": "PMC8580056",
+    "doi": "10.1016/j.jadr.2021.100190",
+    "title": "Transcutaneous Cervical Vagal Nerve Stimulation in Patients with Posttraumatic Stress Disorder (PTSD): A Pilot Study of Effects on PTSD Symptoms and Interleukin-6 Response to Stress.",
+    "authorString": "Bremner JD, Wittbrodt MT, Gurel NZ, Shandhi MH, Gazi AH, Jiao Y, Levantsevych OM, Huang M, Beckwith J, Herring I, Murrah N, Driggers EG, Ko YA, Alkhalaf ML, Soudan M, Shallenberger L, Hankus AN, Nye JA, Park J, Woodbury A, Mehta PK, Rapaport MH, Vaccarino V, Shah AJ, Pearce BD, Inan OT.",
+    "pubYear": "2021",
+    "journalInfo": {
+      "volume": "6",
+      "journalIssueId": 3222079,
+      "dateOfPublication": "2021 Dec",
+      "monthOfPublication": 12,
+      "yearOfPublication": 2021,
+      "journal": {
+        "medlineAbbreviation": "J Affect Disord Rep",
+        "title": "Journal of affective disorders reports",
+        "essn": "2666-9153",
+        "issn": "2666-9153",
+        "nlmid": "101773676",
+        "isoabbreviation": "J Affect Disord Rep"
+      },
+      "printPublicationDate": "2021-12-01"
+    },
+    "firstPublicationDate": "2021-07-10",
+    "pubTypeList": {
+      "pubType": [
+        "research-article",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "7854ff47fa72ed94b382347a6d05a89d042d7e2d62de604e23e51664beb78d6d"
+  },
+  "34589887": {
+    "pmid": "34589887",
+    "pmcid": "PMC8474180",
+    "doi": "10.1016/j.bbih.2020.100138",
+    "title": "Transcutaneous vagal nerve stimulation blocks stress-induced activation of Interleukin-6 and interferon-γ in posttraumatic stress disorder: A double-blind, randomized, sham-controlled trial.",
+    "authorString": "Bremner JD, Gurel NZ, Jiao Y, Wittbrodt MT, Levantsevych OM, Huang M, Jung H, Shandhi MH, Beckwith J, Herring I, Rapaport MH, Murrah N, Driggers E, Ko YA, Alkhalaf ML, Soudan M, Song J, Ku BS, Shallenberger L, Hankus AN, Nye JA, Park J, Vaccarino V, Shah AJ, Inan OT, Pearce BD.",
+    "pubYear": "2020",
+    "journalInfo": {
+      "volume": "9",
+      "journalIssueId": 3037380,
+      "dateOfPublication": "2020 Dec",
+      "monthOfPublication": 12,
+      "yearOfPublication": 2020,
+      "journal": {
+        "medlineAbbreviation": "Brain Behav Immun Health",
+        "title": "Brain, behavior, & immunity - health",
+        "essn": "2666-3546",
+        "issn": "2666-3546",
+        "nlmid": "101759062",
+        "isoabbreviation": "Brain Behav Immun Health"
+      },
+      "printPublicationDate": "2020-12-01"
+    },
+    "firstPublicationDate": "2020-09-11",
+    "pubTypeList": {
+      "pubType": [
+        "research-article",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "e3392ffd3d8c3a9e6832f1eca74a865396204e916213e0d0254cb649a2a716a8"
+  },
+  "36938380": {
+    "pmid": "36938380",
+    "pmcid": "PMC10022677",
+    "doi": "10.1007/s12671-022-01969-6",
+    "title": "Biomarker Response to Mindfulness Intervention in Veterans Diagnosed with Post-traumatic Stress Disorder.",
+    "authorString": "Shapira I, Richman J, Pace TWW, Lim KO, Polusny MA, Hamner MB, Bremner JD, Mumba MN, Jacobs ML, Pilkinton P, Davis LL.",
+    "pubYear": "2022",
+    "journalInfo": {
+      "issue": "10",
+      "volume": "13",
+      "journalIssueId": 3474611,
+      "dateOfPublication": "2022 Oct",
+      "monthOfPublication": 10,
+      "yearOfPublication": 2022,
+      "journal": {
+        "medlineAbbreviation": "Mindfulness (N Y)",
+        "title": "Mindfulness",
+        "essn": "1868-8535",
+        "issn": "1868-8527",
+        "nlmid": "101518348",
+        "isoabbreviation": "Mindfulness (N Y)"
+      },
+      "printPublicationDate": "2022-10-01"
+    },
+    "firstPublicationDate": "2022-09-12",
+    "pubTypeList": {
+      "pubType": [
+        "research-article",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "3b05f77779b878d9046f9b92bd0ea56c82c6277a6100f9a3b03e2c059e64f960"
+  },
+  "38725444": {
+    "pmid": "38725444",
+    "pmcid": "PMC11081778",
+    "doi": "10.1016/j.bbih.2024.100779",
+    "title": "Inflammatory markers changes following acceptance-based behavioral psychotherapy in generalized anxiety disorder patients: Evidence from a randomized controlled trial.",
+    "authorString": "Gandarela L, de A Sampaio TP, Marçal L, Burdmann EA, Neto FL, Bernik MA.",
+    "pubYear": "2024",
+    "journalInfo": {
+      "volume": "38",
+      "journalIssueId": 3752976,
+      "dateOfPublication": "2024 Jul",
+      "monthOfPublication": 7,
+      "yearOfPublication": 2024,
+      "journal": {
+        "medlineAbbreviation": "Brain Behav Immun Health",
+        "title": "Brain, behavior, & immunity - health",
+        "essn": "2666-3546",
+        "issn": "2666-3546",
+        "nlmid": "101759062",
+        "isoabbreviation": "Brain Behav Immun Health"
+      },
+      "printPublicationDate": "2024-07-01"
+    },
+    "firstPublicationDate": "2024-04-27",
+    "pubTypeList": {
+      "pubType": [
+        "research-article",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "5a3060335e015b10c7c35d8f77e9fa02720f99ae8fdf51f71fde4e591efee484"
+  },
+  "31163212": {
+    "pmid": "31163212",
+    "pmcid": null,
+    "doi": "10.1016/j.bbi.2019.06.001",
+    "title": "Effects of SSRIs on peripheral inflammatory cytokines in patients with Generalized Anxiety Disorder.",
+    "authorString": "Hou R, Ye G, Liu Y, Chen X, Pan M, Zhu F, Fu J, Fu T, Liu Q, Gao Z, Baldwin DS, Tang Z.",
+    "pubYear": "2019",
+    "journalInfo": {
+      "volume": "81",
+      "journalIssueId": 2860938,
+      "dateOfPublication": "2019 Oct",
+      "monthOfPublication": 10,
+      "yearOfPublication": 2019,
+      "journal": {
+        "medlineAbbreviation": "Brain Behav Immun",
+        "title": "Brain, behavior, and immunity",
+        "essn": "1090-2139",
+        "issn": "0889-1591",
+        "nlmid": "8800478",
+        "isoabbreviation": "Brain Behav Immun"
+      },
+      "printPublicationDate": "2019-10-01"
+    },
+    "firstPublicationDate": "2019-06-01",
+    "pubTypeList": {
+      "pubType": [
+        "Research Support, Non-U.S. Gov't",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "0276aef20aff93a0f26f4aa9f822f76815ec5664d52a44ec0f2201f9a6c36efb"
+  },
+  "36052304": {
+    "pmid": "36052304",
+    "pmcid": "PMC9423974",
+    "doi": "10.1155/2022/1256408",
+    "title": "Effect of Vitamin D Supplementation on Inflammatory Biomarkers in School-Aged Children with Attention Deficit Hyperactivity Disorder.",
+    "authorString": "Samadi M, Gholami F, Seyedi M, Jalali M, Effatpanah M, Yekaninejad MS, Abdolahi M, Chamari M, Mohammadzadeh Honarvar N.",
+    "pubYear": "2022",
+    "journalInfo": {
+      "volume": "2022",
+      "journalIssueId": 3373279,
+      "dateOfPublication": "2022 ",
+      "monthOfPublication": 0,
+      "yearOfPublication": 2022,
+      "journal": {
+        "medlineAbbreviation": "Int J Clin Pract",
+        "title": "International journal of clinical practice",
+        "essn": "1742-1241",
+        "issn": "1368-5031",
+        "nlmid": "9712381",
+        "isoabbreviation": "Int J Clin Pract"
+      },
+      "printPublicationDate": "2022-01-01"
+    },
+    "firstPublicationDate": "2022-08-22",
+    "pubTypeList": {
+      "pubType": [
+        "research-article",
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "588899042bb98d000fc5f98d22cfd4148479aac0daefb0664aeb6fc34b928f09"
+  },
+  "24568073": {
+    "pmid": "24568073",
+    "pmcid": null,
+    "doi": null,
+    "title": "Effect of n-3 supplementation on hyperactivity, oxidative stress and inflammatory mediators in children with attention-deficit-hyperactivity disorder.",
+    "authorString": "Hariri M, Djazayery A, Djalali M, Saedisomeolia A, Rahimi A, Abdolahian E.",
+    "pubYear": "2012",
+    "journalInfo": {
+      "issue": "3",
+      "volume": "18",
+      "journalIssueId": 2132473,
+      "dateOfPublication": "2012 Dec",
+      "monthOfPublication": 12,
+      "yearOfPublication": 2012,
+      "journal": {
+        "medlineAbbreviation": "Malays J Nutr",
+        "title": "Malaysian journal of nutrition",
+        "issn": "1394-035X",
+        "nlmid": "101286655",
+        "isoabbreviation": "Malays J Nutr"
+      },
+      "printPublicationDate": "2012-12-01"
+    },
+    "firstPublicationDate": "2012-12-01",
+    "pubTypeList": {
+      "pubType": [
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "e2eb7f5f2fca6751b5e7732fcec491104e137c30b60a44870892ec0ce477405b"
+  },
+  "32256407": {
+    "pmid": "32256407",
+    "pmcid": "PMC7092625",
+    "doi": "10.3389/fpsyt.2020.00181",
+    "title": "A Pilot Randomized Control Trial With the Probiotic Strain <i>Lactobacillus rhamnosus</i> GG (LGG) in ADHD: Children and Adolescents Report Better Health-Related Quality of Life.",
+    "authorString": "Kumperscak HG, Gricar A, Ülen I, Micetic-Turk D.",
+    "pubYear": "2020",
+    "journalInfo": {
+      "volume": "11",
+      "journalIssueId": 2911855,
+      "dateOfPublication": "2020 ",
+      "monthOfPublication": 0,
+      "yearOfPublication": 2020,
+      "journal": {
+        "medlineAbbreviation": "Front Psychiatry",
+        "title": "Frontiers in psychiatry",
+        "essn": "1664-0640",
+        "issn": "1664-0640",
+        "nlmid": "101545006",
+        "isoabbreviation": "Front Psychiatry"
+      },
+      "printPublicationDate": "2020-01-01"
+    },
+    "firstPublicationDate": "2020-03-17",
+    "pubTypeList": {
+      "pubType": [
+        "research-article",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "b2f52413b385d13c9f1583895a13b2a78969f3dcb5e89a2434bc7d6b30ad08ab"
+  },
+  "38677624": {
+    "pmid": "38677624",
+    "pmcid": "PMC11670333",
+    "doi": "10.1016/j.bbi.2024.04.040",
+    "title": "The antidepressant effect of whole-body hyperthermia is associated with the classical interleukin-6 signaling pathway.",
+    "authorString": "Mac Giollabhui N, Lowry CA, Nyer M, Foster SL, Liu RT, Smith DG, Cole SP, Mason AE, Mischoulon D, Raison CL.",
+    "pubYear": "2024",
+    "journalInfo": {
+      "volume": "119",
+      "journalIssueId": 3783965,
+      "dateOfPublication": "2024 Jul",
+      "monthOfPublication": 7,
+      "yearOfPublication": 2024,
+      "journal": {
+        "medlineAbbreviation": "Brain Behav Immun",
+        "title": "Brain, behavior, and immunity",
+        "essn": "1090-2139",
+        "issn": "0889-1591",
+        "nlmid": "8800478",
+        "isoabbreviation": "Brain Behav Immun"
+      },
+      "printPublicationDate": "2024-07-01"
+    },
+    "firstPublicationDate": "2024-04-26",
+    "pubTypeList": {
+      "pubType": [
+        "research-article",
+        "Randomized Controlled Trial",
+        "Journal Article",
+        "Research Support, N.I.H., Extramural"
+      ]
+    },
+    "commentCorrectionList": {
+      "commentCorrection": [
+        {
+          "source": "MED",
+          "id": "39848840",
+          "reference": "Brain Behav Immun. 2025 Mar;125:471. doi: 10.1016/j.bbi.2025.01.005.",
+          "type": "Erratum in",
+          "orderIn": 1
+        }
+      ]
+    },
+    "retrievedRecordSHA256": "ae87e480fdbfec3ebcca5db3d64aef0fdead976192821a5f4abeb7a184b94da6"
+  },
+  "40305022": {
+    "pmid": "40305022",
+    "pmcid": "PMC12044506",
+    "doi": "10.1001/jamanetworkopen.2025.7523",
+    "title": "A Neuroimmune Modulator for Alcohol Use Disorder: A Randomized Clinical Trial.",
+    "authorString": "Ray LA, Meredith LR, Grodin EN, Belnap MA, Nieto SJ, Baskerville WA, Donato S, Shoptaw SJ, Gillis AJ, Irwin MR, Miotto K, Enders CK.",
+    "pubYear": "2025",
+    "journalInfo": {
+      "issue": "4",
+      "volume": "8",
+      "journalIssueId": 3921496,
+      "dateOfPublication": "2025 Apr",
+      "monthOfPublication": 4,
+      "yearOfPublication": 2025,
+      "journal": {
+        "medlineAbbreviation": "JAMA Netw Open",
+        "title": "JAMA network open",
+        "essn": "2574-3805",
+        "issn": "2574-3805",
+        "nlmid": "101729235",
+        "isoabbreviation": "JAMA Netw Open"
+      },
+      "printPublicationDate": "2025-04-01"
+    },
+    "firstPublicationDate": "2025-04-01",
+    "pubTypeList": {
+      "pubType": [
+        "Clinical Trial, Phase II",
+        "Research Support, Non-U.S. Gov't",
+        "research-article",
+        "Randomized Controlled Trial",
+        "Journal Article",
+        "Research Support, N.I.H., Extramural"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "e2c50a10f1be8beb28a0d32449391aac34a13e7e5a265fb8d392f49ca914336d"
+  },
+  "35754106": {
+    "pmid": "35754106",
+    "pmcid": "PMC9888600",
+    "doi": "10.1111/adb.13182",
+    "title": "Effects of ibudilast on central and peripheral markers of inflammation in alcohol use disorder: A randomized clinical trial.",
+    "authorString": "Grodin EN, Nieto SJ, Meredith LR, Burnette E, O'Neill J, Alger J, London ED, Miotto K, Miotto K, Evans CJ, Irwin MR, Ray LA.",
+    "pubYear": "2022",
+    "journalInfo": {
+      "issue": "4",
+      "volume": "27",
+      "journalIssueId": 3380615,
+      "dateOfPublication": "2022 Jul",
+      "monthOfPublication": 7,
+      "yearOfPublication": 2022,
+      "journal": {
+        "medlineAbbreviation": "Addict Biol",
+        "title": "Addiction biology",
+        "essn": "1369-1600",
+        "issn": "1355-6215",
+        "nlmid": "9604935",
+        "isoabbreviation": "Addict Biol"
+      },
+      "printPublicationDate": "2022-07-01"
+    },
+    "firstPublicationDate": "2022-07-01",
+    "pubTypeList": {
+      "pubType": [
+        "research-article",
+        "Randomized Controlled Trial",
+        "Journal Article",
+        "Research Support, N.I.H., Extramural"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "422a2cfd8309e6d05ee00596f1ec55a78e4e97762692a4db761adf0d49afb2ca"
+  },
+  "40630018": {
+    "pmid": "40630018",
+    "pmcid": "PMC12365570",
+    "doi": "10.1111/acer.70110",
+    "title": "Effect of the GLP-1 receptor agonist exenatide on pro-inflammatory and metabolic biomarkers in individuals with alcohol use disorder: Post hoc results from a randomized, double-blinded, placebo-controlled clinical trial.",
+    "authorString": "Hviid MEB, Christoffersen LAN, Klausen MK, Brodersen T, Pedersen OB, Ostrowski SR, Larsen MH, Kongstad M, Jensen ME, Vilsbøll T, Fink-Jensen A.",
+    "pubYear": "2025",
+    "journalInfo": {
+      "issue": "8",
+      "volume": "49",
+      "journalIssueId": 3999468,
+      "dateOfPublication": "2025 Aug",
+      "monthOfPublication": 8,
+      "yearOfPublication": 2025,
+      "journal": {
+        "medlineAbbreviation": "Alcohol Clin Exp Res (Hoboken)",
+        "title": "Alcohol, clinical & experimental research",
+        "essn": "2993-7175",
+        "issn": "2993-7175",
+        "nlmid": "9918609780906676",
+        "isoabbreviation": "Alcohol Clin Exp Res (Hoboken)"
+      },
+      "printPublicationDate": "2025-08-01"
+    },
+    "firstPublicationDate": "2025-07-09",
+    "pubTypeList": {
+      "pubType": [
+        "Research Support, Non-U.S. Gov't",
+        "research-article",
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "b098bb73b669bee40906b0695a5bf13114edbdecc221b3e4be0feb2b667f5667"
+  },
+  "33719920": {
+    "pmid": "33719920",
+    "pmcid": null,
+    "doi": "10.1080/10550887.2021.1883208",
+    "title": "A sham-controlled clinical trial to examine the effect of bilateral tDCS on craving, TNF-α and IL-6 expression levels, and impulsivity of males with opioid use disorder.",
+    "authorString": "Eskandari Z, Mostafavi H, Hosseini M, Mousavi SE, Ramazani S, Dadashi M.",
+    "pubYear": "2021",
+    "journalInfo": {
+      "issue": "3",
+      "volume": "39",
+      "journalIssueId": 3187398,
+      "dateOfPublication": "2021 Jul-Sep",
+      "monthOfPublication": 0,
+      "yearOfPublication": 2021,
+      "journal": {
+        "medlineAbbreviation": "J Addict Dis",
+        "title": "Journal of addictive diseases",
+        "essn": "1545-0848",
+        "issn": "1055-0887",
+        "nlmid": "9107051",
+        "isoabbreviation": "J Addict Dis"
+      },
+      "printPublicationDate": "2021-07-01"
+    },
+    "firstPublicationDate": "2021-03-15",
+    "pubTypeList": {
+      "pubType": [
+        "Clinical Trial",
+        "Research Support, Non-U.S. Gov't",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "b689c65915e742c0798910c4905c0c28c398daf40bae72966527f527c720fdfc"
+  },
+  "25988317": {
+    "pmid": "25988317",
+    "pmcid": "PMC4650802",
+    "doi": "10.1038/srep10140",
+    "title": "Low-dose memantine attenuated methadone dose in opioid-dependent patients: a 12-week double-blind randomized controlled trial.",
+    "authorString": "Lee SY, Chen SL, Chang YH, Chen PS, Huang SY, Tzeng NS, Wang LJ, Lee IH, Wang TY, Chen KC, Yang YK, Hong JS, Lu RB.",
+    "pubYear": "2015",
+    "journalInfo": {
+      "volume": "5",
+      "journalIssueId": 2475910,
+      "dateOfPublication": "2015 May",
+      "monthOfPublication": 5,
+      "yearOfPublication": 2015,
+      "journal": {
+        "medlineAbbreviation": "Sci Rep",
+        "title": "Scientific reports",
+        "essn": "2045-2322",
+        "issn": "2045-2322",
+        "nlmid": "101563288",
+        "isoabbreviation": "Sci Rep"
+      },
+      "printPublicationDate": "2015-05-01"
+    },
+    "firstPublicationDate": "2015-05-19",
+    "pubTypeList": {
+      "pubType": [
+        "Research Support, Non-U.S. Gov't",
+        "research-article",
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "c3091517aa1d8af8e7469257b3921720fa36fc0904f0a716745d25ba6d9096f2"
+  },
+  "25716777": {
+    "pmid": "25716777",
+    "pmcid": "PMC4540107",
+    "doi": "10.1093/ijnp/pyv008",
+    "title": "A placebo-controlled trial of dextromethorphan as an adjunct in opioid-dependent patients undergoing methadone maintenance treatment.",
+    "authorString": "Lee SY, Chen SL, Chang YH, Chu CH, Chen SH, Chen PS, Huang SY, Tzeng NS, Wang LJ, Lee IH, Wang TY, Chen KC, Yang YK, Hong JS, Lu RB.",
+    "pubYear": "2015",
+    "journalInfo": {
+      "issue": "7",
+      "volume": "18",
+      "journalIssueId": 2475511,
+      "dateOfPublication": "2015 Feb",
+      "monthOfPublication": 2,
+      "yearOfPublication": 2015,
+      "journal": {
+        "medlineAbbreviation": "Int J Neuropsychopharmacol",
+        "title": "The international journal of neuropsychopharmacology",
+        "essn": "1469-5111",
+        "issn": "1461-1457",
+        "nlmid": "9815893",
+        "isoabbreviation": "Int J Neuropsychopharmacol"
+      },
+      "printPublicationDate": "2015-02-01"
+    },
+    "firstPublicationDate": "2015-02-25",
+    "pubTypeList": {
+      "pubType": [
+        "Research Support, Non-U.S. Gov't",
+        "research-article",
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "390d5c25d88768861a4a1b816f13be49a3fce68220a84bd5375bafdb32cf35ef"
+  },
+  "34331010": {
+    "pmid": "34331010",
+    "pmcid": "PMC8505631",
+    "doi": "10.1038/s41386-021-01098-z",
+    "title": "Exploring cannabidiol effects on inflammatory markers in individuals with cocaine use disorder: a randomized controlled trial.",
+    "authorString": "Morissette F, Mongeau-Pérusse V, Rizkallah E, Thébault P, Lepage S, Brissette S, Bruneau J, Dubreucq S, Stip E, Cailhier JF, Jutras-Aswad D.",
+    "pubYear": "2021",
+    "journalInfo": {
+      "issue": "12",
+      "volume": "46",
+      "journalIssueId": 3247900,
+      "dateOfPublication": "2021 Nov",
+      "monthOfPublication": 11,
+      "yearOfPublication": 2021,
+      "journal": {
+        "medlineAbbreviation": "Neuropsychopharmacology",
+        "title": "Neuropsychopharmacology : official publication of the American College of Neuropsychopharmacology",
+        "essn": "1740-634X",
+        "issn": "0893-133X",
+        "nlmid": "8904907",
+        "isoabbreviation": "Neuropsychopharmacology"
+      },
+      "printPublicationDate": "2021-11-01"
+    },
+    "firstPublicationDate": "2021-07-30",
+    "pubTypeList": {
+      "pubType": [
+        "Research Support, Non-U.S. Gov't",
+        "research-article",
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "6c7cafb40e93cb4f472684abfeabff4c5dc544b42316fd12726724105c8815e9"
+  },
+  "31812878": {
+    "pmid": "31812878",
+    "pmcid": "PMC7012103",
+    "doi": "10.1016/j.drugalcdep.2019.107776",
+    "title": "Ibudilast attenuates peripheral inflammatory effects of methamphetamine in patients with methamphetamine use disorder.",
+    "authorString": "Li MJ, Briones MS, Heinzerling KG, Kalmin MM, Shoptaw SJ.",
+    "pubYear": "2020",
+    "journalInfo": {
+      "volume": "206",
+      "journalIssueId": 2903273,
+      "dateOfPublication": "2020 Jan",
+      "monthOfPublication": 1,
+      "yearOfPublication": 2020,
+      "journal": {
+        "medlineAbbreviation": "Drug Alcohol Depend",
+        "title": "Drug and alcohol dependence",
+        "essn": "1879-0046",
+        "issn": "0376-8716",
+        "nlmid": "7513587",
+        "isoabbreviation": "Drug Alcohol Depend"
+      },
+      "printPublicationDate": "2020-01-01"
+    },
+    "firstPublicationDate": "2019-11-26",
+    "pubTypeList": {
+      "pubType": [
+        "research-article",
+        "Randomized Controlled Trial",
+        "Journal Article",
+        "Research Support, N.I.H., Extramural"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "0f19fa6d9bcef50c2e597d19352a8a88252fc9391718aae4de1895c822d482be"
+  },
+  "34432333": {
+    "pmid": "34432333",
+    "pmcid": null,
+    "doi": "10.1002/hup.2810",
+    "title": "Elevated serum levels of TNF-α, IL-6, and IL-18 in chronic methamphetamine users.",
+    "authorString": "Luo Y, He H, Ou Y, Zhou Y, Fan N.",
+    "pubYear": "2022",
+    "journalInfo": {
+      "issue": "1",
+      "volume": "37",
+      "journalIssueId": 3286412,
+      "dateOfPublication": "2022 Jan",
+      "monthOfPublication": 1,
+      "yearOfPublication": 2022,
+      "journal": {
+        "medlineAbbreviation": "Hum Psychopharmacol",
+        "title": "Human psychopharmacology",
+        "essn": "1099-1077",
+        "issn": "0885-6222",
+        "nlmid": "8702539",
+        "isoabbreviation": "Hum Psychopharmacol"
+      },
+      "printPublicationDate": "2022-01-01"
+    },
+    "firstPublicationDate": "2021-08-25",
+    "pubTypeList": {
+      "pubType": [
+        "Research Support, Non-U.S. Gov't",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "b70b40e252ed21c4848360bc05c4321e4c9b46f984d2694f248c9ff33740d9a8"
+  },
+  "34413283": {
+    "pmid": "34413283",
+    "pmcid": "PMC8377148",
+    "doi": "10.1038/s41398-021-01550-0",
+    "title": "Cortisol and inflammatory biomarker levels in youths with attention deficit hyperactivity disorder (ADHD): evidence from a systematic review with meta-analysis.",
+    "authorString": "Chang JP, Su KP, Mondelli V, Pariante CM.",
+    "pubYear": "2021",
+    "journalInfo": {
+      "issue": "1",
+      "volume": "11",
+      "journalIssueId": 3211997,
+      "dateOfPublication": "2021 Aug",
+      "monthOfPublication": 8,
+      "yearOfPublication": 2021,
+      "journal": {
+        "medlineAbbreviation": "Transl Psychiatry",
+        "title": "Translational psychiatry",
+        "essn": "2158-3188",
+        "issn": "2158-3188",
+        "nlmid": "101562664",
+        "isoabbreviation": "Transl Psychiatry"
+      },
+      "printPublicationDate": "2021-08-01"
+    },
+    "firstPublicationDate": "2021-08-19",
+    "pubTypeList": {
+      "pubType": [
+        "Meta-Analysis",
+        "Research Support, Non-U.S. Gov't",
+        "Systematic Review",
+        "review-article",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "8559d7c187056d2fd2bb549ae5b4b4ee8bede57329c2ce4d7fe42a46f8332df3"
+  },
+  "35660454": {
+    "pmid": "35660454",
+    "pmcid": null,
+    "doi": "10.1016/j.pnpbp.2022.110581",
+    "title": "Peripheral blood inflammatory markers in patients with attention deficit/hyperactivity disorder (ADHD): A systematic review and meta-analysis.",
+    "authorString": "Misiak B, Wójta-Kempa M, Samochowiec J, Schiweck C, Aichholzer M, Reif A, Samochowiec A, Stańczykiewicz B.",
+    "pubYear": "2022",
+    "journalInfo": {
+      "volume": "118",
+      "journalIssueId": 3374870,
+      "dateOfPublication": "2022 Aug",
+      "monthOfPublication": 8,
+      "yearOfPublication": 2022,
+      "journal": {
+        "medlineAbbreviation": "Prog Neuropsychopharmacol Biol Psychiatry",
+        "title": "Progress in neuro-psychopharmacology & biological psychiatry",
+        "essn": "1878-4216",
+        "issn": "0278-5846",
+        "nlmid": "8211617",
+        "isoabbreviation": "Prog Neuropsychopharmacol Biol Psychiatry"
+      },
+      "printPublicationDate": "2022-08-01"
+    },
+    "firstPublicationDate": "2022-05-31",
+    "pubTypeList": {
+      "pubType": [
+        "Meta-Analysis",
+        "Systematic Review",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "be086ef5f9c4d0f944cc407ba52477c33eef035c1cde0d69c23dd6ffab06e63e"
+  },
+  "42287409": {
+    "pmid": "42287409",
+    "pmcid": null,
+    "doi": "10.1007/s00787-026-03068-6",
+    "title": "Inflammatory cytokine alterations in autism spectrum disorder and attention-deficit/hyperactivity disorder: a systematic review and network meta-analysis.",
+    "authorString": "Chen Q, Sun Y, Pan N, Long Y, Cao Y, Luo Y, Xin K, Chen P, Wang Y, Shu M, Chen Y, Gong Q.",
+    "pubYear": "2026",
+    "journalInfo": {
+      "issue": "9",
+      "volume": "35",
+      "journalIssueId": 4298459,
+      "dateOfPublication": "2026 Sep",
+      "monthOfPublication": 9,
+      "yearOfPublication": 2026,
+      "journal": {
+        "medlineAbbreviation": "Eur Child Adolesc Psychiatry",
+        "title": "European child & adolescent psychiatry",
+        "essn": "1435-165X",
+        "issn": "1018-8827",
+        "nlmid": "9212296",
+        "isoabbreviation": "Eur Child Adolesc Psychiatry"
+      },
+      "printPublicationDate": "2026-09-01"
+    },
+    "firstPublicationDate": "2026-06-13",
+    "pubTypeList": {
+      "pubType": [
+        "Systematic Review",
+        "Network Meta-Analysis",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "f4a8f16f4c173f5b480b3a65f3837ead3f7483d2b373d2b17e808166a69abdf8"
+  },
+  "33936305": {
+    "pmid": "33936305",
+    "pmcid": "PMC8078629",
+    "doi": "10.4103/jpn.jpn_1_20",
+    "title": "Serum Levels of Interleukin-6 and Tumor Necrosis Factor Alpha in Children With Attention-Deficit Hyperactivity Disorder.",
+    "authorString": "Elsadek AE, Al-Shokary AH, Abdelghani WE, Kamal NM, Ibrahim AO, El-Shorbagy HH, Suliman HA, Barseem NF, Abdel Maksoud YH, Azab SM, Nour El Din DM.",
+    "pubYear": "2020",
+    "journalInfo": {
+      "issue": "4",
+      "volume": "15",
+      "journalIssueId": 3162637,
+      "dateOfPublication": "2020 Oct-Dec",
+      "monthOfPublication": 0,
+      "yearOfPublication": 2020,
+      "journal": {
+        "medlineAbbreviation": "J Pediatr Neurosci",
+        "title": "Journal of pediatric neurosciences",
+        "essn": "1998-3948",
+        "issn": "1817-1745",
+        "nlmid": "101273794",
+        "isoabbreviation": "J Pediatr Neurosci"
+      },
+      "printPublicationDate": "2020-10-01"
+    },
+    "firstPublicationDate": "2020-10-01",
+    "pubTypeList": {
+      "pubType": [
+        "research-article",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "2bb385ce2ccac68f5f85d42b2f1130573cc6d610b1b92afd9a68a98ccede63ab"
+  },
+  "30430896": {
+    "pmid": "30430896",
+    "pmcid": null,
+    "doi": "10.1177/0883073818809831",
+    "title": "Serum Interleukin-6 Level in Children With Attention-Deficit Hyperactivity Disorder (ADHD).",
+    "authorString": "Darwish AH, Elgohary TM, Nosair NA.",
+    "pubYear": "2019",
+    "journalInfo": {
+      "issue": "2",
+      "volume": "34",
+      "journalIssueId": 2765587,
+      "dateOfPublication": "2019 Feb",
+      "monthOfPublication": 2,
+      "yearOfPublication": 2019,
+      "journal": {
+        "medlineAbbreviation": "J Child Neurol",
+        "title": "Journal of child neurology",
+        "essn": "1708-8283",
+        "issn": "0883-0738",
+        "nlmid": "8606714",
+        "isoabbreviation": "J Child Neurol"
+      },
+      "printPublicationDate": "2019-02-01"
+    },
+    "firstPublicationDate": "2018-11-15",
+    "pubTypeList": {
+      "pubType": [
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "ce24668951cb106a9b1bcc8a7b7944a373f6751edaf9a9453a8688b4f19679e9"
+  },
+  "28262601": {
+    "pmid": "28262601",
+    "pmcid": null,
+    "doi": "10.1016/j.psyneuen.2017.02.017",
+    "title": "IL-6 and TNF-α in unmedicated adults with ADHD: Relationship to cortisol awakening response.",
+    "authorString": "Corominas-Roso M, Armario A, Palomar G, Corrales M, Carrasco J, Richarte V, Ferrer R, Casas M, Ramos-Quiroga JA.",
+    "pubYear": "2017",
+    "journalInfo": {
+      "volume": "79",
+      "journalIssueId": 2540122,
+      "dateOfPublication": "2017 May",
+      "monthOfPublication": 5,
+      "yearOfPublication": 2017,
+      "journal": {
+        "medlineAbbreviation": "Psychoneuroendocrinology",
+        "title": "Psychoneuroendocrinology",
+        "essn": "1873-3360",
+        "issn": "0306-4530",
+        "nlmid": "7612148",
+        "isoabbreviation": "Psychoneuroendocrinology"
+      },
+      "printPublicationDate": "2017-05-01"
+    },
+    "firstPublicationDate": "2017-02-20",
+    "pubTypeList": {
+      "pubType": [
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "9ea4d81456e35dfa49f7dcc59096478264da8d9ee277ea4abb8a480a6e198d26"
+  },
+  "20534153": {
+    "pmid": "20534153",
+    "pmcid": "PMC2900218",
+    "doi": "10.1186/1744-9081-6-32",
+    "title": "Attention-deficit hyperactivity disorder (ADHD) and glial integrity: an exploration of associations of cytokines and kynurenine metabolites with symptoms and attention.",
+    "authorString": "Oades RD, Myint AM, Dauvermann MR, Schimmelmann BG, Schwarz MJ.",
+    "pubYear": "2010",
+    "journalInfo": {
+      "volume": "6",
+      "journalIssueId": 2501047,
+      "dateOfPublication": "2010 Jun",
+      "monthOfPublication": 6,
+      "yearOfPublication": 2010,
+      "journal": {
+        "medlineAbbreviation": "Behav Brain Funct",
+        "title": "Behavioral and brain functions : BBF",
+        "essn": "1744-9081",
+        "issn": "1744-9081",
+        "nlmid": "101245751",
+        "isoabbreviation": "Behav Brain Funct"
+      },
+      "printPublicationDate": "2010-06-01"
+    },
+    "firstPublicationDate": "2010-06-09",
+    "pubTypeList": {
+      "pubType": [
+        "research-article",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "186317a54d88513ea6e7faa421de23511758c68da854f7cf17017d86673c013a"
+  },
+  "35197458": {
+    "pmid": "35197458",
+    "pmcid": "PMC8866486",
+    "doi": "10.1038/s41398-022-01844-x",
+    "title": "Gut microbiota and plasma cytokine levels in patients with attention-deficit/hyperactivity disorder.",
+    "authorString": "Wang LJ, Li SC, Li SW, Kuo HC, Lee SY, Huang LH, Chin CY, Yang CY.",
+    "pubYear": "2022",
+    "journalInfo": {
+      "issue": "1",
+      "volume": "12",
+      "journalIssueId": 3303037,
+      "dateOfPublication": "2022 Feb",
+      "monthOfPublication": 2,
+      "yearOfPublication": 2022,
+      "journal": {
+        "medlineAbbreviation": "Transl Psychiatry",
+        "title": "Translational psychiatry",
+        "essn": "2158-3188",
+        "issn": "2158-3188",
+        "nlmid": "101562664",
+        "isoabbreviation": "Transl Psychiatry"
+      },
+      "printPublicationDate": "2022-02-01"
+    },
+    "firstPublicationDate": "2022-02-23",
+    "pubTypeList": {
+      "pubType": [
+        "Research Support, Non-U.S. Gov't",
+        "research-article",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "b2aad483834a7e0168576ff6c7a87ebfa672bf5bee26d882871135302898c211"
+  },
+  "37511467": {
+    "pmid": "37511467",
+    "pmcid": "PMC10380731",
+    "doi": "10.3390/ijms241411710",
+    "title": "Peripheral Inflammatory Markers in Autism Spectrum Disorder and Attention Deficit/Hyperactivity Disorder at Adolescent Age.",
+    "authorString": "Ferencova N, Visnovcova Z, Ondrejka I, Hrtanek I, Bujnakova I, Kovacova V, Macejova A, Tonhajzerova I.",
+    "pubYear": "2023",
+    "journalInfo": {
+      "issue": "14",
+      "volume": "24",
+      "journalIssueId": 3607331,
+      "dateOfPublication": "2023 Jul",
+      "monthOfPublication": 7,
+      "yearOfPublication": 2023,
+      "journal": {
+        "medlineAbbreviation": "Int J Mol Sci",
+        "title": "International journal of molecular sciences",
+        "essn": "1422-0067",
+        "issn": "1422-0067",
+        "nlmid": "101092791",
+        "isoabbreviation": "Int J Mol Sci"
+      },
+      "printPublicationDate": "2023-07-01"
+    },
+    "firstPublicationDate": "2023-07-20",
+    "pubTypeList": {
+      "pubType": [
+        "research-article",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "b5b1bfea4aa8858d8845aa3c15d273ae32eee9caf36662af0c06549b62f8be95"
+  },
+  "32707260": {
+    "pmid": "32707260",
+    "pmcid": "PMC7703804",
+    "doi": "10.1016/j.bbi.2020.07.019",
+    "title": "Evaluation of maternal inflammation as a marker of future offspring ADHD symptoms: A prospective investigation.",
+    "authorString": "Gustafsson HC, Sullivan EL, Battison EAJ, Holton KF, Graham AM, Karalunas SL, Fair DA, Loftis JM, Nigg JT.",
+    "pubYear": "2020",
+    "journalInfo": {
+      "volume": "89",
+      "journalIssueId": 3037793,
+      "dateOfPublication": "2020 Oct",
+      "monthOfPublication": 10,
+      "yearOfPublication": 2020,
+      "journal": {
+        "medlineAbbreviation": "Brain Behav Immun",
+        "title": "Brain, behavior, and immunity",
+        "essn": "1090-2139",
+        "issn": "0889-1591",
+        "nlmid": "8800478",
+        "isoabbreviation": "Brain Behav Immun"
+      },
+      "printPublicationDate": "2020-10-01"
+    },
+    "firstPublicationDate": "2020-07-21",
+    "pubTypeList": {
+      "pubType": [
+        "Research Support, Non-U.S. Gov't",
+        "research-article",
+        "Journal Article",
+        "Research Support, N.I.H., Extramural"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "a842342a4dfe25a8d1e57d7528b8c646d068725a8190ff486a1248e49f8e34fb"
+  },
+  "36597271": {
+    "pmid": "36597271",
+    "pmcid": "PMC10952536",
+    "doi": "10.1111/jcpp.13755",
+    "title": "The role of inflammation in the prospective associations between early childhood sleep problems and ADHD at 10 years: findings from a UK birth cohort study.",
+    "authorString": "Morales-Muñoz I, Upthegrove R, Lawrence K, Thayakaran R, Kooij S, Gregory AM, Marwaha S.",
+    "pubYear": "2023",
+    "journalInfo": {
+      "issue": "6",
+      "volume": "64",
+      "journalIssueId": 3566910,
+      "dateOfPublication": "2023 Jun",
+      "monthOfPublication": 6,
+      "yearOfPublication": 2023,
+      "journal": {
+        "medlineAbbreviation": "J Child Psychol Psychiatry",
+        "title": "Journal of child psychology and psychiatry, and allied disciplines",
+        "essn": "1469-7610",
+        "issn": "0021-9630",
+        "nlmid": "0375361",
+        "isoabbreviation": "J Child Psychol Psychiatry"
+      },
+      "printPublicationDate": "2023-06-01"
+    },
+    "firstPublicationDate": "2023-01-03",
+    "pubTypeList": {
+      "pubType": [
+        "Research Support, Non-U.S. Gov't",
+        "research-article",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "7338f9d112bac0a5dff2e9cff8bce88e4232abcfc9dcf487f329cf3c9e34aef0"
+  },
+  "34371132": {
+    "pmid": "34371132",
+    "pmcid": null,
+    "doi": "10.1016/j.bbi.2021.08.004",
+    "title": "Attention-deficit/hyperactivity disorder has a state-dependent association with asthma: The role of systemic inflammation in a population-based birth cohort followed from childhood to adulthood.",
+    "authorString": "Leffa DT, Caye A, Santos I, Matijasevich A, Menezes A, Wehrmeister FC, Oliveira I, Vitola E, Bau CHD, Grevet EH, Tovo-Rodrigues L, Rohde LA.",
+    "pubYear": "2021",
+    "journalInfo": {
+      "volume": "97",
+      "journalIssueId": 3236266,
+      "dateOfPublication": "2021 Oct",
+      "monthOfPublication": 10,
+      "yearOfPublication": 2021,
+      "journal": {
+        "medlineAbbreviation": "Brain Behav Immun",
+        "title": "Brain, behavior, and immunity",
+        "essn": "1090-2139",
+        "issn": "0889-1591",
+        "nlmid": "8800478",
+        "isoabbreviation": "Brain Behav Immun"
+      },
+      "printPublicationDate": "2021-10-01"
+    },
+    "firstPublicationDate": "2021-08-08",
+    "pubTypeList": {
+      "pubType": [
+        "Research Support, Non-U.S. Gov't",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "f1b27b704cf28a3160139d3bd38cffcd995a7665dfdcb7e64fdf07297f9a724d"
+  },
+  "20015486": {
+    "pmid": "20015486",
+    "pmcid": null,
+    "doi": "10.1016/j.biopsych.2009.09.033",
+    "title": "A meta-analysis of cytokines in major depression.",
+    "authorString": "Dowlati Y, Herrmann N, Swardfager W, Liu H, Sham L, Reim EK, Lanctôt KL.",
+    "pubYear": "2010",
+    "journalInfo": {
+      "issue": "5",
+      "volume": "67",
+      "journalIssueId": 1699052,
+      "dateOfPublication": "2010 Mar",
+      "monthOfPublication": 3,
+      "yearOfPublication": 2010,
+      "journal": {
+        "medlineAbbreviation": "Biol Psychiatry",
+        "title": "Biological psychiatry",
+        "essn": "1873-2402",
+        "issn": "0006-3223",
+        "nlmid": "0213264",
+        "isoabbreviation": "Biol Psychiatry"
+      },
+      "printPublicationDate": "2010-03-01"
+    },
+    "firstPublicationDate": "2009-12-16",
+    "pubTypeList": {
+      "pubType": [
+        "Meta-Analysis",
+        "Research Support, Non-U.S. Gov't",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "0294588541a38a59c1102409655cd14ec5af39b59445d35627338a3d2a9d199f"
+  },
+  "26065825": {
+    "pmid": "26065825",
+    "pmcid": "PMC4566946",
+    "doi": "10.1016/j.bbi.2015.06.001",
+    "title": "Cumulative meta-analysis of interleukins 6 and 1β, tumour necrosis factor α and C-reactive protein in patients with major depressive disorder.",
+    "authorString": "Haapakoski R, Mathieu J, Ebmeier KP, Alenius H, Kivimäki M.",
+    "pubYear": "2015",
+    "journalInfo": {
+      "volume": "49",
+      "journalIssueId": 2322665,
+      "dateOfPublication": "2015 Oct",
+      "monthOfPublication": 10,
+      "yearOfPublication": 2015,
+      "journal": {
+        "medlineAbbreviation": "Brain Behav Immun",
+        "title": "Brain, behavior, and immunity",
+        "essn": "1090-2139",
+        "issn": "0889-1591",
+        "nlmid": "8800478",
+        "isoabbreviation": "Brain Behav Immun"
+      },
+      "printPublicationDate": "2015-10-01"
+    },
+    "firstPublicationDate": "2015-06-09",
+    "pubTypeList": {
+      "pubType": [
+        "Meta-Analysis",
+        "Research Support, Non-U.S. Gov't",
+        "research-article",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "bf8cffdb058292fea8bdafd3bfad6f1d3644c0edf245c86fd87183db788e3c50"
+  },
+  "32807846": {
+    "pmid": "32807846",
+    "pmcid": "PMC7887136",
+    "doi": "10.1038/s41380-020-00867-4",
+    "title": "The longitudinal associations of inflammatory biomarkers and depression revisited: systematic review, meta-analysis, and meta-regression.",
+    "authorString": "Mac Giollabhui N, Ng TH, Ellman LM, Alloy LB.",
+    "pubYear": "2021",
+    "journalInfo": {
+      "issue": "7",
+      "volume": "26",
+      "journalIssueId": 3247884,
+      "dateOfPublication": "2021 Jul",
+      "monthOfPublication": 7,
+      "yearOfPublication": 2021,
+      "journal": {
+        "medlineAbbreviation": "Mol Psychiatry",
+        "title": "Molecular psychiatry",
+        "essn": "1476-5578",
+        "issn": "1359-4184",
+        "nlmid": "9607835",
+        "isoabbreviation": "Mol Psychiatry"
+      },
+      "printPublicationDate": "2021-07-01"
+    },
+    "firstPublicationDate": "2020-08-17",
+    "pubTypeList": {
+      "pubType": [
+        "Meta-Analysis",
+        "Research Support, Non-U.S. Gov't",
+        "research-article",
+        "Systematic Review",
+        "Journal Article",
+        "Research Support, N.I.H., Extramural"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "07f0bef7505166aacd71aa79eaf8be3594cd272c818e164de4d5785b08607fc7"
+  },
+  "25133871": {
+    "pmid": "25133871",
+    "pmcid": "PMC4561502",
+    "doi": "10.1001/jamapsychiatry.2014.1332",
+    "title": "Association of serum interleukin 6 and C-reactive protein in childhood with depression and psychosis in young adult life: a population-based longitudinal study.",
+    "authorString": "Khandaker GM, Pearson RM, Zammit S, Lewis G, Jones PB.",
+    "pubYear": "2014",
+    "journalInfo": {
+      "issue": "10",
+      "volume": "71",
+      "journalIssueId": 2206316,
+      "dateOfPublication": "2014 Oct",
+      "monthOfPublication": 10,
+      "yearOfPublication": 2014,
+      "journal": {
+        "medlineAbbreviation": "JAMA Psychiatry",
+        "title": "JAMA psychiatry",
+        "essn": "2168-6238",
+        "issn": "2168-622X",
+        "nlmid": "101589550",
+        "isoabbreviation": "JAMA Psychiatry"
+      },
+      "printPublicationDate": "2014-10-01"
+    },
+    "firstPublicationDate": "2014-10-01",
+    "pubTypeList": {
+      "pubType": [
+        "Research Support, Non-U.S. Gov't",
+        "research-article",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "2293e057fd0b344c453af8bb0b3b05c815e98579b3bc8b8584036ab8233d1701"
+  },
+  "34505025": {
+    "pmid": "34505025",
+    "pmcid": "PMC8413248",
+    "doi": "10.1016/j.eclinm.2021.100992",
+    "title": "Role of inflammation in depression and anxiety: Tests for disorder specificity, linearity and potential causality of association in the UK Biobank.",
+    "authorString": "Ye Z, Kappelmann N, Moser S, Davey Smith G, Burgess S, Jones PB, Khandaker GM.",
+    "pubYear": "2021",
+    "journalInfo": {
+      "volume": "38",
+      "journalIssueId": 3201675,
+      "dateOfPublication": "2021 Aug",
+      "monthOfPublication": 8,
+      "yearOfPublication": 2021,
+      "journal": {
+        "medlineAbbreviation": "EClinicalMedicine",
+        "title": "EClinicalMedicine",
+        "essn": "2589-5370",
+        "issn": "2589-5370",
+        "nlmid": "101733727",
+        "isoabbreviation": "EClinicalMedicine"
+      },
+      "printPublicationDate": "2021-08-01"
+    },
+    "firstPublicationDate": "2021-06-26",
+    "pubTypeList": {
+      "pubType": [
+        "research-article",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": {
+      "commentCorrection": [
+        {
+          "source": "PPR",
+          "id": "PPR278020",
+          "type": "Preprint in",
+          "note": "CrossRef Pre-print loader",
+          "orderIn": 10002
+        }
+      ]
+    },
+    "retrievedRecordSHA256": "0100574ef3206508d24896f546953956e4ec35738aad1b22f70f64ea7a808d56"
+  },
+  "33631287": {
+    "pmid": "33631287",
+    "pmcid": "PMC11081733",
+    "doi": "10.1016/j.bbi.2021.02.019",
+    "title": "Depression and interleukin-6 signaling: A Mendelian Randomization study.",
+    "authorString": "Kelly KM, Smith JA, Mezuk B.",
+    "pubYear": "2021",
+    "journalInfo": {
+      "volume": "95",
+      "journalIssueId": 3183725,
+      "dateOfPublication": "2021 Jul",
+      "monthOfPublication": 7,
+      "yearOfPublication": 2021,
+      "journal": {
+        "medlineAbbreviation": "Brain Behav Immun",
+        "title": "Brain, behavior, and immunity",
+        "essn": "1090-2139",
+        "issn": "0889-1591",
+        "nlmid": "8800478",
+        "isoabbreviation": "Brain Behav Immun"
+      },
+      "printPublicationDate": "2021-07-01"
+    },
+    "firstPublicationDate": "2021-02-23",
+    "pubTypeList": {
+      "pubType": [
+        "research-article",
+        "Journal Article",
+        "Research Support, N.I.H., Extramural"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "1dad57e7e98a65306c218b55bf85b9e5224aecece7311c7f4be05b31b78d9764"
+  },
+  "37217205": {
+    "pmid": "37217205",
+    "pmcid": "PMC10755231",
+    "doi": "10.1017/s0033291723001290",
+    "title": "The causal role of C-reactive protein and interleukin-6 on anxiety and depression symptoms and life satisfaction: Mendelian randomisation analyses in the HUNT study.",
+    "authorString": "Bekkevold OJ, Damås JK, Brumpton BM, Åsvold BO.",
+    "pubYear": "2023",
+    "journalInfo": {
+      "issue": "16",
+      "volume": "53",
+      "journalIssueId": 3686057,
+      "dateOfPublication": "2023 Dec",
+      "monthOfPublication": 12,
+      "yearOfPublication": 2023,
+      "journal": {
+        "medlineAbbreviation": "Psychol Med",
+        "title": "Psychological medicine",
+        "essn": "1469-8978",
+        "issn": "0033-2917",
+        "nlmid": "1254142",
+        "isoabbreviation": "Psychol Med"
+      },
+      "printPublicationDate": "2023-12-01"
+    },
+    "firstPublicationDate": "2023-05-23",
+    "pubTypeList": {
+      "pubType": [
+        "Research Support, Non-U.S. Gov't",
+        "research-article",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "40bd25336037411fc33414159327621578a19fd2b938d521244e95045ea587d0"
+  },
+  "33079133": {
+    "pmid": "33079133",
+    "pmcid": "PMC7577200",
+    "doi": "10.1001/jamapsychiatry.2020.3436",
+    "title": "Dissecting the Association Between Inflammation, Metabolic Dysregulation, and Specific Depressive Symptoms: A Genetic Correlation and 2-Sample Mendelian Randomization Study.",
+    "authorString": "Kappelmann N, Arloth J, Georgakis MK, Czamara D, Rost N, Ligthart S, Khandaker GM, Binder EB.",
+    "pubYear": "2021",
+    "journalInfo": {
+      "issue": "2",
+      "volume": "78",
+      "journalIssueId": 3105013,
+      "dateOfPublication": "2021 Feb",
+      "monthOfPublication": 2,
+      "yearOfPublication": 2021,
+      "journal": {
+        "medlineAbbreviation": "JAMA Psychiatry",
+        "title": "JAMA psychiatry",
+        "essn": "2168-6238",
+        "issn": "2168-622X",
+        "nlmid": "101589550",
+        "isoabbreviation": "JAMA Psychiatry"
+      },
+      "printPublicationDate": "2021-02-01"
+    },
+    "firstPublicationDate": "2021-02-01",
+    "pubTypeList": {
+      "pubType": [
+        "Research Support, Non-U.S. Gov't",
+        "research-article",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": {
+      "commentCorrection": [
+        {
+          "source": "MED",
+          "id": "33471038",
+          "reference": "JAMA Psychiatry. 2021 Mar 1;78(3):341. doi: 10.1001/jamapsychiatry.2020.4373",
+          "type": "Comment in",
+          "orderIn": 1
+        }
+      ]
+    },
+    "retrievedRecordSHA256": "88d506823e2ef35b55f68f3c0674c4a22d20fe5232bb88d94bbae4da7e6881c9"
+  },
+  "34135474": {
+    "pmid": "34135474",
+    "pmcid": "PMC8873022",
+    "doi": "10.1038/s41380-021-01188-w",
+    "title": "Association of inflammation with depression and anxiety: evidence for symptom-specificity and potential causality from UK Biobank and NESDA cohorts.",
+    "authorString": "Milaneschi Y, Kappelmann N, Ye Z, Lamers F, Moser S, Jones PB, Burgess S, Penninx BWJH, Khandaker GM.",
+    "pubYear": "2021",
+    "journalInfo": {
+      "issue": "12",
+      "volume": "26",
+      "journalIssueId": 3318418,
+      "dateOfPublication": "2021 Dec",
+      "monthOfPublication": 12,
+      "yearOfPublication": 2021,
+      "journal": {
+        "medlineAbbreviation": "Mol Psychiatry",
+        "title": "Molecular psychiatry",
+        "essn": "1476-5578",
+        "issn": "1359-4184",
+        "nlmid": "9607835",
+        "isoabbreviation": "Mol Psychiatry"
+      },
+      "printPublicationDate": "2021-12-01"
+    },
+    "firstPublicationDate": "2021-06-16",
+    "pubTypeList": {
+      "pubType": [
+        "Research Support, Non-U.S. Gov't",
+        "research-article",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": {
+      "commentCorrection": [
+        {
+          "source": "MED",
+          "id": "34785785",
+          "reference": "Mol Psychiatry. 2022 Mar;27(3):1856. doi: 10.1038/s41380-021-01388-4.",
+          "type": "Erratum in",
+          "orderIn": 1
+        },
+        {
+          "source": "PPR",
+          "id": "PPR263434",
+          "type": "Preprint in",
+          "note": "CrossRef Pre-print loader",
+          "orderIn": 10002
+        }
+      ]
+    },
+    "retrievedRecordSHA256": "2f1600c9c903fc9e79c62500a94df7c7c9b57cfd79b76eff99bbf0ec2c2b13a5"
+  },
+  "36893912": {
+    "pmid": "36893912",
+    "pmcid": null,
+    "doi": "10.1016/j.pnpbp.2023.110740",
+    "title": "Peripheral cytokine levels across psychiatric disorders: A systematic review and network meta-analysis.",
+    "authorString": "Zhang Y, Wang J, Ye Y, Zou Y, Chen W, Wang Z, Zou Z.",
+    "pubYear": "2023",
+    "journalInfo": {
+      "volume": "125",
+      "journalIssueId": 3572557,
+      "dateOfPublication": "2023 Jul",
+      "monthOfPublication": 7,
+      "yearOfPublication": 2023,
+      "journal": {
+        "medlineAbbreviation": "Prog Neuropsychopharmacol Biol Psychiatry",
+        "title": "Progress in neuro-psychopharmacology & biological psychiatry",
+        "essn": "1878-4216",
+        "issn": "0278-5846",
+        "nlmid": "8211617",
+        "isoabbreviation": "Prog Neuropsychopharmacol Biol Psychiatry"
+      },
+      "printPublicationDate": "2023-07-01"
+    },
+    "firstPublicationDate": "2023-03-08",
+    "pubTypeList": {
+      "pubType": [
+        "Research Support, Non-U.S. Gov't",
+        "Systematic Review",
+        "Network Meta-Analysis",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "daaad42a9b3615c42f12d906793271eb689433f936050b99eb7ebe796738895f"
+  },
+  "34332041": {
+    "pmid": "34332041",
+    "pmcid": null,
+    "doi": "10.1016/j.bbi.2021.07.014",
+    "title": "Peripheral levels of C-reactive protein, tumor necrosis factor-α, interleukin-6, and interleukin-1β across the mood spectrum in bipolar disorder: A meta-analysis of mean differences and variability.",
+    "authorString": "Solmi M, Suresh Sharma M, Osimo EF, Fornaro M, Bortolato B, Croatto G, Miola A, Vieta E, Pariante CM, Smith L, Fusar-Poli P, Shin JI, Berk M, Carvalho AF.",
+    "pubYear": "2021",
+    "journalInfo": {
+      "volume": "97",
+      "journalIssueId": 3236266,
+      "dateOfPublication": "2021 Oct",
+      "monthOfPublication": 10,
+      "yearOfPublication": 2021,
+      "journal": {
+        "medlineAbbreviation": "Brain Behav Immun",
+        "title": "Brain, behavior, and immunity",
+        "essn": "1090-2139",
+        "issn": "0889-1591",
+        "nlmid": "8800478",
+        "isoabbreviation": "Brain Behav Immun"
+      },
+      "printPublicationDate": "2021-10-01"
+    },
+    "firstPublicationDate": "2021-07-28",
+    "pubTypeList": {
+      "pubType": [
+        "Meta-Analysis",
+        "Research Support, Non-U.S. Gov't",
+        "Systematic Review",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "cf4c9c6ec876fc8e7fac131d078c4059247d5e9b9c488881a47154fe6d4fae28"
+  },
+  "30113291": {
+    "pmid": "30113291",
+    "pmcid": "PMC6429261",
+    "doi": "10.1192/bjp.2018.144",
+    "title": "Neurotrophins, cytokines, oxidative stress mediators and mood state in bipolar disorder: systematic review and meta-analyses.",
+    "authorString": "Rowland T, Perry BI, Upthegrove R, Barnes N, Chatterjee J, Gallacher D, Marwaha S.",
+    "pubYear": "2018",
+    "journalInfo": {
+      "issue": "3",
+      "volume": "213",
+      "journalIssueId": 2717135,
+      "dateOfPublication": "2018 Sep",
+      "monthOfPublication": 9,
+      "yearOfPublication": 2018,
+      "journal": {
+        "medlineAbbreviation": "Br J Psychiatry",
+        "title": "The British journal of psychiatry : the journal of mental science",
+        "essn": "1472-1465",
+        "issn": "0007-1250",
+        "nlmid": "0342367",
+        "isoabbreviation": "Br J Psychiatry"
+      },
+      "printPublicationDate": "2018-09-01"
+    },
+    "firstPublicationDate": "2018-09-01",
+    "pubTypeList": {
+      "pubType": [
+        "Meta-Analysis",
+        "Research Support, Non-U.S. Gov't",
+        "Systematic Review",
+        "review-article",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "88f6eca756020a9dad5de05b0b2e42f5949c90a7f628c6dcead68302e57d096e"
+  },
+  "23419545": {
+    "pmid": "23419545",
+    "pmcid": null,
+    "doi": "10.1016/j.biopsych.2013.01.007",
+    "title": "Cytokine alterations in bipolar disorder: a meta-analysis of 30 studies.",
+    "authorString": "Modabbernia A, Taslimi S, Brietzke E, Ashrafi M.",
+    "pubYear": "2013",
+    "journalInfo": {
+      "issue": "1",
+      "volume": "74",
+      "journalIssueId": 2050247,
+      "dateOfPublication": "2013 Jul",
+      "monthOfPublication": 7,
+      "yearOfPublication": 2013,
+      "journal": {
+        "medlineAbbreviation": "Biol Psychiatry",
+        "title": "Biological psychiatry",
+        "essn": "1873-2402",
+        "issn": "0006-3223",
+        "nlmid": "0213264",
+        "isoabbreviation": "Biol Psychiatry"
+      },
+      "printPublicationDate": "2013-07-01"
+    },
+    "firstPublicationDate": "2013-02-16",
+    "pubTypeList": {
+      "pubType": [
+        "Meta-Analysis",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "6b923a2d1f327afbdf225fb344c79f856b07c9d49f80c1967bde08069e388b03"
+  },
+  "25451609": {
+    "pmid": "25451609",
+    "pmcid": null,
+    "doi": "10.1016/j.bbi.2014.09.021",
+    "title": "Elevated levels of IL-6 and IL-18 in manic and hypomanic states in rapid cycling bipolar disorder patients.",
+    "authorString": "Munkholm K, Weikop P, Kessing LV, Vinberg M.",
+    "pubYear": "2015",
+    "journalInfo": {
+      "volume": "43",
+      "journalIssueId": 2229920,
+      "dateOfPublication": "2015 Jan",
+      "monthOfPublication": 1,
+      "yearOfPublication": 2015,
+      "journal": {
+        "medlineAbbreviation": "Brain Behav Immun",
+        "title": "Brain, behavior, and immunity",
+        "essn": "1090-2139",
+        "issn": "0889-1591",
+        "nlmid": "8800478",
+        "isoabbreviation": "Brain Behav Immun"
+      },
+      "printPublicationDate": "2015-01-01"
+    },
+    "firstPublicationDate": "2014-10-14",
+    "pubTypeList": {
+      "pubType": [
+        "Research Support, Non-U.S. Gov't",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "7094da6fbd1c3d925f175e0e92d1dd6b0c392892a62b272d75640428087db2f7"
+  },
+  "27476619": {
+    "pmid": "27476619",
+    "pmcid": "PMC5197925",
+    "doi": "10.1017/s0033291716001574",
+    "title": "Childhood interleukin-6, C-reactive protein and atopic disorders as risk factors for hypomanic symptoms in young adulthood: a longitudinal birth cohort study.",
+    "authorString": "Hayes JF, Khandaker GM, Anderson J, Mackay D, Zammit S, Lewis G, Smith DJ, Osborn DP.",
+    "pubYear": "2017",
+    "journalInfo": {
+      "issue": "1",
+      "volume": "47",
+      "journalIssueId": 2508720,
+      "dateOfPublication": "2017 Jan",
+      "monthOfPublication": 1,
+      "yearOfPublication": 2017,
+      "journal": {
+        "medlineAbbreviation": "Psychol Med",
+        "title": "Psychological medicine",
+        "essn": "1469-8978",
+        "issn": "0033-2917",
+        "nlmid": "1254142",
+        "isoabbreviation": "Psychol Med"
+      },
+      "printPublicationDate": "2017-01-01"
+    },
+    "firstPublicationDate": "2016-08-01",
+    "pubTypeList": {
+      "pubType": [
+        "Research Support, Non-U.S. Gov't",
+        "research-article",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "2665b5b8b51f17f3103048cd1c039f5dea932d1fa57764724015757a9d1b4df7"
+  },
+  "21138659": {
+    "pmid": "21138659",
+    "pmcid": "PMC3044194",
+    "doi": "10.1503/jpn.100080",
+    "title": "Elevation of cerebrospinal fluid interleukin-1ß in bipolar disorder.",
+    "authorString": "Söderlund J, Olsson SK, Samuelsson M, Walther-Jallow L, Johansson C, Erhardt S, Landén M, Engberg G.",
+    "pubYear": "2011",
+    "journalInfo": {
+      "issue": "2",
+      "volume": "36",
+      "journalIssueId": 1808873,
+      "dateOfPublication": "2011 Mar",
+      "monthOfPublication": 3,
+      "yearOfPublication": 2011,
+      "journal": {
+        "medlineAbbreviation": "J Psychiatry Neurosci",
+        "title": "Journal of psychiatry & neuroscience : JPN",
+        "essn": "1488-2434",
+        "issn": "1180-4882",
+        "nlmid": "9107859",
+        "isoabbreviation": "J Psychiatry Neurosci"
+      },
+      "printPublicationDate": "2011-03-01"
+    },
+    "firstPublicationDate": "2011-03-01",
+    "pubTypeList": {
+      "pubType": [
+        "Research Support, Non-U.S. Gov't",
+        "research-article",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "2e266f4594c78eb6bbb0f40c0410edb77e12ea8ede7f1b69fd61af4ba163bd73"
+  },
+  "19251324": {
+    "pmid": "19251324",
+    "pmcid": null,
+    "doi": "10.1016/j.jad.2008.12.001",
+    "title": "Comparison of cytokine levels in depressed, manic and euthymic patients with bipolar disorder.",
+    "authorString": "Brietzke E, Stertz L, Fernandes BS, Kauer-Sant'anna M, Mascarenhas M, Escosteguy Vargas A, Chies JA, Kapczinski F.",
+    "pubYear": "2009",
+    "journalInfo": {
+      "issue": "3",
+      "volume": "116",
+      "journalIssueId": 1631287,
+      "dateOfPublication": "2009 Aug",
+      "monthOfPublication": 8,
+      "yearOfPublication": 2009,
+      "journal": {
+        "medlineAbbreviation": "J Affect Disord",
+        "title": "Journal of affective disorders",
+        "essn": "1573-2517",
+        "issn": "0165-0327",
+        "nlmid": "7906073",
+        "isoabbreviation": "J Affect Disord"
+      },
+      "printPublicationDate": "2009-08-01"
+    },
+    "firstPublicationDate": "2009-02-28",
+    "pubTypeList": {
+      "pubType": [
+        "Comparative Study",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "9af67a2f222dbaf5718395d79a40576c9b2251ec99191cfad54bad2c83f9160a"
+  },
+  "17845274": {
+    "pmid": "17845274",
+    "pmcid": null,
+    "doi": "10.1111/j.1399-5618.2007.00493.x",
+    "title": "Immune variations in bipolar disorder: phasic differences.",
+    "authorString": "Ortiz-Domínguez A, Hernández ME, Berlanga C, Gutiérrez-Mora D, Moreno J, Heinze G, Pavón L.",
+    "pubYear": "2007",
+    "journalInfo": {
+      "issue": "6",
+      "volume": "9",
+      "journalIssueId": 1465814,
+      "dateOfPublication": "2007 Sep",
+      "monthOfPublication": 9,
+      "yearOfPublication": 2007,
+      "journal": {
+        "medlineAbbreviation": "Bipolar Disord",
+        "title": "Bipolar disorders",
+        "essn": "1399-5618",
+        "issn": "1398-5647",
+        "nlmid": "100883596",
+        "isoabbreviation": "Bipolar Disord"
+      },
+      "printPublicationDate": "2007-09-01"
+    },
+    "firstPublicationDate": "2007-09-01",
+    "pubTypeList": {
+      "pubType": [
+        "Research Support, Non-U.S. Gov't",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "259ba7578ee0c9834e3b0c4af181cd2e0fc62a310741f857902039537cc79552"
+  },
+  "32871531": {
+    "pmid": "32871531",
+    "pmcid": null,
+    "doi": "10.1016/j.jad.2020.07.125",
+    "title": "Association of pro-inflammatory cytokines with clinical features in euthymic patients with Bipolar-I-Disorder.",
+    "authorString": "Vares EA, Lehmann S, Sauer C, Pariante C, Wieland F, Soltmann B, Bauer M, Ritter P.",
+    "pubYear": "2020",
+    "journalInfo": {
+      "volume": "277",
+      "journalIssueId": 3038095,
+      "dateOfPublication": "2020 Dec",
+      "monthOfPublication": 12,
+      "yearOfPublication": 2020,
+      "journal": {
+        "medlineAbbreviation": "J Affect Disord",
+        "title": "Journal of affective disorders",
+        "essn": "1573-2517",
+        "issn": "0165-0327",
+        "nlmid": "7906073",
+        "isoabbreviation": "J Affect Disord"
+      },
+      "printPublicationDate": "2020-12-01"
+    },
+    "firstPublicationDate": "2020-08-01",
+    "pubTypeList": {
+      "pubType": [
+        "Research Support, Non-U.S. Gov't",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "9dc2ed8f880f2629023db2aa10690be38d06ce50cd2968617650fa74a4afa73f"
+  },
+  "21641581": {
+    "pmid": "21641581",
+    "pmcid": "PMC4071300",
+    "doi": "10.1016/j.biopsych.2011.04.013",
+    "title": "Meta-analysis of cytokine alterations in schizophrenia: clinical status and antipsychotic effects.",
+    "authorString": "Miller BJ, Buckley P, Seabolt W, Mellor A, Kirkpatrick B.",
+    "pubYear": "2011",
+    "journalInfo": {
+      "issue": "7",
+      "volume": "70",
+      "journalIssueId": 1865333,
+      "dateOfPublication": "2011 Oct",
+      "monthOfPublication": 10,
+      "yearOfPublication": 2011,
+      "journal": {
+        "medlineAbbreviation": "Biol Psychiatry",
+        "title": "Biological psychiatry",
+        "essn": "1873-2402",
+        "issn": "0006-3223",
+        "nlmid": "0213264",
+        "isoabbreviation": "Biol Psychiatry"
+      },
+      "printPublicationDate": "2011-10-01"
+    },
+    "firstPublicationDate": "2011-06-08",
+    "pubTypeList": {
+      "pubType": [
+        "Meta-Analysis",
+        "Research Support, Non-U.S. Gov't",
+        "research-article",
+        "Journal Article",
+        "Research Support, N.I.H., Extramural"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "3af36132b6ca0f30737495d85209008b27c70efa76b559a83a5cd7aede148aa2"
+  },
+  "24704219": {
+    "pmid": "24704219",
+    "pmcid": null,
+    "doi": "10.1016/j.schres.2014.03.005",
+    "title": "Cytokine function in medication-naive first episode psychosis: a systematic review and meta-analysis.",
+    "authorString": "Upthegrove R, Manzanares-Teson N, Barnes NM.",
+    "pubYear": "2014",
+    "journalInfo": {
+      "issue": "1-3",
+      "volume": "155",
+      "journalIssueId": 2153249,
+      "dateOfPublication": "2014 May",
+      "monthOfPublication": 5,
+      "yearOfPublication": 2014,
+      "journal": {
+        "medlineAbbreviation": "Schizophr Res",
+        "title": "Schizophrenia research",
+        "essn": "1573-2509",
+        "issn": "0920-9964",
+        "nlmid": "8804207",
+        "isoabbreviation": "Schizophr Res"
+      },
+      "printPublicationDate": "2014-05-01"
+    },
+    "firstPublicationDate": "2014-04-04",
+    "pubTypeList": {
+      "pubType": [
+        "Meta-Analysis",
+        "Systematic Review",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "6b17446fc46f2a0f09618332d344ab706b3b1f317fcc0e9e18e3fd280155b252"
+  },
+  "33529887": {
+    "pmid": "33529887",
+    "pmcid": null,
+    "doi": "10.1016/j.cyto.2021.155441",
+    "title": "Serum interleukin-6 in schizophrenia: A system review and meta-analysis.",
+    "authorString": "Zhou X, Tian B, Han HB.",
+    "pubYear": "2021",
+    "journalInfo": {
+      "volume": "141",
+      "journalIssueId": 3133373,
+      "dateOfPublication": "2021 May",
+      "monthOfPublication": 5,
+      "yearOfPublication": 2021,
+      "journal": {
+        "medlineAbbreviation": "Cytokine",
+        "title": "Cytokine",
+        "essn": "1096-0023",
+        "issn": "1043-4666",
+        "nlmid": "9005353",
+        "isoabbreviation": "Cytokine"
+      },
+      "printPublicationDate": "2021-05-01"
+    },
+    "firstPublicationDate": "2021-01-30",
+    "pubTypeList": {
+      "pubType": [
+        "Meta-Analysis",
+        "Systematic Review",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "ab000c61fbcb929ca1a9c02799e5ba0642559465b906442850a7fe2f2c2169e4"
+  },
+  "37103677": {
+    "pmid": "37103677",
+    "pmcid": null,
+    "doi": "10.1007/s11010-023-04747-7",
+    "title": "Effects of IL-6/IL-6R axis alterations in serum, plasma and cerebrospinal fluid with the schizophrenia: an updated review and meta-analysis of 58 studies.",
+    "authorString": "González-Castro TB, Tovilla-Zárate CA, Juárez-Rojop IE, Hernández-Díaz Y, López-Narváez ML, Ortiz-Ojeda RF.",
+    "pubYear": "2024",
+    "journalInfo": {
+      "issue": "3",
+      "volume": "479",
+      "journalIssueId": 3744266,
+      "dateOfPublication": "2024 Mar",
+      "monthOfPublication": 3,
+      "yearOfPublication": 2024,
+      "journal": {
+        "medlineAbbreviation": "Mol Cell Biochem",
+        "title": "Molecular and cellular biochemistry",
+        "essn": "1573-4919",
+        "issn": "0300-8177",
+        "nlmid": "0364456",
+        "isoabbreviation": "Mol Cell Biochem"
+      },
+      "printPublicationDate": "2024-03-01"
+    },
+    "firstPublicationDate": "2023-04-27",
+    "pubTypeList": {
+      "pubType": [
+        "Meta-Analysis",
+        "Systematic Review",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "4fcf2749d42050c1c6eb12178832358bd616acd215e45d5b246e0bfb59f0dc25"
+  },
+  "38364730": {
+    "pmid": "38364730",
+    "pmcid": null,
+    "doi": "10.1016/j.schres.2024.02.001",
+    "title": "Inflammatory cerebrospinal fluid markers in schizophrenia spectrum disorders: A systematic review and meta-analysis of 69 studies with 5710 participants.",
+    "authorString": "Warren N, O'Gorman C, Horgan I, Weeratunga M, Halstead S, Moussiopoulou J, Campana M, Yakimov V, Wagner E, Siskind D.",
+    "pubYear": "2024",
+    "journalInfo": {
+      "volume": "266",
+      "journalIssueId": 3742086,
+      "dateOfPublication": "2024 Apr",
+      "monthOfPublication": 4,
+      "yearOfPublication": 2024,
+      "journal": {
+        "medlineAbbreviation": "Schizophr Res",
+        "title": "Schizophrenia research",
+        "essn": "1573-2509",
+        "issn": "0920-9964",
+        "nlmid": "8804207",
+        "isoabbreviation": "Schizophr Res"
+      },
+      "printPublicationDate": "2024-04-01"
+    },
+    "firstPublicationDate": "2024-02-15",
+    "pubTypeList": {
+      "pubType": [
+        "Meta-Analysis",
+        "Systematic Review",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "fbc59576ac7b35374efbe9d905a3e47352631d6cfe40d55bdf7dbf3c11a4852f"
+  },
+  "33740587": {
+    "pmid": "33740587",
+    "pmcid": null,
+    "doi": "10.1016/j.psyneuen.2021.105200",
+    "title": "Immune-inflammatory markers and psychosis risk: A systematic review and meta-analysis.",
+    "authorString": "Misiak B, Bartoli F, Carrà G, Stańczykiewicz B, Gładka A, Frydecka D, Samochowiec J, Jarosz K, Hadryś T, Miller BJ.",
+    "pubYear": "2021",
+    "journalInfo": {
+      "volume": "127",
+      "journalIssueId": 3154677,
+      "dateOfPublication": "2021 May",
+      "monthOfPublication": 5,
+      "yearOfPublication": 2021,
+      "journal": {
+        "medlineAbbreviation": "Psychoneuroendocrinology",
+        "title": "Psychoneuroendocrinology",
+        "essn": "1873-3360",
+        "issn": "0306-4530",
+        "nlmid": "7612148",
+        "isoabbreviation": "Psychoneuroendocrinology"
+      },
+      "printPublicationDate": "2021-05-01"
+    },
+    "firstPublicationDate": "2021-03-13",
+    "pubTypeList": {
+      "pubType": [
+        "Meta-Analysis",
+        "Systematic Review",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "831609920945465117230f54f0db1241cde209863a197861796b837284d6facb"
+  },
+  "30407606": {
+    "pmid": "30407606",
+    "pmcid": "PMC6737479",
+    "doi": "10.1093/schbul/sby160",
+    "title": "A Meta-analysis of Immune Parameters, Variability, and Assessment of Modal Distribution in Psychosis and Test of the Immune Subgroup Hypothesis.",
+    "authorString": "Pillinger T, Osimo EF, Brugger S, Mondelli V, McCutcheon RA, Howes OD.",
+    "pubYear": "2019",
+    "journalInfo": {
+      "issue": "5",
+      "volume": "45",
+      "journalIssueId": 2858059,
+      "dateOfPublication": "2019 Sep",
+      "monthOfPublication": 9,
+      "yearOfPublication": 2019,
+      "journal": {
+        "medlineAbbreviation": "Schizophr Bull",
+        "title": "Schizophrenia bulletin",
+        "essn": "1745-1701",
+        "issn": "1787-9965",
+        "nlmid": "0236760",
+        "isoabbreviation": "Schizophr Bull"
+      },
+      "printPublicationDate": "2019-09-01"
+    },
+    "firstPublicationDate": "2019-09-01",
+    "pubTypeList": {
+      "pubType": [
+        "Meta-Analysis",
+        "Research Support, Non-U.S. Gov't",
+        "research-article",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "9e1573983658d21320ca0ce5d15e527166db2472b540ecd74fe20c471f6ba766"
+  },
+  "29094161": {
+    "pmid": "29094161",
+    "pmcid": "PMC6583386",
+    "doi": "10.1001/jamapsychiatry.2017.3191",
+    "title": "Inflammatory Biomarkers and Risk of Schizophrenia: A 2-Sample Mendelian Randomization Study.",
+    "authorString": "Hartwig FP, Borges MC, Horta BL, Bowden J, Davey Smith G.",
+    "pubYear": "2017",
+    "journalInfo": {
+      "issue": "12",
+      "volume": "74",
+      "journalIssueId": 2626668,
+      "dateOfPublication": "2017 Dec",
+      "monthOfPublication": 12,
+      "yearOfPublication": 2017,
+      "journal": {
+        "medlineAbbreviation": "JAMA Psychiatry",
+        "title": "JAMA psychiatry",
+        "essn": "2168-6238",
+        "issn": "2168-622X",
+        "nlmid": "101589550",
+        "isoabbreviation": "JAMA Psychiatry"
+      },
+      "printPublicationDate": "2017-12-01"
+    },
+    "firstPublicationDate": "2017-12-01",
+    "pubTypeList": {
+      "pubType": [
+        "Research Support, Non-U.S. Gov't",
+        "research-article",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": {
+      "commentCorrection": [
+        {
+          "source": "MED",
+          "id": "29094155",
+          "reference": "JAMA Psychiatry. 2017 Dec 1;74(12):1191-1192. doi: 10.1001/jamapsychiatry.2017.3162.",
+          "type": "Comment in",
+          "orderIn": 1
+        },
+        {
+          "source": "MED",
+          "id": "29516079",
+          "reference": "JAMA Psychiatry. 2018 Apr 1;75(4):407. doi: 10.1001/jamapsychiatry.2018.0035.",
+          "type": "Comment in",
+          "orderIn": 2
+        }
+      ]
+    },
+    "retrievedRecordSHA256": "687aca3a25e020ed13ba1c12f869ca6a83b80c32721aff2b75575707d5a3b408"
+  },
+  "26903267": {
+    "pmid": "26903267",
+    "pmcid": "PMC6056174",
+    "doi": "10.1038/mp.2016.3",
+    "title": "A meta-analysis of blood cytokine network alterations in psychiatric patients: comparisons between schizophrenia, bipolar disorder and depression.",
+    "authorString": "Goldsmith DR, Rapaport MH, Miller BJ.",
+    "pubYear": "2016",
+    "journalInfo": {
+      "issue": "12",
+      "volume": "21",
+      "journalIssueId": 2490736,
+      "dateOfPublication": "2016 Dec",
+      "monthOfPublication": 12,
+      "yearOfPublication": 2016,
+      "journal": {
+        "medlineAbbreviation": "Mol Psychiatry",
+        "title": "Molecular psychiatry",
+        "essn": "1476-5578",
+        "issn": "1359-4184",
+        "nlmid": "9607835",
+        "isoabbreviation": "Mol Psychiatry"
+      },
+      "printPublicationDate": "2016-12-01"
+    },
+    "firstPublicationDate": "2016-02-23",
+    "pubTypeList": {
+      "pubType": [
+        "Meta-Analysis",
+        "research-article",
+        "Journal Article",
+        "Research Support, N.I.H., Extramural"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "74fe0669bf46e9179d9a463e8cac0d627eaa418ab898385b605ae28962da07b9"
+  },
+  "36863384": {
+    "pmid": "36863384",
+    "pmcid": null,
+    "doi": "10.1016/s2215-0366(23)00025-1",
+    "title": "Alteration patterns of peripheral concentrations of cytokines and associated inflammatory proteins in acute and chronic stages of schizophrenia: a systematic review and network meta-analysis.",
+    "authorString": "Halstead S, Siskind D, Amft M, Wagner E, Yakimov V, Shih-Jung Liu Z, Walder K, Warren N.",
+    "pubYear": "2023",
+    "journalInfo": {
+      "issue": "4",
+      "volume": "10",
+      "journalIssueId": 3526899,
+      "dateOfPublication": "2023 Apr",
+      "monthOfPublication": 4,
+      "yearOfPublication": 2023,
+      "journal": {
+        "medlineAbbreviation": "Lancet Psychiatry",
+        "title": "The lancet. Psychiatry",
+        "essn": "2215-0374",
+        "issn": "2215-0366",
+        "nlmid": "101638123",
+        "isoabbreviation": "Lancet Psychiatry"
+      },
+      "printPublicationDate": "2023-04-01"
+    },
+    "firstPublicationDate": "2023-02-27",
+    "pubTypeList": {
+      "pubType": [
+        "Systematic Review",
+        "Network Meta-Analysis",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": {
+      "commentCorrection": [
+        {
+          "source": "MED",
+          "id": "36863382",
+          "reference": "Lancet Psychiatry. 2023 Apr;10(4):237-239. doi: 10.1016/S2215-0366(23)00056-1.",
+          "type": "Comment in",
+          "orderIn": 1
+        },
+        {
+          "source": "MED",
+          "id": "36940700",
+          "reference": "Lancet Psychiatry. 2023 May;10(5):e13. doi: 10.1016/S2215-0366(23)00094-9.",
+          "type": "Erratum in",
+          "orderIn": 2
+        }
+      ]
+    },
+    "retrievedRecordSHA256": "3d23c036d6b846b7fc05e1034e21e794975cf81c8c9f301a81e069bc9709f140"
+  },
+  "26544749": {
+    "pmid": "26544749",
+    "pmcid": null,
+    "doi": "10.1016/s2215-0366(15)00309-0",
+    "title": "Inflammatory markers in post-traumatic stress disorder: a systematic review, meta-analysis, and meta-regression.",
+    "authorString": "Passos IC, Vasconcelos-Moreno MP, Costa LG, Kunz M, Brietzke E, Quevedo J, Salum G, Magalhães PV, Kapczinski F, Kauer-Sant'Anna M.",
+    "pubYear": "2015",
+    "journalInfo": {
+      "issue": "11",
+      "volume": "2",
+      "journalIssueId": 2340521,
+      "dateOfPublication": "2015 Nov",
+      "monthOfPublication": 11,
+      "yearOfPublication": 2015,
+      "journal": {
+        "medlineAbbreviation": "Lancet Psychiatry",
+        "title": "The lancet. Psychiatry",
+        "essn": "2215-0374",
+        "issn": "2215-0366",
+        "nlmid": "101638123",
+        "isoabbreviation": "Lancet Psychiatry"
+      },
+      "printPublicationDate": "2015-11-01"
+    },
+    "firstPublicationDate": "2015-11-01",
+    "pubTypeList": {
+      "pubType": [
+        "Meta-Analysis",
+        "Research Support, Non-U.S. Gov't",
+        "Systematic Review",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": {
+      "commentCorrection": [
+        {
+          "source": "MED",
+          "id": "26544737",
+          "reference": "Lancet Psychiatry. 2015 Nov;2(11):954-5. doi: 10.1016/S2215-0366(15)00355-7.",
+          "type": "Comment in",
+          "orderIn": 1
+        },
+        {
+          "source": "MED",
+          "id": "26946386",
+          "reference": "Lancet Psychiatry. 2016 Mar;3(3):200-1. doi: 10.1016/S2215-0366(16)00022-5.",
+          "type": "Comment in",
+          "orderIn": 2
+        },
+        {
+          "source": "MED",
+          "id": "26946389",
+          "reference": "Lancet Psychiatry. 2016 Mar;3(3):202. doi: 10.1016/S2215-0366(16)00054-7.",
+          "type": "Comment in",
+          "orderIn": 3
+        },
+        {
+          "source": "MED",
+          "id": "27574245",
+          "reference": "Evid Based Ment Health. 2016 Nov;19(4):120. doi: 10.1136/eb-2016-102376.",
+          "type": "Comment in",
+          "orderIn": 4
+        }
+      ]
+    },
+    "retrievedRecordSHA256": "f6d61f2a8c152548b396c53439927f6a661b5f7a8d41ffbb0b407a1525a32559"
+  },
+  "32158005": {
+    "pmid": "32158005",
+    "pmcid": null,
+    "doi": "10.1016/j.jad.2020.02.044",
+    "title": "Immune biomarkers alterations in post-traumatic stress disorder: A systematic review and meta-analysis.",
+    "authorString": "Yang JJ, Jiang W.",
+    "pubYear": "2020",
+    "journalInfo": {
+      "volume": "268",
+      "journalIssueId": 2928219,
+      "dateOfPublication": "2020 May",
+      "monthOfPublication": 5,
+      "yearOfPublication": 2020,
+      "journal": {
+        "medlineAbbreviation": "J Affect Disord",
+        "title": "Journal of affective disorders",
+        "essn": "1573-2517",
+        "issn": "0165-0327",
+        "nlmid": "7906073",
+        "isoabbreviation": "J Affect Disord"
+      },
+      "printPublicationDate": "2020-05-01"
+    },
+    "firstPublicationDate": "2020-02-28",
+    "pubTypeList": {
+      "pubType": [
+        "Meta-Analysis",
+        "Research Support, Non-U.S. Gov't",
+        "Systematic Review",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "1cb9954c1f793b4d3d8a91b158f6c23e8982259ffd7c67bda682b48ce5d2ae5c"
+  },
+  "35477973": {
+    "pmid": "35477973",
+    "pmcid": null,
+    "doi": "10.1038/s41380-022-01564-0",
+    "title": "Inflammatory and oxidative stress markers in post-traumatic stress disorder: a systematic review and meta-analysis.",
+    "authorString": "Peruzzolo TL, Pinto JV, Roza TH, Shintani AO, Anzolin AP, Gnielka V, Kohmann AM, Marin AS, Lorenzon VR, Brunoni AR, Kapczinski F, Passos IC.",
+    "pubYear": "2022",
+    "journalInfo": {
+      "issue": "8",
+      "volume": "27",
+      "journalIssueId": 3464424,
+      "dateOfPublication": "2022 Aug",
+      "monthOfPublication": 8,
+      "yearOfPublication": 2022,
+      "journal": {
+        "medlineAbbreviation": "Mol Psychiatry",
+        "title": "Molecular psychiatry",
+        "essn": "1476-5578",
+        "issn": "1359-4184",
+        "nlmid": "9607835",
+        "isoabbreviation": "Mol Psychiatry"
+      },
+      "printPublicationDate": "2022-08-01"
+    },
+    "firstPublicationDate": "2022-04-27",
+    "pubTypeList": {
+      "pubType": [
+        "Meta-Analysis",
+        "Research Support, Non-U.S. Gov't",
+        "Systematic Review",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "83f1668b9b152d712ea9ea8de51ad91210fbdd839787ef41b14ed0c7198db2f4"
+  },
+  "41115574": {
+    "pmid": "41115574",
+    "pmcid": null,
+    "doi": "10.1016/j.bbr.2025.115881",
+    "title": "Aberrations in peripheral blood interleukin-6 levels in post-traumatic stress disorder: A systematic review and meta-analysis.",
+    "authorString": "Yang L, Meng M, Tian M, Zhang C, Zou J, Cai L, Qian C, Jiang H, Li C, Liu Z, Nie C, Gao J, Chen X, Liu M.",
+    "pubYear": "2026",
+    "journalInfo": {
+      "volume": "497",
+      "journalIssueId": 4047962,
+      "dateOfPublication": "2026 Feb",
+      "monthOfPublication": 2,
+      "yearOfPublication": 2026,
+      "journal": {
+        "medlineAbbreviation": "Behav Brain Res",
+        "title": "Behavioural brain research",
+        "essn": "1872-7549",
+        "issn": "0166-4328",
+        "nlmid": "8004872",
+        "isoabbreviation": "Behav Brain Res"
+      },
+      "printPublicationDate": "2026-02-01"
+    },
+    "firstPublicationDate": "2025-10-18",
+    "pubTypeList": {
+      "pubType": [
+        "Meta-Analysis",
+        "Research Support, Non-U.S. Gov't",
+        "Systematic Review",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "dff9bdb9dbd44e30c4ee856f99d1ff9ad41406cffd17c9fe6f2f3f3dc405f6c1"
+  },
+  "33988765": {
+    "pmid": "33988765",
+    "pmcid": null,
+    "doi": "10.1007/s00702-021-02346-8",
+    "title": "Interleukin-6 secretion upon acute psychosocial stress as a potential predictor of psychotherapy outcome in posttraumatic stress disorder.",
+    "authorString": "Rhein C, Hepp T, Kraus O, von Majewski K, Lieb M, Rohleder N, Erim Y.",
+    "pubYear": "2021",
+    "journalInfo": {
+      "issue": "9",
+      "volume": "128",
+      "journalIssueId": 3229857,
+      "dateOfPublication": "2021 Sep",
+      "monthOfPublication": 9,
+      "yearOfPublication": 2021,
+      "journal": {
+        "medlineAbbreviation": "J Neural Transm (Vienna)",
+        "title": "Journal of neural transmission (Vienna, Austria : 1996)",
+        "essn": "1435-1463",
+        "issn": "0300-9564",
+        "nlmid": "9702341",
+        "isoabbreviation": "J Neural Transm (Vienna)"
+      },
+      "printPublicationDate": "2021-09-01"
+    },
+    "firstPublicationDate": "2021-05-14",
+    "pubTypeList": {
+      "pubType": [
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "6a01e453864433cb0db2a9b707678e0bb16f3759e0978bf04ce59c8124639e11"
+  },
+  "30199144": {
+    "pmid": "30199144",
+    "pmcid": null,
+    "doi": "10.1002/da.22790",
+    "title": "The association between anxiety, traumatic stress, and obsessive-compulsive disorders and chronic inflammation: A systematic review and meta-analysis.",
+    "authorString": "Renna ME, O'Toole MS, Spaeth PE, Lekander M, Mennin DS.",
+    "pubYear": "2018",
+    "journalInfo": {
+      "issue": "11",
+      "volume": "35",
+      "journalIssueId": 2743085,
+      "dateOfPublication": "2018 Nov",
+      "monthOfPublication": 11,
+      "yearOfPublication": 2018,
+      "journal": {
+        "medlineAbbreviation": "Depress Anxiety",
+        "title": "Depression and anxiety",
+        "essn": "1520-6394",
+        "issn": "1091-4269",
+        "nlmid": "9708816",
+        "isoabbreviation": "Depress Anxiety"
+      },
+      "printPublicationDate": "2018-11-01"
+    },
+    "firstPublicationDate": "2018-09-10",
+    "pubTypeList": {
+      "pubType": [
+        "Meta-Analysis",
+        "Systematic Review",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "4307abcbba04fe544b59a37d5e69f2948df5c5be531ea04365448a2527d974f7"
+  },
+  "34908836": {
+    "pmid": "34908836",
+    "pmcid": "PMC8665884",
+    "doi": "10.2147/ndt.s340388",
+    "title": "Alterations in Peripheral C-Reactive Protein and Inflammatory Cytokine Levels in Patients with Panic Disorder: A Systematic Review and Meta-Analysis.",
+    "authorString": "Liu CH, Hua N, Yang HY.",
+    "pubYear": "2021",
+    "journalInfo": {
+      "volume": "17",
+      "journalIssueId": 3092261,
+      "dateOfPublication": "2021 ",
+      "monthOfPublication": 0,
+      "yearOfPublication": 2021,
+      "journal": {
+        "medlineAbbreviation": "Neuropsychiatr Dis Treat",
+        "title": "Neuropsychiatric disease and treatment",
+        "essn": "1178-2021",
+        "issn": "1176-6328",
+        "nlmid": "101240304",
+        "isoabbreviation": "Neuropsychiatr Dis Treat"
+      },
+      "printPublicationDate": "2021-01-01"
+    },
+    "firstPublicationDate": "2021-12-07",
+    "pubTypeList": {
+      "pubType": [
+        "research-article",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "4bd45487a2f664dbc4112d9f96aed07955c772ebe1cc703d8d62f0c364eee58c"
+  },
+  "29241050": {
+    "pmid": "29241050",
+    "pmcid": null,
+    "doi": "10.1016/j.jad.2017.11.094",
+    "title": "Cytokine alterations in panic disorder: A systematic review.",
+    "authorString": "Quagliato LA, Nardi AE.",
+    "pubYear": "2018",
+    "journalInfo": {
+      "volume": "228",
+      "journalIssueId": 2650548,
+      "dateOfPublication": "2018 Mar",
+      "monthOfPublication": 3,
+      "yearOfPublication": 2018,
+      "journal": {
+        "medlineAbbreviation": "J Affect Disord",
+        "title": "Journal of affective disorders",
+        "essn": "1573-2517",
+        "issn": "0165-0327",
+        "nlmid": "7906073",
+        "isoabbreviation": "J Affect Disord"
+      },
+      "printPublicationDate": "2018-03-01"
+    },
+    "firstPublicationDate": "2017-12-07",
+    "pubTypeList": {
+      "pubType": [
+        "Systematic Review",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "db51867906e07669a84a3dbe64b17076a39a8a212f2e1dec31bece4213f533c0"
+  },
+  "37779624": {
+    "pmid": "37779624",
+    "pmcid": "PMC10540304",
+    "doi": "10.3389/fpsyt.2023.1231031",
+    "title": "Association of interleukin-6 with suicidal ideation in veterans: a longitudinal perspective.",
+    "authorString": "Sun S, Wilson CM, Alter S, Ge Y, Hazlett EA, Goodman M, Yehuda R, Galfalvy H, Haghighi F.",
+    "pubYear": "2023",
+    "journalInfo": {
+      "volume": "14",
+      "journalIssueId": 3497158,
+      "dateOfPublication": "2023 ",
+      "monthOfPublication": 0,
+      "yearOfPublication": 2023,
+      "journal": {
+        "medlineAbbreviation": "Front Psychiatry",
+        "title": "Frontiers in psychiatry",
+        "essn": "1664-0640",
+        "issn": "1664-0640",
+        "nlmid": "101545006",
+        "isoabbreviation": "Front Psychiatry"
+      },
+      "printPublicationDate": "2023-01-01"
+    },
+    "firstPublicationDate": "2023-09-15",
+    "pubTypeList": {
+      "pubType": [
+        "research-article",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "a350b4353d1e3c54e3fb3283aa1f127603c6549bb9af04eac9ba5f044df0c299"
+  },
+  "38549611": {
+    "pmid": "38549611",
+    "pmcid": "PMC10973600",
+    "doi": "10.1016/j.bbih.2024.100756",
+    "title": "Association between cytokines and suicidality in patients with psychosis: A multicentre longitudinal analysis.",
+    "authorString": "Hoprekstad GE, Skrede S, Bartz-Johannessen C, Joa I, Reitan SK, Steen VM, Torsvik A, Johnsen E, Kroken RA, Rettenbacher M.",
+    "pubYear": "2024",
+    "journalInfo": {
+      "volume": "37",
+      "journalIssueId": 3739581,
+      "dateOfPublication": "2024 May",
+      "monthOfPublication": 5,
+      "yearOfPublication": 2024,
+      "journal": {
+        "medlineAbbreviation": "Brain Behav Immun Health",
+        "title": "Brain, behavior, & immunity - health",
+        "essn": "2666-3546",
+        "issn": "2666-3546",
+        "nlmid": "101759062",
+        "isoabbreviation": "Brain Behav Immun Health"
+      },
+      "printPublicationDate": "2024-05-01"
+    },
+    "firstPublicationDate": "2024-03-20",
+    "pubTypeList": {
+      "pubType": [
+        "research-article",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "fa5dd82c99b57c1f80a2ad5a28c584f93f8e321a01d1a2f908bac52fdba47b33"
+  },
+  "41272690": {
+    "pmid": "41272690",
+    "pmcid": "PMC12639735",
+    "doi": "10.1186/s12991-025-00609-2",
+    "title": "Pro-inflammatory cytokines level in depressed patients with suicidal behaviour: a systematic review and meta-analysis.",
+    "authorString": "Moshfeghinia R, Ghahramani M, Naderian R, Mostafavi S, Arman A, Mohagheghzadeh H, Haghighifard E, Tahmasebi S, Kanannejad Z, Javanbakht A, Ahmadi J.",
+    "pubYear": "2025",
+    "journalInfo": {
+      "issue": "1",
+      "volume": "24",
+      "journalIssueId": 4043990,
+      "dateOfPublication": "2025 Nov",
+      "monthOfPublication": 11,
+      "yearOfPublication": 2025,
+      "journal": {
+        "medlineAbbreviation": "Ann Gen Psychiatry",
+        "title": "Annals of general psychiatry",
+        "essn": "1744-859X",
+        "issn": "1744-859X",
+        "nlmid": "101236515",
+        "isoabbreviation": "Ann Gen Psychiatry"
+      },
+      "printPublicationDate": "2025-11-01"
+    },
+    "firstPublicationDate": "2025-11-21",
+    "pubTypeList": {
+      "pubType": [
+        "research-article",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "9178bed20f79669efcedd29218ef2e63e79240217662bc5aa039385ee0de054d"
+  },
+  "37356288": {
+    "pmid": "37356288",
+    "pmcid": null,
+    "doi": "10.1016/j.euroneuro.2023.05.009",
+    "title": "Immune-related biomarkers and suicidal behaviors: A meta-analysis.",
+    "authorString": "Neupane SP, Daray FM, Ballard ED, Galfalvy H, Itzhaky L, Segev A, Shelef A, Tene O, Rizk MM, Mann JJ, Zalsman G.",
+    "pubYear": "2023",
+    "journalInfo": {
+      "volume": "75",
+      "journalIssueId": 3641018,
+      "dateOfPublication": "2023 Oct",
+      "monthOfPublication": 10,
+      "yearOfPublication": 2023,
+      "journal": {
+        "medlineAbbreviation": "Eur Neuropsychopharmacol",
+        "title": "European neuropsychopharmacology : the journal of the European College of Neuropsychopharmacology",
+        "essn": "1873-7862",
+        "issn": "0924-977X",
+        "nlmid": "9111390",
+        "isoabbreviation": "Eur Neuropsychopharmacol"
+      },
+      "printPublicationDate": "2023-10-01"
+    },
+    "firstPublicationDate": "2023-06-23",
+    "pubTypeList": {
+      "pubType": [
+        "Meta-Analysis",
+        "Research Support, Non-U.S. Gov't",
+        "Review",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "8b23a7e903e73b8cf1919474c3d362961b76822bdbd42f2383e513b8c0cee7cc"
+  },
+  "25541493": {
+    "pmid": "25541493",
+    "pmcid": null,
+    "doi": "10.1016/j.biopsych.2014.10.014",
+    "title": "Meta-Analysis of Cytokines and Chemokines in Suicidality: Distinguishing Suicidal Versus Nonsuicidal Patients.",
+    "authorString": "Black C, Miller BJ.",
+    "pubYear": "2015",
+    "journalInfo": {
+      "issue": "1",
+      "volume": "78",
+      "journalIssueId": 2292366,
+      "dateOfPublication": "2015 Jul",
+      "monthOfPublication": 7,
+      "yearOfPublication": 2015,
+      "journal": {
+        "medlineAbbreviation": "Biol Psychiatry",
+        "title": "Biological psychiatry",
+        "essn": "1873-2402",
+        "issn": "0006-3223",
+        "nlmid": "0213264",
+        "isoabbreviation": "Biol Psychiatry"
+      },
+      "printPublicationDate": "2015-07-01"
+    },
+    "firstPublicationDate": "2014-10-30",
+    "pubTypeList": {
+      "pubType": [
+        "Meta-Analysis",
+        "Research Support, Non-U.S. Gov't",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": {
+      "commentCorrection": [
+        {
+          "source": "MED",
+          "id": "26051638",
+          "reference": "Biol Psychiatry. 2015 Jul 1;78(1):5-6. doi: 10.1016/j.biopsych.2015.04.008",
+          "type": "Comment in",
+          "orderIn": 1
+        }
+      ]
+    },
+    "retrievedRecordSHA256": "5995dbed4e017343653f99db6254fbcc7d025fe8a1749028fa2068068fb1ee9b"
+  },
+  "34280025": {
+    "pmid": "34280025",
+    "pmcid": null,
+    "doi": "10.1089/jir.2020.0265",
+    "title": "Interleukin-6 Levels in Serum, Plasma, and Cerebral Spinal Fluid in Individuals with Suicide Behavior: Systematic Review and Meta-Analysis with Meta-Regression.",
+    "authorString": "González-Castro TB, Tovilla-Zárate CA, López-Narváez ML, Genis-Mendoza AD, Juárez-Rojop IE.",
+    "pubYear": "2021",
+    "journalInfo": {
+      "issue": "7",
+      "volume": "41",
+      "journalIssueId": 3205209,
+      "dateOfPublication": "2021 Jul",
+      "monthOfPublication": 7,
+      "yearOfPublication": 2021,
+      "journal": {
+        "medlineAbbreviation": "J Interferon Cytokine Res",
+        "title": "Journal of interferon & cytokine research : the official journal of the International Society for Interferon and Cytokine Research",
+        "essn": "1557-7465",
+        "issn": "1079-9907",
+        "nlmid": "9507088",
+        "isoabbreviation": "J Interferon Cytokine Res"
+      },
+      "printPublicationDate": "2021-07-01"
+    },
+    "firstPublicationDate": "2021-07-01",
+    "pubTypeList": {
+      "pubType": [
+        "Meta-Analysis",
+        "Systematic Review",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "f36a0ba232ce5f50c24b675da7c4ca13b1dab0fa26c90ab7b1d506b78ef0e7de"
+  },
+  "36351891": {
+    "pmid": "36351891",
+    "pmcid": "PMC9646837",
+    "doi": "10.1038/s41398-022-02230-3",
+    "title": "Pro- and anti-inflammatory cytokines Interleukin-6 and Interleukin-10 predict therapy outcome of female patients with posttraumatic stress disorder.",
+    "authorString": "Renner V, Joraschky P, Kirschbaum C, Schellong J, Petrowski K.",
+    "pubYear": "2022",
+    "journalInfo": {
+      "issue": "1",
+      "volume": "12",
+      "journalIssueId": 3448666,
+      "dateOfPublication": "2022 Nov",
+      "monthOfPublication": 11,
+      "yearOfPublication": 2022,
+      "journal": {
+        "medlineAbbreviation": "Transl Psychiatry",
+        "title": "Translational psychiatry",
+        "essn": "2158-3188",
+        "issn": "2158-3188",
+        "nlmid": "101562664",
+        "isoabbreviation": "Transl Psychiatry"
+      },
+      "printPublicationDate": "2022-11-01"
+    },
+    "firstPublicationDate": "2022-11-09",
+    "pubTypeList": {
+      "pubType": [
+        "Research Support, Non-U.S. Gov't",
+        "research-article",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "e027e29eaaaac4bd32b390d77aefc16cbb2495b7103fd46c0b20cb7024645be1"
+  },
+  "36115323": {
+    "pmid": "36115323",
+    "pmcid": "PMC10448736",
+    "doi": "10.1016/j.psyneuen.2022.105915",
+    "title": "Trauma, psychological distress and markers of systemic inflammation among US women: A longitudinal study.",
+    "authorString": "Lawn RB, Murchland AR, Kim Y, Chibnik LB, Tworoger SS, Rimm EB, Sumner JA, Roberts AL, Nishimi KM, Ratanatharathorn AD, Jha SC, Koenen KC, Kubzansky LD.",
+    "pubYear": "2022",
+    "journalInfo": {
+      "volume": "145",
+      "journalIssueId": 3437891,
+      "dateOfPublication": "2022 Nov",
+      "monthOfPublication": 11,
+      "yearOfPublication": 2022,
+      "journal": {
+        "medlineAbbreviation": "Psychoneuroendocrinology",
+        "title": "Psychoneuroendocrinology",
+        "essn": "1873-3360",
+        "issn": "0306-4530",
+        "nlmid": "7612148",
+        "isoabbreviation": "Psychoneuroendocrinology"
+      },
+      "printPublicationDate": "2022-11-01"
+    },
+    "firstPublicationDate": "2022-09-05",
+    "pubTypeList": {
+      "pubType": [
+        "research-article",
+        "Research Support, U.S. Gov't, Non-P.H.S.",
+        "Journal Article",
+        "Research Support, N.I.H., Extramural"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "94d5ff2c8a5c8472124ec2458401ab7ba1a394ad9f2eb633e90ed55a59e3e7be"
+  },
+  "36732491": {
+    "pmid": "36732491",
+    "pmcid": "PMC9894822",
+    "doi": "10.1038/s41398-023-02331-7",
+    "title": "Acute stress responses of autonomous nervous system, HPA axis, and inflammatory system in posttraumatic stress disorder.",
+    "authorString": "von Majewski K, Kraus O, Rhein C, Lieb M, Erim Y, Rohleder N.",
+    "pubYear": "2023",
+    "journalInfo": {
+      "issue": "1",
+      "volume": "13",
+      "journalIssueId": 3497970,
+      "dateOfPublication": "2023 Feb",
+      "monthOfPublication": 2,
+      "yearOfPublication": 2023,
+      "journal": {
+        "medlineAbbreviation": "Transl Psychiatry",
+        "title": "Translational psychiatry",
+        "essn": "2158-3188",
+        "issn": "2158-3188",
+        "nlmid": "101562664",
+        "isoabbreviation": "Transl Psychiatry"
+      },
+      "printPublicationDate": "2023-02-01"
+    },
+    "firstPublicationDate": "2023-02-03",
+    "pubTypeList": {
+      "pubType": [
+        "Research Support, Non-U.S. Gov't",
+        "research-article",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "a7990c5142378a864eccdc8284f1c696f4c251a25758a6317177b23ae1d252eb"
+  },
+  "23612048": {
+    "pmid": "23612048",
+    "pmcid": "PMC3641413",
+    "doi": "10.1038/tp.2013.27",
+    "title": "Anxiety disorders and inflammation in a large adult cohort.",
+    "authorString": "Vogelzangs N, Beekman AT, de Jonge P, Penninx BW.",
+    "pubYear": "2013",
+    "journalInfo": {
+      "volume": "3",
+      "journalIssueId": 2472154,
+      "dateOfPublication": "2013 Apr",
+      "monthOfPublication": 4,
+      "yearOfPublication": 2013,
+      "journal": {
+        "medlineAbbreviation": "Transl Psychiatry",
+        "title": "Translational psychiatry",
+        "essn": "2158-3188",
+        "issn": "2158-3188",
+        "nlmid": "101562664",
+        "isoabbreviation": "Transl Psychiatry"
+      },
+      "printPublicationDate": "2013-04-01"
+    },
+    "firstPublicationDate": "2013-04-23",
+    "pubTypeList": {
+      "pubType": [
+        "Research Support, Non-U.S. Gov't",
+        "research-article",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "8f3bf42b792111e6941aa8d10fbf0670e53b491cc07cfe89d051a6f3762da6fb"
+  },
+  "34758380": {
+    "pmid": "34758380",
+    "pmcid": null,
+    "doi": "10.1016/j.bbi.2021.10.020",
+    "title": "The immune-kynurenine pathway in social anxiety disorder.",
+    "authorString": "Butler MI, Long-Smith C, Moloney GM, Morkl S, O'Mahony SM, Cryan JF, Clarke G, Dinan TG.",
+    "pubYear": "2022",
+    "journalInfo": {
+      "volume": "99",
+      "journalIssueId": 3280281,
+      "dateOfPublication": "2022 Jan",
+      "monthOfPublication": 1,
+      "yearOfPublication": 2022,
+      "journal": {
+        "medlineAbbreviation": "Brain Behav Immun",
+        "title": "Brain, behavior, and immunity",
+        "essn": "1090-2139",
+        "issn": "0889-1591",
+        "nlmid": "8800478",
+        "isoabbreviation": "Brain Behav Immun"
+      },
+      "printPublicationDate": "2022-01-01"
+    },
+    "firstPublicationDate": "2021-11-07",
+    "pubTypeList": {
+      "pubType": [
+        "Journal Article",
+        "Research Support, N.I.H., Extramural"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "67aa0ca889b69d319075fa0edfff7ddd8f17a9c6c0de7ee478b4bdc93d07d0c7"
+  },
+  "35202735": {
+    "pmid": "35202735",
+    "pmcid": null,
+    "doi": "10.1016/j.bbi.2022.02.021",
+    "title": "Associations of three major physiological stress systems with suicidal ideation and suicide attempts in patients with a depressive and/or anxiety disorder.",
+    "authorString": "Wiebenga JXM, Heering HD, Eikelenboom M, van Hemert AM, van Oppen P, Penninx BWJH.",
+    "pubYear": "2022",
+    "journalInfo": {
+      "volume": "102",
+      "journalIssueId": 3340367,
+      "dateOfPublication": "2022 May",
+      "monthOfPublication": 5,
+      "yearOfPublication": 2022,
+      "journal": {
+        "medlineAbbreviation": "Brain Behav Immun",
+        "title": "Brain, behavior, and immunity",
+        "essn": "1090-2139",
+        "issn": "0889-1591",
+        "nlmid": "8800478",
+        "isoabbreviation": "Brain Behav Immun"
+      },
+      "printPublicationDate": "2022-05-01"
+    },
+    "firstPublicationDate": "2022-02-22",
+    "pubTypeList": {
+      "pubType": [
+        "Research Support, Non-U.S. Gov't",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "6a2bed80d9c11ca1c7904c193bfec1a7408ce2c5ce98e09af3ae197994ab0d89"
+  },
+  "33388702": {
+    "pmid": "33388702",
+    "pmcid": "PMC8830592",
+    "doi": "10.1016/j.jpsychires.2020.12.029",
+    "title": "Relationships between inflammatory markers and suicide risk status in major depression.",
+    "authorString": "Ganança L, Galfalvy HC, Cisneros-Trujillo S, Basseda Z, Cooper TB, Ren X, Figueira ML, Oquendo MA, Mann JJ, Sublette ME.",
+    "pubYear": "2021",
+    "journalInfo": {
+      "volume": "134",
+      "journalIssueId": 3109048,
+      "dateOfPublication": "2021 Feb",
+      "monthOfPublication": 2,
+      "yearOfPublication": 2021,
+      "journal": {
+        "medlineAbbreviation": "J Psychiatr Res",
+        "title": "Journal of psychiatric research",
+        "essn": "1879-1379",
+        "issn": "0022-3956",
+        "nlmid": "0376331",
+        "isoabbreviation": "J Psychiatr Res"
+      },
+      "printPublicationDate": "2021-02-01"
+    },
+    "firstPublicationDate": "2020-12-17",
+    "pubTypeList": {
+      "pubType": [
+        "Research Support, Non-U.S. Gov't",
+        "research-article",
+        "Journal Article",
+        "Research Support, N.I.H., Extramural"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "aeb41d5014f1b05b600605b098ff228f6e28d89ca6b3ca511e63dff417d2f0c9"
+  },
+  "30844329": {
+    "pmid": "30844329",
+    "pmcid": null,
+    "doi": "10.1089/jir.2018.0134",
+    "title": "Estimation of IL-6, INFγ, and Lipid Profile in Suicidal and Nonsuicidal Adults with Major Depressive Disorder.",
+    "authorString": "Eidan AJ, Al-Harmoosh RA, Al-Amarei HM.",
+    "pubYear": "2019",
+    "journalInfo": {
+      "issue": "3",
+      "volume": "39",
+      "journalIssueId": 2791341,
+      "dateOfPublication": "2019 Mar",
+      "monthOfPublication": 3,
+      "yearOfPublication": 2019,
+      "journal": {
+        "medlineAbbreviation": "J Interferon Cytokine Res",
+        "title": "Journal of interferon & cytokine research : the official journal of the International Society for Interferon and Cytokine Research",
+        "essn": "1557-7465",
+        "issn": "1079-9907",
+        "nlmid": "9507088",
+        "isoabbreviation": "J Interferon Cytokine Res"
+      },
+      "printPublicationDate": "2019-03-01"
+    },
+    "firstPublicationDate": "2019-03-01",
+    "pubTypeList": {
+      "pubType": [
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "78b279d64d8cbe1dae1a527da8de38a4a69923030277347aad48a4efed8f645c"
+  },
+  "34730074": {
+    "pmid": "34730074",
+    "pmcid": null,
+    "doi": "10.1080/15622975.2021.1988703",
+    "title": "Inflammation biomarkers in suicide attempts and their relation to abuse, global functioning and cognition.",
+    "authorString": "Fernández-Sevillano J, González-Ortega I, MacDowell K, Zorrilla I, López MP, Courtet P, Gabilondo A, Martínez-Cengotitabengoa M, Leza JC, Sáiz P, González-Pinto A.",
+    "pubYear": "2022",
+    "journalInfo": {
+      "issue": "4",
+      "volume": "23",
+      "journalIssueId": 3446946,
+      "dateOfPublication": "2022 Mar-Apr",
+      "monthOfPublication": 0,
+      "yearOfPublication": 2022,
+      "journal": {
+        "medlineAbbreviation": "World J Biol Psychiatry",
+        "title": "The world journal of biological psychiatry : the official journal of the World Federation of Societies of Biological Psychiatry",
+        "essn": "1814-1412",
+        "issn": "1562-2975",
+        "nlmid": "101120023",
+        "isoabbreviation": "World J Biol Psychiatry"
+      },
+      "printPublicationDate": "2022-03-01"
+    },
+    "firstPublicationDate": "2021-11-03",
+    "pubTypeList": {
+      "pubType": [
+        "Research Support, Non-U.S. Gov't",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "058a3ed4f7cad65b86c78dae92952b872cc5d352f5569335c92928b51b6dd8d5"
+  },
+  "22516310": {
+    "pmid": "22516310",
+    "pmcid": null,
+    "doi": "10.1016/j.jad.2012.03.033",
+    "title": "Effect of celecoxib add-on treatment on symptoms and serum IL-6 concentrations in patients with major depressive disorder: randomized double-blind placebo-controlled study.",
+    "authorString": "Abbasi SH, Hosseini F, Modabbernia A, Ashrafi M, Akhondzadeh S.",
+    "pubYear": "2012",
+    "journalInfo": {
+      "issue": "2-3",
+      "volume": "141",
+      "journalIssueId": 1974708,
+      "dateOfPublication": "2012 Dec",
+      "monthOfPublication": 12,
+      "yearOfPublication": 2012,
+      "journal": {
+        "medlineAbbreviation": "J Affect Disord",
+        "title": "Journal of affective disorders",
+        "essn": "1573-2517",
+        "issn": "0165-0327",
+        "nlmid": "7906073",
+        "isoabbreviation": "J Affect Disord"
+      },
+      "printPublicationDate": "2012-12-01"
+    },
+    "firstPublicationDate": "2012-04-18",
+    "pubTypeList": {
+      "pubType": [
+        "Research Support, Non-U.S. Gov't",
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "85024200c75206a12d0b899c8e9751351dca97397ea447cb45262fcbdfdc183d"
+  },
+  "33504955": {
+    "pmid": "33504955",
+    "pmcid": "PMC8096832",
+    "doi": "10.1038/s41386-020-00948-6",
+    "title": "Augmentation therapy with minocycline in treatment-resistant depression patients with low-grade peripheral inflammation: results from a double-blind randomised clinical trial.",
+    "authorString": "Nettis MA, Lombardo G, Hastings C, Zajkowska Z, Mariani N, Nikkheslat N, Worrell C, Enache D, McLaughlin A, Kose M, Sforzini L, Bogdanova A, Cleare A, Young AH, Pariante CM, Mondelli V.",
+    "pubYear": "2021",
+    "journalInfo": {
+      "issue": "5",
+      "volume": "46",
+      "journalIssueId": 3134713,
+      "dateOfPublication": "2021 Apr",
+      "monthOfPublication": 4,
+      "yearOfPublication": 2021,
+      "journal": {
+        "medlineAbbreviation": "Neuropsychopharmacology",
+        "title": "Neuropsychopharmacology : official publication of the American College of Neuropsychopharmacology",
+        "essn": "1740-634X",
+        "issn": "0893-133X",
+        "nlmid": "8904907",
+        "isoabbreviation": "Neuropsychopharmacology"
+      },
+      "printPublicationDate": "2021-04-01"
+    },
+    "firstPublicationDate": "2021-01-28",
+    "pubTypeList": {
+      "pubType": [
+        "Research Support, Non-U.S. Gov't",
+        "research-article",
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": {
+      "commentCorrection": [
+        {
+          "source": "MED",
+          "id": "33947967",
+          "reference": "Neuropsychopharmacology. 2021 Aug;46(9):1551. doi: 10.1038/s41386-021-01025-2.",
+          "type": "Comment in",
+          "orderIn": 1
+        },
+        {
+          "source": "MED",
+          "id": "34040158",
+          "reference": "Neuropsychopharmacology. 2021 Aug;46(9):1552-1553. doi: 10.1038/s41386-021-01042-1.",
+          "type": "Comment in",
+          "orderIn": 2
+        }
+      ]
+    },
+    "retrievedRecordSHA256": "e6fc73e6fc2dbbae9afbe99e1abba49e4625f3afa55218315e8d53576108b4cb"
+  },
+  "34937590": {
+    "pmid": "34937590",
+    "pmcid": null,
+    "doi": "10.1017/neu.2021.44",
+    "title": "Exploring interleukin-6, lipopolysaccharide-binding protein and brain-derived neurotrophic factor following 12 weeks of adjunctive minocycline treatment for depression.",
+    "authorString": "Hasebe K, Mohebbi M, Gray L, Walker AJ, Bortolasci CC, Turner A, Berk M, Walder K, Maes M, Kanchanatawan B, Ashton MM, Berk L, Ng CH, Malhi GS, Singh AB, Dean OM.",
+    "pubYear": "2022",
+    "journalInfo": {
+      "issue": "4",
+      "volume": "34",
+      "journalIssueId": 3408075,
+      "dateOfPublication": "2022 Aug",
+      "monthOfPublication": 8,
+      "yearOfPublication": 2022,
+      "journal": {
+        "medlineAbbreviation": "Acta Neuropsychiatr",
+        "title": "Acta neuropsychiatrica",
+        "essn": "1601-5215",
+        "issn": "0924-2708",
+        "nlmid": "9612501",
+        "isoabbreviation": "Acta Neuropsychiatr"
+      },
+      "printPublicationDate": "2022-08-01"
+    },
+    "firstPublicationDate": "2021-12-23",
+    "pubTypeList": {
+      "pubType": [
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "19cb1a4b0eb5f63effa39b672ccaab1b1a48078d8bc549a3d7cbd93525b98fda"
+  },
+  "30153598": {
+    "pmid": "30153598",
+    "pmcid": null,
+    "doi": "10.1016/j.psychres.2018.08.078",
+    "title": "Rapid inflammation modulation and antidepressant efficacy of a low-dose ketamine infusion in treatment-resistant depression: A randomized, double-blind control study.",
+    "authorString": "Chen MH, Li CT, Lin WC, Hong CJ, Tu PC, Bai YM, Cheng CM, Su TP.",
+    "pubYear": "2018",
+    "journalInfo": {
+      "volume": "269",
+      "journalIssueId": 2742681,
+      "dateOfPublication": "2018 Nov",
+      "monthOfPublication": 11,
+      "yearOfPublication": 2018,
+      "journal": {
+        "medlineAbbreviation": "Psychiatry Res",
+        "title": "Psychiatry research",
+        "essn": "1872-7123",
+        "issn": "0165-1781",
+        "nlmid": "7911385",
+        "isoabbreviation": "Psychiatry Res"
+      },
+      "printPublicationDate": "2018-11-01"
+    },
+    "firstPublicationDate": "2018-08-21",
+    "pubTypeList": {
+      "pubType": [
+        "Research Support, Non-U.S. Gov't",
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "07a34bd723c6fcb682d6444eedc366af7f578cd4f001be530640e02a538597f9"
+  },
+  "30205379": {
+    "pmid": "30205379",
+    "pmcid": null,
+    "doi": "10.1159/000492619",
+    "title": "The Phosphodiesterase Inhibitor Pentoxifylline as a Novel Adjunct to Antidepressants in Major Depressive Disorder Patients: A Proof-of-Concept, Randomized, Double-Blind, Placebo-Controlled Trial.",
+    "authorString": "El-Haggar SM, Eissa MA, Mostafa TM, El-Attar KS, Abdallah MS.",
+    "pubYear": "2018",
+    "journalInfo": {
+      "issue": "6",
+      "volume": "87",
+      "journalIssueId": 2753047,
+      "dateOfPublication": "2018 ",
+      "monthOfPublication": 0,
+      "yearOfPublication": 2018,
+      "journal": {
+        "medlineAbbreviation": "Psychother Psychosom",
+        "title": "Psychotherapy and psychosomatics",
+        "essn": "1423-0348",
+        "issn": "0033-3190",
+        "nlmid": "0024046",
+        "isoabbreviation": "Psychother Psychosom"
+      },
+      "printPublicationDate": "2018-01-01"
+    },
+    "firstPublicationDate": "2018-09-11",
+    "pubTypeList": {
+      "pubType": [
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": {
+      "commentCorrection": [
+        {
+          "source": "MED",
+          "id": "37742614",
+          "reference": "Psychother Psychosom. 2023;92(5):346. doi: 10.1159/000533839.",
+          "type": "Erratum in",
+          "orderIn": 1
+        }
+      ]
+    },
+    "retrievedRecordSHA256": "6419f01e932092fa9050d27c2bc0a511431f2ea7bd3d8878d76ea21c795a78cc"
+  },
+  "30388595": {
+    "pmid": "30388595",
+    "pmcid": null,
+    "doi": "10.1016/j.psyneuen.2018.10.010",
+    "title": "Probiotic Lactobacillus Plantarum 299v decreases kynurenine concentration and improves cognitive functions in patients with major depression: A double-blind, randomized, placebo controlled study.",
+    "authorString": "Rudzki L, Ostrowska L, Pawlak D, Małus A, Pawlak K, Waszkiewicz N, Szulc A.",
+    "pubYear": "2019",
+    "journalInfo": {
+      "volume": "100",
+      "journalIssueId": 2771352,
+      "dateOfPublication": "2019 Feb",
+      "monthOfPublication": 2,
+      "yearOfPublication": 2019,
+      "journal": {
+        "medlineAbbreviation": "Psychoneuroendocrinology",
+        "title": "Psychoneuroendocrinology",
+        "essn": "1873-3360",
+        "issn": "0306-4530",
+        "nlmid": "7612148",
+        "isoabbreviation": "Psychoneuroendocrinology"
+      },
+      "printPublicationDate": "2019-02-01"
+    },
+    "firstPublicationDate": "2018-10-16",
+    "pubTypeList": {
+      "pubType": [
+        "Research Support, Non-U.S. Gov't",
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "c2f0a0b56e793815d5e3e6c25cd8f6a644ecd66d3247bb89d235b227cc5d704a"
+  },
+  "23602205": {
+    "pmid": "23602205",
+    "pmcid": null,
+    "doi": "10.1179/1476830513y.0000000066",
+    "title": "Effects of zinc supplementation on efficacy of antidepressant therapy, inflammatory cytokines, and brain-derived neurotrophic factor in patients with major depression.",
+    "authorString": "Ranjbar E, Shams J, Sabetkasaei M, M-Shirazi M, Rashidkhani B, Mostafavi A, Bornak E, Nasrollahzadeh J.",
+    "pubYear": "2014",
+    "journalInfo": {
+      "issue": "2",
+      "volume": "17",
+      "journalIssueId": 2121017,
+      "dateOfPublication": "2014 Feb",
+      "monthOfPublication": 2,
+      "yearOfPublication": 2014,
+      "journal": {
+        "medlineAbbreviation": "Nutr Neurosci",
+        "title": "Nutritional neuroscience",
+        "essn": "1476-8305",
+        "issn": "1028-415X",
+        "nlmid": "100892202",
+        "isoabbreviation": "Nutr Neurosci"
+      },
+      "printPublicationDate": "2014-02-01"
+    },
+    "firstPublicationDate": "2013-11-26",
+    "pubTypeList": {
+      "pubType": [
+        "Research Support, Non-U.S. Gov't",
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "c63b468050eac3707d9fdff06410de0a5e9cf11d7ef48b91279ffe87b3f48a79"
+  },
+  "31141465": {
+    "pmid": "31141465",
+    "pmcid": "PMC6883140",
+    "doi": "10.1080/08964289.2019.1604489",
+    "title": "Benefits of Yoga on IL-6: Findings from a Randomized Controlled Trial of Yoga for Depression.",
+    "authorString": "Nugent NR, Brick L, Armey MF, Tyrka AR, Ridout KK, Uebelacker LA.",
+    "pubYear": "2021",
+    "journalInfo": {
+      "issue": "1",
+      "volume": "47",
+      "journalIssueId": 3164888,
+      "dateOfPublication": "2021 Jan-Mar",
+      "monthOfPublication": 0,
+      "yearOfPublication": 2021,
+      "journal": {
+        "medlineAbbreviation": "Behav Med",
+        "title": "Behavioral medicine (Washington, D.C.)",
+        "essn": "1940-4026",
+        "issn": "0896-4289",
+        "nlmid": "8804264",
+        "isoabbreviation": "Behav Med"
+      },
+      "printPublicationDate": "2021-01-01"
+    },
+    "firstPublicationDate": "2019-05-29",
+    "pubTypeList": {
+      "pubType": [
+        "research-article",
+        "Randomized Controlled Trial",
+        "Journal Article",
+        "Research Support, N.I.H., Extramural"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "e9dce062cc4e9ddc65cd3cf55771f04d6670cec67188989fc71fd6d3927a5920"
+  },
+  "26802811": {
+    "pmid": "26802811",
+    "pmcid": null,
+    "doi": "10.1016/j.jpsychires.2016.01.008",
+    "title": "Pro-inflammatory cytokines and psychotherapy in depression: Results from a randomized clinical trial.",
+    "authorString": "Del Grande da Silva G, Wiener CD, Barbosa LP, Gonçalves Araujo JM, Molina ML, San Martin P, Oses JP, Jansen K, Dias de Mattos Souza L, Azevedo da Silva R.",
+    "pubYear": "2016",
+    "journalInfo": {
+      "volume": "75",
+      "journalIssueId": 2379366,
+      "dateOfPublication": "2016 Apr",
+      "monthOfPublication": 4,
+      "yearOfPublication": 2016,
+      "journal": {
+        "medlineAbbreviation": "J Psychiatr Res",
+        "title": "Journal of psychiatric research",
+        "essn": "1879-1379",
+        "issn": "0022-3956",
+        "nlmid": "0376331",
+        "isoabbreviation": "J Psychiatr Res"
+      },
+      "printPublicationDate": "2016-04-01"
+    },
+    "firstPublicationDate": "2016-01-11",
+    "pubTypeList": {
+      "pubType": [
+        "Research Support, Non-U.S. Gov't",
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "2ca94c92200cccf635ea1c9030ae35b9be490224872dd109bd59f061ef25ecc2"
+  },
+  "36005883": {
+    "pmid": "36005883",
+    "pmcid": null,
+    "doi": "10.4088/jcp.21m14074",
+    "title": "Omega-3 Fatty Acids for Major Depressive Disorder With High Inflammation: A Randomized Dose-Finding Clinical Trial.",
+    "authorString": "Mischoulon D, Dunlop BW, Kinkead B, Schettler PJ, Lamon-Fava S, Rakofsky JJ, Nierenberg AA, Clain AJ, Mletzko Crowe T, Wong A, Felger JC, Sangermano L, Ziegler TR, Cusin C, Fisher LB, Fava M, Rapaport MH.",
+    "pubYear": "2022",
+    "journalInfo": {
+      "issue": "5",
+      "volume": "83",
+      "journalIssueId": 3401371,
+      "dateOfPublication": "2022 Aug",
+      "monthOfPublication": 8,
+      "yearOfPublication": 2022,
+      "journal": {
+        "medlineAbbreviation": "J Clin Psychiatry",
+        "title": "The Journal of clinical psychiatry",
+        "essn": "1555-2101",
+        "issn": "0160-6689",
+        "nlmid": "7801243",
+        "isoabbreviation": "J Clin Psychiatry"
+      },
+      "printPublicationDate": "2022-08-01"
+    },
+    "firstPublicationDate": "2022-08-22",
+    "pubTypeList": {
+      "pubType": [
+        "Randomized Controlled Trial",
+        "Journal Article",
+        "Research Support, N.I.H., Extramural"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "ab20a74eb8adfd23ed62b4c508955816b69f22447db44c58c5987d5cc452d483"
+  },
+  "40188855": {
+    "pmid": "40188855",
+    "pmcid": null,
+    "doi": "10.1016/j.bbi.2025.04.006",
+    "title": "Lack of relationships between ketamine treatment and peripheral neurotrophic and inflammatory factors in a randomized controlled ketamine trial of major depressive disorder.",
+    "authorString": "Rengasamy M, Panny B, Hutchinson Z, Marsland A, Kovats T, Griffo A, Spotts C, Howland RH, Wallace ML, Mathew SJ, Hossein S, Price RB.",
+    "pubYear": "2025",
+    "journalInfo": {
+      "volume": "128",
+      "journalIssueId": 3982381,
+      "dateOfPublication": "2025 Aug",
+      "monthOfPublication": 8,
+      "yearOfPublication": 2025,
+      "journal": {
+        "medlineAbbreviation": "Brain Behav Immun",
+        "title": "Brain, behavior, and immunity",
+        "essn": "1090-2139",
+        "issn": "0889-1591",
+        "nlmid": "8800478",
+        "isoabbreviation": "Brain Behav Immun"
+      },
+      "printPublicationDate": "2025-08-01"
+    },
+    "firstPublicationDate": "2025-04-04",
+    "pubTypeList": {
+      "pubType": [
+        "Randomized Controlled Trial",
+        "Journal Article",
+        "Research Support, N.I.H., Extramural"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "8a218db2d500124b869ec7349be8b4f45605d015eb43abe2bb0441d276e89352"
+  },
+  "32533781": {
+    "pmid": "32533781",
+    "pmcid": null,
+    "doi": "10.1111/add.15160",
+    "title": "Aberrations in peripheral inflammatory cytokine levels in substance use disorders: a meta-analysis of 74 studies.",
+    "authorString": "Wei ZX, Chen L, Zhang JJ, Cheng Y.",
+    "pubYear": "2020",
+    "journalInfo": {
+      "issue": "12",
+      "volume": "115",
+      "journalIssueId": 3051496,
+      "dateOfPublication": "2020 Dec",
+      "monthOfPublication": 12,
+      "yearOfPublication": 2020,
+      "journal": {
+        "medlineAbbreviation": "Addiction",
+        "title": "Addiction (Abingdon, England)",
+        "essn": "1360-0443",
+        "issn": "0965-2140",
+        "nlmid": "9304118",
+        "isoabbreviation": "Addiction"
+      },
+      "printPublicationDate": "2020-12-01"
+    },
+    "firstPublicationDate": "2020-07-18",
+    "pubTypeList": {
+      "pubType": [
+        "Meta-Analysis",
+        "Research Support, Non-U.S. Gov't",
+        "Systematic Review",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "57ec146a7faa9a273d997be7836362abf3785296b66e4567c157b3fe47245832"
+  },
+  "35995431": {
+    "pmid": "35995431",
+    "pmcid": "PMC9561830",
+    "doi": "10.47626/1516-4446-2021-1893",
+    "title": "Inflammatory cytokines and alcohol use disorder: systematic review and meta-analysis.",
+    "authorString": "Moura HF, Hansen F, Galland F, Silvelo D, Rebelatto FP, Ornell F, Massuda R, Scherer JN, Schuch F, Kessler FH, von Diemen L.",
+    "pubYear": "2022",
+    "journalInfo": {
+      "issue": "5",
+      "volume": "44",
+      "journalIssueId": 3457160,
+      "dateOfPublication": "2022 Nov",
+      "monthOfPublication": 11,
+      "yearOfPublication": 2022,
+      "journal": {
+        "medlineAbbreviation": "Braz J Psychiatry",
+        "title": "Revista brasileira de psiquiatria (Sao Paulo, Brazil : 1999)",
+        "essn": "1809-452X",
+        "issn": "1516-4446",
+        "nlmid": "100895975",
+        "isoabbreviation": "Braz J Psychiatry"
+      },
+      "printPublicationDate": "2022-11-01"
+    },
+    "firstPublicationDate": "2022-08-22",
+    "pubTypeList": {
+      "pubType": [
+        "Meta-Analysis",
+        "Systematic Review",
+        "review-article",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "7e2f237be8ff31bb845210d52e68ecdc04e1e98b32f66352af66d64d98d1653e"
+  },
+  "31513981": {
+    "pmid": "31513981",
+    "pmcid": "PMC7077753",
+    "doi": "10.1016/j.drugalcdep.2019.06.018",
+    "title": "Correlation between interleukin-6 levels and methadone maintenance therapy outcomes.",
+    "authorString": "Lu RB, Wang TY, Lee SY, Chen SL, Chang YH, See Chen P, Lin SH, Chu CH, Huang SY, Tzeng NS, Lee IH, Chin Chen K, Kuang Yang Y, Chen P, Chen SH, Hong JS.",
+    "pubYear": "2019",
+    "journalInfo": {
+      "volume": "204",
+      "journalIssueId": 2884769,
+      "dateOfPublication": "2019 Nov",
+      "monthOfPublication": 11,
+      "yearOfPublication": 2019,
+      "journal": {
+        "medlineAbbreviation": "Drug Alcohol Depend",
+        "title": "Drug and alcohol dependence",
+        "essn": "1879-0046",
+        "issn": "0376-8716",
+        "nlmid": "7513587",
+        "isoabbreviation": "Drug Alcohol Depend"
+      },
+      "printPublicationDate": "2019-11-01"
+    },
+    "firstPublicationDate": "2019-08-30",
+    "pubTypeList": {
+      "pubType": [
+        "Research Support, Non-U.S. Gov't",
+        "research-article",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "303821b5d606326818d89722905dc89467743b1a6ca4d0032560c5849736d269"
+  },
+  "30071446": {
+    "pmid": "30071446",
+    "pmcid": "PMC6487886",
+    "doi": "10.1016/j.drugalcdep.2018.06.024",
+    "title": "Correlation of cytokines, BDNF levels, and memory function in patients with opioid use disorder undergoing methadone maintenance treatment.",
+    "authorString": "Wang TY, Lee SY, Chang YH, Chen SL, Chen PS, Chu CH, Huang SY, Tzeng NS, Lee IH, Chen KC, Yang YK, Chen SH, Hong JS, Lu RB.",
+    "pubYear": "2018",
+    "journalInfo": {
+      "volume": "191",
+      "journalIssueId": 2728288,
+      "dateOfPublication": "2018 Oct",
+      "monthOfPublication": 10,
+      "yearOfPublication": 2018,
+      "journal": {
+        "medlineAbbreviation": "Drug Alcohol Depend",
+        "title": "Drug and alcohol dependence",
+        "essn": "1879-0046",
+        "issn": "0376-8716",
+        "nlmid": "7513587",
+        "isoabbreviation": "Drug Alcohol Depend"
+      },
+      "printPublicationDate": "2018-10-01"
+    },
+    "firstPublicationDate": "2018-07-25",
+    "pubTypeList": {
+      "pubType": [
+        "Research Support, Non-U.S. Gov't",
+        "research-article",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "52e29403b19971e5990b96663695c1ea4b11cd0e47a7215aeff89bc7ae4cd956"
+  },
+  "25660662": {
+    "pmid": "25660662",
+    "pmcid": null,
+    "doi": "10.1016/j.psychres.2014.12.053",
+    "title": "Inflammatory response in heroin addicts undergoing methadone maintenance treatment.",
+    "authorString": "Chan YY, Yang SN, Lin JC, Chang JL, Lin JG, Lo WY.",
+    "pubYear": "2015",
+    "journalInfo": {
+      "issue": "1",
+      "volume": "226",
+      "journalIssueId": 2267098,
+      "dateOfPublication": "2015 Mar",
+      "monthOfPublication": 3,
+      "yearOfPublication": 2015,
+      "journal": {
+        "medlineAbbreviation": "Psychiatry Res",
+        "title": "Psychiatry research",
+        "essn": "1872-7123",
+        "issn": "0165-1781",
+        "nlmid": "7911385",
+        "isoabbreviation": "Psychiatry Res"
+      },
+      "printPublicationDate": "2015-03-01"
+    },
+    "firstPublicationDate": "2015-01-13",
+    "pubTypeList": {
+      "pubType": [
+        "Research Support, Non-U.S. Gov't",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "a766ebdfdc4e0629d34f68875f2758aaaf5e37b53f1d37f01ccaee4eb4f8b193"
+  },
+  "36181736": {
+    "pmid": "36181736",
+    "pmcid": "PMC9850661",
+    "doi": "10.1093/ijnp/pyac069",
+    "title": "Association Between Inflammatory Cytokines, Executive Function, and Substance Use in Patients With Opioid Use Disorder and Amphetamine-Type Stimulants Use Disorder.",
+    "authorString": "Wang TY, Lu RB, Lee SY, Chang YH, Chen SL, Tsai TY, Tseng HH, Chen PS, Chen KC, Yang YK, Hong JS.",
+    "pubYear": "2023",
+    "journalInfo": {
+      "issue": "1",
+      "volume": "26",
+      "journalIssueId": 3491551,
+      "dateOfPublication": "2023 Jan",
+      "monthOfPublication": 1,
+      "yearOfPublication": 2023,
+      "journal": {
+        "medlineAbbreviation": "Int J Neuropsychopharmacol",
+        "title": "The international journal of neuropsychopharmacology",
+        "essn": "1469-5111",
+        "issn": "1461-1457",
+        "nlmid": "9815893",
+        "isoabbreviation": "Int J Neuropsychopharmacol"
+      },
+      "printPublicationDate": "2023-01-01"
+    },
+    "firstPublicationDate": "2023-01-01",
+    "pubTypeList": {
+      "pubType": [
+        "Research Support, Non-U.S. Gov't",
+        "research-article",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "c7e82b6858e64a27bbe82925cd23602ca5865a41145150d5a1c8769a77408513"
+  },
+  "31749792": {
+    "pmid": "31749792",
+    "pmcid": "PMC6843068",
+    "doi": "10.3389/fimmu.2019.02435",
+    "title": "Cocaine Use Disorder Is Associated With Changes in Th1/Th2/Th17 Cytokines and Lymphocytes Subsets.",
+    "authorString": "Zaparte A, Schuch JB, Viola TW, Baptista TAS, Beidacki AS, do Prado CH, Sanvicente-Vieira B, Bauer ME, Grassi-Oliveira R.",
+    "pubYear": "2019",
+    "journalInfo": {
+      "volume": "10",
+      "journalIssueId": 2777618,
+      "dateOfPublication": "2019 ",
+      "monthOfPublication": 0,
+      "yearOfPublication": 2019,
+      "journal": {
+        "medlineAbbreviation": "Front Immunol",
+        "title": "Frontiers in immunology",
+        "essn": "1664-3224",
+        "issn": "1664-3224",
+        "nlmid": "101560960",
+        "isoabbreviation": "Front Immunol"
+      },
+      "printPublicationDate": "2019-01-01"
+    },
+    "firstPublicationDate": "2019-10-15",
+    "pubTypeList": {
+      "pubType": [
+        "Research Support, Non-U.S. Gov't",
+        "research-article",
+        "Journal Article",
+        "Research Support, N.I.H., Extramural"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "f2a839a9e11a3e242541de157ee704f1a51a9a1cc5bf3b95cfe0b255eae3bc84"
+  },
+  "39504756": {
+    "pmid": "39504756",
+    "pmcid": "PMC11620913",
+    "doi": "10.1016/j.jneuroim.2024.578470",
+    "title": "Influence of cocaine use reduction on markers of immune function.",
+    "authorString": "Stoops WW, Shellenberg TP, Regnier SD, Cox DH, Adatorwovor R, Hays LR, Anderson DM, Lile JA, Schmitz JM, Havens JR, Segerstrom SC.",
+    "pubYear": "2024",
+    "journalInfo": {
+      "volume": "397",
+      "journalIssueId": 3865689,
+      "dateOfPublication": "2024 Dec",
+      "monthOfPublication": 12,
+      "yearOfPublication": 2024,
+      "journal": {
+        "medlineAbbreviation": "J Neuroimmunol",
+        "title": "Journal of neuroimmunology",
+        "essn": "1872-8421",
+        "issn": "0165-5728",
+        "nlmid": "8109498",
+        "isoabbreviation": "J Neuroimmunol"
+      },
+      "printPublicationDate": "2024-12-01"
+    },
+    "firstPublicationDate": "2024-10-28",
+    "pubTypeList": {
+      "pubType": [
+        "research-article",
+        "Randomized Controlled Trial",
+        "Journal Article",
+        "Research Support, N.I.H., Extramural"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "843d97e262e3dd5d90d3540d94aaf811ef2b66868f891b4ab1cb9c33cdb6739c"
+  },
+  "37424424": {
+    "pmid": "37424424",
+    "pmcid": "PMC10335902",
+    "doi": "10.9758/cpn.22.1047",
+    "title": "Oxidative Stress and Inflammatory Biomarkers in People with Methamphetamine Use Disorder.",
+    "authorString": "Turan Ç, Şenormancı G, Neşelioğlu S, Budak Y, Erel Ö, Şenormancı Ö.",
+    "pubYear": "2023",
+    "journalInfo": {
+      "issue": "3",
+      "volume": "21",
+      "journalIssueId": 3601859,
+      "dateOfPublication": "2023 Aug",
+      "monthOfPublication": 8,
+      "yearOfPublication": 2023,
+      "journal": {
+        "medlineAbbreviation": "Clin Psychopharmacol Neurosci",
+        "title": "Clinical psychopharmacology and neuroscience : the official scientific journal of the Korean College of Neuropsychopharmacology",
+        "essn": "2093-4327",
+        "issn": "1738-1088",
+        "nlmid": "101207332",
+        "isoabbreviation": "Clin Psychopharmacol Neurosci"
+      },
+      "printPublicationDate": "2023-08-01"
+    },
+    "firstPublicationDate": "2023-08-01",
+    "pubTypeList": {
+      "pubType": [
+        "research-article",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "686fdf68bcbfe4c9802b41357cc8eebfd3c0e2e571761f799523d10e69d1b398"
+  },
+  "15282117": {
+    "pmid": "15282117",
+    "pmcid": null,
+    "doi": "10.1016/j.alcohol.2004.02.004",
+    "title": "Serum cytokine concentrations in alcohol-dependent individuals without liver disease.",
+    "authorString": "Nicolaou C, Chatzipanagiotou S, Tzivos D, Tzavellas EO, Boufidou F, Liappas IA.",
+    "pubYear": "2004",
+    "journalInfo": {
+      "issue": "3",
+      "volume": "32",
+      "journalIssueId": 1200131,
+      "dateOfPublication": "2004 Apr",
+      "monthOfPublication": 4,
+      "yearOfPublication": 2004,
+      "journal": {
+        "medlineAbbreviation": "Alcohol",
+        "title": "Alcohol (Fayetteville, N.Y.)",
+        "essn": "1873-6823",
+        "issn": "0741-8329",
+        "nlmid": "8502311",
+        "isoabbreviation": "Alcohol"
+      },
+      "printPublicationDate": "2004-04-01"
+    },
+    "firstPublicationDate": "2004-04-01",
+    "pubTypeList": {
+      "pubType": [
+        "Comparative Study",
+        "Clinical Trial",
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "05823465b4f6c437bb59de705dd92bd300c5ad4b403512e0c973097d31016150"
+  },
+  "31736187": {
+    "pmid": "31736187",
+    "pmcid": "PMC7371343",
+    "doi": "10.1111/adb.12832",
+    "title": "Stress-related suppression of peripheral cytokines predicts future relapse in alcohol-dependent individuals with and without subclinical depression.",
+    "authorString": "Fox HC, Milivojevic V, MacDougall A, LaVallee H, Simpson C, Angarita GA, Sinha R.",
+    "pubYear": "2020",
+    "journalInfo": {
+      "issue": "6",
+      "volume": "25",
+      "journalIssueId": 3044219,
+      "dateOfPublication": "2020 Nov",
+      "monthOfPublication": 11,
+      "yearOfPublication": 2020,
+      "journal": {
+        "medlineAbbreviation": "Addict Biol",
+        "title": "Addiction biology",
+        "essn": "1369-1600",
+        "issn": "1355-6215",
+        "nlmid": "9604935",
+        "isoabbreviation": "Addict Biol"
+      },
+      "printPublicationDate": "2020-11-01"
+    },
+    "firstPublicationDate": "2019-11-17",
+    "pubTypeList": {
+      "pubType": [
+        "Research Support, Non-U.S. Gov't",
+        "research-article",
+        "Journal Article",
+        "Research Support, N.I.H., Extramural"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "27944c0486e9bc00965383d5eefda57e65429cf7f9a9e1dfd8ae993580548240"
+  },
+  "31541874": {
+    "pmid": "31541874",
+    "pmcid": "PMC6913873",
+    "doi": "10.1016/j.drugalcdep.2019.107553",
+    "title": "Peripheral proinflammatory markers are upregulated in abstinent alcohol-dependent patients but are not affected by cognitive bias modification: Preliminary findings.",
+    "authorString": "Portelli J, Wiers CE, Li X, Deschaine SL, McDiarmid GR, Bermpohl F, Leggio L.",
+    "pubYear": "2019",
+    "journalInfo": {
+      "volume": "204",
+      "journalIssueId": 2884769,
+      "dateOfPublication": "2019 Nov",
+      "monthOfPublication": 11,
+      "yearOfPublication": 2019,
+      "journal": {
+        "medlineAbbreviation": "Drug Alcohol Depend",
+        "title": "Drug and alcohol dependence",
+        "essn": "1879-0046",
+        "issn": "0376-8716",
+        "nlmid": "7513587",
+        "isoabbreviation": "Drug Alcohol Depend"
+      },
+      "printPublicationDate": "2019-11-01"
+    },
+    "firstPublicationDate": "2019-09-11",
+    "pubTypeList": {
+      "pubType": [
+        "Research Support, N.I.H., Intramural",
+        "Research Support, Non-U.S. Gov't",
+        "research-article",
+        "Randomized Controlled Trial",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "5be23c840ceab4b59b156f5188c81b6897560808507e18aac8525d5f70512161"
+  },
+  "37484196": {
+    "pmid": "37484196",
+    "pmcid": "PMC10362517",
+    "doi": "10.1016/j.bbih.2023.100645",
+    "title": "IL-6, but not TNF-α, response to alcohol cues and acute consumption associated with neural cue reactivity, craving, and future drinking in binge drinkers.",
+    "authorString": "Blaine SK, Ridner CM, Campbell BR, Crone L, Claus ED, Wilson JR, West SN, McClanahan AJ, Siddiq AS, Layman IMP, Macatee R, Ansell EB, Robinson JL, Beck DT.",
+    "pubYear": "2023",
+    "journalInfo": {
+      "volume": "31",
+      "journalIssueId": 3600038,
+      "dateOfPublication": "2023 Aug",
+      "monthOfPublication": 8,
+      "yearOfPublication": 2023,
+      "journal": {
+        "medlineAbbreviation": "Brain Behav Immun Health",
+        "title": "Brain, behavior, & immunity - health",
+        "essn": "2666-3546",
+        "issn": "2666-3546",
+        "nlmid": "101759062",
+        "isoabbreviation": "Brain Behav Immun Health"
+      },
+      "printPublicationDate": "2023-08-01"
+    },
+    "firstPublicationDate": "2023-06-11",
+    "pubTypeList": {
+      "pubType": [
+        "research-article",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "179065739e663cc61e833507ca1c5e1d9fe08812bd3cd92bbf8e396ee40272ab"
+  },
+  "32554630": {
+    "pmid": "32554630",
+    "pmcid": "PMC7309527",
+    "doi": "10.1212/nxi.0000000000000809",
+    "title": "Recent cannabis use in HIV is associated with reduced inflammatory markers in CSF and blood.",
+    "authorString": "Ellis RJ, Peterson SN, Li Y, Schrier R, Iudicello J, Letendre S, Morgan E, Tang B, Grant I, Cherner M.",
+    "pubYear": "2020",
+    "journalInfo": {
+      "issue": "5",
+      "volume": "7",
+      "journalIssueId": 2959225,
+      "dateOfPublication": "2020 Sep",
+      "monthOfPublication": 9,
+      "yearOfPublication": 2020,
+      "journal": {
+        "medlineAbbreviation": "Neurol Neuroimmunol Neuroinflamm",
+        "title": "Neurology(R) neuroimmunology & neuroinflammation",
+        "essn": "2332-7812",
+        "issn": "2332-7812",
+        "nlmid": "101636388",
+        "isoabbreviation": "Neurol Neuroimmunol Neuroinflamm"
+      },
+      "printPublicationDate": "2020-09-01"
+    },
+    "firstPublicationDate": "2020-06-17",
+    "pubTypeList": {
+      "pubType": [
+        "research-article",
+        "Journal Article",
+        "Research Support, N.I.H., Extramural",
+        "Observational Study"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "40f1517a750ea062bbde802414730d6358b65f0df41b607936ed4bcac9631fb6"
+  },
+  "25274579": {
+    "pmid": "25274579",
+    "pmcid": "PMC4200029",
+    "doi": "10.1093/jnci/dju294",
+    "title": "Cigarette smoking and variations in systemic immune and inflammation markers.",
+    "authorString": "Shiels MS, Katki HA, Freedman ND, Purdue MP, Wentzensen N, Trabert B, Kitahara CM, Furr M, Li Y, Kemp TJ, Goedert JJ, Chang CM, Engels EA, Caporaso NE, Pinto LA, Hildesheim A, Chaturvedi AK.",
+    "pubYear": "2014",
+    "journalInfo": {
+      "issue": "11",
+      "volume": "106",
+      "journalIssueId": 2204323,
+      "dateOfPublication": "2014 Nov",
+      "monthOfPublication": 11,
+      "yearOfPublication": 2014,
+      "journal": {
+        "medlineAbbreviation": "J Natl Cancer Inst",
+        "title": "Journal of the National Cancer Institute",
+        "essn": "1460-2105",
+        "issn": "0027-8874",
+        "nlmid": "7503089",
+        "isoabbreviation": "J Natl Cancer Inst"
+      },
+      "printPublicationDate": "2014-11-01"
+    },
+    "firstPublicationDate": "2014-10-01",
+    "pubTypeList": {
+      "pubType": [
+        "Research Support, N.I.H., Intramural",
+        "research-article",
+        "Journal Article"
+      ]
+    },
+    "commentCorrectionList": null,
+    "retrievedRecordSHA256": "65dbfb3c191f9f182fc5c6195224bc18351093763b71cc9431647ea96622c0f4"
+  }
+}
